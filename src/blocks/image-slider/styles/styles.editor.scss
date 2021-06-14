@@ -1,0 +1,140 @@
+.wp-block[data-type="responsive-block-editor-addons/image-slider"] {
+  &.wp-block[data-align="full"] > .block-editor-block-list__block-edit figure {
+    width: auto;
+  }
+
+  // Set the appender to full height (second is the pre Gutenberg 5.6 method).
+  .responsive-block-editor-addons-gallery--figure .components-form-file-upload {
+    height: 100%;
+  }
+
+  // Set the carousel to 100% height in the editor
+  .wp-block-responsive-block-editor-addons-image-slider {
+    &,
+    .responsive-block-editor-addons-gallery {
+      height: 100%;
+    }
+  }
+
+  // Fixes issue with multiple dropzones displaying when dropping in an image.
+  .components-drop-zone.is-active {
+    + .wp-block-responsive-block-editor-addons-image-slider
+      div
+      div
+      div
+      div
+      div:last-child
+      .components-drop-zone {
+      display: none;
+    }
+  }
+
+  .flickity-enabled {
+    height: 100% !important;
+    position: inherit;
+  }
+
+  .has-responsive-height {
+    > span .components-resizable-box__handle {
+      display: none !important;
+    }
+
+    .carousel-nav {
+      margin-top: 0 !important;
+    }
+  }
+
+  .has-responsive-height .has-carousel.flickity-enabled {
+    height: auto !important;
+    padding-bottom: 56.25%;
+    position: relative;
+  }
+
+  .has-responsive-height.components-resizable-box__container {
+    height: auto !important;
+  }
+
+  .carousel-nav {
+    .responsive-block-editor-addons--item-thumbnail {
+      opacity: 0.4;
+    }
+
+    .responsive-block-editor-addons--item-thumbnail:first-of-type {
+      opacity: 1;
+    }
+  }
+
+  .wp-block-blockgallery-thumbnails {
+    overflow: visible;
+  }
+}
+
+.wp-block[data-type="core/group"]
+  .components-resizable-box__container
+  .wp-block-responsive-block-editor-addons-image-slider {
+  margin-bottom: 40px !important;
+  margin-top: 40px !important;
+}
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content
+  .wp-block-responsive-block-editor-addons-image-slider {
+  .flickity-button:disabled {
+    opacity: 1;
+  }
+}
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.block-editor-block-list__block[data-type="responsive-block-editor-addons/image-slider"]:not(.is-selected):not(.is-focused)
+  .responsive-block-editor-addons-gallery {
+  div.components-form-file-upload {
+    display: none;
+  }
+}
+
+.responsive-block-editor-addons-gallery {
+  .carousel-nav {
+    height: auto;
+
+    .flickity-viewport {
+      height: 80px !important;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .responsive-block-editor-addons--figure {
+      height: 100%;
+      position: relative;
+    }
+
+    .responsive-block-editor-addons--item-thumbnail {
+      height: 80px;
+      opacity: 0.4;
+      overflow: hidden;
+      transition: opacity 250ms ease;
+      width: 100px;
+
+      &:hover {
+        opacity: 0.66;
+      }
+
+      &.is-selected {
+        opacity: 1;
+      }
+
+      img {
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        vertical-align: middle;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "responsive-block-editor-addons/gallery-masonry",
+  "category": "responsive_block_editor_addons",
+  "attributes": {
+    "gridSize": {
+      "type": "string",
+      "default": "xlrg"
+    }
+  }
+}

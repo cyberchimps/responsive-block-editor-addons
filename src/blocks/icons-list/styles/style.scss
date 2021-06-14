@@ -1,0 +1,133 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.responsive-block-editor-addons-icon-list__wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.responsive-block-editor-addons-icon-list__icon-at-top
+  .responsive-block-editor-addons-icon-list__source-wrap {
+  align-self: flex-start;
+}
+
+.responsive-block-editor-addons-icon-list__outer-wrap {
+  margin-bottom: 0;
+
+  &.wp-block-responsive-block-editor-addons-icon-list
+    .responsive-block-editor-addons-icon-list__wrap
+    a.responsive-block-editor-addons-icon-list__wrapper,
+  &.wp-block-responsive-block-editor-addons-icon-list
+    .responsive-block-editor-addons-icon-list__wrap
+    a.responsive-block-editor-addons-icon-list__wrapper:focus,
+  &.wp-block-responsive-block-editor-addons-icon-list
+    .responsive-block-editor-addons-icon-list__wrap
+    a.responsive-block-editor-addons-icon-list__wrapper:active,
+  &.wp-block-responsive-block-editor-addons-icon-list
+    .responsive-block-editor-addons-icon-list__wrap
+    a.responsive-block-editor-addons-icon-list__wrapper:visited {
+    text-decoration: none;
+  }
+
+  a.responsive-block-editor-addons-button__link:focus {
+    box-shadow: none;
+  }
+
+  .responsive-block-editor-addons-icon-list__wrapper > p {
+    display: none;
+  }
+
+  .responsive-block-editor-addons-icon-list__wrapper {
+    padding: 0;
+    transition: all 0.2s;
+    display: inline-flex;
+    text-align: center;
+  }
+
+  .responsive-block-editor-addons-icon-list__content-wrap,
+  .responsive-block-editor-addons-icon-list__source-wrap {
+    width: inherit;
+    display: inline-block;
+  }
+
+  .responsive-block-editor-addons-icon-list__source-wrap {
+    display: inherit;
+    align-items: center;
+    border-style: solid;
+  }
+  .responsive-block-editor-addons-icon-list__content-wrap {
+    color: #3a3a3a;
+    display: flex;
+    align-items: center;
+  }
+
+  .responsive-block-editor-addons-icon-list__source-icon,
+  .responsive-block-editor-addons-icon-list__source-icon:before {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .responsive-block-editor-addons-icon-list__source-icon svg {
+    display: block;
+  }
+
+  .responsive-block-editor-addons-icon-list__source-image {
+    width: 40px;
+  }
+
+  .responsive-block-editor-addons-icon-list__wrapper:first-child {
+    margin-left: 0!important;
+  }
+
+  .responsive-block-editor-addons-icon-list__wrapper:last-child {
+    margin-right: 0!important;
+  }
+
+  .responsive-block-editor-addons-icon-list__wrap > p {
+    display: none;
+  }
+
+  .responsive-block-editor-addons-icon-list__wrapper[href="/"] {
+    pointer-events: none;
+    cursor: text;
+  }
+
+  &.wp-block-responsive-block-editor-addons-icon-list
+    .responsive-block-editor-addons-icon-list__wrap
+    .responsive-block-editor-addons-icon-list__wrapper {
+    text-decoration: none;
+  }
+
+  .responsive-block-editor-addons-icon-list__wrap
+    .responsive-block-editor-addons-icon-list__wrapper {
+    box-shadow: none;
+  }
+
+  &.responsive-block-editor-addons-icon-list__icon-at-top
+    .responsive-block-editor-addons-icon-list__source-wrap {
+    align-self: flex-start;
+  }
+}
+
+.responsive-block-editor-addons-icon-list__no-label
+  .responsive-block-editor-addons-icon-list__label-wrap {
+  display: none;
+}
+
+.responsive-block-editor-addons-icon-list__layout-horizontal
+  .responsive-block-editor-addons-icon-list__wrapper {
+  padding: 0;
+}
+
+.wp-block-responsive-block-editor-addons-icons-list-child
+  > a.wp-responsive-block-editor-addons-icon-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

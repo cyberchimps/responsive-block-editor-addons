@@ -1,0 +1,12 @@
+.responsive-block-editor-addons-expand--more {
+  .responsive-block-editor-addons-expand-less-text,
+  .responsive-block-editor-addons-expand-more-toggle-text {
+    display: none;
+  }
+  .responsive-block-editor-addons-expand-more-text {
+    display: block !important;
+  }
+  .responsive-block-editor-addons-expand-less-toggle-text {
+    display: inline-block !important;
+  }
+}

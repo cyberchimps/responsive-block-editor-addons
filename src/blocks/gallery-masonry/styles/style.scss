@@ -1,0 +1,59 @@
+.wp-block-responsive-block-editor-addons-gallery-masonry {
+  position: relative;
+
+  ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  li {
+    margin: 0 !important;
+  }
+
+  figure {
+    overflow: hidden;
+  }
+  .has-gutter-null .responsive-block-editor-addons-gallery--figure {
+    margin: 0 !important;
+  }
+  img {
+    height: auto;
+    width: 100%;
+    vertical-align: bottom;
+  }
+
+  figcaption {
+    background: linear-gradient(
+      0deg,
+      rgba($color: $black, $alpha: 0.7) 0,
+      rgba($color: $black, $alpha: 0.3) 50%,
+      transparent
+    );
+    bottom: 0;
+    font-size: 13px;
+    max-height: 100% !important;
+    opacity: 0.9;
+    overflow: auto;
+    padding: 30px 10px 10px !important;
+    position: absolute !important;
+    text-align: center;
+    width: 100%;
+
+    img {
+      display: inline;
+    }
+  }
+
+  .responsive-block-editor-addons-gallery.link-type-custom figcaption {
+    bottom: 3em;
+  }
+}
+
+.page.page-template-gutenberg-fullwidth
+  .alignfull.wp-block-responsive-block-editor-addons-gallery-masonry,
+.page.sidebar-position-no:not(.woocommerce)
+  .alignfull.wp-block-responsive-block-editor-addons-gallery-masonry {
+  max-width: 100vw !important;
+}

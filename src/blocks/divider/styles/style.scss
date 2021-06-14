@@ -1,0 +1,105 @@
+/**
+ * Spacer styles
+ * Loads on front end and back end
+ */
+
+.responsive-block-editor-addons-block-spacer {
+  margin: 0 0 1.2em 0;
+  position: relative;
+
+  hr {
+    border: none;
+    background: none;
+  }
+
+  &.bars,
+  &.basic {
+    .responsive-block-editor-addons-divider-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      overflow: hidden;
+    }
+  }
+  &.basic,
+  &.asterisks,
+  &.dots,
+  &.bars {
+    .responsive-block-editor-addons-divider-content {
+      hr {
+        &::before {
+          content: none;
+        }
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  &.responsive-block-editor-addons-spacer-divider {
+    .rgbl-divider__dots {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .rgbl-divider__dot {
+      flex-shrink: 0;
+    }
+  }
+}
+
+.entry-content .responsive-block-editor-addons-block-spacer {
+  hr {
+    border: none;
+    margin: 0;
+    background: none;
+    .aaabefore,
+    .aaaafter {
+      display: none;
+    }
+  }
+}
+.responsive-block-editor-addons-block-spacer.responsive-block-editor-addons-spacer-divider.asterisks {
+  hr {
+    background-color: transparent !important;
+    height: 0 !important;
+  }
+  .rgbl-divider__dot {
+    background: transparent !important;
+    position: relative;
+    &::before {
+      content: "*";
+      font-family: Georgia, Times, "Times New Roman", serif;
+      line-height: 1;
+      vertical-align: middle;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+.responsive-block-editor-addons-block-spacer.responsive-block-editor-addons-spacer-divider.dots,
+.responsive-block-editor-addons-block-spacer.responsive-block-editor-addons-spacer-divider.asterisks {
+  hr {
+    background-color: transparent !important;
+    height: 0 !important;
+  }
+  .rgbl-divider__dot {
+    border-radius: 100%;
+    background-color: #ddd;
+  }
+}
+
+.entry-content .wp-block-responsive-block-editor-addons-divider hr::after,
+.entry-content .wp-block-responsive-block-editor-addons-divider hr::before {
+  content: none;
+}
+
+.page.page-template-gutenberg-fullwidth
+  .alignfull.wp-block-responsive-block-editor-addons-divider,
+.page.sidebar-position-no:not(.woocommerce)
+  .alignfull.wp-block-responsive-block-editor-addons-divider {
+  max-width: 100vw !important;
+}
