@@ -1,0 +1,67 @@
+.responsive-block-editor-addons-buttons__wrap
+  .responsive-block-editor-addons-button__wrapper
+  .responsive-block-editor-addons-buttons-repeater
+  a.responsive-block-editor-addons-button__link {
+  display: inline-block;
+}
+
+.responsive-block-editor-addons-button__icon {
+  font-size: inherit;
+  display: flex;
+  align-items: center;
+  width: 15px;
+  color: #333;
+
+  svg {
+    fill: currentColor;
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.responsive-block-editor-addons-button__icon-position-after {
+  margin-left: 8px;
+}
+
+.responsive-block-editor-addons-button__icon-position-before {
+  margin-right: 8px;
+}
+
+.responsive-block-editor-addons-buttons__outer-wrap
+  .responsive-block-editor-addons-button__wrapper
+  div {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.responsive-block-editor-addons-button__effect-lift:hover {
+  transform: translateY(-10%);
+}
+
+.responsive-block-editor-addons-button__effect-scale:hover {
+  transform: scale(1.03);
+}
+
+.responsive-block-editor-addons-button__effect-lift-scale:hover {
+  transform: scale(1.03) translateY(-10%);
+}
+
+.responsive-block-editor-addons-button__effect-scale-more:hover {
+  transform: scale(1.13);
+}
+
+.responsive-block-editor-addons-button__effect-lift-scale-more:hover {
+  transform: scale(1.13) translateY(-10%);
+}
+
+.responsive-block-editor-addons-button__effect- {
+}
+
+.responsive-block-editor-addons-button__link_child {
+  text-decoration: none;
+}
+
+.responsive-block-editor-addons-buttons-repeater
+  .responsive-block-editor-addons-button__icon {
+  cursor: auto;
+}

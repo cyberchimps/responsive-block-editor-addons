@@ -1,0 +1,89 @@
+/**
+ * Editor styles for the admin
+ */
+
+.responsive-block-editor-addons-buttons__outer-wrap {
+  .responsive-block-editor-addons-button__wrapper {
+    display: flex;
+    div {
+      display: inline-flex;
+    }
+  }
+}
+
+[data-type="responsive-block-editor-addons/buttons"]
+  .block-editor-inner-blocks
+  > .block-editor-block-list__layout {
+  display: flex;
+}
+
+.responsive-block-editor-addons-buttons-stack-desktop
+  .block-editor-block-list__layout {
+  flex-direction: column;
+}
+
+@media (max-width: 576px) {
+  .responsive-block-editor-addons-buttons-stack-mobile
+    .block-editor-block-list__layout {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1024px) {
+  .responsive-block-editor-addons-buttons-stack-tablet
+    .block-editor-block-list__layout {
+    flex-direction: column;
+  }
+}
+
+.wp-block[data-type="responsive-block-editor-addons/buttons"][data-btn-width="full"] {
+  .block-editor-inner-blocks,
+  .wp-block[data-type="responsive-block-editor-addons/buttons-child"] {
+    width: 100%;
+  }
+  .block-editor-block-list__layout {
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  .responsive-block-editor-addons-buttons-repeater {
+    justify-content: center;
+    .block-editor-rich-text__editable {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}
+
+[data-type="responsive-block-editor-addons/buttons"]
+  .block-editor-inner-blocks
+  > .block-editor-block-list__layout
+  > .wp-block {
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.responsive-block-editor-addons-buttons__outer-wrap {
+  .responsive-block-editor-addons-buttons__wrap.responsive-block-editor-addons-buttons-stack-desktop
+    .block-list-appender {
+    width: 60px;
+  }
+
+  .block-list-appender {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: 10px;
+  }
+}
+
+.wp-block-responsive-block-editor-addons-buttons.left.responsive-block-editor-addons-block-button.responsive-block-editor-addons-buttons__outer-wrap {
+  justify-content: flex-start;
+  display: flex;
+}
+
+.wp-block-responsive-block-editor-addons-buttons.right.responsive-block-editor-addons-block-button.responsive-block-editor-addons-buttons__outer-wrap {
+  justify-content: flex-end;
+  display: flex;
+}

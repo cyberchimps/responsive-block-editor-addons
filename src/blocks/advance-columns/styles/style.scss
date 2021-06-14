@@ -1,0 +1,329 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.responsive-block-editor-addons-advanced-column {
+  position: relative;
+}
+.responsive-block-editor-addons-section-background-image-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+.responsive-block-editor-addons-section-background-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: 0.3s ease;
+}
+.responsive-columns__shape.responsive-columns__shape-top svg {
+  fill: currentColor;
+}
+
+.responsive-columns-wrap {
+  position: relative;
+
+  .responsive-columns__content-width-theme .responsive-columns-inner-wrap {
+    max-width: 100%;
+  }
+  .responsive-columns-inner-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .responsive-columns__overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  .responsive-columns__video-wrap {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+    -webkit-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+  }
+
+  .responsive-columns__video-wrap video {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 1;
+    border: none;
+    display: inline-block;
+    vertical-align: baseline;
+    -o-object-fit: cover;
+    object-fit: cover;
+    background-size: cover;
+  }
+
+  .responsive-column-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .responsive-columns__shape {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    direction: ltr;
+    z-index: 1;
+  }
+
+  .responsive-columns__shape-top {
+    top: -3px;
+  }
+
+  .responsive-columns__shape-bottom {
+    bottom: -3px;
+  }
+
+  .responsive-columns__shape[data-negative="false"].responsive-columns__shape-bottom {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  .responsive-columns__shape[data-negative="true"].responsive-columns__shape-top {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+
+  .responsive-columns__shape.responsive-columns__shape-flip svg {
+    transform: translateX(-50%) rotateY(180deg);
+  }
+
+  .responsive-columns__shape.responsive-columns__shape-above-content {
+    z-index: 9;
+    pointer-events: none;
+  }
+}
+
+.responsive-columns__valign-middle {
+  .responsive-column-wrap {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+}
+
+.responsive-columns__valign-top {
+  .responsive-column-wrap {
+    -webkit-box-align: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.responsive-columns__valign-bottom {
+  .responsive-column-wrap {
+    -webkit-box-align: flex-end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: flex-end;
+    align-items: flex-end;
+  }
+}
+
+.responsive-columns-inner-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.responsive-columns-columns-1 > .responsive-column-wrap {
+  width: 100%;
+}
+.responsive-columns-columns-2 > .responsive-column-wrap {
+  width: 50%;
+}
+.responsive-columns-columns-3 > .responsive-column-wrap {
+  width: 33.33%;
+}
+.responsive-columns-columns-4 > .responsive-column-wrap {
+  width: 25%;
+}
+.responsive-columns-columns-5 > .responsive-column-wrap {
+  width: 20%;
+}
+.responsive-columns-columns-6 > .responsive-column-wrap {
+  width: 16.66%;
+}
+
+.responsive-columns__gap-nogap
+  > .responsive-block-editor-addons-block-columns[data-type="responsive-block-editor-addons/column"]
+  .responsive-column-inner-wrap {
+  padding: 0;
+}
+
+.responsive-columns__gap-narrow .responsive-column-inner-wrap {
+  padding: 5px;
+}
+
+.responsive-columns__gap-extended .responsive-column-inner-wrap {
+  padding: 15px;
+}
+
+.responsive-columns__gap-wide .responsive-column-inner-wrap {
+  padding: 20px;
+}
+
+.responsive-columns__gap-wider .responsive-column-inner-wrap {
+  padding: 30px;
+}
+
+@media (max-width: 976px) {
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-1
+    .responsive-column-wrap,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-1
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-2
+    .responsive-column-wrap,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-2
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-3
+    .responsive-column-wrap,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-3
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-4
+    .responsive-column-wrap,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-4
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-5
+    .responsive-column-wrap,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-5
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-6
+    .responsive-column-wrap,
+  .responsive-columns__stack-tablet
+    .responsive-columns-columns-6
+    .responsive-block-editor-addons-advanced-column-child {
+    width: 100% !important;
+  }
+
+  .responsive-columns__stack-tablet > .responsive-columns-inner-wrap {
+    display: block;
+  }
+
+  .responsive-columns__reverse-tablet .responsive-columns-inner-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 767px) {
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-1
+    .responsive-column-wrap,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-1
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-2
+    .responsive-column-wrap,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-2
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-3
+    .responsive-column-wrap,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-3
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-4
+    .responsive-column-wrap,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-4
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-5
+    .responsive-column-wrap,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-5
+    .responsive-block-editor-addons-advanced-column-child,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-6
+    .responsive-column-wrap,
+  .responsive-columns__stack-mobile
+    .responsive-columns-columns-6
+    .responsive-block-editor-addons-advanced-column-child {
+    width: 100% !important;
+  }
+
+  .responsive-columns__stack-mobile > .responsive-columns-inner-wrap {
+    display: block;
+  }
+
+  .responsive-columns__reverse-mobile .responsive-columns-inner-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .responsive-columns-wrap.responsive-columns__background-image {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 449px) {
+  .responsive-columns-wrap {
+    .responsive-column-wrap.responsive-column__background-image {
+      background-attachment: scroll !important;
+    }
+  }
+  .responsive-block-editor-addons-block-column {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+.responsive-block-editor-addons-advanced-column-child {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 449px) {
+  .responsive-block-editor-addons-advanced-column-child {
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media (max-width: 976px) {
+  .page-template-gutenberg-fullwidth.responsive-site-style-boxed
+    .hentry
+    .post-entry
+    > div.responsive-block-editor-addons-advanced-column-outer-wrap.full {
+    padding: 0 !important;
+  }
+}

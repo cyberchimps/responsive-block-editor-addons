@@ -1,0 +1,18 @@
+.wp-block-responsive-block-editor-addons-accordion {
+  &.responsive-block-editor-addons-accordion-layout-accordion
+    .responsive-block-editor-addons-accordion-item__outer-wrap
+    .responsive-block-editor-addons-accordion-titles-button {
+    cursor: pointer;
+  }
+}
+.responsive-block-editor-addons-accordion-layout-grid.responsive-block-editor-addons-accordion-equal-height
+  .responsive-block-editor-addons-accordion__wrap {
+  .responsive-block-editor-addons-accordion-item__outer-wrap,
+  .responsive-block-editor-addons-accordion-item__wrapper,
+  .responsive-block-editor-addons-accordion-item {
+    height: 100%;
+  }
+}
+.wp-block-cover .responsive-block-editor-addons-accordion-item__outer-wrap {
+  color: #333;
+}

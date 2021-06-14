@@ -1,0 +1,324 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.responsive-block-editor-addons-section-background-image-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  z-index: -1;
+}
+.responsive-block-editor-addons-section-background-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.responsive-columns__shape.responsive-columns__shape-top svg {
+  fill: currentColor;
+}
+.responsive-columns__content-width-theme .responsive-columns-inner-wrap {
+  max-width: 100%;
+}
+.responsive-columns-wrap:before {
+  content: "";
+  position: absolute;
+  border: 1px dashed #03ddff;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.responsive-columns__edit-active.responsive-columns-wrap:before {
+  border-color: #035cff;
+}
+
+.editor-bg-image-control .components-button,
+.editor-bg-video-control .components-button {
+  vertical-align: middle;
+}
+
+.editor-bg-image-control
+  .components-button:last-child:not(.components-circular-option-picker__option),
+.editor-bg-video-control .components-button:last-child {
+  margin-left: 10px;
+}
+
+.responsive-columns-inner-wrap
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.responsive-columns-inner-wrap > .block-editor-inner-blocks,
+.responsive-columns-inner-wrap > .block-editor-block-list__layout {
+  width: 100%;
+}
+
+.responsive-columns-columns-1
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"] {
+  width: 100%;
+}
+.responsive-columns-columns-2
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"] {
+  width: 50%;
+}
+.responsive-columns-columns-3
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"] {
+  width: 33.33%;
+}
+.responsive-columns-columns-4
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"] {
+  width: 25%;
+}
+.responsive-columns-columns-5
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"] {
+  width: 20%;
+}
+.responsive-columns-columns-6
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"] {
+  width: 16.66%;
+}
+
+.block-editor-block-list__layout {
+  margin-left: 0;
+  margin-right: 0;
+
+  .editor-block-list__block {
+    max-width: none !important;
+  }
+}
+
+.block-editor-block-list__block[data-type="responsive-block-editor-addons/columns"] {
+  clear: both;
+}
+
+.block-editor-block-list__block[data-align="center"][data-type="responsive-block-editor-addons/columns"] {
+  text-align: inherit;
+}
+
+.block-editor-block-list__block[data-type="responsive-block-editor-addons/column"]
+  > .editor-block-contextual-toolbar {
+  top: 38px;
+  transform: translateY(-38px);
+  margin-left: -29px;
+  margin-right: -29px;
+}
+
+.block-editor-block-list__block[data-type="responsive-block-editor-addons/column"]
+  > .editor-block-list__insertion-point {
+  top: 0;
+  margin-top: 0;
+}
+
+.block-editor-block-list__block[data-align="full"]
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout {
+  &:first-child {
+    margin-left: 30px;
+  }
+  &:last-child {
+    margin-right: 30px;
+  }
+}
+
+.responsive-columns__valign-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.responsive-columns__valign-middle > .responsive-columns-inner-wrap {
+  width: 100%;
+}
+
+.responsive-columns__valign-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.responsive-columns__valign-bottom > .responsive-columns-inner-wrap {
+  width: 100%;
+}
+
+.block-editor-block-list__layout
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"]
+  > .block-editor-block-list__block-edit {
+  margin-left: 14px;
+  margin-right: 14px;
+
+  > div:not(.editor-block-contextual-toolbar) {
+    width: 100%;
+  }
+  > .editor-block-contextual-toolbar {
+    position: absolute;
+    top: 0;
+    transform: translateY(-39px);
+  }
+}
+
+> .responsive-columns-inner-wrap
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout
+  > [data-type="responsive-block-editor-addons/column"]
+  > .block-editor-block-list__block-edit:before {
+  bottom: 0;
+  top: 0;
+}
+
+.block-editor-block-list__block[data-align="full"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.responsive-block-editor-addons-block-columns {
+  display: block;
+  position: relative;
+
+  > .responsive-columns-inner-wrap {
+    z-index: 10;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    > .block-editor-inner-blocks > .block-editor-block-list__layout {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      margin-left: 0;
+      margin-right: 0;
+      > [data-type="responsive-block-editor-addons/column"] {
+        display: flex;
+        flex-direction: column;
+        max-width: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        .block-editor-block-list__block-edit {
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+}
+
+.responsive-columns__valign-middle > .responsive-columns-inner-wrap {
+  justify-content: center;
+}
+
+.responsive-columns__valign-bottom > .responsive-columns-inner-wrap {
+  justify-content: flex-end;
+}
+
+.responsive-columns__valign-middle
+  > .responsive-columns-inner-wrap
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout
+  > [data-type="responsive-block-editor-addons/column"]
+  > .block-editor-block-list__block-edit {
+  align-items: center;
+  display: flex;
+}
+
+.responsive-columns__valign-bottom
+  > .responsive-columns-inner-wrap
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout
+  > [data-type="responsive-block-editor-addons/column"]
+  > .block-editor-block-list__block-edit {
+  align-items: flex-end;
+  display: flex;
+}
+
+.responsive-block-editor-addons-block-columns {
+  width: 100%;
+}
+
+.block-editor-block-list__layout
+  .block-editor-block-list__block[data-align="full"][data-type="responsive-block-editor-addons/columns"] {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.edit-post-visual-editor
+  .editor-writing-flow
+  .block-editor-block-list__layout
+  .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"]
+  > .block-editor-block-list__block-edit {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.block-editor-block-list__layout
+  .responsive-column-wrap
+  .responsive-column-inner-wrap {
+  z-index: unset;
+}
+
+.block-editor-block-list__layout .responsive-column-wrap {
+  overflow: visible;
+}
+
+@media (min-width: 600px) {
+  .edit-post-visual-editor
+    .block-editor-block-list__block[data-type="responsive-block-editor-addons/column"]
+    .block-editor-block-list__block-edit {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 976px) {
+  .responsive-columns__reverse-tablet
+    > .responsive-columns-inner-wrap
+    > .block-editor-inner-blocks
+    > .block-editor-block-list__layout {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 767px) {
+  .responsive-columns__reverse-mobile
+    > .responsive-columns-inner-wrap
+    > .block-editor-inner-blocks
+    > .block-editor-block-list__layout {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 600px) {
+  > .responsive-columns-inner-wrap
+    > .block-editor-inner-blocks
+    > .block-editor-block-list__layout {
+    flex-direction: column;
+  }
+  > .responsive-columns-inner-wrap
+    > .block-editor-inner-blocks
+    > .block-editor-block-list__layout
+    > [data-type="responsive-block-editor-addons/column"] {
+    flex: none !important;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.block-editor-block-list__block[data-type="responsive-block-editor-addons/columns"]
+  > .block-editor-block-list__block-edit:before {
+  pointer-events: inherit;
+}
+
+.block-editor-block-list__block[data-type="responsive-block-editor-addons/columns"]
+  > .editor-block-list__insertion-point {
+  height: 16px;
+  .editor-block-list__insertion-point-inserter {
+    height: 16px;
+  }
+}
