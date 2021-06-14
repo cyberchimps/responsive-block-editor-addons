@@ -1,0 +1,234 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.responsive-block-editor-addons-section__video-wrap {
+  height: 100%;
+
+  width: 100%;
+
+  top: 0;
+
+  left: 0;
+
+  position: absolute !important;
+
+  overflow: hidden;
+
+  z-index: 0 !important;
+
+  -webkit-transition: opacity 1s;
+
+  -o-transition: opacity 1s;
+
+  transition: opacity 1s;
+
+  video {
+    width: 100%;
+  }
+}
+.responsive-block-editor-addons-block-section {
+  margin-left: auto;
+  margin-right: auto;
+}
+.responsive-block-editor-addons-section-background-image-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1;
+}
+.responsive-block-editor-addons-section-background-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: 0.3s ease;
+}
+.responsive-block-editor-addons-block-section-outer-wrap {
+  position: relative;
+}
+.wp-block[data-type="responsive-block-editor-addons/section"]:before {
+  content: "";
+  position: absolute;
+  border: 1px dashed #03ddff;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.is-selected.wp-block[data-type="responsive-block-editor-addons/section"]:before {
+  border-color: #03ddff;
+}
+
+.editor-bg-image-control .components-button,
+.editor-bg-video-control .components-button {
+  vertical-align: middle;
+}
+
+.editor-bg-image-control
+  .components-button:last-child:not(.components-circular-option-picker__option),
+.editor-bg-video-control .components-button:last-child {
+  margin-left: 10px;
+}
+
+.wp-block[data-type="responsive-block-editor-addons/section"]
+  .block-editor-block-list__block-edit {
+  height: 100%;
+}
+
+.wp-block[data-type="responsive-block-editor-addons/section"]
+  .block-editor-block-list__block-edit {
+  height: 100%;
+}
+
+.responsive-section-inner-wrap .block-editor-block-list__block {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.block-editor-page
+  #wpwrap
+  .responsive-block-editor-addons-block-sections
+  .responsive-section-inner-wrap {
+  width: 100%;
+  padding: 30px;
+}
+
+.edit-post-visual-editor
+  .responsive-section-inner-wrap
+  .block-editor-block-list__block
+  > .editor-block-mover {
+  left: -30px;
+}
+
+@media (max-width: 449px) {
+  .block-editor-page
+    #wpwrap
+    .responsive-columns-inner-wrap
+    .block-editor-block-list__block {
+    background-attachment: scroll !important;
+  }
+}
+
+.responsive-block-editor-addons-typography-option-actions,
+.uag-box-shadow-option-actions {
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+.responsive-block-editor-addons-typography-option-actions button {
+  margin: 0;
+  float: right;
+}
+
+.responsive-block-editor-addons-typography-option-actions
+  .rbea-typography-reset-btn,
+.responsive-block-editor-addons-typography-option-actions
+  .rbea-typography-reset-btn:hover,
+.responsive-block-editor-addons-typography-option-actions
+  .rbea-typography-reset-btn:active:enabled {
+  background: none;
+  border: none;
+  box-shadow: none;
+  float: right;
+}
+
+.responsive-block-editor-addons-typography-option-actions button svg {
+  height: 15px;
+  width: 15px;
+}
+
+.responsive-block-editor-addons-typography-option-actions button svg:hover {
+  fill: #23282d;
+}
+
+.responsive-block-editor-addons-typography-option-actions
+  button.rbea-typography-reset-btn
+  svg {
+  height: 13px;
+  width: 13px;
+  fill: #777;
+}
+.responsive-block-editor-addons-typography-option-actions button svg {
+  height: 15px;
+  width: 15px;
+}
+
+.responsive-block-editor-addons-typography-option-actions button svg:hover {
+  fill: #23282d;
+}
+
+.responsive-size-type-field__common-tabs button.responsive-responsive-tabs svg {
+  height: 15px;
+  width: 15px;
+  fill: #777;
+}
+
+.responsive-size-type-field__common-tabs
+  button.responsive-responsive-tabs
+  svg:hover {
+  fill: #23282d;
+}
+
+.responsive-size-type-field-tabs {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.responsive-size-type-field__common-tabs .components-tab-panel__tabs {
+  margin-bottom: -34px;
+  display: block;
+}
+.responsive-size-type-field-tabs .components-tab-panel__tabs {
+  border-bottom: 0;
+  text-align: right;
+  margin-right: 10px;
+  margin-bottom: -20px;
+  display: block;
+}
+.responsive-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
+.responsive-size-type-field-tabs
+  .components-tab-panel__tabs
+  button.active-tab:focus {
+  color: #23282d;
+  background-color: #e4e5e5;
+  box-shadow: none;
+}
+
+.responsive-size-type-field-tabs .components-tab-panel__tabs button {
+  border: 0;
+  border-bottom: 0;
+  padding: 2px;
+  margin-bottom: 0;
+  outline: 0;
+  width: auto;
+  font-size: 8px;
+  background: transparent;
+  color: #999;
+  display: inline-block;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  margin-right: 3px;
+
+  .dashicons,
+  .dashicons-before:before {
+    height: 15px;
+    width: 15px;
+    font-size: 15px;
+  }
+}
+.responsive-size-type-field-tabs
+  .components-tab-panel__tabsresponsive-size-type-field-tabs
+  .components-tab-panel__tabs
+  button
+  svg {
+  width: 14px;
+  height: 14px;
+}

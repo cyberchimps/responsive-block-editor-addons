@@ -1,0 +1,298 @@
+/**
+ * Frontend styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.responsive-block-editor-addons-testimonial__wrap {
+  position: relative;
+  box-sizing: border-box;
+}
+.responsive-block-editor-addons-testimonial__wrap,
+.responsive-block-editor-addons-testimonial__wrap * {
+  transition: all 0.2s;
+}
+.responsive-block-editor-addons-icon-wrap .responsive-block-editor-addons-icon {
+  display: inline-block;
+}
+.responsive-block-editor-addons-tm__image {
+  position: relative;
+}
+.responsive-block-editor-addons-tm__imgicon-style-circle
+  .responsive-block-editor-addons-tm__image
+  img {
+  border-radius: 100%;
+}
+.responsive-block-editor-addons-tm__imgicon-style-square
+  .responsive-block-editor-addons-tm__image
+  img {
+  border-radius: 0%;
+}
+.responsive-block-editor-addons-tm__image img,
+.slick-slide .responsive-block-editor-addons-tm__image img {
+  display: inline-block;
+  box-sizing: content-box;
+}
+.responsive-block-editor-addons-tm__author-name,
+.responsive-block-editor-addons-tm__company {
+  display: inline-block;
+}
+
+.responsive-block-editor-addons-tm__content {
+  overflow: hidden;
+  text-align: center;
+  word-break: break-word;
+  padding: 15px;
+  border-radius: inherit;
+  position: relative;
+}
+.responsive-block-editor-addons-tm__image-position-left
+  .responsive-block-editor-addons-tm__content,
+.responsive-block-editor-addons-tm__image-position-right
+  .responsive-block-editor-addons-tm__content {
+  display: flex;
+}
+.responsive-block-editor-addons-tm__meta-inner {
+  display: inline-block;
+}
+.responsive-block-editor-addons-tm__image-position-bottom
+  .responsive-block-editor-addons-tm__image-content,
+.responsive-block-editor-addons-tm__image-position-bottom
+  .responsive-block-editor-addons-testimonial-details {
+  display: table-cell;
+  vertical-align: middle;
+}
+.responsive-block-editor-addons-tm__meta {
+  width: 100%;
+  line-height: 1;
+}
+.responsive-block-editor-addons-tm__image-position-bottom
+  .responsive-block-editor-addons-tm__image-content {
+  padding-right: 10px;
+}
+.responsive-block-editor-addons-tm__author-name,
+.responsive-block-editor-addons-tm__company {
+  display: block;
+}
+
+.responsive-block-editor-addons-tm__image-aligned-middle
+  .responsive-block-editor-addons-tm__image-content {
+  align-self: center;
+}
+.responsive-block-editor-addons-tm__desc {
+  margin-bottom: 15px;
+}
+.responsive-block-editor-addons-tm__author-name {
+  margin-bottom: 5px;
+  font-size: 30px;
+  line-height: 1em;
+}
+.responsive-block-editor-addons-tm__company {
+  font-size: 15px;
+  line-height: 1em;
+  color: #888888;
+}
+
+.is-carousel .responsive-block-editor-addons-testomonial__outer-wrap {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.responsive-block-editor-addons-tm__overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: transparent;
+}
+
+.responsive-block-editor-addons-tm__text-wrap {
+  position: relative;
+}
+.responsive-block-editor-addons-tm__items {
+  visibility: hidden;
+}
+.responsive-block-editor-addons-tm__items.slick-initialized {
+  visibility: visible;
+}
+.responsive-block-editor-addons-tm__image-position-top
+  .responsive-block-editor-addons-tm__image-content {
+  display: flex;
+  justify-content: center;
+}
+/* Slick CSS */
+.responsive-block-editor-addons-slick-carousel {
+  &.responsive-block-editor-addons-tm__arrow-outside .slick-next {
+    right: -45px;
+  }
+
+  &.responsive-block-editor-addons-tm__arrow-inside {
+    .slick-prev {
+      left: 25px;
+      z-index: 1;
+    }
+
+    .slick-next {
+      right: 25px;
+    }
+  }
+}
+
+[dir="rtl"] {
+  .responsive-block-editor-addons-tm__arrow-inside {
+    &.responsive-block-editor-addons-slick-carousel {
+      .slick-prev {
+        left: auto;
+        right: 25px;
+      }
+
+      .slick-next {
+        left: 25px;
+        right: auto;
+      }
+    }
+  }
+  .responsive-block-editor-addons-tm__arrow-outside {
+    &.responsive-block-editor-addons-slick-carousel {
+      .slick-next {
+        left: -45px;
+        right: auto;
+      }
+    }
+  }
+}
+@media (max-width: 976px) {
+  .responsive-block-editor-addons-tm-stacked-tablet {
+    &.responsive-block-editor-addons-tm__image-position-bottom {
+      .responsive-block-editor-addons-tm__image-content,
+      .responsive-block-editor-addons-testimonial-details {
+        display: block;
+        vertical-align: middle;
+      }
+    }
+    &.responsive-block-editor-addons-tm__image-position-left,
+    &.responsive-block-editor-addons-tm__image-position-right {
+      .responsive-block-editor-addons-tm__content {
+        display: block;
+      }
+    }
+    &.responsive-block-editor-addons-tm__image-position-right {
+      &.responsive-block-editor-addons-tm-reverse-order-tablet
+        .responsive-block-editor-addons-tm__content {
+        display: inline-flex;
+        flex-direction: column-reverse;
+      }
+    }
+    &.responsive-block-editor-addons-tm__image-aligned-top {
+      .responsive-block-editor-addons-tm__image-content {
+        display: inline-flex;
+        align-self: center;
+      }
+    }
+  }
+
+  .responsive-block-editor-addons-slick-carousel {
+    &.responsive-block-editor-addons-tm__arrow-outside {
+      .slick-prev {
+        left: 15px;
+        z-index: 1;
+      }
+      .slick-next {
+        right: 15px;
+      }
+    }
+  }
+
+  [dir="rtl"] {
+    .responsive-block-editor-addons-slick-carousel {
+      &.responsive-block-editor-addons-tm__arrow-outside {
+        .slick-prev {
+          left: auto;
+          right: 15px;
+        }
+        .slick-next {
+          left: 15px;
+          right: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-block-editor-addons-tm-stacked-mobile {
+    &.responsive-block-editor-addons-tm__image-position-bottom {
+      .responsive-block-editor-addons-tm__image-content,
+      .responsive-block-editor-addons-testimonial-details {
+        display: block;
+        vertical-align: middle;
+      }
+    }
+    &.responsive-block-editor-addons-tm__image-position-left,
+    &.responsive-block-editor-addons-tm__image-position-right {
+      .responsive-block-editor-addons-tm__content {
+        display: block;
+      }
+    }
+    &.responsive-block-editor-addons-tm__image-position-right {
+      &.responsive-block-editor-addons-tm-reverse-order-mobile
+        .responsive-block-editor-addons-tm__content {
+        display: inline-flex;
+        flex-direction: column-reverse;
+      }
+    }
+    &.responsive-block-editor-addons-tm__image-aligned-top {
+      .responsive-block-editor-addons-tm__image-content {
+        display: inline-flex;
+        align-self: center;
+      }
+    }
+  }
+
+  .responsive-testimonial-slick-carousel .slick-arrow {
+    display: none !important;
+  }
+}
+.responsive-block-editor-addons-tm__content.skin-type-bubble
+  .responsive-block-editor-addons-tm__desc {
+  padding: 10px;
+}
+.responsive-block-editor-addons-tm__content.skin-type-bubble
+  .responsive-block-editor-addons-testinomial-text-wrap {
+  position: relative;
+  background-color: #e4e4e4;
+}
+
+.responsive-block-editor-addons-tm__content.skin-type-bubble
+  .responsive-block-editor-addons-testinomial-text-wrap:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #e4e4e4;
+  border-bottom: 10px solid transparent;
+  right: 50%;
+  bottom: -20px;
+}
+.responsive-block-editor-addons-tm__content.skin-type-bubble.left-aligned
+  .responsive-block-editor-addons-testinomial-text-wrap:before {
+  left: 30px;
+}
+.responsive-block-editor-addons-tm__content.skin-type-bubble.right-aligned
+  .responsive-block-editor-addons-testinomial-text-wrap:before {
+  right: 30px;
+}
+.responsive-block-editor-addons-tm__content.skin-type-bubble.center-aligned
+  .responsive-block-editor-addons-testinomial-text-wrap:before {
+  right: 49%;
+}
+.responsive-testimonial-slick-carousel .slick-arrow {
+  background: transparent;
+}
+
+.responsive-block-editor-addons-testomonial__outer-wrap .slick-track {
+  max-width: initial !important;
+}
