@@ -1,0 +1,17 @@
+@include break-small() {
+  // For desktop.
+  @for $i from 1 through 10 {
+    &.has-margin-bottom-#{ $i * 5 } {
+      margin-bottom: #{$i * 5}px !important;
+    }
+  }
+}
+
+@include break-small-max() {
+  // For desktop.
+  @for $i from 1 through 10 {
+    &.has-margin-bottom-mobile-#{ $i * 5 } {
+      margin-bottom: #{$i * 5}px !important;
+    }
+  }
+}
