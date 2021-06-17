@@ -1,10 +1,10 @@
 <p align="center">
 <a href="https://wordpress.org/plugins/responsive-block-editor-addons/"><img src="https://img.shields.io/wordpress/plugin/v/responsive-block-editor-addons" alt="Latest Stable Version"></a>
 <img src="https://img.shields.io/wordpress/plugin/dt/responsive-block-editor-addons" alt="WordPress.org downloads">
-<a href="https://github.com/keyurk9/ResponsiveBlockEditorAddons/actions/workflows/pr-code-coverage.yml"><img src="https://github.com/keyurk9/ResponsiveBlockEditorAddons/actions/workflows/pr-code-coverage.yml/badge.svg" alt="Github Actions"></a>
-<a href="https://codecov.io/gh/keyurk9/ResponsiveBlockEditorAddons">
-	<img src="https://codecov.io/gh/keyurk9/ResponsiveBlockEditorAddons/branch/trunk/graph/badge.svg?token=HTFSZGG4DS"/>
-</a>    
+<a href="https://github.com/cyberchimps/ResponsiveBlockEditorAddons/actions/workflows/pr-code-coverage.yml"><img src="https://github.com/cyberchimps/ResponsiveBlockEditorAddons/actions/workflows/pr-code-coverage.yml/badge.svg" alt="Github Actions"></a>
+<a href="https://codecov.io/gh/cyberchimps/ResponsiveBlockEditorAddons">
+  <img src="https://codecov.io/gh/cyberchimps/ResponsiveBlockEditorAddons/branch/trunk/graph/badge.svg?token=MJXCYYFO40"/>
+</a>   
 </p>
 
 # Responsive Block Editor Addons
