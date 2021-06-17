@@ -1,5 +1,5 @@
 === Responsive Block Editor Addons ===
-Contributors: cyberchimps
+Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: blocks, gutenberg, gutenberg blocks, page builder, WordPress blocks, blocks, editor, block
 Requires at least: 5.0
