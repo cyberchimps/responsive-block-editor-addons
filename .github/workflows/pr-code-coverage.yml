@@ -55,5 +55,4 @@ jobs:
           exit 0
       - name: Send code coverage to Codecov.
         run: |
-	  export CODECOV_TOKEN= "2c81bcb5-5d5d-4b82-a0d0-56bdfad8422d"
-          bash <(curl -s https://codecov.io/bash)
+          bash <(curl -s https://codecov.io/bash) -t 2c81bcb5-5d5d-4b82-a0d0-56bdfad8422d
