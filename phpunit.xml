@@ -12,4 +12,14 @@
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 		</testsuite>
 	</testsuites>
+	<coverage>
+        <include>
+            <directory suffix=".php">classes</directory>
+            <directory suffix=".php">includes</directory>
+            <directory suffix=".php">admin</directory>
+	    <directory suffix=".php">dist</directory>
+	    <directory suffix=".php">src/blocks</directory>
+	    <file>src/utils/font.php</file>
+        </include>
+    </coverage>
 </phpunit>
