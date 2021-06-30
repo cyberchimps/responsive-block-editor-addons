@@ -89,6 +89,26 @@ export default class Inspector extends Component {
       },
     ];
 
+    // Text Decoration Options
+    const textDecorationOptions = [
+      {
+        value: "none",
+        label: __("Default", "responsive-block-editor-addons"),
+      },
+      {
+        value: "underline",
+        label: __("Underline", "responsive-block-editor-addons"),
+      },
+      {
+        value: "overline",
+        label: __("Overline", "responsive-block-editor-addons"),
+      },
+      {
+        value: "line-through",
+        label: __("Line Through", "responsive-block-editor-addons"),
+      },
+    ];
+
     // Setup the attributes
     const {
       attributes: {
@@ -131,6 +151,8 @@ export default class Inspector extends Component {
         headSpacingMobile,
         subheadSpacingMobile,
         separatorSpacingMobile,
+        textDecoration,
+        textDecorationSubHeading,
       },
       setAttributes,
     } = this.props;
@@ -398,6 +420,16 @@ export default class Inspector extends Component {
                 })
               }
             />
+            <SelectControl
+              label={__("Decoration", "responsive-block-editor-addons")}
+              options={textDecorationOptions}
+              value={textDecoration}
+              onChange={(value) =>
+                this.props.setAttributes({
+                  textDecoration: value,
+                })
+              }
+            />
             <RangeControl
               label={__("Line Height", "responsive-block-editor-addons")}
               value={headingTitleLineHeight}
@@ -546,6 +578,16 @@ export default class Inspector extends Component {
               onChange={(value) =>
                 this.props.setAttributes({
                   subHeadingTitleFontWeight: value,
+                })
+              }
+            />
+            <SelectControl
+              label={__("Decoration", "responsive-block-editor-addons")}
+              options={textDecorationOptions}
+              value={textDecorationSubHeading}
+              onChange={(value) =>
+                this.props.setAttributes({
+                  textDecorationSubHeading: value,
                 })
               }
             />

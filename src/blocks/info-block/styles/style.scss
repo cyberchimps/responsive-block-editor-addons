@@ -311,7 +311,7 @@ align-self: flex-start;
   line-height: 0em;
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .responsive-block-editor-addons-ifb-cta-button {
@@ -636,4 +636,12 @@ a.responsive-block-editor-addons-infbox__link-to-all {
   height: 100%;
   width: 100%;
   transition: 0.3s ease;
+}
+
+.responsive-block-editor-addons-infobox-cta-link-complete-box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }

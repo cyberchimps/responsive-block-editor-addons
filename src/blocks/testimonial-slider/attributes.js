@@ -48,6 +48,14 @@ const attributes = {
     type: "string",
     default: "center",
   },
+  headingAlignMobile: {
+    type: "string",
+    default: "center",
+  },
+  headingAlignTablet: {
+    type: "string",
+    default: "center",
+  },
   descColor: {
     type: "string",
     default: "#333",

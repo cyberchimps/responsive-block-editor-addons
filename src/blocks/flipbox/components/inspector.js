@@ -187,8 +187,16 @@ export default class Inspector extends Component {
         showBackButton,
         backgroundType,
         backgroundImage,
+        backgroundPosition,
+        backgroundAttachment,
+        backgroundRepeat,
+        backgroundSize,
         colorOpacity,
         backBackgroundImage,
+        backBackgroundPosition,
+        backBackgroundAttachment,
+        backBackgroundRepeat,
+        backBackgroundSize,
         backColorOpacity,
         buttonTextColor,
         buttonColor,
@@ -212,6 +220,8 @@ export default class Inspector extends Component {
         buttonHbackgroundColor2,
         buttonopacity,
         buttonHopacity,
+        flipBoxGutterGap,
+        stack
       },
       setAttributes,
     } = this.props;
@@ -479,6 +489,39 @@ export default class Inspector extends Component {
             min={1}
             max={4}
             step={1}
+          />
+          <SelectControl
+            label={__("Stack on", "responsive-block-editor-addons")}
+            value={stack}
+            options={[
+              {
+                value: "none",
+                label: __("None", "responsive-block-editor-addons"),
+              },
+              {
+                value: "tablet",
+                label: __("Tablet", "responsive-block-editor-addons"),
+              },
+              {
+                value: "mobile",
+                label: __("Mobile", "responsive-block-editor-addons"),
+              },
+            ]}
+            onChange={(value) => setAttributes({ stack: value })}
+            help={__(
+              "Note: Choose on what breakpoint the flipboxes will stack.",
+              "responsive-block-editor-addons"
+            )}
+          />
+          <RangeControl
+            label={__("Gutter Gap", "responsive-block-editor-addons")}
+            value={flipBoxGutterGap}
+            onChange={(value) =>
+              setAttributes({ flipBoxGutterGap: value !== undefined ? value : 10 })
+            }
+            min={0}
+            max={100}
+            allowReset
           />
           <RangeControl
             label={__("Height", "responsive-block-editor-addons")}
@@ -1141,6 +1184,64 @@ export default class Inspector extends Component {
                 max={100}
                 allowReset
               />
+              {backgroundImage && (
+                <Fragment>
+                  <SelectControl
+                    label={__("Image Position")}
+                    value={backgroundPosition}
+                    onChange={(value) =>
+                      setAttributes({ backgroundPosition: value })
+                    }
+                    options={[
+                      { value: "top left", label: __("Top Left") },
+                      { value: "top center", label: __("Top Center") },
+                      { value: "top right", label: __("Top Right") },
+                      { value: "center left", label: __("Center Left") },
+                      { value: "center center", label: __("Center Center") },
+                      { value: "center right", label: __("Center Right") },
+                      { value: "bottom left", label: __("Bottom Left") },
+                      { value: "bottom center", label: __("Bottom Center") },
+                      { value: "bottom right", label: __("Bottom Right") },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Attachment")}
+                    value={backgroundAttachment}
+                    onChange={(value) =>
+                      setAttributes({ backgroundAttachment: value })
+                    }
+                    options={[
+                      { value: "fixed", label: __("Fixed") },
+                      { value: "scroll", label: __("Scroll") },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Repeat")}
+                    value={backgroundRepeat}
+                    onChange={(value) =>
+                      setAttributes({ backgroundRepeat: value })
+                    }
+                    options={[
+                      { value: "no-repeat", label: __("No Repeat") },
+                      { value: "repeat", label: __("Repeat") },
+                      { value: "repeat-x", label: __("Repeat-x") },
+                      { value: "repeat-y", label: __("Repeat-y") },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Size")}
+                    value={backgroundSize}
+                    onChange={(value) =>
+                      setAttributes({ backgroundSize: value })
+                    }
+                    options={[
+                      { value: "auto", label: __("Auto") },
+                      { value: "cover", label: __("Cover") },
+                      { value: "contain", label: __("Contain") },
+                    ]}
+                  />
+                </Fragment>
+              )}
             </Fragment>
           )}
           {isBackSelected && (
@@ -1194,6 +1295,64 @@ export default class Inspector extends Component {
                 max={100}
                 allowReset
               />
+              {backBackgroundImage && (
+                <Fragment>
+                  <SelectControl
+                    label={__("Image Position")}
+                    value={backBackgroundPosition}
+                    onChange={(value) =>
+                      setAttributes({ backBackgroundPosition: value })
+                    }
+                    options={[
+                      { value: "top left", label: __("Top Left") },
+                      { value: "top center", label: __("Top Center") },
+                      { value: "top right", label: __("Top Right") },
+                      { value: "center left", label: __("Center Left") },
+                      { value: "center center", label: __("Center Center") },
+                      { value: "center right", label: __("Center Right") },
+                      { value: "bottom left", label: __("Bottom Left") },
+                      { value: "bottom center", label: __("Bottom Center") },
+                      { value: "bottom right", label: __("Bottom Right") },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Attachment")}
+                    value={backBackgroundAttachment}
+                    onChange={(value) =>
+                      setAttributes({ backBackgroundAttachment: value })
+                    }
+                    options={[
+                      { value: "fixed", label: __("Fixed") },
+                      { value: "scroll", label: __("Scroll") },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Repeat")}
+                    value={backBackgroundRepeat}
+                    onChange={(value) =>
+                      setAttributes({ backBackgroundRepeat: value })
+                    }
+                    options={[
+                      { value: "no-repeat", label: __("No Repeat") },
+                      { value: "repeat", label: __("Repeat") },
+                      { value: "repeat-x", label: __("Repeat-x") },
+                      { value: "repeat-y", label: __("Repeat-y") },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Size")}
+                    value={backBackgroundSize}
+                    onChange={(value) =>
+                      setAttributes({ backBackgroundSize: value })
+                    }
+                    options={[
+                      { value: "auto", label: __("Auto") },
+                      { value: "cover", label: __("Cover") },
+                      { value: "contain", label: __("Contain") },
+                    ]}
+                  />
+                </Fragment>
+              )}
             </Fragment>
           )}
         </PanelBody>

@@ -22,9 +22,17 @@ function EditorStyles(props) {
     quoteVposition,
     quoteOpacity,
     leftPadding,
+    leftPaddingMobile,
+    leftPaddingTablet,
     rightPadding,
+    rightPaddingMobile,
+    rightPaddingTablet,
     topPadding,
+    topPaddingMobile,
+    topPaddingTablet,
     bottomPadding,
+    bottomPaddingMobile,
+    bottomPaddingTablet,
     backgroundColor,
     backgroundColor1,
     backgroundColor2,
@@ -43,6 +51,19 @@ function EditorStyles(props) {
     borderWidth,
     blockBorderRadius,
     borderColor,
+    textSpacingTop,
+    textSpacingTopMobile,
+    textSpacingTopTablet,
+    textSpacingBottom,
+    textSpacingBottomMobile,
+    textSpacingBottomTablet,
+    textSpacingLeft,
+    textSpacingLeftMobile,
+    textSpacingLeftTablet,
+    textSpacingRight,
+    textSpacingRightMobile,
+    textSpacingRightTablet,
+    
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -118,11 +139,43 @@ function EditorStyles(props) {
       "font-weight": quoteFontWeight,
       "line-height": quoteLineHeight,
     },
+    " .responsive-block-editor-addons-block-blockquote-item": {
+      "padding-left": generateCSSUnit(textSpacingLeft, "px"),
+      "padding-right": generateCSSUnit(textSpacingRight, "px"),
+      "padding-top": generateCSSUnit(textSpacingTop, "px"),
+      "padding-bottom": generateCSSUnit(textSpacingBottom, "px"),
+    },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    "": {
+      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-blockquote-item": {
+      "padding-left": generateCSSUnit(textSpacingLeftMobile, "px"),
+      "padding-right": generateCSSUnit(textSpacingRightMobile, "px"),
+      "padding-top": generateCSSUnit(textSpacingTopMobile, "px"),
+      "padding-bottom": generateCSSUnit(textSpacingBottomMobile, "px"),
+    },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    "": {
+      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-blockquote-item": {
+      "padding-left": generateCSSUnit(textSpacingLeftTablet, "px"),
+      "padding-right": generateCSSUnit(textSpacingRightTablet, "px"),
+      "padding-top": generateCSSUnit(textSpacingTopTablet, "px"),
+      "padding-bottom": generateCSSUnit(textSpacingBottomTablet, "px"),
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-blockquote.block-${props.clientId}`;

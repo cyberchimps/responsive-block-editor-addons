@@ -51,6 +51,7 @@ const save = ({ attributes, className }) => {
   let imgopacity = iconBackgroundOpacity / 100;
 
   const innerClasses = classnames(
+    `align${align}`,
     "block-id-" + counterId,
     "is-cropped",
     ...GalleryClasses(attributes),

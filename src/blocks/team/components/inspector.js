@@ -20,6 +20,8 @@ const {
   BaseControl,
   Button,
   ToggleControl,
+  TabPanel,
+  Dashicon
 } = wp.components;
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import fontOptions from "../../../utils/googlefonts";
@@ -135,37 +137,6 @@ export default class Inspector extends Component {
         tooltip: __("Huge", "responsive-block-editor-addons"),
       },
     ];
-    const iconSizeOptions = [
-      {
-        value: "1.5em",
-        label: __("Normal", "responsive-block-editor-addons"),
-        shortName: __("Normal", "responsive-block-editor-addons"),
-      },
-      {
-        value: "1em",
-        /* translators: abbreviation for small size */
-        label: __("Small", "responsive-block-editor-addons"),
-        tooltip: __("Small", "responsive-block-editor-addons"),
-      },
-      {
-        value: "2em",
-        /* translators: abbreviation for medium size */
-        label: __("Medium", "responsive-block-editor-addons"),
-        tooltip: __("Medium", "responsive-block-editor-addons"),
-      },
-      {
-        value: "3em",
-        /* translators: abbreviation for large size */
-        label: __("Large", "responsive-block-editor-addons"),
-        tooltip: __("Large", "responsive-block-editor-addons"),
-      },
-      {
-        value: "0.8em",
-        /* translators: abbreviation for largest size */
-        label: __("Tiny", "responsive-block-editor-addons"),
-        tooltip: __("Tiny", "responsive-block-editor-addons"),
-      },
-    ];
 
     // Setup the attributes
     const {
@@ -228,11 +199,14 @@ export default class Inspector extends Component {
         pinterest,
         iconSize,
         imageWidth,
+        imageWidthMobile,
+        imageWidthTablet,
         showImage,
         showName,
         showDesignation,
         showDescription,
         showSocialIcons,
+        stack
       },
       setAttributes,
     } = this.props;
@@ -314,6 +288,29 @@ export default class Inspector extends Component {
             min={1}
             max={4}
             step={1}
+          />
+          <SelectControl
+            label={__("Stack on", "responsive-block-editor-addons")}
+            value={stack}
+            options={[
+              {
+                value: "none",
+                label: __("None", "responsive-block-editor-addons"),
+              },
+              {
+                value: "tablet",
+                label: __("Tablet", "responsive-block-editor-addons"),
+              },
+              {
+                value: "mobile",
+                label: __("Mobile", "responsive-block-editor-addons"),
+              },
+            ]}
+            onChange={(value) => setAttributes({ stack: value })}
+            help={__(
+              "Note: Choose on what breakpoint the team cards will stack.",
+              "responsive-block-editor-addons"
+            )}
           />
           {count > 1 && (
             <SelectControl
@@ -668,18 +665,98 @@ export default class Inspector extends Component {
               { value: "large", label: __("Large") },
             ]}
           />
-          <RangeControl
-            label={__("Image Width", "responsive-block-editor-addons")}
-            value={imageWidth}
-            onChange={(value) =>
-              this.props.setAttributes({
-                imageWidth: value,
-              })
-            }
-            min={0}
-            max={500}
-            step={10}
-          />
+          <TabPanel
+                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className:
+                      " responsive-tablet-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  let tabout;
+
+                  if ("mobile" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__(
+                            "Width (px)",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={imageWidthMobile}
+                          onChange={(value) =>
+                            setAttributes({
+                              imageWidthMobile: value,
+                            })
+                          }
+                          min={0}
+                          max={500}
+                          beforeIcon=""
+                        />
+                      </Fragment>
+                    );
+                  } else if ("tablet" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__(
+                            "Width (px)",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={imageWidthTablet}
+                          onChange={(value) =>
+                            setAttributes({
+                              imageWidthTablet: value,
+                            })
+                          }
+                          min={0}
+                          max={500}
+                          beforeIcon=""
+                        />
+                      </Fragment>
+                    );
+                  } else {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__(
+                            "Width (px)",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={imageWidth}
+                          onChange={(value) =>
+                            setAttributes({
+                              imageWidth: value,
+                            })
+                          }
+                          min={0}
+                          max={500}
+                          beforeIcon=""
+                        />
+                      </Fragment>
+                    );
+                  }
+
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
         </PanelBody>
         <PanelBody
           title={__("Typography", "responsive-block-editor-addons")}
@@ -1015,11 +1092,17 @@ export default class Inspector extends Component {
               },
             ]}
           ></PanelColorSettings>
-          <SelectControl
+          <RangeControl
             label={__("Icon Size", "responsive-block-editor-addons")}
             value={iconSize}
-            options={iconSizeOptions}
-            onChange={(newIconSize) => setAttributes({ iconSize: newIconSize })}
+            onChange={(value) =>
+              this.props.setAttributes({
+                iconSize: value,
+              })
+            }
+            min={0}
+            max={100}
+            step={1}
           />
         </PanelBody>
         <PanelColorSettings

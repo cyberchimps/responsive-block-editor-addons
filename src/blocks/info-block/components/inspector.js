@@ -50,6 +50,7 @@ export default class Inspector extends Component {
     super(...arguments);
     this.getIfbIcon = this.getIfbIcon.bind(this);
     this.toggleTarget = this.toggleTarget.bind(this);
+    this.toggleBoxTarget = this.toggleBoxTarget.bind(this);
     this.toggleResponsive = this.toggleResponsive.bind(this);
     this.getCtaicon = this.getCtaicon.bind(this);
     this.onSelectImage = this.onSelectImage.bind(this);
@@ -100,6 +101,13 @@ export default class Inspector extends Component {
     const { setAttributes } = this.props;
 
     setAttributes({ resctaTarget: !resctaTarget });
+  }
+
+  toggleBoxTarget() {
+    const {resBoxTarget} = this.props.attributes;
+    const {setAttributes} = this.props;
+
+    setAttributes({resBoxTarget: !resBoxTarget});
   }
 
   /**
@@ -174,6 +182,14 @@ export default class Inspector extends Component {
         iconRightMargin,
         iconTopMargin,
         iconBottomMargin,
+        iconLeftMarginMobile,
+        iconRightMarginMobile,
+        iconTopMarginMobile,
+        iconBottomMarginMobile,
+        iconLeftMarginTablet,
+        iconRightMarginTablet,
+        iconTopMarginTablet,
+        iconBottomMarginTablet,
         iconImage,
         imageSize,
         imageWidth,
@@ -223,6 +239,15 @@ export default class Inspector extends Component {
         resImageBorderStyle,
         alignment,
         imageopacity,
+        ctaTextFontFamily,
+        ctaTextFontSize,
+        ctaTextFontSizeMobile,
+        ctaTextFontSizeTablet,
+        ctaTextFontWeight,
+        ctaTextLineHeight,
+        ctaBottomMargin,
+        resBoxLink,
+        resBoxTarget,
       },
       setAttributes,
     } = this.props;
@@ -1079,7 +1104,7 @@ export default class Inspector extends Component {
               })
             }
             min={0}
-            max={50}
+            max={100}
             step={1}
           />
           <RangeControl
@@ -1089,7 +1114,7 @@ export default class Inspector extends Component {
               setAttributes({ resprefixSpace: value !== undefined ? value : 5 })
             }
             min={0}
-            max={50}
+            max={100}
             allowReset
           />
           <RangeControl
@@ -1099,7 +1124,7 @@ export default class Inspector extends Component {
               setAttributes({ resheadSpace: value !== undefined ? value : 10 })
             }
             min={0}
-            max={50}
+            max={100}
             allowReset
           />
           <RangeControl
@@ -1112,7 +1137,7 @@ export default class Inspector extends Component {
               setAttributes({ sepSpace: value !== undefined ? value : 10 })
             }
             min={0}
-            max={50}
+            max={100}
             allowReset
           />
           <RangeControl
@@ -1127,39 +1152,159 @@ export default class Inspector extends Component {
               })
             }
             min={0}
-            max={50}
+            max={100}
             allowReset
           />
+          {resctaType !== "none" && (
+          <RangeControl
+            label={__(
+              "Call To Action Bottom Margin",
+              "responsive-block-editor-addons"
+            )}
+            value={ctaBottomMargin}
+            onChange={(value) =>
+              setAttributes({
+                ctaBottomMargin: value !== undefined ? value : 10,
+              })
+            }
+            min={0}
+            max={100}
+            allowReset
+          />
+          )}
           <hr className="responsive-block-editor-addons-editor__separator" />
           <h3>{__("Image/Icon Margin", "responsive-block-editor-addons")}</h3>
-          <RangeControl
-            label={__("Top Margin", "responsive-block-editor-addons")}
-            value={iconTopMargin}
-            onChange={(value) => setAttributes({ iconTopMargin: value })}
-            min={0}
-            max={50}
-          />
-          <RangeControl
-            label={__("Bottom Margin", "responsive-block-editor-addons")}
-            value={iconBottomMargin}
-            onChange={(value) => setAttributes({ iconBottomMargin: value })}
-            min={0}
-            max={50}
-          />
-          <RangeControl
-            label={__("Left Margin", "responsive-block-editor-addons")}
-            value={iconLeftMargin}
-            onChange={(value) => setAttributes({ iconLeftMargin: value })}
-            min={0}
-            max={50}
-          />
-          <RangeControl
-            label={__("Right Margin", "responsive-block-editor-addons")}
-            value={iconRightMargin}
-            onChange={(value) => setAttributes({ iconRightMargin: value })}
-            min={0}
-            max={50}
-          />
+          <TabPanel
+                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className:
+                      " responsive-tablet-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  let tabout;
+
+                  if ("mobile" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__("Top Margin Mobile", "responsive-block-editor-addons")}
+                          value={iconTopMarginMobile}
+                          onChange={(value) => setAttributes({ iconTopMarginMobile: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Bottom Margin Mobile", "responsive-block-editor-addons")}
+                          value={iconBottomMarginMobile}
+                          onChange={(value) => setAttributes({ iconBottomMarginMobile: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Left Margin Mobile", "responsive-block-editor-addons")}
+                          value={iconLeftMarginMobile}
+                          onChange={(value) => setAttributes({ iconLeftMarginMobile: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Right Margin Mobile", "responsive-block-editor-addons")}
+                          value={iconRightMarginMobile}
+                          onChange={(value) => setAttributes({ iconRightMarginMobile: value })}
+                          min={0}
+                          max={100}
+                        />
+                      </Fragment>
+                    );
+                  } else if ("tablet" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__("Top Margin Tablet", "responsive-block-editor-addons")}
+                          value={iconTopMarginTablet}
+                          onChange={(value) => setAttributes({ iconTopMarginTablet: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Bottom Margin Tablet", "responsive-block-editor-addons")}
+                          value={iconBottomMarginTablet}
+                          onChange={(value) => setAttributes({ iconBottomMarginTablet: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Left Margin Tablet", "responsive-block-editor-addons")}
+                          value={iconLeftMarginTablet}
+                          onChange={(value) => setAttributes({ iconLeftMarginTablet: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Right Margin Tablet", "responsive-block-editor-addons")}
+                          value={iconRightMarginTablet}
+                          onChange={(value) => setAttributes({ iconRightMarginTablet: value })}
+                          min={0}
+                          max={100}
+                        />
+                      </Fragment>
+                    );
+                  } else {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__("Top Margin", "responsive-block-editor-addons")}
+                          value={iconTopMargin}
+                          onChange={(value) => setAttributes({ iconTopMargin: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Bottom Margin", "responsive-block-editor-addons")}
+                          value={iconBottomMargin}
+                          onChange={(value) => setAttributes({ iconBottomMargin: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Left Margin", "responsive-block-editor-addons")}
+                          value={iconLeftMargin}
+                          onChange={(value) => setAttributes({ iconLeftMargin: value })}
+                          min={0}
+                          max={100}
+                        />
+                        <RangeControl
+                          label={__("Right Margin", "responsive-block-editor-addons")}
+                          value={iconRightMargin}
+                          onChange={(value) => setAttributes({ iconRightMargin: value })}
+                          min={0}
+                          max={100}
+                        />
+                      </Fragment>
+                    );
+                  }
+
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
         </PanelBody>
 
         <PanelBody
@@ -1437,6 +1582,10 @@ export default class Inspector extends Component {
                 value: "button",
                 label: __("Button", "responsive-block-editor-addons"),
               },
+              {
+                value: "complete_box",
+                label: __("Complete Box", "responsive-block-editor-addons"),
+              },
             ]}
           />
           {(resctaType === "text" || resctaType === "button") && (
@@ -1448,7 +1597,7 @@ export default class Inspector extends Component {
               />
             </Fragment>
           )}
-          {resctaType !== "none" && (
+          {resctaType !== "none" && resctaType !== "complete_box"  && (
             <Fragment>
               <TextControl
                 label={__("Link", "responsive-block-editor-addons")}
@@ -1464,8 +1613,24 @@ export default class Inspector extends Component {
                 onChange={this.toggleTarget}
               />
             </Fragment>
-          )}
-
+          )}   
+          {resctaType === "complete_box" && (
+            <Fragment>
+              <TextControl
+                label={__("Link", "responsive-block-editor-addons")}
+                value={resBoxLink}
+                onChange={(value) => setAttributes({ resBoxLink: value })}
+              />
+              <ToggleControl
+                label={__(
+                  "Open in new Window",
+                  "responsive-block-editor-addons"
+                )}
+                checked={resBoxTarget}
+                onChange={this.toggleBoxTarget}
+              />
+            </Fragment>
+          )}          
           {resctaType == "button" && (
             <Fragment>
               <h2>{__("Button Padding", "responsive-block-editor-addons")}</h2>
@@ -1695,7 +1860,136 @@ export default class Inspector extends Component {
             </Fragment>
           )}
         </PanelBody>
+        {resctaType !== "none" && (
+          <PanelBody
+          title={__("Call To Action Typography", "responsive-block-editor-addons")}
+          initialOpen={false}
+          >
+            <SelectControl
+              label={__("Font Family", "responsive-block-editor-addons")}
+              options={fontOptions}
+              value={ctaTextFontFamily}
+              onChange={(value) => {
+                setAttributes({
+                  ctaTextFontFamily: value,
+                }),
+                  loadGoogleFont(value);
+              }}
+            />
+            <TabPanel
+              className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    " responsive-desktop-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className:
+                    " responsive-tablet-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className:
+                    " responsive-mobile-tab  responsive-responsive-tabs",
+                },
+              ]}
+            >
+              {(tab) => {
+                let tabout;
 
+                if ("mobile" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__(
+                          "Font Size",
+                          "responsive-block-editor-addons"
+                        )}
+                        min={0}
+                        max={500}
+                        value={ctaTextFontSizeMobile}
+                        onChange={(value) =>
+                          setAttributes({
+                            ctaTextFontSizeMobile: value,
+                          })
+                        }
+                      />
+                    </Fragment>
+                  );
+                } else if ("tablet" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__(
+                          "Font Size",
+                          "responsive-block-editor-addons"
+                        )}
+                        min={0}
+                        max={500}
+                        value={ctaTextFontSizeTablet}
+                        onChange={(value) =>
+                          setAttributes({
+                            ctaTextFontSizeTablet: value,
+                          })
+                        }
+                      />
+                    </Fragment>
+                  );
+                } else {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__(
+                          "Font Size",
+                          "responsive-block-editor-addons"
+                        )}
+                        min={0}
+                        max={500}
+                        value={ctaTextFontSize}
+                        onChange={(value) =>
+                          setAttributes({
+                            ctaTextFontSize: value,
+                          })
+                        }
+                      />
+                    </Fragment>
+                  );
+                }
+
+                return <div>{tabout}</div>;
+              }}
+            </TabPanel>
+
+            <SelectControl
+              label={__("Font Weight", "responsive-block-editor-addons")}
+              options={fontWeightOptions}
+              value={ctaTextFontWeight}
+              onChange={(value) =>
+                this.props.setAttributes({
+                  ctaTextFontWeight: value,
+                })
+              }
+            />
+            <RangeControl
+              label={__("Line Height", "responsive-block-editor-addons")}
+              value={ctaTextLineHeight}
+              onChange={(value) =>
+                this.props.setAttributes({
+                  ctaTextLineHeight: value,
+                })
+              }
+              min={0}
+              max={100}
+              step={1}
+            />
+          </PanelBody>
+        )}
         <PanelBody title={__("Content")} initialOpen={false}>
           <ToggleControl
             label={__("Enable Prefix", "responsive-block-editor-addons")}

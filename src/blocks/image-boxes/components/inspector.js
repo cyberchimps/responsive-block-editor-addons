@@ -151,7 +151,10 @@ export default class Inspector extends Component {
         itemHoverBackgroundColor,
         titleHeadingTag,
         contentAlign,
-        boxRadius,
+        blockBorderRadius,
+        blockBorderColor,
+        blockBorderStyle,
+        blockBorderWidth,
         hasArrow,
         opacity,
         boxShadowColor,
@@ -198,9 +201,44 @@ export default class Inspector extends Component {
         backgroundImageTwo,
         backgroundImageThree,
         backgroundImageFour,
+        gutter,
+        showDescription,
+        showTitle,
       },
       setAttributes,
     } = this.props;
+
+    const gutterOptions = [
+      {
+        value: "no",
+        label: __("None", "responsive-block-editor-addons"),
+        shortName: __("None", "responsive-block-editor-addons"),
+      },
+      {
+        value: "small",
+        /* translators: abbreviation for small size */
+        label: __("S", "responsive-block-editor-addons"),
+        tooltip: __("Small", "responsive-block-editor-addons"),
+      },
+      {
+        value: "medium",
+        /* translators: abbreviation for medium size */
+        label: __("M", "responsive-block-editor-addons"),
+        tooltip: __("Medium", "responsive-block-editor-addons"),
+      },
+      {
+        value: "large",
+        /* translators: abbreviation for large size */
+        label: __("L", "responsive-block-editor-addons"),
+        tooltip: __("Large", "responsive-block-editor-addons"),
+      },
+      {
+        value: "huge",
+        /* translators: abbreviation for largest size */
+        label: __("XL", "responsive-block-editor-addons"),
+        tooltip: __("Huge", "responsive-block-editor-addons"),
+      },
+    ];
 
     const fontWeightOptions = [
       {
@@ -321,42 +359,32 @@ export default class Inspector extends Component {
             max={700}
             step={1}
           />
-          <RangeControl
-            label={__("Border Radius", "responsive-block-editor-addons")}
-            value={boxRadius}
-            onChange={(newCount) => {
-              setAttributes({ boxRadius: newCount });
-            }}
-            min={1}
-            max={50}
-            step={1}
+          {count > 1 && (
+            <SelectControl
+              label={__("Gutter", "responsive-block-editor-addons")}
+              value={gutter}
+              options={gutterOptions}
+              onChange={(newGutter) => setAttributes({ gutter: newGutter })}
+            />
+          )}
+        </PanelBody>
+
+        <PanelBody
+          title={__("Content", "responsive-block-editor-addons")}
+          initialOpen={false}
+        >
+          <ToggleControl
+            label={__("Enable Title", "responsive-block-editor-addons")}
+            checked={showTitle}
+            onChange={(value) => setAttributes({ showTitle: !showTitle })}
           />
-          <BoxShadowControl
-            setAttributes={setAttributes}
-            label={__("Box Shadow", "responsive-block-editor-addons")}
-            boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
-            boxShadowHOffset={{
-              value: boxShadowHOffset,
-              label: __("Horizontal", "responsive-block-editor-addons"),
-            }}
-            boxShadowVOffset={{
-              value: boxShadowVOffset,
-              label: __("Vertical", "responsive-block-editor-addons"),
-            }}
-            boxShadowBlur={{
-              value: boxShadowBlur,
-              label: __("Blur", "responsive-block-editor-addons"),
-            }}
-            boxShadowSpread={{
-              value: boxShadowSpread,
-              label: __("Spread", "responsive-block-editor-addons"),
-            }}
-            boxShadowPosition={{
-              value: boxShadowPosition,
-              label: __("Position", "responsive-block-editor-addons"),
-            }}
+          <ToggleControl
+            label={__("Enable Description", "responsive-block-editor-addons")}
+            checked={showDescription}
+            onChange={(value) => setAttributes({ showDescription: !showDescription })}
           />
         </PanelBody>
+
         <PanelBody
           title={__("Alignment", "responsive-block-editor-addons")}
           initialOpen={false}
@@ -1001,8 +1029,8 @@ export default class Inspector extends Component {
             onChange={onChangeImageHoverEffect}
             options={[
               { value: "", label: __("Default") },
-              { value: "1.04", label: __("Zoom Out") },
-              { value: "1", label: __("Zoom In") },
+              { value: "0.94", label: __("Zoom Out") },
+              { value: "1.04", label: __("Zoom In") },
             ]}
           />
         </PanelBody>
@@ -1029,6 +1057,128 @@ export default class Inspector extends Component {
             min={-50}
             max={100}
             step={1}
+          />
+        </PanelBody>
+        <PanelBody
+          title={__("Border", "responsive-block-editor-addons")}
+          initialOpen={false}
+        >
+          <SelectControl
+            label={__("Border Style", "responsive-block-editor-addons")}
+            value={blockBorderStyle}
+            onChange={(value) => setAttributes({ blockBorderStyle: value })}
+            options={[
+              {
+                value: "none",
+                label: __("None", "responsive-block-editor-addons"),
+              },
+              {
+                value: "solid",
+                label: __("Solid", "responsive-block-editor-addons"),
+              },
+              {
+                value: "dotted",
+                label: __("Dotted", "responsive-block-editor-addons"),
+              },
+              {
+                value: "dashed",
+                label: __("Dashed", "responsive-block-editor-addons"),
+              },
+              {
+                value: "double",
+                label: __("Double", "responsive-block-editor-addons"),
+              },
+              {
+                value: "groove",
+                label: __("Groove", "responsive-block-editor-addons"),
+              },
+              {
+                value: "inset",
+                label: __("Inset", "responsive-block-editor-addons"),
+              },
+              {
+                value: "outset",
+                label: __("Outset", "responsive-block-editor-addons"),
+              },
+              {
+                value: "ridge",
+                label: __("Ridge", "responsive-block-editor-addons"),
+              },
+            ]}
+          />
+          {"none" != blockBorderStyle && (
+            <Fragment>
+              <RangeControl
+                label={__("Border Width", "responsive-block-editor-addons")}
+                value={blockBorderWidth}
+                onChange={(value) =>
+                  setAttributes({
+                    blockBorderWidth: value !== undefined ? value : 2,
+                  })
+                }
+                min={0}
+                max={50}
+                allowReset
+              />
+              <Fragment>
+                <p>
+                  {__("Border Color", "responsive-block-editor-addons")}
+                  <span className="components-base-control__label">
+                    <span
+                      className="component-color-indicator"
+                      style={{ backgroundColor: blockBorderColor }}
+                    ></span>
+                  </span>
+                </p>
+                <ColorPalette
+                  value={blockBorderColor}
+                  onChange={(colorValue) =>
+                    setAttributes({
+                      blockBorderColor:
+                        colorValue !== undefined ? colorValue : "#000",
+                    })
+                  }
+                  allowReset
+                />
+              </Fragment>
+            </Fragment>
+          )}
+          <RangeControl
+            label={__("Border Radius", "responsive-block-editor-addons")}
+            value={blockBorderRadius}
+            onChange={(value) =>
+              setAttributes({
+                blockBorderRadius: value !== undefined ? value : null,
+              })
+            }
+            min={0}
+            max={100}
+            allowReset
+          />
+          <BoxShadowControl
+            setAttributes={setAttributes}
+            label={__("Box Shadow", "responsive-block-editor-addons")}
+            boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+            boxShadowHOffset={{
+              value: boxShadowHOffset,
+              label: __("Horizontal", "responsive-block-editor-addons"),
+            }}
+            boxShadowVOffset={{
+              value: boxShadowVOffset,
+              label: __("Vertical", "responsive-block-editor-addons"),
+            }}
+            boxShadowBlur={{
+              value: boxShadowBlur,
+              label: __("Blur", "responsive-block-editor-addons"),
+            }}
+            boxShadowSpread={{
+              value: boxShadowSpread,
+              label: __("Spread", "responsive-block-editor-addons"),
+            }}
+            boxShadowPosition={{
+              value: boxShadowPosition,
+              label: __("Position", "responsive-block-editor-addons"),
+            }}
           />
         </PanelBody>
         <PanelBody

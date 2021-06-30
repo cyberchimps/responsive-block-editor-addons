@@ -133,6 +133,12 @@ const attributes = {
     type: "number",
     default: 120,
   },
+  imageWidthTablet: {
+    type: "number",
+  },
+  imageWidthMobile: {
+    type: "number",
+  },
   backgroundColor: {
     type: "string",
   },
@@ -263,5 +269,9 @@ const attributes = {
   pinterest: {
     type: "bool",
   },
+  stack: {
+    type: "string",
+    default: "mobile",
+  }
 };
 export default attributes;

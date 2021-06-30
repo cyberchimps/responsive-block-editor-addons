@@ -198,16 +198,16 @@ class LatestPostsBlock extends Component {
       prevArrow: <PrevArrow arrowSize={arrowSize} />,
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 976,
           settings: {
-            slidesToShow: attributes.tcolumns,
+            slidesToShow: attributes.columnsTablet,
             slidesToScroll: 1,
           },
         },
         {
           breakpoint: 767,
           settings: {
-            slidesToShow: attributes.mcolumns,
+            slidesToShow: attributes.columnsMobile,
             slidesToScroll: 1,
           },
         },

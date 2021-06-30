@@ -31,8 +31,9 @@ export default class Save extends Component {
       <div
         className={classnames(
           "responsive-block-editior-addons-pricing-list-outer-wrap",
-          "responsive-block-editor-addons-block-pricing-list",
-          `block-${block_id}`
+          "responsive-block-editor-addons-block-pricing-list",         
+          `block-${block_id}`,
+          `responsive-block-editor-addons-block-pricing-list-no-of-columns-${columns}`
         )}
       >
         {pricingList.map((test, index) => (

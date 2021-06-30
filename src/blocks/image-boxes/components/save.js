@@ -39,6 +39,8 @@ export default class Save extends Component {
       hoverBgGradient,
       hoverOpacity,
       imageSize,
+      showTitle,
+      showDescription,
     } = this.props.attributes;
 
     const classes = classnames({
@@ -97,16 +99,16 @@ export default class Save extends Component {
                 )}
               >
                 <div className="responsive-block-editor-addons-add-image"></div>
-                <RichText.Content
+                {showTitle && (<RichText.Content
                   tagName={titleHeadingTag}
                   className="wp-block-responsive-block-editor-addons-image-boxes-block-item__title"
                   value={imageboxesBlock[index]["title"]}
-                />
-                <RichText.Content
+                />)}
+                {showDescription && (<RichText.Content
                   tagName="p"
                   className="wp-block-responsive-block-editor-addons-image-boxes-block-item__description"
                   value={imageboxesBlock[index]["hover_description"]}
-                />
+                />)}
                 {hasArrow && <span className="imagebox-arrow">&#x21AA;</span>}
               </div>
             </a>
