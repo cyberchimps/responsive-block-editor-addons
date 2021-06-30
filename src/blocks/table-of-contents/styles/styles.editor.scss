@@ -1,0 +1,20 @@
+.responsive-block-editor-addons-toc__list > p {
+	font-size: 13px;
+	font-style: italic;
+	color: #666;
+}
+
+.block-editor-page {
+	.responsive-block-editor-addons-toc__scroll-top {
+		&.dashicons {
+			right: 343px;
+		}
+		&.responsive-block-editor-addons-toc__show-scroll {
+			display: inline-table;
+		}
+	}
+}
+
+.responsive-block-editor-addons-light-font-weight {
+	font-weight: 400;
+}

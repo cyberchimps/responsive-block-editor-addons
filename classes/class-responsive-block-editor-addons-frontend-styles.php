@@ -7383,6 +7383,383 @@ return array(
         }
 
         /**
+		 * Get Table Of Contents Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_table_of_contents_css ( $attr, $id) {
+			$defaults = self::get_responsive_block_table_of_contents_default_attributes();
+			$attr = array_merge( $defaults, (array) $attr );
+			?>
+			<script>
+				( function( $ ) {
+					
+                    RBEATableOfContents = {
+
+                        init: function() {
+                            $( document ).on( "click",'.responsive-block-editor-addons-toc__title-wrap', RBEATableOfContents._toggleCollapse )
+                        },
+
+                        _toggleCollapse: function( e ) {
+                            if ( $( this ).find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 ) {
+                                let $root = $( this ).closest( '.wp-block-responsive-block-editor-addons-table-of-contents' )
+                                if ( $root.hasClass( 'responsive-block-editor-addons-toc__collapse' ) ) {
+                                    $root.removeClass( 'responsive-block-editor-addons-toc__collapse' );
+                                } else {
+                                    $root.addClass( 'responsive-block-editor-addons-toc__collapse' );
+                                }
+                            }
+                        },
+
+                        _run: function( attr, id ) {
+                            var $this_scope = $( id );
+                            if ( $this_scope.find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 ) {
+                                $this_scope.find( '.responsive-block-editor-addons-toc__title-wrap' ).addClass( 'responsive-block-editor-addons-toc__is-collapsible' );
+                            }   
+                        },
+                    }
+
+                    $( document ).ready(function() {
+                        RBEATableOfContents.init()
+                        RBEATableOfContents._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+                    })
+				})( jQuery )       
+			</script>
+			<?php
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$justifyContent = 'flex-start';
+			if ( $attr['align'] === 'center' ) {
+				$justifyContent = 'center';
+			} elseif ( $attr['align'] === 'right' ) {
+				$justifyContent = 'flex-end';
+			}
+
+			$updatedBackgroundImage = '';
+			if ( $attr['backgroundImage'] ) {
+				$updatedBackgroundImage = 'linear-gradient(' .
+				self::hexToRgb( '#fff', 0 ) .
+				',' .
+				self::hexToRgb( '#fff', 0 ) .
+				'),url(' .
+				$attr['backgroundImage'] .
+				')';
+			}
+			if ( $attr['backgroundType'] !== 'image' ) {
+				$updatedBackgroundImage = '';
+			}
+
+			$selectors = array(
+				' ' => array(
+					'background-image'    => $updatedBackgroundImage,
+					'padding-top'         => self::get_css_value( $attr['blockTopPadding'], 'px' ) . '!important',
+					'padding-bottom'      => self::get_css_value( $attr['blockBottomPadding'], 'px' ) . '!important',
+					'padding-left'        => self::get_css_value( $attr['blockLeftPadding'], 'px' ) . '!important',
+					'padding-right'       => self::get_css_value( $attr['blockRightPadding'], 'px' ) . '!important',
+					'margin-top'          => self::get_css_value( $attr['blockTopMargin'], 'px' ) . '!important',
+					'margin-bottom'       => self::get_css_value( $attr['blockBottomMargin'], 'px' ) . '!important',
+					'margin-left'         => self::get_css_value( $attr['blockLeftMargin'], 'px' ) . '!important',
+					'margin-right'        => self::get_css_value( $attr['blockRightMargin'], 'px' ) . '!important',
+					'z-index'             => $attr['zIndex'],
+					'display'             => 'flex',
+					'justify-content'     => $justifyContent,
+					'background-position' => $attr['backgroundPosition'],
+					'background-repeat'   => $attr['backgroundRepeat'],
+					'background-size'     => $attr['backgroundSize'],
+					'background-color'    => $attr['backgroundType'] === 'color' ? self::hexToRgb(
+						$attr['backgroundColor'],
+						1
+					) : null,
+				),
+				' .responsive-block-editor-addons-toc__title-wrap' => array(
+					'font-family'      => $attr['headingFontFamily'],
+					'font-weight'      => $attr['headingFontWeight'],
+					'font-size'        => self::get_css_value( $attr['headingFontSize'], 'px' ),
+					'line-height'      => $attr['headingLineHeight'],
+					'color'            => $attr['headingColor'],
+					'background-color' => $attr['headingBgColor'],
+					'padding-top'      => self::get_css_value( $attr['headingTopPadding'], 'px' ) . '!important',
+					'padding-bottom'   => self::get_css_value( $attr['headingBottomPadding'], 'px' ) . '!important',
+					'padding-left'     => self::get_css_value( $attr['headingLeftPadding'], 'px' ) . '!important',
+					'padding-right'    => self::get_css_value( $attr['headingRightPadding'], 'px' ) . '!important',
+					'margin-top'       => self::get_css_value( $attr['headingTopMargin'], 'px' ) . '!important',
+					'margin-bottom'    => self::get_css_value( $attr['headingBottomMargin'], 'px' ) . '!important',
+					'margin-left'      => self::get_css_value( $attr['headingLeftMargin'], 'px' ) . '!important',
+					'margin-right'     => self::get_css_value( $attr['headingRightMargin'], 'px' ) . '!important',
+					'border-style'     => $attr['headingBorderStyle'],
+					'border-color'     => $attr['headingBorderColor'],
+					'border-radius'    => self::get_css_value( $attr['headingBorderRadius'], 'px' ) . ' !important',
+					'border-width'     => self::get_css_value( $attr['headingBorderWidth'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__title-wrap:hover' => array(
+					'color'            => $attr['headingColorHover'],
+					'background-color' => $attr['headingBgColorHover'],
+				),
+				' .responsive-block-editor-addons-toc__list-wrap' => array(
+					'font-family'         => $attr['contentFontFamily'],
+					'font-weight'         => $attr['contentFontWeight'],
+					'font-size'           => self::get_css_value( $attr['contentFontSize'], 'px' ),
+					'line-height'         => $attr['contentLineHeight'],
+					'background-color'    => $attr['bodyBgColor'],
+					'padding-top'         => self::get_css_value( $attr['contentTopPadding'], 'px' ) . '!important',
+					'padding-bottom'      => self::get_css_value( $attr['contentBottomPadding'], 'px' ) . '!important',
+					'padding-left'        => self::get_css_value( $attr['contentLeftPadding'], 'px' ) . '!important',
+					'padding-right'       => self::get_css_value( $attr['contentRightPadding'], 'px' ) . '!important',
+					'margin-top'          => self::get_css_value( $attr['contentTopMargin'], 'px' ) . '!important',
+					'margin-bottom'       => self::get_css_value( $attr['contentBottomMargin'], 'px' ) . '!important',
+					'margin-left'         => self::get_css_value( $attr['contentLeftMargin'], 'px' ) . '!important',
+					'margin-right'        => self::get_css_value( $attr['contentRightMargin'], 'px' ) . '!important',
+					'border-style'        => $attr['bodyBorderStyle'],
+					'border-color'        => $attr['bodyBorderColor'],
+					'border-radius'       => self::get_css_value( $attr['bodyBorderRadius'], 'px' ) . ' !important',
+					'border-top-width'    => self::get_css_value( 0, 'px' ),
+					'border-left-width'   => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
+					'border-right-width'  => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
+					'border-bottom-width' => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a' => array(
+					'color' => $attr['bodyColor'],
+				),
+				' .responsive-block-editor-addons-toc__list-wrap:hover' => array(
+					'background-color' => $attr['bodyBgColorHover'],
+				),
+				' .responsive-block-editor-addons-toc__list-wrap:hover .responsive-block-editor-addons-toc__list li a' => array(
+					'color' => $attr['bodyColorHover'],
+				),
+				' .responsive-block-editor-addons-toc__wrap' => array(
+					'width'         => self::get_css_value( $attr['blockWidth'], '%' ),
+					'border-style'  => $attr['blockBorderStyle'],
+					'border-color'  => $attr['blockBorderColor'],
+					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
+					'border-width'  => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+				),
+			);
+
+			$mobile_selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['blockRightPaddingMobile'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['blockTopMarginMobile'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['blockRightMarginMobile'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-toc__title-wrap' => array(
+					'font-size'      => self::get_css_value( $attr['headingFontSizeMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['headingTopPaddingMobile'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['headingBottomPaddingMobile'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['headingLeftPaddingMobile'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['headingRightPaddingMobile'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['headingTopMarginMobile'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['headingBottomMarginMobile'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['headingLeftMarginMobile'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['headingRightMarginMobile'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-toc__list-wrap' => array(
+					'font-size'      => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['contentTopPaddingMobile'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['contentBottomPaddingMobile'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['contentLeftPaddingMobile'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['contentRightPaddingMobile'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['contentTopMarginMobile'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['contentBottomMarginMobile'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['contentLeftMarginMobile'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['contentRightMarginMobile'], 'px' ) . '!important',
+				),
+			);
+
+			$tablet_selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingTablet'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['blockRightPaddingTablet'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['blockTopMarginTablet'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['blockRightMarginTablet'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-toc__title-wrap' => array(
+					'font-size'      => self::get_css_value( $attr['headingFontSizeTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['headingTopPaddingTablet'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['headingBottomPaddingTablet'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['headingLeftPaddingTablet'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['headingRightPaddingTablet'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['headingTopMarginTablet'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['headingBottomMarginTablet'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['headingLeftMarginTablet'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['headingRightMarginTablet'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-toc__list-wrap' => array(
+					'font-size'      => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['contentTopPaddingTablet'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['contentBottomPaddingTablet'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['contentLeftPaddingTablet'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['contentRightPaddingTablet'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['contentTopMarginTablet'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['contentBottomMarginTablet'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['contentLeftMarginTablet'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['contentRightMarginTablet'], 'px' ) . '!important',
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-table-of-contents.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+        /**
+        * Get Defaults for Table Of Contents block
+        *
+        * @return array
+        */
+        public static function get_responsive_block_table_of_contents_default_attributes() {
+
+            return array(
+                'block_id'                   => '',
+                'classMigrate'               => false,
+                'isCollapsible'              => false,
+                'icon'                       => 'fa-angle-down',
+                'heading'                    => 'Table Of Contents',
+                'headingTitle'               => 'Table Of Contents',
+                'borderStyle'                => 'solid',
+                'borderWidth'                => 1,
+                'borderRadius'               => 0,
+                'borderColor'                => '#333',
+                'blockTopPadding'            => 0,
+                'blockTopPaddingMobile'      => 0,
+                'blockTopPaddingTablet'      => 0,
+                'blockBottomPadding'         => 0,
+                'blockBottomPaddingTablet'   => 0,
+                'blockBottomPaddingMobile'   => 0,
+                'blockRightPadding'          => 0,
+                'blockRightPaddingMobile'    => 0,
+                'blockRightPaddingTablet'    => 0,
+                'blockLeftPadding'           => 0,
+                'blockLeftPaddingTablet'     => 0,
+                'blockLeftPaddingMobile'     => 0,
+                'blockTopMargin'             => 0,
+                'blockTopMarginMobile'       => 0,
+                'blockTopMarginTablet'       => 0,
+                'blockBottomMargin'          => 0,
+                'blockBottomMarginTablet'    => 0,
+                'blockBottomMarginMobile'    => 0,
+                'blockRightMargin'           => 0,
+                'blockRightMarginMobile'     => 0,
+                'blockRightMarginTablet'     => 0,
+                'blockLeftMargin'            => 0,
+                'blockLeftMarginTablet'      => 0,
+                'blockLeftMarginMobile'      => 0,
+                'zIndex'                     => 0,
+                'headingFontFamily'          => 'Default',
+                'headingFontWeight'          => '500',
+                'headingFontSize'            => 16,
+                'headingFontSizeTablet'      => 16,
+                'headingFontSizeMobile'      => 14,
+                'headingLineHeight'          => 1,
+                'contentFontFamily'          => 'Default',
+                'contentFontWeight'          => '500',
+                'contentFontSize'            => 16,
+                'contentFontSizeTablet'      => 16,
+                'contentFontSizeMobile'      => 14,
+                'contentLineHeight'          => 1.8,
+                'align'                      => 'left',
+                'headingColor'               => '#fff',
+                'headingBgColor'             => '#0984ff',
+                'headingColorHover'          => '',
+                'headingBgColorHover'        => '',
+                'bodyColor'                  => '',
+                'bodyBgColor'                => '#fff',
+                'bodyColorHover'             => '',
+                'bodyBgColorHover'           => '',
+                'headingTopPadding'          => 15,
+                'headingTopPaddingMobile'    => 15,
+                'headingTopPaddingTablet'    => 15,
+                'headingBottomPadding'       => 15,
+                'headingBottomPaddingTablet' => 15,
+                'headingBottomPaddingMobile' => 15,
+                'headingRightPadding'        => 20,
+                'headingRightPaddingMobile'  => 20,
+                'headingRightPaddingTablet'  => 20,
+                'headingLeftPadding'         => 20,
+                'headingLeftPaddingTablet'   => 20,
+                'headingLeftPaddingMobile'   => 20,
+                'headingTopMargin'           => 0,
+                'headingTopMarginMobile'     => 0,
+                'headingTopMarginTablet'     => 0,
+                'headingBottomMargin'        => 0,
+                'headingBottomMarginTablet'  => 0,
+                'headingBottomMarginMobile'  => 0,
+                'headingRightMargin'         => 0,
+                'headingRightMarginMobile'   => 0,
+                'headingRightMarginTablet'   => 0,
+                'headingLeftMargin'          => 0,
+                'headingLeftMarginTablet'    => 0,
+                'headingLeftMarginMobile'    => 0,
+                'contentTopPadding'          => 15,
+                'contentTopPaddingMobile'    => 15,
+                'contentTopPaddingTablet'    => 15,
+                'contentBottomPadding'       => 15,
+                'contentBottomPaddingTablet' => 15,
+                'contentBottomPaddingMobile' => 15,
+                'contentRightPadding'        => 20,
+                'contentRightPaddingMobile'  => 20,
+                'contentRightPaddingTablet'  => 20,
+                'contentLeftPadding'         => 20,
+                'contentLeftPaddingTablet'   => 20,
+                'contentLeftPaddingMobile'   => 20,
+                'contentTopMargin'           => 0,
+                'contentTopMarginMobile'     => 0,
+                'contentTopMarginTablet'     => 0,
+                'contentBottomMargin'        => 0,
+                'contentBottomMarginTablet'  => 0,
+                'contentBottomMarginMobile'  => 0,
+                'contentRightMargin'         => 0,
+                'contentRightMarginMobile'   => 0,
+                'contentRightMarginTablet'   => 0,
+                'contentLeftMargin'          => 0,
+                'contentLeftMarginTablet'    => 0,
+                'contentLeftMarginMobile'    => 0,
+                'blockWidth'                 => 100,
+                'blockBorderStyle'           => 'solid',
+                'blockBorderWidth'           => 1,
+                'blockBorderRadius'          => '',
+                'blockBorderColor'           => '#0984ff',
+                'headingBorderStyle'         => '',
+                'headingBorderWidth'         => 1,
+                'headingBorderRadius'        => 0,
+                'headingBorderColor'         => '',
+                'bodyBorderStyle'            => '',
+                'bodyBorderWidth'            => 1,
+                'bodyBorderRadius'           => 0,
+                'bodyBorderColor'            => '',
+                'tableType'                  => 'unordered',
+                'orderListType'              => 'none',
+                'headerLayout'               => 'fill',
+                'backgroundImage'            => '',
+                'backgroundPosition'         => 'center-center',
+                'backgroundSize'             => 'cover',
+                'backgroundRepeat'           => 'no-repeat',
+                'backgroundColor'            => '',
+                'backgroundVideo'            => '',
+                'backgroundType'             => 'none',
+            );
+        }
+
+        /**
          * Generate gradient effect
          *
          * @param string $color1  primary color.
