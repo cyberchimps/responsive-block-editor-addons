@@ -4247,9 +4247,39 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$boxShadowPositionCSS = '';
 			}
 
+			$hoverboxShadowPositionCSS = $attr['hoverboxShadowPosition'];
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hoverboxShadowPositionCSS = '';
+			}
+
 			$newopacity = $attr['opacity'] / 100;
 
 			$imgopacity = $attr['imageopacity'] / 100;
+
+			$icon_bg_color = '';
+			if ( 'solid' === $attr['iconBackgroundType'] ) {
+				$icon_bg_color = $attr['iconBackgroundColor'];
+			}
+
+			$icon_bg_hover_color = '';
+			if ( 'solid' === $attr['iconBackgroundType'] ) {
+				$icon_bg_hover_color = $attr['iconBackgroundHoverColor'];
+			}
+
+			$icon_bg_padding = 0;
+			if ( 'none' !== $attr['iconBackgroundType'] ) {
+				$icon_bg_padding = self::get_css_value( $attr['iconPadding'], 'px' );
+			}
+
+			$icon_border = 'none';
+			if ( 'outline' === $attr['iconBackgroundType'] ) {
+				$icon_border = self::get_css_value( $attr['iconBorderWidth'], 'px' ) . ' solid ' . $attr['iconBackgroundColor'];
+			}
+
+			$icon_hover_border = 'none';
+			if ( 'outline' === $attr['iconBackgroundType'] ) {
+				$icon_hover_border = self::get_css_value( $attr['iconBorderWidth'], 'px' ) . ' solid ' . $attr['iconBackgroundHoverColor'];
+			}
 
 			$selectors = array(
 				' '                                        => array(
@@ -4273,6 +4303,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$boxShadowPositionCSS,
 				),
 
+				':hover'                                   => array(
+					'box-shadow' =>
+					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+					' ' .
+					$attr['hoverboxShadowColor'] .
+					' ' .
+					$hoverboxShadowPositionCSS,
+				),
+
 				' .responsive-block-editor-addons-ifb-image-icon-content.responsive-block-editor-addons-ifb-imgicon-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['iconBottomMargin'], 'px' ),
 					'margin-top'    => self::get_css_value( $attr['iconTopMargin'], 'px' ),
@@ -4281,8 +4326,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-ifb-icon' => array(
-					'width'  => self::get_css_value( $attr['resIconSize'], 'px' ),
-					'height' => self::get_css_value( $attr['resIconSize'], 'px' ),
+					'width'            => self::get_css_value( $attr['resIconSize'], 'px' ),
+					'height'           => self::get_css_value( $attr['resIconSize'], 'px' ),
+					'background-color' => $icon_bg_color,
+					'border-radius'    => self::get_css_value( $attr['iconBorderRadius'], 'px' ),
+					'padding'          => $icon_bg_padding,
+					'border'           => $icon_border,
+				),
+
+				' .responsive-block-editor-addons-ifb-icon:hover' => array(
+					'background-color' => $icon_bg_hover_color,
+					'border'           => $icon_hover_border,
 				),
 
 				' .responsive-block-editor-addons-ifb-image-content > img' => array(
@@ -4637,6 +4691,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTextFontWeight'        => '',
 				'ctaTextLineHeight'        => '',
 				'ctaBottomMargin'          => 10,
+				'hoverboxShadowColor'      => '#ccc',
+				'hoverboxShadowHOffset'    => 0,
+				'hoverboxShadowVOffset'    => 0,
+				'hoverboxShadowBlur'       => 6,
+				'hoverboxShadowSpread'     => 1,
+				'hoverboxShadowPosition'   => 'outset',
+				'iconBackgroundColor'      => '#0066cc',
+				'iconBackgroundHoverColor' => '',
+				'iconBackgroundType'       => 'none',
+				'iconPadding'              => 5,
+				'iconBorderRadius'         => 0,
+				'iconBorderWidth'          => 1,
+
 			);
 		}
 

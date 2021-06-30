@@ -9,6 +9,7 @@ import renderSVG from "../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
+import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -248,6 +249,18 @@ export default class Inspector extends Component {
         ctaBottomMargin,
         resBoxLink,
         resBoxTarget,
+        hoverboxShadowColor,
+        hoverboxShadowHOffset,
+        hoverboxShadowVOffset,
+        hoverboxShadowBlur,
+        hoverboxShadowSpread,
+        hoverboxShadowPosition,
+        iconBackgroundColor,
+        iconBackgroundHoverColor,
+        iconBackgroundType,
+        iconBorderRadius,
+        iconBorderWidth,
+        iconPadding,
       },
       setAttributes,
     } = this.props;
@@ -369,6 +382,119 @@ export default class Inspector extends Component {
           onChange={(value) => setAttributes({ icon_hcolor: value })}
           allowReset
         />
+        <SelectControl
+          label={__("Background Type", "responsive-block-editor-addons")}
+          value={iconBackgroundType}
+          onChange={(value) => setAttributes({iconBackgroundType: value})}
+          options={[
+            {value: "none", label: __("None")},
+            {value: "solid", label: __("Solid")},
+            {value: "outline", label: __("Outline")}
+          ]}
+        />
+        {
+          "outline" === iconBackgroundType && (
+            <Fragment>
+              <p className="responsive-block-editor-addons-setting-label">
+              {__("Border Color", "responsive-block-editor-addons")}
+              <span className="components-base-control__label">
+                <span
+                  className="component-color-indicator"
+                  style={{ backgroundColor: iconBackgroundColor }}
+                ></span>
+              </span>
+            </p>
+            <ColorPalette
+              value={iconBackgroundColor}
+              onChange={(value) => setAttributes({ iconBackgroundColor: value })}
+              allowReset
+            />
+            <p className="responsive-block-editor-addons-setting-label">
+              {__("Border Hover Color", "responsive-block-editor-addons")}
+              <span className="components-base-control__label">
+                <span
+                  className="component-color-indicator"
+                  style={{ backgroundColor: iconBackgroundHoverColor }}
+                ></span>
+              </span>
+            </p>
+            <ColorPalette
+              value={iconBackgroundHoverColor}
+              onChange={(value) => setAttributes({ iconBackgroundHoverColor: value })}
+              allowReset
+            />
+            <RangeControl
+              label={__("Icon Border Radius", "responsive-block-editor-addons")}
+              value={iconBorderRadius}
+              onChange={(value) => setAttributes({iconBorderRadius: value})}
+              min={0}
+              max={100}
+            />
+            <RangeControl
+              label={__("Icon Border Width", "responsive-block-editor-addons")}
+              value={iconBorderWidth}
+              onChange={(value) => setAttributes({iconBorderWidth: value})}
+              min={0}
+              max={100}
+            />
+            <RangeControl
+              label={__("Icon Background Padding", "responsive-block-editor-addons")}
+              value={iconPadding}
+              onChange={(value) => setAttributes({iconPadding: value})}
+              min={0}
+              max={100}
+            />
+            </Fragment>
+          )
+        }
+        {
+          "solid" === iconBackgroundType && (
+            <Fragment>
+              <p className="responsive-block-editor-addons-setting-label">
+              {__("Background Color", "responsive-block-editor-addons")}
+              <span className="components-base-control__label">
+                <span
+                  className="component-color-indicator"
+                  style={{ backgroundColor: iconBackgroundColor }}
+                ></span>
+              </span>
+            </p>
+            <ColorPalette
+              value={iconBackgroundColor}
+              onChange={(value) => setAttributes({ iconBackgroundColor: value })}
+              allowReset
+            />
+            <p className="responsive-block-editor-addons-setting-label">
+              {__("Background Hover Color", "responsive-block-editor-addons")}
+              <span className="components-base-control__label">
+                <span
+                  className="component-color-indicator"
+                  style={{ backgroundColor: iconBackgroundHoverColor }}
+                ></span>
+              </span>
+            </p>
+            <ColorPalette
+              value={iconBackgroundHoverColor}
+              onChange={(value) => setAttributes({ iconBackgroundHoverColor: value })}
+              allowReset
+            />
+            <RangeControl
+              label={__("Icon Background  Radius", "responsive-block-editor-addons")}
+              value={iconBorderRadius}
+              onChange={(value) => setAttributes({iconBorderRadius: value})}
+              min={0}
+              max={100}
+            />
+            <RangeControl
+              label={__("Icon Background Padding", "responsive-block-editor-addons")}
+              value={iconPadding}
+              onChange={(value) => setAttributes({iconPadding: value})}
+              min={0}
+              max={100}
+            />
+            </Fragment>
+          )
+        }
       </Fragment>
     );
 
@@ -1429,8 +1555,19 @@ export default class Inspector extends Component {
               label: __("Position", "responsive-block-editor-addons"),
             }}
           />
+          <BoxShadowControlHelper
+            setAttributes={setAttributes}
+            label={__("Hover Box Shadow")}
+            attrNameTemplate="hover%s"
+            boxShadowColor={{ value: hoverboxShadowColor }}
+            boxShadowHOffset={{value: hoverboxShadowHOffset}}
+            boxShadowVOffset={{value: hoverboxShadowVOffset}}
+            boxShadowBlur={{value: hoverboxShadowBlur }}
+            boxShadowSpread={{value: hoverboxShadowSpread}}
+            boxShadowPosition={{value: hoverboxShadowPosition}}
+          />
         </PanelBody>
-
+        
         <PanelBody
           title={__("Separator", "responsive-block-editor-addons")}
           initialOpen={false}
