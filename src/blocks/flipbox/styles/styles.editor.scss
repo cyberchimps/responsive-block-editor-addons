@@ -17,7 +17,7 @@
   width: 420px; /* width and height should be configurable. */
   height: 420px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  word-break: break-all;
+  word-break: break-word;
   .editor-styles-wrapper p {
     margin: 0;
   }

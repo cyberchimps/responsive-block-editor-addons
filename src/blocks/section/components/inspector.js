@@ -851,7 +851,7 @@ export default class Inspector extends Component {
                       setAttributes({ backgroundPosition: value })
                     }
                     options={[
-                      { value: "top-left", label: __("Top Left") },
+                      { value: "top left", label: __("Top Left") },
                       { value: "top center", label: __("Top Center") },
                       { value: "top right", label: __("Top Right") },
                       { value: "center left", label: __("Center Left") },

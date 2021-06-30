@@ -14,7 +14,7 @@
         display: flex;
       }
       .responsive-block-editior-addons-pricing-list-item-image-wrap {
-        align-self: center;
+        align-self: flex-start;
       }
     }
     &.image-position-left {
@@ -116,26 +116,25 @@
       }
     }
   }
-  .responsive-block-editior-addons-pricing-list-item-wrap.resp-desktop-column-3 {
-    display: block;
-    width: 33%;
-    float: left;
-    width: calc(100% / 3);
-    padding-left: 10px;
-    padding-right: 10px;
+}
+
+@media (min-width: 976px) {
+  .responsive-block-editor-addons-block-pricing-list-no-of-columns-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: flex-start;
   }
-  .responsive-block-editior-addons-pricing-list-item-wrap.resp-desktop-column-2 {
-    display: block;
-    width: 49%;
-    float: left;
-    padding-left: 10px;
-    padding-right: 10px;
+  .responsive-block-editor-addons-block-pricing-list-no-of-columns-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
   }
-  .responsive-block-editior-addons-pricing-list-item-wrap.resp-desktop-column-1 {
-    display: block;
+  .responsive-block-editor-addons-block-pricing-list-no-of-columns-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: flex-start;
+  }
+  .responsive-block-editior-addons-pricing-list-outer-wrap.responsive-block-editor-addons-block-pricing-list > .responsive-block-editior-addons-pricing-list-item-wrap {
     width: 100%;
-    float: left;
-    padding-left: 10px;
-    padding-right: 10px;
   }
 }

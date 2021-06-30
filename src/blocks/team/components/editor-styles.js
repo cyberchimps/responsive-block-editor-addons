@@ -33,6 +33,8 @@ function EditorStyles(props) {
     imageMarginBottom,
     iconSize,
     imageWidth,
+    imageWidthMobile,
+    imageWidthTablet,
     backgroundColor,
     borderColor,
     borderWidth,
@@ -56,6 +58,8 @@ function EditorStyles(props) {
     backgroundRepeat,
     backgroundSize,
     backgroundAttachment,
+    gutter,
+    count,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
@@ -96,6 +100,21 @@ function EditorStyles(props) {
     boxShadowPositionCSS = "";
   }
 
+  let gutterMargin = ""
+  if( count > 1){
+    if(gutter === "small"){
+      gutterMargin = '20px'
+    }else if (gutter === "medium"){
+      gutterMargin = '30px'
+    }else if (gutter === "large"){
+      gutterMargin = '40px'
+    }else if (gutter === "huge"){
+      gutterMargin = '50px'
+    }else {
+      gutterMargin = '';
+    }
+  }
+
   var selectors = {
     " .responsive-block-editor-addons-team-avatar-wrapper": {
       "text-align": alignment,
@@ -104,6 +123,7 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidth, "px"),
+      "max-width": generateCSSUnit(imageWidth, "px"),
       "margin-top": generateCSSUnit(imageMarginTop, "px"),
       "margin-bottom": generateCSSUnit(imageMarginBottom, "px"),
     },
@@ -142,58 +162,58 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-twitter": {
       "color": socialIconColor,
-      "font-size": iconSize,
+      "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
-      "height": iconSize,
-      "width": iconSize,
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-facebook": {
       "color": socialIconColor,
-      "font-size": iconSize,
+      "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
-      "height": iconSize,
-      "width": iconSize,
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-linkedin": {
       "color": socialIconColor,
-      "font-size": iconSize,
+      "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
-      "height": iconSize,
-      "width": iconSize,
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-instagram": {
       "color": socialIconColor,
-      "font-size": iconSize,
+      "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
-      "height": iconSize,
-      "width": iconSize,
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-email": {
       "color": socialIconColor,
-      "font-size": iconSize,
+      "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
-      "height": iconSize,
-      "width": iconSize,
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-youtube": {
       "color": socialIconColor,
-      "font-size": iconSize,
+      "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
-      "height": iconSize,
-      "width": iconSize,
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-pinterest": {
       "color": socialIconColor,
-      "font-size": iconSize,
+      "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
-      "height": iconSize,
-      "width": iconSize,
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-team": {
@@ -222,9 +242,33 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " .wp-block-responsive-block-editor-addons-team": {
+        "margin-bottom": gutterMargin,
+    },
+    " .responsive-block-editor-addons-team-avatar": {
+      "width": generateCSSUnit(imageWidthMobile, "px"),
+      "max-width": generateCSSUnit(imageWidthMobile, "px"),
+    },
+    ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
+      "max-width": "100%",
+      "min-width": "100%",
+    }
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " .wp-block-responsive-block-editor-addons-team": {
+      "margin-bottom": gutterMargin,
+    },
+    " .responsive-block-editor-addons-team-avatar": {
+      "width": generateCSSUnit(imageWidthTablet, "px"),
+      "max-width": generateCSSUnit(imageWidthTablet, "px"),
+    },
+    ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
+      "max-width": "100%",
+      "min-width": "100%",
+    }
+  };
 
   var styling_css = "";
   var id = `.wp-block-responsive-block-editor-addons-team-wrapper.block-${block_id}`;

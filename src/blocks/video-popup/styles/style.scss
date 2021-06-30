@@ -1,0 +1,88 @@
+@import "../../../common.scss";
+
+.responsive-block-editor-addons-video-popup__wrapper {
+  background-color: #000000;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  padding: 0;
+  background: #000;
+  background-size: cover;
+  background-position: 50%;
+  border-radius: 12px;
+}
+
+.responsive-block-editor-addons-video-popup__overlay {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6 !important;
+}
+
+// Background overlay. Any block / item that has a background/gradient/overlay should have this class.
+.responsive-block-editor-addons--has-background-overlay {
+  position: relative;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  &.responsive-block-editor-addons--has-background-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+  > * {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+.responsive-block-editor-addons-video-popup__play-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  svg {
+    fill: #fff;
+    width: 10%;
+    height: 10%;
+    min-width: 30px;
+    min-height: 30px;
+  }
+}
+
+.responsive-block-editor-addons-video-popup__wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+}
+
+.page.page-template-gutenberg-fullwidth,
+.page.page-template-full-width-page,
+.page.sidebar-position-no:not(.woocommerce) {
+  .wp-block-cover.alignfull .wp-block-cover__inner-container {
+    .responsive-block-editor-addons-video-popup.alignfull,
+    .responsive-block-editor-addons-video-popup.alignwide {
+      max-width: 100vw;
+    }
+  }
+}

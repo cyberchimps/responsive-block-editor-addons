@@ -55,10 +55,18 @@ function EditorStyles(props) {
     showBackSubtitle,
     showBackButton,
     backgroundImage,
+    backgroundPosition,
+    backgroundAttachment,
+    backgroundRepeat,
+    backgroundSize,
     colorOpacity,
     imageOpacity,
     backImageOpacity,
     backBackgroundImage,
+    backBackgroundPosition,
+    backBackgroundAttachment,
+    backBackgroundRepeat,
+    backBackgroundSize,
     backColorOpacity,
     buttonColor,
     buttonTextColor,
@@ -81,6 +89,8 @@ function EditorStyles(props) {
     buttonHbackgroundColor2,
     buttonopacity,
     buttonHopacity,
+    flipBoxGutterGap,
+    stack
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -198,6 +208,10 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "background-image": backgroundFront,
+      "background-position": backgroundPosition,
+      "background-attachment": backgroundAttachment,
+      "background-repeat": backgroundRepeat,
+      "background-size": backgroundSize,
       "background-color": `${hexToRgba(
         frontBackgroundColor || "#ffffff",
         coloropacity
@@ -233,6 +247,10 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
       "background-image": backgroundBack,
+      "background-position": backBackgroundPosition,
+      "background-attachment": backBackgroundAttachment,
+      "background-repeat": backBackgroundRepeat,
+      "background-size": backBackgroundSize,
       "background-color": `${hexToRgba(
         backBackgroundColor || "#ffffff",
         backcoloropacity
@@ -306,11 +324,30 @@ function EditorStyles(props) {
       opacity: btnHOpacity / 100,
       color: buttonHTextColor + "!important",
     },
+    " .has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks)": {
+      "max-width": "calc(100% / 2 - " + flipBoxGutterGap + "px)",
+    },
+    " .has-medium-gutter.has-3-columns > *:not(.block-editor-inner-blocks)": {
+      "max-width": "calc(100% / 3 - " + flipBoxGutterGap + "px)",
+    },
+    " .has-medium-gutter.has-4-columns > *:not(.block-editor-inner-blocks)": {
+      "max-width": "calc(100% / 4 - " + flipBoxGutterGap + "px)",
+    },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " .has-medium-gutter.responsive-flipbox-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
+      "min-width": "100%",
+      "max-width": "100%",
+    }
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " .has-medium-gutter.responsive-flipbox-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
+      "min-width": "100%",
+      "max-width": "100%",
+    }
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-flipbox.block-${props.clientId}`;

@@ -49,8 +49,40 @@ const attributes = {
   backgroundImage: {
     type: "string",
   },
+  backgroundPosition: {
+    type: "string",
+    default: "center center",
+  },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  backgroundRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  backgroundSize: {
+    type: "string",
+    default: "cover",
+  },
   backBackgroundImage: {
     type: "string",
+  },
+  backBackgroundPosition: {
+    type: "string",
+    default: "center center",
+  },
+  backBackgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  backBackgroundRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  backBackgroundSize: {
+    type: "string",
+    default: "cover",
   },
   colorOpacity: {
     type: "number",
@@ -292,6 +324,14 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  flipBoxGutterGap: {
+    type: "number",
+    default: 10,
+  },
+  stack: {
+    type: "string",
+    default: "mobile",
+  }
 };
 
 export default attributes;

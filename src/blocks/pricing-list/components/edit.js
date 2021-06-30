@@ -165,7 +165,8 @@ export default class Edit extends Component {
         className={classnames(
           "responsive-block-editior-addons-pricing-list-outer-wrap",
           "responsive-block-editor-addons-block-pricing-list",
-          `block-${block_id}`
+          `block-${block_id}`,
+          `responsive-block-editor-addons-block-pricing-list-no-of-columns-${columns}`
         )}
       >
         {titleFontFamily && loadGoogleFont(titleFontFamily)}
@@ -270,7 +271,11 @@ export default class Edit extends Component {
                       className={classnames(
                         "responsive-block-editior-addons-pricing-list-item-image"
                       )}
-                      src={pricingList[index]["image"].sizes[imageSize].url}
+                      src={
+                        pricingList[index]["image"].sizes[imageSize]
+                            ? pricingList[index]["image"].sizes[imageSize].url
+                            : pricingList[index]["image"].sizes["full"].url
+                      }
                     />
                   </div>
                 )}

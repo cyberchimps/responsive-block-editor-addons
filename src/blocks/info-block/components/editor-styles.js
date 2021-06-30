@@ -52,6 +52,14 @@ function EditorStyles(props) {
     iconRightMargin,
     iconTopMargin,
     iconBottomMargin,
+    iconLeftMarginMobile,
+    iconRightMarginMobile,
+    iconTopMarginMobile,
+    iconBottomMarginMobile,
+    iconLeftMarginTablet,
+    iconRightMarginTablet,
+    iconTopMarginTablet,
+    iconBottomMarginTablet,
     imageWidth,
     imageWidthTablet,
     imageWidthMobile,
@@ -91,7 +99,14 @@ function EditorStyles(props) {
     imageopacity,
     boxBackgroundColor,
     contentPadding,
-      imgiconPosition
+    imgiconPosition,
+    ctaTextFontFamily,
+    ctaTextFontSize,
+    ctaTextFontSizeMobile,
+    ctaTextFontSizeTablet,
+    ctaTextFontWeight,
+    ctaTextLineHeight,
+    ctaBottomMargin
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -255,8 +270,10 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(ctaBtnVertPadding, "px"),
       "padding-left": generateCSSUnit(ctaBtnHrPadding, "px"),
       "padding-right": generateCSSUnit(ctaBtnHrPadding, "px"),
-      "font-size": generateCSSUnit(resctaFontSize, "px"),
-      "font-weight": resctaFontWeight,
+      "font-size": generateCSSUnit(ctaTextFontSize, "px"),
+      "font-weight": ctaTextFontWeight,
+      "font-family": ctaTextFontFamily,
+      "line-height": ctaTextLineHeight
     },
 
     " .responsive-block-editor-addons-inline-editing ": {
@@ -275,6 +292,9 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(resctaFontSize, "px"),
       "font-weight": resctaFontWeight,
     },
+    " .responsive-block-editor-addons-ifb-cta": {
+      "margin-bottom": generateCSSUnit(ctaBottomMargin, "px"),
+    }
   };
 
   var mobile_selectors = {
@@ -294,6 +314,15 @@ function EditorStyles(props) {
       "width": generateCSSUnit(imageWidthMobile, "px"),
       "max-width": generateCSSUnit(imageWidthMobile, "px"),
     },
+    " .responsive-block-editor-addons-infobox-cta-link": {
+      "font-size": generateCSSUnit(ctaTextFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-image-icon-content.responsive-block-editor-addons-ifb-imgicon-wrap": {
+      "margin-bottom": generateCSSUnit(iconBottomMarginMobile, "px"),
+      "margin-top": generateCSSUnit(iconTopMarginMobile, "px"),
+      "margin-left": generateCSSUnit(iconLeftMarginMobile, "px"),
+      "margin-right": generateCSSUnit(iconRightMarginMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -312,6 +341,15 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-ifb-image-content img": {
       "width": generateCSSUnit(imageWidthTablet, "px"),
       "max-width": generateCSSUnit(imageWidthTablet, "px"),
+    },
+    " .responsive-block-editor-addons-infobox-cta-link": {
+      "font-size": generateCSSUnit(ctaTextFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-image-icon-content.responsive-block-editor-addons-ifb-imgicon-wrap": {
+      "margin-bottom": generateCSSUnit(iconBottomMarginTablet, "px"),
+      "margin-top": generateCSSUnit(iconTopMarginTablet, "px"),
+      "margin-left": generateCSSUnit(iconLeftMarginTablet, "px"),
+      "margin-right": generateCSSUnit(iconRightMarginTablet, "px"),
     },
   };
 

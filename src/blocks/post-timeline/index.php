@@ -51,10 +51,6 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 	$post_grid_markup = '';
 
 	$post_grid_markup .= sprintf(
-		'	<div class="responsive-block-editor-addons-timeline__content-wrap responsive-block-editor-addons-timeline__center-block  responsive-block-editor-addons-timeline__arrow-center responsive-block-editor-addons-timeline__responsive-mobile responsive-block-editor-addons-timeline">'
-	);
-
-	$post_grid_markup .= sprintf(
 		'<div class="responsive-block-editor-addons-timeline__main">'
 	);
 
@@ -410,7 +406,7 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "responsive-block-editor-addons-block-post-timeline block-{$attributes['block_id']} wp-block-responsive-block-editor-addons-post-timeline featured{$attributes['postType']} align{$attributes['align']}";
+		$class = "responsive-block-editor-addons-block-post-timeline block-{$attributes['block_id']} wp-block-responsive-block-editor-addons-post-timeline featured{$attributes['postType']} align{$attributes['align']} responsive-block-editor-addons-timeline";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . $attributes['className'];
@@ -640,6 +636,9 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'default' => 20,
 				),
 				'authorSpace'         => array(
+					'type' => 'number',
+				),
+				'excerptSpace'		  => array(
 					'type' => 'number',
 				),
 				'blockSpace'          => array(

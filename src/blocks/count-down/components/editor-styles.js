@@ -112,7 +112,8 @@ function EditorStyles(props) {
     containerPaddingBottomMobile,
     containerPaddingLeftMobile,
     justifyItems,
-    displayInline,	
+    displayInline,
+    stackOnMobile,	
   } = props.attributes;
 
   let boxShadowPositionCSS = boxShadowPosition;
@@ -126,6 +127,8 @@ function EditorStyles(props) {
   const displayHours = showHoursBox ? "block" : "none";
   const displayMinutes = showMinutesBox ? "block" : "none";
   const displaySeconds = showSecondsBox ? "block" : "none";
+
+  let flexColumn = stackOnMobile ? 'column' : 'row';
 
   var selectors = {
     " .responsive-block-editor-addons-countdown-box-stylings": {
@@ -184,6 +187,7 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-countdown-container .responsive-block-editor-addons-countdown-items": {
         "justify-content": justifyItems,
+        "margin": 0,
     },
     " .responsive-block-editor-addons-countdown-item.responsive-block-editor-addons-countdown-item-days": {
         "display": displayDays,
@@ -248,6 +252,10 @@ function EditorStyles(props) {
     "padding-right": generateCSSUnit(containerPaddingRightMobile, "px"),
     "padding-bottom": generateCSSUnit(containerPaddingBottomMobile, "px"),
     "padding-left": generateCSSUnit(containerPaddingLeftMobile, "px"),
+  },
+  " .responsive-block-editor-addons-countdown-container .responsive-block-editor-addons-countdown-items": {
+      "flex-direction": flexColumn,
+      "align-items": "center",
   },
   };
 

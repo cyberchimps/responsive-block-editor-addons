@@ -15,7 +15,6 @@ function EditorStyles(props) {
     contentAlign,
     itemBackgroundColor,
     itemHoverBackgroundColor,
-    boxRadius,
     opacity,
     boxShadowColor,
     boxShadowHOffset,
@@ -61,6 +60,10 @@ function EditorStyles(props) {
     backgroundImageThree,
     backgroundImageFour,
     gradientDegree,
+    blockBorderRadius,
+    blockBorderColor,
+    blockBorderStyle,
+    blockBorderWidth,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -135,11 +138,29 @@ function EditorStyles(props) {
         imgopacity || 0
       )}),url(${backgroundImageFour})`
 
+    let gutterMargin = ""
+    if( count > 1){
+      if(gutter === "small"){
+        gutterMargin = '20px'
+      }else if (gutter === "medium"){
+        gutterMargin = '30px'
+      }else if (gutter === "large"){
+        gutterMargin = '40px'
+      }else if (gutter === "huge"){
+        gutterMargin = '50px'
+      }else {
+        gutterMargin = '';
+      }
+    }
+
   var selectors = {
     " ": {
       "background-color": itemBackgroundColor,
       "text-align": contentAlign,
-      "border-radius": generateCSSUnit(boxRadius, "px"),
+      "border-style": blockBorderStyle,
+      "border-color": blockBorderColor,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "justify-content": verticalAlignment + "!important",
       "background-color": `${hexToRgba(
         itemBackgroundColor || "#fff",
@@ -182,11 +203,11 @@ function EditorStyles(props) {
 
     ":hover .responsive-block-editor-addons-add-image": {     
       "background-image": hoverGradient,
-      "border-radius": generateCSSUnit(boxRadius, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     },
 
     ":hover": {
-      transform: `scale(${imageHoverEffect})`,
+      "transform": `scale(${imageHoverEffect})`,
     },
 
     " .responsive-block-editor-addons-imagebox-image": {
@@ -232,12 +253,19 @@ function EditorStyles(props) {
     },
   };
 
+  var externalStyles = {
+      ".wp-block-responsive-block-editor-addons-image-boxes-block-item-wrapper": {
+        "margin-bottom": `${gutterMargin}!important`,
+      },
+  }
+
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-image-boxes.block-${props.clientId}`;
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");
   styling_css += generateCSS(mobile_selectors, id, true, "mobile");
+  styling_css += generateCSS(externalStyles, "", true, "mobile");
 
   return styling_css;
 }

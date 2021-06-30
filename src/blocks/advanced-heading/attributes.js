@@ -159,6 +159,14 @@ const attributes = {
     type: "string",
     default: "center",
   },
+  textDecoration: {
+    type: "string",
+    default: "none"
+  },
+  textDecorationSubHeading: {
+    type: "string",
+    default: "none"
+  },
 };
 
 export default attributes;

@@ -14,6 +14,34 @@
 .has-medium-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
   max-width: calc(100% / 4 - 1.5em);
 }
+
+.has-no-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 4 - 0.2em);
+}
+
+.has-no-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2.975 - 0.3em);
+}
+
+.has-no-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2 - 0.15em);
+}
+
+@media (max-width: 767px) {
+  .has-no-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+    max-width: none;
+  }
+  
+  .has-no-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+    max-width: none;
+  }
+  
+  .has-no-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+    max-width: none;
+  }
+  
+}
+
 @media (min-width: 782px) {
   .has-columns.has-3-columns > *:not(.block-editor-inner-blocks),
   .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
@@ -48,7 +76,6 @@
   padding: 0;
   position: relative;
   width: 100%;
-  border: 2px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -127,7 +154,7 @@
 }
 
 .wp-block-responsive-block-editor-addons-image-boxes-block-item {
-  transform: scale(1.02);
+  transform: scale(1);
   transition: transform 0.3s;
 }
 

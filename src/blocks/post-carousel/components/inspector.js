@@ -113,6 +113,8 @@ export default class Inspector extends Component {
       displayPostTaxonomy,
       excerptLength,
       columns,
+      columnsTablet,
+      columnsMobile,
       pauseOnHover,
       infiniteLoop,
       transitionSpeed,
@@ -181,6 +183,18 @@ export default class Inspector extends Component {
       const { postsToShow } = attributes;
       setAttributes({
         columns: selectedColumns > postsToShow ? postsToShow : selectedColumns,
+      });
+    };
+    const columnsTabletCountOnChange = (selectedColumns) => {
+      const { postsToShow } = attributes;
+      setAttributes({
+        columnsTablet: selectedColumns > postsToShow ? postsToShow : selectedColumns,
+      });
+    };
+    const columnsMobileCountOnChange = (selectedColumns) => {
+      const { postsToShow } = attributes;
+      setAttributes({
+        columnsMobile: selectedColumns > postsToShow ? postsToShow : selectedColumns,
       });
     };
     const postsCountOnChange = (selectedPosts) => {
@@ -465,14 +479,77 @@ export default class Inspector extends Component {
                 max={75}
               />
             )}
-            <RangeControl
-              label={__("Columns", "responsive-block-editor-addons")}
-              value={columns}
-              onChange={(value) => columnsCountOnChange(value)}
-              min={1}
-              max={Math.min(4, postCount)}
-              required
-            />
+            <TabPanel
+              className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    " responsive-desktop-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className:
+                    " responsive-tablet-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className:
+                    " responsive-mobile-tab  responsive-responsive-tabs",
+                },
+              ]}
+            >
+              {(tab) => {
+                let tabout;
+
+                if ("mobile" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__("Columns Mobile", "responsive-block-editor-addons")}
+                        value={columnsMobile}
+                        onChange={(value) => columnsMobileCountOnChange(value)}
+                        min={1}
+                        max={Math.min(4, postCount)}
+                        required
+                      />
+                    </Fragment>
+                  );
+                } else if ("tablet" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__("Columns Tablet", "responsive-block-editor-addons")}
+                        value={columnsTablet}
+                        onChange={(value) => columnsTabletCountOnChange(value)}
+                        min={1}
+                        max={Math.min(4, postCount)}
+                        required
+                      />
+                    </Fragment>
+                  );
+                } else {
+                  tabout = (
+                    <Fragment>
+                     <RangeControl
+                      label={__("Columns", "responsive-block-editor-addons")}
+                      value={columns}
+                      onChange={(value) => columnsCountOnChange(value)}
+                      min={1}
+                      max={Math.min(4, postCount)}
+                      required
+                    />
+                    </Fragment>
+                  );
+                }
+
+                return <div>{tabout}</div>;
+              }}
+            </TabPanel>
             <QueryControls
               {...{ order, orderBy }}
               numberOfItems={attributes.postsToShow}

@@ -76,6 +76,8 @@ function EditorStyles(props) {
     paginationBorderWidth,
     paginationTextColor,
     paginationTextActiveColor,
+    rowGapTablet,
+    rowGapMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -128,9 +130,11 @@ function EditorStyles(props) {
     varpaginationActiveBorderColor = paginationActiveBorderColor;
   }
 
+
   var selectors = {
     " .responsive-block-editor-addons-post-grid-items": {
         "grid-column-gap": generateCSSUnit(varcolumnGap, "px"),
+        "grid-row-gap": generateCSSUnit(rowGap, "px"),
     },
     " article": {
       "background-color": bgColor,
@@ -138,7 +142,7 @@ function EditorStyles(props) {
       "border-color": blockBorderColor,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
-      "margin-bottom": generateCSSUnit(rowGap, "px"),
+      
       height: varequalHeight,
       "background-size": "cover",
       "box-shadow":
@@ -168,8 +172,11 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowPositionCSS,
     },
-    " .is-list article:not(:last-child)": {
+    " .is-list article": {
       "margin-bottom": generateCSSUnit(rowGap, "px"),
+    },
+    " .is-list article:last-child": {
+      "margin-bottom": 0,
     },
     " .responsive-block-editor-addons-block-post-grid-image img": {
       "border-radius": generateCSSUnit(imageBorderRadius, "px"),
@@ -268,6 +275,7 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-post-grid-items": {
       "grid-column-gap": generateCSSUnit(varcolumnGapMobile, "px"),
+      "grid-row-gap": generateCSSUnit(rowGapMobile, "px"),
     },
   };
 
@@ -277,6 +285,7 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-post-grid-items": {
       "grid-column-gap": generateCSSUnit(varcolumnGapTablet, "px"),
+      "grid-row-gap": generateCSSUnit(rowGapTablet, "px"),
     },
   };
 

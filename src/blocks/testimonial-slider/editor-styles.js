@@ -9,6 +9,8 @@ function EditorStyles(props) {
   const {
     classMigrate,
     headingAlign,
+    headingAlignMobile,
+    headingAlignTablet,
     companyColor,
     descColor,
     authorColor,
@@ -207,6 +209,9 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(nameFontSizeMobile, nameFontSizeType),
       "line-height": generateCSSUnit(nameLineHeightMobile, nameLineHeightType),
     },
+    " .responsive-block-editor-addons-tm__content": {
+      "text-align": headingAlignMobile,
+    },
   };
 
   var tablet_selectors = {
@@ -227,6 +232,9 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-tm__content": {
       "text-align": "center",
+    },
+    " .responsive-block-editor-addons-tm__content": {
+      "text-align": headingAlignTablet,
     },
   };
 
