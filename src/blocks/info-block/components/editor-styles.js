@@ -106,7 +106,20 @@ function EditorStyles(props) {
     ctaTextFontSizeTablet,
     ctaTextFontWeight,
     ctaTextLineHeight,
-    ctaBottomMargin
+    ctaBottomMargin,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
+    iconBackgroundColor,
+    iconBackgroundHoverColor,
+    iconBackgroundType,
+    iconBorderRadius,
+    iconBorderWidth,
+    iconPadding,
+
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -122,6 +135,36 @@ function EditorStyles(props) {
 
   if ("outset" === imageBoxShadowPosition) {
     imageBoxShadowPositionCSS = "";
+  }
+ 
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
+  }
+
+  let iconBgColor = '';
+  if("solid" === iconBackgroundType) {
+    iconBgColor = iconBackgroundColor;
+  }
+
+  let iconBgHoverColor = '';
+  if("solid" === iconBackgroundType) {
+    iconBgHoverColor = iconBackgroundHoverColor;
+  }
+
+  let iconBgPadding = 0;
+  if("none" !== iconBackgroundType) {
+    iconBgPadding = generateCSSUnit(iconPadding, "px");
+  }
+
+  let iconBorder = 'none';
+  if("outline" === iconBackgroundType) {
+    iconBorder = `${generateCSSUnit(iconBorderWidth, "px")} solid ${iconBackgroundColor}`;
+  }
+
+  let iconHoverBorder = 'none';
+  if("outline" === iconBackgroundType) {
+    iconHoverBorder = `${generateCSSUnit(iconBorderWidth, "px")} solid ${iconBackgroundHoverColor}`;
   }
 
   var selectors = {
@@ -149,6 +192,10 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
     },
 
+    ":hover": {
+        "box-shadow": `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`,
+      },
+
     " .responsive-block-editor-addons-ifb-image-icon-content.responsive-block-editor-addons-ifb-imgicon-wrap": {
       "margin-bottom": generateCSSUnit(iconBottomMargin, "px"),
       "margin-top": generateCSSUnit(iconTopMargin, "px"),
@@ -159,8 +206,17 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-ifb-icon": {
       "width": generateCSSUnit(resIconSize, "px"),
       "height": generateCSSUnit(resIconSize, "px"),
+      "padding": iconBgPadding,
+      "background-color": iconBgColor,
+      "border-radius": generateCSSUnit(iconBorderRadius, "px"),
+      "border": iconBorder,
     },
 
+    " .responsive-block-editor-addons-ifb-icon:hover": {
+      "background-color": iconBgHoverColor,
+      "border": iconHoverBorder,
+    },
+    
     " .responsive-block-editor-addons-ifb-image-content > img": {
       "border-color": resImageBorderColor,
       "border-radius": generateCSSUnit(resImageBorderRadius, "px"),

@@ -494,5 +494,52 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  hoverboxShadowColor: {
+    type: "string",
+    default: "#cccccc",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 6,
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 1,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
+  iconBackgroundColor: {
+    type: "string",
+    default: "#0066cc"
+  },
+  iconBackgroundHoverColor: {
+    type: "string"
+  },
+  iconBackgroundType: {
+    type: "string",
+    default: "none"
+  },
+  iconBorderRadius: {
+    type: "number",
+    default: 0,
+  },
+  iconPadding: {
+    type: "number",
+    default: 5
+  },
+  iconBorderWidth: {
+    type: "number",
+    default: 1
+  },
 };
 export default attributes;
