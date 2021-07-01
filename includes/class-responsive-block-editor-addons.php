@@ -20,6 +20,13 @@
 class Responsive_Block_Editor_Addons {
 
 	/**
+	 * Table of Contents Present on a Page.
+	 *
+	 * @var bool
+	 */
+	public static $table_of_contents_flag = false;
+
+	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    1.0.0
@@ -758,5 +765,21 @@ class Responsive_Block_Editor_Addons {
     public function load_dashicons_front_end() {
         wp_enqueue_style( 'dashicons' );
     }
+
+	/**
+	 * Add Wrapper to all the Blocks for fetching the Table of Contents Headings.
+	 *
+	 * @param string $content Post Content.
+	 *
+	 * @since 1.22.1
+	 */
+	public function add_table_of_contents_wrapper( $content ) {
+
+		if ( true === self::$table_of_contents_flag ) {
+			return '<div class="responsive-block-editor-addons-toc__entry-content"></div>' . $content;
+		}
+
+		return $content;
+	}
 
 }
