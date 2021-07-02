@@ -21,7 +21,7 @@ class TableOfContents extends React.Component {
         const getAllChildHeadingBlocks = parentBlock => {
             let childs = [];
             parentBlock.innerBlocks.forEach(childBlock => {
-                if (childBlock.name === 'responsive-block-editor-addons/advanced-heading') {
+                if (childBlock.name === 'responsive-block-editor-addons/advanced-heading' || childBlock.name === 'core/heading') {
                     childs.push(childBlock);
                 }
                 if (childBlock.innerBlocks.length > 0) {
@@ -34,7 +34,7 @@ class TableOfContents extends React.Component {
             let targetBlocks = [];
             const allBlocks = select('core/block-editor').getBlocks();
             allBlocks.forEach(block => {
-                if (block.name === 'responsive-block-editor-addons/advanced-heading') {
+                if (block.name === 'responsive-block-editor-addons/advanced-heading' || block.name === 'core/heading') {
                     targetBlocks.push(block);
                 } else if (block.innerBlocks.length > 0) {
                     let childHeadingBlocks = getAllChildHeadingBlocks(block);
@@ -54,7 +54,11 @@ class TableOfContents extends React.Component {
                         heading.headingTitle
                             ?.toString()
                             .toLowerCase()
-                            ?.replace(/( |<.+?>|&nbsp;)/g, "-");
+                            ?.replace(/( |<.+?>|&nbsp;)/g, "-")
+                        || heading.content
+                        ?.toString()
+                        .toLowerCase()
+                        ?.replace(/( |<.+?>|&nbsp;)/g, "-");
                     heading.anchor = encodeURIComponent(
                         heading.anchor?.replace(
                             /[^\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF\s-]/g,
@@ -125,7 +129,7 @@ class TableOfContents extends React.Component {
                     <a
                         href={`#${item.anchor}`}
                         dangerouslySetInnerHTML={{
-                            __html: item.headingTitle?.replace(/(<.+?>)/g, "")
+                            __html: item.headingTitle?.replace(/(<.+?>)/g, "") || item.content?.replace(/(<.+?>)/g, "")
                         }}
                     />
                     {
