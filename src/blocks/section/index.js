@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/section", {
     "This block allows you to add section in your webpage.",
     "responsive-block-editor-addons"
   ),
-  icon: "welcome-widgets-menus",
+  icon: ResponsiveBlockEditorAddonsIcons.section,
   category: "responsive_block_editor_addons",
   keywords: [
     __("section", "responsive-block-editor-addons"),

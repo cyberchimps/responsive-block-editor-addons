@@ -5,6 +5,9 @@ import edit from "./components/edit";
 import metadata from "./block.json";
 import save from "./components/save";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS.
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -29,7 +32,7 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
   /* translators: block description */
   description: __("Display multiple images.", "responsive-block-editor-addons"),
   attributes,
-  icon: "slides",
+  icon: ResponsiveBlockEditorAddonsIcons.image_slider,
   keywords: [
     "responsive-block-editor-addons",
     /* translators: block keyword */

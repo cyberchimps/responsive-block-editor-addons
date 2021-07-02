@@ -7,6 +7,9 @@ import attributes from "./attributes";
 import Edit from "./components/edit";
 import Save from "./components/save";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/pricing-list", {
     "This block allows you to add pricing List with multiple rows and columns.",
     "responsive-block-editor-addons"
   ),
-  icon: "welcome-widgets-menus",
+  icon: ResponsiveBlockEditorAddonsIcons.pricing_list,
   category: "responsive_block_editor_addons",
   keywords: [
     __("pricing", "responsive-block-editor-addons"),

@@ -5,6 +5,9 @@
 // Import block dependencies and components
 import edit from "./components/edit";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -25,7 +28,7 @@ registerBlockType("responsive-block-editor-addons/post-carousel", {
     "Display posts as a carousel.",
     "responsive-block-editor-addons"
   ),
-  icon: "slides",
+  icon: ResponsiveBlockEditorAddonsIcons.post_carousel,
   category: "responsive_block_editor_addons",
   keywords: [
     __("slider", "responsive-block-editor-addons"),

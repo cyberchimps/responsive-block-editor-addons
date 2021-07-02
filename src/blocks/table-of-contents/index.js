@@ -6,6 +6,9 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 import attributes from "./attributes";
 // Import CSS
 import "./styles/style.scss";
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/table-of-contents", {
     "This block allows access to large contents of post/page through the heading of the contents.",
     "responsive-block-editor-addons"
   ),
-  icon: "welcome-widgets-menus",
+  icon: ResponsiveBlockEditorAddonsIcons.table_of_contents,
   category: "responsive_block_editor_addons",
   keywords: [
     __("table of contents", "responsive-block-editor-addons"),

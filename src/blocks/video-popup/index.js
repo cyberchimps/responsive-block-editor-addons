@@ -4,6 +4,9 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS.
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -22,7 +25,7 @@ registerBlockType("responsive-block-editor-addons/video-popup", {
   category: "responsive_block_editor_addons",
   /* translators: block description */
   description: __("Display a video popup", "responsive-block-editor-addons"),
-  icon: "video-alt3",
+  icon: ResponsiveBlockEditorAddonsIcons.video_popup,
   keywords: [
     __("video", "responsive-block-editor-addons"),
     /* translators: block keyword */
