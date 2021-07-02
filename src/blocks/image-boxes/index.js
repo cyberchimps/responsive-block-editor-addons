@@ -7,6 +7,9 @@ import React from "react";
 import Style from "style-it";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 import Edit from "./components/edit";
 import Save from "./components/save";
 
@@ -27,7 +30,7 @@ registerBlockType("responsive-block-editor-addons/image-boxes-block", {
     "This block allows you to add descriptions blocks.",
     "responsive-block-editor-addons"
   ),
-  icon: "welcome-widgets-menus",
+  icon: ResponsiveBlockEditorAddonsIcons.image_boxes,
   category: "responsive_block_editor_addons",
   keywords: [
     __("imagebox", "responsive-block-editor-addons"),

@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Components
 const { __ } = wp.i18n;
 
@@ -37,7 +40,7 @@ registerBlockType(
       "Add a call to action section with a title, text, and a button.",
       "responsive-block-editor-addons"
     ),
-    icon: "megaphone",
+    icon: ResponsiveBlockEditorAddonsIcons.call_to_action,
     category: "responsive_block_editor_addons",
     keywords: [
       __("call to action", "responsive-block-editor-addons"),

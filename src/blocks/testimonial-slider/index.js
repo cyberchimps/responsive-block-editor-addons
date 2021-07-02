@@ -8,6 +8,10 @@ import save from "./components/save";
 import attributes from "./attributes";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 const { __ } = wp.i18n;
 
 const { registerBlockType } = wp.blocks;
@@ -18,7 +22,7 @@ registerBlockType("responsive-block-editor-addons/testimonial-slider", {
     "Add a testimonial slider.",
     "responsive-block-editor-addons"
   ),
-  icon: "format-quote",
+  icon: ResponsiveBlockEditorAddonsIcons.testimonial_slider,
   category: "responsive_block_editor_addons",
   keywords: [
     __("testimonial slider", "responsive-block-editor-addons"),

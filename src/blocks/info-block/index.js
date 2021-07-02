@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/info-block", {
     "This block allows you to add icon or image along with heading and description.",
     "responsive-block-editor-addons"
   ),
-  icon: "align-left",
+  icon: ResponsiveBlockEditorAddonsIcons.info_block,
   category: "responsive_block_editor_addons",
   keywords: [
     __("information", "responsive-block-editor-addons"),
