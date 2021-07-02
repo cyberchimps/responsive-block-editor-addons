@@ -37,6 +37,10 @@ registerBlockType("responsive-block-editor-addons/advanced-heading", {
 
   attributes: attributes,
 
+  supports: {
+		anchor: true
+	},
+
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

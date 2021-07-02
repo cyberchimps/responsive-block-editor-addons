@@ -169,7 +169,6 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(blockRightMargin, "px"),
       "z-index": zIndex,
       display: "flex",
-      "justify-content": justifyContent,
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#fff", 1)}`
@@ -180,6 +179,7 @@ function EditorStyles(props) {
       "background-size": backgroundSize
     },
     " .responsive-block-editor-addons-toc__title-wrap": {
+      "justify-content": justifyContent,
       "font-family": headingFontFamily,
       "font-weight": headingFontWeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),

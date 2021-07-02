@@ -351,48 +351,48 @@ export default class Inspector extends Component {
           )}
           <h2>{__("Select Headings", "responsive-block-editor-addons")}</h2>
             <PanelRow>
-              <label htmlFor={'rbea_toggle_h1'}>H1</label>
               <ToggleControl
+                label={__("H1", "responsive-block-editor-addons")}
                 id={'rbea_toggle_h1'}
                 checked={allowedAnchors['h1']}
                 onChange={value => setAttributes({ allowedAnchors: { ...allowedAnchors, h1: value } })}
               />
             </PanelRow>
             <PanelRow>
-              <label htmlFor={'rbea_toggle_h2'}>H2</label>
               <ToggleControl
+                label={__("H2", "responsive-block-editor-addons")}
                 id={'rbea_toggle_h2'}
                 checked={allowedAnchors['h2']}
                 onChange={value => setAttributes({ allowedAnchors: { ...allowedAnchors, h2: value } })}
               />
             </PanelRow>
             <PanelRow>
-              <label htmlFor={'rbea_toggle_h3'}>H3</label>
               <ToggleControl
+                label={__("H3", "responsive-block-editor-addons")}
                 id={'rbea_toggle_h3'}
                 checked={allowedAnchors['h3']}
                 onChange={value => setAttributes({ allowedAnchors: { ...allowedAnchors, h3: value } })}
               />
             </PanelRow>
             <PanelRow>
-              <label htmlFor={'rbea_toggle_h4'}>H4</label>
               <ToggleControl
+                label={__("H4", "responsive-block-editor-addons")}
                 id={'rbea_toggle_h4'}
                 checked={allowedAnchors['h4']}
                 onChange={value => setAttributes({ allowedAnchors: { ...allowedAnchors, h4: value } })}
               />
             </PanelRow>
             <PanelRow>
-              <label htmlFor={'rbea_toggle_h5'}>H5</label>
               <ToggleControl
+                label={__("H5", "responsive-block-editor-addons")}
                 id={'rbea_toggle_h5'}
                 checked={allowedAnchors['h5']}
                 onChange={value => setAttributes({ allowedAnchors: { ...allowedAnchors, h5: value } })}
               />
             </PanelRow>
             <PanelRow>
-              <label htmlFor={'rbea_toggle_h6'}>H6</label>
               <ToggleControl
+                label={__("H6", "responsive-block-editor-addons")}
                 id={'rbea_toggle_h6'}
                 checked={allowedAnchors['h6']}
                 onChange={value => setAttributes({ allowedAnchors: { ...allowedAnchors, h6: value } })}

@@ -7472,7 +7472,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 					$( document ).ready(function() {
 						RBEATableOfContents.init()
-						RBEATableOfContents._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+						RBEATableOfContents._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $id ); ?>' );
 					})
 				})( jQuery )       
 			</script>
@@ -7515,7 +7515,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'        => self::get_css_value( $attr['blockRightMargin'], 'px' ) . '!important',
 					'z-index'             => $attr['zIndex'],
 					'display'             => 'flex',
-					'justify-content'     => $justifyContent,
 					'background-position' => $attr['backgroundPosition'],
 					'background-repeat'   => $attr['backgroundRepeat'],
 					'background-size'     => $attr['backgroundSize'],
@@ -7525,6 +7524,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					) : null,
 				),
 				' .responsive-block-editor-addons-toc__title-wrap' => array(
+					'justify-content'  => $justifyContent,
 					'font-family'      => $attr['headingFontFamily'],
 					'font-weight'      => $attr['headingFontWeight'],
 					'font-size'        => self::get_css_value( $attr['headingFontSize'], 'px' ),
