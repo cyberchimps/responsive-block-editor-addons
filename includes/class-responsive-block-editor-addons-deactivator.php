@@ -28,6 +28,8 @@ class Responsive_Block_Editor_Addons_Deactivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {}
+	public static function deactivate() {
+		delete_option( 'rbea_already_done' );
+	}
 
 }
