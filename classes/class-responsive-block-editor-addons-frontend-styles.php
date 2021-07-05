@@ -7570,13 +7570,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-right-width'  => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
 					'border-bottom-width' => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
 				),
-				' .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a' => array(
+				' .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a' => array(
 					'color' => $attr['bodyColor'],
 				),
 				' .responsive-block-editor-addons-toc__list-wrap:hover' => array(
 					'background-color' => $attr['bodyBgColorHover'],
 				),
-				' .responsive-block-editor-addons-toc__list-wrap:hover .responsive-block-editor-addons-toc__list li a' => array(
+				' .responsive-block-editor-addons-toc__list-wrap:hover .responsive-block-editor-addons-toc__list li, .responsive-block-editor-addons-toc__list-wrap:hover .responsive-block-editor-addons-toc__list li a' => array(
 					'color' => $attr['bodyColorHover'],
 				),
 				' .responsive-block-editor-addons-toc__wrap' => array(
