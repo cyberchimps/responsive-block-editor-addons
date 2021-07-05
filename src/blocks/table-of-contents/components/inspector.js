@@ -315,7 +315,7 @@ export default class Inspector extends Component {
             ]}
           />
           <Fragment>
-            <h2>{__("Alignment", "responsive-block-editor-addons")}</h2>
+            <h2>{__("Header Alignment", "responsive-block-editor-addons")}</h2>
             <BlockAlignmentToolbar
               value={align}
               onChange={(value) =>

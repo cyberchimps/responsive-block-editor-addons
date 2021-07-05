@@ -6,6 +6,7 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
+import deprecated from "./components/deprecated";
 
 //Import Block Icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -36,6 +37,8 @@ registerBlockType("responsive-block-editor-addons/advanced-heading", {
   ],
 
   attributes: attributes,
+
+  deprecated,
 
   supports: {
 		anchor: true
