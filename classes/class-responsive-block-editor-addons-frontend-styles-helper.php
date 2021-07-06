@@ -75,7 +75,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 			}
 
 			$css = $this->get_styles( $blocks );
-			sprintf( "<style id='rbea-frontend-styles'>$css</style>" );
+			echo "<style id='rbea-frontend-styles'>$css</style>"; //phpcs:ignore
 		}
 
 		/**

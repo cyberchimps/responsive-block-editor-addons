@@ -811,15 +811,7 @@ class Responsive_Block_Editor_Addons {
 		if ( 'index.php' === $pagenow ) {
 			$dont_disturb = esc_url( get_admin_url() . '?already_done=1' );
 			$reviewurl    = esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' );
-			sprintf(
-				'<div class="rbea-review-notice updated">
-				<p><span>Hey, we hope you are enjoying building pages with <strong>Responsive Block Editor Addons</strong>. Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.</span></p>
-				<div class="rbea-review-btns-container">
-				<div class="rbea-review-btns rbea-review-rate-us-btn"><a href="' . $reviewurl . '" target="_blank">Rate Us<i class="dashicons dashicons-thumbs-up"></i></a></div>
-				<div class="rbea-review-btns rbea-review-already-done-btn"><a href="' . $dont_disturb . '">Already Done?</a></div>
-				</div>
-				</div>'
-			);
+			echo '<div class="rbea-review-notice updated"><p><span>Hey, we hope you are enjoying building pages with <strong>Responsive Block Editor Addons</strong>. Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.</span></p><div class="rbea-review-btns-container"><div class="rbea-review-btns rbea-review-rate-us-btn"><a href="' . $reviewurl . '" target="_blank">Rate Us<i class="dashicons dashicons-thumbs-up"></i></a></div><div class="rbea-review-btns rbea-review-already-done-btn"><a href="' . $dont_disturb . '">Already Done?</a></div></div></div>'; //phpcs:ignore
 		}
 	}
 
