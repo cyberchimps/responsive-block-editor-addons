@@ -126,13 +126,13 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 				);
 
 				$post_grid_markup .= sprintf(
-					'<span className="responsive-block-editor-addons-ifb-icon">'.Responsive_Block_Editor_Addons_Frontend_Styles_Helper::render_svg_html($attributes['icon']).'</span>'
+					'<span className="responsive-block-editor-addons-ifb-icon">' . Responsive_Block_Editor_Addons_Frontend_Styles_Helper::render_svg_html( $attributes['icon'] ) . '</span>'
 				);
 
 				$post_grid_markup .= sprintf(
 					'</div>'
 				);
-				
+
 				$post_grid_markup .= sprintf(
 					'</span>'
 				);
@@ -389,7 +389,7 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 		$post_grid_markup .= sprintf(
 			'</div>'
 		);
-		
+
 		$post_grid_markup .= sprintf(
 			'<div class="responsive-block-editor-addons-timeline__line">
 			  <div class="responsive-block-editor-addons-timeline__line__inner"></div>
@@ -459,13 +459,13 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 			$section_tag = 'section';
 		}
 
-		$boxShadowPositionCSS = $attributes['boxShadowPosition'];
+		$box_shadow_position_css = $attributes['boxShadowPosition'];
 
 		if ( 'outset' === $attributes['boxShadowPosition'] ) {
-			$boxShadowPositionCSS = '';
+			$box_shadow_position_css = '';
 		}
 
-		$styles ='';
+		$styles = '';
 
 		/* Output the post markup */
 		$block_content = sprintf(
@@ -480,17 +480,29 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 	}
 }
 
+/**
+ * Get align classes function.
+ *
+ * @param [type] $index_val The index_val.
+ * @return [type]
+ */
 function get_align_classes( $index_val ) {
 	$classes   = array();
 	$classes[] = 'responsive-block-editor-addons-timeline__widget';
-	$classes[] = ( 0 == $index_val % 2 ) ? 'responsive-block-editor-addons-timeline__right' : ' responsive-block-editor-addons-timeline__left';
+	$classes[] = ( 0 === $index_val % 2 ) ? 'responsive-block-editor-addons-timeline__right' : ' responsive-block-editor-addons-timeline__left';
 	return implode( ' ', $classes );
 }
 
+/**
+ * Get day align classes function.
+ *
+ * @param [type] $index_val The index_val.
+ * @return [type]
+ */
 function get_day_align_classes( $index_val ) {
 	$classes   = array();
 	$classes[] = 'responsive-block-editor-addons-timeline__day-new';
-	$classes[] = ( 0 == $index_val % 2 ) ? 'responsive-block-editor-addons-timeline__day-right' : 'responsive-block-editor-addons-timeline__day-left';
+	$classes[] = ( 0 === $index_val % 2 ) ? 'responsive-block-editor-addons-timeline__day-right' : 'responsive-block-editor-addons-timeline__day-left';
 	return implode( ' ', $classes );
 }
 
@@ -638,7 +650,7 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				'authorSpace'         => array(
 					'type' => 'number',
 				),
-				'excerptSpace'		  => array(
+				'excerptSpace'        => array(
 					'type' => 'number',
 				),
 				'blockSpace'          => array(
@@ -663,19 +675,19 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'string',
 					'default' => '',
 				),
-				'headingFontFamily'      => array(
+				'headingFontFamily'   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'authorFontFamily'      => array(
+				'authorFontFamily'    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'contentFontFamily'      => array(
+				'contentFontFamily'   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'continueFontFamily'      => array(
+				'continueFontFamily'  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
@@ -743,9 +755,9 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 1.75,
 				),
-				'icon' => array(
-					'type' => "string",
-					'default' => "fa fa-calendar-alt",
+				'icon'                => array(
+					'type'    => 'string',
+					'default' => 'fa fa-calendar-alt',
 				),
 				'iconSize'            => array(
 					'type'    => 'number',
@@ -924,10 +936,11 @@ function responsive_block_editor_addons_post_timeline_get_image_src_landscape( $
 		'responsive-block-editor-addons-block-post-timeline-landscape',
 		false
 	);
-	if($feat_img_array)
-	return $feat_img_array[0];
-	else
-	    return false;
+	if ( $feat_img_array ) {
+		return $feat_img_array[0];
+	} else {
+		return false;
+	}
 }
 
 /**
@@ -943,10 +956,11 @@ function responsive_block_editor_addons_post_timeline_get_image_src_square( $obj
 		'responsive-block-editor-addons-block-post-timeline-square',
 		false
 	);
-    if($feat_img_array)
-        return $feat_img_array[0];
-    else
-        return false;
+	if ( $feat_img_array ) {
+		return $feat_img_array[0];
+	} else {
+		return false;
+	}
 }
 
 /**
@@ -969,20 +983,20 @@ function responsive_block_editor_addons_post_timeline_get_author_info( $object, 
 
 if ( ! function_exists( 'responsive_block_editor_addons_add_custom_orderby_params' ) ) {
 	/**
-	 The callback to add `rand` as an option for orderby param in REST API.
-	 Hook to `rest_{$this->post_type}_collection_params` filter.
-
-	 @param array $query_params Accepted parameters.
-	 @return array
-
-	 @see https://felipeelia.dev/wordpress-rest-api-enable-random-order-of-posts-list/
-	 @see https://www.timrosswebdevelopment.com/wordpress-rest-api-post-order/
+	 * The callback to add `rand` as an option for orderby param in REST API.
+	 * Hook to `rest_{$this->post_type}_collection_params` filter.
+	 *
+	 * @param array $query_params Accepted parameters.
+	 * @return array
+	 *
+	 * @see https://felipeelia.dev/wordpress-rest-api-enable-random-order-of-posts-list/
+	 * @see https://www.timrosswebdevelopment.com/wordpress-rest-api-post-order/
 	 */
 	function responsive_block_editor_addons_add_custom_orderby_params( $query_params ) {
-		if ( ! in_array( 'rand', $query_params['orderby']['enum'] ) ) {
+		if ( ! in_array( 'rand', $query_params['orderby']['enum'] ) ) { // phpcs:ignore
 			$query_params['orderby']['enum'][] = 'rand';
 		}
-		if ( ! in_array( 'menu_order', $query_params['orderby']['enum'] ) ) {
+		if ( ! in_array( 'menu_order', $query_params['orderby']['enum'] ) ) { // phpcs:ignore
 			$query_params['orderby']['enum'][] = 'menu_order';
 		}
 		return $query_params;
@@ -991,14 +1005,11 @@ if ( ! function_exists( 'responsive_block_editor_addons_add_custom_orderby_param
 
 if ( ! function_exists( 'responsive_block_editor_addons_add_custom_orderby' ) ) {
 	/**
-	 Add `rand` as an option for orderby param in REST API.
-	 Hook to `rest_{$this->post_type}_collection_params` filter.
-
-	 @param array $query_params Accepted parameters.
-	 @return array
-
-	 @see https://felipeelia.dev/wordpress-rest-api-enable-random-order-of-posts-list/
-	 @see https://www.timrosswebdevelopment.com/wordpress-rest-api-post-order/
+	 * Add `rand` as an option for orderby param in REST API.
+	 * Hook to `rest_{$this->post_type}_collection_params` filter.
+	 *
+	 * @see https://felipeelia.dev/wordpress-rest-api-enable-random-order-of-posts-list/
+	 * @see https://www.timrosswebdevelopment.com/wordpress-rest-api-post-order/
 	 */
 	function responsive_block_editor_addons_add_custom_orderby() {
 		$post_types = get_post_types( array( 'public' => true ) );

@@ -83,7 +83,7 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'admin_init', array( $this, 'responsive_block_editor_addons_maybe_redirect_to_getting_started' ) );
 
 		add_action( 'wp_ajax_responsive_block_editor_post_pagination', array( $this, 'post_pagination' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
 		// Check the installation date of the RBEA plugin.
 		add_action( 'admin_init', array( $this, 'rbea_check_installation_date' ) );
@@ -102,9 +102,9 @@ class Responsive_Block_Editor_Addons {
 
 		if ( isset( $_POST['attributes'] ) ) {
 
-			$query = $this->get_query( $_POST['attributes'], 'grid' );
+			$query = $this->get_query( $_POST['attributes'], 'grid' ); //phpcs:ignore
 
-			$pagination_markup = $this->render_pagination( $query, $_POST['attributes'] );
+			$pagination_markup = $this->render_pagination( $query, $_POST['attributes'] ); //phpcs:ignore
 
 			wp_send_json_success( $pagination_markup );
 		}
@@ -425,7 +425,7 @@ class Responsive_Block_Editor_Addons {
 									<h4>
 										<?php
 											/* translators: %s: search term */
-											$title = sprintf( __( '%s', 'responsive-block-editor-addons' ), $single_feature[0] );
+											$title = sprintf( __( '%s', 'responsive-block-editor-addons' ), $single_feature[0] ); //phpcs:ignore
 											echo esc_html( $title );
 										?>
 									</h4>
@@ -503,7 +503,7 @@ class Responsive_Block_Editor_Addons {
 
 		delete_transient( 'responsive_block_editor_addons_activation_redirect' );
 
-		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) { // phpcs:ignore
 			return;
 		}
 
@@ -692,7 +692,7 @@ class Responsive_Block_Editor_Addons {
 		wp_enqueue_script(
 			'responsive_blocks-frontend-js',
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
-			array('jquery'),
+			array( 'jquery' ),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
 			true
 		);
@@ -757,19 +757,19 @@ class Responsive_Block_Editor_Addons {
 			'responsive-block-editor-addons',
 		);
 
-		if ( empty( $_GET['page'] ) || ! in_array( $_GET['page'], $responsive_block_editor_addons_pages, true ) ) {
+		if ( empty( $_GET['page'] ) || ! in_array( $_GET['page'], $responsive_block_editor_addons_pages, true ) ) { //phpcs:ignore
 			return;
 		}
 
 		remove_all_actions( 'admin_notices' );
 	}
 
-    /**
-    * Adding Dashicons in WordPress Front-end
-    */
-    public function load_dashicons_front_end() {
-        wp_enqueue_style( 'dashicons' );
-    }
+	/**
+	 * Adding Dashicons in WordPress Front-end
+	 */
+	public function load_dashicons_front_end() {
+		wp_enqueue_style( 'dashicons' );
+	}
 
 	/**
 	 * Add Wrapper to all the Blocks for fetching the Table of Contents Headings.
@@ -811,13 +811,15 @@ class Responsive_Block_Editor_Addons {
 		if ( 'index.php' === $pagenow ) {
 			$dont_disturb = esc_url( get_admin_url() . '?already_done=1' );
 			$reviewurl    = esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' );
-			echo '<div class="rbea-review-notice updated">
-			<p><span>Hey, we hope you are enjoying building pages with <strong>Responsive Block Editor Addons</strong>. Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.</span></p>
-			<div class="rbea-review-btns-container">
-			<div class="rbea-review-btns rbea-review-rate-us-btn"><a href="' . $reviewurl . '" target="_blank">Rate Us<i class="dashicons dashicons-thumbs-up"></i></a></div>
-			<div class="rbea-review-btns rbea-review-already-done-btn"><a href="' . $dont_disturb . '">Already Done?</a></div>
-			</div>
-			</div>';
+			sprintf(
+				'<div class="rbea-review-notice updated">
+				<p><span>Hey, we hope you are enjoying building pages with <strong>Responsive Block Editor Addons</strong>. Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.</span></p>
+				<div class="rbea-review-btns-container">
+				<div class="rbea-review-btns rbea-review-rate-us-btn"><a href="' . $reviewurl . '" target="_blank">Rate Us<i class="dashicons dashicons-thumbs-up"></i></a></div>
+				<div class="rbea-review-btns rbea-review-already-done-btn"><a href="' . $dont_disturb . '">Already Done?</a></div>
+				</div>
+				</div>'
+			);
 		}
 	}
 
@@ -828,8 +830,8 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_review_already_done() {
 		$dnd = '';
-		if ( isset( $_GET['already_done'] ) && ! empty( $_GET['already_done'] ) ) {
-			$dnd = esc_attr( $_GET['already_done'] );
+		if ( isset( $_GET['already_done'] ) && ! empty( $_GET['already_done'] ) ) { //phpcs:ignore
+			$dnd = esc_attr( $_GET['already_done'] ); //phpcs:ignore
 		}
 		if ( '1' === $dnd ) {
 			add_option( 'rbea_already_done', true );

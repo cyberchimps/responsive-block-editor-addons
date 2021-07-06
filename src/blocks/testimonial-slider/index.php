@@ -1,4 +1,10 @@
 <?php
+/**
+ * Server-side rendering for the testimonial slider block.
+ *
+ * @since   1.0.0
+ * @package Responsive Blocks
+ */
 
 /**
  * Add Frontend assets.
@@ -6,19 +12,19 @@
  * @param Array $attributes Attributes.
  */
 function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets( $attributes ) {
-    if ( has_block( 'responsive-block-editor-addons/testimonial-slider' ) ) {
-        wp_enqueue_script(
-            'test-slick-js',
-            RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/js/vendors/slick.min.js',
-            array( 'jquery' ),
-            RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
-            true
-        );
+	if ( has_block( 'responsive-block-editor-addons/testimonial-slider' ) ) {
+		wp_enqueue_script(
+			'test-slick-js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/js/vendors/slick.min.js',
+			array( 'jquery' ),
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+			true
+		);
 
-        $selector = '.responsive-testimonial-slick-carousel';
-        $js       = 'jQuery( document ).ready( function( $ ) { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).slick( ); } } );';
-        wp_add_inline_script( 'test-slick-js-testimonial-carousel', $js );
-    }
+		$selector = '.responsive-testimonial-slick-carousel';
+		$js       = 'jQuery( document ).ready( function( $ ) { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).slick( ); } } );';
+		wp_add_inline_script( 'test-slick-js-testimonial-carousel', $js );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_testimonial_carousel_add_frontend_assets' );
 add_action( 'the_post', 'responsive_block_editor_addons_testimonial_carousel_add_frontend_assets' );
@@ -27,27 +33,27 @@ add_action( 'the_post', 'responsive_block_editor_addons_testimonial_carousel_add
  * Generate Testimonical Carousel script dynamically
  */
 function testimonial_carousel_generate_script() {
-    global $post;
-    $this_post = $post;
+	global $post;
+	$this_post = $post;
 
-    if ( ! is_object( $this_post ) ) {
-        return;
-    }
+	if ( ! is_object( $this_post ) ) {
+		return;
+	}
 
-    if ( ! isset( $this_post->ID ) ) {
-        return;
-    }
+	if ( ! isset( $this_post->ID ) ) {
+		return;
+	}
 
-    if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
+	if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
 
-        $blocks = responsive_parse_gutenberg_blocks_testimonial_carousel( $this_post->post_content );
+		$blocks = responsive_parse_gutenberg_blocks_testimonial_carousel( $this_post->post_content );
 
-        if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-            return;
-        }
+		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+			return;
+		}
 
-        get_responsive_testimonial_carousel_scripts( $blocks );
-    }
+		get_responsive_testimonial_carousel_scripts( $blocks );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'testimonial_carousel_generate_script' );
@@ -59,9 +65,9 @@ add_action( 'wp_enqueue_scripts', 'testimonial_carousel_generate_script' );
  * @return array[]
  */
 function responsive_parse_gutenberg_blocks_testimonial_carousel( $content ) {
-    global $wp_version;
+	global $wp_version;
 
-    return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+	return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 
 }
 
@@ -71,29 +77,29 @@ function responsive_parse_gutenberg_blocks_testimonial_carousel( $content ) {
  * @param WP_Block_Type $blocks Block.
  */
 function get_responsive_testimonial_carousel_scripts( $blocks ) {
-    global $responsive_post_carousel_js;
-    foreach ( $blocks as $i => $block ) {
-        if ( is_array( $block ) ) {
-            if ( 'core/block' === $block['blockName'] ) {
-                $id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+	global $responsive_post_carousel_js;
+	foreach ( $blocks as $i => $block ) {
+		if ( is_array( $block ) ) {
+			if ( 'core/block' === $block['blockName'] ) {
+				$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
-                if ( $id ) {
-                    $content = get_post_field( 'post_content', $id );
+				if ( $id ) {
+					$content = get_post_field( 'post_content', $id );
 
-                    $reusable_blocks = responsive_parse_gutenberg_blocks_testimonial_carousel( $content );
+					$reusable_blocks = responsive_parse_gutenberg_blocks_testimonial_carousel( $content );
 
-                    get_responsive_testimonial_carousel_scripts( $reusable_blocks );
-                }
-            } else {
-                // Get JS for the Block.
-                $responsive_post_carousel_js .= get_responsive_testimonial_carousel_block_js( $block );
-            }
-        }
-    }
+					get_responsive_testimonial_carousel_scripts( $reusable_blocks );
+				}
+			} else {
+				// Get JS for the Block.
+				$responsive_post_carousel_js .= get_responsive_testimonial_carousel_block_js( $block );
+			}
+		}
+	}
 
-    if ( ! empty( $responsive_post_carousel_js ) ) {
-        wp_add_inline_script( 'test-slick-js', $responsive_post_carousel_js );
-    }
+	if ( ! empty( $responsive_post_carousel_js ) ) {
+		wp_add_inline_script( 'test-slick-js', $responsive_post_carousel_js );
+	}
 }
 
 /**
@@ -214,43 +220,43 @@ function get_responsive_testimonial_js( $attr, $id ) { 			// @codingStandardsIgn
  * @return array
  */
 function get_responsive_testimonial_carousel_default_attributes() {
-    return array(
-        'blockAlign'            => 'left',
-        'columns'            => 1,
-        'autoplaySpeed'      => 2000,
-        'autoplay'           => true,
-        'infiniteLoop'       => true,
-        'pauseOnHover'       => true,
-        'transitionSpeed'    => 500,
-        'tcolumns'           => 1,
-        'mcolumns'           => 1,
-        'arrowSize'          => 20,
-        'arrowDots'          => 'arrows_dots',
-        'arrowColor'         => '#333',
-        'arrowBorderSize'    => 1,
-        'arrowBorderRadius'  => 0,
-        'postsToShow'        => 6,
-        'displayPostDate'    => true,
-        'displayPostExcerpt' => true,
-        'displayPostAuthor'  => true,
-        'displayPostImage'   => false,
-        'displayPostLink'    => true,
-        'displayPostTitle'   => true,
-        'postTitleTag'       => 'h3',
-        'align'              => 'center',
-        'order'              => 'desc',
-        'orderBy'            => 'date',
-        'readMoreText'       => 'Continue Reading',
-        'offset'             => 0,
-        'excerptLength'      => 20,
-        'postType'           => 'post',
-        'sectionTag'         => 'section',
-        'sectionTitleTag'    => 'h2',
-        'imageSize'          => 'full',
-        'bgColor'            => '#ffffff',
-        'contentPadding'     => 20,
-        'contentPaddingMobile'     => 20,
-        'blockPadding'      => 45,
-    );
+	return array(
+		'blockAlign'           => 'left',
+		'columns'              => 1,
+		'autoplaySpeed'        => 2000,
+		'autoplay'             => true,
+		'infiniteLoop'         => true,
+		'pauseOnHover'         => true,
+		'transitionSpeed'      => 500,
+		'tcolumns'             => 1,
+		'mcolumns'             => 1,
+		'arrowSize'            => 20,
+		'arrowDots'            => 'arrows_dots',
+		'arrowColor'           => '#333',
+		'arrowBorderSize'      => 1,
+		'arrowBorderRadius'    => 0,
+		'postsToShow'          => 6,
+		'displayPostDate'      => true,
+		'displayPostExcerpt'   => true,
+		'displayPostAuthor'    => true,
+		'displayPostImage'     => false,
+		'displayPostLink'      => true,
+		'displayPostTitle'     => true,
+		'postTitleTag'         => 'h3',
+		'align'                => 'center',
+		'order'                => 'desc',
+		'orderBy'              => 'date',
+		'readMoreText'         => 'Continue Reading',
+		'offset'               => 0,
+		'excerptLength'        => 20,
+		'postType'             => 'post',
+		'sectionTag'           => 'section',
+		'sectionTitleTag'      => 'h2',
+		'imageSize'            => 'full',
+		'bgColor'              => '#ffffff',
+		'contentPadding'       => 20,
+		'contentPaddingMobile' => 20,
+		'blockPadding'         => 45,
+	);
 }
-?>
+
