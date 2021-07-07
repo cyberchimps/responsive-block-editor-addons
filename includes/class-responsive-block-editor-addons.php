@@ -85,8 +85,8 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'wp_ajax_responsive_block_editor_post_pagination', array( $this, 'post_pagination' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
-		// Check the installation date of the RBEA plugin.
-		add_action( 'admin_init', array( $this, 'rbea_check_installation_date' ) );
+		// Display admin notice for RBEA review.
+		add_action( 'admin_notices', array( $this, 'rbea_admin_review_notice' ) );
 
 		// Check the input value on review admin notice.
 		add_action( 'admin_init', array( $this, 'rbea_review_already_done' ), 5 );
@@ -788,30 +788,40 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
-	 * Function to check the installation date of RBEA plugin.
+	 * Function to display RBEA review notice on admin page.
 	 *
 	 * @return void
 	 */
-	public function rbea_check_installation_date() {
-		$install_date = get_option( 'responsive_block_editor_addons_activation_date' );
-		$past_date    = strtotime( '-30 days' );
-		$already_done = get_option( 'rbea_already_done' );
-		if ( $past_date >= $install_date && ! $already_done ) {
-			add_action( 'admin_notices', array( $this, 'rbea_display_admin_notice' ) );
-		}
-	}
-
-	/**
-	 * Function to display admin notice for RBEA review.
-	 *
-	 * @return void
-	 */
-	public function rbea_display_admin_notice() {
-		global $pagenow;
-		if ( 'index.php' === $pagenow ) {
-			$dont_disturb = esc_url( get_admin_url() . '?already_done=1' );
-			$reviewurl    = esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' );
-			echo '<div class="rbea-review-notice updated"><p><span>Hey, we hope you are enjoying building pages with <strong>Responsive Block Editor Addons</strong>. Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.</span></p><div class="rbea-review-btns-container"><div class="rbea-review-btns rbea-review-rate-us-btn"><a href="' . $reviewurl . '" target="_blank">Rate Us<i class="dashicons dashicons-thumbs-up"></i></a></div><div class="rbea-review-btns rbea-review-already-done-btn"><a href="' . $dont_disturb . '">Already Done?</a></div></div></div>'; //phpcs:ignore
+	public function rbea_admin_review_notice() {
+		$rbea_review_pending_option = get_option( 'responsive_block_editor_addons_review_pending' );
+		switch ( $rbea_review_pending_option ) {
+			case '0':
+				$check_for_review_transient = get_transient( 'responsive_block_editor_addons_review_transient' );
+				if ( false === $check_for_review_transient ) {
+					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', THIRTY_DAYS_IN_SECONDS );
+					update_option( 'responsive_block_editor_addons_review_pending', '1', true );
+				}
+				break;
+			case '1':
+				$check_for_review_transient = get_transient( 'responsive_block_editor_addons_review_transient' );
+				if ( false === $check_for_review_transient ) {
+					echo sprintf(
+						'<div class="rbea-review-notice updated">
+						<p><span>Hey, we hope you are enjoying building pages with <strong>Responsive Block Editor Addons</strong>. Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.</span></p>
+						<div class="rbea-review-btns-container">
+						<div class="rbea-review-btns rbea-review-rate-us-btn"><a href="%1$s" target="_blank">Rate Us<i class="dashicons dashicons-thumbs-up"></i></a></div>
+						<div class="rbea-review-btns rbea-review-already-done-btn"><a href="%2$s">Already Done?</a></div>
+						</div>
+						</div>',
+						esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' ),
+						esc_url( get_admin_url() . '?already_done=1' )
+					);
+				}
+				break;
+			case '2':
+				break;
+			default:
+				break;
 		}
 	}
 
@@ -822,12 +832,11 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_review_already_done() {
 		$dnd = '';
-		if ( isset( $_GET['already_done'] ) && ! empty( $_GET['already_done'] ) ) { //phpcs:ignore
-			$dnd = esc_attr( $_GET['already_done'] ); //phpcs:ignore
+		if ( isset( $_GET['already_done'] ) && ! empty( $_GET['already_done'] ) ) {
+			$dnd = esc_attr( $_GET['already_done'] );
 		}
 		if ( '1' === $dnd ) {
-			add_option( 'rbea_already_done', true );
+			update_option( 'responsive_block_editor_addons_review_pending', '2', true );
 		}
 	}
-
 }
