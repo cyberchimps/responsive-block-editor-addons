@@ -26,6 +26,9 @@
     "shapeHeightTablet": {
       "type": "number"
     },
+    "shapeHeightMobile": {
+      "type": "number"
+    },
     "backgroundHeight": {
       "type": "number",
       "default": 50
