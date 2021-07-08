@@ -60,34 +60,6 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test for backend assets script are enqueued
-	 */
-	public function test_responsive_block_editor_addons_editor_assets() {
-		$this->assertFalse( wp_script_is( 'responsive_block_editor_addons-block-js' ) );
-		$this->assertFalse( wp_style_is( 'responsive_block_editor_addons-block-editor-css' ) );
-		self::$rbea->responsive_block_editor_addons_editor_assets();
-		$this->assertTrue( wp_script_is( 'responsive_block_editor_addons-block-js' ) );
-		$this->assertTrue( wp_style_is( 'responsive_block_editor_addons-block-editor-css' ) );
-	}
-
-	/**
-	 * Test for frontend assets script are enqueued
-	 */
-	public function test_responsive_block_editor_addons_frontend_assets() {
-		$this->assertFalse( wp_script_is( 'responsive_blocks-frontend-js' ) );
-		self::$rbea->responsive_block_editor_addons_frontend_assets();
-		$this->assertTrue( wp_script_is( 'responsive_blocks-frontend-js' ) );
-	}
-
-	/**
-	 * Testing assets for frontend and backend are enqueued
-	 */
-	public function test_responsive_block_editor_addons_block_assets() {
-		self::$rbea->responsive_block_editor_addons_block_assets();
-		$this->assertTrue( wp_style_is( 'responsive_block_editor_addons-style-css' ) );
-	}
-
-	/**
 	 * Testing assets for admin are enqueued
 	 */
 	public function test_responsive_block_editor_addons_admin_enqueue_styles() {
