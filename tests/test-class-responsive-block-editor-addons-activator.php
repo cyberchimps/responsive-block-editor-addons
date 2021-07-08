@@ -27,8 +27,11 @@ class Responsive_Block_Editor_Addons_Activator_Test extends WP_UnitTestCase {
 
 	public function test_check_activator() {
 		$this->assertFalse( get_transient( 'responsive_block_editor_addons_activation_redirect' ) );
+		$this->assertFalse( get_transient( 'responsive_block_editor_addons_review_pending' ) );
 		self::$rbea_activator->activate();
 		$activator_transient = get_transient( 'responsive_block_editor_addons_activation_redirect' );
 		$this->assertEquals( true, $activator_transient );
+		$activator_option = get_option( 'responsive_block_editor_addons_review_pending' );
+		$this->assertEquals( '0', $activator_option );
 	}
 }
