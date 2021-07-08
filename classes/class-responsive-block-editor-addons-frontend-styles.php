@@ -7157,7 +7157,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'box-shadow'       => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
-					'margin-left'      => '0px !important',
+					'margin-left' => '0px !important',
 				),
 				' .responsive-block-editor-addons-countdown-digits' => array(
 					'font-family'     => $attr['digitFontFamily'],
