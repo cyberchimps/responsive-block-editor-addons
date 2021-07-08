@@ -13,6 +13,10 @@ const Save = ({ attributes }) => {
 		digitHoursLabel,
 		digitMinutesLabel,
 		digitSecondsLabel,
+		showDaysBox,
+		showHoursBox,
+		showMinutesBox,
+		showSecondsBox,
 	} = attributes;
 
 	let dateDefault = new Date()
@@ -26,29 +30,29 @@ const Save = ({ attributes }) => {
 				className="responsive-block-editor-addons-countdown-get-date"
 				data-date={date ? date.toString() : dateDefault.toString()}
 			/>
-			<Box
+			{showDaysBox&&<Box
 				boxName="days"
 				label={digitDaysLabel}
 				digit={days}
-			/>
+			/>}
 
-			<Box
+			{showHoursBox&&<Box
 				boxName="hours"
 				label={digitHoursLabel}
 				digit={hours}
-			/>
+			/>}
 
-			<Box
+			{showMinutesBox&&<Box
 				boxName="minutes"
 				label={digitMinutesLabel}
 				digit={minutes}
-			/>
+			/>}
 
-			<Box
+			{showSecondsBox&&<Box
 				boxName="seconds"
 				label={digitSecondsLabel}
 				digit={seconds}
-			/>
+			/>}
 		</BoxContainer>
 	);
 };
