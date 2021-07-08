@@ -275,7 +275,7 @@ export default class Inspector extends Component {
         >
           <RangeControl
             label={__(
-              "Number of Team Member Boxes",
+              "Number of Testimonials",
               "responsive-block-editor-addons"
             )}
             value={count}
