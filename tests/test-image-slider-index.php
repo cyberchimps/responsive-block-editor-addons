@@ -74,7 +74,6 @@ class Image_Slider_Index_Test extends WP_UnitTestCase {
 
 	/**
 	 * Delete fake data after tests run.
-	 *
 	 */
 	public static function wpTearDownAfterClass() {
 		wp_delete_post( self::$post_id, true );
