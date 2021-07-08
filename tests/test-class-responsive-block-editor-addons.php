@@ -25,7 +25,9 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 	public static $rbea;
 
 	/**
-	 * setup class instance
+	 * Setup class instance
+	 *
+	 * @param class WP_UnitTest_Factory $factory class instance.
 	 */
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
 		self::$rbea = new Responsive_Block_Editor_Addons();

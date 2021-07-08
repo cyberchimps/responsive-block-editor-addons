@@ -24,6 +24,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 
 	/**
 	 * Setup class instance
+	 *
+	 * @param class WP_UnitTest_Factory $factory class instance.
 	 */
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
 		self::$rbea_frontend_styles = new Responsive_Block_Editor_Addons_Frontend_Styles();
