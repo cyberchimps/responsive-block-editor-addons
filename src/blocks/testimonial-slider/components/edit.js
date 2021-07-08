@@ -176,6 +176,8 @@ class edit extends Component {
       test_item_count,
       test_block,
       headingAlign,
+      headingAlignMobile,
+      headingAlignTablet,
       companyColor,
       descColor,
       authorColor,
@@ -998,6 +1000,100 @@ class edit extends Component {
     const inspect_control = (
       <InspectorControls>
         <PanelBody title={__("General")} initialOpen={true}>
+          <TabPanel
+            className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+            activeClass="active-tab"
+            tabs={[
+              {
+                name: "desktop",
+                title: <Dashicon icon="desktop" />,
+                className:
+                  " responsive-desktop-tab  responsive-responsive-tabs",
+              },
+              {
+                name: "tablet",
+                title: <Dashicon icon="tablet" />,
+                className: " responsive-tablet-tab  responsive-responsive-tabs",
+              },
+              {
+                name: "mobile",
+                title: <Dashicon icon="smartphone" />,
+                className: " responsive-mobile-tab  responsive-responsive-tabs",
+              },
+            ]}
+          >
+            {(tab) => {
+              let tabout;
+
+              if ("mobile" === tab.name) {
+                tabout = (
+                  <Fragment>
+                    <BaseControl>
+                      <p>
+                        {__(
+                          "Alignment Mobile",
+                          "responsive-block-editor-addons"
+                        )}
+                      </p>
+                      <AlignmentToolbar
+                        value={headingAlignMobile}
+                        onChange={(value) =>
+                          setAttributes({
+                            headingAlignMobile: value,
+                          })
+                        }
+                        controls={["left", "center", "right"]}
+                        isCollapsed={false}
+                      />
+                    </BaseControl>
+                  </Fragment>
+                );
+              } else if ("tablet" === tab.name) {
+                tabout = (
+                  <Fragment>
+                    <BaseControl>
+                      <p>
+                        {__(
+                          "Alignment Tablet",
+                          "responsive-block-editor-addons"
+                        )}
+                      </p>
+                      <AlignmentToolbar
+                        value={headingAlignTablet}
+                        onChange={(value) =>
+                          setAttributes({
+                            headingAlignTablet: value,
+                          })
+                        }
+                        controls={["left", "center", "right"]}
+                        isCollapsed={false}
+                      />
+                    </BaseControl>
+                  </Fragment>
+                );
+              } else {
+                tabout = (
+                  <Fragment>
+                    <BaseControl>
+                      <p>{__("Alignment", "responsive-block-editor-addons")}</p>
+                      <AlignmentToolbar
+                        value={headingAlign}
+                        onChange={(value) =>
+                          setAttributes({
+                            headingAlign: value,
+                          })
+                        }
+                        controls={["left", "center", "right"]}
+                        isCollapsed={false}
+                      />
+                    </BaseControl>
+                  </Fragment>
+                );
+              }
+
+              return <div>{tabout}</div>;
+            }}
+          </TabPanel>
           <RangeControl
             label={__("Number of Testimonials")}
             value={test_item_count}
@@ -1229,9 +1325,9 @@ class edit extends Component {
         <Style>
           {`
              .responsive-block-editor-addons-slick-carousel.responsive-block-editor-addons-block-${this.props.clientId.substr(
-               0,
-               8
-             )} ul.slick-dots li button:before, ul.slick-dots li.slick-active button:before, .slick-arrow span {
+            0,
+            8
+          )} ul.slick-dots li button:before, ul.slick-dots li.slick-active button:before, .slick-arrow span {
              color: ${arrowColor};
             }
             .slick-arrow svg {
@@ -1376,7 +1472,7 @@ class edit extends Component {
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
       "responsive-block-editor-addons-testimonial-slider-style-" +
-        this.props.clientId
+      this.props.clientId
     );
 
     if (null !== element && undefined !== element) {
@@ -1395,7 +1491,7 @@ class edit extends Component {
     $style.setAttribute(
       "id",
       "responsive-block-editor-addons-testimonial-slider-style-" +
-        this.props.clientId
+      this.props.clientId
     );
     document.head.appendChild($style);
   }

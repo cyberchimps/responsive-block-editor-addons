@@ -122,6 +122,9 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-excerpt-inner": {
       "margin-bottom": generateCSSUnit(excerptSpace, "px"),
     },
+    " .responsive-block-editor-addons-block-post-carousel-excerpt-inner p": {
+      "margin-bottom": "0px",
+    },
     " .responsive-block-editor-addons-block-post-carousel-more-link": {
       color: ctaColor,
       "background-color": ctaBackColor,
@@ -133,6 +136,7 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "padding-top": generateCSSUnit(ctaVpadding, "px"),
       "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "display": "inline-block",
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link:hover": {
       color: ctaHoverColor,

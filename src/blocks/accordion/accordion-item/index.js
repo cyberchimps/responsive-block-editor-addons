@@ -8,6 +8,9 @@ import save from "./components/save";
 import icon from "../components/icon";
 import attributes from "./attributes.js";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -25,7 +28,7 @@ registerBlockType("responsive-block-editor-addons/accordion-item", {
     "Add collapsable accordion items to accordions.",
     "responsive-block-editor-addons"
   ),
-  icon,
+  icon: ResponsiveBlockEditorAddonsIcons.accordion_item,
   keywords: [
     "responsive-block-editor-addons",
     /* translators: block keyword */

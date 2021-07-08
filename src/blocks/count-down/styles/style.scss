@@ -1,0 +1,30 @@
+.responsive-block-editor-addons-countdown-items {
+	display: flex;
+	flex: 1;
+	line-height: 1.8;
+}
+.responsive-block-editor-addons-countdown-item {
+	list-style: none;
+	border: 3px;
+	display: flex;
+	align-items: center;
+}
+
+.responsive-block-editor-addons-countdown-items {
+	margin-left: 0px;
+}
+
+.responsive-block-editor-addons-countdown-days,
+.responsive-block-editor-addons-countdown-hours,
+.responsive-block-editor-addons-countdown-minutes,
+.responsive-block-editor-addons-countdown-seconds {
+	height: 100%;
+	width: 100%;
+}
+
+// Typography style
+.responsive-block-editor-addons-typography-base div {
+	display: flex;
+	justify-content: space-between;
+}
+

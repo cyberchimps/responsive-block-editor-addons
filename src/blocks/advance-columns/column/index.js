@@ -6,6 +6,9 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 
+//Import Block icons
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";

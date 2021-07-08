@@ -11,6 +11,9 @@ import Save from "./components/save";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Internationalization
 const { __ } = wp.i18n;
 
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/googlemap", {
     "Add an address or location to drop a pin on a Google map.",
     "responsive-block-editor-addons"
   ),
-  icon: "location",
+  icon: ResponsiveBlockEditorAddonsIcons.googlemap,
   category: "responsive_block_editor_addons",
   keywords: [
     __("address", "responsive-block-editor-addons"),

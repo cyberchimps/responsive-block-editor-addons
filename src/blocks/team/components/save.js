@@ -36,6 +36,7 @@ export default class Save extends Component {
       showDesignation,
       showDescription,
       showSocialIcons,
+      stack
     } = this.props.attributes;
 
     return (
@@ -48,7 +49,8 @@ export default class Save extends Component {
             [`has-${count}-columns`]: count,
             "has-responsive-columns": count > 1,
             [`has-${gutter}-gutter`]: gutter,
-          }
+          },
+          `responsive-team-block-columns__stack-${stack}`,
         )}
       >
         {teamBlock.map((test, index) => (
@@ -98,13 +100,6 @@ export default class Save extends Component {
               {showSocialIcons && (
                 <div className="responsive-block-editor-addons-team-social-icons-wrapper">
                   <ul className="responsive-block-editor-addons-team-social-icons">
-                    {!twitter && (
-                      <li>
-                        <a href={teamBlock[index]["twitterUrl"]}>
-                          <span class="dashicons dashicons-twitter"></span>
-                        </a>
-                      </li>
-                    )}
                     {!facebook && (
                       <li>
                         <a href={teamBlock[index]["facebookUrl"]}>
@@ -112,6 +107,13 @@ export default class Save extends Component {
                         </a>
                       </li>
                     )}
+                    {!twitter && (
+                      <li>
+                        <a href={teamBlock[index]["twitterUrl"]}>
+                          <span class="dashicons dashicons-twitter"></span>
+                        </a>
+                      </li>
+                    )}                   
                     {!linkedin && (
                       <li>
                         <a href={teamBlock[index]["linkedinUrl"]}>

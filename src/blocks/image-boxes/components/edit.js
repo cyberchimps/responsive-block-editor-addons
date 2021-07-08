@@ -96,6 +96,8 @@ export default class Edit extends Component {
         titleFontFamily,
         descriptionFontFamily,
         imageSize,
+        showTitle,
+        showDescription,
       },
       isSelected,
       setAttributes,
@@ -176,7 +178,7 @@ export default class Edit extends Component {
                 <div className="responsive-block-editor-addons-add-image"></div>
                 {titleFontFamily && loadGoogleFont(titleFontFamily)}
                 {descriptionFontFamily && loadGoogleFont(descriptionFontFamily)}
-                <RichText
+                {showTitle && (<RichText
                   tagName={titleHeadingTag}
                   className="wp-block-responsive-block-editor-addons-image-boxes-block-item__title"
                   value={imageboxesBlock[index]["title"]}
@@ -194,8 +196,8 @@ export default class Edit extends Component {
                   }}
                   formattingControls={formattingControls}
                   keepPlaceholderOnFocus
-                />
-                <RichText
+                />)}
+                {showDescription && (<RichText
                   tagName="p"
                   className="wp-block-responsive-block-editor-addons-image-boxes-block-item__description"
                   value={imageboxesBlock[index]["hover_description"]}
@@ -213,7 +215,7 @@ export default class Edit extends Component {
                   }}
                   formattingControls={formattingControls}
                   keepPlaceholderOnFocus
-                />
+                />)}
                 {hasArrow && <span className="imagebox-arrow">&#x21AA;</span>}
                 {isSelected && (
                   <form

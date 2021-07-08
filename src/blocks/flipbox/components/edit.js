@@ -131,6 +131,7 @@ export default class Edit extends Component {
         buttonHbackgroundColor2,
         buttonopacity,
         buttonHopacity,
+        stack
       },
       setAttributes,
     } = this.props;
@@ -213,7 +214,8 @@ export default class Edit extends Component {
         [`has-${count}-columns`]: count,
         "has-responsive-columns": count > 1,
         [`has-${gutter}-gutter`]: gutter,
-      }
+      },
+      `responsive-flipbox-columns__stack-${stack}`,
     );
 
     // Add CSS.

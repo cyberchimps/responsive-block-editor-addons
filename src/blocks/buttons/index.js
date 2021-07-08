@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/buttons", {
     "Add buttons to group together.",
     "responsive-block-editor-addons"
   ),
-  icon: "button",
+  icon: ResponsiveBlockEditorAddonsIcons.buttons,
   category: "responsive_block_editor_addons",
   keywords: [
     __("buttons", "responsive-block-editor-addons"),

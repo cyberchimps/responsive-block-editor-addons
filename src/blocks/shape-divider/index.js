@@ -6,6 +6,9 @@ import icon from "./icon";
 import metadata from "./components/block.json";
 import save from "./components/save";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 /**
  * WordPress dependencies
  */
@@ -27,7 +30,7 @@ registerBlockType("responsive-block-editor-addons/shape-divider", {
     "Add a shape divider to visually distinquish page sections.",
     "responsive-block-editor-addons"
   ),
-  icon,
+  icon: ResponsiveBlockEditorAddonsIcons.shape_divider,
   keywords: [
     "responsive-block-editor-addons",
     "hr",

@@ -243,6 +243,38 @@ const attributes = {
     type: "number",
     default: 5,
   },
+  iconLeftMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  iconRightMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  iconTopMarginMobile: {
+    type: "number",
+    default: 5,
+  },
+  iconBottomMarginMobile: {
+    type: "number",
+    default: 5,
+  }, 
+  iconLeftMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  iconRightMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  iconTopMarginTablet: {
+    type: "number",
+    default: 5,
+  },
+  iconBottomMarginTablet: {
+    type: "number",
+    default: 5,
+  },
   iconImage: {
     type: "object",
     default: {
@@ -431,6 +463,83 @@ const attributes = {
   resImageBorderWidth: {
     type: "number",
     default: 2,
+  },
+  ctaTextFontFamily: {
+    type: "string",
+  },
+  ctaTextFontSize: {
+    type: "number",
+  },
+  ctaTextFontSizeMobile: {
+    type: "number",
+  },
+  ctaTextFontSizeTablet: {
+    type: "number",
+  },
+  ctaTextFontWeight: {
+    type: "number",
+  },  
+  ctaTextLineHeight: {
+    type: "number",
+  },
+  ctaBottomMargin: {
+    type: "number",
+    default: 10,
+  },
+  resBoxLink: {
+    type: "string",
+    default: "#",
+  },
+  resBoxTarget: {
+    type: "boolean",
+    default: false,
+  },
+  hoverboxShadowColor: {
+    type: "string",
+    default: "#cccccc",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 6,
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 1,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
+  iconBackgroundColor: {
+    type: "string",
+    default: "#0066cc"
+  },
+  iconBackgroundHoverColor: {
+    type: "string"
+  },
+  iconBackgroundType: {
+    type: "string",
+    default: "none"
+  },
+  iconBorderRadius: {
+    type: "number",
+    default: 0,
+  },
+  iconPadding: {
+    type: "number",
+    default: 5
+  },
+  iconBorderWidth: {
+    type: "number",
+    default: 1
   },
 };
 export default attributes;

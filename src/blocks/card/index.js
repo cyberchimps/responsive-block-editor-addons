@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -39,7 +42,7 @@ registerBlockType("responsive-block-editor-addons/card", {
     "This block allows you to add cards to describe your product, service or a person.",
     "responsive-block-editor-addons"
   ),
-  icon: "feedback",
+  icon: ResponsiveBlockEditorAddonsIcons.card,
   category: "responsive_block_editor_addons",
   keywords: [
     __("card", "responsive-block-editor-addons"),

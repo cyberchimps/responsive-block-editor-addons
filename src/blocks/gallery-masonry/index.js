@@ -6,6 +6,9 @@ import metadata from "./block.json";
 import save from "./components/save";
 import { GalleryAttributes } from "../../utils/components/block-gallery/shared";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 /**
  * WordPress dependencies
  */
@@ -32,7 +35,7 @@ registerBlockType("responsive-block-editor-addons/gallery-masonry", {
     "Display multiple images in an organized masonry gallery.",
     "responsive-block-editor-addons"
   ),
-  icon: "slides",
+  icon: ResponsiveBlockEditorAddonsIcons.gallery_masonry,
   keywords: [
     "responsive-block-editor-addons",
     /* translators: block keyword */

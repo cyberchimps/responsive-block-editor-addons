@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -21,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/icons-list", {
   title: __("Icons List", "responsive-block-editor-addons"),
   description: __("Add a list of icons", "responsive-block-editor-addons"),
-  icon: "list-view",
+  icon: ResponsiveBlockEditorAddonsIcons.icons_list,
   category: "responsive_block_editor_addons",
   keywords: [
     __("icons", "responsive-block-editor-addons"),

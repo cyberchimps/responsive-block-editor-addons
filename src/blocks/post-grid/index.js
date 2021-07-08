@@ -5,6 +5,9 @@
 // Import block dependencies and components
 import edit from "./components/edit";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -30,7 +33,7 @@ registerBlockType(
       "Add a grid or list of customizable posts or pages.",
       "responsive-block-editor-addons"
     ),
-    icon: "grid-view",
+    icon: ResponsiveBlockEditorAddonsIcons.post_grid,
     category: "responsive_block_editor_addons",
     keywords: [
       __("post", "responsive-block-editor-addons"),
