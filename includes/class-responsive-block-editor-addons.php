@@ -807,14 +807,22 @@ class Responsive_Block_Editor_Addons {
 				if ( false === $check_for_review_transient ) {
 					echo sprintf(
 						'<div class="rbea-review-notice updated">
-						<p><span>Hey, we hope you are enjoying building pages with <strong>Responsive Block Editor Addons</strong>. Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.</span></p>
+						<div class="rbea-review-notice-text-container">		
+						<p><span>%3$s<strong>Responsive Block Editor Addons</strong>.%4$s</span></p>
+						<div><a class="rbea-review-dismiss-btn" href="%2$s"><i class="dashicons dashicons-dismiss"></i>%5$s</a></div>
+						</div>
 						<div class="rbea-review-btns-container">
-						<div class="rbea-review-btns rbea-review-rate-us-btn"><a href="%1$s" target="_blank">Rate Us<i class="dashicons dashicons-thumbs-up"></i></a></div>
-						<div class="rbea-review-btns rbea-review-already-done-btn"><a href="%2$s">Already Done?</a></div>
+						<div class="rbea-review-btns rbea-review-rate-us-btn"><a href="%1$s" target="_blank">%6$s<i class="dashicons dashicons-thumbs-up"></i></a></div>
+						<div class="rbea-review-btns rbea-review-already-done-btn"><a href="%2$s">%7$s<i class="dashicons dashicons-smiley"></i></a></div>
 						</div>
 						</div>',
 						esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' ),
-						esc_url( get_admin_url() . '?already_done=1' )
+						esc_url( get_admin_url() . '?already_done=1' ),
+						esc_html__( 'Hey, we hope you are enjoying building pages with ', 'responsive-block-editor-addons' ),
+						esc_html__( ' Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.', 'responsive-block-editor-addons' ),
+						esc_html__( 'Dismiss', 'responsive-block-editor-addons' ),
+						esc_html__( 'Rate Us', 'responsive-block-editor-addons' ),
+						esc_html__( 'I already did', 'responsive-block-editor-addons' )
 					);
 				}
 				break;
@@ -832,8 +840,8 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_review_already_done() {
 		$dnd = '';
-		if ( isset( $_GET['already_done'] ) && ! empty( $_GET['already_done'] ) ) {
-			$dnd = esc_attr( $_GET['already_done'] );
+		if ( isset( $_GET['already_done'] ) && ! empty( $_GET['already_done'] ) ) { //phpcs:ignore
+			$dnd = esc_attr( $_GET['already_done'] ); //phpcs:ignore
 		}
 		if ( '1' === $dnd ) {
 			update_option( 'responsive_block_editor_addons_review_pending', '2', true );
