@@ -12,6 +12,9 @@
  */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-responsive-block-editor-addons-activator.php';
 
+/**
+ * Activator class test
+ */
 class Responsive_Block_Editor_Addons_Activator_Test extends WP_UnitTestCase {
 	/**
 	 * The Responsive_Block_Editor_Addons_Activator class instance .
@@ -21,10 +24,16 @@ class Responsive_Block_Editor_Addons_Activator_Test extends WP_UnitTestCase {
 	 */
 	public static $rbea_activator;
 
+	/**
+	 * Setup instance
+	 */
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
 		self::$rbea_activator = new Responsive_Block_Editor_Addons_Activator();
 	}
 
+	/**
+	 * Check if transient and options are set on activation
+	 */
 	public function test_check_activator() {
 		$this->assertFalse( get_transient( 'responsive_block_editor_addons_activation_redirect' ) );
 		$this->assertFalse( get_transient( 'responsive_block_editor_addons_review_pending' ) );

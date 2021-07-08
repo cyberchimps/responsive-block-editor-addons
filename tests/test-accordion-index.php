@@ -15,7 +15,6 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/accordion/inde
  *
  * @return void
  */
-
 class Accordion_Index_Test extends WP_UnitTestCase {
 	/**
 	 * Created fake post id.

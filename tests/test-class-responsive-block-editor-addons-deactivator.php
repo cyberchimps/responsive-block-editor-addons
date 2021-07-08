@@ -12,6 +12,9 @@
  */
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-responsive-block-editor-addons-deactivator.php';
 
+/**
+ * Class test for deactivator
+ */
 class Responsive_Block_Editor_Addons_Deactivator_Test extends WP_UnitTestCase {
 	/**
 	 * The Responsive_Block_Editor_Addons_Deactivator class instance .
@@ -21,10 +24,16 @@ class Responsive_Block_Editor_Addons_Deactivator_Test extends WP_UnitTestCase {
 	 */
 	public static $rbea_deactivator;
 
+	/**
+	 * setup class instance
+	 */
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
 		self::$rbea_deactivator = new Responsive_Block_Editor_Addons_Deactivator();
 	}
 
+	/**
+	 * Dummy test function
+	 */
 	public function test_dummy_deactivator() {
 		$this->assertTrue( true );
 	}
