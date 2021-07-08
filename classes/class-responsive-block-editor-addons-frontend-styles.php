@@ -7149,12 +7149,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-countdown-box-stylings' => array(
 					'height'           => self::get_css_value( $attr['boxHeight'], 'px' ),
 					'width'            => self::get_css_value( $attr['boxWidth'], 'px' ),
-					'margin'           => self::get_css_value( $attr['boxMargin'], 'px' ),
+					'margin-left'      => self::get_css_value( $attr['boxMargin'], 'px' ),
 					'padding'          => $attr['boxPaddingTop'] . 'px ' . $attr['boxPaddingRight'] . 'px ' . $attr['boxPaddingBottom'] . 'px ' . $attr['boxPaddingLeft'] . 'px',
 					'border'           => $attr['boxBorderSize'] . 'px ' . $attr['boxBorderStyle'] . ' ' . $attr['boxBorderColor'],
 					'border-radius'    => $attr['borderRadiusTopLeft'] . 'px ' . $attr['borderRadiusTopRight'] . 'px ' . $attr['borderRadiusBottomRight'] . 'px ' . $attr['borderRadiusBottomLeft'] . 'px',
 					'background-color' => $attr['boxBackgroundColor'],
 					'box-shadow'       => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
+				),
+				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
+					'margin-left'      => '0px !important',
 				),
 				' .responsive-block-editor-addons-countdown-digits' => array(
 					'font-family'     => $attr['digitFontFamily'],
@@ -7225,7 +7228,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-countdown-box-stylings' => array(
 					'height'           => self::get_css_value( $attr['boxHeightMobile'], 'px' ),
 					'width'            => self::get_css_value( $attr['boxWidthMobile'], 'px' ),
-					'margin'           => self::get_css_value( $attr['boxMarginMobile'], 'px' ),
+					'margin-left'      => self::get_css_value( $attr['boxMarginMobile'], 'px' ),
 					'padding'          => $attr['boxPaddingTopMobile'] . 'px ' . $attr['boxPaddingRightMobile'] . 'px ' . $attr['boxPaddingBottomMobile'] . 'px ' . $attr['boxPaddingLeftMobile'] . 'px',
 					'border'           => $attr['boxBorderSize'] . 'px ' . $attr['boxBorderStyle'] . ' ' . $attr['boxBorderColor'],
 					'border-radius'    => $attr['borderRadiusTopLeft'] . 'px ' . $attr['borderRadiusTopRight'] . 'px ' . $attr['borderRadiusBottomRight'] . 'px ' . $attr['borderRadiusBottomLeft'] . 'px',
@@ -7282,7 +7285,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-countdown-box-stylings' => array(
 					'height'           => self::get_css_value( $attr['boxHeightTablet'], 'px' ),
 					'width'            => self::get_css_value( $attr['boxWidthTablet'], 'px' ),
-					'margin'           => self::get_css_value( $attr['boxMarginTablet'], 'px' ),
+					'margin-left'      => self::get_css_value( $attr['boxMarginTablet'], 'px' ),
 					'padding'          => $attr['boxPaddingTopTablet'] . 'px ' . $attr['boxPaddingRightTablet'] . 'px ' . $attr['boxPaddingBottomTablet'] . 'px ' . $attr['boxPaddingLeftTablet'] . 'px',
 					'border'           => $attr['boxBorderSize'] . 'px ' . $attr['boxBorderStyle'] . ' ' . $attr['boxBorderColor'],
 					'border-radius'    => $attr['borderRadiusTopLeft'] . 'px ' . $attr['borderRadiusTopRight'] . 'px ' . $attr['borderRadiusBottomRight'] . 'px ' . $attr['borderRadiusBottomLeft'] . 'px',
