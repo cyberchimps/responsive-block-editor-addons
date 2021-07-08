@@ -93,6 +93,25 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
+	 * The name of the plugin used to uniquely identify it within the context of
+	 * WordPress and to define internationalization functionality.
+	 *
+	 * @return string    The name of the plugin.
+	 */
+	public function get_plugin_name() {
+		return $this->plugin_name;
+	}
+
+	/**
+	 * Returns the version of plugin
+	 *
+	 * @return string    The version of the plugin.
+	 */
+	public function get_plugin_version() {
+		return $this->version;
+	}
+
+	/**
 	 * Sends the Post pagination markup to edit.js
 	 *
 	 * @since 1.0.3
