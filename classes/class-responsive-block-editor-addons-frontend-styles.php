@@ -5883,9 +5883,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'min-height' => self::get_css_value( $attr['backgroundHeight'], 'px' ),
 				),
 			);
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' .wp-block-responsive-block-editor-addons-shape-divider__svg-wrapper' => array(
+					'min-height' => $attr['shapeHeightMobile'] ? self::get_css_value( $attr['shapeHeightMobile'], 'px' ) : self::get_css_value( $attr['shapeHeight'], 'px' ),
+				),
+				' .wp-block-responsive-block-editor-addons-shape-divider__alt-wrapper' => array(
+					'min-height' => $attr['backgroundHeightMobile'] ? self::get_css_value( $attr['backgroundHeightMobile'], 'px' ) : self::get_css_value( $attr['backgroundHeight'], 'px' ),
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' .wp-block-responsive-block-editor-addons-shape-divider__svg-wrapper' => array(
+					'min-height' => $attr['shapeHeightTablet'] ? self::get_css_value( $attr['shapeHeightTablet'], 'px' ) : self::get_css_value( $attr['shapeHeight'], 'px' ),
+				),
+				' .wp-block-responsive-block-editor-addons-shape-divider__alt-wrapper' => array(
+					'min-height' => $attr['backgroundHeightTablet'] ? self::get_css_value( $attr['backgroundHeightTablet'], 'px' ) : self::get_css_value( $attr['backgroundHeight'], 'px' ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -5912,7 +5926,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'heightTablet'           => '',
 				'heightMobile'           => '',
 				'shapeHeight'            => 100,
-				'shapeHeightTablet'      => '',
+				'shapeHeightTablet'      => 0,
+				'shapeHeightMobile'      => 0,
 				'backgroundHeight'       => 50,
 				'backgroundHeightTablet' => '',
 				'backgroundHeightMobile' => '',
