@@ -63,13 +63,11 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'plugins_loaded', array( $this, 'responsive_block_editor_addons_loader' ) );
 
-		add_action( 'init', array( $this, 'responsive_block_editor_addons_block_assets' ) );
-
 		add_filter( 'block_categories', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ) );
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'responsive_block_editor_addons_editor_assets' ) );
 
-		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_frontend_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_frontend_assets'  ) );
 
 		add_action( 'admin_enqueue_scripts', array( &$this, 'responsive_block_editor_addons_admin_enqueue_styles' ) );
 
@@ -716,16 +714,6 @@ class Responsive_Block_Editor_Addons {
 			true
 		);
 
-	}
-
-
-	/**
-	 * Enqueue assets for frontend and backend
-	 *
-	 * @since 1.0.0
-	 */
-	public function responsive_block_editor_addons_block_assets() {
-
 		// Load the compiled styles.
 		wp_enqueue_style(
 			'responsive_block_editor_addons-style-css',
@@ -733,6 +721,7 @@ class Responsive_Block_Editor_Addons {
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-style.css' )
 		);
+
 	}
 
 	/**
