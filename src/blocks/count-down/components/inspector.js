@@ -249,6 +249,21 @@ const {
 			 <PanelBody title={__("Display", "responsive-block-editor-addons")}
 			 		    initialOpen={false}
 			 >
+				 <BaseControl>
+					<BaseControl.VisualLabel>{__("Text Alignment")}</BaseControl.VisualLabel>
+					<br></br>
+					<br></br>
+					<AlignmentToolbar
+					value={boxItemTextAlign}
+					onChange={(value) =>
+						setAttributes({
+						boxItemTextAlign: value,
+						})
+					}
+					controls={["left", "center", "right"]}
+					isCollapsed={false}
+					/>
+				</BaseControl>
 				 <ToggleControl
 					label={__("Inline", "responsive-block-editor-addons")}
 					checked={displayInline}
@@ -314,195 +329,10 @@ const {
 					onChange={(newValue) => setAttributes({ digitSecondsLabel: newValue })}
 				/>
 			</PanelBody>
-
-			<PanelBody title={__("Box Content Style", "responsive-block-editor-addons")}
-					   initialOpen={false}
-			>
-					
-				<TabPanel
-				className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-				activeClass="active-tab"
-				tabs={[
-				{
-					name: "desktop",
-					title: <Dashicon icon="desktop" />,
-					className:
-					" responsive-desktop-tab  responsive-responsive-tabs",
-				},
-				{
-					name: "tablet",
-					title: <Dashicon icon="tablet" />,
-					className: " responsive-tablet-tab  responsive-responsive-tabs",
-				},
-				{
-					name: "mobile",
-					title: <Dashicon icon="smartphone" />,
-					className: " responsive-mobile-tab  responsive-responsive-tabs",
-				},
-				]}
-				>
-
-				{(tab) => {
-				let tabout;
-
-				if ("mobile" === tab.name) {
-				tabout = (
-				<Fragment>
-					<RangeControl
-					label={__("Margin Top Mobile", "responsive-block-editor-addons")}
-					value={boxItemMarginTopMobile}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginTopMobile: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Right Mobile", "responsive-block-editor-addons")}
-					value={boxItemMarginRightMobile}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginRightMobile: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Bottom Mobile", "responsive-block-editor-addons")}
-					value={boxItemMarginBottomMobile}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginBottomMobile: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Left Mobile", "responsive-block-editor-addons")}
-					value={boxItemMarginLeftMobile}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginLeftMobile: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-				</Fragment>
-				);
-				} else if ("tablet" === tab.name) {
-				tabout = (
-				<Fragment>
-					<RangeControl
-					label={__("Margin Top Tablet", "responsive-block-editor-addons")}
-					value={boxItemMarginTopTablet}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginTopTablet: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Right Tablet", "responsive-block-editor-addons")}
-					value={boxItemMarginRightTablet}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginRightTablet: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Bottom Tablet", "responsive-block-editor-addons")}
-					value={boxItemMarginBottomTablet}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginBottomTablet: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Left Tablet", "responsive-block-editor-addons")}
-					value={boxItemMarginLeftTablet}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginLeftTablet: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-				</Fragment>
-				);
-				} else {
-				tabout = (
-				<Fragment>
-					<RangeControl
-					label={__("Margin Top", "responsive-block-editor-addons")}
-					value={boxItemMarginTop}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginTop: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Right", "responsive-block-editor-addons")}
-					value={boxItemMarginRight}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginRight: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Bottom", "responsive-block-editor-addons")}
-					value={boxItemMarginBottom}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginBottom: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-					<RangeControl
-					label={__("Margin Left", "responsive-block-editor-addons")}
-					value={boxItemMarginLeft}
-					onChange={(value) =>
-					setAttributes({ boxItemMarginLeft: value })
-					}
-					min={-100}
-					max={100}
-					allowReset
-					/>
-				</Fragment>
-				);
-				}
-
-				return <div>{tabout}</div>;
-				}}
-				</TabPanel>
-				<BaseControl>
-					<BaseControl.VisualLabel>{__("Text Alignment")}</BaseControl.VisualLabel>
-					<AlignmentToolbar
-					value={boxItemTextAlign}
-					onChange={(value) =>
-						setAttributes({
-						boxItemTextAlign: value,
-						})
-					}
-					controls={["left", "center", "right"]}
-					isCollapsed={false}
-					/>
-				</BaseControl>
-			</PanelBody>
 		
 			<PanelBody title={__("Box Style", "responsive-block-editor-addons")}
 					   initialOpen={false}
-			>
+			>	
 				<TabPanel
 					className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
 					activeClass="active-tab"
@@ -527,37 +357,11 @@ const {
 				>
 				{(tab) => {
 				let tabout;
-
 				if ("mobile" === tab.name) {
 					tabout = (
 					<Fragment>
 						<RangeControl
-						label={__("Height Mobile", "responsive-block-editor-addons")}
-						value={boxHeightMobile}
-						onChange={(value) =>
-							setAttributes({
-							boxHeightMobile: value,
-							})
-						}
-						min={0}
-						max={1000}
-						allowReset
-						/>
-						<RangeControl
-						label={__("Width Mobile", "responsive-block-editor-addons")}
-						value={boxWidthMobile}
-
-						onChange={(value) =>
-							setAttributes({
-							boxWidthMobile: value,
-							})
-						}
-						min={0}
-						max={1000}
-						allowReset
-						/>
-						<RangeControl
-						label={__("Margin Mobile", "responsive-block-editor-addons")}
+						label={__("Box Spacing Mobile", "responsive-block-editor-addons")}
 						value={boxMarginMobile}
 						onChange={(value) =>
 						setAttributes({ boxMarginMobile: value })
@@ -572,31 +376,7 @@ const {
 					tabout = (
 					<Fragment>
 						<RangeControl
-						label={__("Height Tablet", "responsive-block-editor-addons")}
-						value={boxHeightTablet}
-						onChange={(value) =>
-							setAttributes({
-							boxHeightTablet: value,
-							})
-						}
-						min={0}
-						max={1000}
-						allowReset
-						/>
-						<RangeControl
-						label={__("Width Tablet", "responsive-block-editor-addons")}
-						value={boxWidthTablet}
-						onChange={(value) =>
-							setAttributes({
-							boxWidthTablet: value,
-							})
-						}
-						min={0}
-						max={1000}
-						allowReset
-						/>
-						<RangeControl
-						label={__("Margin Tablet", "responsive-block-editor-addons")}
+						label={__("Box Spacing Tablet", "responsive-block-editor-addons")}
 						value={boxMarginTablet}
 						onChange={(value) =>
 						setAttributes({ boxMarginTablet: value })
@@ -611,31 +391,7 @@ const {
 					tabout = (
 					<Fragment>
 						<RangeControl
-						label={__("Height", "responsive-block-editor-addons")}
-						value={boxHeight}
-						onChange={(value) =>
-							setAttributes({
-							boxHeight: value,
-							})
-						}
-						min={0}
-						max={1000}
-						allowReset
-						/>
-						<RangeControl
-						label={__("Width", "responsive-block-editor-addons")}
-						value={boxWidth}
-						onChange={(value) =>
-							setAttributes({
-							boxWidth: value,
-							})
-						}
-						min={0}
-						max={1000}
-						allowReset
-						/>
-						<RangeControl
-						label={__("Margin", "responsive-block-editor-addons")}
+						label={__("Box Spacing", "responsive-block-editor-addons")}
 						value={boxMargin}
 						onChange={(value) =>
 						setAttributes({ boxMargin: value })
@@ -651,8 +407,6 @@ const {
 				return <div>{tabout}</div>;
 				}}
 				</TabPanel>
-
-				
 				<PanelBody title={__("Padding", "responsive-block-editor-addons")}
 					       initialOpen={false}
 				>
