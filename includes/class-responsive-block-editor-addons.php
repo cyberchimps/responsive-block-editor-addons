@@ -707,6 +707,31 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function responsive_block_editor_addons_frontend_assets() {
 
+		if ( ! is_admin() ) {
+
+			$post = get_post();
+
+			/**
+			 * Filters the post to build stylesheet for.
+			 *
+			 * @param \WP_Post $post The global post.
+			 */
+			$post = apply_filters( 'rbea_post_for_stylesheet', $post );
+
+			if ( false === has_blocks( $post ) ) {
+				return;
+			} else {
+				// Load the compiled blocks into the editor.
+				wp_enqueue_script(
+					'responsive_blocks-frontend-js',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
+					array( 'jquery' ),
+					filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
+					true
+				);
+			}
+		}
+
 		// Load the compiled blocks into the editor.
 		wp_enqueue_script(
 			'responsive_blocks-frontend-js',
