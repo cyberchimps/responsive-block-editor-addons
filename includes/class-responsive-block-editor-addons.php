@@ -69,8 +69,6 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'responsive_block_editor_addons_editor_assets' ) );
 
-		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_frontend_assets' ) );
-
 		add_action( 'admin_enqueue_scripts', array( &$this, 'responsive_block_editor_addons_admin_enqueue_styles' ) );
 
 		// Responsive Addons Menu.
@@ -700,48 +698,6 @@ class Responsive_Block_Editor_Addons {
 
 		return $return_array;
 	}
-	/**
-	 * Enqueue assets for frontend
-	 *
-	 * @since 1.0.0
-	 */
-	public function responsive_block_editor_addons_frontend_assets() {
-
-		if ( ! is_admin() ) {
-
-			$post = get_post();
-
-			/**
-			 * Filters the post to build stylesheet for.
-			 *
-			 * @param \WP_Post $post The global post.
-			 */
-			$post = apply_filters( 'rbea_post_for_stylesheet', $post );
-
-			if ( false === has_blocks( $post ) ) {
-				return;
-			} else {
-				// Load the compiled blocks into the editor.
-				wp_enqueue_script(
-					'responsive_blocks-frontend-js',
-					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
-					array( 'jquery' ),
-					filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
-					true
-				);
-			}
-		}
-
-		// Load the compiled blocks into the editor.
-		wp_enqueue_script(
-			'responsive_blocks-frontend-js',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
-			array( 'jquery' ),
-			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
-			true
-		);
-
-	}
 
 	/**
 	 * Enqueue assets for frontend and backend
@@ -761,9 +717,28 @@ class Responsive_Block_Editor_Addons {
 			 */
 			$post = apply_filters( 'rbea_post_for_stylesheet', $post );
 
-			if ( false === has_blocks( $post ) ) {
-				return;
-			} else {
+			$blocks = parse_blocks( $post->post_content );
+			
+			$flag = false;
+
+			foreach( $blocks as $block) {
+				if( strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false) {
+					$flag = true;
+					break;
+				}
+			}
+
+			if ( $flag ) {
+
+				// Load the compiled blocks into the editor.
+				wp_enqueue_script(
+					'responsive_blocks-frontend-js',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
+					array( 'jquery' ),
+					filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
+					true
+				);
+
 				// Load the compiled styles.
 				wp_enqueue_style(
 					'responsive_block_editor_addons-style-css',
@@ -771,6 +746,8 @@ class Responsive_Block_Editor_Addons {
 					array(),
 					filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-style.css' )
 				);
+			} else {
+				return;
 			}
 		}
 
@@ -780,6 +757,15 @@ class Responsive_Block_Editor_Addons {
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-style.css',
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-style.css' )
+		);
+
+		// Load the compiled blocks into the editor.
+		wp_enqueue_script(
+			'responsive_blocks-frontend-js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
+			array( 'jquery' ),
+			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
+			true
 		);
 	}
 
