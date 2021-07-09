@@ -35,6 +35,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	 * Test for Responsive_Block_Editor_Addons_Frontend_Styles_Helper class constructor
 	 */
 	public function test_responsive_block_editor_addons_frontend_styles_helper_constructor() {
+		self::$rbea_frontend_styles_helper = new Responsive_Block_Editor_Addons_Frontend_Styles_Helper();
 		$this->assertTrue( self::$rbea_frontend_styles_helper instanceof Responsive_Block_Editor_Addons_Frontend_Styles_Helper );
 	}
 }
