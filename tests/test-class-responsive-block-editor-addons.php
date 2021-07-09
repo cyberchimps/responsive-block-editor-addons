@@ -37,6 +37,7 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 	 * Test for Responsive_Block_Editor_Addons class construtor
 	 */
 	public function test_responsive_block_editor_addons_constructor() {
+		self::$rbea = new Responsive_Block_Editor_Addons();
 		$this->assertTrue( self::$rbea instanceof Responsive_Block_Editor_Addons );
 		// Check for filter.
 		$this->assertTrue( has_filter( 'block_categories' ) );

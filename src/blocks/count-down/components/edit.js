@@ -102,7 +102,7 @@
 					 label={digitSecondsLabel}
 					 digit={seconds}
 				 />}
-			 </BoxContainer>,
+			 </BoxContainer>
 			</Fragment>
 		 ];
 	 }
