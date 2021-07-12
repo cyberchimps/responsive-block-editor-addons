@@ -87,6 +87,13 @@ class Accordion_Index_Test extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Testing add action
+	 */
+	public function test_add_action() {
+		$this->assertTrue( add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_accordion_add_frontend_assets' ) );
+	}
+
+	/**
 	 * Testing if script from index.php is enqueued
 	 */
 	public function test_responsive_block_editor_addons_accordion_add_frontend_assets() {
