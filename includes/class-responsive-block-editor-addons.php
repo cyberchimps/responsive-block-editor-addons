@@ -710,19 +710,12 @@ class Responsive_Block_Editor_Addons {
 
 			$post = get_post();
 
-			/**
-			 * Filters the post to build stylesheet for.
-			 *
-			 * @param \WP_Post $post The global post.
-			 */
-			$post = apply_filters( 'rbea_post_for_stylesheet', $post );
-
 			$blocks = parse_blocks( $post->post_content );
-			
+
 			$flag = false;
 
-			foreach( $blocks as $block) {
-				if( strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false) {
+			foreach ( $blocks as $block ) {
+				if ( strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false ) {
 					$flag = true;
 					break;
 				}
