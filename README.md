@@ -3,7 +3,7 @@
 <img src="https://img.shields.io/wordpress/plugin/dt/responsive-block-editor-addons" alt="WordPress.org downloads">
 <a href="https://github.com/cyberchimps/ResponsiveBlockEditorAddons/actions/workflows/pr-code-coverage.yml"><img src="https://github.com/cyberchimps/ResponsiveBlockEditorAddons/actions/workflows/pr-code-coverage.yml/badge.svg" alt="Github Actions"></a>
 <a href="https://codecov.io/gh/cyberchimps/ResponsiveBlockEditorAddons">
-  <img src="https://codecov.io/gh/cyberchimps/ResponsiveBlockEditorAddons/branch/trunk/graph/badge.svg?token=MJXCYYFO40"/>
+  <img src="https://codecov.io/gh/cyberchimps/ResponsiveBlockEditorAddons/branch/unit-test/graph/badge.svg?token=MJXCYYFO40"/>
 </a>   
 </p>
 
