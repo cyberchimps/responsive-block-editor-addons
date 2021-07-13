@@ -6793,9 +6793,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$updated_img_url = $attr['imgURL'];
 			}
 
+			$updated_background_image = '';
+			if ( $updated_img_url ) {
+				$updated_background_image = 'linear-gradient(' .
+				self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ) .
+				',' .
+				self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ) .
+				'),url(' .
+				$updated_img_url .
+				')';
+			}
+
 			$selectors = array(
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
-					'background-image' => 'url(' . $updated_img_url . ')',
+					'background-image' => $updated_background_image,
 					'background-color' => self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ),
 					'max-width'        => self::get_css_value( $attr['vidwidth'], 'px' ),
 					'height'           => self::get_css_value( $attr['vidheight'], 'px' ),
