@@ -57,4 +57,76 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$instance = self::$rbea_frontend_styles_helper->get_instance();
 		$this->assertEquals( self::$rbea_frontend_styles_helper, $instance );
 	}
+
+	/**
+	 * Test for get filesystem
+	 */
+	public function test_get_filesystem() {
+		global $wp_filesystem;
+		$check_file = ABSPATH . '/wp-admin/includes/file.php';
+		WP_Filesystem();
+		$this->assertEquals( $wp_filesystem, self::$rbea_frontend_styles_helper->get_filesystem() );
+		$this->assertTrue( isset( $check_file ) );
+	}
+
+	/**
+	 * Test for get_block_css function
+	 */
+	public function test_get_block_css() {
+		// Spacer block.
+		$block    = array(
+			'blockName'    => 'responsive-block-editor-addons/spacer',
+			'attrs'        => array(
+				'block_id' => '735a215f-6058-4e7c-9067-25354913a950',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$expected = array(
+			'desktop' => ' .responsive-block-editor-addons-spacer{height: 100px;}',
+			'tablet'  => ' .responsive-block-editor-addons-spacer{height: 100px;}',
+			'mobile'  => ' .responsive-block-editor-addons-spacer{height: 100px;}',
+		);
+		$result   = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+
+		// Advanced Heading block.
+		$block = array(
+			'blockName'    => 'responsive-block-editor-addons/advanced-heading',
+			'attrs'        => array(
+				'block_id' => '9cfb800e-5acc-45aa-89e8-20553d7d9ad1',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+
+		$result = self::$rbea_frontend_styles_helper->get_block_css( $block );
+
+		$expected = array(
+			'desktop' => array(
+				' .responsive-block-editor-addons-block-advanced-heading{text-align: center;}',
+				' .responsive-heading-title-text{font-weight: 600;line-height: 1;letter-spacing: 0;margin-bottom: 15px;text-decoration: none;}',
+				' .responsive-heading-seperator{border-top-style: solid;border-top-width: 3px;width: 20%;margin-bottom: 15px;}',
+				' .responsive-heading-desc-text{font-weight: 400;line-height: 1;letter-spacing: 0;margin-bottom: 15px;text-decoration: none;}',
+			),
+			'tablet'  => array(
+				' .responsive-block-editor-addons-block-advanced-heading{text-align: center;}',
+				' .responsive-heading-title-text{margin-bottom: 15px;}',
+				' .responsive-heading-seperator{margin-bottom: 15px;}',
+				' .responsive-heading-desc-text{margin-bottom: 15px;}',
+			),
+			'mobile'  => array(
+				' .responsive-block-editor-addons-block-advanced-heading{text-align: center;}',
+				' .responsive-heading-title-text{margin-bottom: 15px;}',
+				' .responsive-heading-seperator{margin-bottom: 15px;}',
+				' .responsive-heading-desc-text{margin-bottom: 15px;}',
+			),
+		);
+	}
 }
