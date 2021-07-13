@@ -7136,8 +7136,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$box_shadow_position_css = '';
 			}
 
-			$display_labels = $attr['showDigitLabels'] ? 'block' : 'none';
-
 			$display_days    = $attr['showDaysBox'] ? 'block' : 'none';
 			$display_hours   = $attr['showHoursBox'] ? 'block' : 'none';
 			$display_minutes = $attr['showMinutesBox'] ? 'block' : 'none';
@@ -7168,7 +7166,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'           => $attr['digitColor'],
 					'display'         => $attr['displayInline'] ? 'flex' : 'block',
 					'flex'            => $attr['displayInline'] ? 1 : null,
-					'justify-content' => $attr['displayInline'] ? 'center' : null,
+					'justify-content' => $attr['displayInline'] ? 'flex-end' : null,
 				),
 				' .responsive-block-editor-addons-countdown-label' => array(
 					'font-family'     => $attr['labelFontFamily'],
@@ -7178,10 +7176,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-left'    => self::get_css_value( $attr['labelLeftPadding'], 'px' ),
 					'letter-spacing'  => self::get_css_value( $attr['labelLetterSpacing'], 'px' ),
 					'color'           => $attr['labelColor'],
-					'display'         => $attr['displayInline'] ? 'flex' : 'block',
+					'display'         => $attr['showDigitLabels'] ? ( $attr['displayInline'] ? 'flex' : 'block' ) : 'none',
 					'flex'            => $attr['displayInline'] ? 1 : null,
 					'justify-content' => $attr['displayInline'] ? 'flex-start' : null,
-					'display'         => $display_labels,
 				),
 				' .responsive-block-editor-addons-countdown-box-margins' => array(
 					'margin-top'      => self::get_css_value( $attr['boxItemMarginTop'], 'px' ),
@@ -7228,12 +7225,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-countdown-box-stylings' => array(
 					'height'           => self::get_css_value( $attr['boxHeightMobile'], 'px' ),
 					'width'            => self::get_css_value( $attr['boxWidthMobile'], 'px' ),
-					'margin-left'      => self::get_css_value( $attr['boxMarginMobile'], 'px' ),
+					'margin-left'      => true === $attr['stackOnMobile'] ? '0px' : self::get_css_value( $attr['boxMarginMobile'], 'px' ),
+					'margin-bottom'    => true === $attr['stackOnMobile'] ? self::get_css_value( $attr['boxMarginMobile'], 'px' ) : '0px',
 					'padding'          => $attr['boxPaddingTopMobile'] . 'px ' . $attr['boxPaddingRightMobile'] . 'px ' . $attr['boxPaddingBottomMobile'] . 'px ' . $attr['boxPaddingLeftMobile'] . 'px',
 					'border'           => $attr['boxBorderSize'] . 'px ' . $attr['boxBorderStyle'] . ' ' . $attr['boxBorderColor'],
 					'border-radius'    => $attr['borderRadiusTopLeft'] . 'px ' . $attr['borderRadiusTopRight'] . 'px ' . $attr['borderRadiusBottomRight'] . 'px ' . $attr['borderRadiusBottomLeft'] . 'px',
 					'background-color' => $attr['boxBackgroundColor'],
 					'box-shadow'       => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
+				),
+				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
+					'margin-left' => true === $attr['stackOnMobile'] ? '' : '0px !important',
+				),
+				' .responsive-block-editor-addons-countdown-box-stylings:last-of-type' => array(
+					'margin-bottom' => true === $attr['stackOnMobile'] ? '0px !important' : '',
 				),
 				' .responsive-block-editor-addons-countdown-digits' => array(
 					'font-family'     => $attr['digitFontFamily'],
@@ -7244,7 +7248,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'           => $attr['digitColor'],
 					'display'         => $attr['displayInline'] ? 'flex' : 'block',
 					'flex'            => $attr['displayInline'] ? 1 : null,
-					'justify-content' => $attr['displayInline'] ? 'center' : null,
+					'justify-content' => $attr['displayInline'] ? 'flex-end' : null,
 				),
 				' .responsive-block-editor-addons-countdown-label' => array(
 					'font-family'     => $attr['labelFontFamily'],
@@ -7254,10 +7258,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-left'    => self::get_css_value( $attr['labelLeftPadding'], 'px' ),
 					'letter-spacing'  => self::get_css_value( $attr['labelLetterSpacing'], 'px' ),
 					'color'           => $attr['labelColor'],
-					'display'         => $attr['displayInline'] ? 'flex' : 'block',
-					'flex'            => $attr['displayInline'] ? 1 : null,
+					'flex'            => $attr['displayInline'] ? 1.5 : null,
 					'justify-content' => $attr['displayInline'] ? 'flex-start' : null,
-					'display'         => $display_labels,
 				),
 				' .responsive-block-editor-addons-countdown-box-margins' => array(
 					'margin-top'    => self::get_css_value( $attr['boxItemMarginTopMobile'], 'px' ),
@@ -7302,7 +7304,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'           => $attr['digitColor'],
 					'display'         => $attr['displayInline'] ? 'flex' : 'block',
 					'flex'            => $attr['displayInline'] ? 1 : null,
-					'justify-content' => $attr['displayInline'] ? 'center' : null,
+					'justify-content' => $attr['displayInline'] ? 'flex-end' : null,
 				),
 
 				' .responsive-block-editor-addons-countdown-label' => array(
@@ -7313,7 +7315,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-left'    => self::get_css_value( $attr['labelLeftPadding'], 'px' ),
 					'letter-spacing'  => self::get_css_value( $attr['labelLetterSpacing'], 'px' ),
 					'color'           => $attr['labelColor'],
-					'display'         => $attr['displayInline'] ? 'flex' : 'block',
 					'flex'            => $attr['displayInline'] ? 1 : null,
 					'justify-content' => $attr['displayInline'] ? 'flex-start' : null,
 					'display'         => $display_labels,
