@@ -18,6 +18,8 @@ function EditorStyles(props) {
     ctaTitleFontSizeTablet,
     ctaTextFontFamily,
     ctaTextFontSize,
+    ctaTextFontSizeMobile,
+    ctaTextFontSizeTablet,
     ctaTextColor,
     imgURL,
     headingLineHeight,
@@ -33,7 +35,11 @@ function EditorStyles(props) {
     buttonborderColor,
     buttonborderHColor,
     titleSpace,
+    titleSpaceMobile,
+    titleSpaceTablet,
     subtitleSpace,
+    subtitleSpaceMobile,
+    subtitleSpaceTablet,
     iconSpace,
     opacity,
     ctaBackgroundColor,
@@ -50,6 +56,8 @@ function EditorStyles(props) {
     buttonbackgroundColor1,
     buttonbackgroundColor2,
     buttonSpace,
+    buttonSpaceMobile,
+    buttonSpaceTablet,
     borderRadius,
     boxShadowColor,
     boxShadowHOffset,
@@ -59,12 +67,27 @@ function EditorStyles(props) {
     boxShadowPosition,
     icon_color,
     topPadding,
+    topPaddingMobile,
+    topPaddingTablet,
     bottomPadding,
+    bottomPaddingMobile,
+    bottomPaddingTablet,
     leftPadding,
+    leftPaddingMobile,
+    leftPaddingTablet,
     rightPadding,
+    rightPaddingMobile,
+    rightPaddingTablet,
     imagePosition,
     imageRepeat,
     thumbsize,
+    buttonTextFontFamily,
+    buttonTextFontSize,
+    buttonTextFontSizeMobile,
+    buttonTextFontSizeTablet,
+    buttonTextLineHeight,
+    buttonTextFontWeight,
+    iconPosition,
   } = props.attributes;
 
   let updatedButtonBackgroundColor = "";
@@ -81,6 +104,13 @@ function EditorStyles(props) {
     boxShadowPositionCSS = "";
   }
 
+  let ctaIconMargin = '';
+  if (iconPosition === 'before') {
+    ctaIconMargin = `auto ${generateCSSUnit(iconSpace, "px")} auto 0`
+  }else if (iconPosition === 'after') {
+    ctaIconMargin = `auto 0 auto ${generateCSSUnit(iconSpace, "px")}`
+  }
+
   var selectors = {
     " .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button": {
       "color": buttonTextColor,
@@ -92,6 +122,10 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-cta-link-text": {
       "color": buttonTextColor,
+      "font-family": buttonTextFontFamily,
+      "font-size": generateCSSUnit(buttonTextFontSize, "px"),
+      "font-weight": buttonTextFontWeight,
+      "line-height": buttonTextLineHeight,
     },
 
     " .responsive-block-editor-addons-cta-link-text:hover": {
@@ -156,7 +190,7 @@ function EditorStyles(props) {
       "font-family": ctaTitleFontFamily,
       "font-weight": headingFontWeight,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
-      "font-size": generateCSSUnit(ctaTitleFontSize, "px") + " !important",
+      "font-size": generateCSSUnit(ctaTitleFontSize, "px"),
     },
 
     " .responsive-block-editor-addons-cta-text": {
@@ -193,20 +227,66 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-button__icon": {
-      "margin-right": generateCSSUnit(iconSpace, "px"),
-      "margin-left": generateCSSUnit(iconSpace, "px"),
+      "margin":  ctaIconMargin,
     },
+
+    " .responsive-block-editor-addons-cta-button.rich-text": {
+      "font-family": buttonTextFontFamily,
+      "font-size": generateCSSUnit(buttonTextFontSize, "px"),
+      "font-weight": buttonTextFontWeight,
+      "line-height": buttonTextLineHeight,
+    }
   };
 
   var mobile_selectors = {
-    " .responsive-block-editor-addons-cta-title": {
-      "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px"),
+    " h2.responsive-block-editor-addons-cta-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+      "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px") + "!important",
+    },
+    "": {
+      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-cta-text": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
+      "font-size": generateCSSUnit(ctaTextFontSizeMobile, "px") + "!important",
+    },
+    " .responsive-block-editor-addons-cta-button-wrapper": {
+      "margin-bottom": generateCSSUnit(buttonSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-cta-button.rich-text": {
+      "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
+    },
+    " .responsive-block-editor-addons-cta-link-text": {
+      "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
     },
   };
 
   var tablet_selectors = {
-    " .responsive-block-editor-addons-cta-title": {
+    " h2.responsive-block-editor-addons-cta-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
       "font-size": generateCSSUnit(ctaTitleFontSizeTablet, "px"),
+    },
+    "": {
+      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-cta-text": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
+      "font-size": generateCSSUnit(ctaTextFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-cta-button-wrapper": {
+      "margin-bottom": generateCSSUnit(buttonSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-cta-button.rich-text": {
+      "font-size": generateCSSUnit(buttonTextFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-cta-link-text": {
+      "font-size": `${generateCSSUnit(buttonTextFontSizeTablet, "px")}`,
     },
   };
 

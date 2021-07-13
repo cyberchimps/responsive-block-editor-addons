@@ -651,3 +651,67 @@ p .responsive-block-editor-addons-info {
     margin-bottom: 0.5em;
     margin-right: -0.5em;
 }
+
+.rbea-review-notice.updated {
+    padding-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rbea-review-btns {
+    background-color: #2271b1;
+    padding: 10px;
+    max-width: 150px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.rbea-review-already-done-btn {
+    margin-left: 10px;
+}
+
+.rbea-review-btns-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.rbea-review-btns:hover {
+    background-color: #135e96;
+}
+
+.rbea-review-btns > a {
+    color: white;
+    text-decoration: none;
+}
+
+.rbea-review-rate-us-btn > a > i,
+.rbea-review-already-done-btn > a > i {
+    margin-left: 5px;
+    line-height: inherit;
+}
+
+.rbea-review-notice-text-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.rbea-review-dismiss-btn {
+    display: flex;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.rbea-review-dismiss-btn > i {
+    font-size: 15px;
+}
+
+.rbea-review-dismiss-btn > .dashicons-dismiss:before {
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .rbea-review-notice.updated {
+        padding-bottom: 2% !important;
+    }
+}
+

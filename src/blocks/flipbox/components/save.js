@@ -96,6 +96,7 @@ export default class Save extends Component {
       buttonHopacity,
       imageOpacity,
       backImageOpacity,
+      stack
     } = this.props.attributes;
 
     var boxShadowPositionCSS = boxShadowPosition;
@@ -119,7 +120,8 @@ export default class Save extends Component {
         [`has-${count}-columns`]: count,
         "has-responsive-columns": count > 1,
         [`has-${gutter}-gutter`]: gutter,
-      }
+      },
+      `responsive-flipbox-columns__stack-${stack}`,
     );
 
     const transitionSpeedSec = transitionSpeed / 10;

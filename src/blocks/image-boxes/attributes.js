@@ -71,8 +71,19 @@ const attributes = {
   descriptionSpacing: {
     type: "number",
   },
-  boxRadius: {
+  blockBorderRadius: {
     type: "number",
+  },
+  blockBorderColor: {
+    type: "string",
+  },
+  blockBorderStyle: {
+    type: "string",
+    default: "none",
+  },
+  blockBorderWidth: {
+    type: "number",
+    default: 2,
   },
   boxPaddingLeft: {
     type: "number",
@@ -228,6 +239,18 @@ const attributes = {
   backgroundImageFour: {
     type: "string",
     default: "",
+  },
+  gutter: {
+    type: "string",
+    default: "medium",
+  },
+  showDescription: {
+    type: "boolean",
+    default: true,
+  },
+  showTitle: {
+    type: "boolean",
+    default: true,
   },
 };
 

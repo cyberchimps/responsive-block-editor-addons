@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/testimonial", {
     "Add a user testimonial with a name and title.",
     "responsive-block-editor-addons"
   ),
-  icon: "format-quote",
+  icon: ResponsiveBlockEditorAddonsIcons.testimonial,
   category: "responsive_block_editor_addons",
   keywords: [
     __("testimonial", "responsive-block-editor-addons"),

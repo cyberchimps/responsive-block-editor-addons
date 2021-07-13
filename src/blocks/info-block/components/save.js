@@ -51,6 +51,8 @@ export default class Save extends Component {
       dimRatio,
       imageBoxShadowPosition,
       imageopacity,
+      resBoxTarget,
+      resBoxLink
     } = this.props.attributes;
     var imageBoxShadowPositionCSS = imageBoxShadowPosition;
 
@@ -70,6 +72,12 @@ export default class Save extends Component {
     let rel = "noopener noreferrer";
     if (resctaTarget) {
       target = "_blank";
+    }
+
+    let boxRefLink = "_self";
+    let boxRel= "noopener noreferrer";
+    if(resBoxTarget) {
+      boxRefLink = "_blank";
     }
 
     let url_chk = "";
@@ -172,6 +180,9 @@ export default class Save extends Component {
             ...InfoBoxPositionClasses(this.props.attributes)
           )}
         >
+          {resctaType === 'complete_box' && (
+            	<a className = "responsive-block-editor-addons-infobox-cta-link-complete-box" href={resBoxLink} target={boxRefLink} aria-label={"Infoblock Link"} rel ={boxRel}></a>
+          )}
           {imgURL && !!imgURL.length && (
             <div className="responsive-block-editor-addons-cta-image-wrap">
               <img

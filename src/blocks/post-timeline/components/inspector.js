@@ -1233,6 +1233,15 @@ export default class Inspector extends Component {
             max={50}
           />
           <RangeControl
+            label={__("Excerpt Bottom", "responsive-block-editor-addons")}
+            value={attributes.excerptSpace}
+            onChange={(value) =>
+              this.props.setAttributes({ excerptSpace: value })
+            }
+            min={0}
+            max={100}
+          />
+          <RangeControl
             label={__("Vertical Space", "responsive-block-editor-addons")}
             value={attributes.verSpace}
             onChange={(value) => this.props.setAttributes({ verSpace: value })}

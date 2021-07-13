@@ -5,6 +5,29 @@ const attributes = {
   buttonText: {
     type: "string",
   },
+  buttonTextFontFamily: {
+    type: "string"
+  },
+  buttonTextFontSize: {
+    type: "number",
+    default: 18
+  },
+  buttonTextFontSizeMobile: {
+    type: "number",
+    default: 16
+  },
+  buttonTextFontSizeTablet: {
+    type: "number",
+    default: 16
+  },
+  buttonTextLineHeight: {
+    type: "number",
+    default: 1
+  },
+  buttonTextFontWeight: {
+    type: "string",
+    default: "400"
+  },
   buttonUrl: {
     type: "string",
     source: "attribute",
@@ -59,6 +82,14 @@ const attributes = {
     default: "22",
   },
   ctaTextFontSize: {
+    type: "number",
+    default: "16",
+  },
+  ctaTextFontSizeMobile: {
+    type: "number",
+    default: "16",
+  },
+  ctaTextFontSizeTablet: {
     type: "number",
     default: "16",
   },
@@ -169,6 +200,22 @@ const attributes = {
     type: "number",
     default: 28,
   },
+  titleSpaceMobile: {
+    type: "number",
+    default: 25,
+  },
+  subtitleSpaceMobile: {
+    type: "number",
+    default: 28,
+  },
+  titleSpaceTablet: {
+    type: "number",
+    default: 25,
+  },
+  subtitleSpaceTablet: {
+    type: "number",
+    default: 28,
+  },
   iconSpace: {
     type: "number",
     default: 8,
@@ -246,7 +293,22 @@ const attributes = {
     type: "number",
     default: 20,
   },
+  topPaddingMobile: {
+    type: "number",
+    default: 20,
+  },
+  topPaddingTablet: {
+    type: "number",
+    default: 20,
+  },
   bottomPadding: {
+    type: "number",
+    default: 20,
+  },
+  bottomPaddingMobile: {
+    type: "number",
+    default: 20,
+  },bottomPaddingTablet: {
     type: "number",
     default: 20,
   },
@@ -254,7 +316,23 @@ const attributes = {
     type: "number",
     default: 20,
   },
+  leftPaddingMobile: {
+    type: "number",
+    default: 20,
+  },
+  leftPaddingTablet: {
+    type: "number",
+    default: 20,
+  },
   rightPadding: {
+    type: "number",
+    default: 20,
+  },
+  rightPaddingMobile: {
+    type: "number",
+    default: 20,
+  },
+  rightPaddingTablet: {
     type: "number",
     default: 20,
   },
@@ -271,6 +349,14 @@ const attributes = {
     default: "cover",
   },
   buttonSpace: {
+    type: "number",
+    default: 28,
+  },
+  buttonSpaceMobile: {
+    type: "number",
+    default: 28,
+  },
+  buttonSpaceTablet: {
     type: "number",
     default: 28,
   },

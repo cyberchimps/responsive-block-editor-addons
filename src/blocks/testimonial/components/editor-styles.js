@@ -99,6 +99,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
+      "margin-bottom" : '0 !important',
+    },
     " .responsive-block-editor-addons-testimonial-text": {
       "text-align": testimonialAlignment,
       "font-family": contentFontFamily,
@@ -161,14 +164,21 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
+      "margin-bottom" : '0 !important',
     },
   };
 
   var tablet_selectors = {
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
+      "margin-bottom" : `${generateCSSUnit(20, "px")} !important`,
     },
   };
 

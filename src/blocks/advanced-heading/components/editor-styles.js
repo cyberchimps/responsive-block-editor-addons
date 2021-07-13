@@ -47,6 +47,8 @@ function EditorStyles(props) {
     showHeading,
     showSubHeading,
     showSeparator,
+    textDecoration,
+    textDecorationSubHeading,
     block_id,
   } = props.attributes;
 
@@ -62,6 +64,7 @@ function EditorStyles(props) {
       "letter-spacing": generateCSSUnit(headingTitleLetterSpacing, "px"),
       color: headingTitleColor,
       "margin-bottom": generateCSSUnit(headSpacing, "px"),
+      "text-decoration": textDecoration,
     },
     " .responsive-heading-seperator": {
       "border-top-style": seperatorStyle,
@@ -78,6 +81,7 @@ function EditorStyles(props) {
       "letter-spacing": generateCSSUnit(subHeadingTitleLetterSpacing, "px"),
       color: subHeadingTitleColor,
       "margin-bottom": generateCSSUnit(subheadSpacing, "px"),
+      "text-decoration": textDecorationSubHeading,
     },
   };
 

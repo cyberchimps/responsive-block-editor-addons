@@ -98,6 +98,7 @@ export default class Edit extends Component {
         showDesignation,
         showDescription,
         showSocialIcons,
+        stack
       },
       isSelected,
       setAttributes,
@@ -124,7 +125,8 @@ export default class Edit extends Component {
             [`has-${count}-columns`]: count,
             "has-responsive-columns": count > 1,
             [`has-${gutter}-gutter`]: gutter,
-          }
+          },
+          `responsive-team-block-columns__stack-${stack}`,
         )}
       >
         {
@@ -296,57 +298,6 @@ export default class Edit extends Component {
               {showSocialIcons && (
                 <div className="responsive-block-editor-addons-team-social-icons-wrapper">
                   <ul className="responsive-block-editor-addons-team-social-icons edit-block">
-                    {!twitter && (
-                      <li>
-                        <a href={teamBlock[index]["twitterUrl"]}>
-                          <span className="dashicons dashicons-twitter"></span>
-                        </a>
-                        {isSelected && (
-                          <form
-                            key="form-link"
-                            onSubmit={(event) => event.preventDefault()}
-                          >
-                            <Dashicon icon={"admin-links"} />
-                            <URLInput
-                              className="button-url"
-                              value={teamBlock[index]["twitterUrl"]}
-                              onChange={(value) => {
-                                var new_content = {
-                                  twitterUrl: value,
-                                  teamName: data_copy[index]["teamName"],
-                                  teamDesignation:
-                                    data_copy[index]["teamDesignation"],
-                                  teamDescription:
-                                    data_copy[index]["teamDescription"],
-                                  teamImgId: data_copy[index]["teamImgId"],
-                                  teamImgURL: data_copy[index]["teamImgURL"],
-                                  emailAddress:
-                                    data_copy[index]["emailAddress"],
-                                  facebookUrl: data_copy[index]["facebookUrl"],
-                                  instagramUrl:
-                                    data_copy[index]["instagramUrl"],
-                                  youtubeUrl: data_copy[index]["youtubeUrl"],
-                                  pinterestUrl:
-                                    data_copy[index]["pinterestUrl"],
-                                  linkedinUrl: data_copy[index]["linkedinUrl"],
-                                };
-                                data_copy[index] = new_content;
-                                setAttributes({ teamBlock: data_copy });
-                              }}
-                            />
-                            <Button
-                              label={__(
-                                "Apply",
-                                "responsive-block-editor-addons"
-                              )}
-                              type="submit"
-                            >
-                              <Icon icon="editor-break" />
-                            </Button>
-                          </form>
-                        )}
-                      </li>
-                    )}
                     {!facebook && (
                       <li>
                         <a href={teamBlock[index]["facebookUrl"]}>
@@ -398,6 +349,57 @@ export default class Edit extends Component {
                         )}
                       </li>
                     )}
+                    {!twitter && (
+                      <li>
+                        <a href={teamBlock[index]["twitterUrl"]}>
+                          <span className="dashicons dashicons-twitter"></span>
+                        </a>
+                        {isSelected && (
+                          <form
+                            key="form-link"
+                            onSubmit={(event) => event.preventDefault()}
+                          >
+                            <Dashicon icon={"admin-links"} />
+                            <URLInput
+                              className="button-url"
+                              value={teamBlock[index]["twitterUrl"]}
+                              onChange={(value) => {
+                                var new_content = {
+                                  twitterUrl: value,
+                                  teamName: data_copy[index]["teamName"],
+                                  teamDesignation:
+                                    data_copy[index]["teamDesignation"],
+                                  teamDescription:
+                                    data_copy[index]["teamDescription"],
+                                  teamImgId: data_copy[index]["teamImgId"],
+                                  teamImgURL: data_copy[index]["teamImgURL"],
+                                  emailAddress:
+                                    data_copy[index]["emailAddress"],
+                                  facebookUrl: data_copy[index]["facebookUrl"],
+                                  instagramUrl:
+                                    data_copy[index]["instagramUrl"],
+                                  youtubeUrl: data_copy[index]["youtubeUrl"],
+                                  pinterestUrl:
+                                    data_copy[index]["pinterestUrl"],
+                                  linkedinUrl: data_copy[index]["linkedinUrl"],
+                                };
+                                data_copy[index] = new_content;
+                                setAttributes({ teamBlock: data_copy });
+                              }}
+                            />
+                            <Button
+                              label={__(
+                                "Apply",
+                                "responsive-block-editor-addons"
+                              )}
+                              type="submit"
+                            >
+                              <Icon icon="editor-break" />
+                            </Button>
+                          </form>
+                        )}
+                      </li>
+                    )}                   
                     {!linkedin && (
                       <li>
                         <a href={teamBlock[index]["linkedinUrl"]}>

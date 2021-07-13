@@ -22,7 +22,6 @@
     }
 
     article {
-      margin-bottom: 2.5em;
       min-width: 0;
       background-size: cover;
 
@@ -186,7 +185,6 @@
       }
 
       &:not(:last-child) {
-        margin-bottom: 5%;
         padding-bottom: 5%;
       }
 

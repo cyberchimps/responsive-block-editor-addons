@@ -8,6 +8,9 @@ import attributes from "./attributes";
 import Edit from "./components/edit";
 import Save from "./components/save";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Components
 const { __ } = wp.i18n;
 
@@ -21,7 +24,7 @@ registerBlockType("responsive-block-editor-addons/divider", {
     "Add a divider and spacer between your blocks.",
     "responsive-block-editor-addons"
   ),
-  icon: "minus",
+  icon: ResponsiveBlockEditorAddonsIcons.divider,
   category: "responsive_block_editor_addons",
   keywords: [
     __("divider", "responsive-block-editor-addons"),

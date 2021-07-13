@@ -27,6 +27,7 @@ export default class Save extends Component {
       showSubHeading,
       showSeparator,
       block_id,
+      anchor,
     } = this.props.attributes;
 
     var seprator_output = "";
@@ -39,6 +40,7 @@ export default class Save extends Component {
     }
     return [
       <div
+        id={anchor}
         className={classnames(
           "responsive-block-editor-addons-block-advanced-heading",
           `block-${block_id}`

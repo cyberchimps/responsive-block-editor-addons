@@ -52,7 +52,23 @@ const attributes = {
     type: "number",
     default: 60,
   },
+  leftPaddingMobile: {
+    type: "number",
+    default: 60,
+  },
+  leftPaddingTablet: {
+    type: "number",
+    default: 60,
+  },
   rightPadding: {
+    type: "number",
+    default: 60,
+  },
+  rightPaddingMobile: {
+    type: "number",
+    default: 60,
+  },
+  rightPaddingTablet: {
     type: "number",
     default: 60,
   },
@@ -60,7 +76,23 @@ const attributes = {
     type: "number",
     default: 70,
   },
+  topPaddingMobile: {
+    type: "number",
+    default: 70,
+  },
+  topPaddingTablet: {
+    type: "number",
+    default: 70,
+  },
   bottomPadding: {
+    type: "number",
+    default: 70,
+  },
+  bottomPaddingMobile: {
+    type: "number",
+    default: 70,
+  },
+  bottomPaddingTablet: {
     type: "number",
     default: 70,
   },
@@ -145,6 +177,54 @@ const attributes = {
   boxShadowPosition: {
     type: "string",
     default: "outset",
+  },
+  textSpacingTop: {
+    type: "number",
+    default: 60
+  },
+  textSpacingBottom: {
+    type: "number",
+    default: 0
+  },
+  textSpacingLeft: {
+    type: "number",
+    default: 70
+  },
+  textSpacingRight: {
+    type: "number",
+    default: 70
+  },
+  textSpacingTopMobile: {
+    type: "number",
+    default: 30
+  },
+  textSpacingBottomMobile: {
+    type: "number",
+    default: 0
+  },
+  textSpacingLeftMobile: {
+    type: "number",
+    default: 35
+  },
+  textSpacingRightMobile: {
+    type: "number",
+    default: 35
+  },
+  textSpacingTopTablet: {
+    type: "number",
+    default: 30
+  },
+  textSpacingBottomTablet: {
+    type: "number",
+    default: 0
+  },
+  textSpacingLeftTablet: {
+    type: "number",
+    default: 35
+  },
+  textSpacingRightTablet: {
+    type: "number",
+    default: 35
   },
 };
 

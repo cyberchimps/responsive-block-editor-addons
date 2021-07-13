@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -57,7 +60,7 @@ registerBlockType("responsive-block-editor-addons/content-timeline", {
     "Add content timeline on your website",
     "responsive-block-editor-addons"
   ),
-  icon: "admin-settings",
+  icon: ResponsiveBlockEditorAddonsIcons.content_timeline,
   category: "responsive_block_editor_addons",
   keywords: [
     __("content", "responsive-block-editor-addons"),

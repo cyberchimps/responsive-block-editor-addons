@@ -20,6 +20,13 @@
 class Responsive_Block_Editor_Addons {
 
 	/**
+	 * Table of Contents Present on a Page.
+	 *
+	 * @var bool
+	 */
+	public static $table_of_contents_flag = false;
+
+	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    1.0.0
@@ -76,8 +83,32 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'admin_init', array( $this, 'responsive_block_editor_addons_maybe_redirect_to_getting_started' ) );
 
 		add_action( 'wp_ajax_responsive_block_editor_post_pagination', array( $this, 'post_pagination' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
+		// Display admin notice for RBEA review.
+		add_action( 'admin_notices', array( $this, 'rbea_admin_review_notice' ) );
+
+		// Check the input value on review admin notice.
+		add_action( 'admin_init', array( $this, 'rbea_review_already_done' ), 5 );
+	}
+
+	/**
+	 * The name of the plugin used to uniquely identify it within the context of
+	 * WordPress and to define internationalization functionality.
+	 *
+	 * @return string    The name of the plugin.
+	 */
+	public function get_plugin_name() {
+		return $this->plugin_name;
+	}
+
+	/**
+	 * Returns the version of plugin
+	 *
+	 * @return string    The version of the plugin.
+	 */
+	public function get_plugin_version() {
+		return $this->version;
 	}
 
 	/**
@@ -90,9 +121,9 @@ class Responsive_Block_Editor_Addons {
 
 		if ( isset( $_POST['attributes'] ) ) {
 
-			$query = $this->get_query( $_POST['attributes'], 'grid' );
+			$query = $this->get_query( $_POST['attributes'], 'grid' ); //phpcs:ignore
 
-			$pagination_markup = $this->render_pagination( $query, $_POST['attributes'] );
+			$pagination_markup = $this->render_pagination( $query, $_POST['attributes'] ); //phpcs:ignore
 
 			wp_send_json_success( $pagination_markup );
 		}
@@ -413,7 +444,7 @@ class Responsive_Block_Editor_Addons {
 									<h4>
 										<?php
 											/* translators: %s: search term */
-											$title = sprintf( __( '%s', 'responsive-block-editor-addons' ), $single_feature[0] );
+											$title = sprintf( __( '%s', 'responsive-block-editor-addons' ), $single_feature[0] ); //phpcs:ignore
 											echo esc_html( $title );
 										?>
 									</h4>
@@ -491,7 +522,7 @@ class Responsive_Block_Editor_Addons {
 
 		delete_transient( 'responsive_block_editor_addons_activation_redirect' );
 
-		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) { // phpcs:ignore
 			return;
 		}
 
@@ -680,7 +711,7 @@ class Responsive_Block_Editor_Addons {
 		wp_enqueue_script(
 			'responsive_blocks-frontend-js',
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
-			array('jquery'),
+			array( 'jquery' ),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
 			true
 		);
@@ -745,18 +776,94 @@ class Responsive_Block_Editor_Addons {
 			'responsive-block-editor-addons',
 		);
 
-		if ( empty( $_GET['page'] ) || ! in_array( $_GET['page'], $responsive_block_editor_addons_pages, true ) ) {
+		if ( empty( $_GET['page'] ) || ! in_array( $_GET['page'], $responsive_block_editor_addons_pages, true ) ) { //phpcs:ignore
 			return;
 		}
 
 		remove_all_actions( 'admin_notices' );
 	}
 
-    /**
-    * Adding Dashicons in WordPress Front-end
-    */
-    public function load_dashicons_front_end() {
-        wp_enqueue_style( 'dashicons' );
-    }
+	/**
+	 * Adding Dashicons in WordPress Front-end
+	 */
+	public function load_dashicons_front_end() {
+		wp_enqueue_style( 'dashicons' );
+	}
 
+	/**
+	 * Add Wrapper to all the Blocks for fetching the Table of Contents Headings.
+	 *
+	 * @param string $content Post Content.
+	 *
+	 * @since 1.22.1
+	 */
+	public function add_table_of_contents_wrapper( $content ) {
+
+		if ( true === self::$table_of_contents_flag ) {
+			return '<div class="responsive-block-editor-addons-toc__entry-content"></div>' . $content;
+		}
+
+		return $content;
+	}
+
+	/**
+	 * Function to display RBEA review notice on admin page.
+	 *
+	 * @return void
+	 */
+	public function rbea_admin_review_notice() {
+		$rbea_review_pending_option = get_option( 'responsive_block_editor_addons_review_pending' );
+		switch ( $rbea_review_pending_option ) {
+			case '0':
+				$check_for_review_transient = get_transient( 'responsive_block_editor_addons_review_transient' );
+				if ( false === $check_for_review_transient ) {
+					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', THIRTY_DAYS_IN_SECONDS );
+					update_option( 'responsive_block_editor_addons_review_pending', '1', true );
+				}
+				break;
+			case '1':
+				$check_for_review_transient = get_transient( 'responsive_block_editor_addons_review_transient' );
+				if ( false === $check_for_review_transient ) {
+					echo sprintf(
+						'<div class="rbea-review-notice updated">
+						<div class="rbea-review-notice-text-container">		
+						<p><span>%3$s<strong>Responsive Block Editor Addons</strong>.%4$s</span></p>
+						<div><a class="rbea-review-dismiss-btn" href="%2$s"><i class="dashicons dashicons-dismiss"></i>%5$s</a></div>
+						</div>
+						<div class="rbea-review-btns-container">
+						<div class="rbea-review-btns rbea-review-rate-us-btn"><a href="%1$s" target="_blank">%6$s<i class="dashicons dashicons-thumbs-up"></i></a></div>
+						<div class="rbea-review-btns rbea-review-already-done-btn"><a href="%2$s">%7$s<i class="dashicons dashicons-smiley"></i></a></div>
+						</div>
+						</div>',
+						esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' ),
+						esc_url( get_admin_url() . '?already_done=1' ),
+						esc_html__( 'Hey, we hope you are enjoying building pages with ', 'responsive-block-editor-addons' ),
+						esc_html__( ' Could you please write us a review and give it a 5- star rating on WordPress? Just to help us spread the word and boost our motivation.', 'responsive-block-editor-addons' ),
+						esc_html__( 'Dismiss', 'responsive-block-editor-addons' ),
+						esc_html__( 'Rate Us', 'responsive-block-editor-addons' ),
+						esc_html__( 'I already did', 'responsive-block-editor-addons' )
+					);
+				}
+				break;
+			case '2':
+				break;
+			default:
+				break;
+		}
+	}
+
+	/**
+	 * Function to check the user's input on RBEA review notice.
+	 *
+	 * @return void
+	 */
+	public function rbea_review_already_done() {
+		$dnd = '';
+		if ( isset( $_GET['already_done'] ) && ! empty( $_GET['already_done'] ) ) { //phpcs:ignore
+			$dnd = esc_attr( $_GET['already_done'] ); //phpcs:ignore
+		}
+		if ( '1' === $dnd ) {
+			update_option( 'responsive_block_editor_addons_review_pending', '2', true );
+		}
+	}
 }

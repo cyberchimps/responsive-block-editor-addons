@@ -11,7 +11,6 @@ import EditorStyles from "./editor-styles";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
-
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -57,6 +56,7 @@ export default class Edit extends Component {
         showSubHeading,
         showSeparator,
         seperatorPosition,
+        textJustify,
         block_id,
       },
       setAttributes,

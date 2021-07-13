@@ -112,7 +112,8 @@ function EditorStyles(props) {
     containerPaddingBottomMobile,
     containerPaddingLeftMobile,
     justifyItems,
-    displayInline,	
+    displayInline,
+    stackOnMobile,	
   } = props.attributes;
 
   let boxShadowPositionCSS = boxShadowPosition;
@@ -127,16 +128,21 @@ function EditorStyles(props) {
   const displayMinutes = showMinutesBox ? "block" : "none";
   const displaySeconds = showSecondsBox ? "block" : "none";
 
+  let flexColumn = stackOnMobile ? 'column' : 'row';
+
   var selectors = {
     " .responsive-block-editor-addons-countdown-box-stylings": {
         "height": generateCSSUnit(boxHeight, "px"),
         "width":  generateCSSUnit(boxWidth, "px"),
-        "margin": generateCSSUnit(boxMargin, "px"),
+        "margin-left": generateCSSUnit(boxMargin, "px"),
         "padding": `${boxPaddingTop}px ${boxPaddingRight}px ${boxPaddingBottom}px  ${boxPaddingLeft}px`,
         "border": `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor}`,
         "border-radius": `${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
         "background-color": boxBackgroundColor,
         "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
+    },
+    " .responsive-block-editor-addons-countdown-box-stylings:first-child": {
+        "margin-left" : '0px',
     },
     " .responsive-block-editor-addons-countdown-digits": {
         "font-family": digitFontFamily,
@@ -184,6 +190,8 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-countdown-container .responsive-block-editor-addons-countdown-items": {
         "justify-content": justifyItems,
+        "margin": 0,
+        "padding": 0,
     },
     " .responsive-block-editor-addons-countdown-item.responsive-block-editor-addons-countdown-item-days": {
         "display": displayDays,
@@ -203,7 +211,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-countdown-box-stylings": {
       "height": generateCSSUnit(boxHeightMobile, "px"),
       "width":  generateCSSUnit(boxWidthMobile, "px"),
-      "margin": generateCSSUnit(boxMarginMobile, "px"),
+      "margin-left": generateCSSUnit(boxMarginMobile, "px"),
       "padding": `${boxPaddingTopMobile}px ${boxPaddingRightMobile}px ${boxPaddingBottomMobile}px  ${boxPaddingLeftMobile}px`,
       "border": `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor};
       "border-radius": ${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
@@ -249,13 +257,17 @@ function EditorStyles(props) {
     "padding-bottom": generateCSSUnit(containerPaddingBottomMobile, "px"),
     "padding-left": generateCSSUnit(containerPaddingLeftMobile, "px"),
   },
+  " .responsive-block-editor-addons-countdown-container .responsive-block-editor-addons-countdown-items": {
+      "flex-direction": flexColumn,
+      "align-items": "center",
+  },
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-countdown-box-stylings": {
       "height": generateCSSUnit(boxHeightTablet, "px"),
       "width":  generateCSSUnit(boxWidthTablet, "px"),
-      "margin": generateCSSUnit(boxMarginTablet, "px"),
+      "margin-left": generateCSSUnit(boxMarginTablet, "px"),
       "padding": `${boxPaddingTopTablet}px ${boxPaddingRightTablet}px ${boxPaddingBottomTablet}px  ${boxPaddingLeftTablet}px`,
       "border": `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor};
       "border-radius": ${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,

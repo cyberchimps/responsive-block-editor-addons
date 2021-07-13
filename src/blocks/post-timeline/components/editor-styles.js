@@ -12,6 +12,7 @@ function EditorStyles(props) {
     textColor,
     contentPadding,
     authorSpace,
+    excerptSpace,
     blockSpace,
     headingSpace,
     headingColor,
@@ -181,6 +182,7 @@ function EditorStyles(props) {
       "font-weight": contentFontWeight,
       "font-size": generateCSSUnit(contentFontSize, "px"),
       "font-family": contentFontFamily,
+      "margin-bottom": generateCSSUnit(excerptSpace, "px"),
     },
     " .responsive-block-editor-addons-timeline__date-new.responsive-block-editor-addons-timeline__date-outer": {
       "line-height": dateLineHeight,

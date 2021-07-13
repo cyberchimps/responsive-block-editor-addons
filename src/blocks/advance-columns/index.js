@@ -6,6 +6,9 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 
+//Import Block icons
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -23,7 +26,7 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
     "This block gives you advanced options to insert a number of columns within a single row.",
     "responsive-block-editor-addons"
   ),
-  icon: "layout",
+  icon: ResponsiveBlockEditorAddonsIcons.advance_columns,
   category: "responsive_block_editor_addons",
   keywords: [
     __("calendar", "responsive-block-editor-addons"),

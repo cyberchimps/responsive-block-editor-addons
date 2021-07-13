@@ -65,6 +65,10 @@
 			 digitHoursLabel,
 			 digitMinutesLabel,
 			 digitSecondsLabel,
+			 showDaysBox,
+			 showHoursBox,
+			 showMinutesBox,
+			 showSecondsBox,
 		 } = attributes;
  
 		 return [
@@ -75,30 +79,30 @@
 			 <BoxContainer
 				 block_id={block_id}
 			 >
-				 <Box
+				 {showDaysBox &&<Box
 					 boxName="days"
 					 label={digitDaysLabel}
 					 digit={days}
-				 />
+				 />}
  
-				 <Box
+ 				 {showHoursBox &&<Box
 					 boxName="hours"
 					 digit={hours}
 					 label={digitHoursLabel}
-				 />
+				 />}
  
-				 <Box
+				 {showMinutesBox&&<Box
 					 boxName="minutes"
 					 label={digitMinutesLabel}
 					 digit={minutes}
-				 />
+				 />}
  
-				 <Box
+				 {showSecondsBox&&<Box
 					 boxName="seconds"
 					 label={digitSecondsLabel}
 					 digit={seconds}
-				 />
-			 </BoxContainer>,
+				 />}
+			 </BoxContainer>
 			</Fragment>
 		 ];
 	 }

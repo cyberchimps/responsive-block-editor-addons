@@ -33,6 +33,7 @@ import "./blocks/googlemap/index.js";
 import "./blocks/testimonial-slider/index.js";
 import "./blocks/spacer/index.js";
 import "./blocks/count-down/index.js";
+import "./blocks/table-of-contents/index.js";
 
 // Extensions
 import "./extensions/cover-styles";

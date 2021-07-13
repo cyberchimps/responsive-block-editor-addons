@@ -7,6 +7,9 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 
+//Import Block icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/expand", {
     "This block allows you to add expand/show more block in your webpage.",
     "responsive-block-editor-addons"
   ),
-  icon: "editor-expand",
+  icon: ResponsiveBlockEditorAddonsIcons.expand,
   category: "responsive_block_editor_addons",
   keywords: [
     __("expand", "responsive-block-editor-addons"),
