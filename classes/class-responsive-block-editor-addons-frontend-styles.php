@@ -7328,7 +7328,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'           => $attr['labelColor'],
 					'flex'            => $attr['displayInline'] ? 1 : null,
 					'justify-content' => $attr['displayInline'] ? 'flex-start' : null,
-					'display'         => $display_labels,
 				),
 				' .responsive-block-editor-addons-countdown-box-margins' => array(
 					'margin-top'    => self::get_css_value( $attr['boxItemMarginTopTablet'], 'px' ),
