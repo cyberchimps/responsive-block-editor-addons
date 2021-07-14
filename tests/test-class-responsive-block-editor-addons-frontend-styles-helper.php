@@ -68,6 +68,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	 * Function to return css after checking css for inner blocks
 	 *
 	 * @param [type] $block The block.
+	 * @param [type] $css The css.
 	 * @return [type]
 	 */
 	public static function return_the_css( $block, $css ) {
