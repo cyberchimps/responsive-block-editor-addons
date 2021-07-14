@@ -364,4 +364,114 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
 	}
+
+	/**
+	 * Test for get_css_block for blockquote
+	 */
+	public function test_get_css_block_blockquote() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/blockquote',
+			'attrs'        => array(
+				'block_id' => 'bf2b07f4-86b1-4bf6-89e5-c669000f5bd8',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_blockquote_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for call_to_action
+	 */
+	public function test_get_css_block_call_to_action() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+			'attrs'        => array(
+				'block_id' => '339297a0-9322-498d-9607-94b9d3b4608b',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_to_action_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for team
+	 */
+	public function test_get_css_block_team() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/team',
+			'attrs'        => array(
+				'block_id' => '3f908b8b-2cac-4077-8bf4-3eb98f2b35ef',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_team_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for countdown
+	 */
+	public function test_get_css_block_countdown() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/count-down',
+			'attrs'        => array(
+				'block_id' => 'e4c4c84d-8a67-4fec-b9fa-1aaffff1c26c',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_count_down_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox
+	 */
+	public function test_get_css_block_flipbox() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array(
+				'block_id' => '5f215a2e-787b-4366-9985-da94d63ab751',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
 }
