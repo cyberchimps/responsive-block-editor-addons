@@ -11,8 +11,12 @@ function EditorStyles(props) {
     gap,
     inner_gap,
     size,
+    sizeMobile,
+    sizeTablet,
     border,
     bgSize,
+    bgSizeMobile,
+    bgSizeTablet,
     borderRadius,
     fontSizeType,
     block_id,
@@ -83,14 +87,28 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " .responsive-block-editor-addons-icon-list__source-icon svg": {
+      width: generateCSSUnit(sizeMobile, fontSizeType),
+      height: generateCSSUnit(sizeMobile, fontSizeType),
+    },
     " .responsive-block-editor-addons-icon-list__label": {
       "font-size": generateCSSUnit(labelFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-icon-list__source-wrap": {
+      padding: generateCSSUnit(bgSizeMobile, "px"),
     },
   };
 
   var tablet_selectors = {
+    " .responsive-block-editor-addons-icon-list__source-icon svg": {
+      width: generateCSSUnit(sizeTablet, fontSizeType),
+      height: generateCSSUnit(sizeTablet, fontSizeType),
+    },
     " .responsive-block-editor-addons-icon-list__label": {
       "font-size": generateCSSUnit(labelFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-icon-list__source-wrap": {
+      padding: generateCSSUnit(bgSizeTablet, "px"),
     },
   };
 
