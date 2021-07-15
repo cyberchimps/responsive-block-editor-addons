@@ -48,9 +48,20 @@ function EditorStyles(props) {
     updatedImgUrl = imgURL;
   }
 
+  let updatedBackgroundImage = "";
+  if(updatedImgUrl) {
+	  updatedBackgroundImage = `linear-gradient(${hexToRgba(
+        vidBackgroundColor || "#000000",
+        imgopacity || 0
+      )},${hexToRgba(
+        vidBackgroundColor || "#fff",
+        imgopacity || 0
+      )}),url(${updatedImgUrl})`;
+  }
+
   var selectors = {
     " .responsive-block-editor-addons-video-popup__wrapper": {
-      "background-image": `url(${updatedImgUrl})`,
+      "background-image": updatedBackgroundImage,
       "background-color": hexToRgba(
         vidBackgroundColor || "#000000",
         imgopacity || 0
