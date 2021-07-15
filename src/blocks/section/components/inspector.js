@@ -139,8 +139,9 @@ export default class Inspector extends Component {
         gradientDirection,
         backgroundType,
         backgroundImage,
-
         backgroundPosition,
+        backgroundPositionMobile,
+        backgroundPositionTablet,
         backgroundAttachment,
         backgroundRepeat,
         backgroundSize,
@@ -153,7 +154,6 @@ export default class Inspector extends Component {
         gradientOverlayType,
         gradientOverlayAngle,
         gradientOverlayPosition,
-
         backgroundVideo,
         opacity,
         boxShadowColor,
@@ -164,9 +164,25 @@ export default class Inspector extends Component {
         boxShadowPosition,
         z_index,
         align,
+        imagePositionTab,
+        imageSizeTab,
+        backgroundSizeTablet,
+        backgroundSizeMobile,
       },
       setAttributes,
     } = this.props;
+
+    const imagePositionOptions =  [
+      { value: "top left", label: __("Top Left") },
+      { value: "top center", label: __("Top Center") },
+      { value: "top right", label: __("Top Right") },
+      { value: "center left", label: __("Center Left") },
+      { value: "center center", label: __("Center Center") },
+      { value: "center right", label: __("Center Right") },
+      { value: "bottom left", label: __("Bottom Left") },
+      { value: "bottom center", label: __("Bottom Center") },
+      { value: "bottom right", label: __("Bottom Right") },
+    ];
 
     // Section title tags
     const sectionTags = [
@@ -202,6 +218,7 @@ export default class Inspector extends Component {
       { value: "image", label: __("Image", "responsive-block-editor-addons") },
       { value: "video", label: __("Video", "responsive-block-editor-addons") },
     ];
+
     return (
       <InspectorControls key="inspector">
         <PanelBody
@@ -844,24 +861,71 @@ export default class Inspector extends Component {
               </BaseControl>
               {backgroundImage && (
                 <Fragment>
-                  <SelectControl
-                    label={__("Image Position")}
-                    value={backgroundPosition}
-                    onChange={(value) =>
-                      setAttributes({ backgroundPosition: value })
-                    }
-                    options={[
-                      { value: "top left", label: __("Top Left") },
-                      { value: "top center", label: __("Top Center") },
-                      { value: "top right", label: __("Top Right") },
-                      { value: "center left", label: __("Center Left") },
-                      { value: "center center", label: __("Center Center") },
-                      { value: "center right", label: __("Center Right") },
-                      { value: "bottom left", label: __("Bottom Left") },
-                      { value: "bottom center", label: __("Bottom Center") },
-                      { value: "bottom right", label: __("Bottom Right") },
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className: " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className: " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
                     ]}
-                  />
+                  >
+                    {(tab) => {
+                      if ("mobile" === tab.name) {
+                        setAttributes({ imagePositionTab: 'mobile' })
+                      } else if ("tablet" === tab.name) {
+                        setAttributes({ imagePositionTab: 'tablet' })
+                      } else {
+                        setAttributes({ imagePositionTab: 'desktop' })
+                      }
+                    }}
+                  </TabPanel>
+                  {imagePositionTab === 'desktop' && <Fragment>
+                      <SelectControl
+                        label={__("Image Position")}
+                        value={backgroundPosition}
+                        onChange={(value) =>
+                          setAttributes({ backgroundPosition: value })
+                        }
+                        options={imagePositionOptions}
+                      />
+                    </Fragment>
+                  }
+                  {imagePositionTab === 'tablet' && <Fragment>
+                      <SelectControl
+                        label={__("Image Position Tablet")}
+                        value={backgroundPositionTablet}
+                        onChange={(value) =>
+                          setAttributes({ backgroundPositionTablet: value })
+                        }
+                        options={imagePositionOptions}
+                      />
+                    </Fragment>
+                  }
+                  {imagePositionTab === 'mobile' && <Fragment>
+                      <SelectControl
+                        label={__("Image Position Mobile")}
+                        value={backgroundPositionMobile}
+                        onChange={(value) =>
+                          setAttributes({ backgroundPositionMobile: value })
+                        }
+                        options={imagePositionOptions}
+                      />
+                    </Fragment>
+                  }
                   <SelectControl
                     label={__("Attachment")}
                     value={backgroundAttachment}
@@ -886,7 +950,39 @@ export default class Inspector extends Component {
                       { value: "repeat-y", label: __("Repeat-y") },
                     ]}
                   />
-                  <SelectControl
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className: " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className: " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                  >
+                    {(tab) => {
+                      if ("mobile" === tab.name) {
+                        setAttributes({ imageSizeTab: 'mobile' })
+                      } else if ("tablet" === tab.name) {
+                        setAttributes({ imageSizeTab: 'tablet' })
+                      } else {
+                        setAttributes({ imageSizeTab: 'desktop' })
+                      }
+                    }}
+                  </TabPanel>
+                  { imageSizeTab === 'desktop' && <SelectControl
                     label={__("Size")}
                     value={backgroundSize}
                     onChange={(value) =>
@@ -897,7 +993,31 @@ export default class Inspector extends Component {
                       { value: "cover", label: __("Cover") },
                       { value: "contain", label: __("Contain") },
                     ]}
-                  />
+                  />}
+                  { imageSizeTab === 'tablet' && <SelectControl
+                    label={__("Size Tablet")}
+                    value={backgroundSizeTablet}
+                    onChange={(value) =>
+                      setAttributes({ backgroundSizeTablet: value })
+                    }
+                    options={[
+                      { value: "auto", label: __("Auto") },
+                      { value: "cover", label: __("Cover") },
+                      { value: "contain", label: __("Contain") },
+                    ]}
+                  />}
+                  { imageSizeTab === 'mobile' && <SelectControl
+                    label={__("Size Mobile")}
+                    value={backgroundSizeMobile}
+                    onChange={(value) =>
+                      setAttributes({ backgroundSizeMobile: value })
+                    }
+                    options={[
+                      { value: "auto", label: __("Auto") },
+                      { value: "cover", label: __("Cover") },
+                      { value: "contain", label: __("Contain") },
+                    ]}
+                  />}
                   <SelectControl
                     label={__("Image Overlay Type")}
                     value={overlayType}
