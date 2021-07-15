@@ -170,11 +170,11 @@ const attributes = {
   },
   backgroundPositionMobile: {
     type: "string",
-    default: "center-center",
+    default: "center center",
   },
   backgroundPositionTablet: {
     type: "string",
-    default: "center-center",
+    default: "center center",
   },
   backgroundSize: {
     type: "string",
