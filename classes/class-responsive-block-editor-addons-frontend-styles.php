@@ -298,9 +298,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['excerptFontSize'], 'px' ),
 					'font-weight'   => $attr['excerptFontWeight'],
 					'line-height'   => $attr['excerptLineHeight'],
-					'margin-bottom' => self::get_css_value( $attr['excerptSpace'], 'px' ),
-				),
-				' .responsive-block-editor-addons-block-post-carousel-excerpt p' => array(
+    				),
+				' .responsive-block-editor-addons-block-post-carousel-excerpt>p:first-child' => array(
 					'margin-bottom' => self::get_css_value( $attr['excerptSpace'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-carousel-date' => array(
@@ -7529,7 +7528,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 							var $this_scope = $( id );
 							if ( $this_scope.find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 ) {
 								$this_scope.find( '.responsive-block-editor-addons-toc__title-wrap' ).addClass( 'responsive-block-editor-addons-toc__is-collapsible' );
-							}   
+							}
 						},
 					}
 
@@ -7537,7 +7536,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						RBEATableOfContents.init()
 						RBEATableOfContents._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $id ); ?>' );
 					})
-				})( jQuery )       
+				})( jQuery )
 			</script>
 			<?php
 
