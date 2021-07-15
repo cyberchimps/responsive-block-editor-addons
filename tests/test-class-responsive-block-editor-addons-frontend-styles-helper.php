@@ -474,4 +474,48 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
 	}
+
+	/**
+	 * Test for get_css_block for section
+	 */
+	public function test_get_css_block_section() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/section',
+			'attrs'        => array(
+				'block_id' => '5f215a2e-787b-4366-9985-da94d63ab751',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_section_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for shape divider
+	 */
+	public function test_get_css_block_shape_divider() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/shape-divider',
+			'attrs'        => array(
+				'block_id' => '3f908b8b-2cac-4077-8bf4-3eb98f2b35ef',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_shape_divider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
 }
