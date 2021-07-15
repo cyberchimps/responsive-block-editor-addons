@@ -31,6 +31,28 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	public static $rbea_frontend_styles;
 
 	/**
+	 * Created Dummy post id.
+	 *
+	 * @access public
+	 * @var int
+	 */
+	public static $post_id;
+
+	/**
+	 * Dummy user ID.
+	 *
+	 * @var int
+	 */
+	protected static $user_id;
+
+	/**
+	 * Dummy block ID.
+	 *
+	 * @var int
+	 */
+	protected static $expand_block_id;
+
+	/**
 	 * Setup class instance
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -38,6 +60,31 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	public static function wpSetUpBeforeClass( WP_UnitTest_Factory $factory ) {
 		self::$rbea_frontend_styles_helper = new Responsive_Block_Editor_Addons_Frontend_Styles_Helper();
 		self::$rbea_frontend_styles        = new Responsive_Block_Editor_Addons_Frontend_Styles();
+		self::$user_id                     = $factory->user->create(
+			array(
+				'role' => 'editor',
+			)
+		);
+
+		self::$post_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'post',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Post',
+				'post_content' => '',
+			)
+		);
+
+		self::$expand_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/expand --><!-- /wp:responsive-block-editor-addons/expand -->',
+			)
+		);
 	}
 
 	/**
@@ -514,6 +561,27 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		);
 		$block_attrs = self::extract_attributes( $block );
 		$css         = self::$rbea_frontend_styles->get_responsive_block_shape_divider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for expand
+	 */
+	public function test_get_block_css_expand() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_expand_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/expand',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$expand_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_expand_css( $block_attrs[0], $block_attrs[1] );
 		$expected    = self::return_the_css( $block, $css );
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
