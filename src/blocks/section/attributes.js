@@ -182,9 +182,11 @@ const attributes = {
   },
   backgroundSizeTablet: {
     type: "string",
+    default: 'cover',
   },
   backgroundSizeMobile: {
     type: "string",
+    default: 'cover'
   },
   backgroundRepeat: {
     type: "string",
