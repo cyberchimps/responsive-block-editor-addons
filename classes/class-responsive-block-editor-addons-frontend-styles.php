@@ -292,16 +292,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['dateSpace'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-carousel-excerpt' => array(
-					'text-align'    => $attr['blockAlign'],
-					'color'         => $attr['contentColor'],
-					'font-family'   => $attr['excerptFontFamily'],
-					'font-size'     => self::get_css_value( $attr['excerptFontSize'], 'px' ),
-					'font-weight'   => $attr['excerptFontWeight'],
-					'line-height'   => $attr['excerptLineHeight'],
-					'margin-bottom' => self::get_css_value( $attr['excerptSpace'], 'px' ),
+					'text-align'  => $attr['blockAlign'],
+					'color'       => $attr['contentColor'],
+					'font-family' => $attr['excerptFontFamily'],
+					'font-size'   => self::get_css_value( $attr['excerptFontSize'], 'px' ),
+					'font-weight' => $attr['excerptFontWeight'],
+					'line-height' => $attr['excerptLineHeight'],
 				),
-				' .responsive-block-editor-addons-block-post-carousel-excerpt p' => array(
+				' .responsive-block-editor-addons-block-post-carousel-excerpt p:first-child' => array(
 					'margin-bottom' => self::get_css_value( $attr['excerptSpace'], 'px' ),
+
 				),
 				' .responsive-block-editor-addons-block-post-carousel-date' => array(
 					'color' => $attr['metaColor'],
