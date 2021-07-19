@@ -11,6 +11,11 @@
 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-responsive-block-editor-addons-frontend-styles-helper.php';
 
 /**
+ * Require frontend styles class
+ */
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-responsive-block-editor-addons-frontend-styles.php';
+
+/**
  * Test class for frontend styles helper
  */
 class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_UnitTestCase {
@@ -149,6 +154,27 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	 * @var int
 	 */
 	protected static $shape_divider_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $pricing_list_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $pricing_table_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $gallery_masonry_block_id;
 
 
 	/**
@@ -322,6 +348,36 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
 				'post_content' => '<!-- wp:responsive-block-editor-addons/section --><!-- /wp:responsive-block-editor-addons/section -->',
+			)
+		);
+
+		self::$pricing_list_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/pricing-list --><!-- /wp:responsive-block-editor-addons/pricing-list -->',
+			)
+		);
+
+		self::$pricing_table_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/pricing-table --><!-- /wp:responsive-block-editor-addons/pricing-table -->',
+			)
+		);
+
+		self::$gallery_masonry_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/gallery-masonry --><!-- /wp:responsive-block-editor-addons/gallery-masonry -->',
 			)
 		);
 	}
@@ -535,6 +591,33 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css function - video popup with image url
+	 */
+	public function test_get_block_css_video_popup_image_url() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_video_popup_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/video-popup',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$video_popup_block_id,
+					'imgURL'   => 'url-to-image.png',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_video_popup_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css - card block
 	 */
 	public function test_get_block_css_card() {
@@ -599,6 +682,150 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css function for image_boxes background gradient
+	 */
+	public function test_get_block_css_image_boxes_bg_gradient() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/image-boxes-block',
+			'attrs'        => array(
+				'block_id'        => 'cc4351ea-3af6-4d97-92d7-b6f1ac4e5862',
+				'bgGradient'      => true,
+				'hoverBgGradient' => true,
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_image_boxes_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css function for image_boxes with gutter_small
+	 */
+	public function test_get_block_css_image_boxes_gutter_small() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/image-boxes-block',
+			'attrs'        => array(
+				'block_id' => 'cc4351ea-3af6-4d97-92d7-b6f1ac4e5862',
+				'count'    => 2,
+				'gutter'   => 'small',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_image_boxes_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css function for image_boxes with gutter_medium
+	 */
+	public function test_get_block_css_image_boxes_gutter_medium() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/image-boxes-block',
+			'attrs'        => array(
+				'block_id' => 'cc4351ea-3af6-4d97-92d7-b6f1ac4e5862',
+				'count'    => 2,
+				'gutter'   => 'medium',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_image_boxes_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css function for image_boxes with gutter_large
+	 */
+	public function test_get_block_css_image_boxes_gutter_large() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/image-boxes-block',
+			'attrs'        => array(
+				'block_id' => 'cc4351ea-3af6-4d97-92d7-b6f1ac4e5862',
+				'count'    => 2,
+				'gutter'   => 'large',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_image_boxes_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css function for image_boxes with gutter_huge
+	 */
+	public function test_get_block_css_image_boxes_gutter_huge() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/image-boxes-block',
+			'attrs'        => array(
+				'block_id' => 'cc4351ea-3af6-4d97-92d7-b6f1ac4e5862',
+				'count'    => 2,
+				'gutter'   => 'huge',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_image_boxes_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css function for image_boxes with gutter_none
+	 */
+	public function test_get_block_css_image_boxes_gutter_none() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/image-boxes-block',
+			'attrs'        => array(
+				'block_id' => 'cc4351ea-3af6-4d97-92d7-b6f1ac4e5862',
+				'count'    => 2,
+				'gutter'   => '',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_image_boxes_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block function image_slider
 	 */
 	public function test_get_block_css_image_slider() {
@@ -642,6 +869,75 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for info_block background Type - solid
+	 */
+	public function test_get_block_css_info_block_background_type_solid() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/info-block',
+			'attrs'        => array(
+				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'backgroundType' => 'solid',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_info_block_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for info_block background Type - none
+	 */
+	public function test_get_block_css_info_block_background_type_none() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/info-block',
+			'attrs'        => array(
+				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'backgroundType' => 'none',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_info_block_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for info_block background Type - outline
+	 */
+	public function test_get_block_css_info_block_background_type_outline() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/info-block',
+			'attrs'        => array(
+				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'backgroundType' => 'outline',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_info_block_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for blockquote
 	 */
 	public function test_get_block_css_blockquote() {
@@ -663,6 +959,60 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for blockquote background type - color
+	 */
+	public function test_get_block_css_blockquote_background_type_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_blockquote_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/blockquote',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'       => self::$blockquote_block_id,
+					'backgroundType' => 'color',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_blockquote_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for blockquote background type - gradient
+	 */
+	public function test_get_block_css_blockquote_background_type_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_blockquote_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/blockquote',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'       => self::$blockquote_block_id,
+					'backgroundType' => 'gradient',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_blockquote_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for call_to_action
 	 */
 	public function test_get_block_css_call_to_action() {
@@ -670,6 +1020,98 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
 			'attrs'        => array(
 				'block_id' => '339297a0-9322-498d-9607-94b9d3b4608b',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_to_action_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for call_to_action no background type
+	 */
+	public function test_get_block_css_call_to_action_background_type_none() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+			'attrs'        => array(
+				'block_id'       => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'backgroundType' => '',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_to_action_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for call_to_action background type - gradient
+	 */
+	public function test_get_block_css_call_to_action_background_type_gradient() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+			'attrs'        => array(
+				'block_id'       => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'backgroundType' => 'gradient',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_to_action_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for call_to_action button background type - gradient
+	 */
+	public function test_get_block_css_call_to_action_button_background_type_gradient() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+			'attrs'        => array(
+				'block_id'             => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'buttonBackgroundType' => 'gradient',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_to_action_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for call_to_action icon position - left
+	 */
+	public function test_get_block_css_call_to_action_icon_position_before() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+			'attrs'        => array(
+				'block_id'     => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'iconPosition' => 'before',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -791,6 +1233,87 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for shape divider background Type-color
+	 */
+	public function test_get_block_css_shape_divider_background_type_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_shape_divider_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/shape-divider',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'       => self::$shape_divider_block_id,
+					'backgroundType' => 'color',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_shape_divider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for shape divider background Type-gradient
+	 */
+	public function test_get_block_css_shape_divider_background_type_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_shape_divider_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/shape-divider',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'       => self::$shape_divider_block_id,
+					'backgroundType' => 'gradient',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_shape_divider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for shape divider with basic space divider style
+	 */
+	public function test_get_block_css_shape_divider_space_divider_basic() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_shape_divider_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/shape-divider',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'           => self::$shape_divider_block_id,
+					'spacerDividerStyle' => 'basic',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_shape_divider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for expand
 	 */
 	public function test_get_block_css_expand() {
@@ -812,6 +1335,69 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for pricing_list
+	 */
+	public function test_get_block_css_pricing_list() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_list_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-list',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$pricing_list_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_list_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table
+	 */
+	public function test_get_block_css_pricing_table() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$pricing_table_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for gallery_masonry
+	 */
+	public function test_get_block_css_gallery_masonry() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_gallery_masonry_block_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/gallery-masonry',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$gallery_masonry_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_gallery_masonry_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css for icons list with child block
 	 */
 	public function test_get_block_css_icons_list() {
@@ -819,6 +1405,40 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'blockName'    => 'responsive-block-editor-addons/icons-list-child',
 			'attrs'        => array(
 				'block_id' => '5f215a2e-787b-4366-9985-da94d63ab751',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/icons-list',
+			'attrs'        => array(
+				'block_id' => '3f908b8b-2cac-4077-8bf4-3eb98f2b35ef',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_icon_list_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for icons list with child block - align right
+	 */
+	public function test_get_block_css_icons_list_align_right() {
+		$inner_block = array(
+			'blockName'    => 'responsive-block-editor-addons/icons-list-child',
+			'attrs'        => array(
+				'block_id' => '5f215a2e-787b-4366-9985-da94d63ab751',
+				'align'    => 'right',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
