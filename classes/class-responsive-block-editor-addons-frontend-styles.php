@@ -259,6 +259,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
+			$inner_height        = $attr['displayPostImage'] ? '' : '100% !important';
 			$slick_button_styles = array(
 				'border-color'  => $attr['arrowDotsColor'],
 				'border-radius' => self::get_css_value( $attr['arrowBorderRadius'], 'px' ),
@@ -317,7 +318,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['ctaFontSize'], 'px' ),
 					'font-weight'   => $attr['ctaFontWeight'],
 					'line-height'   => $attr['ctaLineHeight'],
-					'margin-bottom' => self::get_css_value( $attr['ctaSpace'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['ctaSpace'], 'px' ) . ' !important',
 					'margin-top'    => '0px',
 				),
 				' .responsive-block-editor-addons-block-post-carousel-more-link.responsive-block-editor-addons-text-link' => array(
@@ -350,6 +351,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-post-carousel-inner' => array(
 					'background-color' => $attr['bgColor'],
+					'height'           => $inner_height,
 				),
 				' .responsive-block-editor-addons-block-post-carousel-image-background img' => array(
 					'opacity' => $imgopacity,
