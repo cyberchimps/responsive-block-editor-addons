@@ -407,3 +407,59 @@ ul.slick-dots li button:before {
     }
   }
 }
+
+.responsive-block-editor-addons-block-post-carousel {
+  .archive.page-template-gutenberg-fullwidth,
+  &.alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.archive.page-template-gutenberg-fullwidth 
+  &.alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.archive.page-template-gutenberg-fullwidth 
+  &.alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.archive.page-template-gutenberg-fullwidth 
+  &.alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.archive.sidebar-position-no:not(.woocommerce) 
+  &.alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.archive.sidebar-position-no:not(.woocommerce) 
+  &.alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.archive.sidebar-position-no:not(.woocommerce) 
+  &.alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.archive.sidebar-position-no:not(.woocommerce) 
+  &.alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.page-template-gutenberg-fullwidth 
+  &.alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.page-template-gutenberg-fullwidth .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.page-template-gutenberg-fullwidth .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.page-template-gutenberg-fullwidth .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.blog.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.page-template-gutenberg-fullwidth .alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.page-template-gutenberg-fullwidth .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.page-template-gutenberg-fullwidth .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.page-template-gutenberg-fullwidth .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.page.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.page-template-gutenberg-fullwidth .alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.page-template-gutenberg-fullwidth .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.page-template-gutenberg-fullwidth .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.page-template-gutenberg-fullwidth .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.search.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.page-template-gutenberg-fullwidth .alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.page-template-gutenberg-fullwidth .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.page-template-gutenberg-fullwidth .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.page-template-gutenberg-fullwidth .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.sidebar-position-no:not(.woocommerce) .alignfull :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignfull):not(.wp-block-cover__inner-container):not(.wp-block-separator), 
+  &.single.sidebar-position-no:not(.woocommerce) .alignwide :not(.alignwide):not(.wp-block-cover__inner-container):not(.wp-block-separator) {
+    max-width: none !important;
+  }
+}
+
+
