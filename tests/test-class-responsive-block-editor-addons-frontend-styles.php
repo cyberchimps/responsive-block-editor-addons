@@ -1130,7 +1130,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'titleSpacing'                  => '',
 			'descriptionSpacing'            => '',
 			'blockBorderRadius'             => '',
-			'blockBorderStyle'              => 'none',
+			'blockBorderStyle'              => 'solid',
 			'blockBorderWidth'              => 2,
 			'blockBorderColor'              => '#1E1E1E',
 			'boxPaddingLeft'                => 15,
