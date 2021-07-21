@@ -1,95 +1,97 @@
-.has-columns {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 100%;
-}
-.has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2 - 1em) !important;
-}
-
-.has-medium-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2.975 - 1.5em) !important;
-}
-.has-medium-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 4 - 1.5em) !important;
-}
-
-.has-no-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 4 - 0.2em) !important;
-}
-
-.has-no-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2.975 - 0.3em) !important;
-}
-
-.has-no-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2 - 0.15em) !important;
-}
-
-.has-small-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2 - 0.5em) !important;
-}
-.has-small-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 3 - 1em) !important;
-}
-.has-small-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 4 - 1em) !important;
-}
-.has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2 - 1em) !important;
-}
-
-.has-large-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2.01 - 1.5em) !important;
-}
-.has-large-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 3.03 - 2em) !important;
-}
-.has-large-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 4.08 - 2em) !important;
-}
-.has-huge-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 2.02 - 2em) !important;
-}
-.has-huge-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 3.09 - 2.5em) !important;
-}
-.has-huge-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
-  max-width: calc(100% / 4.15 - 2.5em) !important;
-}
-
-@media (max-width: 767px) {
+.responsive-block-editor-addons-block-image-boxes {
+  .has-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 2 - 1em) !important;
+  }
+  
+  .has-medium-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 2.975 - 1.5em) !important;
+  }
+  .has-medium-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 4 - 1.5em) !important;
+  }
+  
   .has-no-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
-    max-width: none !important;
+    max-width: calc(100% / 4 - 0.2em) !important;
   }
   
   .has-no-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
-    max-width: none !important;
+    max-width: calc(100% / 2.975 - 0.3em) !important;
   }
   
   .has-no-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
-    max-width: none !important;
+    max-width: calc(100% / 2 - 0.15em) !important;
   }
   
-}
-
-@media (min-width: 782px) {
-  .has-columns.has-3-columns > *:not(.block-editor-inner-blocks),
-  .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
-    flex-basis: 33.33% !important;
+  .has-small-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 2 - 0.5em) !important;
   }
-}
-@media (min-width: 600px) {
-  .has-columns.has-2-columns > *:not(.block-editor-inner-blocks),
-  .has-columns.has-3-columns > *:not(.block-editor-inner-blocks),
-  .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
-    flex-basis: 50% !important;
+  .has-small-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 3 - 1em) !important;
   }
-}
-@media (min-width: 1280px) {
-  .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
-    flex-basis: 25% !important;
+  .has-small-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 4 - 1em) !important;
+  }
+  .has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 2 - 1em) !important;
+  }
+  
+  .has-large-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 2.01 - 1.5em) !important;
+  }
+  .has-large-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 3.03 - 2em) !important;
+  }
+  .has-large-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 4.08 - 2em) !important;
+  }
+  .has-huge-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 2.02 - 2em) !important;
+  }
+  .has-huge-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 3.09 - 2.5em) !important;
+  }
+  .has-huge-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+    max-width: calc(100% / 4.15 - 2.5em) !important;
+  }
+  
+  @media (max-width: 767px) {
+    .has-no-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+      max-width: none !important;
+    }
+    
+    .has-no-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+      max-width: none !important;
+    }
+    
+    .has-no-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+      max-width: none !important;
+    }
+    
+  }
+  
+  @media (min-width: 782px) {
+    .has-columns.has-3-columns > *:not(.block-editor-inner-blocks),
+    .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
+      flex-basis: 33.33% !important;
+    }
+  }
+  @media (min-width: 600px) {
+    .has-columns.has-2-columns > *:not(.block-editor-inner-blocks),
+    .has-columns.has-3-columns > *:not(.block-editor-inner-blocks),
+    .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
+      flex-basis: 50% !important;
+    }
+  }
+  @media (min-width: 1280px) {
+    .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
+      flex-basis: 25% !important;
+    }
   }
 }
 
