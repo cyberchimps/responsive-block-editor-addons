@@ -80,7 +80,7 @@ const attributes = {
   },
   blockBorderStyle: {
     type: "string",
-    default: "none",
+    default: "solid",
   },
   blockBorderWidth: {
     type: "number",

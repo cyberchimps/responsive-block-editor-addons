@@ -4084,6 +4084,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$css['mobile'] .= '
                 .wp-block-responsive-block-editor-addons-image-boxes-block__inner a {
                     margin-bottom: ' . $gutter_margin_ib . '!important;
+					max-width: 100% !important;
+                }
+				.wp-block-responsive-block-editor-addons-image-boxes-block__inner {
+                    flex-direction: column;
+					align-items: center;
                 }
             ';
 
@@ -4113,7 +4118,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleSpacing'                  => '',
 				'descriptionSpacing'            => '',
 				'blockBorderRadius'             => '',
-				'blockBorderStyle'              => 'none',
+				'blockBorderStyle'              => 'solid',
 				'blockBorderWidth'              => 2,
 				'blockBorderColor'              => '#1E1E1E',
 				'boxPaddingLeft'                => 15,
