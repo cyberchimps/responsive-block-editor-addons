@@ -176,6 +176,47 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	 */
 	protected static $gallery_masonry_block_id;
 
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $post_carousel_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $testimonial_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $testimonial_slider_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $table_of_contents_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $post_timeline_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $content_timeline_block_id;
 
 	/**
 	 * Setup class instance
@@ -378,6 +419,66 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
 				'post_content' => '<!-- wp:responsive-block-editor-addons/gallery-masonry --><!-- /wp:responsive-block-editor-addons/gallery-masonry -->',
+			)
+		);
+
+		self::$post_carousel_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/post-carousel --><!-- /wp:responsive-block-editor-addons/post-carousel -->',
+			)
+		);
+
+		self::$testimonial_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/testimonial --><!-- /wp:responsive-block-editor-addons/testimonial -->',
+			)
+		);
+
+		self::$testimonial_slider_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/testimonial-slider --><!-- /wp:responsive-block-editor-addons/testimonial-slider -->',
+			)
+		);
+
+		self::$table_of_contents_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/table-of-contents --><!-- /wp:responsive-block-editor-addons/table-of-contents -->',
+			)
+		);
+
+		self::$post_timeline_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/post-timeline --><!-- /wp:responsive-block-editor-addons/post-timeline-->',
+			)
+		);
+
+		self::$content_timeline_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/content-timeline --><!-- /wp:responsive-block-editor-addons/content-timeline-->',
 			)
 		);
 	}
@@ -1392,6 +1493,132 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		);
 		$block_attrs = self::extract_attributes( $block );
 		$css         = self::$rbea_frontend_styles->get_responsive_block_gallery_masonry_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for testimonial
+	 */
+	public function test_get_block_css_testimonial() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_testimonial_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/testimonial',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$testimonial_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_testimonial_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for testimonial_slider
+	 */
+	public function test_get_block_css_testimonial_slider() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_testimonial_slider_block_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/testimonial-slider',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$testimonial_slider_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_testimonial_slider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for post_timeline
+	 */
+	public function test_get_block_css_post_timeline() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_timeline_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/post-timeline',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$post_timeline_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_timeline_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for content_timeline
+	 */
+	public function test_get_block_css_content_timeline() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_content_timeline_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/content-timeline',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$content_timeline_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_content_timeline_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for table_of_contents
+	 */
+	public function test_get_block_css_table_of_contents() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_table_of_contents_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/table-of-contents',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$table_of_contents_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_table_of_contents_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for post_carousel
+	 */
+	public function test_get_block_css_post_carousel() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_carousel_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/post-carousel',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$post_carousel_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_carousel_css( $block_attrs[0], $block_attrs[1] );
 		$expected    = self::return_the_css( $block, $css );
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
