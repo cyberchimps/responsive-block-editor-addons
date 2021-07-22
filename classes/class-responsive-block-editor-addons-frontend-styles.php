@@ -4826,15 +4826,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-timeline__link_parent:hover .responsive-block-editor-addons-timeline__link' => array(
 					'color' => $attr['hColor'] . '!important',
 				),
-				' .responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker' => array(
+				'.responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker' => array(
 					'margin-left'  => self::get_css_value( $attr['horSpace'], 'px' ),
 					'margin-right' => self::get_css_value( $attr['horSpace'], 'px' ),
 				),
-				' .responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new' => array(
+				'.responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new' => array(
 					'margin-left' => self::get_css_value( $attr['horSpace'], 'px' ),
 				),
-				' .responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new' => array(
-					'margin-left' => self::get_css_value( $attr['horSpace'], 'px' ),
+				'.responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new' => array(
+					'margin-right' => self::get_css_value( $attr['horSpace'], 'px' ),
 				),
 				' .responsive-block-editor-addons-timeline__field.responsive-block-editor-addons-timeline__field-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['verSpace'], 'px' ),
