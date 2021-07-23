@@ -36,6 +36,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	public static $rbea_frontend_styles;
 
 	/**
+	 * Dummy custom variable
+	 *
+	 * @var instance
+	 */
+	public static $icon_json;
+
+	/**
 	 * Created Dummy post id.
 	 *
 	 * @access public
@@ -544,6 +551,105 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				}
 			}
 		}
+		return $css;
+	}
+
+	/**
+	 * Mock function for backend_load_font_awesome_icons
+	 */
+	public function backend_load_font_awesome_icons() {
+		$json_file = plugin_dir_path( __FILE__ ) . '../src/ResponsiveBlocksIcon.json';
+		if ( ! file_exists( $json_file ) ) {
+			return array();
+		}
+		// Function has already run.
+		if ( null !== self::$icon_json ) {
+			return self::$icon_json;
+		}
+		$str             = self::$rbea_frontend_styles_helper->get_instance()->get_filesystem()->get_contents( $json_file );
+		self::$icon_json = json_decode( $str, true );
+		return self::$icon_json;
+	}
+
+	/**
+	 * Mock function for render_svg_html.
+	 *
+	 * @param [type] $icon The icons.
+	 * @return [type]
+	 */
+	public static function render_svg_html( $icon ) {
+		$icon = str_replace( 'far', '', $icon );
+		$icon = str_replace( 'fas', '', $icon );
+		$icon = str_replace( 'fab', '', $icon );
+		$icon = str_replace( 'fa-', '', $icon );
+		$icon = str_replace( 'fa', '', $icon );
+		$icon = sanitize_text_field( esc_attr( $icon ) );
+		$json = self::$rbea_frontend_styles_helper->backend_load_font_awesome_icons();
+		$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
+		$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+		if ( $view ) {
+			$view = implode( ' ', $view );
+		}
+		return '<svg xmlns="https://www.w3.org/2000/svg" viewBox="' . esc_html( $view ) . '" ><path d="' . esc_html( $path ) . '"></path></svg>';
+	}
+
+	/**
+	 * Mock function for get_styles
+	 *
+	 * @param [type] $blocks array of block.
+	 * @return [type]
+	 */
+	public function get_styles( $blocks ) {
+		$desktop         = '';
+		$tablet          = '';
+		$mobile          = '';
+		$tab_styling_css = '';
+		$mob_styling_css = '';
+		$css             = array();
+		foreach ( $blocks as $i => $block ) {
+
+			if ( is_array( $block ) ) {
+				if ( '' === $block['blockName'] ) {
+					continue;
+				}
+				if ( 'core/block' === $block['blockName'] ) {
+					$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+
+					if ( $id ) {
+						$content = get_post_field( 'post_content', $id );
+
+						$reusable_blocks = $this->parse( $content );
+
+						$css = self::$rbea_frontend_styles_helper->get_styles( $reusable_blocks );
+
+					}
+				} else {
+
+					$css = self::$rbea_frontend_styles_helper->get_block_css( $block );
+
+					// Get CSS for the Block.
+					if ( isset( $css['desktop'] ) ) {
+						$desktop .= $css['desktop'];
+						$tablet  .= $css['tablet'];
+						$mobile  .= $css['mobile'];
+					}
+				}
+			}
+		}
+
+		if ( ! empty( $tablet ) ) {
+			$tab_styling_css .= '@media only screen and (max-width: 976px) {';
+			$tab_styling_css .= $tablet;
+			$tab_styling_css .= '}';
+		}
+
+		if ( ! empty( $mobile ) ) {
+			$mob_styling_css .= '@media only screen and (max-width: 767px) {';
+			$mob_styling_css .= $mobile;
+			$mob_styling_css .= '}';
+		}
+
+		$css = $desktop . $tab_styling_css . $mob_styling_css;
 		return $css;
 	}
 
@@ -1688,6 +1794,69 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$css         = self::$rbea_frontend_styles->get_responsive_block_icon_list_css( $block_attrs[0], $block_attrs[1] );
 		$expected    = self::return_the_css( $block, $css );
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_styles function
+	 */
+	public function test_get_styles() {
+		$attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_heading_default_attributes();
+		$blocks     = array(
+			array(
+				'blockName'    => 'responsive-block-editor-addons/advanced-heading',
+				'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_heading_block_id ) ),
+				'inner_blocks' => array(),
+				'innerHTML'    => ' ',
+				'innerContent' => array(),
+			),
+		);
+		$expected   = self::get_styles( $blocks );
+		$result     = self::$rbea_frontend_styles_helper->get_styles( $blocks );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for parse function
+	 */
+	public function test_parse() {
+		$expected = array(
+			array(
+				'blockName'    => '',
+				'attrs'        => array(),
+				'innerBlocks'  => array(),
+				'innerHTML'    => 6,
+				'innerContent' => array( 6 ),
+			),
+		);
+		$result   = self::$rbea_frontend_styles_helper->parse( self::$post_id );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for backend_load_font_awesome_icons function
+	 */
+	public function test_backend_load_font_awesome_icons() {
+		$expected = self::backend_load_font_awesome_icons();
+		$result   = self::$rbea_frontend_styles_helper->backend_load_font_awesome_icons();
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for responsive_block_editor_addons_frontend_styles function
+	 */
+	public function test_responsive_block_editor_addons_frontend_styles() {
+		$expected_string = "<style id='rbea-frontend-styles'></style>";
+		$this->expectOutputString( $expected_string );
+		self::$rbea_frontend_styles_helper->responsive_block_editor_addons_frontend_styles();
+	}
+
+	/**
+	 * Test for render_svg_html function
+	 */
+	public function test_render_svg_html() {
+		$expected = self::render_svg_html( 'fa fa-star' );
+		$result   = self::$rbea_frontend_styles_helper->render_svg_html( 'fa fa-star' );
 		$this->assertEquals( $expected, $result );
 	}
 }
