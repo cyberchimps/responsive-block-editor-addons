@@ -5433,7 +5433,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			);
 
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' .wp-block-responsive-block-editor-addons-pricing-table__inner' => array(
+					'flex-direction' => 'column',
+				),
+				' .wp-block-responsive-block-editor-addons-pricing-table-item' => array(
+					'max-width' => 'none',
+				),
+			);
 
 			$tablet_selectors = array();
 
