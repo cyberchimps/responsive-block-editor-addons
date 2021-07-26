@@ -60,6 +60,8 @@ function EditorStyles(props) {
     backgroundAttachment,
     backgroundRepeat,
     backgroundSize,
+    backgroundSizeTablet,
+    backgroundSizeMobile,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -77,8 +79,10 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    backgroundPositionTablet,
+    backgroundPositionMobile,
     z_index,
-      align,
+    align,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -214,6 +218,10 @@ function EditorStyles(props) {
       "max-width":
         align == "full" ? generateCSSUnit(innerWidthMobile, "px") : "",
     },
+    " > .responsive-section-wrap": {
+      "background-position": backgroundPositionMobile,
+      "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
+    }
   };
 
   var tablet_selectors = {
@@ -231,6 +239,10 @@ function EditorStyles(props) {
       "max-width":
         align == "full" ? generateCSSUnit(innerWidthTablet, "px") : "",
     },
+    " > .responsive-section-wrap": {
+      "background-position": backgroundPositionTablet,
+      "background-size": backgroundSizeTablet === '' ? backgroundSize : backgroundSizeTablet,
+    }
   };
 
   var outerElement = {

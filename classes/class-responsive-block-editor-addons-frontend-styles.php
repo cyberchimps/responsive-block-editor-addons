@@ -259,6 +259,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
+			$inner_height        = $attr['displayPostImage'] ? '' : '100% !important';
 			$slick_button_styles = array(
 				'border-color'  => $attr['arrowDotsColor'],
 				'border-radius' => self::get_css_value( $attr['arrowBorderRadius'], 'px' ),
@@ -292,16 +293,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['dateSpace'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-carousel-excerpt' => array(
-					'text-align'    => $attr['blockAlign'],
-					'color'         => $attr['contentColor'],
-					'font-family'   => $attr['excerptFontFamily'],
-					'font-size'     => self::get_css_value( $attr['excerptFontSize'], 'px' ),
-					'font-weight'   => $attr['excerptFontWeight'],
-					'line-height'   => $attr['excerptLineHeight'],
-					'margin-bottom' => self::get_css_value( $attr['excerptSpace'], 'px' ),
+					'text-align'  => $attr['blockAlign'],
+					'color'       => $attr['contentColor'],
+					'font-family' => $attr['excerptFontFamily'],
+					'font-size'   => self::get_css_value( $attr['excerptFontSize'], 'px' ),
+					'font-weight' => $attr['excerptFontWeight'],
+					'line-height' => $attr['excerptLineHeight'],
 				),
-				' .responsive-block-editor-addons-block-post-carousel-excerpt p' => array(
+				' .responsive-block-editor-addons-block-post-carousel-excerpt p:first-child' => array(
 					'margin-bottom' => self::get_css_value( $attr['excerptSpace'], 'px' ),
+
 				),
 				' .responsive-block-editor-addons-block-post-carousel-date' => array(
 					'color' => $attr['metaColor'],
@@ -317,7 +318,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['ctaFontSize'], 'px' ),
 					'font-weight'   => $attr['ctaFontWeight'],
 					'line-height'   => $attr['ctaLineHeight'],
-					'margin-bottom' => self::get_css_value( $attr['ctaSpace'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['ctaSpace'], 'px' ) . ' !important',
 					'margin-top'    => '0px',
 				),
 				' .responsive-block-editor-addons-block-post-carousel-more-link.responsive-block-editor-addons-text-link' => array(
@@ -350,6 +351,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-post-carousel-inner' => array(
 					'background-color' => $attr['bgColor'],
+					'height'           => $inner_height,
 				),
 				' .responsive-block-editor-addons-block-post-carousel-image-background img' => array(
 					'opacity' => $imgopacity,
@@ -3701,14 +3703,28 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
+				' .responsive-block-editor-addons-icon-list__source-icon svg' => array(
+					'width'  => self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ),
+					'height' => self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ),
+				),
 				' .responsive-block-editor-addons-icon-list__label' => array(
 					'font-size' => self::get_css_value( $attr['labelFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-icon-list__source-wrap' => array(
+					'padding' => self::get_css_value( $attr['bgSizeMobile'], 'px' ),
 				),
 			);
 
 			$tablet_selectors = array(
+				' .responsive-block-editor-addons-icon-list__source-icon svg' => array(
+					'width'  => self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ),
+					'height' => self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ),
+				),
 				' .responsive-block-editor-addons-icon-list__label' => array(
 					'font-size' => self::get_css_value( $attr['labelFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-icon-list__source-wrap' => array(
+					'padding' => self::get_css_value( $attr['bgSizeTablet'], 'px' ),
 				),
 			);
 
@@ -3738,7 +3754,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'inner_gap'           => 15,
 				'iconPosition'        => 'middle',
 				'size'                => 16,
+				'sizeMobile'          => 16,
+				'sizeTablet'          => 16,
 				'bgSize'              => 0,
+				'bgSizeMobile'        => 0,
+				'bgSizeTablet'        => 0,
 				'border'              => 0,
 				'borderRadius'        => 0,
 				'hideLabel'           => false,
@@ -4064,6 +4084,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$css['mobile'] .= '
                 .wp-block-responsive-block-editor-addons-image-boxes-block__inner a {
                     margin-bottom: ' . $gutter_margin_ib . '!important;
+					max-width: 100% !important;
+                }
+				.wp-block-responsive-block-editor-addons-image-boxes-block__inner {
+                    flex-direction: column;
+					align-items: center;
                 }
             ';
 
@@ -4093,7 +4118,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleSpacing'                  => '',
 				'descriptionSpacing'            => '',
 				'blockBorderRadius'             => '',
-				'blockBorderStyle'              => 'none',
+				'blockBorderStyle'              => 'solid',
 				'blockBorderWidth'              => 2,
 				'blockBorderColor'              => '#1E1E1E',
 				'boxPaddingLeft'                => 15,
@@ -4801,15 +4826,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-timeline__link_parent:hover .responsive-block-editor-addons-timeline__link' => array(
 					'color' => $attr['hColor'] . '!important',
 				),
-				' .responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker' => array(
+				'.responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker' => array(
 					'margin-left'  => self::get_css_value( $attr['horSpace'], 'px' ),
 					'margin-right' => self::get_css_value( $attr['horSpace'], 'px' ),
 				),
-				' .responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new' => array(
+				'.responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new' => array(
 					'margin-left' => self::get_css_value( $attr['horSpace'], 'px' ),
 				),
-				' .responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new' => array(
-					'margin-left' => self::get_css_value( $attr['horSpace'], 'px' ),
+				'.responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new' => array(
+					'margin-right' => self::get_css_value( $attr['horSpace'], 'px' ),
 				),
 				' .responsive-block-editor-addons-timeline__field.responsive-block-editor-addons-timeline__field-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['verSpace'], 'px' ),
@@ -5408,7 +5433,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			);
 
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' .wp-block-responsive-block-editor-addons-pricing-table__inner' => array(
+					'flex-direction' => 'column',
+				),
+				' .wp-block-responsive-block-editor-addons-pricing-table-item' => array(
+					'max-width' => 'none',
+				),
+			);
 
 			$tablet_selectors = array();
 
@@ -5714,6 +5746,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'max-width' =>
 						'full' === $attr['align'] ? self::get_css_value( $attr['innerWidthMobile'], 'px' ) : '',
 				),
+				' > .responsive-section-wrap' => array(
+					'background-position' => $attr['backgroundPositionMobile'],
+					'background-size'     => '' === $attr['backgroundSizeMobile'] ? $attr['backgroundSize'] : $attr['backgroundSizeMobile'],
+				),
 			);
 
 			$tablet_selectors = array(
@@ -5730,6 +5766,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' > .responsive-section-wrap > .responsive-section-inner-wrap' => array(
 					'max-width' =>
 						'full' === $attr['align'] ? self::get_css_value( $attr['innerWidthTablet'], 'px' ) : '',
+				),
+				' > .responsive-section-wrap' => array(
+					'background-position' => $attr['backgroundPositionTablet'],
+					'background-size'     => '' === $attr['backgroundSizeTablet'] ? $attr['backgroundSize'] : $attr['backgroundSizeTablet'],
 				),
 			);
 
@@ -5817,7 +5857,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'gradientDirection'        => 90,
 				'backgroundImage'          => '',
 				'backgroundPosition'       => 'center-center',
+				'backgroundPositionTablet' => 'center center',
+				'backgroundPositionMobile' => 'center center',
 				'backgroundSize'           => 'cover',
+				'backgroundSizeTablet'     => 'cover',
+				'backgroundSizeMobile'     => 'cover',
 				'backgroundRepeat'         => 'no-repeat',
 				'backgroundAttachment'     => 'scroll',
 				'backgroundImageColor'     => '#fff',

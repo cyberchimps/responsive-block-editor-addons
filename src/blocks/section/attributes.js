@@ -168,9 +168,25 @@ const attributes = {
     type: "string",
     default: "center-center",
   },
+  backgroundPositionMobile: {
+    type: "string",
+    default: "center center",
+  },
+  backgroundPositionTablet: {
+    type: "string",
+    default: "center center",
+  },
   backgroundSize: {
     type: "string",
     default: "cover",
+  },
+  backgroundSizeTablet: {
+    type: "string",
+    default: 'cover',
+  },
+  backgroundSizeMobile: {
+    type: "string",
+    default: 'cover'
   },
   backgroundRepeat: {
     type: "string",
@@ -256,6 +272,14 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  imagePositionTab: {
+    type: "string",
+    default: "desktop",
+  },
+  imageSizeTab: {
+    type: "string",
+    default: "desktop",
+  }
 };
 
 export default attributes;
