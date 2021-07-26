@@ -1817,6 +1817,69 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_styles function with empty block name
+	 */
+	public function test_get_styles_empty_block_name() {
+		$attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_heading_default_attributes();
+		$blocks     = array(
+			array(
+				'blockName'    => '',
+				'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_heading_block_id ) ),
+				'inner_blocks' => array(),
+				'innerHTML'    => ' ',
+				'innerContent' => array(),
+			),
+		);
+		$expected   = self::get_styles( $blocks );
+		$result     = self::$rbea_frontend_styles_helper->get_styles( $blocks );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_styles function for core block
+	 */
+	public function test_get_styles_core_block() {
+		$blocks   = array(
+			array(
+				'blockName'    => 'core/paragraph',
+				'attrs'        => array( 'ref' => 10 ),
+				'inner_blocks' => array(),
+				'innerHTML'    => 'hello',
+				'innerContent' => array(
+					array(
+						'hello',
+					),
+				),
+			),
+		);
+		$expected = self::get_styles( $blocks );
+		$result   = self::$rbea_frontend_styles_helper->get_styles( $blocks );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_styles function for core block-no ref
+	 */
+	public function test_get_styles_core_block_no_ref() {
+		$blocks   = array(
+			array(
+				'blockName'    => 'core/paragraph',
+				'attrs'        => array(),
+				'inner_blocks' => array(),
+				'innerHTML'    => 'hello',
+				'innerContent' => array(
+					array(
+						'hello',
+					),
+				),
+			),
+		);
+		$expected = self::get_styles( $blocks );
+		$result   = self::$rbea_frontend_styles_helper->get_styles( $blocks );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for parse function
 	 */
 	public function test_parse() {
