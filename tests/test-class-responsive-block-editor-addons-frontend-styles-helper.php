@@ -226,6 +226,55 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	protected static $content_timeline_block_id;
 
 	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $advanced_columns_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $advanced_columns_child_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $icons_list_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $icons_list_child_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $buttons_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $buttons_child_block_id_one;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $buttons_child_block_id_two;
+
+	/**
 	 * Setup class instance
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -486,6 +535,76 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
 				'post_content' => '<!-- wp:responsive-block-editor-addons/content-timeline --><!-- /wp:responsive-block-editor-addons/content-timeline-->',
+			)
+		);
+
+		self::$advanced_columns_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/advance-columns --><!-- /wp:responsive-block-editor-addons/advance-columns-->',
+			)
+		);
+
+		self::$advanced_columns_child_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/column --><!-- /wp:responsive-block-editor-addons/columns-->',
+			)
+		);
+
+		self::$icons_list_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/icons-list --><!-- /wp:responsive-block-editor-addons/icons-list-->',
+			)
+		);
+
+		self::$icons_list_child_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/icons-list-child --><!-- /wp:responsive-block-editor-addons/icons-list-child-->',
+			)
+		);
+
+		self::$buttons_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/buttons --><!-- /wp:responsive-block-editor-addons/buttons-->',
+			)
+		);
+
+		self::$buttons_child_block_id_one = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/buttons-child --><!-- /wp:responsive-block-editor-addons/buttons-child-->',
+			)
+		);
+
+		self::$buttons_child_block_id_two = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/buttons-child --><!-- /wp:responsive-block-editor-addons/buttons-child-->',
 			)
 		);
 	}
@@ -1731,14 +1850,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
-	 * Test for get_block_css for icons list with child block
+	 * Test for get_block_css for advanced columns
 	 */
-	public function test_get_block_css_icons_list() {
-		$inner_block = array(
-			'blockName'    => 'responsive-block-editor-addons/icons-list-child',
-			'attrs'        => array(
-				'block_id' => '5f215a2e-787b-4366-9985-da94d63ab751',
-			),
+	public function test_get_block_css_advanced_columns() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_child_block_id ) ),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
@@ -1746,11 +1864,44 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			),
 		);
 		$block       = array(
-			'blockName'    => 'responsive-block-editor-addons/icons-list',
-			'attrs'        => array(
-				'block_id' => '3f908b8b-2cac-4077-8bf4-3eb98f2b35ef',
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
 			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for icons list
+	 */
+	public function test_get_block_css_icons_list() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_icon_list_block_default_attributes();
+		$child_block = array(
+			'blockName'    => 'responsive-block-editor-addons/icons-list-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$icons_list_child_block_id ) ),
 			'innerBlocks'  => array(),
+			'innerHTML'    => '
+			<div class="wp-block-responsive-block-editor-addons-icons-list-child responsive-block-editor-addons-icon-list-repeater responsive-block-editor-addons-icon-list__wrapper responsive-block-editor-addons-' . self::$icons_list_child_block_id . '"><div class="responsive-block-editor-addons-icon-' . self::$icons_list_child_block_id . ' responsive-block-editor-addons-icon-list__content-wrap"><span class="responsive-block-editor-addons-icon-list__source-wrap"><span class="responsive-block-editor-addons-icon-list__source-icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm-28.9 143.6l75.5 72.4H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h182.6l-75.5 72.4c-9.7 9.3-9.9 24.8-.4 34.3l11 10.9c9.4 9.4 24.6 9.4 33.9 0L404.3 273c9.4-9.4 9.4-24.6 0-33.9L271.6 106.3c-9.4-9.4-24.6-9.4-33.9 0l-11 10.9c-9.5 9.6-9.3 25.1.4 34.4z"></path></svg></span></span><div class="responsive-block-editor-addons-icon-list__label-wrap"><div class="responsive-block-editor-addons-icon-list__label">#Label</div></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-icons-list-child responsive-block-editor-addons-icon-list-repeater responsive-block-editor-addons-icon-list__wrapper responsive-block-editor-addons-' . self::$icons_list_child_block_id . '"><div class="responsive-block-editor-addons-icon-' . self::$icons_list_child_block_id . ' responsive-block-editor-addons-icon-list__content-wrap"><span class="responsive-block-editor-addons-icon-list__source-wrap"><span class="responsive-block-editor-addons-icon-list__source-icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm-28.9 143.6l75.5 72.4H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h182.6l-75.5 72.4c-9.7 9.3-9.9 24.8-.4 34.3l11 10.9c9.4 9.4 24.6 9.4 33.9 0L404.3 273c9.4-9.4 9.4-24.6 0-33.9L271.6 106.3c-9.4-9.4-24.6-9.4-33.9 0l-11 10.9c-9.5 9.6-9.3 25.1.4 34.4z"></path></svg></span></span><div class="responsive-block-editor-addons-icon-list__label-wrap"><div class="responsive-block-editor-addons-icon-list__label">#Label</div></div></div></div>',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/icons-list',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$icons_list_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
+			),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
 				' ',
@@ -1764,27 +1915,32 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
-	 * Test for get_block_css for icons list with child block - align right
+	 * Test for get_block_css for icons list - right align
 	 */
-	public function test_get_block_css_icons_list_align_right() {
-		$inner_block = array(
+	public function test_get_block_css_icons_list_right_align() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_icon_list_block_default_attributes();
+		$child_block = array(
 			'blockName'    => 'responsive-block-editor-addons/icons-list-child',
-			'attrs'        => array(
-				'block_id' => '5f215a2e-787b-4366-9985-da94d63ab751',
-				'align'    => 'right',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$icons_list_child_block_id,
+					'align'    => 'right',
+				)
 			),
 			'innerBlocks'  => array(),
-			'innerHTML'    => ' ',
+			'innerHTML'    => '
+			<div class="wp-block-responsive-block-editor-addons-icons-list-child responsive-block-editor-addons-icon-list-repeater responsive-block-editor-addons-icon-list__wrapper responsive-block-editor-addons-' . self::$icons_list_child_block_id . '"><div class="responsive-block-editor-addons-icon-' . self::$icons_list_child_block_id . ' responsive-block-editor-addons-icon-list__content-wrap"><span class="responsive-block-editor-addons-icon-list__source-wrap"><span class="responsive-block-editor-addons-icon-list__source-icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm-28.9 143.6l75.5 72.4H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h182.6l-75.5 72.4c-9.7 9.3-9.9 24.8-.4 34.3l11 10.9c9.4 9.4 24.6 9.4 33.9 0L404.3 273c9.4-9.4 9.4-24.6 0-33.9L271.6 106.3c-9.4-9.4-24.6-9.4-33.9 0l-11 10.9c-9.5 9.6-9.3 25.1.4 34.4z"></path></svg></span></span><div class="responsive-block-editor-addons-icon-list__label-wrap"><div class="responsive-block-editor-addons-icon-list__label">#Label</div></div></div></div>',
 			'innerContent' => array(
-				' ',
+				'<div class="wp-block-responsive-block-editor-addons-icons-list-child responsive-block-editor-addons-icon-list-repeater responsive-block-editor-addons-icon-list__wrapper responsive-block-editor-addons-' . self::$icons_list_child_block_id . '"><div class="responsive-block-editor-addons-icon-' . self::$icons_list_child_block_id . ' responsive-block-editor-addons-icon-list__content-wrap"><span class="responsive-block-editor-addons-icon-list__source-wrap"><span class="responsive-block-editor-addons-icon-list__source-icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512"><path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm-28.9 143.6l75.5 72.4H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h182.6l-75.5 72.4c-9.7 9.3-9.9 24.8-.4 34.3l11 10.9c9.4 9.4 24.6 9.4 33.9 0L404.3 273c9.4-9.4 9.4-24.6 0-33.9L271.6 106.3c-9.4-9.4-24.6-9.4-33.9 0l-11 10.9c-9.5 9.6-9.3 25.1.4 34.4z"></path></svg></span></span><div class="responsive-block-editor-addons-icon-list__label-wrap"><div class="responsive-block-editor-addons-icon-list__label">#Label</div></div></div></div>',
 			),
 		);
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/icons-list',
-			'attrs'        => array(
-				'block_id' => '3f908b8b-2cac-4077-8bf4-3eb98f2b35ef',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$icons_list_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
 			),
-			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
 				' ',
@@ -1794,6 +1950,48 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$css         = self::$rbea_frontend_styles->get_responsive_block_icon_list_css( $block_attrs[0], $block_attrs[1] );
 		$expected    = self::return_the_css( $block, $css );
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for buttons
+	 */
+	public function test_get_block_css_buttons() {
+		$attributes      = self::$rbea_frontend_styles->get_responsive_block_buttons_default_attributes();
+		$child_block_one = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_child_block_id_one ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$child_block_two = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_child_block_id_two ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$block           = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block_one,
+				$child_block_two,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs     = self::extract_attributes( $block );
+		$css             = self::$rbea_frontend_styles->get_responsive_block_buttons_css( $block_attrs[0], $block_attrs[1] );
+		$expected        = self::return_the_css( $block, $css );
+		$result          = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
 	}
 
