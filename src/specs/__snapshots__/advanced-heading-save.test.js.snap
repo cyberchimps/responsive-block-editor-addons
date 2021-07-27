@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Advanced Heading Save matches snapshot 1`] = `
+<div>
+  <div
+    class="responsive-block-editor-addons-block-advanced-heading block-undefined"
+  />
+</div>
+`;

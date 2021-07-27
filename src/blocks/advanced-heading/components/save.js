@@ -7,9 +7,10 @@ import Style from "style-it";
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
-
+// const { Component, Fragment } = wp.element;
+// const { RichText } = wp.editor;
+import { Component, Fragment } from "@wordpress/element";
+import { RichText } from "@wordpress/block-editor";
 export default class Save extends Component {
   constructor() {
     super(...arguments);
@@ -38,7 +39,7 @@ export default class Save extends Component {
         </div>
       );
     }
-    return [
+    return (
       <div
         id={anchor}
         className={classnames(
@@ -63,7 +64,7 @@ export default class Save extends Component {
           />
         )}
         {seperatorPosition == "belowDesc" && showSeparator && seprator_output}
-      </div>,
-    ];
+      </div>
+    );
   }
 }

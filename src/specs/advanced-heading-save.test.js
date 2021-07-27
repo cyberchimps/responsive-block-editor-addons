@@ -16,14 +16,9 @@ import {
 describe("Advanced Heading Save", () => {
 	afterEach(cleanup);
 	it("matches snapshot", () => {
-		expect(
-			render(
-				<Save
-					{...{
-						attributes
-					}}
-				/>
-			)
-		).toMatchSnapshot();
+		const { container } = render(<Save
+            attributes
+        />);
+		expect(container).toMatchSnapshot();
 	})
 })
