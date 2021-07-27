@@ -75,9 +75,13 @@ export default class Inspector extends Component {
         icon_layout,
         iconPosition,
         size,
+        sizeMobile,
+        sizeTablet,
         hideLabel,
         borderRadius,
         bgSize,
+        bgSizeMobile,
+        bgSizeTablet,
         border,
         fontSize,
         labelFontFamily,
@@ -328,27 +332,157 @@ export default class Inspector extends Component {
               onChange={(value) => setAttributes({ iconPosition: value })}
             />
             <hr className="responsive-block-editor-addons-editor__separator" />
-            <RangeControl
-              label={__("Icon Size", "responsive-block-editor-addons")}
-              value={size}
-              onChange={(value) =>
-                setAttributes({ size: value !== undefined ? value : 16 })
-              }
-              min={0}
-              max={500}
-              allowReset
-            />
+            <TabPanel
+              className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    " responsive-desktop-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className: " responsive-tablet-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className: " responsive-mobile-tab  responsive-responsive-tabs",
+                },
+              ]}
+            >
+              {(tab) => {
+                let tabout;
+
+                if ("mobile" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__("Icon Size Mobile", "responsive-block-editor-addons")}
+                        value={sizeMobile}
+                        onChange={(value) =>
+                          setAttributes({ sizeMobile: value !== undefined ? value : 16 })
+                        }
+                        min={0}
+                        max={500}
+                        allowReset
+                      />
+                    </Fragment>
+                  );
+                } else if ("tablet" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                    <RangeControl
+                      label={__("Icon Size Tablet", "responsive-block-editor-addons")}
+                      value={sizeTablet}
+                      onChange={(value) =>
+                        setAttributes({ sizeTablet: value !== undefined ? value : 16 })
+                      }
+                      min={0}
+                      max={500}
+                      allowReset
+                    />
+                    </Fragment>
+                  );
+                } else {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__("Icon Size", "responsive-block-editor-addons")}
+                        value={size}
+                        onChange={(value) =>
+                          setAttributes({ size: value !== undefined ? value : 16 })
+                        }
+                        min={0}
+                        max={500}
+                        allowReset
+                      />
+                    </Fragment>
+                  );
+                }
+
+                return <div>{tabout}</div>;
+              }}
+            </TabPanel>
             <hr className="responsive-block-editor-addons-editor__separator" />
-            <RangeControl
-              label={__("Background Size", "responsive-block-editor-addons")}
-              value={bgSize}
-              onChange={(value) => setAttributes({ bgSize: value })}
-              help={__(
-                "Note: Background Size option is useful when one adds background color to the icons."
-              )}
-              min={0}
-              max={500}
-            />
+            <TabPanel
+              className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    " responsive-desktop-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className: " responsive-tablet-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className: " responsive-mobile-tab  responsive-responsive-tabs",
+                },
+              ]}
+            >
+              {(tab) => {
+                let tabout;
+
+                if ("mobile" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                    <RangeControl
+                      label={__("Background Size Mobile", "responsive-block-editor-addons")}
+                      value={bgSizeMobile}
+                      onChange={(value) => setAttributes({ bgSizeMobile: value })}
+                      help={__(
+                        "Note: Background Size option is useful when one adds background color to the icons."
+                      )}
+                      min={0}
+                      max={500}
+                    />
+                    </Fragment>
+                  );
+                } else if ("tablet" === tab.name) {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__("Background Size Tablet", "responsive-block-editor-addons")}
+                        value={bgSizeTablet}
+                        onChange={(value) => setAttributes({ bgSizeTablet: value })}
+                        help={__(
+                          "Note: Background Size option is useful when one adds background color to the icons."
+                        )}
+                        min={0}
+                        max={500}
+                      />
+                    </Fragment>
+                  );
+                } else {
+                  tabout = (
+                    <Fragment>
+                      <RangeControl
+                        label={__("Background Size", "responsive-block-editor-addons")}
+                        value={bgSize}
+                        onChange={(value) => setAttributes({ bgSize: value })}
+                        help={__(
+                          "Note: Background Size option is useful when one adds background color to the icons."
+                        )}
+                        min={0}
+                        max={500}
+                      />
+                    </Fragment>
+                  );
+                }
+
+                return <div>{tabout}</div>;
+              }}
+            </TabPanel>
             <RangeControl
               label={__("Border", "responsive-block-editor-addons")}
               value={border}

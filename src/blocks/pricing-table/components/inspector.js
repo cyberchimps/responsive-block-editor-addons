@@ -1724,7 +1724,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
             <RangeControl
@@ -1736,7 +1736,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
             <RangeControl
@@ -1748,7 +1748,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
             <RangeControl
@@ -1760,7 +1760,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
           </PanelBody>
@@ -1777,7 +1777,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
             <RangeControl
@@ -1789,7 +1789,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
             <RangeControl
@@ -1801,7 +1801,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
             <RangeControl
@@ -1813,7 +1813,7 @@ export default class Inspector extends Component {
                 })
               }
               min={0}
-              max={100}
+              max={120}
               allowReset
             />
           </PanelBody>
@@ -1822,35 +1822,35 @@ export default class Inspector extends Component {
             value={titleSpace}
             onChange={(value) => setAttributes({ titleSpace: value })}
             min={0}
-            max={50}
+            max={120}
           />
           <RangeControl
             label={__("Price")}
             value={priceSpace}
             onChange={(value) => setAttributes({ priceSpace: value })}
             min={0}
-            max={50}
+            max={120}
           />
           <RangeControl
             label={__("Sub Price")}
             value={subpriceSpace}
             onChange={(value) => setAttributes({ subpriceSpace: value })}
             min={0}
-            max={50}
+            max={120}
           />
           <RangeControl
             label={__("Button")}
             value={buttonSpace}
             onChange={(value) => setAttributes({ buttonSpace: value })}
             min={0}
-            max={50}
+            max={120}
           />
           <RangeControl
             label={__("Features")}
             value={featuresSpace}
             onChange={(value) => setAttributes({ featuresSpace: value })}
             min={0}
-            max={50}
+            max={120}
           />
         </PanelBody>
       </InspectorControls>

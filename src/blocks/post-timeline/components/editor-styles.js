@@ -119,15 +119,15 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-timeline__link_parent:hover .responsive-block-editor-addons-timeline__link": {
       color: `${hColor} !important`,
     },
-    " .responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker": {
+    ".responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker": {
       "margin-left": generateCSSUnit(horSpace, "px"),
       "margin-right": generateCSSUnit(horSpace, "px"),
     },
-    " .responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new": {
+    ".responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new": {
       "margin-left": generateCSSUnit(horSpace, "px"),
     },
-    " .responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new": {
-      "margin-left": generateCSSUnit(horSpace, "px"),
+    ".responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new": {
+      "margin-right": generateCSSUnit(horSpace, "px"),
     },
     " .responsive-block-editor-addons-timeline__field.responsive-block-editor-addons-timeline__field-wrap": {
       "margin-bottom": generateCSSUnit(verSpace, "px"),

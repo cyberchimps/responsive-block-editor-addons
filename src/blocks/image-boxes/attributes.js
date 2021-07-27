@@ -76,10 +76,11 @@ const attributes = {
   },
   blockBorderColor: {
     type: "string",
+	default: "#1E1E1E"
   },
   blockBorderStyle: {
     type: "string",
-    default: "none",
+    default: "solid",
   },
   blockBorderWidth: {
     type: "number",
@@ -211,6 +212,7 @@ const attributes = {
   },
   titleColor: {
     type: "string",
+	default: "#1E1E1E"
   },
   descriptionFontSize: {
     type: "number",
@@ -223,6 +225,7 @@ const attributes = {
   },
   descriptionColor: {
     type: "string",
+	default: "#1E1E1E"
   },
   backgroundImageOne: {
     type: "string",
