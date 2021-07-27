@@ -26,7 +26,7 @@ registerBlockType("responsive-block-editor-addons/column", {
     "This block is an immediate child of Advanced Columns.",
     "responsive-block-editor-addons"
   ),
-  icon: "layout",
+  icon: ResponsiveBlockEditorAddonsIcons.column,
   category: "responsive_block_editor_addons",
   parent: ["responsive-block-editor-addons/advance-columns"],
   keywords: [
