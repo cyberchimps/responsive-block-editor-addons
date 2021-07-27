@@ -1,5 +1,12 @@
-import Save from '../src/blocks/advanced-heading/components/save';
-import attributes from '../src/blocks/advanced-heading/attributes';
+import {
+	RichText
+} from "@wordpress/block-editor";
+import {
+	Component, Fragment
+} from "@wordpress/element";
+import React from 'react';
+import Save from "../blocks/advanced-heading/components/save";
+import attributes from "../blocks/advanced-heading/attributes";
 import {
 	render,
 	cleanup,

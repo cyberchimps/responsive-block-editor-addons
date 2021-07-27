@@ -121,15 +121,7 @@
     "lint": "npx eslint src",
     "checkFormat": "prettier --check \"**/*.{js,json,css,scss}\"",
     "format": "prettier --write src/**/*",
-    "test:unit": "wp-scripts test-unit-js --config jest.config.js"
-  },
-  "jest": {
-    "coveragePathIgnorePatterns": [
-      "node_modules"
-    ],
-    "transform": {
-      "\\.js$": "<rootDir>/node_modules/babel-jest"
-    }
+    "test:unit": "wp-scripts test-unit-js"
   },
   "husky": {
     "hooks": {
