@@ -788,7 +788,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 					if ( $id ) {
 						$content = get_post_field( 'post_content', $id );
 
-						$reusable_blocks = $this->parse( $content );
+						$reusable_blocks = self::$rbea_frontend_styles_helper->parse( $content );
 
 						$css = self::$rbea_frontend_styles_helper->get_styles( $reusable_blocks );
 
@@ -2145,7 +2145,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	public function test_get_styles_core_block() {
 		$blocks   = array(
 			array(
-				'blockName'    => 'core/paragraph',
+				'blockName'    => 'core/block',
 				'attrs'        => array( 'ref' => 10 ),
 				'inner_blocks' => array(),
 				'innerHTML'    => 'hello',
@@ -2167,7 +2167,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	public function test_get_styles_core_block_no_ref() {
 		$blocks   = array(
 			array(
-				'blockName'    => 'core/paragraph',
+				'blockName'    => 'core/block',
 				'attrs'        => array(),
 				'inner_blocks' => array(),
 				'innerHTML'    => 'hello',
