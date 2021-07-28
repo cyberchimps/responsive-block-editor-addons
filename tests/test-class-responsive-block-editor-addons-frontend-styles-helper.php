@@ -195,6 +195,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	 *
 	 * @var int
 	 */
+	protected static $post_grid_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
 	protected static $testimonial_block_id;
 
 	/**
@@ -506,6 +513,16 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
 				'post_content' => '<!-- wp:responsive-block-editor-addons/post-carousel --><!-- /wp:responsive-block-editor-addons/post-carousel -->',
+			)
+		);
+
+		self::$post_grid_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/responsive-block-editor-addons-post-grid --><!-- /wp:responsive-block-editor-addons/responsive-block-editor-addons-post-grid -->',
 			)
 		);
 
@@ -1895,6 +1912,27 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		);
 		$block_attrs = self::extract_attributes( $block );
 		$css         = self::$rbea_frontend_styles->get_responsive_block_post_carousel_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for post_grid
+	 */
+	public function test_get_block_css_post_grid() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_grid_block_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-post-grid',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$post_grid_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_grid_css( $block_attrs[0], $block_attrs[1] );
 		$expected    = self::return_the_css( $block, $css );
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
