@@ -16,22 +16,30 @@ function EditorStyles(props) {
     testimonialAlignment,
     titleFontFamily,
     titleFontSize,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
     titleLineHeight,
     titleFontWeight,
     titleTextTransform,
     nameFontFamily,
     nameFontSize,
+    nameFontSizeMobile,
+    nameFontSizeTablet,
     nameLineHeight,
     nameFontWeight,
     nameTextTransform,
     contentFontFamily,
     contentFontSize,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
     contentLineHeight,
     contentFontWeight,
     contentTextTransform,
     imageSize,
     imageWidth,
     contentSpacing,
+    contentSpacingTablet,
+    contentSpacingMobile,
     titleSpacing,
     nameSpacing,
     imageSpacing,
@@ -39,13 +47,13 @@ function EditorStyles(props) {
     testimonialTitleColor,
     testimonialNameColor,
     testimonialImgURL,
-    testimonialBackgroundColor,
+    backgroundColor,
     testimonialFontSize,
     testimonialCiteAlign,
-    borderRadius,
-    borderColor,
-    borderWidth,
-    borderStyle,
+    blockBorderRadius,
+    blockBorderColor,
+    blockBorderWidth,
+    blockBorderStyle,
     padding,
     paddingTablet,
     paddingMobile,
@@ -62,14 +70,15 @@ function EditorStyles(props) {
     hoverboxShadowSpread,
     hoverboxShadowPosition,
     opacity,
-    backgroundPosition,
-    backgroundRepeat,
-    backgroundSize,
-    secondaryBackgroundColor,
-    gradientDegree,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
+    backgroundColor2,
+    gradientDirection,
     bgGradient,
     backgroundImage,
-    imageShape,
+    colorLocation1,
+    colorLocation2,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -77,16 +86,18 @@ function EditorStyles(props) {
 
   var bgimage = backgroundImage ? backgroundImage : "";
   var tempsecondaryBackgroundColor = bgGradient
-    ? secondaryBackgroundColor
-    : testimonialBackgroundColor;
+    ? backgroundColor2
+    : backgroundColor;
   var bggradient =
     "linear-gradient(" +
-    gradientDegree +
+    gradientDirection +
     "deg," +
-    hexToRgba(testimonialBackgroundColor || "#ffffff", opacity || 0) +
-    "," +
+    hexToRgba(backgroundColor || "#ffffff", opacity || 0) +
+    colorLocation1 +
+    "% ," +
     hexToRgba(tempsecondaryBackgroundColor || "#ffffff", opacity || 0) +
-    "),url(" +
+    colorLocation2 +
+    "% ),url(" +
     bgimage +
     ")";
 
@@ -99,9 +110,6 @@ function EditorStyles(props) {
   }
 
   var selectors = {
-    " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
-      "margin-bottom" : '0 !important',
-    },
     " .responsive-block-editor-addons-testimonial-text": {
       "text-align": testimonialAlignment,
       "font-family": contentFontFamily,
@@ -152,24 +160,30 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-testimonial": {
       "background-image": bggradient,
-      "background-size": backgroundSize,
-      "background-repeat": backgroundRepeat,
-      "background-position": backgroundPosition,
+      "background-size": backgroundImageSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-position": backgroundImagePosition,
       color: testimonialTextColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
-      "border-color": borderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-color": blockBorderColor,
     },
   };
 
   var mobile_selectors = {
-    
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingMobile, "px"),
     },
-    " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
-      "margin-bottom" : '0 !important',
+    " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
+      "font-size": generateCSSUnit(nameFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
+      "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial-text": {
+      "font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(contentSpacingMobile, "px"),
     },
   };
 
@@ -177,8 +191,15 @@ function EditorStyles(props) {
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingTablet, "px"),
     },
-    " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
-      "margin-bottom" : `${generateCSSUnit(20, "px")} !important`,
+    " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
+      "font-size": generateCSSUnit(nameFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
+      "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial-text": {
+      "font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(contentSpacingTablet, "px"),
     },
   };
 

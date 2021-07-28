@@ -7,6 +7,15 @@ import ResponsiveBlocksQuoteIcon from "../ResponsiveBlocksQuoteIcon.json";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
+import BlockBorderHelperControl from "../../../settings-components/Block Border Settings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings/index";
+import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
 
 let svg_icons = Object.keys(ResponsiveBlocksQuoteIcon);
 // Setup the block
@@ -131,6 +140,8 @@ export default class Inspector extends Component {
         quoteTextColor,
         quoteFontFamily,
         quoteFontSize,
+        quoteFontSizeMobile,
+        quoteFontSizeTablet,
         quoteFontWeight,
         quoteLineHeight,
         quoteAlign,
@@ -140,22 +151,22 @@ export default class Inspector extends Component {
         quoteVposition,
         quoteOpacity,
         showQuote,
-        leftPadding,
-        leftPaddingMobile,
-        leftPaddingTablet,
-        rightPadding,
-        rightPaddingMobile,
-        rightPaddingTablet,
-        topPadding,
-        topPaddingMobile,
-        topPaddingTablet,
-        bottomPadding,
-        bottomPaddingMobile,
-        bottomPaddingTablet,
-        borderStyle,
-        borderWidth,
+        blockLeftPadding,
+        blockLeftPaddingTablet,
+        blockLeftPaddingMobile,
+        blockRightPadding,
+        blockRightPaddingTablet,
+        blockRightPaddingMobile,
+        blockTopPadding,
+        blockTopPaddingMobile,
+        blockTopPaddingTablet,
+        blockBottomPadding,
+        blockBottomPaddingMobile,
+        blockBottomPaddingTablet,
+        blockBorderStyle,
+        blockBorderWidth,
         blockBorderRadius,
-        borderColor,
+        blockBorderColor,
         backgroundColor,
         backgroundColor1,
         backgroundColor2,
@@ -237,707 +248,393 @@ export default class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
-        <PanelBody
-          title={__("General", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <SelectControl
-            label={__("Font Family", "responsive-block-editor-addons")}
-            options={fontOptions}
-            value={quoteFontFamily}
-            onChange={(value) => {
-              setAttributes({
-                quoteFontFamily: value,
-              }),
-                loadGoogleFont(value);
-            }}
-          />
-          <RangeControl
-            label={__("Font Size", "responsive-block-editor-addons")}
-            value={quoteFontSize}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteFontSize: value,
-              })
-            }
-            min={10}
-            max={100}
-            step={1}
-          />
-          <SelectControl
-            label={__("Font Weight", "responsive-block-editor-addons")}
-            options={fontWeightOptions}
-            value={quoteFontWeight}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteFontWeight: value,
-              })
-            }
-          />
-          <RangeControl
-            label={__("Line Height", "responsive-block-editor-addons")}
-            value={quoteLineHeight}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteLineHeight: value,
-              })
-            }
-            min={0}
-            max={100}
-            step={1}
-          />
-          <SelectControl
-            label={__("Alignment", "responsive-block-editor-addons")}
-            description={__(
-              "Left or right align the cite name and title.",
-              "responsive-block-editor-addons"
-            )}
-            options={citeAlignOptions}
-            value={quoteAlign}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteAlign: value,
-              })
-            }
-          />
-        </PanelBody>
-        <PanelBody
-          title={__("Quotation Mark", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <ToggleControl
-            label={__("Show Quotation Mark", "responsive-block-editor-addons")}
-            checked={showQuote}
-            onChange={() =>
-              this.props.setAttributes({
-                showQuote: !showQuote,
-              })
-            }
-          />
-          <Fragment>
-            <p className="components-base-control__label">{__("Icon")}</p>
-            <FontIconPicker
-              icons={svg_icons}
-              renderFunc={renderSVG}
-              theme="default"
-              value={icon}
-              onChange={(value) => this.props.setAttributes({ icon: value })}
-              isMulti={false}
-              noSelectedPlaceholder={__("Select Icon")}
-            />
-          </Fragment>
-          <RangeControl
-            label={__("Size", "responsive-block-editor-addons")}
-            value={quoteSize}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteSize: value,
-              })
-            }
-            min={0}
-            max={400}
-            step={1}
-          />
-          <p>
-            {__("Quote Color")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{ backgroundColor: quoteColor }}
-              ></span>
-            </span>
-          </p>
-
-          <ColorPalette
-            title={__("Color", "responsive-block-editor-addons")}
-            value={quoteColor}
-            onChange={(colorValue) => setAttributes({ quoteColor: colorValue })}
-            allowReset
-          />
-          <RangeControl
-            label={__("Horizontal Position", "responsive-block-editor-addons")}
-            value={quoteHposition}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteHposition: value !== undefined ? value : 30,
-              })
-            }
-            min={0}
-            max={400}
-            step={1}
-            allowReset
-          />
-          <RangeControl
-            label={__("Vertical Position", "responsive-block-editor-addons")}
-            value={quoteVposition}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteVposition: value !== undefined ? value : 20,
-              })
-            }
-            min={0}
-            max={400}
-            step={1}
-            allowReset
-          />
-          <RangeControl
-            label={__("Opacity", "responsive-block-editor-addons")}
-            value={quoteOpacity}
-            onChange={(value) =>
-              this.props.setAttributes({
-                quoteOpacity: value !== undefined ? value : 100,
-              })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-        </PanelBody>
-        <PanelBody
-          title={__("Background", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <SelectControl
-            label={__("Background Type", "responsive-block-editor-addons")}
-            value={backgroundType}
-            onChange={(value) => setAttributes({ backgroundType: value })}
-            options={backgroundTypeOptions}
-          />
-          {"color" == backgroundType && (
-            <Fragment>
-              <p className="responsive-setting-label">
-                {__("Background Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: backgroundColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={backgroundColor}
-                onChange={(colorValue) =>
-                  setAttributes({ backgroundColor: colorValue })
-                }
-                allowReset
-              />
-            </Fragment>
-          )}
-          {"gradient" == backgroundType && (
-            <Fragment>
-              <p className="responsive-setting-label">
-                {__("Color 1", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: backgroundColor1 }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={backgroundColor1}
-                onChange={(colorValue) =>
-                  setAttributes({ backgroundColor1: colorValue })
-                }
-                allowReset
-              />
-
-              <p className="responsive-setting-label">
-                {__("Color 2", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: backgroundColor2 }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={backgroundColor2}
-                onChange={(colorValue) =>
-                  setAttributes({ backgroundColor2: colorValue })
-                }
-                allowReset
-              />
-              <RangeControl
-                label={__("Color Location 1", "responsive-block-editor-addons")}
-                value={colorLocation1}
-                min={0}
-                max={100}
-                onChange={(value) =>
-                  setAttributes({
-                    colorLocation1: value !== undefined ? value : 0,
-                  })
-                }
-              />
-              <RangeControl
-                label={__("Color Location 2", "responsive-block-editor-addons")}
-                value={colorLocation2}
-                min={0}
-                max={100}
-                onChange={(value) =>
-                  setAttributes({
-                    colorLocation2: value !== undefined ? value : 100,
-                  })
-                }
-              />
-              <RangeControl
-                label={__(
-                  "Gradient Direction",
+        <InspectorTabs>
+          <InspectorTab key={'content'}>
+            <PanelBody
+              title={__("General", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >         
+              <SelectControl
+                label={__("Alignment", "responsive-block-editor-addons")}
+                description={__(
+                  "Left or right align the cite name and title.",
                   "responsive-block-editor-addons"
                 )}
-                value={gradientDirection}
-                min={0}
-                max={100}
+                options={citeAlignOptions}
+                value={quoteAlign}
                 onChange={(value) =>
-                  setAttributes({
-                    gradientDirection: value !== undefined ? value : 90,
+                  this.props.setAttributes({
+                    quoteAlign: value,
                   })
                 }
               />
-            </Fragment>
-          )}
-          {"image" == backgroundType && (
-            <Fragment>
-              <BaseControl
-                className="editor-bg-image-control"
-                label={__("Background Image", "responsive-block-editor-addons")}
-              >
-                <MediaUpload
-                  title={__(
-                    "Select Background Image",
-                    "responsive-block-editor-addons"
-                  )}
-                  onSelect={this.onSelectImage}
-                  allowedTypes={["image"]}
-                  value={backgroundImage}
-                  render={({ open }) => (
-                    <Button isDefault onClick={open}>
-                      {!backgroundImage
-                        ? __(
-                            "Select Background Image",
-                            "responsive-block-editor-addons"
-                          )
-                        : __("Replace image", "responsive-block-editor-addons")}
-                    </Button>
-                  )}
-                />
-                {backgroundImage && (
-                  <Button
-                    className="rbea-rm-btn"
-                    onClick={this.onRemoveImage}
-                    isLink
-                    isDestructive
-                  >
-                    {__("Remove Image", "responsive-block-editor-addons")}
-                  </Button>
-                )}
-              </BaseControl>
-            </Fragment>
-          )}
-          {"video" == backgroundType && (
-            <BaseControl
-              className="editor-bg-video-control"
-              label={__("Background Video")}
+            </PanelBody>
+            <PanelBody
+              title={__("Quotation Mark", "responsive-block-editor-addons")}
+              initialOpen={false}
             >
-              <MediaUpload
-                title={__("Select Background Video")}
-                onSelect={this.onSelectVideo}
-                allowedTypes={["video"]}
-                value={backgroundVideo}
-                render={({ open }) => (
-                  <Button isDefault onClick={open}>
-                    {!backgroundVideo
-                      ? __("Select Background Video")
-                      : __("Replace Video")}
-                  </Button>
-                )}
-              />
-              {backgroundVideo && (
-                <Button onClick={this.onRemoveVideo} isLink isDestructive>
-                  {__("Remove Video")}
-                </Button>
-              )}
-            </BaseControl>
-          )}
-          <RangeControl
-            label={__("Opacity", "responsive-block-editor-addons")}
-            value={opacity}
-            onChange={(value) =>
-              setAttributes({ opacity: value !== undefined ? value : 20 })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-        </PanelBody>
-        <PanelBody title={__("Border Settings")} initialOpen={false}>
-          <SelectControl
-            label={__("Border Style")}
-            value={borderStyle}
-            onChange={(value) => setAttributes({ borderStyle: value })}
-            options={[
-              { value: "none", label: __("None") },
-              { value: "solid", label: __("Solid") },
-              { value: "dotted", label: __("Dotted") },
-              { value: "dashed", label: __("Dashed") },
-              { value: "double", label: __("Double") },
-              { value: "groove", label: __("Groove") },
-              { value: "inset", label: __("Inset") },
-              { value: "outset", label: __("Outset") },
-              { value: "ridge", label: __("Ridge") },
-            ]}
-          />
-          {"none" != borderStyle && (
-            <Fragment>
-              <RangeControl
-                label={__("Border Width")}
-                value={borderWidth}
-                onChange={(value) => setAttributes({ borderWidth: value })}
-                min={0}
-                max={50}
-                allowReset
+              <ToggleControl
+                label={__("Show Quotation Mark", "responsive-block-editor-addons")}
+                checked={showQuote}
+                onChange={() =>
+                  this.props.setAttributes({
+                    showQuote: !showQuote,
+                  })
+                }
               />
               <Fragment>
-                <p>
-                  {__("Border Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{ backgroundColor: borderColor }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={borderColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ borderColor: colorValue })
-                  }
-                  allowReset
+                <p className="components-base-control__label">{__("Icon")}</p>
+                <FontIconPicker
+                  icons={svg_icons}
+                  renderFunc={renderSVG}
+                  theme="default"
+                  value={icon}
+                  onChange={(value) => this.props.setAttributes({ icon: value })}
+                  isMulti={false}
+                  noSelectedPlaceholder={__("Select Icon")}
                 />
               </Fragment>
-            </Fragment>
-          )}
-          <RangeControl
-            label={__("Border Radius")}
-            value={blockBorderRadius}
-            onChange={(value) =>
-              setAttributes({
-                blockBorderRadius: value !== undefined ? value : 0,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-          <BoxShadowControl
-            setAttributes={setAttributes}
-            label={__("Box Shadow")}
-            boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
-            boxShadowHOffset={{
-              value: boxShadowHOffset,
-              label: __("Horizontal"),
-            }}
-            boxShadowVOffset={{
-              value: boxShadowVOffset,
-              label: __("Vertical"),
-            }}
-            boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
-            boxShadowSpread={{ value: boxShadowSpread, label: __("Spread") }}
-            boxShadowPosition={{
-              value: boxShadowPosition,
-              label: __("Position"),
-            }}
-          />
-        </PanelBody>
+              <RangeControl
+                label={__("Size", "responsive-block-editor-addons")}
+                value={quoteSize}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    quoteSize: value,
+                  })
+                }
+                min={0}
+                max={400}
+                step={1}
+              />
+              <p>
+                {__("Quote Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{ backgroundColor: quoteColor }}
+                  ></span>
+                </span>
+              </p>
 
-        <PanelBody
-          title={__("Spacing", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-        <PanelBody
-            title={__("Block Spacing", "responsive-block-editor-addons")}
-            initialOpen={false}
-        >
-        <TabPanel
-          className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-          activeClass="active-tab"
-          tabs={[
-          {
-            name: "desktop",
-            title: <Dashicon icon="desktop" />,
-            className:
-            " responsive-desktop-tab  responsive-responsive-tabs",
-          },
-          {
-            name: "tablet",
-            title: <Dashicon icon="tablet" />,
-            className: " responsive-tablet-tab  responsive-responsive-tabs",
-          },
-          {
-            name: "mobile",
-            title: <Dashicon icon="smartphone" />,
-            className: " responsive-mobile-tab  responsive-responsive-tabs",
-          },
-          ]}
-          >
+              <ColorPalette
+                title={__("Color", "responsive-block-editor-addons")}
+                value={quoteColor}
+                onChange={(colorValue) => setAttributes({ quoteColor: colorValue })}
+                allowReset
+              />
+              <RangeControl
+                label={__("Horizontal Position", "responsive-block-editor-addons")}
+                value={quoteHposition}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    quoteHposition: value !== undefined ? value : 30,
+                  })
+                }
+                min={0}
+                max={400}
+                step={1}
+                allowReset
+              />
+              <RangeControl
+                label={__("Vertical Position", "responsive-block-editor-addons")}
+                value={quoteVposition}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    quoteVposition: value !== undefined ? value : 20,
+                  })
+                }
+                min={0}
+                max={400}
+                step={1}
+                allowReset
+              />
+              <RangeControl
+                label={__("Opacity", "responsive-block-editor-addons")}
+                value={quoteOpacity}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    quoteOpacity: value !== undefined ? value : 100,
+                  })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={'style'}>
+            <TypographyHelperControl
+              title={__("Typography", "responsive-block-editor-addons")} 
+              attrNameTemplate="quote%s"
+              values = {{
+                family: quoteFontFamily, 
+                size: quoteFontSize, 
+                sizeMobile: quoteFontSizeMobile, 
+                sizeTablet: quoteFontSizeTablet, 
+                weight: quoteFontWeight, 
+                height: quoteLineHeight,
+              }}
+              showLetterSpacing = { false }
+              showTextTransform = { false }
+              setAttributes={ setAttributes }
+              {...this.props}            
+            />
+            
+            <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <SelectControl
+                label={__("Background Type", "responsive-block-editor-addons")}
+                value={backgroundType}
+                onChange={(value) => setAttributes({ backgroundType: value })}
+                options={backgroundTypeOptions}
+              />
+              {"color" == backgroundType && (
+                <Fragment>
+                  <ColorBackgroundControl 
+                    {...this.props}
+                  />
+                </Fragment>
+              )}
+              {"gradient" == backgroundType && (
+                <Fragment>
+                  <GradientBackgroundControl
+                    {...this.props}
+                    showHoverGradient = {false}
+                  />
+                </Fragment>
+              )}
+              {"image" == backgroundType && (
+                <ImageBackgroundControl
+                  showSomeImageOptions={false}
+                  showMoreImageOptions={false}
+                  showOverlayOptions={false}
+                  {...this.props}
+                />
+              )}
+              {"video" == backgroundType && (
+                  <VideoBackgroundControl {...this.props} />
+              )}
+              <RangeControl
+                label={__("Opacity", "responsive-block-editor-addons")}
+                value={opacity}
+                onChange={(value) =>
+                  setAttributes({ opacity: value !== undefined ? value : 20 })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
+            </PanelBody>
+            <PanelBody title={__("Border Settings")} initialOpen={false}>
+              <BlockBorderHelperControl 
+                attrNameTemplate="block%s"
+                values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
+                setAttributes={ setAttributes }
+                {...this.props}            
+              />
+              <BoxShadowControl
+                setAttributes={setAttributes}
+                label={__("Box Shadow")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowHOffset={{
+                  value: boxShadowHOffset,
+                  label: __("Horizontal"),
+                }}
+                boxShadowVOffset={{
+                  value: boxShadowVOffset,
+                  label: __("Vertical"),
+                }}
+                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                boxShadowSpread={{ value: boxShadowSpread, label: __("Spread") }}
+                boxShadowPosition={{
+                  value: boxShadowPosition,
+                  label: __("Position"),
+                }}
+              />
+            </PanelBody>
 
-          {(tab) => {
-          let tabout;
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsivePaddingControl
+                attrNameTemplate="block%s"
+                values = {{
+                  desktopTop:blockTopPadding, 
+                  desktopBottom:blockBottomPadding, 
+                  desktopLeft:blockLeftPadding, 
+                  desktopRight:blockRightPadding, 
 
-          if ("mobile" === tab.name) {
-          tabout = (
-          <Fragment>
-            <RangeControl
-            label={__("Top Padding", "responsive-block-editor-addons")}
-            value={topPaddingMobile}
-            onChange={(value) => setAttributes({ topPaddingMobile: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Right Padding", "responsive-block-editor-addons")}
-            value={rightPaddingMobile}
-            onChange={(value) => setAttributes({ rightPaddingMobile: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Bottom Padding", "responsive-block-editor-addons")}
-            value={bottomPaddingMobile}
-            onChange={(value) => setAttributes({ bottomPaddingMobile: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Left Padding", "responsive-block-editor-addons")}
-            value={leftPaddingMobile}
-            onChange={(value) => setAttributes({ leftPaddingMobile: value })}
-            min={0}
-            max={100}
-            />
-          </Fragment>
-          );
-          } else if ("tablet" === tab.name) {
-          tabout = (
-          <Fragment>
-            <RangeControl
-            label={__("Top Padding", "responsive-block-editor-addons")}
-            value={topPaddingTablet}
-            onChange={(value) => setAttributes({ topPaddingTablet: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Right Padding", "responsive-block-editor-addons")}
-            value={rightPaddingTablet}
-            onChange={(value) => setAttributes({ rightPaddingTablet: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Bottom Padding", "responsive-block-editor-addons")}
-            value={bottomPaddingTablet}
-            onChange={(value) => setAttributes({ bottomPaddingTablet: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Left Padding", "responsive-block-editor-addons")}
-            value={leftPaddingTablet}
-            onChange={(value) => setAttributes({ leftPaddingTablet: value })}
-            min={0}
-            max={100}
-            />
-          </Fragment>
-          );
-          } else {
-          tabout = (
-          <Fragment>
-            <RangeControl
-            label={__("Top Padding", "responsive-block-editor-addons")}
-            value={topPadding}
-            onChange={(value) => setAttributes({ topPadding: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Right Padding", "responsive-block-editor-addons")}
-            value={rightPadding}
-            onChange={(value) => setAttributes({ rightPadding: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Bottom Padding", "responsive-block-editor-addons")}
-            value={bottomPadding}
-            onChange={(value) => setAttributes({ bottomPadding: value })}
-            min={0}
-            max={100}
-            />
-            <RangeControl
-            label={__("Left Padding", "responsive-block-editor-addons")}
-            value={leftPadding}
-            onChange={(value) => setAttributes({ leftPadding: value })}
-            min={0}
-            max={100}
-            />
-          </Fragment>
-          );
-          }
+                  tabletTop:blockTopPaddingTablet,
+                  tabletBottom:blockBottomPaddingTablet, 
+                  tabletLeft:blockLeftPaddingTablet, 
+                  tabletRight:blockRightPaddingTablet, 
 
-          return <div>{tabout}</div>;
-          }}
-          </TabPanel>
-        </PanelBody>
-        <PanelBody
-          title={__("Text Spacing", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-        <TabPanel
-        className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-        activeClass="active-tab"
-        tabs={[
-        {
-          name: "desktop",
-          title: <Dashicon icon="desktop" />,
-          className:
-          " responsive-desktop-tab  responsive-responsive-tabs",
-        },
-        {
-          name: "tablet",
-          title: <Dashicon icon="tablet" />,
-          className: " responsive-tablet-tab  responsive-responsive-tabs",
-        },
-        {
-          name: "mobile",
-          title: <Dashicon icon="smartphone" />,
-          className: " responsive-mobile-tab  responsive-responsive-tabs",
-        },
-        ]}
-        >
-
-        {(tab) => {
-        let tabout;
-
-        if ("mobile" === tab.name) {
-        tabout = (
-        <Fragment>
-          <RangeControl
-          label={__("Top Space", "responsive-block-editor-addons")}
-          value={textSpacingTopMobile}
-          onChange={(value) => setAttributes({ textSpacingTopMobile: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Bottom Space", "responsive-block-editor-addons")}
-          value={textSpacingBottomMobile}
-          onChange={(value) => setAttributes({ textSpacingBottomMobile: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Left Space", "responsive-block-editor-addons")}
-          value={textSpacingLeftMobile}
-          onChange={(value) => setAttributes({ textSpacingLeftMobile: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Right Space", "responsive-block-editor-addons")}
-          value={textSpacingRightMobile}
-          onChange={(value) => setAttributes({ textSpacingRightMobile: value })}
-          min={0}
-          max={100}
-          />
-        </Fragment>
-        );
-        } else if ("tablet" === tab.name) {
-        tabout = (
-        <Fragment>
-          <RangeControl
-          label={__("Top Space", "responsive-block-editor-addons")}
-          value={textSpacingTopTablet}
-          onChange={(value) => setAttributes({ textSpacingTopTablet: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Bottom Space", "responsive-block-editor-addons")}
-          value={textSpacingBottomTablet}
-          onChange={(value) => setAttributes({ textSpacingBottomTablet: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Left Space", "responsive-block-editor-addons")}
-          value={textSpacingLeftTablet}
-          onChange={(value) => setAttributes({ textSpacingLeftTablet: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Right Space", "responsive-block-editor-addons")}
-          value={textSpacingRightTablet}
-          onChange={(value) => setAttributes({ textSpacingRightTablet: value })}
-          min={0}
-          max={100}
-          />
-        </Fragment>
-        );
-        } else {
-        tabout = (
-        <Fragment>
-          <RangeControl
-          label={__("Top Space", "responsive-block-editor-addons")}
-          value={textSpacingTop}
-          onChange={(value) => setAttributes({ textSpacingTop: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Bottom Space", "responsive-block-editor-addons")}
-          value={textSpacingBottom}
-          onChange={(value) => setAttributes({ textSpacingBottom: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Left Space", "responsive-block-editor-addons")}
-          value={textSpacingLeft}
-          onChange={(value) => setAttributes({ textSpacingLeft: value })}
-          min={0}
-          max={100}
-          />
-          <RangeControl
-          label={__("Right Space", "responsive-block-editor-addons")}
-          value={textSpacingRight}
-          onChange={(value) => setAttributes({ textSpacingRight: value })}
-          min={0}
-          max={100}
-          />
-        </Fragment>
-        );
-        }
-
-        return <div>{tabout}</div>;
-        }}
-        </TabPanel>
-        </PanelBody>
-          
-        </PanelBody>
-
-        <PanelColorSettings
-          title={__("Color Settings", "responsive-block-editor-addons")}
-          initialOpen={false}
-          colorSettings={[
+                  mobileTop:blockTopPaddingMobile,
+                  mobileBottom:blockBottomPaddingMobile,
+                  mobileLeft:blockLeftPaddingMobile,
+                  mobileRight:blockRightPaddingMobile,
+                }}
+                setAttributes={ setAttributes }
+                {...this.props}            
+              />
+              <PanelBody
+              title={__("Text Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+            <TabPanel
+            className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+            activeClass="active-tab"
+            tabs={[
             {
-              value: quoteTextColor,
-              onChange: onChangeTextColor,
-              label: __("Text Color", "responsive-block-editor-addons"),
+              name: "desktop",
+              title: <Dashicon icon="desktop" />,
+              className:
+              " responsive-desktop-tab  responsive-responsive-tabs",
             },
-          ]}
-        ></PanelColorSettings>
+            {
+              name: "tablet",
+              title: <Dashicon icon="tablet" />,
+              className: " responsive-tablet-tab  responsive-responsive-tabs",
+            },
+            {
+              name: "mobile",
+              title: <Dashicon icon="smartphone" />,
+              className: " responsive-mobile-tab  responsive-responsive-tabs",
+            },
+            ]}
+            >
+
+            {(tab) => {
+            let tabout;
+
+            if ("mobile" === tab.name) {
+            tabout = (
+            <Fragment>
+              <RangeControl
+              label={__("Top Space", "responsive-block-editor-addons")}
+              value={textSpacingTopMobile}
+              onChange={(value) => setAttributes({ textSpacingTopMobile: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Bottom Space", "responsive-block-editor-addons")}
+              value={textSpacingBottomMobile}
+              onChange={(value) => setAttributes({ textSpacingBottomMobile: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Left Space", "responsive-block-editor-addons")}
+              value={textSpacingLeftMobile}
+              onChange={(value) => setAttributes({ textSpacingLeftMobile: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Right Space", "responsive-block-editor-addons")}
+              value={textSpacingRightMobile}
+              onChange={(value) => setAttributes({ textSpacingRightMobile: value })}
+              min={0}
+              max={100}
+              />
+            </Fragment>
+            );
+            } else if ("tablet" === tab.name) {
+            tabout = (
+            <Fragment>
+              <RangeControl
+              label={__("Top Space", "responsive-block-editor-addons")}
+              value={textSpacingTopTablet}
+              onChange={(value) => setAttributes({ textSpacingTopTablet: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Bottom Space", "responsive-block-editor-addons")}
+              value={textSpacingBottomTablet}
+              onChange={(value) => setAttributes({ textSpacingBottomTablet: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Left Space", "responsive-block-editor-addons")}
+              value={textSpacingLeftTablet}
+              onChange={(value) => setAttributes({ textSpacingLeftTablet: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Right Space", "responsive-block-editor-addons")}
+              value={textSpacingRightTablet}
+              onChange={(value) => setAttributes({ textSpacingRightTablet: value })}
+              min={0}
+              max={100}
+              />
+            </Fragment>
+            );
+            } else {
+            tabout = (
+            <Fragment>
+              <RangeControl
+              label={__("Top Space", "responsive-block-editor-addons")}
+              value={textSpacingTop}
+              onChange={(value) => setAttributes({ textSpacingTop: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Bottom Space", "responsive-block-editor-addons")}
+              value={textSpacingBottom}
+              onChange={(value) => setAttributes({ textSpacingBottom: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Left Space", "responsive-block-editor-addons")}
+              value={textSpacingLeft}
+              onChange={(value) => setAttributes({ textSpacingLeft: value })}
+              min={0}
+              max={100}
+              />
+              <RangeControl
+              label={__("Right Space", "responsive-block-editor-addons")}
+              value={textSpacingRight}
+              onChange={(value) => setAttributes({ textSpacingRight: value })}
+              min={0}
+              max={100}
+              />
+            </Fragment>
+            );
+            }
+
+            return <div>{tabout}</div>;
+            }}
+            </TabPanel>
+            </PanelBody>
+              
+            </PanelBody>
+
+            <PanelColorSettings
+              title={__("Color Settings", "responsive-block-editor-addons")}
+              initialOpen={false}
+              colorSettings={[
+                {
+                  value: quoteTextColor,
+                  onChange: onChangeTextColor,
+                  label: __("Text Color", "responsive-block-editor-addons"),
+                },
+              ]}
+            >
+            </PanelColorSettings>
+          </InspectorTab>
+          <InspectorTab key={'advance'}>
+            
+          </InspectorTab>
+        </InspectorTabs>
       </InspectorControls>
     );
   }

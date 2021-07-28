@@ -10,8 +10,8 @@ import generateBackgroundImageEffect from "../../../generateBackgroundImageEffec
 function EditorStyles(props) {
   const {
     block_id,
-    buttonBackgroundColor,
-    buttonTextColor,
+    ctaBackColor,
+    ctaColor,
     ctaTitleFontFamily,
     ctaTitleFontSize,
     ctaTitleFontSizeMobile,
@@ -22,18 +22,19 @@ function EditorStyles(props) {
     ctaTextFontSizeTablet,
     ctaTextColor,
     imgURL,
-    headingLineHeight,
-    headingFontWeight,
-    contentLineHeight,
-    contentFontWeight,
-    buttonvPadding,
-    buttonhPadding,
-    buttonborderWidth,
-    buttonborderStyle,
-    hbuttonBackgroundColor,
-    hbuttonTextColor,
-    buttonborderColor,
-    buttonborderHColor,
+    backgroundImage,
+    ctaTitleLineHeight,
+    ctaTitleFontWeight,
+    ctaTextLineHeight,
+    ctaTextFontWeight,
+    ctaVpadding,
+    ctaHpadding,
+    ctaBorderWidth,
+    ctaBorderStyle,
+    ctaHoverBackColor,
+    ctaHoverColor,
+    ctaBorderColor,
+    ctaHoverBorderColor,
     titleSpace,
     titleSpaceMobile,
     titleSpaceTablet,
@@ -42,7 +43,7 @@ function EditorStyles(props) {
     subtitleSpaceTablet,
     iconSpace,
     opacity,
-    ctaBackgroundColor,
+    backgroundColor,
     backgroundType,
     gradientDirection,
     colorLocation1,
@@ -66,21 +67,27 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     icon_color,
-    topPadding,
-    topPaddingMobile,
-    topPaddingTablet,
-    bottomPadding,
-    bottomPaddingMobile,
-    bottomPaddingTablet,
-    leftPadding,
-    leftPaddingMobile,
-    leftPaddingTablet,
-    rightPadding,
-    rightPaddingMobile,
-    rightPaddingTablet,
-    imagePosition,
-    imageRepeat,
-    thumbsize,
+    bTopPadding,
+    bTopPaddingMobile,
+    bTopPaddingTablet,
+    bBottomPadding,
+    bBottomPaddingMobile,
+    bBottomPaddingTablet,
+    bLeftPadding,
+    bLeftPaddingMobile,
+    bLeftPaddingTablet,
+    bRightPadding,
+    bRightPaddingMobile,
+    bRightPaddingTablet,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
+    ctaVpaddingMobile,
+    ctaVpaddingTablet,
+    ctaHpaddingMobile,
+    ctaHpaddingTablet,
+    ctaBorderRadius,
+    ctaTextOpacity,
     buttonTextFontFamily,
     buttonTextFontSize,
     buttonTextFontSizeMobile,
@@ -93,8 +100,8 @@ function EditorStyles(props) {
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
   if (buttonbackgroundType === "color") {
-    updatedButtonBackgroundColor = buttonBackgroundColor;
-    updatedButtonBackgroundhColor = hbuttonBackgroundColor;
+    updatedButtonBackgroundColor = ctaBackColor;
+    updatedButtonBackgroundhColor = ctaHoverBackColor;
   }
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -113,15 +120,16 @@ function EditorStyles(props) {
 
   var selectors = {
     " .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button": {
-      "color": buttonTextColor,
+      "color": ctaColor,
+      "opacity": ctaTextOpacity / 100,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover .responsive-block-editor-addons-cta-button": {
-      "color": hbuttonTextColor,
+      "color": ctaHoverColor,
     },
 
     " .responsive-block-editor-addons-cta-link-text": {
-      "color": buttonTextColor,
+      "color": ctaColor,
       "font-family": buttonTextFontFamily,
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
       "font-weight": buttonTextFontWeight,
@@ -129,11 +137,11 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-link-text:hover": {
-      "color": hbuttonTextColor,
+      "color": ctaHoverColor,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover": {
-      "border-color": buttonborderHColor,
+      "border-color": ctaHoverBorderColor,
       "background-color": updatedButtonBackgroundhColor,
     },
 
@@ -144,17 +152,17 @@ function EditorStyles(props) {
     "": {
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}`
+          ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image":
         backgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              backgroundColor1,
-              backgroundColor2,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
-            )
+            backgroundColor1,
+            backgroundColor2,
+            gradientDirection,
+            colorLocation1,
+            colorLocation2
+          )
           : undefined,
       "border-radius": generateCSSUnit(borderRadius, "px"),
       "box-shadow":
@@ -169,26 +177,26 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "padding-top": generateCSSUnit(bTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(bBottomPadding, "px"),
+      "padding-left": generateCSSUnit(bLeftPadding, "px"),
+      "padding-right": generateCSSUnit(bRightPadding, "px"),
     },
 
     " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {
-      "background-image": imgURL ? `url(${imgURL})` : null,
+      "background-image": backgroundImage ? `url(${backgroundImage})` : null,
       "height": 100 + "%",
-      "background-position": imagePosition,
-      "background-repeat": imageRepeat,
-      "background-size": thumbsize,
+      "background-position": backgroundImagePosition,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "border-radius": generateCSSUnit(borderRadius, "px"),
     },
 
     " .responsive-block-editor-addons-cta-title": {
       "color": ctaTextColor,
-      "line-height": headingLineHeight,
+      "line-height": ctaTitleLineHeight,
       "font-family": ctaTitleFontFamily,
-      "font-weight": headingFontWeight,
+      "font-weight": ctaTitleFontWeight,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
       "font-size": generateCSSUnit(ctaTitleFontSize, "px"),
     },
@@ -197,31 +205,32 @@ function EditorStyles(props) {
       "color": ctaTextColor,
       "font-size": generateCSSUnit(ctaTextFontSize, "px"),
       "font-family": ctaTextFontFamily,
-      "line-height": contentLineHeight,
-      "font-weight": contentFontWeight,
+      "line-height": ctaTextLineHeight,
+      "font-weight": ctaTextFontWeight,
       "margin-bottom": generateCSSUnit(subtitleSpace, "px"),
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper": {
-      "padding-top": generateCSSUnit(buttonvPadding, "px"),
-      "padding-bottom": generateCSSUnit(buttonvPadding, "px"),
-      "padding-left": generateCSSUnit(buttonhPadding, "px"),
-      "padding-right": generateCSSUnit(buttonhPadding, "px"),
-      "border-style": buttonborderStyle ? buttonborderStyle : "solid",
-      "border-color": buttonborderColor,
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
+      "border-style": ctaBorderStyle ? ctaBorderStyle : "solid",
+      "border-color": ctaBorderColor,
       "background-color": updatedButtonBackgroundColor,
-      "border-width": buttonborderWidth
-        ? generateCSSUnit(buttonborderWidth, "px")
+      "border-width": ctaBorderWidth
+        ? generateCSSUnit(ctaBorderWidth, "px")
         : "1px",
+      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
       "background-image":
         buttonbackgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              buttonbackgroundColor1,
-              buttonbackgroundColor2,
-              buttongradientDirection,
-              buttoncolorLocation1,
-              buttoncolorLocation2
-            )
+            buttonbackgroundColor1,
+            buttonbackgroundColor2,
+            buttongradientDirection,
+            buttoncolorLocation1,
+            buttoncolorLocation2
+          )
           : undefined,
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
     },
@@ -239,25 +248,38 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-    " h2.responsive-block-editor-addons-cta-title": {
-      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
-      "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px") + "!important",
-    },
     "": {
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+      "padding-top": generateCSSUnit(bTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(bBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(bLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(bRightPaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-cta-title": {
+      "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-cta-button-wrapper": {
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-cta-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-text": {
+      "font-size": generateCSSUnit(ctaTextFontSizeMobile, "px"),
       "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
-      "font-size": generateCSSUnit(ctaTextFontSizeMobile, "px") + "!important",
     },
+
     " .responsive-block-editor-addons-cta-button-wrapper": {
       "margin-bottom": generateCSSUnit(buttonSpaceMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
+      "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")} !important`,
+    },
+    " h2.responsive-block-editor-addons-cta-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+      "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px") + "!important",
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
@@ -265,20 +287,29 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
-    " h2.responsive-block-editor-addons-cta-title": {
-      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+    "": {
+      "padding-top": generateCSSUnit(bTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(bBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(bLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(bRightPaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-cta-title": {
       "font-size": generateCSSUnit(ctaTitleFontSizeTablet, "px"),
     },
-    "": {
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+    " .responsive-block-editor-addons-cta-button-wrapper": {
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-cta-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-text": {
-      "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
       "font-size": generateCSSUnit(ctaTextFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
     },
+
     " .responsive-block-editor-addons-cta-button-wrapper": {
       "margin-bottom": generateCSSUnit(buttonSpaceTablet, "px"),
     },
@@ -287,6 +318,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeTablet, "px")}`,
+    },
+    " h2.responsive-block-editor-addons-cta-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+      "font-size": generateCSSUnit(ctaTitleFontSizeTablet, "px"),
     },
   };
 

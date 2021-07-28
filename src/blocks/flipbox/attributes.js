@@ -123,10 +123,10 @@ const attributes = {
     type: "string",
     default: "#fff",
   },
-  buttonHTextColor: {
+  ctaHoverColor: {
     type: "string",
   },
-  buttonHColor: {
+  ctaHoverBackColor: {
     type: "string",
   },
   buttonopacity: {
@@ -160,17 +160,29 @@ const attributes = {
     type: "string",
     default: "#fff",
   },
-  buttonBorderRadius: {
-    type: "number",
-    default: 0,
-  },
-  buttonHpadding: {
+  ctaHpadding: {
     type: "number",
     default: 20,
   },
-  buttonVpadding: {
+  ctaVpadding: {
     type: "number",
     default: 10,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 10,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 20,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 20,
   },
   iconSelected: {
     type: "string",
@@ -204,10 +216,10 @@ const attributes = {
   backBackgroundColor: {
     type: "string",
   },
-  buttonColor: {
+  ctaBackColor: {
     type: "string",
   },
-  buttonTextColor: {
+  ctaColor: {
     type: "string",
   },
   iconColor: {
@@ -216,18 +228,18 @@ const attributes = {
   backIconColor: {
     type: "string",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 2,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
   boxShadowColor: {
@@ -288,41 +300,144 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  topMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  topMarginTablet: {
+    type: "number",
+    default: 0,
+  },
   bottomMargin: {
     type: "number",
     default: 0,
   },
-  topPadding: {
+  bottomMarginMobile: {
     type: "number",
     default: 0,
   },
-  bottomPadding: {
+  bottomMarginTablet: {
     type: "number",
     default: 0,
   },
-  leftPadding: {
+  frontTopPadding: {
     type: "number",
     default: 0,
   },
-  rightPadding: {
+  frontTopPaddingMobile: {
     type: "number",
     default: 0,
   },
-  backtopPadding: {
+  frontTopPaddingTablet: {
     type: "number",
     default: 0,
   },
-  backbottomPadding: {
+  frontBottomPadding: {
     type: "number",
     default: 0,
   },
-  backleftPadding: {
+  frontBottomPaddingMobile: {
     type: "number",
     default: 0,
   },
-  backrightPadding: {
+  frontBottomPaddingTablet: {
     type: "number",
     default: 0,
+  },
+  frontLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  frontLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  frontLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  frontRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  backTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  backRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaBorderStyle: {
+    type: "string",
+  },
+  ctaBorderWidth: {
+    type: "number",
+    default: 0,
+  },
+  ctaBorderRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBorderColor: {
+    type: "string",
+    default: "#0066cc",
+  },
+  ctaHoverBorderColor: {
+    type: "string",
+    default: "#0066cc",
+  },
+  ctaTextOpacity: {
+    type: "number",
+    default: 100,
   },
   flipBoxGutterGap: {
     type: "number",

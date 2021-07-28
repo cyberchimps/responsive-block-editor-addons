@@ -19,16 +19,26 @@ function EditorStyles(props) {
     dateLineHeight,
     dateFontWeight,
     dateFontSize,
+    dateFontSizeMobile,
+    dateFontSizeTablet,
     headingLineHeight,
     headingFontWeight,
     headingFontSize,
+    headingFontSizeMobile,
+    headingFontSizeTablet,
     contentLineHeight,
     contentFontWeight,
     contentFontSize,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
     itemBorderRadius,
     itemPadding,
     horizontalSpace,
+    horizontalSpaceMobile,
+    horizontalSpaceTablet,
     verticalSpace,
+    verticalSpaceMobile,
+    verticalSpaceTablet,
     itemBorderWidth,
     itemBorderStyle,
     itemBorderColor,
@@ -47,6 +57,8 @@ function EditorStyles(props) {
     borderwidth,
     separatorwidth,
     headingBottomMargin,
+    headingBottomMarginMobile,
+    headingBottomMarginTablet,
   } = props.attributes;
 
   var border_with_color = "13px solid" + backgroundColor;
@@ -188,6 +200,24 @@ function EditorStyles(props) {
     " .responsive-timeline__right-block.responsive-timeline__responsive-mobile .responsive-timeline__line": {
       right: connectorBgsize / 2 + "px",
     },
+    " .responsive-timeline__field.responsive-timeline__field-wrap": {
+      "margin-bottom": generateCSSUnit(verticalSpaceMobile, "px"),
+    },
+
+    " .responsive-timeline__marker.responsive-timeline__out-view-icon, .responsive-timeline__marker.responsive-timeline__in-view-icon ": {
+      "margin-left": generateCSSUnit(horizontalSpaceMobile, "px"),
+      "margin-right": generateCSSUnit(horizontalSpaceMobile, "px"),
+    },
+    " .responsive-timeline__date-new": {
+      "font-size": generateCSSUnit(dateFontSizeMobile, "px"),
+    },
+    " .responsive-timeline__heading": {
+      "font-size": generateCSSUnit(headingFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(headingBottomMarginMobile, "px"),
+    },
+    " .responsive-timeline-desc-content": {
+      "font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -202,6 +232,24 @@ function EditorStyles(props) {
 
     " .responsive-timeline__right-block.responsive-timeline__responsive-tablet .responsive-timeline__line": {
       right: connectorBgsize / 2 + "px",
+    },
+    " .responsive-timeline__field.responsive-timeline__field-wrap": {
+      "margin-bottom": generateCSSUnit(verticalSpaceTablet, "px"),
+    },
+
+    " .responsive-timeline__marker.responsive-timeline__out-view-icon, .responsive-timeline__marker.responsive-timeline__in-view-icon ": {
+      "margin-left": generateCSSUnit(horizontalSpaceTablet, "px"),
+      "margin-right": generateCSSUnit(horizontalSpaceTablet, "px"),
+    },
+    " .responsive-timeline__date-new": {
+      "font-size": generateCSSUnit(dateFontSizeTablet, "px"),
+    },
+    " .responsive-timeline__heading": {
+      "font-size": generateCSSUnit(headingFontSizeTablet, "px"),
+    },
+    " .responsive-timeline-desc-content": {
+      "font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(headingBottomMarginTablet, "px"),
     },
   };
 

@@ -225,6 +225,10 @@ const attributes = {
     type: "string",
     default: "#333",
   },
+  ctaHoverBorderColor: {
+    type: "string",
+    defaulr: "#333",
+  },
   ctaBorderStyle: {
     type: "string",
     default: "none",
@@ -315,6 +319,12 @@ const attributes = {
   titleFontSize: {
     type: "number",
   },
+  titleFontSizeMobile: {
+    type: "number",
+  },
+  titleFontSizeTablet: {
+    type: "number",
+  },
   titleFontWeight: {
     type: "string",
   },
@@ -324,6 +334,12 @@ const attributes = {
   amountFontSize: {
     type: "number",
   },
+  amountFontSizeMobile: {
+    type: "number",
+  },
+  amountFontSizeTablet: {
+    type: "number",
+  },
   amountFontWeight: {
     type: "string",
   },
@@ -331,6 +347,12 @@ const attributes = {
     type: "number",
   },
   subpriceFontSize: {
+    type: "number",
+  },
+  subpriceFontSizeMobile: {
+    type: "number",
+  },
+  subpriceFontSizeTablet: {
     type: "number",
   },
   subpriceFontWeight: {
@@ -346,6 +368,12 @@ const attributes = {
   prefixFontSize: {
     type: "number",
   },
+  prefixFontSizeMobile: {
+    type: "number",
+  },
+  prefixFontSizeTablet: {
+    type: "number",
+  },
   prefixFontWeight: {
     type: "string",
   },
@@ -353,6 +381,12 @@ const attributes = {
     type: "number",
   },
   suffixFontSize: {
+    type: "number",
+  },
+  suffixFontSizeMobile: {
+    type: "number",
+  },
+  suffixFontSizeTablet: {
     type: "number",
   },
   suffixFontWeight: {
@@ -364,6 +398,12 @@ const attributes = {
   featuresFontSize: {
     type: "number",
   },
+  featuresFontSizeMobile: {
+    type: "number",
+  },
+  featuresFontSizeTablet: {
+    type: "number",
+  },
   featuresFontWeight: {
     type: "string",
   },
@@ -371,6 +411,12 @@ const attributes = {
     type: "number",
   },
   ctaFontSize: {
+    type: "number",
+  },
+  ctaFontSizeMobile: {
+    type: "number",
+  },
+  ctaFontSizeTablet: {
     type: "number",
   },
   ctaFontWeight: {
@@ -392,6 +438,38 @@ const attributes = {
     default: 0,
   },
   blockRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPaddingMobile: {
     type: "number",
     default: 0,
   },
@@ -476,6 +554,54 @@ const attributes = {
   },
   imageShape: {
     type: "string",
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 30,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 30,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 15,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 15,
+  },
+  columnTopPaddingTablet: {
+    type: "number",
+    default: 64,
+  },
+  columnBottomPaddingTablet: {
+    type: "number",
+    default: 64,
+  },
+  columnLeftPaddingTablet: {
+    type: "number",
+    default: 24,
+  },
+  columnRightPaddingTablet: {
+    type: "number",
+    default: 24,
+  },
+  columnTopPaddingMobile: {
+    type: "number",
+    default: 64,
+  },
+  columnBottomPaddingMobile: {
+    type: "number",
+    default: 64,
+  },
+  columnLeftPaddingMobile: {
+    type: "number",
+    default: 24,
+  },
+  columnRightPaddingMobile: {
+    type: "number",
+    default: 24,
   },
 };
 export default attributes;

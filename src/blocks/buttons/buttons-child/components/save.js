@@ -26,7 +26,7 @@ export default class Save extends Component {
       block_id,
       counterId,
       label,
-      target,
+      buttonTarget,
       link,
       opacity,
       icon,
@@ -83,8 +83,8 @@ export default class Save extends Component {
               className={updatedButtonTextClass}
               href={link}
               hoverEffect={hoverEffect}
-              rel={target ? "noopener noreferrer" : null}
-              target={target ? "_blank" : null}
+              rel={buttonTarget ? "noopener noreferrer" : null}
+              target={buttonTarget ? "_blank" : null}
             />
             {"" !== icon && iconPosition == "after" && (
               <span

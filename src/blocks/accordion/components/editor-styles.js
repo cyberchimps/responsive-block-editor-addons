@@ -12,7 +12,11 @@ function EditorStyles(props) {
     inactiveOtherItems,
     expandFirstItem,
     rowsGap,
+    rowsGapTablet,
+    rowsGapMobile,
     columnsGap,
+    columnsGapTablet,
+    columnsGapMobile,
     align,
     titleTextColor,
     titleActiveBackgroundColor,
@@ -36,10 +40,14 @@ function EditorStyles(props) {
     iconActiveColor,
     titleFontWeight,
     titleFontSize,
+    titleFontSizeTablet,
+    titleFontSizeMobile,
     titleFontFamily,
     titleLineHeight,
     contentFontWeight,
     contentFontSize,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
     contentFontFamily,
     contentLineHeight,
     iconAlign,
@@ -56,7 +64,11 @@ function EditorStyles(props) {
     titleBottomPaddingMobile,
     titleBackgroundColorOpacity,
     marginV,
+    marginVTablet,
+    marginVMobile,
     marginH,
+    marginHTablet,
+    marginHMobile,
     titleSecondaryBackgroundColor,
     titleGradientDegree,
     titleBgGradient,
@@ -216,6 +228,12 @@ function EditorStyles(props) {
   };
 
   tablet_selectors = {
+    " ": {
+      "margin-top": marginVTablet + "px",
+      "margin-bottom": marginVTablet + "px",
+      "margin-left": marginHTablet + "px",
+      "margin-right": marginHTablet + "px",
+    },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(
         vtitlePaddingTablet,
@@ -234,6 +252,13 @@ function EditorStyles(props) {
         titlePaddingTypeDesktop
       ),
     },
+    " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+      "margin-bottom": generateCSSUnit(rowsGapTablet, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+      "grid-column-gap": generateCSSUnit(columnsGapTablet, "px"),
+      "grid-row-gap": generateCSSUnit(rowsGapTablet, "px"),
+    },
     " .responsive-block-editor-addons-accordion-content span": {
       "margin-top": generateCSSUnit(
         vcontentPaddingTablet,
@@ -262,9 +287,21 @@ function EditorStyles(props) {
       "height": generateCSSUnit(iconSizeTablet, iconSizeType),
       "font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
     },
+    " .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-title": {
+      "font-size": titleFontSizeTablet + "px",
+    },
+    " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
+      "font-size": contentFontSizeTablet + "px",
+    }
   };
 
   mobile_selectors = {
+    " ": {
+      "margin-top": marginVMobile + "px",
+      "margin-bottom": marginVMobile + "px",
+      "margin-left": marginHMobile + "px",
+      "margin-right": marginHMobile + "px",
+    },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(
         vtitlePaddingMobile,
@@ -283,6 +320,13 @@ function EditorStyles(props) {
         titlePaddingTypeDesktop
       ),
     },
+    " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+      "margin-bottom": generateCSSUnit(rowsGapMobile, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+      "grid-column-gap": generateCSSUnit(columnsGapMobile, "px"),
+      "grid-row-gap": generateCSSUnit(rowsGapMobile, "px"),
+    },
     " .responsive-block-editor-addons-accordion-content span": {
       "margin-top": generateCSSUnit(
         vcontentPaddingMobile,
@@ -310,6 +354,12 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSizeMobile, iconSizeType),
       "height": generateCSSUnit(iconSizeMobile, iconSizeType),
       "font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
+    },
+    " .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-title": {
+      "font-size": titleFontSizeMobile + "px",
+    },
+    " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
+      "font-size": contentFontSizeMobile + "px",
     },
   };
 

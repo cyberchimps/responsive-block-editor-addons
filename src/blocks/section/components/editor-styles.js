@@ -16,33 +16,33 @@ function EditorStyles(props) {
     innerWidth,
     innerWidthTablet,
     innerWidthMobile,
-    topPadding,
-    bottomPadding,
-    leftPadding,
-    rightPadding,
-    topPaddingMobile,
-    bottomPaddingMobile,
-    leftPaddingMobile,
-    rightPaddingMobile,
-    topPaddingTablet,
-    bottomPaddingTablet,
-    leftPaddingTablet,
-    rightPaddingTablet,
+    blockTopPadding,
+    blockBottomPadding,
+    blockLeftPadding,
+    blockRightPadding,
+    blockTopPaddingMobile,
+    blockBottomPaddingMobile,
+    blockLeftPaddingMobile,
+    blockRightPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPaddingTablet,
+    blockLeftPaddingTablet,
+    blockRightPaddingTablet,
     mobilePaddingType,
     tabletPaddingType,
     desktopPaddingType,
-    topMargin,
-    bottomMargin,
-    leftMargin,
-    rightMargin,
-    topMarginMobile,
-    bottomMarginMobile,
-    leftMarginMobile,
-    rightMarginMobile,
-    topMarginTablet,
-    bottomMarginTablet,
-    leftMarginTablet,
-    rightMarginTablet,
+    blockTopMargin,
+    blockBottomMargin,
+    blockLeftMargin,
+    blockRightMargin,
+    blockTopMarginMobile,
+    blockBottomMarginMobile,
+    blockLeftMarginMobile,
+    blockRightMarginMobile,
+    blockTopMarginTablet,
+    blockBottomMarginTablet,
+    blockLeftMarginTablet,
+    blockRightMarginTablet,
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
@@ -56,10 +56,10 @@ function EditorStyles(props) {
     gradientDirection,
     backgroundType,
     backgroundImage,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -78,7 +78,7 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     z_index,
-      align,
+    align,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -97,7 +97,7 @@ function EditorStyles(props) {
       imgopacity || 0
     )}`;
 
-    if(backgroundImage) {
+    if (backgroundImage) {
       updatedBackgroundImage = `linear-gradient(${hexToRgba(
         backgroundImageColor || "#fff",
         imgopacity || 0
@@ -107,7 +107,7 @@ function EditorStyles(props) {
       )}),url(${backgroundImage})`;
     }
     backgroundImageEffect = "";
-  }else {
+  } else {
     if (gradientOverlayType === "linear") {
       backgroundImageEffect = `linear-gradient(${gradientOverlayAngle}deg, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
@@ -128,17 +128,16 @@ function EditorStyles(props) {
     }
   }
 
-
   var selectors = {
     " > .responsive-block-editor-addons-block-section": {
-      "margin-top": generateCSSUnit(topMargin, "px"),
-      "margin-bottom": generateCSSUnit(bottomMargin, "px"),
-      "margin-left": generateCSSUnit(leftMargin, "px"),
-      "margin-right": generateCSSUnit(rightMargin, "px"),
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "margin-top": generateCSSUnit(blockTopMargin, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
+      "margin-left": generateCSSUnit(blockLeftMargin, "px"),
+      "margin-right": generateCSSUnit(blockRightMargin, "px"),
+      "padding-top": generateCSSUnit(blockTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
+      "padding-right": generateCSSUnit(blockRightPadding, "px"),
       "background-color": colorType,
       "background-image": backgroundImageEffect,
     },
@@ -155,10 +154,10 @@ function EditorStyles(props) {
     },
     " > .responsive-section-wrap": {
       "background-image": updatedBackgroundImage,
-      "background-position": backgroundPosition,
+      "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "z-index": z_index,
       "max-width": align != "full" ? generateCSSUnit(width, "px") : "",
@@ -177,12 +176,12 @@ function EditorStyles(props) {
       "background-image":
         backgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              `${hexToRgba(backgroundColor1 || "#fff", imgopacity || 0)}`,
-              `${hexToRgba(backgroundColor2 || "#fff", imgopacity || 0)}`,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
-            )
+            `${hexToRgba(backgroundColor1 || "#fff", imgopacity || 0)}`,
+            `${hexToRgba(backgroundColor2 || "#fff", imgopacity || 0)}`,
+            gradientDirection,
+            colorLocation1,
+            colorLocation2
+          )
           : undefined,
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
@@ -201,14 +200,14 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " > .responsive-block-editor-addons-block-section": {
-      "margin-top": generateCSSUnit(topMarginMobile, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
-      "margin-left": generateCSSUnit(leftMarginMobile, "px"),
-      "margin-right": generateCSSUnit(rightMarginMobile, "px"),
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
+      "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
     },
     " > .responsive-section-wrap > .responsive-section-inner-wrap": {
       "max-width":
@@ -218,14 +217,14 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " > .responsive-block-editor-addons-block-section": {
-      "margin-top": generateCSSUnit(topMarginTablet, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
-      "margin-left": generateCSSUnit(leftMarginTablet, "px"),
-      "margin-right": generateCSSUnit(rightMarginTablet, "px"),
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
+      "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
     },
     " .responsive-section-inner-wrap": {
       "max-width":

@@ -14,10 +14,10 @@ function EditorStyles(props) {
     iconActive,
     layout,
     headingTag,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -25,7 +25,11 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     titlePadding,
+    titlePaddingTablet,
+    titlePaddingMobile,
     contentPadding,
+    contentPaddingTablet,
+    contentPaddingMobile,
   } = props.attributes;
 
   var selectors = {};
@@ -51,10 +55,10 @@ function EditorStyles(props) {
         generateCSSUnit(boxShadowSpread, "px") +
         " " +
         boxShadowColor,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       overflow: "hidden",
     },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
@@ -80,9 +84,23 @@ function EditorStyles(props) {
     },
   };
 
-  tablet_selectors = {};
+  tablet_selectors = {
+    " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+        padding: generateCSSUnit(titlePaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-content span": {
+        padding: generateCSSUnit(contentPaddingTablet, "px"),
+    },
+  };
 
-  mobile_selectors = {};
+  mobile_selectors = {
+    " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+        padding: generateCSSUnit(titlePaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-content span": {
+        padding: generateCSSUnit(contentPaddingMobile, "px"),
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-accordion-item__outer-wrap.responsive-block-editor-addons-block-${props.clientId}`;

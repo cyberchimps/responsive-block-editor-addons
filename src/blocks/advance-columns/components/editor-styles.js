@@ -16,24 +16,30 @@ function EditorStyles(props) {
     width,
     widthType,
     stack,
-    topPadding,
-    topPaddingTablet,
-    topPaddingMobile,
-    bottomPadding,
-    bottomPaddingTablet,
-    bottomPaddingMobile,
-    leftPadding,
-    leftPaddingTablet,
-    leftPaddingMobile,
-    rightPadding,
-    rightPaddingTablet,
-    rightPaddingMobile,
-    topMargin,
-    topMarginTablet,
-    topMarginMobile,
-    bottomMargin,
-    bottomMarginTablet,
-    bottomMarginMobile,
+    blockTopPadding,
+    blockTopPaddingTablet,
+    blockTopPaddingMobile,
+    blockBottomPadding,
+    blockBottomPaddingTablet,
+    blockBottomPaddingMobile,
+    blockLeftPadding,
+    blockLeftPaddingTablet,
+    blockLeftPaddingMobile,
+    blockRightPadding,
+    blockRightPaddingTablet,
+    blockRightPaddingMobile,
+    blockTopMargin,
+    blockTopMarginTablet,
+    blockTopMarginMobile,
+    blockBottomMargin,
+    blockBottomMarginTablet,
+    blockBottomMarginMobile,
+    blockLeftMargin,
+    blockLeftMarginTablet,
+    blockLeftMarginMobile,
+    blockRightMargin,
+    blockRightMarginTablet,
+    blockRightMarginMobile,
     backgroundColor,
     backgroundColor1,
     backgroundColor2,
@@ -53,10 +59,10 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -101,17 +107,17 @@ function EditorStyles(props) {
       "background-image":
         backgroundType == "image"
           ? `linear-gradient(${hexToRgba(
-              backgroundImageColor || "#fff",
-              imgopacity || 0
-            )},${hexToRgba(
-              backgroundImageColor || "#fff",
-              imgopacity || 0
-            )}),url(${backgroundImage})`
+            backgroundImageColor || "#fff",
+            imgopacity || 0
+          )},${hexToRgba(
+            backgroundImageColor || "#fff",
+            imgopacity || 0
+          )}),url(${backgroundImage})`
           : "",
-      "background-position": backgroundPosition,
+      "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "z-index": z_index,
     },
     " .responsive-block-editor-addons-block-columns.overlay-type-color": {
@@ -143,12 +149,14 @@ function EditorStyles(props) {
       "align-items": verticalAlign,
     },
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
-      "margin-top": generateCSSUnit(topMargin, "px"),
-      "margin-bottom": generateCSSUnit(bottomMargin, "px"),
+      "padding-top": generateCSSUnit(blockTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
+      "padding-right": generateCSSUnit(blockRightPadding, "px"),
+      "margin-top": generateCSSUnit(blockTopMargin, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
+      "margin-left": generateCSSUnit(blockLeftMargin, "px"),
+      "margin-right": generateCSSUnit(blockRightMargin, "px"),
       "text-align": blockAlign,
       "border-color": blockBorderColor,
       "border-style": blockBorderStyle,
@@ -161,12 +169,12 @@ function EditorStyles(props) {
       "background-image":
         backgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              backgroundColor1,
-              backgroundColor2,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
-            )
+            backgroundColor1,
+            backgroundColor2,
+            gradientDirection,
+            colorLocation1,
+            colorLocation2
+          )
           : undefined,
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
@@ -188,23 +196,27 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
-      "margin-top": generateCSSUnit(topMarginMobile, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
+      "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
     },
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
-      "margin-top": generateCSSUnit(topMarginTablet, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
+      "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
     },
   };
 

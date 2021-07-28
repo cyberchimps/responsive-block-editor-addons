@@ -2,7 +2,7 @@
 /**
  * Class SampleTest
  *
- * @package Responsive_Gutenberg_Addons
+ * @package responsive_gutenberg_addons
  */
 
 /**
@@ -13,8 +13,8 @@ class SampleTest extends WP_UnitTestCase {
 	/**
 	 * A single example test.
 	 */
-	public function test_sample() {
-		// Add php unit test cases here in replace of this line.
+	function test_sample() {
+		// Replace this with some actual testing code.
 		$this->assertTrue( true );
 	}
 }

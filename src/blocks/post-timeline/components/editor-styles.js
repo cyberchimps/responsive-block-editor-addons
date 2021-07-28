@@ -11,6 +11,8 @@ function EditorStyles(props) {
     bgColor,
     textColor,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     authorSpace,
     excerptSpace,
     blockSpace,
@@ -25,18 +27,28 @@ function EditorStyles(props) {
     continueFontFamily,
     connectorColor,
     dateFontSize,
+    dateFontSizeMobile,
+    dateFontSizeTablet,
     dateFontWeight,
     dateLineHeight,
     headingFontSize,
+    headingFontSizeMobile,
+    headingFontSizeTablet,
     headingFontWeight,
     headingLineHeight,
     authorFontSize,
+    authorFontSizeMobile,
+    authorFontSizeTablet,
     authorFontWeight,
     authorLineHeight,
     contentFontSize,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
     contentFontWeight,
     contentLineHeight,
     continueFontSize,
+    continueFontSizeMobile,
+    continueFontSizeTablet,
     continueFontWeight,
     continueLineHeight,
     iconSize,
@@ -221,6 +233,27 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-timeline__right-block.responsive-block-editor-addons-timeline__responsive-mobile .responsive-block-editor-addons-timeline__line": {
       right: `calc(${bgSize}px/2)`,
     },
+    " .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link": {
+      "font-size": generateCSSUnit(continueFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-timeline__date-hide.responsive-block-editor-addons-timeline__date-inner .responsive-block-editor-addons-timeline__date-new": {
+      "font-size": generateCSSUnit(dateFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-timeline-title .responsive-block-editor-addons-block-post-timeline-title-heading": {
+      "font-size": generateCSSUnit(headingFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-timeline-author .responsive-block-editor-addons-text-link": {
+      "font-size": generateCSSUnit(authorFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-timeline-excerpt .responsive-block-editor-addons-timeline__post": {
+      "font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-timeline__date-new.responsive-block-editor-addons-timeline__date-outer": {
+      "font-size": generateCSSUnit(dateFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-content": {
+      "padding": generateCSSUnit(contentPaddingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -233,6 +266,27 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-timeline__right-block.responsive-block-editor-addons-timeline__responsive-tablet .responsive-block-editor-addons-timeline__line": {
       right: `calc(${bgSize}px/2)`,
+    },
+    " .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link": {
+      "font-size": generateCSSUnit(continueFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-timeline__date-hide.responsive-block-editor-addons-timeline__date-inner .responsive-block-editor-addons-timeline__date-new": {
+      "font-size": generateCSSUnit(dateFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-timeline-title .responsive-block-editor-addons-block-post-timeline-title-heading": {
+      "font-size": generateCSSUnit(headingFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-timeline-author .responsive-block-editor-addons-text-link": {
+      "font-size": generateCSSUnit(authorFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-timeline-excerpt .responsive-block-editor-addons-timeline__post": {
+      "font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-timeline__date-new.responsive-block-editor-addons-timeline__date-outer": {
+      "font-size": generateCSSUnit(dateFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-content": {
+      "padding": generateCSSUnit(contentPaddingTablet, "px"),
     },
   };
 

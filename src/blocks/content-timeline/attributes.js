@@ -91,11 +91,35 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  horizontalSpaceMobile: {
+    type: "number",
+    default: 0,
+  },
+  horizontalSpaceTablet: {
+    type: "number",
+    default: 0,
+  },
   verticalSpace: {
     type: "number",
     default: 15,
   },
+  verticalSpaceMobile: {
+    type: "number",
+    default: 15,
+  },
+  verticalSpaceTablet: {
+    type: "number",
+    default: 15,
+  },
   headingBottomMargin: {
+    type: "number",
+    default: 15,
+  },
+  headingBottomMarginMobile: {
+    type: "number",
+    default: 15,
+  },
+  headingBottomMarginTablet: {
     type: "number",
     default: 15,
   },
@@ -116,6 +140,14 @@ const attributes = {
     type: "string",
     default: "400",
   },
+  dateFontSizeMobile: {
+    type: "number",
+    default: 16,
+  },
+  dateFontSizeTablet: {
+    type: "number",
+    default: 16,
+  },
   dateFontSize: {
     type: "number",
     default: 16,
@@ -129,6 +161,14 @@ const attributes = {
     default: "400",
   },
   headingFontSize: {
+    type: "number",
+    default: 20,
+  },
+  headingFontSizeMobile: {
+    type: "number",
+    default: 20,
+  },
+  headingFontSizeTablet: {
     type: "number",
     default: 20,
   },
@@ -154,6 +194,14 @@ const attributes = {
     default: 2,
   },
   contentFontSize: {
+    type: "number",
+    default: 16,
+  },
+  contentFontSizeMobile: {
+    type: "number",
+    default: 16,
+  },
+  contentFontSizeTablet: {
     type: "number",
     default: 16,
   },

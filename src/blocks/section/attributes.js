@@ -29,99 +29,99 @@ const attributes = {
     type: "boolean",
     default: false,
   },
-  topPadding: {
+  blockTopPadding: {
     type: "number",
     default: 10,
   },
-  topPaddingMobile: {
+  blockTopPaddingMobile: {
     type: "number",
     default: 10,
   },
-  topPaddingTablet: {
+  blockTopPaddingTablet: {
     type: "number",
     default: 10,
   },
-  bottomPadding: {
+  blockBottomPadding: {
     type: "number",
     default: 10,
   },
-  bottomPaddingMobile: {
+  blockBottomPaddingMobile: {
     type: "number",
     default: 10,
   },
-  bottomPaddingTablet: {
+  blockBottomPaddingTablet: {
     type: "number",
     default: 10,
   },
-  leftPadding: {
+  blockLeftPadding: {
     type: "number",
     default: 10,
   },
-  leftPaddingMobile: {
+  blockLeftPaddingMobile: {
     type: "number",
     default: 10,
   },
-  leftPaddingTablet: {
+  blockLeftPaddingTablet: {
     type: "number",
     default: 10,
   },
-  rightPadding: {
+  blockRightPadding: {
     type: "number",
     default: 10,
   },
-  rightPaddingMobile: {
+  blockRightPaddingMobile: {
     type: "number",
     default: 10,
   },
-  rightPaddingTablet: {
+  blockRightPaddingTablet: {
     type: "number",
     default: 10,
   },
-  topMargin: {
+  blockTopMargin: {
     type: "number",
     default: 0,
   },
-  bottomMargin: {
+  blockBottomMargin: {
     type: "number",
     default: 0,
   },
-  leftMargin: {
+  blockLeftMargin: {
     type: "number",
     default: 0,
   },
-  rightMargin: {
+  blockRightMargin: {
     type: "number",
     default: 0,
   },
-  topMarginTablet: {
+  blockTopMarginTablet: {
     type: "number",
     default: 0,
   },
-  bottomMarginTablet: {
+  blockBottomMarginTablet: {
     type: "number",
     default: 0,
   },
-  leftMarginTablet: {
+  blockLeftMarginTablet: {
     type: "number",
     default: 0,
   },
-  rightMarginTablet: {
+  blockRightMarginTablet: {
     type: "number",
     default: 0,
   },
-  topMarginMobile: {
+  blockTopMarginMobile: {
     type: "number",
     default: 0,
   },
-  bottomMarginMobile: {
+  blockBottomMarginMobile: {
     type: "number",
     default: 0,
   },
-  leftMarginMobile: {
+  blockLeftMarginMobile: {
     type: "number",
     default: 0,
   },
-  rightMarginMobile: {
+  blockRightMarginMobile: {
     type: "number",
     default: 0,
   },
@@ -164,15 +164,15 @@ const attributes = {
   backgroundImage: {
     type: "string",
   },
-  backgroundPosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center-center",
   },
-  backgroundSize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },
-  backgroundRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },

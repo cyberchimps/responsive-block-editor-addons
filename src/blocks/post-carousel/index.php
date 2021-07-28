@@ -260,6 +260,7 @@ function get_responsive_post_carousel_default_attributes() {
 		'bgColor'              => '#ffffff',
 		'contentPadding'       => 20,
 		'contentPaddingMobile' => 20,
+		'contentPaddingTablet' => 20,
 		'columnsTablet'        => '',
 		'columnsMobile'        => '',
 	);
@@ -843,6 +844,22 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'number',
 					'default' => 15,
 				),
+				'ctaHpaddingTablet'  => array(
+					'type' => 'number',
+					'default' =>20
+				),
+        		'ctaHpaddingMobile'  => array(
+					'type' => 'number',
+					'default' =>20
+				),
+        		'ctaVpaddingTablet'  => array(
+					'type' => 'number',
+					'default' =>15
+				),
+        		'ctaVpaddingMobile'  => array(
+					'type' => 'number',
+					'default' =>15
+				),
                 'contentPadding'     => array(
 					'type'    => 'number',
 					'default' => 20,
@@ -851,11 +868,23 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'contentPaddingTablet'     => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
                 'rowGap'     => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
                 'columnGap'     => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'columnGapTablet'     => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'columnGapMobile'     => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
@@ -901,6 +930,14 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'number',
                     'default' => 16,
 				),
+				'metaFontSizeMobile'     => array(
+					'type'    => 'number',
+                    'default' => 16,
+				),
+				'metaFontSizeTablet'     => array(
+					'type'    => 'number',
+                    'default' => 16,
+				),
                 'metaFontWeight'     => array(
 					'type'    => 'number',
                     'default' => 300,
@@ -913,6 +950,14 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'number',
                     'default' => 16,
 				),
+				'excerptFontSizeMobile'     => array(
+					'type'    => 'number',
+                    'default' => 16,
+				),
+				'excerptFontSizeTablet'     => array(
+					'type'    => 'number',
+                    'default' => 16,
+				),
                 'excerptFontWeight'     => array(
 					'type'    => 'number',
                     'default' => 300,
@@ -922,6 +967,14 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
                     'default' => 1,
 				),
                 'ctaFontSize'     => array(
+					'type'    => 'number',
+                    'default' => 16,
+				),
+				'ctaFontSizeMobile'     => array(
+					'type'    => 'number',
+                    'default' => 16,
+				),
+				'ctaFontSizeTablet'     => array(
 					'type'    => 'number',
                     'default' => 16,
 				),
@@ -960,6 +1013,28 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
                 'buttonTarget'     => array(
 					'type'    => 'boolean',
                     'default' => false,
+				),
+				'buttoncolorLocation1' => array(
+					'type'=> "number",
+					'default'=> 0,
+				),
+				'buttoncolorLocation2' => array( 
+					'type'=> "number",
+					'default'=> 100,
+				),
+				'buttongradientDirection' => array(
+					'type'=> "number",
+					'default'=> 90,
+				),
+				'buttonbackgroundColor1' => array(
+					'type'=> "string",
+				),
+				'buttonbackgroundColor2' => array( 
+					'type'=> "string",
+					'default' => "#fff",
+				),
+				'buttonbackgroundType' => array( 
+					'type'=> "string",
 				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts2',

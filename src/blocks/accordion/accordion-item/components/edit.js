@@ -6,6 +6,10 @@ import classnames from "classnames";
 import renderSVG from "../../../../renderIcon";
 import BoxShadowControl from "../../../../utils/components/box-shadow";
 import EditorStyles from "./editor-styles";
+import BlockBorderHelperControl from "../../../../settings-components/Block Border Settings";
+import ResponsiveSpacingControl from "../../../../settings-components/Responsive Spacing Settings";
+import InspectorTab from "../../../../components/InspectorTab"
+import InspectorTabs from "../../../../components/InspectorTabs"
 
 const { __ } = wp.i18n;
 
@@ -49,7 +53,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     $style.setAttribute(
       "id",
       "responsive-block-editor-addons-accordian-item-style-" +
-        this.props.clientId
+      this.props.clientId
     );
     document.head.appendChild($style);
   }
@@ -71,7 +75,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
 
     var element = document.getElementById(
       "responsive-block-editor-addons-accordian-item-style-" +
-        this.props.clientId
+      this.props.clientId
     );
 
     if (null !== element && undefined !== element) {
@@ -87,10 +91,10 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
       iconActive,
       layout,
       headingTag,
-      borderStyle,
-      borderWidth,
-      borderRadius,
-      borderColor,
+      blockBorderStyle,
+      blockBorderWidth,
+      blockBorderRadius,
+      blockBorderColor,
       boxShadowColor,
       boxShadowHOffset,
       boxShadowVOffset,
@@ -98,7 +102,11 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
       boxShadowSpread,
       boxShadowPosition,
       titlePadding,
+      titlePaddingTablet,
+      titlePaddingMobile,
       contentPadding,
+      contentPaddingTablet,
+      contentPaddingMobile,
     } = attributes;
 
     var boxShadowPositionCSS = boxShadowPosition;
@@ -121,111 +129,77 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     };
     const accordionChildControls = () => {
       return (
-        <Fragment>
-          <PanelBody
-            title={__("Style")}
-            initialOpen={false}
-            className="responsive_block_editor_addons__url-panel-body"
-          >
-            <p className="responsive-block-editor-addons-settings-notice">
-              {__("For the styling options please select the Parent Block.")}
-            </p>
-            <hr className="responsive-block-editor-addons-editor__separator" />
-            <h2>{__("Border")}</h2>
-            <SelectControl
-              label={__("Style")}
-              value={borderStyle}
-              options={[
-                { value: "none", label: __("None") },
-                { value: "solid", label: __("Solid") },
-                { value: "dotted", label: __("Dotted") },
-                { value: "dashed", label: __("Dashed") },
-                { value: "double", label: __("Double") },
-              ]}
-              onChange={(value) => {
-                setAttributes({ borderStyle: value });
-              }}
-            />
-            {"none" !== borderStyle && (
-              <RangeControl
-                label={__("Thickness (px)")}
-                value={borderWidth}
-                onChange={(value) => {
-                  setAttributes({ borderWidth: value });
-                }}
-                min={0}
-                max={20}
-              />
-            )}
-            {"none" !== borderStyle && (
-              <RangeControl
-                label={__("Border Radius (px)")}
-                value={borderRadius}
-                onChange={(value) => {
-                  setAttributes({ borderRadius: value });
-                }}
-                min={0}
-                max={50}
-              />
-            )}
-            <p className="responsive-block-editor-addons-setting-label">
-              {__("Color")}
-              <span className="components-base-control__label">
-                <span
-                  className="component-color-indicator"
-                  style={{ backgroundColor: borderColor }}
-                ></span>
-              </span>
-            </p>
-            <ColorPalette
-              value={borderColor}
-              onChange={(value) => setAttributes({ borderColor: value })}
-              allowReset
-            />
-            <BoxShadowControl
-              setAttributes={setAttributes}
-              label={__("Box Shadow")}
-              boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
-              boxShadowHOffset={{
-                value: boxShadowHOffset,
-                label: __("Horizontal"),
-              }}
-              boxShadowVOffset={{
-                value: boxShadowVOffset,
-                label: __("Vertical"),
-              }}
-              boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
-              boxShadowSpread={{
-                value: boxShadowSpread,
-                label: __("Spread"),
-              }}
-              boxShadowPosition={{
-                value: boxShadowPosition,
-                label: __("Position"),
-              }}
-            />
-          </PanelBody>
-          <PanelBody
-            title={__("Spacing")}
-            initialOpen={false}
-            className="responsive_block_editor_addons__url-panel-body"
-          >
-            <RangeControl
-              label={__("Title Padding")}
-              value={titlePadding}
-              onChange={(value) => setAttributes({ titlePadding: value })}
-              min={0}
-              max={100}
-            />
-            <RangeControl
-              label={__("Content Padding")}
-              value={contentPadding}
-              onChange={(value) => setAttributes({ contentPadding: value })}
-              min={0}
-              max={100}
-            />
-          </PanelBody>
-        </Fragment>
+        <InspectorControls key="inspector">
+          <InspectorTabs>
+            <InspectorTab key={'content'}>
+
+            </InspectorTab>
+            <InspectorTab key={'style'}>
+              <PanelBody
+                title={__("Style")}
+                initialOpen={false}
+                className="responsive_block_editor_addons__url-panel-body"
+              >
+                <p className="responsive-block-editor-addons-settings-notice">
+                  {__("For the styling options please select the Parent Block.")}
+                </p>
+                <hr className="responsive-block-editor-addons-editor__separator" />
+                <h2>{__("Border")}</h2>
+                <BlockBorderHelperControl
+                  attrNameTemplate="block%s"
+                  values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+                <BoxShadowControl
+                  setAttributes={setAttributes}
+                  label={__("Box Shadow")}
+                  boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                  boxShadowHOffset={{
+                    value: boxShadowHOffset,
+                    label: __("Horizontal"),
+                  }}
+                  boxShadowVOffset={{
+                    value: boxShadowVOffset,
+                    label: __("Vertical"),
+                  }}
+                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                  boxShadowSpread={{
+                    value: boxShadowSpread,
+                    label: __("Spread"),
+                  }}
+                  boxShadowPosition={{
+                    value: boxShadowPosition,
+                    label: __("Position"),
+                  }}
+                />
+              </PanelBody>
+              <PanelBody
+                title={__("Spacing")}
+                initialOpen={false}
+                className="responsive_block_editor_addons__url-panel-body"
+              >
+                <ResponsiveSpacingControl
+                  title={"Title Padding"}
+                  attrNameTemplate="titlePadding%s"
+                  values={{ desktop: titlePadding, tablet: titlePaddingTablet, mobile: titlePaddingMobile }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+                <ResponsiveSpacingControl
+                  title={"Content Padding"}
+                  attrNameTemplate="contentPadding%s"
+                  values={{ desktop: contentPadding, tablet: contentPaddingTablet, mobile: contentPaddingMobile }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+              </PanelBody>
+            </InspectorTab>
+            <InspectorTab key={'advance'}>
+
+            </InspectorTab>
+          </InspectorTabs>
+        </InspectorControls>
       );
     };
 

@@ -92,11 +92,35 @@ const attributes = {
     type: "number",
     default: 23,
   },
+  titleFontSizeMobile: {
+    type: "number",
+    default: 23,
+  },
+  titleFontSizeTablet: {
+    type: "number",
+    default: 23,
+  },
   designationFontSize: {
     type: "number",
     default: 15,
   },
+  designationFontSizeMobile: {
+    type: "number",
+    default: 15,
+  },
+  designationFontSizeTablet: {
+    type: "number",
+    default: 15,
+  },
   descriptionFontSize: {
+    type: "number",
+    default: 15,
+  },
+  descriptionFontSizeMobile: {
+    type: "number",
+    default: 15,
+  },
+  descriptionFontSizeTablet: {
     type: "number",
     default: 15,
   },
@@ -108,6 +132,18 @@ const attributes = {
     type: "number",
   },
   imageMarginBottom: {
+    type: "number",
+  },
+  imageMarginTopMobile: {
+    type: "number",
+  },
+  imageMarginBottomMobile: {
+    type: "number",
+  },
+  imageMarginTopTablet: {
+    type: "number",
+  },
+  imageMarginBottomTablet: {
     type: "number",
   },
   iconSize: {
@@ -123,6 +159,30 @@ const attributes = {
     type: "number",
   },
   socialIconSpacing: {
+    type: "number",
+  },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  designationSpacingMobile: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
+    type: "number",
+  },
+  socialIconSpacingMobile: {
+    type: "number",
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  designationSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
+  socialIconSpacingTablet: {
     type: "number",
   },
   imageStyle: {
@@ -191,10 +251,10 @@ const attributes = {
     type: "number",
     default: 50,
   },
-  secondaryBackgroundColor: {
+  backgroundColor2: {
     type: "string",
   },
-  gradientDegree: {
+  gradientDirection: {
     type: "number",
     default: 100,
   },
@@ -212,15 +272,15 @@ const attributes = {
   backgroundImage: {
     type: "string",
   },
-  backgroundPosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center-center",
   },
-  backgroundRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  backgroundSize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },

@@ -9,6 +9,8 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 import PostGridImage from "./image";
 import EditorStyles from "./editor-styles";
+import { loadGoogleFont } from "../../../utils/font";
+
 const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
@@ -197,10 +199,8 @@ class LatestPostsBlock extends Component {
       setAttributes({ postType: value })
     }
 
-    return (
-      <Fragment>
-        <InspectorControls>
-            <PanelBody title={__("Query")} initialOpen={true}>
+    let queryControls = (
+      <PanelBody title={__("Query")} initialOpen={true}>
             <p>{__("Text Alignment", "responsive-block-editor-addons")}</p>
             <AlignmentToolbar
               value={attributes.textAlignment}
@@ -243,8 +243,15 @@ class LatestPostsBlock extends Component {
               </Fragment>
             )}
           </PanelBody>
-        </InspectorControls>
-        <Inspector {...{ setAttributes, ...this.props }} />
+    );
+
+    return (
+      <Fragment>
+        {attributes.titleFontFamily && loadGoogleFont(attributes.titleFontFamily)}
+        {attributes.metaFontFamily && loadGoogleFont(attributes.metaFontFamily)}
+        {attributes.excerptFontFamily && loadGoogleFont(attributes.excerptFontFamily)}
+        {attributes.continueFontFamily && loadGoogleFont(attributes.continueFontFamily)}
+        <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar
             label={__("Block Alignment")}

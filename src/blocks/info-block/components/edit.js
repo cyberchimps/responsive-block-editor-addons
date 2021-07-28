@@ -78,12 +78,12 @@ export default class Edit extends Component {
         resseperatorStyle,
         resctaType,
         resctaText,
-        resctaTarget,
+        buttonTarget,
         iconImage,
         resshowPrefix,
         resshowTitle,
         resshowDesc,
-        imgURL,
+        backgroundImage,
         dimRatio,
         imageBoxShadowPosition,
         imageopacity,
@@ -100,7 +100,7 @@ export default class Edit extends Component {
     const onSelectBgImage = (img) => {
       setAttributes({
         imgID: img.id,
-        imgURL: img.url,
+        backgroundImage: img.url,
         imgAlt: img.alt,
       });
     };
@@ -116,7 +116,7 @@ export default class Edit extends Component {
 
     let target = "_self";
     let rel = "noopener noreferrer";
-    if (resctaTarget) {
+    if (buttonTarget) {
       target = "_blank";
     }
 
@@ -216,13 +216,13 @@ export default class Edit extends Component {
       <Fragment>
         {(imgiconPosition == "above-title" ||
           imgiconPosition == "below-title") && (
-          <BlockControls key="controls">
-            <AlignmentToolbar
-              value={resheadingAlign}
-              onChange={(value) => setAttributes({ resheadingAlign: value })}
-            />
-          </BlockControls>
-        )}
+            <BlockControls key="controls">
+              <AlignmentToolbar
+                value={resheadingAlign}
+                onChange={(value) => setAttributes({ resheadingAlign: value })}
+              />
+            </BlockControls>
+          )}
         <Inspector {...{ setAttributes, ...this.props }} />
         <InfoBlock {...this.props}>
           <div
@@ -231,7 +231,7 @@ export default class Edit extends Component {
               ...InfoBoxPositionClasses(this.props.attributes)
             )}
           >
-            {imgURL && !!imgURL.length && (
+            {backgroundImage && !!backgroundImage.length && (
               <div className="responsive-block-editor-addons-cta-image-wrap">
                 <img
                   className={classnames(
@@ -251,110 +251,110 @@ export default class Edit extends Component {
 
                 {(imgiconPosition == "above-title" ||
                   imgiconPosition == "below-title") && (
-                  <div className="responsive-block-editor-addons-ifb-title-wrap">
-                    {resheadFontFamily && loadGoogleFont(resheadFontFamily)}
-                    {ressubHeadFontFamily &&
-                      loadGoogleFont(ressubHeadFontFamily)}
-                    {resshowPrefix && (
-                      <RichText
-                        tagName="div"
-                        value={resprefixTitle}
-                        placeholder={__(
-                          "Write a Prefix",
-                          "responsive-block-editor-addons"
-                        )}
-                        className="responsive-block-editor-addons-ifb-title-prefix"
-                        multiline={false}
-                        onChange={(value) => {
-                          setAttributes({ resprefixTitle: value });
-                        }}
-                      />
-                    )}
-                    {"none" !== resseperatorStyle &&
-                      seperator_position == "after_prefix" &&
-                      seperator_html}
-                    {resshowTitle && (
-                      <RichText
-                        tagName={resheadingTag}
-                        placeholder={__(
-                          "Write a Heading",
-                          "responsive-block-editor-addons"
-                        )}
-                        value={resinfoBlockTitle}
-                        className="responsive-block-editor-addons-ifb-title"
-                        onChange={(value) =>
-                          setAttributes({ resinfoBlockTitle: value })
-                        }
-                        multiline={false}
-                      />
-                    )}
-                  </div>
-                )}
+                    <div className="responsive-block-editor-addons-ifb-title-wrap">
+                      {resheadFontFamily && loadGoogleFont(resheadFontFamily)}
+                      {ressubHeadFontFamily &&
+                        loadGoogleFont(ressubHeadFontFamily)}
+                      {resshowPrefix && (
+                        <RichText
+                          tagName="div"
+                          value={resprefixTitle}
+                          placeholder={__(
+                            "Write a Prefix",
+                            "responsive-block-editor-addons"
+                          )}
+                          className="responsive-block-editor-addons-ifb-title-prefix"
+                          multiline={false}
+                          onChange={(value) => {
+                            setAttributes({ resprefixTitle: value });
+                          }}
+                        />
+                      )}
+                      {"none" !== resseperatorStyle &&
+                        seperator_position == "after_prefix" &&
+                        seperator_html}
+                      {resshowTitle && (
+                        <RichText
+                          tagName={resheadingTag}
+                          placeholder={__(
+                            "Write a Heading",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={resinfoBlockTitle}
+                          className="responsive-block-editor-addons-ifb-title"
+                          onChange={(value) =>
+                            setAttributes({ resinfoBlockTitle: value })
+                          }
+                          multiline={false}
+                        />
+                      )}
+                    </div>
+                  )}
 
                 {imgiconPosition == "below-title" && icon_image_html}
 
                 {(imgiconPosition == "above-title" ||
                   imgiconPosition == "below-title") && (
-                  <Fragment>
-                    {"none" !== resseperatorStyle &&
-                      seperator_position == "after_title" &&
-                      show_seperator &&
-                      seperator_html}
-                    <div className="responsive-block-editor-addons-ifb-text-wrap">
-                      {resshowDesc && (
-                        <RichText
-                          tagName="p"
-                          value={resDescHeading}
-                          placeholder={__(
-                            "Write a Description",
-                            "responsive-block-editor-addons"
-                          )}
-                          className="responsive-block-editor-addons-ifb-desc"
-                          value={resDescHeading}
-                          onChange={(value) =>
-                            setAttributes({ resDescHeading: value })
-                          }
-                        />
-                      )}
+                    <Fragment>
                       {"none" !== resseperatorStyle &&
-                        seperator_position == "after_desc" &&
+                        seperator_position == "after_title" &&
+                        show_seperator &&
                         seperator_html}
-                      <div className="responsive-block-editor-addons-ifb-cta responsive-block-editor-addons-infobox-cta-link-style">
-                        {resctaType === "text" && (
-                          <a
-                            target={target}
-                            className="responsive-block-editor-addons-infobox-cta-link"
-                            rel={rel}
-                          >
-                            <span className="responsive-block-editor-addons-inline-editing">
-                              {resctaText}
-                            </span>
-                          </a>
-                        )}
-
-                        {resctaType === "button" && (
-                          <div
-                            className={classnames(
-                              "responsive-block-editor-addons-ifb-button-wrapper"
+                      <div className="responsive-block-editor-addons-ifb-text-wrap">
+                        {resshowDesc && (
+                          <RichText
+                            tagName="p"
+                            value={resDescHeading}
+                            placeholder={__(
+                              "Write a Description",
+                              "responsive-block-editor-addons"
                             )}
-                          >
+                            className="responsive-block-editor-addons-ifb-desc"
+                            value={resDescHeading}
+                            onChange={(value) =>
+                              setAttributes({ resDescHeading: value })
+                            }
+                          />
+                        )}
+                        {"none" !== resseperatorStyle &&
+                          seperator_position == "after_desc" &&
+                          seperator_html}
+                        <div className="responsive-block-editor-addons-ifb-cta responsive-block-editor-addons-infobox-cta-link-style">
+                          {resctaType === "text" && (
                             <a
-                              className={ctaBtnClass}
                               target={target}
+                              className="responsive-block-editor-addons-infobox-cta-link"
                               rel={rel}
                             >
-                              <span className="responsive-block-editor-addons-ifb-cta-content-wrapper">
-                                <span className="responsive-block-editor-addons-inline-editing ">
-                                  {resctaText}
-                                </span>
+                              <span className="responsive-block-editor-addons-inline-editing">
+                                {resctaText}
                               </span>
                             </a>
-                          </div>
-                        )}
+                          )}
+
+                          {resctaType === "button" && (
+                            <div
+                              className={classnames(
+                                "responsive-block-editor-addons-ifb-button-wrapper"
+                              )}
+                            >
+                              <a
+                                className={ctaBtnClass}
+                                target={target}
+                                rel={rel}
+                              >
+                                <span className="responsive-block-editor-addons-ifb-cta-content-wrapper">
+                                  <span className="responsive-block-editor-addons-inline-editing ">
+                                    {resctaText}
+                                  </span>
+                                </span>
+                              </a>
+                            </div>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </Fragment>
-                )}
+                    </Fragment>
+                  )}
 
                 {imgiconPosition === "left-title" && (
                   <Fragment>

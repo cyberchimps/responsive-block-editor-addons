@@ -26,7 +26,23 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  rowsGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  rowsGapMobile: {
+    type: "number",
+    default: 10,
+  },
   columnsGap: {
+    type: "number",
+    default: 10,
+  },
+  columnsGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  columnsGapMobile: {
     type: "number",
     default: 10,
   },
@@ -152,6 +168,12 @@ const attributes = {
   titleFontSize: {
     type: "number",
   },
+  titleFontSizeTablet: {
+    type: "number",
+  },
+  titleFontSizeMobile: {
+    type: "number",
+  },
   titleLineHeight: {
     type: "number",
   },
@@ -165,6 +187,12 @@ const attributes = {
     type: "string",
   },
   contentFontSize: {
+    type: "number",
+  },
+  contentFontSizeTablet: {
+    type: "number",
+  },
+  contentFontSizeMobile: {
     type: "number",
   },
   contentLineHeight: {
@@ -250,7 +278,19 @@ const attributes = {
   marginV: {
     type: "number",
   },
+  marginVTablet: {
+    type: "number",
+  },
+  marginVMobile: {
+    type: "number",
+  },
   marginH: {
+    type: "number",
+  },
+  marginHTablet: {
+    type: "number",
+  },
+  marginHMobile: {
     type: "number",
   },
   titleSecondaryBackgroundColor: {

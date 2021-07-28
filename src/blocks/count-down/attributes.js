@@ -220,51 +220,51 @@ const attributes = {
 	type: "number",
 	default: 10,
   },
-  boxPaddingTop: {
+  boxTopPadding: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingRight: {
+  boxRightPadding: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingBottom: {
+  boxBottomPadding: {
 	type: "number",
 	default: 10,
   },
-  boxPaddingLeft: {
+  boxLeftPadding: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingTopMobile: {
+  boxTopPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingRightMobile: {
+  boxRightPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingBottomMobile: {
+  boxBottomPaddingMobile: {
 	type: "number",
 	default: 10,
   },
-  boxPaddingLeftMobile: {
+  boxLeftPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingTopTablet: {
+  boxTopPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingRightTablet: {
+  boxRightPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingBottomTablet: {
+  boxBottomPaddingTablet: {
 	type: "number",
 	default: 10,
   },
-  boxPaddingLeftTablet: {
+  boxLeftPaddingTablet: {
 	type: "number",
 	default: 0,
   },
@@ -348,19 +348,19 @@ const attributes = {
 	type: "number",
 	default: 0,
   },
-  containerPaddingTop: {
+  containerTopPadding: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingRight: {
+  containerRightPadding: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingBottom: {
+  containerBottomPadding: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingLeft: {
+  containerLeftPadding: {
 	type: "number",
 	default: 0,
   },
@@ -380,19 +380,19 @@ const attributes = {
 	type: "number",
 	default: 0,
   },
-  containerPaddingTopTablet: {
+  containerTopPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingRightTablet: {
+  containerRightPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingBottomTablet: {
+  containerBottomPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingLeftTablet: {
+  containerLeftPaddingTablet: {
 	type: "number",
 	default: 0,
   },
@@ -412,19 +412,19 @@ const attributes = {
 	type: "number",
 	default: 0,
   },
-  containerPaddingTopMobile: {
+  containerTopPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingRightMobile: {
+  containerRightPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingBottomMobile: {
+  containerBottomPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingLeftMobile: {
+  containerLeftPaddingMobile: {
 	type: "number",
 	default: 0,
   },

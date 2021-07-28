@@ -69,7 +69,7 @@ const attributes = {
     type: "number",
     default: 1.8,
   },
-  titleFontWeight: {
+  headingFontWeight: {
     type: "string",
     default: "900",
   },
@@ -191,7 +191,15 @@ const attributes = {
     type: "string",
     default: "#add5ef",
   },
-  contentSpacing: {
+  contentPadding: {
+    type: "number",
+    default: 0,
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  contentPaddingTablet: {
     type: "number",
     default: 0,
   },

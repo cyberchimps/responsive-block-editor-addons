@@ -10,33 +10,33 @@ function EditorStyles(props) {
   const {
     block_id,
     iconsize,
-    vPadding,
-    vPaddingTablet,
-    vPaddingMobile,
-    hPadding,
-    hPaddingTablet,
-    hPaddingMobile,
+    ctaHpadding,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpadding,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
     vMargin,
     hMargin,
     vMarginTablet,
     hMarginTablet,
     vMarginMobile,
     hMarginMobile,
-    borderWidth,
-    borderRadius,
-    borderStyle,
-    borderColor,
-    borderHColor,
-    color,
-    background,
-    hColor,
-    backgroundColor1,
-    backgroundColor2,
-    colorLocation1,
-    colorLocation2,
-    gradientDirection,
-    backgroundType,
-    opacity,
+    ctaBorderWidth,
+    ctaBorderRadius,
+    ctaBorderStyle,
+    ctaBorderColor,
+    ctaHoverBorderColor,
+    ctaColor,
+    ctaHoverColor,
+    ctaBackColor,
+    buttonbackgroundColor1,
+    buttonbackgroundColor2,
+    buttoncolorLocation1,
+    buttoncolorLocation2,
+    buttongradientDirection,
+    buttonbackgroundType,
+    ctaTextOpacity,
     iconPosition,
     buttonFontFamily,
     buttonFontSize,
@@ -52,12 +52,12 @@ function EditorStyles(props) {
     boxShadowPosition,
     icon_color,
     icon_hover_color,
-    hbackground,
+    ctaHoverBackColor,
     iconSpace,
     inheritFromTheme,
   } = props.attributes;
 
-  let imgopacity = opacity / 100;
+  let imgopacity = ctaTextOpacity / 100;
 
   var boxShadowPositionCSS = boxShadowPosition;
 
@@ -95,39 +95,39 @@ function EditorStyles(props) {
   }
 
   let updatedvPaddingTablet = "";
-  if (vPaddingTablet != null) {
-    updatedvPaddingTablet = vPaddingTablet;
+  if (ctaVpaddingTablet != null) {
+    updatedvPaddingTablet = ctaVpaddingTablet;
   }
 
   let updatedvPaddingMobile = "";
-  if (vPaddingMobile != null) {
-    updatedvPaddingMobile = vPaddingMobile;
+  if (ctaVpaddingMobile != null) {
+    updatedvPaddingMobile = ctaVpaddingMobile;
   }
 
   let updatedhPaddingTablet = "";
-  if (hPaddingTablet != null) {
-    updatedhPaddingTablet = hPaddingTablet;
+  if (ctaHpaddingTablet != null) {
+    updatedhPaddingTablet = ctaHpaddingTablet;
   }
 
   let updatedhPaddingMobile = "";
-  if (hPaddingMobile != null) {
-    updatedhPaddingMobile = hPaddingMobile;
+  if (ctaHpaddingMobile != null) {
+    updatedhPaddingMobile = ctaHpaddingMobile;
   }
 
   let updatedBackgroundColor = "";
   let updatedBackgroundHColor = "";
   let updatedBackgroundImage = "";
-  if (backgroundType === "color") {
-    updatedBackgroundColor = background;
-    updatedBackgroundHColor = hbackground;
+  if (buttonbackgroundType === "color") {
+    updatedBackgroundColor = ctaBackColor;
+    updatedBackgroundHColor = ctaHoverBackColor;
   }
-  if (backgroundType == "gradient") {
+  if (buttonbackgroundType == "gradient") {
     updatedBackgroundImage = generateBackgroundImageEffect(
-      backgroundColor1,
-      backgroundColor2,
-      gradientDirection,
-      colorLocation1,
-      colorLocation2
+      buttonbackgroundColor1,
+      buttonbackgroundColor2,
+      buttongradientDirection,
+      buttoncolorLocation1,
+      buttoncolorLocation2
     );
   }
 
@@ -141,16 +141,16 @@ function EditorStyles(props) {
       color: icon_hover_color,
     },
     " .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link": {
-      color: color,
+      color: ctaColor,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link": {
-      color: hColor,
+      color: ctaHoverColor,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper": {
-      "border-color": borderColor,
-      "border-radius": generateCSSUnit(borderRadius, "px"),
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
+      "border-color": ctaBorderColor,
+      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
+      "border-style": ctaBorderStyle,
+      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -163,11 +163,11 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
-      "padding-left": generateCSSUnit(hPadding, "px"),
-      "padding-right": generateCSSUnit(hPadding, "px"),
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "background-image": updatedBackgroundImage,
-      "padding-top": generateCSSUnit(vPadding, "px"),
-      "padding-bottom": generateCSSUnit(vPadding, "px"),
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
       "margin-left": `${generateCSSUnit(hMargin, "px")} !important`,
       "margin-right": `${generateCSSUnit(hMargin, "px")} !important`,
       "margin-top": `${generateCSSUnit(vMargin, "px")} !important`,
@@ -183,7 +183,7 @@ function EditorStyles(props) {
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover": {
-      "border-color": borderHColor,
+      "border-color": ctaHoverBorderColor,
       "background-color": updatedBackgroundHColor,
     },
     " .responsive-block-editor-addons-button__icon": {

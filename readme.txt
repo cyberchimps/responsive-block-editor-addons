@@ -77,6 +77,26 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
+= 1.3.1 - 27th July 2021 =
+* New - Table of Contents Block
+* Feature - Info Block - More customizable options for icon background, Responsive options for image/icon margin, Typography options for Call to Action, option to add link for whole block.
+* Feature - Image Box - Added option for gutter, Toggle Button for content, border options.
+* Feature - Team Block - Added options for social icon size, stack on tablet/mobile.
+* Feature - Flipbox - Added options for gutter, stack, background image. Clicking on back side of the block flips it back in mobile view
+* Feature -  Post Timeline - Added excerpt bottom spacing option
+* Feature - Post Carousel - Added responsive options for column. Removed carousel arrows in mobile view
+* Feature - Advanced Heading - Added underline decoration option for heading and subheading
+* Feature - Testimonial Slider - Added responsive alignment options
+* Feature - Call To Action - Added typography and responsive spacing options
+* Feature - Count Up - Added responsive Font Size options for number and description
+* Feature - Blockquote - Added responsive spacing options
+* Fix - Shape Divider - Shape and background height not working for tablet and mobile
+* Fix - Pricing List - Structure was breaking in tablet view when large images are taken
+* Fix - Image Slider - Full width is not working
+* Fix - Image Box - Default border removed, height not working properly.
+* Fix - Section - Inner width not working on tablet and mobile
+* Fix - Post Carousel - Spacing issues
+* Fix- Post Timeline - Horizontal Spacing not working
 
 = 1.3.1 - 27th July 2021 =
 New - Table of Contents Block

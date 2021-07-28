@@ -12,11 +12,11 @@ function EditorStyles(props) {
     block_id,
     contentAlignment,
     textColor,
-    itemBackgroundColor,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    backgroundColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -24,10 +24,16 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     titleSpace,
+    titleSpaceMobile,
+    titleSpaceTablet,
     subtitleSpace,
+    subtitleSpaceMobile,
+    subtitleSpaceTablet,
     contentSpace,
-    buttonColor,
-    buttonTextColor,
+    contentSpaceMobile,
+    contentSpaceTablet,
+    ctaBackColor,
+    ctaColor,
     opacity,
     backgroundType,
     backgroundImage,
@@ -42,17 +48,27 @@ function EditorStyles(props) {
     imageheight,
     blockzindex,
     blockmargin,
+    blockmarginMobile,
+    blockmarginTablet,
     icon_color,
-    buttonhColor,
-    buttonhTextColor,
-    butopacity,
-    vPadding,
-    hPadding,
+    ctaHoverBackColor,
+    ctaHoverColor,
+    buttonopacity,
+    ctaHpadding,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpadding,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
     vMargin,
+    vMarginTablet,
+    vMarginMobile,
     hMargin,
-    butborderWidth,
-    butborderRadius,
-    butborderStyle,
+    hMarginTablet,
+    hMarginMobile,
+    ctaBorderWidth,
+    ctaBorderRadius,
+    ctaBorderStyle,
     buttonbackgroundType,
     buttongradientDirection,
     buttoncolorLocation1,
@@ -63,26 +79,44 @@ function EditorStyles(props) {
     subLineHeight,
     subFontWeight,
     subFontSize,
+    subFontSizeMobile,
+    subFontSizeTablet,
     subFontFamily,
     headingFontFamily,
     headingLineHeight,
     headingFontWeight,
     headingFontSize,
+    headingFontSizeMobile,
+    headingFontSizeTablet,
     contentFontFamily,
     contentLineHeight,
     contentFontWeight,
     contentFontSize,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
     contenttopSpace,
+    contenttopSpaceMobile,
+    contenttopSpaceTablet,
     blockbotmargin,
+    blockbotmarginMobile,
+    blockbotmarginTablet,
     blockleftmargin,
+    blockleftmarginMobile,
+    blockleftmarginTablet,
     blockrightmargin,
-    bgimagePosition,
-    bgimageRepeat,
-    bgthumbsize,
+    blockrightmarginMobile,
+    blockrightmarginTablet,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
     backgroundImageOne,
     backgroundImageTwo,
     backgroundImageThree,
     backgroundImageFour,
+    ctaBorderColor,
+    ctaHoverBorderColor,
+    buttonHopacity,
+    ctaTextOpacity,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -93,22 +127,25 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
-  let buttonopacity = butopacity / 100;
+  let butopacity = buttonopacity / 100;
+  let butHOpacity = buttonHopacity / 100;
+  let textOpacity = ctaTextOpacity / 100;
 
   let updatedButtonColor = "";
   let updatedButtonhColor = "";
   if (buttonbackgroundType == "color") {
-    updatedButtonColor = buttonColor;
-    updatedButtonhColor = buttonhColor;
+    updatedButtonColor = ctaBackColor;
+    updatedButtonhColor = ctaHoverBackColor;
   }
 
   var selectors = {
     " .responsive-block-editor-addons-card-button-inner .res-button": {
-      color: buttonTextColor,
+      color: ctaColor,
+      opacity: textOpacity,
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover .res-button": {
-      color: buttonhTextColor,
+      color: ctaHoverColor,
     },
 
     " .responsive-block-editor-addons-card-button-inner .responsive-block-editor-addons-button__icon svg": {
@@ -122,12 +159,13 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-card-item__button-wrapper .responsive-block-editor-addons-card-button-inner": {
       "background-color": hexToRgba(
         updatedButtonColor || "#2091e1",
-        buttonopacity || 0
+        butopacity || 0
       ),
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover": {
-      "background-color": updatedButtonhColor,
+      "background-color": hexToRgba(updatedButtonhColor || "#2091e1", butHOpacity),
+      "border-color": ctaHoverBorderColor,
     },
 
     "": {
@@ -139,24 +177,24 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-card-item": {
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       color: textColor,
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}`
+          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
           : undefined,
       "background-image":
         backgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              backgroundColor1,
-              backgroundColor2,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
-            )
+            backgroundColor1,
+            backgroundColor2,
+            gradientDirection,
+            colorLocation1,
+            colorLocation2
+          )
           : undefined,
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
@@ -174,12 +212,12 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-card-background-image": {
       "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
+        ? `url(${backgroundImage})`
         : null,
       height: 100 + "%",
-      "background-position": bgimagePosition,
-      "background-repeat": bgimageRepeat,
-      "background-size": bgthumbsize,
+      "background-position": backgroundImagePosition,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
     },
 
     " .responsive-block-editor-addons-card-avatar": {
@@ -193,39 +231,39 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-0": {
-        "background-image": `url(${backgroundImageOne})`,
-        "display": backgroundImageOne? 'block' : 'none',
+      "background-image": `url(${backgroundImageOne})`,
+      "display": backgroundImageOne ? 'block' : 'none',
     },
-    
+
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-0": {
-        "display": backgroundImageOne? 'none' : 'flex',
+      "display": backgroundImageOne ? 'none' : 'flex',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-1": {
-        "background-image": `url(${backgroundImageTwo})`,
-        "display": backgroundImageTwo? 'block' : 'none',
+      "background-image": `url(${backgroundImageTwo})`,
+      "display": backgroundImageTwo ? 'block' : 'none',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-1": {
-      "display": backgroundImageTwo? 'none' : 'flex',
+      "display": backgroundImageTwo ? 'none' : 'flex',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-2": {
-        "background-image": `url(${backgroundImageThree})`,
-        "display": backgroundImageThree? 'block' : 'none',
+      "background-image": `url(${backgroundImageThree})`,
+      "display": backgroundImageThree ? 'block' : 'none',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-2": {
-      "display": backgroundImageThree? 'none' : 'flex',
+      "display": backgroundImageThree ? 'none' : 'flex',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-3": {
-         "background-image": `url(${backgroundImageFour})`,
-         "display": backgroundImageFour? 'block' : 'none',
+      "background-image": `url(${backgroundImageFour})`,
+      "display": backgroundImageFour ? 'block' : 'none',
     },
 
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-3": {
-      "display": backgroundImageFour? 'none' : 'flex',
+      "display": backgroundImageFour ? 'none' : 'flex',
     },
 
     " .card-content-wrap": {
@@ -264,37 +302,106 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-card-button-inner": {
-      "padding-top": generateCSSUnit(vPadding, "px"),
-      "padding-bottom": generateCSSUnit(vPadding, "px"),
-      "padding-left": generateCSSUnit(hPadding, "px"),
-      "padding-right": generateCSSUnit(hPadding, "px"),
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "margin-top": generateCSSUnit(vMargin, "px"),
       "margin-bottom": generateCSSUnit(vMargin, "px"),
       "margin-left": generateCSSUnit(hMargin, "px"),
       "margin-right": generateCSSUnit(hMargin, "px"),
-      "border-style": butborderStyle ? butborderStyle : "none",
-      "border-radius": butborderRadius
-        ? generateCSSUnit(butborderRadius, "px")
+      "border-style": ctaBorderStyle ? ctaBorderStyle : "none",
+      "border-color": ctaBorderColor,
+      "border-radius": ctaBorderRadius
+        ? generateCSSUnit(ctaBorderRadius, "px")
         : "",
-      "border-width": butborderWidth
-        ? generateCSSUnit(butborderWidth, "px")
+      "border-width": ctaBorderWidth
+        ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px",
       "background-image":
         buttonbackgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              buttonbackgroundColor1,
-              buttonbackgroundColor2,
-              buttongradientDirection,
-              buttoncolorLocation1,
-              buttoncolorLocation2
-            )
+            buttonbackgroundColor1,
+            buttonbackgroundColor2,
+            buttongradientDirection,
+            buttoncolorLocation1,
+            buttoncolorLocation2
+          )
           : undefined,
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " .responsive-block-editor-addons-card-button-inner": {
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "margin-top": generateCSSUnit(vMarginMobile, "px"),
+      "margin-bottom": generateCSSUnit(vMarginMobile, "px"),
+      "margin-left": generateCSSUnit(hMarginMobile, "px"),
+      "margin-right": generateCSSUnit(hMarginMobile, "px"),
+    },
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginMobile, "px"),
+      "margin-top": generateCSSUnit(blockmarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginMobile, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceMobile, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceMobile, "px"),
+    },
 
-  var tablet_selectors = {};
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+      "font-size": generateCSSUnit(headingFontSizeMobile, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
+      "font-size": generateCSSUnit(subFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-card-item__content": {
+      "font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+    }
+  };
+
+  var tablet_selectors = {
+    " .responsive-block-editor-addons-card-button-inner": {
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "margin-top": generateCSSUnit(vMarginTablet, "px"),
+      "margin-bottom": generateCSSUnit(vMarginTablet, "px"),
+      "margin-left": generateCSSUnit(hMarginTablet, "px"),
+      "margin-right": generateCSSUnit(hMarginTablet, "px"),
+    },
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginTablet, "px"),
+      "margin-top": generateCSSUnit(blockmarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginTablet, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceTablet, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+      "font-size": generateCSSUnit(headingFontSizeTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
+      "font-size": generateCSSUnit(subFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-card-item__content": {
+      "font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+    }
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-card.block-${block_id}`;

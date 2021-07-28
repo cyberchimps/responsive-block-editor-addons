@@ -4,6 +4,9 @@
 import SliderPanel from "../../../utils/components/slider-panel";
 import ResponsiveTabsControl from "../../../utils/components/responsive-tabs-control";
 import SizeControl from "../../../utils/components/size-control";
+import BlockBorderHelperControl from "../../../settings-components/Block Border Settings";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
 
 /**
  * WordPress dependencies
@@ -104,9 +107,10 @@ class Inspector extends Component {
       isSmallImage,
       responsiveHeight,
       lightbox,
-      borderWidth,
-      borderColor,
-      borderStyle,
+      blockBorderWidth,
+      blockBorderColor,
+      blockBorderStyle,
+      blockBorderRadius,
       iconBackgroundColor,
       iconColor,
       iconBackgroundRadius,
@@ -121,224 +125,189 @@ class Inspector extends Component {
       isSelected && (
         <Fragment>
           <InspectorControls>
-            <PanelBody
-              title={__("Image Carousel", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <SizeControl
-                {...this.props}
-                type={"grid"}
-                label={__("Size")}
-                onChange={this.setSizeControl}
-                value={gridSize}
-                resetValue={"xlrg"}
-              />
-              {gridSize !== null && (align === "wide" || align === "full") && (
-                <ResponsiveTabsControl
-                  {...this.props}
-                  label={__("Gutter", "responsive-block-editor-addons")}
-                  max={20}
-                />
-              )}
-              {gridSize !== "xlrg" && !align && (
-                <ResponsiveTabsControl
-                  {...this.props}
-                  label={__("Gutter", "responsive-block-editor-addons")}
-                  max={50}
-                />
-              )}
-              {gutter > 0 && (
-                <RangeControl
-                  label={__("Radius", "responsive-block-editor-addons")}
-                  value={radius}
-                  onChange={this.setRadiusTo}
-                  min={0}
-                  max={50}
-                  step={1}
-                />
-              )}
-              <ToggleControl
-                label={__("Custom Width", "responsive-block-editor-addons")}
-                checked={!!customWidth}
-                onChange={() => setAttributes({ customWidth: !customWidth })}
-              />
-              {!!customWidth && (
-                <RangeControl
-                  label={__(
-                    "Width in pixels",
-                    "responsive-block-editor-addons"
-                  )}
-                  value={width}
-                  onChange={(value) =>
-                    setAttributes({
-                      width: value,
-                    })
-                  }
-                  min={0}
-                  max={1000}
-                  step={1}
-                />
-              )}
-              {!responsiveHeight && (
-                <BaseControl
-                  label={__(
-                    "Height in pixels",
-                    "responsive-block-editor-addons"
-                  )}
-                  className={"block-height-control"}
+            <InspectorTabs>
+              <InspectorTab key={'content'}>
+                <PanelBody
+                  title={__("Image Carousel", "responsive-block-editor-addons")}
+                  initialOpen={false}
                 >
-                  <input
-                    type="number"
-                    className={"block-height-control__input"}
-                    onChange={(event) => {
-                      const unprocessedValue = event.target.value;
-                      const inputValue =
-                        unprocessedValue !== ""
-                          ? parseInt(event.target.value, 10)
-                          : undefined;
-                      if (inputValue < 0 && inputValue !== undefined) {
-                        this.setTemporayInput(inputValue);
-                        this.setHeightTo(0);
-                        return;
-                      }
-                      this.setTemporayInput(null);
-                      this.setHeightTo(inputValue);
-                    }}
-                    value={temporaryInput || height}
-                    min={0}
-                    step="10"
+                  <SizeControl
+                    {...this.props}
+                    type={"grid"}
+                    label={__("Size")}
+                    onChange={this.setSizeControl}
+                    value={gridSize}
+                    resetValue={"xlrg"}
                   />
-                </BaseControl>
-              )}
-              <ToggleControl
-                label={__("Small Images", "responsive-block-editor-addons")}
-                checked={!!isSmallImage}
-                onChange={() => setAttributes({ isSmallImage: !isSmallImage })}
-                help={this.getSmallImageNavigationHelp}
-              />
-              <ToggleControl
-                label={__("Thumbnails", "responsive-block-editor-addons")}
-                checked={!!thumbnails}
-                onChange={() => setAttributes({ thumbnails: !thumbnails })}
-                help={this.getThumbnailNavigationHelp}
-              />
-              <ToggleControl
-                label={__("Lightbox", "responsive-block-editor-addons")}
-                checked={!!lightbox}
-                onChange={() => setAttributes({ lightbox: !lightbox })}
-                help={this.getLightboxHelp}
-              />
-            </PanelBody>
-            <PanelColorSettings
-              title={__("Arrow", "responsive-block-editor-addons")}
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: iconColor,
-                  onChange: (newIconColor) =>
-                    setAttributes({ iconColor: newIconColor }),
-                  label: __("Color", "responsive-block-editor-addons"),
-                },
-                {
-                  value: iconBackgroundColor,
-                  onChange: (newiconBackgroundColor) =>
-                    setAttributes({
-                      iconBackgroundColor: newiconBackgroundColor,
-                    }),
-                  label: __(
-                    "Background Color",
-                    "responsive-block-editor-addons"
-                  ),
-                },
-              ]}
-            >
-              <RangeControl
-                label={__(
-                  "Background Opacity",
-                  "responsive-block-editor-addons"
-                )}
-                value={iconBackgroundOpacity}
-                onChange={(newiconBackgroundOpacity) =>
-                  setAttributes({
-                    iconBackgroundOpacity: newiconBackgroundOpacity,
-                  })
-                }
-                min={0}
-                max={100}
-                step={1}
-              />
-              <RangeControl
-                label={__(
-                  "Background Radius",
-                  "responsive-block-editor-addons"
-                )}
-                value={iconBackgroundRadius}
-                onChange={(newiconBackgroundradius) =>
-                  setAttributes({
-                    iconBackgroundRadius: newiconBackgroundradius,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
-              />
-            </PanelColorSettings>
-            <PanelColorSettings
-              title={__("Border", "responsive-block-editor-addons")}
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: borderColor,
-                  onChange: (newBorderColor) =>
-                    setAttributes({ borderColor: newBorderColor }),
-                  label: __("Border Color", "responsive-block-editor-addons"),
-                },
-              ]}
-            >
-              <SelectControl
-                label={__("Border Style", "responsive-block-editor-addons")}
-                value={borderStyle}
-                options={[
-                  {
-                    value: "none",
-                    /* translators: abbreviation for medium size */
-                    label: __("None", "responsive-block-editor-addons"),
-                    tooltip: __("None", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "solid",
-                    label: __("Solid", "responsive-block-editor-addons"),
-                    shortName: __("Solid", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dotted",
-                    /* translators: abbreviation for small size */
-                    label: __("Dotted", "responsive-block-editor-addons"),
-                    tooltip: __("Dotted", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dashed",
-                    /* translators: abbreviation for medium size */
-                    label: __("Dashed", "responsive-block-editor-addons"),
-                    tooltip: __("Dashed", "responsive-block-editor-addons"),
-                  },
-                ]}
-                onChange={(newborderStyle) =>
-                  setAttributes({ borderStyle: newborderStyle })
-                }
-              />
-              <RangeControl
-                label={__("Border Size", "responsive-block-editor-addons")}
-                value={borderWidth}
-                onChange={(newBorderWidth) =>
-                  setAttributes({ borderWidth: newBorderWidth })
-                }
-                min={0}
-                max={20}
-                step={1}
-              />
-            </PanelColorSettings>
-            <SliderPanel {...this.props} />
+                  {gridSize !== null && (align === "wide" || align === "full") && (
+                    <ResponsiveTabsControl
+                      {...this.props}
+                      label={__("Gutter", "responsive-block-editor-addons")}
+                      max={20}
+                    />
+                  )}
+                  {gridSize !== "xlrg" && !align && (
+                    <ResponsiveTabsControl
+                      {...this.props}
+                      label={__("Gutter", "responsive-block-editor-addons")}
+                      max={50}
+                    />
+                  )}
+                  {gutter > 0 && (
+                    <RangeControl
+                      label={__("Radius", "responsive-block-editor-addons")}
+                      value={radius}
+                      onChange={this.setRadiusTo}
+                      min={0}
+                      max={50}
+                      step={1}
+                    />
+                  )}
+                  <ToggleControl
+                    label={__("Custom Width", "responsive-block-editor-addons")}
+                    checked={!!customWidth}
+                    onChange={() => setAttributes({ customWidth: !customWidth })}
+                  />
+                  {!!customWidth && (
+                    <RangeControl
+                      label={__(
+                        "Width in pixels",
+                        "responsive-block-editor-addons"
+                      )}
+                      value={width}
+                      onChange={(value) =>
+                        setAttributes({
+                          width: value,
+                        })
+                      }
+                      min={0}
+                      max={1000}
+                      step={1}
+                    />
+                  )}
+                  {!responsiveHeight && (
+                    <BaseControl
+                      label={__(
+                        "Height in pixels",
+                        "responsive-block-editor-addons"
+                      )}
+                      className={"block-height-control"}
+                    >
+                      <input
+                        type="number"
+                        className={"block-height-control__input"}
+                        onChange={(event) => {
+                          const unprocessedValue = event.target.value;
+                          const inputValue =
+                            unprocessedValue !== ""
+                              ? parseInt(event.target.value, 10)
+                              : undefined;
+                          if (inputValue < 0 && inputValue !== undefined) {
+                            this.setTemporayInput(inputValue);
+                            this.setHeightTo(0);
+                            return;
+                          }
+                          this.setTemporayInput(null);
+                          this.setHeightTo(inputValue);
+                        }}
+                        value={temporaryInput || height}
+                        min={0}
+                        step="10"
+                      />
+                    </BaseControl>
+                  )}
+                  <ToggleControl
+                    label={__("Small Images", "responsive-block-editor-addons")}
+                    checked={!!isSmallImage}
+                    onChange={() => setAttributes({ isSmallImage: !isSmallImage })}
+                    help={this.getSmallImageNavigationHelp}
+                  />
+                  <ToggleControl
+                    label={__("Thumbnails", "responsive-block-editor-addons")}
+                    checked={!!thumbnails}
+                    onChange={() => setAttributes({ thumbnails: !thumbnails })}
+                    help={this.getThumbnailNavigationHelp}
+                  />
+                  <ToggleControl
+                    label={__("Lightbox", "responsive-block-editor-addons")}
+                    checked={!!lightbox}
+                    onChange={() => setAttributes({ lightbox: !lightbox })}
+                    help={this.getLightboxHelp}
+                  />
+                </PanelBody>
+                <SliderPanel {...this.props} />
+              </InspectorTab>
+              <InspectorTab key={'style'}>
+                <PanelColorSettings
+                  title={__("Arrow", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                  colorSettings={[
+                    {
+                      value: iconColor,
+                      onChange: (newIconColor) =>
+                        setAttributes({ iconColor: newIconColor }),
+                      label: __("Color", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: iconBackgroundColor,
+                      onChange: (newiconBackgroundColor) =>
+                        setAttributes({
+                          iconBackgroundColor: newiconBackgroundColor,
+                        }),
+                      label: __(
+                        "Background Color",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                  ]}
+                >
+                  <RangeControl
+                    label={__(
+                      "Background Opacity",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={iconBackgroundOpacity}
+                    onChange={(newiconBackgroundOpacity) =>
+                      setAttributes({
+                        iconBackgroundOpacity: newiconBackgroundOpacity,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    step={1}
+                  />
+                  <RangeControl
+                    label={__(
+                      "Background Radius",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={iconBackgroundRadius}
+                    onChange={(newiconBackgroundradius) =>
+                      setAttributes({
+                        iconBackgroundRadius: newiconBackgroundradius,
+                      })
+                    }
+                    min={0}
+                    max={50}
+                    step={1}
+                  />
+                </PanelColorSettings>
+                <PanelBody
+                  title={__("Border", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                >
+                  <BlockBorderHelperControl 
+                    attrNameTemplate="block%s"
+                    values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
+                    setAttributes={ setAttributes }
+                    {...this.props}            
+                  />
+                </PanelBody>
+              </InspectorTab>
+              <InspectorTab key={'advance'}>
+                
+              </InspectorTab>
+            </InspectorTabs>
           </InspectorControls>
           <InspectorAdvancedControls>
             <ToggleControl

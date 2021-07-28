@@ -35,7 +35,7 @@ const attributes = {
   testimonialAlignment: {
     type: "string",
   },
-  testimonialBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#f2f2f2",
   },
@@ -51,6 +51,12 @@ const attributes = {
   titleFontSize: {
     type: "number",
   },
+  titleFontSizeMobile: {
+    type: "number",
+  },
+  titleFontSizeTablet: {
+    type: "number",
+  },
   titleLineHeight: {
     type: "number",
   },
@@ -61,6 +67,12 @@ const attributes = {
     type: "string",
   },
   nameFontSize: {
+    type: "number",
+  },
+  nameFontSizeMobile: {
+    type: "number",
+  },
+  nameFontSizeTablet: {
     type: "number",
   },
   nameLineHeight: {
@@ -87,6 +99,12 @@ const attributes = {
   contentFontSize: {
     type: "number",
   },
+  contentFontSizeMobile: {
+    type: "number",
+  },
+  contentFontSizeTablet: {
+    type: "number",
+  },
   contentLineHeight: {
     type: "number",
     default: 1.6,
@@ -105,18 +123,18 @@ const attributes = {
     type: "string",
     default: "#f2f2f2",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 1,
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
     default: 2,
   },
@@ -133,6 +151,14 @@ const attributes = {
     default: 20,
   },
   contentSpacing: {
+    type: "number",
+    default: 8,
+  },
+  contentSpacingTablet: {
+    type: "number",
+    default: 8,
+  },
+  contentSpacingMobile: {
     type: "number",
     default: 8,
   },
@@ -208,7 +234,7 @@ const attributes = {
     type: "number",
     default: 0.7,
   },
-  gradientDegree: {
+  gradientDirection: {
     type: "number",
     default: 180,
   },
@@ -219,13 +245,13 @@ const attributes = {
   backgroundImage: {
     type: "string",
   },
-  backgroundPosition: {
+  backgroundImagePosition: {
     type: "string",
   },
-  backgroundSize: {
+  backgroundImageSize: {
     type: "string",
   },
-  backgroundRepeat: {
+  backgroundImageRepeat: {
     type: "string",
   },
   imageHoverEffect: {
@@ -234,8 +260,16 @@ const attributes = {
   bggradient: {
     type: "string",
   },
-  secondaryBackgroundColor: {
+  backgroundColor2: {
     type: "string",
+  },
+  colorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  colorLocation2: {
+    type: "number",
+    default: 100,
   },
 };
 

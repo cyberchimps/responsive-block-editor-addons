@@ -11,9 +11,10 @@ function EditorStyles(props) {
     block_id,
     gutter,
     responsiveHeight,
-    borderWidth,
-    borderColor,
-    borderStyle,
+    blockBorderWidth,
+    blockBorderColor,
+    blockBorderStyle,
+    blockBorderRadius,
     iconColor,
     iconBackgroundRadius,
     iconBackgroundColor,
@@ -45,9 +46,10 @@ function EditorStyles(props) {
         gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
       "margin-right":
         gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-style": borderStyle,
-      "border-color": borderColor,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-style": blockBorderStyle,
+      "border-color": blockBorderColor,
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     },
   };
 

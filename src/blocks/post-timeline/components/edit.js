@@ -301,10 +301,8 @@ class LatestPostsBlock extends Component {
       });
     }
 
-    return (
-      <Fragment>
-        <InspectorControls>
-          <PanelBody title={__("Query")} initialOpen={true}>
+    const queryControls = (
+        <PanelBody title={__("Query")} initialOpen={true}>
             {"" != taxonomyList && (
               <SelectControl
                 label={__("Taxonomy")}
@@ -323,9 +321,12 @@ class LatestPostsBlock extends Component {
                 />
               </Fragment>
             )}
-          </PanelBody>
-        </InspectorControls>
-        <Inspector {...{ setAttributes, ...this.props }} />
+        </PanelBody>
+    )
+
+    return (
+      <Fragment>
+        <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar
             value={attributes.align}

@@ -9,10 +9,14 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import times from "lodash/times";
 import memoize from "memize";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import InspectorTab from "../../../components/InspectorTab"
+import InspectorTabs from "../../../components/InspectorTabs"
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
@@ -187,7 +191,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       inactiveOtherItems,
       expandFirstItem,
       rowsGap,
+      rowsGapTablet,
+      rowsGapMobile,
       columnsGap,
+      columnsGapTablet,
+      columnsGapMobile,
       align,
       titleActiveTextColor,
       titleActiveBackgroundColor,
@@ -197,9 +205,13 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       titleFontWeight,
       titleFontFamily,
       titleFontSize,
+      titleFontSizeMobile,
+      titleFontSizeTablet,
       titleLineHeight,
       contentFontWeight,
       contentFontSize,
+      contentFontSizeMobile,
+      contentFontSizeTablet,
       contentFontFamily,
       contentLineHeight,
       icon,
@@ -213,7 +225,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       equalHeight,
       titleBackgroundColorOpacity,
       marginV,
+      marginVTablet,
+      marginVMobile,
       marginH,
+      marginHTablet,
+      marginHMobile,
       titleSecondaryBackgroundColor,
       titleGradientDegree,
       titleBgGradient,
@@ -544,106 +560,24 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           initialOpen={false}
           className="responsive_block_editor_addons__url-panel-body"
         >
-          <PanelBody
-            title={__("Title", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={titleFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  titleFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <RangeControl
-              label={__("Font Size", "responsive-block-editor-addons")}
-              value={titleFontSize}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  titleFontSize: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-            />
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={titleFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  titleFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={titleLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  titleLineHeight: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={0.01}
-            />
-          </PanelBody>
-          <PanelBody
-            title={__("Content", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={contentFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  contentFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <RangeControl
-              label={__("Font Size", "responsive-block-editor-addons")}
-              value={contentFontSize}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  contentFontSize: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-            />
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={contentFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  contentFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={contentLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  contentLineHeight: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={0.01}
-            />
-          </PanelBody>
+          <TypographyHelperControl
+            title={__("Title", "responsive-block-editor-addons")} 
+            attrNameTemplate="title%s"
+            values = {{family: titleFontFamily, size: titleFontSize, sizeMobile: titleFontSizeMobile, sizeTablet: titleFontSizeTablet, weight: titleFontWeight, height: titleLineHeight}}
+            showLetterSpacing = { false }
+            showTextTransform = { false }
+            setAttributes={ setAttributes }
+            {...this.props}            
+          />
+          <TypographyHelperControl
+            title={__("Content", "responsive-block-editor-addons")} 
+            attrNameTemplate="content%s"
+            values = {{family: contentFontFamily, size: contentFontSize, sizeMobile: contentFontSizeMobile, sizeTablet: contentFontSizeTablet, weight: contentFontWeight, height: contentLineHeight}}
+            showLetterSpacing = { false }
+            showTextTransform = { false }
+            setAttributes={ setAttributes }
+            {...this.props}            
+          />
         </PanelBody>
       );
     };
@@ -654,21 +588,21 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           initialOpen={false}
           className="responsive_block_editor_addons__url-panel-body"
         >
-          <RangeControl
-            label={__("Rows Gap (px)")}
-            value={rowsGap}
-            onChange={(value) => setAttributes({ rowsGap: value })}
-            min={0}
-            max={50}
+          <ResponsiveSpacingControl
+            title={"Row Gap"}
+            attrNameTemplate="rowsGap%s"
+            values = {{desktop:rowsGap, tablet:rowsGapTablet, mobile:rowsGapMobile}}
+            setAttributes={ setAttributes }
+            {...this.props}
           />
           {"grid" === layout && (
             <Fragment>
-              <RangeControl
-                label={__("Columns Gap (px)")}
-                value={columnsGap}
-                onChange={(value) => setAttributes({ columnsGap: value })}
-                min={0}
-                max={50}
+              <ResponsiveSpacingControl
+                title={"Columns Gap"}
+                attrNameTemplate="columnsGap%s"
+                values = {{desktop:columnsGap, tablet:columnsGapTablet, mobile:columnsGapMobile}}
+                setAttributes={ setAttributes }
+                {...this.props}
               />
               <ToggleControl
                 label={__("Equal Height")}
@@ -679,19 +613,19 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               />
             </Fragment>
           )}
-          <RangeControl
-            label={__("Vertical Margin")}
-            value={marginV}
-            onChange={(value) => setAttributes({ marginV: value })}
-            min={0}
-            max={100}
+          <ResponsiveSpacingControl
+            title={"Vertical Margin"}
+            attrNameTemplate="marginV%s"
+            values = {{desktop:marginV, tablet:marginVTablet, mobile:marginVMobile}}
+            setAttributes={ setAttributes }
+            {...this.props}
           />
-          <RangeControl
-            label={__("Horizontal Margin")}
-            value={marginH}
-            onChange={(value) => setAttributes({ marginH: value })}
-            min={0}
-            max={100}
+          <ResponsiveSpacingControl
+            title={"Horizontal Margin"}
+            attrNameTemplate="marginH%s"
+            values = {{desktop:marginH, tablet:marginHTablet, mobile:marginHMobile}}
+            setAttributes={ setAttributes }
+            {...this.props}
           />
         </PanelBody>
       );
@@ -934,13 +868,22 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     };
     return (
       <Fragment>
-        <InspectorControls>
-          {accordionGeneralSettings()}
-          {accordionColorSettings()}
-          {accordionStylingSettings()}
-          {accordionTypographySettings()}
-          {titleFontFamily && loadGoogleFont(titleFontFamily)}
-          {contentFontFamily && loadGoogleFont(contentFontFamily)}
+        <InspectorControls key="inspector">
+          <InspectorTabs>
+            <InspectorTab key={'content'}>
+              {accordionGeneralSettings()}
+            </InspectorTab>
+            <InspectorTab key={'style'}>
+              {accordionColorSettings()}
+              {accordionStylingSettings()}
+              {accordionTypographySettings()}
+              {titleFontFamily && loadGoogleFont(titleFontFamily)}
+              {contentFontFamily && loadGoogleFont(contentFontFamily)}
+            </InspectorTab>
+            <InspectorTab key={'advance'}>
+              
+            </InspectorTab>
+          </InspectorTabs>                 
         </InspectorControls>
         <div
           className={classnames(

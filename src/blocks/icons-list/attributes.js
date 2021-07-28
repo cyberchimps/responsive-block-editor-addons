@@ -82,7 +82,7 @@ const attributes = {
   labelFontSizeMobile: {
     type: "number",
   },
-  labelFontLineHeight: {
+  labelLineHeight: {
     type: "number",
     default: 1,
   },

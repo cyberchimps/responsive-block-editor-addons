@@ -14,25 +14,45 @@ function EditorStyles(props) {
     titleColor,
     titleFontFamily,
     titleFontSize,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
     titleFontWeight,
     titleLineHeight,
     descriptionFontFamily,
     descriptionFontSize,
+    descriptionFontSizeMobile,
+    descriptionFontSizeTablet,
     descriptionFontWeight,
     descriptionLineHeight,
     priceFontFamily,
     priceFontSize,
+    priceFontSizeMobile,
+    priceFontSizeTablet,
     priceFontWeight,
     priceLineHeight,
     titleSpace,
+    titleSpaceMobile,
+    titleSpaceTablet,
     columns,
     rowGap,
+    rowGapMobile,
+    rowGapTablet,
     columnGap,
+    columnGapMobile,
+    columnGapTablet,
     contentAlign,
-    topPadding,
-    bottomPadding,
-    leftPadding,
-    rightPadding,
+    blockTopPadding,
+    blockTopPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPadding,
+    blockBottomPaddingMobile,
+    blockBottomPaddingTablet,
+    blockLeftPadding,
+    blockLeftPaddingMobile,
+    blockLeftPaddingTablet,
+    blockRightPadding,
+    blockRightPaddingMobile,
+    blockRightPaddingTablet,
     seperatorStyle,
     seperatorWidth,
     seperatorThickness,
@@ -56,10 +76,10 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(columnGap / 2, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-wrap .responsive-block-editior-addons-pricing-list-item-content": {
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "padding-top": generateCSSUnit(blockTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
+      "padding-right": generateCSSUnit(blockRightPadding, "px"),
       "text-align": contentAlign,
     },
     " .responsive-block-editior-addons-pricing-list-item-image-wrap .responsive-block-editior-addons-pricing-list-item-image": {
@@ -105,9 +125,53 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " .responsive-block-editior-addons-pricing-list-item-wrap": {
+      "margin-bottom": generateCSSUnit(rowGapMobile, "px"),
+      "padding-left": generateCSSUnit(columnGapMobile / 2, "px"),
+      "padding-right": generateCSSUnit(columnGapMobile / 2, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-wrap .responsive-block-editior-addons-pricing-list-item-content": {
+      "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-title": {
+      "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-description": {
+      "font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-price-wrap": {
+      "font-size": generateCSSUnit(priceFontSizeMobile, "px"),
+    }
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " .responsive-block-editior-addons-pricing-list-item-wrap": {
+      "margin-bottom": generateCSSUnit(rowGapTablet, "px"),
+      "padding-left": generateCSSUnit(columnGapTablet / 2, "px"),
+      "padding-right": generateCSSUnit(columnGapTablet / 2, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-wrap .responsive-block-editior-addons-pricing-list-item-content": {
+      "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-title": {
+      "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-description": {
+      "font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+    },
+    " .responsive-block-editior-addons-pricing-list-item-price-wrap": {
+      "font-size": generateCSSUnit(priceFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+    }
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-pricing-list.block-${props.clientId}`;

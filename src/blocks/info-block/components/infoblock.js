@@ -33,7 +33,7 @@ export default class InfoBlock extends Component {
         boxShadowBlur,
         boxShadowSpread,
         boxShadowPosition,
-        boxBackgroundColor,
+        backgroundColor,
         contentPadding,
         opacity,
       },

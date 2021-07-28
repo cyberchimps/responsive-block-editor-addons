@@ -5,6 +5,8 @@
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import renderSVG from "../../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../../ResponsiveBlocksIcon.json";
+import InspectorTab from "../../../../components/InspectorTab"
+import InspectorTabs from "../../../../components/InspectorTabs"
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -269,101 +271,111 @@ export default class Inspector extends Component {
 
     return (
       <Fragment>
-        <InspectorControls>
-          <PanelBody
-            title={__("Icon Settings", "responsive-block-editor-addons")}
-            initialOpen={true}
-          >
-            <SelectControl
-              label={__("Select Source", "responsive-block-editor-addons")}
-              value={source_type}
-              onChange={(value) => setAttributes({ source_type: value })}
-              options={[
-                {
-                  value: "icon",
-                  label: __("Icon", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "image",
-                  label: __("Image", "responsive-block-editor-addons"),
-                },
-              ]}
-            />
-            {"image" == source_type && (
-              <Fragment>
-                <BaseControl
-                  className="editor-bg-image-control"
-                  label={__("Image", "responsive-block-editor-addons")}
-                >
-                  <MediaUpload
-                    title={__("Select Image", "responsive-block-editor-addons")}
-                    onSelect={this.onSelectImage}
-                    allowedTypes={["image"]}
-                    value={image}
-                    render={({ open }) => (
-                      <Button isDefault onClick={open}>
-                        {image_name}
-                      </Button>
-                    )}
-                  />
-                  {image && image.url !== "null" && image.url !== "" && (
-                    <Button
-                      className="responsive-block-editor-addons-rm-btn"
-                      onClick={this.onRemoveImage}
-                      isLink
-                      isDestructive
+        <InspectorControls key="inspector">
+          <InspectorTabs>
+            <InspectorTab key={'content'}>
+              <PanelBody
+                title={__("Icon Settings", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
+                <SelectControl
+                  label={__("Select Source", "responsive-block-editor-addons")}
+                  value={source_type}
+                  onChange={(value) => setAttributes({ source_type: value })}
+                  options={[
+                    {
+                      value: "icon",
+                      label: __("Icon", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "image",
+                      label: __("Image", "responsive-block-editor-addons"),
+                    },
+                  ]}
+                />
+                {"image" == source_type && (
+                  <Fragment>
+                    <BaseControl
+                      className="editor-bg-image-control"
+                      label={__("Image", "responsive-block-editor-addons")}
                     >
-                      {__("Remove Image", "responsive-block-editor-addons")}
-                    </Button>
-                  )}
-                </BaseControl>
-              </Fragment>
-            )}
-            {"icon" == source_type && (
-              <Fragment>
-                <p className="components-base-control__label">{__("Icon")}</p>
-                <FontIconPicker
-                  icons={svg_icons}
-                  renderFunc={renderSVG}
-                  theme="default"
-                  value={icon}
-                  onChange={(value) => setAttributes({ icon: value })}
-                  isMulti={false}
-                  noSelectedPlaceholder={__(
-                    "Select Icon",
-                    "responsive-block-editor-addons"
-                  )}
-                />
-                <hr className="responsive-block-editor-addons-editor__separator" />
-                <h2>
-                  {__("Icon Color Settings", "responsive-block-editor-addons")}
-                </h2>
-                {iconColorControls()}
-              </Fragment>
-            )}
-            <hr className="responsive-block-editor-addons-editor__separator" />
-            <h2>{__("List Item Link")}</h2>
-            <ToggleControl
-              label={__("Disable Link")}
-              checked={disableLink}
-              onChange={(value) => setAttributes({ disableLink: !disableLink })}
-            />
-            {!disableLink && (
-              <Fragment>
-                <p className="components-base-control__label">{__("URL")}</p>
-                <TextControl
-                  value={link}
-                  onChange={(value) => setAttributes({ link: value })}
-                  placeholder={__("Enter URL")}
-                />
+                      <MediaUpload
+                        title={__("Select Image", "responsive-block-editor-addons")}
+                        onSelect={this.onSelectImage}
+                        allowedTypes={["image"]}
+                        value={image}
+                        render={({ open }) => (
+                          <Button isDefault onClick={open}>
+                            {image_name}
+                          </Button>
+                        )}
+                      />
+                      {image && image.url !== "null" && image.url !== "" && (
+                        <Button
+                          className="responsive-block-editor-addons-rm-btn"
+                          onClick={this.onRemoveImage}
+                          isLink
+                          isDestructive
+                        >
+                          {__("Remove Image", "responsive-block-editor-addons")}
+                        </Button>
+                      )}
+                    </BaseControl>
+                  </Fragment>
+                )}
+                {"icon" == source_type && (
+                  <Fragment>
+                    <p className="components-base-control__label">{__("Icon")}</p>
+                    <FontIconPicker
+                      icons={svg_icons}
+                      renderFunc={renderSVG}
+                      theme="default"
+                      value={icon}
+                      onChange={(value) => setAttributes({ icon: value })}
+                      isMulti={false}
+                      noSelectedPlaceholder={__(
+                        "Select Icon",
+                        "responsive-block-editor-addons"
+                      )}
+                    />
+                    <hr className="responsive-block-editor-addons-editor__separator" />
+                  </Fragment>
+                )}
+                <h2>{__("List Item Link")}</h2>
                 <ToggleControl
-                  label={__("Open in New Tab")}
-                  checked={target}
-                  onChange={(value) => setAttributes({ target: !target })}
+                  label={__("Disable Link")}
+                  checked={disableLink}
+                  onChange={(value) => setAttributes({ disableLink: !disableLink })}
                 />
-              </Fragment>
-            )}
-          </PanelBody>
+                {!disableLink && (
+                  <Fragment>
+                    <p className="components-base-control__label">{__("URL")}</p>
+                    <TextControl
+                      value={link}
+                      onChange={(value) => setAttributes({ link: value })}
+                      placeholder={__("Enter URL")}
+                    />
+                    <ToggleControl
+                      label={__("Open in New Tab")}
+                      checked={target}
+                      onChange={(value) => setAttributes({ target: !target })}
+                    />
+                  </Fragment>
+                )}
+              </PanelBody>
+            </InspectorTab>
+            <InspectorTab key={'style'}>
+              <PanelBody
+                title={__("Colors", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
+                {iconColorControls()}
+              </PanelBody>
+            </InspectorTab>
+            <InspectorTab key={'advance'}>
+
+            </InspectorTab>
+          </InspectorTabs>
         </InspectorControls>
       </Fragment>
     );

@@ -4,6 +4,8 @@
 
 import generateCSS from "../../generateCSS";
 import generateCSSUnit from "../../generateCSSUnit";
+import { hexToRgba } from "../../utils/index";
+import generateBackgroundImageEffect from "../../generateBackgroundImageEffect";
 
 function EditorStyles(props) {
   const {
@@ -45,30 +47,55 @@ function EditorStyles(props) {
     descLineHeightTablet,
     descLineHeightMobile,
     descSpace,
+    descSpaceMobile,
+    descSpaceTablet,
     nameSpace,
+    nameSpaceMobile,
+    nameSpaceTablet,
     imgVrPadding,
+    imgVrPaddingMobile,
+    imgVrPaddingTablet,
     imgHrPadding,
+    imgHrPaddingMobile,
+    imgHrPaddingTablet,
     imageWidth,
     rowGap,
+    rowGapMobile,
+    rowGapTablet,
     columnGap,
+    columnGapMobile,
+    columnGapTablet,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     backgroundColor,
     backgroundImage,
-    backgroundPosition,
-    backgroundSize,
-    backgroundRepeat,
+    backgroundImagePosition,
+    backgroundImageSize,
+    backgroundImageRepeat,
     backgroundImageColor,
+    backgroundAttachment,
+    overlayType,
+    gradientOverlayColor1,
+    gradientOverlayLocation1,
+    gradientOverlayColor2,
+    gradientOverlayLocation2,
+    gradientOverlayType,
+    gradientOverlayAngle,
+    gradientOverlayPosition,
     backgroundOpacity,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     arrowColor,
     test_item_count,
     columns,
     arrowDots,
     arrowSize,
     blockPadding,
+    blockPaddingMobile,
+    blockPaddingTablet,
   } = props.attributes;
 
   var img_align = "center";
@@ -79,7 +106,40 @@ function EditorStyles(props) {
     img_align = "flex-end";
   }
 
-  var position = backgroundPosition.replace("-", " ");
+  let updatedBackgroundImage = "";
+  let backgroundImageEffect = "";
+  let imgopacity = backgroundOpacity / 100;
+
+  if (backgroundImage) {
+    updatedBackgroundImage = `linear-gradient(${hexToRgba(
+      backgroundImageColor || "#fff",
+      imgopacity || 0
+    )},${hexToRgba(
+      backgroundImageColor || "#fff",
+      imgopacity || 0
+    )}),url(${backgroundImage})`;
+    backgroundImageEffect = "";
+    if (gradientOverlayType === "linear") {
+      backgroundImageEffect = generateBackgroundImageEffect(
+        `${hexToRgba(gradientOverlayColor1 || "#fff", imgopacity || 0)}`,
+        `${hexToRgba(gradientOverlayColor2 || "#fff", imgopacity || 0)}`,
+        gradientOverlayAngle,
+        gradientOverlayLocation1,
+        gradientOverlayLocation2
+      );
+    }
+    else {
+      backgroundImageEffect = `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
+        gradientOverlayColor1 || "#fff",
+        imgopacity || 0
+      )} ${gradientOverlayLocation1}%, ${hexToRgba(
+        gradientOverlayColor2 || "#fff",
+        imgopacity || 0
+      )} ${gradientOverlayLocation2}%)`;
+    }
+  }
+
+  var position = backgroundImagePosition.replace("-", " ");
 
   var selectors = {
     " ": {
@@ -138,19 +198,18 @@ function EditorStyles(props) {
       "background-color": backgroundColor,
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__content": {
-      "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
-        : null,
-      "background-position": position,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-image": updatedBackgroundImage,
+      "background-position": backgroundImagePosition,
+      "background-attachment": backgroundAttachment,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
-      "background-color": backgroundImageColor,
-      opacity:
-        typeof backgroundOpacity != "undefined"
-          ? (100 - backgroundOpacity) / 100
-          : 0.5,
+      "background-color":
+        overlayType == "color"
+          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
+          : undefined,
+      "background-image": backgroundImageEffect,
     },
   };
 
@@ -160,20 +219,20 @@ function EditorStyles(props) {
     };
   }
 
-  if (borderStyle != "none") {
+  if (blockBorderStyle != "none") {
     selectors[
       " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content"
     ] = {
-      "border-style": borderStyle,
-      "border-color": borderColor,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-style": blockBorderStyle,
+      "border-color": blockBorderColor,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     };
   } else {
     selectors[
       " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content"
     ] = {
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     };
   }
 
@@ -197,6 +256,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__desc": {
       "font-size": generateCSSUnit(descFontSizeMobile, descFontSizeType),
       "line-height": generateCSSUnit(descLineHeightMobile, descLineHeightType),
+      "margin-bottom": generateCSSUnit(descSpaceMobile, "px"),
     },
     " .responsive-block-editor-addons-tm__company": {
       "font-size": generateCSSUnit(companyFontSizeMobile, companyFontSizeType),
@@ -208,8 +268,24 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__author-name": {
       "font-size": generateCSSUnit(nameFontSizeMobile, nameFontSizeType),
       "line-height": generateCSSUnit(nameLineHeightMobile, nameLineHeightType),
+      "margin-bottom": generateCSSUnit(nameSpaceMobile, "px"),
+    },
+    " ": {
+      "padding": generateCSSUnit(blockPaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial__wrap": {
+      "padding-left": generateCSSUnit(columnGapMobile / 2, "px"),
+      "padding-right": generateCSSUnit(columnGapMobile / 2, "px"),
+      "margin-bottom": generateCSSUnit(rowGapMobile, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image-content": {
+      "padding-left": generateCSSUnit(imgHrPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(imgHrPaddingMobile, "px"),
+      "padding-top": generateCSSUnit(imgVrPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(imgVrPaddingMobile, "px"),
     },
     " .responsive-block-editor-addons-tm__content": {
+      padding: generateCSSUnit(contentPaddingMobile, "px"),
       "text-align": headingAlignMobile,
     },
   };
@@ -218,6 +294,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__desc": {
       "font-size": generateCSSUnit(descFontSizeTablet, descFontSizeType),
       "line-height": generateCSSUnit(descLineHeightTablet, descLineHeightType),
+      "margin-bottom": generateCSSUnit(descSpaceTablet, "px"),
     },
     " .responsive-block-editor-addons-tm__company": {
       "font-size": generateCSSUnit(companyFontSizeTablet, companyFontSizeType),
@@ -229,11 +306,24 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__author-name": {
       "font-size": generateCSSUnit(nameFontSizeTablet, nameFontSizeType),
       "line-height": generateCSSUnit(nameLineHeightTablet, nameLineHeightType),
+      "margin-bottom": generateCSSUnit(nameSpaceTablet, "px"),
+    },
+    " ": {
+      "padding": generateCSSUnit(blockPaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial__wrap": {
+      "padding-left": generateCSSUnit(columnGapTablet / 2, "px"),
+      "padding-right": generateCSSUnit(columnGapTablet / 2, "px"),
+      "margin-bottom": generateCSSUnit(rowGapTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image-content": {
+      "padding-left": generateCSSUnit(imgHrPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(imgHrPaddingTablet, "px"),
+      "padding-top": generateCSSUnit(imgVrPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(imgVrPaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-tm__content": {
-      "text-align": "center",
-    },
-    " .responsive-block-editor-addons-tm__content": {
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
       "text-align": headingAlignTablet,
     },
   };

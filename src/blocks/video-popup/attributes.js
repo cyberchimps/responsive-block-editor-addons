@@ -58,7 +58,7 @@ const attributes = {
     type: "number",
     default: 50,
   },
-  imgURL: {
+  backgroundImage: {
     type: "string",
   },
   imgID: {

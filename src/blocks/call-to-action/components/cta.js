@@ -33,7 +33,7 @@ export default class CallToAction extends Component {
         ctaTitleFontSize,
         ctaTextFontSize,
         ctaWidth,
-        ctaBackgroundColor,
+        backgroundColor,
         ctaTextColor,
         opacity,
       },

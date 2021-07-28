@@ -1,5 +1,9 @@
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
 
 /**
  * Inspector Controls
@@ -29,18 +33,30 @@ export default class Inspector extends Component {
       attributes: {
         showTitle,
         linkSpace,
+        linkSpaceMobile,
+        linkSpaceTablet,
         textSpace,
+        textSpaceMobile,
+        textSpaceTablet,
         titleSpace,
+        titleSpaceMobile,
+        titleSpaceTablet,
         titleFontFamily,
         titleFontSize,
+        titleFontSizeMobile,
+        titleFontSizeTablet,
         titleFontWeight,
         titleLineHeight,
         textFontFamily,
         textFontSize,
+        textFontSizeMobile,
+        textFontSizeTablet,
         textFontWeight,
         textLineHeight,
         linkFontFamily,
         linkFontSize,
+        linkFontSizeMobile,
+        linkFontSizeTablet,
         linkFontWeight,
         linkLineHeight,
         textColor,
@@ -95,237 +111,129 @@ export default class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
-        <PanelBody
-          title={__("General", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <ToggleControl
-            label={__("Title", "responsive-block-editor-addons")}
-            checked={showTitle}
-            onChange={() =>
-              this.props.setAttributes({
-                showTitle: !showTitle,
-              })
-            }
-          />
-        </PanelBody>
-        <PanelBody
-          title={__("Typography", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          {showTitle && (
-            <PanelBody
-              title={__("Title Typography", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <SelectControl
-                label={__("Font Family", "responsive-block-editor-addons")}
-                options={fontOptions}
-                value={titleFontFamily}
-                onChange={(value) => {
-                  setAttributes({
-                    titleFontFamily: value,
-                  }),
-                    loadGoogleFont(value);
+      <InspectorTabs>
+        <InspectorTab key={'content'}>
+          <PanelBody
+            title={__("General", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <ToggleControl
+              label={__("Title", "responsive-block-editor-addons")}
+              checked={showTitle}
+              onChange={() =>
+                this.props.setAttributes({
+                  showTitle: !showTitle,
+                })
+              }
+            />
+          </PanelBody>
+        </InspectorTab>
+        <InspectorTab key={'style'}>
+          <PanelBody
+            title={__("Typography", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            {showTitle && (
+              <TypographyHelperControl
+                title={__("Title Typography", "responsive-block-editor-addons")} 
+                attrNameTemplate="title%s"
+                values = {{
+                  family: titleFontFamily, 
+                  size: titleFontSize, 
+                  sizeMobile: titleFontSizeMobile, 
+                  sizeTablet: titleFontSizeTablet, 
+                  weight: titleFontWeight, 
+                  height: titleLineHeight,
                 }}
+                showLetterSpacing = { false }
+                showTextTransform = { false }
+                setAttributes={ setAttributes }
+                {...this.props}            
               />
-              <RangeControl
-                label={__("Font Size", "responsive-block-editor-addons")}
-                value={titleFontSize}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    titleFontSize: value,
-                  })
-                }
-                min={0}
-                max={100}
-                step={1}
-              />
-              <SelectControl
-                label={__("Font Weight", "responsive-block-editor-addons")}
-                options={fontWeightOptions}
-                value={titleFontWeight}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    titleFontWeight: value,
-                  })
-                }
-              />
-
-              <RangeControl
-                label={__("Line Height", "responsive-block-editor-addons")}
-                value={titleLineHeight}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    titleLineHeight: value,
-                  })
-                }
-                min={0}
-                max={100}
-                step={0.01}
-              />
-            </PanelBody>
-          )}
-          <PanelBody
-            title={__("Text Typography", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={textFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  textFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <RangeControl
-              label={__("Font Size", "responsive-block-editor-addons")}
-              value={textFontSize}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  textFontSize: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-            />
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={textFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  textFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={textLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  textLineHeight: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={0.01}
-            />
-          </PanelBody>
-          <PanelBody
-            title={__("Link Typography", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={linkFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  linkFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <RangeControl
-              label={__("Font Size", "responsive-block-editor-addons")}
-              value={linkFontSize}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  linkFontSize: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-            />
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={linkFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  linkFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={linkLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  linkLineHeight: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={0.01}
-            />
-          </PanelBody>
-        </PanelBody>
-        <PanelBody
-          title={__("Spacing", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <RangeControl
-            label={__(
-              "Title - Margin Bottom",
-              "responsive-block-editor-addons"
             )}
-            value={titleSpace}
-            onChange={(value) =>
-              setAttributes({ titleSpace: value !== undefined ? value : 28 })
-            }
-            min={-100}
-            max={100}
-            allowReset
-          />
-          <RangeControl
-            label={__("Text - Margin Bottom", "responsive-block-editor-addons")}
-            value={textSpace}
-            onChange={(value) =>
-              setAttributes({ textSpace: value !== undefined ? value : 20 })
-            }
-            min={-100}
-            max={100}
-            allowReset
-          />
-          <RangeControl
-            label={__("Link - Margin Botton", "responsive-block-editor-addons")}
-            value={linkSpace}
-            onChange={(value) =>
-              setAttributes({ linkSpace: value !== undefined ? value : 18 })
-            }
-            min={-100}
-            max={100}
-            allowReset
-          />
-        </PanelBody>
-        <PanelColorSettings
-          title={__("Color Setting", "responsive-block-editor-addons")}
-          initialOpen={false}
-          colorSettings={[
-            {
-              value: textColor,
-              onChange: onChangeTextColor,
-              label: __("Text Color", "responsive-block-editor-addons"),
-            },
-            {
-              value: linkColor,
-              onChange: onChangeLinkColor,
-              label: __("Link Color", "responsive-block-editor-addons"),
-            },
-            {
-              value: titleColor,
-              onChange: onChangeTitleColor,
-              label: __("Title Color", "responsive-block-editor-addons"),
-            },
-          ]}
-        ></PanelColorSettings>
+            <TypographyHelperControl
+              title={__("Text Typography", "responsive-block-editor-addons")} 
+              attrNameTemplate="text%s"
+              values = {{
+                family: textFontFamily, 
+                size: textFontSize, 
+                sizeMobile: textFontSizeMobile, 
+                sizeTablet: textFontSizeTablet, 
+                weight: textFontWeight, 
+                height: textLineHeight,
+              }}
+              showLetterSpacing = { false }
+              showTextTransform = { false }
+              setAttributes={ setAttributes }
+              {...this.props}            
+            />
+            <TypographyHelperControl
+              title={__("Link Typography", "responsive-block-editor-addons")} 
+              attrNameTemplate="link%s"
+              values = {{
+                family: linkFontFamily, 
+                size: linkFontSize, 
+                sizeMobile: linkFontSizeMobile, 
+                sizeTablet: linkFontSizeTablet, 
+                weight: linkFontWeight, 
+                height: linkLineHeight,
+              }}
+              showLetterSpacing = { false }
+              showTextTransform = { false }
+              setAttributes={ setAttributes }
+              {...this.props}            
+            />
+          </PanelBody>
+          <PanelBody
+            title={__("Spacing", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <ResponsiveSpacingControl
+              title={"Title - Margin Bottom"}
+              attrNameTemplate="titleSpace%s"
+              values={{ desktop: titleSpace, tablet: titleSpaceTablet, mobile: titleSpaceMobile }}
+              setAttributes={setAttributes}
+              {...this.props}
+            />
+            <ResponsiveSpacingControl
+              title={"Text - Margin Bottom"}
+              attrNameTemplate="textSpace%s"
+              values={{ desktop: textSpace, tablet: textSpaceTablet, mobile: textSpaceMobile }}
+              setAttributes={setAttributes}
+              {...this.props}
+            />
+            <ResponsiveSpacingControl
+              title={"Link - Margin Bottom"}
+              attrNameTemplate="linkSpace%s"
+              values={{ desktop: linkSpace, tablet: linkSpaceTablet, mobile: linkSpaceMobile }}
+              setAttributes={setAttributes}
+              {...this.props}
+            />
+          </PanelBody>
+          <PanelColorSettings
+            title={__("Color Setting", "responsive-block-editor-addons")}
+            initialOpen={false}
+            colorSettings={[
+              {
+                value: textColor,
+                onChange: onChangeTextColor,
+                label: __("Text Color", "responsive-block-editor-addons"),
+              },
+              {
+                value: linkColor,
+                onChange: onChangeLinkColor,
+                label: __("Link Color", "responsive-block-editor-addons"),
+              },
+              {
+                value: titleColor,
+                onChange: onChangeTitleColor,
+                label: __("Title Color", "responsive-block-editor-addons"),
+              },
+            ]}
+          ></PanelColorSettings>
+        </InspectorTab>
+        <InspectorTab key={'advance'}></InspectorTab>
+      </InspectorTabs>       
       </InspectorControls>
     );
   }

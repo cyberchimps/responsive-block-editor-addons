@@ -20,7 +20,7 @@ function EditorStyles(props) {
     dateFontSizeTablet,
     dateFontFamily,
     headingLineHeight,
-    titleFontWeight,
+    headingFontWeight,
     headingFontFamily,
     headingFontSize,
     headingFontSizeMobile,
@@ -47,7 +47,9 @@ function EditorStyles(props) {
     shapeBorderRadius,
     shapePadding,
     shapeBorder,
-    contentSpacing,
+    contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     iconSpacing,
   } = props.attributes;
 
@@ -91,7 +93,7 @@ function EditorStyles(props) {
       "line-height": headingLineHeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
       "font-family": headingFontFamily,
-      "font-weight": titleFontWeight,
+      "font-weight": headingFontWeight,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
     },
     ".responsive-count__inner .responsive-count-item__price-wrapper .responsive-count-item__amount": {
@@ -117,17 +119,17 @@ function EditorStyles(props) {
       "font-size": `${headingFontSizeMobile}px`,
     },
     ".responsive-count__inner .responsive-count-item__price-wrapper .responsive-count-item__amount": {
-      "font-size": `${generateCSSUnit(dateFontSizeMobile, "px")} !important`,
+      "font-size": generateCSSUnit(dateFontSizeMobile, "px"),
     },
     " .responsive-count-item__features": {
-      "font-size": `${generateCSSUnit(contentFontSizeMobile, "px")} !important`,
+      "font-size": `${contentFontSizeMobile}px`,
+    },
+    ".responsive-count": {
+      "padding": `${contentPaddingMobile}px`,
     },
   };
 
   var tablet_selectors = {
-    ".responsive-count__inner .responsive-count-item__title": {
-      "font-size": `${headingFontSize}px`,
-    },
     ".responsive-count__inner .responsive-count-item__title": {
       "font-size": `${headingFontSizeTablet}px`,
     },
@@ -135,13 +137,16 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(dateFontSizeTablet, "px"),
     },
     " .responsive-count-item__features": {
-      "font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+      "font-size": `${contentFontSizeTablet}px`,
+    },
+    ".responsive-count": {
+      "padding": `${contentPaddingTablet}px`,
     },
   };
 
   var paddingContent = {
     ".responsive-count": {
-      padding: `${contentSpacing}px`,
+      padding: `${contentPadding}px`,
     },
   };
   var styling_css = "";

@@ -19,7 +19,7 @@ function EditorStyles(props) {
     vidheightMobile,
     vidBackgroundColor,
     opacity,
-    imgURL,
+    backgroundImage,
     butopacity,
     blockBorderStyle,
     blockBorderWidth,
@@ -44,8 +44,8 @@ function EditorStyles(props) {
   let playopacity = butopacity / 100;
 
   let updatedImgUrl = "";
-  if (imgURL && !!imgURL.length) {
-    updatedImgUrl = imgURL;
+  if (backgroundImage && !!backgroundImage.length) {
+    updatedImgUrl = backgroundImage;
   }
 
   var selectors = {

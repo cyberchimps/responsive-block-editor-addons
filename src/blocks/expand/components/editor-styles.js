@@ -10,18 +10,30 @@ function EditorStyles(props) {
     block_id,
     expandAlignment,
     linkSpace,
+    linkSpaceMobile,
+    linkSpaceTablet,
     textSpace,
+    textSpaceMobile,
+    textSpaceTablet,
     titleSpace,
+    titleSpaceMobile,
+    titleSpaceTablet,
     titleFontFamily,
     titleFontSize,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
     titleFontWeight,
     titleLineHeight,
     textFontFamily,
     textFontSize,
+    textFontSizeMobile,
+    textFontSizeTablet,
     textFontWeight,
     textLineHeight,
     linkFontFamily,
     linkFontSize,
+    linkFontSizeMobile,
+    linkFontSizeTablet,
     linkFontWeight,
     linkLineHeight,
     textColor,
@@ -80,9 +92,51 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " .responsive-block-editor-addons-expand-title": {
+      "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-text": {
+      "font-size": generateCSSUnit(textFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(textSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-toggle-text": {
+      "font-size": generateCSSUnit(linkFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(linkSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-text": {
+      "font-size": generateCSSUnit(textFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(textSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-toggle-text": {
+      "font-size": generateCSSUnit(linkFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(linkSpaceMobile, "px"),
+    },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " .responsive-block-editor-addons-expand-title": {
+      "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-text": {
+      "font-size": generateCSSUnit(textFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(textSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-toggle-text": {
+      "font-size": generateCSSUnit(linkFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(linkSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-text": {
+      "font-size": generateCSSUnit(textFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(textSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-toggle-text": {
+      "font-size": generateCSSUnit(linkFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(linkSpaceTablet, "px"),
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-expand.block-${block_id}`;

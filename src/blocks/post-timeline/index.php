@@ -635,6 +635,14 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'contentPaddingMobile'      => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'contentPaddingTablet'      => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
 				'authorSpace'         => array(
 					'type' => 'number',
 				),
@@ -687,6 +695,14 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 16,
 				),
+				'dateFontSizeMobile'        => array(
+					'type'    => 'number',
+					'default' => 16,
+				),
+				'dateFontSizeTablet'        => array(
+					'type'    => 'number',
+					'default' => 16,
+				),
 				'dateFontWeight'      => array(
 					'type'    => 'string',
 					'default' => 400,
@@ -696,6 +712,14 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'default' => 1.75,
 				),
 				'headingFontSize'     => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'headingFontSizeMobile'     => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'headingFontSizeTablet'     => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
@@ -711,6 +735,14 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 14,
 				),
+				'authorFontSizeMobile'      => array(
+					'type'    => 'number',
+					'default' => 14,
+				),
+				'authorFontSizeTablet'      => array(
+					'type'    => 'number',
+					'default' => 14,
+				),
 				'authorFontWeight'    => array(
 					'type'    => 'string',
 					'default' => 400,
@@ -723,6 +755,14 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 16,
 				),
+				'contentFontSizeMobile'     => array(
+					'type'    => 'number',
+					'default' => 16,
+				),
+				'contentFontSizeTablet'     => array(
+					'type'    => 'number',
+					'default' => 16,
+				),
 				'contentFontWeight'   => array(
 					'type'    => 'string',
 					'default' => 400,
@@ -732,6 +772,14 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'default' => 1.75,
 				),
 				'continueFontSize'    => array(
+					'type'    => 'number',
+					'default' => 16,
+				),
+				'continueFontSizeMobile'    => array(
+					'type'    => 'number',
+					'default' => 16,
+				),
+				'continueFontSizeTablet'    => array(
 					'type'    => 'number',
 					'default' => 16,
 				),

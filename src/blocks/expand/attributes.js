@@ -43,11 +43,35 @@ const attributes = {
     type: "number",
     default: 28,
   },
+  titleSpaceMobile: {
+    type: "number",
+    default: 28,
+  },
+  titleSpaceTablet: {
+    type: "number",
+    default: 28,
+  },
   textSpace: {
     type: "number",
     default: 20,
   },
+  textSpaceMobile: {
+    type: "number",
+    default: 20,
+  },
+  textSpaceTablet: {
+    type: "number",
+    default: 20,
+  },
   linkSpace: {
+    type: "number",
+    default: 18,
+  },
+  linkSpaceMobile: {
+    type: "number",
+    default: 18,
+  },
+  linkSpaceTablet: {
     type: "number",
     default: 18,
   },
@@ -64,6 +88,14 @@ const attributes = {
     type: "number",
     default: 20,
   },
+  titleFontSizeMobile: {
+    type: "number",
+    default: 20,
+  },
+  titleFontSizeTablet: {
+    type: "number",
+    default: 20,
+  },
   titleFontWeight: {
     type: "number",
     default: 400,
@@ -76,6 +108,14 @@ const attributes = {
     type: "number",
     default: 16,
   },
+  textFontSizeMobile: {
+    type: "number",
+    default: 16,
+  },
+  textFontSizeTablet: {
+    type: "number",
+    default: 16,
+  },
   textFontWeight: {
     type: "number",
     default: 400,
@@ -85,6 +125,14 @@ const attributes = {
     default: 2,
   },
   linkFontSize: {
+    type: "number",
+    default: 16,
+  },
+  linkFontSizeMobile: {
+    type: "number",
+    default: 16,
+  },
+  linkFontSizeTablet: {
     type: "number",
     default: 16,
   },

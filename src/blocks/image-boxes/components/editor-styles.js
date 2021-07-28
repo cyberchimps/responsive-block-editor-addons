@@ -46,13 +46,19 @@ function EditorStyles(props) {
     titleColor,
     descriptionFontFamily,
     descriptionFontSize,
+    descriptionFontSizeMobile,
+    descriptionFontSizeTablet,
     descriptionFontWeight,
     descriptionLineHeight,
     descriptionColor,
     imageSize,
     verticalAlignment,
     titleSpacing,
+    titleSpacingTablet,
+    titleSpacingMobile,
     descriptionSpacing,
+    descriptionSpacingTablet,
+    descriptionSpacingMobile,
     arrowColor,
     arrowSize,
     backgroundImageOne,
@@ -242,6 +248,15 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
+    " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
+        "margin-top": generateCSSUnit(titleSpacingMobile, "px"),
+        "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+        "font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+        "margin-top": generateCSSUnit(descriptionSpacingMobile, "px"),
+        "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -249,8 +264,15 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
-      "font-size": generateCSSUnit(titleFontSize, "px") + "!important",
+       "font-size": generateCSSUnit(titleFontSize, "px") + "!important",
+       "margin-top": generateCSSUnit(titleSpacingTablet, "px"),
+       "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
     },
+    " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+      "font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+      "margin-top": generateCSSUnit(descriptionSpacingTablet, "px"),
+      "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
+  },
   };
 
   var externalStyles = {

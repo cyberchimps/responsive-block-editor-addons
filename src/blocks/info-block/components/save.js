@@ -39,7 +39,7 @@ export default class Save extends Component {
       resctaType,
       resctaText,
       resctaLink,
-      resctaTarget,
+      buttonTarget,
       resctaLinkColor,
       resctaFontSize,
       iconImage,
@@ -47,12 +47,10 @@ export default class Save extends Component {
       resshowTitle,
       resshowDesc,
       counterId,
-      imgURL,
+      backgroundImage,
       dimRatio,
       imageBoxShadowPosition,
       imageopacity,
-      resBoxTarget,
-      resBoxLink
     } = this.props.attributes;
     var imageBoxShadowPositionCSS = imageBoxShadowPosition;
 
@@ -70,14 +68,8 @@ export default class Save extends Component {
 
     let target = "_self";
     let rel = "noopener noreferrer";
-    if (resctaTarget) {
+    if (buttonTarget) {
       target = "_blank";
-    }
-
-    let boxRefLink = "_self";
-    let boxRel= "noopener noreferrer";
-    if(resBoxTarget) {
-      boxRefLink = "_blank";
     }
 
     let url_chk = "";
@@ -180,10 +172,7 @@ export default class Save extends Component {
             ...InfoBoxPositionClasses(this.props.attributes)
           )}
         >
-          {resctaType === 'complete_box' && (
-            	<a className = "responsive-block-editor-addons-infobox-cta-link-complete-box" href={resBoxLink} target={boxRefLink} aria-label={"Infoblock Link"} rel ={boxRel}></a>
-          )}
-          {imgURL && !!imgURL.length && (
+          {backgroundImage && !!backgroundImage.length && (
             <div className="responsive-block-editor-addons-cta-image-wrap">
               <img
                 className={classnames(
@@ -203,85 +192,85 @@ export default class Save extends Component {
 
               {(imgiconPosition == "above-title" ||
                 imgiconPosition == "below-title") && (
-                <div className="responsive-block-editor-addons-ifb-title-wrap">
-                  {resshowPrefix && (
-                    <RichText.Content
-                      tagName="span"
-                      value={resprefixTitle}
-                      className="responsive-block-editor-addons-ifb-title-prefix"
-                    />
-                  )}
-                  {"none" !== resseperatorStyle &&
-                    seperator_position == "after_prefix" &&
-                    seperator_html}
-                  {resshowTitle && (
-                    <RichText.Content
-                      tagName={resheadingTag}
-                      value={resinfoBlockTitle}
-                      className="responsive-block-editor-addons-ifb-title"
-                    />
-                  )}
-                </div>
-              )}
+                  <div className="responsive-block-editor-addons-ifb-title-wrap">
+                    {resshowPrefix && (
+                      <RichText.Content
+                        tagName="span"
+                        value={resprefixTitle}
+                        className="responsive-block-editor-addons-ifb-title-prefix"
+                      />
+                    )}
+                    {"none" !== resseperatorStyle &&
+                      seperator_position == "after_prefix" &&
+                      seperator_html}
+                    {resshowTitle && (
+                      <RichText.Content
+                        tagName={resheadingTag}
+                        value={resinfoBlockTitle}
+                        className="responsive-block-editor-addons-ifb-title"
+                      />
+                    )}
+                  </div>
+                )}
 
               {imgiconPosition == "below-title" && icon_image_html}
 
               {(imgiconPosition == "above-title" ||
                 imgiconPosition == "below-title") && (
-                <Fragment>
-                  {"none" !== resseperatorStyle &&
-                    seperator_position == "after_title" &&
-                    show_seperator &&
-                    seperator_html}
-                  <div className="responsive-block-editor-addons-ifb-text-wrap">
-                    {resshowDesc && (
-                      <RichText.Content
-                        tagName="p"
-                        value={resDescHeading}
-                        className="responsive-block-editor-addons-ifb-desc"
-                      />
-                    )}
+                  <Fragment>
                     {"none" !== resseperatorStyle &&
-                      seperator_position == "after_desc" &&
+                      seperator_position == "after_title" &&
+                      show_seperator &&
                       seperator_html}
-                    <div className="responsive-block-editor-addons-ifb-cta responsive-block-editor-addons-infobox-cta-link-style">
-                      {resctaType === "text" && (
-                        <a
-                          href={resctaLink}
-                          target={target}
-                          className="responsive-block-editor-addons-infobox-cta-link"
-                          rel={rel}
-                        >
-                          <span className="responsive-block-editor-addons-inline-editing">
-                            {resctaText}
-                          </span>
-                        </a>
+                    <div className="responsive-block-editor-addons-ifb-text-wrap">
+                      {resshowDesc && (
+                        <RichText.Content
+                          tagName="p"
+                          value={resDescHeading}
+                          className="responsive-block-editor-addons-ifb-desc"
+                        />
                       )}
-
-                      {resctaType === "button" && (
-                        <div
-                          className={classnames(
-                            "responsive-block-editor-addons-ifb-button-wrapper"
-                          )}
-                        >
+                      {"none" !== resseperatorStyle &&
+                        seperator_position == "after_desc" &&
+                        seperator_html}
+                      <div className="responsive-block-editor-addons-ifb-cta responsive-block-editor-addons-infobox-cta-link-style">
+                        {resctaType === "text" && (
                           <a
                             href={resctaLink}
-                            className={ctaBtnClass}
                             target={target}
+                            className="responsive-block-editor-addons-infobox-cta-link"
                             rel={rel}
                           >
-                            <span className="responsive-block-editor-addons-ifb-cta-content-wrapper">
-                              <span className="responsive-block-editor-addons-inline-editing ">
-                                {resctaText}
-                              </span>
+                            <span className="responsive-block-editor-addons-inline-editing">
+                              {resctaText}
                             </span>
                           </a>
-                        </div>
-                      )}
+                        )}
+
+                        {resctaType === "button" && (
+                          <div
+                            className={classnames(
+                              "responsive-block-editor-addons-ifb-button-wrapper"
+                            )}
+                          >
+                            <a
+                              href={resctaLink}
+                              className={ctaBtnClass}
+                              target={target}
+                              rel={rel}
+                            >
+                              <span className="responsive-block-editor-addons-ifb-cta-content-wrapper">
+                                <span className="responsive-block-editor-addons-inline-editing ">
+                                  {resctaText}
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </Fragment>
-              )}
+                  </Fragment>
+                )}
 
               {imgiconPosition === "left-title" && (
                 <Fragment>

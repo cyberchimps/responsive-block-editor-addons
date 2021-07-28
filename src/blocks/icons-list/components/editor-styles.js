@@ -19,7 +19,7 @@ function EditorStyles(props) {
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontLineHeight,
+    labelLineHeight,
     labelFontSizeTablet,
     labelFontSizeMobile,
     hideLabel,
@@ -78,7 +78,7 @@ function EditorStyles(props) {
       "font-family": labelFontFamily,
       "font-size": generateCSSUnit(labelFontSize, "px"),
       "font-weight": labelFontWeight,
-      "line-height": labelFontLineHeight,
+      "line-height": labelLineHeight,
     },
   };
 

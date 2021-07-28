@@ -114,7 +114,23 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  resheadSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  resheadSpaceTablet: {
+    type: "number",
+    default: 10,
+  },
   ressubHeadSpace: {
+    type: "number",
+    default: 10,
+  },
+  ressubHeadSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  ressubHeadSpaceTablet: {
     type: "number",
     default: 10,
   },
@@ -138,7 +154,7 @@ const attributes = {
     type: "string",
     default: "top",
   },
-  resctaTarget: {
+  buttonTarget: {
     type: "boolean",
     default: false,
   },
@@ -191,39 +207,63 @@ const attributes = {
   resctaFontWeight: {
     type: "string",
   },
-  resctaBtnLinkColor: {
+  ctaColor: {
     type: "string",
     default: "#333",
   },
-  resctaBgColor: {
+  ctaBackColor: {
     type: "string",
     default: "transparent",
   },
-  resctaBorderColor: {
+  ctaBorderColor: {
     type: "string",
     default: "#333",
   },
-  resctaBorderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "solid",
   },
-  ctaBtnVertPadding: {
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  ctaBtnHrPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
-  resctaBorderWidth: {
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 10,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  resctaBorderRadius: {
+  ctaBorderRadius: {
     type: "number",
     default: 0,
   },
   resprefixSpace: {
+    type: "number",
+    default: 5,
+  },
+  resprefixSpaceMobile: {
+    type: "number",
+    default: 5,
+  },
+  resprefixSpaceTablet: {
     type: "number",
     default: 5,
   },
@@ -240,38 +280,6 @@ const attributes = {
     default: 5,
   },
   iconBottomMargin: {
-    type: "number",
-    default: 5,
-  },
-  iconLeftMarginMobile: {
-    type: "number",
-    default: 0,
-  },
-  iconRightMarginMobile: {
-    type: "number",
-    default: 0,
-  },
-  iconTopMarginMobile: {
-    type: "number",
-    default: 5,
-  },
-  iconBottomMarginMobile: {
-    type: "number",
-    default: 5,
-  }, 
-  iconLeftMarginTablet: {
-    type: "number",
-    default: 0,
-  },
-  iconRightMarginTablet: {
-    type: "number",
-    default: 0,
-  },
-  iconTopMarginTablet: {
-    type: "number",
-    default: 5,
-  },
-  iconBottomMarginTablet: {
     type: "number",
     default: 5,
   },
@@ -376,11 +384,19 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  boxBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#ffffff",
   },
   contentPadding: {
+    type: "number",
+    default: 0,
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  contentPaddingTablet: {
     type: "number",
     default: 0,
   },
@@ -392,7 +408,7 @@ const attributes = {
     type: "number",
     default: 100,
   },
-  imgURL: {
+  backgroundImage: {
     type: "string",
   },
   imgID: {
@@ -408,27 +424,27 @@ const attributes = {
     type: "number",
     default: 50,
   },
-  hoverctaBtnLinkColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#333",
   },
-  hoverctaBgColor: {
+  ctaHoverBackColor: {
     type: "string",
     default: "transparent",
   },
-  hoverctaBorderColor: {
+  ctaHoverBorderColor: {
     type: "string",
     default: "#333",
   },
-  imagePosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center center",
   },
-  imageRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  thumbsize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },
@@ -437,6 +453,14 @@ const attributes = {
     default: "scroll",
   },
   sepSpace: {
+    type: "number",
+    default: 10,
+  },
+  sepSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  sepSpaceTablet: {
     type: "number",
     default: 10,
   },
@@ -464,6 +488,28 @@ const attributes = {
     type: "number",
     default: 2,
   },
+  buttoncolorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  buttoncolorLocation2: {
+    type: "number",
+    default: 100,
+  },
+  buttongradientDirection: {
+    type: "number",
+    default: 90,
+  },
+  buttonbackgroundColor1: {
+    type: "string",
+  },
+  buttonbackgroundColor2: {
+    type: "string",
+    default: "#fff",
+  },
+  buttonbackgroundType: {
+    type: "string",
+  },
   ctaTextFontFamily: {
     type: "string",
   },
@@ -485,14 +531,6 @@ const attributes = {
   ctaBottomMargin: {
     type: "number",
     default: 10,
-  },
-  resBoxLink: {
-    type: "string",
-    default: "#",
-  },
-  resBoxTarget: {
-    type: "boolean",
-    default: false,
   },
 };
 export default attributes;

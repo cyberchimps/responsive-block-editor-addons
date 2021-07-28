@@ -18,6 +18,14 @@ const attributes = {
     type: "number",
     default: 18,
   },
+  quoteFontSizeTablet: {
+    type: "number",
+    default: 18,
+  },
+  quoteFontSizeMobile: {
+    type: "number",
+    default: 18,
+  },
   quoteFontWeight: {
     type: "string",
     default: "400",
@@ -33,11 +41,11 @@ const attributes = {
   quoteColor: {
     type: "string",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 1,
   },
@@ -45,46 +53,54 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
-  leftPadding: {
+  blockLeftPadding: {
     type: "number",
     default: 60,
   },
-  leftPaddingMobile: {
+  blockLeftPaddingMobile: {
     type: "number",
     default: 60,
   },
-  leftPaddingTablet: {
+  blockLeftPaddingTablet: {
     type: "number",
     default: 60,
   },
-  rightPadding: {
+  blockRightPadding: {
     type: "number",
     default: 60,
   },
-  rightPaddingMobile: {
+  blockRightPaddingTablet: {
     type: "number",
     default: 60,
   },
-  rightPaddingTablet: {
+  blockRightPaddingMobile: {
     type: "number",
     default: 60,
   },
-  topPadding: {
+  blockTopPadding: {
     type: "number",
     default: 70,
   },
-  topPaddingMobile: {
+  blockTopPaddingMobile: {
     type: "number",
     default: 70,
   },
-  topPaddingTablet: {
+  blockTopPaddingTablet: {
     type: "number",
     default: 70,
   },
-  bottomPadding: {
+  blockBottomPadding: {
+    type: "number",
+    default: 70,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: 70,
+  },
+  blockBottomPaddingTablet: {
     type: "number",
     default: 70,
   },

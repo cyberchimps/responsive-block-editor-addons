@@ -38,11 +38,11 @@ const attributes = {
     type: "string",
     default: "center",
   },
-  buttonBackgroundColor: {
+  ctaBackColor: {
     type: "string",
     default: "#2091e1",
   },
-  buttonTextColor: {
+  ctaColor: {
     type: "string",
     default: "#fff",
   },
@@ -101,14 +101,14 @@ const attributes = {
   ctaWidth: {
     type: "string",
   },
-  ctaBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#f2f2f2",
   },
   ctaTextColor: {
     type: "string",
   },
-  imgURL: {
+  backgroundImage: {
     type: "string",
   },
   imgID: {
@@ -128,37 +128,57 @@ const attributes = {
     type: "number",
     default: 100,
   },
-  headingLineHeight: {
+  ctaTitleLineHeight: {
     type: "number",
     default: 1.8,
   },
-  headingFontWeight: {
+  ctaTitleFontWeight: {
     type: "string",
     default: "400",
   },
-  contentLineHeight: {
+  ctaTextLineHeight: {
     type: "number",
     default: 1.75,
   },
-  contentFontWeight: {
+  ctaTextFontWeight: {
     type: "string",
     default: "400",
   },
-  buttonvPadding: {
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  buttonhPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
-  buttonborderWidth: {
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  buttonborderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "solid",
+  },
+  ctaBorderRadius: {
+    type: "string",
+    default: 0,
   },
   icon: {
     type: "string",
@@ -172,17 +192,17 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  hbuttonBackgroundColor: {
+  ctaHoverBackColor: {
     type: "string",
   },
-  hbuttonTextColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#e6f2ff",
   },
-  buttonborderColor: {
+  ctaBorderColor: {
     type: "string",
   },
-  buttonborderHColor: {
+  ctaHoverBorderColor: {
     type: "string",
   },
   resctaType: {
@@ -196,21 +216,21 @@ const attributes = {
     type: "number",
     default: 25,
   },
-  subtitleSpace: {
-    type: "number",
-    default: 28,
-  },
   titleSpaceMobile: {
     type: "number",
     default: 25,
   },
-  subtitleSpaceMobile: {
-    type: "number",
-    default: 28,
-  },
   titleSpaceTablet: {
     type: "number",
     default: 25,
+  },
+  subtitleSpace: {
+    type: "number",
+    default: 28,
+  },
+  subtitleSpaceMobile: {
+    type: "number",
+    default: 28,
   },
   subtitleSpaceTablet: {
     type: "number",
@@ -271,6 +291,10 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  ctaTextOpacity: {
+    type: "number",
+    default: 100,
+  },
   boxShadowVOffset: {
     type: "number",
     default: 0,
@@ -289,62 +313,63 @@ const attributes = {
     type: "string",
     default: "#3a3a3a",
   },
-  topPadding: {
+  bTopPadding: {
     type: "number",
     default: 20,
   },
-  topPaddingMobile: {
+  bTopPaddingMobile: {
     type: "number",
     default: 20,
   },
-  topPaddingTablet: {
+  bTopPaddingTablet: {
     type: "number",
     default: 20,
   },
-  bottomPadding: {
+  bBottomPadding: {
     type: "number",
     default: 20,
   },
-  bottomPaddingMobile: {
-    type: "number",
-    default: 20,
-  },bottomPaddingTablet: {
+  bBottomPaddingMobile: {
     type: "number",
     default: 20,
   },
-  leftPadding: {
+  bBottomPaddingTablet: {
     type: "number",
     default: 20,
   },
-  leftPaddingMobile: {
+  bLeftPadding: {
     type: "number",
     default: 20,
   },
-  leftPaddingTablet: {
+  bLeftPaddingMobile: {
     type: "number",
     default: 20,
   },
-  rightPadding: {
+  bLeftPaddingTablet: {
     type: "number",
     default: 20,
   },
-  rightPaddingMobile: {
+  bRightPadding: {
     type: "number",
     default: 20,
   },
-  rightPaddingTablet: {
+  bRightPaddingMobile: {
     type: "number",
     default: 20,
   },
-  imagePosition: {
+  bRightPaddingTablet: {
+    type: "number",
+    default: 20,
+  },
+  backgroundImagePosition: {
     type: "string",
     default: "center center",
   },
-  imageRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  thumbsize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },

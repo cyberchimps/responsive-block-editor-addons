@@ -1,5 +1,8 @@
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import InspectorTab from "../../../components/InspectorTab"
+import InspectorTabs from "../../../components/InspectorTabs"
 
 /**
  * Inspector Controls
@@ -82,7 +85,7 @@ export default class Inspector extends Component {
         fontSize,
         labelFontFamily,
         labelFontWeight,
-        labelFontLineHeight,
+        labelLineHeight,
         labelFontSize,
         labelFontSizeTablet,
         labelFontSizeMobile,
@@ -136,240 +139,132 @@ export default class Inspector extends Component {
 
     return (
       <Fragment>
-        <InspectorControls>
-          <PanelBody
-            title={__("General", "responsive-block-editor-addons")}
-            initialOpen={true}
-          >
-            <SelectControl
-              label={__("Layout")}
-              value={icon_layout}
-              options={[
-                {
-                  value: "horizontal",
-                  label: __("Horizontal", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "vertical",
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                },
-              ]}
-              onChange={(value) => setAttributes({ icon_layout: value })}
-            />
-
-            <ToggleControl
-              label={__("Hide Labels", "responsive-block-editor-addons")}
-              checked={hideLabel}
-              onChange={(value) => this.changeChildAttr(value)}
-            />
-            <hr className="responsive-block-editor-addons-editor__separator" />
-            <RangeControl
-              label={__("Gap between Items", "responsive-block-editor-addons")}
-              value={gap}
-              onChange={(value) => setAttributes({ gap: value })}
-              help={__(
-                "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results."
-              )}
-              min={0}
-              max={100}
-            />
-            {!hideLabel && (
-              <Fragment>
+        <InspectorControls key="inspector">
+          <InspectorTabs>
+            <InspectorTab key={'content'}>
+              <PanelBody
+                title={__("General", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
                 <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={labelFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      labelFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
+                  label={__("Layout")}
+                  value={icon_layout}
+                  options={[
                     {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
+                      value: "horizontal",
+                      label: __("Horizontal", "responsive-block-editor-addons"),
                     },
                     {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
+                      value: "vertical",
+                      label: __("Vertical", "responsive-block-editor-addons"),
                     },
                   ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Labels Font Size Mobile",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={labelFontSizeMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                labelFontSizeMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Labels Font Size Tablet",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={labelFontSizeTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                labelFontSizeTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Labels Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={labelFontSize}
-                            onChange={(value) =>
-                              setAttributes({
-                                labelFontSize: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-
-                <SelectControl
-                  label={__(
-                    "Labels Font Weight",
-                    "responsive-block-editor-addons"
-                  )}
-                  options={fontWeightOptions}
-                  value={labelFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      labelFontWeight: value,
-                    })
-                  }
+                  onChange={(value) => setAttributes({ icon_layout: value })}
                 />
 
+                <ToggleControl
+                  label={__("Hide Labels", "responsive-block-editor-addons")}
+                  checked={hideLabel}
+                  onChange={(value) => this.changeChildAttr(value)}
+                />
+                <hr className="responsive-block-editor-addons-editor__separator" />
                 <RangeControl
-                  label={__(
-                    "Labels Line Height",
-                    "responsive-block-editor-addons"
+                  label={__("Gap between Items", "responsive-block-editor-addons")}
+                  value={gap}
+                  onChange={(value) => setAttributes({ gap: value })}
+                  help={__(
+                    "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results."
                   )}
-                  value={labelFontLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      labelFontLineHeight: value !== undefined ? value : 1,
-                    })
-                  }
                   min={0}
                   max={100}
-                  step={1}
+                />
+                {!hideLabel && (
+                  <RangeControl
+                    label={__("Gap between Icon and Label")}
+                    value={inner_gap}
+                    onChange={(value) => setAttributes({ inner_gap: value })}
+                    min={0}
+                    max={100}
+                  />
+                )}
+                <hr className="responsive-block-editor-addons-editor__separator" />
+                <SelectControl
+                  label={__("Icon Alignment")}
+                  value={iconPosition}
+                  options={[
+                    { value: "top", label: __("Top") },
+                    { value: "middle", label: __("Middle") },
+                  ]}
+                  onChange={(value) => setAttributes({ iconPosition: value })}
+                />
+                <hr className="responsive-block-editor-addons-editor__separator" />
+                <RangeControl
+                  label={__("Icon Size", "responsive-block-editor-addons")}
+                  value={size}
+                  onChange={(value) =>
+                    setAttributes({ size: value !== undefined ? value : 16 })
+                  }
+                  min={0}
+                  max={500}
                   allowReset
                 />
-              </Fragment>
-            )}
-            {!hideLabel && (
-              <RangeControl
-                label={__("Gap between Icon and Label")}
-                value={inner_gap}
-                onChange={(value) => setAttributes({ inner_gap: value })}
-                min={0}
-                max={100}
-              />
-            )}
-            <hr className="responsive-block-editor-addons-editor__separator" />
-            <SelectControl
-              label={__("Icon Alignment")}
-              value={iconPosition}
-              options={[
-                { value: "top", label: __("Top") },
-                { value: "middle", label: __("Middle") },
-              ]}
-              onChange={(value) => setAttributes({ iconPosition: value })}
-            />
-            <hr className="responsive-block-editor-addons-editor__separator" />
-            <RangeControl
-              label={__("Icon Size", "responsive-block-editor-addons")}
-              value={size}
-              onChange={(value) =>
-                setAttributes({ size: value !== undefined ? value : 16 })
-              }
-              min={0}
-              max={500}
-              allowReset
-            />
-            <hr className="responsive-block-editor-addons-editor__separator" />
-            <RangeControl
-              label={__("Background Size", "responsive-block-editor-addons")}
-              value={bgSize}
-              onChange={(value) => setAttributes({ bgSize: value })}
-              help={__(
-                "Note: Background Size option is useful when one adds background color to the icons."
+                <hr className="responsive-block-editor-addons-editor__separator" />
+                <RangeControl
+                  label={__("Background Size", "responsive-block-editor-addons")}
+                  value={bgSize}
+                  onChange={(value) => setAttributes({ bgSize: value })}
+                  help={__(
+                    "Note: Background Size option is useful when one adds background color to the icons."
+                  )}
+                  min={0}
+                  max={500}
+                />
+                <RangeControl
+                  label={__("Border", "responsive-block-editor-addons")}
+                  value={border}
+                  onChange={(value) => setAttributes({ border: value })}
+                  help={__(
+                    "Note: Border option is useful when one adds border color to the icons."
+                  )}
+                  min={0}
+                  max={10}
+                />
+                <RangeControl
+                  label={__("Border Radius", "responsive-block-editor-addons")}
+                  value={borderRadius}
+                  onChange={(value) => setAttributes({ borderRadius: value })}
+                  help={__(
+                    "Note: Border Radius option is useful when one adds background color to the icons."
+                  )}
+                  min={0}
+                  max={500}
+                />
+              </PanelBody>
+            </InspectorTab>
+            <InspectorTab key={'style'}>
+              {!hideLabel && (
+                <TypographyHelperControl
+                  title={__("Label Typography", "responsive-block-editor-addons")}
+                  attrNameTemplate="label%s"
+                  values={{
+                    family: labelFontFamily,
+                    size: labelFontSize,
+                    sizeMobile: labelFontSizeMobile,
+                    sizeTablet: labelFontSizeTablet,
+                    weight: labelFontWeight,
+                    height: labelLineHeight,
+                  }}
+                  showLetterSpacing={false}
+                  showTextTransform={false}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
               )}
-              min={0}
-              max={500}
-            />
-            <RangeControl
-              label={__("Border", "responsive-block-editor-addons")}
-              value={border}
-              onChange={(value) => setAttributes({ border: value })}
-              help={__(
-                "Note: Border option is useful when one adds border color to the icons."
-              )}
-              min={0}
-              max={10}
-            />
-            <RangeControl
-              label={__("Border Radius", "responsive-block-editor-addons")}
-              value={borderRadius}
-              onChange={(value) => setAttributes({ borderRadius: value })}
-              help={__(
-                "Note: Border Radius option is useful when one adds background color to the icons."
-              )}
-              min={0}
-              max={500}
-            />
-          </PanelBody>
+            </InspectorTab>
+            <InspectorTab key={'advance'}>
+
+            </InspectorTab>
+          </InspectorTabs>
         </InspectorControls>
       </Fragment>
     );

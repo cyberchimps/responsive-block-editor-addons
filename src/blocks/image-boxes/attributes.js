@@ -68,7 +68,19 @@ const attributes = {
   titleSpacing: {
     type: "number",
   },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  titleSpacingMobile: {
+    type: "number",
+  },
   descriptionSpacing: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
     type: "number",
   },
   blockBorderRadius: {
@@ -213,6 +225,12 @@ const attributes = {
     type: "string",
   },
   descriptionFontSize: {
+    type: "number",
+  },
+  descriptionFontSizeMobile: {
+    type: "number",
+  },
+  descriptionFontSizeTablet: {
     type: "number",
   },
   descriptionFontWeight: {

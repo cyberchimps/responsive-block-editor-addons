@@ -40,13 +40,14 @@ const attributes = {
   textColor: {
     type: "string",
   },
-  itemBackgroundColor: {
+  backgroundColor: {
     type: "string",
   },
-  buttonColor: {
+  ctaBackColor: {
     type: "string",
+    default: "#2091e1",
   },
-  buttonTextColor: {
+  ctaColor: {
     type: "string",
     default: "#fff",
   },
@@ -77,7 +78,23 @@ const attributes = {
     type: "number",
     default: 8,
   },
+  titleSpaceMobile: {
+    type: "number",
+    default: 8,
+  },
+  titleSpaceTablet: {
+    type: "number",
+    default: 8,
+  },
   subtitleSpace: {
+    type: "number",
+    default: 16,
+  },
+  subtitleSpaceMobile: {
+    type: "number",
+    default: 16,
+  },
+  subtitleSpaceTablet: {
     type: "number",
     default: 16,
   },
@@ -85,15 +102,23 @@ const attributes = {
     type: "number",
     default: 16,
   },
+  contentSpaceMobile: {
+    type: "number",
+    default: 16,
+  },
+  contentSpaceTablet: {
+    type: "number",
+    default: 16,
+  },
   buttonSpace: {
     type: "number",
     default: 20,
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 0,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
     default: 12,
   },
@@ -162,6 +187,14 @@ const attributes = {
     type: "number",
     default: 2,
   },
+  blockmarginMobile: {
+    type: "number",
+    default: 2,
+  },
+  blockmarginTablet: {
+    type: "number",
+    default: 2,
+  },
   blockzindex: {
     type: "number",
     default: 1,
@@ -182,22 +215,31 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  buttonhColor: {
+  ctaHoverBackColor: {
     type: "string",
+    default: "#2091e1",
   },
-  buttonhTextColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#e6f2ff",
   },
-  butopacity: {
+  buttonopacity: {
     type: "number",
     default: 100,
   },
-  vPadding: {
+  buttonHopacity: {
+    type: "number",
+    default: 100,
+  },
+  ctaTextOpacity: {
+    typr: "number",
+    default: 100,
+  },
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  hPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
@@ -209,15 +251,15 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  butborderWidth: {
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  butborderRadius: {
+  ctaBorderRadius: {
     type: "number",
     default: 2,
   },
-  butborderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "none",
   },
@@ -273,6 +315,14 @@ const attributes = {
     type: "number",
     default: 16,
   },
+  subFontSizeMobile: {
+    type: "number",
+    default: 16,
+  },
+  subFontSizeTablet: {
+    type: "number",
+    default: 16,
+  },
   headingLineHeight: {
     type: "number",
     default: 1,
@@ -285,11 +335,27 @@ const attributes = {
     type: "number",
     default: 20,
   },
+  headingFontSizeMobile: {
+    type: "number",
+    default: 20,
+  },
+  headingFontSizeTablet: {
+    type: "number",
+    default: 20,
+  },
   contentLineHeight: {
     type: "number",
     default: 2,
   },
   contentFontSize: {
+    type: "number",
+    default: 16,
+  },
+  contentFontSizeMobile: {
+    type: "number",
+    default: 16,
+  },
+  contentFontSizeTablet: {
     type: "number",
     default: 16,
   },
@@ -301,7 +367,23 @@ const attributes = {
     type: "number",
     default: 2,
   },
+  blockbotmarginMobile: {
+    type: "number",
+    default: 2,
+  },
+  blockbotmarginTablet: {
+    type: "number",
+    default: 2,
+  },
   blockleftmargin: {
+    type: "number",
+    default: 0,
+  },
+  blockleftmarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockleftmarginTablet: {
     type: "number",
     default: 0,
   },
@@ -309,7 +391,23 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  blockrightmarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockrightmarginTablet: {
+    type: "number",
+    default: 0,
+  },
   contenttopSpace: {
+    type: "number",
+    default: 16,
+  },
+  contenttopSpaceMobile: {
+    type: "number",
+    default: 16,
+  },
+  contenttopSpaceTablet: {
     type: "number",
     default: 16,
   },
@@ -317,19 +415,19 @@ const attributes = {
     type: "string",
     default: "full",
   },
-  bgimagePosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center center",
   },
-  bgimageRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  bgthumbsize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
@@ -341,7 +439,13 @@ const attributes = {
     type: "string",
     default: "left",
   },
-  borderColor: {
+  blockBorderColor: {
+    type: "string",
+  },
+  ctaBorderColor: {
+    type: "string",
+  },
+  ctaHoverBorderColor: {
     type: "string",
   },
   backgroundImageOne: {
@@ -355,6 +459,38 @@ const attributes = {
   },
   backgroundImageFour: {
     type: "string",
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 10
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 10
+  },
+  vMarginTablet: {
+    type: "number",
+    default: 10
+  },
+  vMarginMobile: {
+    type: "number",
+    default: 10
+  },
+  hMarginTablet: {
+    type: "number",
+    default: 0
+  },
+  hMarginMobile: {
+    type: "number",
+    default: 0
   },
 };
 export default attributes;

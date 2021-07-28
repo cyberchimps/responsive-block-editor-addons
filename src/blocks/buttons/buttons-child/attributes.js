@@ -24,7 +24,7 @@ const attributes = {
     type: "string",
     default: "",
   },
-  target: {
+  buttonTarget: {
     type: "boolean",
     default: true,
   },
@@ -36,27 +36,27 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  vPadding: {
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  hPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
-  vPaddingTablet: {
+  ctaVpaddingTablet: {
     type: "number",
     default: 10,
   },
-  hPaddingTablet: {
+  ctaHpaddingTablet: {
     type: "number",
     default: 14,
   },
-  vPaddingMobile: {
+  ctaVpaddingMobile: {
     type: "number",
     default: 10,
   },
-  hPaddingMobile: {
+  ctaHpaddingMobile: {
     type: "number",
     default: 14,
   },
@@ -84,31 +84,31 @@ const attributes = {
     type: "number",
     default: 5,
   },
-  borderWidth: {
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  borderRadius: {
+  ctaBorderRadius: {
     type: "number",
     default: 2,
   },
-  borderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "solid",
   },
-  borderColor: {
+  ctaBorderColor: {
     type: "string",
   },
-  borderHColor: {
+  ctaHoverBorderColor: {
     type: "string",
   },
-  color: {
+  ctaColor: {
     type: "string",
   },
-  background: {
+  ctaBackColor: {
     type: "string",
   },
-  hColor: {
+  ctaHoverColor: {
     type: "string",
   },
   sizeType: {
@@ -142,25 +142,25 @@ const attributes = {
   opensInNewTab: {
     type: "boolean",
   },
-  colorLocation1: {
+  buttoncolorLocation1: {
     type: "number",
     default: 0,
   },
-  colorLocation2: {
+  buttoncolorLocation2: {
     type: "number",
     default: 100,
   },
-  gradientDirection: {
+  buttongradientDirection: {
     type: "number",
     default: 90,
   },
-  backgroundColor1: {
+  buttonbackgroundColor1: {
     type: "string",
   },
-  backgroundColor2: {
+  buttonbackgroundColor2: {
     type: "string",
   },
-  opacity: {
+  ctaTextOpacity: {
     type: "number",
     default: 100,
   },
@@ -215,7 +215,7 @@ const attributes = {
   icon_hover_color: {
     type: "string",
   },
-  hbackground: {
+  ctaHoverBackColor: {
     type: "string",
   },
   iconSpace: {
@@ -233,7 +233,7 @@ const attributes = {
   hoverEffect: {
     type: "string",
   },
-  backgroundType: {
+  buttonbackgroundType: {
     type: "string",
     default: "none",
   },

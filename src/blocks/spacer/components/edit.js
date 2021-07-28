@@ -21,6 +21,9 @@ const { InspectorControls } = wp.editor;
 const { compose, withInstanceId } = wp.compose;
 const { withDispatch } = wp.data;
 
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
+
 const MIN_SPACER_HEIGHT = 20;
 const MAX_SPACER_HEIGHT = 500;
 const SpacerEdit = ({
@@ -79,83 +82,89 @@ const SpacerEdit = ({
         }}
         showHandle={isSelected}
       />
-      <InspectorControls>
-        <PanelBody title={__("Spacer settings")}>
-          <TabPanel
-            className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-            activeClass="active-tab"
-            tabs={[
-              {
-                name: "desktop",
-                title: <Dashicon icon="desktop" />,
-                className:
-                  " responsive-desktop-tab  responsive-responsive-tabs",
-              },
-              {
-                name: "tablet",
-                title: <Dashicon icon="tablet" />,
-                className: " responsive-tablet-tab  responsive-responsive-tabs",
-              },
-              {
-                name: "mobile",
-                title: <Dashicon icon="smartphone" />,
-                className: " responsive-mobile-tab  responsive-responsive-tabs",
-              },
-            ]}
-          >
-            {(tab) => {
-              let tabout;
+      <InspectorControls key="inspector">
+        <InspectorTabs>
+          <InspectorTab key={'content'}>
+            <PanelBody title={__("Spacer settings")}>
+              <TabPanel
+                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className: " responsive-tablet-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className: " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  let tabout;
 
-              if ("mobile" === tab.name) {
-                tabout = (
-                  <Fragment>
-                    <RangeControl
-                      label={__(
-                        "Height Mobile",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={heightMobile}
-                      onChange={updateHeightMobile}
-                      min={1}
-                      max={500}
-                      step={1}
-                    />
-                  </Fragment>
-                );
-              } else if ("tablet" === tab.name) {
-                tabout = (
-                  <Fragment>
-                    <RangeControl
-                      label={__(
-                        "Height Tablet",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={heightTablet}
-                      onChange={updateHeightTablet}
-                      min={1}
-                      max={500}
-                      step={1}
-                    />
-                  </Fragment>
-                );
-              } else {
-                tabout = (
-                  <Fragment>
-                    <RangeControl
-                      label={__("Height in pixels")}
-                      min={MIN_SPACER_HEIGHT}
-                      max={Math.max(MAX_SPACER_HEIGHT, height)}
-                      value={height}
-                      onChange={updateHeight}
-                    />
-                  </Fragment>
-                );
-              }
+                  if ("mobile" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__(
+                            "Height Mobile",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={heightMobile}
+                          onChange={updateHeightMobile}
+                          min={1}
+                          max={500}
+                          step={1}
+                        />
+                      </Fragment>
+                    );
+                  } else if ("tablet" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__(
+                            "Height Tablet",
+                            "responsive-block-editor-addons"
+                          )}
+                          value={heightTablet}
+                          onChange={updateHeightTablet}
+                          min={1}
+                          max={500}
+                          step={1}
+                        />
+                      </Fragment>
+                    );
+                  } else {
+                    tabout = (
+                      <Fragment>
+                        <RangeControl
+                          label={__("Height in pixels")}
+                          min={MIN_SPACER_HEIGHT}
+                          max={Math.max(MAX_SPACER_HEIGHT, height)}
+                          value={height}
+                          onChange={updateHeight}
+                        />
+                      </Fragment>
+                    );
+                  }
 
-              return <div>{tabout}</div>;
-            }}
-          </TabPanel>
-        </PanelBody>
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={'style'}></InspectorTab>
+          <InspectorTab key={'advance'}></InspectorTab>
+        </InspectorTabs>
       </InspectorControls>
     </>
   );

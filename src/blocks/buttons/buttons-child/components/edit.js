@@ -80,7 +80,7 @@ export default class Edit extends Component {
         counterId,
         label,
         link,
-        target,
+        buttonTarget,
         opacity,
         icon,
         iconPosition,
@@ -151,8 +151,8 @@ export default class Edit extends Component {
                 }}
                 allowedFormats={["bold", "italic", "strikethrough"]}
                 className={updatedButtonTextClass}
-                rel={target ? "noopener noreferrer" : null}
-                target={target ? "_blank" : null}
+                rel={buttonTarget ? "noopener noreferrer" : null}
+                target={buttonTarget ? "_blank" : null}
                 hoverEffect={hoverEffect}
                 keepPlaceholderOnFocus
               />

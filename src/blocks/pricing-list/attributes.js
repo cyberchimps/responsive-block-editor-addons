@@ -28,19 +28,19 @@ const attributes = {
     type: "array",
     default: rest_menu_block,
   },
-  topPadding: {
+  blockTopPadding: {
     type: "number",
     default: 5,
   },
-  bottomPadding: {
+  blockBottomPadding: {
     type: "number",
     default: 5,
   },
-  leftPadding: {
+  blockLeftPadding: {
     type: "number",
     default: 5,
   },
-  rightPadding: {
+  blockRightPadding: {
     type: "number",
     default: 5,
   },
@@ -56,6 +56,62 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  rowGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  columnGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  titleSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
+  rowGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  columnGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  titleSpaceTablet: {
+    type: "number",
+    default: 10,
+  },
   titleFontFamily: {
     type: "string",
   },
@@ -68,6 +124,12 @@ const attributes = {
   titleFontSize: {
     type: "number",
   },
+  titleFontSizeMobile: {
+    type: "number",
+  },
+  titleFontSizeTablet: {
+    type: "number",
+  },
   titleFontWeight: {
     type: "string",
   },
@@ -77,6 +139,12 @@ const attributes = {
   descriptionFontSize: {
     type: "number",
   },
+  descriptionFontSizeMobile: {
+    type: "number",
+  },
+  descriptionFontSizeTablet: {
+    type: "number",
+  },
   descriptionFontWeight: {
     type: "string",
   },
@@ -84,6 +152,12 @@ const attributes = {
     type: "number",
   },
   priceFontSize: {
+    type: "number",
+  },
+  priceFontSizeMobile: {
+    type: "number",
+  },
+  priceFontSizeTablet: {
     type: "number",
   },
   priceFontWeight: {

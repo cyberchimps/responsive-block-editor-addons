@@ -17,8 +17,14 @@ function EditorStyles(props) {
     descriptionFontFamily,
     designationFontFamily,
     titleFontSize,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
     designationFontSize,
+    designationFontSizeMobile,
+    designationFontSizeTablet,
     descriptionFontSize,
+    descriptionFontSizeMobile,
+    descriptionFontSizeTablet,
     titleFontWeight,
     designationFontWeight,
     descriptionFontWeight,
@@ -26,11 +32,23 @@ function EditorStyles(props) {
     designationLineHeight,
     descriptionLineHeight,
     titleSpacing,
+    titleSpacingMobile,
+    titleSpacingTablet,
     designationSpacing,
+    designationSpacingMobile,
+    designationSpacingTablet,
     descriptionSpacing,
+    descriptionSpacingMobile,
+    descriptionSpacingTablet,
     socialIconSpacing,
+    socialIconSpacingMobile,
+    socialIconSpacingTablet,
     imageMarginTop,
+    imageMarginBottomMobile,
+    imageMarginBottomTablet,
     imageMarginBottom,
+    imageMarginTopMobile,
+    imageMarginTopTablet,
     iconSize,
     imageWidth,
     imageWidthMobile,
@@ -48,15 +66,15 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     opacity,
-    secondaryBackgroundColor,
-    gradientDegree,
+    backgroundColor2,
+    gradientDirection,
     bgGradient,
     colorLocation1,
     colorLocation2,
     backgroundImage,
-    backgroundPosition,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
     backgroundAttachment,
     gutter,
     count,
@@ -65,12 +83,12 @@ function EditorStyles(props) {
   let bgopacity = opacity / 100;
 
   var tempsecondaryBackgroundColor = bgGradient
-    ? secondaryBackgroundColor
+    ? backgroundColor2
     : backgroundColor;
 
   var bggradient =
     "linear-gradient(" +
-    gradientDegree +
+    gradientDirection +
     "deg," +
     hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
     colorLocation1 +
@@ -82,7 +100,7 @@ function EditorStyles(props) {
   if (backgroundImage) {
     bggradient =
       "linear-gradient(" +
-      gradientDegree +
+      gradientDirection +
       "deg," +
       hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
       colorLocation1 +
@@ -218,9 +236,9 @@ function EditorStyles(props) {
 
     " .wp-block-responsive-block-editor-addons-team": {
       "background-image": bggradient,
-      "background-size": backgroundSize,
-      "background-repeat": backgroundRepeat,
-      "background-position": backgroundPosition,
+      "background-size": backgroundImageSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
       "border-width": generateCSSUnit(borderWidth, "px"),
       "border-color": borderColor,
@@ -243,6 +261,31 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " .responsive-block-editor-addons-team-avatar": {
+      "margin-top": generateCSSUnit(imageMarginTopMobile, "px"),
+      "margin-bottom": generateCSSUnit(imageMarginBottomMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-name": {
+      "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
+      "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-designation": {
+      "margin-bottom": generateCSSUnit(designationSpacingMobile, "px"),
+      "font-size": generateCSSUnit(designationFontSizeMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-description": {
+      "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
+      "font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+      "margin-left": generateCSSUnit(socialIconSpacingMobile, "px"),
+      "margin-right": generateCSSUnit(socialIconSpacingMobile, "px"),
+    },
+
     " .wp-block-responsive-block-editor-addons-team": {
         "margin-bottom": gutterMargin,
     },
@@ -263,11 +306,34 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidthTablet, "px"),
       "max-width": generateCSSUnit(imageWidthTablet, "px"),
+      "margin-top": generateCSSUnit(imageMarginTopTablet, "px"),
+      "margin-bottom": generateCSSUnit(imageMarginBottomTablet, "px"),
+      "width": generateCSSUnit(imageWidthTablet, "px"),
+      "max-width": generateCSSUnit(imageWidthTablet, "px"),
     },
     ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "max-width": "100%",
       "min-width": "100%",
-    }
+    },
+    " .responsive-block-editor-addons-team-name": {
+      "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
+      "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-designation": {
+      "margin-bottom": generateCSSUnit(designationSpacingTablet, "px"),
+      "font-size": generateCSSUnit(designationFontSizeTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-description": {
+      "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
+      "font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+      "margin-left": generateCSSUnit(socialIconSpacingTablet, "px"),
+      "margin-right": generateCSSUnit(socialIconSpacingTablet, "px"),
+    },
   };
 
   var styling_css = "";
