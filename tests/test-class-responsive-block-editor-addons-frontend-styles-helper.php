@@ -1269,8 +1269,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
-				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'backgroundType' => 'solid',
+				'block_id'                 => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'backgroundType'           => 'solid',
+				'iconBackgroundColor'      => '#aabbcc',
+				'iconBackgroundHoverColor' => '#12dd3a',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -2014,7 +2016,6 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id' => self::$icons_list_child_block_id,
-					'align'    => 'right',
 				)
 			),
 			'innerBlocks'  => array(),
@@ -2026,7 +2027,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		);
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/icons-list',
-			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$icons_list_block_id ) ),
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$icons_list_block_id,
+					'align'    => 'right',
+				)
+			),
 			'innerBlocks'  => array(
 				$child_block,
 			),
