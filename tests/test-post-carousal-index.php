@@ -157,7 +157,7 @@ class Post_Carousal_Index_Test extends WP_UnitTestCase {
 	public function test_add_action() {
 		$this->assertTrue( add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_post_carousel_add_frontend_assets' ) );
 		$this->assertTrue( add_action( 'the_post', 'responsive_block_editor_addons_post_carousel_add_frontend_assets' ) );
-        $this->assertTrue( add_action( 'the_post', 'post_carousel_generate_script' ) );
+		$this->assertTrue( add_action( 'the_post', 'post_carousel_generate_script' ) );
 	}
 
 	/**
