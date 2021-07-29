@@ -7898,6 +7898,339 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
+		 * Get How-To Schema Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_how_to_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_how_to_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$border     = 'none' !== $attr['borderStyle'] ? self::get_css_value( $attr['borderWidth'], 'px' ) . ' ' . $attr['borderStyle'] . ' ' . $attr['borderColor'] : '';
+			$border_rad = 'none' !== $attr['borderStyle'] ? self::get_css_value( $attr['borderRadius'], 'px' ) : '';
+
+			$selectors = array(
+				'' => array(
+					'text-align' => $attr['overallAlignment'],
+					'padding'    => self::get_css_value( 10, 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-main-heading' => array(
+					'color'          => $attr['mainHeadingColor'],
+					'font-family'    => $attr['mainHeadingFontFamily'],
+					'font-size'      => self::get_css_value( $attr['mainHeadingFontSize'], 'px' ),
+					'font-weight'    => $attr['mainHeadingFontWeight'],
+					'margin-bottom'  => self::get_css_value( $attr['rowGap'], 'px' ),
+					'letter-spacing' => self::get_css_value( $attr['mainHeadingLetterSpacing'], 'px' ),
+					'line-height'    => $attr['mainHeadingLineHeight'],
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-time' => array(
+					'color'          => $attr['secondaryHeadingColor'],
+					'display'        => 'inline',
+					'letter-spacing' => self::get_css_value( $attr['subHeadingLetterSpacing'], 'px' ),
+					'line-height'    => $attr['subHeadingLineHeight'],
+					'font-family'    => $attr['subHeadingFontFamily'],
+					'font-size'      => self::get_css_value( $attr['subHeadingFontSize'], 'px' ),
+					'font-weight'    => $attr['subHeadingFontWeight'],
+					'margin-right'   => self::get_css_value( $attr['timeMargin'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-time-value' => array(
+					'color'          => $attr['descriptionColor'],
+					'letter-spacing' => self::get_css_value( $attr['descriptionLetterSpacing'], 'px' ),
+					'line-height'    => $attr['descriptionLineHeight'],
+					'font-family'    => $attr['descriptionFontFamily'],
+					'font-size'      => self::get_css_value( $attr['descriptionFontSize'], 'px' ),
+					'font-weight'    => $attr['descriptionFontWeight'],
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-cost' => array(
+					'color'          => $attr['secondaryHeadingColor'],
+					'display'        => 'inline',
+					'letter-spacing' => self::get_css_value( $attr['subHeadingLetterSpacing'], 'px' ),
+					'line-height'    => $attr['subHeadingLineHeight'],
+					'font-family'    => $attr['subHeadingFontFamily'],
+					'font-size'      => self::get_css_value( $attr['subHeadingFontSize'], 'px' ),
+					'font-weight'    => $attr['subHeadingFontWeight'],
+					'margin-right'   => self::get_css_value( $attr['costMargin'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-cost-value' => array(
+					'color'          => $attr['descriptionColor'],
+					'display'        => 'inline',
+					'letter-spacing' => self::get_css_value( $attr['descriptionLetterSpacing'], 'px' ),
+					'line-height'    => $attr['descriptionLineHeight'],
+					'font-family'    => $attr['descriptionFontFamily'],
+					'font-size'      => self::get_css_value( $attr['descriptionFontSize'], 'px' ),
+					'font-weight'    => $attr['descriptionFontWeight'],
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-tools' => array(
+					'color'          => $attr['secondaryHeadingColor'],
+					'letter-spacing' => self::get_css_value( $attr['subHeadingLetterSpacing'], 'px' ),
+					'line-height'    => $attr['subHeadingLineHeight'],
+					'font-family'    => $attr['subHeadingFontFamily'],
+					'font-size'      => self::get_css_value( $attr['subHeadingFontSize'], 'px' ),
+					'font-weight'    => $attr['subHeadingFontWeight'],
+				),
+				' .responsive-block-editor-addons-block-how-to-tools-list-item' => array(
+					'color'          => $attr['descriptionColor'],
+					'letter-spacing' => self::get_css_value( $attr['descriptionLetterSpacing'], 'px' ),
+					'font-family'    => $attr['descriptionFontFamily'],
+					'font-size'      => self::get_css_value( $attr['descriptionFontSize'], 'px' ),
+					'font-weight'    => $attr['descriptionFontWeight'],
+					'list-style'     => $attr['toolsListStyle'],
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-materials' => array(
+					'color'          => $attr['secondaryHeadingColor'],
+					'letter-spacing' => self::get_css_value( $attr['subHeadingLetterSpacing'], 'px' ),
+					'line-height'    => $attr['subHeadingLineHeight'],
+					'font-family'    => $attr['subHeadingFontFamily'],
+					'font-size'      => self::get_css_value( $attr['subHeadingFontSize'], 'px' ),
+					'font-weight'    => $attr['subHeadingFontWeight'],
+				),
+				' .responsive-block-editor-addons-block-how-to-materials-list-item' => array(
+					'color'          => $attr['descriptionColor'],
+					'letter-spacing' => self::get_css_value( $attr['descriptionLetterSpacing'], 'px' ),
+					'font-family'    => $attr['descriptionFontFamily'],
+					'font-size'      => self::get_css_value( $attr['descriptionFontSize'], 'px' ),
+					'font-weight'    => $attr['descriptionFontWeight'],
+					'list-style'     => $attr['materialsListStyle'],
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-steps' => array(
+					'color'          => $attr['secondaryHeadingColor'],
+					'display'        => 'inline',
+					'letter-spacing' => self::get_css_value( $attr['subHeadingLetterSpacing'], 'px' ),
+					'line-height'    => $attr['subHeadingLineHeight'],
+					'font-family'    => $attr['subHeadingFontFamily'],
+					'font-size'      => self::get_css_value( $attr['subHeadingFontSize'], 'px' ),
+					'font-weight'    => $attr['subHeadingFontWeight'],
+				),
+				' .responsive-block-editor-addons-block-how-to-time-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-cost-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-tools-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-materials-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-steps-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-main-image' => array(
+					'border'        => $border,
+					'border-radius' => $border_rad,
+				),
+				' .responsive-block-editor-addons-block-how-to-steps .wp-block-responsive-block-editor-addons-info-block' => array(
+					'margin-top' => self::get_css_value( $attr['stepsMargin'], 'px' ),
+				),
+			);
+
+			$mobile_selectors = array(
+				' .responsive-block-editor-addons-block-how-to-main-heading' => array(
+					'line-height'   => $attr['mainHeadingLineHeight'],
+					'font-size'     => self::get_css_value( $attr['mainHeadingFontSizeMobile'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['rowGapMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-time' => array(
+					'line-height'  => $attr['subHeadingLineHeight'],
+					'font-weight'  => self::get_css_value( $attr['subHeadingFontSizeMobile'], 'px' ),
+					'margin-right' => self::get_css_value( $attr['timeMarginMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-cost' => array(
+					'line-height'  => $attr['subHeadingLineHeight'],
+					'font-weight'  => self::get_css_value( $attr['subHeadingFontSizeMobile'], 'px' ),
+					'margin-right' => self::get_css_value( $attr['costMarginMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-tools' => array(
+					'line-height' => $attr['subHeadingLineHeight'],
+					'font-weight' => self::get_css_value( $attr['subHeadingFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-materials' => array(
+					'line-height' => $attr['subHeadingLineHeight'],
+					'font-weight' => self::get_css_value( $attr['subHeadingFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-steps' => array(
+					'line-height' => $attr['subHeadingLineHeight'],
+					'font-weight' => self::get_css_value( $attr['subHeadingFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-time-value' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-cost-value' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-tools-list-item' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-materials-list-item' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-time-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-cost-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-tools-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-materials-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-steps-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-steps .wp-block-responsive-block-editor-addons-info-block' => array(
+					'margin-top' => self::get_css_value( $attr['stepsMarginMobile'], 'px' ),
+				),
+
+			);
+
+			$tablet_selectors = array(
+				' .responsive-block-editor-addons-block-how-to-main-heading' => array(
+					'line-height'   => $attr['mainHeadingLineHeight'],
+					'font-size'     => self::get_css_value( $attr['mainHeadingFontSizeTablet'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['rowGapTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-time' => array(
+					'line-height'  => $attr['subHeadingLineHeight'],
+					'font-weight'  => self::get_css_value( $attr['subHeadingFontSizeTablet'], 'px' ),
+					'margin-right' => self::get_css_value( $attr['timeMarginTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-cost' => array(
+					'line-height'  => $attr['subHeadingLineHeight'],
+					'font-weight'  => self::get_css_value( $attr['subHeadingFontSizeTablet'], 'px' ),
+					'margin-right' => self::get_css_value( $attr['costMarginTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-tools' => array(
+					'line-height' => $attr['subHeadingLineHeight'],
+					'font-weight' => self::get_css_value( $attr['subHeadingFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-materials' => array(
+					'line-height' => $attr['subHeadingLineHeight'],
+					'font-weight' => self::get_css_value( $attr['subHeadingFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-sub-heading-steps' => array(
+					'line-height' => $attr['subHeadingLineHeight'],
+					'font-weight' => self::get_css_value( $attr['subHeadingFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-time-value' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-cost-value' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-tools-list-item' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-materials-list-item' => array(
+					'line-height' => $attr['descriptionLineHeight'],
+					'font-size'   => self::get_css_value( $attr['descriptionFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-time-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-cost-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-tools-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-materials-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-steps-area' => array(
+					'margin-top' => self::get_css_value( $attr['rowGapTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-how-to-steps .wp-block-responsive-block-editor-addons-info-block' => array(
+					'margin-top' => self::get_css_value( $attr['stepsMarginTablet'], 'px' ),
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-how-to.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for how to block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_how_to_default_attributes() {
+			return array(
+				'block_id'                    => '',
+				'overallAlignment'            => 'left',
+				'mainHeadingColor'            => '',
+				'secondaryHeadingColor'       => '',
+				'descriptionColor'            => '',
+				'mainHeadingFontFamily'       => '',
+				'mainHeadingFontSize'         => 12,
+				'mainHeadingFontSizeMobile'   => 12,
+				'mainHeadingFontSizeTablet'   => 14,
+				'mainHeadingFontWeight'       => '',
+				'mainHeadingLineHeight'       => 0,
+				'mainHeadingLineHeightMobile' => 0,
+				'mainHeadingLineHeightTablet' => 0,
+				'mainHeadingLetterSpacing'    => 0,
+				'subHeadingFontFamily'        => '',
+				'subHeadingFontSize'          => 12,
+				'subHeadingFontSizeMobile'    => 12,
+				'subHeadingFontSizeTablet'    => 14,
+				'subHeadingFontWeight'        => '',
+				'subHeadingLineHeight'        => 0,
+				'subHeadingLineHeightMobile'  => 0,
+				'subHeadingLineHeightTablet'  => 0,
+				'subHeadingLetterSpacing'     => 0,
+				'descriptionFontFamily'       => '',
+				'descriptionFontSize'         => 12,
+				'descriptionFontSizeMobile'   => 12,
+				'descriptionFontSizeTablet'   => 14,
+				'descriptionFontWeight'       => '',
+				'descriptionLineHeight'       => 0,
+				'descriptionLineHeightMobile' => 0,
+				'descriptionLineHeightTablet' => 0,
+				'descriptionLetterSpacing'    => 0,
+				'timeMargin'                  => 10,
+				'costMargin'                  => 10,
+				'rowGap'                      => 10,
+				'timeMarginMobile'            => 10,
+				'costMarginMobile'            => 10,
+				'rowGapMobile'                => 10,
+				'timeMarginTablet'            => 10,
+				'costMarginTablet'            => 10,
+				'rowGapTablet'                => 10,
+				'toolsListStyle'              => 'none',
+				'materialsListStyle'          => 'none',
+				'borderStyle'                 => 'none',
+				'borderRadius'                => 0,
+				'borderWidth'                 => 1,
+				'borderColor'                 => '',
+				'stepsMargin'                 => 10,
+				'stepsMarginMobile'           => 10,
+				'stepsMarginTablet'           => 10,
+			);
+		}
+
+		/**
 		 * Generate gradient effect
 		 *
 		 * @param string $color1  primary color.
