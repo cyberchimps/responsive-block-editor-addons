@@ -1,0 +1,30 @@
+.res-typography-option-actions {
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+
+  button {
+    margin: 0;
+    float: right;
+  }
+}
+
+button.components-button {
+  z-index: 1;
+}
+
+.responsive-block-editor-addons-box-shadow-advanced {
+  box-shadow: 0 3px 30px rgba(25, 30, 35, 0.1);
+  border: 1px solid #e2e4e7;
+  background: #fff;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.responsive-block-editor-addons-setting-label {
+  .component-color-indicator {
+    vertical-align: middle;
+    background-color: transparent;
+  }
+}

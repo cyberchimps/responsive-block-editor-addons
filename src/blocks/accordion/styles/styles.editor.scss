@@ -1,0 +1,30 @@
+[data-type="responsive-block-editor-addons/accordion"] {
+  .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+    width: auto;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .block-editor-inner-blocks > .block-editor-block-list__layout {
+    display: block;
+  }
+  .responsive-block-editor-addons-accordion-layout-grid
+    .block-editor-inner-blocks
+    > .block-editor-block-list__layout {
+    display: grid;
+  }
+  .responsive-block-editor-addons-accordion-layout-grid.responsive-block-editor-addons-accordion-equal-height
+    .block-editor-inner-blocks
+    > .block-editor-block-list__layout {
+    .block-editor-block-list__block,
+    .responsive-block-editor-addons-accordion-item__outer-wrap,
+    .responsive-block-editor-addons-accordion-item__wrapper,
+    .responsive-block-editor-addons-accordion-item {
+      height: 100%;
+    }
+  }
+}
+.wp-block-cover .responsive-block-editor-addons-accordion-item__outer-wrap {
+  color: #333;
+}

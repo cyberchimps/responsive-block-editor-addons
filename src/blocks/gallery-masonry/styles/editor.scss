@@ -1,0 +1,111 @@
+.wp-block[data-type="responsive-block-editor-addons/gallery-masonry"] {
+  // Fixes issue where figures are set to display 100% if alignfull is set.
+  .responsive-block-editor-addons-gallery--figure {
+    width: auto !important;
+
+    img {
+      vertical-align: bottom;
+    }
+  }
+
+  // Fixes issue with multiple dropzones displaying when dropping in an image.
+  .components-drop-zone.is-active {
+    + ul li:last-child .components-drop-zone {
+      display: none;
+    }
+  }
+
+  // Captions.
+  .block-editor-rich-text {
+    bottom: 0;
+    left: 0;
+    max-height: 100%;
+    overflow-y: auto;
+    position: absolute;
+    right: 0;
+    width: 100%;
+
+    .editor-rich-text__tinymce {
+      color: inherit;
+
+      a {
+        color: inherit;
+      }
+
+      &:not(.mce-content-body) {
+        opacity: 0.6;
+      }
+
+      &:focus a[data-mce-selected] {
+        opacity: 0.2;
+      }
+    }
+  }
+
+  .block-editor-rich-text figcaption:not([data-is-placeholder-visible="true"]) {
+    overflow: hidden;
+    position: relative !important;
+  }
+
+  .is-selected .block-editor-rich-text {
+    // IE calculates this incorrectly, so leave it to modern browsers.
+    @supports (position: sticky) {
+      bottom: 4px;
+      left: 4px;
+      margin-top: -4px;
+      right: 4px;
+      width: calc(100% - 8px);
+    }
+
+    figcaption {
+      padding-bottom: 6px !important;
+    }
+
+    // Override negative margins so this toolbar isn't hidden by overflow.
+    // Overflow is needed for long captions.
+    .editor-rich-text__inline-toolbar {
+      top: 0;
+    }
+
+    // Make extra space for the inline toolbar.
+    .editor-rich-text__tinymce {
+      padding-top: 48px;
+    }
+  }
+
+  // Tweak the position of the figcaption if Custom URL is set.
+  .components-responsive-block-editor-addons-gallery-item__image-link
+    + img
+    + .block-editor-rich-text {
+    margin-bottom: 34px;
+  }
+}
+
+.wp-block[data-type="core/group"]
+  .wp-block-responsive-block-editor-addons-gallery-masonry {
+  margin-bottom: 40px !important;
+  margin-top: 40px !important;
+}
+
+// Shim to fix styles in the previewer.
+.block-editor-inserter__preview-content
+  .wp-block-responsive-block-editor-addons-gallery-masonry {
+  .responsive-block-editor-addons-gallery--item:last-child {
+    display: none;
+  }
+}
+
+.has-lightbox {
+  .responsive-block-editor-addons-gallery--figure:hover {
+    cursor: default !important;
+  }
+}
+
+// Needed until GB 6.9 is merged into core or backward support.
+// Hide the placeholder when not selected.
+.block-editor-block-list__block[data-type="responsive-block-editor-addons/gallery-masonry"]:not(.is-selected):not(.is-focused)
+  .responsive-block-editor-addons-gallery {
+  div.components-form-file-upload {
+    display: none;
+  }
+}

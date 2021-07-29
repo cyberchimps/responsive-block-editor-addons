@@ -1,0 +1,107 @@
+.responsive-block-editor-addons-gallery {
+  list-style: none !important;
+  padding-left: 0;
+  padding-right: 0;
+
+  &--item {
+    list-style: none !important;
+    margin: 0;
+    padding: 0 !important;
+
+    figure {
+      position: relative;
+    }
+
+    img {
+      opacity: 1;
+      vertical-align: middle;
+    }
+  }
+
+  & &--item figcaption {
+    color: inherit;
+    margin: 0 !important;
+  }
+
+  &.is-cropped {
+    .responsive-block-editor-addons-gallery--item,
+    .responsive-block-editor-addons-gallery--item-thumbnail {
+      a,
+      img {
+        // IE11 doesn't support object-fit, so just make sure images aren't skewed.
+        // The following rules are for all browsers.
+        width: 100%;
+
+        // IE11 doesn't read rules inside this query.
+        // They are applied only to modern browsers.
+        @supports (position: sticky) {
+          flex: 1;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  &.is-cropped.scale-down {
+    .responsive-block-editor-addons-gallery--item,
+    .responsive-block-editor-addons-gallery--item-thumbnail {
+      a,
+      img {
+        object-fit: scale-down;
+      }
+    }
+  }
+}
+
+.alignfull,
+.alignwide {
+  ul.responsive-block-editor-addons-gallery {
+    max-width: 100%;
+  }
+}
+
+.responsive-block-editor-addons-gallery--item-thumbnail {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+
+  figure {
+    margin: 0;
+    position: relative;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+}
+
+figcaption.responsive-block-editor-addons-gallery--primary-caption {
+  font-size: 13px;
+  margin-bottom: 1em;
+  margin-top: 1.2em;
+  text-align: center;
+
+  &:not(.has-caption-color) {
+    color: $dark-gray-500;
+  }
+}
+
+.wp-block-group div[class*="wp-block-responsive-block-editor-addons-gallery"] {
+  margin-bottom: 10px !important;
+  margin-top: 10px !important;
+}
+
+// Front-end modules
+@import "style/grid";
+@import "style/gutter";
+@import "style/horizontal-gutter";
+@import "style/carousel";
+@import "style/margin-bottom";
+@import "style/margin-top";
+@import "style/padding";
+@import "style/radius";
+@import "style/captions";
+@import "style/flickity";
+@import "style/lightbox";
+@import "style/core-themes";

@@ -1,0 +1,28 @@
+.has-caption-style-light {
+  .responsive-block-editor-addons-gallery--item figcaption {
+    background: linear-gradient(
+      0deg,
+      rgba($color: $white, $alpha: 0.93) 6.3%,
+      rgba($color: $white, $alpha: 0.5) 61%,
+      rgba(255, 255, 255, 0)
+    ) !important;
+    opacity: 1 !important;
+  }
+}
+
+.responsive-block-editor-addons-gallery:not(.has-caption-color).has-caption-style-dark
+  figcaption {
+  color: $white;
+}
+
+.responsive-block-editor-addons-gallery:not(.has-caption-color).has-caption-style-light
+  figcaption {
+  color: $black;
+}
+
+.has-caption-style-none {
+  .responsive-block-editor-addons-gallery--item {
+    background: none !important;
+    opacity: 1 !important;
+  }
+}

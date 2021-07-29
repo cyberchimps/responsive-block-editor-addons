@@ -1,0 +1,84 @@
+.wp-block-responsive-block-editor-addons-accordion-item {
+  &.responsive-block-editor-addons-accordion-item__outer-wrap
+    .responsive-block-editor-addons-accordion-item:focus,
+  &.responsive-block-editor-addons-accordion-item__outer-wrap
+    .responsive-block-editor-addons-accordion-item:active {
+    outline: thin dotted;
+  }
+  .responsive-block-editor-addons-accordion-titles-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .responsive-block-editor-addons-accordion-icon-wrap {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .responsive-block-editor-addons-title {
+      width: 100%;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .responsive-block-editor-addons-icon svg,
+  .responsive-block-editor-addons-icon-active svg {
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+  }
+
+  .responsive-block-editor-addons-accordion-content span {
+    display: inline-block;
+  }
+
+  .responsive-block-editor-addons-accordion-content p {
+    margin: 0;
+  }
+
+  &.responsive-block-editor-addons-accordion-item__outer-wrap
+    .responsive-block-editor-addons-accordion-item
+    .responsive-block-editor-addons-icon-active,
+  &.responsive-block-editor-addons-accordion-item__outer-wrap
+    .responsive-block-editor-addons-accordion-item.responsive-block-editor-addons-accordion-item-active
+    .responsive-block-editor-addons-icon {
+    display: none;
+    width: 0;
+    padding: 0;
+    height: 0;
+    margin: 0;
+  }
+
+  &.responsive-block-editor-addons-accordion-item__outer-wrap
+    .responsive-block-editor-addons-accordion-item
+    .responsive-block-editor-addons-icon,
+  &.responsive-block-editor-addons-accordion-item__outer-wrap
+    .responsive-block-editor-addons-accordion-item.responsive-block-editor-addons-accordion-item-active
+    .responsive-block-editor-addons-icon-active {
+    display: inline-block;
+    width: auto;
+    height: auto;
+  }
+}
+
+.responsive-block-editor-addons-accordion-layout-grid
+  .responsive-block-editor-addons-accordion-item__outer-wrap
+  .responsive-block-editor-addons-accordion-item
+  .responsive-block-editor-addons-icon,
+.responsive-block-editor-addons-accordion-layout-grid
+  .responsive-block-editor-addons-accordion-item__outer-wrap
+  .responsive-block-editor-addons-accordion-item.responsive-block-editor-addons-accordion-item-active
+  .responsive-block-editor-addons-icon-active {
+  display: none;
+}
+
+.responsive-block-editor-addons-accordion-layout-grid
+  .responsive-block-editor-addons-accordion-item__outer-wrap
+  .responsive-block-editor-addons-accordion-item
+  span.responsive-block-editor-addons-icon-active.responsive-block-editor-addons-accordion-icon-wrap,
+.responsive-block-editor-addons-accordion-layout-grid
+  .responsive-block-editor-addons-accordion-item__outer-wrap
+  .responsive-block-editor-addons-accordion-item.responsive-block-editor-addons-accordion-item-active
+  .responsive-block-editor-addons-icon-active {
+  display: none;
+}

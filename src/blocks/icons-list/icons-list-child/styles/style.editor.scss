@@ -1,0 +1,25 @@
+.responsive-block-editor-addons-icon-list__wrap > .block-editor-inner-blocks {
+  width: 100%;
+}
+
+.wp-block.block-editor-block-list__block[data-type="responsive-block-editor-addons/icons-list-child"] {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.responsive-block-editor-addons-icon-list__layout-vertical {
+  .responsive-block-editor-addons-icon-list__wrap .block-list-appender {
+    margin-top: 28px;
+    width: 60px;
+  }
+}
+
+.responsive-block-editor-addons-icon-list__layout-horizontal {
+  .responsive-block-editor-addons-icon-list__wrap .block-list-appender {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    width: 52px;
+    height: 52px;
+  }
+}

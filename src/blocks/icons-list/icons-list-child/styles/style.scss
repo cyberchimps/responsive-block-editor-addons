@@ -1,0 +1,51 @@
+.wp-block-responsive-block-editor-addons-icon-list-child {
+  position: relative;
+  > a.wp-responsive-block-editor-addons-icon-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+img.responsive-block-editor-addons-icon-list__source-image {
+  max-width: unset;
+}
+
+.responsive-block-editor-addons-icon-list__layout-vertical
+  .wp-block[data-type="responsive-block-editor-addons/icons-list-child"] {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.responsive-block-editor-addons-icon-list__layout-vertical
+  .responsive-block-editor-addons-icon-list__wrap {
+  flex-direction: column;
+}
+
+.responsive-block-editor-addons-icon-list__layout-vertical
+  .responsive-block-editor-addons-icon-list__wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.responsive-block-editor-addons-icon-list__layout-horizontal
+  .wp-block[data-type="responsive-block-editor-addons/icons-list-child"]:first-child {
+  margin-left: 0;
+}
+
+.responsive-block-editor-addons-icon-list__layout-horizontal
+  .wp-block[data-type="responsive-block-editor-addons/icons-list-child"]:last-child {
+  margin-right: 0;
+}
+
+.responsive-block-editor-addons-icon-list__wrap .block-editor-inner-blocks {
+  width: 100%;
+}
+
+.wp-block-responsive-block-editor-addons-icons-list-child {
+  position: relative;
+}
+.wp-block-responsive-block-editor-addons-icons-list-child.responsive-block-editor-addons-icon-list-repeater.responsive-block-editor-addons-icon-list__wrapper {
+  line-height: 1;
+}

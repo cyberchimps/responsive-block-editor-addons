@@ -1,0 +1,106 @@
+{
+  "name": "responsive-block-editor-addons/shape-divider",
+  "category": "layout",
+  "attributes": {
+    "block_id": {
+      "type": "string"
+    },
+    "align": {
+      "type": "string",
+      "default": "full"
+    },
+    "height": {
+      "type": "number",
+      "default": 100
+    },
+    "heightTablet": {
+      "type": "number"
+    },
+    "heightMobile": {
+      "type": "number"
+    },
+    "shapeHeight": {
+      "type": "number",
+      "default": 100
+    },
+    "shapeHeightTablet": {
+      "type": "number"
+    },
+    "backgroundHeight": {
+      "type": "number",
+      "default": 50
+    },
+    "backgroundHeightTablet": {
+      "type": "number"
+    },
+    "backgroundHeightMobile": {
+      "type": "number"
+    },
+    "syncHeight": {
+      "type": "boolean",
+      "default": true
+    },
+    "syncHeightAlt": {
+      "type": "boolean",
+      "default": true
+    },
+    "verticalFlip": {
+      "type": "boolean",
+      "default": false
+    },
+    "horizontalFlip": {
+      "type": "boolean",
+      "default": false
+    },
+    "color": {
+      "type": "string"
+    },
+    "customColor": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "customBackgroundColor": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "noBottomMargin": {
+      "type": "boolean",
+      "default": true
+    },
+    "noTopMargin": {
+      "type": "boolean",
+      "default": true
+    },
+    "justAdded": {
+      "type": "boolean",
+      "default": true
+    },
+    "colorLocation1": {
+      "type": "number",
+      "default": 0
+    },
+    "colorLocation2": {
+      "type": "number",
+      "default": 100
+    },
+    "gradientDirection": {
+      "type": "number",
+      "default": 90
+    },
+    "backgroundColor1": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "backgroundColor2": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "backgroundType": {
+      "type": "string",
+      "default": "none"
+    }
+  }
+}

@@ -1,0 +1,154 @@
+.wp-block-responsive-block-editor-addons-flip-box {
+  width: 420px; /* width and height should be configurable. */
+  height: 420px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  word-break: break-word;
+
+  .wp-block-responsive-block-editor-addons-flipbox-item__button {
+    width: auto;
+  }
+  .responsive-block-editor-addons-section-background-image-wrap,
+  .responsive-block-editor-addons-section-back-background-image-wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+  }
+  .responsive-block-editor-addons-section-background-image,
+  .responsive-block-editor-addons-section-back-background-image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transition: 0.3s ease;
+  }
+  .flip-box-inner.frontSelected
+    .responsive-block-editor-addons-section-back-background-image-wrap,
+  .flip-box-inner.backSelected
+    .responsive-block-editor-addons-section-background-image-wrap,
+  .wp-block-responsive-block-editor-addons-flip-box:hover
+    .flip-box-inner.frontSelected
+    .responsive-block-editor-addons-section-background-image-wrap,
+  .wp-block-responsive-block-editor-addons-flip-box:hover
+    .flip-box-inner.backSelected
+    .responsive-block-editor-addons-section-back-background-image-wrap {
+    display: none;
+  }
+  .flip-box-inner.frontSelected
+    .responsive-block-editor-addons-section-background-image-wrap,
+  .flip-box-inner.backSelected
+    .responsive-block-editor-addons-section-back-background-image-wrap,
+  .wp-block-responsive-block-editor-addons-flip-box:hover
+    .flip-box-inner.frontSelected
+    .responsive-block-editor-addons-section-back-background-image-wrap,
+  .wp-block-responsive-block-editor-addons-flip-box:hover
+    .flip-box-inner.backSelected
+    .responsive-block-editor-addons-section-background-image-wrap {
+    display: block;
+  }
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.wp-block-responsive-block-editor-addons-flip-box:hover .flip-box-inner.LTR,
+.flip-box-back.LTR {
+  transform: rotateY(180deg);
+}
+.wp-block-responsive-block-editor-addons-flip-box:hover .flip-box-inner.RTL,
+.flip-box-back.RTL {
+  transform: rotateY(-180deg);
+}
+.wp-block-responsive-block-editor-addons-flip-box:hover .flip-box-inner.BTT,
+.flip-box-back.BTT {
+  transform: rotateX(180deg);
+}
+.wp-block-responsive-block-editor-addons-flip-box:hover .flip-box-inner.TTB,
+.flip-box-back.TTB {
+  transform: rotateX(-180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  backface-visibility: hidden;
+  padding: 30px 25px;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wp-block-responsive-block-editor-addons-flip-box__title,
+.wp-block-responsive-block-editor-addons-flip-box__backtitle {
+  font-family: "Montserrat";
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 1.1;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+  text-transform: uppercase;
+}
+
+.wp-block-responsive-block-editor-addons-flip-box__subtitle,
+.wp-block-responsive-block-editor-addons-flip-box__backsubtitle {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.responsive-block-editor-addons-iconSelector {
+  overflow-y: scroll;
+  height: 140px;
+}
+.has-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.has-1-columns .wp-block-responsive-block-editor-addons-flip-box {
+  width: 100%;
+}
+.has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2 - 1em);
+}
+
+.has-medium-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2.975 - 1.5em);
+}
+.has-medium-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 4 - 1.5em);
+}
+@media (min-width: 782px) {
+  .has-columns.has-3-columns > *:not(.block-editor-inner-blocks),
+  .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
+    flex-basis: 33.33%;
+  }
+}
+@media (min-width: 600px) {
+  .has-columns.has-2-columns > *:not(.block-editor-inner-blocks),
+  .has-columns.has-3-columns > *:not(.block-editor-inner-blocks),
+  .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
+    flex-basis: 50%;
+  }
+}
+@media (min-width: 1280px) {
+  .has-columns.has-4-columns > *:not(.block-editor-inner-blocks) {
+    flex-basis: 25%;
+  }
+}

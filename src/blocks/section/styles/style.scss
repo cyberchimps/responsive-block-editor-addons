@@ -1,0 +1,211 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.responsive-block-editor-addons-section__video-wrap {
+  height: 100%;
+
+  width: 100%;
+
+  top: 0;
+
+  left: 0;
+
+  position: absolute;
+
+  overflow: hidden;
+
+  z-index: 0;
+
+  -webkit-transition: opacity 1s;
+
+  -o-transition: opacity 1s;
+
+  transition: opacity 1s;
+
+  video {
+    width: 100%;
+  }
+}
+.responsive-block-editor-addons-block-section {
+  margin-left: auto;
+  margin-right: auto;
+}
+.responsive-block-editor-addons-section-background-image-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  z-index: 1;
+}
+.responsive-block-editor-addons-section-background-image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: 0.3s ease;
+}
+.responsive-block-editor-addons-block-section-outer-wrap {
+  position: relative;
+}
+.responsive-section-wrap {
+  position: relative;
+  overflow: hidden;
+
+  .responsive-section-inner-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  &.responsive-column__align-left .responsive-section-inner-wrap {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  &.responsive-column__align-right .responsive-section-inner-wrap {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .responsive-column__overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  .responsive-column__video-wrap {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+    -webkit-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+  }
+
+  .responsive-column__video-wrap video {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 1;
+    border: none;
+    display: inline-block;
+    vertical-align: baseline;
+    -o-object-fit: cover;
+    object-fit: cover;
+    background-size: cover;
+  }
+}
+
+.editor-inner-blocks
+  > .editor-block-list__layout
+  > [data-type="responsive-block-editor-addons/column"] {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -14px;
+  margin-right: -14px;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-basis: 100%;
+}
+
+@media (max-width: 976px) {
+  .responsive-column__align-tablet-left .responsive-section-inner-wrap {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .responsive-column__align-tablet-right .responsive-section-inner-wrap {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .page-template-gutenberg-fullwidth.responsive-site-style-boxed
+    .hentry
+    .post-entry
+    > div.responsive-block-editor-addons-block-section-outer-wrap.alignfull {
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .responsive-column__align-mobile-left .responsive-section-inner-wrap {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .responsive-column__align-mobile-right .responsive-section-inner-wrap {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 449px) {
+  .responsive-columns-wrap.responsive-columns__background-image {
+    background-attachment: scroll !important;
+  }
+}
+.responsive-block-editor-addons-typography-option-actions,
+.uag-box-shadow-option-actions {
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+.responsive-block-editor-addons-typography-option-actions button {
+  margin: 0;
+  float: right;
+}
+
+.responsive-block-editor-addons-typography-option-actions
+  .rbea-typography-reset-btn,
+.responsive-block-editor-addons-typography-option-actions
+  .rbea-typography-reset-btn:hover,
+.responsive-block-editor-addons-typography-option-actions
+  .rbea-typography-reset-btn:active:enabled {
+  background: none;
+  border: none;
+  box-shadow: none;
+  float: right;
+}
+
+.responsive-block-editor-addons-typography-option-actions button svg {
+  height: 15px;
+  width: 15px;
+}
+
+.responsive-block-editor-addons-typography-option-actions button svg:hover {
+  fill: #23282d;
+}
+
+.responsive-block-editor-addons-typography-option-actions
+  button.rbea-typography-reset-btn
+  svg {
+  height: 13px;
+  width: 13px;
+  fill: #777;
+}
+.page.page-template-gutenberg-fullwidth
+  .alignfull.responsive-block-editor-addons-block-section-outer-wrap,
+.page.sidebar-position-no:not(.woocommerce)
+  .alignfull.responsive-block-editor-addons-block-section-outer-wrap,
+.page.page-template-gutenberg-fullwidth
+  .alignfull.responsive-block-editor-addons-block-section-outer-wrap
+  .alignfull,
+.page.page-template-gutenberg-fullwidth
+  .alignfull.responsive-block-editor-addons-block-section-outer-wrap
+  .alignwide {
+  max-width: 100vw !important;
+}
