@@ -9958,15 +9958,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 * @return array Styles.
 		 */
 		public static function get_responsive_block_inline_notice_css( $attr, $id ) {
-			$defaults = self::get_responsive_block_inline_notice_default_attributes();
-			$attr     = array_merge( $defaults, (array) $attr );
+			$defaults      = self::get_responsive_block_inline_notice_default_attributes();
+			$attr          = array_merge( $defaults, (array) $attr );
 			$base_selector = '.responsive-block-editor-addons-block-inline-notice.block-';
 			$selector      = $base_selector . $id;
 			$js_attr       = array(
-				'cookies_id'              => $attr['cookies_id'],
-				'cookies'           => $attr['cookies'],
+				'cookies_id'         => $attr['cookies_id'],
+				'cookies'            => $attr['cookies'],
 				'close_cookies_days' => $attr['close_cookies_days'],
-				'noticeDismiss'     => $attr['noticeDismiss'],
+				'noticeDismiss'      => $attr['noticeDismiss'],
 			);
 			?>
 
@@ -10014,39 +10014,39 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					})
 				})( jQuery )       
 			</script>
-			
+
 			<?php
-			
+
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
 			$notice = $attr['noticeType'];
 			switch ( $notice ) {
 				case 'warning':
-					$noticeTypeColor = '#ffd54f';
+					$notice_type_color = '#ffd54f';
 					break;
 				case 'info':
-					$alignmentnoticeTypeColor = '#2091e1';
+					$alignmentnotice_type_color = '#2091e1';
 					break;
 				case 'error':
-					$noticeTypeColor = '#d9534f';
+					$notice_type_color = '#d9534f';
 					break;
 				case 'notification':
-					$noticeTypeColor = '#40ba7b';
+					$notice_type_color = '#40ba7b';
 					break;
 				default:
-					$noticeTypeColor = $attr['noticeBoxColor'];
+					$notice_type_color = $attr['noticeBoxColor'];
 			}
 
-			$noticeAreaBorder = $attr['layout'] === 'simple' ? '1px solid ' . $noticeTypeColor : 'none';
-			$modernBorder     = '1px solid' . ' ' . $noticeTypeColor;
-			$borderValues     = $attr['layout'] === 'modern' ? $modernBorder : 'none';
-			$borderLeft       = $attr['layout'] === 'simple' ? '5px solid ' . $noticeTypeColor : $modernBorder;
-			$noticeBgColor    = $attr['layout'] === 'modern' ? $noticeTypeColor : '';
+			$notice_area_border = 'simple' === $attr['layout'] ? '1px solid ' . $notice_type_color : 'none';
+			$modern_border      = '1px solid ' . $notice_type_color;
+			$border_values      = 'modern' === $attr['layout'] ? $modern_border : 'none';
+			$border_left        = 'simple' === $attr['layout'] ? '5px solid ' . $notice_type_color : $modern_border;
+			$notice_bg_color    = 'modern' === $attr['layout'] ? $notice_type_color : '';
 
-			$desktopDisplay = $attr['blockHideDesktop'] ? 'none' : 'block';
-			$mobileDisplay  = $attr['blockHideMobile'] ? 'none' : 'block';
-			$tabletDisplay  = $attr['blockHideTablet'] ? 'none' : 'block';
+			$desktop_display = $attr['blockHideDesktop'] ? 'none' : 'block';
+			$mobile_display  = $attr['blockHideMobile'] ? 'none' : 'block';
+			$tablet_display  = $attr['blockHideTablet'] ? 'none' : 'block';
 
 			$selectors = array(
 				' ' => array(
@@ -10056,8 +10056,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'z-index'    => $attr['blockZIndex'],
 				),
 				' .responsive-block-editor-addons-block-inline-notice-title-area' => array(
-					'background-color' => $noticeTypeColor,
-					'border-left'      => $noticeAreaBorder,
+					'background-color' => $notice_type_color,
+					'border-left'      => $notice_area_border,
 					'display'          => 'flex',
 					'align-items'      => 'center',
 					'justify-content'  => 'space-between',
@@ -10079,9 +10079,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-inline-notice-content-area' => array(
 					'background-color' => $attr['contentBgColor'],
-					'border-bottom'    => $borderValues,
-					'border-left'      => $borderLeft,
-					'border-right'     => $borderValues,
+					'border-bottom'    => $border_values,
+					'border-left'      => $border_left,
+					'border-right'     => $border_values,
 				),
 				' .responsive-block-editor-addons-block-inline-notice-content' => array(
 					'color'          => $attr['contentColor'],
@@ -10134,11 +10134,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
 			return $css;
 		}
-		 /**
-		  * Get Defaults for inline notice block
-		  *
-		  * @return array
-		  */
+		/**
+		 * Get Defaults for inline notice block
+		 *
+		 * @return array
+		 */
 		public static function get_responsive_block_inline_notice_default_attributes() {
 			return array(
 				'block_id'                       => '',
@@ -10168,7 +10168,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockRightMarginTablet'         => 20,
 				'blockZIndex'                    => 0,
 				'cookies'                        => false,
-				'cookies_id'                      => '',
+				'cookies_id'                     => '',
 				'close_cookies_days'             => 1,
 				'contentBgColor'                 => '',
 				'contentColor'                   => '',
@@ -10209,6 +10209,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titlePaddingHorizontalTablet'   => 5,
 			);
 		}
+
 
 		/**
 		 * Generate gradient effect
