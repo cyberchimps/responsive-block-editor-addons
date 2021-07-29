@@ -342,30 +342,29 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				case 'responsive-block-editor-addons/how-to':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_how_to_css( $blockattr, $block_id );
 					break;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 				case 'responsive-block-editor-addons/inline-notice':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_inline_notice_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/call-mail-button':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_call_mail_button_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/progress-bar':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_progress_bar_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/social-share':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_social_share_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/tabs':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_tabs_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/tabs-child':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_tabs_child_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/taxonomy-list':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_taxonomy_list_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/wp-search':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_wp_search_css( $blockattr, $block_id );
 					break;
 				default:
 					// Nothing to do here.
