@@ -37,9 +37,7 @@ class ButtonSettingsControl extends Component {
                       setAttributes({ buttonTarget: !buttonTarget });
                   }}
               />
-              {this.props.showButtonSpacing === false ? false : true && (
-                <ButtonSpacingControl {...this.props}/>
-              )}
+              <ButtonSpacingControl {...this.props}/>
               <ButtonBorderControl {...this.props}/>
               <ButtonColorControl {...this.props}/>
           </Fragment>

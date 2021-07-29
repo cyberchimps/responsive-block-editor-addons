@@ -20,17 +20,25 @@ import {sprintf} from "@wordpress/i18n";
 class ResponsiveSpacingControl extends Component {
   constructor() {
     super(...arguments);
+      this.state = {
+          attrval: 0,
+          attrvalMobile: 0,
+          attrvalTablet: 0,
+      }
+
   }
 
 
 render() {
       const {
+          attributes: {
+              topMarginMobile,
+              topMarginTablet,
+              topMargin,
+          },
           setAttributes,
       } = this.props;
-
-    var getAttrName = attrName => camelCase( sprintf( this.props.attrNameTemplate, attrName ) )
-
-    var advancedControls;
+      var advancedControls;
       advancedControls = (
           <Fragment>
 
@@ -68,10 +76,13 @@ render() {
               max={2000}
               allowReset={true}
               resetFallbackValue={5}
-              value={this.props.values.mobile }
+              value={this.state.attrvalMobile }
               onChange={(value) =>[
                   setAttributes({
-                      [getAttrName("Mobile")]: value !== undefined ? value : 0,
+                      [this.props.attrMobile]: value !== undefined ? value : 0,
+                  }),
+                  this.setState({
+                      attrvalMobile: value
                   })]
           }
               />
@@ -86,10 +97,13 @@ render() {
               max={2000}
               allowReset={true}
               resetFallbackValue={5}
-              value={this.props.values.tablet}
+              value={this.state.attrvalTablet}
               onChange={(value) =>[
                   setAttributes({
-                      [getAttrName("Tablet")]: value !== undefined ? value : 0,
+                      [this.props.attrTablet]: value !== undefined ? value : 0,
+                  }),
+                  this.setState({
+                      attrvalTablet: value
                   })]
           }
               />
@@ -104,10 +118,13 @@ render() {
               max={2000}
               allowReset={true}
               resetFallbackValue={5}
-              value={this.props.values.desktop}
+              value={this.state.attrval}
               onChange={(value) =>[
                   setAttributes({
-                      [getAttrName("")]: value !== undefined ? value : 0,
+                      [this.props.attr]: value !== undefined ? value : 0,
+                  }),
+                  this.setState({
+                      attrval: value
                   })]
           }
               />
