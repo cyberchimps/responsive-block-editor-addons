@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Responsive Block Editor Addons
+ * Plugin Name:     Responsive Block Editor Addons bitbucket
  * Plugin URI:      cyberchimps.com
  * Description:     Responsive Blocks for Gutenberg
  * Author:          CyberChimps
@@ -23,16 +23,16 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-responsive-block-editor-ad
  * The code that runs during plugin activation.
  */
 function activate_responsive_block_editor_addons() {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/class-responsive-block-editor-addons-activator.php';
-    Responsive_Block_Editor_Addons_Activator::activate();
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-responsive-block-editor-addons-activator.php';
+	Responsive_Block_Editor_Addons_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  */
 function deactivate_responsive_block_editor_addons() {
-    require_once plugin_dir_path( __FILE__ ) . 'includes/class-responsive-block-editor-addons-deactivator.php';
-    Responsive_Block_Editor_Addons_Deactivator::deactivate();
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-responsive-block-editor-addons-deactivator.php';
+	Responsive_Block_Editor_Addons_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_responsive_block_editor_addons' );
@@ -43,7 +43,7 @@ register_deactivation_hook( __FILE__, 'deactivate_responsive_block_editor_addons
  */
 function run_responsive_block_editor_addons() {
 
-    $plugin = new Responsive_Block_Editor_Addons();
+	$plugin = new Responsive_Block_Editor_Addons();
 }
 
 run_responsive_block_editor_addons();
