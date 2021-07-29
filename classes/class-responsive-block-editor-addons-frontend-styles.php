@@ -8230,6 +8230,1987 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 		}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		/**
+		 * Get Inline Notice Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_inline_notice_css( $attr, $id ) {
+			$defaults      = self::get_responsive_block_inline_notice_default_attributes();
+			$attr          = array_merge( $defaults, (array) $attr );
+			$base_selector = '.responsive-block-editor-addons-block-inline-notice.block-';
+			$selector      = $base_selector . $id;
+			$js_attr       = array(
+				'cookies_id'         => $attr['cookies_id'],
+				'cookies'            => $attr['cookies'],
+				'close_cookies_days' => $attr['close_cookies_days'],
+				'noticeDismiss'      => $attr['noticeDismiss'],
+			);
+			?>
+
+			<script>
+				( function( $ ) {
+
+					RBEAInlineNotice = {
+
+						_run: function( attr, id ) {
+
+							if ( $( id ).length === 0 ) {
+								return;
+							}
+
+							var unique_id = attr['cookies_id'];
+							var is_cookie = attr['cookies'];
+							var cookies_days = attr['close_cookies_days'];
+							var current_cookie = Cookies.get( 'rbea-notice-' + unique_id );
+
+							if( 'undefined' === typeof current_cookie && true === is_cookie ){
+								$( id ).show()
+							}
+
+							if ( attr['noticeDismiss'] !== '' ) {
+								$( id + " .rbea-notice-dismiss" ).on( 'click',function() {
+									if ( true === is_cookie && 'undefined' !== typeof current_cookie) {
+										current_cookies = Cookies.set( 'rbea-notice-' + unique_id, true, { expires: cookies_days } );
+									$( id ).addClass("rbea-notice__active").css('display' ,'none')
+									}
+
+									if( 'undefined' === typeof current_cookie && true === is_cookie ){
+										current_cookies = Cookies.set( 'rbea-notice-' + unique_id, true, { expires: cookies_days } );
+										$( id ).addClass("rbea-notice__active").css('display' ,'none')
+									}
+
+									if( false === is_cookie ){
+										$( id ).addClass("rbea-notice__active").css('display' ,'none')
+									}
+								});
+							}
+						}
+					}
+					$( document ).ready(function() {
+						RBEAInlineNotice._run( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+					})
+				})( jQuery )       
+			</script>
+
+			<?php
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$notice = $attr['noticeType'];
+			switch ( $notice ) {
+				case 'warning':
+					$notice_type_color = '#ffd54f';
+					break;
+				case 'info':
+					$alignmentnotice_type_color = '#2091e1';
+					break;
+				case 'error':
+					$notice_type_color = '#d9534f';
+					break;
+				case 'notification':
+					$notice_type_color = '#40ba7b';
+					break;
+				default:
+					$notice_type_color = $attr['noticeBoxColor'];
+			}
+
+			$notice_area_border = 'simple' === $attr['layout'] ? '1px solid ' . $notice_type_color : 'none';
+			$modern_border      = '1px solid ' . $notice_type_color;
+			$border_values      = 'modern' === $attr['layout'] ? $modern_border : 'none';
+			$border_left        = 'simple' === $attr['layout'] ? '5px solid ' . $notice_type_color : $modern_border;
+			$notice_bg_color    = 'modern' === $attr['layout'] ? $notice_type_color : '';
+
+			$desktop_display = $attr['blockHideDesktop'] ? 'none' : 'block';
+			$mobile_display  = $attr['blockHideMobile'] ? 'none' : 'block';
+			$tablet_display  = $attr['blockHideTablet'] ? 'none' : 'block';
+
+			$selectors = array(
+				' ' => array(
+					'text-align' => $attr['noticeAlignment'],
+					'padding'    => '' . self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
+					'margin'     => '' . self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
+					'z-index'    => $attr['blockZIndex'],
+				),
+				' .responsive-block-editor-addons-block-inline-notice-title-area' => array(
+					'background-color' => $notice_type_color,
+					'border-left'      => $notice_area_border,
+					'display'          => 'flex',
+					'align-items'      => 'center',
+					'justify-content'  => 'space-between',
+				),
+				' .responsive-block-editor-addons-block-inline-notice-title' => array(
+					'color'          => $attr['titleColor'],
+					'font-family'    => $attr['titleFontFamily'],
+					'font-size'      => self::get_css_value( $attr['titleFontSize'], 'px' ),
+					'font-weight'    => $attr['titleFontWeight'],
+					'line-height'    => $attr['titleLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['titleLetterSpacing'], 'px' ),
+					'margin'         => 0,
+					'padding'        => '' . self::get_css_value( $attr['titlePaddingVertical'], 'px' ) . ' ' . self::get_css_value( $attr['titlePaddingHorizontal'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-inline-notice-svg > svg' => array(
+					'height'       => '17px',
+					'width'        => '17px',
+					'margin-right' => '10px',
+				),
+				' .responsive-block-editor-addons-block-inline-notice-content-area' => array(
+					'background-color' => $attr['contentBgColor'],
+					'border-bottom'    => $border_values,
+					'border-left'      => $border_left,
+					'border-right'     => $border_values,
+				),
+				' .responsive-block-editor-addons-block-inline-notice-content' => array(
+					'color'          => $attr['contentColor'],
+					'font-family'    => $attr['contentFontFamily'],
+					'font-size'      => self::get_css_value( $attr['contentFontSize'], 'px' ),
+					'font-weight'    => $attr['contentFontWeight'],
+					'line-height'    => $attr['contentLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['contentLetterSpacing'], 'px' ),
+					'padding'        => '' . self::get_css_value( $attr['contentPaddingVertical'], 'px' ) . ' ' . self::get_css_value( $attr['contentPaddingHorizontal'], 'px' ),
+				),
+			);
+
+			$mobile_selectors = array(
+				' ' => array(
+					'padding' => '' . self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ) . ' !important',
+					'margin'  => '' . self::get_css_value( $attr['blockTopMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftBottomMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ) . ' !important',
+				),
+				' .responsive-block-editor-addons-block-inline-notice-title' => array(
+					'font-size' => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
+					'padding'   => '' . self::get_css_value( $attr['titlePaddingVerticalMobile'], 'px' ) . ' ' . self::get_css_value( $attr['titlePaddingHorizontalMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-inline-notice-content' => array(
+					'font-size' => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
+					'padding'   => '' . self::get_css_value( $attr['contentPaddingVerticalMobile'], 'px' ) . ' ' . self::get_css_value( $attr['contentPaddingHorizontalMobile'], 'px' ),
+				),
+			);
+
+			$tablet_selectors = array(
+				' ' => array(
+					'padding' => '' . self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPaddingTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPaddingTablet'], 'px' ) . ' !important',
+					'margin'  => '' . self::get_css_value( $attr['blockTopMarginTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMarginTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ) . ' !important',
+				),
+				' .responsive-block-editor-addons-block-inline-notice-title' => array(
+					'font-size' => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
+					'padding'   => '' . self::get_css_value( $attr['titlePaddingVerticalTablet'], 'px' ) . ' ' . self::get_css_value( $attr['titlePaddingHorizontalTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-inline-notice-content' => array(
+					'font-size' => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
+					'padding'   => '' . self::get_css_value( $attr['contentPaddingVerticalTablet'], 'px' ) . ' ' . self::get_css_value( $attr['contentPaddingHorizontalTablet'], 'px' ),
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-inline-notice.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+		/**
+		 * Get Defaults for inline notice block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_inline_notice_default_attributes() {
+			return array(
+				'block_id'                       => '',
+				'blockTopPadding'                => 20,
+				'blockBottomPadding'             => 20,
+				'blockLeftPadding'               => 20,
+				'blockRightPadding'              => 20,
+				'blockTopPaddingMobile'          => 20,
+				'blockBottomPaddingMobile'       => 20,
+				'blockLeftPaddingMobile'         => 20,
+				'blockRightPaddingMobile'        => 20,
+				'blockTopPaddingTablet'          => 20,
+				'blockBottomPaddingTablet'       => 20,
+				'blockLeftPaddingTablet'         => 20,
+				'blockRightPaddingTablet'        => 20,
+				'blockTopMargin'                 => 20,
+				'blockBottomMargin'              => 20,
+				'blockLeftMargin'                => 20,
+				'blockRightMargin'               => 20,
+				'blockTopMarginMobile'           => 20,
+				'blockBottomMarginMobile'        => 20,
+				'blockLeftMarginMobile'          => 20,
+				'blockRightMarginMobile'         => 20,
+				'blockTopMarginTablet'           => 20,
+				'blockBottomMarginTablet'        => 20,
+				'blockLeftMarginTablet'          => 20,
+				'blockRightMarginTablet'         => 20,
+				'blockZIndex'                    => 0,
+				'cookies'                        => false,
+				'cookies_id'                     => '',
+				'close_cookies_days'             => 1,
+				'contentBgColor'                 => '',
+				'contentColor'                   => '',
+				'contentFontFamily'              => '',
+				'contentFontSize'                => 16,
+				'contentFontSizeMobile'          => 16,
+				'contentFontSizeTablet'          => 16,
+				'contentFontWeight'              => '600',
+				'contentLineHeight'              => 1,
+				'contentLetterSpacing'           => 0,
+				'contentPaddingVertical'         => 20,
+				'contentPaddingHorizontal'       => 20,
+				'contentPaddingVerticalMobile'   => 2,
+				'contentPaddingHorizontalMobile' => 2,
+				'contentPaddingVerticalTablet'   => 5,
+				'contentPaddingHorizontalTablet' => 5,
+				'headingTag'                     => 'h4',
+				'layout'                         => 'modern',
+				'noticeAlignment'                => 'left',
+				'noticeBoxColor'                 => '#FFD54F',
+				'noticeContent'                  => '',
+				'noticeDismiss'                  => '',
+				'noticeType'                     => 'default',
+				'noticeTitle'                    => '',
+				'titleColor'                     => '',
+				'titleFontFamily'                => '',
+				'titleFontSize'                  => 20,
+				'titleFontSizeMobile'            => 20,
+				'titleFontSizeTablet'            => 20,
+				'titleFontWeight'                => '600',
+				'titleLineHeight'                => 1,
+				'titleLetterSpacing'             => 0,
+				'titlePaddingVertical'           => 15,
+				'titlePaddingHorizontal'         => 15,
+				'titlePaddingVerticalMobile'     => 2,
+				'titlePaddingHorizontalMobile'   => 2,
+				'titlePaddingVerticalTablet'     => 5,
+				'titlePaddingHorizontalTablet'   => 5,
+			);
+		}
+
+
 		/**
 		 * Get Call/Mail Button CSS
 		 *

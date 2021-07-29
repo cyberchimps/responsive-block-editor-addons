@@ -43,6 +43,7 @@ import "./blocks/tabs/index.js";
 import "./blocks/tabs/tabs-child/index";
 import "./blocks/taxonomy-list/index.js";
 import "./blocks/wp-search/index.js";
+import "./blocks/inline-notice/index.js";
 
 // Extensions
 import "./extensions/cover-styles";
