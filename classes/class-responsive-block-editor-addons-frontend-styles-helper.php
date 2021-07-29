@@ -342,6 +342,31 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				case 'responsive-block-editor-addons/how-to':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_how_to_css( $blockattr, $block_id );
 					break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				case 'responsive-block-editor-addons/inline-notice':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_inline_notice_css( $blockattr, $block_id );
+					break;
 				default:
 					// Nothing to do here.
 					break;
