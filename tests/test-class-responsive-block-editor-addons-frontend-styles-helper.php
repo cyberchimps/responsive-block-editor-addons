@@ -1752,6 +1752,33 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for pricing_list - right align
+	 */
+	public function test_get_block_css_pricing_list_right_align() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_list_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-list',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'     => self::$pricing_list_block_id,
+					'contentAlign' => 'right',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_list_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for pricing_table
 	 */
 	public function test_get_block_css_pricing_table() {
@@ -1759,6 +1786,60 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/pricing-table',
 			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$pricing_table_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table - left blockAlign
+	 */
+	public function test_get_block_css_pricing_table_left_blockAlign() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'   => self::$pricing_table_block_id,
+					'blockAlign' => 'left',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table - right blockAlign
+	 */
+	public function test_get_block_css_pricing_table_right_blockAlign() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'   => self::$pricing_table_block_id,
+					'blockAlign' => 'right',
+				)
+			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
