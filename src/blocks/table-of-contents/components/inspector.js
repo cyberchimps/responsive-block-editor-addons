@@ -1,5 +1,7 @@
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
+import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
+
 /**
  * Inspector Controls
  */
@@ -532,29 +534,7 @@ export default class Inspector extends Component {
               </Fragment>
             )}
             {"video" == backgroundType && (
-              <BaseControl
-                className="editor-bg-video-control"
-                label={__("Background Video")}
-              >
-                <MediaUpload
-                  title={__("Select Background Video")}
-                  onSelect={this.onSelectVideo}
-                  allowedTypes={["video"]}
-                  value={backgroundVideo}
-                  render={({ open }) => (
-                    <Button isDefault onClick={open}>
-                      {!backgroundVideo
-                        ? __("Select Background Video")
-                        : __("Replace Video")}
-                    </Button>
-                  )}
-                />
-                {backgroundVideo && (
-                  <Button onClick={this.onRemoveVideo} isLink isDestructive>
-                    {__("Remove Video")}
-                  </Button>
-                )}
-              </BaseControl>
+              <VideoBackgroundControl {...this.props} />
             )}
           </PanelBody>
         <PanelBody
