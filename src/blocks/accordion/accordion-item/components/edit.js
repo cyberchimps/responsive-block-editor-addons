@@ -4,6 +4,7 @@
 
 import classnames from "classnames";
 import InspectorTab from "../../../../components/InspectorTab";
+import InspectorTabs from "../../../../components/InspectorTabs";
 import renderSVG from "../../../../renderIcon";
 import BoxShadowControl from "../../../../utils/components/box-shadow";
 import EditorStyles from "./editor-styles";
