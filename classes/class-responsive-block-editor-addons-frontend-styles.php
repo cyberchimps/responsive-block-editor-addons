@@ -6619,17 +6619,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding' => self::get_css_value( $attr['blockPadding'], 'px' ),
 				),
 				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content' => array(
-					'border-width'  => self::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-color'  => $attr['borderColor'],
-					'border-style'  => $attr['borderStyle'],
-					'border-radius' => self::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-width'  => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-color'  => $attr['blockBorderColor'],
+					'border-style'  => $attr['blockBorderStyle'],
+					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
 					'padding'       => self::get_css_value( $attr['contentPadding'], 'px' ),
 					'text-align'    => $attr['headingAlign'],
 				),
 				' button.slick-arrow' => array(
-					'border-width'  => self::get_css_value( $attr['arrowBorderSize'], 'px' ),
-					'border-color'  => $attr['arrowColor'],
-					'border-radius' => self::get_css_value( $attr['arrowBorderRadius'], 'px' ),
+                    'border-width'  => self::get_css_value( $attr['arrowBorderWidth'], 'px' ),
+                    'border-color'  => $attr['arrowBorderColor'],
+                    'border-radius' => self::get_css_value( $attr['arrowBorderRadius'], 'px' ),
+                    'border-style'  => $attr['arrowBorderStyle'],
 				),
 				' ul.slick-dots li button:before, ul.slick-dots li.slick-active button:before' => array(
 					'color' => $attr['arrowColor'],
@@ -6787,9 +6788,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'autoplaySpeed'           => 2000,
 				'arrowDots'               => 'arrows_dots',
 				'arrowSize'               => 20,
-				'arrowBorderSize'         => 1,
+				'arrowBorderWidth'         => 1,
 				'arrowBorderRadius'       => 0,
-				'rowGap'                  => 10,
+                'arrowBorderColor'         => '',
+                'arrowBorderStyle'         => '',
+                'rowGap'                  => 10,
 				'columnGap'               => 10,
 				'contentPadding'          => 5,
 				'backgroundType'          => '',
@@ -6799,10 +6802,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundRepeat'        => 'no-repeat',
 				'backgroundColor'         => '',
 				'backgroundImageColor'    => '',
-				'borderStyle'             => 'none',
-				'borderWidth'             => '1',
-				'borderRadius'            => '',
-				'borderColor'             => '',
+				'blockBorderStyle'             => 'none',
+				'blockBorderWidth'             => '1',
+				'blockBorderRadius'            => '',
+				'blockBorderColor'             => '',
 				'backgroundOpacity'       => 50,
 				'arrowColor'              => '#333',
 				'stack'                   => 'tablet',
@@ -7555,7 +7558,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 							var $this_scope = $( id );
 							if ( $this_scope.find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 ) {
 								$this_scope.find( '.responsive-block-editor-addons-toc__title-wrap' ).addClass( 'responsive-block-editor-addons-toc__is-collapsible' );
-							}   
+							}
 						},
 					}
 
@@ -7563,7 +7566,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						RBEATableOfContents.init()
 						RBEATableOfContents._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $id ); ?>' );
 					})
-				})( jQuery )       
+				})( jQuery )
 			</script>
 			<?php
 
@@ -8292,7 +8295,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$( document ).ready(function() {
 						RBEAInlineNotice._run( <?php echo wp_json_encode( $js_attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 					})
-				})( jQuery )       
+				})( jQuery )
 			</script>
 
 			<?php
