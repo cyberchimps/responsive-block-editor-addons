@@ -8,6 +8,8 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ImageSettingsControl from "../../../settings-components/Image Settings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -532,32 +534,7 @@ export default class Inspector extends Component {
               title={__("Image Settings", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Image Shape", "responsive-block-editor-addons")}
-                value={imageShape}
-                options={imageShapeOptions}
-                onChange={(newImageShape) =>
-                  setAttributes({ imageShape: newImageShape })
-                }
-              />
-              <SelectControl
-                label={__("Image Size", "responsive-block-editor-addons")}
-                value={imageSize}
-                onChange={(value) => setAttributes({ imageSize: value })}
-                options={[
-                  { value: "full", label: __("Full Size") },
-                  { value: "thumbnail", label: __("Thumbnail") },
-                  { value: "medium", label: __("Medium") },
-                  { value: "large", label: __("Large") },
-                ]}
-              />
-              <RangeControl
-                label={__("Image Width")}
-                value={imageWidth}
-                onChange={(value) => setAttributes({ imageWidth: value })}
-                min={0}
-                max={500}
-              />
+                  <ImageSettingsControl {...this.props} />
             </PanelBody>
             <PanelBody
               title={__("Button Settings", "responsive-block-editor-addons")}

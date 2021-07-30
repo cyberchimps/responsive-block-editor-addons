@@ -12,7 +12,7 @@ import ResponsivePaddingControl from "../../../settings-components/Responsive Sp
 import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
-import BlockBorderHelperControl from "../../../settings-components/Block Border Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 
 // Import block components
