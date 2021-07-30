@@ -1,5 +1,5 @@
 import BoxShadowControl from "../../../utils/components/box-shadow";
-import BlockBorderHelperControl from "../../../settings-components/Block Border Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
 import { loadGoogleFont } from "../../../utils/font";
 

@@ -10,6 +10,8 @@ import { loadGoogleFont } from "../../../utils/font";
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ImageSettingsControl from "../../../settings-components/Image Settings";
+
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -343,40 +345,8 @@ export default class Inspector extends Component {
               title={__("Image", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Shape", "responsive-block-editor-addons")}
-                value={imageShape}
-                options={imageShapeOptions}
-                onChange={(newImageShape) =>
-                  setAttributes({ imageShape: newImageShape })
-                }
-              />
-              <SelectControl
-                label={__("Size", "responsive-block-editor-addons")}
-                value={imageSize}
-                options={[
-                  { value: "full", label: __("Full Size") },
-                  { value: "thumbnail", label: __("Thumbnail") },
-                  { value: "medium", label: __("Medium") },
-                  { value: "large", label: __("Large") },
-                ]}
-                onChange={(newImageSize) =>
-                  setAttributes({ imageSize: newImageSize })
-                }
-              />
-              <RangeControl
-                label={__("Width", "responsive-block-editor-addons")}
-                value={imageWidth}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    imageWidth: value,
-                  })
-                }
-                min={0}
-                max={300}
-                step={1}
-              />
-            </PanelBody>
+                  <ImageSettingsControl {...this.props} />
+      </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelColorSettings
