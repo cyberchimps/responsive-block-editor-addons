@@ -9,7 +9,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import BlockBorderHelperControl from "../../../settings-components/Block Border Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 
@@ -292,15 +292,15 @@ export default class Inspector extends Component {
                   <ResponsivePaddingControl
                     attrNameTemplate="input%s"
                     values = {{
-                      desktopTop:inputTopPadding, 
-                      desktopBottom:inputBottomPadding, 
-                      desktopLeft:inputLeftPadding, 
-                      desktopRight:inputRightPadding, 
+                      desktopTop:inputTopPadding,
+                      desktopBottom:inputBottomPadding,
+                      desktopLeft:inputLeftPadding,
+                      desktopRight:inputRightPadding,
 
                       tabletTop:inputTopPaddingTablet,
-                      tabletBottom:inputBottomPaddingTablet, 
-                      tabletLeft:inputLeftPaddingTablet, 
-                      tabletRight:inputRightPaddingTablet, 
+                      tabletBottom:inputBottomPaddingTablet,
+                      tabletLeft:inputLeftPaddingTablet,
+                      tabletRight:inputRightPaddingTablet,
 
                       mobileTop:inputTopPaddingMobile,
                       mobileBottom:inputBottomPaddingMobile,
@@ -308,17 +308,17 @@ export default class Inspector extends Component {
                       mobileRight:inputRightPaddingMobile,
                     }}
                     setAttributes={ setAttributes }
-                    {...this.props}            
+                    {...this.props}
                   />
                 </PanelBody>
                 <TypographyHelperControl
-                  title={__("Input Typography", "responsive-block-editor-addons")} 
+                  title={__("Input Typography", "responsive-block-editor-addons")}
                   attrNameTemplate="input%s"
                   values = {{family: inputFontFamily, size: inputFontSize, sizeMobile: inputFontSizeMobile, sizeTablet: inputFontSizeTablet, weight: inputFontWeight, height: inputLineHeight}}
                   showLetterSpacing = { false }
                   showTextTransform = { false }
                   setAttributes={ setAttributes }
-                  {...this.props}            
+                  {...this.props}
                 />
               </PanelBody>
               {
@@ -376,13 +376,13 @@ export default class Inspector extends Component {
                                 onChange={(value) => setAttributes({buttonText: value})}
                               />
                               <TypographyHelperControl
-                                title={__("Typography", "responsive-block-editor-addons")} 
+                                title={__("Typography", "responsive-block-editor-addons")}
                                 attrNameTemplate="button%s"
                                 values = {{family: buttonFontFamily, size: buttonFontSize, sizeMobile: buttonFontSizeMobile, sizeTablet: buttonFontSizeTablet, weight: buttonFontWeight, height: buttonLineHeight}}
                                 showLetterSpacing = { false }
                                 showTextTransform = { false }
                                 setAttributes={ setAttributes }
-                                {...this.props}            
+                                {...this.props}
                               />
                             </Fragment>
                           )
@@ -469,7 +469,7 @@ export default class Inspector extends Component {
                               onChange={(value) => setAttributes({iconSize: value})}
                               min={1}
                               max={500}
-                            /> 
+                            />
                             <p className="responsive-block-editor-addons-setting-label">
                               {__("Icon Color", "responsive-block-editor-addons")}
                               <span className="components-base-control__label">

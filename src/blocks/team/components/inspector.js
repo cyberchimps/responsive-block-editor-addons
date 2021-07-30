@@ -5,6 +5,8 @@
 import times from "lodash/times";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ImageSettingsControl from "../../../settings-components/Image Settings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
