@@ -80,7 +80,13 @@ function EditorStyles(props) {
     const borderRadiusGrid = "none" !== gridBorderStyle ? generateCSSUnit(gridBorderRadius, "px") : 0;
     const borderBottomColor = "none" !== separatorStyle ? separatorColor : "";
     const borderBottomWidth = "none" !== separatorStyle ? separatorWidth : 0;
-    const boxShadowValues = "none" !== boxShadow ? generateCSSUnit(boxShadowHOffset, "px") + ' ' + generateCSSUnit(boxShadowVOffset, "px") + ' ' + generateCSSUnit(boxShadowBlur, "px") + ' ' + generateCSSUnit(boxShadowSpread, "px") + ' ' + boxShadowColor + ' ' + boxShadowPosition : "none";
+    var boxShadowPositionCSS = boxShadowPosition;
+
+    if ("outset" === boxShadowPosition) {
+      boxShadowPositionCSS = "";
+    }
+
+    const boxShadowValues = generateCSSUnit(boxShadowHOffset, "px") + " " + generateCSSUnit(boxShadowVOffset, "px") + " " + generateCSSUnit(boxShadowBlur, "px") + " " + generateCSSUnit(boxShadowSpread, "px") + " " + boxShadowColor + " " + boxShadowPositionCSS;
 
     var selectors = {
         " .responsive-block-editor-addons-block-grid": {
