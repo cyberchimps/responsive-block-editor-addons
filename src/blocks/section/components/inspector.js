@@ -5,6 +5,7 @@
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -822,29 +823,7 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
               {"video" == backgroundType && (
-                <BaseControl
-                  className="editor-bg-video-control"
-                  label={__("Background Video")}
-                >
-                  <MediaUpload
-                    title={__("Select Background Video")}
-                    onSelect={this.onSelectVideo}
-                    allowedTypes={["video"]}
-                    value={backgroundVideo}
-                    render={({ open }) => (
-                      <Button isDefault onClick={open}>
-                        {!backgroundVideo
-                          ? __("Select Background Video")
-                          : __("Replace Video")}
-                      </Button>
-                    )}
-                  />
-                  {backgroundVideo && (
-                    <Button onClick={this.onRemoveVideo} isLink isDestructive>
-                      {__("Remove Video")}
-                    </Button>
-                  )}
-                </BaseControl>
+                <VideoBackgroundControl {...this.props} />
               )}
               <RangeControl
                 label={__("Opacity", "responsive-block-editor-addons")}
