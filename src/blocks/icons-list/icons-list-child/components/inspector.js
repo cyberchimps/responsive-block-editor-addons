@@ -5,6 +5,8 @@
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import renderSVG from "../../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../../ResponsiveBlocksIcon.json";
+import InspectorTab from "../../../../components/InspectorTab";
+import InspectorTabs from "../../../../components/InspectorTabs";
 
 // Setup the block
 const { __ } = wp.i18n;
