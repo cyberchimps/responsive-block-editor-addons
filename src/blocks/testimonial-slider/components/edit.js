@@ -14,6 +14,8 @@ import Description from "./Description";
 import Style from "style-it";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
 
 const { __ } = wp.i18n;
 
@@ -999,324 +1001,330 @@ class edit extends Component {
     // Global Controls.
     const inspect_control = (
       <InspectorControls>
-        <PanelBody title={__("General")} initialOpen={true}>
-          <TabPanel
-            className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-            activeClass="active-tab"
-            tabs={[
-              {
-                name: "desktop",
-                title: <Dashicon icon="desktop" />,
-                className:
-                  " responsive-desktop-tab  responsive-responsive-tabs",
-              },
-              {
-                name: "tablet",
-                title: <Dashicon icon="tablet" />,
-                className: " responsive-tablet-tab  responsive-responsive-tabs",
-              },
-              {
-                name: "mobile",
-                title: <Dashicon icon="smartphone" />,
-                className: " responsive-mobile-tab  responsive-responsive-tabs",
-              },
-            ]}
-          >
-            {(tab) => {
-              let tabout;
+        <InspectorTabs>
+          <InspectorTab key={"content"}>
+            <PanelBody title={__("General")} initialOpen={true}>
+              <TabPanel
+                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className: " responsive-tablet-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className: " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  let tabout;
 
-              if ("mobile" === tab.name) {
-                tabout = (
-                  <Fragment>
-                    <BaseControl>
-                      <p>
-                        {__(
-                          "Alignment Mobile",
-                          "responsive-block-editor-addons"
-                        )}
-                      </p>
-                      <AlignmentToolbar
-                        value={headingAlignMobile}
-                        onChange={(value) =>
-                          setAttributes({
-                            headingAlignMobile: value,
-                          })
-                        }
-                        controls={["left", "center", "right"]}
-                        isCollapsed={false}
-                      />
-                    </BaseControl>
-                  </Fragment>
-                );
-              } else if ("tablet" === tab.name) {
-                tabout = (
-                  <Fragment>
-                    <BaseControl>
-                      <p>
-                        {__(
-                          "Alignment Tablet",
-                          "responsive-block-editor-addons"
-                        )}
-                      </p>
-                      <AlignmentToolbar
-                        value={headingAlignTablet}
-                        onChange={(value) =>
-                          setAttributes({
-                            headingAlignTablet: value,
-                          })
-                        }
-                        controls={["left", "center", "right"]}
-                        isCollapsed={false}
-                      />
-                    </BaseControl>
-                  </Fragment>
-                );
-              } else {
-                tabout = (
-                  <Fragment>
-                    <BaseControl>
-                      <p>{__("Alignment", "responsive-block-editor-addons")}</p>
-                      <AlignmentToolbar
-                        value={headingAlign}
-                        onChange={(value) =>
-                          setAttributes({
-                            headingAlign: value,
-                          })
-                        }
-                        controls={["left", "center", "right"]}
-                        isCollapsed={false}
-                      />
-                    </BaseControl>
-                  </Fragment>
-                );
-              }
+                  if ("mobile" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <BaseControl>
+                          <p>
+                            {__(
+                              "Alignment Mobile",
+                              "responsive-block-editor-addons"
+                            )}
+                          </p>
+                          <AlignmentToolbar
+                            value={headingAlignMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                headingAlignMobile: value,
+                              })
+                            }
+                            controls={["left", "center", "right"]}
+                            isCollapsed={false}
+                          />
+                        </BaseControl>
+                      </Fragment>
+                    );
+                  } else if ("tablet" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <BaseControl>
+                          <p>
+                            {__(
+                              "Alignment Tablet",
+                              "responsive-block-editor-addons"
+                            )}
+                          </p>
+                          <AlignmentToolbar
+                            value={headingAlignTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                headingAlignTablet: value,
+                              })
+                            }
+                            controls={["left", "center", "right"]}
+                            isCollapsed={false}
+                          />
+                        </BaseControl>
+                      </Fragment>
+                    );
+                  } else {
+                    tabout = (
+                      <Fragment>
+                        <BaseControl>
+                          <p>{__("Alignment", "responsive-block-editor-addons")}</p>
+                          <AlignmentToolbar
+                            value={headingAlign}
+                            onChange={(value) =>
+                              setAttributes({
+                                headingAlign: value,
+                              })
+                            }
+                            controls={["left", "center", "right"]}
+                            isCollapsed={false}
+                          />
+                        </BaseControl>
+                      </Fragment>
+                    );
+                  }
 
-              return <div>{tabout}</div>;
-            }}
-          </TabPanel>
-          <RangeControl
-            label={__("Number of Testimonials")}
-            value={test_item_count}
-            onChange={(newCount) => {
-              let cloneTest_block = [...test_block];
-              if (cloneTest_block.length < newCount) {
-                const incAmount = Math.abs(newCount - cloneTest_block.length);
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
+              <RangeControl
+                label={__("Number of Testimonials")}
+                value={test_item_count}
+                onChange={(newCount) => {
+                  let cloneTest_block = [...test_block];
+                  if (cloneTest_block.length < newCount) {
+                    const incAmount = Math.abs(newCount - cloneTest_block.length);
 
-                {
-                  times(incAmount, (n) => {
-                    cloneTest_block.push({
-                      description:
-                        ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."],
-                      name: ["John Doe"],
-                      company: ["Company" + (cloneTest_block.length + 1)],
-                      image: "",
-                    });
-                  });
-                }
-                setAttributes({ test_block: cloneTest_block });
-              } else {
-                const incAmount = Math.abs(newCount - cloneTest_block.length);
-                let data_new = cloneTest_block;
-                for (var i = 0; i < incAmount; i++) {
-                  data_new.pop();
-                }
-                setAttributes({ test_block: data_new });
-              }
-              setAttributes({ test_item_count: newCount });
-            }}
-            min={0}
-            max={50}
-            allowReset
-          />
-          <TabPanel
-            className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-            activeClass="active-tab"
-            tabs={[
-              {
-                name: "desktop",
-                title: <Dashicon icon="desktop" />,
-                className:
-                  " responsive-desktop-tab  responsive-responsive-tabs",
-              },
-              {
-                name: "tablet",
-                title: <Dashicon icon="tablet" />,
-                className: " responsive-tablet-tab  responsive-responsive-tabs",
-              },
-              {
-                name: "mobile",
-                title: <Dashicon icon="smartphone" />,
-                className: " responsive-mobile-tab  responsive-responsive-tabs",
-              },
-            ]}
-          >
-            {(tab) => {
-              let tabout;
-
-              if ("mobile" === tab.name) {
-                tabout = (
-                  <RangeControl
-                    label={__("Columns")}
-                    value={mcolumns}
-                    onChange={(value) => setAttributes({ mcolumns: value })}
-                    min={1}
-                    max={test_item_count}
-                  />
-                );
-              } else if ("tablet" === tab.name) {
-                tabout = (
-                  <RangeControl
-                    label={__("Columns")}
-                    value={tcolumns}
-                    onChange={(value) => setAttributes({ tcolumns: value })}
-                    min={1}
-                    max={test_item_count}
-                  />
-                );
-              } else {
-                tabout = (
-                  <RangeControl
-                    label={__("Columns")}
-                    value={columns}
-                    onChange={(value) => setAttributes({ columns: value })}
-                    min={1}
-                    max={test_item_count}
-                  />
-                );
-              }
-
-              return <div>{tabout}</div>;
-            }}
-          </TabPanel>
-
-          <SelectControl
-            label={__("Skin")}
-            value={skin}
-            onChange={(value) => setAttributes({ skin: value })}
-            options={[
-              { value: "default", label: __("Default") },
-              { value: "bubble", label: __("Bubble") },
-            ]}
-          />
-        </PanelBody>
-        {skin === "bubble" && (
-          <PanelBody title={__("Bubble Settings")} initialOpen={false}>
-            <Fragment>
-              <p className="responsive-setting-label">
-                {__("Background Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: bubbleColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={bubbleColor}
-                onChange={(colorValue) =>
-                  setAttributes({ bubbleColor: colorValue })
-                }
+                    {
+                      times(incAmount, (n) => {
+                        cloneTest_block.push({
+                          description:
+                            ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."],
+                          name: ["John Doe"],
+                          company: ["Company" + (cloneTest_block.length + 1)],
+                          image: "",
+                        });
+                      });
+                    }
+                    setAttributes({ test_block: cloneTest_block });
+                  } else {
+                    const incAmount = Math.abs(newCount - cloneTest_block.length);
+                    let data_new = cloneTest_block;
+                    for (var i = 0; i < incAmount; i++) {
+                      data_new.pop();
+                    }
+                    setAttributes({ test_block: data_new });
+                  }
+                  setAttributes({ test_item_count: newCount });
+                }}
+                min={0}
+                max={50}
                 allowReset
               />
-            </Fragment>
-            <RangeControl
-              label={__("Padding")}
-              value={bubblePadding}
-              onChange={(value) => setAttributes({ bubblePadding: value })}
-              min={0}
-              max={50}
-              allowReset
-            />
-            <RangeControl
-              label={__("Border Radius")}
-              value={bubbleBorderRadius}
-              onChange={(value) => setAttributes({ bubbleBorderRadius: value })}
-              min={0}
-              max={50}
-              allowReset
-            />
-          </PanelBody>
-        )}
+              <TabPanel
+                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className: " responsive-tablet-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className: " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  let tabout;
 
-        {carousal_settings}
+                  if ("mobile" === tab.name) {
+                    tabout = (
+                      <RangeControl
+                        label={__("Columns")}
+                        value={mcolumns}
+                        onChange={(value) => setAttributes({ mcolumns: value })}
+                        min={1}
+                        max={test_item_count}
+                      />
+                    );
+                  } else if ("tablet" === tab.name) {
+                    tabout = (
+                      <RangeControl
+                        label={__("Columns")}
+                        value={tcolumns}
+                        onChange={(value) => setAttributes({ tcolumns: value })}
+                        min={1}
+                        max={test_item_count}
+                      />
+                    );
+                  } else {
+                    tabout = (
+                      <RangeControl
+                        label={__("Columns")}
+                        value={columns}
+                        onChange={(value) => setAttributes({ columns: value })}
+                        min={1}
+                        max={test_item_count}
+                      />
+                    );
+                  }
 
-        <PanelBody title={__("Image")} initialOpen={false}>
-          {times(test_item_count, (n) => tmControls(n))}
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
 
-          {cnt > 0 && (
-            <Fragment>
-              <hr className="responsive-block-editor-addons-editor__separator" />
               <SelectControl
-                label={__("Image Position")}
-                value={imagePosition}
-                onChange={(value) => setAttributes({ imagePosition: value })}
+                label={__("Skin")}
+                value={skin}
+                onChange={(value) => setAttributes({ skin: value })}
                 options={[
-                  { value: "top", label: __("Top") },
-                  { value: "bottom", label: __("Bottom") },
-                  { value: "left", label: __("Left") },
-                  { value: "right", label: __("Right") },
-                  { value: "stacked", label: __("Stacked") },
+                  { value: "default", label: __("Default") },
+                  { value: "bubble", label: __("Bubble") },
                 ]}
               />
-              {(imagePosition == "left" || imagePosition == "right") && (
+            </PanelBody>
+            {skin === "bubble" && (
+              <PanelBody title={__("Bubble Settings")} initialOpen={false}>
                 <Fragment>
-                  <SelectControl
-                    label={__("Vertical ALignment")}
-                    value={imageAlignment}
-                    onChange={(value) =>
-                      setAttributes({ imageAlignment: value })
+                  <p className="responsive-setting-label">
+                    {__("Background Color", "responsive-block-editor-addons")}
+                    <span className="components-base-control__label">
+                      <span
+                        className="component-color-indicator"
+                        style={{ backgroundColor: bubbleColor }}
+                      ></span>
+                    </span>
+                  </p>
+                  <ColorPalette
+                    value={bubbleColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ bubbleColor: colorValue })
                     }
+                    allowReset
+                  />
+                </Fragment>
+                <RangeControl
+                  label={__("Padding")}
+                  value={bubblePadding}
+                  onChange={(value) => setAttributes({ bubblePadding: value })}
+                  min={0}
+                  max={50}
+                  allowReset
+                />
+                <RangeControl
+                  label={__("Border Radius")}
+                  value={bubbleBorderRadius}
+                  onChange={(value) => setAttributes({ bubbleBorderRadius: value })}
+                  min={0}
+                  max={50}
+                  allowReset
+                />
+              </PanelBody>
+            )}
+
+            {carousal_settings}
+
+            <PanelBody title={__("Image")} initialOpen={false}>
+              {times(test_item_count, (n) => tmControls(n))}
+
+              {cnt > 0 && (
+                <Fragment>
+                  <hr className="responsive-block-editor-addons-editor__separator" />
+                  <SelectControl
+                    label={__("Image Position")}
+                    value={imagePosition}
+                    onChange={(value) => setAttributes({ imagePosition: value })}
                     options={[
                       { value: "top", label: __("Top") },
-                      { value: "middle", label: __("Middle") },
+                      { value: "bottom", label: __("Bottom") },
+                      { value: "left", label: __("Left") },
+                      { value: "right", label: __("Right") },
+                      { value: "stacked", label: __("Stacked") },
+                    ]}
+                  />
+                  {(imagePosition == "left" || imagePosition == "right") && (
+                    <Fragment>
+                      <SelectControl
+                        label={__("Vertical ALignment")}
+                        value={imageAlignment}
+                        onChange={(value) =>
+                          setAttributes({ imageAlignment: value })
+                        }
+                        options={[
+                          { value: "top", label: __("Top") },
+                          { value: "middle", label: __("Middle") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Stack on")}
+                        value={stack}
+                        options={[
+                          { value: "none", label: __("None") },
+                          { value: "tablet", label: __("Tablet") },
+                          { value: "mobile", label: __("Mobile") },
+                        ]}
+                        help={__(
+                          "Note: Choose on what breakpoint the Info Box will stack."
+                        )}
+                        onChange={(value) => setAttributes({ stack: value })}
+                      />
+                    </Fragment>
+                  )}
+                  <SelectControl
+                    label={__("Image Style")}
+                    value={iconimgStyle}
+                    onChange={(value) => setAttributes({ iconimgStyle: value })}
+                    options={[
+                      { value: "normal", label: __("Normal") },
+                      { value: "circle", label: __("Circle") },
+                      { value: "square", label: __("Square") },
                     ]}
                   />
                   <SelectControl
-                    label={__("Stack on")}
-                    value={stack}
-                    options={[
-                      { value: "none", label: __("None") },
-                      { value: "tablet", label: __("Tablet") },
-                      { value: "mobile", label: __("Mobile") },
-                    ]}
-                    help={__(
-                      "Note: Choose on what breakpoint the Info Box will stack."
-                    )}
-                    onChange={(value) => setAttributes({ stack: value })}
+                    label={__("Image Size")}
+                    options={imageSizeOptions}
+                    value={imageSize}
+                    onChange={(value) => setAttributes({ imageSize: value })}
+                  />
+                  <RangeControl
+                    label={__("Width")}
+                    value={imageWidth}
+                    onChange={(value) => setAttributes({ imageWidth: value })}
+                    min={0}
+                    max={500}
+                    allowReset
                   />
                 </Fragment>
               )}
-              <SelectControl
-                label={__("Image Style")}
-                value={iconimgStyle}
-                onChange={(value) => setAttributes({ iconimgStyle: value })}
-                options={[
-                  { value: "normal", label: __("Normal") },
-                  { value: "circle", label: __("Circle") },
-                  { value: "square", label: __("Square") },
-                ]}
-              />
-              <SelectControl
-                label={__("Image Size")}
-                options={imageSizeOptions}
-                value={imageSize}
-                onChange={(value) => setAttributes({ imageSize: value })}
-              />
-              <RangeControl
-                label={__("Width")}
-                value={imageWidth}
-                onChange={(value) => setAttributes({ imageWidth: value })}
-                min={0}
-                max={500}
-                allowReset
-              />
-            </Fragment>
-          )}
-        </PanelBody>
-        {TypographySettings}
-
-        {marginSettings}
-        {background_settings}
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            {TypographySettings}
+            {marginSettings}
+            {background_settings}
+          </InspectorTab>
+          <InspectorTab key={"advance"}></InspectorTab>
+        </InspectorTabs>
       </InspectorControls>
     );
 

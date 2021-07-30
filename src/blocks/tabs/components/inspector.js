@@ -8,7 +8,7 @@ import ResponsiveMarginControl from "../../../settings-components/Responsive Spa
 import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import BlockBorderHelperControl from "../../../settings-components/Block Border Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 
 

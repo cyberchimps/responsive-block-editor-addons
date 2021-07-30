@@ -2,7 +2,7 @@ import fontOptions from "../../../utils/googlefonts";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import BlockBorderHelperControl from "../../../settings-components/Block Border Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 
 /**
  * Inspector Controls
