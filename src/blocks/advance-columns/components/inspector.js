@@ -2,6 +2,7 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 
 /**
  * Inspector Controls
@@ -111,10 +112,10 @@ export default class Inspector extends Component {
         boxShadowBlur,
         boxShadowSpread,
         boxShadowPosition,
-        backgroundPosition,
+        backgroundImagePosition,
         backgroundAttachment,
-        backgroundRepeat,
-        backgroundSize,
+        backgroundImageRepeat,
+        backgroundImageSize,
         overlayType,
         backgroundImageColor,
         gradientOverlayColor1,
@@ -447,278 +448,12 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
               {"image" == backgroundType && (
-                <Fragment>
-                  <BaseControl
-                    className="editor-bg-image-control"
-                    label={__(
-                      "Background Image",
-                      "responsive-block-editor-addons"
-                    )}
-                  >
-                    <MediaUpload
-                      title={__(
-                        "Select Background Image",
-                        "responsive-block-editor-addons"
-                      )}
-                      onSelect={this.onSelectImage}
-                      allowedTypes={["image"]}
-                      value={backgroundImage}
-                      render={({ open }) => (
-                        <Button isDefault onClick={open}>
-                          {!backgroundImage
-                            ? __(
-                                "Select Background Image",
-                                "responsive-block-editor-addons"
-                              )
-                            : __(
-                                "Replace image",
-                                "responsive-block-editor-addons"
-                              )}
-                        </Button>
-                      )}
-                    />
-                    {backgroundImage && (
-                      <Button
-                        className="rbea-rm-btn"
-                        onClick={this.onRemoveImage}
-                        isLink
-                        isDestructive
-                      >
-                        {__("Remove Image", "responsive-block-editor-addons")}
-                      </Button>
-                    )}
-                  </BaseControl>
-                  {backgroundImage && (
-                    <Fragment>
-                      <SelectControl
-                        label={__("Image Position")}
-                        value={backgroundPosition}
-                        onChange={(value) =>
-                          setAttributes({ backgroundPosition: value })
-                        }
-                        options={[
-                          { value: "top-left", label: __("Top Left") },
-                          { value: "top center", label: __("Top Center") },
-                          { value: "top right", label: __("Top Right") },
-                          { value: "center left", label: __("Center Left") },
-                          {
-                            value: "center center",
-                            label: __("Center Center"),
-                          },
-                          { value: "center right", label: __("Center Right") },
-                          { value: "bottom left", label: __("Bottom Left") },
-                          {
-                            value: "bottom center",
-                            label: __("Bottom Center"),
-                          },
-                          { value: "bottom right", label: __("Bottom Right") },
-                        ]}
-                      />
-                      <SelectControl
-                        label={__("Attachment")}
-                        value={backgroundAttachment}
-                        onChange={(value) =>
-                          setAttributes({ backgroundAttachment: value })
-                        }
-                        options={[
-                          { value: "fixed", label: __("Fixed") },
-                          { value: "scroll", label: __("Scroll") },
-                        ]}
-                      />
-                      <SelectControl
-                        label={__("Repeat")}
-                        value={backgroundRepeat}
-                        onChange={(value) =>
-                          setAttributes({ backgroundRepeat: value })
-                        }
-                        options={[
-                          { value: "no-repeat", label: __("No Repeat") },
-                          { value: "repeat", label: __("Repeat") },
-                          { value: "repeat-x", label: __("Repeat-x") },
-                          { value: "repeat-y", label: __("Repeat-y") },
-                        ]}
-                      />
-                      <SelectControl
-                        label={__("Size")}
-                        value={backgroundSize}
-                        onChange={(value) =>
-                          setAttributes({ backgroundSize: value })
-                        }
-                        options={[
-                          { value: "auto", label: __("Auto") },
-                          { value: "cover", label: __("Cover") },
-                          { value: "contain", label: __("Contain") },
-                        ]}
-                      />
-                      <SelectControl
-                        label={__("Image Overlay Type")}
-                        value={overlayType}
-                        onChange={(value) =>
-                          setAttributes({ overlayType: value })
-                        }
-                        options={[
-                          { value: "color", label: __("Color") },
-                          { value: "gradient", label: __("Gradient") },
-                        ]}
-                      />
-                      {overlayType == "color" && (
-                        <Fragment>
-                          <p className="responsive-setting-label">
-                            {__("Image Overlay Color")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: backgroundImageColor,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={backgroundImageColor}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                backgroundImageColor: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-                        </Fragment>
-                      )}
-
-                      {"gradient" == overlayType && (
-                        <Fragment>
-                          <p className="responsive-setting-label">
-                            {__("Color 1")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: gradientOverlayColor1,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={gradientOverlayColor1}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                gradientOverlayColor1: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__("Location 1")}
-                            value={gradientOverlayLocation1}
-                            onChange={(value) =>
-                              setAttributes({ gradientOverlayLocation1: value })
-                            }
-                            min={0}
-                            max={100}
-                            allowReset
-                          />
-                          <p className="responsive-setting-label">
-                            {__("Color 2")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: gradientOverlayColor2,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={gradientOverlayColor2}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                gradientOverlayColor2: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__("Location 2")}
-                            value={gradientOverlayLocation2}
-                            onChange={(value) =>
-                              setAttributes({ gradientOverlayLocation2: value })
-                            }
-                            min={0}
-                            max={100}
-                            allowReset
-                          />
-                          <SelectControl
-                            label={__("Type")}
-                            value={gradientOverlayType}
-                            onChange={(value) =>
-                              setAttributes({ gradientOverlayType: value })
-                            }
-                            options={[
-                              { value: "linear", label: __("Linear") },
-                              { value: "radial", label: __("Radial") },
-                            ]}
-                          />
-                          {"linear" == gradientOverlayType && (
-                            <RangeControl
-                              label={__("Angle")}
-                              value={gradientOverlayAngle}
-                              onChange={(value) =>
-                                setAttributes({ gradientOverlayAngle: value })
-                              }
-                              min={0}
-                              max={360}
-                              allowReset
-                            />
-                          )}
-                          {"radial" == gradientOverlayType && (
-                            <SelectControl
-                              label={__("Type")}
-                              value={gradientOverlayPosition}
-                              onChange={(value) =>
-                                setAttributes({
-                                  gradientOverlayPosition: value,
-                                })
-                              }
-                              options={[
-                                {
-                                  value: "center center",
-                                  label: __("Center Center"),
-                                },
-                                {
-                                  value: "center left",
-                                  label: __("Center Left"),
-                                },
-                                {
-                                  value: "center right",
-                                  label: __("Center Right"),
-                                },
-                                {
-                                  value: "top center",
-                                  label: __("Top Center"),
-                                },
-                                { value: "top left", label: __("Top Left") },
-                                { value: "top right", label: __("Top Right") },
-                                {
-                                  value: "bottom center",
-                                  label: __("Bottom Center"),
-                                },
-                                {
-                                  value: "bottom left",
-                                  label: __("Bottom Left"),
-                                },
-                                {
-                                  value: "bottom right",
-                                  label: __("Bottom Right"),
-                                },
-                              ]}
-                            />
-                          )}
-                        </Fragment>
-                      )}
-                    </Fragment>
-                  )}
-                </Fragment>
+                <ImageBackgroundControl
+                  showSomeImageOptions={true}
+                  showMoreImageOptions={true}
+                  showOverlayOptions={true}
+                  {...this.props}
+                />
               )}
               <RangeControl
                 label={__("Opacity", "responsive-block-editor-addons")}

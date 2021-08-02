@@ -24,10 +24,10 @@ function EditorStyles(props) {
     hovergradientDirection,
     backgroundType,
     backgroundImage,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -183,10 +183,10 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image": blockBackground,
-      "background-position": backgroundPosition,
+      "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +

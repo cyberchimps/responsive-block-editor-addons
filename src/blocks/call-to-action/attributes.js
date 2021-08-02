@@ -108,7 +108,7 @@ const attributes = {
   ctaTextColor: {
     type: "string",
   },
-  imgURL: {
+  backgroundImage: {
     type: "string",
   },
   imgID: {
@@ -336,15 +336,15 @@ const attributes = {
     type: "number",
     default: 20,
   },
-  imagePosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center center",
   },
-  imageRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  thumbsize: {
+  backgroundImageize: {
     type: "string",
     default: "cover",
   },

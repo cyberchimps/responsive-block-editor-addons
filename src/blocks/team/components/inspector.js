@@ -6,7 +6,7 @@ import times from "lodash/times";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ImageSettingsControl from "../../../settings-components/Image Settings";
-
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -37,36 +37,6 @@ import { loadGoogleFont } from "../../../utils/font";
 export default class Inspector extends Component {
   constructor(props) {
     super(...arguments);
-    this.onRemoveImage = this.onRemoveImage.bind(this);
-    this.onSelectImage = this.onSelectImage.bind(this);
-  }
-
-  /*
-   * Event to set Image as null while removing.
-   */
-  onRemoveImage() {
-    const { setAttributes } = this.props;
-
-    setAttributes({ backgroundImage: null });
-  }
-
-  /*
-   * Event to set Image as while adding.
-   */
-  onSelectImage(media) {
-    const { setAttributes } = this.props;
-    const { backgroundImage } = this.props.attributes;
-
-    if (!media || !media.url) {
-      setAttributes({ backgroundImage: null });
-      return;
-    }
-
-    if (!media.type || "image" != media.type) {
-      return;
-    }
-
-    setAttributes({ backgroundImage: media.url });
   }
 
   render() {
@@ -190,9 +160,9 @@ export default class Inspector extends Component {
         colorLocation2,
         bgGradient,
         backgroundImage,
-        backgroundPosition,
-        backgroundRepeat,
-        backgroundSize,
+        backgroundImagePosition,
+        backgroundImageRepeat,
+        backgroundImageSize,
         backgroundAttachment,
         facebook,
         twitter,
@@ -514,108 +484,11 @@ export default class Inspector extends Component {
                     max={360}
                   />
                 )}
-                <BaseControl
-                  className="editor-bg-image-control"
-                  label={__(
-                    "Background Image",
-                    "responsive-block-editor-addons"
-                  )}
-                >
-                  <MediaUpload
-                    title={__(
-                      "Select Background Image",
-                      "responsive-block-editor-addons"
-                    )}
-                    onSelect={this.onSelectImage}
-                    allowedTypes={["image"]}
-                    value={backgroundImage}
-                    render={({ open }) => (
-                      <Button isDefault onClick={open}>
-                        {!backgroundImage
-                          ? __(
-                              "Select Background Image",
-                              "responsive-block-editor-addons"
-                            )
-                          : __(
-                              "Replace image",
-                              "responsive-block-editor-addons"
-                            )}
-                      </Button>
-                    )}
-                  />
-                  {backgroundImage && (
-                    <Button
-                      className="uagb-rm-btn"
-                      onClick={this.onRemoveImage}
-                      isLink
-                      isDestructive
-                    >
-                      {__("Remove Image", "responsive-block-editor-addons")}
-                    </Button>
-                  )}
-                </BaseControl>
-
-                <SelectControl
-                  label={__("Background Position")}
-                  value={backgroundPosition}
-                  onChange={(newBackgroundPosition) =>
-                    setAttributes({ backgroundPosition: newBackgroundPosition })
-                  }
-                  options={[
-                    { value: "left top", label: __("Left Top") },
-                    { value: "left center", label: __("Left Center") },
-                    { value: "left bottom", label: __("Left Bottom") },
-                    { value: "right top", label: __("Right Top") },
-                    { value: "right center", label: __("Right Center") },
-                    { value: "right bottom", label: __("Right Bottom") },
-                    { value: "center top", label: __("Center Top") },
-                    { value: "center center", label: __("Center Center") },
-                    { value: "center bottom", label: __("Center Bottom") },
-                  ]}
-                />
-                <SelectControl
-                  label={__("Background Repeat")}
-                  value={backgroundRepeat}
-                  onChange={(newBackgroundRepeat) =>
-                    setAttributes({ backgroundRepeat: newBackgroundRepeat })
-                  }
-                  options={[
-                    { value: "initial", label: __("Initial") },
-                    { value: "repeat", label: __("Repeat") },
-                    { value: "no-repeat", label: __("No-Repeat") },
-                    { value: "round", label: __("Round") },
-                    { value: "inherit", label: __("Inherit") },
-                    { value: "space", label: __("Space") },
-                    { value: "repeat-y", label: __("Repeat Y") },
-                    { value: "repeat-x", label: __("Repeat X") },
-                  ]}
-                />
-                <SelectControl
-                  label={__("Background Size")}
-                  value={backgroundAttachment}
-                  onChange={(newBackgroundAttachment) =>
-                    setAttributes({
-                      backgroundAttachment: newBackgroundAttachment,
-                    })
-                  }
-                  options={[
-                    { value: "fixed", label: __("Fixed") },
-                    { value: "scroll", label: __("Scroll") },
-                  ]}
-                />
-                <SelectControl
-                  label={__("Background Size")}
-                  value={backgroundSize}
-                  onChange={(newBackgroundSize) =>
-                    setAttributes({ backgroundSize: newBackgroundSize })
-                  }
-                  options={[
-                    { value: "initial", label: __("Initial") },
-                    { value: "cover", label: __("Cover") },
-                    { value: "contain", label: __("Contain") },
-                    { value: "auto", label: __("Auto") },
-                    { value: "inherit", label: __("Inherit") },
-                  ]}
+                <ImageBackgroundControl
+                  {...this.props}
+                  showSomeImageOptions={true}
+                  showMoreImageOptions={true}
+                  showOverlayOptions={false}
                 />
               </PanelColorSettings>
             </PanelBody>

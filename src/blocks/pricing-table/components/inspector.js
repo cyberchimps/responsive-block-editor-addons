@@ -9,6 +9,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ImageSettingsControl from "../../../settings-components/Image Settings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 
 
 // Setup the block
@@ -1114,46 +1115,12 @@ export default class Inspector extends Component {
               )}
               {"image" == backgroundType && (
                 <Fragment>
-                  <BaseControl
-                    className="editor-bg-image-control"
-                    label={__(
-                      "Background Image",
-                      "responsive-block-editor-addons"
-                    )}
-                  >
-                    <MediaUpload
-                      title={__(
-                        "Select Background Image",
-                        "responsive-block-editor-addons"
-                      )}
-                      onSelect={this.onSelectImage}
-                      allowedTypes={["image"]}
-                      value={backgroundImage}
-                      render={({ open }) => (
-                        <Button isDefault onClick={open}>
-                          {!backgroundImage
-                            ? __(
-                                "Select Background Image",
-                                "responsive-block-editor-addons"
-                              )
-                            : __(
-                                "Replace image",
-                                "responsive-block-editor-addons"
-                              )}
-                        </Button>
-                      )}
-                    />
-                    {backgroundImage && (
-                      <Button
-                        className="rbea-rm-btn"
-                        onClick={this.onRemoveImage}
-                        isLink
-                        isDestructive
-                      >
-                        {__("Remove Image", "responsive-block-editor-addons")}
-                      </Button>
-                    )}
-                  </BaseControl>
+                  <ImageBackgroundControl
+                    {...this.props}
+                    showSomeImageOptions={false}
+                    showMoreImageOptions={false}
+                    showOverlayOptions={false}
+                  />
                   <RangeControl
                     label={__("Opacity", "responsive-block-editor-addons")}
                     value={opacity}
