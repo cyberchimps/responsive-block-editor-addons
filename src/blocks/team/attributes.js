@@ -212,15 +212,15 @@ const attributes = {
   backgroundImage: {
     type: "string",
   },
-  backgroundPosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center-center",
   },
-  backgroundRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  backgroundSize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },

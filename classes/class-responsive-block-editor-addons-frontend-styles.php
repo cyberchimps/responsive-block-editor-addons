@@ -151,10 +151,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'image' === $attr['backgroundType'] && $attr['backgroundImage'] ) {
 				$background_type_image_styles = array(
 					'background-image'      => 'linear-gradient(' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . ',' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . '),url(' . $attr['backgroundImage'] . ')',
-					'background-position'   => $attr['backgroundPosition'],
+					'background-position'   => $attr['backgroundImagePosition'],
 					'background-attachment' => $attr['backgroundAttachment'],
-					'background-repeat'     => $attr['backgroundRepeat'],
-					'background-size'       => $attr['backgroundSize'],
+					'background-repeat'     => $attr['backgroundImageRepeat'],
+					'background-size'       => $attr['backgroundImageSize'],
 				);
 			}
 			$selectors = array(
@@ -1679,10 +1679,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$background_type_image_styles = array_merge(
 					$background_type_image_styles,
 					array(
-						'background-position'   => $attr['backgroundPosition'],
+						'background-position'   => $attr['backgroundImagePosition'],
 						'background-attachment' => $attr['backgroundAttachment'],
-						'background-repeat'     => $attr['backgroundRepeat'],
-						'background-size'       => $attr['backgroundSize'],
+						'background-repeat'     => $attr['backgroundImageRepeat'],
+						'background-size'       => $attr['backgroundImageSize'],
 					)
 				);
 			}
@@ -1826,9 +1826,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hovercolorLocation2'      => 100,
 				'hovergradientDirection'   => 90,
 				'backgroundImage'          => '',
-				'backgroundPosition'       => 'center center',
-				'backgroundSize'           => 'cover',
-				'backgroundRepeat'         => 'no-repeat',
+				'backgroundImagePosition'  => 'center center',
+				'backgroundImageSize'      => 'cover',
+				'backgroundImageRepeat'    => 'no-repeat',
 				'backgroundAttachment'     => 'scroll',
 				'backgroundImageColor'     => '',
 				'overlayType'              => 'color',
@@ -2288,11 +2288,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-cta-image' => array(
-					'background-image'    => $attr['imgURL'] ? 'url(' . $attr['imgURL'] . ')' : null,
+					'background-image'    => $attr['backgroundImage'] ? 'url(' . $attr['backgroundImage'] . ')' : null,
 					'height'              => 100 . '%',
-					'background-position' => $attr['imagePosition'],
-					'background-repeat'   => $attr['imageRepeat'],
-					'background-size'     => $attr['thumbsize'],
+					'background-position' => $attr['backgroundImagePosition'],
+					'background-repeat'   => $attr['backgroundImageRepeat'],
+					'background-size'     => $attr['backgroundImageSize'],
 					'border-radius'       => self::get_css_value( $attr['borderRadius'], 'px' ),
 				),
 
@@ -2430,7 +2430,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaWidth'                 => '',
 				'ctaBackgroundColor'       => '#f2f2f2',
 				'ctaTextColor'             => '',
-				'imgURL'                   => '',
+				'backgroundImage'          => '',
 				'imgID'                    => '',
 				'imgAlt'                   => '',
 				'dimRatio'                 => 50,
@@ -2490,9 +2490,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'bottomPaddingTablet'      => 20,
 				'leftPaddingTablet'        => 20,
 				'rightPaddingTablet'       => 20,
-				'imagePosition'            => 'center center',
-				'imageRepeat'              => 'no-repeat',
-				'thumbsize'                => 'cover',
+				'backgroundImagePosition'  => 'center center',
+				'backgroundImageRepeat'    => 'no-repeat',
+				'backgroundImageSize'      => 'cover',
 				'buttonSpace'              => 28,
 				'buttonSpaceMobile'        => 28,
 				'buttonSpaceTablet'        => 28,
@@ -2529,7 +2529,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_background_type         = '';
 			$updated_button_background_color = '';
 			$box_shadow_position_css         = $attr['boxShadowPosition'];
-			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage']['url'] : null;
+			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage'] : null;
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
@@ -2610,9 +2610,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-card-background-image' => array(
 					'background-image'    => 'url(' . $background_image_url_check . ')',
 					'height'              => 100 . '%',
-					'background-position' => $attr['bgimagePosition'],
-					'background-repeat'   => $attr['bgimageRepeat'],
-					'background-size'     => $attr['bgthumbsize'],
+					'background-position' => $attr['backgroundImagePosition'],
+					'background-repeat'   => $attr['backgroundImageRepeat'],
+					'background-size'     => $attr['backgroundImageSize'],
 				),
 
 				' .responsive-block-editor-addons-card-avatar' => array(
@@ -2810,6 +2810,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundImageTwo'      => '',
 				'backgroundImageThree'    => '',
 				'backgroundImageFour'     => '',
+				'backgroundImagePosition' => 'center center',
+				'backgroundImageRepeat'   => 'no-repeat',
+				'backgroundImageSize'     => 'cover',
 			);
 		}
 
@@ -4451,10 +4454,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-cta-image' => array(
-					'background-image'      => 'url(' . $attr['imgURL'] . ')',
-					'background-position'   => $attr['imagePosition'],
-					'background-repeat'     => $attr['imageRepeat'],
-					'background-size'       => $attr['thumbsize'],
+					'background-image'      => 'url(' . $attr['backgroundImage'] . ')',
+					'background-position'   => $attr['backgroundImagePosition'],
+					'background-repeat'     => $attr['backgroudImageRepeat'],
+					'background-size'       => $attr['backgroundImageSize'],
 					'background-attachment' => $attr['backgroundAttachment'],
 				),
 
@@ -4743,7 +4746,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconPadding'              => 5,
 				'iconBorderRadius'         => 0,
 				'iconBorderWidth'          => 1,
-
+				'backgroundImage'          => '',
+				'backgroundImagePosition'  => 'center center',
+				'backgroundAttachment'     => 'scroll',
+				'backgroundImageRepeat'    => 'no-repeat',
+				'backgroundImageSize'      => 'cover',
 			);
 		}
 
@@ -6218,9 +6225,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wp-block-responsive-block-editor-addons-team' => array(
 					'background-image'      => $bggradient,
-					'background-size'       => $attr['backgroundSize'],
-					'background-repeat'     => $attr['backgroundRepeat'],
-					'background-position'   => $attr['backgroundPosition'],
+					'background-size'       => $attr['backgroundImageSize'],
+					'background-repeat'     => $attr['backgroundImageRepeat'],
+					'background-position'   => $attr['backgroundImagePosition'],
 					'background-attachment' => $attr['backgroundAttachment'],
 					'border-width'          => self::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color'          => $attr['borderColor'],
@@ -6346,9 +6353,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'colorLocation2'           => 100,
 				'bgGradient'               => '',
 				'backgroundImage'          => '',
-				'backgroundPosition'       => 'center center',
-				'backgroundRepeat'         => 'no-repeat',
-				'backgroundSize'           => 'cover',
+				'backgroundImagePosition'  => 'center center',
+				'backgroundImageRepeat'    => 'no-repeat',
+				'backgroundImageSize'      => 'cover',
 				'backgroundAttachment'     => 'scroll',
 				'showImage'                => true,
 				'showName'                 => true,
@@ -6607,10 +6614,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$defaults = self::get_responsive_block_testimonial_slider_block_default_attributes();
 			$attr     = array_merge( $defaults, (array) $attr );
 
+			$updated_background_image = '';
+			$background_image_effect  = '';
+			$imgopacity               = $attr['backgroundOpacity'] / 100;
+			if ( $attr['backgroundImage'] ) {
+				$updated_background_image = 'linear-gradient(' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . ',' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . '),url(' . $attr['backgroundImage'] . ')';
+				if ( 'linear' === $attr['gradientOverlayType'] ) {
+					$background_image_effect = self::generate_background_image_effect(
+						self::hex_to_rgb( $attr['gradientOverlayColor1'], $imgopacity ),
+						self::hex_to_rgb( $attr['gradientOverlayColor2'], $imgopacity ),
+						$attr['gradientOverlayAngle'],
+						$attr['gradientOverlayLocation1'],
+						$attr['gradientOverlayLocation2']
+					);
+				} else {
+					$background_image_effect = 'radial-gradient( at ' . $attr['gradientOverlayPosition'] . ',' . self::hex_to_rgb( $attr['gradientOverlayColor1'] ? $attr['gradientOverlayColor1'] : '#fff', $imgopacity ) .
+					' ' . $attr['gradientOverlayLocation1'] . '%,' . self::hex_to_rgb( $attr['gradientOverlayColor2'] ? $attr['gradientOverlayColor2'] : '#fff', $imgopacity ) .
+					' ' . $attr['gradientOverlayLocation2'] . '%)';
+				}
+			}
+
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$position    = str_replace( '-', ' ', $attr['backgroundPosition'] );
+			$position    = str_replace( '-', ' ', $attr['backgroundImagePosition'] );
 			$backopacity = $attr['backgroundOpacity'] ? ( 100 - $attr['backgroundOpacity'] ) / 100 : 0.5;
 			$image_url   = $attr['backgroundImage'] ? $attr['backgroundImage']['url'] : null;
 
@@ -6647,14 +6674,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-color' => $attr['backgroundColor'],
 				),
 				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__content' => array(
-					'background-image'    => 'url(' . $image_url . ')',
-					'background-position' => $position,
-					'background-repeat'   => $attr['backgroundRepeat'],
-					'background-size'     => $attr['backgroundSize'],
+					'background-image'      => $updated_background_image,
+					'background-position'   => $attr['backgroundImagePosition'],
+					'background-repeat'     => $attr['backgroundImageRepeat'],
+					'background-size'       => $attr['backgroundImageSize'],
+					'background-attachment' => $attr['backgroundAttachment'],
 				),
 				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay' => array(
-					'background-color' => $attr['backgroundImageColor'],
-					'opacity'          => $backopacity,
+					'background-color' => 'color' === $attr['overlayType'] ? self::hex_to_rgb( $attr['backgroundColor'], $imgopacity ) : '',
+					'background-image' => $background_image_effect,
 				),
 				' .responsive-block-editor-addons-testimonial__wrap' => array(
 					'padding-left'  => self::get_css_value( $attr['columnGap'] / 2, 'px' ),
@@ -6711,102 +6739,111 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_testimonial_slider_block_default_attributes() {
 			return array(
-				'test_item_count'         => 3,
-				'classMigrate'            => false,
-				'test_block'              => array(),
-				'skin'                    => 'default',
-				'bubblePadding'           => 20,
-				'bubbleBorderRadius'      => 0,
-				'bubbleColor'             => 'center',
-				'headingAlign'            => 'center',
-				'headingAlignMobile'      => 'center',
-				'headingAlignTablet'      => 'center',
-				'descColor'               => '#333',
-				'companyColor'            => '#888888',
-				'authorColor'             => '#333',
-				'iconimgStyle'            => 'circle',
-				'imagePosition'           => 'bottom',
-				'imageAlignment'          => 'top',
-				'nameFontSizeType'        => 'px',
-				'nameFontSize'            => '',
-				'nameFontSizeTablet'      => '',
-				'nameFontSizeMobile'      => '',
-				'nameFontFamily'          => 'Default',
-				'nameFontWeight'          => '',
-				'nameFontSubset'          => '',
-				'nameLineHeightType'      => 'em',
-				'nameLineHeight'          => '',
-				'nameLineHeightTablet'    => '',
-				'nameLineHeightMobile'    => '',
-				'nameLoadGoogleFonts'     => false,
-				'companyFontSizeType'     => 'px',
-				'companyFontSize'         => '',
-				'companyFontSizeTablet'   => '',
-				'companyFontSizeMobile'   => '',
-				'companyFontFamily'       => 'Default',
-				'companyFontWeight'       => '',
-				'companyFontSubset'       => '',
-				'companyLineHeightType'   => 'em',
-				'companyLineHeight'       => '',
-				'companyLineHeightTablet' => '',
-				'companyLineHeightMobile' => '',
-				'companyLoadGoogleFonts'  => false,
-				'descFontSizeType'        => 'px',
-				'descFontSize'            => '',
-				'descFontSizeTablet'      => '',
-				'descFontSizeMobile'      => '',
-				'descFontFamily'          => 'Default',
-				'descFontWeight'          => '',
-				'descFontSubset'          => '',
-				'descLineHeightType'      => 'em',
-				'descLineHeight'          => '',
-				'descLineHeightTablet'    => '',
-				'descLineHeightMobile'    => '',
-				'descLoadGoogleFonts'     => false,
-				'nameSpace'               => 5,
-				'descSpace'               => 15,
-				'block_id'                => 'not_set',
-				'authorSpace'             => 5,
-				'imgVrPadding'            => 10,
-				'imgHrPadding'            => 10,
-				'imgTopPadding'           => 10,
-				'imgBottomPadding'        => 10,
-				'iconImage'               => array(
+				'test_item_count'          => 3,
+				'classMigrate'             => false,
+				'test_block'               => array(),
+				'skin'                     => 'default',
+				'bubblePadding'            => 20,
+				'bubbleBorderRadius'       => 0,
+				'bubbleColor'              => 'center',
+				'headingAlign'             => 'center',
+				'headingAlignMobile'       => 'center',
+				'headingAlignTablet'       => 'center',
+				'descColor'                => '#333',
+				'companyColor'             => '#888888',
+				'authorColor'              => '#333',
+				'iconimgStyle'             => 'circle',
+				'imagePosition'            => 'bottom',
+				'imageAlignment'           => 'top',
+				'nameFontSizeType'         => 'px',
+				'nameFontSize'             => '',
+				'nameFontSizeTablet'       => '',
+				'nameFontSizeMobile'       => '',
+				'nameFontFamily'           => 'Default',
+				'nameFontWeight'           => '',
+				'nameFontSubset'           => '',
+				'nameLineHeightType'       => 'em',
+				'nameLineHeight'           => '',
+				'nameLineHeightTablet'     => '',
+				'nameLineHeightMobile'     => '',
+				'nameLoadGoogleFonts'      => false,
+				'companyFontSizeType'      => 'px',
+				'companyFontSize'          => '',
+				'companyFontSizeTablet'    => '',
+				'companyFontSizeMobile'    => '',
+				'companyFontFamily'        => 'Default',
+				'companyFontWeight'        => '',
+				'companyFontSubset'        => '',
+				'companyLineHeightType'    => 'em',
+				'companyLineHeight'        => '',
+				'companyLineHeightTablet'  => '',
+				'companyLineHeightMobile'  => '',
+				'companyLoadGoogleFonts'   => false,
+				'descFontSizeType'         => 'px',
+				'descFontSize'             => '',
+				'descFontSizeTablet'       => '',
+				'descFontSizeMobile'       => '',
+				'descFontFamily'           => 'Default',
+				'descFontWeight'           => '',
+				'descFontSubset'           => '',
+				'descLineHeightType'       => 'em',
+				'descLineHeight'           => '',
+				'descLineHeightTablet'     => '',
+				'descLineHeightMobile'     => '',
+				'descLoadGoogleFonts'      => false,
+				'nameSpace'                => 5,
+				'descSpace'                => 15,
+				'block_id'                 => 'not_set',
+				'authorSpace'              => 5,
+				'imgVrPadding'             => 10,
+				'imgHrPadding'             => 10,
+				'imgTopPadding'            => 10,
+				'imgBottomPadding'         => 10,
+				'iconImage'                => array(
 					'url' => '',
 					'alt' => 'InfoBox placeholder img',
 				),
-				'imageSize'               => 'thumbnail',
-				'imageWidth'              => 60,
-				'columns'                 => 1,
-				'tcolumns'                => 1,
-				'mcolumns'                => 1,
-				'pauseOnHover'            => true,
-				'infiniteLoop'            => true,
-				'transitionSpeed'         => 500,
-				'autoplay'                => true,
-				'autoplaySpeed'           => 2000,
-				'arrowDots'               => 'arrows_dots',
-				'arrowSize'               => 20,
-				'arrowBorderSize'         => 1,
-				'arrowBorderRadius'       => 0,
-				'rowGap'                  => 10,
-				'columnGap'               => 10,
-				'contentPadding'          => 5,
-				'backgroundType'          => '',
-				'backgroundImage'         => '',
-				'backgroundPosition'      => 'center-center',
-				'backgroundSize'          => 'cover',
-				'backgroundRepeat'        => 'no-repeat',
-				'backgroundColor'         => '',
-				'backgroundImageColor'    => '',
-				'borderStyle'             => 'none',
-				'borderWidth'             => '1',
-				'borderRadius'            => '',
-				'borderColor'             => '',
-				'backgroundOpacity'       => 50,
-				'arrowColor'              => '#333',
-				'stack'                   => 'tablet',
-				'blockPadding'            => 45,
+				'imageSize'                => 'thumbnail',
+				'imageWidth'               => 60,
+				'columns'                  => 1,
+				'tcolumns'                 => 1,
+				'mcolumns'                 => 1,
+				'pauseOnHover'             => true,
+				'infiniteLoop'             => true,
+				'transitionSpeed'          => 500,
+				'autoplay'                 => true,
+				'autoplaySpeed'            => 2000,
+				'arrowDots'                => 'arrows_dots',
+				'arrowSize'                => 20,
+				'arrowBorderSize'          => 1,
+				'arrowBorderRadius'        => 0,
+				'rowGap'                   => 10,
+				'columnGap'                => 10,
+				'contentPadding'           => 5,
+				'backgroundType'           => '',
+				'backgroundImage'          => '',
+				'backgroundImagePosition'  => 'center-center',
+				'backgroundImageSize'      => 'cover',
+				'backgroundAttachment'     => 'scroll',
+				'backgroundImageRepeat'    => 'no-repeat',
+				'overlayType'              => 'color',
+				'gradientOverlayColor1'    => '',
+				'gradientOverlayLocation1' => 0,
+				'gradientOverlayColor2'    => '',
+				'gradientOverlayLocation2' => 100,
+				'gradientOverlayType'      => 'linear',
+				'gradientOverlayAngle'     => 0,
+				'gradientOverlayPosition'  => 'center center',
+				'backgroundColor'          => '',
+				'backgroundImageColor'     => '',
+				'borderStyle'              => 'none',
+				'borderWidth'              => '1',
+				'borderRadius'             => '',
+				'borderColor'              => '',
+				'backgroundOpacity'        => 50,
+				'arrowColor'               => '#333',
+				'blockPadding'             => 45,
+				'stack'                    => 'tablet',
 			);
 		}
 
@@ -6833,8 +6870,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$playopacity = $attr['butopacity'] / 100;
 
 			$updated_img_url = '';
-			if ( $attr['imgURL'] ) {
-				$updated_img_url = $attr['imgURL'];
+			if ( $attr['backgroundImage'] ) {
+				$updated_img_url = $attr['backgroundImage'];
 			}
 
 			$updated_background_image = '';
@@ -6946,6 +6983,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowPosition'      => 'outset',
 				'previewBackgroundColor' => '#000000',
 				'hoverEffect'            => '',
+				'backgroundImage'        => '',
 			);
 		}
 
@@ -6999,9 +7037,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundColor1'         => '',
 				'backgroundColor2'         => '#fff',
 				'backgroundImage'          => '',
-				'backgroundPosition'       => 'center-center',
-				'backgroundSize'           => 'cover',
-				'backgroundRepeat'         => 'no-repeat',
+				'backgroundImagePosition'  => 'center-center',
+				'backgroundImageSize'      => 'cover',
+				'backgroundImageRepeat'    => 'no-repeat',
 				'backgroundAttachment'     => 'scroll',
 				'backgroundImageColor'     => '',
 				'overlayType'              => 'color',
@@ -9485,10 +9523,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'               => self::get_css_value( $attr['tabsLeftMargin'], 'px' ) . '!important',
 					'margin-right'              => self::get_css_value( $attr['tabsRightMargin'], 'px' ) . '!important',
 					'z-index'                   => $attr['tabsZindex'],
-					'background-color'          => 'color' === $attr['backgroundType'] ? self::hexToRgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $img_opacity ) : '',
-					'background-image'          => 'gradient' === $attr['backgroundType'] ? self::generateBackgroundImageEffect(
-						self::hexToRgb( $attr['backgroundColor1'], $img_opacity ),
-						self::hexToRgb( $attr['backgroundColor2'], $img_opacity ),
+					'background-color'          => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $img_opacity ) : '',
+					'background-image'          => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+						self::hex_to_rgb( $attr['backgroundColor1'], $img_opacity ),
+						self::hex_to_rgb( $attr['backgroundColor2'], $img_opacity ),
 						$attr['gradientDirection'],
 						$attr['colorLocation1'],
 						$attr['colorLocation2']

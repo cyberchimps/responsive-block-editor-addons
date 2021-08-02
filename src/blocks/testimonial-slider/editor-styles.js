@@ -4,6 +4,8 @@
 
 import generateCSS from "../../generateCSS";
 import generateCSSUnit from "../../generateCSSUnit";
+import { hexToRgba } from "../../utils/index";
+import generateBackgroundImageEffect from "../../generateBackgroundImageEffect";
 
 function EditorStyles(props) {
   const {
@@ -54,10 +56,20 @@ function EditorStyles(props) {
     contentPadding,
     backgroundColor,
     backgroundImage,
-    backgroundPosition,
-    backgroundSize,
-    backgroundRepeat,
+    backgroundImagePosition,
+    backgroundImageSize,
+    backgroundImageRepeat,
     backgroundImageColor,
+    backgroundAttachment,
+    overlayType,
+    gradientOverlayColor1,
+    gradientOverlayLocation1,
+    gradientOverlayColor2,
+    gradientOverlayLocation2,
+    gradientOverlayType,
+    gradientOverlayAngle,
+    gradientOverlayPosition,
+    opacity,
     backgroundOpacity,
     borderStyle,
     borderWidth,
@@ -78,8 +90,41 @@ function EditorStyles(props) {
   } else if (headingAlign == "right") {
     img_align = "flex-end";
   }
+  
+  let updatedBackgroundImage = "";
+  let backgroundImageEffect = "";
+  let imgopacity = backgroundOpacity / 100;
 
-  var position = backgroundPosition.replace("-", " ");
+  if (backgroundImage) {
+    updatedBackgroundImage = `linear-gradient(${hexToRgba(
+      backgroundImageColor || "#fff",
+      imgopacity || 0
+    )},${hexToRgba(
+      backgroundImageColor || "#fff",
+      imgopacity || 0
+    )}),url(${backgroundImage})`;
+    backgroundImageEffect = "";
+    if (gradientOverlayType === "linear") {
+      backgroundImageEffect = generateBackgroundImageEffect(
+        `${hexToRgba(gradientOverlayColor1 || "#fff", imgopacity || 0)}`,
+        `${hexToRgba(gradientOverlayColor2 || "#fff", imgopacity || 0)}`,
+        gradientOverlayAngle,
+        gradientOverlayLocation1,
+        gradientOverlayLocation2
+      );
+    }
+    else {
+      backgroundImageEffect = `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
+        gradientOverlayColor1 || "#fff",
+        imgopacity || 0
+      )} ${gradientOverlayLocation1}%, ${hexToRgba(
+        gradientOverlayColor2 || "#fff",
+        imgopacity || 0
+      )} ${gradientOverlayLocation2}%)`;
+    }
+  }
+
+  var position = backgroundImagePosition.replace("-", " ");
 
   var selectors = {
     " ": {
@@ -138,19 +183,18 @@ function EditorStyles(props) {
       "background-color": backgroundColor,
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__content": {
-      "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
-        : null,
-      "background-position": position,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-image": updatedBackgroundImage,
+      "background-position": backgroundImagePosition,
+      "background-attachment": backgroundAttachment,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
-      "background-color": backgroundImageColor,
-      opacity:
-        typeof backgroundOpacity != "undefined"
-          ? (100 - backgroundOpacity) / 100
-          : 0.5,
+      "background-color":
+        overlayType == "color"
+          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
+          : undefined,
+      "background-image": backgroundImageEffect,
     },
   };
 

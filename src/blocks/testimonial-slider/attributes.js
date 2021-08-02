@@ -314,22 +314,60 @@ const attributes = {
     type: "string",
   },
   backgroundImage: {
-    type: "object",
+    type: "string",
   },
-  backgroundPosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center-center",
   },
-  backgroundSize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },
-  backgroundRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
   backgroundColor: {
     type: "string",
+  },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  overlayType: {
+    type: "string",
+    default: "color",
+  },
+  gradientOverlayColor1: {
+    type: "string",
+  },
+  gradientOverlayColor2: {
+    type: "string",
+  },
+  gradientOverlayType: {
+    type: "string",
+    default: "linear",
+  },
+  gradientOverlayLocation1: {
+    type: "number",
+    default: 0,
+  },
+  gradientOverlayLocation2: {
+    type: "number",
+    default: 100,
+  },
+  gradientOverlayAngle: {
+    type: "number",
+    default: 0,
+  },
+  gradientOverlayPosition: {
+    type: "string",
+    default: "center center",
+  },
+  opacity: {
+    type: "number",
+    default: 20,
   },
   backgroundImageColor: {
     type: "string",
