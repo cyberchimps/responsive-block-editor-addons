@@ -2331,6 +2331,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		$expected_values = array(
 			'block_id'               => '',
 			'spacerHeight'           => 30,
+			'spacerHeightMobile'     => 30,
+			'spacerHeightTablet'     => 30,
 			'spacerDivider'          => false,
 			'spacerDividerStyle'     => 'solid',
 			'spacerDividerColor'     => '#000',
