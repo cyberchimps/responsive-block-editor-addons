@@ -83,6 +83,9 @@ function EditorStyles(props) {
     backgroundImageTwo,
     backgroundImageThree,
     backgroundImageFour,
+    backgroundImagePosition,
+    backgroundImageSize,
+    backgroundImageRepeat,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -174,12 +177,12 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-card-background-image": {
       "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
+        ? `url(${backgroundImage})`
         : null,
       height: 100 + "%",
-      "background-position": bgimagePosition,
-      "background-repeat": bgimageRepeat,
-      "background-size": bgthumbsize,
+      "background-position": backgroundImagePosition,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
     },
 
     " .responsive-block-editor-addons-card-avatar": {
