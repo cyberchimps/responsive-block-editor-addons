@@ -4327,7 +4327,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$selectors = array(
 				' '                                        => array(
 					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-					'background-color' => self::hex_to_rgb( $attr['boxBackgroundColor'], $newopacity ),
+					'background-color' => self::hex_to_rgb( $attr['backgroundColor'], $newopacity ),
 					'padding'          => self::get_css_value( $attr['contentPadding'], 'px' ),
 					'border-color'     => $attr['blockBorderColor'],
 					'border-style'     => $attr['blockBorderStyle'],
@@ -4705,7 +4705,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageBoxShadowSpread'     => '',
 				'imageBoxShadowPosition'   => 'outset',
 				'counterId'                => 1,
-				'boxBackgroundColor'       => '#ffffff',
+				'backgroundColor'          => '#ffffff',
 				'contentPadding'           => 0,
 				'opacity'                  => 100,
 				'imageopacity'             => 100,

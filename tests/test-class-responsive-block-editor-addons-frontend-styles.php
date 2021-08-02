@@ -1325,7 +1325,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'imageBoxShadowSpread'     => '',
 			'imageBoxShadowPosition'   => 'outset',
 			'counterId'                => 1,
-			'boxBackgroundColor'       => '#ffffff',
+			'backgroundColor'          => '#ffffff',
 			'contentPadding'           => 0,
 			'opacity'                  => 100,
 			'imageopacity'             => 100,

@@ -376,7 +376,7 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  boxBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#ffffff",
   },

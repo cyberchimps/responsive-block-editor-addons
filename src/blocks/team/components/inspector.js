@@ -7,6 +7,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ImageSettingsControl from "../../../settings-components/Image Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -361,23 +362,14 @@ export default class Inspector extends Component {
                 max={50}
                 step={1}
               />
-              <PanelColorSettings
+              <PanelBody
                 title={__(
                   "Column Background",
                   "responsive-block-editor-addons"
                 )}
                 initialOpen={false}
-                colorSettings={[
-                  {
-                    value: backgroundColor,
-                    onChange: onChangeBackgroundColor,
-                    label: __(
-                      "Background Color",
-                      "responsive-block-editor-addons"
-                    ),
-                  },
-                ]}
               >
+                <ColorBackgroundControl {...this.props} />
                 <RangeControl
                   label={__(
                     "Background Color Opacity",
@@ -490,7 +482,7 @@ export default class Inspector extends Component {
                   showMoreImageOptions={true}
                   showOverlayOptions={false}
                 />
-              </PanelColorSettings>
+              </PanelBody>
             </PanelBody>
 
             <PanelBody
