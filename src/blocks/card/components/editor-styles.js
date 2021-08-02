@@ -12,7 +12,7 @@ function EditorStyles(props) {
     block_id,
     contentAlignment,
     textColor,
-    itemBackgroundColor,
+    backgroundColor,
     borderStyle,
     borderWidth,
     borderRadius,
@@ -146,7 +146,7 @@ function EditorStyles(props) {
       color: textColor,
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}`
+          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
           : undefined,
       "background-image":
         backgroundType == "gradient"

@@ -101,7 +101,7 @@ const attributes = {
   ctaWidth: {
     type: "string",
   },
-  ctaBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#f2f2f2",
   },

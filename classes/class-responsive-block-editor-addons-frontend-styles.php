@@ -2205,7 +2205,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = self::hex_to_rgb( $attr['ctaBackgroundColor'], $imgopacity );
+				$updated_background_color = self::hex_to_rgb( $attr['backgroundColor'], $imgopacity );
 			} else {
 				$updated_background_color = '#ffffff';
 			}
@@ -2428,7 +2428,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTextFontSizeTablet'    => '16',
 				'ctaText'                  => '',
 				'ctaWidth'                 => '',
-				'ctaBackgroundColor'       => '#f2f2f2',
+				'backgroundColor'       => '#f2f2f2',
 				'ctaTextColor'             => '',
 				'imgURL'                   => '',
 				'imgID'                    => '',
@@ -2541,7 +2541,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = self::hex_to_rgb( $attr['itemBackgroundColor'] ? $attr['itemBackgroundColor'] : '#fff', $imgopacity );
+				$updated_background_color = self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity );
 			} else {
 				$updated_background_color = '#fff';
 			}
@@ -2727,7 +2727,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'stack'                   => 'mobile',
 				'contentAlign'            => 'center',
 				'textColor'               => '',
-				'itemBackgroundColor'     => '',
+				'backgroundColor'     	  => '',
 				'buttonColor'             => '',
 				'buttonTextColor'         => '#fff',
 				'boxShadowColor'          => '',

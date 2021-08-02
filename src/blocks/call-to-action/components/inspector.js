@@ -9,6 +9,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -60,7 +61,7 @@ export default class Inspector extends Component {
 			ctaTextFontSize,
 			ctaTextFontSizeMobile,
 			ctaTextFontSizeTablet,
-			ctaBackgroundColor,
+			backgroundColor,
 			ctaTextColor,
 			dimRatio,
 			imgURL,
@@ -231,7 +232,7 @@ export default class Inspector extends Component {
 
 		// Update color values
 		const onChangeBackgroundColor = (value) =>
-			setAttributes({ ctaBackgroundColor: value });
+			setAttributes({ backgroundColor: value });
 		const onChangeTextColor = (value) => setAttributes({ ctaTextColor: value });
 		const onChangeButtonColor = (value) =>
 			setAttributes({ buttonBackgroundColor: value });
@@ -1098,17 +1099,10 @@ export default class Inspector extends Component {
 							)}
 
 							{"color" == backgroundType && (
-								<PanelColorSettings
-									title={__("Background Color", "responsive-block-editor-addons")}
-									initialOpen={false}
-									colorSettings={[
-										{
-											value: ctaBackgroundColor,
-											onChange: onChangeBackgroundColor,
-											label: __("", "responsive-block-editor-addons"),
-										},
-									]}
-								>
+								<Fragment>
+									<ColorBackgroundControl
+									{...this.props}
+									/>
 									<RangeControl
 										label={__("Opacity", "responsive-block-editor-addons")}
 										value={opacity}
@@ -1119,7 +1113,7 @@ export default class Inspector extends Component {
 										max={100}
 										allowReset
 									/>
-								</PanelColorSettings>
+								</Fragment>
 							)}
 							{"gradient" == backgroundType && (
 								<Fragment>
