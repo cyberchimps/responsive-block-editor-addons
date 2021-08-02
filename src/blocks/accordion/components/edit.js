@@ -9,6 +9,8 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import times from "lodash/times";
 import memoize from "memize";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
 
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
@@ -935,12 +937,20 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     return (
       <Fragment>
         <InspectorControls>
-          {accordionGeneralSettings()}
-          {accordionColorSettings()}
-          {accordionStylingSettings()}
-          {accordionTypographySettings()}
-          {titleFontFamily && loadGoogleFont(titleFontFamily)}
-          {contentFontFamily && loadGoogleFont(contentFontFamily)}
+          <InspectorTabs>
+            <InspectorTab key={"content"}>
+              {accordionGeneralSettings()}
+            </InspectorTab>
+            <InspectorTab key={"style"}>
+              {accordionColorSettings()}
+              {accordionStylingSettings()}
+              {accordionTypographySettings()}
+              {titleFontFamily && loadGoogleFont(titleFontFamily)}
+              {contentFontFamily && loadGoogleFont(contentFontFamily)}
+            </InspectorTab>
+            <InspectorTab key={"advance"}>
+            </InspectorTab>
+          </InspectorTabs>
         </InspectorControls>
         <div
           className={classnames(

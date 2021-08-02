@@ -9750,11 +9750,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$defaults = self::get_responsive_block_taxonomy_list_block_default_attributes();
 			$attr     = array_merge( $defaults, (array) $attr );
 
-			$border_grid         = 'none' !== $attr['gridBorderStyle'] ? self::get_css_value( $attr['gridBorderWidth'], 'px' ) . ' ' . $attr['gridBorderStyle'] . ' ' . $attr['gridBorderColor'] : 'none';
-			$border_radius_grid  = 'none' !== $attr['gridBorderStyle'] ? self::get_css_value( $attr['gridBorderRadius'], 'px' ) : 0;
-			$border_bottom_color = 'none' !== $attr['separatorStyle'] ? $attr['separatorColor'] : '';
-			$border_bottom_width = 'none' !== $attr['separatorStyle'] ? $attr['separatorWidth'] : 0;
-			$box_shadow          = 'none' !== $attr['boxShadow'] ? self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $attr['boxShadowPosition'] : 'none';
+			$border_grid             = 'none' !== $attr['gridBorderStyle'] ? self::get_css_value( $attr['gridBorderWidth'], 'px' ) . ' ' . $attr['gridBorderStyle'] . ' ' . $attr['gridBorderColor'] : 'none';
+			$border_radius_grid      = 'none' !== $attr['gridBorderStyle'] ? self::get_css_value( $attr['gridBorderRadius'], 'px' ) : 0;
+			$border_bottom_color     = 'none' !== $attr['separatorStyle'] ? $attr['separatorColor'] : '';
+			$border_bottom_width     = 'none' !== $attr['separatorStyle'] ? $attr['separatorWidth'] : 0;
+			$box_shadow_position_css = $attr['boxShadowPosition'];
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$box_shadow_position_css = '';
+			}
+			$box_shadow = self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css;
 
 			$selectors = array(
 				' .responsive-block-editor-addons-block-grid'      => array(
