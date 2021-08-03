@@ -11,6 +11,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
@@ -356,102 +357,13 @@ export default class Inspector extends Component {
                   })
                 }
               />
+                <BlockBorderHelperControl
+                    attrNameTemplate="item%s"
+                    values={{ radius: itemBorderRadius, style: itemBorderStyle, width: itemBorderWidth, color: itemBorderColor }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
 
-              <SelectControl
-                label={__("Border Style", "responsive-block-editor-addons")}
-                value={itemBorderStyle}
-                onChange={(value) => setAttributes({ itemBorderStyle: value })}
-                options={[
-                  {
-                    value: "none",
-                    label: __("None", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "solid",
-                    label: __("Solid", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dotted",
-                    label: __("Dotted", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dashed",
-                    label: __("Dashed", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "double",
-                    label: __("Double", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "groove",
-                    label: __("Groove", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "inset",
-                    label: __("Inset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "outset",
-                    label: __("Outset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "ridge",
-                    label: __("Ridge", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              {"none" != itemBorderStyle && (
-                <Fragment>
-                  <RangeControl
-                    label={__("Border Width", "responsive-block-editor-addons")}
-                    value={itemBorderWidth}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        itemBorderWidth: value !== undefined ? value : 1,
-                      })
-                    }
-                    min={1}
-                    max={100}
-                    step={1}
-                    allowReset
-                  />
-                  <RangeControl
-                    label={__(
-                      "Border Radius",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={itemBorderRadius}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        itemBorderRadius: value,
-                      })
-                    }
-                    min={1}
-                    max={100}
-                    step={1}
-                  />
-                </Fragment>
-              )}
-              {"none" != itemBorderStyle && (
-                <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Border Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: itemBorderColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={itemBorderColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ itemBorderColor: colorValue })
-                    }
-                    allowReset
-                  />
-                </Fragment>
-              )}
               <RangeControl
                 label={__("Padding", "responsive-block-editor-addons")}
                 value={itemPadding}

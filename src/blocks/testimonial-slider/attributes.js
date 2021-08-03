@@ -322,7 +322,7 @@ const attributes = {
     type: "number",
     default: 20,
   },
-  arrowBorderSize: {
+  arrowBorderWidth: {
     type: "number",
     default: 1,
   },
@@ -330,7 +330,13 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  rowGap: {
+    arrowBorderColor: {
+        type: "string",
+    },
+    arrowBorderStyle: {
+        type: "string",
+    },
+    rowGap: {
     type: "number",
     default: 10,
   },
@@ -428,18 +434,18 @@ const attributes = {
   backgroundImageColor: {
     type: "string",
   },
-  borderStyle: {
+    blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+    blockBorderWidth: {
     type: "number",
     default: "1",
   },
-  borderRadius: {
+    blockBorderRadius: {
     type: "number",
   },
-  borderColor: {
+    blockBorderColor: {
     type: "string",
   },
   backgroundOpacity: {

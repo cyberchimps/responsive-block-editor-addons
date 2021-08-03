@@ -85,10 +85,10 @@ function EditorStyles(props) {
     gradientOverlayPosition,
     opacity,
     backgroundOpacity,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+      blockBorderStyle,
+      blockBorderWidth,
+      blockBorderRadius,
+      blockBorderColor,
     arrowColor,
     test_item_count,
     columns,
@@ -220,20 +220,20 @@ function EditorStyles(props) {
     };
   }
 
-  if (borderStyle != "none") {
+  if (blockBorderStyle != "none") {
     selectors[
       " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content"
     ] = {
-      "border-style": borderStyle,
-      "border-color": borderColor,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-style": blockBorderStyle,
+      "border-color": blockBorderColor,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     };
   } else {
     selectors[
       " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content"
     ] = {
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     };
   }
 
