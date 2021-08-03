@@ -1938,7 +1938,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'hoverboxShadowSpread'       => 1,
 			'hoverboxShadowPosition'     => 'outset',
 			'opacity'                    => 0.7,
-			'gradientDirection'             => 180,
+			'gradientDirection'          => 180,
 			'bgGradient'                 => false,
 			'backgroundImage'            => '',
 			'backgroundPosition'         => '',
