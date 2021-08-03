@@ -42,10 +42,10 @@ function EditorStyles(props) {
     testimonialBackgroundColor,
     testimonialFontSize,
     testimonialCiteAlign,
-    borderRadius,
-    borderColor,
-    borderWidth,
-    borderStyle,
+    blockBorderRadius,
+    blockBorderColor,
+    blockBorderWidth,
+    blockBorderStyle,
     padding,
     paddingTablet,
     paddingMobile,
@@ -156,15 +156,15 @@ function EditorStyles(props) {
       "background-repeat": backgroundRepeat,
       "background-position": backgroundPosition,
       color: testimonialTextColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
-      "border-color": borderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-color": blockBorderColor,
     },
   };
 
   var mobile_selectors = {
-    
+
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingMobile, "px"),
     },

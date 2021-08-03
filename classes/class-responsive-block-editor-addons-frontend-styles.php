@@ -758,9 +758,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						'color' === $attr['backgroundType']
 						? self::hex_to_rgb( $attr['backgroundColor'], $imgopacity ) : '',
 					'color'            => $attr['quoteTextColor'],
-					'border-color'     => $attr['borderColor'],
-					'border-style'     => $attr['borderStyle'],
-					'border-width'     => self::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-color'     => $attr['blockBorderColor'],
+					'border-style'     => $attr['blockBorderStyle'],
+					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
 					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
 					'box-shadow'       =>
 					self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
@@ -1487,10 +1487,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$selectors = array(
 				' ' => array(
-					'border-color'  => $attr['borderColor'],
-					'border-style'  => $attr['borderStyle'],
-					'border-width'  => self::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-radius' => self::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-color'  => $attr['blockBorderColor'],
+					'border-style'  => $attr['blockBorderStyle'],
+					'border-width'  => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
 					'box-shadow'    =>
 						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 						' ' .
@@ -1555,10 +1555,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconActive'        => 'fas fa-minus',
 				'layout'            => 'accordion',
 				'headingTag'        => 'span',
-				'borderStyle'       => 'solid',
-				'borderColor'       => 'black',
-				'borderWidth'       => 1,
-				'borderRadius'      => 2,
+				'blockBorderStyle'       => 'solid',
+				'blockBorderColor'       => 'black',
+				'blockBorderWidth'       => 1,
+				'blockBorderRadius'      => 2,
 				'boxShadowColor'    => '#fff',
 				'boxShadowHOffset'  => 9,
 				'boxShadowVOffset'  => 9,
@@ -2588,10 +2588,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .wp-block-responsive-block-editor-addons-card-item' => array(
-					'border-color'     => $attr['borderColor'],
-					'border-style'     => $attr['borderStyle'],
-					'border-width'     => self::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-radius'    => self::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-color'     => $attr['blockBorderColor'],
+					'border-style'     => $attr['blockBorderStyle'],
+					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
 					'background-color' => $updated_background_color,
 					'background-image' => $updated_background_type,
 					'box-shadow'       => self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
@@ -2740,8 +2740,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'subtitleSpace'           => 16,
 				'contentSpace'            => 16,
 				'buttonSpace'             => 20,
-				'borderWidth'             => 0,
-				'borderRadius'            => 12,
 				'opacity'                 => 100,
 				'resshowImage'            => true,
 				'colorLocation1'          => 0,
@@ -2802,10 +2800,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'bgimagePosition'         => 'center center',
 				'bgimageRepeat'           => 'no-repeat',
 				'bgthumbsize'             => 'cover',
-				'borderStyle'             => 'none',
-				'buttonTarget'            => 'false',
+				'blockBorderStyle'             => 'none',
+                'blockBorderColor'             => '',
+                'blockBorderWidth'             => 0,
+                'blockBorderRadius'            => 12,
+                'buttonTarget'            => 'false',
 				'contentAlignment'        => 'left',
-				'borderColor'             => '',
 				'backgroundImageOne'      => '',
 				'backgroundImageTwo'      => '',
 				'backgroundImageThree'    => '',
@@ -3317,10 +3317,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-size'       => $attr['backgroundSize'],
 					'background-color'      => self::hex_to_rgb( $attr['frontBackgroundColor'], $coloropacity ),
 					'color'                 => $attr['frontTextColor'],
-					'border-color'          => $attr['borderColor'],
-					'border-style'          => $attr['borderStyle'],
-					'border-width'          => self::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-radius'         => self::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-color'          => $attr['blockBorderColor'],
+					'border-style'          => $attr['blockBorderStyle'],
+					'border-width'          => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-radius'         => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
 					'box-shadow'            =>
 					self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 					' ' .
@@ -3354,10 +3354,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-color'      => self::hex_to_rgb( $attr['backBackgroundColor'], $backcoloropacity ),
 					'color'                 => $attr['backTextColor'],
 					'transform'             => $flip_style_back,
-					'border-color'          => $attr['borderColor'],
-					'border-style'          => $attr['borderStyle'],
-					'border-width'          => self::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-radius'         => self::get_css_value( $attr['borderRadius'], 'px' ),
+					'border-color'          => $attr['blockBorderColor'],
+					'border-style'          => $attr['blockBorderStyle'],
+					'border-width'          => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-radius'         => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
 					'box-shadow'            =>
 						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 						' ' .
@@ -3516,10 +3516,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonTextColor'          => '',
 				'iconColor'                => '',
 				'backIconColor'            => '',
-				'borderStyle'              => 'none',
-				'borderWidth'              => 2,
-				'borderRadius'             => '',
-				'borderColor'              => '',
+				'blockBorderStyle'              => 'none',
+				'blockBorderWidth'              => 2,
+				'blockBorderRadius'             => '',
+				'blockBorderColor'              => '',
 				'boxShadowColor'           => '',
 				'boxShadowHOffset'         => 0,
 				'boxShadowVOffset'         => 0,
@@ -4196,7 +4196,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-gallery--item figure' => array(
-					'height' => ( $attr['height'] - ( $attr['borderWidth'] ? $attr['borderWidth'] * 2 : 0 ) ) . 'px',
+					'height' => ( $attr['height'] - ( $attr['blockBorderWidth'] ? $attr['blockBorderWidth'] * 2 : 0 ) ) . 'px',
 				),
 
 				' .has-carousel-lrg .responsive-block-editor-addons-gallery--item' => array(
@@ -4206,9 +4206,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-gallery--item' => array(
 					'margin-left'  => $attr['gutter'] > 0 && ! ( $attr['responsiveHeight'] ) ? $attr['gutter'] . 'px' : null,
 					'margin-right' => $attr['gutter'] > 0 && ! ( $attr['responsiveHeight'] ) ? $attr['gutter'] . 'px' : null,
-					'border-width' => self::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-style' => $attr['borderStyle'],
-					'border-color' => $attr['borderColor'],
+					'border-width' => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
+					'border-style' => $attr['blockBorderStyle'],
+					'border-color' => $attr['blockBorderColor'],
 				),
 			);
 
@@ -4252,13 +4253,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'isSmallImage'          => false,
 				'thumbnails'            => false,
 				'responsiveHeight'      => false,
-				'borderWidth'           => '',
+				'blockBorderWidth'           => '',
+				'blockBorderRadius'           => '',
 				'iconBackgroundRadius'  => 20,
 				'iconBackgroundOpacity' => 90,
 				'iconBackgroundColor'   => '',
-				'borderColor'           => '',
+				'blockBorderColor'           => '',
 				'iconColor'             => '',
-				'borderStyle'           => '',
+				'blockBorderStyle'           => '',
 				'counterId'             => '',
 			);
 		}
@@ -6486,10 +6488,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-repeat'   => $attr['backgroundRepeat'],
 					'background-position' => $attr['backgroundPosition'],
 					'color'               => $attr['testimonialTextColor'],
-					'border-style'        => $attr['borderStyle'],
-					'border-width'        => self::get_css_value( $attr['borderWidth'], 'px' ),
-					'border-radius'       => self::get_css_value( $attr['borderRadius'], 'px' ),
-					'border-color'        => $attr['borderColor'],
+					'border-style'        => $attr['blockBorderStyle'],
+					'border-width'        => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-radius'       => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
+					'border-color'        => $attr['blockBorderColor'],
 				),
 
 			);
@@ -6557,10 +6559,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentTextTransform'       => '',
 				'testimonialCiteAlign'       => 'left-aligned',
 				'backgroundColor'            => '#f2f2f2',
-				'borderStyle'                => 'none',
-				'borderWidth'                => 1,
-				'borderColor'                => '',
-				'borderRadius'               => 2,
+				'blockBorderStyle'                => 'none',
+				'blockBorderWidth'                => 1,
+				'blockBorderColor'                => '',
+				'blockBorderRadius'               => 2,
 				'padding'                    => 20,
 				'paddingTablet'              => 20,
 				'paddingMobile'              => 20,
@@ -7104,10 +7106,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'quoteLineHeight'         => 1,
 				'quoteSize'               => 70,
 				'quoteColor'              => '',
-				'borderStyle'             => 'none',
-				'borderWidth'             => 1,
-				'blockBorderRadius'       => 0,
-				'borderColor'             => '',
+				'blockBorderStyle'             => 'none',
+				'blockBorderWidth'             => 1,
+				'blockBlockBorderRadius'       => 0,
+				'blockBorderColor'             => '',
 				'leftPadding'             => 60,
 				'rightPadding'            => 60,
 				'topPadding'              => 70,

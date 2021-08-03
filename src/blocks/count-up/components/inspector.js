@@ -10,6 +10,8 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -1140,62 +1142,12 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Border Style")}
-                value={blockBorderStyle}
-                onChange={(value) => setAttributes({ blockBorderStyle: value })}
-                options={[
-                  { value: "none", label: __("None") },
-                  { value: "solid", label: __("Solid") },
-                  { value: "dotted", label: __("Dotted") },
-                  { value: "dashed", label: __("Dashed") },
-                  { value: "double", label: __("Double") },
-                  { value: "groove", label: __("Groove") },
-                  { value: "inset", label: __("Inset") },
-                  { value: "outset", label: __("Outset") },
-                  { value: "ridge", label: __("Ridge") },
-                ]}
-              />
-              {"none" != blockBorderStyle && (
-                <RangeControl
-                  label={__("Border Width")}
-                  value={blockBorderWidth}
-                  onChange={(value) =>
-                    setAttributes({ blockBorderWidth: value })
-                  }
-                  min={0}
-                  max={20}
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
+                    setAttributes={ setAttributes }
+                    {...this.props}
                 />
-              )}
-              <RangeControl
-                label={__("Border Radius")}
-                value={blockBorderRadius}
-                onChange={(value) =>
-                  setAttributes({ blockBorderRadius: value })
-                }
-                min={0}
-                max={50}
-              />
-              {"none" != blockBorderStyle && (
-                <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Border Color")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: blockBorderColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={blockBorderColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ blockBorderColor: colorValue })
-                    }
-                    allowReset
-                  />
-                </Fragment>
-              )}
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}></InspectorTab>

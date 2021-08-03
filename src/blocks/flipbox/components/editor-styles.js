@@ -24,10 +24,10 @@ function EditorStyles(props) {
     iconSize,
     iconColor,
     flipStyleSelected,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -217,10 +217,10 @@ function EditorStyles(props) {
         coloropacity
       )}`,
       color: frontTextColor,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -257,10 +257,10 @@ function EditorStyles(props) {
       )}`,
       color: backTextColor,
       transform: flipStyleBack,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +

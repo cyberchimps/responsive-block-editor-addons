@@ -192,9 +192,10 @@ class GalleryCarouselEdit extends Component {
       thumbnails,
       responsiveHeight,
       lightbox,
-      borderWidth,
-      borderColor,
-      borderStyle,
+      blockBorderWidth,
+      blockBorderColor,
+      blockBorderStyle,
+      blockBorderRadius,
       iconColor,
       iconBackgroundRadius,
       iconBackgroundColor,
@@ -280,9 +281,10 @@ class GalleryCarouselEdit extends Component {
     const navStyles = {
       marginLeft: gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
       marginRight: gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
-      borderWidth: borderWidth,
-      borderStyle: borderStyle,
-      borderColor: borderColor,
+      borderWidth: blockBorderWidth,
+      borderStyle: blockBorderStyle,
+      borderColor: blockBorderColor,
+      borderRadius: blockBorderRadius,
     };
 
     const navFigureClasses = classnames(

@@ -6,6 +6,8 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -1255,101 +1257,17 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Border Style", "responsive-block-editor-addons")}
-                value={blockBorderStyle}
-                onChange={(value) => setAttributes({ blockBorderStyle: value })}
-                options={[
-                  {
-                    value: "none",
-                    label: __("None", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "solid",
-                    label: __("Solid", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dotted",
-                    label: __("Dotted", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dashed",
-                    label: __("Dashed", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "double",
-                    label: __("Double", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "groove",
-                    label: __("Groove", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "inset",
-                    label: __("Inset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "outset",
-                    label: __("Outset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "ridge",
-                    label: __("Ridge", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              {"none" != blockBorderStyle && (
-                <Fragment>
-                  <RangeControl
-                    label={__("Border Width", "responsive-block-editor-addons")}
-                    value={blockBorderWidth}
-                    onChange={(value) =>
-                      setAttributes({
-                        blockBorderWidth: value !== undefined ? value : 1,
-                      })
-                    }
-                    min={0}
-                    max={50}
-                    allowReset
-                  />
-
-                  <RangeControl
-                    label={__(
-                      "Border Radius",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={blockBorderRadius}
-                    onChange={(value) =>
-                      setAttributes({
-                        blockBorderRadius: value !== undefined ? value : 0,
-                      })
-                    }
-                    min={0}
-                    max={1000}
-                    allowReset
-                  />
-                </Fragment>
-              )}
-              {"none" != blockBorderStyle && (
-                <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Border Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: blockBorderColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={blockBorderColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ blockBorderColor: colorValue })
-                    }
-                    allowReset
-                  />
-                </Fragment>
-              )}
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values={{
+                        radius: blockBorderRadius,
+                        style: blockBorderStyle,
+                        width: blockBorderWidth,
+                        color: blockBorderColor,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow")}

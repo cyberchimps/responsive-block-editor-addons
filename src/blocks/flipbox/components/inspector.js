@@ -9,6 +9,8 @@ import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -156,10 +158,10 @@ export default class Inspector extends Component {
         iconSize,
         iconColor,
         flipStyleSelected,
-        borderStyle,
-        borderWidth,
-        borderRadius,
-        borderColor,
+        blockBorderStyle,
+        blockBorderWidth,
+        blockBorderRadius,
+        blockBorderColor,
         boxShadowColor,
         boxShadowHOffset,
         boxShadowVOffset,
@@ -1695,101 +1697,20 @@ export default class Inspector extends Component {
               </TabPanel>
             </PanelBody>
             <PanelBody
-              title={__("Border Settings", "responsive-block-editor-addons")}
+              title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Border Style", "responsive-block-editor-addons")}
-                value={borderStyle}
-                onChange={(value) => setAttributes({ borderStyle: value })}
-                options={[
-                  {
-                    value: "none",
-                    label: __("None", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "solid",
-                    label: __("Solid", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dotted",
-                    label: __("Dotted", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dashed",
-                    label: __("Dashed", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "double",
-                    label: __("Double", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "groove",
-                    label: __("Groove", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "inset",
-                    label: __("Inset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "outset",
-                    label: __("Outset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "ridge",
-                    label: __("Ridge", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              {"none" != borderStyle && (
-                <Fragment>
-                  <RangeControl
-                    label={__("Border Width", "responsive-block-editor-addons")}
-                    value={borderWidth}
-                    onChange={(value) =>
-                      setAttributes({
-                        borderWidth: value !== undefined ? value : 2,
-                      })
-                    }
-                    min={0}
-                    max={50}
-                    allowReset
-                  />
-                  <Fragment>
-                    <p>
-                      {__("Border Color", "responsive-block-editor-addons")}
-                      <span className="components-base-control__label">
-                        <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: borderColor }}
-                        ></span>
-                      </span>
-                    </p>
-                    <ColorPalette
-                      value={borderColor}
-                      onChange={(colorValue) =>
-                        setAttributes({
-                          borderColor:
-                            colorValue !== undefined ? colorValue : "#000",
-                        })
-                      }
-                      allowReset
-                    />
-                  </Fragment>
-                </Fragment>
-              )}
-              <RangeControl
-                label={__("Border Radius", "responsive-block-editor-addons")}
-                value={borderRadius}
-                onChange={(value) =>
-                  setAttributes({
-                    borderRadius: value !== undefined ? value : null,
-                  })
-                }
-                min={0}
-                max={100}
-                allowReset
-              />
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values={{
+                        radius: blockBorderRadius,
+                        style: blockBorderStyle,
+                        width: blockBorderWidth,
+                        color: blockBorderColor,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow")}

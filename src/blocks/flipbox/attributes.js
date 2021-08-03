@@ -216,18 +216,18 @@ const attributes = {
   backIconColor: {
     type: "string",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 2,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
   boxShadowColor: {

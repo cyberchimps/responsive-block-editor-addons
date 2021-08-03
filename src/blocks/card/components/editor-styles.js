@@ -13,10 +13,10 @@ function EditorStyles(props) {
     contentAlignment,
     textColor,
     itemBackgroundColor,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -139,10 +139,10 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-card-item": {
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       color: textColor,
       "background-color":
         backgroundType == "color"
