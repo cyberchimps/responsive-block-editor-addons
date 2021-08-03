@@ -10,9 +10,11 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+
 
 let svg_icons = Object.keys(ResponsiveBlocksQuoteIcon);
 // Setup the block
@@ -158,10 +160,10 @@ export default class Inspector extends Component {
         bottomPadding,
         bottomPaddingMobile,
         bottomPaddingTablet,
-        borderStyle,
-        borderWidth,
+        blockBorderStyle,
+        blockBorderWidth,
         blockBorderRadius,
-        borderColor,
+        blockBorderColor,
         backgroundColor,
         backgroundColor1,
         backgroundColor2,
@@ -428,7 +430,7 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <ColorBackgroundControl 
+                  <ColorBackgroundControl
                     {...this.props}
                   />
                 </Fragment>
@@ -463,65 +465,13 @@ export default class Inspector extends Component {
                 allowReset
               />
             </PanelBody>
-            <PanelBody title={__("Border Settings")} initialOpen={false}>
-              <SelectControl
-                label={__("Border Style")}
-                value={borderStyle}
-                onChange={(value) => setAttributes({ borderStyle: value })}
-                options={[
-                  { value: "none", label: __("None") },
-                  { value: "solid", label: __("Solid") },
-                  { value: "dotted", label: __("Dotted") },
-                  { value: "dashed", label: __("Dashed") },
-                  { value: "double", label: __("Double") },
-                  { value: "groove", label: __("Groove") },
-                  { value: "inset", label: __("Inset") },
-                  { value: "outset", label: __("Outset") },
-                  { value: "ridge", label: __("Ridge") },
-                ]}
-              />
-              {"none" != borderStyle && (
-                <Fragment>
-                  <RangeControl
-                    label={__("Border Width")}
-                    value={borderWidth}
-                    onChange={(value) => setAttributes({ borderWidth: value })}
-                    min={0}
-                    max={50}
-                    allowReset
-                  />
-                  <Fragment>
-                    <p>
-                      {__("Border Color")}
-                      <span className="components-base-control__label">
-                        <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: borderColor }}
-                        ></span>
-                      </span>
-                    </p>
-                    <ColorPalette
-                      value={borderColor}
-                      onChange={(colorValue) =>
-                        setAttributes({ borderColor: colorValue })
-                      }
-                      allowReset
-                    />
-                  </Fragment>
-                </Fragment>
-              )}
-              <RangeControl
-                label={__("Border Radius")}
-                value={blockBorderRadius}
-                onChange={(value) =>
-                  setAttributes({
-                    blockBorderRadius: value !== undefined ? value : 0,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
+            <PanelBody title={__("Border")} initialOpen={false}>
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
+                    setAttributes={ setAttributes }
+                    {...this.props}
+                />
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow")}

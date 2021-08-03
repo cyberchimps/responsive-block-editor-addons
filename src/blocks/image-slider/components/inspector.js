@@ -6,6 +6,8 @@ import ResponsiveTabsControl from "../../../utils/components/responsive-tabs-con
 import SizeControl from "../../../utils/components/size-control";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+
 
 /**
  * WordPress dependencies
@@ -106,9 +108,10 @@ class Inspector extends Component {
       isSmallImage,
       responsiveHeight,
       lightbox,
-      borderWidth,
-      borderColor,
-      borderStyle,
+      blockBorderWidth,
+      blockBorderColor,
+      blockBorderStyle,
+      blockBorderRadius,
       iconBackgroundColor,
       iconColor,
       iconBackgroundRadius,
@@ -295,67 +298,18 @@ class Inspector extends Component {
                     step={1}
                   />
                 </PanelColorSettings>
-                <PanelColorSettings
-                  title={__("Border", "responsive-block-editor-addons")}
-                  initialOpen={false}
-                  colorSettings={[
-                    {
-                      value: borderColor,
-                      onChange: (newBorderColor) =>
-                        setAttributes({ borderColor: newBorderColor }),
-                      label: __(
-                        "Border Color",
-                        "responsive-block-editor-addons"
-                      ),
-                    },
-                  ]}
-                >
-                  <SelectControl
-                    label={__("Border Style", "responsive-block-editor-addons")}
-                    value={borderStyle}
-                    options={[
-                      {
-                        value: "none",
-                        /* translators: abbreviation for medium size */
-                        label: __("None", "responsive-block-editor-addons"),
-                        tooltip: __("None", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "solid",
-                        label: __("Solid", "responsive-block-editor-addons"),
-                        shortName: __(
-                          "Solid",
-                          "responsive-block-editor-addons"
-                        ),
-                      },
-                      {
-                        value: "dotted",
-                        /* translators: abbreviation for small size */
-                        label: __("Dotted", "responsive-block-editor-addons"),
-                        tooltip: __("Dotted", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "dashed",
-                        /* translators: abbreviation for medium size */
-                        label: __("Dashed", "responsive-block-editor-addons"),
-                        tooltip: __("Dashed", "responsive-block-editor-addons"),
-                      },
-                    ]}
-                    onChange={(newborderStyle) =>
-                      setAttributes({ borderStyle: newborderStyle })
-                    }
-                  />
-                  <RangeControl
-                    label={__("Border Size", "responsive-block-editor-addons")}
-                    value={borderWidth}
-                    onChange={(newBorderWidth) =>
-                      setAttributes({ borderWidth: newBorderWidth })
-                    }
-                    min={0}
-                    max={20}
-                    step={1}
-                  />
-                </PanelColorSettings>
+
+                  <PanelBody
+                      title={__("Border", "responsive-block-editor-addons")}
+                      initialOpen={false}
+                  >
+                      <BlockBorderHelperControl
+                          attrNameTemplate="block%s"
+                          values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
+                          setAttributes={ setAttributes }
+                          {...this.props}
+                      />
+                  </PanelBody>
               </InspectorTab>
               <InspectorTab key={"advance"}></InspectorTab>
             </InspectorTabs>

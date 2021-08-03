@@ -16,9 +16,11 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+
 
 const { __ } = wp.i18n;
 
@@ -251,8 +253,10 @@ class edit extends Component {
       transitionSpeed,
       arrowDots,
       arrowSize,
-      arrowBorderSize,
+      arrowBorderWidth,
       arrowBorderRadius,
+      arrowBorderColor,
+      arrowBorderStyle,
       autoplay,
       autoplaySpeed,
       arrowColor,
@@ -283,10 +287,10 @@ class edit extends Component {
       gradientOverlayPosition,
       opacity,
       backgroundOpacity,
-      borderStyle,
-      borderWidth,
-      borderRadius,
-      borderColor,
+        blockBorderStyle,
+        blockBorderWidth,
+        blockBorderRadius,
+        blockBorderColor,
       stack,
       skin,
       bubbleColor,
@@ -644,7 +648,9 @@ class edit extends Component {
           />
           {"color" == backgroundType && (
             <Fragment>
-              <ColorBackgroundControl {...this.props} />
+              <ColorBackgroundControl
+                {...this.props}
+              />
             </Fragment>
           )}
           {"image" == backgroundType && (
@@ -668,60 +674,12 @@ class edit extends Component {
           )}
         </PanelBody>
         <PanelBody title={__("Border")} initialOpen={false}>
-          <SelectControl
-            label={__("Border Style")}
-            value={borderStyle}
-            onChange={(value) => setAttributes({ borderStyle: value })}
-            options={[
-              { value: "none", label: __("None") },
-              { value: "solid", label: __("Solid") },
-              { value: "dotted", label: __("Dotted") },
-              { value: "dashed", label: __("Dashed") },
-              { value: "double", label: __("Double") },
-              { value: "groove", label: __("Groove") },
-              { value: "inset", label: __("Inset") },
-              { value: "outset", label: __("Outset") },
-              { value: "ridge", label: __("Ridge") },
-            ]}
-          />
-          {"none" != borderStyle && (
-            <Fragment>
-              <RangeControl
-                label={__("Border Width")}
-                value={borderWidth}
-                onChange={(value) => setAttributes({ borderWidth: value })}
-                min={0}
-                max={50}
-                allowReset
-              />
-              <Fragment>
-                <p className="responsive-block-editor-addons-setting-label">
-                  {__("Border Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{ backgroundColor: borderColor }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={borderColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ borderColor: colorValue })
-                  }
-                  allowReset
-                />
-              </Fragment>
-            </Fragment>
-          )}
-          <RangeControl
-            label={__("Border Radius")}
-            value={borderRadius}
-            onChange={(value) => setAttributes({ borderRadius: value })}
-            min={0}
-            max={50}
-            allowReset
-          />
+            <BlockBorderHelperControl
+                attrNameTemplate="block%s"
+                values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
+                setAttributes={setAttributes}
+                {...this.props}
+            />
         </PanelBody>
       </Fragment>
     );
@@ -743,9 +701,10 @@ class edit extends Component {
           tabIndex="0"
           role="button"
           style={{
-            borderColor: arrowColor,
-            borderRadius: arrowBorderRadius,
-            borderWidth: arrowBorderSize,
+              borderColor: arrowBorderColor,
+              borderRadius: arrowBorderRadius,
+              borderWidth: arrowBorderWidth,
+              borderStyle: arrowBorderStyle,
           }}
         >
           <Dashicon
@@ -767,9 +726,10 @@ class edit extends Component {
           tabIndex="0"
           role="button"
           style={{
-            borderColor: arrowColor,
-            borderRadius: arrowBorderRadius,
-            borderWidth: arrowBorderSize,
+              borderColor: arrowBorderColor,
+              borderRadius: arrowBorderRadius,
+              borderWidth: arrowBorderWidth,
+              borderStyle: arrowBorderStyle,
           }}
         >
           <Dashicon
@@ -917,20 +877,15 @@ class edit extends Component {
               min={0}
               max={50}
             />
-            <RangeControl
-              label={__("Arrow Border Size")}
-              value={arrowBorderSize}
-              onChange={(value) => setAttributes({ arrowBorderSize: value })}
-              min={0}
-              max={50}
-            />
-            <RangeControl
-              label={__("Arrow Border Radius")}
-              value={arrowBorderRadius}
-              onChange={(value) => setAttributes({ arrowBorderRadius: value })}
-              min={0}
-              max={50}
-            />
+              <PanelBody title={__("Arrow Border")} initialOpen={false}>
+              <BlockBorderHelperControl
+                  attrNameTemplate="arrow%s"
+                  values={{ radius: arrowBorderRadius, style: arrowBorderStyle, width: arrowBorderWidth, color: arrowBorderColor }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+              />
+              </PanelBody>
+
           </Fragment>
         )}
       </PanelBody>

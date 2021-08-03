@@ -105,18 +105,18 @@ const attributes = {
     type: "string",
     default: "#f2f2f2",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 1,
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
     default: 2,
   },
