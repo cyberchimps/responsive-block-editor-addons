@@ -104,7 +104,7 @@ function EditorStyles(props) {
       tempsecondaryBackgroundColor || "#ffffff",
       imgopacity || 0
     )}),url(${backgroundImageOne})`
-  
+
     let backgroundImageSecond = `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
@@ -201,7 +201,7 @@ function EditorStyles(props) {
         "background-image": backgroundImageFourth,
     },
 
-    ":hover .responsive-block-editor-addons-add-image": {     
+    ":hover .responsive-block-editor-addons-add-image": {
       "background-image": hoverGradient,
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     },
@@ -220,7 +220,6 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
       color: titleColor,
-      "margin-top": generateCSSUnit(titleSpacing, "px"),
       "margin-bottom": generateCSSUnit(titleSpacing, "px"),
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
@@ -229,7 +228,6 @@ function EditorStyles(props) {
       "font-weight": descriptionFontWeight,
       "line-height": descriptionLineHeight,
       color: descriptionColor,
-      "margin-top": generateCSSUnit(descriptionSpacing, "px"),
       "margin-bottom": generateCSSUnit(descriptionSpacing, "px"),
     },
     " .imagebox-arrow": {
