@@ -917,9 +917,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'            => self::get_css_value( $attr['spacerDividerHeight'], 'px' ),
 				),
 			);
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content' => array(
+					'margin-top'    => self::get_css_value( $attr['spacerHeightMobile'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['spacerHeightMobile'], 'px' ),
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content' => array(
+					'margin-top'    => self::get_css_value( $attr['spacerHeightTablet'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['spacerHeightTablet'], 'px' ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -2205,7 +2215,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = self::hex_to_rgb( $attr['ctaBackgroundColor'], $imgopacity );
+				$updated_background_color = self::hex_to_rgb( $attr['backgroundColor'], $imgopacity );
 			} else {
 				$updated_background_color = '#ffffff';
 			}
@@ -2428,7 +2438,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTextFontSizeTablet'    => '16',
 				'ctaText'                  => '',
 				'ctaWidth'                 => '',
-				'ctaBackgroundColor'       => '#f2f2f2',
+				'backgroundColor'          => '#f2f2f2',
 				'ctaTextColor'             => '',
 				'backgroundImage'          => '',
 				'imgID'                    => '',
@@ -2541,7 +2551,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = self::hex_to_rgb( $attr['itemBackgroundColor'] ? $attr['itemBackgroundColor'] : '#fff', $imgopacity );
+				$updated_background_color = self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity );
 			} else {
 				$updated_background_color = '#fff';
 			}
@@ -2765,7 +2775,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'stack'                   => 'mobile',
 				'contentAlign'            => 'center',
 				'textColor'               => '',
-				'itemBackgroundColor'     => '',
+				'backgroundColor'         => '',
 				'buttonColor'             => '',
 				'buttonTextColor'         => '#fff',
 				'boxShadowColor'          => '',
@@ -4409,7 +4419,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$selectors = array(
 				' '                                        => array(
 					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-					'background-color' => self::hex_to_rgb( $attr['boxBackgroundColor'], $newopacity ),
+					'background-color' => self::hex_to_rgb( $attr['backgroundColor'], $newopacity ),
 					'padding'          => self::get_css_value( $attr['contentPadding'], 'px' ),
 					'border-color'     => $attr['blockBorderColor'],
 					'border-style'     => $attr['blockBorderStyle'],
@@ -4787,7 +4797,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageBoxShadowSpread'     => '',
 				'imageBoxShadowPosition'   => 'outset',
 				'counterId'                => 1,
-				'boxBackgroundColor'       => '#ffffff',
+				'backgroundColor'          => '#ffffff',
 				'contentPadding'           => 0,
 				'opacity'                  => 100,
 				'imageopacity'             => 100,
@@ -7283,6 +7293,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			return array(
 				'block_id'               => '',
 				'spacerHeight'           => 30,
+				'spacerHeightMobile'     => 30,
+				'spacerHeightTablet'     => 30,
 				'spacerDivider'          => false,
 				'spacerDividerStyle'     => 'solid',
 				'spacerDividerColor'     => '#000',

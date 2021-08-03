@@ -13,6 +13,7 @@ import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper"
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -219,7 +220,7 @@ export default class Inspector extends Component {
         imageBoxShadowBlur,
         imageBoxShadowSpread,
         imageBoxShadowPosition,
-        boxBackgroundColor,
+        backgroundColor,
         contentPadding,
         opacity,
         dimRatio,
@@ -311,7 +312,7 @@ export default class Inspector extends Component {
     ];
     // Update color values
     const onChangeBackgroundColor = (value) =>
-      setAttributes({ boxBackgroundColor: value });
+      setAttributes({ backgroundColor: value });
 
     // Icon properties.
     const icon_props = {
@@ -1079,20 +1080,13 @@ export default class Inspector extends Component {
                 />
               )}
 
-              <PanelColorSettings
+              <PanelBody
                 title={__("Background Color", "responsive-block-editor-addons")}
                 initialOpen={false}
-                colorSettings={[
-                  {
-                    value: boxBackgroundColor,
-                    onChange: onChangeBackgroundColor,
-                    label: __(
-                      "Background Color",
-                      "responsive-block-editor-addons"
-                    ),
-                  },
-                ]}
               >
+                <ColorBackgroundControl 
+                  {...this.props}
+                />
                 <RangeControl
                   label={__("Opacity", "responsive-block-editor-addons")}
                   value={opacity}
@@ -1105,7 +1099,7 @@ export default class Inspector extends Component {
                   max={100}
                   allowReset
                 />
-              </PanelColorSettings>
+              </PanelBody>
             </PanelBody>
             <PanelBody
               title={__("Call To Action", "responsive-block-editor-addons")}

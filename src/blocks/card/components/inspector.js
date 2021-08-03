@@ -11,6 +11,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
@@ -254,7 +255,7 @@ export default class Inspector extends Component {
         gutter,
         cardsArray,
         textColor,
-        itemBackgroundColor,
+        backgroundColor,
         buttonTarget,
         borderStyle,
         borderWidth,
@@ -490,7 +491,7 @@ export default class Inspector extends Component {
     // Update color value
     const onChangeTextColor = (value) => setAttributes({ textColor: value });
     const onChangeBackgroundColor = (value) =>
-      setAttributes({ itemBackgroundColor: value });
+      setAttributes({ backgroundColor: value });
 
     // Background Type Options
     const backgroundTypeOptions = [
@@ -909,19 +910,8 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Background Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: itemBackgroundColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={itemBackgroundColor}
-                    onChange={onChangeBackgroundColor}
-                    allowReset
+                  <ColorBackgroundControl 
+                    {...this.props}
                   />
                   <RangeControl
                     label={__("Opacity", "responsive-block-editor-addons")}

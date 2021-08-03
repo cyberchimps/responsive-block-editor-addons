@@ -3,6 +3,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 
 /**
  * Inspector Controls
@@ -427,24 +428,9 @@ export default class Inspector extends Component {
 								options={backgroundTypeOptions}
 							/>
 							{"color" == backgroundType && (
-								<Fragment>
-									<p className="responsive-setting-label">
-										{__("Background Color", "responsive-block-editor-addons")}
-										<span className="components-base-control__label">
-											<span
-												className="component-color-indicator"
-												style={{ backgroundColor: backgroundColor }}
-											></span>
-										</span>
-									</p>
-									<ColorPalette
-										value={backgroundColor}
-										onChange={(colorValue) =>
-											setAttributes({ backgroundColor: colorValue })
-										}
-										allowReset
-									/>
-								</Fragment>
+								<ColorBackgroundControl 
+									{...this.props}
+								/>
 							)}
 							{"image" == backgroundType && (
 								<Fragment>

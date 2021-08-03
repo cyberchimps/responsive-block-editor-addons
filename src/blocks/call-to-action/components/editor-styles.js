@@ -42,7 +42,7 @@ function EditorStyles(props) {
     subtitleSpaceTablet,
     iconSpace,
     opacity,
-    ctaBackgroundColor,
+    backgroundColor,
     backgroundType,
     gradientDirection,
     colorLocation1,
@@ -144,7 +144,7 @@ function EditorStyles(props) {
     "": {
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}`
+          ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image":
         backgroundType == "gradient"
