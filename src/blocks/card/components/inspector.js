@@ -12,7 +12,8 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -254,7 +255,7 @@ export default class Inspector extends Component {
         gutter,
         cardsArray,
         textColor,
-        itemBackgroundColor,
+        backgroundColor,
         buttonTarget,
         blockBorderStyle,
         blockBorderWidth,
@@ -335,6 +336,9 @@ export default class Inspector extends Component {
         backgroundImageTwo,
         backgroundImageThree,
         backgroundImageFour,
+        backgroundImagePosition,
+        backgroundImageRepeat,
+        backgroundImageSize,
       },
       setAttributes,
     } = this.props;
@@ -471,7 +475,7 @@ export default class Inspector extends Component {
     // Update color value
     const onChangeTextColor = (value) => setAttributes({ textColor: value });
     const onChangeBackgroundColor = (value) =>
-      setAttributes({ itemBackgroundColor: value });
+      setAttributes({ backgroundColor: value });
 
     // Background Type Options
     const backgroundTypeOptions = [
@@ -890,19 +894,8 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Background Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: itemBackgroundColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={itemBackgroundColor}
-                    onChange={onChangeBackgroundColor}
-                    allowReset
+                  <ColorBackgroundControl
+                    {...this.props}
                   />
                   <RangeControl
                     label={__("Opacity", "responsive-block-editor-addons")}
@@ -998,205 +991,25 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
               {"image" == backgroundType && (
-                <Fragment>
-                  <BaseControl
-                    className="editor-bg-image-control"
-                    label={__(
-                      "Background Image",
-                      "responsive-block-editor-addons"
-                    )}
-                  >
-                    <MediaUpload
-                      title={__(
-                        "Select Background Image",
-                        "responsive-block-editor-addons"
-                      )}
-                      onSelect={this.onSelectImage}
-                      allowedTypes={["image"]}
-                      value={backgroundImage}
-                      render={({ open }) => (
-                        <Button isDefault onClick={open}>
-                          {!backgroundImage
-                            ? __(
-                                "Select Background Image",
-                                "responsive-block-editor-addons"
-                              )
-                            : __(
-                                "Replace image",
-                                "responsive-block-editor-addons"
-                              )}
-                        </Button>
-                      )}
-                    />
-                    {backgroundImage && (
-                      <Button
-                        className="rbea-rm-btn"
-                        onClick={this.onRemoveImage}
-                        isLink
-                        isDestructive
-                      >
-                        {__("Remove Image", "responsive-block-editor-addons")}
-                      </Button>
-                    )}
-                  </BaseControl>
-                  <RangeControl
-                    label={__("Opacity", "responsive-block-editor-addons")}
-                    value={imageopacity}
-                    onChange={(value) =>
-                      setAttributes({
-                        imageopacity: value !== undefined ? value : 20,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    allowReset
-                  />
-                  <PanelBody
-                    title={__(
-                      "Background Image Settings",
-                      "responsive-block-editor-addons"
-                    )}
-                    initialOpen={false}
-                  >
-                    <SelectControl
-                      label={__(
-                        "Image Position",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={bgimagePosition}
-                      onChange={(value) =>
-                        setAttributes({ bgimagePosition: value })
-                      }
-                      options={[
-                        {
-                          value: "top left",
-                          label: __(
-                            "Top Left",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "top center",
-                          label: __(
-                            "Top Center",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "top right",
-                          label: __(
-                            "Top Right",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "center left",
-                          label: __(
-                            "Center Left",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "center top",
-                          label: __(
-                            "Center Top",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "center right",
-                          label: __(
-                            "Center Right",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "bottom left",
-                          label: __(
-                            "Bottom Left",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "bottom center",
-                          label: __(
-                            "Bottom Center",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "bottom right",
-                          label: __(
-                            "Bottom Right",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                      ]}
-                    />
-                    <SelectControl
-                      label={__(
-                        "Image Repeat",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={bgimageRepeat}
-                      onChange={(value) =>
-                        setAttributes({ bgimageRepeat: value })
-                      }
-                      options={[
-                        {
-                          value: "no-repeat",
-                          label: __(
-                            "No Repeat",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "repeat",
-                          label: __("Repeat", "responsive-block-editor-addons"),
-                        },
-                        {
-                          value: "repeat-x",
-                          label: __(
-                            "Repeat-X",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                        {
-                          value: "repeat-y",
-                          label: __(
-                            "Repeat-Y",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                      ]}
-                    />
-                    <SelectControl
-                      label={__("Image Size", "responsive-block-editor-addons")}
-                      value={bgthumbsize}
-                      onChange={(value) =>
-                        setAttributes({ bgthumbsize: value })
-                      }
-                      options={[
-                        {
-                          value: "cover",
-                          label: __("Cover", "responsive-block-editor-addons"),
-                        },
-                        {
-                          value: "auto",
-                          label: __("Auto", "responsive-block-editor-addons"),
-                        },
-                        {
-                          value: "contain",
-                          label: __(
-                            "Contain",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                      ]}
-                    />
-                  </PanelBody>
-                </Fragment>
+                <ImageBackgroundControl
+                  {...this.props}
+                  showSomeImageOptions={true}
+                  showMoreImageOptions={false}
+                  showOverlayOptions={false}
+                />
               )}
+              <RangeControl
+                label={__("Opacity", "responsive-block-editor-addons")}
+                value={imageopacity}
+                onChange={(value) =>
+                  setAttributes({
+                    imageopacity: value !== undefined ? value : 20,
+                  })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
             </PanelBody>
             <PanelBody
               title={__("Button Settings", "responsive-block-editor-addons")}

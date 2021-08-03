@@ -53,10 +53,10 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -108,10 +108,10 @@ function EditorStyles(props) {
               imgopacity || 0
             )}),url(${backgroundImage})`
           : "",
-      "background-position": backgroundPosition,
+      "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "z-index": z_index,
     },
     " .responsive-block-editor-addons-block-columns.overlay-type-color": {

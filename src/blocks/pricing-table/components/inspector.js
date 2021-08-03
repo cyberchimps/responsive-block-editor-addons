@@ -10,6 +10,9 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ImageSettingsControl from "../../../settings-components/Image Settings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -989,21 +992,8 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Background Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: backgroundColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={backgroundColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ backgroundColor: colorValue })
-                    }
-                    allowReset
+                  <ColorBackgroundControl
+                    {...this.props}
                   />
                   <RangeControl
                     label={__("Opacity", "responsive-block-editor-addons")}
@@ -1114,46 +1104,12 @@ export default class Inspector extends Component {
               )}
               {"image" == backgroundType && (
                 <Fragment>
-                  <BaseControl
-                    className="editor-bg-image-control"
-                    label={__(
-                      "Background Image",
-                      "responsive-block-editor-addons"
-                    )}
-                  >
-                    <MediaUpload
-                      title={__(
-                        "Select Background Image",
-                        "responsive-block-editor-addons"
-                      )}
-                      onSelect={this.onSelectImage}
-                      allowedTypes={["image"]}
-                      value={backgroundImage}
-                      render={({ open }) => (
-                        <Button isDefault onClick={open}>
-                          {!backgroundImage
-                            ? __(
-                                "Select Background Image",
-                                "responsive-block-editor-addons"
-                              )
-                            : __(
-                                "Replace image",
-                                "responsive-block-editor-addons"
-                              )}
-                        </Button>
-                      )}
-                    />
-                    {backgroundImage && (
-                      <Button
-                        className="rbea-rm-btn"
-                        onClick={this.onRemoveImage}
-                        isLink
-                        isDestructive
-                      >
-                        {__("Remove Image", "responsive-block-editor-addons")}
-                      </Button>
-                    )}
-                  </BaseControl>
+                  <ImageBackgroundControl
+                    {...this.props}
+                    showSomeImageOptions={false}
+                    showMoreImageOptions={false}
+                    showOverlayOptions={false}
+                  />
                   <RangeControl
                     label={__("Opacity", "responsive-block-editor-addons")}
                     value={opacity}

@@ -97,7 +97,7 @@ function EditorStyles(props) {
     imageBoxShadowPosition,
     alignment,
     imageopacity,
-    boxBackgroundColor,
+    backgroundColor,
     contentPadding,
     imgiconPosition,
     ctaTextFontFamily,
@@ -119,6 +119,10 @@ function EditorStyles(props) {
     iconBorderRadius,
     iconBorderWidth,
     iconPadding,
+    backgroundImage,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
 
   } = props.attributes;
 
@@ -171,7 +175,7 @@ function EditorStyles(props) {
     " ": {
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "background-color": `${hexToRgba(
-        boxBackgroundColor || "#ffffff",
+        backgroundColor || "#ffffff",
         newopacity || 0
       )}`,
       padding: generateCSSUnit(contentPadding, "px"),
@@ -289,10 +293,10 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-image": {
-      "background-image": `url(${imgURL})`,
-      "background-position": imagePosition,
-      "background-repeat": imageRepeat,
-      "background-size": thumbsize,
+      "background-image": `url(${backgroundImage})`,
+      "background-position": backgroundImagePosition,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "background-attachment": backgroundAttachment,
     },
 

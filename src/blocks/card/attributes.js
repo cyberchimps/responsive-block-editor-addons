@@ -40,7 +40,7 @@ const attributes = {
   textColor: {
     type: "string",
   },
-  itemBackgroundColor: {
+  backgroundColor: {
     type: "string",
   },
   buttonColor: {
@@ -118,7 +118,7 @@ const attributes = {
     default: 90,
   },
   backgroundImage: {
-    type: "object",
+    type: "string",
   },
   backgroundColor: {
     type: "string",
@@ -355,6 +355,18 @@ const attributes = {
   },
   backgroundImageFour: {
     type: "string",
+  },
+  backgroundImagePosition: {
+    type: "string",
+    default: "center center",
+  },
+  backgroundImageRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  backgroundImageSize: {
+    type: "string",
+    default: "cover",
   },
 };
 export default attributes;

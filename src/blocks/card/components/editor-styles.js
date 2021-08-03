@@ -83,6 +83,9 @@ function EditorStyles(props) {
     backgroundImageTwo,
     backgroundImageThree,
     backgroundImageFour,
+    backgroundImagePosition,
+    backgroundImageSize,
+    backgroundImageRepeat,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -146,7 +149,7 @@ function EditorStyles(props) {
       color: textColor,
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}`
+          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
           : undefined,
       "background-image":
         backgroundType == "gradient"
@@ -174,12 +177,12 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-card-background-image": {
       "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
+        ? `url(${backgroundImage})`
         : null,
       height: 100 + "%",
-      "background-position": bgimagePosition,
-      "background-repeat": bgimageRepeat,
-      "background-size": bgthumbsize,
+      "background-position": backgroundImagePosition,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
     },
 
     " .responsive-block-editor-addons-card-avatar": {
@@ -196,7 +199,7 @@ function EditorStyles(props) {
         "background-image": `url(${backgroundImageOne})`,
         "display": backgroundImageOne? 'block' : 'none',
     },
-    
+
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-0": {
         "display": backgroundImageOne? 'none' : 'flex',
     },

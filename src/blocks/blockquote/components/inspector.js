@@ -11,6 +11,8 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 
 
 let svg_icons = Object.keys(ResponsiveBlocksQuoteIcon);
@@ -427,21 +429,8 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Background Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: backgroundColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={backgroundColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ backgroundColor: colorValue })
-                    }
-                    allowReset
+                  <ColorBackgroundControl
+                    {...this.props}
                   />
                 </Fragment>
               )}
@@ -525,48 +514,12 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
               {"image" == backgroundType && (
-                <Fragment>
-                  <BaseControl
-                    className="editor-bg-image-control"
-                    label={__(
-                      "Background Image",
-                      "responsive-block-editor-addons"
-                    )}
-                  >
-                    <MediaUpload
-                      title={__(
-                        "Select Background Image",
-                        "responsive-block-editor-addons"
-                      )}
-                      onSelect={this.onSelectImage}
-                      allowedTypes={["image"]}
-                      value={backgroundImage}
-                      render={({ open }) => (
-                        <Button isDefault onClick={open}>
-                          {!backgroundImage
-                            ? __(
-                                "Select Background Image",
-                                "responsive-block-editor-addons"
-                              )
-                            : __(
-                                "Replace image",
-                                "responsive-block-editor-addons"
-                              )}
-                        </Button>
-                      )}
-                    />
-                    {backgroundImage && (
-                      <Button
-                        className="rbea-rm-btn"
-                        onClick={this.onRemoveImage}
-                        isLink
-                        isDestructive
-                      >
-                        {__("Remove Image", "responsive-block-editor-addons")}
-                      </Button>
-                    )}
-                  </BaseControl>
-                </Fragment>
+                <ImageBackgroundControl
+                  showSomeImageOptions={false}
+                  showMoreImageOptions={false}
+                  showOverlayOptions={false}
+                  {...this.props}
+                />
               )}
               {"video" == backgroundType && (
                 <VideoBackgroundControl {...this.props} />

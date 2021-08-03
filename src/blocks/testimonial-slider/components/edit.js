@@ -17,6 +17,9 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+
 
 const { __ } = wp.i18n;
 
@@ -254,10 +257,20 @@ class edit extends Component {
       backgroundType,
       backgroundColor,
       backgroundImage,
-      backgroundPosition,
-      backgroundSize,
-      backgroundRepeat,
+      backgroundImagePosition,
+      backgroundImageSize,
+      backgroundImageRepeat,
       backgroundImageColor,
+      backgroundAttachment,
+      overlayType,
+      gradientOverlayColor1,
+      gradientOverlayLocation1,
+      gradientOverlayColor2,
+      gradientOverlayLocation2,
+      gradientOverlayType,
+      gradientOverlayAngle,
+      gradientOverlayPosition,
+      opacity,
       backgroundOpacity,
         blockBorderStyle,
         blockBorderWidth,
@@ -594,120 +607,18 @@ class edit extends Component {
           />
           {"color" == backgroundType && (
             <Fragment>
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Background Color")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: backgroundColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={backgroundColor}
-                onChange={(colorValue) =>
-                  setAttributes({ backgroundColor: colorValue })
-                }
-                allowReset
+              <ColorBackgroundControl
+                {...this.props}
               />
             </Fragment>
           )}
           {"image" == backgroundType && (
-            <Fragment>
-              <BaseControl
-                className="editor-bg-image-control"
-                label={__("Background Image")}
-              >
-                <MediaUpload
-                  title={__("Select Background Image")}
-                  onSelect={this.onSelectImage}
-                  allowedTypes={["image"]}
-                  value={backgroundImage}
-                  render={({ open }) => (
-                    <Button isDefault onClick={open}>
-                      {!backgroundImage
-                        ? __("Select Background Image")
-                        : __("Replace image")}
-                    </Button>
-                  )}
-                />
-                {backgroundImage && (
-                  <Button
-                    className="responsive-block-editor-addons-rm-btn"
-                    onClick={this.onRemoveImage}
-                    isLink
-                    isDestructive
-                  >
-                    {__("Remove Image")}
-                  </Button>
-                )}
-              </BaseControl>
-              {backgroundImage && (
-                <Fragment>
-                  <SelectControl
-                    label={__("Image Position")}
-                    value={backgroundPosition}
-                    onChange={(value) =>
-                      setAttributes({ backgroundPosition: value })
-                    }
-                    options={[
-                      { value: "top-left", label: __("Top Left") },
-                      { value: "top-center", label: __("Top Center") },
-                      { value: "top-right", label: __("Top Right") },
-                      { value: "center-left", label: __("Center Left") },
-                      { value: "center-center", label: __("Center Center") },
-                      { value: "center-right", label: __("Center Right") },
-                      { value: "bottom-left", label: __("Bottom Left") },
-                      { value: "bottom-center", label: __("Bottom Center") },
-                      { value: "bottom-right", label: __("Bottom Right") },
-                    ]}
-                  />
-                  <SelectControl
-                    label={__("Repeat")}
-                    value={backgroundRepeat}
-                    onChange={(value) =>
-                      setAttributes({ backgroundRepeat: value })
-                    }
-                    options={[
-                      { value: "no-repeat", label: __("No Repeat") },
-                      { value: "repeat", label: __("Repeat") },
-                      { value: "repeat-x", label: __("Repeat-x") },
-                      { value: "repeat-y", label: __("Repeat-y") },
-                    ]}
-                  />
-                  <SelectControl
-                    label={__("Size")}
-                    value={backgroundSize}
-                    onChange={(value) =>
-                      setAttributes({ backgroundSize: value })
-                    }
-                    options={[
-                      { value: "auto", label: __("Auto") },
-                      { value: "cover", label: __("Cover") },
-                      { value: "contain", label: __("Contain") },
-                    ]}
-                  />
-                  <Fragment>
-                    <p className="responsive-block-editor-addons-setting-label">
-                      {__("Image Overlay Color")}
-                      <span className="components-base-control__label">
-                        <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: backgroundImageColor }}
-                        ></span>
-                      </span>
-                    </p>
-                    <ColorPalette
-                      value={backgroundImageColor}
-                      onChange={(colorValue) =>
-                        setAttributes({ backgroundImageColor: colorValue })
-                      }
-                      allowReset
-                    />
-                  </Fragment>
-                </Fragment>
-              )}
-            </Fragment>
+            <ImageBackgroundControl
+              {...this.props}
+              showSomeImageOptions={true}
+              showMoreImageOptions={true}
+              showOverlayOptions={true}
+            />
           )}
           {"image" == backgroundType && backgroundImage && (
             <RangeControl

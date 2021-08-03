@@ -376,7 +376,7 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  boxBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#ffffff",
   },
@@ -431,10 +431,6 @@ const attributes = {
   thumbsize: {
     type: "string",
     default: "cover",
-  },
-  backgroundAttachment: {
-    type: "string",
-    default: "scroll",
   },
   sepSpace: {
     type: "number",
@@ -540,6 +536,29 @@ const attributes = {
   iconBorderWidth: {
     type: "number",
     default: 1
+  },
+  backgroundImage: {
+    type: "string",
+  },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  backgroundImagePosition: {
+    type: "string",
+    default: "center center"
+  },
+  background: {
+    type: "string",
+    default: "scroll"
+  },
+  backgroundImageRepeat: {
+    type: "string",
+    default: "no-repeat"
+  },
+  backgroundImageSize: {
+    type: "string",
+    default: "cover"
   },
 };
 export default attributes;

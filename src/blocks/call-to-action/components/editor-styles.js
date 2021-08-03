@@ -21,7 +21,7 @@ function EditorStyles(props) {
     ctaTextFontSizeMobile,
     ctaTextFontSizeTablet,
     ctaTextColor,
-    imgURL,
+    backgroundImage,
     headingLineHeight,
     headingFontWeight,
     contentLineHeight,
@@ -42,7 +42,7 @@ function EditorStyles(props) {
     subtitleSpaceTablet,
     iconSpace,
     opacity,
-    ctaBackgroundColor,
+    backgroundColor,
     backgroundType,
     gradientDirection,
     colorLocation1,
@@ -78,9 +78,9 @@ function EditorStyles(props) {
     rightPadding,
     rightPaddingMobile,
     rightPaddingTablet,
-    imagePosition,
-    imageRepeat,
-    thumbsize,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
     buttonTextFontFamily,
     buttonTextFontSize,
     buttonTextFontSizeMobile,
@@ -144,7 +144,7 @@ function EditorStyles(props) {
     "": {
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}`
+          ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image":
         backgroundType == "gradient"
@@ -176,11 +176,11 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {
-      "background-image": imgURL ? `url(${imgURL})` : null,
+      "background-image": backgroundImage ? `url(${backgroundImage})` : null,
       "height": 100 + "%",
-      "background-position": imagePosition,
-      "background-repeat": imageRepeat,
-      "background-size": thumbsize,
+      "background-position": backgroundImagePosition,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "border-radius": generateCSSUnit(borderRadius, "px"),
     },
 

@@ -7,6 +7,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 
 
 // Setup the block
@@ -343,21 +344,8 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Background Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: backgroundColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={backgroundColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ backgroundColor: colorValue })
-                    }
-                    allowReset
+                  <ColorBackgroundControl
+                    {...this.props}
                   />
                 </Fragment>
               )}
