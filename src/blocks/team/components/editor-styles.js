@@ -31,6 +31,18 @@ function EditorStyles(props) {
     socialIconSpacing,
     imageMarginTop,
     imageMarginBottom,
+    titleSpacingMobile,
+    designationSpacingMobile,
+    descriptionSpacingMobile,
+    socialIconSpacingMobile,
+    imageMarginTopMobile,
+    imageMarginBottomMobile,
+    titleSpacingTablet,
+    designationSpacingTablet,
+    descriptionSpacingTablet,
+    socialIconSpacingTablet,
+    imageMarginTopTablet,
+    imageMarginBottomTablet,
     iconSize,
     imageWidth,
     imageWidthMobile,
@@ -249,11 +261,29 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidthMobile, "px"),
       "max-width": generateCSSUnit(imageWidthMobile, "px"),
+      "margin-top": generateCSSUnit(imageMarginTopMobile, "px"),
+      "margin-bottom": generateCSSUnit(imageMarginBottomMobile, "px"),
     },
     ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
       "max-width": "100%",
       "min-width": "100%",
-    }
+    },
+    " .responsive-block-editor-addons-team-name": {
+      "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-designation": {
+      "margin-bottom": generateCSSUnit(designationSpacingMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-description": {
+      "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+      "margin-left": generateCSSUnit(socialIconSpacingMobile, "px"),
+      "margin-right": generateCSSUnit(socialIconSpacingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -263,11 +293,29 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidthTablet, "px"),
       "max-width": generateCSSUnit(imageWidthTablet, "px"),
+      "margin-top": generateCSSUnit(imageMarginTopTablet, "px"),
+      "margin-bottom": generateCSSUnit(imageMarginBottomTablet, "px"),
     },
     ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "max-width": "100%",
       "min-width": "100%",
-    }
+    },
+    " .responsive-block-editor-addons-team-name": {
+      "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-designation": {
+      "margin-bottom": generateCSSUnit(designationSpacingTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-description": {
+      "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+      "margin-left": generateCSSUnit(socialIconSpacingTablet, "px"),
+      "margin-right": generateCSSUnit(socialIconSpacingTablet, "px"),
+    },
   };
 
   var styling_css = "";

@@ -207,7 +207,23 @@ const attributes = {
     type: "number",
     default: 5,
   },
+  nameSpaceMobile: {
+    type: "number",
+    default: 5,
+  },
+  nameSpaceTablet: {
+    type: "number",
+    default: 5,
+  },
   descSpace: {
+    type: "number",
+    default: 15,
+  },
+  descSpaceMobile: {
+    type: "number",
+    default: 15,
+  },
+  descSpaceTablet: {
     type: "number",
     default: 15,
   },
@@ -224,6 +240,22 @@ const attributes = {
     default: 10,
   },
   imgHrPadding: {
+    type: "number",
+    default: 10,
+  },
+  imgVrPaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  imgHrPaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  imgVrPaddingTablet: {
+    type: "number",
+    default: 10,
+  },
+  imgHrPaddingTablet: {
     type: "number",
     default: 10,
   },
@@ -307,6 +339,30 @@ const attributes = {
     default: 10,
   },
   contentPadding: {
+    type: "number",
+    default: 5,
+  },
+  rowGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  columnGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  rowGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  columnGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  contentPaddingTablet: {
     type: "number",
     default: 5,
   },
@@ -399,6 +455,14 @@ const attributes = {
     default: "tablet",
   },
   blockPadding: {
+    type: "number",
+    default: 45,
+  },
+  blockPaddingMobile: {
+    type: "number",
+    default: 45,
+  },
+  blockPaddingTablet: {
     type: "number",
     default: 45,
   }
