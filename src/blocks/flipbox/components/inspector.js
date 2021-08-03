@@ -10,6 +10,8 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
 
 
 // Setup the block
@@ -171,14 +173,34 @@ export default class Inspector extends Component {
         height,
         topMargin,
         bottomMargin,
-        topPadding,
-        bottomPadding,
-        leftPadding,
-        rightPadding,
-        backtopPadding,
-        backbottomPadding,
-        backleftPadding,
-        backrightPadding,
+        frontTopPadding,
+        frontBottomPadding,
+        frontLeftPadding,
+        frontRightPadding,
+        backTopPadding,
+        backBottomPadding,
+        backLeftPadding,
+        backRightPadding,
+        topMarginMobile,
+        bottomMarginMobile,
+        frontTopPaddingMobile,
+        frontBottomPaddingMobile,
+        frontLeftPaddingMobile,
+        frontRightPaddingMobile,
+        backTopPaddingMobile,
+        backBottomPaddingMobile,
+        backLeftPaddingMobile,
+        backRightPaddingMobile,
+        topMarginTablet,
+        bottomMarginTablet,
+        frontTopPaddingTablet,
+        frontBottomPaddingTablet,
+        frontLeftPaddingTablet,
+        frontRightPaddingTablet,
+        backTopPaddingTablet,
+        backBottomPaddingTablet,
+        backLeftPaddingTablet,
+        backRightPaddingTablet,
         backIconColor,
         backIconSize,
         showFrontIcon,
@@ -1518,27 +1540,27 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <h2>{__("Margin")}</h2>
-              <RangeControl
-                label={__("Top Margin", "responsive-block-editor-addons")}
-                value={topMargin}
-                onChange={(value) =>
-                  setAttributes({ topMargin: value !== undefined ? value : 0 })
-                }
-                min={-2000}
-                max={2000}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Top Margin"}
+                attrNameTemplate="topMargin%s"
+                values={{
+                  desktop: topMargin,
+                  tablet: topMarginTablet,
+                  mobile: topMarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Bottom Margin", "responsive-block-editor-addons")}
-                value={bottomMargin}
-                onChange={(value) =>
-                  setAttributes({
-                    bottomMargin: value !== undefined ? value : 0,
-                  })
-                }
-                min={-2000}
-                max={2000}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Bottom Margin"}
+                attrNameTemplate="bottomMargin%s"
+                values={{
+                  desktop: bottomMargin,
+                  tablet: bottomMarginTablet,
+                  mobile: bottomMarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
 
               <h2>{__("Padding")}</h2>
@@ -1563,131 +1585,52 @@ export default class Inspector extends Component {
                   if ("back" === tabName.name) {
                     tabout = (
                       <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={backtopPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              backtopPadding: value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
-                        />
-                        <RangeControl
-                          label={__(
-                            "Bottom Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={backbottomPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              backbottomPadding:
-                                value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
-                        />
-                        <RangeControl
-                          label={__(
-                            "Left Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={backleftPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              backleftPadding: value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
-                        />
-                        <RangeControl
-                          label={__(
-                            "Right Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={backrightPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              backrightPadding: value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
+                        <ResponsivePaddingControl
+                          attrNameTemplate="back%s"
+                          values={{
+                            desktopTop: backTopPadding,
+                            desktopBottom: backBottomPadding,
+                            desktopLeft: backLeftPadding,
+                            desktopRight: backRightPadding,
+
+                            tabletTop: backTopPaddingTablet,
+                            tabletBottom: backBottomPaddingTablet,
+                            tabletLeft: backLeftPaddingTablet,
+                            tabletRight: backRightPaddingTablet,
+
+                            mobileTop: backTopPaddingMobile,
+                            mobileBottom: backBottomPaddingMobile,
+                            mobileLeft: backLeftPaddingMobile,
+                            mobileRight: backRightPaddingMobile,
+                          }}
+                          setAttributes={setAttributes}
+                          {...this.props}
                         />
                       </Fragment>
                     );
                   } else {
                     tabout = (
                       <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={topPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              topPadding: value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
-                        />
-                        <RangeControl
-                          label={__(
-                            "Bottom Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={bottomPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              bottomPadding: value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
-                        />
-                        <RangeControl
-                          label={__(
-                            "Left Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={leftPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              leftPadding: value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
-                        />
-                        <RangeControl
-                          label={__(
-                            "Right Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          value={rightPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              rightPadding: value !== undefined ? value : 0,
-                            })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
+                        <ResponsivePaddingControl
+                          attrNameTemplate="front%s"
+                          values={{
+                            desktopTop: frontTopPadding,
+                            desktopBottom: frontBottomPadding,
+                            desktopLeft: frontLeftPadding,
+                            desktopRight: frontRightPadding,
+
+                            tabletTop: frontTopPaddingTablet,
+                            tabletBottom: frontBottomPaddingTablet,
+                            tabletLeft: frontLeftPaddingTablet,
+                            tabletRight: frontRightPaddingTablet,
+
+                            mobileTop: frontTopPaddingMobile,
+                            mobileBottom: frontBottomPaddingMobile,
+                            mobileLeft: frontLeftPaddingMobile,
+                            mobileRight: frontRightPaddingMobile,
+                          }}
+                          setAttributes={setAttributes}
+                          {...this.props}
                         />
                       </Fragment>
                     );

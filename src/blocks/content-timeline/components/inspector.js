@@ -12,7 +12,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -94,6 +94,10 @@ export default class Inspector extends Component {
         itemPadding,
         horizontalSpace,
         verticalSpace,
+        horizontalSpaceMobile,
+        verticalSpaceMobile,
+        horizontalSpaceTablet,
+        verticalSpaceTablet,
         itemBorderWidth,
         itemBorderStyle,
         itemBorderColor,
@@ -112,6 +116,8 @@ export default class Inspector extends Component {
         separatorwidth,
         icon,
         headingBottomMargin,
+        headingBottomMarginMobile,
+        headingBottomMarginTablet,
         stack,
         arrowlinAlignment,
       },
@@ -593,50 +599,38 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__(
-                  "Horizontal Spacing",
-                  "responsive-block-editor-addons"
-                )}
-                value={horizontalSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    horizontalSpace: value !== undefined ? value : 0,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Horizontal Spacing"}
+                attrNameTemplate="horizontalSpace%s"
+                values={{
+                  desktop: horizontalSpace,
+                  tablet: horizontalSpaceTablet,
+                  mobile: horizontalSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Vertical Spacing", "responsive-block-editor-addons")}
-                value={verticalSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    verticalSpace: value !== undefined ? value : 15,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Vertical Spacing"}
+                attrNameTemplate="verticalSpace%s"
+                values={{
+                  desktop: verticalSpace,
+                  tablet: verticalSpaceTablet,
+                  mobile: verticalSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Heading Bottom Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={headingBottomMargin}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    headingBottomMargin: value !== undefined ? value : 15,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Heading Bottom Margin"}
+                attrNameTemplate="headingBottomMargin%s"
+                values={{
+                  desktop: headingBottomMargin,
+                  tablet: headingBottomMarginTablet,
+                  mobile: headingBottomMarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
 

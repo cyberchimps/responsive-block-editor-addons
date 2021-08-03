@@ -19,6 +19,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 
 const { __ } = wp.i18n;
@@ -228,12 +229,20 @@ class edit extends Component {
       descLoadGoogleFonts,
 
       descSpace,
+      descSpaceMobile,
+      descSpaceTablet,
       iconimgStyle,
       imagePosition,
       imageAlignment,
       nameSpace,
       imgHrPadding,
       imgVrPadding,
+      nameSpaceMobile,
+      imgHrPaddingMobile,
+      imgVrPaddingMobile,
+      nameSpaceTablet,
+      imgHrPaddingTablet,
+      imgVrPaddingTablet,
       imageSize,
       imageWidth,
       columns,
@@ -252,8 +261,14 @@ class edit extends Component {
       autoplaySpeed,
       arrowColor,
       rowGap,
+      rowGapMobile,
+      rowGapTablet,
       columnGap,
+      columnGapMobile,
+      columnGapTablet,
       contentPadding,
+      contentPaddingMobile,
+      contentPaddingTablet,
       backgroundType,
       backgroundColor,
       backgroundImage,
@@ -283,6 +298,8 @@ class edit extends Component {
       bubbleBorderRadius,
       slicksettings,
       blockPadding,
+      blockPaddingTablet,
+      blockPaddingMobile,
     } = attributes;
 
     const fontWeightOptions = [
@@ -525,69 +542,93 @@ class edit extends Component {
     // Margin Settings.
     const marginSettings = (
       <PanelBody title={__("Spacing")} initialOpen={false}>
-        <RangeControl
-          label={__("Gap Between Content & Dots")}
-          value={rowGap}
-          onChange={(value) => setAttributes({ rowGap: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Content and Dots Gap"}
+          attrNameTemplate="rowGap%s"
+          values={{
+            desktop: rowGap,
+            tablet: rowGapTablet,
+            mobile: rowGapMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
-        <RangeControl
-          label={__("Row Gap")}
-          value={columnGap}
-          onChange={(value) => setAttributes({ columnGap: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Row Gap"}
+          attrNameTemplate="columnGap%s"
+          values={{
+            desktop: columnGap,
+            tablet: columnGapTablet,
+            mobile: columnGapMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
-        <RangeControl
-          label={__("Block Padding")}
-          value={blockPadding}
-          onChange={(value) => setAttributes({ blockPadding: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Block Padding"}
+          attrNameTemplate="blockPadding%s"
+          values={{
+            desktop: blockPadding,
+            tablet: blockPaddingTablet,
+            mobile: blockPaddingMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
-        <RangeControl
-          label={__("Content Padding")}
-          value={contentPadding}
-          onChange={(value) => setAttributes({ contentPadding: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Content Padding"}
+          attrNameTemplate="contentPadding%s"
+          values={{
+            desktop: contentPadding,
+            tablet: contentPaddingTablet,
+            mobile: contentPaddingMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
-        <RangeControl
-          label={__("Testimonial Bottom Margin")}
-          value={descSpace}
-          onChange={(value) => setAttributes({ descSpace: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Testimonial Bottom Margin"}
+          attrNameTemplate="descSpace%s"
+          values={{
+            desktop: descSpace,
+            tablet: descSpaceTablet,
+            mobile: descSpaceMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
-        <RangeControl
-          label={__("Name Bottom Margin")}
-          value={nameSpace}
-          onChange={(value) => setAttributes({ nameSpace: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Name Bottom Margin"}
+          attrNameTemplate="nameSpace%s"
+          values={{
+            desktop: nameSpace,
+            tablet: nameSpaceTablet,
+            mobile: nameSpaceMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
-        <RangeControl
-          label={__("Image Horizontal Padding")}
-          value={imgHrPadding}
-          onChange={(value) => setAttributes({ imgHrPadding: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Image Horizontal Padding"}
+          attrNameTemplate="imgHrPadding%s"
+          values={{
+            desktop: imgHrPadding,
+            tablet: imgHrPaddingTablet,
+            mobile: imgHrPaddingMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
-        <RangeControl
-          label={__("Image Vertical Padding")}
-          value={imgVrPadding}
-          onChange={(value) => setAttributes({ imgVrPadding: value })}
-          min={0}
-          max={50}
-          allowReset
+        <ResponsiveSpacingControl
+          title={"Image Vertical Padding"}
+          attrNameTemplate="imgVrPadding%s"
+          values={{
+            desktop: imgVrPadding,
+            tablet: imgVrPaddingTablet,
+            mobile: imgVrPaddingMobile,
+          }}
+          setAttributes={setAttributes}
+          {...this.props}
         />
       </PanelBody>
     );
@@ -880,12 +921,14 @@ class edit extends Component {
                   {
                     name: "tablet",
                     title: <Dashicon icon="tablet" />,
-                    className: " responsive-tablet-tab  responsive-responsive-tabs",
+                    className:
+                      " responsive-tablet-tab  responsive-responsive-tabs",
                   },
                   {
                     name: "mobile",
                     title: <Dashicon icon="smartphone" />,
-                    className: " responsive-mobile-tab  responsive-responsive-tabs",
+                    className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
                   },
                 ]}
               >
@@ -942,7 +985,9 @@ class edit extends Component {
                     tabout = (
                       <Fragment>
                         <BaseControl>
-                          <p>{__("Alignment", "responsive-block-editor-addons")}</p>
+                          <p>
+                            {__("Alignment", "responsive-block-editor-addons")}
+                          </p>
                           <AlignmentToolbar
                             value={headingAlign}
                             onChange={(value) =>
@@ -967,13 +1012,16 @@ class edit extends Component {
                 onChange={(newCount) => {
                   let cloneTest_block = [...test_block];
                   if (cloneTest_block.length < newCount) {
-                    const incAmount = Math.abs(newCount - cloneTest_block.length);
+                    const incAmount = Math.abs(
+                      newCount - cloneTest_block.length
+                    );
 
                     {
                       times(incAmount, (n) => {
                         cloneTest_block.push({
-                          description:
-                            ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."],
+                          description: [
+                            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+                          ],
                           name: ["John Doe"],
                           company: ["Company" + (cloneTest_block.length + 1)],
                           image: "",
@@ -982,7 +1030,9 @@ class edit extends Component {
                     }
                     setAttributes({ test_block: cloneTest_block });
                   } else {
-                    const incAmount = Math.abs(newCount - cloneTest_block.length);
+                    const incAmount = Math.abs(
+                      newCount - cloneTest_block.length
+                    );
                     let data_new = cloneTest_block;
                     for (var i = 0; i < incAmount; i++) {
                       data_new.pop();
@@ -1008,12 +1058,14 @@ class edit extends Component {
                   {
                     name: "tablet",
                     title: <Dashicon icon="tablet" />,
-                    className: " responsive-tablet-tab  responsive-responsive-tabs",
+                    className:
+                      " responsive-tablet-tab  responsive-responsive-tabs",
                   },
                   {
                     name: "mobile",
                     title: <Dashicon icon="smartphone" />,
-                    className: " responsive-mobile-tab  responsive-responsive-tabs",
+                    className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
                   },
                 ]}
               >
@@ -1097,7 +1149,9 @@ class edit extends Component {
                 <RangeControl
                   label={__("Border Radius")}
                   value={bubbleBorderRadius}
-                  onChange={(value) => setAttributes({ bubbleBorderRadius: value })}
+                  onChange={(value) =>
+                    setAttributes({ bubbleBorderRadius: value })
+                  }
                   min={0}
                   max={50}
                   allowReset
@@ -1116,7 +1170,9 @@ class edit extends Component {
                   <SelectControl
                     label={__("Image Position")}
                     value={imagePosition}
-                    onChange={(value) => setAttributes({ imagePosition: value })}
+                    onChange={(value) =>
+                      setAttributes({ imagePosition: value })
+                    }
                     options={[
                       { value: "top", label: __("Top") },
                       { value: "bottom", label: __("Bottom") },
@@ -1196,9 +1252,9 @@ class edit extends Component {
         <Style>
           {`
              .responsive-block-editor-addons-slick-carousel.responsive-block-editor-addons-block-${this.props.clientId.substr(
-            0,
-            8
-          )} ul.slick-dots li button:before, ul.slick-dots li.slick-active button:before, .slick-arrow span {
+               0,
+               8
+             )} ul.slick-dots li button:before, ul.slick-dots li.slick-active button:before, .slick-arrow span {
              color: ${arrowColor};
             }
             .slick-arrow svg {
@@ -1343,7 +1399,7 @@ class edit extends Component {
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
       "responsive-block-editor-addons-testimonial-slider-style-" +
-      this.props.clientId
+        this.props.clientId
     );
 
     if (null !== element && undefined !== element) {
@@ -1362,7 +1418,7 @@ class edit extends Component {
     $style.setAttribute(
       "id",
       "responsive-block-editor-addons-testimonial-slider-style-" +
-      this.props.clientId
+        this.props.clientId
     );
     document.head.appendChild($style);
   }

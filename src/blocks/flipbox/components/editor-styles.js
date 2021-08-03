@@ -37,14 +37,34 @@ function EditorStyles(props) {
     height,
     topMargin,
     bottomMargin,
-    topPadding,
-    bottomPadding,
-    leftPadding,
-    rightPadding,
-    backtopPadding,
-    backbottomPadding,
-    backleftPadding,
-    backrightPadding,
+    frontTopPadding,
+    frontBottomPadding,
+    frontLeftPadding,
+    frontRightPadding,
+    backTopPadding,
+    backBottomPadding,
+    backLeftPadding,
+    backRightPadding,
+    topMarginMobile,
+    bottomMarginMobile,
+    frontTopPaddingMobile,
+    frontBottomPaddingMobile,
+    frontLeftPaddingMobile,
+    frontRightPaddingMobile,
+    backTopPaddingMobile,
+    backBottomPaddingMobile,
+    backLeftPaddingMobile,
+    backRightPaddingMobile,
+    topMarginTablet,
+    bottomMarginTablet,
+    frontTopPaddingTablet,
+    frontBottomPaddingTablet,
+    frontLeftPaddingTablet,
+    frontRightPaddingTablet,
+    backTopPaddingTablet,
+    backBottomPaddingTablet,
+    backLeftPaddingTablet,
+    backRightPaddingTablet,
     backIconColor,
     backIconSize,
     showFrontIcon,
@@ -234,10 +254,10 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       height: generateCSSUnit(height, "px"),
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "padding-top": generateCSSUnit(frontTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(frontBottomPadding, "px"),
+      "padding-left": generateCSSUnit(frontLeftPadding, "px"),
+      "padding-right": generateCSSUnit(frontRightPadding, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       color: frontTextColor,
@@ -274,10 +294,10 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       height: generateCSSUnit(height, "px"),
-      "padding-top": generateCSSUnit(backtopPadding, "px"),
-      "padding-bottom": generateCSSUnit(backbottomPadding, "px"),
-      "padding-left": generateCSSUnit(backleftPadding, "px"),
-      "padding-right": generateCSSUnit(backrightPadding, "px"),
+      "padding-top": generateCSSUnit(backTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(backBottomPadding, "px"),
+      "padding-left": generateCSSUnit(backLeftPadding, "px"),
+      "padding-right": generateCSSUnit(backRightPadding, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
       color: backTextColor,
@@ -339,14 +359,46 @@ function EditorStyles(props) {
     " .has-medium-gutter.responsive-flipbox-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",
-    }
+    },
+    " ": {
+      "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
+      "margin-top": generateCSSUnit(topMarginMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
+      "padding-top": generateCSSUnit(frontTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(frontBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(frontLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(frontRightPaddingMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
+      "padding-top": generateCSSUnit(backTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(backBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(backLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(backRightPaddingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
     " .has-medium-gutter.responsive-flipbox-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",
-    }
+    },
+    " ": {
+      "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
+      "margin-top": generateCSSUnit(topMarginTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
+      "padding-top": generateCSSUnit(frontTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(frontBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(frontLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(frontRightPaddingTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
+      "padding-top": generateCSSUnit(backTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(backBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(backLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(backRightPaddingTablet, "px"),
+    },
   };
 
   var styling_css = "";

@@ -8,6 +8,8 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -121,14 +123,28 @@ export default class Inspector extends Component {
         priceFontWeight,
         priceLineHeight,
         titleSpace,
+        titleSpaceMobile,
+        titleSpaceTablet,
         columns,
         rowGap,
+        rowGapMobile,
+        rowGapTablet,
         columnGap,
+        columnGapMobile,
+        columnGapTablet,
         contentAlign,
-        topPadding,
-        bottomPadding,
-        leftPadding,
-        rightPadding,
+        blockTopPadding,
+        blockBottomPadding,
+        blockLeftPadding,
+        blockRightPadding,
+        blockTopPaddingMobile,
+        blockBottomPaddingMobile,
+        blockLeftPaddingMobile,
+        blockRightPaddingMobile,
+        blockTopPaddingTablet,
+        blockBottomPaddingTablet,
+        blockLeftPaddingTablet,
+        blockRightPaddingTablet,
         seperatorStyle,
         seperatorWidth,
         seperatorThickness,
@@ -473,92 +489,59 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Row Gap", "responsive-block-editor-addons")}
-                value={rowGap}
-                onChange={(value) =>
-                  setAttributes({
-                    rowGap: value !== undefined ? value : 10,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Row Gap"}
+                attrNameTemplate="rowGap%s"
+                values={{
+                  desktop: rowGap,
+                  tablet: rowGapTablet,
+                  mobile: rowGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Column Gap", "responsive-block-editor-addons")}
-                value={columnGap}
-                onChange={(value) =>
-                  setAttributes({
-                    columnGap: value !== undefined ? value : 10,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Column Gap"}
+                attrNameTemplate="columnGap%s"
+                values={{
+                  desktop: columnGap,
+                  tablet: columnGapTablet,
+                  mobile: columnGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Title Bottom Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={titleSpace}
-                onChange={(value) =>
-                  setAttributes({
-                    titleSpace: value !== undefined ? value : 10,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Top Padding", "responsive-block-editor-addons")}
-                value={topPadding}
-                onChange={(value) =>
-                  setAttributes({
-                    topPadding: value !== undefined ? value : 5,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <RangeControl
-                label={__("Bottom Padding", "responsive-block-editor-addons")}
-                value={bottomPadding}
-                onChange={(value) =>
-                  setAttributes({
-                    bottomPadding: value !== undefined ? value : 5,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <RangeControl
-                label={__("Left Padding", "responsive-block-editor-addons")}
-                value={leftPadding}
-                onChange={(value) =>
-                  setAttributes({
-                    leftPadding: value !== undefined ? value : 5,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <RangeControl
-                label={__("Right Padding", "responsive-block-editor-addons")}
-                value={rightPadding}
-                onChange={(value) =>
-                  setAttributes({
-                    rightPadding: value !== undefined ? value : 5,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
+              <ResponsivePaddingControl
+                attrNameTemplate="block%s"
+                values={{
+                  desktopTop: blockTopPadding,
+                  desktopBottom: blockBottomPadding,
+                  desktopLeft: blockLeftPadding,
+                  desktopRight: blockRightPadding,
+
+                  tabletTop: blockTopPaddingTablet,
+                  tabletBottom: blockBottomPaddingTablet,
+                  tabletLeft: blockLeftPaddingTablet,
+                  tabletRight: blockRightPaddingTablet,
+
+                  mobileTop: blockTopPaddingMobile,
+                  mobileBottom: blockBottomPaddingMobile,
+                  mobileLeft: blockLeftPaddingMobile,
+                  mobileRight: blockRightPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
 

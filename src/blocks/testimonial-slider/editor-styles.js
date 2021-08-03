@@ -47,13 +47,27 @@ function EditorStyles(props) {
     descLineHeightTablet,
     descLineHeightMobile,
     descSpace,
+    descSpaceMobile,
+    descSpaceTablet,
     nameSpace,
+    nameSpaceMobile,
+    nameSpaceTablet,
     imgVrPadding,
+    imgVrPaddingMobile,
+    imgVrPaddingTablet,
     imgHrPadding,
+    imgHrPaddingMobile,
+    imgHrPaddingTablet,
     imageWidth,
     rowGap,
+    rowGapMobile,
+    rowGapTablet,
     columnGap,
+    columnGapMobile,
+    columnGapTablet,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     backgroundColor,
     backgroundImage,
     backgroundImagePosition,
@@ -81,6 +95,8 @@ function EditorStyles(props) {
     arrowDots,
     arrowSize,
     blockPadding,
+    blockPaddingMobile,
+    blockPaddingTablet,
   } = props.attributes;
 
   var img_align = "center";
@@ -238,9 +254,24 @@ function EditorStyles(props) {
   }
 
   var mobile_selectors = {
+    " ": {
+    "padding": generateCSSUnit(blockPaddingMobile, "px"),
+  },
+  " .responsive-block-editor-addons-testimonial__wrap": {
+    "padding-left": generateCSSUnit(columnGapMobile / 2, "px"),
+    "padding-right": generateCSSUnit(columnGapMobile / 2, "px"),
+    "margin-bottom": generateCSSUnit(rowGapMobile, "px"),
+  },
+  " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image-content": {
+    "padding-left": generateCSSUnit(imgHrPaddingMobile, "px"),
+    "padding-right": generateCSSUnit(imgHrPaddingMobile, "px"),
+    "padding-top": generateCSSUnit(imgVrPaddingMobile, "px"),
+    "padding-bottom": generateCSSUnit(imgVrPaddingMobile, "px"),
+  },
     " .responsive-block-editor-addons-tm__desc": {
       "font-size": generateCSSUnit(descFontSizeMobile, descFontSizeType),
       "line-height": generateCSSUnit(descLineHeightMobile, descLineHeightType),
+      "margin-bottom": generateCSSUnit(descSpaceMobile, "px"),
     },
     " .responsive-block-editor-addons-tm__company": {
       "font-size": generateCSSUnit(companyFontSizeMobile, companyFontSizeType),
@@ -252,16 +283,33 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__author-name": {
       "font-size": generateCSSUnit(nameFontSizeMobile, nameFontSizeType),
       "line-height": generateCSSUnit(nameLineHeightMobile, nameLineHeightType),
+      "margin-bottom": generateCSSUnit(nameSpaceMobile, "px"),
     },
     " .responsive-block-editor-addons-tm__content": {
       "text-align": headingAlignMobile,
+      padding: generateCSSUnit(contentPaddingMobile, "px"),
     },
   };
 
   var tablet_selectors = {
+    " ": {
+      "padding": generateCSSUnit(blockPaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial__wrap": {
+      "padding-left": generateCSSUnit(columnGapTablet / 2, "px"),
+      "padding-right": generateCSSUnit(columnGapTablet / 2, "px"),
+      "margin-bottom": generateCSSUnit(rowGapTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image-content": {
+      "padding-left": generateCSSUnit(imgHrPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(imgHrPaddingTablet, "px"),
+      "padding-top": generateCSSUnit(imgVrPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(imgVrPaddingTablet, "px"),
+    },
     " .responsive-block-editor-addons-tm__desc": {
       "font-size": generateCSSUnit(descFontSizeTablet, descFontSizeType),
       "line-height": generateCSSUnit(descLineHeightTablet, descLineHeightType),
+      "margin-bottom": generateCSSUnit(descSpaceTablet, "px"),
     },
     " .responsive-block-editor-addons-tm__company": {
       "font-size": generateCSSUnit(companyFontSizeTablet, companyFontSizeType),
@@ -273,8 +321,10 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__author-name": {
       "font-size": generateCSSUnit(nameFontSizeTablet, nameFontSizeType),
       "line-height": generateCSSUnit(nameLineHeightTablet, nameLineHeightType),
+      "margin-bottom": generateCSSUnit(nameSpaceTablet, "px"),
     },
     " .responsive-block-editor-addons-tm__content": {
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
       "text-align": "center",
     },
     " .responsive-block-editor-addons-tm__content": {
