@@ -917,9 +917,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'            => self::get_css_value( $attr['spacerDividerHeight'], 'px' ),
 				),
 			);
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content' => array(
+					'margin-top'    => self::get_css_value( $attr['spacerHeightMobile'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['spacerHeightMobile'], 'px' ),
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content' => array(
+					'margin-top'    => self::get_css_value( $attr['spacerHeightTablet'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['spacerHeightTablet'], 'px' ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -7201,6 +7211,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			return array(
 				'block_id'               => '',
 				'spacerHeight'           => 30,
+				'spacerHeightMobile'     => 30,
+				'spacerHeightTablet'     => 30,
 				'spacerDivider'          => false,
 				'spacerDividerStyle'     => 'solid',
 				'spacerDividerColor'     => '#000',
