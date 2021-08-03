@@ -11,7 +11,7 @@ import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper"
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ImageSettingsControl from "../../../settings-components/Image Settings";
-
+import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -241,8 +241,8 @@ export default class Inspector extends Component {
         backgroundPosition,
         backgroundRepeat,
         backgroundSize,
-        secondaryBackgroundColor,
-        gradientDegree,
+        backgroundColor2,
+        gradientDirection,
         bgGradient,
         opacity,
         titleFontSize,
@@ -267,6 +267,8 @@ export default class Inspector extends Component {
         titleSpacing,
         nameSpacing,
         imageSpacing,
+        colorLocation1,
+        colorLocation2,
       },
       setAttributes,
     } = this.props;
@@ -398,38 +400,11 @@ export default class Inspector extends Component {
                 }
               />
               {bgGradient && [
-                <PanelColorSettings
-                  title={__(
-                    "Secondary Background Color",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={true}
-                  colorSettings={[
-                    {
-                      label: __(
-                        "Secondary Background Color",
-                        "responsive-block-editor-addons"
-                      ),
-                      value: secondaryBackgroundColor,
-                      onChange: (colorValue) =>
-                        setAttributes({ secondaryBackgroundColor: colorValue }),
-                    },
-                  ]}
-                ></PanelColorSettings>,
-                <RangeControl
-                  label={__(
-                    "Gradient Degree",
-                    "responsive-block-editor-addons"
-                  )}
-                  value={gradientDegree}
-                  onChange={(value) =>
-                    setAttributes({
-                      gradientDegree: value !== undefined ? value : 100,
-                    })
-                  }
-                  min={0}
-                  max={360}
-                />,
+                <GradientBackgroundControl
+                  {...this.props}
+                  showHoverGradient={false}
+                  showColorOne={false}
+                />
               ]}
               <RangeControl
                 label={__(

@@ -6357,8 +6357,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowSpread'          => 0,
 				'boxShadowPosition'        => 'outset',
 				'opacity'                  => 50,
-				'backgroundColor2' => '',
-				'gradientDirection'           => 100,
+				'backgroundColor2'         => '',
+				'gradientDirection'        => 100,
 				'colorLocation1'           => 0,
 				'colorLocation2'           => 100,
 				'bgGradient'               => '',
@@ -6402,16 +6402,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$bgimage                        = $attr['backgroundImage'] ? $attr['backgroundImage'] : '';
 			$tempsecondary_background_color = $attr['bgGradient']
-			? $attr['secondaryBackgroundColor']
+			? $attr['backgroundColor2']
 			: $attr['testimonialBackgroundColor'];
 			$bggradient                     =
 			'linear-gradient(' .
-			$attr['gradientDegree'] .
+			$attr['gradientDirection'] .
 			'deg,' .
 			self::hex_to_rgb( $attr['testimonialBackgroundColor'], $attr['opacity'] ) .
-			',' .
+			$attr['colorLocation1'] .
+			'% ,' .
 			self::hex_to_rgb( $tempsecondary_background_color, $attr['opacity'] ) .
-			'),url(' .
+			$attr['colorLocation2'] .
+			'% ),url(' .
 			$bgimage .
 			')';
 
@@ -6601,7 +6603,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hoverboxShadowSpread'       => 1,
 				'hoverboxShadowPosition'     => 'outset',
 				'opacity'                    => 0.7,
-				'gradientDegree'             => 180,
+				'gradientDirection'             => 180,
 				'bgGradient'                 => false,
 				'backgroundImage'            => '',
 				'backgroundPosition'         => '',
@@ -6609,7 +6611,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundRepeat'           => '',
 				'imageHoverEffect'           => '',
 				'bggradient'                 => '',
-				'secondaryBackgroundColor'   => '',
+				'backgroundColor2'           => '',
+				'colorLocation1'             => 0,
+				'colorLocation2'             => 100,
 			);
 		}
 

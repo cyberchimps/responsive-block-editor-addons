@@ -1938,7 +1938,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'hoverboxShadowSpread'       => 1,
 			'hoverboxShadowPosition'     => 'outset',
 			'opacity'                    => 0.7,
-			'gradientDegree'             => 180,
+			'gradientDirection'             => 180,
 			'bgGradient'                 => false,
 			'backgroundImage'            => '',
 			'backgroundPosition'         => '',
@@ -1946,7 +1946,9 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'backgroundRepeat'           => '',
 			'imageHoverEffect'           => '',
 			'bggradient'                 => '',
-			'secondaryBackgroundColor'   => '',
+			'backgroundColor2'           => '',
+			'colorLocation1'             => 0,
+			'colorLocation2'             => 100,
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_testimonial_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

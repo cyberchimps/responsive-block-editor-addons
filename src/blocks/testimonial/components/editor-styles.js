@@ -65,11 +65,13 @@ function EditorStyles(props) {
     backgroundPosition,
     backgroundRepeat,
     backgroundSize,
-    secondaryBackgroundColor,
-    gradientDegree,
+    backgroundColor2,
+    gradientDirection,
     bgGradient,
     backgroundImage,
     imageShape,
+    colorLocation1,
+    colorLocation2,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -77,16 +79,18 @@ function EditorStyles(props) {
 
   var bgimage = backgroundImage ? backgroundImage : "";
   var tempsecondaryBackgroundColor = bgGradient
-    ? secondaryBackgroundColor
+    ? backgroundColor2
     : testimonialBackgroundColor;
   var bggradient =
     "linear-gradient(" +
-    gradientDegree +
+    gradientDirection +
     "deg," +
     hexToRgba(testimonialBackgroundColor || "#ffffff", opacity || 0) +
-    "," +
+    colorLocation1 +
+    "% ," +
     hexToRgba(tempsecondaryBackgroundColor || "#ffffff", opacity || 0) +
-    "),url(" +
+    colorLocation2 +
+    "% ),url(" +
     bgimage +
     ")";
 
