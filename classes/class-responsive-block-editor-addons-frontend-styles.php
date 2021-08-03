@@ -6084,10 +6084,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$bgopacity = $attr['opacity'] / 100;
 
-			$tempsecondary_background_color = $attr['bgGradient'] ? $attr['secondaryBackgroundColor'] : $attr['backgroundColor'];
+			$tempsecondary_background_color = $attr['bgGradient'] ? $attr['backgroundColor2'] : $attr['backgroundColor'];
 
 			$bggradient = 'linear-gradient(' .
-			$attr['gradientDegree'] .
+			$attr['gradientDirection'] .
 			'deg,' .
 			self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#ffffff', $bgopacity ? $bgopacity : 0 ) .
 			$attr['colorLocation1'] .
@@ -6098,7 +6098,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			if ( $attr['backgroundImage'] ) {
 				$bggradient = 'linear-gradient(' .
-				$attr['gradientDegree'] .
+				$attr['gradientDirection'] .
 				'deg,' .
 				self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#ffffff', $bgopacity ? $bgopacity : 0 ) .
 				$attr['colorLocation1'] .
@@ -6357,8 +6357,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowSpread'          => 0,
 				'boxShadowPosition'        => 'outset',
 				'opacity'                  => 50,
-				'secondaryBackgroundColor' => '',
-				'gradientDegree'           => 100,
+				'backgroundColor2' => '',
+				'gradientDirection'           => 100,
 				'colorLocation1'           => 0,
 				'colorLocation2'           => 100,
 				'bgGradient'               => '',

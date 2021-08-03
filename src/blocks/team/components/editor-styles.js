@@ -48,8 +48,8 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     opacity,
-    secondaryBackgroundColor,
-    gradientDegree,
+    backgroundColor2,
+    gradientDirection,
     bgGradient,
     colorLocation1,
     colorLocation2,
@@ -65,12 +65,12 @@ function EditorStyles(props) {
   let bgopacity = opacity / 100;
 
   var tempsecondaryBackgroundColor = bgGradient
-    ? secondaryBackgroundColor
+    ? backgroundColor2
     : backgroundColor;
 
   var bggradient =
     "linear-gradient(" +
-    gradientDegree +
+    gradientDirection +
     "deg," +
     hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
     colorLocation1 +
@@ -82,7 +82,7 @@ function EditorStyles(props) {
   if (backgroundImage) {
     bggradient =
       "linear-gradient(" +
-      gradientDegree +
+      gradientDirection +
       "deg," +
       hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
       colorLocation1 +

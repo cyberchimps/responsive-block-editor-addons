@@ -6,6 +6,7 @@ import ResponsiveBaseControl from "../../../utils/components/responsive-base-con
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
 
 /**
  * WordPress dependencies
@@ -154,70 +155,9 @@ class Inspector extends Component {
 								)}
 								{"gradient" == backgroundType && (
 									<Fragment>
-										<p className="responsive-setting-label">
-											{__("Color 1", "responsive-block-editor-addons")}
-											<span className="components-base-control__label">
-												<span
-													className="component-color-indicator"
-													style={{ backgroundColor: backgroundColor1 }}
-												></span>
-											</span>
-										</p>
-										<ColorPalette
-											value={backgroundColor1}
-											onChange={(colorValue) =>
-												setAttributes({ backgroundColor1: colorValue })
-											}
-											allowReset
-										/>
-
-										<p className="responsive-setting-label">
-											{__("Color 2", "responsive-block-editor-addons")}
-											<span className="components-base-control__label">
-												<span
-													className="component-color-indicator"
-													style={{ backgroundColor: backgroundColor2 }}
-												></span>
-											</span>
-										</p>
-										<ColorPalette
-											value={backgroundColor2}
-											onChange={(colorValue) =>
-												setAttributes({ backgroundColor2: colorValue })
-											}
-											allowReset
-										/>
-										<RangeControl
-											label={__(
-												"Color Location 1",
-												"responsive-block-editor-addons"
-											)}
-											value={colorLocation1}
-											min={0}
-											max={100}
-											onChange={(value) => setAttributes({ colorLocation1: value })}
-										/>
-										<RangeControl
-											label={__(
-												"Color Location 2",
-												"responsive-block-editor-addons"
-											)}
-											value={colorLocation2}
-											min={0}
-											max={100}
-											onChange={(value) => setAttributes({ colorLocation2: value })}
-										/>
-										<RangeControl
-											label={__(
-												"Gradient Direction",
-												"responsive-block-editor-addons"
-											)}
-											value={gradientDirection}
-											min={0}
-											max={100}
-											onChange={(value) =>
-												setAttributes({ gradientDirection: value })
-											}
+										<GradientBackgroundControl
+											{...this.props}
+											showHoverGradient = {false}
 										/>
 									</Fragment>
 								)}

@@ -191,10 +191,10 @@ const attributes = {
     type: "number",
     default: 50,
   },
-  secondaryBackgroundColor: {
+  backgroundColor2: {
     type: "string",
   },
-  gradientDegree: {
+  gradientDirection: {
     type: "number",
     default: 100,
   },
