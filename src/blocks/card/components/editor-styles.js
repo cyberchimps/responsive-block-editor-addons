@@ -24,8 +24,14 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     titleSpace,
+    titleSpaceMobile,
+    titleSpaceTablet,
     subtitleSpace,
+    subtitleSpaceMobile,
+    subtitleSpaceTablet,
     contentSpace,
+    contentSpaceMobile,
+    contentSpaceTablet,
     buttonColor,
     buttonTextColor,
     opacity,
@@ -42,6 +48,8 @@ function EditorStyles(props) {
     imageheight,
     blockzindex,
     blockmargin,
+    blockmarginMobile,
+    blockmarginTablet,
     icon_color,
     buttonhColor,
     buttonhTextColor,
@@ -73,9 +81,17 @@ function EditorStyles(props) {
     contentFontWeight,
     contentFontSize,
     contenttopSpace,
+    contenttopSpaceMobile,
+    contenttopSpaceTablet,
     blockbotmargin,
+    blockbotmarginMobile,
+    blockbotmarginTablet,
     blockleftmargin,
+    blockleftmarginMobile,
+    blockleftmarginTablet,
     blockrightmargin,
+    blockrightmarginMobile,
+    blockrightmarginTablet,
     bgimagePosition,
     bgimageRepeat,
     bgthumbsize,
@@ -295,9 +311,46 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginMobile, "px"),
+      "margin-top": generateCSSUnit(blockmarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginMobile, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceMobile, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceMobile, "px"),
+    },
 
-  var tablet_selectors = {};
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
+    },
+  };
+
+  var tablet_selectors = {
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginTablet, "px"),
+      "margin-top": generateCSSUnit(blockmarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginTablet, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceTablet, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
+    },};
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-card.block-${block_id}`;

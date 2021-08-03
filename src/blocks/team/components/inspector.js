@@ -8,6 +8,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import ImageSettingsControl from "../../../settings-components/Image Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -141,6 +142,18 @@ export default class Inspector extends Component {
         socialIconSpacing,
         imageMarginTop,
         imageMarginBottom,
+        titleSpacingMobile,
+        designationSpacingMobile,
+        descriptionSpacingMobile,
+        socialIconSpacingMobile,
+        imageMarginTopMobile,
+        imageMarginBottomMobile,
+        titleSpacingTablet,
+        designationSpacingTablet,
+        descriptionSpacingTablet,
+        socialIconSpacingTablet,
+        imageMarginTopTablet,
+        imageMarginBottomTablet,
         titleColor,
         backgroundColor,
         borderColor,
@@ -923,92 +936,71 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__(
-                  "Title Bottom Spacing",
-                  "responsive-block-editor-addons"
-                )}
-                value={titleSpacing}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    titleSpacing: value,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Title Bottom Spacing"}
+                attrNameTemplate="titleSpacing%s"
+                values={{
+                  desktop: titleSpacing,
+                  tablet: titleSpacingTablet,
+                  mobile: titleSpacingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Designation Bottom Spacing",
-                  "responsive-block-editor-addons"
-                )}
-                value={designationSpacing}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    designationSpacing: value,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Designation Bottom Spacing"}
+                attrNameTemplate="designationSpacing%s"
+                values={{
+                  desktop: designationSpacing,
+                  tablet: designationSpacingTablet,
+                  mobile: designationSpacingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Description Bottom Spacing",
-                  "responsive-block-editor-addons"
-                )}
-                value={descriptionSpacing}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    descriptionSpacing: value,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Description Bottom Spacing"}
+                attrNameTemplate="descriptionSpacing%s"
+                values={{
+                  desktop: descriptionSpacing,
+                  tablet: descriptionSpacingTablet,
+                  mobile: descriptionSpacingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Inter Social Icon Spacing",
-                  "responsive-block-editor-addons"
-                )}
-                value={socialIconSpacing}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    socialIconSpacing: value,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Inter Social Icon Spacing"}
+                attrNameTemplate="socialIconSpacing%s"
+                values={{
+                  desktop: socialIconSpacing,
+                  tablet: socialIconSpacingTablet,
+                  mobile: socialIconSpacingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Image Margin Top", "responsive-block-editor-addons")}
-                value={imageMarginTop}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    imageMarginTop: value,
-                  })
-                }
-                min={0}
-                max={200}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Image Margin Top"}
+                attrNameTemplate="imageMarginTop%s"
+                values={{
+                  desktop: imageMarginTop,
+                  tablet: imageMarginTopTablet,
+                  mobile: imageMarginTopMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Image Margin Bottom",
-                  "responsive-block-editor-addons"
-                )}
-                value={imageMarginBottom}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    imageMarginBottom: value,
-                  })
-                }
-                min={0}
-                max={200}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Image Margin Bottom"}
+                attrNameTemplate="imageMarginBottom%s"
+                values={{
+                  desktop: imageMarginBottom,
+                  tablet: imageMarginBottomTablet,
+                  mobile: imageMarginBottomMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
             <PanelColorSettings

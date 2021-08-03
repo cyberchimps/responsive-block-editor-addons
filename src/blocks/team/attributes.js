@@ -110,6 +110,18 @@ const attributes = {
   imageMarginBottom: {
     type: "number",
   },
+  imageMarginTopMobile: {
+    type: "number",
+  },
+  imageMarginBottomMobile: {
+    type: "number",
+  },
+  imageMarginTopTablet: {
+    type: "number",
+  },
+  imageMarginBottomTablet: {
+    type: "number",
+  },
   iconSize: {
     type: "string",
   },
@@ -123,6 +135,30 @@ const attributes = {
     type: "number",
   },
   socialIconSpacing: {
+    type: "number",
+  },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  designationSpacingMobile: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
+    type: "number",
+  },
+  socialIconSpacingMobile: {
+    type: "number",
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  designationSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
+  socialIconSpacingTablet: {
     type: "number",
   },
   imageStyle: {

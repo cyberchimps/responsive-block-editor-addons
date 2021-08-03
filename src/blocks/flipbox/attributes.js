@@ -292,35 +292,115 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  topPadding: {
+  topMarginMobile: {
     type: "number",
     default: 0,
   },
-  bottomPadding: {
+  bottomMarginMobile: {
     type: "number",
     default: 0,
   },
-  leftPadding: {
+  topMarginTablet: {
     type: "number",
     default: 0,
   },
-  rightPadding: {
+  bottomMarginTablet: {
     type: "number",
     default: 0,
   },
-  backtopPadding: {
+  frontTopPadding: {
     type: "number",
     default: 0,
   },
-  backbottomPadding: {
+  frontBottomPadding: {
     type: "number",
     default: 0,
   },
-  backleftPadding: {
+  frontLeftPadding: {
     type: "number",
     default: 0,
   },
-  backrightPadding: {
+  frontRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  backTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  backRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  frontTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  frontBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  frontLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  frontRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backRightPaddingTablet: {
     type: "number",
     default: 0,
   },

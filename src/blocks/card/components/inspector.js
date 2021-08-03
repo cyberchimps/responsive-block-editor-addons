@@ -13,6 +13,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -267,8 +268,14 @@ export default class Inspector extends Component {
         boxShadowSpread,
         boxShadowPosition,
         titleSpace,
+        titleSpaceMobile,
+        titleSpaceTablet,
         subtitleSpace,
+        subtitleSpaceMobile,
+        subtitleSpaceTablet,
         contentSpace,
+        contentSpaceMobile,
+        contentSpaceTablet,
         buttonSpace,
         buttonColor,
         buttonTextColor,
@@ -290,6 +297,8 @@ export default class Inspector extends Component {
         imageheight,
         blockzindex,
         blockmargin,
+        blockmarginMobile,
+        blockmarginTablet,
         icon,
         iconPosition,
         icon_color,
@@ -324,9 +333,17 @@ export default class Inspector extends Component {
         contentFontWeight,
         contentFontSize,
         contenttopSpace,
+        contenttopSpaceMobile,
+        contenttopSpaceTablet,
         blockbotmargin,
+        blockbotmarginMobile,
+        blockbotmarginTablet,
         blockleftmargin,
+        blockleftmarginMobile,
+        blockleftmarginTablet,
         blockrightmargin,
+        blockrightmarginMobile,
+        blockrightmarginTablet,
         bgimageSize,
         bgimagePosition,
         bgimageRepeat,
@@ -1543,120 +1560,93 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__(
-                  "Title Bottom Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={titleSpace}
-                onChange={(value) =>
-                  setAttributes({ titleSpace: value !== undefined ? value : 8 })
-                }
-                min={-100}
-                max={100}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Subtitle Bottom Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={subtitleSpace}
-                onChange={(value) =>
-                  setAttributes({
-                    subtitleSpace: value !== undefined ? value : 16,
-                  })
-                }
-                min={-100}
-                max={100}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Subtitle Bottom Margin"}
+                attrNameTemplate="subtitleSpace%s"
+                values={{
+                  desktop: subtitleSpace,
+                  tablet: subtitleSpaceTablet,
+                  mobile: subtitleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Content Top Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={contenttopSpace}
-                onChange={(value) =>
-                  setAttributes({
-                    contenttopSpace: value !== undefined ? value : 16,
-                  })
-                }
-                min={-100}
-                max={100}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Content Top Margin"}
+                attrNameTemplate="contenttopSpace%s"
+                values={{
+                  desktop: contenttopSpace,
+                  tablet: contenttopSpaceTablet,
+                  mobile: contenttopSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Content Bottom Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={contentSpace}
-                onChange={(value) =>
-                  setAttributes({
-                    contentSpace: value !== undefined ? value : 16,
-                  })
-                }
-                min={-100}
-                max={100}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Content Bottom Margin"}
+                attrNameTemplate="contentSpace%s"
+                values={{
+                  desktop: contentSpace,
+                  tablet: contentSpaceTablet,
+                  mobile: contentSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Block Top Margin", "responsive-block-editor-addons")}
-                value={blockmargin}
-                onChange={(value) =>
-                  setAttributes({
-                    blockmargin: value !== undefined ? value : 2,
-                  })
-                }
-                min={-100}
-                max={200}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Block Top Margin"}
+                attrNameTemplate="blockmargin%s"
+                values={{
+                  desktop: blockmargin,
+                  tablet: blockmarginTablet,
+                  mobile: blockmarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Block Bottom Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={blockbotmargin}
-                onChange={(value) =>
-                  setAttributes({
-                    blockbotmargin: value !== undefined ? value : 2,
-                  })
-                }
-                min={-100}
-                max={200}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Block Bottom Margin"}
+                attrNameTemplate="blockbotmargin%s"
+                values={{
+                  desktop: blockbotmargin,
+                  tablet: blockbotmarginTablet,
+                  mobile: blockbotmarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Block Left Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={blockleftmargin}
-                onChange={(value) =>
-                  setAttributes({
-                    blockleftmargin: value !== undefined ? value : 0,
-                  })
-                }
-                min={-100}
-                max={200}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Block Left Margin"}
+                attrNameTemplate="blockleftmargin%s"
+                values={{
+                  desktop: blockleftmargin,
+                  tablet: blockleftmarginTablet,
+                  mobile: blockleftmarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Block Right Margin",
-                  "responsive-block-editor-addons"
-                )}
-                value={blockrightmargin}
-                onChange={(value) =>
-                  setAttributes({
-                    blockrightmargin: value !== undefined ? value : 0,
-                  })
-                }
-                min={-100}
-                max={200}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Block Right Margin"}
+                attrNameTemplate="blockrightmargin%s"
+                values={{
+                  desktop: blockrightmargin,
+                  tablet: blockrightmarginTablet,
+                  mobile: blockrightmarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
 
