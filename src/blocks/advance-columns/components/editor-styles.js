@@ -161,11 +161,11 @@ function EditorStyles(props) {
       "background-image":
         backgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              backgroundColor1,
-              backgroundColor2,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
+            `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
+            `${hexToRgba(backgroundColor2 || "#ffffff", imgopacity || 0)}`,
+            gradientDirection,
+            colorLocation1,
+            colorLocation2
             )
           : undefined,
       "box-shadow":

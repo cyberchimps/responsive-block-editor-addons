@@ -208,7 +208,7 @@ const attributes = {
     type: "number",
     default: 0.7,
   },
-  gradientDegree: {
+  gradientDirection: {
     type: "number",
     default: 180,
   },
@@ -234,8 +234,16 @@ const attributes = {
   bggradient: {
     type: "string",
   },
-  secondaryBackgroundColor: {
+  backgroundColor2: {
     type: "string",
+  },
+  colorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  colorLocation2: {
+    type: "number",
+    default: 100,
   },
 };
 

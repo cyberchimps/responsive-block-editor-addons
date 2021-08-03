@@ -8,6 +8,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import ImageSettingsControl from "../../../settings-components/Image Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
@@ -168,8 +169,8 @@ export default class Inspector extends Component {
         boxShadowSpread,
         boxShadowPosition,
         opacity,
-        secondaryBackgroundColor,
-        gradientDegree,
+        backgroundColor2,
+        gradientDirection,
         colorLocation1,
         colorLocation2,
         bgGradient,
@@ -211,8 +212,8 @@ export default class Inspector extends Component {
       setAttributes({ backgroundColor: value });
     const onChangeBorderColor = (value) =>
       setAttributes({ borderColor: value });
-    const onChangeSecondaryBackgroundColor = (value) =>
-      setAttributes({ secondaryBackgroundColor: value });
+    const onChangebackgroundColor2 = (value) =>
+      setAttributes({ backgroundColor2: value });
 
     const imageShapeOptions = [
       {
@@ -409,85 +410,12 @@ export default class Inspector extends Component {
                 />
                 {bgGradient && (
                   <Fragment>
-                    <PanelColorSettings
-                      title={__(
-                        "Primary Color",
-                        "responsive-block-editor-addons"
-                      )}
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          value: backgroundColor,
-                          onChange: onChangeBackgroundColor,
-                          label: __(
-                            "Primary Color",
-                            "responsive-block-editor-addons"
-                          ),
-                        },
-                      ]}
-                    ></PanelColorSettings>
-                    <PanelColorSettings
-                      title={__(
-                        "Secondary Color",
-                        "responsive-block-editor-addons"
-                      )}
-                      initialOpen={false}
-                      colorSettings={[
-                        {
-                          label: __(
-                            "Secondary Color",
-                            "responsive-block-editor-addons"
-                          ),
-                          value: secondaryBackgroundColor,
-                          onChange: onChangeSecondaryBackgroundColor,
-                        },
-                      ]}
-                    ></PanelColorSettings>
-                    <RangeControl
-                      label={__(
-                        "Color Location 1",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={colorLocation1}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({
-                          colorLocation1: value !== undefined ? value : 0,
-                        })
-                      }
-                    />
-                    <RangeControl
-                      label={__(
-                        "Color Location 2",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={colorLocation2}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({
-                          colorLocation2: value !== undefined ? value : 100,
-                        })
-                      }
-                    />
-                  </Fragment>
-                )}
-                {bgGradient && (
-                  <RangeControl
-                    label={__(
-                      "Gradient Degree",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={gradientDegree}
-                    onChange={(value) =>
-                      setAttributes({
-                        gradientDegree: value !== undefined ? value : 100,
-                      })
-                    }
-                    min={0}
-                    max={360}
-                  />
+                     <GradientBackgroundControl
+                       {...this.props}
+                       showHoverGradient={false}
+                       showColorOne={false}
+                     />
+                   </Fragment>
                 )}
                 <ImageBackgroundControl
                   {...this.props}
