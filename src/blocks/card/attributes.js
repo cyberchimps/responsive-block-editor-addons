@@ -40,7 +40,7 @@ const attributes = {
   textColor: {
     type: "string",
   },
-  itemBackgroundColor: {
+  backgroundColor: {
     type: "string",
   },
   buttonColor: {

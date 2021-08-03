@@ -2205,7 +2205,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = self::hex_to_rgb( $attr['ctaBackgroundColor'], $imgopacity );
+				$updated_background_color = self::hex_to_rgb( $attr['backgroundColor'], $imgopacity );
 			} else {
 				$updated_background_color = '#ffffff';
 			}
@@ -2428,7 +2428,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTextFontSizeTablet'    => '16',
 				'ctaText'                  => '',
 				'ctaWidth'                 => '',
-				'ctaBackgroundColor'       => '#f2f2f2',
+				'backgroundColor'          => '#f2f2f2',
 				'ctaTextColor'             => '',
 				'backgroundImage'          => '',
 				'imgID'                    => '',
@@ -2541,7 +2541,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = self::hex_to_rgb( $attr['itemBackgroundColor'] ? $attr['itemBackgroundColor'] : '#fff', $imgopacity );
+				$updated_background_color = self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity );
 			} else {
 				$updated_background_color = '#fff';
 			}
@@ -2727,7 +2727,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'stack'                   => 'mobile',
 				'contentAlign'            => 'center',
 				'textColor'               => '',
-				'itemBackgroundColor'     => '',
+				'backgroundColor'         => '',
 				'buttonColor'             => '',
 				'buttonTextColor'         => '#fff',
 				'boxShadowColor'          => '',
@@ -4327,7 +4327,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$selectors = array(
 				' '                                        => array(
 					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-					'background-color' => self::hex_to_rgb( $attr['boxBackgroundColor'], $newopacity ),
+					'background-color' => self::hex_to_rgb( $attr['backgroundColor'], $newopacity ),
 					'padding'          => self::get_css_value( $attr['contentPadding'], 'px' ),
 					'border-color'     => $attr['blockBorderColor'],
 					'border-style'     => $attr['blockBorderStyle'],
@@ -4705,7 +4705,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageBoxShadowSpread'     => '',
 				'imageBoxShadowPosition'   => 'outset',
 				'counterId'                => 1,
-				'boxBackgroundColor'       => '#ffffff',
+				'backgroundColor'          => '#ffffff',
 				'contentPadding'           => 0,
 				'opacity'                  => 100,
 				'imageopacity'             => 100,

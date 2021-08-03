@@ -97,7 +97,7 @@ function EditorStyles(props) {
     imageBoxShadowPosition,
     alignment,
     imageopacity,
-    boxBackgroundColor,
+    backgroundColor,
     contentPadding,
     imgiconPosition,
     ctaTextFontFamily,
@@ -175,7 +175,7 @@ function EditorStyles(props) {
     " ": {
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "background-color": `${hexToRgba(
-        boxBackgroundColor || "#ffffff",
+        backgroundColor || "#ffffff",
         newopacity || 0
       )}`,
       padding: generateCSSUnit(contentPadding, "px"),
