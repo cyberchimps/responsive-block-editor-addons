@@ -102,6 +102,12 @@ function EditorStyles(props) {
     backgroundImagePosition,
     backgroundImageSize,
     backgroundImageRepeat,
+	headingFontSizeMobile,
+	headingFontSizeTablet,
+	subFontSizeMobile,
+	subFontSizeTablet,
+	contentFontSizeMobile,
+	contentFontSizeTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -325,11 +331,16 @@ function EditorStyles(props) {
 
     " .wp-block-responsive-block-editor-addons-card-item__title": {
       "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(headingFontSizeMobile, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
       "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(subFontSizeMobile, "px"),
     },
+	" .wp-block-responsive-block-editor-addons-card-item__content": {
+		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+	}
   };
 
   var tablet_selectors = {
@@ -346,11 +357,17 @@ function EditorStyles(props) {
 
     " .wp-block-responsive-block-editor-addons-card-item__title": {
       "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(headingFontSizeTablet, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
       "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
-    },};
+	  "font-size": generateCSSUnit(subFontSizeTablet, "px"),
+    },
+	" .wp-block-responsive-block-editor-addons-card-item__content": {
+		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+	}
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-card.block-${block_id}`;

@@ -64,6 +64,8 @@ function EditorStyles(props) {
     blockBorderColor,
     blockBorderStyle,
     blockBorderWidth,
+	descriptionFontSizeMobile,
+	descriptionFontSizeTablet,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -240,15 +242,18 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
+	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+		"font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
-    " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
-      "font-size": generateCSSUnit(titleFontSize, "px") + "!important",
-    },
+	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+		"font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+	},
   };
 
   var externalStyles = {

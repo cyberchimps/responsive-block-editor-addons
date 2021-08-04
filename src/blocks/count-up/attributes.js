@@ -69,10 +69,6 @@ const attributes = {
     type: "number",
     default: 1.8,
   },
-  titleFontWeight: {
-    type: "string",
-    default: "900",
-  },
   headingFontSize: {
     type: "number",
     default: 16,
@@ -208,5 +204,9 @@ const attributes = {
   descriptionSpacing: {
     type: "number",
   },
+  headingFontWeight: {
+	type: "string",
+	default: "900",
+  }
 };
 export default attributes;

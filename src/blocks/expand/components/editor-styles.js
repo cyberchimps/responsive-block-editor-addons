@@ -33,6 +33,12 @@ function EditorStyles(props) {
     textColor,
     linkColor,
     titleColor,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	textFontSizeMobile,
+	textFontSizeTablet,
+	linkFontSizeMobile,
+	linkFontSizeTablet,
   } = props.attributes;
 
   var selectors = {
@@ -89,36 +95,46 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " .responsive-block-editor-addons-expand-title": {
       "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
     " .responsive-block-editor-addons-expand-less-text": {
       "margin-bottom": generateCSSUnit(textSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(textFontSizeMobile, "px"),
     },
     " .responsive-block-editor-addons-expand-more-toggle-text": {
       "margin-bottom": generateCSSUnit(linkSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(linkFontSizeMobile, "px"),
     },
     " .responsive-block-editor-addons-expand-more-text": {
       "margin-bottom": generateCSSUnit(textSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(textFontSizeMobile, "px"),
     },
     " .responsive-block-editor-addons-expand-less-toggle-text": {
       "margin-bottom": generateCSSUnit(linkSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(linkFontSizeMobile, "px"),
     },
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-expand-title": {
       "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-expand-less-text": {
       "margin-bottom": generateCSSUnit(textSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(textFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-expand-more-toggle-text": {
       "margin-bottom": generateCSSUnit(linkSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(linkFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-expand-more-text": {
       "margin-bottom": generateCSSUnit(textSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(textFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-expand-less-toggle-text": {
       "margin-bottom": generateCSSUnit(linkSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(linkFontSizeTablet, "px"),
     },
   };
 

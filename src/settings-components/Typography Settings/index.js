@@ -15,6 +15,7 @@ const { SelectControl, RangeControl, PanelBody, Dashicon, TabPanel } = wp.compon
 
 // Extend component
 const { Component, Fragment } = wp.element;
+import "./editor.scss";
 
 const TypographyHelperControl = props => {
     const getAttrName = attrName => camelCase(sprintf(props.attrNameTemplate, attrName))

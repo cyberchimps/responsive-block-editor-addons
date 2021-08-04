@@ -287,6 +287,18 @@ const attributes = {
     type: "number",
     default: 100,
   },
+  titleFontSizeTablet: {
+    type: "number",
+  },
+  titleFontSizeMobile: {
+    type: "number",
+  },
+  contentFontSizeTablet: {
+    type: "number",
+  },
+  contentFontSizeMobile: {
+    type: "number",
+  },
 };
 
 export default attributes;

@@ -432,5 +432,23 @@ const attributes = {
     type: "string",
     default: "cover",
   },
+  headingFontSizeMobile: {
+	type: "number",
+  },
+  headingFontSizeTablet: {
+	type: "number",
+  },
+  subFontSizeMobile: {
+	type: "number",
+  },
+  subFontSizeTablet: {
+	type: "number",
+  },
+  contentFontSizeMobile: {
+	  type: "number",
+  },
+  contentFontSizeTablet: {
+	  type: "number",
+  },
 };
 export default attributes;

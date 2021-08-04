@@ -3,6 +3,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 /**
  * Inspector Controls
@@ -26,38 +27,44 @@ export default class Inspector extends Component {
     super(...arguments);
   }
 
-  render() {
-    // Setup the attributes
-    const {
-      attributes: {
-        showTitle,
-        linkSpace,
-        textSpace,
-        titleSpace,
-        linkSpaceMobile,
-        textSpaceMobile,
-        titleSpaceMobile,
-        linkSpaceTablet,
-        textSpaceTablet,
-        titleSpaceTablet,
-        titleFontFamily,
-        titleFontSize,
-        titleFontWeight,
-        titleLineHeight,
-        textFontFamily,
-        textFontSize,
-        textFontWeight,
-        textLineHeight,
-        linkFontFamily,
-        linkFontSize,
-        linkFontWeight,
-        linkLineHeight,
-        textColor,
-        linkColor,
-        titleColor,
-      },
-      setAttributes,
-    } = this.props;
+	render() {
+		// Setup the attributes
+		const {
+			attributes: {
+				showTitle,
+				linkSpace,
+				textSpace,
+				titleSpace,
+				linkSpaceMobile,
+				textSpaceMobile,
+				titleSpaceMobile,
+				linkSpaceTablet,
+				textSpaceTablet,
+				titleSpaceTablet,
+				titleFontFamily,
+				titleFontSize,
+				titleFontWeight,
+				titleLineHeight,
+				textFontFamily,
+				textFontSize,
+				textFontWeight,
+				textLineHeight,
+				linkFontFamily,
+				linkFontSize,
+				linkFontWeight,
+				linkLineHeight,
+				textColor,
+				linkColor,
+				titleColor,
+				titleFontSizeMobile,
+				titleFontSizeTablet,
+				textFontSizeMobile,
+				textFontSizeTablet,
+				linkFontSizeMobile,
+				linkFontSizeTablet,
+			},
+			setAttributes,
+		} = this.props;
 
     // Font Weight Options
     const fontWeightOptions = [
@@ -122,167 +129,61 @@ export default class Inspector extends Component {
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
-            <PanelBody
-              title={__("Typography", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              {showTitle && (
-                <PanelBody
-                  title={__(
-                    "Title Typography",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={false}
-                >
-                  <SelectControl
-                    label={__("Font Family", "responsive-block-editor-addons")}
-                    options={fontOptions}
-                    value={titleFontFamily}
-                    onChange={(value) => {
-                      setAttributes({
-                        titleFontFamily: value,
-                      }),
-                        loadGoogleFont(value);
-                    }}
-                  />
-                  <RangeControl
-                    label={__("Font Size", "responsive-block-editor-addons")}
-                    value={titleFontSize}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        titleFontSize: value,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    step={1}
-                  />
-                  <SelectControl
-                    label={__("Font Weight", "responsive-block-editor-addons")}
-                    options={fontWeightOptions}
-                    value={titleFontWeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        titleFontWeight: value,
-                      })
-                    }
-                  />
-
-                  <RangeControl
-                    label={__("Line Height", "responsive-block-editor-addons")}
-                    value={titleLineHeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        titleLineHeight: value,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    step={0.01}
-                  />
-                </PanelBody>
-              )}
-              <PanelBody
-                title={__("Text Typography", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={textFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      textFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <RangeControl
-                  label={__("Font Size", "responsive-block-editor-addons")}
-                  value={textFontSize}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      textFontSize: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                />
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={textFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      textFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={textLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      textLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={0.01}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Link Typography", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={linkFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      linkFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <RangeControl
-                  label={__("Font Size", "responsive-block-editor-addons")}
-                  value={linkFontSize}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      linkFontSize: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                />
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={linkFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      linkFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={linkLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      linkLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={0.01}
-                />
-              </PanelBody>
-            </PanelBody>
+		  	<PanelBody
+				title={__("Typography", "responsive-block-editor-addons")}
+				initialOpen={false}
+			>
+				{showTitle && (
+					<TypographyHelperControl
+						title={__("Title Typography", "responsive-block-editor-addons")} 
+						attrNameTemplate="title%s"
+						values = {{
+						family: titleFontFamily, 
+						size: titleFontSize, 
+						sizeMobile: titleFontSizeMobile, 
+						sizeTablet: titleFontSizeTablet, 
+						weight: titleFontWeight, 
+						height: titleLineHeight,
+						}}
+						showLetterSpacing = { false }
+						showTextTransform = { false }
+						setAttributes={ setAttributes }
+						{...this.props}            
+					/>
+				)}
+				<TypographyHelperControl
+					title={__("Text Typography", "responsive-block-editor-addons")} 
+					attrNameTemplate="text%s"
+					values = {{
+						family: textFontFamily, 
+						size: textFontSize, 
+						sizeMobile: textFontSizeMobile, 
+						sizeTablet: textFontSizeTablet, 
+						weight: textFontWeight, 
+						height: textLineHeight,
+					}}
+					showLetterSpacing = { false }
+					showTextTransform = { false }
+					setAttributes={ setAttributes }
+					{...this.props}            
+				/>
+				<TypographyHelperControl
+					title={__("Link Typography", "responsive-block-editor-addons")} 
+					attrNameTemplate="link%s"
+					values = {{
+						family: linkFontFamily, 
+						size: linkFontSize, 
+						sizeMobile: linkFontSizeMobile, 
+						sizeTablet: linkFontSizeTablet, 
+						weight: linkFontWeight, 
+						height: linkLineHeight,
+					}}
+					showLetterSpacing = { false }
+					showTextTransform = { false }
+					setAttributes={ setAttributes }
+					{...this.props}            
+				/>
+			</PanelBody>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}

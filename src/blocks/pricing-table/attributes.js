@@ -477,5 +477,47 @@ const attributes = {
   imageShape: {
     type: "string",
   },
+  titleFontSizeMobile: {
+	type: "number",
+  },
+  titleFontSizeTablet: {
+	type: "number",
+  },
+  prefixFontSizeMobile: {
+	type: "number",
+  },
+  prefixFontSizeTablet: {
+	type: "number",
+  },
+  amountFontSizeMobile: {
+	type: "number",
+  },
+  amountFontSizeTablet: {
+	type: "number",
+  },
+  suffixFontSizeMobile: {
+	type: "number",
+  },
+  suffixFontSizeTablet: {
+	type: "number",
+  },
+  subpriceFontSizeMobile: {
+	type: "number",
+  },
+  subpriceFontSizeTablet: {
+	type: "number",
+  },
+  featuresFontSizeMobile: {
+	type: "number",
+  },
+  featuresFontSizeTablet: {
+	type: "number",
+  },
+  ctaFontSizeMobile: {
+	type: "number",
+  },
+  ctaFontSizeTablet: {
+	type: "number",
+  },
 };
 export default attributes;

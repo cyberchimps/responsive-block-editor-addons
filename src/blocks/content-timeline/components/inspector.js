@@ -13,6 +13,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -120,6 +121,12 @@ export default class Inspector extends Component {
         headingBottomMarginTablet,
         stack,
         arrowlinAlignment,
+		dateFontSizeMobile,
+		dateFontSizeTablet,
+		headingFontSizeMobile,
+		headingFontSizeTablet,
+		contentFontSizeMobile,
+		contentFontSizeTablet,
       },
       setAttributes,
     } = this.props;
@@ -638,168 +645,54 @@ export default class Inspector extends Component {
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Date Typography", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={dateFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      dateFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <RangeControl
-                  label={__("Font Size", "responsive-block-editor-addons")}
-                  value={dateFontSize}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      dateFontSize: value !== undefined ? value : 16,
-                    })
-                  }
-                  min={0}
-                  max={50}
-                  step={1}
-                  allowReset
-                />
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={dateFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      dateFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={dateLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      dateLineHeight: value !== undefined ? value : 1,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                  allowReset
-                />
-              </PanelBody>
-              <PanelBody
-                title={__(
-                  "Heading Typography",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={headingFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      headingFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <RangeControl
-                  label={__("Font Size", "responsive-block-editor-addons")}
-                  value={headingFontSize}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingFontSize: value !== undefined ? value : 20,
-                    })
-                  }
-                  min={0}
-                  max={50}
-                  step={1}
-                  allowReset
-                />
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={headingFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={headingLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingLineHeight: value !== undefined ? value : 1,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                  allowReset
-                />
-              </PanelBody>
-              <PanelBody
-                title={__(
-                  "Content Typography",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={contentFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      contentFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <RangeControl
-                  label={__("Font Size", "responsive-block-editor-addons")}
-                  value={contentFontSize}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      contentFontSize: value !== undefined ? value : 16,
-                    })
-                  }
-                  min={0}
-                  max={50}
-                  step={1}
-                  allowReset
-                />
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={contentFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      contentFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={contentLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      contentLineHeight: value !== undefined ? value : 2,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                  allowReset
-                />
-              </PanelBody>
+				<TypographyHelperControl
+					title={__("Date Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="date%s"
+					values={{
+					family: dateFontFamily,
+					size: dateFontSize,
+					sizeMobile: dateFontSizeMobile,
+					sizeTablet: dateFontSizeTablet,
+					weight: dateFontWeight,
+					height: dateLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__("Heading Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="heading%s"
+					values={{
+					family: headingFontFamily,
+					size: headingFontSize,
+					sizeMobile: headingFontSizeMobile,
+					sizeTablet: headingFontSizeTablet,
+					weight: headingFontWeight,
+					height: headingLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__("Content Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="content%s"
+					values={{
+					family: contentFontFamily,
+					size: contentFontSize,
+					sizeMobile: contentFontSizeMobile,
+					sizeTablet: contentFontSizeTablet,
+					weight: contentFontWeight,
+					height: contentLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
             </PanelBody>
             <PanelColorSettings
               title={__("Color Settings", "responsive-block-editor-addons")}
