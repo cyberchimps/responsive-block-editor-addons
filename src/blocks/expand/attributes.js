@@ -51,6 +51,30 @@ const attributes = {
     type: "number",
     default: 18,
   },
+  titleSpaceMobile: {
+    type: "number",
+    default: 28,
+  },
+  textSpaceMobile: {
+    type: "number",
+    default: 20,
+  },
+  linkSpaceMobile: {
+    type: "number",
+    default: 18,
+  },
+  titleSpaceTablet: {
+    type: "number",
+    default: 28,
+  },
+  textSpaceTablet: {
+    type: "number",
+    default: 20,
+  },
+  linkSpaceTablet: {
+    type: "number",
+    default: 18,
+  },
   titleFontFamily: {
     type: "string",
   },

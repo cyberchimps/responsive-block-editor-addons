@@ -114,7 +114,23 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  resheadSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  resheadSpaceTablet: {
+    type: "number",
+    default: 10,
+  },
   ressubHeadSpace: {
+    type: "number",
+    default: 10,
+  },
+  ressubHeadSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  ressubHeadSpaceTablet: {
     type: "number",
     default: 10,
   },
@@ -224,6 +240,14 @@ const attributes = {
     default: 0,
   },
   resprefixSpace: {
+    type: "number",
+    default: 5,
+  },
+  resprefixSpaceMobile: {
+    type: "number",
+    default: 5,
+  },
+  resprefixSpaceTablet: {
     type: "number",
     default: 5,
   },
@@ -384,6 +408,14 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  contentPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  contentPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
   opacity: {
     type: "number",
     default: 100,
@@ -436,6 +468,14 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  sepSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  sepSpaceTablet: {
+    type: "number",
+    default: 10,
+  },
   icon_color: {
     type: "string",
     default: "#3a3a3a",
@@ -479,6 +519,14 @@ const attributes = {
     type: "number",
   },
   ctaBottomMargin: {
+    type: "number",
+    default: 10,
+  },
+  ctaBottomMarginMobile: {
+    type: "number",
+    default: 10,
+  },
+  ctaBottomMarginTablet: {
     type: "number",
     default: 10,
   },
