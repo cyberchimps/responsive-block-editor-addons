@@ -113,11 +113,11 @@ const attributes = {
     type: "number",
     default: 20,
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 0,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
     default: 12,
   },
@@ -393,7 +393,7 @@ const attributes = {
     type: "string",
     default: "cover",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
@@ -405,7 +405,7 @@ const attributes = {
     type: "string",
     default: "left",
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
   backgroundImageOne: {

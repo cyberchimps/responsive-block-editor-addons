@@ -5,8 +5,11 @@ import BoxShadowControl from "../../../../utils/components/box-shadow";
 import BoxShadowControlHelper from "../../../../utils/components/box-shadow-helper";
 import InspectorTab from "../../../../components/InspectorTab";
 import InspectorTabs from "../../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../../settings-components/BlockBorderSettings";
 import ColorBackgroundControl from "../../../../settings-components/Block Background Settings/Color Background Settings";
 import ImageBackgroundControl from "../../../../settings-components/Block Background Settings/Image Background Settings";
+import GradientBackgroundControl from "../../../../settings-components/Block Background Settings/Gradient Background Settings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -186,207 +189,16 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <ColorBackgroundControl 
+                  <ColorBackgroundControl
                     {...this.props}
                   />
                 </Fragment>
               )}
               {"gradient" == backgroundType && (
-                <TabPanel
-                  className="responsive-block-editor-addons-inspect-tabs responsive-block-editor-addons-inspect-tabs-col-2"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "normal",
-                      title: __("Normal"),
-                      className: "responsive-block-editor-addons-normal-tab",
-                    },
-                    {
-                      name: "hover",
-                      title: __("Hover"),
-                      className: "responsive-block-editor-addons-hover-tab",
-                    },
-                  ]}
-                >
-                  {(tabName) => {
-                    let btn_color_tab;
-                    if ("normal" === tabName.name) {
-                      btn_color_tab = (
-                        <Fragment>
-                          <p className="responsive-setting-label">
-                            {__("Color 1", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{ backgroundColor: backgroundColor1 }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={backgroundColor1}
-                            onChange={(colorValue) =>
-                              setAttributes({ backgroundColor1: colorValue })
-                            }
-                            allowReset
-                          />
-
-                          <p className="responsive-setting-label">
-                            {__("Color 2", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{ backgroundColor: backgroundColor2 }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={backgroundColor2}
-                            onChange={(colorValue) =>
-                              setAttributes({ backgroundColor2: colorValue })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 1",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={colorLocation1}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({
-                                colorLocation1: value !== undefined ? value : 0,
-                              })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 2",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={colorLocation2}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({
-                                colorLocation2:
-                                  value !== undefined ? value : 100,
-                              })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Gradient Direction",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={gradientDirection}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({
-                                gradientDirection:
-                                  value !== undefined ? value : 90,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      btn_color_tab = (
-                        <Fragment>
-                          <p className="responsive-setting-label">
-                            {__("Color 1", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: hoverbackgroundColor1,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={hoverbackgroundColor1}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                hoverbackgroundColor1: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-
-                          <p className="responsive-setting-label">
-                            {__("Color 2", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: hoverbackgroundColor2,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={hoverbackgroundColor2}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                hoverbackgroundColor2: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 1",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={hovercolorLocation1}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({
-                                hovercolorLocation1:
-                                  value !== undefined ? value : 0,
-                              })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 2",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={hovercolorLocation2}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({
-                                hovercolorLocation2:
-                                  value !== undefined ? value : 100,
-                              })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Gradient Direction",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={hovergradientDirection}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({
-                                hovergradientDirection:
-                                  value !== undefined ? value : 90,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-                    return <div>{btn_color_tab}</div>;
-                  }}
-                </TabPanel>
+                <GradientBackgroundControl
+                  {...this.props}
+                  showHoverGradient = {true}
+                />
               )}
               {"image" == backgroundType && (
                 <ImageBackgroundControl
@@ -1130,68 +942,13 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Border Style")}
-                value={blockBorderStyle}
-                onChange={(value) => setAttributes({ blockBorderStyle: value })}
-                options={[
-                  { value: "none", label: __("None") },
-                  { value: "solid", label: __("Solid") },
-                  { value: "dotted", label: __("Dotted") },
-                  { value: "dashed", label: __("Dashed") },
-                  { value: "double", label: __("Double") },
-                  { value: "groove", label: __("Groove") },
-                  { value: "inset", label: __("Inset") },
-                  { value: "outset", label: __("Outset") },
-                  { value: "ridge", label: __("Ridge") },
-                ]}
-              />
-              {"none" != blockBorderStyle && (
-                <RangeControl
-                  label={__("Border Width")}
-                  value={blockBorderWidth}
-                  onChange={(value) =>
-                    setAttributes({
-                      blockBorderWidth: value !== undefined ? value : 1,
-                    })
-                  }
-                  min={0}
-                  max={50}
-                  allowReset
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
+                    setAttributes={ setAttributes }
+                    {...this.props}
                 />
-              )}
-              <RangeControl
-                label={__("Border Radius")}
-                value={blockBorderRadius}
-                onChange={(value) =>
-                  setAttributes({
-                    blockBorderRadius: value !== undefined ? value : "",
-                  })
-                }
-                min={0}
-                max={1000}
-                allowReset
-              />
-              {"none" != blockBorderStyle && (
-                <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Border Color")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: blockBorderColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={blockBorderColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ blockBorderColor: colorValue })
-                    }
-                    allowReset
-                  />
-                </Fragment>
-              )}
+
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}

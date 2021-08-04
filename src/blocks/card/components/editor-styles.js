@@ -12,11 +12,11 @@ function EditorStyles(props) {
     block_id,
     contentAlignment,
     textColor,
-    backgroundColor,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    itemBackgroundColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -158,10 +158,10 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-card-item": {
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       color: textColor,
       "background-color":
         backgroundType == "color"
@@ -215,7 +215,7 @@ function EditorStyles(props) {
         "background-image": `url(${backgroundImageOne})`,
         "display": backgroundImageOne? 'block' : 'none',
     },
-    
+
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-0": {
         "display": backgroundImageOne? 'none' : 'flex',
     },

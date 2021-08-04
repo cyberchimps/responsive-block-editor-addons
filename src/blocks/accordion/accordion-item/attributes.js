@@ -31,19 +31,19 @@ const attributes = {
     selector: "span,p,h1,h2,h3,h4,h5,h6",
     default: "span",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "solid",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 1,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
     default: 2,
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
     default: 'black',
   },

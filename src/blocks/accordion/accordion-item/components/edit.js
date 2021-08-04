@@ -8,6 +8,8 @@ import InspectorTabs from "../../../../components/InspectorTabs";
 import renderSVG from "../../../../renderIcon";
 import BoxShadowControl from "../../../../utils/components/box-shadow";
 import EditorStyles from "./editor-styles";
+import BlockBorderHelperControl from "../../../../settings-components/BlockBorderSettings";
+
 
 const { __ } = wp.i18n;
 
@@ -89,10 +91,10 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
       iconActive,
       layout,
       headingTag,
-      borderStyle,
-      borderWidth,
-      borderRadius,
-      borderColor,
+      blockBorderStyle,
+      blockBorderWidth,
+      blockBorderRadius,
+      blockBorderColor,
       boxShadowColor,
       boxShadowHOffset,
       boxShadowVOffset,
@@ -138,56 +140,13 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
                 </p>
                 <hr className="responsive-block-editor-addons-editor__separator" />
                 <h2>{__("Border")}</h2>
-                <SelectControl
-                  label={__("Style")}
-                  value={borderStyle}
-                  options={[
-                    { value: "none", label: __("None") },
-                    { value: "solid", label: __("Solid") },
-                    { value: "dotted", label: __("Dotted") },
-                    { value: "dashed", label: __("Dashed") },
-                    { value: "double", label: __("Double") },
-                  ]}
-                  onChange={(value) => {
-                    setAttributes({ borderStyle: value });
-                  }}
-                />
-                {"none" !== borderStyle && (
-                  <RangeControl
-                    label={__("Thickness (px)")}
-                    value={borderWidth}
-                    onChange={(value) => {
-                      setAttributes({ borderWidth: value });
-                    }}
-                    min={0}
-                    max={20}
+                  <BlockBorderHelperControl
+                      attrNameTemplate="block%s"
+                      values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
+                      setAttributes={setAttributes}
+                      {...this.props}
                   />
-                )}
-                {"none" !== borderStyle && (
-                  <RangeControl
-                    label={__("Border Radius (px)")}
-                    value={borderRadius}
-                    onChange={(value) => {
-                      setAttributes({ borderRadius: value });
-                    }}
-                    min={0}
-                    max={50}
-                  />
-                )}
-                <p className="responsive-block-editor-addons-setting-label">
-                  {__("Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{ backgroundColor: borderColor }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={borderColor}
-                  onChange={(value) => setAttributes({ borderColor: value })}
-                  allowReset
-                />
+
                 <BoxShadowControl
                   setAttributes={setAttributes}
                   label={__("Box Shadow")}

@@ -42,10 +42,10 @@ function EditorStyles(props) {
     testimonialBackgroundColor,
     testimonialFontSize,
     testimonialCiteAlign,
-    borderRadius,
-    borderColor,
-    borderWidth,
-    borderStyle,
+    blockBorderRadius,
+    blockBorderColor,
+    blockBorderWidth,
+    blockBorderStyle,
     padding,
     paddingTablet,
     paddingMobile,
@@ -65,11 +65,13 @@ function EditorStyles(props) {
     backgroundPosition,
     backgroundRepeat,
     backgroundSize,
-    secondaryBackgroundColor,
-    gradientDegree,
+    backgroundColor2,
+    gradientDirection,
     bgGradient,
     backgroundImage,
     imageShape,
+    colorLocation1,
+    colorLocation2,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -77,16 +79,18 @@ function EditorStyles(props) {
 
   var bgimage = backgroundImage ? backgroundImage : "";
   var tempsecondaryBackgroundColor = bgGradient
-    ? secondaryBackgroundColor
+    ? backgroundColor2
     : testimonialBackgroundColor;
   var bggradient =
     "linear-gradient(" +
-    gradientDegree +
+    gradientDirection +
     "deg," +
     hexToRgba(testimonialBackgroundColor || "#ffffff", opacity || 0) +
-    "," +
+    colorLocation1 +
+    "% ," +
     hexToRgba(tempsecondaryBackgroundColor || "#ffffff", opacity || 0) +
-    "),url(" +
+    colorLocation2 +
+    "% ),url(" +
     bgimage +
     ")";
 
@@ -156,15 +160,15 @@ function EditorStyles(props) {
       "background-repeat": backgroundRepeat,
       "background-position": backgroundPosition,
       color: testimonialTextColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
-      "border-color": borderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-color": blockBorderColor,
     },
   };
 
   var mobile_selectors = {
-    
+
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingMobile, "px"),
     },

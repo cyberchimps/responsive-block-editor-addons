@@ -33,11 +33,11 @@ const attributes = {
   quoteColor: {
     type: "string",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 1,
   },
@@ -45,7 +45,7 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
   leftPadding: {

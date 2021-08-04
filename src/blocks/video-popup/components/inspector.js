@@ -3,7 +3,9 @@
  */
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -375,7 +377,6 @@ export default class Inspector extends Component {
                         </Fragment>
                       );
                     }
-
                     return <div>{tabout}</div>;
                   }}
                 </TabPanel>

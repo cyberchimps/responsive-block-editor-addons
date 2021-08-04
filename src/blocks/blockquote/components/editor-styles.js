@@ -47,10 +47,10 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
-    borderStyle,
-    borderWidth,
+    blockBorderStyle,
+    blockBorderWidth,
     blockBorderRadius,
-    borderColor,
+    blockBorderColor,
     textSpacingTop,
     textSpacingTopMobile,
     textSpacingTopTablet,
@@ -80,9 +80,9 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       color: quoteTextColor,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +

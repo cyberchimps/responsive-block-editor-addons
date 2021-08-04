@@ -4,6 +4,7 @@ import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper"
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 
 /**
  * Inspector Controls
@@ -919,70 +920,17 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Border Style")}
-                value={attributes.blockBorderStyle}
-                onChange={(value) =>
-                  this.props.setAttributes({ blockBorderStyle: value })
-                }
-                options={[
-                  { value: "none", label: __("None") },
-                  { value: "solid", label: __("Solid") },
-                  { value: "dotted", label: __("Dotted") },
-                  { value: "dashed", label: __("Dashed") },
-                  { value: "double", label: __("Double") },
-                  { value: "groove", label: __("Groove") },
-                  { value: "inset", label: __("Inset") },
-                  { value: "outset", label: __("Outset") },
-                  { value: "ridge", label: __("Ridge") },
-                ]}
+              <BlockBorderHelperControl
+                attrNameTemplate="block%s"
+                values={{
+                  radius: attributes.blockBorderRadius,
+                  style: attributes.blockBorderStyle,
+                  width: attributes.blockBorderWidth,
+                  color: attributes.blockBorderColor,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              {"none" != attributes.blockBorderStyle && (
-                <RangeControl
-                  label={__("Border Width")}
-                  value={attributes.blockBorderWidth}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      blockBorderWidth: value !== undefined ? value : 1,
-                    })
-                  }
-                  min={0}
-                  max={50}
-                  allowReset
-                />
-              )}
-              <RangeControl
-                label={__("Border Radius")}
-                value={attributes.blockBorderRadius}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    blockBorderRadius: value !== undefined ? value : "",
-                  })
-                }
-                min={0}
-                max={1000}
-                allowReset
-              />
-              {"none" != attributes.blockBorderStyle && (
-                <Fragment>
-                  <p className="responsive-setting-label">
-                    {__("Border Color")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: attributes.blockBorderColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={attributes.blockBorderColor}
-                    onChange={(colorValue) =>
-                      this.props.setAttributes({ blockBorderColor: colorValue })
-                    }
-                    allowReset
-                  />
-                </Fragment>
-              )}
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow")}
