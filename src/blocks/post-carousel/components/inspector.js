@@ -2,6 +2,7 @@ import fontOptions from "../../../utils/googlefonts";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ButtonSettingsControl from "../../../settings-components/Button Settings";
 
 /**
  * Inspector Controls
@@ -176,12 +177,22 @@ export default class Inspector extends Component {
       equalHeight,
       buttonTarget,
       contentPaddingMobile,
-	  metaFontSizeMobile,
-	  metaFontSizeTablet,
-	  excerptFontSizeMobile,
-	  excerptFontSizeTablet,
-	  ctaFontSizeMobile,
-	  ctaFontSizeTablet,
+      metaFontSizeMobile,
+      metaFontSizeTablet,
+      excerptFontSizeMobile,
+      excerptFontSizeTablet,
+      ctaFontSizeMobile,
+      ctaFontSizeTablet,
+      buttonbackgroundColor1,
+      buttonbackgroundColor2,
+      buttoncolorLocation1,
+      buttoncolorLocation2,
+      buttongradientDirection,
+      buttonbackgroundType,
+      ctaHpaddingTablet,
+      ctaHpaddingMobile,
+      ctaVpaddingTablet,
+      ctaVpaddingMobile,
     } = attributes;
 
     const { order, orderBy } = attributes;
@@ -740,259 +751,13 @@ export default class Inspector extends Component {
                   })
                 }
               />
-              <ToggleControl
-                label={__("Open link in new tab")}
-                checked={buttonTarget}
-                onChange={() => {
-                  setAttributes({ buttonTarget: !buttonTarget });
-                }}
+              <ButtonSettingsControl
+                {...this.props}
+                showMarginControls={false}
+                showBackColorOpacity={false}
+                showGradientHover={false}
+                showTextOpacity={false}
               />
-              <RangeControl
-                label={__("Horizontal Padding")}
-                value={ctaHpadding}
-                onChange={(value) => setAttributes({ ctaHpadding: value })}
-                min={0}
-                max={100}
-              />
-              <RangeControl
-                label={__("Vertical Padding")}
-                value={ctaVpadding}
-                onChange={(value) => setAttributes({ ctaVpadding: value })}
-                min={0}
-                max={100}
-              />
-              <PanelBody
-                title={__("Border Settings", "responsive-block-editor-addons")}
-                initialOpen={true}
-              >
-                <SelectControl
-                  label={__("Border Style", "responsive-block-editor-addons")}
-                  value={ctaBorderStyle}
-                  onChange={(value) => setAttributes({ ctaBorderStyle: value })}
-                  options={[
-                    {
-                      value: "none",
-                      label: __("None", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "solid",
-                      label: __("Solid", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "dotted",
-                      label: __("Dotted", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "dashed",
-                      label: __("Dashed", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "double",
-                      label: __("Double", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "groove",
-                      label: __("Groove", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "inset",
-                      label: __("Inset", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "outset",
-                      label: __("Outset", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "ridge",
-                      label: __("Ridge", "responsive-block-editor-addons"),
-                    },
-                  ]}
-                />
-                {"none" != ctaBorderStyle && (
-                  <Fragment>
-                    <RangeControl
-                      label={__(
-                        "Border Width",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={ctaBorderWidth}
-                      onChange={(value) =>
-                        setAttributes({
-                          ctaBorderWidth: value !== undefined ? value : 2,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                    <Fragment>
-                      <p>
-                        {__("Border Color", "responsive-block-editor-addons")}
-                        <span className="components-base-control__label">
-                          <span
-                            className="component-color-indicator"
-                            style={{ backgroundColor: ctaBorderColor }}
-                          ></span>
-                        </span>
-                      </p>
-                      <ColorPalette
-                        value={ctaBorderColor}
-                        onChange={(colorValue) =>
-                          setAttributes({
-                            ctaBorderColor:
-                              colorValue !== undefined ? colorValue : "#000",
-                          })
-                        }
-                        allowReset
-                      />
-                    </Fragment>
-
-                    <RangeControl
-                      label={__(
-                        "Border Radius",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={ctaBorderRadius}
-                      onChange={(value) =>
-                        setAttributes({
-                          ctaBorderRadius: value !== undefined ? value : "",
-                        })
-                      }
-                      min={0}
-                      max={100}
-                      allowReset
-                    />
-                  </Fragment>
-                )}
-              </PanelBody>
-              <PanelBody
-                title={__("Color Settings", "responsive-block-editor-addons")}
-                initialOpen={true}
-              >
-                <p className="responsive-setting-label">
-                  {__("Text Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{
-                        backgroundColor: ctaColor,
-                      }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={ctaColor}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      ctaColor: value,
-                    })
-                  }
-                  allowReset
-                />
-                <p className="responsive-setting-label">
-                  {__("Background Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{
-                        backgroundColor: ctaBackColor,
-                      }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={ctaBackColor}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      ctaBackColor: value,
-                    })
-                  }
-                  allowReset
-                />
-                <Fragment>
-                  <p>
-                    {__("Border Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: ctaBorderColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={ctaBorderColor}
-                    onChange={(colorValue) =>
-                      setAttributes({
-                        ctaBorderColor:
-                          colorValue !== undefined ? colorValue : "#000",
-                      })
-                    }
-                    allowReset
-                  />
-                </Fragment>
-
-                <p className="responsive-setting-label">
-                  {__("Hover Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{
-                        backgroundColor: ctaHoverColor,
-                      }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={ctaHoverColor}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      ctaHoverColor: value,
-                    })
-                  }
-                  allowReset
-                />
-                <p className="responsive-setting-label">
-                  {__("Hover Background Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{
-                        backgroundColor: ctaHoverBackColor,
-                      }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={ctaHoverBackColor}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      ctaHoverBackColor: value,
-                    })
-                  }
-                  allowReset
-                />
-                <Fragment>
-                  <p>
-                    {__("Hover Border Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: ctaHoverBorderColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={ctaHoverBorderColor}
-                    onChange={(colorValue) =>
-                      setAttributes({
-                        ctaHoverBorderColor:
-                          colorValue !== undefined ? colorValue : "",
-                      })
-                    }
-                    allowReset
-                  />
-                </Fragment>
-              </PanelBody>
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>

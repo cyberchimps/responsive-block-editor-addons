@@ -74,12 +74,22 @@ function EditorStyles(props) {
     buttonTarget,
     contentPaddingMobile,
     bgColor,
-	metaFontSizeMobile,
-	metaFontSizeTablet,
-	excerptFontSizeMobile,
-	excerptFontSizeTablet,
-	ctaFontSizeMobile,
-	ctaFontSizeTablet,
+    metaFontSizeMobile,
+    metaFontSizeTablet,
+    excerptFontSizeMobile,
+    excerptFontSizeTablet,
+    ctaFontSizeMobile,
+    ctaFontSizeTablet,
+    buttonbackgroundColor1,
+    buttonbackgroundColor2,
+    buttoncolorLocation1,
+    buttoncolorLocation2,
+    buttongradientDirection,
+    buttonbackgroundType,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -87,6 +97,15 @@ function EditorStyles(props) {
     "border-width": generateCSSUnit(arrowBorderSize, "px"),
     "border-radius": generateCSSUnit(arrowBorderRadius, "px"),
   };
+
+  let backgroundImageGradient = "";
+  let pcColor = "";
+  if (buttonbackgroundType == "gradient") {
+    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+  } else if (buttonbackgroundType == "color") {
+    backgroundImageGradient = "";
+    pcColor = ctaBackColor;
+  }
 
   var selectors = {
     " .responsive-block-editor-addons-block-post-carousel-title": {
@@ -133,7 +152,8 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link": {
       color: ctaColor,
-      "background-color": ctaBackColor,
+      "background-color": pcColor,
+      "background-image": backgroundImageGradient,
       "border-color": ctaBorderColor,
       "border-style": ctaBorderStyle,
       "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
@@ -142,7 +162,7 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "padding-top": generateCSSUnit(ctaVpadding, "px"),
       "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
-      "display": "inline-block",
+      display: "inline-block",
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link:hover": {
       color: ctaHoverColor,
@@ -200,15 +220,21 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-text-wrap": {
       padding: generateCSSUnit(contentPaddingMobile, "px"),
     },
-	" .responsive-block-editor-addons-block-post-carousel-byline": {
-		"font-size": generateCSSUnit(metaFontSizeMobile, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-excerpt": {
-		"font-size": generateCSSUnit(excerptFontSizeMobile, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
-		"font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
-	}
+    " .responsive-block-editor-addons-block-post-carousel-byline": {
+      "font-size": generateCSSUnit(metaFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-excerpt": {
+      "font-size": generateCSSUnit(excerptFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
+      "font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-more-link": {
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -218,15 +244,21 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-text-wrap": {
       padding: generateCSSUnit(contentPadding, "px"),
     },
-	" .responsive-block-editor-addons-block-post-carousel-byline": {
-		"font-size": generateCSSUnit(metaFontSizeTablet, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-excerpt": {
-		"font-size": generateCSSUnit(excerptFontSizeTablet, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
-		"font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
-	}
+    " .responsive-block-editor-addons-block-post-carousel-byline": {
+      "font-size": generateCSSUnit(metaFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-excerpt": {
+      "font-size": generateCSSUnit(excerptFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
+      "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-more-link": {
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+    },
   };
   var extra_styles = {
     ".editor-styles-wrapper .responsive-block-editor-addons-block-post-carousel-excerpt p": {
