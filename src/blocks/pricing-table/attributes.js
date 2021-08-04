@@ -477,5 +477,25 @@ const attributes = {
   imageShape: {
     type: "string",
   },
+  ctaHoverBorderColor: {
+    type: "string",
+    defaulr: "#333",
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 30,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 30,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 15,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 15,
+  },
 };
 export default attributes;

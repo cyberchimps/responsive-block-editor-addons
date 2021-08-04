@@ -1740,6 +1740,11 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'imageWidth'               => '',
 			'imageSize'                => 'full',
 			'imageShape'               => '',
+			'ctaHoverBorderColor'      => '#333',
+			'ctaHpaddingTablet'        => 30,
+			'ctaHpaddingMobile'        => 30,
+			'ctaVpaddingTablet'        => 15,
+			'ctaVpaddingMobile'        => 15,
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

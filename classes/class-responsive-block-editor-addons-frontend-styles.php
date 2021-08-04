@@ -5616,6 +5616,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'            => $attr['ctaHoverColor'] . '!important',
 					'background-color' => $updated_button_bg_h_color,
 					'background-image' => $updated_button_bg_h_image,
+					'border-color'     => $attr['ctaHoverBorderColor'],
 				),
 
 				' .wp-block-responsive-block-editor-addons-pricing-table-item.background-type-image' => array(
@@ -5767,9 +5768,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-pricing-table-item' => array(
 					'max-width' => 'none',
 				),
+				' .wp-block-responsive-block-editor-addons-pricing-table-item__button' => array(
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+				),
 			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' .wp-block-responsive-block-editor-addons-pricing-table-item__button' => array(
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -5917,6 +5931,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageWidth'               => '',
 				'imageSize'                => 'full',
 				'imageShape'               => '',
+				'ctaHoverBorderColor'      => '#333',
+				'ctaHpaddingTablet'        => 30,
+				'ctaHpaddingMobile'        => 30,
+				'ctaVpaddingTablet'        => 15,
+				'ctaVpaddingMobile'        => 15,
 			);
 		}
 
