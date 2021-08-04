@@ -30,7 +30,11 @@ function EditorStyles(props) {
     ressubHeadLineHeight,
     resseparatorWidthType,
     resheadSpace,
+    resheadSpaceMobile,
+    resheadSpaceTablet,
     ressubHeadSpace,
+    ressubHeadSpaceMobile,
+    ressubHeadSpaceTablet,
     resIconSize,
     resseperatorStyle,
     resseperatorWidth,
@@ -48,6 +52,8 @@ function EditorStyles(props) {
     resctaBorderWidth,
     resctaBorderRadius,
     resprefixSpace,
+    resprefixSpaceMobile,
+    resprefixSpaceTablet,
     iconLeftMargin,
     iconRightMargin,
     iconTopMargin,
@@ -83,6 +89,8 @@ function EditorStyles(props) {
     thumbsize,
     backgroundAttachment,
     sepSpace,
+    sepSpaceMobile,
+    sepSpaceTablet,
     icon_color,
     icon_hcolor,
     resImageBorderColor,
@@ -99,6 +107,8 @@ function EditorStyles(props) {
     imageopacity,
     backgroundColor,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     imgiconPosition,
     ctaTextFontFamily,
     ctaTextFontSize,
@@ -107,6 +117,8 @@ function EditorStyles(props) {
     ctaTextFontWeight,
     ctaTextLineHeight,
     ctaBottomMargin,
+    ctaBottomMarginMobile,
+    ctaBottomMarginTablet,
     hoverboxShadowColor,
     hoverboxShadowHOffset,
     hoverboxShadowVOffset,
@@ -358,6 +370,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      padding: generateCSSUnit(contentPaddingMobile, "px"),
+    },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-mobile .responsive-block-editor-addons-ifb-content": {
       "text-align": alignment,
     },
@@ -383,9 +398,27 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(iconLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(iconRightMarginMobile, "px"),
     },
+    " .responsive-block-editor-addons-ifb-title-prefix": {
+      "margin-bottom": generateCSSUnit(resprefixSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title": {
+      "margin-bottom": generateCSSUnit(resheadSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-separator": {
+      "margin-bottom": generateCSSUnit(sepSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-desc": {
+      "margin-bottom": generateCSSUnit(ressubHeadSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-cta": {
+      "margin-bottom": generateCSSUnit(ctaBottomMarginMobile, "px"),
+    }
   };
 
   var tablet_selectors = {
+    " ": {
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
+    },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-tablet .responsive-block-editor-addons-ifb-content": {
       "text-align": alignment,
     },
@@ -411,6 +444,21 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(iconLeftMarginTablet, "px"),
       "margin-right": generateCSSUnit(iconRightMarginTablet, "px"),
     },
+    " .responsive-block-editor-addons-ifb-title-prefix": {
+      "margin-bottom": generateCSSUnit(resprefixSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title": {
+      "margin-bottom": generateCSSUnit(resheadSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-separator": {
+      "margin-bottom": generateCSSUnit(sepSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-desc": {
+      "margin-bottom": generateCSSUnit(ressubHeadSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-cta": {
+      "margin-bottom": generateCSSUnit(ctaBottomMarginTablet, "px"),
+    }
   };
 
   var styling_css = "";

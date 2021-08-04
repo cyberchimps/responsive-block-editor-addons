@@ -12,6 +12,12 @@ function EditorStyles(props) {
     linkSpace,
     textSpace,
     titleSpace,
+    linkSpaceMobile,
+    textSpaceMobile,
+    titleSpaceMobile,
+    linkSpaceTablet,
+    textSpaceTablet,
+    titleSpaceTablet,
     titleFontFamily,
     titleFontSize,
     titleFontWeight,
@@ -80,9 +86,41 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " .responsive-block-editor-addons-expand-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-text": {
+      "margin-bottom": generateCSSUnit(textSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-toggle-text": {
+      "margin-bottom": generateCSSUnit(linkSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-text": {
+      "margin-bottom": generateCSSUnit(textSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-toggle-text": {
+      "margin-bottom": generateCSSUnit(linkSpaceMobile, "px"),
+    },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " .responsive-block-editor-addons-expand-title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-text": {
+      "margin-bottom": generateCSSUnit(textSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-toggle-text": {
+      "margin-bottom": generateCSSUnit(linkSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-more-text": {
+      "margin-bottom": generateCSSUnit(textSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-expand-less-toggle-text": {
+      "margin-bottom": generateCSSUnit(linkSpaceTablet, "px"),
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-expand.block-${block_id}`;

@@ -289,50 +289,51 @@ const attributes = {
     type: "string",
     default: "#3a3a3a",
   },
-  topPadding: {
+  blockTopPadding: {
     type: "number",
     default: 20,
   },
-  topPaddingMobile: {
+  blockTopPaddingMobile: {
     type: "number",
     default: 20,
   },
-  topPaddingTablet: {
+  blockTopPaddingTablet: {
     type: "number",
     default: 20,
   },
-  bottomPadding: {
+  blockBottomPadding: {
     type: "number",
     default: 20,
   },
-  bottomPaddingMobile: {
-    type: "number",
-    default: 20,
-  },bottomPaddingTablet: {
+  blockBottomPaddingMobile: {
     type: "number",
     default: 20,
   },
-  leftPadding: {
+  blockBottomPaddingTablet: {
     type: "number",
     default: 20,
   },
-  leftPaddingMobile: {
+  blockLeftPadding: {
     type: "number",
     default: 20,
   },
-  leftPaddingTablet: {
+  blockLeftPaddingMobile: {
     type: "number",
     default: 20,
   },
-  rightPadding: {
+  blockLeftPaddingTablet: {
     type: "number",
     default: 20,
   },
-  rightPaddingMobile: {
+  blockRightPadding: {
     type: "number",
     default: 20,
   },
-  rightPaddingTablet: {
+  blockRightPaddingMobile: {
+    type: "number",
+    default: 20,
+  },
+  blockRightPaddingTablet: {
     type: "number",
     default: 20,
   },
