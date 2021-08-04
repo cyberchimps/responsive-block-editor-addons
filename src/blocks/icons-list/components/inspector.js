@@ -2,6 +2,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 /**
  * Inspector Controls
@@ -88,7 +89,7 @@ export default class Inspector extends Component {
         fontSize,
         labelFontFamily,
         labelFontWeight,
-        labelFontLineHeight,
+        labelLineHeight,
         labelFontSize,
         labelFontSizeTablet,
         labelFontSizeMobile,
@@ -412,144 +413,24 @@ export default class Inspector extends Component {
               </PanelBody>
             </InspectorTab>
             <InspectorTab key={"style"}>
-              {!hideLabel && (
-                <PanelBody
-                title={__("typography", "responsive-block-editor-addons")}
-                initialOpen={true}
-                >
-                  <SelectControl
-                    label={__("Font Family", "responsive-block-editor-addons")}
-                    options={fontOptions}
-                    value={labelFontFamily}
-                    onChange={(value) => {
-                      setAttributes({
-                        labelFontFamily: value,
-                      }),
-                        loadGoogleFont(value);
-                    }}
-                  />
-                  <TabPanel
-                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                    activeClass="active-tab"
-                    tabs={[
-                      {
-                        name: "desktop",
-                        title: <Dashicon icon="desktop" />,
-                        className:
-                          " responsive-desktop-tab  responsive-responsive-tabs",
-                      },
-                      {
-                        name: "tablet",
-                        title: <Dashicon icon="tablet" />,
-                        className:
-                          " responsive-tablet-tab  responsive-responsive-tabs",
-                      },
-                      {
-                        name: "mobile",
-                        title: <Dashicon icon="smartphone" />,
-                        className:
-                          " responsive-mobile-tab  responsive-responsive-tabs",
-                      },
-                    ]}
-                  >
-                    {(tab) => {
-                      let tabout;
-
-                      if ("mobile" === tab.name) {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Labels Font Size Mobile",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={labelFontSizeMobile}
-                              onChange={(value) =>
-                                setAttributes({
-                                  labelFontSizeMobile: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      } else if ("tablet" === tab.name) {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Labels Font Size Tablet",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={labelFontSizeTablet}
-                              onChange={(value) =>
-                                setAttributes({
-                                  labelFontSizeTablet: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      } else {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Labels Font Size",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={labelFontSize}
-                              onChange={(value) =>
-                                setAttributes({
-                                  labelFontSize: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      }
-
-                      return <div>{tabout}</div>;
-                    }}
-                  </TabPanel>
-
-                  <SelectControl
-                    label={__(
-                      "Labels Font Weight",
-                      "responsive-block-editor-addons"
-                    )}
-                    options={fontWeightOptions}
-                    value={labelFontWeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        labelFontWeight: value,
-                      })
-                    }
-                  />
-
-                  <RangeControl
-                    label={__(
-                      "Labels Line Height",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={labelFontLineHeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        labelFontLineHeight: value !== undefined ? value : 1,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    step={1}
-                    allowReset
-                  />
-                </PanelBody>
-              )}
+				{!hideLabel && (
+					<TypographyHelperControl
+						title={__("Label Typography", "responsive-block-editor-addons")}
+						attrNameTemplate="label%s"
+						values={{
+							family: labelFontFamily,
+							size: labelFontSize,
+							sizeMobile: labelFontSizeMobile,
+							sizeTablet: labelFontSizeTablet,
+							weight: labelFontWeight,
+							height: labelLineHeight,
+						}}
+						showLetterSpacing={false}
+						showTextTransform={false}
+						setAttributes={setAttributes}
+						{...this.props}
+					/>
+				)}
             </InspectorTab>
             <InspectorTab key={"advance"}></InspectorTab>
           </InspectorTabs>

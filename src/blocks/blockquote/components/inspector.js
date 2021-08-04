@@ -14,7 +14,7 @@ import BlockBorderHelperControl from "../../../settings-components/BlockBorderSe
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 let svg_icons = Object.keys(ResponsiveBlocksQuoteIcon);
 // Setup the block
@@ -193,6 +193,8 @@ export default class Inspector extends Component {
         textSpacingRight,
         textSpacingRightMobile,
         textSpacingRightTablet,
+		quoteFontSizeMobile,
+		quoteFontSizeTablet,
       },
       setAttributes,
     } = this.props;
@@ -251,65 +253,20 @@ export default class Inspector extends Component {
               title={__("General", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Font Family", "responsive-block-editor-addons")}
-                options={fontOptions}
-                value={quoteFontFamily}
-                onChange={(value) => {
-                  setAttributes({
-                    quoteFontFamily: value,
-                  }),
-                    loadGoogleFont(value);
-                }}
-              />
-              <RangeControl
-                label={__("Font Size", "responsive-block-editor-addons")}
-                value={quoteFontSize}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    quoteFontSize: value,
-                  })
-                }
-                min={10}
-                max={100}
-                step={1}
-              />
-              <SelectControl
-                label={__("Font Weight", "responsive-block-editor-addons")}
-                options={fontWeightOptions}
-                value={quoteFontWeight}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    quoteFontWeight: value,
-                  })
-                }
-              />
-              <RangeControl
-                label={__("Line Height", "responsive-block-editor-addons")}
-                value={quoteLineHeight}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    quoteLineHeight: value,
-                  })
-                }
-                min={0}
-                max={100}
-                step={1}
-              />
-              <SelectControl
-                label={__("Alignment", "responsive-block-editor-addons")}
-                description={__(
-                  "Left or right align the cite name and title.",
-                  "responsive-block-editor-addons"
-                )}
-                options={citeAlignOptions}
-                value={quoteAlign}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    quoteAlign: value,
-                  })
-                }
-              />
+				<SelectControl
+					label={__("Alignment", "responsive-block-editor-addons")}
+					description={__(
+						"Left or right align the cite name and title.",
+						"responsive-block-editor-addons"
+					)}
+					options={citeAlignOptions}
+					value={quoteAlign}
+					onChange={(value) =>
+						this.props.setAttributes({
+						quoteAlign: value,
+						})
+					}
+				/>
             </PanelBody>
             <PanelBody
               title={__("Quotation Mark", "responsive-block-editor-addons")}
@@ -905,6 +862,28 @@ export default class Inspector extends Component {
                 },
               ]}
             ></PanelColorSettings>
+
+			<PanelBody
+              title={__("Typography", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+				<TypographyHelperControl
+					title={__("Quote Typography", "responsive-block-editor-addons")} 
+					attrNameTemplate="quote%s"
+					values = {{
+						family: quoteFontFamily, 
+						size: quoteFontSize, 
+						sizeMobile: quoteFontSizeMobile, 
+						sizeTablet: quoteFontSizeTablet, 
+						weight: quoteFontWeight, 
+						height: quoteLineHeight,
+					}}
+					showLetterSpacing = { false }
+					showTextTransform = { false }
+					setAttributes={ setAttributes }
+					{...this.props}            
+				/>	
+			</PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}></InspectorTab>
         </InspectorTabs>

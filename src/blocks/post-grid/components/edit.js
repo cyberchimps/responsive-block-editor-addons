@@ -9,6 +9,8 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 import PostGridImage from "./image";
 import EditorStyles from "./editor-styles";
+import { loadGoogleFont } from "../../../utils/font";
+
 const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
@@ -265,6 +267,10 @@ class LatestPostsBlock extends Component {
             "responsive-block-editor-addons-block-post-grid"
           )}
         >
+		  {attributes.excerptFontFamily && loadGoogleFont(attributes.excerptFontFamily)}
+		  {attributes.metaFontFamily && loadGoogleFont(attributes.metaFontFamily)}
+		  {attributes.titleFontFamily && loadGoogleFont(attributes.titleFontFamily)}
+		  {attributes.continueFontFamily && loadGoogleFont(attributes.continueFontFamily)}
           {attributes.displaySectionTitle && attributes.sectionTitle && (
             <SectionTitleTag className="responsive-block-editor-addons-post-grid-section-title">
               {attributes.sectionTitle}

@@ -74,6 +74,12 @@ function EditorStyles(props) {
     buttonTarget,
     contentPaddingMobile,
     bgColor,
+	metaFontSizeMobile,
+	metaFontSizeTablet,
+	excerptFontSizeMobile,
+	excerptFontSizeTablet,
+	ctaFontSizeMobile,
+	ctaFontSizeTablet,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -194,6 +200,15 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-text-wrap": {
       padding: generateCSSUnit(contentPaddingMobile, "px"),
     },
+	" .responsive-block-editor-addons-block-post-carousel-byline": {
+		"font-size": generateCSSUnit(metaFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-carousel-excerpt": {
+		"font-size": generateCSSUnit(excerptFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
+		"font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
+	}
   };
 
   var tablet_selectors = {
@@ -203,6 +218,15 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-text-wrap": {
       padding: generateCSSUnit(contentPadding, "px"),
     },
+	" .responsive-block-editor-addons-block-post-carousel-byline": {
+		"font-size": generateCSSUnit(metaFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-carousel-excerpt": {
+		"font-size": generateCSSUnit(excerptFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
+		"font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
+	}
   };
   var extra_styles = {
     ".editor-styles-wrapper .responsive-block-editor-addons-block-post-carousel-excerpt p": {

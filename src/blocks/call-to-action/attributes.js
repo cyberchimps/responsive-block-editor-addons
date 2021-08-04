@@ -128,19 +128,19 @@ const attributes = {
     type: "number",
     default: 100,
   },
-  headingLineHeight: {
+  ctaTitleLineHeight: {
     type: "number",
     default: 1.8,
   },
-  headingFontWeight: {
+  ctaTitleFontWeight: {
     type: "string",
     default: "400",
   },
-  contentLineHeight: {
+  ctaTextLineHeight: {
     type: "number",
     default: 1.75,
   },
-  contentFontWeight: {
+  ctaTextFontWeight: {
     type: "string",
     default: "400",
   },
