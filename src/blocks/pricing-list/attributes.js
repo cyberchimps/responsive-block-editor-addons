@@ -200,6 +200,24 @@ const attributes = {
   imageWidth: {
     type: "number",
   },
+  titleFontSizeMobile: {
+	type: "number",
+  },
+  titleFontSizeTablet: {
+	type: "number",
+  },
+  descriptionFontSizeMobile: {
+	type: "number",
+  },
+  descriptionFontSizeTablet: {
+	type: "number",
+  },
+  priceFontSizeMobile: {
+	type: "number",
+  },
+  priceFontSizeTablet: {
+	type: "number",
+  },
 };
 
 export default attributes;

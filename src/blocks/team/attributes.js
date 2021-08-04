@@ -308,6 +308,24 @@ const attributes = {
   stack: {
     type: "string",
     default: "mobile",
-  }
+  },
+  titleFontSizeMobile: {
+	  type: "number",
+  },
+  titleFontSizeTablet: {
+	  type: "number",
+  },
+  designationFontSizeMobile: {
+	  type: "number",
+  },
+  designationFontSizeTablet: {
+	  type: "number",
+  },
+  descriptionFontSizeMobile: {
+	  type: "number",
+  },
+  descriptionFontSizeTablet: {
+	  type: "number",
+  },
 };
 export default attributes;

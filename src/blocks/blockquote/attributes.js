@@ -226,6 +226,12 @@ const attributes = {
     type: "number",
     default: 35
   },
+  quoteFontSizeMobile: {
+	  type: "number",
+  },
+  quoteFontSizeTablet: {
+	  type: "number",
+  },
 };
 
 export default attributes;

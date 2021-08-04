@@ -67,6 +67,10 @@ function EditorStyles(props) {
     contentBgGradient,
     contentBackgroundColor,
     contentBackgroundColorOpacity,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	contentFontSizeMobile,
+	contentFontSizeTablet,
   } = props.attributes;
 
   var selectors = {};
@@ -201,14 +205,14 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-title": {
       "font-family": titleFontFamily,
-      "font-size": titleFontSize + "px",
+      "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
     },
     " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
       "color": contentTextColor,
       "background-image": contentGradient,
-      "font-size": contentFontSize + "px",
+      "font-size": generateCSSUnit(contentFontSize, "px"),
       "font-family": contentFontFamily,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
@@ -262,6 +266,12 @@ function EditorStyles(props) {
       "height": generateCSSUnit(iconSizeTablet, iconSizeType),
       "font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
     },
+	" .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-title": {
+		"font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
+		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+	},
   };
 
   mobile_selectors = {
@@ -311,6 +321,12 @@ function EditorStyles(props) {
       "height": generateCSSUnit(iconSizeMobile, iconSizeType),
       "font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
     },
+	" .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-mobile": {
+		"font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
+		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+	},
   };
 
   if ("accordion" === layout && true === inactiveOtherItems) {

@@ -63,6 +63,8 @@ function EditorStyles(props) {
     textSpacingRight,
     textSpacingRightMobile,
     textSpacingRightTablet,
+	quoteFontSizeMobile,
+	quoteFontSizeTablet,
     
   } = props.attributes;
 
@@ -160,6 +162,9 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(textSpacingTopMobile, "px"),
       "padding-bottom": generateCSSUnit(textSpacingBottomMobile, "px"),
     },
+	" .responsive-block-editor-addons-block-blockquote-text": {
+		"font-size": generateCSSUnit(quoteFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
@@ -175,6 +180,9 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(textSpacingTopTablet, "px"),
       "padding-bottom": generateCSSUnit(textSpacingBottomTablet, "px"),
     },
+	" .responsive-block-editor-addons-block-blockquote-text": {
+		"font-size": generateCSSUnit(quoteFontSizeTablet, "px"),
+	},
   };
 
   var styling_css = "";

@@ -72,6 +72,12 @@ function EditorStyles(props) {
     imageShape,
     colorLocation1,
     colorLocation2,
+	contentFontSizeMobile,
+	contentFontSizeTablet,
+	nameFontSizeMobile,
+	nameFontSizeTablet,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -175,6 +181,15 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : '0 !important',
     },
+	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
+		"font-size": generateCSSUnit(nameFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
+		"font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-testimonial-text": {
+		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
@@ -184,6 +199,15 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : `${generateCSSUnit(20, "px")} !important`,
     },
+	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
+		"font-size": generateCSSUnit(nameFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
+		"font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-testimonial-text": {
+		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+	},
   };
 
   var styling_css = "";

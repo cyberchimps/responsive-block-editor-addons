@@ -9,6 +9,7 @@ import fontOptions from "../../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../../utils/font";
 import InspectorTab from "../../../../components/InspectorTab";
 import InspectorTabs from "../../../../components/InspectorTabs";
+import TypographyHelperControl from "../../../../settings-components/Typography Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -927,136 +928,22 @@ export default class Inspector extends Component {
 						</PanelBody>
 						{!inheritFromTheme && (
 							<Fragment>
-								<PanelBody
-									title={__("Button Typography", "responsive-block-editor-addons")}
-									initialOpen={false}
-								>
-									<SelectControl
-										label={__("Font Family", "responsive-block-editor-addons")}
-										options={fontOptions}
-										value={buttonFontFamily}
-										onChange={(value) => {
-											setAttributes({
-												buttonFontFamily: value,
-											}),
-												loadGoogleFont(value);
-										}}
-									/>
-									<TabPanel
-										className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-										activeClass="active-tab"
-										tabs={[
-											{
-												name: "desktop",
-												title: <Dashicon icon="desktop" />,
-												className:
-													" responsive-desktop-tab  responsive-responsive-tabs",
-											},
-											{
-												name: "tablet",
-												title: <Dashicon icon="tablet" />,
-												className:
-													" responsive-tablet-tab  responsive-responsive-tabs",
-											},
-											{
-												name: "mobile",
-												title: <Dashicon icon="smartphone" />,
-												className:
-													" responsive-mobile-tab  responsive-responsive-tabs",
-											},
-										]}
-									>
-										{(tab) => {
-											let tabout;
-
-											if ("mobile" === tab.name) {
-												tabout = (
-													<Fragment>
-														<RangeControl
-															label={__(
-																"Font Size",
-																"responsive-block-editor-addons"
-															)}
-															min={0}
-															max={100}
-															step={1}
-															value={buttonFontSizeMobile}
-															onChange={(value) =>
-																setAttributes({
-																	buttonFontSizeMobile: value,
-																})
-															}
-														/>
-													</Fragment>
-												);
-											} else if ("tablet" === tab.name) {
-												tabout = (
-													<Fragment>
-														<RangeControl
-															label={__(
-																"Font Size",
-																"responsive-block-editor-addons"
-															)}
-															min={0}
-															max={100}
-															step={1}
-															value={buttonFontSizeTablet}
-															onChange={(value) =>
-																setAttributes({
-																	buttonFontSizeTablet: value,
-																})
-															}
-														/>
-													</Fragment>
-												);
-											} else {
-												tabout = (
-													<Fragment>
-														<RangeControl
-															label={__(
-																"Font Size",
-																"responsive-block-editor-addons"
-															)}
-															min={0}
-															max={100}
-															step={1}
-															value={buttonFontSize}
-															onChange={(value) =>
-																setAttributes({
-																	buttonFontSize: value,
-																})
-															}
-														/>
-													</Fragment>
-												);
-											}
-
-											return <div>{tabout}</div>;
-										}}
-									</TabPanel>
-									<SelectControl
-										label={__("Font Weight", "responsive-block-editor-addons")}
-										options={fontWeightOptions}
-										value={buttonFontWeight}
-										onChange={(value) =>
-											this.props.setAttributes({
-												buttonFontWeight: value,
-											})
-										}
-									/>
-									<RangeControl
-										label={__("Line Height", "responsive-block-editor-addons")}
-										value={buttonLineHeight}
-										onChange={(value) =>
-											this.props.setAttributes({
-												buttonLineHeight: value,
-											})
-										}
-										min={0}
-										max={100}
-										step={1}
-									/>
-								</PanelBody>
+								<TypographyHelperControl
+									title={__("Button Typography", "responsive-block-editor-addons")} 
+									attrNameTemplate="button%s"
+									values = {{
+										family: buttonFontFamily, 
+										size: buttonFontSize, 
+										sizeMobile: buttonFontSizeMobile, 
+										sizeTablet: buttonFontSizeTablet, 
+										weight: buttonFontWeight, 
+										height: buttonLineHeight,
+									}}
+									showLetterSpacing = { false }
+									showTextTransform = { false }
+									setAttributes={ setAttributes }
+									{...this.props}            
+								/>
 								<PanelBody
 									title={__("Box Shadow", "responsive-block-editor-addons")}
 									initialOpen={false}

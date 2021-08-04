@@ -255,6 +255,12 @@ const attributes = {
     type: "boolean",
     default: true,
   },
+  descriptionFontSizeMobile: {
+	  type: "number",
+  },
+  descriptionFontSizeTablet: {
+	  type: "number",
+  },
 };
 
 export default attributes;
