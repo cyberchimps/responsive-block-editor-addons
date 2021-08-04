@@ -110,7 +110,37 @@ function EditorStyles(props) {
     buttonopacity,
     buttonHopacity,
     flipBoxGutterGap,
-    stack
+    stack,
+    frontTitleFontSize,
+    frontTitleFontSizeMobile,
+    frontTitleFontSizeTablet,
+    frontTitleFontWeight,
+    frontTitleLineHeight,
+    frontTitleFontFamily,
+    frontSubtitleFontFamily,
+    frontSubtitleFontSize,
+    frontSubtitleFontSizeMobile,
+    frontSubtitleFontSizeTablet,
+    frontSubtitleFontWeight,
+    frontSubtitleLineHeight,
+    backTitleFontSize,
+    backTitleFontSizeMobile,
+    backTitleFontSizeTablet,
+    backTitleFontWeight,
+    backTitleLineHeight,
+    backTitleFontFamily,
+    backSubtitleFontFamily,
+    backSubtitleFontSize,
+    backSubtitleFontSizeMobile,
+    backSubtitleFontSizeTablet,
+    backSubtitleFontWeight,
+    backSubtitleLineHeight,
+    backButtonFontSize,
+    backButtonFontSizeMobile,
+    backButtonFontSizeTablet,
+    backButtonFontWeight,
+    backButtonLineHeight,
+    backButtonFontFamily,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -261,9 +291,17 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       color: frontTextColor,
+      "font-family": frontTitleFontFamily,
+      "font-size": generateCSSUnit(frontTitleFontSize, "px"),
+      "font-weight": frontTitleFontWeight,
+      "line-height": frontTitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
       color: frontTextColor,
+      "font-family": frontSubtitleFontFamily,
+      "font-size": generateCSSUnit(frontSubtitleFontSize, "px"),
+      "font-weight": frontSubtitleFontWeight,
+      "line-height": frontSubtitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
       "background-image": backgroundBack,
@@ -301,9 +339,17 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
       color: backTextColor,
+      "font-family": backTitleFontFamily,
+      "font-size": generateCSSUnit(backTitleFontSize, "px"),
+      "font-weight": backTitleFontWeight,
+      "line-height": backTitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
       color: backTextColor,
+      "font-family": backSubtitleFontFamily,
+      "font-size": generateCSSUnit(backSubtitleFontSize, "px"),
+      "font-weight": backSubtitleFontWeight,
+      "line-height": backSubtitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box-dashicon-fronticon-wrap": {
       "font-size": generateCSSUnit(iconSize, "px"),
@@ -337,6 +383,10 @@ function EditorStyles(props) {
       "background-color": btnColor + "!important",
       opacity: btnOpacity / 100,
       color: buttonTextColor + "!important",
+      "font-family": backButtonFontFamily,
+      "font-size": generateCSSUnit(backButtonFontSize, "px"),
+      "font-weight": backButtonFontWeight,
+      "line-height": backButtonLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {
       "background-image": backgroundHoverImageGradient,
@@ -376,6 +426,21 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(backLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(backRightPaddingMobile, "px"),
     },
+    " .wp-block-responsive-block-editor-addons-flip-box__title": {
+      "font-size": generateCSSUnit(frontTitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
+      "font-size": generateCSSUnit(frontSubtitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
+      "font-size": generateCSSUnit(backTitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
+      "font-size": generateCSSUnit(backSubtitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
+      "font-size": generateCSSUnit(backButtonFontSizeMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -398,6 +463,21 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(backBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(backLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(backRightPaddingTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__title": {
+      "font-size": generateCSSUnit(frontTitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
+      "font-size": generateCSSUnit(frontSubtitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
+      "font-size": generateCSSUnit(backTitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
+      "font-size": generateCSSUnit(backSubtitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
+      "font-size": generateCSSUnit(backButtonFontSizeTablet, "px"),
     },
   };
 
