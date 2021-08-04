@@ -53,6 +53,12 @@ function EditorStyles(props) {
     headingBottomMargin,
     headingBottomMarginMobile,
     headingBottomMarginTablet,
+	dateFontSizeMobile,
+	dateFontSizeTablet,
+	headingFontSizeMobile,
+	headingFontSizeTablet,
+	contentFontSizeMobile,
+	contentFontSizeTablet,
   } = props.attributes;
 
   var border_with_color = "13px solid" + backgroundColor;
@@ -202,9 +208,19 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(horizontalSpaceMobile, "px"),
       "margin-right": generateCSSUnit(horizontalSpaceMobile, "px"),
     },
-    " .responsive-timeline__heading": {
-      "margin-bottom": generateCSSUnit(headingBottomMarginMobile, "px"),
-    },
+    " .responsive-timeline__date-new": {
+		"font-size": generateCSSUnit(dateFontSizeMobile, "px"),
+	},
+	" .responsive-timeline-desc-content": {
+		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),	
+	},
+	" .responsive-timeline__heading": {
+		"font-size": generateCSSUnit(headingFontSizeMobile, "px"),
+		"margin-bottom": generateCSSUnit(headingBottomMarginMobile, "px"),
+	},
+	" .responsive-timeline__inner-date-new": {
+		"font-size": generateCSSUnit(dateFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
@@ -228,9 +244,19 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(horizontalSpaceTablet, "px"),
       "margin-right": generateCSSUnit(horizontalSpaceTablet, "px"),
     },
-    " .responsive-timeline__heading": {
-      "margin-bottom": generateCSSUnit(headingBottomMarginTablet, "px"),
-    },
+    " .responsive-timeline__date-new": {
+		"font-size": generateCSSUnit(dateFontSizeTablet, "px"),
+	},
+	" .responsive-timeline-desc-content": {
+		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),	
+	},
+	" .responsive-timeline__heading": {
+		"font-size": generateCSSUnit(headingFontSizeTablet, "px"),
+		"margin-bottom": generateCSSUnit(headingBottomMarginTablet, "px"),
+	},
+	" .responsive-timeline__inner-date-new": {
+		"font-size": generateCSSUnit(dateFontSizeTablet, "px"),
+	},
   };
 
   var styling_css = "";

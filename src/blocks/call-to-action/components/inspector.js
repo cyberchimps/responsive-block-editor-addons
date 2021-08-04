@@ -14,6 +14,7 @@ import ImageBackgroundControl from "../../../settings-components/Block Backgroun
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -71,10 +72,10 @@ export default class Inspector extends Component {
       backgroundImage,
       imgID,
       opacity,
-      headingLineHeight,
-      headingFontWeight,
-      contentLineHeight,
-      contentFontWeight,
+	  ctaTitleFontWeight,
+	  ctaTitleLineHeight,
+	  ctaTextFontWeight,
+	  ctaTextLineHeight,
       buttonvPadding,
       buttonhPadding,
       buttonborderWidth,
@@ -321,617 +322,391 @@ export default class Inspector extends Component {
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
-            <PanelBody
-              title={__("Typography Options", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <PanelBody
-                title={__("Title Typography", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={ctaTitleFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      ctaTitleFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
+			<PanelBody
+				title={__("Typography Options", "responsive-block-editor-addons")}
+				initialOpen={false}
+			>
+				<TypographyHelperControl
+					title={__("Title Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="ctaTitle%s"
+					values={{
+						family: ctaTitleFontFamily,
+						size: ctaTitleFontSize,
+						sizeMobile: ctaTitleFontSizeMobile,
+						sizeTablet: ctaTitleFontSizeTablet,
+						weight: ctaTitleFontWeight,
+						height: ctaTitleLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__("Description Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="ctaText%s"
+					values={{
+						family: ctaTextFontFamily,
+						size: ctaTextFontSize,
+						sizeMobile: ctaTextFontSizeMobile,
+						sizeTablet: ctaTextFontSizeTablet,
+						weight: ctaTextFontWeight,
+						height: ctaTextLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				{resctaType === "text" && (
+					<PanelBody
+						title={__(
+						"CTA Text Typography",
+						"responsive-block-editor-addons"
+						)}
+						initialOpen={false}
+					>
+						<SelectControl
+						label={__("Font Family", "responsive-block-editor-addons")}
+						options={fontOptions}
+						value={buttonTextFontFamily}
+						onChange={(value) => {
+							setAttributes({
+							buttonTextFontFamily: value,
+							}),
+							loadGoogleFont(value);
+						}}
+						/>
+						<TabPanel
+						className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+						activeClass="active-tab"
+						tabs={[
+							{
+							name: "desktop",
+							title: <Dashicon icon="desktop" />,
+							className:
+								" responsive-desktop-tab  responsive-responsive-tabs",
+							},
+							{
+							name: "tablet",
+							title: <Dashicon icon="tablet" />,
+							className:
+								" responsive-tablet-tab  responsive-responsive-tabs",
+							},
+							{
+							name: "mobile",
+							title: <Dashicon icon="smartphone" />,
+							className:
+								" responsive-mobile-tab  responsive-responsive-tabs",
+							},
+						]}
+						>
+						{(tab) => {
+							let tabout;
 
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={ctaTitleFontSizeMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                ctaTitleFontSizeMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={ctaTitleFontSizeTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                ctaTitleFontSizeTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={ctaTitleFontSize}
-                            onChange={(value) =>
-                              setAttributes({
-                                ctaTitleFontSize: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
+							if ("mobile" === tab.name) {
+							tabout = (
+								<Fragment>
+								<RangeControl
+									label={__(
+									"Font Size",
+									"responsive-block-editor-addons"
+									)}
+									min={0}
+									max={500}
+									value={buttonTextFontSizeMobile}
+									onChange={(value) =>
+									setAttributes({
+										buttonTextFontSizeMobile: value,
+									})
+									}
+								/>
+								</Fragment>
+							);
+							} else if ("tablet" === tab.name) {
+							tabout = (
+								<Fragment>
+								<RangeControl
+									label={__(
+									"Font Size",
+									"responsive-block-editor-addons"
+									)}
+									min={0}
+									max={500}
+									value={buttonTextFontSizeTablet}
+									onChange={(value) =>
+									setAttributes({
+										buttonTextFontSizeTablet: value,
+									})
+									}
+								/>
+								</Fragment>
+							);
+							} else {
+							tabout = (
+								<Fragment>
+								<RangeControl
+									label={__(
+									"Font Size",
+									"responsive-block-editor-addons"
+									)}
+									min={0}
+									max={500}
+									value={buttonTextFontSize}
+									onChange={(value) =>
+									setAttributes({
+										buttonTextFontSize: value,
+									})
+									}
+								/>
+								</Fragment>
+							);
+							}
 
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
+							return <div>{tabout}</div>;
+						}}
+						</TabPanel>
+						<SelectControl
+						label={__("Font Weight", "responsive-block-editor-addons")}
+						options={[
+							{
+							value: "100",
+							label: __("100", "responsive-block-editor-addons"),
+							},
+							{
+							value: "200",
+							label: __("200", "responsive-block-editor-addons"),
+							},
+							{
+							value: "300",
+							label: __("300", "responsive-block-editor-addons"),
+							},
+							{
+							value: "400",
+							label: __("400", "responsive-block-editor-addons"),
+							},
+							{
+							value: "500",
+							label: __("500", "responsive-block-editor-addons"),
+							},
+							{
+							value: "600",
+							label: __("600", "responsive-block-editor-addons"),
+							},
+							{
+							value: "700",
+							label: __("700", "responsive-block-editor-addons"),
+							},
+							{
+							value: "800",
+							label: __("800", "responsive-block-editor-addons"),
+							},
+							{
+							value: "900",
+							label: __("900", "responsive-block-editor-addons"),
+							},
+						]}
+						value={buttonTextFontWeight}
+						onChange={(value) =>
+							this.props.setAttributes({
+							buttonTextFontWeight: value !== undefined ? value : 900,
+							})
+						}
+						/>
+						<RangeControl
+						label={__("Line Height", "responsive-block-editor-addons")}
+						value={buttonTextLineHeight}
+						onChange={(value) =>
+							this.props.setAttributes({
+							buttonTextLineHeight: value,
+							})
+						}
+						min={0}
+						max={100}
+						step={1}
+						/>
+					</PanelBody>
+				)}
+				{resctaType === "button" && (
+					<PanelBody
+						title={__(
+						"Button Typography",
+						"responsive-block-editor-addons"
+						)}
+						initialOpen={false}
+					>
+						<SelectControl
+						label={__("Font Family", "responsive-block-editor-addons")}
+						options={fontOptions}
+						value={buttonTextFontFamily}
+						onChange={(value) => {
+							setAttributes({
+							buttonTextFontFamily: value,
+							}),
+							loadGoogleFont(value);
+						}}
+						/>
+						<TabPanel
+						className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+						activeClass="active-tab"
+						tabs={[
+							{
+							name: "desktop",
+							title: <Dashicon icon="desktop" />,
+							className:
+								" responsive-desktop-tab  responsive-responsive-tabs",
+							},
+							{
+							name: "tablet",
+							title: <Dashicon icon="tablet" />,
+							className:
+								" responsive-tablet-tab  responsive-responsive-tabs",
+							},
+							{
+							name: "mobile",
+							title: <Dashicon icon="smartphone" />,
+							className:
+								" responsive-mobile-tab  responsive-responsive-tabs",
+							},
+						]}
+						>
+						{(tab) => {
+							let tabout;
 
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={headingFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={headingLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                />
-              </PanelBody>
-              {resctaType === "text" && (
-                <PanelBody
-                  title={__(
-                    "CTA Text Typography",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={false}
-                >
-                  <SelectControl
-                    label={__("Font Family", "responsive-block-editor-addons")}
-                    options={fontOptions}
-                    value={buttonTextFontFamily}
-                    onChange={(value) => {
-                      setAttributes({
-                        buttonTextFontFamily: value,
-                      }),
-                        loadGoogleFont(value);
-                    }}
-                  />
-                  <TabPanel
-                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                    activeClass="active-tab"
-                    tabs={[
-                      {
-                        name: "desktop",
-                        title: <Dashicon icon="desktop" />,
-                        className:
-                          " responsive-desktop-tab  responsive-responsive-tabs",
-                      },
-                      {
-                        name: "tablet",
-                        title: <Dashicon icon="tablet" />,
-                        className:
-                          " responsive-tablet-tab  responsive-responsive-tabs",
-                      },
-                      {
-                        name: "mobile",
-                        title: <Dashicon icon="smartphone" />,
-                        className:
-                          " responsive-mobile-tab  responsive-responsive-tabs",
-                      },
-                    ]}
-                  >
-                    {(tab) => {
-                      let tabout;
+							if ("mobile" === tab.name) {
+							tabout = (
+								<Fragment>
+								<RangeControl
+									label={__(
+									"Font Size",
+									"responsive-block-editor-addons"
+									)}
+									min={0}
+									max={500}
+									value={buttonTextFontSizeMobile}
+									onChange={(value) =>
+									setAttributes({
+										buttonTextFontSizeMobile: value,
+									})
+									}
+								/>
+								</Fragment>
+							);
+							} else if ("tablet" === tab.name) {
+							tabout = (
+								<Fragment>
+								<RangeControl
+									label={__(
+									"Font Size",
+									"responsive-block-editor-addons"
+									)}
+									min={0}
+									max={500}
+									value={buttonTextFontSizeTablet}
+									onChange={(value) =>
+									setAttributes({
+										buttonTextFontSizeTablet: value,
+									})
+									}
+								/>
+								</Fragment>
+							);
+							} else {
+							tabout = (
+								<Fragment>
+								<RangeControl
+									label={__(
+									"Font Size",
+									"responsive-block-editor-addons"
+									)}
+									min={0}
+									max={500}
+									value={buttonTextFontSize}
+									onChange={(value) =>
+									setAttributes({
+										buttonTextFontSize: value,
+									})
+									}
+								/>
+								</Fragment>
+							);
+							}
 
-                      if ("mobile" === tab.name) {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Font Size",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={buttonTextFontSizeMobile}
-                              onChange={(value) =>
-                                setAttributes({
-                                  buttonTextFontSizeMobile: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      } else if ("tablet" === tab.name) {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Font Size",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={buttonTextFontSizeTablet}
-                              onChange={(value) =>
-                                setAttributes({
-                                  buttonTextFontSizeTablet: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      } else {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Font Size",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={buttonTextFontSize}
-                              onChange={(value) =>
-                                setAttributes({
-                                  buttonTextFontSize: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      }
-
-                      return <div>{tabout}</div>;
-                    }}
-                  </TabPanel>
-                  <SelectControl
-                    label={__("Font Weight", "responsive-block-editor-addons")}
-                    options={[
-                      {
-                        value: "100",
-                        label: __("100", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "200",
-                        label: __("200", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "300",
-                        label: __("300", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "400",
-                        label: __("400", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "500",
-                        label: __("500", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "600",
-                        label: __("600", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "700",
-                        label: __("700", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "800",
-                        label: __("800", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "900",
-                        label: __("900", "responsive-block-editor-addons"),
-                      },
-                    ]}
-                    value={buttonTextFontWeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        buttonTextFontWeight: value !== undefined ? value : 900,
-                      })
-                    }
-                  />
-                  <RangeControl
-                    label={__("Line Height", "responsive-block-editor-addons")}
-                    value={buttonTextLineHeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        buttonTextLineHeight: value,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    step={1}
-                  />
-                </PanelBody>
-              )}
-              {resctaType === "button" && (
-                <PanelBody
-                  title={__(
-                    "Button Typography",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={false}
-                >
-                  <SelectControl
-                    label={__("Font Family", "responsive-block-editor-addons")}
-                    options={fontOptions}
-                    value={buttonTextFontFamily}
-                    onChange={(value) => {
-                      setAttributes({
-                        buttonTextFontFamily: value,
-                      }),
-                        loadGoogleFont(value);
-                    }}
-                  />
-                  <TabPanel
-                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                    activeClass="active-tab"
-                    tabs={[
-                      {
-                        name: "desktop",
-                        title: <Dashicon icon="desktop" />,
-                        className:
-                          " responsive-desktop-tab  responsive-responsive-tabs",
-                      },
-                      {
-                        name: "tablet",
-                        title: <Dashicon icon="tablet" />,
-                        className:
-                          " responsive-tablet-tab  responsive-responsive-tabs",
-                      },
-                      {
-                        name: "mobile",
-                        title: <Dashicon icon="smartphone" />,
-                        className:
-                          " responsive-mobile-tab  responsive-responsive-tabs",
-                      },
-                    ]}
-                  >
-                    {(tab) => {
-                      let tabout;
-
-                      if ("mobile" === tab.name) {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Font Size",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={buttonTextFontSizeMobile}
-                              onChange={(value) =>
-                                setAttributes({
-                                  buttonTextFontSizeMobile: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      } else if ("tablet" === tab.name) {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Font Size",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={buttonTextFontSizeTablet}
-                              onChange={(value) =>
-                                setAttributes({
-                                  buttonTextFontSizeTablet: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      } else {
-                        tabout = (
-                          <Fragment>
-                            <RangeControl
-                              label={__(
-                                "Font Size",
-                                "responsive-block-editor-addons"
-                              )}
-                              min={0}
-                              max={500}
-                              value={buttonTextFontSize}
-                              onChange={(value) =>
-                                setAttributes({
-                                  buttonTextFontSize: value,
-                                })
-                              }
-                            />
-                          </Fragment>
-                        );
-                      }
-
-                      return <div>{tabout}</div>;
-                    }}
-                  </TabPanel>
-                  <SelectControl
-                    label={__("Font Weight", "responsive-block-editor-addons")}
-                    options={[
-                      {
-                        value: "100",
-                        label: __("100", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "200",
-                        label: __("200", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "300",
-                        label: __("300", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "400",
-                        label: __("400", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "500",
-                        label: __("500", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "600",
-                        label: __("600", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "700",
-                        label: __("700", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "800",
-                        label: __("800", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "900",
-                        label: __("900", "responsive-block-editor-addons"),
-                      },
-                    ]}
-                    value={buttonTextFontWeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        buttonTextFontWeight: value !== undefined ? value : 900,
-                      })
-                    }
-                  />
-                  <RangeControl
-                    label={__("Line Height", "responsive-block-editor-addons")}
-                    value={buttonTextLineHeight}
-                    onChange={(value) =>
-                      this.props.setAttributes({
-                        buttonTextLineHeight: value,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    step={1}
-                  />
-                </PanelBody>
-              )}
-              <PanelBody
-                title={__(
-                  "Description Typography",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={ctaTextFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      ctaTextFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={ctaTextFontSizeMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                ctaTextFontSizeMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={ctaTextFontSizeTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                ctaTextFontSizeTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={ctaTextFontSize}
-                            onChange={(value) =>
-                              setAttributes({
-                                ctaTextFontSize: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={contentFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      contentFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={contentLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      contentLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                />
-              </PanelBody>
-              <PanelColorSettings
-                title={__("Text Color", "responsive-block-editor-addons")}
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: ctaTextColor,
-                    onChange: onChangeTextColor,
-                    label: __("Text Color", "responsive-block-editor-addons"),
-                  },
-                ]}
-              ></PanelColorSettings>
+							return <div>{tabout}</div>;
+						}}
+						</TabPanel>
+						<SelectControl
+						label={__("Font Weight", "responsive-block-editor-addons")}
+						options={[
+							{
+							value: "100",
+							label: __("100", "responsive-block-editor-addons"),
+							},
+							{
+							value: "200",
+							label: __("200", "responsive-block-editor-addons"),
+							},
+							{
+							value: "300",
+							label: __("300", "responsive-block-editor-addons"),
+							},
+							{
+							value: "400",
+							label: __("400", "responsive-block-editor-addons"),
+							},
+							{
+							value: "500",
+							label: __("500", "responsive-block-editor-addons"),
+							},
+							{
+							value: "600",
+							label: __("600", "responsive-block-editor-addons"),
+							},
+							{
+							value: "700",
+							label: __("700", "responsive-block-editor-addons"),
+							},
+							{
+							value: "800",
+							label: __("800", "responsive-block-editor-addons"),
+							},
+							{
+							value: "900",
+							label: __("900", "responsive-block-editor-addons"),
+							},
+						]}
+						value={buttonTextFontWeight}
+						onChange={(value) =>
+							this.props.setAttributes({
+							buttonTextFontWeight: value !== undefined ? value : 900,
+							})
+						}
+						/>
+						<RangeControl
+						label={__("Line Height", "responsive-block-editor-addons")}
+						value={buttonTextLineHeight}
+						onChange={(value) =>
+							this.props.setAttributes({
+							buttonTextLineHeight: value,
+							})
+						}
+						min={0}
+						max={100}
+						step={1}
+						/>
+					</PanelBody>
+				)}
+				<PanelColorSettings
+					title={__("Text Color", "responsive-block-editor-addons")}
+					initialOpen={false}
+					colorSettings={[
+						{
+						value: ctaTextColor,
+						onChange: onChangeTextColor,
+						label: __("Text Color", "responsive-block-editor-addons"),
+						},
+					]}
+				></PanelColorSettings>
             </PanelBody>
             <PanelBody
               title={__("Background Options", "responsive-block-editor-addons")}

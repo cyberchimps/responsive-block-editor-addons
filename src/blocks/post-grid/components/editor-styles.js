@@ -22,8 +22,6 @@ function EditorStyles(props) {
     hoverboxShadowPosition,
     imageBorderRadius,
     titleFontSize,
-    titleFontSizeTablet,
-    titleFontSizeMobile,
     titleColor,
     titleHoverColor,
     stackonMobile,
@@ -85,6 +83,15 @@ function EditorStyles(props) {
     paginationTextActiveColor,
     rowGapTablet,
     rowGapMobile,
+	excerptFontSizeMobile,
+	excerptFontSizeTablet,
+	metaFontSizeMobile,
+	metaFontSizeTablet,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	continueFontFamily,
+	continueFontSizeMobile,
+	continueFontSizeTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -252,6 +259,7 @@ function EditorStyles(props) {
       "line-height": continueLineHeight,
       "text-transform": continueTextTransform,
       "font-size": generateCSSUnit(continueFontSize, "px"),
+	  "font-family": continueFontFamily,
     },
     " .responsive-block-editor-addons-block-post-grid-more-link:hover": {
       color: readMoreHoverColor,
@@ -316,6 +324,15 @@ function EditorStyles(props) {
     " article": {
       "margin-bottom": generateCSSUnit(varrowGapMobile, "px"),
     },
+	" .responsive-block-editor-addons-block-post-grid-byline": {
+		"font-size": generateCSSUnit(metaFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-excerpt": {
+		"font-size": generateCSSUnit(excerptFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-more-link.responsive-block-editor-addons-text-link": {
+		"font-size": generateCSSUnit(continueFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
@@ -344,6 +361,15 @@ function EditorStyles(props) {
     " article": {
       "margin-bottom": generateCSSUnit(varrowGapTablet, "px"),
     },
+	" .responsive-block-editor-addons-block-post-grid-byline": {
+		"font-size": generateCSSUnit(metaFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-excerpt": {
+		"font-size": generateCSSUnit(excerptFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-more-link.responsive-block-editor-addons-text-link": {
+		"font-size": generateCSSUnit(continueFontSizeTablet, "px"),
+	},
   };
 
   var styling_css = "";

@@ -245,6 +245,24 @@ const attributes = {
     type: "number",
     default: 100,
   },
+  contentFontSizeMobile: {
+	type: "number",
+  },
+  contentFontSizeTablet: {
+	type: "number",
+  },
+  nameFontSizeMobile: {
+	type: "number",
+  },
+  nameFontSizeTablet: {
+	type: "number",
+  },
+  titleFontSizeMobile: {
+	type: "number",
+  },
+  titleFontSizeTablet: {
+	type: "number",
+  },
 };
 
 export default attributes;

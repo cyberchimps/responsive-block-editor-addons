@@ -249,5 +249,23 @@ const attributes = {
     type: "string",
     default: "center",
   },
+  dateFontSizeMobile: {
+	type: "number",
+  },
+  dateFontSizeTablet: {
+	type: "number",
+  },
+  headingFontSizeMobile: {
+	type: "number",
+  },
+  headingFontSizeTablet: {
+	type: "number",
+  },
+  contentFontSizeMobile: {
+	type: "number",
+  },
+  contentFontSizeTablet: {
+	type: "number",
+  },
 };
 export default attributes;

@@ -1,6 +1,7 @@
 /**
  * Inspector Controls
  */
+ import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -316,328 +317,98 @@ export default class Inspector extends Component {
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__(
-                  "Heading Typography",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={headingTitleFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      headingTitleFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={headingTitleFontSizeMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingTitleFontSizeMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={headingTitleFontSizeTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingTitleFontSizeTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={headingTitleFontSize}
-                            onChange={(value) =>
-                              setAttributes({
-                                headingTitleFontSize: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={headingTitleFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingTitleFontWeight: value,
-                    })
-                  }
-                />
-                <SelectControl
-                  label={__("Decoration", "responsive-block-editor-addons")}
-                  options={textDecorationOptions}
-                  value={textDecoration}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      textDecoration: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={headingTitleLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingTitleLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                />
-                <RangeControl
-                  label={__("Letter Spacing", "responsive-block-editor-addons")}
-                  value={headingTitleLetterSpacing}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      headingTitleLetterSpacing: value,
-                    })
-                  }
-                  min={1}
-                  max={10}
-                  step={0.1}
-                />
-
-                <ColorPalette
-                  value={headingTitleColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ headingTitleColor: colorValue })
-                  }
-                  allowReset
-                />
-              </PanelBody>
-              <PanelBody
-                title={__(
-                  "Sub Heading Typography",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={subHeadingTitleFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      subHeadingTitleFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={subHeadingTitleFontSizeMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                subHeadingTitleFontSizeMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={subHeadingTitleFontSizeTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                subHeadingTitleFontSizeTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={subHeadingTitleFontSize}
-                            onChange={(value) =>
-                              setAttributes({
-                                subHeadingTitleFontSize: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={subHeadingTitleFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      subHeadingTitleFontWeight: value,
-                    })
-                  }
-                />
-                <SelectControl
-                  label={__("Decoration", "responsive-block-editor-addons")}
-                  options={textDecorationOptions}
-                  value={textDecorationSubHeading}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      textDecorationSubHeading: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={subHeadingTitleLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      subHeadingTitleLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                />
-                <RangeControl
-                  label={__("Letter Spacing", "responsive-block-editor-addons")}
-                  value={subHeadingTitleLetterSpacing}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      subHeadingTitleLetterSpacing: value,
-                    })
-                  }
-                  min={1}
-                  max={10}
-                  step={0.1}
-                />
-
-                <ColorPalette
-                  value={subHeadingTitleColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ subHeadingTitleColor: colorValue })
-                  }
-                  allowReset
-                />
-              </PanelBody>
+				<TypographyHelperControl
+					title={__("Heading Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="headingTitle%s"
+					values={{
+						family: headingTitleFontFamily,
+						size: headingTitleFontSize,
+						sizeMobile: headingTitleFontSizeMobile,
+						sizeTablet: headingTitleFontSizeTablet,
+						weight: headingTitleFontWeight,
+						height: headingTitleLineHeight,
+						spacing: headingTitleLetterSpacing,
+					}}
+					showLetterSpacing={true}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={"Sub Heading Typography"}
+					attrNameTemplate="subHeadingTitle%s"
+					values={{
+						family: subHeadingTitleFontFamily,
+						size: subHeadingTitleFontSize,
+						sizeMobile: subHeadingTitleFontSizeMobile,
+						sizeTablet: subHeadingTitleFontSizeTablet,
+						weight: subHeadingTitleFontWeight,
+						height: subHeadingTitleLineHeight,
+						spacing: subHeadingTitleLetterSpacing,
+					}}
+					showLetterSpacing={true}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
             </PanelBody>
+			<PanelBody
+              title={__("Colors and Decorations", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+				<p className="responsive-block-editor-addons-setting-label">
+                {__("Heading Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{ backgroundColor: headingTitleColor }}
+                  ></span>
+                </span>
+              	</p>
+				<ColorPalette
+					value={headingTitleColor}
+					onChange={(colorValue) =>
+					setAttributes({ headingTitleColor: colorValue })
+					}
+					allowReset
+				/>
+				<p className="responsive-block-editor-addons-setting-label">
+                {__("Sub Heading Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{ backgroundColor: subHeadingTitleColor }}
+                  ></span>
+                </span>
+              	</p>
+				<ColorPalette
+					value={subHeadingTitleColor}
+					onChange={(colorValue) =>
+					setAttributes({ subHeadingTitleColor: colorValue })
+					}
+					allowReset
+				/>
+				<SelectControl
+					label={__("Heading Text Decoration", "responsive-block-editor-addons")}
+					options={textDecorationOptions}
+					value={textDecoration}
+					onChange={(value) =>
+					this.props.setAttributes({
+						textDecoration: value,
+					})
+					}
+				/>
+				<SelectControl
+					label={__("Sub Heading Text Decoration", "responsive-block-editor-addons")}
+					options={textDecorationOptions}
+					value={textDecorationSubHeading}
+					onChange={(value) =>
+					this.props.setAttributes({
+						textDecorationSubHeading: value,
+					})
+					}
+				/>
+			</PanelBody>
             <PanelBody
               title={__("Separator", "responsive-block-editor-addons")}
               initialOpen={false}

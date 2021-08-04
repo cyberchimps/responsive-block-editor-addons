@@ -269,19 +269,19 @@ function EditorStyles(props) {
     "padding-bottom": generateCSSUnit(imgVrPaddingMobile, "px"),
   },
     " .responsive-block-editor-addons-tm__desc": {
-      "font-size": generateCSSUnit(descFontSizeMobile, descFontSizeType),
+      "font-size": generateCSSUnit(descFontSizeMobile, descFontSizeType) + "!important",
       "line-height": generateCSSUnit(descLineHeightMobile, descLineHeightType),
       "margin-bottom": generateCSSUnit(descSpaceMobile, "px"),
     },
     " .responsive-block-editor-addons-tm__company": {
-      "font-size": generateCSSUnit(companyFontSizeMobile, companyFontSizeType),
+      "font-size": generateCSSUnit(companyFontSizeMobile, companyFontSizeType)  + "!important",
       "line-height": generateCSSUnit(
         companyLineHeightMobile,
         companyLineHeightType
       ),
     },
     " .responsive-block-editor-addons-tm__author-name": {
-      "font-size": generateCSSUnit(nameFontSizeMobile, nameFontSizeType),
+      "font-size": generateCSSUnit(nameFontSizeMobile, nameFontSizeType)  + "!important",
       "line-height": generateCSSUnit(nameLineHeightMobile, nameLineHeightType),
       "margin-bottom": generateCSSUnit(nameSpaceMobile, "px"),
     },
@@ -307,19 +307,19 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(imgVrPaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-tm__desc": {
-      "font-size": generateCSSUnit(descFontSizeTablet, descFontSizeType),
+      "font-size": generateCSSUnit(descFontSizeTablet, descFontSizeType)  + "!important",
       "line-height": generateCSSUnit(descLineHeightTablet, descLineHeightType),
       "margin-bottom": generateCSSUnit(descSpaceTablet, "px"),
     },
     " .responsive-block-editor-addons-tm__company": {
-      "font-size": generateCSSUnit(companyFontSizeTablet, companyFontSizeType),
+      "font-size": generateCSSUnit(companyFontSizeTablet, companyFontSizeType)  + "!important",
       "line-height": generateCSSUnit(
         companyLineHeightTablet,
         companyLineHeightType
       ),
     },
     " .responsive-block-editor-addons-tm__author-name": {
-      "font-size": generateCSSUnit(nameFontSizeTablet, nameFontSizeType),
+      "font-size": generateCSSUnit(nameFontSizeTablet, nameFontSizeType)  + "!important",
       "line-height": generateCSSUnit(nameLineHeightTablet, nameLineHeightType),
       "margin-bottom": generateCSSUnit(nameSpaceTablet, "px"),
     },

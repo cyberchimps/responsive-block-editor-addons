@@ -64,6 +64,8 @@ function EditorStyles(props) {
     blockBorderColor,
     blockBorderStyle,
     blockBorderWidth,
+	descriptionFontSizeMobile,
+	descriptionFontSizeTablet,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -104,7 +106,7 @@ function EditorStyles(props) {
       tempsecondaryBackgroundColor || "#ffffff",
       imgopacity || 0
     )}),url(${backgroundImageOne})`
-  
+
     let backgroundImageSecond = `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
@@ -201,7 +203,7 @@ function EditorStyles(props) {
         "background-image": backgroundImageFourth,
     },
 
-    ":hover .responsive-block-editor-addons-add-image": {     
+    ":hover .responsive-block-editor-addons-add-image": {
       "background-image": hoverGradient,
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
     },
@@ -220,7 +222,6 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
       color: titleColor,
-      "margin-top": generateCSSUnit(titleSpacing, "px"),
       "margin-bottom": generateCSSUnit(titleSpacing, "px"),
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
@@ -229,7 +230,6 @@ function EditorStyles(props) {
       "font-weight": descriptionFontWeight,
       "line-height": descriptionLineHeight,
       color: descriptionColor,
-      "margin-top": generateCSSUnit(descriptionSpacing, "px"),
       "margin-bottom": generateCSSUnit(descriptionSpacing, "px"),
     },
     " .imagebox-arrow": {
@@ -242,15 +242,18 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
+	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+		"font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
-    " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
-      "font-size": generateCSSUnit(titleFontSize, "px") + "!important",
-    },
+	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+		"font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+	},
   };
 
   var externalStyles = {
