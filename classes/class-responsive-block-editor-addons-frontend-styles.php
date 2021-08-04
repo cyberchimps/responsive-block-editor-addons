@@ -4258,7 +4258,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['titleFontSize'], 'px' ),
 					'line-height'   => $attr['titleLineHeight'],
 					'color'         => $attr['titleColor'],
-					'margin-top'    => self::get_css_value( $attr['titleSpacing'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleSpacing'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-image-boxes-block-item__description' => array(
@@ -4267,7 +4266,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight'   => $attr['descriptionFontWeight'],
 					'line-height'   => $attr['descriptionLineHeight'],
 					'color'         => $attr['descriptionColor'],
-					'margin-top'    => self::get_css_value( $attr['descriptionSpacing'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['descriptionSpacing'], 'px' ),
 				),
 				' .imagebox-arrow' => array(

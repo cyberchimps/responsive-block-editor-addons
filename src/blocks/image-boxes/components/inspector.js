@@ -1033,6 +1033,19 @@ export default class Inspector extends Component {
                 max={500}
                 step={1}
               />
+                <RangeControl
+                    label={__(
+                        "Box Bottom Padding",
+                        "responsive-block-editor-addons"
+                    )}
+                    value={boxPaddingBottom}
+                    onChange={(newCount) => {
+                        setAttributes({ boxPaddingBottom: newCount });
+                    }}
+                    min={1}
+                    max={500}
+                    step={1}
+                />
               <RangeControl
                 label={__("Box Left Padding", "responsive-block-editor-addons")}
                 value={boxPaddingLeft}
@@ -1053,22 +1066,10 @@ export default class Inspector extends Component {
                   setAttributes({ boxPaddingRight: newCount });
                 }}
                 min={1}
-                max={50}
+                max={500}
                 step={1}
               />
-              <RangeControl
-                label={__(
-                  "Box Bottom Padding",
-                  "responsive-block-editor-addons"
-                )}
-                value={boxPaddingBottom}
-                onChange={(newCount) => {
-                  setAttributes({ boxPaddingBottom: newCount });
-                }}
-                min={1}
-                max={50}
-                step={1}
-              />
+
             </PanelBody>
             <PanelBody
               title={__("Hover Effect", "responsive-block-editor-addons")}
