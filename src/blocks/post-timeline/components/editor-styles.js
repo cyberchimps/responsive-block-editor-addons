@@ -74,6 +74,20 @@ function EditorStyles(props) {
 	contentFontSizeTablet,
 	continueFontSizeMobile,
 	continueFontSizeTablet,
+	contentPaddingTablet,
+	contentPaddingMobile,
+	blockSpaceTablet,
+	blockSpaceMobile,
+	headingSpaceTablet,
+	headingSpaceMobile,
+	authorSpaceTablet,
+	authorSpaceMobile,
+	excerptSpaceTablet,
+	excerptSpaceMobile,
+	verSpaceTablet,
+	verSpaceMobile,
+	horSpaceTablet,
+	horSpaceMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -245,9 +259,35 @@ function EditorStyles(props) {
 	},
 	" .responsive-block-editor-addons-block-post-timeline-excerpt .responsive-block-editor-addons-timeline__post": {
 		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+		"margin-bottom": generateCSSUnit(excerptSpaceMobile, "px"),
 	},
 	" .responsive-block-editor-addons-timeline__date-new.responsive-block-editor-addons-timeline__date-outer": {
 		"font-size": generateCSSUnit(dateFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-content": {
+		"padding": generateCSSUnit(contentPaddingMobile, "px"),
+	},
+	" .responsive-block-editor-addons-timeline__events-new": {
+		"margin-bottom": generateCSSUnit(blockSpaceMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-timeline-title": {
+		"margin-bottom": generateCSSUnit(headingSpaceMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-timeline-byline": {
+		"margin-bottom": generateCSSUnit(authorSpaceMobile, "px"),
+	},
+	" .responsive-block-editor-addons-timeline__field.responsive-block-editor-addons-timeline__field-wrap": {
+		"margin-bottom": generateCSSUnit(verSpaceMobile, "px"),
+	},
+	".responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker": {
+		"margin-left": generateCSSUnit(horSpaceMobile, "px"),
+		"margin-right": generateCSSUnit(horSpaceMobile, "px"),
+	},
+	".responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new": {
+		"margin-left": generateCSSUnit(horSpaceMobile, "px"),
+	},
+	".responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new": {
+		"margin-right": generateCSSUnit(horSpaceMobile, "px"),
 	},
   };
 
@@ -276,9 +316,35 @@ function EditorStyles(props) {
 	},
 	" .responsive-block-editor-addons-block-post-timeline-excerpt .responsive-block-editor-addons-timeline__post": {
 		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+		"margin-bottom": generateCSSUnit(excerptSpaceTablet, "px"),
 	},
 	" .responsive-block-editor-addons-timeline__date-new.responsive-block-editor-addons-timeline__date-outer": {
 		"font-size": generateCSSUnit(dateFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-content": {
+		"padding": generateCSSUnit(contentPaddingTablet, "px"),
+	},
+	" .responsive-block-editor-addons-timeline__events-new": {
+		"margin-bottom": generateCSSUnit(blockSpaceTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-timeline-title": {
+		"margin-bottom": generateCSSUnit(headingSpaceTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-timeline-byline": {
+		"margin-bottom": generateCSSUnit(authorSpaceTablet, "px"),
+	},
+	" .responsive-block-editor-addons-timeline__field.responsive-block-editor-addons-timeline__field-wrap": {
+		"margin-bottom": generateCSSUnit(verSpaceTablet, "px"),
+	},
+	".responsive-block-editor-addons-timeline__center-block .responsive-block-editor-addons-timeline__marker": {
+		"margin-left": generateCSSUnit(horSpaceTablet, "px"),
+		"margin-right": generateCSSUnit(horSpaceTablet, "px"),
+	},
+	".responsive-block-editor-addons-timeline__left-block .responsive-block-editor-addons-timeline__day-new": {
+		"margin-left": generateCSSUnit(horSpaceTablet, "px"),
+	},
+	".responsive-block-editor-addons-timeline__right-block .responsive-block-editor-addons-timeline__day-new": {
+		"margin-right": generateCSSUnit(horSpaceTablet, "px"),
 	},
   };
 
