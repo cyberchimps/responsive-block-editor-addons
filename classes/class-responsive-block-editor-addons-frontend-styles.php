@@ -2345,6 +2345,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$tablet_selectors = array();
 
 			$imgopacity              = $attr['opacity'] / 100;
+			$button_text_opacity     = $attr['ctaTextOpacity'] / 100;
 			$box_shadow_position_css = $attr['boxShadowPosition'];
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
@@ -2358,8 +2359,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_button_background_type    = '';
 
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
-				$updated_button_background_color   = $attr['buttonBackgroundColor'];
-				$updated_button_background_h_color = $attr['hbuttonBackgroundColor'];
+				$updated_button_background_color   = $attr['ctaBackColor'];
+				$updated_button_background_h_color = $attr['ctaHoverBackColor'];
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
@@ -2386,20 +2387,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button' => array(
-					'color' => $attr['buttonTextColor'],
+					'color'   => $attr['ctaColor'],
+					'opacity' => $button_text_opacity,
 				),
 
 				' .responsive-block-editor-addons-cta-button-wrapper:hover .responsive-block-editor-addons-cta-button' => array(
-					'color' => $attr['hbuttonTextColor'],
+					'color' => $attr['ctaHoverColor'],
 				),
 
 				' .responsive-block-editor-addons-cta-button-wrapper:hover' => array(
-					'border-color'     => $attr['buttonborderHColor'],
+					'border-color'     => $attr['ctaHoverBorderColor'],
 					'background-color' => $updated_button_background_h_color,
 				),
 
 				' .responsive-block-editor-addons-cta-link-text' => array(
-					'color'       => $attr['buttonTextColor'],
+					'color'       => $attr['ctaColor'],
 					'font-family' => $attr['buttonTextFontFamily'],
 					'font-size'   => self::get_css_value( $attr['buttonTextFontSize'], 'px' ),
 					'font-weight' => $attr['buttonTextFontWeight'],
@@ -2407,7 +2409,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-cta-link-text:hover' => array(
-					'color' => $attr['hbuttonTextColor'],
+					'color' => $attr['ctaHoverColor'],
 				),
 
 				' .responsive-block-editor-addons-cta-button__icon svg' => array(
@@ -2464,18 +2466,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-cta-button-wrapper' => array(
-					'color'            => $attr['buttonTextColor'],
-					'background-color' => $attr['buttonBackgroundColor'],
-					'padding-top'      => self::get_css_value( $attr['buttonvPadding'], 'px' ),
-					'padding-bottom'   => self::get_css_value( $attr['buttonvPadding'], 'px' ),
-					'padding-left'     => self::get_css_value( $attr['buttonhPadding'], 'px' ),
-					'padding-right'    => self::get_css_value( $attr['buttonhPadding'], 'px' ),
-					'border-style'     => $attr['buttonborderStyle'] ? $attr['buttonborderStyle'] : 'solid',
-					'border-width'     => $attr['buttonborderWidth'] ? self::get_css_value( $attr['buttonborderWidth'], 'px' ) : '1px',
+					'color'            => $attr['ctaColor'],
+					'background-color' => $attr['ctaBackColor'],
+					'padding-top'      => self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'border-style'     => $attr['ctaBorderStyle'] ? $attr['ctaBorderStyle'] : 'solid',
+					'border-width'     => $attr['ctaBorderWidth'] ? self::get_css_value( $attr['ctaBorderWidth'], 'px' ) : '1px',
 					'background-image' => $updated_button_background_type,
 					'margin-bottom'    => self::get_css_value( $attr['buttonSpace'], 'px' ),
-					'border-color'     => $attr['buttonborderColor'],
+					'border-color'     => $attr['ctaBorderColor'],
 					'background-color' => $updated_button_background_color,
+					'border-radius'    => self::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 				),
 
 				' .responsive-block-editor-addons-cta-button__icon' => array(
@@ -2508,7 +2511,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['ctaTextFontSizeMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-cta-button-wrapper' => array(
-					'margin-bottom' => self::get_css_value( $attr['buttonSpaceMobile'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['buttonSpaceMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-cta-button' => array(
 					'font-size' => self::get_css_value( $attr['buttonTextFontSizeMobile'], 'px' ),
@@ -2537,7 +2544,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['ctaTextFontSizeTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-cta-button-wrapper' => array(
-					'margin-bottom' => self::get_css_value( $attr['buttonSpaceTablet'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['buttonSpaceTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-cta-button' => array(
 					'font-size' => self::get_css_value( $attr['buttonTextFontSizeTablet'], 'px' ),
@@ -2570,8 +2581,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonText'               => '',
 				'buttonUrl'                => '',
 				'buttonAlignment'          => 'center',
-				'buttonBackgroundColor'    => '#2091e1',
-				'buttonTextColor'          => '#fff',
+				'ctaBackColor'             => '#2091e1',
+				'ctaColor'                 => '#fff',
 				'buttonSize'               => 'responsive-block-editor-addons-cta-button-size-medium',
 				'buttonShape'              => 'responsive-block-editor-addons-cta-button-shape-rounded',
 				'buttonTarget'             => false,
@@ -2597,17 +2608,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTitleFontWeight'       => '400',
 				'ctaTextLineHeight'        => 1.75,
 				'ctaTextFontWeight'        => '400',
-				'buttonvPadding'           => 10,
-				'buttonhPadding'           => 14,
-				'buttonborderWidth'        => 1,
-				'buttonborderStyle'        => 'solid',
+				'ctaVpadding'              => 10,
+				'ctaHpadding'              => 14,
+				'ctaBorderWidth'           => 1,
+				'ctaBorderStyle'           => 'solid',
 				'icon'                     => '',
 				'iconPosition'             => 'after',
 				'counterId'                => 1,
-				'hbuttonBackgroundColor'   => '',
-				'hbuttonTextColor'         => '#e6f2ff',
-				'buttonborderColor'        => '',
-				'buttonborderHColor'       => '',
+				'ctaHoverBackColor'        => '',
+				'ctaHoverColor'            => '#e6f2ff',
+				'ctaBorderColor'           => '',
+				'ctaHoverBorderColor'      => '',
 				'resctaType'               => 'button',
 				'ctalinkText'              => '',
 				'titleSpace'               => 25,
@@ -2661,6 +2672,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonTextFontSizeTablet' => 18,
 				'buttonTextLineHeight'     => 1,
 				'buttonTextFontWeight'     => '400',
+				'ctaBorderRadius'          => 0,
+				'ctaVpaddingMobile'        => 10,
+				'ctaHpaddingMobile'        => 14,
+				'ctaVpaddingTablet'        => 10,
+				'ctaHpaddingTablet'        => 14,
+				'ctaTextOpacity'           => 100,
 			);
 		}
 
