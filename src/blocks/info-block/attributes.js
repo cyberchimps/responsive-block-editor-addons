@@ -154,7 +154,7 @@ const attributes = {
     type: "string",
     default: "top",
   },
-  resctaTarget: {
+  buttonTarget: {
     type: "boolean",
     default: false,
   },
@@ -207,35 +207,35 @@ const attributes = {
   resctaFontWeight: {
     type: "string",
   },
-  resctaBtnLinkColor: {
+  ctaColor: {
     type: "string",
     default: "#333",
   },
-  resctaBgColor: {
+  ctaBackColor: {
     type: "string",
     default: "transparent",
   },
-  resctaBorderColor: {
+  ctaBorderColor: {
     type: "string",
     default: "#333",
   },
-  resctaBorderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "solid",
   },
-  ctaBtnVertPadding: {
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  ctaBtnHrPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
-  resctaBorderWidth: {
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  resctaBorderRadius: {
+  ctaBorderRadius: {
     type: "number",
     default: 0,
   },
@@ -440,15 +440,15 @@ const attributes = {
     type: "number",
     default: 50,
   },
-  hoverctaBtnLinkColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#333",
   },
-  hoverctaBgColor: {
+  ctaHoverBackColor: {
     type: "string",
     default: "transparent",
   },
-  hoverctaBorderColor: {
+  ctaHoverBorderColor: {
     type: "string",
     default: "#333",
   },
@@ -607,6 +607,44 @@ const attributes = {
   backgroundImageSize: {
     type: "string",
     default: "cover"
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 10,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  buttoncolorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  buttoncolorLocation2: {
+    type: "number",
+    default: 100,
+  },
+  buttongradientDirection: {
+    type: "number",
+    default: 90,
+  },
+  buttonbackgroundColor1: {
+    type: "string",
+  },
+  buttonbackgroundColor2: {
+    type: "string",
+    default: "#fff",
+  },
+  buttonbackgroundType: {
+    type: "string",
   },
 };
 export default attributes;

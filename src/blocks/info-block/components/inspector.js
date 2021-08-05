@@ -18,6 +18,7 @@ import ColorBackgroundControl from "../../../settings-components/Block Backgroun
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ButtonSettingsControl from "../../../settings-components/Button Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -104,10 +105,10 @@ export default class Inspector extends Component {
    * Function Name: toggleTarget.
    */
   toggleTarget() {
-    const { resctaTarget } = this.props.attributes;
+    const { buttonTarget } = this.props.attributes;
     const { setAttributes } = this.props;
 
-    setAttributes({ resctaTarget: !resctaTarget });
+    setAttributes({ buttonTarget: !buttonTarget });
   }
 
   toggleBoxTarget() {
@@ -175,19 +176,16 @@ export default class Inspector extends Component {
         resctaType,
         resctaText,
         resctaLink,
-        resctaTarget,
+        buttonTarget,
         ctaIcon,
         resctaLinkColor,
         resctaFontSize,
         resctaFontWeight,
-        resctaBtnLinkColor,
-        resctaBgColor,
-        ctaBtnVertPadding,
-        ctaBtnHrPadding,
-        resctaBorderStyle,
-        resctaBorderColor,
-        resctaBorderWidth,
-        resctaBorderRadius,
+        ctaColor,
+        ctaBackColor,
+        ctaVpadding,
+        ctaHpadding,
+        ctaBorderColor,
         resprefixSpace,
         resprefixSpaceMobile,
         resprefixSpaceTablet,
@@ -238,9 +236,9 @@ export default class Inspector extends Component {
         dimRatio,
         imgURL,
         imgID,
-        hoverctaBtnLinkColor,
-        hoverctaBgColor,
-        hoverctaBorderColor,
+        ctaHoverColor,
+        ctaHoverBackColor,
+        ctaHoverBorderColor,
         imagePosition,
         imageRepeat,
         thumbsize,
@@ -283,6 +281,19 @@ export default class Inspector extends Component {
         backgroundAttachment,
         backgroundImageRepeat,
         backgroundImageSize,
+        ctaBorderStyle,
+        ctaBorderWidth,
+        ctaBorderRadius,
+        ctaHpaddingTablet,
+        ctaHpaddingMobile,
+        ctaVpaddingTablet,
+        ctaVpaddingMobile,
+        buttonbackgroundColor1,
+        buttonbackgroundColor2,
+        buttoncolorLocation1,
+        buttoncolorLocation2,
+        buttongradientDirection,
+        buttonbackgroundType,
       },
       setAttributes,
     } = this.props;
@@ -1061,7 +1072,7 @@ export default class Inspector extends Component {
                   />
                 </Fragment>
               )}
-              {resctaType !== "none" && resctaType !== "complete_box" && (
+              {resctaType !== "none" && resctaType !== "complete_box" && resctaType !== "button" && (
                 <Fragment>
                   <TextControl
                     label={__("Link", "responsive-block-editor-addons")}
@@ -1073,7 +1084,7 @@ export default class Inspector extends Component {
                       "Open in new Window",
                       "responsive-block-editor-addons"
                     )}
-                    checked={resctaTarget}
+                    checked={buttonTarget}
                     onChange={this.toggleTarget}
                   />
                 </Fragment>
@@ -1096,115 +1107,13 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
               {resctaType == "button" && (
-                <Fragment>
-                  <h2>
-                    {__("Button Padding", "responsive-block-editor-addons")}
-                  </h2>
-                  <RangeControl
-                    label={__(
-                      "Vertical Padding",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={ctaBtnVertPadding}
-                    onChange={(value) =>
-                      setAttributes({
-                        ctaBtnVertPadding: value !== undefined ? value : 10,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    className={"responsive-block-editor-addons-margin-control"}
-                    allowReset
-                  />
-                  <RangeControl
-                    label={__(
-                      "Horizontal Padding",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={ctaBtnHrPadding}
-                    onChange={(value) =>
-                      setAttributes({
-                        ctaBtnHrPadding: value !== undefined ? value : 14,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    className={"responsive-block-editor-addons-margin-control"}
-                    allowReset
-                  />
-                  <hr className="responsive-block-editor-addons-editor__separator" />
-                  <h2>
-                    {__("Button Border", "responsive-block-editor-addons")}
-                  </h2>
-                  <SelectControl
-                    label={__("Style", "responsive-block-editor-addons")}
-                    value={resctaBorderStyle}
-                    onChange={(value) =>
-                      setAttributes({ resctaBorderStyle: value })
-                    }
-                    options={[
-                      {
-                        value: "none",
-                        label: __(
-                          "None",
-                          "responsive-block-editor-addons",
-                          "responsive-block-editor-addons"
-                        ),
-                      },
-                      {
-                        value: "solid",
-                        label: __("Solid", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "double",
-                        label: __("Double", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "dashed",
-                        label: __("Dashed", "responsive-block-editor-addons"),
-                      },
-                      {
-                        value: "dotted",
-                        label: __("Dotted", "responsive-block-editor-addons"),
-                      },
-                    ]}
-                  />
-
-                  {resctaBorderStyle !== "none" && (
-                    <Fragment>
-                      <RangeControl
-                        label={__("Width", "responsive-block-editor-addons")}
-                        value={resctaBorderWidth}
-                        onChange={(value) =>
-                          setAttributes({
-                            resctaBorderWidth: value !== undefined ? value : 1,
-                          })
-                        }
-                        min={0}
-                        max={100}
-                        beforeIcon=""
-                        allowReset
-                      />
-                    </Fragment>
-                  )}
-                  <RangeControl
-                    label={__(
-                      "Rounded Corner",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={resctaBorderRadius}
-                    onChange={(value) =>
-                      setAttributes({
-                        resctaBorderRadius: value !== undefined ? value : 0,
-                      })
-                    }
-                    min={0}
-                    max={50}
-                    beforeIcon=""
-                    allowReset
-                  />
-                  <hr className="responsive-block-editor-addons-editor__separator" />
-                </Fragment>
+                <ButtonSettingsControl
+                  {...this.props}
+                  showMarginControls={false}
+                  showBackColorOpacity={false}
+                  showGradientHover={false}
+                  showTextOpacity={false}
+                />
               )}
 
               {resctaType === "text" && (
@@ -1225,118 +1134,6 @@ export default class Inspector extends Component {
                     }
                     allowReset
                   />
-                </Fragment>
-              )}
-
-              {resctaType == "button" && (
-                <Fragment>
-                  <p className="responsive-block-editor-addons-setting-label">
-                    {__("Text Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: resctaBtnLinkColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={resctaBtnLinkColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ resctaBtnLinkColor: colorValue })
-                    }
-                    allowReset
-                  />
-                  <p className="responsive-block-editor-addons-setting-label">
-                    {__("Background Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: resctaBgColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={resctaBgColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ resctaBgColor: colorValue })
-                    }
-                    allowReset
-                  />
-
-                  <p className="responsive-block-editor-addons-setting-label">
-                    {__("Text Hover Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: hoverctaBtnLinkColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={hoverctaBtnLinkColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ hoverctaBtnLinkColor: colorValue })
-                    }
-                    allowReset
-                  />
-                  <p className="responsive-block-editor-addons-setting-label">
-                    {__(
-                      "Background Hover Color",
-                      "responsive-block-editor-addons"
-                    )}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: hoverctaBgColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={hoverctaBgColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ hoverctaBgColor: colorValue })
-                    }
-                    allowReset
-                  />
-                  {resctaBorderStyle !== "none" && (
-                    <Fragment>
-                      <p className="responsive-block-editor-addons-setting-label">
-                        {__("Border Color", "responsive-block-editor-addons")}
-                        <span className="components-base-control__label">
-                          <span
-                            className="component-color-indicator"
-                            style={{ backgroundColor: resctaBorderColor }}
-                          ></span>
-                        </span>
-                      </p>
-                      <ColorPalette
-                        value={resctaBorderColor}
-                        onChange={(colorValue) =>
-                          setAttributes({ resctaBorderColor: colorValue })
-                        }
-                        allowReset
-                      />
-                      <p className="responsive-block-editor-addons-setting-label">
-                        {__(
-                          "Border Hover Color",
-                          "responsive-block-editor-addons"
-                        )}
-                        <span className="components-base-control__label">
-                          <span
-                            className="component-color-indicator"
-                            style={{ backgroundColor: hoverctaBorderColor }}
-                          ></span>
-                        </span>
-                      </p>
-                      <ColorPalette
-                        value={hoverctaBorderColor}
-                        onChange={(colorValue) =>
-                          setAttributes({ hoverctaBorderColor: colorValue })
-                        }
-                        allowReset
-                      />
-                    </Fragment>
-                  )}
                 </Fragment>
               )}
             </PanelBody>
