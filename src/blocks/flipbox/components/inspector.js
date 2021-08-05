@@ -7,11 +7,13 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 
 // Setup the block
@@ -247,6 +249,36 @@ export default class Inspector extends Component {
         buttonHopacity,
         flipBoxGutterGap,
         stack,
+        frontTitleFontSize,
+        frontTitleFontSizeMobile,
+        frontTitleFontSizeTablet,
+        frontTitleFontWeight,
+        frontTitleLineHeight,
+        frontTitleFontFamily,
+        frontSubtitleFontFamily,
+        frontSubtitleFontSize,
+        frontSubtitleFontSizeMobile,
+        frontSubtitleFontSizeTablet,
+        frontSubtitleFontWeight,
+        frontSubtitleLineHeight,
+        backTitleFontSize,
+        backTitleFontSizeMobile,
+        backTitleFontSizeTablet,
+        backTitleFontWeight,
+        backTitleLineHeight,
+        backTitleFontFamily,
+        backSubtitleFontFamily,
+        backSubtitleFontSize,
+        backSubtitleFontSizeMobile,
+        backSubtitleFontSizeTablet,
+        backSubtitleFontWeight,
+        backSubtitleLineHeight,
+        backButtonFontSize,
+        backButtonFontSizeMobile,
+        backButtonFontSizeTablet,
+        backButtonFontWeight,
+        backButtonLineHeight,
+        backButtonFontFamily,
       },
       setAttributes,
     } = this.props;
@@ -1461,6 +1493,11 @@ export default class Inspector extends Component {
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
+            {frontTitleFontFamily && loadGoogleFont(frontTitleFontFamily)}
+            {frontSubtitleFontFamily && loadGoogleFont(frontSubtitleFontFamily)}
+            {backTitleFontFamily && loadGoogleFont(backTitleFontFamily)}
+            {backSubtitleFontFamily && loadGoogleFont(backSubtitleFontFamily)}
+            {backButtonFontFamily && loadGoogleFont(backButtonFontFamily)}
             {isFrontSelected && (
               <PanelColorSettings
                 title={__(
@@ -1498,6 +1535,38 @@ export default class Inspector extends Component {
                 />
               </PanelColorSettings>
             )}
+            {
+              isFrontSelected && (
+                <Fragment>
+                  {
+                    showFrontTitle && (
+                      <TypographyHelperControl
+                        title={__("Front Title Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="frontTitle%s"
+                        values = {{family: frontTitleFontFamily, size: frontTitleFontSize, sizeMobile: frontTitleFontSizeMobile, sizeTablet: frontTitleFontSizeTablet, weight: frontTitleFontWeight, height: frontTitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showFrontSubtitle && (
+                      <TypographyHelperControl
+                        title={__("Front Subtitle Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="frontSubtitle%s"
+                        values = {{family: frontSubtitleFontFamily, size: frontSubtitleFontSize, sizeMobile: frontSubtitleFontSizeMobile, sizeTablet: frontSubtitleFontSizeTablet, weight: frontSubtitleFontWeight, height: frontSubtitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                </Fragment>
+              )
+            }
             {isBackSelected && (
               <PanelColorSettings
                 title={__(
@@ -1535,6 +1604,51 @@ export default class Inspector extends Component {
                 />
               </PanelColorSettings>
             )}
+            {
+              isBackSelected && (
+                <Fragment>
+                  {
+                    showBackTitle && (
+                      <TypographyHelperControl
+                        title={__("Back Title Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backTitle%s"
+                        values = {{family: backTitleFontFamily, size: backTitleFontSize, sizeMobile: backTitleFontSizeMobile, sizeTablet: backTitleFontSizeTablet, weight: backTitleFontWeight, height: backTitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showBackSubtitle && (
+                      <TypographyHelperControl
+                        title={__("Back Subtitle Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backSubtitle%s"
+                        values = {{family: backSubtitleFontFamily, size: backSubtitleFontSize, sizeMobile: backSubtitleFontSizeMobile, sizeTablet: backSubtitleFontSizeTablet, weight: backSubtitleFontWeight, height: backSubtitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showBackButton && (
+                      <TypographyHelperControl
+                        title={__("Back Button Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backButton%s"
+                        values = {{family: backButtonFontFamily, size: backButtonFontSize, sizeMobile: backButtonFontSizeMobile, sizeTablet: backButtonFontSizeTablet, weight: backButtonFontWeight, height: backButtonLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                </Fragment>
+              )
+            }
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
