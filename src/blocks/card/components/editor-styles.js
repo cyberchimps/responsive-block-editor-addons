@@ -32,8 +32,8 @@ function EditorStyles(props) {
     contentSpace,
     contentSpaceMobile,
     contentSpaceTablet,
-    buttonColor,
-    buttonTextColor,
+    ctaBackColor,
+    ctaColor,
     opacity,
     backgroundType,
     backgroundImage,
@@ -51,16 +51,16 @@ function EditorStyles(props) {
     blockmarginMobile,
     blockmarginTablet,
     icon_color,
-    buttonhColor,
-    buttonhTextColor,
-    butopacity,
-    vPadding,
-    hPadding,
+    ctaHoverBackColor,
+    ctaHoverColor,
+    buttonopacity,
+    ctaVpadding,
+    ctaHpadding,
     vMargin,
     hMargin,
-    butborderWidth,
-    butborderRadius,
-    butborderStyle,
+    ctaBorderWidth,
+    ctaBorderRadius,
+    ctaBorderStyle,
     buttonbackgroundType,
     buttongradientDirection,
     buttoncolorLocation1,
@@ -102,12 +102,24 @@ function EditorStyles(props) {
     backgroundImagePosition,
     backgroundImageSize,
     backgroundImageRepeat,
-	headingFontSizeMobile,
-	headingFontSizeTablet,
-	subFontSizeMobile,
-	subFontSizeTablet,
-	contentFontSizeMobile,
-	contentFontSizeTablet,
+    headingFontSizeMobile,
+    headingFontSizeTablet,
+    subFontSizeMobile,
+    subFontSizeTablet,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
+    buttonHopacity,
+    ctaBorderColor,
+    ctaHoverBorderColor,
+    ctaTextOpacity,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    vMarginTablet,
+    vMarginMobile,
+    hMarginTablet,
+    hMarginMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -118,22 +130,25 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
-  let buttonopacity = butopacity / 100;
+  let butopacity = buttonopacity / 100;
+  let buthopacity = buttonHopacity / 100;
+  let textOpacity = ctaTextOpacity / 100;
 
   let updatedButtonColor = "";
   let updatedButtonhColor = "";
   if (buttonbackgroundType == "color") {
-    updatedButtonColor = buttonColor;
-    updatedButtonhColor = buttonhColor;
+    updatedButtonColor = ctaBackColor;
+    updatedButtonhColor = ctaHoverBackColor;
   }
 
   var selectors = {
     " .responsive-block-editor-addons-card-button-inner .res-button": {
-      color: buttonTextColor,
+      color: ctaColor,
+      opacity: textOpacity,
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover .res-button": {
-      color: buttonhTextColor,
+      color: ctaHoverColor,
     },
 
     " .responsive-block-editor-addons-card-button-inner .responsive-block-editor-addons-button__icon svg": {
@@ -147,12 +162,16 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-card-item__button-wrapper .responsive-block-editor-addons-card-button-inner": {
       "background-color": hexToRgba(
         updatedButtonColor || "#2091e1",
-        buttonopacity || 0
+        butopacity || 0
       ),
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover": {
-      "background-color": updatedButtonhColor,
+      "background-color": hexToRgba(
+        updatedButtonhColor || "#2091e1",
+        buthopacity || 0
+      ),
+      "border-color": ctaHoverBorderColor,
     },
 
     "": {
@@ -289,20 +308,21 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-card-button-inner": {
-      "padding-top": generateCSSUnit(vPadding, "px"),
-      "padding-bottom": generateCSSUnit(vPadding, "px"),
-      "padding-left": generateCSSUnit(hPadding, "px"),
-      "padding-right": generateCSSUnit(hPadding, "px"),
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "margin-top": generateCSSUnit(vMargin, "px"),
       "margin-bottom": generateCSSUnit(vMargin, "px"),
       "margin-left": generateCSSUnit(hMargin, "px"),
       "margin-right": generateCSSUnit(hMargin, "px"),
-      "border-style": butborderStyle ? butborderStyle : "none",
-      "border-radius": butborderRadius
-        ? generateCSSUnit(butborderRadius, "px")
+      "border-style": ctaBorderStyle ? ctaBorderStyle : "none",
+      "border-color": ctaBorderColor,
+      "border-radius": ctaBorderRadius
+        ? generateCSSUnit(ctaBorderRadius, "px")
         : "",
-      "border-width": butborderWidth
-        ? generateCSSUnit(butborderWidth, "px")
+      "border-width": ctaBorderWidth
+        ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px",
       "background-image":
         buttonbackgroundType == "gradient"
@@ -340,7 +360,17 @@ function EditorStyles(props) {
     },
 	" .wp-block-responsive-block-editor-addons-card-item__content": {
 		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
-	}
+	},
+  " .responsive-block-editor-addons-card-button-inner": {
+    "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+    "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+    "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+    "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+    "margin-top": generateCSSUnit(vMarginMobile, "px"),
+    "margin-bottom": generateCSSUnit(vMarginMobile, "px"),
+    "margin-left": generateCSSUnit(hMarginMobile, "px"),
+    "margin-right": generateCSSUnit(hMarginMobile, "px"),
+  },
   };
 
   var tablet_selectors = {
@@ -366,7 +396,17 @@ function EditorStyles(props) {
     },
 	" .wp-block-responsive-block-editor-addons-card-item__content": {
 		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
-	}
+	},
+  " .responsive-block-editor-addons-card-button-inner": {
+    "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+    "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+    "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+    "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+    "margin-top": generateCSSUnit(vMarginTablet, "px"),
+    "margin-bottom": generateCSSUnit(vMarginTablet, "px"),
+    "margin-left": generateCSSUnit(hMarginTablet, "px"),
+    "margin-right": generateCSSUnit(hMarginTablet, "px"),
+  },
   };
 
   var styling_css = "";

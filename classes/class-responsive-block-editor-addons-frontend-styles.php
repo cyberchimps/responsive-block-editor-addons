@@ -2678,8 +2678,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$imgopacity    = $attr['opacity'] / 100;
-			$buttonopacity = $attr['butopacity'] / 100;
+			$imgopacity  = $attr['opacity'] / 100;
+			$butopacity  = $attr['buttonopacity'] / 100;
+			$buthopacity = $attr['buttonHopacity'] / 100;
+			$textopacity = $attr['ctaTextOpacity'] / 100;
 
 			$updated_button_color            = '';
 			$updated_buttonh_color           = '';
@@ -2694,8 +2696,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
-				$updated_button_color  = self::hex_to_rgb( $attr['buttonColor'] ? $attr['buttonColor'] : '#2091e1', $buttonopacity );
-				$updated_buttonh_color = self::hex_to_rgb( $attr['buttonhColor'] ? $attr['buttonhColor'] : '#0071a1', $buttonopacity );
+				$updated_button_color  = self::hex_to_rgb( $attr['ctaBackColor'] ? $attr['ctaBackColor'] : '#2091e1', $butopacity );
+				$updated_buttonh_color = self::hex_to_rgb( $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : '#0071a1', $buthopacity );
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
@@ -2714,11 +2716,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' .responsive-block-editor-addons-card-button-inner .res-button' => array(
-					'color' => $attr['buttonTextColor'],
+					'color'   => $attr['ctaColor'],
+					'opacity' => $textopacity,
 				),
 
 				' .responsive-block-editor-addons-card-button-inner:hover .res-button' => array(
-					'color' => $attr['buttonhTextColor'],
+					'color' => $attr['ctaHoverColor'],
 				),
 
 				' .responsive-block-editor-addons-card-button-inner .responsive-block-editor-addons-button__icon svg' => array(
@@ -2735,6 +2738,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .responsive-block-editor-addons-card-button-inner:hover' => array(
 					'background-color' => $updated_buttonh_color,
+					'border-color'     => $attr['ctaHoverBorderColor'],
 				),
 
 				''                    => array(
@@ -2839,18 +2843,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-card-button-inner' => array(
-					'padding-top'      => self::get_css_value( $attr['vPadding'], 'px' ),
-					'padding-bottom'   => self::get_css_value( $attr['vPadding'], 'px' ),
-					'padding-left'     => self::get_css_value( $attr['hPadding'], 'px' ),
-					'padding-right'    => self::get_css_value( $attr['hPadding'], 'px' ),
+					'padding-top'      => self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['ctaHpadding'], 'px' ),
 					'margin-top'       => self::get_css_value( $attr['vMargin'], 'px' ),
 					'margin-bottom'    => self::get_css_value( $attr['vMargin'], 'px' ),
 					'margin-left'      => self::get_css_value( $attr['hMargin'], 'px' ),
 					'margin-right'     => self::get_css_value( $attr['hMargin'], 'px' ),
-					'border-style'     => $attr['butborderStyle'],
-					'border-radius'    => self::get_css_value( $attr['butborderRadius'], 'px' ),
-					'border-width'     => self::get_css_value( $attr['butborderWidth'], 'px' ),
+					'border-style'     => $attr['ctaBorderStyle'],
+					'border-radius'    => self::get_css_value( $attr['ctaBorderRadius'], 'px' ),
+					'border-width'     => self::get_css_value( $attr['ctaBorderWidth'], 'px' ),
 					'background-image' => $updated_button_background_color,
+					'border-color'     => $attr['ctaBorderColor'],
 				),
 
 			);
@@ -2879,6 +2884,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
 					'font-size' => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
 				),
+				' .responsive-block-editor-addons-card-button-inner' => array(
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['vMarginMobile'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['vMarginMobile'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['hMarginMobile'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['hMarginMobile'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -2904,6 +2919,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
 					'font-size' => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-card-button-inner' => array(
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['vMarginTablet'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['vMarginTablet'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['hMarginTablet'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['hMarginTablet'], 'px' ),
 				),
 			);
 
@@ -2934,8 +2959,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentAlign'            => 'center',
 				'textColor'               => '',
 				'backgroundColor'         => '',
-				'buttonColor'             => '',
-				'buttonTextColor'         => '#fff',
+				'ctaBackColor'            => '',
+				'ctaColor'                => '#fff',
 				'boxShadowColor'          => '',
 				'boxShadowHOffset'        => 0,
 				'boxShadowVOffset'        => 0,
@@ -2976,16 +3001,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconPosition'            => 'after',
 				'icon_color'              => '#3a3a3a',
 				'counterId'               => 1,
-				'buttonhColor'            => '',
-				'buttonhTextColor'        => '#e6f2ff',
-				'butopacity'              => 100,
-				'vPadding'                => 10,
-				'hPadding'                => 14,
+				'ctaHoverBackColor'       => '',
+				'ctaHoverColor'           => '#e6f2ff',
+				'buttonopacity'           => 100,
+				'buttonHopacity'          => 100,
+				'ctaVpadding'             => 10,
+				'ctaHpadding'             => 14,
 				'vMargin'                 => 10,
 				'hMargin'                 => 0,
-				'butborderWidth'          => 1,
-				'butborderRadius'         => 2,
-				'butborderStyle'          => 'none',
+				'ctaBorderWidth'          => 1,
+				'ctaBorderRadius'         => 2,
+				'ctaBorderStyle'          => 'none',
 				'buttonSize'              => 'responsive-block-editor-addons-button-size-medium',
 				'buttoncolorLocation1'    => 0,
 				'buttoncolorLocation2'    => 100,
@@ -3041,6 +3067,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'subFontSizeTablet'       => '',
 				'contentFontSizeMobile'   => '',
 				'contentFontSizeTablet'   => '',
+				'ctaBorderColor'          => '',
+				'ctaHoverBorderColor'     => '',
+				'ctaTextOpacity'          => 100,
+				'ctaHpaddingTablet'       => 14,
+				'ctaHpaddingMobile'       => 14,
+				'ctaVpaddingTablet'       => 10,
+				'ctaVpaddingMobile'       => 10,
+				'vMarginTablet'           => 10,
+				'vMarginMobile'           => 10,
+				'hMarginTablet'           => 0,
+				'hMarginMobile'           => 0,
 			);
 		}
 
