@@ -32,9 +32,17 @@ function EditorStyles(props) {
     imageSize,
     imageWidth,
     contentSpacing,
+    contentSpacingMobile,
+    contentSpacingTablet,
     titleSpacing,
+    titleSpacingMobile,
+    titleSpacingTablet,
     nameSpacing,
+    nameSpacingMobile,
+    nameSpacingTablet,
     imageSpacing,
+    imageSpacingMobile,
+    imageSpacingTablet,
     testimonialTextColor,
     testimonialTitleColor,
     testimonialNameColor,
@@ -72,12 +80,12 @@ function EditorStyles(props) {
     imageShape,
     colorLocation1,
     colorLocation2,
-	contentFontSizeMobile,
-	contentFontSizeTablet,
-	nameFontSizeMobile,
-	nameFontSizeTablet,
-	titleFontSizeMobile,
-	titleFontSizeTablet,
+	  contentFontSizeMobile,
+	  contentFontSizeTablet,
+	  nameFontSizeMobile,
+	  nameFontSizeTablet,
+	  titleFontSizeMobile,
+	  titleFontSizeTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -181,15 +189,23 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : '0 !important',
     },
-	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
-		"font-size": generateCSSUnit(nameFontSizeMobile, "px"),
-	},
-	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
-		"font-size": generateCSSUnit(titleFontSizeMobile, "px"),
-	},
-	" .responsive-block-editor-addons-testimonial-text": {
-		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
-	},
+	  " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
+	  	"font-size": generateCSSUnit(nameFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(nameSpacingMobile, "px"),
+	  },
+	  " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
+	  	"font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+	  },
+	  " .responsive-block-editor-addons-testimonial-text": {
+	  	"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(contentSpacingMobile, "px"),
+	  },
+    " .responsive-block-editor-addons-testimonial-info": {
+      "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
+      "padding-right": generateCSSUnit(imageSpacingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -199,15 +215,23 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : `${generateCSSUnit(20, "px")} !important`,
     },
-	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
-		"font-size": generateCSSUnit(nameFontSizeTablet, "px"),
-	},
-	" .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
-		"font-size": generateCSSUnit(titleFontSizeTablet, "px"),
-	},
-	" .responsive-block-editor-addons-testimonial-text": {
-		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
-	},
+	  " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-name": {
+	  	"font-size": generateCSSUnit(nameFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(nameSpacingTablet, "px"),
+	  },
+	  " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
+	  	"font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+	  },
+	  " .responsive-block-editor-addons-testimonial-text": {
+	  	"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(contentSpacingTablet, "px"),
+	  },
+    " .responsive-block-editor-addons-testimonial-info": {
+      "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
+      "padding-right": generateCSSUnit(imageSpacingTablet, "px"),
+    },
   };
 
   var styling_css = "";

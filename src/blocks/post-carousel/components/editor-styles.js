@@ -42,8 +42,12 @@ function EditorStyles(props) {
     ctaHpadding,
     ctaVpadding,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     rowGap,
     columnGap,
+    columnGapMobile,
+    columnGapTablet,
     imageSpace,
     titleSpace,
     dateSpace,
@@ -72,14 +76,13 @@ function EditorStyles(props) {
     readMoreText,
     equalHeight,
     buttonTarget,
-    contentPaddingMobile,
     bgColor,
-	metaFontSizeMobile,
-	metaFontSizeTablet,
-	excerptFontSizeMobile,
-	excerptFontSizeTablet,
-	ctaFontSizeMobile,
-	ctaFontSizeTablet,
+    metaFontSizeMobile,
+    metaFontSizeTablet,
+    excerptFontSizeMobile,
+    excerptFontSizeTablet,
+    ctaFontSizeMobile,
+    ctaFontSizeTablet,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -142,7 +145,7 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "padding-top": generateCSSUnit(ctaVpadding, "px"),
       "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
-      "display": "inline-block",
+      display: "inline-block",
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link:hover": {
       color: ctaHoverColor,
@@ -200,15 +203,19 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-text-wrap": {
       padding: generateCSSUnit(contentPaddingMobile, "px"),
     },
-	" .responsive-block-editor-addons-block-post-carousel-byline": {
-		"font-size": generateCSSUnit(metaFontSizeMobile, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-excerpt": {
-		"font-size": generateCSSUnit(excerptFontSizeMobile, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
-		"font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
-	}
+    " .responsive-block-editor-addons-block-post-carousel-byline": {
+      "font-size": generateCSSUnit(metaFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-excerpt": {
+      "font-size": generateCSSUnit(excerptFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
+      "font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
+    },
+    " .responsive-post-slick-carousel .slick-slide>div:first-child": {
+      "margin-left": generateCSSUnit(columnGapMobile / 2, "px"),
+      "margin-right": generateCSSUnit(columnGapMobile / 2, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -216,17 +223,21 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-block-post-carousel-text-wrap": {
-      padding: generateCSSUnit(contentPadding, "px"),
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
     },
-	" .responsive-block-editor-addons-block-post-carousel-byline": {
-		"font-size": generateCSSUnit(metaFontSizeTablet, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-excerpt": {
-		"font-size": generateCSSUnit(excerptFontSizeTablet, "px"),
-	},
-	" .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
-		"font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
-	}
+    " .responsive-block-editor-addons-block-post-carousel-byline": {
+      "font-size": generateCSSUnit(metaFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-excerpt": {
+      "font-size": generateCSSUnit(excerptFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
+      "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
+    },
+    " .responsive-post-slick-carousel .slick-slide>div:first-child": {
+      "margin-left": generateCSSUnit(columnGapTablet / 2, "px"),
+      "margin-right": generateCSSUnit(columnGapTablet / 2, "px"),
+    },
   };
   var extra_styles = {
     ".editor-styles-wrapper .responsive-block-editor-addons-block-post-carousel-excerpt p": {

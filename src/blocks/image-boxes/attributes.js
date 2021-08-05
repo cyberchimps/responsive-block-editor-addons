@@ -71,6 +71,18 @@ const attributes = {
   descriptionSpacing: {
     type: "number",
   },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
+    type: "number",
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
   blockBorderRadius: {
     type: "number",
   },
