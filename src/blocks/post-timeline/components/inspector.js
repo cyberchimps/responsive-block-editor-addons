@@ -3,6 +3,7 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 /**
  * Inspector Controls
@@ -1058,77 +1059,88 @@ export default class Inspector extends Component {
               title={__("Padding", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Content Padding", "responsive-block-editor-addons")}
-                value={attributes.contentPadding}
-                onChange={(value) =>
-                  this.props.setAttributes({
-                    contentPadding: value,
-                  })
-                }
-                min={0}
-                max={50}
-                step={1}
-              />
+				<ResponsiveSpacingControl
+					title={"Content Padding"}
+					attrNameTemplate="contentPadding%s"
+					values={{
+						desktop: attributes.contentPadding,
+						tablet: attributes.contentPaddingTablet,
+						mobile: attributes.contentPaddingMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
             </PanelBody>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Block Bottom", "responsive-block-editor-addons")}
-                value={attributes.blockSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({ blockSpace: value })
-                }
-                min={0}
-                max={50}
-              />
-              <RangeControl
-                label={__("Heading Bottom", "responsive-block-editor-addons")}
-                value={attributes.headingSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({ headingSpace: value })
-                }
-                min={0}
-                max={50}
-              />
-              <RangeControl
-                label={__("Author Bottom", "responsive-block-editor-addons")}
-                value={attributes.authorSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({ authorSpace: value })
-                }
-                min={0}
-                max={50}
-              />
-              <RangeControl
-                label={__("Excerpt Bottom", "responsive-block-editor-addons")}
-                value={attributes.excerptSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({ excerptSpace: value })
-                }
-                min={0}
-                max={100}
-              />
-              <RangeControl
-                label={__("Vertical Space", "responsive-block-editor-addons")}
-                value={attributes.verSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({ verSpace: value })
-                }
-                min={0}
-                max={100}
-              />
-              <RangeControl
-                label={__("Horizontal Space", "responsive-block-editor-addons")}
-                value={attributes.horSpace}
-                onChange={(value) =>
-                  this.props.setAttributes({ horSpace: value })
-                }
-                min={0}
-                max={50}
-              />
+				<ResponsiveSpacingControl
+					title={"Block Bottom"}
+					attrNameTemplate="blockSpace%s"
+					values={{
+						desktop: attributes.blockSpace,
+						tablet: attributes.blockSpaceTablet,
+						mobile: attributes.blockSpaceMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<ResponsiveSpacingControl
+					title={"Heading Bottom"}
+					attrNameTemplate="headingSpace%s"
+					values={{
+						desktop: attributes.headingSpace,
+						tablet: attributes.headingSpaceTablet,
+						mobile: attributes.headingSpaceMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<ResponsiveSpacingControl
+					title={"Author Bottom"}
+					attrNameTemplate="authorSpace%s"
+					values={{
+						desktop: attributes.authorSpace,
+						tablet: attributes.authorSpaceTablet,
+						mobile: attributes.authorSpaceMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<ResponsiveSpacingControl
+					title={"Excerpt Bottom"}
+					attrNameTemplate="excerptSpace%s"
+					values={{
+						desktop: attributes.excerptSpace,
+						tablet: attributes.excerptSpaceTablet,
+						mobile: attributes.excerptSpaceMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<ResponsiveSpacingControl
+					title={"Vertical Space"}
+					attrNameTemplate="verSpace%s"
+					values={{
+						desktop: attributes.verSpace,
+						tablet: attributes.verSpaceTablet,
+						mobile: attributes.verSpaceMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<ResponsiveSpacingControl
+					title={"Horizontal Space"}
+					attrNameTemplate="horSpace%s"
+					values={{
+						desktop: attributes.horSpace,
+						tablet: attributes.horSpaceTablet,
+						mobile: attributes.horSpaceMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
             </PanelBody>
             <PanelBody
               title={__("Button Box Shadow", "responsive-block-editor-addons")}

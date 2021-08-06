@@ -3,6 +3,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
 import ButtonSettingsControl from "../../../settings-components/Button Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 /**
  * Inspector Controls
@@ -145,8 +146,12 @@ export default class Inspector extends Component {
       ctaHpadding,
       ctaVpadding,
       contentPadding,
+      contentPaddingMobile,
+      contentPaddingTablet,
       rowGap,
       columnGap,
+      columnGapMobile,
+      columnGapTablet,
       imageSpace,
       titleSpace,
       dateSpace,
@@ -176,7 +181,6 @@ export default class Inspector extends Component {
       readMoreText,
       equalHeight,
       buttonTarget,
-      contentPaddingMobile,
       metaFontSizeMobile,
       metaFontSizeTablet,
       excerptFontSizeMobile,
@@ -765,101 +769,88 @@ export default class Inspector extends Component {
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-				<TypographyHelperControl
-					title={__("Title Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="title%s"
-					values={{
-					family: titleFontFamily,
-					size: titleFontSize,
-					sizeMobile: titleFontSizeMobile,
-					sizeTablet: titleFontSizeTablet,
-					weight: titleFontWeight,
-					height: titleLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Meta Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="meta%s"
-					values={{
-					family: metaFontFamily,
-					size: metaFontSize,
-					sizeMobile: metaFontSizeMobile,
-					sizeTablet: metaFontSizeTablet,
-					weight: metaFontWeight,
-					height: metaLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Excerpt Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="excerpt%s"
-					values={{
-					family: excerptFontFamily,
-					size: excerptFontSize,
-					sizeMobile: excerptFontSizeMobile,
-					sizeTablet: excerptFontSizeTablet,
-					weight: excerptFontWeight,
-					height: excerptLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("CTA Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="cta%s"
-					values={{
-					family: ctaFontFamily,
-					size: ctaFontSize,
-					sizeMobile: ctaFontSizeMobile,
-					sizeTablet: ctaFontSizeTablet,
-					weight: ctaFontWeight,
-					height: ctaLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
+              <TypographyHelperControl
+                title={__("Title Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="title%s"
+                values={{
+                  family: titleFontFamily,
+                  size: titleFontSize,
+                  sizeMobile: titleFontSizeMobile,
+                  sizeTablet: titleFontSizeTablet,
+                  weight: titleFontWeight,
+                  height: titleLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__("Meta Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="meta%s"
+                values={{
+                  family: metaFontFamily,
+                  size: metaFontSize,
+                  sizeMobile: metaFontSizeMobile,
+                  sizeTablet: metaFontSizeTablet,
+                  weight: metaFontWeight,
+                  height: metaLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Excerpt Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="excerpt%s"
+                values={{
+                  family: excerptFontFamily,
+                  size: excerptFontSize,
+                  sizeMobile: excerptFontSizeMobile,
+                  sizeTablet: excerptFontSizeTablet,
+                  weight: excerptFontWeight,
+                  height: excerptLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__("CTA Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="cta%s"
+                values={{
+                  family: ctaFontFamily,
+                  size: ctaFontSize,
+                  sizeMobile: ctaFontSizeMobile,
+                  sizeTablet: ctaFontSizeTablet,
+                  weight: ctaFontWeight,
+                  height: ctaLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Content Padding", "responsive-block-editor-addons")}
-                value={contentPadding}
-                onChange={(value) =>
-                  setAttributes({
-                    contentPadding: value !== undefined ? value : 20,
-                  })
-                }
-                min={0}
-                max={500}
-                allowReset
-              />
-              <RangeControl
-                label={__(
-                  "Content Padding Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                value={contentPaddingMobile}
-                onChange={(value) =>
-                  setAttributes({
-                    contentPaddingMobile: value !== undefined ? value : 20,
-                  })
-                }
-                min={0}
-                max={500}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Content Padding"}
+                attrNameTemplate="contentPadding%s"
+                values={{
+                  desktop: contentPadding,
+                  tablet: contentPaddingTablet,
+                  mobile: contentPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
               <RangeControl
                 label={__("Gap Between Content & Dots")}
@@ -871,15 +862,16 @@ export default class Inspector extends Component {
                 max={50}
                 allowReset
               />
-              <RangeControl
-                label={__("Column Gap")}
-                value={columnGap}
-                onChange={(value) =>
-                  setAttributes({ columnGap: value !== undefined ? value : 20 })
-                }
-                min={0}
-                max={50}
-                allowReset
+              <ResponsiveSpacingControl
+                title={"Column Gap"}
+                attrNameTemplate="columnGap%s"
+                values={{
+                  desktop: columnGap,
+                  tablet: columnGapTablet,
+                  mobile: columnGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
               <RangeControl
                 label={__("Title Top Margin")}

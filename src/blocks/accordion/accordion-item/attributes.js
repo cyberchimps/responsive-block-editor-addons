@@ -78,6 +78,22 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  titlePaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  titlePaddingTablet: {
+    type: "number",
+    default: 10,
+  },
+  contentPaddingTablet: {
+    type: "number",
+    default: 10,
+  },
 };
 
 export default attributes;

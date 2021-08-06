@@ -42,8 +42,12 @@ function EditorStyles(props) {
     ctaHpadding,
     ctaVpadding,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     rowGap,
     columnGap,
+    columnGapMobile,
+    columnGapTablet,
     imageSpace,
     titleSpace,
     dateSpace,
@@ -72,7 +76,6 @@ function EditorStyles(props) {
     readMoreText,
     equalHeight,
     buttonTarget,
-    contentPaddingMobile,
     bgColor,
     metaFontSizeMobile,
     metaFontSizeTablet,
@@ -235,6 +238,10 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
     },
+    " .responsive-post-slick-carousel .slick-slide>div:first-child": {
+      "margin-left": generateCSSUnit(columnGapMobile / 2, "px"),
+      "margin-right": generateCSSUnit(columnGapMobile / 2, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -242,7 +249,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-block-post-carousel-text-wrap": {
-      padding: generateCSSUnit(contentPadding, "px"),
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-block-post-carousel-byline": {
       "font-size": generateCSSUnit(metaFontSizeTablet, "px"),
@@ -252,6 +259,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
       "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
+    },
+    " .responsive-post-slick-carousel .slick-slide>div:first-child": {
+      "margin-left": generateCSSUnit(columnGapTablet / 2, "px"),
+      "margin-right": generateCSSUnit(columnGapTablet / 2, "px"),
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link": {
       "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),

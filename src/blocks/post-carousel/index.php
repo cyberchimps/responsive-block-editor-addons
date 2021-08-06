@@ -260,6 +260,7 @@ function get_responsive_post_carousel_default_attributes() {
 		'bgColor'               => '#ffffff',
 		'contentPadding'        => 20,
 		'contentPaddingMobile'  => 20,
+		'contentPaddingTablet'  => 20,
 		'columnsTablet'         => '',
 		'columnsMobile'         => '',
 		'metaFontSizeMobile'    => '',
@@ -859,11 +860,23 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'contentPaddingTablet'    => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
 				'rowGap'                  => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
 				'columnGap'               => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'columnGapMobile'         => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'columnGapTablet'         => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
