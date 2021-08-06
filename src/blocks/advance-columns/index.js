@@ -61,44 +61,44 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
       type: "string",
       default: "mobile",
     },
-    topPadding: {
+    boxTopPadding: {
       type: "number",
       default: 10,
     },
-    bottomPadding: {
+    boxBottomPadding: {
       type: "number",
       default: 10,
     },
-    leftPadding: {
+    boxLeftPadding: {
       type: "number",
       default: 10,
     },
-    rightPadding: {
+    boxRightPadding: {
       type: "number",
       default: 10,
     },
-    topPaddingTablet: {
+    boxTopPaddingTablet: {
       type: "number",
     },
-    bottomPaddingTablet: {
+    boxBottomPaddingTablet: {
       type: "number",
     },
-    leftPaddingTablet: {
+    boxLeftPaddingTablet: {
       type: "number",
     },
-    rightPaddingTablet: {
+    boxRightPaddingTablet: {
       type: "number",
     },
-    topPaddingMobile: {
+    boxTopPaddingMobile: {
       type: "number",
     },
-    bottomPaddingMobile: {
+    boxBottomPaddingMobile: {
       type: "number",
     },
-    leftPaddingMobile: {
+    boxLeftPaddingMobile: {
       type: "number",
     },
-    rightPaddingMobile: {
+    boxRightPaddingMobile: {
       type: "number",
     },
     topMargin: {
