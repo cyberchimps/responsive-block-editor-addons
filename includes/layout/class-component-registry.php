@@ -24,28 +24,28 @@ final class Component_Registry {
 	 *
 	 * @var array
 	 */
-	private static $supported_component_types = [ 'layout', 'section' ];
+	private static $supported_component_types = array( 'layout', 'section' );
 
 	/**
 	 * Required keys for components.
 	 *
 	 * @var array
 	 */
-	private static $required_data_keys = [ 'type', 'key', 'name', 'content', 'category', 'keywords', 'image' ];
+	private static $required_data_keys = array( 'type', 'key', 'name', 'content', 'category', 'keywords', 'image' );
 
 	/**
 	 * Holds the registered layouts.
 	 *
 	 * @var array
 	 */
-	private static $layouts = [];
+	private static $layouts = array();
 
 	/**
 	 * Holds the registered sections.
 	 *
 	 * @var array
 	 */
-	private static $sections = [];
+	private static $sections = array();
 
 	/**
 	 * The Component_Registry object.
@@ -199,7 +199,7 @@ final class Component_Registry {
 	 * @return array
 	 */
 	public static function layouts() {
-		$layouts = [];
+		$layouts = array();
 		foreach ( self::$layouts as $key => $layout ) {
 			$layouts[ $key ] = self::render_sections_in_layout( $layout );
 		}
