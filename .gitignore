@@ -16,7 +16,7 @@ wp-content/themes/twenty*/
 
 # ignore node dependency directories
 node_modules/
-vendor
+vendor/
 build
 dist/*
 !js
