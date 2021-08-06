@@ -49,6 +49,16 @@ function EditorStyles(props) {
     shapeBorder,
     contentSpacing,
     iconSpacing,
+	contentSpacingTablet,
+	contentSpacingMobile,
+	iconSpacingTablet,
+	iconSpacingMobile,
+	titleSpaceTablet,
+	titleSpaceMobile,
+	numSpaceTablet,
+	numSpaceMobile,
+	contentSpaceTablet,
+	contentSpaceMobile,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -118,31 +128,56 @@ function EditorStyles(props) {
     },
     ".responsive-count__inner .responsive-count-item__price-wrapper .responsive-count-item__amount": {
       "font-size": `${generateCSSUnit(dateFontSizeMobile, "px")} !important`,
+	  "margin-bottom": generateCSSUnit(numSpaceMobile, "px"),
     },
     " .responsive-count-item__features": {
       "font-size": `${generateCSSUnit(contentFontSizeMobile, "px")} !important`,
+	  "margin-bottom": `${contentSpaceMobile}px`,
     },
+	" .responsive-block-editor-addons-count-up__source-wrap": {
+		"margin-bottom": generateCSSUnit(iconSpacingMobile, "px"),
+	},
+	" .responsive-count-item__title": {
+		"margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+	}
   };
 
   var tablet_selectors = {
-    ".responsive-count__inner .responsive-count-item__title": {
-      "font-size": `${headingFontSize}px`,
-    },
     ".responsive-count__inner .responsive-count-item__title": {
       "font-size": `${headingFontSizeTablet}px`,
     },
     ".responsive-count__inner .responsive-count-item__price-wrapper .responsive-count-item__amount": {
       "font-size": generateCSSUnit(dateFontSizeTablet, "px"),
+	  "margin-bottom": generateCSSUnit(numSpaceTablet, "px"),
     },
     " .responsive-count-item__features": {
       "font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+	  "margin-bottom": `${contentSpaceTablet}px`,
     },
+	" .responsive-block-editor-addons-count-up__source-wrap": {
+		"margin-bottom": generateCSSUnit(iconSpacingTablet, "px"),
+	},
+	" .responsive-count-item__title": {
+		"margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+	}
   };
 
   var paddingContent = {
     ".responsive-count": {
-      padding: `${contentSpacing}px`,
+      "padding": `${contentSpacing}px !important`,
     },
+  };
+
+  var paddingContentMobile = {
+	".responsive-count": {
+		"padding": `${contentSpacingMobile}px !important`,
+	},
+  };
+
+  var paddingContentTablet = {
+	".responsive-count": {
+		"padding": `${contentSpacingTablet}px !important`,
+	},
   };
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-count-up.block-${props.clientId}`;
@@ -151,6 +186,8 @@ function EditorStyles(props) {
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");
   styling_css += generateCSS(mobile_selectors, id, true, "mobile");
   styling_css += generateCSS(paddingContent, "");
+  styling_css += generateCSS(paddingContentTablet, "", true, "tablet");
+  styling_css += generateCSS(paddingContentMobile, "", true, "mobile");
 
   return styling_css;
 }

@@ -12,7 +12,11 @@ function EditorStyles(props) {
     inactiveOtherItems,
     expandFirstItem,
     rowsGap,
+    rowsGapMobile,
+    rowsGapTablet,
     columnsGap,
+    columnsGapMobile,
+    columnsGapTablet,
     align,
     titleTextColor,
     titleActiveBackgroundColor,
@@ -56,7 +60,11 @@ function EditorStyles(props) {
     titleBottomPaddingMobile,
     titleBackgroundColorOpacity,
     marginV,
+    marginVMobile,
+    marginVTablet,
     marginH,
+    marginHMobile,
+    marginHTablet,
     titleSecondaryBackgroundColor,
     titleGradientDegree,
     titleBgGradient,
@@ -220,6 +228,12 @@ function EditorStyles(props) {
   };
 
   tablet_selectors = {
+    " ": {
+      "margin-top": marginVTablet + "px",
+      "margin-bottom": marginVTablet + "px",
+      "margin-left": marginHTablet + "px",
+      "margin-right": marginHTablet + "px",
+    },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(
         vtitlePaddingTablet,
@@ -272,9 +286,22 @@ function EditorStyles(props) {
 	" .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
 		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
 	},
+  " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+    "margin-bottom": generateCSSUnit(rowsGapTablet, "px"),
+  },
+  " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+    "grid-column-gap": generateCSSUnit(columnsGapTablet, "px"),
+    "grid-row-gap": generateCSSUnit(rowsGapTablet, "px"),
+  },
   };
 
   mobile_selectors = {
+    " ": {
+      "margin-top": marginVMobile + "px",
+      "margin-bottom": marginVMobile + "px",
+      "margin-left": marginHMobile + "px",
+      "margin-right": marginHMobile + "px",
+    },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(
         vtitlePaddingMobile,
@@ -327,6 +354,13 @@ function EditorStyles(props) {
 	" .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
 		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
 	},
+  " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+    "margin-bottom": generateCSSUnit(rowsGapMobile, "px"),
+  },
+  " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+    "grid-column-gap": generateCSSUnit(columnsGapMobile, "px"),
+    "grid-row-gap": generateCSSUnit(rowsGapMobile, "px"),
+  },
   };
 
   if ("accordion" === layout && true === inactiveOtherItems) {

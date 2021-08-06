@@ -146,6 +146,34 @@ const attributes = {
   imageSpacing: {
     type: "number",
   },
+  contentSpacingMobile: {
+    type: "number",
+    default: 8,
+  },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  nameSpacingMobile: {
+    type: "number",
+    default: -5,
+  },
+  imageSpacingMobile: {
+    type: "number",
+  },
+  contentSpacingTablet: {
+    type: "number",
+    default: 8,
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  nameSpacingTablet: {
+    type: "number",
+    default: -5,
+  },
+  imageSpacingTablet: {
+    type: "number",
+  },
   alignment: {
     type: "string",
     default: "center",
