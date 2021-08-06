@@ -207,7 +207,7 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " .responsive-block-editor-addons-countdown-box-stylings": {
       height: generateCSSUnit(boxHeightMobile, "px"),
-      width: generateCSSUnit(boxWidthMobile, "px"),
+      width: stackOnMobile && generateCSSUnit(100, "%"),
       "margin-left":
         stackOnMobile === true ? "0px" : generateCSSUnit(boxMarginMobile, "px"),
       "margin-bottom": stackOnMobile && generateCSSUnit(boxMarginMobile, "px"),
