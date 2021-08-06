@@ -14,6 +14,8 @@ import ImageBackgroundControl from "../../../settings-components/Block Backgroun
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -215,6 +217,22 @@ export default class Inspector extends Component {
         columnBottomPadding,
         columnLeftPadding,
         columnRightPadding,
+        blockTopPaddingMobile,
+        blockBottomPaddingMobile,
+        blockLeftPaddingMobile,
+        blockRightPaddingMobile,
+        columnTopPaddingMobile,
+        columnBottomPaddingMobile,
+        columnLeftPaddingMobile,
+        columnRightPaddingMobile,
+        blockTopPaddingTablet,
+        blockBottomPaddingTablet,
+        blockLeftPaddingTablet,
+        blockRightPaddingTablet,
+        columnTopPaddingTablet,
+        columnBottomPaddingTablet,
+        columnLeftPaddingTablet,
+        columnRightPaddingTablet,
         blockBackColorOpacity,
         columnBackColorOpacity,
         showImage,
@@ -230,24 +248,34 @@ export default class Inspector extends Component {
         subpriceSpace,
         buttonSpace,
         featuresSpace,
+        titleSpaceMobile,
+        priceSpaceMobile,
+        subpriceSpaceMobile,
+        buttonSpaceMobile,
+        featuresSpaceMobile,
+        titleSpaceTablet,
+        priceSpaceTablet,
+        subpriceSpaceTablet,
+        buttonSpaceTablet,
+        featuresSpaceTablet,
         blockAlign,
         imageSize,
         imageShape,
         imageWidth,
-		titleFontSizeMobile,
-		titleFontSizeTablet,
-		prefixFontSizeMobile,
-		prefixFontSizeTablet,
-		amountFontSizeMobile,
-		amountFontSizeTablet,
-		suffixFontSizeMobile,
-		suffixFontSizeTablet,
-		subpriceFontSizeMobile,
-		subpriceFontSizeTablet,
-		featuresFontSizeMobile,
-		featuresFontSizeTablet,
-		ctaFontSizeMobile,
-		ctaFontSizeTablet,
+        titleFontSizeMobile,
+        titleFontSizeTablet,
+        prefixFontSizeMobile,
+        prefixFontSizeTablet,
+        amountFontSizeMobile,
+        amountFontSizeTablet,
+        suffixFontSizeMobile,
+        suffixFontSizeTablet,
+        subpriceFontSizeMobile,
+        subpriceFontSizeTablet,
+        featuresFontSizeMobile,
+        featuresFontSizeTablet,
+        ctaFontSizeMobile,
+        ctaFontSizeTablet,
       },
       setAttributes,
     } = this.props;
@@ -552,7 +580,7 @@ export default class Inspector extends Component {
               title={__("Image Settings", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                  <ImageSettingsControl {...this.props} />
+              <ImageSettingsControl {...this.props} />
             </PanelBody>
             <PanelBody
               title={__("Button Settings", "responsive-block-editor-addons")}
@@ -1007,9 +1035,7 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <ColorBackgroundControl
-                    {...this.props}
-                  />
+                  <ColorBackgroundControl {...this.props} />
                   <RangeControl
                     label={__("Opacity", "responsive-block-editor-addons")}
                     value={columnBackColorOpacity}
@@ -1075,130 +1101,147 @@ export default class Inspector extends Component {
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-				<TypographyHelperControl
-					title={__("Title Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="title%s"
-					values={{
-					family: titleFontFamily,
-					size: titleFontSize,
-					sizeMobile: titleFontSizeMobile,
-					sizeTablet: titleFontSizeTablet,
-					weight: titleFontWeight,
-					height: titleLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Price Prefix Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="prefix%s"
-					values={{
-					family: prefixFontFamily,
-					size: prefixFontSize,
-					sizeMobile: prefixFontSizeMobile,
-					sizeTablet: prefixFontSizeTablet,
-					weight: prefixFontWeight,
-					height: prefixLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Price Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="amount%s"
-					values={{
-					family: amountFontFamily,
-					size: amountFontSize,
-					sizeMobile: amountFontSizeMobile,
-					sizeTablet: amountFontSizeTablet,
-					weight: amountFontWeight,
-					height: amountLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Price Suffix Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="suffix%s"
-					values={{
-					family: suffixFontFamily,
-					size: suffixFontSize,
-					sizeMobile: suffixFontSizeMobile,
-					sizeTablet: suffixFontSizeTablet,
-					weight: suffixFontWeight,
-					height: suffixLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Sub Price Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="subprice%s"
-					values={{
-					family: subpriceFontFamily,
-					size: subpriceFontSize,
-					sizeMobile: subpriceFontSizeMobile,
-					sizeTablet: subpriceFontSizeTablet,
-					weight: subpriceFontWeight,
-					height: subpriceLineHeight,
-					transform: subpriceTextTransform
-					}}
-					showLetterSpacing={false}
-					showTextTransform={true}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Features Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="features%s"
-					values={{
-					family: featuresFontFamily,
-					size: featuresFontSize,
-					sizeMobile: featuresFontSizeMobile,
-					sizeTablet: featuresFontSizeTablet,
-					weight: featuresFontWeight,
-					height: featuresLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("CTA Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="cta%s"
-					values={{
-					family: ctaFontFamily,
-					size: ctaFontSize,
-					sizeMobile: ctaFontSizeMobile,
-					sizeTablet: ctaFontSizeTablet,
-					weight: ctaFontWeight,
-					height: ctaLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
+              <TypographyHelperControl
+                title={__("Title Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="title%s"
+                values={{
+                  family: titleFontFamily,
+                  size: titleFontSize,
+                  sizeMobile: titleFontSizeMobile,
+                  sizeTablet: titleFontSizeTablet,
+                  weight: titleFontWeight,
+                  height: titleLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Price Prefix Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="prefix%s"
+                values={{
+                  family: prefixFontFamily,
+                  size: prefixFontSize,
+                  sizeMobile: prefixFontSizeMobile,
+                  sizeTablet: prefixFontSizeTablet,
+                  weight: prefixFontWeight,
+                  height: prefixLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__("Price Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="amount%s"
+                values={{
+                  family: amountFontFamily,
+                  size: amountFontSize,
+                  sizeMobile: amountFontSizeMobile,
+                  sizeTablet: amountFontSizeTablet,
+                  weight: amountFontWeight,
+                  height: amountLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Price Suffix Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="suffix%s"
+                values={{
+                  family: suffixFontFamily,
+                  size: suffixFontSize,
+                  sizeMobile: suffixFontSizeMobile,
+                  sizeTablet: suffixFontSizeTablet,
+                  weight: suffixFontWeight,
+                  height: suffixLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Sub Price Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="subprice%s"
+                values={{
+                  family: subpriceFontFamily,
+                  size: subpriceFontSize,
+                  sizeMobile: subpriceFontSizeMobile,
+                  sizeTablet: subpriceFontSizeTablet,
+                  weight: subpriceFontWeight,
+                  height: subpriceLineHeight,
+                  transform: subpriceTextTransform,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={true}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Features Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="features%s"
+                values={{
+                  family: featuresFontFamily,
+                  size: featuresFontSize,
+                  sizeMobile: featuresFontSizeMobile,
+                  sizeTablet: featuresFontSizeTablet,
+                  weight: featuresFontWeight,
+                  height: featuresLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__("CTA Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="cta%s"
+                values={{
+                  family: ctaFontFamily,
+                  size: ctaFontSize,
+                  sizeMobile: ctaFontSizeMobile,
+                  sizeTablet: ctaFontSizeTablet,
+                  weight: ctaFontWeight,
+                  height: ctaLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                <BlockBorderHelperControl
-                    attrNameTemplate="block%s"
-                    values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                />
+              <BlockBorderHelperControl
+                attrNameTemplate="block%s"
+                values={{
+                  radius: blockBorderRadius,
+                  style: blockBorderStyle,
+                  width: blockBorderWidth,
+                  color: blockBorderColor,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
 
               <BoxShadowControl
                 setAttributes={setAttributes}
@@ -1231,142 +1274,108 @@ export default class Inspector extends Component {
                 title={__("Block Spacing", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <RangeControl
-                  label={__("Top Padding", "responsive-block-editor-addons")}
-                  value={blockTopPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      blockTopPadding: value !== undefined ? value : 0,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
-                />
-                <RangeControl
-                  label={__("Bottom Padding", "responsive-block-editor-addons")}
-                  value={blockBottomPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      blockBottomPadding: value !== undefined ? value : 0,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
-                />
-                <RangeControl
-                  label={__("Left Padding", "responsive-block-editor-addons")}
-                  value={blockLeftPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      blockLeftPadding: value !== undefined ? value : 0,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
-                />
-                <RangeControl
-                  label={__("Right Padding", "responsive-block-editor-addons")}
-                  value={blockRightPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      blockRightPadding: value !== undefined ? value : 0,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
+                <ResponsivePaddingControl
+                  attrNameTemplate="block%s"
+                  values={{
+                    desktopTop: blockTopPadding,
+                    desktopBottom: blockBottomPadding,
+                    desktopLeft: blockLeftPadding,
+                    desktopRight: blockRightPadding,
+
+                    tabletTop: blockTopPaddingTablet,
+                    tabletBottom: blockBottomPaddingTablet,
+                    tabletLeft: blockLeftPaddingTablet,
+                    tabletRight: blockRightPaddingTablet,
+
+                    mobileTop: blockTopPaddingMobile,
+                    mobileBottom: blockBottomPaddingMobile,
+                    mobileLeft: blockLeftPaddingMobile,
+                    mobileRight: blockRightPaddingMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
                 />
               </PanelBody>
               <PanelBody
                 title={__("Column Spacing", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <RangeControl
-                  label={__("Top Padding", "responsive-block-editor-addons")}
-                  value={columnTopPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      columnTopPadding: value !== undefined ? value : 64,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
-                />
-                <RangeControl
-                  label={__("Bottom Padding", "responsive-block-editor-addons")}
-                  value={columnBottomPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      columnBottomPadding: value !== undefined ? value : 64,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
-                />
-                <RangeControl
-                  label={__("Left Padding", "responsive-block-editor-addons")}
-                  value={columnLeftPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      columnLeftPadding: value !== undefined ? value : 24,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
-                />
-                <RangeControl
-                  label={__("Right Padding", "responsive-block-editor-addons")}
-                  value={columnRightPadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      columnRightPadding: value !== undefined ? value : 24,
-                    })
-                  }
-                  min={0}
-                  max={120}
-                  allowReset
+                <ResponsivePaddingControl
+                  attrNameTemplate="column%s"
+                  values={{
+                    desktopTop: columnTopPadding,
+                    desktopBottom: columnBottomPadding,
+                    desktopLeft: columnLeftPadding,
+                    desktopRight: columnRightPadding,
+
+                    tabletTop: columnTopPaddingTablet,
+                    tabletBottom: columnBottomPaddingTablet,
+                    tabletLeft: columnLeftPaddingTablet,
+                    tabletRight: columnRightPaddingTablet,
+
+                    mobileTop: columnTopPaddingMobile,
+                    mobileBottom: columnBottomPaddingMobile,
+                    mobileLeft: columnLeftPaddingMobile,
+                    mobileRight: columnRightPaddingMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
                 />
               </PanelBody>
-              <RangeControl
-                label={__("Title")}
-                value={titleSpace}
-                onChange={(value) => setAttributes({ titleSpace: value })}
-                min={0}
-                max={120}
+              <ResponsiveSpacingControl
+                title={"Title"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Price")}
-                value={priceSpace}
-                onChange={(value) => setAttributes({ priceSpace: value })}
-                min={0}
-                max={120}
+              <ResponsiveSpacingControl
+                title={"Price"}
+                attrNameTemplate="priceSpace%s"
+                values={{
+                  desktop: priceSpace,
+                  tablet: priceSpaceTablet,
+                  mobile: priceSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Sub Price")}
-                value={subpriceSpace}
-                onChange={(value) => setAttributes({ subpriceSpace: value })}
-                min={0}
-                max={120}
+              <ResponsiveSpacingControl
+                title={"Sub Price"}
+                attrNameTemplate="subpriceSpace%s"
+                values={{
+                  desktop: subpriceSpace,
+                  tablet: subpriceSpaceTablet,
+                  mobile: subpriceSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Button")}
-                value={buttonSpace}
-                onChange={(value) => setAttributes({ buttonSpace: value })}
-                min={0}
-                max={120}
+              <ResponsiveSpacingControl
+                title={"Button"}
+                attrNameTemplate="buttonSpace%s"
+                values={{
+                  desktop: buttonSpace,
+                  tablet: buttonSpaceTablet,
+                  mobile: buttonSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__("Features")}
-                value={featuresSpace}
-                onChange={(value) => setAttributes({ featuresSpace: value })}
-                min={0}
-                max={120}
+              <ResponsiveSpacingControl
+                title={"Features"}
+                attrNameTemplate="featuresSpace%s"
+                values={{
+                  desktop: featuresSpace,
+                  tablet: featuresSpaceTablet,
+                  mobile: featuresSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
             <PanelColorSettings

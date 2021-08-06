@@ -30,6 +30,22 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  rowsGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  columnsGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  rowsGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  columnsGapTablet: {
+    type: "number",
+    default: 10,
+  },
   boxPaddingTypeMobile: {
     type: "string",
     default: "px",
@@ -251,6 +267,18 @@ const attributes = {
     type: "number",
   },
   marginH: {
+    type: "number",
+  },
+  marginVMobile: {
+    type: "number",
+  },
+  marginHMobile: {
+    type: "number",
+  },
+  marginVTablet: {
+    type: "number",
+  },
+  marginHTablet: {
     type: "number",
   },
   titleSecondaryBackgroundColor: {

@@ -1,7 +1,8 @@
 /**
  * Inspector Controls
  */
- import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -317,46 +318,52 @@ export default class Inspector extends Component {
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-				<TypographyHelperControl
-					title={__("Heading Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="headingTitle%s"
-					values={{
-						family: headingTitleFontFamily,
-						size: headingTitleFontSize,
-						sizeMobile: headingTitleFontSizeMobile,
-						sizeTablet: headingTitleFontSizeTablet,
-						weight: headingTitleFontWeight,
-						height: headingTitleLineHeight,
-						spacing: headingTitleLetterSpacing,
-					}}
-					showLetterSpacing={true}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={"Sub Heading Typography"}
-					attrNameTemplate="subHeadingTitle%s"
-					values={{
-						family: subHeadingTitleFontFamily,
-						size: subHeadingTitleFontSize,
-						sizeMobile: subHeadingTitleFontSizeMobile,
-						sizeTablet: subHeadingTitleFontSizeTablet,
-						weight: subHeadingTitleFontWeight,
-						height: subHeadingTitleLineHeight,
-						spacing: subHeadingTitleLetterSpacing,
-					}}
-					showLetterSpacing={true}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
+              <TypographyHelperControl
+                title={__(
+                  "Heading Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="headingTitle%s"
+                values={{
+                  family: headingTitleFontFamily,
+                  size: headingTitleFontSize,
+                  sizeMobile: headingTitleFontSizeMobile,
+                  sizeTablet: headingTitleFontSizeTablet,
+                  weight: headingTitleFontWeight,
+                  height: headingTitleLineHeight,
+                  spacing: headingTitleLetterSpacing,
+                }}
+                showLetterSpacing={true}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={"Sub Heading Typography"}
+                attrNameTemplate="subHeadingTitle%s"
+                values={{
+                  family: subHeadingTitleFontFamily,
+                  size: subHeadingTitleFontSize,
+                  sizeMobile: subHeadingTitleFontSizeMobile,
+                  sizeTablet: subHeadingTitleFontSizeTablet,
+                  weight: subHeadingTitleFontWeight,
+                  height: subHeadingTitleLineHeight,
+                  spacing: subHeadingTitleLetterSpacing,
+                }}
+                showLetterSpacing={true}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
-			<PanelBody
-              title={__("Colors and Decorations", "responsive-block-editor-addons")}
+            <PanelBody
+              title={__(
+                "Colors and Decorations",
+                "responsive-block-editor-addons"
+              )}
               initialOpen={false}
             >
-				<p className="responsive-block-editor-addons-setting-label">
+              <p className="responsive-block-editor-addons-setting-label">
                 {__("Heading Color")}
                 <span className="components-base-control__label">
                   <span
@@ -364,15 +371,15 @@ export default class Inspector extends Component {
                     style={{ backgroundColor: headingTitleColor }}
                   ></span>
                 </span>
-              	</p>
-				<ColorPalette
-					value={headingTitleColor}
-					onChange={(colorValue) =>
-					setAttributes({ headingTitleColor: colorValue })
-					}
-					allowReset
-				/>
-				<p className="responsive-block-editor-addons-setting-label">
+              </p>
+              <ColorPalette
+                value={headingTitleColor}
+                onChange={(colorValue) =>
+                  setAttributes({ headingTitleColor: colorValue })
+                }
+                allowReset
+              />
+              <p className="responsive-block-editor-addons-setting-label">
                 {__("Sub Heading Color")}
                 <span className="components-base-control__label">
                   <span
@@ -380,35 +387,41 @@ export default class Inspector extends Component {
                     style={{ backgroundColor: subHeadingTitleColor }}
                   ></span>
                 </span>
-              	</p>
-				<ColorPalette
-					value={subHeadingTitleColor}
-					onChange={(colorValue) =>
-					setAttributes({ subHeadingTitleColor: colorValue })
-					}
-					allowReset
-				/>
-				<SelectControl
-					label={__("Heading Text Decoration", "responsive-block-editor-addons")}
-					options={textDecorationOptions}
-					value={textDecoration}
-					onChange={(value) =>
-					this.props.setAttributes({
-						textDecoration: value,
-					})
-					}
-				/>
-				<SelectControl
-					label={__("Sub Heading Text Decoration", "responsive-block-editor-addons")}
-					options={textDecorationOptions}
-					value={textDecorationSubHeading}
-					onChange={(value) =>
-					this.props.setAttributes({
-						textDecorationSubHeading: value,
-					})
-					}
-				/>
-			</PanelBody>
+              </p>
+              <ColorPalette
+                value={subHeadingTitleColor}
+                onChange={(colorValue) =>
+                  setAttributes({ subHeadingTitleColor: colorValue })
+                }
+                allowReset
+              />
+              <SelectControl
+                label={__(
+                  "Heading Text Decoration",
+                  "responsive-block-editor-addons"
+                )}
+                options={textDecorationOptions}
+                value={textDecoration}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    textDecoration: value,
+                  })
+                }
+              />
+              <SelectControl
+                label={__(
+                  "Sub Heading Text Decoration",
+                  "responsive-block-editor-addons"
+                )}
+                options={textDecorationOptions}
+                value={textDecorationSubHeading}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    textDecorationSubHeading: value,
+                  })
+                }
+              />
+            </PanelBody>
             <PanelBody
               title={__("Separator", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -525,311 +538,42 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin  responsive-advance-heading-align-left"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Heading Bottom Spacing",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={100}
-                          value={headSpacingMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              headSpacingMobile:
-                                value !== undefined ? value : 15,
-                            })
-                          }
-                          beforeIcon=""
-                          allowReset
-                          initialPosition={0}
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Heading Bottom Spacing",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={100}
-                          value={headSpacingTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              headSpacingTablet:
-                                value !== undefined ? value : 15,
-                            })
-                          }
-                          beforeIcon=""
-                          allowReset
-                          initialPosition={0}
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Heading Bottom Spacing",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={100}
-                          value={headSpacing}
-                          onChange={(value) =>
-                            setAttributes({
-                              headSpacing: value !== undefined ? value : 15,
-                            })
-                          }
-                          beforeIcon=""
-                          allowReset
-                          initialPosition={0}
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
+              <ResponsiveSpacingControl
+                title={"Heading Bottom Spacing"}
+                attrNameTemplate="headSpacing%s"
+                values={{
+                  desktop: headSpacing,
+                  tablet: headSpacingTablet,
+                  mobile: headSpacingMobile,
                 }}
-              </TabPanel>
+                setAttributes={setAttributes}
+                {...this.props}
+              />
               {seperatorStyle !== "none" && (
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin responsive-advance-heading-align-left"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Separator Bottom Spacing",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={100}
-                            value={separatorSpacingMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                separatorSpacingMobile:
-                                  value !== undefined ? value : 15,
-                              })
-                            }
-                            beforeIcon=""
-                            allowReset
-                            initialPosition={0}
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Separator Bottom Spacing",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={100}
-                            value={separatorSpacingTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                separatorSpacingTablet:
-                                  value !== undefined ? value : 15,
-                              })
-                            }
-                            beforeIcon=""
-                            allowReset
-                            initialPosition={0}
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Separator Bottom Spacing",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={100}
-                            value={separatorSpacing}
-                            onChange={(value) =>
-                              setAttributes({
-                                separatorSpacing:
-                                  value !== undefined ? value : 15,
-                              })
-                            }
-                            beforeIcon=""
-                            allowReset
-                            initialPosition={0}
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
+                <ResponsiveSpacingControl
+                  title={"Separator Bottom Spacing"}
+                  attrNameTemplate="separatorSpacing%s"
+                  values={{
+                    desktop: separatorSpacing,
+                    tablet: separatorSpacingTablet,
+                    mobile: separatorSpacingMobile,
                   }}
-                </TabPanel>
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
               )}
               {showSubHeading && (
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin responsive-advance-heading-align-left"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Text Bottom Spacing",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={100}
-                            value={subheadSpacingMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                subheadSpacingMobile:
-                                  value !== undefined ? value : 15,
-                              })
-                            }
-                            beforeIcon=""
-                            allowReset
-                            initialPosition={0}
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Text Bottom Spacing",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={100}
-                            value={subheadSpacingTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                subheadSpacingTablet:
-                                  value !== undefined ? value : 15,
-                              })
-                            }
-                            beforeIcon=""
-                            allowReset
-                            initialPosition={0}
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Text Bottom Spacing",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={100}
-                            value={subheadSpacing}
-                            onChange={(value) =>
-                              setAttributes({
-                                subheadSpacing:
-                                  value !== undefined ? value : 15,
-                              })
-                            }
-                            beforeIcon=""
-                            allowReset
-                            initialPosition={0}
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
+                <ResponsiveSpacingControl
+                  title={"Text Bottom Spacing"}
+                  attrNameTemplate="subheadSpacing%s"
+                  values={{
+                    desktop: subheadSpacing,
+                    tablet: subheadSpacingTablet,
+                    mobile: subheadSpacingMobile,
                   }}
-                </TabPanel>
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
               )}
             </PanelBody>
           </InspectorTab>
