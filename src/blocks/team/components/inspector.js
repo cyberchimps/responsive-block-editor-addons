@@ -483,6 +483,14 @@ export default class Inspector extends Component {
                 }
               />
             </PanelBody>
+
+            <PanelBody
+              title={__("Image compo", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                  <ImageSettingsControl {...this.props} />
+
+      </PanelBody>
             <PanelBody
               title={__("Image", "responsive-block-editor-addons")}
               initialOpen={false}
