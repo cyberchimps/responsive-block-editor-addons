@@ -52,8 +52,8 @@ jobs:
             ./vendor
           key: ${{ runner.os }}-${{ hashFiles('./composer.lock') }}
 
-      - name: Setup and update composer
-        run: composer update
+      - name: Setup and install composer
+        run: composer install
 
       - name: Add PHP8 Compatibility.
         run: |
