@@ -12,6 +12,7 @@ import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
@@ -190,7 +191,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       inactiveOtherItems,
       expandFirstItem,
       rowsGap,
+      rowsGapMobile,
+      rowsGapTablet,
       columnsGap,
+      columnsGapMobile,
+      columnsGapTablet,
       align,
       titleActiveTextColor,
       titleActiveBackgroundColor,
@@ -216,7 +221,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       equalHeight,
       titleBackgroundColorOpacity,
       marginV,
+      marginVMobile,
+      marginVTablet,
       marginH,
+      marginHMobile,
+      marginHTablet,
       titleSecondaryBackgroundColor,
       titleGradientDegree,
       titleBgGradient,
@@ -579,21 +588,21 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           initialOpen={false}
           className="responsive_block_editor_addons__url-panel-body"
         >
-          <RangeControl
-            label={__("Rows Gap (px)")}
-            value={rowsGap}
-            onChange={(value) => setAttributes({ rowsGap: value })}
-            min={0}
-            max={50}
+          <ResponsiveSpacingControl
+            title={"Row Gap"}
+            attrNameTemplate="rowsGap%s"
+            values = {{desktop:rowsGap, tablet:rowsGapTablet, mobile:rowsGapMobile}}
+            setAttributes={ setAttributes }
+            {...this.props}
           />
           {"grid" === layout && (
             <Fragment>
-              <RangeControl
-                label={__("Columns Gap (px)")}
-                value={columnsGap}
-                onChange={(value) => setAttributes({ columnsGap: value })}
-                min={0}
-                max={50}
+              <ResponsiveSpacingControl
+                title={"Columns Gap"}
+                attrNameTemplate="columnsGap%s"
+                values = {{desktop:columnsGap, tablet:columnsGapTablet, mobile:columnsGapMobile}}
+                setAttributes={ setAttributes }
+                {...this.props}
               />
               <ToggleControl
                 label={__("Equal Height")}
@@ -604,19 +613,19 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               />
             </Fragment>
           )}
-          <RangeControl
-            label={__("Vertical Margin")}
-            value={marginV}
-            onChange={(value) => setAttributes({ marginV: value })}
-            min={0}
-            max={100}
+          <ResponsiveSpacingControl
+            title={"Vertical Margin"}
+            attrNameTemplate="marginV%s"
+            values = {{desktop:marginV, tablet:marginVTablet, mobile:marginVMobile}}
+            setAttributes={ setAttributes }
+            {...this.props}
           />
-          <RangeControl
-            label={__("Horizontal Margin")}
-            value={marginH}
-            onChange={(value) => setAttributes({ marginH: value })}
-            min={0}
-            max={100}
+          <ResponsiveSpacingControl
+            title={"Horizontal Margin"}
+            attrNameTemplate="marginH%s"
+            values = {{desktop:marginH, tablet:marginHTablet, mobile:marginHMobile}}
+            setAttributes={ setAttributes }
+            {...this.props}
           />
         </PanelBody>
       );

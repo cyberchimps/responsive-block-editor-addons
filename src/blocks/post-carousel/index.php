@@ -260,6 +260,7 @@ function get_responsive_post_carousel_default_attributes() {
 		'bgColor'               => '#ffffff',
 		'contentPadding'        => 20,
 		'contentPaddingMobile'  => 20,
+		'contentPaddingTablet'  => 20,
 		'columnsTablet'         => '',
 		'columnsMobile'         => '',
 		'metaFontSizeMobile'    => '',
@@ -619,353 +620,365 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 		'responsive-block-editor-addons/post-carousel',
 		array(
 			'attributes'      => array(
-				'blockAlign'           => array(
+				'blockAlign'            => array(
 					'type'    => 'string',
 					'default' => 'left',
 				),
-				'columns'              => array(
+				'columns'               => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'columnsTablet'        => array(
+				'columnsTablet'         => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'columnsMobile'        => array(
+				'columnsMobile'         => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'block_id'             => array(
+				'block_id'              => array(
 					'type'    => 'string',
 					'default' => 1,
 				),
 
-				'tcolumns'             => array(
+				'tcolumns'              => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'mcolumns'             => array(
+				'mcolumns'              => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'pauseOnHover'         => array(
+				'pauseOnHover'          => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'infiniteLoop'         => array(
+				'infiniteLoop'          => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'transitionSpeed'      => array(
+				'transitionSpeed'       => array(
 					'type'    => 'number',
 					'default' => 500,
 				),
-				'autoplay'             => array(
+				'autoplay'              => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'autoplaySpeed'        => array(
+				'autoplaySpeed'         => array(
 					'type'    => 'number',
 					'default' => 2000,
 				),
-				'arrowDots'            => array(
+				'arrowDots'             => array(
 					'type'    => 'string',
 					'default' => 'arrows_dots',
 				),
-				'arrowSize'            => array(
+				'arrowSize'             => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'arrowBorderSize'      => array(
+				'arrowBorderSize'       => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'arrowBorderRadius'    => array(
+				'arrowBorderRadius'     => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
 
-				'categories'           => array(
+				'categories'            => array(
 					'type' => 'string',
 				),
-				'className'            => array(
+				'className'             => array(
 					'type' => 'string',
 				),
-				'postsToShow'          => array(
+				'postsToShow'           => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'equalHeight'          => array(
+				'equalHeight'           => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostDate'      => array(
+				'displayPostDate'       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostComment'   => array(
+				'displayPostComment'    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTaxonomy'  => array(
+				'displayPostTaxonomy'   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt'   => array(
+				'displayPostExcerpt'    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostAuthor'    => array(
+				'displayPostAuthor'     => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'     => array(
+				'displayPostImage'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostLink'      => array(
+				'displayPostLink'       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'     => array(
+				'displayPostTitle'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'postTitleTag'         => array(
+				'postTitleTag'          => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'align'                => array(
+				'align'                 => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'order'                => array(
+				'order'                 => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'              => array(
+				'orderBy'               => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'readMoreText'         => array(
+				'readMoreText'          => array(
 					'type'    => 'string',
 					'default' => 'Continue Reading',
 				),
-				'offset'               => array(
+				'offset'                => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'excerptLength'        => array(
+				'excerptLength'         => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'postType'             => array(
+				'postType'              => array(
 					'type'    => 'string',
 					'default' => 'post',
 				),
-				'sectionTag'           => array(
+				'sectionTag'            => array(
 					'type'    => 'string',
 					'default' => 'section',
 				),
-				'sectionTitle'         => array(
+				'sectionTitle'          => array(
 					'type' => 'string',
 				),
-				'sectionTitleTag'      => array(
+				'sectionTitleTag'       => array(
 					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'imageSize'            => array(
+				'imageSize'             => array(
 					'type'    => 'string',
 					'default' => 'full',
 				),
-				'url'                  => array(
+				'url'                   => array(
 					'type'      => 'string',
 					'source'    => 'attribute',
 					'selector'  => 'img',
 					'attribute' => 'src',
 				),
-				'id'                   => array(
+				'id'                    => array(
 					'type' => 'number',
 				),
-				'bgColor'              => array(
+				'bgColor'               => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'titleColor'           => array(
+				'titleColor'            => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'contentColor'         => array(
+				'contentColor'          => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'metaColor'            => array(
+				'metaColor'             => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'arrowDotsColor'       => array(
+				'arrowDotsColor'        => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'ctaColor'             => array(
+				'ctaColor'              => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'ctaBackColor'         => array(
+				'ctaBackColor'          => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'ctaHoverColor'        => array(
+				'ctaHoverColor'         => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'ctaHoverBackColor'    => array(
+				'ctaHoverBackColor'     => array(
 					'type'    => 'string',
 					'default' => '#444444',
 				),
-				'ctaBorderColor'       => array(
+				'ctaBorderColor'        => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaHoverBorderColor'  => array(
+				'ctaHoverBorderColor'   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaBorderStyle'       => array(
+				'ctaBorderStyle'        => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'ctaBorderRadius'      => array(
+				'ctaBorderRadius'       => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'ctaBorderWidth'       => array(
+				'ctaBorderWidth'        => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'ctaHpadding'          => array(
+				'ctaHpadding'           => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'ctaVpadding'          => array(
+				'ctaVpadding'           => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'contentPadding'       => array(
+				'contentPadding'        => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'contentPaddingMobile' => array(
+				'contentPaddingMobile'  => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'rowGap'               => array(
+				'contentPaddingTablet'  => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGap'            => array(
+				'rowGap'                => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'imageSpace'           => array(
+				'columnGap'             => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'columnGapMobile'       => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'columnGapTablet'       => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'imageSpace'            => array(
 					'type' => 'number',
 				),
-				'titleSpace'           => array(
+				'titleSpace'            => array(
 					'type' => 'number',
 				),
-				'dateSpace'            => array(
+				'dateSpace'             => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'excerptSpace'         => array(
+				'excerptSpace'          => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'ctaSpace'             => array(
+				'ctaSpace'              => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontSize'        => array(
+				'titleFontSize'         => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontSizeMobile'  => array(
+				'titleFontSizeMobile'   => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontSizeTablet'  => array(
+				'titleFontSizeTablet'   => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontWeight'      => array(
+				'titleFontWeight'       => array(
 					'type'    => 'number',
 					'default' => 600,
 				),
-				'titleLineHeight'      => array(
+				'titleLineHeight'       => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'metaFontSize'         => array(
+				'metaFontSize'          => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'metaFontWeight'       => array(
+				'metaFontWeight'        => array(
 					'type'    => 'number',
 					'default' => 300,
 				),
-				'metaLineHeight'       => array(
+				'metaLineHeight'        => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'excerptFontSize'      => array(
+				'excerptFontSize'       => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'excerptFontWeight'    => array(
+				'excerptFontWeight'     => array(
 					'type'    => 'number',
 					'default' => 300,
 				),
-				'excerptLineHeight'    => array(
+				'excerptLineHeight'     => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'ctaFontSize'          => array(
+				'ctaFontSize'           => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'ctaFontWeight'        => array(
+				'ctaFontWeight'         => array(
 					'type'    => 'number',
 					'default' => 100,
 				),
-				'ctaLineHeight'        => array(
+				'ctaLineHeight'         => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'opacity'              => array(
+				'opacity'               => array(
 					'type'    => 'number',
 					'default' => 50,
 				),
-				'imagePosition'        => array(
+				'imagePosition'         => array(
 					'type'    => 'string',
 					'default' => 'top',
 				),
-				'titleFontFamily'      => array(
+				'titleFontFamily'       => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'metaFontFamily'       => array(
+				'metaFontFamily'        => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'excerptFontFamily'    => array(
+				'excerptFontFamily'     => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaFontFamily'        => array(
+				'ctaFontFamily'         => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'buttonTarget'         => array(
+				'buttonTarget'          => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),

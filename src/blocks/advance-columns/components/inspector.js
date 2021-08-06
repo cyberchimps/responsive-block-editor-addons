@@ -5,6 +5,8 @@ import BlockBorderHelperControl from "../../../settings-components/BlockBorderSe
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
 
 /**
  * Inspector Controls
@@ -77,18 +79,18 @@ export default class Inspector extends Component {
         width,
         widthType,
         stack,
-        topPadding,
-        topPaddingTablet,
-        topPaddingMobile,
-        bottomPadding,
-        bottomPaddingTablet,
-        bottomPaddingMobile,
-        leftPadding,
-        leftPaddingTablet,
-        leftPaddingMobile,
-        rightPadding,
-        rightPaddingTablet,
-        rightPaddingMobile,
+        boxTopPadding,
+        boxTopPaddingTablet,
+        boxTopPaddingMobile,
+        boxBottomPadding,
+        boxBottomPaddingTablet,
+        boxBottomPaddingMobile,
+        boxLeftPadding,
+        boxLeftPaddingTablet,
+        boxLeftPaddingMobile,
+        boxRightPadding,
+        boxRightPaddingTablet,
+        boxRightPaddingMobile,
         topMargin,
         topMarginTablet,
         topMarginMobile,
@@ -403,540 +405,49 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
+				<ResponsivePaddingControl
+					attrNameTemplate="box%s"
+					values={{
+						desktopTop: boxTopPadding,
+						desktopBottom: boxBottomPadding,
+						desktopLeft: boxLeftPadding,
+						desktopRight: boxRightPadding,
 
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Padding Mobile",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={topPaddingMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              topPaddingMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Padding Tablet",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={topPaddingTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              topPaddingTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={topPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              topPadding: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
+						tabletTop: boxTopPaddingTablet,
+						tabletBottom: boxBottomPaddingTablet,
+						tabletLeft: boxLeftPaddingTablet,
+						tabletRight: boxRightPaddingTablet,
 
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Bottom Padding Mobile",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={bottomPaddingMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              bottomPaddingMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Bottom Padding Tablet",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={bottomPaddingTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              bottomPaddingTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Bottom Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={bottomPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              bottomPadding: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Left Padding Mobile",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={leftPaddingMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              leftPaddingMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Left Padding Tablet",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={leftPaddingTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              leftPaddingTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Left Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={leftPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              leftPadding: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Right Padding Mobile",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={rightPaddingMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              rightPaddingMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Right Padding Tablet",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={rightPaddingTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              rightPaddingTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Right Padding",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={2000}
-                          value={rightPadding}
-                          onChange={(value) =>
-                            setAttributes({
-                              rightPadding: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Margin Mobile",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={-2000}
-                          max={2000}
-                          value={topMarginMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              topMarginMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Margin Tablet",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={-2000}
-                          max={2000}
-                          value={topMarginTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              topMarginTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Top Margin",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={-2000}
-                          max={2000}
-                          value={topMargin}
-                          onChange={(value) =>
-                            setAttributes({
-                              topMargin: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Bottom Margin Mobile",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={-2000}
-                          max={2000}
-                          value={bottomMarginMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              bottomMarginMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Bottom Margin Tablet",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={-2000}
-                          max={2000}
-                          value={bottomMarginTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              bottomMarginTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Bottom Margin",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={-2000}
-                          max={2000}
-                          value={bottomMargin}
-                          onChange={(value) =>
-                            setAttributes({
-                              bottomMargin: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
+						mobileTop: boxTopPaddingMobile,
+						mobileBottom: boxBottomPaddingMobile,
+						mobileLeft: boxLeftPaddingMobile,
+						mobileRight: boxRightPaddingMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<ResponsiveSpacingControl
+					title={"Top Margin"}
+					attrNameTemplate="topMargin%s"
+					values={{
+						desktop: topMargin,
+						tablet: topMarginTablet,
+						mobile: topMarginMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<ResponsiveSpacingControl
+					title={"Bottom Margin"}
+					attrNameTemplate="bottomMargin%s"
+					values={{
+						desktop: bottomMargin,
+						tablet: bottomMarginTablet,
+						mobile: bottomMarginMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
             </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}

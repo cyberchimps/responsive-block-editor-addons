@@ -52,7 +52,11 @@ function EditorStyles(props) {
     imageSize,
     verticalAlignment,
     titleSpacing,
+    titleSpacingMobile,
+    titleSpacingTablet,
     descriptionSpacing,
+    descriptionSpacingMobile,
+    descriptionSpacingTablet,
     arrowColor,
     arrowSize,
     backgroundImageOne,
@@ -241,18 +245,22 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
     },
 	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
 		"font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+    "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
 	},
   };
 
   var tablet_selectors = {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
     },
 	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
 		"font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+    "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
 	},
   };
 

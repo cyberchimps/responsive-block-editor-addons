@@ -9,6 +9,7 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -195,7 +196,11 @@ export default class Inspector extends Component {
         imageSize,
         verticalAlignment,
         titleSpacing,
+        titleSpacingMobile,
+        titleSpacingTablet,
         descriptionSpacing,
+        descriptionSpacingMobile,
+        descriptionSpacingTablet,
         arrowColor,
         arrowSize,
         backgroundImageOne,
@@ -968,28 +973,19 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Title Spacing", "responsive-block-editor-addons")}
-                value={titleSpacing}
-                onChange={(newCount) => {
-                  setAttributes({ titleSpacing: newCount });
-                }}
-                min={-50}
-                max={100}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Title Spacing"}
+                attrNameTemplate="titleSpacing%s"
+                values={{ desktop: titleSpacing, tablet: titleSpacingTablet, mobile: titleSpacingMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Description Spacing",
-                  "responsive-block-editor-addons"
-                )}
-                value={descriptionSpacing}
-                onChange={(newCount) => {
-                  setAttributes({ descriptionSpacing: newCount });
-                }}
-                min={-50}
-                max={100}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Description Spacing"}
+                attrNameTemplate="descriptionSpacing%s"
+                values={{ desktop: descriptionSpacing, tablet: descriptionSpacingTablet, mobile: descriptionSpacingMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
             <PanelBody

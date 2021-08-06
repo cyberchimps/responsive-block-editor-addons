@@ -647,16 +647,42 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'contentPaddingMobile'   => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
+				'contentPaddingTablet'   => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
 				'authorSpace'            => array(
 					'type' => 'number',
 				),
 				'excerptSpace'           => array(
 					'type' => 'number',
 				),
+				'excerptSpaceTablet'     => array(
+					'type' => 'number',
+				),
+				'excerptSpaceMobile'     => array(
+					'type' => 'number',
+				),
 				'blockSpace'             => array(
 					'type' => 'number',
 				),
+				'blockSpaceTablet'       => array(
+					'type' => 'number',
+				),
+				'blockSpaceMobile'       => array(
+					'type' => 'number',
+				),
 				'headingSpace'           => array(
+					'type' => 'number',
+				),
+				'headingSpaceTablet'     => array(
+					'type' => 'number',
+				),
+				'headingSpaceMobile'     => array(
 					'type' => 'number',
 				),
 				'headingColor'           => array(
@@ -666,6 +692,12 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				'authorColor'            => array(
 					'type'    => 'string',
 					'default' => '#626e81',
+				),
+				'authorSpaceTablet'      => array(
+					'type' => 'number',
+				),
+				'authorSpaceMobile'      => array(
+					'type' => 'number',
 				),
 				'continueColor'          => array(
 					'type'    => 'string',
@@ -875,9 +907,21 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 0,
 				),
+				'verSpaceTablet'         => array(
+					'type' => 'number',
+				),
+				'verSpaceMobile'         => array(
+					'type' => 'number',
+				),
 				'horSpace'               => array(
 					'type'    => 'number',
 					'default' => 0,
+				),
+				'horSpaceTablet'         => array(
+					'type' => 'number',
+				),
+				'horSpaceMobile'         => array(
+					'type' => 'number',
 				),
 				'stack'                  => array(
 					'type'    => 'string',

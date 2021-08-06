@@ -39,76 +39,76 @@ registerBlockType("responsive-block-editor-addons/column", {
       type: "number",
       default: 50,
     },
-    topPadding: {
+    columnTopPadding: {
       type: "number",
     },
-    bottomPadding: {
+    columnBottomPadding: {
       type: "number",
     },
-    leftPadding: {
+    columnLeftPadding: {
       type: "number",
     },
-    rightPadding: {
+    columnRightPadding: {
       type: "number",
     },
-    leftMargin: {
+    columnLeftMargin: {
       type: "number",
     },
-    rightMargin: {
+    columnRightMargin: {
       type: "number",
     },
-    topMargin: {
+    columnTopMargin: {
       type: "number",
     },
-    bottomMargin: {
+    columnBottomMargin: {
       type: "number",
     },
-    topPaddingTablet: {
+    columnTopPaddingTablet: {
       type: "number",
     },
-    bottomPaddingTablet: {
+    columnBottomPaddingTablet: {
       type: "number",
     },
-    leftPaddingTablet: {
+    columnLeftPaddingTablet: {
       type: "number",
     },
-    rightPaddingTablet: {
+    columnRightPaddingTablet: {
       type: "number",
     },
-    leftMarginTablet: {
+    columnLeftMarginTablet: {
       type: "number",
     },
-    rightMarginTablet: {
+    columnRightMarginTablet: {
       type: "number",
     },
-    topMarginTablet: {
+    columnTopMarginTablet: {
       type: "number",
     },
-    bottomMarginTablet: {
+    columnBottomMarginTablet: {
       type: "number",
     },
-    topPaddingMobile: {
+    columnTopPaddingMobile: {
       type: "number",
     },
-    bottomPaddingMobile: {
+    columnBottomPaddingMobile: {
       type: "number",
     },
-    leftPaddingMobile: {
+    columnLeftPaddingMobile: {
       type: "number",
     },
-    rightPaddingMobile: {
+    columnRightPaddingMobile: {
       type: "number",
     },
-    leftMarginMobile: {
+    columnLeftMarginMobile: {
       type: "number",
     },
-    rightMarginMobile: {
+    columnRightMarginMobile: {
       type: "number",
     },
-    topMarginMobile: {
+    columnTopMarginMobile: {
       type: "number",
     },
-    bottomMarginMobile: {
+    columnBottomMarginMobile: {
       type: "number",
     },
     block_id: {
