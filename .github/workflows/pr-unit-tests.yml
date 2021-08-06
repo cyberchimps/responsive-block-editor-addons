@@ -13,7 +13,7 @@ jobs:
         wp: [ "latest" ]
         include:
           - wp: nightly
-            php: '7.4'
+            php: '8.0'
           - wp: '5.5'
             php: 7.2
           - wp: '5.4'
@@ -52,8 +52,8 @@ jobs:
             ./vendor
           key: ${{ runner.os }}-${{ hashFiles('./composer.lock') }}
 
-      - name: Setup and update composer
-        run: composer update
+      - name: Setup and install composer
+        run: composer install
 
       - name: Add PHP8 Compatibility.
         run: |
@@ -66,6 +66,9 @@ jobs:
            fi 
       - name: Init DB and WP
         run: ./tests/bin/install.sh woo_test root root 127.0.0.1 ${{ matrix.wp }}
+
+      - name: Composer update
+        run: composer update
 
       - name: Run tests
         run: ./vendor/bin/phpunit -c ./phpunit.xml
