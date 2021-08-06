@@ -261,6 +261,9 @@ registerBlockType("responsive-block-editor-addons/column", {
     backgroundColor: {
       type: "string",
     },
+    backgroundColorHover: {
+      type: "string",
+    },
     backgroundColor1: {
       type: "string",
     },

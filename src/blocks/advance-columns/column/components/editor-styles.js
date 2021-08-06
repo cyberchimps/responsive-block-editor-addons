@@ -12,6 +12,7 @@ function EditorStyles(props) {
     //attributes here
     width,
     backgroundColor,
+    backgroundColorHover,
     backgroundColor1,
     backgroundColor2,
     colorLocation1,
@@ -199,6 +200,12 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
+    },
+    " .responsive-block-editor-addons-block-column:hover": {
+      "background-color":
+        backgroundType == "color"
+          ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
+          : undefined,
     },
   };
 
