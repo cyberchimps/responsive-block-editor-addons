@@ -13,10 +13,10 @@ function EditorStyles(props) {
     contentAlignment,
     textColor,
     itemBackgroundColor,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -24,8 +24,14 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     titleSpace,
+    titleSpaceMobile,
+    titleSpaceTablet,
     subtitleSpace,
+    subtitleSpaceMobile,
+    subtitleSpaceTablet,
     contentSpace,
+    contentSpaceMobile,
+    contentSpaceTablet,
     buttonColor,
     buttonTextColor,
     opacity,
@@ -42,6 +48,8 @@ function EditorStyles(props) {
     imageheight,
     blockzindex,
     blockmargin,
+    blockmarginMobile,
+    blockmarginTablet,
     icon_color,
     buttonhColor,
     buttonhTextColor,
@@ -73,9 +81,17 @@ function EditorStyles(props) {
     contentFontWeight,
     contentFontSize,
     contenttopSpace,
+    contenttopSpaceMobile,
+    contenttopSpaceTablet,
     blockbotmargin,
+    blockbotmarginMobile,
+    blockbotmarginTablet,
     blockleftmargin,
+    blockleftmarginMobile,
+    blockleftmarginTablet,
     blockrightmargin,
+    blockrightmarginMobile,
+    blockrightmarginTablet,
     bgimagePosition,
     bgimageRepeat,
     bgthumbsize,
@@ -83,6 +99,15 @@ function EditorStyles(props) {
     backgroundImageTwo,
     backgroundImageThree,
     backgroundImageFour,
+    backgroundImagePosition,
+    backgroundImageSize,
+    backgroundImageRepeat,
+	headingFontSizeMobile,
+	headingFontSizeTablet,
+	subFontSizeMobile,
+	subFontSizeTablet,
+	contentFontSizeMobile,
+	contentFontSizeTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -139,14 +164,14 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-card-item": {
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       color: textColor,
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}`
+          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
           : undefined,
       "background-image":
         backgroundType == "gradient"
@@ -174,12 +199,12 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-card-background-image": {
       "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
+        ? `url(${backgroundImage})`
         : null,
       height: 100 + "%",
-      "background-position": bgimagePosition,
-      "background-repeat": bgimageRepeat,
-      "background-size": bgthumbsize,
+      "background-position": backgroundImagePosition,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
     },
 
     " .responsive-block-editor-addons-card-avatar": {
@@ -196,7 +221,7 @@ function EditorStyles(props) {
         "background-image": `url(${backgroundImageOne})`,
         "display": backgroundImageOne? 'block' : 'none',
     },
-    
+
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-0": {
         "display": backgroundImageOne? 'none' : 'flex',
     },
@@ -292,9 +317,57 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginMobile, "px"),
+      "margin-top": generateCSSUnit(blockmarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginMobile, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceMobile, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceMobile, "px"),
+    },
 
-  var tablet_selectors = {};
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(headingFontSizeMobile, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(subFontSizeMobile, "px"),
+    },
+	" .wp-block-responsive-block-editor-addons-card-item__content": {
+		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+	}
+  };
+
+  var tablet_selectors = {
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginTablet, "px"),
+      "margin-top": generateCSSUnit(blockmarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginTablet, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceTablet, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(headingFontSizeTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(subFontSizeTablet, "px"),
+    },
+	" .wp-block-responsive-block-editor-addons-card-item__content": {
+		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+	}
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-card.block-${block_id}`;
