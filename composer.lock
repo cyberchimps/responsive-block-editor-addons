@@ -136,6 +136,27 @@
                 "zend",
                 "zikula"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/v1.11.0"
+            },
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2021-04-28T06:42:17+00:00"
         },
         {
@@ -196,6 +217,13 @@
                 "geolocation",
                 "maxmind"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/maxmind/MaxMind-DB-Reader-php/issues",
+                "source": "https://github.com/maxmind/MaxMind-DB-Reader-php/tree/v1.6.0"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2019-12-19T22:59:03+00:00"
         },
         {
@@ -248,6 +276,19 @@
                 "mobile detector",
                 "php mobile detect"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
+                "source": "https://github.com/serbanghita/Mobile-Detect/tree/2.8.37"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/serbanghita",
+                    "type": "github"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2021-02-19T21:22:57+00:00"
         },
         {
@@ -322,6 +363,13 @@
                 "email",
                 "pre-processing"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/MyIntervals/emogrifier/issues",
+                "source": "https://github.com/MyIntervals/emogrifier"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2019-12-26T19:37:31+00:00"
         },
         {
@@ -371,6 +419,11 @@
                 "container-interop",
                 "psr"
             ],
+
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/master"
+            },
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
@@ -409,6 +462,13 @@
             ],
             "description": "Select2 is a jQuery based replacement for select boxes.",
             "homepage": "https://select2.org/",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/select2/select2/issues",
+                "source": "https://github.com/select2/select2/tree/4.0.13"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-01-28T05:01:22+00:00"
         },
         {
@@ -462,6 +522,12 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
+=======
+            "support": {
+                "source": "https://github.com/symfony/css-selector/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-05-01T15:01:29+00:00"
         }
     ],
@@ -510,6 +576,13 @@
                 "isolation",
                 "tool"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/bamarni/composer-bin-plugin/issues",
+                "source": "https://github.com/bamarni/composer-bin-plugin/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-05-03T08:27:20+00:00"
         },
         {
@@ -576,6 +649,13 @@
                 "stylecheck",
                 "tests"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/dealerdirect/phpcodesniffer-composer-installer/issues",
+                "source": "https://github.com/dealerdirect/phpcodesniffer-composer-installer"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-12-07T18:04:37+00:00"
         },
         {
@@ -630,6 +710,13 @@
                 "constructor",
                 "instantiate"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/doctrine/instantiator/issues",
+                "source": "https://github.com/doctrine/instantiator/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2015-06-14T21:17:01+00:00"
         },
         {
@@ -675,6 +762,13 @@
                 "object",
                 "object graph"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/myclabs/DeepCopy/issues",
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.x"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-10-19T19:58:43+00:00"
         },
         {
@@ -730,6 +824,13 @@
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/phar-io/manifest/issues",
+                "source": "https://github.com/phar-io/manifest/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-03-05T18:14:27+00:00"
         },
         {
@@ -777,6 +878,13 @@
                 }
             ],
             "description": "Library for handling version information and constraints",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/phar-io/version/issues",
+                "source": "https://github.com/phar-io/version/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-03-05T17:38:23+00:00"
         },
         {
@@ -835,6 +943,13 @@
                 "phpcs",
                 "standards"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/PHPCompatibility/PHPCompatibility/issues",
+                "source": "https://github.com/PHPCompatibility/PHPCompatibility"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2019-12-27T09:44:58+00:00"
         },
         {
@@ -887,6 +1002,13 @@
                 "polyfill",
                 "standards"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie/issues",
+                "source": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2021-02-15T10:24:51+00:00"
         },
         {
@@ -937,6 +1059,13 @@
                 "standards",
                 "wordpress"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/PHPCompatibility/PHPCompatibilityWP/issues",
+                "source": "https://github.com/PHPCompatibility/PHPCompatibilityWP"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2021-07-21T11:09:57+00:00"
         },
         {
@@ -991,6 +1120,13 @@
                 "reflection",
                 "static analysis"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/phpDocumentor/ReflectionCommon/issues",
+                "source": "https://github.com/phpDocumentor/ReflectionCommon/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-09-11T18:02:19+00:00"
         },
         {
@@ -1043,6 +1179,13 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
+                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/release/4.x"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2019-12-28T18:55:12+00:00"
         },
         {
@@ -1088,6 +1231,13 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-12-30T13:23:38+00:00"
         },
         {
@@ -1151,6 +1301,13 @@
                 "spy",
                 "stub"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/phpspec/prophecy/issues",
+                "source": "https://github.com/phpspec/prophecy/tree/v1.10.3"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-03-05T15:02:03+00:00"
         },
         {
@@ -1214,6 +1371,13 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/5.3"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2018-04-06T15:36:58+00:00"
         },
         {
@@ -1261,6 +1425,14 @@
                 "filesystem",
                 "iterator"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "irc": "irc://irc.freenode.net/phpunit",
+                "issues": "https://github.com/sebastianbergmann/php-file-iterator/issues",
+                "source": "https://github.com/sebastianbergmann/php-file-iterator/tree/1.4.5"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-11-27T13:52:08+00:00"
         },
         {
@@ -1302,6 +1474,13 @@
             "keywords": [
                 "template"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/php-text-template/issues",
+                "source": "https://github.com/sebastianbergmann/php-text-template/tree/1.2.1"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2015-06-21T13:50:34+00:00"
         },
         {
@@ -1351,6 +1530,13 @@
             "keywords": [
                 "timer"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/php-timer/issues",
+                "source": "https://github.com/sebastianbergmann/php-timer/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-02-26T11:10:40+00:00"
         },
         {
@@ -1400,6 +1586,13 @@
             "keywords": [
                 "tokenizer"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/php-token-stream/issues",
+                "source": "https://github.com/sebastianbergmann/php-token-stream/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "abandoned": true,
             "time": "2017-11-27T05:48:46+00:00"
         },
@@ -1485,6 +1678,13 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/phpunit/issues",
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/6.5.14"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2019-02-01T05:22:47+00:00"
         },
         {
@@ -1544,6 +1744,13 @@
                 "mock",
                 "xunit"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/phpunit-mock-objects/issues",
+                "source": "https://github.com/sebastianbergmann/phpunit-mock-objects/tree/5.0.10"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
@@ -1590,6 +1797,19 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/issues",
+                "source": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/tree/1.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-11-30T08:15:22+00:00"
         },
         {
@@ -1654,6 +1874,13 @@
                 "compare",
                 "equality"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/comparator/issues",
+                "source": "https://github.com/sebastianbergmann/comparator/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2018-02-01T13:46:46+00:00"
         },
         {
@@ -1706,6 +1933,13 @@
             "keywords": [
                 "diff"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/diff/issues",
+                "source": "https://github.com/sebastianbergmann/diff/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-08-03T08:09:46+00:00"
         },
         {
@@ -1756,6 +1990,13 @@
                 "environment",
                 "hhvm"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/environment/issues",
+                "source": "https://github.com/sebastianbergmann/environment/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-07-01T08:51:00+00:00"
         },
         {
@@ -1823,6 +2064,19 @@
                 "export",
                 "exporter"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/exporter/issues",
+                "source": "https://github.com/sebastianbergmann/exporter/tree/3.1.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-11-30T07:47:53+00:00"
         },
         {
@@ -1874,6 +2128,13 @@
             "keywords": [
                 "global state"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/global-state/issues",
+                "source": "https://github.com/sebastianbergmann/global-state/tree/2.0.0"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2017-04-27T15:39:26+00:00"
         },
         {
@@ -1921,6 +2182,19 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/object-enumerator/issues",
+                "source": "https://github.com/sebastianbergmann/object-enumerator/tree/3.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-11-30T07:40:27+00:00"
         },
         {
@@ -1966,6 +2240,19 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/object-reflector/issues",
+                "source": "https://github.com/sebastianbergmann/object-reflector/tree/1.1.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-11-30T07:37:18+00:00"
         },
         {
@@ -2019,6 +2306,19 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/recursion-context/issues",
+                "source": "https://github.com/sebastianbergmann/recursion-context/tree/3.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sebastianbergmann",
+                    "type": "github"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-11-30T07:34:24+00:00"
         },
         {
@@ -2061,6 +2361,13 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/resource-operations/issues",
+                "source": "https://github.com/sebastianbergmann/resource-operations/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2015-07-28T20:34:47+00:00"
         },
         {
@@ -2104,6 +2411,13 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/sebastianbergmann/version/issues",
+                "source": "https://github.com/sebastianbergmann/version/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
@@ -2155,6 +2469,14 @@
                 "phpcs",
                 "standards"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
+                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2021-04-09T00:54:41+00:00"
         },
         {
@@ -2217,6 +2539,26 @@
                 "polyfill",
                 "portable"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.19.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-10-23T09:01:57+00:00"
         },
         {
@@ -2257,6 +2599,13 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/theseer/tokenizer/issues",
+                "source": "https://github.com/theseer/tokenizer/tree/master"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2019-06-13T22:48:21+00:00"
         },
         {
@@ -2306,6 +2655,13 @@
                 "check",
                 "validate"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/webmozarts/assert/issues",
+                "source": "https://github.com/webmozarts/assert/tree/1.9.1"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-07-08T17:02:28+00:00"
         },
         {
@@ -2352,6 +2708,14 @@
                 "standards",
                 "wordpress"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/WordPress/WordPress-Coding-Standards/issues",
+                "source": "https://github.com/WordPress/WordPress-Coding-Standards",
+                "wiki": "https://github.com/WordPress/WordPress-Coding-Standards/wiki"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2020-05-13T23:57:56+00:00"
         },
         {
@@ -2422,6 +2786,13 @@
                 "themes",
                 "wordpress"
             ],
+<<<<<<< HEAD
+=======
+            "support": {
+                "issues": "https://github.com/WPTRT/WPThemeReview/issues",
+                "source": "https://github.com/WPTRT/WPThemeReview"
+            },
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
             "time": "2019-11-17T20:05:55+00:00"
         }
     ],
@@ -2436,5 +2807,10 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.0"
+<<<<<<< HEAD
     }
+=======
+    },
+    "plugin-api-version": "2.0.0"
+>>>>>>> db78990f09691fd4c2ff8f3ed1bc9fb15e3a7aeb
 }
