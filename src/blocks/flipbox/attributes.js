@@ -216,18 +216,18 @@ const attributes = {
   backIconColor: {
     type: "string",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 2,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
   boxShadowColor: {
@@ -292,35 +292,115 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  topPadding: {
+  topMarginMobile: {
     type: "number",
     default: 0,
   },
-  bottomPadding: {
+  bottomMarginMobile: {
     type: "number",
     default: 0,
   },
-  leftPadding: {
+  topMarginTablet: {
     type: "number",
     default: 0,
   },
-  rightPadding: {
+  bottomMarginTablet: {
     type: "number",
     default: 0,
   },
-  backtopPadding: {
+  frontTopPadding: {
     type: "number",
     default: 0,
   },
-  backbottomPadding: {
+  frontBottomPadding: {
     type: "number",
     default: 0,
   },
-  backleftPadding: {
+  frontLeftPadding: {
     type: "number",
     default: 0,
   },
-  backrightPadding: {
+  frontRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  backTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  backRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  frontTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  backRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  frontTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  frontBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  frontLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  frontRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  backRightPaddingTablet: {
     type: "number",
     default: 0,
   },
@@ -331,7 +411,122 @@ const attributes = {
   stack: {
     type: "string",
     default: "mobile",
-  }
+  },
+  frontTitleFontFamily: {
+    type: "string",
+  },
+  frontTitleFontWeight: {
+    type: "string",
+    default: "100"
+  },
+  frontTitleFontSize: {
+    type: "number",
+    default: 16
+  },
+  frontTitleFontSizeMobile: {
+    type: "number",
+    default: 16
+  },
+  frontTitleFontSizeTablet: {
+    type: "number",
+    default: 16
+  },
+  frontTitleLineHeight: {
+    type: "number",
+    default: 1
+  },
+  frontSubtitleFontFamily: {
+    type: "string",
+  },
+  frontSubtitleFontWeight: {
+    type: "string",
+    default: "100"
+  },
+  frontSubtitleFontSize: {
+    type: "number",
+    default: 16
+  },
+  frontSubtitleFontSizeMobile: {
+    type: "number",
+    default: 16
+  },
+  frontSubtitleFontSizeTablet: {
+    type: "number",
+    default: 16
+  },
+  frontSubtitleLineHeight: {
+    type: "number",
+    default: 1
+  },
+  backTitleFontFamily: {
+    type: "string",
+  },
+  backTitleFontWeight: {
+    type: "string",
+    default: "100"
+  },
+  backTitleFontSize: {
+    type: "number",
+    default: 16
+  },
+  backTitleFontSizeMobile: {
+    type: "number",
+    default: 16
+  },
+  backTitleFontSizeTablet: {
+    type: "number",
+    default: 16
+  },
+  backTitleLineHeight: {
+    type: "number",
+    default: 1
+  },
+  backSubtitleFontFamily: {
+    type: "string",
+  },
+  backSubtitleFontWeight: {
+    type: "string",
+    default: "100"
+  },
+  backSubtitleFontSize: {
+    type: "number",
+    default: 16
+  },
+  backSubtitleFontSizeMobile: {
+    type: "number",
+    default: 16
+  },
+  backSubtitleFontSizeTablet: {
+    type: "number",
+    default: 16
+  },
+  backSubtitleLineHeight: {
+    type: "number",
+    default: 1
+  },
+  backButtonFontFamily: {
+    type: "string",
+  },
+  backButtonFontWeight: {
+    type: "string",
+    default: "100"
+  },
+  backButtonFontSize: {
+    type: "number",
+    default: 16
+  },
+  backButtonFontSizeMobile: {
+    type: "number",
+    default: 16
+  },
+  backButtonFontSizeTablet: {
+    type: "number",
+    default: 16
+  },
+  backButtonLineHeight: {
+    type: "number",
+    default: 1
+  },
 };
 
 export default attributes;

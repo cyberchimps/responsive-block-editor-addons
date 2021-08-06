@@ -395,6 +395,38 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
   columnTopPadding: {
     type: "number",
     default: 64,
@@ -408,6 +440,38 @@ const attributes = {
     default: 24,
   },
   columnRightPadding: {
+    type: "number",
+    default: 24,
+  },
+  columnTopPaddingMobile: {
+    type: "number",
+    default: 64,
+  },
+  columnBottomPaddingMobile: {
+    type: "number",
+    default: 64,
+  },
+  columnLeftPaddingMobile: {
+    type: "number",
+    default: 24,
+  },
+  columnRightPaddingMobile: {
+    type: "number",
+    default: 24,
+  },
+  columnTopPaddingTablet: {
+    type: "number",
+    default: 64,
+  },
+  columnBottomPaddingTablet: {
+    type: "number",
+    default: 64,
+  },
+  columnLeftPaddingTablet: {
+    type: "number",
+    default: 24,
+  },
+  columnRightPaddingTablet: {
     type: "number",
     default: 24,
   },
@@ -463,6 +527,38 @@ const attributes = {
   featuresSpace: {
     type: "number",
   },
+  titleSpaceMobile: {
+    type: "number",
+  },
+  priceSpaceMobile: {
+    type: "number",
+  },
+  subpriceSpaceMobile: {
+    type: "number",
+    default: 0,
+  },
+  buttonSpaceMobile: {
+    type: "number",
+  },
+  featuresSpaceMobile: {
+    type: "number",
+  },
+  titleSpaceTablet: {
+    type: "number",
+  },
+  priceSpaceTablet: {
+    type: "number",
+  },
+  subpriceSpaceTablet: {
+    type: "number",
+    default: 0,
+  },
+  buttonSpaceTablet: {
+    type: "number",
+  },
+  featuresSpaceTablet: {
+    type: "number",
+  },
   blockAlign: {
     type: "string",
     default: "center",
@@ -476,6 +572,48 @@ const attributes = {
   },
   imageShape: {
     type: "string",
+  },
+  titleFontSizeMobile: {
+	type: "number",
+  },
+  titleFontSizeTablet: {
+	type: "number",
+  },
+  prefixFontSizeMobile: {
+	type: "number",
+  },
+  prefixFontSizeTablet: {
+	type: "number",
+  },
+  amountFontSizeMobile: {
+	type: "number",
+  },
+  amountFontSizeTablet: {
+	type: "number",
+  },
+  suffixFontSizeMobile: {
+	type: "number",
+  },
+  suffixFontSizeTablet: {
+	type: "number",
+  },
+  subpriceFontSizeMobile: {
+	type: "number",
+  },
+  subpriceFontSizeTablet: {
+	type: "number",
+  },
+  featuresFontSizeMobile: {
+	type: "number",
+  },
+  featuresFontSizeTablet: {
+	type: "number",
+  },
+  ctaFontSizeMobile: {
+	type: "number",
+  },
+  ctaFontSizeTablet: {
+	type: "number",
   },
 };
 export default attributes;
