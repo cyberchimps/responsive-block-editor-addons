@@ -734,9 +734,9 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 					if ( $id ) {
 						$content = get_post_field( 'post_content', $id );
 
-						$reusable_blocks = $this->parse( $content );
+						$reusable_blocks = self::$rbea_frontend_styles_helper->parse( $content );
 
-						$css = $this->get_styles( $reusable_blocks );
+						$css = self::$rbea_frontend_styles_helper->get_styles( $reusable_blocks );
 
 					}
 				} else {
@@ -2277,7 +2277,42 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
-	 * Test get_block_css core/block as inner block
+	 * Test get_block_css core/block as inner block - with ref
+	 */
+	public function test_get_block_css_inner_core_block_with_ref() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_section_default_attributes();
+		$inner_block = array(
+			'blockName'    => 'core/block',
+			'attrs'        => array(
+				'block_id' => self::$core_block_id,
+				'ref'      => 10,
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '',
+			'innerContent' => array(
+				'',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/section',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$section_block_id ) ),
+			'innerBlocks'  => array(
+				$inner_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_section_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test get_block_css core/block as inner block - default case
 	 */
 	public function test_get_block_css_default_case() {
 		$block  = array(
