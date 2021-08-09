@@ -15,11 +15,9 @@ const attributes = {
   },
   innerWidthTablet: {
     type: "number",
-    default: 1140,
   },
   innerWidthMobile: {
     type: "number",
-    default: 1140,
   },
   innerWidthType: {
     type: "string",
@@ -35,11 +33,9 @@ const attributes = {
   },
   blockTopPaddingMobile: {
     type: "number",
-    default: 10,
   },
   blockTopPaddingTablet: {
     type: "number",
-    default: 10,
   },
   blockBottomPadding: {
     type: "number",
@@ -47,11 +43,9 @@ const attributes = {
   },
   blockBottomPaddingMobile: {
     type: "number",
-    default: 10,
   },
   blockBottomPaddingTablet: {
     type: "number",
-    default: 10,
   },
   blockLeftPadding: {
     type: "number",
@@ -59,11 +53,9 @@ const attributes = {
   },
   blockLeftPaddingMobile: {
     type: "number",
-    default: 10,
   },
   blockLeftPaddingTablet: {
     type: "number",
-    default: 10,
   },
   blockRightPadding: {
     type: "number",
@@ -71,11 +63,9 @@ const attributes = {
   },
   blockRightPaddingMobile: {
     type: "number",
-    default: 10,
   },
   blockRightPaddingTablet: {
     type: "number",
-    default: 10,
   },
   blockTopMargin: {
     type: "number",
@@ -95,35 +85,27 @@ const attributes = {
   },
   blockTopMarginTablet: {
     type: "number",
-    default: 0,
   },
   blockBottomMarginTablet: {
     type: "number",
-    default: 0,
   },
   blockLeftMarginTablet: {
     type: "number",
-    default: 0,
   },
   blockRightMarginTablet: {
     type: "number",
-    default: 0,
   },
   blockTopMarginMobile: {
     type: "number",
-    default: 0,
   },
   blockBottomMarginMobile: {
     type: "number",
-    default: 0,
   },
   blockLeftMarginMobile: {
     type: "number",
-    default: 0,
   },
   blockRightMarginMobile: {
     type: "number",
-    default: 0,
   },
   blockBorderStyle: {
     type: "string",

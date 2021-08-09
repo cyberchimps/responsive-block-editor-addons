@@ -4229,27 +4229,27 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$mobile_selectors = array(
 				' .responsive-block-editor-addons-icon-list__source-icon svg' => array(
-					'width'  => self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ),
-					'height' => self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ),
+					'width'  => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
+					'height' => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
 				),
 				' .responsive-block-editor-addons-icon-list__label' => array(
-					'font-size' => self::get_css_value( $attr['labelFontSizeMobile'], 'px' ),
+					'font-size' => $attr['labelFontSizeMobile'] ? self::get_css_value( $attr['labelFontSizeMobile'], 'px' ) : self::get_css_value( $attr['labelFontSize'], 'px' ),
 				),
 				' .responsive-block-editor-addons-icon-list__source-wrap' => array(
-					'padding' => self::get_css_value( $attr['bgSizeMobile'], 'px' ),
+					'padding' => $attr['bgSizeMobile'] ? self::get_css_value( $attr['bgSizeMobile'], 'px' ) : self::get_css_value( $attr['bgSize'], 'px' ),
 				),
 			);
 
 			$tablet_selectors = array(
 				' .responsive-block-editor-addons-icon-list__source-icon svg' => array(
-					'width'  => self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ),
-					'height' => self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ),
+					'width'  => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
+					'height' => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
 				),
 				' .responsive-block-editor-addons-icon-list__label' => array(
-					'font-size' => self::get_css_value( $attr['labelFontSizeTablet'], 'px' ),
+					'font-size' => $attr['labelFontSizeTablet'] ? self::get_css_value( $attr['labelFontSizeTablet'], 'px' ) : self::get_css_value( $attr['labelFontSize'], 'px' ),
 				),
 				' .responsive-block-editor-addons-icon-list__source-wrap' => array(
-					'padding' => self::get_css_value( $attr['bgSizeTablet'], 'px' ),
+					'padding' => $attr['bgSizeTablet'] ? self::get_css_value( $attr['bgSizeTablet'], 'px' ) : self::get_css_value( $attr['bgSize'], 'px' ),
 				),
 			);
 
@@ -4279,11 +4279,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'inner_gap'           => 15,
 				'iconPosition'        => 'middle',
 				'size'                => 16,
-				'sizeMobile'          => 16,
-				'sizeTablet'          => 16,
+				'sizeMobile'          => '',
+				'sizeTablet'          => '',
 				'bgSize'              => 0,
-				'bgSizeMobile'        => 0,
-				'bgSizeTablet'        => 0,
+				'bgSizeMobile'        => '',
+				'bgSizeTablet'        => '',
 				'border'              => 0,
 				'borderRadius'        => 0,
 				'hideLabel'           => false,
@@ -6496,29 +6496,29 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'innerWidthType'           => 'px',
 				'themeWidth'               => false,
 				'blockTopPadding'          => 10,
-				'blockTopPaddingMobile'    => 10,
-				'blockTopPaddingTablet'    => 10,
+				'blockTopPaddingMobile'    => '',
+				'blockTopPaddingTablet'    => '',
 				'blockBottomPadding'       => 10,
-				'blockBottomPaddingMobile' => 10,
-				'blockBottomPaddingTablet' => 10,
+				'blockBottomPaddingMobile' => '',
+				'blockBottomPaddingTablet' => '',
 				'blockLeftPadding'         => 10,
-				'blockLeftPaddingMobile'   => 10,
-				'blockLeftPaddingTablet'   => 10,
+				'blockLeftPaddingMobile'   => '',
+				'blockLeftPaddingTablet'   => '',
 				'blockRightPadding'        => 10,
-				'blockRightPaddingMobile'  => 10,
-				'blockRightPaddingTablet'  => 10,
+				'blockRightPaddingMobile'  => '',
+				'blockRightPaddingTablet'  => '',
 				'blockTopMargin'           => 0,
 				'blockBottomMargin'        => 0,
 				'blockLeftMargin'          => 0,
 				'blockRightMargin'         => 0,
-				'blockTopMarginTablet'     => 0,
-				'blockBottomMarginTablet'  => 0,
-				'blockLeftMarginTablet'    => 0,
-				'blockRightMarginTablet'   => 0,
-				'blockTopMarginMobile'     => 0,
-				'blockBottomMarginMobile'  => 0,
-				'blockLeftMarginMobile'    => 0,
-				'blockRightMarginMobile'   => 0,
+				'blockTopMarginTablet'     => '',
+				'blockBottomMarginTablet'  => '',
+				'blockLeftMarginTablet'    => '',
+				'blockRightMarginTablet'   => '',
+				'blockTopMarginMobile'     => '',
+				'blockBottomMarginMobile'  => '',
+				'blockLeftMarginMobile'    => '',
+				'blockRightMarginMobile'   => '',
 				'blockBorderStyle'         => 'none',
 				'blockBorderWidth'         => 1,
 				'blockBorderRadius'        => 0,
@@ -7718,14 +7718,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				' > .responsive-block-editor-addons-block-section' => array(
-					'margin-top'     => self::get_css_value( $attr['blockTopMarginMobile'], 'px' ),
-					'margin-bottom'  => self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ),
-					'margin-left'    => self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ),
-					'margin-right'   => self::get_css_value( $attr['blockRightMarginMobile'], 'px' ),
-					'padding-top'    => self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['blockRightPaddingMobile'], 'px' ),
+					'margin-top'     => $attr['blockTopMarginMobile'] ? self::get_css_value( $attr['blockTopMarginMobile'], 'px' ) : self::get_css_value( $attr['blockTopMargin'], 'px' ),
+					'margin-bottom'  => $attr['blockBottomMarginMobile'] ? self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ) : self::get_css_value( $attr['blockBottomMargin'], 'px' ),
+					'margin-left'    => $attr['blockLeftMarginMobile'] ? self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ) : self::get_css_value( $attr['blockLeftMargin'], 'px' ),
+					'margin-right'   => $attr['blockRightMarginMobile'] ? self::get_css_value( $attr['blockRightMarginMobile'], 'px' ) : self::get_css_value( $attr['blockRightMargin'], 'px' ),
+					'padding-top'    => $attr['blockTopPaddingMobile'] ? self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ) : self::get_css_value( $attr['blockTopPadding'], 'px' ),
+					'padding-bottom' => $attr['blockBottomPaddingMobile'] ? self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ) : self::get_css_value( $attr['blockBottomPadding'], 'px' ),
+					'padding-left'   => $attr['blockLeftPaddingMobile'] ? self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ) : self::get_css_value( $attr['blockLeftPadding'], 'px' ),
+					'padding-right'  => $attr['blockRightPaddingMobile'] ? self::get_css_value( $attr['blockRightPaddingMobile'], 'px' ) : self::get_css_value( $attr['blockRightPadding'], 'px' ),
 				),
 				' > .responsive-section-wrap > .responsive-section-inner-wrap' => array(
 					'max-width' =>
@@ -7739,14 +7739,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' > .responsive-block-editor-addons-block-section' => array(
-					'margin-top'     => self::get_css_value( $attr['blockTopMarginTablet'], 'px' ),
-					'margin-bottom'  => self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ),
-					'margin-left'    => self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ),
-					'margin-right'   => self::get_css_value( $attr['blockRightMarginTablet'], 'px' ),
-					'padding-top'    => self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingTablet'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['blockRightPaddingTablet'], 'px' ),
+					'margin-top'     => $attr['blockTopMarginTablet'] ? self::get_css_value( $attr['blockTopMarginTablet'], 'px' ) : self::get_css_value( $attr['blockTopMargin'], 'px' ),
+					'margin-bottom'  => $attr['blockBottomMarginTablet'] ? self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ) : self::get_css_value( $attr['blockBottomMargin'], 'px' ),
+					'margin-left'    => $attr['blockLeftMarginTablet'] ? self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ) : self::get_css_value( $attr['blockLeftMargin'], 'px' ),
+					'margin-right'   => $attr['blockRightMarginTablet'] ? self::get_css_value( $attr['blockRightMarginTablet'], 'px' ) : self::get_css_value( $attr['blockRightMargin'], 'px' ),
+					'padding-top'    => $attr['blockTopPaddingTablet'] ? self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ) : self::get_css_value( $attr['blockTopPadding'], 'px' ),
+					'padding-bottom' => $attr['blockBottomPaddingTablet'] ? self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ) : self::get_css_value( $attr['blockBottomPadding'], 'px' ),
+					'padding-left'   => $attr['blockLeftPaddingTablet'] ? self::get_css_value( $attr['blockLeftPaddingTablet'], 'px' ) : self::get_css_value( $attr['blockLeftPadding'], 'px' ),
+					'padding-right'  => $attr['blockRightPaddingTablet'] ? self::get_css_value( $attr['blockRightPaddingTablet'], 'px' ) : self::get_css_value( $attr['blockRightPadding'], 'px' ),
 				),
 				' > .responsive-section-wrap > .responsive-section-inner-wrap' => array(
 					'max-width' =>
