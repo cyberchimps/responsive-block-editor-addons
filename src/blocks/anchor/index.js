@@ -11,6 +11,8 @@ import renderSVG from "../../renderIcon";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+//Import Block Icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -25,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/anchor", {
     "Allows to create anchor links for performing quick jumps from one part of the page to another (internal links)",
     "responsive-block-editor-addons"
   ),
-  icon: renderSVG("fa fa-anchor"),
+  icon: ResponsiveBlockEditorAddonsIcons.anchor,
   category: "responsive_block_editor_addons",
   keywords: [
     __("anchor", "responsive-block-editor-addons"),

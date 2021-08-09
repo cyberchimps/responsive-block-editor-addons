@@ -11,6 +11,9 @@ import Save from "./components/save";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 
+//Import block icons
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Internationalization
 const { __ } = wp.i18n;
 
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/social-share", {
     "This block allows you to display icons linking to your social media profiles or websites.",
     "responsive-block-editor-addons"
   ),
-  icon: "share",
+  icon: ResponsiveBlockEditorAddonsIcons.social_share,
   category: "responsive_block_editor_addons",
   keywords: [
     __("Social Share", "responsive-block-editor-addons"),
