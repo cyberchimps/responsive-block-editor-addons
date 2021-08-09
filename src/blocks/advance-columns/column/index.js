@@ -26,7 +26,7 @@ registerBlockType("responsive-block-editor-addons/column", {
     "This block is an immediate child of Advanced Columns.",
     "responsive-block-editor-addons"
   ),
-  icon: "layout",
+  icon: ResponsiveBlockEditorAddonsIcons.column,
   category: "responsive_block_editor_addons",
   parent: ["responsive-block-editor-addons/advance-columns"],
   keywords: [
@@ -39,76 +39,76 @@ registerBlockType("responsive-block-editor-addons/column", {
       type: "number",
       default: 50,
     },
-    topPadding: {
+    columnTopPadding: {
       type: "number",
     },
-    bottomPadding: {
+    columnBottomPadding: {
       type: "number",
     },
-    leftPadding: {
+    columnLeftPadding: {
       type: "number",
     },
-    rightPadding: {
+    columnRightPadding: {
       type: "number",
     },
-    leftMargin: {
+    columnLeftMargin: {
       type: "number",
     },
-    rightMargin: {
+    columnRightMargin: {
       type: "number",
     },
-    topMargin: {
+    columnTopMargin: {
       type: "number",
     },
-    bottomMargin: {
+    columnBottomMargin: {
       type: "number",
     },
-    topPaddingTablet: {
+    columnTopPaddingTablet: {
       type: "number",
     },
-    bottomPaddingTablet: {
+    columnBottomPaddingTablet: {
       type: "number",
     },
-    leftPaddingTablet: {
+    columnLeftPaddingTablet: {
       type: "number",
     },
-    rightPaddingTablet: {
+    columnRightPaddingTablet: {
       type: "number",
     },
-    leftMarginTablet: {
+    columnLeftMarginTablet: {
       type: "number",
     },
-    rightMarginTablet: {
+    columnRightMarginTablet: {
       type: "number",
     },
-    topMarginTablet: {
+    columnTopMarginTablet: {
       type: "number",
     },
-    bottomMarginTablet: {
+    columnBottomMarginTablet: {
       type: "number",
     },
-    topPaddingMobile: {
+    columnTopPaddingMobile: {
       type: "number",
     },
-    bottomPaddingMobile: {
+    columnBottomPaddingMobile: {
       type: "number",
     },
-    leftPaddingMobile: {
+    columnLeftPaddingMobile: {
       type: "number",
     },
-    rightPaddingMobile: {
+    columnRightPaddingMobile: {
       type: "number",
     },
-    leftMarginMobile: {
+    columnLeftMarginMobile: {
       type: "number",
     },
-    rightMarginMobile: {
+    columnRightMarginMobile: {
       type: "number",
     },
-    topMarginMobile: {
+    columnTopMarginMobile: {
       type: "number",
     },
-    bottomMarginMobile: {
+    columnBottomMarginMobile: {
       type: "number",
     },
     block_id: {
@@ -206,15 +206,15 @@ registerBlockType("responsive-block-editor-addons/column", {
     backgroundImage: {
       type: "string",
     },
-    backgroundPosition: {
+    backgroundImagePosition: {
       type: "string",
       default: "center center",
     },
-    backgroundSize: {
+    backgroundImageSize: {
       type: "string",
       default: "cover",
     },
-    backgroundRepeat: {
+    backgroundImageRepeat: {
       type: "string",
       default: "no-repeat",
     },

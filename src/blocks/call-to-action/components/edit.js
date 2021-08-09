@@ -78,7 +78,7 @@ export default class Edit extends Component {
         ctaTextFontFamily,
         ctaTextFontSize,
         ctaWidth,
-        imgURL,
+        backgroundImage,
         dimRatio,
         icon,
         iconPosition,
@@ -104,7 +104,7 @@ export default class Edit extends Component {
     const onSelectImage = (img) => {
       setAttributes({
         imgID: img.id,
-        imgURL: img.url,
+        backgroundImage: img.url,
         imgAlt: img.alt,
       });
     };
@@ -159,7 +159,7 @@ export default class Edit extends Component {
             `block-${block_id}`
           )}
         >
-          {"image" == backgroundType && imgURL && !!imgURL.length && (
+          {"image" == backgroundType && backgroundImage && !!backgroundImage.length && (
             <div className="responsive-block-editor-addons-cta-image-wrap">
               <img
                 className={classnames(

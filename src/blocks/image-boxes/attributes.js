@@ -71,6 +71,18 @@ const attributes = {
   descriptionSpacing: {
     type: "number",
   },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
+    type: "number",
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
   blockBorderRadius: {
     type: "number",
   },
@@ -80,7 +92,7 @@ const attributes = {
   },
   blockBorderStyle: {
     type: "string",
-    default: "none",
+    default: "solid",
   },
   blockBorderWidth: {
     type: "number",
@@ -254,6 +266,12 @@ const attributes = {
   showTitle: {
     type: "boolean",
     default: true,
+  },
+  descriptionFontSizeMobile: {
+	  type: "number",
+  },
+  descriptionFontSizeTablet: {
+	  type: "number",
   },
 };
 

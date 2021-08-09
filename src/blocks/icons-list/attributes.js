@@ -51,7 +51,23 @@ const attributes = {
     type: "number",
     default: 16,
   },
+  sizeMobile: {
+    type: "number",
+    default: 16
+  },
+  sizeTablet:{
+    type: "number",
+    default: 16
+  },
   bgSize: {
+    type: "number",
+    default: 0,
+  },
+  bgSizeMobile: {
+    type: "number",
+    default: 0,
+  },
+  bgSizeTablet: {
     type: "number",
     default: 0,
   },
@@ -82,7 +98,7 @@ const attributes = {
   labelFontSizeMobile: {
     type: "number",
   },
-  labelFontLineHeight: {
+  labelLineHeight: {
     type: "number",
     default: 1,
   },
