@@ -306,7 +306,7 @@ class Testimonial_Slider_Index_Test extends WP_UnitTestCase {
 			'arrowSize'            => 20,
 			'arrowDots'            => 'arrows_dots',
 			'arrowColor'           => '#333',
-			'arrowBorderSize'      => 1,
+			'arrowBorderWidth'      => 1,
 			'arrowBorderRadius'    => 0,
 			'postsToShow'          => 6,
 			'displayPostDate'      => true,
