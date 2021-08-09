@@ -191,14 +191,14 @@ class Testimonial_Slider_Index_Test extends WP_UnitTestCase {
 	 */
 	public function test_get_responsive_testimonial_carousel_block_js_no_name() {
 		$block  = array(
-			'blockName' => '',
+			'blockName' => null,
 		);
 		$result = get_responsive_testimonial_carousel_block_js( $block );
 		$this->assertEmpty( $result );
 	}
 
 	/**
-	 * Test for get responsive testimonial carousel block js function - wrong name - shoulkd return null
+	 * Test for get responsive testimonial carousel block js function - wrong name - should return null
 	 */
 	public function test_get_responsive_testimonial_carousel_block_js_wrong_name() {
 		global $responsive_post_carousel_js;
@@ -306,7 +306,7 @@ class Testimonial_Slider_Index_Test extends WP_UnitTestCase {
 			'arrowSize'            => 20,
 			'arrowDots'            => 'arrows_dots',
 			'arrowColor'           => '#333',
-			'arrowBorderSize'      => 1,
+			'arrowBorderWidth'      => 1,
 			'arrowBorderRadius'    => 0,
 			'postsToShow'          => 6,
 			'displayPostDate'      => true,

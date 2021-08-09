@@ -20,8 +20,10 @@ build
 dist/*
 !js
 !images
+!css
 
 # ignore log files and databases
 *.log
 *.sql
 *.sqlite
+.idea

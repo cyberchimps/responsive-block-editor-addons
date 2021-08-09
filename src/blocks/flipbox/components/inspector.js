@@ -7,6 +7,14 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import { loadGoogleFont } from "../../../utils/font";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -15,7 +23,6 @@ const { MediaUpload } = wp.blockEditor;
 
 // Import block components
 const { InspectorControls, PanelColorSettings, ColorPalette } = wp.editor;
-
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
@@ -155,10 +162,10 @@ export default class Inspector extends Component {
         iconSize,
         iconColor,
         flipStyleSelected,
-        borderStyle,
-        borderWidth,
-        borderRadius,
-        borderColor,
+        blockBorderStyle,
+        blockBorderWidth,
+        blockBorderRadius,
+        blockBorderColor,
         boxShadowColor,
         boxShadowHOffset,
         boxShadowVOffset,
@@ -168,14 +175,34 @@ export default class Inspector extends Component {
         height,
         topMargin,
         bottomMargin,
-        topPadding,
-        bottomPadding,
-        leftPadding,
-        rightPadding,
-        backtopPadding,
-        backbottomPadding,
-        backleftPadding,
-        backrightPadding,
+        frontTopPadding,
+        frontBottomPadding,
+        frontLeftPadding,
+        frontRightPadding,
+        backTopPadding,
+        backBottomPadding,
+        backLeftPadding,
+        backRightPadding,
+        topMarginMobile,
+        bottomMarginMobile,
+        frontTopPaddingMobile,
+        frontBottomPaddingMobile,
+        frontLeftPaddingMobile,
+        frontRightPaddingMobile,
+        backTopPaddingMobile,
+        backBottomPaddingMobile,
+        backLeftPaddingMobile,
+        backRightPaddingMobile,
+        topMarginTablet,
+        bottomMarginTablet,
+        frontTopPaddingTablet,
+        frontBottomPaddingTablet,
+        frontLeftPaddingTablet,
+        frontRightPaddingTablet,
+        backTopPaddingTablet,
+        backBottomPaddingTablet,
+        backLeftPaddingTablet,
+        backRightPaddingTablet,
         backIconColor,
         backIconSize,
         showFrontIcon,
@@ -221,7 +248,37 @@ export default class Inspector extends Component {
         buttonopacity,
         buttonHopacity,
         flipBoxGutterGap,
-        stack
+        stack,
+        frontTitleFontSize,
+        frontTitleFontSizeMobile,
+        frontTitleFontSizeTablet,
+        frontTitleFontWeight,
+        frontTitleLineHeight,
+        frontTitleFontFamily,
+        frontSubtitleFontFamily,
+        frontSubtitleFontSize,
+        frontSubtitleFontSizeMobile,
+        frontSubtitleFontSizeTablet,
+        frontSubtitleFontWeight,
+        frontSubtitleLineHeight,
+        backTitleFontSize,
+        backTitleFontSizeMobile,
+        backTitleFontSizeTablet,
+        backTitleFontWeight,
+        backTitleLineHeight,
+        backTitleFontFamily,
+        backSubtitleFontFamily,
+        backSubtitleFontSize,
+        backSubtitleFontSizeMobile,
+        backSubtitleFontSizeTablet,
+        backSubtitleFontWeight,
+        backSubtitleLineHeight,
+        backButtonFontSize,
+        backButtonFontSizeMobile,
+        backButtonFontSizeTablet,
+        backButtonFontWeight,
+        backButtonLineHeight,
+        backButtonFontFamily,
       },
       setAttributes,
     } = this.props;
@@ -323,28 +380,28 @@ export default class Inspector extends Component {
             {__("Select Icon", "responsive-block-editor-addons")}
             <span className="components-base-control__label"></span>
           </p>
-              <FontIconPicker
-              icons={svg_icons}
-              renderFunc={renderSVG}
-              theme="default"
-              value={flipboxArray[index]["icon"]}
-              onChange={(value) =>{ 
-                var new_content = {
-                  icon: value,
-                  back_icon: data_copy[index]["back_icon"],
-                  back_button: data_copy[index]["back_button"],
-                  back_buttonURL: data_copy[index]["back_buttonURL"],
-                  title: data_copy[index]["title"],
-                  subtitle: data_copy[index]["subtitle"],
-                  back_title: data_copy[index]["back_title"],
-                  back_subtitle: data_copy[index]["back_subtitle"],
-                };
-                data_copy[index] = new_content
-                setAttributes({ flipboxArray: data_copy }) 
-              }}
-              isMulti={false}
-              noSelectedPlaceholder={__("Select Icon")}
-              />
+          <FontIconPicker
+            icons={svg_icons}
+            renderFunc={renderSVG}
+            theme="default"
+            value={flipboxArray[index]["icon"]}
+            onChange={(value) => {
+              var new_content = {
+                icon: value,
+                back_icon: data_copy[index]["back_icon"],
+                back_button: data_copy[index]["back_button"],
+                back_buttonURL: data_copy[index]["back_buttonURL"],
+                title: data_copy[index]["title"],
+                subtitle: data_copy[index]["subtitle"],
+                back_title: data_copy[index]["back_title"],
+                back_subtitle: data_copy[index]["back_subtitle"],
+              };
+              data_copy[index] = new_content;
+              setAttributes({ flipboxArray: data_copy });
+            }}
+            isMulti={false}
+            noSelectedPlaceholder={__("Select Icon")}
+          />
         </PanelBody>
       );
     };
@@ -367,27 +424,27 @@ export default class Inspector extends Component {
             <span className="components-base-control__label"></span>
           </p>
           <FontIconPicker
-              icons={svg_icons}
-              renderFunc={renderSVG}
-              theme="default"
-              value={flipboxArray[index]["back_icon"]}
-              onChange={(value) =>{ 
-                var new_content = {
-                  icon: data_copy[index]["icon"],
-                  back_icon: value,
-                  back_button: data_copy[index]["back_button"],
-                  back_buttonURL: data_copy[index]["back_buttonURL"],
-                  title: data_copy[index]["title"],
-                  subtitle: data_copy[index]["subtitle"],
-                  back_title: data_copy[index]["back_title"],
-                  back_subtitle: data_copy[index]["back_subtitle"],
-                };
-                data_copy[index] = new_content
-                setAttributes({ flipboxArray: data_copy }) 
-              }}
-              isMulti={false}
-              noSelectedPlaceholder={__("Select Icon")}
-              />
+            icons={svg_icons}
+            renderFunc={renderSVG}
+            theme="default"
+            value={flipboxArray[index]["back_icon"]}
+            onChange={(value) => {
+              var new_content = {
+                icon: data_copy[index]["icon"],
+                back_icon: value,
+                back_button: data_copy[index]["back_button"],
+                back_buttonURL: data_copy[index]["back_buttonURL"],
+                title: data_copy[index]["title"],
+                subtitle: data_copy[index]["subtitle"],
+                back_title: data_copy[index]["back_title"],
+                back_subtitle: data_copy[index]["back_subtitle"],
+              };
+              data_copy[index] = new_content;
+              setAttributes({ flipboxArray: data_copy });
+            }}
+            isMulti={false}
+            noSelectedPlaceholder={__("Select Icon")}
+          />
         </PanelBody>
       );
     };
@@ -450,1271 +507,1293 @@ export default class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
-        <PanelBody
-          title={__("General", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <RangeControl
-            label={__("Number of Flip Boxes", "responsive-block-editor-addons")}
-            value={count}
-            onChange={(newCount) => {
-              let cloneTest_block = [...flipboxArray];
-              if (cloneTest_block.length < newCount) {
-                const incAmount = Math.abs(newCount - cloneTest_block.length);
-
-                {
-                  times(incAmount, (n) => {
-                    cloneTest_block.push({
-                      title: "Front Title " + newCount,
-                      back_title: "Back Title " + newCount,
-                      subtitle: "Front Subtitle " + newCount,
-                      back_subtitle: "Back Subtitle " + newCount,
-                      back_Button: "Button " + newCount,
-                      icon: "shield",
-                      back_icon: "shield",
-                    });
-                  });
-                }
-                setAttributes({ flipboxArray: cloneTest_block });
-              } else {
-                const incAmount = Math.abs(newCount - cloneTest_block.length);
-                let data_new = cloneTest_block;
-                for (var i = 0; i < incAmount; i++) {
-                  data_new.pop();
-                }
-                setAttributes({ flipboxArray: data_new });
-              }
-              setAttributes({ count: newCount });
-            }}
-            min={1}
-            max={4}
-            step={1}
-          />
-          <SelectControl
-            label={__("Stack on", "responsive-block-editor-addons")}
-            value={stack}
-            options={[
-              {
-                value: "none",
-                label: __("None", "responsive-block-editor-addons"),
-              },
-              {
-                value: "tablet",
-                label: __("Tablet", "responsive-block-editor-addons"),
-              },
-              {
-                value: "mobile",
-                label: __("Mobile", "responsive-block-editor-addons"),
-              },
-            ]}
-            onChange={(value) => setAttributes({ stack: value })}
-            help={__(
-              "Note: Choose on what breakpoint the flipboxes will stack.",
-              "responsive-block-editor-addons"
-            )}
-          />
-          <RangeControl
-            label={__("Gutter Gap", "responsive-block-editor-addons")}
-            value={flipBoxGutterGap}
-            onChange={(value) =>
-              setAttributes({ flipBoxGutterGap: value !== undefined ? value : 10 })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-          <RangeControl
-            label={__("Height", "responsive-block-editor-addons")}
-            value={height}
-            onChange={(value) =>
-              setAttributes({ height: value !== undefined ? value : 420 })
-            }
-            min={300}
-            max={1000}
-            allowReset
-          />
-          <SelectControl
-            label={__("Flip Style", "responsive-block-editor-addons")}
-            options={flipStyleOptions}
-            value={flipStyleSelected}
-            onChange={(value) =>
-              this.props.setAttributes({
-                flipStyleSelected: value,
-              })
-            }
-          />
-
-          <RangeControl
-            label={__(
-              "Transition Speed (ms)",
-              "responsive-block-editor-addons"
-            )}
-            value={transitionSpeed}
-            onChange={(value) =>
-              setAttributes({
-                transitionSpeed: value !== undefined ? value : 8,
-              })
-            }
-            min={0}
-            max={20}
-            allowReset
-          />
-        </PanelBody>
-
-        <ButtonGroup
-          className="flipbox_buttongroup"
-          text={__("Selected Site", "responsive-block-editor-addons")}
-        >
-          <Button
-            className={classnames("flipbox_button", frontColorButtonClass)}
-            onClick={() =>
-              setAttributes({ colorButtonSelected: "front_selected" })
-            }
-          >
-            {__("Front", "responsive-block-editor-addons")}
-          </Button>
-          <Button
-            className={classnames("flipbox_button", backColorButtonClass)}
-            onClick={() =>
-              setAttributes({ colorButtonSelected: "back_selected" })
-            }
-          >
-            {__("Back", "responsive-block-editor-addons")}
-          </Button>
-        </ButtonGroup>
-        <PanelBody initialOpen={true}>
-          {isFrontSelected && (
-            <Fragment>
-              <ToggleControl
-                label={__("Front Icon", "responsive-block-editor-addons")}
-                checked={showFrontIcon}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showFrontIcon: !showFrontIcon,
-                  })
-                }
-              />
-              <ToggleControl
-                label={__("Front Title", "responsive-block-editor-addons")}
-                checked={showFrontTitle}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showFrontTitle: !showFrontTitle,
-                  })
-                }
-              />
-              <ToggleControl
-                label={__("Front Subtitle", "responsive-block-editor-addons")}
-                checked={showFrontSubtitle}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showFrontSubtitle: !showFrontSubtitle,
-                  })
-                }
-              />
-            </Fragment>
-          )}
-          {isBackSelected && (
-            <Fragment>
-              <ToggleControl
-                label={__("Back Icon", "responsive-block-editor-addons")}
-                checked={showBackIcon}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showBackIcon: !showBackIcon,
-                  })
-                }
-              />
-              <ToggleControl
-                label={__("Back Title", "responsive-block-editor-addons")}
-                checked={showBackTitle}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showBackTitle: !showBackTitle,
-                  })
-                }
-              />
-              <ToggleControl
-                label={__("Back Subtitle", "responsive-block-editor-addons")}
-                checked={showBackSubtitle}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showBackSubtitle: !showBackSubtitle,
-                  })
-                }
-              />
-              <ToggleControl
-                label={__("Back Button", "responsive-block-editor-addons")}
-                checked={showBackButton}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showBackButton: !showBackButton,
-                  })
-                }
-              />
-            </Fragment>
-          )}
-        </PanelBody>
-        {isFrontSelected && (
-          <PanelBody
-            title={__(
-              "Front Content Settings",
-              "responsive-block-editor-addons"
-            )}
-            initialOpen={false}
-          >
-            {times(count, (n) => frontControls(n))}
-          </PanelBody>
-        )}
-        {isBackSelected && (
-          <PanelBody
-            title={__(
-              "Back Content Settings",
-              "responsive-block-editor-addons"
-            )}
-            initialOpen={false}
-          >
-            {times(count, (n) => backControls(n))}
-          </PanelBody>
-        )}
-        {isFrontSelected && (
-          <PanelBody
-            title={__("Front Icon Settings", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            {times(count, (n) => frontIconControls(n))}
-
-            <RangeControl
-              label={__("Icon Size", "responsive-block-editor-addons")}
-              value={iconSize}
-              onChange={(value) =>
-                setAttributes({ iconSize: value !== undefined ? value : 50 })
-              }
-              min={20}
-              max={200}
-              allowReset
-            />
-
-            <p>
-              {__("Icon Color", "responsive-block-editor-addons")}
-              <span className="components-base-control__label">
-                <span
-                  className="component-color-indicator"
-                  style={{ backgroundColor: iconColor }}
-                ></span>
-              </span>
-            </p>
-
-            <ColorPalette
-              title={__("Color", "responsive-block-editor-addons")}
-              value={iconColor}
-              onChange={(colorValue) =>
-                setAttributes({ iconColor: colorValue })
-              }
-              allowReset
-            />
-          </PanelBody>
-        )}
-        {isBackSelected && (
-          <PanelBody
-            title={__("Back Icon Settings", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            {times(count, (n) => backIconControls(n))}
-
-            <RangeControl
-              label={__("Icon Size", "responsive-block-editor-addons")}
-              value={backIconSize}
-              onChange={(value) =>
-                setAttributes({
-                  backIconSize: value !== undefined ? value : 50,
-                })
-              }
-              min={20}
-              max={200}
-              allowReset
-            />
-
-            <p>
-              {__("Icon Color", "responsive-block-editor-addons")}
-              <span className="components-base-control__label">
-                <span
-                  className="component-color-indicator"
-                  style={{ backgroundColor: backIconColor }}
-                ></span>
-              </span>
-            </p>
-
-            <ColorPalette
-              title={__("Color", "responsive-block-editor-addons")}
-              value={backIconColor}
-              onChange={(colorValue) =>
-                setAttributes({ backIconColor: colorValue })
-              }
-              allowReset
-            />
-          </PanelBody>
-        )}
-        {isBackSelected && (
-          <PanelBody
-            title={__("Back Button Settings", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            <RangeControl
-              label={__("Border Radius", "responsive-block-editor-addons")}
-              value={buttonBorderRadius}
-              onChange={(value) =>
-                setAttributes({
-                  buttonBorderRadius: value !== undefined ? value : 0,
-                })
-              }
-              min={0}
-              max={50}
-              allowReset
-            />
-
-            <RangeControl
-              label={__("Horizontal Padding", "responsive-block-editor-addons")}
-              value={buttonHpadding}
-              onChange={(value) =>
-                setAttributes({
-                  buttonHpadding: value !== undefined ? value : 20,
-                })
-              }
-              min={0}
-              max={100}
-              allowReset
-            />
-            <RangeControl
-              label={__("Vertical Padding", "responsive-block-editor-addons")}
-              value={buttonVpadding}
-              onChange={(value) =>
-                setAttributes({
-                  buttonVpadding: value !== undefined ? value : 10,
-                })
-              }
-              min={0}
-              max={100}
-              allowReset
-            />
-            <TabPanel
-              className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
-              activeClass="active-tab"
-              tabs={[
-                {
-                  name: "normal",
-                  title: __("Normal"),
-                  className: "rbea-normal-tab",
-                },
-                {
-                  name: "hover",
-                  title: __("Hover"),
-                  className: "rbea-focus-tab",
-                },
-              ]}
+        <InspectorTabs>
+          <InspectorTab key={"content"}>
+            <PanelBody
+              title={__("General", "responsive-block-editor-addons")}
+              initialOpen={false}
             >
-              {(tabName) => {
-                let tabout;
-                if ("hover" === tabName.name) {
-                  tabout = (
-                    <Fragment>
-                      <Fragment>
-                        <p>
-                          {__("Text Color", "responsive-block-editor-addons")}
-                          <span className="components-base-control__label">
-                            <span
-                              className="component-color-indicator"
-                              style={{ backgroundColor: buttonHTextColor }}
-                            ></span>
-                          </span>
-                        </p>
-                        <ColorPalette
-                          value={buttonHTextColor}
-                          onChange={(colorValue) =>
-                            setAttributes({ buttonHTextColor: colorValue })
-                          }
-                          allowReset
-                        />
-                      </Fragment>
-                      <SelectControl
-                        label={__(
-                          "Background Type",
-                          "responsive-block-editor-addons"
-                        )}
-                        value={buttonHbackgroundType}
-                        onChange={(value) =>
-                          setAttributes({ buttonHbackgroundType: value })
-                        }
-                        options={buttonbackgroundTypeOptions}
-                      />
-                      {"color" == buttonHbackgroundType && (
-                        <Fragment>
-                          <p>
-                            {__(
-                              "Background Color",
-                              "responsive-block-editor-addons"
-                            )}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{ backgroundColor: buttonHColor }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={buttonHColor}
-                            onChange={(colorValue) =>
-                              setAttributes({ buttonHColor: colorValue })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__(
-                              "Opacity",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonHopacity}
-                            onChange={(value) =>
-                              setAttributes({
-                                buttonHopacity:
-                                  value !== undefined ? value : 20,
-                              })
-                            }
-                            min={0}
-                            max={100}
-                            allowReset
-                          />
-                        </Fragment>
-                      )}
-                      {"gradient" == buttonHbackgroundType && (
-                        <Fragment>
-                          <p className="responsive-setting-label">
-                            {__("Color 1", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: buttonHbackgroundColor1,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={buttonHbackgroundColor1}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                buttonHbackgroundColor1: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-
-                          <p className="responsive-setting-label">
-                            {__("Color 2", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: buttonHbackgroundColor2,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={buttonHbackgroundColor2}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                buttonHbackgroundColor2: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 1",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonHcolorLocation1}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({ buttonHcolorLocation1: value })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 2",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonHcolorLocation2}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({ buttonHcolorLocation2: value })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Gradient Direction",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonHgradientDirection}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({ buttonHgradientDirection: value })
-                            }
-                          />
-                        </Fragment>
-                      )}
-                    </Fragment>
-                  );
-                } else {
-                  tabout = (
-                    <Fragment>
-                      <Fragment>
-                        <p>
-                          {__("Text Color", "responsive-block-editor-addons")}
-                          <span className="components-base-control__label">
-                            <span
-                              className="component-color-indicator"
-                              style={{ backgroundColor: buttonTextColor }}
-                            ></span>
-                          </span>
-                        </p>
-                        <ColorPalette
-                          value={buttonTextColor}
-                          onChange={(colorValue) =>
-                            setAttributes({ buttonTextColor: colorValue })
-                          }
-                          allowReset
-                        />
-                      </Fragment>
-                      <SelectControl
-                        label={__(
-                          "Background Type",
-                          "responsive-block-editor-addons"
-                        )}
-                        value={buttonbackgroundType}
-                        onChange={(value) =>
-                          setAttributes({ buttonbackgroundType: value })
-                        }
-                        options={buttonbackgroundTypeOptions}
-                      />
-                      {"color" == buttonbackgroundType && (
-                        <Fragment>
-                          <p>
-                            {__(
-                              "Background Color",
-                              "responsive-block-editor-addons"
-                            )}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{ backgroundColor: buttonColor }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={buttonColor}
-                            onChange={(colorValue) =>
-                              setAttributes({ buttonColor: colorValue })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__(
-                              "Opacity",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonopacity}
-                            onChange={(value) =>
-                              setAttributes({
-                                buttonopacity: value !== undefined ? value : 20,
-                              })
-                            }
-                            min={0}
-                            max={100}
-                            allowReset
-                          />
-                        </Fragment>
-                      )}
-                      {"gradient" == buttonbackgroundType && (
-                        <Fragment>
-                          <p className="responsive-setting-label">
-                            {__("Color 1", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: buttonbackgroundColor1,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={buttonbackgroundColor1}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                buttonbackgroundColor1: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-
-                          <p className="responsive-setting-label">
-                            {__("Color 2", "responsive-block-editor-addons")}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: buttonbackgroundColor2,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={buttonbackgroundColor2}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                buttonbackgroundColor2: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 1",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttoncolorLocation1}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({ buttoncolorLocation1: value })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Color Location 2",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttoncolorLocation2}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({ buttoncolorLocation2: value })
-                            }
-                          />
-                          <RangeControl
-                            label={__(
-                              "Gradient Direction",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttongradientDirection}
-                            min={0}
-                            max={100}
-                            onChange={(value) =>
-                              setAttributes({ buttongradientDirection: value })
-                            }
-                          />
-                        </Fragment>
-                      )}
-                    </Fragment>
-                  );
-                }
-                return <div>{tabout}</div>;
-              }}
-            </TabPanel>
-          </PanelBody>
-        )}
-
-        <PanelBody
-          title={__("Background Image", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          {isFrontSelected && (
-            <Fragment>
-              <BaseControl
-                className="editor-bg-image-control"
+              <RangeControl
                 label={__(
-                  "Front Background Image",
+                  "Number of Flip Boxes",
                   "responsive-block-editor-addons"
                 )}
-              >
-                <MediaUpload
-                  title={__(
-                    "Select Background Image",
-                    "responsive-block-editor-addons"
-                  )}
-                  onSelect={this.onSelectImage}
-                  allowedTypes={["image"]}
-                  value={backgroundImage}
-                  render={({ open }) => (
-                    <Button isDefault onClick={open}>
-                      {!backgroundImage
-                        ? __(
-                            "Select Background Image",
-                            "responsive-block-editor-addons"
-                          )
-                        : __("Replace image", "responsive-block-editor-addons")}
-                    </Button>
-                  )}
-                />
-                {backgroundImage && (
-                  <Button
-                    className="rbea-rm-btn"
-                    onClick={this.onRemoveImage}
-                    isLink
-                    isDestructive
-                  >
-                    {__("Remove Image", "responsive-block-editor-addons")}
-                  </Button>
+                value={count}
+                onChange={(newCount) => {
+                  let cloneTest_block = [...flipboxArray];
+                  if (cloneTest_block.length < newCount) {
+                    const incAmount = Math.abs(
+                      newCount - cloneTest_block.length
+                    );
+
+                    {
+                      times(incAmount, (n) => {
+                        cloneTest_block.push({
+                          title: "Front Title " + newCount,
+                          back_title: "Back Title " + newCount,
+                          subtitle: "Front Subtitle " + newCount,
+                          back_subtitle: "Back Subtitle " + newCount,
+                          back_Button: "Button " + newCount,
+                          icon: "shield",
+                          back_icon: "shield",
+                        });
+                      });
+                    }
+                    setAttributes({ flipboxArray: cloneTest_block });
+                  } else {
+                    const incAmount = Math.abs(
+                      newCount - cloneTest_block.length
+                    );
+                    let data_new = cloneTest_block;
+                    for (var i = 0; i < incAmount; i++) {
+                      data_new.pop();
+                    }
+                    setAttributes({ flipboxArray: data_new });
+                  }
+                  setAttributes({ count: newCount });
+                }}
+                min={1}
+                max={4}
+                step={1}
+              />
+              <SelectControl
+                label={__("Stack on", "responsive-block-editor-addons")}
+                value={stack}
+                options={[
+                  {
+                    value: "none",
+                    label: __("None", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "tablet",
+                    label: __("Tablet", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "mobile",
+                    label: __("Mobile", "responsive-block-editor-addons"),
+                  },
+                ]}
+                onChange={(value) => setAttributes({ stack: value })}
+                help={__(
+                  "Note: Choose on what breakpoint the flipboxes will stack.",
+                  "responsive-block-editor-addons"
                 )}
-              </BaseControl>
+              />
               <RangeControl
-                label={__("Opacity", "responsive-block-editor-addons")}
-                value={colorOpacity}
+                label={__("Gutter Gap", "responsive-block-editor-addons")}
+                value={flipBoxGutterGap}
                 onChange={(value) =>
                   setAttributes({
-                    colorOpacity: value !== undefined ? value : 30,
+                    flipBoxGutterGap: value !== undefined ? value : 10,
                   })
                 }
                 min={0}
                 max={100}
                 allowReset
               />
-              {backgroundImage && (
-                <Fragment>
-                  <SelectControl
-                    label={__("Image Position")}
-                    value={backgroundPosition}
-                    onChange={(value) =>
-                      setAttributes({ backgroundPosition: value })
-                    }
-                    options={[
-                      { value: "top left", label: __("Top Left") },
-                      { value: "top center", label: __("Top Center") },
-                      { value: "top right", label: __("Top Right") },
-                      { value: "center left", label: __("Center Left") },
-                      { value: "center center", label: __("Center Center") },
-                      { value: "center right", label: __("Center Right") },
-                      { value: "bottom left", label: __("Bottom Left") },
-                      { value: "bottom center", label: __("Bottom Center") },
-                      { value: "bottom right", label: __("Bottom Right") },
-                    ]}
-                  />
-                  <SelectControl
-                    label={__("Attachment")}
-                    value={backgroundAttachment}
-                    onChange={(value) =>
-                      setAttributes({ backgroundAttachment: value })
-                    }
-                    options={[
-                      { value: "fixed", label: __("Fixed") },
-                      { value: "scroll", label: __("Scroll") },
-                    ]}
-                  />
-                  <SelectControl
-                    label={__("Repeat")}
-                    value={backgroundRepeat}
-                    onChange={(value) =>
-                      setAttributes({ backgroundRepeat: value })
-                    }
-                    options={[
-                      { value: "no-repeat", label: __("No Repeat") },
-                      { value: "repeat", label: __("Repeat") },
-                      { value: "repeat-x", label: __("Repeat-x") },
-                      { value: "repeat-y", label: __("Repeat-y") },
-                    ]}
-                  />
-                  <SelectControl
-                    label={__("Size")}
-                    value={backgroundSize}
-                    onChange={(value) =>
-                      setAttributes({ backgroundSize: value })
-                    }
-                    options={[
-                      { value: "auto", label: __("Auto") },
-                      { value: "cover", label: __("Cover") },
-                      { value: "contain", label: __("Contain") },
-                    ]}
-                  />
-                </Fragment>
-              )}
-            </Fragment>
-          )}
-          {isBackSelected && (
-            <Fragment>
-              <BaseControl
-                className="editor-bg-image-control"
+              <RangeControl
+                label={__("Height", "responsive-block-editor-addons")}
+                value={height}
+                onChange={(value) =>
+                  setAttributes({ height: value !== undefined ? value : 420 })
+                }
+                min={300}
+                max={1000}
+                allowReset
+              />
+              <SelectControl
+                label={__("Flip Style", "responsive-block-editor-addons")}
+                options={flipStyleOptions}
+                value={flipStyleSelected}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    flipStyleSelected: value,
+                  })
+                }
+              />
+
+              <RangeControl
                 label={__(
-                  "Back Background Image",
+                  "Transition Speed (ms)",
                   "responsive-block-editor-addons"
                 )}
-              >
-                <MediaUpload
-                  title={__(
-                    "Select Background Image",
-                    "responsive-block-editor-addons"
-                  )}
-                  onSelect={this.onSelectBackImage}
-                  allowedTypes={["image"]}
-                  value={backBackgroundImage}
-                  render={({ open }) => (
-                    <Button isDefault onClick={open}>
-                      {!backBackgroundImage
-                        ? __(
-                            "Select Background Image",
-                            "responsive-block-editor-addons"
-                          )
-                        : __("Replace image", "responsive-block-editor-addons")}
-                    </Button>
-                  )}
-                />
-                {backBackgroundImage && (
-                  <Button
-                    className="rbea-rm-btn"
-                    onClick={this.onRemoveBackImage}
-                    isLink
-                    isDestructive
-                  >
-                    {__("Remove Image", "responsive-block-editor-addons")}
-                  </Button>
-                )}
-              </BaseControl>
-              <RangeControl
-                label={__("Opacity", "responsive-block-editor-addons")}
-                value={backColorOpacity}
+                value={transitionSpeed}
                 onChange={(value) =>
                   setAttributes({
-                    backColorOpacity: value !== undefined ? value : 30,
+                    transitionSpeed: value !== undefined ? value : 8,
                   })
                 }
                 min={0}
-                max={100}
+                max={20}
                 allowReset
               />
-              {backBackgroundImage && (
+            </PanelBody>
+
+            <ButtonGroup
+              className="flipbox_buttongroup"
+              text={__("Selected Site", "responsive-block-editor-addons")}
+            >
+              <Button
+                className={classnames("flipbox_button", frontColorButtonClass)}
+                onClick={() =>
+                  setAttributes({ colorButtonSelected: "front_selected" })
+                }
+              >
+                {__("Front", "responsive-block-editor-addons")}
+              </Button>
+              <Button
+                className={classnames("flipbox_button", backColorButtonClass)}
+                onClick={() =>
+                  setAttributes({ colorButtonSelected: "back_selected" })
+                }
+              >
+                {__("Back", "responsive-block-editor-addons")}
+              </Button>
+            </ButtonGroup>
+            <PanelBody initialOpen={true}>
+              {isFrontSelected && (
                 <Fragment>
-                  <SelectControl
-                    label={__("Image Position")}
-                    value={backBackgroundPosition}
-                    onChange={(value) =>
-                      setAttributes({ backBackgroundPosition: value })
+                  <ToggleControl
+                    label={__("Front Icon", "responsive-block-editor-addons")}
+                    checked={showFrontIcon}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        showFrontIcon: !showFrontIcon,
+                      })
                     }
-                    options={[
-                      { value: "top left", label: __("Top Left") },
-                      { value: "top center", label: __("Top Center") },
-                      { value: "top right", label: __("Top Right") },
-                      { value: "center left", label: __("Center Left") },
-                      { value: "center center", label: __("Center Center") },
-                      { value: "center right", label: __("Center Right") },
-                      { value: "bottom left", label: __("Bottom Left") },
-                      { value: "bottom center", label: __("Bottom Center") },
-                      { value: "bottom right", label: __("Bottom Right") },
-                    ]}
                   />
-                  <SelectControl
-                    label={__("Attachment")}
-                    value={backBackgroundAttachment}
-                    onChange={(value) =>
-                      setAttributes({ backBackgroundAttachment: value })
+                  <ToggleControl
+                    label={__("Front Title", "responsive-block-editor-addons")}
+                    checked={showFrontTitle}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        showFrontTitle: !showFrontTitle,
+                      })
                     }
-                    options={[
-                      { value: "fixed", label: __("Fixed") },
-                      { value: "scroll", label: __("Scroll") },
-                    ]}
                   />
-                  <SelectControl
-                    label={__("Repeat")}
-                    value={backBackgroundRepeat}
-                    onChange={(value) =>
-                      setAttributes({ backBackgroundRepeat: value })
+                  <ToggleControl
+                    label={__(
+                      "Front Subtitle",
+                      "responsive-block-editor-addons"
+                    )}
+                    checked={showFrontSubtitle}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        showFrontSubtitle: !showFrontSubtitle,
+                      })
                     }
-                    options={[
-                      { value: "no-repeat", label: __("No Repeat") },
-                      { value: "repeat", label: __("Repeat") },
-                      { value: "repeat-x", label: __("Repeat-x") },
-                      { value: "repeat-y", label: __("Repeat-y") },
-                    ]}
-                  />
-                  <SelectControl
-                    label={__("Size")}
-                    value={backBackgroundSize}
-                    onChange={(value) =>
-                      setAttributes({ backBackgroundSize: value })
-                    }
-                    options={[
-                      { value: "auto", label: __("Auto") },
-                      { value: "cover", label: __("Cover") },
-                      { value: "contain", label: __("Contain") },
-                    ]}
                   />
                 </Fragment>
               )}
-            </Fragment>
-          )}
-        </PanelBody>
+              {isBackSelected && (
+                <Fragment>
+                  <ToggleControl
+                    label={__("Back Icon", "responsive-block-editor-addons")}
+                    checked={showBackIcon}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        showBackIcon: !showBackIcon,
+                      })
+                    }
+                  />
+                  <ToggleControl
+                    label={__("Back Title", "responsive-block-editor-addons")}
+                    checked={showBackTitle}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        showBackTitle: !showBackTitle,
+                      })
+                    }
+                  />
+                  <ToggleControl
+                    label={__(
+                      "Back Subtitle",
+                      "responsive-block-editor-addons"
+                    )}
+                    checked={showBackSubtitle}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        showBackSubtitle: !showBackSubtitle,
+                      })
+                    }
+                  />
+                  <ToggleControl
+                    label={__("Back Button", "responsive-block-editor-addons")}
+                    checked={showBackButton}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        showBackButton: !showBackButton,
+                      })
+                    }
+                  />
+                </Fragment>
+              )}
+            </PanelBody>
+            {isFrontSelected && (
+              <PanelBody
+                title={__(
+                  "Front Content Settings",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+              >
+                {times(count, (n) => frontControls(n))}
+              </PanelBody>
+            )}
+            {isBackSelected && (
+              <PanelBody
+                title={__(
+                  "Back Content Settings",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+              >
+                {times(count, (n) => backControls(n))}
+              </PanelBody>
+            )}
+            {isFrontSelected && (
+              <PanelBody
+                title={__(
+                  "Front Icon Settings",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+              >
+                {times(count, (n) => frontIconControls(n))}
 
-        {isFrontSelected && (
-          <PanelColorSettings
-            title={__("Front Color Settings", "responsive-block-editor-addons")}
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: frontTextColor,
-                onChange: onChangeFrontTextColor,
-                label: __("Text Color", "responsive-block-editor-addons"),
-              },
-              {
-                value: frontBackgroundColor,
-                onChange: onChangeFrontBackgroundColor,
-                label: __("Background Color", "responsive-block-editor-addons"),
-              },
-            ]}
-          >
-            <RangeControl
-              label={__("Opacity", "responsive-block-editor-addons")}
-              value={colorOpacity}
-              onChange={(value) =>
-                setAttributes({
-                  colorOpacity: value !== undefined ? value : 100,
-                })
-              }
-              min={0}
-              max={100}
-              allowReset
-            />
-          </PanelColorSettings>
-        )}
-        {isBackSelected && (
-          <PanelColorSettings
-            title={__("Back Color Settings", "responsive-block-editor-addons")}
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: backTextColor,
-                onChange: onChangeBackTextColor,
-                label: __("Text Color", "responsive-block-editor-addons"),
-              },
-              {
-                value: backBackgroundColor,
-                onChange: onChangeBackBackgroundColor,
-                label: __("Background Color", "responsive-block-editor-addons"),
-              },
-            ]}
-          >
-            <RangeControl
-              label={__("Opacity", "responsive-block-editor-addons")}
-              value={backColorOpacity}
-              onChange={(value) =>
-                setAttributes({
-                  backColorOpacity: value !== undefined ? value : 100,
-                })
-              }
-              min={0}
-              max={100}
-              allowReset
-            />
-          </PanelColorSettings>
-        )}
-        <PanelBody
-          title={__("Spacing", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <h2>{__("Margin")}</h2>
-          <RangeControl
-            label={__("Top Margin", "responsive-block-editor-addons")}
-            value={topMargin}
-            onChange={(value) =>
-              setAttributes({ topMargin: value !== undefined ? value : 0 })
-            }
-            min={-2000}
-            max={2000}
-            allowReset
-          />
-          <RangeControl
-            label={__("Bottom Margin", "responsive-block-editor-addons")}
-            value={bottomMargin}
-            onChange={(value) =>
-              setAttributes({ bottomMargin: value !== undefined ? value : 0 })
-            }
-            min={-2000}
-            max={2000}
-            allowReset
-          />
+                <RangeControl
+                  label={__("Icon Size", "responsive-block-editor-addons")}
+                  value={iconSize}
+                  onChange={(value) =>
+                    setAttributes({
+                      iconSize: value !== undefined ? value : 50,
+                    })
+                  }
+                  min={20}
+                  max={200}
+                  allowReset
+                />
 
-          <h2>{__("Padding")}</h2>
-          <TabPanel
-            className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
-            activeClass="active-tab"
-            tabs={[
-              {
-                name: "front",
-                title: __("Front"),
-                className: "rbea-normal-tab",
-              },
-              {
-                name: "back",
-                title: __("Back"),
-                className: "rbea-focus-tab",
-              },
-            ]}
-          >
-            {(tabName) => {
-              let tabout;
-              if ("back" === tabName.name) {
-                tabout = (
-                  <Fragment>
-                    <RangeControl
-                      label={__(
-                        "Top Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={backtopPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          backtopPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                    <RangeControl
-                      label={__(
-                        "Bottom Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={backbottomPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          backbottomPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                    <RangeControl
-                      label={__(
-                        "Left Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={backleftPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          backleftPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                    <RangeControl
-                      label={__(
-                        "Right Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={backrightPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          backrightPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                  </Fragment>
-                );
-              } else {
-                tabout = (
-                  <Fragment>
-                    <RangeControl
-                      label={__(
-                        "Top Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={topPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          topPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                    <RangeControl
-                      label={__(
-                        "Bottom Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={bottomPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          bottomPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                    <RangeControl
-                      label={__(
-                        "Left Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={leftPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          leftPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                    <RangeControl
-                      label={__(
-                        "Right Padding",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={rightPadding}
-                      onChange={(value) =>
-                        setAttributes({
-                          rightPadding: value !== undefined ? value : 0,
-                        })
-                      }
-                      min={0}
-                      max={50}
-                      allowReset
-                    />
-                  </Fragment>
-                );
-              }
-              return <div>{tabout}</div>;
-            }}
-          </TabPanel>
-        </PanelBody>
-        <PanelBody
-          title={__("Border Settings", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <SelectControl
-            label={__("Border Style", "responsive-block-editor-addons")}
-            value={borderStyle}
-            onChange={(value) => setAttributes({ borderStyle: value })}
-            options={[
-              {
-                value: "none",
-                label: __("None", "responsive-block-editor-addons"),
-              },
-              {
-                value: "solid",
-                label: __("Solid", "responsive-block-editor-addons"),
-              },
-              {
-                value: "dotted",
-                label: __("Dotted", "responsive-block-editor-addons"),
-              },
-              {
-                value: "dashed",
-                label: __("Dashed", "responsive-block-editor-addons"),
-              },
-              {
-                value: "double",
-                label: __("Double", "responsive-block-editor-addons"),
-              },
-              {
-                value: "groove",
-                label: __("Groove", "responsive-block-editor-addons"),
-              },
-              {
-                value: "inset",
-                label: __("Inset", "responsive-block-editor-addons"),
-              },
-              {
-                value: "outset",
-                label: __("Outset", "responsive-block-editor-addons"),
-              },
-              {
-                value: "ridge",
-                label: __("Ridge", "responsive-block-editor-addons"),
-              },
-            ]}
-          />
-          {"none" != borderStyle && (
-            <Fragment>
-              <RangeControl
-                label={__("Border Width", "responsive-block-editor-addons")}
-                value={borderWidth}
-                onChange={(value) =>
-                  setAttributes({
-                    borderWidth: value !== undefined ? value : 2,
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <Fragment>
                 <p>
-                  {__("Border Color", "responsive-block-editor-addons")}
+                  {__("Icon Color", "responsive-block-editor-addons")}
                   <span className="components-base-control__label">
                     <span
                       className="component-color-indicator"
-                      style={{ backgroundColor: borderColor }}
+                      style={{ backgroundColor: iconColor }}
                     ></span>
                   </span>
                 </p>
+
                 <ColorPalette
-                  value={borderColor}
+                  title={__("Color", "responsive-block-editor-addons")}
+                  value={iconColor}
                   onChange={(colorValue) =>
-                    setAttributes({
-                      borderColor:
-                        colorValue !== undefined ? colorValue : "#000",
-                    })
+                    setAttributes({ iconColor: colorValue })
                   }
                   allowReset
                 />
-              </Fragment>
-            </Fragment>
-          )}
-          <RangeControl
-            label={__("Border Radius", "responsive-block-editor-addons")}
-            value={borderRadius}
-            onChange={(value) =>
-              setAttributes({
-                borderRadius: value !== undefined ? value : null,
-              })
+              </PanelBody>
+            )}
+            {isBackSelected && (
+              <PanelBody
+                title={__(
+                  "Back Icon Settings",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+              >
+                {times(count, (n) => backIconControls(n))}
+
+                <RangeControl
+                  label={__("Icon Size", "responsive-block-editor-addons")}
+                  value={backIconSize}
+                  onChange={(value) =>
+                    setAttributes({
+                      backIconSize: value !== undefined ? value : 50,
+                    })
+                  }
+                  min={20}
+                  max={200}
+                  allowReset
+                />
+
+                <p>
+                  {__("Icon Color", "responsive-block-editor-addons")}
+                  <span className="components-base-control__label">
+                    <span
+                      className="component-color-indicator"
+                      style={{ backgroundColor: backIconColor }}
+                    ></span>
+                  </span>
+                </p>
+
+                <ColorPalette
+                  title={__("Color", "responsive-block-editor-addons")}
+                  value={backIconColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ backIconColor: colorValue })
+                  }
+                  allowReset
+                />
+              </PanelBody>
+            )}
+            {isBackSelected && (
+              <PanelBody
+                title={__(
+                  "Back Button Settings",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+              >
+                <RangeControl
+                  label={__("Border Radius", "responsive-block-editor-addons")}
+                  value={buttonBorderRadius}
+                  onChange={(value) =>
+                    setAttributes({
+                      buttonBorderRadius: value !== undefined ? value : 0,
+                    })
+                  }
+                  min={0}
+                  max={50}
+                  allowReset
+                />
+
+                <RangeControl
+                  label={__(
+                    "Horizontal Padding",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={buttonHpadding}
+                  onChange={(value) =>
+                    setAttributes({
+                      buttonHpadding: value !== undefined ? value : 20,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  allowReset
+                />
+                <RangeControl
+                  label={__(
+                    "Vertical Padding",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={buttonVpadding}
+                  onChange={(value) =>
+                    setAttributes({
+                      buttonVpadding: value !== undefined ? value : 10,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  allowReset
+                />
+                <TabPanel
+                  className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "normal",
+                      title: __("Normal"),
+                      className: "rbea-normal-tab",
+                    },
+                    {
+                      name: "hover",
+                      title: __("Hover"),
+                      className: "rbea-focus-tab",
+                    },
+                  ]}
+                >
+                  {(tabName) => {
+                    let tabout;
+                    if ("hover" === tabName.name) {
+                      tabout = (
+                        <Fragment>
+                          <Fragment>
+                            <p>
+                              {__(
+                                "Text Color",
+                                "responsive-block-editor-addons"
+                              )}
+                              <span className="components-base-control__label">
+                                <span
+                                  className="component-color-indicator"
+                                  style={{ backgroundColor: buttonHTextColor }}
+                                ></span>
+                              </span>
+                            </p>
+                            <ColorPalette
+                              value={buttonHTextColor}
+                              onChange={(colorValue) =>
+                                setAttributes({ buttonHTextColor: colorValue })
+                              }
+                              allowReset
+                            />
+                          </Fragment>
+                          <SelectControl
+                            label={__(
+                              "Background Type",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={buttonHbackgroundType}
+                            onChange={(value) =>
+                              setAttributes({ buttonHbackgroundType: value })
+                            }
+                            options={buttonbackgroundTypeOptions}
+                          />
+                          {"color" == buttonHbackgroundType && (
+                            <Fragment>
+                              <p>
+                                {__(
+                                  "Background Color",
+                                  "responsive-block-editor-addons"
+                                )}
+                                <span className="components-base-control__label">
+                                  <span
+                                    className="component-color-indicator"
+                                    style={{ backgroundColor: buttonHColor }}
+                                  ></span>
+                                </span>
+                              </p>
+                              <ColorPalette
+                                value={buttonHColor}
+                                onChange={(colorValue) =>
+                                  setAttributes({ buttonHColor: colorValue })
+                                }
+                                allowReset
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Opacity",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonHopacity}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    buttonHopacity:
+                                      value !== undefined ? value : 20,
+                                  })
+                                }
+                                min={0}
+                                max={100}
+                                allowReset
+                              />
+                            </Fragment>
+                          )}
+                          {"gradient" == buttonHbackgroundType && (
+                            <Fragment>
+                              <p className="responsive-setting-label">
+                                {__(
+                                  "Color 1",
+                                  "responsive-block-editor-addons"
+                                )}
+                                <span className="components-base-control__label">
+                                  <span
+                                    className="component-color-indicator"
+                                    style={{
+                                      backgroundColor: buttonHbackgroundColor1,
+                                    }}
+                                  ></span>
+                                </span>
+                              </p>
+                              <ColorPalette
+                                value={buttonHbackgroundColor1}
+                                onChange={(colorValue) =>
+                                  setAttributes({
+                                    buttonHbackgroundColor1: colorValue,
+                                  })
+                                }
+                                allowReset
+                              />
+
+                              <p className="responsive-setting-label">
+                                {__(
+                                  "Color 2",
+                                  "responsive-block-editor-addons"
+                                )}
+                                <span className="components-base-control__label">
+                                  <span
+                                    className="component-color-indicator"
+                                    style={{
+                                      backgroundColor: buttonHbackgroundColor2,
+                                    }}
+                                  ></span>
+                                </span>
+                              </p>
+                              <ColorPalette
+                                value={buttonHbackgroundColor2}
+                                onChange={(colorValue) =>
+                                  setAttributes({
+                                    buttonHbackgroundColor2: colorValue,
+                                  })
+                                }
+                                allowReset
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Color Location 1",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonHcolorLocation1}
+                                min={0}
+                                max={100}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    buttonHcolorLocation1: value,
+                                  })
+                                }
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Color Location 2",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonHcolorLocation2}
+                                min={0}
+                                max={100}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    buttonHcolorLocation2: value,
+                                  })
+                                }
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Gradient Direction",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonHgradientDirection}
+                                min={0}
+                                max={100}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    buttonHgradientDirection: value,
+                                  })
+                                }
+                              />
+                            </Fragment>
+                          )}
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <Fragment>
+                            <p>
+                              {__(
+                                "Text Color",
+                                "responsive-block-editor-addons"
+                              )}
+                              <span className="components-base-control__label">
+                                <span
+                                  className="component-color-indicator"
+                                  style={{ backgroundColor: buttonTextColor }}
+                                ></span>
+                              </span>
+                            </p>
+                            <ColorPalette
+                              value={buttonTextColor}
+                              onChange={(colorValue) =>
+                                setAttributes({ buttonTextColor: colorValue })
+                              }
+                              allowReset
+                            />
+                          </Fragment>
+                          <SelectControl
+                            label={__(
+                              "Background Type",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={buttonbackgroundType}
+                            onChange={(value) =>
+                              setAttributes({ buttonbackgroundType: value })
+                            }
+                            options={buttonbackgroundTypeOptions}
+                          />
+                          {"color" == buttonbackgroundType && (
+                            <Fragment>
+                              <p>
+                                {__(
+                                  "Background Color",
+                                  "responsive-block-editor-addons"
+                                )}
+                                <span className="components-base-control__label">
+                                  <span
+                                    className="component-color-indicator"
+                                    style={{ backgroundColor: buttonColor }}
+                                  ></span>
+                                </span>
+                              </p>
+                              <ColorPalette
+                                value={buttonColor}
+                                onChange={(colorValue) =>
+                                  setAttributes({ buttonColor: colorValue })
+                                }
+                                allowReset
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Opacity",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttonopacity}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    buttonopacity:
+                                      value !== undefined ? value : 20,
+                                  })
+                                }
+                                min={0}
+                                max={100}
+                                allowReset
+                              />
+                            </Fragment>
+                          )}
+                          {"gradient" == buttonbackgroundType && (
+                            <Fragment>
+                              <p className="responsive-setting-label">
+                                {__(
+                                  "Color 1",
+                                  "responsive-block-editor-addons"
+                                )}
+                                <span className="components-base-control__label">
+                                  <span
+                                    className="component-color-indicator"
+                                    style={{
+                                      backgroundColor: buttonbackgroundColor1,
+                                    }}
+                                  ></span>
+                                </span>
+                              </p>
+                              <ColorPalette
+                                value={buttonbackgroundColor1}
+                                onChange={(colorValue) =>
+                                  setAttributes({
+                                    buttonbackgroundColor1: colorValue,
+                                  })
+                                }
+                                allowReset
+                              />
+
+                              <p className="responsive-setting-label">
+                                {__(
+                                  "Color 2",
+                                  "responsive-block-editor-addons"
+                                )}
+                                <span className="components-base-control__label">
+                                  <span
+                                    className="component-color-indicator"
+                                    style={{
+                                      backgroundColor: buttonbackgroundColor2,
+                                    }}
+                                  ></span>
+                                </span>
+                              </p>
+                              <ColorPalette
+                                value={buttonbackgroundColor2}
+                                onChange={(colorValue) =>
+                                  setAttributes({
+                                    buttonbackgroundColor2: colorValue,
+                                  })
+                                }
+                                allowReset
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Color Location 1",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttoncolorLocation1}
+                                min={0}
+                                max={100}
+                                onChange={(value) =>
+                                  setAttributes({ buttoncolorLocation1: value })
+                                }
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Color Location 2",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttoncolorLocation2}
+                                min={0}
+                                max={100}
+                                onChange={(value) =>
+                                  setAttributes({ buttoncolorLocation2: value })
+                                }
+                              />
+                              <RangeControl
+                                label={__(
+                                  "Gradient Direction",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={buttongradientDirection}
+                                min={0}
+                                max={100}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    buttongradientDirection: value,
+                                  })
+                                }
+                              />
+                            </Fragment>
+                          )}
+                        </Fragment>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
+              </PanelBody>
+            )}
+            <PanelBody
+              title={__("Background Image", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              {isFrontSelected && (
+                <Fragment>
+                  <BaseControl
+                    className="editor-bg-image-control"
+                    label={__(
+                      "Front Background Image",
+                      "responsive-block-editor-addons"
+                    )}
+                  >
+                    <MediaUpload
+                      title={__(
+                        "Select Background Image",
+                        "responsive-block-editor-addons"
+                      )}
+                      onSelect={this.onSelectImage}
+                      allowedTypes={["image"]}
+                      value={backgroundImage}
+                      render={({ open }) => (
+                        <Button isDefault onClick={open}>
+                          {!backgroundImage
+                            ? __(
+                                "Select Background Image",
+                                "responsive-block-editor-addons"
+                              )
+                            : __(
+                                "Replace image",
+                                "responsive-block-editor-addons"
+                              )}
+                        </Button>
+                      )}
+                    />
+                    {backgroundImage && (
+                      <Button
+                        className="rbea-rm-btn"
+                        onClick={this.onRemoveImage}
+                        isLink
+                        isDestructive
+                      >
+                        {__("Remove Image", "responsive-block-editor-addons")}
+                      </Button>
+                    )}
+                  </BaseControl>
+                  <RangeControl
+                    label={__("Opacity", "responsive-block-editor-addons")}
+                    value={colorOpacity}
+                    onChange={(value) =>
+                      setAttributes({
+                        colorOpacity: value !== undefined ? value : 30,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    allowReset
+                  />
+                  {backgroundImage && (
+                    <Fragment>
+                      <SelectControl
+                        label={__("Image Position")}
+                        value={backgroundPosition}
+                        onChange={(value) =>
+                          setAttributes({ backgroundPosition: value })
+                        }
+                        options={[
+                          { value: "top left", label: __("Top Left") },
+                          { value: "top center", label: __("Top Center") },
+                          { value: "top right", label: __("Top Right") },
+                          { value: "center left", label: __("Center Left") },
+                          {
+                            value: "center center",
+                            label: __("Center Center"),
+                          },
+                          { value: "center right", label: __("Center Right") },
+                          { value: "bottom left", label: __("Bottom Left") },
+                          {
+                            value: "bottom center",
+                            label: __("Bottom Center"),
+                          },
+                          { value: "bottom right", label: __("Bottom Right") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Attachment")}
+                        value={backgroundAttachment}
+                        onChange={(value) =>
+                          setAttributes({ backgroundAttachment: value })
+                        }
+                        options={[
+                          { value: "fixed", label: __("Fixed") },
+                          { value: "scroll", label: __("Scroll") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Repeat")}
+                        value={backgroundRepeat}
+                        onChange={(value) =>
+                          setAttributes({ backgroundRepeat: value })
+                        }
+                        options={[
+                          { value: "no-repeat", label: __("No Repeat") },
+                          { value: "repeat", label: __("Repeat") },
+                          { value: "repeat-x", label: __("Repeat-x") },
+                          { value: "repeat-y", label: __("Repeat-y") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Size")}
+                        value={backgroundSize}
+                        onChange={(value) =>
+                          setAttributes({ backgroundSize: value })
+                        }
+                        options={[
+                          { value: "auto", label: __("Auto") },
+                          { value: "cover", label: __("Cover") },
+                          { value: "contain", label: __("Contain") },
+                        ]}
+                      />
+                    </Fragment>
+                  )}
+                </Fragment>
+              )}
+              {isBackSelected && (
+                <Fragment>
+                  <BaseControl
+                    className="editor-bg-image-control"
+                    label={__(
+                      "Back Background Image",
+                      "responsive-block-editor-addons"
+                    )}
+                  >
+                    <MediaUpload
+                      title={__(
+                        "Select Background Image",
+                        "responsive-block-editor-addons"
+                      )}
+                      onSelect={this.onSelectBackImage}
+                      allowedTypes={["image"]}
+                      value={backBackgroundImage}
+                      render={({ open }) => (
+                        <Button isDefault onClick={open}>
+                          {!backBackgroundImage
+                            ? __(
+                                "Select Background Image",
+                                "responsive-block-editor-addons"
+                              )
+                            : __(
+                                "Replace image",
+                                "responsive-block-editor-addons"
+                              )}
+                        </Button>
+                      )}
+                    />
+                    {backBackgroundImage && (
+                      <Button
+                        className="rbea-rm-btn"
+                        onClick={this.onRemoveBackImage}
+                        isLink
+                        isDestructive
+                      >
+                        {__("Remove Image", "responsive-block-editor-addons")}
+                      </Button>
+                    )}
+                  </BaseControl>
+                  <RangeControl
+                    label={__("Opacity", "responsive-block-editor-addons")}
+                    value={backColorOpacity}
+                    onChange={(value) =>
+                      setAttributes({
+                        backColorOpacity: value !== undefined ? value : 30,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    allowReset
+                  />
+                  {backBackgroundImage && (
+                    <Fragment>
+                      <SelectControl
+                        label={__("Image Position")}
+                        value={backBackgroundPosition}
+                        onChange={(value) =>
+                          setAttributes({ backBackgroundPosition: value })
+                        }
+                        options={[
+                          { value: "top left", label: __("Top Left") },
+                          { value: "top center", label: __("Top Center") },
+                          { value: "top right", label: __("Top Right") },
+                          { value: "center left", label: __("Center Left") },
+                          {
+                            value: "center center",
+                            label: __("Center Center"),
+                          },
+                          { value: "center right", label: __("Center Right") },
+                          { value: "bottom left", label: __("Bottom Left") },
+                          {
+                            value: "bottom center",
+                            label: __("Bottom Center"),
+                          },
+                          { value: "bottom right", label: __("Bottom Right") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Attachment")}
+                        value={backBackgroundAttachment}
+                        onChange={(value) =>
+                          setAttributes({ backBackgroundAttachment: value })
+                        }
+                        options={[
+                          { value: "fixed", label: __("Fixed") },
+                          { value: "scroll", label: __("Scroll") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Repeat")}
+                        value={backBackgroundRepeat}
+                        onChange={(value) =>
+                          setAttributes({ backBackgroundRepeat: value })
+                        }
+                        options={[
+                          { value: "no-repeat", label: __("No Repeat") },
+                          { value: "repeat", label: __("Repeat") },
+                          { value: "repeat-x", label: __("Repeat-x") },
+                          { value: "repeat-y", label: __("Repeat-y") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Size")}
+                        value={backBackgroundSize}
+                        onChange={(value) =>
+                          setAttributes({ backBackgroundSize: value })
+                        }
+                        options={[
+                          { value: "auto", label: __("Auto") },
+                          { value: "cover", label: __("Cover") },
+                          { value: "contain", label: __("Contain") },
+                        ]}
+                      />
+                    </Fragment>
+                  )}
+                </Fragment>
+              )}
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            {frontTitleFontFamily && loadGoogleFont(frontTitleFontFamily)}
+            {frontSubtitleFontFamily && loadGoogleFont(frontSubtitleFontFamily)}
+            {backTitleFontFamily && loadGoogleFont(backTitleFontFamily)}
+            {backSubtitleFontFamily && loadGoogleFont(backSubtitleFontFamily)}
+            {backButtonFontFamily && loadGoogleFont(backButtonFontFamily)}
+            {isFrontSelected && (
+              <PanelColorSettings
+                title={__(
+                  "Front Color Settings",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+                colorSettings={[
+                  {
+                    value: frontTextColor,
+                    onChange: onChangeFrontTextColor,
+                    label: __("Text Color", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: frontBackgroundColor,
+                    onChange: onChangeFrontBackgroundColor,
+                    label: __(
+                      "Background Color",
+                      "responsive-block-editor-addons"
+                    ),
+                  },
+                ]}
+              >
+                <RangeControl
+                  label={__("Opacity", "responsive-block-editor-addons")}
+                  value={colorOpacity}
+                  onChange={(value) =>
+                    setAttributes({
+                      colorOpacity: value !== undefined ? value : 100,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  allowReset
+                />
+              </PanelColorSettings>
+            )}
+            {
+              isFrontSelected && (
+                <Fragment>
+                  {
+                    showFrontTitle && (
+                      <TypographyHelperControl
+                        title={__("Front Title Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="frontTitle%s"
+                        values = {{family: frontTitleFontFamily, size: frontTitleFontSize, sizeMobile: frontTitleFontSizeMobile, sizeTablet: frontTitleFontSizeTablet, weight: frontTitleFontWeight, height: frontTitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showFrontSubtitle && (
+                      <TypographyHelperControl
+                        title={__("Front Subtitle Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="frontSubtitle%s"
+                        values = {{family: frontSubtitleFontFamily, size: frontSubtitleFontSize, sizeMobile: frontSubtitleFontSizeMobile, sizeTablet: frontSubtitleFontSizeTablet, weight: frontSubtitleFontWeight, height: frontSubtitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                </Fragment>
+              )
             }
-            min={0}
-            max={100}
-            allowReset
-          />
-          <BoxShadowControl
-            setAttributes={setAttributes}
-            label={__("Box Shadow")}
-            boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
-            boxShadowHOffset={{
-              value: boxShadowHOffset,
-              label: __("Horizontal"),
-            }}
-            boxShadowVOffset={{
-              value: boxShadowVOffset,
-              label: __("Vertical"),
-            }}
-            boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
-            boxShadowSpread={{ value: boxShadowSpread, label: __("Spread") }}
-            boxShadowPosition={{
-              value: boxShadowPosition,
-              label: __("Position"),
-            }}
-          />
-        </PanelBody>
+            {isBackSelected && (
+              <PanelColorSettings
+                title={__(
+                  "Back Color Settings",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+                colorSettings={[
+                  {
+                    value: backTextColor,
+                    onChange: onChangeBackTextColor,
+                    label: __("Text Color", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: backBackgroundColor,
+                    onChange: onChangeBackBackgroundColor,
+                    label: __(
+                      "Background Color",
+                      "responsive-block-editor-addons"
+                    ),
+                  },
+                ]}
+              >
+                <RangeControl
+                  label={__("Opacity", "responsive-block-editor-addons")}
+                  value={backColorOpacity}
+                  onChange={(value) =>
+                    setAttributes({
+                      backColorOpacity: value !== undefined ? value : 100,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  allowReset
+                />
+              </PanelColorSettings>
+            )}
+            {
+              isBackSelected && (
+                <Fragment>
+                  {
+                    showBackTitle && (
+                      <TypographyHelperControl
+                        title={__("Back Title Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backTitle%s"
+                        values = {{family: backTitleFontFamily, size: backTitleFontSize, sizeMobile: backTitleFontSizeMobile, sizeTablet: backTitleFontSizeTablet, weight: backTitleFontWeight, height: backTitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showBackSubtitle && (
+                      <TypographyHelperControl
+                        title={__("Back Subtitle Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backSubtitle%s"
+                        values = {{family: backSubtitleFontFamily, size: backSubtitleFontSize, sizeMobile: backSubtitleFontSizeMobile, sizeTablet: backSubtitleFontSizeTablet, weight: backSubtitleFontWeight, height: backSubtitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showBackButton && (
+                      <TypographyHelperControl
+                        title={__("Back Button Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backButton%s"
+                        values = {{family: backButtonFontFamily, size: backButtonFontSize, sizeMobile: backButtonFontSizeMobile, sizeTablet: backButtonFontSizeTablet, weight: backButtonFontWeight, height: backButtonLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                </Fragment>
+              )
+            }
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <h2>{__("Margin")}</h2>
+              <ResponsiveSpacingControl
+                title={"Top Margin"}
+                attrNameTemplate="topMargin%s"
+                values={{
+                  desktop: topMargin,
+                  tablet: topMarginTablet,
+                  mobile: topMarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Bottom Margin"}
+                attrNameTemplate="bottomMargin%s"
+                values={{
+                  desktop: bottomMargin,
+                  tablet: bottomMarginTablet,
+                  mobile: bottomMarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+
+              <h2>{__("Padding")}</h2>
+              <TabPanel
+                className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "front",
+                    title: __("Front"),
+                    className: "rbea-normal-tab",
+                  },
+                  {
+                    name: "back",
+                    title: __("Back"),
+                    className: "rbea-focus-tab",
+                  },
+                ]}
+              >
+                {(tabName) => {
+                  let tabout;
+                  if ("back" === tabName.name) {
+                    tabout = (
+                      <Fragment>
+                        <ResponsivePaddingControl
+                          attrNameTemplate="back%s"
+                          values={{
+                            desktopTop: backTopPadding,
+                            desktopBottom: backBottomPadding,
+                            desktopLeft: backLeftPadding,
+                            desktopRight: backRightPadding,
+
+                            tabletTop: backTopPaddingTablet,
+                            tabletBottom: backBottomPaddingTablet,
+                            tabletLeft: backLeftPaddingTablet,
+                            tabletRight: backRightPaddingTablet,
+
+                            mobileTop: backTopPaddingMobile,
+                            mobileBottom: backBottomPaddingMobile,
+                            mobileLeft: backLeftPaddingMobile,
+                            mobileRight: backRightPaddingMobile,
+                          }}
+                          setAttributes={setAttributes}
+                          {...this.props}
+                        />
+                      </Fragment>
+                    );
+                  } else {
+                    tabout = (
+                      <Fragment>
+                        <ResponsivePaddingControl
+                          attrNameTemplate="front%s"
+                          values={{
+                            desktopTop: frontTopPadding,
+                            desktopBottom: frontBottomPadding,
+                            desktopLeft: frontLeftPadding,
+                            desktopRight: frontRightPadding,
+
+                            tabletTop: frontTopPaddingTablet,
+                            tabletBottom: frontBottomPaddingTablet,
+                            tabletLeft: frontLeftPaddingTablet,
+                            tabletRight: frontRightPaddingTablet,
+
+                            mobileTop: frontTopPaddingMobile,
+                            mobileBottom: frontBottomPaddingMobile,
+                            mobileLeft: frontLeftPaddingMobile,
+                            mobileRight: frontRightPaddingMobile,
+                          }}
+                          setAttributes={setAttributes}
+                          {...this.props}
+                        />
+                      </Fragment>
+                    );
+                  }
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
+            </PanelBody>
+            <PanelBody
+              title={__("Border", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values={{
+                        radius: blockBorderRadius,
+                        style: blockBorderStyle,
+                        width: blockBorderWidth,
+                        color: blockBorderColor,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
+              <BoxShadowControl
+                setAttributes={setAttributes}
+                label={__("Box Shadow")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowHOffset={{
+                  value: boxShadowHOffset,
+                  label: __("Horizontal"),
+                }}
+                boxShadowVOffset={{
+                  value: boxShadowVOffset,
+                  label: __("Vertical"),
+                }}
+                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                boxShadowSpread={{
+                  value: boxShadowSpread,
+                  label: __("Spread"),
+                }}
+                boxShadowPosition={{
+                  value: boxShadowPosition,
+                  label: __("Position"),
+                }}
+              />
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"advance"}></InspectorTab>
+        </InspectorTabs>
       </InspectorControls>
     );
   }

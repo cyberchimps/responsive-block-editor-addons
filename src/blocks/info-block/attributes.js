@@ -114,7 +114,23 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  resheadSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  resheadSpaceTablet: {
+    type: "number",
+    default: 10,
+  },
   ressubHeadSpace: {
+    type: "number",
+    default: 10,
+  },
+  ressubHeadSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  ressubHeadSpaceTablet: {
     type: "number",
     default: 10,
   },
@@ -224,6 +240,14 @@ const attributes = {
     default: 0,
   },
   resprefixSpace: {
+    type: "number",
+    default: 5,
+  },
+  resprefixSpaceMobile: {
+    type: "number",
+    default: 5,
+  },
+  resprefixSpaceTablet: {
     type: "number",
     default: 5,
   },
@@ -376,11 +400,19 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  boxBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#ffffff",
   },
   contentPadding: {
+    type: "number",
+    default: 0,
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  contentPaddingTablet: {
     type: "number",
     default: 0,
   },
@@ -432,11 +464,15 @@ const attributes = {
     type: "string",
     default: "cover",
   },
-  backgroundAttachment: {
-    type: "string",
-    default: "scroll",
-  },
   sepSpace: {
+    type: "number",
+    default: 10,
+  },
+  sepSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  sepSpaceTablet: {
     type: "number",
     default: 10,
   },
@@ -483,6 +519,14 @@ const attributes = {
     type: "number",
   },
   ctaBottomMargin: {
+    type: "number",
+    default: 10,
+  },
+  ctaBottomMarginMobile: {
+    type: "number",
+    default: 10,
+  },
+  ctaBottomMarginTablet: {
     type: "number",
     default: 10,
   },
@@ -540,6 +584,29 @@ const attributes = {
   iconBorderWidth: {
     type: "number",
     default: 1
+  },
+  backgroundImage: {
+    type: "string",
+  },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  backgroundImagePosition: {
+    type: "string",
+    default: "center center"
+  },
+  background: {
+    type: "string",
+    default: "scroll"
+  },
+  backgroundImageRepeat: {
+    type: "string",
+    default: "no-repeat"
+  },
+  backgroundImageSize: {
+    type: "string",
+    default: "cover"
   },
 };
 export default attributes;

@@ -57,7 +57,7 @@ class Responsive_Block_Editor_Addons {
 		if ( defined( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER' ) ) {
 			$this->version = RESPONSIVE_BLOCK_EDITOR_ADDONS_VER;
 		} else {
-			$this->version = '1.3.0';
+			$this->version = '1.3.1';
 		}
 		$this->plugin_name = 'responsive-block-editor-addons';
 
@@ -551,6 +551,8 @@ class Responsive_Block_Editor_Addons {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/utils/fonts.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles-helper.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/inline-notice/index.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/taxonomy-list/index.php';
 	}
 
 	/** Adds the Responsive Blocks block category.
@@ -642,6 +644,8 @@ class Responsive_Block_Editor_Addons {
 				'post_types'                         => $this->get_post_types(),
 				'all_taxonomy'                       => $this->get_related_taxonomy(),
 				'responsive_block_editor_ajax_nonce' => $responsive_block_editor_ajax_nonce,
+				'taxonomy_list'                      => $this->get_taxonomy_list(),
+				'home_url'                           => home_url(),
 			)
 		);
 
@@ -652,6 +656,99 @@ class Responsive_Block_Editor_Addons {
 			array( 'wp-edit-blocks' ),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-editor.css' )
 		);
+	}
+
+	/**
+	 * Get all taxonomies list.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public static function get_taxonomy_list() {
+		$post_types   = self::get_post_types();
+		$return_array = array();
+		foreach ( $post_types as $key => $value ) {
+			$post_type         = $value['value'];
+			$taxonomies        = get_object_taxonomies( $post_type, 'objects' );
+			$data              = array();
+			$get_singular_name = get_post_type_object( $post_type );
+			foreach ( $taxonomies as $tax_slug => $tax ) {
+				if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
+					continue;
+				}
+				$data[ $tax_slug ] = $tax;
+				$terms             = get_terms( $tax_slug );
+				$related_tax_terms = array();
+				if ( ! empty( $terms ) ) {
+					foreach ( $terms as $t_index => $t_obj ) {
+						$related_tax_terms[] = array(
+							'id'            => $t_obj->term_id,
+							'name'          => $t_obj->name,
+							'count'         => $t_obj->count,
+							'link'          => get_term_link( $t_obj->term_id ),
+							'singular_name' => $get_singular_name->labels->singular_name,
+						);
+					}
+					$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax_terms;
+				}
+				$new_categories_list = get_terms(
+					$tax_slug,
+					array(
+						'hide_empty' => true,
+						'parent'     => 0,
+					)
+				);
+				$related_tax         = array();
+				if ( ! empty( $new_categories_list ) ) {
+					foreach ( $new_categories_list as $t_index => $t_obj ) {
+						$child_arg     = array(
+							'hide_empty' => true,
+							'parent'     => $t_obj->term_id,
+						);
+						$child_cat     = get_terms( $tax_slug, $child_arg );
+						$child_cat_arr = $child_cat ? $child_cat : null;
+						$related_tax[] = array(
+							'id'            => $t_obj->term_id,
+							'name'          => $t_obj->name,
+							'count'         => $t_obj->count,
+							'link'          => get_term_link( $t_obj->term_id ),
+							'singular_name' => $get_singular_name->labels->singular_name,
+							'children'      => $child_cat_arr,
+						);
+					}
+					$return_array[ $post_type ]['without_empty_taxonomy'][ $tax_slug ] = $related_tax;
+				}
+				$new_categories_list_empty_tax = get_terms(
+					$tax_slug,
+					array(
+						'hide_empty' => false,
+						'parent'     => 0,
+					)
+				);
+				$related_tax_empty_tax         = array();
+				if ( ! empty( $new_categories_list_empty_tax ) ) {
+					foreach ( $new_categories_list_empty_tax as $t_index => $t_obj ) {
+						$child_arg_empty_tax     = array(
+							'hide_empty' => false,
+							'parent'     => $t_obj->term_id,
+						);
+						$child_cat_empty_tax     = get_terms( $tax_slug, $child_arg_empty_tax );
+						$child_cat_empty_tax_arr = $child_cat_empty_tax ? $child_cat_empty_tax : null;
+						$related_tax_empty_tax[] = array(
+							'id'            => $t_obj->term_id,
+							'name'          => $t_obj->name,
+							'count'         => $t_obj->count,
+							'link'          => get_term_link( $t_obj->term_id ),
+							'singular_name' => $get_singular_name->labels->singular_name,
+							'children'      => $child_cat_empty_tax_arr,
+						);
+					}
+					$return_array[ $post_type ]['with_empty_taxonomy'][ $tax_slug ] = $related_tax_empty_tax;
+				}
+			}
+			$return_array[ $post_type ]['taxonomy'] = $data;
+		}
+		return $return_array;
 	}
 
 	/**
@@ -732,6 +829,12 @@ class Responsive_Block_Editor_Addons {
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-style.css',
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-style.css' )
+		);
+		wp_enqueue_style(
+			'animation.css',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/animation.css',
+			array(),
+			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
 	}
 
