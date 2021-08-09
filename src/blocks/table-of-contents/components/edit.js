@@ -62,6 +62,8 @@ class Edit extends Component {
         headerLinks,
         allowedAnchors,
         orderListType,
+		headingFontFamily,
+		contentFontFamily
       },
       setAttributes,
       className,
@@ -99,6 +101,8 @@ class Edit extends Component {
           `block-${block_id}`
         )}
       >
+		{headingFontFamily && loadGoogleFont(headingFontFamily)}
+		{contentFontFamily && loadGoogleFont(contentFontFamily)}
         {"video" == backgroundType && (
           <div className="responsive-block-editor-addons-toc__video-wrap">
             {backgroundVideo && (
