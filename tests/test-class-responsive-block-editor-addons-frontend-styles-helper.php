@@ -303,6 +303,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	protected static $accordion_child_block_id_two;
 
 	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $core_block_id;
+
+	/**
 	 * Setup class instance
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -673,6 +680,16 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
 				'post_content' => '<!-- wp:responsive-block-editor-addons/accordion-item --><!-- /wp:responsive-block-editor-addons/accordion-item-->',
+			)
+		);
+
+		self::$core_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:core/block --><!-- /wp:core/block-->',
 			)
 		);
 	}
@@ -2228,6 +2245,55 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test get_block_css core/block as inner block
+	 */
+	public function test_get_block_css_inner_core_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_section_default_attributes();
+		$inner_block = array(
+			'blockName'    => 'core/block',
+			'attrs'        => array( 'block_id' => self::$core_block_id ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '',
+			'innerContent' => array(
+				'',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/section',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$section_block_id ) ),
+			'innerBlocks'  => array(
+				$inner_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_section_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test get_block_css core/block as inner block
+	 */
+	public function test_get_block_css_default_case() {
+		$block  = array(
+			'blockName'    => 'responsive-block-editor-addons/sections',
+			'attrs'        => array( 'block_id' => 2 ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$result = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEmpty( $result );
+	}
+
+	/**
 	 * Test for get_styles function
 	 */
 	public function test_get_styles() {
@@ -2333,6 +2399,20 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$expected = self::backend_load_font_awesome_icons();
 		$result   = self::$rbea_frontend_styles_helper->backend_load_font_awesome_icons();
 		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get block css function without any name
+	 */
+	public function test_get_block_css_no_name() {
+		$block  = array(
+			'blockName'    => null,
+			'attrs'        => array(),
+			'innerHTML'    => '',
+			'innerContent' => '',
+		);
+		$result = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertSame( '', $result );
 	}
 
 	/**
