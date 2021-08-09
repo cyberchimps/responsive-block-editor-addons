@@ -120,17 +120,17 @@ const ResponsiveBlockEditorAddonsIcons = {
         svgIcon("path", {fill: "#ff6f61", d: "M12.25 9A3.25 3.25 0 0 0 9 12.25v6.5A3.25 3.25 0 0 0 12.25 22h6.5A3.25 3.25 0 0 0 22 18.75v-6.5A3.25 3.25 0 0 0 18.75 9h-6.5z"})
     ),
     social_share: svgIcon("svg", {width: 20, height: 20,  preserveAspectRatio: "xMidYMid meet", viewBox: "0 0 512 512"},
-        svgIcon("circle", {fill: "#ff6f61", stroke: "#ff6f61", cx: 128, cy: 256, r: 48, strokeLineCap: "round", strokeLinejoin: "round", strokeWidth: "32"}),
-        svgIcon("circle", {fill: "#ff6f61", stroke: "#ff6f61", cx: 384, cy: 112, r: 48, strokeLineCap: "round", strokeLinejoin: "round", strokeWidth: "32"}),
-        svgIcon("circle", {fill: "#ff6f61", stroke: "#ff6f61", cx: 384, cy: 400, r: 48, strokeLineCap: "round", strokeLinejoin: "round", strokeWidth: "32"}),
-        svgIcon("path", {fill: "#ff6f61", stroke: "#ff6f61", strokeLinejoin: "round", strokeLineCap: "round", strokeWidth: "32", d: "M169.83 279.53l172.34 96.94"}),
-        svgIcon("path", {fill: "#ff6f61", stroke: "#ff6f61", strokeLinejoin: "round", strokeLineCap: "round", strokeWidth: "32", d: "M342.17 135.53l-172.34 96.94"})
+        svgIcon("circle", {fill: "#ff6f61", stroke: "#ff6f61", cx: 128, cy: 256, r: 48, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "32"}),
+        svgIcon("circle", {fill: "#ff6f61", stroke: "#ff6f61", cx: 384, cy: 112, r: 48, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "32"}),
+        svgIcon("circle", {fill: "#ff6f61", stroke: "#ff6f61", cx: 384, cy: 400, r: 48, strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "32"}),
+        svgIcon("path", {fill: "#ff6f61", stroke: "#ff6f61", strokeLinejoin: "round", strokeLinecap: "round", strokeWidth: "32", d: "M169.83 279.53l172.34 96.94"}),
+        svgIcon("path", {fill: "#ff6f61", stroke: "#ff6f61", strokeLinejoin: "round", strokeLinecap: "round", strokeWidth: "32", d: "M342.17 135.53l-172.34 96.94"})
     ),
     spacer: svgIcon("svg", {width: 20, height: 20},
         svgIcon("path", {fill: "#ff6f61", d: "M11 21H3v-8h2v4.59L17.59 5H13V3h8v8h-2V6.41L6.41 19H11v2z"})
     ),
     table_of_contents: svgIcon("svg", {width: 20, height: 20, preserveAspectRatio: "xMidYMid meet", viewBox:"0 0 48 48"},
-        svgIcon("g", {fill: "none", stroke: "#ff6f61", strokeWidth: 4, strokeLineCap: "round", strokeLinejoin: "round" }, 
+        svgIcon("g", {fill: "none", stroke: "#ff6f61", strokeWidth: 4, strokeLinecap: "round", strokeLinejoin: "round" }, 
         svgIcon("rect", {x: 8, y: 4, width: 32, height: 40 }),
         svgIcon("path", {d: "M14 16h20"}),
         svgIcon("path", {d: "M14 24h20"}),
