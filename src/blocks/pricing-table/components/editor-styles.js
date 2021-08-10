@@ -163,6 +163,9 @@ function EditorStyles(props) {
     featuresFontSizeTablet,
     ctaFontSizeMobile,
     ctaFontSizeTablet,
+      imageWidth,
+      imageWidthTablet,
+      imageWidthMobile
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -338,6 +341,10 @@ function EditorStyles(props) {
       top: "45px",
     },
 
+      " .responsive-block-editor-addons-pricing-image": {
+      width: generateCSSUnit(imageWidth, "px"),
+    },
+
     " .wp-block-responsive-block-editor-addons-pricing-table-item__title": {
       color: titleColor,
       "line-height": titleLineHeight,
@@ -441,6 +448,9 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
       "margin-bottom": generateCSSUnit(buttonSpaceMobile, "px"),
     },
+      " .responsive-block-editor-addons-pricing-image": {
+          width: generateCSSUnit(imageWidthMobile, "px"),
+      },
   };
 
   var tablet_selectors = {
@@ -488,6 +498,9 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
       "margin-bottom": generateCSSUnit(buttonSpaceTablet, "px"),
     },
+      " .responsive-block-editor-addons-pricing-image": {
+          width: generateCSSUnit(imageWidthTablet, "px"),
+      },
   };
 
   var styling_css = "";
