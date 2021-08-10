@@ -12,7 +12,6 @@ import GradientBackgroundControl from "../../../../settings-components/Block Bac
 import ResponsivePaddingControl from "../../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
 import ResponsiveMarginControl from "../../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
 
-
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -92,6 +91,7 @@ export default class Inspector extends Component {
         widthType,
         stack,
         backgroundColor,
+        backgroundColorHover,
         backgroundColor1,
         backgroundColor2,
         colorLocation1,
@@ -190,16 +190,62 @@ export default class Inspector extends Component {
                 options={backgroundTypeOptions}
               />
               {"color" == backgroundType && (
-                <Fragment>
-                  <ColorBackgroundControl
-                    {...this.props}
-                  />
-                </Fragment>
+                <TabPanel
+                  className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "normal",
+                      title: __("Normal"),
+                      className: "rbea-normal-tab",
+                    },
+                    {
+                      name: "hover",
+                      title: __("Hover"),
+                      className: "rbea-focus-tab",
+                    },
+                  ]}
+                >
+                  {(tabName) => {
+                    let tabout;
+                    if ("hover" == tabName.name) {
+                      tabout = (
+                        <Fragment>
+                          <p className="responsive-block-editor-addons-setting-label">
+                            {__("Background Color Hover")}
+                            <span className="components-base-control__label">
+                              <span
+                                className="component-color-indicator"
+                                style={{
+                                  backgroundColor: backgroundColorHover,
+                                }}
+                              ></span>
+                            </span>
+                          </p>
+                          <ColorPalette
+                            value={backgroundColorHover}
+                            onChange={(value) =>
+                              setAttributes({ backgroundColorHover: value })
+                            }
+                            allowReset
+                          />
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <ColorBackgroundControl {...this.props} />
+                        </Fragment>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
               )}
               {"gradient" == backgroundType && (
                 <GradientBackgroundControl
                   {...this.props}
-                  showHoverGradient = {true}
+                  showHoverGradient={true}
                 />
               )}
               {"image" == backgroundType && (
@@ -274,12 +320,17 @@ export default class Inspector extends Component {
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                <BlockBorderHelperControl
-                    attrNameTemplate="block%s"
-                    values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
-                    setAttributes={ setAttributes }
-                    {...this.props}
-                />
+              <BlockBorderHelperControl
+                attrNameTemplate="block%s"
+                values={{
+                  radius: blockBorderRadius,
+                  style: blockBorderStyle,
+                  width: blockBorderWidth,
+                  color: blockBorderColor,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
 
               <BoxShadowControl
                 setAttributes={setAttributes}

@@ -69,6 +69,12 @@ const attributes = {
   imageWidth: {
     type: "number",
   },
+  imageWidthTablet: {
+    type: "number",
+  },
+  imageWidthMobile: {
+    type: "number",
+  },
   nameFontFamily: {
     type: "string",
   },

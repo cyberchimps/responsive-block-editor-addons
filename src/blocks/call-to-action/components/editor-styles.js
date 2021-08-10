@@ -10,8 +10,8 @@ import generateBackgroundImageEffect from "../../../generateBackgroundImageEffec
 function EditorStyles(props) {
   const {
     block_id,
-    buttonBackgroundColor,
-    buttonTextColor,
+    ctaBackColor,
+    ctaColor,
     ctaTitleFontFamily,
     ctaTitleFontSize,
     ctaTitleFontSizeMobile,
@@ -23,17 +23,17 @@ function EditorStyles(props) {
     ctaTextColor,
     backgroundImage,
     ctaTitleFontWeight,
-	ctaTitleLineHeight,
-	ctaTextFontWeight,
-	ctaTextLineHeight,
-    buttonvPadding,
-    buttonhPadding,
-    buttonborderWidth,
-    buttonborderStyle,
-    hbuttonBackgroundColor,
-    hbuttonTextColor,
-    buttonborderColor,
-    buttonborderHColor,
+    ctaTitleLineHeight,
+    ctaTextFontWeight,
+    ctaTextLineHeight,
+    ctaVpadding,
+    ctaHpadding,
+    ctaBorderWidth,
+    ctaBorderStyle,
+    ctaHoverBackColor,
+    ctaHoverColor,
+    ctaBorderColor,
+    ctaHoverBorderColor,
     titleSpace,
     titleSpaceMobile,
     titleSpaceTablet,
@@ -88,13 +88,19 @@ function EditorStyles(props) {
     buttonTextLineHeight,
     buttonTextFontWeight,
     iconPosition,
+    ctaBorderRadius,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    ctaTextOpacity,
   } = props.attributes;
 
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
   if (buttonbackgroundType === "color") {
-    updatedButtonBackgroundColor = buttonBackgroundColor;
-    updatedButtonBackgroundhColor = hbuttonBackgroundColor;
+    updatedButtonBackgroundColor = ctaBackColor;
+    updatedButtonBackgroundhColor = ctaHoverBackColor;
   }
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -113,15 +119,16 @@ function EditorStyles(props) {
 
   var selectors = {
     " .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button": {
-      "color": buttonTextColor,
+      "color": ctaColor,
+      "opacity": ctaTextOpacity / 100,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover .responsive-block-editor-addons-cta-button": {
-      "color": hbuttonTextColor,
+      "color": ctaHoverColor,
     },
 
     " .responsive-block-editor-addons-cta-link-text": {
-      "color": buttonTextColor,
+      "color": ctaColor,
       "font-family": buttonTextFontFamily,
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
       "font-weight": buttonTextFontWeight,
@@ -129,11 +136,11 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-link-text:hover": {
-      "color": hbuttonTextColor,
+      "color": ctaHoverColor,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover": {
-      "border-color": buttonborderHColor,
+      "border-color": ctaHoverBorderColor,
       "background-color": updatedButtonBackgroundhColor,
     },
 
@@ -203,15 +210,16 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper": {
-      "padding-top": generateCSSUnit(buttonvPadding, "px"),
-      "padding-bottom": generateCSSUnit(buttonvPadding, "px"),
-      "padding-left": generateCSSUnit(buttonhPadding, "px"),
-      "padding-right": generateCSSUnit(buttonhPadding, "px"),
-      "border-style": buttonborderStyle ? buttonborderStyle : "solid",
-      "border-color": buttonborderColor,
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
+      "border-style": ctaBorderStyle ? ctaBorderStyle : "solid",
+      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
+      "border-color": ctaBorderColor,
       "background-color": updatedButtonBackgroundColor,
-      "border-width": buttonborderWidth
-        ? generateCSSUnit(buttonborderWidth, "px")
+      "border-width": ctaBorderWidth
+        ? generateCSSUnit(ctaBorderWidth, "px")
         : "1px",
       "background-image":
         buttonbackgroundType == "gradient"
@@ -255,6 +263,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-cta-button-wrapper": {
       "margin-bottom": generateCSSUnit(buttonSpaceMobile, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
@@ -281,6 +293,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-cta-button-wrapper": {
       "margin-bottom": generateCSSUnit(buttonSpaceTablet, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
       "font-size": generateCSSUnit(buttonTextFontSizeTablet, "px"),

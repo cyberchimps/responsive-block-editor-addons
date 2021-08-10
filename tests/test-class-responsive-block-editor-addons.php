@@ -92,17 +92,6 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 	 * Testing if included files are required
 	 */
 	public function test_responsive_block_editor_addons_loader() {
-		$files = get_required_files();
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-grid/index.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-carousel/index.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/gallery-masonry/index.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/accordion/index.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-timeline/index.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/testimonial-slider/index.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/utils/fonts.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles-helper.php', $files, true ) );
-		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles.php', $files, true ) );
-
 		$check_files = array(
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-grid/index.php',
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-carousel/index.php',
