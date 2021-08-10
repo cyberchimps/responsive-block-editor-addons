@@ -629,6 +629,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'gradientOverlayPosition'   => 'center center',
 			'backgroundType'            => '',
 			'backgroundColor'           => '',
+			'backgroundColorHover'      => '',
 			'backgroundColor1'          => '',
 			'backgroundColor2'          => '#fff',
 			'hoverbackgroundColor1'     => '',
