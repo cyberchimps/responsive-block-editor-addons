@@ -53,11 +53,9 @@ const attributes = {
   },
   sizeMobile: {
     type: "number",
-    default: 16
   },
   sizeTablet:{
     type: "number",
-    default: 16
   },
   bgSize: {
     type: "number",
@@ -65,11 +63,9 @@ const attributes = {
   },
   bgSizeMobile: {
     type: "number",
-    default: 0,
   },
   bgSizeTablet: {
     type: "number",
-    default: 0,
   },
   border: {
     type: "number",
