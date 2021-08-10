@@ -2071,6 +2071,179 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css for advanced columns - height half
+	 */
+	public function test_get_block_css_advanced_columns_height_half() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_child_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$advanced_columns_block_id,
+					'height'   => 'half',
+				)
+			),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - height full
+	 */
+	public function test_get_block_css_advanced_columns_height_full() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$advanced_columns_child_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$advanced_columns_block_id,
+					'height'   => 'full',
+				)
+			),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - height custom and width custom
+	 */
+	public function test_get_block_css_advanced_columns_height_width_custom() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$advanced_columns_child_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'     => self::$advanced_columns_block_id,
+					'height'       => 'custom',
+					'customHeight' => 50,
+					'contentWidth' => 'custom',
+					'width'        => 50,
+					'widthType'    => 'px',
+				)
+			),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - background image
+	 */
+	public function test_get_block_css_advanced_columns_background_image() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_child_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                => self::$advanced_columns_block_id,
+					'backgroundType'          => 'image',
+					'backgroundImage'         => 'some_url',
+					'backgroundAttachment'    => 'scroll',
+					'backgroundImageRepeat'   => 'no-repeat',
+					'backgroundImagePosition' => 'center center',
+					'backgroundImageSize'     => 'cover',
+					'opacity'                 => 8,
+					'backgroundImageColor'    => '#222abc',
+				)
+			),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css for icons list
 	 */
 	public function test_get_block_css_icons_list() {
