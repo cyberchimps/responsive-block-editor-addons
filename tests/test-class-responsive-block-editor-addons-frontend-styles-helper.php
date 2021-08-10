@@ -310,6 +310,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	protected static $core_block_id;
 
 	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $call_mail_button_block_id;
+
+	/**
 	 * Setup class instance
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -689,7 +696,17 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_type'    => 'wp_block',
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
-				'post_content' => '<!-- wp:core/block --><!-- /wp:core/block-->',
+				'post_content' => '<!-- wp:core/block --><!-- wp:core/block-->',
+			)
+		);
+
+		self::$call_mail_button_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/call-mail-button --><!-- wp:responsive-block-editor-addons/call-mail-button>',
 			)
 		);
 	}
@@ -2423,6 +2440,32 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$css              = self::$rbea_frontend_styles->get_responsive_block_accordian_css( $block_attrs[0], $block_attrs[1] );
 		$expected         = self::return_the_css( $block, $css );
 		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css call-mail-button block
+	 */
+	public function test_get_block_css_call_mail_button_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_call_mail_button_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/call-mail-button',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$call_mail_button_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_mail_button_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
 	}
 
