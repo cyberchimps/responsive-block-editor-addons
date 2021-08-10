@@ -1009,11 +1009,11 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'default' => 100,
 				),
 				'buttongradientDirection' => array(
-					'type   ' => 'number',
+					'type'    => 'number',
 					'default' => 90,
 				),
 				'buttonbackgroundColor1'  => array(
-					'type   ' => 'string',
+					'type' => 'string',
 				),
 				'buttonbackgroundColor2'  => array(
 					'type'    => 'string',
