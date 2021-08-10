@@ -6,7 +6,7 @@ const { __ } = wp.i18n;
 
 const { ColorPalette } = wp.blockEditor;
 
-const { SelectControl, RangeControl } = wp.components;
+const { SelectControl, RangeControl, TabPanel, Dashicon } = wp.components;
 
 // Extend component
 const { Component, Fragment } = wp.element;

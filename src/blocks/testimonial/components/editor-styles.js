@@ -31,6 +31,8 @@ function EditorStyles(props) {
     contentTextTransform,
     imageSize,
     imageWidth,
+    imageWidthTablet,
+    imageWidthMobile,
     contentSpacing,
     contentSpacingMobile,
     contentSpacingTablet,
@@ -206,6 +208,14 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
       "padding-right": generateCSSUnit(imageSpacingMobile, "px"),
     },
+      " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap": {
+          height: generateCSSUnit(imageWidthMobile, "px"),
+          width: generateCSSUnit(imageWidthMobile, "px"),
+      },
+      " .change-image .responsive-block-editor-addons-testimonial-avatar": {
+          height: generateCSSUnit(imageWidthMobile, "px"),
+          width: generateCSSUnit(imageWidthMobile, "px"),
+      },
   };
 
   var tablet_selectors = {
@@ -232,6 +242,14 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
       "padding-right": generateCSSUnit(imageSpacingTablet, "px"),
     },
+      " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap": {
+          height: generateCSSUnit(imageWidthTablet, "px"),
+          width: generateCSSUnit(imageWidthTablet, "px"),
+      },
+      " .change-image .responsive-block-editor-addons-testimonial-avatar": {
+          height: generateCSSUnit(imageWidthTablet, "px"),
+          width: generateCSSUnit(imageWidthTablet, "px"),
+      },
   };
 
   var styling_css = "";
