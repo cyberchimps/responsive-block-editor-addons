@@ -83,6 +83,16 @@ function EditorStyles(props) {
     excerptFontSizeTablet,
     ctaFontSizeMobile,
     ctaFontSizeTablet,
+    buttonbackgroundColor1,
+    buttonbackgroundColor2,
+    buttoncolorLocation1,
+    buttoncolorLocation2,
+    buttongradientDirection,
+    buttonbackgroundType,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -90,6 +100,15 @@ function EditorStyles(props) {
     "border-width": generateCSSUnit(arrowBorderSize, "px"),
     "border-radius": generateCSSUnit(arrowBorderRadius, "px"),
   };
+
+  let backgroundImageGradient = "";
+  let pcColor = "";
+  if (buttonbackgroundType == "gradient") {
+    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+  } else if (buttonbackgroundType == "color") {
+    backgroundImageGradient = "";
+    pcColor = ctaBackColor;
+  }
 
   var selectors = {
     " .responsive-block-editor-addons-block-post-carousel-title": {
@@ -136,7 +155,8 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link": {
       color: ctaColor,
-      "background-color": ctaBackColor,
+      "background-color": pcColor,
+      "background-image": backgroundImageGradient,
       "border-color": ctaBorderColor,
       "border-style": ctaBorderStyle,
       "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
@@ -212,6 +232,12 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
       "font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
     },
+    " .responsive-block-editor-addons-block-post-carousel-more-link": {
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+    },
     " .responsive-post-slick-carousel .slick-slide>div:first-child": {
       "margin-left": generateCSSUnit(columnGapMobile / 2, "px"),
       "margin-right": generateCSSUnit(columnGapMobile / 2, "px"),
@@ -237,6 +263,12 @@ function EditorStyles(props) {
     " .responsive-post-slick-carousel .slick-slide>div:first-child": {
       "margin-left": generateCSSUnit(columnGapTablet / 2, "px"),
       "margin-right": generateCSSUnit(columnGapTablet / 2, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-carousel-more-link": {
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
     },
   };
   var extra_styles = {

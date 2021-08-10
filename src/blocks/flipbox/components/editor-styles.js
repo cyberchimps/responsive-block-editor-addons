@@ -90,9 +90,6 @@ function EditorStyles(props) {
     backColorOpacity,
     buttonColor,
     buttonTextColor,
-    buttonBorderRadius,
-    buttonHpadding,
-    buttonVpadding,
     buttonHTextColor,
     buttonHColor,
     buttonbackgroundType,
@@ -141,6 +138,21 @@ function EditorStyles(props) {
     backButtonFontWeight,
     backButtonLineHeight,
     backButtonFontFamily,
+    ctaVpadding,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    ctaHpadding,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaBorderStyle,
+    ctaBorderWidth,
+    ctaBorderRadius,
+    ctaHoverColor,
+    ctaHoverBorderColor,
+    ctaHoverBackColor,
+    ctaColor,
+    ctaBorderColor,
+    ctaBackColor,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -225,22 +237,22 @@ function EditorStyles(props) {
   }
 
   let backgroundImageGradient = "";
-  let btnColor = buttonColor;
+  let btnColor = ctaBackColor;
   let btnOpacity = buttonopacity;
   if (buttonbackgroundType == "gradient") {
     backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
-    btnColor = buttonColor;
+    btnColor = ctaBackColor;
     btnOpacity = buttonopacity;
   }
 
   let backgroundHoverImageGradient = "";
-  let btnHColor = buttonHColor;
+  let btnHColor = ctaHoverBackColor;
   let btnHOpacity = buttonHopacity;
   if (buttonHbackgroundType == "gradient") {
     backgroundHoverImageGradient = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   } else if (buttonHbackgroundType == "color") {
-    btnHColor = buttonHColor;
+    btnHColor = ctaHoverBackColor;
     btnHOpacity = buttonHopacity;
   }
 
@@ -374,15 +386,18 @@ function EditorStyles(props) {
       height: `auto !important`,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
-      "border-radius": generateCSSUnit(buttonBorderRadius, "px"),
-      "padding-left": generateCSSUnit(buttonHpadding, "px"),
-      "padding-right": generateCSSUnit(buttonHpadding, "px"),
-      "padding-top": generateCSSUnit(buttonVpadding, "px"),
-      "padding-bottom": generateCSSUnit(buttonVpadding, "px"),
+      "border-style": ctaBorderStyle,
+      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
+      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
+      "border-color": ctaBorderColor,
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
       "background-image": backgroundImageGradient,
       "background-color": btnColor + "!important",
       opacity: btnOpacity / 100,
-      color: buttonTextColor + "!important",
+      color: ctaColor + "!important",
       "font-family": backButtonFontFamily,
       "font-size": generateCSSUnit(backButtonFontSize, "px"),
       "font-weight": backButtonFontWeight,
@@ -391,8 +406,9 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {
       "background-image": backgroundHoverImageGradient,
       "background-color": btnHColor + "!important",
+      "border-color": ctaHoverBorderColor,
       opacity: btnHOpacity / 100,
-      color: buttonHTextColor + "!important",
+      color: ctaHoverColor + "!important",
     },
     " .has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks)": {
       "max-width": "calc(100% / 2 - " + flipBoxGutterGap + "px)",
@@ -440,6 +456,10 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
       "font-size": generateCSSUnit(backButtonFontSizeMobile, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
     },
   };
 
@@ -478,6 +498,10 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
       "font-size": generateCSSUnit(backButtonFontSizeTablet, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
     },
   };
 

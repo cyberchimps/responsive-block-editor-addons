@@ -205,18 +205,18 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " > .responsive-block-editor-addons-block-section": {
-      "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
-      "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
-      "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
-      "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
-      "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+      "margin-top": blockTopMarginMobile ? generateCSSUnit(blockTopMarginMobile, "px") : generateCSSUnit(blockTopMargin, "px"),
+      "margin-bottom": blockBottomMarginMobile ? generateCSSUnit(blockBottomMarginMobile, "px") : generateCSSUnit(blockBottomMargin, "px"),
+      "margin-left": blockLeftMarginMobile ? generateCSSUnit(blockLeftMarginMobile, "px") : generateCSSUnit(blockLeftMargin, "px"),
+      "margin-right": blockRightMarginMobile ? generateCSSUnit(blockRightMarginMobile, "px") : generateCSSUnit(blockRightMargin, "px"),
+      "padding-top": blockTopPaddingMobile ? generateCSSUnit(blockTopPaddingMobile, "px") : generateCSSUnit(blockTopPadding, "px"),
+      "padding-bottom": blockBottomPaddingMobile ? generateCSSUnit(blockBottomPaddingMobile, "px") : generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": blockLeftPaddingMobile ? generateCSSUnit(blockLeftPaddingMobile, "px") : generateCSSUnit(blockLeftPadding, "px"),
+      "padding-right": blockRightPaddingMobile ? generateCSSUnit(blockRightPaddingMobile, "px") : generateCSSUnit(blockRightPadding, "px"),
     },
     " > .responsive-section-wrap > .responsive-section-inner-wrap": {
       "max-width":
-        align == "full" ? generateCSSUnit(innerWidthMobile, "px") : "",
+        (align == "full" && innerWidthMobile) ? generateCSSUnit(innerWidthMobile, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
       "background-position": backgroundPositionMobile,
@@ -226,18 +226,18 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " > .responsive-block-editor-addons-block-section": {
-      "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
-      "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
-      "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
-      "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
-      "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+	  "margin-top": blockTopMarginTablet ? generateCSSUnit(blockTopMarginTablet, "px") : generateCSSUnit(blockTopMargin, "px"),
+	  "margin-bottom": blockBottomMarginTablet ? generateCSSUnit(blockBottomMarginTablet, "px") : generateCSSUnit(blockBottomMargin, "px"),
+	  "margin-left": blockLeftMarginTablet ? generateCSSUnit(blockLeftMarginTablet, "px") : generateCSSUnit(blockLeftMargin, "px"),
+	  "margin-right": blockRightMarginTablet ? generateCSSUnit(blockRightMarginTablet, "px") : generateCSSUnit(blockRightMargin, "px"),
+	  "padding-top": blockTopPaddingTablet ? generateCSSUnit(blockTopPaddingTablet, "px") : generateCSSUnit(blockTopPadding, "px"),
+	  "padding-bottom": blockBottomPaddingTablet ? generateCSSUnit(blockBottomPaddingTablet, "px") : generateCSSUnit(blockBottomPadding, "px"),
+	  "padding-left": blockLeftPaddingTablet ? generateCSSUnit(blockLeftPaddingTablet, "px") : generateCSSUnit(blockLeftPadding, "px"),
+	  "padding-right": blockRightPaddingTablet ? generateCSSUnit(blockRightPaddingTablet, "px") : generateCSSUnit(blockRightPadding, "px"),
     },
     " .responsive-section-inner-wrap": {
       "max-width":
-        align == "full" ? generateCSSUnit(innerWidthTablet, "px") : "",
+        (align == "full" && innerWidthTablet) ? generateCSSUnit(innerWidthTablet, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
       "background-position": backgroundPositionTablet,

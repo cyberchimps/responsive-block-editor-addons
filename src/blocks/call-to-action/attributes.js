@@ -38,11 +38,11 @@ const attributes = {
     type: "string",
     default: "center",
   },
-  buttonBackgroundColor: {
+  ctaBackColor: {
     type: "string",
     default: "#2091e1",
   },
-  buttonTextColor: {
+  ctaColor: {
     type: "string",
     default: "#fff",
   },
@@ -144,19 +144,19 @@ const attributes = {
     type: "string",
     default: "400",
   },
-  buttonvPadding: {
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  buttonhPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
-  buttonborderWidth: {
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  buttonborderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "solid",
   },
@@ -172,17 +172,17 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  hbuttonBackgroundColor: {
+  ctaHoverBackColor: {
     type: "string",
   },
-  hbuttonTextColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#e6f2ff",
   },
-  buttonborderColor: {
+  ctaBorderColor: {
     type: "string",
   },
-  buttonborderHColor: {
+  ctaHoverBorderColor: {
     type: "string",
   },
   resctaType: {
@@ -364,6 +364,30 @@ const attributes = {
   borderRadius: {
     type: "number",
     default: 12,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaBorderRadius: {
+    type: "string",
+    default: 0,
+  },
+  ctaTextOpacity: {
+    type: "number",
+    default: 100,
   },
 };
 export default attributes;
