@@ -24,6 +24,10 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  alignTabsVertical: {
+    type: 'string',
+    default: "left",
+  },
   tabsStyleD: {
     type: "string",
     default: "hstyle3",
