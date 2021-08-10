@@ -579,47 +579,67 @@ const attributes = {
   imageShape: {
     type: "string",
   },
+  ctaHoverBorderColor: {
+    type: "string",
+    defaulr: "#333",
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 30,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 30,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 15,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 15,
+  },
   titleFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   titleFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   prefixFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   prefixFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   amountFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   amountFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   suffixFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   suffixFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   subpriceFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   subpriceFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   featuresFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   featuresFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   ctaFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   ctaFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
 };
 export default attributes;

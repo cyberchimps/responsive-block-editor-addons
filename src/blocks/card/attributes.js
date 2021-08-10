@@ -43,10 +43,10 @@ const attributes = {
   backgroundColor: {
     type: "string",
   },
-  buttonColor: {
+  ctaBackColor: {
     type: "string",
   },
-  buttonTextColor: {
+  ctaColor: {
     type: "string",
     default: "#fff",
   },
@@ -214,22 +214,26 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  buttonhColor: {
+  ctaHoverBackColor: {
     type: "string",
   },
-  buttonhTextColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#e6f2ff",
   },
-  butopacity: {
+  buttonopacity: {
     type: "number",
     default: 100,
   },
-  vPadding: {
+  buttonHopacity: {
+    type: "number",
+    default: 100,
+  },
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  hPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
@@ -241,15 +245,15 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  butborderWidth: {
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  butborderRadius: {
+  ctaBorderRadius: {
     type: "number",
     default: 2,
   },
-  butborderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "none",
   },
@@ -433,22 +437,64 @@ const attributes = {
     default: "cover",
   },
   headingFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   headingFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   subFontSizeMobile: {
-	type: "number",
+    type: "number",
   },
   subFontSizeTablet: {
-	type: "number",
+    type: "number",
   },
   contentFontSizeMobile: {
-	  type: "number",
+    type: "number",
   },
   contentFontSizeTablet: {
-	  type: "number",
+    type: "number",
+  },
+  ctaBorderColor: {
+    type: "string",
+  },
+  ctaHoverBorderColor: {
+    type: "string",
+  },
+  ctaTextOpacity: {
+    typr: "number",
+    default: 100,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 10
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 10
+  },
+  vMarginTablet: {
+    type: "number",
+    default: 10
+  },
+  vMarginMobile: {
+    type: "number",
+    default: 10
+  },
+  hMarginTablet: {
+    type: "number",
+    default: 0
+  },
+  hMarginMobile: {
+    type: "number",
+    default: 0
   },
 };
 export default attributes;
