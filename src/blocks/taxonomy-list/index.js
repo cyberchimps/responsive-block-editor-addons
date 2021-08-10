@@ -9,6 +9,9 @@ import edit from "./components/edit";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 
+//Import block icons
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Components
 const { __ } = wp.i18n;
 
@@ -22,7 +25,7 @@ registerBlockType("responsive-block-editor-addons/taxonomy-list", {
         "Displays content categorization for various post types",
         "responsive-block-editor-addons"
     ),
-    icon: "list-view",
+    icon: ResponsiveBlockEditorAddonsIcons.taxonomy_list,
     category: "responsive_block_editor_addons",
     keywords: [
         __("taxonomy", "responsive-block-editor-addons"),

@@ -11,6 +11,9 @@ import attributes from "./attributes";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 
+//Import block icons
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Internationalization
 const { __ } = wp.i18n;
 
@@ -24,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/progress-bar", {
 		"Showcase progress of any activity by means of animated indicators.",
 		"responsive-block-editor-addons"
 	),
-	icon: "editor-textcolor",
+	icon: ResponsiveBlockEditorAddonsIcons.progress_bar,
 	category: "responsive_block_editor_addons",
 	keywords: [
 		__("progress", "responsive-block-editor-addons"),

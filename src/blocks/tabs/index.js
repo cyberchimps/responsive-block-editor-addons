@@ -10,6 +10,9 @@ import attributes from "./attributes";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 
+//Import block icons
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 // Internationalization
 const { __ } = wp.i18n;
 
@@ -23,7 +26,7 @@ registerBlockType("responsive-block-editor-addons/tabs", {
     "This block allows you to structure information the way that is more readable and user-friendly to interact with.",
     "responsive-block-editor-addons"
   ),
-  icon: "category",
+  icon: ResponsiveBlockEditorAddonsIcons.tabs ,
   category: "responsive_block_editor_addons",
   keywords: [
     __("tabs", "responsive-block-editor-addons"),

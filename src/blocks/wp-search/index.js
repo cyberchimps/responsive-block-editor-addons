@@ -9,6 +9,8 @@ import attributes from "./attributes";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+//Import block icons
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -23,7 +25,7 @@ registerBlockType("responsive-block-editor-addons/wp-search", {
     "Helps to search for the required information easily.",
     "responsive-block-editor-addons"
   ),
-  icon: "search",
+  icon: ResponsiveBlockEditorAddonsIcons.wp_search,
   category: "responsive_block_editor_addons",
   keywords: [
     __("wp search", "responsive-block-editor-addons"),
