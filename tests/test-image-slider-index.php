@@ -80,6 +80,28 @@ class Image_Slider_Index_Test extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Testing if wp_enqueue_scripts action exists
+	 */
+	public function test_wp_enqueue_scripts_exists() {
+		$this->assertGreaterThan( 0, has_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_image_slider_add_frontend_assets' ) );
+	}
+
+	/**
+	 * Testing if the_post action exists
+	 */
+	public function test_the_post_exists() {
+		$this->assertGreaterThan( 0, has_action( 'the_post', 'responsive_block_editor_addons_image_slider_add_frontend_assets' ) );
+	}
+
+	/**
+	 * Testing add action
+	 */
+	public function test_add_action() {
+		$this->assertTrue( add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_image_slider_add_frontend_assets' ) );
+		$this->assertTrue( add_action( 'the_post', 'responsive_block_editor_addons_image_slider_add_frontend_assets' ) );
+	}
+
+	/**
 	 * Testing if script from index.php is enqueued
 	 */
 	public function test_responsive_block_editor_addons_image_slider_add_frontend_assets() {

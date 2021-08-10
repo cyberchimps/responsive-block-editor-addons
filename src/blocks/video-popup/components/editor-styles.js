@@ -31,6 +31,7 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    backgroundImage,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -43,14 +44,25 @@ function EditorStyles(props) {
 
   let playopacity = butopacity / 100;
 
-  let updatedImgUrl = "";
-  if (imgURL && !!imgURL.length) {
-    updatedImgUrl = imgURL;
+  let updatedbackgroundImage = "";
+  if (backgroundImage && !!backgroundImage.length) {
+    updatedbackgroundImage = backgroundImage;
+  }
+
+  let updatedBackgroundImage = "";
+  if(updatedbackgroundImage) {
+	  updatedBackgroundImage = `linear-gradient(${hexToRgba(
+        vidBackgroundColor || "#000000",
+        imgopacity || 0
+      )},${hexToRgba(
+        vidBackgroundColor || "#fff",
+        imgopacity || 0
+      )}),url(${updatedbackgroundImage})`;
   }
 
   var selectors = {
     " .responsive-block-editor-addons-video-popup__wrapper": {
-      "background-image": `url(${updatedImgUrl})`,
+      "background-image": updatedBackgroundImage,
       "background-color": hexToRgba(
         vidBackgroundColor || "#000000",
         imgopacity || 0

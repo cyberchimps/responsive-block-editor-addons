@@ -37,12 +37,13 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 	 * Test for Responsive_Block_Editor_Addons class construtor
 	 */
 	public function test_responsive_block_editor_addons_constructor() {
+		self::$rbea = new Responsive_Block_Editor_Addons();
 		$this->assertTrue( self::$rbea instanceof Responsive_Block_Editor_Addons );
 		// Check for filter.
-		$this->assertTrue( has_filter( 'block_categories' ) );
+		$this->assertTrue( has_filter( 'block_categories_all' ) );
 		$this->assertTrue( has_action( 'plugins_loaded' ) );
 		$this->assertTrue( has_action( 'init' ) );
-		$this->assertTrue( has_action( 'block_categories' ) );
+		$this->assertTrue( has_action( 'block_categories_all' ) );
 		$this->assertTrue( has_action( 'enqueue_block_editor_assets' ) );
 		$this->assertTrue( has_action( 'enqueue_block_assets' ) );
 		$this->assertTrue( has_action( 'admin_enqueue_scripts' ) );
@@ -64,7 +65,7 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 	 */
 	public function test_get_plugin_version() {
 		$value = self::$rbea->get_plugin_version();
-		$this->assertEquals( '1.3.0', $value );
+		$this->assertEquals( '1.3.1', $value );
 	}
 
 	/**
@@ -101,5 +102,38 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/utils/fonts.php', $files, true ) );
 		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles-helper.php', $files, true ) );
 		$this->assertTrue( in_array( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles.php', $files, true ) );
+
+		$check_files = array(
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-grid/index.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-carousel/index.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/gallery-masonry/index.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/accordion/index.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/post-timeline/index.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/image-slider/index.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/testimonial-slider/index.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/utils/fonts.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles-helper.php',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles.php',
+		);
+
+		$this->assertTrue( ! empty( array_intersect( $check_files, get_included_files() ) ) );
+	}
+
+	/**
+	 * Test for block categories
+	 */
+	public function test_responsive_block_editor_addons_add_custom_block_category() {
+		$categories          = array( 'fiction', 'non fiction' );
+		$expected_categories = array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'responsive_block_editor_addons',
+					'title' => __( 'Responsive Gutenberg Blocks', 'responsive-block-editor-addons' ),
+				),
+			)
+		);
+		$merged_categories   = self::$rbea->responsive_block_editor_addons_add_custom_block_category( $categories );
+		$this->assertEquals( $expected_categories, $merged_categories );
 	}
 }

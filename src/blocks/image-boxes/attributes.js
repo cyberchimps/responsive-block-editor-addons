@@ -71,15 +71,28 @@ const attributes = {
   descriptionSpacing: {
     type: "number",
   },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
+    type: "number",
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
   blockBorderRadius: {
     type: "number",
   },
   blockBorderColor: {
     type: "string",
+	default: "#1E1E1E"
   },
   blockBorderStyle: {
     type: "string",
-    default: "none",
+    default: "solid",
   },
   blockBorderWidth: {
     type: "number",
@@ -211,6 +224,7 @@ const attributes = {
   },
   titleColor: {
     type: "string",
+	default: "#1E1E1E"
   },
   descriptionFontSize: {
     type: "number",
@@ -223,6 +237,7 @@ const attributes = {
   },
   descriptionColor: {
     type: "string",
+	default: "#1E1E1E"
   },
   backgroundImageOne: {
     type: "string",
@@ -251,6 +266,12 @@ const attributes = {
   showTitle: {
     type: "boolean",
     default: true,
+  },
+  descriptionFontSizeMobile: {
+	  type: "number",
+  },
+  descriptionFontSizeTablet: {
+	  type: "number",
   },
 };
 

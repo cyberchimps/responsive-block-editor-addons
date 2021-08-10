@@ -1,6 +1,9 @@
 /**
  * Inspector Controls
  */
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -21,6 +24,8 @@ export default class Inspector extends Component {
     const {
       attributes: {
         spacerHeight,
+        spacerHeightMobile,
+        spacerHeightTablet,
         spacerDivider,
         spacerDividerStyle,
         spacerDividerColor,
@@ -67,68 +72,75 @@ export default class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
-        <PanelBody>
-          <RangeControl
-            label={__("Vertical Margin", "responsive-block-editor-addons")}
-            value={spacerHeight}
-            onChange={(value) =>
-              this.props.setAttributes({
-                spacerHeight: value !== undefined ? value : 30,
-              })
-            }
-            min={0}
-            max={100}
-          />
-        </PanelBody>
-        <PanelBody>
-          <SelectControl
-            label={__("Divider Style", "responsive-block-editor-addons")}
-            value={spacerDividerStyle}
-            options={spacerStyleOptions.map(({ value, label }) => ({
-              value,
-              label,
-            }))}
-            onChange={(value) => {
-              this.props.setAttributes({
-                spacerDividerStyle: value,
-              });
-            }}
-          />
-          <RangeControl
-            label={__("Divider Height", "responsive-block-editor-addons")}
-            value={spacerDividerHeight || ""}
-            onChange={(value) =>
-              this.props.setAttributes({
-                spacerDividerHeight: value,
-              })
-            }
-            min={1}
-            max={100}
-          />
-          <RangeControl
-            label={__("Divider Width", "responsive-block-editor-addons")}
-            value={spacerDividerWidth || ""}
-            onChange={(value) =>
-              this.props.setAttributes({
-                spacerDividerWidth: value,
-              })
-            }
-            min={0}
-            max={100}
-          />
-        </PanelBody>
-        <PanelColorSettings
-          title={__("Divider Color", "responsive-block-editor-addons")}
-          initialOpen={false}
-          colorSettings={[
-            {
-              colors: dividerColor,
-              value: spacerDividerColor,
-              onChange: onChangeDividerColor,
-              label: __("Divider Color", "responsive-block-editor-addons"),
-            },
-          ]}
-        ></PanelColorSettings>
+        <InspectorTabs>
+          <InspectorTab key={"content"}>
+            <PanelBody>
+              <ResponsiveSpacingControl
+                title={"Vertical Margin"}
+                attrNameTemplate="spacerHeight%s"
+                values={{
+                  desktop: spacerHeight,
+                  tablet: spacerHeightTablet,
+                  mobile: spacerHeightMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+            </PanelBody>
+            <PanelBody>
+              <SelectControl
+                label={__("Divider Style", "responsive-block-editor-addons")}
+                value={spacerDividerStyle}
+                options={spacerStyleOptions.map(({ value, label }) => ({
+                  value,
+                  label,
+                }))}
+                onChange={(value) => {
+                  this.props.setAttributes({
+                    spacerDividerStyle: value,
+                  });
+                }}
+              />
+              <RangeControl
+                label={__("Divider Height", "responsive-block-editor-addons")}
+                value={spacerDividerHeight || ""}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    spacerDividerHeight: value,
+                  })
+                }
+                min={1}
+                max={100}
+              />
+              <RangeControl
+                label={__("Divider Width", "responsive-block-editor-addons")}
+                value={spacerDividerWidth || ""}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    spacerDividerWidth: value,
+                  })
+                }
+                min={0}
+                max={100}
+              />
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            <PanelColorSettings
+              title={__("Divider Color", "responsive-block-editor-addons")}
+              initialOpen={false}
+              colorSettings={[
+                {
+                  colors: dividerColor,
+                  value: spacerDividerColor,
+                  onChange: onChangeDividerColor,
+                  label: __("Divider Color", "responsive-block-editor-addons"),
+                },
+              ]}
+            ></PanelColorSettings>
+          </InspectorTab>
+          <InspectorTab key={"advance"}></InspectorTab>
+        </InspectorTabs>
       </InspectorControls>
     );
   }

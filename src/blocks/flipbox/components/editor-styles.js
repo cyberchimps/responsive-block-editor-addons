@@ -24,10 +24,10 @@ function EditorStyles(props) {
     iconSize,
     iconColor,
     flipStyleSelected,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -37,14 +37,34 @@ function EditorStyles(props) {
     height,
     topMargin,
     bottomMargin,
-    topPadding,
-    bottomPadding,
-    leftPadding,
-    rightPadding,
-    backtopPadding,
-    backbottomPadding,
-    backleftPadding,
-    backrightPadding,
+    frontTopPadding,
+    frontBottomPadding,
+    frontLeftPadding,
+    frontRightPadding,
+    backTopPadding,
+    backBottomPadding,
+    backLeftPadding,
+    backRightPadding,
+    topMarginMobile,
+    bottomMarginMobile,
+    frontTopPaddingMobile,
+    frontBottomPaddingMobile,
+    frontLeftPaddingMobile,
+    frontRightPaddingMobile,
+    backTopPaddingMobile,
+    backBottomPaddingMobile,
+    backLeftPaddingMobile,
+    backRightPaddingMobile,
+    topMarginTablet,
+    bottomMarginTablet,
+    frontTopPaddingTablet,
+    frontBottomPaddingTablet,
+    frontLeftPaddingTablet,
+    frontRightPaddingTablet,
+    backTopPaddingTablet,
+    backBottomPaddingTablet,
+    backLeftPaddingTablet,
+    backRightPaddingTablet,
     backIconColor,
     backIconSize,
     showFrontIcon,
@@ -70,9 +90,6 @@ function EditorStyles(props) {
     backColorOpacity,
     buttonColor,
     buttonTextColor,
-    buttonBorderRadius,
-    buttonHpadding,
-    buttonVpadding,
     buttonHTextColor,
     buttonHColor,
     buttonbackgroundType,
@@ -90,7 +107,52 @@ function EditorStyles(props) {
     buttonopacity,
     buttonHopacity,
     flipBoxGutterGap,
-    stack
+    stack,
+    frontTitleFontSize,
+    frontTitleFontSizeMobile,
+    frontTitleFontSizeTablet,
+    frontTitleFontWeight,
+    frontTitleLineHeight,
+    frontTitleFontFamily,
+    frontSubtitleFontFamily,
+    frontSubtitleFontSize,
+    frontSubtitleFontSizeMobile,
+    frontSubtitleFontSizeTablet,
+    frontSubtitleFontWeight,
+    frontSubtitleLineHeight,
+    backTitleFontSize,
+    backTitleFontSizeMobile,
+    backTitleFontSizeTablet,
+    backTitleFontWeight,
+    backTitleLineHeight,
+    backTitleFontFamily,
+    backSubtitleFontFamily,
+    backSubtitleFontSize,
+    backSubtitleFontSizeMobile,
+    backSubtitleFontSizeTablet,
+    backSubtitleFontWeight,
+    backSubtitleLineHeight,
+    backButtonFontSize,
+    backButtonFontSizeMobile,
+    backButtonFontSizeTablet,
+    backButtonFontWeight,
+    backButtonLineHeight,
+    backButtonFontFamily,
+    ctaVpadding,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    ctaHpadding,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaBorderStyle,
+    ctaBorderWidth,
+    ctaBorderRadius,
+    ctaHoverColor,
+    ctaHoverBorderColor,
+    ctaHoverBackColor,
+    ctaColor,
+    ctaBorderColor,
+    ctaBackColor,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -175,22 +237,22 @@ function EditorStyles(props) {
   }
 
   let backgroundImageGradient = "";
-  let btnColor = buttonColor;
+  let btnColor = ctaBackColor;
   let btnOpacity = buttonopacity;
   if (buttonbackgroundType == "gradient") {
     backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
-    btnColor = buttonColor;
+    btnColor = ctaBackColor;
     btnOpacity = buttonopacity;
   }
 
   let backgroundHoverImageGradient = "";
-  let btnHColor = buttonHColor;
+  let btnHColor = ctaHoverBackColor;
   let btnHOpacity = buttonHopacity;
   if (buttonHbackgroundType == "gradient") {
     backgroundHoverImageGradient = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   } else if (buttonHbackgroundType == "color") {
-    btnHColor = buttonHColor;
+    btnHColor = ctaHoverBackColor;
     btnHOpacity = buttonHopacity;
   }
 
@@ -217,10 +279,10 @@ function EditorStyles(props) {
         coloropacity
       )}`,
       color: frontTextColor,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -234,16 +296,24 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       height: generateCSSUnit(height, "px"),
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "padding-top": generateCSSUnit(frontTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(frontBottomPadding, "px"),
+      "padding-left": generateCSSUnit(frontLeftPadding, "px"),
+      "padding-right": generateCSSUnit(frontRightPadding, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       color: frontTextColor,
+      "font-family": frontTitleFontFamily,
+      "font-size": generateCSSUnit(frontTitleFontSize, "px"),
+      "font-weight": frontTitleFontWeight,
+      "line-height": frontTitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
       color: frontTextColor,
+      "font-family": frontSubtitleFontFamily,
+      "font-size": generateCSSUnit(frontSubtitleFontSize, "px"),
+      "font-weight": frontSubtitleFontWeight,
+      "line-height": frontSubtitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
       "background-image": backgroundBack,
@@ -257,10 +327,10 @@ function EditorStyles(props) {
       )}`,
       color: backTextColor,
       transform: flipStyleBack,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -274,16 +344,24 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       height: generateCSSUnit(height, "px"),
-      "padding-top": generateCSSUnit(backtopPadding, "px"),
-      "padding-bottom": generateCSSUnit(backbottomPadding, "px"),
-      "padding-left": generateCSSUnit(backleftPadding, "px"),
-      "padding-right": generateCSSUnit(backrightPadding, "px"),
+      "padding-top": generateCSSUnit(backTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(backBottomPadding, "px"),
+      "padding-left": generateCSSUnit(backLeftPadding, "px"),
+      "padding-right": generateCSSUnit(backRightPadding, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
       color: backTextColor,
+      "font-family": backTitleFontFamily,
+      "font-size": generateCSSUnit(backTitleFontSize, "px"),
+      "font-weight": backTitleFontWeight,
+      "line-height": backTitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
       color: backTextColor,
+      "font-family": backSubtitleFontFamily,
+      "font-size": generateCSSUnit(backSubtitleFontSize, "px"),
+      "font-weight": backSubtitleFontWeight,
+      "line-height": backSubtitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box-dashicon-fronticon-wrap": {
       "font-size": generateCSSUnit(iconSize, "px"),
@@ -308,21 +386,29 @@ function EditorStyles(props) {
       height: `auto !important`,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
-      "border-radius": generateCSSUnit(buttonBorderRadius, "px"),
-      "padding-left": generateCSSUnit(buttonHpadding, "px"),
-      "padding-right": generateCSSUnit(buttonHpadding, "px"),
-      "padding-top": generateCSSUnit(buttonVpadding, "px"),
-      "padding-bottom": generateCSSUnit(buttonVpadding, "px"),
+      "border-style": ctaBorderStyle,
+      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
+      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
+      "border-color": ctaBorderColor,
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
       "background-image": backgroundImageGradient,
       "background-color": btnColor + "!important",
       opacity: btnOpacity / 100,
-      color: buttonTextColor + "!important",
+      color: ctaColor + "!important",
+      "font-family": backButtonFontFamily,
+      "font-size": generateCSSUnit(backButtonFontSize, "px"),
+      "font-weight": backButtonFontWeight,
+      "line-height": backButtonLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {
       "background-image": backgroundHoverImageGradient,
       "background-color": btnHColor + "!important",
+      "border-color": ctaHoverBorderColor,
       opacity: btnHOpacity / 100,
-      color: buttonHTextColor + "!important",
+      color: ctaHoverColor + "!important",
     },
     " .has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks)": {
       "max-width": "calc(100% / 2 - " + flipBoxGutterGap + "px)",
@@ -339,14 +425,84 @@ function EditorStyles(props) {
     " .has-medium-gutter.responsive-flipbox-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",
-    }
+    },
+    " ": {
+      "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
+      "margin-top": generateCSSUnit(topMarginMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
+      "padding-top": generateCSSUnit(frontTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(frontBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(frontLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(frontRightPaddingMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
+      "padding-top": generateCSSUnit(backTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(backBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(backLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(backRightPaddingMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__title": {
+      "font-size": generateCSSUnit(frontTitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
+      "font-size": generateCSSUnit(frontSubtitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
+      "font-size": generateCSSUnit(backTitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
+      "font-size": generateCSSUnit(backSubtitleFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
+      "font-size": generateCSSUnit(backButtonFontSizeMobile, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
     " .has-medium-gutter.responsive-flipbox-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",
-    }
+    },
+    " ": {
+      "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
+      "margin-top": generateCSSUnit(topMarginTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
+      "padding-top": generateCSSUnit(frontTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(frontBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(frontLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(frontRightPaddingTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
+      "padding-top": generateCSSUnit(backTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(backBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(backLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(backRightPaddingTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__title": {
+      "font-size": generateCSSUnit(frontTitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
+      "font-size": generateCSSUnit(frontSubtitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
+      "font-size": generateCSSUnit(backTitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
+      "font-size": generateCSSUnit(backSubtitleFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link": {
+      "font-size": generateCSSUnit(backButtonFontSizeTablet, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+    },
   };
 
   var styling_css = "";
