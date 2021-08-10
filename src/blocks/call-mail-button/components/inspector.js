@@ -54,15 +54,12 @@ export default class Inspector extends Component {
   }
 
   onChangeNumber(number) {
-	  const validNumberRegex = RegExp(/[1-9]{1}\d{9}/)
+	  const validNumberRegex = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
 	  if(validNumberRegex.test(number)) {
 		  this.props.setAttributes({isValidNumber: true})
 	  }
 	  else{ 
 		this.props.setAttributes({isValidNumber: false})
-	  }
-	  if(number.length > 10) {
-		  this.props.setAttributes({isValidNumber: false})
 	  }
   }
 
