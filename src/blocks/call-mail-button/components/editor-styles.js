@@ -99,10 +99,10 @@
       "height": `${generateCSSUnit(iconSize, "px")} !important`,
       "width": `${generateCSSUnit(iconSize, "px")} !important`,
     },
-    " .responsive-block-editor-addons-call-mail-button-text:hover": {
+    " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-text": {
       "color": textColorHover,
     },
-    " .responsive-block-editor-addons-call-mail-button-icon:hover": {
+    " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon": {
       "fill": textColorHover,
     },
     " .responsive-block-editor-addons-call-mail-button-icon-iconPosition-left": {
