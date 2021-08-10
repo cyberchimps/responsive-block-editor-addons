@@ -6343,7 +6343,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-family'   => $attr['featuresFontFamily'],
 					'margin-bottom' => self::get_css_value( $attr['featuresSpace'], 'px' ),
 				),
-                ' .responsive-block-editor-addons-pricing-image' => array(
+				' .responsive-block-editor-addons-pricing-image' => array(
 					'width' => self::get_css_value( $attr['imageWidth'], 'px' ),
 				),
 
@@ -6399,9 +6399,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'      => self::get_css_value( $attr['ctaFontSizeMobile'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['buttonSpaceMobile'], 'px' ),
 				),
-                ' .responsive-block-editor-addons-pricing-image' => array(
-                    'width' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
-                ),
+				' .responsive-block-editor-addons-pricing-image' => array(
+					'width' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -6450,9 +6450,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'      => self::get_css_value( $attr['ctaFontSizeTablet'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['buttonSpaceTablet'], 'px' ),
 				),
-                ' .responsive-block-editor-addons-pricing-image' => array(
-                    'width' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
-                ),
+				' .responsive-block-editor-addons-pricing-image' => array(
+					'width' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
+				),
 			);
 
 			$combined_selectors = array(
@@ -6625,9 +6625,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'featuresSpaceTablet'       => '',
 				'blockAlign'                => 'center',
 				'imageWidth'                => '',
-                'imageWidthTablet'                 => '',
-                'imageWidthMobile'                 => '',
-                'imageSize'                 => 'full',
+				'imageWidthTablet'          => '',
+				'imageWidthMobile'          => '',
+				'imageSize'                 => 'full',
 				'imageShape'                => '',
 				'ctaHoverBorderColor'       => '#333',
 				'ctaHpaddingTablet'         => 30,
@@ -7424,14 +7424,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
 					'padding-right' => self::get_css_value( $attr['imageSpacingMobile'], 'px' ),
 				),
-                ' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
-                    'height' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
-                    'width'  => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
-                ),
-                ' .responsive-block-editor-addons-testimonial-avatar' => array(
-                    'height' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
-                    'width'  => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
-                ),
+				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
+					'height' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
+					'width'  => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-testimonial-avatar' => array(
+					'height' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
+					'width'  => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -7458,14 +7458,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
 					'padding-right' => self::get_css_value( $attr['imageSpacingTablet'], 'px' ),
 				),
-                ' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
-                    'height' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
-                    'width'  => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
-                ),
-                ' .responsive-block-editor-addons-testimonial-avatar' => array(
-                    'height' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
-                    'width'  => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
-                ),
+				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap .responsive-block-editor-addons-testimonial-image-wrap' => array(
+					'height' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
+					'width'  => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-testimonial-avatar' => array(
+					'height' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
+					'width'  => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
+				),
 			);
 
 			$combined_selectors = array(
@@ -7503,8 +7503,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'nameFontSize'               => '',
 				'nameLineHeight'             => '',
 				'imageWidth'                 => '',
-				'imageWidthTablet'                 => '',
-				'imageWidthMobile'                 => '',
+				'imageWidthTablet'           => '',
+				'imageWidthMobile'           => '',
 				'nameFontFamily'             => '',
 				'titleFontFamily'            => '',
 				'contentFontFamily'          => '',
