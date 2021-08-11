@@ -24,6 +24,10 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  alignTabsVertical: {
+    type: 'string',
+    default: "left",
+  },
   tabsStyleD: {
     type: "string",
     default: "hstyle3",
@@ -57,7 +61,6 @@ const attributes = {
   },
   tabTitleFontFamily: {
     type: "string",
-    default: "Default",
   },
   tabTitleFontSize: {
     type: "number",
@@ -80,7 +83,6 @@ const attributes = {
   },
   tabContentFontFamily: {
     type: "string",
-    default: "Default",
   },
   tabContentFontSize: {
     type: "number",
@@ -227,6 +229,7 @@ const attributes = {
   },
   animationDirection: {
     type: "string",
+    default: 'Left',
   },
   animationRepeat: {
     type: "string",

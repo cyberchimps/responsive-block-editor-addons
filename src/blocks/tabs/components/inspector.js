@@ -18,12 +18,14 @@ const { Component, Fragment } = wp.element;
 
 // Import block components
 const {
-  InspectorControls,
   ColorPalette,
-  AlignmentToolbar,
-  BlockAlignmentToolbar,
-  InspectorAdvancedControls,
 } = wp.editor;
+
+const {
+  InspectorControls,
+  BlockAlignmentToolbar,
+  InspectorAdvancedControls
+} = wp.blockEditor;
 
 // Import Inspector components
 const {
@@ -123,6 +125,7 @@ export default class Inspector extends Component {
         boxShadowBlur,
         boxShadowSpread,
         boxShadowPosition,
+        alignTabsVertical,
       },
       setAttributes,
       deviceType,
@@ -145,7 +148,7 @@ export default class Inspector extends Component {
       let directionOptions =
         animation === "rotate"
           ? [
-              { value: "DownLeft", label: "DownLeft" },
+              { value: "Left", label: "DownLeft" },
               { value: "DownRight", label: "DownRight" },
               { value: "UpLeft", label: "UpLeft" },
               { value: "UpRight", label: "UpRight" },
@@ -154,15 +157,15 @@ export default class Inspector extends Component {
             animation === "flip" ||
             animation === "fold"
           ? [
-              { value: "Right", label: "Right" },
               { value: "Left", label: "Left" },
+              { value: "Right", label: "Right" },
               { value: "Up", label: "Up" },
               { value: "Down", label: "Down" },
             ]
           : [
-              { value: "Center", label: "Center" },
-              { value: "Right", label: "Right" },
               { value: "Left", label: "Left" },
+              { value: "Right", label: "Right" },
+              { value: "Center", label: "Center" },
               { value: "Up", label: "Up" },
               { value: "Down", label: "Down" },
             ];
@@ -174,7 +177,7 @@ export default class Inspector extends Component {
         <InspectorTabs>
           <InspectorTab key={"content"}>
             <PanelBody
-              title={__("Position", "responsive-block-editor-addons")}
+              title={__("Tabs", "responsive-block-editor-addons")}
               initialOpen={true}
             >
               <Fragment>
@@ -195,10 +198,8 @@ export default class Inspector extends Component {
                   ]}
                 />
               </Fragment>
-            </PanelBody>
-            <PanelBody initialOpen={true}>
               <h2>{__("Alignment", "responsive-block-editor-addons")}</h2>
-              <BlockAlignmentToolbar
+              {tabsStyleD === 'hstyle3' && <BlockAlignmentToolbar
                 value={alignTabs}
                 onChange={(value) =>
                   setAttributes({
@@ -208,6 +209,18 @@ export default class Inspector extends Component {
                 controls={["left", "center", "right"]}
                 isCollapsed={false}
               />
+              }
+              {tabsStyleD === 'vstyle8' && <BlockAlignmentToolbar
+                value={alignTabsVertical}
+                onChange={(value) =>
+                  setAttributes({
+                    alignTabsVertical: value,
+                  })
+                }
+                controls={["left", "right"]}
+                isCollapsed={false}
+              />
+              }
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
@@ -357,7 +370,9 @@ export default class Inspector extends Component {
                 <SelectControl
                   label={__("Animation", "responsive-block-editor-addons")}
                   value={animationName}
-                  onChange={(value) => setAttributes({ animationName: value })}
+                  onChange={(value) => 
+                    setAttributes({ animationName: value })
+                  }
                   options={[
                     { value: "none", label: "None" },
                     { value: "fade", label: __("Fade") },
@@ -428,7 +443,10 @@ export default class Inspector extends Component {
                 )}
               </PanelBody>
             </PanelBody>
-            <InspectorAdvancedControls>
+            <PanelBody 
+              title={__("Margin", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
               <ResponsiveMarginControl
                 attrNameTemplate="tabs%s"
                 values={{
@@ -450,6 +468,11 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
+            </PanelBody>
+            <PanelBody 
+              title={__("Padding", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
               <ResponsivePaddingControl
                 attrNameTemplate="tabs%s"
                 values={{
@@ -471,6 +494,8 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
+            </PanelBody>
+            <InspectorAdvancedControls>
               <RangeControl
                 label={__("Z-Index", "responsive-block-editor-addons")}
                 value={tabsZindex}
