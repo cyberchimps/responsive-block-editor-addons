@@ -61,7 +61,6 @@ const attributes = {
   },
   tabTitleFontFamily: {
     type: "string",
-    default: "Default",
   },
   tabTitleFontSize: {
     type: "number",
@@ -84,7 +83,6 @@ const attributes = {
   },
   tabContentFontFamily: {
     type: "string",
-    default: "Default",
   },
   tabContentFontSize: {
     type: "number",

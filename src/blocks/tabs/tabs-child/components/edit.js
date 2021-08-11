@@ -53,7 +53,7 @@
      } = this.props;
 
      return [
-       <div className={`responsive-block-editor-addons-tabs__body-container responsive-block-editor-addons-tabs__inner-tab responsive-block-editor-addons-inner-tab-${id}`} style={{ display: id === activeTab ? 'block' : 'none'}}>
+       <div key={'tabs_child'} className={`responsive-block-editor-addons-tabs__body-container responsive-block-editor-addons-tabs__inner-tab responsive-block-editor-addons-inner-tab-${id}`} style={{ display: id === activeTab ? 'block' : 'none'}}>
        <div
          className={classnames(
            "responsive-block-editor-addons-block-tabs-child",

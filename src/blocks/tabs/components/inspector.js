@@ -18,12 +18,14 @@ const { Component, Fragment } = wp.element;
 
 // Import block components
 const {
-  InspectorControls,
   ColorPalette,
-  AlignmentToolbar,
-  BlockAlignmentToolbar,
-  InspectorAdvancedControls,
 } = wp.editor;
+
+const {
+  InspectorControls,
+  BlockAlignmentToolbar,
+  InspectorAdvancedControls
+} = wp.blockEditor;
 
 // Import Inspector components
 const {
@@ -441,7 +443,10 @@ export default class Inspector extends Component {
                 )}
               </PanelBody>
             </PanelBody>
-            <InspectorAdvancedControls>
+            <PanelBody 
+              title={__("Margin", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
               <ResponsiveMarginControl
                 attrNameTemplate="tabs%s"
                 values={{
@@ -463,6 +468,11 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
+            </PanelBody>
+            <PanelBody 
+              title={__("Padding", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
               <ResponsivePaddingControl
                 attrNameTemplate="tabs%s"
                 values={{
@@ -484,6 +494,8 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
+            </PanelBody>
+            <InspectorAdvancedControls>
               <RangeControl
                 label={__("Z-Index", "responsive-block-editor-addons")}
                 value={tabsZindex}
