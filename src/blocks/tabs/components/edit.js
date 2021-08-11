@@ -207,9 +207,10 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
      } = this.props;
 
      return [
-       <Inspector {...{ setAttributes, ...this.props }} />,
+       <Inspector key={'tabs_inspector'} {...{ setAttributes, ...this.props }} />,
  
        <div
+         key={'tabs_body'}
          className={classnames(
             className,
            `responsive-block-editor-addons-editor-preview-mode-${ deviceType.toLowerCase() }`,
