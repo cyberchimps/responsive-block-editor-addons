@@ -148,7 +148,7 @@ export default class Inspector extends Component {
       let directionOptions =
         animation === "rotate"
           ? [
-              { value: "DownLeft", label: "DownLeft" },
+              { value: "Left", label: "DownLeft" },
               { value: "DownRight", label: "DownRight" },
               { value: "UpLeft", label: "UpLeft" },
               { value: "UpRight", label: "UpRight" },

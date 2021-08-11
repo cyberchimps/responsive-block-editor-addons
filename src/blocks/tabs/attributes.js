@@ -229,6 +229,7 @@ const attributes = {
   },
   animationDirection: {
     type: "string",
+    default: 'Left',
   },
   animationRepeat: {
     type: "string",

@@ -1084,7 +1084,7 @@
     animation-name: rotateCenter;
   }
   
-  @-webkit-keyframes rotateDownLeft {
+  @-webkit-keyframes rotateLeft {
     from {
       -webkit-transform-origin: left bottom;
       transform-origin: left bottom;
@@ -1104,7 +1104,7 @@
     }
   }
   
-  @keyframes rotateDownLeft {
+  @keyframes rotateLeft {
     from {
       -webkit-transform-origin: left bottom;
       transform-origin: left bottom;
@@ -1124,9 +1124,9 @@
     }
   }
   
-  .rotateDownLeft {
-    -webkit-animation-name: rotateDownLeft;
-    animation-name: rotateDownLeft;
+  .rotateLeft {
+    -webkit-animation-name: rotateLeft;
+    animation-name: rotateLeft;
   }
   
   @-webkit-keyframes rotateDownRight {
