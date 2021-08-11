@@ -11324,7 +11324,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$icon_and_text_padding_tablet = 'minimal' === $attr['layout'] ? $input_box_padding_tablet : 0;
 
 			$border = '0' . $attr['blockBorderStyle'] . $attr['blockBorderColor'];
-			if ( '' !== $block_border_style ) {
+			if ( '' !== $attr['blockBorderStyle'] ) {
 				$border = self::get_css_value( $attr['blockBorderWidth'], 'px' ) . ' ' . $attr['blockBorderStyle'] . ' ' . $attr['blockBorderColor'];
 			}
 			$input_border_top    = $border;

@@ -317,6 +317,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	protected static $call_mail_button_block_id;
 
 	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $wp_search_block_id;
+
+	/**
 	 * Setup class instance
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -707,6 +714,16 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
 				'post_content' => '<!-- wp:responsive-block-editor-addons/call-mail-button --><!-- wp:responsive-block-editor-addons/call-mail-button>',
+			)
+		);
+
+		self::$wp_search_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/wp-search --><!-- wp:responsive-block-editor-addons/wp-search>',
 			)
 		);
 	}
@@ -2035,6 +2052,37 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css for post_carousel - gradient background
+	 */
+	public function test_get_block_css_post_carousel_gradient_background() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_carousel_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/post-carousel',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                => self::$post_carousel_block_id,
+					'buttonGradientDirection' => 60,
+					'buttonBackgroundColor1'  => '#222abc',
+					'buttonBackgroundColor2'  => '#111fed',
+					'buttonColorLocation1'    => '30',
+					'buttonColorLocation2'    => '44',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_carousel_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css for post_grid
 	 */
 	public function test_get_block_css_post_grid() {
@@ -2266,6 +2314,50 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css for advanced columns - background gradient
+	 */
+	public function test_get_block_css_advanced_columns_background_gradient() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_column_child_block_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block      = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge( $child_attributes, array( 'block_id' => self::$advanced_columns_child_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'          => self::$advanced_columns_block_id,
+					'backgroundColor1'  => '#123abc',
+					'backgroundColor2'  => '#123dee',
+					'gradientDirection' => 60,
+					'colorLocation1'    => 20,
+					'colorLocation2'    => 40,
+					'opacity'           => 7,
+				)
+			),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css for icons list
 	 */
 	public function test_get_block_css_icons_list() {
@@ -2464,6 +2556,32 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		);
 		$block_attrs = self::extract_attributes( $block );
 		$css         = self::$rbea_frontend_styles->get_responsive_block_call_mail_button_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css wp search block
+	 */
+	public function test_get_block_wp_search_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_wp_search_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/wp-search',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$wp_search_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_wp_search_css( $block_attrs[0], $block_attrs[1] );
 		$expected    = self::return_the_css( $block, $css );
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
