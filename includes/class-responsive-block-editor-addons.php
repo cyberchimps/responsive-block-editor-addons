@@ -557,14 +557,14 @@ class Responsive_Block_Editor_Addons {
 		/**
 		 * Layout Component Registry.
 		 */
-		require_once $includes_path . 'layout/layout-functions.php';
-		require_once $includes_path . 'layout/class-component-registry.php';
-		require_once $includes_path . 'layout/register-layout-components.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-functions.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-component-registry.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/register-layout-components.php';
 
 		/**
 		 * REST API Endpoints for Layouts.
 		 */
-		require_once $includes_path . 'layout/layout-endpoints.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-endpoints.php';
 	}
 
 	/** Adds the Responsive Blocks block category.
