@@ -209,8 +209,8 @@
     ul.responsive-block-editor-addons-tabs__panel{
         margin-bottom:0px;
         padding:0px;
-        display: grid;
-        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
         min-width: 25%;
         max-width: 25%;
         .responsive-block-editor-addons-tab{  
@@ -444,8 +444,8 @@
     ul.responsive-block-editor-addons-tabs__panel{
         margin-bottom:0px;
         padding:0px;
-        display: grid;
-        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
         min-width: 25%;
         max-width: 25%;
         .responsive-block-editor-addons-tab{  
@@ -709,8 +709,8 @@
     ul.responsive-block-editor-addons-tabs__panel{
         margin-bottom:0px;
         padding:0px;
-        display: grid;
-        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
         min-width: 25%;
         max-width: 25%;
         .responsive-block-editor-addons-tab{  

@@ -10873,6 +10873,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'   => self::get_css_value( $attr['tabContentFontSize'], 'px' ),
 					'line-height' => self::get_css_value( $attr['tabContentLineHeight'], 'px' ),
 				),
+				'.responsive-block-editor-addons-vstyle8-right' => array(
+					'flex-direction' => 'row-reverse',
+				),
 			);
 			$mobile_selectors   = array(
 				' ' => array(
