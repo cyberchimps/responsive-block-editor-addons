@@ -9860,10 +9860,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border'           => $button_border_hover,
 					'background-color' => $button_background_hover,
 				),
-				' .responsive-block-editor-addons-call-mail-button-text:hover' => array(
+				' .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-text' => array(
 					'color' => $text_color_hover,
 				),
-				' .responsive-block-editor-addons-call-mail-button-icon:hover' => array(
+				' .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon' => array(
 					'fill' => $text_color_hover,
 				),
 				' .responsive-block-editor-addons-call-mail-button-icon-iconPosition-left' => array(
