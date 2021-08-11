@@ -63,13 +63,11 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'plugins_loaded', array( $this, 'responsive_block_editor_addons_loader' ) );
 
-		add_action( 'init', array( $this, 'responsive_block_editor_addons_block_assets' ) );
+		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_block_assets' ) );
 
 		add_filter( 'block_categories_all', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ) );
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'responsive_block_editor_addons_editor_assets' ) );
-
-		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_frontend_assets' ) );
 
 		add_action( 'admin_enqueue_scripts', array( &$this, 'responsive_block_editor_addons_admin_enqueue_styles' ) );
 
@@ -809,24 +807,6 @@ class Responsive_Block_Editor_Addons {
 
 		return $return_array;
 	}
-	/**
-	 * Enqueue assets for frontend
-	 *
-	 * @since 1.0.0
-	 */
-	public function responsive_block_editor_addons_frontend_assets() {
-
-		// Load the compiled blocks into the editor.
-		wp_enqueue_script(
-			'responsive_blocks-frontend-js',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
-			array( 'jquery' ),
-			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
-			true
-		);
-
-	}
-
 
 	/**
 	 * Enqueue assets for frontend and backend
@@ -835,12 +815,59 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function responsive_block_editor_addons_block_assets() {
 
+		if ( ! is_admin() ) {
+
+			$post = get_post();
+
+			$blocks = parse_blocks( $post->post_content );
+
+			$flag = false;
+
+			foreach ( $blocks as $block ) {
+				if ( strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false ) {
+					$flag = true;
+					break;
+				}
+			}
+
+			if ( $flag ) {
+
+				// Load the compiled blocks into the editor.
+				wp_enqueue_script(
+					'responsive_blocks-frontend-js',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
+					array( 'jquery' ),
+					filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
+					true
+				);
+
+				// Load the compiled styles.
+				wp_enqueue_style(
+					'responsive_block_editor_addons-style-css',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-style.css',
+					array(),
+					filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-style.css' )
+				);
+			} else {
+				return;
+			}
+		}
+
 		// Load the compiled styles.
 		wp_enqueue_style(
 			'responsive_block_editor_addons-style-css',
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-style.css',
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-style.css' )
+		);
+
+		// Load the compiled blocks into the editor.
+		wp_enqueue_script(
+			'responsive_blocks-frontend-js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
+			array( 'jquery' ),
+			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
+			true
 		);
 		wp_enqueue_style(
 			'animation.css',

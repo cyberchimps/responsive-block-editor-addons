@@ -35,7 +35,8 @@ import "./blocks/spacer/index.js";
 import "./blocks/count-down/index.js";
 import "./blocks/table-of-contents/index.js";
 import "./blocks/block-layout/index.js";
-import "./blocks/how-to/index.js";
+//Not to make available for users yet
+// import "./blocks/how-to/index.js";
 import "./blocks/anchor/index.js";
 import "./blocks/call-mail-button/index.js";
 import "./blocks/progress-bar/index.js";

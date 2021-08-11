@@ -164,11 +164,11 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  buttonHpadding: {
+  ctaHpadding: {
     type: "number",
     default: 20,
   },
-  buttonVpadding: {
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
@@ -526,6 +526,58 @@ const attributes = {
   backButtonLineHeight: {
     type: "number",
     default: 1
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 30,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 30,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 15,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 15,
+  },
+  ctaBorderStyle: {
+    type: "string",
+    default: "none",
+  },
+  ctaBorderRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBorderWidth: {
+    type: "number",
+    default: 2,
+  },
+  ctaColor: {
+    type: "string",
+    default: "#ffffff",
+  },
+  ctaBackColor: {
+    type: "string",
+    default: "#333",
+  },
+  ctaHoverColor: {
+    type: "string",
+    default: "#ffffff",
+  },
+  ctaHoverBackColor: {
+    type: "string",
+    default: "#3f46ae",
+  },
+  ctaBorderColor: {
+    type: "string",
+    default: "#333",
+  },
+  ctaHoverBorderColor: {
+    type: "string",
+    defaulr: "#333",
   },
 };
 

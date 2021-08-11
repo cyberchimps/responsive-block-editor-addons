@@ -9,7 +9,8 @@ import attributes from "./attributes";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
-
+//Import Block Icon
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 // Internationalization
 const { __ } = wp.i18n;
 
@@ -23,7 +24,7 @@ registerBlockType("responsive-block-editor-addons/inline-notice", {
     "Adds a notice block with a combination of title and text.",
     "responsive-block-editor-addons"
   ),
-  icon: "warning",
+  icon: ResponsiveBlockEditorAddonsIcons.inline_notice,
   category: "responsive_block_editor_addons",
   keywords: [
     __("notice", "responsive-block-editor-addons"),

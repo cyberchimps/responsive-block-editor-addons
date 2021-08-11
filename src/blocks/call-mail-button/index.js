@@ -9,6 +9,8 @@ import attributes from "./attributes";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+//Import Block Icons
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -23,7 +25,7 @@ registerBlockType("responsive-block-editor-addons/call-mail-button", {
     "Add buttons to reach on call and/or mail.",
     "responsive-block-editor-addons"
   ),
-  icon: "phone",
+  icon: ResponsiveBlockEditorAddonsIcons.call_mail_button,
   category: "responsive_block_editor_addons",
   keywords: [
     __("call", "responsive-block-editor-addons"),

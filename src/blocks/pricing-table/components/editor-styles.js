@@ -144,6 +144,11 @@ function EditorStyles(props) {
     buttonSpaceTablet,
     featuresSpaceTablet,
     blockAlign,
+    ctaHoverBorderColor,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
     titleFontSizeMobile,
     titleFontSizeTablet,
     prefixFontSizeMobile,
@@ -158,6 +163,9 @@ function EditorStyles(props) {
     featuresFontSizeTablet,
     ctaFontSizeMobile,
     ctaFontSizeTablet,
+      imageWidth,
+      imageWidthTablet,
+      imageWidthMobile
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -237,6 +245,7 @@ function EditorStyles(props) {
       color: ctaHoverColor + "!important",
       "background-color": updatedButtonBgHColor,
       "background-image": updatedButtonBgHImage,
+      "border-color" : ctaHoverBorderColor,
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item.background-type-image": {
@@ -330,6 +339,10 @@ function EditorStyles(props) {
       position: "absolute",
       right: "15px",
       top: "45px",
+    },
+
+      " .responsive-block-editor-addons-pricing-image": {
+      width: generateCSSUnit(imageWidth, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item__title": {
@@ -428,9 +441,16 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(featuresSpaceMobile, "px"),
     },
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
       "font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
       "margin-bottom": generateCSSUnit(buttonSpaceMobile, "px"),
     },
+      " .responsive-block-editor-addons-pricing-image": {
+          width: generateCSSUnit(imageWidthMobile, "px"),
+      },
   };
 
   var tablet_selectors = {
@@ -471,9 +491,16 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(featuresSpaceTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
       "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
       "margin-bottom": generateCSSUnit(buttonSpaceTablet, "px"),
     },
+      " .responsive-block-editor-addons-pricing-image": {
+          width: generateCSSUnit(imageWidthTablet, "px"),
+      },
   };
 
   var styling_css = "";
