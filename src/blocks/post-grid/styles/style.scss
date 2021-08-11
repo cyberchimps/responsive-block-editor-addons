@@ -234,10 +234,18 @@
     .no-thumb .responsive-block-editor-addons-block-post-grid-text {
       grid-column: span 2;
     }
-  }
+  } 
 
   .hentry {
     margin-top: 0;
+  }
+
+  .course {
+    margin-top: 0 !important;
+  }
+
+  .lesson {
+    margin-top: 0 !important;
   }
 }
 
