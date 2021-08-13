@@ -44,7 +44,7 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls key="inspector">
-				<InspectorTabs>
+				<InspectorTabs hasStyle={false}>
 					<InspectorTab key={"content"}>
 						<PanelBody title={__("Map settings", "responsive-block-editor-addons")}>
 							<RangeControl
@@ -135,8 +135,6 @@ export default class Inspector extends Component {
 								</Button>
 							)}
 						</PanelBody>
-					</InspectorTab>
-					<InspectorTab key={"style"}>
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 					</InspectorTab>

@@ -51,7 +51,7 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls key="inspector">
-				<InspectorTabs>
+				<InspectorTabs hasStyle={false}>
 					<InspectorTab key={"content"}>
 						<PanelBody
 							title={__("General", "responsive-block-editor-addons")}
@@ -167,8 +167,6 @@ export default class Inspector extends Component {
 								)}
 							/>
 						</PanelBody>
-					</InspectorTab>
-					<InspectorTab key={"style"}>
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 					</InspectorTab>
