@@ -85,7 +85,7 @@ class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<InspectorTabs>
+				<InspectorTabs hasStyle={false}>
 					<InspectorTab key={"content"}>
 						<PanelBody
 							title={__("Masonry settings", "responsive-block-editor-addons")}
@@ -140,8 +140,6 @@ class Inspector extends Component {
 							)}
 						</PanelBody>
 						<GalleryLinkSettings {...this.props} />
-					</InspectorTab>
-					<InspectorTab key={"style"}>
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 					</InspectorTab>
