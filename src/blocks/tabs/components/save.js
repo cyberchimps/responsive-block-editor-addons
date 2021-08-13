@@ -24,19 +24,18 @@
        tabsStyleT,
        tabsStyleM,
        alignTabs,
+       alignTabsVertical,
      } = attributes;
  
     
      return [
        <div
          className={classnames(
-            className,
            "responsive-block-editor-addons-block-tabs",
            `block-${block_id}`,
            `responsive-block-editor-addons-tabs__wrap`,
            `responsive-block-editor-addons-tabs__${tabsStyleD}-desktop`,
-           `responsive-block-editor-addons-tabs__${tabsStyleT}-tablet`,
-           `responsive-block-editor-addons-tabs__${tabsStyleM}-mobile`,
+           `responsive-block-editor-addons-${tabsStyleD}-${alignTabsVertical}`,
          )}
          data-tab-active={tabActiveFrontend}
        >

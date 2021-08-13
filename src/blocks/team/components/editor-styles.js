@@ -72,6 +72,12 @@ function EditorStyles(props) {
     backgroundAttachment,
     gutter,
     count,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	designationFontSizeMobile,
+	designationFontSizeTablet,
+	descriptionFontSizeMobile,
+	descriptionFontSizeTablet,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
@@ -270,14 +276,17 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-team-name": {
       "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
+	  "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
 
     " .responsive-block-editor-addons-team-designation": {
       "margin-bottom": generateCSSUnit(designationSpacingMobile, "px"),
+	  "font-size": generateCSSUnit(designationFontSizeMobile, "px"),
     },
 
     " .responsive-block-editor-addons-team-description": {
       "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
+	  "font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block a": {
@@ -302,14 +311,17 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-team-name": {
       "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
+	  "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
 
     " .responsive-block-editor-addons-team-designation": {
       "margin-bottom": generateCSSUnit(designationSpacingTablet, "px"),
+	  "font-size": generateCSSUnit(designationFontSizeTablet, "px"),
     },
 
     " .responsive-block-editor-addons-team-description": {
       "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
+	  "font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block a": {

@@ -69,6 +69,12 @@ const attributes = {
   imageWidth: {
     type: "number",
   },
+  imageWidthTablet: {
+    type: "number",
+  },
+  imageWidthMobile: {
+    type: "number",
+  },
   nameFontFamily: {
     type: "string",
   },
@@ -144,6 +150,34 @@ const attributes = {
     default: -5,
   },
   imageSpacing: {
+    type: "number",
+  },
+  contentSpacingMobile: {
+    type: "number",
+    default: 8,
+  },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  nameSpacingMobile: {
+    type: "number",
+    default: -5,
+  },
+  imageSpacingMobile: {
+    type: "number",
+  },
+  contentSpacingTablet: {
+    type: "number",
+    default: 8,
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  nameSpacingTablet: {
+    type: "number",
+    default: -5,
+  },
+  imageSpacingTablet: {
     type: "number",
   },
   alignment: {
@@ -244,6 +278,24 @@ const attributes = {
   colorLocation2: {
     type: "number",
     default: 100,
+  },
+  contentFontSizeMobile: {
+	type: "number",
+  },
+  contentFontSizeTablet: {
+	type: "number",
+  },
+  nameFontSizeMobile: {
+	type: "number",
+  },
+  nameFontSizeTablet: {
+	type: "number",
+  },
+  titleFontSizeMobile: {
+	type: "number",
+  },
+  titleFontSizeTablet: {
+	type: "number",
   },
 };
 

@@ -30,7 +30,11 @@ function EditorStyles(props) {
     ressubHeadLineHeight,
     resseparatorWidthType,
     resheadSpace,
+    resheadSpaceMobile,
+    resheadSpaceTablet,
     ressubHeadSpace,
+    ressubHeadSpaceMobile,
+    ressubHeadSpaceTablet,
     resIconSize,
     resseperatorStyle,
     resseperatorWidth,
@@ -39,15 +43,17 @@ function EditorStyles(props) {
     resctaLinkColor,
     resctaFontSize,
     resctaFontWeight,
-    resctaBtnLinkColor,
-    resctaBgColor,
-    ctaBtnVertPadding,
-    ctaBtnHrPadding,
-    resctaBorderStyle,
-    resctaBorderColor,
-    resctaBorderWidth,
-    resctaBorderRadius,
+    ctaColor,
+    ctaBackColor,
+    ctaVpadding,
+    ctaHpadding,
+    ctaBorderStyle,
+    ctaBorderColor,
+    ctaBorderWidth,
+    ctaBorderRadius,
     resprefixSpace,
+    resprefixSpaceMobile,
+    resprefixSpaceTablet,
     iconLeftMargin,
     iconRightMargin,
     iconTopMargin,
@@ -75,14 +81,16 @@ function EditorStyles(props) {
     boxShadowPosition,
     opacity,
     imgURL,
-    hoverctaBtnLinkColor,
-    hoverctaBgColor,
-    hoverctaBorderColor,
+    ctaHoverColor,
+    ctaHoverBackColor,
+    ctaHoverBorderColor,
     imagePosition,
     imageRepeat,
     thumbsize,
     backgroundAttachment,
     sepSpace,
+    sepSpaceMobile,
+    sepSpaceTablet,
     icon_color,
     icon_hcolor,
     resImageBorderColor,
@@ -99,6 +107,8 @@ function EditorStyles(props) {
     imageopacity,
     backgroundColor,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     imgiconPosition,
     ctaTextFontFamily,
     ctaTextFontSize,
@@ -107,6 +117,8 @@ function EditorStyles(props) {
     ctaTextFontWeight,
     ctaTextLineHeight,
     ctaBottomMargin,
+    ctaBottomMarginMobile,
+    ctaBottomMarginTablet,
     hoverboxShadowColor,
     hoverboxShadowHOffset,
     hoverboxShadowVOffset,
@@ -123,7 +135,16 @@ function EditorStyles(props) {
     backgroundImagePosition,
     backgroundImageRepeat,
     backgroundImageSize,
-
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    buttonbackgroundColor1,
+    buttonbackgroundColor2,
+    buttoncolorLocation1,
+    buttoncolorLocation2,
+    buttongradientDirection,
+    buttonbackgroundType,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -169,6 +190,15 @@ function EditorStyles(props) {
   let iconHoverBorder = 'none';
   if("outline" === iconBackgroundType) {
     iconHoverBorder = `${generateCSSUnit(iconBorderWidth, "px")} solid ${iconBackgroundHoverColor}`;
+  }
+
+  let backgroundImageGradient = '';
+  let buttonColor = '';
+  if (buttonbackgroundType == "gradient") {
+    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+  } else if (buttonbackgroundType == 'color') {
+    backgroundImageGradient = '';
+    buttonColor = ctaBackColor
   }
 
   var selectors = {
@@ -250,21 +280,22 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-ifb-cta-button": {
-      "background-color": resctaBgColor,
-      "border-color": resctaBorderColor,
+      "background-color": buttonColor,
+      "background-image": backgroundImageGradient,
+      "border-color": ctaBorderColor,
     },
 
     " .responsive-block-editor-addons-ifb-cta-button .responsive-block-editor-addons-inline-editing": {
-      "color": resctaBtnLinkColor,
+      "color": ctaColor,
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover": {
-      "background-color": hoverctaBgColor,
-      "border-color": hoverctaBorderColor,
+      "background-color": ctaHoverBackColor,
+      "border-color": ctaHoverBorderColor,
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover .responsive-block-editor-addons-inline-editing": {
-      "color": hoverctaBtnLinkColor,
+      "color": ctaHoverColor,
     },
 
     " .responsive-block-editor-addons-ifb-icon svg": {
@@ -326,10 +357,10 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-infobox-cta-link": {
       "color": resctaLinkColor,
-      "padding-top": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-left": generateCSSUnit(ctaBtnHrPadding, "px"),
-      "padding-right": generateCSSUnit(ctaBtnHrPadding, "px"),
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "font-size": generateCSSUnit(ctaTextFontSize, "px"),
       "font-weight": ctaTextFontWeight,
       "font-family": ctaTextFontFamily,
@@ -342,13 +373,13 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
-      "border-width": generateCSSUnit(resctaBorderWidth, "px"),
-      "border-style": resctaBorderStyle,
-      "border-radius": generateCSSUnit(resctaBorderRadius, "px"),
-      "padding-top": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-left": generateCSSUnit(ctaBtnHrPadding, "px"),
-      "padding-right": generateCSSUnit(ctaBtnHrPadding, "px"),
+      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
+      "border-style": ctaBorderStyle,
+      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
+      "padding-top": generateCSSUnit(ctaVpadding, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "padding-left": generateCSSUnit(ctaHpadding, "px"),
+      "padding-right": generateCSSUnit(ctaHpadding, "px"),
       "font-size": generateCSSUnit(resctaFontSize, "px"),
       "font-weight": resctaFontWeight,
     },
@@ -358,6 +389,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      padding: generateCSSUnit(contentPaddingMobile, "px"),
+    },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-mobile .responsive-block-editor-addons-ifb-content": {
       "text-align": alignment,
     },
@@ -383,9 +417,33 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(iconLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(iconRightMarginMobile, "px"),
     },
+    " .responsive-block-editor-addons-ifb-title-prefix": {
+      "margin-bottom": generateCSSUnit(resprefixSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title": {
+      "margin-bottom": generateCSSUnit(resheadSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-separator": {
+      "margin-bottom": generateCSSUnit(sepSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-desc": {
+      "margin-bottom": generateCSSUnit(ressubHeadSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-cta": {
+      "margin-bottom": generateCSSUnit(ctaBottomMarginMobile, "px"),
+    },
+    " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
+    " ": {
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
+    },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-tablet .responsive-block-editor-addons-ifb-content": {
       "text-align": alignment,
     },
@@ -410,6 +468,27 @@ function EditorStyles(props) {
       "margin-top": generateCSSUnit(iconTopMarginTablet, "px"),
       "margin-left": generateCSSUnit(iconLeftMarginTablet, "px"),
       "margin-right": generateCSSUnit(iconRightMarginTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title-prefix": {
+      "margin-bottom": generateCSSUnit(resprefixSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title": {
+      "margin-bottom": generateCSSUnit(resheadSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-separator": {
+      "margin-bottom": generateCSSUnit(sepSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-desc": {
+      "margin-bottom": generateCSSUnit(ressubHeadSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-cta": {
+      "margin-bottom": generateCSSUnit(ctaBottomMarginTablet, "px"),
+    },
+    " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
     },
   };
 

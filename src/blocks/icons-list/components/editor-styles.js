@@ -23,7 +23,7 @@ function EditorStyles(props) {
     labelFontFamily,
     labelFontWeight,
     labelFontSize,
-    labelFontLineHeight,
+    labelLineHeight,
     labelFontSizeTablet,
     labelFontSizeMobile,
     hideLabel,
@@ -82,33 +82,33 @@ function EditorStyles(props) {
       "font-family": labelFontFamily,
       "font-size": generateCSSUnit(labelFontSize, "px"),
       "font-weight": labelFontWeight,
-      "line-height": labelFontLineHeight,
+      "line-height": labelLineHeight,
     },
   };
 
   var mobile_selectors = {
     " .responsive-block-editor-addons-icon-list__source-icon svg": {
-      width: generateCSSUnit(sizeMobile, fontSizeType),
-      height: generateCSSUnit(sizeMobile, fontSizeType),
+      width: sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
+      height: sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
     },
     " .responsive-block-editor-addons-icon-list__label": {
-      "font-size": generateCSSUnit(labelFontSizeMobile, "px"),
+      "font-size": labelFontSizeMobile ? generateCSSUnit(labelFontSizeMobile, "px") : generateCSSUnit(labelFontSize, "px"),
     },
     " .responsive-block-editor-addons-icon-list__source-wrap": {
-      padding: generateCSSUnit(bgSizeMobile, "px"),
+      padding: bgSizeMobile ? generateCSSUnit(bgSizeMobile, "px") : generateCSSUnit(bgSize, "px"),
     },
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-icon-list__source-icon svg": {
-      width: generateCSSUnit(sizeTablet, fontSizeType),
-      height: generateCSSUnit(sizeTablet, fontSizeType),
+	  width: sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
+	  height: sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
     },
     " .responsive-block-editor-addons-icon-list__label": {
-      "font-size": generateCSSUnit(labelFontSizeTablet, "px"),
+      "font-size": labelFontSizeTablet ? generateCSSUnit(labelFontSizeTablet, "px") : generateCSSUnit(labelFontSize, "px"),
     },
     " .responsive-block-editor-addons-icon-list__source-wrap": {
-      padding: generateCSSUnit(bgSizeTablet, "px"),
+	  padding: bgSizeTablet ? generateCSSUnit(bgSizeTablet, "px") : generateCSSUnit(bgSize, "px"),
     },
   };
 

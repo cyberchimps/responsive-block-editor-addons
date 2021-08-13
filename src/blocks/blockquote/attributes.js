@@ -48,51 +48,51 @@ const attributes = {
   blockBorderColor: {
     type: "string",
   },
-  leftPadding: {
+  blockLeftPadding: {
     type: "number",
     default: 60,
   },
-  leftPaddingMobile: {
+  blockLeftPaddingMobile: {
     type: "number",
     default: 60,
   },
-  leftPaddingTablet: {
+  blockLeftPaddingTablet: {
     type: "number",
     default: 60,
   },
-  rightPadding: {
+  blockRightPadding: {
     type: "number",
     default: 60,
   },
-  rightPaddingMobile: {
+  blockRightPaddingMobile: {
     type: "number",
     default: 60,
   },
-  rightPaddingTablet: {
+  blockRightPaddingTablet: {
     type: "number",
     default: 60,
   },
-  topPadding: {
+  blockTopPadding: {
     type: "number",
     default: 70,
   },
-  topPaddingMobile: {
+  blockTopPaddingMobile: {
     type: "number",
     default: 70,
   },
-  topPaddingTablet: {
+  blockTopPaddingTablet: {
     type: "number",
     default: 70,
   },
-  bottomPadding: {
+  blockBottomPadding: {
     type: "number",
     default: 70,
   },
-  bottomPaddingMobile: {
+  blockBottomPaddingMobile: {
     type: "number",
     default: 70,
   },
-  bottomPaddingTablet: {
+  blockBottomPaddingTablet: {
     type: "number",
     default: 70,
   },
@@ -178,53 +178,59 @@ const attributes = {
     type: "string",
     default: "outset",
   },
-  textSpacingTop: {
+  textTopPadding: {
     type: "number",
     default: 60
   },
-  textSpacingBottom: {
+  textBottomPadding: {
     type: "number",
     default: 0
   },
-  textSpacingLeft: {
+  textLeftPadding: {
     type: "number",
     default: 70
   },
-  textSpacingRight: {
+  textRightPadding: {
     type: "number",
     default: 70
   },
-  textSpacingTopMobile: {
+  textTopPaddingMobile: {
     type: "number",
     default: 30
   },
-  textSpacingBottomMobile: {
+  textBottomPaddingMobile: {
     type: "number",
     default: 0
   },
-  textSpacingLeftMobile: {
+  textLeftPaddingMobile: {
     type: "number",
     default: 35
   },
-  textSpacingRightMobile: {
+  textRightPaddingMobile: {
     type: "number",
     default: 35
   },
-  textSpacingTopTablet: {
+  textTopPaddingTablet: {
     type: "number",
     default: 30
   },
-  textSpacingBottomTablet: {
+  textBottomPaddingTablet: {
     type: "number",
     default: 0
   },
-  textSpacingLeftTablet: {
+  textLeftPaddingTablet: {
     type: "number",
     default: 35
   },
-  textSpacingRightTablet: {
+  textRightPaddingTablet: {
     type: "number",
     default: 35
+  },
+  quoteFontSizeMobile: {
+	  type: "number",
+  },
+  quoteFontSizeTablet: {
+	  type: "number",
   },
 };
 

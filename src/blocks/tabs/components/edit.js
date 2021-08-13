@@ -200,6 +200,7 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
         tabsStyleT,
         tabTitleFontFamily,
         tabContentFontFamily,
+        alignTabsVertical,
        },
        setAttributes,
        className,
@@ -207,18 +208,17 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
      } = this.props;
 
      return [
-       <Inspector {...{ setAttributes, ...this.props }} />,
+       <Inspector key={'tabs_inspector'} {...{ setAttributes, ...this.props }} />,
  
        <div
+         key={'tabs_body'}
          className={classnames(
-            className,
            `responsive-block-editor-addons-editor-preview-mode-${ deviceType.toLowerCase() }`,
            "responsive-block-editor-addons-block-tabs",
            `block-${block_id}`,
            `responsive-block-editor-addons-tabs__wrap`,
            `responsive-block-editor-addons-tabs__${tabsStyleD}-desktop`,
-           `responsive-block-editor-addons-tabs__${tabsStyleT}-tablet`,
-           `responsive-block-editor-addons-tabs__${tabsStyleM}-mobile`,
+           `responsive-block-editor-addons-${tabsStyleD}-${alignTabsVertical}`,
          )}
        >
             {tabTitleFontFamily && loadGoogleFont(tabTitleFontFamily)}

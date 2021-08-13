@@ -25,7 +25,11 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     titlePadding,
+    titlePaddingMobile,
+    titlePaddingTablet,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
   } = props.attributes;
 
   var selectors = {};
@@ -80,9 +84,23 @@ function EditorStyles(props) {
     },
   };
 
-  tablet_selectors = {};
+  tablet_selectors = {
+    " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+      padding: generateCSSUnit(titlePaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-content span": {
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
+    },
+  };
 
-  mobile_selectors = {};
+  mobile_selectors = {
+    " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+      padding: generateCSSUnit(titlePaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-content span": {
+      padding: generateCSSUnit(contentPaddingMobile, "px"),
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-accordion-item__outer-wrap.responsive-block-editor-addons-block-${props.clientId}`;

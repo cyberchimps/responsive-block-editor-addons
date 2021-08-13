@@ -54,6 +54,12 @@ function EditorStyles(props) {
     imagePosition,
     imageSize,
     imageWidth,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	descriptionFontSizeMobile,
+	descriptionFontSizeTablet,
+	priceFontSizeMobile,
+	priceFontSizeTablet,
   } = props.attributes;
 
   var align = contentAlign;
@@ -132,8 +138,15 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-title": {
-      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
-    },
+		"font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+		"margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+	},
+	" .responsive-block-editior-addons-pricing-list-item-description": {
+		"font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+	},
+	" .responsive-block-editior-addons-pricing-list-item-price-wrap": {
+		"font-size": generateCSSUnit(priceFontSizeMobile, "px"),
+	}
   };
 
   var tablet_selectors = {
@@ -149,8 +162,15 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-title": {
-      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
-    }
+		"font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+		"margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+	},
+	" .responsive-block-editior-addons-pricing-list-item-description": {
+		"font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+	},
+	" .responsive-block-editior-addons-pricing-list-item-price-wrap": {
+		"font-size": generateCSSUnit(priceFontSizeTablet, "px"),
+	}
   };
 
   var styling_css = "";

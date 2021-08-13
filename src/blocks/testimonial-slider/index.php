@@ -233,7 +233,7 @@ function get_responsive_testimonial_carousel_default_attributes() {
 		'arrowSize'            => 20,
 		'arrowDots'            => 'arrows_dots',
 		'arrowColor'           => '#333',
-		'arrowBorderWidth'      => 1,
+		'arrowBorderWidth'     => 1,
 		'arrowBorderRadius'    => 0,
 		'postsToShow'          => 6,
 		'displayPostDate'      => true,

@@ -8,6 +8,8 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -194,7 +196,11 @@ export default class Inspector extends Component {
         imageSize,
         verticalAlignment,
         titleSpacing,
+        titleSpacingMobile,
+        titleSpacingTablet,
         descriptionSpacing,
+        descriptionSpacingMobile,
+        descriptionSpacingTablet,
         arrowColor,
         arrowSize,
         backgroundImageOne,
@@ -204,6 +210,8 @@ export default class Inspector extends Component {
         gutter,
         showDescription,
         showTitle,
+		descriptionFontSizeMobile,
+		descriptionFontSizeTablet,
       },
       setAttributes,
     } = this.props;
@@ -805,14 +813,49 @@ export default class Inspector extends Component {
                 allowReset
               />
             </PanelColorSettings>
+			<PanelBody
+				title={__("Text Colors", "responsive-block-editor-addons")}
+				initialOpen={false}
+			>
+				<p className="responsive-block-editor-addons-setting-label">
+                {__("Title Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{ backgroundColor: titleColor }}
+                  ></span>
+                </span>
+              	</p>
+				<ColorPalette
+                  label={__("Title Text Color", "responsive-block-editor-addons")}
+                  value={titleColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ titleColor: colorValue })
+                  }
+                  allowReset
+                />
+				<p className="responsive-block-editor-addons-setting-label">
+                {__("Description Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{ backgroundColor: descriptionColor }}
+                  ></span>
+                </span>
+              	</p>
+                <ColorPalette
+                  label={__("Description Text Color", "responsive-block-editor-addons")}
+                  value={descriptionColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ descriptionColor: colorValue })
+                  }
+                  allowReset
+                />
+			</PanelBody>
             <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Title Typography", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
                 <SelectControl
                   label={__("Title Heading Tag")}
                   value={titleHeadingTag}
@@ -826,198 +869,38 @@ export default class Inspector extends Component {
                     { value: "h6", label: __("H6") },
                   ]}
                 />
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={titleFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      titleFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={titleFontSizeMobile}
-                            onChange={(value) =>
-                              setAttributes({
-                                titleFontSizeMobile: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={titleFontSizeTablet}
-                            onChange={(value) =>
-                              setAttributes({
-                                titleFontSizeTablet: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RangeControl
-                            label={__(
-                              "Font Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                            value={titleFontSize}
-                            onChange={(value) =>
-                              setAttributes({
-                                titleFontSize: value,
-                              })
-                            }
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={titleFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      titleFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={titleLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      titleLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={200}
-                  step={1}
-                />
-                <ColorPalette
-                  label={__("Text Color", "responsive-block-editor-addons")}
-                  value={titleColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ titleColor: colorValue })
-                  }
-                  allowReset
-                />
-              </PanelBody>
-              <PanelBody
-                title={__(
-                  "Description Typography",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={false}
-              >
-                <SelectControl
-                  label={__("Font Family", "responsive-block-editor-addons")}
-                  options={fontOptions}
-                  value={descriptionFontFamily}
-                  onChange={(value) => {
-                    setAttributes({
-                      descriptionFontFamily: value,
-                    }),
-                      loadGoogleFont(value);
-                  }}
-                />
-                <RangeControl
-                  label={__("Font Size", "responsive-block-editor-addons")}
-                  value={descriptionFontSize}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      descriptionFontSize: value,
-                    })
-                  }
-                  min={0}
-                  max={200}
-                  step={1}
-                />
-                <SelectControl
-                  label={__("Font Weight", "responsive-block-editor-addons")}
-                  options={fontWeightOptions}
-                  value={descriptionFontWeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      descriptionFontWeight: value,
-                    })
-                  }
-                />
-                <RangeControl
-                  label={__("Line Height", "responsive-block-editor-addons")}
-                  value={descriptionLineHeight}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      descriptionLineHeight: value,
-                    })
-                  }
-                  min={0}
-                  max={200}
-                  step={1}
-                />
-                <ColorPalette
-                  label={__("Text Color", "responsive-block-editor-addons")}
-                  value={descriptionColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ descriptionColor: colorValue })
-                  }
-                  allowReset
-                />
-              </PanelBody>
+				<TypographyHelperControl
+					title={__("Title Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="title%s"
+					values={{
+					family: titleFontFamily,
+					size: titleFontSize,
+					sizeMobile: titleFontSizeMobile,
+					sizeTablet: titleFontSizeTablet,
+					weight: titleFontWeight,
+					height: titleLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__("Description Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="description%s"
+					values={{
+					family: descriptionFontFamily,
+					size: descriptionFontSize,
+					sizeMobile: descriptionFontSizeMobile,
+					sizeTablet: descriptionFontSizeTablet,
+					weight: descriptionFontWeight,
+					height: descriptionLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
             </PanelBody>
             <PanelBody
               title={__("Padding", "responsive-block-editor-addons")}
@@ -1033,6 +916,19 @@ export default class Inspector extends Component {
                 max={500}
                 step={1}
               />
+                <RangeControl
+                    label={__(
+                        "Box Bottom Padding",
+                        "responsive-block-editor-addons"
+                    )}
+                    value={boxPaddingBottom}
+                    onChange={(newCount) => {
+                        setAttributes({ boxPaddingBottom: newCount });
+                    }}
+                    min={1}
+                    max={500}
+                    step={1}
+                />
               <RangeControl
                 label={__("Box Left Padding", "responsive-block-editor-addons")}
                 value={boxPaddingLeft}
@@ -1053,22 +949,10 @@ export default class Inspector extends Component {
                   setAttributes({ boxPaddingRight: newCount });
                 }}
                 min={1}
-                max={50}
+                max={500}
                 step={1}
               />
-              <RangeControl
-                label={__(
-                  "Box Bottom Padding",
-                  "responsive-block-editor-addons"
-                )}
-                value={boxPaddingBottom}
-                onChange={(newCount) => {
-                  setAttributes({ boxPaddingBottom: newCount });
-                }}
-                min={1}
-                max={50}
-                step={1}
-              />
+
             </PanelBody>
             <PanelBody
               title={__("Hover Effect", "responsive-block-editor-addons")}
@@ -1089,28 +973,19 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <RangeControl
-                label={__("Title Spacing", "responsive-block-editor-addons")}
-                value={titleSpacing}
-                onChange={(newCount) => {
-                  setAttributes({ titleSpacing: newCount });
-                }}
-                min={-50}
-                max={100}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Title Spacing"}
+                attrNameTemplate="titleSpacing%s"
+                values={{ desktop: titleSpacing, tablet: titleSpacingTablet, mobile: titleSpacingMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
-              <RangeControl
-                label={__(
-                  "Description Spacing",
-                  "responsive-block-editor-addons"
-                )}
-                value={descriptionSpacing}
-                onChange={(newCount) => {
-                  setAttributes({ descriptionSpacing: newCount });
-                }}
-                min={-50}
-                max={100}
-                step={1}
+              <ResponsiveSpacingControl
+                title={"Description Spacing"}
+                attrNameTemplate="descriptionSpacing%s"
+                values={{ desktop: descriptionSpacing, tablet: descriptionSpacingTablet, mobile: descriptionSpacingMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
             <PanelBody

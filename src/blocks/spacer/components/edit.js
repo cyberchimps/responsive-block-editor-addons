@@ -83,7 +83,7 @@ const SpacerEdit = ({
 				showHandle={isSelected}
 			/>
 			<InspectorControls>
-				<InspectorTabs>
+				<InspectorTabs hasStyle={false}>
 					<InspectorTab key={"content"}>
 						<PanelBody title={__("Spacer settings")}>
 							<TabPanel
@@ -161,8 +161,6 @@ const SpacerEdit = ({
 								}}
 							</TabPanel>
 						</PanelBody>
-					</InspectorTab>
-					<InspectorTab key={"style"}>
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 					</InspectorTab>

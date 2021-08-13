@@ -211,6 +211,9 @@ function EditorStyles(props) {
 			"font-size": generateCSSUnit( tabContentFontSize, "px" ),
 			"line-height": generateCSSUnit( tabContentLineHeight, "px" ),
 		},
+    ".responsive-block-editor-addons-vstyle8-right" :{
+      "flex-direction": "row-reverse",
+    },
   };
 
   var mobile_selectors = {

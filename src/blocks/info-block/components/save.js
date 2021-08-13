@@ -39,7 +39,7 @@ export default class Save extends Component {
       resctaType,
       resctaText,
       resctaLink,
-      resctaTarget,
+      buttonTarget,
       resctaLinkColor,
       resctaFontSize,
       iconImage,
@@ -70,7 +70,7 @@ export default class Save extends Component {
 
     let target = "_self";
     let rel = "noopener noreferrer";
-    if (resctaTarget) {
+    if (buttonTarget) {
       target = "_blank";
     }
 

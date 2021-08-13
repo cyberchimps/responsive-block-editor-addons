@@ -228,7 +228,7 @@ export default class Inspector extends Component {
 							{progressBarStyle === "horizontal" && (
 								<Fragment>
 									<SelectControl
-										label={__("Horizontal Bar Animation Style", "responsive-block-editor-addons")}
+										label={__("Horizontal Progress Bar Style", "responsive-block-editor-addons")}
 										value={horizontalProgressBarStyle}
 										options={[
 											{

@@ -179,7 +179,7 @@ function EditorStyles(props) {
       "font-family": buttonFontFamily,
       "font-weight": buttonFontWeight,
       "line-height": buttonLineHeight,
-      opacity: imgopacity,
+      "opacity": imgopacity,
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover": {

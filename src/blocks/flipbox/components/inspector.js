@@ -7,12 +7,14 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ButtonSettingsControl from "../../../settings-components/Button Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -226,11 +228,6 @@ export default class Inspector extends Component {
         buttonTextColor,
         buttonColor,
         buttonBorderRadius,
-        buttonHpadding,
-        buttonVpadding,
-        blockAlign,
-        buttonHTextColor,
-        buttonHColor,
         buttonbackgroundType,
         buttongradientDirection,
         buttoncolorLocation1,
@@ -245,8 +242,58 @@ export default class Inspector extends Component {
         buttonHbackgroundColor2,
         buttonopacity,
         buttonHopacity,
+        buttonHpadding,
+        buttonVpadding,
+        blockAlign,
+        buttonHTextColor,
+        buttonHColor,
         flipBoxGutterGap,
         stack,
+        frontTitleFontSize,
+        frontTitleFontSizeMobile,
+        frontTitleFontSizeTablet,
+        frontTitleFontWeight,
+        frontTitleLineHeight,
+        frontTitleFontFamily,
+        frontSubtitleFontFamily,
+        frontSubtitleFontSize,
+        frontSubtitleFontSizeMobile,
+        frontSubtitleFontSizeTablet,
+        frontSubtitleFontWeight,
+        frontSubtitleLineHeight,
+        backTitleFontSize,
+        backTitleFontSizeMobile,
+        backTitleFontSizeTablet,
+        backTitleFontWeight,
+        backTitleLineHeight,
+        backTitleFontFamily,
+        backSubtitleFontFamily,
+        backSubtitleFontSize,
+        backSubtitleFontSizeMobile,
+        backSubtitleFontSizeTablet,
+        backSubtitleFontWeight,
+        backSubtitleLineHeight,
+        backButtonFontSize,
+        backButtonFontSizeMobile,
+        backButtonFontSizeTablet,
+        backButtonFontWeight,
+        backButtonLineHeight,
+        backButtonFontFamily,
+        ctaVpadding,
+        ctaVpaddingTablet,
+        ctaVpaddingMobile,
+        ctaHpadding,
+        ctaHpaddingTablet,
+        ctaHpaddingMobile,
+        ctaBorderStyle,
+        ctaBorderWidth,
+        ctaBorderRadius,
+        ctaHoverColor,
+        ctaHoverBorderColor,
+        ctaHoverBackColor,
+        ctaColor,
+        ctaBorderColor,
+        ctaBackColor,
       },
       setAttributes,
     } = this.props;
@@ -813,405 +860,13 @@ export default class Inspector extends Component {
                 )}
                 initialOpen={false}
               >
-                <RangeControl
-                  label={__("Border Radius", "responsive-block-editor-addons")}
-                  value={buttonBorderRadius}
-                  onChange={(value) =>
-                    setAttributes({
-                      buttonBorderRadius: value !== undefined ? value : 0,
-                    })
-                  }
-                  min={0}
-                  max={50}
-                  allowReset
-                />
-
-                <RangeControl
-                  label={__(
-                    "Horizontal Padding",
-                    "responsive-block-editor-addons"
-                  )}
-                  value={buttonHpadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      buttonHpadding: value !== undefined ? value : 20,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  allowReset
-                />
-                <RangeControl
-                  label={__(
-                    "Vertical Padding",
-                    "responsive-block-editor-addons"
-                  )}
-                  value={buttonVpadding}
-                  onChange={(value) =>
-                    setAttributes({
-                      buttonVpadding: value !== undefined ? value : 10,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  allowReset
-                />
-                <TabPanel
-                  className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "normal",
-                      title: __("Normal"),
-                      className: "rbea-normal-tab",
-                    },
-                    {
-                      name: "hover",
-                      title: __("Hover"),
-                      className: "rbea-focus-tab",
-                    },
-                  ]}
-                >
-                  {(tabName) => {
-                    let tabout;
-                    if ("hover" === tabName.name) {
-                      tabout = (
-                        <Fragment>
-                          <Fragment>
-                            <p>
-                              {__(
-                                "Text Color",
-                                "responsive-block-editor-addons"
-                              )}
-                              <span className="components-base-control__label">
-                                <span
-                                  className="component-color-indicator"
-                                  style={{ backgroundColor: buttonHTextColor }}
-                                ></span>
-                              </span>
-                            </p>
-                            <ColorPalette
-                              value={buttonHTextColor}
-                              onChange={(colorValue) =>
-                                setAttributes({ buttonHTextColor: colorValue })
-                              }
-                              allowReset
-                            />
-                          </Fragment>
-                          <SelectControl
-                            label={__(
-                              "Background Type",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonHbackgroundType}
-                            onChange={(value) =>
-                              setAttributes({ buttonHbackgroundType: value })
-                            }
-                            options={buttonbackgroundTypeOptions}
-                          />
-                          {"color" == buttonHbackgroundType && (
-                            <Fragment>
-                              <p>
-                                {__(
-                                  "Background Color",
-                                  "responsive-block-editor-addons"
-                                )}
-                                <span className="components-base-control__label">
-                                  <span
-                                    className="component-color-indicator"
-                                    style={{ backgroundColor: buttonHColor }}
-                                  ></span>
-                                </span>
-                              </p>
-                              <ColorPalette
-                                value={buttonHColor}
-                                onChange={(colorValue) =>
-                                  setAttributes({ buttonHColor: colorValue })
-                                }
-                                allowReset
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Opacity",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttonHopacity}
-                                onChange={(value) =>
-                                  setAttributes({
-                                    buttonHopacity:
-                                      value !== undefined ? value : 20,
-                                  })
-                                }
-                                min={0}
-                                max={100}
-                                allowReset
-                              />
-                            </Fragment>
-                          )}
-                          {"gradient" == buttonHbackgroundType && (
-                            <Fragment>
-                              <p className="responsive-setting-label">
-                                {__(
-                                  "Color 1",
-                                  "responsive-block-editor-addons"
-                                )}
-                                <span className="components-base-control__label">
-                                  <span
-                                    className="component-color-indicator"
-                                    style={{
-                                      backgroundColor: buttonHbackgroundColor1,
-                                    }}
-                                  ></span>
-                                </span>
-                              </p>
-                              <ColorPalette
-                                value={buttonHbackgroundColor1}
-                                onChange={(colorValue) =>
-                                  setAttributes({
-                                    buttonHbackgroundColor1: colorValue,
-                                  })
-                                }
-                                allowReset
-                              />
-
-                              <p className="responsive-setting-label">
-                                {__(
-                                  "Color 2",
-                                  "responsive-block-editor-addons"
-                                )}
-                                <span className="components-base-control__label">
-                                  <span
-                                    className="component-color-indicator"
-                                    style={{
-                                      backgroundColor: buttonHbackgroundColor2,
-                                    }}
-                                  ></span>
-                                </span>
-                              </p>
-                              <ColorPalette
-                                value={buttonHbackgroundColor2}
-                                onChange={(colorValue) =>
-                                  setAttributes({
-                                    buttonHbackgroundColor2: colorValue,
-                                  })
-                                }
-                                allowReset
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Color Location 1",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttonHcolorLocation1}
-                                min={0}
-                                max={100}
-                                onChange={(value) =>
-                                  setAttributes({
-                                    buttonHcolorLocation1: value,
-                                  })
-                                }
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Color Location 2",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttonHcolorLocation2}
-                                min={0}
-                                max={100}
-                                onChange={(value) =>
-                                  setAttributes({
-                                    buttonHcolorLocation2: value,
-                                  })
-                                }
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Gradient Direction",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttonHgradientDirection}
-                                min={0}
-                                max={100}
-                                onChange={(value) =>
-                                  setAttributes({
-                                    buttonHgradientDirection: value,
-                                  })
-                                }
-                              />
-                            </Fragment>
-                          )}
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <Fragment>
-                            <p>
-                              {__(
-                                "Text Color",
-                                "responsive-block-editor-addons"
-                              )}
-                              <span className="components-base-control__label">
-                                <span
-                                  className="component-color-indicator"
-                                  style={{ backgroundColor: buttonTextColor }}
-                                ></span>
-                              </span>
-                            </p>
-                            <ColorPalette
-                              value={buttonTextColor}
-                              onChange={(colorValue) =>
-                                setAttributes({ buttonTextColor: colorValue })
-                              }
-                              allowReset
-                            />
-                          </Fragment>
-                          <SelectControl
-                            label={__(
-                              "Background Type",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={buttonbackgroundType}
-                            onChange={(value) =>
-                              setAttributes({ buttonbackgroundType: value })
-                            }
-                            options={buttonbackgroundTypeOptions}
-                          />
-                          {"color" == buttonbackgroundType && (
-                            <Fragment>
-                              <p>
-                                {__(
-                                  "Background Color",
-                                  "responsive-block-editor-addons"
-                                )}
-                                <span className="components-base-control__label">
-                                  <span
-                                    className="component-color-indicator"
-                                    style={{ backgroundColor: buttonColor }}
-                                  ></span>
-                                </span>
-                              </p>
-                              <ColorPalette
-                                value={buttonColor}
-                                onChange={(colorValue) =>
-                                  setAttributes({ buttonColor: colorValue })
-                                }
-                                allowReset
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Opacity",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttonopacity}
-                                onChange={(value) =>
-                                  setAttributes({
-                                    buttonopacity:
-                                      value !== undefined ? value : 20,
-                                  })
-                                }
-                                min={0}
-                                max={100}
-                                allowReset
-                              />
-                            </Fragment>
-                          )}
-                          {"gradient" == buttonbackgroundType && (
-                            <Fragment>
-                              <p className="responsive-setting-label">
-                                {__(
-                                  "Color 1",
-                                  "responsive-block-editor-addons"
-                                )}
-                                <span className="components-base-control__label">
-                                  <span
-                                    className="component-color-indicator"
-                                    style={{
-                                      backgroundColor: buttonbackgroundColor1,
-                                    }}
-                                  ></span>
-                                </span>
-                              </p>
-                              <ColorPalette
-                                value={buttonbackgroundColor1}
-                                onChange={(colorValue) =>
-                                  setAttributes({
-                                    buttonbackgroundColor1: colorValue,
-                                  })
-                                }
-                                allowReset
-                              />
-
-                              <p className="responsive-setting-label">
-                                {__(
-                                  "Color 2",
-                                  "responsive-block-editor-addons"
-                                )}
-                                <span className="components-base-control__label">
-                                  <span
-                                    className="component-color-indicator"
-                                    style={{
-                                      backgroundColor: buttonbackgroundColor2,
-                                    }}
-                                  ></span>
-                                </span>
-                              </p>
-                              <ColorPalette
-                                value={buttonbackgroundColor2}
-                                onChange={(colorValue) =>
-                                  setAttributes({
-                                    buttonbackgroundColor2: colorValue,
-                                  })
-                                }
-                                allowReset
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Color Location 1",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttoncolorLocation1}
-                                min={0}
-                                max={100}
-                                onChange={(value) =>
-                                  setAttributes({ buttoncolorLocation1: value })
-                                }
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Color Location 2",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttoncolorLocation2}
-                                min={0}
-                                max={100}
-                                onChange={(value) =>
-                                  setAttributes({ buttoncolorLocation2: value })
-                                }
-                              />
-                              <RangeControl
-                                label={__(
-                                  "Gradient Direction",
-                                  "responsive-block-editor-addons"
-                                )}
-                                value={buttongradientDirection}
-                                min={0}
-                                max={100}
-                                onChange={(value) =>
-                                  setAttributes({
-                                    buttongradientDirection: value,
-                                  })
-                                }
-                              />
-                            </Fragment>
-                          )}
-                        </Fragment>
-                      );
-                    }
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
+                <ButtonSettingsControl
+                   {...this.props}
+                   showMarginControls={false}
+                   showBackColorOpacity={true}
+                   showGradientHover={true}
+                   showTextOpacity={false}
+                 />
               </PanelBody>
             )}
             <PanelBody
@@ -1461,6 +1116,11 @@ export default class Inspector extends Component {
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
+            {frontTitleFontFamily && loadGoogleFont(frontTitleFontFamily)}
+            {frontSubtitleFontFamily && loadGoogleFont(frontSubtitleFontFamily)}
+            {backTitleFontFamily && loadGoogleFont(backTitleFontFamily)}
+            {backSubtitleFontFamily && loadGoogleFont(backSubtitleFontFamily)}
+            {backButtonFontFamily && loadGoogleFont(backButtonFontFamily)}
             {isFrontSelected && (
               <PanelColorSettings
                 title={__(
@@ -1498,6 +1158,38 @@ export default class Inspector extends Component {
                 />
               </PanelColorSettings>
             )}
+            {
+              isFrontSelected && (
+                <Fragment>
+                  {
+                    showFrontTitle && (
+                      <TypographyHelperControl
+                        title={__("Front Title Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="frontTitle%s"
+                        values = {{family: frontTitleFontFamily, size: frontTitleFontSize, sizeMobile: frontTitleFontSizeMobile, sizeTablet: frontTitleFontSizeTablet, weight: frontTitleFontWeight, height: frontTitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showFrontSubtitle && (
+                      <TypographyHelperControl
+                        title={__("Front Subtitle Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="frontSubtitle%s"
+                        values = {{family: frontSubtitleFontFamily, size: frontSubtitleFontSize, sizeMobile: frontSubtitleFontSizeMobile, sizeTablet: frontSubtitleFontSizeTablet, weight: frontSubtitleFontWeight, height: frontSubtitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                </Fragment>
+              )
+            }
             {isBackSelected && (
               <PanelColorSettings
                 title={__(
@@ -1535,6 +1227,51 @@ export default class Inspector extends Component {
                 />
               </PanelColorSettings>
             )}
+            {
+              isBackSelected && (
+                <Fragment>
+                  {
+                    showBackTitle && (
+                      <TypographyHelperControl
+                        title={__("Back Title Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backTitle%s"
+                        values = {{family: backTitleFontFamily, size: backTitleFontSize, sizeMobile: backTitleFontSizeMobile, sizeTablet: backTitleFontSizeTablet, weight: backTitleFontWeight, height: backTitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showBackSubtitle && (
+                      <TypographyHelperControl
+                        title={__("Back Subtitle Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backSubtitle%s"
+                        values = {{family: backSubtitleFontFamily, size: backSubtitleFontSize, sizeMobile: backSubtitleFontSizeMobile, sizeTablet: backSubtitleFontSizeTablet, weight: backSubtitleFontWeight, height: backSubtitleLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                  {
+                    showBackButton && (
+                      <TypographyHelperControl
+                        title={__("Back Button Typography", "responsive-block-editor-addons")} 
+                        attrNameTemplate="backButton%s"
+                        values = {{family: backButtonFontFamily, size: backButtonFontSize, sizeMobile: backButtonFontSizeMobile, sizeTablet: backButtonFontSizeTablet, weight: backButtonFontWeight, height: backButtonLineHeight}}
+                        showLetterSpacing = { false }
+                        showTextTransform = { false }
+                        setAttributes={ setAttributes }
+                        {...this.props}            
+                      />
+                    )
+                  }
+                </Fragment>
+              )
+            }
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
