@@ -10,6 +10,8 @@ namespace RBEA\Blocks\Layouts;
 use \WP_REST_Response;
 use \WP_REST_Server;
 
+require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-rbea-templates.php';
+
 const RBEA_API_NAMESPACE = 'rbeablocks/v1';
 
 const LAYOUTS_ROUTE       = 'layouts';
@@ -20,6 +22,8 @@ const SINGLE_SECTION_ROUTE = 'sections/([A-Za-z])\w+/';
 
 const FAVORITE_LAYOUTS_ROUTE = 'layouts/favorites';
 const ALL_LAYOUTS_ROUTE      = 'layouts/all';
+
+const IMPORT_CONTENT = 'import';
 
 add_action( 'rest_api_init', __NAMESPACE__ . '\register_layout_endpoints' );
 /**
@@ -219,6 +223,28 @@ function register_layout_endpoints() {
 			'methods'             => WP_REST_Server::READABLE,
 			'callback'            => function () {
 				return new WP_REST_Response( (array) rbea_blocks_get_sections() );
+			},
+			'permission_callback' => function () {
+				return current_user_can( 'edit_posts' );
+			},
+		)
+	);
+
+	/**
+	 * Register the layouts GET endpoint.
+	 * Returns content with local image links to downloaded images.
+	 */
+	register_rest_route(
+		RBEA_API_NAMESPACE,
+		IMPORT_CONTENT,
+		array(
+			'methods'             => 'PATCH',
+			'callback'            => function ( $request ) {
+				$body      = json_decode( $request->get_body(), true );
+				$content       = $body['pattern_content'];
+
+				$modified_content =  do_action( 'wp_ajax_rbea_block_templates_import_block', $content );
+				return new WP_REST_Response( $modified_content );
 			},
 			'permission_callback' => function () {
 				return current_user_can( 'edit_posts' );

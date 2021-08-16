@@ -7,6 +7,8 @@
  */
 import classnames from "classnames";
 
+const { apiFetch } = wp;
+
 /**
  * WordPress dependencies.
  */
@@ -23,6 +25,33 @@ export default class LayoutLibraryItemCard extends Component {
     event.target.src = responsive_globals?.pattern_fallback_image;
   }
 
+  importApiCall( content ) {
+    console.log('calling api with content...')
+    //call backend api, which in turn calls function to download images and replace links with downloaded paths.
+    return apiFetch( {
+			path: '/rbeablocks/v1/import',
+			method: 'PATCH',
+			body: JSON.stringify( { pattern_content: content } ),
+			_wpnonce: wpApiSettings.nonce,
+		} )
+			.then( ( modified_content ) => {
+				return modified_content;
+			} )
+			.catch( ( error ) => console.error( error ) );
+  }
+
+  async importCurrentPattern(content, id) {
+    console.log('preparing to call api...')
+    //api call to backend function: download images in content and replace remote path with downloaded path.
+    let modified_content = await this.importApiCall( content );
+    console.log('got data from api...')
+    //call internal import function with content provided, to render pattern on screen.
+    console.log(content)
+    console.log(modified_content)
+    console.log(modified_content['data'])
+    this.props.import(modified_content['data'], id);
+  }
+
   render() {
     return (
       <Fragment>
@@ -37,7 +66,8 @@ export default class LayoutLibraryItemCard extends Component {
                 className="rbea-patterns-insert-button"
                 isSmall
                 onClick={() => {
-                  this.props.import(this.props.content, this.props.clientId);
+                  //call function having api call.
+                  this.importCurrentPattern(this.props.content, this.props.clientId)
                 }}
               >
                 <img
