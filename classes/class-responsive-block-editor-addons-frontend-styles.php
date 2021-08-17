@@ -8599,7 +8599,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array(
 				' .responsive-block-editor-addons-countdown-box-stylings' => array(
 					'height'           => self::get_css_value( $attr['boxHeightMobile'], 'px' ),
-					'width'            => self::get_css_value( $attr['boxWidthMobile'], 'px' ),
+					'width'            => true === $attr['stackOnMobile'] ? '100%' : self::get_css_value( $attr['boxWidthMobile'], 'px' ),
 					'margin-left'      => true === $attr['stackOnMobile'] ? '0px' : self::get_css_value( $attr['boxMarginMobile'], 'px' ),
 					'margin-bottom'    => true === $attr['stackOnMobile'] ? self::get_css_value( $attr['boxMarginMobile'], 'px' ) : '0px',
 					'padding'          => $attr['boxTopPaddingMobile'] . 'px ' . $attr['boxRightPaddingMobile'] . 'px ' . $attr['boxBottomPaddingMobile'] . 'px ' . $attr['boxLeftPaddingMobile'] . 'px',
