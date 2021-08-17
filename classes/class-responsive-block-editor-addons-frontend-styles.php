@@ -11374,7 +11374,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' ' => array(
-					'width' => $width,
+					'width'         => $width,
+					'border-radius' => $border_radius,
+					'padding'       => '0 !important',
+					'max-width'     => '100%',
 				),
 				' .responsive-block-editor-addons-search-form__input' => array(
 					'border-top'       => $input_border_top . ' !important',
@@ -11428,7 +11431,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'height' => self::get_css_value( $attr['iconSize'], 'px' ),
 					'fill'   => $icon_color,
 				),
-				' .responsive-block-editor-addons-search-icon-wrap svg:hover' => array(
+				'  .responsive-block-editor-addons-search-submit:hover .responsive-block-editor-addons-search-icon-wrap svg' => array(
 					'fill' => $attr['iconHoverColor'],
 				),
 				' .responsive-block-editor-addons-search-button-text' => array(
