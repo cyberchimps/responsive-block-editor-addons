@@ -345,7 +345,7 @@ class LatestPostsBlock extends Component {
                     {(isPost || isCourse || isLesson) && (
                       <div className="responsive-block-editor-addons-block-post-grid-byline">
                         {attributes.displayPostAuthor &&
-                          post.rbea_author_info.display_name && (
+                          post.rbea_author_info?.display_name && (
                             <div className="responsive-block-editor-addons-block-post-grid-author">
                               <a
                                 className="responsive-block-editor-addons-text-link"
@@ -525,5 +525,5 @@ export default compose([
 
 // Truncate excerpt
 function truncate(str, no_words) {
-  return str.split(" ").splice(0, no_words).join(" ");
+  return str?.split(" ").splice(0, no_words).join(" ");
 }
