@@ -109,8 +109,8 @@ function EditorStyles(props) {
 		"height": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
 	},
     " .responsive-block-editor-addons-icon-list__source-icon svg": {
-	  width: sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
-	  height: sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"width": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"height": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
     },
     " .responsive-block-editor-addons-icon-list__label": {
       "font-size": labelFontSizeTablet ? generateCSSUnit(labelFontSizeTablet, "px") : generateCSSUnit(labelFontSize, "px"),
