@@ -175,8 +175,8 @@ class RBEATaxonomyList extends Component {
                             </ul>
                         </div>
                     )}
-                    {categoriesList === "" && (
-                        <div className="responsive-block-editor-addons-block-not-available">
+                    {categoriesList.length === 0 && (
+                        <div className="reponsive-block-editor-addons-taxonomy-list-no-taxonomy-available">
                             {noTaxDisplaytext}
                         </div>
                     )}
