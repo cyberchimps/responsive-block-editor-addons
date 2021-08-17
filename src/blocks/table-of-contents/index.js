@@ -14,6 +14,8 @@ import attributes from "./attributes";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 
+import deprecated from "./components/deprecated";
+
 // Internationalization
 const { __ } = wp.i18n;
 
@@ -46,4 +48,6 @@ registerBlockType("responsive-block-editor-addons/table-of-contents", {
   save: (props) => {
     return <Save {...props} />;
   },
+
+  deprecated,
 });

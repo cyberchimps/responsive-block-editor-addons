@@ -89,9 +89,10 @@ class Edit extends Component {
     }
 
     return [
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={"toc-inspector"} {...{ setAttributes, ...this.props }} />,
 
       <CustomTag
+        key={'toc-content'}
         className={classnames(
           className,
           `responsive-block-editor-addons-toc__align-${align}`,
