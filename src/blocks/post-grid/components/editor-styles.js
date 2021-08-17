@@ -298,6 +298,7 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+	  "margin-bottom": generateCSSUnit(titleBottomSpacingMobile, "px") + " !important",
     },
     " .is-list article": {
       "grid-template-columns": gridTemplateColumns,
@@ -308,9 +309,6 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-post-grid-items": {
       "grid-column-gap": generateCSSUnit(varcolumnGapMobile, "px"),
       "grid-row-gap": generateCSSUnit(varrowGapMobile, "px"),
-    },
-    " .responsive-block-editor-addons-block-post-grid-title": {
-      "margin-bottom": generateCSSUnit(titleBottomSpacingMobile, "px") + " !important",
     },
     " .responsive-block-editor-addons-block-post-grid-byline": {
       "margin-bottom": generateCSSUnit(metaBottomSpacingMobile, "px"),
@@ -338,6 +336,7 @@ function EditorStyles(props) {
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+	  "margin-bottom": generateCSSUnit(titleBottomSpacingTablet, "px") + " !important",
     },
     " .responsive-block-editor-addons-post-grid-items article": {
       padding: generateCSSUnit(varTabletContentPadding, "px"),
@@ -345,9 +344,6 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-post-grid-items": {
       "grid-column-gap": generateCSSUnit(varcolumnGapTablet, "px"),
       "grid-row-gap": generateCSSUnit(varrowGapTablet, "px"),
-    },
-    " .responsive-block-editor-addons-block-post-grid-title": {
-      "margin-bottom": generateCSSUnit(titleBottomSpacingTablet, "px") + " !important",
     },
     " .responsive-block-editor-addons-block-post-grid-byline": {
       "margin-bottom": generateCSSUnit(metaBottomSpacingTablet, "px"),

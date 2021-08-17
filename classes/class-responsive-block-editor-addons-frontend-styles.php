@@ -644,6 +644,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array(
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
 					'font-size' => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-post-grid-items article' => array(
 					'padding'    => self::get_css_value( $mobile_content_padding, 'px' ) . ' !important',
@@ -655,9 +656,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-post-grid-items' => array(
 					'grid-column-gap' => self::get_css_value( $column_gap_mobile, 'px' ),
 					'grid-row-gap'    => self::get_css_value( $row_gap_mobile, 'px' ),
-				),
-				' header .responsive-block-editor-addons-block-post-grid-title' => array(
-					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-byline' => array(
 					'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingMobile'], 'px' ),
@@ -679,6 +677,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$tablet_selectors = array(
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
 					'font-size' => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-post-grid-items' => array(
 					'grid-column-gap' => self::get_css_value( $column_gap_tablet, 'px' ),
@@ -686,9 +685,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-post-grid-items article' => array(
 					'padding' => self::get_css_value( $tablet_content_padding, 'px' ) . ' !important',
-				),
-				' header .responsive-block-editor-addons-block-post-grid-title' => array(
-					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-byline' => array(
 					'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingTablet'], 'px' ),
