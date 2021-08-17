@@ -31,6 +31,7 @@ export default class Save extends Component {
         headerLinks,
         allowedAnchors,
         orderListType,
+        scrollOffset,
       },
       setAttributes,
       className,
@@ -74,7 +75,7 @@ export default class Save extends Component {
             )}
           </div>
         )}
-        <div className="responsive-block-editor-addons-toc__wrap">
+        <div className="responsive-block-editor-addons-toc__wrap" data-scroll-offset={scrollOffset}>
           <div className="responsive-block-editor-addons-toc__title-wrap">
             <div class="responsive-block-editor-addons-toc__title">
               {headingTitle}
