@@ -3942,6 +3942,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'min-width' => '100%',
 					'max-width' => '100%',
 				),
+				' .has-medium-gutter.responsive-flipbox-columns__stack-mobile > .wp-block-responsive-block-editor-addons-flip-box:not(:last-child)' => array(
+					"margin-bottom" => self::get_css_value( $attr['flipBoxGutterGap'], 'px' ),
+				),
 				' '               => array(
 					'margin-bottom' => self::get_css_value( $attr['bottomMarginMobile'], 'px' ) . ' !important',
 					'margin-top'    => self::get_css_value( $attr['topMarginMobile'], 'px' ) . ' !important',
@@ -3983,6 +3986,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .has-medium-gutter.responsive-flipbox-columns__stack-tablet > *:not(.block-editor-inner-blocks)' => array(
 					'min-width' => '100%',
 					'max-width' => '100%',
+				),
+				' .has-medium-gutter.responsive-flipbox-columns__stack-tablet > .wp-block-responsive-block-editor-addons-flip-box:not(:last-child)' => array(
+					"margin-bottom" => self::get_css_value( $attr['flipBoxGutterGap'], 'px' ),
 				),
 				' '               => array(
 					'margin-bottom' => self::get_css_value( $attr['bottomMarginTablet'], 'px' ) . ' !important',
