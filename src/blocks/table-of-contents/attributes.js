@@ -460,6 +460,14 @@ const attributes = {
       h6: true,
     },
   },
+  smoothScroll: {
+    type: 'boolean',
+    default: true
+  },
+  scrollOffset: {
+      type: 'number',
+      default: 30
+  },
 };
 
 export default attributes;
