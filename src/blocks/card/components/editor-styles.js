@@ -120,6 +120,7 @@ function EditorStyles(props) {
     vMarginMobile,
     hMarginTablet,
     hMarginMobile,
+    backgroundColor,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
