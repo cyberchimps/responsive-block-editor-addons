@@ -4342,6 +4342,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
+				' .responsive-block-editor-addons-icon-list__source-icon' => array(
+					'width'  => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
+					'height' => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
+				),
 				' .responsive-block-editor-addons-icon-list__source-icon svg' => array(
 					'width'  => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
 					'height' => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
@@ -4355,6 +4359,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' .responsive-block-editor-addons-icon-list__source-icon' => array(
+					'width'  => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
+					'height' => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
+				),
 				' .responsive-block-editor-addons-icon-list__source-icon svg' => array(
 					'width'  => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
 					'height' => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], $attr['fontSizeType'] ) : self::get_css_value( $attr['size'], $attr['fontSizeType'] ),
