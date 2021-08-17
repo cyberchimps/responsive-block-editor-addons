@@ -87,9 +87,13 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+	" .responsive-block-editor-addons-icon-list__source-icon": {
+		"width": sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"height": sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
+	},
     " .responsive-block-editor-addons-icon-list__source-icon svg": {
-      width: sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
-      height: sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"width": sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"height": sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
     },
     " .responsive-block-editor-addons-icon-list__label": {
       "font-size": labelFontSizeMobile ? generateCSSUnit(labelFontSizeMobile, "px") : generateCSSUnit(labelFontSize, "px"),
@@ -100,9 +104,13 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+	" .responsive-block-editor-addons-icon-list__source-icon": {
+		"width": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"height": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
+	},
     " .responsive-block-editor-addons-icon-list__source-icon svg": {
-	  width: sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
-	  height: sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"width": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
+		"height": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
     },
     " .responsive-block-editor-addons-icon-list__label": {
       "font-size": labelFontSizeTablet ? generateCSSUnit(labelFontSizeTablet, "px") : generateCSSUnit(labelFontSize, "px"),
