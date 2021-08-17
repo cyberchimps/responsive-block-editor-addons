@@ -57,7 +57,7 @@ class Responsive_Block_Editor_Addons {
 		if ( defined( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER' ) ) {
 			$this->version = RESPONSIVE_BLOCK_EDITOR_ADDONS_VER;
 		} else {
-			$this->version = '1.3.1';
+			$this->version = '1.3.2';
 		}
 		$this->plugin_name = 'responsive-block-editor-addons';
 
