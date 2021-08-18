@@ -204,7 +204,7 @@ const attributes = {
 	},
 	topTitleValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	topTitleValueTextTransform: {
 		type: "string",
@@ -231,7 +231,7 @@ const attributes = {
 	},
 	innerTitleValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	innerTitleValueTextTransform: {
 		type: "string",
@@ -258,7 +258,7 @@ const attributes = {
 	},
 	bottomTitleValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	bottomTitleValueTextTransform: {
 		type: "string",
@@ -325,7 +325,7 @@ const attributes = {
 	},
 	circularTopTitleValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	circularTopTitleValueTextTransform: {
 		type: "string",
@@ -352,7 +352,7 @@ const attributes = {
 	},
 	circularBottomTitleValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	circularBottomTitleValueTextTransform: {
 		type: "string",
@@ -379,7 +379,7 @@ const attributes = {
 	},
 	circularInnerValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	semiCircularTopTitleValueFontFamily: {
 		type: "string",
@@ -403,7 +403,7 @@ const attributes = {
 	},
 	semiCircularTopTitleValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	semiCircularTopTitleValueTextTransform: {
 		type: "string",
@@ -430,7 +430,7 @@ const attributes = {
 	},
 	semiCircularBottomTitleValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	semiCircularBottomTitleValueTextTransform: {
 		type: "string",
@@ -457,7 +457,7 @@ const attributes = {
 	},
 	semiCircularInnerValueLetterSpacing: {
 		type: "number",
-		default: 0,
+		default: 1,
 	},
 	semiCircularProgressBarBackgroundColor: {
 		type: "string",
