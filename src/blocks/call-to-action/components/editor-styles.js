@@ -94,13 +94,29 @@ function EditorStyles(props) {
     ctaVpaddingTablet,
     ctaVpaddingMobile,
     ctaTextOpacity,
+    buttonHbackgroundType,
   } = props.attributes;
 
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
+  let updatedButtonBackgroundImage = '';
   if (buttonbackgroundType === "color") {
     updatedButtonBackgroundColor = ctaBackColor;
+  }
+  if (buttonHbackgroundType == "color") {
     updatedButtonBackgroundhColor = ctaHoverBackColor;
+  } else {
+    updatedButtonBackgroundhColor = '';
+  }
+
+  if ( 'gradient' === buttonbackgroundType) {
+    updatedButtonBackgroundImage = generateBackgroundImageEffect(
+      buttonbackgroundColor1,
+      buttonbackgroundColor2,
+      buttongradientDirection,
+      buttoncolorLocation1,
+      buttoncolorLocation2
+    )
   }
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -142,6 +158,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-cta-button-wrapper:hover": {
       "border-color": ctaHoverBorderColor,
       "background-color": updatedButtonBackgroundhColor,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBackgroundImage,
     },
 
     " .responsive-block-editor-addons-cta-button__icon svg": {
@@ -221,16 +238,7 @@ function EditorStyles(props) {
       "border-width": ctaBorderWidth
         ? generateCSSUnit(ctaBorderWidth, "px")
         : "1px",
-      "background-image":
-        buttonbackgroundType == "gradient"
-          ? generateBackgroundImageEffect(
-              buttonbackgroundColor1,
-              buttonbackgroundColor2,
-              buttongradientDirection,
-              buttoncolorLocation1,
-              buttoncolorLocation2
-            )
-          : undefined,
+      "background-image": updatedButtonBackgroundImage,
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
     },
 

@@ -381,6 +381,8 @@ export default class Inspector extends Component {
                   />
                 </Fragment>
               )}
+              <br/>
+              <br/>
               <SelectControl
                 label={__("Post Type", "responsive-block-editor-addons")}
                 value={postType}

@@ -197,6 +197,7 @@ export default class Inspector extends Component {
       ctaHpaddingMobile,
       ctaVpaddingTablet,
       ctaVpaddingMobile,
+      buttonHbackgroundType,
     } = attributes;
 
     const { order, orderBy } = attributes;

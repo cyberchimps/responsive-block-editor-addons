@@ -421,6 +421,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'ctaHpaddingMobile'       => 20,
 			'ctaVpaddingTablet'       => 15,
 			'ctaVpaddingMobile'       => 15,
+			'buttonHbackgroundType'   => 'none',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_post_carousel_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -830,6 +831,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'ctaVpaddingTablet'        => 10,
 			'ctaHpaddingTablet'        => 14,
 			'ctaTextOpacity'           => 100,
+			'buttonHbackgroundType'    => 'none',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_call_to_action_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -967,6 +969,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'vMarginMobile'           => 10,
 			'hMarginTablet'           => 0,
 			'hMarginMobile'           => 0,
+			'buttonHbackgroundType'   => 'none',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -1526,7 +1529,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'imgAlt'                   => '',
 			'dimRatio'                 => 50,
 			'ctaHoverColor'            => '#333',
-			'ctaHoverBackColor'        => 'transparent',
+			'ctaHoverBackColor'        => '#333',
 			'ctaHoverBorderColor'      => '#333',
 			'imagePosition'            => 'center center',
 			'imageRepeat'              => 'no-repeat',
@@ -1577,6 +1580,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonbackgroundColor1'   => '',
 			'buttonbackgroundColor2'   => '#fff',
 			'buttonbackgroundType'     => '',
+			'buttonHbackgroundType'    => 'none',
 
 		);
 		$values = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
@@ -1847,7 +1851,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttongradientDirection'   => 90,
 			'buttonbackgroundColor1'    => '',
 			'buttonbackgroundColor2'    => '#fff',
-			'buttonHbackgroundType'     => 'color',
+			'buttonHbackgroundType'     => 'none',
 			'buttonHcolorLocation1'     => 0,
 			'buttonHcolorLocation2'     => 100,
 			'buttonHgradientDirection'  => 90,
@@ -1932,6 +1936,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'featuresSpaceTablet'       => '',
 			'blockAlign'                => 'center',
 			'imageWidth'                => '',
+			'imageWidthTablet'          => '',
+			'imageWidthMobile'          => '',
 			'imageSize'                 => 'full',
 			'imageShape'                => '',
 			'ctaHoverBorderColor'       => '#333',
