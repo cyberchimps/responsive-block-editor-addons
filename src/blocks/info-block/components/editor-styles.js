@@ -145,6 +145,7 @@ function EditorStyles(props) {
     buttoncolorLocation2,
     buttongradientDirection,
     buttonbackgroundType,
+    buttonHbackgroundType,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -157,6 +158,7 @@ function EditorStyles(props) {
   let imgopacity = imageopacity / 100;
 
   var imageBoxShadowPositionCSS = imageBoxShadowPosition;
+  let updatedButtonBackgroundhColor = "";
 
   if ("outset" === imageBoxShadowPosition) {
     imageBoxShadowPositionCSS = "";
@@ -200,6 +202,12 @@ function EditorStyles(props) {
     backgroundImageGradient = '';
     buttonColor = ctaBackColor
   }
+  if (buttonHbackgroundType == "color") {
+    updatedButtonBackgroundhColor = ctaHoverBackColor;
+  } else {
+    updatedButtonBackgroundhColor = '';
+  }
+
 
   var selectors = {
     " ": {
@@ -290,8 +298,9 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover": {
-      "background-color": ctaHoverBackColor,
+      "background-color": updatedButtonBackgroundhColor,
       "border-color": ctaHoverBorderColor,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : backgroundImageGradient,
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover .responsive-block-editor-addons-inline-editing": {

@@ -145,6 +145,7 @@ export default class Inspector extends Component {
       ctaVpaddingTablet,
       ctaVpaddingMobile,
       ctaTextOpacity,
+      buttonHbackgroundType,
     } = this.props.attributes;
     const { setAttributes } = this.props;
 
