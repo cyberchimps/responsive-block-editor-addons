@@ -414,6 +414,19 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={'advance'}>
                 <InspectorAdvancedControls>
+                  <RangeControl
+                    label={__("Z-Index", "responsive-block-editor-addons")}
+                    value={blockZIndex}
+                    min={-10}
+                    max={500}
+                    allowReset={true}
+                    onChange={(value) => setAttributes({ blockZIndex: value })}
+                  />
+                </InspectorAdvancedControls>
+                <PanelBody
+                  title={__("Block Padding", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                >
                   <ResponsivePaddingControl
                     attrNameTemplate="block%s"
                     values = {{
@@ -435,6 +448,11 @@ export default class Inspector extends Component {
                     setAttributes={ setAttributes }
                     {...this.props}            
                   />
+                </PanelBody>
+                <PanelBody
+                  title={__("Margin Padding", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                >
                   <ResponsiveMarginControl
                     attrNameTemplate="block%s"
                     values = {{
@@ -456,15 +474,7 @@ export default class Inspector extends Component {
                     setAttributes={ setAttributes }
                     {...this.props}            
                   />
-                  <RangeControl
-                    label={__("Z-Index", "responsive-block-editor-addons")}
-                    value={blockZIndex}
-                    min={-10}
-                    max={500}
-                    allowReset={true}
-                    onChange={(value) => setAttributes({ blockZIndex: value })}
-                  />
-                </InspectorAdvancedControls>
+                </PanelBody>
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

@@ -72,7 +72,7 @@ export default class Edit extends Component {
           onChange={(value) => setAttributes({ noticeAlignment: value })}
         />
       </BlockControls>,
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key="inline-notice-inspector" {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <div
@@ -80,6 +80,7 @@ export default class Edit extends Component {
           "responsive-block-editor-addons-block-inline-notice",
           `block-${block_id}`
         )}
+        key="inline-notice-main-div"
       >
         {titleFontFamily && loadGoogleFont(titleFontFamily)}
         {contentFontFamily && loadGoogleFont(contentFontFamily)}
@@ -87,7 +88,7 @@ export default class Edit extends Component {
           <RichText
             tagName={headingTag}
             placeholder={__("Notice Title", "responsive-block-editor-addons")}
-            keepPlaceholderOnFocus
+            keepplaceholderonfocus="true"
             value={noticeTitle}
             className="responsive-block-editor-addons-block-inline-notice-title"
             onChange={(value) => setAttributes({ noticeTitle: value })}
