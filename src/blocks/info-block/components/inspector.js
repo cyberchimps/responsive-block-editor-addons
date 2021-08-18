@@ -294,6 +294,7 @@ export default class Inspector extends Component {
         buttoncolorLocation2,
         buttongradientDirection,
         buttonbackgroundType,
+        buttonHbackgroundType,
       },
       setAttributes,
     } = this.props;
