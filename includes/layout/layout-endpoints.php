@@ -10,7 +10,7 @@ namespace RBEA\Blocks\Layouts;
 use \WP_REST_Response;
 use \WP_REST_Server;
 
-require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-rbea-templates.php';
+require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-rbea-block-templates.php';
 
 const RBEA_API_NAMESPACE = 'rbeablocks/v1';
 
@@ -243,7 +243,7 @@ function register_layout_endpoints() {
 				$body      = json_decode( $request->get_body(), true );
 				$content       = $body['pattern_content'];
 
-				$modified_content =  do_action( 'wp_ajax_rbea_block_templates_import_block', $content );
+				$modified_content = do_action( 'wp_ajax_rbea_block_templates_import_block', $content );
 				return new WP_REST_Response( $modified_content );
 			},
 			'permission_callback' => function () {

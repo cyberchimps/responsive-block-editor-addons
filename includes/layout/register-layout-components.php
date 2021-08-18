@@ -1,6 +1,6 @@
 <?php
 /**
- * Register layouts and sections for the Layout block.
+ * Register layouts and sections for the Importer block.
  *
  * @package RBEA\Blocks
  */
@@ -11,7 +11,7 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\register_components', 11 );
 /**
  * Registers section and layout components.
  *
- * @since 1.0
+ * @since 1.3.4
  */
 function register_components() {
 	/**

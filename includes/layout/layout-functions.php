@@ -1,6 +1,6 @@
 <?php
 /**
- * Layout block related functions.
+ * Importer block related functions.
  *
  * @package RBEA\Blocks
  */
@@ -9,7 +9,7 @@ use RBEA\Blocks\Layouts\Component_Registry;
 
 /**
  * Registers layout components with the Component Registry
- * for use in the Layouts block.
+ * for use in the Importer block.
  *
  * @param array $data The component data.
  *
@@ -29,7 +29,7 @@ function rbea_blocks_register_layout_component( array $data ) {
 
 /**
  * Unregisters the specified layout component from the Component Registry
- * for use in the Layouts block.
+ * for use in the Importer block.
  *
  * @return mixed Boolean true if component unregistered. WP_Error object if an error occurs.
  * @param string $type The component type to be unregistered.

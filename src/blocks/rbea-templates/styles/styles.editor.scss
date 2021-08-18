@@ -591,6 +591,12 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 .rbea-import-pattern {
 	font-size: 1rem;
 	font-weight: 600;
+
+	.components-icon-button {
+		 svg {
+			 margin-right: 8px;
+		 }
+	}
 }
 
 .rbea-pattern-importer-modal-header .components-input-control__container {

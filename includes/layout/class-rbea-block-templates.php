@@ -1,8 +1,8 @@
 <?php
 /**
- * Init
+ * Functions to handle remote links and download images
  *
- * @since 1.0.0
+ * @since 1.3.4
  * @package RBEA Templates
  */
 
@@ -20,7 +20,7 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 		/**
 		 * Instance
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 * @var (Object) RBEA_Block_Templates
 		 */
 		private static $instance = null;
@@ -28,7 +28,7 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 		/**
 		 * Get Instance
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 *
 		 * @return object Class object.
 		 */
@@ -43,32 +43,20 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 */
 		private function __construct() {
 			require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/functions.php';
-			require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-rbea-templates-image-importer.php';
-			include_once( ABSPATH . 'wp-admin/includes/image.php' );
+			require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-rbea-block-templates-image-importer.php';
+			include_once ABSPATH . 'wp-admin/includes/image.php';
 
 			add_action( 'wp_ajax_rbea_block_templates_import_block', array( $this, 'import_block' ) );
-			add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
-		}
-
-		/**
-		 * Add .json files as supported format in the uploader.
-		 *
-		 * @param array $mimes Already supported mime types.
-		 */
-		public function custom_upload_mimes( $mimes ) {
-
-			// Allow JSON files.
-			$mimes['json'] = 'application/json';
-
-			return $mimes;
 		}
 
 		/**
 		 * Import Block
+		 *
+		 * @param String $content content of the pattern.
 		 */
 		public function import_block( $content ) {
 
@@ -79,9 +67,9 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 		}
 
 		/**
-		 * Download and Replace hotlink images
+		 * Download and Replace remote images links to local links
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 *
 		 * @param  string $content Mixed post content.
 		 * @return array           Hotlink image array.
@@ -122,7 +110,7 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 				}
 			}
 
-			// Step 1: Download images.
+			// Download images.
 			if ( ! empty( $image_links ) ) {
 				foreach ( $image_links as $key => $image_url ) {
 					// Download remote image.
@@ -136,7 +124,7 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 				}
 			}
 
-			// Step 3: Replace mapping links.
+			// Replace mapping links.
 			foreach ( $link_mapping as $old_url => $new_url ) {
 				$content = str_replace( $old_url, $new_url, $content );
 
@@ -148,60 +136,10 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 
 			return $content;
 		}
-
-		/**
-		 * Allowed tags for the batch update process.
-		 *
-		 * @param  array        $allowedposttags   Array of default allowable HTML tags.
-		 * @param  string|array $context    The context for which to retrieve tags. Allowed values are 'post',
-		 *                                  'strip', 'data', 'entities', or the name of a field filter such as
-		 *                                  'pre_user_description'.
-		 * @return array Array of allowed HTML tags and their allowed attributes.
-		 */
-		public function allowed_tags_and_attributes( $allowedposttags, $context ) {
-
-			// Keep only for 'post' contenxt.
-			if ( 'post' === $context ) {
-
-				// <svg> tag and attributes.
-				$allowedposttags['svg'] = array(
-					'xmlns'   => true,
-					'viewbox' => true,
-				);
-
-				// <path> tag and attributes.
-				$allowedposttags['path'] = array(
-					'd' => true,
-				);
-			}
-
-			return $allowedposttags;
-		}
-
-		/**
-		 * Get white label name
-		 *
-		 * @since 1.0.7
-		 *
-		 * @return string
-		 */
-		public function get_white_label() {
-			if ( ! is_callable( 'RBEA_Ext_White_Label_Markup::get_whitelabel_string' ) ) {
-				return '';
-			}
-
-			$name = RBEA_Ext_White_Label_Markup::get_whitelabel_string( 'rbea-sites', 'name' );
-
-			if ( ! empty( $name ) ) {
-				return $name;
-			}
-
-			return '';
-		}
 	}
 
 	/**
-	 * Kicking this off by calling 'get_instance()' method
+	 * Calling get_instance() method
 	 */
 	RBEA_Block_Templates::get_instance();
 

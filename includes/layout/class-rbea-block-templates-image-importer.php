@@ -1,18 +1,9 @@
 <?php
 /**
- * Image Importer
- *
- * => How to use?
- *
- *  $image = array(
- *      'url' => '<image-url>',
- *      'id'  => '<image-id>',
- *  );
- *
- *  $downloaded_image = RBEA_Block_Templates_Image_Importer::get_instance()->import( $image );
+ * Download Images to Local
  *
  * @package RBEA Block Templates
- * @since 1.0.0
+ * @since 1.3.4
  */
 
 if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
@@ -20,14 +11,14 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 	/**
 	 * RBEA Templates Image Importer
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.4
 	 */
 	class RBEA_Block_Templates_Image_Importer {
 
 		/**
 		 * Instance
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 * @var object Class object.
 		 * @access private
 		 */
@@ -37,14 +28,14 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		 * Images IDs
 		 *
 		 * @var array   The Array of already image IDs.
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 */
 		private $already_imported_ids = array();
 
 		/**
 		 * Initiator
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 * @return object initialized object of class.
 		 */
 		public static function get_instance() {
@@ -57,7 +48,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		/**
 		 * Constructor
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 */
 		public function __construct() {
 
@@ -71,7 +62,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		/**
 		 * Process Image Download
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 * @param  array $attachments Attachment array.
 		 * @return array              Attachment array.
 		 */
@@ -89,7 +80,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		/**
 		 * Get Hash Image.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 * @param  string $attachment_url Attachment URL.
 		 * @return string                 Hash string.
 		 */
@@ -100,7 +91,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		/**
 		 * Get Saved Image.
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 * @param  string $attachment   Attachment Data.
 		 * @return string                 Hash string.
 		 */
@@ -108,7 +99,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 
 			global $wpdb;
 
-			// 1. Is already imported in Batch Import Process?
+			// Is already imported in Batch Import Process.
 			$post_id = $wpdb->get_var(
 				$wpdb->prepare(
 					'SELECT `post_id` FROM `' . $wpdb->postmeta . '`
@@ -118,10 +109,8 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 					$this->get_hash_image( $attachment['url'] )
 				)
 			);
-			error_log('batch process cheked');
-			error_log(  print_r($post_id,true) );
 
-			// 2. Is image already imported though XML?
+			// Is image already imported though XML.
 			if ( empty( $post_id ) ) {
 
 				// Get file name without extension.
@@ -138,8 +127,6 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 				);
 
 			}
-			error_log('xml cheked');
-			error_log(  print_r($post_id,true) );
 
 			if ( $post_id ) {
 				$new_attachment               = array(
@@ -163,17 +150,15 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		/**
 		 * Import Image
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 * @param  array $attachment Attachment array.
 		 * @return array              Attachment array.
 		 */
 		public function import( $attachment ) {
 
 			$saved_image = $this->get_saved_image( $attachment );
-			
-			error_log(  print_r($saved_image,true) );
+
 			if ( $saved_image['status'] ) {
-				error_log('returning from if condition');
 				return $saved_image['attachment'];
 			}
 
@@ -187,7 +172,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 				)
 			);
 
-			// Empty file content?
+			// Empty file content.
 			if ( empty( $file_content ) ) {
 
 				return $attachment;
@@ -207,7 +192,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 			if ( $info ) {
 				$post['post_mime_type'] = $info['type'];
 			} else {
-				// For now just return the origin attachment.
+				// For now just return the original attachment.
 				return $attachment;
 			}
 
@@ -231,7 +216,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 		/**
 		 * Is Image URL
 		 *
-		 * @since 1.0.0
+		 * @since 1.3.4
 		 *
 		 * @param  string $url URL.
 		 * @return boolean
@@ -251,7 +236,7 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 	}
 
 	/**
-	 * Kicking this off by calling 'get_instance()' method
+	 * Calling get_instance() method
 	 */
 	RBEA_Block_Templates_Image_Importer::get_instance();
 

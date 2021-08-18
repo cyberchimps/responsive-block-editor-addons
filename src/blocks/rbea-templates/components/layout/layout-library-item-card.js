@@ -26,7 +26,6 @@ export default class LayoutLibraryItemCard extends Component {
   }
 
   importApiCall( content ) {
-    console.log('calling api with content...')
     //call backend api, which in turn calls function to download images and replace links with downloaded paths.
     return apiFetch( {
 			path: '/rbeablocks/v1/import',
@@ -41,14 +40,9 @@ export default class LayoutLibraryItemCard extends Component {
   }
 
   async importCurrentPattern(content, id) {
-    console.log('preparing to call api...')
     //api call to backend function: download images in content and replace remote path with downloaded path.
     let modified_content = await this.importApiCall( content );
-    console.log('got data from api...')
     //call internal import function with content provided, to render pattern on screen.
-    console.log(content)
-    console.log(modified_content)
-    console.log(modified_content['data'])
     this.props.import(modified_content['data'], id);
   }
 

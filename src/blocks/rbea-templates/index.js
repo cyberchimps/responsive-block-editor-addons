@@ -10,6 +10,8 @@ import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 import LayoutsProvider from "./components/layouts-provider";
 
+import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+
 /**
  * WordPress dependencies.
  */
@@ -20,12 +22,12 @@ const { registerBlockType } = wp.blocks;
  * Register the block
  */
 registerBlockType("responsive-block-editor-addons/rbea-templates", {
-  title: __("Pattern Importer", "responsive-block-editor-addons"),
+  title: __("RBEA Templates", "responsive-block-editor-addons"),
   description: __(
     "This allows you to add pre-designed blocks and layouts to your page.",
     "responsive-block-editor-addons"
   ),
-  icon: "editor-table",
+  icon: ResponsiveBlockEditorAddonsIcons.block_importer,
   category: "responsive-block-editor-addons",
   keywords: [
     __("patterns", "responsive-block-editor-addons"),
@@ -73,7 +75,7 @@ function appendImportButton() {
   html += `<button id="patternButton" class="components-button components-icon-button" aria-label="${__(
     "Import Pattern",
     "responsive-block-editor-addons"
-  )}"><i class="dashicons dashicons-editor-table rbea-import-pattern-button"></i> ${__(
+  )}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="#ff6f61"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 7a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-4zm3 2h-2v6h2V9z" fill="#ff6f61"/><path d="M6 7a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6z" fill="#ff6f61"/><path d="M6 11a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2H6z" fill="#ff6f61"/><path d="M5 16a1 1 0 0 1 1-1h4a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1z" fill="#ff6f61"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h16a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3H4zm16 2H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1z" fill="#ff6f61"/></g></svg> ${__(
     "RBEA Templates",
     "responsive-block-editor-addons"
   )}</button>`;

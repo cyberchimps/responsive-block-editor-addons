@@ -1,44 +1,16 @@
 <?php
 /**
- * Useful functions
+ * Importer block related functions.
  *
- * @since 1.0.0
+ * @since 1.3.4
  * @package RBEA Templates
  */
-
-if ( ! function_exists( 'rbea_block_templates_log' ) ) :
-
-	/**
-	 * Log
-	 *
-	 * @param string $message Log message.
-	 */
-	function rbea_block_templates_log( $message = '' ) {
-		if ( rbea_block_templates_doing_wp_cli() ) {
-			WP_CLI::line( $message );
-		} else {
-			error_log( $message ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
-		}
-	}
-endif;
-
-if ( ! function_exists( 'rbea_block_templates_doing_wp_cli' ) ) :
-	/**
-	 * Doing WP CLI
-	 */
-	function rbea_block_templates_doing_wp_cli() {
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-			return true;
-		}
-		return false;
-	}
-endif;
 
 if ( ! function_exists( 'rbea_block_templates_get_filesystem' ) ) :
 	/**
 	 * Get an instance of WP_Filesystem_Direct.
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.4
 	 * @return object A WP_Filesystem_Direct instance.
 	 */
 	function rbea_block_templates_get_filesystem() {
@@ -58,7 +30,7 @@ if ( ! function_exists( 'rbea_block_templates_is_valid_image' ) ) :
 	 *
 	 * @param string $link  The Image link.
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.4
 	 * @return boolean
 	 */
 	function rbea_block_templates_is_valid_image( $link = '' ) {
