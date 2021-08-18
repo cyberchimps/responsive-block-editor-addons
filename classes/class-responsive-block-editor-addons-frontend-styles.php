@@ -9669,10 +9669,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$border_left        = 'simple' === $attr['layout'] ? '5px solid ' . $notice_type_color : $modern_border;
 			$notice_bg_color    = 'modern' === $attr['layout'] ? $notice_type_color : '';
 
-			$desktop_display = $attr['blockHideDesktop'] ? 'none' : 'block';
-			$mobile_display  = $attr['blockHideMobile'] ? 'none' : 'block';
-			$tablet_display  = $attr['blockHideTablet'] ? 'none' : 'block';
-
 			$selectors = array(
 				' ' => array(
 					'text-align' => $attr['noticeAlignment'],
@@ -9722,7 +9718,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array(
 				' ' => array(
 					'padding' => '' . self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ) . ' !important',
-					'margin'  => '' . self::get_css_value( $attr['blockTopMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftBottomMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ) . ' !important',
+					'margin'  => '' . self::get_css_value( $attr['blockTopMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ) . ' !important',
 				),
 				' .responsive-block-editor-addons-block-inline-notice-title' => array(
 					'font-size' => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
@@ -9780,18 +9776,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockBottomPaddingTablet'       => 20,
 				'blockLeftPaddingTablet'         => 20,
 				'blockRightPaddingTablet'        => 20,
-				'blockTopMargin'                 => 20,
-				'blockBottomMargin'              => 20,
-				'blockLeftMargin'                => 20,
-				'blockRightMargin'               => 20,
-				'blockTopMarginMobile'           => 20,
-				'blockBottomMarginMobile'        => 20,
-				'blockLeftMarginMobile'          => 20,
-				'blockRightMarginMobile'         => 20,
-				'blockTopMarginTablet'           => 20,
-				'blockBottomMarginTablet'        => 20,
-				'blockLeftMarginTablet'          => 20,
-				'blockRightMarginTablet'         => 20,
+				'blockTopMargin'                 => 0,
+				'blockBottomMargin'              => 0,
+				'blockLeftMargin'                => 0,
+				'blockRightMargin'               => 0,
+				'blockTopMarginMobile'           => 0,
+				'blockBottomMarginMobile'        => 0,
+				'blockLeftMarginMobile'          => 0,
+				'blockRightMarginMobile'         => 0,
+				'blockTopMarginTablet'           => 0,
+				'blockBottomMarginTablet'        => 0,
+				'blockLeftMarginTablet'          => 0,
+				'blockRightMarginTablet'         => 0,
 				'blockZIndex'                    => 0,
 				'cookies'                        => false,
 				'cookies_id'                     => '',
