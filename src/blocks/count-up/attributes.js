@@ -69,10 +69,6 @@ const attributes = {
     type: "number",
     default: 1.8,
   },
-  titleFontWeight: {
-    type: "string",
-    default: "900",
-  },
   headingFontSize: {
     type: "number",
     default: 16,
@@ -167,9 +163,21 @@ const attributes = {
     type: "number",
     default: 30,
   },
+  contentSpaceTablet: {
+	  type: "number",
+  },
+  contentSpaceMobile: {
+	  type: "number",
+  },
   numSpace: {
     type: "number",
     default: 20,
+  },
+  numSpaceTablet: {
+	  type: "number",
+  },
+  numSpaceMobile: {
+	  type: "number",
   },
   iconStyle: {
     type: "string",
@@ -195,12 +203,30 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  contentSpacingTablet: {
+	  type: "number",
+  },
+  contentSpacingMobile: {
+	  type: "number",
+  },
   iconSpacing: {
     type: "number",
     default: 16,
   },
+  iconSpacingTablet: {
+	  type: "number",
+  },
+  iconSpacingMobile: {
+	  type: "number",
+  },
   titleSpacing: {
     type: "number",
+  },
+  titleSpaceTablet: {
+	  type: "number",
+  },
+  titleSpaceMobile: {
+	  type: "number",
   },
   numberSpacing: {
     type: "number",
@@ -208,5 +234,9 @@ const attributes = {
   descriptionSpacing: {
     type: "number",
   },
+  headingFontWeight: {
+	type: "string",
+	default: "900",
+  }
 };
 export default attributes;

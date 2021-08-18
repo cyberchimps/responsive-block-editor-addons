@@ -1,0 +1,57 @@
+.responsive-block-editor-addons-call-mail-button-button-container {
+	text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.responsive-block-editor-addons-call-mail-button-icon {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.responsive-block-editor-addons-call-mail-button-size-small {
+    .responsive-block-editor-addons-call-mail-button-text {
+      font-size: 14px !important;
+    }
+    svg {
+      width: 14px !important;
+      height: 14px !important;
+    }
+  }
+
+.responsive-block-editor-addons-call-mail-button-size-medium {
+	padding: 8px 0 !important;
+	.responsive-block-editor-addons-call-mail-button-text {
+		font-size: 20px !important;
+	}
+  svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+.responsive-block-editor-addons-call-mail-button-size-large {
+	padding: 0.8em 1.2em !important;
+    .responsive-block-editor-addons-call-mail-button-text {
+      font-size: 26px !important;
+    }
+    svg {
+      width: 26px !important;
+      height: 26px !important;
+    }
+  }
+
+  .responsive-block-editor-addons-call-mail-button-size-extralarge {
+	padding: 0.8em 1.2em !important;
+    .responsive-block-editor-addons-call-mail-button-text {
+      font-size: 32px !important;
+    }
+    svg {
+      width: 32px !important;
+      height: 32px !important;
+    }
+  }
