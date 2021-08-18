@@ -426,6 +426,9 @@ function EditorStyles(props) {
       "min-width": "100%",
       "max-width": "100%",
     },
+	" .has-medium-gutter.responsive-flipbox-columns__stack-mobile > .wp-block-responsive-block-editor-addons-flip-box:not(:last-child)": {
+		"margin-bottom": generateCSSUnit(flipBoxGutterGap, "px"),
+	},
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
       "margin-top": generateCSSUnit(topMarginMobile, "px"),
@@ -468,6 +471,9 @@ function EditorStyles(props) {
       "min-width": "100%",
       "max-width": "100%",
     },
+	" .has-medium-gutter.responsive-flipbox-columns__stack-tablet > .wp-block-responsive-block-editor-addons-flip-box:not(:last-child)": {
+		"margin-bottom": generateCSSUnit(flipBoxGutterGap, "px"),
+	},
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
       "margin-top": generateCSSUnit(topMarginTablet, "px"),
