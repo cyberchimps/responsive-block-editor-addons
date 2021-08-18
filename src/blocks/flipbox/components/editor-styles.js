@@ -404,7 +404,7 @@ function EditorStyles(props) {
       "line-height": backButtonLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {
-      "background-image": backgroundHoverImageGradient,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : backgroundHoverImageGradient,
       "background-color": btnHColor + "!important",
       "border-color": ctaHoverBorderColor,
       opacity: btnHOpacity / 100,

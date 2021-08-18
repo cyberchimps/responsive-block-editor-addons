@@ -140,6 +140,8 @@ export default class Inspector extends Component {
       titleLineHeightMobile,
       titleLineHeightTablet,
       titleTag,
+      noTaxDisplaytext,
+      taxonomyAvailable,
     } = attributes;
 
     const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
@@ -379,20 +381,13 @@ export default class Inspector extends Component {
                   />
                 </Fragment>
               )}
+              <br/>
+              <br/>
               <SelectControl
                 label={__("Post Type", "responsive-block-editor-addons")}
                 value={postType}
                 onChange={(value) => setAttributes({ postType: value })}
-                options={[
-                  {
-                    value: "post",
-                    label: __("Posts", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "page",
-                    label: __("Pages", "responsive-block-editor-addons"),
-                  },
-                ]}
+                options={responsive_globals.post_types}
               />
               {"" != taxonomyList && (
                 <SelectControl
@@ -402,6 +397,13 @@ export default class Inspector extends Component {
                   options={taxonomyListOptions}
                 />
               )}
+              <TextControl
+                autoComplete="off"
+                label={ __( 'Display Message' ) }
+                value={ noTaxDisplaytext }
+                onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
+                help={ __( "What to display if taxonomy not found." ) }
+              />
               <ToggleControl
                 label={__(
                   "Show Empty Taxonomy",

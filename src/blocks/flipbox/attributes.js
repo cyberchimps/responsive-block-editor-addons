@@ -1,4 +1,4 @@
-const ITEM_COUNT = 1;
+const ITEM_COUNT = 3;
 
 const flipboxArray = [];
 const defaultIcons = ["accusoft", "acquisitions-incorporated", "ad"];
