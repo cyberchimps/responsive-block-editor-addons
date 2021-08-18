@@ -121,6 +121,10 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
+				'listStyleColorHover'    => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
 				// Grid Spacing Attributes.
 				'rowGap'                 => array(
 					'type'    => 'number',
@@ -188,13 +192,16 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type' => 'string',
 				),
 				'titleFontSize'          => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'titleFontSizeMobile'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 14,
 				),
 				'titleFontSizeTablet'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'titleFontWeight'        => array(
 					'type' => 'string',
@@ -212,13 +219,16 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type' => 'string',
 				),
 				'countFontSize'          => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'countFontSizeMobile'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 14,
 				),
 				'countFontSizeTablet'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'countFontWeight'        => array(
 					'type' => 'string',
@@ -278,13 +288,16 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type' => 'string',
 				),
 				'listFontSize'           => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'listFontSizeMobile'     => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 14,
 				),
 				'listFontSizeTablet'     => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'listFontWeight'         => array(
 					'type' => 'string',
