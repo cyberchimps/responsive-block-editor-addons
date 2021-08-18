@@ -311,7 +311,10 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'number',
 					'default' => 1,
 				),
-
+				'taxonomyAvailable'      => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_taxonomy_list',
 		)
@@ -326,28 +329,13 @@ add_action( 'init', 'responsive_block_editor_addons_register_taxonomy_list' );
  * @return [type]
  */
 function responsive_block_editor_addons_render_taxonomy_list( $attributes ) {
-	$layout        = $attributes['layout'];
-	$block_id      = $attributes['block_id'];
-	$post_type     = $attributes['postType'];
-	$taxonomy_type = $attributes['taxonomyType'];
-	$show_count    = $attributes['showPostCount'];
-	$main_class    = 'responsive-block-editor-addons-block-taxonomy-list block-' . $block_id;
-	$args          = array(
-		'hide_empty' => ! $attributes['showEmptyTaxonomy'],
-	);
-	if ( 'post' === $post_type || 'page' === $post_type && $taxonomy_type ) {
-		$new_categories_list = get_terms( $taxonomy_type, $args );
-	} elseif ( $taxonomy_type && 'course' === $post_type ) {
-		$new_categories_list = get_terms( 'course-category', $args );
-	} elseif ( $taxonomy_type && 'lesson' === $post_type ) {
-		$new_categories_list = get_terms( 'lesson-tags' );
-	} elseif ( $taxonomy_type && 'sensei_message' === $post_type ) {
-		$new_categories_list = array();
-	}
+	$layout     = $attributes['layout'];
+	$block_id   = $attributes['block_id'];
+	$main_class = 'responsive-block-editor-addons-block-taxonomy-list block-' . $block_id;
 	ob_start();
 	?>
 	<?php
-	if ( ! empty( $new_categories_list ) ) {
+	if ( $attributes['taxonomyAvailable'] ) {
 		?>
 			<div class="<?php echo esc_html( $main_class ); ?>">
 		<?php
@@ -394,7 +382,7 @@ function responsive_block_editor_addons_render_grid_layout( $attributes ) {
 
 	?>
 	<?php
-	if ( ! empty( $new_categories_list ) ) {
+	if ( $attributes['taxonomyAvailable'] ) {
 		?>
 				<div class="responsive-block-editor-addons-block-grid">
 		<?php
@@ -458,7 +446,7 @@ function responsive_block_editor_addons_render_list_layout( $attributes ) {
 
 	?>
 	<?php
-	if ( ! empty( $new_categories_list ) ) {
+	if ( $attributes['taxonomyAvailable'] ) {
 		?>
 				<div class="responsive-block-editor-addons-block-list">
 					<ul class="responsive-block-editor-addons-block-list-wrap">

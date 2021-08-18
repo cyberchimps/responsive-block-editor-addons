@@ -141,6 +141,7 @@ export default class Inspector extends Component {
       titleLineHeightTablet,
       titleTag,
       noTaxDisplaytext,
+      taxonomyAvailable,
     } = attributes;
 
     const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;

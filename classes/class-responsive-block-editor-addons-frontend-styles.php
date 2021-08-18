@@ -643,7 +643,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$mobile_selectors = array(
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
-					'font-size' => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-post-grid-items article' => array(
@@ -676,7 +676,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
-					'font-size' => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-post-grid-items' => array(
