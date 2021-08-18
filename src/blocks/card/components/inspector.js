@@ -377,6 +377,7 @@ export default class Inspector extends Component {
         vMarginMobile,
         hMarginTablet,
         hMarginMobile,
+        buttonHbackgroundType,
       },
       setAttributes,
     } = this.props;

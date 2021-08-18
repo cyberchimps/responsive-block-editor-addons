@@ -121,6 +121,7 @@ function EditorStyles(props) {
     hMarginTablet,
     hMarginMobile,
     backgroundColor,
+    buttonHbackgroundType,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -137,9 +138,24 @@ function EditorStyles(props) {
 
   let updatedButtonColor = "";
   let updatedButtonhColor = "";
+  let updatedButtonBackgroundImage = "";
   if (buttonbackgroundType == "color") {
     updatedButtonColor = ctaBackColor;
+  }
+  if (buttonHbackgroundType == "color") {
     updatedButtonhColor = ctaHoverBackColor;
+  } else {
+    updatedButtonhColor = '';
+  }
+
+  if ( 'gradient' === buttonbackgroundType) {
+    updatedButtonBackgroundImage = generateBackgroundImageEffect(
+      buttonbackgroundColor1,
+      buttonbackgroundColor2,
+      buttongradientDirection,
+      buttoncolorLocation1,
+      buttoncolorLocation2
+    )
   }
 
   var selectors = {
@@ -169,10 +185,11 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-card-button-inner:hover": {
       "background-color": hexToRgba(
-        updatedButtonhColor || "#2091e1",
+        updatedButtonhColor || "none",
         buthopacity || 0
       ),
       "border-color": ctaHoverBorderColor,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBackgroundImage,
     },
 
     "": {
@@ -325,16 +342,7 @@ function EditorStyles(props) {
       "border-width": ctaBorderWidth
         ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px",
-      "background-image":
-        buttonbackgroundType == "gradient"
-          ? generateBackgroundImageEffect(
-              buttonbackgroundColor1,
-              buttonbackgroundColor2,
-              buttongradientDirection,
-              buttoncolorLocation1,
-              buttoncolorLocation2
-            )
-          : undefined,
+      "background-image": updatedButtonBackgroundImage,
     },
   };
 

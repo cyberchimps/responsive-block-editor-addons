@@ -646,5 +646,9 @@ const attributes = {
   buttonbackgroundType: {
     type: "string",
   },
+  buttonHbackgroundType: {
+    type: "string",
+    default: "none",
+  }
 };
 export default attributes;

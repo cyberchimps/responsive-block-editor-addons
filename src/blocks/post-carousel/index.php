@@ -1039,6 +1039,10 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'number',
 					'default' => 15,
 				),
+				'buttonHbackgroundType'   => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts2',
 		)

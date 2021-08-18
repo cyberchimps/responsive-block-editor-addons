@@ -496,5 +496,9 @@ const attributes = {
     type: "number",
     default: 0
   },
+  buttonHbackgroundType: {
+    type: "string",
+    default: "none",
+  }
 };
 export default attributes;

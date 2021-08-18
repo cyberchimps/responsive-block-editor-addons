@@ -276,6 +276,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$pc_color                     = $attr['ctaBackColor'];
 			}
 
+			$updated_buttonh_color = '';
+			if ( 'color' === $attr['buttonHbackgroundType'] ) {
+				$updated_buttonh_color = $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : 'none';
+			}
+
 			$selectors = array(
 				' .responsive-post-slick-carousel-' . $id . ' .slick-prev.slick-arrow' => $slick_button_styles,
 				' .responsive-post-slick-carousel-' . $id . ' .slick-next.slick-arrow' => $slick_button_styles,
@@ -347,8 +352,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-post-carousel-more-link:hover' => array(
 					'color'            => $attr['ctaHoverColor'],
-					'background-color' => $attr['ctaHoverBackColor'],
+					'background-color' => $updated_buttonh_color,
 					'border-color'     => $attr['ctaHoverBorderColor'],
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $pc_background_image_gradient,
 				),
 				' .slick-slide'                   => array(
 					'margin-bottom' => self::get_css_value( $attr['rowGap'], 'px' ),
@@ -643,7 +649,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$mobile_selectors = array(
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
-					'font-size' => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-post-grid-items article' => array(
@@ -676,7 +682,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
-					'font-size' => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-post-grid-items' => array(
@@ -1313,6 +1319,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaHpaddingMobile'       => 20,
 				'ctaVpaddingTablet'       => 15,
 				'ctaVpaddingMobile'       => 15,
+				'buttonHbackgroundType'   => 'none',
 			);
 		}
 
@@ -2444,8 +2451,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_button_background_type    = '';
 
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
-				$updated_button_background_color   = $attr['ctaBackColor'];
-				$updated_button_background_h_color = $attr['ctaHoverBackColor'];
+				$updated_button_background_color = $attr['ctaBackColor'];
+			}
+
+			if ( 'color' === $attr['buttonHbackgroundType'] ) {
+				$updated_button_background_h_color = $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : 'none';
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
@@ -2483,6 +2493,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-cta-button-wrapper:hover' => array(
 					'border-color'     => $attr['ctaHoverBorderColor'],
 					'background-color' => $updated_button_background_h_color,
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_background_color,
 				),
 
 				' .responsive-block-editor-addons-cta-link-text' => array(
@@ -2763,6 +2774,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaVpaddingTablet'        => 10,
 				'ctaHpaddingTablet'        => 14,
 				'ctaTextOpacity'           => 100,
+				'buttonHbackgroundType'    => 'none',
 			);
 		}
 
@@ -2798,8 +2810,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
-				$updated_button_color  = self::hex_to_rgb( $attr['ctaBackColor'] ? $attr['ctaBackColor'] : '#2091e1', $butopacity );
-				$updated_buttonh_color = self::hex_to_rgb( $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : '#0071a1', $buthopacity );
+				$updated_button_color = self::hex_to_rgb( $attr['ctaBackColor'] ? $attr['ctaBackColor'] : '#2091e1', $butopacity );
+			}
+
+			if ( 'color' === $attr['buttonHbackgroundType'] ) {
+				$updated_buttonh_color = self::hex_to_rgb( $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : 'none', $buthopacity );
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
@@ -2841,6 +2856,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-card-button-inner:hover' => array(
 					'background-color' => $updated_buttonh_color,
 					'border-color'     => $attr['ctaHoverBorderColor'],
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_background_color,
 				),
 
 				''                    => array(
@@ -3180,6 +3196,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'vMarginMobile'           => 10,
 				'hMarginTablet'           => 0,
 				'hMarginMobile'           => 0,
+				'buttonHbackgroundType'   => 'none',
 			);
 		}
 
@@ -3917,7 +3934,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'line-height'      => $attr['backButtonLineHeight'],
 				),
 				' .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover' => array(
-					'background-image' => $background_hover_image_gradient,
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $background_hover_image_gradient,
 					'background-color' => $btn_h_color . '!important',
 					'border-color'     => $attr['ctaHoverBorderColor'],
 					'opacity'          => $btn_h_opacity / 100,
@@ -4938,6 +4955,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$image_box_shadow_position_css = '';
 			}
 
+			$updated_background_h_color = '';
+
+			if ( 'color' === $attr['buttonHbackgroundType'] ) {
+				$updated_background_h_color = $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : 'none';
+			}
+
 			$box_shadow_position_css = $attr['boxShadowPosition'];
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
@@ -5083,8 +5106,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-ifb-cta-button:hover' => array(
-					'background-color' => $attr['ctaHoverBackColor'],
+					'background-color' => $updated_background_h_color,
 					'border-color'     => $attr['ctaHoverBorderColor'],
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $background_image_gradient,
 				),
 
 				' .responsive-block-editor-addons-ifb-cta-button:hover .responsive-block-editor-addons-inline-editing' => array(
@@ -5433,7 +5457,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imgAlt'                   => '',
 				'dimRatio'                 => 50,
 				'ctaHoverColor'            => '#333',
-				'ctaHoverBackColor'        => 'transparent',
+				'ctaHoverBackColor'        => '#333',
 				'ctaHoverBorderColor'      => '#333',
 				'imagePosition'            => 'center center',
 				'imageRepeat'              => 'no-repeat',
@@ -5484,6 +5508,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonbackgroundColor1'   => '',
 				'buttonbackgroundColor2'   => '#fff',
 				'buttonbackgroundType'     => '',
+				'buttonHbackgroundType'    => 'none',
 			);
 		}
 
@@ -6205,7 +6230,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-pricing-table-item__button:hover' => array(
 					'color'            => $attr['ctaHoverColor'] . '!important',
 					'background-color' => $updated_button_bg_h_color,
-					'background-image' => $updated_button_bg_h_image,
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_bg_h_image,
 					'border-color'     => $attr['ctaHoverBorderColor'],
 				),
 
@@ -6545,7 +6570,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttongradientDirection'   => 90,
 				'buttonbackgroundColor1'    => '',
 				'buttonbackgroundColor2'    => '#fff',
-				'buttonHbackgroundType'     => 'color',
+				'buttonHbackgroundType'     => 'none',
 				'buttonHcolorLocation1'     => 0,
 				'buttonHcolorLocation2'     => 100,
 				'buttonHgradientDirection'  => 90,

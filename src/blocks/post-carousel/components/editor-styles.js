@@ -93,6 +93,7 @@ function EditorStyles(props) {
     ctaHpaddingMobile,
     ctaVpaddingTablet,
     ctaVpaddingMobile,
+    buttonHbackgroundType,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -108,6 +109,13 @@ function EditorStyles(props) {
   } else if (buttonbackgroundType == "color") {
     backgroundImageGradient = "";
     pcColor = ctaBackColor;
+  }
+
+  let updatedButtonBackgroundhColor = "";
+  if (buttonHbackgroundType == "color") {
+    updatedButtonBackgroundhColor = ctaHoverBackColor;
+  } else {
+    updatedButtonBackgroundhColor = '';
   }
 
   var selectors = {
@@ -169,8 +177,9 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link:hover": {
       color: ctaHoverColor,
-      "background-color": ctaHoverBackColor,
+      "background-color": updatedButtonBackgroundhColor,
       "border-color": ctaHoverBorderColor,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : backgroundImageGradient,
     },
     " .responsive-block-editor-addons-block-post-carousel-more-link-wrapper": {
       "margin-bottom": generateCSSUnit(ctaSpace, "px"),
