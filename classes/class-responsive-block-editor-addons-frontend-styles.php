@@ -11051,7 +11051,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundHoverColor'     => '',
 				'opacity'                  => 20,
 				'animationName'            => 'none',
-				'animationDirection'       => '',
+				'animationDirection'       => 'Left',
 				'animationRepeat'          => 'once',
 				'animationDuration'        => 1000,
 				'animationDelay'           => 0,
