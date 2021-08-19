@@ -6962,7 +6962,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			if ( $attr['backgroundImage'] ) {
 				$bggradient = 'linear-gradient(' .
-					$attr['gradientDegree'] .
+					$attr['gradientDirection'] .
 					'deg,' .
 					self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#ffffff', $bgopacity ? $bgopacity : 0 ) .
 					$attr['colorLocation1'] .
@@ -11051,7 +11051,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundHoverColor'     => '',
 				'opacity'                  => 20,
 				'animationName'            => 'none',
-				'animationDirection'       => '',
+				'animationDirection'       => 'Left',
 				'animationRepeat'          => 'once',
 				'animationDuration'        => 1000,
 				'animationDelay'           => 0,
