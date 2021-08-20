@@ -121,7 +121,7 @@ const attributes = {
   },
   contentFontFamily: {
     type: "string",
-    default: "Default",
+    default: "",
   },
   contentFontWeight: {
     type: "string",
@@ -142,7 +142,7 @@ const attributes = {
   },
   headingFontFamily: {
     type: "string",
-    default: "Default",
+    default: "",
   },
   headingFontWeight: {
     type: "string",
