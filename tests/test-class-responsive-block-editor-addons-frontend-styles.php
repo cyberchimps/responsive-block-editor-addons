@@ -152,7 +152,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'showTitle'           => true,
 			'expandAlignment'     => '',
 			'textColor'           => '',
-			'linkColor'           => '',
+			'linkColor'           => '#0066cc',
 			'titleColor'          => '',
 			'titleSpace'          => 28,
 			'textSpace'           => 20,
