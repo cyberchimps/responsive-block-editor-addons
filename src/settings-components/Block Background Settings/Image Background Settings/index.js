@@ -73,6 +73,8 @@ class ImageBackgroundControl extends Component {
                     className="editor-bg-image-control"
                     label={__("Background Image", "responsive-block-editor-addons")}
                 >
+                    <br/>
+                    <br/>
                     <MediaUpload
                         title={__(
                             "Select Background Image",
