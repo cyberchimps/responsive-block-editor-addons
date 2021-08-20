@@ -18,7 +18,6 @@ export default class Save extends Component {
     const {
       block_id,
       socialMediaIcons,
-      showIconLabel,
       iconsAlign,
       viewOption,
       iconColorType,
@@ -61,7 +60,7 @@ export default class Save extends Component {
                   target={icon.newTab ? "_blank" : null}
                   rel="nofollow noopener noreferrer"
                   >
-                  {icon.label && showIconLabel && (viewOption==='text' || viewOption==='icontext') && (
+                  {icon.label && (viewOption==='text' || viewOption==='icontext') && (
                     <span className="responsive-block-editor-addons-share-icon-label">
                       {icon.label}
                     </span>
