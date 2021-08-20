@@ -79,7 +79,7 @@ e.g.
 == Changelog ==
 = 1.3.2 - 17th August 2021 =
 * Feature - Table Of Contents - Added smooth scrolling and scroll offset options for frontend.
-* Fix - Table Of Contents -Added unique Anchor links for duplicated headings
+* Fix - Table Of Contents - Added unique Anchor links for duplicated headings
 * Fix - Count Down - Container was not full width when stacked on mobile.
 
 = 1.3.1 - 27th July 2021 =
