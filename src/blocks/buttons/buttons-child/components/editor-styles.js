@@ -114,7 +114,7 @@ function EditorStyles(props) {
     updatedhPaddingMobile = hPaddingMobile;
   }
 
-  let updatedBackgroundColor = "";
+  let updatedBackgroundColor = "#ff6f61";
   let updatedBackgroundHColor = "";
   let updatedBackgroundImage = "";
   if (backgroundType === "color") {
