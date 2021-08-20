@@ -187,6 +187,18 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'number',
 					'default' => 5,
 				),
+				'listTopMargin'          => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'listTopMarginMobile'    => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'listTopMarginTablet'    => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
 				// Grid Styling Attributes - Typography.
 				'titleFontFamily'        => array(
 					'type' => 'string',

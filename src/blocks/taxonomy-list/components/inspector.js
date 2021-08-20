@@ -104,6 +104,9 @@ export default class Inspector extends Component {
       listBottomMargin,
       listBottomMarginMobile,
       listBottomMarginTablet,
+      listTopMargin,
+      listTopMarginMobile,
+      listTopMarginTablet,
       listFontFamily,
       listFontSize,
       listFontSizeMobile,
@@ -639,6 +642,17 @@ export default class Inspector extends Component {
               )}
               {"list" === layout && (
                 <Fragment>
+                  <ResponsiveSpacingControl
+                    title={"Top Margin"}
+                    attrNameTemplate="listTopMargin%s"
+                    values={{
+                      desktop: listTopMargin,
+                      tablet: listTopMarginTablet,
+                      mobile: listTopMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
                   <ResponsiveSpacingControl
                     title={"Bottom Margin"}
                     attrNameTemplate="listBottomMargin%s"

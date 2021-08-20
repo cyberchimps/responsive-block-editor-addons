@@ -11180,7 +11180,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-link-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['listBottomMargin'], 'px' ),
-					'margin-top'    => self::get_css_value( $attr['listBottomMargin'], 'px' ),
+					'margin-top'    => self::get_css_value( $attr['listTopMargin'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-separator' => array(
 					'border-bottom-style' => $attr['separatorStyle'],
@@ -11211,7 +11211,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-link-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['listBottomMarginMobile'], 'px' ),
-					'margin-top'    => self::get_css_value( $attr['listBottomMarginMobile'], 'px' ),
+					'margin-top'    => self::get_css_value( $attr['listTopMarginMobile'], 'px' ),
 				),
 			);
 
@@ -11237,7 +11237,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-link-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['listBottomMarginTablet'], 'px' ),
-					'margin-top'    => self::get_css_value( $attr['listBottomMarginTablet'], 'px' ),
+					'margin-top'    => self::get_css_value( $attr['listTopMarginTablet'], 'px' ),
 				),
 			);
 
@@ -11299,6 +11299,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'listBottomMargin'       => 5,
 				'listBottomMarginMobile' => 5,
 				'listBottomMarginTablet' => 5,
+				'listTopMargin'          => 5,
+				'listTopMarginMobile'    => 5,
+				'listTopMarginTablet'    => 5,
 				'titleFontFamily'        => '',
 				'titleFontSize'          => 16,
 				'titleFontSizeMobile'    => 14,
