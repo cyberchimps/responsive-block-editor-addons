@@ -10598,6 +10598,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'    => self::get_css_value( $attr['blockRightPadding'], 'px' ) . '!important',
 					'z-index'          => $attr['socialZindex'],
 					'background-color' => self::hex_to_rgb( $attr['backgroundColor'], $newopacity ),
+					'border-color'     => $attr['blockBorderColor'],
+					'border-style'     => $attr['blockBorderStyle'],
+					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
+					'box-shadow'       =>
+					self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['boxShadowBlur'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['boxShadowSpread'], 'px' ) .
+					' ' .
+					$attr['boxShadowColor'] .
+					' ' .
+					$box_shadow_position_css,
+					'width'            => 'fit-content',
 				),
 				' .responsive-block-editor-addons-share-icon' => array(
 					'border-radius'    => $icon_shape_radius,
@@ -10606,8 +10623,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border'           => 'custom' === $attr['iconColorType'] && ( 'framed' === $attr['skin'] || 'boxed' === $attr['skin'] ) ? '1px solid ' . $attr['iconSecondaryColor'] : '',
 					'display'          => 'flex',
 					'justify-content'  => 'center',
-					'height'           => self::get_css_value( $attr['iconContainerHeight'], 'px' ),
-					'width'            => 'boxed' !== $attr['skin'] ? self::get_css_value( $attr['iconContainerSize'], 'px' ) : '100%',
+					'padding-top'      => self::get_css_value( $attr['iconContainerHeight'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['iconContainerHeight'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['iconContainerSize'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['iconContainerSize'], 'px' ),
+					'width'            => 'fit-content',
 				),
 				' .responsive-block-editor-addons-share-icon > a:first-child' => array(
 					'padding'          => 'boxed' === $attr['skin'] || 'minimal' === $attr['skin'] ? '0 10px 0 10px' : '',
@@ -10629,22 +10649,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'auto' !== $attr['iconColumns'] ? '' : 'column',
 					'grid-column-gap'       => self::get_css_value( $attr['iconColumnsGap'], 'px' ),
 					'grid-row-gap'          => self::get_css_value( $attr['iconRowsGap'], 'px' ),
-					'border-color'          => $attr['blockBorderColor'],
-					'border-style'          => $attr['blockBorderStyle'],
-					'border-width'          => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-					'border-radius'         => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
-					'box-shadow'            =>
-					self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
-					' ' .
-					self::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
-					' ' .
-					self::get_css_value( $attr['boxShadowBlur'], 'px' ) .
-					' ' .
-					self::get_css_value( $attr['boxShadowSpread'], 'px' ) .
-					' ' .
-					$attr['boxShadowColor'] .
-					' ' .
-					$box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-share-icon-label' => array(
 					'font-size'   => self::get_css_value( $attr['labelFontSize'], 'px' ),
@@ -10718,6 +10722,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-share-icon-label' => array(
 					'font-size' => self::get_css_value( $attr['labelFontSizeMobile'], 'px' ),
 				),
+				' .responsive-block-editor-addons-share-icons-container' => array(
+					'grid-template-columns' =>
+					'auto' !== $attr['iconColumnsMobile'] ? 'repeat(' . $attr['iconColumnsMobile'] . ' , auto)' : '',
+					'grid-auto-flow'        =>
+					'auto' !== $attr['iconColumnsMobile'] ? 'unset' : 'column',
+				),
 			);
 
 			$tablet_selectors = array(
@@ -10733,6 +10743,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-share-icon-label' => array(
 					'font-size' => self::get_css_value( $attr['labelFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-share-icons-container' => array(
+					'grid-template-columns' =>
+					'auto' !== $attr['iconColumnsTablet'] ? 'repeat(' . $attr['iconColumnsTablet'] . ' , auto)' : '',
+					'grid-auto-flow'        =>
+					'auto' !== $attr['iconColumnsTablet'] ? 'unset' : 'column',
 				),
 			);
 
@@ -10766,8 +10782,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconColumnsGap'           => 15,
 				'iconRowsGap'              => 10,
 				'iconsAlign'               => 'left',
-				'iconContainerHeight'      => 50,
-				'iconContainerSize'        => 103,
+				'iconContainerHeight'      => 5,
+				'iconContainerSize'        => 5,
 				'socialZindex'             => 0,
 				'blockTopPadding'          => 0,
 				'blockBottomPadding'       => 0,
@@ -10815,6 +10831,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowPosition'        => 'outset',
 				'backgroundColor'          => '#fff',
 				'opacity'                  => 100,
+				'iconColumnsMobile'        => 'auto',
+				'iconColumnsTablet'        => 'auto',
 			);
 		}
 
