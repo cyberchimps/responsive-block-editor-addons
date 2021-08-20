@@ -27,6 +27,7 @@ const { Component, Fragment } = wp.element;
 // Import block components
 const {
   InspectorControls,
+  InspectorAdvancedControls,
   PanelColorSettings,
   RichText,
   AlignmentToolbar,
@@ -295,6 +296,7 @@ export default class Inspector extends Component {
         buttongradientDirection,
         buttonbackgroundType,
         buttonHbackgroundType,
+        zIndex,
       },
       setAttributes,
     } = this.props;
@@ -1619,7 +1621,18 @@ export default class Inspector extends Component {
               )}
             </PanelBody>
           </InspectorTab>
-          <InspectorTab key={"advance"}></InspectorTab>
+          <InspectorTab key={"advance"}>
+            <InspectorAdvancedControls>
+              <RangeControl
+                label={__("Z-index", "responsive-block-editor-addons")}
+                value={zIndex}
+                onChange={(value) => setAttributes({zIndex: value})}
+                min={0}
+                max={500}
+                allowReset
+              />
+            </InspectorAdvancedControls>
+          </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
     );

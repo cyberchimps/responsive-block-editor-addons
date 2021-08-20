@@ -146,6 +146,7 @@ function EditorStyles(props) {
     buttongradientDirection,
     buttonbackgroundType,
     buttonHbackgroundType,
+    zIndex,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -211,6 +212,7 @@ function EditorStyles(props) {
 
   var selectors = {
     " ": {
+      "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "background-color": `${hexToRgba(
         backgroundColor || "#ffffff",

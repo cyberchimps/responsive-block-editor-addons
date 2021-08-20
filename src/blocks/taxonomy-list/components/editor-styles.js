@@ -42,6 +42,9 @@ function EditorStyles(props) {
         listBottomMargin,
         listBottomMarginMobile,
         listBottomMarginTablet,
+        listTopMargin,
+        listTopMarginMobile,
+        listTopMarginTablet,
         listFontFamily,
         listFontSize,
         listFontSizeMobile,
@@ -139,7 +142,7 @@ function EditorStyles(props) {
         },
         " .responsive-block-editor-addons-block-link-wrap": {
             "margin-bottom": generateCSSUnit(listBottomMargin, "px"),
-            "margin-top": generateCSSUnit(listBottomMargin, "px")
+            "margin-top": generateCSSUnit(listTopMargin, "px")
         },
         " .responsive-block-editor-addons-block-separator": {
             "border-bottom-style": separatorStyle,
@@ -172,7 +175,7 @@ function EditorStyles(props) {
         },
         " .responsive-block-editor-addons-block-link-wrap": {
             "margin-bottom": generateCSSUnit(listBottomMarginMobile, "px"),
-            "margin-top": generateCSSUnit(listBottomMarginMobile, "px")
+            "margin-top": generateCSSUnit(listTopMarginMobile, "px")
         },
     };
 
@@ -198,7 +201,7 @@ function EditorStyles(props) {
         },
         " .responsive-block-editor-addons-block-link-wrap": {
             "margin-bottom": generateCSSUnit(listBottomMarginTablet, "px"),
-            "margin-top": generateCSSUnit(listBottomMarginTablet, "px")
+            "margin-top": generateCSSUnit(listTopMarginTablet, "px")
         },
     };
 
