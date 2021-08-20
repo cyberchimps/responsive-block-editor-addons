@@ -1276,105 +1276,113 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <h2>{__("Margin")}</h2>
-              <ResponsiveSpacingControl
-                title={"Top Margin"}
-                attrNameTemplate="topMargin%s"
-                values={{
-                  desktop: topMargin,
-                  tablet: topMarginTablet,
-                  mobile: topMarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Bottom Margin"}
-                attrNameTemplate="bottomMargin%s"
-                values={{
-                  desktop: bottomMargin,
-                  tablet: bottomMarginTablet,
-                  mobile: bottomMarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-
-              <h2>{__("Padding")}</h2>
-              <TabPanel
-                className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "front",
-                    title: __("Front"),
-                    className: "rbea-normal-tab",
-                  },
-                  {
-                    name: "back",
-                    title: __("Back"),
-                    className: "rbea-focus-tab",
-                  },
-                ]}
+              <PanelBody
+                title={__("Margin", "responsive-block-editor-addons")}
+                initialOpen={true}
               >
-                {(tabName) => {
-                  let tabout;
-                  if ("back" === tabName.name) {
-                    tabout = (
-                      <Fragment>
-                        <ResponsivePaddingControl
-                          attrNameTemplate="back%s"
-                          values={{
-                            desktopTop: backTopPadding,
-                            desktopBottom: backBottomPadding,
-                            desktopLeft: backLeftPadding,
-                            desktopRight: backRightPadding,
+                <ResponsiveSpacingControl
+                  title={"Top Margin"}
+                  attrNameTemplate="topMargin%s"
+                  values={{
+                    desktop: topMargin,
+                    tablet: topMarginTablet,
+                    mobile: topMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+                <ResponsiveSpacingControl
+                  title={"Bottom Margin"}
+                  attrNameTemplate="bottomMargin%s"
+                  values={{
+                    desktop: bottomMargin,
+                    tablet: bottomMarginTablet,
+                    mobile: bottomMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+              </PanelBody>
 
-                            tabletTop: backTopPaddingTablet,
-                            tabletBottom: backBottomPaddingTablet,
-                            tabletLeft: backLeftPaddingTablet,
-                            tabletRight: backRightPaddingTablet,
+              <PanelBody
+                initialOpen={false}
+                title={__("Padding", "responsive-block-editor-addons")}
+              >
+                <TabPanel
+                  className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "front",
+                      title: __("Front"),
+                      className: "rbea-normal-tab",
+                    },
+                    {
+                      name: "back",
+                      title: __("Back"),
+                      className: "rbea-focus-tab",
+                    },
+                  ]}
+                >
+                  {(tabName) => {
+                    let tabout;
+                    if ("back" === tabName.name) {
+                      tabout = (
+                        <Fragment>
+                          <ResponsivePaddingControl
+                            attrNameTemplate="back%s"
+                            values={{
+                              desktopTop: backTopPadding,
+                              desktopBottom: backBottomPadding,
+                              desktopLeft: backLeftPadding,
+                              desktopRight: backRightPadding,
 
-                            mobileTop: backTopPaddingMobile,
-                            mobileBottom: backBottomPaddingMobile,
-                            mobileLeft: backLeftPaddingMobile,
-                            mobileRight: backRightPaddingMobile,
-                          }}
-                          setAttributes={setAttributes}
-                          {...this.props}
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <ResponsivePaddingControl
-                          attrNameTemplate="front%s"
-                          values={{
-                            desktopTop: frontTopPadding,
-                            desktopBottom: frontBottomPadding,
-                            desktopLeft: frontLeftPadding,
-                            desktopRight: frontRightPadding,
+                              tabletTop: backTopPaddingTablet,
+                              tabletBottom: backBottomPaddingTablet,
+                              tabletLeft: backLeftPaddingTablet,
+                              tabletRight: backRightPaddingTablet,
 
-                            tabletTop: frontTopPaddingTablet,
-                            tabletBottom: frontBottomPaddingTablet,
-                            tabletLeft: frontLeftPaddingTablet,
-                            tabletRight: frontRightPaddingTablet,
+                              mobileTop: backTopPaddingMobile,
+                              mobileBottom: backBottomPaddingMobile,
+                              mobileLeft: backLeftPaddingMobile,
+                              mobileRight: backRightPaddingMobile,
+                            }}
+                            setAttributes={setAttributes}
+                            {...this.props}
+                          />
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <ResponsivePaddingControl
+                            attrNameTemplate="front%s"
+                            values={{
+                              desktopTop: frontTopPadding,
+                              desktopBottom: frontBottomPadding,
+                              desktopLeft: frontLeftPadding,
+                              desktopRight: frontRightPadding,
 
-                            mobileTop: frontTopPaddingMobile,
-                            mobileBottom: frontBottomPaddingMobile,
-                            mobileLeft: frontLeftPaddingMobile,
-                            mobileRight: frontRightPaddingMobile,
-                          }}
-                          setAttributes={setAttributes}
-                          {...this.props}
-                        />
-                      </Fragment>
-                    );
-                  }
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
+                              tabletTop: frontTopPaddingTablet,
+                              tabletBottom: frontBottomPaddingTablet,
+                              tabletLeft: frontLeftPaddingTablet,
+                              tabletRight: frontRightPaddingTablet,
+
+                              mobileTop: frontTopPaddingMobile,
+                              mobileBottom: frontBottomPaddingMobile,
+                              mobileLeft: frontLeftPaddingMobile,
+                              mobileRight: frontRightPaddingMobile,
+                            }}
+                            setAttributes={setAttributes}
+                            {...this.props}
+                          />
+                        </Fragment>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
+              </PanelBody>
             </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
