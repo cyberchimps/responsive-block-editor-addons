@@ -8,9 +8,16 @@ import EditorStyles from "./editor-styles";
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
+// const { __ } = wp.i18n;
+// const { Component, Fragment } = wp.element;
+// const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
+import {
+	RichText, AlignmentToolbar, BlockControls
+} from "@wordpress/block-editor";
+import {
+	Component, Fragment
+} from "@wordpress/element";
+import {__} from "@wordpress/i18n";
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
