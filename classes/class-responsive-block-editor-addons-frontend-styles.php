@@ -5017,6 +5017,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' '                                        => array(
+					'z-index'          => $attr['zIndex'],
 					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
 					'background-color' => self::hex_to_rgb( $attr['backgroundColor'], $newopacity ),
 					'padding'          => self::get_css_value( $attr['contentPadding'], 'px' ),
@@ -5515,6 +5516,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonbackgroundColor2'   => '#fff',
 				'buttonbackgroundType'     => '',
 				'buttonHbackgroundType'    => 'none',
+				'zIndex'                   => 0,
 			);
 		}
 

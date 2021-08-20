@@ -1581,6 +1581,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonbackgroundColor2'   => '#fff',
 			'buttonbackgroundType'     => '',
 			'buttonHbackgroundType'    => 'none',
+			'zIndex'                   => 0,
 
 		);
 		$values = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
