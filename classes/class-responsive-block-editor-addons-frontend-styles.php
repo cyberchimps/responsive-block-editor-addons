@@ -7005,7 +7005,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .responsive-block-editor-addons-team-avatar' => array(
 					'width'         => self::get_css_value( $attr['imageWidth'], 'px' ),
-					'height'        => self::get_css_value( $attr['imageWidth'], 'px' ),
 					'margin-top'    => self::get_css_value( $attr['imageMarginTop'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['imageMarginBottom'], 'px' ),
 					'text-align'    => 'justify',
@@ -7132,7 +7131,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-team-avatar' => array(
 					'width'         => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
 					'max-width'     => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
-					'height'        => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
 					'margin-top'    => self::get_css_value( $attr['imageMarginTopMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['imageMarginBottomMobile'], 'px' ),
 				),
@@ -7168,7 +7166,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-team-avatar' => array(
 					'width'         => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
 					'max-width'     => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
-					'height'        => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
 					'margin-top'    => self::get_css_value( $attr['imageMarginTopTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['imageMarginBottomTablet'], 'px' ),
 				),
