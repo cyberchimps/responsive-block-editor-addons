@@ -2209,7 +2209,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$updated_h_padding_mobile = $attr['hPaddingMobile'];
 			}
 
-			$updated_background_color   = '';
+			$updated_background_color   = '#ff6f61';
 			$updated_background_h_color = '';
 			$updated_background_image   = '';
 			if ( 'color' === $attr['backgroundType'] && ! $attr['inheritFromTheme'] ) {
