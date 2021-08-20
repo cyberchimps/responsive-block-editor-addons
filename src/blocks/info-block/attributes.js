@@ -649,6 +649,10 @@ const attributes = {
   buttonHbackgroundType: {
     type: "string",
     default: "none",
+  },
+  zIndex: {
+    type: "number",
+    default: 0,
   }
 };
 export default attributes;

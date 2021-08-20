@@ -51,15 +51,19 @@ const attributes = {
     type: "string",
     default: "#e4f3ff"
   },
-  showIconLabel: {
-    type: "boolean",
-    default: true,
-  },
   iconSize: {
     type: "number",
     default: 30,
   },
   iconColumns: {
+    type: "string",
+    default: "auto",
+  },
+  iconColumnsMobile: {
+    type: "string",
+    default: "auto",
+  },
+  iconColumnsTablet: {
     type: "string",
     default: "auto",
   },
@@ -77,11 +81,11 @@ const attributes = {
   },
   iconContainerHeight: {
     type: "number",
-    default: 50,
+    default: 5,
   },
   iconContainerSize: {
     type: "number",
-    default: 103,
+    default: 5,
   },
   socialZindex: {
     type: "number",
@@ -239,6 +243,10 @@ const attributes = {
     type: "number",
     default: 100,
   },
+  currentColumnTab: {
+    type: "string",
+    default: "desktop",
+  }
 };
 
 export default attributes;
