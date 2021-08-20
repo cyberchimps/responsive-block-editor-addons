@@ -35,6 +35,7 @@ const attributes = {
   },
   linkColor: {
     type: "string",
+    default: "#0066cc"
   },
   titleColor: {
     type: "string",
