@@ -3633,7 +3633,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'showTitle'           => true,
 				'expandAlignment'     => '',
 				'textColor'           => '',
-				'linkColor'           => '',
+				'linkColor'           => '#0066cc',
 				'titleColor'          => '',
 				'titleSpace'          => 28,
 				'textSpace'           => 20,
