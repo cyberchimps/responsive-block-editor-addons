@@ -38,8 +38,9 @@ registerBlockType("responsive-block-editor-addons/social-share", {
   attributes: attributes,
 
   /* Render the block in the editor. */
-  edit: Edit,
-
+  edit: (props) => {
+    return <Edit {...props} />;
+  },
   /* Save the block markup. */
   save: (props) => {
     return <Save {...props} />;
