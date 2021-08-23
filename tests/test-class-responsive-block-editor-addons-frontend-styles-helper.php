@@ -2334,8 +2334,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'          => self::$advanced_columns_block_id,
-					'backgroundColor1'  => '#123abc',
-					'backgroundColor2'  => '#123dee',
+					'backgroundColor1'  => 'rgb(16, 101, 156, 0.2)',
+					'backgroundColor2'  => 'rgb(51, 51, 51, 0.2)',
 					'gradientDirection' => 60,
 					'colorLocation1'    => 20,
 					'colorLocation2'    => 40,
