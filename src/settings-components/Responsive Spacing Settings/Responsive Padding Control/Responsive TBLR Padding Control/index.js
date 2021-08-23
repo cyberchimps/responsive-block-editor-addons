@@ -60,7 +60,7 @@ render() {
           if ("desktop" === tab.name) {
               tabout = (
                   <Fragment>
-                  <h2>{__("Padding")}</h2>
+                  <p>{__("Padding")}</p>
                   <RangeControl
               label={__("Top", "responsive-block-editor-addons")}
               min={0}
@@ -115,7 +115,7 @@ render() {
           } else if ("tablet" === tab.name) {
               tabout = (
                   <Fragment>
-                  <h2>{__("Padding Tablet")}</h2>
+                  <p>{__("Padding Tablet")}</p>
                   <RangeControl
               label={__("Top", "responsive-block-editor-addons")}
               min={0}
@@ -170,7 +170,7 @@ render() {
           } else {
               tabout = (
                   <Fragment>
-                  <h2>{__("Padding Mobile")}</h2>
+                  <p>{__("Padding Mobile")}</p>
                   <RangeControl
               label={__("Top", "responsive-block-editor-addons")}
               min={0}
