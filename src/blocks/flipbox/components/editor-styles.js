@@ -404,7 +404,7 @@ function EditorStyles(props) {
       "line-height": backButtonLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {
-      "background-image": backgroundHoverImageGradient,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : backgroundHoverImageGradient,
       "background-color": btnHColor + "!important",
       "border-color": ctaHoverBorderColor,
       opacity: btnHOpacity / 100,
@@ -426,6 +426,9 @@ function EditorStyles(props) {
       "min-width": "100%",
       "max-width": "100%",
     },
+	" .has-medium-gutter.responsive-flipbox-columns__stack-mobile > .wp-block-responsive-block-editor-addons-flip-box:not(:last-child)": {
+		"margin-bottom": generateCSSUnit(flipBoxGutterGap, "px"),
+	},
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
       "margin-top": generateCSSUnit(topMarginMobile, "px"),
@@ -468,6 +471,9 @@ function EditorStyles(props) {
       "min-width": "100%",
       "max-width": "100%",
     },
+	" .has-medium-gutter.responsive-flipbox-columns__stack-tablet > .wp-block-responsive-block-editor-addons-flip-box:not(:last-child)": {
+		"margin-bottom": generateCSSUnit(flipBoxGutterGap, "px"),
+	},
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
       "margin-top": generateCSSUnit(topMarginTablet, "px"),

@@ -114,7 +114,6 @@
       width: 100%;
       background-color: #fff;
       position: relative;
-      padding-bottom: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -136,6 +135,10 @@
         position: absolute;
         transform: translateY(-50%);
       }
+
+	  > .dashicon {
+		padding-bottom: 100%;
+	  }
     }
   }
 

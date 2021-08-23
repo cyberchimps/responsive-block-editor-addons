@@ -644,78 +644,15 @@ export default class Inspector extends Component {
 									</Fragment>
 								)}
 						</PanelBody>
-						<PanelBody
-							title={__("Text Colors", "responsive-block-editor-addons")}
-							initialOpen={false}
-						>
-							{(progressBarStyle === "horizontal") && (progressBarTopTitleEnable || progressBarTopValueEnable) && (
-								<PanelBody
-									title={__("Top Title and Value Color", "responsive-block-editor-addons")}
-									initialOpen={false}
-								>
-									<p className="responsive-block-editor-addons-setting-label">
-										{__("Color")}
-										<span className="components-base-control__label">
-											<span
-												className="component-color-indicator"
-												style={{ backgroundColor: horizontalProgressBarTopTitleValueColor }}
-											></span>
-										</span>
-									</p>
-									<ColorPalette
-										value={horizontalProgressBarTopTitleValueColor}
-										onChange={(value) => setAttributes({ horizontalProgressBarTopTitleValueColor: value })}
-										allowReset
-									/>
-								</PanelBody>
-							)}
-							{(progressBarStyle === "horizontal") && (progressBarInnerTitleEnable || progressBarInnerValueEnable)
-								&& (horizontalProgressBarStyle !== "striped" && horizontalProgressBarStyle !== "animatedstriped")
-								&& (
-									<PanelBody
-										title={__("Inner Title and Value Color", "responsive-block-editor-addons")}
-										initialOpen={false}
-									>
-										<p className="responsive-block-editor-addons-setting-label">
-											{__("Color")}
-											<span className="components-base-control__label">
-												<span
-													className="component-color-indicator"
-													style={{ backgroundColor: horizontalProgressBarInnerTitleValueColor }}
-												></span>
-											</span>
-										</p>
-										<ColorPalette
-											value={horizontalProgressBarInnerTitleValueColor}
-											onChange={(value) => setAttributes({ horizontalProgressBarInnerTitleValueColor: value })}
-											allowReset
-										/>
-									</PanelBody>
-								)}
-							{(progressBarStyle === "horizontal") && (progressBarBottomTitleEnable || progressBarBottomValueEnable) && (
-								<PanelBody
-									title={__("Bottom Title and Value Color", "responsive-block-editor-addons")}
-									initialOpen={false}
-								>
-									<p className="responsive-block-editor-addons-setting-label">
-										{__("Color")}
-										<span className="components-base-control__label">
-											<span
-												className="component-color-indicator"
-												style={{ backgroundColor: horizontalProgressBarBottomTitleValueColor }}
-											></span>
-										</span>
-									</p>
-									<ColorPalette
-										value={horizontalProgressBarBottomTitleValueColor}
-										onChange={(value) => setAttributes({ horizontalProgressBarBottomTitleValueColor: value })}
-										allowReset
-									/>
-								</PanelBody>
-							)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
-								(circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable)
-								&& (
+						{((progressBarStyle === "horizontal" && (progressBarTopTitleEnable || progressBarTopValueEnable || progressBarInnerTitleEnable || progressBarInnerValueEnable || progressBarBottomTitleEnable || progressBarBottomValueEnable)) 
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "circle" && (circularProgressBarValueEnable || circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable || circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)) 
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "semicircle" && (semiCircularProgressBarValueEnable || semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable || semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)) 
+						) && (
+							<PanelBody
+								title={__("Text Colors", "responsive-block-editor-addons")}
+								initialOpen={false}
+							>
+								{(progressBarStyle === "horizontal") && (progressBarTopTitleEnable || progressBarTopValueEnable) && (
 									<PanelBody
 										title={__("Top Title and Value Color", "responsive-block-editor-addons")}
 										initialOpen={false}
@@ -725,110 +662,41 @@ export default class Inspector extends Component {
 											<span className="components-base-control__label">
 												<span
 													className="component-color-indicator"
-													style={{ backgroundColor: circularProgressBarTopTitleValueColor }}
+													style={{ backgroundColor: horizontalProgressBarTopTitleValueColor }}
 												></span>
 											</span>
 										</p>
 										<ColorPalette
-											value={circularProgressBarTopTitleValueColor}
-											onChange={(value) => setAttributes({ circularProgressBarTopTitleValueColor: value })}
+											value={horizontalProgressBarTopTitleValueColor}
+											onChange={(value) => setAttributes({ horizontalProgressBarTopTitleValueColor: value })}
 											allowReset
 										/>
 									</PanelBody>
 								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "circle")
-								&& (circularProgressBarValueEnable) && (
-									<PanelBody
-										title={__("Inner Value Color", "responsive-block-editor-addons")}
-										initialOpen={false}
-									>
-										<p className="responsive-block-editor-addons-setting-label">
-											{__("Color")}
-											<span className="components-base-control__label">
-												<span
-													className="component-color-indicator"
-													style={{ backgroundColor: circularProgressBarInnerValueColor }}
-												></span>
-											</span>
-										</p>
-										<ColorPalette
-											value={circularProgressBarInnerValueColor}
-											onChange={(value) => setAttributes({ circularProgressBarInnerValueColor: value })}
-											allowReset
-										/>
-									</PanelBody>
-								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
-								(circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)
-								&& (
-									<PanelBody
-										title={__("Bottom Title and Value Color", "responsive-block-editor-addons")}
-										initialOpen={false}
-									>
-										<p className="responsive-block-editor-addons-setting-label">
-											{__("Color")}
-											<span className="components-base-control__label">
-												<span
-													className="component-color-indicator"
-													style={{ backgroundColor: circularProgressBarBottomTitleValueColor }}
-												></span>
-											</span>
-										</p>
-										<ColorPalette
-											value={circularProgressBarBottomTitleValueColor}
-											onChange={(value) => setAttributes({ circularProgressBarBottomTitleValueColor: value })}
-											allowReset
-										/>
-									</PanelBody>
-								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
-								(semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable)
-								&& (
-									<PanelBody
-										title={__("Top Title and Value Color", "responsive-block-editor-addons")}
-										initialOpen={false}
-									>
-										<p className="responsive-block-editor-addons-setting-label">
-											{__("Color")}
-											<span className="components-base-control__label">
-												<span
-													className="component-color-indicator"
-													style={{ backgroundColor: semiCircularProgressBarTopTitleValueColor }}
-												></span>
-											</span>
-										</p>
-										<ColorPalette
-											value={semiCircularProgressBarTopTitleValueColor}
-											onChange={(value) => setAttributes({ semiCircularProgressBarTopTitleValueColor: value })}
-											allowReset
-										/>
-									</PanelBody>
-								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle")
-								&& (semiCircularProgressBarValueEnable) && (
-									<PanelBody
-										title={__("Inner Value Color", "responsive-block-editor-addons")}
-										initialOpen={false}
-									>
-										<p className="responsive-block-editor-addons-setting-label">
-											{__("Color")}
-											<span className="components-base-control__label">
-												<span
-													className="component-color-indicator"
-													style={{ backgroundColor: semiCircularProgressBarInnerValueColor }}
-												></span>
-											</span>
-										</p>
-										<ColorPalette
-											value={semiCircularProgressBarInnerValueColor}
-											onChange={(value) => setAttributes({ semiCircularProgressBarInnerValueColor: value })}
-											allowReset
-										/>
-									</PanelBody>
-								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
-								(semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)
-								&& (
+								{(progressBarStyle === "horizontal") && (progressBarInnerTitleEnable || progressBarInnerValueEnable)
+									&& (horizontalProgressBarStyle !== "striped" && horizontalProgressBarStyle !== "animatedstriped")
+									&& (
+										<PanelBody
+											title={__("Inner Title and Value Color", "responsive-block-editor-addons")}
+											initialOpen={false}
+										>
+											<p className="responsive-block-editor-addons-setting-label">
+												{__("Color")}
+												<span className="components-base-control__label">
+													<span
+														className="component-color-indicator"
+														style={{ backgroundColor: horizontalProgressBarInnerTitleValueColor }}
+													></span>
+												</span>
+											</p>
+											<ColorPalette
+												value={horizontalProgressBarInnerTitleValueColor}
+												onChange={(value) => setAttributes({ horizontalProgressBarInnerTitleValueColor: value })}
+												allowReset
+											/>
+										</PanelBody>
+									)}
+								{(progressBarStyle === "horizontal") && (progressBarBottomTitleEnable || progressBarBottomValueEnable) && (
 									<PanelBody
 										title={__("Bottom Title and Value Color", "responsive-block-editor-addons")}
 										initialOpen={false}
@@ -838,18 +706,155 @@ export default class Inspector extends Component {
 											<span className="components-base-control__label">
 												<span
 													className="component-color-indicator"
-													style={{ backgroundColor: semiCircularProgressBarBottomTitleValueColor }}
+													style={{ backgroundColor: horizontalProgressBarBottomTitleValueColor }}
 												></span>
 											</span>
 										</p>
 										<ColorPalette
-											value={semiCircularProgressBarBottomTitleValueColor}
-											onChange={(value) => setAttributes({ semiCircularProgressBarBottomTitleValueColor: value })}
+											value={horizontalProgressBarBottomTitleValueColor}
+											onChange={(value) => setAttributes({ horizontalProgressBarBottomTitleValueColor: value })}
 											allowReset
 										/>
 									</PanelBody>
 								)}
-						</PanelBody>
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
+									(circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable)
+									&& (
+										<PanelBody
+											title={__("Top Title and Value Color", "responsive-block-editor-addons")}
+											initialOpen={false}
+										>
+											<p className="responsive-block-editor-addons-setting-label">
+												{__("Color")}
+												<span className="components-base-control__label">
+													<span
+														className="component-color-indicator"
+														style={{ backgroundColor: circularProgressBarTopTitleValueColor }}
+													></span>
+												</span>
+											</p>
+											<ColorPalette
+												value={circularProgressBarTopTitleValueColor}
+												onChange={(value) => setAttributes({ circularProgressBarTopTitleValueColor: value })}
+												allowReset
+											/>
+										</PanelBody>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "circle")
+									&& (circularProgressBarValueEnable) && (
+										<PanelBody
+											title={__("Inner Value Color", "responsive-block-editor-addons")}
+											initialOpen={false}
+										>
+											<p className="responsive-block-editor-addons-setting-label">
+												{__("Color")}
+												<span className="components-base-control__label">
+													<span
+														className="component-color-indicator"
+														style={{ backgroundColor: circularProgressBarInnerValueColor }}
+													></span>
+												</span>
+											</p>
+											<ColorPalette
+												value={circularProgressBarInnerValueColor}
+												onChange={(value) => setAttributes({ circularProgressBarInnerValueColor: value })}
+												allowReset
+											/>
+										</PanelBody>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
+									(circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)
+									&& (
+										<PanelBody
+											title={__("Bottom Title and Value Color", "responsive-block-editor-addons")}
+											initialOpen={false}
+										>
+											<p className="responsive-block-editor-addons-setting-label">
+												{__("Color")}
+												<span className="components-base-control__label">
+													<span
+														className="component-color-indicator"
+														style={{ backgroundColor: circularProgressBarBottomTitleValueColor }}
+													></span>
+												</span>
+											</p>
+											<ColorPalette
+												value={circularProgressBarBottomTitleValueColor}
+												onChange={(value) => setAttributes({ circularProgressBarBottomTitleValueColor: value })}
+												allowReset
+											/>
+										</PanelBody>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
+									(semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable)
+									&& (
+										<PanelBody
+											title={__("Top Title and Value Color", "responsive-block-editor-addons")}
+											initialOpen={false}
+										>
+											<p className="responsive-block-editor-addons-setting-label">
+												{__("Color")}
+												<span className="components-base-control__label">
+													<span
+														className="component-color-indicator"
+														style={{ backgroundColor: semiCircularProgressBarTopTitleValueColor }}
+													></span>
+												</span>
+											</p>
+											<ColorPalette
+												value={semiCircularProgressBarTopTitleValueColor}
+												onChange={(value) => setAttributes({ semiCircularProgressBarTopTitleValueColor: value })}
+												allowReset
+											/>
+										</PanelBody>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle")
+									&& (semiCircularProgressBarValueEnable) && (
+										<PanelBody
+											title={__("Inner Value Color", "responsive-block-editor-addons")}
+											initialOpen={false}
+										>
+											<p className="responsive-block-editor-addons-setting-label">
+												{__("Color")}
+												<span className="components-base-control__label">
+													<span
+														className="component-color-indicator"
+														style={{ backgroundColor: semiCircularProgressBarInnerValueColor }}
+													></span>
+												</span>
+											</p>
+											<ColorPalette
+												value={semiCircularProgressBarInnerValueColor}
+												onChange={(value) => setAttributes({ semiCircularProgressBarInnerValueColor: value })}
+												allowReset
+											/>
+										</PanelBody>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
+									(semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)
+									&& (
+										<PanelBody
+											title={__("Bottom Title and Value Color", "responsive-block-editor-addons")}
+											initialOpen={false}
+										>
+											<p className="responsive-block-editor-addons-setting-label">
+												{__("Color")}
+												<span className="components-base-control__label">
+													<span
+														className="component-color-indicator"
+														style={{ backgroundColor: semiCircularProgressBarBottomTitleValueColor }}
+													></span>
+												</span>
+											</p>
+											<ColorPalette
+												value={semiCircularProgressBarBottomTitleValueColor}
+												onChange={(value) => setAttributes({ semiCircularProgressBarBottomTitleValueColor: value })}
+												allowReset
+											/>
+										</PanelBody>
+									)}
+							</PanelBody>
+						)}
 						{progressBarStyle === "horizontal" && (
 							<PanelBody
 								title={__("Border", "responsive-block-editor-addons")}
@@ -868,94 +873,28 @@ export default class Inspector extends Component {
 								/>
 							</PanelBody>
 						)}
-						<PanelBody
-							title={__("Typography", "responsive-block-editor-addons")}
-							initialOpen={false}
-						>
-							{(progressBarStyle === "horizontal") && (progressBarTopTitleEnable || progressBarTopValueEnable) && (
-								<Fragment>
-									<TypographyHelperControl
-										title={__("Top Title and Value Typography", "responsive-block-editor-addons")}
-										attrNameTemplate="topTitleValue%s"
-										values={{
-											family: topTitleValueFontFamily,
-											size: topTitleValueFontSize,
-											sizeMobile: topTitleValueFontSizeMobile,
-											sizeTablet: topTitleValueFontSizeTablet,
-											weight: topTitleValueFontWeight,
-											height: topTitleValueLineHeight,
-											spacing: topTitleValueLetterSpacing,
-											transform: topTitleValueTextTransform
-										}}
-										showLetterSpacing={true}
-										showTextTransform={true}
-										setAttributes={setAttributes}
-										{...this.props}
-									/>
-								</Fragment>
-							)}
-							{(progressBarStyle === "horizontal") && (progressBarInnerTitleEnable || progressBarInnerValueEnable)
-								&& (horizontalProgressBarStyle !== "striped" && horizontalProgressBarStyle !== "animatedstriped")
-								&& (
-									<Fragment>
-										<TypographyHelperControl
-											title={__("Inner Title and Value Typography", "responsive-block-editor-addons")}
-											attrNameTemplate="innerTitleValue%s"
-											values={{
-												family: innerTitleValueFontFamily,
-												size: innerTitleValueFontSize,
-												sizeMobile: innerTitleValueFontSizeMobile,
-												sizeTablet: innerTitleValueFontSizeTablet,
-												weight: innerTitleValueFontWeight,
-												height: innerTitleValueLineHeight,
-												spacing: innerTitleValueLetterSpacing,
-												transform: innerTitleValueTextTransform
-											}}
-											showLetterSpacing={true}
-											showTextTransform={true}
-											setAttributes={setAttributes}
-											{...this.props}
-										/>
-									</Fragment>
-								)}
-							{(progressBarStyle === "horizontal") && (progressBarBottomTitleEnable || progressBarBottomValueEnable) && (
-								<Fragment>
-									<TypographyHelperControl
-										title={__("Bottom Title and Value Typography", "responsive-block-editor-addons")}
-										attrNameTemplate="bottomTitleValue%s"
-										values={{
-											family: bottomTitleValueFontFamily,
-											size: bottomTitleValueFontSize,
-											sizeMobile: bottomTitleValueFontSizeMobile,
-											sizeTablet: bottomTitleValueFontSizeTablet,
-											weight: bottomTitleValueFontWeight,
-											height: bottomTitleValueLineHeight,
-											spacing: bottomTitleValueLetterSpacing,
-											transform: bottomTitleValueTextTransform
-										}}
-										showLetterSpacing={true}
-										showTextTransform={true}
-										setAttributes={setAttributes}
-										{...this.props}
-									/>
-								</Fragment>
-							)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
-								(circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable)
-								&& (
+						{((progressBarStyle === "horizontal" && (progressBarTopTitleEnable || progressBarTopValueEnable || progressBarInnerTitleEnable || progressBarInnerValueEnable || progressBarBottomTitleEnable || progressBarBottomValueEnable)) 
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "circle" && (circularProgressBarValueEnable || circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable || circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)) 
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "semicircle" && (semiCircularProgressBarValueEnable || semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable || semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)) 
+						) && (
+							<PanelBody
+								title={__("Typography", "responsive-block-editor-addons")}
+								initialOpen={false}
+							>
+								{(progressBarStyle === "horizontal") && (progressBarTopTitleEnable || progressBarTopValueEnable) && (
 									<Fragment>
 										<TypographyHelperControl
 											title={__("Top Title and Value Typography", "responsive-block-editor-addons")}
-											attrNameTemplate="circularTopTitleValue%s"
+											attrNameTemplate="topTitleValue%s"
 											values={{
-												family: circularTopTitleValueFontFamily,
-												size: circularTopTitleValueFontSize,
-												sizeMobile: circularTopTitleValueFontSizeMobile,
-												sizeTablet: circularTopTitleValueFontSizeTablet,
-												weight: circularTopTitleValueFontWeight,
-												height: circularTopTitleValueLineHeight,
-												spacing: circularTopTitleValueLetterSpacing,
-												transform: circularTopTitleValueTextTransform
+												family: topTitleValueFontFamily,
+												size: topTitleValueFontSize,
+												sizeMobile: topTitleValueFontSizeMobile,
+												sizeTablet: topTitleValueFontSizeTablet,
+												weight: topTitleValueFontWeight,
+												height: topTitleValueLineHeight,
+												spacing: topTitleValueLetterSpacing,
+												transform: topTitleValueTextTransform
 											}}
 											showLetterSpacing={true}
 											showTextTransform={true}
@@ -964,44 +903,44 @@ export default class Inspector extends Component {
 										/>
 									</Fragment>
 								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "circle")
-								&& (circularProgressBarValueEnable) && (
-									<Fragment>
-										<TypographyHelperControl
-											title={__("Inner Value Typography", "responsive-block-editor-addons")}
-											attrNameTemplate="circularInnerValue%s"
-											values={{
-												family: circularInnerValueFontFamily,
-												size: circularInnerValueFontSize,
-												sizeMobile: circularInnerValueFontSizeMobile,
-												sizeTablet: circularInnerValueFontSizeTablet,
-												weight: circularInnerValueFontWeight,
-												height: circularInnerValueLineHeight,
-												spacing: circularInnerValueLetterSpacing,
-											}}
-											showLetterSpacing={true}
-											showTextTransform={false}
-											setAttributes={setAttributes}
-											{...this.props}
-										/>
-									</Fragment>
-								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
-								(circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)
-								&& (
+								{(progressBarStyle === "horizontal") && (progressBarInnerTitleEnable || progressBarInnerValueEnable)
+									&& (horizontalProgressBarStyle !== "striped" && horizontalProgressBarStyle !== "animatedstriped")
+									&& (
+										<Fragment>
+											<TypographyHelperControl
+												title={__("Inner Title and Value Typography", "responsive-block-editor-addons")}
+												attrNameTemplate="innerTitleValue%s"
+												values={{
+													family: innerTitleValueFontFamily,
+													size: innerTitleValueFontSize,
+													sizeMobile: innerTitleValueFontSizeMobile,
+													sizeTablet: innerTitleValueFontSizeTablet,
+													weight: innerTitleValueFontWeight,
+													height: innerTitleValueLineHeight,
+													spacing: innerTitleValueLetterSpacing,
+													transform: innerTitleValueTextTransform
+												}}
+												showLetterSpacing={true}
+												showTextTransform={true}
+												setAttributes={setAttributes}
+												{...this.props}
+											/>
+										</Fragment>
+									)}
+								{(progressBarStyle === "horizontal") && (progressBarBottomTitleEnable || progressBarBottomValueEnable) && (
 									<Fragment>
 										<TypographyHelperControl
 											title={__("Bottom Title and Value Typography", "responsive-block-editor-addons")}
-											attrNameTemplate="circularBottomTitleValue%s"
+											attrNameTemplate="bottomTitleValue%s"
 											values={{
-												family: circularBottomTitleValueFontFamily,
-												size: circularBottomTitleValueFontSize,
-												sizeMobile: circularBottomTitleValueFontSizeMobile,
-												sizeTablet: circularBottomTitleValueFontSizeTablet,
-												weight: circularBottomTitleValueFontWeight,
-												height: circularBottomTitleValueLineHeight,
-												spacing: circularBottomTitleValueLetterSpacing,
-												transform: circularBottomTitleValueTextTransform
+												family: bottomTitleValueFontFamily,
+												size: bottomTitleValueFontSize,
+												sizeMobile: bottomTitleValueFontSizeMobile,
+												sizeTablet: bottomTitleValueFontSizeTablet,
+												weight: bottomTitleValueFontWeight,
+												height: bottomTitleValueLineHeight,
+												spacing: bottomTitleValueLetterSpacing,
+												transform: bottomTitleValueTextTransform
 											}}
 											showLetterSpacing={true}
 											showTextTransform={true}
@@ -1010,77 +949,148 @@ export default class Inspector extends Component {
 										/>
 									</Fragment>
 								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
-								(semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable)
-								&& (
-									<Fragment>
-										<TypographyHelperControl
-											title={__("Top Title and Value Typography", "responsive-block-editor-addons")}
-											attrNameTemplate="semiCircularTopTitleValue%s"
-											values={{
-												family: semiCircularTopTitleValueFontFamily,
-												size: semiCircularTopTitleValueFontSize,
-												sizeMobile: semiCircularTopTitleValueFontSizeMobile,
-												sizeTablet: semiCircularTopTitleValueFontSizeTablet,
-												weight: semiCircularTopTitleValueFontWeight,
-												height: semiCircularTopTitleValueLineHeight,
-												spacing: semiCircularTopTitleValueLetterSpacing,
-												transform: semiCircularTopTitleValueTextTransform
-											}}
-											showLetterSpacing={true}
-											showTextTransform={true}
-											setAttributes={setAttributes}
-											{...this.props}
-										/>
-									</Fragment>
-								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle")
-								&& (semiCircularProgressBarValueEnable) && (
-									<Fragment>
-										<TypographyHelperControl
-											title={__("Inner Value Typography", "responsive-block-editor-addons")}
-											attrNameTemplate="semiCircularInnerValue%s"
-											values={{
-												family: semiCircularInnerValueFontFamily,
-												size: semiCircularInnerValueFontSize,
-												sizeMobile: semiCircularInnerValueFontSizeMobile,
-												sizeTablet: semiCircularInnerValueFontSizeTablet,
-												weight: semiCircularInnerValueFontWeight,
-												height: semiCircularInnerValueLineHeight,
-												spacing: semiCircularInnerValueLetterSpacing,
-											}}
-											showLetterSpacing={true}
-											showTextTransform={false}
-											setAttributes={setAttributes}
-											{...this.props}
-										/>
-									</Fragment>
-								)}
-							{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
-								(semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)
-								&& (
-									<Fragment>
-										<TypographyHelperControl
-											title={__("Bottom Title and Value Typography", "responsive-block-editor-addons")}
-											attrNameTemplate="semiCircularBottomTitleValue%s"
-											values={{
-												family: semiCircularBottomTitleValueFontFamily,
-												size: semiCircularBottomTitleValueFontSize,
-												sizeMobile: semiCircularBottomTitleValueFontSizeMobile,
-												sizeTablet: semiCircularBottomTitleValueFontSizeTablet,
-												weight: semiCircularBottomTitleValueFontWeight,
-												height: semiCircularBottomTitleValueLineHeight,
-												spacing: semiCircularBottomTitleValueLetterSpacing,
-												transform: semiCircularBottomTitleValueTextTransform
-											}}
-											showLetterSpacing={true}
-											showTextTransform={true}
-											setAttributes={setAttributes}
-											{...this.props}
-										/>
-									</Fragment>
-								)}
-						</PanelBody>
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
+									(circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable)
+									&& (
+										<Fragment>
+											<TypographyHelperControl
+												title={__("Top Title and Value Typography", "responsive-block-editor-addons")}
+												attrNameTemplate="circularTopTitleValue%s"
+												values={{
+													family: circularTopTitleValueFontFamily,
+													size: circularTopTitleValueFontSize,
+													sizeMobile: circularTopTitleValueFontSizeMobile,
+													sizeTablet: circularTopTitleValueFontSizeTablet,
+													weight: circularTopTitleValueFontWeight,
+													height: circularTopTitleValueLineHeight,
+													spacing: circularTopTitleValueLetterSpacing,
+													transform: circularTopTitleValueTextTransform
+												}}
+												showLetterSpacing={true}
+												showTextTransform={true}
+												setAttributes={setAttributes}
+												{...this.props}
+											/>
+										</Fragment>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "circle")
+									&& (circularProgressBarValueEnable) && (
+										<Fragment>
+											<TypographyHelperControl
+												title={__("Inner Value Typography", "responsive-block-editor-addons")}
+												attrNameTemplate="circularInnerValue%s"
+												values={{
+													family: circularInnerValueFontFamily,
+													size: circularInnerValueFontSize,
+													sizeMobile: circularInnerValueFontSizeMobile,
+													sizeTablet: circularInnerValueFontSizeTablet,
+													weight: circularInnerValueFontWeight,
+													height: circularInnerValueLineHeight,
+													spacing: circularInnerValueLetterSpacing,
+												}}
+												showLetterSpacing={true}
+												showTextTransform={false}
+												setAttributes={setAttributes}
+												{...this.props}
+											/>
+										</Fragment>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "circle") &&
+									(circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)
+									&& (
+										<Fragment>
+											<TypographyHelperControl
+												title={__("Bottom Title and Value Typography", "responsive-block-editor-addons")}
+												attrNameTemplate="circularBottomTitleValue%s"
+												values={{
+													family: circularBottomTitleValueFontFamily,
+													size: circularBottomTitleValueFontSize,
+													sizeMobile: circularBottomTitleValueFontSizeMobile,
+													sizeTablet: circularBottomTitleValueFontSizeTablet,
+													weight: circularBottomTitleValueFontWeight,
+													height: circularBottomTitleValueLineHeight,
+													spacing: circularBottomTitleValueLetterSpacing,
+													transform: circularBottomTitleValueTextTransform
+												}}
+												showLetterSpacing={true}
+												showTextTransform={true}
+												setAttributes={setAttributes}
+												{...this.props}
+											/>
+										</Fragment>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
+									(semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable)
+									&& (
+										<Fragment>
+											<TypographyHelperControl
+												title={__("Top Title and Value Typography", "responsive-block-editor-addons")}
+												attrNameTemplate="semiCircularTopTitleValue%s"
+												values={{
+													family: semiCircularTopTitleValueFontFamily,
+													size: semiCircularTopTitleValueFontSize,
+													sizeMobile: semiCircularTopTitleValueFontSizeMobile,
+													sizeTablet: semiCircularTopTitleValueFontSizeTablet,
+													weight: semiCircularTopTitleValueFontWeight,
+													height: semiCircularTopTitleValueLineHeight,
+													spacing: semiCircularTopTitleValueLetterSpacing,
+													transform: semiCircularTopTitleValueTextTransform
+												}}
+												showLetterSpacing={true}
+												showTextTransform={true}
+												setAttributes={setAttributes}
+												{...this.props}
+											/>
+										</Fragment>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle")
+									&& (semiCircularProgressBarValueEnable) && (
+										<Fragment>
+											<TypographyHelperControl
+												title={__("Inner Value Typography", "responsive-block-editor-addons")}
+												attrNameTemplate="semiCircularInnerValue%s"
+												values={{
+													family: semiCircularInnerValueFontFamily,
+													size: semiCircularInnerValueFontSize,
+													sizeMobile: semiCircularInnerValueFontSizeMobile,
+													sizeTablet: semiCircularInnerValueFontSizeTablet,
+													weight: semiCircularInnerValueFontWeight,
+													height: semiCircularInnerValueLineHeight,
+													spacing: semiCircularInnerValueLetterSpacing,
+												}}
+												showLetterSpacing={true}
+												showTextTransform={false}
+												setAttributes={setAttributes}
+												{...this.props}
+											/>
+										</Fragment>
+									)}
+								{(progressBarStyle === "circular" && circularProgressBarStyle === "semicircle") &&
+									(semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)
+									&& (
+										<Fragment>
+											<TypographyHelperControl
+												title={__("Bottom Title and Value Typography", "responsive-block-editor-addons")}
+												attrNameTemplate="semiCircularBottomTitleValue%s"
+												values={{
+													family: semiCircularBottomTitleValueFontFamily,
+													size: semiCircularBottomTitleValueFontSize,
+													sizeMobile: semiCircularBottomTitleValueFontSizeMobile,
+													sizeTablet: semiCircularBottomTitleValueFontSizeTablet,
+													weight: semiCircularBottomTitleValueFontWeight,
+													height: semiCircularBottomTitleValueLineHeight,
+													spacing: semiCircularBottomTitleValueLetterSpacing,
+													transform: semiCircularBottomTitleValueTextTransform
+												}}
+												showLetterSpacing={true}
+												showTextTransform={true}
+												setAttributes={setAttributes}
+												{...this.props}
+											/>
+										</Fragment>
+									)}
+							</PanelBody>
+						)}
 					</InspectorTab>
 					<InspectorTab key={'advance'}></InspectorTab>
 				</InspectorTabs>

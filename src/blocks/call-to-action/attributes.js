@@ -389,5 +389,9 @@ const attributes = {
     type: "number",
     default: 100,
   },
+  buttonHbackgroundType: {
+    type: "string",
+    default: "none",
+  }
 };
 export default attributes;

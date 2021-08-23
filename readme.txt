@@ -5,7 +5,7 @@ Tags: blocks, gutenberg, gutenberg blocks, page builder, WordPress blocks, block
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,11 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
+= 1.3.2 - 17th August 2021 =
+* Feature - Table Of Contents - Added smooth scrolling and scroll offset options for frontend.
+* Fix - Table Of Contents - Added unique Anchor links for duplicated headings
+* Fix - Count Down - Container was not full width when stacked on mobile.
+
 = 1.3.1 - 27th July 2021 =
 * New - Table of Contents Block
 * Feature - Info Block - More customizable options for icon background, Responsive options for image/icon margin, Typography options for Call to Action, option to add link for whole block.

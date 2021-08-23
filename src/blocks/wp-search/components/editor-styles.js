@@ -108,6 +108,9 @@
    var selectors = {
     " ": {
       "width": width,
+      "border-radius": borderRadius,
+      "padding": 0,
+      "max-width": "100%",
     },
     " .responsive-block-editor-addons-search-form__input": {
      "border-top" : inputBorderTop + ' !important',
@@ -162,7 +165,7 @@
       "height" : generateCSSUnit(iconSize, "px"),
       "fill": iconCol,
     },
-    " .responsive-block-editor-addons-search-icon-wrap svg:hover" : {
+    "  .responsive-block-editor-addons-search-submit:hover .responsive-block-editor-addons-search-icon-wrap svg" : {
       "fill": iconHoverColor,
     },
     " .responsive-block-editor-addons-search-button-text": {

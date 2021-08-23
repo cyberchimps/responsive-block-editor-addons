@@ -165,6 +165,10 @@ function EditorStyles(props) {
         hoverboxShadowColor +
         " " +
         hoverboxShadowPositionCSS,
+      "background-color":
+        backgroundType == "color"
+          ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
+          : undefined,
     },
     " .responsive-block-editor-addons-block-column": {
       "padding-top": generateCSSUnit(columnTopPadding, "px"),
@@ -200,12 +204,6 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
-    },
-    " .responsive-block-editor-addons-block-column:hover": {
-      "background-color":
-        backgroundType == "color"
-          ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
-          : undefined,
     },
   };
 

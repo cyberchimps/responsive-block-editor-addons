@@ -130,8 +130,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     const accordionChildControls = () => {
       return (
         <InspectorControls key="inspector">
-          <InspectorTabs>
-            <InspectorTab key={"content"}></InspectorTab>
+          <InspectorTabs hasContent={false}>
             <InspectorTab key={"style"}>
               <PanelBody
                 title={__("Style")}

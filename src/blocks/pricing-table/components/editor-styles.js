@@ -244,7 +244,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button:hover": {
       color: ctaHoverColor + "!important",
       "background-color": updatedButtonBgHColor,
-      "background-image": updatedButtonBgHImage,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBgHImage,
       "border-color" : ctaHoverBorderColor,
     },
 

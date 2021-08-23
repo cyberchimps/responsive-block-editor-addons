@@ -91,7 +91,6 @@ export default class Edit extends Component {
       attributes: {
         block_id,
         socialMediaIcons,
-        showIconLabel,
         iconsAlign,
         viewOption,
         labelFontFamily,
@@ -120,50 +119,53 @@ export default class Edit extends Component {
                   key={index}
                   className="responsive-block-editor-addons-share-icon"
                 >
-                  <a
-                    target={icon.newTab ? "_blank" : null}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      this.setState({
-                        activeLabel: index,
-                        activeIcon: showIconEditor
-                          ? activeIcon == index
-                            ? -1
-                            : index
-                          : index,
-                        showIconEditor: !showIconEditor,
-                      });
-                    }}
-                  >
-                    <div className="rbea-social-icon responsive-block-editor-addons-share-icon-svg-container">
-                      {(viewOption === "icon" || viewOption === "icontext") && (
-                        <span className={classnames(
-                          "rbea-social-icon responsive-block-editor-addons-share-icon-svg",
-                          iconColorType === 'official' ?`responsive-block-editor-addons-icon-${icon.icon}` : '',
-                        )}>
+                  {(viewOption === "icon" || viewOption === "icontext") && (
+                    <a
+                      target={icon.newTab ? "_blank" : null}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        this.setState({
+                          activeLabel: index,
+                          activeIcon: showIconEditor
+                            ? activeIcon == index
+                              ? -1
+                              : index
+                            : index,
+                          showIconEditor: !showIconEditor,
+                        });
+                      }}
+                    >
+                      <div className="rbea-social-icon responsive-block-editor-addons-share-icon-svg-container">
+                        <span
+                          className={classnames(
+                            "rbea-social-icon responsive-block-editor-addons-share-icon-svg",
+                            iconColorType === "official"
+                              ? `responsive-block-editor-addons-icon-${icon.icon}`
+                              : ""
+                          )}
+                        >
                           {renderSVG(icon.icon)}
                         </span>
-                      )}
-                    </div>
+                      </div>
                     </a>
-                    <a
-                    target={icon.newTab ? "_blank" : null}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      this.setState({
-                        activeLabel: index,
-                        activeIcon: showIconEditor
-                          ? activeIcon == index
-                            ? -1
-                            : index
-                          : index,
-                        showIconEditor: !showIconEditor,
-                      });
-                    }}
-                  >
-                    {icon.label &&
-                      showIconLabel &&
-                      (viewOption === "text" || viewOption === "icontext") && (
+                  )}
+                  {icon.label &&
+                    (viewOption === "text" || viewOption === "icontext") && (
+                      <a
+                        target={icon.newTab ? "_blank" : null}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          this.setState({
+                            activeLabel: index,
+                            activeIcon: showIconEditor
+                              ? activeIcon == index
+                                ? -1
+                                : index
+                              : index,
+                            showIconEditor: !showIconEditor,
+                          });
+                        }}
+                      >
                         <div
                           className="responsive-block-editor-addons-share-icon-label"
                           contentEditable="true"
@@ -178,8 +180,8 @@ export default class Edit extends Component {
                         >
                           {icon.label}
                         </div>
-                      )}
-                  </a>
+                      </a>
+                    )}
                   {showIconEditor && activeIcon == index && isSelected && (
                     <Fragment>
                       <Popover
@@ -239,7 +241,7 @@ export default class Edit extends Component {
                                 "newTab",
                                 val
                               )
-                            }                        
+                            }
                           />
                           <br />
                           <Button

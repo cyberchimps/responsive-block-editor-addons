@@ -121,6 +121,10 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
+				'listStyleColorHover'    => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
 				// Grid Spacing Attributes.
 				'rowGap'                 => array(
 					'type'    => 'number',
@@ -183,18 +187,33 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'number',
 					'default' => 5,
 				),
+				'listTopMargin'          => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'listTopMarginMobile'    => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'listTopMarginTablet'    => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
 				// Grid Styling Attributes - Typography.
 				'titleFontFamily'        => array(
 					'type' => 'string',
 				),
 				'titleFontSize'          => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'titleFontSizeMobile'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 14,
 				),
 				'titleFontSizeTablet'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'titleFontWeight'        => array(
 					'type' => 'string',
@@ -212,13 +231,16 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type' => 'string',
 				),
 				'countFontSize'          => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'countFontSizeMobile'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 14,
 				),
 				'countFontSizeTablet'    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'countFontWeight'        => array(
 					'type' => 'string',
@@ -278,13 +300,16 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type' => 'string',
 				),
 				'listFontSize'           => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'listFontSizeMobile'     => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 14,
 				),
 				'listFontSizeTablet'     => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 16,
 				),
 				'listFontWeight'         => array(
 					'type' => 'string',
@@ -311,7 +336,10 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'number',
 					'default' => 1,
 				),
-
+				'taxonomyAvailable'      => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_taxonomy_list',
 		)
@@ -331,7 +359,10 @@ function responsive_block_editor_addons_render_taxonomy_list( $attributes ) {
 	$main_class = 'responsive-block-editor-addons-block-taxonomy-list block-' . $block_id;
 	ob_start();
 	?>
-	<div class="<?php echo esc_html( $main_class ); ?>">
+	<?php
+	if ( $attributes['taxonomyAvailable'] ) {
+		?>
+			<div class="<?php echo esc_html( $main_class ); ?>">
 		<?php
 		if ( 'grid' === $layout ) {
 			responsive_block_editor_addons_render_grid_layout( $attributes );
@@ -340,6 +371,15 @@ function responsive_block_editor_addons_render_taxonomy_list( $attributes ) {
 		}
 		?>
 	</div>
+			<?php
+	} else {
+		?>
+			<div class="reponsive-block-editor-addons-taxonomy-list-no-taxonomy-available">
+				<?php echo esc_attr( $attributes['noTaxDisplaytext'] ); ?>
+				</div>
+			<?php
+	}
+	?>
 	<?php
 	return ob_get_clean();
 }
@@ -366,7 +406,10 @@ function responsive_block_editor_addons_render_grid_layout( $attributes ) {
 	$new_categories_list = get_terms( $attributes['taxonomyType'], $args );
 
 	?>
-		<div class="responsive-block-editor-addons-block-grid">
+	<?php
+	if ( $attributes['taxonomyAvailable'] ) {
+		?>
+				<div class="responsive-block-editor-addons-block-grid">
 		<?php
 		foreach ( $new_categories_list as $category ) {
 			?>
@@ -392,6 +435,15 @@ function responsive_block_editor_addons_render_grid_layout( $attributes ) {
 		}
 		?>
 		</div>
+		<?php
+	} else {
+		?>
+				<div class="reponsive-block-editor-addons-taxonomy-list-no-taxonomy-available">
+				<?php echo esc_attr( $attributes['noTaxDisplaytext'] ); ?>
+				</div>
+			<?php
+	}
+	?>
 	<?php
 }
 
@@ -418,42 +470,54 @@ function responsive_block_editor_addons_render_list_layout( $attributes ) {
 	$new_categories_list = get_terms( $attributes['taxonomyType'], $args );
 
 	?>
-			<div class="responsive-block-editor-addons-block-list">
-				<ul class="responsive-block-editor-addons-block-list-wrap">
+	<?php
+	if ( $attributes['taxonomyAvailable'] ) {
+		?>
+				<div class="responsive-block-editor-addons-block-list">
+					<ul class="responsive-block-editor-addons-block-list-wrap">
 					<?php
 					foreach ( $new_categories_list as $category ) {
 						?>
-								<li class="responsive-block-editor-addons-block-list-item">
-								<<?php echo esc_html( $title_tag ); ?> class="responsive-block-editor-addons-block-link-wrap">
-									<a class="responsive-block-editor-addons-block-link" href="<?php echo esc_url( get_term_link( $category->slug, $taxonomy_type ) ); ?>">
-										<div class="responsive-block-editor-addons-block-link-name">
+									<li class="responsive-block-editor-addons-block-list-item">
+									<<?php echo esc_html( $title_tag ); ?> class="responsive-block-editor-addons-block-link-wrap">
+										<a class="responsive-block-editor-addons-block-link" href="<?php echo esc_url( get_term_link( $category->slug, $taxonomy_type ) ); ?>">
+											<div class="responsive-block-editor-addons-block-link-name">
 										<?php echo esc_attr( $category->name ); ?>
-										</div>
-									</a>
+											</div>
+										</a>
 								<?php
 								if ( $show_count ) {
 									?>
-												<span class="responsive-block-editor-addons-block-list-count">
+													<span class="responsive-block-editor-addons-block-list-count">
 											<?php echo '(' . esc_attr( $category->count ) . ')'; ?>
-												</span>
+													</span>
 										<?php
 								}
 								?>
-								</<?php echo esc_html( $title_tag ); ?>>
-								<?php
-								if ( 'none' !== $separator_style ) {
-									?>
-										<div class="responsive-block-editor-addons-block-separator-wrap">
-											<div class="responsive-block-editor-addons-block-separator"></div>
-										</div>
+									</<?php echo esc_html( $title_tag ); ?>>
 									<?php
-								}
-								?>
-								</li>
-							<?php
+									if ( 'none' !== $separator_style ) {
+										?>
+											<div class="responsive-block-editor-addons-block-separator-wrap">
+												<div class="responsive-block-editor-addons-block-separator"></div>
+											</div>
+										<?php
+									}
+									?>
+									</li>
+								<?php
 					}
 					?>
-				</ul>
-			</div>
+					</ul>
+				</div>
+			<?php
+	} else {
+		?>
+				<div class="reponsive-block-editor-addons-taxonomy-list-no-taxonomy-available">
+					<?php echo esc_attr( $attributes['noTaxDisplaytext'] ); ?>
+				</div>
+			<?php
+	}
+	?>
 		<?php
 }
