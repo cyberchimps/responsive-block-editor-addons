@@ -10828,7 +10828,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowPosition'        => 'outset',
 				'backgroundColor'          => '#fff',
 				'opacity'                  => 100,
-				'iconColumnsMobile'        => 'auto',
+				'iconColumnsMobile'        => '2',
 				'iconColumnsTablet'        => 'auto',
 			);
 		}
