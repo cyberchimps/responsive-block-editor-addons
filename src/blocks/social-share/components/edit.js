@@ -32,13 +32,22 @@ export default class Edit extends Component {
   editShareIconHandler(index, type, val) {
     const { attributes, setAttributes } = this.props;
     let socialMediaIcons = [...attributes.socialMediaIcons];
-    socialMediaIcons[index] ? (socialMediaIcons[index][type] = val) : "";
-    setAttributes({ socialMediaIcons });
+    let socialMediaIconsCopy = [];
+    attributes.socialMediaIcons.forEach(obj => {
+      let copyObj = {...obj};
+      socialMediaIconsCopy.push(copyObj);
+    })
+    socialMediaIconsCopy[index] ? (socialMediaIconsCopy[index][type] = val) : "";
+    setAttributes({ socialMediaIcons: socialMediaIconsCopy });
   }
 
   insertIconHandler() {
     const { attributes, setAttributes } = this.props;
-    let socialMediaIcons = [...attributes.socialMediaIcons];
+    let socialMediaIconsCopy = [];
+    attributes.socialMediaIcons.forEach(obj => {
+      let copyObj = {...obj};
+      socialMediaIconsCopy.push(copyObj);
+    })    
     const newShareIcon = {
       icon: "skype",
       label: "Skype",
@@ -46,18 +55,22 @@ export default class Edit extends Component {
       url: "https://skype.com/",
       newTab: false,
     };
-    socialMediaIcons.push(newShareIcon);
-    this.setState({ activeIcon: socialMediaIcons.length - 1 });
-    setAttributes({ socialMediaIcons });
+    socialMediaIconsCopy.push(newShareIcon);
+    this.setState({ activeIcon: socialMediaIconsCopy.length - 1 });
+    setAttributes({ socialMediaIcons: socialMediaIconsCopy });
   }
 
   removeIconHandler() {
     const { attributes, setAttributes } = this.props;
     const { activeIcon } = this.state;
-    let socialMediaIcons = [...attributes.socialMediaIcons];
-    socialMediaIcons.splice(activeIcon, 1);
+    let socialMediaIconsCopy = [];
+    attributes.socialMediaIcons.forEach(obj => {
+      let copyObj = {...obj};
+      socialMediaIconsCopy.push(copyObj);
+    })    
+    socialMediaIconsCopy.splice(activeIcon, 1);
     this.setState({ activeIcon: -1 });
-    setAttributes({ socialMediaIcons });
+    setAttributes({ socialMediaIcons: socialMediaIconsCopy });
   }
 
   componentDidUpdate(prevProps, prevState) {
