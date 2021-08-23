@@ -391,9 +391,9 @@ export default class Inspector extends Component {
                 max={100}
                 allowReset
               />
-              {viewOption === "icontext" && (
+              {(viewOption === "icontext" || viewOption === 'text') && (
                 <RangeControl
-                  label={__("Icon Label Gap", "responsive-block-editor-addons")}
+                  label={viewOption === "icontext" ? __("Icon Label Gap", "responsive-block-editor-addons") : __("Label Gap", "responsive-block-editor-addons")}
                   value={iconLabelGap}
                   onChange={(value) => setAttributes({ iconLabelGap: value })}
                   min={0}
