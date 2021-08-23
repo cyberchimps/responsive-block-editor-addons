@@ -65,6 +65,8 @@ function EditorStyles(props) {
     boxShadowPosition,
     backgroundColor,
     opacity,
+    iconColumnsMobile,
+    iconColumnsTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -95,6 +97,23 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
       "padding-left": generateCSSUnit(blockLeftPadding, "px"),
       "padding-right": generateCSSUnit(blockRightPadding, "px"),
+      "border-color": blockBorderColor,
+      "border-style": blockBorderStyle,
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "box-shadow":
+        generateCSSUnit(boxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(boxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(boxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(boxShadowSpread, "px") +
+        " " +
+        boxShadowColor +
+        " " +
+        boxShadowPositionCSS,
+        width: 'fit-content',
     },
     " .responsive-block-editor-addons-share-icon": {
       "border-radius": iconShapeRadius,
@@ -107,9 +126,11 @@ function EditorStyles(props) {
           : "",
       display: "flex",
       "justify-content": "center",
-      height: generateCSSUnit(iconContainerHeight, "px"),
-      width:
-        skin !== "boxed" ? generateCSSUnit(iconContainerSize, "px") : "100%",
+      "padding-top": generateCSSUnit(iconContainerHeight, "px"),
+      "padding-bottom": generateCSSUnit(iconContainerHeight, "px"),
+      "padding-left": generateCSSUnit(iconContainerSize, "px"),
+      "padding-right": generateCSSUnit(iconContainerSize, "px"),
+      width: "fit-content"
     },
     " .responsive-block-editor-addons-share-icon > a:first-child": {
       padding: skin === "boxed" || skin === "minimal" ? "0 10px 0 10px" : "",
@@ -130,22 +151,6 @@ function EditorStyles(props) {
       "grid-auto-flow": iconColumns !== "auto" ? "" : "column",
       "grid-column-gap": generateCSSUnit(iconColumnsGap, "px"),
       "grid-row-gap": generateCSSUnit(iconRowsGap, "px"),
-      "border-color": blockBorderColor,
-      "border-style": blockBorderStyle,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
-      "box-shadow":
-        generateCSSUnit(boxShadowHOffset, "px") +
-        " " +
-        generateCSSUnit(boxShadowVOffset, "px") +
-        " " +
-        generateCSSUnit(boxShadowBlur, "px") +
-        " " +
-        generateCSSUnit(boxShadowSpread, "px") +
-        " " +
-        boxShadowColor +
-        " " +
-        boxShadowPositionCSS,
       "background-color": `${hexToRgba(
         backgroundColor || "#ffffff",
         newopacity || 0
@@ -223,6 +228,11 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-share-icon-label": {
       "font-size": generateCSSUnit(labelFontSizeMobile, "px"),
     },
+    " .responsive-block-editor-addons-share-icons-container": {
+      "grid-template-columns":
+        iconColumnsMobile !== "auto" ? `repeat(${iconColumnsMobile} , auto)` : "",
+        "grid-auto-flow": iconColumnsMobile !== "auto" ? "unset" : "column",
+    }
   };
 
   var tablet_selectors = {
@@ -239,6 +249,11 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-share-icon-label": {
       "font-size": generateCSSUnit(labelFontSizeTablet, "px"),
     },
+    " .responsive-block-editor-addons-share-icons-container": {
+      "grid-template-columns":
+        iconColumnsTablet !== "auto" ? `repeat(${iconColumnsTablet} , auto)` : "",
+      "grid-auto-flow": iconColumnsTablet !== "auto" ? "unset" : "column",
+    }
   };
 
   var styling_css = "";

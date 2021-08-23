@@ -152,7 +152,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'showTitle'           => true,
 			'expandAlignment'     => '',
 			'textColor'           => '',
-			'linkColor'           => '',
+			'linkColor'           => '#0066cc',
 			'titleColor'          => '',
 			'titleSpace'          => 28,
 			'textSpace'           => 20,
@@ -1581,6 +1581,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonbackgroundColor2'   => '#fff',
 			'buttonbackgroundType'     => '',
 			'buttonHbackgroundType'    => 'none',
+			'zIndex'                   => 0,
 
 		);
 		$values = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
@@ -2859,13 +2860,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'blockLeftMarginTablet'      => 0,
 			'blockLeftMarginMobile'      => 0,
 			'zIndex'                     => 0,
-			'headingFontFamily'          => 'Default',
+			'headingFontFamily'          => '',
 			'headingFontWeight'          => '500',
 			'headingFontSize'            => 16,
 			'headingFontSizeTablet'      => 16,
 			'headingFontSizeMobile'      => 14,
 			'headingLineHeight'          => 1,
-			'contentFontFamily'          => 'Default',
+			'contentFontFamily'          => '',
 			'contentFontWeight'          => '500',
 			'contentFontSize'            => 16,
 			'contentFontSizeTablet'      => 16,
