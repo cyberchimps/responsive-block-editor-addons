@@ -19,6 +19,9 @@ const { Button, Dashicon, Tooltip } = wp.components;
 export default class LayoutLibraryItemCard extends Component {
   constructor() {
     super(...arguments);
+    this.state = {
+      importing: false
+    }
   }
 
   addDefaultSrc(event) {
@@ -34,12 +37,14 @@ export default class LayoutLibraryItemCard extends Component {
 			_wpnonce: wpApiSettings.nonce,
 		} )
 			.then( ( modified_content ) => {
+        this.setState({importing: false})
 				return modified_content;
 			} )
 			.catch( ( error ) => console.error( error ) );
   }
 
   async importCurrentPattern(content, id) {
+    this.setState({importing: true})
     //api call to backend function: download images in content and replace remote path with downloaded path.
     let modified_content = await this.importApiCall( content );
     //call internal import function with content provided, to render pattern on screen.
@@ -55,14 +60,10 @@ export default class LayoutLibraryItemCard extends Component {
         >
           <div className="rbea-patterns-design-inside">
             <div className="-design-item">
-              <Button
+              <div
                 key={this.props.itemKey}
-                className="rbea-patterns-insert-button"
+                className="rbea-patterns-insert-button responsive-block-editior-addons-import-button-outer"
                 isSmall
-                onClick={() => {
-                  //call function having api call.
-                  this.importCurrentPattern(this.props.content, this.props.clientId)
-                }}
               >
                 <img
                   src={
@@ -73,7 +74,19 @@ export default class LayoutLibraryItemCard extends Component {
                   alt={this.props.name}
                   onError={this.addDefaultSrc}
                 />
-              </Button>
+                <button
+                  className="responsive-block-editior-addons-import-button-inner"
+                  onClick={() => {
+                    //call function having api call.
+                    this.importCurrentPattern(this.props.content, this.props.clientId)
+                  }}
+                >
+                    <span class="dashicons dashicons-download responsive-block-editior-addons-import-icon"></span>                  
+                    {
+                       this.state.importing? 'Importing...' : 'Import'
+                    }
+                </button>
+              </div>
 
               <div className="rbea-patterns-design-info">
                 <div className="rbea-patterns-design-title">

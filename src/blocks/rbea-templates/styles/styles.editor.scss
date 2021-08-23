@@ -602,3 +602,36 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 .rbea-pattern-importer-modal-header .components-input-control__container {
 	width: 400px;
 }
+
+.responsive-block-editior-addons-import-button-outer{
+	position: relative;
+}
+
+.responsive-block-editior-addons-import-button-inner{
+	position: absolute;
+	z-index: 2;
+	top: 45%;
+	display: none;
+	left: 35%;
+	border: 1px solid #1e70d6;
+    background: #1e70d6;
+    box-shadow: 0 1px 0 #165cb4;
+    color: #fff;
+	padding-top: 5px;
+
+	.responsive-block-editior-addons-import-icon {
+		margin-right: 5px;
+		font-size: 16px;
+		margin-top: 3px;
+	}
+}
+
+.responsive-block-editior-addons-import-button-outer:hover .responsive-block-editior-addons-import-button-inner{ 
+	display:block;
+	cursor: pointer;
+	filter: blur(0px);
+}
+
+.responsive-block-editior-addons-import-button-outer:hover img{
+	filter: blur(3px);
+}
