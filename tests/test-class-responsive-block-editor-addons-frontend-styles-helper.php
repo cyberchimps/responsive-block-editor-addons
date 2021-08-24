@@ -1038,6 +1038,33 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css function for divider block - spacer style not basic
+	 */
+	public function test_get_block_css_divider_spacer_style_not_basic() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_advanced_heading_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/divider',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$divider_block_id,
+					'spacerDivideerStyle' => 'none',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_divider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for count up block get_block_css function
 	 */
 	public function test_get_block_css_count_up() {
