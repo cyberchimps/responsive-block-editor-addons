@@ -10611,7 +10611,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$attr['boxShadowColor'] .
 					' ' .
 					$box_shadow_position_css,
-					'width'            => 'fit-content',
+					'min-width'        => 'fit-content',
+					'max-width'        => '100%',
 				),
 				' .responsive-block-editor-addons-share-icon' => array(
 					'border-radius'    => $icon_shape_radius,
