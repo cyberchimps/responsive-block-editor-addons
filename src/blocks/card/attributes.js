@@ -40,13 +40,13 @@ const attributes = {
   textColor: {
     type: "string",
   },
-  itemBackgroundColor: {
+  backgroundColor: {
     type: "string",
   },
-  buttonColor: {
+  ctaBackColor: {
     type: "string",
   },
-  buttonTextColor: {
+  ctaColor: {
     type: "string",
     default: "#fff",
   },
@@ -77,7 +77,23 @@ const attributes = {
     type: "number",
     default: 8,
   },
+  titleSpaceMobile: {
+    type: "number",
+    default: 8,
+  },
+  titleSpaceTablet: {
+    type: "number",
+    default: 8,
+  },
   subtitleSpace: {
+    type: "number",
+    default: 16,
+  },
+  subtitleSpaceMobile: {
+    type: "number",
+    default: 16,
+  },
+  subtitleSpaceTablet: {
     type: "number",
     default: 16,
   },
@@ -85,15 +101,23 @@ const attributes = {
     type: "number",
     default: 16,
   },
+  contentSpaceMobile: {
+    type: "number",
+    default: 16,
+  },
+  contentSpaceTablet: {
+    type: "number",
+    default: 16,
+  },
   buttonSpace: {
     type: "number",
     default: 20,
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 0,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
     default: 12,
   },
@@ -118,7 +142,7 @@ const attributes = {
     default: 90,
   },
   backgroundImage: {
-    type: "object",
+    type: "string",
   },
   backgroundColor: {
     type: "string",
@@ -162,6 +186,14 @@ const attributes = {
     type: "number",
     default: 2,
   },
+  blockmarginMobile: {
+    type: "number",
+    default: 2,
+  },
+  blockmarginTablet: {
+    type: "number",
+    default: 2,
+  },
   blockzindex: {
     type: "number",
     default: 1,
@@ -182,22 +214,26 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  buttonhColor: {
+  ctaHoverBackColor: {
     type: "string",
   },
-  buttonhTextColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#e6f2ff",
   },
-  butopacity: {
+  buttonopacity: {
     type: "number",
     default: 100,
   },
-  vPadding: {
+  buttonHopacity: {
+    type: "number",
+    default: 100,
+  },
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  hPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
@@ -209,15 +245,15 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  butborderWidth: {
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  butborderRadius: {
+  ctaBorderRadius: {
     type: "number",
     default: 2,
   },
-  butborderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "none",
   },
@@ -301,7 +337,23 @@ const attributes = {
     type: "number",
     default: 2,
   },
+  blockbotmarginMobile: {
+    type: "number",
+    default: 2,
+  },
+  blockbotmarginTablet: {
+    type: "number",
+    default: 2,
+  },
   blockleftmargin: {
+    type: "number",
+    default: 0,
+  },
+  blockleftmarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockleftmarginTablet: {
     type: "number",
     default: 0,
   },
@@ -309,7 +361,23 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  blockrightmarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockrightmarginTablet: {
+    type: "number",
+    default: 0,
+  },
   contenttopSpace: {
+    type: "number",
+    default: 16,
+  },
+  contenttopSpaceMobile: {
+    type: "number",
+    default: 16,
+  },
+  contenttopSpaceTablet: {
     type: "number",
     default: 16,
   },
@@ -329,7 +397,7 @@ const attributes = {
     type: "string",
     default: "cover",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "none",
   },
@@ -341,7 +409,7 @@ const attributes = {
     type: "string",
     default: "left",
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
   },
   backgroundImageOne: {
@@ -356,5 +424,81 @@ const attributes = {
   backgroundImageFour: {
     type: "string",
   },
+  backgroundImagePosition: {
+    type: "string",
+    default: "center center",
+  },
+  backgroundImageRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  backgroundImageSize: {
+    type: "string",
+    default: "cover",
+  },
+  headingFontSizeMobile: {
+    type: "number",
+  },
+  headingFontSizeTablet: {
+    type: "number",
+  },
+  subFontSizeMobile: {
+    type: "number",
+  },
+  subFontSizeTablet: {
+    type: "number",
+  },
+  contentFontSizeMobile: {
+    type: "number",
+  },
+  contentFontSizeTablet: {
+    type: "number",
+  },
+  ctaBorderColor: {
+    type: "string",
+  },
+  ctaHoverBorderColor: {
+    type: "string",
+  },
+  ctaTextOpacity: {
+    typr: "number",
+    default: 100,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 10
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 10
+  },
+  vMarginTablet: {
+    type: "number",
+    default: 10
+  },
+  vMarginMobile: {
+    type: "number",
+    default: 10
+  },
+  hMarginTablet: {
+    type: "number",
+    default: 0
+  },
+  hMarginMobile: {
+    type: "number",
+    default: 0
+  },
+  buttonHbackgroundType: {
+    type: "string",
+    default: "none",
+  }
 };
 export default attributes;

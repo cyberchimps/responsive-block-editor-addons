@@ -1,0 +1,693 @@
+.responsive-block-editor-addons-tabs-select-style.responsive-block-editor-addons-size-type-field-tabs .components-tab-panel__tabs{
+    position: relative;
+    z-index: 999999999999;
+    margin-right: 0px;
+   
+}
+.responsive-block-editor-addons-tabs-select-style.responsive-block-editor-addons-size-type-field-tabs .components-tab-panel__tab-content{
+    .components-flex.wp-components-flex.components-wp-components-flex.wp-components-wp-components-flex.components-select-control{
+        display: block;
+    }
+}
+.responsive-block-editor-addons-tabs__wrap{
+    display: flex;
+    margin: 15px;
+        ul.responsive-block-editor-addons-tabs__panel{
+            list-style-type: none;
+            display: inherit;
+            li.responsive-block-editor-addons-tab{
+                float: left;
+                position: relative;
+            }
+            .responsive-block-editor-addons-tabs__icon-position-left{
+                display: inline-flex;
+            }
+            .responsive-block-editor-addons-tabs__icon-position-top{
+                display: block;
+                .responsive-block-editor-addons-tabs__icon{
+                    display: block;
+                    text-align: center;
+                }
+            }
+            .responsive-block-editor-addons-tabs__icon-position-bottom{
+                display: block;
+                .responsive-block-editor-addons-tabs__icon{
+                    display: block;
+                    text-align: center;
+                }
+            }
+            .responsive-block-editor-addons-tabs__icon-position-right{
+                display: inline-flex;
+            }
+        }   
+    .responsive-block-editor-addons-tabs__body-wrap{
+        position:relative;
+        max-width: 100%;
+        padding: 10px;
+    }
+    .responsive-block-editor-addons-tabs-editor-controls{
+        left: 0px;
+        background-color: #000000;
+        position: absolute;
+        top: -21px;
+        display: none;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
+        width: fit-content;
+        padding-left: 2px;
+        padding-right: 2px;
+        border-radius: 2px;
+        font-size: 5px;
+    }
+    span.responsive-block-editor-addons-tabs__remove {
+        color: #fff;
+        cursor: pointer;
+        z-index: 1;
+    }
+    li.responsive-block-editor-addons-tab:hover span.responsive-block-editor-addons-tabs__remove {
+        display: block;
+    }
+    .responsive-block-editor-addons-tab-item__move-forward,
+    .responsive-block-editor-addons-tab-item__move-back{
+        color: #fff;
+        cursor: pointer;
+        z-index: 1;
+    }
+    li.responsive-block-editor-addons-tab:hover .responsive-block-editor-addons-tabs-editor-controls {
+        display: inline-flex;
+    }
+    .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__add-tab{
+        .dashicon{
+            vertical-align: middle;
+        }
+    }
+}
+.edit-post-visual-editor .responsive-block-editor-addons-tabs__wrap .block-editor-button-block-appender{
+    display: none;
+}
+
+
+   //Horizonatal Styles
+   .responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle1-tablet {
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+    }
+    .responsive-block-editor-addons-tab{  
+        border-style: solid;
+        margin: 10px 10px 10px 0px;
+        padding: 6px 12px;
+        border-radius: 4px;
+    }
+    p{
+        margin:0px;
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle2-tablet {
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        border-bottom-style:solid;
+    }
+    .responsive-block-editor-addons-tab{  
+        margin: 10px 10px -1px 0px;
+        padding: 6px 12px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    p{
+        margin:0px;
+    }
+    .responsive-block-editor-addons-tabs__active{
+        border-bottom-style: solid;
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border:none;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle3-tablet {
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+    }
+    .responsive-block-editor-addons-tab{  
+        margin: 3px 3px 0px 0px;
+        padding: 6px 12px;
+        p{
+            margin:0px;
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle4-tablet {
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+    }
+    .responsive-block-editor-addons-tab{  
+        border-radius: 30px;
+        border-style: solid;
+        margin: 10px 10px 10px 0px;
+        padding: 6px 12px 6px 12px;
+        p{
+            margin:0px;
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle5-tablet {
+    flex-direction: column;
+    border-style: solid;
+    ul.responsive-block-editor-addons-tabs__panel{
+       justify-content: space-between;
+        margin: 0px;
+        padding:0px;
+    }
+    .responsive-block-editor-addons-tab{  
+        padding: 6px 12px;
+        margin: 10px 10px 10px 10px;
+        width: 100%;
+        text-align: center;
+        p{
+            margin:0px;
+        }
+    }
+    .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active{
+        border-bottom:1px solid ;
+    }
+}
+//Vertical Styles
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle6-tablet{   
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        .responsive-block-editor-addons-tab{  
+            border-style: solid;
+            margin: 0px 10px 10px 0px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            p{
+                margin:0px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle7-tablet {
+    flex-direction: row;
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        margin:0px;
+        padding:0px;
+        border-bottom-style: solid;
+        .responsive-block-editor-addons-tab{  
+            margin: 10px 10px 0px 0px;
+            padding: 6px 12px;
+            
+            p{
+                margin:0px;
+            }
+        }
+        .responsive-block-editor-addons-tabs__active{
+            border-bottom-style: solid;
+        }
+
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border:none;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle8-tablet {
+    flex-direction: row;
+    display: flex;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        min-width: 25%;
+        max-width: 25%;
+        .responsive-block-editor-addons-tab{  
+            border-bottom-style: none ;
+            padding: 6px 12px;
+            p{
+                margin:0px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle9-tablet {
+    flex-direction: row;
+    display: flex;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        .responsive-block-editor-addons-tab{  
+            border-radius: 30px;
+            border-style: solid;
+            margin: 0px 10px 10px 0px;
+            padding: 6px 12px 6px 12px;
+            p{
+                margin:0px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-tablet.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle10-tablet {
+    border-style: solid;
+    flex-direction: row;
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        margin: 0px;
+        padding:0px;
+        .responsive-block-editor-addons-tab{  
+            padding: 6px 12px;
+            margin: 10px 10px 10px 10px;
+            text-align: center;
+            p{
+                margin:0px;
+            }
+        }
+        .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active{
+            border-right-style:solid;
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+
+//Horizonatal Styles
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle1-mobile{
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+    }
+    .responsive-block-editor-addons-tab{  
+        border-style: solid;
+        margin: 10px 10px 10px 0px;
+        padding: 6px 12px;
+        border-radius: 4px;
+    }
+    p{
+        margin:0px;
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-direction: row;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle2-mobile{
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        border-bottom:1px solid #b3b6b9 ;
+    }
+    .responsive-block-editor-addons-tab{  
+        margin: 10px 10px -1px 0px;
+        padding: 6px 12px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+    p{
+        margin:0px;
+    }
+    .responsive-block-editor-addons-tabs__active{
+        border-bottom-style: solid;
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border:none;
+        flex-direction: row;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle3-mobile{
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-grow: 1;
+        margin-bottom:0px;
+        flex-direction: row;
+        padding:0px;
+    }
+    .responsive-block-editor-addons-tab{  
+        margin: 3px 3px 0px 0px;
+        padding: 6px 12px;
+        p{
+            margin:0px;
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-direction: row;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle4-mobile{
+    flex-direction: column;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        flex-direction: row;
+        display: flex;
+        flex-grow: 1;
+    }
+    .responsive-block-editor-addons-tab{  
+        border-radius: 30px;
+        border-style: solid;
+        margin: 10px 10px 10px 0px;
+        padding: 6px 12px 6px 12px;
+        p{
+            margin:0px;
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        max-width: 100%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__hstyle5-mobile{
+    flex-direction: column;
+    border-style: solid;
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-grow: 1;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0px;
+        padding:0px;
+    }
+    .responsive-block-editor-addons-tab{  
+        padding: 6px 12px;
+        margin: 10px 10px 10px 10px;
+        text-align: center;
+        width: 100%;
+        p{
+            margin:0px;
+        }
+    }
+    .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active{
+        border-bottom-style:solid;
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        max-width: 100%;
+    }
+}
+//Vertical Styles
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle6-mobile{  
+    
+    flex-direction: row;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        .responsive-block-editor-addons-tab{  
+            border-style: solid;
+            margin: 0px 10px 10px 0px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            p{
+                margin:-9px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle7-mobile{
+    flex-direction: row;
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        margin:0px;
+        padding:0px;
+        .responsive-block-editor-addons-tab{  
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+            border-bottom-style: solid;
+            margin: 10px 10px 0px 0px;
+            padding: 6px 12px;
+            
+            p{
+                margin:0px;
+            }
+        }
+        .responsive-block-editor-addons-tabs__active{
+            border-bottom-style: solid ;
+        }
+
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border:none;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle8-mobile{
+    flex-direction: row;
+    display: flex;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        min-width: 25%;
+        max-width: 25%;
+        .responsive-block-editor-addons-tab{  
+            border-bottom-style: none ;
+            padding: 6px 12px;
+            p{
+                margin:0px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle9-mobile{
+    flex-direction: row;
+    display: flex;
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin-bottom:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        .responsive-block-editor-addons-tab{  
+            border-radius: 30px;
+            border-style: solid;
+            margin: 0px 10px 10px 0px;
+            padding: 6px 12px 6px 12px;
+            p{
+                margin:0px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__vstyle10-mobile{
+    border-style: solid;
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 24%;
+        max-width: 24%;
+        margin: 0px;
+        padding:0px;
+        .responsive-block-editor-addons-tab{  
+            padding: 6px 12px;
+            margin: 10px 10px 10px 10px;
+            text-align: center;
+            p{
+                margin:0px;
+            }
+        }
+        .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active{
+            border-right-style:solid;
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        flex-grow: 3;
+        max-width: 75%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__stack1-mobile{ 
+    border-style: None;
+    display: grid; 
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        max-width:100%;
+        flex-grow: unset;
+        .responsive-block-editor-addons-tab{  
+            border-style: solid;
+            margin: 0px 0px 10px 0px;
+            padding: 6px 12px;
+            p{
+                margin:0px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        max-width:100%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__stack2-mobile{
+    border-style: None;
+    display: grid; 
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-direction: column;
+        max-width:100%;
+        flex-grow: unset;
+        width:100%;
+        margin:0px;
+        padding:0px;
+        border-bottom-style: solid;
+        .responsive-block-editor-addons-tab{  
+            margin: 0px 0px 10px 0px;
+            padding: 6px 12px;
+
+            p{
+                margin:0px;
+            }
+        }
+        .responsive-block-editor-addons-tabs__active{
+            border-bottom-style: solid ;
+        }
+
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        max-width:100%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__stack3-mobile{
+    border-style: None;
+    display: grid; 
+    ul.responsive-block-editor-addons-tabs__panel{
+        margin:0px;
+        padding:0px;
+        display: flex;
+        flex-direction: column;
+        max-width:100%;
+        flex-grow: unset;
+        width:100%;
+        .responsive-block-editor-addons-tab{  
+            border-radius: 30px;
+            border-style: solid;
+            margin: 0px 0px 10px 0px;
+            padding: 6px 12px 6px 12px;
+            p{
+                margin:0px;
+            }
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        border-style: solid;
+        max-width:100%;
+    }
+}
+.responsive-block-editor-addons-editor-preview-mode-mobile.responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-tabs__stack4-mobile{
+    display: grid; 
+    border-style: solid;
+    margin: auto;
+    ul.responsive-block-editor-addons-tabs__panel{
+        display: flex;
+        flex-direction: column;
+        max-width:100%;
+        flex-grow: unset;
+        width:100%;
+        margin: 0px;
+        padding:0px;
+        .responsive-block-editor-addons-tab{  
+            padding: 6px 12px;
+            margin: 0px 0px 10px 0px;
+            text-align: center;
+            p{
+                margin:0px;
+            }
+        }
+        .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active{
+            border-right-style:solid;
+        }
+    }
+    .responsive-block-editor-addons-tabs__body-wrap{
+        max-width:100%;
+    }
+}
