@@ -1011,6 +1011,33 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css function for divider block - spacer style
+	 */
+	public function test_get_block_css_divider_spacer_style() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_advanced_heading_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/divider',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$divider_block_id,
+					'spacerDivideerStyle' => 'basic',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_divider_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for count up block get_block_css function
 	 */
 	public function test_get_block_css_count_up() {
@@ -2079,11 +2106,40 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'                => self::$post_carousel_block_id,
+					'buttonbackgroundType'    => 'gradient',
 					'buttonGradientDirection' => 60,
 					'buttonBackgroundColor1'  => '#222abc',
 					'buttonBackgroundColor2'  => '#111fed',
 					'buttonColorLocation1'    => '30',
 					'buttonColorLocation2'    => '44',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_carousel_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for post_carousel - button hover background
+	 */
+	public function test_get_block_css_post_carousel_hover_button_background() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_carousel_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/post-carousel',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'              => self::$post_carousel_block_id,
+					'buttonHbackgroundType' => 'color',
+					'ctaHoverBackColor'     => '#aa24cb',
 				)
 			),
 			'innerBlocks'  => array(),
@@ -2107,6 +2163,91 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-post-grid',
 			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$post_grid_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_grid_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for post_grid - content layout
+	 */
+	public function test_get_block_css_post_grid_content_layout() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_grid_block_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-post-grid',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'       => self::$post_grid_block_id,
+					'layout'         => 'content',
+					'contentPadding' => 10,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_grid_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for post_grid - row gap
+	 */
+	public function test_get_block_css_post_grid_row_gap() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_grid_block_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-post-grid',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'     => self::$post_grid_block_id,
+					'rowGap'       => 20,
+					'rowGapMobile' => 10,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_post_grid_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for post_grid - pagination
+	 */
+	public function test_get_block_css_post_grid_pagination() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_post_grid_block_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-post-grid',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                    => self::$post_grid_block_id,
+					'paginationLayout'            => 'filled',
+					'paginationBorderColor'       => '#33bacd',
+					'paginationActiveBorderColor' => '#ffffff',
+				)
+			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
@@ -2351,6 +2492,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'          => self::$advanced_columns_block_id,
+					'backgroundType'    => 'gradient',
 					'backgroundColor1'  => 'rgb(16, 101, 156, 0.2)',
 					'backgroundColor2'  => 'rgb(51, 51, 51, 0.2)',
 					'gradientDirection' => 60,
