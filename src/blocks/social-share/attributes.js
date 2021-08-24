@@ -61,7 +61,7 @@ const attributes = {
   },
   iconColumnsMobile: {
     type: "string",
-    default: "auto",
+    default: "2",
   },
   iconColumnsTablet: {
     type: "string",

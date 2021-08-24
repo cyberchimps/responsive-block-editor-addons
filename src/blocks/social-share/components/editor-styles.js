@@ -113,7 +113,8 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
-        width: 'fit-content',
+        "min-width": 'fit-content',
+        "max-width": '100%',
     },
     " .responsive-block-editor-addons-share-icon": {
       "border-radius": iconShapeRadius,
