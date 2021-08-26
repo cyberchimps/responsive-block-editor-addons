@@ -10611,7 +10611,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$attr['boxShadowColor'] .
 					' ' .
 					$box_shadow_position_css,
-					'width'            => 'fit-content',
+					'min-width'        => 'fit-content',
+					'max-width'        => '100%',
 				),
 				' .responsive-block-editor-addons-share-icon' => array(
 					'border-radius'    => $icon_shape_radius,
@@ -10849,9 +10850,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'hstyle3' === $attr['tabsStyleD'] ) {
 				$active_tab_border_bottom = '0px';
 				$active_tab_border_right  = self::get_css_value( $attr['tabBorderWidth'], 'px' );
-			} elseif ( 'vstyle8' === $attr['tabsStyleD'] ) {
+				$active_tab_border_left   = self::get_css_value( $attr['tabBorderWidth'], 'px' );
+			} elseif ( 'vstyle8' === $attr['tabsStyleD'] && 'left' === $attr['alignTabsVertical'] ) {
 				$active_tab_border_bottom = self::get_css_value( $attr['tabBorderWidth'], 'px' );
+				$active_tab_border_left   = self::get_css_value( $attr['tabBorderWidth'], 'px' );
 				$active_tab_border_right  = '0px';
+			} elseif ( 'vstyle8' === $attr['tabsStyleD'] && 'right' === $attr['alignTabsVertical'] ) {
+				$active_tab_border_bottom = self::get_css_value( $attr['tabBorderWidth'], 'px' );
+				$active_tab_border_right  = self::get_css_value( $attr['tabBorderWidth'], 'px' );
+				$active_tab_border_left   = '0px';
 			}
 			$box_shadow_position_css = $attr['boxShadowPosition'];
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
@@ -10906,7 +10913,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'.responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab' => array(
 					'border-style'        => $attr['tabBorderWidth'] > 0 ? 'solid' : 'none',
 					'border-top-width'    => self::get_css_value( $attr['tabBorderWidth'], 'px' ),
-					'border-left-width'   => self::get_css_value( $attr['tabBorderWidth'], 'px' ),
+					'border-left-width'   => $active_tab_border_left,
 					'border-bottom-width' => $active_tab_border_bottom,
 					'border-right-width'  => $active_tab_border_right,
 					'border-color'        => 'transparent',
@@ -10915,7 +10922,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'.responsive-block-editor-addons-tabs__wrap > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active' => array(
 					'border-style'        => $attr['tabBorderWidth'] > 0 ? 'solid' : 'none',
 					'border-top-width'    => self::get_css_value( $attr['tabBorderWidth'], 'px' ),
-					'border-left-width'   => self::get_css_value( $attr['tabBorderWidth'], 'px' ),
+					'border-left-width'   => $active_tab_border_left,
 					'border-bottom-width' => $active_tab_border_bottom,
 					'border-right-width'  => $active_tab_border_right,
 					'border-color'        => $attr['tabBorderColor'],
@@ -11083,6 +11090,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowPosition'        => 'outset',
 				'boxShadowSpread'          => 0,
 				'boxShadowColor'           => '#000',
+				'alignTabsVertical'        => 'left',
 			);
 		}
 
