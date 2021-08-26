@@ -1993,6 +1993,410 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for flipbox - back LTR
+	 */
+	public function test_get_block_css_flipbox_back_ltr() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'LTR',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back RTL
+	 */
+	public function test_get_block_css_flipbox_back_rtl() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'RTL',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back BTT
+	 */
+	public function test_get_block_css_flipbox_back_btt() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'BTT',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back TTB
+	 */
+	public function test_get_block_css_flipbox_back_ttb() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'TTB',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front LTR
+	 */
+	public function test_get_block_css_flipbox_front_ltr() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'LTR',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front RTL
+	 */
+	public function test_get_block_css_flipbox_front_rtl() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'RTL',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front BTT
+	 */
+	public function test_get_block_css_flipbox_front_btt() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'BTT',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front TTB
+	 */
+	public function test_get_block_css_flipbox_front_ttb() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'TTB',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front background image
+	 */
+	public function test_get_block_css_flipbox_front_background_image() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$flipbox_block_id,
+					'backgroundImage'      => 'someURL',
+					'frontBackgroundColor' => '#1e1e1e',
+					'colorOpacity'         => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back background image
+	 */
+	public function test_get_block_css_flipbox_back_background_image() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$flipbox_block_id,
+					'backBackgroundImage'  => 'someURL',
+					'frontBackgroundColor' => '#1e1e1e',
+					'backColorOpacity'     => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button background gradient
+	 */
+	public function test_get_block_css_flipbox_button_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                => self::$flipbox_block_id,
+					'buttonbackgroundType'    => 'gradient',
+					'buttongradientDirection' => 58,
+					'buttonbackgroundColor1'  => '#1e1e1e',
+					'buttonbackgroundColor2'  => '#ff6f61',
+					'buttoncolorLocation1'    => 10,
+					'buttoncolorLocation2'    => 60,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button background color
+	 */
+	public function test_get_block_css_flipbox_button_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$flipbox_block_id,
+					'buttonbackgroundType' => 'color',
+					'ctaBackColor'         => '#1e1e1e',
+					'buttonopacity'        => 8,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button hover background gradient
+	 */
+	public function test_get_block_css_flipbox_button_hover_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                 => self::$flipbox_block_id,
+					'buttonHbackgroundType'    => 'gradient',
+					'buttonHgradientDirection' => 58,
+					'buttonHbackgroundColor1'  => '#1e1e1e',
+					'buttonHbackgroundColor2'  => '#ff6f61',
+					'buttonHcolorLocation1'    => 10,
+					'buttonHcolorLocation2'    => 60,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button hover background color
+	 */
+	public function test_get_block_css_flipbox_button_hover_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'              => self::$flipbox_block_id,
+					'buttonHbackgroundType' => 'color',
+					'ctaHoverBackColor'     => '#1e1e1e',
+					'buttonHopacity'        => 8,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for section
 	 */
 	public function test_get_block_css_section() {
