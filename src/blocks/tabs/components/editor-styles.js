@@ -83,6 +83,7 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    alignTabsVertical,
   } = props.attributes;
 
 
@@ -107,12 +108,20 @@ function EditorStyles(props) {
       "border-left-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-bottom-width" : generateCSSUnit( 0, "px" ),
     }
-  }else if (tabsStyleD === 'vstyle8') {
+  }else if (tabsStyleD === 'vstyle8' && alignTabsVertical === 'left') {
     activeTabBorderWidth = {
       "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-bottom-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-left-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-right-width" : generateCSSUnit( 0, "px" ),
+    }
+  }
+  else if (tabsStyleD === 'vstyle8' && alignTabsVertical === 'right') {
+    activeTabBorderWidth = {
+      "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
+      "border-bottom-width" : generateCSSUnit( tabBorderWidth, "px" ),
+      "border-left-width" : generateCSSUnit( 0, "px" ),
+      "border-right-width" : generateCSSUnit( tabBorderWidth, "px" ),
     }
   }
 
