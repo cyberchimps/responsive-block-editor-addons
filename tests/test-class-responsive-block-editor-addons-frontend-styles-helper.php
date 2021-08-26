@@ -1047,7 +1047,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id'            => self::$divider_block_id,
+					'block_id'           => self::$divider_block_id,
 					'spacerDividerStyle' => 'none',
 				)
 			),
@@ -2436,6 +2436,94 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 					'backgroundAttachment'    => 'scroll',
 					'backgroundImageRepeat'   => 'repeat',
 					'backgroundImageSize'     => 'cover',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - child background gradient
+	 */
+	public function test_get_block_css_advanced_columns_child_background_gradient() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_column_child_block_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block      = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'          => self::$advanced_columns_child_block_id,
+					'backgroundType'    => 'gradient',
+					'backgroundColor1'  => '#2e2e2e',
+					'backgroundColor2'  => '#1e1e1e',
+					'gradientDirection' => 30,
+					'colorLocation1'    => 10,
+					'colorLocation2'    => 80,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - child hover background gradient
+	 */
+	public function test_get_block_css_advanced_columns_child_hover_background_gradient() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_column_child_block_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block      = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'               => self::$advanced_columns_child_block_id,
+					'backgroundType'         => 'gradient',
+					'hoverbackgroundColor1'  => '#2e2e2e',
+					'hoverbackgroundColor2'  => '#1e1e1e',
+					'hovergradientDirection' => 30,
+					'hovercolorLocation1'    => 10,
+					'hovercolorLocation2'    => 80,
 				)
 			),
 			'innerBlocks'  => array(),
