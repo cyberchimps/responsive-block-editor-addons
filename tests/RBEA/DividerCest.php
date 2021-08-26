@@ -7,7 +7,9 @@ use \Facebook\WebDriver\WebDriverKeys;
 
 class DividerCest
 {
-       // Variables for divider block.
+       /**
+        *  Variables for divider block.
+        */
        public $dividerColor = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div';
        public $dividerColorGreen = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div/div/div/fieldset/div/div[1]/div[4]/button';
        public $dividerColorBlack = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div/div/div/fieldset/div/div[1]/div[2]/button';
@@ -29,45 +31,38 @@ class DividerCest
        public $dividerContainer = '.wp-block-responsive-block-editor-addons-divider';
        public $selectedDivider = '.block-editor-block-list__block.wp-block.is-selected > div';
 
-    // This function runs before running each test.
+    /**
+     * This function runs before running each test.
+     */
     public function _before(RBEATester $I , LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
     {
-        $I->amGoingTo('Login as admin.');
         $loginAndLogout->userLogin($I);
-
         $I->amGoingTo('Create a divider block.');
         $I->resizeWindow(1280, 800);
-        $I->amOnPage('/rbea-block');
         $commonFunctionsPageObj->addBlock($I);
         $I->fillField($commonFunctionsPageObj->searchBox, 'divider');
         $commonFunctionsPageObj->seeCommonBlockTabs($I);
     }
 
-    // This function runs after running each test.
+    /**
+     * This function runs after running each test.
+     */
     public function _after( RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
     {         
         $I->resizeWindow(1280, 800);
         $I->amGoingTo('Remove the divider block.');
+        $I->amOnPage('/rbea-block');        
         $I->wait(3);
-        $I->amOnPage('/rbea-block');
-        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->click($commonFunctionsPageObj->editBlockBtn);       
         $I->click($this->dividerBlock);
-        $I->click($this->removeBlockToolbarTab);
-        $I->scrollTo($this->removeBlockBtn,20);
-        $I->click($this->removeBlockBtn); 
-        $I->wait(3);
-
-        $I->amGoingTo('Check block is removed from frontend.');
-        $commonFunctionsPageObj->publishAndViewPage($I);
-        $I->wait(3);
+        $commonFunctionsPageObj->removeBlock($I);
         $I->dontSeeElement($this->divider);
-
-        $I->amGoingTo('Logout');
-        $loginAndLogout->userLogout($I);
-        $I->see('You are now logged out.');
+        $loginAndLogout->userLogout($I);     
     }
 
-    // Test for RBEA Divider Block.
+    /**
+     * Test for RBEA Divider Block.
+     */
     public function dividerBlockTest(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
     {       
         $I->amGoingTo('Publish the page.');
@@ -197,7 +192,6 @@ class DividerCest
         });
         $heightElement->sendKeys(WebDriverKeys::BACKSPACE);          
         $heightElement->sendKeys('9'); 
-
         $I->amGoingTo('Change Width.');
         $I->seeElement($this->dividerWidth);
         $I->click($this->dividerWidth);

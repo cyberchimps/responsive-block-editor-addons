@@ -45,20 +45,24 @@ class LogInAndLogOut
      * User login.
      */
     public function userLogin($I) {
+        $I->amGoingTo('Login as admin.');
         $I->amOnPage("/wp-admin");
         $I->fillField( $this->usernameField , $this->usernameValue );
         $I->fillField($this->passwordField , $this->passwordValue );
         $I->click($this->submitBtn);
-        $I->see('Welcome to WordPress!');
+        $I->see('Welcome to WordPress!');        
+        $I->amOnPage('/rbea-block');
     }
 
     /**
      * User Logout.
      */
     public function userLogout($I) {
+        $I->amGoingTo('Logout');
         $I->moveMouseOver($this->wordpressProfile);
         $I->click($this->logOutLink);
         $I->wait(2);
+        $I->see('You are now logged out.');
     }
 
 }

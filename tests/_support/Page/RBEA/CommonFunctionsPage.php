@@ -6,7 +6,9 @@ class CommonFunctionsPage
     // include url of current page
     public static $URL = '';
 
-    // Variables for test
+    /**
+     * Variables for test
+     */
     public $searchBox = 'input[class="block-editor-inserter__search-input"]';
     public $blockInSearch = 'div[class="block-editor-block-types-list__list-item"] > button';
     public $addBlockBtn = 'button[aria-label="Add block"]';
@@ -15,7 +17,9 @@ class CommonFunctionsPage
     public $publishBtn = '.editor-post-publish-button';
     public $viewPage = '.components-snackbar__content > a';
 
-    // Variable to remove blocks
+    /**
+     * Variable to remove blocks
+     */
     public $removeBlockToolbarTab = '//button[@aria-label="Options" and @tabindex]';
     public $removeBlockBtn = '//*[@id="editor"]/div[2]/div/div/div/div/div[3]/div/button/span[1]';
    
@@ -51,9 +55,7 @@ class CommonFunctionsPage
      */
     public function addBlock($I){        
         $I->click($this->editBlockBtn);
-        I->wait(3);
         $I->click($this->closeDialogBtn);
-        I->wait(3);
         $I->click($this->addBlockBtn);
     }
 
@@ -76,6 +78,19 @@ class CommonFunctionsPage
         $I->click($this->publishBtn);
         $I->wait(5);
         $I->click($this->viewPage);
+    }
+
+    /**
+     * This function removes the added block
+     */
+    public function removeBlock($I) {
+        $I->click($this->removeBlockToolbarTab);
+        $I->scrollTo($this->removeBlockBtn,20);
+        $I->click($this->removeBlockBtn); 
+        $I->wait(3);
+
+        $I->amGoingTo('Check block is removed from frontend.');
+        $this->publishAndViewPage($I);
     }
     
 }
