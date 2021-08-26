@@ -1107,17 +1107,19 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
-	 * Test for get_block_css function - video popup with image url
+	 * Test for get_block_css function - video popup with image gradient
 	 */
-	public function test_get_block_css_video_popup_image_url() {
+	public function test_get_block_css_video_popup_image_gradient() {
 		$attributes  = self::$rbea_frontend_styles->get_responsive_block_video_popup_default_attributes();
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/video-popup',
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$video_popup_block_id,
-					'imgURL'   => 'url-to-image.png',
+					'block_id'           => self::$video_popup_block_id,
+					'backgroundImage'    => 'imgurl',
+					'vidBackgroundColor' => '#ff6f61',
+					'opacity'            => 20,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -1628,7 +1630,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
 				'block_id'                 => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'backgroundType'           => 'solid',
+				'iconBackgroundType'       => 'solid',
 				'iconBackgroundColor'      => '#aabbcc',
 				'iconBackgroundHoverColor' => '#12dd3a',
 			),
@@ -1652,8 +1654,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
-				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'backgroundType' => 'none',
+				'block_id'           => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'iconBackgroundType' => 'none',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -1675,8 +1677,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
-				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'backgroundType' => 'outline',
+				'block_id'           => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'iconBackgroundType' => 'outline',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -2692,6 +2694,34 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/testimonial',
 			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$testimonial_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_testimonial_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for testimonial - bg gradient
+	 */
+	public function test_get_block_css_testimonial_bg_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_testimonial_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/testimonial',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'         => self::$testimonial_block_id,
+					'bgGradient'       => true,
+					'backgroundColor2' => '#1e1e1e',
+				)
+			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
@@ -4246,7 +4276,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	/**
 	 * Test for get_block_css wp search block
 	 */
-	public function test_get_block_wp_search_block() {
+	public function test_get_block_css_wp_search_block() {
 		$attributes  = self::$rbea_frontend_styles->get_responsive_block_wp_search_default_attributes();
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/wp-search',
@@ -4270,9 +4300,41 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css wp search block - inset box shadow
+	 */
+	public function test_get_block_css_wp_search_block_box_shadow_inset() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_wp_search_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/wp-search',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'          => self::$wp_search_block_id,
+					'boxShadowPosition' => 'inset',
+					'boxShadowHOffset'  => 10,
+					'boxShadowVOffset'  => 15,
+					'boxShadowBlur'     => 7,
+					'boxShadowSpread'   => 5,
+					'boxShadowColor'    => '#eee123',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_wp_search_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css progress bar block
 	 */
-	public function test_get_block_progress_bar_block() {
+	public function test_get_block_css_progress_bar_block() {
 		$attributes  = self::$rbea_frontend_styles->get_responsive_block_progress_bar_default_attributes();
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/progress-bar',
@@ -4280,6 +4342,34 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id' => self::$progress_bar_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_progress_bar_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css progress bar block - horizontal linear gradient
+	 */
+	public function test_get_block_css_progress_bar_block_horizontal_linear_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_progress_bar_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/progress-bar',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                               => self::$progress_bar_block_id,
+					'gradientTrack'                          => false,
+					'horizontalProgressBarPrimaryTrackColor' => '#eeceee',
 				)
 			),
 			'innerBlocks'  => array(),
