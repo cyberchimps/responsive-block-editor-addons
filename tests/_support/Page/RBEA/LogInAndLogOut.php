@@ -12,6 +12,8 @@ class LogInAndLogOut
     public $passwordField = '#user_pass';
     public $passwordValue = 'password';
     public $submitBtn = '#wp-submit';
+    public $wordpressProfile='//*[@id="wp-admin-bar-my-account"]/a/span';
+    public $logOutLink='//*[@id="wp-admin-bar-logout"]/a';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
@@ -48,6 +50,15 @@ class LogInAndLogOut
         $I->fillField($this->passwordField , $this->passwordValue );
         $I->click($this->submitBtn);
         $I->see('Welcome to WordPress!');
+    }
+
+    /**
+     * User Logout.
+     */
+    public function userLogout($I) {
+        $I->moveMouseOver($this->wordpressProfile);
+        $I->click($this->logOutLink);
+        $I->wait(2);
     }
 
 }

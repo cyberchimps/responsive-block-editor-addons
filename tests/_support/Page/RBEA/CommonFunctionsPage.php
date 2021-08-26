@@ -51,7 +51,9 @@ class CommonFunctionsPage
      */
     public function addBlock($I){        
         $I->click($this->editBlockBtn);
+        I->wait(3);
         $I->click($this->closeDialogBtn);
+        I->wait(3);
         $I->click($this->addBlockBtn);
     }
 

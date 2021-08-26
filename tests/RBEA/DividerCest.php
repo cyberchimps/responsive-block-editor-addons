@@ -7,41 +7,69 @@ use \Facebook\WebDriver\WebDriverKeys;
 
 class DividerCest
 {
-    public $dividerColor = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div';
-    public $dividerColorGreen = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div/div/div/fieldset/div/div[1]/div[4]/button';
-    public $dividerColorBlack = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div/div/div/fieldset/div/div[1]/div[2]/button';
-    public $verticalMarginInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Vertical Margin"]';
-    public $dividerContent = 'div[class="responsive-block-editor-addons-divider-content"]';
-    public $mobileViewBtn = '//*[contains(@id, "mobile") and @role="tab" ]';
-    public $tabletViewBtn = '//*[contains(@id, "tablet") and @role="tab" ]';
-    public $dividerBlock = 'div[data-title="Divider"]';
-    public $dividerHeight = '//*[contains(@id, "inspector-input-control") and @aria-label="Divider Height"]';
-    public $dividerWidth = '//*[contains(@id, "inspector-input-control") and @aria-label="Divider Width"]';
-    public $dividerStyleSelect = '//*[contains(@id, "inspector-select-control")]';
-    public $dividerStyleDots = "option[value='dots']";
-    public $dottedDivider = 'div[class="rgbl-divider__dots"]';
-    public $dottedDividerOuterContainer = '.responsive-block-editor-addons-block-divider > div > div > div';
-    public $dottedDividerInnerContainer = '.responsive-block-editor-addons-block-divider > div > div >  div > div';
-    public $removeBlockToolbarTab = '//button[@aria-label="Options" and @tabindex]';
-    public $removeBlockBtn = '//*[@id="editor"]/div[2]/div/div/div/div/div[3]/div/button/span[1]';
-    public $divider = 'hr[class="responsive-block-editor-addons-divider_hr"]';
-    public function _before(RBEATester $I)
-    {
-    }
+       // Variables for divider block.
+       public $dividerColor = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div';
+       public $dividerColorGreen = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div/div/div/fieldset/div/div[1]/div[4]/button';
+       public $dividerColorBlack = '//*[@id="editor"]/div[1]/div[1]/div[2]/div[3]/div/div[3]/div/div[2]/div[3]/div/div/div/fieldset/div/div[1]/div[2]/button';
+       public $verticalMarginInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Vertical Margin"]';
+       public $dividerContent = 'div[class="responsive-block-editor-addons-divider-content"]';
+       public $mobileViewBtn = '//*[contains(@id, "mobile") and @role="tab" ]';
+       public $tabletViewBtn = '//*[contains(@id, "tablet") and @role="tab" ]';
+       public $dividerBlock = 'div[data-title="Divider"]';
+       public $dividerHeight = '//*[contains(@id, "inspector-input-control") and @aria-label="Divider Height"]';
+       public $dividerWidth = '//*[contains(@id, "inspector-input-control") and @aria-label="Divider Width"]';
+       public $dividerStyleSelect = '//*[contains(@id, "inspector-select-control")]';
+       public $dividerStyleDots = "option[value='dots']";
+       public $dottedDivider = 'div[class="rgbl-divider__dots"]';
+       public $dottedDividerOuterContainer = '.responsive-block-editor-addons-block-divider > div > div > div';
+       public $dottedDividerInnerContainer = '.responsive-block-editor-addons-block-divider > div > div >  div > div';
+       public $removeBlockToolbarTab = '//button[@aria-label="Options" and @tabindex]';
+       public $removeBlockBtn = '//*[@id="editor"]/div[2]/div/div/div/div/div[3]/div/button/span[1]';
+       public $divider = 'hr[class="responsive-block-editor-addons-divider_hr"]';
+       public $dividerContainer = '.wp-block-responsive-block-editor-addons-divider';
+       public $selectedDivider = '.block-editor-block-list__block.wp-block.is-selected > div';
 
-    // Test for RBEA Divider Block.
-    public function dividerBlockTest(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    // This function runs before running each test.
+    public function _before(RBEATester $I , LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
     {
         $I->amGoingTo('Login as admin.');
         $loginAndLogout->userLogin($I);
 
         $I->amGoingTo('Create a divider block.');
         $I->resizeWindow(1280, 800);
-        $I->amOnPage('/divider-block');
+        $I->amOnPage('/rbea-block');
         $commonFunctionsPageObj->addBlock($I);
         $I->fillField($commonFunctionsPageObj->searchBox, 'divider');
         $commonFunctionsPageObj->seeCommonBlockTabs($I);
+    }
 
+    // This function runs after running each test.
+    public function _after( RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    {         
+        $I->resizeWindow(1280, 800);
+        $I->amGoingTo('Remove the divider block.');
+        $I->wait(3);
+        $I->amOnPage('/rbea-block');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->click($this->dividerBlock);
+        $I->click($this->removeBlockToolbarTab);
+        $I->scrollTo($this->removeBlockBtn,20);
+        $I->click($this->removeBlockBtn); 
+        $I->wait(3);
+
+        $I->amGoingTo('Check block is removed from frontend.');
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->wait(3);
+        $I->dontSeeElement($this->divider);
+
+        $I->amGoingTo('Logout');
+        $loginAndLogout->userLogout($I);
+        $I->see('You are now logged out.');
+    }
+
+    // Test for RBEA Divider Block.
+    public function dividerBlockTest(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    {       
         $I->amGoingTo('Publish the page.');
         $commonFunctionsPageObj->publishAndViewPage($I);
         $I->seeElement($this->divider);
@@ -88,7 +116,7 @@ class DividerCest
         $marginElement->sendKeys('37'); 
         $I->wait(2);
         $commonFunctionsPageObj->publishAndViewPage($I);
-        $marginTop = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+        $marginTop = $I->executeInSelenium(function(RemoteWebDriver $webdriver ){ 
             return $webdriver->findElement(WebDriverBy::cssSelector($this->dividerContent))->getCSSValue('margin-top');
         });    
         $I->amGoingTo('Check top margin for divider on desktop.');
@@ -190,22 +218,9 @@ class DividerCest
         $width = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
             return $webdriver->findElement(WebDriverBy::cssSelector($this->dottedDividerOuterContainer))->getCSSValue('width');
         });    
-        $I->assertEquals( '114px' , $width);  
         $height = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
             return $webdriver->findElement(WebDriverBy::cssSelector($this->dottedDividerInnerContainer))->getCSSValue('height');
         });    
-        $I->assertEquals('9px',$height);  
-        $I->amGoingTo('Remove the divider block.');
-        $I->click($commonFunctionsPageObj->editBlockBtn);
-        $I->click($this->dividerBlock);
-        $I->click($this->removeBlockToolbarTab);
-        $I->scrollTo($this->removeBlockBtn,20);
-        $I->click($this->removeBlockBtn); 
-        $I->wait(3);
-
-        $I->amGoingTo('Check block is removed from frontend.');
-        $commonFunctionsPageObj->publishAndViewPage($I);
-        $I->wait(3);
-        $I->dontSeeElement($this->divider);
+        $I->assertEquals('9px',$height);
     }
 }
