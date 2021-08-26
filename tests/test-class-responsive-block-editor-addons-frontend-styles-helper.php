@@ -1048,7 +1048,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$divider_block_id,
-					'spacerDivideerStyle' => 'none',
+					'spacerDividerStyle' => 'none',
 				)
 			),
 			'innerBlocks'  => array(),
@@ -2297,6 +2297,147 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block      = array(
 			'blockName'    => 'responsive-block-editor-addons/column',
 			'attrs'        => array_merge( $child_attributes, array( 'block_id' => self::$advanced_columns_child_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - child image gradient linear
+	 */
+	public function test_get_block_css_advanced_columns_child_image_gradient_linear() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_column_child_block_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block      = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'                 => self::$advanced_columns_child_block_id,
+					'backgroundType'           => 'image',
+					'backgroundImage'          => 'someURL',
+					'overlayType'              => 'gradient',
+					'gradientOverlayType'      => 'linear',
+					'gradientOverlayColor1'    => '#cc2cc2',
+					'gradientOverlayColor2'    => '#cc1cc1',
+					'gradientOverlayAngle'     => 20,
+					'gradientOverlayLocation1' => 0,
+					'gradientOverlayLocation2' => 80,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - child image gradient radical
+	 */
+	public function test_get_block_css_advanced_columns_child_image_gradient_radical() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_column_child_block_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block      = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'                 => self::$advanced_columns_child_block_id,
+					'backgroundType'           => 'image',
+					'backgroundImage'          => 'someURL',
+					'overlayType'              => 'gradient',
+					'gradientOverlayType'      => 'radical',
+					'gradientOverlayColor1'    => '#cc2cc2',
+					'gradientOverlayColor2'    => '#cc1cc1',
+					'gradientOverlayPosition'  => 'top left',
+					'gradientOverlayLocation1' => 0,
+					'gradientOverlayLocation2' => 80,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/advance-columns',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$advanced_columns_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for advanced columns - child image overlay color
+	 */
+	public function test_get_block_css_advanced_columns_child_image_overlay_color() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_advanced_column_child_block_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
+		$child_block      = array(
+			'blockName'    => 'responsive-block-editor-addons/column',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'                => self::$advanced_columns_child_block_id,
+					'backgroundType'          => 'image',
+					'backgroundImage'         => 'someURL',
+					'overlayType'             => 'color',
+					'gradientOverlayType'     => 'radical',
+					'backgroundImageColor'    => '#22e22e',
+					'backgroundImagePosition' => 'center center',
+					'backgroundAttachment'    => 'scroll',
+					'backgroundImageRepeat'   => 'repeat',
+					'backgroundImageSize'     => 'cover',
+				)
+			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
