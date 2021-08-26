@@ -2722,6 +2722,73 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css for accordion child - box shadow
+	 */
+	public function test_get_block_css_accordion_child_box_shadow() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_accordian_child_block_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_accordian_block_default_attributes();
+		$schema           = '{"@context":"https://schema.org","@type":"AccordionPage","mainEntity":[{"@type":"Title","name":"What is Accordion?","acceptedContent":{"@type":"Content","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}},{"@type":"Title","name":"What is Accordion?","acceptedContent":{"@type":"Content","text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}}]}';
+		$child_block_one  = array(
+			'blockName'    => 'responsive-block-editor-addons/accordion-item',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'          => self::$accordion_child_block_id_one,
+					'boxShadowPosition' => 'inset',
+					'boxShadowHOffset'  => 5,
+					'boxShadowVOffset'  => 5,
+					'boxShadowBlur'     => 7,
+					'boxShadowSpread'   => 2,
+					'boxShadowColor'    => '#66e66e',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-accordion-item responsive-block-editor-addons-accordion-item__outer-wrap responsive-block-editor-addons-block-' . self::$accordion_child_block_id_one . '"><div class="responsive-block-editor-addons-accordion-item__wrapper"><div class="responsive-block-editor-addons-accordion-item" role="tab"><div class="responsive-block-editor-addons-accordion-titles-button responsive-block-editor-addons-accordion-titles"><span class="responsive-block-editor-addons-icon responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-icon-active responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-title">What is Accordion?</span></div><div class="responsive-block-editor-addons-accordion-content"><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></span></div></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-accordion-item responsive-block-editor-addons-accordion-item__outer-wrap responsive-block-editor-addons-block-' . self::$accordion_child_block_id_one . '"><div class="responsive-block-editor-addons-accordion-item__wrapper"><div class="responsive-block-editor-addons-accordion-item" role="tab"><div class="responsive-block-editor-addons-accordion-titles-button responsive-block-editor-addons-accordion-titles"><span class="responsive-block-editor-addons-icon responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-icon-active responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-title">What is Accordion?</span></div><div class="responsive-block-editor-addons-accordion-content"><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></span></div></div></div></div>',
+			),
+		);
+		$child_block_two  = array(
+			'blockName'    => 'responsive-block-editor-addons/accordion-item',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$accordion_child_block_id_two,
+					'schema'   => $schema,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-accordion-item responsive-block-editor-addons-accordion-item__outer-wrap responsive-block-editor-addons-block-' . self::$accordion_child_block_id_one . '"><div class="responsive-block-editor-addons-accordion-item__wrapper"><div class="responsive-block-editor-addons-accordion-item" role="tab"><div class="responsive-block-editor-addons-accordion-titles-button responsive-block-editor-addons-accordion-titles"><span class="responsive-block-editor-addons-icon responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-icon-active responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-title">What is Accordion?</span></div><div class="responsive-block-editor-addons-accordion-content"><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></span></div></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-accordion-item responsive-block-editor-addons-accordion-item__outer-wrap responsive-block-editor-addons-block-' . self::$accordion_child_block_id_one . '"><div class="responsive-block-editor-addons-accordion-item__wrapper"><div class="responsive-block-editor-addons-accordion-item" role="tab"><div class="responsive-block-editor-addons-accordion-titles-button responsive-block-editor-addons-accordion-titles"><span class="responsive-block-editor-addons-icon responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-icon-active responsive-block-editor-addons-accordion-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span><span class="responsive-block-editor-addons-title">What is Accordion?</span></div><div class="responsive-block-editor-addons-accordion-content"><span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p></span></div></div></div></div>',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/accordion',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$accordion_block_id,
+					'schema'   => $schema,
+				)
+			),
+			'innerBlocks'  => array(
+				$child_block_one,
+				$child_block_two,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_accordian_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css for accordion - background gradient
 	 */
 	public function test_get_block_css_accordion_background_gradient() {
