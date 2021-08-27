@@ -94,6 +94,22 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  borderColor: {
+	type: "string",
+	default: "empty",
+  },//For compatibility with v1.3.2
+  borderStyle: {
+	type: "string",
+	default: "empty",
+  },//For compatibility with v1.3.2
+  borderWidth: {
+	type: "number",
+	default: 999,
+  },//For compatibility with v1.3.2
+  borderRadius: {
+	type: "number",
+	default: 999,
+  },//For compatibility with v1.3.2
 };
 
 export default attributes;
