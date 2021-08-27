@@ -3136,8 +3136,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonHopacity'          => 100,
 				'ctaVpadding'             => 10,
 				'ctaHpadding'             => 14,
-				'vpadding'                => 999, // For compatibility with v1.3.2.
-				'hpadding'                => 999, // For compatibility with v1.3.2.
+				'vPadding'                => 999, // For compatibility with v1.3.2.
+				'hPadding'                => 999, // For compatibility with v1.3.2.
 				'vMargin'                 => 10,
 				'hMargin'                 => 0,
 				'ctaBorderWidth'          => 1,
