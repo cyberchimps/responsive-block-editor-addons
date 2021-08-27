@@ -1107,17 +1107,19 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
-	 * Test for get_block_css function - video popup with image url
+	 * Test for get_block_css function - video popup with image gradient
 	 */
-	public function test_get_block_css_video_popup_image_url() {
+	public function test_get_block_css_video_popup_image_gradient() {
 		$attributes  = self::$rbea_frontend_styles->get_responsive_block_video_popup_default_attributes();
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/video-popup',
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$video_popup_block_id,
-					'imgURL'   => 'url-to-image.png',
+					'block_id'           => self::$video_popup_block_id,
+					'backgroundImage'    => 'imgurl',
+					'vidBackgroundColor' => '#ff6f61',
+					'opacity'            => 20,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -1141,6 +1143,242 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/card',
 			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$card_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block button background color
+	 */
+	public function test_get_block_css_card_button_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$card_block_id,
+					'buttonbackgroundType' => 'color',
+					'ctaBackColor'         => '#1e1e1e',
+					'buttonopacity'        => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block button background color - none
+	 */
+	public function test_get_block_css_card_button_background_color_none() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$card_block_id,
+					'buttonBackgroundType' => 'color',
+					'ctaBackColor'         => '',
+					'buttonopacity'        => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block button hiver background color
+	 */
+	public function test_get_block_css_card_button_hover_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'              => self::$card_block_id,
+					'buttonHbackgroundType' => 'color',
+					'ctaHoverBackColor'     => '#1e1e1e',
+					'buttonopacity'         => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block button hover background color - none
+	 */
+	public function test_get_block_css_card_button_hover_background_color_none() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'              => self::$card_block_id,
+					'buttonHbackgroundType' => 'color',
+					'ctaHoverBackColor'     => '',
+					'buttonHopacity'        => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block button hover background gradient
+	 */
+	public function test_get_block_css_card_button_hover_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'               => self::$card_block_id,
+					'buttonbackgroundType'   => 'color',
+					'buttonBackgroundColor1' => '#ffffff',
+					'buttonBackgroundColor2' => '#000000',
+					'gradientDirection'      => 65,
+					'buttoncolorLocation1'   => 10,
+					'buttoncolorLocation2'   => 90,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block background color
+	 */
+	public function test_get_block_css_card__background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'        => self::$card_block_id,
+					'backgroundType'  => 'color',
+					'backgroundColor' => '#ececee',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block background color - none
+	 */
+	public function test_get_block_css_card_background_color_none() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'        => self::$card_block_id,
+					'backgroundType'  => 'color',
+					'backgroundColor' => '',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_card_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css - card block background gradient
+	 */
+	public function test_get_block_css_card_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_card_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/card',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'          => self::$card_block_id,
+					'backgroundType'    => 'gradient',
+					'backgroundColor1'  => '#1b1b1b',
+					'backgroundCOlor2'  => '#ffffff',
+					'gradientDirection' => 48,
+					'colorLocation1'    => 15,
+					'colorLocation2'    => 68,
+				)
+			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
@@ -1392,7 +1630,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
 				'block_id'                 => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'backgroundType'           => 'solid',
+				'iconBackgroundType'       => 'solid',
 				'iconBackgroundColor'      => '#aabbcc',
 				'iconBackgroundHoverColor' => '#12dd3a',
 			),
@@ -1416,8 +1654,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
-				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'backgroundType' => 'none',
+				'block_id'           => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'iconBackgroundType' => 'none',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -1439,8 +1677,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
-				'block_id'       => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'backgroundType' => 'outline',
+				'block_id'           => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'iconBackgroundType' => 'outline',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -1645,6 +1883,54 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for call_to_action - button hover bg
+	 */
+	public function test_get_block_css_call_to_action_button_hover_bg() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+			'attrs'        => array(
+				'block_id'              => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'buttonHbackgroundType' => 'color',
+				'ctaHoverBackColor'     => '#1e1e1e',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_to_action_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for call_to_action - button hover bg - none
+	 */
+	public function test_get_block_css_call_to_action_button_hover_bg_none() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+			'attrs'        => array(
+				'block_id'              => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'buttonHbackgroundType' => 'color',
+				'ctaHoverBackColor'     => '',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_call_to_action_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for team
 	 */
 	public function test_get_block_css_team() {
@@ -1695,6 +1981,410 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/flipbox',
 			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$flipbox_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back LTR
+	 */
+	public function test_get_block_css_flipbox_back_ltr() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'LTR',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back RTL
+	 */
+	public function test_get_block_css_flipbox_back_rtl() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'RTL',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back BTT
+	 */
+	public function test_get_block_css_flipbox_back_btt() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'BTT',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back TTB
+	 */
+	public function test_get_block_css_flipbox_back_ttb() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'back-selected',
+					'flipStyleSelected'   => 'TTB',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front LTR
+	 */
+	public function test_get_block_css_flipbox_front_ltr() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'LTR',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front RTL
+	 */
+	public function test_get_block_css_flipbox_front_rtl() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'RTL',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front BTT
+	 */
+	public function test_get_block_css_flipbox_front_btt() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'BTT',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front TTB
+	 */
+	public function test_get_block_css_flipbox_front_ttb() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'            => self::$flipbox_block_id,
+					'colorButtonSelected' => 'front-selected',
+					'flipStyleSelected'   => 'TTB',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - front background image
+	 */
+	public function test_get_block_css_flipbox_front_background_image() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$flipbox_block_id,
+					'backgroundImage'      => 'someURL',
+					'frontBackgroundColor' => '#1e1e1e',
+					'colorOpacity'         => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - back background image
+	 */
+	public function test_get_block_css_flipbox_back_background_image() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$flipbox_block_id,
+					'backBackgroundImage'  => 'someURL',
+					'frontBackgroundColor' => '#1e1e1e',
+					'backColorOpacity'     => 7,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button background gradient
+	 */
+	public function test_get_block_css_flipbox_button_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                => self::$flipbox_block_id,
+					'buttonbackgroundType'    => 'gradient',
+					'buttongradientDirection' => 58,
+					'buttonbackgroundColor1'  => '#1e1e1e',
+					'buttonbackgroundColor2'  => '#ff6f61',
+					'buttoncolorLocation1'    => 10,
+					'buttoncolorLocation2'    => 60,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button background color
+	 */
+	public function test_get_block_css_flipbox_button_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'             => self::$flipbox_block_id,
+					'buttonbackgroundType' => 'color',
+					'ctaBackColor'         => '#1e1e1e',
+					'buttonopacity'        => 8,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button hover background gradient
+	 */
+	public function test_get_block_css_flipbox_button_hover_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                 => self::$flipbox_block_id,
+					'buttonHbackgroundType'    => 'gradient',
+					'buttonHgradientDirection' => 58,
+					'buttonHbackgroundColor1'  => '#1e1e1e',
+					'buttonHbackgroundColor2'  => '#ff6f61',
+					'buttonHcolorLocation1'    => 10,
+					'buttonHcolorLocation2'    => 60,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_flipbox_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for flipbox - button hover background color
+	 */
+	public function test_get_block_css_flipbox_button_hover_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_flipbox_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/flipbox',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'              => self::$flipbox_block_id,
+					'buttonHbackgroundType' => 'color',
+					'ctaHoverBackColor'     => '#1e1e1e',
+					'buttonHopacity'        => 8,
+				)
+			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
@@ -2004,6 +2694,34 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/testimonial',
 			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$testimonial_block_id ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_testimonial_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for testimonial - bg gradient
+	 */
+	public function test_get_block_css_testimonial_bg_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_testimonial_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/testimonial',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'         => self::$testimonial_block_id,
+					'bgGradient'       => true,
+					'backgroundColor2' => '#1e1e1e',
+				)
+			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
 			'innerContent' => array(
@@ -2895,6 +3613,263 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css for buttons - icon position before
+	 */
+	public function test_get_block_css_buttons_icon_position_before() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_buttons_child_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_buttons_default_attributes();
+		$child_block_one  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'     => self::$buttons_child_block_id_one,
+					'iconPosition' => 'before',
+					'iconSpace'    => 12,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$child_block_two  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_child_block_id_two ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block_one,
+				$child_block_two,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_buttons_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for buttons - background color
+	 */
+	public function test_get_block_css_buttons_background_color() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_buttons_child_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_buttons_default_attributes();
+		$child_block_one  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'         => self::$buttons_child_block_id_one,
+					'backgroundType'   => 'color',
+					'background'       => '#fff111',
+					'hbackground'      => '#cccccc',
+					'inheritFromTheme' => false,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$child_block_two  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_child_block_id_two ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block_one,
+				$child_block_two,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_buttons_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for buttons - border color
+	 */
+	public function test_get_block_css_buttons_border_color() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_buttons_child_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_buttons_default_attributes();
+		$child_block_one  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'         => self::$buttons_child_block_id_one,
+					'borderColor'      => '#f1f1f1',
+					'borderHColor'     => '#2e2e2e',
+					'inheritFromTheme' => false,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$child_block_two  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_child_block_id_two ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block_one,
+				$child_block_two,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_buttons_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for buttons - text color
+	 */
+	public function test_get_block_css_buttons_text_color() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_buttons_child_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_buttons_default_attributes();
+		$child_block_one  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id' => self::$buttons_child_block_id_one,
+					'color'    => '#ababab',
+					'hColor'   => '#b3b3b3',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$child_block_two  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_child_block_id_two ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block_one,
+				$child_block_two,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_buttons_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css for buttons - background gradient
+	 */
+	public function test_get_block_css_buttons_background_gradient() {
+		$child_attributes = self::$rbea_frontend_styles->get_responsive_block_buttons_child_default_attributes();
+		$attributes       = self::$rbea_frontend_styles->get_responsive_block_buttons_default_attributes();
+		$child_block_one  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge(
+				$child_attributes,
+				array(
+					'block_id'          => self::$buttons_child_block_id_one,
+					'backgroundType'    => 'gradient',
+					'backgroundColor1'  => '#ffffff',
+					'backgroundColor2'  => '#000000',
+					'gradientDirection' => 20,
+					'gradientLocation1' => 0,
+					'gradientLocation2' => 70,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_one . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$child_block_two  = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons-child',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_child_block_id_two ) ),
+			'innerBlocks'  => array(),
+			'innerHTML'    => '<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			'innerContent' => array(
+				'<div class="wp-block-responsive-block-editor-addons-buttons-child responsive-block-editor-addons-undefined responsive-block-editor-addons-buttons-child block-' . self::$buttons_child_block_id_two . ' responsive-block-editor-addons-block-button responsive-block-editor-addons-buttons__outer-wrap"><div class="responsive-block-editor-addons-1 responsive-block-editor-addons-button__wrapper responsive-block-editor-addons-button__effect-undefined"><div class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper"><a class="responsive-block-editor-addons-button__link_child not-inherited-from-theme" href="#" rel="noopener noreferrer" target="_blank">#Click Here</a></div></div></div>',
+			),
+		);
+		$block            = array(
+			'blockName'    => 'responsive-block-editor-addons/buttons',
+			'attrs'        => array_merge( $attributes, array( 'block_id' => self::$buttons_block_id ) ),
+			'innerBlocks'  => array(
+				$child_block_one,
+				$child_block_two,
+			),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs      = self::extract_attributes( $block );
+		$css              = self::$rbea_frontend_styles->get_responsive_block_buttons_css( $block_attrs[0], $block_attrs[1] );
+		$expected         = self::return_the_css( $block, $css );
+		$result           = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css for accordion
 	 */
 	public function test_get_block_css_accordion() {
@@ -3301,7 +4276,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	/**
 	 * Test for get_block_css wp search block
 	 */
-	public function test_get_block_wp_search_block() {
+	public function test_get_block_css_wp_search_block() {
 		$attributes  = self::$rbea_frontend_styles->get_responsive_block_wp_search_default_attributes();
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/wp-search',
@@ -3325,9 +4300,41 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_block_css wp search block - inset box shadow
+	 */
+	public function test_get_block_css_wp_search_block_box_shadow_inset() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_wp_search_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/wp-search',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'          => self::$wp_search_block_id,
+					'boxShadowPosition' => 'inset',
+					'boxShadowHOffset'  => 10,
+					'boxShadowVOffset'  => 15,
+					'boxShadowBlur'     => 7,
+					'boxShadowSpread'   => 5,
+					'boxShadowColor'    => '#eee123',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_wp_search_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css progress bar block
 	 */
-	public function test_get_block_progress_bar_block() {
+	public function test_get_block_css_progress_bar_block() {
 		$attributes  = self::$rbea_frontend_styles->get_responsive_block_progress_bar_default_attributes();
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/progress-bar',
@@ -3335,6 +4342,34 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id' => self::$progress_bar_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_progress_bar_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css progress bar block - horizontal linear gradient
+	 */
+	public function test_get_block_css_progress_bar_block_horizontal_linear_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_progress_bar_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/progress-bar',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                               => self::$progress_bar_block_id,
+					'gradientTrack'                          => false,
+					'horizontalProgressBarPrimaryTrackColor' => '#eeceee',
 				)
 			),
 			'innerBlocks'  => array(),
