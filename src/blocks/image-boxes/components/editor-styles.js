@@ -70,6 +70,7 @@ function EditorStyles(props) {
     blockBorderWidth,
 	descriptionFontSizeMobile,
 	descriptionFontSizeTablet,
+	boxRadius,//For compatibility with v1.3.2
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -166,7 +167,7 @@ function EditorStyles(props) {
       "border-style": blockBorderStyle,
       "border-color": blockBorderColor,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),
       "justify-content": verticalAlignment + "!important",
       "background-color": `${hexToRgba(
         itemBackgroundColor || "#fff",
@@ -209,7 +210,7 @@ function EditorStyles(props) {
 
     ":hover .responsive-block-editor-addons-add-image": {
       "background-image": hoverGradient,
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
     },
 
     ":hover": {
