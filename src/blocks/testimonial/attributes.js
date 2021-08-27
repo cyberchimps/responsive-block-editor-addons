@@ -297,6 +297,22 @@ const attributes = {
   titleFontSizeTablet: {
 	type: "number",
   },
+  borderStyle: {
+	type: "string",
+	default: "empty",
+  },//For compatibility with v1.3.2
+  borderWidth: {
+	type: "number",
+	default: 999,
+  },//For compatibility with v1.3.2
+  borderRadius: {
+	type: "number",
+	default: 999,
+  },//For compatibility with v1.3.2
+  borderColor: {
+	type: "string",
+	default: "empty",
+  },//For compatibility with v1.3.2
 };
 
 export default attributes;

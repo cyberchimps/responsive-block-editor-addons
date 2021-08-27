@@ -82,12 +82,16 @@ function EditorStyles(props) {
     imageShape,
     colorLocation1,
     colorLocation2,
-	  contentFontSizeMobile,
-	  contentFontSizeTablet,
-	  nameFontSizeMobile,
-	  nameFontSizeTablet,
-	  titleFontSizeMobile,
-	  titleFontSizeTablet,
+	contentFontSizeMobile,
+	contentFontSizeTablet,
+	nameFontSizeMobile,
+	nameFontSizeTablet,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	borderStyle,//For compatibility with v1.3.2
+	borderWidth,//For compatibility with v1.3.2
+	borderRadius,//For compatibility with v1.3.2
+	borderColor,//For compatibility with v1.3.2
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -176,10 +180,10 @@ function EditorStyles(props) {
       "background-repeat": backgroundRepeat,
       "background-position": backgroundPosition,
       color: testimonialTextColor,
-      "border-style": blockBorderStyle,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
-      "border-color": blockBorderColor,
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle,//For compatibility with v1.3.2
+      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"),//For compatibility with v1.3.2
+      "border-radius": borderRadius !== 999 && blockBorderRadius === 2 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
+      "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor,//For compatibility with v1.3.2
     },
   };
 
