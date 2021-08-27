@@ -1719,10 +1719,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$selectors = array(
 				' ' => array(
-					'border-color'  => $attr['borderColor'] !== 'empty' && $attr['blockBorderColor'] === 'black' ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
-					'border-style'  => $attr['borderStyle'] !== 'empty' && $attr['blockBorderStyle'] === 'solid' ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
-					'border-width'  => $attr['borderWidth'] !== 999 && $attr['blockBorderWidth'] === 1 ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
-					'border-radius' => $attr['borderRadius'] !== 999 && $attr['blockBorderRadius'] === 2 ? self::get_css_value( $attr['borderRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
+					'border-color'  => 'empty' !== $attr['borderColor'] && 'black' === $attr['blockBorderColor'] ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
+					'border-style'  => 'empty' !== $attr['borderStyle'] && 'solid' === $attr['blockBorderStyle'] ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
+					'border-width'  => 999 !== $attr['borderWidth'] && 1 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
+					'border-radius' => 999 !== $attr['borderRadius'] && 2 === $attr['blockBorderRadius'] ? self::get_css_value( $attr['borderRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
 					'box-shadow'    =>
 						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 						' ' .
@@ -1817,10 +1817,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentPaddingMobile' => 10,
 				'titlePaddingTablet'   => 10,
 				'contentPaddingTablet' => 10,
-				'borderColor'          => 'empty',//For compatibility with v1.3.2
-				'borderStyle'          => 'empty',//For compatibility with v1.3.2
-				'borderWidth'          => 999,//For compatibility with v1.3.2
-				'borderRadius'         => 999,//For compatibility with v1.3.2
+				'borderColor'          => 'empty', // For compatibility with v1.3.2.
+				'borderStyle'          => 'empty', // For compatibility with v1.3.2.
+				'borderWidth'          => 999, // For compatibility with v1.3.2.
+				'borderRadius'         => 999, // For compatibility with v1.3.2.
 			);
 		}
 
@@ -4655,7 +4655,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-color'        => $attr['blockBorderColor'],
 					'border-style'        => $attr['blockBorderStyle'],
 					'border-width'        => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-					'border-radius'       => $attr['boxRadius'] !== 999 && $attr['blockBorderRadius'] === '' ? self::get_css_value( $attr['boxRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
+					'border-radius'       => 999 !== $attr['boxRadius'] && '' === $attr['blockBorderRadius'] ? self::get_css_value( $attr['boxRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
 					'justify-content'     => $attr['verticalAlignment'] . '!important',
 					'background-color'    => self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ),
 					'background-size'     => $attr['backgroundSize'],
@@ -4682,7 +4682,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				':hover .responsive-block-editor-addons-add-image' => array(
 					'background-image' => $hover_gradient,
-					'border-radius'    => $attr['boxRadius'] !== 999 && $attr['blockBorderRadius'] === '' ? self::get_css_value( $attr['boxRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
+					'border-radius'    => 999 !== $attr['boxRadius'] && '' === $attr['blockBorderRadius'] ? self::get_css_value( $attr['boxRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
 				),
 
 				':hover'           => array(
@@ -7433,10 +7433,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-repeat'   => $attr['backgroundRepeat'],
 					'background-position' => $attr['backgroundPosition'],
 					'color'               => $attr['testimonialTextColor'],
-					'border-style'        => $attr['borderStyle'] !== 'empty' && $attr['blockBorderStyle'] === 'none' ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
-					'border-width'        => $attr['borderWidth'] !== 999 && $attr['blockBorderWidth'] === 1 ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
-					'border-radius'       => $attr['borderRadius'] !== 999 && $attr['blockBorderRadius'] === 2 ? self::get_css_value( $attr['borderRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
-					'border-color'        => $attr['borderColor'] !== 'empty' && $attr['blockBorderColor'] === '' ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
+					'border-style'        => 'empty' !== $attr['borderStyle'] && 'none' === $attr['blockBorderStyle'] ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
+					'border-width'        => 999 !== $attr['borderWidth'] && 1 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
+					'border-radius'       => 999 !== $attr['borderRadius'] && 2 === $attr['blockBorderRadius'] ? self::get_css_value( $attr['borderRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
+					'border-color'        => 'empty' !== $attr['borderColor'] && '' === $attr['blockBorderColor'] ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
 				),
 
 			);
