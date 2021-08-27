@@ -574,7 +574,7 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => 10,
 				),
-				'mobileContentPadding'        => array( //For compatibility with v1.3.2
+				'mobileContentPadding'        => array( // For compatibility with v1.3.2.
 					'type'    => 'number',
 					'default' => 999,
 				),
