@@ -567,6 +567,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'contentPaddingMobile' => 10,
 			'titlePaddingTablet'   => 10,
 			'contentPaddingTablet' => 10,
+			'borderColor'          => 'empty', // For compatibility with v1.3.2.
+			'borderStyle'          => 'empty', // For compatibility with v1.3.2.
+			'borderWidth'          => 999, // For compatibility with v1.3.2.
+			'borderRadius'         => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_accordian_child_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -1397,6 +1401,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'backgroundImageFour'           => '',
 			'descriptionFontSizeMobile'     => '',
 			'descriptionFontSizeTablet'     => '',
+			'boxRadius'                     => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_image_boxes_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -2262,6 +2267,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'nameFontSize'               => '',
 			'nameLineHeight'             => '',
 			'imageWidth'                 => '',
+			'imageWidthTablet'           => '',
+			'imageWidthMobile'           => '',
 			'nameFontFamily'             => '',
 			'titleFontFamily'            => '',
 			'contentFontFamily'          => '',
@@ -2325,6 +2332,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'nameFontSizeTablet'         => '',
 			'titleFontSizeMobile'        => '',
 			'titleFontSizeTablet'        => '',
+			'borderStyle'                => 'empty', // For compatibility with v1.3.2.
+			'borderWidth'                => 999, // For compatibility with v1.3.2.
+			'borderRadius'               => 999, // For compatibility with v1.3.2.
+			'borderColor'                => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_testimonial_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

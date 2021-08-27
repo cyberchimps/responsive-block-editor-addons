@@ -30,6 +30,10 @@ function EditorStyles(props) {
     contentPadding,
     contentPaddingMobile,
     contentPaddingTablet,
+	borderColor,//For compatibility with v1.3.2
+	borderStyle,//For compatibility with v1.3.2
+	borderWidth,//For compatibility with v1.3.2
+	borderRadius,//For compatibility with v1.3.2
   } = props.attributes;
 
   var selectors = {};
@@ -55,11 +59,11 @@ function EditorStyles(props) {
         generateCSSUnit(boxShadowSpread, "px") +
         " " +
         boxShadowColor,
-      "border-color": blockBorderColor,
-      "border-style": blockBorderStyle,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
-      overflow: "hidden",
+      "border-color": borderColor !== "empty" && blockBorderColor === "black" ? borderColor : blockBorderColor,//For compatibility with v1.3.2
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "solid" ? borderStyle : blockBorderStyle,//For compatibility with v1.3.2
+      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"),//For compatibility with v1.3.2
+      "border-radius": borderRadius !== 999 && blockBorderRadius === 2 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
+      "overflow": "hidden",
     },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       "box-shadow":
