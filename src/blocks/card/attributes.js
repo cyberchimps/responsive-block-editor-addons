@@ -43,12 +43,24 @@ const attributes = {
   backgroundColor: {
     type: "string",
   },
+  itemBackgroundColor: {  //For compatibility with v1.3.2.
+    type: "string",
+    default: "empty"
+  },
   ctaBackColor: {
     type: "string",
   },
   ctaColor: {
     type: "string",
     default: "#fff",
+  },
+  buttonColor: {   //For compatibility with v1.3.2.
+    type: "string",
+    default: "empty"
+  },
+  buttonTextColor: {   //For compatibility with v1.3.2.
+    type: "string",
+    default: "empty",
   },
   boxShadowColor: {
     type: "string",
@@ -117,9 +129,17 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  borderWidth: { //For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
   blockBorderRadius: {
     type: "number",
     default: 12,
+  },
+  borderRadius: { //For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
   },
   opacity: {
     type: "number",
@@ -221,9 +241,21 @@ const attributes = {
     type: "string",
     default: "#e6f2ff",
   },
+  buttonhColor: { //For compatibility with v1.3.2.
+    type: "string",
+    default: "empty"
+  },
+  buttonhTextColor: { //For compatibility with v1.3.2.
+    type: "string",
+    default: "#e6f2ff",
+  },
   buttonopacity: {
     type: "number",
     default: 100,
+  },
+  butopacity: { //For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
   },
   buttonHopacity: {
     type: "number",
@@ -236,6 +268,14 @@ const attributes = {
   ctaHpadding: {
     type: "number",
     default: 14,
+  },
+  vPadding: { //For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  hPadding: { //For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
   },
   vMargin: {
     type: "number",
@@ -256,6 +296,18 @@ const attributes = {
   ctaBorderStyle: {
     type: "string",
     default: "none",
+  },
+  butborderWidth: { //For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  butborderRadius: { //For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  butborderStyle: { //For compatibility with v1.3.2.
+    type: "string",
+    default: "empty",
   },
   buttonSize: {
     type: "string",
@@ -401,6 +453,10 @@ const attributes = {
     type: "string",
     default: "none",
   },
+  borderStyle: { //For compatibility with v1.3.2.
+    type: "string",
+    default: "empty",
+  },
   buttonTarget: {
     type: "boolean",
     default: "false",
@@ -411,6 +467,10 @@ const attributes = {
   },
   blockBorderColor: {
     type: "string",
+  },
+  borderColor: { //For compatibility with v1.3.2.
+    type: "string",
+    default: "empty",
   },
   backgroundImageOne: {
     type: "string",

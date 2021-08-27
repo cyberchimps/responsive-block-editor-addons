@@ -28,6 +28,10 @@ function EditorStyles(props) {
     blockBorderWidth,
     blockBorderRadius,
     blockBorderColor,
+    borderStyle, // For compatibility with v1.3.2.
+    borderWidth, // For compatibility with v1.3.2.
+    borderRadius, // For compatibility with v1.3.2.
+    borderColor, // For compatibility with v1.3.2.
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -41,10 +45,18 @@ function EditorStyles(props) {
     frontBottomPadding,
     frontLeftPadding,
     frontRightPadding,
+    topPadding, // For compatibility with v1.3.2.
+    bottomPadding, // For compatibility with v1.3.2.
+    leftPadding, // For compatibility with v1.3.2.
+    rightPadding, // For compatibility with v1.3.2.
     backTopPadding,
     backBottomPadding,
     backLeftPadding,
     backRightPadding,
+    backtopPadding, // For compatibility with v1.3.2.
+    backbottomPadding, // For compatibility with v1.3.2.
+    backleftPadding, // For compatibility with v1.3.2.
+    backrightPadding, // For compatibility with v1.3.2.
     topMarginMobile,
     bottomMarginMobile,
     frontTopPaddingMobile,
@@ -139,9 +151,11 @@ function EditorStyles(props) {
     backButtonLineHeight,
     backButtonFontFamily,
     ctaVpadding,
+    buttonVPadding, // For compatibility with v1.3.2.
     ctaVpaddingTablet,
     ctaVpaddingMobile,
     ctaHpadding,
+    buttonHPadding, // For compatibility with v1.3.2.
     ctaHpaddingTablet,
     ctaHpaddingMobile,
     ctaBorderStyle,
@@ -279,10 +293,10 @@ function EditorStyles(props) {
         coloropacity
       )}`,
       color: frontTextColor,
-      "border-color": blockBorderColor,
-      "border-style": blockBorderStyle,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
+      "border-style": borderStyle !== 'empty' && borderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
+      "border-radius": borderRadius !== 999 && !blockBorderRadius ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -296,10 +310,10 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       height: generateCSSUnit(height, "px"),
-      "padding-top": generateCSSUnit(frontTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(frontBottomPadding, "px"),
-      "padding-left": generateCSSUnit(frontLeftPadding, "px"),
-      "padding-right": generateCSSUnit(frontRightPadding, "px"),
+      "padding-top": topPadding !== 999 && frontTopPadding === 0 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(frontTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && frontBottomPadding === 0 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(frontBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPadding !== 999 && frontLeftPadding === 0 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(frontLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && frontRightPadding === 0 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(frontRightPadding, "px"), // For compatibility with v1.3.2.
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       color: frontTextColor,
@@ -327,10 +341,10 @@ function EditorStyles(props) {
       )}`,
       color: backTextColor,
       transform: flipStyleBack,
-      "border-color": blockBorderColor,
-      "border-style": blockBorderStyle,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
+      "border-style": borderStyle !== 'empty' && borderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
+      "border-radius": borderRadius !== 999 && !blockBorderRadius ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -344,10 +358,10 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       height: generateCSSUnit(height, "px"),
-      "padding-top": generateCSSUnit(backTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(backBottomPadding, "px"),
-      "padding-left": generateCSSUnit(backLeftPadding, "px"),
-      "padding-right": generateCSSUnit(backRightPadding, "px"),
+      "padding-top": backtopPadding !== 999 && backTopPadding === 0 ? generateCSSUnit(backtopPadding, "px") : generateCSSUnit(backTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": backbottomPadding !== 999 && backBottomPadding === 0 ? generateCSSUnit(backbottomPadding, "px") : generateCSSUnit(backBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": backleftPadding !== 999 && backLeftPadding === 0 ? generateCSSUnit(backleftPadding, "px") : generateCSSUnit(backLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": backrightPadding !== 999 && backRightPadding === 0 ? generateCSSUnit(backrightPadding, "px") : generateCSSUnit(backRightPadding, "px"), // For compatibility with v1.3.2.
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backtitle": {
       color: backTextColor,
@@ -390,10 +404,10 @@ function EditorStyles(props) {
       "border-width": generateCSSUnit(ctaBorderWidth, "px"),
       "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
       "border-color": ctaBorderColor,
-      "padding-left": generateCSSUnit(ctaHpadding, "px"),
-      "padding-right": generateCSSUnit(ctaHpadding, "px"),
-      "padding-top": generateCSSUnit(ctaVpadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
+      "padding-left": buttonHPadding !== 999 && ctaHpadding === 20 ? generateCSSUnit(buttonHPadding, "px") : generateCSSUnit(ctaHpadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": buttonHPadding !== 999 && ctaHpadding === 20 ? generateCSSUnit(buttonHPadding, "px") : generateCSSUnit(ctaHpadding, "px"), // For compatibility with v1.3.2.
+      "padding-top": buttonVPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(buttonVPadding, "px") : generateCSSUnit(ctaVpadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": buttonVPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(buttonVPadding, "px") : generateCSSUnit(ctaVpadding, "px"), // For compatibility with v1.3.2.
       "background-image": backgroundImageGradient,
       "background-color": btnColor + "!important",
       opacity: btnOpacity / 100,
