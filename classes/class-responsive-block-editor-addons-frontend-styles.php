@@ -3813,10 +3813,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-size'       => $attr['backgroundSize'],
 					'background-color'      => self::hex_to_rgb( $attr['frontBackgroundColor'], $coloropacity ),
 					'color'                 => $attr['frontTextColor'],
-					'border-color'          => $attr['blockBorderColor'],
-					'border-style'          => $attr['blockBorderStyle'],
-					'border-width'          => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-					'border-radius'         => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
+					'border-color'          => 'empty' !== $attr['borderColor'] && ! $attr['blockBorderColor'] ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
+					'border-style'          => 'empty' !== $attr['borderStyle'] && 'none' === $attr['blockBorderStyle'] ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
+					'border-width'          => 999 !== $attr['borderWidth'] && 2 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
+					'border-radius'         => 999 !== $attr['borderRadius'] && ! $attr['blockBorderRadius'] ? self::get_css_value( $attr['borderRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
 					'box-shadow'            =>
 					self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 					' ' .
@@ -3830,10 +3830,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$box_shadow_position_css,
 					'height'                => self::get_css_value( $attr['height'], 'px' ),
-					'padding-top'           => self::get_css_value( $attr['frontTopPadding'], 'px' ),
-					'padding-bottom'        => self::get_css_value( $attr['frontBottomPadding'], 'px' ),
-					'padding-left'          => self::get_css_value( $attr['frontLeftPadding'], 'px' ),
-					'padding-right'         => self::get_css_value( $attr['frontRightPadding'], 'px' ),
+					'padding-top'           => 999 !== $attr['topPadding'] && 0 === $attr['frontTopPadding'] ? self::get_css_value( $attr['topPadding'], 'px' ) : self::get_css_value( $attr['frontTopPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-bottom'        => 999 !== $attr['bottomPadding'] && 0 === $attr['frontBottomPadding'] ? self::get_css_value( $attr['bottomPadding'], 'px' ) : self::get_css_value( $attr['frontBottomPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-left'          => 999 !== $attr['leftPadding'] && 0 === $attr['frontLeftPadding'] ? self::get_css_value( $attr['leftPadding'], 'px' ) : self::get_css_value( $attr['frontLeftPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'         => 999 !== $attr['frontRightPadding'] && 0 === $attr['rightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['frontRightPadding'], 'px' ),  // For compatibility with v1.3.2.
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box__title' => array(
 					'color'       => $attr['frontTextColor'],
@@ -3858,10 +3858,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-color'      => self::hex_to_rgb( $attr['backBackgroundColor'], $backcoloropacity ),
 					'color'                 => $attr['backTextColor'],
 					'transform'             => $flip_style_back,
-					'border-color'          => $attr['blockBorderColor'],
-					'border-style'          => $attr['blockBorderStyle'],
-					'border-width'          => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-					'border-radius'         => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
+					'border-color'          => 'empty' !== $attr['borderColor'] && ! $attr['blockBorderColor'] ? $attr['borderColor'] : $attr['blockBorderColor'], // For compatibility with v1.3.2.
+					'border-style'          => 'empty' !== $attr['borderStyle'] && 'none' === $attr['blockBorderStyle'] ? $attr['borderStyle'] : $attr['blockBorderStyle'], // For compatibility with v1.3.2.
+					'border-width'          => 999 !== $attr['borderWidth'] && 2 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
+					'border-radius'         => 999 !== $attr['borderRadius'] && ! $attr['blockBorderRadius'] ? self::get_css_value( $attr['borderRadius'], 'px' ) : self::get_css_value( $attr['blockBorderRadius'], 'px' ), // For compatibility with v1.3.2.
 					'box-shadow'            =>
 						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
 						' ' .
@@ -3875,10 +3875,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$box_shadow_position_css,
 					'height'                => self::get_css_value( $attr['height'], 'px' ),
-					'padding-top'           => self::get_css_value( $attr['backTopPadding'], 'px' ),
-					'padding-bottom'        => self::get_css_value( $attr['backBottomPadding'], 'px' ),
-					'padding-left'          => self::get_css_value( $attr['backLeftPadding'], 'px' ),
-					'padding-right'         => self::get_css_value( $attr['backRightPadding'], 'px' ),
+					'padding-top'           => 999 !== $attr['backtopPadding'] && 0 === $attr['backTopPadding'] ? self::get_css_value( $attr['backtopPadding'], 'px' ) : self::get_css_value( $attr['backTopPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-bottom'        => 999 !== $attr['backbottomPadding'] && 0 === $attr['backBottomPadding'] ? self::get_css_value( $attr['backbottomPadding'], 'px' ) : sself::get_css_value( $attr['backBottomPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-left'          => 999 !== $attr['backleftPadding'] && 0 === $attr['backLeftPadding'] ? self::get_css_value( $attr['backleftPadding'], 'px' ) : sself::get_css_value( $attr['backLeftPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'         => 999 !== $attr['backrightPadding'] && 0 === $attr['backRightPadding'] ? self::get_css_value( $attr['backrightPadding'], 'px' ) : sself::get_css_value( $attr['backRightPadding'], 'px' ), // For compatibility with v1.3.2.
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box__backtitle' => array(
 					'color'       => $attr['backTextColor'],
@@ -3921,10 +3921,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-width'     => self::get_css_value( $attr['ctaBorderWidth'], 'px' ),
 					'border-radius'    => self::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 					'border-color'     => $attr['ctaBorderColor'],
-					'padding-left'     => self::get_css_value( $attr['ctaHpadding'], 'px' ),
-					'padding-right'    => self::get_css_value( $attr['ctaHpadding'], 'px' ),
-					'padding-top'      => self::get_css_value( $attr['ctaVpadding'], 'px' ),
-					'padding-bottom'   => self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-left'     => 999 !== $attr['buttonHPadding'] && 20 !== $attr['ctaHpadding'] ? self::get_css_value( $attr['buttonHPadding'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'    => 999 !== $attr['buttonHPadding'] && 20 !== $attr['ctaHpadding'] ? self::get_css_value( $attr['buttonHPadding'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-top'      => 999 !== $attr['buttonVPadding'] && 10 !== $attr['ctaHpadding'] ? self::get_css_value( $attr['buttonVPadding'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-bottom'   => 999 !== $attr['buttonVPadding'] && 10 !== $attr['ctaHpadding'] ? self::get_css_value( $attr['buttonVPadding'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ), // For compatibility with v1.3.2.
 					'background-image' => $background_image_gradient,
 					'background-color' => $btn_color . '!important',
 					'opacity'          => $btn_opacity / 100,
@@ -4099,6 +4099,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonBorderRadius'          => 0,
 				'ctaHpadding'                 => 20,
 				'ctaVpadding'                 => 10,
+				'buttonHPadding'              => 999, // For compatibility with v1.3.2.
+				'buttonVPadding'              => 999, // For compatibility with v1.3.2.
 				'iconSelected'                => 'editor-textcolor',
 				'flipStyleSelected'           => 'LTR',
 				'align'                       => 'wide',
@@ -4116,7 +4118,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockBorderWidth'            => 2,
 				'blockBorderRadius'           => '',
 				'blockBorderColor'            => '',
-				'boxShadowColor'              => '',
+				'borderStyle'                 => 'empty',
+				'borderWidth'                 => 999, // For compatibility with v1.3.2.
+				'borderRadius'                => 999, // For compatibility with v1.3.2.
+				'borderColor'                 => 'empty', // For compatibility with v1.3.2.
+				'boxShadowColor'              => '', // For compatibility with v1.3.2.
 				'boxShadowHOffset'            => 0,
 				'boxShadowVOffset'            => 0,
 				'boxShadowBlur'               => 0,
@@ -4136,10 +4142,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'frontBottomPadding'          => 0,
 				'frontLeftPadding'            => 0,
 				'frontRightPadding'           => 0,
+				'topPadding'                  => 999, // For compatibility with v1.3.2.
+				'bottomPadding'               => 999, // For compatibility with v1.3.2.
+				'leftPadding'                 => 999, // For compatibility with v1.3.2.
+				'rightPadding'                => 999, // For compatibility with v1.3.2.
 				'backTopPadding'              => 0,
 				'backBottomPadding'           => 0,
 				'backLeftPadding'             => 0,
 				'backRightPadding'            => 0,
+				'backtopPadding'              => 999, // For compatibility with v1.3.2.
+				'backbottomPadding'           => 999, // For compatibility with v1.3.2.
+				'backleftPadding'             => 999, // For compatibility with v1.3.2.
+				'backrightPadding'            => 999, // For compatibility with v1.3.2.
 				'topMarginMobile'             => 0,
 				'bottomMarginMobile'          => 0,
 				'frontTopPaddingMobile'       => 0,
