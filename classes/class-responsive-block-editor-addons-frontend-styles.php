@@ -4965,7 +4965,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_background_h_color = '';
 
 			if ( 'color' === $attr['buttonHbackgroundType'] ) {
-				$updated_background_h_color = 'empty' !== $attr['hoverctaBgColor'] && '#333' === $attr['ctaBackColor'] ? $attr['hoverctaBgColor'] : $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : 'none'; //For compatibility with v1.3.2
+				$updated_background_h_color = ( 'empty' !== $attr['hoverctaBgColor'] && '#333' === $attr['ctaBackColor'] ) ? $attr['hoverctaBgColor'] : $attr['ctaHoverBackColor'] ? $attr['ctaHoverBackColor'] : 'none'; //For compatibility with v1.3.2
 			}
 
 			$box_shadow_position_css = $attr['boxShadowPosition'];
