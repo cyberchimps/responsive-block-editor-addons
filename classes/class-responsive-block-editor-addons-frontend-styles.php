@@ -3136,8 +3136,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonHopacity'          => 100,
 				'ctaVpadding'             => 10,
 				'ctaHpadding'             => 14,
-				'ctaVpadding'             => 999, // For compatibility with v1.3.2.
-				'ctaHpadding'             => 999, // For compatibility with v1.3.2.
+				'vpadding'                => 999, // For compatibility with v1.3.2.
+				'hpadding'                => 999, // For compatibility with v1.3.2.
 				'vMargin'                 => 10,
 				'hMargin'                 => 0,
 				'ctaBorderWidth'          => 1,
@@ -3895,9 +3895,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 					'height'                => self::get_css_value( $attr['height'], 'px' ),
 					'padding-top'           => 999 !== $attr['backtopPadding'] && 0 === $attr['backTopPadding'] ? self::get_css_value( $attr['backtopPadding'], 'px' ) : self::get_css_value( $attr['backTopPadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-bottom'        => 999 !== $attr['backbottomPadding'] && 0 === $attr['backBottomPadding'] ? self::get_css_value( $attr['backbottomPadding'], 'px' ) : sself::get_css_value( $attr['backBottomPadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-left'          => 999 !== $attr['backleftPadding'] && 0 === $attr['backLeftPadding'] ? self::get_css_value( $attr['backleftPadding'], 'px' ) : sself::get_css_value( $attr['backLeftPadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'         => 999 !== $attr['backrightPadding'] && 0 === $attr['backRightPadding'] ? self::get_css_value( $attr['backrightPadding'], 'px' ) : sself::get_css_value( $attr['backRightPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-bottom'        => 999 !== $attr['backbottomPadding'] && 0 === $attr['backBottomPadding'] ? self::get_css_value( $attr['backbottomPadding'], 'px' ) : self::get_css_value( $attr['backBottomPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-left'          => 999 !== $attr['backleftPadding'] && 0 === $attr['backLeftPadding'] ? self::get_css_value( $attr['backleftPadding'], 'px' ) : self::get_css_value( $attr['backLeftPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'         => 999 !== $attr['backrightPadding'] && 0 === $attr['backRightPadding'] ? self::get_css_value( $attr['backrightPadding'], 'px' ) : self::get_css_value( $attr['backRightPadding'], 'px' ), // For compatibility with v1.3.2.
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box__backtitle' => array(
 					'color'       => $attr['backTextColor'],
