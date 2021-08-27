@@ -146,7 +146,7 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
-  let butopacity = butopacity !== 999 && buttonopacity === 100 ? butopacity / 100 : buttonopacity / 100; //For compatibility with v1.3.2.
+  let but_opacity = butopacity !== 999 && buttonopacity === 100 ? butopacity / 100 : buttonopacity / 100; //For compatibility with v1.3.2.
   let buthopacity = buttonHopacity / 100;
   let textOpacity = ctaTextOpacity / 100;
 
@@ -193,7 +193,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-card-item__button-wrapper .responsive-block-editor-addons-card-button-inner": {
       "background-color": hexToRgba(
         updatedButtonColor || "#2091e1",
-        butopacity || 0
+        but_opacity || 0
       ),
     },
 
