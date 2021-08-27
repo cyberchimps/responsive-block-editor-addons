@@ -227,7 +227,7 @@ function EditorStyles(props) {
       "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "background-color": 'empty' !== boxBackgroundColor && '#ffffff' === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
-        backgroundColor || "#ffffff",
+        boxBackgroundColor || "#ffffff",
         newopacity || 0
       )}` : `${hexToRgba(
         backgroundColor || "#ffffff",
