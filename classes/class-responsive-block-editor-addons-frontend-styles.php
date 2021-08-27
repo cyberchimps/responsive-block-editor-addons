@@ -5115,7 +5115,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .responsive-block-editor-addons-ifb-cta-button:hover' => array(
 					'background-color' => $updated_background_h_color,
-					'border-color'     => 'empty'  !== $attr['hoverctaBorderColor'] && '#333' === $attr['ctaHoverBorderColor'] ? $attr['hoverctaBorderColor'] : $attr['ctaHoverBorderColor'], //For compatibility with v1.3.2
+					'border-color'     => 'empty' !== $attr['hoverctaBorderColor'] && '#333' === $attr['ctaHoverBorderColor'] ? $attr['hoverctaBorderColor'] : $attr['ctaHoverBorderColor'], //For compatibility with v1.3.2
 					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $background_image_gradient,
 				),
 
@@ -5418,6 +5418,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaHrPadding'             => 999, //For compatibility with v1.3.2
 				'ctaBorderWidth'           => 1,
 				'ctaBorderRadius'          => 0,
+				'resctaBorderWidth'        => 999,
+				'resctaBorderRadius'       => 999,
 				'resprefixSpace'           => 5,
 				'resprefixSpaceMobile'     => 5,
 				'resprefixSpaceTablet'     => 5,
