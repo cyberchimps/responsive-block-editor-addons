@@ -21,4 +21,12 @@ function register_components() {
 	foreach ( $pattern_file_paths as $path ) {
 		rbea_blocks_register_layout_component( require $path );
 	}
+
+	$pattern_file_paths = glob( dirname( __FILE__ ) . '/../patterns/sections/*.php' );
+	foreach ( $pattern_file_paths as $path ) {
+		$patterns = require $path;
+		foreach ( $patterns as $pattern ) {
+			rbea_blocks_register_layout_component( $pattern );
+		}
+	}
 }
