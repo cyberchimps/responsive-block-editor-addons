@@ -12,7 +12,6 @@ function EditorStyles(props) {
     block_id,
     contentAlignment,
     textColor,
-    itemBackgroundColor,
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
