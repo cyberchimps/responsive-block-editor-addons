@@ -44,13 +44,21 @@ function EditorStyles(props) {
     resctaFontSize,
     resctaFontWeight,
     ctaColor,
+    resctaBtnLinkColor, //For compatibility with v1.3.2
     ctaBackColor,
+    resctaBgColor, //For compatibility with v1.3.2
     ctaVpadding,
+    ctaVertPadding, //For compatibility with v1.3.2
     ctaHpadding,
+    ctaHrPadding, //For compatibility with v1.3.2
     ctaBorderStyle,
+    resctaBorderStyle, //For compatibility with v1.3.2
     ctaBorderColor,
+    resCtaBorderColor, //For compatibility with v1.3.2
     ctaBorderWidth,
     ctaBorderRadius,
+    resctaBorderWidth, //For compatibility with v1.3.2
+    resctaBorderRadius, //For compatibility with v1.3.2
     resprefixSpace,
     resprefixSpaceMobile,
     resprefixSpaceTablet,
@@ -82,8 +90,11 @@ function EditorStyles(props) {
     opacity,
     imgURL,
     ctaHoverColor,
+    hoverctaBtnLinkColor, //For compatibility with v1.3.2
     ctaHoverBackColor,
+    hoverctaBgColor, //For compatibility with v1.3.2
     ctaHoverBorderColor,
+    hoverctaBorderColor, //For compatibility with v1.3.2
     imagePosition,
     imageRepeat,
     thumbsize,
@@ -106,6 +117,7 @@ function EditorStyles(props) {
     alignment,
     imageopacity,
     backgroundColor,
+    boxBackgroundColor, //For compatibility with v1.3.2
     contentPadding,
     contentPaddingMobile,
     contentPaddingTablet,
@@ -201,10 +213,10 @@ function EditorStyles(props) {
     backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == 'color') {
     backgroundImageGradient = '';
-    buttonColor = ctaBackColor
+    buttonColor = resctaBgColor !== "empty" && ctaBackColor === "transparent" ? resctaBgColor : ctaBackColor;  //For compatibility with v1.3.2
   }
   if (buttonHbackgroundType == "color") {
-    updatedButtonBackgroundhColor = ctaHoverBackColor;
+    updatedButtonBackgroundhColor = 'empty' !== hoverctaBgColor && 'transparent' === ctaHoverBackColor ? hoverctaBgColor : ctaHoverBackColor;  //For compatibility with v1.3.2
   } else {
     updatedButtonBackgroundhColor = '';
   }
@@ -214,7 +226,10 @@ function EditorStyles(props) {
     " ": {
       "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "background-color": `${hexToRgba(
+      "background-color": 'empty' !== boxBackgroundColor && '#ffffff' === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
+        backgroundColor || "#ffffff",
+        newopacity || 0
+      )}` : `${hexToRgba(
         backgroundColor || "#ffffff",
         newopacity || 0
       )}`,
@@ -292,21 +307,21 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-ifb-cta-button": {
       "background-color": buttonColor,
       "background-image": backgroundImageGradient,
-      "border-color": ctaBorderColor,
+      "border-color": resCtaBorderColor !== "empty" && ctaBorderColor === "#333" ?  resCtaBorderColor : ctaBorderColor,  //For compatibility with v1.3.2
     },
 
     " .responsive-block-editor-addons-ifb-cta-button .responsive-block-editor-addons-inline-editing": {
-      "color": ctaColor,
+      "color": resctaBtnLinkColor !== "empty" && ctaColor === "#333" ? resctaBtnLinkColor : ctaColor, //For compatibility with v1.3.2
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover": {
       "background-color": updatedButtonBackgroundhColor,
-      "border-color": ctaHoverBorderColor,
+      "border-color": 'empty' !== hoverctaBorderColor && '#333' === ctaHoverBorderColor ? hoverctaBorderColor : ctaHoverBorderColor, //For compatibility with v1.3.2
       "background-image": buttonHbackgroundType == 'color' ? 'none' : backgroundImageGradient,
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover .responsive-block-editor-addons-inline-editing": {
-      "color": ctaHoverColor,
+      "color": 'empty' !== hoverctaBtnLinkColor && '#333' !== ctaHoverColor ? hoverctaBtnLinkColor : ctaHoverColor, //For compatibility with v1.3.2
     },
 
     " .responsive-block-editor-addons-ifb-icon svg": {
@@ -368,10 +383,10 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-infobox-cta-link": {
       "color": resctaLinkColor,
-      "padding-top": generateCSSUnit(ctaVpadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
-      "padding-left": generateCSSUnit(ctaHpadding, "px"),
-      "padding-right": generateCSSUnit(ctaHpadding, "px"),
+      "padding-top": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-bottom": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-left": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
+      "padding-right": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
       "font-size": generateCSSUnit(ctaTextFontSize, "px"),
       "font-weight": ctaTextFontWeight,
       "font-family": ctaTextFontFamily,
@@ -384,13 +399,13 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
-      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
-      "border-style": ctaBorderStyle,
-      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
-      "padding-top": generateCSSUnit(ctaVpadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
-      "padding-left": generateCSSUnit(ctaHpadding, "px"),
-      "padding-right": generateCSSUnit(ctaHpadding, "px"),
+      "border-width": resctaBorderWidth !== 999 && ctaBorderWidth === 1 ? generateCSSUnit(resctaBorderWidth, "px") : generateCSSUnit(ctaBorderWidth, "px"), //For compatibility with v1.3.2
+      "border-style": resctaBorderStyle !== "empty" && ctaBorderColor === "solid" ? resctaBorderStyle : ctaBorderStyle, //For compatibility with v1.3.2
+      "border-radius": resctaBorderRadius !== 999 && ctaBorderRadius === 0  ? generateCSSUnit(resctaBorderRadius, "px") : generateCSSUnit(ctaBorderRadius, "px"), //For compatibility with v1.3.2
+      "padding-top": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-bottom": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-left": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
+      "padding-right": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
       "font-size": generateCSSUnit(resctaFontSize, "px"),
       "font-weight": resctaFontWeight,
     },

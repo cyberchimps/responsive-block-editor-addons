@@ -39,6 +39,7 @@ function EditorStyles(props) {
     textAlignment,
     contentPadding,
     contentPaddingMobile,
+    mobileContentPadding, //For compatibility with v1.3.2
     contentPaddingTablet,
     layout,
     titleBottomSpacing,
@@ -111,9 +112,9 @@ function EditorStyles(props) {
   }
   var varContentPadding = "0";
   var varMobileContentPadding = "0";
-  if ("boxed" === layout && (contentPadding || contentPaddingMobile)) {
+  if ("boxed" === layout && (contentPadding || contentPaddingMobile || mobileContentPadding)) { //For compatibility with v1.3.2
     varContentPadding = contentPadding;
-    varMobileContentPadding = contentPaddingMobile;
+    varMobileContentPadding = mobileContentPadding !== 999 && contentPaddingMobile === 10 ? mobileContentPadding : contentPaddingMobile; //For compatibility with v1.3.2
   }
   var varTabletContentPadding = "0";
   if ("boxed" === layout && (contentPadding || contentPaddingTablet)) {

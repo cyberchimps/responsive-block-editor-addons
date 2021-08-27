@@ -22,7 +22,8 @@ function EditorStyles(props) {
     headingLineHeight,
     headingFontFamily,
     headingFontSize,
-	headingFontWeight,
+	  headingFontWeight,
+    titleFontWeight, //For compatibility with v1.3.2
     headingFontSizeMobile,
     headingFontSizeTablet,
     contentFontFamily,
@@ -100,7 +101,7 @@ function EditorStyles(props) {
       color: titleColor,
       "line-height": headingLineHeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
-	  "font-weight": headingFontWeight,
+	    "font-weight": titleFontWeight !== "empty" && headingFontWeight === "900" ? titleFontWeight : headingFontWeight, //For compatibility with v1.3.2
       "font-family": headingFontFamily,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
     },
