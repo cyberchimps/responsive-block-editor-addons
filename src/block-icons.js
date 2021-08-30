@@ -2,7 +2,10 @@
  * Block icons
  */
 
-const svgIcon = wp.element.createElement
+// const svgIcon = wp.element.createElement
+
+import { createElement } from "@wordpress/element";
+const svgIcon = createElement
 
 const ResponsiveBlockEditorAddonsIcons = {
     accordion: svgIcon("svg", {width: 20, height:20},

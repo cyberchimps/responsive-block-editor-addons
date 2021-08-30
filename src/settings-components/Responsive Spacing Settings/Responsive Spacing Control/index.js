@@ -6,16 +6,19 @@ import classnames from "classnames";
  * Box-Shadow reusable component.
  *
  */
-const { __ } = wp.i18n;
+// const { __ } = wp.i18n;
 
-const { ColorPalette } = wp.blockEditor;
+// const { ColorPalette } = wp.blockEditor;
 
-const { SelectControl, RangeControl, Dashicon, TabPanel, ButtonGroup, Button } = wp.components;
+// const { SelectControl, RangeControl, Dashicon, TabPanel, ButtonGroup, Button } = wp.components;
 
 // Extend component
-const { Component, Fragment } = wp.element;
+// const { Component, Fragment } = wp.element;
 import "../editor.scss";
-import {sprintf} from "@wordpress/i18n";
+import {sprintf, __} from "@wordpress/i18n";
+import {ColorPalette} from "@wordpress/block-editor";
+import {SelectControl, RangeControl, Dashicon, TabPanel} from "@wordpress/components";
+import {Component, Fragment} from "@wordpress/element";
 
 class ResponsiveSpacingControl extends Component {
   constructor() {

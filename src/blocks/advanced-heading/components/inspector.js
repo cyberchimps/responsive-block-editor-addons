@@ -5,23 +5,38 @@ import TypographyHelperControl from "../../../settings-components/Typography Set
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 
 // Setup the block
-const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
+// const { __ } = wp.i18n;
+// const { Component, Fragment } = wp.element;
+import {__} from "@wordpress/i18n";
+import {Component, Fragment} from "@wordpress/element";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 
 // Import block components
-const {
-  InspectorControls,
-  PanelColorSettings,
-  ColorPalette,
-  AlignmentToolbar,
-} = wp.editor;
+// const {
+//   InspectorControls,
+//   PanelColorSettings,
+//   ColorPalette,
+//   AlignmentToolbar,
+// } = wp.editor;
+
+import { InspectorControls, ColorPalette, AlignmentToolbar } from "@wordpress/block-editor"; 
 
 // Import Inspector components
-const {
+// const {
+//   PanelBody,
+//   RangeControl,
+//   SelectControl,
+//   ButtonGroup,
+//   Button,
+//   ToggleControl,
+//   TabPanel,
+//   Dashicon,
+//   BaseControl,
+// } = wp.components;
+import {
   PanelBody,
   RangeControl,
   SelectControl,
@@ -31,7 +46,7 @@ const {
   TabPanel,
   Dashicon,
   BaseControl,
-} = wp.components;
+} from "@wordpress/components";
 
 /**
  * Create an Inspector Controls wrapper Component

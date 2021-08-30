@@ -1,13 +1,17 @@
 import './css/inspectorTabs.scss';
 import classnames from 'classnames';
-const { __ } = wp.i18n;
-const { Tooltip } = wp.components;
-const { Fragment, cloneElement, Children } = wp.element;
+// const { __ } = wp.i18n;
+// const { Tooltip } = wp.components;
+// const { Fragment, cloneElement, Children } = wp.element;
 
-const { useState, useRef, useEffect } = wp.element,
-    CONTENT = 'content',
-    STYLE = 'style',
-    ADVANCE = 'advance';
+import {__} from "@wordpress/i18n";
+import { Tooltip } from '@wordpress/components';
+import { Fragment, cloneElement, Children } from '@wordpress/element';
+// const { useState, useRef, useEffect } = wp.element,
+import {useState, useRef, useEffect} from "@wordpress/element";
+    const CONTENT = 'content';
+    const STYLE = 'style';
+    const ADVANCE = 'advance';
 
 const InspectorTabs = props => {
     const { defaultTab, children, tabs, hasContent, hasStyle, hasAdvance } = props,

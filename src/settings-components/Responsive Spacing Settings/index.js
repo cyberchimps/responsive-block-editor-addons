@@ -6,14 +6,19 @@ import ResponsiveSpacingControl from "./Responsive Spacing Control";
  * Box-Shadow reusable component.
  *
  */
-const { __ } = wp.i18n;
+// const { __ } = wp.i18n;
 
-const { ColorPalette } = wp.blockEditor;
+// const { ColorPalette } = wp.blockEditor;
 
-const { SelectControl, RangeControl } = wp.components;
+// const { SelectControl, RangeControl } = wp.components;
 
 // Extend component
-const { Component, Fragment } = wp.element;
+// const { Component, Fragment } = wp.element;
+
+import {__} from "@wordpress/i18n";
+import { ColorPalette } from "@wordpress/block-editor";
+import { SelectControl, RangeControl } from "@wordpress/components";
+import { Component,Fragment } from "@wordpress/element";
 
 const ResponsiveSpacingHelperControl = props => {
     var getAttrName = attrName => camelCase( sprintf( props.attrNameTemplate, attrName ) )

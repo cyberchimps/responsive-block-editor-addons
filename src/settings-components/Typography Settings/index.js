@@ -7,14 +7,18 @@ import { loadGoogleFont } from "../../utils/font";
  * Box-Shadow reusable component.
  *
  */
-const { __ } = wp.i18n;
+// const { __ } = wp.i18n;
 
-const { ColorPalette } = wp.blockEditor;
+// const { ColorPalette } = wp.blockEditor;
 
-const { SelectControl, RangeControl, PanelBody, Dashicon, TabPanel } = wp.components;
+// const { SelectControl, RangeControl, PanelBody, Dashicon, TabPanel } = wp.components;
+import {__} from "@wordpress/i18n";
+import { ColorPalette } from "@wordpress/block-editor";
+import { SelectControl, RangeControl, PanelBody, Dashicon, TabPanel } from "@wordpress/components";
 
 // Extend component
-const { Component, Fragment } = wp.element;
+// const { Component, Fragment } = wp.element;
+import { Component, Fragment } from "@wordpress/element";
 import "./editor.scss";
 
 const TypographyHelperControl = props => {
