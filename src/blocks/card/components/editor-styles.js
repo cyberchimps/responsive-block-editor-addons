@@ -12,11 +12,14 @@ function EditorStyles(props) {
     block_id,
     contentAlignment,
     textColor,
-    itemBackgroundColor,
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
     blockBorderColor,
+    borderStyle, //For compatibility with v1.3.2.
+    borderColor, //For compatibility with v1.3.2.
+    borderWidth, //For compatibility with v1.3.2.
+    borderRadius, //For compatibility with v1.3.2.
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -34,6 +37,8 @@ function EditorStyles(props) {
     contentSpaceTablet,
     ctaBackColor,
     ctaColor,
+    buttonColor, //For compatibility with v1.3.2.
+    buttonTextColor, //For compatibility with v1.3.2.
     opacity,
     backgroundType,
     backgroundImage,
@@ -52,15 +57,23 @@ function EditorStyles(props) {
     blockmarginTablet,
     icon_color,
     ctaHoverBackColor,
+    buttonhColor, //For compatibility with v1.3.2.
     ctaHoverColor,
+    buttonhTextColor, //For compatibility with v1.3.2.
     buttonopacity,
+    butopacity, //For compatibility with v1.3.2.
     ctaVpadding,
     ctaHpadding,
+    vPadding, //For compatibility with v1.3.2.
+    hPadding, //For compatibility with v1.3.2.
     vMargin,
     hMargin,
     ctaBorderWidth,
     ctaBorderRadius,
     ctaBorderStyle,
+    butborderWidth, //For compatibility with v1.3.2.
+    butborderRadius, //For compatibility with v1.3.2.
+    butborderStyle, //For compatibility with v1.3.2.
     buttonbackgroundType,
     buttongradientDirection,
     buttoncolorLocation1,
@@ -121,6 +134,7 @@ function EditorStyles(props) {
     hMarginTablet,
     hMarginMobile,
     backgroundColor,
+    itemBackgroundColor, //For compatibility with v1.3.2.
     buttonHbackgroundType,
   } = props.attributes;
 
@@ -132,7 +146,7 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
-  let butopacity = buttonopacity / 100;
+  let but_opacity = butopacity !== 999 && buttonopacity === 100 ? butopacity / 100 : buttonopacity / 100; //For compatibility with v1.3.2.
   let buthopacity = buttonHopacity / 100;
   let textOpacity = ctaTextOpacity / 100;
 
@@ -140,10 +154,10 @@ function EditorStyles(props) {
   let updatedButtonhColor = "";
   let updatedButtonBackgroundImage = "";
   if (buttonbackgroundType == "color") {
-    updatedButtonColor = ctaBackColor;
+    updatedButtonColor = buttonColor !== 'empty' && !ctaBackColor ? buttonColor : ctaBackColor; //For compatibility with v1.3.2.
   }
   if (buttonHbackgroundType == "color") {
-    updatedButtonhColor = ctaHoverBackColor;
+    updatedButtonhColor = buttonhcolor !== 'empty' && '' === ctaHoverBackColor ? buttonhColor : ctaHoverBackColor;
   } else {
     updatedButtonhColor = '';
   }
@@ -160,12 +174,12 @@ function EditorStyles(props) {
 
   var selectors = {
     " .responsive-block-editor-addons-card-button-inner .res-button": {
-      color: ctaColor,
+      color: buttonTextColor !== 'empty' && '#fff' === ctaColor ? buttonTextColor : ctaColor, //For compatibility with v1.3.2.
       opacity: textOpacity,
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover .res-button": {
-      color: ctaHoverColor,
+      color: buttonhTextColor !== 'empty' && ctaHoverColor === '#e6f2ff' ? buttonhTextColor : ctaHoverColor, //For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-card-button-inner .responsive-block-editor-addons-button__icon svg": {
@@ -179,7 +193,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-card-item__button-wrapper .responsive-block-editor-addons-card-button-inner": {
       "background-color": hexToRgba(
         updatedButtonColor || "#2091e1",
-        butopacity || 0
+        but_opacity || 0
       ),
     },
 
@@ -201,14 +215,14 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-card-item": {
-      "border-color": blockBorderColor,
-      "border-style": blockBorderStyle,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-color": borderColor!== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, //For compatibility with v1.3.2.
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, //For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 0 ? generateCSSUnit( borderWidth, "px" ) : generateCSSUnit(blockBorderWidth, "px"), //For compatibility with v1.3.2.
+      "border-radius": borderRadius !== 999 && blockBorderRadius === 12 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), //For compatibility with v1.3.2.
       color: textColor,
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
+          ? itemBackgroundColor !== 'empty' && backgroundColor === '' ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`  //For compatibility with v1.3.2.
           : undefined,
       "background-image":
         backgroundType == "gradient"
@@ -326,20 +340,20 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-card-button-inner": {
-      "padding-top": generateCSSUnit(ctaVpadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
-      "padding-left": generateCSSUnit(ctaHpadding, "px"),
-      "padding-right": generateCSSUnit(ctaHpadding, "px"),
+      "padding-top": vPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(vPadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2.
+      "padding-bottom": vPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(vPadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2.
+      "padding-left": hPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(hPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2.
+      "padding-right": hPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(hPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(vMargin, "px"),
       "margin-bottom": generateCSSUnit(vMargin, "px"),
       "margin-left": generateCSSUnit(hMargin, "px"),
       "margin-right": generateCSSUnit(hMargin, "px"),
-      "border-style": ctaBorderStyle ? ctaBorderStyle : "none",
+      "border-style": butborderStyle !== "empty" && ctaBorderStyle === "none" ? butborderStyle : ctaBorderStyle ? ctaBorderStyle : "none", //For compatibility with v1.3.2.
       "border-color": ctaBorderColor,
-      "border-radius": ctaBorderRadius
+      "border-radius": butborderRadius !== 999 && ctaBorderRadius === 2 ? bgenerateCSSUnit(butborderRadius, "px") : ctaBorderRadius //For compatibility with v1.3.2.
         ? generateCSSUnit(ctaBorderRadius, "px")
         : "",
-      "border-width": ctaBorderWidth
+      "border-width": butborderWidth !== 999 && ctaBorderWidth === 1 ? generateCSSUnit(butborderWidth, "px") : ctaBorderWidth //For compatibility with v1.3.2.
         ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px",
       "background-image": updatedButtonBackgroundImage,
