@@ -91,6 +91,5 @@ class CommonFunctionsPage
 
         $I->amGoingTo('Check block is removed from frontend.');
         $this->publishAndViewPage($I);
-    }
-    
+    }    
 }

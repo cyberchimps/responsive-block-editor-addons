@@ -7,6 +7,13 @@ use \Facebook\WebDriver\WebDriverKeys;
 
 class BlockQuoteCest
 {
+
+    /**
+     * Common variables
+     */
+    public $field = '';
+    public $prop = '';
+
     /**
      * Content tab variables.
      */
@@ -99,9 +106,35 @@ class BlockQuoteCest
     public $desktopView = '//button[contains(@id, "desktop")]';
     public $tabletView = '//button[contains(@id, "tablet")]';
     public $mobileView = '//button[contains(@id, "mobile")]';
+    public $topPaddingResetBtn = '(//button[text()="Reset"])[1]';
+    public $bottomPaddingResetBtn = '(//button[text()="Reset"])[2]';
+    public $leftPaddingResetBtn = '(//button[text()="Reset"])[3]';
+    public $rightPaddingResetBtn = '(//button[text()="Reset"])[4]';
 
     public $blockQuoteTextItem = 'div[class="responsive-block-editor-addons-block-blockquote-item"]';
-  
+
+    /**
+     * 5. Color Settings
+     */
+    public $colorStyleBtn = '//*[text()="Color Settings"]';
+    public $textColor = '//*[@class="components-circular-option-picker__swatches"]/div[2]/button';
+    public $clearTextColor = '//*[text() = "Clear"]';
+
+    /**
+     * 6. Typography settings
+     */
+    public $typographyStyleBtn = '//*[text()="Typography"]';
+    public $quoteTypographyBtn = '//*[text()="Quote Typography"]';
+    
+    public $fontFamilySelect = '(//*[contains(@id, "inspector-select-control")])[1]';
+    public $selectedFontFamilyOption = 'option[value="Actor"]';
+    public $fontWeightSelect = '(//*[contains(@id, "inspector-select-control")])[2]';
+    public $selectedFontWeightOption = 'option[value="600"]';
+    public $fontSizeInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Font Size"]';
+    public $lineHeightInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Line Height"]';
+    public $resetLineHeightBtn = '//*[text() = "Reset"]';
+
+    public $blockQuoteTextSpan = 'span[class="responsive-block-editor-addons-block-blockquote-text"]';
 
     /**
      * This function runs before running each test.
@@ -130,15 +163,15 @@ class BlockQuoteCest
     /**
      * This function runs after running each test.
      */
-    // public function _after(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj){
-    //     $I->amGoingTo('Remove the blockquote block.');
-    //     $I->amOnPage('/rbea-block');        
-    //     $I->wait(2);
-    //     $I->click($commonFunctionsPageObj->editBlockBtn);
-    //     $I->click($this->blockQuoteBlock);
-    //     $commonFunctionsPageObj->removeBlock($I);
-    //     $loginAndLogout->userLogout($I);
-    // }
+    public function _after(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj){
+        $I->amGoingTo('Remove the blockquote block.');
+        $I->amOnPage('/rbea-block');        
+        $I->wait(2);
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->click($this->blockQuoteBlock);
+        $commonFunctionsPageObj->removeBlock($I);
+        $loginAndLogout->userLogout($I);
+    }
 
     /**
      * Test for RBEA Blockquote General Settings
@@ -511,7 +544,9 @@ class BlockQuoteCest
         $commonFunctionsPageObj->publishAndViewPage($I);
 
         $I->amGoingTo('Check box shadow style in frontend');
-        $this->_checkBoxShadowStyle($I, 'rgb(51, 51, 51) 5px 5px 30px 25px inset');
+        $this->field = $this->blockQuote;
+        $this->prop = 'box-shadow';
+        $this->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 5px 5px 30px 25px inset');
 
         $I->amGoingTo('Reset box shadow style');
         $this->_openStyleTabSettings($I, $commonFunctionsPageObj); 
@@ -519,7 +554,7 @@ class BlockQuoteCest
         $I->scrollTo($this->boxShadowResetBtn, 20);
         $I->click($this->boxShadowResetBtn);
         $commonFunctionsPageObj->publishAndViewPage($I);
-        $this->_checkBoxShadowStyle($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
+        $this->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
     }
 
     /**
@@ -538,11 +573,11 @@ class BlockQuoteCest
     /**
      * This function checks box shadow style in frontend.
      */
-    public function _checkBoxShadowStyle($I, $style) {
-        $boxShadow = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
-            return $webdriver->findElement(WebDriverBy::cssSelector($this->blockQuote))->getCSSValue('box-shadow');
+    public function _checkFrontEndStyle($I, $expectedStyle) {
+        $actualStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::cssSelector($this->field))->getCSSValue($this->prop);
         });
-        $I->assertEquals($style, $boxShadow);
+        $I->assertEquals($expectedStyle, $actualStyle);
     }
 
     /**
@@ -559,52 +594,286 @@ class BlockQuoteCest
         $I->wait(2);
         $I->click($this->desktopView);
 
-        $I->amGoingTo('Change margin of Text');
-        $this->_setInputFieldKeys($I, $this->topSpacing, '70');
-        $this->_setInputFieldKeys($I, $this->bottomSpacing, '5');
-        $this->_setInputFieldKeys($I, $this->leftSpacing, '65');
-        $this->_setInputFieldKeys($I, $this->rightSpacing, '10');
+        $I->amGoingTo('Change padding of Text');
+        $arr = array(
+            'topSpacing' => '70',
+            'bottomSpacing' => '15',
+            'leftSpacing' => '65',
+            'rightSpacing' => '10'
+        );
+        $this->_checkSpacingSettings($I, $arr, $commonFunctionsPageObj, 'desktop', $this->blockQuoteTextItem);
+
+        $I->amGoingTo('change the padding of the text in the mobile view');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj);         
+        $I->click($this->spacingStyleBtn);
+        $I->click($this->textSpacingBtn);
+        $I->wait(2);
+        $I->click($this->mobileView);
+        $I->wait(2);
+        $arr = array(
+            'topSpacing' => '10',
+            'bottomSpacing' => '10',
+            'leftSpacing' => '20',
+            'rightSpacing' => '10'
+        );
+        $this->_checkSpacingSettings($I, $arr, $commonFunctionsPageObj, 'mobile', $this->blockQuoteTextItem);
+        $I->resizeWindow(1280, 950);
+
+        $I->amGoingTo('change the padding of the text in the tablet view');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj);         
+        $I->click($this->spacingStyleBtn);
+        $I->click($this->textSpacingBtn);
+        $I->wait(2);
+        $I->click($this->tabletView);
+        $I->wait(2);
+        $arr = array(
+            'topSpacing' => '10',
+            'bottomSpacing' => '10',
+            'leftSpacing' => '20',
+            'rightSpacing' => '10'
+        );
+        $this->_checkSpacingSettings($I, $arr, $commonFunctionsPageObj, 'tablet', $this->blockQuoteTextItem);
+        $I->resizeWindow(1280, 950);
+
+        $I->amGoingTo('change the padding of the block in the desktop view');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj);         
+        $I->click($this->spacingStyleBtn);
+        $I->click($this->blockSpacingBtn);
+        $I->wait(2);
+        $I->click($this->desktopView);
+        $I->wait(2);
+        $arr = array(
+            'topSpacing' => '35',
+            'bottomSpacing' => '74',
+            'leftSpacing' => '50',
+            'rightSpacing' => '40'
+        );
+        $this->_checkSpacingSettings($I, $arr, $commonFunctionsPageObj, 'desktop', $this->blockQuote);
+
+        $I->amGoingTo('change the reset padding of the block in the desktop view');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj);         
+        $I->click($this->spacingStyleBtn);
+        $I->click($this->blockSpacingBtn);
+        $I->wait(2);
+        $I->click($this->desktopView);
+        $I->wait(2);
+        $I->click($this->topPaddingResetBtn);
+        $I->wait(1);
+        $I->click($this->bottomPaddingResetBtn);
+        $I->wait(1);
+        $I->click($this->leftPaddingResetBtn);
+        $I->wait(1);
+        $I->click($this->rightPaddingResetBtn);
+        $I->wait(1);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check reset block spacing in the frontend');
+        $this->prop = 'padding-top';
+        $this->_checkFrontEndStyle($I,  '10px');
+        $this->prop = 'padding-bottom';
+        $this->_checkFrontEndStyle($I, '0px');
+        $this->prop = 'padding-left';
+        $this->_checkFrontEndStyle($I,'0px');
+        $this->prop = 'padding-right';
+        $this->_checkFrontEndStyle($I, '0px');  
+
+    }
+
+    /**
+     * This function checks spacing settings in the frontend.
+     */
+    public function _checkSpacingSettings($I, $arr, $commonFunctionsPageObj, $resolution, $element) {
+        $this->field = $this->topSpacing;
+        $I->scrollTo( $this->field, 20);
+        $this->_setInputFieldKeys($I, 'xpath', $arr['topSpacing']);
+        $this->field = $this->bottomSpacing;
+        $I->scrollTo( $this->field, 20);
+        $this->_setInputFieldKeys($I, 'xpath', $arr['bottomSpacing']);
+        $this->field = $this->leftSpacing;
+        $I->scrollTo( $this->field, 20);
+        $this->_setInputFieldKeys($I, 'xpath', $arr['leftSpacing']);
+        $this->field = $this->rightSpacing;
+        $I->scrollTo( $this->field, 20);
+        $this->_setInputFieldKeys($I, 'xpath', $arr['rightSpacing']);
+
         $commonFunctionsPageObj->publishAndViewPage($I);
         
         $I->amGoingTo('Check text spacing in the frontend');
-        $paddingTop = $this->_getInputFieldKeys( $I, $this->blockQuoteTextItem, 'by_xpath','padding-top');
-        $I->assertEquals('70', $paddingTop);
-        $paddingBottom = $this->_getInputFieldKeys( $I, $this->blockQuoteTextItem, 'by_xpath','padding-bottom');
-        $I->assertEquals('5', $paddingBottom);
-        $paddingLeft = $this->_getInputFieldKeys( $I, $this->blockQuoteTextItem, 'by_xpath','padding-left');
-        $I->assertEquals('65', $paddingLeft);
-        $paddingRight = $this->_getInputFieldKeys( $I, $this->blockQuoteTextItem, 'by_xpath','padding-right');
-        $I->assertEquals('10', $paddingRight);     
-        
+
+        if($resolution === 'mobile'){
+            $I->resizeWindow(375, 812);
+            $I->wait(2);
+        } else if($resolution === 'tablet') {
+            $I->resizeWindow(768, 1024);
+            $I->wait(2);
+        }
+        $this->field = $element;
+        $this->prop = 'padding-top';
+        $this->_checkFrontEndStyle($I,  $arr['topSpacing']. 'px');
+        $this->prop = 'padding-bottom';
+        $this->_checkFrontEndStyle($I, $arr['bottomSpacing']. 'px');
+        $this->prop = 'padding-left';
+        $this->_checkFrontEndStyle($I, $arr['leftSpacing']. 'px');
+        $this->prop = 'padding-right';
+        $this->_checkFrontEndStyle($I, $arr['rightSpacing']. 'px');   
     }
 
     /**
      * This function sets key value to input field 
      */
-    public function _setInputFieldKeys( $I, $field, $key ) {
+    public function _setInputFieldKeys( $I, $by, $key ) {
         $I->wait(1);
-        $inputField= $I->executeInSelenium(function(RemoteWebDriver $webdriver){
-            return $webdriver->findElement(WebDriverBy::xpath($this->field));
-        });
-        $inputField->sendKeys(WebDriverKeys::BACKSPACE);
-        $inputField->sendKeys(WebDriverKeys::BACKSPACE); 
-        $inputField->sendKeys($key); 
+        if($by === 'xpath'){
+            $field= $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+                return $webdriver->findElement(WebDriverBy::xpath($this->field));
+            });
+        } else {
+            $field= $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+                return $webdriver->findElement(WebDriverBy::cssSelector($this->field));
+            });
+        }
+       
+        $field->sendKeys(WebDriverKeys::BACKSPACE);
+        $field->sendKeys(WebDriverKeys::BACKSPACE); 
+        $field->sendKeys($key); 
         $I->wait(1); 
     }
 
     /**
-     * This function gets key value from input field
+     * Test for RBEA Blockquote colour style settings
      */
-    public function _getInputFieldKeys( $I, $field, $by, $fieldProp) {
-        $inputField = null;
-        if( $by === 'by_xpath' ) {
-            $propValue = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
-                return $webdriver->findElement(WebDriverBy::xpath($this->field))->getCSSValue();
-            }); 
-        } else {
-            $propValue = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
-                return $webdriver->findElement(WebDriverBy::cssSelector($this->field))->getCSSValue();
-            }); 
-        }             
+    public function BlockQuoteColorSettingsTest(RBEATester $I , LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj) 
+    {
+        $I->amGoingTo('Change text color settings for blockquote.');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj); 
+        $I->click($this->colorStyleBtn);
+        $I->wait(1);
+        $I->click($this->textColor);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the text color in the frontend.');
+        $blockQuote = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::cssSelector($this->blockQuote));
+        }); 
+        $textColor = $blockQuote->getCSSValue('color');
+        $I->assertEquals('rgba(16, 101, 156, 1)', $textColor);
+
+        $I->amGoingTo('Clear text color settings.');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj );
+        $I->click($this->colorStyleBtn);
+        $I->wait(1); 
+        $I->click($this->clearTextColor);  
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the reset text color in the frontend.');
+        $blockQuote = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::cssSelector($this->blockQuote));
+        }); 
+        $textColor = $blockQuote->getCSSValue('color');
+        $I->assertEquals('rgba(51, 51, 51, 1)', $textColor);     
+    }
+    
+    /**
+     * Test for RBEA Typography style settings
+     */
+    public function BlockQuoteTypographySettingsTest(RBEATester $I , LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj) {
+        $I->amGoingTo('Change text typography settings for blockquote.');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj); 
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($this->quoteTypographyBtn);
+        $fontFamily = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fontFamilySelect))->
+            findElement( WebDriverBy::cssSelector($this->selectedFontFamilyOption) )->click();
+        });
+        $I->wait(1);
+        $I->click($this->desktopView);
+        $I->wait(1);
+        $I->click($this->fontSizeInputField);
+        $this->field = $this->fontSizeInputField;
+        $this->_setInputFieldKeys( $I, 'xpath', '25' );
+        $I->wait(1);
+        $fontFamily = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fontWeightSelect))->
+            findElement( WebDriverBy::cssSelector($this->selectedFontWeightOption) )->click();
+        });
+        $I->click($this->lineHeightInputField);
+        $this->field = $this->lineHeightInputField;
+        $this->_setInputFieldKeys( $I, 'xpath', '2' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the frontend for the typography settings');
+        $this->field = $this->blockQuoteTextSpan;
+        $this->prop = 'font-family';
+        $this->_checkFrontEndStyle($I, 'Actor');  
+        $this->prop = 'font-weight';
+        $this->_checkFrontEndStyle($I, '600'); 
+        $this->prop = 'line-height';
+        $this->_checkFrontEndStyle($I, '50px');
+        $this->prop = 'font-size';
+        $this->_checkFrontEndStyle($I, '25px');
+        
+        $I->resizeWindow(375, 812);
+        $I->wait(1);
+        $this->_checkFrontEndStyle($I, '25px');
+        $I->resizeWindow(768, 1024);
+        $I->wait(1);
+        $this->_checkFrontEndStyle($I, '25px');
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+
+        $I->amGoingTo('Change font-size for mobile view');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj); 
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($this->quoteTypographyBtn);
+        $I->wait(1);
+        $I->click($this->mobileView);
+        $fontSize = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fontSizeInputField));
+        });
+        $this->field = $this->fontSizeInputField;
+        $this->_setInputFieldKeys( $I, 'xpath', '15' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->resizeWindow(375, 812);
+        $I->wait(1);
+
+        $I->amGoingTo('Check the frontend for the mobile view typography settings');
+        $this->field = $this->blockQuoteTextSpan;
+        $this->_checkFrontEndStyle($I, '15px'); 
+        $I->resizeWindow(1280, 950); 
+        $I->wait(1);
+
+        $I->amGoingTo('Change font-size for tablet view');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj); 
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($this->quoteTypographyBtn);
+        $I->wait(1);
+        $I->click($this->tabletView);
+        $this->field = $this->fontSizeInputField;
+        $this->_setInputFieldKeys( $I, 'xpath', '15' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->resizeWindow(768, 1024);
+
+        $I->amGoingTo('Check the frontend for the tablet view typography settings');
+        $this->field = $this->blockQuoteTextSpan;
+        $this->_checkFrontEndStyle($I, '15px'); 
+        $I->resizeWindow(1280, 950); 
+        $I->wait(1); 
+        
+        $I->amGoingTo('Reset line height');
+        $this->_openStyleTabSettings($I, $commonFunctionsPageObj); 
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($this->quoteTypographyBtn);
+        $I->wait(1);
+        $I->scrollTo($this->resetLineHeightBtn);
+        $I->click($this->resetLineHeightBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->amGoingTo('Check reset line height in the frontend');
+        $this->prop = 'line-height';
+        $this->field = $this->blockQuoteTextSpan;
+        $this->_checkFrontEndStyle($I, '25px');
     }
 }
