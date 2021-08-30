@@ -65,6 +65,7 @@ export default class LayoutLibraryItemCard extends Component {
                 className="rbea-patterns-insert-button responsive-block-editior-addons-import-button-outer"
                 isSmall
               >
+                <div className={'rbea-pattern-preview'}></div>
                 <img
                   src={
                     this.props.image

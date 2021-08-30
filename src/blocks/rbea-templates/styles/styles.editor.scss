@@ -2,6 +2,9 @@
  * Editor styles for the admin
  */
 
+$patternbackgroundColor: #f7f7f7;
+$patternHeaderColor: #f1f1f1;
+
 .rbea-pattern-importer-modal {
 	width: 1200px;
 	min-height: 90%;
@@ -9,15 +12,16 @@
 	overflow-y: hidden;
 
 	.components-modal__content {
-		background: #fffef4;
 		padding: 0;
 		overflow-x: hidden;
+		background-color: $patternbackgroundColor;
 	}
 
 	.components-modal__header {
-		margin-bottom: 25px;
+		margin-bottom: 0px;
 		padding-left: 50px;
 		padding-right: 25px;
+		background-color: $patternHeaderColor;
 
 		h1 {
 			font-weight: bold;
@@ -31,43 +35,54 @@
 	}
 
 	.components-tab-panel__tab-content {
-		background: #fff;
+		background: $patternbackgroundColor;
 		padding: 35px;
-		border-top: 1px solid #e2e4e7;
+		padding-top: 10px;
 	}
 
 	.components-tab-panel__tabs {
-		padding: 0 35px;
-		margin-bottom: -1px;
+		color: #95a2b4;
+		margin-left: 2.2rem;
+		width: fit-content;
+		padding: 0.15rem;
+		border-radius: 5px;
+		background-color: #fff;
+		display: inline-block;
+		box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
 		button {
-			padding: 15px 20px;
-			background: none;
-			border: none;
-			font-size: 16px;
+			background-color: $patternbackgroundColor;
+			padding: 0.3rem 3rem;
+			font-size: 14px;
 			height: auto;
-			border-radius: 10px;
-			border-bottom-right-radius: 0px;
-			border-bottom-left-radius: 0px;
-			color: #626262;
+			margin-right: 0.1rem;
 
 			&:hover {
-				background: #fff;
 				cursor: pointer;
+				color: #2f2733;
 			}
 
 			&:focus {
 				box-shadow: none;
+			}
+
+			&:last-of-type {
+				margin-right: 0rem;
 			}
 		}
 	}
 
 	.components-tab-panel__tabs .rbea-pattern-importer-modal-active-tab {
 		font-weight: 600;
-		background: #fff;
-		border: 1px solid #e2e4e7;
+		background: #ff6f61;
 		border-bottom: none;
-		color: #2184F9;
+		border-radius: 3px;
+		color: #fff;
+		padding: 0.3rem 3rem;
+
+		&:hover {
+			color: #fff;
+		}
 	}
 
 	.components-base-control {
@@ -79,8 +94,9 @@
 	}
 
 	.rbea-pattern-importer-modal-header {
-		background: #fffef4;
 		padding: 20px;
+		padding-left: 0px;
+		padding-right: 0px;
 		margin-bottom: 40px;
 		display: -ms-grid;
 		display: grid;
@@ -100,9 +116,13 @@
 
 		select,
 		input {
-			font-size: 16px;
+			font-size: 12px;
 			height: 34px;
 			width: 100%;
+			font-weight: 500;
+			border-color: #95a2b4;
+			border-radius: 5px;
+			background-color: #fff;
 		}
 	}
 
@@ -157,7 +177,11 @@
 		text-align: center;
 		margin-bottom: 40px;
 		position: relative;
-
+		padding: 7px;
+		background-color: #fff;
+		border-radius: 5px;
+		box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+		
 		img {
 			max-width: 100%;
 			display: block;
@@ -178,12 +202,6 @@
 
 	.rbea-patterns-design-inside {
 		transition: 0.2s ease;
-		border: solid 1px #ccc;
-
-		&:hover,
-		&:focus-within {
-			box-shadow: 0 0 0 8px #ececec;
-		}
 	}
 
 	.rbea-patterns-design-info {
@@ -513,7 +531,6 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 25px;
-	background: #fffef4;
 	padding: 30px 20px;
 
 	h2 {
@@ -610,6 +627,19 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 
 .rbea-pattern-importer-modal-header .components-input-control__container {
 	width: 400px;
+	border-radius: 5px;
+    border-color: #95a2b4;
+
+	select {
+		font-weight: 400;
+		color: #4f4c4c!important;
+	}
+
+	span {
+		svg {
+			fill: #4f4c4c!important;
+		}
+	}
 }
 
 .responsive-block-editior-addons-import-button-outer{
@@ -621,12 +651,13 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 	z-index: 2;
 	top: 45%;
 	display: none;
-	left: 35%;
+	left: 36.5%;
 	border: 1px solid #1e70d6;
     background: #1e70d6;
     box-shadow: 0 1px 0 #165cb4;
     color: #fff;
 	padding-top: 5px;
+	padding-right: 13px;
 
 	.responsive-block-editior-addons-import-icon {
 		margin-right: 5px;
@@ -638,9 +669,26 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 .responsive-block-editior-addons-import-button-outer:hover .responsive-block-editior-addons-import-button-inner{ 
 	display:block;
 	cursor: pointer;
-	filter: blur(0px);
 }
 
-.responsive-block-editior-addons-import-button-outer:hover img{
-	filter: blur(3px);
+.rbea-pattern-preview {
+	visibility: hidden;
+}
+
+.responsive-block-editior-addons-import-button-outer:hover .rbea-pattern-preview {
+	opacity: 1;
+    visibility: visible;
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    float: none;
+    transition: all .3s;
+    background: rgba(0,0,0,.5);
+}
+
+.rbea-pattern-importer-modal-panel {
+	padding-top: 25px;
+	background-color: $patternbackgroundColor;
 }

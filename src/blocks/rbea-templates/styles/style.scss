@@ -1,8 +1,3 @@
-/**
- * Layout styles
- * Loads on front end and back end
- */
-
 .rbea-patterns-column-button .rbea-block-button {
 	margin-bottom: 0;
 }
@@ -38,13 +33,8 @@
 
 .rbea-pattern-importer-modal .components-modal__header-heading {
 	color: #ff6f61;
-	margin-left: 0.8rem;
+	margin-left: 1.2rem;
 }
-
-/**
- * Layout style modifications
- * This probably belongs in a theme!
- */
 
 .rbea-patterns-team-1 {
 
@@ -131,10 +121,6 @@
 	}
 }
 
-/**
- * Twenty Twenty theme styles
- * Let's look at loading these conditionally if the theme is active
- */
 
 div[class*="rbea-section-"].alignfull,
 div[class*="rbea-patterns-"].alignfull {
