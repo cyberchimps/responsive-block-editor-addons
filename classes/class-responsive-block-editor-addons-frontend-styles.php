@@ -1947,14 +1947,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-column' => array_merge(
 					array(
-						'padding-left'     => 999 !== $attr['leftPadding'] && ! $attr['columnLeftPadding'] ? self::get_css_value( $attr['leftPadding'], 'px' ) : self::get_css_value( $attr['columnLeftPadding'], 'px' ),
-						'padding-right'    => 999 !== $attr['rightPadding'] && ! $attr['columnRightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['columnRightPadding'], 'px' ),
-						'padding-top'      => 999 !== $attr['topPadding'] && ! $attr['columnTopPadding'] ? self::get_css_value( $attr['topPadding'], 'px' ) : self::get_css_value( $attr['columnTopPadding'], 'px' ),
-						'padding-bottom'   => 999 !== $attr['bottomPadding'] && ! $attr['columnBottomPadding'] ? self::get_css_value( $attr['bottomPadding'], 'px' ) : self::get_css_value( $attr['columnBottomPadding'], 'px' ),
-						'margin-left'      => 999 !== $attr['leftMargin'] && ! $attr['columnLeftMargin'] ? self::get_css_value( $attr['leftMargin'], 'px' ) : self::get_css_value( $attr['columnLeftMargin'], 'px' ),
-						'margin-right'     => 999 !== $attr['rightMargin'] && ! $attr['columnRightMargin'] ? self::get_css_value( $attr['rightMargin'], 'px' ) : self::get_css_value( $attr['columnRightMargin'], 'px' ),
-						'margin-top'       => 999 !== $attr['topMargin'] && ! $attr['columnTopMargin'] ? self::get_css_value( $attr['topMargin'], 'px' ) : self::get_css_value( $attr['columnTopMargin'], 'px' ),
-						'margin-bottom'    => 999 !== $attr['bottomMargin'] && ! $attr['columnBottomMargin'] ? self::get_css_value( $attr['bottomMargin'], 'px' ) : self::get_css_value( $attr['columnBottomMargin'], 'px' ),
+						'padding-left'     => 999 !== $attr['leftPadding'] && ! $attr['columnLeftPadding'] ? self::get_css_value( $attr['leftPadding'], 'px' ) : self::get_css_value( $attr['columnLeftPadding'], 'px' ), // For backwards compatibility 1.3.2.
+						'padding-right'    => 999 !== $attr['rightPadding'] && ! $attr['columnRightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['columnRightPadding'], 'px' ), // For compatibility with v1.3.2.
+						'padding-top'      => 999 !== $attr['topPadding'] && ! $attr['columnTopPadding'] ? self::get_css_value( $attr['topPadding'], 'px' ) : self::get_css_value( $attr['columnTopPadding'], 'px' ), // For compatibility with v1.3.2.
+						'padding-bottom'   => 999 !== $attr['bottomPadding'] && ! $attr['columnBottomPadding'] ? self::get_css_value( $attr['bottomPadding'], 'px' ) : self::get_css_value( $attr['columnBottomPadding'], 'px' ), // For compatibility with v1.3.2.
+						'margin-left'      => 999 !== $attr['leftMargin'] && ! $attr['columnLeftMargin'] ? self::get_css_value( $attr['leftMargin'], 'px' ) : self::get_css_value( $attr['columnLeftMargin'], 'px' ), // For compatibility with v1.3.2.
+						'margin-right'     => 999 !== $attr['rightMargin'] && ! $attr['columnRightMargin'] ? self::get_css_value( $attr['rightMargin'], 'px' ) : self::get_css_value( $attr['columnRightMargin'], 'px' ), // For compatibility with v1.3.2.
+						'margin-top'       => 999 !== $attr['topMargin'] && ! $attr['columnTopMargin'] ? self::get_css_value( $attr['topMargin'], 'px' ) : self::get_css_value( $attr['columnTopMargin'], 'px' ), // For compatibility with v1.3.2.
+						'margin-bottom'    => 999 !== $attr['bottomMargin'] && ! $attr['columnBottomMargin'] ? self::get_css_value( $attr['bottomMargin'], 'px' ) : self::get_css_value( $attr['columnBottomMargin'], 'px' ), // For compatibility with v1.3.2.
 						'box-shadow'       => self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 						'background-color' => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity ) : '',
 						'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
@@ -1986,28 +1986,28 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$mobile_selectors = array(
 				' .responsive-block-editor-addons-block-column' => array(
-					'padding-left'   => 999 !== $attr['leftPaddingMobile'] && ! $attr['columnLeftPaddingMobile'] ? self::get_css_value( $attr['leftPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnLeftPaddingMobile'], 'px' ),
-					'padding-right'  => 999 !== $attr['rightPaddingMobile'] && ! $attr['columnRightPaddingMobile'] ? self::get_css_value( $attr['rightPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnRightPaddingMobile'], 'px' ),
-					'padding-top'    => 999 !== $attr['topPaddingMobile'] && ! $attr['columnTopPaddingMobile'] ? self::get_css_value( $attr['topPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnTopPaddingMobile'], 'px' ),
-					'padding-bottom' => 999 !== $attr['bottomPaddingMobile'] && ! $attr['columnBottomPaddingMobile'] ? self::get_css_value( $attr['bottomPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnBottomPaddingMobile'], 'px' ),
-					'margin-left'    => 999 !== $attr['leftMarginMobile'] && ! $attr['columnLeftMarginMobile'] ? self::get_css_value( $attr['leftMarginMobile'], 'px' ) : self::get_css_value( $attr['columnLeftMarginMobile'], 'px' ),
-					'margin-right'   => 999 !== $attr['rightMarginMobile'] && ! $attr['columnRightMarginMobile'] ? self::get_css_value( $attr['rightMarginMobile'], 'px' ) : self::get_css_value( $attr['columnRightMarginMobile'], 'px' ),
-					'margin-top'     => 999 !== $attr['topMarginMobile'] && ! $attr['columnTopMarginMobile'] ? self::get_css_value( $attr['topMarginMobile'], 'px' ) : self::get_css_value( $attr['columnTopMarginMobile'], 'px' ),
-					'margin-bottom'  => 999 !== $attr['bottomMarginMobile'] && ! $attr['columnBottomMarginMobile'] ? self::get_css_value( $attr['bottomMarginMobile'], 'px' ) : self::get_css_value( $attr['columnBottomMarginMobile'], 'px' ),
+					'padding-left'   => 999 !== $attr['leftPaddingMobile'] && ! $attr['columnLeftPaddingMobile'] ? self::get_css_value( $attr['leftPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnLeftPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPaddingMobile'] && ! $attr['columnRightPaddingMobile'] ? self::get_css_value( $attr['rightPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnRightPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
+					'padding-top'    => 999 !== $attr['topPaddingMobile'] && ! $attr['columnTopPaddingMobile'] ? self::get_css_value( $attr['topPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnTopPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
+					'padding-bottom' => 999 !== $attr['bottomPaddingMobile'] && ! $attr['columnBottomPaddingMobile'] ? self::get_css_value( $attr['bottomPaddingMobile'], 'px' ) : self::get_css_value( $attr['columnBottomPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
+					'margin-left'    => 999 !== $attr['leftMarginMobile'] && ! $attr['columnLeftMarginMobile'] ? self::get_css_value( $attr['leftMarginMobile'], 'px' ) : self::get_css_value( $attr['columnLeftMarginMobile'], 'px' ), // For compatibility with v1.3.2.
+					'margin-right'   => 999 !== $attr['rightMarginMobile'] && ! $attr['columnRightMarginMobile'] ? self::get_css_value( $attr['rightMarginMobile'], 'px' ) : self::get_css_value( $attr['columnRightMarginMobile'], 'px' ), // For compatibility with v1.3.2.
+					'margin-top'     => 999 !== $attr['topMarginMobile'] && ! $attr['columnTopMarginMobile'] ? self::get_css_value( $attr['topMarginMobile'], 'px' ) : self::get_css_value( $attr['columnTopMarginMobile'], 'px' ), // For compatibility with v1.3.2.
+					'margin-bottom'  => 999 !== $attr['bottomMarginMobile'] && ! $attr['columnBottomMarginMobile'] ? self::get_css_value( $attr['bottomMarginMobile'], 'px' ) : self::get_css_value( $attr['columnBottomMarginMobile'], 'px' ), // For compatibility with v1.3.2.
 
 				),
 			);
 
 			$tablet_selectors = array(
 				' .responsive-block-editor-addons-block-column' => array(
-					'padding-left'   => 999 !== $attr['leftPaddingTablet'] && ! $attr['columnLeftPaddingTablet'] ? self::get_css_value( $attr['leftPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnLeftPaddingTablet'], 'px' ),
-					'padding-right'  => 999 !== $attr['rightPaddingTablet'] && ! $attr['columnRightPaddingTablet'] ? self::get_css_value( $attr['rightPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnRightPaddingTablet'], 'px' ),
-					'padding-top'    => 999 !== $attr['topPaddingTablet'] && ! $attr['columnTopPaddingTablet'] ? self::get_css_value( $attr['topPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnTopPaddingTablet'], 'px' ),
-					'padding-bottom' => 999 !== $attr['bottomPaddingTablet'] && ! $attr['columnBottomPaddingTablet'] ? self::get_css_value( $attr['bottomPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnBottomPaddingTablet'], 'px' ),
-					'margin-left'    => 999 !== $attr['leftMarginTablet'] && ! $attr['columnLeftMarginTablet'] ? self::get_css_value( $attr['leftMarginTablet'], 'px' ) : self::get_css_value( $attr['columnLeftMarginTablet'], 'px' ),
-					'margin-right'   => 999 !== $attr['rightMarginTablet'] && ! $attr['columnRightMarginTablet'] ? self::get_css_value( $attr['rightMarginTablet'], 'px' ) : self::get_css_value( $attr['columnRightMarginTablet'], 'px' ),
-					'margin-top'     => 999 !== $attr['topMarginTablet'] && ! $attr['columnTopMarginTablet'] ? self::get_css_value( $attr['topMarginTablet'], 'px' ) : self::get_css_value( $attr['columnTopMarginTablet'], 'px' ),
-					'margin-bottom'  => 999 !== $attr['bottomMarginTablet'] && ! $attr['columnBottomMarginTablet'] ? self::get_css_value( $attr['bottomMarginTablet'], 'px' ) : self::get_css_value( $attr['columnBottomMarginTablet'], 'px' ),
+					'padding-left'   => 999 !== $attr['leftPaddingTablet'] && ! $attr['columnLeftPaddingTablet'] ? self::get_css_value( $attr['leftPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnLeftPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPaddingTablet'] && ! $attr['columnRightPaddingTablet'] ? self::get_css_value( $attr['rightPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnRightPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
+					'padding-top'    => 999 !== $attr['topPaddingTablet'] && ! $attr['columnTopPaddingTablet'] ? self::get_css_value( $attr['topPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnTopPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
+					'padding-bottom' => 999 !== $attr['bottomPaddingTablet'] && ! $attr['columnBottomPaddingTablet'] ? self::get_css_value( $attr['bottomPaddingTablet'], 'px' ) : self::get_css_value( $attr['columnBottomPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
+					'margin-left'    => 999 !== $attr['leftMarginTablet'] && ! $attr['columnLeftMarginTablet'] ? self::get_css_value( $attr['leftMarginTablet'], 'px' ) : self::get_css_value( $attr['columnLeftMarginTablet'], 'px' ), // For compatibility with v1.3.2.
+					'margin-right'   => 999 !== $attr['rightMarginTablet'] && ! $attr['columnRightMarginTablet'] ? self::get_css_value( $attr['rightMarginTablet'], 'px' ) : self::get_css_value( $attr['columnRightMarginTablet'], 'px' ), // For compatibility with v1.3.2.
+					'margin-top'     => 999 !== $attr['topMarginTablet'] && ! $attr['columnTopMarginTablet'] ? self::get_css_value( $attr['topMarginTablet'], 'px' ) : self::get_css_value( $attr['columnTopMarginTablet'], 'px' ), // For compatibility with v1.3.2.
+					'margin-bottom'  => 999 !== $attr['bottomMarginTablet'] && ! $attr['columnBottomMarginTablet'] ? self::get_css_value( $attr['bottomMarginTablet'], 'px' ) : self::get_css_value( $attr['columnBottomMarginTablet'], 'px' ), // For compatibility with v1.3.2.
 
 				),
 			);
@@ -2056,30 +2056,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'columnRightMarginMobile'   => '',
 				'columnTopMarginMobile'     => '',
 				'columnBottomMarginMobile'  => '',
-				'topPadding'                => 999,
-				'bottomPadding'             => 999,
-				'leftPadding'               => 999,
-				'rightPadding'              => 999,
-				'leftMargin'                => 999,
-				'rightMargin'               => 999,
-				'topMargin'                 => 999,
-				'bottomMargin'              => 999,
-				'topPaddingTablet'          => 999,
-				'bottomPaddingTablet'       => 999,
-				'leftPaddingTablet'         => 999,
-				'rightPaddingTablet'        => 999,
-				'leftMarginTablet'          => 999,
-				'rightMarginTablet'         => 999,
-				'topMarginTablet'           => 999,
-				'bottomMarginTablet'        => 999,
-				'topPaddingMobile'          => 999,
-				'bottomPaddingMobile'       => 999,
-				'leftPaddingMobile'         => 999,
-				'rightPaddingMobile'        => 999,
-				'leftMarginMobile'          => 999,
-				'rightMarginMobile'         => 999,
-				'topMarginMobile'           => 999,
-				'bottomMarginMobile'        => 999,
+				'topPadding'                => 999, // For compatibility with v1.3.2.
+				'bottomPadding'             => 999, // For compatibility with v1.3.2.
+				'leftPadding'               => 999, // For compatibility with v1.3.2.
+				'rightPadding'              => 999, // For compatibility with v1.3.2.
+				'leftMargin'                => 999, // For compatibility with v1.3.2.
+				'rightMargin'               => 999, // For compatibility with v1.3.2.
+				'topMargin'                 => 999, // For compatibility with v1.3.2.
+				'bottomMargin'              => 999, // For compatibility with v1.3.2.
+				'topPaddingTablet'          => 999, // For compatibility with v1.3.2.
+				'bottomPaddingTablet'       => 999, // For compatibility with v1.3.2.
+				'leftPaddingTablet'         => 999, // For compatibility with v1.3.2.
+				'rightPaddingTablet'        => 999, // For compatibility with v1.3.2.
+				'leftMarginTablet'          => 999, // For compatibility with v1.3.2.
+				'rightMarginTablet'         => 999, // For compatibility with v1.3.2.
+				'topMarginTablet'           => 999, // For compatibility with v1.3.2.
+				'bottomMarginTablet'        => 999, // For compatibility with v1.3.2.
+				'topPaddingMobile'          => 999, // For compatibility with v1.3.2.
+				'bottomPaddingMobile'       => 999, // For compatibility with v1.3.2.
+				'leftPaddingMobile'         => 999, // For compatibility with v1.3.2.
+				'rightPaddingMobile'        => 999, // For compatibility with v1.3.2.
+				'leftMarginMobile'          => 999, // For compatibility with v1.3.2.
+				'rightMarginMobile'         => 999, // For compatibility with v1.3.2.
+				'topMarginMobile'           => 999, // For compatibility with v1.3.2.
+				'bottomMarginMobile'        => 999, // For compatibility with v1.3.2.
 				'block_id'                  => '',
 				'blockBorderStyle'          => 'none',
 				'blockBorderWidth'          => 1,

@@ -111,99 +111,99 @@ registerBlockType("responsive-block-editor-addons/column", {
     columnBottomMarginMobile: {
       type: "number",
     },
-    topPadding: {
+    topPadding: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    bottomPadding: {
+    bottomPadding: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    leftPadding: {
+    leftPadding: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    rightPadding: {
+    rightPadding: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    leftMargin: {
+    leftMargin: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    rightMargin: {
+    rightMargin: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    topMargin: {
+    topMargin: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    bottomMargin: {
+    bottomMargin: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    topPaddingTablet: {
+    topPaddingTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    bottomPaddingTablet: {
+    bottomPaddingTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    leftPaddingTablet: {
+    leftPaddingTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    rightPaddingTablet: {
+    rightPaddingTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    leftMarginTablet: {
+    leftMarginTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    rightMarginTablet: {
+    rightMarginTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    topMarginTablet: {
+    topMarginTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    bottomMarginTablet: {
+    bottomMarginTablet: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    topPaddingMobile: {
+    topPaddingMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    bottomPaddingMobile: {
+    bottomPaddingMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    leftPaddingMobile: {
+    leftPaddingMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    rightPaddingMobile: {
+    rightPaddingMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    leftMarginMobile: {
+    leftMarginMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    rightMarginMobile: {
+    rightMarginMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    topMarginMobile: {
+    topMarginMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
-    bottomMarginMobile: {
+    bottomMarginMobile: { //For compatibility with v1.3.2.
       type: "number",
       default: 999,
     },
