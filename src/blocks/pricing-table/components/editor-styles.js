@@ -112,12 +112,60 @@ function EditorStyles(props) {
     columnBottomPadding,
     columnLeftPadding,
     columnRightPadding,
+    blockTopPaddingMobile,
+    blockBottomPaddingMobile,
+    blockLeftPaddingMobile,
+    blockRightPaddingMobile,
+    columnTopPaddingMobile,
+    columnBottomPaddingMobile,
+    columnLeftPaddingMobile,
+    columnRightPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPaddingTablet,
+    blockLeftPaddingTablet,
+    blockRightPaddingTablet,
+    columnTopPaddingTablet,
+    columnBottomPaddingTablet,
+    columnLeftPaddingTablet,
+    columnRightPaddingTablet,
     titleSpace,
     priceSpace,
     subpriceSpace,
     buttonSpace,
     featuresSpace,
+    titleSpaceMobile,
+    priceSpaceMobile,
+    subpriceSpaceMobile,
+    buttonSpaceMobile,
+    featuresSpaceMobile,
+    titleSpaceTablet,
+    priceSpaceTablet,
+    subpriceSpaceTablet,
+    buttonSpaceTablet,
+    featuresSpaceTablet,
     blockAlign,
+    ctaHoverBorderColor,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
+    prefixFontSizeMobile,
+    prefixFontSizeTablet,
+    amountFontSizeMobile,
+    amountFontSizeTablet,
+    suffixFontSizeMobile,
+    suffixFontSizeTablet,
+    subpriceFontSizeMobile,
+    subpriceFontSizeTablet,
+    featuresFontSizeMobile,
+    featuresFontSizeTablet,
+    ctaFontSizeMobile,
+    ctaFontSizeTablet,
+      imageWidth,
+      imageWidthTablet,
+      imageWidthMobile
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -196,7 +244,8 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button:hover": {
       color: ctaHoverColor + "!important",
       "background-color": updatedButtonBgHColor,
-      "background-image": updatedButtonBgHImage,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBgHImage,
+      "border-color" : ctaHoverBorderColor,
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item.background-type-image": {
@@ -292,6 +341,10 @@ function EditorStyles(props) {
       top: "45px",
     },
 
+      " .responsive-block-editor-addons-pricing-image": {
+      width: generateCSSUnit(imageWidth, "px"),
+    },
+
     " .wp-block-responsive-block-editor-addons-pricing-table-item__title": {
       color: titleColor,
       "line-height": titleLineHeight,
@@ -350,9 +403,105 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    "": {
+      "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item": {
+      "padding-top": generateCSSUnit(columnTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(columnBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(columnLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(columnRightPaddingMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__price-wrapper": {
+      "margin-bottom": generateCSSUnit(priceSpaceMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__title": {
+      "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__currency": {
+      "font-size": generateCSSUnit(prefixFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__amount": {
+      "font-size": generateCSSUnit(amountFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__price_suffix": {
+      "font-size": generateCSSUnit(suffixFontSizeMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__sub_price": {
+      "font-size": generateCSSUnit(subpriceFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(subpriceSpaceMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__features": {
+      "font-size": generateCSSUnit(featuresFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(featuresSpaceMobile, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "font-size": generateCSSUnit(ctaFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(buttonSpaceMobile, "px"),
+    },
+      " .responsive-block-editor-addons-pricing-image": {
+          width: generateCSSUnit(imageWidthMobile, "px"),
+      },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    "": {
+      "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item": {
+      "padding-top": generateCSSUnit(columnTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(columnBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(columnLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(columnRightPaddingTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__price-wrapper": {
+      "margin-bottom": generateCSSUnit(priceSpaceTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__title": {
+      "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__currency": {
+      "font-size": generateCSSUnit(prefixFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__amount": {
+      "font-size": generateCSSUnit(amountFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__price_suffix": {
+      "font-size": generateCSSUnit(suffixFontSizeTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__sub_price": {
+      "font-size": generateCSSUnit(subpriceFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(subpriceSpaceTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__features": {
+      "font-size": generateCSSUnit(featuresFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(featuresSpaceTablet, "px"),
+    },
+    " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "font-size": generateCSSUnit(ctaFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(buttonSpaceTablet, "px"),
+    },
+      " .responsive-block-editor-addons-pricing-image": {
+          width: generateCSSUnit(imageWidthTablet, "px"),
+      },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-pricing-table.block-${block_id}`;

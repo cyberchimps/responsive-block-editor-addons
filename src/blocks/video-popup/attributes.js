@@ -122,5 +122,9 @@ const attributes = {
     type: "string",
     default: "",
   },
+  backgroundImage: {
+    type: "string",
+    default: ''
+  },
 };
 export default attributes;

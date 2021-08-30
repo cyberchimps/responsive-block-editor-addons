@@ -22,6 +22,8 @@
     "classnames": "^2.2.6",
     "color-rgba": "^2.1.1",
     "counterup2": "^1.0.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "moment": "^2.29.1",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",
@@ -114,7 +116,9 @@
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "lint": "npx eslint src",
     "checkFormat": "prettier --check \"**/*.{js,json,css,scss}\"",
-    "format": "prettier --write src/**/*"
+    "format": "prettier --write src/**/*",
+    "test:js": "wp-scripts test-unit-js --config ./jest.config.js",
+    "test:js:coverage": "wp-scripts test-unit-js --config ./jest.config.js --coverage"
   },
   "husky": {
     "hooks": {

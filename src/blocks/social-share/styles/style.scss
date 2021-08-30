@@ -1,0 +1,57 @@
+ul.rbea-icons-wrapper {
+    list-style: none;
+    padding: 0;
+    font-size: 0;
+    li {
+        display: inline-block;
+        font-size: initial;
+        position: relative;
+        a {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            color: inherit;
+            text-decoration: none !important;
+            font-style: normal;
+            transition: color 300ms, background-color 300ms, border-color 300ms, border-radius 300ms;
+            &:hover,
+            &:active,
+            &:focus {
+                box-shadow: none;
+                outline: 0;
+                text-decoration: none;
+                font-style: normal;
+            }
+        }
+    }
+}
+
+.rbea-social-icon svg{
+    height: 14px;
+    width: 14px;
+}
+
+.responsive-block-editor-addons-share-icon-svg {
+    display: flex;
+    align-items: center;
+}
+
+.responsive-block-editior-addons-share-icons-align-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.responsive-block-editior-addons-share-icons-align-center {
+    display: flex;
+    justify-content: center;    
+}
+
+.responsive-block-editior-addons-share-icons-align-right {
+    display: flex;
+    justify-content: flex-end;                                                                            
+}
+
+.responsive-block-editor-addons-share-icons-container {
+    margin-bottom: 0px!important;
+    margin-left: 0px!important;
+}

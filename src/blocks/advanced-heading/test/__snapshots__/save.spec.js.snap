@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`responsive-block-editor-addons/advanced-heading should render with content 1`] = `
+"<!-- wp:responsive-block-editor-addons/advanced-heading -->
+<div class=\\"responsive-block-editor-addons-block-advanced-heading block-undefined\\"><h2 class=\\"responsive-heading-title-text\\"></h2><div class=\\"responsive-heading-seperator-wrap\\"><div class=\\"responsive-heading-seperator\\"></div></div><p class=\\"responsive-heading-desc-text\\"></p></div>
+<!-- /wp:responsive-block-editor-addons/advanced-heading -->"
+`;

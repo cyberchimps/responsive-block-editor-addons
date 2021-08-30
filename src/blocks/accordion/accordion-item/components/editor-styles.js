@@ -14,10 +14,10 @@ function EditorStyles(props) {
     iconActive,
     layout,
     headingTag,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -25,7 +25,15 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     titlePadding,
+    titlePaddingMobile,
+    titlePaddingTablet,
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
+	borderColor,//For compatibility with v1.3.2
+	borderStyle,//For compatibility with v1.3.2
+	borderWidth,//For compatibility with v1.3.2
+	borderRadius,//For compatibility with v1.3.2
   } = props.attributes;
 
   var selectors = {};
@@ -51,11 +59,11 @@ function EditorStyles(props) {
         generateCSSUnit(boxShadowSpread, "px") +
         " " +
         boxShadowColor,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
-      overflow: "hidden",
+      "border-color": borderColor !== "empty" && blockBorderColor === "black" ? borderColor : blockBorderColor,//For compatibility with v1.3.2
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "solid" ? borderStyle : blockBorderStyle,//For compatibility with v1.3.2
+      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"),//For compatibility with v1.3.2
+      "border-radius": borderRadius !== 999 && blockBorderRadius === 2 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
+      "overflow": "hidden",
     },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       "box-shadow":
@@ -80,9 +88,23 @@ function EditorStyles(props) {
     },
   };
 
-  tablet_selectors = {};
+  tablet_selectors = {
+    " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+      padding: generateCSSUnit(titlePaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-content span": {
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
+    },
+  };
 
-  mobile_selectors = {};
+  mobile_selectors = {
+    " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+      padding: generateCSSUnit(titlePaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-content span": {
+      padding: generateCSSUnit(contentPaddingMobile, "px"),
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-accordion-item__outer-wrap.responsive-block-editor-addons-block-${props.clientId}`;

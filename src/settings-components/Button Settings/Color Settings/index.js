@@ -41,6 +41,8 @@ class ButtonColorControl extends Component {
 
               buttonopacity,
               buttonHopacity,
+
+              ctaTextOpacity,
           },
           setAttributes,
       } = this.props;
@@ -54,6 +56,20 @@ class ButtonColorControl extends Component {
               label: __("Gradient", "responsive-block-editor-addons"),
           },
       ];
+      //Button Background Type Options on Hover
+      const buttonHoverbackgroundTypeOptions = [
+        { value: "none", label: __("None", "responsive-block-editor-addons") },
+        { value: "color", label: __("Color", "responsive-block-editor-addons") },
+      ];
+      const buttonHoverbackgroundTypeAllOptions = [
+        { value: "none", label: __("None", "responsive-block-editor-addons") },
+        { value: "color", label: __("Color", "responsive-block-editor-addons") },
+        {
+            value: "gradient",
+            label: __("Gradient", "responsive-block-editor-addons"),
+        }
+      ];
+
     var advancedControls;
       advancedControls = (
           <PanelBody
@@ -133,7 +149,7 @@ class ButtonColorControl extends Component {
                                       onChange={(value) =>
                                           setAttributes({ buttonHbackgroundType: value })
                                       }
-                                      options={buttonbackgroundTypeOptions}
+                                      options= {this.props.showGradientHover? buttonHoverbackgroundTypeAllOptions : buttonHoverbackgroundTypeOptions}
                                   />
                                   {"color" == buttonHbackgroundType && (
                                       <Fragment>
@@ -443,6 +459,17 @@ class ButtonColorControl extends Component {
                       return <div>{tabout}</div>;
                   }}
               </TabPanel>
+              {this.props.showTextOpacity===true && (
+              <Fragment>
+                <RangeControl
+                    label={__("Text Opacity", "responsive-block-editor-addons")}
+                    value={ctaTextOpacity}
+                    onChange={(value) => setAttributes({ ctaTextOpacity: value })}
+                    min={0}
+                    max={100}
+                />
+              </Fragment>
+              )}
           </PanelBody>
       );
 

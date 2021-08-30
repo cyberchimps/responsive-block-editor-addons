@@ -52,7 +52,11 @@ function EditorStyles(props) {
     imageSize,
     verticalAlignment,
     titleSpacing,
+    titleSpacingMobile,
+    titleSpacingTablet,
     descriptionSpacing,
+    descriptionSpacingMobile,
+    descriptionSpacingTablet,
     arrowColor,
     arrowSize,
     backgroundImageOne,
@@ -64,6 +68,9 @@ function EditorStyles(props) {
     blockBorderColor,
     blockBorderStyle,
     blockBorderWidth,
+	descriptionFontSizeMobile,
+	descriptionFontSizeTablet,
+	boxRadius,//For compatibility with v1.3.2
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -104,7 +111,7 @@ function EditorStyles(props) {
       tempsecondaryBackgroundColor || "#ffffff",
       imgopacity || 0
     )}),url(${backgroundImageOne})`
-  
+
     let backgroundImageSecond = `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
@@ -160,7 +167,7 @@ function EditorStyles(props) {
       "border-style": blockBorderStyle,
       "border-color": blockBorderColor,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),
       "justify-content": verticalAlignment + "!important",
       "background-color": `${hexToRgba(
         itemBackgroundColor || "#fff",
@@ -201,9 +208,9 @@ function EditorStyles(props) {
         "background-image": backgroundImageFourth,
     },
 
-    ":hover .responsive-block-editor-addons-add-image": {     
+    ":hover .responsive-block-editor-addons-add-image": {
       "background-image": hoverGradient,
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
     },
 
     ":hover": {
@@ -220,7 +227,6 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
       color: titleColor,
-      "margin-top": generateCSSUnit(titleSpacing, "px"),
       "margin-bottom": generateCSSUnit(titleSpacing, "px"),
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
@@ -229,7 +235,6 @@ function EditorStyles(props) {
       "font-weight": descriptionFontWeight,
       "line-height": descriptionLineHeight,
       color: descriptionColor,
-      "margin-top": generateCSSUnit(descriptionSpacing, "px"),
       "margin-bottom": generateCSSUnit(descriptionSpacing, "px"),
     },
     " .imagebox-arrow": {
@@ -241,16 +246,23 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+      "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
     },
+	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+		"font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+    "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+      "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
     },
-    " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
-      "font-size": generateCSSUnit(titleFontSize, "px") + "!important",
-    },
+	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
+		"font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+    "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
+	},
   };
 
   var externalStyles = {

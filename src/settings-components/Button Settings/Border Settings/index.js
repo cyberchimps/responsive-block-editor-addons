@@ -21,10 +21,7 @@ class ButtonBorderControl extends Component {
           attributes: {
               ctaBorderStyle,
               ctaBorderWidth,
-              ctaBorderColor,
               ctaBorderRadius,
-
-              hoverctaBorderColor
           },
           setAttributes,
       } = this.props;
@@ -92,27 +89,6 @@ class ButtonBorderControl extends Component {
                           max={50}
                           allowReset
                       />
-                      <Fragment>
-                          <p>
-                              {__("Border Color", "responsive-block-editor-addons")}
-                              <span className="components-base-control__label">
-                      <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: ctaBorderColor }}
-                      ></span>
-                    </span>
-                          </p>
-                          <ColorPalette
-                              value={ctaBorderColor}
-                              onChange={(colorValue) =>
-                                  setAttributes({
-                                      ctaBorderColor:
-                                          colorValue !== undefined ? colorValue : "#000",
-                                  })
-                              }
-                              allowReset
-                          />
-                      </Fragment>
 
                       <RangeControl
                           label={__("Border Radius", "responsive-block-editor-addons")}
@@ -126,27 +102,6 @@ class ButtonBorderControl extends Component {
                           max={100}
                           allowReset
                       />
-
-                      { this.props.showBorderHoverColor == true && (
-                          <Fragment>
-                              <p className="responsive-block-editor-addons-setting-label">
-                                  {__("Border Hover Color", "responsive-block-editor-addons")}
-                                  <span className="components-base-control__label">
-                      <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: hoverctaBorderColor }}
-                      ></span>
-                    </span>
-                              </p>
-                              <ColorPalette
-                                  value={hoverctaBorderColor}
-                                  onChange={(colorValue) =>
-                                      setAttributes({ hoverctaBorderColor: colorValue })
-                                  }
-                                  allowReset
-                              />
-                          </Fragment>
-                          )}
                   </Fragment>
               )}
           </PanelBody>

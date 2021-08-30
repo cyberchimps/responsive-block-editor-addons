@@ -9,6 +9,8 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 import PostGridImage from "./image";
 import EditorStyles from "./editor-styles";
+import { loadGoogleFont } from "../../../utils/font";
+
 const { compose } = wp.compose;
 
 const { Component, Fragment } = wp.element;
@@ -197,54 +199,55 @@ class LatestPostsBlock extends Component {
       setAttributes({ postType: value })
     }
 
+	let queryControls = (
+		<PanelBody title={__("Query")} initialOpen={true}>
+			  <p>{__("Text Alignment", "responsive-block-editor-addons")}</p>
+			  <AlignmentToolbar
+				value={attributes.textAlignment}
+				onChange={(value) =>
+				  setAttributes({
+					textAlignment: value,
+				  })
+				}
+				controls={["left", "center", "right"]}
+				isCollapsed={false}
+			  />
+			  <Fragment>
+			  <SelectControl
+				label={__("Content Type", "responsive-block-editor-addons")}
+				options={postTypeOptions}
+				value={attributes.postType}
+				onChange={(value) => setPostGridContentType(value)}
+			  /> 
+			  </Fragment>
+			  {"" != taxonomyList && (
+				<SelectControl
+				  label={__("Taxonomy")}
+				  value={attributes.taxonomyType}
+				  onChange={(value) => this.onSelectTaxonomyType(value)}
+				  options={taxonomyListOptions}
+				/>
+			  )}
+			  {"" != categoriesList && (
+				<Fragment>
+				  <SelectControl
+					label={
+					  taxonomyList[attributes.taxonomyType]
+						? taxonomyList[attributes.taxonomyType]["label"]
+						: "Taxonomy"
+					}
+					value={attributes.categories}
+					onChange={(value) => setAttributes({ categories: value })}
+					options={categoryListOptions}
+				  />
+				</Fragment>
+			  )}
+		</PanelBody>
+	);
+
     return (
       <Fragment>
-        <InspectorControls>
-            <PanelBody title={__("Query")} initialOpen={true}>
-            <p>{__("Text Alignment", "responsive-block-editor-addons")}</p>
-            <AlignmentToolbar
-              value={attributes.textAlignment}
-              onChange={(value) =>
-                setAttributes({
-                  textAlignment: value,
-                })
-              }
-              controls={["left", "center", "right"]}
-              isCollapsed={false}
-            />
-            <Fragment>
-            <SelectControl
-              label={__("Content Type", "responsive-block-editor-addons")}
-              options={postTypeOptions}
-              value={attributes.postType}
-              onChange={(value) => setPostGridContentType(value)}
-            /> 
-            </Fragment>
-            {"" != taxonomyList && (
-              <SelectControl
-                label={__("Taxonomy")}
-                value={attributes.taxonomyType}
-                onChange={(value) => this.onSelectTaxonomyType(value)}
-                options={taxonomyListOptions}
-              />
-            )}
-            {"" != categoriesList && (
-              <Fragment>
-                <SelectControl
-                  label={
-                    taxonomyList[attributes.taxonomyType]
-                      ? taxonomyList[attributes.taxonomyType]["label"]
-                      : "Taxonomy"
-                  }
-                  value={attributes.categories}
-                  onChange={(value) => setAttributes({ categories: value })}
-                  options={categoryListOptions}
-                />
-              </Fragment>
-            )}
-          </PanelBody>
-        </InspectorControls>
-        <Inspector {...{ setAttributes, ...this.props }} />
+        <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar
             label={__("Block Alignment")}
@@ -264,6 +267,10 @@ class LatestPostsBlock extends Component {
             "responsive-block-editor-addons-block-post-grid"
           )}
         >
+		  {attributes.excerptFontFamily && loadGoogleFont(attributes.excerptFontFamily)}
+		  {attributes.metaFontFamily && loadGoogleFont(attributes.metaFontFamily)}
+		  {attributes.titleFontFamily && loadGoogleFont(attributes.titleFontFamily)}
+		  {attributes.continueFontFamily && loadGoogleFont(attributes.continueFontFamily)}
           {attributes.displaySectionTitle && attributes.sectionTitle && (
             <SectionTitleTag className="responsive-block-editor-addons-post-grid-section-title">
               {attributes.sectionTitle}

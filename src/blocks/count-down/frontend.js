@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			var isOver = Date.parse(timer) < Date.parse(new Date(currentUtcOffset));
 
 			// Change inner html
-			daysNode[0].innerHTML = isOver ? 0 : days;
-			hoursNode[0].innerHTML = isOver ? 0 : hours;
-			minutesNode[0].innerHTML = isOver ? 0 : minutes;
-			secondsNode[0].innerHTML = isOver ? 0 : seconds;
+			if( daysNode[0] ) daysNode[0].innerHTML = isOver ? 0 : days;
+			if( hoursNode[0] ) hoursNode[0].innerHTML = isOver ? 0 : hours;
+			if( minutesNode[0] ) minutesNode[0].innerHTML = isOver ? 0 : minutes;
+			if( secondsNode[0] ) secondsNode[0].innerHTML = isOver ? 0 : seconds;
 
 			if (isOver) {
 				clearInterval(interval);

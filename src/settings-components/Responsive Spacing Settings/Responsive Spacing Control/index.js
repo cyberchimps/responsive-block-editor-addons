@@ -6,39 +6,34 @@ import classnames from "classnames";
  * Box-Shadow reusable component.
  *
  */
-const { __ } = wp.i18n;
+// const { __ } = wp.i18n;
 
-const { ColorPalette } = wp.blockEditor;
+// const { ColorPalette } = wp.blockEditor;
 
-const { SelectControl, RangeControl, Dashicon, TabPanel, ButtonGroup, Button } = wp.components;
+// const { SelectControl, RangeControl, Dashicon, TabPanel, ButtonGroup, Button } = wp.components;
 
 // Extend component
-const { Component, Fragment } = wp.element;
+// const { Component, Fragment } = wp.element;
 import "../editor.scss";
-import {sprintf} from "@wordpress/i18n";
+import {sprintf, __} from "@wordpress/i18n";
+import {ColorPalette} from "@wordpress/block-editor";
+import {SelectControl, RangeControl, Dashicon, TabPanel} from "@wordpress/components";
+import {Component, Fragment} from "@wordpress/element";
 
 class ResponsiveSpacingControl extends Component {
   constructor() {
     super(...arguments);
-      this.state = {
-          attrval: 0,
-          attrvalMobile: 0,
-          attrvalTablet: 0,
-      }
-
   }
 
 
 render() {
       const {
-          attributes: {
-              topMarginMobile,
-              topMarginTablet,
-              topMargin,
-          },
           setAttributes,
       } = this.props;
-      var advancedControls;
+
+    var getAttrName = attrName => camelCase( sprintf( this.props.attrNameTemplate, attrName ) )
+
+    var advancedControls;
       advancedControls = (
           <Fragment>
 
@@ -76,13 +71,10 @@ render() {
               max={2000}
               allowReset={true}
               resetFallbackValue={5}
-              value={this.state.attrvalMobile }
+              value={this.props.values.mobile }
               onChange={(value) =>[
                   setAttributes({
-                      [this.props.attrMobile]: value !== undefined ? value : 0,
-                  }),
-                  this.setState({
-                      attrvalMobile: value
+                      [getAttrName("Mobile")]: value !== undefined ? value : 0,
                   })]
           }
               />
@@ -97,13 +89,10 @@ render() {
               max={2000}
               allowReset={true}
               resetFallbackValue={5}
-              value={this.state.attrvalTablet}
+              value={this.props.values.tablet}
               onChange={(value) =>[
                   setAttributes({
-                      [this.props.attrTablet]: value !== undefined ? value : 0,
-                  }),
-                  this.setState({
-                      attrvalTablet: value
+                      [getAttrName("Tablet")]: value !== undefined ? value : 0,
                   })]
           }
               />
@@ -118,13 +107,10 @@ render() {
               max={2000}
               allowReset={true}
               resetFallbackValue={5}
-              value={this.state.attrval}
+              value={this.props.values.desktop}
               onChange={(value) =>[
                   setAttributes({
-                      [this.props.attr]: value !== undefined ? value : 0,
-                  }),
-                  this.setState({
-                      attrval: value
+                      [getAttrName("")]: value !== undefined ? value : 0,
                   })]
           }
               />

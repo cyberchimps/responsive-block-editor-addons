@@ -12,7 +12,11 @@ function EditorStyles(props) {
     inactiveOtherItems,
     expandFirstItem,
     rowsGap,
+    rowsGapMobile,
+    rowsGapTablet,
     columnsGap,
+    columnsGapMobile,
+    columnsGapTablet,
     align,
     titleTextColor,
     titleActiveBackgroundColor,
@@ -56,7 +60,11 @@ function EditorStyles(props) {
     titleBottomPaddingMobile,
     titleBackgroundColorOpacity,
     marginV,
+    marginVMobile,
+    marginVTablet,
     marginH,
+    marginHMobile,
+    marginHTablet,
     titleSecondaryBackgroundColor,
     titleGradientDegree,
     titleBgGradient,
@@ -67,6 +75,10 @@ function EditorStyles(props) {
     contentBgGradient,
     contentBackgroundColor,
     contentBackgroundColorOpacity,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	contentFontSizeMobile,
+	contentFontSizeTablet,
   } = props.attributes;
 
   var selectors = {};
@@ -201,14 +213,14 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-title": {
       "font-family": titleFontFamily,
-      "font-size": titleFontSize + "px",
+      "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
     },
     " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
       "color": contentTextColor,
       "background-image": contentGradient,
-      "font-size": contentFontSize + "px",
+      "font-size": generateCSSUnit(contentFontSize, "px"),
       "font-family": contentFontFamily,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
@@ -216,6 +228,12 @@ function EditorStyles(props) {
   };
 
   tablet_selectors = {
+    " ": {
+      "margin-top": marginVTablet + "px",
+      "margin-bottom": marginVTablet + "px",
+      "margin-left": marginHTablet + "px",
+      "margin-right": marginHTablet + "px",
+    },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(
         vtitlePaddingTablet,
@@ -262,9 +280,28 @@ function EditorStyles(props) {
       "height": generateCSSUnit(iconSizeTablet, iconSizeType),
       "font-size": generateCSSUnit(iconSizeTablet, iconSizeType),
     },
+	" .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-title": {
+		"font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
+		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+	},
+  " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+    "margin-bottom": generateCSSUnit(rowsGapTablet, "px"),
+  },
+  " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+    "grid-column-gap": generateCSSUnit(columnsGapTablet, "px"),
+    "grid-row-gap": generateCSSUnit(rowsGapTablet, "px"),
+  },
   };
 
   mobile_selectors = {
+    " ": {
+      "margin-top": marginVMobile + "px",
+      "margin-bottom": marginVMobile + "px",
+      "margin-left": marginHMobile + "px",
+      "margin-right": marginHMobile + "px",
+    },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(
         vtitlePaddingMobile,
@@ -311,6 +348,19 @@ function EditorStyles(props) {
       "height": generateCSSUnit(iconSizeMobile, iconSizeType),
       "font-size": generateCSSUnit(iconSizeMobile, iconSizeType),
     },
+	" .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-mobile": {
+		"font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
+		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+	},
+  " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+    "margin-bottom": generateCSSUnit(rowsGapMobile, "px"),
+  },
+  " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+    "grid-column-gap": generateCSSUnit(columnsGapMobile, "px"),
+    "grid-row-gap": generateCSSUnit(rowsGapMobile, "px"),
+  },
   };
 
   if ("accordion" === layout && true === inactiveOtherItems) {

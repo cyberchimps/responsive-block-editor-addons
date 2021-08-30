@@ -78,7 +78,6 @@
       background-color: #fff;
       box-shadow: 0 0 0 1px #555d66;
       position: relative;
-      padding-bottom: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -100,6 +99,10 @@
         position: absolute;
         transform: translateY(-50%);
       }
+
+	  > .dashicon {
+		  padding-bottom: 100%;
+	  }
     }
   }
 }
@@ -142,7 +145,7 @@
 }
 
 @media (max-width: 576px) {
-  .has {
+	.wp-block-responsive-block-editor-addons-team-wrapper.has {
     &-large,
     &-small,
     &-medium,

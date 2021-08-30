@@ -17,7 +17,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/accordion/inde
  */
 class Accordion_Index_Test extends WP_UnitTestCase {
 	/**
-	 * Created fake post id.
+	 * Created Dummy post id.
 	 *
 	 * @access public
 	 * @var int
@@ -25,14 +25,14 @@ class Accordion_Index_Test extends WP_UnitTestCase {
 	public static $post_id;
 
 	/**
-	 * Fake block ID.
+	 * Dummy block ID.
 	 *
 	 * @var int
 	 */
 	protected static $block_id;
 
 	/**
-	 * Fake user ID.
+	 * Dummy user ID.
 	 *
 	 * @var int
 	 */

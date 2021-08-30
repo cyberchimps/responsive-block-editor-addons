@@ -110,6 +110,18 @@ const attributes = {
   imageMarginBottom: {
     type: "number",
   },
+  imageMarginTopMobile: {
+    type: "number",
+  },
+  imageMarginBottomMobile: {
+    type: "number",
+  },
+  imageMarginTopTablet: {
+    type: "number",
+  },
+  imageMarginBottomTablet: {
+    type: "number",
+  },
   iconSize: {
     type: "string",
   },
@@ -123,6 +135,30 @@ const attributes = {
     type: "number",
   },
   socialIconSpacing: {
+    type: "number",
+  },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  designationSpacingMobile: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
+    type: "number",
+  },
+  socialIconSpacingMobile: {
+    type: "number",
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  designationSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
+  socialIconSpacingTablet: {
     type: "number",
   },
   imageStyle: {
@@ -191,10 +227,10 @@ const attributes = {
     type: "number",
     default: 50,
   },
-  secondaryBackgroundColor: {
+  backgroundColor2: {
     type: "string",
   },
-  gradientDegree: {
+  gradientDirection: {
     type: "number",
     default: 100,
   },
@@ -212,15 +248,15 @@ const attributes = {
   backgroundImage: {
     type: "string",
   },
-  backgroundPosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center-center",
   },
-  backgroundRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  backgroundSize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },
@@ -272,6 +308,24 @@ const attributes = {
   stack: {
     type: "string",
     default: "mobile",
-  }
+  },
+  titleFontSizeMobile: {
+	  type: "number",
+  },
+  titleFontSizeTablet: {
+	  type: "number",
+  },
+  designationFontSizeMobile: {
+	  type: "number",
+  },
+  designationFontSizeTablet: {
+	  type: "number",
+  },
+  descriptionFontSizeMobile: {
+	  type: "number",
+  },
+  descriptionFontSizeTablet: {
+	  type: "number",
+  },
 };
 export default attributes;

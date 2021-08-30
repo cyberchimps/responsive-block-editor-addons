@@ -16,18 +16,18 @@ function EditorStyles(props) {
     width,
     widthType,
     stack,
-    topPadding,
-    topPaddingTablet,
-    topPaddingMobile,
-    bottomPadding,
-    bottomPaddingTablet,
-    bottomPaddingMobile,
-    leftPadding,
-    leftPaddingTablet,
-    leftPaddingMobile,
-    rightPadding,
-    rightPaddingTablet,
-    rightPaddingMobile,
+    boxTopPadding,
+    boxTopPaddingTablet,
+    boxTopPaddingMobile,
+    boxBottomPadding,
+    boxBottomPaddingTablet,
+    boxBottomPaddingMobile,
+    boxLeftPadding,
+    boxLeftPaddingTablet,
+    boxLeftPaddingMobile,
+    boxRightPadding,
+    boxRightPaddingTablet,
+    boxRightPaddingMobile,
     topMargin,
     topMarginTablet,
     topMarginMobile,
@@ -53,10 +53,10 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -108,10 +108,10 @@ function EditorStyles(props) {
               imgopacity || 0
             )}),url(${backgroundImage})`
           : "",
-      "background-position": backgroundPosition,
+      "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-size": backgroundImageSize,
       "z-index": z_index,
     },
     " .responsive-block-editor-addons-block-columns.overlay-type-color": {
@@ -143,10 +143,10 @@ function EditorStyles(props) {
       "align-items": verticalAlign,
     },
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "padding-top": generateCSSUnit(boxTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(boxBottomPadding, "px"),
+      "padding-left": generateCSSUnit(boxLeftPadding, "px"),
+      "padding-right": generateCSSUnit(boxRightPadding, "px"),
       "margin-top": generateCSSUnit(topMargin, "px"),
       "margin-bottom": generateCSSUnit(bottomMargin, "px"),
       "text-align": blockAlign,
@@ -161,11 +161,11 @@ function EditorStyles(props) {
       "background-image":
         backgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              backgroundColor1,
-              backgroundColor2,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
+            `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
+            `${hexToRgba(backgroundColor2 || "#ffffff", imgopacity || 0)}`,
+            gradientDirection,
+            colorLocation1,
+            colorLocation2
             )
           : undefined,
       "box-shadow":
@@ -188,10 +188,10 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+      "padding-top": generateCSSUnit(boxTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(boxBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(boxLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(boxRightPaddingMobile, "px"),
       "margin-top": generateCSSUnit(topMarginMobile, "px"),
       "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
     },
@@ -199,10 +199,10 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+      "padding-top": generateCSSUnit(boxTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(boxBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(boxLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(boxRightPaddingTablet, "px"),
       "margin-top": generateCSSUnit(topMarginTablet, "px"),
       "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
     },

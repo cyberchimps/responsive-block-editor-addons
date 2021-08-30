@@ -32,7 +32,7 @@ export default class Save extends Component {
       ctaText,
       ctaTitleFontSize,
       ctaTextFontSize,
-      imgURL,
+      backgroundImage,
       dimRatio,
       icon,
       iconPosition,
@@ -63,7 +63,7 @@ export default class Save extends Component {
             `block-${block_id}`
           )}
         >
-          {"image" == backgroundType && imgURL && !!imgURL.length && (
+          {"image" == backgroundType && backgroundImage && !!backgroundImage.length && (
             <div className="responsive-block-editor-addons-cta-image-wrap">
               <img
                 className={classnames(

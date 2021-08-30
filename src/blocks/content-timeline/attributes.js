@@ -99,6 +99,30 @@ const attributes = {
     type: "number",
     default: 15,
   },
+  horizontalSpaceMobile: {
+    type: "number",
+    default: 0,
+  },
+  verticalSpaceMobile: {
+    type: "number",
+    default: 15,
+  },
+  headingBottomMarginMobile: {
+    type: "number",
+    default: 15,
+  },
+  horizontalSpaceTablet: {
+    type: "number",
+    default: 0,
+  },
+  verticalSpaceTablet: {
+    type: "number",
+    default: 15,
+  },
+  headingBottomMarginTablet: {
+    type: "number",
+    default: 15,
+  },
   dateLineHeight: {
     type: "number",
     default: 1,
@@ -224,6 +248,24 @@ const attributes = {
   arrowlinAlignment: {
     type: "string",
     default: "center",
+  },
+  dateFontSizeMobile: {
+	type: "number",
+  },
+  dateFontSizeTablet: {
+	type: "number",
+  },
+  headingFontSizeMobile: {
+	type: "number",
+  },
+  headingFontSizeTablet: {
+	type: "number",
+  },
+  contentFontSizeMobile: {
+	type: "number",
+  },
+  contentFontSizeTablet: {
+	type: "number",
   },
 };
 export default attributes;

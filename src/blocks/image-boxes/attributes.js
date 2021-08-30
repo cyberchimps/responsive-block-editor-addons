@@ -71,6 +71,18 @@ const attributes = {
   descriptionSpacing: {
     type: "number",
   },
+  titleSpacingMobile: {
+    type: "number",
+  },
+  descriptionSpacingMobile: {
+    type: "number",
+  },
+  titleSpacingTablet: {
+    type: "number",
+  },
+  descriptionSpacingTablet: {
+    type: "number",
+  },
   blockBorderRadius: {
     type: "number",
   },
@@ -255,6 +267,16 @@ const attributes = {
     type: "boolean",
     default: true,
   },
+  descriptionFontSizeMobile: {
+	  type: "number",
+  },
+  descriptionFontSizeTablet: {
+	  type: "number",
+  },
+  boxRadius: {
+	type: "number",
+	default: 999,
+  },//For compatibility with v1.3.2
 };
 
 export default attributes;

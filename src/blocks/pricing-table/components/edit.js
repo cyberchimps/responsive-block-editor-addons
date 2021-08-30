@@ -252,7 +252,6 @@ export default class Edit extends Component {
                                       ].url
                                 }
                                 alt="image"
-                                width={imageWidth}
                               />
                             )}
                           </Button>

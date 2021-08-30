@@ -34,9 +34,10 @@ const save = ({ attributes, className }) => {
     thumbnails,
     responsiveHeight,
     lightbox,
-    borderWidth,
-    borderColor,
-    borderStyle,
+    blockBorderWidth,
+    blockBorderColor,
+    blockBorderStyle,
+    blockBorderRadius,
     counterId,
     iconBackgroundOpacity,
     align,
@@ -90,9 +91,10 @@ const save = ({ attributes, className }) => {
   const navStyles = {
     marginLeft: gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
     marginRight: gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
-    borderWidth: borderWidth,
-    borderStyle: borderStyle,
-    borderColor: borderColor,
+    borderWidth: blockBorderWidth,
+    borderStyle: blockBorderStyle,
+    borderColor: blockBorderColor,
+    borderRadius: blockBorderRadius,
   };
 
   const flickityOptions = {

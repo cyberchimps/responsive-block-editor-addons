@@ -242,7 +242,7 @@ class LatestPostsBlock extends Component {
     if (!hasPosts) {
       return (
         <Fragment>
-          <Inspector {...{ setAttributes, ...this.props }} />
+          <Inspector {...{ setAttributes, ...this.props, queryControls }} />
           <Placeholder
             icon="admin-post"
             label={__("Post Timeline", "responsive-block-editor-addons")}
@@ -301,31 +301,32 @@ class LatestPostsBlock extends Component {
       });
     }
 
+    const queryControls = (
+      <PanelBody title={__("Query")} initialOpen={true}>
+          {"" != taxonomyList && (
+            <SelectControl
+              label={__("Taxonomy")}
+              value={attributes.taxonomyType}
+              onChange={(value) => this.onSelectTaxonomyType(value)}
+              options={taxonomyListOptions}
+            />
+          )}
+          {"" != categoriesList && (
+            <Fragment>
+              <SelectControl
+                label={taxonomyList[attributes.taxonomyType]["label"]}
+                value={attributes.categories}
+                onChange={(value) => setAttributes({ categories: value })}
+                options={categoryListOptions}
+              />
+            </Fragment>
+          )}
+      </PanelBody>
+    )
+
     return (
       <Fragment>
-        <InspectorControls>
-          <PanelBody title={__("Query")} initialOpen={true}>
-            {"" != taxonomyList && (
-              <SelectControl
-                label={__("Taxonomy")}
-                value={attributes.taxonomyType}
-                onChange={(value) => this.onSelectTaxonomyType(value)}
-                options={taxonomyListOptions}
-              />
-            )}
-            {"" != categoriesList && (
-              <Fragment>
-                <SelectControl
-                  label={taxonomyList[attributes.taxonomyType]["label"]}
-                  value={attributes.categories}
-                  onChange={(value) => setAttributes({ categories: value })}
-                  options={categoryListOptions}
-                />
-              </Fragment>
-            )}
-          </PanelBody>
-        </InspectorControls>
-        <Inspector {...{ setAttributes, ...this.props }} />
+        <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar
             value={attributes.align}

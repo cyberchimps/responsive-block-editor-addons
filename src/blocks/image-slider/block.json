@@ -72,7 +72,10 @@
       "type": "boolean",
       "default": false
     },
-    "borderWidth": {
+    "blockBorderWidth": {
+      "type": "number"
+    },
+    "blockBorderRadius": {
       "type": "number"
     },
     "iconBackgroundRadius": {
@@ -86,13 +89,13 @@
     "iconBackgroundColor": {
       "type": "string"
     },
-    "borderColor": {
+    "blockBorderColor": {
       "type": "string"
     },
     "iconColor": {
       "type": "string"
     },
-    "borderStyle": {
+    "blockBorderStyle": {
       "type": "string"
     },
     "counterId": {

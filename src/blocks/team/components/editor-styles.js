@@ -31,6 +31,18 @@ function EditorStyles(props) {
     socialIconSpacing,
     imageMarginTop,
     imageMarginBottom,
+    titleSpacingMobile,
+    designationSpacingMobile,
+    descriptionSpacingMobile,
+    socialIconSpacingMobile,
+    imageMarginTopMobile,
+    imageMarginBottomMobile,
+    titleSpacingTablet,
+    designationSpacingTablet,
+    descriptionSpacingTablet,
+    socialIconSpacingTablet,
+    imageMarginTopTablet,
+    imageMarginBottomTablet,
     iconSize,
     imageWidth,
     imageWidthMobile,
@@ -48,29 +60,35 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     opacity,
-    secondaryBackgroundColor,
-    gradientDegree,
+    backgroundColor2,
+    gradientDirection,
     bgGradient,
     colorLocation1,
     colorLocation2,
     backgroundImage,
-    backgroundPosition,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
     backgroundAttachment,
     gutter,
     count,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	designationFontSizeMobile,
+	designationFontSizeTablet,
+	descriptionFontSizeMobile,
+	descriptionFontSizeTablet,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
 
   var tempsecondaryBackgroundColor = bgGradient
-    ? secondaryBackgroundColor
+    ? backgroundColor2
     : backgroundColor;
 
   var bggradient =
     "linear-gradient(" +
-    gradientDegree +
+    gradientDirection +
     "deg," +
     hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
     colorLocation1 +
@@ -82,7 +100,7 @@ function EditorStyles(props) {
   if (backgroundImage) {
     bggradient =
       "linear-gradient(" +
-      gradientDegree +
+      gradientDirection +
       "deg," +
       hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
       colorLocation1 +
@@ -218,9 +236,9 @@ function EditorStyles(props) {
 
     " .wp-block-responsive-block-editor-addons-team": {
       "background-image": bggradient,
-      "background-size": backgroundSize,
-      "background-repeat": backgroundRepeat,
-      "background-position": backgroundPosition,
+      "background-size": backgroundImageSize,
+      "background-repeat": backgroundImageRepeat,
+      "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
       "border-width": generateCSSUnit(borderWidth, "px"),
       "border-color": borderColor,
@@ -249,11 +267,32 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidthMobile, "px"),
       "max-width": generateCSSUnit(imageWidthMobile, "px"),
+      "margin-top": generateCSSUnit(imageMarginTopMobile, "px"),
+      "margin-bottom": generateCSSUnit(imageMarginBottomMobile, "px"),
     },
     ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
       "max-width": "100%",
       "min-width": "100%",
-    }
+    },
+    " .responsive-block-editor-addons-team-name": {
+      "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
+	  "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-designation": {
+      "margin-bottom": generateCSSUnit(designationSpacingMobile, "px"),
+	  "font-size": generateCSSUnit(designationFontSizeMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-description": {
+      "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
+	  "font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+      "margin-left": generateCSSUnit(socialIconSpacingMobile, "px"),
+      "margin-right": generateCSSUnit(socialIconSpacingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -263,11 +302,32 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-team-avatar": {
       "width": generateCSSUnit(imageWidthTablet, "px"),
       "max-width": generateCSSUnit(imageWidthTablet, "px"),
+      "margin-top": generateCSSUnit(imageMarginTopTablet, "px"),
+      "margin-bottom": generateCSSUnit(imageMarginBottomTablet, "px"),
     },
     ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "max-width": "100%",
       "min-width": "100%",
-    }
+    },
+    " .responsive-block-editor-addons-team-name": {
+      "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
+	  "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-designation": {
+      "margin-bottom": generateCSSUnit(designationSpacingTablet, "px"),
+	  "font-size": generateCSSUnit(designationFontSizeTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-description": {
+      "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
+	  "font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+      "margin-left": generateCSSUnit(socialIconSpacingTablet, "px"),
+      "margin-right": generateCSSUnit(socialIconSpacingTablet, "px"),
+    },
   };
 
   var styling_css = "";

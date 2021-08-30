@@ -28,8 +28,8 @@ export default class Team extends Component {
         imageShape,
         boxShadowPosition,
         opacity,
-        secondaryBackgroundColor,
-        gradientDegree,
+        backgroundColor2,
+        gradientDirection,
         bgGradient,
         colorLocation1,
         colorLocation2,
@@ -41,12 +41,12 @@ export default class Team extends Component {
     let bgopacity = opacity / 100;
 
     var tempsecondaryBackgroundColor = bgGradient
-      ? secondaryBackgroundColor
+      ? backgroundColor2
       : backgroundColor;
 
     var bggradient =
       "linear-gradient(" +
-      gradientDegree +
+      gradientDirection +
       "deg," +
       hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
       colorLocation1 +
@@ -58,7 +58,7 @@ export default class Team extends Component {
     if (backgroundImage) {
       bggradient =
         "linear-gradient(" +
-        gradientDegree +
+        gradientDirection +
         "deg," +
         hexToRgba(backgroundColor || "#ffffff", bgopacity || 0) +
         colorLocation1 +
