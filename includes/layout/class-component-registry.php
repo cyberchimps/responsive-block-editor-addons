@@ -110,6 +110,7 @@ final class Component_Registry {
 				/* translators: %s: This function's name. Will always be RBEA\Blocks\Layouts\Component_Registry::add(). */
 				throw new InvalidArgumentException( sprintf( esc_html__( 'You must supply a valid component type in %s.', 'responsive-block-editor-addons' ), __METHOD__ ) );
 		}
+		return;
 	}
 
 	/**
