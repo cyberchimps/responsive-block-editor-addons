@@ -1,0 +1,34 @@
+.responsive-block-editor-addons-share-icon-modal {
+    height: 450px;
+    width: 300px;
+    padding: 15px;
+
+    .rbea-share-button-save {
+        color: green;
+    }
+
+    .rbea-share-button-remove {
+        margin-left: 1rem;
+        color: red;
+    }
+}
+
+.rbea-add-icon-btn {
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    border: 1px solid #ccc;
+    background-color: aliceblue;
+    padding: 9px 7px;
+    display: inline-block;
+    margin-left: 20px;
+    svg {
+        height: 14px;
+        width: 14px;
+    }
+}
+
+.responsive-block-editor-addons-share-icon-modal .rfipdropdown--open {
+    top: 50px!important;
+    width: 100%;
+}

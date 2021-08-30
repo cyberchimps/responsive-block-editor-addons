@@ -62,6 +62,8 @@ class Edit extends Component {
         headerLinks,
         allowedAnchors,
         orderListType,
+		headingFontFamily,
+		contentFontFamily
       },
       setAttributes,
       className,
@@ -87,9 +89,10 @@ class Edit extends Component {
     }
 
     return [
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={"toc-inspector"} {...{ setAttributes, ...this.props }} />,
 
       <CustomTag
+        key={'toc-content'}
         className={classnames(
           className,
           `responsive-block-editor-addons-toc__align-${align}`,
@@ -99,6 +102,8 @@ class Edit extends Component {
           `block-${block_id}`
         )}
       >
+		{headingFontFamily && loadGoogleFont(headingFontFamily)}
+		{contentFontFamily && loadGoogleFont(contentFontFamily)}
         {"video" == backgroundType && (
           <div className="responsive-block-editor-addons-toc__video-wrap">
             {backgroundVideo && (

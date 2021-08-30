@@ -48,31 +48,32 @@ class TableOfContents extends React.Component {
         const setHeaders = () => {
             let headings = getsHeadingBlocks().map(header => header.attributes);
             headings.forEach((heading, key) => {
-                if (!heading.anchor) {
+                if(heading.headingTitle !== undefined) {
                     heading.anchor =
-                        `${key + 1}-` +
-                        heading.headingTitle
-                            ?.toString()
-                            .toLowerCase()
-                            ?.replace(/( |<.+?>|&nbsp;)/g, "-")
-                        || heading.content
+                    `${key + 1}-` +
+                    heading.headingTitle
                         ?.toString()
                         .toLowerCase()
-                        ?.replace(/( |<.+?>|&nbsp;)/g, "-");
-                    heading.anchor = encodeURIComponent(
-                        heading.anchor?.replace(
-                            /[^\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF\s-]/g,
-                            ""
-                        )
-                    );
+                        ?.replace(/( |<.+?>|&nbsp;)/g, "-")
+                }else {
+                    heading.anchor =
+                    `${key + 1}-` +
+                    heading.content
+                    ?.toString()
+                    .toLowerCase()
+                    ?.replace(/( |<.+?>|&nbsp;)/g, "-");
                 }
-
+                heading.anchor = encodeURIComponent(
+                    heading.anchor?.replace(
+                        /[^\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF\s-]/g,
+                        ""
+                    )
+                );
             });
             if (JSON.stringify(headings) !== JSON.stringify(this.state.headers)) {
                 this.setState({ headers: headings });
             }
         };
-
         setHeaders();
 
         const unsubscribe = subscribe(_ => setHeaders());
@@ -80,7 +81,7 @@ class TableOfContents extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (JSON.stringify(prevProps.headers) !== JSON.stringify(prevState.headers)) {
+        if (JSON.stringify(this.state.headers) !== JSON.stringify(prevState.headers)) {
             this.props.blockProp.setAttributes && this.props.blockProp.setAttributes({
                 headerLinks: JSON.stringify(this.state.headers)
             });

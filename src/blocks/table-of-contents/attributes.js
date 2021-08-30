@@ -121,7 +121,7 @@ const attributes = {
   },
   contentFontFamily: {
     type: "string",
-    default: "Default",
+    default: "",
   },
   contentFontWeight: {
     type: "string",
@@ -142,7 +142,7 @@ const attributes = {
   },
   headingFontFamily: {
     type: "string",
-    default: "Default",
+    default: "",
   },
   headingFontWeight: {
     type: "string",
@@ -459,6 +459,14 @@ const attributes = {
       h5: true,
       h6: true,
     },
+  },
+  smoothScroll: {
+    type: 'boolean',
+    default: true
+  },
+  scrollOffset: {
+      type: 'number',
+      default: 30
   },
 };
 

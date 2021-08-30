@@ -83,10 +83,11 @@ export default class Edit extends Component {
         resshowPrefix,
         resshowTitle,
         resshowDesc,
-        imgURL,
+        backgroundImage,
         dimRatio,
         imageBoxShadowPosition,
         imageopacity,
+		ctaTextFontFamily
       },
       setAttributes,
     } = this.props;
@@ -100,7 +101,7 @@ export default class Edit extends Component {
     const onSelectBgImage = (img) => {
       setAttributes({
         imgID: img.id,
-        imgURL: img.url,
+        backgroundImage: img.url,
         imgAlt: img.alt,
       });
     };
@@ -231,7 +232,8 @@ export default class Edit extends Component {
               ...InfoBoxPositionClasses(this.props.attributes)
             )}
           >
-            {imgURL && !!imgURL.length && (
+			{ctaTextFontFamily && loadGoogleFont(ctaTextFontFamily)}
+            {backgroundImage && !!backgroundImage.length && (
               <div className="responsive-block-editor-addons-cta-image-wrap">
                 <img
                   className={classnames(
