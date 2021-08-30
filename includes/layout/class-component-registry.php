@@ -72,7 +72,7 @@ final class Component_Registry {
 	 * @param array $data Component data.
 	 * @throws InvalidArgumentException If invalid data is provided or the component is already registered.
 	 */
-	public static function add( array $data ): void {
+	public static function add( array $data ) {
 
 		if ( empty( $data['type'] ) || ! in_array( $data['type'], self::$supported_component_types, true ) ) {
 			throw new InvalidArgumentException( esc_html__( 'You must supply a valid component type.', 'responsive-block-editor-addons' ) );
@@ -110,7 +110,6 @@ final class Component_Registry {
 				/* translators: %s: This function's name. Will always be RBEA\Blocks\Layouts\Component_Registry::add(). */
 				throw new InvalidArgumentException( sprintf( esc_html__( 'You must supply a valid component type in %s.', 'responsive-block-editor-addons' ), __METHOD__ ) );
 		}
-		return;
 	}
 
 	/**
