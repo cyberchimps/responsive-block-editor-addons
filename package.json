@@ -15,9 +15,12 @@
   "homepage": "https://cyberchimps.com",
   "private": true,
   "dependencies": {
+    "@babel/preset-env": "^7.14.8",
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
     "@ng-select/ng-select": "^5.0.1",
+    "@testing-library/react": "^12.0.0",
     "@wordpress/dom-ready": "^2.5.1",
+    "babel-jest": "^27.0.6",
     "bigpicture": "^2.5.3",
     "classnames": "^2.2.6",
     "color-rgba": "^2.1.1",
@@ -32,12 +35,15 @@
     "waypoints": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@wordpress/block-editor": "3.1.0",
     "@wordpress/block-library": "2.8.0",
     "@wordpress/blocks": "^6.10.0",
     "@wordpress/edit-post": "^3.22.0",
     "@wordpress/i18n": "^3.6.0",
+    "@wordpress/jest-preset-default": "^7.1.0",
     "@wordpress/plugins": "2.6.0",
     "@wordpress/postcss-themes": "^2.2.0",
     "@wordpress/scripts": "7.1.4",
@@ -91,7 +97,7 @@
     "react-masonry-component": "^6.2.1",
     "react-resizable-box": "^2.1.0",
     "react-slick": "^0.25.2",
-    "react-test-renderer": "^16.13.1",
+    "react-test-renderer": "^16.14.0",
     "recompose": "^0.30.0",
     "resolve-pkg": "^1.0.0",
     "rtlcss-webpack-plugin": "^4.0.3",
@@ -114,7 +120,8 @@
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "lint": "npx eslint src",
     "checkFormat": "prettier --check \"**/*.{js,json,css,scss}\"",
-    "format": "prettier --write src/**/*"
+    "format": "prettier --write src/**/*",
+    "test:unit": "wp-scripts test-unit-js"
   },
   "husky": {
     "hooks": {
