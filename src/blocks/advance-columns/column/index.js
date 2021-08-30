@@ -111,6 +111,102 @@ registerBlockType("responsive-block-editor-addons/column", {
     columnBottomMarginMobile: {
       type: "number",
     },
+    topPadding: {
+      type: "number",
+      default: 999,
+    },
+    bottomPadding: {
+      type: "number",
+      default: 999,
+    },
+    leftPadding: {
+      type: "number",
+      default: 999,
+    },
+    rightPadding: {
+      type: "number",
+      default: 999,
+    },
+    leftMargin: {
+      type: "number",
+      default: 999,
+    },
+    rightMargin: {
+      type: "number",
+      default: 999,
+    },
+    topMargin: {
+      type: "number",
+      default: 999,
+    },
+    bottomMargin: {
+      type: "number",
+      default: 999,
+    },
+    topPaddingTablet: {
+      type: "number",
+      default: 999,
+    },
+    bottomPaddingTablet: {
+      type: "number",
+      default: 999,
+    },
+    leftPaddingTablet: {
+      type: "number",
+      default: 999,
+    },
+    rightPaddingTablet: {
+      type: "number",
+      default: 999,
+    },
+    leftMarginTablet: {
+      type: "number",
+      default: 999,
+    },
+    rightMarginTablet: {
+      type: "number",
+      default: 999,
+    },
+    topMarginTablet: {
+      type: "number",
+      default: 999,
+    },
+    bottomMarginTablet: {
+      type: "number",
+      default: 999,
+    },
+    topPaddingMobile: {
+      type: "number",
+      default: 999,
+    },
+    bottomPaddingMobile: {
+      type: "number",
+      default: 999,
+    },
+    leftPaddingMobile: {
+      type: "number",
+      default: 999,
+    },
+    rightPaddingMobile: {
+      type: "number",
+      default: 999,
+    },
+    leftMarginMobile: {
+      type: "number",
+      default: 999,
+    },
+    rightMarginMobile: {
+      type: "number",
+      default: 999,
+    },
+    topMarginMobile: {
+      type: "number",
+      default: 999,
+    },
+    bottomMarginMobile: {
+      type: "number",
+      default: 999,
+    },
     block_id: {
       type: "string",
     },
