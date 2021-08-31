@@ -1020,8 +1020,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id'            => self::$divider_block_id,
-					'spacerDivideerStyle' => 'basic',
+					'block_id'           => self::$divider_block_id,
+					'spacerDividerStyle' => 'basic',
 				)
 			),
 			'innerBlocks'  => array(),
@@ -1283,7 +1283,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'               => self::$card_block_id,
-					'buttonbackgroundType'   => 'color',
+					'buttonbackgroundType'   => 'gradient',
 					'buttonBackgroundColor1' => '#ffffff',
 					'buttonBackgroundColor2' => '#000000',
 					'gradientDirection'      => 65,
@@ -1843,8 +1843,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
 			'attrs'        => array(
-				'block_id'             => '339297a0-9322-498d-9607-94b9d3b4608b',
-				'buttonBackgroundType' => 'gradient',
+				'block_id'                => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'buttonbackgroundType'    => 'gradient',
+				'buttonbackgroundColor1'  => '#1e1e1e',
+				'buttonbackgroundColor2'  => '#ffffff',
+				'buttongradientDirection' => 30,
+				'buttoncolorLocation1'    => 10,
+				'buttoncolorLocation2'    => 80,
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -3101,7 +3106,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 					'backgroundType'           => 'image',
 					'backgroundImage'          => 'someURL',
 					'overlayType'              => 'gradient',
-					'gradientOverlayType'      => 'radical',
+					'gradientOverlayType'      => 'radial',
 					'gradientOverlayColor1'    => '#cc2cc2',
 					'gradientOverlayColor2'    => '#cc1cc1',
 					'gradientOverlayPosition'  => 'top left',
@@ -3888,7 +3893,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -3955,7 +3960,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4004,12 +4009,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'                      => self::$accordion_child_block_id_one,
-					'titleBgGradient'               => true,
-					'titleGradientDegree'           => 10,
-					'titleBackgroundColor'          => '#333aba',
-					'titleBackgroundColorOpacity'   => 7,
-					'titleSecondaryBackgroundColor' => '#abb123',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4021,7 +4022,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4038,8 +4039,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$accordion_block_id,
-					'schema'   => $schema,
+					'block_id'                      => self::$accordion_block_id,
+					'schema'                        => $schema,
+					'titleBgGradient'               => true,
+					'titleGradientDegree'           => 10,
+					'titleBackgroundColor'          => '#333aba',
+					'titleBackgroundColorOpacity'   => 7,
+					'titleSecondaryBackgroundColor' => '#abb123',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4070,9 +4076,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'           => self::$accordion_child_block_id_one,
-					'inactiveOtherItems' => false,
-					'layout'             => 'accordion',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4084,7 +4089,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4101,8 +4106,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$accordion_block_id,
-					'schema'   => $schema,
+					'block_id'           => self::$accordion_block_id,
+					'schema'             => $schema,
+					'inactiveOtherItems' => false,
+					'layout'             => 'accordion',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4133,9 +4140,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'        => self::$accordion_child_block_id_one,
-					'expandFirstItem' => true,
-					'layout'          => 'accordion',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4147,7 +4153,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4164,8 +4170,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$accordion_block_id,
-					'schema'   => $schema,
+					'block_id'        => self::$accordion_block_id,
+					'schema'          => $schema,
+					'expandFirstItem' => true,
+					'layout'          => 'accordion',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4196,9 +4204,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'           => self::$accordion_child_block_id_one,
-					'inactiveOtherItems' => false,
-					'layout'             => 'grid',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4210,7 +4217,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4229,6 +4236,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				array(
 					'block_id' => self::$accordion_block_id,
 					'schema'   => $schema,
+					'layout'   => 'grid',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4367,8 +4375,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id'                               => self::$progress_bar_block_id,
-					'gradientTrack'                          => false,
+					'block_id'      => self::$progress_bar_block_id,
+					'gradientTrack' => false,
 					'horizontalProgressBarPrimaryTrackColor' => '#eeceee',
 				)
 			),
