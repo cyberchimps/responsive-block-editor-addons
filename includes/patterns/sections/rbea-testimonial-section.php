@@ -62,7 +62,7 @@ return array(
 			esc_html__( 'Testimonial Corporate Lawyer', 'responsive-block-editor-addons' ),
 			esc_html__( 'Lawyer', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Testimonial-Corporate-Lawyer.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -98,6 +98,6 @@ return array(
 			esc_html__( 'Testimonial Doctor', 'responsive-block-editor-addons' ),
 			esc_html__( 'Doctor', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Testimonial-Doctor.jpg',
 	),
 );

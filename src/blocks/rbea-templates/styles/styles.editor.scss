@@ -181,6 +181,7 @@ $patternHeaderColor: #f1f1f1;
 		background-color: #fff;
 		border-radius: 5px;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+		height: fit-content;
 		
 		img {
 			max-width: 100%;
@@ -692,3 +693,22 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 	padding-top: 25px;
 	background-color: $patternbackgroundColor;
 }
+
+.rbea-pattern-importer-image-layout {
+	width: 340px;
+	height: 400px;
+	background-position: center top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.rbea-pattern-importer-image-section {
+	width: 340px;
+	height: 246px;
+	background-position: center top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+

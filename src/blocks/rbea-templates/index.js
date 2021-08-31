@@ -28,7 +28,7 @@ registerBlockType("responsive-block-editor-addons/rbea-templates", {
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.block_importer,
-  category: "responsive-block-editor-addons",
+  category: "responsive_block_editor_addons",
   keywords: [
     __("patterns", "responsive-block-editor-addons"),
     __("importer", "responsive-block-editor-addons"),
@@ -101,8 +101,9 @@ function appendImportButton() {
  * Render block (Modal) on click.
  */
 function rbeaRenderModalBlock() {
+  let {rootClientId,index} = wp.data.select( 'core/editor' ).getBlockInsertionPoint();
   const block = wp.blocks.createBlock(
     "responsive-block-editor-addons/rbea-templates"
   );
-  wp.data.dispatch("core/block-editor").insertBlocks(block);
+  wp.data.dispatch("core/block-editor").insertBlocks(block,index,rootClientId);
 }

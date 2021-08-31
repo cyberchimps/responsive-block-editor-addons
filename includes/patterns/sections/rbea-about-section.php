@@ -64,7 +64,7 @@ return array(
 			esc_html__( 'About 1 Corporate Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/About-1-Corporate-Business.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -108,7 +108,7 @@ return array(
 			esc_html__( 'About 2 Corporate Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/About-2-Corporate-Business.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -178,7 +178,7 @@ return array(
 			esc_html__( 'About Doctor', 'responsive-block-editor-addons' ),
 			esc_html__( 'Doctor', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/About-Doctor.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -218,6 +218,6 @@ return array(
 			esc_html__( 'About Construction', 'responsive-block-editor-addons' ),
 			esc_html__( 'Construction', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/About-Construction.jpg',
 	),
 );

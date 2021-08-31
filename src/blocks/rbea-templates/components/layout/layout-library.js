@@ -151,7 +151,7 @@ export default class LayoutLibrary extends Component {
             >
               {map(
                 data,
-                ({ name, key, image, content, category, keywords }) => {
+                ({ type, name, key, image, content, category, keywords }) => {
                   if (
                     ("all" === this.state.category ||
                       category.includes(this.state.category)) &&
@@ -168,6 +168,7 @@ export default class LayoutLibrary extends Component {
                         key={"pattern-item-" + key}
                         name={name}
                         itemKey={key}
+                        type= {type}
                         image={image}
                         content={content}
                         context={context}

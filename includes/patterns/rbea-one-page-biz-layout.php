@@ -101,5 +101,5 @@ return array(
 		esc_html__( 'Company', 'responsive-block-editor-addons' ),
 		esc_html__( 'Agency', 'responsive-block-editor-addons' ),
 	),
-	'image'      => 'https://picsum.photos/id/1043/356/246',
+	'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/One-Page-Business-1-1.jpg',
 );
