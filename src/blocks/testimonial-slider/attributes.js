@@ -471,7 +471,31 @@ const attributes = {
   blockPaddingTablet: {
     type: "number",
     default: 45,
-  }
+  },
+  backgroundRepeat: {
+	type: "number",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  backgroundSize: {
+	type: "number",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderStyle: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderWidth: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  borderRadius: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 
 export default attributes;

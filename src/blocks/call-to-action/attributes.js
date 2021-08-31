@@ -392,6 +392,78 @@ const attributes = {
   buttonHbackgroundType: {
     type: "string",
     default: "none",
-  }
+  },
+  buttonBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  hbuttonBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonTextColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  hbuttonTextColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonborderHColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  topPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  leftPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  rightPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  imgURL: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  imagePosition: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  imageRepeat: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  thumbsize: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonvPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  buttonhPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  buttonborderStyle: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonborderColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonborderWidth: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 export default attributes;

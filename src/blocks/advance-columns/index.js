@@ -262,6 +262,66 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
       type: "number",
       default: 1,
     },
+	backgroundPosition: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundRepeat: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundSize: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	topPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	bottomPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	leftPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	rightPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	topPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	bottomPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	leftPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	rightPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	topPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	bottomPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	leftPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	rightPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
   },
 
   /* Render the block in the editor. */
