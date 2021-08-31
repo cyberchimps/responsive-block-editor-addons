@@ -13,7 +13,7 @@
 
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER', '1.3.' );
+define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER', '1.3.3' );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_BASENAME', plugin_basename( __FILE__ ) );
 define( 'THIRTY_DAYS_IN_SECONDS', 2592000 );
 
