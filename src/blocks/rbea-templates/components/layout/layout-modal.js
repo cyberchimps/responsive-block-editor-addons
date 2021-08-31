@@ -63,6 +63,7 @@ function LayoutModal(props) {
       </Button>
       {modalOpen ? (
         <Modal
+          shouldCloseOnClickOutside={false}
           key={"modal-component-" + props.clientId}
           className="rbea-pattern-importer-modal"
           title={__(
