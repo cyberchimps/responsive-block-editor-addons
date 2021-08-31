@@ -80,5 +80,5 @@ return array(
 		esc_html__( 'Studio', 'responsive-block-editor-addons' ),
 		esc_html__( 'Portfolio Photography Studio', 'responsive-block-editor-addons' ),
 	),
-	'image'      => 'https://picsum.photos/id/1043/356/246',
+	'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Portfolio-Photo-Studio.jpg',
 );

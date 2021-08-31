@@ -30,7 +30,7 @@ function LayoutModal(props) {
   if (props.context.layouts.length > 0) {
     tabs.push({
       name: "rbea-patterns-tab-layouts",
-      title: __("Layouts", "responsive-block-editor-addons"),
+      title: __("Pages", "responsive-block-editor-addons"),
       className: "rbea-patterns-tab-layouts",
     });
   }
@@ -66,7 +66,7 @@ function LayoutModal(props) {
           key={"modal-component-" + props.clientId}
           className="rbea-pattern-importer-modal"
           title={__(
-            "Responsive Block Editor Addons",
+            "Responsive Gutenberg Blocks Library",
             "responsive-block-editor-addons"
           )}
           onRequestClose={() => {

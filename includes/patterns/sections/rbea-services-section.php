@@ -133,7 +133,7 @@ return array(
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Corporate', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Services-Corporate-Business-1.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -216,7 +216,7 @@ return array(
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Corporate', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/About-2-Corporate-Business.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -271,7 +271,7 @@ return array(
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Corporate', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Services-2-Corporate-Business.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -315,7 +315,7 @@ return array(
 			esc_html__( 'Services Photography Studio', 'responsive-block-editor-addons' ),
 			esc_html__( 'Photography Studio', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Services-Photo-Studio.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -373,7 +373,7 @@ return array(
 			esc_html__( 'Services Doctor', 'responsive-block-editor-addons' ),
 			esc_html__( 'Doctor', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Services-Doctor.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -445,7 +445,7 @@ return array(
 			esc_html__( 'Services Yoga Instructor', 'responsive-block-editor-addons' ),
 			esc_html__( 'Yoga', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Services-Yoga-Instructor.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -674,6 +674,6 @@ return array(
 			esc_html__( 'Restaurant', 'responsive-block-editor-addons' ),
 			esc_html__( 'Food', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Services-Restaurant.jpg',
 	),
 );

@@ -144,7 +144,7 @@ return array(
 			esc_html__( 'Footer Corporate Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Footer-Corporate-Business.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -204,7 +204,7 @@ return array(
 			esc_html__( 'Footer Photography Studio', 'responsive-block-editor-addons' ),
 			esc_html__( 'Photography', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Footer-Photo-Studio.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -286,7 +286,7 @@ return array(
 			esc_html__( 'Footer Doctor', 'responsive-block-editor-addons' ),
 			esc_html__( 'Doctor', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Footer-Doctor.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -364,7 +364,7 @@ return array(
 			esc_html__( 'Footer Construction', 'responsive-block-editor-addons' ),
 			esc_html__( 'Construction', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Footer-Construction.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -431,6 +431,6 @@ return array(
 			esc_html__( 'Restaurant', 'responsive-block-editor-addons' ),
 			esc_html__( 'Food', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Footer-Restaurant.jpg',
 	),
 );

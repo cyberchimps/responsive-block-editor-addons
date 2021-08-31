@@ -34,7 +34,7 @@ return array(
 			esc_html__( 'Hero One Page Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-One-Page-Business.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -78,7 +78,7 @@ return array(
 			esc_html__( 'Hero Corporate Business', 'responsive-block-editor-addons' ),
 			esc_html__( 'Business', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Corporate-Business.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -119,7 +119,7 @@ return array(
 			esc_html__( 'Hero Photography Studio', 'responsive-block-editor-addons' ),
 			esc_html__( 'Photography', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Photography-Studio.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -164,7 +164,7 @@ return array(
 			esc_html__( 'Hero Lifestyle', 'responsive-block-editor-addons' ),
 			esc_html__( 'Lifestyle', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Lifestyle.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -205,7 +205,7 @@ return array(
 			esc_html__( 'Hero Travel', 'responsive-block-editor-addons' ),
 			esc_html__( 'Travel', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Travel-Blog.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -256,7 +256,7 @@ return array(
 			esc_html__( 'Hero Doctor', 'responsive-block-editor-addons' ),
 			esc_html__( 'Doctor', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Doctor.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -291,7 +291,7 @@ return array(
 			esc_html__( 'Hero Food Blog', 'responsive-block-editor-addons' ),
 			esc_html__( 'Food Blog', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Gallery-Food-Blog.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -330,7 +330,7 @@ return array(
 			esc_html__( 'Hero Construction', 'responsive-block-editor-addons' ),
 			esc_html__( 'Construction', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Construction.jpg',
 	),
 	array(
 		'type'       => 'section',
@@ -371,6 +371,6 @@ return array(
 			esc_html__( 'Hero Restaurant', 'responsive-block-editor-addons' ),
 			esc_html__( 'Restaurant', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://picsum.photos/id/1041/356/246',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Restaurant.jpg',
 	),
 );

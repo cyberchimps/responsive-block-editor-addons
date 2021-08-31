@@ -66,12 +66,11 @@ export default class LayoutLibraryItemCard extends Component {
                 isSmall
               >
                 <div className={'rbea-pattern-preview'}></div>
-                <img
-                  src={
-                    this.props.image
-                      ? this.props.image
-                      : responsive_globals?.pattern_fallback_image
-                  }
+                <div
+                  className={`rbea-pattern-importer-image-${this.props.type}`}
+                  style = {{backgroundImage: `url(${this.props.image
+                    ? this.props.image
+                    : responsive_globals?.pattern_fallback_image})`}}
                   alt={this.props.name}
                   onError={this.addDefaultSrc}
                 />
