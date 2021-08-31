@@ -442,7 +442,155 @@ const attributes = {
   stackOnMobile: {
 	type: "boolean",
 	default: false,
-  }
+  },
+  boxPaddingTop: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingBottom: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingLeft: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingRight: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingTopMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingBottomMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingLeftMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingRightMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingTopTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingBottomTablet: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingLeftTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingRightTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxBackgroundColor: {
+  	type: "string",
+  	default: "empty"
+  }, // For compatibility with v1.3.2.
+  containerMarginTop: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginBottom: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginLeft: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginRight: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginTopMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginBottomMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginLeftMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginRightMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginTopTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginBottomTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginLeftTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginRightTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerPaddingTop: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingBottom: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingLeft: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingRight: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingTopMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingBottomMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingLeftMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingRightMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingTopTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingBottomTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingLeftTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingRightTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
 }
 
 export default attributes

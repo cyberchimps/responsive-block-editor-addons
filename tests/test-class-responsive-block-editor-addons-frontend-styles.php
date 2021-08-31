@@ -675,6 +675,9 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'backgroundColor2'          => '#fff',
 			'hoverbackgroundColor1'     => '',
 			'hoverbackgroundColor2'     => '#fff',
+			'backgroundPosition'        => 'empty', // For compatibility with v1.3.2.
+			'backgroundRepeat'          => 'empty', // For compatibility with v1.3.2.
+			'backgroundSize'            => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_advanced_column_child_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -861,6 +864,24 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'ctaHpaddingTablet'        => 14,
 			'ctaTextOpacity'           => 100,
 			'buttonHbackgroundType'    => 'none',
+			'buttonBackgroundColor'    => 'empty', // For compatibility with v1.3.2.
+			'hbuttonBackgroundColor'   => 'empty', // For compatibility with v1.3.2.
+			'buttonTextColor'          => 'empty', // For compatibility with v1.3.2.
+			'hbuttonTextColor'         => 'empty', // For compatibility with v1.3.2.
+			'buttonborderHColor'       => 'empty', // For compatibility with v1.3.2.
+			'topPadding'               => 999, // For compatibility with v1.3.2.
+			'bottomPadding'            => 999, // For compatibility with v1.3.2.
+			'leftPadding'              => 999, // For compatibility with v1.3.2.
+			'rightPadding'             => 999, // For compatibility with v1.3.2.
+			'imgURL'                   => 'empty', // For compatibility with v1.3.2.
+			'imagePosition'            => 'empty', // For compatibility with v1.3.2.
+			'imageRepeat'              => 'empty', // For compatibility with v1.3.2.
+			'thumbsize'                => 'empty', // For compatibility with v1.3.2.
+			'buttonvPadding'           => 999, // For compatibility with v1.3.2.
+			'buttonhPadding'           => 999, // For compatibility with v1.3.2.
+			'buttonborderStyle'        => 'empty', // For compatibility with v1.3.2.
+			'buttonborderColor'        => 'empty', // For compatibility with v1.3.2.
+			'buttonborderWidth'        => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_call_to_action_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -1463,6 +1484,9 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'iconColor'             => '',
 			'blockBorderStyle'      => '',
 			'counterId'             => '',
+			'borderWidth'           => 999, // For compatibility with v1.3.2.
+			'borderStyle'           => 'empty', // For compatibility with v1.3.2.
+			'borderColor'           => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_image_slider_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -1846,6 +1870,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'descriptionFontSizeTablet' => '',
 			'priceFontSizeMobile'       => '',
 			'priceFontSizeTablet'       => '',
+			'topPadding'                => 999, // For compatibility with v1.3.2.
+			'bottomPadding'             => 999, // For compatibility with v1.3.2.
+			'leftPadding'               => 999, // For compatibility with v1.3.2.
+			'rightPadding'              => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_pricing_list_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -2113,6 +2141,30 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'boxShadowSpread'          => 0,
 			'boxShadowPosition'        => 'outset',
 			'z_index'                  => 1,
+			'topMargin'                => 999, // For compatibility with v1.3.2.
+			'bottomMargin'             => 999, // For compatibility with v1.3.2.
+			'leftMargin'               => 999, // For compatibility with v1.3.2.
+			'rightMargin'              => 999, // For compatibility with v1.3.2.
+			'topPadding'               => 999, // For compatibility with v1.3.2.
+			'bottomPadding'            => 999, // For compatibility with v1.3.2.
+			'leftPadding'              => 999, // For compatibility with v1.3.2.
+			'rightPadding'             => 999, // For compatibility with v1.3.2.
+			'topMarginMobile'          => 999, // For compatibility with v1.3.2.
+			'bottomMarginMobile'       => 999, // For compatibility with v1.3.2.
+			'leftMarginMobile'         => 999, // For compatibility with v1.3.2.
+			'rightMarginMobile'        => 999, // For compatibility with v1.3.2.
+			'topPaddingMobile'         => 999, // For compatibility with v1.3.2.
+			'bottomPaddingMobile'      => 999, // For compatibility with v1.3.2.
+			'leftPaddingMobile'        => 999, // For compatibility with v1.3.2.
+			'rightPaddingMobile'       => 999, // For compatibility with v1.3.2.
+			'topMarginTablet'          => 999, // For compatibility with v1.3.2.
+			'bottomMarginTablet'       => 999, // For compatibility with v1.3.2.
+			'leftMarginTablet'         => 999, // For compatibility with v1.3.2.
+			'rightMarginTablet'        => 999, // For compatibility with v1.3.2.
+			'topPaddingTablet'         => 999, // For compatibility with v1.3.2.
+			'bottomPaddingTablet'      => 999, // For compatibility with v1.3.2.
+			'leftPaddingTablet'        => 999, // For compatibility with v1.3.2.
+			'rightPaddingTablet'       => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_section_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -2486,6 +2538,12 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'blockPadding'            => 45,
 			'blockPaddingMobile'      => 45,
 			'blockPaddingTablet'      => 45,
+			'backgroundRepeat'        => 'empty', // For compatibility with v1.3.2.
+			'backgroundSize'          => 'empty', // For compatibility with v1.3.2.
+			'borderStyle'             => 'empty', // For compatibility with v1.3.2.
+			'borderColor'             => 'empty', // For compatibility with v1.3.2.
+			'borderWidth'             => 999, // For compatibility with v1.3.2.
+			'borderRadius'            => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_testimonial_slider_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values['iconImage'], $values['iconImage'] ) );
@@ -2609,6 +2667,21 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'height'                   => 'normal',
 			'customHeight'             => 50,
 			'z_index'                  => 1,
+			'backgroundPosition'       => 'empty', // For compatibility with v1.3.2.
+			'backgroundRepeat'         => 'empty', // For compatibility with v1.3.2.
+			'backgroundSize'           => 'empty', // For compatibility with v1.3.2.
+			'topPadding'               => 999,
+			'bottomPadding'            => 999,
+			'leftPadding'              => 999,
+			'rightPadding'             => 999,
+			'topPaddingMobile'         => 999,
+			'bottomPaddingMobile'      => 999,
+			'leftPaddingMobile'        => 999,
+			'rightPaddingMobile'       => 999,
+			'topPaddingTablet'         => 999,
+			'bottomPaddingTablet'      => 999,
+			'leftPaddingTablet'        => 999,
+			'rightPaddingTablet'       => 999,
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_advanced_columns_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -2754,6 +2827,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'textRightPaddingTablet'   => 35,
 			'quoteFontSizeMobile'      => '',
 			'quoteFontSizeTablet'      => '',
+			'borderColor'              => 'empty', // For compatibility with v1.3.2.
+			'borderStyle'              => 'empty', // For compatibility with v1.3.2.
+			'borderWidth'              => 999, // For compatibility with v1.3.2.
+			'topPadding'               => 999, // For compatibility with v1.3.2.
+			'bottomPadding'            => 999, // For compatibility with v1.3.2.
+			'leftPadding'              => 999, // For compatibility with v1.3.2.
+			'rightPadding'             => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_blockquote_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -2893,6 +2973,42 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'justifyItems'                 => 'center',
 			'displayInline'                => false,
 			'stackOnMobile'                => false,
+			'boxPaddingTop'                => 999, // For compatibility with v1.3.2.
+			'boxPaddingBottom'             => 999, // For compatibility with v1.3.2.
+			'boxPaddingLeft'               => 999, // For compatibility with v1.3.2.
+			'boxPaddingRight'              => 999, // For compatibility with v1.3.2.
+			'boxPaddingTopMobile'          => 999, // For compatibility with v1.3.2.
+			'boxPaddingBottomMobile'       => 999, // For compatibility with v1.3.2.
+			'boxPaddingLeftMobile'         => 999, // For compatibility with v1.3.2.
+			'boxPaddingRightMobile'        => 999, // For compatibility with v1.3.2.
+			'boxPaddingTopTablet'          => 999, // For compatibility with v1.3.2.
+			'boxPaddingBottomTablet'       => 999, // For compatibility with v1.3.2.
+			'boxPaddingLeftTablet'         => 999, // For compatibility with v1.3.2.
+			'boxPaddingRightTablet'        => 999, // For compatibility with v1.3.2.
+			'containerMarginTop'           => 999, // For compatibility with v1.3.2.
+			'containerMarginTopMobile'     => 999, // For compatibility with v1.3.2.
+			'containerMarginTopTablet'     => 999, // For compatibility with v1.3.2.
+			'containerMarginBottom'        => 999, // For compatibility with v1.3.2.
+			'containerMarginBottomMobile'  => 999, // For compatibility with v1.3.2.
+			'containerMarginBottomTablet'  => 999, // For compatibility with v1.3.2.
+			'containerMarginLeft'          => 999, // For compatibility with v1.3.2.
+			'containerMarginLeftMobile'    => 999, // For compatibility with v1.3.2.
+			'containerMarginLeftTablet'    => 999, // For compatibility with v1.3.2.
+			'containerMarginRight'         => 999, // For compatibility with v1.3.2.
+			'containerMarginRightMobile'   => 999, // For compatibility with v1.3.2.
+			'containerMarginRightTablet'   => 999, // For compatibility with v1.3.2.
+			'containerPaddingTop'          => 999, // For compatibility with v1.3.2.
+			'containerPaddingTopMobile'    => 999, // For compatibility with v1.3.2.
+			'containerPaddingTopTablet'    => 999, // For compatibility with v1.3.2.
+			'containerPaddingBottom'       => 999, // For compatibility with v1.3.2.
+			'containerPaddingBottomMobile' => 999, // For compatibility with v1.3.2.
+			'containerPaddingBottomTablet' => 999, // For compatibility with v1.3.2.
+			'containerPaddingLeft'         => 999, // For compatibility with v1.3.2.
+			'containerPaddingLeftMobile'   => 999, // For compatibility with v1.3.2.
+			'containerPaddingLeftTablet'   => 999, // For compatibility with v1.3.2.
+			'containerPaddingRight'        => 999, // For compatibility with v1.3.2.
+			'containerPaddingRightMobile'  => 999, // For compatibility with v1.3.2.
+			'containerPaddingRightTablet'  => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_count_down_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

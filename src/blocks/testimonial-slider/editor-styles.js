@@ -85,10 +85,10 @@ function EditorStyles(props) {
     gradientOverlayPosition,
     opacity,
     backgroundOpacity,
-      blockBorderStyle,
-      blockBorderWidth,
-      blockBorderRadius,
-      blockBorderColor,
+	blockBorderStyle,
+	blockBorderWidth,
+	blockBorderRadius,
+	blockBorderColor,
     arrowColor,
     test_item_count,
     columns,
@@ -97,6 +97,12 @@ function EditorStyles(props) {
     blockPadding,
     blockPaddingMobile,
     blockPaddingTablet,
+	backgroundRepeat, // For compatibility with v1.3.2.
+	backgroundSize, // For compatibility with v1.3.2.
+	borderStyle, // For compatibility with v1.3.2.
+	borderColor, // For compatibility with v1.3.2.
+	borderWidth, // For compatibility with v1.3.2.
+	borderRadius, // For compatibility with v1.3.2.
   } = props.attributes;
 
   var img_align = "center";
@@ -202,8 +208,8 @@ function EditorStyles(props) {
       "background-image": updatedBackgroundImage,
       "background-position": backgroundImagePosition,
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundImageRepeat,
-      "background-size": backgroundImageSize,
+      "background-repeat": backgroundRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? backgroundRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": backgroundSize !== "empty" && backgroundImageSize === "cover" ? backgroundSize : backgroundImageSize, // For compatibility with v1.3.2.
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
       "background-color":
@@ -220,14 +226,14 @@ function EditorStyles(props) {
     };
   }
 
-  if (blockBorderStyle != "none") {
+  if (blockBorderStyle != "none" || borderStyle != "none") {  // For compatibility with v1.3.2.
     selectors[
       " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content"
     ] = {
-      "border-style": blockBorderStyle,
-      "border-color": blockBorderColor,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
+      "border-radius": borderRadius !== 999 && blockBorderRadius === "" ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
     };
   } else {
     selectors[

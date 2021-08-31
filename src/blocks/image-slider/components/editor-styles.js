@@ -20,6 +20,9 @@ function EditorStyles(props) {
     iconBackgroundColor,
     iconBackgroundOpacity,
     width,
+	borderWidth, // For compatibility with v1.3.2.
+	borderStyle, // For compatibility with v1.3.2.
+	borderColor // For compatibility with v1.3.2.
   } = props.attributes;
 
   let imgopacity = iconBackgroundOpacity / 100;
@@ -46,10 +49,10 @@ function EditorStyles(props) {
         gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
       "margin-right":
         gutter > 0 && !responsiveHeight ? gutter + "px" : undefined,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-width": borderWidth !== 999 && blockBorderWidth === "" ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
-      "border-style": blockBorderStyle,
-      "border-color": blockBorderColor,
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "" ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
     },
   };
 

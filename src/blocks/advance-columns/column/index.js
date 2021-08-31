@@ -374,6 +374,18 @@ registerBlockType("responsive-block-editor-addons/column", {
       type: "string",
       default: "#fff",
     },
+	backgroundPosition: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundRepeat: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundSize: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
   },
 
   /* Render the block in the editor. */
