@@ -7,6 +7,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+import dividers from "./dividers";
 
 /**
  * WordPress dependencies
@@ -19,7 +20,7 @@ import {
 	PanelColorSettings,
 	ColorPalette,
 } from "@wordpress/block-editor";
-import { PanelBody, RangeControl, SelectControl } from "@wordpress/components";
+import { PanelBody, RangeControl, SelectControl, RadioControl } from "@wordpress/components";
 
 /**
  * Inspector controls
@@ -59,6 +60,7 @@ class Inspector extends Component {
 			colorLocation2,
 			gradientDirection,
 			backgroundType,
+            design
 		} = attributes;
 
 		// Background Type Options
@@ -70,6 +72,34 @@ class Inspector extends Component {
 				label: __("Gradient", "responsive-block-editor-addons"),
 			},
 		];
+
+		const _options = [
+            { label: dividers.wavy, title: 'Wavy', value: 'wavy' },
+            { label: dividers.hills, title: 'Hills', value: 'hills' },
+            { label: dividers.waves, title: 'Waves', value: 'waves' },
+            { label: dividers.angled, title: 'Angled', value: 'angled' },
+            { label: dividers.sloped, title: 'Sloped', value: 'sloped' },
+            { label: dividers.rounded, title: 'Rounded', value: 'rounded' },
+            { label: dividers.triangle, title: 'Triangle', value: 'triangle' },
+            { label: dividers.pointed, title: 'Pointed', value: 'pointed' },
+				];
+
+        const fixedOptions = _options.map( option => {
+            return {
+                    label: (
+                        < div className = "responsive-blocks-editor-addons-design-panel-item" >
+                    < div className = "responsive-blocks-editor-addons-design-panel-item__svg" > {option.label} < /div>
+                    < span className = "design-label" >
+                    {option.title}
+                < /span>
+                < /div>
+        )
+        ,
+            value: option.value
+        }
+        } );
+
+
 
 		return (
 			<Fragment>
@@ -148,7 +178,7 @@ class Inspector extends Component {
 								/>
 								{"color" == backgroundType && (
 									<Fragment>
-										<ColorBackgroundControl 
+										<ColorBackgroundControl
 											{...this.props}
 										/>
 									</Fragment>
@@ -164,6 +194,15 @@ class Inspector extends Component {
 							</PanelBody>
 						</InspectorTab>
 						<InspectorTab key={"style"}>
+								<PanelBody
+									title={__("Shape Styles", "responsive-block-editor-addons")}
+								>
+									<RadioControl
+										selected={ design }
+										options={fixedOptions }
+										onChange={(value) => setAttributes({ design: value })}
+									/>
+								</PanelBody>
 							<PanelColorSettings
 								title={__("Shape Color", "responsive-block-editor-addons")}
 								initialOpen={false}
