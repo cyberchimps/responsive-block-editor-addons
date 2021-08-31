@@ -2490,7 +2490,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = $attr['ctaBackgroundColor'] !== 'empty' && $attr['backgroundColor'] === '#f2f2f2' ? self::hex_to_rgb( $attr['ctaBackgroundColor'], $imgopacity ) : self::hex_to_rgb( $attr['backgroundColor'], $imgopacity ); // For compatibility with v1.3.2.
+				$updated_background_color = 'empty' !== $attr['ctaBackgroundColor'] && '#f2f2f2' === $attr['backgroundColor'] ? self::hex_to_rgb( $attr['ctaBackgroundColor'], $imgopacity ) : self::hex_to_rgb( $attr['backgroundColor'], $imgopacity ); // For compatibility with v1.3.2.
 			} else {
 				$updated_background_color = '#ffffff';
 			}
@@ -2945,8 +2945,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-image'    => 'url(' . $background_image_url_check . ')',
 					'height'              => 100 . '%',
 					'background-position' => 'empty' !== $attr['bgimagePosition'] && 'center center' === $attr['backgroundImagePosition'] ? $attr['bgimagePosition'] : $attr['backgroundImagePosition'], // For compatibility with v1.3.2.
-					'background-repeat'   => 'empty' !== $attr['bgimageRepeat'] && $attr['backgroundImageRepeat'] === 'no-repeat' ? $attr['bgimageRepeat'] : $attr['backgroundImageRepeat'], // For compatibility with v1.3.2.
-					'background-size'     => 'empty' !== $attr['bgthumbsize'] && $attr['backgroundImageSize'] === 'cover' ? $attr['bgthumbsize'] : $attr['backgroundImageSize'], // For compatibility with v1.3.2.
+					'background-repeat'   => 'empty' !== $attr['bgimageRepeat'] && 'no-repeat' === $attr['backgroundImageRepeat'] ? $attr['bgimageRepeat'] : $attr['backgroundImageRepeat'], // For compatibility with v1.3.2.
+					'background-size'     => 'empty' !== $attr['bgthumbsize'] && 'cover' === $attr['backgroundImageSize'] ? $attr['bgthumbsize'] : $attr['backgroundImageSize'], // For compatibility with v1.3.2.
 				),
 
 				' .responsive-block-editor-addons-card-avatar' => array(
@@ -5236,7 +5236,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-cta-image' => array(
-					'background-image'      => 'empty' !== $attr['imgURL'] && '' === $attr['backgroundImage'] ? 'url('. $attr['imgURL'] . ')' : 'url(' . $attr['backgroundImage'] . ')', // For compatibility with v1.3.2.
+					'background-image'      => 'empty' !== $attr['imgURL'] && '' === $attr['backgroundImage'] ? 'url(' . $attr['imgURL'] . ')' : 'url(' . $attr['backgroundImage'] . ')', // For compatibility with v1.3.2.
 					'background-position'   => 'empty' !== $attr['imagePosition'] && 'center center' === $attr['backgroundImagePosition'] ? $attr['imagePosition'] : $attr['backgroundImagePosition'], // For compatibility with v1.3.2.
 					'background-repeat'     => 'empty' !== $attr['imageRepeat'] && 'no-repeat' === $attr['backgroundImageRepeat'] ? $attr['imageRepeat'] : $attr['backgroundImageRepeat'], // For compatibility with v1.3.2.
 					'background-size'       => 'empty' !== $attr['thumbsize'] && 'cover' === $attr['backgroundImageSize'] ? $attr['thumbsize'] : $attr['backgroundImageSize'], // For compatibility with v1.3.2.
