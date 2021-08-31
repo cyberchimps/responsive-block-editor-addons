@@ -69,17 +69,17 @@ function EditorStyles(props) {
     columnRightMarginTablet,
     columnRightMarginMobile,
     columnTopPadding,
-	columnTopPaddingTablet, //For compatibility with v1.3.2.
-	columnTopPaddingMobile, //For compatibility with v1.3.2.
-	columnBottomPadding, //For compatibility with v1.3.2.
-	columnBottomPaddingTablet, //For compatibility with v1.3.2.
-	columnBottomPaddingMobile, //For compatibility with v1.3.2.
-	columnLeftPadding, //For compatibility with v1.3.2.
-	columnLeftPaddingTablet, //For compatibility with v1.3.2.
-	columnLeftPaddingMobile, //For compatibility with v1.3.2.
-	columnRightPadding, //For compatibility with v1.3.2.
-	columnRightPaddingTablet, //For compatibility with v1.3.2.
-	columnRightPaddingMobile, //For compatibility with v1.3.2.
+	columnTopPaddingTablet,
+	columnTopPaddingMobile,
+	columnBottomPadding,
+	columnBottomPaddingTablet,
+	columnBottomPaddingMobile,
+	columnLeftPadding,
+	columnLeftPaddingTablet,
+	columnLeftPaddingMobile,
+	columnRightPadding,
+	columnRightPaddingTablet,
+	columnRightPaddingMobile,
 	topMargin, //For compatibility with v1.3.2.
 	topMarginTablet, //For compatibility with v1.3.2.
 	topMarginMobile, //For compatibility with v1.3.2.

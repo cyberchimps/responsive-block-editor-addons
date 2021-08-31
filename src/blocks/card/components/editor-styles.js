@@ -105,9 +105,9 @@ function EditorStyles(props) {
     blockrightmargin,
     blockrightmarginMobile,
     blockrightmarginTablet,
-    bgimagePosition,
-    bgimageRepeat,
-    bgthumbsize,
+    bgimagePosition, //For compatibility with v1.3.2.
+    bgimageRepeat, //For compatibility with v1.3.2.
+    bgthumbsize, //For compatibility with v1.3.2.
     backgroundImageOne,
     backgroundImageTwo,
     backgroundImageThree,
@@ -253,9 +253,9 @@ function EditorStyles(props) {
         ? `url(${backgroundImage})`
         : null,
       height: 100 + "%",
-      "background-position": backgroundImagePosition,
-      "background-repeat": backgroundImageRepeat,
-      "background-size": backgroundImageSize,
+      "background-position": bgimagePosition !== "empty" && backgroundImagePosition === "center center" ? bgimagePosition : backgroundImagePosition, //For compatibility with v1.3.2.
+      "background-repeat": bgimageRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? bgimageRepeat : backgroundImageRepeat, //For compatibility with v1.3.2.
+      "background-size": bgthumbsize !== "empty" && backgroundImageSize === "cover" ? bgthumbsize : backgroundImageSize, //For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-card-avatar": {

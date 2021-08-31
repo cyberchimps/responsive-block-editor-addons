@@ -882,6 +882,11 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonborderStyle'        => 'empty', // For compatibility with v1.3.2.
 			'buttonborderColor'        => 'empty', // For compatibility with v1.3.2.
 			'buttonborderWidth'        => 999, // For compatibility with v1.3.2.
+			'ctaBackgroundColor'       => 'empty', // For compatibility with v1.3.2.
+			'headingLineHeight'        => 999, // For compatibility with v1.3.2.
+			'headingFontWeight'        => 'empty', // For compatibility with v1.3.2.
+			'contentLineHeight'        => 999, // For compatibility with v1.3.2.
+			'contentFontWeight'        => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_call_to_action_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -900,11 +905,11 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'contentAlign'            => 'center',
 			'textColor'               => '',
 			'backgroundColor'         => '',
-			'itemBackgroundColor'     => 'empty',
+			'itemBackgroundColor'     => 'empty', // For compatibility with v1.3.2.
 			'ctaBackColor'            => '',
 			'ctaColor'                => '#fff',
-			'buttonColor'             => 'empty',
-			'buttonTextColor'         => 'empty',
+			'buttonColor'             => 'empty', // For compatibility with v1.3.2.
+			'buttonTextColor'         => 'empty', // For compatibility with v1.3.2.
 			'boxShadowColor'          => '',
 			'boxShadowHOffset'        => 0,
 			'boxShadowVOffset'        => 0,
@@ -947,22 +952,22 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'counterId'               => 1,
 			'ctaHoverBackColor'       => '',
 			'ctaHoverColor'           => '#e6f2ff',
-			'buttonhColor'            => 'empty',
-			'buttonhTextColor'        => 'empty',
+			'buttonhColor'            => 'empty', // For compatibility with v1.3.2.
+			'buttonhTextColor'        => 'empty', // For compatibility with v1.3.2.
 			'buttonopacity'           => 100,
-			'butopacity'              => 999,
+			'butopacity'              => 999,  // For compatibility with v1.3.2.
 			'buttonHopacity'          => 100,
 			'ctaVpadding'             => 10,
 			'ctaHpadding'             => 14,
-			'vPadding'                => 999,
-			'hPadding'                => 999,
+			'vPadding'                => 999, // For compatibility with v1.3.2.
+			'hPadding'                => 999, // For compatibility with v1.3.2.
 			'vMargin'                 => 10,
 			'hMargin'                 => 0,
 			'ctaBorderWidth'          => 1,
 			'ctaBorderRadius'         => 2,
-			'butborderWidth'          => 999,
-			'butborderRadius'         => 999,
-			'butborderStyle'          => 'empty',
+			'butborderWidth'          => 999, // For compatibility with v1.3.2.
+			'butborderRadius'         => 999, // For compatibility with v1.3.2.
+			'butborderStyle'          => 'empty', // For compatibility with v1.3.2.
 			'ctaBorderStyle'          => 'none',
 			'buttonSize'              => 'responsive-block-editor-addons-button-size-medium',
 			'buttoncolorLocation1'    => 0,
@@ -996,18 +1001,18 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'blockleftmarginTablet'   => 0,
 			'blockrightmarginTablet'  => 0,
 			'contenttopSpaceTablet'   => 16,
-			'bgimageSize'             => 'full',
-			'bgimagePosition'         => 'center center',
-			'bgimageRepeat'           => 'no-repeat',
+			'bgimageSize'             => 'full', //For compatibility with v1.3.2.
+			'bgimagePosition'         => 'center center', //For compatibility with v1.3.2.
+			'bgimageRepeat'           => 'no-repeat', //For compatibility with v1.3.2.
 			'bgthumbsize'             => 'cover',
 			'blockBorderStyle'        => 'none',
 			'blockBorderColor'        => '',
 			'blockBorderWidth'        => 0,
 			'blockBorderRadius'       => 12,
-			'borderStyle'             => 'empty',
-			'borderColor'             => 'empty',
-			'borderWidth'             => 999,
-			'borderRadius'            => 999,
+			'borderStyle'             => 'empty', // For compatibility with v1.3.2.
+			'borderColor'             => 'empty', // For compatibility with v1.3.2.
+			'borderWidth'             => 999, // For compatibility with v1.3.2.
+			'borderRadius'            => 999, // For compatibility with v1.3.2.
 			'buttonTarget'            => 'false',
 			'contentAlignment'        => 'left',
 			'backgroundImageOne'      => '',
@@ -1335,6 +1340,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'icon_layout'         => 'vertical',
 			'fontSizeType'        => 'px',
 			'block_id'            => 1,
+			'labelFontLineHeight' => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_icon_list_block_default_attributes();
 		$this->assertEquals( $expected_values['icons'], $values['icons'] );
@@ -1552,21 +1558,21 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'resctaFontSize'           => '',
 			'resctaFontWeight'         => '',
 			'ctaColor'                 => '#333',
-			'resctaBtnLinkColor'       => 'empty',
+			'resctaBtnLinkColor'       => 'empty', // For compatibility with v1.3.2.
 			'ctaBackColor'             => 'transparent',
-			'resctaBgColor'            => 'empty',
+			'resctaBgColor'            => 'empty', // For compatibility with v1.3.2.
 			'ctaBorderColor'           => '#333',
-			'resctaBorderColor'        => 'empty',
+			'resctaBorderColor'        => 'empty', // For compatibility with v1.3.2.
 			'ctaBorderStyle'           => 'solid',
-			'resctaBorderStyle'        => 'empty',
+			'resctaBorderStyle'        => 'empty', // For compatibility with v1.3.2.
 			'ctaVpadding'              => 10,
 			'ctaHpadding'              => 14,
-			'ctaVertPadding'           => 999,
-			'ctaHrPadding'             => 999,
+			'ctaVertPadding'           => 999, // For compatibility with v1.3.2.
+			'ctaHrPadding'             => 999, // For compatibility with v1.3.2.
 			'ctaBorderWidth'           => 1,
 			'ctaBorderRadius'          => 0,
-			'resctaBorderWidth'        => 999,
-			'resctaBorderRadius'       => 999,
+			'resctaBorderWidth'        => 999, // For compatibility with v1.3.2.
+			'resctaBorderRadius'       => 999, // For compatibility with v1.3.2.
 			'resprefixSpace'           => 5,
 			'resprefixSpaceMobile'     => 5,
 			'resprefixSpaceTablet'     => 5,
@@ -1610,25 +1616,25 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'imageBoxShadowPosition'   => 'outset',
 			'counterId'                => 1,
 			'backgroundColor'          => '#ffffff',
-			'boxBackgroundColor'       => 'empty',
+			'boxBackgroundColor'       => 'empty', // For compatibility with v1.3.2.
 			'contentPadding'           => 0,
 			'contentPaddingMobile'     => 0,
 			'contentPaddingTablet'     => 0,
 			'opacity'                  => 100,
 			'imageopacity'             => 100,
-			'imgURL'                   => '',
+			'imgURL'                   => '', // For compatibility with v1.3.2.
 			'imgID'                    => '',
 			'imgAlt'                   => '',
 			'dimRatio'                 => 50,
 			'ctaHoverColor'            => '#333',
 			'ctaHoverBackColor'        => '#333',
 			'ctaHoverBorderColor'      => '#333',
-			'hoverctaBorderColor'      => 'empty',
-			'hoverctaBtnLinkColor'     => 'empty',
-			'hoverctaBgColor'          => 'empty',
-			'imagePosition'            => 'center center',
-			'imageRepeat'              => 'no-repeat',
-			'thumbsize'                => 'cover',
+			'hoverctaBorderColor'      => 'empty',  // For compatibility with v1.3.2.
+			'hoverctaBtnLinkColor'     => 'empty',  // For compatibility with v1.3.2.
+			'hoverctaBgColor'          => 'empty',  // For compatibility with v1.3.2.
+			'imagePosition'            => 'center center', // For compatibility with v1.3.2.
+			'imageRepeat'              => 'no-repeat', // For compatibility with v1.3.2.
+			'thumbsize'                => 'cover', // For compatibility with v1.3.2.
 			'backgroundAttachment'     => 'scroll',
 			'sepSpace'                 => 10,
 			'sepSpaceMobile'           => 10,
@@ -1677,7 +1683,6 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonbackgroundType'     => '',
 			'buttonHbackgroundType'    => 'none',
 			'zIndex'                   => 0,
-
 		);
 		$values = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -2412,6 +2417,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'borderWidth'                => 999, // For compatibility with v1.3.2.
 			'borderRadius'               => 999, // For compatibility with v1.3.2.
 			'borderColor'                => 'empty', // For compatibility with v1.3.2.
+			'secondaryBackgroundColor'   => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_testimonial_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -3009,6 +3015,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'containerPaddingRight'        => 999, // For compatibility with v1.3.2.
 			'containerPaddingRightMobile'  => 999, // For compatibility with v1.3.2.
 			'containerPaddingRightTablet'  => 999, // For compatibility with v1.3.2.
+			'boxBackgroundColor'           => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_count_down_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

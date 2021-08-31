@@ -110,6 +110,10 @@ const attributes = {
     type: "string",
     default: 1,
   },
+  labelFontLineHeight: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 
 export default attributes;

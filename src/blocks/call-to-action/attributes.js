@@ -465,5 +465,25 @@ const attributes = {
 	type: "number",
 	default: 999,
   }, // For compatibility with v1.3.2.
+  ctaBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  headingLineHeight: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  headingFontWeight: {
+	type: "string",
+	default: 'empty',
+  }, // For compatibility with v1.3.2.
+  contentLineHeight: {
+	  type: "number",
+	  default: 999,
+  }, // For compatibility with v1.3.2.
+  contentFontWeight: {
+	  type: "string",
+	  default: 'empty',
+  }, // For compatibility with v1.3.2.
 };
 export default attributes;
