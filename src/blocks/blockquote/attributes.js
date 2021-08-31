@@ -232,6 +232,34 @@ const attributes = {
   quoteFontSizeTablet: {
 	  type: "number",
   },
+  borderColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderStyle: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderWidth: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  topPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  leftPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  rightPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 
 export default attributes;

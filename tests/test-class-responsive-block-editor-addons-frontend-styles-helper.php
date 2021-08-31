@@ -1020,8 +1020,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id'            => self::$divider_block_id,
-					'spacerDivideerStyle' => 'basic',
+					'block_id'           => self::$divider_block_id,
+					'spacerDividerStyle' => 'basic',
 				)
 			),
 			'innerBlocks'  => array(),
@@ -1283,7 +1283,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'               => self::$card_block_id,
-					'buttonbackgroundType'   => 'color',
+					'buttonbackgroundType'   => 'gradient',
 					'buttonBackgroundColor1' => '#ffffff',
 					'buttonBackgroundColor2' => '#000000',
 					'gradientDirection'      => 65,
@@ -1694,6 +1694,110 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for info_block button hover background Type - color
+	 */
+	public function test_get_block_css_info_block_button_hover_background_type_color() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/info-block',
+			'attrs'        => array(
+				'block_id'              => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'buttonHbackgroundType' => 'color',
+				'hoverctaBgColor'       => 'empty',
+				'ctaBackColor'          => '#22abab',
+				'ctaHoverBackColor'     => '#1e1e1e',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_info_block_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for info_block button background Type - gradient
+	 */
+	public function test_get_block_css_info_block_button_background_type_gradient() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/info-block',
+			'attrs'        => array(
+				'block_id'                => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'buttonbackgroundType'    => 'gradient',
+				'buttongradientDirection' => 30,
+				'buttonbackgroundColor1'  => '#1e1e1e',
+				'buttonbackgroundColor2'  => '#ffffff',
+				'buttoncolorLocation1'    => 20,
+				'buttoncolorLocation2'    => 75,
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_info_block_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for info_block button background Type - color
+	 */
+	public function test_get_block_css_info_block_button_background_type_color() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/info-block',
+			'attrs'        => array(
+				'block_id'      => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'resctaBgColor' => 'empty',
+				'ctaBackColor'  => '#2e2f2e',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_info_block_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for info_block button hover background Type - color none
+	 */
+	public function test_get_block_css_info_block_button_hover_background_type_color_none() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/info-block',
+			'attrs'        => array(
+				'block_id'              => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'buttonHbackgroundType' => 'color',
+				'hoverctaBgColor'       => 'empty',
+				'ctaBackColor'          => '#22abab',
+				'ctaHoverBackColor'     => '',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_info_block_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for blockquote
 	 */
 	public function test_get_block_css_blockquote() {
@@ -1843,8 +1947,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/responsive-block-editor-addons-cta',
 			'attrs'        => array(
-				'block_id'             => '339297a0-9322-498d-9607-94b9d3b4608b',
-				'buttonBackgroundType' => 'gradient',
+				'block_id'                => '339297a0-9322-498d-9607-94b9d3b4608b',
+				'buttonbackgroundType'    => 'gradient',
+				'buttonbackgroundColor1'  => '#1e1e1e',
+				'buttonbackgroundColor2'  => '#ffffff',
+				'buttongradientDirection' => 30,
+				'buttoncolorLocation1'    => 10,
+				'buttoncolorLocation2'    => 80,
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -1953,6 +2062,184 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for team - backgroundImage gradient
+	 */
+	public function test_get_block_css_team_background_image_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_team_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/team',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'          => self::$team_block_id,
+					'backgroundImage'   => 'someURL',
+					'gradientDirection' => 25,
+					'backgroundColor'   => '#2c2c2c',
+					'opacity'           => 20,
+					'bgGradient'        => true,
+					'backgroundColor2'  => '#ffffff',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_team_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for team - gutter small
+	 */
+	public function test_get_block_css_team_gutter_small() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_team_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/team',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$team_block_id,
+					'count'    => 3,
+					'gutter'   => 'small',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_team_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for team - gutter medium
+	 */
+	public function test_get_block_css_team_gutter_medium() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_team_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/team',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$team_block_id,
+					'count'    => 2,
+					'gutter'   => 'medium',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_team_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for team - gutter large
+	 */
+	public function test_get_block_css_team_gutter_large() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_team_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/team',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$team_block_id,
+					'count'    => 2,
+					'gutter'   => 'large',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_team_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for team - gutter huge
+	 */
+	public function test_get_block_css_team_gutter_huge() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_team_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/team',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$team_block_id,
+					'count'    => 2,
+					'gutter'   => 'huge',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_team_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for team - gutter none
+	 */
+	public function test_get_block_css_team_gutter_none() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_team_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/team',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$team_block_id,
+					'count'    => 3,
+					'gutter'   => 'none',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_team_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_css_block for countdown
 	 */
 	public function test_get_block_css_countdown() {
@@ -2005,7 +2292,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'back-selected',
+					'colorButtonSelected' => 'back_selected',
 					'flipStyleSelected'   => 'LTR',
 				)
 			),
@@ -2033,7 +2320,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'back-selected',
+					'colorButtonSelected' => 'back_selected',
 					'flipStyleSelected'   => 'RTL',
 				)
 			),
@@ -2061,7 +2348,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'back-selected',
+					'colorButtonSelected' => 'back_selected',
 					'flipStyleSelected'   => 'BTT',
 				)
 			),
@@ -2089,7 +2376,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'back-selected',
+					'colorButtonSelected' => 'back_selected',
 					'flipStyleSelected'   => 'TTB',
 				)
 			),
@@ -2117,7 +2404,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'front-selected',
+					'colorButtonSelected' => 'front_selected',
 					'flipStyleSelected'   => 'LTR',
 				)
 			),
@@ -2145,7 +2432,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'front-selected',
+					'colorButtonSelected' => 'front_selected',
 					'flipStyleSelected'   => 'RTL',
 				)
 			),
@@ -2173,7 +2460,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'front-selected',
+					'colorButtonSelected' => 'front_selected',
 					'flipStyleSelected'   => 'BTT',
 				)
 			),
@@ -2201,7 +2488,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'            => self::$flipbox_block_id,
-					'colorButtonSelected' => 'front-selected',
+					'colorButtonSelected' => 'front_selected',
 					'flipStyleSelected'   => 'TTB',
 				)
 			),
@@ -2666,6 +2953,191 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	}
 
 	/**
+	 * Test for get_css_block for pricing_table - button hover background color
+	 */
+	public function test_get_block_css_pricing_table_button_hover_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'              => self::$pricing_table_block_id,
+					'buttonHbackgroundType' => 'color',
+					'ctaHoverBackColor'     => '#2211aa',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table - button hover background gradient
+	 */
+	public function test_get_block_css_pricing_table_button_hover_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                 => self::$pricing_table_block_id,
+					'buttonHbackgroundType'    => 'gradient',
+					'buttonHgradientDirection' => 45,
+					'buttonHbackgroundColor1'  => '#1e1e1e',
+					'buttonHbackgroundColor2'  => '#ffffff',
+					'buttonHcolorLocation1'    => 15,
+					'buttonHcolorLocation2'    => 75,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table - button background gradient
+	 */
+	public function test_get_block_css_pricing_table_button_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'                => self::$pricing_table_block_id,
+					'buttonbackgroundType'    => 'gradient',
+					'buttongradientDirection' => 45,
+					'buttonbackgroundColor1'  => '#1e1e1e',
+					'buttonbackgroundColor1'  => '#ffffff',
+					'buttoncolorLocation1'    => 20,
+					'buttoncolorLocation2'    => 65,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table - block background gradient
+	 */
+	public function test_get_block_css_pricing_table_block_background_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'               => self::$pricing_table_block_id,
+					'blockbackgroundType'    => 'gradient',
+					'blockbackgroundColor1'  => '#1e1e1e',
+					'blockbackgroundColor1'  => '#ffffff',
+					'blockgradientDirection' => 25,
+					'blockcolorLocation1'    => 15,
+					'blockcolorLocation2'    => 85,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table - background color
+	 */
+	public function test_get_block_css_pricing_table_background_color() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'               => self::$pricing_table_block_id,
+					'backgroundType'         => '#2b2b2b',
+					'columnBackColorOpacity' => 20,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_css_block for pricing_table - background image gradient
+	 */
+	public function test_get_block_css_pricing_table_background_image_gradient() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_pricing_table_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/pricing-table',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'               => self::$pricing_table_block_id,
+					'backgroundType'         => 'gradient',
+					'backgroundColor1'       => '#1e1e1e',
+					'backgroundColor2'       => '#ffffff',
+					'columnBackColorOpacity' => 50,
+					'gradientDirection'      => 30,
+					'colorLocation1'         => 0,
+					'colorLocation2'         => 90,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_pricing_table_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
 	 * Test for get_block_css for gallery_masonry
 	 */
 	public function test_get_block_css_gallery_masonry() {
@@ -3101,7 +3573,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 					'backgroundType'           => 'image',
 					'backgroundImage'          => 'someURL',
 					'overlayType'              => 'gradient',
-					'gradientOverlayType'      => 'radical',
+					'gradientOverlayType'      => 'radial',
 					'gradientOverlayColor1'    => '#cc2cc2',
 					'gradientOverlayColor2'    => '#cc1cc1',
 					'gradientOverlayPosition'  => 'top left',
@@ -3888,7 +4360,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -3955,7 +4427,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4004,12 +4476,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'                      => self::$accordion_child_block_id_one,
-					'titleBgGradient'               => true,
-					'titleGradientDegree'           => 10,
-					'titleBackgroundColor'          => '#333aba',
-					'titleBackgroundColorOpacity'   => 7,
-					'titleSecondaryBackgroundColor' => '#abb123',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4021,7 +4489,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4038,8 +4506,13 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$accordion_block_id,
-					'schema'   => $schema,
+					'block_id'                      => self::$accordion_block_id,
+					'schema'                        => $schema,
+					'titleBgGradient'               => true,
+					'titleGradientDegree'           => 10,
+					'titleBackgroundColor'          => '#333aba',
+					'titleBackgroundColorOpacity'   => 7,
+					'titleSecondaryBackgroundColor' => '#abb123',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4070,9 +4543,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'           => self::$accordion_child_block_id_one,
-					'inactiveOtherItems' => false,
-					'layout'             => 'accordion',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4084,7 +4556,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4101,8 +4573,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$accordion_block_id,
-					'schema'   => $schema,
+					'block_id'           => self::$accordion_block_id,
+					'schema'             => $schema,
+					'inactiveOtherItems' => false,
+					'layout'             => 'accordion',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4133,9 +4607,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'        => self::$accordion_child_block_id_one,
-					'expandFirstItem' => true,
-					'layout'          => 'accordion',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4147,7 +4620,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4164,8 +4637,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id' => self::$accordion_block_id,
-					'schema'   => $schema,
+					'block_id'        => self::$accordion_block_id,
+					'schema'          => $schema,
+					'expandFirstItem' => true,
+					'layout'          => 'accordion',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4196,9 +4671,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$child_attributes,
 				array(
-					'block_id'           => self::$accordion_child_block_id_one,
-					'inactiveOtherItems' => false,
-					'layout'             => 'grid',
+					'block_id' => self::$accordion_child_block_id_one,
+					'schema'   => $schema,
 				)
 			),
 			'innerBlocks'  => array(),
@@ -4210,7 +4684,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$child_block_two  = array(
 			'blockName'    => 'responsive-block-editor-addons/accordion-item',
 			'attrs'        => array_merge(
-				$attributes,
+				$child_attributes,
 				array(
 					'block_id' => self::$accordion_child_block_id_two,
 					'schema'   => $schema,
@@ -4229,6 +4703,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				array(
 					'block_id' => self::$accordion_block_id,
 					'schema'   => $schema,
+					'layout'   => 'grid',
 				)
 			),
 			'innerBlocks'  => array(
@@ -4367,8 +4842,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 			'attrs'        => array_merge(
 				$attributes,
 				array(
-					'block_id'                               => self::$progress_bar_block_id,
-					'gradientTrack'                          => false,
+					'block_id'      => self::$progress_bar_block_id,
+					'gradientTrack' => false,
 					'horizontalProgressBarPrimaryTrackColor' => '#eeceee',
 				)
 			),

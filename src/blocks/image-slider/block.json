@@ -100,6 +100,18 @@
     },
     "counterId": {
       "type": "string"
-    }
+    },
+	"borderWidth": {
+	  "type": "number",
+	  "default": 999
+	},
+	"borderStyle": {
+	  "type": "string",
+	  "default": "empty"
+	},
+	"borderColor": {
+	  "type": "string",
+	  "default": "empty"
+	}
   }
 }
