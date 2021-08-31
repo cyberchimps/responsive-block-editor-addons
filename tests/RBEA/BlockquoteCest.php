@@ -801,7 +801,7 @@ class BlockQuoteCest
         $this->field = $this->lineHeightInputField;
         $this->_setInputFieldKeys( $I, 'xpath', '2' );
         $commonFunctionsPageObj->publishAndViewPage($I);
-
+        
         $I->amGoingTo('Check the frontend for the typography settings');
         $this->field = $this->blockQuoteTextSpan;
         $this->prop = 'font-family';
@@ -821,7 +821,6 @@ class BlockQuoteCest
         $this->_checkFrontEndStyle($I, '25px');
         $I->resizeWindow(1280, 950);
         $I->wait(1);
-
         $I->amGoingTo('Change font-size for mobile view');
         $this->_openStyleTabSettings($I, $commonFunctionsPageObj); 
         $I->click($this->typographyStyleBtn);

@@ -1,5 +1,8 @@
 <?php
 namespace Page\RBEA;
+use \Facebook\WebDriver\Remote\RemoteWebDriver;
+use \Facebook\WebDriver\WebDriverBy;
+use \Facebook\WebDriver\WebDriverKeys;
 
 class CommonFunctionsPage
 {
@@ -9,6 +12,11 @@ class CommonFunctionsPage
     /**
      * Variables for test
      */
+    public $field = '';
+    public $prop = '';
+    public $desktopView = '(//button[contains(@id, "desktop")])[1]';
+    public $tabletView = '(//button[contains(@id, "tablet")])[1]';
+    public $mobileView = '(//button[contains(@id, "mobile")])[1]';
     public $searchBox = 'input[class="block-editor-inserter__search-input"]';
     public $blockInSearch = 'div[class="block-editor-block-types-list__list-item"] > button';
     public $addBlockBtn = 'button[aria-label="Add block"]';
@@ -91,5 +99,37 @@ class CommonFunctionsPage
 
         $I->amGoingTo('Check block is removed from frontend.');
         $this->publishAndViewPage($I);
-    }    
+    }   
+
+    /**
+     * This function sets key value to input field 
+     */
+    public function _setInputFieldKeys( $I, $by, $key ) {
+        $I->wait(1);
+        if($by === 'xpath'){
+            $field= $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+                return $webdriver->findElement(WebDriverBy::xpath($this->field));
+            });
+        } else {
+            $field= $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+                return $webdriver->findElement(WebDriverBy::cssSelector($this->field));
+            });
+        }
+       
+        $field->sendKeys(WebDriverKeys::BACKSPACE);
+        $field->sendKeys(WebDriverKeys::BACKSPACE);
+        $field->sendKeys(WebDriverKeys::BACKSPACE); 
+        $field->sendKeys($key); 
+        $I->wait(1); 
+    }
+
+    /**
+     * This function checks style in frontend.
+     */
+    public function _checkFrontEndStyle($I, $expectedStyle) {
+        $actualStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::cssSelector($this->field))->getCSSValue($this->prop);
+        });
+        $I->assertEquals($expectedStyle, $actualStyle);
+    }
 }
