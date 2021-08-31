@@ -261,7 +261,103 @@ const attributes = {
   imageSizeTab: {
     type: "string",
     default: "desktop",
-  }
+  },
+  topMargin: {
+	  type: "number",
+	  default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomMargin: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  leftMargin: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  rightMargin: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  topPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomPadding: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  leftPadding: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  rightPadding: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  topMarginMobile: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomMarginMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  leftMarginMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  rightMarginMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  topPaddingMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomPaddingMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  leftPaddingMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  rightPaddingMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  topMarginTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomMarginTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  leftMarginTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  rightMarginTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  topPaddingTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomPaddingTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  leftPaddingTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  rightPaddingTablet: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 
 export default attributes;

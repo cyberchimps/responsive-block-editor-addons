@@ -69,41 +69,44 @@ function EditorStyles(props) {
     columnRightMarginTablet,
     columnRightMarginMobile,
     columnTopPadding,
-	  columnTopPaddingTablet, //For compatibility with v1.3.2.
-	  columnTopPaddingMobile, //For compatibility with v1.3.2.
-	  columnBottomPadding, //For compatibility with v1.3.2.
-	  columnBottomPaddingTablet, //For compatibility with v1.3.2.
-	  columnBottomPaddingMobile, //For compatibility with v1.3.2.
-	  columnLeftPadding, //For compatibility with v1.3.2.
-	  columnLeftPaddingTablet, //For compatibility with v1.3.2.
-	  columnLeftPaddingMobile, //For compatibility with v1.3.2.
-	  columnRightPadding, //For compatibility with v1.3.2.
-	  columnRightPaddingTablet, //For compatibility with v1.3.2.
-	  columnRightPaddingMobile, //For compatibility with v1.3.2.
-    topMargin, //For compatibility with v1.3.2.
-    topMarginTablet, //For compatibility with v1.3.2.
-    topMarginMobile, //For compatibility with v1.3.2.
-    bottomMargin, //For compatibility with v1.3.2.
-    bottomMarginTablet, //For compatibility with v1.3.2.
-    bottomMarginMobile, //For compatibility with v1.3.2.
-    leftMargin, //For compatibility with v1.3.2.
-    leftMarginTablet, //For compatibility with v1.3.2.
-    leftMarginMobile, //For compatibility with v1.3.2.
-    rightMargin, //For compatibility with v1.3.2.
-    rightMarginTablet, //For compatibility with v1.3.2.
-    rightMarginMobile, //For compatibility with v1.3.2.
-    topPadding, //For compatibility with v1.3.2.
-	  topPaddingTablet, //For compatibility with v1.3.2.
-	  topPaddingMobile, //For compatibility with v1.3.2.
-	  bottomPadding, //For compatibility with v1.3.2.
-	  bottomPaddingTablet, //For compatibility with v1.3.2.
-	  bottomPaddingMobile, //For compatibility with v1.3.2.
-	  leftPadding, //For compatibility with v1.3.2.
-	  leftPaddingTablet, //For compatibility with v1.3.2.
-	  leftPaddingMobile, //For compatibility with v1.3.2.
-	  rightPadding, //For compatibility with v1.3.2.
-	  rightPaddingTablet, //For compatibility with v1.3.2.
-	  rightPaddingMobile, //For compatibility with v1.3.2.
+	columnTopPaddingTablet, //For compatibility with v1.3.2.
+	columnTopPaddingMobile, //For compatibility with v1.3.2.
+	columnBottomPadding, //For compatibility with v1.3.2.
+	columnBottomPaddingTablet, //For compatibility with v1.3.2.
+	columnBottomPaddingMobile, //For compatibility with v1.3.2.
+	columnLeftPadding, //For compatibility with v1.3.2.
+	columnLeftPaddingTablet, //For compatibility with v1.3.2.
+	columnLeftPaddingMobile, //For compatibility with v1.3.2.
+	columnRightPadding, //For compatibility with v1.3.2.
+	columnRightPaddingTablet, //For compatibility with v1.3.2.
+	columnRightPaddingMobile, //For compatibility with v1.3.2.
+	topMargin, //For compatibility with v1.3.2.
+	topMarginTablet, //For compatibility with v1.3.2.
+	topMarginMobile, //For compatibility with v1.3.2.
+	bottomMargin, //For compatibility with v1.3.2.
+	bottomMarginTablet, //For compatibility with v1.3.2.
+	bottomMarginMobile, //For compatibility with v1.3.2.
+	leftMargin, //For compatibility with v1.3.2.
+	leftMarginTablet, //For compatibility with v1.3.2.
+	leftMarginMobile, //For compatibility with v1.3.2.
+	rightMargin, //For compatibility with v1.3.2.
+	rightMarginTablet, //For compatibility with v1.3.2.
+	rightMarginMobile, //For compatibility with v1.3.2.
+	topPadding, //For compatibility with v1.3.2.
+	topPaddingTablet, //For compatibility with v1.3.2.
+	topPaddingMobile, //For compatibility with v1.3.2.
+	bottomPadding, //For compatibility with v1.3.2.
+	bottomPaddingTablet, //For compatibility with v1.3.2.
+	bottomPaddingMobile, //For compatibility with v1.3.2.
+	leftPadding, //For compatibility with v1.3.2.
+	leftPaddingTablet, //For compatibility with v1.3.2.
+	leftPaddingMobile, //For compatibility with v1.3.2.
+	rightPadding, //For compatibility with v1.3.2.
+	rightPaddingTablet, //For compatibility with v1.3.2.
+	rightPaddingMobile, //For compatibility with v1.3.2.
+	backgroundPosition, // For compatibility with v1.3.2.
+	backgroundRepeat, // For compatibility with v1.3.2.
+	backgroundSize, // For compatibility with v1.3.2.
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -212,10 +215,10 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image": blockBackground,
-      "background-position": backgroundImagePosition,
+      "background-position": backgroundPosition !== "empty" && backgroundImagePosition === "center center" ? backgroundPosition : backgroundImagePosition, // For compatibility with v1.3.2.
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundImageRepeat,
-      "background-size": backgroundImageSize,
+      "background-repeat": backgroundRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? backgroundRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": backgroundSize !== "empty" && backgroundImageSize === "cover" ? backgroundSize : backgroundImageSize, // For compatibility with v1.3.2.
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +

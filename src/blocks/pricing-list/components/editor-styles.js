@@ -60,6 +60,10 @@ function EditorStyles(props) {
 	descriptionFontSizeTablet,
 	priceFontSizeMobile,
 	priceFontSizeTablet,
+	topPadding, // For compatibility with v1.3.2.
+	bottomPadding, // For compatibility with v1.3.2.
+	leftPadding, // For compatibility with v1.3.2.
+	rightPadding, // For compatibility with v1.3.2.
   } = props.attributes;
 
   var align = contentAlign;
@@ -76,10 +80,10 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(columnGap / 2, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-wrap .responsive-block-editior-addons-pricing-list-item-content": {
-      "padding-top": generateCSSUnit(blockTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
-      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
-      "padding-right": generateCSSUnit(blockRightPadding, "px"),
+      "padding-top": topPadding !== 999 && blockTopPadding === 5 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 5 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPadding !== 999 && blockLeftPadding === 5 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && blockRightPadding === 5 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
       "text-align": contentAlign,
     },
     " .responsive-block-editior-addons-pricing-list-item-image-wrap .responsive-block-editior-addons-pricing-list-item-image": {

@@ -65,7 +65,13 @@ function EditorStyles(props) {
     textRightPaddingTablet,
 	quoteFontSizeMobile,
 	quoteFontSizeTablet,
-    
+    borderColor, // For compatibility with v1.3.2.
+	borderStyle, // For compatibility with v1.3.2.
+	borderWidth, // For compatibility with v1.3.2.
+	topPadding, // For compatibility with v1.3.2.
+	bottomPadding, // For compatibility with v1.3.2.
+	leftPadding, // For compatibility with v1.3.2.
+	rightPadding, // For compatibility with v1.3.2.
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -82,9 +88,9 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       color: quoteTextColor,
-      "border-color": blockBorderColor,
-      "border-style": blockBorderStyle,
-      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generate(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
@@ -99,10 +105,10 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       "text-align": quoteAlign,
-      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
-      "padding-right": generateCSSUnit(blockRightPadding, "px"),
-      "padding-top": generateCSSUnit(blockTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": leftPadding !== 999 && blockLeftPadding === 60 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && blockRightPadding === 60 ? generate(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
+      "padding-top": topPadding !== 999 && blockTopPadding === 70 ? generateCSS(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 70 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`

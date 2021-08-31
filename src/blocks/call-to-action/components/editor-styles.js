@@ -95,16 +95,34 @@ function EditorStyles(props) {
     ctaVpaddingMobile,
     ctaTextOpacity,
     buttonHbackgroundType,
+	buttonBackgroundColor, // For compatibility with v1.3.2.
+	hbuttonBackgroundColor, // For compatibility with v1.3.2.
+	buttonTextColor, // For compatibility with v1.3.2.
+	hbuttonTextColor, // For compatibility with v1.3.2.
+	buttonborderHColor, // For compatibility with v1.3.2.
+	topPadding, // For compatibility with v1.3.2.
+	bottomPadding, // For compatibility with v1.3.2.
+	leftPadding, // For compatibility with v1.3.2.
+	rightPadding, // For compatibility with v1.3.2.
+	imgURL, // For compatibility with v1.3.2.
+	imagePosition, // For compatibility with v1.3.2.
+	imageRepeat, // For compatibility with v1.3.2.
+	thumbsize, // For compatibility with v1.3.2.
+	buttonvPadding, // For compatibility with v1.3.2.
+	buttonhPadding, // For compatibility with v1.3.2.
+	buttonborderStyle, // For compatibility with v1.3.2.
+	buttonborderColor, // For compatibility with v1.3.2.
+	buttonborderWidth, // For compatibility with v1.3.2.
   } = props.attributes;
 
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
   let updatedButtonBackgroundImage = '';
   if (buttonbackgroundType === "color") {
-    updatedButtonBackgroundColor = ctaBackColor;
+    updatedButtonBackgroundColor = buttonBackgroundColor !== "empty" && ctaBackColor === "#2091e1" ? buttonBackgroundColor : ctaBackColor; // For compatibility with v1.3.2.
   }
   if (buttonHbackgroundType == "color") {
-    updatedButtonBackgroundhColor = ctaHoverBackColor;
+    updatedButtonBackgroundhColor = hbuttonBackgroundColor !== "empty" && ctaHoverBackColor === "" ? hbuttonBackgroundColor : ctaHoverBackColor; // For compatibility with v1.3.2.
   } else {
     updatedButtonBackgroundhColor = '';
   }
@@ -135,16 +153,16 @@ function EditorStyles(props) {
 
   var selectors = {
     " .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button": {
-      "color": ctaColor,
+      "color": buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
       "opacity": ctaTextOpacity / 100,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover .responsive-block-editor-addons-cta-button": {
-      "color": ctaHoverColor,
+      "color": hbuttonTextColor !== 'empty' && ctaHoverColor === "#e6f2ff" ? hbuttonTextColor : ctaHoverColor, // For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-cta-link-text": {
-      "color": ctaColor,
+      "color": buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
       "font-family": buttonTextFontFamily,
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
       "font-weight": buttonTextFontWeight,
@@ -152,11 +170,11 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-link-text:hover": {
-      "color": ctaHoverColor,
+		"color": hbuttonTextColor !== 'empty' && ctaHoverColor === "#e6f2ff" ? hbuttonTextColor : ctaHoverColor, // For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover": {
-      "border-color": ctaHoverBorderColor,
+      "border-color": buttonborderHColor !== "empty" && ctaHoverBorderColor === "" ? buttonborderHColor : ctaHoverBorderColor, // For compatibility with v1.3.2.
       "background-color": updatedButtonBackgroundhColor,
       "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBackgroundImage,
     },
@@ -193,18 +211,18 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
-      "padding-top": generateCSSUnit(blockTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
-      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
-      "padding-right": generateCSSUnit(blockRightPadding, "px"),
+      "padding-top": topPadding !== 999 && blockTopPadding === 20 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 20 ? generateCSS(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPadding !== 999 && blockLeftPadding === 20 ? generateCSS(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && blockRightPadding === 20 ? generateCSS(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {
-      "background-image": backgroundImage ? `url(${backgroundImage})` : null,
+      "background-image": imgURL !== "empty" && backgroundImage === "" ? imgURL : (backgroundImage ? `url(${backgroundImage})` : null), // For compatibility with v1.3.2.
       "height": 100 + "%",
-      "background-position": backgroundImagePosition,
-      "background-repeat": backgroundImageRepeat,
-      "background-size": backgroundImageSize,
+      "background-position": imagePosition !== "empty" && backgroundImagePosition === "center center" ? imagePosition : backgroundImagePosition, // For compatibility with v1.3.2.
+      "background-repeat": imageRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? imageRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": thumbsize !== "empty" && backgroundImageSize === "cover" ? thumbsize : backgroundImageSize, // For compatibility with v1.3.2.
       "border-radius": generateCSSUnit(borderRadius, "px"),
     },
 
@@ -227,17 +245,17 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper": {
-      "padding-top": generateCSSUnit(ctaVpadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaVpadding, "px"),
-      "padding-left": generateCSSUnit(ctaHpadding, "px"),
-      "padding-right": generateCSSUnit(ctaHpadding, "px"),
-      "border-style": ctaBorderStyle ? ctaBorderStyle : "solid",
+      "padding-top": buttonvPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(buttonvPadding, "px") : generateCSSUnit(ctaVpadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": buttonvPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(buttonvPadding, "px") : generateCSSUnit(ctaVpadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": buttonhPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(buttonhPadding, "px") : generateCSSUnit(ctaHpadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": buttonhPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(buttonhPadding, "px") : generateCSSUnit(ctaHpadding, "px"), // For compatibility with v1.3.2.
+      "border-style": buttonborderStyle !== "empty" && ctaBorderStyle === "solid" ? buttonborderStyle : (ctaBorderStyle ? ctaBorderStyle : "solid"), // For compatibility with v1.3.2.
       "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
-      "border-color": ctaBorderColor,
+      "border-color": buttonborderColor !== "empty" && ctaBorderColor === "" ? buttonborderColor : ctaBorderColor, // For compatibility with v1.3.2.
       "background-color": updatedButtonBackgroundColor,
-      "border-width": ctaBorderWidth
+      "border-width": buttonborderWidth !== 999 && ctaBorderWidth === 1 ? buttonborderWidth : (ctaBorderWidth
         ? generateCSSUnit(ctaBorderWidth, "px")
-        : "1px",
+        : "1px"), // For compatibility with v1.3.2.
       "background-image": updatedButtonBackgroundImage,
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
     },
