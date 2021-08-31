@@ -147,6 +147,7 @@ class Edit extends Component {
 
     const {
       block_id,
+        design,
       responsive_block_editor_addons,
       shapeHeight,
       shapeHeightTablet,
@@ -236,7 +237,8 @@ class Edit extends Component {
       {
         "is-vertically-flipped": verticalFlip,
         "is-horizontally-flipped": horizontalFlip,
-      }
+      },
+      `is-rbea-separator-style-${design}`,
     );
 
     if (
@@ -316,7 +318,8 @@ class Edit extends Component {
               this.setState({ resizing: true });
             }}
           >
-            {getDividerFromStyle(className)}
+            {getDividerFromStyle(classes)}
+
           </ResizableBox>
           <ResizableBox
             className={classnames(

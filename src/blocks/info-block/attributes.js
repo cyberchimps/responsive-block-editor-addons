@@ -211,9 +211,17 @@ const attributes = {
     type: "string",
     default: "#333",
   },
+  resctaBtnLinkColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
   ctaBackColor: {
     type: "string",
     default: "transparent",
+  },
+  resctaBgColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
   },
   ctaBorderColor: {
     type: "string",
@@ -223,6 +231,14 @@ const attributes = {
     type: "string",
     default: "solid",
   },
+  resctaBorderColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  resctaBorderStyle: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
   ctaVpadding: {
     type: "number",
     default: 10,
@@ -231,6 +247,14 @@ const attributes = {
     type: "number",
     default: 14,
   },
+  ctaVertPadding: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
+  },
+  ctaHrPadding: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
+  },
   ctaBorderWidth: {
     type: "number",
     default: 1,
@@ -238,6 +262,14 @@ const attributes = {
   ctaBorderRadius: {
     type: "number",
     default: 0,
+  },
+  resctaBorderWidth: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
+  },
+  resctaBorderRadius: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
   },
   resprefixSpace: {
     type: "number",
@@ -404,6 +436,10 @@ const attributes = {
     type: "string",
     default: "#ffffff",
   },
+  boxBackgroundColor: {  //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
   contentPadding: {
     type: "number",
     default: 0,
@@ -452,6 +488,18 @@ const attributes = {
     type: "string",
     default: "#333",
   },
+  ctaHoverColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  ctaHoverBackColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  ctaHoverBorderColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
   imagePosition: {
     type: "string",
     default: "center center",
@@ -496,7 +544,7 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  resImageBorderWidth: {
+  resImageBorderWidth: { 
     type: "number",
     default: 2,
   },

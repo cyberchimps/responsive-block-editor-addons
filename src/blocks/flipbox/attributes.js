@@ -172,6 +172,14 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  buttonHPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  buttonVPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
   iconSelected: {
     type: "string",
     default: "editor-textcolor",
@@ -229,6 +237,22 @@ const attributes = {
   },
   blockBorderColor: {
     type: "string",
+  },
+  borderStyle: {  // For compatibility with v1.3.2.
+    type: "string",
+    default: "none",
+  },
+  borderWidth: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 2,
+  },
+  borderRadius: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  borderColor: {  // For compatibility with v1.3.2.
+    type: "string",
+    default: 'empty'
   },
   boxShadowColor: {
     type: "string",
@@ -324,6 +348,22 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  topPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  bottomPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  leftPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  rightPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
   backTopPadding: {
     type: "number",
     default: 0,
@@ -339,6 +379,22 @@ const attributes = {
   backRightPadding: {
     type: "number",
     default: 0,
+  },
+  backtopPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  backbottomPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  backleftPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
+  },
+  backrightPadding: {  // For compatibility with v1.3.2.
+    type: "number",
+    default: 999,
   },
   frontTopPaddingMobile: {
     type: "number",

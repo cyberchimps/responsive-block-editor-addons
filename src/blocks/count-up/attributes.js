@@ -237,6 +237,10 @@ const attributes = {
   headingFontWeight: {
 	type: "string",
 	default: "900",
-  }
+  },
+  titleFontWeight: {   //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
 };
 export default attributes;
