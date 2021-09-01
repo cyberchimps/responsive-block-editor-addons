@@ -591,6 +591,10 @@ const attributes = {
   	type: "number",
   	default: 999,
   }, // For compatibility with v1.3.2.
+  boxBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
 }
 
 export default attributes

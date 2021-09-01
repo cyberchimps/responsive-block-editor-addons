@@ -462,7 +462,8 @@ const attributes = {
   },
   imgURL: {
     type: "string",
-  },
+	default: "empty",
+  }, // For compatibility with v1.3.2.
   imgID: {
     type: "number",
   },
@@ -503,15 +504,15 @@ const attributes = {
   imagePosition: {
     type: "string",
     default: "center center",
-  },
+  }, // For compatibility with v1.3.2.
   imageRepeat: {
     type: "string",
     default: "no-repeat",
-  },
+  }, // For compatibility with v1.3.2.
   thumbsize: {
     type: "string",
     default: "cover",
-  },
+  }, // For compatibility with v1.3.2.
   sepSpace: {
     type: "number",
     default: 10,

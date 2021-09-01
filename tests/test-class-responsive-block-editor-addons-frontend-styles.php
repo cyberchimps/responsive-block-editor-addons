@@ -429,6 +429,246 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 	}
 
 	/**
+	 * Test for default attributes of taxonomy list block
+	 */
+	public function test_get_responsive_block_taxonomy_list_default_attributes() {
+		$expected_values = array(
+			'block_id'               => '',
+			'columns'                => 3,
+			'columnsMobile'          => 1,
+			'columnsTablet'          => 2,
+			'layout'                 => 'grid',
+			'postType'               => 'post',
+			'showEmptyTaxonomy'      => false,
+			'showPostCount'          => true,
+			'taxonomyType'           => 'category',
+			'categories'             => '',
+			'order'                  => 'desc',
+			'orderBy'                => 'date',
+			'postsToShow'            => '8',
+			'noTaxDisplaytext'       => __( 'Taxonomy Not Available.', 'responsive-block-editor-addons' ),
+			'showEmptyTaxonomy'      => false,
+			'titleTag'               => 'div',
+			'alignment'              => 'center',
+			'listStyle'              => 'disc',
+			'listStyleColor'         => '#3b3b3b',
+			'listStyleColorHover'    => '#3b3b3b',
+			'bgColor'                => '#f5f5f5',
+			'titleColor'             => '#3b3b3b',
+			'countColor'             => '#777777',
+			'listTextColor'          => '#3b3b3b',
+			'listTextColorHover'     => '#3b3b3b',
+			'rowGap'                 => 20,
+			'columnGap'              => 20,
+			'titleBottomSpace'       => 15,
+			'rowGapMobile'           => 20,
+			'columnGapMobile'        => 20,
+			'titleBottomSpaceMobile' => 15,
+			'rowGapTablet'           => 20,
+			'columnGapTablet'        => 20,
+			'titleBottomSpaceTablet' => 15,
+			'contentPadding'         => 15,
+			'contentPaddingMobile'   => 15,
+			'contentPaddingTablet'   => 15,
+			'listBottomMargin'       => 5,
+			'listBottomMarginMobile' => 5,
+			'listBottomMarginTablet' => 5,
+			'listTopMargin'          => 5,
+			'listTopMarginMobile'    => 5,
+			'listTopMarginTablet'    => 5,
+			'titleFontFamily'        => '',
+			'titleFontSize'          => 16,
+			'titleFontSizeMobile'    => 14,
+			'titleFontSizeTablet'    => 16,
+			'titleFontWeight'        => '',
+			'titleLineHeight'        => '',
+			'titleLineHeightMobile'  => '',
+			'titleLineHeightTablet'  => '',
+			'countFontFamily'        => '',
+			'countFontSize'          => 16,
+			'countFontSizeMobile'    => 14,
+			'countFontSizeTablet'    => 16,
+			'countFontWeight'        => '',
+			'countLineHeight'        => '',
+			'countLineHeightMobile'  => '',
+			'countLineHeightTablet'  => '',
+			'gridBorderStyle'        => 'solid',
+			'gridBorderWidth'        => 1,
+			'gridBorderRadius'       => 0,
+			'gridBorderColor'        => '#e0e0e0',
+			'boxShadow'              => 'none',
+			'boxShadowColor'         => '',
+			'boxShadowHOffset'       => '',
+			'boxShadowVOffset'       => '',
+			'boxShadowBlur'          => '',
+			'boxShadowSpread'        => '',
+			'boxShadowPosition'      => 'outset',
+			'listFontFamily'         => '',
+			'listFontSize'           => 16,
+			'listFontSizeMobile'     => 14,
+			'listFontSizeTablet'     => 16,
+			'listFontWeight'         => '',
+			'listLineHeight'         => '',
+			'listLineHeightMobile'   => '',
+			'listLineHeightTablet'   => '',
+			'separatorStyle'         => 'solid',
+			'separatorColor'         => '#b2b4b5',
+			'separatorWidth'         => 1,
+		);
+		$values          = self::$rbea_frontend_styles->get_responsive_block_taxonomy_list_block_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
+	 * Test for default attributes of inline notice block
+	 */
+	public function test_get_responsive_block_inline_notice_default_attributes() {
+		$expected_values = array(
+			'block_id'                       => '',
+			'blockTopPadding'                => 20,
+			'blockBottomPadding'             => 20,
+			'blockLeftPadding'               => 20,
+			'blockRightPadding'              => 20,
+			'blockTopPaddingMobile'          => 20,
+			'blockBottomPaddingMobile'       => 20,
+			'blockLeftPaddingMobile'         => 20,
+			'blockRightPaddingMobile'        => 20,
+			'blockTopPaddingTablet'          => 20,
+			'blockBottomPaddingTablet'       => 20,
+			'blockLeftPaddingTablet'         => 20,
+			'blockRightPaddingTablet'        => 20,
+			'blockTopMargin'                 => 0,
+			'blockBottomMargin'              => 0,
+			'blockLeftMargin'                => 0,
+			'blockRightMargin'               => 0,
+			'blockTopMarginMobile'           => 0,
+			'blockBottomMarginMobile'        => 0,
+			'blockLeftMarginMobile'          => 0,
+			'blockRightMarginMobile'         => 0,
+			'blockTopMarginTablet'           => 0,
+			'blockBottomMarginTablet'        => 0,
+			'blockLeftMarginTablet'          => 0,
+			'blockRightMarginTablet'         => 0,
+			'blockZIndex'                    => 0,
+			'cookies'                        => false,
+			'cookies_id'                     => '',
+			'close_cookies_days'             => 1,
+			'contentBgColor'                 => '',
+			'contentColor'                   => '',
+			'contentFontFamily'              => '',
+			'contentFontSize'                => 16,
+			'contentFontSizeMobile'          => 16,
+			'contentFontSizeTablet'          => 16,
+			'contentFontWeight'              => '600',
+			'contentLineHeight'              => 1,
+			'contentLetterSpacing'           => 0,
+			'contentPaddingVertical'         => 20,
+			'contentPaddingHorizontal'       => 20,
+			'contentPaddingVerticalMobile'   => 2,
+			'contentPaddingHorizontalMobile' => 2,
+			'contentPaddingVerticalTablet'   => 5,
+			'contentPaddingHorizontalTablet' => 5,
+			'headingTag'                     => 'h4',
+			'layout'                         => 'modern',
+			'noticeAlignment'                => 'left',
+			'noticeBoxColor'                 => '#FFD54F',
+			'noticeContent'                  => '',
+			'noticeDismiss'                  => '',
+			'noticeType'                     => 'default',
+			'noticeTitle'                    => '',
+			'titleColor'                     => '',
+			'titleFontFamily'                => '',
+			'titleFontSize'                  => 20,
+			'titleFontSizeMobile'            => 20,
+			'titleFontSizeTablet'            => 20,
+			'titleFontWeight'                => '600',
+			'titleLineHeight'                => 1,
+			'titleLetterSpacing'             => 0,
+			'titlePaddingVertical'           => 15,
+			'titlePaddingHorizontal'         => 15,
+			'titlePaddingVerticalMobile'     => 2,
+			'titlePaddingHorizontalMobile'   => 2,
+			'titlePaddingVerticalTablet'     => 5,
+			'titlePaddingHorizontalTablet'   => 5,
+		);
+		$values          = self::$rbea_frontend_styles->get_responsive_block_inline_notice_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
+	 * Test for default attributes of social share block
+	 */
+	public function test_get_responsive_block_social_share_default_attributes() {
+		$expected_values = array(
+			'block_id'                 => '',
+			'socialMediaIcons'         => '',
+			'iconShape'                => 'square',
+			'iconColorType'            => 'official',
+			'iconPrimaryColor'         => '#0112ff',
+			'iconSecondaryColor'       => '#e4f3ff',
+			'showIconLabel'            => true,
+			'iconSize'                 => 30,
+			'iconColumns'              => 'auto',
+			'iconColumnsGap'           => 15,
+			'iconRowsGap'              => 10,
+			'iconsAlign'               => 'left',
+			'iconContainerHeight'      => 5,
+			'iconContainerSize'        => 5,
+			'socialZindex'             => 0,
+			'blockTopPadding'          => 0,
+			'blockBottomPadding'       => 0,
+			'blockLeftPadding'         => 0,
+			'blockRightPadding'        => 0,
+			'blockTopPaddingTablet'    => 0,
+			'blockBottomPaddingTablet' => 0,
+			'blockLeftPaddingTablet'   => 0,
+			'blockRightPaddingTablet'  => 0,
+			'blockTopPaddingMobile'    => 0,
+			'blockBottomPaddingMobile' => 0,
+			'blockLeftPaddingMobile'   => 0,
+			'blockRightPaddingMobile'  => 0,
+			'blockTopMargin'           => 0,
+			'blockBottomMargin'        => 0,
+			'blockLeftMargin'          => 0,
+			'blockRightMargin'         => 0,
+			'blockTopMarginMobile'     => 0,
+			'blockBottomMarginMobile'  => 0,
+			'blockLeftMarginMobile'    => 0,
+			'blockRightMarginMobile'   => 0,
+			'blockTopMarginTablet'     => 0,
+			'blockBottomMarginTablet'  => 0,
+			'blockLeftMarginTablet'    => 0,
+			'blockRightMarginTablet'   => 0,
+			'labelFontFamily'          => 'Default',
+			'labelFontSize'            => 16,
+			'labelFontSizeMobile'      => 16,
+			'labelFontSizeTablet'      => 16,
+			'labelFontWeight'          => '500',
+			'labelLineHeight'          => 1,
+			'iconLabelGap'             => 5,
+			'labelColor'               => '#333',
+			'viewOption'               => 'icontext',
+			'skin'                     => 'default',
+			'blockBorderStyle'         => 'none',
+			'blockBorderWidth'         => 2,
+			'blockBorderRadius'        => '',
+			'blockBorderColor'         => '',
+			'boxShadowColor'           => '',
+			'boxShadowHOffset'         => 0,
+			'boxShadowVOffset'         => 0,
+			'boxShadowBlur'            => 0,
+			'boxShadowSpread'          => 0,
+			'boxShadowPosition'        => 'outset',
+			'backgroundColor'          => '#fff',
+			'opacity'                  => 100,
+			'iconColumnsMobile'        => '2',
+			'iconColumnsTablet'        => 'auto',
+		);
+		$values          = self::$rbea_frontend_styles->get_responsive_block_social_share_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
 	 * Test for default attributes of buttons block
 	 */
 	public function test_get_responsive_block_buttons_default_attributes() {
@@ -882,6 +1122,11 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonborderStyle'        => 'empty', // For compatibility with v1.3.2.
 			'buttonborderColor'        => 'empty', // For compatibility with v1.3.2.
 			'buttonborderWidth'        => 999, // For compatibility with v1.3.2.
+			'ctaBackgroundColor'       => 'empty', // For compatibility with v1.3.2.
+			'headingLineHeight'        => 999, // For compatibility with v1.3.2.
+			'headingFontWeight'        => 'empty', // For compatibility with v1.3.2.
+			'contentLineHeight'        => 999, // For compatibility with v1.3.2.
+			'contentFontWeight'        => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_call_to_action_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -900,11 +1145,11 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'contentAlign'            => 'center',
 			'textColor'               => '',
 			'backgroundColor'         => '',
-			'itemBackgroundColor'     => 'empty',
+			'itemBackgroundColor'     => 'empty', // For compatibility with v1.3.2.
 			'ctaBackColor'            => '',
 			'ctaColor'                => '#fff',
-			'buttonColor'             => 'empty',
-			'buttonTextColor'         => 'empty',
+			'buttonColor'             => 'empty', // For compatibility with v1.3.2.
+			'buttonTextColor'         => 'empty', // For compatibility with v1.3.2.
 			'boxShadowColor'          => '',
 			'boxShadowHOffset'        => 0,
 			'boxShadowVOffset'        => 0,
@@ -947,22 +1192,22 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'counterId'               => 1,
 			'ctaHoverBackColor'       => '',
 			'ctaHoverColor'           => '#e6f2ff',
-			'buttonhColor'            => 'empty',
-			'buttonhTextColor'        => 'empty',
+			'buttonhColor'            => 'empty', // For compatibility with v1.3.2.
+			'buttonhTextColor'        => 'empty', // For compatibility with v1.3.2.
 			'buttonopacity'           => 100,
-			'butopacity'              => 999,
+			'butopacity'              => 999,  // For compatibility with v1.3.2.
 			'buttonHopacity'          => 100,
 			'ctaVpadding'             => 10,
 			'ctaHpadding'             => 14,
-			'vPadding'                => 999,
-			'hPadding'                => 999,
+			'vPadding'                => 999, // For compatibility with v1.3.2.
+			'hPadding'                => 999, // For compatibility with v1.3.2.
 			'vMargin'                 => 10,
 			'hMargin'                 => 0,
 			'ctaBorderWidth'          => 1,
 			'ctaBorderRadius'         => 2,
-			'butborderWidth'          => 999,
-			'butborderRadius'         => 999,
-			'butborderStyle'          => 'empty',
+			'butborderWidth'          => 999, // For compatibility with v1.3.2.
+			'butborderRadius'         => 999, // For compatibility with v1.3.2.
+			'butborderStyle'          => 'empty', // For compatibility with v1.3.2.
 			'ctaBorderStyle'          => 'none',
 			'buttonSize'              => 'responsive-block-editor-addons-button-size-medium',
 			'buttoncolorLocation1'    => 0,
@@ -996,18 +1241,18 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'blockleftmarginTablet'   => 0,
 			'blockrightmarginTablet'  => 0,
 			'contenttopSpaceTablet'   => 16,
-			'bgimageSize'             => 'full',
-			'bgimagePosition'         => 'center center',
-			'bgimageRepeat'           => 'no-repeat',
+			'bgimageSize'             => 'full', // For compatibility with v1.3.2.
+			'bgimagePosition'         => 'center center', // For compatibility with v1.3.2.
+			'bgimageRepeat'           => 'no-repeat', // For compatibility with v1.3.2.
 			'bgthumbsize'             => 'cover',
 			'blockBorderStyle'        => 'none',
 			'blockBorderColor'        => '',
 			'blockBorderWidth'        => 0,
 			'blockBorderRadius'       => 12,
-			'borderStyle'             => 'empty',
-			'borderColor'             => 'empty',
-			'borderWidth'             => 999,
-			'borderRadius'            => 999,
+			'borderStyle'             => 'empty', // For compatibility with v1.3.2.
+			'borderColor'             => 'empty', // For compatibility with v1.3.2.
+			'borderWidth'             => 999, // For compatibility with v1.3.2.
+			'borderRadius'            => 999, // For compatibility with v1.3.2.
 			'buttonTarget'            => 'false',
 			'contentAlignment'        => 'left',
 			'backgroundImageOne'      => '',
@@ -1335,6 +1580,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'icon_layout'         => 'vertical',
 			'fontSizeType'        => 'px',
 			'block_id'            => 1,
+			'labelFontLineHeight' => 999, // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_icon_list_block_default_attributes();
 		$this->assertEquals( $expected_values['icons'], $values['icons'] );
@@ -1552,21 +1798,21 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'resctaFontSize'           => '',
 			'resctaFontWeight'         => '',
 			'ctaColor'                 => '#333',
-			'resctaBtnLinkColor'       => 'empty',
+			'resctaBtnLinkColor'       => 'empty', // For compatibility with v1.3.2.
 			'ctaBackColor'             => 'transparent',
-			'resctaBgColor'            => 'empty',
+			'resctaBgColor'            => 'empty', // For compatibility with v1.3.2.
 			'ctaBorderColor'           => '#333',
-			'resctaBorderColor'        => 'empty',
+			'resctaBorderColor'        => 'empty', // For compatibility with v1.3.2.
 			'ctaBorderStyle'           => 'solid',
-			'resctaBorderStyle'        => 'empty',
+			'resctaBorderStyle'        => 'empty', // For compatibility with v1.3.2.
 			'ctaVpadding'              => 10,
 			'ctaHpadding'              => 14,
-			'ctaVertPadding'           => 999,
-			'ctaHrPadding'             => 999,
+			'ctaVertPadding'           => 999, // For compatibility with v1.3.2.
+			'ctaHrPadding'             => 999, // For compatibility with v1.3.2.
 			'ctaBorderWidth'           => 1,
 			'ctaBorderRadius'          => 0,
-			'resctaBorderWidth'        => 999,
-			'resctaBorderRadius'       => 999,
+			'resctaBorderWidth'        => 999, // For compatibility with v1.3.2.
+			'resctaBorderRadius'       => 999, // For compatibility with v1.3.2.
 			'resprefixSpace'           => 5,
 			'resprefixSpaceMobile'     => 5,
 			'resprefixSpaceTablet'     => 5,
@@ -1610,25 +1856,25 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'imageBoxShadowPosition'   => 'outset',
 			'counterId'                => 1,
 			'backgroundColor'          => '#ffffff',
-			'boxBackgroundColor'       => 'empty',
+			'boxBackgroundColor'       => 'empty', // For compatibility with v1.3.2.
 			'contentPadding'           => 0,
 			'contentPaddingMobile'     => 0,
 			'contentPaddingTablet'     => 0,
 			'opacity'                  => 100,
 			'imageopacity'             => 100,
-			'imgURL'                   => '',
+			'imgURL'                   => '', // For compatibility with v1.3.2.
 			'imgID'                    => '',
 			'imgAlt'                   => '',
 			'dimRatio'                 => 50,
 			'ctaHoverColor'            => '#333',
 			'ctaHoverBackColor'        => '#333',
 			'ctaHoverBorderColor'      => '#333',
-			'hoverctaBorderColor'      => 'empty',
-			'hoverctaBtnLinkColor'     => 'empty',
-			'hoverctaBgColor'          => 'empty',
-			'imagePosition'            => 'center center',
-			'imageRepeat'              => 'no-repeat',
-			'thumbsize'                => 'cover',
+			'hoverctaBorderColor'      => 'empty',  // For compatibility with v1.3.2.
+			'hoverctaBtnLinkColor'     => 'empty',  // For compatibility with v1.3.2.
+			'hoverctaBgColor'          => 'empty',  // For compatibility with v1.3.2.
+			'imagePosition'            => 'center center', // For compatibility with v1.3.2.
+			'imageRepeat'              => 'no-repeat', // For compatibility with v1.3.2.
+			'thumbsize'                => 'cover', // For compatibility with v1.3.2.
 			'backgroundAttachment'     => 'scroll',
 			'sepSpace'                 => 10,
 			'sepSpaceMobile'           => 10,
@@ -1677,7 +1923,6 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonbackgroundType'     => '',
 			'buttonHbackgroundType'    => 'none',
 			'zIndex'                   => 0,
-
 		);
 		$values = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -2412,6 +2657,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'borderWidth'                => 999, // For compatibility with v1.3.2.
 			'borderRadius'               => 999, // For compatibility with v1.3.2.
 			'borderColor'                => 'empty', // For compatibility with v1.3.2.
+			'secondaryBackgroundColor'   => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_testimonial_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -3009,6 +3255,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'containerPaddingRight'        => 999, // For compatibility with v1.3.2.
 			'containerPaddingRightMobile'  => 999, // For compatibility with v1.3.2.
 			'containerPaddingRightTablet'  => 999, // For compatibility with v1.3.2.
+			'boxBackgroundColor'           => 'empty', // For compatibility with v1.3.2.
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_count_down_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

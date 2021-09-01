@@ -440,15 +440,15 @@ const attributes = {
   bgimagePosition: {
     type: "string",
     default: "center center",
-  },
+  }, //For compatibility with v1.3.2.
   bgimageRepeat: {
     type: "string",
     default: "no-repeat",
-  },
+  }, //For compatibility with v1.3.2.
   bgthumbsize: {
     type: "string",
     default: "cover",
-  },
+  }, //For compatibility with v1.3.2.
   blockBorderStyle: {
     type: "string",
     default: "none",

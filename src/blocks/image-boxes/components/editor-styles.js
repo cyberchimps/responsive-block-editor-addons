@@ -167,7 +167,7 @@ function EditorStyles(props) {
       "border-style": blockBorderStyle,
       "border-color": blockBorderColor,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),
+      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
       "justify-content": verticalAlignment + "!important",
       "background-color": `${hexToRgba(
         itemBackgroundColor || "#fff",
@@ -210,7 +210,7 @@ function EditorStyles(props) {
 
     ":hover .responsive-block-editor-addons-add-image": {
       "background-image": hoverGradient,
-      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
+      "border-radius": boxRadius !== 999 && blockBorderRadius === '' ? generateCSSUnit(boxRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), //For compatibility with v1.3.2.
     },
 
     ":hover": {
@@ -261,7 +261,7 @@ function EditorStyles(props) {
     },
 	" .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
 		"font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
-    "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
+    	"margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
 	},
   };
 

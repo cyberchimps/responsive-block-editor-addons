@@ -331,6 +331,27 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	protected static $progress_bar_block_id;
 
 	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $taxonomy_list_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $inline_notice_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $social_share_block_id;
+
+	/**
 	 * Setup class instance
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -720,7 +741,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_type'    => 'wp_block',
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
-				'post_content' => '<!-- wp:responsive-block-editor-addons/call-mail-button --><!-- wp:responsive-block-editor-addons/call-mail-button>',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/call-mail-button --><!-- wp:responsive-block-editor-addons/call-mail-button-->',
 			)
 		);
 
@@ -730,7 +751,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_type'    => 'wp_block',
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
-				'post_content' => '<!-- wp:responsive-block-editor-addons/wp-search --><!-- wp:responsive-block-editor-addons/wp-search>',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/wp-search --><!-- wp:responsive-block-editor-addons/wp-search-->',
 			)
 		);
 
@@ -740,7 +761,37 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_type'    => 'wp_block',
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
-				'post_content' => '<!-- wp:responsive-block-editor-addons/progress-bar --><!-- wp:responsive-block-editor-addons/progress-bar>',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/progress-bar --><!-- wp:responsive-block-editor-addons/progress-bar-->',
+			)
+		);
+
+		self::$taxonomy_list_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/taxonomy-list--><!-- wp:responsive-block-editor-addons/taxonomy-list-->',
+			)
+		);
+
+		self::$inline_notice_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/inline-notice--><!-- wp:responsive-block-editor-addons/inline-notice-->',
+			)
+		);
+
+		self::$social_share_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/social-share--><!-- wp:responsive-block-editor-addons/social-share-->',
 			)
 		);
 	}
@@ -1754,9 +1805,10 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/info-block',
 			'attrs'        => array(
-				'block_id'      => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
-				'resctaBgColor' => 'empty',
-				'ctaBackColor'  => '#2e2f2e',
+				'block_id'             => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				'buttonbackgroundType' => 'color',
+				'resctaBgColor'        => 'empty',
+				'ctaBackColor'         => '#2e2f2e',
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -3087,7 +3139,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				$attributes,
 				array(
 					'block_id'               => self::$pricing_table_block_id,
-					'backgroundType'         => '#2b2b2b',
+					'backgroundType'         => 'color',
+					'backgroundColor'        => '#ff6f61',
 					'columnBackColorOpacity' => 20,
 				)
 			),
@@ -4855,6 +4908,80 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 		);
 		$block_attrs = self::extract_attributes( $block );
 		$css         = self::$rbea_frontend_styles->get_responsive_block_progress_bar_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css taxonomy list block
+	 */
+	public function test_get_block_css_taxonomy_list_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_taxonomy_list_block_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/taxonomy-list',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$taxonomy_list_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_taxonomy_list_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css inline notice block
+	 */
+	public function test_get_block_css_inline_notice_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_inline_notice_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/inline-notice',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$inline_notice_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_inline_notice_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css social share block
+	 */
+	public function test_get_block_css_social_share_block() {
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/social-share',
+			'attrs'        => array(
+				'block_id' => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_social_share_css( $block_attrs[0], $block_attrs[1] );
 		$expected    = self::return_the_css( $block, $css );
 		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );

@@ -150,6 +150,7 @@ function EditorStyles(props) {
     containerPaddingRight, // For compatibility with v1.3.2.
     containerPaddingRightMobile, // For compatibility with v1.3.2.
     containerPaddingRightTablet, // For compatibility with v1.3.2.
+	boxBackgroundColor, // For compatibility with v1.3.2.
   } = props.attributes;
 
   let boxShadowPositionCSS = boxShadowPosition;
@@ -175,7 +176,7 @@ function EditorStyles(props) {
       "padding-right": boxRightPadding === 0 && boxPaddingRight !== 999 ? generateCSS(boxPaddingRight, "px") : generateCSSUnit(boxRightPadding, "px"), // For compatibility with v1.3.2.
       border: `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor}`,
       "border-radius": `${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
-      "background-color": backgroundColor,
+      "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, // For compatibility with v1.3.2.
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
     },
     " .responsive-block-editor-addons-countdown-box-stylings:first-child": {
@@ -256,7 +257,7 @@ function EditorStyles(props) {
       "padding-right": boxRightPaddingMobile === 0 && boxPaddingRightMobile !== 999 ? generateCSS(boxPaddingRightMobile, "px") : generateCSSUnit(boxRightPaddingMobile, "px"), // For compatibility with v1.3.2.
       border: `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor};
       "border-radius": ${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
-      "background-color": backgroundColor,
+      "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, //For compatibility with v1.3.2.
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
     },
     " .responsive-block-editor-addons-countdown-box-stylings:first-child": {
@@ -320,7 +321,7 @@ function EditorStyles(props) {
       "padding-right": boxRightPaddingTablet === 0 && boxPaddingRightTablet !== 999 ? generateCSS(boxPaddingRightTablet, "px") : generateCSSUnit(boxRightPaddingTablet, "px"), // For compatibility with v1.3.2.
       border: `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor};
       "border-radius": ${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
-      "background-color": backgroundColor,
+      "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, //For compatibility with v1.3.2.
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
     },
 
