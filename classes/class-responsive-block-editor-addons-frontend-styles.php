@@ -206,7 +206,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => 999 !== $attr['topPadding'] && 10 === $attr['boxTopPadding'] ? self::get_css_value( $attr['topPadding'], 'px' ) : self::get_css_value( $attr['boxTopPadding'], 'px' ), // For compatibility with v1.3.2.
 					'padding-bottom' => 999 !== $attr['bottomPadding'] && 10 === $attr['boxBottomPadding'] ? self::get_css_value( $attr['bottomPadding'], 'px' ) : self::get_css_value( $attr['boxBottomPadding'], 'px' ), // For compatibility with v1.3.2.
 					'padding-left'   => 999 !== $attr['leftPadding'] && 10 === $attr['boxLeftPadding'] ? self::get_css_value( $attr['leftPadding'], 'px' ) : self::get_css_value( $attr['boxLeftPadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'  => 999 !== $attr['rightPadding'] && 10 === $attr['blockRightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['boxRightPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPadding'] && 10 === $attr['boxRightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['boxRightPadding'], 'px' ), // For compatibility with v1.3.2.
 					'margin-top'     => self::get_css_value( $attr['topMargin'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['bottomMargin'], 'px' ),
 				),
@@ -217,7 +217,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => 999 !== $attr['topPaddingMobile'] && 10 === $attr['boxTopPaddingMobile'] ? self::get_css_value( $attr['topPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxTopPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
 					'padding-bottom' => 999 !== $attr['bottomPaddingMobile'] && 10 === $attr['boxBottomPaddingMobile'] ? self::get_css_value( $attr['bottomPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxBottomPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
 					'padding-left'   => 999 !== $attr['leftPaddingMobile'] && 10 === $attr['boxLeftPaddingMobile'] ? self::get_css_value( $attr['leftPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxLeftPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'  => 999 !== $attr['rightPaddingMobile'] && 10 === $attr['blockRightPaddingMobile'] ? self::get_css_value( $attr['rightPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxRightPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPaddingMobile'] && 10 === $attr['boxRightPaddingMobile'] ? self::get_css_value( $attr['rightPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxRightPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
 					'margin-top'     => self::get_css_value( $attr['topMarginMobile'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['bottomMarginMobile'], 'px' ),
 				),
@@ -229,7 +229,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => 999 !== $attr['topPaddingTablet'] && 10 === $attr['boxTopPaddingTablet'] ? self::get_css_value( $attr['topPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxTopPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
 					'padding-bottom' => 999 !== $attr['bottomPaddingTablet'] && 10 === $attr['boxBottomPaddingTablet'] ? self::get_css_value( $attr['bottomPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxBottomPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
 					'padding-left'   => 999 !== $attr['leftPaddingTablet'] && 10 === $attr['boxLeftPaddingTablet'] ? self::get_css_value( $attr['leftPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxLeftPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'  => 999 !== $attr['rightPaddingTablet'] && 10 === $attr['blockRightPaddingTablet'] ? self::get_css_value( $attr['rightPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxRightPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPaddingTablet'] && 10 === $attr['boxRightPaddingTablet'] ? self::get_css_value( $attr['rightPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxRightPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
 					'margin-top'     => self::get_css_value( $attr['topMarginTablet'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['bottomMarginTablet'], 'px' ),
 				),
