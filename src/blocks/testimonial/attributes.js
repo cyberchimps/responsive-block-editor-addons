@@ -313,6 +313,10 @@ const attributes = {
 	type: "string",
 	default: "empty",
   },//For compatibility with v1.3.2
+  secondaryBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, //For compatibility with v1.3.2.
 };
 
 export default attributes;

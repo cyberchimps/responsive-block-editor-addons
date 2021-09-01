@@ -206,7 +206,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => 999 !== $attr['topPadding'] && 10 === $attr['boxTopPadding'] ? self::get_css_value( $attr['topPadding'], 'px' ) : self::get_css_value( $attr['boxTopPadding'], 'px' ), // For compatibility with v1.3.2.
 					'padding-bottom' => 999 !== $attr['bottomPadding'] && 10 === $attr['boxBottomPadding'] ? self::get_css_value( $attr['bottomPadding'], 'px' ) : self::get_css_value( $attr['boxBottomPadding'], 'px' ), // For compatibility with v1.3.2.
 					'padding-left'   => 999 !== $attr['leftPadding'] && 10 === $attr['boxLeftPadding'] ? self::get_css_value( $attr['leftPadding'], 'px' ) : self::get_css_value( $attr['boxLeftPadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'  => 999 !== $attr['rightPadding'] && 10 === $attr['blockRightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['boxRightPadding'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPadding'] && 10 === $attr['boxRightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['boxRightPadding'], 'px' ), // For compatibility with v1.3.2.
 					'margin-top'     => self::get_css_value( $attr['topMargin'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['bottomMargin'], 'px' ),
 				),
@@ -217,7 +217,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => 999 !== $attr['topPaddingMobile'] && 10 === $attr['boxTopPaddingMobile'] ? self::get_css_value( $attr['topPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxTopPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
 					'padding-bottom' => 999 !== $attr['bottomPaddingMobile'] && 10 === $attr['boxBottomPaddingMobile'] ? self::get_css_value( $attr['bottomPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxBottomPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
 					'padding-left'   => 999 !== $attr['leftPaddingMobile'] && 10 === $attr['boxLeftPaddingMobile'] ? self::get_css_value( $attr['leftPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxLeftPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'  => 999 !== $attr['rightPaddingMobile'] && 10 === $attr['blockRightPaddingMobile'] ? self::get_css_value( $attr['rightPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxRightPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPaddingMobile'] && 10 === $attr['boxRightPaddingMobile'] ? self::get_css_value( $attr['rightPaddingMobile'], 'px' ) : self::get_css_value( $attr['boxRightPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
 					'margin-top'     => self::get_css_value( $attr['topMarginMobile'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['bottomMarginMobile'], 'px' ),
 				),
@@ -229,7 +229,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => 999 !== $attr['topPaddingTablet'] && 10 === $attr['boxTopPaddingTablet'] ? self::get_css_value( $attr['topPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxTopPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
 					'padding-bottom' => 999 !== $attr['bottomPaddingTablet'] && 10 === $attr['boxBottomPaddingTablet'] ? self::get_css_value( $attr['bottomPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxBottomPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
 					'padding-left'   => 999 !== $attr['leftPaddingTablet'] && 10 === $attr['boxLeftPaddingTablet'] ? self::get_css_value( $attr['leftPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxLeftPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'  => 999 !== $attr['rightPaddingTablet'] && 10 === $attr['blockRightPaddingTablet'] ? self::get_css_value( $attr['rightPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxRightPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
+					'padding-right'  => 999 !== $attr['rightPaddingTablet'] && 10 === $attr['boxRightPaddingTablet'] ? self::get_css_value( $attr['rightPaddingTablet'], 'px' ) : self::get_css_value( $attr['boxRightPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
 					'margin-top'     => self::get_css_value( $attr['topMarginTablet'], 'px' ),
 					'margin-bottom'  => self::get_css_value( $attr['bottomMarginTablet'], 'px' ),
 				),
@@ -2490,7 +2490,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'color' === $attr['backgroundType'] ) {
-				$updated_background_color = self::hex_to_rgb( $attr['backgroundColor'], $imgopacity );
+				$updated_background_color = 'empty' !== $attr['ctaBackgroundColor'] && '#f2f2f2' === $attr['backgroundColor'] ? self::hex_to_rgb( $attr['ctaBackgroundColor'], $imgopacity ) : self::hex_to_rgb( $attr['backgroundColor'], $imgopacity ); // For compatibility with v1.3.2.
 			} else {
 				$updated_background_color = '#ffffff';
 			}
@@ -2546,9 +2546,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-cta-title'     => array(
 					'font-size'     => self::get_css_value( $attr['ctaTitleFontSize'], 'px' ),
 					'color'         => $attr['ctaTextColor'],
-					'line-height'   => $attr['ctaTitleLineHeight'],
+					'line-height'   => 999 !== $attr['headingLineHeight'] && 1.8 === $attr['ctaTitleLineHeight'] ? $attr['headingLineHeight'] : $attr['ctaTitleLineHeight'], // For compatibility with v1.3.2.
 					'font-family'   => $attr['ctaTitleFontFamily'],
-					'font-weight'   => $attr['ctaTitleFontWeight'],
+					'font-weight'   => 'empty' !== $attr['headingFontWeight'] && '400' === $attr['ctaTitleFontWeight'] ? $attr['headingFontWeight'] : $attr['ctaTitleFontWeight'], // For compatibility with v1.3.2.
 					'margin-bottom' => self::get_css_value( $attr['titleSpace'], 'px' ),
 				),
 
@@ -2587,8 +2587,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'         => $attr['ctaTextColor'],
 					'font-size'     => self::get_css_value( $attr['ctaTextFontSize'], 'px' ),
 					'font-family'   => $attr['ctaTextFontFamily'],
-					'line-height'   => $attr['ctaTextLineHeight'],
-					'font-weight'   => $attr['ctaTextFontWeight'],
+					'line-height'   => 999 !== $attr['contentLineHeight'] && 1.75 === $attr['ctaTextLineHeight'] ? $attr['contentLineHeight'] : $attr['ctaTextLineHeight'], // For compatibility with v1.3.2.
+					'font-weight'   => 'empty' !== $attr['contentFontWeight'] && '400' === $attr['ctaTextFontWeight'] ? $attr['contentFontWeight'] : $attr['ctaTextFontWeight'], // For compatibility with v1.3.2.
 					'margin-bottom' => self::get_css_value( $attr['subtitleSpace'], 'px' ),
 				),
 
@@ -2824,6 +2824,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonborderStyle'        => 'empty', // For compatibility with v1.3.2.
 				'buttonborderColor'        => 'empty', // For compatibility with v1.3.2.
 				'buttonborderWidth'        => 999, // For compatibility with v1.3.2.
+				'ctaBackgroundColor'       => 'empty', // For compatibility with v1.3.2.
+				'headingLineHeight'        => 999, // For compatibility with v1.3.2.
+				'headingFontWeight'        => 'empty', // For compatibility with v1.3.2.
+				'contentLineHeight'        => 999, // For compatibility with v1.3.2.
+				'contentFontWeight'        => 'empty', // For compatibility with v1.3.2.
 			);
 		}
 
@@ -2939,9 +2944,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-card-background-image' => array(
 					'background-image'    => 'url(' . $background_image_url_check . ')',
 					'height'              => 100 . '%',
-					'background-position' => $attr['backgroundImagePosition'],
-					'background-repeat'   => $attr['backgroundImageRepeat'],
-					'background-size'     => $attr['backgroundImageSize'],
+					'background-position' => 'empty' !== $attr['bgimagePosition'] && 'center center' === $attr['backgroundImagePosition'] ? $attr['bgimagePosition'] : $attr['backgroundImagePosition'], // For compatibility with v1.3.2.
+					'background-repeat'   => 'empty' !== $attr['bgimageRepeat'] && 'no-repeat' === $attr['backgroundImageRepeat'] ? $attr['bgimageRepeat'] : $attr['backgroundImageRepeat'], // For compatibility with v1.3.2.
+					'background-size'     => 'empty' !== $attr['bgthumbsize'] && 'cover' === $attr['backgroundImageSize'] ? $attr['bgthumbsize'] : $attr['backgroundImageSize'], // For compatibility with v1.3.2.
 				),
 
 				' .responsive-block-editor-addons-card-avatar' => array(
@@ -3222,9 +3227,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockleftmarginTablet'   => 0,
 				'blockrightmarginTablet'  => 0,
 				'contenttopSpaceTablet'   => 16,
-				'bgimageSize'             => 'full',
-				'bgimagePosition'         => 'center center',
-				'bgimageRepeat'           => 'no-repeat',
+				'bgimageSize'             => 'full', // For compatibility with v1.3.2.
+				'bgimagePosition'         => 'center center', // For compatibility with v1.3.2.
+				'bgimageRepeat'           => 'no-repeat', // For compatibility with v1.3.2.
 				'bgthumbsize'             => 'cover',
 				'blockBorderStyle'        => 'none',
 				'blockBorderColor'        => '',
@@ -4434,7 +4439,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-icon-list__label' => array(
 					'font-family' => $attr['labelFontFamily'],
 					'font-weight' => $attr['labelFontWeight'],
-					'line-height' => $attr['labelLineHeight'],
+					'line-height' => 999 !== $attr['labelFontLineHeight'] && 1 === $attr['labelLineHeight'] ? $attr['labelFontLineHeight'] : $attr['labelLineHeight'], // For compatibility with v1.3.2.
 					'font-size'   => self::get_css_value( $attr['labelFontSize'], 'px' ),
 				),
 			);
@@ -4515,6 +4520,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'icon_layout'         => 'vertical',
 				'fontSizeType'        => 'px',
 				'block_id'            => 1,
+				'labelFontLineHeight' => 999, // For compatibility with v1.3.2.
 			);
 		}
 
@@ -5230,10 +5236,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-cta-image' => array(
-					'background-image'      => 'url(' . $attr['backgroundImage'] . ')',
-					'background-position'   => $attr['backgroundImagePosition'],
-					'background-repeat'     => $attr['backgroundImageRepeat'],
-					'background-size'       => $attr['backgroundImageSize'],
+					'background-image'      => 'empty' !== $attr['imgURL'] && '' === $attr['backgroundImage'] ? 'url(' . $attr['imgURL'] . ')' : 'url(' . $attr['backgroundImage'] . ')', // For compatibility with v1.3.2.
+					'background-position'   => 'empty' !== $attr['imagePosition'] && 'center center' === $attr['backgroundImagePosition'] ? $attr['imagePosition'] : $attr['backgroundImagePosition'], // For compatibility with v1.3.2.
+					'background-repeat'     => 'empty' !== $attr['imageRepeat'] && 'no-repeat' === $attr['backgroundImageRepeat'] ? $attr['imageRepeat'] : $attr['backgroundImageRepeat'], // For compatibility with v1.3.2.
+					'background-size'       => 'empty' !== $attr['thumbsize'] && 'cover' === $attr['backgroundImageSize'] ? $attr['thumbsize'] : $attr['backgroundImageSize'], // For compatibility with v1.3.2.
 					'background-attachment' => $attr['backgroundAttachment'],
 				),
 
@@ -5550,7 +5556,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentPaddingTablet'     => 0,
 				'opacity'                  => 100,
 				'imageopacity'             => 100,
-				'imgURL'                   => '',
+				'imgURL'                   => '', // For compatibility with v1.3.2.
 				'imgID'                    => '',
 				'imgAlt'                   => '',
 				'dimRatio'                 => 50,
@@ -5560,9 +5566,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hoverctaBorderColor'      => 'empty',  // For compatibility with v1.3.2.
 				'hoverctaBtnLinkColor'     => 'empty',  // For compatibility with v1.3.2.
 				'hoverctaBgColor'          => 'empty',  // For compatibility with v1.3.2.
-				'imagePosition'            => 'center center',
-				'imageRepeat'              => 'no-repeat',
-				'thumbsize'                => 'cover',
+				'imagePosition'            => 'center center', // For compatibility with v1.3.2.
+				'imageRepeat'              => 'no-repeat', // For compatibility with v1.3.2.
+				'thumbsize'                => 'cover', // For compatibility with v1.3.2.
 				'backgroundAttachment'     => 'scroll',
 				'sepSpace'                 => 10,
 				'sepSpaceMobile'           => 10,
@@ -7447,7 +7453,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$bgimage                        = $attr['backgroundImage'] ? $attr['backgroundImage'] : '';
 			$tempsecondary_background_color = $attr['bgGradient']
-			? $attr['backgroundColor2']
+			? ( 'empty' !== $attr['secondaryBackgroundColor'] && '' === $attr['backgroundColor2'] ? $attr['secondaryBackgroundColor'] : $attr['backgroundColor2'] ) // For compatibility with v1.3.2.
 			: $attr['testimonialBackgroundColor'];
 			$bggradient                     =
 			'linear-gradient(' .
@@ -7729,6 +7735,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'borderWidth'                => 999, // For compatibility with v1.3.2.
 				'borderRadius'               => 999, // For compatibility with v1.3.2.
 				'borderColor'                => 'empty', // For compatibility with v1.3.2.
+				'secondaryBackgroundColor'   => 'empty', // For compatibility with v1.3.2.
 			);
 		}
 
@@ -8710,7 +8717,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'    => 999 !== $attr['boxPaddingRight'] && 0 === $attr['boxRightPadding'] ? self::get_css_value( $attr['boxPaddingRight'], 'px' ) : self::get_css_value( $attr['boxRightPadding'], 'px' ), // For compatibility with v1.3.2.
 					'border'           => $attr['boxBorderSize'] . 'px ' . $attr['boxBorderStyle'] . ' ' . $attr['boxBorderColor'],
 					'border-radius'    => $attr['borderRadiusTopLeft'] . 'px ' . $attr['borderRadiusTopRight'] . 'px ' . $attr['borderRadiusBottomRight'] . 'px ' . $attr['borderRadiusBottomLeft'] . 'px',
-					'background-color' => $attr['backgroundColor'],
+					'background-color' => 'empty' !== $attr['boxBackgroundColor'] && '#6CE1E4' === $attr['backgroundColor'] ? $attr['boxBackgroundColor'] : $attr['backgroundColor'], // For compatibility with v1.3.2.
 					'box-shadow'       => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
@@ -8792,7 +8799,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'    => 999 !== $attr['boxPaddingRightMobile'] && 0 === $attr['boxRightPaddingMobile'] ? self::get_css_value( $attr['boxPaddingRightMobile'], 'px' ) : self::get_css_value( $attr['boxRightPaddingMobile'], 'px' ), // For compatibility with v1.3.2.
 					'border'           => $attr['boxBorderSize'] . 'px ' . $attr['boxBorderStyle'] . ' ' . $attr['boxBorderColor'],
 					'border-radius'    => $attr['borderRadiusTopLeft'] . 'px ' . $attr['borderRadiusTopRight'] . 'px ' . $attr['borderRadiusBottomRight'] . 'px ' . $attr['borderRadiusBottomLeft'] . 'px',
-					'background-color' => $attr['backgroundColor'],
+					'background-color' => 'empty' !== $attr['boxBackgroundColor'] && '#6CE1E4' === $attr['backgroundColor'] ? $attr['boxBackgroundColor'] : $attr['backgroundColor'], // For compatibility with v1.3.2.
 					'box-shadow'       => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
@@ -8856,7 +8863,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'    => 999 !== $attr['boxPaddingRightTablet'] && 0 === $attr['boxRightPaddingTablet'] ? self::get_css_value( $attr['boxPaddingRightTablet'], 'px' ) : self::get_css_value( $attr['boxRightPaddingTablet'], 'px' ), // For compatibility with v1.3.2.
 					'border'           => $attr['boxBorderSize'] . 'px ' . $attr['boxBorderStyle'] . ' ' . $attr['boxBorderColor'],
 					'border-radius'    => $attr['borderRadiusTopLeft'] . 'px ' . $attr['borderRadiusTopRight'] . 'px ' . $attr['borderRadiusBottomRight'] . 'px ' . $attr['borderRadiusBottomLeft'] . 'px',
-					'background-color' => $attr['backgroundColor'],
+					'background-color' => 'empty' !== $attr['boxBackgroundColor'] && '#6CE1E4' === $attr['backgroundColor'] ? $attr['boxBackgroundColor'] : $attr['backgroundColor'], // For compatibility with v1.3.2.
 					'box-shadow'       => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 				),
 
@@ -9064,6 +9071,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerPaddingRight'        => 999, // For compatibility with v1.3.2.
 				'containerPaddingRightMobile'  => 999, // For compatibility with v1.3.2.
 				'containerPaddingRightTablet'  => 999, // For compatibility with v1.3.2.
+				'boxBackgroundColor'           => 'empty', // For compatibility with v1.3.2.
 			);
 		}
 

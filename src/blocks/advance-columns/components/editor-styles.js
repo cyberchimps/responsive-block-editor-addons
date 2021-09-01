@@ -215,7 +215,7 @@ function EditorStyles(props) {
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-columns": {
       "padding-top": topPaddingTablet !== 999 && boxTopPaddingTablet === "" ? generateCSSUnit(topPaddingTablet, "px") : generateCSSUnit(boxTopPaddingTablet, "px"), // For compatibility with v1.3.2.
-      "padding-bottom": bottomPaddingTablet !== 999 && boxBottomPaddingTable === "" ? generateCSSUnit(bottomPaddingTablet, "px") : generateCSSUnit(boxBottomPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPaddingTablet !== 999 && boxBottomPaddingTablet === "" ? generateCSSUnit(bottomPaddingTablet, "px") : generateCSSUnit(boxBottomPaddingTablet, "px"), // For compatibility with v1.3.2.
       "padding-left": leftPaddingTablet !== 999 && boxLeftPaddingTablet === "" ? generateCSSUnit(leftPaddingTablet, "px") : generateCSSUnit(boxLeftPaddingTablet, "px"), // For compatibility with v1.3.2.
       "padding-right": rightPaddingTablet !== 999 && boxRightPaddingTablet === "" ? generateCSSUnit(rightPaddingTablet, "px") : generateCSSUnit(boxRightPaddingTablet, "px"), // For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(topMarginTablet, "px"),

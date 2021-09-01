@@ -88,16 +88,16 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     opacity,
-    imgURL,
+    imgURL, //For compatibility with v1.3.2.
     ctaHoverColor,
     hoverctaBtnLinkColor, //For compatibility with v1.3.2
     ctaHoverBackColor,
     hoverctaBgColor, //For compatibility with v1.3.2
     ctaHoverBorderColor,
     hoverctaBorderColor, //For compatibility with v1.3.2
-    imagePosition,
-    imageRepeat,
-    thumbsize,
+    imagePosition, //For compatibility with v1.3.2.
+    imageRepeat, //For compatibility with v1.3.2.
+    thumbsize, //For compatibility with v1.3.2.
     backgroundAttachment,
     sepSpace,
     sepSpaceMobile,
@@ -182,12 +182,12 @@ function EditorStyles(props) {
     hoverboxShadowPositionCSS = "";
   }
 
-  let iconBgColor = '';
+  let iconBgColor = "";
   if("solid" === iconBackgroundType) {
     iconBgColor = iconBackgroundColor;
   }
 
-  let iconBgHoverColor = '';
+  let iconBgHoverColor = "";
   if("solid" === iconBackgroundType) {
     iconBgHoverColor = iconBackgroundHoverColor;
   }
@@ -197,28 +197,28 @@ function EditorStyles(props) {
     iconBgPadding = generateCSSUnit(iconPadding, "px");
   }
 
-  let iconBorder = 'none';
+  let iconBorder = "none";
   if("outline" === iconBackgroundType) {
     iconBorder = `${generateCSSUnit(iconBorderWidth, "px")} solid ${iconBackgroundColor}`;
   }
 
-  let iconHoverBorder = 'none';
+  let iconHoverBorder = "none";
   if("outline" === iconBackgroundType) {
     iconHoverBorder = `${generateCSSUnit(iconBorderWidth, "px")} solid ${iconBackgroundHoverColor}`;
   }
 
-  let backgroundImageGradient = '';
-  let buttonColor = '';
+  let backgroundImageGradient = "";
+  let buttonColor = "";
   if (buttonbackgroundType == "gradient") {
     backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
-  } else if (buttonbackgroundType == 'color') {
-    backgroundImageGradient = '';
+  } else if (buttonbackgroundType == "color") {
+    backgroundImageGradient = "";
     buttonColor = resctaBgColor !== "empty" && ctaBackColor === "transparent" ? resctaBgColor : ctaBackColor;  //For compatibility with v1.3.2
   }
   if (buttonHbackgroundType == "color") {
-    updatedButtonBackgroundhColor = 'empty' !== hoverctaBgColor && 'transparent' === ctaHoverBackColor ? hoverctaBgColor : ctaHoverBackColor;  //For compatibility with v1.3.2
+    updatedButtonBackgroundhColor = "empty" !== hoverctaBgColor && "transparent" === ctaHoverBackColor ? hoverctaBgColor : ctaHoverBackColor;  //For compatibility with v1.3.2
   } else {
-    updatedButtonBackgroundhColor = '';
+    updatedButtonBackgroundhColor = "";
   }
 
 
@@ -226,7 +226,7 @@ function EditorStyles(props) {
     " ": {
       "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "background-color": 'empty' !== boxBackgroundColor && '#ffffff' === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
+      "background-color": "empty" !== boxBackgroundColor && "#ffffff" === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
         boxBackgroundColor || "#ffffff",
         newopacity || 0
       )}` : `${hexToRgba(
@@ -316,12 +316,12 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-ifb-cta-button:hover": {
       "background-color": updatedButtonBackgroundhColor,
-      "border-color": 'empty' !== hoverctaBorderColor && '#333' === ctaHoverBorderColor ? hoverctaBorderColor : ctaHoverBorderColor, //For compatibility with v1.3.2
-      "background-image": buttonHbackgroundType == 'color' ? 'none' : backgroundImageGradient,
+      "border-color": "empty" !== hoverctaBorderColor && "#333" === ctaHoverBorderColor ? hoverctaBorderColor : ctaHoverBorderColor, //For compatibility with v1.3.2
+      "background-image": buttonHbackgroundType == "color" ? "none" : backgroundImageGradient,
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover .responsive-block-editor-addons-inline-editing": {
-      "color": 'empty' !== hoverctaBtnLinkColor && '#333' !== ctaHoverColor ? hoverctaBtnLinkColor : ctaHoverColor, //For compatibility with v1.3.2
+      "color": "empty" !== hoverctaBtnLinkColor && "#333" !== ctaHoverColor ? hoverctaBtnLinkColor : ctaHoverColor, //For compatibility with v1.3.2
     },
 
     " .responsive-block-editor-addons-ifb-icon svg": {
@@ -333,7 +333,7 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-infobox__content-wrap": {
-      "text-align": (imgiconPosition == 'above-title' || imgiconPosition == 'below-title') ?resheadingAlign:'',
+      "text-align": (imgiconPosition == "above-title" || imgiconPosition == "below-title") ?resheadingAlign:"",
     },
 
     " .responsive-block-editor-addons-infobox__content-wrap .responsive-block-editor-addons-ifb-title": {
@@ -350,10 +350,10 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-image": {
-      "background-image": `url(${backgroundImage})`,
-      "background-position": backgroundImagePosition,
-      "background-repeat": backgroundImageRepeat,
-      "background-size": backgroundImageSize,
+      "background-image": imgURL !== "empty" && backgroundImage === "" ? `url(${imgURL})` : `url(${backgroundImage})`, // For compatibility with v1.3.2.
+      "background-position": imagePosition !== "empty" && backgroundImagePosition === "center center" ? imagePosition : backgroundImagePosition, // For compatibility with v1.3.2.
+      "background-repeat": imageRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? imageRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": thumbsize !== "empty" && backgroundImageSize === "cover" ? thumbsize : backgroundImageSize, // For compatibility with v1.3.2.
       "background-attachment": backgroundAttachment,
     },
 

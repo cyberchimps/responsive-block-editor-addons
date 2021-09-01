@@ -27,6 +27,7 @@ function EditorStyles(props) {
     labelFontSizeTablet,
     labelFontSizeMobile,
     hideLabel,
+	labelFontLineHeight, // For compatibility with v1.3.2.
   } = props.attributes;
 
   var editor_gap = undefined !== typeof gap && "" !== gap ? gap + 0 : 0;
@@ -82,7 +83,7 @@ function EditorStyles(props) {
       "font-family": labelFontFamily,
       "font-size": generateCSSUnit(labelFontSize, "px"),
       "font-weight": labelFontWeight,
-      "line-height": labelLineHeight,
+      "line-height": labelFontLineHeight !== 999 && labelLineHeight === 1 ? labelFontLineHeight : labelLineHeight, // For compatibility with v1.3.2.
     },
   };
 

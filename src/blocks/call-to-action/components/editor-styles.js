@@ -113,6 +113,11 @@ function EditorStyles(props) {
 	buttonborderStyle, // For compatibility with v1.3.2.
 	buttonborderColor, // For compatibility with v1.3.2.
 	buttonborderWidth, // For compatibility with v1.3.2.
+	ctaBackgroundColor, // For compatibility with v1.3.2.
+	headingLineHeight, // For compatibility with v1.3.2.
+	headingFontWeight, // For compatibility with v1.3.2.
+	contentLineHeight, // For compatibility with v1.3.2.
+	contentFontWeight, // For compatibility with v1.3.2.
   } = props.attributes;
 
   let updatedButtonBackgroundColor = "";
@@ -186,7 +191,7 @@ function EditorStyles(props) {
     "": {
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
+          ? (ctaBackgroundColor !== "empty" && backgroundColor === "#f2f2f2" ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`) // For compatibility with v1.3.2.
           : undefined,
       "background-image":
         backgroundType == "gradient"
@@ -228,9 +233,9 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-cta-title": {
       "color": ctaTextColor,
-      "line-height": ctaTitleLineHeight,
+      "line-height": headingLineHeight !== 999 && ctaTitleLineHeight === 1.8 ? headingLineHeight : ctaTitleLineHeight, // For compatibility with v1.3.2.
       "font-family": ctaTitleFontFamily,
-      "font-weight": ctaTitleFontWeight,
+      "font-weight": headingFontWeight !== 'empty' && ctaTitleFontWeight === "400" ? headingFontWeight : ctaTitleFontWeight, // For compatibility with v1.3.2.
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
       "font-size": generateCSSUnit(ctaTitleFontSize, "px"),
     },
@@ -239,8 +244,8 @@ function EditorStyles(props) {
       "color": ctaTextColor,
       "font-size": generateCSSUnit(ctaTextFontSize, "px"),
       "font-family": ctaTextFontFamily,
-      "line-height": ctaTextLineHeight,
-      "font-weight": ctaTextFontWeight,
+      "line-height": contentLineHeight !== 999 && ctaTextLineHeight === 1.75 ? contentLineHeight : ctaTextLineHeight, // For compatibility with v1.3.2
+      "font-weight": contentFontWeight !== 'empty' && ctaTextFontWeight === "400" ? contentFontWeight : ctaTextFontWeight, // For compatibility with v1.3.2.
       "margin-bottom": generateCSSUnit(subtitleSpace, "px"),
     },
 

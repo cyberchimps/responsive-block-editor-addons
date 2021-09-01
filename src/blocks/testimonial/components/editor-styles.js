@@ -88,10 +88,11 @@ function EditorStyles(props) {
 	nameFontSizeTablet,
 	titleFontSizeMobile,
 	titleFontSizeTablet,
-	borderStyle,//For compatibility with v1.3.2
-	borderWidth,//For compatibility with v1.3.2
-	borderRadius,//For compatibility with v1.3.2
-	borderColor,//For compatibility with v1.3.2
+	borderStyle, //For compatibility with v1.3.2.
+	borderWidth, //For compatibility with v1.3.2.
+	borderRadius, //For compatibility with v1.3.2.
+	borderColor, //For compatibility with v1.3.2.
+	secondaryBackgroundColor, //For compatibility with v1.3.2.
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -99,7 +100,7 @@ function EditorStyles(props) {
 
   var bgimage = backgroundImage ? backgroundImage : "";
   var tempsecondaryBackgroundColor = bgGradient
-    ? backgroundColor2
+    ? (secondaryBackgroundColor !== "empty" && backgroundColor2 === "" ? secondaryBackgroundColor : backgroundColor2)  // For compatibility with v1.3.2.
     : testimonialBackgroundColor;
   var bggradient =
     "linear-gradient(" +
