@@ -91,7 +91,6 @@ export default class LayoutLibrary extends Component {
             <div className="rbea-pattern-importer-modal-header">
               <SelectControl
                 key={"pattern-categories-" + this.props.clientId}
-                label={__("Categories", "responsive-block-editor-addons")}
                 value={this.state.category}
                 options={catOptions}
                 onChange={(value) => this.setState({ category: value })}

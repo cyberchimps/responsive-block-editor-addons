@@ -112,6 +112,7 @@ $patternHeaderColor: #f1f1f1;
 
 		.components-base-control__field {
 			margin-bottom: 0;
+			height: 100%;
 		}
 
 		select,
@@ -634,6 +635,7 @@ div[data-type*="responsive-block-editor-addons/rbea-container"][data-align="full
 	select {
 		font-weight: 400;
 		color: #4f4c4c!important;
+		padding-bottom: 1px;
 	}
 
 	span {
