@@ -5,7 +5,8 @@ jQuery(function ($) {
 
         $('.responsive-block-editor-addons-toc__list-wrap a').on('click', function () {
             let currentAnchor = $(this).attr('href');
-            currentAnchor = $(`${currentAnchor}`)[0].offsetTop
+            currentAnchor = $(`${currentAnchor}`).offset().top
+
             $("html, body").animate({
                 scrollTop: currentAnchor > tocOffsetTop ? currentAnchor - tocOffsetTop : currentAnchor
             }, 800);
