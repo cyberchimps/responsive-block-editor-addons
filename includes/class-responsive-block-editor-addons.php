@@ -57,7 +57,7 @@ class Responsive_Block_Editor_Addons {
 		if ( defined( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER' ) ) {
 			$this->version = RESPONSIVE_BLOCK_EDITOR_ADDONS_VER;
 		} else {
-			$this->version = '1.3.2';
+			$this->version = '1.3.3';
 		}
 		$this->plugin_name = 'responsive-block-editor-addons';
 
@@ -551,6 +551,18 @@ class Responsive_Block_Editor_Addons {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/inline-notice/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/taxonomy-list/index.php';
+
+		/**
+		 * Layout Component Registry.
+		 */
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-functions.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-component-registry.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/register-layout-components.php';
+
+		/**
+		 * REST API Endpoints for Layouts.
+		 */
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-endpoints.php';
 	}
 
 	/** Adds the Responsive Blocks block category.
@@ -807,14 +819,16 @@ class Responsive_Block_Editor_Addons {
 
 			$post = get_post();
 
-			$blocks = parse_blocks( $post->post_content );
-
 			$flag = false;
 
-			foreach ( $blocks as $block ) {
-				if ( strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false ) {
-					$flag = true;
-					break;
+			if ( $post ) {
+				$blocks = parse_blocks( $post->post_content );
+
+				foreach ( $blocks as $block ) {
+					if ( strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false ) {
+						$flag = true;
+						break;
+					}
 				}
 			}
 
