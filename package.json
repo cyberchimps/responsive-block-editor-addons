@@ -1,6 +1,6 @@
 {
   "name": "responsive-block-editor-addons",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "author": "CyberChimps",
   "license": "GPL-2.0-or-later",
@@ -12,6 +12,17 @@
     "block editor",
     "templates"
   ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties"
+      ]
+    ]
+  },
   "homepage": "https://cyberchimps.com",
   "private": true,
   "dependencies": {
@@ -32,6 +43,7 @@
     "waypoints": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@testing-library/jest-dom": "^4.2.4",
     "@wordpress/block-editor": "3.1.0",
     "@wordpress/block-library": "2.8.0",
