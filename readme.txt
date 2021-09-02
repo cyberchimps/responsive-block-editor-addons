@@ -77,7 +77,7 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
-=1.3.3 - 1st September 2021 =
+= 1.3.3 - 2nd September 2021 =
 * New - Feature to import pre-designed Gutenberg sections and pages for the Responsive Gutenberg Blocks Library.
 
 = 1.3.2 - 17th August 2021 =
