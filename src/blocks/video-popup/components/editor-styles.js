@@ -17,7 +17,6 @@ function EditorStyles(props) {
     vidheight,
     vidheightTablet,
     vidheightMobile,
-    vidBackgroundColor,
     opacity,
     imgURL, // For compatibility with v1.3.2.
     butopacity,
@@ -32,6 +31,7 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     backgroundImage,
+	vidBackgroundColor
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -44,9 +44,21 @@ function EditorStyles(props) {
 
   let playopacity = butopacity / 100;
 
+  let bgImageWithOpacity = "";
+  if(backgroundImage && !!backgroundImage.length) {
+	bgImageWithOpacity = "linear-gradient( to bottom, " +
+		hexToRgba(vidBackgroundColor, imgopacity) +
+		", " +
+		hexToRgba(vidBackgroundColor, imgopacity) +
+		"), " + 
+		"url(" +
+		backgroundImage +
+		")";
+  }
+
   var selectors = {
     " .responsive-block-editor-addons-video-popup__wrapper": {
-      "background-image": (imgURL !== "empty" && !!imgURL.length) && backgroundImage === "" ? `url(${imgURL})` : (!!backgroundImage.length ? `url(${backgroundImage})` : ""), // For compatibility with v1.3.2.
+      "background-image": (imgURL !== "empty" && !!imgURL.length) && backgroundImage === "" ? `url(${imgURL})` : bgImageWithOpacity, // For compatibility with v1.3.2.
       "background-color": hexToRgba(
         vidBackgroundColor || "#000000",
         imgopacity || 0

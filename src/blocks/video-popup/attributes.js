@@ -51,12 +51,9 @@ const attributes = {
   vidheightMobile: {
     type: "number",
   },
-  vidBackgroundColor: {
-    type: "string",
-  },
   opacity: {
     type: "number",
-    default: 50,
+    default: 80,
   },
   imgURL: {
     type: "string",
@@ -126,6 +123,10 @@ const attributes = {
   backgroundImage: {
     type: "string",
     default: ''
+  },
+  vidBackgroundColor: {
+	type: "string",
+	default: "#000000",
   },
 };
 export default attributes;
