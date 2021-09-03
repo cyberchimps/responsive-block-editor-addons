@@ -3631,6 +3631,16 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 	}
 
 	/**
+	 * Test for tabs child block default attributes
+	 */
+	public function test_get_responsive_block_tabs_child_default_attributes() {
+		$expected_values = array();
+
+		$values = self::$rbea_frontend_styles->get_responsive_block_tabs_child_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
 	 * Test for how to schema block default attributes
 	 */
 	public function test_get_responsive_block_how_to_schema_default_attributes() {
