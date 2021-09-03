@@ -94,9 +94,9 @@ class CommonFunctionsPage
     public function removeBlock($I) {
         $I->click($this->removeBlockToolbarTab);
         $I->scrollTo($this->removeBlockBtn,20);
+        $I->wait(2);
         $I->click($this->removeBlockBtn); 
-        $I->wait(3);
-
+        $I->wait(1);
         $I->amGoingTo('Check block is removed from frontend.');
         $this->publishAndViewPage($I);
     }   
