@@ -120,7 +120,9 @@ class AdvancedColumnCest
     public $clearBorderColor = '//*[text() = "Clear"]';
 
     public $boxShadowOptionsBtn = '(//div[@class="res-typography-option-actions"]//button)[1]';
+    public $hoverBoxShadowOptionsBtn = '(//div[@class="res-typography-option-actions"]//button)[3]';
     public $boxShadowResetBtn = '(//div[@class="res-typography-option-actions"]//button)[2]';
+    public $hoverBoxShadowResetBtn = '(//div[@class="res-typography-option-actions"]//button)[4]';
     public $boxShadowColor = '(//div[@class="components-circular-option-picker__swatches"])[2]//div[5]';
     public $boxShadowLeft = '(//*[contains(@id, "inspector-input-control")])[3]';
     public $boxShadowTop = '(//*[contains(@id, "inspector-input-control")])[4]';
@@ -128,6 +130,7 @@ class AdvancedColumnCest
     public $boxShadowSpread = '(//*[contains(@id, "inspector-input-control")])[6]';
     public $boxShadowPosition = '(//*[contains(@id, "inspector-select-control")])[2]';
     public $boxShadowPositionSelected = 'option[value="inset"]';
+    public $childContainerBox = '(//*[@class="responsive-column-wrap responsive-block-editor-addons-block-column"])[1]';
 
     /**
      * Layout style
@@ -138,7 +141,7 @@ class AdvancedColumnCest
     /**
      * Child Background
      */
-    public $fChildColumnWrap = '.responsive-block-editor-addons-advanced-column > div > div > div >div ';
+    public $fChildColumnWrap = '.responsive-block-editor-addons-advanced-column > div > div > div >div';
    
     /**
     * Block Options
@@ -150,6 +153,11 @@ class AdvancedColumnCest
     public $alignTextRightBtn = '//*[@id="editor"]/div[2]/div/div/div/div/button[3]';
     public $alignFullEle = 'div[class="responsive-block-editor-addons-advanced-column alignfull"]';
     public $alignWideEle = 'div[class="responsive-block-editor-addons-advanced-column alignwide"]';
+
+    /**
+     * Child spacing
+     */
+    public $childMarginTop = '(//*[contains(@id, "inspector-input-control") and @aria-label="Top"])[2]';
 
     /**
      * This function runs before running each test.
@@ -679,6 +687,45 @@ class AdvancedColumnCest
     }
 
     /**
+     * This Test checks the parent:Advanced Columns block options
+     */
+    public function AdvanceColumnParentBlockOptions(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the alignment of the block to align full and text to align right.');
+        $this->_selectAdvanceColumnsParentBlock($I, $commonFunctionsPageObj);
+        $I->wait(1);
+        $I->click($this->changeBlockAlignmentBtn);
+        $I->wait(1);
+        $I->click($this->fullWidthBtn);
+        $I->wait(1);
+        $I->click($this->changeTextAlignmentBtn);
+        $I->wait(1);
+        $I->click($this->alignTextRightBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I); 
+
+        $I->amGoingTo('Check the frontend for block option settings');
+        $I->seeElement($this->alignFullEle);
+        $commonFunctionsPageObj->field = $this->fColumnWrap;
+        $commonFunctionsPageObj->prop = 'text-align';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'right'); 
+
+        $I->amGoingTo('Reset block alignment and text alignment');
+        $this->_selectAdvanceColumnsParentBlock($I, $commonFunctionsPageObj);
+        $I->wait(1);
+        $I->click($this->changeBlockAlignmentBtn);
+        $I->wait(1);
+        $I->click($this->fullWidthBtn);
+        $I->wait(1);
+        $I->click($this->changeTextAlignmentBtn);
+        $I->wait(1);
+        $I->click($this->alignTextRightBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->cantSeeElement($this->alignFullEle); 
+        $commonFunctionsPageObj->prop = 'text-align';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'left'); 
+    }
+
+    /**
      * This function checks Layout setting of Advanced heading child element
      */
     public function AdvancedColumnsChildLayoutSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
@@ -760,44 +807,215 @@ class AdvancedColumnCest
         $commonFunctionsPageObj->field = $this->fChildColumnWrap;
         $commonFunctionsPageObj->prop = 'background';
         $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box'); 
-    } 
+    }     
 
     /**
-     * This Test checks the parent:Advanced Columns block options
+     * This test checks the spacing setting of Advanced heading child element
      */
-    public function AdvanceColumnParentBlockOptions(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    public function AdvancedColumnsChildSpacingSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
-        $I->amGoingTo('Change the alignment of the block to align full and text to align right.');
-        $this->_selectAdvanceColumnsParentBlock($I, $commonFunctionsPageObj);
+        $I->amGoingTo("Change spacing settings of advanced column's child.");
+        $I->resizeWindow(1280, 950);  
+        $this->_selectAdvanceColumnsChildBlock($I, $commonFunctionsPageObj);
+        $I->click('Style');
+        $I->click($this->spacingStyleBtn);
         $I->wait(1);
-        $I->click($this->changeBlockAlignmentBtn);
-        $I->wait(1);
-        $I->click($this->fullWidthBtn);
-        $I->wait(1);
-        $I->click($this->changeTextAlignmentBtn);
-        $I->wait(1);
-        $I->click($this->alignTextRightBtn);
+ 
+        $I->amGoingTo('Change the padding and margin for desktop view');
+        $I->click($commonFunctionsPageObj->desktopView);
+        $commonFunctionsPageObj->field = $this->paddingTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '17px' );
+        $commonFunctionsPageObj->field = $this->childMarginTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '25px' );
         $commonFunctionsPageObj->publishAndViewPage($I); 
+ 
+        $I->amGoingTo('Check padding and margin in the frontend for desktop view.');
+        $commonFunctionsPageObj->field = $this->fChildColumnWrap;
+        $commonFunctionsPageObj->prop = 'padding-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '17px'); 
+        $commonFunctionsPageObj->prop = 'margin-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '25px'); 
+        $I->resizeWindow(375, 812);
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '25px');
+        $commonFunctionsPageObj->prop = 'padding-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '17px'); 
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);  
 
-        $I->amGoingTo('Check the frontend for block option settings');
-        $I->seeElement($this->alignFullEle);
-        $commonFunctionsPageObj->field = $this->fColumnWrap;
-        $commonFunctionsPageObj->prop = 'text-align';
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'right'); 
-
-        $I->amGoingTo('Reset block alignment and text alignment');
-        $this->_selectAdvanceColumnsParentBlock($I, $commonFunctionsPageObj);
+        $I->amGoingTo('Change the padding and margin for mobile view');
+        $this->_selectAdvanceColumnsChildBlock($I, $commonFunctionsPageObj);
+        $I->click('Style');
+        $I->click($this->spacingStyleBtn);
         $I->wait(1);
-        $I->click($this->changeBlockAlignmentBtn);
-        $I->wait(1);
-        $I->click($this->fullWidthBtn);
-        $I->wait(1);
-        $I->click($this->changeTextAlignmentBtn);
-        $I->wait(1);
-        $I->click($this->alignTextRightBtn);
+        $I->click($commonFunctionsPageObj->mobileView);
+        $commonFunctionsPageObj->field = $this->paddingTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '17px' );
+        $I->click($this->mobileView2);
+        $commonFunctionsPageObj->field = $this->childMarginTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '27px' );
         $commonFunctionsPageObj->publishAndViewPage($I);
-        $I->cantSeeElement($this->alignFullEle); 
-        $commonFunctionsPageObj->prop = 'text-align';
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'left'); 
+ 
+        $I->amGoingTo('Check padding and margin in the frontend for mobile view.');
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+        $commonFunctionsPageObj->field = $this->fChildColumnWrap;
+        $commonFunctionsPageObj->prop = 'padding-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '17px'); 
+        $commonFunctionsPageObj->prop = 'margin-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '25px'); 
+        $I->wait(1);
+        $I->resizeWindow(375, 812);
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '27px');
+        $commonFunctionsPageObj->prop = 'padding-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '17px'); 
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+
+        
+        $I->amGoingTo('Change the padding and margin for tablet view');
+        $this->_selectAdvanceColumnsChildBlock($I, $commonFunctionsPageObj);
+        $I->click('Style');
+        $I->click($this->spacingStyleBtn);
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->tabletView);
+        $commonFunctionsPageObj->field = $this->paddingTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '30px' );
+        $I->click($this->tabletView2);
+        $commonFunctionsPageObj->field = $this->childMarginTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '20px' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+ 
+        $I->amGoingTo('Check padding and margin in the frontend for tablet view.');
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+        $commonFunctionsPageObj->field = $this->fChildColumnWrap;
+        $commonFunctionsPageObj->prop = 'padding-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '17px'); 
+        $commonFunctionsPageObj->prop = 'margin-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '25px'); 
+        $I->wait(1);
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '20px');
+        $commonFunctionsPageObj->prop = 'padding-top';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '30px'); 
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+        
     }
+
+    /**
+     * This test checks the border settings of Advanced heading child element.
+     */
+    public function AdvancedColumnsChildBorderSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change border of advanced column.');
+        $this->_selectAdvanceColumnsChildBlock($I, $commonFunctionsPageObj);
+        $I->click('Style');
+        $I->click($this->borderStyleBtn);
+        $I->wait(1);
+
+        $I->amGoingTo("Change advanced column child's border style to dashed");
+        $dashedBorderStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->borderTypeSelector))->
+            findElement( WebDriverBy::cssSelector($this->borderTypeSelectOption) )->click();
+        });
+        $I->wait(1);
+        $I->click($this->borderWidth);
+        $commonFunctionsPageObj->field = $this->borderWidth;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->click($this->borderRadious);
+        $commonFunctionsPageObj->field = $this->borderRadious;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click($this->borderColor); 
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check border style in the frontend');
+        $childContainer = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->childContainerBox));
+        });
+        $I->assertEquals('rgb(16, 101, 156)', $childContainer->getCSSValue('border-color'));
+        $I->assertEquals('dashed', $childContainer->getCSSValue('border-style'));
+        $I->assertEquals('3px', $childContainer->getCSSValue('border-width'));
+        $I->assertEquals('5px', $childContainer->getCSSValue('border-radius'));
+        
+        $I->amGoingTo('Reset border style');
+        $this->_selectAdvanceColumnsChildBlock($I, $commonFunctionsPageObj);
+        $I->click('Style');
+        $I->click($this->borderStyleBtn);
+        $I->click($this->resetBorderWidth);
+        $I->click($this->resetBorderRadius);
+        $I->wait(1);
+        $I->click($this->clearBorderColor);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->amGoingTo('Check reset border style in frontend');
+        $childContainer = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->childContainerBox));
+        });
+        $I->assertEquals('rgb(51, 51, 51)', $childContainer->getCSSValue('border-color'));
+        $I->assertEquals('dashed', $childContainer->getCSSValue('border-style'));
+        $I->assertEquals('1px', $childContainer->getCSSValue('border-width'));
+        $I->assertEquals('0px', $childContainer->getCSSValue('border-radius'));
+        
+       
+        $I->amGoingTo('Change Box shadow on hover settings');
+        $this->_selectAdvanceColumnsChildBlock($I, $commonFunctionsPageObj);
+        $I->click('Style');
+        $I->click($this->borderStyleBtn);
+        $dashedBorderStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->borderTypeSelector))->
+            findElement( WebDriverBy::cssSelector($this->borderTypeSelectOptionNone) )->click();
+        });
+        $I->scrollTo($this->hoverBoxShadowOptionsBtn, 20);
+        $I->click($this->hoverBoxShadowOptionsBtn);
+        $I->wait(2);
+        $I->click($this->boxShadowColor);
+        $I->wait(1);
+
+        $I->click($this->boxShadowLeft);
+        $commonFunctionsPageObj->field = $this->boxShadowLeft;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->wait(1); 
+
+        $I->click($this->boxShadowTop);
+        $commonFunctionsPageObj->field = $this->boxShadowTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click($this->boxShadowBlur);
+        $commonFunctionsPageObj->field = $this->boxShadowBlur;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '30' );
+        $I->wait(1); ; 
+
+        $I->click($this->boxShadowSpread);
+        $commonFunctionsPageObj->field = $this->boxShadowSpread;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1);  
+        $boxShadowPosition = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->boxShadowPosition))->
+            findElement( WebDriverBy::cssSelector($this->boxShadowPositionSelected) )->click();
+        });
+        $I->wait(2);
+
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check box shadow on hover style in frontend');
+        $I->wait(2);
+        $I->moveMouseOver($this->childContainerBox);
+        $childContainer = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->childContainerBox));
+        });
+        $I->assertEquals('rgb(51, 51, 51) 3px 5px 30px 5px inset', $childContainer->getCSSValue('box-shadow'));
+
+        $I->amGoingTo('Reset box shadow on hover style');
+        $this->_selectAdvanceColumnsChildBlock($I, $commonFunctionsPageObj);
+        $I->click('Style');
+        $I->click($this->borderStyleBtn);
+        $I->scrollTo($this->hoverBoxShadowResetBtn, 20);
+        $I->click($this->hoverBoxShadowResetBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $childContainer = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->childContainerBox));
+        });
+        $I->assertEquals('rgb(51, 51, 51) 0px 0px 0px 0px', $childContainer->getCSSValue('box-shadow'));
+    }    
 }
