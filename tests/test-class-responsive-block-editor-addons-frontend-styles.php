@@ -2821,9 +2821,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'vidheight'              => '',
 			'vidheightTablet'        => '',
 			'vidheightMobile'        => '',
-			'vidBackgroundColor'     => '',
 			'opacity'                => 50,
-			'imgURL'                 => '',
+			'imgURL'                 => 'empty', // For compatibility with v1.3.2.
 			'imgID'                  => '',
 			'imgAlt'                 => '',
 			'counterId'              => 1,
@@ -2841,6 +2840,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'previewBackgroundColor' => '#000000',
 			'hoverEffect'            => '',
 			'backgroundImage'        => '',
+			'vidBackgroundColor'     => '#000000',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_video_popup_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -3627,6 +3627,16 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		);
 
 		$values = self::$rbea_frontend_styles->get_responsive_block_tabs_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
+	 * Test for tabs child block default attributes
+	 */
+	public function test_get_responsive_block_tabs_child_default_attributes() {
+		$expected_values = array();
+
+		$values = self::$rbea_frontend_styles->get_responsive_block_tabs_child_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
 	}
 
