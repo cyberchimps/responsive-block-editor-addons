@@ -2823,7 +2823,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'vidheightMobile'        => '',
 			'vidBackgroundColor'     => '',
 			'opacity'                => 50,
-			'imgURL'                 => 'empty', // For compatibility with v1.3.2.
+			'imgURL'                 => '',
 			'imgID'                  => '',
 			'imgAlt'                 => '',
 			'counterId'              => 1,
@@ -2840,7 +2840,6 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'boxShadowPosition'      => 'outset',
 			'previewBackgroundColor' => '#000000',
 			'hoverEffect'            => '',
-			'backgroundImage'        => '',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_video_popup_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
