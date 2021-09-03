@@ -60,7 +60,8 @@ const attributes = {
   },
   imgURL: {
     type: "string",
-  },
+	default: "empty",
+  }, // For compatibility with v1.3.2.
   imgID: {
     type: "number",
   },

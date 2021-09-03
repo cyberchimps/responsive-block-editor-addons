@@ -19,7 +19,7 @@ function EditorStyles(props) {
     vidheightMobile,
     vidBackgroundColor,
     opacity,
-    imgURL,
+    imgURL, // For compatibility with v1.3.2.
     butopacity,
     blockBorderStyle,
     blockBorderWidth,
@@ -44,25 +44,9 @@ function EditorStyles(props) {
 
   let playopacity = butopacity / 100;
 
-  let updatedbackgroundImage = "";
-  if (backgroundImage && !!backgroundImage.length) {
-    updatedbackgroundImage = backgroundImage;
-  }
-
-  let updatedBackgroundImage = "";
-  if(updatedbackgroundImage) {
-	  updatedBackgroundImage = `linear-gradient(${hexToRgba(
-        vidBackgroundColor || "#000000",
-        imgopacity || 0
-      )},${hexToRgba(
-        vidBackgroundColor || "#fff",
-        imgopacity || 0
-      )}),url(${updatedbackgroundImage})`;
-  }
-
   var selectors = {
     " .responsive-block-editor-addons-video-popup__wrapper": {
-      "background-image": updatedBackgroundImage,
+      "background-image": (imgURL !== "empty" && !!imgURL.length) && backgroundImage === "" ? `url(${imgURL})` : (!!backgroundImage.length ? `url(${backgroundImage})` : ""), // For compatibility with v1.3.2.
       "background-color": hexToRgba(
         vidBackgroundColor || "#000000",
         imgopacity || 0
