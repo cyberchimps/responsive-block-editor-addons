@@ -2823,7 +2823,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'vidheightMobile'        => '',
 			'vidBackgroundColor'     => '',
 			'opacity'                => 50,
-			'imgURL'                 => '',
+			'imgURL'                 => 'empty', // For compatibility with v1.3.2.
 			'imgID'                  => '',
 			'imgAlt'                 => '',
 			'counterId'              => 1,
