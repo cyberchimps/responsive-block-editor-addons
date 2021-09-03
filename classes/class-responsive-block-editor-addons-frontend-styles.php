@@ -8303,26 +8303,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$imgopacity  = $attr['opacity'] / 100;
 			$playopacity = $attr['butopacity'] / 100;
 
-			$updated_img_url = '';
+			$bg_image_with_opacity = '';
 			if ( $attr['backgroundImage'] ) {
-				$updated_img_url = $attr['backgroundImage'];
-			}
-
-			$updated_background_image = '';
-			if ( $updated_img_url ) {
-				$updated_background_image = 'linear-gradient(' .
-				self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ) .
-				',' .
-				self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ) .
-				'),url(' .
-				$updated_img_url .
-				')';
+				$bg_image_with_opacity = 'linear-gradient( to bottom, ' .
+					self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ) .
+					', ' .
+					self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ) .
+					'), ' .
+					'url(' .
+					$attr['backgroundImage'] .
+					')';
 			}
 
 			$selectors = array(
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
-					'background-image' => $updated_background_image,
-					'background-color' => self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ),
+					'background-image' => 'empty' !== $attr['imgURL'] && '' === $attr['backgroundImage'] ? 'url(' . $attr['imgURL'] . ')' : $bg_image_with_opacity, // For compatibility with v1.3.2.
+					'background-color' => self::hex_to_rgb( $attr['vidBackgroundColor'] || '#000000', $imgopacity ),
 					'max-width'        => self::get_css_value( $attr['vidwidth'], 'px' ),
 					'height'           => self::get_css_value( $attr['vidheight'], 'px' ),
 					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
@@ -8398,9 +8394,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'vidheight'              => '',
 				'vidheightTablet'        => '',
 				'vidheightMobile'        => '',
-				'vidBackgroundColor'     => '',
 				'opacity'                => 50,
-				'imgURL'                 => '',
+				'imgURL'                 => 'empty', // For compatibility with v1.3.2.
 				'imgID'                  => '',
 				'imgAlt'                 => '',
 				'counterId'              => 1,
@@ -8418,6 +8413,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'previewBackgroundColor' => '#000000',
 				'hoverEffect'            => '',
 				'backgroundImage'        => '',
+				'vidBackgroundColor'     => '#000000',
 			);
 		}
 

@@ -71,7 +71,6 @@ export default class Inspector extends Component {
       vidheight,
       vidheightTablet,
       vidheightMobile,
-      vidBackgroundColor,
       opacity,
       imgURL,
       imgID,
@@ -87,6 +86,7 @@ export default class Inspector extends Component {
       boxShadowBlur,
       boxShadowSpread,
       boxShadowPosition,
+	  vidBackgroundColor
     } = attributes;
 
     // Change the image
@@ -106,10 +106,6 @@ export default class Inspector extends Component {
         imgAlt: null,
       });
     };
-
-    // Update color values
-    const onChangeBackgroundColor = (value) =>
-      setAttributes({ vidBackgroundColor: value });
 
     const urlIsVideo = (url) => url.match(/(mp4|webm|ogg)$/i);
 
@@ -394,6 +390,33 @@ export default class Inspector extends Component {
                   showMoreImageOptions={false}
                   showOverlayOptions={false}
                 />
+				<p className="responsive-setting-label">
+					{__("Background Overlay Color")}
+					<span className="components-base-control__label">
+						<span
+							className="component-color-indicator"
+							style={{ backgroundColor: vidBackgroundColor }}
+						></span>
+					</span>
+				</p>
+				<ColorPalette
+					value={vidBackgroundColor}
+					onChange={(value) =>
+						setAttributes({ vidBackgroundColor: value })
+					}
+					allowReset
+				/>
+				<RangeControl
+					label={__("Opacity", "responsive-block-editor-addons")}
+					value={opacity}
+					onChange={(value) =>
+					setAttributes({
+						opacity: value !== undefined ? value : 80,
+					})
+					}
+					min={0}
+					max={100}
+              	/>
               </PanelBody>
             </InspectorTab>
             <InspectorTab key={"style"}>
