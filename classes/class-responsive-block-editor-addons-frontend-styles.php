@@ -8303,7 +8303,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$imgopacity  = $attr['opacity'] / 100;
 			$playopacity = $attr['butopacity'] / 100;
 
-			$bg_image_with_opacity = "";
+			$bg_image_with_opacity = '';
 			if ( $attr['backgroundImage'] ) {
 				$bg_image_with_opacity = 'linear-gradient( to bottom, ' .
 					self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ) .
