@@ -9884,7 +9884,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$notice_type_color = '#ffd54f';
 					break;
 				case 'info':
-					$alignmentnotice_type_color = '#2091e1';
+					$notice_type_color = '#2091e1';
 					break;
 				case 'error':
 					$notice_type_color = '#d9534f';
