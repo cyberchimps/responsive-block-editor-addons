@@ -352,6 +352,21 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	protected static $social_share_block_id;
 
 	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $how_to_block_id;
+
+	/**
+	 * Dummy block ID
+	 *
+	 * @var int
+	 */
+	protected static $tabs_block_id;
+
+
+	/**
 	 * Setup class instance
 	 *
 	 * @param class WP_UnitTest_Factory $factory class instance.
@@ -792,6 +807,26 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 				'post_status'  => 'publish',
 				'post_title'   => 'Test Block',
 				'post_content' => '<!-- wp:responsive-block-editor-addons/social-share--><!-- wp:responsive-block-editor-addons/social-share-->',
+			)
+		);
+
+		self::$how_to_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/how-to--><!-- wp:responsive-block-editor-addons/how-to-->',
+			)
+		);
+
+		self::$tabs_block_id = $factory->post->create(
+			array(
+				'post_author'  => self::$user_id,
+				'post_type'    => 'wp_block',
+				'post_status'  => 'publish',
+				'post_title'   => 'Test Block',
+				'post_content' => '<!-- wp:responsive-block-editor-addons/tabs--><!-- wp:responsive-block-editor-addons/tabs-->',
 			)
 		);
 	}
@@ -4969,10 +5004,68 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	 * Test for get_block_css social share block
 	 */
 	public function test_get_block_css_social_share_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_social_share_default_attributes();
 		$block       = array(
 			'blockName'    => 'responsive-block-editor-addons/social-share',
-			'attrs'        => array(
-				'block_id' => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_social_share_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css social share block with icon shape as 'rounded'
+	 */
+	public function test_get_block_css_social_share_rounded_shape_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_social_share_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/social-share',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'  => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+					'iconShape' => 'rounded',
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_social_share_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css social share block with icon shape as 'circle'
+	 */
+	public function test_get_block_css_social_share_circle_shape_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_social_share_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/social-share',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id'  => 'c1e0fb9b-41dd-497c-93f5-391359ea96d2',
+					'iconShape' => 'circle',
+				)
 			),
 			'innerBlocks'  => array(),
 			'innerHTML'    => ' ',
@@ -5208,6 +5301,58 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Helper_Test extends WP_Unit
 	public function test_render_svg_html() {
 		$expected = self::render_svg_html( 'fa fa-star' );
 		$result   = self::$rbea_frontend_styles_helper->render_svg_html( 'fa fa-star' );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css how to schema block
+	 */
+	public function test_get_block_how_to_schema_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_how_to_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/how-to',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$how_to_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_how_to_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
+		$this->assertEquals( $expected, $result );
+	}
+
+	/**
+	 * Test for get_block_css Tabs block
+	 */
+	public function test_get_block_tabs_block() {
+		$attributes  = self::$rbea_frontend_styles->get_responsive_block_tabs_default_attributes();
+		$block       = array(
+			'blockName'    => 'responsive-block-editor-addons/tabs',
+			'attrs'        => array_merge(
+				$attributes,
+				array(
+					'block_id' => self::$tabs_block_id,
+				)
+			),
+			'innerBlocks'  => array(),
+			'innerHTML'    => ' ',
+			'innerContent' => array(
+				' ',
+			),
+		);
+		$block_attrs = self::extract_attributes( $block );
+		$css         = self::$rbea_frontend_styles->get_responsive_block_tabs_css( $block_attrs[0], $block_attrs[1] );
+		$expected    = self::return_the_css( $block, $css );
+		$result      = self::$rbea_frontend_styles_helper->get_block_css( $block );
 		$this->assertEquals( $expected, $result );
 	}
 }
