@@ -8305,7 +8305,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
-					'background-image' => $attr['imgURL'] !== 'empty' && $attr['backgroundImage'] === '' ? 'url(' . $attr['imgURL'] . ')' : 'url(' . $attr['backgroundImage'] . ')', // For compatibility with v1.3.2.
+					'background-image' => 'empty' !== $attr['imgURL'] && '' === $attr['backgroundImage'] ? 'url(' . $attr['imgURL'] . ')' : 'url(' . $attr['backgroundImage'] . ')', // For compatibility with v1.3.2.
 					'background-color' => self::hex_to_rgb( $attr['vidBackgroundColor'], $imgopacity ),
 					'max-width'        => self::get_css_value( $attr['vidwidth'], 'px' ),
 					'height'           => self::get_css_value( $attr['vidheight'], 'px' ),
