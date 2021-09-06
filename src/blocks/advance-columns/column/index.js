@@ -249,7 +249,6 @@ registerBlockType("responsive-block-editor-addons/column", {
     },
     hoverboxShadowColor: {
       type: "string",
-      default: "#cccccc",
     },
     hoverboxShadowHOffset: {
       type: "number",
