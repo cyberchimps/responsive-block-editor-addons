@@ -96,7 +96,7 @@ const attributes = {
   },
   nameFontFamily: {
     type: "string",
-    default: "Default",
+    default: "",
   },
   nameFontWeight: {
     type: "string",
@@ -137,7 +137,7 @@ const attributes = {
   },
   companyFontFamily: {
     type: "string",
-    default: "Default",
+    default: "",
   },
   companyFontWeight: {
     type: "string",
@@ -178,7 +178,7 @@ const attributes = {
   },
   descFontFamily: {
     type: "string",
-    default: "Default",
+    default: "",
   },
   descFontWeight: {
     type: "string",
