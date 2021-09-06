@@ -1924,7 +1924,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonHbackgroundType'    => 'none',
 			'zIndex'                   => 0,
 		);
-		$values = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
+		$values          = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
 	}
 
@@ -2821,9 +2821,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'vidheight'              => '',
 			'vidheightTablet'        => '',
 			'vidheightMobile'        => '',
-			'vidBackgroundColor'     => '',
 			'opacity'                => 50,
-			'imgURL'                 => '',
+			'imgURL'                 => 'empty', // For compatibility with v1.3.2.
 			'imgID'                  => '',
 			'imgAlt'                 => '',
 			'counterId'              => 1,
@@ -2841,6 +2840,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'previewBackgroundColor' => '#000000',
 			'hoverEffect'            => '',
 			'backgroundImage'        => '',
+			'vidBackgroundColor'     => '#000000',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_video_popup_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
@@ -3533,6 +3533,171 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'semiCircularProgressBarTrackColor'            => '#1a8cff',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_progress_bar_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
+	 * Test for tabs block default attributes
+	 */
+	public function test_get_responsive_block_tabs_default_attributes() {
+		$expected_values = array(
+			'block_id'                 => '',
+			'tabHeaderOptions'         => '',
+			'activeTab'                => 0,
+			'tabActiveFrontend'        => 0,
+			'alignTabs'                => 'left',
+			'tabsStyleD'               => 'hstyle3',
+			'tabsStyleT'               => 'hstyle3',
+			'tabsStyleM'               => 'hstyle3',
+			'tabBorderWidth'           => 1,
+			'tabBorderColor'           => '#e0e0e0',
+			'tabBackgroundColor'       => '',
+			'tabTitleColor'            => '#007cba',
+			'tabTitleActiveColor'      => '#000',
+			'tabTitleFontFamily'       => '',
+			'tabTitleFontSize'         => '',
+			'tabTitleFontSizeMobile'   => '',
+			'tabTitleFontSizeTablet'   => '',
+			'tabTitleFontWeight'       => '',
+			'tabTitleLineHeight'       => '',
+			'tabContentColor'          => '000',
+			'tabContentFontFamily'     => '',
+			'tabContentFontSize'       => '',
+			'tabContentFontSizeMobile' => '',
+			'tabContentFontSizeTablet' => '',
+			'tabContentFontWeight'     => '',
+			'tabContentLineHeight'     => '',
+			'alignTabs'                => '',
+			'tabsZindex'               => 0,
+			'tabsTopPadding'           => 0,
+			'tabsBottomPadding'        => 0,
+			'tabsLeftPadding'          => 0,
+			'tabsRightPadding'         => 0,
+			'tabsTopPaddingTablet'     => 0,
+			'tabsBottomPaddingTablet'  => 0,
+			'tabsLeftPaddingTablet'    => 0,
+			'tabsRightPaddingTablet'   => 0,
+			'tabsTopPaddingMobile'     => 0,
+			'tabsBottomPaddingMobile'  => 0,
+			'tabsLeftPaddingMobile'    => 0,
+			'tabsRightPaddingMobile'   => 0,
+			'tabsTopMargin'            => 0,
+			'tabsBottomMargin'         => 0,
+			'tabsLeftMargin'           => 0,
+			'tabsRightMargin'          => 0,
+			'tabsTopMarginTablet'      => 0,
+			'tabsBottomMarginTablet'   => 0,
+			'tabsLeftMarginTablet'     => 0,
+			'tabsRightMarginTablet'    => 0,
+			'tabsTopMarginMobile'      => 0,
+			'tabsBottomMarginMobile'   => 0,
+			'tabsLeftMarginMobile'     => 0,
+			'tabsRightMarginMobile'    => 0,
+			'backgroundType'           => '',
+			'backgroundColor'          => '',
+			'backgroundColor1'         => '',
+			'backgroundColor2'         => '',
+			'colorLocation1'           => 0,
+			'colorLocation2'           => 100,
+			'gradientDirection'        => 90,
+			'hoverbackgroundColor1'    => '',
+			'hoverbackgroundColor2'    => '',
+			'hovercolorLocation1'      => 0,
+			'hovercolorLocation2'      => 100,
+			'hovergradientDirection'   => 90,
+			'backgroundHoverColor'     => '',
+			'opacity'                  => 20,
+			'animationName'            => 'none',
+			'animationDirection'       => 'Left',
+			'animationRepeat'          => 'once',
+			'animationDuration'        => 1000,
+			'animationDelay'           => 0,
+			'animationCurve'           => '',
+			'blockBorderStyle'         => 'none',
+			'blockBorderWidth'         => 1,
+			'blockBorderRadius'        => 0,
+			'blockBorderColor'         => '',
+			'boxShadowHOffset'         => 0,
+			'boxShadowVOffset'         => 0,
+			'boxShadowBlur'            => 0,
+			'boxShadowPosition'        => 'outset',
+			'boxShadowSpread'          => 0,
+			'boxShadowColor'           => '#000',
+			'alignTabsVertical'        => 'left',
+		);
+
+		$values = self::$rbea_frontend_styles->get_responsive_block_tabs_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
+	 * Test for tabs child block default attributes
+	 */
+	public function test_get_responsive_block_tabs_child_default_attributes() {
+		$expected_values = array();
+
+		$values = self::$rbea_frontend_styles->get_responsive_block_tabs_child_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
+
+	/**
+	 * Test for how to schema block default attributes
+	 */
+	public function test_get_responsive_block_how_to_schema_default_attributes() {
+		$expected_values = array(
+			'block_id'                    => '',
+			'overallAlignment'            => 'left',
+			'mainHeadingColor'            => '',
+			'secondaryHeadingColor'       => '',
+			'descriptionColor'            => '',
+			'mainHeadingFontFamily'       => '',
+			'mainHeadingFontSize'         => 12,
+			'mainHeadingFontSizeMobile'   => 12,
+			'mainHeadingFontSizeTablet'   => 14,
+			'mainHeadingFontWeight'       => '',
+			'mainHeadingLineHeight'       => 0,
+			'mainHeadingLineHeightMobile' => 0,
+			'mainHeadingLineHeightTablet' => 0,
+			'mainHeadingLetterSpacing'    => 0,
+			'subHeadingFontFamily'        => '',
+			'subHeadingFontSize'          => 12,
+			'subHeadingFontSizeMobile'    => 12,
+			'subHeadingFontSizeTablet'    => 14,
+			'subHeadingFontWeight'        => '',
+			'subHeadingLineHeight'        => 0,
+			'subHeadingLineHeightMobile'  => 0,
+			'subHeadingLineHeightTablet'  => 0,
+			'subHeadingLetterSpacing'     => 0,
+			'descriptionFontFamily'       => '',
+			'descriptionFontSize'         => 12,
+			'descriptionFontSizeMobile'   => 12,
+			'descriptionFontSizeTablet'   => 14,
+			'descriptionFontWeight'       => '',
+			'descriptionLineHeight'       => 0,
+			'descriptionLineHeightMobile' => 0,
+			'descriptionLineHeightTablet' => 0,
+			'descriptionLetterSpacing'    => 0,
+			'timeMargin'                  => 10,
+			'costMargin'                  => 10,
+			'rowGap'                      => 10,
+			'timeMarginMobile'            => 10,
+			'costMarginMobile'            => 10,
+			'rowGapMobile'                => 10,
+			'timeMarginTablet'            => 10,
+			'costMarginTablet'            => 10,
+			'rowGapTablet'                => 10,
+			'toolsListStyle'              => 'none',
+			'materialsListStyle'          => 'none',
+			'borderStyle'                 => 'none',
+			'borderRadius'                => 0,
+			'borderWidth'                 => 1,
+			'borderColor'                 => '',
+			'stepsMargin'                 => 10,
+			'stepsMarginMobile'           => 10,
+			'stepsMarginTablet'           => 10,
+		);
+
+		$values = self::$rbea_frontend_styles->get_responsive_block_how_to_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
 	}
 }
