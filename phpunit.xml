@@ -20,6 +20,9 @@
 					<directory suffix=".php">dist</directory>
 	    		<directory suffix=".php">src/blocks</directory>
 	    		<file>src/utils/font.php</file>
+				<exclude>
+					<directory suffix=".php">includes/patterns/</directory>
+				</exclude>
         	</whitelist>
     	</filter>
 </phpunit>
