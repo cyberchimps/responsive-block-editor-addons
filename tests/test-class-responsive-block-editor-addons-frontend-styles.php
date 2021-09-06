@@ -2688,7 +2688,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'nameFontSize'            => '',
 			'nameFontSizeTablet'      => '',
 			'nameFontSizeMobile'      => '',
-			'nameFontFamily'          => 'Default',
+			'nameFontFamily'          => '',
 			'nameFontWeight'          => '',
 			'nameFontSubset'          => '',
 			'nameLineHeightType'      => 'em',
@@ -2700,7 +2700,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'companyFontSize'         => '',
 			'companyFontSizeTablet'   => '',
 			'companyFontSizeMobile'   => '',
-			'companyFontFamily'       => 'Default',
+			'companyFontFamily'       => '',
 			'companyFontWeight'       => '',
 			'companyFontSubset'       => '',
 			'companyLineHeightType'   => 'em',
@@ -2712,7 +2712,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'descFontSize'            => '',
 			'descFontSizeTablet'      => '',
 			'descFontSizeMobile'      => '',
-			'descFontFamily'          => 'Default',
+			'descFontFamily'          => '',
 			'descFontWeight'          => '',
 			'descFontSubset'          => '',
 			'descLineHeightType'      => 'em',
@@ -2821,9 +2821,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'vidheight'              => '',
 			'vidheightTablet'        => '',
 			'vidheightMobile'        => '',
-			'vidBackgroundColor'     => '',
 			'opacity'                => 50,
-			'imgURL'                 => '',
+			'imgURL'                 => 'empty', // For compatibility with v1.3.2.
 			'imgID'                  => '',
 			'imgAlt'                 => '',
 			'counterId'              => 1,
@@ -2841,6 +2840,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'previewBackgroundColor' => '#000000',
 			'hoverEffect'            => '',
 			'backgroundImage'        => '',
+			'vidBackgroundColor'     => '#000000',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_video_popup_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

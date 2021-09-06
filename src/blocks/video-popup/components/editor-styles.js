@@ -17,9 +17,8 @@ function EditorStyles(props) {
     vidheight,
     vidheightTablet,
     vidheightMobile,
-    vidBackgroundColor,
     opacity,
-    imgURL,
+    imgURL, // For compatibility with v1.3.2.
     butopacity,
     blockBorderStyle,
     blockBorderWidth,
@@ -32,6 +31,7 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     backgroundImage,
+	vidBackgroundColor
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -44,25 +44,21 @@ function EditorStyles(props) {
 
   let playopacity = butopacity / 100;
 
-  let updatedbackgroundImage = "";
-  if (backgroundImage && !!backgroundImage.length) {
-    updatedbackgroundImage = backgroundImage;
-  }
-
-  let updatedBackgroundImage = "";
-  if(updatedbackgroundImage) {
-	  updatedBackgroundImage = `linear-gradient(${hexToRgba(
-        vidBackgroundColor || "#000000",
-        imgopacity || 0
-      )},${hexToRgba(
-        vidBackgroundColor || "#fff",
-        imgopacity || 0
-      )}),url(${updatedbackgroundImage})`;
+  let bgImageWithOpacity = "";
+  if(backgroundImage && !!backgroundImage.length) {
+	bgImageWithOpacity = "linear-gradient( to bottom, " +
+		hexToRgba(vidBackgroundColor, imgopacity) +
+		", " +
+		hexToRgba(vidBackgroundColor, imgopacity) +
+		"), " + 
+		"url(" +
+		backgroundImage +
+		")";
   }
 
   var selectors = {
     " .responsive-block-editor-addons-video-popup__wrapper": {
-      "background-image": updatedBackgroundImage,
+      "background-image": (imgURL !== "empty" && !!imgURL.length) && backgroundImage === "" ? `url(${imgURL})` : bgImageWithOpacity, // For compatibility with v1.3.2.
       "background-color": hexToRgba(
         vidBackgroundColor || "#000000",
         imgopacity || 0
