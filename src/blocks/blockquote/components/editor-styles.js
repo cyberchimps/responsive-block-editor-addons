@@ -21,18 +21,18 @@ function EditorStyles(props) {
     quoteHposition,
     quoteVposition,
     quoteOpacity,
-    leftPadding,
-    leftPaddingMobile,
-    leftPaddingTablet,
-    rightPadding,
-    rightPaddingMobile,
-    rightPaddingTablet,
-    topPadding,
-    topPaddingMobile,
-    topPaddingTablet,
-    bottomPadding,
-    bottomPaddingMobile,
-    bottomPaddingTablet,
+    blockLeftPadding,
+    blockLeftPaddingMobile,
+    blockLeftPaddingTablet,
+    blockRightPadding,
+    blockRightPaddingMobile,
+    blockRightPaddingTablet,
+    blockTopPadding,
+    blockTopPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPadding,
+    blockBottomPaddingMobile,
+    blockBottomPaddingTablet,
     backgroundColor,
     backgroundColor1,
     backgroundColor2,
@@ -47,23 +47,31 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
-    borderStyle,
-    borderWidth,
+    blockBorderStyle,
+    blockBorderWidth,
     blockBorderRadius,
-    borderColor,
-    textSpacingTop,
-    textSpacingTopMobile,
-    textSpacingTopTablet,
-    textSpacingBottom,
-    textSpacingBottomMobile,
-    textSpacingBottomTablet,
-    textSpacingLeft,
-    textSpacingLeftMobile,
-    textSpacingLeftTablet,
-    textSpacingRight,
-    textSpacingRightMobile,
-    textSpacingRightTablet,
-    
+    blockBorderColor,
+    textTopPadding,
+    textTopPaddingMobile,
+    textTopPaddingTablet,
+    textBottomPadding,
+    textBottomPaddingMobile,
+    textBottomPaddingTablet,
+    textLeftPadding,
+    textLeftPaddingMobile,
+    textLeftPaddingTablet,
+    textRightPadding,
+    textRightPaddingMobile,
+    textRightPaddingTablet,
+	quoteFontSizeMobile,
+	quoteFontSizeTablet,
+    borderColor, // For compatibility with v1.3.2.
+	borderStyle, // For compatibility with v1.3.2.
+	borderWidth, // For compatibility with v1.3.2.
+	topPadding, // For compatibility with v1.3.2.
+	bottomPadding, // For compatibility with v1.3.2.
+	leftPadding, // For compatibility with v1.3.2.
+	rightPadding, // For compatibility with v1.3.2.
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -80,9 +88,9 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       color: quoteTextColor,
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
+      "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generate(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
@@ -97,10 +105,10 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       "text-align": quoteAlign,
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
+      "padding-left": leftPadding !== 999 && blockLeftPadding === 60 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && blockRightPadding === 60 ? generate(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
+      "padding-top": topPadding !== 999 && blockTopPadding === 70 ? generateCSS(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 70 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
@@ -140,41 +148,47 @@ function EditorStyles(props) {
       "line-height": quoteLineHeight,
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
-      "padding-left": generateCSSUnit(textSpacingLeft, "px"),
-      "padding-right": generateCSSUnit(textSpacingRight, "px"),
-      "padding-top": generateCSSUnit(textSpacingTop, "px"),
-      "padding-bottom": generateCSSUnit(textSpacingBottom, "px"),
+      "padding-left": generateCSSUnit(textLeftPadding, "px"),
+      "padding-right": generateCSSUnit(textRightPadding, "px"),
+      "padding-top": generateCSSUnit(textTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(textBottomPadding, "px"),
     },
   };
 
   var mobile_selectors = {
     "": {
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+      "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
-      "padding-left": generateCSSUnit(textSpacingLeftMobile, "px"),
-      "padding-right": generateCSSUnit(textSpacingRightMobile, "px"),
-      "padding-top": generateCSSUnit(textSpacingTopMobile, "px"),
-      "padding-bottom": generateCSSUnit(textSpacingBottomMobile, "px"),
+      "padding-left": generateCSSUnit(textLeftPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(textRightPaddingMobile, "px"),
+      "padding-top": generateCSSUnit(textTopPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(textBottomPaddingMobile, "px"),
     },
+	" .responsive-block-editor-addons-block-blockquote-text": {
+		"font-size": generateCSSUnit(quoteFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
     "": {
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+      "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
-      "padding-left": generateCSSUnit(textSpacingLeftTablet, "px"),
-      "padding-right": generateCSSUnit(textSpacingRightTablet, "px"),
-      "padding-top": generateCSSUnit(textSpacingTopTablet, "px"),
-      "padding-bottom": generateCSSUnit(textSpacingBottomTablet, "px"),
+      "padding-left": generateCSSUnit(textLeftPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(textRightPaddingTablet, "px"),
+      "padding-top": generateCSSUnit(textTopPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(textBottomPaddingTablet, "px"),
     },
+	" .responsive-block-editor-addons-block-blockquote-text": {
+		"font-size": generateCSSUnit(quoteFontSizeTablet, "px"),
+	},
   };
 
   var styling_css = "";

@@ -53,11 +53,9 @@ const attributes = {
   },
   sizeMobile: {
     type: "number",
-    default: 16
   },
   sizeTablet:{
     type: "number",
-    default: 16
   },
   bgSize: {
     type: "number",
@@ -65,11 +63,9 @@ const attributes = {
   },
   bgSizeMobile: {
     type: "number",
-    default: 0,
   },
   bgSizeTablet: {
     type: "number",
-    default: 0,
   },
   border: {
     type: "number",
@@ -98,7 +94,7 @@ const attributes = {
   labelFontSizeMobile: {
     type: "number",
   },
-  labelFontLineHeight: {
+  labelLineHeight: {
     type: "number",
     default: 1,
   },
@@ -114,6 +110,10 @@ const attributes = {
     type: "string",
     default: 1,
   },
+  labelFontLineHeight: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 
 export default attributes;

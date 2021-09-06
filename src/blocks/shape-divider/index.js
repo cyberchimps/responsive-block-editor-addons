@@ -42,49 +42,6 @@ registerBlockType("responsive-block-editor-addons/shape-divider", {
     align: ["wide", "full"],
     responsiveBlocksSpacing: true,
   },
-  styles: [
-    {
-      name: "wavy",
-      /* translators: block style */
-      label: __("Wavy", "responsive-block-editor-addons"),
-      isDefault: true,
-    },
-    {
-      name: "hills",
-      /* translators: block style */
-      label: __("Hills", "responsive-block-editor-addons"),
-    },
-    {
-      name: "waves",
-      /* translators: block style */
-      label: __("Waves", "responsive-block-editor-addons"),
-    },
-    {
-      name: "angled",
-      /* translators: block style */
-      label: __("Angled", "responsive-block-editor-addons"),
-    },
-    {
-      name: "sloped",
-      /* translators: block style */
-      label: __("Sloped", "responsive-block-editor-addons"),
-    },
-    {
-      name: "rounded",
-      /* translators: block style */
-      label: __("Rounded", "responsive-block-editor-addons"),
-    },
-    {
-      name: "triangle",
-      /* translators: block style */
-      label: __("Triangle", "responsive-block-editor-addons"),
-    },
-    {
-      name: "pointed",
-      /* translators: block style */
-      label: __("Pointed", "responsive-block-editor-addons"),
-    },
-  ],
   attributes,
   edit,
   save,

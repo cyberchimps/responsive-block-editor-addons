@@ -207,7 +207,23 @@ const attributes = {
     type: "number",
     default: 5,
   },
+  nameSpaceMobile: {
+    type: "number",
+    default: 5,
+  },
+  nameSpaceTablet: {
+    type: "number",
+    default: 5,
+  },
   descSpace: {
+    type: "number",
+    default: 15,
+  },
+  descSpaceMobile: {
+    type: "number",
+    default: 15,
+  },
+  descSpaceTablet: {
     type: "number",
     default: 15,
   },
@@ -224,6 +240,22 @@ const attributes = {
     default: 10,
   },
   imgHrPadding: {
+    type: "number",
+    default: 10,
+  },
+  imgVrPaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  imgHrPaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  imgVrPaddingTablet: {
+    type: "number",
+    default: 10,
+  },
+  imgHrPaddingTablet: {
     type: "number",
     default: 10,
   },
@@ -290,7 +322,7 @@ const attributes = {
     type: "number",
     default: 20,
   },
-  arrowBorderSize: {
+  arrowBorderWidth: {
     type: "number",
     default: 1,
   },
@@ -298,7 +330,13 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  rowGap: {
+    arrowBorderColor: {
+        type: "string",
+    },
+    arrowBorderStyle: {
+        type: "string",
+    },
+    rowGap: {
     type: "number",
     default: 10,
   },
@@ -310,42 +348,104 @@ const attributes = {
     type: "number",
     default: 5,
   },
+  rowGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  columnGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  rowGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  columnGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  contentPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
   backgroundType: {
     type: "string",
   },
   backgroundImage: {
-    type: "object",
+    type: "string",
   },
-  backgroundPosition: {
+  backgroundImagePosition: {
     type: "string",
     default: "center-center",
   },
-  backgroundSize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },
-  backgroundRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
   backgroundColor: {
     type: "string",
   },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  overlayType: {
+    type: "string",
+    default: "color",
+  },
+  gradientOverlayColor1: {
+    type: "string",
+  },
+  gradientOverlayColor2: {
+    type: "string",
+  },
+  gradientOverlayType: {
+    type: "string",
+    default: "linear",
+  },
+  gradientOverlayLocation1: {
+    type: "number",
+    default: 0,
+  },
+  gradientOverlayLocation2: {
+    type: "number",
+    default: 100,
+  },
+  gradientOverlayAngle: {
+    type: "number",
+    default: 0,
+  },
+  gradientOverlayPosition: {
+    type: "string",
+    default: "center center",
+  },
+  opacity: {
+    type: "number",
+    default: 20,
+  },
   backgroundImageColor: {
     type: "string",
   },
-  borderStyle: {
+    blockBorderStyle: {
     type: "string",
     default: "none",
   },
-  borderWidth: {
+    blockBorderWidth: {
     type: "number",
     default: "1",
   },
-  borderRadius: {
+    blockBorderRadius: {
     type: "number",
   },
-  borderColor: {
+    blockBorderColor: {
     type: "string",
   },
   backgroundOpacity: {
@@ -363,7 +463,39 @@ const attributes = {
   blockPadding: {
     type: "number",
     default: 45,
-  }
+  },
+  blockPaddingMobile: {
+    type: "number",
+    default: 45,
+  },
+  blockPaddingTablet: {
+    type: "number",
+    default: 45,
+  },
+  backgroundRepeat: {
+	type: "number",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  backgroundSize: {
+	type: "number",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderStyle: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  borderWidth: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  borderRadius: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 
 export default attributes;

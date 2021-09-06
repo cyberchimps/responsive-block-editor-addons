@@ -5,6 +5,10 @@
     "block_id": {
       "type": "string"
     },
+    "design": {
+      "type": "string",
+      "default": "wavy"
+    },
     "align": {
       "type": "string",
       "default": "full"

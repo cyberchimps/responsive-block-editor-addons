@@ -12,6 +12,7 @@ function EditorStyles(props) {
     //attributes here
     width,
     backgroundColor,
+    backgroundColorHover,
     backgroundColor1,
     backgroundColor2,
     colorLocation1,
@@ -24,10 +25,10 @@ function EditorStyles(props) {
     hovergradientDirection,
     backgroundType,
     backgroundImage,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -55,30 +56,57 @@ function EditorStyles(props) {
     hoverboxShadowSpread,
     hoverboxShadowPosition,
     block_id,
-    topMargin,
-    topMarginTablet,
-    topMarginMobile,
-    bottomMargin,
-    bottomMarginTablet,
-    bottomMarginMobile,
-    leftMargin,
-    leftMarginTablet,
-    leftMarginMobile,
-    rightMargin,
-    rightMarginTablet,
-    rightMarginMobile,
-    topPadding,
-    topPaddingTablet,
-    topPaddingMobile,
-    bottomPadding,
-    bottomPaddingTablet,
-    bottomPaddingMobile,
-    leftPadding,
-    leftPaddingTablet,
-    leftPaddingMobile,
-    rightPadding,
-    rightPaddingTablet,
-    rightPaddingMobile,
+    columnTopMargin,
+    columnTopMarginTablet,
+    columnTopMarginMobile,
+    columnBottomMargin,
+    columnBottomMarginTablet,
+    columnBottomMarginMobile,
+    columnLeftMargin,
+    columnLeftMarginTablet,
+    columnLeftMarginMobile,
+    columnRightMargin,
+    columnRightMarginTablet,
+    columnRightMarginMobile,
+    columnTopPadding,
+	columnTopPaddingTablet,
+	columnTopPaddingMobile,
+	columnBottomPadding,
+	columnBottomPaddingTablet,
+	columnBottomPaddingMobile,
+	columnLeftPadding,
+	columnLeftPaddingTablet,
+	columnLeftPaddingMobile,
+	columnRightPadding,
+	columnRightPaddingTablet,
+	columnRightPaddingMobile,
+	topMargin, //For compatibility with v1.3.2.
+	topMarginTablet, //For compatibility with v1.3.2.
+	topMarginMobile, //For compatibility with v1.3.2.
+	bottomMargin, //For compatibility with v1.3.2.
+	bottomMarginTablet, //For compatibility with v1.3.2.
+	bottomMarginMobile, //For compatibility with v1.3.2.
+	leftMargin, //For compatibility with v1.3.2.
+	leftMarginTablet, //For compatibility with v1.3.2.
+	leftMarginMobile, //For compatibility with v1.3.2.
+	rightMargin, //For compatibility with v1.3.2.
+	rightMarginTablet, //For compatibility with v1.3.2.
+	rightMarginMobile, //For compatibility with v1.3.2.
+	topPadding, //For compatibility with v1.3.2.
+	topPaddingTablet, //For compatibility with v1.3.2.
+	topPaddingMobile, //For compatibility with v1.3.2.
+	bottomPadding, //For compatibility with v1.3.2.
+	bottomPaddingTablet, //For compatibility with v1.3.2.
+	bottomPaddingMobile, //For compatibility with v1.3.2.
+	leftPadding, //For compatibility with v1.3.2.
+	leftPaddingTablet, //For compatibility with v1.3.2.
+	leftPaddingMobile, //For compatibility with v1.3.2.
+	rightPadding, //For compatibility with v1.3.2.
+	rightPaddingTablet, //For compatibility with v1.3.2.
+	rightPaddingMobile, //For compatibility with v1.3.2.
+	backgroundPosition, // For compatibility with v1.3.2.
+	backgroundRepeat, // For compatibility with v1.3.2.
+	backgroundSize, // For compatibility with v1.3.2.
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -164,16 +192,20 @@ function EditorStyles(props) {
         hoverboxShadowColor +
         " " +
         hoverboxShadowPositionCSS,
+      "background-color":
+        backgroundType == "color"
+          ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
+          : undefined,
     },
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
-      "margin-top": generateCSSUnit(topMargin, "px"),
-      "margin-bottom": generateCSSUnit(bottomMargin, "px"),
-      "margin-left": generateCSSUnit(leftMargin, "px"),
-      "margin-right": generateCSSUnit(rightMargin, "px"),
+      "padding-top": topPadding !== 999 && !columnTopPadding ? generateCSSUnit(topPadding, "px") : generateCSSUnit(columnTopPadding, "px"), //For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && !columnBottomPadding ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(columnBottomPadding, "px"), //For compatibility with v1.3.2.
+      "padding-left": leftPadding !== 999 && !columnLeftPadding ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(columnLeftPadding, "px"), //For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && !columnRightPadding ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(columnRightPadding, "px"), //For compatibility with v1.3.2.
+      "margin-top": topMargin !== 999 && !columnTopMargin ? generateCSSUnit(topMargin, "px") : generateCSSUnit(columnTopMargin, "px"), //For compatibility with v1.3.2.
+      "margin-bottom": bottomMargin !== 999 && !columnBottomMargin ? generateCSSUnit(bottomMargin, "px") : generateCSSUnit(columnBottomMargin, "px"), //For compatibility with v1.3.2.
+      "margin-left": leftMargin !== 999 && !columnLeftMargin ? generateCSSUnit(leftMargin, "px") : generateCSSUnit(columnLeftMargin, "px"), //For compatibility with v1.3.2.
+      "margin-right": rightMargin !== 999 && !columnRightMargin ? generateCSSUnit(rightMargin, "px") : generateCSSUnit(columnRightMargin, "px"), //For compatibility with v1.3.2.
       "border-color": blockBorderColor,
       "border-style": blockBorderStyle,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
@@ -183,10 +215,10 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image": blockBackground,
-      "background-position": backgroundPosition,
+      "background-position": backgroundPosition !== "empty" && backgroundImagePosition === "center center" ? backgroundPosition : backgroundImagePosition, // For compatibility with v1.3.2.
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? backgroundRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": backgroundSize !== "empty" && backgroundImageSize === "cover" ? backgroundSize : backgroundImageSize, // For compatibility with v1.3.2.
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -204,27 +236,27 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
-      "margin-top": generateCSSUnit(topMarginMobile, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
-      "margin-left": generateCSSUnit(leftMarginMobile, "px"),
-      "margin-right": generateCSSUnit(rightMarginMobile, "px"),
+      "padding-top": topPaddingMobile !== 999 && !columnTopPaddingMobile ? generateCSSUnit(topPaddingMobile, "px") : generateCSSUnit(columnTopPaddingMobile, "px"), //For compatibility with v1.3.2.
+      "padding-bottom": bottomPaddingMobile !== 999 && !columnBottomPaddingMobile ? generateCSSUnit(bottomPaddingMobile, "px") : generateCSSUnit(columnBottomPaddingMobile, "px"), //For compatibility with v1.3.2.
+      "padding-left": leftPaddingMobile !== 999 && !columnLeftPaddingMobile ? generateCSSUnit(leftPaddingMobile, "px") : generateCSSUnit(columnLeftPaddingMobile, "px"), //For compatibility with v1.3.2.
+      "padding-right": rightPaddingMobile !== 999 && !columnRightPaddingMobile ? generateCSSUnit(rightPaddingMobile) : generateCSSUnit(columnRightPaddingMobile, "px"), //For compatibility with v1.3.2.
+      "margin-top": topMarginMobile !== 999 && !columnTopMarginMobile ? generateCSSUnit(topMarginMobile, "px") : generateCSSUnit(columnTopMarginMobile, "px"), //For compatibility with v1.3.2.
+      "margin-bottom": bottomMarginMobile !== 999 && !columnBottomMarginMobile ? generateCSSUnit(bottomMarginMobile, "px") : generateCSSUnit(columnBottomMarginMobile, "px"), //For compatibility with v1.3.2.
+      "margin-left": leftMarginMobile !== 999 && !columnLeftMarginMobile ? generateCSSUnit(leftMarginMobile, "px") : generateCSSUnit(columnLeftMarginMobile, "px"), //For compatibility with v1.3.2.
+      "margin-right": rightMarginMobile !== 999 && !columnRightMarginMobile ? generateCSSUnit(rightMarginMobile, "px") : generateCSSUnit(columnRightMarginMobile, "px"), //For compatibility with v1.3.2.
     },
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
-      "margin-top": generateCSSUnit(topMarginTablet, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
-      "margin-left": generateCSSUnit(leftMarginTablet, "px"),
-      "margin-right": generateCSSUnit(rightMarginTablet, "px"),
+      "padding-top": topPaddingTablet !== 999 && !columnTopPaddingTablet ? generateCSSUnit(topPaddingTablet , "px" ) : generateCSSUnit(columnTopPaddingTablet, "px"), //For compatibility with v1.3.2.
+      "padding-bottom": bottomPaddingTablet !== 999 && !columnBottomPaddingTablet ? generateCSSUnit(bottomPaddingTablet, "px") : generateCSSUnit(columnBottomPaddingTablet, "px"), //For compatibility with v1.3.2.
+      "padding-left": leftPaddingTablet !== 999 && !columnLeftPaddingTablet ? generateCSSUnit(leftPaddingTablet, "px") : generateCSSUnit(columnLeftPaddingTablet, "px"), //For compatibility with v1.3.2.
+      "padding-right": rightPaddingTablet !== 999 && !columnRightPaddingTablet ? generateCSSUnit(rightPaddingTablet, "px") : generateCSSUnit(columnRightPaddingTablet, "px"), //For compatibility with v1.3.2.
+      "margin-top": topMarginTablet !== 999 && !columnTopMarginTablet ? generateCSSUnit(topMarginTablet, "px") : generateCSSUnit(columnTopMarginTablet, "px"), //For compatibility with v1.3.2.
+      "margin-bottom": bottomMarginTablet !== 999 && !columnBottomMarginTablet ? generateCSSUnit(bottomMarginTablet, "px") : generateCSSUnit(columnBottomMarginTablet, "px"), //For compatibility with v1.3.2.
+      "margin-left": leftMarginTablet !== 999 && !columnLeftMarginTablet ? generateCSSUnit(leftMarginTablet, "px") : generateCSSUnit(columnLeftMarginTablet, "px"), //For compatibility with v1.3.2.
+      "margin-right": rightMarginTablet !== 999 && !columnRightPaddingTablet ? generateCSSUnit(rightMarginTablet, "px") : generateCSSUnit(columnRightMarginTablet, "px"), //For compatibility with v1.3.2.s
     },
   };
 

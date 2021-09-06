@@ -220,51 +220,51 @@ const attributes = {
 	type: "number",
 	default: 10,
   },
-  boxPaddingTop: {
+  boxTopPadding: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingRight: {
+  boxRightPadding: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingBottom: {
+  boxBottomPadding: {
 	type: "number",
 	default: 10,
   },
-  boxPaddingLeft: {
+  boxLeftPadding: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingTopMobile: {
+  boxTopPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingRightMobile: {
+  boxRightPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingBottomMobile: {
+  boxBottomPaddingMobile: {
 	type: "number",
 	default: 10,
   },
-  boxPaddingLeftMobile: {
+  boxLeftPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingTopTablet: {
+  boxTopPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingRightTablet: {
+  boxRightPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  boxPaddingBottomTablet: {
+  boxBottomPaddingTablet: {
 	type: "number",
 	default: 10,
   },
-  boxPaddingLeftTablet: {
+  boxLeftPaddingTablet: {
 	type: "number",
 	default: 0,
   },
@@ -328,103 +328,103 @@ const attributes = {
 	type: "string",
 	default: "#000",
   },
-  boxBackgroundColor: {
+  backgroundColor: {
 	type: "string",
 	default: "#6EC1E4",
   },
-  containerMarginTop: {
+  containerTopMargin: {
 	type: "number",
 	default: 0,
   },
-  containerMarginRight: {
+  containerRightMargin: {
 	type: "number",
 	default: 0,
   },
-  containerMarginBottom: {
+  containerBottomMargin: {
 	type: "number",
 	default: 0,
   },
-  containerMarginLeft: {
+  containerLeftMargin: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingTop: {
+  containerTopPadding: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingRight: {
+  containerRightPadding: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingBottom: {
+  containerBottomPadding: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingLeft: {
+  containerLeftPadding: {
 	type: "number",
 	default: 0,
   },
-  containerMarginTopTablet: {
+  containerTopMarginTablet: {
 	type: "number",
 	default: 0,
   },
-  containerMarginRightTablet: {
+  containerRightMarginTablet: {
 	type: "number",
 	default: 0,
   },
-  containerMarginBottomTablet: {
+  containerBottomMarginTablet: {
 	type: "number",
 	default: 0,
   },
-  containerMarginLeftTablet: {
+  containerLeftMarginTablet: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingTopTablet: {
+  containerTopPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingRightTablet: {
+  containerRightPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingBottomTablet: {
+  containerBottomPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingLeftTablet: {
+  containerLeftPaddingTablet: {
 	type: "number",
 	default: 0,
   },
-  containerMarginTopMobile: {
+  containerTopMarginMobile: {
 	type: "number",
 	default: 0,
   },
-  containerMarginRightMobile: {
+  containerRightMarginMobile: {
 	type: "number",
 	default: 0,
   },
-  containerMarginBottomMobile: {
+  containerBottomMarginMobile: {
 	type: "number",
 	default: 0,
   },
-  containerMarginLeftMobile: {
+  containerLeftMarginMobile: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingTopMobile: {
+  containerTopPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingRightMobile: {
+  containerRightPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingBottomMobile: {
+  containerBottomPaddingMobile: {
 	type: "number",
 	default: 0,
   },
-  containerPaddingLeftMobile: {
+  containerLeftPaddingMobile: {
 	type: "number",
 	default: 0,
   },
@@ -442,7 +442,159 @@ const attributes = {
   stackOnMobile: {
 	type: "boolean",
 	default: false,
-  }
+  },
+  boxPaddingTop: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingBottom: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingLeft: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingRight: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingTopMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingBottomMobile: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingLeftMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingRightMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingTopTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingBottomTablet: {
+    type: "number",
+    default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingLeftTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxPaddingRightTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxBackgroundColor: {
+  	type: "string",
+  	default: "empty"
+  }, // For compatibility with v1.3.2.
+  containerMarginTop: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginBottom: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginLeft: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginRight: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginTopMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginBottomMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginLeftMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginRightMobile: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginTopTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginBottomTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginLeftTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerMarginRightTablet: {
+  	type: "number",
+  	default: 999
+  }, // For compatibility with v1.3.2.
+  containerPaddingTop: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingBottom: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingLeft: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingRight: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingTopMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingBottomMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingLeftMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingRightMobile: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingTopTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingBottomTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingLeftTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  containerPaddingRightTablet: {
+  	type: "number",
+  	default: 999,
+  }, // For compatibility with v1.3.2.
+  boxBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
 }
 
 export default attributes

@@ -5,7 +5,7 @@ Tags: blocks, gutenberg, gutenberg blocks, page builder, WordPress blocks, block
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,9 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
+= 1.3.3 - 2nd September 2021 =
+* New - Feature to import pre-designed Gutenberg sections and pages for the Responsive Gutenberg Blocks Library.
+
 = 1.3.2 - 17th August 2021 =
 * Feature - Table Of Contents - Added smooth scrolling and scroll offset options for frontend.
 * Fix - Table Of Contents - Added unique Anchor links for duplicated headings

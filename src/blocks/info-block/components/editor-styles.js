@@ -30,7 +30,11 @@ function EditorStyles(props) {
     ressubHeadLineHeight,
     resseparatorWidthType,
     resheadSpace,
+    resheadSpaceMobile,
+    resheadSpaceTablet,
     ressubHeadSpace,
+    ressubHeadSpaceMobile,
+    ressubHeadSpaceTablet,
     resIconSize,
     resseperatorStyle,
     resseperatorWidth,
@@ -39,15 +43,25 @@ function EditorStyles(props) {
     resctaLinkColor,
     resctaFontSize,
     resctaFontWeight,
-    resctaBtnLinkColor,
-    resctaBgColor,
-    ctaBtnVertPadding,
-    ctaBtnHrPadding,
-    resctaBorderStyle,
-    resctaBorderColor,
-    resctaBorderWidth,
-    resctaBorderRadius,
+    ctaColor,
+    resctaBtnLinkColor, //For compatibility with v1.3.2
+    ctaBackColor,
+    resctaBgColor, //For compatibility with v1.3.2
+    ctaVpadding,
+    ctaVertPadding, //For compatibility with v1.3.2
+    ctaHpadding,
+    ctaHrPadding, //For compatibility with v1.3.2
+    ctaBorderStyle,
+    resctaBorderStyle, //For compatibility with v1.3.2
+    ctaBorderColor,
+    resCtaBorderColor, //For compatibility with v1.3.2
+    ctaBorderWidth,
+    ctaBorderRadius,
+    resctaBorderWidth, //For compatibility with v1.3.2
+    resctaBorderRadius, //For compatibility with v1.3.2
     resprefixSpace,
+    resprefixSpaceMobile,
+    resprefixSpaceTablet,
     iconLeftMargin,
     iconRightMargin,
     iconTopMargin,
@@ -74,15 +88,20 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     opacity,
-    imgURL,
-    hoverctaBtnLinkColor,
-    hoverctaBgColor,
-    hoverctaBorderColor,
-    imagePosition,
-    imageRepeat,
-    thumbsize,
+    imgURL, //For compatibility with v1.3.2.
+    ctaHoverColor,
+    hoverctaBtnLinkColor, //For compatibility with v1.3.2
+    ctaHoverBackColor,
+    hoverctaBgColor, //For compatibility with v1.3.2
+    ctaHoverBorderColor,
+    hoverctaBorderColor, //For compatibility with v1.3.2
+    imagePosition, //For compatibility with v1.3.2.
+    imageRepeat, //For compatibility with v1.3.2.
+    thumbsize, //For compatibility with v1.3.2.
     backgroundAttachment,
     sepSpace,
+    sepSpaceMobile,
+    sepSpaceTablet,
     icon_color,
     icon_hcolor,
     resImageBorderColor,
@@ -97,8 +116,11 @@ function EditorStyles(props) {
     imageBoxShadowPosition,
     alignment,
     imageopacity,
-    boxBackgroundColor,
+    backgroundColor,
+    boxBackgroundColor, //For compatibility with v1.3.2
     contentPadding,
+    contentPaddingMobile,
+    contentPaddingTablet,
     imgiconPosition,
     ctaTextFontFamily,
     ctaTextFontSize,
@@ -107,6 +129,8 @@ function EditorStyles(props) {
     ctaTextFontWeight,
     ctaTextLineHeight,
     ctaBottomMargin,
+    ctaBottomMarginMobile,
+    ctaBottomMarginTablet,
     hoverboxShadowColor,
     hoverboxShadowHOffset,
     hoverboxShadowVOffset,
@@ -119,7 +143,22 @@ function EditorStyles(props) {
     iconBorderRadius,
     iconBorderWidth,
     iconPadding,
-
+    backgroundImage,
+    backgroundImagePosition,
+    backgroundImageRepeat,
+    backgroundImageSize,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    buttonbackgroundColor1,
+    buttonbackgroundColor2,
+    buttoncolorLocation1,
+    buttoncolorLocation2,
+    buttongradientDirection,
+    buttonbackgroundType,
+    buttonHbackgroundType,
+    zIndex,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -132,6 +171,7 @@ function EditorStyles(props) {
   let imgopacity = imageopacity / 100;
 
   var imageBoxShadowPositionCSS = imageBoxShadowPosition;
+  let updatedButtonBackgroundhColor = "";
 
   if ("outset" === imageBoxShadowPosition) {
     imageBoxShadowPositionCSS = "";
@@ -142,12 +182,12 @@ function EditorStyles(props) {
     hoverboxShadowPositionCSS = "";
   }
 
-  let iconBgColor = '';
+  let iconBgColor = "";
   if("solid" === iconBackgroundType) {
     iconBgColor = iconBackgroundColor;
   }
 
-  let iconBgHoverColor = '';
+  let iconBgHoverColor = "";
   if("solid" === iconBackgroundType) {
     iconBgHoverColor = iconBackgroundHoverColor;
   }
@@ -157,21 +197,40 @@ function EditorStyles(props) {
     iconBgPadding = generateCSSUnit(iconPadding, "px");
   }
 
-  let iconBorder = 'none';
+  let iconBorder = "none";
   if("outline" === iconBackgroundType) {
     iconBorder = `${generateCSSUnit(iconBorderWidth, "px")} solid ${iconBackgroundColor}`;
   }
 
-  let iconHoverBorder = 'none';
+  let iconHoverBorder = "none";
   if("outline" === iconBackgroundType) {
     iconHoverBorder = `${generateCSSUnit(iconBorderWidth, "px")} solid ${iconBackgroundHoverColor}`;
   }
 
+  let backgroundImageGradient = "";
+  let buttonColor = "";
+  if (buttonbackgroundType == "gradient") {
+    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+  } else if (buttonbackgroundType == "color") {
+    backgroundImageGradient = "";
+    buttonColor = resctaBgColor !== "empty" && ctaBackColor === "transparent" ? resctaBgColor : ctaBackColor;  //For compatibility with v1.3.2
+  }
+  if (buttonHbackgroundType == "color") {
+    updatedButtonBackgroundhColor = "empty" !== hoverctaBgColor && "transparent" === ctaHoverBackColor ? hoverctaBgColor : ctaHoverBackColor;  //For compatibility with v1.3.2
+  } else {
+    updatedButtonBackgroundhColor = "";
+  }
+
+
   var selectors = {
     " ": {
+      "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "background-color": `${hexToRgba(
+      "background-color": "empty" !== boxBackgroundColor && "#ffffff" === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
         boxBackgroundColor || "#ffffff",
+        newopacity || 0
+      )}` : `${hexToRgba(
+        backgroundColor || "#ffffff",
         newopacity || 0
       )}`,
       padding: generateCSSUnit(contentPadding, "px"),
@@ -246,21 +305,23 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-ifb-cta-button": {
-      "background-color": resctaBgColor,
-      "border-color": resctaBorderColor,
+      "background-color": buttonColor,
+      "background-image": backgroundImageGradient,
+      "border-color": resCtaBorderColor !== "empty" && ctaBorderColor === "#333" ?  resCtaBorderColor : ctaBorderColor,  //For compatibility with v1.3.2
     },
 
     " .responsive-block-editor-addons-ifb-cta-button .responsive-block-editor-addons-inline-editing": {
-      "color": resctaBtnLinkColor,
+      "color": resctaBtnLinkColor !== "empty" && ctaColor === "#333" ? resctaBtnLinkColor : ctaColor, //For compatibility with v1.3.2
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover": {
-      "background-color": hoverctaBgColor,
-      "border-color": hoverctaBorderColor,
+      "background-color": updatedButtonBackgroundhColor,
+      "border-color": "empty" !== hoverctaBorderColor && "#333" === ctaHoverBorderColor ? hoverctaBorderColor : ctaHoverBorderColor, //For compatibility with v1.3.2
+      "background-image": buttonHbackgroundType == "color" ? "none" : backgroundImageGradient,
     },
 
     " .responsive-block-editor-addons-ifb-cta-button:hover .responsive-block-editor-addons-inline-editing": {
-      "color": hoverctaBtnLinkColor,
+      "color": "empty" !== hoverctaBtnLinkColor && "#333" !== ctaHoverColor ? hoverctaBtnLinkColor : ctaHoverColor, //For compatibility with v1.3.2
     },
 
     " .responsive-block-editor-addons-ifb-icon svg": {
@@ -272,7 +333,7 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-infobox__content-wrap": {
-      "text-align": (imgiconPosition == 'above-title' || imgiconPosition == 'below-title') ?resheadingAlign:'',
+      "text-align": (imgiconPosition == "above-title" || imgiconPosition == "below-title") ?resheadingAlign:"",
     },
 
     " .responsive-block-editor-addons-infobox__content-wrap .responsive-block-editor-addons-ifb-title": {
@@ -289,10 +350,10 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-image": {
-      "background-image": `url(${imgURL})`,
-      "background-position": imagePosition,
-      "background-repeat": imageRepeat,
-      "background-size": thumbsize,
+      "background-image": imgURL !== "empty" && backgroundImage === "" ? `url(${imgURL})` : `url(${backgroundImage})`, // For compatibility with v1.3.2.
+      "background-position": imagePosition !== "empty" && backgroundImagePosition === "center center" ? imagePosition : backgroundImagePosition, // For compatibility with v1.3.2.
+      "background-repeat": imageRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? imageRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": thumbsize !== "empty" && backgroundImageSize === "cover" ? thumbsize : backgroundImageSize, // For compatibility with v1.3.2.
       "background-attachment": backgroundAttachment,
     },
 
@@ -322,10 +383,10 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-infobox-cta-link": {
       "color": resctaLinkColor,
-      "padding-top": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-left": generateCSSUnit(ctaBtnHrPadding, "px"),
-      "padding-right": generateCSSUnit(ctaBtnHrPadding, "px"),
+      "padding-top": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-bottom": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-left": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
+      "padding-right": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
       "font-size": generateCSSUnit(ctaTextFontSize, "px"),
       "font-weight": ctaTextFontWeight,
       "font-family": ctaTextFontFamily,
@@ -338,13 +399,13 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
-      "border-width": generateCSSUnit(resctaBorderWidth, "px"),
-      "border-style": resctaBorderStyle,
-      "border-radius": generateCSSUnit(resctaBorderRadius, "px"),
-      "padding-top": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaBtnVertPadding, "px"),
-      "padding-left": generateCSSUnit(ctaBtnHrPadding, "px"),
-      "padding-right": generateCSSUnit(ctaBtnHrPadding, "px"),
+      "border-width": resctaBorderWidth !== 999 && ctaBorderWidth === 1 ? generateCSSUnit(resctaBorderWidth, "px") : generateCSSUnit(ctaBorderWidth, "px"), //For compatibility with v1.3.2
+      "border-style": resctaBorderStyle !== "empty" && ctaBorderColor === "solid" ? resctaBorderStyle : ctaBorderStyle, //For compatibility with v1.3.2
+      "border-radius": resctaBorderRadius !== 999 && ctaBorderRadius === 0  ? generateCSSUnit(resctaBorderRadius, "px") : generateCSSUnit(ctaBorderRadius, "px"), //For compatibility with v1.3.2
+      "padding-top": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-bottom": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
+      "padding-left": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
+      "padding-right": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
       "font-size": generateCSSUnit(resctaFontSize, "px"),
       "font-weight": resctaFontWeight,
     },
@@ -354,6 +415,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      padding: generateCSSUnit(contentPaddingMobile, "px"),
+    },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-mobile .responsive-block-editor-addons-ifb-content": {
       "text-align": alignment,
     },
@@ -379,9 +443,33 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(iconLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(iconRightMarginMobile, "px"),
     },
+    " .responsive-block-editor-addons-ifb-title-prefix": {
+      "margin-bottom": generateCSSUnit(resprefixSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title": {
+      "margin-bottom": generateCSSUnit(resheadSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-separator": {
+      "margin-bottom": generateCSSUnit(sepSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-desc": {
+      "margin-bottom": generateCSSUnit(ressubHeadSpaceMobile, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-cta": {
+      "margin-bottom": generateCSSUnit(ctaBottomMarginMobile, "px"),
+    },
+    " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
+      "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
+    " ": {
+      padding: generateCSSUnit(contentPaddingTablet, "px"),
+    },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-tablet .responsive-block-editor-addons-ifb-content": {
       "text-align": alignment,
     },
@@ -406,6 +494,27 @@ function EditorStyles(props) {
       "margin-top": generateCSSUnit(iconTopMarginTablet, "px"),
       "margin-left": generateCSSUnit(iconLeftMarginTablet, "px"),
       "margin-right": generateCSSUnit(iconRightMarginTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title-prefix": {
+      "margin-bottom": generateCSSUnit(resprefixSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-title": {
+      "margin-bottom": generateCSSUnit(resheadSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-separator": {
+      "margin-bottom": generateCSSUnit(sepSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-desc": {
+      "margin-bottom": generateCSSUnit(ressubHeadSpaceTablet, "px"),
+    },
+    " .responsive-block-editor-addons-ifb-cta": {
+      "margin-bottom": generateCSSUnit(ctaBottomMarginTablet, "px"),
+    },
+    " .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button": {
+      "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+      "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+      "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
     },
   };
 

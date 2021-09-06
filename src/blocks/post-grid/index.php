@@ -570,7 +570,15 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => 30,
 				),
-				'mobileContentPadding'        => array(
+				'contentPaddingMobile'        => array(
+					'type'    => 'number',
+					'default' => 10,
+				),
+				'mobileContentPadding'        => array( // For compatibility with v1.3.2.
+					'type'    => 'number',
+					'default' => 999,
+				),
+				'contentPaddingTablet'        => array(
 					'type'    => 'number',
 					'default' => 10,
 				),
@@ -578,12 +586,24 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueLineHeight'          => array(
-					'type'    => 'number',
+				'continueFontFamily'          => array(
+					'type'    => 'string',
 					'default' => '',
 				),
 				'continueFontWeight'          => array(
 					'type'    => 'string',
+					'default' => '',
+				),
+				'continueLineHeight'          => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'continueFontSizeMobile'      => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'continueFontSizeTablet'      => array(
+					'type'    => 'number',
 					'default' => '',
 				),
 				'continueTextTransform'       => array(
@@ -618,6 +638,14 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => '',
 				),
+				'metaFontSizeMobile'          => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'metaFontSizeTablet'          => array(
+					'type'    => 'number',
+					'default' => '',
+				),
 				'metaLineHeight'              => array(
 					'type'    => 'number',
 					'default' => '',
@@ -646,6 +674,14 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => '',
 				),
+				'excerptFontSizeMobile'       => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'excerptFontSizeTablet'       => array(
+					'type'    => 'number',
+					'default' => '',
+				),
 				'excerptLineHeight'           => array(
 					'type'    => 'number',
 					'default' => '',
@@ -662,11 +698,35 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => '',
 				),
+				'excerptBottomSpacingMobile'  => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'excerptBottomSpacingTablet'  => array(
+					'type'    => 'number',
+					'default' => '',
+				),
 				'metaBottomSpacing'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
+				'metaBottomSpacingMobile'     => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'metaBottomSpacingTablet'     => array(
+					'type'    => 'number',
+					'default' => '',
+				),
 				'titleBottomSpacing'          => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'titleBottomSpacingMobile'    => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'titleBottomSpacingTablet'    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
