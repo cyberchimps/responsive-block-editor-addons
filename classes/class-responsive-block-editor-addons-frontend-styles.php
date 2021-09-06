@@ -1972,7 +1972,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$background_type_image_styles
 				),
 				' .responsive-block-editor-addons-block-column:hover' => array(
-					'box-shadow'       => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css,
+					'box-shadow'       => '' !== $attr['hoverboxShadowColor'] ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
 					'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
 						self::hex_to_rgb( $attr['hoverbackgroundColor1'], $imgopacity ),
 						self::hex_to_rgb( $attr['hoverbackgroundColor2'], $imgopacity ),
@@ -2090,7 +2090,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'             => 0,
 				'boxShadowSpread'           => 0,
 				'boxShadowPosition'         => 'outset',
-				'hoverboxShadowColor'       => '#cccccc',
+				'hoverboxShadowColor'       => '',
 				'hoverboxShadowHOffset'     => 0,
 				'hoverboxShadowVOffset'     => 0,
 				'hoverboxShadowBlur'        => 6,
