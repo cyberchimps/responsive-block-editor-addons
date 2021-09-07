@@ -85,7 +85,7 @@ class Post_Timeline_Index_Test extends WP_UnitTestCase {
 	public function test_add_action() {
 		$this->assertTrue( add_action( 'init', 'responsive_block_editor_addons_post_timeline_register_latest_posts' ) );
 		$this->assertTrue( add_action( 'rest_api_init', 'responsive_block_editor_addons_post_timeline_register_rest_fields' ) );
-        $this->assertTrue( add_action( 'rest_api_init', 'responsive_block_editor_addons_add_custom_orderby' ) );
+		$this->assertTrue( add_action( 'rest_api_init', 'responsive_block_editor_addons_add_custom_orderby' ) );
 	}
 
 	/**
