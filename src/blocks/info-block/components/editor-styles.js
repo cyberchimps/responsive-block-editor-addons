@@ -159,6 +159,7 @@ function EditorStyles(props) {
     buttonbackgroundType,
     buttonHbackgroundType,
     zIndex,
+      resctaType,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -176,7 +177,7 @@ function EditorStyles(props) {
   if ("outset" === imageBoxShadowPosition) {
     imageBoxShadowPositionCSS = "";
   }
- 
+
   var hoverboxShadowPositionCSS = hoverboxShadowPosition;
   if ("outset" === hoverboxShadowPosition) {
     hoverboxShadowPositionCSS = "";
@@ -275,7 +276,7 @@ function EditorStyles(props) {
       "background-color": iconBgHoverColor,
       "border": iconHoverBorder,
     },
-    
+
     " .responsive-block-editor-addons-ifb-image-content > img": {
       "border-color": resImageBorderColor,
       "border-radius": generateCSSUnit(resImageBorderRadius, "px"),
@@ -383,10 +384,10 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-infobox-cta-link": {
       "color": resctaLinkColor,
-      "padding-top": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
-      "padding-bottom": ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2
-      "padding-left": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
-      "padding-right": ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2
+      "padding-top": resctaType !== 'text' ? (ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px")) : 0, //For compatibility with v1.3.2
+      "padding-bottom": resctaType !== 'text' ? (ctaVertPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(ctaVertpadding, "px") : generateCSSUnit(ctaVpadding, "px")) : 0, //For compatibility with v1.3.2
+      "padding-left": resctaType !== 'text' ? (ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px")) : 0, //For compatibility with v1.3.2
+      "padding-right": resctaType !== 'text' ? (ctaHrPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(ctaHrPadding, "px") : generateCSSUnit(ctaHpadding, "px")) : 0, //For compatibility with v1.3.2
       "font-size": generateCSSUnit(ctaTextFontSize, "px"),
       "font-weight": ctaTextFontWeight,
       "font-family": ctaTextFontFamily,

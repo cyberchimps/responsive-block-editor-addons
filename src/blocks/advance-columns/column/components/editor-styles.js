@@ -181,17 +181,19 @@ function EditorStyles(props) {
             )
           : undefined,
       "box-shadow":
-        generateCSSUnit(hoverboxShadowHOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowVOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowBlur, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowSpread, "px") +
-        " " +
-        hoverboxShadowColor +
-        " " +
-        hoverboxShadowPositionCSS,
+	  	hoverboxShadowColor !== "" 
+		  ? generateCSSUnit(hoverboxShadowHOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowVOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowBlur, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowSpread, "px") +
+        	" " +
+        	hoverboxShadowColor +
+        	" " +
+        	hoverboxShadowPositionCSS
+		  : "",
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
