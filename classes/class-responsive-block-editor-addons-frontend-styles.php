@@ -1980,7 +1980,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['hovercolorLocation1'],
 						$attr['hovercolorLocation2']
 					) : '',
-					'background-color' => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColorHover'] ? $attr['backgroundColorHover'] : '#fff', $imgopacity ) : '',
+					'background-color' => 'color' === $attr['backgroundType'] && '' !== $attr['backgroundColorHover']  ? self::hex_to_rgb( $attr['backgroundColorHover'] ? $attr['backgroundColorHover'] : '#fff', $imgopacity ) : '',
 				),
 			);
 			$mobile_selectors = array(

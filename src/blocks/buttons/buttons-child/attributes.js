@@ -104,9 +104,11 @@ const attributes = {
   },
   color: {
     type: "string",
+    default: "#f00",
   },
   background: {
     type: "string",
+    default: "#ff6f61",
   },
   hColor: {
     type: "string",
