@@ -181,7 +181,7 @@ function EditorStyles(props) {
             )
           : undefined,
       "box-shadow":
-	  	hoverboxShadowColor !== "" 
+	  	hoverboxShadowColor !== ""
 		  ? generateCSSUnit(hoverboxShadowHOffset, "px") +
         	" " +
         	generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -195,7 +195,7 @@ function EditorStyles(props) {
         	hoverboxShadowPositionCSS
 		  : "",
       "background-color":
-        backgroundType == "color"
+        backgroundType == "color" && ' ' !== backgroundColorHover
           ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
           : undefined,
     },
