@@ -132,4 +132,14 @@ class CommonFunctionsPage
         });
         $I->assertEquals($expectedStyle, $actualStyle);
     }
+
+    /**
+     * This function checks style in frontend by xpath.
+     */
+    public function _checkFrontEndStyleByXpath($I, $expectedStyle) {
+        $actualStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->field))->getCSSValue($this->prop);
+        });
+        $I->assertEquals($expectedStyle, $actualStyle);
+    }
 }
