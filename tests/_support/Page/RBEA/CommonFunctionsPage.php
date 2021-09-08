@@ -115,7 +115,7 @@ class CommonFunctionsPage
                 return $webdriver->findElement(WebDriverBy::cssSelector($this->field));
             });
         }
-       
+        $field->sendKeys(WebDriverKeys::BACKSPACE);
         $field->sendKeys(WebDriverKeys::BACKSPACE);
         $field->sendKeys(WebDriverKeys::BACKSPACE);
         $field->sendKeys(WebDriverKeys::BACKSPACE); 
