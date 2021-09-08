@@ -114,7 +114,7 @@ function EditorStyles(props) {
     updatedhPaddingMobile = hPaddingMobile;
   }
 
-  let updatedBackgroundColor = "#ff6f61";
+  let updatedBackgroundColor = "";
   let updatedBackgroundHColor = "";
   let updatedBackgroundImage = "";
   if (backgroundType === "color") {
@@ -133,21 +133,24 @@ function EditorStyles(props) {
 
   var selectors = {
     " .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__icon svg": {
-      color: icon_color,
+      color: icon_color+ '!important',
       width: generateCSSUnit(iconsize, "px"),
       height: generateCSSUnit(iconsize, "px"),
     },
-    " .responsive-block-editor-addons-button__wrapper div:hover .responsive-block-editor-addons-button__icon svg": {
-      color: icon_hover_color,
+    " .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__icon svg path": {
+      color: icon_color+ '!important',
     },
-    " .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link": {
-      color: color,
+    " .responsive-block-editor-addons-button__wrapper a:hover .responsive-block-editor-addons-button__icon svg": {
+      color: icon_hover_color+ '!important',
+    },
+    " .responsive-block-editor-addons-button__wrapper a:hover .responsive-block-editor-addons-button__icon svg path": {
+      color: icon_hover_color+ '!important',
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link": {
-      color: hColor,
+      color: hColor ? hColor : '#000',
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper": {
-      "border-color": borderColor,
+      "border-color": borderColor ? borderColor: "#000",
       "border-radius": generateCSSUnit(borderRadius, "px"),
       "border-style": borderStyle,
       "border-width": generateCSSUnit(borderWidth, "px"),
@@ -173,14 +176,16 @@ function EditorStyles(props) {
       "margin-top": `${generateCSSUnit(vMargin, "px")} !important`,
       "margin-bottom": `${generateCSSUnit(vMargin, "px")} !important`,
       "background-color": updatedBackgroundColor,
-    },
-    " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a": {
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-family": buttonFontFamily,
       "font-weight": buttonFontWeight,
       "line-height": buttonLineHeight,
       "opacity": imgopacity,
+      color:  inheritFromTheme ? '' : color ? color : '#000',
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,
+    },
+    " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper div": {
+      color:  inheritFromTheme ? '' : color ? color : '#000',
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover": {
       "border-color": borderHColor,
