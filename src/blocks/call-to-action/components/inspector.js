@@ -779,18 +779,6 @@ export default class Inspector extends Component {
               title={__("Button Options", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <ToggleControl
-                label={__(
-                  "Open link in new window",
-                  "responsive-block-editor-addons"
-                )}
-                checked={buttonTarget}
-                onChange={() =>
-                  this.props.setAttributes({
-                    buttonTarget: !buttonTarget,
-                  })
-                }
-              />
 
               <SelectControl
                 label={__("Button Size", "responsive-block-editor-addons")}
@@ -940,7 +928,7 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
                 <ResponsiveSpacingControl
-                  title={"Description Bottom Margin"}
+                  title={"Text Bottom Margin"}
                   attrNameTemplate="subtitleSpace%s"
                   values={{
                     desktop: subtitleSpace,
