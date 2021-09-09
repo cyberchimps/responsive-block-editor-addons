@@ -1539,30 +1539,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					)
 				);
 			}
-			if ( 'accordion' === $attr['layout'] && false === $attr['inactiveOtherItems'] ) {
-				$selectors = array_merge(
-					$selectors,
-					array(
-						' .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-icon-active' => array(
-							'display' => 'inline-block',
-						),
-						' .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-icon' => array(
-							'display' => 'none',
-						),
-					)
-				);
-			}
+
 			if ( 'accordion' === $attr['layout'] && true === $attr['expandFirstItem'] ) {
 				$selectors = array_merge(
 					$selectors,
 					array(
-						'  > div:first-child > .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-content' => array(
+						'  .responsive-block-editor-addons-accordion__wrap > div:first-child > .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-content' => array(
 							'display' => 'block',
 						),
-						'  > div:first-child > .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-icon-active' => array(
+						'  .responsive-block-editor-addons-accordion__wrap > div:first-child > .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-icon-active' => array(
 							'display' => 'inline-block',
 						),
-						'  > div:first-child > .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-icon' => array(
+						'  .responsive-block-editor-addons-accordion__wrap > div:first-child > .responsive-block-editor-addons-accordion-item__outer-wrap .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button .responsive-block-editor-addons-icon' => array(
 							'display' => 'none',
 						),
 					)
