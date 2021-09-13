@@ -6285,11 +6285,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$align_style = 'flex-end';
 			}
 
-			$updated_button_bg_h_color = '';
 			$updated_button_bg_h_image = '';
-			if ( 'color' === $attr['buttonHbackgroundType'] ) {
-				$updated_button_bg_h_color = $attr['ctaHoverBackColor'];
-			} elseif ( 'gradient' === $attr['buttonHbackgroundType'] ) {
+			if ( 'gradient' === $attr['buttonHbackgroundType'] ) {
 				$updated_button_bg_h_image = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '% , ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
 			}
 
@@ -6338,7 +6335,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wp-block-responsive-block-editor-addons-pricing-table-item__button:hover' => array(
 					'color'            => $attr['ctaHoverColor'] . '!important',
-					'background-color' => $updated_button_bg_h_color,
+					'background-color' => 'color' === $attr['buttonHbackgroundType'] ? $attr['ctaHoverBackColor'] : ' ',
 					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_bg_h_image,
 					'border-color'     => $attr['ctaHoverBorderColor'],
 				),
@@ -6679,7 +6676,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttongradientDirection'   => 90,
 				'buttonbackgroundColor1'    => '',
 				'buttonbackgroundColor2'    => '#fff',
-				'buttonHbackgroundType'     => 'none',
+				'buttonHbackgroundType'     => 'color',
 				'buttonHcolorLocation1'     => 0,
 				'buttonHcolorLocation2'     => 100,
 				'buttonHgradientDirection'  => 90,
