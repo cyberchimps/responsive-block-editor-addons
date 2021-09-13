@@ -60,12 +60,15 @@ export default class Save extends Component {
             inheritFromTheme ? "wp-block-button" : null
           )}
         >
-          <div
+          <a
             className={classnames(
               "responsive-block-editor-addons-buttons-repeater",
               "responsive-block-editor-addons-button__wrapper",
               inheritFromTheme ? "wp-block-button__link" : null
             )}
+            href={link}
+            rel={target ? "noopener noreferrer" : null}
+            target={target ? "_blank" : null}
           >
             {"" !== icon && iconPosition == "before" && (
               <span
@@ -79,12 +82,9 @@ export default class Save extends Component {
             )}
             <RichText.Content
               value={label}
-              tagName="a"
+              tagName="div"
               className={updatedButtonTextClass}
-              href={link}
               hoverEffect={hoverEffect}
-              rel={target ? "noopener noreferrer" : null}
-              target={target ? "_blank" : null}
             />
             {"" !== icon && iconPosition == "after" && (
               <span
@@ -96,7 +96,7 @@ export default class Save extends Component {
                 {renderSVG(icon)}
               </span>
             )}
-          </div>
+          </a>
         </div>
       </Buttons>,
     ];

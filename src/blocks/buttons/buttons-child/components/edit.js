@@ -125,12 +125,14 @@ export default class Edit extends Component {
               inheritFromTheme ? "wp-block-button" : null
             )}
           >
-            <div
+            <a
               className={classnames(
                 "responsive-block-editor-addons-buttons-repeater",
                 "responsive-block-editor-addons-button__wrapper",
                 inheritFromTheme ? "wp-block-button__link" : null
               )}
+              rel={target ? "noopener noreferrer" : null}
+              target={target ? "_blank" : null}
             >
               {"" !== icon && iconPosition == "before" && (
                 <span
@@ -145,14 +147,12 @@ export default class Edit extends Component {
               <RichText
                 placeholder={__("Add text…", "responsive-block-editor-addons")}
                 value={label}
-                tagName="a"
+                tagName="div"
                 onChange={(value) => {
                   setAttributes({ label: value });
                 }}
                 allowedFormats={["bold", "italic", "strikethrough"]}
                 className={updatedButtonTextClass}
-                rel={target ? "noopener noreferrer" : null}
-                target={target ? "_blank" : null}
                 hoverEffect={hoverEffect}
                 keepPlaceholderOnFocus
               />
@@ -166,7 +166,7 @@ export default class Edit extends Component {
                   {renderSVG(icon)}
                 </span>
               )}
-            </div>
+            </a>
           </div>
           {isSelected && (
             <form

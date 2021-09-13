@@ -115,7 +115,7 @@ class CommonFunctionsPage
                 return $webdriver->findElement(WebDriverBy::cssSelector($this->field));
             });
         }
-       
+        $field->sendKeys(WebDriverKeys::BACKSPACE);
         $field->sendKeys(WebDriverKeys::BACKSPACE);
         $field->sendKeys(WebDriverKeys::BACKSPACE);
         $field->sendKeys(WebDriverKeys::BACKSPACE); 
@@ -129,6 +129,16 @@ class CommonFunctionsPage
     public function _checkFrontEndStyle($I, $expectedStyle) {
         $actualStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
             return $webdriver->findElement(WebDriverBy::cssSelector($this->field))->getCSSValue($this->prop);
+        });
+        $I->assertEquals($expectedStyle, $actualStyle);
+    }
+
+    /**
+     * This function checks style in frontend by xpath.
+     */
+    public function _checkFrontEndStyleByXpath($I, $expectedStyle) {
+        $actualStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->field))->getCSSValue($this->prop);
         });
         $I->assertEquals($expectedStyle, $actualStyle);
     }
