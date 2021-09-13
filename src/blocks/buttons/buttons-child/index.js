@@ -6,6 +6,7 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
+import deprecated from "./components/deprecated";
 
 // Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
@@ -51,4 +52,6 @@ registerBlockType("responsive-block-editor-addons/buttons-child", {
   save: (props) => {
     return <Save {...props} />;
   },
+
+  deprecated: deprecated,
 });
