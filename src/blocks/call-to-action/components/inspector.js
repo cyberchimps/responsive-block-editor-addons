@@ -788,6 +788,19 @@ export default class Inspector extends Component {
                   label,
                 }))}
                 onChange={(value) => {
+                    if(value == "responsive-block-editor-addons-cta-button-size-small") {
+                        this.props.setAttributes({buttonTextFontSize: 14})
+                    }
+                    if(value == "responsive-block-editor-addons-cta-button-size-medium") {
+                        this.props.setAttributes({buttonTextFontSize: 20})
+                    }
+                    if(value == "responsive-block-editor-addons-cta-button-size-large") {
+                        this.props.setAttributes({buttonTextFontSize: 26})
+                    }
+                    if(value == "responsive-block-editor-addons-cta-button-size-extralarge") {
+                        this.props.setAttributes({buttonTextFontSize: 32})
+                    }
+
                   this.props.setAttributes({
                     buttonSize: value,
                   });
@@ -802,6 +815,15 @@ export default class Inspector extends Component {
                   label,
                 }))}
                 onChange={(value) => {
+                    if(value == 'responsive-block-editor-addons-cta-button-shape-square') {
+                        this.props.setAttributes({ctaBorderRadius: 0})
+                    }
+                    if(value == 'responsive-block-editor-addons-cta-button-shape-rounded') {
+                        this.props.setAttributes({ctaBorderRadius: 4})
+                    }
+                    if(value =='responsive-block-editor-addons-cta-button-shape-circular') {
+                        this.props.setAttributes({ctaBorderRadius: 100})
+                    }
                   this.props.setAttributes({
                     buttonShape: value,
                   });
