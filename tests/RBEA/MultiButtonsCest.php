@@ -30,7 +30,7 @@ class MultiButtonsCest
     public $openInNewTabBtn = '(//*[contains(@id, "inspector-toggle-control")])[2]';
     public $hoverEffectSelect = '//*[contains(@id, "inspector-select-control")]';
     public $hoverEffectSelectOption = 'option[value="scale"]';
-    public $fChildBtnLink = '.responsive-block-editor-addons-buttons-layout-wrap > div:nth-child(1) > div > div > a';
+    public $fChildBtnLink = '.responsive-block-editor-addons-buttons-layout-wrap > div:nth-child(1) > div > a';
 
     /**
      * Style  Settings
@@ -44,7 +44,7 @@ class MultiButtonsCest
     public $clearTextColorBtn = '(//*[text() = "Clear"])[1]';
     public $clearBoderColorBtn = '(//*[text() = "Clear"])[2]';
     public $opacity = '//*[contains(@id, "inspector-input-control") and @aria-label="Opacity"]';
-    public $fLinkWrapper = '.responsive-block-editor-addons-buttons-layout-wrap > div:nth-child(1) > div > div';
+    public $fLinkWrapper = '.responsive-block-editor-addons-buttons-layout-wrap > div:nth-child(1) > div > a';
   
     /**
      * 2. Background
@@ -86,13 +86,16 @@ class MultiButtonsCest
     public $iconPositionSelected = 'option[value="before"]';
     public $iconSize = '//*[contains(@id, "inspector-input-control") and @aria-label="Icon Size"]';
     public $iconSpacing = '//*[contains(@id, "inspector-input-control") and @aria-label="Icon Spacing"]';
-    public $iconColor = '(//*[@class="components-circular-option-picker__swatches"]//div[6]/button)[1]';
+    public $iconColor = '(//*[@class="components-circular-option-picker__swatches"]//div[2]/button)[1]';
     public $iconHoverColor = '(//*[@class="components-circular-option-picker__swatches"]//div[5]/button)[2]';
    
     public $resetIconSize = '(//button[text()="Reset"])[1]';
     public $resetIconSpacing = '(//button[text()="Reset"])[2]';
     public $clearIconColor = '(//button[text()="Clear"])[1]';
     public $clearIconHoverColor = '(//button[text()="Clear"])[2]';
+
+    public $iconSvgColor = '.responsive-block-editor-addons-button__icon svg';
+    public $RBEABtnWrapper = '//*[@id="primary"]/article/div/div[2]/div/div/div[1]/div';
 
     /**
      * 6. Typography
@@ -248,7 +251,7 @@ class MultiButtonsCest
         $commonFunctionsPageObj->publishAndViewPage($I);
 
         $I->amGoingTo('Check the content settings in the frontend');
-        $I->seeInSource('<a class="responsive-block-editor-addons-button__link_child inherited-from-theme" href="www.google.com" hovereffect="scale">#Click Here</a>');
+        $I->seeInSource('<a class="responsive-block-editor-addons-buttons-repeater responsive-block-editor-addons-button__wrapper wp-block-button__link" href="www.google.com"');
     }
 
     /**
@@ -285,10 +288,10 @@ class MultiButtonsCest
         $I->amGoingTo('Check the front end after resetting text and border');
         $commonFunctionsPageObj->field = $this->fLinkWrapper;
         $commonFunctionsPageObj->prop = 'border-color';
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51)'); 
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(0, 0, 0)'); 
         $commonFunctionsPageObj->field = $this->fChildBtnLink;
         $commonFunctionsPageObj->prop = 'color';
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgba(255, 255, 255, 1)');
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgba(0, 0, 0, 1)');
     }
 
     /**
@@ -464,12 +467,13 @@ class MultiButtonsCest
         $commonFunctionsPageObj->field = $this->fIcon;
         $commonFunctionsPageObj->prop = 'margin-right';
         $commonFunctionsPageObj->_checkFrontEndStyle($I, '10px'); 
-        $commonFunctionsPageObj->field = $this->fChildBtnLink;
+        $commonFunctionsPageObj->field = $this->iconSvgColor;
         $commonFunctionsPageObj->prop = 'color';
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgba(255, 255, 255, 1)');
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgba(16, 101, 156, 1)');
         $I->wait(1);
-        $I->moveMouseOver($this->fChildBtnLink);
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgba(255, 255, 255, 1)');
+        $I->moveMouseOver($this->RBEABtnWrapper);
+        $I->wait(1);
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgba(51, 51, 51, 1)');
 
         $I->amGoingTo('Reset the Icon settings');
         $this->_selectChildStyle( $I, $commonFunctionsPageObj);
@@ -554,12 +558,12 @@ class MultiButtonsCest
         $commonFunctionsPageObj->field = $this->fontSizeInputField;
         $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '15' );
         $commonFunctionsPageObj->publishAndViewPage($I);
+     
+        $I->amGoingTo('Check the frontend for the mobile view typography settings');
         $I->resizeWindow(375, 812);
         $I->wait(1);
-
-        $I->amGoingTo('Check the frontend for the mobile view typography settings');
         $commonFunctionsPageObj->field = $this->fChildBtnLink;
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, '15px'); 
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '25px'); 
         $I->resizeWindow(1280, 950); 
         $I->wait(1); 
 
@@ -576,7 +580,7 @@ class MultiButtonsCest
 
         $I->amGoingTo('Check the frontend for the tablet view typography settings');
         $commonFunctionsPageObj->field = $this->fChildBtnLink;
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, '15px'); 
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '25px'); 
         $I->resizeWindow(1280, 950); 
         $I->wait(1); 
         
@@ -645,6 +649,6 @@ class MultiButtonsCest
         $I->scrollTo($this->boxShadowResetBtn, 20);
         $I->click($this->boxShadowResetBtn);
         $commonFunctionsPageObj->publishAndViewPage($I);
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(0, 0, 0) 0px 0px 0px 0px');
     }
 }

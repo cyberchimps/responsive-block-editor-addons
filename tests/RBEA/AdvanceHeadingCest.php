@@ -159,8 +159,8 @@ class AdvanceHeadingCest
 
         $I->amGoingTo('Check the frontend for heading alignment and tag');
         $commonFunctionsPageObj->field = $this->fAdvanceHeadingBlock;
-        $this->prop = 'text-align';
-        $this->_checkFrontEndStyle($I, 'left');
+        $commonFunctionsPageObj->prop = 'text-align';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'left');
         $I->wait(1);
         $I->seeElement($this->fHeading);
 
