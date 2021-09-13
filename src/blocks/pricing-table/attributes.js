@@ -270,7 +270,7 @@ const attributes = {
   },
   buttonHbackgroundType: {
     type: "string",
-    default: "none",
+    default: "color",
   },
   buttonHcolorLocation1: {
     type: "number",
