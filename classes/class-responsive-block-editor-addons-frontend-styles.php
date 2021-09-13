@@ -2276,6 +2276,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link_child, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-child .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link_child' => array(
 					'color' => $updated_text_h_color,
 				),
+				' .responsive-block-editor-addons-1.responsive-block-editor-addons-button__wrapper' => array(
+					'margin-left'   => self::get_css_value( $attr['hMargin'], 'px' ),
+					'margin-right'  => self::get_css_value( $attr['hMargin'], 'px' ),
+					'margin-top'    => self::get_css_value( $attr['vMargin'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['vMargin'], 'px' ),
+				),
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper' => array(
 					'border-color'     => $attr['borderColor'] ? $updated_border_color : '#000',
 					'border-radius'    => self::get_css_value( $attr['borderRadius'], 'px' ),
@@ -2298,10 +2304,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-image' => $updated_background_image,
 					'padding-top'      => self::get_css_value( $attr['vPadding'], 'px' ),
 					'padding-bottom'   => self::get_css_value( $attr['vPadding'], 'px' ),
-					'margin-left'      => self::get_css_value( $attr['hMargin'], 'px' ),
-					'margin-right'     => self::get_css_value( $attr['hMargin'], 'px' ),
-					'margin-top'       => self::get_css_value( $attr['vMargin'], 'px' ),
-					'margin-bottom'    => self::get_css_value( $attr['vMargin'], 'px' ),
 					'background-color' => $attr['inheritFromTheme'] ? '' : $updated_background_color,
 					'font-size'        => self::get_css_value( $attr['buttonFontSize'], 'px' ),
 					'font-family'      => $attr['buttonFontFamily'],
@@ -2331,11 +2333,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a' => array(
 					'font-size' => self::get_css_value( $attr['buttonFontSizeMobile'], 'px' ) . '!important',
 				),
+				' .responsive-block-editor-addons-1.responsive-block-editor-addons-button__wrapper' => array(
+					'margin-top'    => self::get_css_value( $updated_v_margin_mobile, 'px' ),
+					'margin-bottom' => self::get_css_value( $updated_v_margin_mobile, 'px' ),
+					'margin-left'   => self::get_css_value( $updated_h_margin_mobile, 'px' ),
+					'margin-right'  => self::get_css_value( $updated_h_margin_mobile, 'px' ),
+				),
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper' => array(
-					'margin-top'     => self::get_css_value( $updated_v_margin_mobile, 'px' ),
-					'margin-bottom'  => self::get_css_value( $updated_v_margin_mobile, 'px' ),
-					'margin-left'    => self::get_css_value( $updated_h_margin_mobile, 'px' ),
-					'margin-right'   => self::get_css_value( $updated_h_margin_mobile, 'px' ),
 					'padding-top'    => self::get_css_value( $updated_v_padding_mobile, 'px' ),
 					'padding-bottom' => self::get_css_value( $updated_v_padding_mobile, 'px' ),
 					'padding-left'   => self::get_css_value( $updated_h_padding_mobile, 'px' ),
@@ -2347,11 +2351,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a' => array(
 					'font-size' => self::get_css_value( $attr['buttonFontSizeTablet'], 'px' ) . '!important',
 				),
+				' .responsive-block-editor-addons-1.responsive-block-editor-addons-button__wrapper' => array(
+					'margin-top'    => self::get_css_value( $updated_v_margin_tablet, 'px' ),
+					'margin-bottom' => self::get_css_value( $updated_v_margin_tablet, 'px' ),
+					'margin-left'   => self::get_css_value( $updated_h__margin_tablet, 'px' ),
+					'margin-right'  => self::get_css_value( $updated_h__margin_tablet, 'px' ),
+				),
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper' => array(
-					'margin-top'     => self::get_css_value( $updated_v_margin_tablet, 'px' ),
-					'margin-bottom'  => self::get_css_value( $updated_v_margin_tablet, 'px' ),
-					'margin-left'    => self::get_css_value( $updated_h__margin_tablet, 'px' ),
-					'margin-right'   => self::get_css_value( $updated_h__margin_tablet, 'px' ),
 					'padding-top'    => self::get_css_value( $updated_v__padding_tablet, 'px' ),
 					'padding-bottom' => self::get_css_value( $updated_v__padding_tablet, 'px' ),
 					'padding-left'   => self::get_css_value( $updated_h_padding_tablet, 'px' ),

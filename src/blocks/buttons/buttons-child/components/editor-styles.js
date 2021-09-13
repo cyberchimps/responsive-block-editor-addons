@@ -149,6 +149,12 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link": {
       color: hColor ? hColor : '#000',
     },
+    " .responsive-block-editor-addons-1.responsive-block-editor-addons-button__wrapper": {
+        "margin-left": `${generateCSSUnit(hMargin, "px")} !important`,
+        "margin-right": `${generateCSSUnit(hMargin, "px")} !important`,
+        "margin-top": `${generateCSSUnit(vMargin, "px")} !important`,
+        "margin-bottom": `${generateCSSUnit(vMargin, "px")} !important`,
+    },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper": {
       "border-color": borderColor ? borderColor: "#000",
       "border-radius": generateCSSUnit(borderRadius, "px"),
@@ -171,10 +177,6 @@ function EditorStyles(props) {
       "background-image": updatedBackgroundImage,
       "padding-top": generateCSSUnit(vPadding, "px"),
       "padding-bottom": generateCSSUnit(vPadding, "px"),
-      "margin-left": `${generateCSSUnit(hMargin, "px")} !important`,
-      "margin-right": `${generateCSSUnit(hMargin, "px")} !important`,
-      "margin-top": `${generateCSSUnit(vMargin, "px")} !important`,
-      "margin-bottom": `${generateCSSUnit(vMargin, "px")} !important`,
       "background-color": updatedBackgroundColor,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-family": buttonFontFamily,
@@ -201,13 +203,15 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a": {
       "font-size": generateCSSUnit(buttonFontSizeMobile, "px") + "!important",
     },
+      " .responsive-block-editor-addons-1.responsive-block-editor-addons-button__wrapper": {
+          "margin-top": generateCSSUnit(updatedvMarginMobile, "px") + "!important",
+          "margin-bottom":
+              generateCSSUnit(updatedvMarginMobile, "px") + "!important",
+          "margin-left": generateCSSUnit(updatedhMarginMobile, "px") + "!important",
+          "margin-right":
+              generateCSSUnit(updatedhMarginMobile, "px") + "!important",
+      },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper": {
-      "margin-top": generateCSSUnit(updatedvMarginMobile, "px") + "!important",
-      "margin-bottom":
-        generateCSSUnit(updatedvMarginMobile, "px") + "!important",
-      "margin-left": generateCSSUnit(updatedhMarginMobile, "px") + "!important",
-      "margin-right":
-        generateCSSUnit(updatedhMarginMobile, "px") + "!important",
       "padding-top": generateCSSUnit(updatedvPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(updatedvPaddingMobile, "px"),
       "padding-left": generateCSSUnit(updatedhPaddingMobile, "px"),
@@ -219,13 +223,16 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a": {
       "font-size": generateCSSUnit(buttonFontSizeTablet, "px") + "!important",
     },
+      " .responsive-block-editor-addons-1.responsive-block-editor-addons-button__wrapper": {
+          "margin-top": generateCSSUnit(updatedvMarginTablet, "px") + "!important",
+          "margin-bottom":
+              generateCSSUnit(updatedvMarginTablet, "px") + "!important",
+          "margin-left": generateCSSUnit(updatedhMarginTablet, "px") + "!important",
+          "margin-right":
+              generateCSSUnit(updatedhMarginTablet, "px") + "!important",
+
+      },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper": {
-      "margin-top": generateCSSUnit(updatedvMarginTablet, "px") + "!important",
-      "margin-bottom":
-        generateCSSUnit(updatedvMarginTablet, "px") + "!important",
-      "margin-left": generateCSSUnit(updatedhMarginTablet, "px") + "!important",
-      "margin-right":
-        generateCSSUnit(updatedhMarginTablet, "px") + "!important",
       "padding-top": generateCSSUnit(updatedvPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(updatedvPaddingTablet, "px"),
       "padding-left": generateCSSUnit(updatedhPaddingTablet, "px"),
