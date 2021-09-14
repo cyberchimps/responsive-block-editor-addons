@@ -8,6 +8,7 @@ import save from "./components/save";
 import attributes from "./attributes";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -36,5 +37,6 @@ registerBlockType("responsive-block-editor-addons/testimonial-slider", {
   attributes: attributes,
   edit,
   save,
+  deprecated: deprecated,
   example: {},
 });

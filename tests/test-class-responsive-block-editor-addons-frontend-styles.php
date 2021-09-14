@@ -2196,7 +2196,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttongradientDirection'   => 90,
 			'buttonbackgroundColor1'    => '',
 			'buttonbackgroundColor2'    => '#fff',
-			'buttonHbackgroundType'     => 'none',
+			'buttonHbackgroundType'     => 'color',
 			'buttonHcolorLocation1'     => 0,
 			'buttonHcolorLocation2'     => 100,
 			'buttonHgradientDirection'  => 90,
