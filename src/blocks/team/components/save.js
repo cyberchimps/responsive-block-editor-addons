@@ -39,6 +39,16 @@ export default class Save extends Component {
       stack
     } = this.props.attributes;
 
+    function convertTag( str ) {
+      const regex = /u003c/ig;
+      const regex2 = /u003e/ig;
+      const regex3 = /u0026/ig;
+      str = str?.replaceAll( regex, '\u003c' );
+      str = str?.replaceAll( regex2, '\u003e');
+      str = str?.replaceAll( regex3,'\u0026')
+      return str;
+    }
+
     return (
       <div
         className={classnames(
@@ -85,7 +95,7 @@ export default class Save extends Component {
                 <RichText.Content
                   tagName="div"
                   className="responsive-block-editor-addons-team-designation"
-                  value={teamBlock[index]["teamDesignation"]}
+                  value={convertTag(teamBlock[index]["teamDesignation"])}
                 />
               )}
 
@@ -93,7 +103,7 @@ export default class Save extends Component {
                 <RichText.Content
                   tagName="div"
                   className="responsive-block-editor-addons-team-description"
-                  value={teamBlock[index]["teamDescription"]}
+                  value={convertTag(teamBlock[index]["teamDescription"])}
                 />
               )}
 
