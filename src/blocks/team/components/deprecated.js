@@ -189,8 +189,10 @@ const deprecated = [
       function convertTag( str ) {
         const regex = /u003c/ig;
         const regex2 = /u003e/ig;
-        str = str.replaceAll( regex, '\u003c' );
-        str = str.replaceAll( regex2, '\u003e');
+        const regex3 = /u0026/ig;
+        str = str?.replaceAll( regex, '\u003c' );
+        str = str?.replaceAll( regex2, '\u003e');
+        str = str?.replaceAll( regex3,'\u0026')
         return str;
       }
   
@@ -209,7 +211,7 @@ const deprecated = [
           )}
         >
           {teamBlock.map((test, index) => (
-            <Team {...this.props}>
+            <Team {...props}>
               {teamBlock[index]["teamImgURL"] && showImage && (
                 <div className="responsive-block-editor-addons-team-avatar-wrapper">
                   <figure
