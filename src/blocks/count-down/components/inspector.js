@@ -575,6 +575,38 @@ export default class Inspector extends Component {
                 />
               </PanelBody>
               <ColorBackgroundControl {...this.props} />
+              <p className="responsive-block-editor-addons-setting-label">
+                    {__("Digit Color", "responsive-block-editor-addons")}
+                    <span className="components-base-control__label">
+                      <span
+                        className="component-color-indicator"
+                        style={{ backgroundColor: digitColor }}
+                      ></span>
+                    </span>
+                  </p>
+                  <ColorPalette
+                    value={digitColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ digitColor: colorValue })
+                    }
+                    allowReset
+                  />
+                <p className="responsive-block-editor-addons-setting-label">
+                  {__("Label Color", "responsive-block-editor-addons")}
+                  <span className="components-base-control__label">
+                    <span
+                      className="component-color-indicator"
+                      style={{ backgroundColor: labelColor }}
+                    ></span>
+                  </span>
+                </p>
+                <ColorPalette
+                  value={labelColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ labelColor: colorValue })
+                  }
+                  allowReset
+                />
             </PanelBody>
             <PanelBody
               title={__("Container Spacing", "responsive-block-editor-addons")}

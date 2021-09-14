@@ -3,6 +3,7 @@ import React from "react";
 import classnames from "classnames";
 import ResponsiveBlocksIcon from "../../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../../renderIcon";
+import attributes from "../attributes";
 
 const { RichText } = wp.blockEditor;
 
@@ -43,7 +44,7 @@ const deprecated = [
       }
 
       return (
-        <Buttons {...this.props}>
+        <Buttons {...props}>
         <div
           className={classnames(
             `responsive-block-editor-addons-${counterId}`,
@@ -110,7 +111,7 @@ const deprecated = [
         boxShadowPosition,
         hoverEffect,
         inheritFromTheme,
-      } = this.props.attributes;
+      } = props.attributes;
 
       let imgopacity = opacity / 100;
 
@@ -124,7 +125,7 @@ const deprecated = [
         boxShadowPositionCSS = "";
       }    
       return (
-        <Buttons {...this.props}>
+        <Buttons {...props}>
         <div
           className={classnames(
             `responsive-block-editor-addons-${counterId}`,
