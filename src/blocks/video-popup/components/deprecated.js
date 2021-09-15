@@ -122,8 +122,6 @@ const deprecated = [
         {playButtonType === "outline" && (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="50"
-            height="50"
             viewBox="0 0 34 34"
                 >
                 <path d="M17 34C7.6 34 0 26.4 0 17S7.6 0 17 0s17 7.6 17 17-7.6 17-17 17zm0-32C8.7 2 2 8.7 2 17s6.7 15 15 15 15-6.7 15-15S25.3 2 17 2z" />
