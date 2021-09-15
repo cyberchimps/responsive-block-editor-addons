@@ -162,7 +162,7 @@ const deprecated = [
           butopacity,
           boxShadowPosition,
           align,
-      } = this.props.attributes;
+      } = props.attributes;
 
         var boxShadowPositionCSS = boxShadowPosition;
 
