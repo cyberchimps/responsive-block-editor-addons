@@ -15,13 +15,13 @@ import dividers from "./dividers";
  * @return {string} The divider.
  */
 export function getDividerFromStyle(className) {
-  const angled = includes(className, "is-rbea-separator-style-angled");
-  const hills = includes(className, "is-rbea-separator-style-hills");
-  const pointed = includes(className, "is-rbea-separator-style-pointed");
-  const rounded = includes(className, "is-rbea-separator-style-rounded");
-  const sloped = includes(className, "is-rbea-separator-style-sloped");
-  const triangle = includes(className, "is-rbea-separator-style-triangle");
-  const waves = includes(className, "is-rbea-separator-style-waves");
+  const angled = includes(className, "is-style-angled");
+  const hills = includes(className, "is-style-hills");
+  const pointed = includes(className, "is-style-pointed");
+  const rounded = includes(className, "is-style-rounded");
+  const sloped = includes(className, "is-style-sloped");
+  const triangle = includes(className, "is-style-triangle");
+  const waves = includes(className, "is-style-waves");
 
   let divider = dividers.wavy;
 
