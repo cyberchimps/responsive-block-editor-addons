@@ -2851,7 +2851,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		 */
 	public function test_get_responsive_block_advanced_columns_default_attributes() {
 		$expected_values = array(
-			'columnGap'                => 'default',
+			'columnGap'                => 'nogap',
 			'widthType'                => 'px',
 			'contentWidth'             => 'theme',
 			'stack'                    => 'mobile',

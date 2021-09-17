@@ -173,19 +173,19 @@ export default class Inspector extends Component {
                 onChange={(value) => setAttributes({ columnGap: value })}
                 options={[
                   {
-                    value: "default",
-                    label: __(
-                      "Default (10px)",
-                      "responsive-block-editor-addons"
-                    ),
-                  },
-                  {
                     value: "nogap",
                     label: __("No Gap (0px)", "responsive-block-editor-addons"),
                   },
                   {
                     value: "narrow",
                     label: __("Narrow (5px)", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "medium",
+                    label: __(
+                      "Medium (10px)",
+                      "responsive-block-editor-addons"
+                    ),
                   },
                   {
                     value: "extended",
