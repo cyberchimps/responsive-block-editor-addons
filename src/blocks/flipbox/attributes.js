@@ -635,6 +635,10 @@ const attributes = {
     type: "string",
     defaulr: "#333",
   },
+  buttonTarget: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 export default attributes;
