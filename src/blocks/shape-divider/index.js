@@ -5,8 +5,6 @@ import edit from "./components/edit";
 import icon from "./icon";
 import metadata from "./components/block.json";
 import save from "./components/save";
-import deprecated from "./components/deprecated";
-
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -47,5 +45,4 @@ registerBlockType("responsive-block-editor-addons/shape-divider", {
   attributes,
   edit,
   save,
-    deprecated,
 });

@@ -147,7 +147,6 @@ class Edit extends Component {
 
     const {
       block_id,
-        design,
       responsive_block_editor_addons,
       shapeHeight,
       shapeHeightTablet,
@@ -159,6 +158,7 @@ class Edit extends Component {
       horizontalFlip,
       justAdded,
       align,
+      design,
     } = attributes;
 
     let shapeHeightResizer = {
@@ -231,14 +231,14 @@ class Edit extends Component {
     }
 
     let classes = classnames(
-      className,
+      'wp-block-responsive-block-editor-addons-shape-divider',
+      className && design==='empty'? className : `is-style-${design}`,
       "responsive-block-editor-addons-block-shape-divider",
       `block-${block_id}`,
       {
         "is-vertically-flipped": verticalFlip,
         "is-horizontally-flipped": horizontalFlip,
-      },
-      `is-rbea-separator-style-${design}`,
+      }
     );
 
     if (
@@ -318,8 +318,10 @@ class Edit extends Component {
               this.setState({ resizing: true });
             }}
           >
-            {getDividerFromStyle(classes)}
-
+            {
+              className && design==='empty'? getDividerFromStyle(className) : 
+              getDividerFromStyle(`is-style-${design}`)
+            }
           </ResizableBox>
           <ResizableBox
             className={classnames(
