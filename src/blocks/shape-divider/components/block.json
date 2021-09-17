@@ -5,10 +5,6 @@
     "block_id": {
       "type": "string"
     },
-    "design": {
-      "type": "string",
-      "default": "wavy"
-    },
     "align": {
       "type": "string",
       "default": "full"
@@ -88,6 +84,10 @@
     "colorLocation1": {
       "type": "number",
       "default": 0
+    },
+    "design" : {
+      "type": "string",
+      "default": "empty"
     },
     "colorLocation2": {
       "type": "number",
