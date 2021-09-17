@@ -211,6 +211,25 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'  => self::get_css_value( $attr['bottomMargin'], 'px' ),
 				),
 
+				' .responsive-columns__gap-narrow .responsive-columns-inner-wrap' => array(
+					'gap' => '5px',
+				),
+
+				' .responsive-columns__gap-medium .responsive-columns-inner-wrap' => array(
+					'gap' => '10px',
+				),
+
+				' .responsive-columns__gap-extended .responsive-columns-inner-wrap' => array(
+					'gap' => '15px',
+				),
+
+				' .responsive-columns__gap-wide .responsive-columns-inner-wrap' => array(
+					'gap' => '20px',
+				),
+
+				' .responsive-columns__gap-wider .responsive-columns-inner-wrap' => array(
+					'gap' => '30px',
+				),
 			);
 			$mobile_selectors = array(
 				' .responsive-block-editor-addons-block-columns' => array(
@@ -8418,7 +8437,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_advanced_columns_default_attributes() {
 			return array(
-				'columnGap'                => 'default',
+				'columnGap'                => 'nogap',
 				'widthType'                => 'px',
 				'contentWidth'             => 'theme',
 				'stack'                    => 'mobile',
