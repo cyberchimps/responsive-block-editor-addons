@@ -8437,7 +8437,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_advanced_columns_default_attributes() {
 			return array(
-				'columnGap'                => 'nogap',
+				'columnGap'                => 'default',
 				'widthType'                => 'px',
 				'contentWidth'             => 'theme',
 				'stack'                    => 'mobile',

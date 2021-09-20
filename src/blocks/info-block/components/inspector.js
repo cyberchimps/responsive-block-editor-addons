@@ -1075,7 +1075,7 @@ export default class Inspector extends Component {
                   />
                 </Fragment>
               )}
-              {resctaType !== "none" && resctaType !== "complete_box" && (
+              {resctaType === "text" && (
                 <Fragment>
                   <TextControl
                     label={__("Link", "responsive-block-editor-addons")}
