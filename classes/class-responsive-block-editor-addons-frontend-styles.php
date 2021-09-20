@@ -7615,7 +7615,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding' => self::get_css_value( $attr['paddingTablet'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
-					'margin-bottom' => self::get_css_value( 20, 'px' ) . ' !important',
+					'margin-bottom' => self::get_css_value( 0, 'px' ) . ' !important',
 				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'font-size'     => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
