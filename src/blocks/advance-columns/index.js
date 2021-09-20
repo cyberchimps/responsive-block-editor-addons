@@ -43,7 +43,7 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
     },
     columnGap: {
       type: "string",
-      default: "nogap",
+      default: "default",
     },
     width: {
       type: "number",
