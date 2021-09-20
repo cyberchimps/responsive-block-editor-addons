@@ -793,12 +793,18 @@ export default class Inspector extends Component {
                     }
                     if(value == "responsive-block-editor-addons-cta-button-size-medium") {
                         this.props.setAttributes({buttonTextFontSize: 20})
+                        this.props.setAttributes({ctaHpadding: 14})
+                        this.props.setAttributes({ctaVpadding: 18})
                     }
                     if(value == "responsive-block-editor-addons-cta-button-size-large") {
                         this.props.setAttributes({buttonTextFontSize: 26})
+                        this.props.setAttributes({ctaHpadding: 30})
+                        this.props.setAttributes({ctaVpadding: 20})
                     }
                     if(value == "responsive-block-editor-addons-cta-button-size-extralarge") {
                         this.props.setAttributes({buttonTextFontSize: 32})
+                        this.props.setAttributes({ctaHpadding: 30})
+                        this.props.setAttributes({ctaVpadding: 20})
                     }
 
                   this.props.setAttributes({

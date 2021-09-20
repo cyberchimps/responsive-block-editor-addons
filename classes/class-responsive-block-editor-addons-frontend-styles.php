@@ -2751,7 +2751,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTitleFontWeight'       => '400',
 				'ctaTextLineHeight'        => 1.75,
 				'ctaTextFontWeight'        => '400',
-				'ctaVpadding'              => 10,
+				'ctaVpadding'              => 18,
 				'ctaHpadding'              => 14,
 				'ctaBorderWidth'           => 1,
 				'ctaBorderStyle'           => 'solid',
@@ -2815,7 +2815,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonTextFontSizeTablet' => 18,
 				'buttonTextLineHeight'     => 1,
 				'buttonTextFontWeight'     => '400',
-				'ctaBorderRadius'          => 0,
+				'ctaBorderRadius'          => 4,
 				'ctaVpaddingMobile'        => 10,
 				'ctaHpaddingMobile'        => 14,
 				'ctaVpaddingTablet'        => 10,
@@ -7615,7 +7615,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding' => self::get_css_value( $attr['paddingTablet'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
-					'margin-bottom' => self::get_css_value( 20, 'px' ) . ' !important',
+					'margin-bottom' => self::get_css_value( 0, 'px' ) . ' !important',
 				),
 				' .responsive-block-editor-addons-testimonial-text' => array(
 					'font-size'     => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
