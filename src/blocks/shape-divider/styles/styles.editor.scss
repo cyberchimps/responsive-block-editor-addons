@@ -32,8 +32,8 @@
     }
   }
 }
-.wp-block[data-type="responsive-block-editor-addons/shape-divider"] {
 
+.wp-block[data-type="responsive-block-editor-addons/shape-divider"] {
   .has-fixed-toolbar & .block-editor-block-list__block-edit::before {
     display: none;
   }
