@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenber
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,24 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
+= 1.3.4 - 22nd September 2021 =
+* New - Anchor Block
+* New - Call/Mail Link Button Block
+* New - Inline Notice Block
+* New - Progress Bar Block
+* New - Social Share Block
+* New - Tabs Block
+* New - Taxonomy List Block
+* New - WP Search Block
+* Feature - Added responsive spacing options to multiple blocks
+* Feature - Flipbox - Added typography options
+* Feature - Multibuttons - Changed default background color for button
+* Fix - Image Boxes - Title & description spacing
+* Fix - Icon List - Icon is not center to its background in Table and Mobile view
+* Fix - Flipbox - Inside section block, gutter option does not work correctly
+* Fix - Team - Extra padding to image bottom in editor
+* Fix - Table of Contents - Anchor doesn’t work when headings are inside section/cover block
+
 = 1.3.3 - 2nd September 2021 =
 * New - Feature to import pre-designed Gutenberg sections and pages for the Responsive Gutenberg Blocks Library.
 
