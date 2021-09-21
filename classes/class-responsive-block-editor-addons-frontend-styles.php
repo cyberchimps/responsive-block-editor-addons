@@ -11871,7 +11871,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-radius' => self::get_css_value( $attr['borderRadius'], '%' ),
 				),
 				' .responsive-block-editor-addons-instagram-wrapper' => array(
-					'width' => self::get_css_value( $attr['gridSize'], 'px' ),
+					'width' => self::get_css_value( 100, '%' ),
 				),
 			);
 
@@ -11886,6 +11886,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $attr['instaLeftMarginMobile'], 'px' ) . '!important',
 					'margin-right'   => self::get_css_value( $attr['instaRightMarginMobile'], 'px' ) . '!important',
 				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columnsMobile'] . ', 1fr)',
+				),
 			);
 
 			$tablet_selectors = array(
@@ -11898,6 +11901,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'  => self::get_css_value( $attr['instaBottomMarginTablet'], 'px' ) . '!important',
 					'margin-left'    => self::get_css_value( $attr['instaLeftMarginTablet'], 'px' ) . '!important',
 					'margin-right'   => self::get_css_value( $attr['instaRightMarginTablet'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columnsTablet'] . ', 1fr)',
 				),
 			);
 
@@ -11923,6 +11929,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'block_id'                 => '',
 				'token'                    => '',
 				'columns'                  => '4',
+				'columnsMobile'            => '4',
+				'columnsTablet'            => '4',
 				'numberOfItems'            => 4,
 				'gridGap'                  => 0,
 				'thumbs'                   => '',

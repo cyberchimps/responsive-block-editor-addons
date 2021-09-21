@@ -159,7 +159,7 @@ export default class Edit extends Component {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://docs.oceanwp.org/article/487-how-to-get-instagram-access-token"
+              href="https://developers.facebook.com/docs/instagram-basic-display-api"
             >
               {" steps "}
             </a>

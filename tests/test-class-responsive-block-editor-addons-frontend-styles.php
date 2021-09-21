@@ -3709,6 +3709,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'block_id'                 => '',
 			'token'                    => '',
 			'columns'                  => '4',
+			'columnsMobile'            => '4',
+			'columnsTablet'            => '4',
 			'numberOfItems'            => 4,
 			'gridGap'                  => 0,
 			'thumbs'                   => '',

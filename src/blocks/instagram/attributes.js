@@ -10,6 +10,14 @@ const attributes = {
     type: "string",
     default: 4,
   },
+  columnsMobile: {
+    type: "string",
+    default: 4,
+  },
+  columnsTablet: {
+    type: "string",
+    default: 4,
+  },
   numberOfItems: {
     type: "number",
     default: 4,

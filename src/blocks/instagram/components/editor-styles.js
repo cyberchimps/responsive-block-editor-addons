@@ -36,6 +36,8 @@ function EditorStyles(props) {
     instaRightMarginTablet,
     instaLeftMarginTablet, 
     gridSize,
+    columnsMobile,
+    columnsTablet,
   } = props.attributes;
 
   var selectors = {
@@ -50,7 +52,7 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(instaRightMargin, "px"),
     },
     " .responsive-block-editor-addons-instagram-wrapper": {
-      "width": generateCSSUnit(gridSize, "px"),
+      "width": generateCSSUnit(100, "%"),
     },
     " .responsive-block-editor-addons-intro-page": {
       border: "1px solid black",
@@ -79,6 +81,9 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(instaLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(instaRightMarginMobile, "px"),
     },
+    " .responsive-block-editor-addons-instagram-posts-container": {
+      "grid-template-columns": `repeat(${columnsMobile}, 1fr)`,
+    },
   };
 
   var tablet_selectors = {
@@ -91,6 +96,9 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(instaBottomMarginTablet, "px"),
       "margin-left": generateCSSUnit(instaLeftMarginTablet, "px"),
       "margin-right": generateCSSUnit(instaRightMarginTablet, "px"),
+    },
+    " .responsive-block-editor-addons-instagram-posts-container": {
+      "grid-template-columns": `repeat(${columnsTablet}, 1fr)`,
     },
   };
 
