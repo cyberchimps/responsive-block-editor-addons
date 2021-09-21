@@ -3700,4 +3700,50 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		$values = self::$rbea_frontend_styles->get_responsive_block_how_to_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
 	}
+
+	/**
+	 * Test for Instagram default attributes
+	 */
+	public function test_get_responsive_block_instagram_default_attributes() {
+		$expected_values = array(
+			'block_id'                 => '',
+			'token'                    => '',
+			'columns'                  => '4',
+			'numberOfItems'            => 4,
+			'gridGap'                  => 0,
+			'thumbs'                   => '',
+			'backgroundColor'          => 'transparent',
+			'borderRadius'             => 0,
+			'hasEqualImages'           => false,
+			'showCaptions'             => false,
+			'instaTopPadding'          => 0,
+			'instaBottomPadding'       => 0,
+			'instaRightPadding'        => 0,
+			'instaLeftPadding'         => 0,
+			'instaTopPaddingMobile'    => 0,
+			'instaBottomPaddingMobile' => 0,
+			'instaRightPaddingMobile'  => 0,
+			'instaLeftPaddingMobile'   => 0,
+			'instaTopPaddingTablet'    => 0,
+			'instaBottomPaddingTablet' => 0,
+			'instaRightPaddingTablet'  => 0,
+			'instaLeftPaddingTablet'   => 0,
+			'instaTopMargin'           => 0,
+			'instaBottomMargin'        => 0,
+			'instaRightMargin'         => 0,
+			'instaLeftMargin'          => 0,
+			'instaTopMarginMobile'     => 0,
+			'instaBottomMarginMobile'  => 0,
+			'instaRightMarginMobile'   => 0,
+			'instaLeftMarginMobile'    => 0,
+			'instaTopMarginTablet'     => 0,
+			'instaBottomMarginTablet'  => 0,
+			'instaRightMarginTablet'   => 0,
+			'instaLeftMarginTablet'    => 0,
+			'gridSize'                 => 700,
+			'imagesGap'                => 0,
+		);
+		$values          = self::$rbea_frontend_styles->get_responsive_block_instagram_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
 }
