@@ -8670,8 +8670,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			return array(
 				'block_id'               => '',
 				'spacerHeight'           => 30,
-				'spacerHeightMobile'     => 30,
-				'spacerHeightTablet'     => 30,
+				'spacerHeightMobile'     => '',
+				'spacerHeightTablet'     => '',
 				'spacerDivider'          => false,
 				'spacerDividerStyle'     => 'solid',
 				'spacerDividerColor'     => '#000',
