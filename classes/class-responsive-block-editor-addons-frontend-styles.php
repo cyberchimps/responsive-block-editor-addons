@@ -682,17 +682,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'grid-column-gap' => self::get_css_value( $column_gap_mobile, 'px' ),
 					'grid-row-gap'    => self::get_css_value( $row_gap_mobile, 'px' ),
 				),
-				' .responsive-block-editor-addons-block-post-grid-byline' => array(
-					'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingMobile'], 'px' ),
-				),
 				' .responsive-block-editor-addons-block-post-grid-text .responsive-block-editor-addons-block-post-grid-excerpt' => array(
 					'margin-bottom' => self::get_css_value( $attr['excerptBottomSpacingMobile'], 'px' ),
+					'font-size' => self::get_css_value( $attr['excerptFontSizeMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-byline' => array(
 					'font-size' => self::get_css_value( $attr['metaFontSizeMobile'], 'px' ),
-				),
-				' .responsive-block-editor-addons-block-post-grid-text .responsive-block-editor-addons-block-post-grid-excerpt' => array(
-					'font-size' => self::get_css_value( $attr['excerptFontSizeMobile'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-more-link' => array(
 					'font-size' => self::get_css_value( $attr['continueFontSizeMobile'], 'px' ),
@@ -711,17 +707,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-post-grid-items article' => array(
 					'padding' => self::get_css_value( $tablet_content_padding, 'px' ) . ' !important',
 				),
-				' .responsive-block-editor-addons-block-post-grid-byline' => array(
-					'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingTablet'], 'px' ),
-				),
 				' .responsive-block-editor-addons-block-post-grid-text .responsive-block-editor-addons-block-post-grid-excerpt' => array(
 					'margin-bottom' => self::get_css_value( $attr['excerptBottomSpacingTablet'], 'px' ),
+					'font-size' => self::get_css_value( $attr['excerptFontSizeTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-byline' => array(
 					'font-size' => self::get_css_value( $attr['metaFontSizeTablet'], 'px' ),
-				),
-				' .responsive-block-editor-addons-block-post-grid-text .responsive-block-editor-addons-block-post-grid-excerpt' => array(
-					'font-size' => self::get_css_value( $attr['excerptFontSizeTablet'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-more-link' => array(
 					'font-size' => self::get_css_value( $attr['continueFontSizeTablet'], 'px' ),
@@ -1162,7 +1154,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentPadding'              => 30,
 				'contentPaddingMobile'        => 10,
 				'mobileContentPadding'        => 999, // For compatibility with v1.3.2.
-				'contentPaddingTablet'        => 30,
+				'contentPaddingTablet'        => '',
 				'continueFontSize'            => '',
 				'continueLineHeight'          => '',
 				'continueFontWeight'          => '',

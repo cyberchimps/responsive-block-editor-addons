@@ -580,7 +580,7 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'contentPaddingTablet'        => array(
 					'type'    => 'number',
-					'default' => 10,
+					'default' => '',
 				),
 				'continueFontSize'            => array(
 					'type'    => 'number',
