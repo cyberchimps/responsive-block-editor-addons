@@ -1152,7 +1152,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleColor'                  => '#444444',
 				'titleHoverColor'             => '#444444',
 				'contentPadding'              => 30,
-				'contentPaddingMobile'        => 10,
+				'contentPaddingMobile'        => '',
 				'mobileContentPadding'        => 999, // For compatibility with v1.3.2.
 				'contentPaddingTablet'        => '',
 				'continueFontSize'            => '',
@@ -1812,10 +1812,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowPosition'    => 'outset',
 				'titlePadding'         => 10,
 				'contentPadding'       => 10,
-				'titlePaddingMobile'   => 10,
-				'contentPaddingMobile' => 10,
-				'titlePaddingTablet'   => 10,
-				'contentPaddingTablet' => 10,
+				'titlePaddingMobile'   => '',
+				'contentPaddingMobile' => '',
+				'titlePaddingTablet'   => '',
+				'contentPaddingTablet' => '',
 				'borderColor'          => 'empty', // For compatibility with v1.3.2.
 				'borderStyle'          => 'empty', // For compatibility with v1.3.2.
 				'borderWidth'          => 999, // For compatibility with v1.3.2.
