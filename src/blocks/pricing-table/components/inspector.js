@@ -263,6 +263,8 @@ export default class Inspector extends Component {
         imageSize,
         imageShape,
         imageWidth,
+        imageWidthTablet,
+        imageWidthMobile,
         ctaHoverBorderColor,
         ctaHpaddingTablet,
         ctaHpaddingMobile,

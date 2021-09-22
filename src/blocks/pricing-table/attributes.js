@@ -397,35 +397,35 @@ const attributes = {
   },
   blockTopPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockTopPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   columnTopPadding: {
     type: "number",
@@ -445,35 +445,35 @@ const attributes = {
   },
   columnTopPaddingMobile: {
     type: "number",
-    default: 64,
+    default: '',
   },
   columnBottomPaddingMobile: {
     type: "number",
-    default: 64,
+    default: '',
   },
   columnLeftPaddingMobile: {
     type: "number",
-    default: 24,
+    default: '',
   },
   columnRightPaddingMobile: {
     type: "number",
-    default: 24,
+    default: '',
   },
   columnTopPaddingTablet: {
     type: "number",
-    default: 64,
+    default: '',
   },
   columnBottomPaddingTablet: {
     type: "number",
-    default: 64,
+    default: '',
   },
   columnLeftPaddingTablet: {
     type: "number",
-    default: 24,
+    default: '',
   },
   columnRightPaddingTablet: {
     type: "number",
-    default: 24,
+    default: '',
   },
   showImage: {
     type: "boolean",
@@ -535,7 +535,6 @@ const attributes = {
   },
   subpriceSpaceMobile: {
     type: "number",
-    default: 0,
   },
   buttonSpaceMobile: {
     type: "number",
@@ -551,7 +550,6 @@ const attributes = {
   },
   subpriceSpaceTablet: {
     type: "number",
-    default: 0,
   },
   buttonSpaceTablet: {
     type: "number",
@@ -585,19 +583,19 @@ const attributes = {
   },
   ctaHpaddingTablet: {
     type: "number",
-    default: 30,
+    default: '',
   },
   ctaHpaddingMobile: {
     type: "number",
-    default: 30,
+    default: '',
   },
   ctaVpaddingTablet: {
     type: "number",
-    default: 15,
+    default: '',
   },
   ctaVpaddingMobile: {
     type: "number",
-    default: 15,
+    default: '',
   },
   titleFontSizeMobile: {
     type: "number",
