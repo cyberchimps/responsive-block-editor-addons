@@ -117,17 +117,21 @@ class ImageBoxesCest
     public $boxShadowOptionsBtn = '(//div[@class="res-typography-option-actions"]//button)[1]';
     public $boxShadowResetBtn = '(//div[@class="res-typography-option-actions"]//button)[2]';
     public $boxShadowColor = '(//div[@class="components-circular-option-picker__swatches"])[1]//div[5]';
-    public $boxShadowLeft = '(//*[contains(@id, "inspector-input-control")])[3]';
-    public $boxShadowTop = '(//*[contains(@id, "inspector-input-control")])[4]';
-    public $boxShadowBlur = '(//*[contains(@id, "inspector-input-control")])[5]';
-    public $boxShadowSpread = '(//*[contains(@id, "inspector-input-control")])[6]';
+    public $boxShadowLeft = '(//*[contains(@id, "inspector-input-control")])[2]';
+    public $boxShadowTop = '(//*[contains(@id, "inspector-input-control")])[3]';
+    public $boxShadowBlur = '(//*[contains(@id, "inspector-input-control")])[4]';
+    public $boxShadowSpread = '(//*[contains(@id, "inspector-input-control")])[5]';
     public $boxShadowPosition = '(//*[contains(@id, "inspector-select-control")])[2]';
     public $boxShadowPositionSelected = 'option[value="inset"]';    
-
+    
     /**
      * Arrow settings
      */
     public $arrowStyleBtn = '(//*[text() = "Arrow"])[1]';
+    public $arrowAfterContentBtn = '//input[contains(@id, "inspector-toggle-control")]';
+    public $arrowColor = '(//div[@class="components-circular-option-picker__swatches"])[1]//div[2]';
+    public $arrowSizeInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Arrow Size"]';
+    public $fArrow = '(//span[@class = "imagebox-arrow"])[1]'; 
 
     /**
      * This function runs before running each test.
@@ -145,17 +149,17 @@ class ImageBoxesCest
     /**
      * This function runs after running each test.
      */
-    // public function _after(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
-    // {
-    //     $I->amGoingTo('Remove the Image Boxes block.');
-    //     $I->amOnPage('/rbea-block');        
-    //     $I->wait(2);
-    //     $I->click($commonFunctionsPageObj->editBlockBtn);
-    //     $I->wait(1);
-    //     $I->click($this->imageBoxesBlock);
-    //     $commonFunctionsPageObj->removeBlock($I);
-    //     $loginAndLogout->userLogout($I); 
-    // }
+    public function _after(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Remove the Image Boxes block.');
+        $I->amOnPage('/rbea-block');        
+        $I->wait(2);
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->imageBoxesBlock);
+        $commonFunctionsPageObj->removeBlock($I);
+        $loginAndLogout->userLogout($I); 
+    }
 
     /**
      * This function is to open style tab settings.
@@ -694,53 +698,53 @@ class ImageBoxesCest
      */
     public function ImageBoxesBorderTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
-    //     $I->amGoingTo('Change the border setting of the Image Boxes block.');
-    //     $this->_openStyle($I, $commonFunctionsPageObj);
-    //     $I->click($this->borderStyleBtn);
-    //     $I->wait(1);
+        $I->amGoingTo('Change the border setting of the Image Boxes block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->borderStyleBtn);
+        $I->wait(1);
 
-    //     $I->amGoingTo("Change Image Boxes's border style to dashed");
-    //     $dashedBorderStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
-    //         return $webdriver->findElement(WebDriverBy::xpath($this->borderTypeSelector))->
-    //         findElement( WebDriverBy::cssSelector($this->borderTypeSelectOption) )->click();
-    //     });
-    //     $I->wait(1);
-    //     $I->click($this->borderWidth);
-    //     $commonFunctionsPageObj->field = $this->borderWidth;
-    //     $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
-    //     $I->click($this->borderRadious);
-    //     $commonFunctionsPageObj->field = $this->borderRadious;
-    //     $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
-    //     $I->wait(1); 
-    //     $I->click($this->borderColor); 
-    //     $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->amGoingTo("Change Image Boxes's border style to dashed");
+        $dashedBorderStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->borderTypeSelector))->
+            findElement( WebDriverBy::cssSelector($this->borderTypeSelectOption) )->click();
+        });
+        $I->wait(1);
+        $I->click($this->borderWidth);
+        $commonFunctionsPageObj->field = $this->borderWidth;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->click($this->borderRadious);
+        $commonFunctionsPageObj->field = $this->borderRadious;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click($this->borderColor); 
+        $commonFunctionsPageObj->publishAndViewPage($I);
         
-    //     $I->amGoingTo('Check border style in frontend');
-    //     $attr = array(
-    //         'border-color' => 'rgb(16, 101, 156)',
-    //         'border-style' => 'dashed',
-    //         'border-width' => '3px',
-    //         'border-radius' => '5px'
-    //     );
-    //     $this->_checkBorderStyle($I, $attr);    
+        $I->amGoingTo('Check border style in frontend');
+        $attr = array(
+            'border-color' => 'rgb(16, 101, 156)',
+            'border-style' => 'dashed',
+            'border-width' => '3px',
+            'border-radius' => '5px'
+        );
+        $this->_checkBorderStyle($I, $attr);    
         
-    //     $I->amGoingTo('Reset border style');
-    //     $this->_openStyle($I, $commonFunctionsPageObj);
-    //     $I->click($this->borderStyleBtn);
-    //     $I->click($this->resetBorderWidth);
-    //     $I->click($this->resetBorderRadius);
-    //     $I->wait(1);
-    //     $I->click($this->clearBorderColor);
-    //     $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->amGoingTo('Reset border style');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->borderStyleBtn);
+        $I->click($this->resetBorderWidth);
+        $I->click($this->resetBorderRadius);
+        $I->wait(1);
+        $I->click($this->clearBorderColor);
+        $commonFunctionsPageObj->publishAndViewPage($I);
 
-    //     $I->amGoingTo('Check reset border style in frontend');
-    //     $attr = array(
-    //         'border-color' => 'rgb(0, 0, 0)',
-    //         'border-style' => 'dashed',
-    //         'border-width' => '2px',
-    //         'border-radius' => '0px'
-    //     );
-    //     $this->_checkBorderStyle($I, $attr);
+        $I->amGoingTo('Check reset border style in frontend');
+        $attr = array(
+            'border-color' => 'rgb(0, 0, 0)',
+            'border-style' => 'dashed',
+            'border-width' => '2px',
+            'border-radius' => '0px'
+        );
+        $this->_checkBorderStyle($I, $attr);
 
         $I->amGoingTo('Change Box shadow setting');
         $this->_openStyle($I, $commonFunctionsPageObj);
@@ -752,7 +756,7 @@ class ImageBoxesCest
         $I->wait(1);
         $I->scrollTo($this->boxShadowOptionsBtn, 20);
         $I->click($this->boxShadowOptionsBtn);
-        $I->wait(5);
+        $I->wait(1);
         $I->click($this->boxShadowColor);
         $I->wait(1);
 
@@ -770,7 +774,10 @@ class ImageBoxesCest
         $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '30' );
         $I->wait(1); ; 
 
-        $I->scrollTo($this->boxShadowSpread, 20);
+        $boxShadowSpread = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->boxShadowSpread))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(3);
         $I->click($this->boxShadowSpread);
         $commonFunctionsPageObj->field = $this->boxShadowSpread;
         $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
@@ -794,7 +801,7 @@ class ImageBoxesCest
         $I->scrollTo($this->boxShadowResetBtn, 20);
         $I->click($this->boxShadowResetBtn);
         $commonFunctionsPageObj->publishAndViewPage($I);
-        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(0, 102, 204) 0px 0px 0px 0px');
     }
 
     /**
@@ -810,5 +817,29 @@ class ImageBoxesCest
         $I->assertEquals($attr['border-radius'], $border->getCSSValue('border-radius'));
     }
 
-    
+    /**
+     * Tests the arrow settings of the Image Boxes Block.
+     */
+    public function ImageBoxesArrowSettingTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the arrow settings of the Image Boxes block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->arrowStyleBtn);
+        $I->wait(1);
+        $I->click($this->arrowAfterContentBtn);
+        $I->wait(1);
+        $I->click($this->arrowColor);
+        $I->click($this->arrowSizeInput);
+        $commonFunctionsPageObj->field = $this->arrowSizeInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '40' ); 
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check arrow settings in the frontend.');
+        $I->seeElement($this->fArrow);
+        $commonFunctionsPageObj->field = $this->fArrow;
+        $commonFunctionsPageObj->prop = 'font-size';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '40px');
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(16, 101, 156, 1)');
+    }
 }
