@@ -648,12 +648,10 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'default' => 20,
 				),
 				'contentPaddingMobile'   => array(
-					'type'    => 'number',
-					'default' => 20,
+					'type' => 'number',
 				),
 				'contentPaddingTablet'   => array(
-					'type'    => 'number',
-					'default' => 20,
+					'type' => 'number',
 				),
 				'authorSpace'            => array(
 					'type' => 'number',
