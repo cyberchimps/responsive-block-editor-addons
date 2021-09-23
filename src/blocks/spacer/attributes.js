@@ -1,4 +1,7 @@
 const attributes = {
+    block_id: {
+    type: "string",
+  },
   height: {
     type: "number",
     default: 100,

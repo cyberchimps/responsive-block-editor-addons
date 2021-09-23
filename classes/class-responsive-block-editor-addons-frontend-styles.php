@@ -7034,19 +7034,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$tablet_selectors = array();
 
 			$selectors = array(
-				' .responsive-block-editor-addons-spacer' => array(
+				' ' => array(
 					'height' => self::get_css_value( $attr['height'], 'px' ),
 				),
 			);
 
 			$mobile_selectors = array(
-				' .responsive-block-editor-addons-spacer' => array(
+				' ' => array(
 					'height' => self::get_css_value( $attr['heightMobile'], 'px' ),
 				),
 			);
 
 			$tablet_selectors = array(
-				' .responsive-block-editor-addons-spacer' => array(
+				'' => array(
 					'height' => self::get_css_value( $attr['heightTablet'], 'px' ),
 				),
 			);
@@ -7057,7 +7057,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'mobile'  => $mobile_selectors,
 			);
 
-			$id  = '';
+            $id  = '.responsive-block-editor-addons-spacer.block-' . $id;
 			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
 			return $css;
 		}
