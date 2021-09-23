@@ -46,19 +46,15 @@ const attributes = {
   },
   vPaddingTablet: {
     type: "number",
-    default: 10,
   },
   hPaddingTablet: {
     type: "number",
-    default: 14,
   },
   vPaddingMobile: {
     type: "number",
-    default: 10,
   },
   hPaddingMobile: {
     type: "number",
-    default: 14,
   },
   vMargin: {
     type: "number",
@@ -66,11 +62,9 @@ const attributes = {
   },
   vMarginTablet: {
     type: "number",
-    default: 10,
   },
   vMarginMobile: {
     type: "number",
-    default: 10,
   },
   hMargin: {
     type: "number",
@@ -78,11 +72,9 @@ const attributes = {
   },
   hMarginTablet: {
     type: "number",
-    default: 10,
   },
   hMarginMobile: {
     type: "number",
-    default: 5,
   },
   borderWidth: {
     type: "number",
