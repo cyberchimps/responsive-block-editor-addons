@@ -80,19 +80,19 @@ const attributes = {
   },
   titlePaddingMobile: {
     type: "number",
-    default: 10,
+    default: '',
   },
   contentPaddingMobile: {
     type: "number",
-    default: 10,
+    default: '',
   },
   titlePaddingTablet: {
     type: "number",
-    default: 10,
+    default: '',
   },
   contentPaddingTablet: {
     type: "number",
-    default: 10,
+    default: '',
   },
   borderColor: {
 	type: "string",

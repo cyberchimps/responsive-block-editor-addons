@@ -8,11 +8,11 @@ const attributes = {
   },
   spacerHeightMobile: {
     type: "number",
-    default: 30,
+    default: '',
   },
   spacerHeightTablet: {
     type: "number",
-    default: 30,
+    default: '',
   },
   spacerDivider: {
     type: "boolean",
