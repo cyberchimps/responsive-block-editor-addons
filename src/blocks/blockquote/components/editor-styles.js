@@ -90,7 +90,7 @@ function EditorStyles(props) {
       color: quoteTextColor,
       "border-color": borderColor !== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
-      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generate(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
@@ -106,7 +106,7 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
       "text-align": quoteAlign,
       "padding-left": leftPadding !== 999 && blockLeftPadding === 60 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
-      "padding-right": rightPadding !== 999 && blockRightPadding === 60 ? generate(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && blockRightPadding === 60 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
       "padding-top": topPadding !== 999 && blockTopPadding === 70 ? generateCSS(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
       "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 70 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
       "background-color":
