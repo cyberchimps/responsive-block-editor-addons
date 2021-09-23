@@ -11,6 +11,7 @@ import ColorBackgroundControl from "../../../settings-components/Block Backgroun
 import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
 import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
 import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
+import generateCSSUnit from "../../../generateCSSUnit";
 
 
 // Setup the block
@@ -107,7 +108,30 @@ export default class Inspector extends Component {
         innerWidth,
         innerWidthTablet,
         innerWidthMobile,
-
+          topPadding,
+          bottomPadding,
+          leftPadding,
+          rightPadding,
+          topPaddingTablet,
+          bottomPaddingTablet,
+          leftPaddingTablet,
+          rightPaddingTablet,
+          topPaddingMobile,
+          bottomPaddingMobile,
+          leftPaddingMobile,
+          rightPaddingMobile,
+          topMargin,
+          bottomMargin,
+          leftMargin,
+          rightMargin,
+          topMarginTablet,
+          bottomMarginTablet,
+          leftMarginTablet,
+          rightMarginTablet,
+          topMarginMobile,
+          bottomMarginMobile,
+          leftMarginMobile,
+          rightMarginMobile,
         blockTopPadding,
         blockBottomPadding,
         blockLeftPadding,
@@ -767,20 +791,20 @@ export default class Inspector extends Component {
 				<ResponsivePaddingControl
 					attrNameTemplate="block%s"
 					values={{
-						desktopTop: blockTopPadding,
-						desktopBottom: blockBottomPadding,
-						desktopLeft: blockLeftPadding,
-						desktopRight: blockRightPadding,
+						desktopTop: topPadding !== 999 && blockTopPadding === 10 ? topPadding : blockTopPadding,
+						desktopBottom: bottomPadding !== 999 && blockBottomPadding === 10 ? bottomPadding : blockBottomPadding,
+						desktopLeft: leftPadding !== 999 && blockLeftPadding === 10 ? leftPadding : blockLeftPadding,
+						desktopRight: rightPadding !== 999 && blockRightPadding === 10 ? rightPadding : blockRightPadding,
 
-						tabletTop: blockTopPaddingTablet,
-						tabletBottom: blockBottomPaddingTablet,
-						tabletLeft: blockLeftPaddingTablet,
-						tabletRight: blockRightPaddingTablet,
+						tabletTop: topPaddingTablet !== 999 && !blockTopPaddingTablet ? topPaddingTablet : blockTopPaddingTablet,
+						tabletBottom: bottomPaddingTablet !== 999 && !blockBottomPaddingTablet ? bottomPaddingTablet : blockBottomPaddingTablet,
+						tabletLeft: leftPaddingTablet !== 999 && !blockLeftPaddingTablet ? leftPaddingTablet : blockLeftPaddingTablet,
+						tabletRight: rightPaddingTablet !== 999 && !blockRightPaddingTablet ? rightPaddingTablet : blockRightPaddingTablet,
 
-						mobileTop: blockTopPaddingMobile,
-						mobileBottom: blockBottomPaddingMobile,
-						mobileLeft: blockLeftPaddingMobile,
-						mobileRight: blockRightPaddingMobile,
+						mobileTop: topPaddingMobile !== 999 && !blockTopPaddingMobile ? topPaddingMobile : blockTopPaddingMobile,
+						mobileBottom: bottomPaddingMobile !== 999 && !blockBottomPaddingMobile ? bottomPaddingMobile : blockBottomPaddingMobile,
+						mobileLeft: leftPaddingMobile !== 999 && !blockLeftPaddingMobile ? leftPaddingMobile : blockLeftPaddingMobile,
+						mobileRight: rightPaddingMobile !== 999 && !blockRightPaddingMobile ? rightPaddingMobile : blockRightPaddingMobile,
 					}}
 					setAttributes={setAttributes}
 					{...this.props}
@@ -789,20 +813,20 @@ export default class Inspector extends Component {
 				<ResponsiveMarginControl
 					attrNameTemplate="block%s"
 					values={{
-						desktopTop: blockTopMargin,
-						desktopBottom: blockBottomMargin,
-						desktopLeft: blockLeftMargin,
-						desktopRight: blockRightMargin,
+						desktopTop: topMargin !== 999 && blockTopMargin === 0 ? topMargin : blockTopMargin,
+						desktopBottom: bottomMargin !== 999 && blockBottomMargin === 0 ? bottomMargin : blockBottomMargin,
+						desktopLeft: leftMargin !== 999 && blockLeftMargin === 0 ? leftMargin : blockLeftMargin,
+						desktopRight: rightMargin !== 999 && blockRightMargin === 0 ? rightMargin : blockRightMargin,
 
-						tabletTop: blockTopMarginTablet,
-						tabletBottom: blockBottomMarginTablet,
-						tabletLeft: blockLeftMarginTablet,
-						tabletRight: blockRightMarginTablet,
+						tabletTop: topMarginTablet !== 999 && !blockTopMarginTablet ? topMarginTablet : blockTopMarginTablet,
+						tabletBottom: bottomMarginTablet !== 999 && !blockBottomMarginTablet ? bottomMarginTablet : blockBottomMarginTablet,
+						tabletLeft: leftMarginTablet !== 999 && !blockLeftMarginTablet ? leftMarginTablet : blockLeftMarginTablet,
+						tabletRight: rightMarginTablet !== 999 && !blockRightMarginTablet ? rightMarginTablet : blockRightMarginTablet,
 
-						mobileTop: blockTopMarginMobile,
-						mobileBottom: blockBottomMarginMobile,
-						mobileLeft: blockLeftMarginMobile,
-						mobileRight: blockRightMarginMobile,
+						mobileTop: topMarginMobile !== 999 && blockTopMarginMobile === "" ? topMarginMobile : blockTopMarginMobile,
+						mobileBottom: bottomMarginMobile !== 999 && blockBottomMarginMobile === "" ? bottomMarginMobile : blockBottomMarginMobile,
+						mobileLeft: leftMarginMobile !== 999 && blockLeftMarginMobile === "" ? leftMarginMobile : blockLeftMarginMobile,
+						mobileRight: rightMarginMobile !== 999 && blockRightMarginMobile === "" ? rightMarginMobile : blockRightMarginMobile,
 					}}
 					setAttributes={setAttributes}
 					{...this.props}

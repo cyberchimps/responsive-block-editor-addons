@@ -146,7 +146,7 @@ const attributes = {
   },
   ctaVpadding: {
     type: "number",
-    default: 10,
+    default: 18,
   },
   ctaHpadding: {
     type: "number",
@@ -383,7 +383,7 @@ const attributes = {
   },
   ctaBorderRadius: {
     type: "string",
-    default: 0,
+    default: 4,
   },
   ctaTextOpacity: {
     type: "number",

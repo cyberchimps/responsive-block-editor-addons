@@ -93,6 +93,51 @@ class FlipboxCest
     public $rightResetBtn = '(//button[text()="Reset"])[4]';
 
     /**
+     * Border settings
+     */
+    public $borderStyleBtn = '//button[text()="Border"]';
+    public $borderTypeSelector = '//*[contains(@id, "inspector-select-control")]';
+    public $borderTypeSelectOption = 'option[value="dashed"]';
+    public $borderTypeSelectOptionNone = 'option[value="none"]';
+    public $borderWidth = '//*[contains(@id, "inspector-input-control") and @aria-label="Border Width"]';
+    public $borderRadious = '//*[contains(@id, "inspector-input-control") and @aria-label="Border Radius"]';
+    public $borderColor = '//*[@class="components-circular-option-picker__swatches"]//div[2]/button';
+    public $resetBorderWidth = '(//button[text() = "Reset"])[1]';
+    public $resetBorderRadius = '(//button[text() = "Reset"])[2]';
+    public $clearBorderColor = '//*[text() = "Clear"]';
+
+    public $boxShadowOptionsBtn = '(//div[@class="res-typography-option-actions"]//button)[1]';
+    public $boxShadowResetBtn = '(//div[@class="res-typography-option-actions"]//button)[2]';
+    public $boxShadowColor = '(//div[@class="components-circular-option-picker__swatches"])[2]//div[5]';
+    public $boxShadowLeft = '(//*[contains(@id, "inspector-input-control")])[3]';
+    public $boxShadowTop = '(//*[contains(@id, "inspector-input-control")])[4]';
+    public $boxShadowBlur = '(//*[contains(@id, "inspector-input-control")])[5]';
+    public $boxShadowSpread = '(//*[contains(@id, "inspector-input-control")])[6]';
+    public $boxShadowPosition = '(//*[contains(@id, "inspector-select-control")])[2]';
+    public $boxShadowPositionSelected = 'option[value="inset"]';    
+
+    /**
+     * Back Button
+     */
+    public $hideBackBtn = '(//input[contains(@id, "inspector-toggle-control")])[4]';
+    public $urlInputField1 = '(//input[@aria-label="URL"])[1]';
+    public $urlInputField2 = '(//input[@aria-label="URL"])[2]';
+    public $urlInputField3 = '(//input[@aria-label="URL"])[3]';
+    public $fBackBtn = '(//a[contains(@class, "wp-block-button__link")])[1]';
+    public $openLinkInNewTab = '(//input[contains(@id, "inspector-toggle-control")])[5]';
+    public $leftPadding = '//*[contains(@id, "inspector-input-control") and @aria-label="Horizontal Padding"]';
+    public $topPadding = '//*[contains(@id, "inspector-input-control") and @aria-label="Vertical Padding"]';
+    public $fBackBtn1 = '(//a[contains(@class, "wp-block-button__link")])[1]';
+    public $bgImageBtn = '//button[text()="Background Image"]';
+    public $buttonTextColor = '(//*[@class="components-circular-option-picker__swatches"])[1]//div[5]/button';
+    public $buttonBorderColor = '(//*[@class="components-circular-option-picker__swatches"])[2]//div[2]/button';
+    public $buttonHoverTextColor = '(//*[@class="components-circular-option-picker__swatches"])[1]//div[6]/button';
+    public $buttonHoverBorderColor = '(//*[@class="components-circular-option-picker__swatches"])[2]//div[2]/button';
+    public $buttonbgColor = '(//*[@class="components-circular-option-picker__swatches"])[3]//div[6]/button';
+    public $buttonHoverBgColor = '(//*[@class="components-circular-option-picker__swatches"])[3]//div[5]/button';
+    public $opacity = '//*[contains(@id, "inspector-input-control") and @aria-label="Opacity"]';
+    
+    /**
      * This function runs before running each test.
      */
     public function _before(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
@@ -455,7 +500,7 @@ class FlipboxCest
     }
     
     /**
-     * Tests the margin spacing of the flipbox block
+     * Tests the margin spacing of the flipbox block.
      */
     public function FlipboxMarginSpacingTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
@@ -523,7 +568,7 @@ class FlipboxCest
     }
 
     /**
-     * Tests the margin spacing of the flipbox block
+     * Tests the margin spacing of the flipbox block.
      */
     public function FlipboxPaddingSpacingTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
@@ -627,5 +672,287 @@ class FlipboxCest
         $commonFunctionsPageObj->field = $selector;
         $commonFunctionsPageObj->prop = 'padding';
         $I->wait(1);
+    }
+
+    /**
+     * Tests the border of the flipbox block.
+     */
+    public function FlipboxBorderTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the border settings of the flipbox.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->borderStyleBtn);
+        $I->wait(1);
+
+        $I->amGoingTo("Change flipbox's border style to dashed");
+        $dashedBorderStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->borderTypeSelector))->
+            findElement( WebDriverBy::cssSelector($this->borderTypeSelectOption) )->click();
+        });
+        $I->wait(1);
+        $I->click($this->borderWidth);
+        $commonFunctionsPageObj->field = $this->borderWidth;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->click($this->borderRadious);
+        $commonFunctionsPageObj->field = $this->borderRadious;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click($this->borderColor); 
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check border style in frontend');
+        $attr = array(
+            'border-color' => 'rgb(16, 101, 156)',
+            'border-style' => 'dashed',
+            'border-width' => '3px',
+            'border-radius' => '5px'
+        );
+        $this->_checkBorderStyle($I, $attr);    
+        
+        $I->amGoingTo('Reset border style');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->borderStyleBtn);
+        $I->click($this->resetBorderWidth);
+        $I->click($this->resetBorderRadius);
+        $I->wait(1);
+        $I->click($this->clearBorderColor);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check reset border style in frontend');
+        $attr = array(
+            'border-color' => 'rgb(51, 51, 51)',
+            'border-style' => 'dashed',
+            'border-width' => '2px',
+            'border-radius' => '0px'
+        );
+        $this->_checkBorderStyle($I, $attr);
+
+        $I->amGoingTo('Change Box shadow setting');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->borderStyleBtn);
+        $dashedBorderStyle = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->borderTypeSelector))->
+            findElement( WebDriverBy::cssSelector($this->borderTypeSelectOptionNone) )->click();
+        });
+        $I->scrollTo($this->boxShadowOptionsBtn, 20);
+        $I->click($this->boxShadowOptionsBtn);
+        $I->wait(2);
+        $I->click($this->boxShadowColor);
+        $I->wait(1);
+
+        $I->click($this->boxShadowLeft);
+        $commonFunctionsPageObj->field = $this->boxShadowLeft;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->wait(1); 
+
+        $I->click($this->boxShadowTop);
+        $commonFunctionsPageObj->field = $this->boxShadowTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click($this->boxShadowBlur);
+        $commonFunctionsPageObj->field = $this->boxShadowBlur;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '30' );
+        $I->wait(1); ; 
+
+        $I->click($this->boxShadowSpread);
+        $commonFunctionsPageObj->field = $this->boxShadowSpread;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1);  
+        $boxShadowPosition = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->boxShadowPosition))->
+            findElement( WebDriverBy::cssSelector($this->boxShadowPositionSelected) )->click();
+        });
+        $I->wait(2);
+
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check box shadow style in frontend');
+        $commonFunctionsPageObj->field = $this->fFlipBoxFront;
+        $commonFunctionsPageObj->prop = 'box-shadow';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51) 3px 5px 30px 5px inset');
+
+        $I->amGoingTo('Reset box shadow style');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->borderStyleBtn);
+        $I->scrollTo($this->boxShadowResetBtn, 20);
+        $I->click($this->boxShadowResetBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
+    }
+
+    /**
+     * This function checks frontend border settings
+     */
+    public function _checkBorderStyle( $I, $attr) {
+        $border = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fFlipBoxFront));
+        });
+        $I->assertEquals($attr['border-color'], $border->getCSSValue('border-color'));
+        $I->assertEquals($attr['border-style'], $border->getCSSValue('border-style'));
+        $I->assertEquals($attr['border-width'], $border->getCSSValue('border-width'));
+        $I->assertEquals($attr['border-radius'], $border->getCSSValue('border-radius'));
+    }
+
+    /**
+     * Tests the back button hide and show settings of the flipbox block.
+     */
+    public function FlipboxBackButtonHideShowTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Hide back button of the flipbox');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(2);
+        $I->click($this->flipboxBlock);
+        $I->click($this->backBtn);
+        $I->wait(1);
+        $I->click($this->hideBackBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the back button in the frontend.');
+        $I->wait(1);
+        $I->moveMouseOver($this->fFlipboxItem);
+        $I->wait(1);
+        $I->cantSeeElement($this->fBackBtn);
+     
+        $I->amGoingTo('Show back button of the flipbox');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(2);
+        $I->click($this->flipboxBlock);  
+        $I->click($this->hideBackBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the back button in the frontend.');
+        $I->wait(1);
+        $I->scrollTo($this->fBackBtn, 30);
+        $I->moveMouseOver($this->fFlipboxItem);
+        $I->wait(1);        
+        $I->seeElement($this->fBackBtn);
+        $I->wait(1);
+    }
+
+    /**
+     * Tests the back button settings tests of the flipbox block
+     */
+    public function FlipboxBackButtonSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the back buttons settings of the flipbox.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->flipboxBlock);
+        $I->click($this->backBtn);
+        $I->click('Back Button Settings');
+        $I->click($this->urlInputField1);
+        $I->fillField($this->urlInputField1, 'https://www.google.com');
+        $I->click($this->openLinkInNewTab);
+        $I->wait(1);
+        $I->click('Spacing Settings');
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->desktopView);
+        $I->click($this->leftPadding);
+        $commonFunctionsPageObj->field = $this->leftPadding;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '30' );
+        $desktopView2 = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->desktopView2))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->click($this->desktopView2);
+        $I->click($this->topPadding);
+        $commonFunctionsPageObj->field = $this->topPadding;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '15' );
+        $I->wait(1);
+        $I->click('Spacing Settings');
+        $I->wait(1); 
+        $I->click('Border Settings');
+        $I->selectOption('Border Style', 'Dotted');
+        $I->click($this->borderWidth);
+        $commonFunctionsPageObj->field = $this->borderWidth;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->click($this->borderRadious);
+        $commonFunctionsPageObj->field = $this->borderRadious;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click('Border Settings');
+        $I->wait(1);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the frontend for the back button settings.');
+        $I->seeInSource('<a href="https://www.google.com" target="_blank"');
+        $I->wait(1);
+        $I->scrollTo($this->fBackBtn1, 20);
+        $I->moveMouseOver($this->fBackBtn1);
+        $I->wait(1);
+        $commonFunctionsPageObj->field = $this->fBackBtn1;
+        $commonFunctionsPageObj->prop = 'padding-left';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '30px');
+        $commonFunctionsPageObj->prop = 'padding-top';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '15px');
+        $commonFunctionsPageObj->prop = 'border';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '3px dotted rgb(0, 102, 204)');
+
+        $I->amGoingTo("Change back button's color settings");
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->flipboxBlock);
+        $I->wait(2);
+        $I->click('Back Button Settings');
+        $I->click('Color Settings');
+        $I->scrollTo($this->bgImageBtn, 20);
+        $I->click('Normal');
+        $I->wait(1);
+        $I->click($this->buttonTextColor);
+        $I->click($this->buttonBorderColor);
+        $I->selectOption('Background Type', 'Color');
+        $I->click($this->buttonbgColor);
+        $I->click('Hover');
+        $I->wait(1);
+        $I->click($this->buttonHoverTextColor);
+        $I->click($this->buttonHoverBorderColor);
+        $I->selectOption('Background Type', 'Color');
+        $I->click($this->buttonHoverBgColor);
+        $I->wait(1);
+        $I->click($this->opacity);
+        $commonFunctionsPageObj->field = $this->opacity;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '94px' );
+        $commonFunctionsPageObj->publishAndViewPage($I); 
+
+        $I->amGoingTo('Check the color settings of flipbox button');
+        $I->scrollTo($this->fBackBtn, 20);
+        $I->wait(1);
+        $I->moveMouseOver($this->fFlipboxItem);
+        $commonFunctionsPageObj->field = $this->fBackBtn;
+        $commonFunctionsPageObj->prop = 'color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)');
+        $commonFunctionsPageObj->prop = 'border-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(16, 101, 156)');
+        $commonFunctionsPageObj->prop = 'background-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(255, 255, 255, 1)');
+
+        $I->click($this->fFlipboxItem);
+        $I->wait(1);
+        $I->moveMouseOver($this->fBackBtn);
+        $commonFunctionsPageObj->field = $this->fBackBtn;
+        $commonFunctionsPageObj->prop = 'color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(255, 255, 255, 1)');
+        $commonFunctionsPageObj->prop = 'border-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(16, 101, 156)');
+        $commonFunctionsPageObj->prop = 'background-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)');
+        $I->wait(1);
+    }
+
+    /**
+     * Tests the back button typography 
+     */
+    public function FlipboxBackButtonTypographyTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the back button typography of the flipbox block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->flipboxBlock);
+        $I->click($this->backBtn); 
+        $I->click('Style');
+        $I->click('Back Button Typography');
+        $arr = array('18px', '16px', '16px', '36px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, 'Back Button Typography', $this->fBackBtn, $arr);   
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '18px'); 
     }
 }

@@ -1033,7 +1033,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'ctaTitleFontWeight'       => '400',
 			'ctaTextLineHeight'        => 1.75,
 			'ctaTextFontWeight'        => '400',
-			'ctaVpadding'              => 10,
+			'ctaVpadding'              => 18,
 			'ctaHpadding'              => 14,
 			'ctaBorderWidth'           => 1,
 			'ctaBorderStyle'           => 'solid',
@@ -1097,7 +1097,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonTextFontSizeTablet' => 18,
 			'buttonTextLineHeight'     => 1,
 			'buttonTextFontWeight'     => '400',
-			'ctaBorderRadius'          => 0,
+			'ctaBorderRadius'          => 4,
 			'ctaVpaddingMobile'        => 10,
 			'ctaHpaddingMobile'        => 14,
 			'ctaVpaddingTablet'        => 10,
@@ -2851,7 +2851,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		 */
 	public function test_get_responsive_block_advanced_columns_default_attributes() {
 		$expected_values = array(
-			'columnGap'                => 'nogap',
+			'columnGap'                => 'default',
 			'widthType'                => 'px',
 			'contentWidth'             => 'theme',
 			'stack'                    => 'mobile',

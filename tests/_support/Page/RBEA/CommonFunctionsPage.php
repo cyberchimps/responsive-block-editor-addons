@@ -30,6 +30,16 @@ class CommonFunctionsPage
      */
     public $removeBlockToolbarTab = '//button[@aria-label="Options" and @tabindex]';
     public $removeBlockBtn = '//*[@id="editor"]/div[2]/div/div/div/div/div[3]/div/button/span[1]';
+
+    /**
+     * Styles
+     */
+    public $typographyStyleBtn = '//button[text()="Typography"]';
+    public $titleTypography = '//*[text() = "Title Typography"]';
+    public $descriptionTypography = '//*[text() = "Description Typography"]';
+    public $paddingStyleBtn = '//*[text() = "Padding"]';
+    public $spacingStyleBtn = '//button[text()="Spacing"]';
+    public $borderStyleBtn = '//button[text()="Border"]';
    
 
     /**

@@ -1,4 +1,4 @@
-const ITEM_COUNT = 3;
+const ITEM_COUNT = 1;
 
 const flipboxArray = [];
 const defaultIcons = ["accusoft", "acquisitions-incorporated", "ad"];
@@ -634,6 +634,10 @@ const attributes = {
   ctaHoverBorderColor: {
     type: "string",
     defaulr: "#333",
+  },
+  buttonTarget: {
+    type: "boolean",
+    default: false,
   },
 };
 

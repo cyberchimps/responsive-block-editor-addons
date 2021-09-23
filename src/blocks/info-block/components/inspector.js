@@ -1075,7 +1075,7 @@ export default class Inspector extends Component {
                   />
                 </Fragment>
               )}
-              {resctaType !== "none" && resctaType !== "complete_box" && resctaType !== "button" && (
+              {resctaType === "text" && (
                 <Fragment>
                   <TextControl
                     label={__("Link", "responsive-block-editor-addons")}
@@ -1461,38 +1461,38 @@ export default class Inspector extends Component {
 				  	)}
 					{resshowTitle && (
 						<TypographyHelperControl
-							title={__("Title Typography", "responsive-block-editor-addons")} 
+							title={__("Title Typography", "responsive-block-editor-addons")}
 							attrNameTemplate="reshead%s"
 							values = {{
-								family: resheadFontFamily, 
-								size: resheadFontSize, 
-								sizeMobile: resheadFontSizeMobile, 
-								sizeTablet: resheadFontSizeTablet, 
-								weight: resheadFontWeight, 
+								family: resheadFontFamily,
+								size: resheadFontSize,
+								sizeMobile: resheadFontSizeMobile,
+								sizeTablet: resheadFontSizeTablet,
+								weight: resheadFontWeight,
 								height: resheadLineHeight,
 							}}
 							showLetterSpacing = { false }
 							showTextTransform = { false }
 							setAttributes={ setAttributes }
-							{...this.props}            
+							{...this.props}
 						/>
 					)}
 					{resshowDesc && (
 						<TypographyHelperControl
-							title={__("Description Typography", "responsive-block-editor-addons")} 
+							title={__("Description Typography", "responsive-block-editor-addons")}
 							attrNameTemplate="ressubHead%s"
 							values = {{
-								family: ressubHeadFontFamily, 
-								size: ressubHeadFontSize, 
-								sizeMobile: ressubHeadFontSizeMobile, 
-								sizeTablet: ressubHeadFontSizeTablet, 
-								weight: ressubHeadFontWeight, 
+								family: ressubHeadFontFamily,
+								size: ressubHeadFontSize,
+								sizeMobile: ressubHeadFontSizeMobile,
+								sizeTablet: ressubHeadFontSizeTablet,
+								weight: ressubHeadFontWeight,
 								height: ressubHeadLineHeight,
 							}}
 							showLetterSpacing = { false }
 							showTextTransform = { false }
 							setAttributes={ setAttributes }
-							{...this.props}            
+							{...this.props}
 						/>
 					)}
 			  	</PanelBody>
