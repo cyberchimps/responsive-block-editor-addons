@@ -98,18 +98,21 @@ const attributes = {
   },
   borderColor: {
     type: "string",
+    default: "#000",
   },
   borderHColor: {
     type: "string",
   },
   color: {
     type: "string",
+    default: "#000",
   },
   background: {
     type: "string",
   },
   hColor: {
     type: "string",
+    default: "#000",
   },
   sizeType: {
     type: "string",

@@ -10,6 +10,15 @@ import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ButtonSettingsControl from "../../../settings-components/Button Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -18,6 +27,7 @@ const { Component, Fragment } = wp.element;
 // Import block components
 const {
   InspectorControls,
+  InspectorAdvancedControls,
   PanelColorSettings,
   RichText,
   AlignmentToolbar,
@@ -54,8 +64,6 @@ export default class Inspector extends Component {
     this.toggleBoxTarget = this.toggleBoxTarget.bind(this);
     this.toggleResponsive = this.toggleResponsive.bind(this);
     this.getCtaicon = this.getCtaicon.bind(this);
-    this.onSelectImage = this.onSelectImage.bind(this);
-    this.onRemoveImage = this.onRemoveImage.bind(this);
   }
 
   getIfbIcon(value) {
@@ -98,17 +106,17 @@ export default class Inspector extends Component {
    * Function Name: toggleTarget.
    */
   toggleTarget() {
-    const { resctaTarget } = this.props.attributes;
+    const { buttonTarget } = this.props.attributes;
     const { setAttributes } = this.props;
 
-    setAttributes({ resctaTarget: !resctaTarget });
+    setAttributes({ buttonTarget: !buttonTarget });
   }
 
   toggleBoxTarget() {
-    const {resBoxTarget} = this.props.attributes;
-    const {setAttributes} = this.props;
+    const { resBoxTarget } = this.props.attributes;
+    const { setAttributes } = this.props;
 
-    setAttributes({resBoxTarget: !resBoxTarget});
+    setAttributes({ resBoxTarget: !resBoxTarget });
   }
 
   /**
@@ -148,7 +156,11 @@ export default class Inspector extends Component {
         resseparatorWidthType,
         resseperatorSpace,
         resheadSpace,
+        resheadSpaceMobile,
+        resheadSpaceTablet,
         ressubHeadSpace,
+        ressubHeadSpaceMobile,
+        ressubHeadSpaceTablet,
         icon,
         iconColor,
         resIconSize,
@@ -165,20 +177,19 @@ export default class Inspector extends Component {
         resctaType,
         resctaText,
         resctaLink,
-        resctaTarget,
+        buttonTarget,
         ctaIcon,
         resctaLinkColor,
         resctaFontSize,
         resctaFontWeight,
-        resctaBtnLinkColor,
-        resctaBgColor,
-        ctaBtnVertPadding,
-        ctaBtnHrPadding,
-        resctaBorderStyle,
-        resctaBorderColor,
-        resctaBorderWidth,
-        resctaBorderRadius,
+        ctaColor,
+        ctaBackColor,
+        ctaVpadding,
+        ctaHpadding,
+        ctaBorderColor,
         resprefixSpace,
+        resprefixSpaceMobile,
+        resprefixSpaceTablet,
         iconLeftMargin,
         iconRightMargin,
         iconTopMargin,
@@ -218,20 +229,23 @@ export default class Inspector extends Component {
         imageBoxShadowBlur,
         imageBoxShadowSpread,
         imageBoxShadowPosition,
-        boxBackgroundColor,
+        backgroundColor,
         contentPadding,
+        contentPaddingMobile,
+        contentPaddingTablet,
         opacity,
         dimRatio,
         imgURL,
         imgID,
-        hoverctaBtnLinkColor,
-        hoverctaBgColor,
-        hoverctaBorderColor,
+        ctaHoverColor,
+        ctaHoverBackColor,
+        ctaHoverBorderColor,
         imagePosition,
         imageRepeat,
         thumbsize,
-        backgroundAttachment,
         sepSpace,
+        sepSpaceMobile,
+        sepSpaceTablet,
         icon_color,
         icon_hcolor,
         resImageBorderColor,
@@ -247,6 +261,8 @@ export default class Inspector extends Component {
         ctaTextFontWeight,
         ctaTextLineHeight,
         ctaBottomMargin,
+        ctaBottomMarginMobile,
+        ctaBottomMarginTablet,
         resBoxLink,
         resBoxTarget,
         hoverboxShadowColor,
@@ -261,6 +277,26 @@ export default class Inspector extends Component {
         iconBorderRadius,
         iconBorderWidth,
         iconPadding,
+        backgroundImage,
+        backgroundImagePosition,
+        backgroundAttachment,
+        backgroundImageRepeat,
+        backgroundImageSize,
+        ctaBorderStyle,
+        ctaBorderWidth,
+        ctaBorderRadius,
+        ctaHpaddingTablet,
+        ctaHpaddingMobile,
+        ctaVpaddingTablet,
+        ctaVpaddingMobile,
+        buttonbackgroundColor1,
+        buttonbackgroundColor2,
+        buttoncolorLocation1,
+        buttoncolorLocation2,
+        buttongradientDirection,
+        buttonbackgroundType,
+        buttonHbackgroundType,
+        zIndex,
       },
       setAttributes,
     } = this.props;
@@ -306,25 +342,7 @@ export default class Inspector extends Component {
     ];
     // Update color values
     const onChangeBackgroundColor = (value) =>
-      setAttributes({ boxBackgroundColor: value });
-
-    // Change the image
-    const onSelectBgImage = (img) => {
-      setAttributes({
-        imgID: img.id,
-        imgURL: img.url,
-        imgAlt: img.alt,
-      });
-    };
-
-    // Clear the image
-    const onRemoveBgImage = () => {
-      setAttributes({
-        imgID: null,
-        imgURL: null,
-        imgAlt: null,
-      });
-    };
+      setAttributes({ backgroundColor: value });
 
     // Icon properties.
     const icon_props = {
@@ -385,17 +403,16 @@ export default class Inspector extends Component {
         <SelectControl
           label={__("Background Type", "responsive-block-editor-addons")}
           value={iconBackgroundType}
-          onChange={(value) => setAttributes({iconBackgroundType: value})}
+          onChange={(value) => setAttributes({ iconBackgroundType: value })}
           options={[
-            {value: "none", label: __("None")},
-            {value: "solid", label: __("Solid")},
-            {value: "outline", label: __("Outline")}
+            { value: "none", label: __("None") },
+            { value: "solid", label: __("Solid") },
+            { value: "outline", label: __("Outline") },
           ]}
         />
-        {
-          "outline" === iconBackgroundType && (
-            <Fragment>
-              <p className="responsive-block-editor-addons-setting-label">
+        {"outline" === iconBackgroundType && (
+          <Fragment>
+            <p className="responsive-block-editor-addons-setting-label">
               {__("Border Color", "responsive-block-editor-addons")}
               <span className="components-base-control__label">
                 <span
@@ -406,7 +423,9 @@ export default class Inspector extends Component {
             </p>
             <ColorPalette
               value={iconBackgroundColor}
-              onChange={(value) => setAttributes({ iconBackgroundColor: value })}
+              onChange={(value) =>
+                setAttributes({ iconBackgroundColor: value })
+              }
               allowReset
             />
             <p className="responsive-block-editor-addons-setting-label">
@@ -420,37 +439,40 @@ export default class Inspector extends Component {
             </p>
             <ColorPalette
               value={iconBackgroundHoverColor}
-              onChange={(value) => setAttributes({ iconBackgroundHoverColor: value })}
+              onChange={(value) =>
+                setAttributes({ iconBackgroundHoverColor: value })
+              }
               allowReset
             />
             <RangeControl
               label={__("Icon Border Radius", "responsive-block-editor-addons")}
               value={iconBorderRadius}
-              onChange={(value) => setAttributes({iconBorderRadius: value})}
+              onChange={(value) => setAttributes({ iconBorderRadius: value })}
               min={0}
               max={100}
             />
             <RangeControl
               label={__("Icon Border Width", "responsive-block-editor-addons")}
               value={iconBorderWidth}
-              onChange={(value) => setAttributes({iconBorderWidth: value})}
+              onChange={(value) => setAttributes({ iconBorderWidth: value })}
               min={0}
               max={100}
             />
             <RangeControl
-              label={__("Icon Background Padding", "responsive-block-editor-addons")}
+              label={__(
+                "Icon Background Padding",
+                "responsive-block-editor-addons"
+              )}
               value={iconPadding}
-              onChange={(value) => setAttributes({iconPadding: value})}
+              onChange={(value) => setAttributes({ iconPadding: value })}
               min={0}
               max={100}
             />
-            </Fragment>
-          )
-        }
-        {
-          "solid" === iconBackgroundType && (
-            <Fragment>
-              <p className="responsive-block-editor-addons-setting-label">
+          </Fragment>
+        )}
+        {"solid" === iconBackgroundType && (
+          <Fragment>
+            <p className="responsive-block-editor-addons-setting-label">
               {__("Background Color", "responsive-block-editor-addons")}
               <span className="components-base-control__label">
                 <span
@@ -461,7 +483,9 @@ export default class Inspector extends Component {
             </p>
             <ColorPalette
               value={iconBackgroundColor}
-              onChange={(value) => setAttributes({ iconBackgroundColor: value })}
+              onChange={(value) =>
+                setAttributes({ iconBackgroundColor: value })
+              }
               allowReset
             />
             <p className="responsive-block-editor-addons-setting-label">
@@ -475,26 +499,33 @@ export default class Inspector extends Component {
             </p>
             <ColorPalette
               value={iconBackgroundHoverColor}
-              onChange={(value) => setAttributes({ iconBackgroundHoverColor: value })}
+              onChange={(value) =>
+                setAttributes({ iconBackgroundHoverColor: value })
+              }
               allowReset
             />
             <RangeControl
-              label={__("Icon Background  Radius", "responsive-block-editor-addons")}
+              label={__(
+                "Icon Background  Radius",
+                "responsive-block-editor-addons"
+              )}
               value={iconBorderRadius}
-              onChange={(value) => setAttributes({iconBorderRadius: value})}
+              onChange={(value) => setAttributes({ iconBorderRadius: value })}
               min={0}
               max={100}
             />
             <RangeControl
-              label={__("Icon Background Padding", "responsive-block-editor-addons")}
+              label={__(
+                "Icon Background Padding",
+                "responsive-block-editor-addons"
+              )}
               value={iconPadding}
-              onChange={(value) => setAttributes({iconPadding: value})}
+              onChange={(value) => setAttributes({ iconPadding: value })}
               min={0}
               max={100}
             />
-            </Fragment>
-          )
-        }
+          </Fragment>
+        )}
       </Fragment>
     );
 
@@ -748,111 +779,19 @@ export default class Inspector extends Component {
               )}
               initialOpen={false}
             >
-              <SelectControl
-                label={__("Border Style", "responsive-block-editor-addons")}
-                value={resImageBorderStyle}
-                onChange={(value) =>
-                  setAttributes({ resImageBorderStyle: value })
-                }
-                options={[
-                  {
-                    value: "none",
-                    label: __("None", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "solid",
-                    label: __("Solid", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dotted",
-                    label: __("Dotted", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "dashed",
-                    label: __("Dashed", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "double",
-                    label: __("Double", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "groove",
-                    label: __("Groove", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "inset",
-                    label: __("Inset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "outset",
-                    label: __("Outset", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "ridge",
-                    label: __("Ridge", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              {"none" != resImageBorderStyle && (
-                <Fragment>
-                  <RangeControl
-                    label={__("Border Width", "responsive-block-editor-addons")}
-                    value={resImageBorderWidth}
-                    onChange={(value) =>
-                      setAttributes({
-                        resImageBorderWidth: value !== undefined ? value : 2,
-                      })
-                    }
-                    min={0}
-                    max={50}
-                    allowReset
-                  />
-                  <Fragment>
-                    <p>
-                      {__("Border Color", "responsive-block-editor-addons")}
-                      <span className="components-base-control__label">
-                        <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: resImageBorderColor }}
-                        ></span>
-                      </span>
-                    </p>
-                    <ColorPalette
-                      value={resImageBorderColor}
-                      onChange={(colorValue) =>
-                        setAttributes({
-                          resImageBorderColor:
-                            colorValue !== undefined ? colorValue : "#000",
-                        })
-                      }
-                      allowReset
-                    />
-                  </Fragment>
-
-                  <RangeControl
-                    label={__(
-                      "Border Radius",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={resImageBorderRadius}
-                    onChange={(value) =>
-                      setAttributes({
-                        resImageBorderRadius: value !== undefined ? value : "",
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    allowReset
-                  />
-                </Fragment>
-              )}
+                <BlockBorderHelperControl
+                    attrNameTemplate="resImage%s"
+                    values={{ radius: resImageBorderRadius, style: resImageBorderStyle, width: resImageBorderWidth, color: resImageBorderColor }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
             </PanelBody>
-            <PanelBody
-              title={__("Image Box Shadow", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              {advancedControls}
-            </PanelBody>
+              <PanelBody
+                  title={__("Image Box Shadow", "responsive-block-editor-addons")}
+                  initialOpen={false}
+              >
+                  {advancedControls}
+              </PanelBody>
           </Fragment>
         )}
       </Fragment>
@@ -860,962 +799,545 @@ export default class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
-        <PanelBody title={__("Image/Icon", "responsive-block-editor-addons")}>
-          <SelectControl
-            label={__("Select Position", "responsive-block-editor-addons")}
-            value={imgiconPosition}
-            onChange={(value) => setAttributes({ imgiconPosition: value })}
-            options={[
-              {
-                value: "above-title",
-                label: __("Above Title", "responsive-block-editor-addons"),
-              },
-              {
-                value: "below-title",
-                label: __("Below Title", "responsive-block-editor-addons"),
-              },
-              {
-                value: "left-title",
-                label: __("Left of Title", "responsive-block-editor-addons"),
-              },
-              {
-                value: "right-title",
-                label: __("Right of Title", "responsive-block-editor-addons"),
-              },
-              {
-                value: "left",
-                label: __(
-                  "Left of Text and Title",
-                  "responsive-block-editor-addons"
-                ),
-              },
-              {
-                value: "right",
-                label: __(
-                  "Right of Text and Title",
-                  "responsive-block-editor-addons"
-                ),
-              },
-            ]}
-          />
-          {(imgiconPosition == "left" || imgiconPosition == "right") && (
-            <Fragment>
+        <InspectorTabs>
+          <InspectorTab key={"content"}>
+            <PanelBody
+              title={__("Image/Icon", "responsive-block-editor-addons")}
+            >
               <SelectControl
-                label={__("Stack on", "responsive-block-editor-addons")}
-                value={stack}
+                label={__("Select Position", "responsive-block-editor-addons")}
+                value={imgiconPosition}
+                onChange={(value) => setAttributes({ imgiconPosition: value })}
+                options={[
+                  {
+                    value: "above-title",
+                    label: __("Above Title", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "below-title",
+                    label: __("Below Title", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "left-title",
+                    label: __(
+                      "Left of Title",
+                      "responsive-block-editor-addons"
+                    ),
+                  },
+                  {
+                    value: "right-title",
+                    label: __(
+                      "Right of Title",
+                      "responsive-block-editor-addons"
+                    ),
+                  },
+                  {
+                    value: "left",
+                    label: __(
+                      "Left of Text and Title",
+                      "responsive-block-editor-addons"
+                    ),
+                  },
+                  {
+                    value: "right",
+                    label: __(
+                      "Right of Text and Title",
+                      "responsive-block-editor-addons"
+                    ),
+                  },
+                ]}
+              />
+              {(imgiconPosition == "left" || imgiconPosition == "right") && (
+                <Fragment>
+                  <SelectControl
+                    label={__("Stack on", "responsive-block-editor-addons")}
+                    value={stack}
+                    options={[
+                      {
+                        value: "none",
+                        label: __("None", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "tablet",
+                        label: __("Tablet", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "mobile",
+                        label: __("Mobile", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                    help={__(
+                      "Note: Choose on what breakpoint the Info Box will stack."
+                    )}
+                    onChange={(value) => setAttributes({ stack: value })}
+                  />
+                  <p>
+                    {__(
+                      "Alignment when stacked",
+                      "responsive-block-editor-addons"
+                    )}
+                  </p>
+                  <AlignmentToolbar
+                    value={alignment}
+                    onChange={(value) =>
+                      setAttributes({
+                        alignment: value,
+                      })
+                    }
+                    controls={["left", "center", "right", "full"]}
+                    isCollapsed={false}
+                  />
+                </Fragment>
+              )}
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <SelectControl
+                label={__("Select Source", "responsive-block-editor-addons")}
+                value={source_type}
+                onChange={(value) => setAttributes({ source_type: value })}
                 options={[
                   {
                     value: "none",
                     label: __("None", "responsive-block-editor-addons"),
                   },
                   {
-                    value: "tablet",
-                    label: __("Tablet", "responsive-block-editor-addons"),
+                    value: "icon",
+                    label: __("Icon", "responsive-block-editor-addons"),
                   },
                   {
-                    value: "mobile",
-                    label: __("Mobile", "responsive-block-editor-addons"),
+                    value: "image",
+                    label: __("Image", "responsive-block-editor-addons"),
                   },
                 ]}
-                help={__(
-                  "Note: Choose on what breakpoint the Info Box will stack."
-                )}
-                onChange={(value) => setAttributes({ stack: value })}
               />
-              <p>
-                {__("Alignment when stacked", "responsive-block-editor-addons")}
-              </p>
-              <AlignmentToolbar
-                value={alignment}
-                onChange={(value) =>
-                  setAttributes({
-                    alignment: value,
-                  })
-                }
-                controls={["left", "center", "right", "full"]}
-                isCollapsed={false}
-              />
-            </Fragment>
-          )}
-          <hr className="responsive-block-editor-addons-editor__separator" />
 
-          <SelectControl
-            label={__("Select Source", "responsive-block-editor-addons")}
-            value={source_type}
-            onChange={(value) => setAttributes({ source_type: value })}
-            options={[
-              {
-                value: "none",
-                label: __("None", "responsive-block-editor-addons"),
-              },
-              {
-                value: "icon",
-                label: __("Icon", "responsive-block-editor-addons"),
-              },
-              {
-                value: "image",
-                label: __("Image", "responsive-block-editor-addons"),
-              },
-            ]}
-          />
-
-          {imgiconPosition &&
-            imgiconPosition !== "above-title" &&
-            imgiconPosition !== "below-title" && (
-              <SelectControl
-                 label={__(
-                   "Vertical Alignment",
-                   "responsive-block-editor-addons"
-                 )}
-                 value={ressourceAlign}
-                 onChange={(value) => setAttributes({ ressourceAlign: value })}
-                 options={[
-                   {
-                     value: "top",
-                     label: __("Top", "responsive-block-editor-addons"),
-                   },
-                   {
-                     value: "middle",
-                     label: __("Middle", "responsive-block-editor-addons"),
-                   },
-                 ]}
-               />
-            )}
-
-            {(stack==='none' || stack==='mobile') && imgiconPosition &&
-            imgiconPosition !== "above-title" &&
-            imgiconPosition !== "below-title" && (
-              <SelectControl
-                 label={__(
-                   "Vertical Alignment Tablet",
-                   "responsive-block-editor-addons"
-                 )}
-                 value={ressourceAlignTablet}
-                 onChange={(value) => setAttributes({ ressourceAlignTablet: value })}
-                 options={[
-                   {
-                     value: "top",
-                     label: __("Top", "responsive-block-editor-addons"),
-                   },
-                   {
-                     value: "middle",
-                     label: __("Middle", "responsive-block-editor-addons"),
-                   },
-                 ]}
-               />
-            )}
-
-            {stack==='none' && imgiconPosition &&
-            imgiconPosition !== "above-title" &&
-            imgiconPosition !== "below-title" && (
-              <SelectControl
-                 label={__(
-                   "Vertical Alignment Mobile",
-                   "responsive-block-editor-addons"
-                 )}
-                 value={ressourceAlignMobile}
-                 onChange={(value) => setAttributes({ ressourceAlignMobile: value })}
-                 options={[
-                   {
-                     value: "top",
-                     label: __("Top", "responsive-block-editor-addons"),
-                   },
-                   {
-                     value: "middle",
-                     label: __("Middle", "responsive-block-editor-addons"),
-                   },
-                 ]}
-               />
-            )}
-
-          {source_type && source_type == "icon" && iconControls}
-
-          {source_type && source_type == "image" && imageControls}
-        </PanelBody>
-
-        <PanelBody
-          title={__("Background Options", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <p>
-            {__("Select a background image:", "responsive-block-editor-addons")}
-          </p>
-          <MediaUpload
-            onSelect={onSelectBgImage}
-            type="image"
-            value={imgID}
-            render={({ open }) => (
-              <div>
-                <Button
-                  className="responsive-block-editor-addons-cta-inspector-media"
-                  label={__("Edit image", "responsive-block-editor-addons")}
-                  onClick={open}
-                >
-                  <Icon icon="format-image" />
-                  {__("Select Image", "responsive-block-editor-addons")}
-                </Button>
-
-                {imgURL && !!imgURL.length && (
-                  <Button
-                    className="responsive-block-editor-addons-cta-inspector-media"
-                    label={__("Remove Image", "responsive-block-editor-addons")}
-                    onClick={onRemoveBgImage}
-                  >
-                    <Icon icon="dismiss" />
-                    {__("Remove", "responsive-block-editor-addons")}
-                  </Button>
+              {imgiconPosition &&
+                imgiconPosition !== "above-title" &&
+                imgiconPosition !== "below-title" && (
+                  <SelectControl
+                    label={__(
+                      "Vertical Alignment",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={ressourceAlign}
+                    onChange={(value) =>
+                      setAttributes({ ressourceAlign: value })
+                    }
+                    options={[
+                      {
+                        value: "top",
+                        label: __("Top", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "middle",
+                        label: __("Middle", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
                 )}
-              </div>
-            )}
-          ></MediaUpload>
 
-          {imgURL && !!imgURL.length && (
-            <RangeControl
-              label={__("Image Opacity", "responsive-block-editor-addons")}
-              value={dimRatio}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  dimRatio: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={10}
-            />
-          )}
-          {imgURL && !!imgURL.length && (
+              {(stack === "none" || stack === "mobile") &&
+                imgiconPosition &&
+                imgiconPosition !== "above-title" &&
+                imgiconPosition !== "below-title" && (
+                  <SelectControl
+                    label={__(
+                      "Vertical Alignment Tablet",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={ressourceAlignTablet}
+                    onChange={(value) =>
+                      setAttributes({ ressourceAlignTablet: value })
+                    }
+                    options={[
+                      {
+                        value: "top",
+                        label: __("Top", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "middle",
+                        label: __("Middle", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                )}
+
+              {stack === "none" &&
+                imgiconPosition &&
+                imgiconPosition !== "above-title" &&
+                imgiconPosition !== "below-title" && (
+                  <SelectControl
+                    label={__(
+                      "Vertical Alignment Mobile",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={ressourceAlignMobile}
+                    onChange={(value) =>
+                      setAttributes({ ressourceAlignMobile: value })
+                    }
+                    options={[
+                      {
+                        value: "top",
+                        label: __("Top", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "middle",
+                        label: __("Middle", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                )}
+
+              {source_type && source_type == "icon" && iconControls}
+
+              {source_type && source_type == "image" && imageControls}
+            </PanelBody>
             <PanelBody
-              title={__("Image Settings", "responsive-block-editor-addons")}
+              title={__("Background Options", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                         {" "}
+              <ImageBackgroundControl
+                {...this.props}
+                showSomeImageOptions={true}
+                showMoreImageOptions={true}
+                showOverlayOptions={false}
+              />
+
+              {backgroundImage && !!backgroundImage.length && (
+                <RangeControl
+                  label={__("Image Opacity", "responsive-block-editor-addons")}
+                  value={dimRatio}
+                  onChange={(value) =>
+                    this.props.setAttributes({
+                      dimRatio: value,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  step={10}
+                />
+              )}
+
+              <PanelBody
+                title={__("Background Color", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <ColorBackgroundControl
+                  {...this.props}
+                />
+                <RangeControl
+                  label={__("Opacity", "responsive-block-editor-addons")}
+                  value={opacity}
+                  onChange={(value) =>
+                    setAttributes({
+                      opacity: value !== undefined ? value : 100,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  allowReset
+                />
+              </PanelBody>
+            </PanelBody>
+            <PanelBody
+              title={__("Call To Action", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
               <SelectControl
-                label={__("Image Position", "responsive-block-editor-addons")}
-                value={imagePosition}
-                onChange={(value) => setAttributes({ imagePosition: value })}
+                label={__("Type")}
+                value={resctaType}
+                onChange={(value) => setAttributes({ resctaType: value })}
                 options={[
                   {
-                    value: "top left",
-                    label: __("Top Left", "responsive-block-editor-addons"),
+                    value: "none",
+                    label: __("None", "responsive-block-editor-addons"),
                   },
                   {
-                    value: "top center",
-                    label: __("Top Center", "responsive-block-editor-addons"),
+                    value: "text",
+                    label: __("Text", "responsive-block-editor-addons"),
                   },
                   {
-                    value: "top right",
-                    label: __("Top Right", "responsive-block-editor-addons"),
+                    value: "button",
+                    label: __("Button", "responsive-block-editor-addons"),
                   },
                   {
-                    value: "center left",
-                    label: __("Center Left", "responsive-block-editor-addons"),
+                    value: "complete_box",
+                    label: __("Complete Box", "responsive-block-editor-addons"),
                   },
+                ]}
+              />
+              {(resctaType === "text" || resctaType === "button") && (
+                <Fragment>
+                  <TextControl
+                    label={__("Text", "responsive-block-editor-addons")}
+                    value={resctaText}
+                    onChange={(value) => setAttributes({ resctaText: value })}
+                  />
+                </Fragment>
+              )}
+              {resctaType === "text" && (
+                <Fragment>
+                  <TextControl
+                    label={__("Link", "responsive-block-editor-addons")}
+                    value={resctaLink}
+                    onChange={(value) => setAttributes({ resctaLink: value })}
+                  />
+                  <ToggleControl
+                    label={__(
+                      "Open in new Window",
+                      "responsive-block-editor-addons"
+                    )}
+                    checked={buttonTarget}
+                    onChange={this.toggleTarget}
+                  />
+                </Fragment>
+              )}
+              {resctaType === "complete_box" && (
+                <Fragment>
+                  <TextControl
+                    label={__("Link", "responsive-block-editor-addons")}
+                    value={resBoxLink}
+                    onChange={(value) => setAttributes({ resBoxLink: value })}
+                  />
+                  <ToggleControl
+                    label={__(
+                      "Open in new Window",
+                      "responsive-block-editor-addons"
+                    )}
+                    checked={resBoxTarget}
+                    onChange={this.toggleBoxTarget}
+                  />
+                </Fragment>
+              )}
+              {resctaType == "button" && (
+                <ButtonSettingsControl
+                  {...this.props}
+                  showMarginControls={false}
+                  showBackColorOpacity={false}
+                  showGradientHover={false}
+                  showTextOpacity={false}
+                />
+              )}
+
+              {resctaType === "text" && (
+                <Fragment>
+                  <p className="responsive-block-editor-addons-setting-label">
+                    {__("Text Color", "responsive-block-editor-addons")}
+                    <span className="components-base-control__label">
+                      <span
+                        className="component-color-indicator"
+                        style={{ backgroundColor: resctaLinkColor }}
+                      ></span>
+                    </span>
+                  </p>
+                  <ColorPalette
+                    value={resctaLinkColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ resctaLinkColor: colorValue })
+                    }
+                    allowReset
+                  />
+                </Fragment>
+              )}
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveSpacingControl
+                title={"Content Padding"}
+                attrNameTemplate="contentPadding%s"
+                values={{
+                  desktop: contentPadding,
+                  tablet: contentPaddingTablet,
+                  mobile: contentPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Prefix Bottom Margin"}
+                attrNameTemplate="resprefixSpace%s"
+                values={{
+                  desktop: resprefixSpace,
+                  tablet: resprefixSpaceTablet,
+                  mobile: resprefixSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="resheadSpace%s"
+                values={{
+                  desktop: resheadSpace,
+                  tablet: resheadSpaceTablet,
+                  mobile: resheadSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Separator Bottom Margin"}
+                attrNameTemplate="sepSpace%s"
+                values={{
+                  desktop: sepSpace,
+                  tablet: sepSpaceTablet,
+                  mobile: sepSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Description Bottom Margin"}
+                attrNameTemplate="ressubHeadSpace%s"
+                values={{
+                  desktop: ressubHeadSpace,
+                  tablet: ressubHeadSpaceTablet,
+                  mobile: ressubHeadSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              {resctaType !== "none" && (
+                <ResponsiveSpacingControl
+                  title={"Call To Action Bottom Margin"}
+                  attrNameTemplate="ctaBottomMargin%s"
+                  values={{
+                    desktop: ctaBottomMargin,
+                    tablet: ctaBottomMarginTablet,
+                    mobile: ctaBottomMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+              )}
+              {source_type !== "none" && (
+                <PanelBody
+                  title={__(
+                    "Image/Icon Margin",
+                    "responsive-block-editor-addons"
+                  )}
+                  initialOpen={false}
+                >
+                  <ResponsiveMarginControl
+                    attrNameTemplate="icon%s"
+                    values={{
+                      desktopTop: iconTopMargin,
+                      desktopBottom: iconBottomMargin,
+                      desktopLeft: iconLeftMargin,
+                      desktopRight: iconRightMargin,
+
+                      tabletTop: iconTopMarginTablet,
+                      tabletBottom: iconBottomMarginTablet,
+                      tabletLeft: iconLeftMarginTablet,
+                      tabletRight: iconRightMarginTablet,
+
+                      mobileTop: iconTopMarginMobile,
+                      mobileBottom: iconBottomMarginMobile,
+                      mobileLeft: iconLeftMarginMobile,
+                      mobileRight: iconRightMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                </PanelBody>
+              )}
+            </PanelBody>
+            <PanelBody
+              title={__("Border", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
+              <BoxShadowControl
+                setAttributes={setAttributes}
+                label={__("Box Shadow", "responsive-block-editor-addons")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowHOffset={{
+                  value: boxShadowHOffset,
+                  label: __("Horizontal", "responsive-block-editor-addons"),
+                }}
+                boxShadowVOffset={{
+                  value: boxShadowVOffset,
+                  label: __("Vertical", "responsive-block-editor-addons"),
+                }}
+                boxShadowBlur={{
+                  value: boxShadowBlur,
+                  label: __("Blur", "responsive-block-editor-addons"),
+                }}
+                boxShadowSpread={{
+                  value: boxShadowSpread,
+                  label: __("Spread", "responsive-block-editor-addons"),
+                }}
+                boxShadowPosition={{
+                  value: boxShadowPosition,
+                  label: __("Position", "responsive-block-editor-addons"),
+                }}
+              />
+              <BoxShadowControlHelper
+                setAttributes={setAttributes}
+                label={__("Hover Box Shadow")}
+                attrNameTemplate="hover%s"
+                boxShadowColor={{ value: hoverboxShadowColor }}
+                boxShadowHOffset={{ value: hoverboxShadowHOffset }}
+                boxShadowVOffset={{ value: hoverboxShadowVOffset }}
+                boxShadowBlur={{ value: hoverboxShadowBlur }}
+                boxShadowSpread={{ value: hoverboxShadowSpread }}
+                boxShadowPosition={{ value: hoverboxShadowPosition }}
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Separator", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <SelectControl
+                label={__("Position", "responsive-block-editor-addons")}
+                value={resseperatorPosition}
+                onChange={(value) =>
+                  setAttributes({ resseperatorPosition: value })
+                }
+                options={[
                   {
-                    value: "center center",
-                    label: __("Center Center", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "center right",
-                    label: __("Center Right", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "bottom left",
-                    label: __("Bottom Left", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "bottom center",
+                    value: "after_icon",
                     label: __(
-                      "Bottom Center",
+                      "After Icon/Image",
                       "responsive-block-editor-addons"
                     ),
                   },
                   {
-                    value: "bottom right",
-                    label: __("Bottom Right", "responsive-block-editor-addons"),
+                    value: "after_prefix",
+                    label: __("After Prefix", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "after_title",
+                    label: __("After Title", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "after_desc",
+                    label: __(
+                      "After Description",
+                      "responsive-block-editor-addons"
+                    ),
                   },
                 ]}
               />
-              <SelectControl
-                label={__("Attachment")}
-                value={backgroundAttachment}
-                onChange={(value) =>
-                  setAttributes({ backgroundAttachment: value })
-                }
-                options={[
-                  { value: "fixed", label: __("Fixed") },
-                  { value: "scroll", label: __("Scroll") },
-                ]}
-              />
-                         {" "}
-              <SelectControl
-                label={__("Image Repeat", "responsive-block-editor-addons")}
-                value={imageRepeat}
-                onChange={(value) => setAttributes({ imageRepeat: value })}
-                options={[
-                  {
-                    value: "no-repeat",
-                    label: __("No Repeat", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "repeat",
-                    label: __("Repeat", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "repeat-x",
-                    label: __("Repeat-X", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "repeat-y",
-                    label: __("Repeat-Y", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-                         {" "}
-              <SelectControl
-                label={__("Image Size", "responsive-block-editor-addons")}
-                value={thumbsize}
-                onChange={(value) => setAttributes({ thumbsize: value })}
-                options={[
-                  {
-                    value: "cover",
-                    label: __("Cover", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "auto",
-                    label: __("Auto", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "contain",
-                    label: __("Contain", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-                       {" "}
-            </PanelBody>
-          )}
-          <PanelColorSettings
-            title={__("Background Color", "responsive-block-editor-addons")}
-            initialOpen={false}
-            colorSettings={[
-              {
-                value: boxBackgroundColor,
-                onChange: onChangeBackgroundColor,
-                label: __("Background Color", "responsive-block-editor-addons"),
-              },
-            ]}
-          >
-            <RangeControl
-              label={__("Opacity", "responsive-block-editor-addons")}
-              value={opacity}
-              onChange={(value) =>
-                setAttributes({ opacity: value !== undefined ? value : 100 })
-              }
-              min={0}
-              max={100}
-              allowReset
-            />
-          </PanelColorSettings>
-        </PanelBody>
-
-        <PanelBody
-          title={__("Spacing", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <RangeControl
-            label={__("Content Padding", "atomic-blocks")}
-            value={contentPadding}
-            onChange={(value) =>
-              setAttributes({
-                contentPadding: value !== undefined ? value : 0,
-              })
-            }
-            min={0}
-            max={100}
-            step={1}
-          />
-          <RangeControl
-            label={__("Prefix Bottom Margin", "responsive-block-editor-addons")}
-            value={resprefixSpace}
-            onChange={(value) =>
-              setAttributes({ resprefixSpace: value !== undefined ? value : 5 })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-          <RangeControl
-            label={__("Title Bottom Margin", "responsive-block-editor-addons")}
-            value={resheadSpace}
-            onChange={(value) =>
-              setAttributes({ resheadSpace: value !== undefined ? value : 10 })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-          <RangeControl
-            label={__(
-              "Separator Bottom Margin",
-              "responsive-block-editor-addons"
-            )}
-            value={sepSpace}
-            onChange={(value) =>
-              setAttributes({ sepSpace: value !== undefined ? value : 10 })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-          <RangeControl
-            label={__(
-              "Description Bottom Margin",
-              "responsive-block-editor-addons"
-            )}
-            value={ressubHeadSpace}
-            onChange={(value) =>
-              setAttributes({
-                ressubHeadSpace: value !== undefined ? value : 10,
-              })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-          {resctaType !== "none" && (
-          <RangeControl
-            label={__(
-              "Call To Action Bottom Margin",
-              "responsive-block-editor-addons"
-            )}
-            value={ctaBottomMargin}
-            onChange={(value) =>
-              setAttributes({
-                ctaBottomMargin: value !== undefined ? value : 10,
-              })
-            }
-            min={0}
-            max={100}
-            allowReset
-          />
-          )}
-          <hr className="responsive-block-editor-addons-editor__separator" />
-          <h3>{__("Image/Icon Margin", "responsive-block-editor-addons")}</h3>
-          <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__("Top Margin Mobile", "responsive-block-editor-addons")}
-                          value={iconTopMarginMobile}
-                          onChange={(value) => setAttributes({ iconTopMarginMobile: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Bottom Margin Mobile", "responsive-block-editor-addons")}
-                          value={iconBottomMarginMobile}
-                          onChange={(value) => setAttributes({ iconBottomMarginMobile: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Left Margin Mobile", "responsive-block-editor-addons")}
-                          value={iconLeftMarginMobile}
-                          onChange={(value) => setAttributes({ iconLeftMarginMobile: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Right Margin Mobile", "responsive-block-editor-addons")}
-                          value={iconRightMarginMobile}
-                          onChange={(value) => setAttributes({ iconRightMarginMobile: value })}
-                          min={0}
-                          max={100}
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__("Top Margin Tablet", "responsive-block-editor-addons")}
-                          value={iconTopMarginTablet}
-                          onChange={(value) => setAttributes({ iconTopMarginTablet: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Bottom Margin Tablet", "responsive-block-editor-addons")}
-                          value={iconBottomMarginTablet}
-                          onChange={(value) => setAttributes({ iconBottomMarginTablet: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Left Margin Tablet", "responsive-block-editor-addons")}
-                          value={iconLeftMarginTablet}
-                          onChange={(value) => setAttributes({ iconLeftMarginTablet: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Right Margin Tablet", "responsive-block-editor-addons")}
-                          value={iconRightMarginTablet}
-                          onChange={(value) => setAttributes({ iconRightMarginTablet: value })}
-                          min={0}
-                          max={100}
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__("Top Margin", "responsive-block-editor-addons")}
-                          value={iconTopMargin}
-                          onChange={(value) => setAttributes({ iconTopMargin: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Bottom Margin", "responsive-block-editor-addons")}
-                          value={iconBottomMargin}
-                          onChange={(value) => setAttributes({ iconBottomMargin: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Left Margin", "responsive-block-editor-addons")}
-                          value={iconLeftMargin}
-                          onChange={(value) => setAttributes({ iconLeftMargin: value })}
-                          min={0}
-                          max={100}
-                        />
-                        <RangeControl
-                          label={__("Right Margin", "responsive-block-editor-addons")}
-                          value={iconRightMargin}
-                          onChange={(value) => setAttributes({ iconRightMargin: value })}
-                          min={0}
-                          max={100}
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-        </PanelBody>
-
-        <PanelBody
-          title={__("Border", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <SelectControl
-            label={__("Border Style")}
-            value={blockBorderStyle}
-            onChange={(value) => setAttributes({ blockBorderStyle: value })}
-            options={[
-              {
-                value: "none",
-                label: __("None", "responsive-block-editor-addons"),
-              },
-              {
-                value: "solid",
-                label: __("Solid", "responsive-block-editor-addons"),
-              },
-              {
-                value: "dotted",
-                label: __("Dotted", "responsive-block-editor-addons"),
-              },
-              {
-                value: "dashed",
-                label: __("Dashed", "responsive-block-editor-addons"),
-              },
-              {
-                value: "double",
-                label: __(
-                  "Double",
-                  "responsive-block-editor-addons",
-                  "responsive-block-editor-addons"
-                ),
-              },
-              {
-                value: "groove",
-                label: __("Groove", "responsive-block-editor-addons"),
-              },
-              {
-                value: "inset",
-                label: __("Inset", "responsive-block-editor-addons"),
-              },
-              {
-                value: "outset",
-                label: __("Outset", "responsive-block-editor-addons"),
-              },
-              {
-                value: "ridge",
-                label: __("Ridge", "responsive-block-editor-addons"),
-              },
-            ]}
-          />
-          {"none" != blockBorderStyle && (
-            <RangeControl
-              label={__("Border Width", "responsive-block-editor-addons")}
-              value={blockBorderWidth}
-              onChange={(value) =>
-                setAttributes({
-                  blockBorderWidth: value !== undefined ? value : 1,
-                })
-              }
-              min={0}
-              max={50}
-              allowReset
-            />
-          )}
-          <RangeControl
-            label={__("Border Radius", "responsive-block-editor-addons")}
-            value={blockBorderRadius}
-            onChange={(value) =>
-              setAttributes({
-                blockBorderRadius: value !== undefined ? value : null,
-              })
-            }
-            min={0}
-            max={1000}
-            allowReset
-          />
-          {"none" != blockBorderStyle && (
-            <Fragment>
-              <p className="responsive-setting-label">
-                {__("Border Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: blockBorderColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={blockBorderColor}
-                onChange={(colorValue) =>
-                  setAttributes({ blockBorderColor: colorValue })
-                }
-                allowReset
-              />
-            </Fragment>
-          )}
-          <BoxShadowControl
-            setAttributes={setAttributes}
-            label={__("Box Shadow", "responsive-block-editor-addons")}
-            boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
-            boxShadowHOffset={{
-              value: boxShadowHOffset,
-              label: __("Horizontal", "responsive-block-editor-addons"),
-            }}
-            boxShadowVOffset={{
-              value: boxShadowVOffset,
-              label: __("Vertical", "responsive-block-editor-addons"),
-            }}
-            boxShadowBlur={{
-              value: boxShadowBlur,
-              label: __("Blur", "responsive-block-editor-addons"),
-            }}
-            boxShadowSpread={{
-              value: boxShadowSpread,
-              label: __("Spread", "responsive-block-editor-addons"),
-            }}
-            boxShadowPosition={{
-              value: boxShadowPosition,
-              label: __("Position", "responsive-block-editor-addons"),
-            }}
-          />
-          <BoxShadowControlHelper
-            setAttributes={setAttributes}
-            label={__("Hover Box Shadow")}
-            attrNameTemplate="hover%s"
-            boxShadowColor={{ value: hoverboxShadowColor }}
-            boxShadowHOffset={{value: hoverboxShadowHOffset}}
-            boxShadowVOffset={{value: hoverboxShadowVOffset}}
-            boxShadowBlur={{value: hoverboxShadowBlur }}
-            boxShadowSpread={{value: hoverboxShadowSpread}}
-            boxShadowPosition={{value: hoverboxShadowPosition}}
-          />
-        </PanelBody>
-        
-        <PanelBody
-          title={__("Separator", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <SelectControl
-            label={__("Position", "responsive-block-editor-addons")}
-            value={resseperatorPosition}
-            onChange={(value) => setAttributes({ resseperatorPosition: value })}
-            options={[
-              {
-                value: "after_icon",
-                label: __("After Icon/Image", "responsive-block-editor-addons"),
-              },
-              {
-                value: "after_prefix",
-                label: __("After Prefix", "responsive-block-editor-addons"),
-              },
-              {
-                value: "after_title",
-                label: __("After Title", "responsive-block-editor-addons"),
-              },
-              {
-                value: "after_desc",
-                label: __(
-                  "After Description",
-                  "responsive-block-editor-addons"
-                ),
-              },
-            ]}
-          />
-          <SelectControl
-            label={__("Style", "responsive-block-editor-addons")}
-            value={resseperatorStyle}
-            onChange={(value) => setAttributes({ resseperatorStyle: value })}
-            options={[
-              {
-                value: "none",
-                label: __("None", "responsive-block-editor-addons"),
-              },
-              {
-                value: "solid",
-                label: __("Solid", "responsive-block-editor-addons"),
-              },
-              {
-                value: "double",
-                label: __("Double", "responsive-block-editor-addons"),
-              },
-              {
-                value: "dashed",
-                label: __("Dashed", "responsive-block-editor-addons"),
-              },
-              {
-                value: "dotted",
-                label: __("Dotted", "responsive-block-editor-addons"),
-              },
-            ]}
-          />
-          {"none" !== resseperatorStyle && (
-            <Fragment>
-              <RangeControl
-                label={__("Thickness", "responsive-block-editor-addons")}
-                value={resseperatorThickness}
-                onChange={(value) =>
-                  setAttributes({
-                    resseperatorThickness: value !== undefined ? value : 2,
-                  })
-                }
-                min={1}
-                max={100}
-                beforeIcon=""
-                allowReset
-              />
-              <ButtonGroup
-                className="responsive-block-editor-addons-size-type-field"
-                aria-label={__("Size Type", "responsive-block-editor-addons")}
-              >
-                <Button
-                  key={"px"}
-                  className="responsive-block-editor-addons-size-btn"
-                  isSmall
-                  isPrimary={resseparatorWidthType === "px"}
-                  aria-pressed={resseparatorWidthType === "px"}
-                  onClick={() => setAttributes({ resseparatorWidthType: "px" })}
-                >
-                  {"px"}
-                </Button>
-                <Button
-                  key={"%"}
-                  className="responsive-block-editor-addons-size-btn"
-                  isSmall
-                  isPrimary={resseparatorWidthType === "%"}
-                  aria-pressed={resseparatorWidthType === "%"}
-                  onClick={() => setAttributes({ resseparatorWidthType: "%" })}
-                >
-                  {"%"}
-                </Button>
-              </ButtonGroup>
-              <RangeControl
-                label={__("Width", "responsive-block-editor-addons")}
-                value={resseperatorWidth}
-                onChange={(value) =>
-                  setAttributes({
-                    resseperatorWidth: value !== undefined ? value : 30,
-                  })
-                }
-                min={0}
-                max={"%" == resseparatorWidthType ? 100 : 500}
-                beforeIcon=""
-                allowReset
-              />
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Separator Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: resseperatorColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={resseperatorColor}
-                onChange={(colorValue) =>
-                  setAttributes({ resseperatorColor: colorValue })
-                }
-                allowReset
-              />
-            </Fragment>
-          )}
-        </PanelBody>
-
-        <PanelBody
-          title={__("Call To Action", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <SelectControl
-            label={__("Type")}
-            value={resctaType}
-            onChange={(value) => setAttributes({ resctaType: value })}
-            options={[
-              {
-                value: "none",
-                label: __("None", "responsive-block-editor-addons"),
-              },
-              {
-                value: "text",
-                label: __("Text", "responsive-block-editor-addons"),
-              },
-              {
-                value: "button",
-                label: __("Button", "responsive-block-editor-addons"),
-              },
-              {
-                value: "complete_box",
-                label: __("Complete Box", "responsive-block-editor-addons"),
-              },
-            ]}
-          />
-          {(resctaType === "text" || resctaType === "button") && (
-            <Fragment>
-              <TextControl
-                label={__("Text", "responsive-block-editor-addons")}
-                value={resctaText}
-                onChange={(value) => setAttributes({ resctaText: value })}
-              />
-            </Fragment>
-          )}
-          {resctaType !== "none" && resctaType !== "complete_box"  && (
-            <Fragment>
-              <TextControl
-                label={__("Link", "responsive-block-editor-addons")}
-                value={resctaLink}
-                onChange={(value) => setAttributes({ resctaLink: value })}
-              />
-              <ToggleControl
-                label={__(
-                  "Open in new Window",
-                  "responsive-block-editor-addons"
-                )}
-                checked={resctaTarget}
-                onChange={this.toggleTarget}
-              />
-            </Fragment>
-          )}   
-          {resctaType === "complete_box" && (
-            <Fragment>
-              <TextControl
-                label={__("Link", "responsive-block-editor-addons")}
-                value={resBoxLink}
-                onChange={(value) => setAttributes({ resBoxLink: value })}
-              />
-              <ToggleControl
-                label={__(
-                  "Open in new Window",
-                  "responsive-block-editor-addons"
-                )}
-                checked={resBoxTarget}
-                onChange={this.toggleBoxTarget}
-              />
-            </Fragment>
-          )}          
-          {resctaType == "button" && (
-            <Fragment>
-              <h2>{__("Button Padding", "responsive-block-editor-addons")}</h2>
-              <RangeControl
-                label={__("Vertical Padding", "responsive-block-editor-addons")}
-                value={ctaBtnVertPadding}
-                onChange={(value) =>
-                  setAttributes({
-                    ctaBtnVertPadding: value !== undefined ? value : 10,
-                  })
-                }
-                min={0}
-                max={100}
-                className={"responsive-block-editor-addons-margin-control"}
-                allowReset
-              />
-              <RangeControl
-                label={__(
-                  "Horizontal Padding",
-                  "responsive-block-editor-addons"
-                )}
-                value={ctaBtnHrPadding}
-                onChange={(value) =>
-                  setAttributes({
-                    ctaBtnHrPadding: value !== undefined ? value : 14,
-                  })
-                }
-                min={0}
-                max={100}
-                className={"responsive-block-editor-addons-margin-control"}
-                allowReset
-              />
-              <hr className="responsive-block-editor-addons-editor__separator" />
-              <h2>{__("Button Border", "responsive-block-editor-addons")}</h2>
               <SelectControl
                 label={__("Style", "responsive-block-editor-addons")}
-                value={resctaBorderStyle}
+                value={resseperatorStyle}
                 onChange={(value) =>
-                  setAttributes({ resctaBorderStyle: value })
+                  setAttributes({ resseperatorStyle: value })
                 }
                 options={[
                   {
                     value: "none",
-                    label: __(
-                      "None",
-                      "responsive-block-editor-addons",
-                      "responsive-block-editor-addons"
-                    ),
+                    label: __("None", "responsive-block-editor-addons"),
                   },
                   {
                     value: "solid",
@@ -1835,621 +1357,283 @@ export default class Inspector extends Component {
                   },
                 ]}
               />
-
-              {resctaBorderStyle !== "none" && (
+              {"none" !== resseperatorStyle && (
                 <Fragment>
                   <RangeControl
-                    label={__("Width", "responsive-block-editor-addons")}
-                    value={resctaBorderWidth}
+                    label={__("Thickness", "responsive-block-editor-addons")}
+                    value={resseperatorThickness}
                     onChange={(value) =>
                       setAttributes({
-                        resctaBorderWidth: value !== undefined ? value : 1,
+                        resseperatorThickness: value !== undefined ? value : 2,
                       })
                     }
-                    min={0}
+                    min={1}
                     max={100}
                     beforeIcon=""
                     allowReset
                   />
+                  <ButtonGroup
+                    className="responsive-block-editor-addons-size-type-field"
+                    aria-label={__(
+                      "Size Type",
+                      "responsive-block-editor-addons"
+                    )}
+                  >
+                    <Button
+                      key={"px"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={resseparatorWidthType === "px"}
+                      aria-pressed={resseparatorWidthType === "px"}
+                      onClick={() =>
+                        setAttributes({ resseparatorWidthType: "px" })
+                      }
+                    >
+                      {"px"}
+                    </Button>
+                    <Button
+                      key={"%"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={resseparatorWidthType === "%"}
+                      aria-pressed={resseparatorWidthType === "%"}
+                      onClick={() =>
+                        setAttributes({ resseparatorWidthType: "%" })
+                      }
+                    >
+                      {"%"}
+                    </Button>
+                  </ButtonGroup>
+                  <RangeControl
+                    label={__("Width", "responsive-block-editor-addons")}
+                    value={resseperatorWidth}
+                    onChange={(value) =>
+                      setAttributes({
+                        resseperatorWidth: value !== undefined ? value : 30,
+                      })
+                    }
+                    min={0}
+                    max={"%" == resseparatorWidthType ? 100 : 500}
+                    beforeIcon=""
+                    allowReset
+                  />
+                  <p className="responsive-block-editor-addons-setting-label">
+                    {__("Separator Color", "responsive-block-editor-addons")}
+                    <span className="components-base-control__label">
+                      <span
+                        className="component-color-indicator"
+                        style={{ backgroundColor: resseperatorColor }}
+                      ></span>
+                    </span>
+                  </p>
+                  <ColorPalette
+                    value={resseperatorColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ resseperatorColor: colorValue })
+                    }
+                    allowReset
+                  />
                 </Fragment>
               )}
-              <RangeControl
-                label={__("Rounded Corner", "responsive-block-editor-addons")}
-                value={resctaBorderRadius}
+            </PanelBody>
+			{(resctaType !== "none" || resshowTitle || resshowDesc) && (
+				<PanelBody
+					title={__("Typography", "responsive-block-editor-addons")}
+					initialOpen={false}
+			  	>
+				  	{resctaType !== "none" && (
+					  	<TypographyHelperControl
+							title={__("Call To Action Typography", "responsive-block-editor-addons")}
+							attrNameTemplate="ctaText%s"
+							values={{
+							family: ctaTextFontFamily,
+							size: ctaTextFontSize,
+							sizeMobile: ctaTextFontSizeMobile,
+							sizeTablet: ctaTextFontSizeTablet,
+							weight: ctaTextFontWeight,
+							height: ctaTextLineHeight,
+							}}
+							showLetterSpacing={false}
+							showTextTransform={false}
+							setAttributes={setAttributes}
+							{...this.props}
+					  	/>
+				  	)}
+					{resshowTitle && (
+						<TypographyHelperControl
+							title={__("Title Typography", "responsive-block-editor-addons")}
+							attrNameTemplate="reshead%s"
+							values = {{
+								family: resheadFontFamily,
+								size: resheadFontSize,
+								sizeMobile: resheadFontSizeMobile,
+								sizeTablet: resheadFontSizeTablet,
+								weight: resheadFontWeight,
+								height: resheadLineHeight,
+							}}
+							showLetterSpacing = { false }
+							showTextTransform = { false }
+							setAttributes={ setAttributes }
+							{...this.props}
+						/>
+					)}
+					{resshowDesc && (
+						<TypographyHelperControl
+							title={__("Description Typography", "responsive-block-editor-addons")}
+							attrNameTemplate="ressubHead%s"
+							values = {{
+								family: ressubHeadFontFamily,
+								size: ressubHeadFontSize,
+								sizeMobile: ressubHeadFontSizeMobile,
+								sizeTablet: ressubHeadFontSizeTablet,
+								weight: ressubHeadFontWeight,
+								height: ressubHeadLineHeight,
+							}}
+							showLetterSpacing = { false }
+							showTextTransform = { false }
+							setAttributes={ setAttributes }
+							{...this.props}
+						/>
+					)}
+			  	</PanelBody>
+			)}
+            <PanelBody title={__("Content")} initialOpen={false}>
+              <ToggleControl
+                label={__("Enable Prefix", "responsive-block-editor-addons")}
+                checked={resshowPrefix}
                 onChange={(value) =>
-                  setAttributes({
-                    resctaBorderRadius: value !== undefined ? value : 0,
-                  })
+                  setAttributes({ resshowPrefix: !resshowPrefix })
                 }
-                min={0}
-                max={50}
-                beforeIcon=""
-                allowReset
               />
-              <hr className="responsive-block-editor-addons-editor__separator" />
-            </Fragment>
-          )}
-
-          {resctaType === "text" && (
-            <Fragment>
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Text Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: resctaLinkColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={resctaLinkColor}
-                onChange={(colorValue) =>
-                  setAttributes({ resctaLinkColor: colorValue })
-                }
-                allowReset
-              />
-            </Fragment>
-          )}
-
-          {resctaType == "button" && (
-            <Fragment>
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Text Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: resctaBtnLinkColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={resctaBtnLinkColor}
-                onChange={(colorValue) =>
-                  setAttributes({ resctaBtnLinkColor: colorValue })
-                }
-                allowReset
-              />
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Background Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: resctaBgColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={resctaBgColor}
-                onChange={(colorValue) =>
-                  setAttributes({ resctaBgColor: colorValue })
-                }
-                allowReset
-              />
-
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Text Hover Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: hoverctaBtnLinkColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={hoverctaBtnLinkColor}
-                onChange={(colorValue) =>
-                  setAttributes({ hoverctaBtnLinkColor: colorValue })
-                }
-                allowReset
-              />
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Background Hover Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: hoverctaBgColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={hoverctaBgColor}
-                onChange={(colorValue) =>
-                  setAttributes({ hoverctaBgColor: colorValue })
-                }
-                allowReset
-              />
-              {resctaBorderStyle !== "none" && (
+              {resshowPrefix && (
                 <Fragment>
                   <p className="responsive-block-editor-addons-setting-label">
-                    {__("Border Color", "responsive-block-editor-addons")}
+                    {__("Prefix Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
-                        style={{ backgroundColor: resctaBorderColor }}
+                        style={{ backgroundColor: resprefixColor }}
                       ></span>
                     </span>
                   </p>
                   <ColorPalette
-                    value={resctaBorderColor}
+                    value={resprefixColor}
                     onChange={(colorValue) =>
-                      setAttributes({ resctaBorderColor: colorValue })
+                      setAttributes({ resprefixColor: colorValue })
                     }
                     allowReset
                   />
+                  <hr className="responsive-block-editor-addons-editor__separator" />
+                </Fragment>
+              )}
+
+              <ToggleControl
+                label={__("Enable Title", "responsive-block-editor-addons")}
+                checked={resshowTitle}
+                onChange={(value) =>
+                  setAttributes({ resshowTitle: !resshowTitle })
+                }
+              />
+              {resshowTitle && (
+                <Fragment>
+                  <SelectControl
+                    label={__("Title Tag", "responsive-block-editor-addons")}
+                    value={resheadingTag}
+                    onChange={(value) =>
+                      setAttributes({ resheadingTag: value })
+                    }
+                    options={[
+                      {
+                        value: "h1",
+                        label: __("H1", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h2",
+                        label: __("H2", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h3",
+                        label: __("H3", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h4",
+                        label: __("H4", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h5",
+                        label: __("H5", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h6",
+                        label: __("H6", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+
                   <p className="responsive-block-editor-addons-setting-label">
-                    {__("Border Hover Color", "responsive-block-editor-addons")}
+                    {__("Title Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
-                        style={{ backgroundColor: hoverctaBorderColor }}
+                        style={{ backgroundColor: resheadingColor }}
                       ></span>
                     </span>
                   </p>
                   <ColorPalette
-                    value={hoverctaBorderColor}
+                    value={resheadingColor}
                     onChange={(colorValue) =>
-                      setAttributes({ hoverctaBorderColor: colorValue })
+                      setAttributes({ resheadingColor: colorValue })
+                    }
+                    allowReset
+                  />
+                  <hr className="responsive-block-editor-addons-editor__separator" />
+                </Fragment>
+              )}
+              <ToggleControl
+                label={__(
+                  "Enable Description",
+                  "responsive-block-editor-addons"
+                )}
+                checked={resshowDesc}
+                onChange={(value) =>
+                  setAttributes({ resshowDesc: !resshowDesc })
+                }
+              />
+              {resshowDesc && (
+                <Fragment>
+                  <p className="responsive-block-editor-addons-setting-label">
+                    {__("Description Color", "responsive-block-editor-addons")}
+                    <span className="components-base-control__label">
+                      <span
+                        className="component-color-indicator"
+                        style={{ backgroundColor: ressubheadingColor }}
+                      ></span>
+                    </span>
+                  </p>
+                  <ColorPalette
+                    value={ressubheadingColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ ressubheadingColor: colorValue })
                     }
                     allowReset
                   />
                 </Fragment>
               )}
-            </Fragment>
-          )}
-        </PanelBody>
-        {resctaType !== "none" && (
-          <PanelBody
-          title={__("Call To Action Typography", "responsive-block-editor-addons")}
-          initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={ctaTextFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  ctaTextFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <TabPanel
-              className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-              activeClass="active-tab"
-              tabs={[
-                {
-                  name: "desktop",
-                  title: <Dashicon icon="desktop" />,
-                  className:
-                    " responsive-desktop-tab  responsive-responsive-tabs",
-                },
-                {
-                  name: "tablet",
-                  title: <Dashicon icon="tablet" />,
-                  className:
-                    " responsive-tablet-tab  responsive-responsive-tabs",
-                },
-                {
-                  name: "mobile",
-                  title: <Dashicon icon="smartphone" />,
-                  className:
-                    " responsive-mobile-tab  responsive-responsive-tabs",
-                },
-              ]}
-            >
-              {(tab) => {
-                let tabout;
-
-                if ("mobile" === tab.name) {
-                  tabout = (
-                    <Fragment>
-                      <RangeControl
-                        label={__(
-                          "Font Size",
-                          "responsive-block-editor-addons"
-                        )}
-                        min={0}
-                        max={500}
-                        value={ctaTextFontSizeMobile}
-                        onChange={(value) =>
-                          setAttributes({
-                            ctaTextFontSizeMobile: value,
-                          })
-                        }
-                      />
-                    </Fragment>
-                  );
-                } else if ("tablet" === tab.name) {
-                  tabout = (
-                    <Fragment>
-                      <RangeControl
-                        label={__(
-                          "Font Size",
-                          "responsive-block-editor-addons"
-                        )}
-                        min={0}
-                        max={500}
-                        value={ctaTextFontSizeTablet}
-                        onChange={(value) =>
-                          setAttributes({
-                            ctaTextFontSizeTablet: value,
-                          })
-                        }
-                      />
-                    </Fragment>
-                  );
-                } else {
-                  tabout = (
-                    <Fragment>
-                      <RangeControl
-                        label={__(
-                          "Font Size",
-                          "responsive-block-editor-addons"
-                        )}
-                        min={0}
-                        max={500}
-                        value={ctaTextFontSize}
-                        onChange={(value) =>
-                          setAttributes({
-                            ctaTextFontSize: value,
-                          })
-                        }
-                      />
-                    </Fragment>
-                  );
-                }
-
-                return <div>{tabout}</div>;
-              }}
-            </TabPanel>
-
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={ctaTextFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  ctaTextFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={ctaTextLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  ctaTextLineHeight: value,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-            />
-          </PanelBody>
-        )}
-        <PanelBody title={__("Content")} initialOpen={false}>
-          <ToggleControl
-            label={__("Enable Prefix", "responsive-block-editor-addons")}
-            checked={resshowPrefix}
-            onChange={(value) =>
-              setAttributes({ resshowPrefix: !resshowPrefix })
-            }
-          />
-          {resshowPrefix && (
-            <Fragment>
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Prefix Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: resprefixColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={resprefixColor}
-                onChange={(colorValue) =>
-                  setAttributes({ resprefixColor: colorValue })
-                }
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"advance"}>
+            <InspectorAdvancedControls>
+              <RangeControl
+                label={__("Z-index", "responsive-block-editor-addons")}
+                value={zIndex}
+                onChange={(value) => setAttributes({zIndex: value})}
+                min={0}
+                max={500}
                 allowReset
               />
-              <hr className="responsive-block-editor-addons-editor__separator" />
-            </Fragment>
-          )}
-
-          <ToggleControl
-            label={__("Enable Title", "responsive-block-editor-addons")}
-            checked={resshowTitle}
-            onChange={(value) => setAttributes({ resshowTitle: !resshowTitle })}
-          />
-          {resshowTitle && (
-            <Fragment>
-              <SelectControl
-                label={__("Title Tag", "responsive-block-editor-addons")}
-                value={resheadingTag}
-                onChange={(value) => setAttributes({ resheadingTag: value })}
-                options={[
-                  {
-                    value: "h1",
-                    label: __("H1", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "h2",
-                    label: __("H2", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "h3",
-                    label: __("H3", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "h4",
-                    label: __("H4", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "h5",
-                    label: __("H5", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "h6",
-                    label: __("H6", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              <SelectControl
-                label={__("Font Family", "responsive-block-editor-addons")}
-                options={fontOptions}
-                value={resheadFontFamily}
-                onChange={(value) => {
-                  setAttributes({
-                    resheadFontFamily: value,
-                  }),
-                    loadGoogleFont(value);
-                }}
-              />
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Font Size",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={500}
-                          value={resheadFontSizeMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              resheadFontSizeMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Font Size",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={500}
-                          value={resheadFontSizeTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              resheadFontSizeTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__(
-                            "Font Size",
-                            "responsive-block-editor-addons"
-                          )}
-                          min={0}
-                          max={500}
-                          value={resheadFontSize}
-                          onChange={(value) =>
-                            setAttributes({
-                              resheadFontSize: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-              <SelectControl
-                label={__("Font Weight", "responsive-block-editor-addons")}
-                options={fontWeightOptions}
-                value={resheadFontWeight}
-                onChange={(value) =>
-                  setAttributes({
-                    resheadFontWeight: value,
-                  })
-                }
-              />
-
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Title Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: resheadingColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={resheadingColor}
-                onChange={(colorValue) =>
-                  setAttributes({ resheadingColor: colorValue })
-                }
-                allowReset
-              />
-              <hr className="responsive-block-editor-addons-editor__separator" />
-            </Fragment>
-          )}
-          <ToggleControl
-            label={__("Enable Description", "responsive-block-editor-addons")}
-            checked={resshowDesc}
-            onChange={(value) => setAttributes({ resshowDesc: !resshowDesc })}
-          />         
-          {resshowDesc && (
-            <Fragment>
-              <SelectControl
-                label={__("Font Family", "responsive-block-editor-addons")}
-                options={fontOptions}
-                value={ressubHeadFontFamily}
-                onChange={(value) => {
-                  setAttributes({
-                    ressubHeadFontFamily: value,
-                  }),
-                    loadGoogleFont(value);
-                }}
-              />
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className: " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className: " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__("Font Size", "responsive-block-editor-addons")}
-                          min={0}
-                          max={500}
-                          value={ressubHeadFontSizeMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              ressubHeadFontSizeMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__("Font Size", "responsive-block-editor-addons")}
-                          min={0}
-                          max={500}
-                          value={ressubHeadFontSizeTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              ressubHeadFontSizeTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <RangeControl
-                          label={__("Font Size", "responsive-block-editor-addons")}
-                          min={0}
-                          max={500}
-                          value={ressubHeadFontSize}
-                          onChange={(value) =>
-                            setAttributes({
-                              ressubHeadFontSize: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
-              <SelectControl
-                label={__("Font Weight", "responsive-block-editor-addons")}
-                options={fontWeightOptions}
-                value={ressubHeadFontWeight}
-                onChange={(value) =>
-                  setAttributes({
-                    ressubHeadFontWeight: value,
-                  })
-                }
-              />
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Description Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: ressubheadingColor }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={ressubheadingColor}
-                onChange={(colorValue) =>
-                  setAttributes({ ressubheadingColor: colorValue })
-                }
-                allowReset
-              />
-            </Fragment>
-          )}
-        </PanelBody>
+            </InspectorAdvancedControls>
+          </InspectorTab>
+        </InspectorTabs>
       </InspectorControls>
     );
   }

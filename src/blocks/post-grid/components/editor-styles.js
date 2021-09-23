@@ -22,8 +22,6 @@ function EditorStyles(props) {
     hoverboxShadowPosition,
     imageBorderRadius,
     titleFontSize,
-    titleFontSizeTablet,
-    titleFontSizeMobile,
     titleColor,
     titleHoverColor,
     stackonMobile,
@@ -40,9 +38,13 @@ function EditorStyles(props) {
     imagePosition,
     textAlignment,
     contentPadding,
-    mobileContentPadding,
+    contentPaddingMobile,
+    mobileContentPadding, //For compatibility with v1.3.2
+    contentPaddingTablet,
     layout,
     titleBottomSpacing,
+    titleBottomSpacingMobile,
+    titleBottomSpacingTablet,
     titleLineHeight,
     titleFontFamily,
     titleFontWeight,
@@ -54,6 +56,8 @@ function EditorStyles(props) {
     metaTextTransform,
     metaFontSize,
     metaBottomSpacing,
+    metaBottomSpacingMobile,
+    metaBottomSpacingTablet,
     textColor,
     excerptFontFamily,
     excerptFontSize,
@@ -61,6 +65,8 @@ function EditorStyles(props) {
     excerptFontWeight,
     excerptTextTransform,
     excerptBottomSpacing,
+    excerptBottomSpacingMobile,
+    excerptBottomSpacingTablet,
     readMoreLinkColor,
     readMoreHoverColor,
     continueFontSize,
@@ -78,6 +84,15 @@ function EditorStyles(props) {
     paginationTextActiveColor,
     rowGapTablet,
     rowGapMobile,
+	excerptFontSizeMobile,
+	excerptFontSizeTablet,
+	metaFontSizeMobile,
+	metaFontSizeTablet,
+	titleFontSizeMobile,
+	titleFontSizeTablet,
+	continueFontFamily,
+	continueFontSizeMobile,
+	continueFontSizeTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -97,9 +112,14 @@ function EditorStyles(props) {
   }
   var varContentPadding = "0";
   var varMobileContentPadding = "0";
-  if ("boxed" === layout && (contentPadding || mobileContentPadding)) {
+  if ("boxed" === layout && (contentPadding || contentPaddingMobile || mobileContentPadding)) { //For compatibility with v1.3.2
     varContentPadding = contentPadding;
-    varMobileContentPadding = mobileContentPadding;
+    varMobileContentPadding = mobileContentPadding !== 999 && contentPaddingMobile === 10 ? mobileContentPadding : contentPaddingMobile; //For compatibility with v1.3.2
+  }
+  var varTabletContentPadding = "0";
+  if ("boxed" === layout && (contentPadding || contentPaddingTablet)) {
+    varContentPadding = contentPadding;
+    varTabletContentPadding = contentPaddingTablet;
   }
 
   var gridTemplateColumns;
@@ -119,6 +139,18 @@ function EditorStyles(props) {
   if (columnGapMobile) {
     varcolumnGapMobile = columnGapMobile;
   }
+  var varrowGap;
+  if (rowGap) {
+    varrowGap = rowGap;
+  }
+  var varrowGapTablet;
+  if (rowGapTablet) {
+    varrowGapTablet = rowGapTablet;
+  }
+  var varrowGapMobile;
+  if (rowGapMobile) {
+    varrowGapMobile = rowGapMobile;
+  }
   var varequalHeight = "fit-content";
   if (equalHeight) {
     varequalHeight = "auto";
@@ -134,7 +166,7 @@ function EditorStyles(props) {
   var selectors = {
     " .responsive-block-editor-addons-post-grid-items": {
         "grid-column-gap": generateCSSUnit(varcolumnGap, "px"),
-        "grid-row-gap": generateCSSUnit(rowGap, "px"),
+        "grid-row-gap": generateCSSUnit(varrowGap, "px"),
     },
     " article": {
       "background-color": bgColor,
@@ -173,7 +205,7 @@ function EditorStyles(props) {
         hoverboxShadowPositionCSS,
     },
     " .is-list article": {
-      "margin-bottom": generateCSSUnit(rowGap, "px"),
+      "margin-bottom": generateCSSUnit(varrowGap, "px"),
     },
     " .is-list article:last-child": {
       "margin-bottom": 0,
@@ -183,7 +215,7 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-post-grid-text": {
       "text-align": textAlignment,
-      padding: generateCSSUnit(blockContentPadding, "px"),
+      "padding": generateCSSUnit(blockContentPadding, "px"),
     },
     " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSize, "px"),
@@ -228,6 +260,7 @@ function EditorStyles(props) {
       "line-height": continueLineHeight,
       "text-transform": continueTextTransform,
       "font-size": generateCSSUnit(continueFontSize, "px"),
+	  "font-family": continueFontFamily,
     },
     " .responsive-block-editor-addons-block-post-grid-more-link:hover": {
       color: readMoreHoverColor,
@@ -266,6 +299,7 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+	  "margin-bottom": generateCSSUnit(titleBottomSpacingMobile, "px") + " !important",
     },
     " .is-list article": {
       "grid-template-columns": gridTemplateColumns,
@@ -275,18 +309,64 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-post-grid-items": {
       "grid-column-gap": generateCSSUnit(varcolumnGapMobile, "px"),
-      "grid-row-gap": generateCSSUnit(rowGapMobile, "px"),
+      "grid-row-gap": generateCSSUnit(varrowGapMobile, "px"),
     },
+    " .responsive-block-editor-addons-block-post-grid-byline": {
+      "margin-bottom": generateCSSUnit(metaBottomSpacingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-grid-excerpt > div > p": {
+      "margin-bottom": generateCSSUnit(excerptBottomSpacingMobile, "px"),
+    },
+    " .is-list article:not(:last-child)": {
+      "margin-bottom": generateCSSUnit(varrowGapMobile, "px"),
+    },
+    " article": {
+      "margin-bottom": generateCSSUnit(varrowGapMobile, "px"),
+    },
+	" .responsive-block-editor-addons-block-post-grid-byline": {
+		"font-size": generateCSSUnit(metaFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-excerpt": {
+		"font-size": generateCSSUnit(excerptFontSizeMobile, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-more-link.responsive-block-editor-addons-text-link": {
+		"font-size": generateCSSUnit(continueFontSizeMobile, "px"),
+	},
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+	  "margin-bottom": generateCSSUnit(titleBottomSpacingTablet, "px") + " !important",
+    },
+    " .responsive-block-editor-addons-post-grid-items article": {
+      padding: generateCSSUnit(varTabletContentPadding, "px"),
     },
     " .responsive-block-editor-addons-post-grid-items": {
       "grid-column-gap": generateCSSUnit(varcolumnGapTablet, "px"),
-      "grid-row-gap": generateCSSUnit(rowGapTablet, "px"),
+      "grid-row-gap": generateCSSUnit(varrowGapTablet, "px"),
     },
+    " .responsive-block-editor-addons-block-post-grid-byline": {
+      "margin-bottom": generateCSSUnit(metaBottomSpacingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-block-post-grid-excerpt > div > p": {
+      "margin-bottom": generateCSSUnit(excerptBottomSpacingTablet, "px"),
+    },
+    " .is-list article:not(:last-child)": {
+      "margin-bottom": generateCSSUnit(varrowGapTablet, "px"),
+    },
+    " article": {
+      "margin-bottom": generateCSSUnit(varrowGapTablet, "px"),
+    },
+	" .responsive-block-editor-addons-block-post-grid-byline": {
+		"font-size": generateCSSUnit(metaFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-excerpt": {
+		"font-size": generateCSSUnit(excerptFontSizeTablet, "px"),
+	},
+	" .responsive-block-editor-addons-block-post-grid-more-link.responsive-block-editor-addons-text-link": {
+		"font-size": generateCSSUnit(continueFontSizeTablet, "px"),
+	},
   };
 
   var styling_css = "";

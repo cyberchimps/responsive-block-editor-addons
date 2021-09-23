@@ -38,11 +38,11 @@ const attributes = {
     type: "string",
     default: "center",
   },
-  buttonBackgroundColor: {
+  ctaBackColor: {
     type: "string",
     default: "#2091e1",
   },
-  buttonTextColor: {
+  ctaColor: {
     type: "string",
     default: "#fff",
   },
@@ -101,14 +101,14 @@ const attributes = {
   ctaWidth: {
     type: "string",
   },
-  ctaBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#f2f2f2",
   },
   ctaTextColor: {
     type: "string",
   },
-  imgURL: {
+  backgroundImage: {
     type: "string",
   },
   imgID: {
@@ -128,35 +128,35 @@ const attributes = {
     type: "number",
     default: 100,
   },
-  headingLineHeight: {
+  ctaTitleLineHeight: {
     type: "number",
     default: 1.8,
   },
-  headingFontWeight: {
+  ctaTitleFontWeight: {
     type: "string",
     default: "400",
   },
-  contentLineHeight: {
+  ctaTextLineHeight: {
     type: "number",
     default: 1.75,
   },
-  contentFontWeight: {
+  ctaTextFontWeight: {
     type: "string",
     default: "400",
   },
-  buttonvPadding: {
+  ctaVpadding: {
     type: "number",
-    default: 10,
+    default: 18,
   },
-  buttonhPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
-  buttonborderWidth: {
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  buttonborderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "solid",
   },
@@ -172,17 +172,17 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  hbuttonBackgroundColor: {
+  ctaHoverBackColor: {
     type: "string",
   },
-  hbuttonTextColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#e6f2ff",
   },
-  buttonborderColor: {
+  ctaBorderColor: {
     type: "string",
   },
-  buttonborderHColor: {
+  ctaHoverBorderColor: {
     type: "string",
   },
   resctaType: {
@@ -289,62 +289,63 @@ const attributes = {
     type: "string",
     default: "#3a3a3a",
   },
-  topPadding: {
+  blockTopPadding: {
     type: "number",
     default: 20,
   },
-  topPaddingMobile: {
+  blockTopPaddingMobile: {
     type: "number",
     default: 20,
   },
-  topPaddingTablet: {
+  blockTopPaddingTablet: {
     type: "number",
     default: 20,
   },
-  bottomPadding: {
+  blockBottomPadding: {
     type: "number",
     default: 20,
   },
-  bottomPaddingMobile: {
-    type: "number",
-    default: 20,
-  },bottomPaddingTablet: {
+  blockBottomPaddingMobile: {
     type: "number",
     default: 20,
   },
-  leftPadding: {
+  blockBottomPaddingTablet: {
     type: "number",
     default: 20,
   },
-  leftPaddingMobile: {
+  blockLeftPadding: {
     type: "number",
     default: 20,
   },
-  leftPaddingTablet: {
+  blockLeftPaddingMobile: {
     type: "number",
     default: 20,
   },
-  rightPadding: {
+  blockLeftPaddingTablet: {
     type: "number",
     default: 20,
   },
-  rightPaddingMobile: {
+  blockRightPadding: {
     type: "number",
     default: 20,
   },
-  rightPaddingTablet: {
+  blockRightPaddingMobile: {
     type: "number",
     default: 20,
   },
-  imagePosition: {
+  blockRightPaddingTablet: {
+    type: "number",
+    default: 20,
+  },
+  backgroundImagePosition: {
     type: "string",
     default: "center center",
   },
-  imageRepeat: {
+  backgroundImageRepeat: {
     type: "string",
     default: "no-repeat",
   },
-  thumbsize: {
+  backgroundImageize: {
     type: "string",
     default: "cover",
   },
@@ -364,5 +365,125 @@ const attributes = {
     type: "number",
     default: 12,
   },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaBorderRadius: {
+    type: "string",
+    default: 4,
+  },
+  ctaTextOpacity: {
+    type: "number",
+    default: 100,
+  },
+  buttonHbackgroundType: {
+    type: "string",
+    default: "none",
+  },
+  buttonBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  hbuttonBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonTextColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  hbuttonTextColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonborderHColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  topPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  leftPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  rightPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  imgURL: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  imagePosition: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  imageRepeat: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  thumbsize: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonvPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  buttonhPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  buttonborderStyle: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonborderColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  buttonborderWidth: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  ctaBackgroundColor: {
+	type: "string",
+	default: "empty",
+  }, // For compatibility with v1.3.2.
+  headingLineHeight: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  headingFontWeight: {
+	type: "string",
+	default: 'empty',
+  }, // For compatibility with v1.3.2.
+  contentLineHeight: {
+	  type: "number",
+	  default: 999,
+  }, // For compatibility with v1.3.2.
+  contentFontWeight: {
+	  type: "string",
+	  default: 'empty',
+  }, // For compatibility with v1.3.2.
 };
 export default attributes;

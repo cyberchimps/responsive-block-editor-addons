@@ -39,77 +39,173 @@ registerBlockType("responsive-block-editor-addons/column", {
       type: "number",
       default: 50,
     },
-    topPadding: {
+    columnTopPadding: {
       type: "number",
     },
-    bottomPadding: {
+    columnBottomPadding: {
       type: "number",
     },
-    leftPadding: {
+    columnLeftPadding: {
       type: "number",
     },
-    rightPadding: {
+    columnRightPadding: {
       type: "number",
     },
-    leftMargin: {
+    columnLeftMargin: {
       type: "number",
     },
-    rightMargin: {
+    columnRightMargin: {
       type: "number",
     },
-    topMargin: {
+    columnTopMargin: {
       type: "number",
     },
-    bottomMargin: {
+    columnBottomMargin: {
       type: "number",
     },
-    topPaddingTablet: {
+    columnTopPaddingTablet: {
       type: "number",
     },
-    bottomPaddingTablet: {
+    columnBottomPaddingTablet: {
       type: "number",
     },
-    leftPaddingTablet: {
+    columnLeftPaddingTablet: {
       type: "number",
     },
-    rightPaddingTablet: {
+    columnRightPaddingTablet: {
       type: "number",
     },
-    leftMarginTablet: {
+    columnLeftMarginTablet: {
       type: "number",
     },
-    rightMarginTablet: {
+    columnRightMarginTablet: {
       type: "number",
     },
-    topMarginTablet: {
+    columnTopMarginTablet: {
       type: "number",
     },
-    bottomMarginTablet: {
+    columnBottomMarginTablet: {
       type: "number",
     },
-    topPaddingMobile: {
+    columnTopPaddingMobile: {
       type: "number",
     },
-    bottomPaddingMobile: {
+    columnBottomPaddingMobile: {
       type: "number",
     },
-    leftPaddingMobile: {
+    columnLeftPaddingMobile: {
       type: "number",
     },
-    rightPaddingMobile: {
+    columnRightPaddingMobile: {
       type: "number",
     },
-    leftMarginMobile: {
+    columnLeftMarginMobile: {
       type: "number",
     },
-    rightMarginMobile: {
+    columnRightMarginMobile: {
       type: "number",
     },
-    topMarginMobile: {
+    columnTopMarginMobile: {
       type: "number",
     },
-    bottomMarginMobile: {
+    columnBottomMarginMobile: {
       type: "number",
+    },
+    topPadding: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    bottomPadding: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    leftPadding: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    rightPadding: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    leftMargin: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    rightMargin: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    topMargin: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    bottomMargin: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    topPaddingTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    bottomPaddingTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    leftPaddingTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    rightPaddingTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    leftMarginTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    rightMarginTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    topMarginTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    bottomMarginTablet: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    topPaddingMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    bottomPaddingMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    leftPaddingMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    rightPaddingMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    leftMarginMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    rightMarginMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    topMarginMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
+    },
+    bottomMarginMobile: { //For compatibility with v1.3.2.
+      type: "number",
+      default: 999,
     },
     block_id: {
       type: "string",
@@ -153,7 +249,6 @@ registerBlockType("responsive-block-editor-addons/column", {
     },
     hoverboxShadowColor: {
       type: "string",
-      default: "#cccccc",
     },
     hoverboxShadowHOffset: {
       type: "number",
@@ -206,15 +301,15 @@ registerBlockType("responsive-block-editor-addons/column", {
     backgroundImage: {
       type: "string",
     },
-    backgroundPosition: {
+    backgroundImagePosition: {
       type: "string",
       default: "center center",
     },
-    backgroundSize: {
+    backgroundImageSize: {
       type: "string",
       default: "cover",
     },
-    backgroundRepeat: {
+    backgroundImageRepeat: {
       type: "string",
       default: "no-repeat",
     },
@@ -261,6 +356,10 @@ registerBlockType("responsive-block-editor-addons/column", {
     backgroundColor: {
       type: "string",
     },
+    backgroundColorHover: {
+      type: "string",
+      default: " ",
+    },
     backgroundColor1: {
       type: "string",
     },
@@ -275,6 +374,18 @@ registerBlockType("responsive-block-editor-addons/column", {
       type: "string",
       default: "#fff",
     },
+	backgroundPosition: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundRepeat: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundSize: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
   },
 
   /* Render the block in the editor. */

@@ -22,6 +22,7 @@ const save = ({ attributes, className }) => {
     horizontalFlip,
     verticalFlip,
     align,
+    design
   } = attributes;
 
   const shapeClass = getColorClassName("color", color);
@@ -31,7 +32,7 @@ const save = ({ attributes, className }) => {
   );
 
   let classes = classnames(
-    className,
+    attributes.className && design==='empty'? attributes.className :`is-style-${design}`,
     "responsive-block-editor-addons-block-shape-divider",
     `block-${block_id}`,
     {
@@ -56,7 +57,10 @@ const save = ({ attributes, className }) => {
   return (
     <div className={classes} aria-hidden="true">
       <div className="wp-block-responsive-block-editor-addons-shape-divider__svg-wrapper">
-        {getDividerFromStyle(attributes.className)}
+        {
+          attributes.className && design==='empty'? getDividerFromStyle(attributes.className) : 
+          getDividerFromStyle(`is-style-${design}`)
+        }
       </div>
       <div className="wp-block-responsive-block-editor-addons-shape-divider__alt-wrapper"></div>
     </div>

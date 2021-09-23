@@ -111,6 +111,16 @@ export default class Edit extends Component {
         alignment: newAlignment === undefined ? "none" : newAlignment,
       });
 
+    function convertTag( str ) {
+      const regex = /u003c/ig;
+      const regex2 = /u003e/ig;
+      const regex3 = /u0026/ig;
+      str = str?.replaceAll( regex, '\u003c' );
+      str = str?.replaceAll( regex2, '\u003e');
+      str = str?.replaceAll( regex3,'\u0026')
+      return str;
+    }
+
     return [
       // Show the block controls on focus
       <Inspector {...{ setAttributes, ...this.props }} />,
@@ -226,7 +236,7 @@ export default class Edit extends Component {
                     "responsive-block-editor-addons"
                   )}
                   keepPlaceholderOnFocus
-                  value={teamBlock[index]["teamDesignation"]}
+                  value={convertTag(teamBlock[index]["teamDesignation"])}
                   formattingControls={[
                     "bold",
                     "italic",
@@ -265,7 +275,7 @@ export default class Edit extends Component {
                     "responsive-block-editor-addons"
                   )}
                   keepPlaceholderOnFocus
-                  value={teamBlock[index]["teamDescription"]}
+                  value={convertTag(teamBlock[index]["teamDescription"])}
                   formattingControls={[
                     "bold",
                     "italic",

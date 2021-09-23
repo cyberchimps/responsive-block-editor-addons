@@ -61,44 +61,44 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
       type: "string",
       default: "mobile",
     },
-    topPadding: {
+    boxTopPadding: {
       type: "number",
       default: 10,
     },
-    bottomPadding: {
+    boxBottomPadding: {
       type: "number",
       default: 10,
     },
-    leftPadding: {
+    boxLeftPadding: {
       type: "number",
       default: 10,
     },
-    rightPadding: {
+    boxRightPadding: {
       type: "number",
       default: 10,
     },
-    topPaddingTablet: {
+    boxTopPaddingTablet: {
       type: "number",
     },
-    bottomPaddingTablet: {
+    boxBottomPaddingTablet: {
       type: "number",
     },
-    leftPaddingTablet: {
+    boxLeftPaddingTablet: {
       type: "number",
     },
-    rightPaddingTablet: {
+    boxRightPaddingTablet: {
       type: "number",
     },
-    topPaddingMobile: {
+    boxTopPaddingMobile: {
       type: "number",
     },
-    bottomPaddingMobile: {
+    boxBottomPaddingMobile: {
       type: "number",
     },
-    leftPaddingMobile: {
+    boxLeftPaddingMobile: {
       type: "number",
     },
-    rightPaddingMobile: {
+    boxRightPaddingMobile: {
       type: "number",
     },
     topMargin: {
@@ -190,15 +190,15 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
     backgroundImage: {
       type: "string",
     },
-    backgroundPosition: {
+    backgroundImagePosition: {
       type: "string",
       default: "center-center",
     },
-    backgroundSize: {
+    backgroundImageSize: {
       type: "string",
       default: "cover",
     },
-    backgroundRepeat: {
+    backgroundImageRepeat: {
       type: "string",
       default: "no-repeat",
     },
@@ -262,6 +262,66 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
       type: "number",
       default: 1,
     },
+	backgroundPosition: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundRepeat: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundSize: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	topPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	bottomPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	leftPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	rightPadding: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	topPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	bottomPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	leftPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	rightPaddingMobile: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	topPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	bottomPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	leftPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
+	rightPaddingTablet: {
+	  type: "number",
+	  default: 999,
+	}, // For compatibility with v1.3.2.
   },
 
   /* Render the block in the editor. */
