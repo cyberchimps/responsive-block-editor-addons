@@ -91,11 +91,9 @@ const attributes = {
   },
   titleSpaceMobile: {
     type: "number",
-    default: 8,
   },
   titleSpaceTablet: {
     type: "number",
-    default: 8,
   },
   subtitleSpace: {
     type: "number",
@@ -103,11 +101,9 @@ const attributes = {
   },
   subtitleSpaceMobile: {
     type: "number",
-    default: 16,
   },
   subtitleSpaceTablet: {
     type: "number",
-    default: 16,
   },
   contentSpace: {
     type: "number",
@@ -115,11 +111,9 @@ const attributes = {
   },
   contentSpaceMobile: {
     type: "number",
-    default: 16,
   },
   contentSpaceTablet: {
     type: "number",
-    default: 16,
   },
   buttonSpace: {
     type: "number",
@@ -208,11 +202,9 @@ const attributes = {
   },
   blockmarginMobile: {
     type: "number",
-    default: 2,
   },
   blockmarginTablet: {
     type: "number",
-    default: 2,
   },
   blockzindex: {
     type: "number",
@@ -391,11 +383,9 @@ const attributes = {
   },
   blockbotmarginMobile: {
     type: "number",
-    default: 2,
   },
   blockbotmarginTablet: {
     type: "number",
-    default: 2,
   },
   blockleftmargin: {
     type: "number",
@@ -403,11 +393,9 @@ const attributes = {
   },
   blockleftmarginMobile: {
     type: "number",
-    default: 0,
   },
   blockleftmarginTablet: {
     type: "number",
-    default: 0,
   },
   blockrightmargin: {
     type: "number",
@@ -415,11 +403,9 @@ const attributes = {
   },
   blockrightmarginMobile: {
     type: "number",
-    default: 0,
   },
   blockrightmarginTablet: {
     type: "number",
-    default: 0,
   },
   contenttopSpace: {
     type: "number",
@@ -427,11 +413,9 @@ const attributes = {
   },
   contenttopSpaceMobile: {
     type: "number",
-    default: 16,
   },
   contenttopSpaceTablet: {
     type: "number",
-    default: 16,
   },
   bgimageSize: {
     type: "string",

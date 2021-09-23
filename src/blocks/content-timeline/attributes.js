@@ -101,27 +101,21 @@ const attributes = {
   },
   horizontalSpaceMobile: {
     type: "number",
-    default: 0,
   },
   verticalSpaceMobile: {
     type: "number",
-    default: 15,
   },
   headingBottomMarginMobile: {
     type: "number",
-    default: 15,
   },
   horizontalSpaceTablet: {
     type: "number",
-    default: 0,
   },
   verticalSpaceTablet: {
     type: "number",
-    default: 15,
   },
   headingBottomMarginTablet: {
     type: "number",
-    default: 15,
   },
   dateLineHeight: {
     type: "number",
