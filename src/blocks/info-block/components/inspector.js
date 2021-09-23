@@ -64,6 +64,8 @@ export default class Inspector extends Component {
     this.toggleBoxTarget = this.toggleBoxTarget.bind(this);
     this.toggleResponsive = this.toggleResponsive.bind(this);
     this.getCtaicon = this.getCtaicon.bind(this);
+    this.onRemoveImage = this.onRemoveImage.bind(this);
+    this.onSelectImage = this.onSelectImage.bind(this);
   }
 
   getIfbIcon(value) {
