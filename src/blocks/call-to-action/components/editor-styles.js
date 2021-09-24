@@ -217,9 +217,9 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
       "padding-top": topPadding !== 999 && blockTopPadding === 20 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
-      "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 20 ? generateCSS(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
-      "padding-left": leftPadding !== 999 && blockLeftPadding === 20 ? generateCSS(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
-      "padding-right": rightPadding !== 999 && blockRightPadding === 20 ? generateCSS(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 20 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPadding !== 999 && blockLeftPadding === 20 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && blockRightPadding === 20 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {
