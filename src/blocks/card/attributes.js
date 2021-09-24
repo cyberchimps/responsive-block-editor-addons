@@ -156,7 +156,7 @@ const attributes = {
     default: 90,
   },
   backgroundImage: {
-    type: "string",
+    type: "object",
   },
   backgroundColor: {
     type: "string",

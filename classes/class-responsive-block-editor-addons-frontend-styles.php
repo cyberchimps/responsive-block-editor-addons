@@ -2865,7 +2865,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_background_type         = '';
 			$updated_button_background_color = '';
 			$box_shadow_position_css         = $attr['boxShadowPosition'];
-			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage'] : null;
+			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage']['url'] : null;
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
