@@ -107,7 +107,7 @@ function EditorStyles(props) {
       "text-align": quoteAlign,
       "padding-left": leftPadding !== 999 && blockLeftPadding === 60 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
       "padding-right": rightPadding !== 999 && blockRightPadding === 60 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
-      "padding-top": topPadding !== 999 && blockTopPadding === 70 ? generateCSS(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-top": topPadding !== 999 && blockTopPadding === 70 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(blockTopPadding, "px"), // For compatibility with v1.3.2.
       "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 70 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
       "background-color":
         backgroundType == "color"

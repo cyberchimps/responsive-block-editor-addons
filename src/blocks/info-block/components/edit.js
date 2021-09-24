@@ -87,7 +87,8 @@ export default class Edit extends Component {
         dimRatio,
         imageBoxShadowPosition,
         imageopacity,
-		ctaTextFontFamily
+        ctaTextFontFamily,
+        imgURL
       },
       setAttributes,
     } = this.props;
@@ -233,7 +234,7 @@ export default class Edit extends Component {
             )}
           >
 			{ctaTextFontFamily && loadGoogleFont(ctaTextFontFamily)}
-            {backgroundImage && !!backgroundImage.length && (
+            {(backgroundImage || imgURL !== 'empty') && (!!backgroundImage?.length || !!imgURL?.length) && (
               <div className="responsive-block-editor-addons-cta-image-wrap">
                 <img
                   className={classnames(
