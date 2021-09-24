@@ -144,6 +144,7 @@ export default class Inspector extends Component {
    */
   onSelectImage(media) {
     const { setAttributes } = this.props;
+    const { backgroundImage } = this.props.attributes;
 
     if (!media || !media.url) {
       setAttributes({ backgroundImage: null });
@@ -154,7 +155,7 @@ export default class Inspector extends Component {
       return;
     }
 
-    setAttributes({ backgroundImage: media });
+    setAttributes({ backgroundImage: media.url });
   }
 
   /*
