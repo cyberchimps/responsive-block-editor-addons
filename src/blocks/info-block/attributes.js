@@ -295,35 +295,27 @@ const attributes = {
   },
   iconLeftMarginMobile: {
     type: "number",
-    default: 0,
   },
   iconRightMarginMobile: {
     type: "number",
-    default: 0,
   },
   iconTopMarginMobile: {
     type: "number",
-    default: 5,
   },
   iconBottomMarginMobile: {
     type: "number",
-    default: 5,
   }, 
   iconLeftMarginTablet: {
     type: "number",
-    default: 0,
   },
   iconRightMarginTablet: {
     type: "number",
-    default: 0,
   },
   iconTopMarginTablet: {
     type: "number",
-    default: 5,
   },
   iconBottomMarginTablet: {
     type: "number",
-    default: 5,
   },
   iconImage: {
     type: "object",
