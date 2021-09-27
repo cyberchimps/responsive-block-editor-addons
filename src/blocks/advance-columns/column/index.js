@@ -39,173 +39,77 @@ registerBlockType("responsive-block-editor-addons/column", {
       type: "number",
       default: 50,
     },
-    columnTopPadding: {
+    topPadding: {
       type: "number",
     },
-    columnBottomPadding: {
+    bottomPadding: {
       type: "number",
     },
-    columnLeftPadding: {
+    leftPadding: {
       type: "number",
     },
-    columnRightPadding: {
+    rightPadding: {
       type: "number",
     },
-    columnLeftMargin: {
+    leftMargin: {
       type: "number",
     },
-    columnRightMargin: {
+    rightMargin: {
       type: "number",
     },
-    columnTopMargin: {
+    topMargin: {
       type: "number",
     },
-    columnBottomMargin: {
+    bottomMargin: {
       type: "number",
     },
-    columnTopPaddingTablet: {
+    topPaddingTablet: {
       type: "number",
     },
-    columnBottomPaddingTablet: {
+    bottomPaddingTablet: {
       type: "number",
     },
-    columnLeftPaddingTablet: {
+    leftPaddingTablet: {
       type: "number",
     },
-    columnRightPaddingTablet: {
+    rightPaddingTablet: {
       type: "number",
     },
-    columnLeftMarginTablet: {
+    leftMarginTablet: {
       type: "number",
     },
-    columnRightMarginTablet: {
+    rightMarginTablet: {
       type: "number",
     },
-    columnTopMarginTablet: {
+    topMarginTablet: {
       type: "number",
     },
-    columnBottomMarginTablet: {
+    bottomMarginTablet: {
       type: "number",
     },
-    columnTopPaddingMobile: {
+    topPaddingMobile: {
       type: "number",
     },
-    columnBottomPaddingMobile: {
+    bottomPaddingMobile: {
       type: "number",
     },
-    columnLeftPaddingMobile: {
+    leftPaddingMobile: {
       type: "number",
     },
-    columnRightPaddingMobile: {
+    rightPaddingMobile: {
       type: "number",
     },
-    columnLeftMarginMobile: {
+    leftMarginMobile: {
       type: "number",
     },
-    columnRightMarginMobile: {
+    rightMarginMobile: {
       type: "number",
     },
-    columnTopMarginMobile: {
+    topMarginMobile: {
       type: "number",
     },
-    columnBottomMarginMobile: {
+    bottomMarginMobile: {
       type: "number",
-    },
-    topPadding: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    bottomPadding: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    leftPadding: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    rightPadding: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    leftMargin: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    rightMargin: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    topMargin: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    bottomMargin: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    topPaddingTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    bottomPaddingTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    leftPaddingTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    rightPaddingTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    leftMarginTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    rightMarginTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    topMarginTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    bottomMarginTablet: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    topPaddingMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    bottomPaddingMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    leftPaddingMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    rightPaddingMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    leftMarginMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    rightMarginMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    topMarginMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
-    },
-    bottomMarginMobile: { //For compatibility with v1.3.2.
-      type: "number",
-      default: 999,
     },
     block_id: {
       type: "string",
