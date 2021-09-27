@@ -1945,14 +1945,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-column' => array_merge(
 					array(
-                        'padding-left'     => self::get_css_value( $attr['leftPadding'], 'px' ),
-                        'padding-right'    => self::get_css_value( $attr['rightPadding'], 'px' ),
-                        'padding-top'      => self::get_css_value( $attr['topPadding'], 'px' ),
-                        'padding-bottom'   => self::get_css_value( $attr['bottomPadding'], 'px' ),
-                        'margin-left'      => self::get_css_value( $attr['leftMargin'], 'px' ),
-                        'margin-right'     => self::get_css_value( $attr['rightMargin'], 'px' ),
-                        'margin-top'       => self::get_css_value( $attr['topMargin'], 'px' ),
-                        'margin-bottom'    => self::get_css_value( $attr['bottomMargin'], 'px' ),
+						'padding-left'     => self::get_css_value( $attr['leftPadding'], 'px' ),
+						'padding-right'    => self::get_css_value( $attr['rightPadding'], 'px' ),
+						'padding-top'      => self::get_css_value( $attr['topPadding'], 'px' ),
+						'padding-bottom'   => self::get_css_value( $attr['bottomPadding'], 'px' ),
+						'margin-left'      => self::get_css_value( $attr['leftMargin'], 'px' ),
+						'margin-right'     => self::get_css_value( $attr['rightMargin'], 'px' ),
+						'margin-top'       => self::get_css_value( $attr['topMargin'], 'px' ),
+						'margin-bottom'    => self::get_css_value( $attr['bottomMargin'], 'px' ),
 						'box-shadow'       => self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 						'background-color' => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity ) : '',
 						'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
@@ -1984,27 +1984,27 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$mobile_selectors = array(
 				' .responsive-block-editor-addons-block-column' => array(
-                    'padding-left'   => self::get_css_value( $attr['leftPaddingMobile'], 'px' ),
-                    'padding-right'  => self::get_css_value( $attr['rightPaddingMobile'], 'px' ),
-                    'padding-top'    => self::get_css_value( $attr['topPaddingMobile'], 'px' ),
-                    'padding-bottom' => self::get_css_value( $attr['bottomPaddingMobile'], 'px' ),
-                    'margin-left'    => self::get_css_value( $attr['leftMarginMobile'], 'px' ),
-                    'margin-right'   => self::get_css_value( $attr['rightMarginMobile'], 'px' ),
-                    'margin-top'     => self::get_css_value( $attr['topMarginMobile'], 'px' ),
-                    'margin-bottom'  => self::get_css_value( $attr['bottomMarginMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['leftPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['rightPaddingMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['topPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['bottomPaddingMobile'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['leftMarginMobile'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['rightMarginMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['topMarginMobile'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['bottomMarginMobile'], 'px' ),
 				),
 			);
 
 			$tablet_selectors = array(
 				' .responsive-block-editor-addons-block-column' => array(
-                    'padding-left'   => self::get_css_value( $attr['leftPaddingTablet'], 'px' ),
-                    'padding-right'  => self::get_css_value( $attr['rightPaddingTablet'], 'px' ),
-                    'padding-top'    => self::get_css_value( $attr['topPaddingTablet'], 'px' ),
-                    'padding-bottom' => self::get_css_value( $attr['bottomPaddingTablet'], 'px' ),
-                    'margin-left'    => self::get_css_value( $attr['leftMarginTablet'], 'px' ),
-                    'margin-right'   => self::get_css_value( $attr['rightMarginTablet'], 'px' ),
-                    'margin-top'     => self::get_css_value( $attr['topMarginTablet'], 'px' ),
-                    'margin-bottom'  => self::get_css_value( $attr['bottomMarginTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['leftPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['rightPaddingTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['topPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['bottomPaddingTablet'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['leftMarginTablet'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['rightMarginTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['topMarginTablet'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['bottomMarginTablet'], 'px' ),
 				),
 			);
 
