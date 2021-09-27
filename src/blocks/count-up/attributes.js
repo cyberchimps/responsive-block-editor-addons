@@ -59,11 +59,9 @@ const attributes = {
   },
   dateFontSizeMobile: {
     type: "number",
-    default: 40,
   },
   dateFontSizeTablet: {
     type: "number",
-    default: 40,
   },
   headingLineHeight: {
     type: "number",
@@ -93,11 +91,9 @@ const attributes = {
   },
   contentFontSizeMobile: {
     type: "number",
-    default: 16,
   },
   contentFontSizeTablet: {
     type: "number",
-    default: 16,
   },
   icon: {
     type: "string",
