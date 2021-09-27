@@ -202,7 +202,6 @@ const attributes = {
   },
   boxMarginMobile: {
     type: "number",
-    default: 8,
   },
   boxHeightTablet: {
     type: "number",
@@ -213,7 +212,6 @@ const attributes = {
   },
   boxMarginTablet: {
     type: "number",
-    default: 10,
   },
   boxTopPadding: {
     type: "number",
@@ -233,35 +231,35 @@ const attributes = {
   },
   boxTopPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   boxRightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   boxBottomPaddingMobile: {
     type: "number",
-    default: 10,
+    default: '',
   },
   boxLeftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   boxTopPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   boxRightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   boxBottomPaddingTablet: {
     type: "number",
-    default: 10,
+    default: '',
   },
   boxLeftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   showBoxBorder: {
     type: "boolean",
@@ -361,67 +359,51 @@ const attributes = {
   },
   containerTopMarginTablet: {
     type: "number",
-    default: 0,
   },
   containerRightMarginTablet: {
     type: "number",
-    default: 0,
   },
   containerBottomMarginTablet: {
     type: "number",
-    default: 0,
   },
   containerLeftMarginTablet: {
     type: "number",
-    default: 0,
   },
   containerTopPaddingTablet: {
     type: "number",
-    default: 0,
   },
   containerRightPaddingTablet: {
     type: "number",
-    default: 0,
   },
   containerBottomPaddingTablet: {
     type: "number",
-    default: 0,
   },
   containerLeftPaddingTablet: {
     type: "number",
-    default: 0,
   },
   containerTopMarginMobile: {
     type: "number",
-    default: 0,
   },
   containerRightMarginMobile: {
     type: "number",
-    default: 0,
   },
   containerBottomMarginMobile: {
     type: "number",
-    default: 0,
   },
   containerLeftMarginMobile: {
     type: "number",
-    default: 0,
   },
   containerTopPaddingMobile: {
     type: "number",
-    default: 0,
   },
   containerRightPaddingMobile: {
     type: "number",
-    default: 0,
   },
   containerBottomPaddingMobile: {
     type: "number",
-    default: 0,
   },
   containerLeftPaddingMobile: {
     type: "number",
-    default: 0,
   },
   justifyItems: {
     type: "string",

@@ -736,11 +736,9 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'columnGapTablet'             => array(
 					'type'    => 'number',
-					'default' => 20,
 				),
 				'columnGapMobile'             => array(
 					'type'    => 'number',
-					'default' => 20,
 				),
 				'rowGap'                      => array(
 					'type'    => 'number',
