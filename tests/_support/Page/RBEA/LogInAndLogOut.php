@@ -59,6 +59,7 @@ class LogInAndLogOut
      */
     public function userLogout($I) {
         $I->amGoingTo('Logout');
+        $I->wait(2);
         $I->moveMouseOver($this->wordpressProfile);
         $I->click($this->logOutLink);
         $I->wait(2);

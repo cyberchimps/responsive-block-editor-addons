@@ -135,9 +135,44 @@ class InfoBlockCest
     public $boxShadowStyleBlur = '(//*[contains(@id, "inspector-input-control")])[6]';
     public $boxShadowStyleSpread = '(//*[contains(@id, "inspector-input-control")])[7]';
     public $boxShadowStylePosition = '(//*[contains(@id, "inspector-select-control")])[5]';
-    public $boxShadowStylePositionSelected = 'option[value="inset"]'; 
+    public $boxShadowStylePositionSelected = 'option[value="inset"]';
+    
+    /**
+     * Separator Style settings
+     */
     public $separatorStyleBtn = '//button[text()="Separator"]';
+    public $thicknessInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Thickness"]';
+    public $sizeBtn = '//button[@class="components-button responsive-block-editor-addons-size-btn is-primary is-small"]';
+    public $widthInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Width"]';
+    public $separatorColor = '(//*[@class="components-circular-option-picker__swatches"]//div[2]/button)[3]';
+    public $separatorPositionSelect = '(//select[contains(@id, "inspector-select-control")])[4]';
+    public $separatorSelectedPosition = 'option[value="after_prefix"]';
+    public $resetThicknessBtn = '(//button[text()="Reset"])[2]';
+    public $resetWidthBtn = '(//button[text()="Reset"])[3]';
+    public $clrSeparatorColorBtn = '(//button[text()="Clear"])[3]';
 
+    /**
+     * Typography Style settings
+     */
+    public $typographyStyleBtn = '//button[text()="Typography"]';
+    public $titleTypography = '//button[text()="Title Typography"]';
+    public $descriptionTypography = '//button[text()="Description Typography"]';
+    public $fontFamilySelect = '(//*[contains(@id, "inspector-select-control")])[4]';
+    public $selectedFontFamilyOption = 'option[value="Actor"]';
+    public $fontWeightSelect = '(//*[contains(@id, "inspector-select-control")])[5]';
+    public $selectedFontWeightOption = 'option[value="600"]';
+    public $fontSizeInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Font Size"]';
+    public $lineHeightInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Line Height"]';
+    public $resetLineHeightBtn = '(//*[text() = "Reset"])[2]';
+    public $contentStyleBtn = '//button[text()="Content"]';
+    public $enablePrefixBtn = '(//input[contains(@id, "inspector-toggle-control")])[1]';
+    public $enableTitlteBtn = '(//input[contains(@id, "inspector-toggle-control")])[2]';
+    public $enableDescription = '(//input[contains(@id, "inspector-toggle-control")])[3]';
+    public $contentTitleColorBtn = '(//*[@class="components-circular-option-picker__swatches"]//div[2]/button)[3]';
+    public $contentDescriptionColorBtn = '(//*[@class="components-circular-option-picker__swatches"]//div[1]/button)[4]';
+    public $fContentTitle = '//h1[@class="responsive-block-editor-addons-ifb-title"]';
+    public $clrContentTitleColor = '(//button[text()="Clear"])[3]';
+    public $clrContentDescriptionColor = '(//button[text()="Clear"])[4]';
 
     /**
      * This function runs before running each test.
@@ -607,7 +642,7 @@ class InfoBlockCest
     }
 
     /**
-     * Tests the border style settings
+     * Tests the border style settings.
      */
     public function InfoBlockBorderStyleTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
@@ -672,6 +707,76 @@ class InfoBlockCest
         $I->scrollTo($this->boxShadowOptionsBtn, 20);
         $I->click($this->boxShadowOptionsBtn);
         $I->wait(2);
+        $I->amGoingTo('Set the box shadow attributes and publish it.');
+        $this->_setBoxShadowAttributes($I, $commonFunctionsPageObj);
+
+        $I->amGoingTo('Check box shadow style in the frontend');
+        $commonFunctionsPageObj->field = $this->fInfoBlock;
+        $commonFunctionsPageObj->prop = 'box-shadow';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 3px 5px 30px 5px inset');
+
+        $I->amGoingTo('Reset box shadow style');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->borderStyleBtn);
+        $I->scrollTo($this->boxShadowResetBtn, 20);
+        $I->click($this->boxShadowResetBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
+
+        $I->amGoingTo('Set the box shadow hover attributes and publish it.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->borderStyleBtn);
+        $I->scrollTo($this->hoverBoxShadowOptionsBtn, 20);
+        $I->click($this->hoverBoxShadowOptionsBtn);
+        $this->_setBoxShadowAttributes($I, $commonFunctionsPageObj);
+ 
+        $I->amGoingTo('Check box shadow hover style in the frontend');
+        $I->wait(1);
+        $I->moveMouseOver($this->fInfoBlock);
+        $I->wait(1);
+        $commonFunctionsPageObj->field = $this->fInfoBlock;
+        $commonFunctionsPageObj->prop = 'box-shadow';
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 3px 5px 30px 5px inset');
+ 
+        $I->amGoingTo('Reset box shadow style');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->borderStyleBtn);
+        $I->scrollTo($this->hoverBoxShadowResetBtn, 20);
+        $I->click($this->hoverBoxShadowResetBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->wait(1);
+        $I->moveMouseOver($this->fInfoBlock);
+        $I->wait(1);
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
+    }
+
+    /**
+     * This function checks frontend border settings
+     */
+    public function _checkBorderStyle( $I, $attr) {
+        $border = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::cssSelector($this->fInfoBlock));
+        });
+        $I->assertEquals($attr['border-color'], $border->getCSSValue('border-color'));
+        $I->assertEquals($attr['border-style'], $border->getCSSValue('border-style'));
+        $I->assertEquals($attr['border-width'], $border->getCSSValue('border-width'));
+        $I->assertEquals($attr['border-radius'], $border->getCSSValue('border-radius'));
+    }
+
+    /**
+     * This function sets box shadow attributes
+     */
+    public function _setBoxShadowAttributes($I, $commonFunctionsPageObj)
+    {
         $I->click($this->boxShadowColor);
         $I->wait(1);
 
@@ -703,34 +808,251 @@ class InfoBlockCest
         $I->wait(2);
 
         $commonFunctionsPageObj->publishAndViewPage($I);
+    }
 
-        $I->amGoingTo('Check box shadow style in frontend');
-        $commonFunctionsPageObj->field = $this->fInfoBlock;
-        $commonFunctionsPageObj->prop = 'box-shadow';
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 3px 5px 30px 5px inset');
-
-        $I->amGoingTo('Reset box shadow style');
+    /**
+     * Tests the separator style settings.
+     */
+    public function InfoBlockSeparatorStyleTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the separator style of the Info Block.');
         $I->click($commonFunctionsPageObj->editBlockBtn);
         $I->wait(1);
         $I->click($this->infoBlock);
         $I->click('Style');
-        $I->click($this->borderStyleBtn);
-        $I->scrollTo($this->boxShadowResetBtn, 20);
-        $I->click($this->boxShadowResetBtn);
+        $I->click($this->separatorStyleBtn);
+        $separatorPosition = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->separatorPositionSelect))->
+            findElement( WebDriverBy::cssSelector($this->separatorSelectedPosition) )->click();
+        });
+        $I->wait(1);
+        $I->selectOption('Style', 'Dashed');
+        $I->click($this->thicknessInput);
+        $commonFunctionsPageObj->field = $this->thicknessInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '4' );
+        $I->click($this->sizeBtn); 
+        $I->click($this->widthInput);
+        $commonFunctionsPageObj->field = $this->widthInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '120' );
+        $I->click($this->separatorColor);
         $commonFunctionsPageObj->publishAndViewPage($I);
-        $commonFunctionsPageObj->_checkFrontEndStyle($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
+
+        $I->amGoingTo('Check the separator settings in the frontend.');
+        $I->seeElement($this->fSeparator);
+        $commonFunctionsPageObj->field = $this->fSeparator;
+        $commonFunctionsPageObj->prop = 'border-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(16, 101, 156)'); 
+        $commonFunctionsPageObj->prop = 'border-top-style';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'dashed'); 
+        $commonFunctionsPageObj->prop = 'border-width';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '4px 0px 0px'); 
+
+        $I->amGoingTo('Reset the separator settings');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->separatorStyleBtn);
+        $I->click($this->resetThicknessBtn);
+        $I->click($this->resetWidthBtn);
+        $I->click($this->clrSeparatorColorBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the separator settings after reset in the frontend');
+        $commonFunctionsPageObj->field = $this->fSeparator;
+        $commonFunctionsPageObj->prop = 'border-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51)');
+        $commonFunctionsPageObj->prop = 'border-width';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '2px 0px 0px'); 
     }
 
     /**
-     * This function checks frontend border settings
+     * Tests the Typography style settings.
      */
-    public function _checkBorderStyle( $I, $attr) {
-        $border = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
-            return $webdriver->findElement(WebDriverBy::cssSelector($this->fInfoBlock));
+    public function InfoBlockTypographyStyleTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the title typography settings of info block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($this->titleTypography);
+        $arr = array('28px', '28px', '28px', '56px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $this->titleTypography, $this->fTitleText, $arr);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '35px');
+
+        $I->amGoingTo('Change the description typography settings of info block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($this->descriptionTypography);
+        $arr = array('22px', '22px', '22px', '44px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $this->descriptionTypography, $this->fDescription, $arr);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '38.5px');
+    }
+
+    /**
+     * This function performs the typography test.
+     */
+    public function _typographyTest($I, $commonFunctionsPageObj, $typography, $selector, $arr)
+    {
+        $I->wait(1);    
+        $I->amGoingTo('Change the typography style of the count down block for desktop view.');
+        $I->resizeWindow(1280, 950);
+        $I->wait(2);
+        $fontFamily = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fontFamilySelect))->
+            findElement( WebDriverBy::cssSelector($this->selectedFontFamilyOption) )->click();
         });
-        $I->assertEquals($attr['border-color'], $border->getCSSValue('border-color'));
-        $I->assertEquals($attr['border-style'], $border->getCSSValue('border-style'));
-        $I->assertEquals($attr['border-width'], $border->getCSSValue('border-width'));
-        $I->assertEquals($attr['border-radius'], $border->getCSSValue('border-radius'));
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->desktopView);
+        $I->wait(1);
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $arr[0] );
+        $I->wait(1);
+        $fontFamily = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fontWeightSelect))->
+            findElement( WebDriverBy::cssSelector($this->selectedFontWeightOption) )->click();
+        });
+        $I->wait(1);
+        $I->click($this->lineHeightInputField);
+        $commonFunctionsPageObj->field = $this->lineHeightInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '2' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the frontend for the typography settings in the desktop view.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'font-family';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'Actor');  
+        $commonFunctionsPageObj->prop = 'font-weight';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '600'); 
+        $commonFunctionsPageObj->prop = 'line-height';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[3]);
+        $commonFunctionsPageObj->prop = 'font-size';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[0]);
+        $I->resizeWindow(375, 812);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[1]);
+        $I->wait(1);
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[2]);
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+
+        $I->amGoingTo('Change the typography style of the count up block for mobile and desktop view.');
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($typography);  
+        $I->click($commonFunctionsPageObj->tabletView);        
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '16px' );
+        $I->click($commonFunctionsPageObj->mobileView);        
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '8px' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check the frontend for the typography settings in the tablet and mobile view.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'font-size';
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '16px');
+        $I->wait(1);
+        $I->resizeWindow(375, 812);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '8px');
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+
+        $I->amGoingTo('Reset the line height');        
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($typography);  
+        $I->click($this->resetLineHeightBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the line height in the frontend.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'line-height';
+    }
+
+    /**
+     * Tests the Content Style settings.
+     */
+    public function InfoBlockContentStyleTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the content style settings of info block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->contentStyleBtn);
+        $I->wait(1);
+        $I->amGoingTo('Hide the prefix');
+        $I->wait(1);
+        $enablePrefixBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->enablePrefixBtn))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->click($this->enablePrefixBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the prefix in the frontend.');
+        $I->cantSeeElement($this->fTitlePrefix);
+
+        $I->amGoingTo('Change the content settings of the title and description of the Info Block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->contentStyleBtn);
+        $I->selectOption('Title Tag', 'H1');
+        $I->click($this->contentTitleColorBtn);
+        $I->wait(1);
+        $I->click($this->contentDescriptionColorBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the content settings of the title and description of the Info Block.');
+        $I->seeElement($this->fContentTitle);
+        $commonFunctionsPageObj->field = $this->fContentTitle;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(16, 101, 156, 1)'); 
+        $commonFunctionsPageObj->field = $this->fDescription;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(0, 102, 204, 1)');
+
+        $I->amGoingTo('Reset the colors of the contents');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->infoBlock);
+        $I->click('Style');
+        $I->click($this->contentStyleBtn);
+        $I->click($this->clrContentTitleColor);
+        $I->click($this->clrContentDescriptionColor);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the content settings after reset in the frontend.');
+        $commonFunctionsPageObj->field = $this->fContentTitle;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)'); 
+        $commonFunctionsPageObj->field = $this->fDescription;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)');
     }
 }
