@@ -81,7 +81,7 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
-= 1.3.4 - 22nd September 2021 =
+= 1.3.4 - 29th September 2021 =
 * New - Anchor Block
 * New - Call/Mail Link Button Block
 * New - Inline Notice Block
