@@ -189,12 +189,6 @@ return array(
         <!-- /wp:responsive-block-editor-addons/advance-columns --></div></section></div>
         <!-- /wp:responsive-block-editor-addons/section -->
         
-        <div class="responsive-block-editor-addons-block-section-outer-wrap block-e7ca91a6-0f5b-4c62-9a4b-67b6c2779f39 background-type-color alignfull">
-        <section class="responsive-section-wrap responsive-block-editor-addons-block-section overlay-type-color linear">
-        <div class="responsive-section-inner-wrap"></div>
-        </section>
-        </div>
-        
         <!-- wp:responsive-block-editor-addons/advance-columns {"topPadding":0,"bottomPadding":0,"leftPadding":0,"rightPadding":0,"topPaddingTablet":0,"bottomPaddingTablet":0,"leftPaddingTablet":0,"rightPaddingTablet":0,"topPaddingMobile":0,"bottomPaddingMobile":0,"leftPaddingMobile":0,"rightPaddingMobile":0,"verticalAlign":"center","block_id":"d8ebe01e-f111-4941-a4a9-d2d77ac8c49c"} -->
         <div class="block-d8ebe01e-f111-4941-a4a9-d2d77ac8c49c responsive-block-editor-addons-advanced-column-outer-wrap undefined"><div class="responsive-block-editor-addons-advanced-column alignundefined"><div class="responsive-columns-wrap responsive-block-editor-addons-block-columns responsive-columns__gap-default responsive-columns__stack-mobile responsive-columns__content-width-theme overlay-type-color linear"><div class="responsive-columns-inner-wrap responsive-columns-columns-2"><!-- wp:responsive-block-editor-addons/column {"topPadding":10,"bottomPadding":10,"leftPadding":10,"rightPadding":10,"topPaddingTablet":10,"bottomPaddingTablet":10,"leftPaddingTablet":10,"rightPaddingTablet":10,"topPaddingMobile":10,"bottomPaddingMobile":10,"leftPaddingMobile":10,"rightPaddingMobile":10,"block_id":"1f95fd8d-7f10-40a8-8453-ff70fa53c5d8","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
         <div class="responsive-block-editor-addons-advanced-column-child block-1f95fd8d-7f10-40a8-8453-ff70fa53c5d8"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":293,"sizeSlug":"large","linkDestination":"none"} -->
