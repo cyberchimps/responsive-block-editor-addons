@@ -49,8 +49,7 @@ class LogInAndLogOut
         $I->amOnPage("/wp-admin");
         $I->fillField( $this->usernameField , $this->usernameValue );
         $I->fillField($this->passwordField , $this->passwordValue );
-        $I->click($this->submitBtn);
-        $I->see('Welcome to WordPress!');        
+        $I->click($this->submitBtn);     
         $I->amOnPage('/rbea-block');
     }
 

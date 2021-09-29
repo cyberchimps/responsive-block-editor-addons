@@ -64,8 +64,52 @@ class PostTimelineCest
     public $focusBorderColor = '(//*[@class="components-circular-option-picker__swatches"])[4]//div[5]/button';
     public $fInFocusIcon = '(//div[@class="responsive-block-editor-addons-timeline__marker responsive-block-editor-addons-timeline__in-view-icon"])[1]';
     public $fNormalIcon = '(//div[@class="responsive-block-editor-addons-timeline__marker responsive-block-editor-addons-timeline__out-view-icon"])[1]';
-    public $fTimelineItem = '(//div[@class="responsive-block-editor-addons-timeline__date-new responsive-block-editor-addons-timeline__date-outer"])[1]';
-    
+    public $fTimelineItem = 'section.responsive-block-editor-addons-block-post-timeline:nth-child(2)';
+    public $fIcon = 'div.responsive-block-editor-addons-timeline__marker.responsive-block-editor-addons-timeline__in-view-icon > span > span > div > span > svg';
+    public $fTimeline = 'div.responsive-block-editor-addons-timeline__line'; 
+
+    /**
+     * Post Timeline Colors Style 
+     */
+    public $colorsBtn = '//button[text()="Colors"]';
+    public $hoverBtn = '//button[text()="Hover"]';
+    public $postBgColor = '(//*[@class="components-circular-option-picker__swatches"])[1]//div[5]/button';
+    public $headingColor = '(//*[@class="components-circular-option-picker__swatches"])[2]//div[2]/button';
+    public $authorColor = '(//*[@class="components-circular-option-picker__swatches"])[3]//div[6]/button';
+    public $contentColor = '(//*[@class="components-circular-option-picker__swatches"])[4]//div[6]/button';
+    public $ctaColorSettingBtn = '//button[text()="CTA Color Settings"]';
+    public $ctaNormalTextColor = '(//*[@class="components-circular-option-picker__swatches"])[5]//div[2]/button';
+    public $ctaNormalBackgroundColor = '(//*[@class="components-circular-option-picker__swatches"])[6]//div[6]/button';
+    public $ctaNormalBorderColor = '(//*[@class="components-circular-option-picker__swatches"])[7]//div[1]/button';    
+    public $ctaHoverTextColor = '(//*[@class="components-circular-option-picker__swatches"])[5]//div[5]/button';
+    public $ctaHoverBackgroundColor = '(//*[@class="components-circular-option-picker__swatches"])[6]//div[6]/button';
+    public $ctaHoverBorderColor = '(//*[@class="components-circular-option-picker__swatches"])[7]//div[5]/button';    
+    public $fTitle = '(//a[@class="responsive-block-editor-addons-block-post-timeline-title-heading"])[1]';
+    public $fAuthor = '(//div[@class="responsive-block-editor-addons-block-post-timeline-author"])[1]/a/span';
+    public $fAuthorLink = '(//div[@class="responsive-block-editor-addons-block-post-timeline-author"])[1]/a';
+    public $fContent = '(//div[@class="responsive-block-editor-addons-timeline__post"])[1]';
+    public $fTimelineEvent = '(//div[@class="responsive-block-editor-addons-timeline__events-inner-new"])[1]';
+    public $fCTALink = '(//a[contains(@class,"responsive-block-editor-addons-timeline__link")])[1]';
+    public $fCTABtn = '(//div[@class="responsive-block-editor-addons-timeline__link_parent"])[1]';
+
+    /**
+     * Typography settings
+     */
+    public $typographyStyelBtn = '//button[text()="Typography"]';
+    public $dateTypographyBtn = '//button[text()="Date Typography"]';
+    public $headingTypographyBtn = '//button[text()="Heading Typography"]';
+    public $authorTypographyBtn = '//button[text()="Author Typography"]';
+    public $contentTypographyBtn = '//button[text()="Content Typography"]';
+    public $continueReadingTypography = '//button[text()="Continue Reading Text Typography"]';
+    public $fontSizeInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Font Size"]';
+    public $lineHeightInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Line Height"]';
+    public $resetLineHeightBtn = '//*[text() = "Reset"]';
+
+    /**
+     * Padding settings
+     */
+    public $contentPaddingInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Content Padding"]';
+    public $fContentContainer = '(//div[@class="responsive-block-editor-addons-content"])[1]';
     /**
      * This function runs before running each test.
      */
@@ -83,22 +127,37 @@ class PostTimelineCest
     /**
      * This function runs after running each test.
      */
-    // public function _after(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
-    // {
-    //     $I->amGoingTo('Remove the Post Timeline block.');
-    //     $I->amOnPage('/rbea-block');        
-    //     $I->wait(2);
-    //     $I->click($commonFunctionsPageObj->editBlockBtn);
-    //     $I->wait(1);
-    //     $I->click($this->postTimelineBlock);
-    //     $commonFunctionsPageObj->removeBlock($I);
-    //     $loginAndLogout->userLogout($I); 
-    // }
+    public function _after(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Remove the Post Timeline block.');
+        $I->amOnPage('/rbea-block');        
+        $I->wait(2);
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->postTimelineBlock);
+        $commonFunctionsPageObj->removeBlock($I);
+        $loginAndLogout->userLogout($I); 
+    }
+
+    /**
+     * This function opens the style tab.
+     */
+    public function _openStyle($I, $commonFunctionsPageObj)
+    {
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->postTimelineBlock);
+        $I->wait(2);
+        $I->click($this->queryBtn);
+        $I->wait(1);
+        $I->click($this->postTimelineSettingsBtn);
+        $I->click('Style');
+    }
 
     /**
      * Tests the content query settings.
      */ 
-    public function PostTimelineContentQuerySettings(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    public function PostTimelineContentQuerySettings(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
         $I->amGoingTo('Check the Post Timeline block in the frontend.');
         $I->seeElement($this->fPostTimelineBlock);
@@ -126,7 +185,7 @@ class PostTimelineCest
     /**
      * Tests the post timeline settings.
      */
-    public function PostTimelineSettingsTest(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    public function PostTimelineSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
         $I->amGoingTo('Change the content post timeline settings of the Post Timeline block.');
         $I->click($commonFunctionsPageObj->editBlockBtn);
@@ -174,7 +233,7 @@ class PostTimelineCest
     /**
      * Tests the post timeline settings.
      */
-    public function PostTimelineContentTest(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    public function PostTimelineContentTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
         $I->amGoingTo('Change the post timeline content settings of the Post Timeline block.');
         $I->click($commonFunctionsPageObj->editBlockBtn);
@@ -237,7 +296,7 @@ class PostTimelineCest
     /**
      * Tests the post timeline markup settings.
      */
-    public function PostTimelineMarkupTest(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    public function PostTimelineMarkupTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
         $I->amGoingTo('Change the post timeline markup settings of the Post Timeline block.');
         $I->click($commonFunctionsPageObj->editBlockBtn);
@@ -262,7 +321,7 @@ class PostTimelineCest
     /**
      * Tests the connector settings.
      */
-    public function PostTimelineConnectorSettingsTest(RBEATester $I, LogInAndLogOut $loginAndLogout, CommonFunctionsPage $commonFunctionsPageObj)
+    public function PostTimelineConnectorSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
         $I->amGoingTo('Change the post timeline connector settings of the Post Timeline block.');
         $I->click($commonFunctionsPageObj->editBlockBtn);
@@ -312,7 +371,7 @@ class PostTimelineCest
         $I->amGoingTo('Check the connector settings in the frontend.');
         $I->wait(1);
         $timelineItem = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
-            return $webdriver->findElement(WebDriverBy::xpath($this->fTimelineItem))->getLocationOnScreenOnceScrolledIntoView();
+            return $webdriver->findElement(WebDriverBy::cssSelector($this->fTimelineItem))->getLocationOnScreenOnceScrolledIntoView();
         });
         $I->wait(3);
         $commonFunctionsPageObj->field = $this->fInFocusIcon;
@@ -323,6 +382,242 @@ class PostTimelineCest
         $commonFunctionsPageObj->prop = 'color';        
         $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)');
         $commonFunctionsPageObj->prop = 'min-height';        
-        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '40px');
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '40px'); 
+
+        $commonFunctionsPageObj->field = $this->fNormalIcon;
+        $commonFunctionsPageObj->prop = 'border';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '3px solid rgb(16, 101, 156)');
+        $commonFunctionsPageObj->prop = 'background-color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)');
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)'); 
+
+        $commonFunctionsPageObj->field = $this->fIcon;
+        $commonFunctionsPageObj->prop = 'width';        
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '20px');
+        $commonFunctionsPageObj->prop = 'height';        
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '20px');
+
+        $commonFunctionsPageObj->field = $this->fIcon;
+        $commonFunctionsPageObj->prop = 'width';        
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '20px'); 
+
+        $commonFunctionsPageObj->field = $this->fTimeline;
+        $commonFunctionsPageObj->prop = 'width';        
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '5px');
+    }
+
+    /**
+     * Tests the color settings.
+     */
+    public function PostTimelineColorsSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the colors settings of the post timeline block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->colorsBtn);
+        $I->click($this->postBgColor);
+        $I->click($this->headingColor);
+        $I->click($this->authorColor);        
+        $I->click($this->contentColor);
+        $I->wait(1);
+        $I->click($this->ctaColorSettingBtn);
+        $I->click($this->normalBtn);
+        $I->click($this->ctaNormalTextColor);
+        $I->click($this->ctaNormalBackgroundColor);
+        $I->click($this->ctaNormalBorderColor);
+        $hoverBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->hoverBtn))->getLocationOnScreenOnceScrolledIntoView();
+        }); 
+        $I->click($this->hoverBtn);
+        $I->click($this->ctaHoverTextColor);
+        $I->click($this->ctaHoverBackgroundColor);
+        $I->click($this->ctaHoverBorderColor);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the colors settings of the post timeline block in the frontend.');
+        $commonFunctionsPageObj->field = $this->fTitle;
+        $commonFunctionsPageObj->prop = 'color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(16, 101, 156, 1)');
+        $commonFunctionsPageObj->field = $this->fAuthor;
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(255, 255, 255, 1)');
+        $commonFunctionsPageObj->field = $this->fContent;
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(255, 255, 255, 1)');
+        $commonFunctionsPageObj->field = $this->fCTALink;
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(16, 101, 156, 1)');
+        $commonFunctionsPageObj->prop = 'background-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(0, 0, 0, 0)');
+        $commonFunctionsPageObj->prop = 'border-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(16, 101, 156)');
+        $commonFunctionsPageObj->field = $this->fTimelineEvent;
+        $commonFunctionsPageObj->prop = 'background-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)');
+        $I->wait(1);
+        $fCTABtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fCTABtn))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->moveMouseOver($this->fCTABtn);
+        $I->wait(1);
+        $commonFunctionsPageObj->field = $this->fCTALink;
+        $commonFunctionsPageObj->prop = 'color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(51, 51, 51, 1)');
+        $commonFunctionsPageObj->prop = 'border-color';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51)');
+    }
+
+    /**
+     * Tests the typography settings.
+     */
+    public function PostTimelineTypographySettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the typography settings of the post timeline block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->typographyStyelBtn);
+        $I->click($this->dateTypographyBtn);
+        $arr = array('20px', '20px', '20px', '40px');
+        $I->amGoingTo('Change the date typography and check in the frontend');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $this->dateTypographyBtn, $this->fDateTime, $arr);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '35px'); 
+
+        $I->amGoingTo('Change the heading typography and check in the frontend');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->typographyStyelBtn);
+        $I->click($this->headingTypographyBtn);
+        $arr = array('25px', '25px', '25px', '50px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $this->headingTypographyBtn, $this->fTitle, $arr);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '37.5px'); 
+
+        $I->amGoingTo('Change the author typography and check in the frontend');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->typographyStyelBtn);
+        $I->click($this->authorTypographyBtn);
+        $arr = array('31px', '31px', '31px', '62px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $this->authorTypographyBtn, $this->fAuthorLink, $arr);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '46.5px'); 
+    }
+
+    /**
+     * This function performs the typography test.
+     */
+    public function _typographyTest($I, $commonFunctionsPageObj, $typography, $selector, $arr)
+    {
+        $I->wait(1);    
+        $I->amGoingTo('Change the typography of the flipbox block for desktop view.');
+        $I->resizeWindow(1280, 950);
+        $I->selectOption('Font Family', 'Actor');
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->desktopView);
+        $I->wait(1);
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $arr[0] );
+        $I->wait(1);
+        $I->selectOption('Font Weight', '600');
+        $I->wait(1);
+        $resetLineHeightBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->resetLineHeightBtn))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->click($this->lineHeightInputField);
+        $commonFunctionsPageObj->field = $this->lineHeightInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '2' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the frontend for the typography settings in the desktop view.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'font-family';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'Actor');  
+        $commonFunctionsPageObj->prop = 'font-weight';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '600'); 
+        $commonFunctionsPageObj->prop = 'line-height';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[3]);
+        $commonFunctionsPageObj->prop = 'font-size';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[0]);
+        $I->resizeWindow(375, 812);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[1]);
+        $I->wait(1);
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[2]);
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+
+        $I->amGoingTo('Change the typography style of the block for mobile and desktop view.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->typographyStyelBtn);
+        $I->click($typography);
+        $I->click($commonFunctionsPageObj->tabletView);        
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '14px' );
+        $I->click($commonFunctionsPageObj->mobileView);        
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '8px' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check the frontend for the typography settings in the tablet and mobile view.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'font-size';
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '14px');
+        $I->wait(1);
+        $I->resizeWindow(375, 812);
+        $I->wait(2);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '8px');
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+
+        $I->amGoingTo('Reset the line height');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->typographyStyelBtn);
+        $I->click($typography);  
+        $resetLineHeightBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->resetLineHeightBtn))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->click($this->resetLineHeightBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the line height in the frontend.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'line-height';
+    }
+
+    /**
+     * Tests the content padding settings.
+     */
+    public function PostTimelinePaddingSettingsTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the padding setting of the contents of the post timeline block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($commonFunctionsPageObj->paddingStyleBtn);
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->desktopView);
+        $I->click($this->contentPaddingInput);
+        $commonFunctionsPageObj->field = $this->contentPaddingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '26' );
+        $I->click($commonFunctionsPageObj->tabletView);
+        $I->click($this->contentPaddingInput);
+        $commonFunctionsPageObj->field = $this->contentPaddingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '22' );
+        $I->click($commonFunctionsPageObj->mobileView);
+        $I->click($this->contentPaddingInput);
+        $commonFunctionsPageObj->field = $this->contentPaddingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '20' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the padding in the frontend.');
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->field = $this->fContentContainer;
+        $commonFunctionsPageObj->prop = 'padding';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '22px');
+        $I->wait(1);
+        $I->resizeWindow(375, 812);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '20px');
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '26px');
+        $I->wait(1);
     }
 }
