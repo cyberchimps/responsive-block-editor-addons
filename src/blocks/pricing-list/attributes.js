@@ -28,19 +28,51 @@ const attributes = {
     type: "array",
     default: rest_menu_block,
   },
-  topPadding: {
+  blockTopPadding: {
     type: "number",
     default: 5,
   },
-  bottomPadding: {
+  blockBottomPadding: {
     type: "number",
     default: 5,
   },
-  leftPadding: {
+  blockLeftPadding: {
     type: "number",
     default: 5,
   },
-  rightPadding: {
+  blockRightPadding: {
+    type: "number",
+    default: 5,
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: 5,
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: 5,
+  },
+  blockRightPaddingTablet: {
     type: "number",
     default: 5,
   },
@@ -53,6 +85,30 @@ const attributes = {
     default: 10,
   },
   titleSpace: {
+    type: "number",
+    default: 10,
+  },
+  rowGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  columnGapMobile: {
+    type: "number",
+    default: 10,
+  },
+  titleSpaceMobile: {
+    type: "number",
+    default: 10,
+  },
+  rowGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  columnGapTablet: {
+    type: "number",
+    default: 10,
+  },
+  titleSpaceTablet: {
     type: "number",
     default: 10,
   },
@@ -144,6 +200,40 @@ const attributes = {
   imageWidth: {
     type: "number",
   },
+  titleFontSizeMobile: {
+	type: "number",
+  },
+  titleFontSizeTablet: {
+	type: "number",
+  },
+  descriptionFontSizeMobile: {
+	type: "number",
+  },
+  descriptionFontSizeTablet: {
+	type: "number",
+  },
+  priceFontSizeMobile: {
+	type: "number",
+  },
+  priceFontSizeTablet: {
+	type: "number",
+  },
+  topPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  bottomPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  leftPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
+  rightPadding: {
+	type: "number",
+	default: 999,
+  }, // For compatibility with v1.3.2.
 };
 
 export default attributes;

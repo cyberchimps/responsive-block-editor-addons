@@ -35,6 +35,7 @@ const attributes = {
   },
   linkColor: {
     type: "string",
+    default: "#0066cc"
   },
   titleColor: {
     type: "string",
@@ -50,6 +51,24 @@ const attributes = {
   linkSpace: {
     type: "number",
     default: 18,
+  },
+  titleSpaceMobile: {
+    type: "number",
+  },
+  textSpaceMobile: {
+    type: "number",
+  },
+  linkSpaceMobile: {
+    type: "number",
+  },
+  titleSpaceTablet: {
+    type: "number",
+  },
+  textSpaceTablet: {
+    type: "number",
+  },
+  linkSpaceTablet: {
+    type: "number",
   },
   titleFontFamily: {
     type: "string",
@@ -95,6 +114,24 @@ const attributes = {
   linkLineHeight: {
     type: "number",
     default: 1,
+  },
+  titleFontSizeMobile: {
+	type: "number",
+  },
+  titleFontSizeTablet: {
+	type: "number",
+  },
+  textFontSizeMobile: {
+	type: "number",	  
+  },
+  textFontSizeTablet: {
+	type: "number",	  
+  },
+  linkFontSizeMobile: {
+	type: "number",	  
+  },
+  linkFontSizeTablet: {
+	type: "number",	  
   },
 };
 export default attributes;

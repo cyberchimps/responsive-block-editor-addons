@@ -31,19 +31,19 @@ const attributes = {
     selector: "span,p,h1,h2,h3,h4,h5,h6",
     default: "span",
   },
-  borderStyle: {
+  blockBorderStyle: {
     type: "string",
     default: "solid",
   },
-  borderWidth: {
+  blockBorderWidth: {
     type: "number",
     default: 1,
   },
-  borderRadius: {
+  blockBorderRadius: {
     type: "number",
     default: 2,
   },
-  borderColor: {
+  blockBorderColor: {
     type: "string",
     default: 'black',
   },
@@ -78,6 +78,38 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  titlePaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  contentPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  titlePaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  contentPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  borderColor: {
+	type: "string",
+	default: "empty",
+  },//For compatibility with v1.3.2
+  borderStyle: {
+	type: "string",
+	default: "empty",
+  },//For compatibility with v1.3.2
+  borderWidth: {
+	type: "number",
+	default: 999,
+  },//For compatibility with v1.3.2
+  borderRadius: {
+	type: "number",
+	default: 999,
+  },//For compatibility with v1.3.2
 };
 
 export default attributes;

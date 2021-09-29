@@ -6,6 +6,14 @@ const attributes = {
     type: "number",
     default: 30,
   },
+  spacerHeightMobile: {
+    type: "number",
+    default: '',
+  },
+  spacerHeightTablet: {
+    type: "number",
+    default: '',
+  },
   spacerDivider: {
     type: "boolean",
     default: false,

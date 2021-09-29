@@ -12,6 +12,7 @@ function EditorStyles(props) {
     //attributes here
     width,
     backgroundColor,
+    backgroundColorHover,
     backgroundColor1,
     backgroundColor2,
     colorLocation1,
@@ -24,10 +25,10 @@ function EditorStyles(props) {
     hovergradientDirection,
     backgroundType,
     backgroundImage,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -55,30 +56,57 @@ function EditorStyles(props) {
     hoverboxShadowSpread,
     hoverboxShadowPosition,
     block_id,
-    topMargin,
-    topMarginTablet,
-    topMarginMobile,
-    bottomMargin,
-    bottomMarginTablet,
-    bottomMarginMobile,
-    leftMargin,
-    leftMarginTablet,
-    leftMarginMobile,
-    rightMargin,
-    rightMarginTablet,
-    rightMarginMobile,
-    topPadding,
-    topPaddingTablet,
-    topPaddingMobile,
-    bottomPadding,
-    bottomPaddingTablet,
-    bottomPaddingMobile,
-    leftPadding,
-    leftPaddingTablet,
-    leftPaddingMobile,
-    rightPadding,
-    rightPaddingTablet,
-    rightPaddingMobile,
+    columnTopMargin,
+    columnTopMarginTablet,
+    columnTopMarginMobile,
+    columnBottomMargin,
+    columnBottomMarginTablet,
+    columnBottomMarginMobile,
+    columnLeftMargin,
+    columnLeftMarginTablet,
+    columnLeftMarginMobile,
+    columnRightMargin,
+    columnRightMarginTablet,
+    columnRightMarginMobile,
+    columnTopPadding,
+	columnTopPaddingTablet,
+	columnTopPaddingMobile,
+	columnBottomPadding,
+	columnBottomPaddingTablet,
+	columnBottomPaddingMobile,
+	columnLeftPadding,
+	columnLeftPaddingTablet,
+	columnLeftPaddingMobile,
+	columnRightPadding,
+	columnRightPaddingTablet,
+	columnRightPaddingMobile,
+	topMargin, //For compatibility with v1.3.2.
+	topMarginTablet, //For compatibility with v1.3.2.
+	topMarginMobile, //For compatibility with v1.3.2.
+	bottomMargin, //For compatibility with v1.3.2.
+	bottomMarginTablet, //For compatibility with v1.3.2.
+	bottomMarginMobile, //For compatibility with v1.3.2.
+	leftMargin, //For compatibility with v1.3.2.
+	leftMarginTablet, //For compatibility with v1.3.2.
+	leftMarginMobile, //For compatibility with v1.3.2.
+	rightMargin, //For compatibility with v1.3.2.
+	rightMarginTablet, //For compatibility with v1.3.2.
+	rightMarginMobile, //For compatibility with v1.3.2.
+	topPadding, //For compatibility with v1.3.2.
+	topPaddingTablet, //For compatibility with v1.3.2.
+	topPaddingMobile, //For compatibility with v1.3.2.
+	bottomPadding, //For compatibility with v1.3.2.
+	bottomPaddingTablet, //For compatibility with v1.3.2.
+	bottomPaddingMobile, //For compatibility with v1.3.2.
+	leftPadding, //For compatibility with v1.3.2.
+	leftPaddingTablet, //For compatibility with v1.3.2.
+	leftPaddingMobile, //For compatibility with v1.3.2.
+	rightPadding, //For compatibility with v1.3.2.
+	rightPaddingTablet, //For compatibility with v1.3.2.
+	rightPaddingMobile, //For compatibility with v1.3.2.
+	backgroundPosition, // For compatibility with v1.3.2.
+	backgroundRepeat, // For compatibility with v1.3.2.
+	backgroundSize, // For compatibility with v1.3.2.
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -153,17 +181,23 @@ function EditorStyles(props) {
             )
           : undefined,
       "box-shadow":
-        generateCSSUnit(hoverboxShadowHOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowVOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowBlur, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowSpread, "px") +
-        " " +
-        hoverboxShadowColor +
-        " " +
-        hoverboxShadowPositionCSS,
+	  	hoverboxShadowColor !== ""
+		  ? generateCSSUnit(hoverboxShadowHOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowVOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowBlur, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowSpread, "px") +
+        	" " +
+        	hoverboxShadowColor +
+        	" " +
+        	hoverboxShadowPositionCSS
+		  : "",
+      "background-color":
+        backgroundType == "color" && ' ' !== backgroundColorHover
+          ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
+          : undefined,
     },
     " .responsive-block-editor-addons-block-column": {
       "padding-top": generateCSSUnit(topPadding, "px"),
@@ -171,7 +205,7 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(leftPadding, "px"),
       "padding-right": generateCSSUnit(rightPadding, "px"),
       "margin-top": generateCSSUnit(topMargin, "px"),
-      "margin-bottom": generateCSSUnit(bottomMargin, "px"),
+      "margin-bottom":generateCSSUnit(bottomMargin, "px"),
       "margin-left": generateCSSUnit(leftMargin, "px"),
       "margin-right": generateCSSUnit(rightMargin, "px"),
       "border-color": blockBorderColor,
@@ -183,10 +217,10 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
           : undefined,
       "background-image": blockBackground,
-      "background-position": backgroundPosition,
+      "background-position": backgroundPosition !== "empty" && backgroundImagePosition === "center center" ? backgroundPosition : backgroundImagePosition, // For compatibility with v1.3.2.
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? backgroundRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": backgroundSize !== "empty" && backgroundImageSize === "cover" ? backgroundSize : backgroundImageSize, // For compatibility with v1.3.2.
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -204,27 +238,27 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
-      "margin-top": generateCSSUnit(topMarginMobile, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
-      "margin-left": generateCSSUnit(leftMarginMobile, "px"),
-      "margin-right": generateCSSUnit(rightMarginMobile, "px"),
+        "padding-top": generateCSSUnit(topPaddingMobile, "px"),
+        "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
+        "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
+        "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+        "margin-top": generateCSSUnit(topMarginMobile, "px"),
+        "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
+        "margin-left": generateCSSUnit(leftMarginMobile, "px"),
+        "margin-right": generateCSSUnit(rightMarginMobile, "px"),
     },
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
-      "margin-top": generateCSSUnit(topMarginTablet, "px"),
-      "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
-      "margin-left": generateCSSUnit(leftMarginTablet, "px"),
-      "margin-right": generateCSSUnit(rightMarginTablet, "px"),
+        "padding-top": generateCSSUnit(topPaddingTablet, "px"),
+        "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
+        "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
+        "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+        "margin-top": generateCSSUnit(topMarginTablet, "px"),
+        "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
+        "margin-left": generateCSSUnit(leftMarginTablet, "px"),
+        "margin-right": generateCSSUnit(rightMarginTablet, "px"),
     },
   };
 

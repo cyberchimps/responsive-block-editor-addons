@@ -1,17 +1,21 @@
-=== Responsive Block Editor Addons ===
+=== Responsive Gutenberg Blocks Library ===
 Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
-Tags: blocks, gutenberg, gutenberg blocks, page builder, WordPress blocks, blocks, editor, block
+Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, landing page, dual buttons, svg icons, editor width, wysiwyg, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+40+ creative blocks to create rich content layouts on Gutenberg editor. Use professional starter block patterns & templates to create websites in minutes.
+
 == Description ==
 
-Unleash your creativity with the advanced Gutenberg editor blocks library. Within minutes create modern responsive designs for all devices. Use reusable block page templates to kickstart your website in no time.
+<strong>Responsive Blocks Library for Gutenberg</strong>
+
+Unleash your creativity with Responsive gutenberg blocks library plugin. Within minutes create professional content layouts. Quickly create complete websites with free starter templates. Use the pattern importer to include the layouts you like in your existing website.
 
 <a href="https://www.cyberchimps.com/blocks/?utm_source=wporg&utm_medium=demolink&utm_campaign=gutblocks" target="_blank">Checkout the Gutenberg blocks demos</a> to see it live in action
 
@@ -77,6 +81,22 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
+= 1.3.4 - 29th September 2021 =
+* New - Anchor Block
+* New - Call/Mail Link Button Block
+* New - Inline Notice Block
+* New - Progress Bar Block
+* New - Social Share Block
+* New - Tabs Block
+* New - Taxonomy List Block
+* New - WP Search Block
+* Feature - Added responsive spacing options to multiple blocks
+* Feature - Flipbox - Added typography options
+* Feature - Multibuttons - Changed default background color for a button
+* Fix - Image Boxes - Title & description spacing
+* Fix - Icon List - Icon is not centered to its background in Table and Mobile view
+* Fix - Table of Contents - Anchor doesn’t work when headings are inside section/cover block
+
 = 1.3.3 - 2nd September 2021 =
 * New - Feature to import pre-designed Gutenberg sections and pages for the Responsive Gutenberg Blocks Library.
 
@@ -172,3 +192,4 @@ e.g.
 
 = 1.0.0 - 24th June 2020 =
 * Initial Plugin Release - Gutenberg Blocks - Advance Columns, Post Carousel, Post Grid, Testimonial
+

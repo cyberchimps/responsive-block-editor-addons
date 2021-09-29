@@ -153,7 +153,6 @@ registerBlockType("responsive-block-editor-addons/column", {
     },
     hoverboxShadowColor: {
       type: "string",
-      default: "#cccccc",
     },
     hoverboxShadowHOffset: {
       type: "number",
@@ -206,15 +205,15 @@ registerBlockType("responsive-block-editor-addons/column", {
     backgroundImage: {
       type: "string",
     },
-    backgroundPosition: {
+    backgroundImagePosition: {
       type: "string",
       default: "center center",
     },
-    backgroundSize: {
+    backgroundImageSize: {
       type: "string",
       default: "cover",
     },
-    backgroundRepeat: {
+    backgroundImageRepeat: {
       type: "string",
       default: "no-repeat",
     },
@@ -261,6 +260,10 @@ registerBlockType("responsive-block-editor-addons/column", {
     backgroundColor: {
       type: "string",
     },
+    backgroundColorHover: {
+      type: "string",
+      default: " ",
+    },
     backgroundColor1: {
       type: "string",
     },
@@ -275,6 +278,18 @@ registerBlockType("responsive-block-editor-addons/column", {
       type: "string",
       default: "#fff",
     },
+	backgroundPosition: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundRepeat: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
+	backgroundSize: {
+	  type: "string",
+	  default: "empty",
+	}, // For compatibility with v1.3.2.
   },
 
   /* Render the block in the editor. */

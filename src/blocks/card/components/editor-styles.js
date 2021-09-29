@@ -12,11 +12,14 @@ function EditorStyles(props) {
     block_id,
     contentAlignment,
     textColor,
-    itemBackgroundColor,
-    borderStyle,
-    borderWidth,
-    borderRadius,
-    borderColor,
+    blockBorderStyle,
+    blockBorderWidth,
+    blockBorderRadius,
+    blockBorderColor,
+    borderStyle, //For compatibility with v1.3.2.
+    borderColor, //For compatibility with v1.3.2.
+    borderWidth, //For compatibility with v1.3.2.
+    borderRadius, //For compatibility with v1.3.2.
     boxShadowColor,
     boxShadowHOffset,
     boxShadowVOffset,
@@ -24,10 +27,18 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     titleSpace,
+    titleSpaceMobile,
+    titleSpaceTablet,
     subtitleSpace,
+    subtitleSpaceMobile,
+    subtitleSpaceTablet,
     contentSpace,
-    buttonColor,
-    buttonTextColor,
+    contentSpaceMobile,
+    contentSpaceTablet,
+    ctaBackColor,
+    ctaColor,
+    buttonColor, //For compatibility with v1.3.2.
+    buttonTextColor, //For compatibility with v1.3.2.
     opacity,
     backgroundType,
     backgroundImage,
@@ -42,17 +53,27 @@ function EditorStyles(props) {
     imageheight,
     blockzindex,
     blockmargin,
+    blockmarginMobile,
+    blockmarginTablet,
     icon_color,
-    buttonhColor,
-    buttonhTextColor,
-    butopacity,
-    vPadding,
-    hPadding,
+    ctaHoverBackColor,
+    buttonhColor, //For compatibility with v1.3.2.
+    ctaHoverColor,
+    buttonhTextColor, //For compatibility with v1.3.2.
+    buttonopacity,
+    butopacity, //For compatibility with v1.3.2.
+    ctaVpadding,
+    ctaHpadding,
+    vPadding, //For compatibility with v1.3.2.
+    hPadding, //For compatibility with v1.3.2.
     vMargin,
     hMargin,
-    butborderWidth,
-    butborderRadius,
-    butborderStyle,
+    ctaBorderWidth,
+    ctaBorderRadius,
+    ctaBorderStyle,
+    butborderWidth, //For compatibility with v1.3.2.
+    butborderRadius, //For compatibility with v1.3.2.
+    butborderStyle, //For compatibility with v1.3.2.
     buttonbackgroundType,
     buttongradientDirection,
     buttoncolorLocation1,
@@ -73,16 +94,48 @@ function EditorStyles(props) {
     contentFontWeight,
     contentFontSize,
     contenttopSpace,
+    contenttopSpaceMobile,
+    contenttopSpaceTablet,
     blockbotmargin,
+    blockbotmarginMobile,
+    blockbotmarginTablet,
     blockleftmargin,
+    blockleftmarginMobile,
+    blockleftmarginTablet,
     blockrightmargin,
-    bgimagePosition,
-    bgimageRepeat,
-    bgthumbsize,
+    blockrightmarginMobile,
+    blockrightmarginTablet,
+    bgimagePosition, //For compatibility with v1.3.2.
+    bgimageRepeat, //For compatibility with v1.3.2.
+    bgthumbsize, //For compatibility with v1.3.2.
     backgroundImageOne,
     backgroundImageTwo,
     backgroundImageThree,
     backgroundImageFour,
+    backgroundImagePosition,
+    backgroundImageSize,
+    backgroundImageRepeat,
+    headingFontSizeMobile,
+    headingFontSizeTablet,
+    subFontSizeMobile,
+    subFontSizeTablet,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
+    buttonHopacity,
+    ctaBorderColor,
+    ctaHoverBorderColor,
+    ctaTextOpacity,
+    ctaHpaddingTablet,
+    ctaHpaddingMobile,
+    ctaVpaddingTablet,
+    ctaVpaddingMobile,
+    vMarginTablet,
+    vMarginMobile,
+    hMarginTablet,
+    hMarginMobile,
+    backgroundColor,
+    itemBackgroundColor, //For compatibility with v1.3.2.
+    buttonHbackgroundType,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -93,22 +146,40 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
-  let buttonopacity = butopacity / 100;
+  let but_opacity = butopacity !== 999 && buttonopacity === 100 ? butopacity / 100 : buttonopacity / 100; //For compatibility with v1.3.2.
+  let buthopacity = buttonHopacity / 100;
+  let textOpacity = ctaTextOpacity / 100;
 
   let updatedButtonColor = "";
   let updatedButtonhColor = "";
+  let updatedButtonBackgroundImage = "";
   if (buttonbackgroundType == "color") {
-    updatedButtonColor = buttonColor;
-    updatedButtonhColor = buttonhColor;
+    updatedButtonColor = buttonColor !== 'empty' && !ctaBackColor ? buttonColor : ctaBackColor; //For compatibility with v1.3.2.
+  }
+  if (buttonHbackgroundType == "color") {
+    updatedButtonhColor = buttonhcolor !== 'empty' && '' === ctaHoverBackColor ? buttonhColor : ctaHoverBackColor;
+  } else {
+    updatedButtonhColor = '';
+  }
+
+  if ( 'gradient' === buttonbackgroundType) {
+    updatedButtonBackgroundImage = generateBackgroundImageEffect(
+      buttonbackgroundColor1,
+      buttonbackgroundColor2,
+      buttongradientDirection,
+      buttoncolorLocation1,
+      buttoncolorLocation2
+    )
   }
 
   var selectors = {
     " .responsive-block-editor-addons-card-button-inner .res-button": {
-      color: buttonTextColor,
+      color: buttonTextColor !== 'empty' && '#fff' === ctaColor ? buttonTextColor : ctaColor, //For compatibility with v1.3.2.
+      opacity: textOpacity,
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover .res-button": {
-      color: buttonhTextColor,
+      color: buttonhTextColor !== 'empty' && ctaHoverColor === '#e6f2ff' ? buttonhTextColor : ctaHoverColor, //For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-card-button-inner .responsive-block-editor-addons-button__icon svg": {
@@ -122,12 +193,17 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-card-item__button-wrapper .responsive-block-editor-addons-card-button-inner": {
       "background-color": hexToRgba(
         updatedButtonColor || "#2091e1",
-        buttonopacity || 0
+        but_opacity || 0
       ),
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover": {
-      "background-color": updatedButtonhColor,
+      "background-color": hexToRgba(
+        updatedButtonhColor || "none",
+        buthopacity || 0
+      ),
+      "border-color": ctaHoverBorderColor,
+      "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBackgroundImage,
     },
 
     "": {
@@ -139,14 +215,14 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-card-item": {
-      "border-color": borderColor,
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
-      "border-radius": generateCSSUnit(borderRadius, "px"),
+      "border-color": borderColor!== "empty" && blockBorderColor === "" ? borderColor : blockBorderColor, //For compatibility with v1.3.2.
+      "border-style": borderStyle !== "empty" && blockBorderStyle === "none" ? borderStyle : blockBorderStyle, //For compatibility with v1.3.2.
+      "border-width": borderWidth !== 999 && blockBorderWidth === 0 ? generateCSSUnit( borderWidth, "px" ) : generateCSSUnit(blockBorderWidth, "px"), //For compatibility with v1.3.2.
+      "border-radius": borderRadius !== 999 && blockBorderRadius === 12 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), //For compatibility with v1.3.2.
       color: textColor,
       "background-color":
         backgroundType == "color"
-          ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}`
+          ? itemBackgroundColor !== 'empty' && backgroundColor === '' ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`  //For compatibility with v1.3.2.
           : undefined,
       "background-image":
         backgroundType == "gradient"
@@ -177,9 +253,9 @@ function EditorStyles(props) {
         ? `url(${backgroundImage.url})`
         : null,
       height: 100 + "%",
-      "background-position": bgimagePosition,
-      "background-repeat": bgimageRepeat,
-      "background-size": bgthumbsize,
+      "background-position": bgimagePosition !== "empty" && backgroundImagePosition === "center center" ? bgimagePosition : backgroundImagePosition, //For compatibility with v1.3.2.
+      "background-repeat": bgimageRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? bgimageRepeat : backgroundImageRepeat, //For compatibility with v1.3.2.
+      "background-size": bgthumbsize !== "empty" && backgroundImageSize === "cover" ? bgthumbsize : backgroundImageSize, //For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-card-avatar": {
@@ -196,7 +272,7 @@ function EditorStyles(props) {
         "background-image": `url(${backgroundImageOne})`,
         "display": backgroundImageOne? 'block' : 'none',
     },
-    
+
     " .responsive-block-editor-addons-card-avatar-img.responsive-block-editor-addons-card-avatar-img-dashicon-0": {
         "display": backgroundImageOne? 'none' : 'flex',
     },
@@ -264,37 +340,97 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-card-button-inner": {
-      "padding-top": generateCSSUnit(vPadding, "px"),
-      "padding-bottom": generateCSSUnit(vPadding, "px"),
-      "padding-left": generateCSSUnit(hPadding, "px"),
-      "padding-right": generateCSSUnit(hPadding, "px"),
+      "padding-top": vPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(vPadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2.
+      "padding-bottom": vPadding !== 999 && ctaVpadding === 10 ? generateCSSUnit(vPadding, "px") : generateCSSUnit(ctaVpadding, "px"), //For compatibility with v1.3.2.
+      "padding-left": hPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(hPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2.
+      "padding-right": hPadding !== 999 && ctaHpadding === 14 ? generateCSSUnit(hPadding, "px") : generateCSSUnit(ctaHpadding, "px"), //For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(vMargin, "px"),
       "margin-bottom": generateCSSUnit(vMargin, "px"),
       "margin-left": generateCSSUnit(hMargin, "px"),
       "margin-right": generateCSSUnit(hMargin, "px"),
-      "border-style": butborderStyle ? butborderStyle : "none",
-      "border-radius": butborderRadius
-        ? generateCSSUnit(butborderRadius, "px")
+      "border-style": butborderStyle !== "empty" && ctaBorderStyle === "none" ? butborderStyle : ctaBorderStyle ? ctaBorderStyle : "none", //For compatibility with v1.3.2.
+      "border-color": ctaBorderColor,
+      "border-radius": butborderRadius !== 999 && ctaBorderRadius === 2 ? bgenerateCSSUnit(butborderRadius, "px") : ctaBorderRadius //For compatibility with v1.3.2.
+        ? generateCSSUnit(ctaBorderRadius, "px")
         : "",
-      "border-width": butborderWidth
-        ? generateCSSUnit(butborderWidth, "px")
+      "border-width": butborderWidth !== 999 && ctaBorderWidth === 1 ? generateCSSUnit(butborderWidth, "px") : ctaBorderWidth //For compatibility with v1.3.2.
+        ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px",
-      "background-image":
-        buttonbackgroundType == "gradient"
-          ? generateBackgroundImageEffect(
-              buttonbackgroundColor1,
-              buttonbackgroundColor2,
-              buttongradientDirection,
-              buttoncolorLocation1,
-              buttoncolorLocation2
-            )
-          : undefined,
+      "background-image": updatedButtonBackgroundImage,
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginMobile, "px"),
+      "margin-top": generateCSSUnit(blockmarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginMobile, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceMobile, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceMobile, "px"),
+    },
 
-  var tablet_selectors = {};
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(headingFontSizeMobile, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
+	  "font-size": generateCSSUnit(subFontSizeMobile, "px"),
+    },
+	" .wp-block-responsive-block-editor-addons-card-item__content": {
+		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
+	},
+  " .responsive-block-editor-addons-card-button-inner": {
+    "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
+    "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
+    "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+    "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
+    "margin-top": generateCSSUnit(vMarginMobile, "px"),
+    "margin-bottom": generateCSSUnit(vMarginMobile, "px"),
+    "margin-left": generateCSSUnit(hMarginMobile, "px"),
+    "margin-right": generateCSSUnit(hMarginMobile, "px"),
+  },
+  };
+
+  var tablet_selectors = {
+    "": {
+      "margin-bottom": generateCSSUnit(blockbotmarginTablet, "px"),
+      "margin-top": generateCSSUnit(blockmarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockleftmarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockrightmarginTablet, "px"),
+    },
+    " .card-content-wrap": {
+      "margin-bottom": generateCSSUnit(contentSpaceTablet, "px"),
+      "margin-top": generateCSSUnit(contenttopSpaceTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__title": {
+      "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(headingFontSizeTablet, "px"),
+    },
+
+    " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),
+	  "font-size": generateCSSUnit(subFontSizeTablet, "px"),
+    },
+	" .wp-block-responsive-block-editor-addons-card-item__content": {
+		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
+	},
+  " .responsive-block-editor-addons-card-button-inner": {
+    "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
+    "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),
+    "padding-left": generateCSSUnit(ctaHpaddingTablet, "px"),
+    "padding-right": generateCSSUnit(ctaHpaddingTablet, "px"),
+    "margin-top": generateCSSUnit(vMarginTablet, "px"),
+    "margin-bottom": generateCSSUnit(vMarginTablet, "px"),
+    "margin-left": generateCSSUnit(hMarginTablet, "px"),
+    "margin-right": generateCSSUnit(hMarginTablet, "px"),
+  },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-card.block-${block_id}`;

@@ -39,7 +39,7 @@ export default class Save extends Component {
       resctaType,
       resctaText,
       resctaLink,
-      resctaTarget,
+      buttonTarget,
       resctaLinkColor,
       resctaFontSize,
       iconImage,
@@ -47,12 +47,13 @@ export default class Save extends Component {
       resshowTitle,
       resshowDesc,
       counterId,
-      imgURL,
+      backgroundImage,
       dimRatio,
       imageBoxShadowPosition,
       imageopacity,
       resBoxTarget,
-      resBoxLink
+      resBoxLink,
+      imgURL
     } = this.props.attributes;
     var imageBoxShadowPositionCSS = imageBoxShadowPosition;
 
@@ -70,7 +71,7 @@ export default class Save extends Component {
 
     let target = "_self";
     let rel = "noopener noreferrer";
-    if (resctaTarget) {
+    if (buttonTarget) {
       target = "_blank";
     }
 
@@ -183,7 +184,7 @@ export default class Save extends Component {
           {resctaType === 'complete_box' && (
             	<a className = "responsive-block-editor-addons-infobox-cta-link-complete-box" href={resBoxLink} target={boxRefLink} aria-label={"Infoblock Link"} rel ={boxRel}></a>
           )}
-          {imgURL && !!imgURL.length && (
+          {(backgroundImage || imgURL !== 'empty') && (!!backgroundImage?.length || !!imgURL?.length) && (
             <div className="responsive-block-editor-addons-cta-image-wrap">
               <img
                 className={classnames(

@@ -395,6 +395,38 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: '',
+  },
   columnTopPadding: {
     type: "number",
     default: 64,
@@ -410,6 +442,38 @@ const attributes = {
   columnRightPadding: {
     type: "number",
     default: 24,
+  },
+  columnTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  columnBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  columnLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  columnRightPaddingTablet: {
+    type: "number",
+    default: '',
   },
   showImage: {
     type: "boolean",
@@ -463,11 +527,47 @@ const attributes = {
   featuresSpace: {
     type: "number",
   },
+  titleSpaceMobile: {
+    type: "number",
+  },
+  priceSpaceMobile: {
+    type: "number",
+  },
+  subpriceSpaceMobile: {
+    type: "number",
+  },
+  buttonSpaceMobile: {
+    type: "number",
+  },
+  featuresSpaceMobile: {
+    type: "number",
+  },
+  titleSpaceTablet: {
+    type: "number",
+  },
+  priceSpaceTablet: {
+    type: "number",
+  },
+  subpriceSpaceTablet: {
+    type: "number",
+  },
+  buttonSpaceTablet: {
+    type: "number",
+  },
+  featuresSpaceTablet: {
+    type: "number",
+  },
   blockAlign: {
     type: "string",
     default: "center",
   },
   imageWidth: {
+    type: "number",
+  },
+  imageWidthTablet: {
+    type: "number",
+  },
+  imageWidthMobile: {
     type: "number",
   },
   imageSize: {
@@ -476,6 +576,68 @@ const attributes = {
   },
   imageShape: {
     type: "string",
+  },
+  ctaHoverBorderColor: {
+    type: "string",
+    defaulr: "#333",
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  titleFontSizeMobile: {
+    type: "number",
+  },
+  titleFontSizeTablet: {
+    type: "number",
+  },
+  prefixFontSizeMobile: {
+    type: "number",
+  },
+  prefixFontSizeTablet: {
+    type: "number",
+  },
+  amountFontSizeMobile: {
+    type: "number",
+  },
+  amountFontSizeTablet: {
+    type: "number",
+  },
+  suffixFontSizeMobile: {
+    type: "number",
+  },
+  suffixFontSizeTablet: {
+    type: "number",
+  },
+  subpriceFontSizeMobile: {
+    type: "number",
+  },
+  subpriceFontSizeTablet: {
+    type: "number",
+  },
+  featuresFontSizeMobile: {
+    type: "number",
+  },
+  featuresFontSizeTablet: {
+    type: "number",
+  },
+  ctaFontSizeMobile: {
+    type: "number",
+  },
+  ctaFontSizeTablet: {
+    type: "number",
   },
 };
 export default attributes;

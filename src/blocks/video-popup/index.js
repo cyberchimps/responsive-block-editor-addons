@@ -3,6 +3,7 @@
  */
 import Edit from "./components/edit";
 import Save from "./components/save";
+import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -46,4 +47,5 @@ registerBlockType("responsive-block-editor-addons/video-popup", {
   save: (props) => {
     return <Save {...props} />;
   },
+    deprecated,
 });

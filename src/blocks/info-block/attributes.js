@@ -114,9 +114,21 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  resheadSpaceMobile: {
+    type: "number",
+  },
+  resheadSpaceTablet: {
+    type: "number",
+  },
   ressubHeadSpace: {
     type: "number",
     default: 10,
+  },
+  ressubHeadSpaceMobile: {
+    type: "number",
+  },
+  ressubHeadSpaceTablet: {
+    type: "number",
   },
   resseperatorSpace: {
     type: "number",
@@ -138,7 +150,7 @@ const attributes = {
     type: "string",
     default: "top",
   },
-  resctaTarget: {
+  buttonTarget: {
     type: "boolean",
     default: false,
   },
@@ -191,41 +203,79 @@ const attributes = {
   resctaFontWeight: {
     type: "string",
   },
-  resctaBtnLinkColor: {
+  ctaColor: {
     type: "string",
     default: "#333",
   },
-  resctaBgColor: {
+  resctaBtnLinkColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  ctaBackColor: {
     type: "string",
     default: "transparent",
   },
-  resctaBorderColor: {
+  resctaBgColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  ctaBorderColor: {
     type: "string",
     default: "#333",
   },
-  resctaBorderStyle: {
+  ctaBorderStyle: {
     type: "string",
     default: "solid",
   },
-  ctaBtnVertPadding: {
+  resctaBorderColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  resctaBorderStyle: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  ctaVpadding: {
     type: "number",
     default: 10,
   },
-  ctaBtnHrPadding: {
+  ctaHpadding: {
     type: "number",
     default: 14,
   },
-  resctaBorderWidth: {
+  ctaVertPadding: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
+  },
+  ctaHrPadding: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
+  },
+  ctaBorderWidth: {
     type: "number",
     default: 1,
   },
-  resctaBorderRadius: {
+  ctaBorderRadius: {
     type: "number",
     default: 0,
+  },
+  resctaBorderWidth: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
+  },
+  resctaBorderRadius: { //For compatibility with v1.3.2
+    type: "number",
+    default: 999,
   },
   resprefixSpace: {
     type: "number",
     default: 5,
+  },
+  resprefixSpaceMobile: {
+    type: "number",
+  },
+  resprefixSpaceTablet: {
+    type: "number",
   },
   iconLeftMargin: {
     type: "number",
@@ -245,35 +295,27 @@ const attributes = {
   },
   iconLeftMarginMobile: {
     type: "number",
-    default: 0,
   },
   iconRightMarginMobile: {
     type: "number",
-    default: 0,
   },
   iconTopMarginMobile: {
     type: "number",
-    default: 5,
   },
   iconBottomMarginMobile: {
     type: "number",
-    default: 5,
   }, 
   iconLeftMarginTablet: {
     type: "number",
-    default: 0,
   },
   iconRightMarginTablet: {
     type: "number",
-    default: 0,
   },
   iconTopMarginTablet: {
     type: "number",
-    default: 5,
   },
   iconBottomMarginTablet: {
     type: "number",
-    default: 5,
   },
   iconImage: {
     type: "object",
@@ -376,13 +418,23 @@ const attributes = {
     type: "string",
     default: 1,
   },
-  boxBackgroundColor: {
+  backgroundColor: {
     type: "string",
     default: "#ffffff",
+  },
+  boxBackgroundColor: {  //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
   },
   contentPadding: {
     type: "number",
     default: 0,
+  },
+  contentPaddingMobile: {
+    type: "number",
+  },
+  contentPaddingTablet: {
+    type: "number",
   },
   opacity: {
     type: "number",
@@ -394,7 +446,8 @@ const attributes = {
   },
   imgURL: {
     type: "string",
-  },
+	default: "empty",
+  }, // For compatibility with v1.3.2.
   imgID: {
     type: "number",
   },
@@ -408,37 +461,51 @@ const attributes = {
     type: "number",
     default: 50,
   },
-  hoverctaBtnLinkColor: {
+  ctaHoverColor: {
     type: "string",
     default: "#333",
   },
-  hoverctaBgColor: {
+  ctaHoverBackColor: {
     type: "string",
     default: "transparent",
   },
-  hoverctaBorderColor: {
+  ctaHoverBorderColor: {
     type: "string",
     default: "#333",
+  },
+  ctaHoverColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  ctaHoverBackColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
+  },
+  ctaHoverBorderColor: { //For compatibility with v1.3.2
+    type: "string",
+    default: "empty",
   },
   imagePosition: {
     type: "string",
     default: "center center",
-  },
+  }, // For compatibility with v1.3.2.
   imageRepeat: {
     type: "string",
     default: "no-repeat",
-  },
+  }, // For compatibility with v1.3.2.
   thumbsize: {
     type: "string",
     default: "cover",
-  },
-  backgroundAttachment: {
-    type: "string",
-    default: "scroll",
-  },
+  }, // For compatibility with v1.3.2.
   sepSpace: {
     type: "number",
     default: 10,
+  },
+  sepSpaceMobile: {
+    type: "number",
+  },
+  sepSpaceTablet: {
+    type: "number",
   },
   icon_color: {
     type: "string",
@@ -460,7 +527,7 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  resImageBorderWidth: {
+  resImageBorderWidth: { 
     type: "number",
     default: 2,
   },
@@ -485,6 +552,12 @@ const attributes = {
   ctaBottomMargin: {
     type: "number",
     default: 10,
+  },
+  ctaBottomMarginMobile: {
+    type: "number",
+  },
+  ctaBottomMarginTablet: {
+    type: "number",
   },
   resBoxLink: {
     type: "string",
@@ -541,5 +614,74 @@ const attributes = {
     type: "number",
     default: 1
   },
+  backgroundImage: {
+    type: "string",
+  },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  backgroundImagePosition: {
+    type: "string",
+    default: "center center"
+  },
+  background: {
+    type: "string",
+    default: "scroll"
+  },
+  backgroundImageRepeat: {
+    type: "string",
+    default: "no-repeat"
+  },
+  backgroundImageSize: {
+    type: "string",
+    default: "cover"
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: 14,
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: 14,
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: 10,
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: 10,
+  },
+  buttoncolorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  buttoncolorLocation2: {
+    type: "number",
+    default: 100,
+  },
+  buttongradientDirection: {
+    type: "number",
+    default: 90,
+  },
+  buttonbackgroundColor1: {
+    type: "string",
+  },
+  buttonbackgroundColor2: {
+    type: "string",
+    default: "#fff",
+  },
+  buttonbackgroundType: {
+    type: "string",
+  },
+  buttonHbackgroundType: {
+    type: "string",
+    default: "none",
+  },
+  zIndex: {
+    type: "number",
+    default: 0,
+  }
 };
 export default attributes;

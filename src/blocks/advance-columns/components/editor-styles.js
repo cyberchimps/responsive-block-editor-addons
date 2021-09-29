@@ -16,18 +16,18 @@ function EditorStyles(props) {
     width,
     widthType,
     stack,
-    topPadding,
-    topPaddingTablet,
-    topPaddingMobile,
-    bottomPadding,
-    bottomPaddingTablet,
-    bottomPaddingMobile,
-    leftPadding,
-    leftPaddingTablet,
-    leftPaddingMobile,
-    rightPadding,
-    rightPaddingTablet,
-    rightPaddingMobile,
+    boxTopPadding,
+    boxTopPaddingTablet,
+    boxTopPaddingMobile,
+    boxBottomPadding,
+    boxBottomPaddingTablet,
+    boxBottomPaddingMobile,
+    boxLeftPadding,
+    boxLeftPaddingTablet,
+    boxLeftPaddingMobile,
+    boxRightPadding,
+    boxRightPaddingTablet,
+    boxRightPaddingMobile,
     topMargin,
     topMarginTablet,
     topMarginMobile,
@@ -53,10 +53,10 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
-    backgroundPosition,
+    backgroundImagePosition,
     backgroundAttachment,
-    backgroundRepeat,
-    backgroundSize,
+    backgroundImageRepeat,
+    backgroundImageSize,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -73,6 +73,21 @@ function EditorStyles(props) {
     block_id,
     z_index,
     align,
+	backgroundPosition, // For compatibility with v1.3.2.
+	backgroundRepeat, // For compatibility with v1.3.2.
+	backgroundSize, // For compatibility with v1.3.2.
+	topPadding, // For compatibility with v1.3.2.
+	bottomPadding, // For compatibility with v1.3.2.
+	leftPadding, // For compatibility with v1.3.2.
+	rightPadding, // For compatibility with v1.3.2.
+	topPaddingMobile, // For compatibility with v1.3.2.
+	bottomPaddingMobile, // For compatibility with v1.3.2.
+	leftPaddingMobile, // For compatibility with v1.3.2.
+	rightPaddingMobile, // For compatibility with v1.3.2.
+	topPaddingTablet, // For compatibility with v1.3.2.
+	bottomPaddingTablet, // For compatibility with v1.3.2.
+	leftPaddingTablet, // For compatibility with v1.3.2.
+	rightPaddingTablet, // For compatibility with v1.3.2.
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -108,10 +123,10 @@ function EditorStyles(props) {
               imgopacity || 0
             )}),url(${backgroundImage})`
           : "",
-      "background-position": backgroundPosition,
+      "background-position": backgroundPosition !== "empty" && backgroundImagePosition === "center-center" ? backgroundPosition : backgroundImagePosition, // For compatibility with v1.3.2.
       "background-attachment": backgroundAttachment,
-      "background-repeat": backgroundRepeat,
-      "background-size": backgroundSize,
+      "background-repeat": backgroundRepeat !== "empty" && backgroundImageRepeat === "no-repeat" ? backgroundRepeat : backgroundImageRepeat, // For compatibility with v1.3.2.
+      "background-size": backgroundSize !== "empty" && backgroundImageSize === "cover" ? backgroundSize : backgroundImageSize, // For compatibility with v1.3.2.
       "z-index": z_index,
     },
     " .responsive-block-editor-addons-block-columns.overlay-type-color": {
@@ -143,10 +158,10 @@ function EditorStyles(props) {
       "align-items": verticalAlign,
     },
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPadding, "px"),
-      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
-      "padding-left": generateCSSUnit(leftPadding, "px"),
-      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "padding-top": topPadding !== 999 && boxTopPadding === 10 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(boxTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && boxBottomPadding === 10 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(boxBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPadding !== 999 && boxLeftPadding === 10 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(boxLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && boxRightPadding === 10 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(boxRightPadding, "px"), // For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(topMargin, "px"),
       "margin-bottom": generateCSSUnit(bottomMargin, "px"),
       "text-align": blockAlign,
@@ -161,11 +176,11 @@ function EditorStyles(props) {
       "background-image":
         backgroundType == "gradient"
           ? generateBackgroundImageEffect(
-              backgroundColor1,
-              backgroundColor2,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
+            `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
+            `${hexToRgba(backgroundColor2 || "#ffffff", imgopacity || 0)}`,
+            gradientDirection,
+            colorLocation1,
+            colorLocation2
             )
           : undefined,
       "box-shadow":
@@ -188,10 +203,10 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+      "padding-top": topPaddingMobile !== 999 && boxTopPaddingMobile === "" ? generateCSSUnit(topPaddingMobile, "px") : generateCSSUnit(boxTopPaddingMobile, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPaddingMobile !== 999 && boxBottomPaddingMobile === "" ? generateCSSUnit(bottomPaddingMobile, "px") : generateCSSUnit(boxBottomPaddingMobile, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPaddingMobile !== 999 && boxLeftPaddingMobile === "" ? generateCSSUnit(leftPaddingMobile, "px") : generateCSSUnit(boxLeftPaddingMobile, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPaddingMobile !== 999 && boxRightPaddingMobile === "" ? generateCSSUnit(rightPaddingMobile, "px") : generateCSSUnit(boxRightPaddingMobile, "px"), // For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(topMarginMobile, "px"),
       "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
     },
@@ -199,10 +214,10 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-columns": {
-      "padding-top": generateCSSUnit(topPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+      "padding-top": topPaddingTablet !== 999 && boxTopPaddingTablet === "" ? generateCSSUnit(topPaddingTablet, "px") : generateCSSUnit(boxTopPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPaddingTablet !== 999 && boxBottomPaddingTablet === "" ? generateCSSUnit(bottomPaddingTablet, "px") : generateCSSUnit(boxBottomPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPaddingTablet !== 999 && boxLeftPaddingTablet === "" ? generateCSSUnit(leftPaddingTablet, "px") : generateCSSUnit(boxLeftPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPaddingTablet !== 999 && boxRightPaddingTablet === "" ? generateCSSUnit(rightPaddingTablet, "px") : generateCSSUnit(boxRightPaddingTablet, "px"), // For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(topMarginTablet, "px"),
       "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
     },

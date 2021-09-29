@@ -6,6 +6,11 @@ import times from "lodash/times";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
+import InspectorTab from "../../../components/InspectorTab";
+import InspectorTabs from "../../../components/InspectorTabs";
+import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/Typography Settings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -119,14 +124,28 @@ export default class Inspector extends Component {
         priceFontWeight,
         priceLineHeight,
         titleSpace,
+        titleSpaceMobile,
+        titleSpaceTablet,
         columns,
         rowGap,
+        rowGapMobile,
+        rowGapTablet,
         columnGap,
+        columnGapMobile,
+        columnGapTablet,
         contentAlign,
-        topPadding,
-        bottomPadding,
-        leftPadding,
-        rightPadding,
+        blockTopPadding,
+        blockBottomPadding,
+        blockLeftPadding,
+        blockRightPadding,
+        blockTopPaddingMobile,
+        blockBottomPaddingMobile,
+        blockLeftPaddingMobile,
+        blockRightPaddingMobile,
+        blockTopPaddingTablet,
+        blockBottomPaddingTablet,
+        blockLeftPaddingTablet,
+        blockRightPaddingTablet,
         seperatorStyle,
         seperatorWidth,
         seperatorThickness,
@@ -135,6 +154,12 @@ export default class Inspector extends Component {
         imagePosition,
         imageSize,
         imageWidth,
+		titleFontSizeMobile,
+		titleFontSizeTablet,
+		descriptionFontSizeMobile,
+		descriptionFontSizeTablet,
+		priceFontSizeMobile,
+		priceFontSizeTablet,
       },
       setAttributes,
     } = this.props;
@@ -236,483 +261,356 @@ export default class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
-        <PanelBody
-          title={__("General", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <RangeControl
-            label={__("Number of Items", "responsive-block-editor-addons")}
-            value={count}
-            onChange={(newCount) => {
-              let cloneTest_block = [...pricingList];
-              if (cloneTest_block.length < newCount) {
-                const inc_description = Math.abs(
-                  newCount - cloneTest_block.length
-                );
-                var desc_text = __(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                );
-                {
-                  times(inc_description, (n) => {
-                    cloneTest_block.push({
-                      title: "Menu Item " + newCount,
-                      description: desc_text,
-                      price: "$9",
-                      imageId: "",
-                      image: "",
-                      imageUrl: "",
-                    });
-                  });
-                }
-                setAttributes({ pricingList: cloneTest_block });
-              } else {
-                const inc_description = Math.abs(
-                  newCount - cloneTest_block.length
-                );
-                let data_new = cloneTest_block;
-                for (var i = 0; i < inc_description; i++) {
-                  data_new.pop();
-                }
-                setAttributes({ pricingList: data_new });
-              }
-              setAttributes({ count: newCount });
-            }}
-            min={1}
-            max={20}
-            step={1}
-          />
-          <RangeControl
-            label={__("Columns")}
-            value={columns}
-            onChange={(value) =>
-              setAttributes({ columns: value !== undefined ? value : 2 })
-            }
-            min={1}
-            max={3}
-          />
-        </PanelBody>
-        <PanelBody title={__("Image", "responsive-blocks")} initialOpen={false}>
-          {times(count, (n) => tmControls(n))}
-          {cnt > 0 && (
-            <Fragment>
-              <hr className="uagb-editor__separator" />
-              <SelectControl
-                label={__("Image Position")}
-                value={imagePosition}
-                onChange={(value) => setAttributes({ imagePosition: value })}
-                options={[
-                  { value: "top", label: __("Top") },
-                  { value: "left", label: __("Left") },
-                  { value: "right", label: __("Right") },
-                ]}
-              />
-
-              <SelectControl
-                label={__("Image Size")}
-                options={[
-                  { value: "full", label: __("Full") },
-                  { value: "thumbnail", label: __("Thumbnail") },
-                  { value: "medium", label: __("Medium") },
-                  { value: "large", label: __("Large") },
-                ]}
-                value={imageSize}
-                onChange={(value) => setAttributes({ imageSize: value })}
-              />
+        <InspectorTabs>
+          <InspectorTab key={"content"}>
+            <PanelBody
+              title={__("General", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
               <RangeControl
-                label={__("Width")}
-                value={imageWidth}
-                onChange={(value) => setAttributes({ imageWidth: value })}
-                min={0}
-                max={500}
-                allowReset
-              />
-            </Fragment>
-          )}
-        </PanelBody>
-
-        <PanelBody title={__("Separator")} initialOpen={false}>
-          <SelectControl
-            label={__("Separator Style")}
-            value={seperatorStyle}
-            onChange={(value) => setAttributes({ seperatorStyle: value })}
-            options={[
-              { value: "none", label: __("None") },
-              { value: "solid", label: __("Solid") },
-              { value: "dotted", label: __("Dotted") },
-              { value: "dashed", label: __("Dashed") },
-              { value: "double", label: __("Double") },
-              { value: "groove", label: __("Groove") },
-              { value: "inset", label: __("Inset") },
-              { value: "outset", label: __("Outset") },
-              { value: "ridge", label: __("Ridge") },
-            ]}
-          />
-          {"none" != seperatorStyle && (
-            <Fragment>
-              <RangeControl
-                label={__("Separator Width (%)")}
-                value={seperatorWidth}
-                onChange={(value) =>
-                  setAttributes({
-                    seperatorWidth: value !== undefined ? value : 100,
-                  })
-                }
-                min={0}
-                max={100}
-                allowReset
-              />
-              <RangeControl
-                label={__("Separator Thickness")}
-                value={seperatorThickness}
-                onChange={(value) =>
-                  setAttributes({
-                    seperatorThickness: value !== undefined ? value : 1,
-                  })
-                }
-                min={0}
-                max={20}
-                allowReset
-              />
-              <Fragment>
-                <p className="responsive-setting-label">
-                  {__("Separator Color")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{ backgroundColor: seperatorColor }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={seperatorColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ seperatorColor: colorValue })
+                label={__("Number of Items", "responsive-block-editor-addons")}
+                value={count}
+                onChange={(newCount) => {
+                  let cloneTest_block = [...pricingList];
+                  if (cloneTest_block.length < newCount) {
+                    const inc_description = Math.abs(
+                      newCount - cloneTest_block.length
+                    );
+                    var desc_text = __(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    );
+                    {
+                      times(inc_description, (n) => {
+                        cloneTest_block.push({
+                          title: "Menu Item " + newCount,
+                          description: desc_text,
+                          price: "$9",
+                          imageId: "",
+                          image: "",
+                          imageUrl: "",
+                        });
+                      });
+                    }
+                    setAttributes({ pricingList: cloneTest_block });
+                  } else {
+                    const inc_description = Math.abs(
+                      newCount - cloneTest_block.length
+                    );
+                    let data_new = cloneTest_block;
+                    for (var i = 0; i < inc_description; i++) {
+                      data_new.pop();
+                    }
+                    setAttributes({ pricingList: data_new });
                   }
-                  allowReset
-                />
-              </Fragment>
-            </Fragment>
-          )}
-        </PanelBody>
-        <PanelBody
-          title={__("Color Settings", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <p className="responsive-setting-label">
-            {__("Title Color")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{
-                  backgroundColor: titleColor,
+                  setAttributes({ count: newCount });
                 }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={titleColor}
-            onChange={(value) =>
-              this.props.setAttributes({
-                titleColor: value,
-              })
-            }
-            allowReset
-          />
-          <p className="responsive-setting-label">
-            {__("Content Color")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{
-                  backgroundColor: descColor,
-                }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={descColor}
-            onChange={(value) =>
-              this.props.setAttributes({
-                descColor: value,
-              })
-            }
-            allowReset
-          />
-          <p className="responsive-setting-label">
-            {__("Price Color")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{
-                  backgroundColor: priceColor,
-                }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={priceColor}
-            onChange={(value) =>
-              this.props.setAttributes({
-                priceColor: value,
-              })
-            }
-            allowReset
-          />
-        </PanelBody>
-        <PanelBody
-          title={__("Spacing", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <RangeControl
-            label={__("Row Gap", "responsive-block-editor-addons")}
-            value={rowGap}
-            onChange={(value) =>
-              setAttributes({
-                rowGap: value !== undefined ? value : 10,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-          <RangeControl
-            label={__("Column Gap", "responsive-block-editor-addons")}
-            value={columnGap}
-            onChange={(value) =>
-              setAttributes({
-                columnGap: value !== undefined ? value : 10,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-          <RangeControl
-            label={__("Title Bottom Margin", "responsive-block-editor-addons")}
-            value={titleSpace}
-            onChange={(value) =>
-              setAttributes({
-                titleSpace: value !== undefined ? value : 10,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-          <RangeControl
-            label={__("Top Padding", "responsive-block-editor-addons")}
-            value={topPadding}
-            onChange={(value) =>
-              setAttributes({
-                topPadding: value !== undefined ? value : 5,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-          <RangeControl
-            label={__("Bottom Padding", "responsive-block-editor-addons")}
-            value={bottomPadding}
-            onChange={(value) =>
-              setAttributes({
-                bottomPadding: value !== undefined ? value : 5,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-          <RangeControl
-            label={__("Left Padding", "responsive-block-editor-addons")}
-            value={leftPadding}
-            onChange={(value) =>
-              setAttributes({
-                leftPadding: value !== undefined ? value : 5,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-          <RangeControl
-            label={__("Right Padding", "responsive-block-editor-addons")}
-            value={rightPadding}
-            onChange={(value) =>
-              setAttributes({
-                rightPadding: value !== undefined ? value : 5,
-              })
-            }
-            min={0}
-            max={50}
-            allowReset
-          />
-        </PanelBody>
+                min={1}
+                max={20}
+                step={1}
+              />
+              <RangeControl
+                label={__("Columns")}
+                value={columns}
+                onChange={(value) =>
+                  setAttributes({ columns: value !== undefined ? value : 2 })
+                }
+                min={1}
+                max={3}
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Image", "responsive-blocks")}
+              initialOpen={false}
+            >
+              {times(count, (n) => tmControls(n))}
+              {cnt > 0 && (
+                <Fragment>
+                  <hr className="uagb-editor__separator" />
+                  <SelectControl
+                    label={__("Image Position")}
+                    value={imagePosition}
+                    onChange={(value) =>
+                      setAttributes({ imagePosition: value })
+                    }
+                    options={[
+                      { value: "top", label: __("Top") },
+                      { value: "left", label: __("Left") },
+                      { value: "right", label: __("Right") },
+                    ]}
+                  />
 
-        <PanelBody
-          title={__("Typography", "responsive-block-editor-addons")}
-          initialOpen={false}
-        >
-          <PanelBody
-            title={__("Title Typography", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={titleFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  titleFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <RangeControl
-              label={__("Font Size", "responsive-block-editor-addons")}
-              value={titleFontSize}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  titleFontSize: value !== undefined ? value : "",
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-              allowReset
-            />
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={titleFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  titleFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={titleLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  titleLineHeight: value !== undefined ? value : 1,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-              allowReset
-            />
-          </PanelBody>
-          <PanelBody
-            title={__(
-              " description Typography",
-              "responsive-block-editor-addons"
-            )}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={descriptionFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  descriptionFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <RangeControl
-              label={__("Font Size", "responsive-block-editor-addons")}
-              value={descriptionFontSize}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  descriptionFontSize: value !== undefined ? value : "",
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-              allowReset
-            />
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={descriptionFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  descriptionFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={descriptionLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  descriptionLineHeight: value !== undefined ? value : 1,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-              allowReset
-            />
-          </PanelBody>
-          <PanelBody
-            title={__("Price Typography", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-            <SelectControl
-              label={__("Font Family", "responsive-block-editor-addons")}
-              options={fontOptions}
-              value={priceFontFamily}
-              onChange={(value) => {
-                setAttributes({
-                  priceFontFamily: value,
-                }),
-                  loadGoogleFont(value);
-              }}
-            />
-            <RangeControl
-              label={__("Font Size", "responsive-block-editor-addons")}
-              value={priceFontSize}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  priceFontSize: value !== undefined ? value : "",
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-              allowReset
-            />
-            <SelectControl
-              label={__("Font Weight", "responsive-block-editor-addons")}
-              options={fontWeightOptions}
-              value={priceFontWeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  priceFontWeight: value,
-                })
-              }
-            />
-            <RangeControl
-              label={__("Line Height", "responsive-block-editor-addons")}
-              value={priceLineHeight}
-              onChange={(value) =>
-                this.props.setAttributes({
-                  priceLineHeight: value !== undefined ? value : 1,
-                })
-              }
-              min={0}
-              max={100}
-              step={1}
-              allowReset
-            />
-          </PanelBody>
-        </PanelBody>
+                  <SelectControl
+                    label={__("Image Size")}
+                    options={[
+                      { value: "full", label: __("Full") },
+                      { value: "thumbnail", label: __("Thumbnail") },
+                      { value: "medium", label: __("Medium") },
+                      { value: "large", label: __("Large") },
+                    ]}
+                    value={imageSize}
+                    onChange={(value) => setAttributes({ imageSize: value })}
+                  />
+                  <RangeControl
+                    label={__("Width")}
+                    value={imageWidth}
+                    onChange={(value) => setAttributes({ imageWidth: value })}
+                    min={0}
+                    max={500}
+                    allowReset
+                  />
+                </Fragment>
+              )}
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            <PanelBody title={__("Separator")} initialOpen={false}>
+              <SelectControl
+                label={__("Separator Style")}
+                value={seperatorStyle}
+                onChange={(value) => setAttributes({ seperatorStyle: value })}
+                options={[
+                  { value: "none", label: __("None") },
+                  { value: "solid", label: __("Solid") },
+                  { value: "dotted", label: __("Dotted") },
+                  { value: "dashed", label: __("Dashed") },
+                  { value: "double", label: __("Double") },
+                  { value: "groove", label: __("Groove") },
+                  { value: "inset", label: __("Inset") },
+                  { value: "outset", label: __("Outset") },
+                  { value: "ridge", label: __("Ridge") },
+                ]}
+              />
+              {"none" != seperatorStyle && (
+                <Fragment>
+                  <RangeControl
+                    label={__("Separator Width (%)")}
+                    value={seperatorWidth}
+                    onChange={(value) =>
+                      setAttributes({
+                        seperatorWidth: value !== undefined ? value : 100,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    allowReset
+                  />
+                  <RangeControl
+                    label={__("Separator Thickness")}
+                    value={seperatorThickness}
+                    onChange={(value) =>
+                      setAttributes({
+                        seperatorThickness: value !== undefined ? value : 1,
+                      })
+                    }
+                    min={0}
+                    max={20}
+                    allowReset
+                  />
+                  <Fragment>
+                    <p className="responsive-setting-label">
+                      {__("Separator Color")}
+                      <span className="components-base-control__label">
+                        <span
+                          className="component-color-indicator"
+                          style={{ backgroundColor: seperatorColor }}
+                        ></span>
+                      </span>
+                    </p>
+                    <ColorPalette
+                      value={seperatorColor}
+                      onChange={(colorValue) =>
+                        setAttributes({ seperatorColor: colorValue })
+                      }
+                      allowReset
+                    />
+                  </Fragment>
+                </Fragment>
+              )}
+            </PanelBody>
+            <PanelBody
+              title={__("Color Settings", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <p className="responsive-setting-label">
+                {__("Title Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{
+                      backgroundColor: titleColor,
+                    }}
+                  ></span>
+                </span>
+              </p>
+              <ColorPalette
+                value={titleColor}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    titleColor: value,
+                  })
+                }
+                allowReset
+              />
+              <p className="responsive-setting-label">
+                {__("Content Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{
+                      backgroundColor: descColor,
+                    }}
+                  ></span>
+                </span>
+              </p>
+              <ColorPalette
+                value={descColor}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    descColor: value,
+                  })
+                }
+                allowReset
+              />
+              <p className="responsive-setting-label">
+                {__("Price Color")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{
+                      backgroundColor: priceColor,
+                    }}
+                  ></span>
+                </span>
+              </p>
+              <ColorPalette
+                value={priceColor}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    priceColor: value,
+                  })
+                }
+                allowReset
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveSpacingControl
+                title={"Row Gap"}
+                attrNameTemplate="rowGap%s"
+                values={{
+                  desktop: rowGap,
+                  tablet: rowGapTablet,
+                  mobile: rowGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Column Gap"}
+                attrNameTemplate="columnGap%s"
+                values={{
+                  desktop: columnGap,
+                  tablet: columnGapTablet,
+                  mobile: columnGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsivePaddingControl
+                attrNameTemplate="block%s"
+                values={{
+                  desktopTop: blockTopPadding,
+                  desktopBottom: blockBottomPadding,
+                  desktopLeft: blockLeftPadding,
+                  desktopRight: blockRightPadding,
+
+                  tabletTop: blockTopPaddingTablet,
+                  tabletBottom: blockBottomPaddingTablet,
+                  tabletLeft: blockLeftPaddingTablet,
+                  tabletRight: blockRightPaddingTablet,
+
+                  mobileTop: blockTopPaddingMobile,
+                  mobileBottom: blockBottomPaddingMobile,
+                  mobileLeft: blockLeftPaddingMobile,
+                  mobileRight: blockRightPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+            </PanelBody>
+
+            <PanelBody
+              title={__("Typography", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+				<TypographyHelperControl
+					title={__("Title Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="title%s"
+					values={{
+					family: titleFontFamily,
+					size: titleFontSize,
+					sizeMobile: titleFontSizeMobile,
+					sizeTablet: titleFontSizeTablet,
+					weight: titleFontWeight,
+					height: titleLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__(
+					"Description Typography",
+					"responsive-block-editor-addons"
+					)}
+					attrNameTemplate="description%s"
+					values={{
+					family: descriptionFontFamily,
+					size: descriptionFontSize,
+					sizeMobile: descriptionFontSizeMobile,
+					sizeTablet: descriptionFontSizeTablet,
+					weight: descriptionFontWeight,
+					height: descriptionLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__("Price Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="price%s"
+					values={{
+					family: priceFontFamily,
+					size: priceFontSize,
+					sizeMobile: priceFontSizeMobile,
+					sizeTablet: priceFontSizeTablet,
+					weight: priceFontWeight,
+					height: priceLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"advance"}></InspectorTab>
+        </InspectorTabs>
       </InspectorControls>
     );
   }

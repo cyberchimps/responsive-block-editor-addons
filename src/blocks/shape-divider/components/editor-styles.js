@@ -8,6 +8,9 @@ import generateBackgroundImageEffect from "../../../generateBackgroundImageEffec
 
 function EditorStyles(props) {
   const {
+    color,
+  } = props;
+  const {
     block_id,
     backgroundColor,
     backgroundColor1,
@@ -34,6 +37,9 @@ function EditorStyles(props) {
             )
           : undefined,
     },
+    " .wp-block-responsive-block-editor-addons-shape-divider__svg-wrapper svg": {
+      fill: color.color
+    }
   };
 
   var mobile_selectors = {};

@@ -112,7 +112,6 @@ export default class Save extends Component {
                           ? pricingTable[index]["img_url"].sizes[imageSize].url
                           : pricingTable[index]["img_url"].sizes["full"].url
                       }
-                      width={imageWidth}
                       alt="avatar"
                       />
                   </div>

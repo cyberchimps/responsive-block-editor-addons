@@ -9,6 +9,8 @@ function EditorStyles(props) {
   const {
     block_id,
     spacerHeight,
+    spacerHeightMobile,
+    spacerHeightTablet,
     spacerDividerColor,
     spacerDividerHeight,
     spacerDividerWidth,
@@ -51,9 +53,19 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content": {
+      "margin-top": generateCSSUnit(spacerHeightMobile, "px"),
+      "margin-bottom": generateCSSUnit(spacerHeightMobile, "px"),
+    },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content": {
+      "margin-top": generateCSSUnit(spacerHeightTablet, "px"),
+      "margin-bottom": generateCSSUnit(spacerHeightTablet, "px"),
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-divider.block-${props.clientId}`;
