@@ -92,11 +92,9 @@ e.g.
 * New - WP Search Block
 * Feature - Added responsive spacing options to multiple blocks
 * Feature - Flipbox - Added typography options
-* Feature - Multibuttons - Changed default background color for button
+* Feature - Multibuttons - Changed default background color for a button
 * Fix - Image Boxes - Title & description spacing
-* Fix - Icon List - Icon is not center to its background in Table and Mobile view
-* Fix - Flipbox - Inside section block, gutter option does not work correctly
-* Fix - Team - Extra padding to image bottom in editor
+* Fix - Icon List - Icon is not centered to its background in Table and Mobile view
 * Fix - Table of Contents - Anchor doesn’t work when headings are inside section/cover block
 
 = 1.3.3 - 2nd September 2021 =
