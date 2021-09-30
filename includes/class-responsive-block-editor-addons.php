@@ -551,6 +551,7 @@ class Responsive_Block_Editor_Addons {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'classes/class-responsive-block-editor-addons-frontend-styles.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/inline-notice/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/taxonomy-list/index.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/instagram/index.php';
 
 		/**
 		 * Layout Component Registry.
