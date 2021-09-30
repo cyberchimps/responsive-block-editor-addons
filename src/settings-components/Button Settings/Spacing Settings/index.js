@@ -71,7 +71,7 @@ class ButtonSpacingControl extends Component {
                 <Fragment>
                   <RangeControl
                     label={__(
-                      "Horizontal Padding Mobile",
+                      "Horizontal Padding",
                       "responsive-block-editor-addons"
                     )}
                     value={ctaHpaddingMobile}
@@ -89,7 +89,7 @@ class ButtonSpacingControl extends Component {
                 <Fragment>
                   <RangeControl
                     label={__(
-                      "Horizontal Padding Tablet",
+                      "Horizontal Padding",
                       "responsive-block-editor-addons"
                     )}
                     value={ctaHpaddingTablet}
@@ -154,7 +154,7 @@ class ButtonSpacingControl extends Component {
                   <Fragment>
                     <RangeControl
                       label={__(
-                        "Vertical Padding Mobile",
+                        "Vertical Padding",
                         "responsive-block-editor-addons"
                       )}
                       value={ctaVpaddingMobile}
@@ -172,7 +172,7 @@ class ButtonSpacingControl extends Component {
                   <Fragment>
                     <RangeControl
                       label={__(
-                        "Vertical Padding Tablet",
+                        "Vertical Padding",
                         "responsive-block-editor-addons"
                       )}
                       value={ctaVpaddingTablet}
@@ -240,7 +240,7 @@ class ButtonSpacingControl extends Component {
                         <Fragment>
                             <RangeControl
                             label={__(
-                                "Vertical Margin Mobile",
+                                "Vertical Margin",
                                 "responsive-block-editor-addons"
                             )}
                             min={0}
@@ -260,7 +260,7 @@ class ButtonSpacingControl extends Component {
                         <Fragment>
                             <RangeControl
                             label={__(
-                                "Vertical Margin Tablet",
+                                "Vertical Margin",
                                 "responsive-block-editor-addons"
                             )}
                             min={0}
@@ -329,7 +329,7 @@ class ButtonSpacingControl extends Component {
                         <Fragment>
                             <RangeControl
                             label={__(
-                                "Horizontal Margin Mobile",
+                                "Horizontal Margin",
                                 "responsive-block-editor-addons"
                             )}
                             min={0}
@@ -349,7 +349,7 @@ class ButtonSpacingControl extends Component {
                         <Fragment>
                             <RangeControl
                             label={__(
-                                "Horizontal Margin Tablet",
+                                "Horizontal Margin",
                                 "responsive-block-editor-addons"
                             )}
                             min={0}
@@ -387,8 +387,8 @@ class ButtonSpacingControl extends Component {
                     }
                     return <div>{tabout}</div>;
                     }}
-                </TabPanel>              
-            </Fragment>            
+                </TabPanel>
+            </Fragment>
           )}
           </PanelBody>
       );
