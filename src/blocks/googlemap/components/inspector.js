@@ -20,6 +20,8 @@ const {
 	Button,
 	ExternalLink,
 } = wp.components;
+import { ENTER } from '@wordpress/keycodes';
+
 
 /**
  * Create an Inspector Controls wrapper Component
@@ -33,7 +35,32 @@ export default class Inspector extends Component {
 			keySaved: false,
 			address: props.attributes.address,
 		};
-	}
+        this.updateApiKey = this.updateApiKey.bind( this );
+        this.removeApiKey = this.removeApiKey.bind( this );
+        this.handleKeyDown = this.handleKeyDown.bind( this );
+
+    }
+
+    componentDidMount() {
+        this.setState( { apiKey: this.props.apiKey } );
+    }
+
+    updateApiKey() {
+        this.props.updateApiKeyCallBack( this.state.apiKey );
+    }
+
+    removeApiKey() {
+        this.setState( { apiKey: '' } );
+        this.props.updateApiKeyCallBack( '' );
+    }
+
+    handleKeyDown( keyCode ) {
+        if ( keyCode !== ENTER ) {
+            return;
+        }
+
+        this.updateApiKey();
+    }
 
 	render() {
 		// Setup the attributes
