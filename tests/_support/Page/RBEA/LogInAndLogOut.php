@@ -49,8 +49,7 @@ class LogInAndLogOut
         $I->amOnPage("/wp-admin");
         $I->fillField( $this->usernameField , $this->usernameValue );
         $I->fillField($this->passwordField , $this->passwordValue );
-        $I->click($this->submitBtn);
-        $I->see('Welcome to WordPress!');        
+        $I->click($this->submitBtn);     
         $I->amOnPage('/rbea-block');
     }
 
@@ -59,6 +58,7 @@ class LogInAndLogOut
      */
     public function userLogout($I) {
         $I->amGoingTo('Logout');
+        $I->wait(2);
         $I->moveMouseOver($this->wordpressProfile);
         $I->click($this->logOutLink);
         $I->wait(2);

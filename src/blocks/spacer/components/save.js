@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 const { Component } = wp.element;
+import classnames from "classnames"
 
 export default class Save extends Component {
   constructor() {
@@ -9,6 +10,14 @@ export default class Save extends Component {
   }
 
   render() {
-    return [<div className="responsive-block-editor-addons-spacer"> </div>];
+    const {
+      block_id,
+    } = this.props.attributes;
+
+    return (<div className={classnames(
+      "responsive-block-editor-addons-block-spacer",
+      `block-${block_id}`,
+      "responsive-block-editor-addons-spacer"
+    )}> </div>);
   }
 }

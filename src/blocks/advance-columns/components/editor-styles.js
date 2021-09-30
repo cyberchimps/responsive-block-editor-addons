@@ -159,9 +159,9 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-columns": {
       "padding-top": topPadding !== 999 && boxTopPadding === 10 ? generateCSSUnit(topPadding, "px") : generateCSSUnit(boxTopPadding, "px"), // For compatibility with v1.3.2.
-      "padding-bottom": bottomPadding !== 999 && boxBottomPadding === 10 ? generateCSS(bottomPadding, "px") : generateCSSUnit(boxBottomPadding, "px"), // For compatibility with v1.3.2.
-      "padding-left": leftPadding !== 999 && boxLeftPadding === 10 ? generateCSS(leftPadding, "px") : generateCSSUnit(boxLeftPadding, "px"), // For compatibility with v1.3.2.
-      "padding-right": rightPadding !== 999 && boxRightPadding === 10 ? generateCSS(rightPadding, "px") : generateCSSUnit(boxRightPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": bottomPadding !== 999 && boxBottomPadding === 10 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(boxBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": leftPadding !== 999 && boxLeftPadding === 10 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(boxLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": rightPadding !== 999 && boxRightPadding === 10 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(boxRightPadding, "px"), // For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(topMargin, "px"),
       "margin-bottom": generateCSSUnit(bottomMargin, "px"),
       "text-align": blockAlign,

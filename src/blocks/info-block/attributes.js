@@ -116,11 +116,9 @@ const attributes = {
   },
   resheadSpaceMobile: {
     type: "number",
-    default: 10,
   },
   resheadSpaceTablet: {
     type: "number",
-    default: 10,
   },
   ressubHeadSpace: {
     type: "number",
@@ -128,11 +126,9 @@ const attributes = {
   },
   ressubHeadSpaceMobile: {
     type: "number",
-    default: 10,
   },
   ressubHeadSpaceTablet: {
     type: "number",
-    default: 10,
   },
   resseperatorSpace: {
     type: "number",
@@ -277,11 +273,9 @@ const attributes = {
   },
   resprefixSpaceMobile: {
     type: "number",
-    default: 5,
   },
   resprefixSpaceTablet: {
     type: "number",
-    default: 5,
   },
   iconLeftMargin: {
     type: "number",
@@ -301,35 +295,27 @@ const attributes = {
   },
   iconLeftMarginMobile: {
     type: "number",
-    default: 0,
   },
   iconRightMarginMobile: {
     type: "number",
-    default: 0,
   },
   iconTopMarginMobile: {
     type: "number",
-    default: 5,
   },
   iconBottomMarginMobile: {
     type: "number",
-    default: 5,
   }, 
   iconLeftMarginTablet: {
     type: "number",
-    default: 0,
   },
   iconRightMarginTablet: {
     type: "number",
-    default: 0,
   },
   iconTopMarginTablet: {
     type: "number",
-    default: 5,
   },
   iconBottomMarginTablet: {
     type: "number",
-    default: 5,
   },
   iconImage: {
     type: "object",
@@ -446,11 +432,9 @@ const attributes = {
   },
   contentPaddingMobile: {
     type: "number",
-    default: 0,
   },
   contentPaddingTablet: {
     type: "number",
-    default: 0,
   },
   opacity: {
     type: "number",
@@ -519,11 +503,9 @@ const attributes = {
   },
   sepSpaceMobile: {
     type: "number",
-    default: 10,
   },
   sepSpaceTablet: {
     type: "number",
-    default: 10,
   },
   icon_color: {
     type: "string",
@@ -573,11 +555,9 @@ const attributes = {
   },
   ctaBottomMarginMobile: {
     type: "number",
-    default: 10,
   },
   ctaBottomMarginTablet: {
     type: "number",
-    default: 10,
   },
   resBoxLink: {
     type: "string",

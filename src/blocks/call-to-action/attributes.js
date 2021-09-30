@@ -14,11 +14,9 @@ const attributes = {
   },
   buttonTextFontSizeMobile: {
     type: "number",
-    default: 16
   },
   buttonTextFontSizeTablet: {
     type: "number",
-    default: 16
   },
   buttonTextLineHeight: {
     type: "number",
@@ -367,19 +365,15 @@ const attributes = {
   },
   ctaVpaddingMobile: {
     type: "number",
-    default: 14,
   },
   ctaVpaddingTablet: {
     type: "number",
-    default: 14,
   },
   ctaHpaddingMobile: {
     type: "number",
-    default: 14,
   },
   ctaHpaddingTablet: {
     type: "number",
-    default: 14,
   },
   ctaBorderRadius: {
     type: "string",

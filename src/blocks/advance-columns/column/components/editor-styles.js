@@ -200,14 +200,14 @@ function EditorStyles(props) {
           : undefined,
     },
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": topPadding !== 999 && !columnTopPadding ? generateCSSUnit(topPadding, "px") : generateCSSUnit(columnTopPadding, "px"), //For compatibility with v1.3.2.
-      "padding-bottom": bottomPadding !== 999 && !columnBottomPadding ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(columnBottomPadding, "px"), //For compatibility with v1.3.2.
-      "padding-left": leftPadding !== 999 && !columnLeftPadding ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(columnLeftPadding, "px"), //For compatibility with v1.3.2.
-      "padding-right": rightPadding !== 999 && !columnRightPadding ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(columnRightPadding, "px"), //For compatibility with v1.3.2.
-      "margin-top": topMargin !== 999 && !columnTopMargin ? generateCSSUnit(topMargin, "px") : generateCSSUnit(columnTopMargin, "px"), //For compatibility with v1.3.2.
-      "margin-bottom": bottomMargin !== 999 && !columnBottomMargin ? generateCSSUnit(bottomMargin, "px") : generateCSSUnit(columnBottomMargin, "px"), //For compatibility with v1.3.2.
-      "margin-left": leftMargin !== 999 && !columnLeftMargin ? generateCSSUnit(leftMargin, "px") : generateCSSUnit(columnLeftMargin, "px"), //For compatibility with v1.3.2.
-      "margin-right": rightMargin !== 999 && !columnRightMargin ? generateCSSUnit(rightMargin, "px") : generateCSSUnit(columnRightMargin, "px"), //For compatibility with v1.3.2.
+      "padding-top": generateCSSUnit(topPadding, "px"),
+      "padding-bottom": generateCSSUnit(bottomPadding, "px"),
+      "padding-left": generateCSSUnit(leftPadding, "px"),
+      "padding-right": generateCSSUnit(rightPadding, "px"),
+      "margin-top": generateCSSUnit(topMargin, "px"),
+      "margin-bottom":generateCSSUnit(bottomMargin, "px"),
+      "margin-left": generateCSSUnit(leftMargin, "px"),
+      "margin-right": generateCSSUnit(rightMargin, "px"),
       "border-color": blockBorderColor,
       "border-style": blockBorderStyle,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
@@ -238,27 +238,27 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": topPaddingMobile !== 999 && !columnTopPaddingMobile ? generateCSSUnit(topPaddingMobile, "px") : generateCSSUnit(columnTopPaddingMobile, "px"), //For compatibility with v1.3.2.
-      "padding-bottom": bottomPaddingMobile !== 999 && !columnBottomPaddingMobile ? generateCSSUnit(bottomPaddingMobile, "px") : generateCSSUnit(columnBottomPaddingMobile, "px"), //For compatibility with v1.3.2.
-      "padding-left": leftPaddingMobile !== 999 && !columnLeftPaddingMobile ? generateCSSUnit(leftPaddingMobile, "px") : generateCSSUnit(columnLeftPaddingMobile, "px"), //For compatibility with v1.3.2.
-      "padding-right": rightPaddingMobile !== 999 && !columnRightPaddingMobile ? generateCSSUnit(rightPaddingMobile) : generateCSSUnit(columnRightPaddingMobile, "px"), //For compatibility with v1.3.2.
-      "margin-top": topMarginMobile !== 999 && !columnTopMarginMobile ? generateCSSUnit(topMarginMobile, "px") : generateCSSUnit(columnTopMarginMobile, "px"), //For compatibility with v1.3.2.
-      "margin-bottom": bottomMarginMobile !== 999 && !columnBottomMarginMobile ? generateCSSUnit(bottomMarginMobile, "px") : generateCSSUnit(columnBottomMarginMobile, "px"), //For compatibility with v1.3.2.
-      "margin-left": leftMarginMobile !== 999 && !columnLeftMarginMobile ? generateCSSUnit(leftMarginMobile, "px") : generateCSSUnit(columnLeftMarginMobile, "px"), //For compatibility with v1.3.2.
-      "margin-right": rightMarginMobile !== 999 && !columnRightMarginMobile ? generateCSSUnit(rightMarginMobile, "px") : generateCSSUnit(columnRightMarginMobile, "px"), //For compatibility with v1.3.2.
+        "padding-top": generateCSSUnit(topPaddingMobile, "px"),
+        "padding-bottom": generateCSSUnit(bottomPaddingMobile, "px"),
+        "padding-left": generateCSSUnit(leftPaddingMobile, "px"),
+        "padding-right": generateCSSUnit(rightPaddingMobile, "px"),
+        "margin-top": generateCSSUnit(topMarginMobile, "px"),
+        "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
+        "margin-left": generateCSSUnit(leftMarginMobile, "px"),
+        "margin-right": generateCSSUnit(rightMarginMobile, "px"),
     },
   };
 
   var tablet_selectors = {
     " .responsive-block-editor-addons-block-column": {
-      "padding-top": topPaddingTablet !== 999 && !columnTopPaddingTablet ? generateCSSUnit(topPaddingTablet , "px" ) : generateCSSUnit(columnTopPaddingTablet, "px"), //For compatibility with v1.3.2.
-      "padding-bottom": bottomPaddingTablet !== 999 && !columnBottomPaddingTablet ? generateCSSUnit(bottomPaddingTablet, "px") : generateCSSUnit(columnBottomPaddingTablet, "px"), //For compatibility with v1.3.2.
-      "padding-left": leftPaddingTablet !== 999 && !columnLeftPaddingTablet ? generateCSSUnit(leftPaddingTablet, "px") : generateCSSUnit(columnLeftPaddingTablet, "px"), //For compatibility with v1.3.2.
-      "padding-right": rightPaddingTablet !== 999 && !columnRightPaddingTablet ? generateCSSUnit(rightPaddingTablet, "px") : generateCSSUnit(columnRightPaddingTablet, "px"), //For compatibility with v1.3.2.
-      "margin-top": topMarginTablet !== 999 && !columnTopMarginTablet ? generateCSSUnit(topMarginTablet, "px") : generateCSSUnit(columnTopMarginTablet, "px"), //For compatibility with v1.3.2.
-      "margin-bottom": bottomMarginTablet !== 999 && !columnBottomMarginTablet ? generateCSSUnit(bottomMarginTablet, "px") : generateCSSUnit(columnBottomMarginTablet, "px"), //For compatibility with v1.3.2.
-      "margin-left": leftMarginTablet !== 999 && !columnLeftMarginTablet ? generateCSSUnit(leftMarginTablet, "px") : generateCSSUnit(columnLeftMarginTablet, "px"), //For compatibility with v1.3.2.
-      "margin-right": rightMarginTablet !== 999 && !columnRightPaddingTablet ? generateCSSUnit(rightMarginTablet, "px") : generateCSSUnit(columnRightMarginTablet, "px"), //For compatibility with v1.3.2.s
+        "padding-top": generateCSSUnit(topPaddingTablet, "px"),
+        "padding-bottom": generateCSSUnit(bottomPaddingTablet, "px"),
+        "padding-left": generateCSSUnit(leftPaddingTablet, "px"),
+        "padding-right": generateCSSUnit(rightPaddingTablet, "px"),
+        "margin-top": generateCSSUnit(topMarginTablet, "px"),
+        "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
+        "margin-left": generateCSSUnit(leftMarginTablet, "px"),
+        "margin-right": generateCSSUnit(rightMarginTablet, "px"),
     },
   };
 

@@ -1,600 +1,577 @@
 const attributes = {
-
   block_id: {
-	type: "string",
+    type: "string",
   },
   date: {
-	type: "string",
-	source: "attribute",
-	selector: ".responsive-block-editor-addons-countdown-get-date",
-	attribute: "data-date",
+    type: "string",
+    source: "attribute",
+    selector: ".responsive-block-editor-addons-countdown-get-date",
+    attribute: "data-date",
   },
   days: {
-	type: "string",
-	source: "text",
-	selector: ".responsive-block-editor-addons-countdown-digits-days",
-	default: "29",
+    type: "string",
+    source: "text",
+    selector: ".responsive-block-editor-addons-countdown-digits-days",
+    default: "29",
   },
   hours: {
-	type: "string",
-	source: "text",
-	selector: ".responsive-block-editor-addons-countdown-digits-hours",
-	default: "23",
+    type: "string",
+    source: "text",
+    selector: ".responsive-block-editor-addons-countdown-digits-hours",
+    default: "23",
   },
   minutes: {
-	type: "string",
-	source: "text",
-	selector: ".responsive-block-editor-addons-countdown-digits-minutes",
-	default: "59",
+    type: "string",
+    source: "text",
+    selector: ".responsive-block-editor-addons-countdown-digits-minutes",
+    default: "59",
   },
   seconds: {
-	type: "string",
-	source: "text",
-	selector: ".responsive-block-editor-addons-countdown-digits-seconds",
-	default: "59",
+    type: "string",
+    source: "text",
+    selector: ".responsive-block-editor-addons-countdown-digits-seconds",
+    default: "59",
   },
   digitDaysLabel: {
-	type: "string",
-	default: "Days",
+    type: "string",
+    default: "Days",
   },
   digitHoursLabel: {
-	type: "string",
-	default: "Hours",
+    type: "string",
+    default: "Hours",
   },
   digitMinutesLabel: {
-	type: "string",
-	default: "Minutes",
+    type: "string",
+    default: "Minutes",
   },
   digitSecondsLabel: {
-	type: "string",
-	default: "Seconds",
+    type: "string",
+    default: "Seconds",
   },
   showDigitLabels: {
-	type: "boolean",
-	default: true,
+    type: "boolean",
+    default: true,
   },
   showDaysBox: {
-	type: "boolean",
-	default: true,
+    type: "boolean",
+    default: true,
   },
   showHoursBox: {
-	type: "boolean",
-	default: true,
+    type: "boolean",
+    default: true,
   },
   showMinutesBox: {
-	type: "boolean",
-	default: true,
+    type: "boolean",
+    default: true,
   },
   showSecondsBox: {
-	type: "boolean",
-	default: true,
+    type: "boolean",
+    default: true,
   },
   digitFontFamily: {
-	type: "string",
+    type: "string",
   },
   digitFontSize: {
-	type: "number",
-	default: 48,
+    type: "number",
+    default: 48,
   },
   digitFontSizeMobile: {
-	type: "number",
-	default: 14,
+    type: "number",
   },
   digitFontSizeTablet: {
-	type: "number",
-	default: 28,
+    type: "number",
   },
   digitFontWeight: {
-	type: "string",
-	default: "500",
+    type: "string",
+    default: "500",
   },
   digitLetterSpacing: {
-	type: "number",
-	default: 1,
+    type: "number",
+    default: 1,
   },
   digitLineHeight: {
-	type: "number",
-	default: 2,
+    type: "number",
+    default: 2,
   },
   digitColor: {
-	type: "string",
-	default: "#fff",
+    type: "string",
+    default: "#fff",
   },
   labelFontFamily: {
-	type: "string",
+    type: "string",
   },
   labelFontSize: {
-	type: "number",
-	default: 14,
+    type: "number",
+    default: 14,
   },
   labelFontSizeMobile: {
-	type: "number",
-	default: 12,
+    type: "number",
   },
   labelFontSizeTablet: {
-	type: "number",
-	default: 14,
+    type: "number",
   },
   labelColor: {
-	type: "string",
-	default: "#fff",
+    type: "string",
+    default: "#fff",
   },
   labelLineHeight: {
-	type: "number",
-	default: 2,
+    type: "number",
+    default: 2,
   },
   labelFontWeight: {
-	type: "string",
-	default: "500",
+    type: "string",
+    default: "500",
   },
   labelLeftPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   labelLetterSpacing: {
-	type: "number",
-	default: 1,
+    type: "number",
+    default: 1,
   },
   boxItemMarginTop: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginRight: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginBottom: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginLeft: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginTopTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginRightTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginBottomTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginLeftTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginTopMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginRightMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginBottomMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemMarginLeftMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxItemTextAlign: {
-	type: "string",
-	default: "center",
+    type: "string",
+    default: "center",
   },
   boxHeight: {
-	type: "number",
+    type: "number",
   },
   boxWidth: {
-	type: "number",
-	default: 140,
+    type: "number",
+    default: 140,
   },
   boxMargin: {
-	type: "number",
-	default: 10,
+    type: "number",
+    default: 10,
   },
   boxHeightMobile: {
-	type: "number",
+    type: "number",
   },
   boxWidthMobile: {
-	type: "number",
-	default: 80,
+    type: "number",
+    default: 80,
   },
   boxMarginMobile: {
-	type: "number",
-	default: 8,
+    type: "number",
   },
   boxHeightTablet: {
-	type: "number",
+    type: "number",
   },
   boxWidthTablet: {
-	type: "number",
-	default: 140,
+    type: "number",
+    default: 140,
   },
   boxMarginTablet: {
-	type: "number",
-	default: 10,
+    type: "number",
   },
   boxTopPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxRightPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxBottomPadding: {
-	type: "number",
-	default: 10,
+    type: "number",
+    default: 10,
   },
   boxLeftPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxTopPaddingMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: '',
   },
   boxRightPaddingMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: '',
   },
   boxBottomPaddingMobile: {
-	type: "number",
-	default: 10,
+    type: "number",
+    default: '',
   },
   boxLeftPaddingMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: '',
   },
   boxTopPaddingTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: '',
   },
   boxRightPaddingTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: '',
   },
   boxBottomPaddingTablet: {
-	type: "number",
-	default: 10,
+    type: "number",
+    default: '',
   },
   boxLeftPaddingTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: '',
   },
   showBoxBorder: {
-	type: "boolean",
-	default: true,
+    type: "boolean",
+    default: true,
   },
   boxBorderColor: {
-	type: "string",
-	default: "000",
+    type: "string",
+    default: "000",
   },
   boxBorderSize: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxBorderStyle: {
-	type: "string",
-	default: "solid",
+    type: "string",
+    default: "solid",
   },
   borderRadiusTopLeft: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   borderRadiusTopRight: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   borderRadiusBottomRight: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   borderRadiusBottomLeft: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   showBoxShadow: {
-	type: "boolean",
-	default: true,
+    type: "boolean",
+    default: true,
   },
   boxShadowHOffset: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxShadowVOffset: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxShadowBlur: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxShadowPosition: {
-	type: 'string',
-	default: 'outset',
+    type: "string",
+    default: "outset",
   },
   boxShadowSpread: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   boxShadowColor: {
-	type: "string",
-	default: "#000",
+    type: "string",
+    default: "#000",
   },
   backgroundColor: {
-	type: "string",
-	default: "#6EC1E4",
+    type: "string",
+    default: "#6EC1E4",
   },
   containerTopMargin: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerRightMargin: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerBottomMargin: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerLeftMargin: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerTopPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerRightPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerBottomPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerLeftPadding: {
-	type: "number",
-	default: 0,
+    type: "number",
+    default: 0,
   },
   containerTopMarginTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerRightMarginTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerBottomMarginTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerLeftMarginTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerTopPaddingTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerRightPaddingTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerBottomPaddingTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerLeftPaddingTablet: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerTopMarginMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerRightMarginMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerBottomMarginMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerLeftMarginMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerTopPaddingMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerRightPaddingMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerBottomPaddingMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   containerLeftPaddingMobile: {
-	type: "number",
-	default: 0,
+    type: "number",
   },
   justifyItems: {
-	type: "string",
-	default: "center",
+    type: "string",
+    default: "center",
   },
   displayInline: {
-	type: "boolean",
-	default: false,
+    type: "boolean",
+    default: false,
   },
   block_id: {
-	type: "string",
+    type: "string",
   },
   stackOnMobile: {
-	type: "boolean",
-	default: false,
+    type: "boolean",
+    default: false,
   },
   boxPaddingTop: {
-	type: "number",
-	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingBottom: {
     type: "number",
     default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingLeft: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingRight: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingTopMobile: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingBottomMobile: {
     type: "number",
     default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingLeftMobile: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingRightMobile: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingTopTablet: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingBottomTablet: {
     type: "number",
     default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingLeftTablet: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxPaddingRightTablet: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxBackgroundColor: {
-  	type: "string",
-  	default: "empty"
+    type: "string",
+    default: "empty",
   }, // For compatibility with v1.3.2.
   containerMarginTop: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginBottom: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginLeft: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginRight: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginTopMobile: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginBottomMobile: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginLeftMobile: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginRightMobile: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginTopTablet: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginBottomTablet: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginLeftTablet: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerMarginRightTablet: {
-  	type: "number",
-  	default: 999
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingTop: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingBottom: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingLeft: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingRight: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingTopMobile: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingBottomMobile: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingLeftMobile: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingRightMobile: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingTopTablet: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingBottomTablet: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingLeftTablet: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   containerPaddingRightTablet: {
-  	type: "number",
-  	default: 999,
+    type: "number",
+    default: 999,
   }, // For compatibility with v1.3.2.
   boxBackgroundColor: {
-	type: "string",
-	default: "empty",
+    type: "string",
+    default: "empty",
   }, // For compatibility with v1.3.2.
-}
+};
 
-export default attributes
+export default attributes;

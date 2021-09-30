@@ -170,10 +170,10 @@ function EditorStyles(props) {
       height: generateCSSUnit(boxHeight, "px"),
       width: generateCSSUnit(boxWidth, "px"),
       "margin-left": generateCSSUnit(boxMargin, "px"),
-      "padding-top": boxTopPadding === 0 && boxPaddingTop !== 999 ? generateCSS(boxPaddingTop, "px") : generateCSSUnit(boxTopPadding, "px"), // For compatibility with v1.3.2.
-      "padding-bottom": boxBottomPadding === 10 && boxPaddingBottom !== 999 ? generateCSS(boxPaddingBottom, "px") : generateCSSUnit(boxBottomPadding, "px"), // For compatibility with v1.3.2.
-      "padding-left": boxLeftPadding === 0 && boxPaddingLeft !== 999 ? generateCSS(boxPaddingLeft, "px") : generateCSSUnit(boxLeftPadding, "px"), // For compatibility with v1.3.2.
-      "padding-right": boxRightPadding === 0 && boxPaddingRight !== 999 ? generateCSS(boxPaddingRight, "px") : generateCSSUnit(boxRightPadding, "px"), // For compatibility with v1.3.2.
+      "padding-top": boxTopPadding === 0 && boxPaddingTop !== 999 ? generateCSSUnit(boxPaddingTop, "px") : generateCSSUnit(boxTopPadding, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": boxBottomPadding === 10 && boxPaddingBottom !== 999 ? generateCSSUnit(boxPaddingBottom, "px") : generateCSSUnit(boxBottomPadding, "px"), // For compatibility with v1.3.2.
+      "padding-left": boxLeftPadding === 0 && boxPaddingLeft !== 999 ? generateCSSUnit(boxPaddingLeft, "px") : generateCSSUnit(boxLeftPadding, "px"), // For compatibility with v1.3.2.
+      "padding-right": boxRightPadding === 0 && boxPaddingRight !== 999 ? generateCSSUnit(boxPaddingRight, "px") : generateCSSUnit(boxRightPadding, "px"), // For compatibility with v1.3.2.
       border: `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor}`,
       "border-radius": `${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
       "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, // For compatibility with v1.3.2.
@@ -251,10 +251,10 @@ function EditorStyles(props) {
       "margin-left":
         stackOnMobile === true ? "0px" : generateCSSUnit(boxMarginMobile, "px"),
       "margin-bottom": stackOnMobile && generateCSSUnit(boxMarginMobile, "px"),
-      "padding-top": boxTopPaddingMobile === 0 && boxPaddingTopMobile !== 999 ? generateCSS(boxPaddingTopMobile, "px") : generateCSSUnit(boxTopPaddingMobile, "px"), // For compatibility with v1.3.2.
-      "padding-bottom": boxBottomPaddingMobile === 10 && boxPaddingBottomMobile !== 999 ? generateCSS(boxPaddingBottomMobile, "px") : generateCSSUnit(boxBottomPaddingMobile, "px"), // For compatibility with v1.3.2.
-      "padding-left": boxLeftPaddingMobile === 0 && boxPaddingLeftMobile !== 999 ? generateCSS(boxPaddingLeftMobile, "px") : generateCSSUnit(boxLeftPaddingMobile, "px"), // For compatibility with v1.3.2.
-      "padding-right": boxRightPaddingMobile === 0 && boxPaddingRightMobile !== 999 ? generateCSS(boxPaddingRightMobile, "px") : generateCSSUnit(boxRightPaddingMobile, "px"), // For compatibility with v1.3.2.
+      "padding-top": boxTopPaddingMobile === 0 && boxPaddingTopMobile !== 999 ? generateCSSUnit(boxPaddingTopMobile, "px") : generateCSSUnit(boxTopPaddingMobile, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": boxBottomPaddingMobile === 10 && boxPaddingBottomMobile !== 999 ? generateCSSUnit(boxPaddingBottomMobile, "px") : generateCSSUnit(boxBottomPaddingMobile, "px"), // For compatibility with v1.3.2.
+      "padding-left": boxLeftPaddingMobile === 0 && boxPaddingLeftMobile !== 999 ? generateCSSUnit(boxPaddingLeftMobile, "px") : generateCSSUnit(boxLeftPaddingMobile, "px"), // For compatibility with v1.3.2.
+      "padding-right": boxRightPaddingMobile === 0 && boxPaddingRightMobile !== 999 ? generateCSSUnit(boxPaddingRightMobile, "px") : generateCSSUnit(boxRightPaddingMobile, "px"), // For compatibility with v1.3.2.
       border: `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor};
       "border-radius": ${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
       "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, //For compatibility with v1.3.2.
@@ -315,10 +315,10 @@ function EditorStyles(props) {
       height: generateCSSUnit(boxHeightTablet, "px"),
       width: generateCSSUnit(boxWidthTablet, "px"),
       "margin-left": generateCSSUnit(boxMarginTablet, "px"),
-      "padding-top": boxTopPaddingTablet === 0 && boxPaddingTopTablet !== 999 ? generateCSS(boxPaddingTopTablet, "px") : generateCSSUnit(boxTopPaddingTablet, "px"), // For compatibility with v1.3.2.
-      "padding-bottom": boxBottomPaddingTablet === 10 && boxPaddingBottomTablet !== 999 ? generateCSS(boxPaddingBottomTablet, "px") : generateCSSUnit(boxBottomPaddingTablet, "px"), // For compatibility with v1.3.2.
-      "padding-left": boxLeftPaddingTablet === 0 && boxPaddingLeftTablet !== 999 ? generateCSS(boxPaddingLeftTablet, "px") : generateCSSUnit(boxLeftPaddingTablet, "px"), // For compatibility with v1.3.2.
-      "padding-right": boxRightPaddingTablet === 0 && boxPaddingRightTablet !== 999 ? generateCSS(boxPaddingRightTablet, "px") : generateCSSUnit(boxRightPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-top": boxTopPaddingTablet === 0 && boxPaddingTopTablet !== 999 ? generateCSSUnit(boxPaddingTopTablet, "px") : generateCSSUnit(boxTopPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-bottom": boxBottomPaddingTablet === 10 && boxPaddingBottomTablet !== 999 ? generateCSSUnit(boxPaddingBottomTablet, "px") : generateCSSUnit(boxBottomPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-left": boxLeftPaddingTablet === 0 && boxPaddingLeftTablet !== 999 ? generateCSSUnit(boxPaddingLeftTablet, "px") : generateCSSUnit(boxLeftPaddingTablet, "px"), // For compatibility with v1.3.2.
+      "padding-right": boxRightPaddingTablet === 0 && boxPaddingRightTablet !== 999 ? generateCSSUnit(boxPaddingRightTablet, "px") : generateCSSUnit(boxRightPaddingTablet, "px"), // For compatibility with v1.3.2.
       border: `${boxBorderSize}px ${boxBorderStyle} ${boxBorderColor};
       "border-radius": ${borderRadiusTopLeft}px ${borderRadiusTopRight}px ${borderRadiusBottomRight}px ${borderRadiusBottomLeft}px`,
       "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, //For compatibility with v1.3.2.
