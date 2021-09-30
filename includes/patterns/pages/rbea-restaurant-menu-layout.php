@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_restaurant_menu_layout',
 	'collection' => array(
-		'slug'      => 'restaurant-menu',
-		'label'     => __( 'Restaurant Menu', 'responsive-block-editor-addons' ),
+		'slug'      => 'restaurant',
+		'label'     => __( 'Restaurant', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"9d3cbc39-6c27-48ff-bed5-005fa8955f07","topPadding":0,"topPaddingMobile":50,"bottomPadding":0,"bottomPaddingMobile":50,"leftPadding":0,"leftPaddingMobile":0,"rightPadding":0,"rightPaddingMobile":0,"opacity":100,"backgroundColor":"#fff0dc","backgroundType":"color","align":"full"} -->

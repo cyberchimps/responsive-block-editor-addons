@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_food_blog_recipes_layout',
 	'collection' => array(
-		'slug'      => 'food-blog-recipes',
-		'label'     => __( 'Recipes Food Blog', 'responsive-block-editor-addons' ),
+		'slug'      => 'food',
+		'label'     => __( 'Food', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"40f4f48d-f89e-4cc4-b8f5-52212fece605","topPadding":100,"topPaddingMobile":50,"topPaddingTablet":60,"bottomPadding":50,"bottomPaddingMobile":0,"bottomPaddingTablet":0,"leftPadding":0,"rightPadding":0,"opacity":100,"backgroundColor":"#f7f7f7","backgroundType":"color","align":"full"} -->

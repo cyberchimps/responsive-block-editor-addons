@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_photography_studio_about_layout',
 	'collection' => array(
-		'slug'      => 'photography-studio-about',
-		'label'     => __( 'About Photography Studio', 'responsive-block-editor-addons' ),
+		'slug'      => 'photography',
+		'label'     => __( 'Photography', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"90978a9e-86ac-4b0f-a979-d514516811cb","topPadding":0,"topPaddingMobile":0,"topPaddingTablet":0,"bottomPadding":60,"bottomPaddingMobile":60,"bottomPaddingTablet":60,"opacity":0,"backgroundImage":"https://ccreadysites.cyberchimps.com/gphotography-studio/wp-content/uploads/sites/118/2020/12/about-bg-photostudio.jpg","backgroundPosition":"top center","backgroundType":"image","align":"full"} -->
