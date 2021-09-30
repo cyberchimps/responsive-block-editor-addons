@@ -10,7 +10,6 @@ import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 
 // Import CSS
 import "./styles/style.scss";
-import "./styles/styles.editor.scss";
 
 // Internationalization
 const { __ } = wp.i18n;
