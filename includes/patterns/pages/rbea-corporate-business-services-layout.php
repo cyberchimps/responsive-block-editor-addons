@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_corporate_business_services_layout',
 	'collection' => array(
-		'slug'      => 'corporate-business-services',
-		'label'     => __( 'Services Corporate Business', 'responsive-block-editor-addons' ),
+		'slug'      => 'corporate-business',
+		'label'     => __( 'Corporate Business', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"02f3de22-1d4d-4745-8383-46909f0e9bb4","topPadding":110,"topPaddingMobile":110,"topPaddingTablet":110,"bottomPadding":110,"bottomPaddingMobile":110,"bottomPaddingTablet":110,"opacity":77,"backgroundImage":"https://ccreadysites.cyberchimps.com/gcorporate-business/wp-content/uploads/sites/115/2020/12/corporate-bg13.jpg","backgroundPosition":"center center","backgroundImageColor":"#313030","backgroundType":"image","align":"full"} -->

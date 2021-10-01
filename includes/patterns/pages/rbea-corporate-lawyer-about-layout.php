@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_corporate_lawyer_about_layout',
 	'collection' => array(
-		'slug'      => 'corporate-lawyer-about',
-		'label'     => __( 'About Corporate Lawyer', 'responsive-block-editor-addons' ),
+		'slug'      => 'corporate-lawyer',
+		'label'     => __( 'Corporate Lawyer', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"5dd3a74a-f348-4a6c-9969-ed1bac74c585","topPadding":90,"topPaddingMobile":90,"topPaddingTablet":90,"bottomPadding":90,"bottomPaddingMobile":90,"bottomPaddingTablet":90,"leftPadding":0,"leftPaddingMobile":0,"leftPaddingTablet":0,"rightPadding":0,"rightPaddingMobile":0,"rightPaddingTablet":0,"align":"full"} -->

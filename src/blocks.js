@@ -46,6 +46,7 @@ import "./blocks/taxonomy-list/index.js";
 import "./blocks/wp-search/index.js";
 import "./blocks/inline-notice/index.js";
 import "./blocks/rbea-templates/index.js";
+import "./blocks/instagram/index.js";
 
 // Extensions
 import "./extensions/cover-styles";

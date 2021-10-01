@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_corporate_business_about_layout',
 	'collection' => array(
-		'slug'      => 'corporate-business-about',
-		'label'     => __( 'About Corporate Business', 'responsive-block-editor-addons' ),
+		'slug'      => 'corporate-business',
+		'label'     => __( 'Corporate Business', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"c5f17e04-63d0-4739-84c7-5086322948e6","topPadding":110,"topPaddingMobile":110,"topPaddingTablet":110,"bottomPadding":110,"bottomPaddingMobile":110,"bottomPaddingTablet":110,"opacity":77,"backgroundImage":"https://ccreadysites.cyberchimps.com/gcorporate-business/wp-content/uploads/sites/115/2020/12/corporate-back.jpg","backgroundPosition":"center center","backgroundImageColor":"#313030","backgroundType":"image","align":"full"} -->
