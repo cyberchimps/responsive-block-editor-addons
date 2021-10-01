@@ -40,6 +40,9 @@ class CommonFunctionsPage
     public $paddingStyleBtn = '//*[text() = "Padding"]';
     public $spacingStyleBtn = '//button[text()="Spacing"]';
     public $borderStyleBtn = '//button[text()="Border"]';
+    public $generalStyleBtn = '//button[text()="General"]';
+    public $separatorStyleBtn = '//button[text()="Separator"]';
+    public $colorSettingsStyleBtn = '//button[text()="Color Settings"]';
    
 
     /**
