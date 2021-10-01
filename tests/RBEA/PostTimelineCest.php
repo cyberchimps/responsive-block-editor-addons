@@ -10,7 +10,6 @@ class PostTimelineCest
     public $postTimelineBlock = 'div[data-title="Post Timeline"]';
     public $fPostTimelineBlock = 'section.wp-block-responsive-block-editor-addons-post-timeline';
     public $queryBtn = '//button[text()="Query"]';
- 
 
     /**
      * Post Timeline Settings
@@ -110,6 +109,42 @@ class PostTimelineCest
      */
     public $contentPaddingInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Content Padding"]';
     public $fContentContainer = '(//div[@class="responsive-block-editor-addons-content"])[1]';
+
+    /**
+     * Spacing Settings 
+     */
+    public $blockBottomInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Block Bottom"]';
+    public $headingBottomInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Heading Bottom"]';
+    public $authorBottomInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Author Bottom"]';
+    public $excerptBottomInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Excerpt Bottom"]';
+    public $verticalSpaceInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Vertical Space"]';
+    public $horizontalSpaceInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Horizontal Space"]';
+    public $fSingleBlock = '(//div[@class="responsive-block-editor-addons-timeline__events-new"])[1]';
+    public $fAdminContainer = '(//div[@class="responsive-block-editor-addons-block-post-timeline-byline"])[1]';
+    public $fBlockSection = '(//section[contains(@class, "responsive-block-editor-addons-block-post-timeline")])[2]';   
+      
+    public $desktopView2 = '(//button[contains(@id, "desktop")])[2]';
+    public $tabletView2 = '(//button[contains(@id, "tablet")])[2]';
+    public $mobileView2 = '(//button[contains(@id, "mobile")])[2]';
+    public $desktopView3 = '(//button[contains(@id, "desktop")])[3]';
+    public $tabletView3 = '(//button[contains(@id, "tablet")])[3]';
+    public $mobileView3 = '(//button[contains(@id, "mobile")])[3]';
+
+    /**
+     * Box shadow settings
+     */
+    public $btnBoxShadow = '//button[text()="Button Box Shadow"]';
+    public $boxShadowOptionsBtn = '(//div[@class="res-typography-option-actions"]//button)[1]';
+    public $boxShadowResetBtn = '(//div[@class="res-typography-option-actions"]//button)[2]';
+    public $boxShadowColor = '(//div[@class="components-circular-option-picker__swatches"])[1]//div[5]';
+    public $boxShadowLeft = '(//*[contains(@id, "inspector-input-control")])[1]';
+    public $boxShadowTop = '(//*[contains(@id, "inspector-input-control")])[2]';
+    public $boxShadowBlur = '(//*[contains(@id, "inspector-input-control")])[3]';
+    public $boxShadowSpread = '(//*[contains(@id, "inspector-input-control")])[4]';
+    public $boxShadowPosition = '(//*[contains(@id, "inspector-select-control")])[1]';
+    public $boxShadowPositionSelected = 'option[value="inset"]';    
+    public $fBtnParent = '(//div[@class="responsive-block-editor-addons-timeline__link_parent"])[1]';
+
     /**
      * This function runs before running each test.
      */
@@ -280,6 +315,10 @@ class PostTimelineCest
         $I->click($this->displayFeaturedImageBtn);
         $I->wait(1);
         $I->selectOption('Image Size', 'Medium');
+        $postTimelineMarkupBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->postTimelineMarkupBtn))->getLocationOnScreenOnceScrolledIntoView();
+        }); 
+        $I->wait(1);
         $I->click($this->displayDate);
         $I->click($this->displayContinueReadingLink);
         $I->click($this->continueReadingInput);
@@ -619,5 +658,171 @@ class PostTimelineCest
         $I->resizeWindow(1280, 950);        
         $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '26px');
         $I->wait(1);
+    }
+
+    /**
+     * Tests the spacing settings.
+     */
+    public function PostTimelineSpacingSettingTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the block bottom spacing settings of the post timeline block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->wait(1);
+        $views = array($commonFunctionsPageObj->desktopView, $commonFunctionsPageObj->tabletView, $commonFunctionsPageObj->mobileView);
+        $inputValues = array('25px', '22px', '20px');
+        $this->_spacingTest($I, $commonFunctionsPageObj, $views, $this->fSingleBlock, $this->blockBottomInput, $inputValues);
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+
+        $I->amGoingTo('Change the Heading bottom spacing settings of the post timeline block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->wait(1);
+        $views = array($this->desktopView2, $this->tabletView2, $this->mobileView2);
+        $inputValues = array('40px', '30px', '25px');
+        $this->_spacingTest($I, $commonFunctionsPageObj, $views, $this->fContentTitle, $this->headingBottomInput, $inputValues);
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+
+        $I->amGoingTo('Change the Author bottom spacing settings of the post timeline block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->wait(1);
+        $views = array($this->desktopView3, $this->tabletView3, $this->mobileView3);
+        $inputValues = array('33px', '12px', '6px');
+        $I->wait(1);
+        $btnBoxShadow = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->btnBoxShadow))->getLocationOnScreenOnceScrolledIntoView();
+        }); 
+        $I->wait(1);
+        $this->_spacingTest($I, $commonFunctionsPageObj, $views, $this->fAdminContainer, $this->authorBottomInput, $inputValues);
+        $I->resizeWindow(1280, 950);
+        $I->wait(1); 
+
+        $I->amGoingTo('Change the Excerpt bottom spacing, vertical and horizontal spacing');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->wait(1);
+        $I->wait(1);
+        $btnBoxShadow = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->btnBoxShadow))->getLocationOnScreenOnceScrolledIntoView();
+        }); 
+        $I->wait(1);
+        $I->click($this->excerptBottomInput);
+        $commonFunctionsPageObj->field = $this->excerptBottomInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '50' );
+        $I->wait(1);
+        $I->click($this->verticalSpaceInput);
+        $commonFunctionsPageObj->field = $this->verticalSpaceInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '10' );
+        $I->wait(1);
+        $I->click($this->horizontalSpaceInput);
+        $commonFunctionsPageObj->field = $this->horizontalSpaceInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '20' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the excerpt, vertical and horizontal spacings in the frontend.');
+        $commonFunctionsPageObj->field = $this->fContent;
+        $commonFunctionsPageObj->prop = 'margin-bottom';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '50px');
+        $I->wait(1);
+    }
+
+    /**
+     * This is a single spacing test.
+     */
+    public function _spacingTest($I, $commonFunctionsPageObj, $views, $selector, $input, $inputValues)
+    {
+        $I->click($views[0]);
+        $I->click($input);
+        $commonFunctionsPageObj->field = $input;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $inputValues[0] );
+        $I->click($views[1]);
+        $I->click($input);
+        $commonFunctionsPageObj->field = $input;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $inputValues[1] );
+        $I->click($views[2]);
+        $I->click($input);
+        $commonFunctionsPageObj->field = $input;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $inputValues[2] );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the spacing settings of the post timeline block.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'margin-bottom';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $inputValues[0]);
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $inputValues[1]);
+        $I->wait(1);
+        $I->resizeWindow(375, 812);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $inputValues[2]);
+        $I->wait(1);
+    }
+
+    /**
+     * Test the box shadow settings.
+     */
+    public function PostTimelineBoxShadowSettingTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the box shadow settings of the post timeline block.');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->btnBoxShadow);
+        $I->click($this->boxShadowOptionsBtn);
+        $I->wait(1);
+        $I->click($this->boxShadowColor);
+        $I->wait(1);
+        
+        $I->click($this->boxShadowLeft);
+        $commonFunctionsPageObj->field = $this->boxShadowLeft;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->wait(1); 
+
+        $I->click($this->boxShadowTop);
+        $commonFunctionsPageObj->field = $this->boxShadowTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click($this->boxShadowBlur);
+        $commonFunctionsPageObj->field = $this->boxShadowBlur;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '30' );
+        $I->wait(1); ; 
+
+        $boxShadowSpread = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->boxShadowSpread))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(3);
+        $I->click($this->boxShadowSpread);
+        $commonFunctionsPageObj->field = $this->boxShadowSpread;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1);  
+        $boxShadowPosition = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->boxShadowPosition))->
+            findElement( WebDriverBy::cssSelector($this->boxShadowPositionSelected) )->click();
+        });
+        $I->wait(2);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check box shadow style in frontend');
+        $I->wait(1);
+        $boxShadowSpread = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fBtnParent))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(2);
+        $commonFunctionsPageObj->field = $this->fBtnParent;
+        $commonFunctionsPageObj->prop = 'box-shadow';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51) 3px 5px 30px 5px inset');
+
+        $I->amGoingTo('Reset box shadow style');
+        $this->_openStyle($I, $commonFunctionsPageObj);
+        $I->click($this->btnBoxShadow);
+        $I->scrollTo($this->boxShadowResetBtn, 20);
+        $I->click($this->boxShadowResetBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        $I->wait(1);
+        $boxShadowSpread = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->fBtnParent))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(2);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51) 0px 0px 0px 0px');
     }
 }

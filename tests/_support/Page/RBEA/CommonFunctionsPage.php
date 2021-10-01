@@ -21,7 +21,7 @@ class CommonFunctionsPage
     public $blockInSearch = 'div[class="block-editor-block-types-list__list-item"] > button';
     public $addBlockBtn = 'button[aria-label="Add block"]';
     public $closeDialogBtn = 'button[aria-label="Close dialog"]';
-    public $editBlockBtn = '#wp-admin-bar-edit > a';
+    public $editBlockBtn = '//*[text()="Edit Page"]';
     public $publishBtn = '.editor-post-publish-button';
     public $viewPage = '.components-snackbar__content > a';
 
