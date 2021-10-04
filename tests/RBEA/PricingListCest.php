@@ -63,7 +63,20 @@ class PricingListCest
     public $desktopView4 = '(//button[contains(@id, "desktop")])[4]';
     public $tabletView4 = '(//button[contains(@id, "tablet")])[4]';
     public $mobileView4 = '(//button[contains(@id, "mobile")])[4]';
+    public $topPaddingReset = '(//button[text()="Reset"])[4]';
+    public $bottomPaddingReset = '(//button[text()="Reset"])[5]';
+    public $leftPaddingReset = '(//button[text()="Reset"])[6]';
+    public $rightPaddingReset = '(//button[text()="Reset"])[7]';
     public $fColumnGap = '(//div[contains(@class, "responsive-block-editior-addons-pricing-list-item-wrap resp-desktop-column-2")])[1]';
+    public $listItemContent = '(//div[@class="responsive-block-editior-addons-pricing-list-item-content"])[1]';
+
+    /**
+     * Typography settings
+     */
+    public $fontSizeInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Font Size"]';
+    public $lineHeightInputField = '//*[contains(@id, "inspector-input-control") and @aria-label="Line Height"]';
+    public $resetLineHeightBtn = '//*[text() = "Reset"]';
+    public $fPriceWrap = '(//div[@class="responsive-block-editior-addons-pricing-list-item-price-wrap"])[1]';
 
     /**
      * This function runs before running each test.
@@ -232,7 +245,6 @@ class PricingListCest
         $I->click('Style');
         $I->click($commonFunctionsPageObj->spacingStyleBtn);
         $I->wait(1);
-        $I->wait(1);
         $views = array($commonFunctionsPageObj->desktopView, $commonFunctionsPageObj->tabletView, $commonFunctionsPageObj->mobileView);
         $inputValues = array('25px', '22px', '20px');
         $this->_spacingTest($I, $commonFunctionsPageObj, $views, $this->fItemWrap, $this->rowGapInput, $inputValues);
@@ -285,7 +297,65 @@ class PricingListCest
         $views = array($this->desktopView3, $this->tabletView3, $this->mobileView3);
         $inputValues = array('16px', '12px', '13px');
         $this->_spacingTest($I, $commonFunctionsPageObj, $views, $this->fItemTitle, $this->titleBottomMargin, $inputValues);
-    }
+
+        $I->amGoingTo('Change the padding settings of the pricing list block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->pricingListBlock);
+        $I->wait(1);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->wait(1);
+        $I->click($this->desktopView4);
+        $arr = array('50px', '30px', '13px', '28px');
+        $this->_setPadding($I, $commonFunctionsPageObj, $arr);
+        $I->wait(1);
+        $I->click($this->tabletView4);
+        $arr = array('20px', '10px', '11px', '10px');
+        $this->_setPadding($I, $commonFunctionsPageObj, $arr);
+        $I->wait(1);
+        $I->click($this->mobileView4);
+        $arr = array('5px', '8px', '10px', '9px');
+        $this->_setPadding($I, $commonFunctionsPageObj, $arr);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the padding settings in the frontend.');
+        $commonFunctionsPageObj->field = $this->listItemContent;
+        $commonFunctionsPageObj->prop = 'padding';
+        $I->resizeWindow(375, 812);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '5px 9px 8px 10px');
+        $I->wait(1);
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '20px 10px 10px 11px');
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '50px 28px 30px 13px');
+        $I->wait(1);
+
+        $I->amGoingTo('Reset the padding for desktop view');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->pricingListBlock);
+        $I->wait(1);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->wait(1); 
+        $rightPaddingResetBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->rightPaddingReset))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->click($this->topPaddingReset);
+        $I->click($this->bottomPaddingReset);
+        $I->click($this->leftPaddingReset);
+        $I->click($this->rightPaddingReset);
+        $I->wait(1);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the padding settings in the frontend after reset.');
+        $commonFunctionsPageObj->field = $this->listItemContent;
+        $commonFunctionsPageObj->prop = 'padding';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '10px 0px 0px');
+    } 
 
     /**
      * This is a single spacing test.
@@ -318,5 +388,165 @@ class PricingListCest
         $I->wait(1);
         $I->resizeWindow(1280, 950);
         $I->wait(1);
+    }
+
+    /**
+     * This function sets the padding
+     */
+    public function _setPadding($I, $commonFunctionsPageObj, $arr)
+    {
+        $I->click($this->topPadding);
+        $commonFunctionsPageObj->field = $this->topPadding;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $arr[0] );
+        $I->click($this->bottomPadding);
+        $commonFunctionsPageObj->field = $this->bottomPadding;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $arr[1] );
+        $I->click($this->leftPadding);
+        $commonFunctionsPageObj->field = $this->leftPadding;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $arr[2] );
+        $I->click($this->rightPadding);
+        $commonFunctionsPageObj->field = $this->rightPadding;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $arr[3] );
+    }
+
+    /**
+     * Tests the typography settings
+     */
+    public function PricingListTypographyTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the title typoraphy settings of the pricing list block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->pricingListBlock);
+        $I->wait(1);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->titleTypography);
+        $arr = array('25px', '25px', '25px', '50px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $commonFunctionsPageObj->titleTypography, $this->fItemTitle, $arr);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '31.25px');
+
+        $I->amGoingTo('Change the description typography of the pricing list block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->pricingListBlock);
+        $I->wait(1);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->descriptionTypography);
+        $arr = array('15px', '15px', '15px', '30px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $commonFunctionsPageObj->descriptionTypography, $this->fItemDescription, $arr);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '26.25px');
+
+        $I->amGoingTo('Change the price typography of the pricing list block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->pricingListBlock);
+        $I->wait(1);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->typographyStyleBtn);
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->priceTypography);
+        $arr = array('10px', '10px', '10px', '20px');
+        $this->_typographyTest($I, $commonFunctionsPageObj, $commonFunctionsPageObj->priceTypography, $this->fPriceWrap, $arr);        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '17.5px');
+    }
+    
+    /**
+     * This function performs the typography test.
+     */
+    public function _typographyTest($I, $commonFunctionsPageObj, $typography, $selector, $arr)
+    {
+        $I->wait(1);    
+        $I->amGoingTo('Change the typography of the pricing list block for desktop view.');
+        $I->resizeWindow(1280, 950);
+        $I->selectOption('Font Family', 'Actor');
+        $I->wait(1);
+        $I->click($commonFunctionsPageObj->desktopView);
+        $I->wait(1);
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', $arr[0] );
+        $I->wait(1);
+        $I->selectOption('Font Weight', '600');
+        $I->wait(1);
+        $resetLineHeightBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->resetLineHeightBtn))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->click($this->lineHeightInputField);
+        $commonFunctionsPageObj->field = $this->lineHeightInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '2' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the frontend for the typography settings in the desktop view.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'font-family';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'Actor');  
+        $commonFunctionsPageObj->prop = 'font-weight';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '600'); 
+        $commonFunctionsPageObj->prop = 'line-height';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[3]);
+        $commonFunctionsPageObj->prop = 'font-size';
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[0]);
+        $I->resizeWindow(375, 812);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[1]);
+        $I->wait(1);
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, $arr[2]);
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+        $I->wait(1);
+
+        $I->amGoingTo('Change the typography style of the block for mobile and desktop view.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->pricingListBlock);
+        $I->wait(1);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->typographyStyleBtn);
+        $I->click($typography);
+        $I->click($commonFunctionsPageObj->tabletView);        
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '14px' );
+        $I->click($commonFunctionsPageObj->mobileView);        
+        $I->click($this->fontSizeInputField);
+        $commonFunctionsPageObj->field = $this->fontSizeInputField;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '8px' );
+        $commonFunctionsPageObj->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check the frontend for the typography settings in the tablet and mobile view.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'font-size';
+        $I->resizeWindow(965, 1024);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '14px');
+        $I->wait(1);
+        $I->resizeWindow(375, 812);
+        $I->wait(2);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '8px');
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
+
+        $I->amGoingTo('Reset the line height');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(1);
+        $I->click($this->pricingListBlock);
+        $I->wait(1);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->typographyStyleBtn);
+        $I->click($typography);  
+        $resetLineHeightBtn = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->resetLineHeightBtn))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(1);
+        $I->click($this->resetLineHeightBtn);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the line height in the frontend.');
+        $commonFunctionsPageObj->field = $selector;
+        $commonFunctionsPageObj->prop = 'line-height';
     }
 }

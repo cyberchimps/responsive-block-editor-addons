@@ -37,6 +37,7 @@ class CommonFunctionsPage
     public $typographyStyleBtn = '//button[text()="Typography"]';
     public $titleTypography = '//*[text() = "Title Typography"]';
     public $descriptionTypography = '//*[text() = "Description Typography"]';
+    public $priceTypography = '//*[text() = "Price Typography"]';
     public $paddingStyleBtn = '//*[text() = "Padding"]';
     public $spacingStyleBtn = '//button[text()="Spacing"]';
     public $borderStyleBtn = '//button[text()="Border"]';
