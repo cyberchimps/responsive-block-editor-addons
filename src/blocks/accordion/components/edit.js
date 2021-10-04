@@ -561,7 +561,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           className="responsive_block_editor_addons__url-panel-body"
         >
 			<TypographyHelperControl
-				title={__("Title", "responsive-block-editor-addons")} 
+				title={__("Title", "responsive-block-editor-addons")}
 				attrNameTemplate="title%s"
 				values = {{family: titleFontFamily, size: titleFontSize, sizeMobile: titleFontSizeMobile, sizeTablet: titleFontSizeTablet, weight: titleFontWeight, height: titleLineHeight}}
 				showLetterSpacing = { false }
@@ -570,14 +570,14 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 				{...this.props}
         	/>
         	<TypographyHelperControl
-				title={__("Content", "responsive-block-editor-addons")} 
+				title={__("Content", "responsive-block-editor-addons")}
 				attrNameTemplate="content%s"
 				values = {{family: contentFontFamily, size: contentFontSize, sizeMobile: contentFontSizeMobile, sizeTablet: contentFontSizeTablet, weight: contentFontWeight, height: contentLineHeight}}
 				showLetterSpacing = { false }
 				showTextTransform = { false }
 				setAttributes={ setAttributes }
 				{...this.props}
-        	/>	
+        	/>
         </PanelBody>
       );
     };
@@ -894,6 +894,8 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             `responsive-block-editor-addons-accordion-inactive-other-${this.props.attributes.inactiveOtherItems}`,
             equalHeightClass
           )}
+      data-accordiontoggle = { true }
+      role="tablist"
         >
           <InnerBlocks
             template={getAccordionItemTemplate(2, accordion)}

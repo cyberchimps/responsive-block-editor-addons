@@ -74,22 +74,11 @@ function setupAccordion() {
 
   if (pattern.test(hashval)) {
     var elementToOpen = document.getElementById(hashval);
-    elementToOpen
-      .getElementsByClassName(
-        "responsive-block-editor-addons-accordion-item"
-      )[0]
-      .classList.add("responsive-block-editor-addons-accordion-item-active");
-    elementToOpen
-      .getElementsByClassName(
-        "responsive-block-editor-addons-accordion-item"
-      )[0]
-      .setAttribute("aria-expanded", true);
-    slideDown(
-      elementToOpen.getElementsByClassName(
-        "responsive-block-editor-addons-accordion-content"
-      )[0],
-      500
-    );
+      if( elementToOpen.getElementsByClassName( 'responsive-block-editor-addons-accordion-item' )[0] !== undefined ){
+          elementToOpen.getElementsByClassName( 'responsive-block-editor-addons-accordion-item' )[0].classList.add( 'responsive-block-editor-addons-accordion-item-active' );
+          elementToOpen.getElementsByClassName( 'responsive-block-editor-addons-accordion-item' )[0].setAttribute( 'aria-expanded', true );
+          slideDown( elementToOpen.getElementsByClassName( 'responsive-block-editor-addons-accordion-content' )[0], 500 );
+      }
   } else {
     for (var item = 0; item < expandFirstelements.length; item++) {
       if (
@@ -188,65 +177,75 @@ window.addEventListener("load", function () {
 });
 
 function accordionClick(e, accordionItem, titleButtons) {
-  e.preventDefault();
+    // e.preventDefault();
+    if (e.keyCode === 13 || e.keyCode === 32 || e.button === 0) { // enter || spacebar || left mouse click.
+        console.log("Inside if")
+        if (
+            accordionItem.classList.contains(
+                "responsive-block-editor-addons-accordion-item-active"
+            )
+        ) {
+            console.log("Inside another if")
 
-  if (
-    accordionItem.classList.contains(
-      "responsive-block-editor-addons-accordion-item-active"
-    )
-  ) {
-    accordionItem.classList.remove(
-      "responsive-block-editor-addons-accordion-item-active"
-    );
-    accordionItem.setAttribute("aria-expanded", false);
-    slideUp(
-      accordionItem.getElementsByClassName(
-        "responsive-block-editor-addons-accordion-content"
-      )[0],
-      500
-    );
-  } else {
-    var parent =
-      accordionItem.parentElement.parentElement.parentElement.parentElement;
-    var accordionToggle = "true";
-    if (
-      parent.classList.contains(
-        "wp-block-responsive-block-editor-addons-accordion"
-      )
-    ) {
-      accordionToggle = parent.getAttribute("data-accordiontoggle");
-    }
-    accordionItem.classList.add(
-      "responsive-block-editor-addons-accordion-item-active"
-    );
-    accordionItem.setAttribute("aria-expanded", true);
-    slideDown(
-      accordionItem.getElementsByClassName(
-        "responsive-block-editor-addons-accordion-content"
-      )[0],
-      500
-    );
-    if ("true" === accordionToggle) {
-      for (
-        var buttonChild = 0;
-        buttonChild < titleButtons.length;
-        buttonChild++
-      ) {
-        var buttonItem = titleButtons[buttonChild].parentElement;
-        if (buttonItem === accordionItem) {
-          continue;
+            accordionItem.classList.remove(
+                "responsive-block-editor-addons-accordion-item-active"
+            );
+            accordionItem.setAttribute("aria-expanded", false);
+            slideUp(
+                accordionItem.getElementsByClassName(
+                    "responsive-block-editor-addons-accordion-content"
+                )[0],
+                500
+            );
+        } else {
+            console.log("inside else")
+            var parent = e.currentTarget.closest('.wp-block-responsive-block-editor-addons-accordion');
+            var accordionToggle = "true";
+            console.log(accordionToggle)
+
+            if (
+                parent.classList.contains(
+                    "wp-block-responsive-block-editor-addons-accordion"
+                )
+            ) {
+                accordionToggle = parent.getAttribute("data-accordiontoggle");
+            }
+            accordionItem.classList.add(
+                "responsive-block-editor-addons-accordion-item-active"
+            );
+            accordionItem.setAttribute("aria-expanded", true);
+            slideDown(
+                accordionItem.getElementsByClassName(
+                    "responsive-block-editor-addons-accordion-content"
+                )[0],
+                500
+            );
+            console.log("before")
+            console.log(accordionToggle)
+            if ("true" === accordionToggle) {
+                console.log("inside main if")
+                for (
+                    var buttonChild = 0;
+                    buttonChild < titleButtons.length;
+                    buttonChild++
+                ) {
+                    console.log("inside for")
+                    var buttonItem = titleButtons[buttonChild].parentElement;
+                    if (buttonItem === accordionItem) {
+                        continue;
+                    }
+                    buttonItem.classList.remove(
+                        "responsive-block-editor-addons-accordion-item-active"
+                    );
+                    buttonItem.setAttribute("aria-expanded", false);
+                    slideUp(
+                        buttonItem.getElementsByClassName(
+                            "responsive-block-editor-addons-accordion-content"
+                        )[0],
+                        500
+                    );
+                }
+            }
         }
-        buttonItem.classList.remove(
-          "responsive-block-editor-addons-accordion-item-active"
-        );
-        buttonItem.setAttribute("aria-expanded", false);
-        slideUp(
-          buttonItem.getElementsByClassName(
-            "responsive-block-editor-addons-accordion-content"
-          )[0],
-          500
-        );
-      }
     }
-  }
 }
