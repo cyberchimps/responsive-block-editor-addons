@@ -179,13 +179,11 @@ window.addEventListener("load", function () {
 function accordionClick(e, accordionItem, titleButtons) {
     // e.preventDefault();
     if (e.keyCode === 13 || e.keyCode === 32 || e.button === 0) { // enter || spacebar || left mouse click.
-        console.log("Inside if")
         if (
             accordionItem.classList.contains(
                 "responsive-block-editor-addons-accordion-item-active"
             )
         ) {
-            console.log("Inside another if")
 
             accordionItem.classList.remove(
                 "responsive-block-editor-addons-accordion-item-active"
@@ -198,10 +196,8 @@ function accordionClick(e, accordionItem, titleButtons) {
                 500
             );
         } else {
-            console.log("inside else")
             var parent = e.currentTarget.closest('.wp-block-responsive-block-editor-addons-accordion');
             var accordionToggle = "true";
-            console.log(accordionToggle)
 
             if (
                 parent.classList.contains(
@@ -220,16 +216,12 @@ function accordionClick(e, accordionItem, titleButtons) {
                 )[0],
                 500
             );
-            console.log("before")
-            console.log(accordionToggle)
             if ("true" === accordionToggle) {
-                console.log("inside main if")
                 for (
                     var buttonChild = 0;
                     buttonChild < titleButtons.length;
                     buttonChild++
                 ) {
-                    console.log("inside for")
                     var buttonItem = titleButtons[buttonChild].parentElement;
                     if (buttonItem === accordionItem) {
                         continue;
