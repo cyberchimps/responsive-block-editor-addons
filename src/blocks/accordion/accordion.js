@@ -177,7 +177,6 @@ window.addEventListener("load", function () {
 });
 
 function accordionClick(e, accordionItem, titleButtons) {
-    // e.preventDefault();
     if (e.keyCode === 13 || e.keyCode === 32 || e.button === 0) { // enter || spacebar || left mouse click.
         if (
             accordionItem.classList.contains(

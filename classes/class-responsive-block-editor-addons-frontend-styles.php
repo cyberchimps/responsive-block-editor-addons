@@ -11801,6 +11801,142 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
+		 * Get Instagram Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_instagram_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_instagram_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['instaTopPadding'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['instaBottomPadding'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['instaLeftPadding'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['instaRightPadding'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['instaTopMargin'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['instaBottomMargin'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['instaLeftMargin'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['instaRightMargin'], 'px' ),
+				),
+				' .responsive-block-editor-addons-intro-page' => array(
+					'border'  => '1px solid black',
+					'padding' => '0 20px',
+				),
+				' .responsive-block-editor-addons-intro-page p > a' => array(
+					'color' => 'blue',
+				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
+					'grid-gap'              => self::get_css_value( $attr['imagesGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-instagram-image' => array(
+					'border-radius' => self::get_css_value( $attr['borderRadius'], '%' ),
+				),
+				' .responsive-block-editor-addons-instagram-wrapper' => array(
+					'width' => self::get_css_value( 100, '%' ),
+				),
+			);
+
+			$mobile_selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['instaTopPaddingMobile'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['instaBottomPaddingMobile'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['instaLeftPaddingMobile'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['instaRightPaddingMobile'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['instaTopMarginMobile'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['instaBottomMarginMobile'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['instaLeftMarginMobile'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['instaRightMarginMobile'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columnsMobile'] . ', 1fr)',
+				),
+			);
+
+			$tablet_selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['instaTopPaddingTablet'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['instaBottomPaddingTablet'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['instaLeftPaddingTablet'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['instaRightPaddingTablet'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['instaTopMarginTablet'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['instaBottomMarginTablet'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['instaLeftMarginTablet'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['instaRightMarginTablet'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columnsTablet'] . ', 1fr)',
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-instagram.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for instagram block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_instagram_default_attributes() {
+			return array(
+				'block_id'                 => '',
+				'token'                    => '',
+				'columns'                  => '4',
+				'columnsMobile'            => '',
+				'columnsTablet'            => '',
+				'numberOfItems'            => 4,
+				'gridGap'                  => 0,
+				'thumbs'                   => '',
+				'backgroundColor'          => 'transparent',
+				'borderRadius'             => 0,
+				'hasEqualImages'           => false,
+				'showCaptions'             => false,
+				'instaTopPadding'          => 0,
+				'instaBottomPadding'       => 0,
+				'instaRightPadding'        => 0,
+				'instaLeftPadding'         => 0,
+				'instaTopPaddingMobile'    => '',
+				'instaBottomPaddingMobile' => '',
+				'instaRightPaddingMobile'  => '',
+				'instaLeftPaddingMobile'   => '',
+				'instaTopPaddingTablet'    => '',
+				'instaBottomPaddingTablet' => '',
+				'instaRightPaddingTablet'  => '',
+				'instaLeftPaddingTablet'   => '',
+				'instaTopMargin'           => 0,
+				'instaBottomMargin'        => 0,
+				'instaRightMargin'         => 0,
+				'instaLeftMargin'          => 0,
+				'instaTopMarginMobile'     => '',
+				'instaBottomMarginMobile'  => '',
+				'instaRightMarginMobile'   => '',
+				'instaLeftMarginMobile'    => '',
+				'instaTopMarginTablet'     => '',
+				'instaBottomMarginTablet'  => '',
+				'instaRightMarginTablet'   => '',
+				'instaLeftMarginTablet'    => '',
+				'gridSize'                 => 700,
+				'imagesGap'                => 0,
+			);
+		}
+
+		/**
 		 * Generate gradient effect
 		 *
 		 * @param string $color1  primary color.
