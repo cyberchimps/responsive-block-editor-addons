@@ -1,14 +1,59 @@
-import { redo } from "@wordpress/editor/store/actions";
 import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 
 function EditorStyles(props) {
-  const { block_id } = props.attributes;
+  const {
+    block_id,
+    pointBackgroundColor,
+    iconColor,
+    pointOpacity,
+    dotSize,
+    animationName,
+    animationDirection,
+    animationRepeat,
+    animationDuration,
+    animationDelay,
+    animationCurve,
+    pulseEffect,
+  } = props.attributes;
+
+  let updatedPointOpacity = pointOpacity / 100;
 
   var selectors = {
-      '': {
-          'background': 'red',
-      }
+    " ": {
+      display: "flex",
+      "justify-content": "center",
+    },
+    " .responsive_block_addons___image": {
+      display: "block",
+    },
+    " .responsive_block_addons___dot": {
+      left: 0,
+      top: 0,
+      opacity: updatedPointOpacity,
+      outline: "none",
+      cursor: "pointer",
+      position: "absolute",
+      "border-radius": "50%",
+      "background-color": pointBackgroundColor,
+      padding: generateCSSUnit("6", "px"),
+      "animation-name": `${animationName}${animationDirection}`,
+      "animation-timing-function": animationCurve,
+      "animation-duration": animationDuration + "ms",
+      "animation-delay": animationDelay + "ms",
+      "animation-iteration-count": animationRepeat === "once" ? 1 : "infinite",
+    },
+    " .responsive_block_addons___dot::before": {
+      display: pulseEffect ? "block" : "none",
+      animation: pulseEffect ? "" : "none",
+    },
+    " .responsive_block_addons__dot-content": {
+      color: iconColor,
+      "font-size": generateCSSUnit(dotSize, "px"),
+    },
+    " .responsive_block_addons___wrapper": {
+      position: "relative",
+    },
   };
 
   var mobile_selectors = {};

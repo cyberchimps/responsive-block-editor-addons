@@ -11950,8 +11950,42 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
+			$updated_point_opacity = $attr['pointOpacity'] / 100;
+
 			$selectors = array(
-				' ' => array(
+				' '                                      => array(
+					'display'         => 'flex',
+					'justify-content' => 'center',
+				),
+				' .responsive_block_addons__image'       => array(
+					'display' => 'block',
+				),
+				' .responsive_block_addons__dot'         => array(
+					'left'                      => 0,
+					'top'                       => 0,
+					'opacity'                   => $updated_point_opacity,
+					'outline'                   => 'none',
+					'cursor'                    => 'pointer',
+					'position'                  => 'absolute',
+					'border-radius'             => '50%',
+					'background-color'          => $attr['pointBackgroundColor'],
+					'padding'                   => self::get_css_value( '6', 'px' ),
+					'animation-name'            => $attr['animationName'] . '' . $attr['animationDirection'],
+					'animation-timing-function' => $attr['animationCurve'],
+					'animation-duration'        => $attr['animationDuration'] . 'ms',
+					'animation-delay'           => $attr['animationDelay'] . 'ms',
+					'animation-iteration-count' => 'once' === $attr['animationRepeat'] ? 1 : 'infinite',
+				),
+				' .responsive_block_addons__dot::before' => array(
+					'display'   => $attr['pulseEffect'] ? 'block' : 'none',
+					'animation' => $attr['pulseEffect'] ? '' : 'none',
+				),
+				' .responsive_block_addons__dot-content svg' => array(
+					'fill'      => $attr['iconColor'],
+					'font-size' => self::get_css_value( '14', 'px' ),
+				),
+				' .responsive_block_addons__wrapper'     => array(
+					'position' => 'relative',
 				),
 			);
 
@@ -11978,7 +12012,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_image_hotspot_default_attributes() {
 			return array(
-				'block_id'                 => '',
+				'block_id'             => '',
+				'pointBackgroundColor' => '#333',
+				'iconColor'            => '#fff',
+				'pointOpacity'         => 100,
+				'animationName'        => 'none',
+				'animationDirection'   => 'Left',
+				'animationRepeat'      => 'once',
+				'animationDuration'    => 1000,
+				'animationDelay'       => 0,
+				'animationCurve'       => '',
+				'pulseEffect'          => true,
 			);
 		}
 
