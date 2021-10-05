@@ -44,6 +44,9 @@ class CommonFunctionsPage
     public $generalStyleBtn = '//button[text()="General"]';
     public $separatorStyleBtn = '//button[text()="Separator"]';
     public $colorSettingsStyleBtn = '//button[text()="Color Settings"]';
+    public $metaTypography = '//button[text()="Meta Typography"]';
+    public $excerptTypography = '//button[text()="Excerpt Typography"]';
+    public $ctaTypography = '//button[text()="CTA Typography"]';
    
 
     /**
