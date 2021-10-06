@@ -221,7 +221,7 @@ class TypographyControl extends Component {
                             label={__("Letter Spacing", "responsive-block-editor-addons")}
                             value={this.props.values.spacing}
                             onChange={this.props.onChangeLetterSpacing}
-                            min={1}
+                            min={0}
                             max={10}
                             step={0.1}
                         />
