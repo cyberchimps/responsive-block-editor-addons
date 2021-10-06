@@ -4307,6 +4307,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$tablet_selectors = array();
 
 			$selectors        = array(
+				' '       => array(
+					'max-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
+				),
 				' iframe' => array(
 					'width'      => '100%',
 					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
