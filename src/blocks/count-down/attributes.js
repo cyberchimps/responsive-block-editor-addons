@@ -87,7 +87,7 @@ const attributes = {
   },
   digitLetterSpacing: {
     type: "number",
-    default: 1,
+    default: 0,
   },
   digitLineHeight: {
     type: "number",
@@ -128,7 +128,7 @@ const attributes = {
   },
   labelLetterSpacing: {
     type: "number",
-    default: 1,
+    default: 0,
   },
   boxItemMarginTop: {
     type: "number",
