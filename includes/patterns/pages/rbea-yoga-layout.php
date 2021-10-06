@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_yoga_instructor_layout',
 	'collection' => array(
-		'slug'      => 'yoga-instructor',
-		'label'     => __( 'Yoga Instructor', 'responsive-block-editor-addons' ),
+		'slug'      => 'yoga',
+		'label'     => __( 'Yoga', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"f6929832-0b57-4c66-9c8a-3c2f73a7dd1f","topPadding":150,"topPaddingMobile":160,"topPaddingTablet":160,"bottomPadding":150,"bottomPaddingMobile":160,"bottomPaddingTablet":160,"leftPaddingMobile":30,"leftPaddingTablet":30,"rightPaddingMobile":30,"rightPaddingTablet":30,"opacity":0,"backgroundImage":"https://ccreadysites.cyberchimps.com/gyoga-instructor/wp-content/uploads/sites/92/2020/10/yoga_02-1.jpg","backgroundPosition":"center center","backgroundType":"image","align":"full"} -->

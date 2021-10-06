@@ -91,6 +91,7 @@ e.g.
 * New - Taxonomy List Block
 * New - WP Search Block
 * Feature - Added responsive spacing options to multiple blocks
+* Feature - Revamped settings structure for all the blocks
 * Feature - Flipbox - Added typography options
 * Feature - Multibuttons - Changed default background color for a button
 * Fix - Image Boxes - Title & description spacing

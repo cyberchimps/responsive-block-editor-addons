@@ -21,7 +21,7 @@ class CommonFunctionsPage
     public $blockInSearch = 'div[class="block-editor-block-types-list__list-item"] > button';
     public $addBlockBtn = 'button[aria-label="Add block"]';
     public $closeDialogBtn = 'button[aria-label="Close dialog"]';
-    public $editBlockBtn = '#wp-admin-bar-edit > a';
+    public $editBlockBtn = '//*[text()="Edit Page"]';
     public $publishBtn = '.editor-post-publish-button';
     public $viewPage = '.components-snackbar__content > a';
 
@@ -37,9 +37,16 @@ class CommonFunctionsPage
     public $typographyStyleBtn = '//button[text()="Typography"]';
     public $titleTypography = '//*[text() = "Title Typography"]';
     public $descriptionTypography = '//*[text() = "Description Typography"]';
+    public $priceTypography = '//*[text() = "Price Typography"]';
     public $paddingStyleBtn = '//*[text() = "Padding"]';
     public $spacingStyleBtn = '//button[text()="Spacing"]';
     public $borderStyleBtn = '//button[text()="Border"]';
+    public $generalStyleBtn = '//button[text()="General"]';
+    public $separatorStyleBtn = '//button[text()="Separator"]';
+    public $colorSettingsStyleBtn = '//button[text()="Color Settings"]';
+    public $metaTypography = '//button[text()="Meta Typography"]';
+    public $excerptTypography = '//button[text()="Excerpt Typography"]';
+    public $ctaTypography = '//button[text()="CTA Typography"]';
    
 
     /**

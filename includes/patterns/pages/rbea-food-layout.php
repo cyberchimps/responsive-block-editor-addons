@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_food_blog_layout',
 	'collection' => array(
-		'slug'      => 'food-blog',
-		'label'     => __( 'Food Blog', 'responsive-block-editor-addons' ),
+		'slug'      => 'food',
+		'label'     => __( 'Food', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"cf3aad73-f3fe-4ec4-8b27-fe9b4ed3929b","topPadding":200,"topPaddingMobile":100,"topPaddingTablet":200,"bottomPadding":200,"bottomPaddingMobile":100,"bottomPaddingTablet":200,"leftPadding":0,"leftPaddingMobile":0,"leftPaddingTablet":0,"rightPadding":0,"rightPaddingMobile":0,"rightPaddingTablet":0,"opacity":0,"backgroundImage":"https://ccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/home-banner.jpg","backgroundPosition":"center center","backgroundAttachment":"fixed","backgroundType":"image","align":"full"} -->

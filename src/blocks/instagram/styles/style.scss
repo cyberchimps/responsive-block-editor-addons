@@ -1,0 +1,49 @@
+ .responsive-block-editor-addons-instagram-wrapper {
+     margin: 0 auto;
+     @media all and (max-width: 375px) {
+         .responsive-block-editor-addons-instagram-posts-container {
+             grid-template-columns: repeat(1, 1fr) !important;
+         }
+     }
+     .responsive-block-editor-addons-instagram-posts-container {
+         grid-auto-rows: min-content;
+     }
+ }
+ 
+ .responsive-block-editor-addons-grid {
+     display: grid;
+ }
+ 
+ @supports not (display: grid) {
+     .responsive-block-editor-addons-grid {
+         display: flex;
+         flex-wrap: row wrap;
+         > * {
+             flex: 0 1 1;
+         }
+     }
+ }
+ 
+ .responsive-block-editor-addons-image-wrapper {
+     position: relative;
+
+     &.has-equal-images {
+         overflow: hidden;
+         padding-bottom: 100%;
+         img {
+             position: absolute;
+             object-fit: cover;
+             width: 100%;
+             height: 100%;
+         }
+     }
+ }
+ .responsive-block-editor-addons-instagram-image {
+    display: block;
+    margin: 0 auto;
+ }
+ 
+ 
+ 
+
+ 

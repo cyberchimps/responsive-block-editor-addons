@@ -3677,4 +3677,52 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		$values = self::$rbea_frontend_styles->get_responsive_block_how_to_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
 	}
+
+	/**
+	 * Test for Instagram default attributes
+	 */
+	public function test_get_responsive_block_instagram_default_attributes() {
+		$expected_values = array(
+			'block_id'                 => '',
+			'token'                    => '',
+			'columns'                  => '4',
+			'columnsMobile'            => '',
+			'columnsTablet'            => '',
+			'numberOfItems'            => 4,
+			'gridGap'                  => 0,
+			'thumbs'                   => '',
+			'backgroundColor'          => 'transparent',
+			'borderRadius'             => 0,
+			'hasEqualImages'           => false,
+			'showCaptions'             => false,
+			'instaTopPadding'          => 0,
+			'instaBottomPadding'       => 0,
+			'instaRightPadding'        => 0,
+			'instaLeftPadding'         => 0,
+			'instaTopPaddingMobile'    => '',
+			'instaBottomPaddingMobile' => '',
+			'instaRightPaddingMobile'  => '',
+			'instaLeftPaddingMobile'   => '',
+			'instaTopPaddingTablet'    => '',
+			'instaBottomPaddingTablet' => '',
+			'instaRightPaddingTablet'  => '',
+			'instaLeftPaddingTablet'   => '',
+			'instaTopMargin'           => 0,
+			'instaBottomMargin'        => 0,
+			'instaRightMargin'         => 0,
+			'instaLeftMargin'          => 0,
+			'instaTopMarginMobile'     => '',
+			'instaBottomMarginMobile'  => '',
+			'instaRightMarginMobile'   => '',
+			'instaLeftMarginMobile'    => '',
+			'instaTopMarginTablet'     => '',
+			'instaBottomMarginTablet'  => '',
+			'instaRightMarginTablet'   => '',
+			'instaLeftMarginTablet'    => '',
+			'gridSize'                 => 700,
+			'imagesGap'                => 0,
+		);
+		$values          = self::$rbea_frontend_styles->get_responsive_block_instagram_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
 }
