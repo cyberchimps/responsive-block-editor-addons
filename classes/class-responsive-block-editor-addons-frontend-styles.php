@@ -4307,6 +4307,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$tablet_selectors = array();
 
 			$selectors        = array(
+				' '       => array(
+					'max-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
+				),
 				' iframe' => array(
 					'width'      => '100%',
 					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
@@ -8924,7 +8927,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'digitFontSizeMobile'          => '',
 				'digitFontSizeTablet'          => '',
 				'digitFontWeight'              => '500',
-				'digitLetterSpacing'           => 1,
+				'digitLetterSpacing'           => 0,
 				'digitLineHeight'              => 2,
 				'digitColor'                   => '#fff',
 				'labelFontFamily'              => '',
@@ -8935,7 +8938,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'labelLineHeight'              => 2,
 				'labelFontWeight'              => '500',
 				'labelLeftPadding'             => 0,
-				'labelLetterSpacing'           => 1,
+				'labelLetterSpacing'           => 0,
 				'boxItemMarginTop'             => 0,
 				'boxItemMarginRight'           => 0,
 				'boxItemMarginBottom'          => 0,

@@ -47,7 +47,7 @@ class CommonFunctionsPage
     public $metaTypography = '//button[text()="Meta Typography"]';
     public $excerptTypography = '//button[text()="Excerpt Typography"]';
     public $ctaTypography = '//button[text()="CTA Typography"]';
-   
+    public $colorStyleBtn = '//button[text()="Color"]';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
