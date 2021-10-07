@@ -1205,7 +1205,7 @@ export default class Inspector extends Component {
               />
               {resctaType !== "none" && (
                 <ResponsiveSpacingControl
-                  title={"Call To Action Bottom Margin"}
+                  title={"CTA Bottom Margin"}
                   attrNameTemplate="ctaBottomMargin%s"
                   values={{
                     desktop: ctaBottomMargin,

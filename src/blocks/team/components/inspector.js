@@ -17,7 +17,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
 // Import block components
-const { InspectorControls, PanelColorSettings, MediaUpload } = wp.editor;
+const { InspectorControls, PanelColorSettings, MediaUpload, ColorPalette } = wp.editor;
 
 // Import Inspector components
 const {
@@ -197,12 +197,20 @@ export default class Inspector extends Component {
         showDescription,
         showSocialIcons,
         stack,
-		titleFontSizeMobile,
-		titleFontSizeTablet,
-		designationFontSizeMobile,
-		designationFontSizeTablet,
-		descriptionFontSizeMobile,
-		descriptionFontSizeTablet,
+        titleFontSizeMobile,
+        titleFontSizeTablet,
+        designationFontSizeMobile,
+        designationFontSizeTablet,
+        descriptionFontSizeMobile,
+        descriptionFontSizeTablet,
+        socialIconBorderColor,
+        socialIconHoverColor,
+        socialIconBackgroundHoverColor,
+        socialIconBackgroundColor,
+        socialIconBorderHoverColor,
+        iconBackgroundSize,
+        iconBorderSize,
+        iconBorderRadius,
       },
       setAttributes,
     } = this.props;
@@ -244,6 +252,149 @@ export default class Inspector extends Component {
         shortName: __("Blob", "responsive-block-editor-addons"),
       },
     ];
+
+    const getSocialIconColors = () => {
+      const socialColors = (
+        <Fragment>
+          <br/>
+          <p className="responsive-block-editor-addons-setting-label">
+            {__("Social Icon Color", "responsive-block-editor-addons")}
+            <span className="components-base-control__label">
+              <span
+                className="component-color-indicator"
+                style={{ backgroundColor: socialIconColor }}
+              ></span>
+            </span>
+          </p>
+          <ColorPalette
+            value={socialIconColor}
+            onChange={onChangeSocialIconColor}
+            allowReset
+          />
+          <p className="responsive-block-editor-addons-setting-label">
+            {__(
+              "Social Icon Background Color",
+              "responsive-block-editor-addons"
+            )}
+            <span className="components-base-control__label">
+              <span
+                className="component-color-indicator"
+                style={{ backgroundColor: socialIconBackgroundColor }}
+              ></span>
+            </span>
+          </p>
+          <ColorPalette
+            value={socialIconBackgroundColor}
+            onChange={(value) =>
+              setAttributes({ socialIconBackgroundColor: value })
+            }
+            allowReset
+          />
+          <p className="responsive-block-editor-addons-setting-label">
+            {__("Social Icon Border Color", "responsive-block-editor-addons")}
+            <span className="components-base-control__label">
+              <span
+                className="component-color-indicator"
+                style={{ backgroundColor: socialIconBorderColor }}
+              ></span>
+            </span>
+          </p>
+          <ColorPalette
+            value={socialIconBorderColor}
+            onChange={(value) =>
+              setAttributes({ socialIconBorderColor: value })
+            }
+            allowReset
+          />
+        </Fragment>
+      );
+
+      const socialColorsHover = (
+        <Fragment>
+          <br/>
+          <p className="responsive-block-editor-addons-setting-label">
+            {__("Social Icon Hover Color", "responsive-block-editor-addons")}
+            <span className="components-base-control__label">
+              <span
+                className="component-color-indicator"
+                style={{ backgroundColor: socialIconHoverColor }}
+              ></span>
+            </span>
+          </p>
+          <ColorPalette
+            value={socialIconHoverColor}
+            onChange={(value) =>
+              setAttributes({ socialIconHoverColor: value })
+            }            
+            allowReset
+          />
+          <p className="responsive-block-editor-addons-setting-label">
+            {__(
+              "Social Icon Background Hover Color",
+              "responsive-block-editor-addons"
+            )}
+            <span className="components-base-control__label">
+              <span
+                className="component-color-indicator"
+                style={{ backgroundColor: socialIconBackgroundHoverColor }}
+              ></span>
+            </span>
+          </p>
+          <ColorPalette
+            value={socialIconBackgroundHoverColor}
+            onChange={(value) =>
+              setAttributes({ socialIconBackgroundHoverColor: value })
+            }
+            allowReset
+          />
+          <p className="responsive-block-editor-addons-setting-label">
+            {__("Social Icon Border Hover Color", "responsive-block-editor-addons")}
+            <span className="components-base-control__label">
+              <span
+                className="component-color-indicator"
+                style={{ backgroundColor: socialIconBorderHoverColor }}
+              ></span>
+            </span>
+          </p>
+          <ColorPalette
+            value={socialIconBorderHoverColor}
+            onChange={(value) =>
+              setAttributes({ socialIconBorderHoverColor: value })
+            }
+            allowReset
+          />
+        </Fragment>
+      );
+
+      return (
+        <TabPanel
+          className="responsive-block-editor-addons-inspect-tabs responsive-block-editor-addons-inspect-tabs-col-2"
+          activeClass="active-tab"
+          tabs={[
+            {
+              name: "normal",
+              title: __("Normal", "responsive-block-editor-addons"),
+              className: "responsive-block-editor-addons-normal-tab",
+            },
+            {
+              name: "hover",
+              title: __("Hover", "responsive-block-editor-addons"),
+              className: "responsive-block-editor-addons-hover-tab",
+            },
+          ]}
+        >
+          {(tabName) => {
+            let color_tab;
+            if ("normal" === tabName.name) {
+              color_tab = socialColors;
+            } else {
+              color_tab = socialColorsHover;
+            }
+            return <div>{color_tab}</div>;
+          }}
+        </TabPanel>
+      );
+    };
 
     return (
       <InspectorControls key="inspector">
@@ -417,12 +568,12 @@ export default class Inspector extends Component {
                 />
                 {bgGradient && (
                   <Fragment>
-                     <GradientBackgroundControl
-                       {...this.props}
-                       showHoverGradient={false}
-                       showColorOne={false}
-                     />
-                   </Fragment>
+                    <GradientBackgroundControl
+                      {...this.props}
+                      showHoverGradient={false}
+                      showColorOne={false}
+                    />
+                  </Fragment>
                 )}
                 <ImageBackgroundControl
                   {...this.props}
@@ -488,7 +639,7 @@ export default class Inspector extends Component {
               title={__("Image", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                  <ImageSettingsControl {...this.props} />
+              <ImageSettingsControl {...this.props} />
             </PanelBody>
 
             <PanelBody
@@ -503,20 +654,20 @@ export default class Inspector extends Component {
                 initialOpen={true}
               >
                 <ToggleControl
-                  label="Twitter"
-                  checked={twitter}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      twitter: !twitter,
-                    })
-                  }
-                />
-                <ToggleControl
                   label="Facebook"
                   checked={facebook}
                   onChange={() =>
                     this.props.setAttributes({
                       facebook: !facebook,
+                    })
+                  }
+                />
+                <ToggleControl
+                  label="Twitter"
+                  checked={twitter}
+                  onChange={() =>
+                    this.props.setAttributes({
+                      twitter: !twitter,
                     })
                   }
                 />
@@ -566,26 +717,54 @@ export default class Inspector extends Component {
                   }
                 />
               </PanelBody>
-              <PanelColorSettings
+              <PanelBody
                 title={__("Colors", "responsive-block-editor-addons")}
                 initialOpen={true}
-                colorSettings={[
-                  {
-                    value: socialIconColor,
-                    onChange: onChangeSocialIconColor,
-                    label: __(
-                      "Social Icon Color",
-                      "responsive-block-editor-addons"
-                    ),
-                  },
-                ]}
-              ></PanelColorSettings>
+              >
+                {getSocialIconColors()}
+              </PanelBody>
               <RangeControl
                 label={__("Icon Size", "responsive-block-editor-addons")}
                 value={iconSize}
                 onChange={(value) =>
                   this.props.setAttributes({
                     iconSize: value,
+                  })
+                }
+                min={0}
+                max={100}
+                step={1}
+              />
+              <RangeControl
+                label={__("Icon Background Size", "responsive-block-editor-addons")}
+                value={iconBackgroundSize}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    iconBackgroundSize: value,
+                  })
+                }
+                min={0}
+                max={100}
+                step={1}
+              />
+              <RangeControl
+                label={__("Border Size", "responsive-block-editor-addons")}
+                value={iconBorderSize}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    iconBorderSize: value,
+                  })
+                }
+                min={0}
+                max={100}
+                step={1}
+              />
+              <RangeControl
+                label={__("Border Radius", "responsive-block-editor-addons")}
+                value={iconBorderRadius}
+                onChange={(value) =>
+                  this.props.setAttributes({
+                    iconBorderRadius: value,
                   })
                 }
                 min={0}
@@ -599,60 +778,60 @@ export default class Inspector extends Component {
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-				<TypographyHelperControl
-					title={__("Title Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="title%s"
-					values={{
-					family: titleFontFamily,
-					size: titleFontSize,
-					sizeMobile: titleFontSizeMobile,
-					sizeTablet: titleFontSizeTablet,
-					weight: titleFontWeight,
-					height: titleLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__(
-					"Designation Typography",
-					"responsive-block-editor-addons"
-					)}
-					attrNameTemplate="designation%s"
-					values={{
-					family: designationFontFamily,
-					size: designationFontSize,
-					sizeMobile: designationFontSizeMobile,
-					sizeTablet: designationFontSizeTablet,
-					weight: designationFontWeight,
-					height: designationLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__(
-					"Description Typography",
-					"responsive-block-editor-addons"
-					)}
-					attrNameTemplate="description%s"
-					values={{
-					family: descriptionFontFamily,
-					size: descriptionFontSize,
-					sizeMobile: descriptionFontSizeMobile,
-					sizeTablet: descriptionFontSizeTablet,
-					weight: descriptionFontWeight,
-					height: descriptionLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
+              <TypographyHelperControl
+                title={__("Title Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="title%s"
+                values={{
+                  family: titleFontFamily,
+                  size: titleFontSize,
+                  sizeMobile: titleFontSizeMobile,
+                  sizeTablet: titleFontSizeTablet,
+                  weight: titleFontWeight,
+                  height: titleLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Designation Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="designation%s"
+                values={{
+                  family: designationFontFamily,
+                  size: designationFontSize,
+                  sizeMobile: designationFontSizeMobile,
+                  sizeTablet: designationFontSizeTablet,
+                  weight: designationFontWeight,
+                  height: designationLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Description Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="description%s"
+                values={{
+                  family: descriptionFontFamily,
+                  size: descriptionFontSize,
+                  sizeMobile: descriptionFontSizeMobile,
+                  sizeTablet: descriptionFontSizeTablet,
+                  weight: descriptionFontWeight,
+                  height: descriptionLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
 
             <PanelBody
