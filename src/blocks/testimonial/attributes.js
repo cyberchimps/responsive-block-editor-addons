@@ -4,9 +4,9 @@ const testimonialBlock = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
   testimonialBlock.push({
-    testimonialName: "",
-    testimonialTitle: "",
-    testimonialContent: "",
+    testimonialName: "John Doe",
+    testimonialTitle: "Add title/designation",
+    testimonialContent: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
     testimonialImgURL: "",
     testimonialImgID: "",
   });
