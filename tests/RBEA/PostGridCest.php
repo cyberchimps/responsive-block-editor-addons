@@ -78,7 +78,52 @@ class PostGridCest
     public $fExcerpt = '(//div[@class="responsive-block-editor-addons-block-post-grid-excerpt"])[1]';
     public $fMeta = '(//div[@class="responsive-block-editor-addons-block-post-grid-byline"])[1]';
     public $fTitle = '(//h3[@class="responsive-block-editor-addons-block-post-grid-title"])[1]';
-    
+
+    /**
+     * Border Settings
+     */
+    public $borderWidth = '//*[contains(@id, "inspector-input-control") and @aria-label="Border Width"]';
+    public $fGridItemArticle = '(//article[contains(@class, "responsive-block-editor-addons-post-grid-item")])[1]';
+    public $boxShadowOptionsBtn = '(//div[@class="res-typography-option-actions"]//button)[1]';
+    public $boxShadowResetBtn = '(//div[@class="res-typography-option-actions"]//button)[2]';
+    public $hoverBoxShadowOptionsBtn = '(//div[@class="res-typography-option-actions"]//button)[3]';
+    public $hoverBoxShadowResetBtn = '(//div[@class="res-typography-option-actions"]//button)[4]';
+    public $boxShadowColor = '(//div[@class="components-circular-option-picker__swatches"])[2]//div[5]';
+    public $boxShadowLeft = '(//*[contains(@id, "inspector-input-control")])[3]';
+    public $boxShadowTop = '(//*[contains(@id, "inspector-input-control")])[4]';
+    public $boxShadowBlur = '(//*[contains(@id, "inspector-input-control")])[5]';
+    public $boxShadowSpread = '(//*[contains(@id, "inspector-input-control")])[6]';
+    public $boxShadowPosition = '(//*[contains(@id, "inspector-select-control")])[2]';
+    public $boxShadowPositionSelected = 'option[value="inset"]'; 
+    public $resetBorderWidth = '(//button[text()="Reset"])[1]';
+    public $resetBorderRadius = '(//button[text()="Reset"])[2]';
+    public $resetBorderColor = '(//button[text()="Clear"])[1]'; 
+
+    /**
+     * Color Settings.
+     */
+    public $bgColor = '(//div[@class="components-circular-option-picker__swatches"])[1]//div[5]';
+    public $titleColor = '(//div[@class="components-circular-option-picker__swatches"])[2]//div[1]';
+    public $titleHoverColor = '(//div[@class="components-circular-option-picker__swatches"])[3]//div[6]';
+    public $metaColor = '(//div[@class="components-circular-option-picker__swatches"])[4]//div[2]';
+    public $excerptColor = '(//div[@class="components-circular-option-picker__swatches"])[5]//div[6]';
+    public $readMoreLinkColor = '(//div[@class="components-circular-option-picker__swatches"])[6]//div[1]';
+    public $readMoreHoverLinkColor = '(//div[@class="components-circular-option-picker__swatches"])[7]//div[6]';
+    public $fTitleText = '(//h3[@class="responsive-block-editor-addons-block-post-grid-title"])[1] //a';
+
+    /**
+     * Spacing Settings.
+     */
+    public $rowGapInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Row Gap"]';
+    public $columnGapInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Column Gap"]';
+    public $contentPaddingInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Content Padding"]';
+    public $titleBottomSpacingInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Title Bottom Spacing"]';
+    public $metaBottomSpacingInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Meta Bottom Spacing"]';
+    public $excerptBottomSpacingInput = '//*[contains(@id, "inspector-input-control") and @aria-label="Excerpt Bottom Spacing"]';
+    public $fGridItemsContainer = 'div.responsive-block-editor-addons-post-grid-items';
+    public $tabletView = '(//button[contains(@id, "tablet")])[3]';
+    public $mobileView = '(//button[contains(@id, "mobile")])[3]';
+   
     /**
      * This function runs before running each test.
      */
@@ -465,7 +510,7 @@ class PostGridCest
     }
 
     /**
-     * Test the Border Settings
+     * Tests the Border Settings
      */
     public function PostPageGridBorderTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
     {
@@ -476,6 +521,235 @@ class PostGridCest
         $I->wait(4);
         $I->click($this->queryStyleBtn);
         $I->click('Style');
-        $I->click($this->borderStyleBtn);
+        $I->click($commonFunctionsPageObj->borderStyleBtn);
+        $I->selectOption('Border Style', 'Groove');
+        $I->click($this->borderWidth);
+        $commonFunctionsPageObj->field = $this->borderWidth;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );  
+        $I->click($this->borderRadius);
+        $commonFunctionsPageObj->field = $this->borderRadius;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );  
+        $I->click($this->borderColor);
+        $this->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check the border settings of the Post Page.');
+        $commonFunctionsPageObj->field = $this->fGridItemArticle;
+        $commonFunctionsPageObj->prop = 'border';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '5px groove rgb(51, 51, 51)'); 
+        $commonFunctionsPageObj->prop = 'border-radius';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '5px'); 
+        
+        $I->amGoingTo('Change the box shadow settings of the post grid block.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(4);
+        $I->click($this->postGridBlock);
+        $I->wait(4);
+        $I->click($this->queryStyleBtn);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->borderStyleBtn);
+        $I->selectOption('Border Style', 'None');
+        $I->click($this->resetBorderWidth);
+        $I->click($this->resetBorderRadius);
+        $I->click($this->resetBorderColor);
+        $I->wait(1);
+        $I->click($this->boxShadowOptionsBtn);
+        $this->_setBoxShadowSettings($I, $commonFunctionsPageObj);
+
+        $I->amGoingTo('Check the box shadow settings in the frontend.');
+        $commonFunctionsPageObj->field = $this->fGridItemArticle;
+        $commonFunctionsPageObj->prop = 'box-shadow';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51) 3px 5px 30px 5px inset');
+
+        $I->amGoingTo('Change the box shadow on hover settings.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(4);
+        $I->click($this->postGridBlock);
+        $I->wait(4);
+        $I->click($this->queryStyleBtn);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->borderStyleBtn);
+        $I->click($this->boxShadowResetBtn);
+        $I->click($this->hoverBoxShadowOptionsBtn);
+        $this->_setBoxShadowSettings($I, $commonFunctionsPageObj);
+
+        $I->amGoingTo('Check the hover box shadow settings in the frontend.');
+        $I->wait(1);
+        $I->moveMouseOver($this->fGridItemArticle);
+        $I->wait(1);
+        $commonFunctionsPageObj->field = $this->fGridItemArticle;
+        $commonFunctionsPageObj->prop = 'box-shadow';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgb(51, 51, 51) 3px 5px 30px 5px inset');
+    }
+
+    /**
+     * Set the box shadow settings.
+     */
+    public function _setBoxShadowSettings($I, $commonFunctionsPageObj)
+    {
+        $I->wait(1);
+        $I->click($this->boxShadowColor);
+        $I->wait(1);
+        
+        $I->click($this->boxShadowLeft);
+        $commonFunctionsPageObj->field = $this->boxShadowLeft;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '3' );
+        $I->wait(1); 
+
+        $I->click($this->boxShadowTop);
+        $commonFunctionsPageObj->field = $this->boxShadowTop;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1); 
+        $I->click($this->boxShadowBlur);
+        $commonFunctionsPageObj->field = $this->boxShadowBlur;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '30' );
+        $I->wait(1); ; 
+
+        $boxShadowSpread = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->boxShadowSpread))->getLocationOnScreenOnceScrolledIntoView();
+        });
+        $I->wait(3);
+        $I->click($this->boxShadowSpread);
+        $commonFunctionsPageObj->field = $this->boxShadowSpread;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '5' );
+        $I->wait(1);  
+        $boxShadowPosition = $I->executeInSelenium(function(RemoteWebDriver $webdriver){
+            return $webdriver->findElement(WebDriverBy::xpath($this->boxShadowPosition))->
+            findElement( WebDriverBy::cssSelector($this->boxShadowPositionSelected) )->click();
+        });
+        $I->wait(2);
+        $commonFunctionsPageObj->publishAndViewPage($I);
+    }
+
+    /**
+     * Tests the Color Settings
+     */
+    public function PostPageGridColorTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the color settings of the Post Page.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(4);
+        $I->click($this->postGridBlock);
+        $I->wait(4);
+        $I->click($this->queryStyleBtn);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->colorStyleBtn);
+        $I->wait(1);
+        $I->click($this->bgColor);
+        $I->click($this->titleColor);
+        $I->click($this->titleHoverColor);
+        $I->click($this->metaColor);
+        $I->click($this->excerptColor);
+        $I->click($this->readMoreLinkColor);
+        $I->click($this->readMoreHoverLinkColor);
+        $I->wait(1);
+        $this->publishAndViewPage($I);
+        
+        $I->amGoingTo('Check the color settings of the Post Page');
+        $commonFunctionsPageObj->field = $this->fTitleText;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(0, 102, 204, 1)');
+        $I->wait(1);
+        $I->moveMouseOver($this->fTitleText);
+        $I->wait(1);
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(255, 255, 255, 1)');
+        $commonFunctionsPageObj->field = $this->fMeta;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(16, 101, 156, 1)');
+        $commonFunctionsPageObj->field = $this->fExcerpt;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(255, 255, 255, 1)');
+        $commonFunctionsPageObj->field = $this->fReadMoreLink;
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(0, 102, 204, 1)');
+        $I->wait(1);
+        $I->scrollTo($this->fReadMoreLink, 20);
+        $I->wait(2);
+        $I->moveMouseOver($this->fReadMoreLink);
+        $I->wait(1);
+        $commonFunctionsPageObj->prop = 'color';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, 'rgba(0, 102, 204, 1)');
+    }
+
+    /**
+     * Tests the Spacing Settings
+     */
+    public function PostPageGridSpacingTest(RBEATester $I, CommonFunctionsPage $commonFunctionsPageObj)
+    {
+        $I->amGoingTo('Change the spacing settings of the Post Page.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(4);
+        $I->click($this->postGridBlock);
+        $I->wait(4);
+        $I->click($this->queryStyleBtn);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->click($this->rowGapInput);
+        $commonFunctionsPageObj->field = $this->rowGapInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '10' );
+        $I->click($this->columnGapInput);
+        $commonFunctionsPageObj->field = $this->columnGapInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '10' );
+        $I->click($this->contentPaddingInput);
+        $commonFunctionsPageObj->field = $this->contentPaddingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '20' );
+        $I->click($this->titleBottomSpacingInput);
+        $commonFunctionsPageObj->field = $this->titleBottomSpacingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '20' );
+        $I->click($this->metaBottomSpacingInput);
+        $commonFunctionsPageObj->field = $this->metaBottomSpacingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '10' );
+        $I->click($this->excerptBottomSpacingInput);
+        $commonFunctionsPageObj->field = $this->excerptBottomSpacingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '20' );
+        $this->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the spacing settings of the post page in the frontend.');
+        $commonFunctionsPageObj->field = $this->fGridItemsContainer;
+        $commonFunctionsPageObj->prop = 'grid-column-gap';        
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '10px');
+        $commonFunctionsPageObj->prop = 'grid-row-gap';        
+        $commonFunctionsPageObj->_checkFrontEndStyle($I, '10px'); 
+        $commonFunctionsPageObj->field = $this->fGridItems;
+        $commonFunctionsPageObj->prop = 'padding';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '20px'); 
+        $commonFunctionsPageObj->field = $this->fTitle;
+        $commonFunctionsPageObj->prop = 'margin-bottom';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '20px');
+        $commonFunctionsPageObj->field = $this->fMeta;
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '10px');
+        $commonFunctionsPageObj->field = $this->fExcerpt;
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '20px');
+
+        $I->amGoingTo('Change the content padding for tablet and mobile view.');
+        $I->click($commonFunctionsPageObj->editBlockBtn);
+        $I->wait(4);
+        $I->click($this->postGridBlock);
+        $I->wait(4);
+        $I->click($this->queryStyleBtn);
+        $I->click('Style');
+        $I->click($commonFunctionsPageObj->spacingStyleBtn);
+        $I->click($this->tabletView);
+        $I->click($this->contentPaddingInput);
+        $commonFunctionsPageObj->field = $this->contentPaddingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '16' );
+        $I->click($this->mobileView);
+        $I->click($this->contentPaddingInput);
+        $commonFunctionsPageObj->field = $this->contentPaddingInput;
+        $commonFunctionsPageObj->_setInputFieldKeys( $I, 'xpath', '10' );
+        $this->publishAndViewPage($I);
+
+        $I->amGoingTo('Check the content padding in the frontend.');
+        $I->wait(1);
+        $I->resizeWindow(965, 1024);
+        $I->wait(1);
+        $commonFunctionsPageObj->field = $this->fGridItems;
+        $commonFunctionsPageObj->prop = 'padding';        
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '16px');
+        $I->resizeWindow(375, 812);       
+        $I->wait(1);
+        $commonFunctionsPageObj->_checkFrontEndStyleByXpath($I, '10px');
+        $I->wait(1);
+        $I->resizeWindow(1280, 950);
     }
 }
