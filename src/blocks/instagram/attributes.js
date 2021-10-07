@@ -11,10 +11,10 @@ const attributes = {
     default: 4,
   },
   columnsMobile: {
-    type: "string",
+    type: "number",
   },
   columnsTablet: {
-    type: "string",
+    type: "number",
   },
   numberOfItems: {
     type: "number",
