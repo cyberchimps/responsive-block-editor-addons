@@ -4,6 +4,7 @@ const attributes = {
   },
   buttonText: {
     type: "string",
+    default: "Button text...",
   },
   buttonTextFontFamily: {
     type: "string"
@@ -60,6 +61,7 @@ const attributes = {
     type: "array",
     selector: ".responsive-block-editor-addons-cta-title",
     source: "children",
+    default: "Call-To-Action Title",
   },
   ctaTitleFontFamily: {
     type: "string",
@@ -95,6 +97,7 @@ const attributes = {
     type: "array",
     selector: ".responsive-block-editor-addons-cta-text",
     source: "children",
+    default: "Call To Action Text",
   },
   ctaWidth: {
     type: "string",
@@ -189,6 +192,7 @@ const attributes = {
   },
   ctalinkText: {
     type: "string",
+    default: "CTA text...",
   },
   titleSpace: {
     type: "number",

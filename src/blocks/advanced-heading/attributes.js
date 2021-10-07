@@ -2,6 +2,7 @@ const attributes = {
   headingTitle: {
     source: "html",
     selector: "h1,h2,h3,h4,h5,h6",
+      default:"Write a Heading",
   },
   block_id: {
     type: "string",
@@ -12,7 +13,7 @@ const attributes = {
   headingDesc: {
     source: "html",
     selector: "p",
-    default: "",
+    default: "Write some text",
   },
   showHeading: {
     type: "boolean",
