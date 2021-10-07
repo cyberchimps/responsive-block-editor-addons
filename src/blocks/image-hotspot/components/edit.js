@@ -420,7 +420,7 @@ class Edit extends Component {
       style += "padding: " + dotPaddings + "px;";
     }
     if (color) {
-      dot_style += "color: " + color + ";";
+      dot_style += "fill: " + color + ";";
     }
     if (background) {
       style += "background-color: " + background + ";";

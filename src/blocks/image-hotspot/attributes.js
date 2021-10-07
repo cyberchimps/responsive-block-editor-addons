@@ -15,8 +15,12 @@ const attributes = {
     default: "#fff",
   },
   pointOpacity: {
-    type: "string",
+    type: "number",
     default: 100,
+  },
+  pointSpacing: {
+    type: "number",
+    default: 6,
   },
   imageSize: {
     type: "string",

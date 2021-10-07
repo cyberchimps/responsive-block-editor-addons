@@ -15,6 +15,7 @@ function EditorStyles(props) {
     animationDelay,
     animationCurve,
     pulseEffect,
+    pointSpacing
   } = props.attributes;
 
   let updatedPointOpacity = pointOpacity / 100;
@@ -36,7 +37,7 @@ function EditorStyles(props) {
       position: "absolute",
       "border-radius": "50%",
       "background-color": pointBackgroundColor,
-      padding: generateCSSUnit("6", "px"),
+      padding: generateCSSUnit(pointSpacing, "px"),
       "animation-name": `${animationName}${animationDirection}`,
       "animation-timing-function": animationCurve,
       "animation-duration": animationDuration + "ms",
@@ -48,8 +49,10 @@ function EditorStyles(props) {
       animation: pulseEffect ? "" : "none",
     },
     " .responsive_block_addons__dot-content svg": {
-      fill: iconColor,
       "font-size": generateCSSUnit(dotSize, "px"),
+    },
+    " .responsive_block_addons__dot-content": {
+      fill: iconColor,
     },
     " .responsive_block_addons___wrapper": {
       position: "relative",

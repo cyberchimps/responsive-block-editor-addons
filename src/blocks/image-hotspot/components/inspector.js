@@ -54,6 +54,7 @@ class Inspector extends Component {
         animationDelay,
         animationCurve,
         pulseEffect,
+        pointSpacing,
       },
       setAttributes,
       className,
@@ -253,7 +254,26 @@ class Inspector extends Component {
               });
             }}
           />
-          <BaseControl label={__("Point Icon", "responsive-block-editor-addons")}></BaseControl>
+          <BaseControl label={__("Point Icon", "responsive-block-editor-addons")}>
+              <FontIconPicker
+                icons={svg_icons}
+                renderFunc={renderSVG}
+                theme="default"
+                value={imagePointsParsed[ index ].icon}
+                onChange={(value) => {
+                  updateArrValues({ icon: value }, index);
+                  changeState({
+                    updatePoints: true,
+                    highlightDot: true,
+                  });
+                }}                
+                isMulti={false}
+                noSelectedPlaceholder={__(
+                  "Select Icon",
+                  "responsive-block-editor-addons"
+                )}
+              />
+          </BaseControl>
         </Fragment>
       );
     };
@@ -654,6 +674,18 @@ class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({
                       dotSize: value,
+                    })
+                  }
+                  min={1}
+                  max={100}
+                  allowReset
+                />
+                <RangeControl
+                  label={__("Point Spacing", "responsive-block-editor-addons")}
+                  value={pointSpacing}
+                  onChange={(value) =>
+                    setAttributes({
+                      pointSpacing: value,
                     })
                   }
                   min={1}

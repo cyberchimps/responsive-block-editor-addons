@@ -11969,7 +11969,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'position'                  => 'absolute',
 					'border-radius'             => '50%',
 					'background-color'          => $attr['pointBackgroundColor'],
-					'padding'                   => self::get_css_value( '6', 'px' ),
+					'padding'                   => self::get_css_value( $attr['pointSpacing'], 'px' ),
 					'animation-name'            => $attr['animationName'] . '' . $attr['animationDirection'],
 					'animation-timing-function' => $attr['animationCurve'],
 					'animation-duration'        => $attr['animationDuration'] . 'ms',
@@ -11981,8 +11981,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'animation' => $attr['pulseEffect'] ? '' : 'none',
 				),
 				' .responsive_block_addons__dot-content svg' => array(
-					'fill'      => $attr['iconColor'],
 					'font-size' => self::get_css_value( $attr['dotSize'], 'px' ),
+				),
+				' .responsive_block_addons__dot-content' => array(
+					'fill' => $attr['iconColor'],
 				),
 				' .responsive_block_addons__wrapper'     => array(
 					'position' => 'relative',
@@ -12024,6 +12026,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'animationCurve'       => '',
 				'pulseEffect'          => true,
 				'dotSize'              => 16,
+				'pointSpacing'         => 6,
 			);
 		}
 

@@ -80,7 +80,7 @@ export default class Save extends Component {
         };
 
         const innerDotStyle = {
-          color: imagePointsParsed[index].color
+          fill: imagePointsParsed[index].color
             ? imagePointsParsed[index].color
             : dotColor
             ? dotColor
