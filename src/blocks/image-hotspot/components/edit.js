@@ -3,6 +3,7 @@ import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 import { loadGoogleFont } from "../../../utils/font";
 import renderSVG from "../../../renderIcon";
+import ReactDOMServer from "react-dom/server";
 
 const { __ } = wp.i18n;
 import { merge, isEqual, get, unescape, cloneDeep } from "lodash";
@@ -449,7 +450,7 @@ class Edit extends Component {
 			<div class="responsive_block_addons__dot-wrapper">
 				<div` +
       (dot_style != "" ? ' style="' + dot_style + '"' : "") +
-      ` class="responsive_block_addons__dot-content"><i class="fas fa-${icon} responsive_block_addons__dot-icon"></i></div>
+      ` class="responsive_block_addons__dot-content">${ReactDOMServer.renderToString(renderSVG(icon))}</div>
 				<div class="responsive_block_addons__dot-description">
 					<div class="responsive_block_addons___dot-title">${link_HTML}</div>
 				</div>
@@ -745,9 +746,51 @@ class Edit extends Component {
       ""
     );
 
+		const controls = (
+			<Fragment>
+				{ ! url && (
+					<MediaPlaceholder
+						icon={'format-image'}
+						className={'responsive_block_addons'}
+						labels={{
+							title: __('Image Hotspot', 'responsive-block-editor-addons'),
+						}}
+						onSelect={onSelectMedia}
+						accept="image/*"
+						allowedTypes={ALLOWED_MEDIA_TYPES}
+					/>
+				)}
+				<BlockControls>
+					{ !! url && (
+						<Fragment>
+							<MediaUploadCheck>
+								<ToolbarGroup>
+									<MediaUpload
+										onSelect={onSelectMedia}
+										allowedTypes={ALLOWED_MEDIA_TYPES}
+										value={id}
+										render={({open}) => (
+											<ToolbarButton
+												className="components-toolbar__control"
+												label={__('Edit Media', 'responsive-block-editor-addons')}
+												icon="format-image"
+												onClick={open}
+											/>
+										)}
+									/>
+								</ToolbarGroup>
+							</MediaUploadCheck>
+						</Fragment>
+					)}
+				</BlockControls>
+			</Fragment>
+		);
+
+
     return (
       <Fragment>
         <div {...wrapperProps}>
+          {controls}
           {!!url && (
             <Fragment>
               <BlockControls>

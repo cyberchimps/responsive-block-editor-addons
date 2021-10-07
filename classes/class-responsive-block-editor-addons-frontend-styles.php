@@ -11982,7 +11982,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive_block_addons__dot-content svg' => array(
 					'fill'      => $attr['iconColor'],
-					'font-size' => self::get_css_value( '14', 'px' ),
+					'font-size' => self::get_css_value( $attr['dotSize'], 'px' ),
 				),
 				' .responsive_block_addons__wrapper'     => array(
 					'position' => 'relative',
@@ -12023,6 +12023,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'animationDelay'       => 0,
 				'animationCurve'       => '',
 				'pulseEffect'          => true,
+				'dotSize'              => 16,
 			);
 		}
 

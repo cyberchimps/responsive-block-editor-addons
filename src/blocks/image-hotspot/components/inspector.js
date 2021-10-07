@@ -3,7 +3,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import { isEqual } from "lodash";
+import { isEqual, unescape } from "lodash";
 
 const { __ } = wp.i18n;
 
@@ -577,6 +577,7 @@ class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
+        {renderEditModal(getState("currentPoint"))}
         {this.props.isSelectedPoint() && (
           <PanelBody
             title={__("Point Settings", "responsive-block-editor-addons")}
@@ -588,7 +589,6 @@ class Inspector extends Component {
         {!this.props.isSelectedPoint() && (
           <InspectorTabs>
             <InspectorTab key={"content"}>
-              {renderEditModal(getState("currentPoint"))}
               <PanelBody initialOpen={true}>
                 <BaseControl
                   className="editor-bg-image-control"

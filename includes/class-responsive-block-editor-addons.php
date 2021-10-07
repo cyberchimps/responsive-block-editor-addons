@@ -876,7 +876,7 @@ class Responsive_Block_Editor_Addons {
 		if ( is_admin() ) {
 			wp_enqueue_script(//phpcs:ignore
 				'responsive_block_editor_addons-image-hotspot-script-unescape',
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/vendors/lodash.unescape/unescape.min.js',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/js/vendors/lodash.unescape/unescape.min.js',
 				array(),
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 				true

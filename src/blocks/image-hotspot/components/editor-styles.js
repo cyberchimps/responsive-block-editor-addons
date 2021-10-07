@@ -47,8 +47,8 @@ function EditorStyles(props) {
       display: pulseEffect ? "block" : "none",
       animation: pulseEffect ? "" : "none",
     },
-    " .responsive_block_addons__dot-content": {
-      color: iconColor,
+    " .responsive_block_addons__dot-content svg": {
+      fill: iconColor,
       "font-size": generateCSSUnit(dotSize, "px"),
     },
     " .responsive_block_addons___wrapper": {
