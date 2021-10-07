@@ -48,6 +48,8 @@ class CommonFunctionsPage
     public $excerptTypography = '//button[text()="Excerpt Typography"]';
     public $ctaTypography = '//button[text()="CTA Typography"]';
     public $colorStyleBtn = '//button[text()="Color"]';
+    public $imageStyleBtn = '//button[text()="Image"]';
+    public $imageSettingsStyleBtn = '//button[text()="Image Settings"]';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
