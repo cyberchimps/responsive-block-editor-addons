@@ -821,7 +821,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 	 */
 	public function test_get_responsive_block_advanced_column_child_block_default_attributes() {
 		$expected_values = array(
-			'width'                    => 50,
+			'width'                    => '',
 			'topPadding'               => '',
 			'bottomPadding'            => '',
 			'leftPadding'              => '',

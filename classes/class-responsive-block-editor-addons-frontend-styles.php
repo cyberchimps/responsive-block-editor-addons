@@ -2027,7 +2027,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_advanced_column_child_block_default_attributes() {
 			return array(
-				'width'                    => 50,
+				'width'                    => '',
 				'topPadding'               => '',
 				'bottomPadding'            => '',
 				'leftPadding'              => '',
