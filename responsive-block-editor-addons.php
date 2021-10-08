@@ -48,3 +48,36 @@ function run_responsive_block_editor_addons() {
 }
 
 run_responsive_block_editor_addons();
+
+if ( ! function_exists( 'ra_fs' ) ) {
+    /**
+     * Helper function to access SDK.
+     */
+    function ra_fs() {
+        global $rao_fs;
+
+        if ( ! isset( $rao_fs ) ) {
+            // Include Analytics SDK.
+            require_once dirname( __FILE__ ) . '/analytics/start.php';
+
+            $rao_fs = ras_dynamic_init(
+                array(
+                    'id'              => '1',
+                    'slug'            => 'responsive-block-editor-addons',
+                    'product_name'    => 'Responsive Gutenberg Blocks Library',
+                    'module_type'     => 'plugin',
+                    'version'         => RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+                    'plugin_basename' => 'responsive-block-editor-addons/responsive-block-editor-addons.php',
+                    'plugin_url'      => RESPONSIVE_BLOCK_EDITOR_ADDONS_URL,
+                )
+            );
+        }
+
+        return $rao_fs;
+    }
+
+    // Init Analytics.
+    ra_fs();
+    // SDK initiated.
+    do_action( 'ra_fs_loaded' );
+}
