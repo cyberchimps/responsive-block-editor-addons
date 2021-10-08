@@ -200,7 +200,7 @@ class Edit extends Component {
 
   initHotspotEvents() {
     const { clientId } = this.props;
-    const { dotSize } = this.props.attributes;
+    const { hotspotSize } = this.props.attributes;
 
     const {
       onCancelPoint,
@@ -354,7 +354,7 @@ class Edit extends Component {
       $imageDots.removeClass("is-selected");
 
       if (getState("action") == "drop") {
-        const coords = getRelativePosition(event, $(wrapper), dotSize);
+        const coords = getRelativePosition(event, $(wrapper), hotspotSize);
 
         const hotspot = this.renderDot(
           getState("currentPoint"),
@@ -395,29 +395,28 @@ class Edit extends Component {
     override_backgroundColor = ""
   ) {
     const {
-      dotIcon,
-      dotSize,
-      dotPaddings,
-      dotColor,
-      dotBackground,
-      dotOpacity,
-      dotPulse,
+      hotspotIcon,
+      hotspotSize,
+      hotspotPadding,
+      hotspotColor,
+      hotspotBackground,
+      hotspotOpacity,
     } = this.props.attributes;
 
-    let icon = override_icon ? override_icon : dotIcon,
-      color = override_color ? override_color : dotColor,
+    let icon = override_icon ? override_icon : hotspotIcon,
+      color = override_color ? override_color : hotspotColor,
       background = override_backgroundColor
         ? override_backgroundColor
-        : dotBackground;
+        : hotspotBackground;
 
     let style = "";
     let dot_style = "";
 
-    if (dotSize && dotSize != 16) {
-      dot_style += "font-size: " + dotSize + "px;";
+    if (hotspotSize && hotspotSize != 16) {
+      dot_style += "font-size: " + hotspotSize + "px;";
     }
-    if (dotPaddings && dotPaddings != 6) {
-      style += "padding: " + dotPaddings + "px;";
+    if (hotspotPadding && hotspotPadding != 6) {
+      style += "padding: " + hotspotPadding + "px;";
     }
     if (color) {
       dot_style += "fill: " + color + ";";
@@ -425,13 +424,11 @@ class Edit extends Component {
     if (background) {
       style += "background-color: " + background + ";";
     }
-    if (dotOpacity && dotOpacity != 100) {
-      style += "opacity: " + dotOpacity / 100 + ";";
+    if (hotspotOpacity && hotspotOpacity != 100) {
+      style += "opacity: " + hotspotOpacity / 100 + ";";
     }
 
-    let class_name = classnames(`responsive_block_addons___dot`, {
-      [`has-animation-${dotPulse}`]: dotPulse != "none",
-    });
+    let class_name = classnames(`responsive_block_addons___dot`);
 
     let link_HTML = "";
     if (link != "") {

@@ -59,11 +59,11 @@ const attributes = {
   url: {
     type: "string",
   },
-  dotIcon: {
+  hotspotIcon: {
     type: "string",
     default: "fas fa-plus",
   },
-  dotSize: {
+  hotspotSize: {
     type: "number",
     default: 16,
   },
@@ -87,40 +87,19 @@ const attributes = {
     type: "string",
     default: "shift-toward",
   },
-  dotPaddings: {
+  hotspotPadding: {
     type: "number",
     default: 6,
   },
-  dotColor: {
+  hotspotColor: {
     type: "string",
   },
-  dotBackground: {
+  hotspotBackground: {
     type: "string",
   },
-  dotOpacity: {
+  hotspotOpacity: {
     type: "number",
     default: 100,
-  },
-  dotPulse: {
-    type: "string",
-    default: "pulse",
-  },
-  dotAppearanceAnimation: {
-    type: "string",
-    source: "attribute",
-    selector: ".responsive_block_addons",
-    attribute: "data-appearance-animation",
-    default: "none",
-  },
-  align: {
-    type: "string",
-  },
-  hoverAnimation: {
-    type: "string",
-    source: "attribute",
-    selector: ".responsive_block_addons",
-    attribute: "data-animation",
-    default: "",
   },
 };
 

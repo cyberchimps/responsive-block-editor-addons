@@ -7,7 +7,7 @@ function EditorStyles(props) {
     pointBackgroundColor,
     iconColor,
     pointOpacity,
-    dotSize,
+    hotspotSize,
     animationName,
     animationDirection,
     animationRepeat,
@@ -50,7 +50,7 @@ function EditorStyles(props) {
       animation: pulseEffect ? "" : "none",
     },
     " .responsive_block_addons__dot-content svg": {
-      "font-size": generateCSSUnit(dotSize, "px"),
+      "font-size": generateCSSUnit(hotspotSize, "px"),
     },
     " .responsive_block_addons__dot-content": {
       fill: iconColor,

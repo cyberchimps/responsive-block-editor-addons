@@ -14,20 +14,17 @@ export default class Save extends Component {
       id,
       url,
       alt,
-      hoverAnimation,
       imagePoints,
       tooltipTrigger,
       tooltipTheme,
       tooltipArrow,
       tooltipAnimation,
-      dotIcon,
-      dotSize,
-      dotPaddings,
-      dotColor,
-      dotBackground,
-      dotOpacity,
-      dotPulse,
-      dotAppearanceAnimation,
+      hotspotIcon,
+      hotspotSize,
+      hotspotPadding,
+      hotspotColor,
+      hotspotBackground,
+      hotspotOpacity,
       className,
     } = this.props.attributes;
 
@@ -39,10 +36,6 @@ export default class Save extends Component {
         `responsive-block-editor-addons-block-image-hotspot`,
         `block-${block_id}`
       ),
-      "data-animation": hoverAnimation ? hoverAnimation : undefined,
-      "data-appearance-animation": dotAppearanceAnimation
-        ? dotAppearanceAnimation
-        : undefined,
     };
 
     const imageHTML = url ? (
@@ -57,14 +50,12 @@ export default class Save extends Component {
 
     const renderPoints = (index) => {
       if (typeof imagePointsParsed[index] !== "undefined") {
-        const dotClass = classnames(`responsive_block_addons__dot`, {
-          [`has-animation-${dotPulse}`]: dotPulse != "none",
-        });
+        const dotClass = classnames(`responsive_block_addons__dot`);
 
         const dotStyle = {
-          padding: dotPaddings && dotPaddings != 6 ? dotPaddings : undefined,
+          padding: hotspotPadding && hotspotPadding != 6 ? hotspotPadding : undefined,
           opacity:
-            dotOpacity && dotOpacity != 100 ? dotOpacity / 100 : undefined,
+            hotspotOpacity && hotspotOpacity != 100 ? hotspotOpacity / 100 : undefined,
           left: imagePointsParsed[index].position.x
             ? imagePointsParsed[index].position.x
             : undefined,
@@ -74,18 +65,18 @@ export default class Save extends Component {
 
           backgroundColor: imagePointsParsed[index].backgroundColor
             ? imagePointsParsed[index].backgroundColor
-            : dotBackground
-            ? dotBackground
+            : hotspotBackground
+            ? hotspotBackground
             : undefined,
         };
 
         const innerDotStyle = {
           fill: imagePointsParsed[index].color
             ? imagePointsParsed[index].color
-            : dotColor
-            ? dotColor
+            : hotspotColor
+            ? hotspotColor
             : undefined,
-          fontSize: dotSize && dotSize != 16 ? dotSize : undefined,
+          fontSize: hotspotSize && hotspotSize != 16 ? hotspotSize : undefined,
         };
 
         var link_HTML = "";
@@ -98,8 +89,8 @@ export default class Save extends Component {
 
         var icon = imagePointsParsed[index].icon
           ? imagePointsParsed[index].icon
-          : dotIcon
-          ? dotIcon
+          : hotspotIcon
+          ? hotspotIcon
           : undefined;
 
         if (imagePointsParsed[index].link != "") {

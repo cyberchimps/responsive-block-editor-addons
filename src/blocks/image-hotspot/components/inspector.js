@@ -46,8 +46,8 @@ class Inspector extends Component {
         pointBackgroundColor,
         iconColor,
         pointOpacity,
-        dotIcon,
-        dotSize,
+        hotspotIcon,
+        hotspotSize,
         animationName,
         animationDirection,
         animationRepeat,
@@ -645,8 +645,8 @@ class Inspector extends Component {
                   icons={svg_icons}
                   renderFunc={renderSVG}
                   theme="default"
-                  value={dotIcon}
-                  onChange={(value) => setAttributes({ dotIcon: value })}
+                  value={hotspotIcon}
+                  onChange={(value) => setAttributes({ hotspotIcon: value })}
                   isMulti={false}
                   noSelectedPlaceholder={__(
                     "Select Icon",
@@ -655,10 +655,10 @@ class Inspector extends Component {
                 />
                 <RangeControl
                   label={__("Hotspot Size", "responsive-block-editor-addons")}
-                  value={dotSize}
+                  value={hotspotSize}
                   onChange={(value) =>
                     setAttributes({
-                      dotSize: value,
+                      hotspotSize: value,
                     })
                   }
                   min={1}
