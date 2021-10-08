@@ -67,18 +67,12 @@ const attributes = {
     type: "number",
     default: 16,
   },
-
   alt: {
     type: "string",
-    source: "attribute",
-    selector: ".responsive_block_addons__wrapper img",
     attribute: "alt",
   },
   tooltipTrigger: {
     type: "string",
-    source: "attribute",
-    selector: ".responsive_block_addons",
-    attribute: "data-trigger",
     default: "click",
   },
   tooltipTheme: {

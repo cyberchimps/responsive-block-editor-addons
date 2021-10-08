@@ -4,6 +4,7 @@ import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import { isEqual, unescape } from "lodash";
+import rbeaControls from "./controlOptions";
 
 const { __ } = wp.i18n;
 
@@ -205,24 +206,7 @@ class Inspector extends Component {
           <SelectControl
             label={__("Tooltip Position", "responsive-block-editor-addons")}
             value={points[index].placement}
-            options={[
-              {
-                value: "top",
-                label: __("Top", "responsive-block-editor-addons"),
-              },
-              {
-                value: "right",
-                label: __("Right", "responsive-block-editor-addons"),
-              },
-              {
-                value: "bottom",
-                label: __("Bottom", "responsive-block-editor-addons"),
-              },
-              {
-                value: "left",
-                label: __("Left", "responsive-block-editor-addons"),
-              },
-            ]}
+            options={rbeaControls.tooltipPositions}
             onChange={(value) => {
               updateArrValues({ placement: value }, index);
               changeState({
@@ -468,67 +452,18 @@ class Inspector extends Component {
           max={100}
           step={0.5}
         />
-        {popup ? (
-          <SelectControl
-            label={__("Tooltip Position", "responsive-block-editor-addons")}
-            selected={imagePointsParsed[index].placement}
-            options={[
-              {
-                value: "top",
-                label: __("Top", "responsive-block-editor-addons"),
-              },
-              {
-                value: "right",
-                label: __("Right", "responsive-block-editor-addons"),
-              },
-              {
-                value: "bottom",
-                label: __("Bottom", "responsive-block-editor-addons"),
-              },
-              {
-                value: "left",
-                label: __("Left", "responsive-block-editor-addons"),
-              },
-            ]}
-            onChange={(value) => {
-              updateArrValues({ placement: value }, index);
-              changeState({
-                updatePoints: true,
-                highlightDot: true,
-              });
-            }}
-          />
-        ) : (
-          <RadioControl
-            label={__("Tooltip Position", "responsive-block-editor-addons")}
-            selected={imagePointsParsed[index].placement}
-            options={[
-              {
-                value: "top",
-                label: __("Top", "responsive-block-editor-addons"),
-              },
-              {
-                value: "right",
-                label: __("Right", "responsive-block-editor-addons"),
-              },
-              {
-                value: "bottom",
-                label: __("Bottom", "responsive-block-editor-addons"),
-              },
-              {
-                value: "left",
-                label: __("Left", "responsive-block-editor-addons"),
-              },
-            ]}
-            onChange={(value) => {
-              updateArrValues({ placement: value }, index);
-              changeState({
-                updatePoints: true,
-                highlightDot: true,
-              });
-            }}
-          />
-        )}
+        <SelectControl
+          label={__("Tooltip Position", "responsive-block-editor-addons")}
+          value={imagePointsParsed[index].placement}
+          options={rbeaControls.tooltipPositions}
+          onChange={(value) => {
+            updateArrValues({ placement: value }, index);
+            changeState({
+              updatePoints: true,
+              highlightDot: true,
+            });
+          }}
+        />
       </Fragment>
     );
 
@@ -584,12 +519,12 @@ class Inspector extends Component {
         case "content": {
           return <Fragment>{contentFields(index, popup)}</Fragment>;
         }
-        case "placement": {
-          return <Fragment>{placementFields(index, popup)}</Fragment>;
-        }
         case "style": {
           return <Fragment>{styleFields(index, popup)}</Fragment>;
         }
+        case "advance": {
+          return <Fragment>{placementFields(index, popup)}</Fragment>;
+        } 
       }
     };
 
@@ -600,23 +535,7 @@ class Inspector extends Component {
             <TabPanel
               className="responsive-block-editor-addons-modal-editor-tabs"
               activeClass="is-active"
-              tabs={[
-                {
-                  name: "content",
-                  title: __("Content", "responsive-block-editor-addons"),
-                  className: "components-button",
-                },
-                {
-                  name: "placement",
-                  title: __("Position", "responsive-block-editor-addons"),
-                  className: "components-button",
-                },
-                {
-                  name: "style",
-                  title: __("Style", "responsive-block-editor-addons"),
-                  className: "components-button",
-                },
-              ]}
+              tabs={rbeaControls.modalTabNames}
             >
               {(tab) => renderDotTabs(self, tab, index, popup)}
             </TabPanel>
@@ -706,11 +625,7 @@ class Inspector extends Component {
                   label={__("Image Size")}
                   value={imageSize}
                   onChange={onChangeImageSize}
-                  options={[
-                    { value: "full", label: __("Full Size") },
-                    { value: "thumbnail", label: __("Thumbnail") },
-                    { value: "medium", label: __("Medium") },
-                  ]}
+                  options={rbeaControls.imageSize}
                 />
                 <SelectControl
                   label={__(
@@ -718,16 +633,7 @@ class Inspector extends Component {
                     "responsive-block-editor-addons"
                   )}
                   value={tooltipTrigger}
-                  options={[
-                    {
-                      value: "hover",
-                      label: __("On Hover", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "click",
-                      label: __("On Click", "responsive-block-editor-addons"),
-                    },
-                  ]}
+                  options={rbeaControls.openTooltip}
                   onChange={(tooltipTrigger) =>
                     setAttributes({ tooltipTrigger })
                   }
@@ -834,53 +740,13 @@ class Inspector extends Component {
                   label={__("Tooltip Theme", "responsive-block-editor-addons")}
                   value={tooltipTheme}
                   onChange={(tooltipTheme) => setAttributes({ tooltipTheme })}
-                  options={[
-                    {
-                      value: "light",
-                      label: __("Default", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "light-border",
-                      label: __(
-                        "Light Border",
-                        "responsive-block-editor-addons"
-                      ),
-                    },
-                    {
-                      value: "dark",
-                      label: __("Dark", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "material",
-                      label: __("Material", "responsive-block-editor-addons"),
-                    },
-                    {
-                      value: "translucent",
-                      label: __(
-                        "Translucent",
-                        "responsive-block-editor-addons"
-                      ),
-                    },
-                  ]}
+                  options={rbeaControls.tooltipTheme}
                 />
                 <SelectControl
                   label={__('Tooltip Animation', 'responsive-block-editor-addons')}
                   value={tooltipAnimation}
                   onChange={tooltipAnimation => setAttributes({ tooltipAnimation })}
-                  options={[
-                    { value: 'shift-away'  , label: __( 'Shift Away', 'responsive-block-editor-addons' ) },
-                    { value: 'shift-away-subtle'  , label: __( 'Shift Away Subtle', 'responsive-block-editor-addons' ) },
-                    { value: 'shift-away-extreme'  , label: __( 'Shift Away Extreme', 'responsive-block-editor-addons' ) },
-                    { value: 'shift-toward', label: __( 'Shift Toward', 'responsive-block-editor-addons' ) },
-                    { value: 'shift-toward-subtle', label: __( 'Shift Toward Subtle', 'responsive-block-editor-addons' ) },
-                    { value: 'shift-toward-extreme', label: __( 'Shift Toward Extreme', 'responsive-block-editor-addons' ) },
-                    { value: 'scale'       , label: __( 'Scale', 'responsive-block-editor-addons' ) },
-                    { value: 'scale-subtle'       , label: __( 'Scale Subtle', 'responsive-block-editor-addons' ) },
-                    { value: 'scale-extreme'       , label: __( 'Scale Extreme', 'responsive-block-editor-addons' ) },
-                    { value: 'perspective' , label: __( 'Perspective', 'responsive-block-editor-addons' ) },
-                    { value: 'perspective-subtle' , label: __( 'Perspective Subtle', 'responsive-block-editor-addons' ) },
-                    { value: 'perspective-extreme' , label: __( 'Perspective Extreme', 'responsive-block-editor-addons' ) },
-                  ]}
+                  options={rbeaControls.tooltipAnimation}
                 />
               </PanelBody>
               <PanelBody
@@ -901,16 +767,7 @@ class Inspector extends Component {
                   label={__("Animation", "responsive-block-editor-addons")}
                   value={animationName}
                   onChange={(value) => setAttributes({ animationName: value })}
-                  options={[
-                    { value: "none", label: "None" },
-                    { value: "fade", label: __("Fade") },
-                    { value: "slide", label: __("Slide") },
-                    { value: "bounce", label: __("Bounce") },
-                    { value: "zoom", label: __("Zoom") },
-                    { value: "flip", label: __("Flip") },
-                    { value: "fold", label: __("Fold") },
-                    { value: "rotate", label: "Rotate" },
-                  ]}
+                  options={rbeaControls.rbeaAnimation}
                 />
                 {animationName !== "none" && (
                   <Fragment>
@@ -959,13 +816,7 @@ class Inspector extends Component {
                       onChange={(value) =>
                         setAttributes({ animationCurve: value })
                       }
-                      options={[
-                        { value: "ease-in-out", label: "ease-in-out" },
-                        { value: "ease", label: "ease" },
-                        { value: "ease-in", label: "ease-in" },
-                        { value: "ease-out", label: "ease-out" },
-                        { value: "linear", label: "linear" },
-                      ]}
+                      options={rbeaControls.rbeaAnimationCurve}
                     />
                   </Fragment>
                 )}
