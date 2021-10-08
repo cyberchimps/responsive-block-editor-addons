@@ -58,7 +58,7 @@ export default class Inspector extends Component {
 	  if(validNumberRegex.test(number)) {
 		  this.props.setAttributes({isValidNumber: true})
 	  }
-	  else{ 
+	  else{
 		this.props.setAttributes({isValidNumber: false})
 	  }
 	  if(number.length > 10) {
@@ -71,7 +71,7 @@ export default class Inspector extends Component {
 	if(validMailRegex.test(mail)) {
 		this.props.setAttributes({isValidMail: true})
 	}
-	else{ 
+	else{
 	  this.props.setAttributes({isValidMail: false})
 	}
 }
@@ -141,19 +141,19 @@ export default class Inspector extends Component {
     const buttonSizeOptions = [
 		{
 		  value: "responsive-block-editor-addons-call-mail-button-size-medium",
-		  label: __("Medium"),
+		  label: __("Medium", "responsive-block-editor-addons"),
 		},
 		{
 		  value: "responsive-block-editor-addons-call-mail-button-size-small",
-		  label: __("Small"),
+		  label: __("Small", "responsive-block-editor-addons"),
 		},
 		{
 		  value: "responsive-block-editor-addons-call-mail-button-size-large",
-		  label: __("Large"),
+		  label: __("Large", "responsive-block-editor-addons"),
 		},
 		{
 		  value: "responsive-block-editor-addons-call-mail-button-size-extralarge",
-		  label: __("Extra Large"),
+		  label: __("Extra Large", "responsive-block-editor-addons"),
 		},
 	  ];
 
@@ -233,20 +233,20 @@ export default class Inspector extends Component {
         <InspectorTabs>
           <InspectorTab key={'content'}>
 		  	<PanelBody
-				title={__("Button Type", "responsive-block-editor-addons")}  
+				title={__("Button Type", "responsive-block-editor-addons")}
 				initialOpen={true}
 			>
 				<SelectControl
 					label={__("Button Type", "responsive-block-editor-addons")}
 					value={buttonToShow}
 					options={[
-						{value: "call", label: __("Call Button")},
-						{value: "mail", label: __("Mail Button")} 
+						{value: "call", label: __("Call Button", "responsive-block-editor-addons")},
+						{value: "mail", label: __("Mail Button", "responsive-block-editor-addons")}
 					]}
 					onChange= { (value)=> setAttributes({buttonToShow: value}) }
 				/>
 				{
-					"call" === buttonToShow && ( 
+					"call" === buttonToShow && (
 						<Fragment>
 							<TextControl
 								label={__("Enter your phone number", "responsive-block-editor-addons")}
@@ -255,7 +255,7 @@ export default class Inspector extends Component {
 								onChange={ (value) => {
 									this.onChangeNumber(value)
 									setAttributes({phone: value})
-									} 
+									}
 								}
 							/>
 							{
@@ -276,7 +276,7 @@ export default class Inspector extends Component {
 								onChange={ (value) => {
 									this.onChangeMail(value)
 									setAttributes({mail: value})
-								} 
+								}
 							}
 							/>
 							{
@@ -309,9 +309,9 @@ export default class Inspector extends Component {
 					label={__("Button Width Type", "responsive-block-editor-addons")}
 					value={buttonWidthType}
 					options={[
-						{value: "fixed", label: __("Fixed")},
-						{value: "flexible", label: __("Flexible")},
-						{value: "full", label: __("Full")}
+						{value: "fixed", label: __("Fixed", "responsive-block-editor-addons")},
+						{value: "flexible", label: __("Flexible", "responsive-block-editor-addons")},
+						{value: "full", label: __("Full", "responsive-block-editor-addons")}
 					]}
 					onChange={(value) => setAttributes({buttonWidthType: value})}
 				/>
@@ -420,7 +420,7 @@ export default class Inspector extends Component {
 				title={__("Button Icon", "responsive-block-editor-addons")}
 				initialOpen={false}
 			>
-				<p className="components-base-control__label">{__("Selected Icon")}</p>
+				<p className="components-base-control__label">{__("Selected Icon", "responsive-block-editor-addons")}</p>
 				<FontIconPicker
 				icons={svg_icons}
 				renderFunc={renderSVG}
@@ -428,14 +428,14 @@ export default class Inspector extends Component {
 				value={icon}
 				onChange={(value) => setAttributes({ icon: value })}
 				isMulti={false}
-				noSelectedPlaceholder={__("Select Icon")}
+				noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
 				/>
 				<SelectControl
 					label={__("Icon Position", "responsive-block-editor-addons")}
 					value={iconPosition}
 					options={[
-						{value: "left", label: __("Left")},
-						{value: "right", label: __("Right")}
+						{value: "left", label: __("Left", "responsive-block-editor-addons")},
+						{value: "right", label: __("Right", "responsive-block-editor-addons")}
 					]}
 					onChange={(value) => setAttributes({iconPosition: value})}
 				/>
@@ -573,7 +573,7 @@ export default class Inspector extends Component {
 				initialOpen={false}
 			>
 				<p className="responsive-block-editor-addons-setting-label">
-					{__("Button Color")}
+					{__("Button Color", "responsive-block-editor-addons")}
 					<span className="components-base-control__label">
 					<span
 						className="component-color-indicator"
@@ -590,7 +590,7 @@ export default class Inspector extends Component {
 					!buttonTransparent && (
 						<Fragment>
 							<p className="responsive-block-editor-addons-setting-label">
-								{__("Button Text Color")}
+								{__("Button Text Color", "responsive-block-editor-addons")}
 								<span className="components-base-control__label">
 								<span
 									className="component-color-indicator"
@@ -607,7 +607,7 @@ export default class Inspector extends Component {
 					)
 				}
 				<p className="responsive-block-editor-addons-setting-label">
-					{__("Button Color Hover")}
+					{__("Button Color Hover", "responsive-block-editor-addons")}
 					<span className="components-base-control__label">
 					<span
 						className="component-color-indicator"
@@ -624,7 +624,7 @@ export default class Inspector extends Component {
 					!buttonTransparent && (
 						<Fragment>
 							<p className="responsive-block-editor-addons-setting-label">
-								{__("Button Text Color Hover")}
+								{__("Button Text Color Hover", "responsive-block-editor-addons")}
 								<span className="components-base-control__label">
 								<span
 									className="component-color-indicator"
@@ -642,13 +642,13 @@ export default class Inspector extends Component {
 				}
 			</PanelBody>
 			<TypographyHelperControl
-					title={__("Button Text Typography", "responsive-block-editor-addons")} 
+					title={__("Button Text Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="text%s"
 					values = {{family: textFontFamily, size: textFontSize, sizeMobile: textFontSizeMobile, sizeTablet: textFontSizeTablet, weight: textFontWeight, height: textLineHeight}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 			/>
           </InspectorTab>
           <InspectorTab key={'advance'}>
@@ -656,15 +656,15 @@ export default class Inspector extends Component {
 				<ResponsiveMarginControl
 					attrNameTemplate="block%s"
 					values = {{
-					desktopTop:blockTopMargin, 
-					desktopBottom:blockBottomMargin, 
-					desktopLeft:blockLeftMargin, 
-					desktopRight:blockRightMargin, 
+					desktopTop:blockTopMargin,
+					desktopBottom:blockBottomMargin,
+					desktopLeft:blockLeftMargin,
+					desktopRight:blockRightMargin,
 
 					tabletTop:blockTopMarginTablet,
-					tabletBottom:blockBottomMarginTablet, 
-					tabletLeft:blockLeftMarginTablet, 
-					tabletRight:blockRightMarginTablet, 
+					tabletBottom:blockBottomMarginTablet,
+					tabletLeft:blockLeftMarginTablet,
+					tabletRight:blockRightMarginTablet,
 
 					mobileTop:blockTopMarginMobile,
 					mobileBottom:blockBottomMarginMobile,
@@ -672,20 +672,20 @@ export default class Inspector extends Component {
 					mobileRight:blockRightMarginMobile,
 					}}
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<ResponsivePaddingControl
 					attrNameTemplate="block%s"
 					values = {{
-					desktopTop:blockTopPadding, 
-					desktopBottom:blockBottomPadding, 
-					desktopLeft:blockLeftPadding, 
-					desktopRight:blockRightPadding, 
+					desktopTop:blockTopPadding,
+					desktopBottom:blockBottomPadding,
+					desktopLeft:blockLeftPadding,
+					desktopRight:blockRightPadding,
 
 					tabletTop:blockTopPaddingTablet,
-					tabletBottom:blockBottomPaddingTablet, 
-					tabletLeft:blockLeftPaddingTablet, 
-					tabletRight:blockRightPaddingTablet, 
+					tabletBottom:blockBottomPaddingTablet,
+					tabletLeft:blockLeftPaddingTablet,
+					tabletRight:blockRightPaddingTablet,
 
 					mobileTop:blockTopPaddingMobile,
 					mobileBottom:blockBottomPaddingMobile,
@@ -693,7 +693,7 @@ export default class Inspector extends Component {
 					mobileRight:blockRightPaddingMobile,
 					}}
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 			</InspectorAdvancedControls>
           </InspectorTab>

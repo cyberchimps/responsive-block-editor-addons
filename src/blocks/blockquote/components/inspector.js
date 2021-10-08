@@ -286,7 +286,7 @@ export default class Inspector extends Component {
                 }
               />
               <Fragment>
-                <p className="components-base-control__label">{__("Icon")}</p>
+                <p className="components-base-control__label">{__("Icon", "responsive-block-editor-addons")}</p>
                 <FontIconPicker
                   icons={svg_icons}
                   renderFunc={renderSVG}
@@ -296,7 +296,7 @@ export default class Inspector extends Component {
                     this.props.setAttributes({ icon: value })
                   }
                   isMulti={false}
-                  noSelectedPlaceholder={__("Select Icon")}
+                  noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
                 />
               </Fragment>
               <RangeControl
@@ -312,7 +312,7 @@ export default class Inspector extends Component {
                 step={1}
               />
               <p>
-                {__("Quote Color")}
+                {__("Quote Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -423,7 +423,7 @@ export default class Inspector extends Component {
                 allowReset
               />
             </PanelBody>
-            <PanelBody title={__("Border")} initialOpen={false}>
+            <PanelBody title={__("Border", "responsive-block-editor-addons")} initialOpen={false}>
                 <BlockBorderHelperControl
                     attrNameTemplate="block%s"
                     values = {{radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor}}
@@ -432,24 +432,24 @@ export default class Inspector extends Component {
                 />
               <BoxShadowControl
                 setAttributes={setAttributes}
-                label={__("Box Shadow")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                label={__("Box Shadow", "responsive-block-editor-addons")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
-                  label: __("Horizontal"),
+                  label: __("Horizontal", "responsive-block-editor-addons"),
                 }}
                 boxShadowVOffset={{
                   value: boxShadowVOffset,
-                  label: __("Vertical"),
+                  label: __("Vertical", "responsive-block-editor-addons"),
                 }}
-                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
                 boxShadowSpread={{
                   value: boxShadowSpread,
-                  label: __("Spread"),
+                  label: __("Spread", "responsive-block-editor-addons"),
                 }}
                 boxShadowPosition={{
                   value: boxShadowPosition,
-                  label: __("Position"),
+                  label: __("Position", "responsive-block-editor-addons"),
                 }}
               />
             </PanelBody>
@@ -529,21 +529,21 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
 				<TypographyHelperControl
-					title={__("Quote Typography", "responsive-block-editor-addons")} 
+					title={__("Quote Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="quote%s"
 					values = {{
-						family: quoteFontFamily, 
-						size: quoteFontSize, 
-						sizeMobile: quoteFontSizeMobile, 
-						sizeTablet: quoteFontSizeTablet, 
-						weight: quoteFontWeight, 
+						family: quoteFontFamily,
+						size: quoteFontSize,
+						sizeMobile: quoteFontSizeMobile,
+						sizeTablet: quoteFontSizeTablet,
+						weight: quoteFontWeight,
 						height: quoteLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
-				/>	
+					{...this.props}
+				/>
 			</PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}></InspectorTab>

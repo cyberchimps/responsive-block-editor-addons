@@ -220,12 +220,12 @@ export default class Inspector extends Component {
                   tabs={[
                     {
                       name: "normal",
-                      title: __("Normal"),
+                      title: __("Normal", "responsive-block-editor-addons"),
                       className: "rbea-normal-tab",
                     },
                     {
                       name: "hover",
-                      title: __("Hover"),
+                      title: __("Hover", "responsive-block-editor-addons"),
                       className: "rbea-focus-tab",
                     },
                   ]}
@@ -236,7 +236,7 @@ export default class Inspector extends Component {
                       tabout = (
                         <Fragment>
                           <p className="responsive-block-editor-addons-setting-label">
-                            {__("Background Color Hover")}
+                            {__("Background Color Hover", "responsive-block-editor-addons")}
                             <span className="components-base-control__label">
                               <span
                                 className="component-color-indicator"
@@ -325,7 +325,7 @@ export default class Inspector extends Component {
                       if ("mobile" === tab.name) {
                           tabout = (
                               <Fragment>
-                              <p>{__("Padding Mobile")}</p>
+                              <p>{__("Padding Mobile", "responsive-block-editor-addons")}</p>
                                   <RangeControl
                                       label={__(
                                           "Top",
@@ -391,7 +391,7 @@ export default class Inspector extends Component {
                       } else if ("tablet" === tab.name) {
                           tabout = (
                               <Fragment>
-                              <p>{__("Padding Tablet")}</p>
+                              <p>{__("Padding Tablet", "responsive-block-editor-addons")}</p>
                                   <RangeControl
                                       label={__(
                                           "Top",
@@ -457,7 +457,7 @@ export default class Inspector extends Component {
                       } else {
                           tabout = (
                               <Fragment>
-                              <p>{__("Padding")}</p>
+                              <p>{__("Padding", "responsive-block-editor-addons")}</p>
                                   <RangeControl
                                       label={__(
                                           "Top",
@@ -554,7 +554,7 @@ export default class Inspector extends Component {
                       if ("mobile" === tab.name) {
                           tabout = (
                               <Fragment>
-                              <p>{__("Margin Mobile")}</p>
+                              <p>{__("Margin Mobile", "responsive-block-editor-addons")}</p>
                                   <RangeControl
                                       label={__(
                                           "Top",
@@ -620,7 +620,7 @@ export default class Inspector extends Component {
                       } else if ("tablet" === tab.name) {
                           tabout = (
                               <Fragment>
-                              <p>{__("Margin Tablet")}</p>
+                              <p>{__("Margin Tablet", "responsive-block-editor-addons")}</p>
                                   <RangeControl
                                       label={__(
                                           "Top",
@@ -686,7 +686,7 @@ export default class Inspector extends Component {
                       } else {
                           tabout = (
                               <Fragment>
-                              <p>{__("Margin")}</p>
+                              <p>{__("Margin", "responsive-block-editor-addons")}</p>
                                   <RangeControl
                                       label={__(
                                           "Top",
@@ -776,7 +776,7 @@ export default class Inspector extends Component {
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
                   label: __("Horizontal", "responsive-block-editor-addons"),
@@ -806,7 +806,7 @@ export default class Inspector extends Component {
                 boxShadowBlur={{ value: hoverboxShadowBlur }}
                 boxShadowSpread={{ value: hoverboxShadowSpread }}
                 boxShadowPosition={{ value: hoverboxShadowPosition }}
-                label={__("Hover Box Shadow")}
+                label={__("Hover Box Shadow", "responsive-block-editor-addons")}
                 attrNameTemplate="hover%s"
               />
             </PanelBody>

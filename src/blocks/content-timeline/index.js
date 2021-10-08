@@ -23,9 +23,9 @@ const date_arr = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
   items.push({
-    time_heading: __("Timeline Heading ") + i,
+    time_heading: __("Timeline Heading ", "responsive-block-editor-addons") + i,
     time_desc: __(
-      "This is Timeline description, you can change me anytime click here "
+      "This is Timeline description, you can change me anytime click here ", "responsive-block-editor-addons"
     ),
   });
   var j = i - 1;
