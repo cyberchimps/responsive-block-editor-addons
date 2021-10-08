@@ -10096,10 +10096,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$text_color_hover        = $attr['buttonTransparent'] ? $attr['buttonColorHover'] : $attr['buttonTextColorHover'];
 			$button_background_hover = $attr['buttonTransparent'] ? '' : $attr['buttonColorHover'];
 
+			$justify_content_direction = 'flex-start';
+			if ( 'left' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'flex-start';
+			} elseif ( 'center' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'center';
+			} elseif ( 'right' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'flex-end';
+			}
+
 			$selectors = array(
 				' ' => array(
-					'margin'  => self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
-					'padding' => self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
+					'margin'          => self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
+					'padding'         => self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
+					'display'         => 'flex',
+					'justify-content' => $justify_content_direction,
 				),
 				' .responsive-block-editor-addons-call-mail-button-button-container' => array(
 					'width'            => $button_width_css,
@@ -10251,6 +10262,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconTextGap'              => 5,
 				'iconTextGapMobile'        => 3,
 				'iconTextGapTablet'        => 5,
+				'buttonAlign'              => 'left',
 			);
 		}
 
