@@ -834,22 +834,6 @@ class Responsive_Block_Editor_Addons {
 				}
 			}
 
-			wp_register_script(
-				'popper',
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/tippy.js/popper.min.js',
-				array( 'jquery' ),
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
-				true
-			);
-
-			wp_register_script(
-				'tippy',
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/tippy.js/tippy-bundle.umd.min.js',
-				array( 'jquery', 'popper' ),
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
-				true
-			);
-
 			if ( $flag ) {
 
 				// Load the compiled blocks into the editor.
@@ -872,6 +856,22 @@ class Responsive_Block_Editor_Addons {
 				return;
 			}
 		}
+
+		wp_register_script(
+			'popper',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/tippy.js/popper.min.js',
+			array( 'jquery' ),
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+			true
+		);
+
+		wp_register_script(
+			'tippy',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/tippy.js/tippy-bundle.umd.min.js',
+			array( 'jquery', 'popper' ),
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+			true
+		);
 
 		if ( is_admin() ) {
 			if ( ! wp_script_is( 'popper', 'enqueued' ) ) {

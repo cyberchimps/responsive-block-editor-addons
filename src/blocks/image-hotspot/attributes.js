@@ -83,8 +83,6 @@ const attributes = {
   },
   tooltipTheme: {
     type: "string",
-    source: "attribute",
-    attribute: "data-theme",
     default: "light",
   },
   tooltipArrow: {
@@ -93,9 +91,6 @@ const attributes = {
   },
   tooltipAnimation: {
     type: "string",
-    source: "attribute",
-    selector: ".responsive_block_addons",
-    attribute: "data-tooltip-animation",
     default: "shift-toward",
   },
   dotPaddings: {

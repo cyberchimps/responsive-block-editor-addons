@@ -55,6 +55,9 @@ class Inspector extends Component {
         animationCurve,
         pulseEffect,
         pointSpacing,
+        tooltipTrigger,
+        tooltipTheme,
+        tooltipAnimation,
       },
       setAttributes,
       className,
@@ -112,7 +115,7 @@ class Inspector extends Component {
       return (
         <Fragment>
           <TextControl
-            label={__("Title", "responsive-block-editor-addons")}
+            label={__("Hotspot Title", "responsive-block-editor-addons")}
             value={points[index].title}
             onChange={(value) => {
               updateArrValues({ title: value }, index);
@@ -120,7 +123,11 @@ class Inspector extends Component {
             }}
           />
           <TextControl
-            placeholder={__("Enter URL", "responsive-block-editor-addons")}
+            label={__("Hotspot URL", "responsive-block-editor-addons")}
+            placeholder={__(
+              "Enter Hotspot URL...",
+              "responsive-block-editor-addons"
+            )}
             value={points[index].link}
             onChange={(value) => {
               updateArrValues({ link: value }, index);
@@ -133,15 +140,6 @@ class Inspector extends Component {
               updateArrValues({ newTab: value }, index);
             }}
           />
-          <TextareaControl
-            label={__("Popup Content. Plain Text or HTML.", "responsive-block-editor-addons")}
-            rows="5"
-            value={unescape(points[index].content)}
-            onChange={(value) => {
-              updateArrValues({ content: value }, index);
-              changeState("updatePoints", true);
-            }}
-          />
           <ToggleControl
             label={__("Opened by default", "responsive-block-editor-addons")}
             checked={points[index].popUpOpen}
@@ -149,8 +147,17 @@ class Inspector extends Component {
               updateArrValues({ popUpOpen: value }, index);
             }}
           />
+          <TextareaControl
+            label={__("Hotspot Description", "responsive-block-editor-addons")}
+            rows="4"
+            value={unescape(points[index].content)}
+            onChange={(value) => {
+              updateArrValues({ content: value }, index);
+              changeState("updatePoints", true);
+            }}
+          />
           <RangeControl
-            label={__("X Coord (%)", "responsive-block-editor-addons")}
+            label={__("Horizontal Position", "responsive-block-editor-addons")}
             value={parseFloat(points[index].position.x)}
             onChange={(value) => {
               if (typeof value == "undefined") {
@@ -170,10 +177,10 @@ class Inspector extends Component {
             allowReset
             min={0}
             max={100}
-            step={0.5}
+            step={1}
           />
           <RangeControl
-            label={__("Y Coord (%)", "responsive-block-editor-addons")}
+            label={__("Vertical Position", "responsive-block-editor-addons")}
             value={parseFloat(points[index].position.y)}
             onChange={(value) => {
               if (typeof value == "undefined") {
@@ -193,10 +200,61 @@ class Inspector extends Component {
             allowReset
             min={0}
             max={100}
-            step={0.5}
+            step={1}
           />
+          <SelectControl
+            label={__("Tooltip Position", "responsive-block-editor-addons")}
+            value={points[index].placement}
+            options={[
+              {
+                value: "top",
+                label: __("Top", "responsive-block-editor-addons"),
+              },
+              {
+                value: "right",
+                label: __("Right", "responsive-block-editor-addons"),
+              },
+              {
+                value: "bottom",
+                label: __("Bottom", "responsive-block-editor-addons"),
+              },
+              {
+                value: "left",
+                label: __("Left", "responsive-block-editor-addons"),
+              },
+            ]}
+            onChange={(value) => {
+              updateArrValues({ placement: value }, index);
+              changeState({
+                updatePoints: true,
+                highlightDot: true,
+              });
+            }}
+          />
+          <BaseControl
+            label={__("Hotspot Icon", "responsive-block-editor-addons")}
+          >
+            <FontIconPicker
+              icons={svg_icons}
+              renderFunc={renderSVG}
+              theme="default"
+              value={imagePointsParsed[index].icon}
+              onChange={(value) => {
+                updateArrValues({ icon: value }, index);
+                changeState({
+                  updatePoints: true,
+                  highlightDot: true,
+                });
+              }}
+              isMulti={false}
+              noSelectedPlaceholder={__(
+                "Select Icon",
+                "responsive-block-editor-addons"
+              )}
+            />
+          </BaseControl>
           <p className="responsive-block-editor-addons-setting-label">
-            {__("Point Background", "responsive-block-editor-addons")}
+            {__("Hotspot Background", "responsive-block-editor-addons")}
             <span className="components-base-control__label">
               <span
                 className="component-color-indicator"
@@ -218,7 +276,7 @@ class Inspector extends Component {
             allowReset
           />
           <p className="responsive-block-editor-addons-setting-label">
-            {__("Icon Color", "responsive-block-editor-addons")}
+            {__("Hotspot Icon Color", "responsive-block-editor-addons")}
             <span className="components-base-control__label">
               <span
                 className="component-color-indicator"
@@ -237,43 +295,6 @@ class Inspector extends Component {
             }}
             allowReset
           />
-          <RadioControl
-            label={__("Tooltip Position", "responsive-block-editor-addons")}
-            selected={points[index].placement}
-            options={[
-              { value: "top", label: __("Top", "responsive-block-editor-addons") },
-              { value: "right", label: __("Right", "responsive-block-editor-addons") },
-              { value: "bottom", label: __("Bottom", "responsive-block-editor-addons") },
-              { value: "left", label: __("Left", "responsive-block-editor-addons") },
-            ]}
-            onChange={(value) => {
-              updateArrValues({ placement: value }, index);
-              changeState({
-                updatePoints: true,
-                highlightDot: true,
-              });
-            }}
-          />
-          <BaseControl label={__("Point Icon", "responsive-block-editor-addons")}>
-              <FontIconPicker
-                icons={svg_icons}
-                renderFunc={renderSVG}
-                theme="default"
-                value={imagePointsParsed[ index ].icon}
-                onChange={(value) => {
-                  updateArrValues({ icon: value }, index);
-                  changeState({
-                    updatePoints: true,
-                    highlightDot: true,
-                  });
-                }}                
-                isMulti={false}
-                noSelectedPlaceholder={__(
-                  "Select Icon",
-                  "responsive-block-editor-addons"
-                )}
-              />
-          </BaseControl>
         </Fragment>
       );
     };
@@ -286,7 +307,11 @@ class Inspector extends Component {
             getState("editModal") == true ? (
               <Modal
                 className={`${className}__modal`}
-                title={__("Edit Point", "responsive-block-editor-addons")}
+                title={
+                  getState("action") == "drop"
+                    ? __("Add Hotspot", "responsive-block-editor-addons")
+                    : __("Edit Hotspot", "responsive-block-editor-addons")
+                }
                 shouldCloseOnClickOutside={false}
                 shouldCloseOnEsc={false}
                 onRequestClose={() => {
@@ -375,7 +400,10 @@ class Inspector extends Component {
           </div>
         </Fragment>
         <TextareaControl
-          label={__("Popup Content. Plain Text or HTML.", "responsive-block-editor-addons")}
+          label={__(
+            "Popup Content. Plain Text or HTML.",
+            "responsive-block-editor-addons"
+          )}
           rows="5"
           value={unescape(imagePointsParsed[index].content)}
           onChange={(value) => {
@@ -395,7 +423,7 @@ class Inspector extends Component {
     const placementFields = (index, popup) => (
       <Fragment>
         <RangeControl
-          label={__("X Coord (%)", "responsive-block-editor-addons")}
+          label={__("Horizontal Position", "responsive-block-editor-addons")}
           value={parseFloat(imagePointsParsed[index].position.x)}
           onChange={(value) => {
             if (typeof value == "undefined") {
@@ -417,7 +445,7 @@ class Inspector extends Component {
           step={0.5}
         />
         <RangeControl
-          label={__("Y Coord (%)", "responsive-block-editor-addons")}
+          label={__("Vertical Position", "responsive-block-editor-addons")}
           value={parseFloat(imagePointsParsed[index].position.y)}
           onChange={(value) => {
             if (typeof value == "undefined") {
@@ -444,10 +472,22 @@ class Inspector extends Component {
             label={__("Tooltip Position", "responsive-block-editor-addons")}
             selected={imagePointsParsed[index].placement}
             options={[
-              { value: "top", label: __("Top", "responsive-block-editor-addons") },
-              { value: "right", label: __("Right", "responsive-block-editor-addons") },
-              { value: "bottom", label: __("Bottom", "responsive-block-editor-addons") },
-              { value: "left", label: __("Left", "responsive-block-editor-addons") },
+              {
+                value: "top",
+                label: __("Top", "responsive-block-editor-addons"),
+              },
+              {
+                value: "right",
+                label: __("Right", "responsive-block-editor-addons"),
+              },
+              {
+                value: "bottom",
+                label: __("Bottom", "responsive-block-editor-addons"),
+              },
+              {
+                value: "left",
+                label: __("Left", "responsive-block-editor-addons"),
+              },
             ]}
             onChange={(value) => {
               updateArrValues({ placement: value }, index);
@@ -462,10 +502,22 @@ class Inspector extends Component {
             label={__("Tooltip Position", "responsive-block-editor-addons")}
             selected={imagePointsParsed[index].placement}
             options={[
-              { value: "top", label: __("Top", "responsive-block-editor-addons") },
-              { value: "right", label: __("Right", "responsive-block-editor-addons") },
-              { value: "bottom", label: __("Bottom", "responsive-block-editor-addons") },
-              { value: "left", label: __("Left", "responsive-block-editor-addons") },
+              {
+                value: "top",
+                label: __("Top", "responsive-block-editor-addons"),
+              },
+              {
+                value: "right",
+                label: __("Right", "responsive-block-editor-addons"),
+              },
+              {
+                value: "bottom",
+                label: __("Bottom", "responsive-block-editor-addons"),
+              },
+              {
+                value: "left",
+                label: __("Left", "responsive-block-editor-addons"),
+              },
             ]}
             onChange={(value) => {
               updateArrValues({ placement: value }, index);
@@ -482,7 +534,7 @@ class Inspector extends Component {
     const styleFields = (index, popup) => (
       <Fragment>
         <p className="responsive-block-editor-addons-setting-label">
-          {__("Point Background", "responsive-block-editor-addons")}
+          {__("Hotspot Background", "responsive-block-editor-addons")}
           <span className="components-base-control__label">
             <span
               className="component-color-indicator"
@@ -569,15 +621,24 @@ class Inspector extends Component {
             </TabPanel>
           ) : (
             <Fragment>
-              <PanelBody title={__("Content", "responsive-block-editor-addons")} initialOpen={true}>
+              <PanelBody
+                title={__("Content", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
                 {contentFields(index, popup)}
               </PanelBody>
 
-              <PanelBody title={__("Position", "responsive-block-editor-addons")} initialOpen={true}>
+              <PanelBody
+                title={__("Position", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
                 {placementFields(index, popup)}
               </PanelBody>
 
-              <PanelBody title={__("Style", "responsive-block-editor-addons")} initialOpen={true}>
+              <PanelBody
+                title={__("Style", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
                 {styleFields(index, popup)}
               </PanelBody>
             </Fragment>
@@ -600,7 +661,7 @@ class Inspector extends Component {
         {renderEditModal(getState("currentPoint"))}
         {this.props.isSelectedPoint() && (
           <PanelBody
-            title={__("Point Settings", "responsive-block-editor-addons")}
+            title={__("Hotspot Settings", "responsive-block-editor-addons")}
             initialOpen={true}
           >
             {renderPointSettingsPanel(this)}
@@ -640,21 +701,38 @@ class Inspector extends Component {
                     )}
                   />
                 </BaseControl>
-              </PanelBody>
-              <PanelBody initialOpen={true}>
                 <SelectControl
-                  label={__("Image Size", "responsive-block-editor-addons")}
+                  label={__("Image Size")}
                   value={imageSize}
                   onChange={onChangeImageSize}
                   options={[
-                    {
-                      value: "full",
-                      label: __("Full", "responsive-block-editor-addons"),
-                    },
+                    { value: "full", label: __("Full Size") },
+                    { value: "thumbnail", label: __("Thumbnail") },
+                    { value: "medium", label: __("Medium") },
                   ]}
                 />
+                <SelectControl
+                  label={__(
+                    "Open Tooltip (Frontend)",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={tooltipTrigger}
+                  options={[
+                    {
+                      value: "hover",
+                      label: __("On Hover", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "click",
+                      label: __("On Click", "responsive-block-editor-addons"),
+                    },
+                  ]}
+                  onChange={(tooltipTrigger) =>
+                    setAttributes({ tooltipTrigger })
+                  }
+                />
                 <p className="components-base-control__label">
-                  {__("Point Icon")}
+                  {__("Hotspot Icon")}
                 </p>
                 <FontIconPicker
                   icons={svg_icons}
@@ -669,7 +747,7 @@ class Inspector extends Component {
                   )}
                 />
                 <RangeControl
-                  label={__("Point Size", "responsive-block-editor-addons")}
+                  label={__("Hotspot Size", "responsive-block-editor-addons")}
                   value={dotSize}
                   onChange={(value) =>
                     setAttributes({
@@ -681,7 +759,10 @@ class Inspector extends Component {
                   allowReset
                 />
                 <RangeControl
-                  label={__("Point Spacing", "responsive-block-editor-addons")}
+                  label={__(
+                    "Hotspot Spacing",
+                    "responsive-block-editor-addons"
+                  )}
                   value={pointSpacing}
                   onChange={(value) =>
                     setAttributes({
@@ -697,7 +778,7 @@ class Inspector extends Component {
             <InspectorTab key={"style"}>
               <PanelBody initialOpen={true}>
                 <p className="responsive-block-editor-addons-setting-label">
-                  {__("Point Background", "responsive-block-editor-addons")}
+                  {__("Hotspot Background", "responsive-block-editor-addons")}
                   <span className="components-base-control__label">
                     <span
                       className="component-color-indicator"
@@ -727,7 +808,10 @@ class Inspector extends Component {
                   allowReset
                 />
                 <RangeControl
-                  label={__("Point Opacity", "responsive-block-editor-addons")}
+                  label={__(
+                    "Hotspot Opacity",
+                    "responsive-block-editor-addons"
+                  )}
                   value={pointOpacity}
                   onChange={(value) =>
                     setAttributes({
@@ -742,101 +826,148 @@ class Inspector extends Component {
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <PanelBody
-                title={__("Motion Effects", "responsive-block-editor-addons")}
+                title={__("Tooltip Settings", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <PanelBody
-                  title={__(
-                    "Hotspot Animation",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={false}
-                >
-                  <ToggleControl
-                    label={__("Pulse Effect")}
-                    checked={pulseEffect}
-                    onChange={(value) =>
-                      setAttributes({ pulseEffect: !pulseEffect })
-                    }
-                  />
-                  <SelectControl
-                    label={__("Animation", "responsive-block-editor-addons")}
-                    value={animationName}
-                    onChange={(value) =>
-                      setAttributes({ animationName: value })
-                    }
-                    options={[
-                      { value: "none", label: "None" },
-                      { value: "fade", label: __("Fade") },
-                      { value: "slide", label: __("Slide") },
-                      { value: "bounce", label: __("Bounce") },
-                      { value: "zoom", label: __("Zoom") },
-                      { value: "flip", label: __("Flip") },
-                      { value: "fold", label: __("Fold") },
-                      { value: "rotate", label: "Rotate" },
-                    ]}
-                  />
-                  {animationName !== "none" && (
-                    <Fragment>
-                      <SelectControl
-                        label={__(
-                          "Direction",
-                          "responsive-block-editor-addons"
-                        )}
-                        value={animationDirection}
-                        onChange={(value) =>
-                          setAttributes({ animationDirection: value })
-                        }
-                        options={showAnimationDirections(animationName)}
-                      />
-                      <SelectControl
-                        label={__("Repeat", "responsive-block-editor-addons")}
-                        value={animationRepeat}
-                        onChange={(value) =>
-                          setAttributes({ animationRepeat: value })
-                        }
-                        options={[
-                          { value: "once", label: __("Once") },
-                          { value: "loop", label: __("Loop") },
-                        ]}
-                      />
-                      <RangeControl
-                        label={__("Duration", "responsive-block-editor-addons")}
-                        value={animationDuration}
-                        min={0}
-                        max={2000}
-                        allowReset={true}
-                        onChange={(value) =>
-                          setAttributes({ animationDuration: value })
-                        }
-                      />
-                      <RangeControl
-                        label={__("Delay", "responsive-block-editor-addons")}
-                        value={animationDelay}
-                        min={0}
-                        max={3000}
-                        allowReset={true}
-                        onChange={(value) =>
-                          setAttributes({ animationDelay: value })
-                        }
-                      />
-                      <SelectControl
-                        label={__("Curve", "responsive-block-editor-addons")}
-                        value={animationCurve}
-                        onChange={(value) =>
-                          setAttributes({ animationCurve: value })
-                        }
-                        options={[
-                          { value: "ease-in-out", label: "ease-in-out" },
-                          { value: "ease", label: "ease" },
-                          { value: "ease-in", label: "ease-in" },
-                          { value: "ease-out", label: "ease-out" },
-                          { value: "linear", label: "linear" },
-                        ]}
-                      />
-                    </Fragment>
-                  )}
-                </PanelBody>
+                <SelectControl
+                  label={__("Tooltip Theme", "responsive-block-editor-addons")}
+                  value={tooltipTheme}
+                  onChange={(tooltipTheme) => setAttributes({ tooltipTheme })}
+                  options={[
+                    {
+                      value: "light",
+                      label: __("Default", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "light-border",
+                      label: __(
+                        "Light Border",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                    {
+                      value: "dark",
+                      label: __("Dark", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "material",
+                      label: __("Material", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "translucent",
+                      label: __(
+                        "Translucent",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                  ]}
+                />
+                <SelectControl
+                  label={__('Tooltip Animation', 'responsive-block-editor-addons')}
+                  value={tooltipAnimation}
+                  onChange={tooltipAnimation => setAttributes({ tooltipAnimation })}
+                  options={[
+                    { value: 'shift-away'  , label: __( 'Shift Away', 'responsive-block-editor-addons' ) },
+                    { value: 'shift-away-subtle'  , label: __( 'Shift Away Subtle', 'responsive-block-editor-addons' ) },
+                    { value: 'shift-away-extreme'  , label: __( 'Shift Away Extreme', 'responsive-block-editor-addons' ) },
+                    { value: 'shift-toward', label: __( 'Shift Toward', 'responsive-block-editor-addons' ) },
+                    { value: 'shift-toward-subtle', label: __( 'Shift Toward Subtle', 'responsive-block-editor-addons' ) },
+                    { value: 'shift-toward-extreme', label: __( 'Shift Toward Extreme', 'responsive-block-editor-addons' ) },
+                    { value: 'scale'       , label: __( 'Scale', 'responsive-block-editor-addons' ) },
+                    { value: 'scale-subtle'       , label: __( 'Scale Subtle', 'responsive-block-editor-addons' ) },
+                    { value: 'scale-extreme'       , label: __( 'Scale Extreme', 'responsive-block-editor-addons' ) },
+                    { value: 'perspective' , label: __( 'Perspective', 'responsive-block-editor-addons' ) },
+                    { value: 'perspective-subtle' , label: __( 'Perspective Subtle', 'responsive-block-editor-addons' ) },
+                    { value: 'perspective-extreme' , label: __( 'Perspective Extreme', 'responsive-block-editor-addons' ) },
+                  ]}
+                />
+              </PanelBody>
+              <PanelBody
+                title={__(
+                  "Hotspot Animation",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+              >
+                <ToggleControl
+                  label={__("Pulse Effect")}
+                  checked={pulseEffect}
+                  onChange={(value) =>
+                    setAttributes({ pulseEffect: !pulseEffect })
+                  }
+                />
+                <SelectControl
+                  label={__("Animation", "responsive-block-editor-addons")}
+                  value={animationName}
+                  onChange={(value) => setAttributes({ animationName: value })}
+                  options={[
+                    { value: "none", label: "None" },
+                    { value: "fade", label: __("Fade") },
+                    { value: "slide", label: __("Slide") },
+                    { value: "bounce", label: __("Bounce") },
+                    { value: "zoom", label: __("Zoom") },
+                    { value: "flip", label: __("Flip") },
+                    { value: "fold", label: __("Fold") },
+                    { value: "rotate", label: "Rotate" },
+                  ]}
+                />
+                {animationName !== "none" && (
+                  <Fragment>
+                    <SelectControl
+                      label={__("Direction", "responsive-block-editor-addons")}
+                      value={animationDirection}
+                      onChange={(value) =>
+                        setAttributes({ animationDirection: value })
+                      }
+                      options={showAnimationDirections(animationName)}
+                    />
+                    <SelectControl
+                      label={__("Repeat", "responsive-block-editor-addons")}
+                      value={animationRepeat}
+                      onChange={(value) =>
+                        setAttributes({ animationRepeat: value })
+                      }
+                      options={[
+                        { value: "once", label: __("Once") },
+                        { value: "loop", label: __("Loop") },
+                      ]}
+                    />
+                    <RangeControl
+                      label={__("Duration", "responsive-block-editor-addons")}
+                      value={animationDuration}
+                      min={0}
+                      max={2000}
+                      allowReset={true}
+                      onChange={(value) =>
+                        setAttributes({ animationDuration: value })
+                      }
+                    />
+                    <RangeControl
+                      label={__("Delay", "responsive-block-editor-addons")}
+                      value={animationDelay}
+                      min={0}
+                      max={3000}
+                      allowReset={true}
+                      onChange={(value) =>
+                        setAttributes({ animationDelay: value })
+                      }
+                    />
+                    <SelectControl
+                      label={__("Curve", "responsive-block-editor-addons")}
+                      value={animationCurve}
+                      onChange={(value) =>
+                        setAttributes({ animationCurve: value })
+                      }
+                      options={[
+                        { value: "ease-in-out", label: "ease-in-out" },
+                        { value: "ease", label: "ease" },
+                        { value: "ease-in", label: "ease-in" },
+                        { value: "ease-out", label: "ease-out" },
+                        { value: "linear", label: "linear" },
+                      ]}
+                    />
+                  </Fragment>
+                )}
               </PanelBody>
             </InspectorTab>
           </InspectorTabs>

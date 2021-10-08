@@ -15,7 +15,8 @@ function EditorStyles(props) {
     animationDelay,
     animationCurve,
     pulseEffect,
-    pointSpacing
+    pointSpacing,
+    imageSize
   } = props.attributes;
 
   let updatedPointOpacity = pointOpacity / 100;
@@ -56,6 +57,9 @@ function EditorStyles(props) {
     },
     " .responsive_block_addons___wrapper": {
       position: "relative",
+    },
+    " .responsive_block_addons___wrapper img": {
+      width: imageSize,
     },
   };
 

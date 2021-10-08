@@ -651,8 +651,9 @@ class Edit extends Component {
 
     const toolbarControls = [
       {
-        icon: "location",
-        title: __("Drop Point", "responsive-block-editor-addons"),
+        icon: "sticky",
+        title: __("Add Hotspot", "responsive-block-editor-addons"),
+        className: "image-hotspot-toolbar-icons",
         isDisabled: getState("currentPoint") != null,
         isActive: getState("action") == "drop",
         onClick: () => {
@@ -665,6 +666,7 @@ class Edit extends Component {
       {
         icon: "edit",
         title: __("Edit", "responsive-block-editor-addons"),
+        className: "image-hotspot-toolbar-icons",
         isDisabled:
           getState("currentPoint") === null || getState("action") == "drop",
         isActive: getState("action") == "edit" && getState("editModal") == true,
@@ -676,8 +678,9 @@ class Edit extends Component {
         },
       },
       {
-        icon: "admin-page",
-        title: __("Duplicate", "responsive-block-editor-addons"),
+        icon: "images-alt",
+        title: __("Clone", "responsive-block-editor-addons"),
+        className: "image-hotspot-toolbar-icons",
         isDisabled: getState("currentPoint") === null,
         onClick: () => {
           this.onDuplicatePoint(getState("currentPoint"));
@@ -685,7 +688,8 @@ class Edit extends Component {
       },
       {
         icon: "trash",
-        title: __("Delete", "responsive-block-editor-addons"),
+        title: __("Remove", "responsive-block-editor-addons"),
+        className: "image-hotspot-toolbar-icons",
         isDisabled:
           getState("currentPoint") === null || getState("action") == "drop",
         onClick: () => {
@@ -751,7 +755,7 @@ class Edit extends Component {
 				{ ! url && (
 					<MediaPlaceholder
 						icon={'format-image'}
-						className={'responsive_block_addons'}
+						className={'responsive_block_addons image-hotspot-toolbar-icons responsive_block_addons-hotspot-media-placeholder'}
 						labels={{
 							title: __('Image Hotspot', 'responsive-block-editor-addons'),
 						}}
@@ -771,7 +775,7 @@ class Edit extends Component {
 										value={id}
 										render={({open}) => (
 											<ToolbarButton
-												className="components-toolbar__control"
+												className="components-toolbar__control image-hotspot-toolbar-icons"
 												label={__('Edit Media', 'responsive-block-editor-addons')}
 												icon="format-image"
 												onClick={open}
