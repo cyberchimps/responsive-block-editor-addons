@@ -36,6 +36,8 @@ class CommonFunctionsPage
      */
     public $typographyStyleBtn = '//button[text()="Typography"]';
     public $titleTypography = '//*[text() = "Title Typography"]';
+    public $subtitleTypography = '//*[text() = "Subtitle Typography"]';
+    public $contentTypography = '//*[text() = "Content Typography"]';
     public $descriptionTypography = '//*[text() = "Description Typography"]';
     public $priceTypography = '//*[text() = "Price Typography"]';
     public $paddingStyleBtn = '//*[text() = "Padding"]';
@@ -50,6 +52,8 @@ class CommonFunctionsPage
     public $colorStyleBtn = '//button[text()="Color"]';
     public $imageStyleBtn = '//button[text()="Image"]';
     public $imageSettingsStyleBtn = '//button[text()="Image Settings"]';
+    public $iconSettingsStyleBtn = '//button[text()="Icon Settings"]';
+    public $textColorSettingsBtn = '//*[text()="Text Color Settings"]';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.
