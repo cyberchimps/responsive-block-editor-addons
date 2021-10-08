@@ -21,8 +21,6 @@ import ImageBackgroundControl from "../../../settings-components/Block Backgroun
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import UAGB_Block_Icons
-    from "../../../../../ultimate-addons-for-gutenberg-master/dist/blocks/uagb-controls/block-icons";
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 
 const { __ } = wp.i18n;
