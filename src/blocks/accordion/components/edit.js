@@ -419,7 +419,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             ]}
           >
             <ToggleControl
-              label=__("Gradient Background", "responsive-block-editor-addons"),
+              label={__("Gradient Background", "responsive-block-editor-addons")}
               checked={titleBgGradient}
               onChange={() =>
                 this.props.setAttributes({

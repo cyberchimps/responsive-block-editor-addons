@@ -7765,6 +7765,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' '                   => array(
 					'padding' => self::get_css_value( $attr['blockPadding'], 'px' ) . ' !important',
 				),
+				' .slick-arrow svg'                   => array(
+					'height' => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'width' => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'fill' => $attr['arrowColor'],
+				),
 				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content' => array(
 					'border-width'  => 999 !== $attr['borderWidth'] && 1 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
 					'border-color'  => 'empty' !== $attr['borderColor'] && '' === $attr['blockBorderColor'] ? $attr['borderColor'] : $attr['blockBorderColor'],  // For compatibility with v1.3.2.

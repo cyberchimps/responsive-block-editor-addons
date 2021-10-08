@@ -8,6 +8,7 @@ import Company from "./Company";
 import Description from "./Description";
 import PositionClasses from "../classes";
 import TestimonialImage from "./Image";
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 
 const { Fragment } = wp.element;
 
@@ -43,11 +44,7 @@ export default function save(props) {
         tabIndex="0"
         role="button"
       >
-        <Dashicon
-          icon="arrow-right-alt2"
-          height={arrowSize}
-          width={arrowSize}
-        />
+            { ResponsiveBlockEditorAddonsIcons.carousel_right }
       </button>
     );
   }
@@ -62,7 +59,7 @@ export default function save(props) {
         tabIndex="0"
         role="button"
       >
-        <Dashicon icon="arrow-left-alt2" height={arrowSize} width={arrowSize} />
+            { ResponsiveBlockEditorAddonsIcons.carousel_left }
       </button>
     );
   }
