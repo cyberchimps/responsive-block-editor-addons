@@ -369,7 +369,7 @@ class Inspector extends Component {
     const contentFields = (index, popup) => (
       <Fragment>
         <TextControl
-          label={__("Title", "responsive-block-editor-addons")}
+          label={__("Hotspot Title", "responsive-block-editor-addons")}
           value={imagePointsParsed[index].title}
           onChange={(value) => {
             updateArrValues({ title: value }, index);
@@ -384,6 +384,7 @@ class Inspector extends Component {
               icon="admin-links"
             />
             <TextControl
+              label={__("Hotspot URL", "responsive-block-editor-addons")}
               placeholder={__("Enter URL", "responsive-block-editor-addons")}
               value={imagePointsParsed[index].link}
               onChange={(value) => {
@@ -397,24 +398,24 @@ class Inspector extends Component {
                 updateArrValues({ newTab: value }, index);
               }}
             />
+            <ToggleControl
+              label={__("Opened by default", "responsive-block-editor-addons")}
+              checked={imagePointsParsed[index].popUpOpen}
+              onChange={(value) => {
+                updateArrValues({ popUpOpen: value }, index);
+              }}
+            />
           </div>
         </Fragment>
         <TextareaControl
           label={__(
-            "Popup Content. Plain Text or HTML.",
+            "Hotspot Description",
             "responsive-block-editor-addons"
           )}
           rows="5"
           value={unescape(imagePointsParsed[index].content)}
           onChange={(value) => {
             updateArrValues({ content: escape(value) }, index);
-          }}
-        />
-        <ToggleControl
-          label={__("Opened by default", "responsive-block-editor-addons")}
-          checked={imagePointsParsed[index].popUpOpen}
-          onChange={(value) => {
-            updateArrValues({ popUpOpen: value }, index);
           }}
         />
       </Fragment>
