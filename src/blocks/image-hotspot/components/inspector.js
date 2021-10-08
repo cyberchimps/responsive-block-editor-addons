@@ -63,10 +63,10 @@ class Inspector extends Component {
       setAttributes,
       className,
       imgObj,
-      onCancelPoint,
-      updateArrValues,
+      handleCancel,
+      handleUpdateData,
       changeImageSize,
-      changeState,
+      handleStateChange,
       getState,
       onSelectMedia,
     } = this.props;
@@ -101,17 +101,17 @@ class Inspector extends Component {
 
     const imagePointsParsed = imagePoints != "" ? JSON.parse(imagePoints) : [];
 
-    const renderPointSettingsPanel = (self) => {
+    const displayHotspotSettings = (self) => {
       const { getState } = self.props;
-      if (isEqual(getState("currentPoint"), null)) {
+      if (isEqual(getState("currentHotspot"), null)) {
         return;
       }
 
       const { imagePoints } = self.props.attributes;
-      const { updateArrValues, changeState } = self.props;
+      const { handleUpdateData, handleStateChange } = self.props;
 
       const points = imagePoints ? JSON.parse(imagePoints) : [];
-      const index = getState("currentPoint");
+      const index = getState("currentHotspot");
 
       return (
         <Fragment>
@@ -119,8 +119,8 @@ class Inspector extends Component {
             label={__("Hotspot Title", "responsive-block-editor-addons")}
             value={points[index].title}
             onChange={(value) => {
-              updateArrValues({ title: value }, index);
-              changeState("updatePoints", true);
+              handleUpdateData({ title: value }, index);
+              handleStateChange("updateHotspot", true);
             }}
           />
           <TextControl
@@ -131,21 +131,21 @@ class Inspector extends Component {
             )}
             value={points[index].link}
             onChange={(value) => {
-              updateArrValues({ link: value }, index);
+              handleUpdateData({ link: value }, index);
             }}
           />
           <ToggleControl
             label={__("Open in New Tab", "responsive-block-editor-addons")}
             checked={points[index].newTab}
             onChange={(value) => {
-              updateArrValues({ newTab: value }, index);
+              handleUpdateData({ newTab: value }, index);
             }}
           />
           <ToggleControl
             label={__("Opened by default", "responsive-block-editor-addons")}
             checked={points[index].popUpOpen}
             onChange={(value) => {
-              updateArrValues({ popUpOpen: value }, index);
+              handleUpdateData({ popUpOpen: value }, index);
             }}
           />
           <TextareaControl
@@ -153,8 +153,8 @@ class Inspector extends Component {
             rows="4"
             value={unescape(points[index].content)}
             onChange={(value) => {
-              updateArrValues({ content: value }, index);
-              changeState("updatePoints", true);
+              handleUpdateData({ content: value }, index);
+              handleStateChange("updateHotspot", true);
             }}
           />
           <RangeControl
@@ -164,7 +164,7 @@ class Inspector extends Component {
               if (typeof value == "undefined") {
                 value = 50;
               }
-              updateArrValues(
+              handleUpdateData(
                 {
                   position: {
                     x: parseFloat(value) + "%",
@@ -173,7 +173,7 @@ class Inspector extends Component {
                 },
                 index
               );
-              changeState("updatePoints", true);
+              handleStateChange("updateHotspot", true);
             }}
             allowReset
             min={0}
@@ -187,7 +187,7 @@ class Inspector extends Component {
               if (typeof value == "undefined") {
                 value = 50;
               }
-              updateArrValues(
+              handleUpdateData(
                 {
                   position: {
                     x: points[index].position.x,
@@ -196,7 +196,7 @@ class Inspector extends Component {
                 },
                 index
               );
-              changeState("updatePoints", true);
+              handleStateChange("updateHotspot", true);
             }}
             allowReset
             min={0}
@@ -208,10 +208,10 @@ class Inspector extends Component {
             value={points[index].placement}
             options={rbeaControls.tooltipPositions}
             onChange={(value) => {
-              updateArrValues({ placement: value }, index);
-              changeState({
-                updatePoints: true,
-                highlightDot: true,
+              handleUpdateData({ placement: value }, index);
+              handleStateChange({
+                updateHotspot: true,
+                activeHotspot: true,
               });
             }}
           />
@@ -224,10 +224,10 @@ class Inspector extends Component {
               theme="default"
               value={imagePointsParsed[index].icon}
               onChange={(value) => {
-                updateArrValues({ icon: value }, index);
-                changeState({
-                  updatePoints: true,
-                  highlightDot: true,
+                handleUpdateData({ icon: value }, index);
+                handleStateChange({
+                  updateHotspot: true,
+                  activeHotspot: true,
                 });
               }}
               isMulti={false}
@@ -251,10 +251,10 @@ class Inspector extends Component {
           <ColorPalette
             value={points[index].backgroundColor}
             onChange={(value) => {
-              updateArrValues({ backgroundColor: value }, index);
-              changeState({
-                updatePoints: true,
-                highlightDot: true,
+              handleUpdateData({ backgroundColor: value }, index);
+              handleStateChange({
+                updateHotspot: true,
+                activeHotspot: true,
               });
             }}
             allowReset
@@ -271,10 +271,10 @@ class Inspector extends Component {
           <ColorPalette
             value={points[index].color}
             onChange={(value) => {
-              updateArrValues({ color: value }, index);
-              changeState({
-                updatePoints: true,
-                highlightDot: true,
+              handleUpdateData({ color: value }, index);
+              handleStateChange({
+                updateHotspot: true,
+                activeHotspot: true,
               });
             }}
             allowReset
@@ -283,59 +283,59 @@ class Inspector extends Component {
       );
     };
 
-    const renderEditModal = (index) => {
+    const displayModal = (index) => {
       if (typeof imagePointsParsed[index] !== "undefined") {
         return (
           <Fragment>
-            {(getState("action") == "edit" || getState("action") == "drop") &&
+            {(getState("currentStatus") == "edit" || getState("currentStatus") == "drop") &&
             getState("editModal") == true ? (
               <Modal
                 className={`${className}__modal`}
                 title={
-                  getState("action") == "drop"
+                  getState("currentStatus") == "drop"
                     ? __("Add Hotspot", "responsive-block-editor-addons")
                     : __("Edit Hotspot", "responsive-block-editor-addons")
                 }
                 shouldCloseOnClickOutside={false}
                 shouldCloseOnEsc={false}
                 onRequestClose={() => {
-                  changeState({
-                    action: false,
+                  handleStateChange({
+                    currentStatus: false,
                     editModal: false,
                   });
 
-                  if (getState("action") == "drop") {
-                    onCancelPoint();
+                  if (getState("currentStatus") == "drop") {
+                    handleCancel();
                   }
                 }}
               >
                 <Fragment>
-                  {renderPointsFields(index, true)}
+                  {displayModalContent(index, true)}
                   <ButtonGroup>
                     <Button
                       isPrimary
                       onClick={() =>
-                        changeState({
-                          updatePoints: true,
+                        handleStateChange({
+                          updateHotspot: true,
                           editModal: false,
-                          action: false,
+                          currentStatus: false,
                         })
                       }
                     >
-                      {getState("action") == "drop"
+                      {getState("currentStatus") == "drop"
                         ? __("Save", "responsive-block-editor-addons")
                         : __("Update", "responsive-block-editor-addons")}
                     </Button>
 
-                    {getState("action") == "drop" && (
+                    {getState("currentStatus") == "drop" && (
                       <Button
                         isDefault
                         onClick={() => {
-                          changeState({
-                            action: false,
+                          handleStateChange({
+                            currentStatus: false,
                             editModal: false,
                           });
-                          onCancelPoint();
+                          handleCancel();
                         }}
                       >
                         {__("Cancel", "responsive-block-editor-addons")}
@@ -350,13 +350,13 @@ class Inspector extends Component {
       }
     };
 
-    const contentFields = (index, popup) => (
+    const modalContentSettings = (index, popup) => (
       <Fragment>
         <TextControl
           label={__("Hotspot Title", "responsive-block-editor-addons")}
           value={imagePointsParsed[index].title}
           onChange={(value) => {
-            updateArrValues({ title: value }, index);
+            handleUpdateData({ title: value }, index);
           }}
         />
         <Fragment>
@@ -372,21 +372,21 @@ class Inspector extends Component {
               placeholder={__("Enter URL", "responsive-block-editor-addons")}
               value={imagePointsParsed[index].link}
               onChange={(value) => {
-                updateArrValues({ link: value }, index);
+                handleUpdateData({ link: value }, index);
               }}
             />
             <ToggleControl
               label={__("Open in New Tab", "responsive-block-editor-addons")}
               checked={imagePointsParsed[index].newTab}
               onChange={(value) => {
-                updateArrValues({ newTab: value }, index);
+                handleUpdateData({ newTab: value }, index);
               }}
             />
             <ToggleControl
               label={__("Opened by default", "responsive-block-editor-addons")}
               checked={imagePointsParsed[index].popUpOpen}
               onChange={(value) => {
-                updateArrValues({ popUpOpen: value }, index);
+                handleUpdateData({ popUpOpen: value }, index);
               }}
             />
           </div>
@@ -399,13 +399,13 @@ class Inspector extends Component {
           rows="5"
           value={unescape(imagePointsParsed[index].content)}
           onChange={(value) => {
-            updateArrValues({ content: escape(value) }, index);
+            handleUpdateData({ content: escape(value) }, index);
           }}
         />
       </Fragment>
     );
 
-    const placementFields = (index, popup) => (
+    const modalAdvanceSettings = (index, popup) => (
       <Fragment>
         <RangeControl
           label={__("Horizontal Position", "responsive-block-editor-addons")}
@@ -414,7 +414,7 @@ class Inspector extends Component {
             if (typeof value == "undefined") {
               value = 50;
             }
-            updateArrValues(
+            handleUpdateData(
               {
                 position: {
                   x: parseFloat(value) + "%",
@@ -437,7 +437,7 @@ class Inspector extends Component {
               value = 50;
             }
 
-            updateArrValues(
+            handleUpdateData(
               {
                 position: {
                   x: imagePointsParsed[index].position.x,
@@ -457,17 +457,17 @@ class Inspector extends Component {
           value={imagePointsParsed[index].placement}
           options={rbeaControls.tooltipPositions}
           onChange={(value) => {
-            updateArrValues({ placement: value }, index);
-            changeState({
-              updatePoints: true,
-              highlightDot: true,
+            handleUpdateData({ placement: value }, index);
+            handleStateChange({
+              updateHotspot: true,
+              activeHotspot: true,
             });
           }}
         />
       </Fragment>
     );
 
-    const styleFields = (index, popup) => (
+    const modalStyleSettings = (index, popup) => (
       <Fragment>
         <p className="responsive-block-editor-addons-setting-label">
           {__("Hotspot Background", "responsive-block-editor-addons")}
@@ -483,10 +483,10 @@ class Inspector extends Component {
         <ColorPalette
           value={imagePointsParsed[index].backgroundColor}
           onChange={(value) => {
-            updateArrValues({ backgroundColor: value }, index);
-            changeState({
-              updatePoints: true,
-              highlightDot: true,
+            handleUpdateData({ backgroundColor: value }, index);
+            handleStateChange({
+              updateHotspot: true,
+              activeHotspot: true,
             });
           }}
           allowReset
@@ -503,10 +503,10 @@ class Inspector extends Component {
         <ColorPalette
           value={imagePointsParsed[index].color}
           onChange={(value) => {
-            updateArrValues({ color: value }, index);
-            changeState({
-              updatePoints: true,
-              highlightDot: true,
+            handleUpdateData({ color: value }, index);
+            handleStateChange({
+              updateHotspot: true,
+              activeHotspot: true,
             });
           }}
           allowReset
@@ -514,21 +514,21 @@ class Inspector extends Component {
       </Fragment>
     );
 
-    const renderDotTabs = (self, tab, index, popup = false) => {
+    const showModalTabs = (self, tab, index, popup = false) => {
       switch (tab.name) {
         case "content": {
-          return <Fragment>{contentFields(index, popup)}</Fragment>;
+          return <Fragment>{modalContentSettings(index, popup)}</Fragment>;
         }
         case "style": {
-          return <Fragment>{styleFields(index, popup)}</Fragment>;
+          return <Fragment>{modalStyleSettings(index, popup)}</Fragment>;
         }
         case "advance": {
-          return <Fragment>{placementFields(index, popup)}</Fragment>;
+          return <Fragment>{modalAdvanceSettings(index, popup)}</Fragment>;
         } 
       }
     };
 
-    const renderPointsFields = (index, popup = false) => {
+    const displayModalContent = (index, popup = false) => {
       return (
         <Fragment>
           {popup ? (
@@ -537,7 +537,7 @@ class Inspector extends Component {
               activeClass="is-active"
               tabs={rbeaControls.modalTabNames}
             >
-              {(tab) => renderDotTabs(self, tab, index, popup)}
+              {(tab) => showModalTabs(self, tab, index, popup)}
             </TabPanel>
           ) : (
             <Fragment>
@@ -545,21 +545,19 @@ class Inspector extends Component {
                 title={__("Content", "responsive-block-editor-addons")}
                 initialOpen={true}
               >
-                {contentFields(index, popup)}
+                {modalContentSettings(index, popup)}
               </PanelBody>
-
-              <PanelBody
-                title={__("Position", "responsive-block-editor-addons")}
-                initialOpen={true}
-              >
-                {placementFields(index, popup)}
-              </PanelBody>
-
               <PanelBody
                 title={__("Style", "responsive-block-editor-addons")}
                 initialOpen={true}
               >
-                {styleFields(index, popup)}
+                {modalStyleSettings(index, popup)}
+              </PanelBody>
+              <PanelBody
+                title={__("Advanced", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
+                {modalAdvanceSettings(index, popup)}
               </PanelBody>
             </Fragment>
           )}
@@ -578,16 +576,16 @@ class Inspector extends Component {
 
     return (
       <InspectorControls key="inspector">
-        {renderEditModal(getState("currentPoint"))}
-        {this.props.isSelectedPoint() && (
+        {displayModal(getState("currentHotspot"))}
+        {this.props.handleCurrentHotspot() && (
           <PanelBody
             title={__("Hotspot Settings", "responsive-block-editor-addons")}
             initialOpen={true}
           >
-            {renderPointSettingsPanel(this)}
+            {displayHotspotSettings(this)}
           </PanelBody>
         )}
-        {!this.props.isSelectedPoint() && (
+        {!this.props.handleCurrentHotspot() && (
           <InspectorTabs>
             <InspectorTab key={"content"}>
               <PanelBody initialOpen={true}>

@@ -23,23 +23,23 @@ class Edit extends Component {
   constructor() {
     super(...arguments);
 
-    this.onCancelPoint = this.onCancelPoint.bind(this);
-    this.onDeletePoint = this.onDeletePoint.bind(this);
-    this.updateArrValues = this.updateArrValues.bind(this);
-    this.changeState = this.changeState.bind(this);
+    this.handleCurrentHotspot = this.handleCurrentHotspot.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
     this.getState = this.getState.bind(this);
-    this.isSelectedPoint = this.isSelectedPoint.bind(this);
+    this.handleUpdateData = this.handleUpdateData.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
     this.state = {
-      highlightDot: false,
-      currentPoint: null,
-      updatePoints: false,
-      action: false,
+      currentStatus: false,
+      currentHotspot: null,
+      updateHotspot: false,
+      activeHotspot: false,
       editModal: false,
     };
   }
 
-  updateArrValues(value, index) {
+  handleUpdateData(value, index) {
     const deepMap = (obj, cb) => {
       var out = {};
 
@@ -81,7 +81,7 @@ class Edit extends Component {
     });
   }
 
-  changeState(param, value) {
+  handleStateChange(param, value) {
     if (typeof param == "object") {
       this.setState(param);
     } else if (typeof param == "string") {
@@ -93,7 +93,7 @@ class Edit extends Component {
     return this.state[value];
   }
 
-  getRelativePosition(event, el, hotspotsize) {
+  getLocation(event, el, hotspotsize) {
     var x, y;
     var left = el.offset().left;
     var top = el.offset().top;
@@ -169,14 +169,14 @@ class Edit extends Component {
         const { getState } = this;
         const pointIndex = $(dot).data("point-id");
 
-        if (isEqual(getState("currentPoint"), pointIndex)) {
+        if (isEqual(getState("currentHotspot"), pointIndex)) {
           $(dot).addClass("is-selected");
         }
       });
     }
   }
 
-  isSelectedPoint() {
+  handleCurrentHotspot() {
     const { clientId } = this.props;
     const thisBlock = $(`[data-block='${clientId}']`);
 
@@ -189,24 +189,24 @@ class Edit extends Component {
     );
 
     const { getState } = this;
-    const currentPoint = getState("currentPoint");
+    const currentHotspot = getState("currentHotspot");
 
     return (
       $imageDots.hasClass("is-selected") &&
       imagePointsParsed.length &&
-      !isEqual(currentPoint, null)
+      !isEqual(currentHotspot, null)
     );
   }
 
-  initHotspotEvents() {
+  initiateHotspotSettings() {
     const { clientId } = this.props;
     const { hotspotSize } = this.props.attributes;
 
     const {
-      onCancelPoint,
-      getRelativePosition,
-      updateArrValues,
-      changeState,
+      handleCancel,
+      getLocation,
+      handleUpdateData,
+      handleStateChange,
       getState,
     } = this;
 
@@ -218,25 +218,25 @@ class Edit extends Component {
       thisBlock
     );
 
-    if (getState("highlightDot") == true && getState("currentPoint") != null) {
+    if (getState("activeHotspot") == true && getState("currentHotspot") != null) {
       $imageDots.removeClass("is-selected");
       imageWrapper
         .find(
           `.responsive_block_addons___dot[data-point-id="${getState(
-            "currentPoint"
+            "currentHotspot"
           )}"]`
         )
         .addClass("is-selected");
       imageWrapper
         .find(
           `.responsive_block_addons___dot[data-point-id="${getState(
-            "currentPoint"
+            "currentHotspot"
           )}"]`
         )
         .addClass("is-selected");
 
-      changeState({
-        highlightDot: false,
+      handleStateChange({
+        activeHotspot: false,
       });
     }
 
@@ -266,15 +266,15 @@ class Edit extends Component {
       $imageDots.removeClass("is-selected");
       $(dot).addClass("is-selected");
 
-      changeState("currentPoint", $(dot).data("point-id"));
+      handleStateChange("currentHotspot", $(dot).data("point-id"));
     });
 
     $imageDots.mousedown(function (e) {
       if (e.button == 1) {
         e.preventDefault();
-        changeState("currentPoint", jQuery(this).data("point-id"));
-        changeState({
-          action: "edit",
+        handleStateChange("currentHotspot", jQuery(this).data("point-id"));
+        handleStateChange({
+          currentStatus: "edit",
           editModal: true,
         });
         return false;
@@ -293,7 +293,7 @@ class Edit extends Component {
           });
 
           draggable_dot.on("dragStart", function (event, pointer) {
-            changeState("currentPoint", jQuery(dot).data("point-id"));
+            handleStateChange("currentHotspot", jQuery(dot).data("point-id"));
 
             $imageDots.removeClass("is-selected");
             jQuery(dot).addClass("is-selected");
@@ -316,10 +316,10 @@ class Edit extends Component {
             dot.style.left = x_coords;
             dot.style.top = y_coords;
 
-            if (getState("currentPoint") == null) {
-              changeState("currentPoint", jQuery(dot).data("point-id"));
+            if (getState("currentHotspot") == null) {
+              handleStateChange("currentHotspot", jQuery(dot).data("point-id"));
             }
-            updateArrValues(
+            handleUpdateData(
               {
                 position: {
                   x: x_coords,
@@ -335,16 +335,16 @@ class Edit extends Component {
 
     $(document).keyup(function (e) {
       if (
-        getState("currentPoint") != null &&
-        getState("action") == "drop" &&
+        getState("currentHotspot") != null &&
+        getState("currentStatus") == "drop" &&
         e.which == 27
       ) {
-        changeState({
-          action: false,
+        handleStateChange({
+          currentStatus: false,
           editModal: false,
         });
 
-        onCancelPoint();
+        handleCancel();
       }
     });
 
@@ -353,37 +353,37 @@ class Edit extends Component {
 
       $imageDots.removeClass("is-selected");
 
-      if (getState("action") == "drop") {
-        const coords = getRelativePosition(event, $(wrapper), hotspotSize);
+      if (getState("currentStatus") == "drop") {
+        const coords = getLocation(event, $(wrapper), hotspotSize);
 
-        const hotspot = this.renderDot(
-          getState("currentPoint"),
+        const hotspot = this.generateHotspot(
+          getState("currentHotspot"),
           coords.x,
           coords.y
         );
 
         $(wrapper).append(hotspot);
 
-        updateArrValues(
+        handleUpdateData(
           {
             position: {
               x: coords.x,
               y: coords.y,
             },
           },
-          getState("currentPoint")
+          getState("currentHotspot")
         );
 
-        changeState("editModal", true);
+        handleStateChange("editModal", true);
       } else {
         if (wrapper.className == `responsive_block_addons___image`) {
-          changeState("currentPoint", null);
+          handleStateChange("currentHotspot", null);
         }
       }
     });
   }
 
-  renderDot(
+  generateHotspot(
     pointID = 0,
     coordx = 0,
     coordy = 0,
@@ -458,10 +458,10 @@ class Edit extends Component {
     return hotspot;
   }
 
-  initDot(pointID = 0, dotObj = false) {
+  initHotspot(pointID = 0, dotObj = false) {
     const { clientId } = this.props;
 
-    const hotspot = this.renderDot(
+    const hotspot = this.generateHotspot(
       pointID,
       dotObj["position"].x,
       dotObj["position"].y,
@@ -479,9 +479,9 @@ class Edit extends Component {
     imageWrapper.append(hotspot);
   }
 
-  initPoints(isUpdate = false) {
+  initHotspots(isUpdate = false) {
     const { clientId } = this.props;
-    const { changeState } = this;
+    const { handleStateChange } = this;
     const { imagePoints } = this.props.attributes;
 
     const imagePointsParsed = imagePoints != "" ? JSON.parse(imagePoints) : [];
@@ -496,20 +496,20 @@ class Edit extends Component {
 
     if (imagePointsParsed.length) {
       $.each(imagePointsParsed, (index, item) => {
-        this.initDot(index, item);
+        this.initHotspot(index, item);
       });
     }
 
     if (isUpdate) {
-      changeState("updatePoints", false);
+      handleStateChange("updateHotspot", false);
     }
 
     this.setDotSelection();
-    this.initHotspotEvents();
+    this.initiateHotspotSettings();
     this.initTooltips();
   }
 
-  onDuplicatePoint(pointID = 0) {
+  handleClone(pointID = 0) {
     const {
       attributes: { imagePoints },
       setAttributes,
@@ -530,7 +530,7 @@ class Edit extends Component {
     current_dot.position.y = coord_y + "%";
 
     const newPoints = imagePointsParsed;
-    const changeState = this.changeState;
+    const handleStateChange = this.handleStateChange;
 
     newPoints.push(current_dot);
 
@@ -538,14 +538,14 @@ class Edit extends Component {
       imagePoints: JSON.stringify(newPoints),
     });
 
-    changeState({
-      currentPoint: newPoints.length == 1 ? 0 : newPoints.length - 1,
-      highlightDot: true,
-      updatePoints: true,
+    handleStateChange({
+      currentHotspot: newPoints.length == 1 ? 0 : newPoints.length - 1,
+      activeHotspot: true,
+      updateHotspot: true,
     });
   }
 
-  onAddPoint() {
+  handleAddHotspot() {
     const {
       attributes: { imagePoints },
       setAttributes,
@@ -554,7 +554,7 @@ class Edit extends Component {
     const imagePointsParsed = imagePoints != "" ? JSON.parse(imagePoints) : [];
 
     const newPoints = imagePointsParsed;
-    const changeState = this.changeState;
+    const handleStateChange = this.handleStateChange;
 
     newPoints.push({
       link: "",
@@ -579,14 +579,14 @@ class Edit extends Component {
       imagePoints: JSON.stringify(newPoints),
     });
 
-    changeState(
-      "currentPoint",
+    handleStateChange(
+      "currentHotspot",
       newPoints.length == 1 ? 0 : newPoints.length - 1
     );
   }
 
-  onDeletePoint(pointID = 0) {
-    const { changeState } = this;
+  handleDelete(pointID = 0) {
+    const { handleStateChange } = this;
     const { imagePoints } = this.props.attributes;
     const { clientId, setAttributes } = this.props;
 
@@ -594,9 +594,9 @@ class Edit extends Component {
 
     const newItems = imagePointsParsed.filter((item, idx) => idx !== pointID);
 
-    changeState({
-      currentPoint: null,
-      updatePoints: true,
+    handleStateChange({
+      currentHotspot: null,
+      updateHotspot: true,
     });
 
     const $block = $(`#block-${clientId}`);
@@ -611,24 +611,24 @@ class Edit extends Component {
     });
   }
 
-  onCancelPoint() {
+  handleCancel() {
     const { setAttributes } = this.props;
-    const { getState, changeState } = this;
+    const { getState, handleStateChange } = this;
     const { imagePoints } = this.props.attributes;
 
     const imagePointsParsed = imagePoints != "" ? JSON.parse(imagePoints) : [];
 
     const newItems = imagePointsParsed.filter(
-      (item, idx) => idx !== getState("currentPoint")
+      (item, idx) => idx !== getState("currentHotspot")
     );
 
     setAttributes({
       imagePoints: JSON.stringify(newItems),
     });
 
-    changeState({
-      currentPoint: null,
-      updatePoints: true,
+    handleStateChange({
+      currentHotspot: null,
+      updateHotspot: true,
     });
   }
 
@@ -636,12 +636,12 @@ class Edit extends Component {
     const { id, url, alt, block_id } = this.props.attributes;
     const { className, isSelected, setAttributes, clientId } = this.props;
     const {
-      onCancelPoint,
-      onDeletePoint,
-      updateArrValues,
-      changeState,
+      handleCancel,
+      handleDelete,
+      handleUpdateData,
+      handleStateChange,
       getState,
-      isSelectedPoint,
+      handleCurrentHotspot,
     } = this;
 
     const thisBlock = $(`[data-block='${clientId}']`);
@@ -651,12 +651,12 @@ class Edit extends Component {
         icon: "sticky",
         title: __("Add Hotspot", "responsive-block-editor-addons"),
         className: "image-hotspot-toolbar-icons",
-        isDisabled: getState("currentPoint") != null,
-        isActive: getState("action") == "drop",
+        isDisabled: getState("currentHotspot") != null,
+        isActive: getState("currentStatus") == "drop",
         onClick: () => {
-          if (getState("action") != "drop") {
-            this.onAddPoint();
-            changeState("action", "drop");
+          if (getState("currentStatus") != "drop") {
+            this.handleAddHotspot();
+            handleStateChange("currentStatus", "drop");
           }
         },
       },
@@ -665,11 +665,11 @@ class Edit extends Component {
         title: __("Edit", "responsive-block-editor-addons"),
         className: "image-hotspot-toolbar-icons",
         isDisabled:
-          getState("currentPoint") === null || getState("action") == "drop",
-        isActive: getState("action") == "edit" && getState("editModal") == true,
+          getState("currentHotspot") === null || getState("currentStatus") == "drop",
+        isActive: getState("currentStatus") == "edit" && getState("editModal") == true,
         onClick: () => {
-          changeState({
-            action: "edit",
+          handleStateChange({
+            currentStatus: "edit",
             editModal: true,
           });
         },
@@ -678,9 +678,9 @@ class Edit extends Component {
         icon: "images-alt",
         title: __("Clone", "responsive-block-editor-addons"),
         className: "image-hotspot-toolbar-icons",
-        isDisabled: getState("currentPoint") === null,
+        isDisabled: getState("currentHotspot") === null,
         onClick: () => {
-          this.onDuplicatePoint(getState("currentPoint"));
+          this.handleClone(getState("currentHotspot"));
         },
       },
       {
@@ -688,9 +688,9 @@ class Edit extends Component {
         title: __("Remove", "responsive-block-editor-addons"),
         className: "image-hotspot-toolbar-icons",
         isDisabled:
-          getState("currentPoint") === null || getState("action") == "drop",
+          getState("currentHotspot") === null || getState("currentStatus") == "drop",
         onClick: () => {
-          onDeletePoint(getState("currentPoint"));
+          handleDelete(getState("currentHotspot"));
         },
       },
     ];
@@ -728,7 +728,7 @@ class Edit extends Component {
         className,
         {
           "is-selected": isSelected,
-          [`responsive_block_addons_--dropPoint`]: getState("action") == "drop",
+          [`responsive_block_addons_--dropPoint`]: getState("currentStatus") == "drop",
         },
         `responsive-block-editor-addons-block-image-hotspot`,
         `block-${block_id}`
@@ -802,15 +802,15 @@ class Edit extends Component {
                 {...{
                   setAttributes,
                   ...this.props,
-                  ...{ onCancelPoint },
-                  ...{ onDeletePoint },
-                  ...{ updateArrValues },
+                  ...{ handleCancel },
+                  ...{ handleDelete },
+                  ...{ handleUpdateData },
                   ...{ changeImageSize },
-                  ...{ changeState },
+                  ...{ handleStateChange },
                   ...{ getState },
                   ...{ thisBlock },
                   ...{ onSelectMedia },
-                  ...{ isSelectedPoint },
+                  ...{ handleCurrentHotspot },
                 }}
                 key="inspector"
               />
@@ -858,8 +858,8 @@ class Edit extends Component {
       return false;
     });
 
-    if (needRender || getState("updatePoints") == true) {
-      this.initPoints(true);
+    if (needRender || getState("updateHotspot") == true) {
+      this.initHotspots(true);
     }
   }
 
@@ -875,7 +875,7 @@ class Edit extends Component {
     );
 
     document.head.appendChild($style);
-    this.initPoints(false);
+    this.initHotspots(false);
   }
 }
 
