@@ -49,20 +49,21 @@ function run_responsive_block_editor_addons() {
 
 run_responsive_block_editor_addons();
 
-if ( ! function_exists( 'ra_fs' ) ) {
+if ( ! function_exists( 'rbea1_fs' ) ) {
     /**
      * Helper function to access SDK.
      */
-    function ra_fs() {
-        global $rao_fs;
+    function rbea1_fs() {
 
-        if ( ! isset( $rao_fs ) ) {
+        global $rbea1_fs;
+
+        if ( ! isset( $rbea1_fs ) ) {
             // Include Analytics SDK.
             require_once dirname( __FILE__ ) . '/analytics/start.php';
 
-            $rao_fs = ras_dynamic_init(
+            $rbea1_fs = ras_dynamic_init(
                 array(
-                    'id'              => '1',
+                    'id'              => '11',
                     'slug'            => 'responsive-block-editor-addons',
                     'product_name'    => 'Responsive Gutenberg Blocks Library',
                     'module_type'     => 'plugin',
@@ -72,12 +73,11 @@ if ( ! function_exists( 'ra_fs' ) ) {
                 )
             );
         }
-
-        return $rao_fs;
+        return $rbea1_fs;
     }
 
     // Init Analytics.
-    ra_fs();
+    rbea1_fs();
     // SDK initiated.
-    do_action( 'ra_fs_loaded' );
+    do_action( 'rbea1_fs_loaded' );
 }
