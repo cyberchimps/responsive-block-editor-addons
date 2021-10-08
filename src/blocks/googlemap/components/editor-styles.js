@@ -9,7 +9,10 @@ function EditorStyles(props) {
   const { block_id, address, zoom, height, pinned } = props.attributes;
 
   var selectors = {
-    " .responsive-block-editor-addons-block-map-frame": {
+    " ": {
+      "max-height": height ? generateCSSUnit(height, "px") : `${400}px`,
+    },
+      " .responsive-block-editor-addons-block-map-frame": {
       width: "100%",
       "min-height": height ? generateCSSUnit(height, "px") : `${400}px`,
     },

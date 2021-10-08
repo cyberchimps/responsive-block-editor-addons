@@ -66,9 +66,9 @@ export default function save(props) {
       </button>
     );
   }
-  let dots = "dots" == arrowDots || "arrows_dots" == arrowDots ? true : false;
+  let dots = ( ( "dots" == arrowDots || "arrows_dots" == arrowDots ) && ( "none" !== arrowDots ) ) ? true : false;
   let arrows =
-    "arrows" == arrowDots || "arrows_dots" == arrowDots ? true : false;
+    "arrows" == ( ( arrowDots || "arrows_dots" == arrowDots ) && ( "none" !== arrowDots ) ) ? true : false;
 
   const settings = {
     slidesToShow: columns,

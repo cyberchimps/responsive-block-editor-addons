@@ -636,9 +636,9 @@ class edit extends Component {
       );
     }
 
-    let dots = "dots" == arrowDots || "arrows_dots" == arrowDots ? true : false;
+    let dots = ( ("dots" == arrowDots || "arrows_dots" == arrowDots) && ( "none" !== arrowDots ) )? true : false;
     let arrows =
-      "arrows" == arrowDots || "arrows_dots" == arrowDots ? true : false;
+      ( ("arrows" == arrowDots || "arrows_dots" == arrowDots) && ( "none" !== arrowDots ) ) ? true : false;
 
     const settings = {
       slidesToShow: columns,
@@ -761,6 +761,7 @@ class edit extends Component {
             { value: "arrows", label: __("Only Arrows") },
             { value: "dots", label: __("Only Dots") },
             { value: "arrows_dots", label: __("Both Arrows & Dots") },
+            { value: "none", label: __("None")}
           ]}
         />
         {"dots" != arrowDots && (
