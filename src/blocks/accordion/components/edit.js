@@ -674,167 +674,165 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           {"accordion" === layout && (
             <Fragment>
               <hr className="responsive-block-editor-addons-editor__separator" />
-              <h2>{__("Icon", "responsive-block-editor-addons")}</h2>
-              <TabPanel
-                className="responsive-block-editor-addons-size-type-field-tabs responsive-block-editor-addons-size-type-field__common-tabs responsive-block-editor-addons-inline-margin"
-                activeClass="active-tab"
-                tabs={[
+              <h2>{__("Icon Size")}</h2><TabPanel
+              className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
                   {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      "responsive-block-editor-addons-desktop-tab responsive-block-editor-addons-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      "responsive-block-editor-addons-tablet-tab responsive-block-editor-addons-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      "responsive-block-editor-addons-mobile-tab responsive-block-editor-addons-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                  className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+              },
+              {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+              className: " responsive-tablet-tab  responsive-responsive-tabs",
+          },
+              {
+                  name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                  className: " responsive-mobile-tab  responsive-responsive-tabs",
+              },
+          ]}
+          >
+              {(tab) => {
                   let tabout;
 
                   if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <ButtonGroup
-                          className="responsive-block-editor-addons-size-type-field"
-                          aria-label={__("Size Type", "responsive-block-editor-addons")}
-                        >
-                          <Button
-                            key={"px"}
-                            className="responsive-block-editor-addons-size-btn"
-                            isSmall
-                            isPrimary={iconSizeType === "px"}
-                            aria-pressed={iconSizeType === "px"}
-                            onClick={() =>
-                              setAttributes({ iconSizeType: "px" })
-                            }
-                          >
-                            {"px"}
-                          </Button>
-                          <Button
-                            key={"%"}
-                            className="responsive-block-editor-addons-size-btn"
-                            isSmall
-                            isPrimary={iconSizeType === "%"}
-                            aria-pressed={iconSizeType === "%"}
-                            onClick={() => setAttributes({ iconSizeType: "%" })}
-                          >
-                            {"%"}
-                          </Button>
-                        </ButtonGroup>
-                        <h2>{__("Size", "responsive-block-editor-addons")}</h2>
-                        <RangeControl
-                          value={iconSizeMobile}
-                          onChange={(value) =>
-                            setAttributes({ iconSizeMobile: value })
-                          }
-                          min={0}
-                          max={100}
-                          allowReset
-                        />
+                      tabout = (
+                          <Fragment>
+                          <ButtonGroup
+                      className="responsive-block-editor-addons-size-type-field"
+                      aria-label={__("Size Type")}
+                  >
+                  <Button
+                      key={"px"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={iconSizeType === "px"}
+                      aria-pressed={iconSizeType === "px"}
+                      onClick={() =>
+                      setAttributes({ iconSizeType: "px" })
+                  }
+                  >
+                      {"px"}
+                  </Button>
+                      <Button
+                      key={"%"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={iconSizeType === "%"}
+                      aria-pressed={iconSizeType === "%"}
+                      onClick={() => setAttributes({ iconSizeType: "%" })}
+                  >
+                      {"%"}
+                  </Button>
+                      </ButtonGroup>
+                      <p>{__("")}</p>
+                      <RangeControl
+                      value={iconSizeMobile}
+                      onChange={(value) =>
+                      setAttributes({ iconSizeMobile: value })
+                  }
+                      min={0}
+                      max={100}
+                      allowReset
+                      />
                       </Fragment>
-                    );
+                  );
                   } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <ButtonGroup
-                          className="responsive-block-editor-addons-size-type-field"
-                          aria-label={__("Size Type", "responsive-block-editor-addons")}
-                        >
-                          <Button
-                            key={"px"}
-                            className="responsive-block-editor-addons-size-btn"
-                            isSmall
-                            isPrimary={iconSizeType === "px"}
-                            aria-pressed={iconSizeType === "px"}
-                            onClick={() =>
-                              setAttributes({ iconSizeType: "px" })
-                            }
-                          >
-                            {"px"}
-                          </Button>
-                          <Button
-                            key={"%"}
-                            className="responsive-block-editor-addons-size-btn"
-                            isSmall
-                            isPrimary={iconSizeType === "%"}
-                            aria-pressed={iconSizeType === "%"}
-                            onClick={() => setAttributes({ iconSizeType: "%" })}
-                          >
-                            {"%"}
-                          </Button>
-                        </ButtonGroup>
-                        <h2>{__("Size", "responsive-block-editor-addons")}</h2>
-                        <RangeControl
-                          value={iconSizeTablet}
-                          onChange={(value) =>
-                            setAttributes({ iconSizeTablet: value })
-                          }
-                          min={0}
-                          max={100}
-                          allowReset
-                        />
+                      tabout = (
+                          <Fragment>
+                          <ButtonGroup
+                      className="responsive-block-editor-addons-size-type-field"
+                      aria-label={__("Size Type")}
+                  >
+                  <Button
+                      key={"px"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={iconSizeType === "px"}
+                      aria-pressed={iconSizeType === "px"}
+                      onClick={() =>
+                      setAttributes({ iconSizeType: "px" })
+                  }
+                  >
+                      {"px"}
+                  </Button>
+                      <Button
+                      key={"%"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={iconSizeType === "%"}
+                      aria-pressed={iconSizeType === "%"}
+                      onClick={() => setAttributes({ iconSizeType: "%" })}
+                  >
+                      {"%"}
+                  </Button>
+                      </ButtonGroup>
+                      <p>{__("")}</p>
+                      <RangeControl
+                      value={iconSizeTablet}
+                      onChange={(value) =>
+                      setAttributes({ iconSizeTablet: value })
+                  }
+                      min={0}
+                      max={100}
+                      allowReset
+                      />
                       </Fragment>
-                    );
+                  );
                   } else {
-                    tabout = (
-                      <Fragment>
-                        <ButtonGroup
-                          className="responsive-block-editor-addons-size-type-field"
-                          aria-label={__("Size Type", "responsive-block-editor-addons")}
-                        >
-                          <Button
-                            key={"px"}
-                            className="responsive-block-editor-addons-size-btn"
-                            isSmall
-                            isPrimary={iconSizeType === "px"}
-                            aria-pressed={iconSizeType === "px"}
-                            onClick={() =>
-                              setAttributes({ iconSizeType: "px" })
-                            }
-                          >
-                            {"px"}
-                          </Button>
-                          <Button
-                            key={"%"}
-                            className="responsive-block-editor-addons-size-btn"
-                            isSmall
-                            isPrimary={iconSizeType === "%"}
-                            aria-pressed={iconSizeType === "%"}
-                            onClick={() => setAttributes({ iconSizeType: "%" })}
-                          >
-                            {"%"}
-                          </Button>
-                        </ButtonGroup>
-                        <h2>{__("Size", "responsive-block-editor-addons")}</h2>
-                        <RangeControl
-                          value={iconSize}
-                          onChange={(value) =>
-                            setAttributes({ iconSize: value })
-                          }
-                          min={0}
-                          max={100}
-                          allowReset
-                        />
+                      tabout = (
+                          <Fragment>
+                          <ButtonGroup
+                      className="responsive-block-editor-addons-size-type-field"
+                      aria-label={__("Size Type")}
+                  >
+                  <Button
+                      key={"px"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={iconSizeType === "px"}
+                      aria-pressed={iconSizeType === "px"}
+                      onClick={() =>
+                      setAttributes({ iconSizeType: "px" })
+                  }
+                  >
+                      {"px"}
+                  </Button>
+                      <Button
+                      key={"%"}
+                      className="responsive-block-editor-addons-size-btn"
+                      isSmall
+                      isPrimary={iconSizeType === "%"}
+                      aria-pressed={iconSizeType === "%"}
+                      onClick={() => setAttributes({ iconSizeType: "%" })}
+                  >
+                      {"%"}
+                  </Button>
+                      </ButtonGroup>
+                      <p>{__("")}</p>
+                      <RangeControl
+                      value={iconSize}
+                      onChange={(value) =>
+                      setAttributes({ iconSize: value })
+                  }
+                      min={0}
+                      max={100}
+                      allowReset
+                      />
                       </Fragment>
-                    );
+                  );
                   }
 
                   return <div>{tabout}</div>;
-                }}
-              </TabPanel>
+              }}
+          </TabPanel>
+          <hr className="responsive-block-editor-addons-editor__separator" />
               <p className="responsive-block-editor-addons-setting-label">
-                {__("Color", "responsive-block-editor-addons")}
+                {__("Icon Color")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -848,7 +846,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                 allowReset
               />
               <p className="responsive-block-editor-addons-setting-label">
-                {__("Active Color", "responsive-block-editor-addons")}
+                {__("Icon Active Color")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
