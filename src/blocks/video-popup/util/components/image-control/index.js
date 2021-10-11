@@ -72,7 +72,7 @@ const ImageControl = (props) => {
                             obj.open();
                           }
                         }}
-                        alt={__("preview")}
+                        alt={__("preview", "responsive-block-editor-addons")}
                       />
                     )}
                   </div>

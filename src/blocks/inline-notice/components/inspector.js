@@ -190,7 +190,7 @@ export default class Inspector extends Component {
                 { value: "simple", label: __("Default", "responsive-block-editor-addons") }
               ]}
             />
-            <SelectControl 
+            <SelectControl
               label={__("Notification Type", "responsive-block-editor-addons")}
               value={noticeType}
               onChange={(value) => {
@@ -234,7 +234,7 @@ export default class Inspector extends Component {
                   value={icon}
                   onChange={(value) => setAttributes({ icon: value })}
                   isMulti={false}
-                  noSelectedPlaceholder={__("Select Icon")}
+                  noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
                 />
                 <ToggleControl
                   label={ __( "Enable Cookies", "responsive-block-editor-addons" ) }
@@ -262,7 +262,7 @@ export default class Inspector extends Component {
             >
               <Fragment>
                 <p className="responsive-setting-label">
-                  {__("Title Color")}
+                  {__("Title Color", "responsive-block-editor-addons")}
                   <span className="components-base-control__label">
                     <span
                       className="component-color-indicator"
@@ -280,7 +280,7 @@ export default class Inspector extends Component {
                 "default" === noticeType && (
                   <Fragment>
                     <p className="responsive-setting-label">
-                      {__("Highlight Color")}
+                      {__("Highlight Color", "responsive-block-editor-addons")}
                       <span className="components-base-control__label">
                         <span
                           className="component-color-indicator"
@@ -298,7 +298,7 @@ export default class Inspector extends Component {
               }
               <Fragment>
                 <p className="responsive-setting-label">
-                  {__("Content Color")}
+                  {__("Content Color", "responsive-block-editor-addons")}
                   <span className="components-base-control__label">
                     <span
                       className="component-color-indicator"
@@ -314,7 +314,7 @@ export default class Inspector extends Component {
               </Fragment>
               <Fragment>
                 <p className="responsive-setting-label">
-                  {__("Content Background Color")}
+                  {__("Content Background Color", "responsive-block-editor-addons")}
                   <span className="components-base-control__label">
                     <span
                       className="component-color-indicator"
@@ -430,15 +430,15 @@ export default class Inspector extends Component {
                   <ResponsivePaddingControl
                     attrNameTemplate="block%s"
                     values = {{
-                      desktopTop:blockTopPadding, 
-                      desktopBottom:blockBottomPadding, 
-                      desktopLeft:blockLeftPadding, 
-                      desktopRight:blockRightPadding, 
+                      desktopTop:blockTopPadding,
+                      desktopBottom:blockBottomPadding,
+                      desktopLeft:blockLeftPadding,
+                      desktopRight:blockRightPadding,
 
                       tabletTop:blockTopPaddingTablet,
-                      tabletBottom:blockBottomPaddingTablet, 
-                      tabletLeft:blockLeftPaddingTablet, 
-                      tabletRight:blockRightPaddingTablet, 
+                      tabletBottom:blockBottomPaddingTablet,
+                      tabletLeft:blockLeftPaddingTablet,
+                      tabletRight:blockRightPaddingTablet,
 
                       mobileTop:blockTopPaddingMobile,
                       mobileBottom:blockBottomPaddingMobile,
@@ -446,7 +446,7 @@ export default class Inspector extends Component {
                       mobileRight:blockRightPaddingMobile,
                     }}
                     setAttributes={ setAttributes }
-                    {...this.props}            
+                    {...this.props}
                   />
                 </PanelBody>
                 <PanelBody
@@ -456,15 +456,15 @@ export default class Inspector extends Component {
                   <ResponsiveMarginControl
                     attrNameTemplate="block%s"
                     values = {{
-                      desktopTop:blockTopMargin, 
-                      desktopBottom:blockBottomMargin, 
-                      desktopLeft:blockLeftMargin, 
-                      desktopRight:blockRightMargin, 
+                      desktopTop:blockTopMargin,
+                      desktopBottom:blockBottomMargin,
+                      desktopLeft:blockLeftMargin,
+                      desktopRight:blockRightMargin,
 
                       tabletTop:blockTopMarginTablet,
-                      tabletBottom:blockBottomMarginTablet, 
-                      tabletLeft:blockLeftMarginTablet, 
-                      tabletRight:blockRightMarginTablet, 
+                      tabletBottom:blockBottomMarginTablet,
+                      tabletLeft:blockLeftMarginTablet,
+                      tabletRight:blockRightMarginTablet,
 
                       mobileTop:blockTopMarginMobile,
                       mobileBottom:blockBottomMarginMobile,
@@ -472,7 +472,7 @@ export default class Inspector extends Component {
                       mobileRight:blockRightMarginMobile,
                     }}
                     setAttributes={ setAttributes }
-                    {...this.props}            
+                    {...this.props}
                   />
                 </PanelBody>
           </InspectorTab>

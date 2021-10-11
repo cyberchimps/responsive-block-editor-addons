@@ -55,24 +55,24 @@ class VideoBackgroundControl extends Component {
           <Fragment>
           <BaseControl
       className="editor-bg-video-control"
-      label={__("Background Video")}
+      label={__("Background Video", "responsive-block-editor-addons")}
   >
   <MediaUpload
-      title={__("Select Background Video")}
+      title={__("Select Background Video", "responsive-block-editor-addons")}
       onSelect={this.onSelectVideo}
       allowedTypes={["video"]}
       value={backgroundVideo}
       render={({ open }) => (
       <Button isDefault onClick={open}>
           {!backgroundVideo
-          ? __("Select Background Video")
-          : __("Replace Video")}
+          ? __("Select Background Video", "responsive-block-editor-addons")
+          : __("Replace Video", "responsive-block-editor-addons")}
   </Button>
   )}
       />
       {backgroundVideo && (
       <Button onClick={this.onRemoveVideo} isLink isDestructive>
-      {__("Remove Video")}
+      {__("Remove Video", "responsive-block-editor-addons")}
       </Button>
       )}
   </BaseControl>

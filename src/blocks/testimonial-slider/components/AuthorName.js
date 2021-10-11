@@ -21,7 +21,7 @@ class AuthorName extends React.Component {
         <RichText
           tagName="div"
           value={author_name}
-          placeholder={__("Author Name")}
+          placeholder={__("Author Name", "responsive-block-editor-addons")}
           className="responsive-block-editor-addons-tm__author-name"
           style={{
             color: attributes.authorColor,

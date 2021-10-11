@@ -316,12 +316,12 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <SelectControl
-                label={__("Header Layout")}
+                label={__("Header Layout", "responsive-block-editor-addons")}
                 value={headerLayout}
                 onChange={(value) => handleLayoutChange(value)}
                 options={[
-                  { value: "fill", label: __("Fill Design") },
-                  { value: "outline", label: __("Outline Design") },
+                  { value: "fill", label: __("Fill Design", "responsive-block-editor-addons") },
+                  { value: "outline", label: __("Outline Design", "responsive-block-editor-addons") },
                 ]}
               />
               <Fragment>
@@ -340,24 +340,24 @@ export default class Inspector extends Component {
                 />
               </Fragment>
               <SelectControl
-                label={__("Table Type")}
+                label={__("Table Type", "responsive-block-editor-addons")}
                 value={tableType}
                 onChange={(value) => setAttributes({ tableType: value })}
                 options={[
-                  { value: "ordered", label: __("Ordered") },
-                  { value: "unordered", label: __("Unordered") },
+                  { value: "ordered", label: __("Ordered", "responsive-block-editor-addons") },
+                  { value: "unordered", label: __("Unordered", "responsive-block-editor-addons") },
                 ]}
               />
               {tableType === "ordered" && (
                 <SelectControl
-                  label={__("Order List Type")}
+                  label={__("Order List Type", "responsive-block-editor-addons")}
                   value={orderListType}
                   onChange={(value) => setAttributes({ orderListType: value })}
                   options={[
-                    { value: "none", label: __("None") },
-                    { value: "number", label: __("Number") },
-                    { value: "uppercase", label: __("Uppercase Letters") },
-                    { value: "lowercase", label: __("Lowercase Letters") },
+                    { value: "none", label: __("None", "responsive-block-editor-addons") },
+                    { value: "number", label: __("Number", "responsive-block-editor-addons") },
+                    { value: "uppercase", label: __("Uppercase Letters", "responsive-block-editor-addons") },
+                    { value: "lowercase", label: __("Lowercase Letters", "responsive-block-editor-addons") },
                   ]}
                 />
               )}
@@ -436,25 +436,25 @@ export default class Inspector extends Component {
               </PanelRow>
               <br></br>
               <SelectControl
-                label={__("Section HTML tag")}
+                label={__("Section HTML tag", "responsive-block-editor-addons")}
                 value={sectionHtmlTag}
                 onChange={(value) => setAttributes({ sectionHtmlTag: value })}
                 options={[
-                  { value: "section", label: __("Section") },
-                  { value: "div", label: __("Div") },
-                  { value: "footer", label: __("Footer") },
+                  { value: "section", label: __("Section", "responsive-block-editor-addons") },
+                  { value: "div", label: __("Div", "responsive-block-editor-addons") },
+                  { value: "footer", label: __("Footer", "responsive-block-editor-addons") },
                 ]}
               />
             </PanelBody>
-            <PanelBody title={__("Smooth Scroll")} initialOpen={false}>
+            <PanelBody title={__("Smooth Scroll", "responsive-block-editor-addons")} initialOpen={false}>
               <ToggleControl
-                label={__("Enable Smooth Scroll")}
+                label={__("Enable Smooth Scroll", "responsive-block-editor-addons")}
                 checked={smoothScroll}
                 onChange={() => setAttributes({ smoothScroll: !smoothScroll })}
               />
               {smoothScroll === true && (
                 <RangeControl
-                  label={__("Scroll offset")}
+                  label={__("Scroll offset", "responsive-block-editor-addons")}
                   value={scrollOffset}
                   min={0}
                   max={200}
@@ -520,52 +520,52 @@ export default class Inspector extends Component {
                   {backgroundImage && (
                     <Fragment>
                       <SelectControl
-                        label={__("Image Position")}
+                        label={__("Image Position", "responsive-block-editor-addons")}
                         value={backgroundPosition}
                         onChange={(value) =>
                           setAttributes({ backgroundPosition: value })
                         }
                         options={[
-                          { value: "top left", label: __("Top Left") },
-                          { value: "top center", label: __("Top Center") },
-                          { value: "top right", label: __("Top Right") },
-                          { value: "center left", label: __("Center Left") },
+                          { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
+                          { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
+                          { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
+                          { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
                           {
                             value: "center center",
-                            label: __("Center Center"),
+                            label: __("Center Center", "responsive-block-editor-addons"),
                           },
-                          { value: "center right", label: __("Center Right") },
-                          { value: "bottom left", label: __("Bottom Left") },
+                          { value: "center right", label: __("Center Right", "responsive-block-editor-addons") },
+                          { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
                           {
                             value: "bottom center",
-                            label: __("Bottom Center"),
+                            label: __("Bottom Center", "responsive-block-editor-addons"),
                           },
-                          { value: "bottom right", label: __("Bottom Right") },
+                          { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Repeat")}
+                        label={__("Repeat", "responsive-block-editor-addons")}
                         value={backgroundRepeat}
                         onChange={(value) =>
                           setAttributes({ backgroundRepeat: value })
                         }
                         options={[
-                          { value: "no-repeat", label: __("No Repeat") },
-                          { value: "repeat", label: __("Repeat") },
-                          { value: "repeat-x", label: __("Repeat-x") },
-                          { value: "repeat-y", label: __("Repeat-y") },
+                          { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
+                          { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Size")}
+                        label={__("Size", "responsive-block-editor-addons")}
                         value={backgroundSize}
                         onChange={(value) =>
                           setAttributes({ backgroundSize: value })
                         }
                         options={[
-                          { value: "auto", label: __("Auto") },
-                          { value: "cover", label: __("Cover") },
-                          { value: "contain", label: __("Contain") },
+                          { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                          { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                          { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                         ]}
                       />
                     </Fragment>
@@ -592,12 +592,12 @@ export default class Inspector extends Component {
                   tabs={[
                     {
                       name: "normal",
-                      title: __("Normal"),
+                      title: __("Normal", "responsive-block-editor-addons"),
                       className: "rbea-normal-tab",
                     },
                     {
                       name: "hover",
-                      title: __("Hover"),
+                      title: __("Hover", "responsive-block-editor-addons"),
                       className: "rbea-focus-tab",
                     },
                   ]}
