@@ -12,7 +12,7 @@ function EditorStyles(props) {
     " ": {
       "max-height": height ? generateCSSUnit(height, "px") : `${400}px`,
     },
-      " .responsive-block-editor-addons-block-googlemap": {
+      " .responsive-block-editor-addons-block-map-frame": {
       width: "100%",
       "min-height": height ? generateCSSUnit(height, "px") : `${400}px`,
     },

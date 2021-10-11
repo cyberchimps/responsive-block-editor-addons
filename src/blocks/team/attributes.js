@@ -327,5 +327,30 @@ const attributes = {
   descriptionFontSizeTablet: {
 	  type: "number",
   },
+  socialIconBorderColor: {
+    type: "string",
+  },
+  socialIconHoverColor: {
+    type: "string",
+  },
+  socialIconBackgroundHoverColor: {
+    type: "string",
+  },
+  socialIconBackgroundColor: {
+    type: "string",
+  },
+  socialIconBorderHoverColor: {
+    type: "string",
+  },
+  iconBackgroundSize: {
+    type: "number",
+  },
+  iconBorderSize: {
+    type: "number",
+    default: 0
+  },
+  iconBorderRadius: {
+    type: "number",
+  },
 };
 export default attributes;
