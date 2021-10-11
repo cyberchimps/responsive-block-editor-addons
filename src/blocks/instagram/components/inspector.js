@@ -78,7 +78,7 @@ export default class Inspector extends Component {
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
-            <PanelBody title={__("API Key")}>
+            <PanelBody title={__("API Key", "responsive-block-editor-addons")}>
               <TextareaControl
                 label={__("Access Token")}
                 value={token}
@@ -177,7 +177,7 @@ export default class Inspector extends Component {
                   return <div>{tabout}</div>;
                 }}
               </TabPanel>
-              
+
               <RangeControl
                 label={__("Spacing")}
                 value={imagesGap}
