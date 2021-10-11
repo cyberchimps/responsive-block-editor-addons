@@ -324,7 +324,7 @@ export default class Inspector extends Component {
                             />
                             {showMaterials && (
                                 <RangeControl
-                                    label={__("Number Of Materials")}
+                                    label={__("Number Of Materials", "responsive-block-editor-addons")}
                                     value={numberOfMaterials}
                                     onChange={(newCount) => {
                                         let cloneMaterials = [...materials]

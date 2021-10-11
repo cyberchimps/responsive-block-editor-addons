@@ -86,7 +86,7 @@ export default class Edit extends Component {
         {showHeading && (
           <RichText
             tagName={headingTag}
-            placeholder={__("Write a Heading")}
+            placeholder={__("Write a Heading", "responsive-block-editor-addons")}
             value={headingTitle}
             className="responsive-heading-title-text"
             multiline={false}
@@ -117,7 +117,7 @@ export default class Edit extends Component {
         {showSubHeading && (
           <RichText
             tagName="p"
-            placeholder={__("Write some text")}
+            placeholder={__("Write some text", "responsive-block-editor-addons")}
             value={headingDesc}
             className="responsive-heading-desc-text"
             onChange={(value) => setAttributes({ headingDesc: value })}

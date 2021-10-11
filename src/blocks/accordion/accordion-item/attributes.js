@@ -6,7 +6,7 @@ const attributes = {
   },
   title: {
     type: "html",
-    default: __("What is Accordion?"),
+    default: __("What is Accordion?", "responsive-block-editor-addons"),
   },
   content: {
     type: "html",
