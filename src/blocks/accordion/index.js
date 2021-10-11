@@ -7,6 +7,7 @@ import edit from "./components/edit";
 import save from "./components/save";
 import icon from "./components/icon";
 import attributes from "./attributes";
+import deprecated from "./components/deprecated";
 
 //Import Icon Block
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -81,4 +82,5 @@ registerBlockType("responsive-block-editor-addons/accordion", {
     anchor: true,
   },
   save,
+  deprecated: deprecated,
 });
