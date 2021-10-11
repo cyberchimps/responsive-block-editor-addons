@@ -60,7 +60,7 @@ render() {
           if ("desktop" === tab.name) {
               tabout = (
                   <Fragment>
-                  <p>{__("Margin")}</p>
+                  <p>{__("Margin", "responsive-block-editor-addons")}</p>
                   <RangeControl
               label={__("Top", "responsive-block-editor-addons")}
               min={0}
@@ -70,7 +70,7 @@ render() {
               value={this.props.values.desktopTop}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("TopMargin")]: value !== undefined ? value : 0,              
+                [getAttrName("TopMargin")]: value !== undefined ? value : 0,
             })
             }
               />
@@ -79,7 +79,7 @@ render() {
               value={this.props.values.desktopBottom}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("BottomMargin")]: value !== undefined ? value : 0,              
+                [getAttrName("BottomMargin")]: value !== undefined ? value : 0,
               })
             }
               min={0}
@@ -91,7 +91,7 @@ render() {
               value={this.props.values.desktopLeft}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("LeftMargin")]: value !== undefined ? value : 0,              
+                [getAttrName("LeftMargin")]: value !== undefined ? value : 0,
               })
             }
               min={0}
@@ -103,7 +103,7 @@ render() {
               value={this.props.values.desktopRight}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("RightMargin")]: value !== undefined ? value : 0,              
+                [getAttrName("RightMargin")]: value !== undefined ? value : 0,
               })
             }
               min={0}
@@ -115,7 +115,7 @@ render() {
           } else if ("tablet" === tab.name) {
               tabout = (
                   <Fragment>
-                  <p>{__("Margin Tablet")}</p>
+                  <p>{__("Margin Tablet", "responsive-block-editor-addons")}</p>
                   <RangeControl
               label={__("Top", "responsive-block-editor-addons")}
               min={0}
@@ -125,7 +125,7 @@ render() {
               value={this.props.values.tabletTop}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("TopMarginTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("TopMarginTablet")]: value !== undefined ? value : 0,
               })
           }
               />
@@ -134,7 +134,7 @@ render() {
               value={this.props.values.tabletBottom}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("BottomMarginTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("BottomMarginTablet")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -146,7 +146,7 @@ render() {
               value={this.props.values.tabletLeft}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("LeftMarginTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("LeftMarginTablet")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -158,7 +158,7 @@ render() {
               value={this.props.values.tabletRight}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("RightMarginTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("RightMarginTablet")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -170,7 +170,7 @@ render() {
           } else {
               tabout = (
                   <Fragment>
-                  <p>{__("Margin Mobile")}</p>
+                  <p>{__("Margin Mobile", "responsive-block-editor-addons")}</p>
                   <RangeControl
               label={__("Top", "responsive-block-editor-addons")}
               min={0}
@@ -180,7 +180,7 @@ render() {
               value={this.props.values.mobileTop}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("TopMarginMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("TopMarginMobile")]: value !== undefined ? value : 0,
               })
           }
               />
@@ -189,7 +189,7 @@ render() {
               value={this.props.values.mobileBottom}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("BottomMarginMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("BottomMarginMobile")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -201,7 +201,7 @@ render() {
               value={this.props.values.mobileLeft}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("LeftMarginMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("LeftMarginMobile")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -213,7 +213,7 @@ render() {
               value={this.props.values.mobileRight}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("RightMarginMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("RightMarginMobile")]: value !== undefined ? value : 0,
               })
           }
               min={0}

@@ -72,7 +72,7 @@ export default class Edit extends Component {
     if( prevProps.attributes.token !== this.props.attributes.token) {
       this.fetchPhotos();
     }
-    
+
     if (prevState.token !== this.state.token) {
       this.fetchPhotos();
     }
@@ -115,7 +115,7 @@ export default class Edit extends Component {
         instagramContent = (
           <p>
             <Spinner />
-            {__("Fetching feed, Please wait")}
+            {__("Fetching feed, Please wait", "responsive-block-editor-addons")}
           </p>
         );
       } else {

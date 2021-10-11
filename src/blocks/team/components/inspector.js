@@ -325,7 +325,7 @@ export default class Inspector extends Component {
             value={socialIconHoverColor}
             onChange={(value) =>
               setAttributes({ socialIconHoverColor: value })
-            }            
+            }
             allowReset
           />
           <p className="responsive-block-editor-addons-setting-label">
@@ -476,7 +476,7 @@ export default class Inspector extends Component {
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
                   label: __("Horizontal", "responsive-block-editor-addons"),
