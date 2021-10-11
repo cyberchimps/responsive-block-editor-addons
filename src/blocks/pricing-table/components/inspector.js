@@ -8,15 +8,15 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ImageSettingsControl from "../../../settings-components/Image Settings";
+import ImageSettingsControl from "../../../settings-components/ImageSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 
 // Setup the block
 const { __ } = wp.i18n;

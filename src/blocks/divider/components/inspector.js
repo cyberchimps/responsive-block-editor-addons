@@ -3,7 +3,7 @@
  */
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings/index";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings/index";
 
 // Setup the block
 const { __ } = wp.i18n;

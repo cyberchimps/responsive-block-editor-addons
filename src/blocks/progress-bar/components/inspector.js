@@ -1,6 +1,6 @@
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import { loadGoogleFont } from "../../../utils/font";
 
 /**

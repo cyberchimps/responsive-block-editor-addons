@@ -11,10 +11,10 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 
 // Setup the block
 const { __ } = wp.i18n;

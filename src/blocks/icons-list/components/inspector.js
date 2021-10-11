@@ -2,7 +2,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 
 /**
  * Inspector Controls

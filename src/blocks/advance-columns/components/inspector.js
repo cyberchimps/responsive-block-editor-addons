@@ -2,11 +2,11 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 
 /**
  * Inspector Controls

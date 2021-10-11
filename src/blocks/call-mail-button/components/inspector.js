@@ -9,9 +9,9 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
 import { loadGoogleFont } from "../../../utils/font";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";

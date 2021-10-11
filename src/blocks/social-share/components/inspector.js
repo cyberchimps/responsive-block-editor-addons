@@ -8,12 +8,12 @@ const { Component, Fragment } = wp.element;
 
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 
 // Import block components
 const {

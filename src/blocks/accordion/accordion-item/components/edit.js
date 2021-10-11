@@ -9,7 +9,7 @@ import renderSVG from "../../../../renderIcon";
 import BoxShadowControl from "../../../../utils/components/box-shadow";
 import EditorStyles from "./editor-styles";
 import BlockBorderHelperControl from "../../../../settings-components/BlockBorderSettings";
-import ResponsiveSpacingControl from "../../../../settings-components/Responsive Spacing Settings";
+import ResponsiveSpacingControl from "../../../../settings-components/ResponsiveSpacingSettings";
 
 const { __ } = wp.i18n;
 

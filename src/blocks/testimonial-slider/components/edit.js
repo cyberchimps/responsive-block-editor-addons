@@ -17,10 +17,10 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 
 const { __ } = wp.i18n;
 

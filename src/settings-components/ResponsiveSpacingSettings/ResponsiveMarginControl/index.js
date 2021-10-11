@@ -1,6 +1,6 @@
 import {camelCase, lowerFirst} from "lodash";
 import {sprintf} from "@wordpress/i18n";
-import ResponsiveMarginControl from "./Responsive TBLR Margin Control"
+import ResponsiveMarginControl from "./ResponsiveTBLRMarginControl"
 
 /**
  * Box-Shadow reusable component.

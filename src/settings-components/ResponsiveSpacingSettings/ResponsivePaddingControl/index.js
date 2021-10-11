@@ -1,6 +1,6 @@
 import {camelCase, lowerFirst} from "lodash";
 import {sprintf} from "@wordpress/i18n";
-import ResponsivePaddingControl from "./Responsive TBLR Padding Control"
+import ResponsivePaddingControl from "./ResponsiveTBLRPaddingControl"
 
 /**
  * Box-Shadow reusable component.

@@ -2,9 +2,9 @@
  * Box-Shadow reusable component.
  *
  */
-import ButtonBorderControl from "./Border Settings";
-import ButtonSpacingControl from "./Spacing Settings";
-import ButtonColorControl from "./Color Settings";
+import ButtonBorderControl from "./BorderSettings";
+import ButtonSpacingControl from "./SpacingSettings";
+import ButtonColorControl from "./ColorSettings";
 const { __ } = wp.i18n;
 
 const { ColorPalette } = wp.blockEditor;
@@ -37,7 +37,9 @@ class ButtonSettingsControl extends Component {
                       setAttributes({ buttonTarget: !buttonTarget });
                   }}
               />
-              <ButtonSpacingControl {...this.props}/>
+              {this.props.showButtonSpacing === false ? false : true && (
+                <ButtonSpacingControl {...this.props}/>
+              )}
               <ButtonBorderControl {...this.props}/>
               <ButtonColorControl {...this.props}/>
           </Fragment>
