@@ -298,23 +298,23 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     const accordionGeneralSettings = () => {
       return (
         <PanelBody
-          title={__("General")}
+          title={__("General", "responsive-block-editor-addons")}
           initialOpen={true}
           className="responsive_block_editor_addons__url-panel-body"
         >
           <SelectControl
-            label={__("Layout")}
+            label={__("Layout", "responsive-block-editor-addons")}
             value={layout}
             options={[
-              { value: "accordion", label: __("Accordion") },
-              { value: "grid", label: __("Grid") },
+              { value: "accordion", label: __("Accordion", "responsive-block-editor-addons") },
+              { value: "grid", label: __("Grid", "responsive-block-editor-addons") },
             ]}
             onChange={(value) => this.onchangeLayout(value)}
           />
           {"accordion" === layout && (
             <Fragment>
               <ToggleControl
-                label={__("Collapse other items")}
+                label={__("Collapse other items", "responsive-block-editor-addons")}
                 checked={inactiveOtherItems}
                 onChange={(value) =>
                   setAttributes({ inactiveOtherItems: !inactiveOtherItems })
@@ -322,7 +322,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               />
               {true === inactiveOtherItems && (
                 <ToggleControl
-                  label={__("Expand First Item")}
+                  label={__("Expand First Item", "responsive-block-editor-addons")}
                   checked={expandFirstItem}
                   onChange={(value) =>
                     setAttributes({ expandFirstItem: !expandFirstItem })
@@ -335,7 +335,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           <hr className="responsive-block-editor-addons-editor__separator" />
           {"grid" === layout && (
             <RangeControl
-              label={__("Columns")}
+              label={__("Columns", "responsive-block-editor-addons")}
               value={columns}
               onChange={(value) => setAttributes({ columns: value })}
               min={0}
@@ -344,7 +344,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           )}
           {"grid" === layout && (
             <Fragment>
-              <h2> {__("Alignment")}</h2>
+              <h2> {__("Alignment", "responsive-block-editor-addons")}</h2>
               <IconButton
                 key={"left"}
                 icon="editor-alignleft"
@@ -379,7 +379,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     const accordionColorSettings = () => {
       return (
         <PanelBody
-          title={__("Color")}
+          title={__("Color", "responsive-block-editor-addons")}
           initialOpen={false}
           className="responsive_block_editor_addons__url-panel-body"
         >
@@ -419,7 +419,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             ]}
           >
             <ToggleControl
-              label="Gradient Background"
+              label={__("Gradient Background", "responsive-block-editor-addons")}
               checked={titleBgGradient}
               onChange={() =>
                 this.props.setAttributes({
@@ -556,7 +556,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     const accordionTypographySettings = () => {
       return (
         <PanelBody
-          title={__("Typography")}
+          title={__("Typography", "responsive-block-editor-addons")}
           initialOpen={false}
           className="responsive_block_editor_addons__url-panel-body"
         >
@@ -584,7 +584,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     const accordionStylingSettings = () => {
       return (
         <PanelBody
-          title={__("Spacing")}
+          title={__("Spacing", "responsive-block-editor-addons")}
           initialOpen={false}
           className="responsive_block_editor_addons__url-panel-body"
         >
@@ -605,7 +605,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                 {...this.props}
               />
               <ToggleControl
-                label={__("Equal Height")}
+                label={__("Equal Height", "responsive-block-editor-addons")}
                 checked={equalHeight}
                 onChange={(value) =>
                   setAttributes({ equalHeight: !equalHeight })
@@ -633,8 +633,8 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     const accordionIconSettings = () => {
       return (
         <Fragment>
-          <h2> {__("Icon")} </h2>
-          <p className="components-base-control__label">{__("Expand")}</p>
+          <h2> {__("Icon", "responsive-block-editor-addons")} </h2>
+          <p className="components-base-control__label">{__("Expand", "responsive-block-editor-addons")}</p>
           <FontIconPicker
             icons={svg_icons}
             renderFunc={renderSVG}
@@ -642,9 +642,9 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             value={icon}
             onChange={(value) => this.onchangeIcon(value)}
             isMulti={false}
-            noSelectedPlaceholder={__("Select Icon")}
+            noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
           />
-          <p className="components-base-control__label">{__("Collapse")}</p>
+          <p className="components-base-control__label">{__("Collapse", "responsive-block-editor-addons")}</p>
           <FontIconPicker
             icons={svg_icons}
             renderFunc={renderSVG}
@@ -652,9 +652,9 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             value={iconActive}
             onChange={(value) => this.onchangeActiveIcon(value)}
             isMulti={false}
-            noSelectedPlaceholder={__("Select Icon")}
+            noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
           />
-          <h2> {__("Icon Alignment")}</h2>
+          <h2> {__("Icon Alignment", "responsive-block-editor-addons")}</h2>
           <IconButton
             key={"row"}
             icon="editor-alignleft"

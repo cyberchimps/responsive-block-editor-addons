@@ -153,19 +153,19 @@ export default class Inspector extends Component {
     const buttonSizeOptions = [
       {
         value: "responsive-block-editor-addons-cta-button-size-small",
-        label: __("Small"),
+        label: __("Small", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-size-medium",
-        label: __("Medium"),
+        label: __("Medium", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-size-large",
-        label: __("Large"),
+        label: __("Large", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-size-extralarge",
-        label: __("Extra Large"),
+        label: __("Extra Large", "responsive-block-editor-addons"),
       },
     ];
 
@@ -173,15 +173,15 @@ export default class Inspector extends Component {
     const buttonShapeOptions = [
       {
         value: "responsive-block-editor-addons-cta-button-shape-square",
-        label: __("Square"),
+        label: __("Square", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-shape-rounded",
-        label: __("Rounded Square"),
+        label: __("Rounded Square", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-shape-circular",
-        label: __("Circular"),
+        label: __("Circular", "responsive-block-editor-addons"),
       },
     ];
 
@@ -305,7 +305,7 @@ export default class Inspector extends Component {
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
                   label: __("Horizontal", "responsive-block-editor-addons"),
@@ -837,7 +837,7 @@ export default class Inspector extends Component {
               />
 
               <SelectControl
-                label={__("Type")}
+                label={__("Type", "responsive-block-editor-addons")}
                 value={resctaType}
                 onChange={(value) => setAttributes({ resctaType: value })}
                 options={[
@@ -860,9 +860,9 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             {resctaType === "button" && (
-              <PanelBody title={__("Icon Settings")} initialOpen={false}>
+              <PanelBody title={__("Icon Settings", "responsive-block-editor-addons")} initialOpen={false}>
                 <Fragment>
-                  <p className="components-base-control__label">{__("Icon")}</p>
+                  <p className="components-base-control__label">{__("Icon", "responsive-block-editor-addons")}</p>
                   <FontIconPicker
                     icons={svg_icons}
                     renderFunc={renderSVG}
@@ -870,7 +870,7 @@ export default class Inspector extends Component {
                     value={icon}
                     onChange={(value) => setAttributes({ icon: value })}
                     isMulti={false}
-                    noSelectedPlaceholder={__("Select Icon")}
+                    noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
                   />
                   <p className="responsive-block-editor-addons-setting-label">
                     {__("Icon Color", "responsive-block-editor-addons")}
@@ -887,12 +887,12 @@ export default class Inspector extends Component {
                     allowReset
                   />
                   <SelectControl
-                    label={__("Icon Position")}
+                    label={__("Icon Position", "responsive-block-editor-addons")}
                     value={iconPosition}
                     onChange={(value) => setAttributes({ iconPosition: value })}
                     options={[
-                      { value: "before", label: __("Before Text") },
-                      { value: "after", label: __("After Text") },
+                      { value: "before", label: __("Before Text", "responsive-block-editor-addons") },
+                      { value: "after", label: __("After Text", "responsive-block-editor-addons") },
                     ]}
                   />
                   <RangeControl

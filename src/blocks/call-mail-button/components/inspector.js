@@ -17,11 +17,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 
 // Import block components
-const {
-  InspectorControls,
-  ColorPalette,
-  AlignmentToolbar,
-} = wp.editor;
+const { InspectorControls, ColorPalette, AlignmentToolbar } = wp.editor;
 
 // Import Inspector components
 const {
@@ -137,20 +133,20 @@ export default class Inspector extends Component {
     const buttonSizeOptions = [
       {
         value: "responsive-block-editor-addons-call-mail-button-size-medium",
-        label: __("Medium"),
+        label: __("Medium", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-call-mail-button-size-small",
-        label: __("Small"),
+        label: __("Small", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-call-mail-button-size-large",
-        label: __("Large"),
+        label: __("Large", "responsive-block-editor-addons"),
       },
       {
         value:
           "responsive-block-editor-addons-call-mail-button-size-extralarge",
-        label: __("Extra Large"),
+        label: __("Extra Large", "responsive-block-editor-addons"),
       },
     ];
 
@@ -237,8 +233,14 @@ export default class Inspector extends Component {
                 label={__("Button Type", "responsive-block-editor-addons")}
                 value={buttonToShow}
                 options={[
-                  { value: "call", label: __("Call Button") },
-                  { value: "mail", label: __("Mail Button") },
+                  {
+                    value: "call",
+                    label: __("Call Button", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "mail",
+                    label: __("Mail Button", "responsive-block-editor-addons"),
+                  },
                 ]}
                 onChange={(value) => setAttributes({ buttonToShow: value })}
               />
@@ -309,9 +311,18 @@ export default class Inspector extends Component {
                 )}
                 value={buttonWidthType}
                 options={[
-                  { value: "fixed", label: __("Fixed") },
-                  { value: "flexible", label: __("Flexible") },
-                  { value: "full", label: __("Full") },
+                  {
+                    value: "fixed",
+                    label: __("Fixed", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "flexible",
+                    label: __("Flexible", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "full",
+                    label: __("Full", "responsive-block-editor-addons"),
+                  },
                 ]}
                 onChange={(value) => setAttributes({ buttonWidthType: value })}
               />
@@ -437,7 +448,7 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <p className="components-base-control__label">
-                {__("Selected Icon")}
+                {__("Selected Icon", "responsive-block-editor-addons")}
               </p>
               <FontIconPicker
                 icons={svg_icons}
@@ -446,14 +457,23 @@ export default class Inspector extends Component {
                 value={icon}
                 onChange={(value) => setAttributes({ icon: value })}
                 isMulti={false}
-                noSelectedPlaceholder={__("Select Icon")}
+                noSelectedPlaceholder={__(
+                  "Select Icon",
+                  "responsive-block-editor-addons"
+                )}
               />
               <SelectControl
                 label={__("Icon Position", "responsive-block-editor-addons")}
                 value={iconPosition}
                 options={[
-                  { value: "left", label: __("Left") },
-                  { value: "right", label: __("Right") },
+                  {
+                    value: "left",
+                    label: __("Left", "responsive-block-editor-addons"),
+                  },
+                  {
+                    value: "right",
+                    label: __("Right", "responsive-block-editor-addons"),
+                  },
                 ]}
                 onChange={(value) => setAttributes({ iconPosition: value })}
               />
@@ -641,7 +661,7 @@ export default class Inspector extends Component {
               {!buttonTransparent && (
                 <Fragment>
                   <p className="responsive-block-editor-addons-setting-label">
-                    {__("Button Text Color")}
+                    {__("Button Text Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -659,7 +679,7 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
               <p className="responsive-block-editor-addons-setting-label">
-                {__("Button Color Hover")}
+                {__("Button Color Hover", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -675,7 +695,10 @@ export default class Inspector extends Component {
               {!buttonTransparent && (
                 <Fragment>
                   <p className="responsive-block-editor-addons-setting-label">
-                    {__("Button Text Color Hover")}
+                    {__(
+                      "Button Text Color Hover",
+                      "responsive-block-editor-addons"
+                    )}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"

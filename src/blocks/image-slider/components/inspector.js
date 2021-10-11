@@ -135,7 +135,7 @@ class Inspector extends Component {
                   <SizeControl
                     {...this.props}
                     type={"grid"}
-                    label={__("Size")}
+                    label={__("Size", "responsive-block-editor-addons")}
                     onChange={this.setSizeControl}
                     value={gridSize}
                     resetValue={"xlrg"}

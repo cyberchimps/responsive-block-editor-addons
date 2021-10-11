@@ -21,6 +21,7 @@ import ImageBackgroundControl from "../../../settings-components/BlockBackground
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 
 const { __ } = wp.i18n;
 
@@ -602,11 +603,7 @@ class edit extends Component {
               borderStyle: arrowBorderStyle,
           }}
         >
-          <Dashicon
-            icon="arrow-right-alt2"
-            height={arrowSize}
-            width={arrowSize}
-          />
+        { ResponsiveBlockEditorAddonsIcons.carousel_right }
         </button>
       );
     }
@@ -627,12 +624,9 @@ class edit extends Component {
               borderStyle: arrowBorderStyle,
           }}
         >
-          <Dashicon
-            icon="arrow-left-alt2"
-            height={arrowSize}
-            width={arrowSize}
-          />
+        { ResponsiveBlockEditorAddonsIcons.carousel_left }
         </button>
+
       );
     }
 

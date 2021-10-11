@@ -112,7 +112,7 @@ function EditorStyles(props) {
   } else if (headingAlign == "right") {
     img_align = "flex-end";
   }
-  
+
   let updatedBackgroundImage = "";
   let backgroundImageEffect = "";
   let imgopacity = backgroundOpacity / 100;
@@ -151,6 +151,11 @@ function EditorStyles(props) {
   var selectors = {
     " ": {
       "padding": generateCSSUnit(blockPadding, "px"),
+    },
+    " .slick-arrow svg": {
+      "height": generateCSSUnit(arrowSize, "px"),
+      "width": generateCSSUnit(arrowSize, "px"),
+        "fill": arrowColor,
     },
     " .responsive-block-editor-addons-testimonial__wrap": {
       "padding-left": generateCSSUnit(columnGap / 2, "px"),

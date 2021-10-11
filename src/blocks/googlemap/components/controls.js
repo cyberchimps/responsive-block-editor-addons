@@ -11,7 +11,7 @@ function Controls({ attributes, setAttributes }) {
   const toolbarControls = [
     {
       icon: "edit",
-      title: __("Edit Location", "coblocks"),
+      title: __("Edit Location", "responsive-block-editor-addons"),
       isActive: !pinned,
       onClick: () => setAttributes({ pinned: !pinned }),
     },

@@ -120,30 +120,30 @@ export default class Inspector extends Component {
         boxShadowSpread,
         backgroundColor,
         boxShadowColor,
-        containerTopPadding, 
-        containerBottomPadding, 
-        containerLeftPadding, 
+        containerTopPadding,
+        containerBottomPadding,
+        containerLeftPadding,
         containerRightPadding,
-        containerTopPaddingTablet, 
-        containerBottomPaddingTablet, 
-        containerLeftPaddingTablet, 
+        containerTopPaddingTablet,
+        containerBottomPaddingTablet,
+        containerLeftPaddingTablet,
         containerRightPaddingTablet,
-        containerTopPaddingMobile, 
-        containerBottomPaddingMobile, 
-        containerLeftPaddingMobile, 
+        containerTopPaddingMobile,
+        containerBottomPaddingMobile,
+        containerLeftPaddingMobile,
         containerRightPaddingMobile,
-        containerTopMargin, 
-        containerBottomMargin, 
-        containerLeftMargin, 
-        containerRightMargin, 
+        containerTopMargin,
+        containerBottomMargin,
+        containerLeftMargin,
+        containerRightMargin,
         containerTopMarginTablet,
-        containerBottomMarginTablet, 
-        containerLeftMarginTablet, 
-        containerRightMarginTablet, 
+        containerBottomMarginTablet,
+        containerLeftMarginTablet,
+        containerRightMarginTablet,
         containerTopMarginMobile,
         containerBottomMarginMobile,
         containerLeftMarginMobile,
-        containerRightMarginMobile,	
+        containerRightMarginMobile,
         justifyItems,
         displayInline,
         stackOnMobile,
@@ -282,7 +282,7 @@ export default class Inspector extends Component {
             >
               <BaseControl
                 id="responsive-block-editor-addons-countdown-due-date"
-                label={__("Due Date")}
+                label={__("Due Date", "responsive-block-editor-addons")}
               >
                 <DateTime
                   value={date}
@@ -301,7 +301,7 @@ export default class Inspector extends Component {
             >
               <BaseControl>
                 <BaseControl.VisualLabel>
-                  {__("Text Alignment")}
+                  {__("Text Alignment", "responsive-block-editor-addons")}
                 </BaseControl.VisualLabel>
                 <br></br>
                 <br></br>
@@ -589,24 +589,24 @@ export default class Inspector extends Component {
               >
                 <BoxShadowControl
                   setAttributes={setAttributes}
-                  label={__("Box Shadow")}
-                  boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                  label={__("Box Shadow", "responsive-block-editor-addons")}
+                  boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                   boxShadowHOffset={{
                     value: boxShadowHOffset,
-                    label: __("Horizontal"),
+                    label: __("Horizontal", "responsive-block-editor-addons"),
                   }}
                   boxShadowVOffset={{
                     value: boxShadowVOffset,
-                    label: __("Vertical"),
+                    label: __("Vertical", "responsive-block-editor-addons"),
                   }}
-                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
                   boxShadowSpread={{
                     value: boxShadowSpread,
-                    label: __("Spread"),
+                    label: __("Spread", "responsive-block-editor-addons"),
                   }}
                   boxShadowPosition={{
                     value: boxShadowPosition,
-                    label: __("Position"),
+                    label: __("Position", "responsive-block-editor-addons"),
                   }}
                 />
               </PanelBody>
@@ -706,38 +706,38 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <TypographyHelperControl
-                title={__("Digit Typography", "responsive-block-editor-addons")} 
+                title={__("Digit Typography", "responsive-block-editor-addons")}
                 attrNameTemplate="digit%s"
                 values = {{
-                family: digitFontFamily, 
-                size: digitFontSize, 
-                sizeMobile: digitFontSizeMobile, 
-                sizeTablet: digitFontSizeTablet, 
-                weight: digitFontWeight, 
+                family: digitFontFamily,
+                size: digitFontSize,
+                sizeMobile: digitFontSizeMobile,
+                sizeTablet: digitFontSizeTablet,
+                weight: digitFontWeight,
                 height: digitLineHeight,
                 spacing: digitLetterSpacing
                 }}
                 showLetterSpacing = { true }
                 showTextTransform = { false }
                 setAttributes={ setAttributes }
-                {...this.props}            
+                {...this.props}
               />
               <TypographyHelperControl
-                title={__("Label Typography", "responsive-block-editor-addons")} 
+                title={__("Label Typography", "responsive-block-editor-addons")}
                 attrNameTemplate="label%s"
                 values = {{
-                family: labelFontFamily, 
-                size: labelFontSize, 
-                sizeMobile: labelFontSizeMobile, 
-                sizeTablet: labelFontSizeTablet, 
-                weight: labelFontWeight, 
+                family: labelFontFamily,
+                size: labelFontSize,
+                sizeMobile: labelFontSizeMobile,
+                sizeTablet: labelFontSizeTablet,
+                weight: labelFontWeight,
                 height: labelLineHeight,
                 spacing: labelLetterSpacing
                 }}
                 showLetterSpacing = { true }
                 showTextTransform = { false }
                 setAttributes={ setAttributes }
-                {...this.props}            
+                {...this.props}
               />
             </PanelBody>
           </InspectorTab>
