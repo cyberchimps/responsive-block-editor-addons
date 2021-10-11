@@ -302,7 +302,7 @@ export default class Edit extends Component {
                                   <RichText
                                     tagName={headingTag}
                                     value={post.time_heading}
-                                    placeholder={__("Write a Heading")}
+                                    placeholder={__("Write a Heading", "responsive-block-editor-addons")}
                                     className="responsive-timeline__heading"
                                     onChange={(value) => {
                                       var p = {
@@ -336,7 +336,7 @@ export default class Edit extends Component {
                                 <RichText
                                   tagName="p"
                                   value={post.time_desc}
-                                  placeholder={__("Write a Description")}
+                                  placeholder={__("Write a Description", "responsive-block-editor-addons")}
                                   className="responsive-timeline-desc-content"
                                   onChange={(value) => {
                                     var p = {

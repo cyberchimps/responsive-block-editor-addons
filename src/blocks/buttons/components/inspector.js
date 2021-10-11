@@ -153,17 +153,17 @@ export default class Inspector extends Component {
 							</TabPanel>
 							<hr className="responsive-block-editor-addons-editor__separator" />
 							<SelectControl
-								label={__("Stack on")}
+								label={__("Stack on", "responsive-block-editor-addons")}
 								value={stack}
 								options={[
-									{ value: "none", label: __("None") },
-									{ value: "desktop", label: __("Desktop") },
-									{ value: "tablet", label: __("Tablet") },
-									{ value: "mobile", label: __("Mobile") },
+									{ value: "none", label: __("None", "responsive-block-editor-addons") },
+									{ value: "desktop", label: __("Desktop", "responsive-block-editor-addons") },
+									{ value: "tablet", label: __("Tablet", "responsive-block-editor-addons") },
+									{ value: "mobile", label: __("Mobile", "responsive-block-editor-addons") },
 								]}
 								onChange={(value) => setAttributes({ stack: value })}
 								help={__(
-									"Note: Choose breakpoint on which the buttons will stack."
+									"Note: Choose breakpoint on which the buttons will stack.", "responsive-block-editor-addons"
 								)}
 							/>
 						</PanelBody>
