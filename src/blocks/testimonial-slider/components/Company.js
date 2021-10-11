@@ -40,7 +40,7 @@ class Company extends React.Component {
             setAttributes({ test_block: data_copy });
           }}
           multiline={false}
-          placeholder={__("Company Name")}
+          placeholder={__("Company Name", "responsive-block-editor-addons")}
           onMerge={props.mergeBlocks}
           unstableOnSplit={
             props.insertBlocksAfter

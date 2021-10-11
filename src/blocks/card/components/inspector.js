@@ -889,7 +889,7 @@ export default class Inspector extends Component {
                   ]}
                 />
                 <SelectControl
-                  label={__("Image Size", "responsive-block-editor-addons")}
+                  label={__("Image Background Size", "responsive-block-editor-addons")}
                   value={thumbsize}
                   onChange={(value) => setAttributes({ thumbsize: value })}
                   options={[

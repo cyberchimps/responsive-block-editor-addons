@@ -65,10 +65,10 @@ class ImageSettingsControl extends Component {
                   label={__("Size", "responsive-block-editor-addons")}
                   value={imageSize}
                   options={[
-                      { value: "full", label: __("Full Size") },
-                      { value: "thumbnail", label: __("Thumbnail") },
-                      { value: "medium", label: __("Medium") },
-                      { value: "large", label: __("Large") },
+                      { value: "full", label: __("Full Size", "responsive-block-editor-addons") },
+                      { value: "thumbnail", label: __("Thumbnail", "responsive-block-editor-addons") },
+                      { value: "medium", label: __("Medium", "responsive-block-editor-addons") },
+                      { value: "large", label: __("Large", "responsive-block-editor-addons") },
                   ]}
                   onChange={(newImageSize) =>
                       setAttributes({ imageSize: newImageSize })

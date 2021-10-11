@@ -82,12 +82,12 @@ class ButtonColorControl extends Component {
                   tabs={[
                       {
                           name: "normal",
-                          title: __("Normal"),
+                          title: __("Normal", "responsive-block-editor-addons"),
                           className: "rbea-normal-tab",
                       },
                       {
                           name: "hover",
-                          title: __("Hover"),
+                          title: __("Hover", "responsive-block-editor-addons"),
                           className: "rbea-focus-tab",
                       },
                   ]}
@@ -99,7 +99,7 @@ class ButtonColorControl extends Component {
                               <Fragment>
                                   <Fragment>
                                       <p className="responsive-setting-label">
-                                          {__("Text Color")}
+                                          {__("Text Color", "responsive-block-editor-addons")}
                                           <span className="components-base-control__label">
                           <span
                               className="component-color-indicator"
@@ -154,7 +154,7 @@ class ButtonColorControl extends Component {
                                   {"color" == buttonHbackgroundType && (
                                       <Fragment>
                                           <p className="responsive-setting-label">
-                                              {__("Hover Background Color")}
+                                              {__("Hover Background Color", "responsive-block-editor-addons")}
                                               <span className="components-base-control__label">
                             <span
                                 className="component-color-indicator"
@@ -280,7 +280,7 @@ class ButtonColorControl extends Component {
                           tabout = (
                               <Fragment>
                                   <p className="responsive-setting-label">
-                                      {__("Text Color")}
+                                      {__("Text Color", "responsive-block-editor-addons")}
                                       <span className="components-base-control__label">
                         <span
                             className="component-color-indicator"
@@ -334,7 +334,7 @@ class ButtonColorControl extends Component {
                                   {"color" == buttonbackgroundType && (
                                       <Fragment>
                                           <p className="responsive-setting-label">
-                                              {__("Background Color")}
+                                              {__("Background Color", "responsive-block-editor-addons")}
                                               <span className="components-base-control__label">
                             <span
                                 className="component-color-indicator"

@@ -95,9 +95,9 @@ class LatestPostsBlock extends Component {
     // Check if there are posts
     const hasPosts = Array.isArray(latestPosts) && latestPosts.length;
 
-    let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy") }];
+    let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy", "responsive-block-editor-addons") }];
 
-    let categoryListOptions = [{ value: "", label: __("All") }];
+    let categoryListOptions = [{ value: "", label: __("All", "responsive-block-editor-addons") }];
 
     if ("" != taxonomyList) {
       Object.keys(taxonomyList).map((item, thisIndex) => {
@@ -121,7 +121,7 @@ class LatestPostsBlock extends Component {
     const isPost = "post" === attributes.postType;
     const isCourse = "course" === attributes.postType;
     const isLesson = "lesson" === attributes.postType;
-    
+
     // Post type options
     const postTypeOptions = [
       { value: "post", label: __("Post", "responsive-block-editor-addons") },
@@ -200,7 +200,7 @@ class LatestPostsBlock extends Component {
     }
 
 	let queryControls = (
-		<PanelBody title={__("Query")} initialOpen={true}>
+		<PanelBody title={__("Query", "responsive-block-editor-addons")} initialOpen={true}>
 			  <p>{__("Text Alignment", "responsive-block-editor-addons")}</p>
 			  <AlignmentToolbar
 				value={attributes.textAlignment}
@@ -218,11 +218,11 @@ class LatestPostsBlock extends Component {
 				options={postTypeOptions}
 				value={attributes.postType}
 				onChange={(value) => setPostGridContentType(value)}
-			  /> 
+			  />
 			  </Fragment>
 			  {"" != taxonomyList && (
 				<SelectControl
-				  label={__("Taxonomy")}
+				  label={__("Taxonomy", "responsive-block-editor-addons")}
 				  value={attributes.taxonomyType}
 				  onChange={(value) => this.onSelectTaxonomyType(value)}
 				  options={taxonomyListOptions}
@@ -250,7 +250,7 @@ class LatestPostsBlock extends Component {
         <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar
-            label={__("Block Alignment")}
+            label={__("Block Alignment", "responsive-block-editor-addons")}
             value={attributes.align}
             onChange={(value) => {
               setAttributes({ align: value });
@@ -492,7 +492,7 @@ export default compose([
     if (excludeCurrentPost) {
       latestPostsQuery["exclude"] = select("core/editor").getCurrentPostId();
     }
-    var category = [];	
+    var category = [];
     var temp = parseInt(categories);
     category.push(temp);
     var catlength = categoriesList?.length;
@@ -502,7 +502,7 @@ export default compose([
           categoriesList[i].child?.forEach(element => {
             category.push(element);
           });
-        }		
+        }
       }
     }
 

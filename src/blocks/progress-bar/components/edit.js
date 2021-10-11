@@ -161,7 +161,7 @@ export default class Edit extends Component {
 							{progressBarTopTitleEnable === true && (
 								<RichText
 									tagName="h4"
-									placeholder={__("Enter Title")}
+									placeholder={__("Enter Title", "responsive-block-editor-addons")}
 									value={progressBarTopTitle}
 									className="responsive-horizontal-progress-bar-top-title"
 									onChange={(value) => setAttributes({ progressBarTopTitle: value })}
@@ -194,7 +194,7 @@ export default class Edit extends Component {
 												{progressBarInnerTitleEnable === true && (
 													<RichText
 														tagName="span"
-														placeholder={__("Enter Title")}
+														placeholder={__("Enter Title", "responsive-block-editor-addons")}
 														value={progressBarInnerTitle}
 														className="responsive-horizontal-progress-bar-inner-title"
 														onChange={(value) => setAttributes({ progressBarInnerTitle: value })}
@@ -217,7 +217,7 @@ export default class Edit extends Component {
 							{progressBarBottomTitleEnable === true && (
 								<RichText
 									tagName="h4"
-									placeholder={__("Enter Title")}
+									placeholder={__("Enter Title", "responsive-block-editor-addons")}
 									value={progressBarBottomTitle}
 									className="responsive-horizontal-progress-bar-bottom-title"
 									onChange={(value) => setAttributes({ progressBarBottomTitle: value })}
@@ -241,7 +241,7 @@ export default class Edit extends Component {
 							{circularProgressBarTopTitleEnable === true && (
 								<RichText
 									tagName="h4"
-									placeholder={__("Enter Title")}
+									placeholder={__("Enter Title", "responsive-block-editor-addons")}
 									value={circularProgressBarTopTitle}
 									className="responsive-circular-progress-bar-top-title"
 									onChange={(value) => setAttributes({ circularProgressBarTopTitle: value })}
@@ -270,7 +270,7 @@ export default class Edit extends Component {
 							{circularProgressBarBottomTitleEnable === true && (
 								<RichText
 									tagName="h4"
-									placeholder={__("Enter Title")}
+									placeholder={__("Enter Title", "responsive-block-editor-addons")}
 									value={circularProgressBarBottomTitle}
 									className="responsive-circular-progress-bar-bottom-title"
 									onChange={(value) => setAttributes({ circularProgressBarBottomTitle: value })}
@@ -294,7 +294,7 @@ export default class Edit extends Component {
 							{semiCircularProgressBarTopTitleEnable === true && (
 								<RichText
 									tagName="h4"
-									placeholder={__("Enter Title")}
+									placeholder={__("Enter Title", "responsive-block-editor-addons")}
 									value={semiCircularProgressBarTopTitle}
 									className="responsive-semi-circular-progress-bar-top-title"
 									onChange={(value) => setAttributes({ semiCircularProgressBarTopTitle: value })}
@@ -319,7 +319,7 @@ export default class Edit extends Component {
 							{semiCircularProgressBarBottomTitleEnable === true && (
 								<RichText
 									tagName="h4"
-									placeholder={__("Enter Title")}
+									placeholder={__("Enter Title", "responsive-block-editor-addons")}
 									value={semiCircularProgressBarBottomTitle}
 									className="responsive-semi-circular-progress-bar-bottom-title"
 									onChange={(value) => setAttributes({ semiCircularProgressBarBottomTitle: value })}

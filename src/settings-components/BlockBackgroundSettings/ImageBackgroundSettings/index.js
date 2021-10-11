@@ -110,46 +110,46 @@ class ImageBackgroundControl extends Component {
                 { backgroundImage && (this.props.showSomeImageOptions == true || this.props.showMoreImageOptions == true) && (
                     <Fragment>
                         <SelectControl
-                            label={__("Image Position")}
+                            label={__("Image Position", "responsive-block-editor-addons")}
                             value={backgroundImagePosition}
                             onChange={(value) =>
                                 setAttributes({ backgroundImagePosition: value })
                             }
                             options={[
-                                { value: "top-left", label: __("Top Left") },
-                                { value: "top center", label: __("Top Center") },
-                                { value: "top right", label: __("Top Right") },
-                                { value: "center left", label: __("Center Left") },
-                                { value: "center center", label: __("Center Center") },
-                                { value: "center right", label: __("Center Right") },
-                                { value: "bottom left", label: __("Bottom Left") },
-                                { value: "bottom center", label: __("Bottom Center") },
-                                { value: "bottom right", label: __("Bottom Right") },
+                                { value: "top-left", label: __("Top Left", "responsive-block-editor-addons") },
+                                { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
+                                { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
+                                { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
+                                { value: "center center", label: __("Center Center", "responsive-block-editor-addons") },
+                                { value: "center right", label: __("Center Right", "responsive-block-editor-addons") },
+                                { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
+                                { value: "bottom center", label: __("Bottom Center", "responsive-block-editor-addons") },
+                                { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
                             ]}
                         />
                         <SelectControl
-                            label={__("Repeat")}
+                            label={__("Repeat", "responsive-block-editor-addons")}
                             value={backgroundImageRepeat}
                             onChange={(value) =>
                                 setAttributes({ backgroundImageRepeat: value })
                             }
                             options={[
-                                { value: "no-repeat", label: __("No Repeat") },
-                                { value: "repeat", label: __("Repeat") },
-                                { value: "repeat-x", label: __("Repeat-x") },
-                                { value: "repeat-y", label: __("Repeat-y") },
+                                { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+                                { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                                { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
+                                { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
                             ]}
                         />
                         <SelectControl
-                            label={__("Size")}
+                            label={__("Size", "responsive-block-editor-addons")}
                             value={backgroundImageSize}
                             onChange={(value) =>
                                 setAttributes({ backgroundImageSize: value })
                             }
                             options={[
-                                { value: "auto", label: __("Auto") },
-                                { value: "cover", label: __("Cover") },
-                                { value: "contain", label: __("Contain") },
+                                { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                                { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                                { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                             ]}
                         />
                     </Fragment>
@@ -157,31 +157,31 @@ class ImageBackgroundControl extends Component {
                 { backgroundImage && this.props.showMoreImageOptions == true && (
                     <Fragment>
                         <SelectControl
-                            label={__("Attachment")}
+                            label={__("Attachment", "responsive-block-editor-addons")}
                             value={backgroundAttachment}
                             onChange={(value) =>
                                 setAttributes({ backgroundAttachment: value })
                             }
                             options={[
-                                { value: "fixed", label: __("Fixed") },
-                                { value: "scroll", label: __("Scroll") },
+                                { value: "fixed", label: __("Fixed", "responsive-block-editor-addons") },
+                                { value: "scroll", label: __("Scroll", "responsive-block-editor-addons") },
                             ]}
                         />
                         {this.props.showOverlayOptions && (
                             <Fragment>
                                 <SelectControl
-                                    label={__("Image Overlay Type")}
+                                    label={__("Image Overlay Type", "responsive-block-editor-addons")}
                                     value={overlayType}
                                     onChange={(value) => setAttributes({ overlayType: value })}
                                     options={[
-                                        { value: "color", label: __("Color") },
-                                        { value: "gradient", label: __("Gradient") },
+                                        { value: "color", label: __("Color", "responsive-block-editor-addons") },
+                                        { value: "gradient", label: __("Gradient", "responsive-block-editor-addons") },
                                     ]}
                                 />
                                 {overlayType == "color" && (
                                     <Fragment>
                                         <p className="responsive-setting-label">
-                                            {__("Image Overlay Color")}
+                                            {__("Image Overlay Color", "responsive-block-editor-addons")}
                                             <span className="components-base-control__label">
                                                 <span
                                                     className="component-color-indicator"
@@ -201,7 +201,7 @@ class ImageBackgroundControl extends Component {
                                 {"gradient" == overlayType && (
                                     <Fragment>
                                         <p className="responsive-setting-label">
-                                            {__("Color 1")}
+                                            {__("Color 1", "responsive-block-editor-addons")}
                                             <span className="components-base-control__label">
                                                 <span
                                                     className="component-color-indicator"
@@ -217,7 +217,7 @@ class ImageBackgroundControl extends Component {
                                             allowReset
                                         />
                                         <RangeControl
-                                            label={__("Location 1")}
+                                            label={__("Location 1", "responsive-block-editor-addons")}
                                             value={gradientOverlayLocation1}
                                             onChange={(value) =>
                                                 setAttributes({ gradientOverlayLocation1: value })
@@ -227,7 +227,7 @@ class ImageBackgroundControl extends Component {
                                             allowReset
                                         />
                                         <p className="responsive-setting-label">
-                                            {__("Color 2")}
+                                            {__("Color 2", "responsive-block-editor-addons")}
                                             <span className="components-base-control__label">
                                                 <span
                                                     className="component-color-indicator"
@@ -243,7 +243,7 @@ class ImageBackgroundControl extends Component {
                                             allowReset
                                         />
                                         <RangeControl
-                                            label={__("Location 2")}
+                                            label={__("Location 2", "responsive-block-editor-addons")}
                                             value={gradientOverlayLocation2}
                                             onChange={(value) =>
                                                 setAttributes({ gradientOverlayLocation2: value })
@@ -253,19 +253,19 @@ class ImageBackgroundControl extends Component {
                                             allowReset
                                         />
                                         <SelectControl
-                                            label={__("Type")}
+                                            label={__("Type", "responsive-block-editor-addons")}
                                             value={gradientOverlayType}
                                             onChange={(value) =>
                                                 setAttributes({ gradientOverlayType: value })
                                             }
                                             options={[
-                                                { value: "linear", label: __("Linear") },
-                                                { value: "radial", label: __("Radial") },
+                                                { value: "linear", label: __("Linear", "responsive-block-editor-addons") },
+                                                { value: "radial", label: __("Radial", "responsive-block-editor-addons") },
                                             ]}
                                         />
                                         {"linear" == gradientOverlayType && (
                                             <RangeControl
-                                                label={__("Angle")}
+                                                label={__("Angle", "responsive-block-editor-addons")}
                                                 value={gradientOverlayAngle}
                                                 onChange={(value) =>
                                                     setAttributes({ gradientOverlayAngle: value })
@@ -277,7 +277,7 @@ class ImageBackgroundControl extends Component {
                                         )}
                                         {"radial" == gradientOverlayType && (
                                             <SelectControl
-                                                label={__("Type")}
+                                                label={__("Type", "responsive-block-editor-addons")}
                                                 value={gradientOverlayPosition}
                                                 onChange={(value) =>
                                                     setAttributes({ gradientOverlayPosition: value })
@@ -285,24 +285,24 @@ class ImageBackgroundControl extends Component {
                                                 options={[
                                                     {
                                                         value: "center center",
-                                                        label: __("Center Center"),
+                                                        label: __("Center Center", "responsive-block-editor-addons"),
                                                     },
-                                                    { value: "center left", label: __("Center Left") },
+                                                    { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
                                                     {
                                                         value: "center right",
-                                                        label: __("Center Right"),
+                                                        label: __("Center Right", "responsive-block-editor-addons"),
                                                     },
-                                                    { value: "top center", label: __("Top Center") },
-                                                    { value: "top left", label: __("Top Left") },
-                                                    { value: "top right", label: __("Top Right") },
+                                                    { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
+                                                    { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
+                                                    { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
                                                     {
                                                         value: "bottom center",
-                                                        label: __("Bottom Center"),
+                                                        label: __("Bottom Center", "responsive-block-editor-addons"),
                                                     },
-                                                    { value: "bottom left", label: __("Bottom Left") },
+                                                    { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
                                                     {
                                                         value: "bottom right",
-                                                        label: __("Bottom Right"),
+                                                        label: __("Bottom Right", "responsive-block-editor-addons"),
                                                     },
                                                 ]}
                                             />

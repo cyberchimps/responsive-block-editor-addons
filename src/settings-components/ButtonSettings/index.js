@@ -31,7 +31,7 @@ class ButtonSettingsControl extends Component {
       advancedControls = (
           <Fragment>
               <ToggleControl
-                  label={__("Open link in new tab")}
+                  label={__("Open link in new tab", "responsive-block-editor-addons")}
                   checked={buttonTarget}
                   onChange={() => {
                       setAttributes({ buttonTarget: !buttonTarget });

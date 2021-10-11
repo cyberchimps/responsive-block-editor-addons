@@ -74,12 +74,12 @@ export default class Inspector extends Component {
   getImageName(image) {
     const { pricingList } = this.props.attributes;
 
-    let image_name = __("Select Image");
+    let image_name = __("Select Image", "responsive-block-editor-addons");
     if (image) {
       if (image.url == null || image.url == "") {
-        image_name = __("Select Image");
+        image_name = __("Select Image", "responsive-block-editor-addons");
       } else {
-        image_name = __("Replace Image");
+        image_name = __("Replace Image", "responsive-block-editor-addons");
       }
     }
     return image_name;
@@ -171,13 +171,13 @@ export default class Inspector extends Component {
       return (
         <PanelBody
           key={index}
-          title={__("Image") + " " + (index + 1) + " " + __("Settings")}
+          title={__("Image", "responsive-block-editor-addons") + " " + (index + 1) + " " + __("Settings", "responsive-block-editor-addons")}
           initialOpen={true}
           className={"responsive-repeater-panel"}
         >
-          <BaseControl className="editor-bg-image-control" label={__("")}>
+          <BaseControl className="editor-bg-image-control" label={__("", "responsive-block-editor-addons")}>
             <MediaUpload
-              title={__("Select Image" + (index + 1))}
+              title={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
               onSelect={(media) => {
                 this.onSelectTestImage(media, index);
               }}
@@ -201,7 +201,7 @@ export default class Inspector extends Component {
                   isLink
                   isDestructive
                 >
-                  {__("Remove Image")}
+                  {__("Remove Image", "responsive-block-editor-addons")}
                 </Button>
               )}
           </BaseControl>
@@ -277,7 +277,7 @@ export default class Inspector extends Component {
                       newCount - cloneTest_block.length
                     );
                     var desc_text = __(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "responsive-block-editor-addons"
                     );
                     {
                       times(inc_description, (n) => {
@@ -309,7 +309,7 @@ export default class Inspector extends Component {
                 step={1}
               />
               <RangeControl
-                label={__("Columns")}
+                label={__("Columns", "responsive-block-editor-addons")}
                 value={columns}
                 onChange={(value) =>
                   setAttributes({ columns: value !== undefined ? value : 2 })
@@ -319,7 +319,7 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             <PanelBody
-              title={__("Image", "responsive-blocks")}
+              title={__("Image", "responsive-block-editor-addons")}
               initialOpen={false}
             >
               {times(count, (n) => tmControls(n))}
@@ -327,31 +327,31 @@ export default class Inspector extends Component {
                 <Fragment>
                   <hr className="uagb-editor__separator" />
                   <SelectControl
-                    label={__("Image Position")}
+                    label={__("Image Position", "responsive-block-editor-addons")}
                     value={imagePosition}
                     onChange={(value) =>
                       setAttributes({ imagePosition: value })
                     }
                     options={[
-                      { value: "top", label: __("Top") },
-                      { value: "left", label: __("Left") },
-                      { value: "right", label: __("Right") },
+                      { value: "top", label: __("Top", "responsive-block-editor-addons") },
+                      { value: "left", label: __("Left", "responsive-block-editor-addons") },
+                      { value: "right", label: __("Right", "responsive-block-editor-addons") },
                     ]}
                   />
 
                   <SelectControl
-                    label={__("Image Size")}
+                    label={__("Image Size", "responsive-block-editor-addons")}
                     options={[
-                      { value: "full", label: __("Full") },
-                      { value: "thumbnail", label: __("Thumbnail") },
-                      { value: "medium", label: __("Medium") },
-                      { value: "large", label: __("Large") },
+                      { value: "full", label: __("Full", "responsive-block-editor-addons") },
+                      { value: "thumbnail", label: __("Thumbnail", "responsive-block-editor-addons") },
+                      { value: "medium", label: __("Medium", "responsive-block-editor-addons") },
+                      { value: "large", label: __("Large", "responsive-block-editor-addons") },
                     ]}
                     value={imageSize}
                     onChange={(value) => setAttributes({ imageSize: value })}
                   />
                   <RangeControl
-                    label={__("Width")}
+                    label={__("Width", "responsive-block-editor-addons")}
                     value={imageWidth}
                     onChange={(value) => setAttributes({ imageWidth: value })}
                     min={0}
@@ -363,27 +363,27 @@ export default class Inspector extends Component {
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
-            <PanelBody title={__("Separator")} initialOpen={false}>
+            <PanelBody title={__("Separator", "responsive-block-editor-addons")} initialOpen={false}>
               <SelectControl
-                label={__("Separator Style")}
+                label={__("Separator Style", "responsive-block-editor-addons")}
                 value={seperatorStyle}
                 onChange={(value) => setAttributes({ seperatorStyle: value })}
                 options={[
-                  { value: "none", label: __("None") },
-                  { value: "solid", label: __("Solid") },
-                  { value: "dotted", label: __("Dotted") },
-                  { value: "dashed", label: __("Dashed") },
-                  { value: "double", label: __("Double") },
-                  { value: "groove", label: __("Groove") },
-                  { value: "inset", label: __("Inset") },
-                  { value: "outset", label: __("Outset") },
-                  { value: "ridge", label: __("Ridge") },
+                  { value: "none", label: __("None", "responsive-block-editor-addons") },
+                  { value: "solid", label: __("Solid", "responsive-block-editor-addons") },
+                  { value: "dotted", label: __("Dotted", "responsive-block-editor-addons") },
+                  { value: "dashed", label: __("Dashed", "responsive-block-editor-addons") },
+                  { value: "double", label: __("Double", "responsive-block-editor-addons") },
+                  { value: "groove", label: __("Groove", "responsive-block-editor-addons") },
+                  { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
+                  { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
+                  { value: "ridge", label: __("Ridge", "responsive-block-editor-addons") },
                 ]}
               />
               {"none" != seperatorStyle && (
                 <Fragment>
                   <RangeControl
-                    label={__("Separator Width (%)")}
+                    label={__("Separator Width (%)", "responsive-block-editor-addons")}
                     value={seperatorWidth}
                     onChange={(value) =>
                       setAttributes({
@@ -395,7 +395,7 @@ export default class Inspector extends Component {
                     allowReset
                   />
                   <RangeControl
-                    label={__("Separator Thickness")}
+                    label={__("Separator Thickness", "responsive-block-editor-addons")}
                     value={seperatorThickness}
                     onChange={(value) =>
                       setAttributes({
@@ -408,7 +408,7 @@ export default class Inspector extends Component {
                   />
                   <Fragment>
                     <p className="responsive-setting-label">
-                      {__("Separator Color")}
+                      {__("Separator Color", "responsive-block-editor-addons")}
                       <span className="components-base-control__label">
                         <span
                           className="component-color-indicator"
@@ -432,7 +432,7 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <p className="responsive-setting-label">
-                {__("Title Color")}
+                {__("Title Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -452,7 +452,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <p className="responsive-setting-label">
-                {__("Content Color")}
+                {__("Content Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -472,7 +472,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <p className="responsive-setting-label">
-                {__("Price Color")}
+                {__("Price Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"

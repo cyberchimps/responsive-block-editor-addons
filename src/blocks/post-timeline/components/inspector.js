@@ -185,7 +185,7 @@ export default class Inspector extends Component {
     // Add instruction text to the select
     const abImageSizeSelect = {
       value: "selectimage",
-      label: __("Select image size"),
+      label: __("Select image size", "responsive-block-editor-addons"),
     };
 
     // Get the image size options
@@ -249,23 +249,23 @@ export default class Inspector extends Component {
                 }
               />
               <SelectControl
-                label={__("Order By")}
+                label={__("Order By", "responsive-block-editor-addons")}
                 value={attributes.orderBy}
                 onChange={(value) => setAttributes({ orderBy: value })}
                 options={[
-                  { value: "date", label: __("Date") },
-                  { value: "title", label: __("Title") },
-                  { value: "rand", label: __("Random") },
-                  { value: "menu_order", label: __("Menu Order") },
+                  { value: "date", label: __("Date", "responsive-block-editor-addons") },
+                  { value: "title", label: __("Title", "responsive-block-editor-addons") },
+                  { value: "rand", label: __("Random", "responsive-block-editor-addons") },
+                  { value: "menu_order", label: __("Menu Order", "responsive-block-editor-addons") },
                 ]}
               />
               <SelectControl
-                label={__("Order")}
+                label={__("Order", "responsive-block-editor-addons")}
                 value={attributes.order}
                 onChange={(value) => setAttributes({ order: value })}
                 options={[
-                  { value: "desc", label: __("Descending") },
-                  { value: "asc", label: __("Ascending") },
+                  { value: "desc", label: __("Descending", "responsive-block-editor-addons") },
+                  { value: "asc", label: __("Ascending", "responsive-block-editor-addons") },
                 ]}
               />
 
@@ -280,7 +280,7 @@ export default class Inspector extends Component {
                 max={20}
               />
               <RangeControl
-                label={__("Border Radius")}
+                label={__("Border Radius", "responsive-block-editor-addons")}
                 value={attributes.borderRadius}
                 onChange={(value) =>
                   setAttributes({
@@ -311,7 +311,7 @@ export default class Inspector extends Component {
                 ]}
               />
               <SelectControl
-                label={__("Arrow Alignment")}
+                label={__("Arrow Alignment", "responsive-block-editor-addons")}
                 value={attributes.arrowlinAlignment}
                 onChange={(value) =>
                   setAttributes({ arrowlinAlignment: value })
@@ -568,7 +568,7 @@ export default class Inspector extends Component {
               <hr className="responsive-block-editor-addons-editor__separator" />
               <FontIconPicker {...icon_props} />
               <RangeControl
-                label={__("Icon Size")}
+                label={__("Icon Size", "responsive-block-editor-addons")}
                 value={attributes.iconSize}
                 onChange={(value) =>
                   this.props.setAttributes({ iconSize: value })
@@ -578,7 +578,7 @@ export default class Inspector extends Component {
               />
               <hr className="responsive-block-editor-addons-editor__separator" />
               <RangeControl
-                label={__("Background Size")}
+                label={__("Background Size", "responsive-block-editor-addons")}
                 value={attributes.bgSize}
                 onChange={(value) =>
                   this.props.setAttributes({
@@ -590,7 +590,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("Border Width")}
+                label={__("Border Width", "responsive-block-editor-addons")}
                 value={attributes.borderWidth}
                 onChange={(value) =>
                   this.props.setAttributes({ borderWidth: value })
@@ -599,7 +599,7 @@ export default class Inspector extends Component {
                 max={10}
               />
               <RangeControl
-                label={__("Connector Width")}
+                label={__("Connector Width", "responsive-block-editor-addons")}
                 value={attributes.connectorWidth}
                 onChange={(value) =>
                   this.props.setAttributes({ connectorWidth: value })
@@ -608,7 +608,7 @@ export default class Inspector extends Component {
                 max={500}
               />
               <PanelBody
-                title={__("Connector Color Settings")}
+                title={__("Connector Color Settings", "responsive-block-editor-addons")}
                 initialOpen={true}
               >
                 <TabPanel
@@ -617,12 +617,12 @@ export default class Inspector extends Component {
                   tabs={[
                     {
                       name: "normal",
-                      title: __("Normal"),
+                      title: __("Normal", "responsive-block-editor-addons"),
                       className: "rbea-normal-tab",
                     },
                     {
                       name: "focus",
-                      title: __("Focus"),
+                      title: __("Focus", "responsive-block-editor-addons"),
                       className: "rbea-focus-tab",
                     },
                   ]}
@@ -632,7 +632,7 @@ export default class Inspector extends Component {
                     if ("focus" === tabName.name) {
                       tabout = (
                         <PanelColorSettings
-                          title={__("Focus Color Settings")}
+                          title={__("Focus Color Settings", "responsive-block-editor-addons")}
                           initialOpen={true}
                           colorSettings={[
                             {
@@ -641,7 +641,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   separatorFillColor: colorValue,
                                 }),
-                              label: __("Line Focus Color"),
+                              label: __("Line Focus Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: attributes.iconFocus,
@@ -649,7 +649,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   iconFocus: colorValue,
                                 }),
-                              label: __("Icon Focus Color"),
+                              label: __("Icon Focus Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: attributes.iconBgFocus,
@@ -657,7 +657,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   iconBgFocus: colorValue,
                                 }),
-                              label: __("Background Focus Color"),
+                              label: __("Background Focus Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: attributes.borderFocus,
@@ -665,7 +665,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   borderFocus: colorValue,
                                 }),
-                              label: __("Border Focus Color"),
+                              label: __("Border Focus Color", "responsive-block-editor-addons"),
                             },
                           ]}
                         ></PanelColorSettings>
@@ -673,7 +673,7 @@ export default class Inspector extends Component {
                     } else {
                       tabout = (
                         <PanelColorSettings
-                          title={__("Color Settings")}
+                          title={__("Color Settings", "responsive-block-editor-addons")}
                           initialOpen={true}
                           colorSettings={[
                             {
@@ -682,7 +682,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   connectorColor: colorValue,
                                 }),
-                              label: __("Line Color"),
+                              label: __("Line Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: attributes.iconColor,
@@ -690,7 +690,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   iconColor: colorValue,
                                 }),
-                              label: __("Icon Color"),
+                              label: __("Icon Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: attributes.separatorBg,
@@ -698,7 +698,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   separatorBg: colorValue,
                                 }),
-                              label: __("Background Color"),
+                              label: __("Background Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: attributes.separatorBorder,
@@ -706,7 +706,7 @@ export default class Inspector extends Component {
                                 this.props.setAttributes({
                                   separatorBorder: colorValue,
                                 }),
-                              label: __("Border Color"),
+                              label: __("Border Color", "responsive-block-editor-addons"),
                             },
                           ]}
                         ></PanelColorSettings>
@@ -975,84 +975,84 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
 				<TypographyHelperControl
-					title={__("Date Typography", "responsive-block-editor-addons")} 
+					title={__("Date Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="date%s"
 					values = {{
-					family: attributes.dateFontFamily, 
-					size: attributes.dateFontSize, 
-					sizeMobile: attributes.dateFontSizeMobile, 
-					sizeTablet: attributes.dateFontSizeTablet, 
-					weight: attributes.dateFontWeight, 
+					family: attributes.dateFontFamily,
+					size: attributes.dateFontSize,
+					sizeMobile: attributes.dateFontSizeMobile,
+					sizeTablet: attributes.dateFontSizeTablet,
+					weight: attributes.dateFontWeight,
 					height: attributes.dateLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Heading Typography", "responsive-block-editor-addons")} 
+					title={__("Heading Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="heading%s"
 					values = {{
-					family: attributes.headingFontFamily, 
-					size: attributes.headingFontSize, 
-					sizeMobile: attributes.headingFontSizeMobile, 
-					sizeTablet: attributes.headingFontSizeTablet, 
-					weight: attributes.headingFontWeight, 
+					family: attributes.headingFontFamily,
+					size: attributes.headingFontSize,
+					sizeMobile: attributes.headingFontSizeMobile,
+					sizeTablet: attributes.headingFontSizeTablet,
+					weight: attributes.headingFontWeight,
 					height: attributes.headingLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Author Typography", "responsive-block-editor-addons")} 
+					title={__("Author Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="author%s"
 					values = {{
-					family: attributes.authorFontFamily, 
-					size: attributes.authorFontSize, 
-					sizeMobile: attributes.authorFontSizeMobile, 
-					sizeTablet: attributes.authorFontSizeTablet, 
-					weight: attributes.authorFontWeight, 
+					family: attributes.authorFontFamily,
+					size: attributes.authorFontSize,
+					sizeMobile: attributes.authorFontSizeMobile,
+					sizeTablet: attributes.authorFontSizeTablet,
+					weight: attributes.authorFontWeight,
 					height: attributes.authorLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Content Typography", "responsive-block-editor-addons")} 
+					title={__("Content Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="content%s"
 					values = {{
-					family: attributes.contentFontFamily, 
-					size: attributes.contentFontSize, 
-					sizeMobile: attributes.contentFontSizeMobile, 
-					sizeTablet: attributes.contentFontSizeTablet, 
-					weight: attributes.contentFontWeight, 
+					family: attributes.contentFontFamily,
+					size: attributes.contentFontSize,
+					sizeMobile: attributes.contentFontSizeMobile,
+					sizeTablet: attributes.contentFontSizeTablet,
+					weight: attributes.contentFontWeight,
 					height: attributes.contentLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Continue Reading Text Typography", "responsive-block-editor-addons")} 
+					title={__("Continue Reading Text Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="continue%s"
 					values = {{
-					family: attributes.continueFontFamily, 
-					size: attributes.continueFontSize, 
-					sizeMobile: attributes.continueFontSizeMobile, 
-					sizeTablet: attributes.continueFontSizeTablet, 
-					weight: attributes.continueFontWeight, 
+					family: attributes.continueFontFamily,
+					size: attributes.continueFontSize,
+					sizeMobile: attributes.continueFontSizeMobile,
+					sizeTablet: attributes.continueFontSizeTablet,
+					weight: attributes.continueFontWeight,
 					height: attributes.continueLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
             </PanelBody>
             <PanelBody

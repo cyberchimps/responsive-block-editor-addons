@@ -318,7 +318,7 @@ export default class Inspector extends Component {
     // Add instruction text to the select
     const abImageSizeSelect = {
       value: "selectimage",
-      label: __("Select image size"),
+      label: __("Select image size", "responsive-block-editor-addons"),
     };
 
     // Get the image size options
@@ -345,7 +345,7 @@ export default class Inspector extends Component {
             >
               <Fragment>
                 <ToggleControl
-                  label={__("Equal Height")}
+                  label={__("Equal Height", "responsive-block-editor-addons")}
                   checked={equalHeight}
                   onChange={(value) =>
                     setAttributes({ equalHeight: !equalHeight })
@@ -622,18 +622,18 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <ToggleControl
-                label={__("Pause On Hover")}
+                label={__("Pause On Hover", "responsive-block-editor-addons")}
                 checked={pauseOnHover}
                 onChange={this.togglePauseOnHover}
               />
               <ToggleControl
-                label={__("Autoplay")}
+                label={__("Autoplay", "responsive-block-editor-addons")}
                 checked={autoplay}
                 onChange={this.toggleAutoplay}
               />
               {autoplay == true && (
                 <RangeControl
-                  label={__("Autoplay Speed (ms)")}
+                  label={__("Autoplay Speed (ms)", "responsive-block-editor-addons")}
                   value={autoplaySpeed}
                   onChange={(value) => setAttributes({ autoplaySpeed: value })}
                   min={100}
@@ -641,38 +641,38 @@ export default class Inspector extends Component {
                 />
               )}
               <ToggleControl
-                label={__("Infinite Loop")}
+                label={__("Infinite Loop", "responsive-block-editor-addons")}
                 checked={infiniteLoop}
                 onChange={this.toggleInfiniteLoop}
               />
               <RangeControl
-                label={__("Transition Speed (ms)")}
+                label={__("Transition Speed (ms)", "responsive-block-editor-addons")}
                 value={transitionSpeed}
                 onChange={(value) => setAttributes({ transitionSpeed: value })}
                 min={100}
                 max={5000}
               />
               <SelectControl
-                label={__("Show Arrows & Dots")}
+                label={__("Show Arrows & Dots", "responsive-block-editor-addons")}
                 value={arrowDots}
                 onChange={(value) => setAttributes({ arrowDots: value })}
                 options={[
-                  { value: "arrows", label: __("Only Arrows") },
-                  { value: "dots", label: __("Only Dots") },
-                  { value: "arrows_dots", label: __("Both Arrows & Dots") },
+                  { value: "arrows", label: __("Only Arrows", "responsive-block-editor-addons") },
+                  { value: "dots", label: __("Only Dots", "responsive-block-editor-addons") },
+                  { value: "arrows_dots", label: __("Both Arrows & Dots", "responsive-block-editor-addons") },
                 ]}
               />
               {"dots" != arrowDots && (
                 <Fragment>
                   <RangeControl
-                    label={__("Arrow Size")}
+                    label={__("Arrow Size", "responsive-block-editor-addons")}
                     value={arrowSize}
                     onChange={(value) => setAttributes({ arrowSize: value })}
                     min={0}
                     max={50}
                   />
                   <RangeControl
-                    label={__("Arrow Border Size")}
+                    label={__("Arrow Border Size", "responsive-block-editor-addons")}
                     value={arrowBorderSize}
                     onChange={(value) =>
                       setAttributes({ arrowBorderSize: value })
@@ -681,7 +681,7 @@ export default class Inspector extends Component {
                     max={50}
                   />
                   <RangeControl
-                    label={__("Arrow Border Radius")}
+                    label={__("Arrow Border Radius", "responsive-block-editor-addons")}
                     value={arrowBorderRadius}
                     onChange={(value) =>
                       setAttributes({ arrowBorderRadius: value })
@@ -854,7 +854,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
               <RangeControl
-                label={__("Gap Between Content & Dots")}
+                label={__("Gap Between Content & Dots", "responsive-block-editor-addons")}
                 value={rowGap}
                 onChange={(value) =>
                   setAttributes({ rowGap: value !== undefined ? value : 20 })
@@ -875,7 +875,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
               <RangeControl
-                label={__("Title Top Margin")}
+                label={__("Title Top Margin", "responsive-block-editor-addons")}
                 value={imageSpace}
                 onChange={(value) =>
                   setAttributes({
@@ -887,7 +887,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("Title Bottom Margin")}
+                label={__("Title Bottom Margin", "responsive-block-editor-addons")}
                 value={titleSpace}
                 onChange={(value) =>
                   setAttributes({
@@ -899,7 +899,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("Meta Bottom Margin")}
+                label={__("Meta Bottom Margin", "responsive-block-editor-addons")}
                 value={dateSpace}
                 onChange={(value) =>
                   setAttributes({ dateSpace: value !== undefined ? value : "" })
@@ -909,7 +909,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("Excerpt Bottom Margin")}
+                label={__("Excerpt Bottom Margin", "responsive-block-editor-addons")}
                 value={excerptSpace}
                 onChange={(value) =>
                   setAttributes({
@@ -921,7 +921,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("CTA Bottom Margin")}
+                label={__("CTA Bottom Margin", "responsive-block-editor-addons")}
                 value={ctaSpace}
                 onChange={(value) =>
                   setAttributes({ ctaSpace: value !== undefined ? value : "" })
@@ -937,7 +937,7 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <p className="responsive-setting-label">
-                {__("Blog Post Background Color")}
+                {__("Blog Post Background Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -955,7 +955,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <p className="responsive-setting-label">
-                {__("Title Color")}
+                {__("Title Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -975,7 +975,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <p className="responsive-setting-label">
-                {__("Content Color")}
+                {__("Content Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"

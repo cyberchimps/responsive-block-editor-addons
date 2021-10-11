@@ -6,10 +6,10 @@ const rest_menu_block = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
   var desc_text = __(
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "responsive-block-editor-addons"
   );
-  var title_text = __("Menu Item " + i);
-  var price_text = __("$9");
+  var title_text = __("Menu Item " + i, "responsive-block-editor-addons");
+  var price_text = __("$9", "responsive-block-editor-addons");
   rest_menu_block.push({
     description: desc_text,
     title: title_text,
