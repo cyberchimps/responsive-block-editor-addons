@@ -21,6 +21,7 @@ import ImageBackgroundControl from "../../../settings-components/Block Backgroun
 import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
 import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
 import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 
 const { __ } = wp.i18n;
 
@@ -115,12 +116,12 @@ class edit extends Component {
   getImageName(image) {
     const { test_block } = this.props.attributes;
 
-    let image_name = __("Select Image");
+    let image_name = __("Select Image", "responsive-block-editor-addons");
     if (image) {
       if (image.url == null || image.url == "") {
-        image_name = __("Select Image");
+        image_name = __("Select Image", "responsive-block-editor-addons");
       } else {
-        image_name = __("Replace Image");
+        image_name = __("Replace Image", "responsive-block-editor-addons");
       }
     }
     return image_name;
@@ -402,32 +403,32 @@ class edit extends Component {
         </PanelBody>
 
         <PanelColorSettings
-          title={__("Color Settings")}
+          title={__("Color Settings", "responsive-block-editor-addons")}
           initialOpen={false}
           colorSettings={[
             {
               value: descColor,
               onChange: (colorValue) =>
                 setAttributes({ descColor: colorValue }),
-              label: __("Testimonial Color"),
+              label: __("Testimonial Color", "responsive-block-editor-addons"),
             },
             {
               value: authorColor,
               onChange: (colorValue) =>
                 setAttributes({ authorColor: colorValue }),
-              label: __("Name Color"),
+              label: __("Name Color", "responsive-block-editor-addons"),
             },
             {
               value: companyColor,
               onChange: (colorValue) =>
                 setAttributes({ companyColor: colorValue }),
-              label: __("Company Color"),
+              label: __("Company Color", "responsive-block-editor-addons"),
             },
             {
               value: arrowColor,
               onChange: (colorValue) =>
                 setAttributes({ arrowColor: colorValue }),
-              label: __("Arrow & Dots Color"),
+              label: __("Arrow & Dots Color", "responsive-block-editor-addons"),
             },
           ]}
         ></PanelColorSettings>
@@ -436,9 +437,9 @@ class edit extends Component {
 
     // Margin Settings.
     const marginSettings = (
-      <PanelBody title={__("Spacing")} initialOpen={false}>
+      <PanelBody title={__("Spacing", "responsive-block-editor-addons")} initialOpen={false}>
         <ResponsiveSpacingControl
-          title={"Content and Dots Gap"}
+          title={__("Content and Dots Gap", "responsive-block-editor-addons")}
           attrNameTemplate="rowGap%s"
           values={{
             desktop: rowGap,
@@ -530,15 +531,15 @@ class edit extends Component {
 
     const background_settings = (
       <Fragment>
-        <PanelBody title={__("Background")} initialOpen={false}>
+        <PanelBody title={__("Background", "responsive-block-editor-addons")} initialOpen={false}>
           <SelectControl
-            label={__("Background Type")}
+            label={__("Background Type", "responsive-block-editor-addons")}
             value={backgroundType}
             onChange={(value) => setAttributes({ backgroundType: value })}
             options={[
-              { value: "none", label: __("None") },
-              { value: "color", label: __("Color") },
-              { value: "image", label: __("Image") },
+              { value: "none", label: __("None", "responsive-block-editor-addons") },
+              { value: "color", label: __("Color", "responsive-block-editor-addons") },
+              { value: "image", label: __("Image", "responsive-block-editor-addons") },
             ]}
           />
           {"color" == backgroundType && (
@@ -558,7 +559,7 @@ class edit extends Component {
           )}
           {"image" == backgroundType && backgroundImage && (
             <RangeControl
-              label={__("Opacity")}
+              label={__("Opacity", "responsive-block-editor-addons")}
               value={backgroundOpacity}
               onChange={(value) => setAttributes({ backgroundOpacity: value })}
               min={0}
@@ -568,7 +569,7 @@ class edit extends Component {
             />
           )}
         </PanelBody>
-        <PanelBody title={__("Border")} initialOpen={false}>
+        <PanelBody title={__("Border", "responsive-block-editor-addons")} initialOpen={false}>
             <BlockBorderHelperControl
                 attrNameTemplate="block%s"
                 values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
@@ -581,9 +582,9 @@ class edit extends Component {
 
     // Image sizes.
     const imageSizeOptions = [
-      { value: "thumbnail", label: __("Thumbnail") },
-      { value: "medium", label: __("Medium") },
-      { value: "full", label: __("Large") },
+      { value: "thumbnail", label: __("Thumbnail", "responsive-block-editor-addons") },
+      { value: "medium", label: __("Medium", "responsive-block-editor-addons") },
+      { value: "full", label: __("Large", "responsive-block-editor-addons") },
     ];
 
     function NextArrow(props) {
@@ -602,11 +603,7 @@ class edit extends Component {
               borderStyle: arrowBorderStyle,
           }}
         >
-          <Dashicon
-            icon="arrow-right-alt2"
-            height={arrowSize}
-            width={arrowSize}
-          />
+        { ResponsiveBlockEditorAddonsIcons.carousel_right }
         </button>
       );
     }
@@ -627,12 +624,9 @@ class edit extends Component {
               borderStyle: arrowBorderStyle,
           }}
         >
-          <Dashicon
-            icon="arrow-left-alt2"
-            height={arrowSize}
-            width={arrowSize}
-          />
+        { ResponsiveBlockEditorAddonsIcons.carousel_left }
         </button>
+
       );
     }
 
@@ -682,13 +676,13 @@ class edit extends Component {
       return (
         <PanelBody
           key={index}
-          title={__("Image") + " " + (index + 1) + " " + __("Settings")}
+          title={__("Image", "responsive-block-editor-addons") + " " + (index + 1) + " " + __("Settings", "responsive-block-editor-addons")}
           initialOpen={true}
           className={"responsive-block-editor-addons-repeater-panel"}
         >
-          <BaseControl className="editor-bg-image-control" label={__("")}>
+          <BaseControl className="editor-bg-image-control" label={__("", "responsive-block-editor-addons")}>
             <MediaUpload
-              title={__("Select Image" + (index + 1))}
+              title={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
               onSelect={(media) => {
                 this.onSelectTestImage(media, index);
               }}
@@ -712,7 +706,7 @@ class edit extends Component {
                   isLink
                   isDestructive
                 >
-                  {__("Remove Image")}
+                  {__("Remove Image", "responsive-block-editor-addons")}
                 </Button>
               )}
           </BaseControl>
@@ -721,20 +715,20 @@ class edit extends Component {
     };
 
     const carousal_settings = (
-      <PanelBody title={__("Carousel")} initialOpen={false}>
+      <PanelBody title={__("Carousel", "responsive-block-editor-addons")} initialOpen={false}>
         <ToggleControl
-          label={__("Pause On Hover")}
+          label={__("Pause On Hover", "responsive-block-editor-addons")}
           checked={pauseOnHover}
           onChange={this.togglePauseOnHover}
         />
         <ToggleControl
-          label={__("Autoplay")}
+          label={__("Autoplay", "responsive-block-editor-addons")}
           checked={autoplay}
           onChange={this.toggleAutoplay}
         />
         {autoplay == true && (
           <RangeControl
-            label={__("Autoplay Speed (ms)")}
+            label={__("Autoplay Speed (ms)", "responsive-block-editor-addons")}
             value={autoplaySpeed}
             onChange={(value) => setAttributes({ autoplaySpeed: value })}
             min={100}
@@ -742,38 +736,38 @@ class edit extends Component {
           />
         )}
         <ToggleControl
-          label={__("Infinite Loop")}
+          label={__("Infinite Loop", "responsive-block-editor-addons")}
           checked={infiniteLoop}
           onChange={this.toggleInfiniteLoop}
         />
         <RangeControl
-          label={__("Transition Speed (ms)")}
+          label={__("Transition Speed (ms)", "responsive-block-editor-addons")}
           value={transitionSpeed}
           onChange={(value) => setAttributes({ transitionSpeed: value })}
           min={100}
           max={5000}
         />
         <SelectControl
-          label={__("Show Arrows & Dots")}
+          label={__("Show Arrows & Dots", "responsive-block-editor-addons")}
           value={arrowDots}
           onChange={(value) => setAttributes({ arrowDots: value })}
           options={[
-            { value: "arrows", label: __("Only Arrows") },
-            { value: "dots", label: __("Only Dots") },
-            { value: "arrows_dots", label: __("Both Arrows & Dots") },
-            { value: "none", label: __("None")}
+            { value: "arrows", label: __("Only Arrows", "responsive-block-editor-addons") },
+            { value: "dots", label: __("Only Dots", "responsive-block-editor-addons") },
+            { value: "arrows_dots", label: __("Both Arrows & Dots", "responsive-block-editor-addons") },
+            { value: "none", label: __("None", "responsive-block-editor-addons")}
           ]}
         />
         {"dots" != arrowDots && (
           <Fragment>
             <RangeControl
-              label={__("Arrow Size")}
+              label={__("Arrow Size", "responsive-block-editor-addons")}
               value={arrowSize}
               onChange={(value) => setAttributes({ arrowSize: value })}
               min={0}
               max={50}
             />
-              <PanelBody title={__("Arrow Border")} initialOpen={false}>
+              <PanelBody title={__("Arrow Border", "responsive-block-editor-addons")} initialOpen={false}>
               <BlockBorderHelperControl
                   attrNameTemplate="arrow%s"
                   values={{ radius: arrowBorderRadius, style: arrowBorderStyle, width: arrowBorderWidth, color: arrowBorderColor }}
@@ -803,7 +797,7 @@ class edit extends Component {
       <InspectorControls>
         <InspectorTabs>
           <InspectorTab key={"content"}>
-            <PanelBody title={__("General")} initialOpen={true}>
+            <PanelBody title={__("General", "responsive-block-editor-addons")} initialOpen={true}>
               <TabPanel
                 className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                 activeClass="active-tab"
@@ -903,7 +897,7 @@ class edit extends Component {
                 }}
               </TabPanel>
               <RangeControl
-                label={__("Number of Testimonials")}
+                label={__("Number of Testimonials", "responsive-block-editor-addons")}
                 value={test_item_count}
                 onChange={(newCount) => {
                   let cloneTest_block = [...test_block];
@@ -971,7 +965,7 @@ class edit extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <RangeControl
-                        label={__("Columns")}
+                        label={__("Columns", "responsive-block-editor-addons")}
                         value={mcolumns}
                         onChange={(value) => setAttributes({ mcolumns: value })}
                         min={1}
@@ -981,7 +975,7 @@ class edit extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <RangeControl
-                        label={__("Columns")}
+                        label={__("Columns", "responsive-block-editor-addons")}
                         value={tcolumns}
                         onChange={(value) => setAttributes({ tcolumns: value })}
                         min={1}
@@ -991,7 +985,7 @@ class edit extends Component {
                   } else {
                     tabout = (
                       <RangeControl
-                        label={__("Columns")}
+                        label={__("Columns", "responsive-block-editor-addons")}
                         value={columns}
                         onChange={(value) => setAttributes({ columns: value })}
                         min={1}
@@ -1005,17 +999,17 @@ class edit extends Component {
               </TabPanel>
 
               <SelectControl
-                label={__("Skin")}
+                label={__("Skin", "responsive-block-editor-addons")}
                 value={skin}
                 onChange={(value) => setAttributes({ skin: value })}
                 options={[
-                  { value: "default", label: __("Default") },
-                  { value: "bubble", label: __("Bubble") },
+                  { value: "default", label: __("Default", "responsive-block-editor-addons") },
+                  { value: "bubble", label: __("Bubble", "responsive-block-editor-addons") },
                 ]}
               />
             </PanelBody>
             {skin === "bubble" && (
-              <PanelBody title={__("Bubble Settings")} initialOpen={false}>
+              <PanelBody title={__("Bubble Settings", "responsive-block-editor-addons")} initialOpen={false}>
                 <Fragment>
                   <p className="responsive-setting-label">
                     {__("Background Color", "responsive-block-editor-addons")}
@@ -1035,7 +1029,7 @@ class edit extends Component {
                   />
                 </Fragment>
                 <RangeControl
-                  label={__("Padding")}
+                  label={__("Padding", "responsive-block-editor-addons")}
                   value={bubblePadding}
                   onChange={(value) => setAttributes({ bubblePadding: value })}
                   min={0}
@@ -1043,7 +1037,7 @@ class edit extends Component {
                   allowReset
                 />
                 <RangeControl
-                  label={__("Border Radius")}
+                  label={__("Border Radius", "responsive-block-editor-addons")}
                   value={bubbleBorderRadius}
                   onChange={(value) =>
                     setAttributes({ bubbleBorderRadius: value })
@@ -1057,72 +1051,72 @@ class edit extends Component {
 
             {carousal_settings}
 
-            <PanelBody title={__("Image")} initialOpen={false}>
+            <PanelBody title={__("Image", "responsive-block-editor-addons")} initialOpen={false}>
               {times(test_item_count, (n) => tmControls(n))}
 
               {cnt > 0 && (
                 <Fragment>
                   <hr className="responsive-block-editor-addons-editor__separator" />
                   <SelectControl
-                    label={__("Image Position")}
+                    label={__("Image Position", "responsive-block-editor-addons")}
                     value={imagePosition}
                     onChange={(value) =>
                       setAttributes({ imagePosition: value })
                     }
                     options={[
-                      { value: "top", label: __("Top") },
-                      { value: "bottom", label: __("Bottom") },
-                      { value: "left", label: __("Left") },
-                      { value: "right", label: __("Right") },
-                      { value: "stacked", label: __("Stacked") },
+                      { value: "top", label: __("Top", "responsive-block-editor-addons") },
+                      { value: "bottom", label: __("Bottom", "responsive-block-editor-addons") },
+                      { value: "left", label: __("Left", "responsive-block-editor-addons") },
+                      { value: "right", label: __("Right", "responsive-block-editor-addons") },
+                      { value: "stacked", label: __("Stacked", "responsive-block-editor-addons") },
                     ]}
                   />
                   {(imagePosition == "left" || imagePosition == "right") && (
                     <Fragment>
                       <SelectControl
-                        label={__("Vertical ALignment")}
+                        label={__("Vertical ALignment", "responsive-block-editor-addons")}
                         value={imageAlignment}
                         onChange={(value) =>
                           setAttributes({ imageAlignment: value })
                         }
                         options={[
-                          { value: "top", label: __("Top") },
-                          { value: "middle", label: __("Middle") },
+                          { value: "top", label: __("Top", "responsive-block-editor-addons") },
+                          { value: "middle", label: __("Middle", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Stack on")}
+                        label={__("Stack on", "responsive-block-editor-addons")}
                         value={stack}
                         options={[
-                          { value: "none", label: __("None") },
-                          { value: "tablet", label: __("Tablet") },
-                          { value: "mobile", label: __("Mobile") },
+                          { value: "none", label: __("None", "responsive-block-editor-addons") },
+                          { value: "tablet", label: __("Tablet", "responsive-block-editor-addons") },
+                          { value: "mobile", label: __("Mobile", "responsive-block-editor-addons") },
                         ]}
                         help={__(
-                          "Note: Choose on what breakpoint the Info Box will stack."
+                          "Note: Choose on what breakpoint the Info Box will stack.", "responsive-block-editor-addons"
                         )}
                         onChange={(value) => setAttributes({ stack: value })}
                       />
                     </Fragment>
                   )}
                   <SelectControl
-                    label={__("Image Style")}
+                    label={__("Image Style", "responsive-block-editor-addons")}
                     value={iconimgStyle}
                     onChange={(value) => setAttributes({ iconimgStyle: value })}
                     options={[
-                      { value: "normal", label: __("Normal") },
-                      { value: "circle", label: __("Circle") },
-                      { value: "square", label: __("Square") },
+                      { value: "normal", label: __("Normal", "responsive-block-editor-addons") },
+                      { value: "circle", label: __("Circle", "responsive-block-editor-addons") },
+                      { value: "square", label: __("Square", "responsive-block-editor-addons") },
                     ]}
                   />
                   <SelectControl
-                    label={__("Image Size")}
+                    label={__("Image Size", "responsive-block-editor-addons")}
                     options={imageSizeOptions}
                     value={imageSize}
                     onChange={(value) => setAttributes({ imageSize: value })}
                   />
                   <RangeControl
-                    label={__("Width")}
+                    label={__("Width", "responsive-block-editor-addons")}
                     value={imageWidth}
                     onChange={(value) => setAttributes({ imageWidth: value })}
                     min={0}

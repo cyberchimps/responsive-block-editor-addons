@@ -102,7 +102,7 @@ class SpacerEdit extends Component {
         <InspectorControls>
           <InspectorTabs hasStyle={false}>
             <InspectorTab key={"content"}>
-              <PanelBody title={__("Spacer settings")}>
+              <PanelBody title={__("Spacer settings", "responsive-block-editor-addons")}>
                 <TabPanel
                   className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                   activeClass="active-tab"
@@ -166,7 +166,7 @@ class SpacerEdit extends Component {
                       tabout = (
                         <Fragment>
                           <RangeControl
-                            label={__("Height in pixels")}
+                            label={__("Height in pixels", "responsive-block-editor-addons")}
                             min={MIN_SPACER_HEIGHT}
                             max={Math.max(MAX_SPACER_HEIGHT, height)}
                             value={height}

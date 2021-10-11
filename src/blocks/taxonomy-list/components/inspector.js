@@ -402,10 +402,10 @@ export default class Inspector extends Component {
               )}
               <TextControl
                 autoComplete="off"
-                label={ __( 'Display Message' ) }
+                label={ __( 'Display Message', 'responsive-block-editor-addons' ) }
                 value={ noTaxDisplaytext }
                 onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
-                help={ __( "What to display if taxonomy not found." ) }
+                help={ __( "What to display if taxonomy not found.", "responsive-block-editor-addons" ) }
               />
               <ToggleControl
                 label={__(
@@ -473,7 +473,7 @@ export default class Inspector extends Component {
               {"grid" === layout && (
                 <Fragment>
                   <p className="responsive-setting-label">
-                    {__("Title Color")}
+                    {__("Title Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -488,7 +488,7 @@ export default class Inspector extends Component {
                     }
                   />
                   <p className="responsive-setting-label">
-                    {__("Count Color")}
+                    {__("Count Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -503,7 +503,7 @@ export default class Inspector extends Component {
                     }
                   />
                   <p className="responsive-setting-label">
-                    {__("Background Color")}
+                    {__("Background Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -522,7 +522,7 @@ export default class Inspector extends Component {
               {"list" === layout && (
                 <Fragment>
                   <p className="responsive-setting-label">
-                    {__("List Text Color")}
+                    {__("List Text Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -537,7 +537,7 @@ export default class Inspector extends Component {
                     }
                   />
                   <p className="responsive-setting-label">
-                    {__("List Style Color")}
+                    {__("List Style Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -552,7 +552,7 @@ export default class Inspector extends Component {
                     }
                   />
                   <p className="responsive-setting-label">
-                    {__("List Text Color Hover")}
+                    {__("List Text Color Hover", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -567,7 +567,7 @@ export default class Inspector extends Component {
                     }
                   />
                   <p className="responsive-setting-label">
-                    {__("List Style Color Hover")}
+                    {__("List Style Color Hover", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
@@ -745,27 +745,27 @@ export default class Inspector extends Component {
                 <Fragment>
                   <BoxShadowControl
                     setAttributes={setAttributes}
-                    label={__("Box Shadow")}
+                    label={__("Box Shadow", "responsive-block-editor-addons")}
                     boxShadowColor={{
                       value: boxShadowColor,
-                      label: __("Color"),
+                      label: __("Color", "responsive-block-editor-addons"),
                     }}
                     boxShadowHOffset={{
                       value: boxShadowHOffset,
-                      label: __("Horizontal"),
+                      label: __("Horizontal", "responsive-block-editor-addons"),
                     }}
                     boxShadowVOffset={{
                       value: boxShadowVOffset,
-                      label: __("Vertical"),
+                      label: __("Vertical", "responsive-block-editor-addons"),
                     }}
-                    boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                    boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
                     boxShadowSpread={{
                       value: boxShadowSpread,
-                      label: __("Spread"),
+                      label: __("Spread", "responsive-block-editor-addons"),
                     }}
                     boxShadowPosition={{
                       value: boxShadowPosition,
-                      label: __("Position"),
+                      label: __("Position", "responsive-block-editor-addons"),
                     }}
                   />
                   <BlockBorderHelperControl
@@ -847,7 +847,7 @@ export default class Inspector extends Component {
                         allowReset
                       />
                       <p className="responsive-setting-label">
-                        {__("Separator Color")}
+                        {__("Separator Color", "responsive-block-editor-addons")}
                         <span className="components-base-control__label">
                           <span
                             className="component-color-indicator"

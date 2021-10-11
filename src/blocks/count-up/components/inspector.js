@@ -372,7 +372,7 @@ export default class Inspector extends Component {
             >
               <BaseControl>
                 <BaseControl.VisualLabel>
-                  {__("Alignment")}
+                  {__("Alignment", "responsive-block-editor-addons")}
                 </BaseControl.VisualLabel>
                 <AlignmentToolbar
                   value={contentAlign}
@@ -468,7 +468,7 @@ export default class Inspector extends Component {
               >
                 <Fragment>
                   <p className="components-base-control__label">
-                    {__("Select Icon")}
+                    {__("Select Icon", "responsive-block-editor-addons")}
                   </p>
                   {times(count, (n) => frontIconControls(n))}
                 </Fragment>
@@ -499,13 +499,13 @@ export default class Inspector extends Component {
                   allowReset
                 />
                 <SelectControl
-                  label={__("Design")}
+                  label={__("Design", "responsive-block-editor-addons")}
                   value={iconStyle}
                   onChange={(value) => setAttributes({ iconStyle: value })}
                   options={[
-                    { value: "none", label: __("Plain") },
-                    { value: "shaped", label: __("Shaped") },
-                    { value: "outline", label: __("Outline") },
+                    { value: "none", label: __("Plain", "responsive-block-editor-addons") },
+                    { value: "shaped", label: __("Shaped", "responsive-block-editor-addons") },
+                    { value: "outline", label: __("Outline", "responsive-block-editor-addons") },
                   ]}
                 />
                 {"none" != iconStyle && (
@@ -530,7 +530,7 @@ export default class Inspector extends Component {
                       allowReset
                     />
                     <RangeControl
-                      label={__("Shape / Outline Border Radius")}
+                      label={__("Shape / Outline Border Radius", "responsive-block-editor-addons")}
                       value={shapeBorderRadius}
                       onChange={(value) =>
                         setAttributes({ shapeBorderRadius: value })
@@ -539,7 +539,7 @@ export default class Inspector extends Component {
                       max={50}
                     />
                     <RangeControl
-                      label={__("Shape / Outline Padding")}
+                      label={__("Shape / Outline Padding", "responsive-block-editor-addons")}
                       value={shapePadding}
                       onChange={(value) =>
                         setAttributes({ shapePadding: value })
@@ -548,7 +548,7 @@ export default class Inspector extends Component {
                       max={100}
                     />
                     <RangeControl
-                      label={__("Outline Width")}
+                      label={__("Outline Width", "responsive-block-editor-addons")}
                       value={shapeBorder}
                       onChange={(value) =>
                         setAttributes({ shapeBorder: value })
@@ -566,52 +566,52 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
 				<TypographyHelperControl
-					title={__("Number Typography", "responsive-block-editor-addons")} 
+					title={__("Number Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="date%s"
 					values = {{
-					family: dateFontFamily, 
-					size: dateFontSize, 
-					sizeMobile: dateFontSizeMobile, 
-					sizeTablet: dateFontSizeTablet, 
-					weight: dateFontWeight, 
+					family: dateFontFamily,
+					size: dateFontSize,
+					sizeMobile: dateFontSizeMobile,
+					sizeTablet: dateFontSizeTablet,
+					weight: dateFontWeight,
 					height: dateLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Heading Typography", "responsive-block-editor-addons")} 
+					title={__("Heading Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="heading%s"
 					values = {{
-					family: headingFontFamily, 
-					size: headingFontSize, 
-					sizeMobile: headingFontSizeMobile, 
-					sizeTablet: headingFontSizeTablet, 
-					weight: headingFontWeight, 
+					family: headingFontFamily,
+					size: headingFontSize,
+					sizeMobile: headingFontSizeMobile,
+					sizeTablet: headingFontSizeTablet,
+					weight: headingFontWeight,
 					height: headingLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
-				/>         
+					{...this.props}
+				/>
 				<TypographyHelperControl
-					title={__("Description Typography", "responsive-block-editor-addons")} 
+					title={__("Description Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="content%s"
 					values = {{
-					family: contentFontFamily, 
-					size: contentFontSize, 
-					sizeMobile: contentFontSizeMobile, 
-					sizeTablet: contentFontSizeTablet, 
-					weight: contentFontWeight, 
+					family: contentFontFamily,
+					size: contentFontSize,
+					sizeMobile: contentFontSizeMobile,
+					sizeTablet: contentFontSizeTablet,
+					weight: contentFontWeight,
 					height: contentLineHeight,
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { false }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
             </PanelBody>
 

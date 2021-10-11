@@ -47,7 +47,7 @@ export default class Edit extends Component {
     attributes.socialMediaIcons.forEach(obj => {
       let copyObj = {...obj};
       socialMediaIconsCopy.push(copyObj);
-    })    
+    })
     const newShareIcon = {
       icon: "skype",
       label: "Skype",
@@ -67,7 +67,7 @@ export default class Edit extends Component {
     attributes.socialMediaIcons.forEach(obj => {
       let copyObj = {...obj};
       socialMediaIconsCopy.push(copyObj);
-    })    
+    })
     socialMediaIconsCopy.splice(activeIcon, 1);
     this.setState({ activeIcon: -1 });
     setAttributes({ socialMediaIcons: socialMediaIconsCopy });
@@ -203,7 +203,7 @@ export default class Edit extends Component {
                       >
                         <div className="responsive-block-editor-addons-share-icon-modal">
                           <p className="components-base-control__label">
-                            {__("Icon")}
+                            {__("Icon", "responsive-block-editor-addons")}
                           </p>
                           <FontIconPicker
                             icons={svg_icons}
@@ -221,16 +221,16 @@ export default class Edit extends Component {
                           />
                           <br />
                           <TextControl
-                            label={__("URL")}
+                            label={__("URL", "responsive-block-editor-addons")}
                             value={socialMediaIcons[activeIcon]?.url}
                             onChange={(val) =>
                               this.editShareIconHandler(activeIcon, "url", val)
                             }
-                            placeholder={__("URL")}
+                            placeholder={__("URL", "responsive-block-editor-addons")}
                           />
                           <br />
                           <TextControl
-                            label={__("Label")}
+                            label={__("Label", "responsive-block-editor-addons")}
                             value={socialMediaIcons[activeIcon]?.label}
                             onChange={(val) =>
                               this.editShareIconHandler(
@@ -239,7 +239,7 @@ export default class Edit extends Component {
                                 val
                               )
                             }
-                            placeholder={__("Enter label for icon")}
+                            placeholder={__("Enter label for icon", "responsive-block-editor-addons")}
                           />
                           <br />
                           <ToggleControl
@@ -263,14 +263,14 @@ export default class Edit extends Component {
                             className="rbea-share-button-save"
                             onClick={(e) => this.setState({ activeIcon: -1 })}
                           >
-                            {__("Save")}
+                            {__("Save", "responsive-block-editor-addons")}
                           </Button>
                           <Button
                             isDefault
                             className="rbea-share-button-remove"
                             onClick={(e) => this.removeIconHandler()}
                           >
-                            {__("Remove")}
+                            {__("Remove", "responsive-block-editor-addons")}
                           </Button>
                         </div>
                       </Popover>
@@ -282,7 +282,7 @@ export default class Edit extends Component {
                 onClick={() => this.insertIconHandler()}
                 className="rbea-add-icon-btn"
                 role="button"
-                areaLabel={__("Add new icon")}
+                areaLabel={__("Add new icon", "responsive-block-editor-addons")}
               >
                 {renderSVG("plus")}
               </span>

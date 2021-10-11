@@ -8,12 +8,12 @@
      Button,
      Dashicon,
  } = wp.components
- 
+
  // Extend component
  const { Fragment } = wp.element
  const { useSelect, useDispatch } = wp.data;
  import map from 'lodash/map';
- 
+
  /**
   * Build the Measure controls
   * @returns {object} Measure settings.
@@ -59,7 +59,7 @@
      return (
          <div className={ 'responsive-block-editor-addons-typography-range-options' }>
              <div className="responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin">
-                 <div className="components-tab-panel__tabs" aria-label={ __( 'Device', 'ultimate-addons-for-gutenberg' ) }>
+                 <div className="components-tab-panel__tabs" aria-label={ __( 'Device', 'responsive-block-editor-addons' ) }>
                      { map( devices, ( { name, key, title, itemClass } ) => (
                          <Button
                              key={ key }
