@@ -157,7 +157,7 @@ function EditorStyles(props) {
     updatedButtonColor = buttonColor !== 'empty' && !ctaBackColor ? buttonColor : ctaBackColor; //For compatibility with v1.3.2.
   }
   if (buttonHbackgroundType == "color") {
-    updatedButtonhColor = buttonhcolor !== 'empty' && '' === ctaHoverBackColor ? buttonhColor : ctaHoverBackColor;
+    updatedButtonhColor = buttonhColor !== 'empty' && '' === ctaHoverBackColor ? buttonhColor : ctaHoverBackColor;
   } else {
     updatedButtonhColor = '';
   }
