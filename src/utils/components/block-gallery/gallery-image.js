@@ -244,7 +244,7 @@ class GalleryImage extends Component {
                 />
                 <IconButton
                   icon={this.state.isSaved ? "saved" : "editor-break"}
-                  label={this.state.isSaved ? __("Saving") : __("Apply")}
+                  label={this.state.isSaved ? __("Saving", "responsive-block-editor-addons") : __("Apply", "responsive-block-editor-addons")}
                   onClick={this.saveCustomLink}
                   type="submit"
                 />

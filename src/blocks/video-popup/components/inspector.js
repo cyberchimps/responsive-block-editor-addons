@@ -391,7 +391,7 @@ export default class Inspector extends Component {
                   showOverlayOptions={false}
                 />
 				<p className="responsive-setting-label">
-					{__("Background Overlay Color")}
+					{__("Background Overlay Color", "responsive-block-editor-addons")}
 					<span className="components-base-control__label">
 						<span
 							className="component-color-indicator"
@@ -425,7 +425,7 @@ export default class Inspector extends Component {
                 initialOpen={false}
               >
                 <SelectControl
-                  label={__("Style")}
+                  label={__("Style", "responsive-block-editor-addons")}
                   value={playButtonType}
                   onChange={(value) => setAttributes({ playButtonType: value })}
                   options={[
@@ -505,26 +505,26 @@ export default class Inspector extends Component {
                 initialOpen={false}
               >
                 <SelectControl
-                  label={__("Border Style")}
+                  label={__("Border Style", "responsive-block-editor-addons")}
                   value={blockBorderStyle}
                   onChange={(value) =>
                     setAttributes({ blockBorderStyle: value })
                   }
                   options={[
-                    { value: "none", label: __("None") },
-                    { value: "solid", label: __("Solid") },
-                    { value: "dotted", label: __("Dotted") },
-                    { value: "dashed", label: __("Dashed") },
-                    { value: "double", label: __("Double") },
-                    { value: "groove", label: __("Groove") },
-                    { value: "inset", label: __("Inset") },
-                    { value: "outset", label: __("Outset") },
-                    { value: "ridge", label: __("Ridge") },
+                    { value: "none", label: __("None", "responsive-block-editor-addons") },
+                    { value: "solid", label: __("Solid", "responsive-block-editor-addons") },
+                    { value: "dotted", label: __("Dotted", "responsive-block-editor-addons") },
+                    { value: "dashed", label: __("Dashed", "responsive-block-editor-addons") },
+                    { value: "double", label: __("Double", "responsive-block-editor-addons") },
+                    { value: "groove", label: __("Groove", "responsive-block-editor-addons") },
+                    { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
+                    { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
+                    { value: "ridge", label: __("Ridge", "responsive-block-editor-addons") },
                   ]}
                 />
                 {"none" != blockBorderStyle && (
                   <RangeControl
-                    label={__("Border Width")}
+                    label={__("Border Width", "responsive-block-editor-addons")}
                     value={blockBorderWidth}
                     onChange={(value) =>
                       setAttributes({ blockBorderWidth: value })
@@ -534,7 +534,7 @@ export default class Inspector extends Component {
                   />
                 )}
                 <RangeControl
-                  label={__("Border Radius")}
+                  label={__("Border Radius", "responsive-block-editor-addons")}
                   value={blockBorderRadius}
                   onChange={(value) =>
                     setAttributes({ blockBorderRadius: value })
@@ -545,7 +545,7 @@ export default class Inspector extends Component {
                 {"none" != blockBorderStyle && (
                   <Fragment>
                     <p className="responsive-setting-label">
-                      {__("Border Color")}
+                      {__("Border Color", "responsive-block-editor-addons")}
                       <span className="components-base-control__label">
                         <span
                           className="component-color-indicator"
@@ -564,24 +564,24 @@ export default class Inspector extends Component {
                 )}
                 <BoxShadowControl
                   setAttributes={setAttributes}
-                  label={__("Box Shadow")}
-                  boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                  label={__("Box Shadow", "responsive-block-editor-addons")}
+                  boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                   boxShadowHOffset={{
                     value: boxShadowHOffset,
-                    label: __("Horizontal"),
+                    label: __("Horizontal", "responsive-block-editor-addons"),
                   }}
                   boxShadowVOffset={{
                     value: boxShadowVOffset,
-                    label: __("Vertical"),
+                    label: __("Vertical", "responsive-block-editor-addons"),
                   }}
-                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
                   boxShadowSpread={{
                     value: boxShadowSpread,
-                    label: __("Spread"),
+                    label: __("Spread", "responsive-block-editor-addons"),
                   }}
                   boxShadowPosition={{
                     value: boxShadowPosition,
-                    label: __("Position"),
+                    label: __("Position", "responsive-block-editor-addons"),
                   }}
                 />
               </PanelBody>

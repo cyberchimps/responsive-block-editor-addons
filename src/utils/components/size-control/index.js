@@ -64,14 +64,14 @@ class SizeControl extends Component {
         shortName:
           (wideControlsEnabled === true && "wide" === align) || "full" === align
             ? "L"
-            : __("Large"),
+            : __("Large", "responsive-block-editor-addons"),
         size: "lrg",
       },
       {
         shortName:
           (wideControlsEnabled === true && "wide" === align) || "full" === align
             ? "XL"
-            : __("Extra Large"),
+            : __("Extra Large", "responsive-block-editor-addons"),
         size: "xlrg",
       },
     ];
@@ -122,7 +122,7 @@ class SizeControl extends Component {
             (wideControlsEnabled === true && "wide" === align) ||
             "full" === align
               ? "S"
-              : __("Small"),
+              : __("Small", "responsive-block-editor-addons"),
           size: "small",
         },
         {
@@ -130,7 +130,7 @@ class SizeControl extends Component {
             (wideControlsEnabled === true && "wide" === align) ||
             "full" === align
               ? "M"
-              : __("Medium"),
+              : __("Medium", "responsive-block-editor-addons"),
           size: "medium",
         },
       ];
@@ -185,7 +185,7 @@ class SizeControl extends Component {
         label={label}
       >
         <PanelRow>
-          <ButtonGroup aria-label={__("Select size")}>
+          <ButtonGroup aria-label={__("Select size", "responsive-block-editor-addons")}>
             {map(this.getSizes(), ({ size, shortName }) => (
               <Button
                 key={size}
