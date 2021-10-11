@@ -781,7 +781,6 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                       max={100}
                       allowReset
                       />
-
                       </Fragment>
                   );
                   } else {
