@@ -221,7 +221,7 @@ class LatestPostsBlock extends Component {
           );
         }
       }
-    }		
+    }
   }
 
   render() {
@@ -279,9 +279,9 @@ class LatestPostsBlock extends Component {
     var content_align_class = AlignClass(this.props.attributes, 0); // Get classname for layout alignment
     var day_align_class = DayAlignClass(this.props.attributes, 0); // Get classname for day alignment.
 
-    let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy") }];
+    let taxonomyListOptions = [{ value: "", label: __("Select Taxonomy", "responsive-block-editor-addons") }];
 
-    let categoryListOptions = [{ value: "", label: __("All") }];
+    let categoryListOptions = [{ value: "", label: __("All", "responsive-block-editor-addons") }];
 
     if ("" != taxonomyList) {
       Object.keys(taxonomyList).map((item, thisIndex) => {
@@ -302,10 +302,10 @@ class LatestPostsBlock extends Component {
     }
 
     const queryControls = (
-      <PanelBody title={__("Query")} initialOpen={true}>
+      <PanelBody title={__("Query", "responsive-block-editor-addons")} initialOpen={true}>
           {"" != taxonomyList && (
             <SelectControl
-              label={__("Taxonomy")}
+              label={__("Taxonomy", "responsive-block-editor-addons")}
               value={attributes.taxonomyType}
               onChange={(value) => this.onSelectTaxonomyType(value)}
               options={taxonomyListOptions}
@@ -579,7 +579,7 @@ export default compose([
       latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
     }
 
-    var category = [];	
+    var category = [];
     var temp = parseInt(categories);
     category.push(temp);
     var catlength = categoriesList?.length;
@@ -589,7 +589,7 @@ export default compose([
           categoriesList[i].child?.forEach(element => {
             category.push(element);
           });
-        }		
+        }
       }
     }
     if ( undefined !== categories && '' !== categories ) {
