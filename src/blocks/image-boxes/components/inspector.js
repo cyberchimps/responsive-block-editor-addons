@@ -754,7 +754,7 @@ export default class Inspector extends Component {
               ]}
             >
               <ToggleControl
-                label={__("Gradient Background", "responsive-block-editor-addons")
+                label={__("Gradient Background", "responsive-block-editor-addons")}
                 checked={hoverBgGradient}
                 onChange={() =>
                   this.props.setAttributes({
