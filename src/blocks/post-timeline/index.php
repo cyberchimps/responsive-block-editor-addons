@@ -398,7 +398,6 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 		$post_grid_markup .= sprintf(
 			'</div>'
 		);
-		
 		/* Restore original post data */
 		wp_reset_postdata();
 
