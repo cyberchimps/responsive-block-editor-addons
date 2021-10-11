@@ -28,15 +28,9 @@ export default class Save extends Component {
       className,
     } = this.props.attributes;
 
-    const imagePointsParsed = imagePoints != "" ? JSON.parse(imagePoints) : [];
+    const imageHotspotsParsed = imagePoints != "" ? JSON.parse(imagePoints) : [];
 
-    const wrapperProps = {
-      className: classnames(
-        className,
-        `responsive-block-editor-addons-block-image-hotspot`,
-        `block-${block_id}`
-      ),
-    };
+  
 
     const imageHTML = url ? (
       <img
@@ -48,31 +42,31 @@ export default class Save extends Component {
       />
     ) : null;
 
-    const renderPoints = (index) => {
-      if (typeof imagePointsParsed[index] !== "undefined") {
+    const renderHotspots = (index) => {
+      if (typeof imageHotspotsParsed[index] !== "undefined") {
         const dotClass = classnames(`responsive_block_addons__dot`);
 
         const dotStyle = {
           padding: hotspotPadding && hotspotPadding != 6 ? hotspotPadding : undefined,
           opacity:
             hotspotOpacity && hotspotOpacity != 100 ? hotspotOpacity / 100 : undefined,
-          left: imagePointsParsed[index].position.x
-            ? imagePointsParsed[index].position.x
+          left: imageHotspotsParsed[index].position.x
+            ? imageHotspotsParsed[index].position.x
             : undefined,
-          top: imagePointsParsed[index].position.y
-            ? imagePointsParsed[index].position.y
+          top: imageHotspotsParsed[index].position.y
+            ? imageHotspotsParsed[index].position.y
             : undefined,
 
-          backgroundColor: imagePointsParsed[index].backgroundColor
-            ? imagePointsParsed[index].backgroundColor
+          backgroundColor: imageHotspotsParsed[index].backgroundColor
+            ? imageHotspotsParsed[index].backgroundColor
             : hotspotBackground
             ? hotspotBackground
             : undefined,
         };
 
         const innerDotStyle = {
-          fill: imagePointsParsed[index].color
-            ? imagePointsParsed[index].color
+          fill: imageHotspotsParsed[index].color
+            ? imageHotspotsParsed[index].color
             : hotspotColor
             ? hotspotColor
             : undefined,
@@ -81,26 +75,26 @@ export default class Save extends Component {
 
         var link_HTML = "";
         const link_attr = {
-          target: imagePointsParsed[index].newTab ? "_blank" : undefined,
-          rel: imagePointsParsed[index].newTab
+          target: imageHotspotsParsed[index].newTab ? "_blank" : undefined,
+          rel: imageHotspotsParsed[index].newTab
             ? "noopener noreferrer"
             : undefined,
         };
 
-        var icon = imagePointsParsed[index].icon
-          ? imagePointsParsed[index].icon
+        var icon = imageHotspotsParsed[index].icon
+          ? imageHotspotsParsed[index].icon
           : hotspotIcon
           ? hotspotIcon
           : undefined;
 
-        if (imagePointsParsed[index].link != "") {
+        if (imageHotspotsParsed[index].link != "") {
           link_HTML = (
-            <a href={imagePointsParsed[index].link} {...link_attr}>
-              {imagePointsParsed[index].title}
+            <a href={imageHotspotsParsed[index].link} {...link_attr}>
+              {imageHotspotsParsed[index].title}
             </a>
           );
         } else {
-          link_HTML = imagePointsParsed[index].title;
+          link_HTML = imageHotspotsParsed[index].title;
         }
 
         return (
@@ -125,7 +119,15 @@ export default class Save extends Component {
       }
     };
 
-    const innerWrapperProps = {
+    const containerClasses = {
+      className: classnames(
+        className,
+        `responsive-block-editor-addons-block-image-hotspot`,
+        `block-${block_id}`
+      ),
+    }
+
+    const innerContainerClasses = {
       className: classnames(`responsive_block_addons__wrapper`),
     };
 
@@ -141,12 +143,12 @@ export default class Save extends Component {
     };
 
     return (
-      <div {...wrapperProps} {...imagePointsArr} {...tooltipOptions}>
-        <div {...innerWrapperProps}>
+      <div {...containerClasses} {...imagePointsArr} {...tooltipOptions}>
+        <div {...innerContainerClasses}>
           {imageHTML}
-          {imagePointsParsed.length != 0 && (
+          {imageHotspotsParsed.length != 0 && (
             <Fragment>
-              {times(imagePointsParsed.length, (n) => renderPoints(n))}
+              {times(imageHotspotsParsed.length, (hotspot) => renderHotspots(hotspot))}
             </Fragment>
           )}
         </div>

@@ -7,7 +7,7 @@ import ReactDOMServer from "react-dom/server";
 
 const { __ } = wp.i18n;
 import { merge, isEqual, get, unescape, cloneDeep } from "lodash";
-
+const { jQuery: $ } = window;
 const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { ToolbarGroup, ToolbarButton } = wp.components;
@@ -15,9 +15,7 @@ const { BlockControls, MediaPlaceholder, MediaUpload, MediaUploadCheck } =
   wp.blockEditor || wp.editor;
 const { withSelect, withDispatch } = wp.data;
 
-const { jQuery: $ } = window;
-
-const ALLOWED_MEDIA_TYPES = ["image"];
+const ALLOWED_MEDIA = ["image"];
 
 class Edit extends Component {
   constructor() {
@@ -723,7 +721,7 @@ class Edit extends Component {
       changeImageSize(media, imageSize);
     };
 
-    const wrapperProps = {
+    const containerClasses = {
       className: classnames(
         className,
         {
@@ -735,7 +733,7 @@ class Edit extends Component {
       ),
     };
 
-    const innerWrapperProps = classnames(`responsive_block_addons___wrapper`);
+    const innerContainerClasses = classnames(`responsive_block_addons___wrapper`);
 
     const imageHTML = url ? (
       <img
@@ -758,7 +756,7 @@ class Edit extends Component {
 						}}
 						onSelect={onSelectMedia}
 						accept="image/*"
-						allowedTypes={ALLOWED_MEDIA_TYPES}
+						allowedTypes={ALLOWED_MEDIA}
 					/>
 				)}
 				<BlockControls>
@@ -768,7 +766,7 @@ class Edit extends Component {
 								<ToolbarGroup>
 									<MediaUpload
 										onSelect={onSelectMedia}
-										allowedTypes={ALLOWED_MEDIA_TYPES}
+										allowedTypes={ALLOWED_MEDIA}
 										value={id}
 										render={({open}) => (
 											<ToolbarButton
@@ -790,7 +788,7 @@ class Edit extends Component {
 
     return (
       <Fragment>
-        <div {...wrapperProps}>
+        <div {...containerClasses}>
           {controls}
           {!!url && (
             <Fragment>
@@ -816,7 +814,7 @@ class Edit extends Component {
               />
             </Fragment>
           )}
-          <div className={innerWrapperProps}>{imageHTML}</div>
+          <div className={innerContainerClasses}>{imageHTML}</div>
         </div>
       </Fragment>
     );
