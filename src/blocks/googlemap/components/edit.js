@@ -21,15 +21,11 @@ export default class Edit extends Component {
   constructor() {
     super(...arguments);
     this.state = {
-      apiKey: "",
       address: this.props.attributes.address,
       coords: null,
       hasError: false,
-      isSavedKey: false,
-      keySaved: false,
     };
-      this.updateApiKey = this.updateApiKey.bind( this );
-      this.saveApiKey = this.saveApiKey.bind( this );
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -55,42 +51,6 @@ export default class Edit extends Component {
     );
     document.head.appendChild($style);
   }
-
-    updateApiKey( apiKey = this.state.apiKey ) {
-        const { attributes, setAttributes } = this.props;
-
-        apiKey = apiKey.trim();
-
-        this.saveApiKey( apiKey );
-
-        if ( apiKey === '' ) {
-            setAttributes( { hasApiKey: false } );
-
-            if ( ! attributes.address ) {
-                setAttributes( { pinned: false } );
-            }
-
-            return;
-        }
-
-        if ( attributes.address ) {
-            setAttributes( { pinned: true } );
-        }
-    }
-
-    saveApiKey( apiKey = this.state.apiKey ) {
-        this.setState( { apiKey } );
-        apiFetch( {
-            path: '/wp/v2/settings',
-            method: 'POST',
-            data: { coblocks_google_maps_api_key: apiKey },
-        } ).then( () => {
-            this.setState( {
-                isSavedKey: true,
-                keySaved: true,
-            } );
-        } );
-    }
 
   render() {
     // Setup the attributes
@@ -118,11 +78,11 @@ export default class Edit extends Component {
 
     return [
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} updateApiKeyCallBack={ this.updateApiKey } />,
+      <Inspector {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <Googlemap {...this.props}>
-        {isSelected && <Controls {...this.props} apiKey={this.state.apiKey} />}
+        {isSelected && <Controls {...this.props} />}
         {pinned ? (
           <Fragment>
             <div className="responsive-block-editor-addons-block-googlemap-external-element" />

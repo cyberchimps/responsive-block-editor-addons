@@ -5,9 +5,6 @@ const attributes = {
   address: {
     type: "string",
   },
-  apiKey: {
-    type: "string",
-  },
   zoom: {
     type: "number",
     default: 12,

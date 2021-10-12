@@ -14,12 +14,9 @@ export default class Save extends Component {
   constructor() {
     super(...arguments);
     this.state = {
-      apiKey: "",
       address: this.props.attributes.address,
       coords: null,
       hasError: false,
-      isSavedKey: false,
-      keySaved: false,
     };
   }
 
@@ -28,7 +25,7 @@ export default class Save extends Component {
 
     return (
       <Googlemap {...this.props}>
-        <div 
+        <div
           className={classnames(
           "responsive-block-editor-addons-block-googlemap",
           `block-${block_id}`
