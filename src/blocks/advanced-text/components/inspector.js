@@ -89,7 +89,7 @@ export default class Inspector extends Component {
         subtitleLineHeight,
         subtitleColor,
         subtitleAlign,
-
+        // advanced panel
         blockOpacity,
         zIndex,
         blockTag,

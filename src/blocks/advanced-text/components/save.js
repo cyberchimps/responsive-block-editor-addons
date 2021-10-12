@@ -19,11 +19,14 @@ export default class Save extends Component {
       blockTitle,
       blockSubtitle,
       displayColumnSeparator,
+      blockTag,
     } = this.props.attributes;
+
+    let CustomTag = `${blockTag}`;
 
     return (
       <Fragment>
-        <div
+        <CustomTag
           id={anchor}
           className={classnames(
             "responsive-block-editor-addons-block-advanced-text",
@@ -71,7 +74,7 @@ export default class Save extends Component {
               );
             })}
           </div>
-        </div>
+        </CustomTag>
       </Fragment>
     );
   }

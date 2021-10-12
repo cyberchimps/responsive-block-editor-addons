@@ -49,9 +49,12 @@ export default class Edit extends Component {
         blockTitle,
         blockSubtitle,
         displayColumnSeparator,
+        blockTag,
       },
       setAttributes,
     } = this.props;
+
+    let CustomTag = `${blockTag}`;
 
     return [
       <Inspector
@@ -59,7 +62,7 @@ export default class Edit extends Component {
         {...{ setAttributes, ...this.props }}
       />,
       <Fragment key="advanced-text-container">
-        <div
+        <CustomTag
           className={classnames(
             "responsive-block-editor-addons-block-advanced-text",
             `block-${block_id}`
@@ -119,7 +122,7 @@ export default class Edit extends Component {
               );
             })}
           </div>
-        </div>
+        </CustomTag>
       </Fragment>,
     ];
   }

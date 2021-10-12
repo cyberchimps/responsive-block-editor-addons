@@ -7787,10 +7787,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' '                   => array(
 					'padding' => self::get_css_value( $attr['blockPadding'], 'px' ) . ' !important',
 				),
-				' .slick-arrow svg'                   => array(
+				' .slick-arrow svg'   => array(
 					'height' => self::get_css_value( $attr['arrowSize'], 'px' ),
-					'width' => self::get_css_value( $attr['arrowSize'], 'px' ),
-					'fill' => $attr['arrowColor'],
+					'width'  => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'fill'   => $attr['arrowColor'],
 				),
 				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content' => array(
 					'border-width'  => 999 !== $attr['borderWidth'] && 1 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
@@ -11980,11 +11980,51 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$selectors = array();
+			$block_opacity = $attr['blockOpacity'] / 100;
 
-			$mobile_selectors = array();
+			$selectors = array(
+				' ' => array(
+					'opacity'        => $block_opacity,
+					'z-index'        => $attr['zIndex'],
+					'max-width'      => self::get_css_value( $attr['containerWidth'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMargin'], 'px!important' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMargin'], 'px!important' ),
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMargin'], 'px!important' ),
+					'margin-left'    => self::get_css_value( $attr['containerLeftMargin'], 'px!important' ),
+					'padding-top'    => self::get_css_value( $attr['containerTopPadding'], 'px!important' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPadding'], 'px!important' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPadding'], 'px!important' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPadding'], 'px!important' ),
+				),
+			);
 
-			$tablet_selectors = array();
+			$mobile_selectors = array(
+				' ' => array(
+					'max-width'      => self::get_css_value( $attr['containerWidthMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMarginMobile'], 'px!important' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMarginMobile'], 'px!important' ),
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMarginMobile'], 'px!important' ),
+					'margin-left'    => self::get_css_value( $attr['containerLeftMarginMobile'], 'px!important' ),
+					'padding-top'    => self::get_css_value( $attr['containerTopPaddingMobile'], 'px!important' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPaddingMobile'], 'px!important' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPaddingMobile'], 'px!important' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPaddingMobile'], 'px!important' ),
+				),
+			);
+
+			$tablet_selectors = array(
+				' ' => array(
+					'max-width'      => self::get_css_value( $attr['containerWidthTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMarginTablet'], 'px!important' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMarginTablet'], 'px!important' ),
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMarginTablet'], 'px!important' ),
+					'margin-left'    => self::get_css_value( $attr['containerLeftMarginTablet'], 'px!important' ),
+					'padding-top'    => self::get_css_value( $attr['containerTopPaddingTablet'], 'px!important' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPaddingTablet'], 'px!important' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPaddingTablet'], 'px!important' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPaddingTablet'], 'px!important' ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -12006,7 +12046,37 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_advanced_text_default_attributes() {
 			return array(
-				'block_id'               => '',
+				'block_id'                     => '',
+				'blockOpacity'                 => 100,
+				'zIndex'                       => '',
+				'blockTag'                     => 'div',
+				'containerWidth'               => '',
+				'containerWidthTablet'         => '',
+				'containerWidthMobile'         => '',
+				'containerTopPadding'          => '',
+				'containerBottomPadding'       => '',
+				'containerLeftPadding'         => '',
+				'containerRightPadding'        => '',
+				'containerTopPaddingTablet'    => '',
+				'containerBottomPaddingTablet' => '',
+				'containerLeftPaddingTablet'   => '',
+				'containerRightPaddingTablet'  => '',
+				'containerTopPaddingMobile'    => '',
+				'containerBottomPaddingMobile' => '',
+				'containerLeftPaddingMobile'   => '',
+				'containerRightPaddingMobile'  => '',
+				'containerTopMargin'           => '',
+				'containerBottomMargin'        => '',
+				'containerLeftMargin'          => '',
+				'containerRightMargin'         => '',
+				'containerTopMarginTablet'     => '',
+				'containerBottomMarginTablet'  => '',
+				'containerLeftMarginTablet'    => '',
+				'containerRightMarginTablet'   => '',
+				'containerTopMarginMobile'     => '',
+				'containerBottomMarginMobile'  => '',
+				'containerLeftMarginMobile'    => '',
+				'containerRightMarginMobile'   => '',
 			);
 		}
 
