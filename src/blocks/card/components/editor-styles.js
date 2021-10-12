@@ -250,7 +250,7 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-card-background-image": {
       "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
+        ? `url(${backgroundImage})`
         : null,
       height: 100 + "%",
       "background-position": bgimagePosition !== "empty" && backgroundImagePosition === "center center" ? bgimagePosition : backgroundImagePosition, //For compatibility with v1.3.2.
