@@ -3,17 +3,17 @@ const attributes = {
     type: "string",
   },
   text1: {
-		type: 'string',
-	},
-	text2: {
-		type: 'string',
-	},
-	text3: {
-		type: 'string',
-	},
-	text4: {
-		type: 'string',
-	},
+    type: "string",
+  },
+  text2: {
+    type: "string",
+  },
+  text3: {
+    type: "string",
+  },
+  text4: {
+    type: "string",
+  },
   displayTitle: {
     type: "boolean",
     default: false,
@@ -37,6 +37,14 @@ const attributes = {
   displayColumnSeparator: {
     type: "boolean",
     default: false,
+  },
+  textAlign: {
+    type: "string",
+    default: "left",
+  },
+  contentAlign: {
+    type: "string",
+    default: "left",
   },
 };
 
