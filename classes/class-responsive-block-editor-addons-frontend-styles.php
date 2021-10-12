@@ -7787,10 +7787,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' '                   => array(
 					'padding' => self::get_css_value( $attr['blockPadding'], 'px' ) . ' !important',
 				),
-				' .slick-arrow svg'                   => array(
+				' .slick-arrow svg'   => array(
 					'height' => self::get_css_value( $attr['arrowSize'], 'px' ),
-					'width' => self::get_css_value( $attr['arrowSize'], 'px' ),
-					'fill' => $attr['arrowColor'],
+					'width'  => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'fill'   => $attr['arrowColor'],
 				),
 				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content' => array(
 					'border-width'  => 999 !== $attr['borderWidth'] && 1 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
@@ -11963,6 +11963,100 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'instaLeftMarginTablet'    => '',
 				'gridSize'                 => 700,
 				'imagesGap'                => 0,
+			);
+		}
+
+		/**
+		 * Get Image Hotspot Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_image_hotspot_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_image_hotspot_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$updated_point_opacity = $attr['pointOpacity'] / 100;
+
+			$selectors = array(
+				' '                                      => array(
+					'display'         => 'flex',
+					'justify-content' => 'center',
+				),
+				' .responsive_block_addons__image'       => array(
+					'display' => 'block',
+				),
+				' .responsive_block_addons__dot'         => array(
+					'left'                      => 0,
+					'top'                       => 0,
+					'opacity'                   => $updated_point_opacity,
+					'outline'                   => 'none',
+					'cursor'                    => 'pointer',
+					'position'                  => 'absolute',
+					'border-radius'             => '50%',
+					'background-color'          => $attr['pointBackgroundColor'],
+					'padding'                   => self::get_css_value( $attr['pointSpacing'], 'px' ),
+					'animation-name'            => $attr['animationName'] . '' . $attr['animationDirection'],
+					'animation-timing-function' => $attr['animationCurve'],
+					'animation-duration'        => $attr['animationDuration'] . 'ms',
+					'animation-delay'           => $attr['animationDelay'] . 'ms',
+					'animation-iteration-count' => 'once' === $attr['animationRepeat'] ? 1 : 'infinite',
+				),
+				' .responsive_block_addons__dot::before' => array(
+					'display'   => $attr['pulseEffect'] ? 'block' : 'none',
+					'animation' => $attr['pulseEffect'] ? '' : 'none',
+				),
+				' .responsive_block_addons__dot-content svg' => array(
+					'font-size' => self::get_css_value( $attr['hotspotSize'], 'px' ),
+				),
+				' .responsive_block_addons__dot-content' => array(
+					'fill' => $attr['iconColor'],
+				),
+				' .responsive_block_addons__wrapper'     => array(
+					'position' => 'relative',
+				),
+			);
+
+			$mobile_selectors = array();
+
+			$tablet_selectors = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-image-hotspot.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for image hotspot block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_image_hotspot_default_attributes() {
+			return array(
+				'block_id'             => '',
+				'pointBackgroundColor' => '#333',
+				'iconColor'            => '#fff',
+				'pointOpacity'         => 100,
+				'animationName'        => 'none',
+				'animationDirection'   => 'Left',
+				'animationRepeat'      => 'once',
+				'animationDuration'    => 1000,
+				'animationDelay'       => 0,
+				'animationCurve'       => '',
+				'pulseEffect'          => true,
+				'hotspotSize'          => 16,
+				'pointSpacing'         => 6,
 			);
 		}
 
