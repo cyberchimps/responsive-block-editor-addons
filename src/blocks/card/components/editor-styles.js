@@ -171,7 +171,7 @@ function EditorStyles(props) {
       buttoncolorLocation2
     )
   }
-console.log("backgroundImage"+backgroundImage);
+
   var selectors = {
     " .responsive-block-editor-addons-card-button-inner .res-button": {
       color: buttonTextColor !== 'empty' && '#fff' === ctaColor ? buttonTextColor : ctaColor, //For compatibility with v1.3.2.
