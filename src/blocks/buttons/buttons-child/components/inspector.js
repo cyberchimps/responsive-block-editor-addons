@@ -9,7 +9,7 @@ import fontOptions from "../../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../../utils/font";
 import InspectorTab from "../../../../components/InspectorTab";
 import InspectorTabs from "../../../../components/InspectorTabs";
-import TypographyHelperControl from "../../../../settings-components/Typography Settings";
+import TypographyHelperControl from "../../../../settings-components/TypographySettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -170,19 +170,19 @@ export default class Inspector extends Component {
 				<InspectorTabs>
 					<InspectorTab key={"content"}>
 						<PanelBody
-							title={__("Button Settings")}
+							title={__("Button Settings", "responsive-block-editor-addons")}
 							initialOpen={true}
 							className="responsive-block-editor-addons__url-panel-body"
 						>
 							<ToggleControl
-								label={__("Inherit from Theme")}
+								label={__("Inherit from Theme", "responsive-block-editor-addons")}
 								checked={inheritFromTheme}
 								onChange={(value) =>
 									setAttributes({ inheritFromTheme: !inheritFromTheme })
 								}
 							/>
 							<ToggleControl
-								label={__("Open link in new tab")}
+								label={__("Open link in new tab", "responsive-block-editor-addons")}
 								checked={target}
 								onChange={() => {
 									setAttributes({ target: !target });
@@ -237,12 +237,12 @@ export default class Inspector extends Component {
 										tabs={[
 											{
 												name: "normal",
-												title: __("Normal"),
+												title: __("Normal", "responsive-block-editor-addons"),
 												className: "responsive-block-editor-addons-normal-tab",
 											},
 											{
 												name: "hover",
-												title: __("Hover"),
+												title: __("Hover", "responsive-block-editor-addons"),
 												className: "responsive-block-editor-addons-hover-tab",
 											},
 										]}
@@ -478,11 +478,11 @@ export default class Inspector extends Component {
 										label={__("Style", "responsive-block-editor-addons")}
 										value={borderStyle}
 										options={[
-											{ value: "none", label: __("None") },
-											{ value: "solid", label: __("Solid") },
-											{ value: "dotted", label: __("Dotted") },
-											{ value: "dashed", label: __("Dashed") },
-											{ value: "double", label: __("Double") },
+											{ value: "none", label: __("None", "responsive-block-editor-addons") },
+											{ value: "solid", label: __("Solid", "responsive-block-editor-addons") },
+											{ value: "dotted", label: __("Dotted", "responsive-block-editor-addons") },
+											{ value: "dashed", label: __("Dashed", "responsive-block-editor-addons") },
+											{ value: "double", label: __("Double", "responsive-block-editor-addons") },
 										]}
 										onChange={(value) => {
 											setAttributes({ borderStyle: value });
@@ -855,9 +855,9 @@ export default class Inspector extends Component {
 								}}
 							</TabPanel>
 						</PanelBody>
-						<PanelBody title={__("Icon Settings")} initialOpen={false}>
+						<PanelBody title={__("Icon Settings", "responsive-block-editor-addons")} initialOpen={false}>
 							<Fragment>
-								<p className="components-base-control__label">{__("Icon")}</p>
+								<p className="components-base-control__label">{__("Icon", "responsive-block-editor-addons")}</p>
 								<FontIconPicker
 									icons={svg_icons}
 									renderFunc={renderSVG}
@@ -865,15 +865,15 @@ export default class Inspector extends Component {
 									value={icon}
 									onChange={(value) => setAttributes({ icon: value })}
 									isMulti={false}
-									noSelectedPlaceholder={__("Select Icon")}
+									noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
 								/>
 								<SelectControl
-									label={__("Icon Position")}
+									label={__("Icon Position", "responsive-block-editor-addons")}
 									value={iconPosition}
 									onChange={(value) => setAttributes({ iconPosition: value })}
 									options={[
-										{ value: "before", label: __("Before Text") },
-										{ value: "after", label: __("After Text") },
+										{ value: "before", label: __("Before Text", "responsive-block-editor-addons") },
+										{ value: "after", label: __("After Text", "responsive-block-editor-addons") },
 									]}
 								/>
 								<RangeControl
@@ -929,20 +929,20 @@ export default class Inspector extends Component {
 						{!inheritFromTheme && (
 							<Fragment>
 								<TypographyHelperControl
-									title={__("Button Typography", "responsive-block-editor-addons")} 
+									title={__("Button Typography", "responsive-block-editor-addons")}
 									attrNameTemplate="button%s"
 									values = {{
-										family: buttonFontFamily, 
-										size: buttonFontSize, 
-										sizeMobile: buttonFontSizeMobile, 
-										sizeTablet: buttonFontSizeTablet, 
-										weight: buttonFontWeight, 
+										family: buttonFontFamily,
+										size: buttonFontSize,
+										sizeMobile: buttonFontSizeMobile,
+										sizeTablet: buttonFontSizeTablet,
+										weight: buttonFontWeight,
 										height: buttonLineHeight,
 									}}
 									showLetterSpacing = { false }
 									showTextTransform = { false }
 									setAttributes={ setAttributes }
-									{...this.props}            
+									{...this.props}
 								/>
 								<PanelBody
 									title={__("Box Shadow", "responsive-block-editor-addons")}
@@ -950,24 +950,24 @@ export default class Inspector extends Component {
 								>
 									<BoxShadowControl
 										setAttributes={setAttributes}
-										label={__("Box Shadow")}
-										boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+										label={__("Box Shadow", "responsive-block-editor-addons")}
+										boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
 										boxShadowHOffset={{
 											value: boxShadowHOffset,
-											label: __("Horizontal"),
+											label: __("Horizontal", "responsive-block-editor-addons"),
 										}}
 										boxShadowVOffset={{
 											value: boxShadowVOffset,
-											label: __("Vertical"),
+											label: __("Vertical", "responsive-block-editor-addons"),
 										}}
-										boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+										boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
 										boxShadowSpread={{
 											value: boxShadowSpread,
-											label: __("Spread"),
+											label: __("Spread", "responsive-block-editor-addons"),
 										}}
 										boxShadowPosition={{
 											value: boxShadowPosition,
-											label: __("Position"),
+											label: __("Position", "responsive-block-editor-addons"),
 										}}
 									/>
 								</PanelBody>

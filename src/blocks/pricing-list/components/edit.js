@@ -120,12 +120,12 @@ export default class Edit extends Component {
   getImageName(image) {
     const { pricingList } = this.props.attributes;
 
-    let image_name = __("Select Image");
+    let image_name = __("Select Image", "responsive-block-editor-addons");
     if (image) {
       if (image.url == null || image.url == "") {
-        image_name = __("Select Image");
+        image_name = __("Select Image", "responsive-block-editor-addons");
       } else {
-        image_name = __("Replace Image");
+        image_name = __("Replace Image", "responsive-block-editor-addons");
       }
     }
     return image_name;

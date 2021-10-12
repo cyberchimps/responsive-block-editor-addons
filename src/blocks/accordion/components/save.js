@@ -26,6 +26,7 @@ export default function save(props) {
         `responsive-block-editor-addons-accordion-inactive-other-${props.attributes.inactiveOtherItems}`,
         equalHeightClass
       )}
+    data-accordiontoggle = { true }
     >
       <div className="responsive-block-editor-addons-accordion__wrap responsive-block-editor-addons-buttons-layout-wrap">
         <InnerBlocks.Content />

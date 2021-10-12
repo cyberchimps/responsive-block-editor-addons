@@ -1,8 +1,8 @@
 /**
  * Inspector Controls
  */
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -297,18 +297,18 @@ export default class Inspector extends Component {
               />
 
               <SelectControl
-                label={__("Heading Tag")}
+                label={__("Heading Tag", "responsive-block-editor-addons")}
                 value={headingTag}
                 onChange={(value) => {
                   this.onTagChange(value);
                 }}
                 options={[
-                  { value: "h1", label: __("H1") },
-                  { value: "h2", label: __("H2") },
-                  { value: "h3", label: __("H3") },
-                  { value: "h4", label: __("H4") },
-                  { value: "h5", label: __("H5") },
-                  { value: "h6", label: __("H6") },
+                  { value: "h1", label: __("H1", "responsive-block-editor-addons") },
+                  { value: "h2", label: __("H2", "responsive-block-editor-addons") },
+                  { value: "h3", label: __("H3", "responsive-block-editor-addons") },
+                  { value: "h4", label: __("H4", "responsive-block-editor-addons") },
+                  { value: "h5", label: __("H5", "responsive-block-editor-addons") },
+                  { value: "h6", label: __("H6", "responsive-block-editor-addons") },
                 ]}
               />
             </PanelBody>
@@ -364,7 +364,7 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <p className="responsive-block-editor-addons-setting-label">
-                {__("Heading Color")}
+                {__("Heading Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -380,7 +380,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <p className="responsive-block-editor-addons-setting-label">
-                {__("Sub Heading Color")}
+                {__("Sub Heading Color", "responsive-block-editor-addons")}
                 <span className="components-base-control__label">
                   <span
                     className="component-color-indicator"
@@ -427,36 +427,36 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <SelectControl
-                label={__("Position")}
+                label={__("Position", "responsive-block-editor-addons")}
                 value={seperatorPosition}
                 onChange={(value) =>
                   setAttributes({ seperatorPosition: value })
                 }
                 options={[
-                  { value: "belowTitle", label: __("Below Heading") },
-                  { value: "belowDesc", label: __("Below Description") },
+                  { value: "belowTitle", label: __("Below Heading", "responsive-block-editor-addons") },
+                  { value: "belowDesc", label: __("Below Description", "responsive-block-editor-addons") },
                 ]}
               />
               <SelectControl
-                label={__("Style")}
+                label={__("Style", "responsive-block-editor-addons")}
                 value={seperatorStyle}
                 onChange={(value) => setAttributes({ seperatorStyle: value })}
                 options={[
-                  { value: "none", label: __("None") },
-                  { value: "solid", label: __("Solid") },
-                  { value: "dashed", label: __("Dashed") },
-                  { value: "dotted", label: __("Dotted") },
-                  { value: "double", label: __("Double") },
-                  { value: "groove", label: __("Groove") },
-                  { value: "inset", label: __("Inset") },
-                  { value: "outset", label: __("Outset") },
-                  { value: "ridge", label: __("Ridge") },
+                  { value: "none", label: __("None", "responsive-block-editor-addons") },
+                  { value: "solid", label: __("Solid", "responsive-block-editor-addons") },
+                  { value: "dashed", label: __("Dashed", "responsive-block-editor-addons") },
+                  { value: "dotted", label: __("Dotted", "responsive-block-editor-addons") },
+                  { value: "double", label: __("Double", "responsive-block-editor-addons") },
+                  { value: "groove", label: __("Groove", "responsive-block-editor-addons") },
+                  { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
+                  { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
+                  { value: "ridge", label: __("Ridge", "responsive-block-editor-addons") },
                 ]}
               />
               {seperatorStyle !== "none" && (
                 <Fragment>
                   <RangeControl
-                    label={__("Thickness (px)")}
+                    label={__("Thickness (px)", "responsive-block-editor-addons")}
                     value={separatorHeight}
                     onChange={(value) =>
                       setAttributes({
@@ -500,7 +500,7 @@ export default class Inspector extends Component {
                     </Button>
                   </ButtonGroup>
                   <RangeControl
-                    label={__("Width")}
+                    label={__("Width", "responsive-block-editor-addons")}
                     value={separatorWidth}
                     onChange={(value) =>
                       setAttributes({ separatorWidth: value })
@@ -514,7 +514,7 @@ export default class Inspector extends Component {
                   {seperatorStyle !== "none" && (
                     <Fragment>
                       <p className="responsive-setting-label">
-                        {__("Separator Color")}
+                        {__("Separator Color", "responsive-block-editor-addons")}
                         <span className="components-base-control__label">
                           <span
                             className="component-color-indicator"

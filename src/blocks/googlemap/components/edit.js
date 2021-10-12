@@ -14,18 +14,18 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { Button, Placeholder } = wp.components;
 const { ENTER } = wp.keycodes;
+import apiFetch from '@wordpress/api-fetch';
+
 
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
     this.state = {
-      apiKey: "",
       address: this.props.attributes.address,
       coords: null,
       hasError: false,
-      isSavedKey: false,
-      keySaved: false,
     };
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,7 +82,7 @@ export default class Edit extends Component {
 
       // Show the block markup in the editor
       <Googlemap {...this.props}>
-        {isSelected && <Controls {...this.props} apiKey={this.state.apiKey} />}
+        {isSelected && <Controls {...this.props} />}
         {pinned ? (
           <Fragment>
             <div className="responsive-block-editor-addons-block-googlemap-external-element" />

@@ -245,6 +245,10 @@ const attributes = {
 		type: "number",
 		default: 5
 	},
+	buttonAlign: {
+		type: "string",
+		default: 'left',
+	}
   };
   
   export default attributes;

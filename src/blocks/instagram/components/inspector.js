@@ -3,8 +3,8 @@
  */
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -78,9 +78,9 @@ export default class Inspector extends Component {
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
-            <PanelBody title={__("API Key")}>
+            <PanelBody title={__("API Key", "responsive-block-editor-addons")}>
               <TextareaControl
-                label={__("Access Token")}
+                label={__("Access Token", "responsive-block-editor-addons")}
                 value={token}
                 onChange={(value) => {
                   setAttributes({ token: value });
@@ -92,9 +92,9 @@ export default class Inspector extends Component {
                 your Instagram credentials to get access token.
               </p>
             </PanelBody>
-            <PanelBody title={__("Settings")} initialOpen={false}>
+            <PanelBody title={__("Settings", "responsive-block-editor-addons")} initialOpen={false}>
               <RangeControl
-                label={__("Number Of Items")}
+                label={__("Number Of Items", "responsive-block-editor-addons")}
                 value={numberOfItems}
                 onChange={(value) => {
                   setAttributes({ numberOfItems: value });
@@ -134,7 +134,7 @@ export default class Inspector extends Component {
                     tabout = (
                       <Fragment>
                         <RangeControl
-                          label={__("Columns Mobile")}
+                          label={__("Columns Mobile", "responsive-block-editor-addons")}
                           value={columnsMobile}
                           onChange={(value) => {
                             setAttributes({ columnsMobile: value });
@@ -148,7 +148,7 @@ export default class Inspector extends Component {
                     tabout = (
                       <Fragment>
                         <RangeControl
-                          label={__("Columns Tablet")}
+                          label={__("Columns Tablet", "responsive-block-editor-addons")}
                           value={columnsTablet}
                           onChange={(value) => {
                             setAttributes({ columnsTablet: value });
@@ -162,7 +162,7 @@ export default class Inspector extends Component {
                     tabout = (
                       <Fragment>
                         <RangeControl
-                          label={__("Columns")}
+                          label={__("Columns", "responsive-block-editor-addons")}
                           value={columns}
                           onChange={(value) => {
                             setAttributes({ columns: value });
@@ -177,9 +177,9 @@ export default class Inspector extends Component {
                   return <div>{tabout}</div>;
                 }}
               </TabPanel>
-              
+
               <RangeControl
-                label={__("Spacing")}
+                label={__("Spacing", "responsive-block-editor-addons")}
                 value={imagesGap}
                 onChange={(value) => setAttributes({ imagesGap: value })}
                 min={0}
@@ -187,7 +187,7 @@ export default class Inspector extends Component {
               />
 
               <RangeControl
-                label={__("Border Radius")}
+                label={__("Border Radius", "responsive-block-editor-addons")}
                 value={borderRadius}
                 onChange={(borderRadius) => setAttributes({ borderRadius })}
                 min={0}

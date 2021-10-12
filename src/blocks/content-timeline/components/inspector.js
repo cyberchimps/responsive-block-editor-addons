@@ -12,8 +12,8 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -263,9 +263,9 @@ export default class Inspector extends Component {
                     {
                       times(incAmount, (n) => {
                         cloneContent.push({
-                          time_heading: __("Timeline Heading ") + newCount,
+                          time_heading: __("Timeline Heading ", "responsive-block-editor-addons") + newCount,
                           time_desc: __(
-                            "This is Timeline description, you can change me anytime click here "
+                            "This is Timeline description, you can change me anytime click here ", "responsive-block-editor-addons"
                           ),
                         });
                       });
@@ -391,7 +391,7 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <ToggleControl
-                label={__("Display Post Date")}
+                label={__("Display Post Date", "responsive-block-editor-addons")}
                 checked={displayPostDate}
                 onChange={() =>
                   this.props.setAttributes({
@@ -401,7 +401,7 @@ export default class Inspector extends Component {
               />
               {displayPostDate && (
                 <SelectControl
-                  label={__("Date Format")}
+                  label={__("Date Format", "responsive-block-editor-addons")}
                   value={dateFormat}
                   onChange={(value) => setAttributes({ dateFormat: value })}
                   options={[
@@ -422,7 +422,7 @@ export default class Inspector extends Component {
                     { value: "M Y", label: dateI18n("M Y", today) },
                     { value: "F, Y", label: dateI18n("F, Y", today) },
                     { value: "F Y", label: dateI18n("F Y", today) },
-                    { value: "custom", label: __("Normal Text") },
+                    { value: "custom", label: __("Normal Text", "responsive-block-editor-addons") },
                   ]}
                 />
               )}
@@ -431,7 +431,7 @@ export default class Inspector extends Component {
                 times(count, (n) => (
                   <Fragment key={n}>
                     <TextControl
-                      label={__("Date") + " " + (n + 1) + " " + __("Settings")}
+                      label={__("Date", "responsive-block-editor-addons") + " " + (n + 1) + " " + __("Settings", "responsive-block-editor-addons")}
                       value={t_date[n].title}
                       onChange={(value) => {
                         this.saveDate({ title: value }, n);
@@ -442,7 +442,7 @@ export default class Inspector extends Component {
 
               {displayPostDate && timelinAlignment !== "center" && (
                 <RangeControl
-                  label={__("Date Bottom Spacing")}
+                  label={__("Date Bottom Spacing", "responsive-block-editor-addons")}
                   value={dateBottomspace}
                   onChange={(value) =>
                     setAttributes({
@@ -457,11 +457,11 @@ export default class Inspector extends Component {
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
-            <PanelBody title={__("Connector")} initialOpen={false}>
+            <PanelBody title={__("Connector", "responsive-block-editor-addons")} initialOpen={false}>
               <FontIconPicker {...icon_props} />
 
               <RangeControl
-                label={__("Icon Size")}
+                label={__("Icon Size", "responsive-block-editor-addons")}
                 value={iconSize}
                 onChange={(value) =>
                   setAttributes({ iconSize: value !== undefined ? value : 20 })
@@ -471,7 +471,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("Icon Background Size")}
+                label={__("Icon Background Size", "responsive-block-editor-addons")}
                 value={connectorBgsize}
                 onChange={(value) =>
                   setAttributes({
@@ -483,7 +483,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("Border Width")}
+                label={__("Border Width", "responsive-block-editor-addons")}
                 value={borderwidth}
                 onChange={(value) =>
                   setAttributes({
@@ -495,7 +495,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <RangeControl
-                label={__("Connector Width")}
+                label={__("Connector Width", "responsive-block-editor-addons")}
                 value={separatorwidth}
                 onChange={(value) =>
                   setAttributes({
@@ -507,7 +507,7 @@ export default class Inspector extends Component {
                 allowReset
               />
               <PanelBody
-                title={__("Connector Color Settings")}
+                title={__("Connector Color Settings", "responsive-block-editor-addons")}
                 initialOpen={true}
               >
                 <TabPanel
@@ -516,12 +516,12 @@ export default class Inspector extends Component {
                   tabs={[
                     {
                       name: "normal",
-                      title: __("Normal"),
+                      title: __("Normal", "responsive-block-editor-addons"),
                       className: "rbea-normal-tab",
                     },
                     {
                       name: "focus",
-                      title: __("Focus"),
+                      title: __("Focus", "responsive-block-editor-addons"),
                       className: "rbea-focus-tab",
                     },
                   ]}
@@ -531,7 +531,7 @@ export default class Inspector extends Component {
                     if ("focus" === tabName.name) {
                       tabout = (
                         <PanelColorSettings
-                          title={__("Color Settings")}
+                          title={__("Color Settings", "responsive-block-editor-addons")}
                           initialOpen={true}
                           colorSettings={[
                             {
@@ -540,25 +540,25 @@ export default class Inspector extends Component {
                                 setAttributes({
                                   separatorFillColor: colorValue,
                                 }),
-                              label: __("Line Color"),
+                              label: __("Line Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: iconFocus,
                               onChange: (colorValue) =>
                                 setAttributes({ iconFocus: colorValue }),
-                              label: __("Icon Color"),
+                              label: __("Icon Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: iconBgFocus,
                               onChange: (colorValue) =>
                                 setAttributes({ iconBgFocus: colorValue }),
-                              label: __("Background Color"),
+                              label: __("Background Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: borderFocus,
                               onChange: (colorValue) =>
                                 setAttributes({ borderFocus: colorValue }),
-                              label: __("Border Color"),
+                              label: __("Border Color", "responsive-block-editor-addons"),
                             },
                           ]}
                         ></PanelColorSettings>
@@ -566,32 +566,32 @@ export default class Inspector extends Component {
                     } else {
                       tabout = (
                         <PanelColorSettings
-                          title={__("Color Settings")}
+                          title={__("Color Settings", "responsive-block-editor-addons")}
                           initialOpen={true}
                           colorSettings={[
                             {
                               value: separatorColor,
                               onChange: (colorValue) =>
                                 setAttributes({ separatorColor: colorValue }),
-                              label: __("Line Color"),
+                              label: __("Line Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: iconColor,
                               onChange: (colorValue) =>
                                 setAttributes({ iconColor: colorValue }),
-                              label: __("Icon Color"),
+                              label: __("Icon Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: separatorBg,
                               onChange: (colorValue) =>
                                 setAttributes({ separatorBg: colorValue }),
-                              label: __("Background Color"),
+                              label: __("Background Color", "responsive-block-editor-addons"),
                             },
                             {
                               value: separatorBorder,
                               onChange: (colorValue) =>
                                 setAttributes({ separatorBorder: colorValue }),
-                              label: __("Border Color"),
+                              label: __("Border Color", "responsive-block-editor-addons"),
                             },
                           ]}
                         ></PanelColorSettings>

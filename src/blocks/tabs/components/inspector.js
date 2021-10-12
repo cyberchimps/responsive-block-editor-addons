@@ -3,11 +3,11 @@
  */
 import InspectorTabs from "../../../components/InspectorTabs";
 import InspectorTab from "../../../components/InspectorTab";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 
@@ -370,18 +370,18 @@ export default class Inspector extends Component {
                 <SelectControl
                   label={__("Animation", "responsive-block-editor-addons")}
                   value={animationName}
-                  onChange={(value) => 
+                  onChange={(value) =>
                     setAttributes({ animationName: value })
                   }
                   options={[
-                    { value: "none", label: "None" },
-                    { value: "fade", label: __("Fade") },
-                    { value: "slide", label: __("Slide") },
-                    { value: "bounce", label: __("Bounce") },
-                    { value: "zoom", label: __("Zoom") },
-                    { value: "flip", label: __("Flip") },
-                    { value: "fold", label: __("Fold") },
-                    { value: "rotate", label: "Rotate" },
+                    { value: "none", label: __("None", "responsive-block-editor-addons") },
+                    { value: "fade", label: __("Fade", "responsive-block-editor-addons") },
+                    { value: "slide", label: __("Slide", "responsive-block-editor-addons") },
+                    { value: "bounce", label: __("Bounce", "responsive-block-editor-addons") },
+                    { value: "zoom", label: __("Zoom", "responsive-block-editor-addons") },
+                    { value: "flip", label: __("Flip", "responsive-block-editor-addons") },
+                    { value: "fold", label: __("Fold", "responsive-block-editor-addons") },
+                    { value: "rotate", label: __("Rotate", "responsive-block-editor-addons") },
                   ]}
                 />
                 {animationName !== "none" && (
@@ -401,8 +401,8 @@ export default class Inspector extends Component {
                         setAttributes({ animationRepeat: value })
                       }
                       options={[
-                        { value: "once", label: __("Once") },
-                        { value: "loop", label: __("Loop") },
+                        { value: "once", label: __("Once", "responsive-block-editor-addons") },
+                        { value: "loop", label: __("Loop", "responsive-block-editor-addons") },
                       ]}
                     />
                     <RangeControl
@@ -443,7 +443,7 @@ export default class Inspector extends Component {
                 )}
               </PanelBody>
             </PanelBody>
-            <PanelBody 
+            <PanelBody
               title={__("Margin", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -469,7 +469,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
-            <PanelBody 
+            <PanelBody
               title={__("Padding", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -522,12 +522,12 @@ export default class Inspector extends Component {
                   tabs={[
                     {
                       name: "normal",
-                      title: __("Normal"),
+                      title: __("Normal", "responsive-block-editor-addons"),
                       className: "responsive-block-editor-addons-normal-tab",
                     },
                     {
                       name: "hover",
-                      title: __("Hover"),
+                      title: __("Hover", "responsive-block-editor-addons"),
                       className: "responsive-block-editor-addons-hover-tab",
                     },
                   ]}
@@ -610,21 +610,21 @@ export default class Inspector extends Component {
 							>
 								<BoxShadowControl
 									setAttributes={setAttributes}
-									label={__("Box Shadow")}
-									boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+									label={__("Box Shadow", "responsive-block-editor-addons")}
+									boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
 									boxShadowHOffset={{
 										value: boxShadowHOffset,
-										label: __("Horizontal"),
+										label: __("Horizontal", "responsive-block-editor-addons"),
 									}}
 									boxShadowVOffset={{
 										value: boxShadowVOffset,
-										label: __("Vertical"),
+										label: __("Vertical", "responsive-block-editor-addons"),
 									}}
-									boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
-									boxShadowSpread={{ value: boxShadowSpread, label: __("Spread") }}
+									boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
+									boxShadowSpread={{ value: boxShadowSpread, label: __("Spread", "responsive-block-editor-addons") }}
 									boxShadowPosition={{
 										value: boxShadowPosition,
-										label: __("Position"),
+										label: __("Position", "responsive-block-editor-addons"),
 									}}
 								/>
 							</PanelBody>

@@ -11,10 +11,10 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -332,7 +332,7 @@ export default class Inspector extends Component {
             " " +
             (index + 1) +
             " " +
-            __("Settings")
+            __("Settings", "responsive-block-editor-addons")
           }
           initialOpen={false}
           className={"rbea-repeater-panel"}
@@ -415,7 +415,7 @@ export default class Inspector extends Component {
               setAttributes({ flipboxArray: data_copy });
             }}
             isMulti={false}
-            noSelectedPlaceholder={__("Select Icon")}
+            noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
           />
         </PanelBody>
       );
@@ -458,7 +458,7 @@ export default class Inspector extends Component {
               setAttributes({ flipboxArray: data_copy });
             }}
             isMulti={false}
-            noSelectedPlaceholder={__("Select Icon")}
+            noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
           />
         </PanelBody>
       );
@@ -930,63 +930,63 @@ export default class Inspector extends Component {
                   {backgroundImage && (
                     <Fragment>
                       <SelectControl
-                        label={__("Image Position")}
+                        label={__("Image Position", "responsive-block-editor-addons")}
                         value={backgroundPosition}
                         onChange={(value) =>
                           setAttributes({ backgroundPosition: value })
                         }
                         options={[
-                          { value: "top left", label: __("Top Left") },
-                          { value: "top center", label: __("Top Center") },
-                          { value: "top right", label: __("Top Right") },
-                          { value: "center left", label: __("Center Left") },
+                          { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
+                          { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
+                          { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
+                          { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
                           {
                             value: "center center",
-                            label: __("Center Center"),
+                            label: __("Center Center", "responsive-block-editor-addons"),
                           },
-                          { value: "center right", label: __("Center Right") },
-                          { value: "bottom left", label: __("Bottom Left") },
+                          { value: "center right", label: __("Center Right", "responsive-block-editor-addons") },
+                          { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
                           {
                             value: "bottom center",
-                            label: __("Bottom Center"),
+                            label: __("Bottom Center", "responsive-block-editor-addons"),
                           },
-                          { value: "bottom right", label: __("Bottom Right") },
+                          { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Attachment")}
+                        label={__("Attachment", "responsive-block-editor-addons")}
                         value={backgroundAttachment}
                         onChange={(value) =>
                           setAttributes({ backgroundAttachment: value })
                         }
                         options={[
-                          { value: "fixed", label: __("Fixed") },
-                          { value: "scroll", label: __("Scroll") },
+                          { value: "fixed", label: __("Fixed", "responsive-block-editor-addons") },
+                          { value: "scroll", label: __("Scroll", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Repeat")}
+                        label={__("Repeat", "responsive-block-editor-addons")}
                         value={backgroundRepeat}
                         onChange={(value) =>
                           setAttributes({ backgroundRepeat: value })
                         }
                         options={[
-                          { value: "no-repeat", label: __("No Repeat") },
-                          { value: "repeat", label: __("Repeat") },
-                          { value: "repeat-x", label: __("Repeat-x") },
-                          { value: "repeat-y", label: __("Repeat-y") },
+                          { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
+                          { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Size")}
+                        label={__("Size", "responsive-block-editor-addons")}
                         value={backgroundSize}
                         onChange={(value) =>
                           setAttributes({ backgroundSize: value })
                         }
                         options={[
-                          { value: "auto", label: __("Auto") },
-                          { value: "cover", label: __("Cover") },
-                          { value: "contain", label: __("Contain") },
+                          { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                          { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                          { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                         ]}
                       />
                     </Fragment>
@@ -1050,63 +1050,63 @@ export default class Inspector extends Component {
                   {backBackgroundImage && (
                     <Fragment>
                       <SelectControl
-                        label={__("Image Position")}
+                        label={__("Image Position", "responsive-block-editor-addons")}
                         value={backBackgroundPosition}
                         onChange={(value) =>
                           setAttributes({ backBackgroundPosition: value })
                         }
                         options={[
-                          { value: "top left", label: __("Top Left") },
-                          { value: "top center", label: __("Top Center") },
-                          { value: "top right", label: __("Top Right") },
-                          { value: "center left", label: __("Center Left") },
+                          { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
+                          { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
+                          { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
+                          { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
                           {
                             value: "center center",
-                            label: __("Center Center"),
+                            label: __("Center Center", "responsive-block-editor-addons"),
                           },
-                          { value: "center right", label: __("Center Right") },
-                          { value: "bottom left", label: __("Bottom Left") },
+                          { value: "center right", label: __("Center Right", "responsive-block-editor-addons") },
+                          { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
                           {
                             value: "bottom center",
-                            label: __("Bottom Center"),
+                            label: __("Bottom Center", "responsive-block-editor-addons"),
                           },
-                          { value: "bottom right", label: __("Bottom Right") },
+                          { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Attachment")}
+                        label={__("Attachment", "responsive-block-editor-addons")}
                         value={backBackgroundAttachment}
                         onChange={(value) =>
                           setAttributes({ backBackgroundAttachment: value })
                         }
                         options={[
-                          { value: "fixed", label: __("Fixed") },
-                          { value: "scroll", label: __("Scroll") },
+                          { value: "fixed", label: __("Fixed", "responsive-block-editor-addons") },
+                          { value: "scroll", label: __("Scroll", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Repeat")}
+                        label={__("Repeat", "responsive-block-editor-addons")}
                         value={backBackgroundRepeat}
                         onChange={(value) =>
                           setAttributes({ backBackgroundRepeat: value })
                         }
                         options={[
-                          { value: "no-repeat", label: __("No Repeat") },
-                          { value: "repeat", label: __("Repeat") },
-                          { value: "repeat-x", label: __("Repeat-x") },
-                          { value: "repeat-y", label: __("Repeat-y") },
+                          { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
+                          { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Size")}
+                        label={__("Size", "responsive-block-editor-addons")}
                         value={backBackgroundSize}
                         onChange={(value) =>
                           setAttributes({ backBackgroundSize: value })
                         }
                         options={[
-                          { value: "auto", label: __("Auto") },
-                          { value: "cover", label: __("Cover") },
-                          { value: "contain", label: __("Contain") },
+                          { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                          { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                          { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                         ]}
                       />
                     </Fragment>
@@ -1164,26 +1164,26 @@ export default class Inspector extends Component {
                   {
                     showFrontTitle && (
                       <TypographyHelperControl
-                        title={__("Front Title Typography", "responsive-block-editor-addons")} 
+                        title={__("Front Title Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="frontTitle%s"
                         values = {{family: frontTitleFontFamily, size: frontTitleFontSize, sizeMobile: frontTitleFontSizeMobile, sizeTablet: frontTitleFontSizeTablet, weight: frontTitleFontWeight, height: frontTitleLineHeight}}
                         showLetterSpacing = { false }
                         showTextTransform = { false }
                         setAttributes={ setAttributes }
-                        {...this.props}            
+                        {...this.props}
                       />
                     )
                   }
                   {
                     showFrontSubtitle && (
                       <TypographyHelperControl
-                        title={__("Front Subtitle Typography", "responsive-block-editor-addons")} 
+                        title={__("Front Subtitle Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="frontSubtitle%s"
                         values = {{family: frontSubtitleFontFamily, size: frontSubtitleFontSize, sizeMobile: frontSubtitleFontSizeMobile, sizeTablet: frontSubtitleFontSizeTablet, weight: frontSubtitleFontWeight, height: frontSubtitleLineHeight}}
                         showLetterSpacing = { false }
                         showTextTransform = { false }
                         setAttributes={ setAttributes }
-                        {...this.props}            
+                        {...this.props}
                       />
                     )
                   }
@@ -1233,39 +1233,39 @@ export default class Inspector extends Component {
                   {
                     showBackTitle && (
                       <TypographyHelperControl
-                        title={__("Back Title Typography", "responsive-block-editor-addons")} 
+                        title={__("Back Title Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="backTitle%s"
                         values = {{family: backTitleFontFamily, size: backTitleFontSize, sizeMobile: backTitleFontSizeMobile, sizeTablet: backTitleFontSizeTablet, weight: backTitleFontWeight, height: backTitleLineHeight}}
                         showLetterSpacing = { false }
                         showTextTransform = { false }
                         setAttributes={ setAttributes }
-                        {...this.props}            
+                        {...this.props}
                       />
                     )
                   }
                   {
                     showBackSubtitle && (
                       <TypographyHelperControl
-                        title={__("Back Subtitle Typography", "responsive-block-editor-addons")} 
+                        title={__("Back Subtitle Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="backSubtitle%s"
                         values = {{family: backSubtitleFontFamily, size: backSubtitleFontSize, sizeMobile: backSubtitleFontSizeMobile, sizeTablet: backSubtitleFontSizeTablet, weight: backSubtitleFontWeight, height: backSubtitleLineHeight}}
                         showLetterSpacing = { false }
                         showTextTransform = { false }
                         setAttributes={ setAttributes }
-                        {...this.props}            
+                        {...this.props}
                       />
                     )
                   }
                   {
                     showBackButton && (
                       <TypographyHelperControl
-                        title={__("Back Button Typography", "responsive-block-editor-addons")} 
+                        title={__("Back Button Typography", "responsive-block-editor-addons")}
                         attrNameTemplate="backButton%s"
                         values = {{family: backButtonFontFamily, size: backButtonFontSize, sizeMobile: backButtonFontSizeMobile, sizeTablet: backButtonFontSizeTablet, weight: backButtonFontWeight, height: backButtonLineHeight}}
                         showLetterSpacing = { false }
                         showTextTransform = { false }
                         setAttributes={ setAttributes }
-                        {...this.props}            
+                        {...this.props}
                       />
                     )
                   }
@@ -1281,7 +1281,7 @@ export default class Inspector extends Component {
                 initialOpen={true}
               >
                 <ResponsiveSpacingControl
-                  title={"Top Margin"}
+                  title={__("Top Margin", "responsive-block-editor-addons")}
                   attrNameTemplate="topMargin%s"
                   values={{
                     desktop: topMargin,
@@ -1292,7 +1292,7 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
                 <ResponsiveSpacingControl
-                  title={"Bottom Margin"}
+                  title={__("Bottom Margin", "responsive-block-editor-addons")}
                   attrNameTemplate="bottomMargin%s"
                   values={{
                     desktop: bottomMargin,
@@ -1314,12 +1314,12 @@ export default class Inspector extends Component {
                   tabs={[
                     {
                       name: "front",
-                      title: __("Front"),
+                      title: __("Front", "responsive-block-editor-addons"),
                       className: "rbea-normal-tab",
                     },
                     {
                       name: "back",
-                      title: __("Back"),
+                      title: __("Back", "responsive-block-editor-addons"),
                       className: "rbea-focus-tab",
                     },
                   ]}
@@ -1401,24 +1401,24 @@ export default class Inspector extends Component {
                 />
               <BoxShadowControl
                 setAttributes={setAttributes}
-                label={__("Box Shadow")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                label={__("Box Shadow", "responsive-block-editor-addons")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
-                  label: __("Horizontal"),
+                  label: __("Horizontal", "responsive-block-editor-addons"),
                 }}
                 boxShadowVOffset={{
                   value: boxShadowVOffset,
-                  label: __("Vertical"),
+                  label: __("Vertical", "responsive-block-editor-addons"),
                 }}
-                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
                 boxShadowSpread={{
                   value: boxShadowSpread,
-                  label: __("Spread"),
+                  label: __("Spread", "responsive-block-editor-addons"),
                 }}
                 boxShadowPosition={{
                   value: boxShadowPosition,
-                  label: __("Position"),
+                  label: __("Position", "responsive-block-editor-addons"),
                 }}
               />
             </PanelBody>

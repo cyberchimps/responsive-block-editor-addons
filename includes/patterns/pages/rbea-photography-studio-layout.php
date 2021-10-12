@@ -9,8 +9,8 @@ return array(
 	'type'       => 'layout',
 	'key'        => 'rbea_photography_studio_layout',
 	'collection' => array(
-		'slug'      => 'photography-studio',
-		'label'     => __( 'Photography Studio', 'responsive-block-editor-addons' ),
+		'slug'      => 'photography',
+		'label'     => __( 'Photography', 'responsive-block-editor-addons' ),
 		'thumbnail' => 'https://picsum.photos/id/1055/356/246',
 	),
 	'content'    => '<!-- wp:responsive-block-editor-addons/section {"block_id":"ebded5ab-3c7e-4333-a529-2845573daade","topPadding":0,"topPaddingMobile":40,"topPaddingTablet":40,"bottomPadding":0,"bottomPaddingMobile":40,"bottomPaddingTablet":40,"leftPadding":0,"leftPaddingMobile":40,"leftPaddingTablet":40,"rightPadding":0,"rightPaddingMobile":40,"rightPaddingTablet":40,"opacity":100,"backgroundColor":"#000000","backgroundType":"color","align":"full"} -->

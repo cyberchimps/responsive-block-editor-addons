@@ -100,7 +100,7 @@ class TableOfContents extends React.Component {
             return (
                 <p className="responsive-block-editor-addons_table-of-contents-placeholder">
 					{__(
-						'No header found'
+						'No header found', "responsive-block-editor-addons"
 					)}
 				</p>
             );

@@ -3,9 +3,9 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 
 /**
  * Inspector Controls
@@ -212,7 +212,7 @@ export default class Inspector extends Component {
     // Add instruction text to the select
     const abImageSizeSelect = {
       value: "selectimage",
-      label: __("Select image size"),
+      label: __("Select image size", "responsive-block-editor-addons"),
     };
 
     // Get the image size options
@@ -231,7 +231,7 @@ export default class Inspector extends Component {
 
     let taxonomyListOptions = [];
 
-    let categoryListOptions = [{ value: "", label: __("All") }];
+    let categoryListOptions = [{ value: "", label: __("All", "responsive-block-editor-addons") }];
 
     if ("" != taxonomyList) {
       Object.keys(taxonomyList).map((item, thisIndex) => {
@@ -274,23 +274,23 @@ export default class Inspector extends Component {
                 }
               />
               <SelectControl
-                label={__("Order By")}
+                label={__("Order By", "responsive-block-editor-addons")}
                 value={attributes.orderBy}
                 onChange={(value) => setAttributes({ orderBy: value })}
                 options={[
-                  { value: "date", label: __("Date") },
-                  { value: "title", label: __("Title") },
-                  { value: "rand", label: __("Random") },
-                  { value: "menu_order", label: __("Menu Order") },
+                  { value: "date", label: __("Date", "responsive-block-editor-addons") },
+                  { value: "title", label: __("Title", "responsive-block-editor-addons") },
+                  { value: "rand", label: __("Random", "responsive-block-editor-addons") },
+                  { value: "menu_order", label: __("Menu Order", "responsive-block-editor-addons") },
                 ]}
               />
               <SelectControl
-                label={__("Order")}
+                label={__("Order", "responsive-block-editor-addons")}
                 value={attributes.order}
                 onChange={(value) => setAttributes({ order: value })}
                 options={[
-                  { value: "desc", label: __("Descending") },
-                  { value: "asc", label: __("Ascending") },
+                  { value: "desc", label: __("Descending", "responsive-block-editor-addons") },
+                  { value: "asc", label: __("Ascending", "responsive-block-editor-addons") },
                 ]}
               />
               <RangeControl
@@ -517,7 +517,7 @@ export default class Inspector extends Component {
                   }
                 />,
                 <RangeControl
-                  label={__("Image Border Radius")}
+                  label={__("Image Border Radius", "responsive-block-editor-addons")}
                   value={attributes.imageBorderRadius}
                   onChange={(value) =>
                     this.props.setAttributes({
@@ -612,72 +612,72 @@ export default class Inspector extends Component {
 				initialOpen={false}
 			>
 				<TypographyHelperControl
-					title={__("Excerpt", "responsive-block-editor-addons")} 
+					title={__("Excerpt", "responsive-block-editor-addons")}
 					attrNameTemplate="excerpt%s"
 					values = {{
-					family: attributes.excerptFontFamily, 
-					size: attributes.excerptFontSize, 
-					sizeMobile: attributes.excerptFontSizeMobile, 
-					sizeTablet: attributes.excerptFontSizeTablet, 
-					weight: attributes.excerptFontWeight, 
+					family: attributes.excerptFontFamily,
+					size: attributes.excerptFontSize,
+					sizeMobile: attributes.excerptFontSizeMobile,
+					sizeTablet: attributes.excerptFontSizeTablet,
+					weight: attributes.excerptFontWeight,
 					height: attributes.excerptLineHeight,
 					transform: attributes.excerptTextTransform
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { true }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Meta", "responsive-block-editor-addons")} 
+					title={__("Meta", "responsive-block-editor-addons")}
 					attrNameTemplate="meta%s"
 					values = {{
-					family: attributes.metaFontFamily, 
-					size: attributes.metaFontSize, 
-					sizeMobile: attributes.metaFontSizeMobile, 
-					sizeTablet: attributes.metaFontSizeTablet, 
-					weight: attributes.metaFontWeight, 
+					family: attributes.metaFontFamily,
+					size: attributes.metaFontSize,
+					sizeMobile: attributes.metaFontSizeMobile,
+					sizeTablet: attributes.metaFontSizeTablet,
+					weight: attributes.metaFontWeight,
 					height: attributes.metaLineHeight,
 					transform: attributes.metaTextTransform
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { true }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Title", "responsive-block-editor-addons")} 
+					title={__("Title", "responsive-block-editor-addons")}
 					attrNameTemplate="title%s"
 					values = {{
-					family: attributes.titleFontFamily, 
-					size: attributes.titleFontSize, 
-					sizeMobile: attributes.titleFontSizeMobile, 
-					sizeTablet: attributes.titleFontSizeTablet, 
-					weight: attributes.titleFontWeight, 
+					family: attributes.titleFontFamily,
+					size: attributes.titleFontSize,
+					sizeMobile: attributes.titleFontSizeMobile,
+					sizeTablet: attributes.titleFontSizeTablet,
+					weight: attributes.titleFontWeight,
 					height: attributes.titleLineHeight,
 					transform: attributes.titleTextTransform
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { true }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Read More Link", "responsive-block-editor-addons")} 
+					title={__("Read More Link", "responsive-block-editor-addons")}
 					attrNameTemplate="continue%s"
 					values = {{
-					family: attributes.continueFontFamily, 
-					size: attributes.continueFontSize, 
-					sizeMobile: attributes.continueFontSizeMobile, 
-					sizeTablet: attributes.continueFontSizeTablet, 
-					weight: attributes.continueFontWeight, 
+					family: attributes.continueFontFamily,
+					size: attributes.continueFontSize,
+					sizeMobile: attributes.continueFontSizeMobile,
+					sizeTablet: attributes.continueFontSizeTablet,
+					weight: attributes.continueFontWeight,
 					height: attributes.continueLineHeight,
 					transform: attributes.continueTextTransform
 					}}
 					showLetterSpacing = { false }
 					showTextTransform = { true }
 					setAttributes={ setAttributes }
-					{...this.props}            
+					{...this.props}
 				/>
 			</PanelBody>
             <PanelBody
@@ -697,30 +697,30 @@ export default class Inspector extends Component {
               />
               <BoxShadowControl
                 setAttributes={setAttributes}
-                label={__("Box Shadow")}
+                label={__("Box Shadow", "responsive-block-editor-addons")}
                 boxShadowColor={{
                   value: attributes.boxShadowColor,
-                  label: __("Color"),
+                  label: __("Color", "responsive-block-editor-addons"),
                 }}
                 boxShadowHOffset={{
                   value: attributes.boxShadowHOffset,
-                  label: __("Horizontal"),
+                  label: __("Horizontal", "responsive-block-editor-addons"),
                 }}
                 boxShadowVOffset={{
                   value: attributes.boxShadowVOffset,
-                  label: __("Vertical"),
+                  label: __("Vertical", "responsive-block-editor-addons"),
                 }}
                 boxShadowBlur={{
                   value: attributes.boxShadowBlur,
-                  label: __("Blur"),
+                  label: __("Blur", "responsive-block-editor-addons"),
                 }}
                 boxShadowSpread={{
                   value: attributes.boxShadowSpread,
-                  label: __("Spread"),
+                  label: __("Spread", "responsive-block-editor-addons"),
                 }}
                 boxShadowPosition={{
                   value: attributes.boxShadowPosition,
-                  label: __("Position"),
+                  label: __("Position", "responsive-block-editor-addons"),
                 }}
               />
               <BoxShadowControlHelper

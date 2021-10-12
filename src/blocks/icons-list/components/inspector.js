@@ -2,7 +2,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 
 /**
  * Inspector Controls
@@ -151,7 +151,7 @@ export default class Inspector extends Component {
                 initialOpen={true}
               >
                 <SelectControl
-                  label={__("Layout")}
+                  label={__("Layout", "responsive-block-editor-addons")}
                   value={icon_layout}
                   options={[
                     {
@@ -180,14 +180,14 @@ export default class Inspector extends Component {
                   value={gap}
                   onChange={(value) => setAttributes({ gap: value })}
                   help={__(
-                    "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results."
+                    "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results.", "responsive-block-editor-addons"
                   )}
                   min={0}
                   max={100}
                 />
                 {!hideLabel && (
                   <RangeControl
-                    label={__("Gap between Icon and Label")}
+                    label={__("Gap between Icon and Label", "responsive-block-editor-addons")}
                     value={inner_gap}
                     onChange={(value) => setAttributes({ inner_gap: value })}
                     min={0}
@@ -196,11 +196,11 @@ export default class Inspector extends Component {
                 )}
                 <hr className="responsive-block-editor-addons-editor__separator" />
                 <SelectControl
-                  label={__("Icon Alignment")}
+                  label={__("Icon Alignment", "responsive-block-editor-addons")}
                   value={iconPosition}
                   options={[
-                    { value: "top", label: __("Top") },
-                    { value: "middle", label: __("Middle") },
+                    { value: "top", label: __("Top", "responsive-block-editor-addons") },
+                    { value: "middle", label: __("Middle", "responsive-block-editor-addons") },
                   ]}
                   onChange={(value) => setAttributes({ iconPosition: value })}
                 />
@@ -358,7 +358,7 @@ export default class Inspector extends Component {
                               setAttributes({ bgSizeTablet: value })
                             }
                             help={__(
-                              "Note: Background Size option is useful when one adds background color to the icons."
+                              "Note: Background Size option is useful when one adds background color to the icons.", "responsive-block-editor-addons"
                             )}
                             min={0}
                             max={500}
@@ -395,7 +395,7 @@ export default class Inspector extends Component {
                   value={border}
                   onChange={(value) => setAttributes({ border: value })}
                   help={__(
-                    "Note: Border option is useful when one adds border color to the icons."
+                    "Note: Border option is useful when one adds border color to the icons.", "responsive-block-editor-addons"
                   )}
                   min={0}
                   max={10}
@@ -405,7 +405,7 @@ export default class Inspector extends Component {
                   value={borderRadius}
                   onChange={(value) => setAttributes({ borderRadius: value })}
                   help={__(
-                    "Note: Border Radius option is useful when one adds background color to the icons."
+                    "Note: Border Radius option is useful when one adds background color to the icons.", "responsive-block-editor-addons"
                   )}
                   min={0}
                   max={500}

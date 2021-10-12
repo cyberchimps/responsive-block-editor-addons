@@ -294,7 +294,7 @@ function EditorStyles(props) {
       )}`,
       color: frontTextColor,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
-      "border-style": borderStyle !== 'empty' && borderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
       "border-radius": borderRadius !== 999 && !blockBorderRadius ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
       "box-shadow":
@@ -342,7 +342,7 @@ function EditorStyles(props) {
       color: backTextColor,
       transform: flipStyleBack,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
-      "border-style": borderStyle !== 'empty' && borderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
+      "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
       "border-radius": borderRadius !== 999 && !blockBorderRadius ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"), // For compatibility with v1.3.2.
       "box-shadow":

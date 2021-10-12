@@ -10,11 +10,11 @@ import { loadGoogleFont } from "../../../utils/font";
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ImageSettingsControl from "../../../settings-components/Image Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+import ImageSettingsControl from "../../../settings-components/ImageSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 
 
 const { __ } = wp.i18n;
@@ -475,48 +475,48 @@ export default class Inspector extends Component {
                 )}
               </BaseControl>
               <SelectControl
-                label={__("Background Position")}
+                label={__("Background Position", "responsive-block-editor-addons")}
                 value={backgroundPosition}
                 onChange={(value) =>
                   setAttributes({ backgroundPosition: value })
                 }
                 options={[
-                  { value: "left top", label: __("Left Top") },
-                  { value: "left center", label: __("Left Center") },
-                  { value: "left bottom", label: __("Left Bottom") },
-                  { value: "right top", label: __("Right Top") },
-                  { value: "right center", label: __("Right Center") },
-                  { value: "right bottom", label: __("Right Bottom") },
-                  { value: "center top", label: __("Center Top") },
-                  { value: "center center", label: __("Center Center") },
-                  { value: "center bottom", label: __("Center Bottom") },
+                  { value: "left top", label: __("Left Top", "responsive-block-editor-addons") },
+                  { value: "left center", label: __("Left Center", "responsive-block-editor-addons") },
+                  { value: "left bottom", label: __("Left Bottom", "responsive-block-editor-addons") },
+                  { value: "right top", label: __("Right Top", "responsive-block-editor-addons") },
+                  { value: "right center", label: __("Right Center", "responsive-block-editor-addons") },
+                  { value: "right bottom", label: __("Right Bottom", "responsive-block-editor-addons") },
+                  { value: "center top", label: __("Center Top", "responsive-block-editor-addons") },
+                  { value: "center center", label: __("Center Center", "responsive-block-editor-addons") },
+                  { value: "center bottom", label: __("Center Bottom", "responsive-block-editor-addons") },
                 ]}
               />
               <SelectControl
-                label={__("Background Repeat")}
+                label={__("Background Repeat", "responsive-block-editor-addons")}
                 value={backgroundRepeat}
                 onChange={(value) => setAttributes({ backgroundRepeat: value })}
                 options={[
-                  { value: "initial", label: __("Initial") },
-                  { value: "repeat", label: __("Repeat") },
-                  { value: "no-repeat", label: __("No-Repeat") },
-                  { value: "round", label: __("Round") },
-                  { value: "inherit", label: __("Inherit") },
-                  { value: "space", label: __("Space") },
-                  { value: "repeat-y", label: __("Repeat Y") },
-                  { value: "repeat-x", label: __("Repeat X") },
+                  { value: "initial", label: __("Initial", "responsive-block-editor-addons") },
+                  { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                  { value: "no-repeat", label: __("No-Repeat", "responsive-block-editor-addons") },
+                  { value: "round", label: __("Round", "responsive-block-editor-addons") },
+                  { value: "inherit", label: __("Inherit", "responsive-block-editor-addons") },
+                  { value: "space", label: __("Space", "responsive-block-editor-addons") },
+                  { value: "repeat-y", label: __("Repeat Y", "responsive-block-editor-addons") },
+                  { value: "repeat-x", label: __("Repeat X", "responsive-block-editor-addons") },
                 ]}
               />
               <SelectControl
-                label={__("Background Size")}
+                label={__("Background Size", "responsive-block-editor-addons")}
                 value={backgroundSize}
                 onChange={(value) => setAttributes({ backgroundSize: value })}
                 options={[
-                  { value: "initial", label: __("Initial") },
-                  { value: "cover", label: __("Cover") },
-                  { value: "contain", label: __("Contain") },
-                  { value: "auto", label: __("Auto") },
-                  { value: "inherit", label: __("Inherit") },
+                  { value: "initial", label: __("Initial", "responsive-block-editor-addons") },
+                  { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                  { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
+                  { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                  { value: "inherit", label: __("Inherit", "responsive-block-editor-addons") },
                 ]}
               />
             </PanelColorSettings>
@@ -591,7 +591,7 @@ export default class Inspector extends Component {
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
                   label: __("Horizontal", "responsive-block-editor-addons"),
@@ -615,7 +615,7 @@ export default class Inspector extends Component {
               />
               <BoxShadowControlHelper
                 setAttributes={setAttributes}
-                label={__("Hover Box Shadow")}
+                label={__("Hover Box Shadow", "responsive-block-editor-addons")}
                 attrNameTemplate="hover%s"
                 boxShadowColor={{ value: hoverboxShadowColor }}
                 boxShadowHOffset={{ value: hoverboxShadowHOffset }}

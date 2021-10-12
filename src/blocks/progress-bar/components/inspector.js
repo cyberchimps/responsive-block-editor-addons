@@ -1,6 +1,6 @@
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import { loadGoogleFont } from "../../../utils/font";
 
 /**
@@ -247,14 +247,14 @@ export default class Inspector extends Component {
 										onChange={(value) => setAttributes({ horizontalProgressBarStyle: value })}
 									/>
 									<ToggleControl
-										label={__("Top Title Enable")}
+										label={__("Top Title Enable", "responsive-block-editor-addons")}
 										checked={progressBarTopTitleEnable}
 										onChange={(value) =>
 											setAttributes({ progressBarTopTitleEnable: !progressBarTopTitleEnable })
 										}
 									/>
 									<ToggleControl
-										label={__("Top Value Enable")}
+										label={__("Top Value Enable", "responsive-block-editor-addons")}
 										checked={progressBarTopValueEnable}
 										onChange={(value) =>
 											setAttributes({ progressBarTopValueEnable: !progressBarTopValueEnable })
@@ -263,14 +263,14 @@ export default class Inspector extends Component {
 									{(horizontalProgressBarStyle !== "striped" && horizontalProgressBarStyle !== "animatedstriped") && (
 										<Fragment>
 											<ToggleControl
-												label={__("Inner Title Enable")}
+												label={__("Inner Title Enable", "responsive-block-editor-addons")}
 												checked={progressBarInnerTitleEnable}
 												onChange={(value) =>
 													setAttributes({ progressBarInnerTitleEnable: !progressBarInnerTitleEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Inner Value Enable")}
+												label={__("Inner Value Enable", "responsive-block-editor-addons")}
 												checked={progressBarInnerValueEnable}
 												onChange={(value) =>
 													setAttributes({ progressBarInnerValueEnable: !progressBarInnerValueEnable })
@@ -279,14 +279,14 @@ export default class Inspector extends Component {
 										</Fragment>
 									)}
 									<ToggleControl
-										label={__("Bottom Title Enable")}
+										label={__("Bottom Title Enable", "responsive-block-editor-addons")}
 										checked={progressBarBottomTitleEnable}
 										onChange={(value) =>
 											setAttributes({ progressBarBottomTitleEnable: !progressBarBottomTitleEnable })
 										}
 									/>
 									<ToggleControl
-										label={__("Bottom Value Enable")}
+										label={__("Bottom Value Enable", "responsive-block-editor-addons")}
 										checked={progressBarBottomValueEnable}
 										onChange={(value) =>
 											setAttributes({ progressBarBottomValueEnable: !progressBarBottomValueEnable })
@@ -314,35 +314,35 @@ export default class Inspector extends Component {
 									{circularProgressBarStyle === "circle" && (
 										<Fragment>
 											<ToggleControl
-												label={__("Circle Inner Value Enable")}
+												label={__("Circle Inner Value Enable", "responsive-block-editor-addons")}
 												checked={circularProgressBarValueEnable}
 												onChange={(value) =>
 													setAttributes({ circularProgressBarValueEnable: !circularProgressBarValueEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Circular Progress Bar Top Title Enable")}
+												label={__("Circular Progress Bar Top Title Enable", "responsive-block-editor-addons")}
 												checked={circularProgressBarTopTitleEnable}
 												onChange={(value) =>
 													setAttributes({ circularProgressBarTopTitleEnable: !circularProgressBarTopTitleEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Circular Progress Bar Top Value Enable")}
+												label={__("Circular Progress Bar Top Value Enable", "responsive-block-editor-addons")}
 												checked={circularProgressBarTopValueEnable}
 												onChange={(value) =>
 													setAttributes({ circularProgressBarTopValueEnable: !circularProgressBarTopValueEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Circular Progress Bar Bottom Title Enable")}
+												label={__("Circular Progress Bar Bottom Title Enable", "responsive-block-editor-addons")}
 												checked={circularProgressBarBottomTitleEnable}
 												onChange={(value) =>
 													setAttributes({ circularProgressBarBottomTitleEnable: !circularProgressBarBottomTitleEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Circular Progress Bar Bottom Value Enable")}
+												label={__("Circular Progress Bar Bottom Value Enable", "responsive-block-editor-addons")}
 												checked={circularProgressBarBottomValueEnable}
 												onChange={(value) =>
 													setAttributes({ circularProgressBarBottomValueEnable: !circularProgressBarBottomValueEnable })
@@ -353,35 +353,35 @@ export default class Inspector extends Component {
 									{circularProgressBarStyle === "semicircle" && (
 										<Fragment>
 											<ToggleControl
-												label={__("Semi-Circle Inner Value Enable")}
+												label={__("Semi-Circle Inner Value Enable", "responsive-block-editor-addons")}
 												checked={semiCircularProgressBarValueEnable}
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarValueEnable: !semiCircularProgressBarValueEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Semi-Circular Progress Bar Top Title Enable")}
+												label={__("Semi-Circular Progress Bar Top Title Enable", "responsive-block-editor-addons")}
 												checked={semiCircularProgressBarTopTitleEnable}
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarTopTitleEnable: !semiCircularProgressBarTopTitleEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Semi-Circular Progress Bar Top Value Enable")}
+												label={__("Semi-Circular Progress Bar Top Value Enable", "responsive-block-editor-addons")}
 												checked={semiCircularProgressBarTopValueEnable}
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarTopValueEnable: !semiCircularProgressBarTopValueEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Semi-Circular Progress Bar Bottom Title Enable")}
+												label={__("Semi-Circular Progress Bar Bottom Title Enable", "responsive-block-editor-addons")}
 												checked={semiCircularProgressBarBottomTitleEnable}
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarBottomTitleEnable: !semiCircularProgressBarBottomTitleEnable })
 												}
 											/>
 											<ToggleControl
-												label={__("Semi-Circular Progress Bar Bottom Value Enable")}
+												label={__("Semi-Circular Progress Bar Bottom Value Enable", "responsive-block-editor-addons")}
 												checked={semiCircularProgressBarBottomValueEnable}
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarBottomValueEnable: !semiCircularProgressBarBottomValueEnable })
@@ -583,7 +583,7 @@ export default class Inspector extends Component {
 										{gradientTrack && (
 											<Fragment>
 												<p className="responsive-block-editor-addons-setting-label">
-													{__("Secondary Track Color")}
+													{__("Secondary Track Color", "responsive-block-editor-addons")}
 													<span className="components-base-control__label">
 														<span
 															className="component-color-indicator"
@@ -644,9 +644,9 @@ export default class Inspector extends Component {
 									</Fragment>
 								)}
 						</PanelBody>
-						{((progressBarStyle === "horizontal" && (progressBarTopTitleEnable || progressBarTopValueEnable || progressBarInnerTitleEnable || progressBarInnerValueEnable || progressBarBottomTitleEnable || progressBarBottomValueEnable)) 
-						|| (progressBarStyle === "circular" && circularProgressBarStyle === "circle" && (circularProgressBarValueEnable || circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable || circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)) 
-						|| (progressBarStyle === "circular" && circularProgressBarStyle === "semicircle" && (semiCircularProgressBarValueEnable || semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable || semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)) 
+						{((progressBarStyle === "horizontal" && (progressBarTopTitleEnable || progressBarTopValueEnable || progressBarInnerTitleEnable || progressBarInnerValueEnable || progressBarBottomTitleEnable || progressBarBottomValueEnable))
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "circle" && (circularProgressBarValueEnable || circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable || circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable))
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "semicircle" && (semiCircularProgressBarValueEnable || semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable || semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable))
 						) && (
 							<PanelBody
 								title={__("Text Colors", "responsive-block-editor-addons")}
@@ -658,7 +658,7 @@ export default class Inspector extends Component {
 										initialOpen={false}
 									>
 										<p className="responsive-block-editor-addons-setting-label">
-											{__("Color")}
+											{__("Color", "responsive-block-editor-addons")}
 											<span className="components-base-control__label">
 												<span
 													className="component-color-indicator"
@@ -681,7 +681,7 @@ export default class Inspector extends Component {
 											initialOpen={false}
 										>
 											<p className="responsive-block-editor-addons-setting-label">
-												{__("Color")}
+												{__("Color", "responsive-block-editor-addons")}
 												<span className="components-base-control__label">
 													<span
 														className="component-color-indicator"
@@ -702,7 +702,7 @@ export default class Inspector extends Component {
 										initialOpen={false}
 									>
 										<p className="responsive-block-editor-addons-setting-label">
-											{__("Color")}
+											{__("Color", "responsive-block-editor-addons")}
 											<span className="components-base-control__label">
 												<span
 													className="component-color-indicator"
@@ -725,7 +725,7 @@ export default class Inspector extends Component {
 											initialOpen={false}
 										>
 											<p className="responsive-block-editor-addons-setting-label">
-												{__("Color")}
+												{__("Color", "responsive-block-editor-addons")}
 												<span className="components-base-control__label">
 													<span
 														className="component-color-indicator"
@@ -747,7 +747,7 @@ export default class Inspector extends Component {
 											initialOpen={false}
 										>
 											<p className="responsive-block-editor-addons-setting-label">
-												{__("Color")}
+												{__("Color", "responsive-block-editor-addons")}
 												<span className="components-base-control__label">
 													<span
 														className="component-color-indicator"
@@ -770,7 +770,7 @@ export default class Inspector extends Component {
 											initialOpen={false}
 										>
 											<p className="responsive-block-editor-addons-setting-label">
-												{__("Color")}
+												{__("Color", "responsive-block-editor-addons")}
 												<span className="components-base-control__label">
 													<span
 														className="component-color-indicator"
@@ -793,7 +793,7 @@ export default class Inspector extends Component {
 											initialOpen={false}
 										>
 											<p className="responsive-block-editor-addons-setting-label">
-												{__("Color")}
+												{__("Color", "responsive-block-editor-addons")}
 												<span className="components-base-control__label">
 													<span
 														className="component-color-indicator"
@@ -815,7 +815,7 @@ export default class Inspector extends Component {
 											initialOpen={false}
 										>
 											<p className="responsive-block-editor-addons-setting-label">
-												{__("Color")}
+												{__("Color", "responsive-block-editor-addons")}
 												<span className="components-base-control__label">
 													<span
 														className="component-color-indicator"
@@ -838,7 +838,7 @@ export default class Inspector extends Component {
 											initialOpen={false}
 										>
 											<p className="responsive-block-editor-addons-setting-label">
-												{__("Color")}
+												{__("Color", "responsive-block-editor-addons")}
 												<span className="components-base-control__label">
 													<span
 														className="component-color-indicator"
@@ -873,9 +873,9 @@ export default class Inspector extends Component {
 								/>
 							</PanelBody>
 						)}
-						{((progressBarStyle === "horizontal" && (progressBarTopTitleEnable || progressBarTopValueEnable || progressBarInnerTitleEnable || progressBarInnerValueEnable || progressBarBottomTitleEnable || progressBarBottomValueEnable)) 
-						|| (progressBarStyle === "circular" && circularProgressBarStyle === "circle" && (circularProgressBarValueEnable || circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable || circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable)) 
-						|| (progressBarStyle === "circular" && circularProgressBarStyle === "semicircle" && (semiCircularProgressBarValueEnable || semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable || semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable)) 
+						{((progressBarStyle === "horizontal" && (progressBarTopTitleEnable || progressBarTopValueEnable || progressBarInnerTitleEnable || progressBarInnerValueEnable || progressBarBottomTitleEnable || progressBarBottomValueEnable))
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "circle" && (circularProgressBarValueEnable || circularProgressBarTopTitleEnable || circularProgressBarTopValueEnable || circularProgressBarBottomTitleEnable || circularProgressBarBottomValueEnable))
+						|| (progressBarStyle === "circular" && circularProgressBarStyle === "semicircle" && (semiCircularProgressBarValueEnable || semiCircularProgressBarTopTitleEnable || semiCircularProgressBarTopValueEnable || semiCircularProgressBarBottomTitleEnable || semiCircularProgressBarBottomValueEnable))
 						) && (
 							<PanelBody
 								title={__("Typography", "responsive-block-editor-addons")}

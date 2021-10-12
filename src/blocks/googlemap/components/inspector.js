@@ -20,6 +20,8 @@ const {
 	Button,
 	ExternalLink,
 } = wp.components;
+import { ENTER } from '@wordpress/keycodes';
+
 
 /**
  * Create an Inspector Controls wrapper Component
@@ -28,17 +30,22 @@ export default class Inspector extends Component {
 	constructor(props) {
 		super(...arguments);
 		this.state = {
-			apiKey: props.apiKey,
-			isSavedKey: false,
-			keySaved: false,
 			address: props.attributes.address,
 		};
+        this.handleKeyDown = this.handleKeyDown.bind( this );
+
+    }
+
+    handleKeyDown( keyCode ) {
+        if ( keyCode !== ENTER ) {
+            return;
+        }
 	}
 
 	render() {
 		// Setup the attributes
 		const {
-			attributes: { zoom, height, apiKey },
+			attributes: { zoom, height },
 			setAttributes,
 		} = this.props;
 
@@ -78,63 +85,7 @@ export default class Inspector extends Component {
 								/>
 							</BaseControl>
 						</PanelBody>
-						<PanelBody
-							title={__("Google Maps API key", "responsive-block-editor-addons")}
-							initialOpen={false}
-							className="components-responsive-block-settings-sidebar"
-						>
-							<p>
-								{__(
-									"Add a Google Maps API key. Updating this API key will set all your maps to use the new key.",
-									"responsive-block-editor-addons"
-								)}
-							</p>
-							{apiKey === "" && (
-								<p>
-									<ExternalLink href={GET_KEY_URL}>
-										{__("Get a key", "responsive-block-editor-addons")}
-									</ExternalLink>
-									|&nbsp;
-									<ExternalLink href={HELP_URL}>
-										{__("Need help?", "responsive-block-editor-addons")}
-									</ExternalLink>
-								</p>
-							)}
-							<TextControl
-								value={this.state.apiKey}
-								onChange={(value) => this.setState({ apiKey: value })}
-								placeholder={__(
-									"Add Google API key…",
-									"responsive-block-editor-addons"
-								)}
-								onKeyDown={({ keyCode }) => this.handleKeyDown(keyCode)}
-								className="components-block-responsive-map-api-key__custom-input"
-							/>
-							<Button
-								isPrimary
-								onClick={this.updateApiKey}
-								disabled={
-									this.state.apiKey === "" ||
-									this.state.apiKey === this.props.apiKey
-								}
-							>
-								{this.state.apiKey === this.props.apiKey && this.props.apiKey !== ""
-									? __("Saved", "responsive-block-editor-addons")
-									: __("Save", "responsive-block-editor-addons")}
-							</Button>
-							{apiKey && (
-								<Button
-									className="components-block-responsive-map-api-key-remove__button"
-									isSecondary
-									onClick={this.removeApiKey}
-									disabled={
-										this.state.apiKey !== this.props.apiKey || !this.state.apiKey
-									}
-								>
-									{__("Remove", "responsive-block-editor-addons")}
-								</Button>
-							)}
-						</PanelBody>
+
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 					</InspectorTab>

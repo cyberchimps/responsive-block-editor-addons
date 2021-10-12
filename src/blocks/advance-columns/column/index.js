@@ -37,7 +37,6 @@ registerBlockType("responsive-block-editor-addons/column", {
   attributes: {
     width: {
       type: "number",
-      default: 50,
     },
     topPadding: {
       type: "number",

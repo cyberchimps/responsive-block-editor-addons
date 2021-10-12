@@ -53,6 +53,10 @@ export default class Edit extends Component {
             this.setState({ ...this.state, responseCode: 500 });
           }
         }
+      })
+      .catch((error)=> {
+        console.log('Invalid token');
+        this.setState({ ...this.state, responseCode: 500 });
       });
   }
 
@@ -66,10 +70,9 @@ export default class Edit extends Component {
     }
 
     if( prevProps.attributes.token !== this.props.attributes.token) {
-      console.log('calling')
       this.fetchPhotos();
     }
-    
+
     if (prevState.token !== this.state.token) {
       this.fetchPhotos();
     }
@@ -112,7 +115,7 @@ export default class Edit extends Component {
         instagramContent = (
           <p>
             <Spinner />
-            {__("Fetching feed, Please wait")}
+            {__("Fetching feed, Please wait", "responsive-block-editor-addons")}
           </p>
         );
       } else {
@@ -144,7 +147,7 @@ export default class Edit extends Component {
       }
     } else if (this.state.responseCode !== 200) {
       instagramContent = (
-        <div>Something went wrong: {this.state.errorMessage} </div>
+        <div>Something went wrong {this.state.errorMessage} </div>
       );
     } else {
       instagramContent = (

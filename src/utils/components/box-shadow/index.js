@@ -19,11 +19,11 @@ class BoxShadowControl extends Component {
   }
   onAdvancedControlClick() {
     let control = true;
-    let label = __("Hide Advanced");
+    let label = __("Hide Advanced", "responsive-block-editor-addons");
 
     if (this.state !== null && this.state.showAdvancedControls === true) {
       control = false;
-      label = __("Advanced");
+      label = __("Advanced", "responsive-block-editor-addons");
     }
 
     this.setState({
@@ -140,8 +140,8 @@ class BoxShadowControl extends Component {
               value={boxShadowPosition.value}
               onChange={(value) => setAttributes({ boxShadowPosition: value })}
               options={[
-                { value: "inset", label: __("Inset") },
-                { value: "outset", label: __("Outset") },
+                { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
+                { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
               ]}
             />
           </Fragment>

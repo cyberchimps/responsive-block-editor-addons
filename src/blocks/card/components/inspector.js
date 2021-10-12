@@ -12,12 +12,12 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -119,12 +119,12 @@ export default class Inspector extends Component {
   getImageName(image) {
     const { cardsArray } = this.props.attributes;
 
-    let image_name = __("Select Image");
+    let image_name = __("Select Image", "responsive-block-editor-addons");
     if (image) {
       if (image.url == null || image.url == "") {
-        image_name = __("Select Image");
+        image_name = __("Select Image", "responsive-block-editor-addons");
       } else {
-        image_name = __("Replace Image");
+        image_name = __("Replace Image", "responsive-block-editor-addons");
       }
     }
     return image_name;
@@ -427,19 +427,19 @@ export default class Inspector extends Component {
     const buttonSizeOptions = [
       {
         value: "responsive-block-editor-addons-button-size-small",
-        label: __("Small"),
+        label: __("Small", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-button-size-medium",
-        label: __("Medium"),
+        label: __("Medium", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-button-size-large",
-        label: __("Large"),
+        label: __("Large", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-button-size-extralarge",
-        label: __("Extra Large"),
+        label: __("Extra Large", "responsive-block-editor-addons"),
       },
     ];
 
@@ -474,13 +474,13 @@ export default class Inspector extends Component {
       return (
         <PanelBody
           key={index}
-          title={__("Image") + " " + (index + 1) + " " + __("Settings")}
+          title={__("Image", "responsive-block-editor-addons") + " " + (index + 1) + " " + __("Settings", "responsive-block-editor-addons")}
           initialOpen={true}
           className={"rbea-repeater-panel"}
         >
-          <BaseControl className="editor-bg-image-control" label={__("")}>
+          <BaseControl className="editor-bg-image-control" label={__("", "responsive-block-editor-addons")}>
             <MediaUpload
-              title={__("Select Image" + (index + 1))}
+              title={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
               onSelect={(media) => {
                 this.onSelectTestImage(media, index);
               }}
@@ -504,7 +504,7 @@ export default class Inspector extends Component {
                   isLink
                   isDestructive
                 >
-                  {__("Remove Image")}
+                  {__("Remove Image", "responsive-block-editor-addons")}
                 </Button>
               )}
           </BaseControl>
@@ -889,7 +889,7 @@ export default class Inspector extends Component {
                   ]}
                 />
                 <SelectControl
-                  label={__("Image Size", "responsive-block-editor-addons")}
+                  label={__("Image Background Size", "responsive-block-editor-addons")}
                   value={thumbsize}
                   onChange={(value) => setAttributes({ thumbsize: value })}
                   options={[
@@ -1067,9 +1067,9 @@ export default class Inspector extends Component {
               />
             </PanelBody>
 
-            <PanelBody title={__("Icon Settings")} initialOpen={false}>
+            <PanelBody title={__("Icon Settings", "responsive-block-editor-addons")} initialOpen={false}>
               <Fragment>
-                <p className="components-base-control__label">{__("Icon")}</p>
+                <p className="components-base-control__label">{__("Icon", "responsive-block-editor-addons")}</p>
                 <FontIconPicker
                   icons={svg_icons}
                   renderFunc={renderSVG}
@@ -1077,15 +1077,15 @@ export default class Inspector extends Component {
                   value={icon}
                   onChange={(value) => setAttributes({ icon: value })}
                   isMulti={false}
-                  noSelectedPlaceholder={__("Select Icon")}
+                  noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
                 />
                 <SelectControl
-                  label={__("Icon Position")}
+                  label={__("Icon Position", "responsive-block-editor-addons")}
                   value={iconPosition}
                   onChange={(value) => setAttributes({ iconPosition: value })}
                   options={[
-                    { value: "before", label: __("Before Text") },
-                    { value: "after", label: __("After Text") },
+                    { value: "before", label: __("Before Text", "responsive-block-editor-addons") },
+                    { value: "after", label: __("After Text", "responsive-block-editor-addons") },
                   ]}
                 />
                 <p className="responsive-block-editor-addons-setting-label">
@@ -1232,7 +1232,7 @@ export default class Inspector extends Component {
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
                   label: __("Horizontal", "responsive-block-editor-addons"),
