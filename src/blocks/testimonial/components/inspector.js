@@ -10,11 +10,11 @@ import { loadGoogleFont } from "../../../utils/font";
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ImageSettingsControl from "../../../settings-components/Image Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
+import ImageSettingsControl from "../../../settings-components/ImageSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 
 
 const { __ } = wp.i18n;

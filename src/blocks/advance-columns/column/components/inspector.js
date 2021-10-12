@@ -6,11 +6,11 @@ import BoxShadowControlHelper from "../../../../utils/components/box-shadow-help
 import InspectorTab from "../../../../components/InspectorTab";
 import InspectorTabs from "../../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../../settings-components/Block Background Settings/Color Background Settings";
-import ImageBackgroundControl from "../../../../settings-components/Block Background Settings/Image Background Settings";
-import GradientBackgroundControl from "../../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ResponsivePaddingControl from "../../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ResponsiveMarginControl from "../../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
+import ColorBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ImageBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import GradientBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ResponsivePaddingControl from "../../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveMarginControl from "../../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 
 // Setup the block
 const { __ } = wp.i18n;

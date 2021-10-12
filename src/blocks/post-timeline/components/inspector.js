@@ -2,8 +2,8 @@ import fontOptions from "../../../utils/googlefonts";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 
 /**
  * Inspector Controls

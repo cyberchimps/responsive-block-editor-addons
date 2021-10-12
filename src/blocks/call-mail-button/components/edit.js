@@ -12,6 +12,7 @@ import renderSVG from "../../../renderIcon";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
+const {Toolbar} = wp.components;
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -55,6 +56,7 @@ export default class Edit extends Component {
         buttonSize,
         icon,
         iconPosition,
+        buttonAlign,
       },
       setAttributes,
       mergeBlocks,
@@ -64,8 +66,32 @@ export default class Edit extends Component {
     this.props.setAttributes({ block_id: this.props.clientId });
     let callHref = `tel:${phone}`;
     let mailHref = `mailto: ${mail}`;
+
+    const toolbarControls = [
+      {
+        icon: "align-left",
+        title: __("Left", "responsive-block-editor-addons"),
+        isActive: buttonAlign==='left',
+        onClick: () => setAttributes({ buttonAlign: 'left' }),
+      },
+      {
+        icon: "align-center",
+        title: __("Center", "responsive-block-editor-addons"),
+        isActive: buttonAlign==='center',
+        onClick: () => setAttributes({ buttonAlign: 'center' }),
+      },
+      {
+        icon: "align-right",
+        title: __("Right", "responsive-block-editor-addons"),
+        isActive: buttonAlign==='right',
+        onClick: () => setAttributes({ buttonAlign: 'right' }),
+      },
+    ];
+
     return [
-      <BlockControls key="controls"></BlockControls>,
+      <BlockControls key="controls">
+        <Toolbar controls={toolbarControls} />
+      </BlockControls>,
       // Show the block controls on focus
       <Inspector {...{ setAttributes, ...this.props }} />,
 

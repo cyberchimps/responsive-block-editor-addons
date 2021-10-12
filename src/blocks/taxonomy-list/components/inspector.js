@@ -1,7 +1,7 @@
 import fontOptions from "../../../utils/googlefonts";
 import BoxShadowControl from "../../../utils/components/box-shadow";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
