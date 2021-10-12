@@ -3,7 +3,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
-import { isEqual, unescape } from "lodash";
+import { isEqual, unescape, escape } from "lodash";
 import rbeaControls from "./controlOptions";
 
 const { __ } = wp.i18n;
@@ -153,7 +153,7 @@ class Inspector extends Component {
             rows="4"
             value={unescape(points[index].content)}
             onChange={(value) => {
-              handleUpdateData({ content: value }, index);
+              handleUpdateData({ content: escape(value) }, index);
               handleStateChange("updateHotspot", true);
             }}
           />

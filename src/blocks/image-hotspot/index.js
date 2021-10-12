@@ -16,7 +16,7 @@ registerBlockType("responsive-block-editor-addons/image-hotspot", {
     "Highlight specific parts of the image with animated pointers to make images more interactive and digestible.",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.social_share,
+  icon: ResponsiveBlockEditorAddonsIcons.image_hotspot,
   category: "responsive_block_editor_addons",
   keywords: [
     __("Image", "responsive-block-editor-addons"),
