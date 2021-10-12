@@ -620,7 +620,7 @@ class Inspector extends Component {
                   />
                 </BaseControl>
                 <SelectControl
-                  label={__("Image Size")}
+                  label={__("Image Size", "responsive-block-editor-addons")}
                   value={imageSize}
                   onChange={onChangeImageSize}
                   options={rbeaControls.imageSize}
@@ -637,7 +637,7 @@ class Inspector extends Component {
                   }
                 />
                 <p className="components-base-control__label">
-                  {__("Hotspot Icon")}
+                  {__("Hotspot Icon", "responsive-block-editor-addons")}
                 </p>
                 <FontIconPicker
                   icons={svg_icons}
@@ -755,7 +755,7 @@ class Inspector extends Component {
                 initialOpen={false}
               >
                 <ToggleControl
-                  label={__("Pulse Effect")}
+                  label={__("Pulse Effect", "responsive-block-editor-addons")}
                   checked={pulseEffect}
                   onChange={(value) =>
                     setAttributes({ pulseEffect: !pulseEffect })
@@ -784,8 +784,8 @@ class Inspector extends Component {
                         setAttributes({ animationRepeat: value })
                       }
                       options={[
-                        { value: "once", label: __("Once") },
-                        { value: "loop", label: __("Loop") },
+                        { value: "once", label: __("Once", "responsive-block-editor-addons") },
+                        { value: "loop", label: __("Loop", "responsive-block-editor-addons") },
                       ]}
                     />
                     <RangeControl

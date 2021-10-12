@@ -79,21 +79,21 @@ const rbeaControls = {
     { value: 'perspective-extreme' , label: __( 'Perspective Extreme', 'responsive-block-editor-addons' ) },
   ],
   rbeaAnimation: [
-    { value: "none", label: "None" },
-    { value: "fade", label: __("Fade") },
-    { value: "slide", label: __("Slide") },
-    { value: "bounce", label: __("Bounce") },
-    { value: "zoom", label: __("Zoom") },
-    { value: "flip", label: __("Flip") },
-    { value: "fold", label: __("Fold") },
-    { value: "rotate", label: "Rotate" },
+    { value: "none", label: __("None", "responsive-block-editor-addons") },
+    { value: "fade", label: __("Fade", "responsive-block-editor-addons") },
+    { value: "slide", label: __("Slide", "responsive-block-editor-addons") },
+    { value: "bounce", label: __("Bounce", "responsive-block-editor-addons") },
+    { value: "zoom", label: __("Zoom", "responsive-block-editor-addons") },
+    { value: "flip", label: __("Flip", "responsive-block-editor-addons") },
+    { value: "fold", label: __("Fold", "responsive-block-editor-addons") },
+    { value: "rotate", label: __("Rotate", "responsive-block-editor-addons") },
   ],
   rbeaAnimationCurve: [
-    { value: "ease-in-out", label: "ease-in-out" },
-    { value: "ease", label: "ease" },
-    { value: "ease-in", label: "ease-in" },
-    { value: "ease-out", label: "ease-out" },
-    { value: "linear", label: "linear" },
+    { value: "ease-in-out", label: __("ease-in-out", "responsive-block-editor-addons") },
+    { value: "ease", label: __("ease", "responsive-block-editor-addons") },
+    { value: "ease-in", label: __("ease-in", "responsive-block-editor-addons") },
+    { value: "ease-out", label: __("ease-out", "responsive-block-editor-addons") },
+    { value: "linear", label: __("linear", "responsive-block-editor-addons") },
   ],
   openTooltip: [
     {
@@ -106,9 +106,9 @@ const rbeaControls = {
     },
   ],
   imageSize: [
-    { value: "full", label: __("Full Size") },
-    { value: "thumbnail", label: __("Thumbnail") },
-    { value: "medium", label: __("Medium") },
+    { value: "full", label: __("Full Size", "responsive-block-editor-addons") },
+    { value: "thumbnail", label: __("Thumbnail", "responsive-block-editor-addons") },
+    { value: "medium", label: __("Medium", "responsive-block-editor-addons") },
   ],
 };
 
