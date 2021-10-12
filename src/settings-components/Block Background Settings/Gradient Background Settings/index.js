@@ -29,7 +29,7 @@ class GradientBackgroundControl extends Component {
           },
           setAttributes,
       } = this.props;
-      
+
     var gradientNormalOptions = (
     <Fragment>
         {this.props.showColorOne ===false? false: true && (<Fragment>
@@ -106,7 +106,7 @@ class GradientBackgroundControl extends Component {
     )
 
     var advancedControls;
-      advancedControls = (      
+      advancedControls = (
           <Fragment>
               <TabPanel
               className="responsive-block-editor-addons-inspect-tabs responsive-block-editor-addons-inspect-tabs-col-2"
@@ -114,12 +114,12 @@ class GradientBackgroundControl extends Component {
               tabs={[
                 {
                   name: "normal",
-                  title: __("Normal"),
+                  title: __("Normal", "responsive-block-editor-addons"),
                   className: "responsive-block-editor-addons-normal-tab",
                 },
                 {
                   name: "hover",
-                  title: __("Hover"),
+                  title: __("Hover", "responsive-block-editor-addons"),
                   className: "responsive-block-editor-addons-hover-tab",
                 },
               ]}
@@ -127,7 +127,7 @@ class GradientBackgroundControl extends Component {
                 {(tabName) => {
                     let btn_color_tab;
                     if ("normal" === tabName.name) {
-                    btn_color_tab = 
+                    btn_color_tab =
                         gradientNormalOptions
                     } else {
                     btn_color_tab = (

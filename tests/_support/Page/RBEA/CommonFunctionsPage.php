@@ -42,7 +42,11 @@ class CommonFunctionsPage
     public $priceTypography = '//*[text() = "Price Typography"]';
     public $paddingStyleBtn = '//*[text() = "Padding"]';
     public $spacingStyleBtn = '//button[text()="Spacing"]';
+    public $blockSpacingBtn = '//button[text()="Block Spacing"]';
+    public $columnSpacingBtn = '//button[text()="Column Spacing"]';
+    public $spacingSettingsStyleBtn = '//button[text()="Spacing Settings"]';
     public $borderStyleBtn = '//button[text()="Border"]';
+    public $borderSettingsStyleBtn = '//button[text()="Border Settings"]';
     public $generalStyleBtn = '//button[text()="General"]';
     public $separatorStyleBtn = '//button[text()="Separator"]';
     public $colorSettingsStyleBtn = '//button[text()="Color Settings"]';
@@ -54,6 +58,14 @@ class CommonFunctionsPage
     public $imageSettingsStyleBtn = '//button[text()="Image Settings"]';
     public $iconSettingsStyleBtn = '//button[text()="Icon Settings"]';
     public $textColorSettingsBtn = '//*[text()="Text Color Settings"]';
+    public $buttonSettingStyleBtn = '//*[text()="Button Settings"]';
+    public $normalBtn = '//button[text()="Normal"]';
+    public $hoverBtn = '//button[text()="Hover"]';
+    public $columnBackgroundStyle = '//button[text()="Column Background"]';
+    public $selectBgImage = '(//button[text()="Select Background Image"])[1]';
+    public $mediaLibraryBtn = '#menu-item-browse';
+    public $selectedBackgroundAttachment = '//*[contains(@id, "__attachments-view")]/li[1]';
+    public $selectBtn = '//*[text()="Select"]';
 
     /**
      * Declare UI map for this page here. CSS or XPath allowed.

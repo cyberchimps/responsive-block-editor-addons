@@ -96,7 +96,7 @@ export default class Edit extends Component {
           {"call" === buttonToShow && (
             <RichText
               tagName="span"
-              placeholder={__("Call")}
+              placeholder={__("Call", "responsive-block-editor-addons")}
               value={callText}
               className="responsive-block-editor-addons-call-mail-button-text"
               onChange={(value) => setAttributes({ callText: value })}
@@ -112,7 +112,7 @@ export default class Edit extends Component {
           {"mail" === buttonToShow && (
             <RichText
               tagName="span"
-              placeholder={__("Mail")}
+              placeholder={__("Mail", "responsive-block-editor-addons")}
               value={mailText}
               onChange={(value) => setAttributes({ mailText: value })}
               multiline={false}

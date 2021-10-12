@@ -70,7 +70,7 @@ render() {
               value={this.props.values.desktopTop}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("TopPadding")]: value !== undefined ? value : 0,              
+                [getAttrName("TopPadding")]: value !== undefined ? value : 0,
             })
             }
               />
@@ -79,7 +79,7 @@ render() {
               value={this.props.values.desktopBottom}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("BottomPadding")]: value !== undefined ? value : 0,              
+                [getAttrName("BottomPadding")]: value !== undefined ? value : 0,
               })
             }
               min={0}
@@ -91,7 +91,7 @@ render() {
               value={this.props.values.desktopLeft}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("LeftPadding")]: value !== undefined ? value : 0,              
+                [getAttrName("LeftPadding")]: value !== undefined ? value : 0,
               })
             }
               min={0}
@@ -103,7 +103,7 @@ render() {
               value={this.props.values.desktopRight}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("RightPadding")]: value !== undefined ? value : 0,              
+                [getAttrName("RightPadding")]: value !== undefined ? value : 0,
               })
             }
               min={0}
@@ -115,7 +115,7 @@ render() {
           } else if ("tablet" === tab.name) {
               tabout = (
                   <Fragment>
-                  <p>{__("Padding Tablet")}</p>
+                  <p>{__("Padding Tablet", "responsive-block-editor-addons")}</p>
                   <RangeControl
               label={__("Top", "responsive-block-editor-addons")}
               min={0}
@@ -125,7 +125,7 @@ render() {
               value={this.props.values.tabletTop}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("TopPaddingTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("TopPaddingTablet")]: value !== undefined ? value : 0,
               })
           }
               />
@@ -134,7 +134,7 @@ render() {
               value={this.props.values.tabletBottom}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("BottomPaddingTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("BottomPaddingTablet")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -146,7 +146,7 @@ render() {
               value={this.props.values.tabletLeft}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("LeftPaddingTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("LeftPaddingTablet")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -158,7 +158,7 @@ render() {
               value={this.props.values.tabletRight}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("RightPaddingTablet")]: value !== undefined ? value : 0,              
+                [getAttrName("RightPaddingTablet")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -180,7 +180,7 @@ render() {
               value={this.props.values.mobileTop}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("TopPaddingMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("TopPaddingMobile")]: value !== undefined ? value : 0,
               })
           }
               />
@@ -189,7 +189,7 @@ render() {
               value={this.props.values.mobileBottom}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("BottomPaddingMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("BottomPaddingMobile")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -201,7 +201,7 @@ render() {
               value={this.props.values.mobileLeft}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("LeftPaddingMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("LeftPaddingMobile")]: value !== undefined ? value : 0,
               })
           }
               min={0}
@@ -213,7 +213,7 @@ render() {
               value={this.props.values.mobileRight}
               onChange={(value) =>
               setAttributes({
-                [getAttrName("RightPaddingMobile")]: value !== undefined ? value : 0,              
+                [getAttrName("RightPaddingMobile")]: value !== undefined ? value : 0,
               })
           }
               min={0}

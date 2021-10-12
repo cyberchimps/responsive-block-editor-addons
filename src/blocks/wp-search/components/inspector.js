@@ -162,11 +162,11 @@ export default class Inspector extends Component {
               initialOpen={true}
             >
               <SelectControl
-                label={__("Layout")}
+                label={__("Layout", "responsive-block-editor-addons")}
                 value={layout}
                 options={[
-                  { value: "classic", label: __("Classic") },
-                  { value: "minimal", label: __("Minimal") },
+                  { value: "classic", label: __("Classic", "responsive-block-editor-addons") },
+                  { value: "minimal", label: __("Minimal", "responsive-block-editor-addons") },
                 ]}
                 onChange={(value) => setAttributes({layout: value})}
               />
@@ -262,7 +262,7 @@ export default class Inspector extends Component {
                   <BoxShadowControl
                     setAttributes={setAttributes}
                     label={__("Box Shadow", "responsive-block-editor-addons")}
-                    boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                    boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                     boxShadowHOffset={{
                       value: boxShadowHOffset,
                       label: __("Horizontal", "responsive-block-editor-addons"),
@@ -359,7 +359,7 @@ export default class Inspector extends Component {
                         initialOpen={false}
                       >
                         <SelectControl
-                          label={__("Type")}
+                          label={__("Type", "responsive-block-editor-addons")}
                           value={buttonType}
                           options={[
                             {value: "button", label: __("Button", "responsive-block-editor-addons")},

@@ -21,11 +21,11 @@ class BoxShadowControl extends Component {
   }
   onAdvancedControlClick() {
     let control = true;
-    let label = __("Hide Advanced");
+    let label = __("Hide Advanced", "responsive-block-editor-addons");
 
     if (this.state !== null && this.state.showAdvancedControls === true) {
       control = false;
-      label = __("Advanced");
+      label = __("Advanced", "responsive-block-editor-addons");
     }
 
     this.setState({
@@ -81,7 +81,7 @@ class BoxShadowControl extends Component {
         <div className="responsive-block-editor-addons-box-shadow-advanced">
           <Fragment>
             <p className="responsive-block-editor-addons-setting-label">
-              {__("Color")}
+              {__("Color", "responsive-block-editor-addons")}
 
               <span className="components-base-control__label">
                 <span
@@ -104,7 +104,7 @@ class BoxShadowControl extends Component {
             />
           </Fragment>
           <Fragment>
-            <h2>{__("Horizontal")}</h2>
+            <h2>{__("Horizontal", "responsive-block-editor-addons")}</h2>
             <RangeControl
               value={boxShadowHOffset.value}
               onChange={(value) =>
@@ -119,7 +119,7 @@ class BoxShadowControl extends Component {
             />
           </Fragment>
           <Fragment>
-            <h2>{__("Vertical")}</h2>
+            <h2>{__("Vertical", "responsive-block-editor-addons")}</h2>
             <RangeControl
               value={boxShadowVOffset.value}
               onChange={(value) =>
@@ -134,7 +134,7 @@ class BoxShadowControl extends Component {
             />
           </Fragment>
           <Fragment>
-            <h2>{__("Blur")}</h2>
+            <h2>{__("Blur", "responsive-block-editor-addons")}</h2>
             <RangeControl
               value={boxShadowBlur.value}
               onChange={(value) =>
@@ -149,7 +149,7 @@ class BoxShadowControl extends Component {
             />
           </Fragment>
           <Fragment>
-            <h2>{__("Spread")}</h2>
+            <h2>{__("Spread", "responsive-block-editor-addons")}</h2>
             <RangeControl
               value={boxShadowSpread.value}
               onChange={(value) =>
@@ -165,14 +165,14 @@ class BoxShadowControl extends Component {
           </Fragment>
           <Fragment>
             <SelectControl
-              label={__("Position")}
+              label={__("Position", "responsive-block-editor-addons")}
               value={boxShadowPosition.value}
               onChange={(value) =>
                 setAttributes({ [getAttrName("boxShadowPosition")]: value })
               }
               options={[
-                { value: "outset", label: __("Outset") },
-                { value: "inset", label: __("Inset") },
+                { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
+                { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
               ]}
             />
           </Fragment>
