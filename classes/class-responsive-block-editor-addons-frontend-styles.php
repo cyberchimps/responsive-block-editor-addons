@@ -11967,6 +11967,50 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
+		 * Get Advanced Text CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_advanced_text_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_advanced_text_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$selectors = array();
+
+			$mobile_selectors = array();
+
+			$tablet_selectors = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-advanced-text.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+
+		/**
+		 * Get Defaults for Advanced Text block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_advanced_text_default_attributes() {
+			return array(
+				'block_id'               => '',
+			);
+		}
+
+		/**
 		 * Generate gradient effect
 		 *
 		 * @param string $color1  primary color.
