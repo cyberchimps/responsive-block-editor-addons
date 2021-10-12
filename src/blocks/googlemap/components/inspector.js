@@ -30,8 +30,6 @@ export default class Inspector extends Component {
 	constructor(props) {
 		super(...arguments);
 		this.state = {
-			isSavedKey: false,
-			keySaved: false,
 			address: props.attributes.address,
 		};
         this.handleKeyDown = this.handleKeyDown.bind( this );
@@ -87,7 +85,7 @@ export default class Inspector extends Component {
 								/>
 							</BaseControl>
 						</PanelBody>
-						
+
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 					</InspectorTab>

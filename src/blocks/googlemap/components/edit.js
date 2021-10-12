@@ -24,8 +24,6 @@ export default class Edit extends Component {
       address: this.props.attributes.address,
       coords: null,
       hasError: false,
-      isSavedKey: false,
-      keySaved: false,
     };
 
   }
