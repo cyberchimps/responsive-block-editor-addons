@@ -2,7 +2,7 @@
  * Box-Shadow reusable component.
  *
  */
-import GradientHoverBackgroundControl from './Gradient Hover Background Settings';
+import GradientHoverBackgroundControl from './GradientHoverBackgroundSettings';
 
 const { __ } = wp.i18n;
 
