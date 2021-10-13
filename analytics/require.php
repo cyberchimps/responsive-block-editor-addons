@@ -1,6 +1,5 @@
 <?php
 /**
- * Add necessary files
  * @package     Analytics
  * @copyright   Copyright (c) 2019, CyberChimps, Inc.
  * @license     https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License Version 3
