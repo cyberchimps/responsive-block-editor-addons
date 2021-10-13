@@ -23,6 +23,9 @@
 				<exclude>
 					<directory suffix=".php">includes/patterns/</directory>
 					<directory suffix=".php">analytics/</directory>
+					<directory suffix=".php">analytics/includes</directory>
+					<directory suffix=".php">analytics/templates/forms/deactivation/</directory>
+					<directory suffix=".php">analytics/templates/forms/review/</directory>
 				</exclude>
         	</whitelist>
     	</filter>
