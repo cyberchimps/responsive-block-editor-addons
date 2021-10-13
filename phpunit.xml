@@ -22,6 +22,7 @@
 	    		<file>src/utils/font.php</file>
 				<exclude>
 					<directory suffix=".php">includes/patterns/</directory>
+					<directory suffix=".php">analytics/</directory>
 				</exclude>
         	</whitelist>
     	</filter>
