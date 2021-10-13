@@ -65,7 +65,9 @@ export default class Edit extends Component {
         <CustomTag
           className={classnames(
             "responsive-block-editor-addons-block-advanced-text",
-            `block-${block_id}`
+            `block-${block_id}`,
+            displayColumnSeparator && 'responsive-block-editor-addons-separator-present',
+            `responsive-block-editor-addons-columns-count-${columnsCount}`,
           )}
         >
           {(displayTitle || displaySubtitle) && (
@@ -73,7 +75,7 @@ export default class Edit extends Component {
               {displayTitle && (
                 <RichText
                   tagName={tagTitle || "h2"}
-                  className="responsive-block-editor-addons__title"
+                  className="responsive-block-editor-addons-title"
                   value={blockTitle}
                   onChange={(blockTitle) => setAttributes({ blockTitle })}
                   placeholder={__("Title", "responsive-block-editor-addons")}
@@ -82,7 +84,7 @@ export default class Edit extends Component {
               {displaySubtitle && (
                 <RichText
                   tagName="p"
-                  className="responsive-block-editor-addons__subtitle"
+                  className="responsive-block-editor-addons-subtitle"
                   value={blockSubtitle}
                   onChange={(blockSubtitle) => setAttributes({ blockSubtitle })}
                   placeholder={__("Subtitle", "responsive-block-editor-addons")}
@@ -90,18 +92,18 @@ export default class Edit extends Component {
               )}
             </div>
           )}
-          <div className="responsive-block-editor-addons-text-wrapper">
+          <div className="responsive-block-editor-addons-text-container">
             {range(columnsCount || 3).map((i) => {
               const index = i + 1;
               return (
                 <Fragment key={i}>
                   <div
                     key={`item-${i}`}
-                    className="responsive-block-editor-addons__text"
+                    className="responsive-block-editor-addons-text-content"
                   >
                     <RichText
                       tagName="p"
-                      className={`responsive-block-editor-addons__text-${index}`}
+                      className={`responsive-block-editor-addons-text-content-${index}`}
                       value={this.props.attributes[`text${index}`]}
                       onChange={(text) =>
                         setAttributes({ [`text${index}`]: text })
@@ -114,7 +116,7 @@ export default class Edit extends Component {
                   </div>
                   {displayColumnSeparator && i !== columnsCount - 1 && (
                     <div
-                      className={`responsive-block-editor-addons__rule responsive-block-editor-addons__rule-${index}`}
+                      className={`responsive-block-editor-addons-separator responsive-block-editor-addons-separator-${index}`}
                       role="presentation"
                     />
                   )}

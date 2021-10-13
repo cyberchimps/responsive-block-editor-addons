@@ -42,13 +42,11 @@ export default class Inspector extends Component {
         displayTitle,
         displaySubtitle,
         columnsCount,
-        tagTitle,
         blockTitle,
         blockSubtitle,
-        displayColumnSeparator,
         contentAlign,
         layout,
-
+        //style panel
         contentPadding,
         contentPaddingTablet,
         contentPaddingMobile,
@@ -61,7 +59,6 @@ export default class Inspector extends Component {
         textBottomMargin,
         textBottomMarginTablet,
         textBottomMarginMobile,
-        displayColumnDivider,
         columnDividerHeight,
         columnDividerWidth,
         dividerColor,
@@ -89,6 +86,8 @@ export default class Inspector extends Component {
         subtitleLineHeight,
         subtitleColor,
         subtitleAlign,
+        tagTitle,
+        displayColumnSeparator,
         // advanced panel
         blockOpacity,
         zIndex,
@@ -229,9 +228,9 @@ export default class Inspector extends Component {
             >
               <ToggleControl
                 label={__("Enable Divider", "responsive-block-editor-addons")}
-                checked={displayColumnDivider}
+                checked={displayColumnSeparator}
                 onChange={() =>
-                  setAttributes({ displayColumnDivider: !displayColumnDivider })
+                  setAttributes({ displayColumnSeparator: !displayColumnSeparator })
                 }
               />
               <Fragment>

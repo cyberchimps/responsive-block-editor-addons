@@ -11995,6 +11995,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'  => self::get_css_value( $attr['containerRightPadding'], 'px!important' ),
 					'padding-bottom' => self::get_css_value( $attr['containerBottomPadding'], 'px!important' ),
 					'padding-left'   => self::get_css_value( $attr['containerLeftPadding'], 'px!important' ),
+					'text-align'     => $attr['contentAlign'],
 				),
 			);
 
@@ -12077,6 +12078,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerBottomMarginMobile'  => '',
 				'containerLeftMarginMobile'    => '',
 				'containerRightMarginMobile'   => '',
+				'contentAlign'                 => 'left',
 			);
 		}
 

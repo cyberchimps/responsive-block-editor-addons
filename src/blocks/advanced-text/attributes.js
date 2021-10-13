@@ -19,7 +19,8 @@ const attributes = {
     default: false,
   },
   displaySubtitle: {
-    type: "string",
+    type: "boolean",
+    default: false,
   },
   columnsCount: {
     type: "number",

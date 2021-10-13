@@ -33,6 +33,7 @@ function EditorStyles(props) {
     containerBottomMarginMobile,
     containerLeftMarginMobile,
     containerRightMarginMobile,
+    contentAlign,
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
@@ -50,6 +51,7 @@ function EditorStyles(props) {
 		  "padding-right": generateCSSUnit(containerRightPadding, "px"), 
 		  "padding-bottom": generateCSSUnit(containerBottomPadding, "px"), 
 		  "padding-left": generateCSSUnit(containerLeftPadding, "px"), 
+      "text-align": contentAlign,
     }
   };
 
