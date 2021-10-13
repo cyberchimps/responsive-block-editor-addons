@@ -53,6 +53,7 @@ export default class Edit extends Component {
         titleFontFamily,
         subtitleFontFamily,
         textFontFamily,
+        layoutDesign,
       },
       setAttributes,
     } = this.props;
@@ -74,6 +75,7 @@ export default class Edit extends Component {
             `block-${block_id}`,
             displayColumnSeparator && 'responsive-block-editor-addons-separator-present',
             `responsive-block-editor-addons-columns-count-${columnsCount}`,
+            `responsive-block-editor-addons-${layoutDesign}`,
           )}
         >
           {(displayTitle || displaySubtitle) && (

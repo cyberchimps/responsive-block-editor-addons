@@ -20,6 +20,7 @@ export default class Save extends Component {
       blockSubtitle,
       displayColumnSeparator,
       blockTag,
+      layoutDesign,
     } = this.props.attributes;
 
     let CustomTag = `${blockTag}`;
@@ -33,6 +34,7 @@ export default class Save extends Component {
             `block-${block_id}`,
             displayColumnSeparator && 'responsive-block-editor-addons-separator-present',
             `responsive-block-editor-addons-columns-count-${columnsCount}`,
+            `responsive-block-editor-addons-${layoutDesign}`,
           )}
         >
           {((displayTitle && !RichText.isEmpty(blockTitle)) ||

@@ -2,6 +2,10 @@ const attributes = {
   block_id: {
     type: "string",
   },
+  layoutDesign: {
+    type: "string",
+    default: "layout1",
+  },
   text1: {
     type: "string",
   },
@@ -16,11 +20,11 @@ const attributes = {
   },
   displayTitle: {
     type: "boolean",
-    default: false,
+    default: true,
   },
   displaySubtitle: {
     type: "boolean",
-    default: false,
+    default: true,
   },
   columnsCount: {
     type: "number",

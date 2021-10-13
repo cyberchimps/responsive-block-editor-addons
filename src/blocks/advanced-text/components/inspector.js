@@ -45,7 +45,7 @@ export default class Inspector extends Component {
         blockTitle,
         blockSubtitle,
         contentAlign,
-        layout,
+        layoutDesign,
         //style panel
         contentPadding,
         contentPaddingTablet,
@@ -123,6 +123,32 @@ export default class Inspector extends Component {
       setAttributes,
     } = this.props;
 
+    const handleLayoutChange =(value) => {
+      if(value === 'layout3') {
+        setAttributes({
+          columnsCount: 2,
+          layoutDesign: value,
+          titleAlign: 'right',
+          subtitleAlign: 'right',
+        });
+      }else if(value === 'layout2') {
+        setAttributes({
+          columnsCount: 2,
+          layoutDesign: value,
+          titleAlign: '',
+          subtitleAlign: '',
+        });
+      }
+      else {
+        setAttributes({
+          layoutDesign: value,
+          columnsCount: 1,
+          titleAlign: '',
+          subtitleAlign: '',
+        })
+      }
+    }
+
     return (
       <InspectorControls key="inspector">
         <InspectorTabs>
@@ -165,8 +191,8 @@ export default class Inspector extends Component {
             >
               <SelectControl
                 label={__("Layouts", "responsive-block-editor-addons")}
-                value={layout}
-                onChange={(value) => setAttributes({ layout: value })}
+                value={layoutDesign}
+                onChange={(value) => handleLayoutChange(value)}
                 options={rbeaOptions.layouts}
               />
             </PanelBody>
