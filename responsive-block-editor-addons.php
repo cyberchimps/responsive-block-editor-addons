@@ -49,19 +49,19 @@ function run_responsive_block_editor_addons() {
 
 run_responsive_block_editor_addons();
 
-if ( ! function_exists( 'rbea1_fs' ) ) {
+if ( ! function_exists( 'rbea_fs' ) ) {
 	/**
 	 * Helper function to access SDK.
 	 */
-	function rbea1_fs() {
+	function rbea_fs() {
 
-		global $rbea1_fs;
+		global $rbea_fs;
 
-		if ( ! isset( $rbea1_fs ) ) {
+		if ( ! isset( $rbea_fs ) ) {
 			// Include Analytics SDK.
 			require_once dirname( __FILE__ ) . '/analytics/start.php';
 
-			$rbea1_fs = ras_dynamic_init(
+			$rbea_fs = ras_dynamic_init(
 				array(
 					'id'              => '11',
 					'slug'            => 'responsive-block-editor-addons',
@@ -73,11 +73,11 @@ if ( ! function_exists( 'rbea1_fs' ) ) {
 				)
 			);
 		}
-		return $rbea1_fs;
+		return $rbea_fs;
 	}
 
 	// Init Analytics.
-	rbea1_fs();
+	rbea_fs();
 	// SDK initiated.
-	do_action( 'rbea1_fs_loaded' );
+	do_action( 'rbea_fs_loaded' );
 }
