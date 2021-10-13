@@ -50,6 +50,9 @@ export default class Edit extends Component {
         blockSubtitle,
         displayColumnSeparator,
         blockTag,
+        titleFontFamily,
+        subtitleFontFamily,
+        textFontFamily,
       },
       setAttributes,
     } = this.props;
@@ -62,6 +65,9 @@ export default class Edit extends Component {
         {...{ setAttributes, ...this.props }}
       />,
       <Fragment key="advanced-text-container">
+        {titleFontFamily && loadGoogleFont(titleFontFamily)}
+        {subtitleFontFamily && loadGoogleFont(subtitleFontFamily)}
+        {textFontFamily && loadGoogleFont(textFontFamily)}
         <CustomTag
           className={classnames(
             "responsive-block-editor-addons-block-advanced-text",

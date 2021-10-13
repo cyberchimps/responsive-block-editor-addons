@@ -148,6 +148,9 @@ export default class Inspector extends Component {
                   value={contentAlign}
                   onChange={(value) =>
                     setAttributes({
+                      textAlign: '',
+                      titleAlign: '',
+                      subtitleAlign: '',
                       contentAlign: value,
                     })
                   }
@@ -222,54 +225,56 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
-            <PanelBody
-              title={__("Column Divider", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__("Enable Divider", "responsive-block-editor-addons")}
-                checked={displayColumnSeparator}
-                onChange={() =>
-                  setAttributes({ displayColumnSeparator: !displayColumnSeparator })
-                }
-              />
-              <Fragment>
-                <p className="responsive-block-editor-addons-setting-label">
-                  {__("Color", "responsive-block-editor-addons")}
-                  <span className="components-base-control__label">
-                    <span
-                      className="component-color-indicator"
-                      style={{ backgroundColor: dividerColor }}
-                    ></span>
-                  </span>
-                </p>
-                <ColorPalette
-                  value={dividerColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ dividerColor: colorValue })
+            { columnsCount > 1 && (
+              <PanelBody
+                title={__("Column Divider", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <ToggleControl
+                  label={__("Enable Divider", "responsive-block-editor-addons")}
+                  checked={displayColumnSeparator}
+                  onChange={() =>
+                    setAttributes({ displayColumnSeparator: !displayColumnSeparator })
                   }
-                  allowReset
                 />
-              </Fragment>
-              <RangeControl
-                label={__("Height", "responsive-block-editor-addons")}
-                value={columnDividerHeight}
-                onChange={(value) =>
-                  setAttributes({ columnDividerHeight: value })
-                }
-                min={0}
-                max={100}
-              />
-              <RangeControl
-                label={__("Width", "responsive-block-editor-addons")}
-                value={columnDividerWidth}
-                onChange={(value) =>
-                  setAttributes({ columnDividerWidth: value })
-                }
-                min={0}
-                max={100}
-              />
-            </PanelBody>
+                <Fragment>
+                  <p className="responsive-block-editor-addons-setting-label">
+                    {__("Color", "responsive-block-editor-addons")}
+                    <span className="components-base-control__label">
+                      <span
+                        className="component-color-indicator"
+                        style={{ backgroundColor: dividerColor }}
+                      ></span>
+                    </span>
+                  </p>
+                  <ColorPalette
+                    value={dividerColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ dividerColor: colorValue })
+                    }
+                    allowReset
+                  />
+                </Fragment>
+                <RangeControl
+                  label={__("Height", "responsive-block-editor-addons")}
+                  value={columnDividerHeight}
+                  onChange={(value) =>
+                    setAttributes({ columnDividerHeight: value })
+                  }
+                  min={0}
+                  max={100}
+                />
+                <RangeControl
+                  label={__("Width", "responsive-block-editor-addons")}
+                  value={columnDividerWidth}
+                  onChange={(value) =>
+                    setAttributes({ columnDividerWidth: value })
+                  }
+                  min={0}
+                  max={5}
+                />
+              </PanelBody>
+            )}
             <PanelBody
               title={__("Text", "responsive-block-editor-addons")}
               initialOpen={false}

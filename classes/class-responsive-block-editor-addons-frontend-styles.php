@@ -11997,6 +11997,41 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-left'   => self::get_css_value( $attr['containerLeftPadding'], 'px!important' ),
 					'text-align'     => $attr['contentAlign'],
 				),
+				' .responsive-block-editor-addons-text-container' => array(
+					'padding' => self::get_css_value( $attr['contentPadding'], 'px' ),
+				),
+				' .responsive-block-editor-addons-separator' => array (
+					'height' => self::get_css_value( $attr['columnDividerHeight'], 'px' ),
+					'width'  => self::get_css_value( $attr['columnDividerWidth'], 'px' ),
+					'background-color'  => $attr['dividerColor'],
+				),
+				' .responsive-block-editor-addons-title' => array(
+					'margin-bottom' => self::get_css_value( $attr['titleBottomMargin'], 'px' ),
+					'text-align'    => $attr['titleAlign'],
+					'color'         => $attr['titleColor'],
+					'font-family'   => $attr['titleFontFamily'],
+					'font-size'     => self::get_css_value( $attr['titleFontSize'], 'px' ),
+					'font-weight'   => $attr['titleFontWeight'],
+					'line-height'   => $attr['titleLineHeight'],
+				), 
+				' .responsive-block-editor-addons-subtitle' => array(
+					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMargin'], 'px' ),
+					'text-align'    => $attr['subtitleAlign'],
+					'color'         => $attr['subtitleColor'],
+					'font-family'   => $attr['subtitleFontFamily'],
+					'font-size'     => self::get_css_value( $attr['subtitleFontSize'], 'px' ),
+					'font-weight'   => $attr['subtitleFontWeight'],
+					'line-height'   => $attr['subtitleLineHeight'],
+				), 
+				' .responsive-block-editor-addons-text-content' => array(
+					'margin-bottom' => self::get_css_value( $attr['textBottomMargin'], 'px' ),
+					'text-align'    => $attr['textAlign'],
+					'color'         => $attr['textColor'],
+					'font-family'   => $attr['textFontFamily'],
+					'font-size'     => self::get_css_value( $attr['textFontSize'], 'px' ),
+					'font-weight'   => $attr['textFontWeight'],
+					'line-height'   => $attr['textLineHeight'],
+				),		
 			);
 
 			$mobile_selectors = array(
@@ -12011,6 +12046,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['containerBottomPaddingMobile'], 'px!important' ),
 					'padding-left'   => self::get_css_value( $attr['containerLeftPaddingMobile'], 'px!important' ),
 				),
+				' .responsive-block-editor-addons-text-container' => array(
+					'padding' => self::get_css_value( $attr['contentPaddingMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-title' => array(
+					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
+				), 
+				' .responsive-block-editor-addons-subtitle' => array(
+					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['subtitleFontSizeMobile'], 'px' ),
+				), 
+				' .responsive-block-editor-addons-text-content' => array(
+					'margin-bottom' => self::get_css_value( $attr['textBottomMarginMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['textFontSizeMobile'], 'px' ),				
+				),
 			);
 
 			$tablet_selectors = array(
@@ -12024,6 +12074,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'  => self::get_css_value( $attr['containerRightPaddingTablet'], 'px!important' ),
 					'padding-bottom' => self::get_css_value( $attr['containerBottomPaddingTablet'], 'px!important' ),
 					'padding-left'   => self::get_css_value( $attr['containerLeftPaddingTablet'], 'px!important' ),
+				),
+				' .responsive-block-editor-addons-text-container' => array(
+					'padding' => self::get_css_value( $attr['contentPaddingTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-title' => array(
+					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),				
+				), 
+				' .responsive-block-editor-addons-subtitle' => array(
+					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['subtitleFontSizeTablet'], 'px' ),				
+				), 
+				' .responsive-block-editor-addons-text-content' => array(
+					'margin-bottom' => self::get_css_value( $attr['textBottomMarginTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['textFontSizeTablet'], 'px' ),				
 				),
 			);
 
@@ -12079,6 +12144,45 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerLeftMarginMobile'    => '',
 				'containerRightMarginMobile'   => '',
 				'contentAlign'                 => 'left',
+				'columnDividerHeight'          => '',
+                'columnDividerWidth'           => '',
+                'dividerColor'                 => '#ccc',
+				'contentPadding'               => '',
+                'contentPaddingTablet'         => '',
+                'contentPaddingMobile'         => '',
+				'titleBottomMargin'            => 10,
+				'titleBottomMarginTablet'      => '',
+				'titleBottomMarginMobile'      => '',
+				'subtitleBottomMargin'         => 15,
+				'subtitleBottomMarginTablet'   => '',
+				'subtitleBottomMarginMobile'   => '',
+				'textBottomMargin'             => 0,
+				'textBottomMarginTablet'       => '',
+				'textBottomMarginMobile'       => '',
+				'subtitleAlign'                => '',
+                'titleAlign'                   => '',
+                'textAlign'                    => '',
+				'textColor'                    => '',
+                'titleColor'                   => '',
+                'subtitleColor'                => '',
+				'textFontFamily'               => '',
+                'textFontSize'                 => '',
+                'textFontSizeMobile'           => '',
+                'textFontSizeTablet'           => '',
+                'textFontWeight'               => '',
+                'textLineHeight'               => '',
+                'titleFontFamily'              => '',
+                'titleFontSize'                => '',
+                'titleFontSizeMobile'          => '',
+                'titleFontSizeTablet'          => '',
+                'titleFontWeight'              => '',
+                'titleLineHeight'              => '',
+                'subtitleFontFamily'           => '',
+                'subtitleFontSize'             => '',
+                'subtitleFontSizeMobile'       => '',
+                'subtitleFontSizeTablet'       => '',
+                'subtitleFontWeight'           => '',
+                'subtitleLineHeight'           => '',
 			);
 		}
 

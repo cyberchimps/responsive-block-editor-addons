@@ -3,6 +3,7 @@
 	grid-auto-flow: column;
     grid-auto-columns: minmax(0, 1fr);
     grid-column-gap: 30px;
+	hyphens: auto;
 }
 
 .responsive-block-editor-addons-separator-present {
@@ -26,5 +27,12 @@
 	width: 1px;
     height: 100%;
     margin: auto;
-	background: #ddd;
+	background: #ccc;
+}
+
+.responsive-block-editor-addons-title {
+	margin-top: 0px!important;
+}
+.responsive-block-editor-addons-subtitle {
+	margin-top: 0px!important;
 }

@@ -34,6 +34,45 @@ function EditorStyles(props) {
     containerLeftMarginMobile,
     containerRightMarginMobile,
     contentAlign,
+    columnDividerHeight,
+    columnDividerWidth,
+    dividerColor,
+    contentPadding,
+    contentPaddingTablet,
+    contentPaddingMobile,
+    titleBottomMargin,
+    titleBottomMarginTablet,
+    titleBottomMarginMobile,
+    subtitleBottomMargin,
+    subtitleBottomMarginTablet,
+    subtitleBottomMarginMobile,
+    textBottomMargin,
+    textBottomMarginTablet,
+    textBottomMarginMobile,
+    subtitleAlign,
+    titleAlign,
+    textAlign,
+    textColor,
+    titleColor,
+    subtitleColor,
+    titleFontFamily,
+    titleFontSize,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
+    titleFontWeight,
+    titleLineHeight,
+    subtitleFontFamily,
+    subtitleFontSize,
+    subtitleFontSizeMobile,
+    subtitleFontSizeTablet,
+    subtitleFontWeight,
+    subtitleLineHeight,
+    textFontFamily,
+    textFontSize,
+    textFontSizeMobile,
+    textFontSizeTablet,
+    textFontWeight,
+    textLineHeight,
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
@@ -52,7 +91,42 @@ function EditorStyles(props) {
 		  "padding-bottom": generateCSSUnit(containerBottomPadding, "px"), 
 		  "padding-left": generateCSSUnit(containerLeftPadding, "px"), 
       "text-align": contentAlign,
-    }
+    },
+    " .responsive-block-editor-addons-text-container": {
+      "padding": generateCSSUnit(contentPadding, "px"),
+    },  
+    " .responsive-block-editor-addons-separator": {
+      "height": generateCSSUnit(columnDividerHeight, "px"),
+      "width": generateCSSUnit(columnDividerWidth, "px"),
+      "background-color": dividerColor,
+    },
+    " .responsive-block-editor-addons-title": {
+      "margin-bottom": generateCSSUnit(titleBottomMargin, "px"),
+      "text-align": titleAlign,
+      "color": titleColor,
+      "font-family": titleFontFamily,
+      "font-size": generateCSSUnit(titleFontSize, "px"),
+      "font-weight": titleFontWeight,
+      "line-height": titleLineHeight,
+    },
+    " .responsive-block-editor-addons-subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleBottomMargin, "px"),
+      "text-align": subtitleAlign,
+      "color": subtitleColor,
+      "font-family": subtitleFontFamily,
+      "font-size": generateCSSUnit(subtitleFontSize, "px"),
+      "font-weight": subtitleFontWeight,
+      "line-height": subtitleLineHeight,
+    },
+    " .responsive-block-editor-addons-text-content": {
+      "margin-bottom": generateCSSUnit(textBottomMargin, "px"),
+      "text-align": textAlign,
+      "color": textColor,
+      "font-family": textFontFamily,
+      "font-size": generateCSSUnit(textFontSize, "px"),
+      "font-weight": textFontWeight,
+      "line-height": textLineHeight,
+    },
   };
 
   var mobile_selectors = {
@@ -66,7 +140,22 @@ function EditorStyles(props) {
 		  "padding-right": generateCSSUnit(containerRightPaddingMobile, "px"), 
 		  "padding-bottom": generateCSSUnit(containerBottomPaddingMobile, "px"), 
 		  "padding-left": generateCSSUnit(containerLeftPaddingMobile, "px"), 
-    }
+    },
+    " .responsive-block-editor-addons-text-container": {
+      "padding": generateCSSUnit(contentPaddingMobile, "px"),
+    },
+    " .responsive-block-editor-addons-title": {
+      "margin-bottom": generateCSSUnit(titleBottomMarginMobile, "px"),
+      "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleBottomMarginMobile, "px"),
+      "font-size": generateCSSUnit(subtitleFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-text-content": {
+      "margin-bottom": generateCSSUnit(textBottomMarginMobile, "px"),
+      "font-size": generateCSSUnit(textFontSizeMobile, "px"),
+    },
   };
 
   var tablet_selectors = {
@@ -80,7 +169,22 @@ function EditorStyles(props) {
 		  "padding-right": generateCSSUnit(containerRightPaddingTablet, "px"), 
 		  "padding-bottom": generateCSSUnit(containerBottomPaddingTablet, "px"), 
 		  "padding-left": generateCSSUnit(containerLeftPaddingTablet, "px"), 
-    }
+    },
+    " .responsive-block-editor-addons-text-container": {
+      "padding": generateCSSUnit(contentPaddingTablet, "px") 
+    },
+    " .responsive-block-editor-addons-title": {
+      "margin-bottom": generateCSSUnit(titleBottomMarginTablet, "px"),
+      "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-subtitle": {
+      "margin-bottom": generateCSSUnit(subtitleBottomMarginTablet, "px"),  
+      "font-size": generateCSSUnit(subtitleFontSizeTablet, "px"),  
+    },
+    " .responsive-block-editor-addons-text-content": {
+      "margin-bottom": generateCSSUnit(textBottomMarginTablet, "px"),
+      "font-size": generateCSSUnit(textFontSizeTablet, "px"),
+    },
   };
 
   var styling_css = "";

@@ -39,13 +39,134 @@ const attributes = {
     type: "boolean",
     default: false,
   },
-  textAlign: {
-    type: "string",
-    default: "left",
-  },
   contentAlign: {
     type: "string",
     default: "left",
+  },
+  //Atrributes in Style Panel
+  columnDividerHeight: {
+    type: "number",
+  },
+  columnDividerWidth: {
+    type: "number",
+  },
+  dividerColor: {
+    type: "string",
+    default: '#ccc'
+  },
+  contentPadding: {
+    type: "number",
+  },
+  contentPaddingTablet: {
+    type: "number",
+  },
+  contentPaddingMobile: {
+    type: "number",
+  },
+  titleBottomMargin: {
+    type: "number",
+    default: 10,
+  },
+  titleBottomMarginTablet: {
+    type: "number",
+  },
+  titleBottomMarginMobile: {
+    type: "number",
+  },
+  subtitleBottomMargin: {
+    type: "number",
+    default: 15,
+  },
+  subtitleBottomMarginTablet: {
+    type: "number",
+  },
+  subtitleBottomMarginMobile: {
+    type: "number",
+  },
+  textBottomMargin: {
+    type: "number",
+    default: 0,
+  },
+  textBottomMarginTablet: {
+    type: "number",
+  },
+  textBottomMarginMobile: {
+    type: "number",
+  },
+  textAlign: {
+    type: "string",
+    default: "",
+  },
+  subtitleAlign: {
+    type: "string",
+    default: "",
+  },
+  titleAlign: {
+    type: "string",
+    default: "",
+  },
+  textColor: {
+    type: "string",
+  },
+  titleColor: {
+    type: "string",
+  },
+  subtitleColor: {
+    type: "string",
+  },
+  titleFontFamily: {
+    type: "string",
+  },
+  titleFontSize: {
+    type: "number",
+  },
+  titleFontSizeMobile: {
+    type: "number",
+  },
+  titleFontSizeTablet: {
+    type: "number",
+  },
+  titleFontWeight: {
+    type: "string",
+  },
+  titleLineHeight: {
+    type: "string",
+  },
+  subtitleFontFamily: {
+    type: "string",
+  },
+  subtitleFontSize: {
+    type: "number",
+  },
+  subtitleFontSizeMobile: {
+    type: "number",
+  },
+  subtitleFontSizeTablet: {
+    type: "number",
+  },
+  subtitleFontWeight: {
+    type: "string",
+  },
+  subtitleLineHeight: {
+    type: "string",
+  },
+  textFontFamily: {
+    type: "string",
+  },
+  textFontSize: {
+    type: "number",
+  },
+  textFontSizeMobile: {
+    type: "number",
+  },
+  textFontSizeTablet: {
+    type: "number",
+  },
+  textFontWeight: {
+    type: "string",
+  },
+  textLineHeight: {
+    type: "string",
   },
   //Attributes in Advanced Settings Panel
   blockTag: {

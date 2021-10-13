@@ -17,7 +17,7 @@ registerBlockType("responsive-block-editor-addons/advanced-text", {
     "Highlight the most important text content using special typography to state something important and draw the attention of the visitors.",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,
+  icon: ResponsiveBlockEditorAddonsIcons.advance_text,
   category: "responsive_block_editor_addons",
   keywords: [
     __("text", "responsive-block-editor-addons"),
