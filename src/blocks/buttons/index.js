@@ -34,7 +34,29 @@ registerBlockType("responsive-block-editor-addons/buttons", {
     __("multi buttons", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
   ],
-  attributes: attributes,
+    example:{
+        innerBlocks: [
+            {
+                name: 'responsive-block-editor-addons/buttons-child',
+                innerBlocks: [
+                    {
+                        name: 'responsive-block-editor-addons/buttons-child',
+                        attributes: { label: '#Click Here' },
+                    },
+                ],
+            },
+            {
+                name: 'responsive-block-editor-addons/buttons-child',
+                innerBlocks: [
+                    {
+                        name: 'responsive-block-editor-addons/buttons-child',
+                        attributes: { label: '#Click Here' },
+                    },
+                ],
+            }
+        ],
+    },
+    attributes: attributes,
 
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_button_buttonAlignment: {

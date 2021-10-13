@@ -36,6 +36,14 @@ registerBlockType("responsive-block-editor-addons/advanced-heading", {
   ],
 
   attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example female name */
+            headingTitle: __( 'Write a Heading', 'responsive-block-editor-addons' ),
+            /* translators: example biography */
+            headingDesc: __( 'Write some text', 'responsive-block-editor-addons' ),
+        },
+    },
 
   supports: {
 		anchor: true
