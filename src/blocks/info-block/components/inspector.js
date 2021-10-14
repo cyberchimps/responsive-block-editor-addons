@@ -13,12 +13,12 @@ import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper"
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -407,9 +407,9 @@ export default class Inspector extends Component {
           value={iconBackgroundType}
           onChange={(value) => setAttributes({ iconBackgroundType: value })}
           options={[
-            { value: "none", label: __("None") },
-            { value: "solid", label: __("Solid") },
-            { value: "outline", label: __("Outline") },
+            { value: "none", label: __("None", "responsive-block-editor-addons") },
+            { value: "solid", label: __("Solid", "responsive-block-editor-addons") },
+            { value: "outline", label: __("Outline", "responsive-block-editor-addons") },
           ]}
         />
         {"outline" === iconBackgroundType && (
@@ -618,8 +618,8 @@ export default class Inspector extends Component {
           value={imageBoxShadowPosition}
           onChange={(value) => setAttributes({ imageBoxShadowPosition: value })}
           options={[
-            { value: "inset", label: __("Inset") },
-            { value: "outset", label: __("Outset") },
+            { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
+            { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
           ]}
         />
       </Fragment>
@@ -869,7 +869,7 @@ export default class Inspector extends Component {
                       },
                     ]}
                     help={__(
-                      "Note: Choose on what breakpoint the Info Box will stack."
+                      "Note: Choose on what breakpoint the Info Box will stack.", "responsive-block-editor-addons"
                     )}
                     onChange={(value) => setAttributes({ stack: value })}
                   />
@@ -1046,7 +1046,7 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <SelectControl
-                label={__("Type")}
+                label={__("Type", "responsive-block-editor-addons")}
                 value={resctaType}
                 onChange={(value) => setAttributes({ resctaType: value })}
                 options={[
@@ -1205,7 +1205,7 @@ export default class Inspector extends Component {
               />
               {resctaType !== "none" && (
                 <ResponsiveSpacingControl
-                  title={"Call To Action Bottom Margin"}
+                  title={"CTA Bottom Margin"}
                   attrNameTemplate="ctaBottomMargin%s"
                   values={{
                     desktop: ctaBottomMargin,
@@ -1261,7 +1261,7 @@ export default class Inspector extends Component {
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
                   label: __("Horizontal", "responsive-block-editor-addons"),
@@ -1285,7 +1285,7 @@ export default class Inspector extends Component {
               />
               <BoxShadowControlHelper
                 setAttributes={setAttributes}
-                label={__("Hover Box Shadow")}
+                label={__("Hover Box Shadow", "responsive-block-editor-addons")}
                 attrNameTemplate="hover%s"
                 boxShadowColor={{ value: hoverboxShadowColor }}
                 boxShadowHOffset={{ value: hoverboxShadowHOffset }}

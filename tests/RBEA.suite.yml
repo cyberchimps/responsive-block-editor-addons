@@ -1,0 +1,9 @@
+actor: RBEATester
+modules:
+    enabled:
+    - WebDriver:
+          url: 'http://one.wordpress.test'
+          browser: chrome # 'chrome' or 'firefox'
+          restart: true
+    - \Helper\RBEA
+    - \Codeception\Module\Asserts

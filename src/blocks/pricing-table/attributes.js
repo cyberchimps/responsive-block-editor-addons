@@ -5,11 +5,11 @@ const pricingTable = [];
 for (var i = 1; i <= ITEM_COUNT; i++) {
   pricingTable.push({
     title: "Plan " + i,
-    amount: "",
+    amount: "99",
     currency: "$",
     price_suffix: ".00",
     sub_price: "SUB PRICE",
-    features: [],
+    features: ["Add features"],
     img_url: "",
     img_id: "",
     img_width: "",

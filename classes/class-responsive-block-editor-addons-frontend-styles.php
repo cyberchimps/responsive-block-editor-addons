@@ -2027,7 +2027,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_advanced_column_child_block_default_attributes() {
 			return array(
-				'width'                    => 50,
+				'width'                    => '',
 				'topPadding'               => '',
 				'bottomPadding'            => '',
 				'leftPadding'              => '',
@@ -2839,7 +2839,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_background_type         = '';
 			$updated_button_background_color = '';
 			$box_shadow_position_css         = $attr['boxShadowPosition'];
-			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage']['url'] : null;
+			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage'] : null;
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
@@ -4307,6 +4307,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$tablet_selectors = array();
 
 			$selectors        = array(
+				' '       => array(
+					'max-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
+				),
 				' iframe' => array(
 					'width'      => '100%',
 					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
@@ -7146,11 +7149,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['descriptionSpacing'], 'px' ),
 				),
 
-				' .responsive-block-editor-addons-team-social-icons a' => array(
-					'margin-left'  => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
-					'margin-right' => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
-				),
-
 				' .responsive-block-editor-addons-team-social-icons .dashicons.dashicons-twitter' => array(
 					'color'           => $attr['socialIconColor'],
 					'font-size'       => self::get_css_value( $attr['iconSize'], 'px' ),
@@ -7205,6 +7203,29 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'text-decoration' => 'none',
 					'height'          => self::get_css_value( $attr['iconSize'], 'px' ),
 					'width'           => self::get_css_value( $attr['iconSize'], 'px' ),
+				),
+
+				' .responsive-block-editor-addons-team-social-icons a' => array(
+					'line-height'      => 'initial',
+					'margin-left'      => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
+					'margin-right'     => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
+					'padding'          => self::get_css_value( $attr['iconBackgroundSize'], 'px' ),
+					'background-color' => $attr['socialIconBackgroundColor'],
+					'border-width'     => self::get_css_value( $attr['iconBorderSize'], 'px' ),
+					'border-style'     => 'solid',
+					'border-color'     => $attr['socialIconBorderColor'],
+					'border-radius'    => self::get_css_value( $attr['iconBorderRadius'], '%' ),
+				),
+
+				' .responsive-block-editor-addons-team-social-icons li:hover a' => array(
+					'background-color' => $attr['socialIconBackgroundHoverColor'],
+					'border-width'     => self::get_css_value( $attr['iconBorderSize'], 'px' ),
+					'border-style'     => 'solid',
+					'border-color'     => $attr['socialIconBorderHoverColor'],
+				),
+
+				' .responsive-block-editor-addons-team-social-icons li:hover .dashicons' => array(
+					'color' => $attr['socialIconHoverColor'] . '!important',
 				),
 
 				' .wp-block-responsive-block-editor-addons-team' => array(
@@ -7322,96 +7343,104 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_team_default_attributes() {
 			return array(
-				'block_id'                  => '',
-				'teamBlock'                 => 'teamBlock',
-				'teamImgURL'                => '',
-				'counterId'                 => '1',
-				'count'                     => 2,
-				'gutter'                    => 'medium',
-				'designationColor'          => '',
-				'descriptionColor'          => '',
-				'socialIconColor'           => '#0066CC',
-				'titleColor'                => '',
-				'titleFontWeight'           => '',
-				'designationFontWeight'     => '',
-				'descriptionFontWeight'     => '',
-				'titleLineHeight'           => '',
-				'designationLineHeight'     => '',
-				'descriptionLineHeight'     => '',
-				'imageSize'                 => 'full',
-				'titleFontFamily'           => '',
-				'designationFontFamily'     => '',
-				'descriptionFontFamily'     => '',
-				'titleFontSize'             => 23,
-				'designationFontSize'       => 15,
-				'descriptionFontSize'       => 15,
-				'socialIconFontSize'        => 23,
-				'imageMarginTop'            => '',
-				'imageMarginBottom'         => '',
-				'imageMarginTopMobile'      => '',
-				'imageMarginBottomMobile'   => '',
-				'imageMarginTopTablet'      => '',
-				'imageMarginBottomTablet'   => '',
-				'iconSize'                  => '',
-				'titleSpacing'              => '',
-				'designationSpacing'        => '',
-				'descriptionSpacing'        => '',
-				'socialIconSpacing'         => '',
-				'titleSpacingMobile'        => '',
-				'designationSpacingMobile'  => '',
-				'descriptionSpacingMobile'  => '',
-				'socialIconSpacingMobile'   => '',
-				'titleSpacingTablet'        => '',
-				'designationSpacingTablet'  => '',
-				'descriptionSpacingTablet'  => '',
-				'socialIconSpacingTablet'   => '',
-				'imageStyle'                => '0%',
-				'imageWidth'                => 120,
-				'imageWidthMobile'          => 120,
-				'imageWidthTablet'          => 120,
-				'backgroundColor'           => '',
-				'borderColor'               => '',
-				'borderWidth'               => 2,
-				'borderRadius'              => 2,
-				'padding'                   => 2,
-				'alignment'                 => 'center',
-				'imageShape'                => '',
-				'boxShadowColor'            => '',
-				'boxShadowHOffset'          => 0,
-				'boxShadowVOffset'          => 0,
-				'boxShadowBlur'             => 0,
-				'boxShadowSpread'           => 0,
-				'boxShadowPosition'         => 'outset',
-				'opacity'                   => 50,
-				'backgroundColor2'          => '',
-				'gradientDirection'         => 100,
-				'colorLocation1'            => 0,
-				'colorLocation2'            => 100,
-				'bgGradient'                => '',
-				'backgroundImage'           => '',
-				'backgroundImagePosition'   => 'center center',
-				'backgroundImageRepeat'     => 'no-repeat',
-				'backgroundImageSize'       => 'cover',
-				'backgroundAttachment'      => 'scroll',
-				'showImage'                 => true,
-				'showName'                  => true,
-				'showDesignation'           => true,
-				'showDescription'           => true,
-				'showSocialIcons'           => true,
-				'facebook'                  => '',
-				'twitter'                   => '',
-				'linkedin'                  => '',
-				'instagram'                 => '',
-				'email'                     => '',
-				'youtube'                   => '',
-				'pinterest'                 => '',
-				'stack'                     => 'mobile',
-				'titleFontSizeMobile'       => '',
-				'titleFontSizeTablet'       => '',
-				'designationFontSizeMobile' => '',
-				'designationFontSizeTablet' => '',
-				'descriptionFontSizeMobile' => '',
-				'descriptionFontSizeTablet' => '',
+				'block_id'                       => '',
+				'teamBlock'                      => 'teamBlock',
+				'teamImgURL'                     => '',
+				'counterId'                      => '1',
+				'count'                          => 2,
+				'gutter'                         => 'medium',
+				'designationColor'               => '',
+				'descriptionColor'               => '',
+				'socialIconColor'                => '#0066CC',
+				'titleColor'                     => '',
+				'titleFontWeight'                => '',
+				'designationFontWeight'          => '',
+				'descriptionFontWeight'          => '',
+				'titleLineHeight'                => '',
+				'designationLineHeight'          => '',
+				'descriptionLineHeight'          => '',
+				'imageSize'                      => 'full',
+				'titleFontFamily'                => '',
+				'designationFontFamily'          => '',
+				'descriptionFontFamily'          => '',
+				'titleFontSize'                  => 23,
+				'designationFontSize'            => 15,
+				'descriptionFontSize'            => 15,
+				'socialIconFontSize'             => 23,
+				'imageMarginTop'                 => '',
+				'imageMarginBottom'              => '',
+				'imageMarginTopMobile'           => '',
+				'imageMarginBottomMobile'        => '',
+				'imageMarginTopTablet'           => '',
+				'imageMarginBottomTablet'        => '',
+				'iconSize'                       => '',
+				'titleSpacing'                   => '',
+				'designationSpacing'             => '',
+				'descriptionSpacing'             => '',
+				'socialIconSpacing'              => '',
+				'titleSpacingMobile'             => '',
+				'designationSpacingMobile'       => '',
+				'descriptionSpacingMobile'       => '',
+				'socialIconSpacingMobile'        => '',
+				'titleSpacingTablet'             => '',
+				'designationSpacingTablet'       => '',
+				'descriptionSpacingTablet'       => '',
+				'socialIconSpacingTablet'        => '',
+				'imageStyle'                     => '0%',
+				'imageWidth'                     => 120,
+				'imageWidthMobile'               => 120,
+				'imageWidthTablet'               => 120,
+				'backgroundColor'                => '',
+				'borderColor'                    => '',
+				'borderWidth'                    => 2,
+				'borderRadius'                   => 2,
+				'padding'                        => 2,
+				'alignment'                      => 'center',
+				'imageShape'                     => '',
+				'boxShadowColor'                 => '',
+				'boxShadowHOffset'               => 0,
+				'boxShadowVOffset'               => 0,
+				'boxShadowBlur'                  => 0,
+				'boxShadowSpread'                => 0,
+				'boxShadowPosition'              => 'outset',
+				'opacity'                        => 50,
+				'backgroundColor2'               => '',
+				'gradientDirection'              => 100,
+				'colorLocation1'                 => 0,
+				'colorLocation2'                 => 100,
+				'bgGradient'                     => '',
+				'backgroundImage'                => '',
+				'backgroundImagePosition'        => 'center center',
+				'backgroundImageRepeat'          => 'no-repeat',
+				'backgroundImageSize'            => 'cover',
+				'backgroundAttachment'           => 'scroll',
+				'showImage'                      => true,
+				'showName'                       => true,
+				'showDesignation'                => true,
+				'showDescription'                => true,
+				'showSocialIcons'                => true,
+				'facebook'                       => '',
+				'twitter'                        => '',
+				'linkedin'                       => '',
+				'instagram'                      => '',
+				'email'                          => '',
+				'youtube'                        => '',
+				'pinterest'                      => '',
+				'stack'                          => 'mobile',
+				'titleFontSizeMobile'            => '',
+				'titleFontSizeTablet'            => '',
+				'designationFontSizeMobile'      => '',
+				'designationFontSizeTablet'      => '',
+				'descriptionFontSizeMobile'      => '',
+				'descriptionFontSizeTablet'      => '',
+				'socialIconBorderColor'          => '#fff',
+				'socialIconHoverColor'           => '',
+				'socialIconBackgroundHoverColor' => '',
+				'socialIconBackgroundColor'      => '',
+				'socialIconBorderHoverColor'     => '#fff',
+				'iconBackgroundSize'             => '',
+				'iconBorderSize'                 => '',
+				'iconBorderRadius'               => 0,
 			);
 		}
 
@@ -7761,6 +7790,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$selectors = array(
 				' '                   => array(
 					'padding' => self::get_css_value( $attr['blockPadding'], 'px' ) . ' !important',
+				),
+				' .slick-arrow svg'   => array(
+					'height' => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'width'  => self::get_css_value( $attr['arrowSize'], 'px' ),
+					'fill'   => $attr['arrowColor'],
 				),
 				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content' => array(
 					'border-width'  => 999 !== $attr['borderWidth'] && 1 === $attr['blockBorderWidth'] ? self::get_css_value( $attr['borderWidth'], 'px' ) : self::get_css_value( $attr['blockBorderWidth'], 'px' ), // For compatibility with v1.3.2.
@@ -8924,7 +8958,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'digitFontSizeMobile'          => '',
 				'digitFontSizeTablet'          => '',
 				'digitFontWeight'              => '500',
-				'digitLetterSpacing'           => 1,
+				'digitLetterSpacing'           => 0,
 				'digitLineHeight'              => 2,
 				'digitColor'                   => '#fff',
 				'labelFontFamily'              => '',
@@ -8935,7 +8969,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'labelLineHeight'              => 2,
 				'labelFontWeight'              => '500',
 				'labelLeftPadding'             => 0,
-				'labelLetterSpacing'           => 1,
+				'labelLetterSpacing'           => 0,
 				'boxItemMarginTop'             => 0,
 				'boxItemMarginRight'           => 0,
 				'boxItemMarginBottom'          => 0,
@@ -10071,10 +10105,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$text_color_hover        = $attr['buttonTransparent'] ? $attr['buttonColorHover'] : $attr['buttonTextColorHover'];
 			$button_background_hover = $attr['buttonTransparent'] ? '' : $attr['buttonColorHover'];
 
+			$justify_content_direction = 'flex-start';
+			if ( 'left' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'flex-start';
+			} elseif ( 'center' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'center';
+			} elseif ( 'right' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'flex-end';
+			}
+
 			$selectors = array(
 				' ' => array(
-					'margin'  => self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
-					'padding' => self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
+					'margin'          => self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
+					'padding'         => self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
+					'display'         => 'flex',
+					'justify-content' => $justify_content_direction,
 				),
 				' .responsive-block-editor-addons-call-mail-button-button-container' => array(
 					'width'            => $button_width_css,
@@ -10226,6 +10271,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconTextGap'              => 5,
 				'iconTextGapMobile'        => 3,
 				'iconTextGapTablet'        => 5,
+				'buttonAlign'              => 'left',
 			);
 		}
 
@@ -11797,6 +11843,236 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonFontSizeTablet'       => 16,
 				'buttonFontWeight'           => '100',
 				'buttonLineHeight'           => 1,
+			);
+		}
+
+		/**
+		 * Get Instagram Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_instagram_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_instagram_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['instaTopPadding'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['instaBottomPadding'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['instaLeftPadding'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['instaRightPadding'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['instaTopMargin'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['instaBottomMargin'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['instaLeftMargin'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['instaRightMargin'], 'px' ),
+				),
+				' .responsive-block-editor-addons-intro-page' => array(
+					'border'  => '1px solid black',
+					'padding' => '0 20px',
+				),
+				' .responsive-block-editor-addons-intro-page p > a' => array(
+					'color' => 'blue',
+				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
+					'grid-gap'              => self::get_css_value( $attr['imagesGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-instagram-image' => array(
+					'border-radius' => self::get_css_value( $attr['borderRadius'], '%' ),
+				),
+				' .responsive-block-editor-addons-instagram-wrapper' => array(
+					'width' => self::get_css_value( 100, '%' ),
+				),
+			);
+
+			$mobile_selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['instaTopPaddingMobile'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['instaBottomPaddingMobile'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['instaLeftPaddingMobile'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['instaRightPaddingMobile'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['instaTopMarginMobile'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['instaBottomMarginMobile'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['instaLeftMarginMobile'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['instaRightMarginMobile'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columnsMobile'] . ', 1fr)',
+				),
+			);
+
+			$tablet_selectors = array(
+				' ' => array(
+					'padding-top'    => self::get_css_value( $attr['instaTopPaddingTablet'], 'px' ) . '!important',
+					'padding-bottom' => self::get_css_value( $attr['instaBottomPaddingTablet'], 'px' ) . '!important',
+					'padding-left'   => self::get_css_value( $attr['instaLeftPaddingTablet'], 'px' ) . '!important',
+					'padding-right'  => self::get_css_value( $attr['instaRightPaddingTablet'], 'px' ) . '!important',
+					'margin-top'     => self::get_css_value( $attr['instaTopMarginTablet'], 'px' ) . '!important',
+					'margin-bottom'  => self::get_css_value( $attr['instaBottomMarginTablet'], 'px' ) . '!important',
+					'margin-left'    => self::get_css_value( $attr['instaLeftMarginTablet'], 'px' ) . '!important',
+					'margin-right'   => self::get_css_value( $attr['instaRightMarginTablet'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-instagram-posts-container' => array(
+					'grid-template-columns' => 'repeat(' . $attr['columnsTablet'] . ', 1fr)',
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-instagram.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for instagram block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_instagram_default_attributes() {
+			return array(
+				'block_id'                 => '',
+				'token'                    => '',
+				'columns'                  => '4',
+				'columnsMobile'            => '',
+				'columnsTablet'            => '',
+				'numberOfItems'            => 4,
+				'gridGap'                  => 0,
+				'thumbs'                   => '',
+				'backgroundColor'          => 'transparent',
+				'borderRadius'             => 0,
+				'hasEqualImages'           => false,
+				'showCaptions'             => false,
+				'instaTopPadding'          => 0,
+				'instaBottomPadding'       => 0,
+				'instaRightPadding'        => 0,
+				'instaLeftPadding'         => 0,
+				'instaTopPaddingMobile'    => '',
+				'instaBottomPaddingMobile' => '',
+				'instaRightPaddingMobile'  => '',
+				'instaLeftPaddingMobile'   => '',
+				'instaTopPaddingTablet'    => '',
+				'instaBottomPaddingTablet' => '',
+				'instaRightPaddingTablet'  => '',
+				'instaLeftPaddingTablet'   => '',
+				'instaTopMargin'           => 0,
+				'instaBottomMargin'        => 0,
+				'instaRightMargin'         => 0,
+				'instaLeftMargin'          => 0,
+				'instaTopMarginMobile'     => '',
+				'instaBottomMarginMobile'  => '',
+				'instaRightMarginMobile'   => '',
+				'instaLeftMarginMobile'    => '',
+				'instaTopMarginTablet'     => '',
+				'instaBottomMarginTablet'  => '',
+				'instaRightMarginTablet'   => '',
+				'instaLeftMarginTablet'    => '',
+				'gridSize'                 => 700,
+				'imagesGap'                => 0,
+			);
+		}
+
+		/**
+		 * Get Image Hotspot Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_image_hotspot_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_image_hotspot_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$updated_point_opacity = $attr['pointOpacity'] / 100;
+
+			$selectors = array(
+				' '                                      => array(
+					'display'         => 'flex',
+					'justify-content' => 'center',
+				),
+				' .responsive_block_addons__image'       => array(
+					'display' => 'block',
+				),
+				' .responsive_block_addons__dot'         => array(
+					'left'                      => 0,
+					'top'                       => 0,
+					'opacity'                   => $updated_point_opacity,
+					'outline'                   => 'none',
+					'cursor'                    => 'pointer',
+					'position'                  => 'absolute',
+					'border-radius'             => '50%',
+					'background-color'          => $attr['pointBackgroundColor'],
+					'padding'                   => self::get_css_value( $attr['pointSpacing'], 'px' ),
+					'animation-name'            => $attr['animationName'] . '' . $attr['animationDirection'],
+					'animation-timing-function' => $attr['animationCurve'],
+					'animation-duration'        => $attr['animationDuration'] . 'ms',
+					'animation-delay'           => $attr['animationDelay'] . 'ms',
+					'animation-iteration-count' => 'once' === $attr['animationRepeat'] ? 1 : 'infinite',
+				),
+				' .responsive_block_addons__dot::before' => array(
+					'display'   => $attr['pulseEffect'] ? 'block' : 'none',
+					'animation' => $attr['pulseEffect'] ? '' : 'none',
+				),
+				' .responsive_block_addons__dot-content svg' => array(
+					'font-size' => self::get_css_value( $attr['hotspotSize'], 'px' ),
+				),
+				' .responsive_block_addons__dot-content' => array(
+					'fill' => $attr['iconColor'],
+				),
+				' .responsive_block_addons__wrapper'     => array(
+					'position' => 'relative',
+				),
+			);
+
+			$mobile_selectors = array();
+
+			$tablet_selectors = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-image-hotspot.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for image hotspot block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_image_hotspot_default_attributes() {
+			return array(
+				'block_id'             => '',
+				'pointBackgroundColor' => '#333',
+				'iconColor'            => '#fff',
+				'pointOpacity'         => 100,
+				'animationName'        => 'none',
+				'animationDirection'   => 'Left',
+				'animationRepeat'      => 'once',
+				'animationDuration'    => 1000,
+				'animationDelay'       => 0,
+				'animationCurve'       => '',
+				'pulseEffect'          => true,
+				'hotspotSize'          => 16,
+				'pointSpacing'         => 6,
 			);
 		}
 

@@ -329,7 +329,7 @@ export default class Inspector extends Component {
                 {"icon" == source_type && (
                   <Fragment>
                     <p className="components-base-control__label">
-                      {__("Icon")}
+                      {__("Icon", "responsive-block-editor-addons")}
                     </p>
                     <FontIconPicker
                       icons={svg_icons}
@@ -347,9 +347,9 @@ export default class Inspector extends Component {
                   </Fragment>
                 )}
                 <hr className="responsive-block-editor-addons-editor__separator" />
-                <h2>{__("List Item Link")}</h2>
+                <h2>{__("List Item Link", "responsive-block-editor-addons")}</h2>
                 <ToggleControl
-                  label={__("Disable Link")}
+                  label={__("Disable Link", "responsive-block-editor-addons")}
                   checked={disableLink}
                   onChange={(value) =>
                     setAttributes({ disableLink: !disableLink })
@@ -358,15 +358,15 @@ export default class Inspector extends Component {
                 {!disableLink && (
                   <Fragment>
                     <p className="components-base-control__label">
-                      {__("URL")}
+                      {__("URL", "responsive-block-editor-addons")}
                     </p>
                     <TextControl
                       value={link}
                       onChange={(value) => setAttributes({ link: value })}
-                      placeholder={__("Enter URL")}
+                      placeholder={__("Enter URL", "responsive-block-editor-addons")}
                     />
                     <ToggleControl
-                      label={__("Open in New Tab")}
+                      label={__("Open in New Tab", "responsive-block-editor-addons")}
                       checked={target}
                       onChange={(value) => setAttributes({ target: !target })}
                     />

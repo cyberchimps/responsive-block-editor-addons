@@ -9,7 +9,7 @@ import renderSVG from "../../../../renderIcon";
 import BoxShadowControl from "../../../../utils/components/box-shadow";
 import EditorStyles from "./editor-styles";
 import BlockBorderHelperControl from "../../../../settings-components/BlockBorderSettings";
-import ResponsiveSpacingControl from "../../../../settings-components/Responsive Spacing Settings";
+import ResponsiveSpacingControl from "../../../../settings-components/ResponsiveSpacingSettings";
 
 const { __ } = wp.i18n;
 
@@ -133,7 +133,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
           <InspectorTabs hasContent={false}>
             <InspectorTab key={"style"}>
               <PanelBody
-                title={__("Style")}
+                title={__("Style", "responsive-block-editor-addons")}
                 initialOpen={false}
                 className="responsive_block_editor_addons__url-panel-body"
               >
@@ -143,7 +143,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
                   )}
                 </p>
                 <hr className="responsive-block-editor-addons-editor__separator" />
-                <h2>{__("Border")}</h2>
+                <h2>{__("Border", "responsive-block-editor-addons")}</h2>
                 <BlockBorderHelperControl
                   attrNameTemplate="block%s"
                   values={{
@@ -158,29 +158,29 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
 
                 <BoxShadowControl
                   setAttributes={setAttributes}
-                  label={__("Box Shadow")}
-                  boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                  label={__("Box Shadow", "responsive-block-editor-addons")}
+                  boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                   boxShadowHOffset={{
                     value: boxShadowHOffset,
-                    label: __("Horizontal"),
+                    label: __("Horizontal", "responsive-block-editor-addons"),
                   }}
                   boxShadowVOffset={{
                     value: boxShadowVOffset,
-                    label: __("Vertical"),
+                    label: __("Vertical", "responsive-block-editor-addons"),
                   }}
-                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
                   boxShadowSpread={{
                     value: boxShadowSpread,
-                    label: __("Spread"),
+                    label: __("Spread", "responsive-block-editor-addons"),
                   }}
                   boxShadowPosition={{
                     value: boxShadowPosition,
-                    label: __("Position"),
+                    label: __("Position", "responsive-block-editor-addons"),
                   }}
                 />
               </PanelBody>
               <PanelBody
-                title={__("Spacing")}
+                title={__("Spacing", "responsive-block-editor-addons")}
                 initialOpen={false}
                 className="responsive_block_editor_addons__url-panel-body"
               >
@@ -225,7 +225,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
               {"accordion" === layout && accordionRenderIcon()}
               <RichText
                 tagName={"span" != headingTag ? headingTag : "div"}
-                placeholder={__("Title")}
+                placeholder={__("Title", "responsive-block-editor-addons")}
                 value={title}
                 onChange={(value) => setAttributes({ title: value })}
                 className="responsive-block-editor-addons-title"
@@ -241,7 +241,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
               <span>
                 <RichText
                   tagName="p"
-                  placeholder={__("Content")}
+                  placeholder={__("Content", "responsive-block-editor-addons")}
                   value={content}
                   onChange={(value) => setAttributes({ content: value })}
                   multiline={false}

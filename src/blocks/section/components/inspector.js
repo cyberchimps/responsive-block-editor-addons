@@ -5,12 +5,12 @@
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
+import VideoBackgroundControl from "../../../settings-components/BlockBackgroundSettings/VideoBackgroundSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 import generateCSSUnit from "../../../generateCSSUnit";
 
 
@@ -206,15 +206,15 @@ export default class Inspector extends Component {
     } = this.props;
 
     const imagePositionOptions = [
-      { value: "top left", label: __("Top Left") },
-      { value: "top center", label: __("Top Center") },
-      { value: "top right", label: __("Top Right") },
-      { value: "center left", label: __("Center Left") },
-      { value: "center center", label: __("Center Center") },
-      { value: "center right", label: __("Center Right") },
-      { value: "bottom left", label: __("Bottom Left") },
-      { value: "bottom center", label: __("Bottom Center") },
-      { value: "bottom right", label: __("Bottom Right") },
+      { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
+      { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
+      { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
+      { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
+      { value: "center center", label: __("Center Center", "responsive-block-editor-addons") },
+      { value: "center right", label: __("Center Right", "responsive-block-editor-addons") },
+      { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
+      { value: "bottom center", label: __("Bottom Center", "responsive-block-editor-addons") },
+      { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
     ];
 
     // Section title tags
@@ -262,7 +262,7 @@ export default class Inspector extends Component {
             >
               {align != "full" && (
                 <RangeControl
-                  label={__("Width")}
+                  label={__("Width", "responsive-block-editor-addons")}
                   value={width}
                   min={0}
                   max={2000}
@@ -302,7 +302,7 @@ export default class Inspector extends Component {
                         tabout = (
                           <Fragment>
                             <RangeControl
-                              label={__("Inner Width")}
+                              label={__("Inner Width", "responsive-block-editor-addons")}
                               value={innerWidthMobile}
                               min={0}
                               max={2000}
@@ -316,7 +316,7 @@ export default class Inspector extends Component {
                         tabout = (
                           <Fragment>
                             <RangeControl
-                              label={__("Inner Width Tablet")}
+                              label={__("Inner Width Tablet", "responsive-block-editor-addons")}
                               value={innerWidthTablet}
                               min={0}
                               max={2000}
@@ -330,7 +330,7 @@ export default class Inspector extends Component {
                         tabout = (
                           <Fragment>
                             <RangeControl
-                              label={__("Inner Width")}
+                              label={__("Inner Width", "responsive-block-editor-addons")}
                               value={innerWidth}
                               min={0}
                               max={2000}
@@ -465,7 +465,7 @@ export default class Inspector extends Component {
                       {imagePositionTab === "desktop" && (
                         <Fragment>
                           <SelectControl
-                            label={__("Image Position")}
+                            label={__("Image Position", "responsive-block-editor-addons")}
                             value={backgroundPosition}
                             onChange={(value) =>
                               setAttributes({ backgroundPosition: value })
@@ -477,7 +477,7 @@ export default class Inspector extends Component {
                       {imagePositionTab === "tablet" && (
                         <Fragment>
                           <SelectControl
-                            label={__("Image Position Tablet")}
+                            label={__("Image Position Tablet", "responsive-block-editor-addons")}
                             value={backgroundPositionTablet}
                             onChange={(value) =>
                               setAttributes({ backgroundPositionTablet: value })
@@ -489,7 +489,7 @@ export default class Inspector extends Component {
                       {imagePositionTab === "mobile" && (
                         <Fragment>
                           <SelectControl
-                            label={__("Image Position Mobile")}
+                            label={__("Image Position Mobile", "responsive-block-editor-addons")}
                             value={backgroundPositionMobile}
                             onChange={(value) =>
                               setAttributes({ backgroundPositionMobile: value })
@@ -499,27 +499,27 @@ export default class Inspector extends Component {
                         </Fragment>
                       )}
                       <SelectControl
-                        label={__("Attachment")}
+                        label={__("Attachment", "responsive-block-editor-addons")}
                         value={backgroundAttachment}
                         onChange={(value) =>
                           setAttributes({ backgroundAttachment: value })
                         }
                         options={[
-                          { value: "fixed", label: __("Fixed") },
-                          { value: "scroll", label: __("Scroll") },
+                          { value: "fixed", label: __("Fixed", "responsive-block-editor-addons") },
+                          { value: "scroll", label: __("Scroll", "responsive-block-editor-addons") },
                         ]}
                       />
                       <SelectControl
-                        label={__("Repeat")}
+                        label={__("Repeat", "responsive-block-editor-addons")}
                         value={backgroundRepeat}
                         onChange={(value) =>
                           setAttributes({ backgroundRepeat: value })
                         }
                         options={[
-                          { value: "no-repeat", label: __("No Repeat") },
-                          { value: "repeat", label: __("Repeat") },
-                          { value: "repeat-x", label: __("Repeat-x") },
-                          { value: "repeat-y", label: __("Repeat-y") },
+                          { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
+                          { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
                         ]}
                       />
                       <TabPanel
@@ -558,61 +558,61 @@ export default class Inspector extends Component {
                       </TabPanel>
                       {imageSizeTab === "desktop" && (
                         <SelectControl
-                          label={__("Size")}
+                          label={__("Size", "responsive-block-editor-addons")}
                           value={backgroundSize}
                           onChange={(value) =>
                             setAttributes({ backgroundSize: value })
                           }
                           options={[
-                            { value: "auto", label: __("Auto") },
-                            { value: "cover", label: __("Cover") },
-                            { value: "contain", label: __("Contain") },
+                            { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                            { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                            { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                           ]}
                         />
                       )}
                       {imageSizeTab === "tablet" && (
                         <SelectControl
-                          label={__("Size Tablet")}
+                          label={__("Size Tablet", "responsive-block-editor-addons")}
                           value={backgroundSizeTablet}
                           onChange={(value) =>
                             setAttributes({ backgroundSizeTablet: value })
                           }
                           options={[
-                            { value: "auto", label: __("Auto") },
-                            { value: "cover", label: __("Cover") },
-                            { value: "contain", label: __("Contain") },
+                            { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                            { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                            { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                           ]}
                         />
                       )}
                       {imageSizeTab === "mobile" && (
                         <SelectControl
-                          label={__("Size Mobile")}
+                          label={__("Size Mobile", "responsive-block-editor-addons")}
                           value={backgroundSizeMobile}
                           onChange={(value) =>
                             setAttributes({ backgroundSizeMobile: value })
                           }
                           options={[
-                            { value: "auto", label: __("Auto") },
-                            { value: "cover", label: __("Cover") },
-                            { value: "contain", label: __("Contain") },
+                            { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                            { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                            { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                           ]}
                         />
                       )}
                       <SelectControl
-                        label={__("Image Overlay Type")}
+                        label={__("Image Overlay Type", "responsive-block-editor-addons")}
                         value={overlayType}
                         onChange={(value) =>
                           setAttributes({ overlayType: value })
                         }
                         options={[
-                          { value: "color", label: __("Color") },
-                          { value: "gradient", label: __("Gradient") },
+                          { value: "color", label: __("Color", "responsive-block-editor-addons") },
+                          { value: "gradient", label: __("Gradient", "responsive-block-editor-addons") },
                         ]}
                       />
                       {overlayType == "color" && (
                         <Fragment>
                           <p className="responsive-setting-label">
-                            {__("Image Overlay Color")}
+                            {__("Image Overlay Color", "responsive-block-editor-addons")}
                             <span className="components-base-control__label">
                               <span
                                 className="component-color-indicator"
@@ -637,7 +637,7 @@ export default class Inspector extends Component {
                       {"gradient" == overlayType && (
                         <Fragment>
                           <p className="responsive-setting-label">
-                            {__("Color 1")}
+                            {__("Color 1", "responsive-block-editor-addons")}
                             <span className="components-base-control__label">
                               <span
                                 className="component-color-indicator"
@@ -657,7 +657,7 @@ export default class Inspector extends Component {
                             allowReset
                           />
                           <RangeControl
-                            label={__("Location 1")}
+                            label={__("Location 1", "responsive-block-editor-addons")}
                             value={gradientOverlayLocation1}
                             onChange={(value) =>
                               setAttributes({ gradientOverlayLocation1: value })
@@ -667,7 +667,7 @@ export default class Inspector extends Component {
                             allowReset
                           />
                           <p className="responsive-setting-label">
-                            {__("Color 2")}
+                            {__("Color 2", "responsive-block-editor-addons")}
                             <span className="components-base-control__label">
                               <span
                                 className="component-color-indicator"
@@ -687,7 +687,7 @@ export default class Inspector extends Component {
                             allowReset
                           />
                           <RangeControl
-                            label={__("Location 2")}
+                            label={__("Location 2", "responsive-block-editor-addons")}
                             value={gradientOverlayLocation2}
                             onChange={(value) =>
                               setAttributes({ gradientOverlayLocation2: value })
@@ -697,19 +697,19 @@ export default class Inspector extends Component {
                             allowReset
                           />
                           <SelectControl
-                            label={__("Type")}
+                            label={__("Type", "responsive-block-editor-addons")}
                             value={gradientOverlayType}
                             onChange={(value) =>
                               setAttributes({ gradientOverlayType: value })
                             }
                             options={[
-                              { value: "linear", label: __("Linear") },
-                              { value: "radial", label: __("Radial") },
+                              { value: "linear", label: __("Linear", "responsive-block-editor-addons") },
+                              { value: "radial", label: __("Radial", "responsive-block-editor-addons") },
                             ]}
                           />
                           {"linear" == gradientOverlayType && (
                             <RangeControl
-                              label={__("Angle")}
+                              label={__("Angle", "responsive-block-editor-addons")}
                               value={gradientOverlayAngle}
                               onChange={(value) =>
                                 setAttributes({ gradientOverlayAngle: value })
@@ -721,7 +721,7 @@ export default class Inspector extends Component {
                           )}
                           {"radial" == gradientOverlayType && (
                             <SelectControl
-                              label={__("Type")}
+                              label={__("Type", "responsive-block-editor-addons")}
                               value={gradientOverlayPosition}
                               onChange={(value) =>
                                 setAttributes({
@@ -731,33 +731,33 @@ export default class Inspector extends Component {
                               options={[
                                 {
                                   value: "center center",
-                                  label: __("Center Center"),
+                                  label: __("Center Center", "responsive-block-editor-addons"),
                                 },
                                 {
                                   value: "center left",
-                                  label: __("Center Left"),
+                                  label: __("Center Left", "responsive-block-editor-addons"),
                                 },
                                 {
                                   value: "center right",
-                                  label: __("Center Right"),
+                                  label: __("Center Right", "responsive-block-editor-addons"),
                                 },
                                 {
                                   value: "top center",
-                                  label: __("Top Center"),
+                                  label: __("Top Center", "responsive-block-editor-addons"),
                                 },
-                                { value: "top left", label: __("Top Left") },
-                                { value: "top right", label: __("Top Right") },
+                                { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
+                                { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
                                 {
                                   value: "bottom center",
-                                  label: __("Bottom Center"),
+                                  label: __("Bottom Center", "responsive-block-editor-addons"),
                                 },
                                 {
                                   value: "bottom left",
-                                  label: __("Bottom Left"),
+                                  label: __("Bottom Left", "responsive-block-editor-addons"),
                                 },
                                 {
                                   value: "bottom right",
-                                  label: __("Bottom Right"),
+                                  label: __("Bottom Right", "responsive-block-editor-addons"),
                                 },
                               ]}
                             />
@@ -850,24 +850,24 @@ export default class Inspector extends Component {
                 />
               <BoxShadowControl
                 setAttributes={setAttributes}
-                label={__("Box Shadow")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                label={__("Box Shadow", "responsive-block-editor-addons")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
-                  label: __("Horizontal"),
+                  label: __("Horizontal", "responsive-block-editor-addons"),
                 }}
                 boxShadowVOffset={{
                   value: boxShadowVOffset,
-                  label: __("Vertical"),
+                  label: __("Vertical", "responsive-block-editor-addons"),
                 }}
-                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur") }}
+                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
                 boxShadowSpread={{
                   value: boxShadowSpread,
-                  label: __("Spread"),
+                  label: __("Spread", "responsive-block-editor-addons"),
                 }}
                 boxShadowPosition={{
                   value: boxShadowPosition,
-                  label: __("Position"),
+                  label: __("Position", "responsive-block-editor-addons"),
                 }}
               />
             </PanelBody>

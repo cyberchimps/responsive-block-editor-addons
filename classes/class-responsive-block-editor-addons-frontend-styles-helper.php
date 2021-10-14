@@ -366,6 +366,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				case 'responsive-block-editor-addons/wp-search':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_wp_search_css( $blockattr, $block_id );
 					break;
+				case 'responsive-block-editor-addons/instagram':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_instagram_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/image-hotspot':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_image_hotspot_css( $blockattr, $block_id );
+					break;
 				default:
 					// Nothing to do here.
 					break;

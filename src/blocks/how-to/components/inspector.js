@@ -9,8 +9,8 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import { number } from "prop-types";
 
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 
@@ -324,7 +324,7 @@ export default class Inspector extends Component {
                             />
                             {showMaterials && (
                                 <RangeControl
-                                    label={__("Number Of Materials")}
+                                    label={__("Number Of Materials", "responsive-block-editor-addons")}
                                     value={numberOfMaterials}
                                     onChange={(newCount) => {
                                         let cloneMaterials = [...materials]

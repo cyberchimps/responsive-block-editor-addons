@@ -2,11 +2,11 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 
 /**
  * Inspector Controls
@@ -299,14 +299,14 @@ export default class Inspector extends Component {
               )}
 
               <SelectControl
-                label={__("Height")}
+                label={__("Height", "responsive-block-editor-addons")}
                 value={height}
                 onChange={(value) => setAttributes({ height: value })}
                 options={[
-                  { value: "", label: __("Normal") },
-                  { value: "half", label: __("Half-Screen Height") },
-                  { value: "full", label: __("Full-Screen Height") },
-                  { value: "custom", label: __("Custom") },
+                  { value: "", label: __("Normal", "responsive-block-editor-addons") },
+                  { value: "half", label: __("Half-Screen Height", "responsive-block-editor-addons") },
+                  { value: "full", label: __("Full-Screen Height", "responsive-block-editor-addons") },
+                  { value: "custom", label: __("Custom", "responsive-block-editor-addons") },
                 ]}
               />
               {"custom" == height && (
@@ -324,23 +324,23 @@ export default class Inspector extends Component {
                 />
               )}
               <SelectControl
-                label={__("Horizontal Align")}
+                label={__("Horizontal Align", "responsive-block-editor-addons")}
                 value={blockAlign}
                 onChange={(value) => setAttributes({ blockAlign: value })}
                 options={[
-                  { value: "left", label: __("Left") },
-                  { value: "right", label: __("Right") },
-                  { value: "center", label: __("Center") },
+                  { value: "left", label: __("Left", "responsive-block-editor-addons") },
+                  { value: "right", label: __("Right", "responsive-block-editor-addons") },
+                  { value: "center", label: __("Center", "responsive-block-editor-addons") },
                 ]}
               />
               <SelectControl
-                label={__("Vertical Align")}
+                label={__("Vertical Align", "responsive-block-editor-addons")}
                 value={verticalAlign}
                 onChange={(value) => setAttributes({ verticalAlign: value })}
                 options={[
-                  { value: "flex-start", label: __("Top") },
-                  { value: "flex-end", label: __("Bottom") },
-                  { value: "center", label: __("Center") },
+                  { value: "flex-start", label: __("Top", "responsive-block-editor-addons") },
+                  { value: "flex-end", label: __("Bottom", "responsive-block-editor-addons") },
+                  { value: "center", label: __("Center", "responsive-block-editor-addons") },
                 ]}
               />
               <RangeControl
@@ -367,7 +367,7 @@ export default class Inspector extends Component {
               />
               {"color" == backgroundType && (
                 <Fragment>
-                  <ColorBackgroundControl 
+                  <ColorBackgroundControl
                     {...this.props}
                   />
                 </Fragment>
@@ -463,7 +463,7 @@ export default class Inspector extends Component {
               <BoxShadowControl
                 setAttributes={setAttributes}
                 label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                 boxShadowHOffset={{
                   value: boxShadowHOffset,
                   label: __("Horizontal", "responsive-block-editor-addons"),

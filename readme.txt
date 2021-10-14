@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenber
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.3.4
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,18 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
+= 1.4.0 - 14th October 2021 =
+* New - Instagram Block
+* New - Image Hotspot Block
+* Feature - Pattern Importer - Added 3 new sections and 2 new pages
+* Feature - Team Block - Added social icon styles
+* Feature - Testimonial Slider Block - Added none option for arrow and dots
+* Feature - Call/Mail Button Block - Added option to align the block
+* Fix - Card Block - Issue with background type image
+* Fix - Accordion Block - Collapse other items not working
+* Fix - Google Map - Default extra space at bottom
+* Fix - Testimonial Slider Block - Arrow size is not working in the editor
+
 = 1.3.4 - 29th September 2021 =
 * New - Anchor Block
 * New - Call/Mail Link Button Block

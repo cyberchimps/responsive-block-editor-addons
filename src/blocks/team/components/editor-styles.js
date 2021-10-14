@@ -72,12 +72,20 @@ function EditorStyles(props) {
     backgroundAttachment,
     gutter,
     count,
-	titleFontSizeMobile,
-	titleFontSizeTablet,
-	designationFontSizeMobile,
-	designationFontSizeTablet,
-	descriptionFontSizeMobile,
-	descriptionFontSizeTablet,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
+    designationFontSizeMobile,
+    designationFontSizeTablet,
+    descriptionFontSizeMobile,
+    descriptionFontSizeTablet,
+    socialIconBorderColor,
+    socialIconHoverColor,
+    socialIconBackgroundHoverColor,
+    socialIconBackgroundColor,
+    socialIconBorderHoverColor,
+    iconBackgroundSize,
+    iconBorderSize,
+    iconBorderRadius,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
@@ -232,6 +240,22 @@ function EditorStyles(props) {
       "text-decoration": "none",
       "height": generateCSSUnit(iconSize, "px"),
       "width": generateCSSUnit(iconSize, "px"),
+    },
+
+    " .responsive-block-editor-addons-team-social-icons a": {
+      "padding": generateCSSUnit(iconBackgroundSize, 'px'),
+      "background-color": socialIconBackgroundColor,
+      "border": generateCSSUnit(iconBorderSize,'px') + ' solid ' + socialIconBorderColor,
+      "border-radius": generateCSSUnit(iconBorderRadius, '%')
+    },
+
+    " .responsive-block-editor-addons-team-social-icons li:hover a": {
+      "background-color": socialIconBackgroundHoverColor,
+      "border": generateCSSUnit(iconBorderSize,'px') + ' solid ' + socialIconBorderHoverColor,
+    },
+
+    " .responsive-block-editor-addons-team-social-icons li:hover .dashicons": {
+      color: socialIconHoverColor+'!important',
     },
 
     " .wp-block-responsive-block-editor-addons-team": {

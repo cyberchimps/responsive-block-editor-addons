@@ -56,6 +56,7 @@
      iconTextGap,
      iconTextGapMobile,
      iconTextGapTablet,
+     buttonAlign,
    } = props.attributes;
 
    let buttonWidthCSS = "fixed" === buttonWidthType ? "fit-content" : "flexible" === buttonWidthType ? generateCSSUnit(buttonWidth, "px") : generateCSSUnit(100, "%");
@@ -70,10 +71,21 @@
    let textColorHover = buttonTransparent ? buttonColorHover : buttonTextColorHover;
    let buttonBackgroundHover = buttonTransparent ? "" : buttonColorHover;
 
+   let justifyButtonDirection = 'flex-start';
+   if(buttonAlign === 'center') {
+     justifyButtonDirection = 'center';
+   }else if(buttonAlign === 'right') {
+     justifyButtonDirection = 'flex-end';
+   }else if(buttonAlign === 'left') {
+     justifyButtonDirection = 'flex-start';
+   }
+
    var selectors = {
     "": {
       "margin": `${generateCSSUnit(blockTopMargin, "px")} ${generateCSSUnit(blockRightMargin, "px")} ${generateCSSUnit(blockBottomMargin, "px")} ${generateCSSUnit(blockLeftMargin, "px")}`,
       "padding": `${generateCSSUnit(blockTopPadding, "px")} ${generateCSSUnit(blockRightPadding, "px")} ${generateCSSUnit(blockBottomPadding, "px")} ${generateCSSUnit(blockLeftPadding, "px")}`,
+      "display": 'flex',
+      "justify-content": justifyButtonDirection,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
       "width": buttonWidthCSS,

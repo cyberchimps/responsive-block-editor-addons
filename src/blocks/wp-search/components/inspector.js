@@ -7,10 +7,10 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 
 import InspectorTab from "../../../components/InspectorTab"
@@ -162,11 +162,11 @@ export default class Inspector extends Component {
               initialOpen={true}
             >
               <SelectControl
-                label={__("Layout")}
+                label={__("Layout", "responsive-block-editor-addons")}
                 value={layout}
                 options={[
-                  { value: "classic", label: __("Classic") },
-                  { value: "minimal", label: __("Minimal") },
+                  { value: "classic", label: __("Classic", "responsive-block-editor-addons") },
+                  { value: "minimal", label: __("Minimal", "responsive-block-editor-addons") },
                 ]}
                 onChange={(value) => setAttributes({layout: value})}
               />
@@ -262,7 +262,7 @@ export default class Inspector extends Component {
                   <BoxShadowControl
                     setAttributes={setAttributes}
                     label={__("Box Shadow", "responsive-block-editor-addons")}
-                    boxShadowColor={{ value: boxShadowColor, label: __("Color") }}
+                    boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
                     boxShadowHOffset={{
                       value: boxShadowHOffset,
                       label: __("Horizontal", "responsive-block-editor-addons"),
@@ -359,7 +359,7 @@ export default class Inspector extends Component {
                         initialOpen={false}
                       >
                         <SelectControl
-                          label={__("Type")}
+                          label={__("Type", "responsive-block-editor-addons")}
                           value={buttonType}
                           options={[
                             {value: "button", label: __("Button", "responsive-block-editor-addons")},

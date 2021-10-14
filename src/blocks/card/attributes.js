@@ -40,9 +40,6 @@ const attributes = {
   textColor: {
     type: "string",
   },
-  backgroundColor: {
-    type: "string",
-  },
   itemBackgroundColor: {  //For compatibility with v1.3.2.
     type: "string",
     default: "empty"
@@ -156,7 +153,7 @@ const attributes = {
     default: 90,
   },
   backgroundImage: {
-    type: "object",
+    type: "string",
   },
   backgroundColor: {
     type: "string",

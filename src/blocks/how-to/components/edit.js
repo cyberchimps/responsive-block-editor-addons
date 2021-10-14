@@ -197,7 +197,7 @@ export default class Edit extends Component {
                 {descriptionFontFamily && loadGoogleFont(descriptionFontFamily)}
                 <RichText
                     tagName={headingTag}
-                    placeholder={__("How-To Schema"), "responsive-block-editor-addons"}
+                    placeholder={__("How-To Schema", "responsive-block-editor-addons")}
                     value={mainHeadingText}
                     onChange={(value) => setAttributes({ mainHeadingText: value })}
                     className="responsive-block-editor-addons-block-how-to-main-heading"

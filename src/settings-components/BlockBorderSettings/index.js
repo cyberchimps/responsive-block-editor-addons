@@ -49,25 +49,25 @@ class BlockBorderControl extends Component {
             <Fragment>
                 {(
                     <SelectControl
-                        label={__("Border Style")}
+                        label={__("Border Style", "responsive-block-editor-addons")}
                         value={this.props.values.style}
                         onChange={this.props.onChangeBorderStyle}
                         options={[
-                            { value: "none", label: __("None") },
-                            { value: "solid", label: __("Solid") },
-                            { value: "dotted", label: __("Dotted") },
-                            { value: "dashed", label: __("Dashed") },
-                            { value: "double", label: __("Double") },
-                            { value: "groove", label: __("Groove") },
-                            { value: "inset", label: __("Inset") },
-                            { value: "outset", label: __("Outset") },
-                            { value: "ridge", label: __("Ridge") },
+                            { value: "none", label: __("None", "responsive-block-editor-addons") },
+                            { value: "solid", label: __("Solid", "responsive-block-editor-addons") },
+                            { value: "dotted", label: __("Dotted", "responsive-block-editor-addons") },
+                            { value: "dashed", label: __("Dashed", "responsive-block-editor-addons") },
+                            { value: "double", label: __("Double", "responsive-block-editor-addons") },
+                            { value: "groove", label: __("Groove", "responsive-block-editor-addons") },
+                            { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
+                            { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
+                            { value: "ridge", label: __("Ridge", "responsive-block-editor-addons") },
                         ]}
                     />
                 )}
                 {"none" != this.props.borderStyle && (
                     <RangeControl
-                        label={__("Border Width")}
+                        label={__("Border Width", "responsive-block-editor-addons")}
                         value={this.props.values.width}
                         onChange={this.props.onChangeBorderWidth}
                         min={0}
@@ -77,7 +77,7 @@ class BlockBorderControl extends Component {
                 )}
                 {(
                     <RangeControl
-                        label={__("Border Radius")}
+                        label={__("Border Radius", "responsive-block-editor-addons")}
                         value={this.props.values.radius}
                         onChange={this.props.onChangeBorderRadius}
                         min={0}
@@ -88,7 +88,7 @@ class BlockBorderControl extends Component {
                 {"none" != this.props.borderStyle && (
                     <Fragment>
                         <p className="responsive-setting-label">
-                            {__("Border Color")}
+                            {__("Border Color", "responsive-block-editor-addons")}
                             <span className="components-base-control__label">
                                 <span
                                     className="component-color-indicator"
