@@ -90,9 +90,7 @@ e.g.
 * Feature - Call/Mail Button Block - Added option to align the block
 * Fix - Card Block - Issue with background type image
 * Fix - Accordion Block - Collapse other items not working
-* Fix - Card Block - Issue with background type image
 * Fix - Google Map - Default extra space at bottom
-* Fix - Card Block - Issue with background type image
 * Fix - Testimonial Slider Block - Arrow size is not working in the editor
 
 = 1.3.4 - 29th September 2021 =
