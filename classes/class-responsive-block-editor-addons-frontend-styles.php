@@ -7211,13 +7211,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'     => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
 					'padding'          => self::get_css_value( $attr['iconBackgroundSize'], 'px' ),
 					'background-color' => $attr['socialIconBackgroundColor'],
-					'border'           => self::get_css_value( $attr['iconBorderSize'], 'px' ) . ' solid ' . $attr['socialIconBorderColor'],
+					'border-width'     => self::get_css_value( $attr['iconBorderSize'], 'px' ),
+					'border-style'     => 'solid',
+					'border-color'     => $attr['socialIconBorderColor'],
 					'border-radius'    => self::get_css_value( $attr['iconBorderRadius'], '%' ),
 				),
 
 				' .responsive-block-editor-addons-team-social-icons li:hover a' => array(
 					'background-color' => $attr['socialIconBackgroundHoverColor'],
-					'border'           => self::get_css_value( $attr['iconBorderSize'], 'px' ) . ' solid ' . $attr['socialIconBorderHoverColor'],
+					'border-width'     => self::get_css_value( $attr['iconBorderSize'], 'px' ),
+					'border-style'     => 'solid',
+					'border-color'     => $attr['socialIconBorderHoverColor'],
 				),
 
 				' .responsive-block-editor-addons-team-social-icons li:hover .dashicons' => array(
