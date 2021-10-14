@@ -6,11 +6,11 @@ import DateTime from "react-datetime";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import BoxShadowControl from "../../../utils/components/box-shadow";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 

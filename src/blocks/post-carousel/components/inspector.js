@@ -1,9 +1,9 @@
 import fontOptions from "../../../utils/googlefonts";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 
 /**
  * Inspector Controls

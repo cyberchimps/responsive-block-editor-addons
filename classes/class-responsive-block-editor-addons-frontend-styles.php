@@ -2839,7 +2839,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_background_type         = '';
 			$updated_button_background_color = '';
 			$box_shadow_position_css         = $attr['boxShadowPosition'];
-			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage']['url'] : null;
+			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage'] : null;
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
@@ -7211,13 +7211,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'     => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
 					'padding'          => self::get_css_value( $attr['iconBackgroundSize'], 'px' ),
 					'background-color' => $attr['socialIconBackgroundColor'],
-					'border'           => self::get_css_value( $attr['iconBorderSize'], 'px' ) . ' solid ' . $attr['socialIconBorderColor'],
+					'border-width'     => self::get_css_value( $attr['iconBorderSize'], 'px' ),
+					'border-style'     => 'solid',
+					'border-color'     => $attr['socialIconBorderColor'],
 					'border-radius'    => self::get_css_value( $attr['iconBorderRadius'], '%' ),
 				),
 
 				' .responsive-block-editor-addons-team-social-icons li:hover a' => array(
 					'background-color' => $attr['socialIconBackgroundHoverColor'],
-					'border'           => self::get_css_value( $attr['iconBorderSize'], 'px' ) . ' solid ' . $attr['socialIconBorderHoverColor'],
+					'border-width'     => self::get_css_value( $attr['iconBorderSize'], 'px' ),
+					'border-style'     => 'solid',
+					'border-color'     => $attr['socialIconBorderHoverColor'],
 				),
 
 				' .responsive-block-editor-addons-team-social-icons li:hover .dashicons' => array(
@@ -7429,11 +7433,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'designationFontSizeTablet'      => '',
 				'descriptionFontSizeMobile'      => '',
 				'descriptionFontSizeTablet'      => '',
-				'socialIconBorderColor'          => '',
+				'socialIconBorderColor'          => '#fff',
 				'socialIconHoverColor'           => '',
 				'socialIconBackgroundHoverColor' => '',
 				'socialIconBackgroundColor'      => '',
-				'socialIconBorderHoverColor'     => '',
+				'socialIconBorderHoverColor'     => '#fff',
 				'iconBackgroundSize'             => '',
 				'iconBorderSize'                 => '',
 				'iconBorderRadius'               => 0,
@@ -10101,10 +10105,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$text_color_hover        = $attr['buttonTransparent'] ? $attr['buttonColorHover'] : $attr['buttonTextColorHover'];
 			$button_background_hover = $attr['buttonTransparent'] ? '' : $attr['buttonColorHover'];
 
+			$justify_content_direction = 'flex-start';
+			if ( 'left' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'flex-start';
+			} elseif ( 'center' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'center';
+			} elseif ( 'right' === $attr['buttonAlign'] ) {
+				$justify_content_direction = 'flex-end';
+			}
+
 			$selectors = array(
 				' ' => array(
-					'margin'  => self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
-					'padding' => self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
+					'margin'          => self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
+					'padding'         => self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
+					'display'         => 'flex',
+					'justify-content' => $justify_content_direction,
 				),
 				' .responsive-block-editor-addons-call-mail-button-button-container' => array(
 					'width'            => $button_width_css,
@@ -10256,6 +10271,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconTextGap'              => 5,
 				'iconTextGapMobile'        => 3,
 				'iconTextGapTablet'        => 5,
+				'buttonAlign'              => 'left',
 			);
 		}
 
@@ -11967,6 +11983,100 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
+		 * Get Image Hotspot Block CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_image_hotspot_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_image_hotspot_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$updated_point_opacity = $attr['pointOpacity'] / 100;
+
+			$selectors = array(
+				' '                                      => array(
+					'display'         => 'flex',
+					'justify-content' => 'center',
+				),
+				' .responsive_block_addons__image'       => array(
+					'display' => 'block',
+				),
+				' .responsive_block_addons__dot'         => array(
+					'left'                      => 0,
+					'top'                       => 0,
+					'opacity'                   => $updated_point_opacity,
+					'outline'                   => 'none',
+					'cursor'                    => 'pointer',
+					'position'                  => 'absolute',
+					'border-radius'             => '50%',
+					'background-color'          => $attr['pointBackgroundColor'],
+					'padding'                   => self::get_css_value( $attr['pointSpacing'], 'px' ),
+					'animation-name'            => $attr['animationName'] . '' . $attr['animationDirection'],
+					'animation-timing-function' => $attr['animationCurve'],
+					'animation-duration'        => $attr['animationDuration'] . 'ms',
+					'animation-delay'           => $attr['animationDelay'] . 'ms',
+					'animation-iteration-count' => 'once' === $attr['animationRepeat'] ? 1 : 'infinite',
+				),
+				' .responsive_block_addons__dot::before' => array(
+					'display'   => $attr['pulseEffect'] ? 'block' : 'none',
+					'animation' => $attr['pulseEffect'] ? '' : 'none',
+				),
+				' .responsive_block_addons__dot-content svg' => array(
+					'font-size' => self::get_css_value( $attr['hotspotSize'], 'px' ),
+				),
+				' .responsive_block_addons__dot-content' => array(
+					'fill' => $attr['iconColor'],
+				),
+				' .responsive_block_addons__wrapper'     => array(
+					'position' => 'relative',
+				),
+			);
+
+			$mobile_selectors = array();
+
+			$tablet_selectors = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-image-hotspot.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for image hotspot block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_image_hotspot_default_attributes() {
+			return array(
+				'block_id'             => '',
+				'pointBackgroundColor' => '#333',
+				'iconColor'            => '#fff',
+				'pointOpacity'         => 100,
+				'animationName'        => 'none',
+				'animationDirection'   => 'Left',
+				'animationRepeat'      => 'once',
+				'animationDuration'    => 1000,
+				'animationDelay'       => 0,
+				'animationCurve'       => '',
+				'pulseEffect'          => true,
+				'hotspotSize'          => 16,
+				'pointSpacing'         => 6,
+			);
+		}
+
+		/**
 		 * Get Advanced Text CSS
 		 *
 		 * @param array  $attr The block attributes.
@@ -11983,7 +12093,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$block_opacity = $attr['blockOpacity'] / 100;
 
 			$selectors = array(
-				' ' => array(
+				' '                                      => array(
 					'opacity'        => $block_opacity,
 					'z-index'        => $attr['zIndex'],
 					'max-width'      => self::get_css_value( $attr['containerWidth'], 'px' ),
@@ -12000,10 +12110,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-text-container' => array(
 					'padding' => self::get_css_value( $attr['contentPadding'], 'px' ),
 				),
-				' .responsive-block-editor-addons-separator' => array (
-					'height' => self::get_css_value( $attr['columnDividerHeight'], 'px' ),
-					'width'  => self::get_css_value( $attr['columnDividerWidth'], 'px' ),
-					'background-color'  => $attr['dividerColor'],
+				' .responsive-block-editor-addons-separator' => array(
+					'height'           => self::get_css_value( $attr['columnDividerHeight'], 'px' ),
+					'width'            => self::get_css_value( $attr['columnDividerWidth'], 'px' ),
+					'background-color' => $attr['dividerColor'],
 				),
 				' .responsive-block-editor-addons-title' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomMargin'], 'px' ),
@@ -12013,7 +12123,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['titleFontSize'], 'px' ),
 					'font-weight'   => $attr['titleFontWeight'],
 					'line-height'   => $attr['titleLineHeight'],
-				), 
+				),
 				' .responsive-block-editor-addons-subtitle' => array(
 					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMargin'], 'px' ),
 					'text-align'    => $attr['subtitleAlign'],
@@ -12022,7 +12132,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['subtitleFontSize'], 'px' ),
 					'font-weight'   => $attr['subtitleFontWeight'],
 					'line-height'   => $attr['subtitleLineHeight'],
-				), 
+				),
 				' .responsive-block-editor-addons-text-content' => array(
 					'margin-bottom' => self::get_css_value( $attr['textBottomMargin'], 'px' ),
 					'text-align'    => $attr['textAlign'],
@@ -12031,11 +12141,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['textFontSize'], 'px' ),
 					'font-weight'   => $attr['textFontWeight'],
 					'line-height'   => $attr['textLineHeight'],
-				),		
+				),
 			);
 
 			$mobile_selectors = array(
-				' ' => array(
+				' '                                      => array(
 					'max-width'      => self::get_css_value( $attr['containerWidthMobile'], 'px' ),
 					'margin-top'     => self::get_css_value( $attr['containerTopMarginMobile'], 'px!important' ),
 					'margin-right'   => self::get_css_value( $attr['containerRightMarginMobile'], 'px!important' ),
@@ -12052,19 +12162,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-title' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginMobile'], 'px' ),
 					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
-				), 
+				),
 				' .responsive-block-editor-addons-subtitle' => array(
 					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginMobile'], 'px' ),
 					'font-size'     => self::get_css_value( $attr['subtitleFontSizeMobile'], 'px' ),
-				), 
+				),
 				' .responsive-block-editor-addons-text-content' => array(
 					'margin-bottom' => self::get_css_value( $attr['textBottomMarginMobile'], 'px' ),
-					'font-size'     => self::get_css_value( $attr['textFontSizeMobile'], 'px' ),				
+					'font-size'     => self::get_css_value( $attr['textFontSizeMobile'], 'px' ),
 				),
 			);
 
 			$tablet_selectors = array(
-				' ' => array(
+				' '                                      => array(
 					'max-width'      => self::get_css_value( $attr['containerWidthTablet'], 'px' ),
 					'margin-top'     => self::get_css_value( $attr['containerTopMarginTablet'], 'px!important' ),
 					'margin-right'   => self::get_css_value( $attr['containerRightMarginTablet'], 'px!important' ),
@@ -12080,15 +12190,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-title' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginTablet'], 'px' ),
-					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),				
-				), 
+					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
+				),
 				' .responsive-block-editor-addons-subtitle' => array(
 					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginTablet'], 'px' ),
-					'font-size'     => self::get_css_value( $attr['subtitleFontSizeTablet'], 'px' ),				
-				), 
+					'font-size'     => self::get_css_value( $attr['subtitleFontSizeTablet'], 'px' ),
+				),
 				' .responsive-block-editor-addons-text-content' => array(
 					'margin-bottom' => self::get_css_value( $attr['textBottomMarginTablet'], 'px' ),
-					'font-size'     => self::get_css_value( $attr['textFontSizeTablet'], 'px' ),				
+					'font-size'     => self::get_css_value( $attr['textFontSizeTablet'], 'px' ),
 				),
 			);
 
@@ -12145,11 +12255,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerRightMarginMobile'   => '',
 				'contentAlign'                 => 'left',
 				'columnDividerHeight'          => '',
-                'columnDividerWidth'           => '',
-                'dividerColor'                 => '#ccc',
+				'columnDividerWidth'           => '',
+				'dividerColor'                 => '#ccc',
 				'contentPadding'               => '',
-                'contentPaddingTablet'         => '',
-                'contentPaddingMobile'         => '',
+				'contentPaddingTablet'         => '',
+				'contentPaddingMobile'         => '',
 				'titleBottomMargin'            => 10,
 				'titleBottomMarginTablet'      => '',
 				'titleBottomMarginMobile'      => '',
@@ -12160,29 +12270,29 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'textBottomMarginTablet'       => '',
 				'textBottomMarginMobile'       => '',
 				'subtitleAlign'                => '',
-                'titleAlign'                   => '',
-                'textAlign'                    => '',
+				'titleAlign'                   => '',
+				'textAlign'                    => '',
 				'textColor'                    => '',
-                'titleColor'                   => '',
-                'subtitleColor'                => '',
+				'titleColor'                   => '',
+				'subtitleColor'                => '',
 				'textFontFamily'               => '',
-                'textFontSize'                 => '',
-                'textFontSizeMobile'           => '',
-                'textFontSizeTablet'           => '',
-                'textFontWeight'               => '',
-                'textLineHeight'               => '',
-                'titleFontFamily'              => '',
-                'titleFontSize'                => '',
-                'titleFontSizeMobile'          => '',
-                'titleFontSizeTablet'          => '',
-                'titleFontWeight'              => '',
-                'titleLineHeight'              => '',
-                'subtitleFontFamily'           => '',
-                'subtitleFontSize'             => '',
-                'subtitleFontSizeMobile'       => '',
-                'subtitleFontSizeTablet'       => '',
-                'subtitleFontWeight'           => '',
-                'subtitleLineHeight'           => '',
+				'textFontSize'                 => '',
+				'textFontSizeMobile'           => '',
+				'textFontSizeTablet'           => '',
+				'textFontWeight'               => '',
+				'textLineHeight'               => '',
+				'titleFontFamily'              => '',
+				'titleFontSize'                => '',
+				'titleFontSizeMobile'          => '',
+				'titleFontSizeTablet'          => '',
+				'titleFontWeight'              => '',
+				'titleLineHeight'              => '',
+				'subtitleFontFamily'           => '',
+				'subtitleFontSize'             => '',
+				'subtitleFontSizeMobile'       => '',
+				'subtitleFontSizeTablet'       => '',
+				'subtitleFontWeight'           => '',
+				'subtitleLineHeight'           => '',
 			);
 		}
 

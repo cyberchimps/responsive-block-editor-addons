@@ -13,12 +13,12 @@ import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper"
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 
 // Setup the block
 const { __ } = wp.i18n;

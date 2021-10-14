@@ -7,10 +7,10 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 
 import InspectorTab from "../../../components/InspectorTab"

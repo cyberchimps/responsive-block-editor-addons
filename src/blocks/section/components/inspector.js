@@ -5,12 +5,12 @@
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
+import VideoBackgroundControl from "../../../settings-components/BlockBackgroundSettings/VideoBackgroundSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ResponsivePaddingControl from "../../../settings-components/Responsive Spacing Settings/Responsive Padding Control";
-import ResponsiveMarginControl from "../../../settings-components/Responsive Spacing Settings/Responsive Margin Control";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 import generateCSSUnit from "../../../generateCSSUnit";
 
 

@@ -157,7 +157,7 @@ function EditorStyles(props) {
     updatedButtonColor = buttonColor !== 'empty' && !ctaBackColor ? buttonColor : ctaBackColor; //For compatibility with v1.3.2.
   }
   if (buttonHbackgroundType == "color") {
-    updatedButtonhColor = buttonhcolor !== 'empty' && '' === ctaHoverBackColor ? buttonhColor : ctaHoverBackColor;
+    updatedButtonhColor = buttonhColor !== 'empty' && '' === ctaHoverBackColor ? buttonhColor : ctaHoverBackColor;
   } else {
     updatedButtonhColor = '';
   }
@@ -250,7 +250,7 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-card-background-image": {
       "background-image": backgroundImage
-        ? `url(${backgroundImage.url})`
+        ? `url(${backgroundImage})`
         : null,
       height: 100 + "%",
       "background-position": bgimagePosition !== "empty" && backgroundImagePosition === "center center" ? bgimagePosition : backgroundImagePosition, //For compatibility with v1.3.2.

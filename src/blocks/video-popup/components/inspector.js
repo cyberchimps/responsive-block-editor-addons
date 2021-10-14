@@ -4,7 +4,7 @@
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
 
 
 // Setup the block

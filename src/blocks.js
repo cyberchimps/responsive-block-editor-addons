@@ -47,6 +47,9 @@ import "./blocks/wp-search/index.js";
 import "./blocks/inline-notice/index.js";
 import "./blocks/instagram/index.js";
 import "./blocks/advanced-text/index.js";
+import "./blocks/image-hotspot/index.js";
+
+//do not move
 import "./blocks/rbea-templates/index.js";
 
 // Extensions

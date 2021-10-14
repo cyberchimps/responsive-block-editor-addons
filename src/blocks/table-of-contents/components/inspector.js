@@ -1,10 +1,10 @@
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
-import VideoBackgroundControl from "../../../settings-components/Block Background Settings/Video Background Settings";
+import VideoBackgroundControl from "../../../settings-components/BlockBackgroundSettings/VideoBackgroundSettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 
 /**
  * Inspector Controls

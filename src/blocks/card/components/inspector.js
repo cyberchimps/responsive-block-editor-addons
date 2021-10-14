@@ -12,12 +12,12 @@ import { loadGoogleFont } from "../../../utils/font";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ColorBackgroundControl from "../../../settings-components/Block Background Settings/Color Background Settings";
-import ImageBackgroundControl from "../../../settings-components/Block Background Settings/Image Background Settings";
-import GradientBackgroundControl from "../../../settings-components/Block Background Settings/Gradient Background Settings";
-import ResponsiveSpacingControl from "../../../settings-components/Responsive Spacing Settings";
-import TypographyHelperControl from "../../../settings-components/Typography Settings";
-import ButtonSettingsControl from "../../../settings-components/Button Settings";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
