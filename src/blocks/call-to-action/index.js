@@ -47,6 +47,16 @@ registerBlockType(
       __("cta", "responsive-block-editor-addons"),
       __("responsive", "responsive-block-editor-addons"),
     ],
+      example: {
+          attributes: {
+              /* translators: example title */
+              ctaTitle: __( 'Call-To-Action Title', 'responsive-block-editor-addons' ),
+              /* translators: example biography */
+              ctaText: __( 'Call To Action Text', 'responsive-block-editor-addons' ),
+              /* translators: example button text */
+              buttonText: __( 'Button text...', 'responsive-block-editor-addons' ),
+          },
+      },
 
     attributes: attributes,
 
