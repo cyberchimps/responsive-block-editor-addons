@@ -1,7 +1,7 @@
 === Responsive Gutenberg Blocks Library ===
 Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
-Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, landing page, dual buttons, svg icons, editor width, wysiwyg, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review
+Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.6
@@ -9,19 +9,20 @@ Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-40+ creative blocks to create rich content layouts on Gutenberg editor. Use professional starter block patterns & templates to create websites in minutes.
+40+ creative blocks to create rich content layouts in the Gutenberg editor.
+Use professional starter block patterns & templates to create websites within minutes.
 
 == Description ==
 
 <strong>Responsive Blocks Library for Gutenberg</strong>
 
-Unleash your creativity with Responsive gutenberg blocks library plugin. Within minutes create professional content layouts. Quickly create complete websites with free starter templates. Use the pattern importer to include the layouts you like in your existing website.
+Unleash your creativity with the Responsive Gutenberg Blocks Library plugin. Within minutes create professional content layouts for your website with free starter templates. Use the pattern importer to include the layouts you like in your existing website.
 
 <a href="https://www.cyberchimps.com/blocks/?utm_source=wporg&utm_medium=demolink&utm_campaign=gutblocks" target="_blank">Checkout the Gutenberg blocks demos</a> to see it live in action
 
-Easily choose your favorite templates to launch your websites in no time. You can also pick any of the advanced blocks with completely customizable settings to make your own creative templates.
+Quickly choose your favorite templates to launch your websites in no time. You can also pick any advanced blocks with completely customizable settings to make your creative templates.
 
-With more than 30+ creative blocks for Gutenberg you can design beautiful pages without writing a single line of code. The settings are easy to customize your own unique look.
+With more than 40+ creative blocks for Gutenberg, you can design beautiful pages without writing a single line of code, and the settings are easy to customize to create your unique look.
 
 **Responsive Gutenberg Blocks Editor Addons Library**
 
@@ -60,7 +61,7 @@ More Gutenberg blocks coming soon!
 
 **Ready-to-use starter website templates for Gutenberg**
 
-Starter website templates help you with a faster launch. These have been designed considering the ideal layout for your niche - you can import, change content and launch or modify the layouts after import. Get beautifully designed ready-site templates that are built using Gutenberg, Responsive Gutenberg Blocks Library, and the Responsive theme. These templates can be easily imported and customized to change the look and feel of your website.
+Starter website templates help you with a faster launch. These have been designed considering the ideal layout for your niche – you can import, change content, and launch or modify the layouts after import. Get beautifully designed ready-site templates that are built using Gutenberg, Responsive Gutenberg Blocks Library, and the Responsive theme. These templates can be easily imported and customized to change the look and feel of your website
 
 [Gutenberg Website Demos](https://cyberchimps.com/wordpress-themes/?page-builder=gutenberg&utm_source=wp-gb&utm_medium=link&utm_campaign=readme)
 == Installation ==
@@ -205,4 +206,3 @@ e.g.
 
 = 1.0.0 - 24th June 2020 =
 * Initial Plugin Release - Gutenberg Blocks - Advance Columns, Post Carousel, Post Grid, Testimonial
-
