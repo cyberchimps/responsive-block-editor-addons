@@ -1,10 +1,11 @@
 const ITEM_COUNT = 2;
 
+const { __ } = wp.i18n;
 const countUp = [];
 for (var i = 1; i <= ITEM_COUNT; i++) {
   countUp.push({
     icon: "lightbulb",
-    title: "Title " + i,
+    title: __("Title ", "responsive-block-editor-addons") + i,
     amount: "1234",
     features: "",
   });

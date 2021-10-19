@@ -32,7 +32,12 @@ registerBlockType("responsive-block-editor-addons/divider", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example heading */
+            spacerDividerStyle: "solid",
+        },
+    },
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_spacer_spacerHeight: {
       title: __("Vertical Margin", "responsive-block-editor-addons"),

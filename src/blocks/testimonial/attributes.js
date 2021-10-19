@@ -1,12 +1,14 @@
+const { __ } = wp.i18n;
+
 const ITEM_COUNT = 2;
 
 const testimonialBlock = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
   testimonialBlock.push({
-    testimonialName: "John Doe",
-    testimonialTitle: "Add title/designation",
-    testimonialContent: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+    testimonialName: __("John Doe", "responsive-block-editor-addons"),
+    testimonialTitle: __("Add title/designation", "responsive-block-editor-addons"),
+    testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
     testimonialImgURL: "",
     testimonialImgID: "",
   });

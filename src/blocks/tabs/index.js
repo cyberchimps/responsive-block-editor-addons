@@ -38,7 +38,16 @@ registerBlockType("responsive-block-editor-addons/tabs", {
   },
 
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            tabHeaderOptions: [
+                __("Tab 1", "responsive-block-editor-addons"),
+                __("Tab 2", "responsive-block-editor-addons"),
+                __("Tab 3", "responsive-block-editor-addons"),
+            ],
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

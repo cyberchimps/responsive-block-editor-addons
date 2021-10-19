@@ -35,7 +35,12 @@ registerBlockType("responsive-block-editor-addons/spacer", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            height: 100,
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

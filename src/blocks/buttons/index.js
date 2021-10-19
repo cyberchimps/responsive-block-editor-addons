@@ -41,7 +41,7 @@ registerBlockType("responsive-block-editor-addons/buttons", {
                 innerBlocks: [
                     {
                         name: 'responsive-block-editor-addons/buttons-child',
-                        attributes: { label: '#Click Here' },
+                        attributes: { label: __('#Click Here', "responsive-block-editor-addons") },
                     },
                 ],
             },
@@ -50,7 +50,7 @@ registerBlockType("responsive-block-editor-addons/buttons", {
                 innerBlocks: [
                     {
                         name: 'responsive-block-editor-addons/buttons-child',
-                        attributes: { label: '#Click Here' },
+                        attributes: { label: __('#Click Here', "responsive-block-editor-addons") },
                     },
                 ],
             }

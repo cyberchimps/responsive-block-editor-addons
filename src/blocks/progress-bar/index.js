@@ -36,7 +36,12 @@ registerBlockType("responsive-block-editor-addons/progress-bar", {
 	],
 
 	attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            progressBarStyle: "horizontal",
+        },
+    },
 	supports: {
 		anchor: true
 	},

@@ -35,7 +35,15 @@ registerBlockType("responsive-block-editor-addons/info-block", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            resinfoBlockTitle: __("Info Box", 'responsive-block-editor-addons' ),
+            resprefixTitle: __( 'Prefix', 'responsive-block-editor-addons' ),
+            resDescHeading: __("Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.", "responsive-block-editor-addons"),
+            icon: "fa fa-star",
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

@@ -32,7 +32,34 @@ registerBlockType("responsive-block-editor-addons/icons-list", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-  responsive_block_editor_addons_settings_data: {
+    example: {
+        attributes: {
+            /* translators: example pricing table */
+            icons:[
+                {
+                    label: "#Label",
+                    image_icon: "icon",
+                    icon: "fab fa-arrow-circle-right",
+                    image: "",
+                    icon_color: "#3a3a3a",
+                    label_color: "",
+                    icon_hover_color: "",
+                    label_hover_color: "",
+                    icon_bg_color: "",
+                    icon_bg_hover_color: "",
+                    icon_border_color: "",
+                    icon_border_hover_color: "",
+                    link: "#",
+                    target: false,
+                    disableLink: true,
+                    hideLabel: false,
+                },
+
+            ],
+        },
+    },
+
+    responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_icon_icon_layout: {
       title: __("Layout", "responsive-block-editor-addons"),
     },
