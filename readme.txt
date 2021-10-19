@@ -3,7 +3,7 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, landing page, dual buttons, svg icons, editor width, wysiwyg, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.8
 Requires PHP: 5.6
 Stable tag: 1.4.0
 License: GPLv2 or later

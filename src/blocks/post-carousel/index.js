@@ -38,6 +38,7 @@ registerBlockType("responsive-block-editor-addons/post-carousel", {
     __("carousel", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
   ],
+    example: {},
 
   getEditWrapperProps(attributes) {
     const { align } = attributes;

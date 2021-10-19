@@ -41,10 +41,27 @@ registerBlockType("responsive-block-editor-addons/tabs", {
     example: {
         attributes: {
             /* translators: example attributes */
-            tabHeaderOptions: [
-                __("Tab 1", "responsive-block-editor-addons"),
-                __("Tab 2", "responsive-block-editor-addons"),
-                __("Tab 3", "responsive-block-editor-addons"),
+
+            innerBlocks: [
+                {
+                    name: 'responsive-block-editor-addons/tabs-child',
+                    innerBlocks: [
+                        {
+                            name: 'responsive-block-editor-addons/tabs-child',
+                            attributes: {},
+
+                        },
+                    ],
+                },
+                {
+                    name: 'responsive-block-editor-addons/tabs-child',
+                    innerBlocks: [
+                        {
+                            name: 'responsive-block-editor-addons/tabs-child',
+                            attributes: { },
+                        },
+                    ],
+                }
             ],
         },
     },

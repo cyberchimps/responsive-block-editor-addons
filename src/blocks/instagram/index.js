@@ -33,7 +33,9 @@ registerBlockType("responsive-block-editor-addons/instagram", {
   ],
 
   attributes: attributes,
-
+    example: {
+        attributes: {},
+    },
   supports: {
     anchor: true,
   },
