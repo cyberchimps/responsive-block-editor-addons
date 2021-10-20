@@ -2962,7 +2962,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .card-content-wrap' => array(
-					'text-align'    => $attr['contentAlignment'],
+					'text-align' => $attr['contentAlignment'],
 				),
 
 				' .wp-block-responsive-block-editor-addons-card-item__title' => array(
@@ -2986,13 +2986,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
-					'margin-top'  => 0,
-                    'margin-bottom' => self::get_css_value( $attr['contentSpace'], 'px' ),
-                    'color'       => $attr['textColor'],
-					'line-height' => $attr['contentLineHeight'],
-					'font-weight' => $attr['contentFontWeight'],
-					'font-size'   => self::get_css_value( $attr['contentFontSize'], 'px' ),
-					'font-family' => $attr['contentFontFamily'],
+					'margin-top'    => 0,
+					'margin-bottom' => self::get_css_value( $attr['contentSpace'], 'px' ),
+					'color'         => $attr['textColor'],
+					'line-height'   => $attr['contentLineHeight'],
+					'font-weight'   => $attr['contentFontWeight'],
+					'font-size'     => self::get_css_value( $attr['contentFontSize'], 'px' ),
+					'font-family'   => $attr['contentFontFamily'],
 				),
 
 				' .responsive-block-editor-addons-card-button-inner' => array(
@@ -3014,7 +3014,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
-				''                    => array(
+				'' => array(
 					'margin-bottom' => self::get_css_value( $attr['blockbotmarginMobile'], 'px' ) . ' !important',
 					'margin-top'    => self::get_css_value( $attr['blockmarginMobile'], 'px' ) . ' !important',
 					'margin-left'   => self::get_css_value( $attr['blockleftmarginMobile'], 'px' ),
@@ -3031,23 +3031,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['subFontSizeMobile'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
-					'font-size' => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
-                    'margin-bottom' => self::get_css_value( $attr['contentSpaceMobile'], 'px' ),
-                ),
+					'font-size'     => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['contentSpaceMobile'], 'px' ),
+				),
 				' .responsive-block-editor-addons-card-button-inner' => array(
 					'padding-top'    => $attr['ctaVpaddingMobile'] ? self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
-					'padding-bottom'    => $attr['ctaVpaddingMobile'] ? self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
-					'padding-left'   => $attr['ctaHpaddingMobile'] ? self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
-					'padding-right'   => $attr['ctaHpaddingMobile'] ? self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
-					'margin-top'   => $attr['vMarginMobile'] ? self::get_css_value( $attr['vMarginMobile'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
-					'margin-bottom'   => $attr['vMarginMobile'] ? self::get_css_value( $attr['vMarginMobile'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
-					'margin-left'   => $attr['hMarginMobile'] ? self::get_css_value( $attr['hMarginMobile'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
-					'margin-right'   => $attr['hMarginMobile'] ? self::get_css_value( $attr['hMarginMobile'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
+					'padding-bottom' => $attr['ctaVpaddingMobile'] ? self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-left'   => $attr['ctaHpaddingMobile'] ? self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'padding-right'  => $attr['ctaHpaddingMobile'] ? self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'margin-top'     => $attr['vMarginMobile'] ? self::get_css_value( $attr['vMarginMobile'], 'px' ) : self::get_css_value( $attr['vMargin'], 'px' ),
+					'margin-bottom'  => $attr['vMarginMobile'] ? self::get_css_value( $attr['vMarginMobile'], 'px' ) : self::get_css_value( $attr['vMargin'], 'px' ),
+					'margin-left'    => $attr['hMarginMobile'] ? self::get_css_value( $attr['hMarginMobile'], 'px' ) : self::get_css_value( $attr['hMargin'], 'px' ),
+					'margin-right'   => $attr['hMarginMobile'] ? self::get_css_value( $attr['hMarginMobile'], 'px' ) : self::get_css_value( $attr['hMargin'], 'px' ),
 				),
 			);
 
 			$tablet_selectors = array(
-				''                    => array(
+				'' => array(
 					'margin-bottom' => self::get_css_value( $attr['blockbotmarginTablet'], 'px' ) . ' !important',
 					'margin-top'    => self::get_css_value( $attr['blockmarginTablet'], 'px' ) . ' !important',
 					'margin-left'   => self::get_css_value( $attr['blockleftmarginTablet'], 'px' ),
@@ -3064,18 +3064,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['subFontSizeTablet'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
-					'font-size' => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
-                    'margin-bottom' => self::get_css_value( $attr['contentSpaceTablet'], 'px' ),
-                ),
+					'font-size'     => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['contentSpaceTablet'], 'px' ),
+				),
 				' .responsive-block-editor-addons-card-button-inner' => array(
-                    'padding-top'    => $attr['ctaVpaddingTablet'] ? self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
-                    'padding-bottom'    => $attr['ctaVpaddingTablet'] ? self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
-                    'padding-left'   => $attr['ctaHpaddingTablet'] ? self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
-                    'padding-right'   => $attr['ctaHpaddingTablet'] ? self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
-                    'margin-top'   => $attr['vMarginTablet'] ? self::get_css_value( $attr['vMarginTablet'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
-                    'margin-bottom'   => $attr['vMarginTablet'] ? self::get_css_value( $attr['vMarginTablet'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
-                    'margin-left'   => $attr['hMarginTablet'] ? self::get_css_value( $attr['hMarginTablet'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
-                    'margin-right'   => $attr['hMarginTablet'] ? self::get_css_value( $attr['hMarginTablet'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
+					'padding-top'    => $attr['ctaVpaddingTablet'] ? self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-bottom' => $attr['ctaVpaddingTablet'] ? self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-left'   => $attr['ctaHpaddingTablet'] ? self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'padding-right'  => $attr['ctaHpaddingTablet'] ? self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'margin-top'     => $attr['vMarginTablet'] ? self::get_css_value( $attr['vMarginTablet'], 'px' ) : self::get_css_value( $attr['vMargin'], 'px' ),
+					'margin-bottom'  => $attr['vMarginTablet'] ? self::get_css_value( $attr['vMarginTablet'], 'px' ) : self::get_css_value( $attr['vMargin'], 'px' ),
+					'margin-left'    => $attr['hMarginTablet'] ? self::get_css_value( $attr['hMarginTablet'], 'px' ) : self::get_css_value( $attr['hMargin'], 'px' ),
+					'margin-right'   => $attr['hMarginTablet'] ? self::get_css_value( $attr['hMarginTablet'], 'px' ) : self::get_css_value( $attr['hMargin'], 'px' ),
 				),
 			);
 

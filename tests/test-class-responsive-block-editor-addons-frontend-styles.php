@@ -1208,15 +1208,12 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'blockbotmargin'          => 2,
 			'blockleftmargin'         => 0,
 			'blockrightmargin'        => 0,
-			'contenttopSpace'         => 16,
 			'blockbotmarginMobile'    => '',
 			'blockleftmarginMobile'   => '',
 			'blockrightmarginMobile'  => '',
-			'contenttopSpaceMobile'   => '',
 			'blockbotmarginTablet'    => '',
 			'blockleftmarginTablet'   => '',
 			'blockrightmarginTablet'  => '',
-			'contenttopSpaceTablet'   => '',
 			'bgimageSize'             => 'full', // For compatibility with v1.3.2.
 			'bgimagePosition'         => 'center center', // For compatibility with v1.3.2.
 			'bgimageRepeat'           => 'no-repeat', // For compatibility with v1.3.2.
