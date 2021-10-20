@@ -2963,8 +2963,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .card-content-wrap' => array(
 					'text-align'    => $attr['contentAlignment'],
-					'margin-bottom' => self::get_css_value( $attr['contentSpace'], 'px' ),
-					'margin-top'    => self::get_css_value( $attr['contenttopSpace'], 'px' ),
 				),
 
 				' .wp-block-responsive-block-editor-addons-card-item__title' => array(
@@ -2989,7 +2987,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
 					'margin-top'  => 0,
-					'color'       => $attr['textColor'],
+                    'margin-bottom' => self::get_css_value( $attr['contentSpace'], 'px' ),
+                    'color'       => $attr['textColor'],
 					'line-height' => $attr['contentLineHeight'],
 					'font-weight' => $attr['contentFontWeight'],
 					'font-size'   => self::get_css_value( $attr['contentFontSize'], 'px' ),
@@ -3021,10 +3020,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'   => self::get_css_value( $attr['blockleftmarginMobile'], 'px' ),
 					'margin-right'  => self::get_css_value( $attr['blockrightmarginMobile'], 'px' ),
 				),
-				' .card-content-wrap' => array(
-					'margin-bottom' => self::get_css_value( $attr['contentSpaceMobile'], 'px' ),
-					'margin-top'    => self::get_css_value( $attr['contenttopSpaceMobile'], 'px' ),
-				),
 
 				' .wp-block-responsive-block-editor-addons-card-item__title' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleSpaceMobile'], 'px' ),
@@ -3037,16 +3032,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
 					'font-size' => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
-				),
+                    'margin-bottom' => self::get_css_value( $attr['contentSpaceMobile'], 'px' ),
+                ),
 				' .responsive-block-editor-addons-card-button-inner' => array(
-					'padding-top'    => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
-					'margin-top'     => self::get_css_value( $attr['vMarginMobile'], 'px' ),
-					'margin-bottom'  => self::get_css_value( $attr['vMarginMobile'], 'px' ),
-					'margin-left'    => self::get_css_value( $attr['hMarginMobile'], 'px' ),
-					'margin-right'   => self::get_css_value( $attr['hMarginMobile'], 'px' ),
+					'padding-top'    => $attr['ctaVpaddingMobile'] ? self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-bottom'    => $attr['ctaVpaddingMobile'] ? self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-left'   => $attr['ctaHpaddingMobile'] ? self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
+					'padding-right'   => $attr['ctaHpaddingMobile'] ? self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
+					'margin-top'   => $attr['vMarginMobile'] ? self::get_css_value( $attr['vMarginMobile'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
+					'margin-bottom'   => $attr['vMarginMobile'] ? self::get_css_value( $attr['vMarginMobile'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
+					'margin-left'   => $attr['hMarginMobile'] ? self::get_css_value( $attr['hMarginMobile'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
+					'margin-right'   => $attr['hMarginMobile'] ? self::get_css_value( $attr['hMarginMobile'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
 				),
 			);
 
@@ -3056,10 +3052,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-top'    => self::get_css_value( $attr['blockmarginTablet'], 'px' ) . ' !important',
 					'margin-left'   => self::get_css_value( $attr['blockleftmarginTablet'], 'px' ),
 					'margin-right'  => self::get_css_value( $attr['blockrightmarginTablet'], 'px' ),
-				),
-				' .card-content-wrap' => array(
-					'margin-bottom' => self::get_css_value( $attr['contentSpaceTablet'], 'px' ),
-					'margin-top'    => self::get_css_value( $attr['contenttopSpaceTablet'], 'px' ),
 				),
 
 				' .wp-block-responsive-block-editor-addons-card-item__title' => array(
@@ -3073,16 +3065,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .wp-block-responsive-block-editor-addons-card-item__content' => array(
 					'font-size' => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
-				),
+                    'margin-bottom' => self::get_css_value( $attr['contentSpaceTablet'], 'px' ),
+                ),
 				' .responsive-block-editor-addons-card-button-inner' => array(
-					'padding-top'    => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
-					'margin-top'     => self::get_css_value( $attr['vMarginTablet'], 'px' ),
-					'margin-bottom'  => self::get_css_value( $attr['vMarginTablet'], 'px' ),
-					'margin-left'    => self::get_css_value( $attr['hMarginTablet'], 'px' ),
-					'margin-right'   => self::get_css_value( $attr['hMarginTablet'], 'px' ),
+                    'padding-top'    => $attr['ctaVpaddingTablet'] ? self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
+                    'padding-bottom'    => $attr['ctaVpaddingTablet'] ? self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ),
+                    'padding-left'   => $attr['ctaHpaddingTablet'] ? self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
+                    'padding-right'   => $attr['ctaHpaddingTablet'] ? self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ): self::get_css_value( $attr['ctaHpadding'], 'px'),
+                    'margin-top'   => $attr['vMarginTablet'] ? self::get_css_value( $attr['vMarginTablet'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
+                    'margin-bottom'   => $attr['vMarginTablet'] ? self::get_css_value( $attr['vMarginTablet'], 'px' ): self::get_css_value( $attr['vMargin'], 'px'),
+                    'margin-left'   => $attr['hMarginTablet'] ? self::get_css_value( $attr['hMarginTablet'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
+                    'margin-right'   => $attr['hMarginTablet'] ? self::get_css_value( $attr['hMarginTablet'], 'px' ): self::get_css_value( $attr['hMargin'], 'px'),
 				),
 			);
 
@@ -3200,15 +3193,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockbotmargin'          => 2,
 				'blockleftmargin'         => 0,
 				'blockrightmargin'        => 0,
-				'contenttopSpace'         => 16,
 				'blockbotmarginMobile'    => '',
 				'blockleftmarginMobile'   => '',
 				'blockrightmarginMobile'  => '',
-				'contenttopSpaceMobile'   => '',
 				'blockbotmarginTablet'    => '',
 				'blockleftmarginTablet'   => '',
 				'blockrightmarginTablet'  => '',
-				'contenttopSpaceTablet'   => '',
 				'bgimageSize'             => 'full', // For compatibility with v1.3.2.
 				'bgimagePosition'         => 'center center', // For compatibility with v1.3.2.
 				'bgimageRepeat'           => 'no-repeat', // For compatibility with v1.3.2.
@@ -3239,14 +3229,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaBorderColor'          => '',
 				'ctaHoverBorderColor'     => '',
 				'ctaTextOpacity'          => 100,
-				'ctaHpaddingTablet'       => 14,
-				'ctaHpaddingMobile'       => 14,
-				'ctaVpaddingTablet'       => 10,
-				'ctaVpaddingMobile'       => 10,
-				'vMarginTablet'           => 10,
-				'vMarginMobile'           => 10,
-				'hMarginTablet'           => 0,
-				'hMarginMobile'           => 0,
+				'ctaHpaddingTablet'       => '',
+				'ctaHpaddingMobile'       => '',
+				'ctaVpaddingTablet'       => '',
+				'ctaVpaddingMobile'       => '',
+				'vMarginTablet'           => '',
+				'vMarginMobile'           => '',
+				'hMarginTablet'           => '',
+				'hMarginMobile'           => '',
 				'buttonHbackgroundType'   => 'none',
 			);
 		}

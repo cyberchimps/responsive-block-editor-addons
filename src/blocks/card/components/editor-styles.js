@@ -93,9 +93,6 @@ function EditorStyles(props) {
     contentLineHeight,
     contentFontWeight,
     contentFontSize,
-    contenttopSpace,
-    contenttopSpaceMobile,
-    contenttopSpaceTablet,
     blockbotmargin,
     blockbotmarginMobile,
     blockbotmarginTablet,
@@ -306,8 +303,6 @@ function EditorStyles(props) {
 
     " .card-content-wrap": {
       "text-align": contentAlignment,
-      "margin-bottom": generateCSSUnit(contentSpace, "px"),
-      "margin-top": generateCSSUnit(contenttopSpace, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__title": {
@@ -332,7 +327,8 @@ function EditorStyles(props) {
 
     " .wp-block-responsive-block-editor-addons-card-item__content": {
       "margin-top": 0,
-      color: textColor,
+        "margin-bottom": generateCSSUnit(contentSpace, "px"),
+        color: textColor,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
       "font-size": generateCSSUnit(contentFontSize, "px"),
@@ -367,10 +363,6 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(blockleftmarginMobile, "px"),
       "margin-right": generateCSSUnit(blockrightmarginMobile, "px"),
     },
-    " .card-content-wrap": {
-      "margin-bottom": generateCSSUnit(contentSpaceMobile, "px"),
-      "margin-top": generateCSSUnit(contenttopSpaceMobile, "px"),
-    },
 
     " .wp-block-responsive-block-editor-addons-card-item__title": {
       "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
@@ -383,11 +375,12 @@ function EditorStyles(props) {
     },
 	" .wp-block-responsive-block-editor-addons-card-item__content": {
 		"font-size": generateCSSUnit(contentFontSizeMobile, "px"),
-	},
+        "margin-bottom": generateCSSUnit(contentSpaceMobile, "px"),
+    },
   " .responsive-block-editor-addons-card-button-inner": {
     "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
     "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
-    "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
+    "padding-left": ctaHpaddingMobile? generateCSSUnit(ctaHpaddingMobile, "px"):'',
     "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
     "margin-top": generateCSSUnit(vMarginMobile, "px"),
     "margin-bottom": generateCSSUnit(vMarginMobile, "px"),
@@ -403,10 +396,6 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(blockleftmarginTablet, "px"),
       "margin-right": generateCSSUnit(blockrightmarginTablet, "px"),
     },
-    " .card-content-wrap": {
-      "margin-bottom": generateCSSUnit(contentSpaceTablet, "px"),
-      "margin-top": generateCSSUnit(contenttopSpaceTablet, "px"),
-    },
 
     " .wp-block-responsive-block-editor-addons-card-item__title": {
       "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
@@ -419,7 +408,8 @@ function EditorStyles(props) {
     },
 	" .wp-block-responsive-block-editor-addons-card-item__content": {
 		"font-size": generateCSSUnit(contentFontSizeTablet, "px"),
-	},
+        "margin-bottom": generateCSSUnit(contentSpaceTablet, "px"),
+    },
   " .responsive-block-editor-addons-card-button-inner": {
     "padding-top": generateCSSUnit(ctaVpaddingTablet, "px"),
     "padding-bottom": generateCSSUnit(ctaVpaddingTablet, "px"),

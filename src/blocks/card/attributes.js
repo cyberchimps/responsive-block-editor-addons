@@ -404,16 +404,6 @@ const attributes = {
   blockrightmarginTablet: {
     type: "number",
   },
-  contenttopSpace: {
-    type: "number",
-    default: 16,
-  },
-  contenttopSpaceMobile: {
-    type: "number",
-  },
-  contenttopSpaceTablet: {
-    type: "number",
-  },
   bgimageSize: {
     type: "string",
     default: "full",
@@ -507,35 +497,35 @@ const attributes = {
   },
   ctaHpaddingMobile: {
     type: "number",
-    default: 14
+    default: ''
   },
   ctaHpaddingTablet: {
     type: "number",
-    default: 14
+    default: ''
   },
   ctaVpaddingTablet: {
     type: "number",
-    default: 10
+    default: ''
   },
   ctaVpaddingMobile: {
     type: "number",
-    default: 10
+    default: ''
   },
   vMarginTablet: {
     type: "number",
-    default: 10
+    default: ''
   },
   vMarginMobile: {
     type: "number",
-    default: 10
+    default: ''
   },
   hMarginTablet: {
     type: "number",
-    default: 0
+    default: ''
   },
   hMarginMobile: {
     type: "number",
-    default: 0
+    default: ''
   },
   buttonHbackgroundType: {
     type: "string",
