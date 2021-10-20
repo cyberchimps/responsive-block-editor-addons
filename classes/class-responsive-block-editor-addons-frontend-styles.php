@@ -5143,8 +5143,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-ifb-icon:hover' => array(
-					'background-color' => $icon_bg_hover_color,
-					'border'           => $icon_hover_border,
+					'background-color'          => $icon_bg_hover_color,
+					'border'                    => $icon_hover_border,
+					'animation-name'            => $attr['animationName'] . '' . $attr['animationDirection'],
+					'animation-timing-function' => $attr['animationCurve'],
+					'animation-duration'        => $attr['animationDuration'] . 'ms',
+					'animation-delay'           => $attr['animationDelay'] . 'ms',
+					'animation-iteration-count' => 'once' === $attr['animationRepeat'] ? 1 : 'infinite',
 				),
 
 				' .responsive-block-editor-addons-ifb-image-content > img' => array(
@@ -5602,6 +5607,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonbackgroundType'     => '',
 				'buttonHbackgroundType'    => 'none',
 				'zIndex'                   => 0,
+				'animationName'            => 'none',
+				'animationDirection'       => 'Left',
+				'animationRepeat'          => 'once',
+				'animationDuration'        => 1000,
+				'animationDelay'           => 1000,
+				'animationCurve'           => '',
 			);
 		}
 

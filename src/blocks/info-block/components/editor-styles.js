@@ -159,7 +159,13 @@ function EditorStyles(props) {
     buttonbackgroundType,
     buttonHbackgroundType,
     zIndex,
-      resctaType,
+    animationName,
+    animationDirection,
+    animationRepeat,
+    animationDuration,
+    animationDelay,
+    animationCurve,
+    resctaType,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -275,6 +281,11 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-ifb-icon:hover": {
       "background-color": iconBgHoverColor,
       "border": iconHoverBorder,
+      'animation-name': `${animationName}${animationDirection}`,
+      'animation-timing-function': animationCurve,
+      'animation-duration': animationDuration+'ms',
+      'animation-delay': animationDelay+'ms',
+      'animation-iteration-count': animationRepeat === 'once' ? 1 : 'infinite',
     },
 
     " .responsive-block-editor-addons-ifb-image-content > img": {

@@ -1899,6 +1899,12 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'buttonbackgroundType'     => '',
 			'buttonHbackgroundType'    => 'none',
 			'zIndex'                   => 0,
+			'animationName'            => 'none',
+			'animationDirection'       => 'Left',
+			'animationRepeat'          => 'once',
+			'animationDuration'        => 1000,
+			'animationDelay'           => 1000,
+			'animationCurve'           => '',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_info_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
