@@ -380,7 +380,7 @@ function EditorStyles(props) {
   " .responsive-block-editor-addons-card-button-inner": {
     "padding-top": generateCSSUnit(ctaVpaddingMobile, "px"),
     "padding-bottom": generateCSSUnit(ctaVpaddingMobile, "px"),
-    "padding-left": ctaHpaddingMobile? generateCSSUnit(ctaHpaddingMobile, "px"):'',
+    "padding-left": generateCSSUnit(ctaHpaddingMobile, "px"),
     "padding-right": generateCSSUnit(ctaHpaddingMobile, "px"),
     "margin-top": generateCSSUnit(vMarginMobile, "px"),
     "margin-bottom": generateCSSUnit(vMarginMobile, "px"),
