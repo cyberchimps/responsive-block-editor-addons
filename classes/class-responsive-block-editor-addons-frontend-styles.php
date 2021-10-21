@@ -1903,11 +1903,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$hoverbox_shadow_position_css = '';
 			}
 
-			$background_type_image_styles = array();
+			$background_type_image_styles       = array();
+			$background_type_image_hover_styles = array();
 			if ( 'image' === $attr['backgroundType'] && $attr['backgroundImage'] ) {
 
 				if ( 'gradient' === $attr['overlayType'] && 'linear' === $attr['gradientOverlayType'] ) {
-					$background_type_image_styles = array(
+					$background_type_image_styles       = array(
 						'background-image' => self::generate_background_image_effect(
 							self::hex_to_rgb( $attr['gradientOverlayColor1'], $imgopacity ),
 							self::hex_to_rgb( $attr['gradientOverlayColor2'], $imgopacity ),
@@ -1916,26 +1917,52 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 							$attr['gradientOverlayLocation2']
 						) . ',url(' . $attr['backgroundImage'] . ')',
 					);
+					$background_type_image_hover_styles = array(
+						'background-image' => $attr['backgroundHoverImage'] ? self::generate_background_image_effect(
+							self::hex_to_rgb( $attr['gradientOverlayColor1'], $imgopacity ),
+							self::hex_to_rgb( $attr['gradientOverlayColor2'], $imgopacity ),
+							$attr['gradientOverlayAngle'],
+							$attr['gradientOverlayLocation1'],
+							$attr['gradientOverlayLocation2']
+						) . ',url(' . $attr['backgroundHoverImage'] . ')' : null,
+					);
 				} elseif ( 'gradient' === $attr['overlayType'] && 'radial' === $attr['gradientOverlayType'] ) {
-					$background_type_image_styles = array(
+					$background_type_image_styles       = array(
 						'background-image' => 'radial-gradient( at ' . $attr['gradientOverlayPosition'] . ','
 							. self::hex_to_rgb( $attr['gradientOverlayColor1'], $imgopacity ) .
 							' ' . $attr['gradientOverlayLocation1'] . '%,' . self::hex_to_rgb( $attr['gradientOverlayColor2'] ? $attr['gradientOverlayColor2'] : '#fff', $imgopacity ) .
 							' ' . $attr['gradientOverlayLocation2'] . '%),url(' . $attr['backgroundImage'] . ')',
 					);
+					$background_type_image_hover_styles = array(
+						'background-image' => $attr['backgroundHoverImage'] ? 'radial-gradient( at ' . $attr['gradientOverlayPosition'] . ','
+							. self::hex_to_rgb( $attr['gradientOverlayColor1'], $imgopacity ) .
+							' ' . $attr['gradientOverlayLocation1'] . '%,' . self::hex_to_rgb( $attr['gradientOverlayColor2'] ? $attr['gradientOverlayColor2'] : '#fff', $imgopacity ) .
+							' ' . $attr['gradientOverlayLocation2'] . '%),url(' . $attr['backgroundHoverImage'] . ')' : null,
+					);
 				} else {
-					$background_type_image_styles = array(
+					$background_type_image_styles       = array(
 						'background-image' => 'linear-gradient(' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . ',' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . '),url(' . $attr['backgroundImage'] . ')',
 					);
-
+					$background_type_image_hover_styles = array(
+						'background-image' => $attr['backgroundHoverImage'] ? 'linear-gradient(' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . ',' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . '),url(' . $attr['backgroundHoverImage'] . ')' : null,
+					);
 				}
-				$background_type_image_styles = array_merge(
+				$background_type_image_styles       = array_merge(
 					$background_type_image_styles,
 					array(
 						'background-position'   => 'empty' !== $attr['backgroundPosition'] && 'center center' === $attr['backgroundImagePosition'] ? $attr['backgroundPosition'] : $attr['backgroundImagePosition'], // For compatibility with v1.3.2.
 						'background-attachment' => $attr['backgroundAttachment'],
 						'background-repeat'     => 'empty' !== $attr['backgroundRepeat'] && 'no-repeat' === $attr['backgroundImageRpeat'] ? $attr['backgroundRepeat'] : $attr['backgroundImageRepeat'], // For compatibility with v1.3.2.
 						'background-size'       => 'empty' !== $attr['backgroundSize'] && 'cover' === $attr['backgroundImageSize'] ? $attr['backgroundSize'] : $attr['backgroundImageSize'], // For compatibility with v1.3.2.
+					)
+				);
+				$background_type_image_hover_styles = array_merge(
+					$background_type_image_hover_styles,
+					array(
+						'background-position'   => $attr['backgroundImageHoverPosition'],
+						'background-attachment' => $attr['backgroundImageHoverAttachment'],
+						'background-repeat'     => $attr['backgroundImageHoverRepeat'],
+						'background-size'       => $attr['backgroundImageHoverSize'],
 					)
 				);
 			}
@@ -1970,16 +1997,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					),
 					$background_type_image_styles
 				),
-				' .responsive-block-editor-addons-block-column:hover' => array(
-					'box-shadow'       => '' !== $attr['hoverboxShadowColor'] ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
-					'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
-						self::hex_to_rgb( $attr['hoverbackgroundColor1'], $imgopacity ),
-						self::hex_to_rgb( $attr['hoverbackgroundColor2'], $imgopacity ),
-						$attr['hovergradientDirection'],
-						$attr['hovercolorLocation1'],
-						$attr['hovercolorLocation2']
-					) : '',
-					'background-color' => 'color' === $attr['backgroundType'] && '' !== $attr['backgroundColorHover'] ? self::hex_to_rgb( $attr['backgroundColorHover'] ? $attr['backgroundColorHover'] : '#fff', $imgopacity ) : '',
+				' .responsive-block-editor-addons-block-column:hover' => array_merge(
+					array(
+						'box-shadow'       => '' !== $attr['hoverboxShadowColor'] ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
+						'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+							self::hex_to_rgb( $attr['hoverbackgroundColor1'], $imgopacity ),
+							self::hex_to_rgb( $attr['hoverbackgroundColor2'], $imgopacity ),
+							$attr['hovergradientDirection'],
+							$attr['hovercolorLocation1'],
+							$attr['hovercolorLocation2']
+						) : '',
+						'background-color' => 'color' === $attr['backgroundType'] && '' !== $attr['backgroundColorHover'] ? self::hex_to_rgb( $attr['backgroundColorHover'] ? $attr['backgroundColorHover'] : '#fff', $imgopacity ) : '',
+					),
+					$background_type_image_hover_styles,
 				),
 			);
 			$mobile_selectors = array(
@@ -2027,79 +2057,84 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_advanced_column_child_block_default_attributes() {
 			return array(
-				'width'                    => '',
-				'topPadding'               => '',
-				'bottomPadding'            => '',
-				'leftPadding'              => '',
-				'rightPadding'             => '',
-				'leftMargin'               => '',
-				'rightMargin'              => '',
-				'topMargin'                => '',
-				'bottomMargin'             => '',
-				'topPaddingTablet'         => '',
-				'bottomPaddingTablet'      => '',
-				'leftPaddingTablet'        => '',
-				'rightPaddingTablet'       => '',
-				'leftMarginTablet'         => '',
-				'rightMarginTablet'        => '',
-				'topMarginTablet'          => '',
-				'bottomMarginTablet'       => '',
-				'topPaddingMobile'         => '',
-				'bottomPaddingMobile'      => '',
-				'leftPaddingMobile'        => '',
-				'rightPaddingMobile'       => '',
-				'leftMarginMobile'         => '',
-				'rightMarginMobile'        => '',
-				'topMarginMobile'          => '',
-				'bottomMarginMobile'       => '',
-				'block_id'                 => '',
-				'blockBorderStyle'         => 'none',
-				'blockBorderWidth'         => 1,
-				'blockBorderRadius'        => '',
-				'blockBorderColor'         => '',
-				'boxShadowColor'           => '',
-				'boxShadowHOffset'         => 0,
-				'boxShadowVOffset'         => 0,
-				'boxShadowBlur'            => 0,
-				'boxShadowSpread'          => 0,
-				'boxShadowPosition'        => 'outset',
-				'hoverboxShadowColor'      => '',
-				'hoverboxShadowHOffset'    => 0,
-				'hoverboxShadowVOffset'    => 0,
-				'hoverboxShadowBlur'       => 6,
-				'hoverboxShadowSpread'     => 1,
-				'hoverboxShadowPosition'   => 'outset',
-				'opacity'                  => 20,
-				'colorLocation1'           => 0,
-				'colorLocation2'           => 100,
-				'gradientDirection'        => 90,
-				'hovercolorLocation1'      => 0,
-				'hovercolorLocation2'      => 100,
-				'hovergradientDirection'   => 90,
-				'backgroundImage'          => '',
-				'backgroundImagePosition'  => 'center center',
-				'backgroundImageSize'      => 'cover',
-				'backgroundImageRepeat'    => 'no-repeat',
-				'backgroundAttachment'     => 'scroll',
-				'backgroundImageColor'     => '',
-				'overlayType'              => 'color',
-				'gradientOverlayColor1'    => '',
-				'gradientOverlayColor2'    => '',
-				'gradientOverlayType'      => 'linear',
-				'gradientOverlayLocation1' => 0,
-				'gradientOverlayLocation2' => 100,
-				'gradientOverlayAngle'     => 0,
-				'gradientOverlayPosition'  => 'center center',
-				'backgroundType'           => '',
-				'backgroundColor'          => '',
-				'backgroundColorHover'     => '',
-				'backgroundColor1'         => '',
-				'backgroundColor2'         => '#fff',
-				'hoverbackgroundColor1'    => '',
-				'hoverbackgroundColor2'    => '#fff',
-				'backgroundPosition'       => 'empty', // For compatibility with v1.3.2.
-				'backgroundRepeat'         => 'empty', // For compatibility with v1.3.2.
-				'backgroundSize'           => 'empty', // For compatibility with v1.3.2.
+				'width'                          => '',
+				'topPadding'                     => '',
+				'bottomPadding'                  => '',
+				'leftPadding'                    => '',
+				'rightPadding'                   => '',
+				'leftMargin'                     => '',
+				'rightMargin'                    => '',
+				'topMargin'                      => '',
+				'bottomMargin'                   => '',
+				'topPaddingTablet'               => '',
+				'bottomPaddingTablet'            => '',
+				'leftPaddingTablet'              => '',
+				'rightPaddingTablet'             => '',
+				'leftMarginTablet'               => '',
+				'rightMarginTablet'              => '',
+				'topMarginTablet'                => '',
+				'bottomMarginTablet'             => '',
+				'topPaddingMobile'               => '',
+				'bottomPaddingMobile'            => '',
+				'leftPaddingMobile'              => '',
+				'rightPaddingMobile'             => '',
+				'leftMarginMobile'               => '',
+				'rightMarginMobile'              => '',
+				'topMarginMobile'                => '',
+				'bottomMarginMobile'             => '',
+				'block_id'                       => '',
+				'blockBorderStyle'               => 'none',
+				'blockBorderWidth'               => 1,
+				'blockBorderRadius'              => '',
+				'blockBorderColor'               => '',
+				'boxShadowColor'                 => '',
+				'boxShadowHOffset'               => 0,
+				'boxShadowVOffset'               => 0,
+				'boxShadowBlur'                  => 0,
+				'boxShadowSpread'                => 0,
+				'boxShadowPosition'              => 'outset',
+				'hoverboxShadowColor'            => '',
+				'hoverboxShadowHOffset'          => 0,
+				'hoverboxShadowVOffset'          => 0,
+				'hoverboxShadowBlur'             => 6,
+				'hoverboxShadowSpread'           => 1,
+				'hoverboxShadowPosition'         => 'outset',
+				'opacity'                        => 20,
+				'colorLocation1'                 => 0,
+				'colorLocation2'                 => 100,
+				'gradientDirection'              => 90,
+				'hovercolorLocation1'            => 0,
+				'hovercolorLocation2'            => 100,
+				'hovergradientDirection'         => 90,
+				'backgroundImage'                => '',
+				'backgroundImagePosition'        => 'center center',
+				'backgroundImageSize'            => 'cover',
+				'backgroundImageRepeat'          => 'no-repeat',
+				'backgroundAttachment'           => 'scroll',
+				'backgroundImageColor'           => '',
+				'overlayType'                    => 'color',
+				'gradientOverlayColor1'          => '',
+				'gradientOverlayColor2'          => '',
+				'gradientOverlayType'            => 'linear',
+				'gradientOverlayLocation1'       => 0,
+				'gradientOverlayLocation2'       => 100,
+				'gradientOverlayAngle'           => 0,
+				'gradientOverlayPosition'        => 'center center',
+				'backgroundType'                 => '',
+				'backgroundColor'                => '',
+				'backgroundColorHover'           => '',
+				'backgroundColor1'               => '',
+				'backgroundColor2'               => '#fff',
+				'hoverbackgroundColor1'          => '',
+				'hoverbackgroundColor2'          => '#fff',
+				'backgroundPosition'             => 'empty', // For compatibility with v1.3.2.
+				'backgroundRepeat'               => 'empty', // For compatibility with v1.3.2.
+				'backgroundSize'                 => 'empty', // For compatibility with v1.3.2.
+				'backgroundHoverImage'           => '',
+				'backgroundImageHoverPosition'   => '',
+				'backgroundImageHoverRepeat'     => '',
+				'backgroundImageHoverAttachment' => '',
+				'backgroundImageHoverSize'       => '',
 			);
 		}
 

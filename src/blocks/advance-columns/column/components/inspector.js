@@ -11,6 +11,7 @@ import ImageBackgroundControl from "../../../../settings-components/BlockBackgro
 import GradientBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import ResponsivePaddingControl from "../../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import ResponsiveMarginControl from "../../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import ImageHoverBackgroundSettings from "../../../../settings-components/BlockBackgroundSettings/ImageHoverBackgroundSettings"
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -85,7 +86,6 @@ export default class Inspector extends Component {
         hoverboxShadowBlur,
         hoverboxShadowSpread,
         hoverboxShadowPosition,
-
         columnGap,
         contentWidth,
         widthType,
@@ -122,19 +122,19 @@ export default class Inspector extends Component {
         blockBorderWidth,
         blockBorderRadius,
         blockBorderColor,
-          topMargin,
-          bottomMargin,
-          leftMargin,
-          rightMargin,
+        topMargin,
+        bottomMargin,
+        leftMargin,
+        rightMargin,
         columnTopMargin,
-          topMarginTablet,
-          bottomMarginTablet,
-          leftMarginTablet,
-          rightMarginTablet,
-          topMarginMobile,
-          bottomMarginMobile,
-          leftMarginMobile,
-          rightMarginMobile,
+        topMarginTablet,
+        bottomMarginTablet,
+        leftMarginTablet,
+        rightMarginTablet,
+        topMarginMobile,
+        bottomMarginMobile,
+        leftMarginMobile,
+        rightMarginMobile,
         columnTopMarginTablet,
         columnTopMarginMobile,
         columnBottomMargin,
@@ -146,18 +146,18 @@ export default class Inspector extends Component {
         columnRightMargin,
         columnRightMarginTablet,
         columnRightMarginMobile,
-          topPadding,
-          bottomPadding,
-          leftPadding,
-          rightPadding,
-          topPaddingTablet,
-          bottomPaddingTablet,
-          leftPaddingTablet,
-          rightPaddingTablet,
-          topPaddingMobile,
-          bottomPaddingMobile,
-          leftPaddingMobile,
-          rightPaddingMobile,
+        topPadding,
+        bottomPadding,
+        leftPadding,
+        rightPadding,
+        topPaddingTablet,
+        bottomPaddingTablet,
+        leftPaddingTablet,
+        rightPaddingTablet,
+        topPaddingMobile,
+        bottomPaddingMobile,
+        leftPaddingMobile,
+        rightPaddingMobile,
         columnTopPadding,
         columnTopPaddingTablet,
         columnTopPaddingMobile,
@@ -170,6 +170,11 @@ export default class Inspector extends Component {
         columnRightPadding,
         columnRightPaddingTablet,
         columnRightPaddingMobile,
+        backgroundHoverImage,
+        backgroundImageHoverPosition,
+        backgroundImageHoverRepeat,
+        backgroundImageHoverAttachment,
+        backgroundImageHoverSize,
       },
       setAttributes,
     } = this.props;
@@ -273,12 +278,49 @@ export default class Inspector extends Component {
                 />
               )}
               {"image" == backgroundType && (
-                <ImageBackgroundControl
-                  showSomeImageOptions={true}
-                  showMoreImageOptions={true}
-                  showOverlayOptions={true}
-                  {...this.props}
-                />
+                <TabPanel
+                  className="rbea-inspect-tabs rbea-inspect-tabs-col-2"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "normal",
+                      title: __("Normal", "responsive-block-editor-addons"),
+                      className: "rbea-normal-tab",
+                    },
+                    {
+                      name: "hover",
+                      title: __("Hover", "responsive-block-editor-addons"),
+                      className: "rbea-focus-tab",
+                    },
+                  ]}
+                >
+                   {(tabName) => {
+                    let tabout;
+                    if ("hover" == tabName.name) {
+                      tabout = (
+                        <Fragment>
+                          <ImageHoverBackgroundSettings
+                            showSomeImageOptions={true}
+                            showMoreImageOptions={true}
+                            {...this.props}
+                          />
+                        </Fragment>
+                      )
+                    }else {
+                      tabout = (
+                        <Fragment>
+                          <ImageBackgroundControl
+                            showSomeImageOptions={true}
+                            showMoreImageOptions={true}
+                            showOverlayOptions={true}
+                            {...this.props}
+                          />
+                        </Fragment>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
               )}
               <RangeControl
                 label={__("Opacity", "responsive-block-editor-addons")}

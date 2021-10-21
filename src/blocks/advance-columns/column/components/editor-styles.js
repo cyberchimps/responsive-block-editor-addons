@@ -69,44 +69,49 @@ function EditorStyles(props) {
     columnRightMarginTablet,
     columnRightMarginMobile,
     columnTopPadding,
-	columnTopPaddingTablet,
-	columnTopPaddingMobile,
-	columnBottomPadding,
-	columnBottomPaddingTablet,
-	columnBottomPaddingMobile,
-	columnLeftPadding,
-	columnLeftPaddingTablet,
-	columnLeftPaddingMobile,
-	columnRightPadding,
-	columnRightPaddingTablet,
-	columnRightPaddingMobile,
-	topMargin, //For compatibility with v1.3.2.
-	topMarginTablet, //For compatibility with v1.3.2.
-	topMarginMobile, //For compatibility with v1.3.2.
-	bottomMargin, //For compatibility with v1.3.2.
-	bottomMarginTablet, //For compatibility with v1.3.2.
-	bottomMarginMobile, //For compatibility with v1.3.2.
-	leftMargin, //For compatibility with v1.3.2.
-	leftMarginTablet, //For compatibility with v1.3.2.
-	leftMarginMobile, //For compatibility with v1.3.2.
-	rightMargin, //For compatibility with v1.3.2.
-	rightMarginTablet, //For compatibility with v1.3.2.
-	rightMarginMobile, //For compatibility with v1.3.2.
-	topPadding, //For compatibility with v1.3.2.
-	topPaddingTablet, //For compatibility with v1.3.2.
-	topPaddingMobile, //For compatibility with v1.3.2.
-	bottomPadding, //For compatibility with v1.3.2.
-	bottomPaddingTablet, //For compatibility with v1.3.2.
-	bottomPaddingMobile, //For compatibility with v1.3.2.
-	leftPadding, //For compatibility with v1.3.2.
-	leftPaddingTablet, //For compatibility with v1.3.2.
-	leftPaddingMobile, //For compatibility with v1.3.2.
-	rightPadding, //For compatibility with v1.3.2.
-	rightPaddingTablet, //For compatibility with v1.3.2.
-	rightPaddingMobile, //For compatibility with v1.3.2.
-	backgroundPosition, // For compatibility with v1.3.2.
-	backgroundRepeat, // For compatibility with v1.3.2.
-	backgroundSize, // For compatibility with v1.3.2.
+    columnTopPaddingTablet,
+    columnTopPaddingMobile,
+    columnBottomPadding,
+    columnBottomPaddingTablet,
+    columnBottomPaddingMobile,
+    columnLeftPadding,
+    columnLeftPaddingTablet,
+    columnLeftPaddingMobile,
+    columnRightPadding,
+    columnRightPaddingTablet,
+    columnRightPaddingMobile,
+    topMargin, //For compatibility with v1.3.2.
+    topMarginTablet, //For compatibility with v1.3.2.
+    topMarginMobile, //For compatibility with v1.3.2.
+    bottomMargin, //For compatibility with v1.3.2.
+    bottomMarginTablet, //For compatibility with v1.3.2.
+    bottomMarginMobile, //For compatibility with v1.3.2.
+    leftMargin, //For compatibility with v1.3.2.
+    leftMarginTablet, //For compatibility with v1.3.2.
+    leftMarginMobile, //For compatibility with v1.3.2.
+    rightMargin, //For compatibility with v1.3.2.
+    rightMarginTablet, //For compatibility with v1.3.2.
+    rightMarginMobile, //For compatibility with v1.3.2.
+    topPadding, //For compatibility with v1.3.2.
+    topPaddingTablet, //For compatibility with v1.3.2.
+    topPaddingMobile, //For compatibility with v1.3.2.
+    bottomPadding, //For compatibility with v1.3.2.
+    bottomPaddingTablet, //For compatibility with v1.3.2.
+    bottomPaddingMobile, //For compatibility with v1.3.2.
+    leftPadding, //For compatibility with v1.3.2.
+    leftPaddingTablet, //For compatibility with v1.3.2.
+    leftPaddingMobile, //For compatibility with v1.3.2.
+    rightPadding, //For compatibility with v1.3.2.
+    rightPaddingTablet, //For compatibility with v1.3.2.
+    rightPaddingMobile, //For compatibility with v1.3.2.
+    backgroundPosition, // For compatibility with v1.3.2.
+    backgroundRepeat, // For compatibility with v1.3.2.
+    backgroundSize, // For compatibility with v1.3.2.
+    backgroundHoverImage,
+    backgroundImageHoverPosition,
+    backgroundImageHoverRepeat,
+    backgroundImageHoverAttachment,
+    backgroundImageHoverSize,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -122,6 +127,7 @@ function EditorStyles(props) {
   let imgopacity = opacity / 100;
 
   var blockBackground = "";
+  let blockBackgroundHover = "";
   if (backgroundType == "gradient") {
     blockBackground = generateBackgroundImageEffect(
       `${hexToRgba(backgroundColor1 || "#ffffff", imgopacity || 0)}`,
@@ -130,6 +136,20 @@ function EditorStyles(props) {
       colorLocation1,
       colorLocation2
     );
+
+    blockBackgroundHover = generateBackgroundImageEffect(
+      `${hexToRgba(
+        hoverbackgroundColor1 || "#ffffff",
+        imgopacity || 0
+      )}`,
+      `${hexToRgba(
+        hoverbackgroundColor2 || "#ffffff",
+        imgopacity || 0
+      )}`,
+      hovergradientDirection,
+      hovercolorLocation1,
+      hovercolorLocation2
+    )
   }
   if (backgroundType == "image") {
     if (overlayType == "gradient" && gradientOverlayType == "linear") {
@@ -141,6 +161,16 @@ function EditorStyles(props) {
           gradientOverlayLocation1,
           gradientOverlayLocation2
         ) + `,url(${backgroundImage})`;
+      
+      blockBackgroundHover =
+      backgroundHoverImage ?  generateBackgroundImageEffect(
+          `${hexToRgba(gradientOverlayColor1 || "#fff", imgopacity || 0)}`,
+          `${hexToRgba(gradientOverlayColor2 || "#fff", imgopacity || 0)}`,
+          gradientOverlayAngle,
+          gradientOverlayLocation1,
+          gradientOverlayLocation2
+        ) + `,url(${backgroundHoverImage})` : undefined;
+
     } else if (overlayType == "gradient" && gradientOverlayType == "radial") {
       blockBackground = `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
@@ -149,6 +179,15 @@ function EditorStyles(props) {
         gradientOverlayColor2 || "#fff",
         imgopacity || 0
       )} ${gradientOverlayLocation2}%),url(${backgroundImage})`;
+
+      blockBackgroundHover = backgroundHoverImage ? `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
+        gradientOverlayColor1 || "#fff",
+        imgopacity || 0
+      )} ${gradientOverlayLocation1}%, ${hexToRgba(
+        gradientOverlayColor2 || "#fff",
+        imgopacity || 0
+      )} ${gradientOverlayLocation2}%),url(${backgroundHoverImage})` : undefined;
+
     } else {
       blockBackground = `linear-gradient(${hexToRgba(
         backgroundImageColor || "#fff",
@@ -157,6 +196,14 @@ function EditorStyles(props) {
         backgroundImageColor || "#fff",
         imgopacity || 0
       )}),url(${backgroundImage})`;
+
+      blockBackgroundHover = backgroundHoverImage ? `linear-gradient(${hexToRgba(
+        backgroundImageColor || "#fff",
+        imgopacity || 0
+      )},${hexToRgba(
+        backgroundImageColor || "#fff",
+        imgopacity || 0
+      )}),url(${backgroundHoverImage})` : undefined;
     }
   }
   var selectors = {
@@ -164,22 +211,7 @@ function EditorStyles(props) {
       width: generateCSSUnit(width, "%"),
     },
     " .responsive-block-editor-addons-block-column:hover": {
-      "background-image":
-        backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
-              `${hexToRgba(
-                hoverbackgroundColor1 || "#ffffff",
-                imgopacity || 0
-              )}`,
-              `${hexToRgba(
-                hoverbackgroundColor2 || "#ffffff",
-                imgopacity || 0
-              )}`,
-              hovergradientDirection,
-              hovercolorLocation1,
-              hovercolorLocation2
-            )
-          : undefined,
+      "background-image": blockBackgroundHover,
       "box-shadow":
 	  	hoverboxShadowColor !== ""
 		  ? generateCSSUnit(hoverboxShadowHOffset, "px") +
@@ -198,6 +230,10 @@ function EditorStyles(props) {
         backgroundType == "color" && ' ' !== backgroundColorHover
           ? `${hexToRgba(backgroundColorHover || "#ffffff", imgopacity || 0)}`
           : undefined,
+      "background-position": backgroundImageHoverPosition,
+      "background-attachment": backgroundImageHoverAttachment,
+      "background-repeat": backgroundImageHoverRepeat,
+      "background-size": backgroundImageHoverSize,
     },
     " .responsive-block-editor-addons-block-column": {
       "padding-top": generateCSSUnit(topPadding, "px"),
