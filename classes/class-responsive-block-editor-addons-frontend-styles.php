@@ -2010,7 +2010,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						'background-color' => 'color' === $attr['backgroundType'] && '' !== $attr['backgroundColorHover'] ? self::hex_to_rgb( $attr['backgroundColorHover'] ? $attr['backgroundColorHover'] : '#fff', $imgopacity ) : '',
 					),
 					$background_type_image_hover_styles,
-				),
 			);
 			$mobile_selectors = array(
 				' .responsive-block-editor-addons-block-column' => array(
