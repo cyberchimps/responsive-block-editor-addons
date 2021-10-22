@@ -1,0 +1,219 @@
+/**
+ * Editor styles for the admin
+ */
+.responsive-block-editor-addons-block-team {
+  align-items: flex-start;
+  padding: 0;
+  position: relative;
+  text-align: center;
+
+  .responsive-block-editor-addons-team-content {
+    flex: 1 1 auto;
+
+    .responsive-block-editor-addons-team-name {
+      display: block;
+      font-size: 1.5em;
+      margin: 1em 0;
+      padding: 0;
+      margin-top: 0;
+    }
+    .responsive-block-editor-addons-team-designation p {
+      margin: 0;
+      margin-bottom: 0;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    .responsive-block-editor-addons-team-description {
+      margin: 0;
+
+      p {
+        margin-bottom: 10px;
+      }
+      &:last-of-type {
+        margin-bottom: 10px;
+      }
+    }
+    .responsive-block-editor-addons-team-social-icons-wrapper {
+      display: inline-block;
+
+      .responsive-block-editor-addons-team-social-icons {
+        list-style-type: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin-right: 10px;
+          margin-left: 10px;
+
+          a {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .responsive-block-editor-addons-team-avatar {
+    flex: 0 0 auto;
+    position: relative;
+    height: auto;
+
+    &-img {
+      height: 100% !important;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      vertical-align: middle;
+      width: 100%;
+    }
+
+    button {
+      height: 100%;
+      left: 0;
+      padding: 0;
+      position: absolute;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 0 0 1px #555d66;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:focus:not(:disabled) {
+        background: none;
+        border: none;
+        box-shadow: 0 0 0 2px #007cba;
+        outline: none;
+      }
+
+      svg {
+        fill: #555d66;
+        margin: auto auto;
+        pointer-events: none;
+        transform: translate3d(0, 0, 0);
+        transition: transform 100ms cubic-bezier(0.645, 0.045, 0.355, 1);
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+      }
+
+	  > .dashicon {
+		  padding-bottom: 100%;
+	  }
+    }
+  }
+}
+.has-small-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2 - 0.5em);
+}
+.has-small-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 3 - 1em);
+}
+.has-small-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 4 - 1em);
+}
+.has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2 - 1em);
+}
+
+.has-medium-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2.975 - 1.5em);
+}
+.has-medium-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 4 - 1.5em);
+}
+.has-large-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2.01 - 1.5em);
+}
+.has-large-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 3.03 - 2em);
+}
+.has-large-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 4.08 - 2em);
+}
+.has-huge-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 2.02 - 2em);
+}
+.has-huge-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 3.09 - 2.5em);
+}
+.has-huge-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+  max-width: calc(100% / 4.15 - 2.5em);
+}
+
+@media (max-width: 576px) {
+	.wp-block-responsive-block-editor-addons-team-wrapper.has {
+    &-large,
+    &-small,
+    &-medium,
+    &-huge {
+      &-gutter.has {
+        &-1,
+        &-2,
+        &-3,
+        &-4 {
+          &-columns > *:not(.block-editor-inner-blocks) {
+            max-width: 100%;
+            margin-bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page,
+.single,
+.blog,
+.search,
+.archive {
+  &.page-template-gutenberg-fullwidth,
+  &.sidebar-position-no:not(.woocommerce) {
+    .alignwide,
+    .alignfull {
+      .wp-block-responsive-block-editor-addons-team-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator),
+      .wp-block-responsive-block-editor-addons-team-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator) {
+        &.has-small-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 2 - 0.5em);
+        }
+        &.has-small-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 3 - 1em);
+        }
+        &.has-small-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 4 - 1em);
+        }
+        &.has-medium-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 2 - 1em);
+        }
+
+        &.has-medium-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 2.975 - 1.5em);
+        }
+        &.has-medium-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 4 - 1.5em);
+        }
+        &.has-large-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 2.01 - 1.5em);
+        }
+        &.has-large-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 3.03 - 2em);
+        }
+        &.has-large-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 4.08 - 2em);
+        }
+        &.has-huge-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 2.02 - 2em);
+        }
+        &.has-huge-gutter.has-3-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 3.09 - 2.5em);
+        }
+        &.has-huge-gutter.has-4-columns > *:not(.block-editor-inner-blocks) {
+          max-width: calc(100% / 4.15 - 2.5em);
+        }
+      }
+    }
+  }
+}
