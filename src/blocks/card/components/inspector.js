@@ -337,9 +337,6 @@ export default class Inspector extends Component {
         contentLineHeight,
         contentFontWeight,
         contentFontSize,
-        contenttopSpace,
-        contenttopSpaceMobile,
-        contenttopSpaceTablet,
         blockbotmargin,
         blockbotmarginMobile,
         blockbotmarginTablet,
@@ -1141,17 +1138,6 @@ export default class Inspector extends Component {
                   desktop: subtitleSpace,
                   tablet: subtitleSpaceTablet,
                   mobile: subtitleSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Content Top Margin"}
-                attrNameTemplate="contenttopSpace%s"
-                values={{
-                  desktop: contenttopSpace,
-                  tablet: contenttopSpaceTablet,
-                  mobile: contenttopSpaceMobile,
                 }}
                 setAttributes={setAttributes}
                 {...this.props}
