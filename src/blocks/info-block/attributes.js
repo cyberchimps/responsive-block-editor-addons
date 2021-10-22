@@ -683,6 +683,29 @@ const attributes = {
   zIndex: {
     type: "number",
     default: 0,
-  }
+  },
+  animationName: {
+    type: "string",
+    default: "none",
+  },
+  animationDirection: {
+    type: "string",
+    default: 'Left',
+  },
+  animationRepeat: {
+    type: "string",
+    default: "once",
+  },
+  animationDuration: {
+    type: "number",
+    default: 1000,
+  },
+  animationDelay: {
+    type: "number",
+    default: 1000,
+  },
+  animationCurve: {
+    type: "string",
+  },
 };
 export default attributes;
