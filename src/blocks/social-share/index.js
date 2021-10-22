@@ -36,7 +36,34 @@ registerBlockType("responsive-block-editor-addons/social-share", {
   ],
 
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            socialMediaIcons: [
+                {
+                    icon: "facebook",
+                    label: "Facebook",
+                    id: "facebook",
+                    url: "https://facebook.com/",
+                    newTab: false,
+                },
+                {
+                    icon: "twitter",
+                    label: "Twitter",
+                    id: "twitter",
+                    url: "https://twitter.com/",
+                    newTab: false,
+                },
+                {
+                    icon: "linkedin",
+                    label: "LinkedIn",
+                    id: "linkedin",
+                    url: "https://linkedin.com/",
+                    newTab: false,
+                },
+            ],
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

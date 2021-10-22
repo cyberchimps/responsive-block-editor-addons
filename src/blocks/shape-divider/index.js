@@ -20,6 +20,7 @@ import { __ } from "@wordpress/i18n";
 const { name, category, attributes } = metadata;
 
 import { registerBlockType } from "@wordpress/blocks";
+import dividers from "./components/dividers";
 
 registerBlockType("responsive-block-editor-addons/shape-divider", {
   /* translators: block name */
@@ -43,6 +44,12 @@ registerBlockType("responsive-block-editor-addons/shape-divider", {
     responsiveBlocksSpacing: true,
   },
   attributes,
+    example: {
+        attributes: {
+            /* translators: example heading */
+            design:dividers.wavy,
+        },
+    },
   edit,
   save,
 });

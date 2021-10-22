@@ -549,11 +549,11 @@ export default class Inspector extends Component {
                     {
                       times(incsubtitle, (n) => {
                         clonecardsArray.push({
-                          title: "Title ",
-                          subtitle: "Subtitle",
+                          title: __("Title ", "responsive-block-editor-addons"),
+                          subtitle: __("Subtitle", "responsive-block-editor-addons"),
                           content:
-                            "Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.",
-                          button: "Button" + newCount,
+                            __("Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.", "responsive-block-editor-addons"),
+                          button: __("Button", "responsive-block-editor-addons") + newCount,
                         });
                       });
                     }

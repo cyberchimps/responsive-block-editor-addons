@@ -33,7 +33,7 @@ registerBlockType("responsive-block-editor-addons/inline-notice", {
   ],
 
   attributes: attributes,
-
+    example: {},
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

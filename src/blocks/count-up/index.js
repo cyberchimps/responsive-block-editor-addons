@@ -36,6 +36,26 @@ registerBlockType("responsive-block-editor-addons/count-up", {
   ],
 
   attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example pricing table */
+            countUp:[
+                {
+                    icon: "lightbulb",
+                    title: __("Title 1", "responsive-block-editor-addons"),
+                    amount: "1234",
+                    features: "",
+                },
+                {
+                    icon: "lightbulb",
+                    title: __("Title 2", "responsive-block-editor-addons"),
+                    amount: "1234",
+                    features: "",
+                },
+
+            ],
+        },
+    },
 
   /* Render the block in the editor. */
   edit: (props) => {

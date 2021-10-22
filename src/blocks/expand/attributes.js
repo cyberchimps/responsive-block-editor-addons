@@ -1,4 +1,4 @@
-const attributes = {
+    const attributes = {
   block_id: {
     type: "string",
   },
@@ -122,16 +122,16 @@ const attributes = {
 	type: "number",
   },
   textFontSizeMobile: {
-	type: "number",	  
+	type: "number",
   },
   textFontSizeTablet: {
-	type: "number",	  
+	type: "number",
   },
   linkFontSizeMobile: {
-	type: "number",	  
+	type: "number",
   },
   linkFontSizeTablet: {
-	type: "number",	  
+	type: "number",
   },
 };
 export default attributes;

@@ -323,6 +323,9 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
 	  default: 999,
 	}, // For compatibility with v1.3.2.
   },
+    example:{
+        columns: 2,
+    },
 
   /* Render the block in the editor. */
   edit: (props) => {

@@ -37,7 +37,12 @@ registerBlockType("responsive-block-editor-addons/video-popup", {
     html: false,
   },
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example heading */
+            videoLink: "https://www.youtube.com/watch?v=7aOK1eON_dE",
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

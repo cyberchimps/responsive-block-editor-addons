@@ -38,7 +38,16 @@ registerBlockType("responsive-block-editor-addons/expand", {
     align: ["wide", "full", "center", "left", "right"],
   },
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example title */
+            blockTitle: __( 'Title for this block', 'responsive-block-editor-addons' ),
+            /* translators: example description */
+            expandLessText: __( 'Some short text that can be expanded to show more details.', 'responsive-block-editor-addons' ),
+            /* translators: example label */
+            moreLabel: __( 'Show more', 'responsive-block-editor-addons' ),
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

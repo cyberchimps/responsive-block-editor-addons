@@ -61,6 +61,48 @@ registerBlockType("responsive-block-editor-addons/team", {
   ],
 
   attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example teams */
+            teamBlock:[
+                {
+                    teamName: __("John Doe", "responsive-block-editor-addons"),
+                    teamDesignation: __("Designation", "responsive-block-editor-addons"),
+                    teamDescription: __(
+                        "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+                        "responsive-block-editor-addons"
+                    ),
+                    teamImgURL: "",
+                    teamImgId: "",
+                    twitterUrl: "",
+                    facebookUrl: "",
+                    linkedinUrl: "",
+                    instagramUrl: "",
+                    youtubeUrl: "",
+                    pinterestUrl: "",
+                    emailAddress: "",
+                },
+                {
+                    teamName: __("John Doe", "responsive-block-editor-addons"),
+                    teamDesignation: __("Designation", "responsive-block-editor-addons"),
+                    teamDescription: __(
+                        "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+                        "responsive-block-editor-addons"
+                    ),
+                    teamImgURL: "",
+                    teamImgId: "",
+                    twitterUrl: "",
+                    facebookUrl: "",
+                    linkedinUrl: "",
+                    instagramUrl: "",
+                    youtubeUrl: "",
+                    pinterestUrl: "",
+                    emailAddress: "",
+                }
+
+            ],
+        },
+    },
 
   /* Render the block in the editor. */
   edit: (props) => {
