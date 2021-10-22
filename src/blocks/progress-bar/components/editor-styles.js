@@ -291,6 +291,13 @@ function EditorStyles(props) {
 			"font-weight": circularInnerValueFontWeight,
 			"letter-spacing": generateCSSUnit(circularInnerValueLetterSpacing, "px"),
 			"text-transform": circularInnerValueTextTransform,
+			"display": "flex",
+			"justify-content": "center",
+			"align-items": "center",
+			"overflow": "hidden",
+			"border-radius": "100%",
+			"height": generateCSSUnit(circularProgressBarSize-40, "px"),
+			"width": generateCSSUnit(circularProgressBarSize-40, "px"),
 		},
 		" .responsive-circular-progress-bar-bottom-title": {
 			"color": circularProgressBarBottomTitleValueColor,
