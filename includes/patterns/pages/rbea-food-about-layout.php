@@ -126,10 +126,10 @@ return array(
 	),
 	'keywords'   => array(
 		esc_html__( 'Health', 'responsive-block-editor-addons' ),
+		esc_html__( 'About', 'responsive-block-editor-addons' ),
 		esc_html__( 'Food Blog', 'responsive-block-editor-addons' ),
 		esc_html__( 'Blog', 'responsive-block-editor-addons' ),
 		esc_html__( 'Food', 'responsive-block-editor-addons' ),
-		esc_html__( 'Recipes', 'responsive-block-editor-addons' ),
 	),
 	'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/09/Food-blog-About.jpg',
 );

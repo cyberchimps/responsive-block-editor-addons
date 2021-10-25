@@ -172,7 +172,7 @@ return array(
 	),
 	'keywords'   => array(
 		esc_html__( 'Business', 'responsive-block-editor-addons' ),
-		esc_html__( 'Services', 'responsive-block-editor-addons' ),
+		esc_html__( 'About', 'responsive-block-editor-addons' ),
 		esc_html__( 'Consulting', 'responsive-block-editor-addons' ),
 		esc_html__( 'Law', 'responsive-block-editor-addons' ),
 		esc_html__( 'Professional', 'responsive-block-editor-addons' ),
