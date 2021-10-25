@@ -717,7 +717,7 @@ export default class Inspector extends Component {
 				></PanelColorSettings>
             </PanelBody>
             <PanelBody
-              title={__("Background Options", "responsive-block-editor-addons")}
+              title={__("Background", "responsive-block-editor-addons")}
               initialOpen={false}
             >
               <SelectControl

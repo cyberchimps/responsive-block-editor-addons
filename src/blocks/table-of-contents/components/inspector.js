@@ -462,120 +462,6 @@ export default class Inspector extends Component {
                 />
               )}
             </PanelBody>
-            <PanelBody
-              title={__("Background", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <SelectControl
-                label={__("Background Type", "responsive-block-editor-addons")}
-                value={backgroundType}
-                onChange={(value) => setAttributes({ backgroundType: value })}
-                options={backgroundTypeOptions}
-              />
-              {"color" == backgroundType && (
-                <ColorBackgroundControl {...this.props} />
-              )}
-              {"image" == backgroundType && (
-                <Fragment>
-                  <BaseControl
-                    className="editor-bg-image-control"
-                    label={__(
-                      "Background Image",
-                      "responsive-block-editor-addons"
-                    )}
-                  >
-                    <MediaUpload
-                      title={__(
-                        "Select Background Image",
-                        "responsive-block-editor-addons"
-                      )}
-                      onSelect={this.onSelectImage}
-                      allowedTypes={["image"]}
-                      value={backgroundImage}
-                      render={({ open }) => (
-                        <Button isDefault onClick={open}>
-                          {!backgroundImage
-                            ? __(
-                                "Select Background Image",
-                                "responsive-block-editor-addons"
-                              )
-                            : __(
-                                "Replace image",
-                                "responsive-block-editor-addons"
-                              )}
-                        </Button>
-                      )}
-                    />
-                    {backgroundImage && (
-                      <Button
-                        className="responsive-rm-btn"
-                        onClick={this.onRemoveImage}
-                        isLink
-                        isDestructive
-                      >
-                        {__("Remove Image", "responsive-block-editor-addons")}
-                      </Button>
-                    )}
-                  </BaseControl>
-                  {backgroundImage && (
-                    <Fragment>
-                      <SelectControl
-                        label={__("Image Position", "responsive-block-editor-addons")}
-                        value={backgroundPosition}
-                        onChange={(value) =>
-                          setAttributes({ backgroundPosition: value })
-                        }
-                        options={[
-                          { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
-                          { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
-                          { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
-                          { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
-                          {
-                            value: "center center",
-                            label: __("Center Center", "responsive-block-editor-addons"),
-                          },
-                          { value: "center right", label: __("Center Right", "responsive-block-editor-addons") },
-                          { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
-                          {
-                            value: "bottom center",
-                            label: __("Bottom Center", "responsive-block-editor-addons"),
-                          },
-                          { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
-                        ]}
-                      />
-                      <SelectControl
-                        label={__("Repeat", "responsive-block-editor-addons")}
-                        value={backgroundRepeat}
-                        onChange={(value) =>
-                          setAttributes({ backgroundRepeat: value })
-                        }
-                        options={[
-                          { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
-                          { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
-                          { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
-                          { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
-                        ]}
-                      />
-                      <SelectControl
-                        label={__("Size", "responsive-block-editor-addons")}
-                        value={backgroundSize}
-                        onChange={(value) =>
-                          setAttributes({ backgroundSize: value })
-                        }
-                        options={[
-                          { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
-                          { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
-                          { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
-                        ]}
-                      />
-                    </Fragment>
-                  )}
-                </Fragment>
-              )}
-              {"video" == backgroundType && (
-                <VideoBackgroundControl {...this.props} />
-              )}
-            </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1233,6 +1119,120 @@ export default class Inspector extends Component {
                   })
                 }
               />
+            </PanelBody>
+            <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <SelectControl
+                label={__("Background Type", "responsive-block-editor-addons")}
+                value={backgroundType}
+                onChange={(value) => setAttributes({ backgroundType: value })}
+                options={backgroundTypeOptions}
+              />
+              {"color" == backgroundType && (
+                <ColorBackgroundControl {...this.props} />
+              )}
+              {"image" == backgroundType && (
+                <Fragment>
+                  <BaseControl
+                    className="editor-bg-image-control"
+                    label={__(
+                      "Background Image",
+                      "responsive-block-editor-addons"
+                    )}
+                  >
+                    <MediaUpload
+                      title={__(
+                        "Select Background Image",
+                        "responsive-block-editor-addons"
+                      )}
+                      onSelect={this.onSelectImage}
+                      allowedTypes={["image"]}
+                      value={backgroundImage}
+                      render={({ open }) => (
+                        <Button isDefault onClick={open}>
+                          {!backgroundImage
+                            ? __(
+                                "Select Background Image",
+                                "responsive-block-editor-addons"
+                              )
+                            : __(
+                                "Replace image",
+                                "responsive-block-editor-addons"
+                              )}
+                        </Button>
+                      )}
+                    />
+                    {backgroundImage && (
+                      <Button
+                        className="responsive-rm-btn"
+                        onClick={this.onRemoveImage}
+                        isLink
+                        isDestructive
+                      >
+                        {__("Remove Image", "responsive-block-editor-addons")}
+                      </Button>
+                    )}
+                  </BaseControl>
+                  {backgroundImage && (
+                    <Fragment>
+                      <SelectControl
+                        label={__("Image Position", "responsive-block-editor-addons")}
+                        value={backgroundPosition}
+                        onChange={(value) =>
+                          setAttributes({ backgroundPosition: value })
+                        }
+                        options={[
+                          { value: "top left", label: __("Top Left", "responsive-block-editor-addons") },
+                          { value: "top center", label: __("Top Center", "responsive-block-editor-addons") },
+                          { value: "top right", label: __("Top Right", "responsive-block-editor-addons") },
+                          { value: "center left", label: __("Center Left", "responsive-block-editor-addons") },
+                          {
+                            value: "center center",
+                            label: __("Center Center", "responsive-block-editor-addons"),
+                          },
+                          { value: "center right", label: __("Center Right", "responsive-block-editor-addons") },
+                          { value: "bottom left", label: __("Bottom Left", "responsive-block-editor-addons") },
+                          {
+                            value: "bottom center",
+                            label: __("Bottom Center", "responsive-block-editor-addons"),
+                          },
+                          { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Repeat", "responsive-block-editor-addons")}
+                        value={backgroundRepeat}
+                        onChange={(value) =>
+                          setAttributes({ backgroundRepeat: value })
+                        }
+                        options={[
+                          { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                          { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
+                          { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
+                        ]}
+                      />
+                      <SelectControl
+                        label={__("Size", "responsive-block-editor-addons")}
+                        value={backgroundSize}
+                        onChange={(value) =>
+                          setAttributes({ backgroundSize: value })
+                        }
+                        options={[
+                          { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                          { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                          { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
+                        ]}
+                      />
+                    </Fragment>
+                  )}
+                </Fragment>
+              )}
+              {"video" == backgroundType && (
+                <VideoBackgroundControl {...this.props} />
+              )}
             </PanelBody>
             <PanelBody
               title={__("Body", "responsive-block-editor-addons")}

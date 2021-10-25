@@ -355,7 +355,9 @@ export default class Inspector extends Component {
                 }
               />
             </PanelBody>
-            <PanelBody
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+          <PanelBody
               title={__("Background", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -399,8 +401,6 @@ export default class Inspector extends Component {
                 allowReset
               />
             </PanelBody>
-          </InspectorTab>
-          <InspectorTab key={"style"}>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
