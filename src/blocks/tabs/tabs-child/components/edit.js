@@ -30,7 +30,7 @@
 		const rootBlockId = getBlockRootClientId( clientId );
 		const rootBlockAttrs = getBlockAttributes( rootBlockId );
 		setAttributes( { block_id: this.props.clientId } )
-		setAttributes( { activeTab: rootBlockAttrs.tabActiveFrontend} )
+		setAttributes( { activeTab: rootBlockAttrs?.tabActiveFrontend} )
 		
 		// Apply parent style if newly inserted
 		if (rootBlockAttrs !== null && rootBlockAttrs.needUpdate !== false) {
