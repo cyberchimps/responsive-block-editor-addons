@@ -602,8 +602,10 @@ export default class Inspector extends Component {
                 showTextOpacity={false}
               />
             </PanelBody>
-            <PanelBody
-              title={__("Column Background", "responsive-block-editor-addons")}
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+          <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
               initialOpen={false}
             >
               <SelectControl
@@ -674,8 +676,6 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
-          </InspectorTab>
-          <InspectorTab key={"style"}>
             <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}

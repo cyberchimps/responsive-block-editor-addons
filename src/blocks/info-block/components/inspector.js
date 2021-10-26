@@ -1028,53 +1028,6 @@ export default class Inspector extends Component {
               {source_type && source_type == "image" && imageControls}
             </PanelBody>
             <PanelBody
-              title={__("Background Options", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ImageBackgroundControl
-                {...this.props}
-                showSomeImageOptions={true}
-                showMoreImageOptions={true}
-                showOverlayOptions={false}
-              />
-
-              {backgroundImage && !!backgroundImage.length && (
-                <RangeControl
-                  label={__("Image Opacity", "responsive-block-editor-addons")}
-                  value={dimRatio}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      dimRatio: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={10}
-                />
-              )}
-
-              <PanelBody
-                title={__("Background Color", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ColorBackgroundControl
-                  {...this.props}
-                />
-                <RangeControl
-                  label={__("Opacity", "responsive-block-editor-addons")}
-                  value={opacity}
-                  onChange={(value) =>
-                    setAttributes({
-                      opacity: value !== undefined ? value : 100,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  allowReset
-                />
-              </PanelBody>
-            </PanelBody>
-            <PanelBody
               title={__("Call To Action", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -1327,6 +1280,53 @@ export default class Inspector extends Component {
                 boxShadowSpread={{ value: hoverboxShadowSpread }}
                 boxShadowPosition={{ value: hoverboxShadowPosition }}
               />
+            </PanelBody>
+            <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ImageBackgroundControl
+                {...this.props}
+                showSomeImageOptions={true}
+                showMoreImageOptions={true}
+                showOverlayOptions={false}
+              />
+
+              {backgroundImage && !!backgroundImage.length && (
+                <RangeControl
+                  label={__("Image Opacity", "responsive-block-editor-addons")}
+                  value={dimRatio}
+                  onChange={(value) =>
+                    this.props.setAttributes({
+                      dimRatio: value,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  step={10}
+                />
+              )}
+
+              <PanelBody
+                title={__("Background Color", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <ColorBackgroundControl
+                  {...this.props}
+                />
+                <RangeControl
+                  label={__("Opacity", "responsive-block-editor-addons")}
+                  value={opacity}
+                  onChange={(value) =>
+                    setAttributes({
+                      opacity: value !== undefined ? value : 100,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  allowReset
+                />
+              </PanelBody>
             </PanelBody>
             <PanelBody
               title={__("Separator", "responsive-block-editor-addons")}

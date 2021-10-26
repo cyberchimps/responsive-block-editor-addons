@@ -918,9 +918,35 @@ export default class Inspector extends Component {
                 />
               </PanelBody>
             )}
-
             <PanelBody
-              title={__("Column Background", "responsive-block-editor-addons")}
+              title={__("Button Settings", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ButtonSettingsControl
+                {...this.props}
+                showMarginControls={true}
+                showBackColorOpacity={true}
+                showGradientHover={false}
+                showTextOpacity={true}
+              />
+              <SelectControl
+                label={__("Button Size", "responsive-block-editor-addons")}
+                value={buttonSize}
+                options={buttonSizeOptions.map(({ value, label }) => ({
+                  value,
+                  label,
+                }))}
+                onChange={(value) => {
+                  this.props.setAttributes({
+                    buttonSize: value,
+                  });
+                }}
+              />
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+          <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
               initialOpen={false}
             >
               <SelectControl
@@ -977,33 +1003,6 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
-            <PanelBody
-              title={__("Button Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ButtonSettingsControl
-                {...this.props}
-                showMarginControls={true}
-                showBackColorOpacity={true}
-                showGradientHover={false}
-                showTextOpacity={true}
-              />
-              <SelectControl
-                label={__("Button Size", "responsive-block-editor-addons")}
-                value={buttonSize}
-                options={buttonSizeOptions.map(({ value, label }) => ({
-                  value,
-                  label,
-                }))}
-                onChange={(value) => {
-                  this.props.setAttributes({
-                    buttonSize: value,
-                  });
-                }}
-              />
-            </PanelBody>
-          </InspectorTab>
-          <InspectorTab key={"style"}>
             <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
