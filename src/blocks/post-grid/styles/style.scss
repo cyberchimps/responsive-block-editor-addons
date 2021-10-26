@@ -171,10 +171,8 @@
 
   .is-list {
     article {
-      display: grid;
-      grid-template-columns: 30% 1fr;
-      grid-template-rows: 1fr;
-      grid-gap: 0 1em;
+      display: flex;
+      gap: 0 1em;
 
       @media all and (-ms-high-contrast: none) {
         display: block;

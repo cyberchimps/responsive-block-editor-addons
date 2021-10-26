@@ -309,6 +309,12 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'metaFontSizeTablet'          => '',
 			'excerptFontSizeMobile'       => '',
 			'excerptFontSizeTablet'       => '',
+			'imageWidth'                  => '',
+			'imageWidthTablet'            => '',
+			'imageWidthMobile'            => '',
+			'imageHeight'                 => '',
+			'imageHeightTablet'           => '',
+			'imageHeightMobile'           => '',
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_post_grid_block_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );

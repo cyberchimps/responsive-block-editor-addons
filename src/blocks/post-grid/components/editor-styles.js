@@ -84,15 +84,22 @@ function EditorStyles(props) {
     paginationTextActiveColor,
     rowGapTablet,
     rowGapMobile,
-	excerptFontSizeMobile,
-	excerptFontSizeTablet,
-	metaFontSizeMobile,
-	metaFontSizeTablet,
-	titleFontSizeMobile,
-	titleFontSizeTablet,
-	continueFontFamily,
-	continueFontSizeMobile,
-	continueFontSizeTablet,
+    excerptFontSizeMobile,
+    excerptFontSizeTablet,
+    metaFontSizeMobile,
+    metaFontSizeTablet,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
+    continueFontFamily,
+    continueFontSizeMobile,
+    continueFontSizeTablet,
+    imageWidth,
+    imageWidthTablet,
+    imageWidthMobile,
+    imageHeight,
+    imageHeightTablet,
+    imageHeightMobile,
+    postLayout,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -210,12 +217,23 @@ function EditorStyles(props) {
     " .is-list article:last-child": {
       "margin-bottom": 0,
     },
+    " .responsive-block-editor-addons-block-post-grid-image": {
+      "width": "fit-content",
+    },
+    " .responsive-block-editor-addons-block-post-grid-image a": {
+      "display": "block",
+      "width" : postLayout==='list' ? generateCSSUnit(imageWidth, "px") : undefined,
+      "height" : postLayout==='list' ? generateCSSUnit(imageHeight, "px") : undefined,
+    },
     " .responsive-block-editor-addons-block-post-grid-image img": {
       "border-radius": generateCSSUnit(imageBorderRadius, "px"),
+      "object-fit": "cover",
+      "height": "100%",
     },
     " .responsive-block-editor-addons-block-post-grid-text": {
       "text-align": textAlignment,
       "padding": generateCSSUnit(blockContentPadding, "px"),
+      "display": "block",
     },
     " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSize, "px"),
@@ -332,6 +350,10 @@ function EditorStyles(props) {
 	" .responsive-block-editor-addons-block-post-grid-more-link.responsive-block-editor-addons-text-link": {
 		"font-size": generateCSSUnit(continueFontSizeMobile, "px"),
 	},
+  " .responsive-block-editor-addons-block-post-grid-image a": {
+    "width" : postLayout==='list' ? generateCSSUnit(imageWidthMobile, "px"): undefined,
+    "height" : postLayout==='list' ? generateCSSUnit(imageHeightMobile, "px"): undefined,
+  },
   };
 
   var tablet_selectors = {
@@ -367,6 +389,10 @@ function EditorStyles(props) {
 	" .responsive-block-editor-addons-block-post-grid-more-link.responsive-block-editor-addons-text-link": {
 		"font-size": generateCSSUnit(continueFontSizeTablet, "px"),
 	},
+  " .responsive-block-editor-addons-block-post-grid-image a": {
+    "width" : postLayout==='list' ? generateCSSUnit(imageWidthTablet, "px"): undefined,
+    "height" : postLayout==='list' ? generateCSSUnit(imageHeightTablet, "px"): undefined,
+  },
   };
 
   var styling_css = "";

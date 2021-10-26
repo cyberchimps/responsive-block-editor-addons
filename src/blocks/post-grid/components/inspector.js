@@ -467,6 +467,30 @@ export default class Inspector extends Component {
                   })
                 }
               />
+              {attributes.postLayout === 'list' && [
+                <ResponsiveSpacingControl
+                  title={"Image Height"}
+                  attrNameTemplate="imageHeight%s"
+                  values={{
+                    desktop: attributes.imageHeight,
+                    tablet: attributes.imageHeightTablet,
+                    mobile: attributes.imageHeightMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />,
+                <ResponsiveSpacingControl
+                  title={"Image Width"}
+                  attrNameTemplate="imageWidth%s"
+                  values={{
+                    desktop: attributes.imageWidth,
+                    tablet: attributes.imageWidthTablet,
+                    mobile: attributes.imageWidthMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />,
+              ]}
               {attributes.displayPostImage && [
                 <SelectControl
                   label={__("Image Size", "responsive-block-editor-addons")}
