@@ -271,6 +271,7 @@ return array(
 		esc_html__( 'Startup', 'responsive-block-editor-addons' ),
 		esc_html__( 'Company', 'responsive-block-editor-addons' ),
 		esc_html__( 'Agency', 'responsive-block-editor-addons' ),
+		esc_html__( 'Corporate Business', 'responsive-block-editor-addons' ),
 		esc_html__( 'Services Corporate Business', 'responsive-block-editor-addons' ),
 	),
 	'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Services-Corporate.jpg',

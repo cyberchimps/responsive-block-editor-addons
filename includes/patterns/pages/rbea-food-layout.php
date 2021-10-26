@@ -188,6 +188,7 @@ return array(
 		esc_html__( 'Blog', 'responsive-block-editor-addons' ),
 		esc_html__( 'Food', 'responsive-block-editor-addons' ),
 		esc_html__( 'Health', 'responsive-block-editor-addons' ),
+		esc_html__( 'Food Blog', 'responsive-block-editor-addons' ),
 	),
 	'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Restaurant.jpg',
 );
