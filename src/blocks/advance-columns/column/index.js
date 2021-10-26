@@ -203,6 +203,7 @@ registerBlockType("responsive-block-editor-addons/column", {
     },
     backgroundImage: {
       type: "string",
+      default: '',
     },
     backgroundImagePosition: {
       type: "string",

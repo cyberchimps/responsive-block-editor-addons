@@ -189,6 +189,7 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
     },
     backgroundImage: {
       type: "string",
+      default: '',
     },
     backgroundImagePosition: {
       type: "string",
