@@ -347,7 +347,7 @@ const attributes = {
     type: "string",
     default: "no-repeat",
   },
-  backgroundImageize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },
