@@ -1,18 +1,17 @@
-const ITEM_COUNT = 2;
+const ITEM_COUNT = 3;
 
-const { __ } = wp.i18n;
-
-const featureList = [];
+const featureGrid = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-  featureList.push({
-    featureName: __("John Doe", "responsive-block-editor-addons"),
-    featureDescription: __(
-      "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-      "responsive-block-editor-addons"
-    ),
-    featureImgURL: "",
-    featureImgId: "",
+  featureGrid.push({
+    title: "Title ",
+    sub_price: "Description for this block. You can use this space for describing your block.",
+    img_url: "",
+    img_id: "",
+    img_width: "",
+    img_height: "",
+    button: "Button",
+    buttonURL: "#",
   });
 }
 
@@ -20,152 +19,123 @@ const attributes = {
   block_id: {
     type: "string",
   },
-  featureList: {
+  featureGrid: {
     type: "array",
-    default: featureList,
+    default: featureGrid,
   },
-  counterId: {
+  blockId: {
     type: "string",
-    default: 1,
   },
   count: {
     type: "number",
     default: ITEM_COUNT,
   },
-  gutter: {
+    titleTag: {
     type: "string",
-    default: "medium",
+    default: "h5",
   },
-  descriptionColor: {
+  contentAlign: {
     type: "string",
-  },
-  socialIconColor: {
-    type: "string",
-    default: "#0066CC",
+    default: "center",
   },
   titleColor: {
     type: "string",
   },
-  titleFontWeight: {
+  descColor: {
     type: "string",
   },
-  descriptionFontWeight: {
+  blockBorderStyle: {
+    type: "string",
+    default: "none",
+  },
+  blockBorderWidth: {
+    type: "number",
+    default: 1,
+  },
+  blockBorderRadius: {
+    type: "number",
+    default: 12,
+  },
+  blockBorderColor: {
     type: "string",
   },
-  titleLineHeight: {
-    type: "number",
-  },
-  descriptionLineHeight: {
-    type: "number",
-  },
-  imageSize: {
+  sectionTag: {
     type: "string",
-    default: "full",
+    default: "section",
   },
-  titleFontFamily: {
+  opacity: {
+    type: "number",
+    default: 30,
+  },
+  blockBackColorOpacity: {
+    type: "number",
+    default: 100,
+  },
+  columnBackColorOpacity: {
+    type: "number",
+    default: 100,
+  },
+  colorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  colorLocation2: {
+    type: "number",
+    default: 100,
+  },
+  gradientDirection: {
+    type: "number",
+    default: 90,
+  },
+  backgroundImage: {
     type: "string",
-  },
-  descriptionFontFamily: {
-    type: "string",
-  },
-  titleFontSize: {
-    type: "number",
-    default: 23,
-  },
-  descriptionFontSize: {
-    type: "number",
-    default: 15,
-  },
-  socialIconFontSize: {
-    type: "number",
-    default: 23,
-  },
-  imageMarginTop: {
-    type: "number",
-  },
-  imageMarginBottom: {
-    type: "number",
-  },
-  imageMarginTopMobile: {
-    type: "number",
-  },
-  imageMarginBottomMobile: {
-    type: "number",
-  },
-  imageMarginTopTablet: {
-    type: "number",
-  },
-  imageMarginBottomTablet: {
-    type: "number",
-  },
-  iconSize: {
-    type: "string",
-  },
-  titleSpacing: {
-    type: "number",
-  },
-  descriptionSpacing: {
-    type: "number",
-  },
-  socialIconSpacing: {
-    type: "number",
-  },
-  titleSpacingMobile: {
-    type: "number",
-  },
-  descriptionSpacingMobile: {
-    type: "number",
-  },
-  socialIconSpacingMobile: {
-    type: "number",
-  },
-  titleSpacingTablet: {
-    type: "number",
-  },
-  descriptionSpacingTablet: {
-    type: "number",
-  },
-  socialIconSpacingTablet: {
-    type: "number",
-  },
-  imageStyle: {
-    type: "number",
-    default: "0%",
-  },
-  imageWidth: {
-    type: "number",
-    default: 120,
-  },
-  imageWidthTablet: {
-    type: "number",
-  },
-  imageWidthMobile: {
-    type: "number",
   },
   backgroundColor: {
     type: "string",
   },
-  borderColor: {
+  backgroundColor1: {
     type: "string",
   },
-  borderWidth: {
-    type: "number",
-    default: 2,
-  },
-  borderRadius: {
-    type: "number",
-    default: 2,
-  },
-  padding: {
-    type: "number",
-    default: 2,
-  },
-  alignment: {
+  backgroundColor2: {
     type: "string",
-    default: "center",
+    default: "#fff",
   },
-  imageShape: {
+  backgroundType: {
     type: "string",
+    default: "none",
+  },
+  blockopacity: {
+    type: "number",
+    default: 30,
+  },
+  blockcolorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  blockcolorLocation2: {
+    type: "number",
+    default: 100,
+  },
+  blockgradientDirection: {
+    type: "number",
+    default: 90,
+  },
+  blockbackgroundImage: {
+    type: "string",
+  },
+  blockbackgroundColor: {
+    type: "string",
+  },
+  blockbackgroundColor1: {
+    type: "string",
+  },
+  blockbackgroundColor2: {
+    type: "string",
+    default: "#fff",
+  },
+  blockbackgroundType: {
+    type: "string",
+    default: "none",
   },
   boxShadowColor: {
     type: "string",
@@ -190,123 +160,366 @@ const attributes = {
     type: "string",
     default: "outset",
   },
-  opacity: {
-    type: "number",
-    default: 50,
-  },
-  backgroundColor2: {
+  buttonBoxShadowColor: {
     type: "string",
   },
-  gradientDirection: {
-    type: "number",
-    default: 100,
-  },
-  colorLocation1: {
+  buttonBoxShadowHOffset: {
     type: "number",
     default: 0,
   },
-  colorLocation2: {
+  buttonBoxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  buttonBoxShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  buttonBoxShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  buttonBoxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
+  ctaColor: {
+    type: "string",
+    default: "#ffffff",
+  },
+  ctaBackColor: {
+    type: "string",
+    default: "#3f46ae",
+  },
+  ctaHoverColor: {
+    type: "string",
+    default: "#ffffff",
+  },
+  ctaHoverBackColor: {
+    type: "string",
+    default: "#3f46ae",
+  },
+  ctaBorderColor: {
+    type: "string",
+    default: "#333",
+  },
+  ctaBorderStyle: {
+    type: "string",
+    default: "none",
+  },
+  ctaBorderRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBorderWidth: {
+    type: "number",
+    default: 2,
+  },
+  ctaHpadding: {
+    type: "number",
+    default: 30,
+  },
+  ctaVpadding: {
+    type: "number",
+    default: 15,
+  },
+  buttonbackgroundType: {
+    type: "string",
+    default: "color",
+  },
+  buttoncolorLocation1: {
+    type: "number",
+    default: 0,
+  },
+  buttoncolorLocation2: {
     type: "number",
     default: 100,
   },
-  bgGradient: {
-    type: "bool",
+  buttongradientDirection: {
+    type: "number",
+    default: 90,
   },
-  backgroundImage: {
+  buttonbackgroundColor1: {
     type: "string",
   },
-  backgroundImagePosition: {
+  buttonbackgroundColor2: {
     type: "string",
-    default: "center-center",
+    default: "#fff",
   },
-  backgroundImageRepeat: {
+  buttonHbackgroundType: {
     type: "string",
-    default: "no-repeat",
+    default: "color",
   },
-  backgroundImageSize: {
-    type: "string",
-    default: "cover",
+  buttonHcolorLocation1: {
+    type: "number",
+    default: 0,
   },
-  backgroundAttachment: {
+  buttonHcolorLocation2: {
+    type: "number",
+    default: 100,
+  },
+  buttonHgradientDirection: {
+    type: "number",
+    default: 90,
+  },
+  buttonHbackgroundColor1: {
     type: "string",
-    default: "scroll",
+  },
+  buttonHbackgroundColor2: {
+    type: "string",
+    default: "#fff",
+  },
+  titleFontFamily: {
+    type: "string",
+  },
+  descFontFamily: {
+    type: "string",
+  },
+  ctaFontFamily: {
+    type: "string",
+  },
+  titleFontSize: {
+    type: "number",
+  },
+  titleFontWeight: {
+    type: "string",
+  },
+  titleLineHeight: {
+    type: "number",
+  },
+  descFontSize: {
+    type: "number",
+  },
+  descFontWeight: {
+    type: "string",
+  },
+  descLineHeight: {
+    type: "number",
+  },
+  descTextTransform: {
+    type: "string",
+  },
+  ctaFontSize: {
+    type: "number",
+  },
+  ctaFontWeight: {
+    type: "string",
+  },
+  ctaLineHeight: {
+    type: "number",
+  },
+  blockTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  columnTopPadding: {
+    type: "number",
+    default: 60
+  },
+  columnBottomPadding: {
+    type: "number",
+    default: 60,
+  },
+  columnLeftPadding: {
+    type: "number",
+    default: 35,
+  },
+  columnRightPadding: {
+    type: "number",
+    default: 35,
+  },
+  columnTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  columnTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  columnBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  columnLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  columnRightPaddingTablet: {
+    type: "number",
+    default: '',
   },
   showImage: {
-    type: "bool",
+    type: "boolean",
     default: true,
   },
-  showName: {
-    type: "bool",
+  showTitle: {
+    type: "boolean",
     default: true,
   },
-  showDescription: {
-    type: "bool",
+  showDesc: {
+    type: "boolean",
     default: true,
   },
-  showSocialIcons: {
-    type: "bool",
+  showButton: {
+    type: "boolean",
     default: true,
   },
-  facebook: {
-    type: "bool",
+  buttonTarget: {
+    type: "boolean",
+    default: false,
   },
-  twitter: {
-    type: "bool",
+  imageSpace: {
+    type: "number",
+      default: 15,
   },
-  linkedin: {
-    type: "bool",
+  titleSpace: {
+    type: "number",
+      default: 15,
   },
-  instagram: {
-    type: "bool",
+  descSpace: {
+    type: "number",
+    default: 20,
   },
-  email: {
-    type: "bool",
+  buttonSpace: {
+    type: "number",
+      default: 15,
   },
-  youtube: {
-    type: "bool",
+    imageSpaceMobile: {
+    type: "number",
   },
-  pinterest: {
-    type: "bool",
+  titleSpaceMobile: {
+    type: "number",
   },
-  stack: {
+  descSpaceMobile: {
+    type: "number",
+  },
+  buttonSpaceMobile: {
+    type: "number",
+  },
+    imageSpaceTablet: {
+    type: "number",
+  },
+  titleSpaceTablet: {
+    type: "number",
+  },
+  descSpaceTablet: {
+    type: "number",
+  },
+  buttonSpaceTablet: {
+    type: "number",
+  },
+  blockAlign: {
     type: "string",
-    default: "mobile",
+    default: "center",
+  },
+  imageWidth: {
+    type: "number",
+  },
+  imageWidthTablet: {
+    type: "number",
+  },
+  imageWidthMobile: {
+    type: "number",
+  },
+  imageSize: {
+    type: "string",
+    default: "full",
+  },
+  imageShape: {
+    type: "string",
+  },
+  ctaHoverBorderColor: {
+    type: "string",
+    defaulr: "#333",
+  },
+  ctaHpaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  ctaHpaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  ctaVpaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  ctaVpaddingMobile: {
+    type: "number",
+    default: '',
   },
   titleFontSizeMobile: {
-	  type: "number",
+    type: "number",
   },
   titleFontSizeTablet: {
-	  type: "number",
-  },
-  descriptionFontSizeMobile: {
-	  type: "number",
-  },
-  descriptionFontSizeTablet: {
-	  type: "number",
-  },
-  socialIconBorderColor: {
-    type: "string",
-  },
-  socialIconHoverColor: {
-    type: "string",
-  },
-  socialIconBackgroundHoverColor: {
-    type: "string",
-  },
-  socialIconBackgroundColor: {
-    type: "string",
-  },
-  socialIconBorderHoverColor: {
-    type: "string",
-  },
-  iconBackgroundSize: {
     type: "number",
   },
-  iconBorderSize: {
+  descFontSizeMobile: {
     type: "number",
-    default: 0
   },
-  iconBorderRadius: {
+  descFontSizeTablet: {
+    type: "number",
+  },
+  ctaFontSizeMobile: {
+    type: "number",
+  },
+  ctaFontSizeTablet: {
     type: "number",
   },
 };

@@ -1,16 +1,13 @@
 /**
  * Internal dependencies
  */
-import Feature from "./feature";
-import React from "react";
 import classnames from "classnames";
 
 /**
  * WordPress dependencies
  */
-const { Component } = wp.element;
-const { RichText, InnerBlocks } = wp.editor;
-const { Dashicon } = wp.components;
+const { Component, Fragment } = wp.element;
+const { InnerBlocks, RichText } = wp.editor;
 
 export default class Save extends Component {
   constructor() {
@@ -20,89 +17,140 @@ export default class Save extends Component {
   render() {
     const {
       block_id,
-      featureList,
+      featureGrid,
+      contentAlign,
       count,
-      gutter,
-      imageSize,
-      facebook,
-      twitter,
-      linkedin,
-      instagram,
-      email,
-      youtube,
-      pinterest,
+        titleTag,
+      buttonTarget,
+      backgroundType,
+      boxShadowPosition,
+      buttonBoxShadowPosition,
+      blockbackgroundImage,
       showImage,
-      showName,
-      showDescription,
-      showSocialIcons,
-      stack
+      showTitle,
+      showPrefix,
+      showPrice,
+      showSuffix,
+      showDesc,
+      showFeatures,
+      showButton,
+      blockAlign,
+      imageSize,
+      imageShape,
+      imageWidth,
+      blockId,
     } = this.props.attributes;
+    var boxShadowPositionCSS = boxShadowPosition;
 
-    function convertTag( str ) {
-      const regex = /u003c/ig;
-      const regex2 = /u003e/ig;
-      const regex3 = /u0026/ig;
-      str = str?.replaceAll( regex, '\u003c' );
-      str = str?.replaceAll( regex2, '\u003e');
-      str = str?.replaceAll( regex3,'\u0026')
-      return str;
+    if ("outset" === boxShadowPosition) {
+      boxShadowPositionCSS = "";
+    }
+    var buttonBoxShadowPositionCSS = buttonBoxShadowPosition;
+
+    if ("outset" === buttonBoxShadowPosition) {
+      buttonBoxShadowPositionCSS = "";
     }
 
-    return (
+    const classes = classnames({
+      [`has-text-align-${contentAlign}`]: contentAlign,
+    });
+
+    const innerClasses = classnames(
+      "wp-block-responsive-block-editor-addons-feature-grid__inner",
+      {
+        "has-columns": count > 1,
+        [`has-${count}-columns`]: count,
+        "has-responsive-columns": count > 1,
+        [`has-${gutter}-gutter`]: gutter,
+      }
+    );
+
+    let alignStyle = "center";
+    if ("left" == blockAlign) {
+      alignStyle = "flex-start";
+    }
+    if ("right" == blockAlign) {
+      alignStyle = "flex-end";
+    }
+
+    return [
       <div
         className={classnames(
-          "wp-block-responsive-block-editor-addons-feature-grid-wrapper",
+          classes,
+          "responsive-block-editor-addons-block-feature-grid",
           `block-${block_id}`,
-          {
-            "has-columns": count > 1,
-            [`has-${count}-columns`]: count,
-            "has-responsive-columns": count > 1,
-            [`has-${gutter}-gutter`]: gutter,
-          },
-          `responsive-feature-block-columns__stack-${stack}`,
+          "wp-block-responsive-block-editor-addons-feature-grid",
+          "image-shape-" + imageShape
         )}
       >
-        {featureList.map((test, index) => (
-          <Feature {...this.props}>
-            {featureList[index]["featureImgURL"] && showImage && (
-              <div className="responsive-block-editor-addons-feature-avatar-wrapper">
-                <figure
-                  className={"responsive-block-editor-addons-feature-avatar"}
-                >
-                  <img
-                    className="responsive-block-editor-addons-feature-avatar-img"
-                    src={
-                      featureList[index]["featureImgURL"].sizes[imageSize]
-                        ? featureList[index]["featureImgURL"].sizes[imageSize].url
-                        : featureList[index]["featureImgURL"].sizes["full"].url
-                    }
-                    alt={name}
+        <div className="responsive-block-editor-addons-pricing-table-background-image-wrap">
+          {blockbackgroundImage && (
+            <img
+              className={classnames(
+                "responsive-block-editor-addons-pricing-table-background-image"
+              )}
+              src={blockbackgroundImage}
+            />
+          )}
+        </div>
+        <div className={innerClasses}>
+          {featureGrid.map((test, index) => (
+            <Fragment>
+              <div
+                className={classnames(
+                  "wp-block-responsive-block-editor-addons-feature-grid-item",
+                  `responsive-block-editor-addons-${blockId}`,
+                  backgroundType == "image" ? "background-type-image" : ""
+                )}
+              >
+                {featureGrid[index]["img_url"] && showImage && (
+                  <div className="responsive-block-editor-addons-feature-image-wrap">
+                    <img
+                      className="responsive-block-editor-addons-feature-image"
+                      src={
+                        featureGrid[index]["img_url"].sizes[imageSize]
+                          ? featureGrid[index]["img_url"].sizes[imageSize].url
+                          : featureGrid[index]["img_url"].sizes["full"].url
+                      }
+                      alt="avatar"
+                      />
+                  </div>
+                )}
+
+                {showTitle && (
+                  <RichText.Content
+                    tagName={titleTag}
+                    className="wp-block-responsive-block-editor-addons-feature-grid-item__title"
+                    value={featureGrid[index]["title"]}
                   />
-                </figure>
+                )}
+
+                {showDesc && (
+                  <RichText.Content
+                    tagName="p"
+                    className="wp-block-responsive-block-editor-addons-feature-grid-item__sub_price"
+                    value={featureGrid[index]["sub_price"]}
+                  />
+                )}
+
+                {showButton && (
+                  <a
+                    href={featureGrid[index]["buttonURL"]}
+                    target={buttonTarget ? "_blank" : null}
+                    rel={buttonTarget ? "noopener noreferrer" : null}
+                    className={classnames(
+                      "wp-block-responsive-block-editor-addons-feature-grid-item__button"
+                    )}
+                  >
+                    <RichText.Content value={featureGrid[index]["button"]} />
+                  </a>
+                )}
+                <InnerBlocks.Content />
               </div>
-            )}
-            <div className={"responsive-block-editor-addons-feature-content"}>
-              {featureList[index]["featureName"] && showName && (
-                <RichText.Content
-                  tagName="h3"
-                  className="responsive-block-editor-addons-feature-name"
-                  value={featureList[index]["featureName"]}
-                />
-              )}
-
-              {featureList[index]["featureDescription"] && showDescription && (
-                <RichText.Content
-                  tagName="div"
-                  className="responsive-block-editor-addons-feature-description"
-                  value={convertTag(featureList[index]["featureDescription"])}
-                />
-              )}
-
-
-            </div>
-          </Feature>
-        ))}
-      </div>
-    );
+            </Fragment>
+          ))}
+        </div>
+      </div>,
+    ];
   }
 }

@@ -4,33 +4,49 @@
 import classnames from "classnames";
 import Inspector from "./inspector";
 import times from "lodash/times";
-import React from "react";
-import Feature from "./feature";
+import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
 
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const {
   RichText,
   AlignmentToolbar,
   BlockControls,
-  MediaUpload,
   InnerBlocks,
+  MediaUpload,
+  URLInput,
   MediaUploadCheck,
   figure,
-  URLInput,
 } = wp.editor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
-import map from "lodash/map";
-import { loadGoogleFont } from "../../../utils/font";
 
 const ALLOWED_MEDIA_TYPES = ["image"];
+const ALLOWED_BLOCKS = ["core/button"];
+const TEMPLATE = [
+  [
+    "core/button",
+    { placeholder: __("Buy Now", "responsive-block-editor-addons") },
+  ],
+];
 
+const getCount = memoize((count) => {
+  return times(count, (index) => [
+    "responsive-block-editor-addons/pricing-table-item",
+    {
+      placeholder: sprintf(
+        /* translators: %d: a digit 1-3 */
+        __("Plan %d", "responsive-block-editor-addons"),
+        parseInt(index + 1)
+      ),
+    },
+  ]);
+});
 
 export default class Edit extends Component {
   constructor() {
@@ -39,7 +55,8 @@ export default class Edit extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
-      "responsive-block-editor-addons-feature-grid-style-" + this.props.clientId
+      "responsive-block-editor-addons-pricing-table-style-" +
+        this.props.clientId
     );
 
     if (null !== element && undefined !== element) {
@@ -56,7 +73,8 @@ export default class Edit extends Component {
     const $style = document.createElement("style");
     $style.setAttribute(
       "id",
-      "responsive-block-editor-addons-feature-grid-style-" + this.props.clientId
+      "responsive-block-editor-addons-pricing-table-style-" +
+        this.props.clientId
     );
     document.head.appendChild($style);
   }
@@ -66,178 +84,311 @@ export default class Edit extends Component {
     const {
       attributes: {
         block_id,
-        featureList,
+        featureGrid,
         count,
         gutter,
-        imageSize,
+        contentAlign,
+        backgroundType,
+        boxShadowPosition,
+        buttonBoxShadowPosition,
+        blockbackgroundImage,
         titleFontFamily,
-        descriptionFontFamily,
-        alignment,
-        facebook,
-        twitter,
-        linkedin,
-        instagram,
-        email,
-        youtube,
-        pinterest,
+        amountFontFamily,
+        prefixFontFamily,
+        suffixFontFamily,
+        descFontFamily,
+        featuresFontFamily,
+        ctaFontFamily,
         showImage,
-        showName,
-        showDescription,
-        showSocialIcons,
-        stack
+        showTitle,
+        showPrefix,
+        showPrice,
+        showSuffix,
+        showDesc,
+        showFeatures,
+        showButton,
+        blockAlign,
+        imageSize,
+        imageShape,
+        imageWidth,
+          titleTag
       },
-      isSelected,
       setAttributes,
     } = this.props;
 
-    var data_copy = [...featureList];
+    var boxShadowPositionCSS = boxShadowPosition;
 
-    const onChangeAlignment = (newAlignment) =>
-      setAttributes({
-        alignment: newAlignment === undefined ? "none" : newAlignment,
-      });
+    if ("outset" === boxShadowPosition) {
+      boxShadowPositionCSS = "";
+    }
+    var buttonBoxShadowPositionCSS = buttonBoxShadowPosition;
 
-    function convertTag( str ) {
-      const regex = /u003c/ig;
-      const regex2 = /u003e/ig;
-      const regex3 = /u0026/ig;
-      str = str?.replaceAll( regex, '\u003c' );
-      str = str?.replaceAll( regex2, '\u003e');
-      str = str?.replaceAll( regex3,'\u0026')
-      return str;
+    if ("outset" === buttonBoxShadowPosition) {
+      buttonBoxShadowPositionCSS = "";
+    }
+
+    var data_copy = [...featureGrid];
+
+    const classes = classnames(
+      "responsive-block-editor-addons-block-feature-grid",
+      `block-${block_id}`,
+      "wp-block-responsive-block-editor-addons-feature-grid",
+      {
+        [`has-text-align-${contentAlign}`]: contentAlign,
+      }
+    );
+
+    const innerClasses = classnames(
+      "wp-block-responsive-block-editor-addons-feature-grid__inner",
+      {
+        "has-columns": count > 1,
+        [`has-${count}-columns`]: count,
+        "has-responsive-columns": count > 1,
+        [`has-${gutter}-gutter`]: gutter,
+      }
+    );
+
+    const formattingControls = ["bold", "italic", "strikethrough"];
+
+    let alignStyle = "center";
+    if ("left" == blockAlign) {
+      alignStyle = "flex-start";
+    }
+    if ("right" == blockAlign) {
+      alignStyle = "flex-end";
     }
 
     return [
+      // Show the alignment toolbar on focus
+      <BlockControls key="controls">
+        <AlignmentToolbar
+          value={blockAlign}
+          onChange={(value) => setAttributes({ blockAlign: value })}
+        />
+      </BlockControls>,
+
       // Show the block controls on focus
       <Inspector {...{ setAttributes, ...this.props }} />,
-
-      // Show the block markup in the editor
-      <div
-        className={classnames(
-          "wp-block-responsive-block-editor-addons-feature-grid-wrapper",
-          `block-${block_id}`,
-          {
-            "has-columns": count > 1,
-            [`has-${count}-columns`]: count,
-            "has-responsive-columns": count > 1,
-            [`has-${gutter}-gutter`]: gutter,
-          },
-          `responsive-feature-block-columns__stack-${stack}`,
-        )}
-      >
-        {
-          <BlockControls>
-            <AlignmentToolbar value={alignment} onChange={onChangeAlignment} />
-          </BlockControls>
-        }
-        {featureList.map((test, index) => (
-          <Feature {...this.props}>
-            {showImage && (
-              <div className="responsive-block-editor-addons-feature-avatar-wrapper">
-                {titleFontFamily && loadGoogleFont(titleFontFamily)}
-                {descriptionFontFamily && loadGoogleFont(descriptionFontFamily)}
-                <figure className="responsive-block-editor-addons-feature-avatar">
-                  <MediaUploadCheck>
+      <div className={classnames(classes, "image-shape-" + imageShape)}>
+        {titleFontFamily && loadGoogleFont(titleFontFamily)}
+        {amountFontFamily && loadGoogleFont(amountFontFamily)}
+        {prefixFontFamily && loadGoogleFont(prefixFontFamily)}
+        {suffixFontFamily && loadGoogleFont(suffixFontFamily)}
+        {descFontFamily && loadGoogleFont(descFontFamily)}
+        {featuresFontFamily && loadGoogleFont(featuresFontFamily)}
+        {ctaFontFamily && loadGoogleFont(ctaFontFamily)}
+        <div className="responsive-block-editor-addons-pricing-table-background-image-wrap">
+          {blockbackgroundImage && (
+            <img
+              className={classnames(
+                "responsive-block-editor-addons-pricing-table-background-image"
+              )}
+              src={blockbackgroundImage}
+            />
+          )}
+        </div>
+        <div className={innerClasses}>
+          {featureGrid.map((test, index) => (
+            <Fragment>
+              <div
+                className={classnames(
+                  "wp-block-responsive-block-editor-addons-feature-grid-item",
+                    backgroundType == "image" ? "background-type-image" : ""
+  )}
+              >
+                {showImage && (
+                  <div className="responsive-block-editor-addons-feature-image-wrap">
                     <MediaUpload
+                      buttonProps={{
+                        className: "change-image",
+                      }}
                       onSelect={(value) => {
                         var new_content = {
-                          featureName: data_copy[index]["featureName"],
-                          featureDescription: data_copy[index]["featureDescription"],
+                          title: data_copy[index]["title"],
+                            sub_price: data_copy[index]["sub_price"],
+                            img_id: value.id,
+                          img_url: value,
                           button: data_copy[index]["button"],
                           buttonURL: data_copy[index]["buttonURL"],
-                          featureImgId: value.id,
-                          featureImgURL: value,
                         };
                         data_copy[index] = new_content;
-                        setAttributes({ featureList: data_copy });
+                        setAttributes({ featureGrid: data_copy });
                       }}
-                      allowedTypes={["image"]}
-                      value={featureList[index]["featureImgURL"]}
+                      allowed={ALLOWED_MEDIA_TYPES}
+                      type="image"
+                      value={featureGrid[index]["img_id"]}
                       render={({ open }) => (
-                        <Button onClick={open}>
-                          {!featureList[index]["featureImgURL"] ? (
-                            <Dashicon icon="format-image" />
-                          ) : (
-                            <img
-                              className="responsive-block-editor-addons-feature-avatar-img"
-                              src={
-                                featureList[index]["featureImgURL"].sizes[imageSize]
-                                  ? featureList[index]["featureImgURL"].sizes[
-                                      imageSize
-                                    ].url
-                                  : featureList[index]["featureImgURL"].sizes["full"]
-                                      .url
-                              }
-                              alt="avatar"
-                            />
+                        <Fragment>
+                          <Button
+                            className={
+                              featureGrid[index]["img_id"]
+                                ? "responsive-block-editor-addons-change-image"
+                                : "responsive-block-editor-addons-add-image"
+                            }
+                            style={{ height: "auto" }}
+                            onClick={open}
+                          >
+                            {!featureGrid[index]["img_id"] ? (
+                                <div className="responsive-block-editor-addons-feature-image-icon-wrap">
+                              <Dashicon icon={"format-image"} size="100" />
+                    </div>
+                            ) : (
+                              <img
+                                className="responsive-block-editor-addons-feature-image"
+                                src={
+                                  featureGrid[index]["img_url"].sizes[
+                                    imageSize
+                                  ]
+                                    ? featureGrid[index]["img_url"].sizes[
+                                        imageSize
+                                      ].url
+                                    : featureGrid[index]["img_url"].sizes[
+                                        "full"
+                                      ].url
+                                }
+                                alt="image"
+                              />
+                            )}
+                          </Button>
+                          {featureGrid[index]["img_id"] && (
+                            <Button
+                              className="responsive-block-editor-addons-remove-image"
+                              onClick={() => {
+                                var new_content = {
+                                  title: data_copy[index]["title"],
+                                    sub_price: data_copy[index]["sub_price"],
+                                    img_id: null,
+                                  img_url: null,
+                                  button: data_copy[index]["button"],
+                                  buttonURL: data_copy[index]["buttonURL"],
+                                };
+                                data_copy[index] = new_content;
+                                setAttributes({ featureGrid: data_copy });
+                              }}
+                            >
+                              <Dashicon icon={"dismiss"} />
+                            </Button>
                           )}
-                        </Button>
+                        </Fragment>
                       )}
                     ></MediaUpload>
-                  </MediaUploadCheck>
-                </figure>
-              </div>
-            )}
-            <div className={"responsive-block-editor-addons-feature-content"}>
-              {showName && (
-                <RichText
-                  tagName="h3"
-                  placeholder={__("John Doe", "responsive-block-editor-addons")}
-                  keepPlaceholderOnFocus
-                  value={featureList[index]["featureName"]}
-                  className="responsive-block-editor-addons-feature-name"
-                  onChange={(value) => {
-                    var new_content = {
-                      featureName: value,
-                      featureDescription: data_copy[index]["featureDescription"],
-                      featureImgId: data_copy[index]["featureImgId"],
-                      featureImgURL: data_copy[index]["featureImgURL"],
-                      button: data_copy[index]["button"],
-                        buttonURL: data_copy[index]["buttonURL"],
-                    };
-                    data_copy[index] = new_content;
-                    setAttributes({ featureList: data_copy });
-                  }}
-                />
-              )}
-
-              {showDescription && (
-                <RichText
-                  tagName="div"
-                  multiline="p"
-                  placeholder={__(
-                    "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-                    "responsive-block-editor-addons"
-                  )}
-                  keepPlaceholderOnFocus
-                  value={convertTag(featureList[index]["featureDescription"])}
-                  formattingControls={[
-                    "bold",
-                    "italic",
-                    "strikethrough",
-                    "link",
-                  ]}
-                  className={classnames(
-                    "responsive-block-editor-addons-feature-description"
-                  )}
-                  onChange={(value) => {
-                    var new_content = {
-                      featureName: data_copy[index]["featureName"],
-                      featureDescription: value,
-                      featureImgId: data_copy[index]["featureImgId"],
-                      featureImgURL: data_copy[index]["featureImgURL"],
+                  </div>
+                )}
+                {showTitle && (
+                  <RichText
+                    tagName={titleTag}
+                    className="wp-block-responsive-block-editor-addons-feature-grid-item__title"
+                    value={featureGrid[index]["title"]}
+                    placeholder={featureGrid[index]["title"]}
+                    onChange={(value) => {
+                      var new_content = {
+                        title: value,
+                        sub_price: data_copy[index]["sub_price"],
+                        img_id: featureGrid[index]["img_id"],
+                        img_url: featureGrid[index]["img_url"],
                         button: data_copy[index]["button"],
                         buttonURL: data_copy[index]["buttonURL"],
-                    };
-                    data_copy[index] = new_content;
-                    setAttributes({ featureList: data_copy });
-                  }}
-                />
-              )}
+                      };
+                      data_copy[index] = new_content;
+                      setAttributes({ featureGrid: data_copy });
+                    }}
+                    formattingControls={formattingControls}
+                    keepPlaceholderOnFocus
+                  />
+                )}
+                {showDesc && (
+                  <RichText
+                    tagName="p"
+                    className="wp-block-responsive-block-editor-addons-feature-grid-item__sub_price"
+                    value={featureGrid[index]["sub_price"]}
+                    placeholder={__(
+                      "Sub Price",
+                      "responsive-block-editor-addons"
+                    )}
+                    onChange={(value) => {
+                      var new_content = {
+                        title: data_copy[index]["title"],
+                        sub_price: value,
+                        img_id: featureGrid[index]["img_id"],
+                        img_url: featureGrid[index]["img_url"],
+                        button: data_copy[index]["button"],
+                        buttonURL: data_copy[index]["buttonURL"],
+                      };
+                      data_copy[index] = new_content;
+                      setAttributes({ featureGrid: data_copy });
+                    }}
+                    formattingControls={formattingControls}
+                    keepPlaceholderOnFocus
+                  />
+                )}
 
-            </div>
-          </Feature>
-        ))}
+                {showButton && (
+                  <Fragment>
+                    <RichText
+                      tagName="p"
+                      className={classnames(
+                        "wp-block-responsive-block-editor-addons-feature-grid-item__button"
+                      )}
+                      value={featureGrid[index]["button"]}
+                      placeholder={__("$", "responsive-block-editor-addons")}
+                      onChange={(value) => {
+                        var new_content = {
+                          button: value,
+                          buttonURL: data_copy[index]["buttonURL"],
+                          title: data_copy[index]["title"],
+                          currency: data_copy[index]["currency"],
+                          price_suffix: data_copy[index]["price_suffix"],
+                          sub_price: data_copy[index]["sub_price"],
+                          amount: data_copy[index]["amount"],
+                          features: data_copy[index]["features"],
+                          img_id: featureGrid[index]["img_id"],
+                          img_url: featureGrid[index]["img_url"],
+                        };
+                        data_copy[index] = new_content;
+                        setAttributes({ featureGrid: data_copy });
+                      }}
+                      formattingControls={formattingControls}
+                      keepPlaceholderOnFocus
+                    />
+                    <form
+                      key="form-link"
+                      className={`blocks-button__inline-link res-button-`}
+                      onSubmit={(event) => event.preventDefault()}
+                    >
+                      <Dashicon icon={"admin-links"} />
+                      <URLInput
+                        className="button-url"
+                        value={featureGrid[index]["buttonURL"]}
+                        onChange={(value) => {
+                          var new_content = {
+                            buttonURL: value,
+                            button: data_copy[index]["button"],
+                            title: data_copy[index]["title"],
+                            currency: data_copy[index]["currency"],
+                            price_suffix: data_copy[index]["price_suffix"],
+                            sub_price: data_copy[index]["sub_price"],
+                            amount: data_copy[index]["amount"],
+                            features: data_copy[index]["features"],
+                            img_id: featureGrid[index]["img_id"],
+                            img_url: featureGrid[index]["img_url"],
+                          };
+                          data_copy[index] = new_content;
+                          setAttributes({ featureGrid: data_copy });
+                        }}
+                      />
+                      <Button
+                        label={__("Apply", "responsive-block-editor-addons")}
+                        type="submit"
+                      >
+                        <Icon icon="editor-break" />
+                      </Button>
+                    </form>
+                  </Fragment>
+                )}
+              </div>
+            </Fragment>
+          ))}
+        </div>
       </div>,
     ];
   }
