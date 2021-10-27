@@ -10,35 +10,27 @@ function EditorStyles(props) {
   const {
     block_id,
     titleColor,
-    designationColor,
     descriptionColor,
     socialIconColor,
     titleFontFamily,
     descriptionFontFamily,
-    designationFontFamily,
     titleFontSize,
-    designationFontSize,
     descriptionFontSize,
     titleFontWeight,
-    designationFontWeight,
     descriptionFontWeight,
     titleLineHeight,
-    designationLineHeight,
     descriptionLineHeight,
     titleSpacing,
-    designationSpacing,
     descriptionSpacing,
     socialIconSpacing,
     imageMarginTop,
     imageMarginBottom,
     titleSpacingMobile,
-    designationSpacingMobile,
     descriptionSpacingMobile,
     socialIconSpacingMobile,
     imageMarginTopMobile,
     imageMarginBottomMobile,
     titleSpacingTablet,
-    designationSpacingTablet,
     descriptionSpacingTablet,
     socialIconSpacingTablet,
     imageMarginTopTablet,
@@ -74,8 +66,6 @@ function EditorStyles(props) {
     count,
     titleFontSizeMobile,
     titleFontSizeTablet,
-    designationFontSizeMobile,
-    designationFontSizeTablet,
     descriptionFontSizeMobile,
     descriptionFontSizeTablet,
     socialIconBorderColor,
@@ -142,19 +132,19 @@ function EditorStyles(props) {
   }
 
   var selectors = {
-    " .responsive-block-editor-addons-team-avatar-wrapper": {
+    " .responsive-block-editor-addons-feature-avatar-wrapper": {
       "text-align": alignment,
       "text-align": `-webkit-${alignment}`,
     },
 
-    " .responsive-block-editor-addons-team-avatar": {
+    " .responsive-block-editor-addons-feature-avatar": {
       "width": generateCSSUnit(imageWidth, "px"),
       "max-width": generateCSSUnit(imageWidth, "px"),
       "margin-top": generateCSSUnit(imageMarginTop, "px"),
       "margin-bottom": generateCSSUnit(imageMarginBottom, "px"),
     },
 
-    " .responsive-block-editor-addons-team-name": {
+    " .responsive-block-editor-addons-feature-name": {
       "color": titleColor,
       "font-family": titleFontFamily,
       "font-size": generateCSSUnit(titleFontSize, "px"),
@@ -163,16 +153,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(titleSpacing, "px"),
     },
 
-    " .responsive-block-editor-addons-team-designation": {
-      "color": designationColor,
-      "font-family": designationFontFamily,
-      "font-size": generateCSSUnit(designationFontSize, "px"),
-      "font-weight": designationFontWeight,
-      "line-height": designationLineHeight,
-      "margin-bottom": generateCSSUnit(designationSpacing, "px"),
-    },
-
-    " .responsive-block-editor-addons-team-description": {
+    " .responsive-block-editor-addons-feature-description": {
       "color": descriptionColor,
       "font-family": descriptionFontFamily,
       "font-size": generateCSSUnit(descriptionFontSize, "px"),
@@ -181,12 +162,12 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(descriptionSpacing, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block a": {
       "margin-left": generateCSSUnit(socialIconSpacing, "px"),
       "margin-right": generateCSSUnit(socialIconSpacing, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-twitter": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block .dashicons.dashicons-twitter": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
@@ -194,7 +175,7 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSize, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-facebook": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block .dashicons.dashicons-facebook": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
@@ -202,7 +183,7 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSize, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-linkedin": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block .dashicons.dashicons-linkedin": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
@@ -210,7 +191,7 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSize, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-instagram": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block .dashicons.dashicons-instagram": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
@@ -218,7 +199,7 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSize, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-email": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block .dashicons.dashicons-email": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
@@ -226,7 +207,7 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSize, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-youtube": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block .dashicons.dashicons-youtube": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
@@ -234,7 +215,7 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSize, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-pinterest": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block .dashicons.dashicons-pinterest": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),
       "text-decoration": "none",
@@ -242,23 +223,23 @@ function EditorStyles(props) {
       "width": generateCSSUnit(iconSize, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons a": {
+    " .responsive-block-editor-addons-feature-social-icons a": {
       "padding": generateCSSUnit(iconBackgroundSize, 'px'),
       "background-color": socialIconBackgroundColor,
       "border": generateCSSUnit(iconBorderSize,'px') + ' solid ' + socialIconBorderColor,
       "border-radius": generateCSSUnit(iconBorderRadius, '%')
     },
 
-    " .responsive-block-editor-addons-team-social-icons li:hover a": {
+    " .responsive-block-editor-addons-feature-social-icons li:hover a": {
       "background-color": socialIconBackgroundHoverColor,
       "border": generateCSSUnit(iconBorderSize,'px') + ' solid ' + socialIconBorderHoverColor,
     },
 
-    " .responsive-block-editor-addons-team-social-icons li:hover .dashicons": {
+    " .responsive-block-editor-addons-feature-social-icons li:hover .dashicons": {
       color: socialIconHoverColor+'!important',
     },
 
-    " .wp-block-responsive-block-editor-addons-team": {
+    " .wp-block-responsive-block-editor-addons-feature": {
       "background-image": bggradient,
       "background-size": backgroundImageSize,
       "background-repeat": backgroundImageRepeat,
@@ -285,77 +266,67 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-    " .wp-block-responsive-block-editor-addons-team": {
+    " .wp-block-responsive-block-editor-addons-feature": {
         "margin-bottom": gutterMargin,
     },
-    " .responsive-block-editor-addons-team-avatar": {
+    " .responsive-block-editor-addons-feature-avatar": {
       "width": generateCSSUnit(imageWidthMobile, "px"),
       "max-width": generateCSSUnit(imageWidthMobile, "px"),
       "margin-top": generateCSSUnit(imageMarginTopMobile, "px"),
       "margin-bottom": generateCSSUnit(imageMarginBottomMobile, "px"),
     },
-    ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
+    ".has-columns.has-responsive-columns.responsive-feature-block-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
       "max-width": "100%",
       "min-width": "100%",
     },
-    " .responsive-block-editor-addons-team-name": {
+    " .responsive-block-editor-addons-feature-name": {
       "margin-bottom": generateCSSUnit(titleSpacingMobile, "px"),
 	  "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
 
-    " .responsive-block-editor-addons-team-designation": {
-      "margin-bottom": generateCSSUnit(designationSpacingMobile, "px"),
-	  "font-size": generateCSSUnit(designationFontSizeMobile, "px"),
-    },
-
-    " .responsive-block-editor-addons-team-description": {
+    " .responsive-block-editor-addons-feature-description": {
       "margin-bottom": generateCSSUnit(descriptionSpacingMobile, "px"),
 	  "font-size": generateCSSUnit(descriptionFontSizeMobile, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block a": {
       "margin-left": generateCSSUnit(socialIconSpacingMobile, "px"),
       "margin-right": generateCSSUnit(socialIconSpacingMobile, "px"),
     },
   };
 
   var tablet_selectors = {
-    " .wp-block-responsive-block-editor-addons-team": {
+    " .wp-block-responsive-block-editor-addons-feature": {
       "margin-bottom": gutterMargin,
     },
-    " .responsive-block-editor-addons-team-avatar": {
+    " .responsive-block-editor-addons-feature-avatar": {
       "width": generateCSSUnit(imageWidthTablet, "px"),
       "max-width": generateCSSUnit(imageWidthTablet, "px"),
       "margin-top": generateCSSUnit(imageMarginTopTablet, "px"),
       "margin-bottom": generateCSSUnit(imageMarginBottomTablet, "px"),
     },
-    ".has-columns.has-responsive-columns.responsive-team-block-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
+    ".has-columns.has-responsive-columns.responsive-feature-block-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "max-width": "100%",
       "min-width": "100%",
     },
-    " .responsive-block-editor-addons-team-name": {
+    " .responsive-block-editor-addons-feature-name": {
       "margin-bottom": generateCSSUnit(titleSpacingTablet, "px"),
 	  "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
 
-    " .responsive-block-editor-addons-team-designation": {
-      "margin-bottom": generateCSSUnit(designationSpacingTablet, "px"),
-	  "font-size": generateCSSUnit(designationFontSizeTablet, "px"),
-    },
-
-    " .responsive-block-editor-addons-team-description": {
+    " .responsive-block-editor-addons-feature-description": {
       "margin-bottom": generateCSSUnit(descriptionSpacingTablet, "px"),
 	  "font-size": generateCSSUnit(descriptionFontSizeTablet, "px"),
     },
 
-    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+    " .responsive-block-editor-addons-feature-social-icons.edit-block a": {
       "margin-left": generateCSSUnit(socialIconSpacingTablet, "px"),
       "margin-right": generateCSSUnit(socialIconSpacingTablet, "px"),
     },
   };
 
   var styling_css = "";
-  var id = `.wp-block-responsive-block-editor-addons-team-wrapper.block-${block_id}`;
+  var id = `.wp-block-responsive-block-editor-addons-feature-grid-wrapper.block-${block_id}`;
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");

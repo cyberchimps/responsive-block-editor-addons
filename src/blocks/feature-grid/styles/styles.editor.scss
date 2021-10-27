@@ -1,31 +1,23 @@
 /**
  * Editor styles for the admin
  */
-.responsive-block-editor-addons-block-team {
+.responsive-block-editor-addons-block-feature {
   align-items: flex-start;
   padding: 0;
   position: relative;
   text-align: center;
 
-  .responsive-block-editor-addons-team-content {
+  .responsive-block-editor-addons-feature-content {
     flex: 1 1 auto;
 
-    .responsive-block-editor-addons-team-name {
+    .responsive-block-editor-addons-feature-name {
       display: block;
       font-size: 1.5em;
       margin: 1em 0;
       padding: 0;
       margin-top: 0;
     }
-    .responsive-block-editor-addons-team-designation p {
-      margin: 0;
-      margin-bottom: 0;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-    .responsive-block-editor-addons-team-description {
+    .responsive-block-editor-addons-feature-description {
       margin: 0;
 
       p {
@@ -35,10 +27,10 @@
         margin-bottom: 10px;
       }
     }
-    .responsive-block-editor-addons-team-social-icons-wrapper {
+    .responsive-block-editor-addons-feature-social-icons-wrapper {
       display: inline-block;
 
-      .responsive-block-editor-addons-team-social-icons {
+      .responsive-block-editor-addons-feature-social-icons {
         list-style-type: none;
         display: flex;
         margin: 0;
@@ -55,7 +47,7 @@
       }
     }
   }
-  .responsive-block-editor-addons-team-avatar {
+  .responsive-block-editor-addons-feature-avatar {
     flex: 0 0 auto;
     position: relative;
     height: auto;
@@ -145,7 +137,7 @@
 }
 
 @media (max-width: 576px) {
-	.wp-block-responsive-block-editor-addons-team-wrapper.has {
+	.wp-block-responsive-block-editor-addons-feature-grid-wrapper.has {
     &-large,
     &-small,
     &-medium,
@@ -174,8 +166,8 @@
   &.sidebar-position-no:not(.woocommerce) {
     .alignwide,
     .alignfull {
-      .wp-block-responsive-block-editor-addons-team-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator),
-      .wp-block-responsive-block-editor-addons-team-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator) {
+      .wp-block-responsive-block-editor-addons-feature-grid-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator),
+      .wp-block-responsive-block-editor-addons-feature-grid-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator) {
         &.has-small-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
           max-width: calc(100% / 2 - 0.5em);
         }

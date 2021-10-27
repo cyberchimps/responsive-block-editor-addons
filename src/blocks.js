@@ -34,7 +34,8 @@ import "./blocks/testimonial-slider/index.js";
 import "./blocks/spacer/index.js";
 import "./blocks/count-down/index.js";
 import "./blocks/table-of-contents/index.js";
-import "./blocks/feature-grid/index.js";
+import "./blocks/feature-grid1/index.js";
+// import "./blocks/feature-grid/index.js";
 //Not to make available for users yet
 // import "./blocks/how-to/index.js";
 import "./blocks/anchor/index.js";

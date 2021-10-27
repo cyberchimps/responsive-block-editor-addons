@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import Team from "./team";
+import Feature from "./feature";
 import React from "react";
 import classnames from "classnames";
 
@@ -20,7 +20,7 @@ export default class Save extends Component {
   render() {
     const {
       block_id,
-      teamBlock,
+      featureList,
       count,
       gutter,
       imageSize,
@@ -33,7 +33,6 @@ export default class Save extends Component {
       pinterest,
       showImage,
       showName,
-      showDesignation,
       showDescription,
       showSocialIcons,
       stack
@@ -52,7 +51,7 @@ export default class Save extends Component {
     return (
       <div
         className={classnames(
-          "wp-block-responsive-block-editor-addons-team-wrapper",
+          "wp-block-responsive-block-editor-addons-feature-grid-wrapper",
           `block-${block_id}`,
           {
             "has-columns": count > 1,
@@ -60,110 +59,48 @@ export default class Save extends Component {
             "has-responsive-columns": count > 1,
             [`has-${gutter}-gutter`]: gutter,
           },
-          `responsive-team-block-columns__stack-${stack}`,
+          `responsive-feature-block-columns__stack-${stack}`,
         )}
       >
-        {teamBlock.map((test, index) => (
-          <Team {...this.props}>
-            {teamBlock[index]["teamImgURL"] && showImage && (
-              <div className="responsive-block-editor-addons-team-avatar-wrapper">
+        {featureList.map((test, index) => (
+          <Feature {...this.props}>
+            {featureList[index]["featureImgURL"] && showImage && (
+              <div className="responsive-block-editor-addons-feature-avatar-wrapper">
                 <figure
-                  className={"responsive-block-editor-addons-team-avatar"}
+                  className={"responsive-block-editor-addons-feature-avatar"}
                 >
                   <img
-                    className="responsive-block-editor-addons-team-avatar-img"
+                    className="responsive-block-editor-addons-feature-avatar-img"
                     src={
-                      teamBlock[index]["teamImgURL"].sizes[imageSize]
-                        ? teamBlock[index]["teamImgURL"].sizes[imageSize].url
-                        : teamBlock[index]["teamImgURL"].sizes["full"].url
+                      featureList[index]["featureImgURL"].sizes[imageSize]
+                        ? featureList[index]["featureImgURL"].sizes[imageSize].url
+                        : featureList[index]["featureImgURL"].sizes["full"].url
                     }
                     alt={name}
                   />
                 </figure>
               </div>
             )}
-            <div className={"responsive-block-editor-addons-team-content"}>
-              {teamBlock[index]["teamName"] && showName && (
+            <div className={"responsive-block-editor-addons-feature-content"}>
+              {featureList[index]["featureName"] && showName && (
                 <RichText.Content
                   tagName="h3"
-                  className="responsive-block-editor-addons-team-name"
-                  value={teamBlock[index]["teamName"]}
+                  className="responsive-block-editor-addons-feature-name"
+                  value={featureList[index]["featureName"]}
                 />
               )}
 
-              {teamBlock[index]["teamDesignation"] && showDesignation && (
+              {featureList[index]["featureDescription"] && showDescription && (
                 <RichText.Content
                   tagName="div"
-                  className="responsive-block-editor-addons-team-designation"
-                  value={convertTag(teamBlock[index]["teamDesignation"])}
+                  className="responsive-block-editor-addons-feature-description"
+                  value={convertTag(featureList[index]["featureDescription"])}
                 />
               )}
 
-              {teamBlock[index]["teamDescription"] && showDescription && (
-                <RichText.Content
-                  tagName="div"
-                  className="responsive-block-editor-addons-team-description"
-                  value={convertTag(teamBlock[index]["teamDescription"])}
-                />
-              )}
 
-              {showSocialIcons && (
-                <div className="responsive-block-editor-addons-team-social-icons-wrapper">
-                  <ul className="responsive-block-editor-addons-team-social-icons">
-                    {!facebook && (
-                      <li>
-                        <a href={teamBlock[index]["facebookUrl"]}>
-                          <span class="dashicons dashicons-facebook"></span>
-                        </a>
-                      </li>
-                    )}
-                    {!twitter && (
-                      <li>
-                        <a href={teamBlock[index]["twitterUrl"]}>
-                          <span class="dashicons dashicons-twitter"></span>
-                        </a>
-                      </li>
-                    )}                   
-                    {!linkedin && (
-                      <li>
-                        <a href={teamBlock[index]["linkedinUrl"]}>
-                          <span class="dashicons dashicons-linkedin"></span>
-                        </a>
-                      </li>
-                    )}
-                    {!instagram && (
-                      <li>
-                        <a href={teamBlock[index]["instagramUrl"]}>
-                          <span class="dashicons dashicons-instagram"></span>
-                        </a>
-                      </li>
-                    )}
-                    {!email && (
-                      <li>
-                        <a href={"mailto:" + teamBlock[index]["emailAddress"]}>
-                          <span class="dashicons dashicons-email"></span>
-                        </a>
-                      </li>
-                    )}
-                    {!youtube && (
-                      <li>
-                        <a href={teamBlock[index]["youtubeUrl"]}>
-                          <span class="dashicons dashicons-youtube"></span>
-                        </a>
-                      </li>
-                    )}
-                    {!pinterest && (
-                      <li>
-                        <a href={teamBlock[index]["pinterestUrl"]}>
-                          <span class="dashicons dashicons-pinterest"></span>
-                        </a>
-                      </li>
-                    )}
-                  </ul>
-                </div>
-              )}
             </div>
-          </Team>
+          </Feature>
         ))}
       </div>
     );

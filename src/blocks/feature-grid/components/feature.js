@@ -1,5 +1,5 @@
 /**
- * Team Block Wrapper
+ * Feature Block Wrapper
  */
 
 // Setup the block
@@ -11,9 +11,9 @@ import classnames from "classnames";
 import { hexToRgba } from "../../../utils/index.js";
 
 /**
- * Create a Team wrapper Component
+ * Create a Feature wrapper Component
  */
-export default class Team extends Component {
+export default class Feature extends Component {
   constructor(props) {
     super(...arguments);
   }
@@ -22,7 +22,7 @@ export default class Team extends Component {
     // Setup the attributes
     const {
       attributes: {
-        teamImgURL,
+        featureImgURL,
         imageSize,
         backgroundColor,
         imageShape,
@@ -79,9 +79,9 @@ export default class Team extends Component {
       <div
         className={classnames(
           this.props.className,
-          { "responsive-block-editor-addons-has-avatar": teamImgURL },
+          { "responsive-block-editor-addons-has-avatar": featureImgURL },
           "responsive-block-editor-addons-font-size-" + imageSize,
-          "responsive-block-editor-addons-block-team",
+          "responsive-block-editor-addons-block-feature",
           "image-shape-" + imageShape
         )}
       >

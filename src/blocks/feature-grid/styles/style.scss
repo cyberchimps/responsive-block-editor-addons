@@ -1,34 +1,25 @@
 /**
- * Team styles
+ * Feature styles
  * Loads on front end and back end
  */
-.responsive-block-editor-addons-block-team {
+.responsive-block-editor-addons-block-feature {
   align-items: flex-start;
   padding: 0;
   position: relative;
   text-align: center;
   border: 2px solid;
 
-  .responsive-block-editor-addons-team-content {
+  .responsive-block-editor-addons-feature-content {
     flex: 1 1 auto;
 
-    .responsive-block-editor-addons-team-name {
+    .responsive-block-editor-addons-feature-name {
       display: block;
       font-size: 1.5em;
       margin: 1em 0;
       padding: 0;
       margin-top: 0;
     }
-    .responsive-block-editor-addons-team-designation p {
-      margin: 0;
-      margin-bottom: 0;
-      line-height: inherit;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-    .responsive-block-editor-addons-team-description {
+    .responsive-block-editor-addons-feature-description {
       margin: 0;
       p {
         line-height: inherit;
@@ -38,10 +29,10 @@
         margin-bottom: 10px;
       }
     }
-    .responsive-block-editor-addons-team-social-icons-wrapper {
+    .responsive-block-editor-addons-feature-social-icons-wrapper {
       display: inline-block;
 
-      .responsive-block-editor-addons-team-social-icons {
+      .responsive-block-editor-addons-feature-social-icons {
         list-style-type: none;
         display: flex;
         margin: 0;
@@ -91,7 +82,7 @@
       }
     }
   }
-  .responsive-block-editor-addons-team-avatar {
+  .responsive-block-editor-addons-feature-avatar {
     flex: 0 0 auto;
     position: relative;
     margin-bottom: 15px;
@@ -143,8 +134,8 @@
   }
 
   &.image-shape- {
-    &blob .responsive-block-editor-addons-team-avatar,
-    &blob .responsive-block-editor-addons-team-avatar-img {
+    &blob .responsive-block-editor-addons-feature-avatar,
+    &blob .responsive-block-editor-addons-feature-avatar-img {
       -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTg4LjUgMzEuOWMxMi45IDE1LjkgMTIuNSA0My4zIDEwLjMgNzcuMXMtNi4yIDc0LjItMjYuMiA4Ni41LTU2LjEtMy4zLTg5LjQtMjEuMi02My43LTM4LjEtNzYuNC02OS44Qy01LjkgNzMtLjggMjkuOSAyMS42IDExLjcgNDQtNi40IDgzLjguNSAxMTYuNyA2LjFzNTkgMTAgNzEuOCAyNS44eiI+PC9wYXRoPjwvc3ZnPg==);
       mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTg4LjUgMzEuOWMxMi45IDE1LjkgMTIuNSA0My4zIDEwLjMgNzcuMXMtNi4yIDc0LjItMjYuMiA4Ni41LTU2LjEtMy4zLTg5LjQtMjEuMi02My43LTM4LjEtNzYuNC02OS44Qy01LjkgNzMtLjggMjkuOSAyMS42IDExLjcgNDQtNi40IDgzLjguNSAxMTYuNyA2LjFzNTkgMTAgNzEuOCAyNS44eiI+PC9wYXRoPjwvc3ZnPg==);
       mask-mode: alpha;
@@ -156,15 +147,15 @@
       mask-position: center;
       border-radius: none;
     }
-    &circle .responsive-block-editor-addons-team-avatar,
-    &circle .responsive-block-editor-addons-team-avatar-img {
+    &circle .responsive-block-editor-addons-feature-avatar,
+    &circle .responsive-block-editor-addons-feature-avatar-img {
       -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCI+PC9jaXJjbGU+PC9zdmc+);
       mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCI+PC9jaXJjbGU+PC9zdmc+);
       -webkit-mask-size: 100% 100%;
       mask-size: 100% 100%;
     }
-    &square .responsive-block-editor-addons-team-avatar,
-    &square .responsive-block-editor-addons-team-avatar-img {
+    &square .responsive-block-editor-addons-feature-avatar,
+    &square .responsive-block-editor-addons-feature-avatar-img {
       -webkit-mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBjbGFzcz0ic3F1YXJlX3N2Z19fc3QwIiBkPSJNMCAwaDIwMHYyMDBIMHoiPjwvcGF0aD48L3N2Zz4=);
       mask-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBjbGFzcz0ic3F1YXJlX3N2Z19fc3QwIiBkPSJNMCAwaDIwMHYyMDBIMHoiPjwvcGF0aD48L3N2Zz4=);
     }
@@ -217,8 +208,8 @@
   &.sidebar-position-no:not(.woocommerce) {
     .alignwide,
     .alignfull {
-      .wp-block-responsive-block-editor-addons-team-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator),
-      .wp-block-responsive-block-editor-addons-team-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator) {
+      .wp-block-responsive-block-editor-addons-feature-grid-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator),
+      .wp-block-responsive-block-editor-addons-feature-grid-wrapper:not(.wp-block-cover__inner-container):not(.wp-block-separator) {
         &.has-small-gutter.has-2-columns > *:not(.block-editor-inner-blocks) {
           max-width: calc(100% / 2 - 0.5em);
         }

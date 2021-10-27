@@ -2,25 +2,17 @@ const ITEM_COUNT = 2;
 
 const { __ } = wp.i18n;
 
-const teamBlock = [];
+const featureList = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-  teamBlock.push({
-    teamName: __("John Doe", "responsive-block-editor-addons"),
-    teamDesignation: __("Designation", "responsive-block-editor-addons"),
-    teamDescription: __(
+  featureList.push({
+    featureName: __("John Doe", "responsive-block-editor-addons"),
+    featureDescription: __(
       "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
       "responsive-block-editor-addons"
     ),
-    teamImgURL: "",
-    teamImgId: "",
-    twitterUrl: "",
-    facebookUrl: "",
-    linkedinUrl: "",
-    instagramUrl: "",
-    youtubeUrl: "",
-    pinterestUrl: "",
-    emailAddress: "",
+    featureImgURL: "",
+    featureImgId: "",
   });
 }
 
@@ -28,9 +20,9 @@ const attributes = {
   block_id: {
     type: "string",
   },
-  teamBlock: {
+  featureList: {
     type: "array",
-    default: teamBlock,
+    default: featureList,
   },
   counterId: {
     type: "string",
@@ -43,9 +35,6 @@ const attributes = {
   gutter: {
     type: "string",
     default: "medium",
-  },
-  designationColor: {
-    type: "string",
   },
   descriptionColor: {
     type: "string",
@@ -60,16 +49,10 @@ const attributes = {
   titleFontWeight: {
     type: "string",
   },
-  designationFontWeight: {
-    type: "string",
-  },
   descriptionFontWeight: {
     type: "string",
   },
   titleLineHeight: {
-    type: "number",
-  },
-  designationLineHeight: {
     type: "number",
   },
   descriptionLineHeight: {
@@ -82,19 +65,12 @@ const attributes = {
   titleFontFamily: {
     type: "string",
   },
-  designationFontFamily: {
-    type: "string",
-  },
   descriptionFontFamily: {
     type: "string",
   },
   titleFontSize: {
     type: "number",
     default: 23,
-  },
-  designationFontSize: {
-    type: "number",
-    default: 15,
   },
   descriptionFontSize: {
     type: "number",
@@ -128,9 +104,6 @@ const attributes = {
   titleSpacing: {
     type: "number",
   },
-  designationSpacing: {
-    type: "number",
-  },
   descriptionSpacing: {
     type: "number",
   },
@@ -140,9 +113,6 @@ const attributes = {
   titleSpacingMobile: {
     type: "number",
   },
-  designationSpacingMobile: {
-    type: "number",
-  },
   descriptionSpacingMobile: {
     type: "number",
   },
@@ -150,9 +120,6 @@ const attributes = {
     type: "number",
   },
   titleSpacingTablet: {
-    type: "number",
-  },
-  designationSpacingTablet: {
     type: "number",
   },
   descriptionSpacingTablet: {
@@ -272,10 +239,6 @@ const attributes = {
     type: "bool",
     default: true,
   },
-  showDesignation: {
-    type: "bool",
-    default: true,
-  },
   showDescription: {
     type: "bool",
     default: true,
@@ -313,12 +276,6 @@ const attributes = {
 	  type: "number",
   },
   titleFontSizeTablet: {
-	  type: "number",
-  },
-  designationFontSizeMobile: {
-	  type: "number",
-  },
-  designationFontSizeTablet: {
 	  type: "number",
   },
   descriptionFontSizeMobile: {

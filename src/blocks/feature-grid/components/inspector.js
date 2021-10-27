@@ -121,37 +121,29 @@ export default class Inspector extends Component {
       attributes: {
         count,
         gutter,
-        teamBlock,
+        featureList,
         imageSize,
-        designationColor,
         descriptionColor,
         socialIconColor,
         titleFontSize,
         titleFontFamily,
         descriptionFontFamily,
-        designationFontFamily,
-        designationFontSize,
         descriptionFontSize,
         titleFontWeight,
-        designationFontWeight,
         descriptionFontWeight,
         titleLineHeight,
-        designationLineHeight,
         descriptionLineHeight,
         titleSpacing,
-        designationSpacing,
         descriptionSpacing,
         socialIconSpacing,
         imageMarginTop,
         imageMarginBottom,
         titleSpacingMobile,
-        designationSpacingMobile,
         descriptionSpacingMobile,
         socialIconSpacingMobile,
         imageMarginTopMobile,
         imageMarginBottomMobile,
         titleSpacingTablet,
-        designationSpacingTablet,
         descriptionSpacingTablet,
         socialIconSpacingTablet,
         imageMarginTopTablet,
@@ -193,14 +185,11 @@ export default class Inspector extends Component {
         imageWidthTablet,
         showImage,
         showName,
-        showDesignation,
         showDescription,
         showSocialIcons,
         stack,
         titleFontSizeMobile,
         titleFontSizeTablet,
-        designationFontSizeMobile,
-        designationFontSizeTablet,
         descriptionFontSizeMobile,
         descriptionFontSizeTablet,
         socialIconBorderColor,
@@ -216,8 +205,6 @@ export default class Inspector extends Component {
     } = this.props;
 
     // Update color values
-    const onChangeDesignationColor = (value) =>
-      setAttributes({ designationColor: value });
     const onChangeDescriptionColor = (value) =>
       setAttributes({ descriptionColor: value });
     const onChangeSocialIconColor = (value) =>
@@ -253,149 +240,6 @@ export default class Inspector extends Component {
       },
     ];
 
-    const getSocialIconColors = () => {
-      const socialColors = (
-        <Fragment>
-          <br/>
-          <p className="responsive-block-editor-addons-setting-label">
-            {__("Social Icon Color", "responsive-block-editor-addons")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{ backgroundColor: socialIconColor }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={socialIconColor}
-            onChange={onChangeSocialIconColor}
-            allowReset
-          />
-          <p className="responsive-block-editor-addons-setting-label">
-            {__(
-              "Social Icon Background Color",
-              "responsive-block-editor-addons"
-            )}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{ backgroundColor: socialIconBackgroundColor }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={socialIconBackgroundColor}
-            onChange={(value) =>
-              setAttributes({ socialIconBackgroundColor: value })
-            }
-            allowReset
-          />
-          <p className="responsive-block-editor-addons-setting-label">
-            {__("Social Icon Border Color", "responsive-block-editor-addons")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{ backgroundColor: socialIconBorderColor }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={socialIconBorderColor}
-            onChange={(value) =>
-              setAttributes({ socialIconBorderColor: value })
-            }
-            allowReset
-          />
-        </Fragment>
-      );
-
-      const socialColorsHover = (
-        <Fragment>
-          <br/>
-          <p className="responsive-block-editor-addons-setting-label">
-            {__("Social Icon Hover Color", "responsive-block-editor-addons")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{ backgroundColor: socialIconHoverColor }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={socialIconHoverColor}
-            onChange={(value) =>
-              setAttributes({ socialIconHoverColor: value })
-            }
-            allowReset
-          />
-          <p className="responsive-block-editor-addons-setting-label">
-            {__(
-              "Social Icon Background Hover Color",
-              "responsive-block-editor-addons"
-            )}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{ backgroundColor: socialIconBackgroundHoverColor }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={socialIconBackgroundHoverColor}
-            onChange={(value) =>
-              setAttributes({ socialIconBackgroundHoverColor: value })
-            }
-            allowReset
-          />
-          <p className="responsive-block-editor-addons-setting-label">
-            {__("Social Icon Border Hover Color", "responsive-block-editor-addons")}
-            <span className="components-base-control__label">
-              <span
-                className="component-color-indicator"
-                style={{ backgroundColor: socialIconBorderHoverColor }}
-              ></span>
-            </span>
-          </p>
-          <ColorPalette
-            value={socialIconBorderHoverColor}
-            onChange={(value) =>
-              setAttributes({ socialIconBorderHoverColor: value })
-            }
-            allowReset
-          />
-        </Fragment>
-      );
-
-      return (
-        <TabPanel
-          className="responsive-block-editor-addons-inspect-tabs responsive-block-editor-addons-inspect-tabs-col-2"
-          activeClass="active-tab"
-          tabs={[
-            {
-              name: "normal",
-              title: __("Normal", "responsive-block-editor-addons"),
-              className: "responsive-block-editor-addons-normal-tab",
-            },
-            {
-              name: "hover",
-              title: __("Hover", "responsive-block-editor-addons"),
-              className: "responsive-block-editor-addons-hover-tab",
-            },
-          ]}
-        >
-          {(tabName) => {
-            let color_tab;
-            if ("normal" === tabName.name) {
-              color_tab = socialColors;
-            } else {
-              color_tab = socialColorsHover;
-            }
-            return <div>{color_tab}</div>;
-          }}
-        </TabPanel>
-      );
-    };
-
     return (
       <InspectorControls key="inspector">
         <InspectorTabs>
@@ -406,12 +250,12 @@ export default class Inspector extends Component {
             >
               <RangeControl
                 label={__(
-                  "Number of Team Member Boxes",
+                  "Number of Feature Member Boxes",
                   "responsive-block-editor-addons"
                 )}
                 value={count}
                 onChange={(newCount) => {
-                  let cloneTest_block = [...teamBlock];
+                  let cloneTest_block = [...featureList];
                   if (cloneTest_block.length < newCount) {
                     const incAmount = Math.abs(
                       newCount - cloneTest_block.length
@@ -420,12 +264,12 @@ export default class Inspector extends Component {
                     {
                       times(incAmount, (n) => {
                         cloneTest_block.push({
-                          title: "Team Title " + newCount,
+                          title: "Title ",
                           descriptions: "",
                         });
                       });
                     }
-                    setAttributes({ teamBlock: cloneTest_block });
+                    setAttributes({ featureList: cloneTest_block });
                   } else {
                     const incAmount = Math.abs(
                       newCount - cloneTest_block.length
@@ -434,7 +278,7 @@ export default class Inspector extends Component {
                     for (var i = 0; i < incAmount; i++) {
                       data_new.pop();
                     }
-                    setAttributes({ teamBlock: data_new });
+                    setAttributes({ featureList: data_new });
                   }
                   setAttributes({ count: newCount });
                 }}
@@ -461,7 +305,7 @@ export default class Inspector extends Component {
                 ]}
                 onChange={(value) => setAttributes({ stack: value })}
                 help={__(
-                  "Note: Choose on what breakpoint the team cards will stack.",
+                  "Note: Choose on what breakpoint the feature cards will stack.",
                   "responsive-block-editor-addons"
                 )}
               />
@@ -607,15 +451,6 @@ export default class Inspector extends Component {
                 }
               />
               <ToggleControl
-                label="Designation"
-                checked={showDesignation}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showDesignation: !showDesignation,
-                  })
-                }
-              />
-              <ToggleControl
                 label="Description"
                 checked={showDescription}
                 onChange={() =>
@@ -721,7 +556,6 @@ export default class Inspector extends Component {
                 title={__("Colors", "responsive-block-editor-addons")}
                 initialOpen={true}
               >
-                {getSocialIconColors()}
               </PanelBody>
               <RangeControl
                 label={__("Icon Size", "responsive-block-editor-addons")}
@@ -796,25 +630,6 @@ export default class Inspector extends Component {
               />
               <TypographyHelperControl
                 title={__(
-                  "Designation Typography",
-                  "responsive-block-editor-addons"
-                )}
-                attrNameTemplate="designation%s"
-                values={{
-                  family: designationFontFamily,
-                  size: designationFontSize,
-                  sizeMobile: designationFontSizeMobile,
-                  sizeTablet: designationFontSizeTablet,
-                  weight: designationFontWeight,
-                  height: designationLineHeight,
-                }}
-                showLetterSpacing={false}
-                showTextTransform={false}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <TypographyHelperControl
-                title={__(
                   "Description Typography",
                   "responsive-block-editor-addons"
                 )}
@@ -845,17 +660,6 @@ export default class Inspector extends Component {
                   desktop: titleSpacing,
                   tablet: titleSpacingTablet,
                   mobile: titleSpacingMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Designation Bottom Spacing"}
-                attrNameTemplate="designationSpacing%s"
-                values={{
-                  desktop: designationSpacing,
-                  tablet: designationSpacingTablet,
-                  mobile: designationSpacingMobile,
                 }}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -918,14 +722,6 @@ export default class Inspector extends Component {
                   value: titleColor,
                   onChange: onChangetitleColor,
                   label: __("Title Color", "responsive-block-editor-addons"),
-                },
-                {
-                  value: designationColor,
-                  onChange: onChangeDesignationColor,
-                  label: __(
-                    "Designation Color",
-                    "responsive-block-editor-addons"
-                  ),
                 },
                 {
                   value: descriptionColor,
