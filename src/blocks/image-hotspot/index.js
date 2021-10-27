@@ -25,7 +25,6 @@ registerBlockType("responsive-block-editor-addons/image-hotspot", {
   ],
 
   attributes: attributes,
-    example: {},
 
   edit: (props) => {
     return <Edit {...props} />;

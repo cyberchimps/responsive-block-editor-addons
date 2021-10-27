@@ -38,36 +38,6 @@ registerBlockType("responsive-block-editor-addons/image-boxes-block", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example pricing table */
-            imageboxesBlock:[
-                {
-                    title: __("Image Box Title", "responsive-block-editor-addons") ,
-                    hover_description:
-                        __(
-                            "Description - This space for describing this imagebox block",
-                            "responsive-block-editor-addons"
-                        ),
-                    img_url: "",
-                    img_id: "",
-                    cta_url: "",
-                },
-                {
-                    title: __("Image Box Title", "responsive-block-editor-addons") ,
-                    hover_description:
-                        __(
-                            "Description - This space for describing this imagebox block",
-                            "responsive-block-editor-addons"
-                        ),
-                    img_url: "",
-                    img_id: "",
-                    cta_url: "",
-                },
-
-            ],
-        },
-    },
 
   /* Render the block in the editor. */
   edit: (props) => {

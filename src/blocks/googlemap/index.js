@@ -40,7 +40,8 @@ registerBlockType("responsive-block-editor-addons/googlemap", {
     example: {
         attributes: {
             /* translators: example attributes */
-            address: "",
+            address: "India",
+            pinned: true
         },
     },
   responsive_block_editor_addons_settings_data: {
