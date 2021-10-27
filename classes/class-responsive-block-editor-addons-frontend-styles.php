@@ -12145,6 +12145,226 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
+		 * Get Advanced Text CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_advanced_text_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_advanced_text_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$block_opacity = $attr['blockOpacity'] / 100;
+
+			$selectors = array(
+				' '                                      => array(
+					'opacity'        => $block_opacity,
+					'z-index'        => $attr['zIndex'],
+					'max-width'      => self::get_css_value( $attr['containerWidth'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMargin'], 'px!important' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMargin'], 'px!important' ),
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMargin'], 'px!important' ),
+					'margin-left'    => self::get_css_value( $attr['containerLeftMargin'], 'px!important' ),
+					'padding-top'    => self::get_css_value( $attr['containerTopPadding'], 'px!important' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPadding'], 'px!important' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPadding'], 'px!important' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPadding'], 'px!important' ),
+					'text-align'     => $attr['contentAlign'],
+				),
+				' .responsive-block-editor-addons-text-container' => array(
+					'padding' => self::get_css_value( $attr['contentPadding'], 'px' ),
+				),
+				' .responsive-block-editor-addons-separator' => array(
+					'height'           => self::get_css_value( $attr['columnDividerHeight'], 'px' ),
+					'width'            => self::get_css_value( $attr['columnDividerWidth'], 'px' ),
+					'background-color' => $attr['dividerColor'],
+				),
+				' .responsive-block-editor-addons-title' => array(
+					'margin-bottom' => self::get_css_value( $attr['titleBottomMargin'], 'px' ),
+					'text-align'    => $attr['titleAlign'],
+					'color'         => $attr['titleColor'],
+					'font-family'   => $attr['titleFontFamily'],
+					'font-size'     => self::get_css_value( $attr['titleFontSize'], 'px' ),
+					'font-weight'   => $attr['titleFontWeight'],
+					'line-height'   => $attr['titleLineHeight'],
+				),
+				' .responsive-block-editor-addons-subtitle' => array(
+					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMargin'], 'px' ),
+					'text-align'    => $attr['subtitleAlign'],
+					'color'         => $attr['subtitleColor'],
+					'font-family'   => $attr['subtitleFontFamily'],
+					'font-size'     => self::get_css_value( $attr['subtitleFontSize'], 'px' ),
+					'font-weight'   => $attr['subtitleFontWeight'],
+					'line-height'   => $attr['subtitleLineHeight'],
+				),
+				' .responsive-block-editor-addons-text-content' => array(
+					'margin-bottom' => self::get_css_value( $attr['textBottomMargin'], 'px' ),
+					'text-align'    => $attr['textAlign'],
+					'color'         => $attr['textColor'],
+					'font-family'   => $attr['textFontFamily'],
+					'font-size'     => self::get_css_value( $attr['textFontSize'], 'px' ),
+					'font-weight'   => $attr['textFontWeight'],
+					'line-height'   => $attr['textLineHeight'],
+				),
+			);
+
+			$mobile_selectors = array(
+				' '                                      => array(
+					'max-width'      => self::get_css_value( $attr['containerWidthMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMarginMobile'], 'px!important' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMarginMobile'], 'px!important' ),
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMarginMobile'], 'px!important' ),
+					'margin-left'    => self::get_css_value( $attr['containerLeftMarginMobile'], 'px!important' ),
+					'padding-top'    => self::get_css_value( $attr['containerTopPaddingMobile'], 'px!important' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPaddingMobile'], 'px!important' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPaddingMobile'], 'px!important' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPaddingMobile'], 'px!important' ),
+				),
+				' .responsive-block-editor-addons-text-container' => array(
+					'padding' => self::get_css_value( $attr['contentPaddingMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-title' => array(
+					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-subtitle' => array(
+					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['subtitleFontSizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-text-content' => array(
+					'margin-bottom' => self::get_css_value( $attr['textBottomMarginMobile'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['textFontSizeMobile'], 'px' ),
+				),
+			);
+
+			$tablet_selectors = array(
+				' '                                      => array(
+					'max-width'      => self::get_css_value( $attr['containerWidthTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMarginTablet'], 'px!important' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMarginTablet'], 'px!important' ),
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMarginTablet'], 'px!important' ),
+					'margin-left'    => self::get_css_value( $attr['containerLeftMarginTablet'], 'px!important' ),
+					'padding-top'    => self::get_css_value( $attr['containerTopPaddingTablet'], 'px!important' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPaddingTablet'], 'px!important' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPaddingTablet'], 'px!important' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPaddingTablet'], 'px!important' ),
+				),
+				' .responsive-block-editor-addons-text-container' => array(
+					'padding' => self::get_css_value( $attr['contentPaddingTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-title' => array(
+					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-subtitle' => array(
+					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['subtitleFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-text-content' => array(
+					'margin-bottom' => self::get_css_value( $attr['textBottomMarginTablet'], 'px' ),
+					'font-size'     => self::get_css_value( $attr['textFontSizeTablet'], 'px' ),
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-advanced-text.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+
+			return $css;
+		}
+
+
+		/**
+		 * Get Defaults for Advanced Text block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_advanced_text_default_attributes() {
+			return array(
+				'block_id'                     => '',
+				'blockOpacity'                 => 100,
+				'zIndex'                       => '',
+				'blockTag'                     => 'div',
+				'containerWidth'               => '',
+				'containerWidthTablet'         => '',
+				'containerWidthMobile'         => '',
+				'containerTopPadding'          => '',
+				'containerBottomPadding'       => '',
+				'containerLeftPadding'         => '',
+				'containerRightPadding'        => '',
+				'containerTopPaddingTablet'    => '',
+				'containerBottomPaddingTablet' => '',
+				'containerLeftPaddingTablet'   => '',
+				'containerRightPaddingTablet'  => '',
+				'containerTopPaddingMobile'    => '',
+				'containerBottomPaddingMobile' => '',
+				'containerLeftPaddingMobile'   => '',
+				'containerRightPaddingMobile'  => '',
+				'containerTopMargin'           => '',
+				'containerBottomMargin'        => '',
+				'containerLeftMargin'          => '',
+				'containerRightMargin'         => '',
+				'containerTopMarginTablet'     => '',
+				'containerBottomMarginTablet'  => '',
+				'containerLeftMarginTablet'    => '',
+				'containerRightMarginTablet'   => '',
+				'containerTopMarginMobile'     => '',
+				'containerBottomMarginMobile'  => '',
+				'containerLeftMarginMobile'    => '',
+				'containerRightMarginMobile'   => '',
+				'contentAlign'                 => 'left',
+				'columnDividerHeight'          => '',
+				'columnDividerWidth'           => '',
+				'dividerColor'                 => '#ccc',
+				'contentPadding'               => '',
+				'contentPaddingTablet'         => '',
+				'contentPaddingMobile'         => '',
+				'titleBottomMargin'            => 10,
+				'titleBottomMarginTablet'      => '',
+				'titleBottomMarginMobile'      => '',
+				'subtitleBottomMargin'         => 15,
+				'subtitleBottomMarginTablet'   => '',
+				'subtitleBottomMarginMobile'   => '',
+				'textBottomMargin'             => 0,
+				'textBottomMarginTablet'       => '',
+				'textBottomMarginMobile'       => '',
+				'subtitleAlign'                => '',
+				'titleAlign'                   => '',
+				'textAlign'                    => '',
+				'textColor'                    => '',
+				'titleColor'                   => '',
+				'subtitleColor'                => '',
+				'textFontFamily'               => '',
+				'textFontSize'                 => '',
+				'textFontSizeMobile'           => '',
+				'textFontSizeTablet'           => '',
+				'textFontWeight'               => '',
+				'textLineHeight'               => '',
+				'titleFontFamily'              => '',
+				'titleFontSize'                => '',
+				'titleFontSizeMobile'          => '',
+				'titleFontSizeTablet'          => '',
+				'titleFontWeight'              => '',
+				'titleLineHeight'              => '',
+				'subtitleFontFamily'           => '',
+				'subtitleFontSize'             => '',
+				'subtitleFontSizeMobile'       => '',
+				'subtitleFontSizeTablet'       => '',
+				'subtitleFontWeight'           => '',
+				'subtitleLineHeight'           => '',
+			);
+		}
+
+		/**
 		 * Generate gradient effect
 		 *
 		 * @param string $color1  primary color.
