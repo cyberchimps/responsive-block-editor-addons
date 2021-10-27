@@ -123,31 +123,30 @@ export default class Inspector extends Component {
       setAttributes,
     } = this.props;
 
-    const handleLayoutChange =(value) => {
-      if(value === 'layout3') {
+    const handleLayoutChange = (value) => {
+      if (value === "layout3") {
         setAttributes({
           columnsCount: 2,
           layoutDesign: value,
-          titleAlign: 'right',
-          subtitleAlign: 'right',
+          titleAlign: "right",
+          subtitleAlign: "right",
         });
-      }else if(value === 'layout2') {
+      } else if (value === "layout2") {
         setAttributes({
           columnsCount: 2,
           layoutDesign: value,
-          titleAlign: '',
-          subtitleAlign: '',
+          titleAlign: "",
+          subtitleAlign: "",
         });
-      }
-      else {
+      } else {
         setAttributes({
           layoutDesign: value,
           columnsCount: 1,
-          titleAlign: '',
-          subtitleAlign: '',
-        })
+          titleAlign: "",
+          subtitleAlign: "",
+        });
       }
-    }
+    };
 
     return (
       <InspectorControls key="inspector">
@@ -164,9 +163,40 @@ export default class Inspector extends Component {
                 min={1}
                 max={4}
               />
+              <ToggleControl
+                label={__("Enable Title", "responsive-block-editor-addons")}
+                checked={displayTitle}
+                onChange={() => setAttributes({ displayTitle: !displayTitle })}
+              />
+              <ToggleControl
+                label={__("Enable Subtitle", "responsive-block-editor-addons")}
+                checked={displaySubtitle}
+                onChange={() =>
+                  setAttributes({ displaySubtitle: !displaySubtitle })
+                }
+              />
+              {columnsCount > 1 && (
+                <ToggleControl
+                  label={__("Enable Divider", "responsive-block-editor-addons")}
+                  checked={displayColumnSeparator}
+                  onChange={() =>
+                    setAttributes({
+                      displayColumnSeparator: !displayColumnSeparator,
+                    })
+                  }
+                />
+              )}
+              {displayTitle && (
+                <SelectControl
+                  label={__("Title HTML Tag", "responsive-block-editor-addons")}
+                  value={tagTitle}
+                  onChange={(value) => setAttributes({ tagTitle: value })}
+                  options={rbeaOptions.htmlTitleTags}
+                />
+              )}
               <BaseControl>
                 <BaseControl.VisualLabel>
-                  {__("Alignment", "responsive-block-editor-addons")}
+                  {__("Block Alignment", "responsive-block-editor-addons")}
                 </BaseControl.VisualLabel>
                 <br></br>
                 <br></br>
@@ -174,10 +204,65 @@ export default class Inspector extends Component {
                   value={contentAlign}
                   onChange={(value) =>
                     setAttributes({
-                      textAlign: '',
-                      titleAlign: '',
-                      subtitleAlign: '',
+                      textAlign: "",
+                      titleAlign: "",
+                      subtitleAlign: "",
                       contentAlign: value,
+                    })
+                  }
+                  controls={["left", "center", "right"]}
+                  isCollapsed={false}
+                />
+              </BaseControl>
+              {displayTitle && (
+                <BaseControl>
+                  <BaseControl.VisualLabel>
+                    {__("Title Alignment", "responsive-block-editor-addons")}
+                  </BaseControl.VisualLabel>
+                  <br></br>
+                  <br></br>
+                  <AlignmentToolbar
+                    value={titleAlign}
+                    onChange={(value) =>
+                      setAttributes({
+                        titleAlign: value,
+                      })
+                    }
+                    controls={["left", "center", "right"]}
+                    isCollapsed={false}
+                  />
+                </BaseControl>
+              )}
+              {displaySubtitle && (
+                <BaseControl>
+                  <BaseControl.VisualLabel>
+                    {__("Subtitle Alignment", "responsive-block-editor-addons")}
+                  </BaseControl.VisualLabel>
+                  <br></br>
+                  <br></br>
+                  <AlignmentToolbar
+                    value={subtitleAlign}
+                    onChange={(value) =>
+                      setAttributes({
+                        subtitleAlign: value,
+                      })
+                    }
+                    controls={["left", "center", "right"]}
+                    isCollapsed={false}
+                  />
+                </BaseControl>
+              )}
+              <BaseControl>
+                <BaseControl.VisualLabel>
+                  {__("Text Alignment", "responsive-block-editor-addons")}
+                </BaseControl.VisualLabel>
+                <br></br>
+                <br></br>
+                <AlignmentToolbar
+                  value={textAlign}
+                  onChange={(value) =>
+                    setAttributes({
+                      textAlign: value,
                     })
                   }
                   controls={["left", "center", "right"]}
@@ -251,36 +336,11 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
-            { columnsCount > 1 && (
+            {columnsCount > 1 && (
               <PanelBody
                 title={__("Column Divider", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <ToggleControl
-                  label={__("Enable Divider", "responsive-block-editor-addons")}
-                  checked={displayColumnSeparator}
-                  onChange={() =>
-                    setAttributes({ displayColumnSeparator: !displayColumnSeparator })
-                  }
-                />
-                <Fragment>
-                  <p className="responsive-block-editor-addons-setting-label">
-                    {__("Color", "responsive-block-editor-addons")}
-                    <span className="components-base-control__label">
-                      <span
-                        className="component-color-indicator"
-                        style={{ backgroundColor: dividerColor }}
-                      ></span>
-                    </span>
-                  </p>
-                  <ColorPalette
-                    value={dividerColor}
-                    onChange={(colorValue) =>
-                      setAttributes({ dividerColor: colorValue })
-                    }
-                    allowReset
-                  />
-                </Fragment>
                 <RangeControl
                   label={__("Height", "responsive-block-editor-addons")}
                   value={columnDividerHeight}
@@ -302,46 +362,123 @@ export default class Inspector extends Component {
               </PanelBody>
             )}
             <PanelBody
-              title={__("Text", "responsive-block-editor-addons")}
+              title={__("Color Settings", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody initialOpen={true}>
+              {columnsCount > 1 && (
                 <Fragment>
                   <p className="responsive-block-editor-addons-setting-label">
-                    {__("Color", "responsive-block-editor-addons")}
+                    {__("Divider Color", "responsive-block-editor-addons")}
                     <span className="components-base-control__label">
                       <span
                         className="component-color-indicator"
-                        style={{ backgroundColor: textColor }}
+                        style={{ backgroundColor: dividerColor }}
                       ></span>
                     </span>
                   </p>
                   <ColorPalette
-                    value={textColor}
+                    value={dividerColor}
                     onChange={(colorValue) =>
-                      setAttributes({ textColor: colorValue })
+                      setAttributes({ dividerColor: colorValue })
                     }
                     allowReset
                   />
                 </Fragment>
-                <BaseControl>
-                  <BaseControl.VisualLabel>
-                    {__("Text Alignment", "responsive-block-editor-addons")}
-                  </BaseControl.VisualLabel>
-                  <br></br>
-                  <br></br>
-                  <AlignmentToolbar
-                    value={textAlign}
-                    onChange={(value) =>
-                      setAttributes({
-                        textAlign: value,
-                      })
-                    }
-                    controls={["left", "center", "right"]}
-                    isCollapsed={false}
-                  />
-                </BaseControl>
-              </PanelBody>
+              )}
+              <Fragment>
+                <p className="responsive-block-editor-addons-setting-label">
+                  {__("Title Color", "responsive-block-editor-addons")}
+                  <span className="components-base-control__label">
+                    <span
+                      className="component-color-indicator"
+                      style={{ backgroundColor: titleColor }}
+                    ></span>
+                  </span>
+                </p>
+                <ColorPalette
+                  value={titleColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ titleColor: colorValue })
+                  }
+                  allowReset
+                />
+              </Fragment>
+              <Fragment>
+                <p className="responsive-block-editor-addons-setting-label">
+                  {__("Subtitle Color", "responsive-block-editor-addons")}
+                  <span className="components-base-control__label">
+                    <span
+                      className="component-color-indicator"
+                      style={{ backgroundColor: subtitleColor }}
+                    ></span>
+                  </span>
+                </p>
+                <ColorPalette
+                  value={subtitleColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ subtitleColor: colorValue })
+                  }
+                  allowReset
+                />
+              </Fragment>
+              <Fragment>
+                <p className="responsive-block-editor-addons-setting-label">
+                  {__("Text Color", "responsive-block-editor-addons")}
+                  <span className="components-base-control__label">
+                    <span
+                      className="component-color-indicator"
+                      style={{ backgroundColor: textColor }}
+                    ></span>
+                  </span>
+                </p>
+                <ColorPalette
+                  value={textColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ textColor: colorValue })
+                  }
+                  allowReset
+                />
+              </Fragment>
+            </PanelBody>
+            <PanelBody
+              title={__("Typography", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <TypographyHelperControl
+                title={__("Title Typography", "responsive-block-editor-addons")}
+                attrNameTemplate="title%s"
+                values={{
+                  family: titleFontFamily,
+                  size: titleFontSize,
+                  sizeMobile: titleFontSizeMobile,
+                  sizeTablet: titleFontSizeTablet,
+                  weight: titleFontWeight,
+                  height: titleLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <TypographyHelperControl
+                title={__(
+                  "Subtitle Typography",
+                  "responsive-block-editor-addons"
+                )}
+                attrNameTemplate="subtitle%s"
+                values={{
+                  family: subtitleFontFamily,
+                  size: subtitleFontSize,
+                  sizeMobile: subtitleFontSizeMobile,
+                  sizeTablet: subtitleFontSizeTablet,
+                  weight: subtitleFontWeight,
+                  height: subtitleLineHeight,
+                }}
+                showLetterSpacing={false}
+                showTextTransform={false}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
               <TypographyHelperControl
                 title={__("Text Typography", "responsive-block-editor-addons")}
                 attrNameTemplate="text%s"
@@ -358,156 +495,6 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
-            </PanelBody>
-            <PanelBody
-              title={__("Title", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__("Enable Title", "responsive-block-editor-addons")}
-                checked={displayTitle}
-                onChange={() => setAttributes({ displayTitle: !displayTitle })}
-              />
-              {displayTitle && (
-                <PanelBody initialOpen={true}>
-                  <SelectControl
-                    label={__(
-                      "Title HTML Tag",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={tagTitle}
-                    onChange={(value) => setAttributes({ tagTitle: value })}
-                    options={rbeaOptions.htmlTitleTags}
-                  />
-                  <Fragment>
-                    <p className="responsive-block-editor-addons-setting-label">
-                      {__("Color", "responsive-block-editor-addons")}
-                      <span className="components-base-control__label">
-                        <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: titleColor }}
-                        ></span>
-                      </span>
-                    </p>
-                    <ColorPalette
-                      value={titleColor}
-                      onChange={(colorValue) =>
-                        setAttributes({ titleColor: colorValue })
-                      }
-                      allowReset
-                    />
-                  </Fragment>
-                  <BaseControl>
-                    <BaseControl.VisualLabel>
-                      {__("Text Alignment", "responsive-block-editor-addons")}
-                    </BaseControl.VisualLabel>
-                    <br></br>
-                    <br></br>
-                    <AlignmentToolbar
-                      value={titleAlign}
-                      onChange={(value) =>
-                        setAttributes({
-                          titleAlign: value,
-                        })
-                      }
-                      controls={["left", "center", "right"]}
-                      isCollapsed={false}
-                    />
-                  </BaseControl>
-                  <TypographyHelperControl
-                    title={__(
-                      "Title Typography",
-                      "responsive-block-editor-addons"
-                    )}
-                    attrNameTemplate="title%s"
-                    values={{
-                      family: titleFontFamily,
-                      size: titleFontSize,
-                      sizeMobile: titleFontSizeMobile,
-                      sizeTablet: titleFontSizeTablet,
-                      weight: titleFontWeight,
-                      height: titleLineHeight,
-                    }}
-                    showLetterSpacing={false}
-                    showTextTransform={false}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                </PanelBody>
-              )}
-            </PanelBody>
-            <PanelBody
-              title={__("Subtitle", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__("Enable Subtitle", "responsive-block-editor-addons")}
-                checked={displaySubtitle}
-                onChange={() =>
-                  setAttributes({ displaySubtitle: !displaySubtitle })
-                }
-              />
-              {displaySubtitle && (
-                <PanelBody initialOpen={true}>
-                  <Fragment>
-                    <p className="responsive-block-editor-addons-setting-label">
-                      {__("Color", "responsive-block-editor-addons")}
-                      <span className="components-base-control__label">
-                        <span
-                          className="component-color-indicator"
-                          style={{ backgroundColor: subtitleColor }}
-                        ></span>
-                      </span>
-                    </p>
-                    <ColorPalette
-                      value={subtitleColor}
-                      onChange={(colorValue) =>
-                        setAttributes({ subtitleColor: colorValue })
-                      }
-                      allowReset
-                    />
-                  </Fragment>
-                  <BaseControl>
-                    <BaseControl.VisualLabel>
-                      {__(
-                        "Subtitle Alignment",
-                        "responsive-block-editor-addons"
-                      )}
-                    </BaseControl.VisualLabel>
-                    <br></br>
-                    <br></br>
-                    <AlignmentToolbar
-                      value={subtitleAlign}
-                      onChange={(value) =>
-                        setAttributes({
-                          subtitleAlign: value,
-                        })
-                      }
-                      controls={["left", "center", "right"]}
-                      isCollapsed={false}
-                    />
-                  </BaseControl>
-                  <TypographyHelperControl
-                    title={__(
-                      "Subtitle Typography",
-                      "responsive-block-editor-addons"
-                    )}
-                    attrNameTemplate="subtitle%s"
-                    values={{
-                      family: subtitleFontFamily,
-                      size: subtitleFontSize,
-                      sizeMobile: subtitleFontSizeMobile,
-                      sizeTablet: subtitleFontSizeTablet,
-                      weight: subtitleFontWeight,
-                      height: subtitleLineHeight,
-                    }}
-                    showLetterSpacing={false}
-                    showTextTransform={false}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                </PanelBody>
-              )}
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
