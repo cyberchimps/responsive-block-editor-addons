@@ -4,7 +4,7 @@ const attributes = {
   },
   buttonText: {
     type: "string",
-    default: "Button text...",
+    default: "Button text",
   },
   buttonTextFontFamily: {
     type: "string"

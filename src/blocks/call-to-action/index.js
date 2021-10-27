@@ -54,7 +54,7 @@ registerBlockType(
               /* translators: example biography */
               ctaText: __( 'Call To Action Text', 'responsive-block-editor-addons' ),
               /* translators: example button text */
-              buttonText: __( 'Button text...', 'responsive-block-editor-addons' ),
+              buttonText: __( 'Button text', 'responsive-block-editor-addons' ),
           },
       },
 
