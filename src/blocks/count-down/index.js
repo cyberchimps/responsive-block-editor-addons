@@ -35,9 +35,17 @@ registerBlockType("responsive-block-editor-addons/count-down", {
     __("Count Down", "responsive-block-editor-addons"),
     __("Responsive", "responsive-block-editor-addons"),
   ],
-  
-  attributes: attributes,
 
+  attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            days: __("29", 'responsive-block-editor-addons' ),
+            hours: __("23", 'responsive-block-editor-addons' ),
+            minutes: __("59", 'responsive-block-editor-addons' ),
+            seconds: __("59", 'responsive-block-editor-addons' ),
+        },
+    },
   /* Render the block in the editor. */
   edit: Edit,
 

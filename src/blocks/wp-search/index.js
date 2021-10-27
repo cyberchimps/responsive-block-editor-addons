@@ -34,7 +34,13 @@ registerBlockType("responsive-block-editor-addons/wp-search", {
   ],
 
   attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            layout: "classic",
 
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

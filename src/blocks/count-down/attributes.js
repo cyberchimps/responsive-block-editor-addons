@@ -1,3 +1,4 @@
+const { __ } = wp.i18n;
 const attributes = {
   block_id: {
     type: "string",
@@ -12,25 +13,25 @@ const attributes = {
     type: "string",
     source: "text",
     selector: ".responsive-block-editor-addons-countdown-digits-days",
-    default: "29",
+    default: __("29", 'responsive-block-editor-addons' ),
   },
   hours: {
     type: "string",
     source: "text",
     selector: ".responsive-block-editor-addons-countdown-digits-hours",
-    default: "23",
+    default: __("23", 'responsive-block-editor-addons' ),
   },
   minutes: {
     type: "string",
     source: "text",
     selector: ".responsive-block-editor-addons-countdown-digits-minutes",
-    default: "59",
+    default: __("59", 'responsive-block-editor-addons' ),
   },
   seconds: {
     type: "string",
     source: "text",
     selector: ".responsive-block-editor-addons-countdown-digits-seconds",
-    default: "59",
+    default: __("59", 'responsive-block-editor-addons' ),
   },
   digitDaysLabel: {
     type: "string",

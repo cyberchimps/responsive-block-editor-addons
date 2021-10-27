@@ -35,6 +35,7 @@ registerBlockType("responsive-block-editor-addons/post-timeline", {
     __("timeline", "responsive-block-editor-addons"),
     __("latest", "responsive-block-editor-addons"),
   ],
+    example: {},
 
   getEditWrapperProps(attributes) {
     const { align } = attributes;

@@ -267,6 +267,91 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <SelectControl
+                label={__("Background Type", "responsive-block-editor-addons")}
+                value={backgroundType}
+                onChange={(value) => setAttributes({ backgroundType: value })}
+                options={backgroundTypeOptions}
+              />
+              {"color" == backgroundType && (
+                <TabPanel
+                  className="responsive-block-editor-addons-inspect-tabs responsive-block-editor-addons-inspect-tabs-col-2"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "normal",
+                      title: __("Normal", "responsive-block-editor-addons"),
+                      className: "responsive-block-editor-addons-normal-tab",
+                    },
+                    {
+                      name: "hover",
+                      title: __("Hover", "responsive-block-editor-addons"),
+                      className: "responsive-block-editor-addons-hover-tab",
+                    },
+                  ]}
+                >
+                  {(tabName) => {
+                    let btn_color_tab;
+                    if ("normal" === tabName.name) {
+                      btn_color_tab = (
+                        <Fragment>
+                          <ColorBackgroundControl {...this.props} />
+                        </Fragment>
+                      );
+                    } else {
+                      btn_color_tab = (
+                        <Fragment>
+                          <p className="responsive-setting-label">
+                            {__(
+                              "Hover Background Color",
+                              "responsive-block-editor-addons"
+                            )}
+                            <span className="components-base-control__label">
+                              <span
+                                className="component-color-indicator"
+                                style={{
+                                  backgroundColor: backgroundHoverColor,
+                                }}
+                              ></span>
+                            </span>
+                          </p>
+                          <ColorPalette
+                            value={backgroundHoverColor}
+                            onChange={(colorValue) =>
+                              setAttributes({
+                                backgroundHoverColor: colorValue,
+                              })
+                            }
+                            allowReset
+                          />
+                        </Fragment>
+                      );
+                    }
+                    return <div>{btn_color_tab}</div>;
+                  }}
+                </TabPanel>
+              )}
+              {"gradient" == backgroundType && (
+                <GradientBackgroundControl
+                  {...this.props}
+                  showHoverGradient={true}
+                />
+              )}
+              <RangeControl
+                label={__("Opacity", "responsive-block-editor-addons")}
+                value={opacity}
+                onChange={(value) =>
+                  setAttributes({ opacity: value !== undefined ? value : 20 })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
+            </PanelBody>
+            <PanelBody
               title={__("Title", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -505,91 +590,6 @@ export default class Inspector extends Component {
                 onChange={(value) => setAttributes({ tabsZindex: value })}
               />
             </InspectorAdvancedControls>
-            <PanelBody
-              title={__("Background", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <SelectControl
-                label={__("Background Type", "responsive-block-editor-addons")}
-                value={backgroundType}
-                onChange={(value) => setAttributes({ backgroundType: value })}
-                options={backgroundTypeOptions}
-              />
-              {"color" == backgroundType && (
-                <TabPanel
-                  className="responsive-block-editor-addons-inspect-tabs responsive-block-editor-addons-inspect-tabs-col-2"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "normal",
-                      title: __("Normal", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-normal-tab",
-                    },
-                    {
-                      name: "hover",
-                      title: __("Hover", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-hover-tab",
-                    },
-                  ]}
-                >
-                  {(tabName) => {
-                    let btn_color_tab;
-                    if ("normal" === tabName.name) {
-                      btn_color_tab = (
-                        <Fragment>
-                          <ColorBackgroundControl {...this.props} />
-                        </Fragment>
-                      );
-                    } else {
-                      btn_color_tab = (
-                        <Fragment>
-                          <p className="responsive-setting-label">
-                            {__(
-                              "Hover Background Color",
-                              "responsive-block-editor-addons"
-                            )}
-                            <span className="components-base-control__label">
-                              <span
-                                className="component-color-indicator"
-                                style={{
-                                  backgroundColor: backgroundHoverColor,
-                                }}
-                              ></span>
-                            </span>
-                          </p>
-                          <ColorPalette
-                            value={backgroundHoverColor}
-                            onChange={(colorValue) =>
-                              setAttributes({
-                                backgroundHoverColor: colorValue,
-                              })
-                            }
-                            allowReset
-                          />
-                        </Fragment>
-                      );
-                    }
-                    return <div>{btn_color_tab}</div>;
-                  }}
-                </TabPanel>
-              )}
-              {"gradient" == backgroundType && (
-                <GradientBackgroundControl
-                  {...this.props}
-                  showHoverGradient={true}
-                />
-              )}
-              <RangeControl
-                label={__("Opacity", "responsive-block-editor-addons")}
-                value={opacity}
-                onChange={(value) =>
-                  setAttributes({ opacity: value !== undefined ? value : 20 })
-                }
-                min={0}
-                max={100}
-                allowReset
-              />
-            </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}

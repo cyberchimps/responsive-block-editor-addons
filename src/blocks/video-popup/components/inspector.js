@@ -377,47 +377,6 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
               </PanelBody>
-              <PanelBody
-                title={__(
-                  "Background Options",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={false}
-              >
-                <ImageBackgroundControl
-                  {...this.props}
-                  showSomeImageOptions={false}
-                  showMoreImageOptions={false}
-                  showOverlayOptions={false}
-                />
-				<p className="responsive-setting-label">
-					{__("Background Overlay Color", "responsive-block-editor-addons")}
-					<span className="components-base-control__label">
-						<span
-							className="component-color-indicator"
-							style={{ backgroundColor: vidBackgroundColor }}
-						></span>
-					</span>
-				</p>
-				<ColorPalette
-					value={vidBackgroundColor}
-					onChange={(value) =>
-						setAttributes({ vidBackgroundColor: value })
-					}
-					allowReset
-				/>
-				<RangeControl
-					label={__("Opacity", "responsive-block-editor-addons")}
-					value={opacity}
-					onChange={(value) =>
-					setAttributes({
-						opacity: value !== undefined ? value : 80,
-					})
-					}
-					min={0}
-					max={100}
-              	/>
-              </PanelBody>
             </InspectorTab>
             <InspectorTab key={"style"}>
               <PanelBody
@@ -583,6 +542,47 @@ export default class Inspector extends Component {
                     value: boxShadowPosition,
                     label: __("Position", "responsive-block-editor-addons"),
                   }}
+                />
+              </PanelBody>
+              <PanelBody
+                title={__(
+                  "Background",
+                  "responsive-block-editor-addons"
+                )}
+                initialOpen={false}
+              >
+                <ImageBackgroundControl
+                  {...this.props}
+                  showSomeImageOptions={false}
+                  showMoreImageOptions={false}
+                  showOverlayOptions={false}
+                />
+                <p className="responsive-setting-label">
+                  {__("Background Overlay Color", "responsive-block-editor-addons")}
+                  <span className="components-base-control__label">
+                    <span
+                      className="component-color-indicator"
+                      style={{ backgroundColor: vidBackgroundColor }}
+                    ></span>
+                  </span>
+                </p>
+                <ColorPalette
+                  value={vidBackgroundColor}
+                  onChange={(value) =>
+                    setAttributes({ vidBackgroundColor: value })
+                  }
+                  allowReset
+                />
+                <RangeControl
+                  label={__("Opacity", "responsive-block-editor-addons")}
+                  value={opacity}
+                  onChange={(value) =>
+                  setAttributes({
+                    opacity: value !== undefined ? value : 80,
+                  })
+                  }
+                  min={0}
+                  max={100}
                 />
               </PanelBody>
             </InspectorTab>

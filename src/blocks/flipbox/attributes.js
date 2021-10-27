@@ -1,3 +1,5 @@
+const { __ } = wp.i18n;
+
 const ITEM_COUNT = 1;
 
 const flipboxArray = [];
@@ -5,15 +7,15 @@ const defaultIcons = ["accusoft", "acquisitions-incorporated", "ad"];
 const defaultBackIcons = ["address-book", "address-card", "adjust"];
 for (var i = 1; i <= ITEM_COUNT; i++) {
   flipboxArray.push({
-    title: "Front Title " + i,
-    subtitle: "Front Subtitle " + i,
-    back_title: "Back Title " + i,
-    back_subtitle: "Back Subtitle " + i,
+    title: __("Front Title ", "responsive-block-editor-addons") + i,
+    subtitle: __("Front Subtitle ", "responsive-block-editor-addons") + i,
+    back_title: __("Back Title ", "responsive-block-editor-addons") + i,
+    back_subtitle: __("Back Subtitle ", "responsive-block-editor-addons") + i,
     icon: defaultIcons[i - 1],
     back_icon: defaultBackIcons[i - 1],
-    front_button: "Button" + i,
+    front_button: __("Button", "responsive-block-editor-addons") + i,
     front_buttonURL: "",
-    back_button: "Button" + i,
+    back_button: __("Button", "responsive-block-editor-addons") + i,
     back_buttonURL: "",
   });
 }

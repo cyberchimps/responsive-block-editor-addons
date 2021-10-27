@@ -40,6 +40,7 @@ registerBlockType(
       __("page", "responsive-block-editor-addons"),
       __("grid", "responsive-block-editor-addons"),
     ],
+      example: {},
 
     getEditWrapperProps(attributes) {
       const { align } = attributes;

@@ -413,6 +413,26 @@ export default class Inspector extends Component {
               )}
             </PanelBody>
             <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <Fragment>
+                <ColorBackgroundControl {...this.props} />
+              </Fragment>
+              <RangeControl
+                label={__("Opacity", "responsive-block-editor-addons")}
+                value={opacity}
+                onChange={(value) =>
+                  setAttributes({
+                    opacity: value !== undefined ? value : 100,
+                  })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
+            </PanelBody>
+            <PanelBody
               title={__("Padding", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -618,26 +638,6 @@ export default class Inspector extends Component {
                   value: boxShadowPosition,
                   label: __("Position", "responsive-block-editor-addons"),
                 }}
-              />
-            </PanelBody>
-            <PanelBody
-              title={__("Background", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <Fragment>
-                <ColorBackgroundControl {...this.props} />
-              </Fragment>
-              <RangeControl
-                label={__("Opacity", "responsive-block-editor-addons")}
-                value={opacity}
-                onChange={(value) =>
-                  setAttributes({
-                    opacity: value !== undefined ? value : 100,
-                  })
-                }
-                min={0}
-                max={100}
-                allowReset
               />
             </PanelBody>
             <InspectorAdvancedControls>

@@ -163,6 +163,28 @@ class Inspector extends Component {
                   min="20"
                 />
               </PanelBody>
+            </InspectorTab>
+            <InspectorTab key="style">
+              <PanelBody
+                title={__("Shape Styles", "responsive-block-editor-addons")}
+              >
+                <RadioControl
+                  selected={design}
+                  options={fixedOptions}
+                  onChange={(value) => setAttributes({ design: value })}
+                />
+              </PanelBody>
+              <PanelColorSettings
+                title={__("Shape Color", "responsive-block-editor-addons")}
+                initialOpen={false}
+                colorSettings={[
+                  {
+                    value: color.color,
+                    onChange: setColor,
+                    label: __("Shape color", "responsive-block-editor-addons"),
+                  },
+                ]}
+              ></PanelColorSettings>
               <PanelBody
                 title={__("Background", "responsive-block-editor-addons")}
                 initialOpen={false}
@@ -270,28 +292,6 @@ class Inspector extends Component {
                   </Fragment>
                 )}
               </PanelBody>
-            </InspectorTab>
-            <InspectorTab key="style">
-              <PanelBody
-                title={__("Shape Styles", "responsive-block-editor-addons")}
-              >
-                <RadioControl
-                  selected={design}
-                  options={fixedOptions}
-                  onChange={(value) => setAttributes({ design: value })}
-                />
-              </PanelBody>
-              <PanelColorSettings
-                title={__("Shape Color", "responsive-block-editor-addons")}
-                initialOpen={false}
-                colorSettings={[
-                  {
-                    value: color.color,
-                    onChange: setColor,
-                    label: __("Shape color", "responsive-block-editor-addons"),
-                  },
-                ]}
-              ></PanelColorSettings>
             </InspectorTab>
             <InspectorTab key="advance"></InspectorTab>
           </InspectorTabs>

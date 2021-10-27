@@ -21,6 +21,9 @@ const { __ } = wp.i18n;
 
 // Register block
 const { registerBlockType } = wp.blocks;
+var desc_text = __(
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", "responsive-block-editor-addons"
+);
 
 // Register the block
 registerBlockType("responsive-block-editor-addons/pricing-list", {
@@ -37,7 +40,46 @@ registerBlockType("responsive-block-editor-addons/pricing-list", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example pricing list */
+            pricingList:[
+                {
+                    description: desc_text,
+                    title: __("Menu Item 1", "responsive-block-editor-addons"),
+                    price: __("$9", "responsive-block-editor-addons"),
+                    imageId: "",
+                    image: "",
+                    imageUrl: "",
+                },
+                {
+                    description: desc_text,
+                    title: __("Menu Item 2", "responsive-block-editor-addons"),
+                    price: __("$9", "responsive-block-editor-addons"),
+                    imageId: "",
+                    image: "",
+                    imageUrl: "",
+                },
+                {
+                    description: desc_text,
+                    title: __("Menu Item 3", "responsive-block-editor-addons"),
+                    price: __("$9", "responsive-block-editor-addons"),
+                    imageId: "",
+                    image: "",
+                    imageUrl: "",
+                },
+                {
+                    description: desc_text,
+                    title: __("Menu Item 4", "responsive-block-editor-addons"),
+                    price: __("$9", "responsive-block-editor-addons"),
+                    imageId: "",
+                    image: "",
+                    imageUrl: "",
+                },
 
+            ],
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

@@ -260,7 +260,7 @@ function EditorStyles(props) {
       "background-color": updatedButtonBackgroundColor,
       "border-width": buttonborderWidth !== 999 && ctaBorderWidth === 1 ? buttonborderWidth : (ctaBorderWidth
         ? generateCSSUnit(ctaBorderWidth, "px")
-        : "1px"), // For compatibility with v1.3.2.
+        : "0px"), // For compatibility with v1.3.2.
       "background-image": updatedButtonBackgroundImage,
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
     },

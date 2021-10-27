@@ -1,15 +1,16 @@
 const ITEM_COUNT = 2;
 const cardsArray = [];
+const { __ } = wp.i18n;
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
   cardsArray.push({
-    title: "Title",
-    subtitle: "Subtitle",
-    button: "Button" + i,
+    title: __("Title", "responsive-block-editor-addons"),
+    subtitle: __("Subtitle", "responsive-block-editor-addons"),
+    button: __("Button" + i, "responsive-block-editor-addons"),
     buttonURL: "",
     image: "",
     content:
-      "Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.",
+      __("Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.", "responsive-block-editor-addons"),
   });
 }
 
@@ -404,16 +405,6 @@ const attributes = {
   blockrightmarginTablet: {
     type: "number",
   },
-  contenttopSpace: {
-    type: "number",
-    default: 16,
-  },
-  contenttopSpaceMobile: {
-    type: "number",
-  },
-  contenttopSpaceTablet: {
-    type: "number",
-  },
   bgimageSize: {
     type: "string",
     default: "full",
@@ -507,35 +498,35 @@ const attributes = {
   },
   ctaHpaddingMobile: {
     type: "number",
-    default: 14
+    default: ''
   },
   ctaHpaddingTablet: {
     type: "number",
-    default: 14
+    default: ''
   },
   ctaVpaddingTablet: {
     type: "number",
-    default: 10
+    default: ''
   },
   ctaVpaddingMobile: {
     type: "number",
-    default: 10
+    default: ''
   },
   vMarginTablet: {
     type: "number",
-    default: 10
+    default: ''
   },
   vMarginMobile: {
     type: "number",
-    default: 10
+    default: ''
   },
   hMarginTablet: {
     type: "number",
-    default: 0
+    default: ''
   },
   hMarginMobile: {
     type: "number",
-    default: 0
+    default: ''
   },
   buttonHbackgroundType: {
     type: "string",

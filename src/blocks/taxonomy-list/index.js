@@ -33,6 +33,7 @@ registerBlockType("responsive-block-editor-addons/taxonomy-list", {
         __("taxonomy list", "responsive-block-editor-addons"),
         __("responsive", "responsive-block-editor-addons"),
     ],
+    example: {},
 
     edit,
 

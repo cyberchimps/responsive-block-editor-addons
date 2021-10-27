@@ -30,6 +30,7 @@ module.exports = function( grunt ) {
                             '!**/*.js.map',
                             'responsive-block-editor-addons.php',
                             'classes/**',
+                            'analytics/**',
                         ],
                         dest: 'build/<%= pkg.name %>',
                     },

@@ -1,20 +1,21 @@
 const ITEM_COUNT = 2;
 
 const pricingTable = [];
+const { __ } = wp.i18n;
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
   pricingTable.push({
-    title: "Plan " + i,
-    amount: "99",
-    currency: "$",
-    price_suffix: ".00",
-    sub_price: "SUB PRICE",
-    features: ["Add features"],
+    title: __("Plan " + i, "responsive-block-editor-addons"),
+    amount: __("99", "responsive-block-editor-addons"),
+    currency: __("$", "responsive-block-editor-addons"),
+    price_suffix: __(".00", "responsive-block-editor-addons"),
+    sub_price: __("SUB PRICE", "responsive-block-editor-addons"),
+    features: [__("Add features", "responsive-block-editor-addons")],
     img_url: "",
     img_id: "",
     img_width: "",
     img_height: "",
-    button: "Button" + i,
+    button: __("Button" + i, "responsive-block-editor-addons"),
     buttonURL: "#",
   });
 }

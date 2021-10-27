@@ -53,6 +53,33 @@ const {
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
+const showAnimationDirections = (animation) => {
+  let directionOptions =
+    animation === "rotate"
+      ? [
+          { value: "Left", label: "DownLeft" },
+          { value: "DownRight", label: "DownRight" },
+          { value: "UpLeft", label: "UpLeft" },
+          { value: "UpRight", label: "UpRight" },
+        ]
+      : animation === "slide" ||
+        animation === "flip" ||
+        animation === "fold"
+      ? [
+          { value: "Left", label: "Left" },
+          { value: "Right", label: "Right" },
+          { value: "Up", label: "Up" },
+          { value: "Down", label: "Down" },
+        ]
+      : [
+          { value: "Left", label: "Left" },
+          { value: "Right", label: "Right" },
+          { value: "Center", label: "Center" },
+          { value: "Up", label: "Up" },
+          { value: "Down", label: "Down" },
+        ];
+  return directionOptions;
+};
 /**
  * Create an Inspector Controls wrapper Component
  */
@@ -299,6 +326,12 @@ export default class Inspector extends Component {
         buttonbackgroundType,
         buttonHbackgroundType,
         zIndex,
+        animationName,
+        animationDirection,
+        animationRepeat,
+        animationDuration,
+        animationDelay,
+        animationCurve,
       },
       setAttributes,
     } = this.props;
@@ -995,53 +1028,6 @@ export default class Inspector extends Component {
               {source_type && source_type == "image" && imageControls}
             </PanelBody>
             <PanelBody
-              title={__("Background Options", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ImageBackgroundControl
-                {...this.props}
-                showSomeImageOptions={true}
-                showMoreImageOptions={true}
-                showOverlayOptions={false}
-              />
-
-              {backgroundImage && !!backgroundImage.length && (
-                <RangeControl
-                  label={__("Image Opacity", "responsive-block-editor-addons")}
-                  value={dimRatio}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      dimRatio: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={10}
-                />
-              )}
-
-              <PanelBody
-                title={__("Background Color", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ColorBackgroundControl
-                  {...this.props}
-                />
-                <RangeControl
-                  label={__("Opacity", "responsive-block-editor-addons")}
-                  value={opacity}
-                  onChange={(value) =>
-                    setAttributes({
-                      opacity: value !== undefined ? value : 100,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  allowReset
-                />
-              </PanelBody>
-            </PanelBody>
-            <PanelBody
               title={__("Call To Action", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -1294,6 +1280,53 @@ export default class Inspector extends Component {
                 boxShadowSpread={{ value: hoverboxShadowSpread }}
                 boxShadowPosition={{ value: hoverboxShadowPosition }}
               />
+            </PanelBody>
+            <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ImageBackgroundControl
+                {...this.props}
+                showSomeImageOptions={true}
+                showMoreImageOptions={true}
+                showOverlayOptions={false}
+              />
+
+              {backgroundImage && !!backgroundImage.length && (
+                <RangeControl
+                  label={__("Image Opacity", "responsive-block-editor-addons")}
+                  value={dimRatio}
+                  onChange={(value) =>
+                    this.props.setAttributes({
+                      dimRatio: value,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  step={10}
+                />
+              )}
+
+              <PanelBody
+                title={__("Background Color", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <ColorBackgroundControl
+                  {...this.props}
+                />
+                <RangeControl
+                  label={__("Opacity", "responsive-block-editor-addons")}
+                  value={opacity}
+                  onChange={(value) =>
+                    setAttributes({
+                      opacity: value !== undefined ? value : 100,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  allowReset
+                />
+              </PanelBody>
             </PanelBody>
             <PanelBody
               title={__("Separator", "responsive-block-editor-addons")}
@@ -1624,6 +1657,85 @@ export default class Inspector extends Component {
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
+            <PanelBody
+              title={__("Icon Hover Animation", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <SelectControl
+                label={__("Animation", "responsive-block-editor-addons")}
+                value={animationName}
+                onChange={(value) =>
+                  setAttributes({ animationName: value })
+                }
+                options={[
+                  { value: "none", label: __("None", "responsive-block-editor-addons") },
+                  { value: "fade", label: __("Fade", "responsive-block-editor-addons") },
+                  { value: "slide", label: __("Slide", "responsive-block-editor-addons") },
+                  { value: "bounce", label: __("Bounce", "responsive-block-editor-addons") },
+                  { value: "zoom", label: __("Zoom", "responsive-block-editor-addons") },
+                  { value: "flip", label: __("Flip", "responsive-block-editor-addons") },
+                  { value: "fold", label: __("Fold", "responsive-block-editor-addons") },
+                  { value: "rotate", label: __("Rotate", "responsive-block-editor-addons") },
+                ]}
+              />
+              {animationName !== "none" && (
+                <Fragment>
+                  <SelectControl
+                    label={__("Direction", "responsive-block-editor-addons")}
+                    value={animationDirection}
+                    onChange={(value) =>
+                      setAttributes({ animationDirection: value })
+                    }
+                    options={showAnimationDirections(animationName)}
+                  />
+                  <SelectControl
+                    label={__("Repeat", "responsive-block-editor-addons")}
+                    value={animationRepeat}
+                    onChange={(value) =>
+                      setAttributes({ animationRepeat: value })
+                    }
+                    options={[
+                      { value: "once", label: __("Once", "responsive-block-editor-addons") },
+                      { value: "loop", label: __("Loop", "responsive-block-editor-addons") },
+                    ]}
+                  />
+                  <RangeControl
+                    label={__("Duration", "responsive-block-editor-addons")}
+                    value={animationDuration}
+                    min={0}
+                    max={2000}
+                    allowReset={true}
+                    onChange={(value) =>
+                      setAttributes({ animationDuration: value })
+                    }
+                  />
+                  <RangeControl
+                    label={__("Delay", "responsive-block-editor-addons")}
+                    value={animationDelay}
+                    min={0}
+                    max={3000}
+                    allowReset={true}
+                    onChange={(value) =>
+                      setAttributes({ animationDelay: value })
+                    }
+                  />
+                  <SelectControl
+                    label={__("Curve", "responsive-block-editor-addons")}
+                    value={animationCurve}
+                    onChange={(value) =>
+                      setAttributes({ animationCurve: value })
+                    }
+                    options={[
+                      { value: "ease-in-out", label: "ease-in-out" },
+                      { value: "ease", label: "ease" },
+                      { value: "ease-in", label: "ease-in" },
+                      { value: "ease-out", label: "ease-out" },
+                      { value: "linear", label: "linear" },
+                    ]}
+                  />
+                </Fragment>
+              )}
+            </PanelBody>
             <InspectorAdvancedControls>
               <RangeControl
                 label={__("Z-index", "responsive-block-editor-addons")}

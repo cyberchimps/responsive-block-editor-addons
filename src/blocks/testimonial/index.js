@@ -35,7 +35,28 @@ registerBlockType("responsive-block-editor-addons/testimonial", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example pricing table */
+            testimonialBlock:[
+                {
+                    testimonialName: __("John Doe", "responsive-block-editor-addons"),
+                    testimonialTitle: __("Add title/designation", "responsive-block-editor-addons"),
+                    testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
+                    testimonialImgURL: "",
+                    testimonialImgID: "",
+                },
+                {
+                    testimonialName: __("John Doe", "responsive-block-editor-addons"),
+                    testimonialTitle: __("Add title/designation", "responsive-block-editor-addons"),
+                    testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
+                    testimonialImgURL: "",
+                    testimonialImgID: "",
+                },
 
+            ],
+        },
+    },
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_testimonial_testimonialFontSize: {
       title: __("Font Size", "responsive-block-editor-addons"),

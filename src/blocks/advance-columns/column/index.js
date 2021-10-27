@@ -203,6 +203,7 @@ registerBlockType("responsive-block-editor-addons/column", {
     },
     backgroundImage: {
       type: "string",
+      default: '',
     },
     backgroundImagePosition: {
       type: "string",
@@ -219,6 +220,24 @@ registerBlockType("responsive-block-editor-addons/column", {
     backgroundAttachment: {
       type: "string",
       default: "scroll",
+    },
+    backgroundHoverImage: {
+      type: "string",
+    },
+    backgroundImageHoverPosition: {
+      type: "string",
+    },
+    backgroundImageHoverAttachment: {
+      type: "string",
+    },
+    backgroundImageHoverSize: {
+      type: "string",
+    },
+    backgroundImageHoverRepeat: {
+      type: "string",
+    },
+    backgroundImageHoverRepeat: {
+      type: "string",
     },
     backgroundImageColor: {
       type: "string",
