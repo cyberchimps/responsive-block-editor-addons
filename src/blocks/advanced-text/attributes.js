@@ -1,3 +1,5 @@
+import { __ } from "@wordpress/i18n";
+
 const attributes = {
   block_id: {
     type: "string",
@@ -8,15 +10,19 @@ const attributes = {
   },
   text1: {
     type: "string",
+    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
   },
   text2: {
     type: "string",
+    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
   },
   text3: {
     type: "string",
+    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
   },
   text4: {
     type: "string",
+    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
   },
   displayTitle: {
     type: "boolean",
@@ -35,9 +41,11 @@ const attributes = {
   },
   blockTitle: {
     type: "string",
+    default: __("Title", "responsive-block-editor-addons")
   },
   blockSubtitle: {
     type: "string",
+    default: __("Subtitle", "responsive-block-editor-addons")
   },
   displayColumnSeparator: {
     type: "boolean",
@@ -50,6 +58,7 @@ const attributes = {
   //Atrributes in Style Panel
   columnDividerHeight: {
     type: "number",
+    default: 100,
   },
   columnDividerWidth: {
     type: "number",
@@ -171,6 +180,42 @@ const attributes = {
   },
   textLineHeight: {
     type: "string",
+  },
+  titleLeftMargin: {
+    type: "number",
+  },
+  titleLeftMarginTablet: {
+    type: "number",
+  },
+  titleLeftMarginMobile: {
+    type: "number",
+  },
+  titleRightMargin: {
+    type: "number",
+  },
+  titleRightMarginTablet: {
+    type: "number",
+  },
+  titleRightMarginMobile: {
+    type: "number",
+  },
+  subtitleLeftMargin: {
+    type: "number",
+  },
+  subtitleLeftMarginTablet: {
+    type: "number",
+  },
+  subtitleLeftMarginMobile: {
+    type: "number",
+  },
+  subtitleRightMargin: {
+    type: "number",
+  },
+  subtitleRightMarginTablet: {
+    type: "number",
+  },
+  subtitleRightMarginMobile: {
+    type: "number",
   },
   //Attributes in Advanced Settings Panel
   blockTag: {

@@ -27,6 +27,18 @@ registerBlockType("responsive-block-editor-addons/advanced-text", {
 
   attributes: attributes,
 
+  example: {
+    attributes: {
+      columnsCount: 2,
+      titleColor: '#fd1111',
+      subtitleColor: '#0066cc',
+      textColor: '#0066cc',
+      displayColumnSeparator: true,
+      columnDividerWidth: 2,
+      columnDividerHeight: 150,
+    }
+  },
+
   supports: {
     anchor: true,
   },

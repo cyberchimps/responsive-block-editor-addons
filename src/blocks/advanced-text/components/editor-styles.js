@@ -73,6 +73,18 @@ function EditorStyles(props) {
     textFontSizeTablet,
     textFontWeight,
     textLineHeight,
+    titleLeftMargin,
+    titleLeftMarginTablet,
+    titleLeftMarginMobile,
+    titleRightMargin,
+    titleRightMarginTablet,
+    titleRightMarginMobile,
+    subtitleLeftMargin,
+    subtitleLeftMarginTablet,
+    subtitleLeftMarginMobile,
+    subtitleRightMargin,
+    subtitleRightMarginTablet,
+    subtitleRightMarginMobile,
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
@@ -102,6 +114,8 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-title": {
       "margin-bottom": generateCSSUnit(titleBottomMargin, "px"),
+      "margin-left": generateCSSUnit(titleLeftMargin, "px"),
+      "margin-right": generateCSSUnit(titleRightMargin, "px"),
       "text-align": titleAlign,
       "color": titleColor,
       "font-family": titleFontFamily,
@@ -111,6 +125,8 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-subtitle": {
       "margin-bottom": generateCSSUnit(subtitleBottomMargin, "px"),
+      "margin-left": generateCSSUnit(subtitleLeftMargin, "px"),
+      "margin-right": generateCSSUnit(subtitleRightMargin, "px"),
       "text-align": subtitleAlign,
       "color": subtitleColor,
       "font-family": subtitleFontFamily,
@@ -146,10 +162,14 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-title": {
       "margin-bottom": generateCSSUnit(titleBottomMarginMobile, "px"),
+      "margin-left": generateCSSUnit(titleLeftMarginMobile, "px"),
+      "margin-right": generateCSSUnit(titleRightMarginMobile, "px"),
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
     " .responsive-block-editor-addons-subtitle": {
       "margin-bottom": generateCSSUnit(subtitleBottomMarginMobile, "px"),
+      "margin-left": generateCSSUnit(subtitleLeftMarginMobile, "px"),
+      "margin-right": generateCSSUnit(subtitleRightMarginMobile, "px"),
       "font-size": generateCSSUnit(subtitleFontSizeMobile, "px"),
     },
     " .responsive-block-editor-addons-text-content": {
@@ -175,10 +195,14 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-title": {
       "margin-bottom": generateCSSUnit(titleBottomMarginTablet, "px"),
+      "margin-left": generateCSSUnit(titleLeftMarginTablet, "px"),
+      "margin-right": generateCSSUnit(titleRightMarginTablet, "px"),
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-subtitle": {
-      "margin-bottom": generateCSSUnit(subtitleBottomMarginTablet, "px"),  
+      "margin-bottom": generateCSSUnit(subtitleBottomMarginTablet, "px"), 
+      "margin-left": generateCSSUnit(subtitleLeftMarginTablet, "px"),
+      "margin-right": generateCSSUnit(subtitleRightMarginTablet, "px"), 
       "font-size": generateCSSUnit(subtitleFontSizeTablet, "px"),  
     },
     " .responsive-block-editor-addons-text-content": {
