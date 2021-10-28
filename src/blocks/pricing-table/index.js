@@ -55,42 +55,7 @@ registerBlockType("responsive-block-editor-addons/pricing-table", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example pricing table */
-            pricingTable:[
-                {
-                    title: __("Plan 1", "responsive-block-editor-addons"),
-                    amount: __("99", "responsive-block-editor-addons"),
-                    currency: __("$", "responsive-block-editor-addons"),
-                    price_suffix: __(".00", "responsive-block-editor-addons"),
-                    sub_price: __("SUB PRICE", "responsive-block-editor-addons"),
-                    features: [__("Add features", "responsive-block-editor-addons")],
-                    img_url: "",
-                    img_id: "",
-                    img_width: "",
-                    img_height: "",
-                    button: __("Button1", "responsive-block-editor-addons"),
-                    buttonURL: "#",
-                },
-                {
-                    title: __("Plan 2", "responsive-block-editor-addons"),
-                    amount: __("99", "responsive-block-editor-addons"),
-                    currency: __("$", "responsive-block-editor-addons"),
-                    price_suffix: __(".00", "responsive-block-editor-addons"),
-                    sub_price: __("SUB PRICE", "responsive-block-editor-addons"),
-                    features: [__("Add features", "responsive-block-editor-addons")],
-                    img_url: "",
-                    img_id: "",
-                    img_width: "",
-                    img_height: "",
-                    button: __("Button2", "responsive-block-editor-addons"),
-                    buttonURL: "#",
-                },
-
-            ],
-        },
-    },
+    
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

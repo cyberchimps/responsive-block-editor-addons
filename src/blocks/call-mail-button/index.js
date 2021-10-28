@@ -35,12 +35,7 @@ registerBlockType("responsive-block-editor-addons/call-mail-button", {
   ],
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            callText: __("Call", 'responsive-block-editor-addons' ),
-        },
-    },
+
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

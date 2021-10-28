@@ -49,32 +49,7 @@ registerBlockType("responsive-block-editor-addons/card", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example cards */
-            cardsArray:[
-                {
-                    title: __("Title", "responsive-block-editor-addons"),
-                    subtitle: __("Subtitle", "responsive-block-editor-addons"),
-                    button: __("Button 1", "responsive-block-editor-addons"),
-                    buttonURL: "",
-                    image: "",
-                    content:
-                        __("Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.", "responsive-block-editor-addons"),
-                },
-                {
-                    title: __("Title", "responsive-block-editor-addons"),
-                    subtitle: __("Subtitle", "responsive-block-editor-addons"),
-                    button: __("Button 2", "responsive-block-editor-addons"),
-                    buttonURL: "",
-                    image: "",
-                    content:
-                        __("Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.", "responsive-block-editor-addons"),
-                }
-
-            ],
-        },
-    },
+    
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

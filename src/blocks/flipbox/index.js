@@ -39,26 +39,6 @@ registerBlockType("responsive-block-editor-addons/flipbox", {
   },
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example pricing table */
-            flipboxArray:[
-                {
-                    title: __("Front Title ", "responsive-block-editor-addons") ,
-                    subtitle: __("Front Subtitle ", "responsive-block-editor-addons") ,
-                    back_title: __("Back Title ", "responsive-block-editor-addons") ,
-                    back_subtitle: __("Back Subtitle ", "responsive-block-editor-addons") ,
-                    icon: "accusoft",
-                    back_icon: "address-book",
-                    front_button: __("Button", "responsive-block-editor-addons"),
-                    front_buttonURL: "",
-                    back_button: __("Button", "responsive-block-editor-addons") ,
-                    back_buttonURL: "",
-                },
-
-            ],
-        },
-    },
 
   /* Render the block in the editor. */
   edit: (props) => {
