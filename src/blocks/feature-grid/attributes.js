@@ -5,12 +5,12 @@ const featureGrid = [];
 for (var i = 1; i <= ITEM_COUNT; i++) {
   featureGrid.push({
     title: "Title ",
-    sub_price: "Description for this block. You can use this space for describing your block.",
+    desc: "Description for this block. You can use this space for describing your block.",
     img_url: "",
     img_id: "",
     img_width: "",
     img_height: "",
-    button: "Button",
+    button: "Button Text",
     buttonURL: "#",
   });
 }
@@ -23,7 +23,15 @@ const attributes = {
     type: "array",
     default: featureGrid,
   },
-  blockId: {
+    gutter: {
+        type: "string",
+        default: "medium",
+    },
+    layout: {
+        type: "string",
+        default: "plain",
+    },
+    blockId: {
     type: "string",
   },
   count: {
@@ -139,6 +147,7 @@ const attributes = {
   },
   boxShadowColor: {
     type: "string",
+    default: "#e9e7e7",
   },
   boxShadowHOffset: {
     type: "number",
@@ -150,11 +159,11 @@ const attributes = {
   },
   boxShadowBlur: {
     type: "number",
-    default: 0,
+    default: 2,
   },
   boxShadowSpread: {
     type: "number",
-    default: 0,
+    default: 1,
   },
   boxShadowPosition: {
     type: "string",
@@ -183,25 +192,24 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+    ctaDesign: {
+    type: "string",
+    default: "plain",
+  },
   ctaColor: {
     type: "string",
-    default: "#ffffff",
   },
   ctaBackColor: {
     type: "string",
-    default: "#3f46ae",
   },
   ctaHoverColor: {
     type: "string",
-    default: "#ffffff",
   },
   ctaHoverBackColor: {
     type: "string",
-    default: "#3f46ae",
   },
   ctaBorderColor: {
     type: "string",
-    default: "#333",
   },
   ctaBorderStyle: {
     type: "string",
@@ -209,19 +217,15 @@ const attributes = {
   },
   ctaBorderRadius: {
     type: "number",
-    default: 0,
   },
   ctaBorderWidth: {
     type: "number",
-    default: 2,
   },
   ctaHpadding: {
     type: "number",
-    default: 30,
   },
   ctaVpadding: {
     type: "number",
-    default: 15,
   },
   buttonbackgroundType: {
     type: "string",
@@ -358,19 +362,19 @@ const attributes = {
   },
   columnTopPadding: {
     type: "number",
-    default: 60
+    default: 60,
   },
   columnBottomPadding: {
     type: "number",
-    default: 60,
+      default: 60,
   },
   columnLeftPadding: {
     type: "number",
-    default: 35,
+      default: 35,
   },
   columnRightPadding: {
     type: "number",
-    default: 35,
+      default: 35,
   },
   columnTopPaddingMobile: {
     type: "number",

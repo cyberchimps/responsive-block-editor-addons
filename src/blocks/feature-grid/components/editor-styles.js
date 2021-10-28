@@ -202,14 +202,6 @@ function EditorStyles(props) {
   let blockimgopacity = blockopacity / 100;
   let columnbackcoloropacity = columnBackColorOpacity / 100;
 
-  let alignStyle = "center";
-  if ("left" == blockAlign) {
-    alignStyle = "flex-start";
-  }
-  if ("right" == blockAlign) {
-    alignStyle = "flex-end";
-  }
-
   var selectors = {
     " .wp-block-responsive-block-editor-addons-feature-grid-item__button": {
       color: ctaColor + "!important",
@@ -285,10 +277,6 @@ function EditorStyles(props) {
           : undefined,
     },
 
-    " .responsive-block-editor-addons-pricing-table-background-image": {
-      height: "100" + "%",
-      opacity: blockimgopacity,
-    },
 
     " .wp-block-responsive-block-editor-addons-feature-grid-item": {
       "padding-top": generateCSSUnit(columnTopPadding, "px"),
@@ -362,7 +350,7 @@ function EditorStyles(props) {
     },
 
 
-    " .wp-block-responsive-block-editor-addons-feature-grid-item__sub_price": {
+    " .wp-block-responsive-block-editor-addons-feature-grid-item__desc": {
       color: descColor,
       "line-height": descLineHeight,
       "text-transform": descTextTransform,
@@ -394,7 +382,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
       "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
     },
-    " .wp-block-responsive-block-editor-addons-feature-grid-item__sub_price": {
+    " .wp-block-responsive-block-editor-addons-feature-grid-item__desc": {
       "font-size": generateCSSUnit(descFontSizeMobile, "px"),
       "margin-bottom": generateCSSUnit(descSpaceMobile, "px"),
     },
@@ -431,7 +419,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
       "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
     },
-    " .wp-block-responsive-block-editor-addons-feature-grid-item__sub_price": {
+    " .wp-block-responsive-block-editor-addons-feature-grid-item__desc": {
       "font-size": generateCSSUnit(descFontSizeTablet, "px"),
       "margin-bottom": generateCSSUnit(descSpaceTablet, "px"),
     },

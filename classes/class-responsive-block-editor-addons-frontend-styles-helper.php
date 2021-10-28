@@ -375,6 +375,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				case 'responsive-block-editor-addons/image-hotspot':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_image_hotspot_css( $blockattr, $block_id );
 					break;
+				case 'responsive-block-editor-addons/feature-grid':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_feature_grid_css( $blockattr, $block_id );
+					break;
 				default:
 					// Nothing to do here.
 					break;

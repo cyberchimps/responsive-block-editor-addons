@@ -18,38 +18,20 @@ export default class Save extends Component {
     const {
       block_id,
       featureGrid,
+        layout,
       contentAlign,
       count,
+        gutter,
         titleTag,
-      buttonTarget,
       backgroundType,
-      boxShadowPosition,
-      buttonBoxShadowPosition,
-      blockbackgroundImage,
       showImage,
       showTitle,
-      showPrefix,
-      showPrice,
-      showSuffix,
       showDesc,
-      showFeatures,
       showButton,
-      blockAlign,
       imageSize,
       imageShape,
-      imageWidth,
       blockId,
     } = this.props.attributes;
-    var boxShadowPositionCSS = boxShadowPosition;
-
-    if ("outset" === boxShadowPosition) {
-      boxShadowPositionCSS = "";
-    }
-    var buttonBoxShadowPositionCSS = buttonBoxShadowPosition;
-
-    if ("outset" === buttonBoxShadowPosition) {
-      buttonBoxShadowPositionCSS = "";
-    }
 
     const classes = classnames({
       [`has-text-align-${contentAlign}`]: contentAlign,
@@ -65,34 +47,17 @@ export default class Save extends Component {
       }
     );
 
-    let alignStyle = "center";
-    if ("left" == blockAlign) {
-      alignStyle = "flex-start";
-    }
-    if ("right" == blockAlign) {
-      alignStyle = "flex-end";
-    }
-
     return [
       <div
         className={classnames(
           classes,
           "responsive-block-editor-addons-block-feature-grid",
           `block-${block_id}`,
-          "wp-block-responsive-block-editor-addons-feature-grid",
+            `grid-layout-${layout}`,
+            "wp-block-responsive-block-editor-addons-feature-grid",
           "image-shape-" + imageShape
         )}
       >
-        <div className="responsive-block-editor-addons-pricing-table-background-image-wrap">
-          {blockbackgroundImage && (
-            <img
-              className={classnames(
-                "responsive-block-editor-addons-pricing-table-background-image"
-              )}
-              src={blockbackgroundImage}
-            />
-          )}
-        </div>
         <div className={innerClasses}>
           {featureGrid.map((test, index) => (
             <Fragment>
@@ -128,8 +93,8 @@ export default class Save extends Component {
                 {showDesc && (
                   <RichText.Content
                     tagName="p"
-                    className="wp-block-responsive-block-editor-addons-feature-grid-item__sub_price"
-                    value={featureGrid[index]["sub_price"]}
+                    className="wp-block-responsive-block-editor-addons-feature-grid-item__desc"
+                    value={featureGrid[index]["desc"]}
                   />
                 )}
 

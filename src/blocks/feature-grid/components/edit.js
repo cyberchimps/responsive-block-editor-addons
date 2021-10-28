@@ -16,37 +16,14 @@ const {
   RichText,
   AlignmentToolbar,
   BlockControls,
-  InnerBlocks,
   MediaUpload,
   URLInput,
-  MediaUploadCheck,
-  figure,
 } = wp.editor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
 
 const ALLOWED_MEDIA_TYPES = ["image"];
-const ALLOWED_BLOCKS = ["core/button"];
-const TEMPLATE = [
-  [
-    "core/button",
-    { placeholder: __("Buy Now", "responsive-block-editor-addons") },
-  ],
-];
-
-const getCount = memoize((count) => {
-  return times(count, (index) => [
-    "responsive-block-editor-addons/pricing-table-item",
-    {
-      placeholder: sprintf(
-        /* translators: %d: a digit 1-3 */
-        __("Plan %d", "responsive-block-editor-addons"),
-        parseInt(index + 1)
-      ),
-    },
-  ]);
-});
 
 export default class Edit extends Component {
   constructor() {
@@ -55,7 +32,7 @@ export default class Edit extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
-      "responsive-block-editor-addons-pricing-table-style-" +
+      "responsive-block-editor-addons-feature-grid-style-" +
         this.props.clientId
     );
 
@@ -73,7 +50,7 @@ export default class Edit extends Component {
     const $style = document.createElement("style");
     $style.setAttribute(
       "id",
-      "responsive-block-editor-addons-pricing-table-style-" +
+      "responsive-block-editor-addons-feature-grid-style-" +
         this.props.clientId
     );
     document.head.appendChild($style);
@@ -85,53 +62,32 @@ export default class Edit extends Component {
       attributes: {
         block_id,
         featureGrid,
+          layout,
         count,
         gutter,
         contentAlign,
         backgroundType,
-        boxShadowPosition,
-        buttonBoxShadowPosition,
-        blockbackgroundImage,
         titleFontFamily,
-        amountFontFamily,
-        prefixFontFamily,
-        suffixFontFamily,
         descFontFamily,
-        featuresFontFamily,
         ctaFontFamily,
         showImage,
         showTitle,
-        showPrefix,
-        showPrice,
-        showSuffix,
         showDesc,
-        showFeatures,
         showButton,
         blockAlign,
         imageSize,
         imageShape,
-        imageWidth,
           titleTag
       },
       setAttributes,
     } = this.props;
-
-    var boxShadowPositionCSS = boxShadowPosition;
-
-    if ("outset" === boxShadowPosition) {
-      boxShadowPositionCSS = "";
-    }
-    var buttonBoxShadowPositionCSS = buttonBoxShadowPosition;
-
-    if ("outset" === buttonBoxShadowPosition) {
-      buttonBoxShadowPositionCSS = "";
-    }
 
     var data_copy = [...featureGrid];
 
     const classes = classnames(
       "responsive-block-editor-addons-block-feature-grid",
       `block-${block_id}`,
+      `grid-layout-${layout}`,
       "wp-block-responsive-block-editor-addons-feature-grid",
       {
         [`has-text-align-${contentAlign}`]: contentAlign,
@@ -171,22 +127,8 @@ export default class Edit extends Component {
       <Inspector {...{ setAttributes, ...this.props }} />,
       <div className={classnames(classes, "image-shape-" + imageShape)}>
         {titleFontFamily && loadGoogleFont(titleFontFamily)}
-        {amountFontFamily && loadGoogleFont(amountFontFamily)}
-        {prefixFontFamily && loadGoogleFont(prefixFontFamily)}
-        {suffixFontFamily && loadGoogleFont(suffixFontFamily)}
         {descFontFamily && loadGoogleFont(descFontFamily)}
-        {featuresFontFamily && loadGoogleFont(featuresFontFamily)}
         {ctaFontFamily && loadGoogleFont(ctaFontFamily)}
-        <div className="responsive-block-editor-addons-pricing-table-background-image-wrap">
-          {blockbackgroundImage && (
-            <img
-              className={classnames(
-                "responsive-block-editor-addons-pricing-table-background-image"
-              )}
-              src={blockbackgroundImage}
-            />
-          )}
-        </div>
         <div className={innerClasses}>
           {featureGrid.map((test, index) => (
             <Fragment>
@@ -205,7 +147,7 @@ export default class Edit extends Component {
                       onSelect={(value) => {
                         var new_content = {
                           title: data_copy[index]["title"],
-                            sub_price: data_copy[index]["sub_price"],
+                            desc: data_copy[index]["desc"],
                             img_id: value.id,
                           img_url: value,
                           button: data_copy[index]["button"],
@@ -256,7 +198,7 @@ export default class Edit extends Component {
                               onClick={() => {
                                 var new_content = {
                                   title: data_copy[index]["title"],
-                                    sub_price: data_copy[index]["sub_price"],
+                                    desc: data_copy[index]["desc"],
                                     img_id: null,
                                   img_url: null,
                                   button: data_copy[index]["button"],
@@ -283,7 +225,7 @@ export default class Edit extends Component {
                     onChange={(value) => {
                       var new_content = {
                         title: value,
-                        sub_price: data_copy[index]["sub_price"],
+                        desc: data_copy[index]["desc"],
                         img_id: featureGrid[index]["img_id"],
                         img_url: featureGrid[index]["img_url"],
                         button: data_copy[index]["button"],
@@ -299,8 +241,8 @@ export default class Edit extends Component {
                 {showDesc && (
                   <RichText
                     tagName="p"
-                    className="wp-block-responsive-block-editor-addons-feature-grid-item__sub_price"
-                    value={featureGrid[index]["sub_price"]}
+                    className="wp-block-responsive-block-editor-addons-feature-grid-item__desc"
+                    value={featureGrid[index]["desc"]}
                     placeholder={__(
                       "Sub Price",
                       "responsive-block-editor-addons"
@@ -308,7 +250,7 @@ export default class Edit extends Component {
                     onChange={(value) => {
                       var new_content = {
                         title: data_copy[index]["title"],
-                        sub_price: value,
+                        desc: value,
                         img_id: featureGrid[index]["img_id"],
                         img_url: featureGrid[index]["img_url"],
                         button: data_copy[index]["button"],
@@ -325,7 +267,7 @@ export default class Edit extends Component {
                 {showButton && (
                   <Fragment>
                     <RichText
-                      tagName="p"
+                      tagName="a"
                       className={classnames(
                         "wp-block-responsive-block-editor-addons-feature-grid-item__button"
                       )}
@@ -338,7 +280,7 @@ export default class Edit extends Component {
                           title: data_copy[index]["title"],
                           currency: data_copy[index]["currency"],
                           price_suffix: data_copy[index]["price_suffix"],
-                          sub_price: data_copy[index]["sub_price"],
+                          desc: data_copy[index]["desc"],
                           amount: data_copy[index]["amount"],
                           features: data_copy[index]["features"],
                           img_id: featureGrid[index]["img_id"],
@@ -366,7 +308,7 @@ export default class Edit extends Component {
                             title: data_copy[index]["title"],
                             currency: data_copy[index]["currency"],
                             price_suffix: data_copy[index]["price_suffix"],
-                            sub_price: data_copy[index]["sub_price"],
+                            desc: data_copy[index]["desc"],
                             amount: data_copy[index]["amount"],
                             features: data_copy[index]["features"],
                             img_id: featureGrid[index]["img_id"],
