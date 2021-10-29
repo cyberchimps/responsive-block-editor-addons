@@ -60,7 +60,11 @@ export default class Inspector extends Component {
         textBottomMarginTablet,
         textBottomMarginMobile,
         columnDividerHeight,
+          columnDividerHeightTablet,
+          columnDividerHeightMobile,
         columnDividerWidth,
+        columnDividerWidthTablet,
+          columnDividerWidthMobile,
         dividerColor,
         textAlign,
         textFontFamily,
@@ -398,24 +402,29 @@ export default class Inspector extends Component {
                 title={__("Column Divider", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <RangeControl
-                  label={__("Height", "responsive-block-editor-addons")}
-                  value={columnDividerHeight}
-                  onChange={(value) =>
-                    setAttributes({ columnDividerHeight: value })
-                  }
-                  min={0}
-                  max={250}
+                <ResponsiveSpacingControl
+                title={"Height"}
+                attrNameTemplate="columnDividerHeight%s"
+                values={{
+                desktop: columnDividerHeight,
+                    tablet: columnDividerHeightTablet,
+                    mobile: columnDividerHeightMobile,
+            }}
+                setAttributes={setAttributes}
+                {...this.props}
                 />
-                <RangeControl
-                  label={__("Width", "responsive-block-editor-addons")}
-                  value={columnDividerWidth}
-                  onChange={(value) =>
-                    setAttributes({ columnDividerWidth: value })
-                  }
-                  min={0}
-                  max={5}
+                <ResponsiveSpacingControl
+                title={"Width"}
+                attrNameTemplate="columnDividerWidth%s"
+                values={{
+                desktop: columnDividerWidth,
+                    tablet: columnDividerWidthTablet,
+                    mobile: columnDividerWidthMobile,
+            }}
+                setAttributes={setAttributes}
+                {...this.props}
                 />
+
               </PanelBody>
             )}
             <PanelBody
