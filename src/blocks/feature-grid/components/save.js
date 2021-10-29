@@ -31,6 +31,7 @@ export default class Save extends Component {
       imageSize,
       imageShape,
       blockId,
+        buttonTarget
     } = this.props.attributes;
 
     const classes = classnames({
