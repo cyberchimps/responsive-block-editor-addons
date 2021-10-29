@@ -12185,8 +12185,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-title' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomMargin'], 'px' ),
-					'margin-left'   => self::get_css_value( $attr['titleLeftMargin'], 'px' ),
-					'margin-right'  => self::get_css_value( $attr['titleRightMargin'], 'px' ),
+					'margin-left'   => 'right' !== $attr['titleAlign'] ? self::get_css_value( $attr['titleLeftMargin'], 'px' ) : '',
+					'margin-right'  => 'left' !== $attr['titleAlign'] ? self::get_css_value( $attr['titleRightMargin'], 'px' ) : '',
 					'text-align'    => $attr['titleAlign'],
 					'color'         => $attr['titleColor'],
 					'font-family'   => $attr['titleFontFamily'],
@@ -12196,8 +12196,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-subtitle' => array(
 					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMargin'], 'px' ),
-					'margin-left'   => self::get_css_value( $attr['subtitleLeftMargin'], 'px' ),
-					'margin-right'  => self::get_css_value( $attr['subtitleRightMargin'], 'px' ),
+					'margin-left'   => 'right' !== $attr['subtitleAlign'] ? self::get_css_value( $attr['subtitleLeftMargin'], 'px' ) : '',
+					'margin-right'  => 'left' !== $attr['subtitleAlign'] ? self::get_css_value( $attr['subtitleRightMargin'], 'px' ) : '',
 					'text-align'    => $attr['subtitleAlign'],
 					'color'         => $attr['subtitleColor'],
 					'font-family'   => $attr['subtitleFontFamily'],
@@ -12235,19 +12235,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'grid-row-gap'          => '10px',
 				),
 				' .responsive-block-editor-addons-separator' => array(
-					'height' => $attr['columnDividerWidth'] . 'px',
-					'width'  => self::get_css_value( $attr['columnDividerHeight'], '%' ),
+					'height' => $attr['columnDividerHeightMobile'] . 'px',
+					'width'  => self::get_css_value( $attr['columnDividerWidthMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-title' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginMobile'], 'px' ),
-					'margin-left'   => self::get_css_value( $attr['titleLeftMarginMobile'], 'px' ),
-					'margin-right'  => self::get_css_value( $attr['titleRightMarginMobile'], 'px' ),
+					'margin-left'   => 'right' !== $attr['titleAlign'] ? self::get_css_value( $attr['titleLeftMarginMobile'], 'px' ) : '',
+					'margin-right'  => 'left' !== $attr['titleAlign'] ? self::get_css_value( $attr['titleRightMarginMobile'], 'px' ) : '',
 					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-subtitle' => array(
 					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginMobile'], 'px' ),
-					'margin-left'   => self::get_css_value( $attr['subtitleLeftMarginMobile'], 'px' ),
-					'margin-right'  => self::get_css_value( $attr['subtitleRightMarginMobile'], 'px' ),
+					'margin-left'   => 'right' !== $attr['subtitleAlign'] ? self::get_css_value( $attr['subtitleLeftMarginMobile'], 'px' ) : '',
+					'margin-right'  => 'left' !== $attr['subtitleAlign'] ? self::get_css_value( $attr['subtitleRightMarginMobile'], 'px' ) : '',
 					'font-size'     => self::get_css_value( $attr['subtitleFontSizeMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-text-content' => array(
@@ -12273,19 +12273,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-title' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomMarginTablet'], 'px' ),
-					'margin-left'   => self::get_css_value( $attr['titleLeftMarginTablet'], 'px' ),
-					'margin-right'  => self::get_css_value( $attr['titleRightMarginTablet'], 'px' ),
+					'margin-left'   => 'right' !== $attr['titleAlign'] ? self::get_css_value( $attr['titleLeftMarginTablet'], 'px' ) : '',
+					'margin-right'  => 'left' !== $attr['titleAlign'] ? self::get_css_value( $attr['titleRightMarginTablet'], 'px' ) : '',
 					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-subtitle' => array(
 					'margin-bottom' => self::get_css_value( $attr['subtitleBottomMarginTablet'], 'px' ),
-					'margin-left'   => self::get_css_value( $attr['subtitleLeftMarginTablet'], 'px' ),
-					'margin-right'  => self::get_css_value( $attr['subtitleRightMarginTablet'], 'px' ),
+					'margin-left'   => 'right' !== $attr['subtitleAlign'] ? self::get_css_value( $attr['subtitleLeftMarginTablet'], 'px' ) : '',
+					'margin-right'  => 'left' !== $attr['subtitleAlign'] ? self::get_css_value( $attr['subtitleRightMarginTablet'], 'px' ) : '',
 					'font-size'     => self::get_css_value( $attr['subtitleFontSizeTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-text-content' => array(
 					'margin-bottom' => self::get_css_value( $attr['textBottomMarginTablet'], 'px' ),
 					'font-size'     => self::get_css_value( $attr['textFontSizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-separator' => array(
+					'height' => $attr['columnDividerHeightTablet'] . 'px',
+					'width'  => self::get_css_value( $attr['columnDividerWidthTablet'], 'px' ),
 				),
 			);
 
@@ -12342,7 +12346,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerRightMarginMobile'   => '',
 				'contentAlign'                 => 'left',
 				'columnDividerHeight'          => 100,
+				'columnDividerHeightTablet'    => '',
+				'columnDividerHeightMobile'    => '',
 				'columnDividerWidth'           => '',
+				'columnDividerWidthTablet'     => '',
+				'columnDividerWidthMobile'     => '',
 				'dividerColor'                 => '#ccc',
 				'contentPadding'               => '',
 				'contentPaddingTablet'         => '',

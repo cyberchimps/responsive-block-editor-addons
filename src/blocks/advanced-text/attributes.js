@@ -60,7 +60,19 @@ const attributes = {
     type: "number",
     default: 100,
   },
+    columnDividerHeightTablet: {
+    type: "number",
+  },
+    columnDividerHeightMobile: {
+    type: "number",
+  },
   columnDividerWidth: {
+    type: "number",
+  },
+  columnDividerWidthTablet: {
+    type: "number",
+  },
+  columnDividerWidthMobile: {
     type: "number",
   },
   dividerColor: {
