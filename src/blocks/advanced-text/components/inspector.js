@@ -119,6 +119,18 @@ export default class Inspector extends Component {
         containerBottomMarginMobile,
         containerLeftMarginMobile,
         containerRightMarginMobile,
+        titleLeftMargin,
+        titleLeftMarginTablet,
+        titleLeftMarginMobile,
+        titleRightMargin,
+        titleRightMarginTablet,
+        titleRightMarginMobile,
+        subtitleLeftMargin,
+        subtitleLeftMarginTablet,
+        subtitleLeftMarginMobile,
+        subtitleRightMargin,
+        subtitleRightMarginTablet,
+        subtitleRightMarginMobile,
       },
       setAttributes,
     } = this.props;
@@ -126,14 +138,12 @@ export default class Inspector extends Component {
     const handleLayoutChange = (value) => {
       if (value === "layout3") {
         setAttributes({
-          columnsCount: 2,
           layoutDesign: value,
           titleAlign: "right",
           subtitleAlign: "right",
         });
       } else if (value === "layout2") {
         setAttributes({
-          columnsCount: 2,
           layoutDesign: value,
           titleAlign: "",
           subtitleAlign: "",
@@ -141,7 +151,6 @@ export default class Inspector extends Component {
       } else {
         setAttributes({
           layoutDesign: value,
-          columnsCount: 1,
           titleAlign: "",
           subtitleAlign: "",
         });
@@ -288,7 +297,7 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <ResponsiveSpacingControl
-                title={"Padding"}
+                title={"Text Padding"}
                 attrNameTemplate="contentPadding%s"
                 values={{
                   desktop: contentPadding,
@@ -299,6 +308,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
               {displayTitle && (
+                <>
                 <ResponsiveSpacingControl
                   title={"Title Bottom"}
                   attrNameTemplate="titleBottomMargin%s"
@@ -310,8 +320,32 @@ export default class Inspector extends Component {
                   setAttributes={setAttributes}
                   {...this.props}
                 />
+                { titleAlign !== 'right' && <ResponsiveSpacingControl
+                  title={"Title Left"}
+                  attrNameTemplate="titleLeftMargin%s"
+                  values={{
+                    desktop: titleLeftMargin,
+                    tablet: titleLeftMarginTablet,
+                    mobile: titleLeftMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                /> }
+                { titleAlign !== 'left' && <ResponsiveSpacingControl
+                  title={"Title Right"}
+                  attrNameTemplate="titleRightMargin%s"
+                  values={{
+                    desktop: titleRightMargin,
+                    tablet: titleRightMarginTablet,
+                    mobile: titleRightMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />}
+                </>
               )}
               {displaySubtitle && (
+                <>
                 <ResponsiveSpacingControl
                   title={"Subtitle Bottom"}
                   attrNameTemplate="subtitleBottomMargin%s"
@@ -323,6 +357,29 @@ export default class Inspector extends Component {
                   setAttributes={setAttributes}
                   {...this.props}
                 />
+                { subtitleAlign !== 'right' && <ResponsiveSpacingControl
+                  title={"Subtitle Left"}
+                  attrNameTemplate="subtitleLeftMargin%s"
+                  values={{
+                    desktop: subtitleLeftMargin,
+                    tablet: subtitleLeftMarginTablet,
+                    mobile: subtitleLeftMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />}
+                { subtitleAlign !== 'left' && <ResponsiveSpacingControl
+                  title={"Subtitle Right"}
+                  attrNameTemplate="subtitleRightMargin%s"
+                  values={{
+                    desktop: subtitleRightMargin,
+                    tablet: subtitleRightMarginTablet,
+                    mobile: subtitleRightMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />}
+                </>
               )}
               <ResponsiveSpacingControl
                 title={"Text Bottom"}
@@ -348,7 +405,7 @@ export default class Inspector extends Component {
                     setAttributes({ columnDividerHeight: value })
                   }
                   min={0}
-                  max={100}
+                  max={250}
                 />
                 <RangeControl
                   label={__("Width", "responsive-block-editor-addons")}
