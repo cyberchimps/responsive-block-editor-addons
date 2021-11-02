@@ -12516,12 +12516,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['imageSpace'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-feature-grid-item__title' => array(
-					'color'         => $attr['titleColor'],
-					'line-height'   => $attr['titleLineHeight'],
-					'font-weight'   => $attr['titleFontWeight'],
-					'font-size'     => self::get_css_value( $attr['titleFontSize'], 'px' ),
-					'font-family'   => $attr['titleFontFamily'],
-					'margin-bottom' => self::get_css_value( $attr['titleSpace'], 'px' ),
+					'color'          => $attr['titleColor'],
+					'line-height'    => $attr['titleLineHeight'],
+					'font-weight'    => $attr['titleFontWeight'],
+					'font-size'      => self::get_css_value( $attr['titleFontSize'], 'px' ),
+					'text-transform' => $attr['titleTextTransform'],
+					'font-family'    => $attr['titleFontFamily'],
+					'margin-bottom'  => self::get_css_value( $attr['titleSpace'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-feature-grid-item__desc' => array(
 					'color'          => $attr['descColor'],
@@ -12698,6 +12699,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'descFontSizeMobile'        => '',
 				'descFontWeight'            => '',
 				'descLineHeight'            => '',
+				'titleTextTransform'        => '',
 				'descTextTransform'         => '',
 				'ctaFontFamily'             => '',
 				'ctaFontSize'               => '',
@@ -12789,7 +12791,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonSpaceTablet'         => '',
 				'titleColor'                => '',
 				'descColor'                 => '',
-
+				'ctaHoverBorderColor'       => '',
 			);
 		}
 

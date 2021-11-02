@@ -124,6 +124,7 @@ export default class Inspector extends Component {
         descFontWeight,
         descLineHeight,
         descTextTransform,
+        titleTextTransform,
         ctaFontFamily,
         ctaFontSize,
         ctaFontWeight,
@@ -672,9 +673,10 @@ export default class Inspector extends Component {
                   sizeTablet: titleFontSizeTablet,
                   weight: titleFontWeight,
                   height: titleLineHeight,
+                  transform: titleTextTransform,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
+                showTextTransform={true}
                 setAttributes={setAttributes}
                 {...this.props}
               />
