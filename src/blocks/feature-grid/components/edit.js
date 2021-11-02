@@ -243,10 +243,6 @@ export default class Edit extends Component {
                     tagName="p"
                     className="wp-block-responsive-block-editor-addons-feature-grid-item__desc"
                     value={featureGrid[index]["desc"]}
-                    placeholder={__(
-                      "Sub Price",
-                      "responsive-block-editor-addons"
-                    )}
                     onChange={(value) => {
                       var new_content = {
                         title: data_copy[index]["title"],
@@ -272,7 +268,6 @@ export default class Edit extends Component {
                         "wp-block-responsive-block-editor-addons-feature-grid-item__button"
                       )}
                       value={featureGrid[index]["button"]}
-                      placeholder={__("$", "responsive-block-editor-addons")}
                       onChange={(value) => {
                         var new_content = {
                           button: value,
