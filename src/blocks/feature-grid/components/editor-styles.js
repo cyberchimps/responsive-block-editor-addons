@@ -347,7 +347,7 @@ function EditorStyles(props) {
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
-      "text-tansform": titleTextTransform,
+      "text-transform": titleTextTransform,
       "font-family": titleFontFamily,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
     },
