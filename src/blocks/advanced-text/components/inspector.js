@@ -60,11 +60,11 @@ export default class Inspector extends Component {
         textBottomMarginTablet,
         textBottomMarginMobile,
         columnDividerHeight,
-          columnDividerHeightTablet,
-          columnDividerHeightMobile,
+        columnDividerHeightTablet,
+        columnDividerHeightMobile,
         columnDividerWidth,
         columnDividerWidthTablet,
-          columnDividerWidthMobile,
+        columnDividerWidthMobile,
         dividerColor,
         textAlign,
         textFontFamily,
@@ -313,76 +313,84 @@ export default class Inspector extends Component {
               />
               {displayTitle && (
                 <>
-                <ResponsiveSpacingControl
-                  title={"Title Bottom"}
-                  attrNameTemplate="titleBottomMargin%s"
-                  values={{
-                    desktop: titleBottomMargin,
-                    tablet: titleBottomMarginTablet,
-                    mobile: titleBottomMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                { titleAlign !== 'right' && <ResponsiveSpacingControl
-                  title={"Title Left"}
-                  attrNameTemplate="titleLeftMargin%s"
-                  values={{
-                    desktop: titleLeftMargin,
-                    tablet: titleLeftMarginTablet,
-                    mobile: titleLeftMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                /> }
-                { titleAlign !== 'left' && <ResponsiveSpacingControl
-                  title={"Title Right"}
-                  attrNameTemplate="titleRightMargin%s"
-                  values={{
-                    desktop: titleRightMargin,
-                    tablet: titleRightMarginTablet,
-                    mobile: titleRightMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />}
+                  <ResponsiveSpacingControl
+                    title={"Title Bottom"}
+                    attrNameTemplate="titleBottomMargin%s"
+                    values={{
+                      desktop: titleBottomMargin,
+                      tablet: titleBottomMarginTablet,
+                      mobile: titleBottomMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  {titleAlign !== "right" && (
+                    <ResponsiveSpacingControl
+                      title={"Title Left"}
+                      attrNameTemplate="titleLeftMargin%s"
+                      values={{
+                        desktop: titleLeftMargin,
+                        tablet: titleLeftMarginTablet,
+                        mobile: titleLeftMarginMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+                  )}
+                  {titleAlign !== "left" && (
+                    <ResponsiveSpacingControl
+                      title={"Title Right"}
+                      attrNameTemplate="titleRightMargin%s"
+                      values={{
+                        desktop: titleRightMargin,
+                        tablet: titleRightMarginTablet,
+                        mobile: titleRightMarginMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+                  )}
                 </>
               )}
               {displaySubtitle && (
                 <>
-                <ResponsiveSpacingControl
-                  title={"Subtitle Bottom"}
-                  attrNameTemplate="subtitleBottomMargin%s"
-                  values={{
-                    desktop: subtitleBottomMargin,
-                    tablet: subtitleBottomMarginTablet,
-                    mobile: subtitleBottomMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                { subtitleAlign !== 'right' && <ResponsiveSpacingControl
-                  title={"Subtitle Left"}
-                  attrNameTemplate="subtitleLeftMargin%s"
-                  values={{
-                    desktop: subtitleLeftMargin,
-                    tablet: subtitleLeftMarginTablet,
-                    mobile: subtitleLeftMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />}
-                { subtitleAlign !== 'left' && <ResponsiveSpacingControl
-                  title={"Subtitle Right"}
-                  attrNameTemplate="subtitleRightMargin%s"
-                  values={{
-                    desktop: subtitleRightMargin,
-                    tablet: subtitleRightMarginTablet,
-                    mobile: subtitleRightMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />}
+                  <ResponsiveSpacingControl
+                    title={"Subtitle Bottom"}
+                    attrNameTemplate="subtitleBottomMargin%s"
+                    values={{
+                      desktop: subtitleBottomMargin,
+                      tablet: subtitleBottomMarginTablet,
+                      mobile: subtitleBottomMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  {subtitleAlign !== "right" && (
+                    <ResponsiveSpacingControl
+                      title={"Subtitle Left"}
+                      attrNameTemplate="subtitleLeftMargin%s"
+                      values={{
+                        desktop: subtitleLeftMargin,
+                        tablet: subtitleLeftMarginTablet,
+                        mobile: subtitleLeftMarginMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+                  )}
+                  {subtitleAlign !== "left" && (
+                    <ResponsiveSpacingControl
+                      title={"Subtitle Right"}
+                      attrNameTemplate="subtitleRightMargin%s"
+                      values={{
+                        desktop: subtitleRightMargin,
+                        tablet: subtitleRightMarginTablet,
+                        mobile: subtitleRightMarginMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+                  )}
                 </>
               )}
               <ResponsiveSpacingControl
@@ -402,29 +410,133 @@ export default class Inspector extends Component {
                 title={__("Column Divider", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <ResponsiveSpacingControl
-                title={"Height"}
-                attrNameTemplate="columnDividerHeight%s"
-                values={{
-                desktop: columnDividerHeight,
-                    tablet: columnDividerHeightTablet,
-                    mobile: columnDividerHeightMobile,
-            }}
-                setAttributes={setAttributes}
-                {...this.props}
-                />
-                <ResponsiveSpacingControl
-                title={"Width"}
-                attrNameTemplate="columnDividerWidth%s"
-                values={{
-                desktop: columnDividerWidth,
-                    tablet: columnDividerWidthTablet,
-                    mobile: columnDividerWidthMobile,
-            }}
-                setAttributes={setAttributes}
-                {...this.props}
-                />
-
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Height Mobile",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={columnDividerHeightMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                columnDividerHeightMobile: value,
+                              })
+                            }
+                            min={0}
+                            max={10}
+                          />
+                          <RangeControl
+                            label={__(
+                              "Width Mobile",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={columnDividerWidthMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                columnDividerWidthMobile: value,
+                              })
+                            }
+                            min={0}
+                            max={300}
+                          />
+                        </Fragment>
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Height Tablet",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={columnDividerHeightTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                columnDividerHeightTablet: value,
+                              })
+                            }
+                            min={0}
+                            max={300}
+                          />
+                          <RangeControl
+                            label={__(
+                              "Width Tablet",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={columnDividerWidthTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                columnDividerWidthTablet: value,
+                              })
+                            }
+                            min={0}
+                            max={10}
+                          />
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Height",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={columnDividerHeight}
+                            onChange={(value) =>
+                              setAttributes({ columnDividerHeight: value })
+                            }
+                            min={0}
+                            max={300}
+                          />
+                          <RangeControl
+                            label={__(
+                              "Width",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={columnDividerWidth}
+                            onChange={(value) =>
+                              setAttributes({
+                                columnDividerWidth: value,
+                              })
+                            }
+                            min={0}
+                            max={10}
+                          />
+                        </Fragment>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
               </PanelBody>
             )}
             <PanelBody

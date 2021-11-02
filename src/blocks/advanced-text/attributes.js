@@ -10,19 +10,31 @@ const attributes = {
   },
   text1: {
     type: "string",
-    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
+    default: __(
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.",
+      "responsive-block-editor-addons"
+    ),
   },
   text2: {
     type: "string",
-    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
+    default: __(
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.",
+      "responsive-block-editor-addons"
+    ),
   },
   text3: {
     type: "string",
-    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
+    default: __(
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.",
+      "responsive-block-editor-addons"
+    ),
   },
   text4: {
     type: "string",
-    default: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.", "responsive-block-editor-addons")
+    default: __(
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ullamcorper erat. Praesent luctus maximus nisl id placerat. Vestibulum rhoncus augue sed scelerisque tempor. Donec non libero quis massa aliquam consectetur et eget purus.",
+      "responsive-block-editor-addons"
+    ),
   },
   displayTitle: {
     type: "boolean",
@@ -41,11 +53,11 @@ const attributes = {
   },
   blockTitle: {
     type: "string",
-    default: __("Title", "responsive-block-editor-addons")
+    default: __("Title", "responsive-block-editor-addons"),
   },
   blockSubtitle: {
     type: "string",
-    default: __("Subtitle", "responsive-block-editor-addons")
+    default: __("Subtitle", "responsive-block-editor-addons"),
   },
   displayColumnSeparator: {
     type: "boolean",
@@ -60,24 +72,27 @@ const attributes = {
     type: "number",
     default: 100,
   },
-    columnDividerHeightTablet: {
+  columnDividerHeightTablet: {
     type: "number",
   },
-    columnDividerHeightMobile: {
+  columnDividerHeightMobile: {
     type: "number",
+    default: 2,
   },
   columnDividerWidth: {
     type: "number",
+    default: 2,
   },
   columnDividerWidthTablet: {
     type: "number",
   },
   columnDividerWidthMobile: {
     type: "number",
+    default: 100,
   },
   dividerColor: {
     type: "string",
-    default: '#ccc'
+    default: "#ccc",
   },
   contentPadding: {
     type: "number",
