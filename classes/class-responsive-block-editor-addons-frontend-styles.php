@@ -12569,7 +12569,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .wp-block-responsive-block-editor-addons-feature-grid-item__button:hover' => array(
 					'color'            => $attr['ctaHoverColor'] . '!important',
 					'background-color' => $updated_button_bg_h_color,
-					'background-image' => $attr['buttonHbackgroundType'] == 'color' ? 'none' : $updated_button_bg_h_image,
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_bg_h_image,
 					'border-color'     => $attr['ctaHoverBorderColor'],
 				),
 			);
