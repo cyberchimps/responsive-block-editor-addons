@@ -324,7 +324,7 @@ export default class Inspector extends Component {
                     setAttributes={setAttributes}
                     {...this.props}
                   />
-                  {titleAlign !== "right" && (
+                  {((titleAlign !== "right" && titleAlign !== '') || (titleAlign === '' && contentAlign !== 'right')) && (
                     <ResponsiveSpacingControl
                       title={"Title Left"}
                       attrNameTemplate="titleLeftMargin%s"
@@ -337,7 +337,7 @@ export default class Inspector extends Component {
                       {...this.props}
                     />
                   )}
-                  {titleAlign !== "left" && (
+                  {((titleAlign !== "left" && titleAlign !== '') || (titleAlign === '' && contentAlign !== 'left')) && (
                     <ResponsiveSpacingControl
                       title={"Title Right"}
                       attrNameTemplate="titleRightMargin%s"
@@ -365,7 +365,7 @@ export default class Inspector extends Component {
                     setAttributes={setAttributes}
                     {...this.props}
                   />
-                  {subtitleAlign !== "right" && (
+                  {((subtitleAlign !== "right" && subtitleAlign !== '') || (subtitleAlign === '' && contentAlign !== 'right')) && (
                     <ResponsiveSpacingControl
                       title={"Subtitle Left"}
                       attrNameTemplate="subtitleLeftMargin%s"
@@ -378,7 +378,7 @@ export default class Inspector extends Component {
                       {...this.props}
                     />
                   )}
-                  {subtitleAlign !== "left" && (
+                  {((subtitleAlign !== "left" && subtitleAlign !== '') || (subtitleAlign === '' && contentAlign !== 'left')) && (
                     <ResponsiveSpacingControl
                       title={"Subtitle Right"}
                       attrNameTemplate="subtitleRightMargin%s"

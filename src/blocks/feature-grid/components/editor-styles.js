@@ -204,6 +204,7 @@ function EditorStyles(props) {
 
   var selectors = {
     " .wp-block-responsive-block-editor-addons-feature-grid-item__button": {
+      "display": "block",
       color: ctaColor + "!important",
       "background-color": updatedButtonBackgroundColor,
       "background-image": updatedButtonBackgroundImage,

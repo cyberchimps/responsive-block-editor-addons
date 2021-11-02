@@ -12430,6 +12430,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$button_box_shadow_position_css = '';
 			}
 
+			$updated_button_bg_h_color = '';
+			$updated_button_bg_h_image = '';
+			if ( 'color' === $attr['buttonHbackgroundType'] ) {
+				$updated_button_bg_h_color = $attr['ctaHoverBackColor'];
+			} elseif ( 'gradient' === $attr['buttonHbackgroundType'] ) {
+				$updated_button_bg_h_image = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
+			}
+
 			$updated_button_background_color = '';
 			$updated_button_background_image = '';
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
@@ -12515,7 +12523,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-family'   => $attr['titleFontFamily'],
 					'margin-bottom' => self::get_css_value( $attr['titleSpace'], 'px' ),
 				),
-				' .wp-block-responsive-block-editor-addons-feature-grid-item__sub_price' => array(
+				' .wp-block-responsive-block-editor-addons-feature-grid-item__desc' => array(
 					'color'          => $attr['descColor'],
 					'line-height'    => $attr['descLineHeight'],
 					'text-transform' => $attr['descTextTransform'],
@@ -12525,6 +12533,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'  => self::get_css_value( $attr['descSpace'], 'px' ),
 				),
 				' .wp-block-responsive-block-editor-addons-feature-grid-item__button' => array(
+					'display'          => 'block',
 					'margin-left'      => 'left' === $attr['blockAlign'] ? 0 : '',
 					'margin-right'     => 'right' === $attr['blockAlign'] ? 0 : '',
 					'color'            => $attr['ctaColor'],
@@ -12557,7 +12566,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$button_box_shadow_position_css,
 					'margin-bottom'    => self::get_css_value( $attr['buttonSpace'], 'px' ),
 				),
-
+				' .wp-block-responsive-block-editor-addons-feature-grid-item__button:hover' => array(
+					'color'            => $attr['ctaHoverColor'] . '!important',
+					'background-color' => $updated_button_bg_h_color,
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $updated_button_bg_h_image,
+					'border-color'     => $attr['ctaHoverBorderColor'],
+				),
 			);
 
 			$mobile_selectors = array(
@@ -12580,7 +12594,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleSpaceMobile'], 'px' ),
 				),
-				' .wp-block-responsive-block-editor-addons-feature-grid-item__sub_price' => array(
+				' .wp-block-responsive-block-editor-addons-feature-grid-item__desc' => array(
 					'font-size'     => self::get_css_value( $attr['descFontSizeMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['descSpaceMobile'], 'px' ),
 				),
@@ -12620,7 +12634,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleSpaceTablet'], 'px' ),
 				),
-				' .wp-block-responsive-block-editor-addons-feature-grid-item__sub_price' => array(
+				' .wp-block-responsive-block-editor-addons-feature-grid-item__desc' => array(
 					'font-size'     => self::get_css_value( $attr['descFontSizeTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['descSpaceTablet'], 'px' ),
 				),
