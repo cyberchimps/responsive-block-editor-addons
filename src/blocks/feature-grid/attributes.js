@@ -300,6 +300,9 @@ const attributes = {
   descLineHeight: {
     type: "number",
   },
+  titleTextTransform: {
+    type: "string",
+  },
   descTextTransform: {
     type: "string",
   },
