@@ -82,7 +82,7 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
-= 1.5.0 - 2nd November 2021 =
+= 1.5.0 - 3rd November 2021 =
 * New - Advanced Text Block
 * New - Feature Grid Block
 * Feature - Post and Page Grid Block - List View - Added options for image
