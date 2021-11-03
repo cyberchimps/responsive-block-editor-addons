@@ -61,7 +61,7 @@ registerBlockType("responsive-block-editor-addons/accordion", {
   category: "responsive_block_editor_addons",
   /* translators: block description */
   description: __(
-    "Organize content within collapsable accordion items.",
+    "Organize content within collapsible accordion items.",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.accordion,
