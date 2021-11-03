@@ -60,7 +60,7 @@ if ( ! function_exists( 'rbea_fs' ) ) {
 			// Include Analytics SDK.
 			require_once dirname( __FILE__ ) . '/analytics/start.php';
 
-			$rbeao_fs = rbeas_dynamic_init(
+			$rbeao_fs = ras_dynamic_init(
 				array(
 					'id'              => '11',
 					'slug'            => 'responsive-block-editor-addons',

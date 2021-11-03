@@ -36,7 +36,7 @@ if ( ! class_exists( 'Analytics' ) ) {
 	 *
 	 * @return Analytics
 	 */
-	function rbeas_dynamic_init( $module ) {
+	function ras_dynamic_init( $module ) {
 		if ( ! isset( $module['plugin_basename'] ) ) {
 			$plugin_basename = '';
 		} else {
