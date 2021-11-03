@@ -6,7 +6,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 
 // Setup the block
 const { __ } = wp.i18n;
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 // Import block components
 const { InspectorControls } = wp.editor;
@@ -16,9 +16,8 @@ const {
 	PanelBody,
 	RangeControl,
 	BaseControl,
-	TextControl,
-	Button,
-	ExternalLink,
+    TabPanel,
+    Dashicon
 } = wp.components;
 import { ENTER } from '@wordpress/keycodes';
 
@@ -45,7 +44,7 @@ export default class Inspector extends Component {
 	render() {
 		// Setup the attributes
 		const {
-			attributes: { zoom, height },
+			attributes: { zoom, height, heightMobile, heightTablet },
 			setAttributes,
 		} = this.props;
 
@@ -66,24 +65,99 @@ export default class Inspector extends Component {
 								max={17}
 								step={1}
 							/>
-							<BaseControl
-								label={__("Height in pixels", "responsive-block-editor-addons")}
-								id="map-height-control"
-							>
-								<input
-									type="number"
-									aria-label={__(
-										"Height for the map in pixels",
-										"responsive-block-editor-addons"
-									)}
-									onChange={(event) =>
-										setAttributes({ height: parseInt(event.target.value, 10) })
-									}
-									value={height}
-									min={200}
-									step={10}
-								/>
-							</BaseControl>
+
+        <TabPanel
+        className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+        activeClass="active-tab"
+        tabs={[
+            {
+                name: "desktop",
+                title: <Dashicon icon="desktop" />,
+            className:
+                " responsive-desktop-tab  responsive-responsive-tabs",
+        },
+        {
+            name: "tablet",
+            title: <Dashicon icon="tablet" />,
+            className:
+        " responsive-tablet-tab  responsive-responsive-tabs",
+    },
+        {
+            name: "mobile",
+                title: <Dashicon icon="smartphone" />,
+            className:
+            " responsive-mobile-tab  responsive-responsive-tabs",
+        },
+    ]}
+    >
+        {(tab) => {
+            let tabout;
+
+            if ("mobile" === tab.name) {
+                tabout = (
+                    <Fragment>
+                    <RangeControl
+                label={__(
+                    "Height in pixels",
+                    "responsive-block-editor-addons"
+            )}
+                value={heightMobile}
+                onChange={(value) =>
+                setAttributes({
+                    heightMobile: value,
+                })
+            }
+
+                min={100}
+                max={2000}
+                step={10}
+                />
+                </Fragment>
+            );
+            } else if ("tablet" === tab.name) {
+                tabout = (
+                    <Fragment>
+                    <RangeControl
+                label={__(
+                    "Height in pixels",
+                    "responsive-block-editor-addons"
+            )}
+                value={heightTablet}
+                onChange={(value) =>
+                setAttributes({
+                    heightTablet: value,
+                })
+            }
+
+                min={100}
+                max={2000}
+                step={10}
+                />
+                </Fragment>
+            );
+            } else {
+                tabout = (
+                    <Fragment>
+                    <RangeControl
+                label={__("Height in pixels", "responsive-block-editor-addons")}
+                min={100}
+                max={2000}
+                step={10}
+                value={height}
+                onChange={(value) =>
+                setAttributes({
+                    height: value,
+                })
+            }
+
+                />
+                </Fragment>
+            );
+            }
+
+            return <div>{tabout}</div>;
+        }}
+    </TabPanel>
 						</PanelBody>
 
 					</InspectorTab>

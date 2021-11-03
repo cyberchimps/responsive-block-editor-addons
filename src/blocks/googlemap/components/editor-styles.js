@@ -6,7 +6,7 @@ import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 
 function EditorStyles(props) {
-  const { block_id, address, zoom, height, pinned } = props.attributes;
+  const { block_id, address, zoom, height, heightTablet, heightMobile, pinned } = props.attributes;
 
   var selectors = {
     " ": {
@@ -18,9 +18,25 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+      " ": {
+          "max-height": heightMobile ? generateCSSUnit(heightMobile, "px") : `${400}px`,
+      },
+      " .responsive-block-editor-addons-block-map-frame": {
+          width: "100%",
+          "min-height": heightMobile ? generateCSSUnit(heightMobile, "px") : `${400}px`,
+      },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+      " ": {
+          "max-height": heightTablet ? generateCSSUnit(heightTablet, "px") : `${400}px`,
+      },
+      " .responsive-block-editor-addons-block-map-frame": {
+          width: "100%",
+          "min-height": heightTablet ? generateCSSUnit(heightTablet, "px") : `${400}px`,
+      },
+  };
 
   var outerElement = {
     ".responsive-block-editor-addons-block-googlemap-external-element": {

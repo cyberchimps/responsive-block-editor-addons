@@ -13,6 +13,12 @@ const attributes = {
     type: "number",
     default: 400,
   },
+    heightTablet: {
+    type: "number",
+  },
+    heightMobile: {
+    type: "number",
+  },
   pinned: {
     type: "boolean",
     default: false,
