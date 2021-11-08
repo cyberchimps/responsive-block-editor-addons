@@ -82,16 +82,14 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
-= 1.5.0 - 3rd November 2021 =
+= 1.5.0 - 8th November 2021 =
 * New - Advanced Text Block
 * New - Feature Grid Block
 * Feature - Post and Page Grid Block - List View - Added options for image
 * Feature - Advanced Column Block - Added option to change background image on hover
 * Feature - Info Block - Added icon hover animation
-* Feature - Capture plugin deactivation data
 * Feature - Added example/demo images for some blocks
 * Fix - Call to Action Block - Issues with a button border
-* Fix - Pattern Importer - Search feature not working properly
 
 = 1.4.0 - 14th October 2021 =
 * New - Instagram Block
