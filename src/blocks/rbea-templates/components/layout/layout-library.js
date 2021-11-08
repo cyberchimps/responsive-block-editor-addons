@@ -78,6 +78,10 @@ export default class LayoutLibrary extends Component {
       };
     });
 
+    if(!cats.includes(this.state.category)) {
+      this.setState({category: 'all'})
+    }
+
     const data = this.props.data;
 
     if (this.props.currentTab === "rbea-patterns-tab-collections") {

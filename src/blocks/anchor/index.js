@@ -37,7 +37,11 @@ registerBlockType("responsive-block-editor-addons/anchor", {
     anchor: true,
   },
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

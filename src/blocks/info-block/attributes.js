@@ -1,3 +1,4 @@
+const { __ } = wp.i18n;
 const attributes = {
   block_id: {
     type: "string",
@@ -9,7 +10,7 @@ const attributes = {
   resprefixTitle: {
     source: "html",
     selector: "span.responsive-block-editor-addons-ifb-title-prefix",
-    default: "Prefix",
+    default: __( 'Prefix', 'responsive-block-editor-addons' ),
   },
   classMigrate: {
     type: "boolean",
@@ -18,13 +19,13 @@ const attributes = {
   resinfoBlockTitle: {
     source: "html",
     selector: "h1,h2,h3,h4,h5,h6",
-    default: "Info Box",
+    default: __("Info Box", 'responsive-block-editor-addons' ),
   },
   resDescHeading: {
     source: "html",
     selector: "p",
     default:
-      "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      __("Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.", "responsive-block-editor-addons"),
   },
   resheadingAlign: {
     type: "string",
@@ -304,7 +305,7 @@ const attributes = {
   },
   iconBottomMarginMobile: {
     type: "number",
-  }, 
+  },
   iconLeftMarginTablet: {
     type: "number",
   },
@@ -527,7 +528,7 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  resImageBorderWidth: { 
+  resImageBorderWidth: {
     type: "number",
     default: 2,
   },
@@ -545,7 +546,7 @@ const attributes = {
   },
   ctaTextFontWeight: {
     type: "number",
-  },  
+  },
   ctaTextLineHeight: {
     type: "number",
   },
@@ -682,6 +683,29 @@ const attributes = {
   zIndex: {
     type: "number",
     default: 0,
-  }
+  },
+  animationName: {
+    type: "string",
+    default: "none",
+  },
+  animationDirection: {
+    type: "string",
+    default: 'Left',
+  },
+  animationRepeat: {
+    type: "string",
+    default: "once",
+  },
+  animationDuration: {
+    type: "number",
+    default: 1000,
+  },
+  animationDelay: {
+    type: "number",
+    default: 1000,
+  },
+  animationCurve: {
+    type: "string",
+  },
 };
 export default attributes;

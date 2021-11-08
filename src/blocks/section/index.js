@@ -38,7 +38,13 @@ registerBlockType("responsive-block-editor-addons/section", {
     anchor: true,
   },
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            width: 900,
+            blockTopPadding: 30,
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

@@ -21,15 +21,15 @@ const ITEM_COUNT = 2;
 const cardsArray = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-  cardsArray.push({
-    title: "Title",
-    subtitle: "Subtitle",
-    button: "Button" + i,
-    buttonURL: "",
-    image: "",
-    content:
-      "Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.",
-  });
+    cardsArray.push({
+        title: __("Title", "responsive-block-editor-addons"),
+        subtitle: __("Subtitle", "responsive-block-editor-addons"),
+        button: __("Button" + i, "responsive-block-editor-addons"),
+        buttonURL: "",
+        image: "",
+        content:
+            __("Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.", "responsive-block-editor-addons"),
+    });
 }
 
 // Register block
@@ -49,7 +49,7 @@ registerBlockType("responsive-block-editor-addons/card", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+    
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

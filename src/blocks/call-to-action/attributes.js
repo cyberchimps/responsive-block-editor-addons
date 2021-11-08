@@ -4,7 +4,7 @@ const attributes = {
   },
   buttonText: {
     type: "string",
-    default: "Button text...",
+    default: "Button text",
   },
   buttonTextFontFamily: {
     type: "string"
@@ -347,7 +347,7 @@ const attributes = {
     type: "string",
     default: "no-repeat",
   },
-  backgroundImageize: {
+  backgroundImageSize: {
     type: "string",
     default: "cover",
   },

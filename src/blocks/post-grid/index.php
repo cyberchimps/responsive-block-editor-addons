@@ -735,10 +735,10 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'default' => 20,
 				),
 				'columnGapTablet'             => array(
-					'type'    => 'number',
+					'type' => 'number',
 				),
 				'columnGapMobile'             => array(
-					'type'    => 'number',
+					'type' => 'number',
 				),
 				'rowGap'                      => array(
 					'type'    => 'number',
@@ -828,7 +828,29 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'string',
 					'default' => 'outset',
 				),
-
+				'imageWidth'                  => array(
+					'type' => 'number',
+				),
+				'imageWidthTablet'            => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'imageWidthMobile'            => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'imageHeight'                 => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'imageHeightTablet'           => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'imageHeightMobile'           => array(
+					'type'    => 'number',
+					'default' => '',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts',
 		)

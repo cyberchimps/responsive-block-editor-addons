@@ -663,7 +663,7 @@ return array(
 			esc_html__( 'Services', 'responsive-block-editor-addons' ),
 		),
 		'keywords'   => array(
-			esc_html__( 'Services', 'responsive-block-editor-addons' ),
+			esc_html__( 'Menu', 'responsive-block-editor-addons' ),
 			esc_html__( 'Services Restaurant', 'responsive-block-editor-addons' ),
 			esc_html__( 'Restaurant', 'responsive-block-editor-addons' ),
 			esc_html__( 'Food', 'responsive-block-editor-addons' ),

@@ -68,7 +68,44 @@ registerBlockType("responsive-block-editor-addons/content-timeline", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
+    example: {
+        attributes: {
+            /* translators: example content timeline */
+            timelineItems:[
+                {
+                    time_heading: __("Timeline Heading 1", "responsive-block-editor-addons"),
+                    time_desc: __(
+                        "This is Timeline description, you can change me anytime click here ", "responsive-block-editor-addons"
+                    ),
+                },
+                {
+                    time_heading: __("Timeline Heading 2", "responsive-block-editor-addons"),
+                    time_desc: __(
+                        "This is Timeline description, you can change me anytime click here ", "responsive-block-editor-addons"
+                    ),
+                },
+                {
+                    time_heading: __("Timeline Heading 3", "responsive-block-editor-addons"),
+                    time_desc: __(
+                        "This is Timeline description, you can change me anytime click here ", "responsive-block-editor-addons"
+                    ),
+                },
+                {
+                    time_heading: __("Timeline Heading 4", "responsive-block-editor-addons"),
+                    time_desc: __(
+                        "This is Timeline description, you can change me anytime click here ", "responsive-block-editor-addons"
+                    ),
+                },
+                {
+                    time_heading: __("Timeline Heading 5", "responsive-block-editor-addons"),
+                    time_desc: __(
+                        "This is Timeline description, you can change me anytime click here ", "responsive-block-editor-addons"
+                    ),
+                },
 
+            ],
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

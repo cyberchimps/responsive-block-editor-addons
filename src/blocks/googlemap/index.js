@@ -37,7 +37,13 @@ registerBlockType("responsive-block-editor-addons/googlemap", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            address: "India",
+            pinned: true
+        },
+    },
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_map_zoom: {
       title: __("Zoom", "responsive-block-editor-addons"),

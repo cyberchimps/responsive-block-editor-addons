@@ -34,6 +34,7 @@ registerBlockType("responsive-block-editor-addons/buttons", {
     __("multi buttons", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
   ],
+    
   attributes: attributes,
 
   responsive_block_editor_addons_settings_data: {

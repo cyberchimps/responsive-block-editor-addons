@@ -34,7 +34,12 @@ registerBlockType("responsive-block-editor-addons/blockquote", {
     __("blockquote", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
   ],
-  attributes: attributes,
+    example: {
+        attributes: {
+            quoteContent: __( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-addons-for-gutenberg' ),
+        },
+    },
+    attributes: attributes,
 
   /* Render the block in the editor. */
   edit: (props) => {

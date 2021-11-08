@@ -72,7 +72,7 @@ return array(
 	),
 	'keywords'   => array(
 		esc_html__( 'Business', 'responsive-block-editor-addons' ),
-		esc_html__( 'Services', 'responsive-block-editor-addons' ),
+		esc_html__( 'Portfolio', 'responsive-block-editor-addons' ),
 		esc_html__( 'Photography', 'responsive-block-editor-addons' ),
 		esc_html__( 'Creative', 'responsive-block-editor-addons' ),
 		esc_html__( 'Design', 'responsive-block-editor-addons' ),

@@ -337,9 +337,6 @@ export default class Inspector extends Component {
         contentLineHeight,
         contentFontWeight,
         contentFontSize,
-        contenttopSpace,
-        contenttopSpaceMobile,
-        contenttopSpaceTablet,
         blockbotmargin,
         blockbotmarginMobile,
         blockbotmarginTablet,
@@ -549,11 +546,11 @@ export default class Inspector extends Component {
                     {
                       times(incsubtitle, (n) => {
                         clonecardsArray.push({
-                          title: "Title ",
-                          subtitle: "Subtitle",
+                          title: __("Title ", "responsive-block-editor-addons"),
+                          subtitle: __("Subtitle", "responsive-block-editor-addons"),
                           content:
-                            "Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.",
-                          button: "Button" + newCount,
+                            __("Description for this block. Use this space for describing your block. Any text will do. Description for this block. You can use this space for describing your block.", "responsive-block-editor-addons"),
+                          button: __("Button", "responsive-block-editor-addons") + newCount,
                         });
                       });
                     }
@@ -921,9 +918,35 @@ export default class Inspector extends Component {
                 />
               </PanelBody>
             )}
-
             <PanelBody
-              title={__("Column Background", "responsive-block-editor-addons")}
+              title={__("Button Settings", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ButtonSettingsControl
+                {...this.props}
+                showMarginControls={true}
+                showBackColorOpacity={true}
+                showGradientHover={false}
+                showTextOpacity={true}
+              />
+              <SelectControl
+                label={__("Button Size", "responsive-block-editor-addons")}
+                value={buttonSize}
+                options={buttonSizeOptions.map(({ value, label }) => ({
+                  value,
+                  label,
+                }))}
+                onChange={(value) => {
+                  this.props.setAttributes({
+                    buttonSize: value,
+                  });
+                }}
+              />
+            </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+          <PanelBody
+              title={__("Background", "responsive-block-editor-addons")}
               initialOpen={false}
             >
               <SelectControl
@@ -980,33 +1003,6 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
-            <PanelBody
-              title={__("Button Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ButtonSettingsControl
-                {...this.props}
-                showMarginControls={true}
-                showBackColorOpacity={true}
-                showGradientHover={false}
-                showTextOpacity={true}
-              />
-              <SelectControl
-                label={__("Button Size", "responsive-block-editor-addons")}
-                value={buttonSize}
-                options={buttonSizeOptions.map(({ value, label }) => ({
-                  value,
-                  label,
-                }))}
-                onChange={(value) => {
-                  this.props.setAttributes({
-                    buttonSize: value,
-                  });
-                }}
-              />
-            </PanelBody>
-          </InspectorTab>
-          <InspectorTab key={"style"}>
             <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -1141,17 +1137,6 @@ export default class Inspector extends Component {
                   desktop: subtitleSpace,
                   tablet: subtitleSpaceTablet,
                   mobile: subtitleSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Content Top Margin"}
-                attrNameTemplate="contenttopSpace%s"
-                values={{
-                  desktop: contenttopSpace,
-                  tablet: contenttopSpaceTablet,
-                  mobile: contenttopSpaceMobile,
                 }}
                 setAttributes={setAttributes}
                 {...this.props}

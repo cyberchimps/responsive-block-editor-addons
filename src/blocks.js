@@ -34,6 +34,7 @@ import "./blocks/testimonial-slider/index.js";
 import "./blocks/spacer/index.js";
 import "./blocks/count-down/index.js";
 import "./blocks/table-of-contents/index.js";
+import "./blocks/feature-grid/index.js";
 //Not to make available for users yet
 // import "./blocks/how-to/index.js";
 import "./blocks/anchor/index.js";
@@ -46,6 +47,7 @@ import "./blocks/taxonomy-list/index.js";
 import "./blocks/wp-search/index.js";
 import "./blocks/inline-notice/index.js";
 import "./blocks/instagram/index.js";
+import "./blocks/advanced-text/index.js";
 import "./blocks/image-hotspot/index.js";
 
 //do not move

@@ -38,7 +38,12 @@ registerBlockType("responsive-block-editor-addons/table-of-contents", {
   ],
 
   attributes: attributes,
-
+    example: {
+        attributes: {
+            /* translators: example attributes */
+            headingTitle: __("Table Of Contents", 'responsive-block-editor-addons' ),
+        },
+    },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

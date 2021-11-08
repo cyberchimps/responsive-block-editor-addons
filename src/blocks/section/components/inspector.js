@@ -359,6 +359,95 @@ export default class Inspector extends Component {
                 }
               />
             </PanelBody>
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+				<ResponsivePaddingControl
+					attrNameTemplate="block%s"
+					values={{
+						desktopTop: topPadding !== 999 && blockTopPadding === 10 ? topPadding : blockTopPadding,
+						desktopBottom: bottomPadding !== 999 && blockBottomPadding === 10 ? bottomPadding : blockBottomPadding,
+						desktopLeft: leftPadding !== 999 && blockLeftPadding === 10 ? leftPadding : blockLeftPadding,
+						desktopRight: rightPadding !== 999 && blockRightPadding === 10 ? rightPadding : blockRightPadding,
+
+						tabletTop: topPaddingTablet !== 999 && !blockTopPaddingTablet ? topPaddingTablet : blockTopPaddingTablet,
+						tabletBottom: bottomPaddingTablet !== 999 && !blockBottomPaddingTablet ? bottomPaddingTablet : blockBottomPaddingTablet,
+						tabletLeft: leftPaddingTablet !== 999 && !blockLeftPaddingTablet ? leftPaddingTablet : blockLeftPaddingTablet,
+						tabletRight: rightPaddingTablet !== 999 && !blockRightPaddingTablet ? rightPaddingTablet : blockRightPaddingTablet,
+
+						mobileTop: topPaddingMobile !== 999 && !blockTopPaddingMobile ? topPaddingMobile : blockTopPaddingMobile,
+						mobileBottom: bottomPaddingMobile !== 999 && !blockBottomPaddingMobile ? bottomPaddingMobile : blockBottomPaddingMobile,
+						mobileLeft: leftPaddingMobile !== 999 && !blockLeftPaddingMobile ? leftPaddingMobile : blockLeftPaddingMobile,
+						mobileRight: rightPaddingMobile !== 999 && !blockRightPaddingMobile ? rightPaddingMobile : blockRightPaddingMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<hr />
+				<ResponsiveMarginControl
+					attrNameTemplate="block%s"
+					values={{
+						desktopTop: topMargin !== 999 && blockTopMargin === 0 ? topMargin : blockTopMargin,
+						desktopBottom: bottomMargin !== 999 && blockBottomMargin === 0 ? bottomMargin : blockBottomMargin,
+						desktopLeft: leftMargin !== 999 && blockLeftMargin === 0 ? leftMargin : blockLeftMargin,
+						desktopRight: rightMargin !== 999 && blockRightMargin === 0 ? rightMargin : blockRightMargin,
+
+						tabletTop: topMarginTablet !== 999 && !blockTopMarginTablet ? topMarginTablet : blockTopMarginTablet,
+						tabletBottom: bottomMarginTablet !== 999 && !blockBottomMarginTablet ? bottomMarginTablet : blockBottomMarginTablet,
+						tabletLeft: leftMarginTablet !== 999 && !blockLeftMarginTablet ? leftMarginTablet : blockLeftMarginTablet,
+						tabletRight: rightMarginTablet !== 999 && !blockRightMarginTablet ? rightMarginTablet : blockRightMarginTablet,
+
+						mobileTop: topMarginMobile !== 999 && blockTopMarginMobile === "" ? topMarginMobile : blockTopMarginMobile,
+						mobileBottom: bottomMarginMobile !== 999 && blockBottomMarginMobile === "" ? bottomMarginMobile : blockBottomMarginMobile,
+						mobileLeft: leftMarginMobile !== 999 && blockLeftMarginMobile === "" ? leftMarginMobile : blockLeftMarginMobile,
+						mobileRight: rightMarginMobile !== 999 && blockRightMarginMobile === "" ? rightMarginMobile : blockRightMarginMobile,
+					}}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+            </PanelBody>
+
+            <PanelBody
+              title={__("Border", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values={{
+                        radius: blockBorderRadius,
+                        style: blockBorderStyle,
+                        width: blockBorderWidth,
+                        color: blockBorderColor,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
+              <BoxShadowControl
+                setAttributes={setAttributes}
+                label={__("Box Shadow", "responsive-block-editor-addons")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
+                boxShadowHOffset={{
+                  value: boxShadowHOffset,
+                  label: __("Horizontal", "responsive-block-editor-addons"),
+                }}
+                boxShadowVOffset={{
+                  value: boxShadowVOffset,
+                  label: __("Vertical", "responsive-block-editor-addons"),
+                }}
+                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
+                boxShadowSpread={{
+                  value: boxShadowSpread,
+                  label: __("Spread", "responsive-block-editor-addons"),
+                }}
+                boxShadowPosition={{
+                  value: boxShadowPosition,
+                  label: __("Position", "responsive-block-editor-addons"),
+                }}
+              />
+            </PanelBody>
             <PanelBody
               title={__("Background", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -780,95 +869,6 @@ export default class Inspector extends Component {
                 min={0}
                 max={100}
                 allowReset
-              />
-            </PanelBody>
-          </InspectorTab>
-          <InspectorTab key={"style"}>
-            <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-				<ResponsivePaddingControl
-					attrNameTemplate="block%s"
-					values={{
-						desktopTop: topPadding !== 999 && blockTopPadding === 10 ? topPadding : blockTopPadding,
-						desktopBottom: bottomPadding !== 999 && blockBottomPadding === 10 ? bottomPadding : blockBottomPadding,
-						desktopLeft: leftPadding !== 999 && blockLeftPadding === 10 ? leftPadding : blockLeftPadding,
-						desktopRight: rightPadding !== 999 && blockRightPadding === 10 ? rightPadding : blockRightPadding,
-
-						tabletTop: topPaddingTablet !== 999 && !blockTopPaddingTablet ? topPaddingTablet : blockTopPaddingTablet,
-						tabletBottom: bottomPaddingTablet !== 999 && !blockBottomPaddingTablet ? bottomPaddingTablet : blockBottomPaddingTablet,
-						tabletLeft: leftPaddingTablet !== 999 && !blockLeftPaddingTablet ? leftPaddingTablet : blockLeftPaddingTablet,
-						tabletRight: rightPaddingTablet !== 999 && !blockRightPaddingTablet ? rightPaddingTablet : blockRightPaddingTablet,
-
-						mobileTop: topPaddingMobile !== 999 && !blockTopPaddingMobile ? topPaddingMobile : blockTopPaddingMobile,
-						mobileBottom: bottomPaddingMobile !== 999 && !blockBottomPaddingMobile ? bottomPaddingMobile : blockBottomPaddingMobile,
-						mobileLeft: leftPaddingMobile !== 999 && !blockLeftPaddingMobile ? leftPaddingMobile : blockLeftPaddingMobile,
-						mobileRight: rightPaddingMobile !== 999 && !blockRightPaddingMobile ? rightPaddingMobile : blockRightPaddingMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<hr />
-				<ResponsiveMarginControl
-					attrNameTemplate="block%s"
-					values={{
-						desktopTop: topMargin !== 999 && blockTopMargin === 0 ? topMargin : blockTopMargin,
-						desktopBottom: bottomMargin !== 999 && blockBottomMargin === 0 ? bottomMargin : blockBottomMargin,
-						desktopLeft: leftMargin !== 999 && blockLeftMargin === 0 ? leftMargin : blockLeftMargin,
-						desktopRight: rightMargin !== 999 && blockRightMargin === 0 ? rightMargin : blockRightMargin,
-
-						tabletTop: topMarginTablet !== 999 && !blockTopMarginTablet ? topMarginTablet : blockTopMarginTablet,
-						tabletBottom: bottomMarginTablet !== 999 && !blockBottomMarginTablet ? bottomMarginTablet : blockBottomMarginTablet,
-						tabletLeft: leftMarginTablet !== 999 && !blockLeftMarginTablet ? leftMarginTablet : blockLeftMarginTablet,
-						tabletRight: rightMarginTablet !== 999 && !blockRightMarginTablet ? rightMarginTablet : blockRightMarginTablet,
-
-						mobileTop: topMarginMobile !== 999 && blockTopMarginMobile === "" ? topMarginMobile : blockTopMarginMobile,
-						mobileBottom: bottomMarginMobile !== 999 && blockBottomMarginMobile === "" ? bottomMarginMobile : blockBottomMarginMobile,
-						mobileLeft: leftMarginMobile !== 999 && blockLeftMarginMobile === "" ? leftMarginMobile : blockLeftMarginMobile,
-						mobileRight: rightMarginMobile !== 999 && blockRightMarginMobile === "" ? rightMarginMobile : blockRightMarginMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-            </PanelBody>
-
-            <PanelBody
-              title={__("Border", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-                <BlockBorderHelperControl
-                    attrNameTemplate="block%s"
-                    values={{
-                        radius: blockBorderRadius,
-                        style: blockBorderStyle,
-                        width: blockBorderWidth,
-                        color: blockBorderColor,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                />
-              <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                boxShadowHOffset={{
-                  value: boxShadowHOffset,
-                  label: __("Horizontal", "responsive-block-editor-addons"),
-                }}
-                boxShadowVOffset={{
-                  value: boxShadowVOffset,
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                }}
-                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
-                boxShadowSpread={{
-                  value: boxShadowSpread,
-                  label: __("Spread", "responsive-block-editor-addons"),
-                }}
-                boxShadowPosition={{
-                  value: boxShadowPosition,
-                  label: __("Position", "responsive-block-editor-addons"),
-                }}
               />
             </PanelBody>
           </InspectorTab>
