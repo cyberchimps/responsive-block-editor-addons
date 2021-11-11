@@ -82,7 +82,7 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
-= 1.5.1 - 10th November 2021 =
+= 1.5.1 - 11th November 2021 =
 * Fix - Advanced Text Block - Layout feature not working properly for single column
 
 = 1.5.0 - 8th November 2021 =
