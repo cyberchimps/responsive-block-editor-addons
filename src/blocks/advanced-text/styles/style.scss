@@ -38,6 +38,16 @@
 }
 
 .responsive-block-editor-addons-layout2 {
+	&.responsive-block-editor-addons-columns-count-1{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-row-gap: 0;
+
+		.responsive-block-editor-addons-text-container {
+			grid-gap: 20px;
+			grid-auto-columns: auto;
+		}
+	}
 	&.responsive-block-editor-addons-columns-count-2{
 		display: grid;
 		grid-template-columns: 1fr 2fr;
@@ -71,6 +81,20 @@
 }
 
 .responsive-block-editor-addons-layout3 {
+	&.responsive-block-editor-addons-columns-count-1{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-row-gap: 0;
+
+		.responsive-block-editor-addons-text-container {
+			grid-gap: 20px;
+			order: 1;
+			grid-auto-columns: auto;
+		}
+		.responsive-block-editor-addons-wrapper {
+			order: 2;
+		}
+	}
 	&.responsive-block-editor-addons-columns-count-2{
 		display: grid;
 		grid-template-columns: 2fr 1fr;
