@@ -661,8 +661,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-post-pagination-wrap' => array(
 					'text-align' => $attr['paginationAlignment'],
-                    'margin-top'     => self::get_css_value( $attr['paginationSpacing'], 'px' ),
-                ),
+					'margin-top' => self::get_css_value( $attr['paginationSpacing'], 'px' ),
+				),
 
 			);
 
