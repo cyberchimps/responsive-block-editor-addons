@@ -705,18 +705,76 @@ export default class Inspector extends Component {
               title={__("Block Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <ResponsiveSpacingControl
-                title={"Max Content Width"}
-                attrNameTemplate="containerWidth%s"
-                values={{
-                  desktop: containerWidth,
-                  tablet: containerWidthTablet,
-                  mobile: containerWidthMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
+              <TabPanel
+      className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+      activeClass="active-tab"
+      tabs={[
+          {
+              name: "desktop",
+              title: <Dashicon icon="desktop" />,
+          className:
+              " responsive-desktop-tab  responsive-responsive-tabs",
+      },
+      {
+          name: "tablet",
+          title: <Dashicon icon="tablet" />,
+          className:
+      " responsive-tablet-tab  responsive-responsive-tabs",
+  },
+      {
+          name: "mobile",
+              title: <Dashicon icon="smartphone" />,
+          className:
+          " responsive-mobile-tab  responsive-responsive-tabs",
+      },
+  ]}
+  >
+      {(tab) => {
+          let tabout;
+
+          if ("mobile" === tab.name) {
+              tabout = (
+                  <Fragment>
+                  <RangeControl
+              label={__("Max Content Width", "responsive-block-editor-addons")}
+              min={0}
+              max={2000}
+              value={containerWidthMobile }
+              onChange={(value) => setAttributes({ containerWidthMobile: value })}
               />
-              <PanelBody
+              </Fragment>
+          );
+          } else if ("tablet" === tab.name) {
+              tabout = (
+                  <Fragment>
+                  <RangeControl
+              label={__("Max Content Width", "responsive-block-editor-addons")}
+              min={0}
+              max={2000}
+              value={containerWidthTablet }
+              onChange={(value) => setAttributes({ containerWidthTablet: value })}
+              />
+              </Fragment>
+          );
+          } else {
+              tabout = (
+                  <Fragment>
+                  <RangeControl
+              label={__("Max Content Width", "responsive-block-editor-addons")}
+              min={0}
+              max={2000}
+              value={containerWidth }
+              onChange={(value) => setAttributes({ containerWidth: value })}
+              />
+              </Fragment>
+          );
+          }
+
+          return <div>{tabout}</div>;
+      }}
+  </TabPanel>
+
+      <PanelBody
                 title={__("Padding", "responsive-block-editor-addons")}
                 initialOpen={false}
               >

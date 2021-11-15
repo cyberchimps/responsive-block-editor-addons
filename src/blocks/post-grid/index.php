@@ -718,6 +718,18 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'    => 'number',
 					'default' => '',
 				),
+				'imageBottomSpacing'          => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'imageBottomSpacingTablet'          => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'imageBottomSpacingMobile'          => array(
+					'type'    => 'number',
+					'default' => '',
+				),
 				'titleBottomSpacing'          => array(
 					'type'    => 'number',
 					'default' => '',
