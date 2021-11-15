@@ -42,6 +42,9 @@ function EditorStyles(props) {
     mobileContentPadding, //For compatibility with v1.3.2
     contentPaddingTablet,
     layout,
+      imageBottomSpacing,
+      imageBottomSpacingTablet,
+      imageBottomSpacingMobile,
     titleBottomSpacing,
     titleBottomSpacingMobile,
     titleBottomSpacingTablet,
@@ -181,7 +184,7 @@ function EditorStyles(props) {
       "border-color": blockBorderColor,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
-      
+
       height: varequalHeight,
       "background-size": "cover",
       "box-shadow":
@@ -229,6 +232,7 @@ function EditorStyles(props) {
       "border-radius": generateCSSUnit(imageBorderRadius, "px"),
       "object-fit": "cover",
       "height": "100%",
+        "margin-bottom": generateCSSUnit(imageBottomSpacing, "px"),
     },
     " .responsive-block-editor-addons-block-post-grid-text": {
       "text-align": textAlignment,
@@ -315,7 +319,10 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-    " .responsive-block-editor-addons-block-post-grid-title": {
+      " .responsive-block-editor-addons-block-post-grid-image img": {
+          "margin-bottom": generateCSSUnit(imageBottomSpacingMobile, "px"),
+      },
+      " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
 	  "margin-bottom": generateCSSUnit(titleBottomSpacingMobile, "px") + " !important",
     },
@@ -357,7 +364,10 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
-    " .responsive-block-editor-addons-block-post-grid-title": {
+      " .responsive-block-editor-addons-block-post-grid-image img": {
+          "margin-bottom": generateCSSUnit(imageBottomSpacingTablet, "px"),
+      },
+      " .responsive-block-editor-addons-block-post-grid-title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
 	  "margin-bottom": generateCSSUnit(titleBottomSpacingTablet, "px") + " !important",
     },

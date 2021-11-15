@@ -1119,6 +1119,17 @@ export default class Inspector extends Component {
                 {...this.props}
               />
               <ResponsiveSpacingControl
+                title={"Image Bottom Spacing"}
+                attrNameTemplate="imageBottomSpacing%s"
+                values={{
+                  desktop: attributes.imageBottomSpacing,
+                  tablet: attributes.imageBottomSpacingTablet,
+                  mobile: attributes.imageBottomSpacingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
                 title={"Title Bottom Spacing"}
                 attrNameTemplate="titleBottomSpacing%s"
                 values={{
