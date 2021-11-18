@@ -28,7 +28,7 @@ registerBlockType("responsive-block-editor-addons/anchor", {
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.anchor,
-  category: "responsive_b lock_editor_addons",
+  category: "responsive_block_editor_addons",
   keywords: [
     __("anchor", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
