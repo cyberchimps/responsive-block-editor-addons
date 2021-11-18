@@ -468,17 +468,6 @@ export default class Inspector extends Component {
                 }
               />
               {attributes.postLayout === 'list' && [
-                <ResponsiveSpacingControl
-                  title={"Image Height"}
-                  attrNameTemplate="imageHeight%s"
-                  values={{
-                    desktop: attributes.imageHeight,
-                    tablet: attributes.imageHeightTablet,
-                    mobile: attributes.imageHeightMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />,
                 <TabPanel
                   className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                   activeClass="active-tab"
@@ -548,17 +537,6 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
                   ,
-                <ResponsiveSpacingControl
-                  title={"Image Width"}
-                  attrNameTemplate="imageWidth%s"
-                  values={{
-                    desktop: attributes.imageWidth,
-                    tablet: attributes.imageWidthTablet,
-                    mobile: attributes.imageWidthMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />,
                 <TabPanel
                   className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                   activeClass="active-tab"
