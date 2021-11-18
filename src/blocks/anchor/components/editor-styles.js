@@ -17,14 +17,14 @@
      },
     " .responsive-block-editor-addons-anchor-border-left": {
       "border-top": `${generateCSSUnit(1, "px")} solid black `,
-      "margin": "4px 6px 0 0",
+      "margin": "8px 6px 0 0",
     },
     " .responsive-block-editor-addons-anchor-border-right": {
       "border-top": `${generateCSSUnit(1, "px")} solid black `,
-      "margin": "4px 0 0 6px",
+      "margin": "8px 0 0 6px",
     },
     " svg": {
-      "height": generateCSSUnit(16, "px"),
+      "height": generateCSSUnit(20, "px"),
       "margin": "0",
       "padding": "0",
     }
