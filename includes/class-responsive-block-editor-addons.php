@@ -336,7 +336,7 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function responsive_block_editor_addons_admin_menu() {
 		// Create Sub Menu with parent slug null .
-		add_submenu_page(n
+		add_submenu_page(
 			'',
 			__( 'Getting Started', 'responsive-addons' ),
 			__( 'Getting Started', 'responsive-addons' ),
