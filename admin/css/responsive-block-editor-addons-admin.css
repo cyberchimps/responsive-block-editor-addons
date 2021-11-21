@@ -709,6 +709,30 @@ p .responsive-block-editor-addons-info {
     vertical-align: middle;
 }
 
+.responsive-block-editor-addons-subtitle-steps {
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
+.responsive-block-editor-addons-welcome-steps-left a {
+    text-decoration: none;
+    color: inherit;
+}
+.responsive-block-editor-addons-subtitle-steps-content {
+    font-size: 16px;
+}
+
+.responsive-block-editor-addons-welcome-steps-left {
+    /*float: left;*/
+    text-align: left;
+}
+
+.responsive-block-editor-addons-welcome-steps-right {
+    /*float: right;*/
+    text-align: right;
+}
+
 @media (max-width: 768px) {
     .rbea-review-notice.updated {
         padding-bottom: 2% !important;
