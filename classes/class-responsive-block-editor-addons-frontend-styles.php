@@ -633,6 +633,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-radius' => self::get_css_value( $attr['imageBorderRadius'], 'px' ),
 					'object-fit'    => 'cover',
 					'height'        => '100%',
+					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacing'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-image a' => array(
 					'display' => 'block',
@@ -679,6 +680,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$tablet_content_padding = $attr['contentPaddingTablet'];
 			}
 			$mobile_selectors = array(
+				' .responsive-block-editor-addons-block-post-grid-image img' => array(
+					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingMobile'], 'px' ),
+				),
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
 					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingMobile'], 'px' ),
@@ -712,6 +716,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' .responsive-block-editor-addons-block-post-grid-image img' => array(
+					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingTablet'], 'px' ),
+				),
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
 					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingTablet'], 'px' ),
@@ -1199,6 +1206,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'excerptTextTransform'        => '',
 				'excerptBottomSpacing'        => '',
 				'metaBottomSpacing'           => '',
+				'imageBottomSpacing'          => '',
+				'imageBottomSpacingMobile'          => '',
+				'imageBottomSpacingTablet'          => '',
 				'titleBottomSpacing'          => '',
 				'columnGap'                   => 20,
 				'excerptBottomSpacingMobile'  => '',
