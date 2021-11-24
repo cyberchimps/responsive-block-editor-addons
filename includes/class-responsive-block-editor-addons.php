@@ -370,7 +370,12 @@ class Responsive_Block_Editor_Addons {
         $baseurl = '';
         if ( isset( $_SERVER['PHP_SELF'] ) ) {
             $baseurl = esc_url_raw( wp_unslash( $_SERVER['PHP_SELF'] ) );
-            $baseurl = substr($baseurl,0,strpos($baseurl,'admin.php',30));
+            if(strpos($baseurl,'admin.php',30)) {
+                $baseurl = substr($baseurl, 0, strpos($baseurl, 'admin.php', 30));
+            }
+            else {
+                $baseurl = '';
+            }
         }
 		?>
 		<div class="responsive-block-editor-addons-admin-page responsive-block-editor-addons-welcome">
