@@ -350,7 +350,7 @@ class Responsive_Block_Editor_Addons {
 		add_submenu_page(
 			'responsive_block_editor_addons',
 			__( 'Getting Started', 'responsive-block-editor-addons' ),
-            '<span class="fs-submenu-item fs-sub"></span>' .__( 'Getting Started', 'responsive-block-editor-addons' ),
+            __( 'Getting Started', 'responsive-block-editor-addons' ),
 			'manage_options',
 			'responsive_block_editor_addons',
 			array( $this, 'responsive_block_editor_addons_getting_started' ),
