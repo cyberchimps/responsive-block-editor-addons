@@ -226,7 +226,7 @@ p .responsive-block-editor-addons-info {
 
 .responsive-block-editor-addons-welcome-block-inner h3 {
     color: #393f4c;
-    font-size: 24px;
+    font-size: 26px;
 	font-weight: 500;
     margin: 0 0 20px;
     line-height: 1.4;
@@ -709,9 +709,99 @@ p .responsive-block-editor-addons-info {
     vertical-align: middle;
 }
 
+.responsive-block-editor-addons-subtitle-steps {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.responsive-block-editor-addons-welcome-steps-left a {
+    text-decoration: none;
+    color: inherit;
+}
+.responsive-block-editor-addons-subtitle-steps-content {
+    font-size: 16px;
+}
+
+.responsive-block-editor-addons-welcome-steps-left {
+    /*float: left;*/
+    text-align: left;
+}
+
+.responsive-block-editor-addons-welcome-steps-right {
+    /*float: right;*/
+    text-align: right;
+}
+
 @media (max-width: 768px) {
     .rbea-review-notice.updated {
         padding-bottom: 2% !important;
     }
 }
 
+.responsive-block-editor-addons-help-section{
+    display:flex;
+    justify-content: space-between;
+}
+
+.responsive-block-editor-addons-help-card{
+    flex: 50%;
+    margin: 20px 40px;
+}
+
+.responsive-block-editor-addons-help-card-icon{
+    background-color: #FFFFFF;
+}
+
+.responsive-block-editor-addons-help-card-icon .responsive-block-editor-addons-help-img{
+    width: 80px;
+}
+
+.responsive-block-editor-addons-help-card-description .responsive-block-editor-addons-help-card-heading{
+    margin:0;
+    font-size: 18px;
+}
+
+.responsive-block-editor-addons-help-card-description .responsive-block-editor-addons-help-card-summary{
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+
+.responsive-block-editor-addons-help-card-link {
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+.responsive-block-editor-addons-help-card-link a:active, a:focus {
+    outline: 0;
+    border: none;
+    box-shadow: none;
+    -moz-outline-style: none;
+}
+
+.responsive-block-editor-addons-welcome-block-inner h3.responsive-block-editor-addons-title {
+    margin-bottom: 80px;
+}
+
+.responsive-block-editor-addons-welcome-steps-left img, .responsive-block-editor-addons-welcome-steps-right img {
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 20px #bbb;
+    width: 60%;
+}
+
+.responsive-block-editor-addons-welcome-block-inner h3.responsive-block-editor-addons-help-section-title {
+    margin-top: 90px;
+}
+
+.responsive-block-editor-addons-welcome-steps-right.last img {
+    width: 80%;
+}
+
+.responsive-block-editor-addons-welcome-block.last {
+    padding: 25px 0;
+    margin: 0;
+}
