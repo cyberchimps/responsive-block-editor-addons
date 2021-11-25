@@ -1532,8 +1532,8 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'apiKey'       => '',
 			'zoom'         => 12,
 			'height'       => 400,
-			'heightTablet' => 400,
-			'heightMobile' => 400,
+			'heightTablet' => '',
+			'heightMobile' => '',
 			'pinned'       => false,
 		);
 		$values          = self::$rbea_frontend_styles->get_responsive_block_googlemap_default_attributes();

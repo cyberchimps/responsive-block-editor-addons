@@ -4369,30 +4369,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors        = array(
 				' '       => array(
-					'max-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
+					'max-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : '400px',
 				),
 				' iframe' => array(
 					'width'      => '100%',
-					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
+					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : '400px',
 				),
 			);
 			$mobile_selectors = array(
                 ' '       => array(
-                    'max-height' => $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : 400 + 'px',
+                    'max-height' => '' !== $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
                 ),
                 ' iframe' => array(
                     'width'      => '100%',
-                    'min-height' => $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : 400 + 'px',
+                    'min-height' => '' !== $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
                 ),
             );
 
 			$tablet_selectors = array(
                 ' '       => array(
-                    'max-height' => $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : 400 + 'px',
+                    'max-height' => '' !== $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
                 ),
                 ' iframe' => array(
                     'width'      => '100%',
-                    'min-height' => $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : 400 + 'px',
+                    'min-height' => '' !== $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
                 ),
             );
 
@@ -4419,8 +4419,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'apiKey'  => '',
 				'zoom'    => 12,
 				'height'  => 400,
-				'heightTablet'  => 400,
-				'heightMobile'  => 400,
+				'heightTablet'  => '',
+				'heightMobile'  => '',
 				'pinned'  => false,
 			);
 		}
