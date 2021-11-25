@@ -4419,8 +4419,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'apiKey'  => '',
 				'zoom'    => 12,
 				'height'  => 400,
-				'heightTablet'  => '',
-				'heightMobile'  => '',
+				'heightTablet'  => 400,
+				'heightMobile'  => 400,
 				'pinned'  => false,
 			);
 		}
