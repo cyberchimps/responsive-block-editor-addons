@@ -4376,9 +4376,25 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
 				),
 			);
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+                ' '       => array(
+                    'max-height' => $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : 400 + 'px',
+                ),
+                ' iframe' => array(
+                    'width'      => '100%',
+                    'min-height' => $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : 400 + 'px',
+                ),
+            );
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+                ' '       => array(
+                    'max-height' => $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : 400 + 'px',
+                ),
+                ' iframe' => array(
+                    'width'      => '100%',
+                    'min-height' => $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : 400 + 'px',
+                ),
+            );
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -4403,6 +4419,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'apiKey'  => '',
 				'zoom'    => 12,
 				'height'  => 400,
+				'heightTablet'  => '',
+				'heightMobile'  => '',
 				'pinned'  => false,
 			);
 		}
