@@ -370,7 +370,7 @@ class Responsive_Block_Editor_Addons {
         $baseurl = '';
         if ( isset( $_SERVER['PHP_SELF'] ) ) {
             $baseurl = esc_url_raw( wp_unslash( $_SERVER['PHP_SELF'] ) );
-            if(strpos($baseurl,'admin.php',30)) {
+            if(strpos($baseurl,'admin.php',3)) {
                 $baseurl = substr($baseurl, 0, strpos($baseurl, 'admin.php', 30));
             }
             else {
