@@ -370,12 +370,7 @@ class Responsive_Block_Editor_Addons {
         $baseurl = '';
         if ( isset( $_SERVER['PHP_SELF'] ) ) {
             $baseurl = esc_url_raw( wp_unslash( $_SERVER['PHP_SELF'] ) );
-            if(strpos($baseurl,'admin.php',3)) {
-                $baseurl = substr($baseurl, 0, strpos($baseurl, 'admin.php', 30));
-            }
-            else {
-                $baseurl = '';
-            }
+            $baseurl = substr($baseurl, 0, strpos($baseurl, 'admin.php', 3));
         }
 		?>
 		<div class="responsive-block-editor-addons-admin-page responsive-block-editor-addons-welcome">
@@ -482,7 +477,7 @@ class Responsive_Block_Editor_Addons {
                                     </div>
                                 </div>
                                 <p class="responsive-block-editor-addons-help-card-link">
-                                    <a target="_blank" href="https://docs.cyberchimps.com/responsive-gutenberg-addons/">Read more &gt;&gt;</a>
+                                    <a target="_blank" href="https://docs.cyberchimps.com/responsive-gutenberg-addons/?utm_source=plugin&utm_medium=gettingstarted&utm_campaign=help">Read more &gt;&gt;</a>
                                 </p>
                             </div>
 
