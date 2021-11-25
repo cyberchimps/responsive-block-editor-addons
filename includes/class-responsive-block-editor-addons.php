@@ -393,10 +393,9 @@ class Responsive_Block_Editor_Addons {
 								$name_and_current_version = sprintf( __( 'Responsive Block Editor Addons %s', 'responsive-block-editor-addons' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER );
 								echo esc_html( $name_and_current_version );
 							?>
-							<a href="https://cyberchimps.com/blocks/"><?php echo esc_html__( 'View Demo', 'responsive-block-editor-addons' ); ?></a>
 						</p>
 						<p class="responsive-block-editor-addons-subtitle">
-							<?php echo esc_html__( 'Thank you for choosing Responsive Gutenberg Block Editor - The Most Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' ); ?>
+							<?php echo esc_html__( 'Thank you for choosing Responsive Gutenberg Blocks Library - The Most Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' ); ?>
 						</p>
 					</div>
 					<div class="responsive-block-editor-addons-welcome-video">
@@ -404,13 +403,16 @@ class Responsive_Block_Editor_Addons {
 						<!---->
 						</div>
 
-					<div class="responsive-block-editor-addons-welcome-block-inner full">
+
+				</div>
+				<div class="responsive-block-editor-addons-welcome-block last">
+                    <div class="responsive-block-editor-addons-welcome-block-inner">
                         <h3 class="responsive-block-editor-addons-title"><?php echo esc_html__( 'Here are some steps to help you start off', 'responsive-block-editor-addons' ); ?></h3>
                         <div class="responsive-block-editor-addons-welcome-steps-left">
                             <a href="<?php echo esc_url( $baseurl ); ?>post-new.php?post_type=page">
                                 <p class="responsive-block-editor-addons-subtitle-steps">
                                     <?php echo esc_html__( 'Step 1 - Add a new page or post', 'responsive-block-editor-addons' ); ?>
-                                 </p>
+                                </p>
                                 <img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-1.jpg' ); ?> ">
                             </a>
                         </div>
@@ -447,6 +449,11 @@ class Responsive_Block_Editor_Addons {
                             </p>
                             <img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-4.jpg' ); ?> ">
                         </div>
+
+                    </div>
+				</div>
+				<div class="responsive-block-editor-addons-welcome-block responsive-block-editor-addons-help-section">
+					<div class="responsive-block-editor-addons-welcome-block-inner">
                         <h3 class="responsive-block-editor-addons-help-section-title"><?php echo esc_html__( 'Help Resources', 'responsive-block-editor-addons' ); ?></h3>
 
                         <div display="flex" justifycontent="space-between" class="responsive-block-editor-addons-help-section">
@@ -510,8 +517,8 @@ class Responsive_Block_Editor_Addons {
                                 </p>
                             </div>
                         </div>
-					</div>
-				</div>
+                    </div>
+                </div>
 				<div class="responsive-block-editor-addons-welcome-block last">
 					<div class="responsive-block-editor-addons-welcome-block-inner">
 						<h3 class="responsive-block-editor-addons-title"><?php echo esc_html__( 'Ready to make your own website?', 'responsive-block-editor-addons' ); ?></h3>
@@ -539,32 +546,32 @@ class Responsive_Block_Editor_Addons {
 				<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'See Quick Links ', 'responsive-block-editor-addons' ); ?></span>
 			</button>
 			<div class="responsive-block-editor-addons-quick-links-menu">
-				<a href="<?php echo esc_url( 'https://cyberchimps.com/contact/' ); ?>" data-index="0" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-suggest responsive-block-editor-addons-show responsive-block-editor-addons-staggered-fade-enter-to">
+				<a href="<?php echo esc_url( 'https://cyberchimps.com/contact/?utm_source=plugin&utm_medium=quicklinks&utm_campaign=link' ); ?>" data-index="0" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-suggest responsive-block-editor-addons-show responsive-block-editor-addons-staggered-fade-enter-to">
 					<span class="lightbulb">
 						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-1.png' ); ?> ">
 					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Suggest a Feature', 'responsive-block-editor-addons' ); ?>
+					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Request Feature', 'responsive-block-editor-addons' ); ?>
 					</span>
 				</a>
-				<a href="<?php echo esc_url( 'https://www.facebook.com/groups/responsive.theme' ); ?>" data-index="1" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-community responsive-block-editor-addons-show">
-					<span class="wpbeginner">
-						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-2.png' ); ?> ">
-					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Join Our Community', 'responsive-block-editor-addons' ); ?>
-					</span>
-				</a>
-				<a href="<?php echo esc_url( 'https://cyberchimps.com/my-account/' ); ?>" data-index="2" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-support responsive-block-editor-addons-show">
+				<a href="<?php echo esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/' ); ?>" data-index="2" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-support responsive-block-editor-addons-show">
 					<span class="life-ring">
 						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-3.png' ); ?> ">
 					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Support &amp; Docs', 'responsive-block-editor-addons' ); ?>
+					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Support', 'responsive-block-editor-addons' ); ?>
 					</span>
 				</a>
-				<a href="<?php echo esc_url( 'https://cyberchimps.com/responsive-go-pro/' ); ?>" data-index="3" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-upgrade responsive-block-editor-addons-show">
+                <a href="<?php echo esc_url( 'https://www.facebook.com/groups/responsive.theme' ); ?>" data-index="1" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-community responsive-block-editor-addons-show">
+					<span class="wpbeginner">
+						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-2.png' ); ?> ">
+					</span>
+                    <span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Community', 'responsive-block-editor-addons' ); ?>
+					</span>
+                </a>
+                <a href="<?php echo esc_url( 'https://docs.cyberchimps.com/responsive-gutenberg-addons/?utm_source=plugin&utm_medium=quicklinks&utm_campaign=link' ); ?>" data-index="3" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-documentation responsive-block-editor-addons-show">
 					<span class="star">
 						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-4.png' ); ?> ">
 					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Upgrade to Pro »', 'responsive-block-editor-addons' ); ?>
+					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Documentation', 'responsive-block-editor-addons' ); ?>
 					</span>
 				</a>
 			</div>
