@@ -183,7 +183,6 @@ p .responsive-block-editor-addons-info {
 
 .responsive-block-editor-addons-welcome-block {
     background: #fff;
-    border: 1px solid #d6e2ed;
     margin: 25px 0;
     position: relative;
     text-align: center;
@@ -230,7 +229,7 @@ p .responsive-block-editor-addons-info {
 	font-weight: 500;
     margin: 0 0 20px;
     line-height: 1.4;
-	text-transform:uppercase;
+	text-transform:capitalize;
 }
 
 .responsive-block-editor-addons-welcome-block-inner p.responsive-block-editor-addons-subtitle {
@@ -516,7 +515,7 @@ p .responsive-block-editor-addons-info {
     color: #fff;
     text-decoration: none;
     text-align: center;
-    font-size: 18px;
+    font-size: 9px;
     line-height: 48px;
 	padding:20%;
 }
@@ -537,9 +536,6 @@ p .responsive-block-editor-addons-info {
     transform: scale(1)
 }
 
-.responsive-block-editor-addons-quick-links-menu .responsive-block-editor-addons-quick-links-menu-item.responsive-block-editor-addons-quick-links-item-upgrade {
-    background: #f0793e;
-}
 
 .responsive-block-editor-addons-quick-links-menu .responsive-block-editor-addons-quick-links-menu-item.responsive-block-editor-addons-quick-links-item-upgrade:hover {
     background: #509fe2;
@@ -748,10 +744,6 @@ p .responsive-block-editor-addons-info {
     margin: 20px 40px;
 }
 
-.responsive-block-editor-addons-help-card-icon{
-    background-color: #FFFFFF;
-}
-
 .responsive-block-editor-addons-help-card-icon .responsive-block-editor-addons-help-img{
     width: 80px;
 }
@@ -793,10 +785,6 @@ p .responsive-block-editor-addons-info {
     width: 60%;
 }
 
-.responsive-block-editor-addons-welcome-block-inner h3.responsive-block-editor-addons-help-section-title {
-    margin-top: 90px;
-}
-
 .responsive-block-editor-addons-welcome-steps-right.last img {
     width: 80%;
 }
@@ -804,4 +792,8 @@ p .responsive-block-editor-addons-info {
 .responsive-block-editor-addons-welcome-block.last {
     padding: 25px 0;
     margin: 0;
+}
+
+.responsive-block-editor-addons-welcome-block.responsive-block-editor-addons-help-section {
+    background: #d6e2ed;
 }
