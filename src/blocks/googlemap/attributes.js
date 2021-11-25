@@ -15,9 +15,11 @@ const attributes = {
   },
     heightTablet: {
     type: "number",
+      default: 400,
   },
     heightMobile: {
     type: "number",
+      default: 400,
   },
   pinned: {
     type: "boolean",
