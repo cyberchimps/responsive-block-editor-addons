@@ -4378,21 +4378,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$mobile_selectors = array(
                 ' '       => array(
-                    'max-height' => '' !== $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
+                    'max-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
                 ),
                 ' iframe' => array(
                     'width'      => '100%',
-                    'min-height' => '' !== $attr['heightMobile'] ? self::get_css_value( $attr['heightMobile'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
+                    'min-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
                 ),
             );
 
 			$tablet_selectors = array(
                 ' '       => array(
-                    'max-height' => '' !== $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
+                    'max-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
                 ),
                 ' iframe' => array(
                     'width'      => '100%',
-                    'min-height' => '' !== $attr['heightTablet'] ? self::get_css_value( $attr['heightTablet'], 'px' ) : self::get_css_value( $attr['height'], 'px' ),
+                    'min-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
                 ),
             );
 
