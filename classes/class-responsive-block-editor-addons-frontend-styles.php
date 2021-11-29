@@ -1207,8 +1207,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'excerptBottomSpacing'        => '',
 				'metaBottomSpacing'           => '',
 				'imageBottomSpacing'          => '',
-				'imageBottomSpacingMobile'          => '',
-				'imageBottomSpacingTablet'          => '',
+				'imageBottomSpacingMobile'    => '',
+				'imageBottomSpacingTablet'    => '',
 				'titleBottomSpacing'          => '',
 				'columnGap'                   => 20,
 				'excerptBottomSpacingMobile'  => '',
@@ -4377,24 +4377,24 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
-                ' '       => array(
-                    'max-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
-                ),
-                ' iframe' => array(
-                    'width'      => '100%',
-                    'min-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
-                ),
-            );
+				' '       => array(
+					'max-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
+				),
+				' iframe' => array(
+					'width'      => '100%',
+					'min-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
+				),
+			);
 
 			$tablet_selectors = array(
-                ' '       => array(
-                    'max-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
-                ),
-                ' iframe' => array(
-                    'width'      => '100%',
-                    'min-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
-                ),
-            );
+				' '       => array(
+					'max-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
+				),
+				' iframe' => array(
+					'width'      => '100%',
+					'min-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -4415,13 +4415,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_googlemap_default_attributes() {
 			return array(
-				'address' => '',
-				'apiKey'  => '',
-				'zoom'    => 12,
-				'height'  => 400,
-				'heightTablet'  => '',
-				'heightMobile'  => '',
-				'pinned'  => false,
+				'address'      => '',
+				'apiKey'       => '',
+				'zoom'         => 12,
+				'height'       => 400,
+				'heightTablet' => '',
+				'heightMobile' => '',
+				'pinned'       => false,
 			);
 		}
 
