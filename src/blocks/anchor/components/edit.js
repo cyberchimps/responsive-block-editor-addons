@@ -8,6 +8,7 @@
  
 import icons from "../../../utils/components/icons";
 import renderSVG from "../../../renderIcon";
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
  /**
   * WordPress dependencies
   */
@@ -73,9 +74,9 @@ import renderSVG from "../../../renderIcon";
             id={anchor}
             className="responsive-block-editor-addons-anchor-edit"
           >
-            <span className="responsive-block-editor-addons-anchor-border-left"></span>
-            {renderSVG("fa fa-anchor")}
-            <span className="responsive-block-editor-addons-anchor-border-right"></span>
+            <div className="responsive-block-editor-addons-anchor-border-left"></div>
+            {ResponsiveBlockEditorAddonsIcons.anchor}
+            <div className="responsive-block-editor-addons-anchor-border-right"></div>
           </div>
        </div>,
      ];

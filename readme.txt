@@ -3,9 +3,9 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.8.2
 Requires PHP: 5.6
-Stable tag: 1.5.1
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,13 @@ e.g.
 6. Post-TimeLine Block
 
 == Changelog ==
+= 1.5.2 - 29th November 2021 =
+* New - Revamped getting started page
+* Feature - Post and Page Grid Block - Added spacing option for image
+* Feature - Google Map Block - Added responsive options for height
+* Fix - Image Box Block - Block width should not depend on content length in mobile view
+* Fix - Post & Page Grid Block - Pagination spacing not working
+
 = 1.5.1 - 11th November 2021 =
 * Fix - Advanced Text Block - Layout feature not working properly for single column
 

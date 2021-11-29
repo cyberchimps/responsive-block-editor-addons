@@ -1,10 +1,10 @@
 {
   "name": "responsive-block-editor-addons",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "",
   "author": "CyberChimps",
   "license": "GPL-2.0-or-later",
-  "tested_up_to": "5.7",
+  "tested_up_to": "5.8.2",
   "keywords": [
     "blocks",
     "gutenberg",
@@ -38,7 +38,7 @@
     "prop-types": "^15.7.2",
     "react-datetime": "^3.0.4",
     "react-select": "^3.1.0",
-    "react-transition-group": "^4.4.1",
+    "react-transition-group": "^4.4.2",
     "style-it": "^2.1.4",
     "waypoints": "^4.0.1"
   },
@@ -65,9 +65,10 @@
     "fs-extra": "^5.0.0",
     "global": "^4.4.0",
     "google-map-react": "^1.1.7",
-    "grunt": "^1.1.0",
+    "grunt": "^1.4.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-compress": "^1.4.1",
+    "grunt-contrib-concat": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-shell": "^2.1.0",
     "grunt-text-replace": "^0.4.0",

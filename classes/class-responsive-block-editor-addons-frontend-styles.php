@@ -633,6 +633,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-radius' => self::get_css_value( $attr['imageBorderRadius'], 'px' ),
 					'object-fit'    => 'cover',
 					'height'        => '100%',
+					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacing'], 'px' ),
 				),
 				' .responsive-block-editor-addons-block-post-grid-image a' => array(
 					'display' => 'block',
@@ -661,6 +662,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-post-pagination-wrap' => array(
 					'text-align' => $attr['paginationAlignment'],
+					'margin-top' => self::get_css_value( $attr['paginationSpacing'], 'px' ),
 				),
 
 			);
@@ -678,6 +680,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$tablet_content_padding = $attr['contentPaddingTablet'];
 			}
 			$mobile_selectors = array(
+				' .responsive-block-editor-addons-block-post-grid-image img' => array(
+					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingMobile'], 'px' ),
+				),
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
 					'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingMobile'], 'px' ),
@@ -711,6 +716,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' .responsive-block-editor-addons-block-post-grid-image img' => array(
+					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingTablet'], 'px' ),
+				),
 				' header .responsive-block-editor-addons-block-post-grid-title' => array(
 					'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingTablet'], 'px' ),
@@ -1198,6 +1206,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'excerptTextTransform'        => '',
 				'excerptBottomSpacing'        => '',
 				'metaBottomSpacing'           => '',
+				'imageBottomSpacing'          => '',
+				'imageBottomSpacingMobile'    => '',
+				'imageBottomSpacingTablet'    => '',
 				'titleBottomSpacing'          => '',
 				'columnGap'                   => 20,
 				'excerptBottomSpacingMobile'  => '',
@@ -4358,16 +4369,32 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors        = array(
 				' '       => array(
-					'max-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
+					'max-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : '400px',
 				),
 				' iframe' => array(
 					'width'      => '100%',
-					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : 400 + 'px',
+					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : '400px',
 				),
 			);
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' '       => array(
+					'max-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
+				),
+				' iframe' => array(
+					'width'      => '100%',
+					'min-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' '       => array(
+					'max-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
+				),
+				' iframe' => array(
+					'width'      => '100%',
+					'min-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -4388,11 +4415,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_googlemap_default_attributes() {
 			return array(
-				'address' => '',
-				'apiKey'  => '',
-				'zoom'    => 12,
-				'height'  => 400,
-				'pinned'  => false,
+				'address'      => '',
+				'apiKey'       => '',
+				'zoom'         => 12,
+				'height'       => 400,
+				'heightTablet' => '',
+				'heightMobile' => '',
+				'pinned'       => false,
 			);
 		}
 

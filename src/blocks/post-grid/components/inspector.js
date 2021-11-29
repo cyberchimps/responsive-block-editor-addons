@@ -468,28 +468,143 @@ export default class Inspector extends Component {
                 }
               />
               {attributes.postLayout === 'list' && [
-                <ResponsiveSpacingControl
-                  title={"Image Height"}
-                  attrNameTemplate="imageHeight%s"
-                  values={{
-                    desktop: attributes.imageHeight,
-                    tablet: attributes.imageHeightTablet,
-                    mobile: attributes.imageHeightMobile,
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                      {
+                          name: "desktop",
+                          title: <Dashicon icon="desktop" />,
+                      className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                  className:
+                  " responsive-tablet-tab  responsive-responsive-tabs",
+              },
+                  {
+                      name: "mobile",
+                          title: <Dashicon icon="smartphone" />,
+                      className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+              ]}
+              >
+                  {(tab) => {
+                      let tabout;
+
+                      if ("mobile" === tab.name) {
+                          tabout = (
+                              <Fragment>
+                              <RangeControl
+                          label={__("Image Height", "responsive-block-editor-addons")}
+                          min={0}
+                          max={2000}
+                          value={attributes.imageHeightMobile }
+                          onChange={(value) => setAttributes({ imageHeightMobile: value })}
+                          />
+                          </Fragment>
+                      );
+                      } else if ("tablet" === tab.name) {
+                          tabout = (
+                              <Fragment>
+                              <RangeControl
+                          label={__("Image Height", "responsive-block-editor-addons")}
+                          min={0}
+                          max={2000}
+                          value={attributes.imageHeightTablet }
+                          onChange={(value) => setAttributes({ imageHeightTablet: value })}
+                          />
+                          </Fragment>
+                      );
+                      } else {
+                          tabout = (
+                              <Fragment>
+                              <RangeControl
+                          label={__("Image Height", "responsive-block-editor-addons")}
+                          min={0}
+                          max={2000}
+                          value={attributes.imageHeight }
+                          onChange={(value) => setAttributes({ imageHeight: value })}
+                          />
+                          </Fragment>
+                      );
+                      }
+
+                      return <div>{tabout}</div>;
                   }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />,
-                <ResponsiveSpacingControl
-                  title={"Image Width"}
-                  attrNameTemplate="imageWidth%s"
-                  values={{
-                    desktop: attributes.imageWidth,
-                    tablet: attributes.imageWidthTablet,
-                    mobile: attributes.imageWidthMobile,
+              </TabPanel>
+                  ,
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                      {
+                          name: "desktop",
+                          title: <Dashicon icon="desktop" />,
+                      className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                  className:
+                  " responsive-tablet-tab  responsive-responsive-tabs",
+              },
+                  {
+                      name: "mobile",
+                          title: <Dashicon icon="smartphone" />,
+                      className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+              ]}
+              >
+                  {(tab) => {
+                      let tabout;
+
+                      if ("mobile" === tab.name) {
+                          tabout = (
+                              <Fragment>
+                              <RangeControl
+                          label={__("Image Width", "responsive-block-editor-addons")}
+                          min={0}
+                          max={2000}
+                          value={attributes.imageWidthMobile }
+                          onChange={(value) => setAttributes({ imageWidthMobile: value })}
+                          />
+                          </Fragment>
+                      );
+                      } else if ("tablet" === tab.name) {
+                          tabout = (
+                              <Fragment>
+                              <RangeControl
+                          label={__("Image Width", "responsive-block-editor-addons")}
+                          min={0}
+                          max={2000}
+                          value={attributes.imageWidthTablet }
+                          onChange={(value) => setAttributes({ imageWidthTablet: value })}
+                          />
+                          </Fragment>
+                      );
+                      } else {
+                          tabout = (
+                              <Fragment>
+                              <RangeControl
+                          label={__("Image Width", "responsive-block-editor-addons")}
+                          min={0}
+                          max={2000}
+                          value={attributes.imageWidth }
+                          onChange={(value) => setAttributes({ imageWidth: value })}
+                          />
+                          </Fragment>
+                      );
+                      }
+
+                      return <div>{tabout}</div>;
                   }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />,
+              </TabPanel>,
               ]}
               {attributes.displayPostImage && [
                 <SelectControl
@@ -1114,6 +1229,17 @@ export default class Inspector extends Component {
                   desktop: attributes.contentPadding,
                   tablet: attributes.contentPaddingTablet,
                   mobile: attributes.contentPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Image Bottom Spacing"}
+                attrNameTemplate="imageBottomSpacing%s"
+                values={{
+                  desktop: attributes.imageBottomSpacing,
+                  tablet: attributes.imageBottomSpacingTablet,
+                  mobile: attributes.imageBottomSpacingMobile,
                 }}
                 setAttributes={setAttributes}
                 {...this.props}

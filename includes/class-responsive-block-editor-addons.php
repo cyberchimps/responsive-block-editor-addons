@@ -335,11 +335,22 @@ class Responsive_Block_Editor_Addons {
 	 * @return void [description]
 	 */
 	public function responsive_block_editor_addons_admin_menu() {
-		// Create Sub Menu with parent slug null .
+		// Create Menu for Responsive Block Editor Addons.
+		add_menu_page(
+			__( 'RBEA', 'responsive-block-editor-addons' ),
+			__( 'RBEA', 'responsive-block-editor-addons' ),
+			'manage_options',
+			'responsive_block_editor_addons',
+			array( $this, 'responsive_block_editor_addons_getting_started' ),
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/admin/images/responsive-block-editor-addons-menu-icon.png',
+			59
+		);
+
+		// Create Sub Menu for Getting Started Page.
 		add_submenu_page(
-			'',
-			__( 'Getting Started', 'responsive-addons' ),
-			__( 'Getting Started', 'responsive-addons' ),
+			'responsive_block_editor_addons',
+			__( 'Getting Started', 'responsive-block-editor-addons' ),
+			__( 'Getting Started', 'responsive-block-editor-addons' ),
 			'manage_options',
 			'responsive_block_editor_addons',
 			array( $this, 'responsive_block_editor_addons_getting_started' ),
@@ -356,7 +367,11 @@ class Responsive_Block_Editor_Addons {
 	 * @access public
 	 */
 	public function responsive_block_editor_addons_getting_started() {
-
+		$baseurl = '';
+		if ( isset( $_SERVER['PHP_SELF'] ) ) {
+			$baseurl = esc_url_raw( wp_unslash( $_SERVER['PHP_SELF'] ) );
+			$baseurl = substr( $baseurl, 0, strpos( $baseurl, 'admin.php', 3 ) );
+		}
 		?>
 		<div class="responsive-block-editor-addons-admin-page responsive-block-editor-addons-welcome">
 			<div class="responsive-block-editor-addons-welcome-container">
@@ -373,92 +388,148 @@ class Responsive_Block_Editor_Addons {
 								$name_and_current_version = sprintf( __( 'Responsive Block Editor Addons %s', 'responsive-block-editor-addons' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER );
 								echo esc_html( $name_and_current_version );
 							?>
-							<a href="https://cyberchimps.com/blocks/"><?php echo esc_html__( 'View Demo', 'responsive-block-editor-addons' ); ?></a>
 						</p>
 						<p class="responsive-block-editor-addons-subtitle">
-							<?php echo esc_html__( 'Thank you for choosing Responsive Gutenberg Block Editor - The Most Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' ); ?>
+							<?php echo esc_html__( 'Thank you for choosing Responsive Gutenberg Blocks Library - The Most Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' ); ?>
 						</p>
 					</div>
 					<div class="responsive-block-editor-addons-welcome-video">
 						<div class="responsive-block-editor-addons-welcome-video-image responsive-block-editor-addons-bg-img">
 						<!---->
 						</div>
-					<div class="responsive-block-editor-addons-welcome-block-inner full">
-						<p class="responsive-block-editor-addons-subtitle full ">
-							<?php echo esc_html__( 'Unleash your creativity with the Responsive editor blocks library. Within minutes create modern responsive designs for all devices. Use reusable block page templates to kickstart your website in no time.', 'responsive-block-editor-addons' ); ?>
-						</p>
-						<div class="responsive-block-editor-addons-button-wrap">
-							<div class="responsive-block-editor-addons-welcome-left">
-								<a href="https://cyberchimps.com/blocks/" class="responsive-block-editor-addons-button responsive-block-editor-addons-button-large"><?php echo esc_html__( 'View Demos', 'responsive-block-editor-addons' ); ?>
-								</a>
+
+
+				</div>
+				<div class="responsive-block-editor-addons-welcome-block last">
+					<div class="responsive-block-editor-addons-welcome-block-inner">
+						<h3 class="responsive-block-editor-addons-title"><?php echo esc_html__( 'Here are some steps to help you start off', 'responsive-block-editor-addons' ); ?></h3>
+						<div class="responsive-block-editor-addons-welcome-steps-left">
+							<a href="<?php echo esc_url( $baseurl ); ?>post-new.php?post_type=page">
+								<p class="responsive-block-editor-addons-subtitle-steps">
+									<?php echo esc_html__( 'Step 1 - Add a new page or post', 'responsive-block-editor-addons' ); ?>
+								</p>
+								<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-1.jpg' ); ?> ">
+							</a>
+						</div>
+						<div class="responsive-block-editor-addons-welcome-steps-right">
+							<p class="responsive-block-editor-addons-subtitle-steps">
+								<?php echo esc_html__( 'Step 2 - Add new blocks', 'responsive-block-editor-addons' ); ?>
+							</p>
+							<p class="responsive-block-editor-addons-subtitle-steps-content">
+								<?php echo esc_html__( '(i) On top left side page/post edit screen, click on the + icon', 'responsive-block-editor-addons' ); ?>
+							</p>
+							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-2-1.jpg' ); ?> ">
+							<p class="responsive-block-editor-addons-subtitle-steps-content">
+								<?php echo esc_html__( '(ii) Type the name of the block on the search bar, and click on the widget', 'responsive-block-editor-addons' ); ?>
+							</p>
+							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-2-2.jpg' ); ?> ">
+							<p class="responsive-block-editor-addons-subtitle-steps-content">
+								<?php echo esc_html__( '(iii) Or click on the page and type / to choose a block', 'responsive-block-editor-addons' ); ?>
+							</p>
+							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-2-3.jpg' ); ?> ">
+						</div>
+						<div class="responsive-block-editor-addons-welcome-steps-left">
+							<p class="responsive-block-editor-addons-subtitle-steps">
+								<?php echo esc_html__( 'Step 3 - Import Templates or Patterns from the RBEA Templates', 'responsive-block-editor-addons' ); ?>
+							</p>
+							<p class="responsive-block-editor-addons-subtitle-steps-content">
+								<?php echo esc_html__( 'You can easily import beautiful pre-designed pages or sections from the RBEA Template Library on the top left corner', 'responsive-block-editor-addons' ); ?>
+							</p>
+							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-3-1.jpg' ); ?> ">
+							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-3-2.jpg' ); ?> ">
+						</div>
+						<div class="responsive-block-editor-addons-welcome-steps-right last">
+							<p class="responsive-block-editor-addons-subtitle-steps">
+								<?php echo esc_html__( 'Step 4 - Customize and start designing', 'responsive-block-editor-addons' ); ?>
+							</p>
+							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-4.jpg' ); ?> ">
+						</div>
+
+					</div>
+				</div>
+				<div class="responsive-block-editor-addons-welcome-block responsive-block-editor-addons-help-section">
+					<div class="responsive-block-editor-addons-welcome-block-inner">
+						<h3 class="responsive-block-editor-addons-help-section-title"><?php echo esc_html__( 'Help Resources', 'responsive-block-editor-addons' ); ?></h3>
+
+						<div display="flex" justifycontent="space-between" class="responsive-block-editor-addons-help-section">
+							<div class="responsive-block-editor-addons-help-card">
+								<div class="responsive-block-editor-addons-help-card-top">
+									<div class="responsive-block-editor-addons-help-card-icon">
+										<img class="responsive-block-editor-addons-help-img" src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/video.png' ); ?>">
+									</div>
+									<div class="responsive-block-editor-addons-help-card-description">
+										<h4 class="responsive-block-editor-addons-help-card-heading">Video Resources</h4>
+										<p class="responsive-block-editor-addons-help-card-summary">Check out the video resources to learn how to use the powerful plugin features.</p>
+									</div>
+								</div>
+								<p class="responsive-block-editor-addons-help-card-link">
+									<a target="_blank" href="https://youtube.com/playlist?list=PLXTwxw3ZJwPSCqW__jo6fkUlEh2uXAsuF">Watch Now &gt;&gt;</a>
+								</p>
 							</div>
-							<div class="responsive-block-editor-addons-welcome-right">
-								<a href="https://docs.cyberchimps.com/responsive-gutenberg-addons/" target="_blank" rel="noopener noreferrer" class="responsive-block-editor-addons-button responsive-block-editor-addons-button-alt responsive-block-editor-addons-button-large">
-									<?php echo esc_html__( 'Documentation', 'responsive-block-editor-addons' ); ?>
-								</a>
+							<div class="responsive-block-editor-addons-help-card">
+								<div class="responsive-block-editor-addons-help-card-top">
+									<div class="responsive-block-editor-addons-help-card-icon">
+										<img class="responsive-block-editor-addons-help-img" src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/documentation.png' ); ?>">
+									</div>
+									<div class="responsive-block-editor-addons-help-card-description">
+										<h4 class="responsive-block-editor-addons-help-card-heading">Documentation</h4>
+										<p class="responsive-block-editor-addons-help-card-summary"> Browse through the detailed documentation to know how to use the plugin.</p>
+									</div>
+								</div>
+								<p class="responsive-block-editor-addons-help-card-link">
+									<a target="_blank" href="https://docs.cyberchimps.com/responsive-gutenberg-addons/?utm_source=plugin&utm_medium=gettingstarted&utm_campaign=help">Read more &gt;&gt;</a>
+								</p>
+							</div>
+
+						</div>
+						<div display="flex" justifycontent="space-between" class="responsive-block-editor-addons-help-section">
+							<div class="responsive-block-editor-addons-help-card">
+								<div class="responsive-block-editor-addons-help-card-top">
+									<div class="responsive-block-editor-addons-help-card-icon">
+										<img class="responsive-block-editor-addons-help-img" src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/blocks.png' ); ?>">
+									</div>
+									<div class="responsive-block-editor-addons-help-card-description">
+										<h4 class="responsive-block-editor-addons-help-card-heading">Blocks Demo</h4>
+										<p class="responsive-block-editor-addons-help-card-summary">View demos of the Gutenberg blocks to understand their usability.</p>
+									</div>
+								</div>
+								<p class="responsive-block-editor-addons-help-card-link">
+									<a target="_blank" href="https://cyberchimps.com/blocks/?utm_source=plugin&utm_medium=demolink&utm_campaign=gutblocks">View now &gt;&gt;</a>
+								</p>
+							</div>
+							<div class="responsive-block-editor-addons-help-card">
+								<div class="responsive-block-editor-addons-help-card-top">
+									<div class="responsive-block-editor-addons-help-card-icon">
+										<img class="responsive-block-editor-addons-help-img" src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/templates.png' ); ?>">
+									</div>
+									<div class="responsive-block-editor-addons-help-card-description">
+										<h4 class="responsive-block-editor-addons-help-card-heading">Gutenberg Templates</h4>
+										<p class="responsive-block-editor-addons-help-card-summary">Check out the beautiful website templates created using the Gutenberg blocks library.</p>
+									</div>
+								</div>
+								<p class="responsive-block-editor-addons-help-card-link">
+									<a target="_blank" href="https://cyberchimps.com/wordpress-themes/?utm_source=plugin&utm_medium=link&utm_campaign=gettingstartedpage&page-builder=gutenberg">View Now &gt;&gt;</a>
+								</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="responsive-block-editor-addons-welcome-block">
+				<div class="responsive-block-editor-addons-welcome-block last">
 					<div class="responsive-block-editor-addons-welcome-block-inner">
-						<h3><?php echo esc_html__( 'Responsive Features &amp; Addons', 'responsive-block-editor-addons' ); ?></h3>
-						<p class="responsive-block-editor-addons-subtitle features-block"><?php echo esc_html__( 'Here are the features that make Responsive the most powerful and user-friendly WordPress Editor Block plugin in the market.', 'responsive-block-editor-addons' ); ?></p>
-					</div>
-					<div class="responsive-block-editor-addons-welcome-block-inner responsive-block-editor-addons-welcome-features">
-						<?php
-						$feature_list_array = array(
-							array( 'Advanced Column', 'Build custom, full-page layouts for your posts and pages with the Advanced Columns Block', 'res-icon1.png' ),
-							array( 'Post Timeline', 'Display the timeline for blog posts in an ordered list according to the dates they are published on', 'res-icon2.png' ),
-							array( 'Advanced Heading', 'Add catchy and attractive headings with elegant designs and typography using the Gutenberg Advanced Heading block', 'res-icon3.png' ),
-							array( 'Section', 'Build a page with different content areas using the section block that allows you to manage layouts, backgrounds, spacing, and more', 'res-icon1.png' ),
-							array( 'Flipbox', 'Create beautiful animated content that flips on hover with the Gutenberg Flipbox block', 'res-icon4.png' ),
-							array( 'Testimonial', 'Showcase your customer reviews with neatly displayed testimonial blocks on your website in just a few clicks', 'res-icon5.png' ),
-							array( 'Info Box', 'Add a block of information that includes colorful icons, images, headings, text, and more with beautifully designed boxes', 'res-icon6.png' ),
-							array( 'Button Group', 'Design strikingly attractive buttons and group them together within a container', 'res-icon6.png' ),
-							array( 'Image Boxes', 'Create beautiful gallery of images to showcase your portfolio, photos, and more with the Gutenberg Image Boxes block', 'res-icon7.png' ),
-							array( 'Count Up', 'Display facts and figures with animated counters using the Gutenberg Count Up block', 'res-icon8.png' ),
-							array( 'Post Carousel', 'Display the content of your blog posts automatically in a carousel slideshow using Gutenberg Post Carousel block', 'res-icon9.png' ),
-							array( 'Shape Divider', 'Easily create a division or barrier between your sections using this Gutenberg block divider that includes a large number of styling options', 'res-icon10.png' ),
-							array( 'Call To Action', 'Add an eye-catching, full-width section with a big title, paragraph text, and a customizable button with the Gutenberg Call to Action block', 'res-icon11.png' ),
-							array( 'Accordion', 'Add content that can expand and collapse (for e.g. FAQs) with tons of display options using the Gutenberg Accordion block', 'res-icon11.png' ),
-							array( 'Image Slider', 'Showcase a selection of images using a slider\ with the Gutenberg Image Slider block', 'res-icon7.png' ),
-							array( 'Team', 'Beautifully display details about your team members like role, department, etc. with Gutenberg Team block', 'res-icon7.png' ),
-							array( 'Card', 'Display information, photos, and more in a compact, easy-to-understand layout with the Gutenberg Card block', 'res-icon9.png' ),
-							array( 'Icon List', 'Display a bulleted list with icons and images as for checklists, feature lists, or any other list with the Gutenberg Icon List Block', 'res-icon12.png' ),
-							array( 'Masonry', 'Display a collage of images and showcase your portfolio, product images, and more with the Gutenberg Masonry Blocks', 'res-icon11.png' ),
-							array( 'Content Timeline', 'Create visual flowcharts, vertical timelines and event layouts using the Gutenberg Content Timeline Block', 'res-icon2.png' ),
-							array( 'Pricing Table', 'Create responsive and dynamic pricing tables to showcase your product catalog and prices with the Gutenberg Pricing Table block', 'res-icon13.png' ),
-						);
-
-						foreach ( $feature_list_array as $single_feature ) {
-
-							?>
-							<div class="responsive-block-editor-addons-welcome-feature">
-								<div class="responsive-block-editor-addons-welcome-feature-img">
-									<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/' . $single_feature[2] ); ?>">
-								</div>
-								<div class="responsive-block-editor-addons-welcome-feature-text">
-									<h4>
-										<?php
-											/* translators: %s: search term */
-											$title = sprintf( __( '%s', 'responsive-block-editor-addons' ), $single_feature[0] ); //phpcs:ignore
-											echo esc_html( $title );
-										?>
-									</h4>
-									<p>
-										<?php
-											/* translators: %s: search term */
-											$short_desc = sprintf( __( '%s.', 'responsive-block-editor-addons' ), $single_feature[1] );
-											echo esc_html( $short_desc );
-										?>
-									</p>
-								</div>
+						<h3 class="responsive-block-editor-addons-title"><?php echo esc_html__( 'Ready to make your own website?', 'responsive-block-editor-addons' ); ?></h3>
+						<div class="responsive-block-editor-addons-button-wrap">
+							<div class="responsive-block-editor-addons-welcome-left">
+								<a href="<?php echo esc_url( $baseurl ); ?>post-new.php?post_type=page";
+								   class="responsive-block-editor-addons-button responsive-block-editor-addons-button-large"><?php echo esc_html__( 'Create New Page', 'responsive-block-editor-addons' ); ?>
+								</a>
 							</div>
-						<?php } ?>
-					</div>
-					<div class="responsive-block-editor-addons-welcome-block-inner responsive-block-editor-addons-welcome-block-footer">
-						<a href="<?php echo esc_url( 'https://cyberchimps.com/blocks/' ); ?>" target="_blank" class="responsive-block-editor-addons-button"><?php echo esc_html__( 'See All Blocks', 'responsive-block-editor-addons' ); ?></a>
+							<div class="responsive-block-editor-addons-welcome-left">
+								<a href="https://wordpress.org/support/plugin/responsive-block-editor-addons/" target="_blank" rel="noopener noreferrer" class="responsive-block-editor-addons-button responsive-block-editor-addons-button-large">
+									<?php echo esc_html__( 'Request Support', 'responsive-block-editor-addons' ); ?>
+								</a>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -470,32 +541,32 @@ class Responsive_Block_Editor_Addons {
 				<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'See Quick Links ', 'responsive-block-editor-addons' ); ?></span>
 			</button>
 			<div class="responsive-block-editor-addons-quick-links-menu">
-				<a href="<?php echo esc_url( 'https://cyberchimps.com/contact/' ); ?>" data-index="0" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-suggest responsive-block-editor-addons-show responsive-block-editor-addons-staggered-fade-enter-to">
+				<a href="<?php echo esc_url( 'https://cyberchimps.com/contact/?utm_source=plugin&utm_medium=quicklinks&utm_campaign=link' ); ?>" data-index="0" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-suggest responsive-block-editor-addons-show responsive-block-editor-addons-staggered-fade-enter-to">
 					<span class="lightbulb">
 						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-1.png' ); ?> ">
 					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Suggest a Feature', 'responsive-block-editor-addons' ); ?>
+					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Request Feature', 'responsive-block-editor-addons' ); ?>
+					</span>
+				</a>
+				<a href="<?php echo esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/' ); ?>" data-index="2" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-support responsive-block-editor-addons-show">
+					<span class="life-ring">
+						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-3.png' ); ?> ">
+					</span>
+					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Support', 'responsive-block-editor-addons' ); ?>
 					</span>
 				</a>
 				<a href="<?php echo esc_url( 'https://www.facebook.com/groups/responsive.theme' ); ?>" data-index="1" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-community responsive-block-editor-addons-show">
 					<span class="wpbeginner">
 						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-2.png' ); ?> ">
 					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Join Our Community', 'responsive-block-editor-addons' ); ?>
+					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Community', 'responsive-block-editor-addons' ); ?>
 					</span>
 				</a>
-				<a href="<?php echo esc_url( 'https://cyberchimps.com/my-account/' ); ?>" data-index="2" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-support responsive-block-editor-addons-show">
-					<span class="life-ring">
-						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-3.png' ); ?> ">
-					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Support &amp; Docs', 'responsive-block-editor-addons' ); ?>
-					</span>
-				</a>
-				<a href="<?php echo esc_url( 'https://cyberchimps.com/responsive-go-pro/' ); ?>" data-index="3" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-upgrade responsive-block-editor-addons-show">
+				<a href="<?php echo esc_url( 'https://docs.cyberchimps.com/responsive-gutenberg-addons/?utm_source=plugin&utm_medium=quicklinks&utm_campaign=link' ); ?>" data-index="3" target="_blank" class="responsive-block-editor-addons-quick-links-menu-item responsive-block-editor-addons-quick-links-item-documentation responsive-block-editor-addons-show">
 					<span class="star">
 						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/mascot-4.png' ); ?> ">
 					</span>
-					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Upgrade to Pro »', 'responsive-block-editor-addons' ); ?>
+					<span class="responsive-block-editor-addons-quick-link-title"><?php echo esc_html__( 'Documentation', 'responsive-block-editor-addons' ); ?>
 					</span>
 				</a>
 			</div>
