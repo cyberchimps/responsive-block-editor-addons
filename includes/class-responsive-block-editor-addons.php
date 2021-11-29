@@ -346,7 +346,7 @@ class Responsive_Block_Editor_Addons {
 			59
 		);
 
-		// Create Sub Menu
+		// Create Sub Menu for Getting Started Page.
 		add_submenu_page(
 			'responsive_block_editor_addons',
 			__( 'Getting Started', 'responsive-block-editor-addons' ),
