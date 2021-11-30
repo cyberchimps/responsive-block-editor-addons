@@ -14,7 +14,7 @@ function EditorStyles(props) {
     },
       " .responsive-block-editor-addons-block-map-frame": {
       width: "100%",
-      "min-height": height ? generateCSSUnit(height, "px") : `${400}px`,
+      "height": height ? generateCSSUnit(height, "px") : `${400}px`,
     },
   };
 
@@ -24,7 +24,7 @@ function EditorStyles(props) {
       },
       " .responsive-block-editor-addons-block-map-frame": {
           width: "100%",
-          "min-height": heightMobile ? generateCSSUnit(heightMobile, "px") : `${400}px`,
+          "height": heightMobile ? generateCSSUnit(heightMobile, "px") : `${400}px`,
       },
   };
 
@@ -34,7 +34,7 @@ function EditorStyles(props) {
       },
       " .responsive-block-editor-addons-block-map-frame": {
           width: "100%",
-          "min-height": heightTablet ? generateCSSUnit(heightTablet, "px") : `${400}px`,
+          "height": heightTablet ? generateCSSUnit(heightTablet, "px") : `${400}px`,
       },
   };
 
