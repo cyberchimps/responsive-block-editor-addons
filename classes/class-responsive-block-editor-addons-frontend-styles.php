@@ -4373,7 +4373,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' iframe' => array(
 					'width'      => '100%',
-					'min-height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : '400px',
+					'height' => $attr['height'] ? self::get_css_value( $attr['height'], 'px' ) : '400px',
 				),
 			);
 			$mobile_selectors = array(
@@ -4382,7 +4382,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' iframe' => array(
 					'width'      => '100%',
-					'min-height' => self::get_css_value( $attr['heightMobile'], 'px' ),
+					'height' => self::get_css_value( $attr['heightMobile'], 'px' ),
 				),
 			);
 
@@ -4392,7 +4392,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' iframe' => array(
 					'width'      => '100%',
-					'min-height' => self::get_css_value( $attr['heightTablet'], 'px' ),
+					'height' => self::get_css_value( $attr['heightTablet'], 'px' ),
 				),
 			);
 
