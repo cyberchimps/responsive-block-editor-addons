@@ -291,7 +291,7 @@ return array(
 			esc_html__( 'Hero Food Blog', 'responsive-block-editor-addons' ),
 			esc_html__( 'Food Blog', 'responsive-block-editor-addons' ),
 		),
-		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Gallery-Food-Blog.jpg',
+		'image'      => 'https://ccreadysites.cyberchimps.com/wp-content/uploads/2021/08/Hero-Food-Blog.jpg',
 	),
 	array(
 		'type'       => 'section',
