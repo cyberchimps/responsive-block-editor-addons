@@ -12906,7 +12906,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
             }
 
             $selectors = array(
-                ' .responsive-block-editor-addons-post-grid-items' => array(
+                ' .responsive-block-editor-addons-portfolio-items' => array(
                     'grid-column-gap' => self::get_css_value( $column_gap, 'px' ),
                     'grid-row-gap'    => self::get_css_value( $row_gap, 'px' ),
                 ),
@@ -12924,15 +12924,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
                 ' article:hover'               => array(
                     'box-shadow' => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css,
                 ),
-                ' .responsive-block-editor-addons-post-grid-items article' => array(
+                ' .responsive-block-editor-addons-portfolio-items article' => array(
                     'padding' => self::get_css_value( $boxed_content_padding, 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-text' => array(
+                ' .responsive-block-editor-addons-block-portfolio-text' => array(
                     'padding'    => self::get_css_value( $content_padding, 'px' ),
                     'text-align' => $attr['textAlignment'],
                     'display'    => 'block',
                 ),
-                ' header .responsive-block-editor-addons-block-post-grid-title' => array(
+                ' header .responsive-block-editor-addons-block-portfolio-title' => array(
                     'font-family'    => $attr['titleFontFamily'],
                     'font-size'      => self::get_css_value( $attr['titleFontSize'], 'px' ),
                     'font-weight'    => $attr['titleFontWeight'],
@@ -12940,13 +12940,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
                     'text-transform' => $attr['titleTextTransform'],
                     'margin-bottom'  => self::get_css_value( $attr['titleBottomSpacing'], 'px' ),
                 ),
-                ' header .responsive-block-editor-addons-block-post-grid-title a' => array(
+                ' header .responsive-block-editor-addons-block-portfolio-title a' => array(
                     'color' => $attr['titleColor'],
                 ),
-                ' header .responsive-block-editor-addons-block-post-grid-title a:hover' => array(
+                ' header .responsive-block-editor-addons-block-portfolio-title a:hover' => array(
                     'color' => $attr['titleHoverColor'],
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-byline' => array(
+                ' .responsive-block-editor-addons-block-portfolio-byline' => array(
                     'color'          => $attr['metaColor'],
                     'font-family'    => $attr['metaFontFamily'],
                     'font-size'      => self::get_css_value( $attr['metaFontSize'], 'px' ),
@@ -12955,7 +12955,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
                     'text-transform' => $attr['metaTextTransform'],
                     'margin-bottom'  => self::get_css_value( $attr['metaBottomSpacing'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-text .responsive-block-editor-addons-block-post-grid-excerpt' => array(
+                ' .responsive-block-editor-addons-block-portfolio-text .responsive-block-editor-addons-block-portfolio-excerpt' => array(
                     'color'          => $attr['textColor'],
                     'font-family'    => $attr['excerptFontFamily'],
                     'font-size'      => self::get_css_value( $attr['excerptFontSize'], 'px' ),
@@ -12964,31 +12964,31 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
                     'text-transform' => $attr['excerptTextTransform'],
                     'margin-bottom'  => self::get_css_value( $attr['excerptBottomSpacing'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-more-link' => $link_styles,
-                ' .responsive-block-editor-addons-block-post-grid-more-link:hover' => array(
+                ' .responsive-block-editor-addons-block-portfolio-more-link' => $link_styles,
+                ' .responsive-block-editor-addons-block-portfolio-more-link:hover' => array(
                     'color'           => $attr['readMoreHoverColor'],
                     'text-decoration' => 'none',
                 ),
                 ' .read-more a'                => $link_styles,
-                ' .responsive-block-editor-addons-post-grid-item' => array(
+                ' .responsive-block-editor-addons-portfolio-item' => array(
                     'margin-bottom' => 0,
                 ),
-                ' .is-list .responsive-block-editor-addons-post-grid-item:not(:last-child)' => array(
+                ' .is-list .responsive-block-editor-addons-portfolio-item:not(:last-child)' => array(
                     'margin-bottom' => self::get_css_value( $row_gap, 'px' ),
                 ),
                 ' .is-list article:last-child' => array(
                     'margin-bottom' => 0,
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-image' => array(
-                    'width' => 'fit-content',
+                ' .responsive-block-editor-addons-block-portfolio-image' => array(
+//                    'width' => 'fit-content',
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-image img' => array(
+                ' .responsive-block-editor-addons-block-portfolio-image img' => array(
                     'border-radius' => self::get_css_value( $attr['imageBorderRadius'], 'px' ),
                     'object-fit'    => 'cover',
                     'height'        => '100%',
                     'margin-bottom' => self::get_css_value( $attr['imageBottomSpacing'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-image a' => array(
+                ' .responsive-block-editor-addons-block-portfolio-image a' => array(
                     'display' => 'block',
                     'width'   => 'list' === $attr['postLayout'] ? self::get_css_value( $attr['imageWidth'], 'px' ) : null,
                     'height'  => 'list' === $attr['postLayout'] ? self::get_css_value( $attr['imageHeight'], 'px' ) : null,
@@ -13033,68 +13033,68 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
                 $tablet_content_padding = $attr['contentPaddingTablet'];
             }
             $mobile_selectors = array(
-                ' .responsive-block-editor-addons-block-post-grid-image img' => array(
+                ' .responsive-block-editor-addons-block-portfolio-image img' => array(
                     'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingMobile'], 'px' ),
                 ),
-                ' header .responsive-block-editor-addons-block-post-grid-title' => array(
+                ' header .responsive-block-editor-addons-block-portfolio-title' => array(
                     'font-size'     => self::get_css_value( $attr['titleFontSizeMobile'], 'px' ),
                     'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingMobile'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-post-grid-items article' => array(
+                ' .responsive-block-editor-addons-portfolio-items article' => array(
                     'padding'    => self::get_css_value( $mobile_content_padding, 'px' ) . ' !important',
                     'text-align' => $attr['textAlignment'],
                 ),
                 ' .is-list article' => array(
                     'grid-template-columns' => $grid_template_columns,
                 ),
-                ' .responsive-block-editor-addons-post-grid-items' => array(
+                ' .responsive-block-editor-addons-portfolio-items' => array(
                     'grid-column-gap' => self::get_css_value( $column_gap_mobile, 'px' ),
                     'grid-row-gap'    => self::get_css_value( $row_gap_mobile, 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-text .responsive-block-editor-addons-block-post-grid-excerpt' => array(
+                ' .responsive-block-editor-addons-block-portfolio-text .responsive-block-editor-addons-block-portfolio-excerpt' => array(
                     'margin-bottom' => self::get_css_value( $attr['excerptBottomSpacingMobile'], 'px' ),
                     'font-size'     => self::get_css_value( $attr['excerptFontSizeMobile'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-byline' => array(
+                ' .responsive-block-editor-addons-block-portfolio-byline' => array(
                     'font-size'     => self::get_css_value( $attr['metaFontSizeMobile'], 'px' ),
                     'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingMobile'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-more-link' => array(
+                ' .responsive-block-editor-addons-block-portfolio-more-link' => array(
                     'font-size' => self::get_css_value( $attr['continueFontSizeMobile'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-image a' => array(
+                ' .responsive-block-editor-addons-block-portfolio-image a' => array(
                     'width'  => 'list' === $attr['postLayout'] ? self::get_css_value( $attr['imageWidthMobile'], 'px' ) : null,
                     'height' => 'list' === $attr['postLayout'] ? self::get_css_value( $attr['imageHeightMobile'], 'px' ) : null,
                 ),
             );
 
             $tablet_selectors = array(
-                ' .responsive-block-editor-addons-block-post-grid-image img' => array(
+                ' .responsive-block-editor-addons-block-portfolio-image img' => array(
                     'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingTablet'], 'px' ),
                 ),
-                ' header .responsive-block-editor-addons-block-post-grid-title' => array(
+                ' header .responsive-block-editor-addons-block-portfolio-title' => array(
                     'font-size'     => self::get_css_value( $attr['titleFontSizeTablet'], 'px' ),
                     'margin-bottom' => self::get_css_value( $attr['titleBottomSpacingTablet'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-post-grid-items' => array(
+                ' .responsive-block-editor-addons-portfolio-items' => array(
                     'grid-column-gap' => self::get_css_value( $column_gap_tablet, 'px' ),
                     'grid-row-gap'    => self::get_css_value( $row_gap_tablet, 'px' ),
                 ),
-                ' .responsive-block-editor-addons-post-grid-items article' => array(
+                ' .responsive-block-editor-addons-portfolio-items article' => array(
                     'padding' => self::get_css_value( $tablet_content_padding, 'px' ) . ' !important',
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-text .responsive-block-editor-addons-block-post-grid-excerpt' => array(
+                ' .responsive-block-editor-addons-block-portfolio-text .responsive-block-editor-addons-block-portfolio-excerpt' => array(
                     'margin-bottom' => self::get_css_value( $attr['excerptBottomSpacingTablet'], 'px' ),
                     'font-size'     => self::get_css_value( $attr['excerptFontSizeTablet'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-byline' => array(
+                ' .responsive-block-editor-addons-block-portfolio-byline' => array(
                     'font-size'     => self::get_css_value( $attr['metaFontSizeTablet'], 'px' ),
                     'margin-bottom' => self::get_css_value( $attr['metaBottomSpacingTablet'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-more-link' => array(
+                ' .responsive-block-editor-addons-block-portfolio-more-link' => array(
                     'font-size' => self::get_css_value( $attr['continueFontSizeTablet'], 'px' ),
                 ),
-                ' .responsive-block-editor-addons-block-post-grid-image a' => array(
+                ' .responsive-block-editor-addons-block-portfolio-image a' => array(
                     'width'  => 'list' === $attr['postLayout'] ? self::get_css_value( $attr['imageWidthTablet'], 'px' ) : null,
                     'height' => 'list' === $attr['postLayout'] ? self::get_css_value( $attr['imageHeightTablet'], 'px' ) : null,
                 ),
@@ -13106,7 +13106,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
                 'mobile'  => $mobile_selectors,
             );
 
-            $id              = '.responsive-block-editor-addons-block-post-grid.block-id-' . $id;
+            $id              = '.responsive-block-editor-addons-block-portfolio.block-id-' . $id;
             $css             = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
             $css['desktop'] .= '.page-template-gutenberg-fullwidth ' . $id . ' .responsive-block-editor-addons-portfolio-items article {padding:' . ( 'boxed' === $attr['layout'] ? $attr['contentPadding'] ? $attr['contentPadding'] : '0' : '0' ) . 'px;}
     ';

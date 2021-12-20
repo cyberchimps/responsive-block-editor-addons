@@ -91,12 +91,12 @@ export default class PostGridImage extends Component {
   render() {
     return (
       <Fragment>
+        <a href={this.props.imgLink} target="_blank" rel="bookmark">
         <div
           className={classnames(
             "responsive-block-editor-addons-block-portfolio-image"
           )}
         >
-          <a href={this.props.imgLink} target="_blank" rel="bookmark">
             <img
               src={
                 this.state.imageUrl
@@ -106,7 +106,6 @@ export default class PostGridImage extends Component {
               alt={this.props.imgAlt}
               className={this.props.imgClass}
             />
-          </a>
 
           {
             /* If we don't have the selected image size, show a warning */
@@ -153,6 +152,13 @@ export default class PostGridImage extends Component {
               )
           }
         </div>
+            <div
+                className={classnames(
+                    "responsive-block-editor-addons-block-portfolio-image-overlay"
+                )}
+            >
+            </div>
+        </a>
       </Fragment>
     );
   }

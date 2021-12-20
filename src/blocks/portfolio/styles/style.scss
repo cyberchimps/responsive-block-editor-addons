@@ -99,8 +99,56 @@
 
   a {
     text-decoration: none;
-  }
+    padding-bottom: calc(0.66 * 100%);
+    position: relative;
+    display: block;
+    width: 100%;
 
+    .responsive-block-editor-addons-block-portfolio-image-overlay:hover {
+      opacity: 1;
+      -webkit-transition: opacity .5s;
+      -o-transition: opacity .5s;
+      transition: opacity .5s;
+    }
+    .responsive-block-editor-addons-block-portfolio-image-overlay {
+      opacity: 0;
+      position: absolute;
+      background-color: #61CE70;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+     .responsive-block-editor-addons-block-portfolio-image {
+      position: absolute;
+      background-color: rgba(0, 0, 0, .1);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        height: 100%;
+        position: absolute;
+        top: calc(50% + 1px);
+        left: calc(50% + 1px);
+        transform: scale(1.01) translate(-50%,-50%);
+        display: block;
+      }
+    }
+  }
   header .responsive-block-editor-addons-block-portfolio-title {
     margin-top: 0;
     margin-bottom: 15px;
