@@ -221,7 +221,7 @@ function EditorStyles(props) {
       "margin-bottom": 0,
     },
     " .responsive-block-editor-addons-block-portfolio-image": {
-      "width": "fit-content",
+      // "width": "fit-content",
     },
     " .responsive-block-editor-addons-block-portfolio-image a": {
       "display": "block",

@@ -120,144 +120,38 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 				esc_attr( $post_classes )
 			);
 
+            /* Get the post title */
+            $title = get_the_title( $post_id );
+
+            if ( ! $title ) {
+                $title = __( 'Untitled', 'responsive-block-editor-addons' );
+            }
+
+            if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
+
+                if (isset($attributes['postTitleTag'])) {
+                    $post_title_tag = $attributes['postTitleTag'];
+                } else {
+                    $post_title_tag = 'h2';
+                }
+            }
+
 			/* Get the featured image */
 			if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
 
 				if ( ! empty( $attributes['imagePosition'] && 'background' !== $attributes['imagePosition'] ) ) {
 					/* Output the featured image */
 					$post_grid_markup .= sprintf(
-						'<div class="responsive-block-editor-addons-block-portfolio-image"><a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1">%2$s</a></div>',
+						'<a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1"><div class="responsive-block-editor-addons-block-portfolio-image">%2$s</div>
+                                <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-post-grid-title-1">Hi %3$s</%4$s></div></a>',
 						esc_url( get_permalink( $post_id ) ),
-						wp_get_attachment_image( $post_thumb_id, $post_thumb_size )
+						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
+                        esc_html( $title ),
+                        esc_attr( $post_title_tag )
 					);
 				}
 			}
 
-			/* Wrap the text content */
-			$post_grid_markup .= sprintf(
-				'<div class="responsive-block-editor-addons-block-portfolio-text">'
-			);
-
-			$post_grid_markup .= sprintf(
-				'<header class="responsive-block-editor-addons-block-portfolio-header">'
-			);
-
-			/* Get the post title */
-			$title = get_the_title( $post_id );
-
-			if ( ! $title ) {
-				$title = __( 'Untitled', 'responsive-block-editor-addons' );
-			}
-
-			if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
-
-				if ( isset( $attributes['postTitleTag'] ) ) {
-					$post_title_tag = $attributes['postTitleTag'];
-				} else {
-					$post_title_tag = 'h2';
-				}
-
-				$post_grid_markup .= sprintf(
-					'<%3$s class="responsive-block-editor-addons-block-portfolio-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s>',
-					esc_url( get_permalink( $post_id ) ),
-					esc_html( $title ),
-					esc_attr( $post_title_tag )
-				);
-			}
-
-			if ( isset( $attributes['postType'] ) && ( 'post' === $attributes['postType'] || 'course' === $attributes['postType'] || 'lesson' === $attributes['postType'] ) ) {
-				/* Wrap the byline content */
-				$post_grid_markup .= sprintf(
-					'<div class="responsive-block-editor-addons-block-portfolio-byline">'
-				);
-
-				/* Get the post author */
-				if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-					$post_grid_markup .= sprintf(
-						'<div class="responsive-block-editor-addons-block-portfolio-author" itemprop="author" itemtype="https://schema.org/Person"><a class="responsive-block-editor-addons-text-link" href="%2$s" itemprop="url" rel="author"><span itemprop="name">%1$s</span></a></div>',
-						esc_html( get_the_author_meta( 'display_name', get_the_author_meta( 'ID' ) ) ),
-						esc_html( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
-					);
-				}
-
-				/* Get the post date */
-				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-					$post_grid_markup .= sprintf(
-						'<time datetime="%1$s" class="responsive-block-editor-addons-block-portfolio-date" itemprop="datePublished">%2$s</time>',
-						esc_attr( get_the_date( 'c', $post_id ) ),
-						esc_html( get_the_date( '', $post_id ) )
-					);
-				}
-
-				/* Close the byline content */
-				$post_grid_markup .= sprintf(
-					'</div>'
-				);
-			}
-
-			/* Close the header content */
-			$post_grid_markup .= sprintf(
-				'</header>'
-			);
-
-			/* Wrap the excerpt content */
-			$post_grid_markup .= sprintf(
-				'<div class="responsive-block-editor-addons-block-portfolio-excerpt">'
-			);
-
-			/* Get the excerpt */
-
-			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound, PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket
-			$excerpt = apply_filters( 'the_excerpt',
-				get_post_field(
-					'post_excerpt',
-					$post_id,
-					'display'
-				)
-			);
-
-			if ( empty( $excerpt ) && isset( $attributes['excerptLength'] ) ) {
-				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound, PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket  -- Running the_excerpt directly, Previous rule doesn't take without the_excerpt being moved up a line
-				$excerpt = apply_filters( 'the_excerpt',
-					wp_trim_words(
-						preg_replace(
-							array(
-								'/\<figcaption>.*\<\/figcaption>/',
-								'/\[caption.*\[\/caption\]/',
-							),
-							'',
-							get_the_excerpt()
-						),
-						$attributes['excerptLength']
-					)
-				);
-			}
-
-			if ( ! $excerpt ) {
-				$excerpt = null;
-			}
-
-			if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-				$post_grid_markup .= wp_kses_post( $excerpt );
-			}
-
-			/* Close the excerpt content */
-			$post_grid_markup .= sprintf(
-				'</div>'
-			);
-			/* Get the read more link */
-			if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-				$post_grid_markup .= sprintf(
-					'<p><a class="responsive-block-editor-addons-block-portfolio-more-link responsive-block-editor-addons-text-link" href="%1$s" rel="bookmark">%2$s <span class="screen-reader-text">%3$s</span></a></p>',
-					esc_url( get_permalink( $post_id ) ),
-					esc_html( $attributes['readMoreText'] ),
-					esc_html( $title )
-				);
-			}
-			/* Close the text content */
-			$post_grid_markup .= sprintf(
-				'</div>'
-			);
 
 			/* Close the post */
 			$post_grid_markup .= "</article>\n";
