@@ -20,7 +20,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/testimonial-slider", {
   title: __("Testimonial Slider", "responsive-block-editor-addons"),
   description: __(
-    "Add a testimonial slider.",
+    "Add your client testimonials in a rich slider format",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.testimonial_slider,

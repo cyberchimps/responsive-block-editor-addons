@@ -25,7 +25,7 @@ registerBlockType("responsive-block-editor-addons/video-popup", {
   title: __("Video Popup", "responsive-block-editor-addons"),
   category: "responsive_block_editor_addons",
   /* translators: block description */
-  description: __("Display a video popup", "responsive-block-editor-addons"),
+  description: __("Embed a YouTube, Vimeo, or a self-hosted video with this block", "responsive-block-editor-addons"),
   icon: ResponsiveBlockEditorAddonsIcons.video_popup,
   keywords: [
     __("video", "responsive-block-editor-addons"),

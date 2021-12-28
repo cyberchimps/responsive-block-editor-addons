@@ -27,7 +27,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/image-boxes-block", {
   title: __("Image Boxes", "responsive-block-editor-addons"),
   description: __(
-    "Image Boxes block allows you to create a beautiful gallery of images to showcase your portfolio, photos, and more.",
+    "Add an image box with title, image, and description",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.image_boxes,

@@ -21,7 +21,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/inline-notice", {
   title: __("Inline Notice", "responsive-block-editor-addons"),
   description: __(
-    "Adds a notice block with a combination of title and text.",
+    "Adds a notice block with a combination of title and text",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.inline_notice,

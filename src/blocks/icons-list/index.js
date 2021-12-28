@@ -23,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 // Register the block
 registerBlockType("responsive-block-editor-addons/icons-list", {
   title: __("Icons List", "responsive-block-editor-addons"),
-  description: __("Add a list of icons", "responsive-block-editor-addons"),
+  description: __("Place an image or icon in a list format", "responsive-block-editor-addons"),
   icon: ResponsiveBlockEditorAddonsIcons.icons_list,
   category: "responsive_block_editor_addons",
   keywords: [

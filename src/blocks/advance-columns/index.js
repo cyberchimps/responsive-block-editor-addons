@@ -23,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/advance-columns", {
   title: __("Advanced Columns", "responsive-block-editor-addons"),
   description: __(
-    "This block gives you advanced options to insert a number of columns within a single row.",
+    "Create attractive rows by adding a number of customizable columns in a single row",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.advance_columns,
