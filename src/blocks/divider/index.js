@@ -21,7 +21,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/divider", {
   title: __("Divider", "responsive-block-editor-addons"),
   description: __(
-    "Add a divider and spacer between your blocks.",
+    "Add a divider between blocks to make them more distinguishable",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.divider,

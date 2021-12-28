@@ -20,7 +20,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/how-to", {
     title: __("How to Schema", "responsive-block-editor-addons"),
     description: __(
-        "This block helps you add a step by step 'how-to' guide with images, description and call to action for each step.",
+        "This block helps you add a step by step 'how-to' guide with images, description and call to action for each step",
         "responsive-block-editor-addons"
     ),
     icon: "book",

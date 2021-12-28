@@ -23,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/tabs", {
   title: __("Tabs", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to structure information the way that is more readable and user-friendly to interact with.",
+    "This block allows you to structure information the way that is more readable and user-friendly",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.tabs ,
