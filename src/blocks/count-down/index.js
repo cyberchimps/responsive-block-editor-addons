@@ -25,7 +25,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/count-down", {
   title: __("Count Down", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add count down blocks.",
+    "Notify your visitors about the upcoming events or big days using a Countdown block",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.count_down,

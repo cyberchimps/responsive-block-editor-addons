@@ -14,7 +14,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/advanced-text", {
   title: __("Advanced Text", "responsive-block-editor-addons"),
   description: __(
-    "Highlight the most important text content using special typography to state something important and draw the attention of the visitors.",
+    "Highlight the most important text using special typography to draw the attention of visitors",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.advance_text,

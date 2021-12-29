@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/testimonial", {
   title: __("Testimonial", "responsive-block-editor-addons"),
   description: __(
-    "Add a user testimonial with a name and title.",
+    "Add a user testimonial with a name and title",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.testimonial,

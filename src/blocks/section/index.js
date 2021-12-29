@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/section", {
   title: __("Section", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add section in your webpage.",
+    "Add a section block that allows you to customize your page sections",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.section,

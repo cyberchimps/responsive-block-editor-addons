@@ -25,7 +25,7 @@ const validAlignments = ["center", "wide", "full"];
 registerBlockType("responsive-block-editor-addons/post-timeline", {
   title: __("Post Timeline", "responsive-block-editor-addons"),
   description: __(
-    "Add a timeline of customizable posts or pages.",
+    "Show posts in the form of a stylized timeline",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.post_timeline,
