@@ -454,7 +454,7 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 				),
 				'titleColor'                  => array(
 					'type'    => 'string',
-					'default' => '#444444',
+					'default' => '#ffffff',
 				),
 				'titleHoverColor'             => array(
 					'type'    => 'string',
