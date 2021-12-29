@@ -22,7 +22,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/wp-search", {
   title: __("WP Search", "responsive-block-editor-addons"),
   description: __(
-    "Helps to search for the required information easily.",
+    "Display the WordPress search field anywhere on your page easily",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.wp_search,

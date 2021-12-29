@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/social-share", {
   title: __("Social Share", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to display icons linking to your social media profiles or websites.",
+    "This block allows you to display icons linking to your social media profiles or websites",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.social_share,

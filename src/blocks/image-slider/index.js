@@ -30,7 +30,7 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
   title: __("Image Slider", "responsive-block-editor-addons"),
   category: "responsive_block_editor_addons",
   /* translators: block description */
-  description: __("Display multiple images.", "responsive-block-editor-addons"),
+  description: __("Create a fully responsive and smooth image slideshow of your products, services", "responsive-block-editor-addons"),
   attributes,
   icon: ResponsiveBlockEditorAddonsIcons.image_slider,
   keywords: [

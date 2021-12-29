@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/count-up", {
   title: __("Count Up", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add count up blocks.",
+    "Showcase interesting and notable stats on your page",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.count_up,

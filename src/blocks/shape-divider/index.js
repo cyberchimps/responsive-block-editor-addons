@@ -28,7 +28,7 @@ registerBlockType("responsive-block-editor-addons/shape-divider", {
   category: "responsive_block_editor_addons",
   /* translators: block description */
   description: __(
-    "Add a shape divider to visually distinguish page sections.",
+    "Create customizable section dividers in your blocks",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.shape_divider,

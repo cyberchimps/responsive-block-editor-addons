@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/rbea-templates", {
   title: __("RBEA Templates", "responsive-block-editor-addons"),
   description: __(
-    "This allows you to add pre-designed blocks and layouts to your page.",
+    "Add beautiful pre-designed sections and pages to your website",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.block_importer,
