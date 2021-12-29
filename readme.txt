@@ -226,8 +226,8 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 == Changelog ==
 = 1.5.3 - 29th December 2021 =
 * Fix - Multi Button - Mobile font size not working
-* Fix - Post Timeline - Button text is not centre aligned 
-* Fix - Google Map - Issue with minimum height
+* Fix - Post Timeline - Button text is not center aligned in mobile view
+* Fix - Google Map - Height not working when set less than 150px 
 * Fix - Info Block - Icon vertical alignment is broken if given background to it
 
 = 1.5.2 - 29th November 2021 =
