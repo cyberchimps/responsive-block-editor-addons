@@ -143,7 +143,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 					/* Output the featured image */
 					$post_grid_markup .= sprintf(
 						'<a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1"><div class="responsive-block-editor-addons-block-portfolio-image">%2$s</div>
-                                <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-post-grid-title-1">Hi %3$s</%4$s></div></a>',
+                                <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-portfolio-title">%3$s</%4$s></div></a>',
 						esc_url( get_permalink( $post_id ) ),
 						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
                         esc_html( $title ),
