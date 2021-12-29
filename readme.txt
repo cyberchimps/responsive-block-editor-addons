@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenber
 Requires at least: 5.0
 Tested up to: 5.8.2
 Requires PHP: 5.6
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -224,6 +224,12 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+= 1.5.3 - 29th December 2021 =
+* Fix - Multi Button - Mobile font size not working
+* Fix - Post Timeline - Button text is not centre aligned 
+* Fix - Google Map - Issue with minimum height
+* Fix - Info Block - Icon vertical alignment is broken if given background to it
+
 = 1.5.2 - 29th November 2021 =
 * New - Revamped getting started page
 * Feature - Post and Page Grid Block - Added spacing option for image
