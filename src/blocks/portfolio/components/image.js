@@ -8,7 +8,7 @@ import classnames from "classnames";
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Placeholder, Dashicon } = wp.components;
-
+const { decodeEntities } = wp.htmlEntities;
 export default class PostGridImage extends Component {
   constructor(props) {
     super(...arguments);
@@ -157,6 +157,14 @@ export default class PostGridImage extends Component {
                     "responsive-block-editor-addons-block-portfolio-image-overlay"
                 )}
             >
+                      <this.props.postTitleTag
+                        className="responsive-block-editor-addons-block-portfolio-title"
+                        style={{
+                        }}
+                      >
+                          {decodeEntities(this.props.postTitle) ||
+                            __("(Untitled)", "responsive-block-editor-addons")}
+                      </this.props.postTitleTag>
             </div>
         </a>
       </Fragment>

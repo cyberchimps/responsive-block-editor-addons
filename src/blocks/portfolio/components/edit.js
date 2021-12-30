@@ -319,9 +319,11 @@ class LatestPostsBlock extends Component {
                     imgSizeLandscape={post.featured_image_src}
                     imgSizeSquare={post.featured_image_src_square}
                     imgLink={post.link}
+                    postTitleTag={PostTag}
+                    postTitle = {post.title.rendered.trim()}
                   />
                 ) : null}
-
+                    
               </article>
             ))}
           </div>
