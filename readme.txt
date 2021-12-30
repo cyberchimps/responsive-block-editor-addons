@@ -224,7 +224,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
-= 1.5.3 - 29th December 2021 =
+= 1.5.3 - 30th December 2021 =
 * Fix - Multi Button - Mobile font size not working
 * Fix - Post Timeline - Button text is not center aligned in mobile view
 * Fix - Google Map - Height not working when set less than 150px 
