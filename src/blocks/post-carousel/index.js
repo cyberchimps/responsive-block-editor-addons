@@ -25,7 +25,7 @@ const validAlignments = ["center", "wide", "full"];
 registerBlockType("responsive-block-editor-addons/post-carousel", {
   title: __("Post Carousel", "responsive-block-editor-addons"),
   description: __(
-    "Display posts as a carousel.",
+    "Display your blog posts in a beautiful slider or carousel format",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.post_carousel,

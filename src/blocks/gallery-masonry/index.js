@@ -32,7 +32,7 @@ registerBlockType("responsive-block-editor-addons/gallery-masonry", {
   category: "responsive_block_editor_addons",
   /* translators: block description */
   description: __(
-    "Display multiple images in an organized masonry gallery.",
+    "Display multiple images in an organized masonry gallery",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.gallery_masonry,

@@ -23,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/column", {
   title: __("Column", "responsive-block-editor-addons"),
   description: __(
-    "This block is an immediate child of Advanced Columns.",
+    "Add and customize columns",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.column,

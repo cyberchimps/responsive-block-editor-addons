@@ -25,7 +25,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/spacer", {
   title: __("Spacer", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add white space between blocks and customize its height.",
+    "This block allows you to add white space between blocks and customize its height",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.spacer,

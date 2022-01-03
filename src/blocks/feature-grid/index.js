@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/feature-grid", {
   title: __("Feature Grid", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add feature grid.",
+    "Showcase your products or highlight your growing portfolio using this block",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.feature_grid,

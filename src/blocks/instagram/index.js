@@ -21,7 +21,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/instagram", {
   title: __("Instagram", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to stream Instagram content directly to your WordPress website, thus, increase your odds to get new followers and clients.",
+    "Stream Instagram content directly to your WordPress website",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.instagram,

@@ -3049,17 +3049,23 @@ h6.responsive-block-editor-addons-timeline__heading {
   .responsive-block-editor-addons-timeline__responsive-mobile {
     &.responsive-block-editor-addons-timeline__center-block {
       .responsive-block-editor-addons-timeline__author,
-      .responsive-block-editor-addons-timeline__link_parent,
       .responsive-block-editor-addons-timeline__image a,
       .responsive-block-editor-addons-timeline__heading,
       .responsive-block-editor-addons-timeline-desc-content,
       .responsive-block-editor-addons-timeline__date-inner {
         text-align: left;
       }
+      .responsive-block-editor-addons-timeline__link_parent {
+        text-align: center;
+      }
 
       .responsive-block-editor-addons-timeline__date-hide {
         &.responsive-block-editor-addons-timeline__date-inner {
           text-align: left;
+
+          & .responsive-block-editor-addons-timeline__link_parent {
+            text-align: center;
+          }
         }
       }
     }

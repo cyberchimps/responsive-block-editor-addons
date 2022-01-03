@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/info-block", {
   title: __("Info Block", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add icon or image along with heading and description.",
+    "This block allows you to add icon or image along with heading and description",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.info_block,

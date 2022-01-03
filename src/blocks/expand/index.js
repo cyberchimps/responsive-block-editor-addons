@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/expand", {
   title: __("Expand/Show More", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add expand/show more block in your webpage.",
+    "Display small snippets of text to your visitors before displaying the entire information",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.expand,
