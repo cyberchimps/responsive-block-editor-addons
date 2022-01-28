@@ -57,7 +57,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/content-timeline", {
   title: __("Content Timeline", "responsive-block-editor-addons"),
   description: __(
-    "Add content timeline on your website",
+    "Design beautiful content timelines on your website",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.content_timeline,

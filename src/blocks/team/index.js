@@ -49,7 +49,7 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 registerBlockType("responsive-block-editor-addons/team", {
   title: __("Team", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.",
+    "Display the details about your team members  by adding a profile picture, name, and links to their social profiles",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.team,

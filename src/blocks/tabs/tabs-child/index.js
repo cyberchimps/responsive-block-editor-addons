@@ -20,7 +20,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/tabs-child", {
   title: __("Tabs Child", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to structure information the way that is more readable and user-friendly to interact with.",
+    "Add tab content",
     "responsive-block-editor-addons"
   ),
   icon: "category",

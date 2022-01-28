@@ -44,7 +44,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/pricing-table", {
   title: __("Pricing Table", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add pricing tables.",
+    "Showcase responsive pricing tables  with a comparison of features and more",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.pricing_table,

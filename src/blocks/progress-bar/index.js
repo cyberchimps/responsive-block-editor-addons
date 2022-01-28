@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/progress-bar", {
 	title: __("Progress Bar", "responsive-block-editor-addons"),
 	description: __(
-		"Showcase progress of any activity by means of animated indicators.",
+		"Showcase progress of any activity by means of animated indicators",
 		"responsive-block-editor-addons"
 	),
 	icon: ResponsiveBlockEditorAddonsIcons.progress_bar,

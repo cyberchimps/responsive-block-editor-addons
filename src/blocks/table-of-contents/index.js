@@ -26,7 +26,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/table-of-contents", {
   title: __("Table Of Contents", "responsive-block-editor-addons"),
   description: __(
-    "This block allows access to large contents of post/page through the heading of the contents.",
+    "Display an index that gives website visitors an overview of the content",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.table_of_contents,

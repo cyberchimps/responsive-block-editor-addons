@@ -22,7 +22,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/call-mail-button", {
   title: __("Call/Mail Button", "responsive-block-editor-addons"),
   description: __(
-    "Add buttons to reach on call and/or mail.",
+    "This block allows you to add a button that will automatically make a call or send an email",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.call_mail_button,
