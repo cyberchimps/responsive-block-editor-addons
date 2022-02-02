@@ -461,7 +461,7 @@ export default class Inspector extends Component {
               )}
               <ToggleControl
                 label={__(
-                  "Display Continue Reading Link",
+                  "Display CTA Link",
                   "responsive-block-editor-addons"
                 )}
                 checked={attributes.displayPostLink}
@@ -475,7 +475,7 @@ export default class Inspector extends Component {
                 <Fragment>
                   <TextControl
                     label={__(
-                      "Customize Continue Reading Text",
+                      "Customize CTA Text",
                       "responsive-block-editor-addons"
                     )}
                     type="text"
@@ -832,7 +832,7 @@ export default class Inspector extends Component {
                           <Fragment>
                             <p className="responsive-block-editor-addons-setting-label">
                               {__(
-                                "Continue Reading Text Color",
+                                "CTA Text Color",
                                 "responsive-block-editor-addons"
                               )}
                               <span className="components-base-control__label">
@@ -853,7 +853,7 @@ export default class Inspector extends Component {
                             />
                             <p className="responsive-block-editor-addons-setting-label">
                               {__(
-                                "Continue Reading Background Color",
+                                "CTA Background Color",
                                 "responsive-block-editor-addons"
                               )}
                               <span className="components-base-control__label">
@@ -874,7 +874,7 @@ export default class Inspector extends Component {
                             />
                             <p className="responsive-block-editor-addons-setting-label">
                               {__(
-                                "Continue Reading Border Color",
+                                "CTA Border Color",
                                 "responsive-block-editor-addons"
                               )}
                               <span className="components-base-control__label">
@@ -900,7 +900,7 @@ export default class Inspector extends Component {
                           <Fragment>
                             <p className="responsive-block-editor-addons-setting-label">
                               {__(
-                                "Continue Reading Text Hover Color",
+                                "CTA Text Hover Color",
                                 "responsive-block-editor-addons"
                               )}
                               <span className="components-base-control__label">
@@ -919,7 +919,7 @@ export default class Inspector extends Component {
                             />
                             <p className="responsive-block-editor-addons-setting-label">
                               {__(
-                                "Continue Reading Background Hover Color",
+                                "CTA Background Hover Color",
                                 "responsive-block-editor-addons"
                               )}
                               <span className="components-base-control__label">
@@ -940,7 +940,7 @@ export default class Inspector extends Component {
                             />
                             <p className="responsive-block-editor-addons-setting-label">
                               {__(
-                                "Continue Reading Border Hover Color",
+                                "CTA Border Hover Color",
                                 "responsive-block-editor-addons"
                               )}
                               <span className="components-base-control__label">
@@ -1039,7 +1039,7 @@ export default class Inspector extends Component {
 					{...this.props}
 				/>
 				<TypographyHelperControl
-					title={__("Continue Reading Text Typography", "responsive-block-editor-addons")}
+					title={__("CTA Typography", "responsive-block-editor-addons")}
 					attrNameTemplate="continue%s"
 					values = {{
 					family: attributes.continueFontFamily,
@@ -1143,7 +1143,7 @@ export default class Inspector extends Component {
 				/>
             </PanelBody>
             <PanelBody
-              title={__("Button Box Shadow", "responsive-block-editor-addons")}
+              title={__("CTA Box Shadow", "responsive-block-editor-addons")}
               initialOpen={false}
             >
               <BoxShadowControl
