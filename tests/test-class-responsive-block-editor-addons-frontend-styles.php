@@ -1878,7 +1878,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'ctaTextFontSize'          => '',
 			'ctaTextFontSizeMobile'    => '',
 			'ctaTextFontSizeTablet'    => '',
-			'ctaTextFontWeight'        => '',
+			'ctaTextFontWeight'        => '100',
 			'ctaTextLineHeight'        => '',
 			'ctaBottomMargin'          => 10,
 			'ctaBottomMarginMobile'    => '',
