@@ -5647,7 +5647,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTextFontSize'          => '',
 				'ctaTextFontSizeMobile'    => '',
 				'ctaTextFontSizeTablet'    => '',
-				'ctaTextFontWeight'        => '',
+				'ctaTextFontWeight'        => '100',
 				'ctaTextLineHeight'        => '',
 				'ctaBottomMargin'          => 10,
 				'ctaBottomMarginMobile'    => '',

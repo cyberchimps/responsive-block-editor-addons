@@ -545,7 +545,8 @@ const attributes = {
     type: "number",
   },
   ctaTextFontWeight: {
-    type: "number",
+    type: "string",
+    default: "100",
   },
   ctaTextLineHeight: {
     type: "number",
