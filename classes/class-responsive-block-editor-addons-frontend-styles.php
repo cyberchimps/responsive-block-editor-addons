@@ -7300,6 +7300,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-style'     => 'solid',
 					'border-color'     => $attr['socialIconBorderColor'],
 					'border-radius'    => self::get_css_value( $attr['iconBorderRadius'], '%' ),
+					'height'          => self::get_css_value( $attr['iconSize'], 'px' ),
+					'width'           => self::get_css_value( $attr['iconSize'], 'px' ),
 				),
 
 				' .responsive-block-editor-addons-team-social-icons li:hover a' => array(
