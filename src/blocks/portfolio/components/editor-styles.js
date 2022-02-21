@@ -243,7 +243,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
     },
-    " .responsive-block-editor-addons-block-portfolio-title a": {
+    " .responsive-block-editor-addons-block-portfolio-title": {
       color: titleColor,
       "line-height": titleLineHeight,
       "font-family": titleFontFamily,

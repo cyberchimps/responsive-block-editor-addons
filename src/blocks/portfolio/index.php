@@ -137,9 +137,8 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
             }
 
 			/* Get the featured image */
-			if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
+			// if (  $post_thumb_id ) {
 
-				if ( ! empty( $attributes['imagePosition'] && 'background' !== $attributes['imagePosition'] ) ) {
 					/* Output the featured image */
 					$post_grid_markup .= sprintf(
 						'<a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1"><div class="responsive-block-editor-addons-block-portfolio-image">%2$s</div>
@@ -149,8 +148,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
                         esc_html( $title ),
                         esc_attr( $post_title_tag )
 					);
-				}
-			}
+			// }
 
 
 			/* Close the post */

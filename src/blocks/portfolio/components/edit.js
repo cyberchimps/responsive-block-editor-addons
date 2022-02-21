@@ -304,9 +304,7 @@ class LatestPostsBlock extends Component {
                     : null
                 )}
               >
-                {attributes.displayPostImage &&
-                post.featured_media &&
-                "background" != attributes.imagePosition ? (
+              
                   <PostGridImage
                     {...this.props}
                     imgAlt={
@@ -322,7 +320,7 @@ class LatestPostsBlock extends Component {
                     postTitleTag={PostTag}
                     postTitle = {post.title.rendered.trim()}
                   />
-                ) : null}
+                
                     
               </article>
             ))}

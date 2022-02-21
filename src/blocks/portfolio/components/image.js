@@ -97,7 +97,8 @@ export default class PostGridImage extends Component {
             "responsive-block-editor-addons-block-portfolio-image"
           )}
         >
-            <img
+            { this.state.imageUrl && 
+            (<img
               src={
                 this.state.imageUrl
                   ? this.state.imageUrl
@@ -106,6 +107,7 @@ export default class PostGridImage extends Component {
               alt={this.props.imgAlt}
               className={this.props.imgClass}
             />
+            )}
 
           {
             /* If we don't have the selected image size, show a warning */

@@ -39,7 +39,7 @@ const { addQueryArgs } = wp.url;
 
 const { apiFetch } = wp;
 
-const MAX_POSTS_COLUMNS = 4;
+const MAX_POSTS_COLUMNS = 6;
 
 /**
  * Create an Inspector Controls wrapper Component
