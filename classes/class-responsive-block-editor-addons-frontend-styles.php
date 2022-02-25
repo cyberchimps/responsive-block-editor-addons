@@ -12977,7 +12977,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
                 'blockBorderStyle'            => 'none',
                 'blockBorderColor'            => '#333',
                 'taxonomyType'                => 'category',
-                'postGridBlockId'             => '',
             );
         }
 
