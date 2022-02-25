@@ -137,7 +137,6 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
             }
 
 			/* Get the featured image */
-			// if (  $post_thumb_id ) {
 
 					/* Output the featured image */
 					$portfolio_markup .= sprintf(
@@ -149,8 +148,6 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
                         esc_attr( $post_title_tag ),
 						esc_html( $attributes['showTitle'] ? "true" : "false" ),
 					);
-			// }
-
 
 			/* Close the post */
 			$portfolio_markup .= "</article>\n";

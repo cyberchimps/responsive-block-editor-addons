@@ -141,12 +141,11 @@ class Portfolio_Index_Test extends WP_UnitTestCase {
 		);
 		global $post;
 		$post        = get_post( self::$block_id );
-		$render_code = responsive_block_editor_addons_render_block_core_latest_posts( $attributes );
+		$render_code = responsive_block_editor_addons_render_block_core_latest_posts3( $attributes );
 		$render_code = preg_replace( '/\s+/', '', $render_code );
 		$render_code = preg_replace( '/[0-9]+/', '', $render_code );
 		$month       = gmdate( 'F' );
 		$expected    = '<sectionclass="block-id-responsive-block-editor-addons-block-portfoliofeaturedpostaligncenter"><divclass="responsive-block-editor-addons-portfolio-itemsis-gridcolumns-"><articleid="post-"class="responsive-block-editor-addons-portfolio-itempost-posttype-poststatus-publishformat-standardhentrycategory-uncategorized"style="background-image:none"><divclass="responsive-block-editor-addons-block-portfolio-text"><headerclass="responsive-block-editor-addons-block-portfolio-header"><hclass="responsive-block-editor-addons-block-portfolio-title"><ahref="http://example.org/?p="rel="bookmark">TestPost</a></h><divclass="responsive-block-editor-addons-block-portfolio-byline"><divclass="responsive-block-editor-addons-block-portfolio-author"itemprop="author"itemtype="https://schema.org/Person"><aclass="responsive-block-editor-addons-text-link"href="http://example.org/?author="itemprop="url"rel="author"><spanitemprop="name">User</span></a></div><timedatetime="--T::+:"class="responsive-block-editor-addons-block-portfolio-date"itemprop="datePublished">' . $month . ',</time></div></header><divclass="responsive-block-editor-addons-block-portfolio-excerpt"><p>Postexcerpt</p></div><p><aclass="responsive-block-editor-addons-block-portfolio-more-linkresponsive-block-editor-addons-text-link"href="http://example.org/?p="rel="bookmark">ReadMore»<spanclass="screen-reader-text">TestPost</span></a></p></div></article></div></section>';
 		$this->assertEquals( $expected, $render_code );
 	}
-
 }
