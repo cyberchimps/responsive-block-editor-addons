@@ -146,7 +146,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
                         esc_html( $title ),
                         esc_attr( $post_title_tag ),
-						esc_html( $attributes['showTitle'] ? "true" : "false" ),
+						esc_html( $attributes['showTitle'] ? "true" : "false" )
 					);
 
 			/* Close the post */
