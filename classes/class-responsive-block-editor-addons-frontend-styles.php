@@ -12934,6 +12934,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
             return array(
                 'textAlignment'               => 'left',
 				'postsToShow'					=> 6,
+				'offset'                      => 0,
                 'itemRatio'                 => 0.66,
                 'overlayOpacity'                 => 100,
 				'horizontalSpacing'				=> 10,

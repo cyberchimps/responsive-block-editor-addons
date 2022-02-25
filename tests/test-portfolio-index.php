@@ -95,6 +95,7 @@ class Portfolio_Index_Test extends WP_UnitTestCase {
 		$attributes = array(
 			'textAlignment'               => 'left',
 			'postsToShow'					=> 6,
+			'offset'                      => 0,
 			'itemRatio'                 => 0.66,
 			'overlayOpacity'                 => 100,
 			'horizontalSpacing'				=> 10,

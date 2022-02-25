@@ -3760,6 +3760,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		$expected_values = array(
 			'textAlignment'               => 'left',
 			'postsToShow'					=> 6,
+			'offset'                      => 0,
 			'itemRatio'                 => 0.66,
 			'overlayOpacity'                 => 100,
 			'horizontalSpacing'				=> 10,
