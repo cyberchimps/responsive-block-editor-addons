@@ -4,7 +4,7 @@
 
 import classnames from "classnames";
 import Inspector from "./inspector";
-import PostGridImage from "./image";
+import PortfolioImage from "./image";
 import EditorStyles from "./editor-styles";
 import { loadGoogleFont } from "../../../utils/font";
 
@@ -273,7 +273,7 @@ class LatestPostsBlock extends Component {
                 )}
               >
               
-                  <PostGridImage
+                  <PortfolioImage
                     {...this.props}
                     imgAlt={
                       decodeEntities(post.title.rendered.trim()) ||

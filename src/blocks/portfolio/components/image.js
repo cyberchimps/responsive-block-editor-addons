@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Placeholder, Dashicon } = wp.components;
 const { decodeEntities } = wp.htmlEntities;
-export default class PostGridImage extends Component {
+export default class PortfolioImage extends Component {
   constructor(props) {
     super(...arguments);
 

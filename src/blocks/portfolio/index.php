@@ -1,16 +1,16 @@
 <?php
 /**
- * Server-side rendering for the post grid block
+ * Server-side rendering for the portfolio block
  *
  * @since   1.0.0
  * @package Responsive Blocks
  */
 
 /**
- * Renders the post grid block on server.
+ * Renders the portfolio block on server.
  *
  * @param string $attributes  Pass the block attributes.
- * @return string HTML content for the post grid.
+ * @return string HTML content for the portfolio.
  */
 function responsive_block_editor_addons_render_block_core_latest_posts_portfolio( $attributes ) {
 
@@ -64,7 +64,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 		);
 	}
 
-	$post_grid_markup = '';
+	$portfolio_markup = '';
 
 	$grid_query = new WP_Query( $grid_query );
 
@@ -106,7 +106,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 				$wrapper_styles .= 'background-image:' . ( 'background' === $attributes['imagePosition'] ? 'url(' . wp_get_attachment_image_url( $post_thumb_id, $post_thumb_size ) . ' )' : 'none' ) . ';';
 			}
 
-			/* Post Grid wrapper styles. */
+			/* portfolio wrapper styles. */
 			if ( ! empty( $wrapper_styles ) ) {
 				$wrapper_style = $wrapper_styles;
 			} else {
@@ -114,7 +114,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			}
 
 			/* Start the markup for the post */
-			$post_grid_markup .= sprintf(
+			$portfolio_markup .= sprintf(
 				'<article id="post-%1$s" class="%2$s" style="' . safecss_filter_attr( $wrapper_style ) . '">',
 				esc_attr( $post_id ),
 				esc_attr( $post_classes )
@@ -140,7 +140,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			// if (  $post_thumb_id ) {
 
 					/* Output the featured image */
-					$post_grid_markup .= sprintf(
+					$portfolio_markup .= sprintf(
 						'<a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1"><div class="responsive-block-editor-addons-block-portfolio-image">%2$s</div>
                                 <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-portfolio-title show-title-%5$s">%3$s</%4$s></div></a>',
 						esc_url( get_permalink( $post_id ) ),
@@ -153,7 +153,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 
 
 			/* Close the post */
-			$post_grid_markup .= "</article>\n";
+			$portfolio_markup .= "</article>\n";
 		}
 
 		/* Restore original post data */
@@ -180,7 +180,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			$grid_class .= ' columns-' . $attributes['columns'];
 		}
 
-		/* Post grid section title */
+		/* portfolio section title */
 		if ( isset( $attributes['displaySectionTitle'] ) && $attributes['displaySectionTitle'] && ! empty( $attributes['sectionTitle'] ) ) {
 			if ( isset( $attributes['sectionTitleTag'] ) ) {
 				$section_title_tag = $attributes['sectionTitleTag'];
@@ -193,7 +193,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			$section_title = null;
 		}
 
-		/* Post grid section tag */
+		/* portfolio section tag */
 		if ( isset( $attributes['sectionTag'] ) ) {
 			$section_tag = $attributes['sectionTag'];
 		} else {
@@ -215,7 +215,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			esc_attr( $class ),
 			$section_title,
 			esc_attr( $grid_class ),
-			$post_grid_markup,
+			$portfolio_markup,
 			$paginations_markup
 		);
 		return $block_content;
@@ -223,7 +223,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 }
 
 /**
- * Registers the post grid block on server
+ * Registers the portfolio block on server
  */
 function responsive_block_editor_addons_register_block_core_latest_posts_portfolio() {
 
@@ -558,227 +558,12 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueFontSize'            => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'continueFontFamily'          => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'continueFontWeight'          => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'continueLineHeight'          => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'continueFontSizeMobile'      => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'continueFontSizeTablet'      => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'continueTextTransform'       => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'titleFontSizeMobile'         => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'titleFontSizeTablet'         => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaFontSize'                => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaFontSizeMobile'          => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaFontSizeTablet'          => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaLineHeight'              => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaFontWeight'              => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'metaTextTransform'           => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'metaFontFamily'              => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'excerptFontFamily'           => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'excerptFontSize'             => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'excerptFontSizeMobile'       => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'excerptFontSizeTablet'       => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'excerptLineHeight'           => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'excerptFontWeight'           => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'excerptTextTransform'        => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'excerptBottomSpacing'        => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'excerptBottomSpacingMobile'  => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'excerptBottomSpacingTablet'  => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaBottomSpacing'           => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaBottomSpacingMobile'     => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'metaBottomSpacingTablet'     => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageBottomSpacing'          => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageBottomSpacingTablet'          => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageBottomSpacingMobile'          => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'titleBottomSpacing'          => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'titleBottomSpacingMobile'    => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'titleBottomSpacingTablet'    => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'pageLimit'                   => array(
-					'type'    => 'number',
-					'default' => '10',
-				),
 				'taxonomyType'                => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
 				'block_id'                    => array(
 					'type'    => 'string',
-					'default' => '',
-				),
-				'boxShadowColor'              => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'boxShadowHOffset'            => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'boxShadowVOffset'            => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'boxShadowBlur'               => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'boxShadowSpread'             => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'boxShadowPosition'           => array(
-					'type'    => 'string',
-					'default' => 'outset',
-				),
-				'hoverboxShadowColor'         => array(
-					'type'    => 'string',
-					'default' => '#cccccc',
-				),
-				'hoverboxShadowHOffset'       => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'hoverboxShadowVOffset'       => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'hoverboxShadowBlur'          => array(
-					'type'    => 'number',
-					'default' => '6',
-				),
-				'hoverboxShadowSpread'        => array(
-					'type'    => 'number',
-					'default' => '1',
-				),
-				'hoverboxShadowPosition'      => array(
-					'type'    => 'string',
-					'default' => 'outset',
-				),
-				'imageWidth'                  => array(
-					'type' => 'number',
-				),
-				'imageWidthTablet'            => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageWidthMobile'            => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageHeight'                 => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageHeightTablet'           => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageHeightMobile'           => array(
-					'type'    => 'number',
 					'default' => '',
 				),
 			),
@@ -803,48 +588,6 @@ function responsive_block_editor_addons_register_rest_fields_portfolio() {
 			'schema'          => null,
 		)
 	);
-
-	/* Add square featured image source */
-	register_rest_field(
-		array( 'post', 'page' ),
-		'featured_image_src_square',
-		array(
-			'get_callback'    => 'responsive_block_editor_addons_get_image_src_square_portfolio',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-
-	/* Add author info */
-	register_rest_field(
-		'post',
-		'author_info',
-		array(
-			'get_callback'    => 'responsive_block_editor_addons_get_author_info_portfolio',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-	/* Add author info for courses, lesson */
-	register_rest_field(
-		array( 'page', 'post', 'course', 'lesson' ),
-		'rbea_author_info',
-		array(
-			'get_callback'    => 'responsive_block_editor_addons_get_rbea_author_info_portfolio',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-	/* Add excerpt info for courses, lesson */
-	register_rest_field(
-		array( 'page', 'post', 'course', 'lesson' ),
-		'rbea_excerpt_info',
-		array(
-			'get_callback'    => 'responsive_block_editor_addons_get_rbea_excerpt_info_portfolio',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
 }
 add_action( 'rest_api_init', 'responsive_block_editor_addons_register_rest_fields_portfolio' );
 
@@ -863,77 +606,6 @@ function responsive_block_editor_addons_get_image_src_landscape_portfolio( $obje
 		false
 	);
 	return $feat_img_array ? $feat_img_array[0] : '';
-}
-
-/**
- * Get square featured image source for the rest field
- *
- * @param String $object  The object type.
- * @param String $field_name  Name of the field to retrieve.
- * @param String $request  The current request object.
- */
-function responsive_block_editor_addons_get_image_src_square_portfolio( $object, $field_name, $request ) {
-	$feat_img_array = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'responsive-block-editor-addons-block-portfolio-square',
-		false
-	);
-	return $feat_img_array ? $feat_img_array[0] : '';
-}
-
-/**
- * Get author info for the rest field
- *
- * @param String $object  The object type.
- * @param String $field_name  Name of the field to retrieve.
- * @param String $request  The current request object.
- */
-function responsive_block_editor_addons_get_author_info_portfolio( $object, $field_name, $request ) {
-	/* Get the author name */
-	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
-
-	/* Get the author link */
-	$author_data['author_link'] = get_author_posts_url( $object['author'] );
-
-	/* Return the author data */
-	return $author_data;
-}
-
-/**
- * Get author info for the rest field
- *
- * @param String $object  The object type.
- * @param String $field_name  Name of the field to retrieve.
- * @param String $request  The current request object.
- */
-function responsive_block_editor_addons_get_rbea_author_info_portfolio( $object, $field_name, $request ) {
-	/* Get the author name */
-
-	$author = ( isset( $object['author'] ) ) ? $object['author'] : '';
-
-	// Get the author name.
-	$author_data['display_name'] = get_the_author_meta( 'display_name', $author );
-
-	// Get the author link.
-	$author_data['author_link'] = get_author_posts_url( $author );
-
-	// Return the author data.
-	return $author_data;
-}
-
-/**
- * Get excerpt info for the rest field
- *
- * @param String $object  The object type.
- * @param String $field_name  Name of the field to retrieve.
- * @param String $request  The current request object.
- */
-function responsive_block_editor_addons_get_rbea_excerpt_info_portfolio( $object, $field_name, $request ) {
-	$excerpt = wp_trim_excerpt( get_the_excerpt( $object['id'] ) );
-	if ( ! $excerpt ) {
-		$excerpt = null;
-	}
-	return $excerpt;
 }
 
 if ( ! function_exists( 'responsive_block_editor_addons_add_custom_orderby_params' ) ) {
