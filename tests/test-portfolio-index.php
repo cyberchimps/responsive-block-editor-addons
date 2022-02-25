@@ -149,7 +149,7 @@ class Portfolio_Index_Test extends WP_UnitTestCase {
 		$render_code = preg_replace( '/\s+/', '', $render_code );
 		$render_code = preg_replace( '/[0-9]+/', '', $render_code );
 		$month       = gmdate( 'F' );
-		$expected    = '<sectionclass="block-id-responsive-block-editor-addons-block-portfoliofeaturedpostaligncenter"><divclass="responsive-block-editor-addons-portfolio-itemsis-gridcolumns-"><articleid="post-"class="responsive-block-editor-addons-portfolio-itempost-posttype-poststatus-publishformat-standardhentrycategory-uncategorized"style=""><ahref="http://example.org/?p="rel="bookmark"aria-hidden="true"tabindex="-"><divclass="responsive-block-editor-addons-block-portfolio-image"></div><divclass="responsive-block-editor-addons-block-portfolio-image-overlay"><hclass="responsive-block-editor-addons-block-portfolio-titleshow-title-true">TestPost</h></div></a></article></div></section>';
+		$expected    = '<sectionclass="block-id-responsive-block-editor-addons-block-portfoliofeaturedpost}"><divclass="responsive-block-editor-addons-portfolio-itemsis-gridcolumns-"><articleid="post-"class="responsive-block-editor-addons-portfolio-itempost-posttype-poststatus-publishformat-standardhentrycategory-uncategorized"style=""><ahref="http://example.org/?p="rel="bookmark"aria-hidden="true"tabindex="-"><divclass="responsive-block-editor-addons-block-portfolio-image"></div><divclass="responsive-block-editor-addons-block-portfolio-image-overlay"><hclass="responsive-block-editor-addons-block-portfolio-titleshow-title-true">TestPost</h></div></a></article></div></section>';
 		$this->assertEquals( $expected, $render_code );
 	}
 }
