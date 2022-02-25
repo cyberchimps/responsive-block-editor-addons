@@ -3759,6 +3759,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 	public function test_get_responsive_block_portfolio_block_default_attributes() {
 		$expected_values = array(
 			'textAlignment'               => 'left',
+			'postsToShow'					=> 6,
 			'itemRatio'                 => 0.66,
 			'overlayOpacity'                 => 100,
 			'horizontalSpacing'				=> 10,

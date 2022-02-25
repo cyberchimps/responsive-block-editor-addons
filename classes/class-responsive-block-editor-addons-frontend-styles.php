@@ -12933,6 +12933,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
         public static function get_responsive_block_portfolio_block_default_attributes() {
             return array(
                 'textAlignment'               => 'left',
+				'postsToShow'					=> 6,
                 'itemRatio'                 => 0.66,
                 'overlayOpacity'                 => 100,
 				'horizontalSpacing'				=> 10,

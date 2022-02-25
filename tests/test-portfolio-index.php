@@ -94,6 +94,7 @@ class Portfolio_Index_Test extends WP_UnitTestCase {
 	public function test_get_render_portfolio() {
 		$attributes = array(
 			'textAlignment'               => 'left',
+			'postsToShow'					=> 6,
 			'itemRatio'                 => 0.66,
 			'overlayOpacity'                 => 100,
 			'horizontalSpacing'				=> 10,
