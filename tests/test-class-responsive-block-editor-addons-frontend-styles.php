@@ -3758,6 +3758,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 	 */
 	public function test_get_responsive_block_portfolio_block_default_attributes() {
 		$expected_values = array(
+			'block_id'                 => '',
 			'postsToShow'					=> 6,
 			'offset'                      => 0,
 			'postLayout'				=> 'grid',

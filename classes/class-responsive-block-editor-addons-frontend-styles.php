@@ -12932,6 +12932,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
          */
         public static function get_responsive_block_portfolio_block_default_attributes() {
             return array(
+				'block_id'                 => '',
 				'postsToShow'					=> 6,
 				'offset'                      => 0,
 				'postLayout'				=> 'grid',
