@@ -196,10 +196,6 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 
 		$paginations_markup = '';
 
-		if ( $attributes['postPagination'] ) {
-			$paginations_markup = '<div class="responsive-block-editor-addons-post-pagination-wrap">' . $main_class->render_pagination( $grid_query, $attributes ) . '</div>';
-		}
-
 		/* Output the post markup */
 		$block_content = sprintf(
 			'<%1$s class="%2$s">%3$s<div class="%4$s">%5$s</div>%6$s</%1$s>',
