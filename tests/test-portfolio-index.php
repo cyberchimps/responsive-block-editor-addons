@@ -141,7 +141,7 @@ class Portfolio_Index_Test extends WP_UnitTestCase {
 		);
 		global $post;
 		$post        = get_post( self::$block_id );
-		$render_code = responsive_block_editor_addons_render_block_core_latest_posts3( $attributes );
+		$render_code = responsive_block_editor_addons_render_block_core_latest_posts_portfolio( $attributes );
 		$render_code = preg_replace( '/\s+/', '', $render_code );
 		$render_code = preg_replace( '/[0-9]+/', '', $render_code );
 		$month       = gmdate( 'F' );
