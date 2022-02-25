@@ -12818,71 +12818,71 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaHoverBorderColor'       => '',
 			);
 		}
-
-        /**
-         * Get Portfolio CSS
-         *
-         * @param array  $attr The block attributes.
-         * @param string $id The selector ID.
-         * @return array Styles.
-         */
-        public static function get_responsive_block_portfolio_css( $attr, $id ) {
-            $defaults = self::get_responsive_block_portfolio_block_default_attributes();
-            $attr     = array_merge( $defaults, (array) $attr );
-
-            $mobile_selectors = array();
-            $tablet_selectors = array();
-
-            $boxed_content_padding = 0;
-            $content_padding       = 0;
-            if ( 'content' === $attr['layout'] ) {
-                $content_padding       = $attr['contentPadding'];
-                $boxed_content_padding = 0;
-            }
-            if ( 'boxed' === $attr['layout'] ) {
-                $boxed_content_padding = $attr['contentPadding'];
-            }
-
-            $column_gap = '';
-            if ( $attr['columnGap'] ) {
-                $column_gap = $attr['columnGap'];
-            }
-            $row_gap = '';
-            if ( $attr['rowGap'] ) {
-                $row_gap = $attr['rowGap'];
+		
+		/**
+		 * Get Portfolio CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_portfolio_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_portfolio_block_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+			
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+			
+			$boxed_content_padding = 0;
+			$content_padding       = 0;
+			if ( 'content' === $attr['layout'] ) {
+				$content_padding       = $attr['contentPadding'];
+				$boxed_content_padding = 0;
+			}
+			if ( 'boxed' === $attr['layout'] ) {
+				$boxed_content_padding = $attr['contentPadding'];
+			}
+			
+			$column_gap = '';
+			if ( $attr['columnGap'] ) {
+				$column_gap = $attr['columnGap'];
+			}
+			$row_gap = '';
+			if ( $attr['rowGap'] ) {
+				$row_gap = $attr['rowGap'];
 			}
 			$opacity = $attr['overlayOpacity'] / 100;
-
-            $selectors = array(
-                ' .responsive-block-editor-addons-portfolio-items' => array(
-                    'grid-column-gap' => self::get_css_value( $column_gap, 'px' ),
-                    'grid-row-gap'    => self::get_css_value( $row_gap, 'px' ),
-                ),
-                ' .responsive-block-editor-addons-portfolio-items a' => array(
-                    'padding-bottom' => 'calc( '. $attr['itemRatio'] .' * 100% )',
-                ),
-                ' .responsive-block-editor-addons-block-portfolio-image'                     => array(
-                    'border-style'     => $attr['blockBorderStyle'],
-                    'border-color'     => $attr['blockBorderColor'],
-                    'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
-                    'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-                ),
-                ' .responsive-block-editor-addons-block-portfolio-image-overlay'                     => array(
-                    'background-color'     => $attr['overlayBackgroundColor'],
+			
+			$selectors = array(
+				' .responsive-block-editor-addons-portfolio-items' => array(
+					'grid-column-gap' => self::get_css_value( $column_gap, 'px' ),
+					'grid-row-gap'    => self::get_css_value( $row_gap, 'px' ),
+				),
+				' .responsive-block-editor-addons-portfolio-items a' => array(
+					'padding-bottom' => 'calc( ' . $attr['itemRatio'] . ' * 100% )',
+				),
+				' .responsive-block-editor-addons-block-portfolio-image'                     => array(
+					'border-style'     => $attr['blockBorderStyle'],
+					'border-color'     => $attr['blockBorderColor'],
+					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
+					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-portfolio-image-overlay'                     => array(
+					'background-color'     => $attr['overlayBackgroundColor'],
 					'text-align'		=> $attr['overlayTextAlign'],
 					'justify-content'		=> $attr['overlayTextVerticalAlign'],
 					'border-style'     => $attr['blockBorderStyle'],
-                    'border-color'     => $attr['blockBorderColor'],
-                    'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
-                    'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-                ),
+					'border-color'     => $attr['blockBorderColor'],
+					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
+					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+				),
 				' .responsive-block-editor-addons-block-portfolio-image-overlay *'                     => array(
 					'color'     => $attr['overlayTextColor'],
 					'font-family'    => $attr['overlayTextFontFamily'],
-                    'font-size'      => self::get_css_value( $attr['overlayTextFontSize'], 'px' ),
-                    'font-weight'    => $attr['overlayTextFontWeight'],
-                    'line-height'    => $attr['overlayTextLineHeight'],
-                    'text-transform' => $attr['overlayTextTextTransform'],
+					'font-size'      => self::get_css_value( $attr['overlayTextFontSize'], 'px' ),
+					'font-weight'    => $attr['overlayTextFontWeight'],
+					'line-height'    => $attr['overlayTextLineHeight'],
+					'text-transform' => $attr['overlayTextTextTransform'],
 					'margin-left'      => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
 					'margin-right'      => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
 					'margin-top'      => self::get_css_value( $attr['verticalSpacing'], 'px' ),
@@ -12926,7 +12926,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
         }
 
         /**
-         * Get Defaults for post grid block
+         * Get Defaults for portfolio block
          *
          * @return array
          */

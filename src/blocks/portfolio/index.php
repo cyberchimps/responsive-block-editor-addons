@@ -118,18 +118,18 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			/* Get the post title */
 			$title = get_the_title( $post_id );
 
-            if ( ! $title ) {
-                $title = __( 'Untitled', 'responsive-block-editor-addons' );
-            }
-
-            if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
-
-                if (isset($attributes['postTitleTag'])) {
-                    $post_title_tag = $attributes['postTitleTag'];
-                } else {
-                    $post_title_tag = 'h2';
-                }
-            }
+			if ( ! $title ) {
+				$title = __( 'Untitled', 'responsive-block-editor-addons' );
+			}
+			
+			if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
+				
+				if ( isset( $attributes['postTitleTag'] ) ) {
+					$post_title_tag = $attributes['postTitleTag'];
+				} else {
+					$post_title_tag = 'h2';
+				}
+			}
 
 			/* Get the featured image */
 
@@ -139,9 +139,9 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
                                 <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-portfolio-title show-title-%5$s">%3$s</%4$s></div></a>',
 						esc_url( get_permalink( $post_id ) ),
 						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
-                        esc_html( $title ),
-                        esc_attr( $post_title_tag ),
-						esc_html( "true" )
+						esc_html( $title ),
+						esc_attr( $post_title_tag ),
+						esc_html( true )
 					);
 
 			/* Close the post */
