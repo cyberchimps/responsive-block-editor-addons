@@ -101,11 +101,6 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 
 			$wrapper_styles = '';
 
-			/* Background styles. */
-			if ( ! empty( $attributes['bgColor'] ) ) {
-				$wrapper_styles .= 'background-image:' . ( 'background' === $attributes['imagePosition'] ? 'url(' . wp_get_attachment_image_url( $post_thumb_id, $post_thumb_size ) . ' )' : 'none' ) . ';';
-			}
-
 			/* portfolio wrapper styles. */
 			if ( ! empty( $wrapper_styles ) ) {
 				$wrapper_style = $wrapper_styles;
@@ -146,7 +141,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
                         esc_html( $title ),
                         esc_attr( $post_title_tag ),
-						esc_html( $attributes['showTitle'] ? "true" : "false" )
+						esc_html( "true" )
 					);
 
 			/* Close the post */
@@ -320,10 +315,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'string',
 					'default' => '',
 				),
-				'showTitle'             => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
 				'postTitleTag'                => array(
 					'type'    => 'string',
 					'default' => 'h3',
@@ -342,30 +333,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'displayPostDate'             => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'excludeCurrentPost'          => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostExcerpt'          => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostAuthor'           => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostImage'            => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
-				'displayPostLink'             => array(
-					'type'    => 'boolean',
-					'default' => true,
-				),
 				'displayPostTitle'            => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -373,14 +340,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 				'displaySectionTitle'         => array(
 					'type'    => 'boolean',
 					'default' => false,
-				),
-				'postPagination'              => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
-				'equalHeight'                 => array(
-					'type'    => 'boolean',
-					'default' => true,
 				),
 				'postLayout'                  => array(
 					'type'    => 'string',
@@ -390,14 +349,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'number',
 					'default' => 3,
 				),
-				'align'                       => array(
-					'type'    => 'string',
-					'default' => 'center',
-				),
-				'width'                       => array(
-					'type'    => 'string',
-					'default' => 'wide',
-				),
 				'order'                       => array(
 					'type'    => 'string',
 					'default' => 'desc',
@@ -406,17 +357,9 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'readMoreText'                => array(
-					'type'    => 'string',
-					'default' => 'Read More »',
-				),
 				'offset'                      => array(
 					'type'    => 'number',
 					'default' => 0,
-				),
-				'excerptLength'               => array(
-					'type'    => 'number',
-					'default' => 55,
 				),
 				'postType'                    => array(
 					'type'    => 'string',
@@ -429,14 +372,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 				'taxonomyType'                => array(
 					'type'    => 'string',
 					'default' => 'category',
-				),
-				'paginationAlignment'         => array(
-					'type'    => 'string',
-					'default' => 'left',
-				),
-				'paginationLayout'            => array(
-					'type'    => 'string',
-					'default' => '',
 				),
 				'sectionTag'                  => array(
 					'type'    => 'string',
@@ -453,91 +388,13 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'string',
 					'default' => 'full',
 				),
-				'url'                         => array(
-					'type'      => 'string',
-					'source'    => 'attribute',
-					'selector'  => 'img',
-					'attribute' => 'src',
-				),
 				'id'                          => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'bgColor'                     => array(
-					'type'    => 'string',
-					'default' => '#e4e4e4',
-				),
-				'paginationBorderColor'       => array(
-					'type'    => 'string',
-					'default' => '#e4e4e4',
-				),
-				'paginationTextActiveColor'   => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'paginationTextColor'         => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'paginationActiveBorderColor' => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'paginationBorderWidth'       => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'paginationBorderRadius'      => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'paginationSpacing'           => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'imageBorderRadius'           => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'textColor'                   => array(
-					'type'    => 'string',
-					'default' => '#444444',
-				),
-				'previousButtonText'          => array(
-					'type'    => 'string',
-					'default' => 'Previous',
-				),
-				'nextButtonText'              => array(
-					'type'    => 'string',
-					'default' => 'Next',
-				),
-				'imagePosition'               => array(
-					'type'    => 'string',
-					'default' => 'top',
-				),
 				'layout'                      => array(
 					'type'    => 'string',
 					'default' => 'boxed',
-				),
-				'metaColor'                   => array(
-					'type'    => 'string',
-					'default' => '#444444',
-				),
-				'readMoreLinkColor'           => array(
-					'type'    => 'string',
-					'default' => '#0066cc',
-				),
-				'readMoreHoverColor'          => array(
-					'type'    => 'string',
-					'default' => '#0558ab',
-				),
-				'titleColor'                  => array(
-					'type'    => 'string',
-					'default' => '#ffffff',
-				),
-				'titleHoverColor'             => array(
-					'type'    => 'string',
-					'default' => '#444444',
 				),
 				'contentPadding'              => array(
 					'type'    => 'number',
