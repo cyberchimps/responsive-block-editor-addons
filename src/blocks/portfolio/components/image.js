@@ -159,14 +159,19 @@ export default class PostGridImage extends Component {
                     "responsive-block-editor-addons-block-portfolio-image-overlay"
                 )}
             >
+              
                       <this.props.postTitleTag
-                        className="responsive-block-editor-addons-block-portfolio-title"
+                        className={classnames(
+                          "responsive-block-editor-addons-block-portfolio-title",
+                          `show-title-${this.props.showTitle}`,
+                        )}
                         style={{
                         }}
                       >
                           {decodeEntities(this.props.postTitle) ||
                             __("(Untitled)", "responsive-block-editor-addons")}
                       </this.props.postTitleTag>
+                      
             </div>
         </a>
       </Fragment>

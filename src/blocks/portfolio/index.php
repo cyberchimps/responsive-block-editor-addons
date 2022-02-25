@@ -142,11 +142,12 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 					/* Output the featured image */
 					$post_grid_markup .= sprintf(
 						'<a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1"><div class="responsive-block-editor-addons-block-portfolio-image">%2$s</div>
-                                <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-portfolio-title">%3$s</%4$s></div></a>',
+                                <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-portfolio-title show-title-%5$s">%3$s</%4$s></div></a>',
 						esc_url( get_permalink( $post_id ) ),
 						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
                         esc_html( $title ),
-                        esc_attr( $post_title_tag )
+                        esc_attr( $post_title_tag ),
+						esc_html( $attributes['showTitle'] ? "true" : "false" ),
 					);
 			// }
 
@@ -236,15 +237,106 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 		'responsive-block-editor-addons/portfolio',
 		array(
 			'attributes'      => array(
+				'columnGap'                   => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'columnGapTablet'             => array(
+					'type' => 'number',
+				),
+				'columnGapMobile'             => array(
+					'type' => 'number',
+				),
+				'rowGap'                      => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'rowGapTablet'                => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'rowGapMobile'                => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockBorderWidth'            => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBorderRadius'           => array(
+					'type'    => 'number',
+					'default' => '0',
+				),
+				'blockBorderStyle'            => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'blockBorderColor'            => array(
+					'type'    => 'string',
+					'default' => '#333',
+				),
+				'overlayTextAlign'            => array(
+					'type'    => 'string',
+					'default' => 'center',
+				),
+				'overlayTextVerticalAlign'            => array(
+					'type'    => 'string',
+					'default' => 'center',
+				),
+				'horizontalSpacing'            => array(
+					'type'    => 'number',
+					'default' => 10,
+				),
+				'verticalSpacing'            => array(
+					'type'    => 'number',
+					'default' => 15,
+				),
+				'overlayBackgroundColor'            => array(
+					'type'    => 'string',
+					'default' => '#ff6f61',
+				),
+				'overlayTextColor'            => array(
+					'type'    => 'string',
+					'default' => '#fff',
+				),
+				'overlayOpacity'                 => array(
+					'type'    => 'number',
+					'default' => 100,
+				),
+				'overlayTextFontFamily'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'overlayTextFontSize'               => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'overlayTextLineHeight'             => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'overlayTextFontWeight'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'overlayTextTextTransform'          => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'showTitle'             => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'postTitleTag'                => array(
+					'type'    => 'string',
+					'default' => 'h3',
+				),
+				'itemRatio'             => array(
+					'type'    => 'number',
+					'default' => 0.66,
+				),
 				'categories'                  => array(
 					'type' => 'string',
-				),
-				'tags'                        => array(
-					'type' => 'string',
-				),
-				'textAlignment'               => array(
-					'type'    => 'string',
-					'default' => 'left',
 				),
 				'className'                   => array(
 					'type' => 'string',
@@ -252,10 +344,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 				'postsToShow'                 => array(
 					'type'    => 'number',
 					'default' => 6,
-				),
-				'stackonMobile'               => array(
-					'type'    => 'boolean',
-					'default' => true,
 				),
 				'displayPostDate'             => array(
 					'type'    => 'boolean',
@@ -296,10 +384,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 				'equalHeight'                 => array(
 					'type'    => 'boolean',
 					'default' => true,
-				),
-				'postTitleTag'                => array(
-					'type'    => 'string',
-					'default' => 'h3',
 				),
 				'postLayout'                  => array(
 					'type'    => 'string',
@@ -502,28 +586,12 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'string',
 					'default' => '',
 				),
-				'titleFontSize'               => array(
-					'type'    => 'number',
-					'default' => '',
-				),
 				'titleFontSizeMobile'         => array(
 					'type'    => 'number',
 					'default' => '',
 				),
 				'titleFontSizeTablet'         => array(
 					'type'    => 'number',
-					'default' => '',
-				),
-				'titleLineHeight'             => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'titleFontWeight'             => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'titleTextTransform'          => array(
-					'type'    => 'string',
 					'default' => '',
 				),
 				'metaFontSize'                => array(
@@ -547,10 +615,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'default' => '',
 				),
 				'metaTextTransform'           => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'titleFontFamily'             => array(
 					'type'    => 'string',
 					'default' => '',
 				),
@@ -633,44 +697,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 				'titleBottomSpacingTablet'    => array(
 					'type'    => 'number',
 					'default' => '',
-				),
-				'columnGap'                   => array(
-					'type'    => 'number',
-					'default' => 0,
-				),
-				'columnGapTablet'             => array(
-					'type' => 'number',
-				),
-				'columnGapMobile'             => array(
-					'type' => 'number',
-				),
-				'rowGap'                      => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'rowGapTablet'                => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'rowGapMobile'                => array(
-					'type'    => 'number',
-					'default' => '',
-				),
-				'blockBorderWidth'            => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'blockBorderRadius'           => array(
-					'type'    => 'number',
-					'default' => '0',
-				),
-				'blockBorderStyle'            => array(
-					'type'    => 'string',
-					'default' => 'none',
-				),
-				'blockBorderColor'            => array(
-					'type'    => 'string',
-					'default' => '#333',
 				),
 				'pageLimit'                   => array(
 					'type'    => 'number',

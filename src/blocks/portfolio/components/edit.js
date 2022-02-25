@@ -2,9 +2,6 @@
  * External dependencies
  */
 
-import isUndefined from "lodash/isUndefined";
-import pickBy from "lodash/pickBy";
-import moment from "moment";
 import classnames from "classnames";
 import Inspector from "./inspector";
 import PostGridImage from "./image";
@@ -24,15 +21,14 @@ const { AlignmentToolbar } = wp.editor;
 const {
   Placeholder,
   Spinner,
-  Toolbar,
   PanelBody,
   SelectControl,
 } = wp.components;
 
 const {
   BlockAlignmentToolbar,
+  BlockVerticalAlignmentToolbar,
   BlockControls,
-  InspectorControls,
 } = wp.blockEditor;
 
 class LatestPostsBlock extends Component {
@@ -79,19 +75,7 @@ class LatestPostsBlock extends Component {
       taxonomyList,
       categoriesList,
     } = this.props;
-
-    var boxShadowPositionCSS = attributes.boxShadowPosition;
-
-    if ("outset" === attributes.boxShadowPosition) {
-      boxShadowPositionCSS = "";
-    }
-    var hoverboxShadowPositionCSS = attributes.hoverboxShadowPosition;
-
-    if ("outset" === attributes.hoverboxShadowPosition) {
-      hoverboxShadowPositionCSS = "";
-    }
-    const { paginationMarkup } = this.props.attributes;
-
+  
     // Check if there are posts
     const hasPosts = Array.isArray(latestPosts) && latestPosts.length;
 
@@ -143,7 +127,7 @@ class LatestPostsBlock extends Component {
           <Placeholder
             icon="admin-post"
             label={__(
-              "Blocks Post and Page Grid",
+              "Portfolio",
               "responsive-block-editor-addons"
             )}
           >
@@ -162,22 +146,6 @@ class LatestPostsBlock extends Component {
       latestPosts.length > attributes.postsToShow
         ? latestPosts.slice(0, attributes.postsToShow)
         : latestPosts;
-
-    // Add toolbar controls to change layout
-    const layoutControls = [
-      {
-        icon: "grid-view",
-        title: __("Grid View", "responsive-block-editor-addons"),
-        onClick: () => setAttributes({ postLayout: "grid" }),
-        isActive: "grid" === attributes.postLayout,
-      },
-      {
-        icon: "list-view",
-        title: __("List View", "responsive-block-editor-addons"),
-        onClick: () => setAttributes({ postLayout: "list" }),
-        isActive: "list" === attributes.postLayout,
-      },
-    ];
 
     // Get the section tag
     const SectionTag = attributes.sectionTag
@@ -201,17 +169,7 @@ class LatestPostsBlock extends Component {
 
 	let queryControls = (
 		<PanelBody title={__("Query", "responsive-block-editor-addons")} initialOpen={true}>
-			  <p>{__("Text Alignment", "responsive-block-editor-addons")}</p>
-			  <AlignmentToolbar
-				value={attributes.textAlignment}
-				onChange={(value) =>
-				  setAttributes({
-					textAlignment: value,
-				  })
-				}
-				controls={["left", "center", "right"]}
-				isCollapsed={false}
-			  />
+			
 			  <Fragment>
 			  <SelectControl
 				label={__("Content Type", "responsive-block-editor-addons")}
@@ -251,13 +209,26 @@ class LatestPostsBlock extends Component {
         <BlockControls>
           <BlockAlignmentToolbar
             label={__("Block Alignment", "responsive-block-editor-addons")}
-            value={attributes.align}
+            value={attributes.overlayTextAlign}
             onChange={(value) => {
-              setAttributes({ align: value });
+              setAttributes({ overlayTextAlign: value });
             }}
-            controls={["left", "center", "right", "wide", "full"]}
+            controls={["left", "center", "right"]}
           />
-          <Toolbar controls={layoutControls} />
+          <BlockVerticalAlignmentToolbar
+					value={ attributes.overlayTextVerticalAlign }
+					onChange={ ( nextAlign ) => {
+            if ( 'top' === nextAlign){
+						  setAttributes( { overlayTextVerticalAlign: 'flex-start' } );
+            }
+            if ( 'center' === nextAlign){
+						  setAttributes( { overlayTextVerticalAlign: 'center' } );
+            } 
+            if ( 'bottom' === nextAlign){
+						  setAttributes( { overlayTextVerticalAlign: 'flex-end' } );
+            }
+					} }
+				/>
         </BlockControls>
 
         <SectionTag
@@ -267,11 +238,8 @@ class LatestPostsBlock extends Component {
             "responsive-block-editor-addons-block-portfolio"
           )}
         >
-		  {attributes.excerptFontFamily && loadGoogleFont(attributes.excerptFontFamily)}
-		  {attributes.metaFontFamily && loadGoogleFont(attributes.metaFontFamily)}
-		  {attributes.titleFontFamily && loadGoogleFont(attributes.titleFontFamily)}
-		  {attributes.continueFontFamily && loadGoogleFont(attributes.continueFontFamily)}
-          {attributes.displaySectionTitle && attributes.sectionTitle && (
+          {attributes.overlayTextFontFamily && loadGoogleFont(attributes.overlayTextFontFamily)}
+		  {attributes.displaySectionTitle && attributes.sectionTitle && (
             <SectionTitleTag className="responsive-block-editor-addons-portfolio-section-title">
               {attributes.sectionTitle}
             </SectionTitleTag>
@@ -319,19 +287,13 @@ class LatestPostsBlock extends Component {
                     imgLink={post.link}
                     postTitleTag={PostTag}
                     postTitle = {post.title.rendered.trim()}
+                    showTitle = {attributes.showTitle}
                   />
                 
                     
               </article>
             ))}
           </div>
-          {true === attributes.postPagination &&
-            "empty" !== paginationMarkup && (
-              <div
-                dangerouslySetInnerHTML={{ __html: paginationMarkup }}
-                className="responsive-block-editor-addons-post-pagination-wrap"
-              ></div>
-            )}
         </SectionTag>
       </Fragment>
     );
@@ -346,7 +308,6 @@ export default compose([
       postsToShow,
       orderBy,
       categories,
-      paginationMarkup,
       excludeCurrentPost,
       taxonomyType,
       postType,
@@ -354,21 +315,6 @@ export default compose([
 
     const { getEntityRecords } = select("core");
 
-    if (true === attributes.postPagination) {
-      jQuery.ajax({
-        url: responsive_globals.ajax_url,
-        data: {
-          action: "responsive_block_editor_post_pagination",
-          attributes: props.attributes,
-          nonce: responsive_globals.responsive_block_editor_ajax_nonce,
-        },
-        dataType: "json",
-        type: "POST",
-        success: function (data) {
-          setAttributes({ paginationMarkup: data.data });
-        },
-      });
-    }
     let allTaxonomy = responsive_globals.all_taxonomy;
     let currentTax = allTaxonomy[postType];
     let taxonomy = "";
