@@ -115,8 +115,8 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 				esc_attr( $post_classes )
 			);
 
-            /* Get the post title */
-            $title = get_the_title( $post_id );
+			/* Get the post title */
+			$title = get_the_title( $post_id );
 
             if ( ! $title ) {
                 $title = __( 'Untitled', 'responsive-block-editor-addons' );
@@ -152,7 +152,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "block-id-{$attributes['block_id']} responsive-block-editor-addons-block-portfolio featured{$attributes['postType']} align{$attributes['align']}";
+		$class = "block-id-{$attributes['block_id']} responsive-block-editor-addons-block-portfolio featured{$attributes['postType']} }";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . $attributes['className'];
