@@ -121,9 +121,9 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			if ( ! $title ) {
 				$title = __( 'Untitled', 'responsive-block-editor-addons' );
 			}
-			
+
 			if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
-				
+
 				if ( isset( $attributes['postTitleTag'] ) ) {
 					$post_title_tag = $attributes['postTitleTag'];
 				} else {
@@ -225,194 +225,194 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 		'responsive-block-editor-addons/portfolio',
 		array(
 			'attributes'      => array(
-				'columnGap'                   => array(
+				'columnGap'                => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'columnGapTablet'             => array(
+				'columnGapTablet'          => array(
 					'type' => 'number',
 				),
-				'columnGapMobile'             => array(
+				'columnGapMobile'          => array(
 					'type' => 'number',
 				),
-				'rowGap'                      => array(
+				'rowGap'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'rowGapTablet'                => array(
+				'rowGapTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'rowGapMobile'                => array(
+				'rowGapMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBorderWidth'            => array(
+				'blockBorderWidth'         => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockBorderRadius'           => array(
+				'blockBorderRadius'        => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockBorderStyle'            => array(
+				'blockBorderStyle'         => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'blockBorderColor'            => array(
+				'blockBorderColor'         => array(
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'overlayTextAlign'            => array(
+				'overlayTextAlign'         => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'overlayTextVerticalAlign'            => array(
+				'overlayTextVerticalAlign' => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'horizontalSpacing'            => array(
+				'horizontalSpacing'        => array(
 					'type'    => 'number',
 					'default' => 10,
 				),
-				'verticalSpacing'            => array(
+				'verticalSpacing'          => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'overlayBackgroundColor'            => array(
+				'overlayBackgroundColor'   => array(
 					'type'    => 'string',
 					'default' => '#ff6f61',
 				),
-				'overlayTextColor'            => array(
+				'overlayTextColor'         => array(
 					'type'    => 'string',
 					'default' => '#fff',
 				),
-				'overlayOpacity'                 => array(
+				'overlayOpacity'           => array(
 					'type'    => 'number',
 					'default' => 100,
 				),
-				'overlayTextFontFamily'             => array(
+				'overlayTextFontFamily'    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'overlayTextFontSize'               => array(
+				'overlayTextFontSize'      => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'overlayTextLineHeight'             => array(
+				'overlayTextLineHeight'    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'overlayTextFontWeight'             => array(
+				'overlayTextFontWeight'    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'overlayTextTextTransform'          => array(
+				'overlayTextTextTransform' => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'postTitleTag'                => array(
+				'postTitleTag'             => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'itemRatio'             => array(
+				'itemRatio'                => array(
 					'type'    => 'number',
 					'default' => 0.66,
 				),
-				'categories'                  => array(
+				'categories'               => array(
 					'type' => 'string',
 				),
-				'className'                   => array(
+				'className'                => array(
 					'type' => 'string',
 				),
-				'postsToShow'                 => array(
+				'postsToShow'              => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'displayPostTitle'            => array(
+				'displayPostTitle'         => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displaySectionTitle'         => array(
+				'displaySectionTitle'      => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'postLayout'                  => array(
+				'postLayout'               => array(
 					'type'    => 'string',
 					'default' => 'grid',
 				),
-				'columns'                     => array(
+				'columns'                  => array(
 					'type'    => 'number',
 					'default' => 3,
 				),
-				'order'                       => array(
+				'order'                    => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'                     => array(
+				'orderBy'                  => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'offset'                      => array(
+				'offset'                   => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'postType'                    => array(
+				'postType'                 => array(
 					'type'    => 'string',
 					'default' => 'post',
 				),
-				'postTaxonomy'                => array(
+				'postTaxonomy'             => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'taxonomyType'                => array(
+				'taxonomyType'             => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'sectionTag'                  => array(
+				'sectionTag'               => array(
 					'type'    => 'string',
 					'default' => 'section',
 				),
-				'sectionTitle'                => array(
+				'sectionTitle'             => array(
 					'type' => 'string',
 				),
-				'sectionTitleTag'             => array(
+				'sectionTitleTag'          => array(
 					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'imageSize'                   => array(
+				'imageSize'                => array(
 					'type'    => 'string',
 					'default' => 'full',
 				),
-				'id'                          => array(
+				'id'                       => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'layout'                      => array(
+				'layout'                   => array(
 					'type'    => 'string',
 					'default' => 'boxed',
 				),
-				'contentPadding'              => array(
+				'contentPadding'           => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'contentPaddingMobile'        => array(
+				'contentPaddingMobile'     => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'mobileContentPadding'        => array( // For compatibility with v1.3.2.
+				'mobileContentPadding'     => array( // For compatibility with v1.3.2.
 					'type'    => 'number',
 					'default' => 999,
 				),
-				'contentPaddingTablet'        => array(
+				'contentPaddingTablet'     => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'taxonomyType'                => array(
+				'taxonomyType'             => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'block_id'                    => array(
+				'block_id'                 => array(
 					'type'    => 'string',
 					'default' => '',
 				),

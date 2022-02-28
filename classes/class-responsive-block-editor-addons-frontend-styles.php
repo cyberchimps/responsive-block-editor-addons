@@ -7300,8 +7300,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-style'     => 'solid',
 					'border-color'     => $attr['socialIconBorderColor'],
 					'border-radius'    => self::get_css_value( $attr['iconBorderRadius'], '%' ),
-					'height'          => self::get_css_value( $attr['iconSize'], 'px' ),
-					'width'           => self::get_css_value( $attr['iconSize'], 'px' ),
+					'height'           => self::get_css_value( $attr['iconSize'], 'px' ),
+					'width'            => self::get_css_value( $attr['iconSize'], 'px' ),
 				),
 
 				' .responsive-block-editor-addons-team-social-icons li:hover a' => array(
@@ -12820,7 +12820,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaHoverBorderColor'       => '',
 			);
 		}
-		
+
 		/**
 		 * Get Portfolio CSS
 		 *
@@ -12831,10 +12831,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		public static function get_responsive_block_portfolio_css( $attr, $id ) {
 			$defaults = self::get_responsive_block_portfolio_block_default_attributes();
 			$attr     = array_merge( $defaults, (array) $attr );
-			
+
 			$mobile_selectors = array();
 			$tablet_selectors = array();
-			
+
 			$boxed_content_padding = 0;
 			$content_padding       = 0;
 			if ( 'content' === $attr['layout'] ) {
@@ -12844,7 +12844,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'boxed' === $attr['layout'] ) {
 				$boxed_content_padding = $attr['contentPadding'];
 			}
-			
+
 			$column_gap = '';
 			if ( $attr['columnGap'] ) {
 				$column_gap = $attr['columnGap'];
@@ -12854,7 +12854,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$row_gap = $attr['rowGap'];
 			}
 			$opacity = $attr['overlayOpacity'] / 100;
-			
+
 			$selectors = array(
 				' .responsive-block-editor-addons-portfolio-items' => array(
 					'grid-column-gap' => self::get_css_value( $column_gap, 'px' ),
@@ -12863,130 +12863,126 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-portfolio-items a' => array(
 					'padding-bottom' => 'calc( ' . $attr['itemRatio'] . ' * 100% )',
 				),
-				' .responsive-block-editor-addons-block-portfolio-image'                     => array(
+				' .responsive-block-editor-addons-block-portfolio-image' => array(
+					'border-style'  => $attr['blockBorderStyle'],
+					'border-color'  => $attr['blockBorderColor'],
+					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
+					'border-width'  => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+				),
+				' .responsive-block-editor-addons-block-portfolio-image-overlay' => array(
+					'background-color' => $attr['overlayBackgroundColor'],
+					'text-align'       => $attr['overlayTextAlign'],
+					'justify-content'  => $attr['overlayTextVerticalAlign'],
 					'border-style'     => $attr['blockBorderStyle'],
 					'border-color'     => $attr['blockBorderColor'],
 					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
 					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
 				),
-				' .responsive-block-editor-addons-block-portfolio-image-overlay'                     => array(
-					'background-color'     => $attr['overlayBackgroundColor'],
-					'text-align'		=> $attr['overlayTextAlign'],
-					'justify-content'		=> $attr['overlayTextVerticalAlign'],
-					'border-style'     => $attr['blockBorderStyle'],
-					'border-color'     => $attr['blockBorderColor'],
-					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
-					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-				),
-				' .responsive-block-editor-addons-block-portfolio-image-overlay *'                     => array(
-					'color'     => $attr['overlayTextColor'],
+				' .responsive-block-editor-addons-block-portfolio-image-overlay *' => array(
+					'color'          => $attr['overlayTextColor'],
 					'font-family'    => $attr['overlayTextFontFamily'],
 					'font-size'      => self::get_css_value( $attr['overlayTextFontSize'], 'px' ),
 					'font-weight'    => $attr['overlayTextFontWeight'],
 					'line-height'    => $attr['overlayTextLineHeight'],
 					'text-transform' => $attr['overlayTextTextTransform'],
-					'margin-left'      => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
-					'margin-right'      => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
-					'margin-top'      => self::get_css_value( $attr['verticalSpacing'], 'px' ),
-					'margin-bottom'      => self::get_css_value( $attr['verticalSpacing'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['verticalSpacing'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['verticalSpacing'], 'px' ),
 				),
-                ' .responsive-block-editor-addons-block-portfolio-image-overlay:hover'                     => array(
-					'opacity'			=> $opacity,
+				' .responsive-block-editor-addons-block-portfolio-image-overlay:hover' => array(
+					'opacity' => $opacity,
 				),
-                ' .responsive-block-editor-addons-portfolio-items article' => array(
-                    'padding' => self::get_css_value( $boxed_content_padding, 'px' ),
-					'margin' => 0,
-					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
-                ),
-                ' .is-list .responsive-block-editor-addons-portfolio-item:not(:last-child)' => array(
-                    'margin-bottom' => self::get_css_value( $row_gap, 'px' ),
-                ),
-                ' .is-list article:last-child' => array(
-                    'margin-bottom' => 0,
-                ),
-                
-            );
+				' .responsive-block-editor-addons-portfolio-items article' => array(
+					'padding'       => self::get_css_value( $boxed_content_padding, 'px' ),
+					'margin'        => 0,
+					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
+				),
+				' .is-list .responsive-block-editor-addons-portfolio-item:not(:last-child)' => array(
+					'margin-bottom' => self::get_css_value( $row_gap, 'px' ),
+				),
+				' .is-list article:last-child' => array(
+					'margin-bottom' => 0,
+				),
 
-            $mobile_selectors = array(
-                
-            );
+			);
 
-            $tablet_selectors = array(
-                
-            );
+			$mobile_selectors = array();
 
-            $combined_selectors = array(
-                'desktop' => $selectors,
-                'tablet'  => $tablet_selectors,
-                'mobile'  => $mobile_selectors,
-            );
+			$tablet_selectors = array();
 
-            $id              = '.responsive-block-editor-addons-block-portfolio.block-id-' . $id;
-            $css             = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
-            $css['desktop'] .= '.page-template-gutenberg-fullwidth ' . $id . ' .responsive-block-editor-addons-portfolio-items article {padding:' . ( 'boxed' === $attr['layout'] ? $attr['contentPadding'] ? $attr['contentPadding'] : '0' : '0' ) . 'px;}';
-            return $css;
-        }
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
 
-        /**
-         * Get Defaults for portfolio block
-         *
-         * @return array
-         */
-        public static function get_responsive_block_portfolio_block_default_attributes() {
-            return array(
+			$id              = '.responsive-block-editor-addons-block-portfolio.block-id-' . $id;
+			$css             = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			$css['desktop'] .= '.page-template-gutenberg-fullwidth ' . $id . ' .responsive-block-editor-addons-portfolio-items article {padding:' . ( 'boxed' === $attr['layout'] ? $attr['contentPadding'] ? $attr['contentPadding'] : '0' : '0' ) . 'px;}';
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for portfolio block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_portfolio_block_default_attributes() {
+			return array(
 				'block_id'                 => '',
-				'postsToShow'					=> 6,
-				'offset'                      => 0,
-				'postLayout'				=> 'grid',
-				'categories'              => '',
-                'itemRatio'                 => 0.66,
-                'overlayOpacity'                 => 100,
-				'horizontalSpacing'				=> 10,
-				'verticalSpacing'				=> 15,
-				'overlayTextAlign'		=> 'center',
-				'overlayTextVerticalAlign'		=> 'center',
-                'overlayTextFontSize'               => '',
-                'overlayTextLineHeight'             => '',
-                'overlayTextFontWeight'             => '',
-                'overlayTextTextTransform'          => '',
-                'overlayTextFontFamily'          => '',
-				'overlayBackgroundColor'		=> '#ff6f61',
-				'overlayTextColor'		=> '#ffffff',
-				'stackonMobile'               => true,
-                'displayPostTitle'            => true,
-                'displaySectionTitle'         => false,
-                'postTitleTag'                => 'h3',
-                'postLayout'                  => 'grid',
-                'columns'                     => 3,
-                'align'                       => 'center',
-                'width'                       => 'wide',
-                'orderBy'                     => 'date',
-                'order'                       => 'desc',
-                'postType'                    => 'post',
-                'postTaxonomy'                => 'category',
-                'taxonomyType'                => 'category',
-                'sectionTag'                  => 'section',
-                'sectionTitle'                => '',
-                'sectionTitleTag'             => 'h2',
-                'imageSize'                   => 'full',
-                'id'                          => '',
-                'bgColor'                     => '#e4e4e4',
-                'layout'                      => 'boxed',
-                'contentPadding'              => 0,
-                'contentPaddingMobile'        => '',
-                'mobileContentPadding'        => 999, 
-                'contentPaddingTablet'        => '',
-                'columnGap'                   => 0,
-                'rowGap'                      => 0,
-                'blockBorderWidth'            => '0',
-                'blockBorderRadius'           => '0',
-                'blockBorderStyle'            => 'none',
-                'blockBorderColor'            => '#333',
-                'taxonomyType'                => 'category',
-            );
-        }
+				'postsToShow'              => 6,
+				'offset'                   => 0,
+				'postLayout'               => 'grid',
+				'categories'               => '',
+				'itemRatio'                => 0.66,
+				'overlayOpacity'           => 100,
+				'horizontalSpacing'        => 10,
+				'verticalSpacing'          => 15,
+				'overlayTextAlign'         => 'center',
+				'overlayTextVerticalAlign' => 'center',
+				'overlayTextFontSize'      => '',
+				'overlayTextLineHeight'    => '',
+				'overlayTextFontWeight'    => '',
+				'overlayTextTextTransform' => '',
+				'overlayTextFontFamily'    => '',
+				'overlayBackgroundColor'   => '#ff6f61',
+				'overlayTextColor'         => '#ffffff',
+				'stackonMobile'            => true,
+				'displayPostTitle'         => true,
+				'displaySectionTitle'      => false,
+				'postTitleTag'             => 'h3',
+				'postLayout'               => 'grid',
+				'columns'                  => 3,
+				'align'                    => 'center',
+				'width'                    => 'wide',
+				'orderBy'                  => 'date',
+				'order'                    => 'desc',
+				'postType'                 => 'post',
+				'postTaxonomy'             => 'category',
+				'taxonomyType'             => 'category',
+				'sectionTag'               => 'section',
+				'sectionTitle'             => '',
+				'sectionTitleTag'          => 'h2',
+				'imageSize'                => 'full',
+				'id'                       => '',
+				'bgColor'                  => '#e4e4e4',
+				'layout'                   => 'boxed',
+				'contentPadding'           => 0,
+				'contentPaddingMobile'     => '',
+				'mobileContentPadding'     => 999,
+				'contentPaddingTablet'     => '',
+				'columnGap'                => 0,
+				'rowGap'                   => 0,
+				'blockBorderWidth'         => '0',
+				'blockBorderRadius'        => '0',
+				'blockBorderStyle'         => 'none',
+				'blockBorderColor'         => '#333',
+				'taxonomyType'             => 'category',
+			);
+		}
 
-        /**
+		/**
 		 * Generate gradient effect
 		 *
 		 * @param string $color1  primary color.
