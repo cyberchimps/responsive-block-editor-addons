@@ -7234,6 +7234,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['descriptionSpacing'], 'px' ),
 				),
 
+				' .responsive-block-editor-addons-team-social-icons .dashicons' => array(
+					'display'           => 'inline-block',
+				),
+
 				' .responsive-block-editor-addons-team-social-icons .dashicons.dashicons-twitter' => array(
 					'color'           => $attr['socialIconColor'],
 					'font-size'       => self::get_css_value( $attr['iconSize'], 'px' ),
@@ -7300,8 +7304,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-style'     => 'solid',
 					'border-color'     => $attr['socialIconBorderColor'],
 					'border-radius'    => self::get_css_value( $attr['iconBorderRadius'], '%' ),
-					'height'           => self::get_css_value( $attr['iconSize'], 'px' ),
-					'width'            => self::get_css_value( $attr['iconSize'], 'px' ),
 				),
 
 				' .responsive-block-editor-addons-team-social-icons li:hover a' => array(
