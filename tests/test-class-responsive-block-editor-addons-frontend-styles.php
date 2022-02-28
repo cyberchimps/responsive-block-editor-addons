@@ -3752,4 +3752,63 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 		$values          = self::$rbea_frontend_styles->get_responsive_block_instagram_default_attributes();
 		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
 	}
+
+	/**
+	 * Test for portfolio block default attributes
+	 */
+	public function test_get_responsive_block_portfolio_block_default_attributes() {
+		$expected_values = array(
+			'block_id'                 => '',
+			'postsToShow'					=> 6,
+			'offset'                      => 0,
+			'postLayout'				=> 'grid',
+			'categories'              => '',
+			'itemRatio'                 => 0.66,
+			'overlayOpacity'                 => 100,
+			'horizontalSpacing'				=> 10,
+			'verticalSpacing'				=> 15,
+			'overlayTextAlign'		=> 'center',
+			'overlayTextVerticalAlign'		=> 'center',
+			'overlayTextFontSize'               => '',
+			'overlayTextLineHeight'             => '',
+			'overlayTextFontWeight'             => '',
+			'overlayTextTextTransform'          => '',
+			'overlayTextFontFamily'          => '',
+			'overlayBackgroundColor'		=> '#ff6f61',
+			'overlayTextColor'		=> '#ffffff',
+			'stackonMobile'               => true,
+			'displayPostTitle'            => true,
+			'displaySectionTitle'         => false,
+			'postTitleTag'                => 'h3',
+			'postLayout'                  => 'grid',
+			'columns'                     => 3,
+			'align'                       => 'center',
+			'width'                       => 'wide',
+			'orderBy'                     => 'date',
+			'order'                       => 'desc',
+			'postType'                    => 'post',
+			'postTaxonomy'                => 'category',
+			'taxonomyType'                => 'category',
+			'sectionTag'                  => 'section',
+			'sectionTitle'                => '',
+			'sectionTitleTag'             => 'h2',
+			'imageSize'                   => 'full',
+			'id'                          => '',
+			'bgColor'                     => '#e4e4e4',
+			'layout'                      => 'boxed',
+			'contentPadding'              => 0,
+			'contentPaddingMobile'        => '',
+			'mobileContentPadding'        => 999, 
+			'contentPaddingTablet'        => '',
+			'columnGap'                   => 0,
+			'rowGap'                      => 0,
+			'blockBorderWidth'            => '0',
+			'blockBorderRadius'           => '0',
+			'blockBorderStyle'            => 'none',
+			'blockBorderColor'            => '#333',
+			'taxonomyType'                => 'category',
+		);
+		$values          = self::$rbea_frontend_styles->get_responsive_block_portfolio_block_default_attributes();
+		$this->assertEmpty( array_diff_assoc( $expected_values, $values ) );
+	}
 }
