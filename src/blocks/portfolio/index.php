@@ -120,21 +120,21 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 				esc_attr( $post_classes )
 			);
 
-            /* Get the post title */
-            $title = get_the_title( $post_id );
+			/* Get the post title */
+			$title = get_the_title( $post_id );
 
-            if ( ! $title ) {
-                $title = __( 'Untitled', 'responsive-block-editor-addons' );
-            }
+			if ( ! $title ) {
+				$title = __( 'Untitled', 'responsive-block-editor-addons' );
+			}
 
-            if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
+			if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
 
-                if (isset($attributes['postTitleTag'])) {
-                    $post_title_tag = $attributes['postTitleTag'];
-                } else {
-                    $post_title_tag = 'h2';
-                }
-            }
+				if ( isset( $attributes['postTitleTag'] ) ) {
+					$post_title_tag = $attributes['postTitleTag'];
+				} else {
+					$post_title_tag = 'h2';
+				}
+			}
 
 			/* Get the featured image */
 			if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
@@ -146,12 +146,11 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
                                 <div class="responsive-block-editor-addons-block-portfolio-image-overlay"><%4$s class="responsive-block-editor-addons-block-post-grid-title-1">Hi %3$s</%4$s></div></a>',
 						esc_url( get_permalink( $post_id ) ),
 						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
-                        esc_html( $title ),
-                        esc_attr( $post_title_tag )
+						esc_html( $title ),
+						esc_attr( $post_title_tag )
 					);
 				}
 			}
-
 
 			/* Close the post */
 			$post_grid_markup .= "</article>\n";
@@ -616,11 +615,11 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageBottomSpacingTablet'          => array(
+				'imageBottomSpacingTablet'    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageBottomSpacingMobile'          => array(
+				'imageBottomSpacingMobile'    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
