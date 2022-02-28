@@ -37,7 +37,7 @@ registerBlockType(
   {
     title: __("Call To Action", "responsive-block-editor-addons"),
     description: __(
-      "Add a call to action section with a title, text, and a button.",
+      "Add a call to action section with a title, text, and a button",
       "responsive-block-editor-addons"
     ),
     icon: ResponsiveBlockEditorAddonsIcons.call_to_action,

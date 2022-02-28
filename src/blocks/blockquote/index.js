@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/blockquote", {
   title: __("Blockquote", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add an blockquote in your website",
+    "Embed and highlight statements with the Gutenberg Blockquote Block",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.blockquote,

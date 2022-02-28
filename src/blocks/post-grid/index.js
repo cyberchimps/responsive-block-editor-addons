@@ -30,7 +30,7 @@ registerBlockType(
       "responsive-block-editor-addons"
     ),
     description: __(
-      "Add a grid or list of customizable posts or pages.",
+      "Add a grid or list of customizable posts or page anywhere on your website",
       "responsive-block-editor-addons"
     ),
     icon: ResponsiveBlockEditorAddonsIcons.post_grid,

@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenber
 Requires at least: 5.0
 Tested up to: 5.8.2
 Requires PHP: 5.6
-Stable tag: 1.5.2
+Stable tag: 1.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,7 +46,7 @@ Have a look at our customizable and feature rich blocks from the Responsive Gute
 - [Section Block](https://cyberchimps.com/blocks/section/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks): Section block acts as an outer wrapper and allows adding any Gutenberg block within it. Use the section block to create a page with different content areas, which helps you to manage layouts, backgrounds, spacing, and more.
 - [Info-Block](https://cyberchimps.com/blocks/info-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks) : Design creative and informative boxes with image, heading and subheading. You can now display information about features on your website in elegant info boxes. This is perfect for letting your visitors understand the features of your products and services.
 - [Image Boxes](https://cyberchimps.com/blocks/image-box/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks) : Build a beautiful gallery of images with the Gutenberg Image Boxes block to highlight your portfolio, photos, and more.
-- [Table of Contents](https://cyberchimps.com/blocks/table-of-content-new/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): This block allows access to large contents of the post/page through the heading of the contents. This makes it easier for visitors to directly go to the specific section on the page or the post.
+- [Table of Contents](https://cyberchimps.com/blocks/table-of-content/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): This block allows access to large contents of the post/page through the heading of the contents. This makes it easier for visitors to directly go to the specific section on the page or the post.
 - [Icon-List](https://cyberchimps.com/blocks/icon-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks) : Create impressive lists on your website. Design your own styled lists. Pick your favorite icons or images to highlight items. Use this to create checklists, feature lists, or any other items on your pages.
 - [Shape-Divider](https://cyberchimps.com/blocks/shape-divider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): The Shape-Divider Block allows you to create a visually beautiful transition between your content with an optional divider. Add shapes like Wavy, Hills, Angled, Sloped, etc., with one click.
 
@@ -160,7 +160,7 @@ READY-TO-USE STARTER WEBSITE TEMPLATES FOR GUTENBERG
 [Fashion Shop WordPress Template](https://ccreadysites.cyberchimps.com/gfashion-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
 [Pet Shop WordPress Template](https://ccreadysites.cyberchimps.com/gpet-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
 [Ecommerce Fashion WordPress Template](https://ccreadysites.cyberchimps.com/gecommerce-fashion/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Furniture Shop](https://ccreadysites.cyberchimps.com/gfurniture-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
+[Furniture Shop WordPress Template](https://ccreadysites.cyberchimps.com/gfurniture-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
 
 Check out all [Gutenberg Website Demos](https://cyberchimps.com/wordpress-themes/?page-builder=gutenberg&utm_source=wporg&utm_medium=rbea&utm_campaign=readme0)
 
@@ -215,14 +215,24 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Screenshots ==
 
-1. Advanced Columns
-2. Info Box
-3. Icon List Block
-4. Testimonial Block
-5. Shape Divider Block
-6. Post-TimeLine Block
+1. Feature Grid
+2. Advanced Heading
+3. Info Box
+4. Image Slider
+5. Post Carousel
+6. Progress Bar
+7. Shape Divider
 
 == Changelog ==
+= 1.5.4 - 27th January 2022 =
+* New - Compatibility with WordPress 5.9
+
+= 1.5.3 - 30th December 2021 =
+* Fix - Multi Button - Mobile font size not working
+* Fix - Post Timeline - Button text is not center aligned in mobile view
+* Fix - Google Map - Height not working when set less than 150px 
+* Fix - Info Block - Icon vertical alignment is broken if given background to it
+
 = 1.5.2 - 29th November 2021 =
 * New - Revamped getting started page
 * Feature - Post and Page Grid Block - Added spacing option for image

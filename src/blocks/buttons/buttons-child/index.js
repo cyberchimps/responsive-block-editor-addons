@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/buttons-child", {
   title: __("Buttons Child", "responsive-block-editor-addons"),
   description: __(
-    "Add buttons to group together.",
+    "Add and customize individual buttons",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.buttons_child,

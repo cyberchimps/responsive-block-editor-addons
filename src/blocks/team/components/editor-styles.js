@@ -186,6 +186,11 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(socialIconSpacing, "px"),
     },
 
+    " .responsive-block-editor-addons-team-social-icons.edit-block a": {
+      "height": generateCSSUnit(iconSize, "px"),
+      "width": generateCSSUnit(iconSize, "px"),
+    },
+
     " .responsive-block-editor-addons-team-social-icons.edit-block .dashicons.dashicons-twitter": {
       "color": socialIconColor,
       "font-size": generateCSSUnit(iconSize, "px"),

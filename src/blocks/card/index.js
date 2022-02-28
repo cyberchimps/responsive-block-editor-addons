@@ -39,7 +39,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/card", {
   title: __("Card", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add cards to describe your product, service or a person.",
+    "This block allows you to add cards to describe your product, service or a person",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.card,

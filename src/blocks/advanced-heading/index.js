@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/advanced-heading", {
   title: __("Advanced Heading", "responsive-block-editor-addons"),
   description: __(
-    "Add a combination of a heading and a sub-heading with a separator in between.",
+    "Add a combination of a heading and a sub-heading with a separator in between",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,

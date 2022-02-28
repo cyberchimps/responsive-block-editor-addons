@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/googlemap", {
   title: __("Google Map", "responsive-block-editor-addons"),
   description: __(
-    "Add an address or location to drop a pin on a Google map.",
+    "Add an address or location to drop a pin on a Google map",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.googlemap,

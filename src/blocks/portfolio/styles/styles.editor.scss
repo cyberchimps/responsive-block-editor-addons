@@ -12,7 +12,9 @@
   .components-base-control:nth-of-type(3) {
   display: none;
 }
-
+.responsive-block-editor-addons-portfolio-alignment {
+  margin-left: 20px;
+}
 .responsive-block-editor-addons-block-portfolio-markup-settings {
   .components-base-control__help {
     margin-top: 8px;
@@ -83,10 +85,6 @@
 }
 .responsive-block-editor-addons-portfolio-items article {
   padding: 30px;
-
-  .responsive-block-editor-addons-block-portfolio-title {
-    margin-top: 0 !important;
-  }
 }
 .responsive-block-editor-addons-block-portfolio-excerpt .read-more {
   display: none;

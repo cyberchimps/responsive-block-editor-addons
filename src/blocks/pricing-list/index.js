@@ -29,7 +29,7 @@ var desc_text = __(
 registerBlockType("responsive-block-editor-addons/pricing-list", {
   title: __("Pricing List", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add pricing List with multiple rows and columns.",
+    "Display a customizable pricing list of your services or products anywhere on your website",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.pricing_list,

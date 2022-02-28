@@ -8,8 +8,8 @@ import classnames from "classnames";
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Placeholder, Dashicon } = wp.components;
-
-export default class PostGridImage extends Component {
+const { decodeEntities } = wp.htmlEntities;
+export default class PortfolioImage extends Component {
   constructor(props) {
     super(...arguments);
 
@@ -97,7 +97,8 @@ export default class PostGridImage extends Component {
             "responsive-block-editor-addons-block-portfolio-image"
           )}
         >
-            <img
+            { this.state.imageUrl && 
+            (<img
               src={
                 this.state.imageUrl
                   ? this.state.imageUrl
@@ -106,6 +107,7 @@ export default class PostGridImage extends Component {
               alt={this.props.imgAlt}
               className={this.props.imgClass}
             />
+            )}
 
           {
             /* If we don't have the selected image size, show a warning */
@@ -157,6 +159,19 @@ export default class PostGridImage extends Component {
                     "responsive-block-editor-addons-block-portfolio-image-overlay"
                 )}
             >
+              
+                      <this.props.postTitleTag
+                        className={classnames(
+                          "responsive-block-editor-addons-block-portfolio-title",
+                          `show-title-${this.props.showTitle}`,
+                        )}
+                        style={{
+                        }}
+                      >
+                          {decodeEntities(this.props.postTitle) ||
+                            __("(Untitled)", "responsive-block-editor-addons")}
+                      </this.props.postTitleTag>
+                      
             </div>
         </a>
       </Fragment>

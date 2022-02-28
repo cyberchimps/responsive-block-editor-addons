@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/flipbox", {
   title: __("Flipbox", "responsive-block-editor-addons"),
   description: __(
-    "This block allows you to add flipbox to your website.",
+    "Display icons, images, text with beautiful animations that flip on hover",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.flipbox,

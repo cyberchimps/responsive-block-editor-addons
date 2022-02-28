@@ -13,7 +13,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 registerBlockType("responsive-block-editor-addons/image-hotspot", {
   title: __("Image Hotspot", "responsive-block-editor-addons"),
   description: __(
-    "Highlight specific parts of the image with animated pointers to make images more interactive and digestible.",
+    "Highlight specific parts of the image with animated pointers to make images more interactive and digestible",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.image_hotspot,
