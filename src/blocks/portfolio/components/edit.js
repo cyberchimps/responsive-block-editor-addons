@@ -287,7 +287,7 @@ class LatestPostsBlock extends Component {
                     imgLink={post.link}
                     postTitleTag={PostTag}
                     postTitle = {post.title.rendered.trim()}
-                    showTitle = {attributes.showTitle}
+                    showTitle = {attributes.displayPostTitle}
                   />
                 
                     
