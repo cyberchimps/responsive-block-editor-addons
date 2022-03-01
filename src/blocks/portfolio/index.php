@@ -122,6 +122,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 				$title = __( 'Untitled', 'responsive-block-editor-addons' );
 			}
 
+			$post_title_tag = 'h3';
 			if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
 
 				if ( isset( $attributes['postTitleTag'] ) ) {
@@ -141,7 +142,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 						wp_get_attachment_image( $post_thumb_id, $post_thumb_size ),
 						esc_html( $title ),
 						esc_attr( $post_title_tag ),
-						esc_html( true )
+						esc_html( $attributes['displayPostTitle'] ? 'true' : 'false' )
 					);
 
 			/* Close the post */

@@ -210,14 +210,14 @@ export default class Inspector extends Component {
                 />
                 <ToggleControl
                 label={__("Show Title", "responsive-block-editor-addons")}
-                checked={attributes.showTitle}
+                checked={attributes.displayPostTitle}
                 onChange={() =>
                   this.props.setAttributes({
-                    showTitle: !attributes.showTitle,
+                    displayPostTitle: !attributes.displayPostTitle,
                   })
                 }
               />
-              {attributes.showTitle && (
+              {attributes.displayPostTitle && (
                 <SelectControl
                   label={__(
                     "Title HTML Tag",
