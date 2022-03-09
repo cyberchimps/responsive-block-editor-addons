@@ -123,7 +123,7 @@ const attributes = {
     type: "number",
   },
   iconSize: {
-    type: "string",
+    type: "number",
   },
   titleSpacing: {
     type: "number",
