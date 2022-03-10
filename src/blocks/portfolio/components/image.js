@@ -91,7 +91,7 @@ export default class PortfolioImage extends Component {
   render() {
     return (
       <Fragment>
-        <a href={this.props.imgLink} target="_blank" rel="bookmark">
+        <a href="#" rel="bookmark">
         <div
           className={classnames(
             "responsive-block-editor-addons-block-portfolio-image"
