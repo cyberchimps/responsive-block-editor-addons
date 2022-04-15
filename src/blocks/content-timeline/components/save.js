@@ -34,6 +34,7 @@ export default class Save extends Component {
       headingTag,
       backgroundColor,
       opacity,
+      stack,
     } = this.props.attributes;
     var data_copy = [...timelineItems];
     var content_align_class = AlignClass(this.props.attributes, 0); // Get classname for layout alignment
@@ -41,6 +42,7 @@ export default class Save extends Component {
 
     var display_inner_date = false;
     var isCenter = "";
+    var stackedDate = "";
     var border_with_color = "13px solid" + backgroundColor;
 
     let imgopacity = opacity / 100;
@@ -79,7 +81,10 @@ export default class Save extends Component {
                     day_align_class = DayAlignClass(
                       this.props.attributes,
                       index
-                    ); //
+                    );
+                    if (stack != "none") {
+                      stackedDate = isCenter;
+                    }
                     isCenter = "";
                   }
                   const Tag = headingTag;
@@ -119,6 +124,11 @@ export default class Save extends Component {
                                       "responsive-timeline__inner-date-new"
                                     }
                                   >
+                                    <span
+                                      className={`responsive-timeline__inner-date-new--${stack}`}
+                                    >
+                                      {stackedDate}
+                                    </span>
                                     {isCenter}
                                   </div>
                                 )}
