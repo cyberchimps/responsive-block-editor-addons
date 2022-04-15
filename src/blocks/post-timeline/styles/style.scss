@@ -3071,3 +3071,33 @@ h6.responsive-block-editor-addons-timeline__heading {
     }
   }
 }
+
+.responsive-block-editor-addons-timeline__center-block {
+  &.responsive-block-editor-addons-timeline__responsive-none,
+  &.responsive-block-editor-addons-timeline__responsive-tablet,
+  &.responsive-block-editor-addons-timeline__responsive-mobile {
+    .responsive-block-editor-addons-timeline__date-inner {
+      padding-left: 20px;
+
+      .responsive-block-editor-addons-timeline__date-new {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 976px) {
+  .responsive-block-editor-addons-timeline__center-block {
+    &.responsive-block-editor-addons-timeline__responsive-tablet .responsive-block-editor-addons-timeline__date-inner .responsive-block-editor-addons-timeline__date-new {
+      display: inline;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .responsive-block-editor-addons-timeline__center-block {
+    &.responsive-block-editor-addons-timeline__responsive-mobile .responsive-block-editor-addons-timeline__date-inner .responsive-block-editor-addons-timeline__date-new {
+      display: inline;
+    }
+  }
+}
