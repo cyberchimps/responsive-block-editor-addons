@@ -381,3 +381,17 @@ ul.slick-dots li button:before {
         align-items: center;
     }
 }
+
+.responsive-block-editor-addons-block-post-carousel {
+  button.slick-arrow {
+    &:not(:hover):not(:active) {
+      background: initial;
+    }
+  }
+
+  .slick-dots button[id^="slick-slide-control"] {
+    &:not(:hover):not(:active) {
+      background: initial;
+    }
+  }
+}
