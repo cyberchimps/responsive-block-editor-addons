@@ -4,6 +4,7 @@ const attributes = {
   },
   address: {
     type: "string",
+    default: "New York",
   },
   zoom: {
     type: "number",
