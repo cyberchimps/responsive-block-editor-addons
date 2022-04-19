@@ -92,7 +92,7 @@ export default class Save extends Component {
                     "responsive-timeline__icon-new out-view-responsive-timeline__icon ";
                   var post_date = t_date[index].title;
                   if ("custom" != dateFormat) {
-                    post_date = t_date[index].title;
+                    post_date = dateI18n(dateFormat, t_date[index].title);
                     if (post_date === "Invalid date") {
                       post_date = t_date[index].title;
                     }
