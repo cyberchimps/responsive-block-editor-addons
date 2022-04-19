@@ -207,6 +207,7 @@ export default class Edit extends Component {
         backgroundColor,
         opacity,
         icon,
+        stack,
       },
       setAttributes,
       mergeBlocks,
@@ -221,6 +222,7 @@ export default class Edit extends Component {
     var day_align_class = DayAlignClass(this.props.attributes, 0); // Get classname for day alignment.
     var display_inner_date = false;
     var isCenter = "";
+    var stackedDate = "";
     var border_with_color = "13px solid" + backgroundColor;
 
     let imgopacity = opacity / 100;
@@ -257,6 +259,9 @@ export default class Edit extends Component {
                       this.props.attributes,
                       index
                     );
+                    if (stack != "none") {
+                      stackedDate = isCenter;
+                    }
                     isCenter = "";
                   }
 
@@ -292,6 +297,11 @@ export default class Edit extends Component {
                                       "responsive-timeline__inner-date-new"
                                     }
                                   >
+                                    <span
+                                      className={`responsive-timeline__inner-date-new--${stack}`}
+                                    >
+                                      {stackedDate}
+                                    </span>
                                     {isCenter}
                                   </div>
                                 )}
