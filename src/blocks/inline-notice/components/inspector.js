@@ -450,7 +450,7 @@ export default class Inspector extends Component {
                   />
                 </PanelBody>
                 <PanelBody
-                  title={__("Margin Padding", "responsive-block-editor-addons")}
+                  title={__("Block Margin", "responsive-block-editor-addons")}
                   initialOpen={false}
                 >
                   <ResponsiveMarginControl
