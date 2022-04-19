@@ -317,3 +317,8 @@
 .responsive-block-editor-addons-testomonial__outer-wrap .slick-track {
   max-width: initial !important;
 }
+
+.responsive-block-editor-addons-slick-carousel ul.slick-dots {
+  position: relative;
+  transform: unset;
+}
