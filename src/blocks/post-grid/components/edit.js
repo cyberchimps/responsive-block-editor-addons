@@ -119,19 +119,19 @@ class LatestPostsBlock extends Component {
 
     // Check the post type
     const isPost = "post" === attributes.postType;
-    const isCourse = "course" === attributes.postType;
-    const isLesson = "lesson" === attributes.postType;
+    const isCourse = "sfwd-courses" === attributes.postType;
+    const isLesson = "sfwd-lessons" === attributes.postType;
 
     // Post type options
     const postTypeOptions = [
       { value: "post", label: __("Post", "responsive-block-editor-addons") },
       { value: "page", label: __("Page", "responsive-block-editor-addons") },
       {
-        value: "course",
+        value: "sfwd-courses",
         label: __("Courses", "responsive-block-editor-addons"),
       },
       {
-        value: "lesson",
+        value: "sfwd-lessons",
         label: __("Lessons", "responsive-block-editor-addons"),
       },
     ];
