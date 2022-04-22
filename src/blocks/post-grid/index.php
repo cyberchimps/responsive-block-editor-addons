@@ -165,7 +165,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 				);
 			}
 
-			if ( isset( $attributes['postType'] ) && ( 'post' === $attributes['postType'] || 'course' === $attributes['postType'] || 'lesson' === $attributes['postType'] ) ) {
+			if ( isset( $attributes['postType'] ) && ( 'post' === $attributes['postType'] || 'sfwd-courses' === $attributes['postType'] || 'sfwd-lessons' === $attributes['postType'] ) ) {
 				/* Wrap the byline content */
 				$post_grid_markup .= sprintf(
 					'<div class="responsive-block-editor-addons-block-post-grid-byline">'
@@ -909,7 +909,7 @@ function responsive_block_editor_addons_register_rest_fields() {
 	);
 	/* Add author info for courses, lesson */
 	register_rest_field(
-		array( 'page', 'post', 'course', 'lesson' ),
+		array( 'page', 'post', 'sfwd-courses', 'sfwd-lessons' ),
 		'rbea_author_info',
 		array(
 			'get_callback'    => 'responsive_block_editor_addons_get_rbea_author_info',
@@ -919,7 +919,7 @@ function responsive_block_editor_addons_register_rest_fields() {
 	);
 	/* Add excerpt info for courses, lesson */
 	register_rest_field(
-		array( 'page', 'post', 'course', 'lesson' ),
+		array( 'page', 'post', 'sfwd-courses', 'sfwd-lessons' ),
 		'rbea_excerpt_info',
 		array(
 			'get_callback'    => 'responsive_block_editor_addons_get_rbea_excerpt_info',
