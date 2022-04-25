@@ -32,7 +32,7 @@ function rbea_instagram_fetch_data( $url ) {
  * @param Number $expire time.
  * @return void [description]
  */
-function rbea_instagram_data_to_cache( $result, $suffix = '', $expire = ( 60 * 60 * 6 ) ) {
+function rbea_instagram_data_to_cache( $result, $suffix = '', $expire = ( 60 * 10 ) ) {
 	set_transient( 'rbea-instagram-api_' . $suffix, $result, $expire );
 }
 
