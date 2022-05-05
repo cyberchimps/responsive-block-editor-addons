@@ -132,11 +132,7 @@ export default class Edit extends Component {
                   >
                     <img
                       className="responsive-block-editor-addons-instagram-image"
-                      src={
-                        img.media_type === "IMAGE"
-                          ? img.media_url
-                          : img.thumbnail_url
-                      }
+                      src={ 'VIDEO' === img.media_type ? img.thumbnail_url : img.media_url }
                       alt={img.caption ? img.caption : ""}
                     />
                   </div>
