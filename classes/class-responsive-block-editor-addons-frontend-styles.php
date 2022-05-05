@@ -7295,7 +7295,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-team-social-icons a' => array(
-					'line-height'      => 'initial',
+					'line-height'      => '1',
 					'margin-left'      => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
 					'margin-right'     => self::get_css_value( $attr['socialIconSpacing'], 'px' ),
 					'padding'          => self::get_css_value( $attr['iconBackgroundSize'], 'px' ),
