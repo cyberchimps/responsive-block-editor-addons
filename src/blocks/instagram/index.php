@@ -74,7 +74,7 @@ function rbea_instagram_render_callback( array $attributes ) {
 	$border_radius   = $attributes['borderRadius'];
 
 	// Can make a suffix of first 20 chars and the last 30 chars from the token. Hopefully unique.
-	$suffix = substr_replace( $token, '', 20, count( $token ) - 50 );
+	$suffix = substr_replace( $token, '', 20, strlen( $token ) - 50 );
 
 	if ( ! rbea_instagram_data_from_cache( $suffix ) ) {
 		$result = json_decode( rbea_instagram_fetch_data( "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token={$token}" ) );
