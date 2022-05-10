@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenber
 Requires at least: 5.0
 Tested up to: 5.8.2
 Requires PHP: 5.6
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -224,6 +224,19 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+= 1.6.1 - 11th May 2022 =
+* Improvement - Inline Notice - Changed label of Margin Padding panel under Advanced section to Block Margin Panel
+* Improvement - Google Maps - Added a specific default location instead of random location.
+* Fix - Portfolio Block - UI issue when used inside Section block and link target issue of the section
+* Fix - Section Block - Bottom padding control value not working properly
+* Fix - Content Timeline - Date not being displayed on mobile devices and Date Format not working for any device
+* Fix - Post Timeline - Date not being displayed on mobile devices
+* Fix - Post Carousel - Styles conflicting with 2021 theme for navigation dots and arrows
+* Fix - Team Block - Social Icon height getting improper value
+* Fix - Testimonial Slider - Navigation arrows and dots were not visible in the frontend if used in Section Block
+* Fix - Instagram Block - Not working properly
+* Fix - Responsive Post and Page Grid - Not working for Content Type as Courses and Lessons.
+
 = 1.6.0 - 9th March 2022 =
 * New - Portfolio Block
 * Fix - Info Block - Typography is not working
