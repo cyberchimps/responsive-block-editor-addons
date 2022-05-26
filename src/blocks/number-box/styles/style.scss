@@ -1,0 +1,22 @@
+.responsive-block-editor-addons-block-number-box {
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+
+    .rbea-number-box-container {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    .rbea-number-box-block {
+        font-size: 51px;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+}
