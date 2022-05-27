@@ -11,8 +11,6 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
-import BoxShadowControl from "../../../utils/components/box-shadow";
-import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import rbeaOptions from "../../advanced-text/components/rbea-options";
@@ -176,6 +174,7 @@ export default class Inspector extends Component {
         textDecorationSubHeading,
 
         showBackground,
+        numberBoxAlignment,
         numberBoxOpacity,
         numberBoxBackgroundImage,
         verticalAlign,
@@ -303,10 +302,10 @@ export default class Inspector extends Component {
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
                           <AlignmentToolbar
-                            value={headingAlignment}
+                            value={numberBoxAlignment}
                             onChange={(value) =>
                               setAttributes({
-                                headingAlignment: value,
+                                numberBoxAlignment: value,
                               })
                             }
                             controls={["left", "center", "right"]}

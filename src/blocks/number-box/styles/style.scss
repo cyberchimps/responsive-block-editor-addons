@@ -1,7 +1,10 @@
 .responsive-block-editor-addons-block-number-box {
     padding: 0;
     margin: 0 auto;
-    display: flex;
+    
+    .rbea-number-box {
+        display: flex;
+    }
 
     .rbea-number-box-container {
         width: 100px;

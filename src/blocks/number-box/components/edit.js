@@ -48,7 +48,8 @@
          headingAlignment,
          block_id,
          numberText,
-         showBackground
+         showBackground,
+         numberBoxAlignment
        },
        setAttributes,
      } = this.props;
@@ -56,8 +57,8 @@
      return [
        <BlockControls key="controls">
          <AlignmentToolbar
-           value={headingAlignment}
-           onChange={(value) => setAttributes({ headingAlignment: value })}
+           value={numberBoxAlignment}
+           onChange={(value) => setAttributes({ numberBoxAlignment: value })}
          />
        </BlockControls>,
        // Show the block controls on focus
@@ -70,8 +71,10 @@
            `block-${block_id}`
          )}
        >
-         <div className="rbea-number-box-container">
-           <div className="rbea-number-box-block" contentEditable="true">{numberText}</div>
+         <div className="rbea-number-box">
+          <div className="rbea-number-box-container">
+            <div className="rbea-number-box-block" contentEditable="true">{numberText}</div>
+          </div>
          </div>
        </div>
      ];

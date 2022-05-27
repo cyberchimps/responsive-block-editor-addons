@@ -56,6 +56,8 @@
    var selectors = {
      "": {
        "text-align": headingAlignment,
+     },
+     " .rbea-number-box": {
        "justify-content": numberBoxAlignment,
      },
      " .responsive-heading-title-text": {

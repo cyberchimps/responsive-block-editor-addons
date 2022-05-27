@@ -36,14 +36,6 @@ registerBlockType("responsive-block-editor-addons/number-box", {
   ],
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example heading */
-            headingTitle: __( 'Write a Heading', 'responsive-block-editor-addons' ),
-            /* translators: example description */
-            headingDesc: __( 'Write some text', 'responsive-block-editor-addons' ),
-        },
-    },
 
   supports: {
 		anchor: true
