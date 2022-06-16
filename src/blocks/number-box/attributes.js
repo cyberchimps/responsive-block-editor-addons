@@ -171,17 +171,35 @@ const attributes = {
 
 
 
-  numberText: {
+  numberValue: {
     type: "string",
     default: '101'
+  },
+  numberBoxAlignment: {
+    type: "string",
+    default: "center"
+  },
+  numberBoxAlignmentTablet: {
+    type: "string",
+    default: "center"
+  },
+  numberBoxAlignmentMobile: {
+    type: "string",
+    default: "center"
+  },
+  numberBoxBackgroundColor: {
+    type: "string",
+    default: "#fff"
+  },
+  numberBoxBackgroundOpacity: {
+    type: "number",
+  },
+  numberBoxBlockMinHeight: {
+    type: "number",
   },
   showBackground: {
     type: "boolean",
     default: false,
-  },
-  numberBoxAlignment: {
-    type: "string",
-    default: "flex-start"
   },
   numberBoxOpacity: {
     type: "number",
@@ -191,7 +209,7 @@ const attributes = {
     type: "string",
     default: "",
   },
-  verticalAlign: {
+  contentVerticalAlign: {
     type: "string",
     default: "flex-start",
   },
@@ -238,17 +256,41 @@ const attributes = {
   numberBoxRightMarginMobile: {
     type: "number",
   },
-  numberBoxBorder: {
+  numberBoxBlockBorder: {
     type: "string",
-    default: "solid",
+    default: "none",
   },
-  numberBoxBorderRadius: {
-    type: "number",
-    default: 12,
-  },
-  numberBoxShadow: {
+  numberBoxBlockBorderWidth : {
     type: "number",
     default: 0,
+  },
+  numberBoxBlockBorderColor : {
+    type: "string",
+    default: '#fff',
+  },
+  numberBoxBlockBorderRadius: {
+    type: "number",
+    default: 0,
+  },
+  numberBoxBlockShadowHorizontalOffset: {
+    type: "number",
+    default: 0,
+  },
+  numberBoxBlockShadowVerticalOffset: {
+    type: "number",
+    default: 0,
+  },
+  numberBoxBlockShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  numberBoxBlockShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  numberBoxBlockShadowColor: {
+    type: "string",
+    default: '#fff',
   },
   showShape: {
     type: "boolean",

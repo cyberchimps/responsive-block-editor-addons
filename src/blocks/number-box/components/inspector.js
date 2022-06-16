@@ -120,7 +120,7 @@ export default class Inspector extends Component {
       },
     ];
 
-    
+
 
     const colors = [
       { name: 'red', color: '#f00' },
@@ -131,53 +131,15 @@ export default class Inspector extends Component {
     // Setup the attributes
     const {
       attributes: {
-        headSpacing,
-        separatorSpacing,
-        seperatorPosition,
-        seperatorStyle,
-        separatorHeight,
-        separatorWidth,
-        separatorWidthType,
-        separatorColor,
-        headingTitleFontFamily,
-        headingTitleFontSize,
-        headingTitleFontSizeTablet,
-        headingTitleFontSizeMobile,
-        headingTitleFontWeight,
-        headingTitleLineHeight,
-        headingTitleLetterSpacing,
-        headingTitleColor,
-        subHeadingTitleFontFamily,
-        subHeadingTitleFontSize,
-        subHeadingTitleFontSizeMobile,
-        subHeadingTitleFontSizeTablet,
-        subHeadingTitleFontWeight,
-        subHeadingTitleLineHeight,
-        subHeadingTitleLetterSpacing,
-        subHeadingTitleColor,
-        headingTag,
-        level,
-        showHeading,
-        showSubHeading,
-        showSeparator,
-        headingAlignment,
-        headingAlignmentTablet,
-        headingAlignmentMobile,
-        subheadSpacing,
-        headSpacingTablet,
-        subheadSpacingTablet,
-        separatorSpacingTablet,
-        headSpacingMobile,
-        subheadSpacingMobile,
-        separatorSpacingMobile,
-        textDecoration,
-        textDecorationSubHeading,
-
         showBackground,
         numberBoxAlignment,
-        numberBoxOpacity,
+        numberBoxAlignmentTablet,
+        numberBoxAlignmentMobile,
+        numberBoxBackgroundColor,
+        numberBoxBackgroundOpacity,
         numberBoxBackgroundImage,
-        verticalAlign,
+        numberBoxBlockMinHeight,
+        contentVerticalAlign,
         maxContentWidth,
         contentAlign,
         numberBoxTopMargin,
@@ -192,9 +154,16 @@ export default class Inspector extends Component {
         numberBoxBottomMarginMobile,
         numberBoxLeftMarginMobile,
         numberBoxRightMarginMobile,
-        numberBoxBorder,
-        numberBoxBorderRadius,
-        numberBoxShadow,
+        numberBoxBlockBorder,
+        numberBoxBlockBorderWidth,
+        numberBoxBlockBorderColor,
+        numberBoxBlockBorderRadius,
+        numberBoxOpacity,
+        numberBoxBlockShadowHorizontalOffset,
+        numberBoxBlockShadowVerticalOffset,
+        numberBoxBlockShadowBlur,
+        numberBoxBlockShadowSpread,
+        numberBoxBlockShadowColor,
 
         showShape,
         shapeBorderWidth,
@@ -259,10 +228,10 @@ export default class Inspector extends Component {
                             )}
                           </p>
                           <AlignmentToolbar
-                            value={headingAlignmentMobile}
+                            value={numberBoxAlignmentMobile}
                             onChange={(value) =>
                               setAttributes({
-                                headingAlignmentMobile: value,
+                                numberBoxAlignmentMobile: value,
                               })
                             }
                             controls={["left", "center", "right"]}
@@ -282,10 +251,10 @@ export default class Inspector extends Component {
                             )}
                           </p>
                           <AlignmentToolbar
-                            value={headingAlignmentTablet}
+                            value={numberBoxAlignmentTablet}
                             onChange={(value) =>
                               setAttributes({
-                                headingAlignmentTablet: value,
+                                numberBoxAlignmentTablet: value,
                               })
                             }
                             controls={["left", "center", "right"]}
@@ -342,16 +311,19 @@ export default class Inspector extends Component {
                   </p>
                   <ColorPalette
                     colors={colors}
-                    value={this.state.color}
-                    onChange={(color) => this.setState({ color })}
+                    value={numberBoxBackgroundColor}
+                    onChange={(color) => setAttributes({ numberBoxBackgroundColor: color })}
                   />
 
                   <RangeControl
-                    label={__("Opacity", "responsive-block-editor-addons")}
-                    value={numberBoxOpacity}
-                    onChange={(value) => setAttributes({ numberBoxOpacity: value })}
+                    label={__("Background Color Opacity", "responsive-block-editor-addons")}
+                    value={numberBoxBackgroundOpacity}
+                    onChange={(value) =>
+                      setAttributes({ numberBoxBackgroundOpacity: value !== undefined ? value : 100 })}
                     min={0}
                     max={100}
+                    resetFallbackValue={100}
+                    allowReset={true}
                   />
 
                   <MediaUpload
@@ -359,7 +331,9 @@ export default class Inspector extends Component {
                       "Select Background Image",
                       "responsive-block-editor-addons"
                     )}
-                    onSelect={this.onSelectImageOne}
+                    onSelect={(media) =>
+                      console.log('selected ' + JSON.stringify(media) + numberBoxBackgroundImage)
+                    }
                     allowedTypes={["image"]}
                     value={numberBoxBackgroundImage}
                     render={({ open }) => (
@@ -394,10 +368,21 @@ export default class Inspector extends Component {
               title={__("Size and Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+              <RangeControl
+                label={__("Min Height", "responsive-block-editor-addons")}
+                value={numberBoxBlockMinHeight}
+                onChange={(value) =>
+                  setAttributes({ numberBoxBlockMinHeight: value !== undefined ? value : 0 })}
+                min={0}
+                max={1000}
+                resetFallbackValue={0}
+                allowReset={true}
+              />
+
               <SelectControl
-                label={__("Vertical Align", "responsive-block-editor-addons")}
-                value={verticalAlign}
-                onChange={(value) => setAttributes({ verticalAlign: value })}
+                label={__("Content Vertical Align", "responsive-block-editor-addons")}
+                value={contentVerticalAlign}
+                onChange={(value) => setAttributes({ contentVerticalAlign: value })}
                 options={[
                   { value: "flex-start", label: __("Top", "responsive-block-editor-addons") },
                   { value: "flex-end", label: __("Bottom", "responsive-block-editor-addons") },
@@ -406,18 +391,18 @@ export default class Inspector extends Component {
               />
 
               <RangeControl
-                label={__("Content Width(%)", "responsive-block-editor-addons")}
+                label={__("Content Width", "responsive-block-editor-addons")}
                 value={maxContentWidth}
                 min={0}
-                max={100}
+                max={1500}
                 onChange={(value) =>
-                  setAttributes({ maxContentWidth: value !== undefined ? value : 50 })
+                  setAttributes({ maxContentWidth: value !== undefined ? value : 1500 })
                 }
-                allowReset
+                allowReset={true}
               />
 
               <SelectControl
-                label={__("Horizontal Align", "responsive-block-editor-addons")}
+                label={__("Content Horizontal Align", "responsive-block-editor-addons")}
                 value={contentAlign}
                 onChange={(value) => setAttributes({ contentAlign: value })}
                 options={[
@@ -428,7 +413,7 @@ export default class Inspector extends Component {
               />
 
               <ResponsiveMarginControl
-                attrNameTemplate="container%s"
+                attrNameTemplate="numberBox%s"
                 values={{
                   desktopTop: numberBoxTopMargin,
                   desktopBottom: numberBoxBottomMargin,
@@ -450,13 +435,13 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             <PanelBody
-              title={__("Borders and Shadow", "responsive-block-editor-addons")}
+              title={__("Borders", "responsive-block-editor-addons")}
               initialOpen={false}
             >
               <SelectControl
-                label={__("Borders", "responsive-block-editor-addons")}
-                value={numberBoxBorder}
-                onChange={(value) => setAttributes({ numberBoxBorder: value })}
+                label={__("Border Style", "responsive-block-editor-addons")}
+                value={numberBoxBlockBorder}
+                onChange={(value) => setAttributes({ numberBoxBlockBorder: value })}
                 options={[
                   { value: "none", label: __("None", "responsive-block-editor-addons") },
                   { value: "solid", label: __("Solid", "responsive-block-editor-addons") },
@@ -466,29 +451,99 @@ export default class Inspector extends Component {
               />
 
               <RangeControl
+                label={__("Border Width", "responsive-block-editor-addons")}
+                value={numberBoxBlockBorderWidth}
+                min={0}
+                max={5}
+                onChange={(value) =>
+                  setAttributes({ numberBoxBlockBorderWidth: value !== undefined ? value : 0 })
+                }
+                allowReset={true}
+              />
+
+              <p>{__("Border Color", "responsive-block-editor-addons")}</p>
+              <ColorPalette
+                colors={colors}
+                value={numberBoxBlockBorderColor}
+                onChange={(color) => setAttributes({ numberBoxBlockBorderColor: color })}
+              />
+
+              <RangeControl
                 label={__("Border Radius", "responsive-block-editor-addons")}
-                value={numberBoxBorderRadius}
+                value={numberBoxBlockBorderRadius}
                 onChange={(value) =>
                   setAttributes({
-                    numberBoxBorderRadius: value !== undefined ? value : 12,
+                    numberBoxBlockBorderRadius: value !== undefined ? value : 0,
                   })
                 }
                 min={0}
                 max={50}
                 allowReset
               />
+            </PanelBody>
 
+            <PanelBody
+              title={__("Shadow", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              
               <RangeControl
-                label={__("Shadow / Outline", "responsive-block-editor-addons")}
-                value={numberBoxShadow}
+                label={__("Horizontal Offset", "responsive-block-editor-addons")}
+                value={numberBoxBlockShadowHorizontalOffset}
                 onChange={(value) =>
                   setAttributes({
-                    numberBoxShadow: value !== undefined ? value : 0,
+                    numberBoxBlockShadowHorizontalOffset: value !== undefined ? value : 0,
+                  })
+                }
+                min={-100}
+                max={100}
+                allowReset
+              />
+
+              <RangeControl
+                label={__("Vertical Offset", "responsive-block-editor-addons")}
+                value={numberBoxBlockShadowVerticalOffset}
+                onChange={(value) =>
+                  setAttributes({
+                    numberBoxBlockShadowVerticalOffset: value !== undefined ? value : 0,
+                  })
+                }
+                min={-100}
+                max={100}
+                allowReset
+              />
+
+              <RangeControl
+                label={__("Blur", "responsive-block-editor-addons")}
+                value={numberBoxBlockShadowBlur}
+                onChange={(value) =>
+                  setAttributes({
+                    numberBoxBlockShadowBlur: value !== undefined ? value : 0,
                   })
                 }
                 min={0}
-                max={9}
+                max={100}
                 allowReset
+              />
+
+              <RangeControl
+                label={__("Shadow Spread", "responsive-block-editor-addons")}
+                value={numberBoxBlockShadowSpread}
+                onChange={(value) =>
+                  setAttributes({
+                    numberBoxBlockShadowSpread: value !== undefined ? value : 0,
+                  })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
+
+              <p>{__("Shadow Color", "responsive-block-editor-addons")}</p>
+              <ColorPalette
+                colors={colors}
+                value={numberBoxBlockShadowColor}
+                onChange={(color) => setAttributes({ numberBoxBlockShadowColor: color })}
               />
 
             </PanelBody>

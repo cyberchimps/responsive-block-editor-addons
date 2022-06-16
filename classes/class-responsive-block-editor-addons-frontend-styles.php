@@ -107,6 +107,89 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			return $css;
 		}
 
+		/**
+		 * Get Number Box CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_number_box_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_number_box_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$selectors = array(
+				''                                         => array(
+					'text-align' => $attr['headingAlignment'],
+				),
+				' .rbea-number-box-main-container'         => array(
+					'position'        => 'relative',
+					'min-height'      => self::get_css_value( $attr['numberBoxBlockMinHeight'], 'px' ),
+					'align-items'     => $attr['contentVerticalAlign'],
+					'max-width'       => self::get_css_value( $attr['maxContentWidth'], 'px' ),
+					'justify-content' => $attr['numberBoxAlignment'],
+					'margin-top'      => self::get_css_value( $attr['numberBoxTopMargin'], 'px' ),
+					'margin-bottom'   => self::get_css_value( $attr['numberBoxBottomMargin'], 'px' ),
+					'margin-left'     => self::get_css_value( $attr['numberBoxLeftMargin'], 'px' ),
+					'margin-right'    => self::get_css_value( $attr['numberBoxRightMargin'], 'px' ),
+					'border-style'    => $attr['numberBoxBlockBorder'],
+					'border-width'    => self::get_css_value( $attr['numberBoxBlockBorderWidth'], 'px' ),
+					'border-color'    => $attr['numberBoxBlockBorderColor'],
+					'border-radius'   => self::get_css_value( $attr['numberBoxBlockBorderRadius'], 'px' ),
+					'box-shadow'      => self::get_css_value( $attr['numberBoxBlockShadowHorizontalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowVerticalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowSpread'], 'px' ) . ' ' . $attr['numberBoxBlockShadowColor'],
+				),
+				' .rbea-number-box-main-container::before' => array(
+					'content'          => '',
+					'background-size'  => 'cover',
+					'position'         => 'absolute',
+					'top'              => '0px',
+					'right'            => '0px',
+					'bottom'           => '0px',
+					'left'             => '0px',
+					'background-color' => $attr['numberBoxBackgroundColor'],
+					'opacity'          => $attr['numberBoxBackgroundOpacity'] / 100,
+					'border-radius'    => self::get_css_value( $attr['numberBoxBlockBorderRadius'], 'px' ),
+				),
+			);
+
+			$mobile_selectors = array(
+				''                                 => array(
+					'text-align' => $attr['headingAlignmentMobile'],
+				),
+				' .rbea-number-box-main-container' => array(
+					'margin-top'    => self::get_css_value( $attr['numberBoxTopMarginMobile'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['numberBoxBottomMarginMobile'], 'px' ),
+					'margin-left'   => self::get_css_value( $attr['numberBoxLeftMarginMobile'], 'px' ),
+					'margin-right'  => self::get_css_value( $attr['numberBoxRightMarginMobile'], 'px' ),
+				),
+			);
+
+			$tablet_selectors = array(
+				''                                 => array(
+					'text-align' => $attr['headingAlignmentTablet'],
+				),
+				' .rbea-number-box-main-container' => array(
+					'margin-top'    => self::get_css_value( $attr['numberBoxTopMarginTablet'], 'px' ),
+					'margin-bottom' => self::get_css_value( $attr['numberBoxBottomMarginTablet'], 'px' ),
+					'margin-left'   => self::get_css_value( $attr['numberBoxLeftMarginTablet'], 'px' ),
+					'margin-right'  => self::get_css_value( $attr['numberBoxRightMarginTablet'], 'px' ),
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-number-box.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+
 
 		/**
 		 * Get Advanced Columns CSS
@@ -1909,6 +1992,86 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'level'                         => 2,
 				'textDecoration'                => 'none',
 				'textDecorationSubHeading'      => 'none',
+			);
+		}
+
+		/**
+		 * Get Defaults for number box block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_number_box_default_attributes() {
+			return array(
+				'block_id'                             => '',
+				'numberBoxBackgroundColor'             => '#fff',
+				'numberBoxBackgroundOpacity'           => '100',
+				'numberBoxBlockMinHeight'              => '0',
+				'contentVerticalAlign'                 => 'flex-start',
+				'maxContentWidth'                      => '1500',
+				'numberBoxAlignment'                   => 'center',
+				'numberBoxTopMargin'                   => '0',
+				'numberBoxBottomMargin'                => '0',
+				'numberBoxLeftMargin'                  => '0',
+				'numberBoxRightMargin'                 => '0',
+				'numberBoxTopMarginTablet'             => '0',
+				'numberBoxBottomMarginTablet'          => '0',
+				'numberBoxLeftMarginTablet'            => '0',
+				'numberBoxRightMarginTablet'           => '0',
+				'numberBoxTopMarginMobile'             => '0',
+				'numberBoxBottomMarginMobile'          => '0',
+				'numberBoxLeftMarginMobile'            => '0',
+				'numberBoxRightMarginMobile'           => '0',
+				'numberBoxBlockBorder'                 => 'none',
+				'numberBoxBlockBorderWidth'            => '0',
+				'numberBoxBlockBorderColor'            => '#fff',
+				'numberBoxBlockBorderRadius'           => '0',
+				'numberBoxBlockShadowHorizontalOffset' => '0',
+				'numberBoxBlockShadowVerticalOffset'   => '0',
+				'numberBoxBlockShadowBlur'             => '0',
+				'numberBoxBlockShadowSpread'           => '0',
+				'numberBoxBlockShadowColor'            => '#fff',
+				'headingTitle'                         => '',
+				'headingDesc'                          => '',
+				'seperatorStyle'                       => 'solid',
+				'separatorWidthType'                   => '%',
+				'separatorColor'                       => '',
+				'headingTitleColor'                    => '',
+				'subHeadingTitleColor'                 => '',
+				'headingTitleFontFamily'               => '',
+				'subHeadingTitleFontFamily'            => '',
+				'headingTitleFontSize'                 => '',
+				'subHeadingTitleFontSize'              => '',
+				'headingTitleFontSizeTablet'           => '',
+				'subHeadingTitleFontSizeTablet'        => '',
+				'headingTitleFontSizeMobile'           => '',
+				'subHeadingTitleFontSizeMobile'        => '',
+				'headingTitleFontWeight'               => '600',
+				'subHeadingTitleFontWeight'            => '400',
+				'headingTag'                           => 'h2',
+				'headingAlignment'                     => 'center',
+				'headingAlignmentTablet'               => 'center',
+				'headingAlignmentMobile'               => 'center',
+				'showHeading'                          => true,
+				'showSubHeading'                       => true,
+				'showSeparator'                        => true,
+				'separatorHeight'                      => 3,
+				'separatorWidth'                       => 20,
+				'headSpacing'                          => 15,
+				'subheadSpacing'                       => 15,
+				'separatorSpacing'                     => 15,
+				'headSpacingTablet'                    => 15,
+				'subheadSpacingTablet'                 => 15,
+				'separatorSpacingTablet'               => 15,
+				'headSpacingMobile'                    => 15,
+				'subheadSpacingMobile'                 => 15,
+				'separatorSpacingMobile'               => 15,
+				'headingTitleLineHeight'               => 1,
+				'subHeadingTitleLineHeight'            => 1,
+				'headingTitleLetterSpacing'            => 0,
+				'subHeadingTitleLetterSpacing'         => 0,
+				'level'                                => 2,
+				'textDecoration'                       => 'none',
+				'textDecorationSubHeading'             => 'none',
 			);
 		}
 
