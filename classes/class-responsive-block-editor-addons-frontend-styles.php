@@ -120,11 +120,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array();
 			$tablet_selectors = array();
-
+			if ( $attr['showGradient'] ) {
+				$text_or_gradient = array(
+					'background'              => $attr['textColor'],
+					'background'              => $attr['gradient'],
+					'-webkit-background-clip' => 'text',
+					'-webkit-text-fill-color' => 'transparent',
+				);
+			} else {
+				$text_or_gradient = array(
+					'color' => $attr['textColor'],
+				);
+   			}
 			$selectors = array(
-				''                                         => array(
-					'text-align' => $attr['headingAlignment'],
-				),
 				' .rbea-number-box-main-container'         => array(
 					'position'        => 'relative',
 					'min-height'      => self::get_css_value( $attr['numberBoxBlockMinHeight'], 'px' ),
@@ -175,13 +183,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'line-height'    => self::get_css_value( $attr['contentLineHeight'], 'px' ),
 					'letter-spacing' => self::get_css_value( $attr['contentLetterSpacing'], 'px' ),
 					'text-transform' => $attr['contentTextTransform'],
+					...$text_or_gradient,
 				),
 			);
 
 			$mobile_selectors = array(
-				''                                 => array(
-					'text-align' => $attr['headingAlignmentMobile'],
-				),
 				' .rbea-number-box-main-container' => array(
 					'justify-content' => $attr['numberBoxAlignmentMobile'],
 					'margin-top'      => self::get_css_value( $attr['numberBoxTopMarginMobile'], 'px' ),
@@ -199,9 +205,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
-				''                                 => array(
-					'text-align' => $attr['headingAlignmentTablet'],
-				),
 				' .rbea-number-box-main-container' => array(
 					'justify-content' => $attr['numberBoxAlignmentTablet'],
 					'margin-top'      => self::get_css_value( $attr['numberBoxTopMarginTablet'], 'px' ),
@@ -2094,49 +2097,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentLineHeight'                    => '2',
 				'contentLetterSpacing'                 => '0',
 				'contentTextTransform'                 => '',
-
-				'headingTitle'                         => '',
-				'headingDesc'                          => '',
-				'seperatorStyle'                       => 'solid',
-				'separatorWidthType'                   => '%',
-				'separatorColor'                       => '',
-				'headingTitleColor'                    => '',
-				'subHeadingTitleColor'                 => '',
-				'headingTitleFontFamily'               => '',
-				'subHeadingTitleFontFamily'            => '',
-				'headingTitleFontSize'                 => '',
-				'subHeadingTitleFontSize'              => '',
-				'headingTitleFontSizeTablet'           => '',
-				'subHeadingTitleFontSizeTablet'        => '',
-				'headingTitleFontSizeMobile'           => '',
-				'subHeadingTitleFontSizeMobile'        => '',
-				'headingTitleFontWeight'               => '600',
-				'subHeadingTitleFontWeight'            => '400',
-				'headingTag'                           => 'h2',
-				'headingAlignment'                     => 'center',
-				'headingAlignmentTablet'               => 'center',
-				'headingAlignmentMobile'               => 'center',
-				'showHeading'                          => true,
-				'showSubHeading'                       => true,
-				'showSeparator'                        => true,
-				'separatorHeight'                      => 3,
-				'separatorWidth'                       => 20,
-				'headSpacing'                          => 15,
-				'subheadSpacing'                       => 15,
-				'separatorSpacing'                     => 15,
-				'headSpacingTablet'                    => 15,
-				'subheadSpacingTablet'                 => 15,
-				'separatorSpacingTablet'               => 15,
-				'headSpacingMobile'                    => 15,
-				'subheadSpacingMobile'                 => 15,
-				'separatorSpacingMobile'               => 15,
-				'headingTitleLineHeight'               => 1,
-				'subHeadingTitleLineHeight'            => 1,
-				'headingTitleLetterSpacing'            => 0,
-				'subHeadingTitleLetterSpacing'         => 0,
-				'level'                                => 2,
-				'textDecoration'                       => 'none',
-				'textDecorationSubHeading'             => 'none',
+				'showGradient'                         => false,
 			);
 		}
 

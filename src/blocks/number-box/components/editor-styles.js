@@ -59,51 +59,24 @@
      contentLineHeight,
      contentLetterSpacing,
      contentTextTransform,
-
-     headingTitle,
-     headingDesc,
-     seperatorStyle,
-     headSpacing,
-     subheadSpacing,
-     separatorSpacing,
-     headSpacingTablet,
-     subheadSpacingTablet,
-     separatorSpacingTablet,
-     headSpacingMobile,
-     subheadSpacingMobile,
-     separatorSpacingMobile,
-     separatorHeight,
-     separatorWidth,
-     separatorWidthType,
-     separatorColor,
-     headingTitleFontFamily,
-     headingTitleFontSize,
-     headingTitleFontSizeTablet,
-     headingTitleFontSizeMobile,
-     headingTitleFontWeight,
-     headingTitleLineHeight,
-     headingTitleLetterSpacing,
-     headingTitleColor,
-     subHeadingTitleFontFamily,
-     subHeadingTitleFontSize,
-     subHeadingTitleFontSizeMobile,
-     subHeadingTitleFontSizeTablet,
-     subHeadingTitleFontWeight,
-     subHeadingTitleLineHeight,
-     subHeadingTitleLetterSpacing,
-     subHeadingTitleColor,
-     headingTag,
-     level,
-     headingAlignment,
-     headingAlignmentTablet,
-     headingAlignmentMobile,
-     showHeading,
-     showSubHeading,
-     showSeparator,
-     textDecoration,
-     textDecorationSubHeading,
+     showGradient,
+     gradient,
      block_id,
    } = props.attributes;
+
+   var textOrGradient
+   if( showGradient ) {
+    textOrGradient = {
+      'background': textColor,
+      'background': gradient,
+      '-webkit-background-clip': 'text',
+      '-webkit-text-fill-color': 'transparent',
+    }
+   } else {
+    textOrGradient = {
+      'color': textColor,
+    }
+   }
  
    var selectors = {
      "": {
@@ -152,46 +125,20 @@
         "border-radius": generateCSSUnit(shapeBorderRadius, "%"),
      },
      " .rbea-number-box-block": {
-        "color": textColor,
+        // "color": textColor,
         "font-family": contentFontFamily,
         "font-size": generateCSSUnit(contentFontSize, "px"),
         "font-weight": contentFontWeight,
         "line-height": generateCSSUnit(contentLineHeight, "px"),
         "letter-spacing": generateCSSUnit(contentLetterSpacing, "px"),
         "text-transform": contentTextTransform,
-     },
-     " .responsive-heading-title-text": {
-       "font-family": headingTitleFontFamily,
-       "font-size": generateCSSUnit(headingTitleFontSize, "px"),
-       "font-weight": headingTitleFontWeight,
-       "line-height": headingTitleLineHeight,
-       "letter-spacing": generateCSSUnit(headingTitleLetterSpacing, "px"),
-       color: headingTitleColor,
-       "margin-bottom": generateCSSUnit(headSpacing, "px"),
-       "text-decoration": textDecoration,
-     },
-     " .responsive-heading-seperator": {
-       "border-top-style": seperatorStyle,
-       "border-top-width": generateCSSUnit(separatorHeight, "px"),
-       "width": generateCSSUnit( separatorWidth, separatorWidthType ),
-       "border-color": separatorColor,
-       "margin-bottom": generateCSSUnit(separatorSpacing, "px"),
-     },
-     " .responsive-heading-desc-text": {
-       "font-family": subHeadingTitleFontFamily,
-       "font-size": generateCSSUnit(subHeadingTitleFontSize, "px"),
-       "font-weight": subHeadingTitleFontWeight,
-       "line-height": subHeadingTitleLineHeight,
-       "letter-spacing": generateCSSUnit(subHeadingTitleLetterSpacing, "px"),
-       color: subHeadingTitleColor,
-       "margin-bottom": generateCSSUnit(subheadSpacing, "px"),
-       "text-decoration": textDecorationSubHeading,
+        ...textOrGradient,
      },
    };
  
    var mobile_selectors = {
      "": {
-       "text-align": headingAlignmentMobile,
+       
      },
      " .rbea-number-box-main-container": {
        "justify-content": numberBoxAlignmentMobile,
@@ -207,22 +154,11 @@
      " .rbea-number-box-block": {
        "font-size": generateCSSUnit(contentFontSizeMobile, "px"),
      },
-     " .responsive-heading-title-text": {
-       "font-size": generateCSSUnit(headingTitleFontSizeMobile, "px"),
-       "margin-bottom": generateCSSUnit(headSpacingMobile, "px"),
-     },
-     " .responsive-heading-desc-text": {
-       "font-size": generateCSSUnit(subHeadingTitleFontSizeMobile, "px"),
-       "margin-bottom": generateCSSUnit(subheadSpacingMobile, "px"),
-     },
-     " .responsive-heading-seperator": {
-       "margin-bottom": generateCSSUnit(separatorSpacingMobile, "px"),
-     },
    };
  
    var tablet_selectors = {
      "": {
-       "text-align": headingAlignmentTablet,
+       
      },
      " .rbea-number-box-main-container": {
        "justify-content" : numberBoxAlignmentTablet,
@@ -237,17 +173,6 @@
      },
      " .rbea-number-box-block": {
        "font-size": generateCSSUnit(contentFontSizeTablet, "px"),
-     },
-     " .responsive-heading-title-text": {
-       "font-size": generateCSSUnit(headingTitleFontSizeTablet, "px"),
-       "margin-bottom": generateCSSUnit(headSpacingTablet, "px"),
-     },
-     " .responsive-heading-desc-text": {
-       "font-size": generateCSSUnit(subHeadingTitleFontSizeTablet, "px"),
-       "margin-bottom": generateCSSUnit(subheadSpacingTablet, "px"),
-     },
-     " .responsive-heading-seperator": {
-       "margin-bottom": generateCSSUnit(separatorSpacingTablet, "px"),
      },
    };
  

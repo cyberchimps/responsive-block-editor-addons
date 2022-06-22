@@ -382,6 +382,9 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  gradient: {
+    type: "string",
+  },
   blockTag: {
     type: "string",
     default: "div",

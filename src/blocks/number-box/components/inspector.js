@@ -36,6 +36,7 @@ const {
   TabPanel,
   Dashicon,
   BaseControl,
+  GradientPicker,
 } = wp.components;
 
 /**
@@ -129,8 +130,9 @@ export default class Inspector extends Component {
         contentLetterSpacing,
         contentTextTransform,
         showGradient,
+        gradient,
         blockTag,
-        zIndex
+        zIndex,
       },
       setAttributes,
     } = this.props;
@@ -799,16 +801,33 @@ export default class Inspector extends Component {
               />
 
               {showGradient == true &&
-                <div>
-                  <GradientBackgroundControl
-                    {...this.props}
-                    showHoverGradient={true}
+                <>
+                  <GradientPicker
+                    value={ gradient }
+                    onChange={ ( currentGradient ) => setAttributes({ gradient: currentGradient, contentLineHeight: 100 }) }
+                    gradients={ [
+                        {
+                            name: 'JShine',
+                            gradient: 'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+                            slug: 'jshine',
+                        },
+                        {
+                            name: 'Moonlit Asteroid',
+                            gradient: 'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+                            slug: 'moonlit-asteroid',
+                        },
+                        {
+                            name: 'Rastafarie',
+                            gradient: 'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+                            slug: 'rastafari',
+                        },
+                    ] }
                   />
-                </div>
+                </>
               }
 
               {showGradient == false &&
-                <div>
+                <>
                   <p>
                     {__("Text Color", "responsive-block-editor-addons")}
                   </p>
@@ -817,7 +836,7 @@ export default class Inspector extends Component {
                     value={textColor}
                     onChange={(color) => setAttributes({ textColor: color })}
                   />
-                </div>
+                </>
               }
 
             </PanelBody>
