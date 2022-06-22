@@ -26,19 +26,25 @@
 
     // number
     .rbea-number-box-container {
-        width: 100px;
-        height: 100px;
-        background-color: red;
         display: flex;
+        position: relative;
         justify-content: center;
         align-items: center;
-        border-radius: 50%;
+        // border-radius: 50%;
         z-index: 99;
     }
 
+    .rbea-number-box-container::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    }
+
     .rbea-number-box-block {
-        font-size: 51px;
-        color: #fff;
+        z-index: 2;
     }
     
 }

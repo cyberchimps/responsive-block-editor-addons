@@ -201,10 +201,6 @@ const attributes = {
     type: "boolean",
     default: false,
   },
-  numberBoxOpacity: {
-    type: "number",
-    default: 100,
-  },
   numberBoxBackgroundImage: {
     type: "string",
     default: "",
@@ -292,32 +288,75 @@ const attributes = {
     type: "string",
     default: '#fff',
   },
+  size: {
+    type: "number",
+    default: 100,
+  },
+  sizeTablet: {
+    type: "number",
+    default: 100,
+  },
+  sizeMobile: {
+    type: "number",
+    default: 100,
+  },
+  shapeColor: {
+    type: "string",
+    default: "#ffc107",
+  },
+  shapeOpacity: {
+    type: "number",
+  },
+  shapeBorder: {
+    type: "string",
+  },
   showShape: {
     type: "boolean",
     default: false,
   },
   shapeBorderWidth: {
     type: "number",
-    default: 0,
+  },
+  shapeBorderColor: {
+    type: "string",
   },
   shapeBorderRadius: {
     type: "number",
-    default: 12,
   },
-  shapeShadow: {
+  shapeShadowHorizontalOffset: {
     type: "number",
     default: 0,
+  },
+  shapeShadowVerticalOffset: {
+    type: "number",
+    default: 0,
+  },
+  shapeShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  shapeShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  shapeShadowColor: {
+    type: "string",
+    default: "#fff",
+  },
+  textColor: {
+    type: "string",
+    default: "#000",
   },
   contentFontFamily: {
     type: "string",
   },
   contentFontSize: {
     type: "number",
-    default: 16,
+    default: 50,
   },
   contentFontWeight: {
     type: "string",
-    default: "400",
+    default: 400,
   },
   contentLineHeight: {
     type: "number",
@@ -325,9 +364,19 @@ const attributes = {
   },
   contentFontSizeMobile: {
     type: "number",
+    default: 30,
   },
   contentFontSizeTablet: {
     type: "number",
+    default: 40,
+  },
+  contentLetterSpacing: {
+    type: "number",
+    default: 0,
+  },
+  contentTextTransform: {
+    type: "string",
+    default: "",
   },
   showGradient: {
     type: "boolean",

@@ -30,6 +30,7 @@ const {
   RangeControl,
   SelectControl,
   ButtonGroup,
+  TextControl,
   Button,
   ToggleControl,
   TabPanel,
@@ -60,68 +61,7 @@ export default class Inspector extends Component {
     setAttributes({ headingTag: value });
   }
   render() {
-    // Font Weight Options
-    const fontWeightOptions = [
-      {
-        value: "100",
-        label: __("100", "responsive-block-editor-addons"),
-      },
-      {
-        value: "200",
-        label: __("200", "responsive-block-editor-addons"),
-      },
-      {
-        value: "300",
-        label: __("300", "responsive-block-editor-addons"),
-      },
-      {
-        value: "400",
-        label: __("400", "responsive-block-editor-addons"),
-      },
-      {
-        value: "500",
-        label: __("500", "responsive-block-editor-addons"),
-      },
-      {
-        value: "600",
-        label: __("600", "responsive-block-editor-addons"),
-      },
-      {
-        value: "700",
-        label: __("700", "responsive-block-editor-addons"),
-      },
-      {
-        value: "800",
-        label: __("800", "responsive-block-editor-addons"),
-      },
-      {
-        value: "900",
-        label: __("900", "responsive-block-editor-addons"),
-      },
-    ];
-
-    // Text Decoration Options
-    const textDecorationOptions = [
-      {
-        value: "none",
-        label: __("Default", "responsive-block-editor-addons"),
-      },
-      {
-        value: "underline",
-        label: __("Underline", "responsive-block-editor-addons"),
-      },
-      {
-        value: "overline",
-        label: __("Overline", "responsive-block-editor-addons"),
-      },
-      {
-        value: "line-through",
-        label: __("Line Through", "responsive-block-editor-addons"),
-      },
-    ];
-
-
-
+    
     const colors = [
       { name: 'red', color: '#f00' },
       { name: 'white', color: '#fff' },
@@ -131,6 +71,7 @@ export default class Inspector extends Component {
     // Setup the attributes
     const {
       attributes: {
+        numberValue,
         showBackground,
         numberBoxAlignment,
         numberBoxAlignmentTablet,
@@ -158,23 +99,35 @@ export default class Inspector extends Component {
         numberBoxBlockBorderWidth,
         numberBoxBlockBorderColor,
         numberBoxBlockBorderRadius,
-        numberBoxOpacity,
         numberBoxBlockShadowHorizontalOffset,
         numberBoxBlockShadowVerticalOffset,
         numberBoxBlockShadowBlur,
         numberBoxBlockShadowSpread,
         numberBoxBlockShadowColor,
-
+        size,
+        sizeTablet,
+        sizeMobile,
+        shapeColor,
+        shapeOpacity,
+        shapeBorder,
         showShape,
         shapeBorderWidth,
+        shapeBorderColor,
         shapeBorderRadius,
-        shapeShadow,
+        shapeShadowHorizontalOffset,
+        shapeShadowVerticalOffset,
+        shapeShadowBlur,
+        shapeShadowSpread,
+        shapeShadowColor,
+        textColor,
         contentFontFamily,
         contentFontSize,
         contentFontSizeMobile,
         contentFontSizeTablet,
         contentFontWeight,
         contentLineHeight,
+        contentLetterSpacing,
+        contentTextTransform,
         showGradient,
         blockTag,
         zIndex
@@ -229,10 +182,11 @@ export default class Inspector extends Component {
                           </p>
                           <AlignmentToolbar
                             value={numberBoxAlignmentMobile}
-                            onChange={(value) =>
+                            onChange={(value) => {
                               setAttributes({
                                 numberBoxAlignmentMobile: value,
-                              })
+                              });
+                              console.error(numberBoxAlignmentMobile)}
                             }
                             controls={["left", "center", "right"]}
                             isCollapsed={false}
@@ -252,7 +206,7 @@ export default class Inspector extends Component {
                           </p>
                           <AlignmentToolbar
                             value={numberBoxAlignmentTablet}
-                            onChange={(value) =>
+                            onChange={(value) => 
                               setAttributes({
                                 numberBoxAlignmentTablet: value,
                               })
@@ -553,6 +507,103 @@ export default class Inspector extends Component {
               title={__("Shape", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+
+              <TabPanel
+                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className:
+                      " responsive-tablet-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  let tabout;
+
+                  if ("mobile" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <BaseControl>
+                           <RangeControl
+                              label={__("Size Mobile", "responsive-block-editor-addons")}
+                              value={sizeMobile}
+                              onChange={(value) =>
+                                setAttributes({
+                                  sizeMobile: value !== undefined ? value : 0,
+                                })
+                              }
+                              min={0}
+                              max={200}
+                              allowReset
+                              resetFallbackValue={100}
+                              initialPosition={100}
+                            />
+                        </BaseControl>
+                      </Fragment>
+                    );
+                  } else if ("tablet" === tab.name) {
+                    tabout = (
+                      <Fragment>
+                        <BaseControl>
+                          <RangeControl
+                              label={__("Size Tablet", "responsive-block-editor-addons")}
+                              value={sizeTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  sizeTablet: value !== undefined ? value : 0,
+                                })
+                              }
+                              min={0}
+                              max={200}
+                              allowReset
+                              resetFallbackValue={100}
+                              initialPosition={100}
+                            />
+                        </BaseControl>
+                      </Fragment>
+                    );
+                  } else {
+                    tabout = (
+                      <Fragment>
+                        <BaseControl>
+                          <RangeControl
+                              label={__("Size", "responsive-block-editor-addons")}
+                              value={size}
+                              onChange={(value) =>
+                                setAttributes({
+                                  size: value !== undefined ? value : 0,
+                                })
+                              }
+                              min={0}
+                              max={200}
+                              allowReset
+                              resetFallbackValue={100}
+                              initialPosition={100}
+                            />
+                        </BaseControl>
+                      </Fragment>
+                    );
+                  }
+
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
+
               <ToggleControl
                 label={__("Background", "responsive-block-editor-addons")}
                 checked={showShape}
@@ -566,26 +617,29 @@ export default class Inspector extends Component {
                 showShape &&
                 <div>
                   <p>
-                    {__("Shape", "responsive-block-editor-addons")}
+                    {__("Shape Color", "responsive-block-editor-addons")}
                   </p>
                   <ColorPalette
                     colors={colors}
-                    value={this.state.color}
-                    onChange={(color) => this.setState({ color })}
+                    value={shapeColor}
+                    onChange={(color) => setAttributes({ shapeColor: color })}
                   />
 
                   <RangeControl
                     label={__("Opacity", "responsive-block-editor-addons")}
-                    value={numberBoxOpacity}
-                    onChange={(value) => setAttributes({ numberBoxOpacity: value })}
+                    value={shapeOpacity}
+                    onChange={(value) => setAttributes({ shapeOpacity: value !== undefined ? value : 100 })}
                     min={0}
                     max={100}
+                    resetFallbackValue={100}
+                    allowReset={true}
+                    initialPosition={100}
                   />
 
                   <SelectControl
-                    label={__("Borders", "responsive-block-editor-addons")}
-                    value={numberBoxBorder}
-                    onChange={(value) => setAttributes({ numberBoxBorder: value })}
+                    label={__("Border Style", "responsive-block-editor-addons")}
+                    value={shapeBorder}
+                    onChange={(value) => setAttributes({ shapeBorder: value })}
                     options={[
                       { value: "none", label: __("None", "responsive-block-editor-addons") },
                       { value: "solid", label: __("Solid", "responsive-block-editor-addons") },
@@ -602,9 +656,11 @@ export default class Inspector extends Component {
                         shapeBorderWidth: value !== undefined ? value : 0,
                       })
                     }
-                    min={1}
-                    max={10}
-                    allowReset
+                    min={0}
+                    max={5}
+                    resetFallbackValue={0}
+                    allowReset={true}
+                    initialPosition={0}
                   />
 
                   <p>
@@ -612,47 +668,92 @@ export default class Inspector extends Component {
                   </p>
                   <ColorPalette
                     colors={colors}
-                    value={this.state.color}
-                    onChange={(color) => this.setState({ color })}
+                    value={shapeBorderColor}
+                    onChange={(color) => setAttributes({ shapeBorderColor: color })}
                   />
-
+                  
                   <RangeControl
                     label={__("Border Radius", "responsive-block-editor-addons")}
                     value={shapeBorderRadius}
                     onChange={(value) =>
                       setAttributes({
-                        shapeBorderRadius: value !== undefined ? value : 12,
+                        shapeBorderRadius: value !== undefined ? value : 50,
                       })
                     }
                     min={0}
                     max={50}
-                    allowReset
+                    resetFallbackValue={50}
+                    allowReset={true}
+                    initialPosition={50}
                   />
-
-                  <RangeControl
-                    label={__("Shadow / Outline", "responsive-block-editor-addons")}
-                    value={shapeShadow}
-                    onChange={(value) =>
-                      setAttributes({
-                        shapeShadow: value !== undefined ? value : 0,
-                      })
-                    }
-                    min={0}
-                    max={9}
-                    allowReset
-                  />
-
-                  <p>
-                    {__("Border Color", "responsive-block-editor-addons")}
-                  </p>
-                  <ColorPalette
-                    colors={colors}
-                    value={this.state.color}
-                    onChange={(color) => this.setState({ color })}
-                  />
-
                 </div>
               }
+
+            </PanelBody>
+
+            <PanelBody
+              title={__("Shape Shadow", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              
+              <RangeControl
+                label={__("Horizontal Offset", "responsive-block-editor-addons")}
+                value={shapeShadowHorizontalOffset}
+                onChange={(value) =>
+                  setAttributes({
+                    shapeShadowHorizontalOffset: value !== undefined ? value : 0,
+                  })
+                }
+                min={-100}
+                max={100}
+                allowReset
+              />
+
+              <RangeControl
+                label={__("Vertical Offset", "responsive-block-editor-addons")}
+                value={shapeShadowVerticalOffset}
+                onChange={(value) =>
+                  setAttributes({
+                    shapeShadowVerticalOffset: value !== undefined ? value : 0,
+                  })
+                }
+                min={-100}
+                max={100}
+                allowReset
+              />
+
+              <RangeControl
+                label={__("Blur", "responsive-block-editor-addons")}
+                value={shapeShadowBlur}
+                onChange={(value) =>
+                  setAttributes({
+                    shapeShadowBlur: value !== undefined ? value : 0,
+                  })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
+
+              <RangeControl
+                label={__("Shadow Spread", "responsive-block-editor-addons")}
+                value={shapeShadowSpread}
+                onChange={(value) =>
+                  setAttributes({
+                    shapeShadowSpread: value !== undefined ? value : 0,
+                  })
+                }
+                min={0}
+                max={100}
+                allowReset
+              />
+
+              <p>{__("Shadow Color", "responsive-block-editor-addons")}</p>
+              <ColorPalette
+                colors={colors}
+                value={shapeShadowColor}
+                onChange={(color) => setAttributes({ shapeShadowColor: color })}
+              />
 
             </PanelBody>
 
@@ -660,6 +761,14 @@ export default class Inspector extends Component {
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+
+              <TextControl
+                label="Content"
+                type="text"
+                value={ numberValue }
+                onChange={ ( value ) => setAttributes({ numberValue: value })}
+              />
+
               <TypographyHelperControl
                 title={__("Content Typography", "responsive-block-editor-addons")}
                 attrNameTemplate="content%s"
@@ -670,6 +779,8 @@ export default class Inspector extends Component {
                   sizeTablet: contentFontSizeTablet,
                   weight: contentFontWeight,
                   height: contentLineHeight,
+                  spacing: contentLetterSpacing,
+                  transform: contentTextTransform,
                 }}
                 showLetterSpacing={true}
                 showTextTransform={true}
@@ -703,8 +814,8 @@ export default class Inspector extends Component {
                   </p>
                   <ColorPalette
                     colors={colors}
-                    value={this.state.color}
-                    onChange={(color) => this.setState({ color })}
+                    value={textColor}
+                    onChange={(color) => setAttributes({ textColor: color })}
                   />
                 </div>
               }

@@ -48,6 +48,7 @@ export default class Edit extends Component {
         block_id,
         numberValue,
         numberBoxAlignment,
+        contentFontFamily,
       },
       setAttributes,
     } = this.props;
@@ -72,6 +73,7 @@ export default class Edit extends Component {
         <div className="rbea-number-box-main-container">
           <div className="rbea-number-box">
             <div className="rbea-number-box-container">
+            {contentFontFamily && loadGoogleFont(contentFontFamily)}
               <RichText
                 tagName="div"
                 value={numberValue}
@@ -79,6 +81,7 @@ export default class Edit extends Component {
                 className="rbea-number-box-block"
                 multiline={false}
                 onChange={(value) => setAttributes({ numberValue: value })}
+                allowedFormats={[ 'core/bold', 'core/italic']}
               />
             </div>
           </div>
