@@ -15,7 +15,8 @@
      numberBoxBlockMinHeight,
      numberBoxBackgroundImage,
      contentVerticalAlign,
-     maxContentWidth,
+     contentWidth,
+     contentAlign,
      numberBoxTopMargin,
      numberBoxBottomMargin,
      numberBoxLeftMargin,
@@ -62,6 +63,7 @@
      contentTextTransform,
      showGradient,
      gradient,
+     fixedBgImage,
      bgImagePosition,
      bgImageRepeat,
      bgImageSize,
@@ -84,13 +86,13 @@
  
    var selectors = {
      "": {
-       
+       "justify-content": contentAlign,
      },
      " .rbea-number-box-main-container": {
         "position": "relative",
         "min-height": generateCSSUnit(numberBoxBlockMinHeight, "px"),
         "align-items": contentVerticalAlign,
-        "max-width": generateCSSUnit(maxContentWidth, "px"),
+        "width": generateCSSUnit(contentWidth, "%"),
         "justify-content": numberBoxAlignment,
         "margin-top": generateCSSUnit(numberBoxTopMargin, "px"),
         "margin-bottom": generateCSSUnit(numberBoxBottomMargin, "px"),
@@ -117,6 +119,7 @@
         "background-position": bgImagePosition,
         "background-repeat": bgImageRepeat,
         "background-size": bgImageSize,
+        "background-attachment": fixedBgImage,
      },
      " .rbea-number-box-container": {
         "width": generateCSSUnit(size, "px"),

@@ -205,11 +205,19 @@ const attributes = {
     type: "string",
     default: "",
   },
+  checkFixedBgImage: {
+    type: "boolean",
+    default: false,
+  },
+  fixedBgImage: {
+    type: "string",
+    default: 'scroll',
+  },
   contentVerticalAlign: {
     type: "string",
     default: "flex-start",
   },
-  maxContentWidth: {
+  contentWidth: {
     type: "number",
   },
   contentAlign: {

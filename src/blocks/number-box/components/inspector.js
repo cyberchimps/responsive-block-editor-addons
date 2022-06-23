@@ -90,9 +90,11 @@ export default class Inspector extends Component {
         numberBoxBackgroundColor,
         numberBoxBackgroundOpacity,
         numberBoxBackgroundImage,
+        checkFixedBgImage,
+        fixedBgImage,
         numberBoxBlockMinHeight,
         contentVerticalAlign,
-        maxContentWidth,
+        contentWidth,
         contentAlign,
         numberBoxTopMargin,
         numberBoxBottomMargin,
@@ -328,6 +330,20 @@ export default class Inspector extends Component {
                       {__("Remove Background Image", "responsive-block-editor-addons")}
                     </Button>
                     
+                    <ToggleControl
+                      label={__("Fixed Background Image", "responsive-block-editor-addons")}
+                      checked={checkFixedBgImage}
+                      onChange={( value ) => {
+                        setAttributes({ checkFixedBgImage: !checkFixedBgImage });
+                        if( value ) {
+                          setAttributes({ fixedBgImage: 'fixed' })
+                        } else {
+                          setAttributes({ fixedBgImage: 'scroll' })
+                        }
+                      }
+                      }
+                    />
+
                     <SelectControl
                       label={__("Background Image Position", "responsive-block-editor-addons")}
                       value={bgImagePosition}
@@ -402,11 +418,11 @@ export default class Inspector extends Component {
 
               <RangeControl
                 label={__("Content Width", "responsive-block-editor-addons")}
-                value={maxContentWidth}
+                value={contentWidth}
                 min={0}
-                max={1500}
+                max={100}
                 onChange={(value) =>
-                  setAttributes({ maxContentWidth: value !== undefined ? value : 1500 })
+                  setAttributes({ contentWidth: value !== undefined ? value : 100 })
                 }
                 allowReset={true}
               />

@@ -120,6 +120,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array();
 			$tablet_selectors = array();
+
 			if ( $attr['showGradient'] ) {
 				$text_or_gradient = array(
 					'background'              => $attr['textColor'],
@@ -133,11 +134,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				);
    			}
 			$selectors = array(
+				''                                         => array(
+					'justify-content' => $attr['contentAlign'],
+				),
 				' .rbea-number-box-main-container'         => array(
 					'position'        => 'relative',
 					'min-height'      => self::get_css_value( $attr['numberBoxBlockMinHeight'], 'px' ),
 					'align-items'     => $attr['contentVerticalAlign'],
-					'max-width'       => self::get_css_value( $attr['maxContentWidth'], 'px' ),
+					'width'           => self::get_css_value( $attr['contentWidth'], '%' ),
 					'justify-content' => $attr['numberBoxAlignment'],
 					'margin-top'      => self::get_css_value( $attr['numberBoxTopMargin'], 'px' ),
 					'margin-bottom'   => self::get_css_value( $attr['numberBoxBottomMargin'], 'px' ),
@@ -150,20 +154,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'box-shadow'      => self::get_css_value( $attr['numberBoxBlockShadowHorizontalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowVerticalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowSpread'], 'px' ) . ' ' . $attr['numberBoxBlockShadowColor'],
 				),
 				' .rbea-number-box-main-container::before' => array(
-					'content'             => '',
-					'background-size'     => 'cover',
-					'position'            => 'absolute',
-					'top'                 => '0px',
-					'right'               => '0px',
-					'bottom'              => '0px',
-					'left'                => '0px',
-					'background-color'    => $attr['numberBoxBackgroundColor'],
-					'opacity'             => $attr['numberBoxBackgroundOpacity'] / 100,
-					'border-radius'       => self::get_css_value( $attr['numberBoxBlockBorderRadius'], 'px' ),
-					'background-image'    => sprintf( 'url("%s")', $attr['numberBoxBackgroundImage'] ),
-					'background-position' => $attr['bgImagePosition'],
-					'background-repeat'   => $attr['bgImageRepeat'],
-					'background-size'     => $attr['bgImageSize'],
+					'content'               => '',
+					'background-size'       => 'cover',
+					'position'              => 'absolute',
+					'top'                   => '0px',
+					'right'                 => '0px',
+					'bottom'                => '0px',
+					'left'                  => '0px',
+					'background-color'      => $attr['numberBoxBackgroundColor'],
+					'opacity'               => $attr['numberBoxBackgroundOpacity'] / 100,
+					'border-radius'         => self::get_css_value( $attr['numberBoxBlockBorderRadius'], 'px' ),
+					'background-image'      => sprintf( 'url("%s")', $attr['numberBoxBackgroundImage'] ),
+					'background-position'   => $attr['bgImagePosition'],
+					'background-repeat'     => $attr['bgImageRepeat'],
+					'background-size'       => $attr['bgImageSize'],
+					'background-attachment' => $attr['fixedBgImage'],
 				),
 				' .rbea-number-box-container'              => array(
 					'width'         => self::get_css_value( $attr['size'], 'px' ),
@@ -2054,7 +2059,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'numberBoxBackgroundImage'             => '',
 				'numberBoxBlockMinHeight'              => '0',
 				'contentVerticalAlign'                 => 'flex-start',
-				'maxContentWidth'                      => '1500',
+				'contentWidth'                         => '100',
+				'contentAlign'                         => 'center',
 				'numberBoxAlignment'                   => 'center',
 				'numberBoxAlignmentTablet'             => 'center',
 				'numberBoxAlignmentMobile'             => 'center',
@@ -2103,6 +2109,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentLetterSpacing'                 => '0',
 				'contentTextTransform'                 => '',
 				'showGradient'                         => false,
+				'fixedBgImage'                         => 'scroll',
 				'bgImagePosition'                      => 'center center',
 				'bgImageRepeat'                        => 'no-repeat',
 				'bgImageSize'                          => 'cover',
