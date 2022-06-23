@@ -2,15 +2,11 @@
  * Inspector Controls
  */
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
-import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-import fontOptions from "../../../utils/googlefonts";
-import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
-import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import rbeaOptions from "../../advanced-text/components/rbea-options";
@@ -18,7 +14,6 @@ import rbeaOptions from "../../advanced-text/components/rbea-options";
 // Import block components
 const {
   InspectorControls,
-  PanelColorSettings,
   ColorPalette,
   AlignmentToolbar,
   MediaUpload
@@ -29,7 +24,6 @@ const {
   PanelBody,
   RangeControl,
   SelectControl,
-  ButtonGroup,
   TextControl,
   Button,
   ToggleControl,
@@ -45,22 +39,38 @@ const {
 export default class Inspector extends Component {
   constructor(props) {
     super(...arguments);
-    this.state = {
-      color: '#f00'
-    }
+    this.onRemoveImage = this.onRemoveImage.bind(this);
+    this.onSelectImage = this.onSelectImage.bind(this);
   }
 
   /*
-   * Heading Tag Change
+   * Event to set Image as null while removing.
    */
-  onTagChange(value) {
+  onRemoveImage() {
     const { setAttributes } = this.props;
 
-    let level_val = parseInt(value.replace("h", ""));
-
-    setAttributes({ level: level_val });
-    setAttributes({ headingTag: value });
+    setAttributes({ numberBoxBackgroundImage: null });
   }
+
+  /*
+   * Event to set Image as while adding.
+   */
+  onSelectImage(media) {
+    const { setAttributes } = this.props;
+    const { numberBoxBackgroundImage } = this.props.attributes;
+
+    if (!media || !media.url) {
+      setAttributes({ numberBoxBackgroundImage: null });
+      return;
+    }
+
+    if (!media.type || "image" != media.type) {
+      return;
+    }
+
+    setAttributes({ numberBoxBackgroundImage: media.url });
+  }
+
   render() {
     
     const colors = [
@@ -131,6 +141,9 @@ export default class Inspector extends Component {
         contentTextTransform,
         showGradient,
         gradient,
+        bgImagePosition,
+        bgImageRepeat,
+        bgImageSize,
         blockTag,
         zIndex,
       },
@@ -287,9 +300,7 @@ export default class Inspector extends Component {
                       "Select Background Image",
                       "responsive-block-editor-addons"
                     )}
-                    onSelect={(media) =>
-                      console.log('selected ' + JSON.stringify(media) + numberBoxBackgroundImage)
-                    }
+                    onSelect={this.onSelectImage}
                     allowedTypes={["image"]}
                     value={numberBoxBackgroundImage}
                     render={({ open }) => (
@@ -307,15 +318,58 @@ export default class Inspector extends Component {
                     )}
                   />
                   {numberBoxBackgroundImage && (
+                    <>
                     <Button
                       className="rbea-rm-btn"
-                      onClick={this.onRemoveImageOne}
+                      onClick={this.onRemoveImage}
                       isLink
                       isDestructive
                     >
                       {__("Remove Background Image", "responsive-block-editor-addons")}
                     </Button>
-                  )}
+                    
+                    <SelectControl
+                      label={__("Background Image Position", "responsive-block-editor-addons")}
+                      value={bgImagePosition}
+                      onChange={(value) => setAttributes({ bgImagePosition: value })}
+                      options={[
+                        { value: "left top", label: __("Left Top", "responsive-block-editor-addons") },
+                        { value: "left center", label: __("Left Center", "responsive-block-editor-addons") },
+                        { value: "left bottom", label: __("Left Bottom", "responsive-block-editor-addons") },
+                        { value: "right top", label: __("Right Top", "responsive-block-editor-addons") },
+                        { value: "right center", label: __("Right Center", "responsive-block-editor-addons") },
+                        { value: "right bottom", label: __("Right Bottom", "responsive-block-editor-addons") },
+                        { value: "center top", label: __("Center Top", "responsive-block-editor-addons") },
+                        { value: "center center", label: __("Center Center", "responsive-block-editor-addons") },
+                        { value: "center bottom", label: __("Center Bottom", "responsive-block-editor-addons") },
+                      ]}
+                    />
+
+                    <SelectControl
+                      label={__("Background Image Repeat", "responsive-block-editor-addons")}
+                      value={bgImageRepeat}
+                      onChange={(value) => setAttributes({ bgImageRepeat: value })}
+                      options={[
+                        { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+                        { value: "repeat-x", label: __("Repeat Horizontally", "responsive-block-editor-addons") },
+                        { value: "repeat-y", label: __("Repeat Vertically", "responsive-block-editor-addons") },
+                        { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+                      ]}
+                    />
+
+                    <SelectControl
+                      label={__("Background Image Size", "responsive-block-editor-addons")}
+                      value={bgImageSize}
+                      onChange={(value) => setAttributes({ bgImageSize: value })}
+                      options={[
+                        { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                        { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
+                        { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
+                      ]}
+                    />
+                    </>
+                  )
+                  }
                 </div>
               }
 

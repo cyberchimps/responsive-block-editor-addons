@@ -385,6 +385,18 @@ const attributes = {
   gradient: {
     type: "string",
   },
+  bgImagePosition: {
+    type: "string",
+    default: "center center",
+  },
+  bgImageRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  bgImageSize: {
+    type: "string",
+    default: "cover",
+  },
   blockTag: {
     type: "string",
     default: "div",

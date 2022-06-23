@@ -13,6 +13,7 @@
      numberBoxBackgroundColor,
      numberBoxBackgroundOpacity,
      numberBoxBlockMinHeight,
+     numberBoxBackgroundImage,
      contentVerticalAlign,
      maxContentWidth,
      numberBoxTopMargin,
@@ -61,6 +62,9 @@
      contentTextTransform,
      showGradient,
      gradient,
+     bgImagePosition,
+     bgImageRepeat,
+     bgImageSize,
      block_id,
    } = props.attributes;
 
@@ -109,6 +113,10 @@
         "background-color": numberBoxBackgroundColor,
 				"opacity": numberBoxBackgroundOpacity / 100,
         "border-radius": generateCSSUnit(numberBoxBlockBorderRadius, "px"),
+        "background-image": `url(${numberBoxBackgroundImage})`,
+        "background-position": bgImagePosition,
+        "background-repeat": bgImageRepeat,
+        "background-size": bgImageSize,
      },
      " .rbea-number-box-container": {
         "width": generateCSSUnit(size, "px"),
@@ -125,7 +133,6 @@
         "border-radius": generateCSSUnit(shapeBorderRadius, "%"),
      },
      " .rbea-number-box-block": {
-        // "color": textColor,
         "font-family": contentFontFamily,
         "font-size": generateCSSUnit(contentFontSize, "px"),
         "font-weight": contentFontWeight,
