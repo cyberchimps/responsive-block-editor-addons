@@ -147,6 +147,8 @@ export default class Inspector extends Component {
         bgImageRepeat,
         bgImageSize,
         blockTag,
+        overflow,
+        clear,
         zIndex,
       },
       setAttributes,
@@ -294,6 +296,7 @@ export default class Inspector extends Component {
                     min={0}
                     max={100}
                     resetFallbackValue={100}
+                    initialPosition={100}
                     allowReset={true}
                   />
 
@@ -322,10 +325,12 @@ export default class Inspector extends Component {
                   {numberBoxBackgroundImage && (
                     <>
                     <Button
+                      isDefault
                       className="rbea-rm-btn"
                       onClick={this.onRemoveImage}
                       isLink
                       isDestructive
+                      style={{marginTop:'10px', marginBottom:'10px'}}
                     >
                       {__("Remove Background Image", "responsive-block-editor-addons")}
                     </Button>
@@ -402,6 +407,7 @@ export default class Inspector extends Component {
                 min={0}
                 max={1000}
                 resetFallbackValue={0}
+                initialPosition={0}
                 allowReset={true}
               />
 
@@ -425,6 +431,8 @@ export default class Inspector extends Component {
                   setAttributes({ contentWidth: value !== undefined ? value : 100 })
                 }
                 allowReset={true}
+                resetFallbackValue={100}
+                initialPosition={100}
               />
 
               <SelectControl
@@ -861,7 +869,7 @@ export default class Inspector extends Component {
               />
 
               <ToggleControl
-                label={__("Gradient Background", "responsive-block-editor-addons")}
+                label={__("Gradient Text", "responsive-block-editor-addons")}
                 checked={showGradient}
                 onChange={() =>
                   this.props.setAttributes({
@@ -922,6 +930,30 @@ export default class Inspector extends Component {
                 onChange={(value) => setAttributes({ blockTag: value })}
                 options={rbeaOptions.blockTags}
               />
+
+              <SelectControl
+                label={__("Overflow", "responsive-block-editor-addons")}
+                value={overflow}
+                onChange={(value) => setAttributes({ overflow: value })}
+                options={[
+                  { value: "visible", label: __("Visible", "responsive-block-editor-addons") },
+                  { value: "hidden", label: __("Hidden", "responsive-block-editor-addons") },
+                  { value: "scroll", label: __("Scroll", "responsive-block-editor-addons") },
+                  { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
+                ]}
+              />
+
+              <SelectControl
+                label={__("Clear", "responsive-block-editor-addons")}
+                value={clear}
+                onChange={(value) => setAttributes({ clear: value })}
+                options={[
+                  { value: "none", label: __("None", "responsive-block-editor-addons") },
+                  { value: "left", label: __("Left", "responsive-block-editor-addons") },
+                  { value: "right", label: __("Right", "responsive-block-editor-addons") },
+                  { value: "both", label: __("Both", "responsive-block-editor-addons") },
+                ]}
+              />
             </PanelBody>
             <PanelBody
               title={__("Position", "responsive-block-editor-addons")}
@@ -933,6 +965,7 @@ export default class Inspector extends Component {
                 onChange={(value) => setAttributes({ zIndex: value })}
                 min={0}
                 max={1000}
+                initialPosition={0}
                 allowReset
               />
             </PanelBody>

@@ -49,10 +49,31 @@ export default class Edit extends Component {
         numberValue,
         numberBoxAlignment,
         contentFontFamily,
+        blockTag,
       },
       setAttributes,
     } = this.props;
     this.props.setAttributes({ block_id: this.props.clientId });
+
+    const editBody = (
+      <div className="rbea-number-box-main-container">
+        <div className="rbea-number-box">
+          <div className="rbea-number-box-container">
+            {contentFontFamily && loadGoogleFont(contentFontFamily)}
+            <RichText
+              tagName="div"
+              value={numberValue}
+              placeholder={__("101", "responsive-block-editor-addons")}
+              className="rbea-number-box-block"
+              multiline={false}
+              onChange={(value) => setAttributes({ numberValue: value })}
+              allowedFormats={['core/bold', 'core/italic']}
+            />
+          </div>
+        </div>
+      </div>
+    )
+
     return [
       <BlockControls key="controls">
         <AlignmentToolbar
@@ -64,30 +85,104 @@ export default class Edit extends Component {
       <Inspector {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
-      <div
-        className={classnames(
-          "responsive-block-editor-addons-block-number-box",
-          `block-${block_id}`
-        )}
-      >
-        <div className="rbea-number-box-main-container">
-          <div className="rbea-number-box">
-            <div className="rbea-number-box-container">
-            {contentFontFamily && loadGoogleFont(contentFontFamily)}
-              <RichText
-                tagName="div"
-                value={numberValue}
-                placeholder={__("101", "responsive-block-editor-addons")}
-                className="rbea-number-box-block"
-                multiline={false}
-                onChange={(value) => setAttributes({ numberValue: value })}
-                allowedFormats={[ 'core/bold', 'core/italic']}
-              />
-            </div>
-          </div>
-        </div>
+      <>
+        {
+          blockTag == 'div' &&
+          <div
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
 
-      </div>
+          </div>
+        }
+        {
+          blockTag == 'section' &&
+          <section
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
+
+          </section>
+        }
+        {
+          blockTag == 'footer' &&
+          <footer
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
+
+          </footer>
+        }
+        {
+          blockTag == 'main' &&
+          <main
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
+
+          </main>
+        }
+        {
+          blockTag == 'aside' &&
+          <aside
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
+
+          </aside>
+        }
+        {
+          blockTag == 'article' &&
+          <article
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
+
+          </article>
+        }
+        {
+          blockTag == 'nav' &&
+          <nav
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
+
+          </nav>
+        }
+        {
+          blockTag == 'header' &&
+          <header
+            className={classnames(
+              "responsive-block-editor-addons-block-number-box",
+              `block-${block_id}`
+            )}
+          >
+            {editBody}
+
+          </header>
+        }
+      </>
     ];
   }
 }

@@ -132,10 +132,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$text_or_gradient = array(
 					'color' => $attr['textColor'],
 				);
-   			}
+			}
 			$selectors = array(
 				''                                         => array(
 					'justify-content' => $attr['contentAlign'],
+					'overflow'        => $attr['overflow'],
+					'clear'           => $attr['clear'],
+					'z-index'         => $attr['zIndex'],
 				),
 				' .rbea-number-box-main-container'         => array(
 					'position'        => 'relative',
@@ -208,7 +211,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'  => self::get_css_value( $attr['sizeMobile'], 'px' ),
 					'height' => self::get_css_value( $attr['sizeMobile'], 'px' ),
 				),
-				' .rbea-number-box-block'                  => array(
+				' .rbea-number-box-block'          => array(
 					'font-size' => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
 				),
 			);
@@ -225,7 +228,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'  => self::get_css_value( $attr['sizeTablet'], 'px' ),
 					'height' => self::get_css_value( $attr['sizeTablet'], 'px' ),
 				),
-				' .rbea-number-box-block'                  => array(
+				' .rbea-number-box-block'          => array(
 					'font-size' => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
 				),
 			);
@@ -2113,6 +2116,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'bgImagePosition'                      => 'center center',
 				'bgImageRepeat'                        => 'no-repeat',
 				'bgImageSize'                          => 'cover',
+				'overflow'                             => 'visible',
+				'clear'                                => 'none',
+				'zIndex'                               => '0',
 			);
 		}
 

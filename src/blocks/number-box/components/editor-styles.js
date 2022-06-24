@@ -67,6 +67,9 @@
      bgImagePosition,
      bgImageRepeat,
      bgImageSize,
+     overflow,
+     clear,
+     zIndex,
      block_id,
    } = props.attributes;
 
@@ -87,6 +90,9 @@
    var selectors = {
      "": {
        "justify-content": contentAlign,
+       "overflow": overflow,
+       "clear": clear,
+       "z-index": zIndex,
      },
      " .rbea-number-box-main-container": {
         "position": "relative",

@@ -219,6 +219,7 @@ const attributes = {
   },
   contentWidth: {
     type: "number",
+    default: 100,
   },
   contentAlign: {
     type: "string",
@@ -408,6 +409,14 @@ const attributes = {
   blockTag: {
     type: "string",
     default: "div",
+  },
+  overflow: {
+    type: "string",
+    default: "visible",
+  },
+  clear: {
+    type: "string",
+    default: "none",
   },
   zIndex: {
     type: "number",
