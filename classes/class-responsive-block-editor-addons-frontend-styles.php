@@ -146,6 +146,27 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$merge_in_selector = array_merge( $rbea_number_box_block[' .rbea-number-box-block'], $if_normal_text );
 			}
 
+			if ( '0' === $attr['numberBoxBlockShadowHorizontalOffset'] ) {
+				$number_box_block_shadow_horizontal_offset = 0;
+			} else {
+				$number_box_block_shadow_horizontal_offset = self::get_css_value( $attr['numberBoxBlockShadowHorizontalOffset'], 'px' );
+			}
+			if ( '0' === $attr['numberBoxBlockShadowVerticalOffset'] ) {
+				$number_box_block_shadow_vertical_offset = 0;
+			} else {
+				$number_box_block_shadow_vertical_offset = self::get_css_value( $attr['numberBoxBlockShadowVerticalOffset'], 'px' );
+			}
+			if ( '0' === $attr['shapeShadowHorizontalOffset'] ) {
+				$shape_shadow_horizontal_offset = 0;
+			} else {
+				$shape_shadow_horizontal_offset = self::get_css_value( $attr['shapeShadowHorizontalOffset'], 'px' );
+			}
+			if ( '0' === $attr['shapeShadowVerticalOffset'] ) {
+				$shape_shadow_vertical_offset = 0;
+			} else {
+				$shape_shadow_vertical_offset = self::get_css_value( $attr['shapeShadowVerticalOffset'], 'px' );
+			}
+
 			$selectors = array(
 				''                                         => array(
 					'justify-content' => $attr['contentAlign'],
@@ -167,7 +188,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-width'    => self::get_css_value( $attr['numberBoxBlockBorderWidth'], 'px' ),
 					'border-color'    => $attr['numberBoxBlockBorderColor'],
 					'border-radius'   => self::get_css_value( $attr['numberBoxBlockBorderRadius'], 'px' ),
-					'box-shadow'      => self::get_css_value( $attr['numberBoxBlockShadowHorizontalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowVerticalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowSpread'], 'px' ) . ' ' . $attr['numberBoxBlockShadowColor'],
+					'box-shadow'      => $number_box_block_shadow_horizontal_offset . ' ' . $number_box_block_shadow_vertical_offset . ' ' . self::get_css_value( $attr['numberBoxBlockShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowSpread'], 'px' ) . ' ' . $attr['numberBoxBlockShadowColor'],
 				),
 				' .rbea-number-box-main-container::before' => array(
 					'content'               => '',
@@ -193,7 +214,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-width'  => self::get_css_value( $attr['shapeBorderWidth'], 'px' ),
 					'border-color'  => $attr['shapeBorderColor'],
 					'border-radius' => self::get_css_value( $attr['shapeBorderRadius'], '%' ),
-					'box-shadow'    => self::get_css_value( $attr['shapeShadowHorizontalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['shapeShadowVerticalOffset'], 'px' ) . ' ' . self::get_css_value( $attr['shapeShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['shapeShadowSpread'], 'px' ) . ' ' . $attr['shapeShadowColor'],
+					'box-shadow'    => $shape_shadow_horizontal_offset . ' ' . $shape_shadow_vertical_offset . ' ' . self::get_css_value( $attr['shapeShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['shapeShadowSpread'], 'px' ) . ' ' . $attr['shapeShadowColor'],
 				),
 				' .rbea-number-box-container::before'      => array(
 					'background-color' => $attr['shapeColor'],
