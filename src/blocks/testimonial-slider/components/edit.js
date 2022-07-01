@@ -79,7 +79,9 @@ class edit extends Component {
       imag_url = null;
     }
 
-    const newItems = test_block.map((item, thisIndex) => {
+    let copyArray = test_block.map(e => {return {...e}})
+
+    const newItems = copyArray.map((item, thisIndex) => {
       if (index === thisIndex) {
         item["image"] = imag_url;
       }
@@ -98,7 +100,9 @@ class edit extends Component {
     const { test_block } = this.props.attributes;
     const { setAttributes } = this.props;
 
-    const newItems = test_block.map((item, thisIndex) => {
+    let copyArray = test_block.map(e => {return {...e}})
+
+    const newItems = copyArray.map((item, thisIndex) => {
       if (index === thisIndex) {
         item["image"] = null;
       }
