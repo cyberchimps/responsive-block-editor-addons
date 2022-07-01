@@ -118,21 +118,34 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$defaults = self::get_responsive_block_number_box_default_attributes();
 			$attr     = array_merge( $defaults, (array) $attr );
 
-			$mobile_selectors = array();
-			$tablet_selectors = array();
-
+			$mobile_selectors      = array();
+			$tablet_selectors      = array();
+			$rbea_number_box_block = array(
+				' .rbea-number-box-block' => array(
+					'color'          => $attr['textColor'],
+					'font-family'    => $attr['contentFontFamily'],
+					'font-size'      => self::get_css_value( $attr['contentFontSize'], 'px' ),
+					'font-weight'    => $attr['contentFontWeight'],
+					'line-height'    => self::get_css_value( $attr['contentLineHeight'], 'px' ),
+					'letter-spacing' => self::get_css_value( $attr['contentLetterSpacing'], 'px' ),
+					'text-transform' => $attr['contentTextTransform'],
+				),
+			);
 			if ( $attr['showGradient'] ) {
-				$text_or_gradient = array(
+				$if_gradient_text  = array(
 					'background'              => $attr['textColor'],
 					'background'              => $attr['gradient'],
 					'-webkit-background-clip' => 'text',
 					'-webkit-text-fill-color' => 'transparent',
 				);
+				$merge_in_selector = array_merge( $rbea_number_box_block[' .rbea-number-box-block'], $if_gradient_text );
 			} else {
-				$text_or_gradient = array(
+				$if_normal_text    = array(
 					'color' => $attr['textColor'],
 				);
+				$merge_in_selector = array_merge( $rbea_number_box_block[' .rbea-number-box-block'], $if_normal_text );
 			}
+
 			$selectors = array(
 				''                                         => array(
 					'justify-content' => $attr['contentAlign'],
@@ -187,16 +200,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'opacity'          => $attr['shapeOpacity'] / 100,
 					'border-radius'    => self::get_css_value( $attr['shapeBorderRadius'], '%' ),
 				),
-				' .rbea-number-box-block'                  => array(
-					'color'          => $attr['textColor'],
-					'font-family'    => $attr['contentFontFamily'],
-					'font-size'      => self::get_css_value( $attr['contentFontSize'], 'px' ),
-					'font-weight'    => $attr['contentFontWeight'],
-					'line-height'    => self::get_css_value( $attr['contentLineHeight'], 'px' ),
-					'letter-spacing' => self::get_css_value( $attr['contentLetterSpacing'], 'px' ),
-					'text-transform' => $attr['contentTextTransform'],
-					...$text_or_gradient,
-				),
+				' .rbea-number-box-block'                  => $merge_in_selector,
 			);
 
 			$mobile_selectors = array(
