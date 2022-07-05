@@ -477,9 +477,10 @@ export default class Inspector extends Component {
 										max={35}
 										onChange={(value) =>
 											setAttributes({
-												semiCircularProgressBarWidth: value !== undefined ? value : 200,
+												semiCircularProgressBarWidth: value !== undefined ? value : 10,
 											})
 										}
+										initialPosition={10}
 										allowReset
 									/>
 								</Fragment>
