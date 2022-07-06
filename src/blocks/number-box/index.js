@@ -27,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/number-box", {
     "Add an attractive style to number(s), which can be used to represent steps, process, highlights, services, procedures, etc.",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,
+  icon: ResponsiveBlockEditorAddonsIcons.number_box,
   category: "responsive_block_editor_addons",
   keywords: [
     __("number", "responsive-block-editor-addons"),
