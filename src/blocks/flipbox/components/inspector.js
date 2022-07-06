@@ -148,6 +148,9 @@ export default class Inspector extends Component {
       },
     ];
 
+    const defaultIcons = ["accusoft", "acquisitions-incorporated", "ad", "air-freshener"];
+    const defaultBackIcons = ["address-book", "address-card", "adjust", "adversal"];
+
     // Setup the attributes
     const {
       attributes: {
@@ -548,9 +551,9 @@ export default class Inspector extends Component {
                           back_title: "Back Title " + newCount,
                           subtitle: "Front Subtitle " + newCount,
                           back_subtitle: "Back Subtitle " + newCount,
-                          back_Button: "Button " + newCount,
-                          icon: "shield",
-                          back_icon: "shield",
+                          back_button: "Button " + newCount,
+                          icon: defaultIcons[newCount-1],
+                          back_icon: defaultBackIcons[newCount-1],
                         });
                       });
                     }

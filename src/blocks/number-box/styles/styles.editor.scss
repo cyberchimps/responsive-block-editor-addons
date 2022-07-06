@@ -1,0 +1,51 @@
+.responsive-block-editor-addons-block-number-box {
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+
+    .rbea-number-box-main-container {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        position: relative;
+        display: flex;
+    }
+
+    .rbea-number-box-main-container::before {
+        content: '';
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    }
+    
+    .rbea-number-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    // number
+    .rbea-number-box-container {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        // border-radius: 50%;
+        z-index: 99;
+    }
+
+    .rbea-number-box-container::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+    }
+
+    .rbea-number-box-block {
+        z-index: 2;
+    }
+    
+}

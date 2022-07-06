@@ -3,8 +3,8 @@ const { __ } = wp.i18n;
 const ITEM_COUNT = 1;
 
 const flipboxArray = [];
-const defaultIcons = ["accusoft", "acquisitions-incorporated", "ad"];
-const defaultBackIcons = ["address-book", "address-card", "adjust"];
+const defaultIcons = ["accusoft", "acquisitions-incorporated", "ad", "air-freshener"];
+const defaultBackIcons = ["address-book", "address-card", "adjust", "adversal"];
 for (var i = 1; i <= ITEM_COUNT; i++) {
   flipboxArray.push({
     title: __("Front Title ", "responsive-block-editor-addons") + i,

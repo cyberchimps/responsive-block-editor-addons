@@ -196,6 +196,7 @@ const ResponsiveBlockEditorAddonsIcons = {
     carousel_right: svgIcon("svg", {width: 20, height: 20, viewBox: "0 0 256 512"},
         svgIcon("path", { d: "M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"}),
     ),
+    number_box: <svg viewBox="0 0 75 75" xmlns="http://www.w3.org/2000/svg"> <defs> <clipPath id="a"> <rect transform="translate(-2841 3883)" width="75" height="75" fill="none" data-name="Rectangle 925"/> </clipPath> </defs> <g transform="translate(2841 -3883)" clip-path="url(#a)" data-name="Mask Group 40"> <g transform="translate(-.5 1.1)" data-name="Group 784"> <g data-name="Group 783"> <g transform="translate(-2839 3899)" fill="none" stroke="#ff793f" stroke-width="5" data-name="Rectangle 924"> <rect width="72" height="48" stroke="none"/> <rect x="2.5" y="2.5" width="67" height="43" fill="none"/> </g> <path transform="translate(.613 14.467)" d="m-2836.4 3884.2 4.074-6.857h56.2l5.058 6.857" fill="none" stroke="#ff793f" stroke-linecap="square" stroke-width="5" data-name="Path 628"/> <text transform="translate(-2820 3930)" fill="#ff793f" font-family="Montserrat-Bold, Montserrat" font-size="22" font-weight="900" letter-spacing=".08em" data-name="123"><tspan x="0" y="0">123</tspan></text> </g> </g> </g> </svg>
 
 }
 
