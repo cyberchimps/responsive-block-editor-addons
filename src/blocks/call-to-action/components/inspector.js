@@ -531,7 +531,7 @@ export default class Inspector extends Component {
 						}
 						min={0}
 						max={100}
-						step={1}
+						step={0.0001}
 						/>
 					</PanelBody>
 				)}
@@ -700,7 +700,8 @@ export default class Inspector extends Component {
 						}
 						min={0}
 						max={100}
-						step={1}
+						step={0.0001}
+            allowReset
 						/>
 					</PanelBody>
 				)}
