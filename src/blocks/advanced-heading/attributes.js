@@ -168,6 +168,10 @@ const attributes = {
     type: "string",
     default: "none"
   },
+  url:{
+    type: "string",
+    default: "https://content.fortune.com/wp-content/uploads/2014/06/105461347.jpg"
+  },
 };
 
 export default attributes;

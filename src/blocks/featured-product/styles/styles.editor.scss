@@ -1,0 +1,56 @@
+.responsive-block-editor-addons-block-advanced-heading {
+    padding: 0;
+    margin: 0 auto;
+  
+    .responsive-heading-title-text {
+      margin: 0;
+    }
+  
+    .responsive-heading-seperator-wrap {
+      font-size: 0;
+    }
+  
+    .responsive-heading-seperator {
+      border-top-style: solid;
+      display: inline-block;
+      border-top-width: 2px;
+      width: 5%;
+      margin: 0px 0px 10px 0px;
+    }
+  
+    .responsive-heading-desc-text {
+      margin: 0;
+    }
+
+  }
+  
+  .fp-container {
+    border: 2px solid black;
+    padding: 0 15px;
+
+    form h2 {
+      font-size: 18pt;
+      font-weight: 400;
+    }
+
+    form p {
+      font-size: 15px;
+    }
+
+    form #fp-searchbar input{
+      width: 100%;
+      margin-top: 11px;
+      margin-bottom: 18px;
+    }
+
+    .fp-radio-container{
+      overflow-y: scroll;
+      max-height: 300px;
+      border: 1px solid grey;
+    }
+  
+    .fp-radio-container div{
+      border: 1px solid grey;
+      padding: 12px;  
+    }
+  }
