@@ -12989,7 +12989,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 		}
 		/**
-		 * Get Portfolio CSS
+		 * Get Featured Product CSS
 		 *
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
@@ -13002,75 +13002,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$boxed_content_padding = 0;
-			$content_padding       = 0;
-			if ( 'content' === $attr['layout'] ) {
-				$content_padding       = $attr['contentPadding'];
-				$boxed_content_padding = 0;
-			}
-			if ( 'boxed' === $attr['layout'] ) {
-				$boxed_content_padding = $attr['contentPadding'];
-			}
-
-			$column_gap = '';
-			if ( $attr['columnGap'] ) {
-				$column_gap = $attr['columnGap'];
-			}
-			$row_gap = '';
-			if ( $attr['rowGap'] ) {
-				$row_gap = $attr['rowGap'];
-			}
-			$opacity = $attr['overlayOpacity'] / 100;
-
 			$selectors = array(
-				' .responsive-block-editor-addons-portfolio-items' => array(
-					'grid-column-gap' => self::get_css_value( $column_gap, 'px' ),
-					'grid-row-gap'    => self::get_css_value( $row_gap, 'px' ),
+
+				' .block-featured-product' =>array(
+					'color' => $attr['textColor']
 				),
-				' .responsive-block-editor-addons-portfolio-items a' => array(
-					'padding-bottom' => 'calc( ' . $attr['itemRatio'] . ' * 100% )',
+
+				' .featured-product__background-image' =>array(
+					'background-image'  => sprintf( 'url("%s")', $attr['setFpBackgroundImage'] ),
+					'background-attachment' => $attr['fixedBackgroundImage'],
+					'background-size'       => $attr['backgroundCover'],
 				),
-				' .responsive-block-editor-addons-block-portfolio-image' => array(
-					'border-style'  => $attr['blockBorderStyle'],
-					'border-color'  => $attr['blockBorderColor'],
-					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
-					'border-width'  => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-				),
-				' .responsive-block-editor-addons-block-portfolio-image-overlay' => array(
-					'background-color' => $attr['overlayBackgroundColor'],
-					'text-align'       => $attr['overlayTextAlign'],
-					'justify-content'  => $attr['overlayTextVerticalAlign'],
-					'border-style'     => $attr['blockBorderStyle'],
-					'border-color'     => $attr['blockBorderColor'],
-					'border-radius'    => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
-					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
-				),
-				' .responsive-block-editor-addons-block-portfolio-image-overlay *' => array(
-					'color'          => $attr['overlayTextColor'],
-					'font-family'    => $attr['overlayTextFontFamily'],
-					'font-size'      => self::get_css_value( $attr['overlayTextFontSize'], 'px' ),
-					'font-weight'    => $attr['overlayTextFontWeight'],
-					'line-height'    => $attr['overlayTextLineHeight'],
-					'text-transform' => $attr['overlayTextTextTransform'],
-					'margin-left'    => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
-					'margin-right'   => self::get_css_value( $attr['horizontalSpacing'], 'px' ),
-					'margin-top'     => self::get_css_value( $attr['verticalSpacing'], 'px' ),
-					'margin-bottom'  => self::get_css_value( $attr['verticalSpacing'], 'px' ),
-				),
-				' .responsive-block-editor-addons-block-portfolio-image-overlay:hover' => array(
-					'opacity' => $opacity,
-				),
-				' .responsive-block-editor-addons-portfolio-items article' => array(
-					'padding'       => self::get_css_value( $boxed_content_padding, 'px' ),
-					'margin'        => 0,
-					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
-				),
-				' .is-list .responsive-block-editor-addons-portfolio-item:not(:last-child)' => array(
-					'margin-bottom' => self::get_css_value( $row_gap, 'px' ),
-				),
-				' .is-list article:last-child' => array(
-					'margin-bottom' => 0,
-				),
+				' .background-dim__overlay'            =>array(
+					'background-color'  => $attr['colorPick']
+				)
 
 			);
 
@@ -13084,68 +13029,40 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'mobile'  => $mobile_selectors,
 			);
 
-			$id              = '.responsive-block-editor-addons-block-portfolio.block-id-' . $id;
+			$id              = '.responsive-block-editor-addons-block-featured-product.block-' . $id;
+			
 			$css             = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
-			$css['desktop'] .= '.page-template-gutenberg-fullwidth ' . $id . ' .responsive-block-editor-addons-portfolio-items article {padding:' . ( 'boxed' === $attr['layout'] ? $attr['contentPadding'] ? $attr['contentPadding'] : '0' : '0' ) . 'px;}';
+			
 			return $css;
 		}
 
 		/**
-		 * Get Defaults for portfolio block
+		 * Get Defaults for featured product block
 		 *
 		 * @return array
 		 */
 		public static function get_responsive_block_featured_product_default_attributes() {
 			return array(
 				'block_id'                 => '',
-				'postsToShow'              => 6,
-				'offset'                   => 0,
-				'postLayout'               => 'grid',
-				'categories'               => '',
-				'itemRatio'                => 0.66,
-				'overlayOpacity'           => 100,
-				'horizontalSpacing'        => 10,
-				'verticalSpacing'          => 15,
-				'overlayTextAlign'         => 'center',
-				'overlayTextVerticalAlign' => 'center',
-				'overlayTextFontSize'      => '',
-				'overlayTextLineHeight'    => '',
-				'overlayTextFontWeight'    => '',
-				'overlayTextTextTransform' => '',
-				'overlayTextFontFamily'    => '',
-				'overlayBackgroundColor'   => '#ff6f61',
-				'overlayTextColor'         => '#ffffff',
-				'stackonMobile'            => true,
-				'displayPostTitle'         => true,
-				'displaySectionTitle'      => false,
-				'postTitleTag'             => 'h3',
-				'postLayout'               => 'grid',
-				'columns'                  => 3,
-				'align'                    => 'center',
-				'width'                    => 'wide',
-				'orderBy'                  => 'date',
-				'order'                    => 'desc',
-				'postType'                 => 'post',
-				'postTaxonomy'             => 'category',
-				'taxonomyType'             => 'category',
-				'sectionTag'               => 'section',
-				'sectionTitle'             => '',
-				'sectionTitleTag'          => 'h2',
-				'imageSize'                => 'full',
-				'id'                       => '',
-				'bgColor'                  => '#e4e4e4',
-				'layout'                   => 'boxed',
-				'contentPadding'           => 0,
-				'contentPaddingMobile'     => '',
-				'mobileContentPadding'     => 999,
-				'contentPaddingTablet'     => '',
-				'columnGap'                => 0,
-				'rowGap'                   => 0,
-				'blockBorderWidth'         => '0',
-				'blockBorderRadius'        => '0',
-				'blockBorderStyle'         => 'none',
-				'blockBorderColor'         => '#333',
-				'taxonomyType'             => 'category',
+				'productdata'              => '',
+				'toggleattr'               => false,
+				'getProductimage'          => '',
+				'getProductTitle'		   => '',
+				'getProductDescription'    => '',
+				'getProductPrice'          =>  0,
+				'buttonText'               => 'Shop now',
+				'showdescription'          => true,
+				'showprice'                => true,
+				'checkFixedBackgroundImage'=> false,
+				'checkReapeatedBackground' => false,
+				'checkBackgroundCover'     => false,
+				'backgroundCover'          => 'auto',
+				'fixedBackgroundImage'     => 'scroll',
+				'fixedBackgroundImagePosition' => '',
+				'repeatedBackgroundImage'  => 'no-repeat',
+				'setFpBackgroundImage'     => '',
+				'colorPick'                => 'black',
+				'textColor'                => 'white',
 			);
 		}
 

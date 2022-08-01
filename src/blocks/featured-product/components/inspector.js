@@ -1,24 +1,17 @@
 /**
  * Inspector Controls
  */
- import TypographyHelperControl from "../../../settings-components/TypographySettings";
- import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
- 
+
  // Setup the block
  const { __ } = wp.i18n;
  const { Component, Fragment } = wp.element;
- import fontOptions from "../../../utils/googlefonts";
- import { loadGoogleFont } from "../../../utils/font";
  import InspectorTab from "../../../components/InspectorTab";
  import InspectorTabs from "../../../components/InspectorTabs";
  
  // Import block components
  const {
    InspectorControls,
-   PanelColorSettings,
-   ColorPalette,
-   AlignmentToolbar,
- } = wp.editor;
+ } = wp.blockEditor;
  
  // Import Inspector components
  const {
@@ -165,76 +158,101 @@
          textDecoration,
          textDecorationSubHeading,
          url,
+         setFpBackgroundImage,
          focalPoint,
-         color,
+         colorPick,
+         textColor,
+         showdescription,
+         showprice,
+         checkFixedBackgroundImage,
+         checkRepeatedBackground,
+         checkBackgroundCover,
+         backgroundCover,
+         repeatedBackgroundImage,
+         fixedBackgroundImage,
+         fixedBackgroundImagePosition         
        },
        setAttributes,
      } = this.props;
  
      return (
-       <InspectorControls key="inspector">
-         <InspectorTabs>
+      <InspectorControls key="inspector">  
+      <InspectorTabs>
            <InspectorTab key={"content"}>
              <PanelBody
              > 
                <ToggleControl
                  label={__("Show Description", "responsive-block-editor-addons")}
-                 checked={showHeading}
-                 onChange={() =>
-                   this.props.setAttributes({
-                     showHeading: !showHeading,
-                   })
+                 checked={showdescription}
+                 onChange={() =>{
+                  this.props.setAttributes({
+                    showdescription: !showdescription,
+                  })
+                 }
                  }
                />
                <ToggleControl
                  label={__("Show Price", "responsive-block-editor-addons")}
-                 checked={showSubHeading}
-                 onChange={() =>
-                   this.props.setAttributes({
-                     showSubHeading: !showSubHeading,
-                   })
+                 checked={showprice}
+                 onChange={() =>{
+                  this.props.setAttributes({
+                    showprice: !showprice,
+                  })
+                 }
                  }
                /> 
              </PanelBody>
-           </InspectorTab>
+           </InspectorTab> 
            <InspectorTab key={"style"}>
              <PanelBody
                title={__("Media settings", "responsive-block-editor-addons")}
                initialOpen={false}
              >
                <ToggleControl
-                 label={__("Fixed background", "responsive-block-editor-addons")}
-                 checked={showHeading}
-                 onChange={() =>
-                   this.props.setAttributes({
-                     showHeading: !showHeading,
-                   })
+                 label={__("Fixed Background Image", "responsive-block-editor-addons")}
+                 checked={checkFixedBackgroundImage}
+                 onChange={( value ) => {
+                   setAttributes({ checkFixedBackgroundImage: !checkFixedBackgroundImage });
+                   if( value ) {
+                     setAttributes({ fixedBackgroundImage: 'fixed', fixedBackgroundImagePosition: '39% 51%' })
+                   } else {
+                     setAttributes({ fixedBackgroundImage: 'scroll', fixedBackgroundImagePosition: '' })
+                   }
+                 }
                  }
                />
                <ToggleControl
                  label={__("Repeated background", "responsive-block-editor-addons")}
-                 checked={showHeading}
-                 onChange={() =>
-                   this.props.setAttributes({
-                     showHeading: !showHeading,
-                   })
+                 checked={checkRepeatedBackground}
+                 onChange={(value) =>{
+                  setAttributes({ checkRepeatedBackground: !checkRepeatedBackground });
+                  if( value ) {
+                    setAttributes({ repeatedBackgroundImage: 'no-repeat' })
+                  } else {
+                    setAttributes({ repeatedBackgroundImage: 'repeat' })
+                  }
+                 }
                  }
                />
                <p>{__("Image fit","responsive-block-editor-addons")}</p>
                <ToggleControl
                  label={__("Cover", "responsive-block-editor-addons")}
-                 checked={showHeading}
-                 onChange={() =>
-                   this.props.setAttributes({
-                     showHeading: !showHeading,
-                   })
+                 checked={checkBackgroundCover}
+                 onChange={(value) =>{
+                  setAttributes({ checkBackgroundCover: !checkBackgroundCover });
+                  if( value ) {
+                    setAttributes({ backgroundCover: 'cover' })
+                  } else {
+                    setAttributes({ backgroundCover: 'auto' })
+                  }
+                 }
                  }
                />
                <p style={{color:"#757575"}}>{__("Choose “Cover” if you want the image to scale automatically to always fit its container.","responsive-block-editor-addons")}</p>
                <p style={{color:"#757575"}}>{__("Note: by choosing “Cover” you will lose the ability to freely move the focal point precisely.","responsive-block-editor-addons")}</p>
                <p>Focal point picker</p>
                <FocalPointPicker
-                url={ url }
+                url={ setFpBackgroundImage }
                 dimensions={ dimensions }
                 value={ focalPoint }
                 onChange={
@@ -255,11 +273,13 @@
              >
               <p>color</p>
                <ColorPicker
-                  color={color}
+                  color={colorPick}
                   onChange={
-                    (color) => {setAttributes({
-                      color:color
-                    })
+                    (color) =>{
+                      {setAttributes({
+                        colorPick:color
+                      })
+                    } 
                   }}
                   enableAlpha
                   defaultValue="#000"
@@ -267,14 +287,14 @@
              </PanelBody>
              <PanelBody
                title={__("Colors", "responsive-block-editor-addons")}
-               initialOpen={false}
+               initialOpen={false}  
              >
               <p>Text</p>
               <ColorPicker
-                  color={color}
+                  color={textColor}
                   onChange={
                     (color) => {setAttributes({
-                      color:color
+                      textColor:color
                     })
                   }}
                   enableAlpha
@@ -282,9 +302,9 @@
                 />
              </PanelBody>
            </InspectorTab>
-           <InspectorTab key={"advance"}></InspectorTab>
-         </InspectorTabs>
-       </InspectorControls>
+           <InspectorTab key={"advance"}></InspectorTab> 
+         </InspectorTabs>       
+      </InspectorControls>
      );
    }
  }

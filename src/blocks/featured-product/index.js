@@ -20,12 +20,13 @@ const { __ } = wp.i18n;
 //Register block
 const { registerBlockType } = wp.blocks;
 
+
 //Register the block
 registerBlockType("responsive-block-editor-addons/featured-product", {
     title: __("Featured Product",
     "responsive-block-editor-addons"),
     description:__(
-        "Select a featured product to display",
+        "Visually highlight a product or variation and encourage prompt action.",
         "responsive-block-editor-addons"
     ),
     icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,
@@ -37,17 +38,19 @@ registerBlockType("responsive-block-editor-addons/featured-product", {
     ],
 
     attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example heading */
-            headingTitle: __( 'Write a Heading', 'responsive-block-editor-addons' ),
-            /* translators: example description */
-            headingDesc: __( 'Write some text', 'responsive-block-editor-addons' ),
-        },
-    },
+    // example: {
+    //     attributes: {
+    //         /* translators: example heading */
+    //         headingTitle: __( 'Write a Heading', 'responsive-block-editor-addons' ),
+    //         /* translators: example description */
+    //         headingDesc: __( 'Write some text', 'responsive-block-editor-addons' ),
+    //     },
+    // },
 
     supports: {
-        anchor: true
+        anchor: true,
+        align: true,
+        
     },
 
     /* Render the block in the editor. */
@@ -59,4 +62,4 @@ registerBlockType("responsive-block-editor-addons/featured-product", {
     save: (props) => {
         return <Save {...props}/>;
     },
-});
+}); 
