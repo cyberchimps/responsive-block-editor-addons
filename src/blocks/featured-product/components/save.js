@@ -8,8 +8,8 @@ import classnames from "classnames";
 /**
  * WordPress dependencies
  */
-const { Component, Fragment } = wp.element;
-const { RichText, InnerBlocks } = wp.editor;
+const { Component } = wp.element;
+const { RichText } = wp.editor;
 
 export default class Save extends Component {
   constructor() {
@@ -24,8 +24,9 @@ export default class Save extends Component {
       getProductTitle,
       showdescription,
       showprice,
+      buttonText
     } = this.props.attributes;
-   
+    // console.log(getProductTitle.replace(/\s+/g, '').toLowerCase());
     return [
       <div
         className={classnames(
@@ -33,7 +34,7 @@ export default class Save extends Component {
           `block-${block_id}`
         )}
       >
-        <div className= "block-featured-product" >
+        <div className="block-featured-product">
           <div id="for_replacement" className="featured-product__wrapper">
             <div className="background-dim__overlay"></div>
             <div className="featured-product__background-image"></div>
@@ -47,13 +48,18 @@ export default class Save extends Component {
             {showprice && (
               <div className="featured-product__price">
                 <span>${getProductPrice}</span>
-                {console.log(getProductPrice + ' Save.js')}
               </div>
             )}
-            {/* <div className="featured-product__link">
-                <InnerBlocks template={MY_TEMPLATE} templateLock="all" insert />
-              </div> */}
-              <a href="http://localhost/wordpress101/product/beanie/"><button>Shop Now</button></a>
+            <a
+              href={`http://localhost/wordpress101/product/${getProductTitle.replace(/\s+/g, '-').toLowerCase()}`}
+              className="featured-product__link"
+            >
+              <RichText.Content
+                tagName="span"
+                value={buttonText}
+                className="featured-product__button"
+              />
+            </a>
           </div>
         </div>
       </div>,

@@ -44,9 +44,9 @@ const attributes = {
     type: "boolean",
     default: false
   },
-  checkReapeatedBackground: {
+  checkRepeatedBackground: {
     type: "boolean",
-    deafult: false
+    default: false
   },
   checkBackgroundCover: {
     type: "boolean",
@@ -78,7 +78,11 @@ const attributes = {
   textColor: {
     type: "string",
     deafult:"white"
-  }
+  },
+  buttonText: {
+    type: "string",
+    default: "Shop Now"
+  },
 };
 
 export default attributes;

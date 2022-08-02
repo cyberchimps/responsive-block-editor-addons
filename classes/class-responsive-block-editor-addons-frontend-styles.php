@@ -13015,6 +13015,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .background-dim__overlay'            =>array(
 					'background-color'  => $attr['colorPick']
+				),
+				'.featured-product__button' => array(
+					'width'   => '100%',
+					'padding' => '0 48px 16px',
+					'z-index' => '1',
+					'margin-bottom' => 0,
+					'text-align' => 'center',
+					'color' => 'inherit'
 				)
 
 			);
@@ -13054,7 +13062,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'showdescription'          => true,
 				'showprice'                => true,
 				'checkFixedBackgroundImage'=> false,
-				'checkReapeatedBackground' => false,
+				'checkRepeatedBackground'  => false,
 				'checkBackgroundCover'     => false,
 				'backgroundCover'          => 'auto',
 				'fixedBackgroundImage'     => 'scroll',
@@ -13063,6 +13071,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'setFpBackgroundImage'     => '',
 				'colorPick'                => 'black',
 				'textColor'                => 'white',
+				'blockText'                => 'Shop Now'
 			);
 		}
 

@@ -6,9 +6,8 @@ import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 import { edit } from "@wordpress/icons";
 import { Toolbar, ToolbarButton } from "@wordpress/components";
-import { InnerBlocks } from "@wordpress/block-editor";
+import { RichText } from "@wordpress/block-editor";
 import TableContent from "./table-content";
-// import { forEach } from "cypress/types/lodash";
 /**
  * WordPress dependencies
  */
@@ -35,12 +34,11 @@ export default class Edit extends Component {
   }
 
   componentDidMount() {
-
     // Assigning block_id in the attribute.
     this.props.setAttributes({ block_id: this.props.clientId });
 
     this.props.setAttributes({ classMigrate: true });
-  
+
     const getHomeURL = () => {
       let href = window.location.href;
       let index = href.indexOf("/wp-admin");
@@ -82,7 +80,9 @@ export default class Edit extends Component {
         getProductPrice,
         showdescription,
         showprice,
+        productCheckout,
         setFpBackgroundImage,
+        buttonText
       },
       setAttributes,
     } = this.props;
@@ -112,28 +112,31 @@ export default class Edit extends Component {
 
           const homeUrl = getHomeURL();
 
-          fetch(`${homeUrl}/wp-json/wc/store/v1/products?per_page=0&catalog_visibility=any&search=&orderby=title&order=asc&_locale=user`)
+          fetch(
+            `${homeUrl}/wp-json/wc/store/v1/products?per_page=0&catalog_visibility=any&search=&orderby=title&order=asc&_locale=user`
+          )
             .then((apidata) => {
               return apidata.json();
             })
             .then((jsondata) => {
-
-              for(let i = 0; i < jsondata.length ; i++){
-                if(jsondata[i].id == checkedProduct){
+              for (let i = 0; i < jsondata.length; i++) {
+                if (jsondata[i].id == checkedProduct) {
                   setAttributes({
                     setFpBackgroundImage: jsondata[i].images[0].src,
                   });
                   setAttributes({ getProductTitle: jsondata[i].name });
-                if (showdescription) {
-                  setAttributes({
-                    getProductDescription: jsondata[i].short_description,
-                  });
-                }
-                if(showprice){
-                  setAttributes({
-                    getProductPrice: parseInt(jsondata[i].prices.price / 100 + ".00"),
-                  });
-                }
+                  if (showdescription) {
+                    setAttributes({
+                      getProductDescription: jsondata[i].short_description,
+                    });
+                  }
+                  if (showprice) {
+                    setAttributes({
+                      getProductPrice: parseInt(
+                        jsondata[i].prices.price / 100 + ".00"
+                      ),
+                    });
+                  }
                 }
               }
             });
@@ -234,18 +237,27 @@ export default class Edit extends Component {
                     ></div>
                   )}
                   {showprice && (
-                    <div className="featured-product__price">
-                      <span>${getProductPrice}</span>
-                      {console.log(getProductPrice + ' Edit.js')}
-                    </div>
+                    <>
+                      <div className="featured-product__price">
+                        <span>${getProductPrice}</span>
+                      </div>
+                    </>
                   )}
-                  <div className="featured-product__link">
-                    <InnerBlocks
-                      template={MY_TEMPLATE}
-                      templateLock="all"
-                      insert
+                    <RichText
+                      tagName="span"
+                      placeholder={__("Shop Now", "responsive-block-editor-addons")}
+                      value={buttonText}
+                      onChange={(value) => setAttributes({ buttonText: value })}
+                      multiline={false}
+                      className={classnames("featured-product__button")}
+                      allowedFormats={[
+                        "core/bold",
+                        "core/italic",
+                        "core/strikethrough",
+                        "core/link",
+                      ]}
                     />
-                  </div>
+                  
                 </div>
               </div>
             </>

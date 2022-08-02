@@ -88,20 +88,22 @@
     }
 
     .featured-product__link {
-      width: 100%;
-      padding: 0 48px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 110px ;
+      height: 47px;
       z-index: 1;
-      line-height: 1.25;
       margin-bottom: 0;
       text-align: center;
+      background-color: black;
+      border-radius: 25px;
+      cursor: pointer;
 
-      button{
-        background-color: black;
-        color: white;
-        width: 110px;
-        height: 48px;
-        border-radius: 25px;
-        cursor: pointer;
+      .featured-product__button{
+        text-decoration: none;
+        color:white;
       }
     }
 

@@ -129,22 +129,22 @@
       color: inherit;
     }
 
-    .featured-product__link {
-      width: 100%;
-      padding: 0 48px 16px;
-      z-index: 1;
-      line-height: 1.25;
-      margin-bottom: 0;
-      text-align: center;
+      .featured-product__button{
 
-      button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color:white;
+        text-decoration: none;
+        width: 110px ;
+        height: 47px;
+        z-index: 9999;
+        margin-bottom: 0;
+        text-align: center;
         background-color: black;
-        color: white;
-        width: 110px;
-        height: 48px;
         border-radius: 25px;
         cursor: pointer;
-      }
     }
 
   }

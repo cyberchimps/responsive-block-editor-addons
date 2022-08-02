@@ -53,111 +53,10 @@
      setAttributes({ headingTag: value });
    }
    render() {
-     // Font Weight Options
-     const fontWeightOptions = [
-       {
-         value: "100",
-         label: __("100", "responsive-block-editor-addons"),
-       },
-       {
-         value: "200",
-         label: __("200", "responsive-block-editor-addons"),
-       },
-       {
-         value: "300",
-         label: __("300", "responsive-block-editor-addons"),
-       },
-       {
-         value: "400",
-         label: __("400", "responsive-block-editor-addons"),
-       },
-       {
-         value: "500",
-         label: __("500", "responsive-block-editor-addons"),
-       },
-       {
-         value: "600",
-         label: __("600", "responsive-block-editor-addons"),
-       },
-       {
-         value: "700",
-         label: __("700", "responsive-block-editor-addons"),
-       },
-       {
-         value: "800",
-         label: __("800", "responsive-block-editor-addons"),
-       },
-       {
-         value: "900",
-         label: __("900", "responsive-block-editor-addons"),
-       },
-     ];
- 
-     // Text Decoration Options
-     const textDecorationOptions = [
-       {
-         value: "none",
-         label: __("Default", "responsive-block-editor-addons"),
-       },
-       {
-         value: "underline",
-         label: __("Underline", "responsive-block-editor-addons"),
-       },
-       {
-         value: "overline",
-         label: __("Overline", "responsive-block-editor-addons"),
-       },
-       {
-         value: "line-through",
-         label: __("Line Through", "responsive-block-editor-addons"),
-       },
-     ];
- 
+    
      // Setup the attributes
      const {
        attributes: {
-         headSpacing,
-         separatorSpacing,
-         seperatorPosition,
-         seperatorStyle,
-         separatorHeight,
-         separatorWidth,
-         separatorWidthType,
-         separatorColor,
-         headingTitleFontFamily,
-         headingTitleFontSize,
-         headingTitleFontSizeTablet,
-         headingTitleFontSizeMobile,
-         headingTitleFontWeight,
-         headingTitleLineHeight,
-         headingTitleLetterSpacing,
-         headingTitleColor,
-         subHeadingTitleFontFamily,
-         subHeadingTitleFontSize,
-         subHeadingTitleFontSizeMobile,
-         subHeadingTitleFontSizeTablet,
-         subHeadingTitleFontWeight,
-         subHeadingTitleLineHeight,
-         subHeadingTitleLetterSpacing,
-         subHeadingTitleColor,
-         headingTag,
-         level,
-         showHeading,
-         showSubHeading,
-         showSeparator,
-         headingAlignment,
-         headingAlignmentTablet,
-         headingAlignmentMobile,
-         subheadSpacing,
-         headSpacingTablet,
-         subheadSpacingTablet,
-         separatorSpacingTablet,
-         headSpacingMobile,
-         subheadSpacingMobile,
-         separatorSpacingMobile,
-         textDecoration,
-         textDecorationSubHeading,
-         url,
          setFpBackgroundImage,
          focalPoint,
          colorPick,
@@ -174,7 +73,6 @@
        },
        setAttributes,
      } = this.props;
- 
      return (
       <InspectorControls key="inspector">  
       <InspectorTabs>
@@ -227,9 +125,9 @@
                  onChange={(value) =>{
                   setAttributes({ checkRepeatedBackground: !checkRepeatedBackground });
                   if( value ) {
-                    setAttributes({ repeatedBackgroundImage: 'no-repeat' })
-                  } else {
                     setAttributes({ repeatedBackgroundImage: 'repeat' })
+                  } else {
+                    setAttributes({ repeatedBackgroundImage: 'no-repeat' })
                   }
                  }
                  }
@@ -262,7 +160,7 @@
                 }}
               />
               <p>Alt text (alternative text)</p>
-              <input type/>      
+              <input type="text"/>      
              </PanelBody>
              <PanelBody
                title={__(
