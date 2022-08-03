@@ -24,7 +24,8 @@ export default class Save extends Component {
       getProductTitle,
       showdescription,
       showprice,
-      buttonText
+      buttonText,
+      pageUrl
     } = this.props.attributes;
     // console.log(getProductTitle.replace(/\s+/g, '').toLowerCase());
     return [
@@ -51,7 +52,7 @@ export default class Save extends Component {
               </div>
             )}
             <a
-              href={`http://localhost/wordpress101/product/${getProductTitle.replace(/\s+/g, '-').toLowerCase()}`}
+              href={`${pageUrl}/product/${getProductTitle.replace(/\s+/g, '-').toLowerCase()}`}
               className="featured-product__link"
             >
               <RichText.Content

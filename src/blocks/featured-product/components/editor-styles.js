@@ -14,7 +14,8 @@
      repeatedBackgroundImage,
      backgroundCover,
      colorPick,
-     textColor
+     textColor,
+     focalAttr
    } = props.attributes;
    
    var selectors = {
@@ -25,7 +26,7 @@
         "background-image": `url(${setFpBackgroundImage})`,
         "background-attachment": fixedBackgroundImage,
         "background-repeat": repeatedBackgroundImage,
-        "background-position": fixedBackgroundImagePosition,
+        "background-position": focalAttr,
         "background-size": backgroundCover,
      },
      " .block-featured-product": {

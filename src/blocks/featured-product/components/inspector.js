@@ -29,7 +29,7 @@
  } = wp.components;
 
  const dimensions = {
-  width: 400,
+  width: 200,
   height: 100,
 };
  
@@ -41,17 +41,6 @@
      super(...arguments);
    }
  
-   /*
-    * Heading Tag Change
-    */
-   onTagChange(value) {
-     const { setAttributes } = this.props;
- 
-     let level_val = parseInt(value.replace("h", ""));
- 
-     setAttributes({ level: level_val });
-     setAttributes({ headingTag: value });
-   }
    render() {
     
      // Setup the attributes
@@ -66,6 +55,7 @@
          checkFixedBackgroundImage,
          checkRepeatedBackground,
          checkBackgroundCover,
+         focalAttr,
          backgroundCover,
          repeatedBackgroundImage,
          fixedBackgroundImage,
@@ -73,6 +63,7 @@
        },
        setAttributes,
      } = this.props;
+     
      return (
       <InspectorControls key="inspector">  
       <InspectorTabs>
@@ -112,7 +103,8 @@
                  onChange={( value ) => {
                    setAttributes({ checkFixedBackgroundImage: !checkFixedBackgroundImage });
                    if( value ) {
-                     setAttributes({ fixedBackgroundImage: 'fixed', fixedBackgroundImagePosition: '39% 51%' })
+                     
+                     setAttributes({ fixedBackgroundImage: 'fixed', fixedBackgroundImagePosition:  focalAttr})
                    } else {
                      setAttributes({ fixedBackgroundImage: 'scroll', fixedBackgroundImagePosition: '' })
                    }
@@ -154,7 +146,11 @@
                 dimensions={ dimensions }
                 value={ focalPoint }
                 onChange={
-                  (focalPoint) => {setAttributes({
+                  (focalPoint) => {
+                    let {x, y} = focalPoint
+                    let temp = parseInt(x*100)+'% '+parseInt(y*100)+'%'
+                    setAttributes({focalAttr: temp})
+                    setAttributes({
                     focalPoint: focalPoint
                 })
                 }}

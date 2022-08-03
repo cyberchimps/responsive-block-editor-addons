@@ -6,6 +6,10 @@ const attributes = {
       y : 0.5
     }
   },
+  focalAttr: {
+    type:"string",
+    default: "50% 50%"
+  },
   block_id:{
     type: "string"
   },
@@ -83,6 +87,10 @@ const attributes = {
     type: "string",
     default: "Shop Now"
   },
+  pageUrl: {
+    type: "string",
+    default: ""
+  }
 };
 
 export default attributes;

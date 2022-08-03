@@ -82,7 +82,8 @@ export default class Edit extends Component {
         showprice,
         productCheckout,
         setFpBackgroundImage,
-        buttonText
+        buttonText,
+        pageUrl
       },
       setAttributes,
     } = this.props;
@@ -111,6 +112,7 @@ export default class Edit extends Component {
           let checkedProduct = product[i].value;
 
           const homeUrl = getHomeURL();
+          setAttributes({pageUrl:homeUrl});
 
           fetch(
             `${homeUrl}/wp-json/wc/store/v1/products?per_page=0&catalog_visibility=any&search=&orderby=title&order=asc&_locale=user`
@@ -156,7 +158,7 @@ export default class Edit extends Component {
           )}
         >
           {!toggleattr && (
-            <>
+            
               <div id="form-container" className="fp-container">
                 <form id="form1">
                   <h2>Featured Product</h2>
@@ -209,7 +211,7 @@ export default class Edit extends Component {
                   Done
                 </button>
               </div>
-            </>
+            
           )}
           {toggleattr && (
             <>
