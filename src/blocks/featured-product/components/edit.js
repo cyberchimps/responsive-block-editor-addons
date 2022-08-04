@@ -19,7 +19,6 @@ export default class Edit extends Component {
     super(...arguments);
     this.state = {
       items: [],
-      DataisLoaded: false,
     };
   }
   componentDidUpdate(prevProps, prevState) {
@@ -55,7 +54,6 @@ export default class Edit extends Component {
       .then((json) => {
         this.setState({
           items: json,
-          DataisLoaded: true,
         });
       });
 
@@ -91,16 +89,8 @@ export default class Edit extends Component {
       setAttributes,
     } = this.props;
 
-    // this.props.setAttributes({ block_id: this.props.clientId });
 
-    const { DataisLoaded, items } = this.state;
-    if (!DataisLoaded) {
-      return (
-        <div>
-          <h1>Please Wait Some Time...</h1>
-        </div>
-      );
-    }
+    const { items } = this.state;
     const getHomeURL = () => {
       let href = window.location.href;
       let index = href.indexOf("/wp-admin");
@@ -108,6 +98,7 @@ export default class Edit extends Component {
       return homeUrl;
     };
     const changesettings = () => {
+      this.componentDidMount();
       let product = document.getElementsByName("product-list");
 
       for (let i = 0; i < product.length; i++) {
@@ -157,12 +148,6 @@ export default class Edit extends Component {
                           " "+ "$" + parseInt(jsondata[i].prices.sale_price/100) +".00" 
                       });
                     }
-
-                    // setAttributes({
-                    //   getProductPrice: parseInt(
-                    //     jsondata[i].prices.price / 100 + ".00"
-                    //   ),
-                    // });
                   }
                 }
               }

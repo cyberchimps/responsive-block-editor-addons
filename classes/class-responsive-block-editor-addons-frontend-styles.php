@@ -13071,8 +13071,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'setFpBackgroundImage'     => '',
 				'colorPick'                => 'black',
 				'textColor'                => 'white',
-				'blockText'                => 'Shop Now'
-			);
+				'blockText'                => 'Shop Now',
+				'productPrice'             => '',
+				'regularPrice'             => ''
+ 			);
 		}
 
 		/**

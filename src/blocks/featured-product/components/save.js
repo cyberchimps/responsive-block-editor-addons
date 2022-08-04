@@ -25,9 +25,11 @@ export default class Save extends Component {
       showdescription,
       showprice,
       buttonText,
-      pageUrl
+      pageUrl,
+      productPrice,
+      regularPrice
     } = this.props.attributes;
-    // console.log(getProductTitle.replace(/\s+/g, '').toLowerCase());
+  
     return [
       <div
         className={classnames(
@@ -47,10 +49,15 @@ export default class Save extends Component {
               ></div>
             )}
             {showprice && (
-              <div className="featured-product__price">
-                <span>${getProductPrice}</span>
-              </div>
-            )}
+                    <>
+                    {productPrice !== "" && <div className="featured-product__price">
+                        <span><strike>${regularPrice}</strike>{getProductPrice}</span>
+                      </div>}
+                      {productPrice === "" && <div className="featured-product__price">
+                        <span>${getProductPrice}</span>
+                      </div>}
+                    </>
+                  )}
             <a
               href={`${pageUrl}/product/${getProductTitle.replace(/\s+/g, '-').toLowerCase()}`}
               className="featured-product__link"
