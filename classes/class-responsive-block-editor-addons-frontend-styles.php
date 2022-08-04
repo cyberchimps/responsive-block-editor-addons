@@ -13012,6 +13012,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-image'  => sprintf( 'url("%s")', $attr['setFpBackgroundImage'] ),
 					'background-attachment' => $attr['fixedBackgroundImage'],
 					'background-size'       => $attr['backgroundCover'],
+					'background-position'   => $attr['focalAttr'],
+					'background-repeat'     => $attr['repeatedBackgroundImage'],
 				),
 				' .background-dim__overlay'            =>array(
 					'background-color'  => $attr['colorPick']
@@ -13073,7 +13075,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'textColor'                => 'white',
 				'blockText'                => 'Shop Now',
 				'productPrice'             => '',
-				'regularPrice'             => ''
+				'regularPrice'             => '',
+				'focalAttr'                => '50% 50%'
  			);
 		}
 
