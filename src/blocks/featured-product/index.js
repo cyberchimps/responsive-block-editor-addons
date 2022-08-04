@@ -29,7 +29,7 @@ registerBlockType("responsive-block-editor-addons/featured-product", {
         "Visually highlight a product or variation and encourage prompt action.",
         "responsive-block-editor-addons"
     ),
-    icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,
+    icon: ResponsiveBlockEditorAddonsIcons.featured_product,
     category: "responsive_block_editor_addons",
     keywords: [
         __("feature","responsive-block-editor-addons"),

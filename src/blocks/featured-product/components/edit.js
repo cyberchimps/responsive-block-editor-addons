@@ -6,14 +6,14 @@ import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 import { edit } from "@wordpress/icons";
 import { Toolbar, ToolbarButton } from "@wordpress/components";
-import { RichText } from "@wordpress/block-editor";
+
 import TableContent from "./table-content";
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { BlockControls } = wp.blockEditor;
+const { BlockControls,RichText } = wp.blockEditor;
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -83,12 +83,15 @@ export default class Edit extends Component {
         productCheckout,
         setFpBackgroundImage,
         buttonText,
-        pageUrl
+        pageUrl,
+        productdata,
+        regularPrice,
+        productPrice
       },
       setAttributes,
     } = this.props;
 
-    this.props.setAttributes({ block_id: this.props.clientId });
+    // this.props.setAttributes({ block_id: this.props.clientId });
 
     const { DataisLoaded, items } = this.state;
     if (!DataisLoaded) {
@@ -133,11 +136,33 @@ export default class Edit extends Component {
                     });
                   }
                   if (showprice) {
-                    setAttributes({
-                      getProductPrice: parseInt(
-                        jsondata[i].prices.price / 100 + ".00"
-                      ),
-                    });
+                    if(jsondata[i].prices.price_range !== null) {
+                      setAttributes({
+                        productPrice: "",
+                        getProductPrice: 
+                          jsondata[i].prices.price_range.min_amount/100 +".00" + " - " + "$" +jsondata[i].prices.price_range.max_amount/100 + ".00"
+                      });
+                    }else if(jsondata[i].prices.sale_price === jsondata[i].prices.regular_price) {
+                      setAttributes({
+                        productPrice: "",
+                        getProductPrice: 
+                          parseInt(jsondata[i].prices.price/100) +".00"
+                      });
+                    }else if(jsondata[i].prices.sale_price !== jsondata[i].prices.regular_price) {
+                      
+                      setAttributes({
+                        productPrice: "Hi",
+                        regularPrice: parseInt(jsondata[i].prices.regular_price/100) +".00",
+                        getProductPrice: 
+                          " "+ "$" + parseInt(jsondata[i].prices.sale_price/100) +".00" 
+                      });
+                    }
+
+                    // setAttributes({
+                    //   getProductPrice: parseInt(
+                    //     jsondata[i].prices.price / 100 + ".00"
+                    //   ),
+                    // });
                   }
                 }
               }
@@ -147,7 +172,6 @@ export default class Edit extends Component {
       setAttributes({ toggleattr: true });
     };
 
-    const MY_TEMPLATE = [["core/button", { text: "Shop now" }]];
     return [
       <>
         {/* Show the block markup in the editor */}
@@ -188,8 +212,7 @@ export default class Edit extends Component {
                             })
                             .then((jsondata) => {
                               this.setState({
-                                items: jsondata,
-                                DataisLoaded: true,
+                                items: jsondata
                               });
                             });
                         }, 500);
@@ -198,7 +221,7 @@ export default class Edit extends Component {
                   </div>
                   <div className="fp-radio-container">
                     {items.map((item, index) => (
-                      <TableContent key={index.toString()} data={item} />
+                      <TableContent key={item.id} data={item} />
                     ))}
                   </div>
                 </form>
@@ -240,9 +263,12 @@ export default class Edit extends Component {
                   )}
                   {showprice && (
                     <>
-                      <div className="featured-product__price">
+                    {productPrice !== "" && <div className="featured-product__price">
+                        <span><strike>${regularPrice}</strike>{getProductPrice}</span>
+                      </div>}
+                      {productPrice === "" && <div className="featured-product__price">
                         <span>${getProductPrice}</span>
-                      </div>
+                      </div>}
                     </>
                   )}
                     <RichText

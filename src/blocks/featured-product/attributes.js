@@ -15,6 +15,7 @@ const attributes = {
   },
   productdata:{
     type : "array",
+    default: []
   },
   toggleattr:{
     type: "boolean",
@@ -29,8 +30,8 @@ const attributes = {
     default:""
   },
   getProductPrice: {
-    type: "number",
-    default: 0
+    type: "string",
+    default: ""
   },
   buttonText: {
     type: "string",
@@ -88,6 +89,14 @@ const attributes = {
     default: "Shop Now"
   },
   pageUrl: {
+    type: "string",
+    default: ""
+  },
+  regularPrice: {
+    type: "string",
+    default: ""
+  },
+  productPrice: {
     type: "string",
     default: ""
   }
