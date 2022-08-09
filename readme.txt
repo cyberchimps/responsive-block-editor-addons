@@ -3,7 +3,7 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
-Tested up to: 5.9.2
+Tested up to: 6.0
 Requires PHP: 5.6
 Stable tag: 1.6.2
 License: GPLv2 or later
@@ -224,7 +224,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
-= 1.6.2 - 14th July 2022 =
+= 1.6.2 - 9th August 2022 =
 * Improvement - Progress Bar - Size of circular progress bar can be reduced to 50px.
 * Improvement - All Blocks - Line height value accepts decimal number upto four floating points.
 * Fix - Testimonial Slider - Background image issue when applied to slider.
