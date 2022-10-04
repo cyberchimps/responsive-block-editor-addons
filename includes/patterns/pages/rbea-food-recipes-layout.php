@@ -21,7 +21,7 @@ return array(
     <!-- wp:responsive-block-editor-addons/advance-columns {"topPadding":0,"bottomPadding":100,"leftPadding":0,"rightPadding":0,"bottomPaddingMobile":30,"verticalAlign":"center","block_id":"4950e018-c5e4-41bb-b178-15147943ecd7"} -->
     <div class="block-4950e018-c5e4-41bb-b178-15147943ecd7 responsive-block-editor-addons-advanced-column-outer-wrap undefined"><div class="responsive-block-editor-addons-advanced-column alignundefined"><div class="responsive-columns-wrap responsive-block-editor-addons-block-columns responsive-columns__gap-default responsive-columns__stack-mobile responsive-columns__content-width-theme overlay-type-color linear"><div class="responsive-columns-inner-wrap responsive-columns-columns-2"><!-- wp:responsive-block-editor-addons/column {"block_id":"d1c2d1ff-f471-4576-8024-26a810b6bc5b","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
     <div class="responsive-block-editor-addons-advanced-column-child block-d1c2d1ff-f471-4576-8024-26a810b6bc5b"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":186,"sizeSlug":"large","linkDestination":"none"} -->
-    <figure class="wp-block-image size-large"><img src="http://testccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies.jpg" alt="" class="wp-image-186"/></figure>
+    <figure class="wp-block-image size-large"><img src="http://ccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies.jpg" alt="" class="wp-image-186"/></figure>
     <!-- /wp:image --></div></div></div>
     <!-- /wp:responsive-block-editor-addons/column -->
     
@@ -45,7 +45,7 @@ return array(
     
     <!-- wp:responsive-block-editor-addons/column {"block_id":"058b74db-f374-42cf-bb54-08f525e8d78a","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
     <div class="responsive-block-editor-addons-advanced-column-child block-058b74db-f374-42cf-bb54-08f525e8d78a"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":187,"sizeSlug":"large","linkDestination":"none"} -->
-    <figure class="wp-block-image size-large"><img src="http://testccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies2.jpg" alt="" class="wp-image-187"/></figure>
+    <figure class="wp-block-image size-large"><img src="http://ccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies2.jpg" alt="" class="wp-image-187"/></figure>
     <!-- /wp:image --></div></div></div>
     <!-- /wp:responsive-block-editor-addons/column --></div></div></div></div>
     <!-- /wp:responsive-block-editor-addons/advance-columns -->
@@ -53,7 +53,7 @@ return array(
     <!-- wp:responsive-block-editor-addons/advance-columns {"topPadding":0,"bottomPadding":100,"leftPadding":0,"rightPadding":0,"bottomPaddingMobile":30,"verticalAlign":"center","block_id":"16c0855a-566f-431d-b4e6-e8f6a769e414"} -->
     <div class="block-16c0855a-566f-431d-b4e6-e8f6a769e414 responsive-block-editor-addons-advanced-column-outer-wrap undefined"><div class="responsive-block-editor-addons-advanced-column alignundefined"><div class="responsive-columns-wrap responsive-block-editor-addons-block-columns responsive-columns__gap-default responsive-columns__stack-mobile responsive-columns__content-width-theme overlay-type-color linear"><div class="responsive-columns-inner-wrap responsive-columns-columns-2"><!-- wp:responsive-block-editor-addons/column {"block_id":"e589a2da-a43c-467f-af45-b64425cd1ab2","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
     <div class="responsive-block-editor-addons-advanced-column-child block-e589a2da-a43c-467f-af45-b64425cd1ab2"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":188,"sizeSlug":"large","linkDestination":"none"} -->
-    <figure class="wp-block-image size-large"><img src="http://testccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies3.jpg" alt="" class="wp-image-188"/></figure>
+    <figure class="wp-block-image size-large"><img src="http://ccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies3.jpg" alt="" class="wp-image-188"/></figure>
     <!-- /wp:image --></div></div></div>
     <!-- /wp:responsive-block-editor-addons/column -->
     
@@ -73,7 +73,7 @@ return array(
     
     <!-- wp:responsive-block-editor-addons/column {"block_id":"2d803f72-a384-48c9-bd4c-98893190a423","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
     <div class="responsive-block-editor-addons-advanced-column-child block-2d803f72-a384-48c9-bd4c-98893190a423"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":190,"sizeSlug":"large","linkDestination":"none"} -->
-    <figure class="wp-block-image size-large"><img src="http://testccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies1.jpg" alt="" class="wp-image-190"/></figure>
+    <figure class="wp-block-image size-large"><img src="http://ccreadysites.cyberchimps.com/gfood/wp-content/uploads/sites/95/2019/07/receipies1.jpg" alt="" class="wp-image-190"/></figure>
     <!-- /wp:image --></div></div></div>
     <!-- /wp:responsive-block-editor-addons/column --></div></div></div></div>
     <!-- /wp:responsive-block-editor-addons/advance-columns --></div></section></div>
