@@ -100,6 +100,7 @@ export default class Edit extends Component {
       <Inspector {...{ setAttributes, ...this.props }} />,
       <div
         className={classnames(
+          this.props.className,
           "responsive-block-editor-addons-block-card",
           `block-${block_id}`,
           `responsive-columns__stack-${stack}`

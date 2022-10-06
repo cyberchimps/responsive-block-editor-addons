@@ -64,6 +64,7 @@ export default class Edit extends Component {
       <Fragment>
         <div
           className={classnames(
+            this.props.className,
             "responsive-block-editor-addons-block-section-outer-wrap",
             `block-${block_id}`,
             backgroundType ? `background-type-${backgroundType}` : ""

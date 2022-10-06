@@ -91,6 +91,7 @@ export default class Save extends Component {
       <Fragment>
         <div
           className={classnames(
+            className,
             "responsive-block-editor-addons-block-video-popup",
             `block-${block_id}`,
             "responsive-block-editor-addons-video-popup",
