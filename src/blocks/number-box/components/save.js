@@ -44,6 +44,7 @@ export default class Save extends Component {
           <div
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -56,6 +57,7 @@ export default class Save extends Component {
           <section
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -68,6 +70,7 @@ export default class Save extends Component {
           <footer
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -80,6 +83,7 @@ export default class Save extends Component {
           <main
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -92,6 +96,7 @@ export default class Save extends Component {
           <aside
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -104,6 +109,7 @@ export default class Save extends Component {
           <article
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -116,6 +122,7 @@ export default class Save extends Component {
           <nav
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -128,6 +135,7 @@ export default class Save extends Component {
           <header
             id={anchor}
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}

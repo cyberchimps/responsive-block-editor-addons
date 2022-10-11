@@ -90,6 +90,7 @@ export default class Edit extends Component {
           blockTag == 'div' &&
           <div
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -102,6 +103,7 @@ export default class Edit extends Component {
           blockTag == 'section' &&
           <section
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -114,6 +116,7 @@ export default class Edit extends Component {
           blockTag == 'footer' &&
           <footer
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -126,6 +129,7 @@ export default class Edit extends Component {
           blockTag == 'main' &&
           <main
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -138,6 +142,7 @@ export default class Edit extends Component {
           blockTag == 'aside' &&
           <aside
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -150,6 +155,7 @@ export default class Edit extends Component {
           blockTag == 'article' &&
           <article
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -162,6 +168,7 @@ export default class Edit extends Component {
           blockTag == 'nav' &&
           <nav
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
@@ -174,6 +181,7 @@ export default class Edit extends Component {
           blockTag == 'header' &&
           <header
             className={classnames(
+              this.props.className,
               "responsive-block-editor-addons-block-number-box",
               `block-${block_id}`
             )}
