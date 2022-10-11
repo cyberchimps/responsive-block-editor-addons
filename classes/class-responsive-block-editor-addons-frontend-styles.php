@@ -107,6 +107,168 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			return $css;
 		}
 
+		/**
+		 * Get Number Box CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_number_box_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_number_box_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors      = array();
+			$tablet_selectors      = array();
+			$rbea_number_box_block = array(
+				' .rbea-number-box-block' => array(
+					'color'          => $attr['textColor'],
+					'font-family'    => $attr['contentFontFamily'],
+					'font-size'      => self::get_css_value( $attr['contentFontSize'], 'px' ),
+					'font-weight'    => $attr['contentFontWeight'],
+					'line-height'    => self::get_css_value( $attr['contentLineHeight'], 'px' ),
+					'letter-spacing' => self::get_css_value( $attr['contentLetterSpacing'], 'px' ),
+					'text-transform' => $attr['contentTextTransform'],
+				),
+			);
+			if ( $attr['showGradient'] ) {
+				$if_gradient_text  = array(
+					'background'              => $attr['textColor'],
+					'background'              => $attr['gradient'],
+					'-webkit-background-clip' => 'text',
+					'-webkit-text-fill-color' => 'transparent',
+				);
+				$merge_in_selector = array_merge( $rbea_number_box_block[' .rbea-number-box-block'], $if_gradient_text );
+			} else {
+				$if_normal_text    = array(
+					'color' => $attr['textColor'],
+				);
+				$merge_in_selector = array_merge( $rbea_number_box_block[' .rbea-number-box-block'], $if_normal_text );
+			}
+
+			if ( '0' === $attr['numberBoxBlockShadowHorizontalOffset'] ) {
+				$number_box_block_shadow_horizontal_offset = 0;
+			} else {
+				$number_box_block_shadow_horizontal_offset = self::get_css_value( $attr['numberBoxBlockShadowHorizontalOffset'], 'px' );
+			}
+			if ( '0' === $attr['numberBoxBlockShadowVerticalOffset'] ) {
+				$number_box_block_shadow_vertical_offset = 0;
+			} else {
+				$number_box_block_shadow_vertical_offset = self::get_css_value( $attr['numberBoxBlockShadowVerticalOffset'], 'px' );
+			}
+			if ( '0' === $attr['shapeShadowHorizontalOffset'] ) {
+				$shape_shadow_horizontal_offset = 0;
+			} else {
+				$shape_shadow_horizontal_offset = self::get_css_value( $attr['shapeShadowHorizontalOffset'], 'px' );
+			}
+			if ( '0' === $attr['shapeShadowVerticalOffset'] ) {
+				$shape_shadow_vertical_offset = 0;
+			} else {
+				$shape_shadow_vertical_offset = self::get_css_value( $attr['shapeShadowVerticalOffset'], 'px' );
+			}
+
+			$selectors = array(
+				''                                         => array(
+					'justify-content' => $attr['contentAlign'],
+					'overflow'        => $attr['overflow'],
+					'clear'           => $attr['clear'],
+					'z-index'         => $attr['zIndex'],
+				),
+				' .rbea-number-box-main-container'         => array(
+					'position'        => 'relative',
+					'min-height'      => self::get_css_value( $attr['numberBoxBlockMinHeight'], 'px' ),
+					'align-items'     => $attr['contentVerticalAlign'],
+					'width'           => self::get_css_value( $attr['contentWidth'], '%' ),
+					'justify-content' => $attr['numberBoxAlignment'],
+					'margin-top'      => self::get_css_value( $attr['numberBoxTopMargin'], 'px' ),
+					'margin-bottom'   => self::get_css_value( $attr['numberBoxBottomMargin'], 'px' ),
+					'margin-left'     => self::get_css_value( $attr['numberBoxLeftMargin'], 'px' ),
+					'margin-right'    => self::get_css_value( $attr['numberBoxRightMargin'], 'px' ),
+					'border-style'    => $attr['numberBoxBlockBorder'],
+					'border-width'    => self::get_css_value( $attr['numberBoxBlockBorderWidth'], 'px' ),
+					'border-color'    => $attr['numberBoxBlockBorderColor'],
+					'border-radius'   => self::get_css_value( $attr['numberBoxBlockBorderRadius'], 'px' ),
+					'box-shadow'      => $number_box_block_shadow_horizontal_offset . ' ' . $number_box_block_shadow_vertical_offset . ' ' . self::get_css_value( $attr['numberBoxBlockShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['numberBoxBlockShadowSpread'], 'px' ) . ' ' . $attr['numberBoxBlockShadowColor'],
+				),
+				' .rbea-number-box-main-container::before' => array(
+					'content'               => '',
+					'background-size'       => 'cover',
+					'position'              => 'absolute',
+					'top'                   => '0px',
+					'right'                 => '0px',
+					'bottom'                => '0px',
+					'left'                  => '0px',
+					'background-color'      => $attr['numberBoxBackgroundColor'],
+					'opacity'               => $attr['numberBoxBackgroundOpacity'] / 100,
+					'border-radius'         => self::get_css_value( $attr['numberBoxBlockBorderRadius'], 'px' ),
+					'background-image'      => sprintf( 'url("%s")', $attr['numberBoxBackgroundImage'] ),
+					'background-position'   => $attr['bgImagePosition'],
+					'background-repeat'     => $attr['bgImageRepeat'],
+					'background-size'       => $attr['bgImageSize'],
+					'background-attachment' => $attr['fixedBgImage'],
+				),
+				' .rbea-number-box-container'              => array(
+					'width'         => self::get_css_value( $attr['size'], 'px' ),
+					'height'        => self::get_css_value( $attr['size'], 'px' ),
+					'border-style'  => $attr['shapeBorder'],
+					'border-width'  => self::get_css_value( $attr['shapeBorderWidth'], 'px' ),
+					'border-color'  => $attr['shapeBorderColor'],
+					'border-radius' => self::get_css_value( $attr['shapeBorderRadius'], '%' ),
+					'box-shadow'    => $shape_shadow_horizontal_offset . ' ' . $shape_shadow_vertical_offset . ' ' . self::get_css_value( $attr['shapeShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['shapeShadowSpread'], 'px' ) . ' ' . $attr['shapeShadowColor'],
+				),
+				' .rbea-number-box-container::before'      => array(
+					'background-color' => $attr['shapeColor'],
+					'opacity'          => $attr['shapeOpacity'] / 100,
+					'border-radius'    => self::get_css_value( $attr['shapeBorderRadius'], '%' ),
+				),
+				' .rbea-number-box-block'                  => $merge_in_selector,
+			);
+
+			$mobile_selectors = array(
+				' .rbea-number-box-main-container' => array(
+					'justify-content' => $attr['numberBoxAlignmentMobile'],
+					'margin-top'      => self::get_css_value( $attr['numberBoxTopMarginMobile'], 'px' ),
+					'margin-bottom'   => self::get_css_value( $attr['numberBoxBottomMarginMobile'], 'px' ),
+					'margin-left'     => self::get_css_value( $attr['numberBoxLeftMarginMobile'], 'px' ),
+					'margin-right'    => self::get_css_value( $attr['numberBoxRightMarginMobile'], 'px' ),
+				),
+				' .rbea-number-box-container'      => array(
+					'width'  => self::get_css_value( $attr['sizeMobile'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeMobile'], 'px' ),
+				),
+				' .rbea-number-box-block'          => array(
+					'font-size' => self::get_css_value( $attr['contentFontSizeMobile'], 'px' ),
+				),
+			);
+
+			$tablet_selectors = array(
+				' .rbea-number-box-main-container' => array(
+					'justify-content' => $attr['numberBoxAlignmentTablet'],
+					'margin-top'      => self::get_css_value( $attr['numberBoxTopMarginTablet'], 'px' ),
+					'margin-bottom'   => self::get_css_value( $attr['numberBoxBottomMarginTablet'], 'px' ),
+					'margin-left'     => self::get_css_value( $attr['numberBoxLeftMarginTablet'], 'px' ),
+					'margin-right'    => self::get_css_value( $attr['numberBoxRightMarginTablet'], 'px' ),
+				),
+				' .rbea-number-box-container'      => array(
+					'width'  => self::get_css_value( $attr['sizeTablet'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeTablet'], 'px' ),
+				),
+				' .rbea-number-box-block'          => array(
+					'font-size' => self::get_css_value( $attr['contentFontSizeTablet'], 'px' ),
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-number-box.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+
 
 		/**
 		 * Get Advanced Columns CSS
@@ -1909,6 +2071,79 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'level'                         => 2,
 				'textDecoration'                => 'none',
 				'textDecorationSubHeading'      => 'none',
+			);
+		}
+
+		/**
+		 * Get Defaults for number box block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_number_box_default_attributes() {
+			return array(
+				'block_id'                             => '',
+				'numberBoxBackgroundColor'             => '#fff',
+				'numberBoxBackgroundOpacity'           => '100',
+				'numberBoxBackgroundImage'             => '',
+				'numberBoxBlockMinHeight'              => '0',
+				'contentVerticalAlign'                 => 'flex-start',
+				'contentWidth'                         => '100',
+				'contentAlign'                         => 'center',
+				'numberBoxAlignment'                   => 'center',
+				'numberBoxAlignmentTablet'             => 'center',
+				'numberBoxAlignmentMobile'             => 'center',
+				'numberBoxTopMargin'                   => '0',
+				'numberBoxBottomMargin'                => '0',
+				'numberBoxLeftMargin'                  => '0',
+				'numberBoxRightMargin'                 => '0',
+				'numberBoxTopMarginTablet'             => '0',
+				'numberBoxBottomMarginTablet'          => '0',
+				'numberBoxLeftMarginTablet'            => '0',
+				'numberBoxRightMarginTablet'           => '0',
+				'numberBoxTopMarginMobile'             => '0',
+				'numberBoxBottomMarginMobile'          => '0',
+				'numberBoxLeftMarginMobile'            => '0',
+				'numberBoxRightMarginMobile'           => '0',
+				'numberBoxBlockBorder'                 => 'none',
+				'numberBoxBlockBorderWidth'            => '0',
+				'numberBoxBlockBorderColor'            => '#fff',
+				'numberBoxBlockBorderRadius'           => '0',
+				'numberBoxBlockShadowHorizontalOffset' => '0',
+				'numberBoxBlockShadowVerticalOffset'   => '0',
+				'numberBoxBlockShadowBlur'             => '0',
+				'numberBoxBlockShadowSpread'           => '0',
+				'numberBoxBlockShadowColor'            => '#fff',
+				'size'                                 => '100',
+				'sizeTablet'                           => '100',
+				'sizeMobile'                           => '100',
+				'shapeColor'                           => '#ffc107',
+				'shapeOpacity'                         => '100',
+				'shapeBorder'                          => 'none',
+				'shapeBorderWidth'                     => '0',
+				'shapeBorderColor'                     => '#fff',
+				'shapeBorderRadius'                    => '50',
+				'shapeShadowHorizontalOffset'          => '0',
+				'shapeShadowVerticalOffset'            => '0',
+				'shapeShadowBlur'                      => '0',
+				'shapeShadowSpread'                    => '0',
+				'shapeShadowColor'                     => '#fff',
+				'textColor'                            => '#000',
+				'contentFontFamily'                    => '',
+				'contentFontSize'                      => '50',
+				'contentFontSizeMobile'                => '30',
+				'contentFontSizeTablet'                => '40',
+				'contentFontWeight'                    => '400',
+				'contentLineHeight'                    => '2',
+				'contentLetterSpacing'                 => '0',
+				'contentTextTransform'                 => '',
+				'showGradient'                         => false,
+				'fixedBgImage'                         => 'scroll',
+				'bgImagePosition'                      => 'center center',
+				'bgImageRepeat'                        => 'no-repeat',
+				'bgImageSize'                          => 'cover',
+				'overflow'                             => 'visible',
+				'clear'                                => 'none',
+				'zIndex'                               => '0',
 			);
 		}
 
@@ -7874,7 +8109,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$position    = str_replace( '-', ' ', $attr['backgroundImagePosition'] );
 			$backopacity = $attr['backgroundOpacity'] ? ( 100 - $attr['backgroundOpacity'] ) / 100 : 0.5;
-			$image_url   = $attr['backgroundImage'] ? $attr['backgroundImage']['url'] : null;
 
 			$selectors = array(
 				' '                   => array(
@@ -8260,128 +8494,134 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_testimonial_slider_block_default_attributes() {
 			return array(
-				'test_item_count'         => 3,
-				'classMigrate'            => false,
-				'test_block'              => array(),
-				'skin'                    => 'default',
-				'bubblePadding'           => 20,
-				'bubbleBorderRadius'      => 0,
-				'bubbleColor'             => 'center',
-				'headingAlign'            => 'center',
-				'headingAlignMobile'      => 'center',
-				'headingAlignTablet'      => 'center',
-				'descColor'               => '#333',
-				'companyColor'            => '#888888',
-				'authorColor'             => '#333',
-				'iconimgStyle'            => 'circle',
-				'imagePosition'           => 'bottom',
-				'imageAlignment'          => 'top',
-				'nameFontSizeType'        => 'px',
-				'nameFontSize'            => '',
-				'nameFontSizeTablet'      => '',
-				'nameFontSizeMobile'      => '',
-				'nameFontFamily'          => '',
-				'nameFontWeight'          => '',
-				'nameFontSubset'          => '',
-				'nameLineHeightType'      => 'em',
-				'nameLineHeight'          => '',
-				'nameLineHeightTablet'    => '',
-				'nameLineHeightMobile'    => '',
-				'nameLoadGoogleFonts'     => false,
-				'companyFontSizeType'     => 'px',
-				'companyFontSize'         => '',
-				'companyFontSizeTablet'   => '',
-				'companyFontSizeMobile'   => '',
-				'companyFontFamily'       => '',
-				'companyFontWeight'       => '',
-				'companyFontSubset'       => '',
-				'companyLineHeightType'   => 'em',
-				'companyLineHeight'       => '',
-				'companyLineHeightTablet' => '',
-				'companyLineHeightMobile' => '',
-				'companyLoadGoogleFonts'  => false,
-				'descFontSizeType'        => 'px',
-				'descFontSize'            => '',
-				'descFontSizeTablet'      => '',
-				'descFontSizeMobile'      => '',
-				'descFontFamily'          => '',
-				'descFontWeight'          => '',
-				'descFontSubset'          => '',
-				'descLineHeightType'      => 'em',
-				'descLineHeight'          => '',
-				'descLineHeightTablet'    => '',
-				'descLineHeightMobile'    => '',
-				'descLoadGoogleFonts'     => false,
-				'nameSpace'               => 5,
-				'descSpace'               => 15,
-				'nameSpaceMobile'         => 5,
-				'descSpaceMobile'         => 15,
-				'nameSpaceTablet'         => 5,
-				'descSpaceTablet'         => 15,
-				'block_id'                => 'not_set',
-				'authorSpace'             => 5,
-				'imgVrPadding'            => 10,
-				'imgHrPadding'            => 10,
-				'imgVrPaddingMobile'      => 10,
-				'imgHrPaddingMobile'      => 10,
-				'imgVrPaddingTablet'      => 10,
-				'imgHrPaddingTablet'      => 10,
-				'imgTopPadding'           => 10,
-				'imgBottomPadding'        => 10,
-				'iconImage'               => array(
+				'test_item_count'          => 3,
+				'classMigrate'             => false,
+				'test_block'               => array(),
+				'skin'                     => 'default',
+				'bubblePadding'            => 20,
+				'bubbleBorderRadius'       => 0,
+				'bubbleColor'              => 'center',
+				'headingAlign'             => 'center',
+				'headingAlignMobile'       => 'center',
+				'headingAlignTablet'       => 'center',
+				'descColor'                => '#333',
+				'companyColor'             => '#888888',
+				'authorColor'              => '#333',
+				'iconimgStyle'             => 'circle',
+				'imagePosition'            => 'bottom',
+				'imageAlignment'           => 'top',
+				'nameFontSizeType'         => 'px',
+				'nameFontSize'             => '',
+				'nameFontSizeTablet'       => '',
+				'nameFontSizeMobile'       => '',
+				'nameFontFamily'           => '',
+				'nameFontWeight'           => '',
+				'nameFontSubset'           => '',
+				'nameLineHeightType'       => 'em',
+				'nameLineHeight'           => '',
+				'nameLineHeightTablet'     => '',
+				'nameLineHeightMobile'     => '',
+				'nameLoadGoogleFonts'      => false,
+				'companyFontSizeType'      => 'px',
+				'companyFontSize'          => '',
+				'companyFontSizeTablet'    => '',
+				'companyFontSizeMobile'    => '',
+				'companyFontFamily'        => '',
+				'companyFontWeight'        => '',
+				'companyFontSubset'        => '',
+				'companyLineHeightType'    => 'em',
+				'companyLineHeight'        => '',
+				'companyLineHeightTablet'  => '',
+				'companyLineHeightMobile'  => '',
+				'companyLoadGoogleFonts'   => false,
+				'descFontSizeType'         => 'px',
+				'descFontSize'             => '',
+				'descFontSizeTablet'       => '',
+				'descFontSizeMobile'       => '',
+				'descFontFamily'           => '',
+				'descFontWeight'           => '',
+				'descFontSubset'           => '',
+				'descLineHeightType'       => 'em',
+				'descLineHeight'           => '',
+				'descLineHeightTablet'     => '',
+				'descLineHeightMobile'     => '',
+				'descLoadGoogleFonts'      => false,
+				'nameSpace'                => 5,
+				'descSpace'                => 15,
+				'nameSpaceMobile'          => 5,
+				'descSpaceMobile'          => 15,
+				'nameSpaceTablet'          => 5,
+				'descSpaceTablet'          => 15,
+				'block_id'                 => 'not_set',
+				'authorSpace'              => 5,
+				'imgVrPadding'             => 10,
+				'imgHrPadding'             => 10,
+				'imgVrPaddingMobile'       => 10,
+				'imgHrPaddingMobile'       => 10,
+				'imgVrPaddingTablet'       => 10,
+				'imgHrPaddingTablet'       => 10,
+				'imgTopPadding'            => 10,
+				'imgBottomPadding'         => 10,
+				'iconImage'                => array(
 					'url' => '',
 					'alt' => 'InfoBox placeholder img',
 				),
-				'imageSize'               => 'thumbnail',
-				'imageWidth'              => 60,
-				'columns'                 => 1,
-				'tcolumns'                => 1,
-				'mcolumns'                => 1,
-				'pauseOnHover'            => true,
-				'infiniteLoop'            => true,
-				'transitionSpeed'         => 500,
-				'autoplay'                => true,
-				'autoplaySpeed'           => 2000,
-				'arrowDots'               => 'arrows_dots',
-				'arrowSize'               => 20,
-				'arrowBorderWidth'        => 1,
-				'arrowBorderRadius'       => 0,
-				'arrowBorderColor'        => '',
-				'arrowBorderStyle'        => '',
-				'rowGap'                  => 10,
-				'rowGapMobile'            => 10,
-				'rowGapTablet'            => 10,
-				'columnGap'               => 10,
-				'columnGapMobile'         => 10,
-				'columnGapTablet'         => 10,
-				'contentPadding'          => 5,
-				'contentPaddingMobile'    => 5,
-				'contentPaddingTablet'    => 5,
-				'backgroundType'          => '',
-				'backgroundImage'         => '',
-				'backgroundImagePosition' => 'center-center',
-				'backgroundImageSize'     => 'cover',
-				'backgroundImageRepeat'   => 'no-repeat',
-				'backgroundAttachment'    => 'scroll',
-				'overlayType'             => 'color',
-				'backgroundColor'         => '',
-				'backgroundImageColor'    => '',
-				'blockBorderStyle'        => 'none',
-				'blockBorderWidth'        => '1',
-				'blockBorderRadius'       => '',
-				'blockBorderColor'        => '',
-				'backgroundOpacity'       => 50,
-				'arrowColor'              => '#333',
-				'stack'                   => 'tablet',
-				'blockPadding'            => 45,
-				'blockPaddingMobile'      => 45,
-				'blockPaddingTablet'      => 45,
-				'backgroundRepeat'        => 'empty', // For compatibility with v1.3.2.
-				'backgroundSize'          => 'empty', // For compatibility with v1.3.2.
-				'borderStyle'             => 'empty', // For compatibility with v1.3.2.
-				'borderColor'             => 'empty', // For compatibility with v1.3.2.
-				'borderWidth'             => 999, // For compatibility with v1.3.2.
-				'borderRadius'            => 999, // For compatibility with v1.3.2.
+				'imageSize'                => 'thumbnail',
+				'imageWidth'               => 60,
+				'columns'                  => 1,
+				'tcolumns'                 => 1,
+				'mcolumns'                 => 1,
+				'pauseOnHover'             => true,
+				'infiniteLoop'             => true,
+				'transitionSpeed'          => 500,
+				'autoplay'                 => true,
+				'autoplaySpeed'            => 2000,
+				'arrowDots'                => 'arrows_dots',
+				'arrowSize'                => 20,
+				'arrowBorderWidth'         => 1,
+				'arrowBorderRadius'        => 0,
+				'arrowBorderColor'         => '',
+				'arrowBorderStyle'         => '',
+				'rowGap'                   => 10,
+				'rowGapMobile'             => 10,
+				'rowGapTablet'             => 10,
+				'columnGap'                => 10,
+				'columnGapMobile'          => 10,
+				'columnGapTablet'          => 10,
+				'contentPadding'           => 5,
+				'contentPaddingMobile'     => 5,
+				'contentPaddingTablet'     => 5,
+				'backgroundType'           => '',
+				'backgroundImage'          => '',
+				'backgroundImagePosition'  => 'center-center',
+				'backgroundImageSize'      => 'cover',
+				'backgroundImageRepeat'    => 'no-repeat',
+				'backgroundAttachment'     => 'scroll',
+				'overlayType'              => 'color',
+				'backgroundColor'          => '',
+				'backgroundImageColor'     => '',
+				'blockBorderStyle'         => 'none',
+				'blockBorderWidth'         => '1',
+				'blockBorderRadius'        => '',
+				'blockBorderColor'         => '',
+				'backgroundOpacity'        => 50,
+				'arrowColor'               => '#333',
+				'stack'                    => 'tablet',
+				'blockPadding'             => 45,
+				'blockPaddingMobile'       => 45,
+				'blockPaddingTablet'       => 45,
+				'gradientOverlayType'      => 'linear',
+				'gradientOverlayColor1'    => '#fff',
+				'gradientOverlayColor2'    => '#fff',
+				'gradientOverlayAngle'     => '0',
+				'gradientOverlayLocation1' => '0',
+				'gradientOverlayLocation2' => '100',
+				'backgroundRepeat'         => 'empty', // For compatibility with v1.3.2.
+				'backgroundSize'           => 'empty', // For compatibility with v1.3.2.
+				'borderStyle'              => 'empty', // For compatibility with v1.3.2.
+				'borderColor'              => 'empty', // For compatibility with v1.3.2.
+				'borderWidth'              => 999, // For compatibility with v1.3.2.
+				'borderRadius'             => 999, // For compatibility with v1.3.2.
 			);
 		}
 

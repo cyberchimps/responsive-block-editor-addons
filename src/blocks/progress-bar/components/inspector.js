@@ -431,13 +431,14 @@ export default class Inspector extends Component {
 									<RangeControl
 										label={__("Circular Progress Bar Size", "responsive-block-editor-addons")}
 										value={circularProgressBarSize}
-										min={150}
+										min={50}
 										max={250}
 										onChange={(value) =>
 											setAttributes({
-												circularProgressBarSize: value !== undefined ? value : 200,
+												circularProgressBarSize: value !== undefined ? value : 150,
 											})
 										}
+										initialPosition={150}
 										allowReset
 									/>
 									<RangeControl
@@ -447,9 +448,10 @@ export default class Inspector extends Component {
 										max={15}
 										onChange={(value) =>
 											setAttributes({
-												circularProgressBarWidth: value !== undefined ? value : 200,
+												circularProgressBarWidth: value !== undefined ? value : 10,
 											})
 										}
+										initialPosition={10}
 										allowReset
 									/>
 								</Fragment>
@@ -475,9 +477,10 @@ export default class Inspector extends Component {
 										max={35}
 										onChange={(value) =>
 											setAttributes({
-												semiCircularProgressBarWidth: value !== undefined ? value : 200,
+												semiCircularProgressBarWidth: value !== undefined ? value : 10,
 											})
 										}
+										initialPosition={10}
 										allowReset
 									/>
 								</Fragment>
