@@ -40,9 +40,7 @@ registerBlockType("responsive-block-editor-addons/featured-product", {
     attributes: attributes,
 
     supports: {
-        anchor: true,
         align: true,
-        
     },
 
     /* Render the block in the editor. */

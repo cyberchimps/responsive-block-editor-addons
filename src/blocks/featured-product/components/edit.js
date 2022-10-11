@@ -131,13 +131,13 @@ export default class Edit extends Component {
                       setAttributes({
                         productPrice: "",
                         getProductPrice: 
-                          jsondata[i].prices.price_range.min_amount/100 +".00" + " - " + "$" +jsondata[i].prices.price_range.max_amount/100 + ".00"
+                          "$" + jsondata[i].prices.price_range.min_amount/100 +".00" + " - " + "$" +jsondata[i].prices.price_range.max_amount/100 + ".00"
                       });
                     }else if(jsondata[i].prices.sale_price === jsondata[i].prices.regular_price) {
                       setAttributes({
                         productPrice: "",
                         getProductPrice: 
-                          parseInt(jsondata[i].prices.price/100) +".00"
+                        "$" + parseInt(jsondata[i].prices.price/100) +".00"
                       });
                     }else if(jsondata[i].prices.sale_price !== jsondata[i].prices.regular_price) {
                       
@@ -162,6 +162,7 @@ export default class Edit extends Component {
         {/* Show the block markup in the editor */}
         <div
           className={classnames(
+            this.props.className,
             "responsive-block-editor-addons-block-featured-product",
             `block-${block_id}`
           )}
@@ -252,7 +253,7 @@ export default class Edit extends Component {
                         <span><strike>${regularPrice}</strike>{getProductPrice}</span>
                       </div>}
                       {productPrice === "" && <div className="featured-product__price">
-                        <span>${getProductPrice}</span>
+                        <span>{getProductPrice}</span>
                       </div>}
                     </>
                   )}
