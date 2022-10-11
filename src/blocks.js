@@ -50,6 +50,7 @@ import "./blocks/inline-notice/index.js";
 import "./blocks/instagram/index.js";
 import "./blocks/advanced-text/index.js";
 import "./blocks/image-hotspot/index.js";
+import "./blocks/featured-product/index.js";
 
 //do not move
 import "./blocks/rbea-templates/index.js";

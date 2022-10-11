@@ -381,6 +381,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				case 'responsive-block-editor-addons/portfolio':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_portfolio_css( $blockattr, $block_id );
 					break;
+				case 'responsive-block-editor-addons/featured-product':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_featured_product_css( $blockattr, $block_id );
+					break;
 				default:
 					// Nothing to do here.
 					break;

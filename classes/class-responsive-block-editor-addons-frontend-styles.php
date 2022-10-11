@@ -12988,6 +12988,97 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'taxonomyType'             => 'category',
 			);
 		}
+		/**
+		 * Get Featured Product CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_featured_product_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_featured_product_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$selectors = array(
+
+				' .block-featured-product' =>array(
+					'color' => $attr['textColor']
+				),
+
+				' .featured-product__background-image' =>array(
+					'background-image'  => sprintf( 'url("%s")', $attr['setFpBackgroundImage'] ),
+					'background-attachment' => $attr['fixedBackgroundImage'],
+					'background-size'       => $attr['backgroundCover'],
+					'background-position'   => $attr['focalAttr'],
+					'background-repeat'     => $attr['repeatedBackgroundImage'],
+				),
+				' .background-dim__overlay'            =>array(
+					'background-color'  => $attr['colorPick']
+				),
+				'.featured-product__button' => array(
+					'width'   => '100%',
+					'padding' => '0 48px 16px',
+					'z-index' => '1',
+					'margin-bottom' => 0,
+					'text-align' => 'center',
+					'color' => 'inherit'
+				)
+
+			);
+
+			$mobile_selectors = array();
+
+			$tablet_selectors = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id              = '.responsive-block-editor-addons-block-featured-product.block-' . $id;
+			
+			$css             = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for featured product block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_featured_product_default_attributes() {
+			return array(
+				'block_id'                 => '',
+				'productdata'              => '',
+				'toggleattr'               => false,
+				'getProductimage'          => '',
+				'getProductTitle'		   => '',
+				'getProductDescription'    => '',
+				'getProductPrice'          =>  0,
+				'buttonText'               => 'Shop now',
+				'showdescription'          => true,
+				'showprice'                => true,
+				'checkFixedBackgroundImage'=> false,
+				'checkRepeatedBackground'  => false,
+				'checkBackgroundCover'     => false,
+				'backgroundCover'          => 'auto',
+				'fixedBackgroundImage'     => 'scroll',
+				'fixedBackgroundImagePosition' => '',
+				'repeatedBackgroundImage'  => 'no-repeat',
+				'setFpBackgroundImage'     => '',
+				'colorPick'                => 'black',
+				'textColor'                => 'white',
+				'blockText'                => 'Shop Now',
+				'productPrice'             => '',
+				'regularPrice'             => '',
+				'focalAttr'                => '50% 50%'
+ 			);
+		}
 
 		/**
 		 * Generate gradient effect
