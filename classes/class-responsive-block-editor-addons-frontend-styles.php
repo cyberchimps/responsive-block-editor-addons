@@ -9349,7 +9349,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-toc__list-wrap:hover' => array(
 					'background-color' => $attr['bodyBgColorHover'],
 				),
-				' .responsive-block-editor-addons-toc__list-wrap:hover .responsive-block-editor-addons-toc__list li a' => array(
+				' .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li:hover, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li:hover a, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a:hover' => array(
 					'color' => $attr['bodyColorHover'],
 				),
 				' .responsive-block-editor-addons-toc__wrap' => array(

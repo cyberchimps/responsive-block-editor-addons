@@ -254,7 +254,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-toc__list-wrap:hover": {
       "background-color": bodyBgColorHover,
     },
-    " .responsive-block-editor-addons-toc__list-wrap:hover .responsive-block-editor-addons-toc__list li, .responsive-block-editor-addons-toc__list-wrap:hover .responsive-block-editor-addons-toc__list li a": {
+    " .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li:hover, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li:hover a, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a:hover": {
       color: bodyColorHover,
     },
     " .responsive-block-editor-addons-toc__wrap": {
