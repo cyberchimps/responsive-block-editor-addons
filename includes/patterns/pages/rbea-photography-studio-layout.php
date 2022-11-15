@@ -29,7 +29,7 @@ return array(
     
     <!-- wp:responsive-block-editor-addons/column {"topPadding":10,"bottomPadding":10,"leftPadding":10,"rightPadding":10,"topPaddingTablet":10,"bottomPaddingTablet":10,"leftPaddingTablet":10,"rightPaddingTablet":10,"topPaddingMobile":10,"bottomPaddingMobile":10,"leftPaddingMobile":10,"rightPaddingMobile":10,"block_id":"6fde1389-af85-404f-b9b0-3e13e59eb68e","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
     <div class="responsive-block-editor-addons-advanced-column-child block-6fde1389-af85-404f-b9b0-3e13e59eb68e"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":57,"sizeSlug":"large","linkDestination":"none"} -->
-    <figure class="wp-block-image size-large"><img src="http://testccreadysites.cyberchimps.com/gphotography-studio/wp-content/uploads/sites/118/2020/12/photo-banner-home.png" alt="" class="wp-image-57"/></figure>
+    <figure class="wp-block-image size-large"><img src="http://ccreadysites.cyberchimps.com/gphotography-studio/wp-content/uploads/sites/118/2020/12/photo-banner-home.png" alt="" class="wp-image-57"/></figure>
     <!-- /wp:image --></div></div></div>
     <!-- /wp:responsive-block-editor-addons/column --></div></div></div></div>
     <!-- /wp:responsive-block-editor-addons/advance-columns --></div></section></div>

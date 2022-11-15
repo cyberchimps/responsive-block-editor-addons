@@ -104,7 +104,7 @@ return array(
 		
 		<!-- wp:responsive-block-editor-addons/column {"topPadding":10,"bottomPadding":10,"leftPadding":10,"rightPadding":10,"topPaddingTablet":10,"bottomPaddingTablet":10,"leftPaddingTablet":10,"rightPaddingTablet":10,"topPaddingMobile":10,"bottomPaddingMobile":10,"leftPaddingMobile":10,"rightPaddingMobile":10,"block_id":"a4904ff7-49b1-4bfe-bfa6-b6f2b168735a","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
 		<div class="responsive-block-editor-addons-advanced-column-child block-a4904ff7-49b1-4bfe-bfa6-b6f2b168735a"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":57,"sizeSlug":"large","linkDestination":"none"} -->
-		<figure class="wp-block-image size-large"><img src="http://testccreadysites.cyberchimps.com/gphotography-studio/wp-content/uploads/sites/118/2020/12/photo-banner-home.png" alt="" class="wp-image-57"/></figure>
+		<figure class="wp-block-image size-large"><img src="http://ccreadysites.cyberchimps.com/gphotography-studio/wp-content/uploads/sites/118/2020/12/photo-banner-home.png" alt="" class="wp-image-57"/></figure>
 		<!-- /wp:image --></div></div></div>
 		<!-- /wp:responsive-block-editor-addons/column --></div></div></div></div>
 		<!-- /wp:responsive-block-editor-addons/advance-columns --></div></section></div>
@@ -149,7 +149,7 @@ return array(
 		
 		<!-- wp:responsive-block-editor-addons/column {"width":40,"topPaddingMobile":50,"block_id":"046788ed-2888-4096-bac7-41a42a7299ab","blockBorderStyle":"solid","blockBorderWidth":10,"blockBorderColor":"#0c0c0c","hoverboxShadowColor":"","hoverboxShadowBlur":0,"hoverboxShadowSpread":0,"hoverboxShadowPosition":""} -->
 		<div class="responsive-block-editor-addons-advanced-column-child block-046788ed-2888-4096-bac7-41a42a7299ab"><div class="responsive-column-wrap responsive-block-editor-addons-block-column"><div class="responsive-column-inner-wrap overlay-type-color linear"><!-- wp:image {"id":109,"sizeSlug":"large","linkDestination":"none"} -->
-		<figure class="wp-block-image size-large"><img src="http://testccreadysites.cyberchimps.com/glifestyle/wp-content/uploads/sites/121/2020/12/lifestyle-banner1.png" alt="" class="wp-image-109"/></figure>
+		<figure class="wp-block-image size-large"><img src="http://ccreadysites.cyberchimps.com/glifestyle/wp-content/uploads/sites/121/2020/12/lifestyle-banner1.png" alt="" class="wp-image-109"/></figure>
 		<!-- /wp:image --></div></div></div>
 		<!-- /wp:responsive-block-editor-addons/column --></div></div></div></div>
 		<!-- /wp:responsive-block-editor-addons/advance-columns --></div></section></div>
