@@ -48,6 +48,7 @@ export default class Save extends Component {
       <div
         id={anchor}
         className={classnames(
+          this.props.className,
           "responsive-block-editor-addons-block-section-outer-wrap",
           `block-${block_id}`,
           backgroundType ? `background-type-${backgroundType}` : "",

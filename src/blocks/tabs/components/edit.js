@@ -213,6 +213,7 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
        <div
          key={'tabs_body'}
          className={classnames(
+            this.props.className,
            `responsive-block-editor-addons-editor-preview-mode-${ deviceType.toLowerCase() }`,
            "responsive-block-editor-addons-block-tabs",
            `block-${block_id}`,

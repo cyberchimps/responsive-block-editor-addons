@@ -137,6 +137,7 @@ export default class Edit extends Component {
 			// Show the block controls on focus
 			<Inspector {...{ setAttributes, ...this.props }} />,
 			<div className={classnames(
+				this.props.className,
 				"responsive-block-editor-addons-block-progress-bar",
 				`block-${block_id}`,
 				progressBarColorTypeChosen

@@ -356,7 +356,7 @@ add_action( 'init', 'responsive_block_editor_addons_register_taxonomy_list' );
 function responsive_block_editor_addons_render_taxonomy_list( $attributes ) {
 	$layout     = $attributes['layout'];
 	$block_id   = $attributes['block_id'];
-	$main_class = 'responsive-block-editor-addons-block-taxonomy-list block-' . $block_id;
+	$main_class = 'responsive-block-editor-addons-block-taxonomy-list ' . $attributes['className'] . ' block-' . $block_id;
 	ob_start();
 	?>
 	<?php

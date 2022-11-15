@@ -26,6 +26,7 @@ export default class Save extends Component {
     return [
       <div
         className={classnames(
+          this.props.className,
           "responsive-block-editor-addons-block-social-share",
           `block-${block_id}`
         )}
