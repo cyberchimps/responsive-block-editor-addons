@@ -428,19 +428,9 @@ class Responsive_Block_Editor_Addons {
 							</p>
 							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-2-3.jpg' ); ?> ">
 						</div>
-						<div class="responsive-block-editor-addons-welcome-steps-left">
-							<p class="responsive-block-editor-addons-subtitle-steps">
-								<?php echo esc_html__( 'Step 3 - Import Templates or Patterns from the RBEA Templates', 'responsive-block-editor-addons' ); ?>
-							</p>
-							<p class="responsive-block-editor-addons-subtitle-steps-content">
-								<?php echo esc_html__( 'You can easily import beautiful pre-designed pages or sections from the RBEA Template Library on the top left corner', 'responsive-block-editor-addons' ); ?>
-							</p>
-							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-3-1.jpg' ); ?> ">
-							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-3-2.jpg' ); ?> ">
-						</div>
 						<div class="responsive-block-editor-addons-welcome-steps-right last">
 							<p class="responsive-block-editor-addons-subtitle-steps">
-								<?php echo esc_html__( 'Step 4 - Customize and start designing', 'responsive-block-editor-addons' ); ?>
+								<?php echo esc_html__( 'Step 3 - Customize and start designing', 'responsive-block-editor-addons' ); ?>
 							</p>
 							<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/welcome-step-4.jpg' ); ?> ">
 						</div>
@@ -497,20 +487,7 @@ class Responsive_Block_Editor_Addons {
 									<a target="_blank" href="https://cyberchimps.com/blocks/?utm_source=plugin&utm_medium=demolink&utm_campaign=gutblocks">View now &gt;&gt;</a>
 								</p>
 							</div>
-							<div class="responsive-block-editor-addons-help-card">
-								<div class="responsive-block-editor-addons-help-card-top">
-									<div class="responsive-block-editor-addons-help-card-icon">
-										<img class="responsive-block-editor-addons-help-img" src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/templates.png' ); ?>">
-									</div>
-									<div class="responsive-block-editor-addons-help-card-description">
-										<h4 class="responsive-block-editor-addons-help-card-heading">Gutenberg Templates</h4>
-										<p class="responsive-block-editor-addons-help-card-summary">Check out the beautiful website templates created using the Gutenberg blocks library.</p>
-									</div>
-								</div>
-								<p class="responsive-block-editor-addons-help-card-link">
-									<a target="_blank" href="https://cyberchimps.com/wordpress-themes/?utm_source=plugin&utm_medium=link&utm_campaign=gettingstartedpage&page-builder=gutenberg">View Now &gt;&gt;</a>
-								</p>
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -626,17 +603,6 @@ class Responsive_Block_Editor_Addons {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/image-hotspot/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/portfolio/index.php';
 
-		/**
-		 * Layout Component Registry.
-		 */
-		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-functions.php';
-		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-component-registry.php';
-		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/register-layout-components.php';
-
-		/**
-		 * REST API Endpoints for Layouts.
-		 */
-		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-endpoints.php';
 	}
 
 	/** Adds the Responsive Blocks block category.
@@ -1092,7 +1058,7 @@ class Responsive_Block_Editor_Addons {
 			case '0':
 				$check_for_review_transient = get_transient( 'responsive_block_editor_addons_review_transient' );
 				if ( false === $check_for_review_transient ) {
-					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', THIRTY_DAYS_IN_SECONDS );
+					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', RESPONSIVE_BLOCK_EDITOR_ADDONS_THIRTY_DAYS_IN_SECONDS );
 					update_option( 'responsive_block_editor_addons_review_pending', '1', true );
 				}
 				break;
@@ -1101,7 +1067,7 @@ class Responsive_Block_Editor_Addons {
 				if ( false === $check_for_review_transient ) {
 					echo sprintf(
 						'<div class="rbea-review-notice updated">
-						<div class="rbea-review-notice-text-container">		
+						<div class="rbea-review-notice-text-container">
 						<p><span>%3$s<strong>Responsive Block Editor Addons</strong>.%4$s</span></p>
 						<div><a class="rbea-review-dismiss-btn" href="%2$s"><i class="dashicons dashicons-dismiss"></i>%5$s</a></div>
 						</div>
