@@ -3,9 +3,9 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 6.1.1
 Requires PHP: 5.6
-Stable tag: 1.6.2
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,65 +105,6 @@ To get started go through our help resources:
 - [Product documentation](https://docs.cyberchimps.com/responsive-gutenberg-addons/?utm_source=wporg&utm_medium=rbea&utm_campaign=helpsection)
 - [Video tutorials](https://www.youtube.com/playlist?list=PLXTwxw3ZJwPSCqW__jo6fkUlEh2uXAsuF)
 
-READY-TO-USE STARTER WEBSITE TEMPLATES FOR GUTENBERG
-
-
-
-**Starter website templates** help you with a faster website launch. These have been designed considering the ideal layout for your niche – you can import, change content, and launch or modify the layouts after importing. Get beautifully designed ready-site templates that are built using Gutenberg, Responsive Gutenberg Blocks Library, and the Responsive theme. These templates can be easily imported and customized to change the look and feel of your website instantly.
-
-**These website templates have the following features:**
-
-- Pre-designed pages such as homepage, about, services, and contact.
-- Responsive designs that work on all devices.
-- Easy drag & drop editing.
-- Copyright-free stock images that you can use on your website.
-- Automatically installs all necessary plugins.
-
-**You can easily import and use over 30+ ready-to-use WordPress [website templates](https://cyberchimps.com/wordpress-themes/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites&page-builder=gutenberg).**
-
-**Business Website Templates**
-[Corporate WordPress Template](https://ccreadysites.cyberchimps.com/gcorporate/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Business WordPress Template](https://ccreadysites.cyberchimps.com/gbusiness//?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Consulting WordPress Template](https://ccreadysites.cyberchimps.com/gconsultancy/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[One Page Business WordPress Template](https://ccreadysites.cyberchimps.com/one-page-biz/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Transport Business WordPress Template](https://ccreadysites.cyberchimps.com/gtransport/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Learning Management System WordPress Template](https://ccreadysites.cyberchimps.com/glms/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Insurance WordPress Template](https://ccreadysites.cyberchimps.com/ginsurance/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Travel Agency WordPress Template](https://cyberchimps.com/wordpress-themes/wordpress-travel-agency-theme/#demo-full?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-
-**Healthcare and Fitness Website Templates**
-[Fitness Gym WordPress Template](https://ccreadysites.cyberchimps.com/ggym/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Dental Clinic WordPress Template](https://ccreadysites.cyberchimps.com/gdental-clinic/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Doctor WordPress Template](https://ccreadysites.cyberchimps.com/gdoctor/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Health Coach WordPress Template](https://ccreadysites.cyberchimps.com/ghealth-coach/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Yoga Instructor WordPress Template](https://ccreadysites.cyberchimps.com/gyoga-instructor/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-
-**Real Estate Website Templates**
-[Construction Services WordPress Template](https://ccreadysites.cyberchimps.com/gconstruction-services/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Home Decor WordPress Template](https://ccreadysites.cyberchimps.com/ghome-decor/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Construction Firm WordPress Template](https://ccreadysites.cyberchimps.com/gconstruction/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-
-**Local Business Website Templates**
-[Corporate Lawyer WordPress Template](https://ccreadysites.cyberchimps.com/corporate-lawyer/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Charity WordPress Template](https://ccreadysites.cyberchimps.com/gcharity/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Photography Studio WordPress Template](https://ccreadysites.cyberchimps.com/photography-studio//?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Spa Center WordPress Template](https://ccreadysites.cyberchimps.com/gspa/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Restaurant WordPress Template](https://ccreadysites.cyberchimps.com/restaurant-gutenberg/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-
-**Blog Templates**
-[Lifestyle Blog WordPress Template](https://ccreadysites.cyberchimps.com/glifestyle/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Travel Blogger WordPress Template](https://ccreadysites.cyberchimps.com/travel/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Food Blog WordPress Template](https://ccreadysites.cyberchimps.com/food/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-
-**WooCommerce Website Templates**
-[Jewellery Shop WordPress Template](https://ccreadysites.cyberchimps.com/gjewellery-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Fashion Shop WordPress Template](https://ccreadysites.cyberchimps.com/gfashion-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Pet Shop WordPress Template](https://ccreadysites.cyberchimps.com/gpet-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Ecommerce Fashion WordPress Template](https://ccreadysites.cyberchimps.com/gecommerce-fashion/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-[Furniture Shop WordPress Template](https://ccreadysites.cyberchimps.com/gfurniture-shop/?utm_source=wporg&utm_medium=rbea&utm_campaign=readysites)
-
-Check out all [Gutenberg Website Demos](https://cyberchimps.com/wordpress-themes/?page-builder=gutenberg&utm_source=wporg&utm_medium=rbea&utm_campaign=readme0)
-
 == Frequently Asked Questions ==
 = 1. What are Blocks? =
 Blocks are the basic elements that you can add into your content while building your pages. These blocks are customizable and make your website more attractive.
@@ -224,6 +165,12 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+= 1.6.4 - 23rd November 2022 =
+* Fix - Changes as per wordpress.org guidelines
+
+= 1.6.3 - 21st November 2022 =
+* New - Compatibility with WordPress 6.1.1
+
 = 1.6.2 - 9th August 2022 =
 * Improvement - Progress Bar - Size of circular progress bar can be reduced to 50px.
 * Improvement - All Blocks - Line height value accepts decimal number upto four floating points.
@@ -257,7 +204,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 = 1.5.3 - 30th December 2021 =
 * Fix - Multi Button - Mobile font size not working
 * Fix - Post Timeline - Button text is not center aligned in mobile view
-* Fix - Google Map - Height not working when set less than 150px 
+* Fix - Google Map - Height not working when set less than 150px
 * Fix - Info Block - Icon vertical alignment is broken if given background to it
 
 = 1.5.2 - 29th November 2021 =
@@ -403,5 +350,3 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 = 1.0.0 - 24th June 2020 =
 * Initial Plugin Release - Gutenberg Blocks - Advance Columns, Post Carousel, Post Grid, Testimonial
-
-
