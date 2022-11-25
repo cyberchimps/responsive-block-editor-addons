@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenber
 Requires at least: 5.0
 Tested up to: 6.1.1
 Requires PHP: 5.6
-Stable tag: 1.6.4
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -165,7 +165,10 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
-= 1.6.4 - 23rd November 2022 =
+= 1.6.5 - 25th November 2022 =
+* Fix - Changes as per wordpress.org guidelines
+
+= 1.6.4 - 24th November 2022 =
 * Fix - Changes as per wordpress.org guidelines
 
 = 1.6.3 - 21st November 2022 =
