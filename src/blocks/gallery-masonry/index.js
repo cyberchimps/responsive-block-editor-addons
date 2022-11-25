@@ -50,6 +50,30 @@ registerBlockType("responsive-block-editor-addons/gallery-masonry", {
     html: false,
     responsiveBlocksSpacing: true,
   },
+  example: {
+    attributes: {
+      gridSize: "lrg",
+      gutter: 5,
+      images: [
+        {
+          index: 0,
+          src:
+            "./admin/images/box1.jpg",
+        },
+        { index: 1, src: "./admin/images/box1.jpg" },
+        {
+          index: 2,
+          src:
+		  "./admin/images/box1.jpg",
+        },
+        { index: 3, src: "./admin/images/box1.jpg" },
+        {
+          index: 4,
+          src: "./admin/images/box1.jpg",
+        },
+      ],
+    },
+  },
   attributes,
   edit,
   save,

@@ -353,3 +353,6 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 = 1.0.0 - 24th June 2020 =
 * Initial Plugin Release - Gutenberg Blocks - Advance Columns, Post Carousel, Post Grid, Testimonial
+
+= Images =
+* Responsive-Block-Editor-Addons: /images/box1.jpg, CC0, https://stocksnap.io/photo/2RHWIACZP0
