@@ -611,16 +611,24 @@ class Responsive_Block_Editor_Addons {
 	 *
 	 * @return array Updated block categories.
 	 */
-	public function responsive_block_editor_addons_add_custom_block_category( $categories ) {
-		return array_merge(
-			$categories,
-			array(
+	function responsive_block_editor_addons_add_custom_block_category( $categories ) {
+		// Plugin’s block category title and slug.
+		$block_category = array( 'title' => esc_html__( 'Responsive Gutenberg Blocks', 'responsive-block-editor-addons' ), 'slug' => 'responsive_block_editor_addons' );
+		$category_slugs = wp_list_pluck( $categories, 'slug' );
+	
+		if ( ! in_array( $block_category['slug'], $category_slugs, true ) ) {
+			$categories = array_merge(
+				$categories,
 				array(
-					'slug'  => 'responsive_block_editor_addons',
-					'title' => __( 'Responsive Gutenberg Blocks', 'responsive-block-editor-addons' ),
-				),
-			)
-		);
+					array(
+						'title' => $block_category['title'],
+						'slug'  => $block_category['slug'],
+					),
+				)
+			);
+		}
+	
+		return $categories;
 	}
 
 
