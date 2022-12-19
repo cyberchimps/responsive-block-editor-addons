@@ -16,7 +16,7 @@ Use professional starter block patterns & templates to create websites within mi
 
 <strong>Responsive Blocks Library for Gutenberg</strong>
 
-Unleash your creativity with the Responsive Gutenberg Blocks Library plugin. Within minutes create professional content layouts for your website with free starter templates. Use the pattern importer to include the pages and sections layouts you like in your existing website.
+Responsive Gutenberg Blocks Library offers 40+ easy to customizable blocks for the WordPress editor. Combined with the power of Responsive Starter Templates, you can readily use designer made templates and launch your website within minutes.
 
 [youtube https://www.youtube.com/watch?v=Gs-h74Qnrlw]
 
