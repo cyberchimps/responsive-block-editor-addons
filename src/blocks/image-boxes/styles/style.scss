@@ -221,7 +221,7 @@
 .wp-block-responsive-block-editor-addons-image-boxes-block-item {
   padding: 0;
   position: relative;
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -345,7 +345,7 @@
 }
 .wp-block-responsive-block-editor-addons-image-boxes-block-item__title {
   padding: 0 20px;
-  width: 100%;
+  width: auto;
   z-index: 999;
 }
 .wp-block-responsive-block-editor-addons-image-boxes-block-item__description {
