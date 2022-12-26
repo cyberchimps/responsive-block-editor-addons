@@ -49,7 +49,6 @@ registerBlockType("responsive-block-editor-addons/video-popup", {
             vidheight:595,
             vidheightTablet:385.34,
             vidheightMobile:350.49,
-            imgURL:"https://ccreadysites.cyberchimps.com/gcorporate-business/wp-content/uploads/sites/115/2020/12/about-us-video.jpg",
             imgID:261,
             counterId:"843ea296-e254-432a-ade0-98f27df35802"
         },
