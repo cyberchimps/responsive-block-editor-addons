@@ -7235,7 +7235,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-team-social-icons .dashicons' => array(
-					'display' => 'inline-block',
+					'display'           => 'inline-block',
 				),
 
 				' .responsive-block-editor-addons-team-social-icons .dashicons.dashicons-twitter' => array(
@@ -9348,6 +9348,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li' => array(
 					'color' => $attr['bodyColor'],
+					'width' => 'fit-content',
 				),
 				' .responsive-block-editor-addons-toc__list-wrap:hover' => array(
 					'background-color' => $attr['bodyBgColorHover'],
