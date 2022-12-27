@@ -9261,8 +9261,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'       => self::get_css_value( $attr['blockRightPadding'], 'px' ) . '!important',
 					'margin-top'          => self::get_css_value( $attr['blockTopMargin'], 'px' ) . '!important',
 					'margin-bottom'       => self::get_css_value( $attr['blockBottomMargin'], 'px' ) . '!important',
-					'margin-left'         => self::get_css_value( $attr['blockLeftMargin'], 'px' ) . '!important',
-					'margin-right'        => self::get_css_value( $attr['blockRightMargin'], 'px' ) . '!important',
 					'z-index'             => $attr['zIndex'],
 					'display'             => 'flex',
 					'background-position' => $attr['backgroundPosition'],
