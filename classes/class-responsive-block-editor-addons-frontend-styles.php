@@ -7235,7 +7235,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-team-social-icons .dashicons' => array(
-					'display'           => 'inline-block',
+					'display'			=> 'inline-block',
 				),
 
 				' .responsive-block-editor-addons-team-social-icons .dashicons.dashicons-twitter' => array(
@@ -12994,6 +12994,912 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 		}
 
+		/**
+		 * Get Contact Form 7 Styler CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_contact_form_7_styler_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_contact_form_7_styler_block_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+
+			$ctaButtonmarginleft   = '';
+			$ctaButtonmarginright = '';
+			
+			if ( 'right' === $attr['ctaButtonAlignment'] ) {
+				$ctaButtonmarginright=self::get_css_value( 0, 'px' );
+			}
+			if ( 'left' === $attr['ctaButtonAlignment'] ) {
+				$ctaButtonmarginleft=self::get_css_value( 0, 'px' );
+			}
+			if ( 'center' === $attr['ctaButtonAlignment'] ) {
+				
+			}
+			
+
+			$imgopacity          = $attr['opacity'] / 100;
+
+
+			$background_image_gradient = '';
+			$btn_color                 = $attr['ctaBackColor'];
+			$btn_opacity               = $attr['buttonopacity'];
+			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
+				$background_image_gradient = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+			} elseif ( 'color' === $attr['buttonbackgroundType'] ) {
+				$btn_color   = $attr['ctaBackColor'];
+				$btn_opacity = $attr['buttonopacity'];
+			};
+
+			$background_hover_image_gradient = '';
+			$btn_h_color                     = $attr['ctaHoverBackColor'];
+			$btn_h_opacity                   = $attr['buttonHopacity'];
+			if ( 'gradient' === $attr['buttonHbackgroundType'] ) {
+				$background_hover_image_gradient = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
+			} elseif ( 'color' === $attr['buttonHbackgroundType'] ) {
+				$btn_h_color   = $attr['ctaHoverBackColor'];
+				$btn_h_opacity = $attr['buttonHopacity'];
+			}
+			
+			$box_shadow_position_css = $attr['boxShadowPosition'];
+
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$box_shadow_position_css = '';
+			}
+
+			$hoverbox_shadow_position_css = $attr['hoverboxShadowPosition'];
+
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hoverbox_shadow_position_css = '';
+			}
+
+			$inputBox_shadow_position_css = $attr['inputBoxShadowPosition'];
+
+			if ( 'outset' === $attr['inputBoxShadowPosition'] ) {
+				$inputBox_shadow_position_css = '';
+			}
+
+			$submit_button_box_shadow_position_css = $attr['inputBoxShadowPosition'];
+
+			if ( 'outset' === $attr['inputBoxShadowPosition'] ) {
+				$submit_button_box_shadow_position_css = '';
+			}
+
+			
+			
+
+			$selectors = array(
+				' .responsive-form-title-text'             => array(
+					'color'          => $attr['formTitleColor'],
+					'font-family'    => $attr['formTitleFontFamily'],
+					'font-size'      => self::get_css_value( $attr['formTitleFontSize'], 'px' ),
+					'font-weight'    => $attr['formTitleFontWeight'],
+					'line-height'    => $attr['formTitleLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['formTitleLetterSpacing'], 'px' ),
+					'text-align'     => $attr['formTitleAlignment'],
+
+				),
+				' .form-container'                         => array(
+					'justify-content' => $attr['formAlignment'],
+
+				),
+				' .responsive-form-desc-text'              => array(
+					'color'          => $attr['formDescriptionColor'],
+					'font-family'    => $attr['formDescriptionFontFamily'],
+					'font-size'      => self::get_css_value( $attr['formDescriptionFontSize'], 'px' ),
+					'font-weight'    => $attr['formDescriptionFontWeight'],
+					'line-height'    => $attr['formDescriptionLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['formDescriptionLetterSpacing'], 'px' ),
+					'text-align'     => $attr['formTitleAlignment'],
+
+				),
+				' .form'                                   => array(
+					'width'            => self::get_css_value( $attr['formWidth'], '%' ),
+					'padding-top'      => self::get_css_value( $attr['topPadding'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['bottomPadding'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['leftPadding'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['rightPadding'], 'px' ),
+					'margin-top'       => self::get_css_value( $attr['topMargin'], 'px' ),
+					'margin-bottom'    => self::get_css_value( $attr['bottomMargin'], 'px' ),
+					'margin-left'      => self::get_css_value( $attr['leftMargin'], 'px' ),
+					'margin-right'     => self::get_css_value( $attr['rightMargin'], 'px' ),
+					'border-width'     => self::get_css_value( $attr['formBorderWidth'], '%' ),
+					'border-color'     => $attr['formBorderColor'],
+					'border-style'     => $attr['formBorderStyle'],
+					'border-radius'    => self::get_css_value( $attr['formBorderRadius'], 'px' ),
+					'background-color' => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColor'], $imgopacity ) : '',
+					'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+						self::hex_to_rgb( $attr['backgroundColor1'], $imgopacity ),
+						self::hex_to_rgb( $attr['backgroundColor2'], $imgopacity ),
+						$attr['gradientDirection'],
+						$attr['colorLocation1'],
+						$attr['colorLocation2']
+					) : '',
+					'box-shadow'       => self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
+
+				),
+
+				' .form:hover'                             => array(
+
+					'box-shadow'       => '' !== $attr['hoverboxShadowColor'] ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
+					'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+						self::hex_to_rgb( $attr['hoverbackgroundColor1'], $imgopacity ),
+						self::hex_to_rgb( $attr['hoverbackgroundColor2'], $imgopacity ),
+						$attr['hovergradientDirection'],
+						$attr['hovercolorLocation1'],
+						$attr['hovercolorLocation2']
+					) : '',
+					'background-color' => 'color' === $attr['backgroundType'] && '' !== $attr['backgroundColorHover'] ? self::hex_to_rgb( $attr['backgroundColorHover'] ? $attr['backgroundColorHover'] : '#fff', $imgopacity ) : '',
+				),
+
+				' p>label'                       => array(					
+					'display'          => $attr['showLabels'] ? 'block' : 'none',
+				),
+				' .wpcf7-not-valid-tip'                       => array(
+					'display'          => $attr['showErrorMsgs'] ? 'block' : 'none',
+					'font-family'    => $attr['messageFontFamily'],
+					'font-size'      => self::get_css_value( $attr['messageFontSize'], 'px' ),
+					'font-weight'    => $attr['messageFontWeight'],
+					'line-height'    => $attr['messageLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['messageLetterSpacing'], 'px' ),
+					'color' => $attr['errorMsgColor'],
+				),
+
+				' .wpcf7 input[type=text] ,.wpcf7 input[type=email], .wpcf7 .wpcf7-select'         => array(
+					'color'            => $attr['inputTextColor'],
+					'background-color' => $attr['inputBackgroundColor'],
+					'border-width'     => self::get_css_value( $attr['inputBorderWidth'], 'px' ),
+					'border-color'     => $attr['inputBorderColor'],
+					'border-style'     => $attr['inputBorderStyle'],
+					'border-radius'    => self::get_css_value( $attr['inputBorderRadius'], 'px' ),
+					'padding-top'      => self::get_css_value( $attr['inputTopPadding'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['inputBottomPadding'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['inputLeftPadding'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['inputRightPadding'], 'px' ),
+					'text-indent'      => self::get_css_value( $attr['textIndent'], 'px' ),
+					'font-family'      => $attr['inputFontFamily'],
+					'font-size'        => self::get_css_value( $attr['inputFontSize'], 'px' ),
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'],
+					'letter-spacing'   => self::get_css_value( $attr['inputLetterSpacing'], 'px' ),
+					'margin-top'       => self::get_css_value( $attr['labelSpacing'], 'px' ),
+					'box-shadow'       => self::get_css_value( $attr['inputBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowSpread'], 'px' ) . ' ' . $attr['inputBoxShadowColor'] . ' ' . $inputBox_shadow_position_css,
+				),
+
+				' .wpcf7 wpcf7-text'                       => array(
+					'width' => self::get_css_value( $attr['textareaWidth'], '%' ),
+				),
+
+				' .wpcf7 textarea'                         => array(
+					'color'            => $attr['inputTextColor'],
+					'background-color' => $attr['inputBackgroundColor'],
+					'border-width'     => self::get_css_value( $attr['inputBorderWidth'], 'px' ),
+					'border-color'     => $attr['inputBorderColor'],
+					'border-style'     => $attr['inputBorderStyle'],
+					'border-radius'    => self::get_css_value( $attr['inputBorderRadius'], 'px' ),
+					'padding-top'      => self::get_css_value( $attr['inputTopPadding'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['inputBottomPadding'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['inputLeftPadding'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['inputRightPadding'], 'px' ),
+					'width'            => self::get_css_value( $attr['textareaWidth'], '%' ),
+					'height'           => self::get_css_value( $attr['textareaHeight'], 'px' ),
+					'text-indent'      => self::get_css_value( $attr['textIndent'], 'px' ),
+					'font-family'      => $attr['inputFontFamily'],
+					'font-size'        => self::get_css_value( $attr['inputFontSize'], 'px' ),
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'],
+					'letter-spacing'   => self::get_css_value( $attr['inputLetterSpacing'], 'px' ),
+					'margin-top'       => self::get_css_value( $attr['labelSpacing'], 'px' ),
+					'box-shadow'       => self::get_css_value( $attr['inputBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowSpread'], 'px' ) . ' ' . $attr['inputBoxShadowColor'] . ' ' . $inputBox_shadow_position_css,
+
+				),
+
+				' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email'                     => array(
+					'width'  => self::get_css_value( $attr['inputWidth'], '%' ),
+					'height' => self::get_css_value( $attr['inputHeight'], 'px' ),
+				),
+
+				' .wpcf7-select'                           => array(
+					'color'            => $attr['inputTextColor'],
+					'background-color' => $attr['inputBackgroundColor'],
+				),
+
+				' .wpcf7 form.wpcf7-form:not(input)'       => array(
+					'color'          => $attr['labelColor'],
+					'font-family'    => $attr['labelFontFamily'],
+					'font-size'      => self::get_css_value( $attr['labelFontSize'], 'px' ),
+					'font-weight'    => $attr['labelFontWeight'],
+					'line-height'    => $attr['labelLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['labelLetterSpacing'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['labelSpacing'], 'px' ),
+				),
+				' ::-webkit-input-placeholder'             => array(
+					'color' => $attr['placeholderColor'],
+				),
+				' :-moz-placeholder'                       => array(
+					'color' => $attr['placeholderColor'],
+				),
+				' ::-moz-placeholder'                      => array(
+					'color' => $attr['placeholderColor'],
+				),
+				' :-ms-input-placeholder'                  => array(
+					'color' => $attr['placeholderColor'],
+				),
+				' input[type="checkbox"]'                  => array(
+					'color' => $attr['hoverRadioCheckboxColor'],
+				),
+				" .wpcf7 .wpcf7-checkbox input[type='checkbox']" => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['radioCheckboxColor'],
+					'font-size'        => 'calc( ' . $attr['radioCheckboxSize'] . 'px / 1.2 )',
+					'border'           => 'solid',
+					'border-width'     => self::get_css_value( $attr['radioCheckboxBorderWidth'], 'px' ),
+					'border-color'     => $attr['radioCheckboxBorderColor'],
+					'border-radius'    => self::get_css_value( $attr['checkboxBorderRadius'], 'px' ),
+					'width'            => self::get_css_value( $attr['radioCheckboxSize'] + $attr['radioCheckboxBorderWidth'] + $attr['radioCheckboxBorderWidth'], 'px' ),
+					'height'           => self::get_css_value( $attr['radioCheckboxSize'] + $attr['radioCheckboxBorderWidth'] + $attr['radioCheckboxBorderWidth'], 'px' ),
+				),
+
+				" .wpcf7 .wpcf7-checkbox input[type='checkbox']:checked + span:before" => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['radioCheckboxColor'],
+					'font-size'        => 'calc( ' . $attr['radioCheckboxSize'] . 'px / 1.2 )',
+					'border-color'     => $attr['hoverRadioCheckboxColor'],
+				),
+				" .wpcf7 .wpcf7-acceptance input[type='checkbox']:checked + span:before" => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'border-color'     => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['radioCheckboxColor'],
+				),
+				" .wpcf7 .wpcf7-acceptance input[type='checkbox'] + span:before" => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['radioCheckboxColor'],
+					'font-size'        => 'calc( ' . $attr['radioCheckboxSize'] . 'px / 1.2 )',
+					'width'            => self::get_css_value( $attr['radioCheckboxSize'], 'px' ),
+					'height'           => self::get_css_value( $attr['radioCheckboxSize'], 'px' ),
+				),
+				" .wpcf7 .wpcf7-radio input[type='radio']" => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['radioCheckboxColor'],
+					'font-size'        => 'calc( ' . $attr['radioCheckboxSize'] . 'px / 1.2 )',
+					'border'           => 'solid',
+					'border-width'     => self::get_css_value( $attr['radioCheckboxBorderWidth'], 'px' ),
+					'border-color'     => $attr['radioCheckboxBorderColor'],
+					'border-radius'    => self::get_css_value( $attr['radioButtonBorderRadius'], 'px' ),
+					'width'            => self::get_css_value( $attr['radioCheckboxSize'] + $attr['radioCheckboxBorderWidth'] + $attr['radioCheckboxBorderWidth'], 'px' ),
+					'height'           => self::get_css_value( $attr['radioCheckboxSize'] + $attr['radioCheckboxBorderWidth'] + $attr['radioCheckboxBorderWidth'], 'px' ),
+				),
+				
+				' .wpcf7 .wpcf7-radio input[type=radio]:checked::before' => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['hoverRadioCheckboxColor'],
+					'font-size'        => 'calc( ' . $attr['radioCheckboxSize'] . 'px * 0.4 )',
+					'border'           => 'solid',
+					'width'            => 'calc( ' . $attr['radioCheckboxSize'] . 'px * 0.4 )',
+					'height'           => 'calc( ' . $attr['radioCheckboxSize'] . 'px * 0.4 )',
+				),
+				" .wpcf7 .wpcf7-radio input[type='radio']:checked + span:before" => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['radioCheckboxColor'],
+					'font-size'        => 'calc( ' . $attr['radioCheckboxSize'] . 'px / 1.2 )',
+					'border-color'     => $attr['radioCheckboxBorderColor'],
+				),
+				" .wpcf7 .wpcf7-radio input[type='radio'] + span:before" => array(
+					'color'            => $attr['hoverRadioCheckboxColor'],
+					'background-color' => $attr['radioCheckboxColor'],
+					'display'          => 'inline-flex',
+					'border-radius'    => '100%',
+					'width'            => 'calc( ' . $attr['radioCheckboxSize'] . 'px / 1.2 )',
+					'height'           => 'calc( ' . $attr['radioCheckboxSize'] . 'px / 1.2 )',
+				),
+
+				// list.
+				' .wpcf7 .wpcf7-list-item'                 => array(
+					'margin-top' => self::get_css_value( $attr['labelSpacing'], 'px' ),
+				),
+
+				' .wpcf7 .wpcf7-list-item-label'           => array(
+					'color'          => $attr['radioCheckboxTextColor'],
+					'font-family'    => $attr['radioCheckboxFontFamily'],
+					'font-size'      => self::get_css_value( $attr['radioCheckboxFontSize'], 'px' ),
+					'font-weight'    => $attr['radioCheckboxFontWeight'],
+					'line-height'    => $attr['radioCheckboxLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['radioCheckboxLetterSpacing'], 'px' ),
+				),
+
+				' .wpcf7 select.wpcf7-form-control.wpcf7-select.wpcf7-validates-as-required' => array(
+					'margin-top' => self::get_css_value( $attr['labelSpacing'], 'px' ),
+				),
+				// Submit button
+				' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array(
+					'font-family'      => $attr['submitButtonFontFamily'],
+					'font-size'        => self::get_css_value( $attr['submitButtonFontSize'], 'px' ),
+					'font-weight'      => $attr['submitButtonFontWeight'],
+					'line-height'      => $attr['submitButtonLineHeight'],
+					'letter-spacing'   => self::get_css_value( $attr['submitButtonLetterSpacing'], 'px' ),
+					'background-image' => $background_image_gradient,
+					'background-color' => $btn_color . '!important',
+					'color'            => $attr['ctaColor'] . '!important',
+					'padding-top'      => self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['ctaVpadding'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['ctaHpadding'], 'px' ),
+					'margin'           =>'auto',
+					'margin-left'      => $ctaButtonmarginleft,
+					'margin-right'     => $ctaButtonmarginright,
+					'border-width'     => self::get_css_value( $attr['ctaBorderWidth'], 'px' ),
+					'border-color'     => $attr['ctaBorderColor'],
+					'border-style'     => $attr['ctaBorderStyle'],
+					'border-radius'    => self::get_css_value( $attr['ctaBorderRadius'], 'px' ),
+					'width'            => self::get_css_value( $attr['submitButtonWidth'], 'px' ),
+					'height'           => self::get_css_value( $attr['submitButtonHeight'], 'px' ),
+					'box-shadow'       => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $box_shadow_position_css,
+
+				),
+
+				' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover' => array(
+					'background-image' => 'color' === $attr['buttonHbackgroundType'] ? 'none' : $background_hover_image_gradient,
+					'background-color' => $btn_h_color . '!important',
+					'border-color'     => $attr['ctaHoverBorderColor'],
+					'color'            => $attr['ctaHoverColor'] . '!important',
+					'border-color'     => $attr['ctaHoverBorderColor'],
+					'box-shadow'       => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $box_shadow_position_css,
+				),
+
+				' .wpcf7 form .wpcf7-response-output'      => array(					
+					'border-width'   => self::get_css_value( $attr['afterSubmitBorderWidth'], 'px' ),
+					'border-color'   => $attr['afterSubmitBorderColor'],
+					'border-style'   => $attr['afterSubmitBorderStyle'],
+					'border-radius'  => self::get_css_value( $attr['afterSubmitBorderRadius'], 'px' ),
+					'font-family'    => $attr['afterSubmitFontFamily'],
+					'font-size'      => self::get_css_value( $attr['afterSubmitFontSize'], 'px' ),
+					'font-weight'    => $attr['afterSubmitFontWeight'],
+					'line-height'    => $attr['afterSubmitLineHeight'],
+					'letter-spacing' => self::get_css_value( $attr['afterSubmitLetterSpacing'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['afterSubmitTopPadding'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['afterSubmitBottomPadding'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['afterSubmitLeftPadding'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['afterSubmitRightPadding'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['afterSubmitTopMargin'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['afterSubmitBottomMargin'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['afterSubmitLeftMargin'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['afterSubmitRightMargin'], 'px' ),
+					'background-color' => $attr['afterSubmitMsgbgColor'],					
+				),
+				' .wpcf7 form.sent .wpcf7-response-output'      => array(
+					'color'          => $attr['successMsgColor'],					
+				),
+
+				' .wpcf7 form.invalid .wpcf7-response-output'      => array(
+					'color'          => $attr['afterSubmitErrorMsgColor'],
+					
+				),				
+
+			);
+
+			$mobile_selectors = array(
+				' .responsive-form-title-text'        => array(
+					'font-size'  => self::get_css_value( $attr['formTitleFontSizeMobile'], 'px' ),
+					'text-align' => $attr['formTitleAlignmentMobile'],
+				),
+
+				' .form-container'                    => array(
+					'justify-content' => $attr['formAlignmentMobile'],
+
+				),
+				' .responsive-form-desc-text'         => array(
+					'font-size'  => self::get_css_value( $attr['formDescriptionFontSizeMobile'], 'px' ),
+					'text-align' => $attr['formTitleAlignmentMobile'],
+
+				),
+				' .form'                              => array(
+					'width'          => self::get_css_value( $attr['formWidthMobile'], '%' ),
+					'padding-top'    => self::get_css_value( $attr['topPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['bottomPaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['leftPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['rightPaddingMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['topMarginMobile'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['bottomMarginMobile'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['leftMarginMobile'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['rightMarginMobile'], 'px' ),
+
+				),
+
+				' .wpcf7 input:not([type=submit])'    => array(
+					'padding-top'    => self::get_css_value( $attr['inputTopPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['inputBottomPaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['inputLeftPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['inputRightPaddingMobile'], 'px' ),
+					'text-indent'    => self::get_css_value( $attr['textIndentMobilet'], 'px' ),
+					'font-size'      => self::get_css_value( $attr['inputFontSizeMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['labelSpacingMobile'], 'px' ),
+				),
+
+				' .wpcf7 wpcf7-text'                  => array(
+					'width' => self::get_css_value( $attr['textareaWidthMobile'], '%' ),
+				),
+
+				' .wpcf7 textarea'                    => array(
+					'padding-top'    => self::get_css_value( $attr['inputTopPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['inputBottomPaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['inputLeftPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['inputRightPaddingMobile'], 'px' ),
+					'width'          => self::get_css_value( $attr['textareaWidthMobile'], '%' ),
+					'height'         => self::get_css_value( $attr['textareaHeightMobile'], 'px' ),
+					'text-indent'    => self::get_css_value( $attr['textIndentMobile'], 'px' ),
+					'font-size'      => self::get_css_value( $attr['inputFontSizeMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['labelSpacingMobile'], 'px' ),
+				),
+
+				' .wpcf7-form-control'                => array(
+					'width'  => self::get_css_value( $attr['inputWidthMobile'], '%' ),
+					'height' => self::get_css_value( $attr['inputHeightMobile'], 'px' ),
+				),
+
+				' .wpcf7 form.wpcf7-form:not(input)'  => array(
+					'font-size'  => self::get_css_value( $attr['labelFontSizeMobile'], 'px' ),
+					'margin-top' => self::get_css_value( $attr['labelSpacingMobile'], 'px' ),
+				),
+				// list.
+				' .wpcf7 .wpcf7-list-item'            => array(
+					'margin-top' => self::get_css_value( $attr['labelSpacingMobile'], 'px' ),
+				),
+
+				' .wpcf7 .wpcf7-list-item-label'      => array(
+					'font-size' => self::get_css_value( $attr['radioCheckboxFontSizeMobile'], 'px' ),
+				),
+
+				' .wpcf7 select.wpcf7-form-control.wpcf7-select.wpcf7-validates-as-required' => array(
+					'margin-top' => self::get_css_value( $attr['labelSpacingMobile'], 'px' ),
+				),
+				// Submit button
+				' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array(
+					'font-size'      => self::get_css_value( $attr['submitButtonFontSizeMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'width'          => self::get_css_value( $attr['submitButtonWidthMobile'], 'px' ),
+					'height'         => self::get_css_value( $attr['submitButtonHeightMobile'], 'px' ),
+				),
+
+				' .wpcf7-not-valid-tip'               => array(
+					'font-size' => self::get_css_value( $attr['messageFontSizeMobile'], 'px' ),
+
+				),
+				' .wpcf7 form .wpcf7-response-output' => array(
+					'font-size'      => self::get_css_value( $attr['afterSubmitFontSizeMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['afterSubmitTopPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['afterSubmitBottomPaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['afterSubmitLeftPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['afterSubmitRightPaddingMobile'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['afterSubmitTopMarginMobile'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['afterSubmitBottomMarginMobile'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['afterSubmitLeftMarginMobile'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['afterSubmitRightMarginMobile'], 'px' ),
+
+				),
+
+			);
+
+			$tablet_selectors = array(
+				' .responsive-form-title-text'        => array(
+					'font-size'  => self::get_css_value( $attr['formTitleFontSizeTablet'], 'px' ),
+					'text-align' => $attr['formTitleAlignmentTablet'],
+				),
+
+				' .form-container'                    => array(
+					'justify-content' => $attr['formAlignmentTablet'],
+
+				),
+				' .responsive-form-desc-text'         => array(
+					'font-size'  => self::get_css_value( $attr['formDescriptionFontSizeTablet'], 'px' ),
+					'text-align' => $attr['formTitleAlignmentTablet'],
+
+				),
+				' .form'                              => array(
+					'width'          => self::get_css_value( $attr['formWidthTablet'], '%' ),
+					'padding-top'    => self::get_css_value( $attr['topPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['bottomPaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['leftPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['rightPaddingTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['topMarginTablet'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['bottomMarginTablet'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['leftMarginTablet'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['rightMarginTablet'], 'px' ),
+
+				),
+
+				' .wpcf7 input:not([type=submit])'    => array(
+					'padding-top'    => self::get_css_value( $attr['inputTopPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['inputBottomPaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['inputLeftPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['inputRightPaddingTablet'], 'px' ),
+					'text-indent'    => self::get_css_value( $attr['textIndentTablet'], 'px' ),
+					'font-size'      => self::get_css_value( $attr['inputFontSizeTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['labelSpacingTablet'], 'px' ),
+				),
+
+				' .wpcf7 wpcf7-text'                  => array(
+					'width' => self::get_css_value( $attr['textareaWidthTablet'], '%' ),
+				),
+
+				' .wpcf7 textarea'                    => array(
+					'padding-top'    => self::get_css_value( $attr['inputTopPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['inputBottomPaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['inputLeftPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['inputRightPaddingTablet'], 'px' ),
+					'width'          => self::get_css_value( $attr['textareaWidthTablet'], '%' ),
+					'height'         => self::get_css_value( $attr['textareaHeightTablet'], 'px' ),
+					'text-indent'    => self::get_css_value( $attr['textIndentTablet'], 'px' ),
+					'font-size'      => self::get_css_value( $attr['inputFontSizeTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['labelSpacingTablet'], 'px' ),
+				),
+
+				' .wpcf7-form-control'                => array(
+					'width'  => self::get_css_value( $attr['inputWidthTablet'], '%' ),
+					'height' => self::get_css_value( $attr['inputHeightTablet'], 'px' ),
+				),
+
+				' .wpcf7 form.wpcf7-form:not(input)'  => array(
+					'font-size'  => self::get_css_value( $attr['labelFontSizeTablet'], 'px' ),
+					'margin-top' => self::get_css_value( $attr['labelSpacingTablet'], 'px' ),
+				),
+				// list.
+				' .wpcf7 .wpcf7-list-item'            => array(
+					'margin-top' => self::get_css_value( $attr['labelSpacingTablet'], 'px' ),
+				),
+
+				' .wpcf7 .wpcf7-list-item-label'      => array(
+					'font-size' => self::get_css_value( $attr['radioCheckboxFontSizeTablet'], 'px' ),
+				),
+
+				' .wpcf7 select.wpcf7-form-control.wpcf7-select.wpcf7-validates-as-required' => array(
+					'margin-top' => self::get_css_value( $attr['labelSpacingTablet'], 'px' ),
+				),
+				// Submit button
+				' .wpcf7 input.wpcf7-form-control.wpcf7-submit' => array(
+					'font-size'      => self::get_css_value( $attr['submitButtonFontSizeTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'width'          => self::get_css_value( $attr['submitButtonWidthTablet'], 'px' ),
+					'height'         => self::get_css_value( $attr['submitButtonHeightTablet'], 'px' ),
+				),
+
+				' .wpcf7-not-valid-tip'               => array(
+					'font-size' => self::get_css_value( $attr['messageFontSizeTablet'], 'px' ),
+
+				),
+				' .wpcf7 form .wpcf7-response-output' => array(
+					'font-size'      => self::get_css_value( $attr['afterSubmitFontSizeTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['afterSubmitTopPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['afterSubmitBottomPaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['afterSubmitLeftPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['afterSubmitRightPaddingTablet'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['afterSubmitTopMarginTablet'], 'px' ),
+					'margin-bottom'  => self::get_css_value( $attr['afterSubmitBottomMarginTablet'], 'px' ),
+					'margin-left'    => self::get_css_value( $attr['afterSubmitLeftMarginTablet'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['afterSubmitRightMarginTablet'], 'px' ),
+
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			// $id              = '.responsive-block-editor-addons-block-contact-form-7-styler.block-id-' . $id;
+			$id  = '.responsive-block-editor-addons-block-contact-form-7-styler.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for Contact Form 7 Styler block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_contact_form_7_styler_block_default_attributes() {
+			return array(
+				'formId' => '-1',
+				'formJson' => null,
+				'isHtml' => false,
+				'block_id'                       => '',
+				'formTitleTag'                   => 'h2',
+				'formTitle'						 => 'Form Title',
+				'formTitleId'    				=> '',
+				'showFormTitle'                  => false,
+				'showFormDescription'            => false,
+				// 'showLabels'=>true,
+				// 'showErrorMsgs'=>true,
+				'formDescription'=>'Form Description',
+				'formWidth'                      => 100,
+				'formWidthMobile'                => '',
+				'formWidthTablet'                => '',
+				'formAlignment'                  => 'left',
+				'formAlignmentMobile'            => 'left',
+				'formAlignmentTablet'            => 'left',
+				'formTitleAlignment'             => 'center',
+				'formTitleAlignmentMobile'       => 'center',
+				'formTitleAlignmentTablet'       => 'center',
+				'formBorderColor'                => '',
+				'formBorderStyle'                => 'none',
+				'formBorderWidth'                => 0,
+				'formBorderRadius'               => 0,
+				'formTitleColor'                 => '',
+				'formTitleFontFamily'            => '',
+				'formTitleFontSize'              => '',
+				'formTitleFontSizeMobile'        => '',
+				'formTitleFontSizeTablet'        => '',
+				'formTitleFontWeight'            => 600,
+				'formTitleLineHeight'            => 1,
+				'formTitleLetterSpacing'         => 0,
+				'formDescriptionColor'           => '',
+				'formDescriptionFontFamily'      => '',
+				'formDescriptionFontSize'        => '',
+				'formDescriptionFontSizeMobile'  => '',
+				'formDescriptionFontSizeTablet'  => '',
+				'formDescriptionFontWeight'      => 400,
+				'formDescriptionLineHeight'      => 1,
+				'formDescriptionLetterSpacing'   => 0,
+				'topPadding'                     => 0,
+				'topPaddingMobile'               => 0,
+				'topPaddingTablet'               => 0,
+				'bottomPadding'                  => 0,
+				'bottomPaddingMobile'            => 0,
+				'bottomPaddingTablet'            => 0,
+				'leftPadding'                    => 0,
+				'leftPaddingMobile'              => 0,
+				'leftPaddingTablet'              => 0,
+				'rightPadding'                   => 0,
+				'rightPaddingMobile'             => 0,
+				'rightPaddingTablet'             => 0,
+				'topMargin'                      => 0,
+				'topMarginMobile'                => 0,
+				'topMarginTablet'                => 0,
+				'bottomMargin'                   => 0,
+				'bottomMarginMobile'             => 0,
+				'bottomMarginTablet'             => 0,
+				'leftMargin'                     => 0,
+				'leftMarginMobile'               => 0,
+				'leftMarginTablet'               => 0,
+				'rightMargin'                    => 0,
+				'rightMarginMobile'              => 0,
+				'rightMarginTablet'              => 0,
+
+				'opacity'                        => 20,
+				'colorLocation1'                 => 0,
+				'colorLocation2'                 => 100,
+				'gradientDirection'              => 90,
+				'hovercolorLocation1'            => 0,
+				'hovercolorLocation2'            => 100,
+				'hovergradientDirection'         => 90,
+				'backgroundImage'                => '',
+				'backgroundImagePosition'        => 'center center',
+				'backgroundImageSize'            => 'cover',
+				'backgroundImageRepeat'          => 'no-repeat',
+				'backgroundAttachment'           => 'scroll',
+				'backgroundImageColor'           => '',
+				'overlayType'                    => 'color',
+				'gradientOverlayColor1'          => '',
+				'gradientOverlayColor2'          => '',
+				'gradientOverlayType'            => 'linear',
+				'gradientOverlayLocation1'       => 0,
+				'gradientOverlayLocation2'       => 100,
+				'gradientOverlayAngle'           => 0,
+				'gradientOverlayPosition'        => 'center center',
+				'backgroundType'                 => '',
+				'backgroundColor'                => '',
+				'backgroundColorHover'           => '',
+				'backgroundColor1'               => '',
+				'backgroundColor2'               => '',
+				'hoverbackgroundColor1'          => '',
+				'hoverbackgroundColor2'          => 'contrast',
+				'backgroundPosition'             => 'empty', // For compatibility with v1.3.2.
+				'backgroundRepeat'               => 'empty', // For compatibility with v1.3.2.
+				'backgroundSize'                 => 'empty', // For compatibility with v1.3.2.
+				'backgroundHoverImage'           => '',
+				'backgroundImageHoverPosition'   => '',
+				'backgroundImageHoverRepeat'     => '',
+				'backgroundImageHoverAttachment' => '',
+				'backgroundImageHoverSize'       => '',
+				'boxShadowColor'                 => '',
+				'boxShadowHOffset'               => 0,
+				'boxShadowVOffset'               => 0,
+				'boxShadowBlur'                  => 0,
+				'boxShadowSpread'                => 0,
+				'boxShadowPosition'              => 'outset',
+				'hoverboxShadowColor'            => '',
+				'hoverboxShadowHOffset'          => 0,
+				'hoverboxShadowVOffset'          => 0,
+				'hoverboxShadowBlur'             => 0,
+				'hoverboxShadowSpread'           => 0,
+				'hoverboxShadowPosition'         => 'outset',
+				'inputTextColor'                 => '',
+				'inputBackgroundColor'           => '#f7f7f7',
+				'inputBorderColor'               => '',
+				'inputBorderStyle'               => 'none',
+				'inputBorderWidth'               => 1,
+				'inputBorderRadius'              => '',
+				'inputTopPadding'                => 10,
+				'inputTopPaddingMobile'          => 10,
+				'inputTopPaddingTablet'          => 10,
+				'inputBottomPadding'             => 10,
+				'inputBottomPaddingMobile'       => 10,
+				'inputBottomPaddingTablet'       => 10,
+				'inputLeftPadding'               => 10,
+				'inputLeftPaddingMobile'         => 10,
+				'inputLeftPaddingTablet'         => 10,
+				'inputRightPadding'              => 10,
+				'inputRightPaddingMobile'        => 10,
+				'inputRightPaddingTablet'        => 10,
+				'inputBoxShadowColor'            => '',
+				'inputBoxShadowHOffset'          => 0,
+				'inputBoxShadowVOffset'          => 0,
+				'inputBoxShadowBlur'             => 0,
+				'inputBoxShadowSpread'           => 0,
+				'inputBoxShadowPosition'         => 'outset',
+				'textareaWidth'                  => 100,
+				'textareaWidthMobile'            => 100,
+				'textareaWidthTablet'            => 100,
+				'textareaHeight'                 => '',
+				'textareaHeightMobile'           => '',
+				'textareaHeightTablet'           => '',
+				'textIndent'                     => '',
+				'textIndentMobile'               => '',
+				'textIndentTablet'               => '',
+				'inputFontFamily'                => '',
+				'inputFontSize'                  => 14,
+				'inputFontSizeMobile'            => 14,
+				'inputFontSizeTablet'            => 14,
+				'inputFontWeight'                => 400,
+				'inputLineHeight'                => 1,
+				'inputLetterSpacing'             => 0,
+				'showLabels'                     => true,
+				'showErrorMsgs'                  => true,		
+				'inputWidth'                     => 100,
+				'inputWidthMobile'               => 100,
+				'inputWidthTablet'               => 100,
+				'inputHeight'                    => '',
+				'inputHeightMobile'              => '',
+				'inputHeightTablet'              => '',
+				'labelColor'                     => '',
+				'labelFontFamily'                => '',
+				'labelFontSize'                  => '',
+				'labelFontSizeMobile'            => '',
+				'labelFontSizeTablet'            => '',
+				'labelFontWeight'                => '',
+				'labelLineHeight'                => 1,
+				'labelLetterSpacing'             => 0,
+				'labelSpacing'                   => 10,
+				'labelSpacingMobile'             => 10,
+				'labelSpacingTablet'             => 10,
+				'placeholderColor'               => '',
+				'hoverRadioCheckboxColor'        => '#0066cc',
+				'radioCheckboxColor'             => '',
+				'radioCheckboxSize'              => 20,
+				'radioCheckboxBorderWidth'       => 0,
+				'radioCheckboxBorderColor'       => '',
+				'radioButtonBorderRadius'        => 500,
+				'checkboxBorderRadius'           => 0,
+				'radioCheckboxTextColor'         => '',
+				'radioCheckboxFontFamily'        => '',
+				'radioCheckboxFontSize'          => '',
+				'radioCheckboxFontSizeMobile'    => '',
+				'radioCheckboxFontSizeTablet'    => '',
+				'radioCheckboxFontWeight'        => '',
+				'radioCheckboxLineHeight'        => 1,
+				'radioCheckboxLetterSpacing'     => 0,
+				'submitButtonFontFamily'         => '',
+				'submitButtonFontSize'           => '',
+				'submitButtonFontSizeMobile'     => '',
+				'submitButtonFontSizetablet'     => '',
+				'submitButtonFontWeight'         => 400,
+				'submitButtonLineHeight'         => 1,
+				'submitButtonLetterSpacing'      => 0,
+				'ctaColor'                       => '#ffffff',
+				'ctaBackColor'                   => '#ff6f61',
+				'ctaHoverColor'                  => '#ffffff',
+				'ctaHoverBackColor'              => '#d64031',
+				'buttonbackgroundType'           => 'color',
+				'buttoncolorLocation1'           => 0,
+				'buttoncolorLocation2'           => 100,
+				'buttongradientDirection'        => 90,
+				'buttonbackgroundColor1'         => '',
+				'buttonbackgroundColor2'         => '#fff',
+				'buttonHbackgroundType'          => 'color',
+				'buttonHcolorLocation1'          => 0,
+				'buttonHcolorLocation2'          => 100,
+				'buttonHgradientDirection'       => 90,
+				'buttonHbackgroundColor1'        => '',
+				'buttonHbackgroundColor2'        => '#fff',
+				'ctaButtonAlignment'             =>'center',
+				'ctaButtonmarginleft'            =>0,
+				'ctaButtonmarginright'           =>0,
+				'ctaVpadding'                    => 15,
+				'ctaVpaddingMobile'              => 15,
+				'ctaVpaddingTablet'              => 15,
+				'ctaHpadding'                    => 30,
+				'ctaHpaddingMobile'              => 30,
+				'ctaHpaddingTablet'              => 30,
+				'ctaBorderColor'                 => '',
+				'ctaBorderStyle'                 => 'none',
+				'ctaBorderWidth'                 => '',
+				'ctaBorderRadius'                => 0,
+				'submitButtonWidth'              => '',
+				'submitButtonWidthMobile'        => '',
+				'submitButtonWidthTablet'        => '',
+				'submitButtonHeight'             => '',
+				'submitButtonHeightMobile'       => '',
+				'submitButtonHeightTablet'       => '',
+				'submitButtonBoxShadowColor'     => '',
+				'submitButtonBoxShadowHOffset'   => 0,
+				'submitButtonBoxShadowVOffset'   => 0,
+				'submitButtonBoxShadowBlur'      => 0,
+				'submitButtonBoxShadowSpread'    => 0,
+				'submitButtonBoxShadowPosition'  => 'outset',				
+				'ctaHoverColor'                  => '',
+				'updatedButtonBgHColor'          => '',
+				'ctaHoverBorderColor'            => '',
+				'errorMsgColor'                  => '',
+				'afterSubmitColor'               => '',
+				'afterSubmitBorderColor'         => '',
+				'afterSubmitBorderStyle'         => 'none',
+				'afterSubmitBorderWidth'         => 1,
+				'afterSubmitBorderRadius'        => 0,
+				'afterSubmitFontFamily'          => '',
+				'afterSubmitFontSize'            => '',
+				'afterSubmitFontSizeMobile'      => '',
+				'afterSubmitFontSizeTablet'      => '',
+				'afterSubmitFontWeight'          => 400,
+				'afterSubmitLineHeight'          => 1,
+				'afterSubmitLetterSpacing'       => 0,
+				'afterSubmitTopPadding'          => 15,
+				'afterSubmitTopPaddingMobile'    => 15,
+				'afterSubmitTopPaddingTablet'    => 15,
+				'afterSubmitBottomPadding'       => 15,
+				'afterSubmitBottomPaddingMobile' => 15,
+				'afterSubmitBottomPaddingTablet' => 15,
+				'afterSubmitLeftPadding'         => 15,
+				'afterSubmitLeftPaddingMobile'   => 15,
+				'afterSubmitLeftPaddingTablet'   => 15,
+				'afterSubmitRightPadding'        => 15,
+				'afterSubmitRightPaddingMobile'  => 15,
+				'afterSubmitRightPaddingTablet'  => 15,
+				'afterSubmitTopMargin'           => 15,
+				'afterSubmitTopMarginMobile'     => 15,
+				'afterSubmitTopMarginTablet'     => 15,
+				'afterSubmitBottomMargin'        => 15,
+				'afterSubmitBottomMarginMobile'  => 15,
+				'afterSubmitBottomMarginTablet'  => 15,
+				'afterSubmitLeftMargin'          => 15,
+				'afterSubmitLeftMarginMobile'    => 15,
+				'afterSubmitLeftMarginTablet'    => 15,
+				'afterSubmitRightMargin'         => 15,
+				'afterSubmitRightMarginMobile'   => 15,
+				'afterSubmitRightMarginTablet'   => 15,
+				'messageFontFamily'              => '',
+				'messageFontSize'                => '',
+				'messageFontSizeMobile'          => '',
+				'messageFontSizeTablet'          => '',
+				'messageFontWeight'              => 400,
+				'messageLineHeight'              => 1,
+				'messageLetterSpacing'           => 0,
+				'successMsgColor'                => '',
+				'afterSubmitErrorMsgColor'       => '',
+				'afterSubmitMsgbgColor'          =>'',
+			);
+		}
+		
 		/**
 		 * Generate gradient effect
 		 *

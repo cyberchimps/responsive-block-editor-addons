@@ -50,6 +50,8 @@ import "./blocks/inline-notice/index.js";
 import "./blocks/instagram/index.js";
 import "./blocks/advanced-text/index.js";
 import "./blocks/image-hotspot/index.js";
+import "./blocks/contact-form-7-styler/index.js";
+
 
 // Extensions
 import "./extensions/cover-styles";
