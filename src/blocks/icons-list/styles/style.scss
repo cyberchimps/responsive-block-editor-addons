@@ -7,6 +7,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  flex-wrap: wrap;
+
 }
 
 .responsive-block-editor-addons-icon-list__icon-at-top
@@ -80,11 +82,11 @@
   }
 
   .responsive-block-editor-addons-icon-list__wrapper:first-child {
-    margin-left: 0!important;
+    margin-left: 0;
   }
 
   .responsive-block-editor-addons-icon-list__wrapper:last-child {
-    margin-right: 0!important;
+    margin-right: 0;
   }
 
   .responsive-block-editor-addons-icon-list__wrap > p {
