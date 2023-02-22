@@ -166,7 +166,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 = 1.6.6 - 23rd February 2023 =
-* Fix: Minor bug fixes in several Gutenberg blocks
+* Fix: Minor bug fixes.
 
 = 1.6.5 - 25th November 2022 =
 * Fix - Changes as per wordpress.org guidelines
