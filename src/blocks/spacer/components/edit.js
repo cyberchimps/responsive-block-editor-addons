@@ -67,7 +67,6 @@ class SpacerEdit extends Component {
       <>
         <ResizableBox
           className={classnames(
-            this.props.className,
             "responsive-block-editor-addons-block-spacer",
             `block-${block_id}`,
             "responsive-block-editor-addons-spacer",

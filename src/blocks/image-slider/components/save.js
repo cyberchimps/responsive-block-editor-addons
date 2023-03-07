@@ -165,7 +165,7 @@ const save = ({ attributes, className }) => {
       <div
         className={
           classnames(
-            className,
+            classes,
             "responsive-block-editor-addons-block-image-slider",
             `block-${block_id}`
           )
