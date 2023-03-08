@@ -52,7 +52,7 @@ export default class Save extends Component {
     }
 
     const classes = classnames(
-      this.props.className,
+       
       {
       [`has-text-align-${contentAlign}`]: contentAlign,
     });

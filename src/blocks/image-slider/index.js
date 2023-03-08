@@ -3,7 +3,7 @@
  */
 import edit from "./components/edit";
 import metadata from "./block.json";
-import Save from "./components/save";
+import save from "./components/save";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -45,8 +45,5 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
     html: false,
   },
   edit,
-  // save,
-  save: (props) => {
-    return <Save {...props} />;
-  },
+  save,
 });

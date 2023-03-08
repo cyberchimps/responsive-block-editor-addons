@@ -173,7 +173,6 @@ export default class Edit extends Component {
       <div
         key={"instawrap"}
         className={classnames(
-          this.props.className,
           "responsive-block-editor-addons-block-instagram",
           `block-${block_id}`
         )}

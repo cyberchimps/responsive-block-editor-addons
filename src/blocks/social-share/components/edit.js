@@ -118,7 +118,6 @@ export default class Edit extends Component {
       <Fragment>
         <div
           className={classnames(
-            this.props.className,
             "responsive-block-editor-addons-block-social-share",
             `block-${block_id}`
           )}
