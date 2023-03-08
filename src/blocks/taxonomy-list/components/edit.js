@@ -132,7 +132,6 @@ class RBEATaxonomyList extends Component {
                 <Inspector {...{ setAttributes, ...this.props }} />
                 <div
                     className={classnames(
-                        this.props.className,
                         "responsive-block-editor-addons-block-taxonomy-list",
                         `block-${block_id}`
                     )}
