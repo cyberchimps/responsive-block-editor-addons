@@ -166,7 +166,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-=1.6.7 - 8th march 2023
+= 1.6.7 - 8th march 2023
 * Fix: Gutenberg ready site template, RBEA blocks showing  "attempt block recovery" message
 
 = 1.6.6 - 23rd February 2023 =
