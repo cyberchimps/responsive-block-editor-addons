@@ -15,6 +15,7 @@ export default class Save extends Component {
     } = this.props.attributes;
 
     return (<div className={classnames(
+      this.props.className,
       "responsive-block-editor-addons-block-spacer",
       `block-${block_id}`,
       "responsive-block-editor-addons-spacer"

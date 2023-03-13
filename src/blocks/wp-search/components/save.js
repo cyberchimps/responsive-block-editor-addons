@@ -28,6 +28,7 @@
      return [
        <div
          className={classnames(
+          this.props.className,
            "responsive-block-editor-addons-block-wp-search",
            `block-${block_id}`
          )}
