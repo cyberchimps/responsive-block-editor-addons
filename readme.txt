@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenber
 Requires at least: 5.0
 Tested up to: 6.1.1
 Requires PHP: 5.6
-Stable tag: 1.6.7
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -165,6 +165,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+
+= 1.6.8 - 13th march 2023
+* Fix: Fix Attempt Block Recovery issue in some blocks.
 
 = 1.6.7 - 8th march 2023
 * Fix: Gutenberg ready site template, RBEA blocks showing  "attempt block recovery" message
