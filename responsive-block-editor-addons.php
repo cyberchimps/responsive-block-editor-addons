@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:     Responsive Block Editor Addons
+ * Plugin Name:     Responsive Blocks - WordPress Gutenberg Blocks
  * Plugin URI:      cyberchimps.com
  * Description:     Responsive Blocks for Gutenberg
  * Author:          CyberChimps
