@@ -337,8 +337,8 @@ class Responsive_Block_Editor_Addons {
 	public function responsive_block_editor_addons_admin_menu() {
 		// Create Menu for Responsive Block Editor Addons.
 		add_menu_page(
-			__( 'RBEA', 'responsive-block-editor-addons' ),
-			__( 'RBEA', 'responsive-block-editor-addons' ),
+			__( 'Responsive Blocks', 'responsive-block-editor-addons' ),
+			__( 'Resp Blocks', 'responsive-block-editor-addons' ),
 			'manage_options',
 			'responsive_block_editor_addons',
 			array( $this, 'responsive_block_editor_addons_getting_started' ),

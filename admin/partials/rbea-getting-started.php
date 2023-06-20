@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="rbea-header">
 		<div class="rbea-brand">
 			<img class="rbea-logo" src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/responsive-thumbnail.jpg'; ?>" alt="responsive-thumbnail">
-			<h1 class="rbea-brand-name" >Responsive Block Editor Addons</h1>
+			<h1 class="rbea-brand-name">Responsive Blocks</h1>
 			<div class="rbea-version"><?php echo esc_html( RESPONSIVE_BLOCK_EDITOR_ADDONS_VER ); ?></div>
 		</div>
-		<p class="rbea-brand-desc"><?php esc_html_e( 'Thank you for choosing Responsive Gutenberg Blocks Library - The Most Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' ); ?></p>
+		<p class="rbea-brand-desc"><?php esc_html_e( 'Thank you for choosing Responsive Gutenberg Blocks Library - A Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' ); ?></p>
 	</div>
 	<div class="rbea-tabs-section">
 		<div class="rbea-tabs">
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="rbea-footer-details">
 			<div class="rbea-footer-text">
 				<p class="rbea-footer-text-line"><?php esc_html_e( 'If you like', 'responsive' ); ?>
-					<span class="rbea-footer-brand-name">Responsive Block Editor Addons</span>, <br class="rbea-mobile-line-break"><?php esc_html_e( 'please leave us a', 'responsive' ); ?> 
+					<span class="rbea-footer-brand-name">Responsive Blocks</span>, <br class="rbea-mobile-line-break"><?php esc_html_e( 'please leave us a', 'responsive' ); ?> 
 					<a href="<?php echo esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/#new-post' ); ?>" target="_blank" class="rbea-star-rating">
 						<img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/ph_star-fill.svg'; ?>"><img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/ph_star-fill.svg'; ?>"><img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/ph_star-fill.svg'; ?>"><img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/ph_star-fill.svg'; ?>"><img src="<?php echo esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/ph_star-fill.svg'; ?>">
 					</a> <?php esc_html_e( 'rating. Thank you!', 'responsive' ); ?>

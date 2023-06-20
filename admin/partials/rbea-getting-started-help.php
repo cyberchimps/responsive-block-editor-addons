@@ -15,17 +15,6 @@
 <?php
 $help_contents = array(
 	array(
-		'title' => __( 'Video Resources', 'responsive-block-editor-addons' ),
-		'desc'  => __( 'Check out the video resources to learn how to use the powerful plugin features.', 'responsive-block-editor-addons' ),
-		'icon'  => 'dashicons-youtube.svg',
-		'links' => array(
-			array(
-				'title' => __( 'Watch Now', 'responsive-block-editor-addons' ),
-				'url'   => 'https://www.youtube.com/playlist?list=PLXTwxw3ZJwPSKbf3-vo7sMBkXr9cakAPT',
-			),
-		),
-	),
-	array(
 		'title' => __( 'Documentation & Changelog', 'responsive-block-editor-addons' ),
 		'desc'  => __( 'Browse through the detailed documentation to know how to use the plugin.', 'responsive-block-editor-addons' ),
 		'icon'  => 'dashicons-media-document.svg',
@@ -48,6 +37,17 @@ $help_contents = array(
 			array(
 				'title' => __( 'View Now', 'responsive-block-editor-addons' ),
 				'url'   => 'https://cyberchimps.com/blocks/',
+			),
+		),
+	),
+	array(
+		'title' => __( 'Video Resources', 'responsive-block-editor-addons' ),
+		'desc'  => __( 'Check out the video resources to learn how to use the powerful plugin features.', 'responsive-block-editor-addons' ),
+		'icon'  => 'dashicons-youtube.svg',
+		'links' => array(
+			array(
+				'title' => __( 'Watch Now', 'responsive-block-editor-addons' ),
+				'url'   => 'https://www.youtube.com/playlist?list=PLXTwxw3ZJwPSKbf3-vo7sMBkXr9cakAPT',
 			),
 		),
 	),
@@ -79,7 +79,7 @@ $help_contents = array(
 		'icon'  => 'dashicons-thumbs-up.svg',
 		'links' => array(
 			array(
-				'title' => __( 'Watch Now', 'responsive-block-editor-addons' ),
+				'title' => __( 'Submit Review', 'responsive-block-editor-addons' ),
 				'url'   => 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/#new-post',
 			),
 		),
