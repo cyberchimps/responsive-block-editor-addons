@@ -197,7 +197,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 1.6.9 - 21th June 2023 =
+= 1.6.9 - 21st June 2023 =
 * New - Rebranded the plugin name from Responsive Block Editor Addons to Responsive Blocks - WordPress Gutenberg Blocks.
 * New - Introduced a new User Admin Interface.
 
