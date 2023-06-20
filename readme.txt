@@ -3,7 +3,7 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: block, blocks, block editor, editor, gutenberg blocks, page builder, gutenberg library, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
-Tested up to: 6.1.1
+Tested up to: 6.2
 Requires PHP: 5.6
 Stable tag: 1.6.9
 License: GPLv2 or later
@@ -197,9 +197,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 1.6.9 - 30th March 2023 =
+= 1.6.9 - 21st June 2023 =
 * New - Rebranded the plugin name from Responsive Block Editor Addons to Responsive Blocks - WordPress Gutenberg Blocks.
-
+* New - Introduced a new User Admin Interface.
 
 = 1.6.8 - 13th march 2023 =
 * Fix: Fix Attempt Block Recovery issue in some blocks.
