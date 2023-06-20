@@ -47,7 +47,7 @@ $help_contents = array(
 		'links' => array(
 			array(
 				'title' => __( 'Watch Now', 'responsive-block-editor-addons' ),
-				'url'   => 'https://www.youtube.com/playlist?list=PLXTwxw3ZJwPSKbf3-vo7sMBkXr9cakAPT',
+				'url'   => 'https://www.youtube.com/playlist?list=PLXTwxw3ZJwPSCqW__jo6fkUlEh2uXAsuF',
 			),
 		),
 	),

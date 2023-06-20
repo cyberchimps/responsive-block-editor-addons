@@ -819,6 +819,8 @@ class Responsive_Block_Editor_Addons {
 				true
 			);
 
+			wp_enqueue_script( 'updates' );
+
 			wp_localize_script(
 				'responsive-block-editor-addons-admin-jsfile',
 				'rbealocalize',
