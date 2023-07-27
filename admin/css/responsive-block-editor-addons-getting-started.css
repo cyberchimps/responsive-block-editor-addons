@@ -486,8 +486,13 @@ input:checked + .rbea-blocks-slider:before {
     color: #4B5563;
     text-transform: capitalize;
 }
+
 .rbea-blocks-card-title p {
     margin: 4px 0 0 0;
+}
+
+.rbea-blocks-docs-demo-links:focus {
+    box-shadow: none;
 }
 
 /* Blocks Tab Ends */

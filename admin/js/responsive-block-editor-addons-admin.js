@@ -4,62 +4,59 @@ const { __ } = wp.i18n;
 
 const GettingStarted = () => {
     const [hash, setHash] = useState(window.location.hash.substring(1))
+    const [showCategory, setShowCategory] = useState('all')
     window.location.hash = hash
     if ( hash === '' ) {
         window.location.hash = '#blocks'
+        setHash('blocks')
     }
     
     return(
         <div className="rbea-getting-started-page">
-            <div className="rbea-header">
-                <div className="rbea-brand">
-                    <img className="rbea-logo" src={rbealocalize.responsiveurl + 'admin/images/responsive-thumbnail.jpg'} alt="responsive-thumbnail" />
-                    <h1 className="rbea-brand-name">{__("Responsive Blocks", "responsive-block-editor-addons")}</h1>
-                    <div className="rbea-version">{rbealocalize.rbea_version}</div>
-                </div>
-                <p className="rbea-brand-desc">{__( 'Thank you for choosing Responsive Gutenberg Blocks Library - A Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' )}</p>
-            </div>
+            <Header />
             <div className="rbea-tabs-section">
                 <div className="rbea-tabs">
-                    <div className={"rbea-tab rbea-templates-tab " + (hash == 'blocks' || hash == '' ? 'rbea-active-tab' : '')} data-tab="blocks" onClick={() => setHash('blocks')}>
-                        <p className="rbea-tab-name">{__('Blocks','responsive-block-editor-addons')}</p>
-                    </div>
-                    <div className={"rbea-tab rbea-templates-tab "  + (hash == 'templates' ? 'rbea-active-tab' : '')} data-tab="templates" onClick={() => setHash('templates')}>
-                        <p className="rbea-tab-name">{__('Starter','responsive-block-editor-addons')}&nbsp;{__('Templates','responsive-block-editor-addons')}</p>
-                    </div>
-                    <div className={"rbea-tab rbea-help-tab "  + (hash == 'help' ? 'rbea-active-tab' : '')} data-tab="help" onClick={() => setHash('help')}>
-                        <p className="rbea-tab-name">{__('Help', 'responsive-block-editor-addons')}</p>
-                    </div>
+                    <Tab hash={hash} setHash={setHash} />
                 </div>
             </div>
             <div className="rbea-tabs-content">
                 <div className="rbea-tabs-inner-content" style={hash == 'templates' ? {backgroundImage: 'url(' + rbealocalize.responsiveurl + "admin/images/rst-template-preview.jpg" + ')'} : {backgroundImage:'none'}}>
                     <div className="rbea-blocks-content rbea-tab-content" style={hash == 'blocks' ? {display:'block'} : {display:'none'}} id="rbea_blocks">
-                        {hash == 'blocks' ? <Blocks /> : null}
+                        {hash == 'blocks' && <Blocks showCategory={showCategory} setShowCategory={setShowCategory} /> }
                     </div>
                     <div className="rbea-templates-content rbea-tab-content" style={hash == 'templates' ? {display:'block'} : {display:'none'}} id="rbea_templates">
-                        {hash == 'templates' ? <StarterTemplates /> : null}
+                        {hash == 'templates' && <StarterTemplates /> }
                     </div>
                     <div className="rbea-help-content rbea-tab-content" style={hash == 'help' ? {display:'block'} : {display:'none'}} id="rbea_help">
-                        {hash == 'help' ? <Help /> : null}
+                        {hash == 'help' && <Help /> }
                     </div>
                 </div>
             </div>
-            <div className="rbea-footer">
-                <div className="rbea-footer-details">
-                    <div className="rbea-footer-text">
-                        <p className="rbea-footer-text-line">{__('If you like', 'responsive-block-editor-addons')}
-                        <span className="rbea-footer-brand-name"> {__('Responsive Blocks', 'responsive-block-editor-addons')}</span>, <br className="rbea-mobile-line-break" />{__('please leave us a ', 'responsive-block-editor-addons')} 
-                            <a href={rbealocalize.review_link} target="_blank" className="rbea-star-rating">
-                                <img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} />
-                            </a>{__(' rating. Thank you!', 'responsive-block-editor-addons')}
-                        </p>
-                    </div>
-                    <div class="rbea-hr"></div>
-                </div>
-                <img class="rbea-cyberchimps-logo" src={rbealocalize.responsiveurl + 'admin/images/cyberchimps-logo.png'} />
-            </div>
+            <Footer />
         </div>
+    )
+}
+
+const Tab = ({hash, setHash}) => {
+    const tabList = ['blocks', 'templates', 'help']
+    return (
+        <>
+            {
+                tabList.map((current) => {
+                    return (
+                        <>
+                            <div className={"rbea-tab rbea-templates-tab " + (hash == current || hash == '' ? 'rbea-active-tab' : '')} data-tab="blocks" onClick={() => setHash(current)}>
+                                <p className="rbea-tab-name">
+                                    {
+                                        current == 'templates' ? __('Starter Templates','responsive-block-editor-addons') : __(current.charAt(0).toUpperCase() + current.slice(1),'responsive-block-editor-addons')
+                                    }
+                                </p>
+                            </div>
+                        </>
+                    )
+                })
+            }
+        </>
     )
 }
 
@@ -206,57 +203,82 @@ const StarterTemplates = () => {
     )
 }
 
-const Blocks = () => {
+const Blocks = ({showCategory, setShowCategory}) => {
+
+    const [search, setSearch] = useState('')
+
+    const categories = [
+        {
+            key: 'all',
+            title: 'All'
+        },
+        {
+            key: 'constructive',
+            title: 'Constructive'
+        },
+        {
+            key: 'timelines',
+            title: 'Timelines'
+        },
+        {
+            key: 'cro',
+            title: 'CRO'
+        }
+    ]
+
     return (
         <div className="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="rbea-blocks-list">
+            <div className="row">
+                <div className="col-lg-9">
+                    <div className="rbea-blocks-list">
                         <p>
-                            <span class="rbea-blocks-category rbea-blocks-tab pointer rbea-active-blocks-category" id="all">{__( 'All', 'responsive-block-editor-addons' )}</span>
-                            <span class="rbea-blocks-category mx-3">|</span>
-                            <span class="rbea-blocks-category rbea-blocks-tab pointer" id="content">{__( 'Constructive', 'responsive-block-editor-addons' )}</span>
-                            <span class="rbea-blocks-category mx-3">|</span>
-                            <span class="rbea-blocks-category rbea-blocks-tab pointer" id="form" >{__( 'Timelines', 'responsive-block-editor-addons' )}</span>
-                            <span class="rbea-blocks-category mx-3">|</span>
-                            <span class="rbea-blocks-category rbea-blocks-tab pointer" id="form" >{__( 'CRO', 'responsive-block-editor-addons' )}</span>
+                            {
+                                categories.map((current, index) => {
+                                    return (
+                                        <>
+                                            <span className={"rbea-blocks-category rbea-blocks-tab pointer " + (showCategory == current.key ? 'rbea-active-blocks-category' : '')} id={current.key} onClick={() => {setShowCategory(current.key);setSearch('')}}>{__( current.title, 'responsive-block-editor-addons' )}</span>
+                                            { index < categories.length - 1 ? <span className="rbea-blocks-category mx-3">|</span> : '' } 
+                                        </>
+                                    )
+                                })
+                            }
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-3 text-center">
-                    <div class="rbea-blocks-search-box">
-                        <input type="text" id="rbea-input-search-blocks" autocomplete="off" placeholder={__( 'Search Blocks', 'responsive-block-editor-addons' )} />
-                        <i class="rbea-blocks-search-icon"><span class="dashicons dashicons-search"></span></i>
+                <div className="col-lg-3 text-center">
+                    <div className="rbea-blocks-search-box">
+                        <input type="text" id="rbea-input-search-blocks" autocomplete="off" placeholder={__( 'Search Blocks', 'responsive-block-editor-addons' )} onChange={(e) => setSearch(e.target.value)} value={search} />
+                        <i className="rbea-blocks-search-icon"><span className="dashicons dashicons-search"></span></i>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 my-5">
-                        <div class="row">
-                            <div class="rbea-blocks-toggle-all-blocks-section d-flex justify-content-center">
-                                <div class="rbea-blocks-toggle-all-text-content">
-                                    <p class="rbea-blocks-toogle-block-title text-center">{__( 'Toggle All Blocks', 'responsive-block-editor-addons' )}
-                                    </p>
-                                    <p class="rbea-blocks-toogle-block-desc text-center">{__( 'You can disable some blocks for faster page speed.', 'responsive-block-editor-addons' )}</p>
-                                </div>
-                                <div class="rbea-blocks-toggle-block-switch">
-                                    <label class="rbea-blocks-switch mt-2">
-                                        <input id="rbea-blocks-toggle-blocks" type="checkbox" />
-                                        <span class="rbea-blocks-slider rbea-blocks-round"></span>
-                                    </label>
-                                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-12 my-5">
+                    <div className="row">
+                        <div className="rbea-blocks-toggle-all-blocks-section d-flex justify-content-center">
+                            <div className="rbea-blocks-toggle-all-text-content">
+                                <p className="rbea-blocks-toogle-block-title text-center">{__( 'Toggle All Blocks', 'responsive-block-editor-addons' )}
+                                </p>
+                                <p className="rbea-blocks-toogle-block-desc text-center">{__( 'You can disable some blocks for faster page speed.', 'responsive-block-editor-addons' )}</p>
+                            </div>
+                            <div className="rbea-blocks-toggle-block-switch">
+                                <label className="rbea-blocks-switch mt-2">
+                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" />
+                                    <span className="rbea-blocks-slider rbea-blocks-round"></span>
+                                </label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row rbea-block-cards-group">
-                    <Card />
-                </div>
+            </div>
+            <div className="row rbea-block-cards-group">
+                <Cards showCategory={showCategory} search={search} />
             </div>
         </div>
     )
 }
 
-const Card = () => {
+const Cards = ({showCategory, search}) => {
 
     const blocks = [
         {
@@ -292,7 +314,7 @@ const Card = () => {
             title: 'Anchor Block',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/anchor-block/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'blockquote',
@@ -306,7 +328,7 @@ const Card = () => {
             title: 'Call/Mail Button',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/call-mail-button/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'call-to-action',
@@ -362,7 +384,7 @@ const Card = () => {
             title: 'Feature Grid',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/feature-grid/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'flipbox',
@@ -418,7 +440,7 @@ const Card = () => {
             title: 'Inline Notice Block',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/inline-notice-block/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'instagram-feed',
@@ -481,7 +503,7 @@ const Card = () => {
             title: 'Progress Bar',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/progress-bar/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'post-page-grid',
@@ -509,7 +531,7 @@ const Card = () => {
             title: 'Social Share',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/social-share/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'spacer',
@@ -530,14 +552,14 @@ const Card = () => {
             title: 'Tabs',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/tabs/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'taxonomy-list',
             title: 'Taxonomy List',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/taxonomy-list/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'team',
@@ -558,7 +580,7 @@ const Card = () => {
             title: 'Testimonial Slider',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/testimonial-slider/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
         {
             key: 'video-popup',
@@ -572,31 +594,80 @@ const Card = () => {
             title: 'WP Search',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/wp-search/',
             demo: '',
-            category: ''
+            category: 'constructive'
         },
-
     ]
 
     return (
         blocks.map((current, index) => {
             return (
-                <div class={"col-lg-4 col-md-4 gy-3 rbea-block-category-card rbea-block-category-" + (current.category)}>
-                    <div class="rbea-blocks-card d-flex justify-content-between h-100">
-                        <div class="rbea-blocks-card-text-content">
-                            <div class="rbea-blocks-card-title"><p>{__(current.title, 'responsive-block-editor-addons')}</p></div>
-                        </div>
-                        <div class="rbea-blocks-card-switch align-self-center">
-                            <img src={rbealocalize.responsiveurl + 'admin/images/icon-article.svg'} alt="icon-article" />&nbsp;
-                            <img src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" />&nbsp;
-                            <label class="rbea-blocks-switch">
-                                <input class="rbea-blocks-input-checkbox" data-index={index} type="checkbox" id={current.key} />
-                                <span class="rbea-blocks-slider rbea-blocks-round"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <>
+                {
+                    search == ''
+                    ?
+                    <>
+                        {(current.category == showCategory || 'all' == showCategory) && <Card category={current.category} title={current.title} docs={current.docs} index={index} key={current.key} />}
+                    </>
+                    :
+                    <>
+                        {current.title.toLowerCase().includes(search) && <Card category={current.category} title={current.title} docs={current.docs} index={index} key={current.key} />}
+                    </>
+                }
+                </>
             )
         })
+    )
+}
+
+const Card = ({category, title, docs, demo, index, key}) => {
+    return (
+        <div className={"col-lg-4 col-md-4 gy-3 rbea-block-category-card rbea-block-category-" + (category)}>
+            <div className="rbea-blocks-card d-flex justify-content-between h-100">
+                <div className="rbea-blocks-card-text-content">
+                    <div className="rbea-blocks-card-title"><p>{__(title, 'responsive-block-editor-addons')}</p></div>
+                </div>
+                <div className="rbea-blocks-card-switch align-self-center">
+                    <a className="rbea-blocks-docs-demo-links" href={docs} target="_blank"><img src={rbealocalize.responsiveurl + 'admin/images/icon-article.svg'} alt="icon-article" /></a>&nbsp;
+                    <a className="rbea-blocks-docs-demo-links" href={demo} target="_blank"><img src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" /></a>&nbsp;
+                    <label className="rbea-blocks-switch">
+                        <input className="rbea-blocks-input-checkbox" data-index={index} type="checkbox" id={key} />
+                        <span className="rbea-blocks-slider rbea-blocks-round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const Header = () => {
+    return (
+        <div className="rbea-header">
+            <div className="rbea-brand">
+                <img className="rbea-logo" src={rbealocalize.responsiveurl + 'admin/images/responsive-thumbnail.jpg'} alt="responsive-thumbnail" />
+                <h1 className="rbea-brand-name">{__("Responsive Blocks", "responsive-block-editor-addons")}</h1>
+                <div className="rbea-version">{rbealocalize.rbea_version}</div>
+            </div>
+            <p className="rbea-brand-desc">{__( 'Thank you for choosing Responsive Gutenberg Blocks Library - A Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' )}</p>
+        </div>
+    )
+}
+
+const Footer = () => {
+    return (
+        <div className="rbea-footer">
+            <div className="rbea-footer-details">
+                <div className="rbea-footer-text">
+                    <p className="rbea-footer-text-line">{__('If you like', 'responsive-block-editor-addons')}
+                    <span className="rbea-footer-brand-name"> {__('Responsive Blocks', 'responsive-block-editor-addons')}</span>, <br className="rbea-mobile-line-break" />{__('please leave us a ', 'responsive-block-editor-addons')} 
+                        <a href={rbealocalize.review_link} target="_blank" className="rbea-star-rating">
+                            <img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} /><img src={ rbealocalize.responsiveurl + 'admin/images/ph_star-fill.svg'} />
+                        </a>{__(' rating. Thank you!', 'responsive-block-editor-addons')}
+                    </p>
+                </div>
+                <div className="rbea-hr"></div>
+            </div>
+            <img className="rbea-cyberchimps-logo" src={rbealocalize.responsiveurl + 'admin/images/cyberchimps-logo.png'} />
+        </div>
     )
 }
 
