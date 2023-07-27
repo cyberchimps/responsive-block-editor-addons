@@ -149,6 +149,7 @@ body.toplevel_page_responsive_block_editor_addons #wpbody-content {
 }
 
 .rbea-tab-name {
+    text-transform: capitalize;
     height: 21px;
     font-weight: 600;
     font-size: 16px;
@@ -349,6 +350,147 @@ body.toplevel_page_responsive_block_editor_addons #wpbody-content {
 }
 
 /* Help Tab Ends */
+
+/* Blocks Tab Starts */
+
+.rbea-blocks-category, .rbea-active-blocks-category {
+    color: #4B5563;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.rbea-active-blocks-category {
+    color: #2271B1;
+    text-decoration-line: underline;
+}
+
+.rbea-blocks-search-box {
+    position: relative;
+    display: inline-block;
+    top: -8px;
+}
+
+.rbea-blocks-search-box input {
+    border: none;
+    border-bottom: 2px solid #E5E7EB;
+    outline: none;
+    width: 200px;
+    border-radius: 0;
+}
+
+.rbea-blocks-search-box input, .rbea-blocks-search-box input::placeholder {
+    color: #9CA3AF;
+}
+
+.rbea-blocks-search-box input:focus {
+    box-shadow: none;
+}
+
+.rbea-blocks-search-box .rbea-blocks-search-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.rbea-blocks-search-box .dashicons.dashicons-search {
+    color: #2271B1;
+}
+
+.rbea-blocks-toogle-block-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #4B5563;
+}
+
+.rbea-blocks-toogle-block-desc {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: #4B5563;
+}
+
+.rbea-blocks-switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+}
+  
+.rbea-blocks-switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.rbea-blocks-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.rbea-blocks-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .rbea-blocks-slider {
+    background-color: #2271B1;
+}
+
+input:focus + .rbea-blocks-slider {
+    box-shadow: 0 0 1px #2271B1;
+}
+
+input:checked + .rbea-blocks-slider:before {
+    transform: translateX(16px);
+}
+
+.rbea-blocks-slider.rbea-blocks-round {
+    border-radius: 10px;
+}
+
+.rbea-blocks-slider.rbea-blocks-round:before {
+    border-radius: 50%;
+}
+
+.rbea-blocks-card {
+    padding: 16px 18px;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    box-shadow: 0px 4px 15px -1px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.rbea-blocks-card-title {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    color: #4B5563;
+    text-transform: capitalize;
+}
+.rbea-blocks-card-title p {
+    margin: 4px 0 0 0;
+}
+
+/* Blocks Tab Ends */
 
 @media (max-width: 768px) {
     .rbea-header {

@@ -367,7 +367,7 @@ class Responsive_Block_Editor_Addons {
 	 * @access public
 	 */
 	public function responsive_block_editor_addons_getting_started() {
-		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'admin/partials/rbea-getting-started.php';
+		echo '<div id="rbea-getting-started-page-app"></div>';
 	}
 
 	/**
@@ -813,8 +813,8 @@ class Responsive_Block_Editor_Addons {
 
 			wp_enqueue_script(
 				'responsive-block-editor-addons-admin-jsfile',
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-block-editor-addons-admin.js',
-				array( 'jquery' ),
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-getting-started.js',
+				array( 'jquery', 'react', 'react-dom' ),
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 				true
 			);
@@ -838,6 +838,9 @@ class Responsive_Block_Editor_Addons {
 					'timeout_error'         => esc_html__( 'Time out error', 'responsive' ),
 					'ajax_req_aborted'      => esc_html__( 'Ajax request aborted', 'responsive' ),
 					'uncaught_error'        => esc_html__( 'Uncaught Error', 'responsive' ),
+					'rbea_version'          => RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+					'review_link'           => esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/#new-post' ),
+					'rst_url'               => esc_url( 'https://wordpress.org/plugins/responsive-add-ons/' ),
 				)
 			);
 

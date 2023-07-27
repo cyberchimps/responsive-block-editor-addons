@@ -14,6 +14,7 @@ module.exports = {
 
 	entry: {
 		'responsive-block-editor-addons': path.resolve( process.cwd(), 'src/blocks.js' ),
+		'responsive-block-editor-addons-getting-started': path.resolve( process.cwd(), 'admin/js/responsive-block-editor-addons-admin.js' ),
 		'responsive-block-editor-addons-editor': path.resolve( process.cwd(), 'src/styles/editor.scss' ),
 		'responsive-block-editor-addons-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 		'responsive-block-editor-addons-masonry': path.resolve( process.cwd(), 'src/blocks/gallery-masonry/responsive-block-editor-addons-masonry.js' ),
