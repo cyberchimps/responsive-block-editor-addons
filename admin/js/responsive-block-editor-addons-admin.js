@@ -237,7 +237,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
                                     return (
                                         <>
                                             <span className={"rbea-blocks-category rbea-blocks-tab pointer " + (showCategory == current.key ? 'rbea-active-blocks-category' : '')} id={current.key} onClick={() => {setShowCategory(current.key);setSearch('')}}>{__( current.title, 'responsive-block-editor-addons' )}</span>
-                                            { index < categories.length - 1 ? <span className="rbea-blocks-category mx-3">|</span> : '' } 
+                                            { index < categories.length - 1 ? <span className="rbea-blocks-category mx-lg-3 mx-sm-2 mx-2">|</span> : '' } 
                                         </>
                                     )
                                 })
@@ -313,7 +313,7 @@ const Cards = ({showCategory, search}) => {
             key: 'anchor',
             title: 'Anchor Block',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/anchor-block/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/anchor/',
             category: 'constructive'
         },
         {
@@ -327,7 +327,7 @@ const Cards = ({showCategory, search}) => {
             key: 'call-mail-button',
             title: 'Call/Mail Button',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/call-mail-button/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/call-mail-button/',
             category: 'constructive'
         },
         {
@@ -383,7 +383,7 @@ const Cards = ({showCategory, search}) => {
             key: 'feature-grid',
             title: 'Feature Grid',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/feature-grid/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/feature-grid/',
             category: 'constructive'
         },
         {
@@ -439,7 +439,7 @@ const Cards = ({showCategory, search}) => {
             key: 'inline-notice-block',
             title: 'Inline Notice Block',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/inline-notice-block/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/inline-notice/',
             category: 'constructive'
         },
         {
@@ -502,7 +502,7 @@ const Cards = ({showCategory, search}) => {
             key: 'progress-bar',
             title: 'Progress Bar',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/progress-bar/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/progress-bar/',
             category: 'constructive'
         },
         {
@@ -530,7 +530,7 @@ const Cards = ({showCategory, search}) => {
             key: 'social-share',
             title: 'Social Share',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/social-share/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/social-share/',
             category: 'constructive'
         },
         {
@@ -551,14 +551,14 @@ const Cards = ({showCategory, search}) => {
             key: 'tabs',
             title: 'Tabs',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/tabs/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/tabs/',
             category: 'constructive'
         },
         {
             key: 'taxonomy-list',
             title: 'Taxonomy List',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/taxonomy-list/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/taxonomy-list/',
             category: 'constructive'
         },
         {
@@ -579,7 +579,7 @@ const Cards = ({showCategory, search}) => {
             key: 'testimonial-slider',
             title: 'Testimonial Slider',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/testimonial-slider/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/testimonial-slider/',
             category: 'constructive'
         },
         {
@@ -593,7 +593,7 @@ const Cards = ({showCategory, search}) => {
             key: 'wp-search',
             title: 'WP Search',
             docs: 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/wp-search/',
-            demo: '',
+            demo: 'https://cyberchimps.com/blocks/wp-search/',
             category: 'constructive'
         },
     ]
