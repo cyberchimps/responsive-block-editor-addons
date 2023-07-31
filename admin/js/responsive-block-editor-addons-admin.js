@@ -1,4 +1,3 @@
-console.log(rbealocalize.rbea_blocks)
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {HelpContents, Categories} from './ContentList';
@@ -133,8 +132,9 @@ const StarterTemplates = () => {
 }
 
 const Blocks = ({showCategory, setShowCategory}) => {
-
+    const [blockList, setBlockList] = useState(rbealocalize.rbea_blocks)
     const [search, setSearch] = useState('')
+    const areAllBlocksSelected = blockList.every((block) => block.status == 1);
 
     return (
         <div className="container">
@@ -173,7 +173,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
                             </div>
                             <div className="rbea-blocks-toggle-block-switch">
                                 <label className="rbea-blocks-switch mt-2">
-                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" />
+                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" checked={areAllBlocksSelected} />
                                     <span className="rbea-blocks-slider rbea-blocks-round"></span>
                                 </label>
                             </div>
@@ -182,22 +182,47 @@ const Blocks = ({showCategory, setShowCategory}) => {
                 </div>
             </div>
             <div className="row rbea-block-cards-group">
-                <Cards showCategory={showCategory} search={search} />
+                <Cards blockList={blockList} setBlockList={setBlockList} showCategory={showCategory} search={search} />
             </div>
         </div>
     )
 }
 
-const Cards = ({showCategory, search}) => {
-    const [blockList, setBlockList] = useState(rbealocalize.rbea_blocks)
+const Cards = ({blockList, setBlockList, showCategory, search}) => {
 
-    const handleCheckboxChange = (checkboxKey) => {
+    const [isInitialized, setIsInitialized] = useState(false);
+
+    const fetchData = async (data) => {
+        const formData = new FormData()
+
+        formData.append( 'action', 'rbea_blocks_toggle' );
+        formData.append( 'nonce', rbealocalize.nonce );
+        formData.append( 'value', JSON.stringify( data ) );
+
+        const response = await fetch(rbealocalize.ajaxurl, {
+            method: 'POST',
+            body: formData
+        })
+        return response.json()
+    }
+
+    const handleToggle = (checkboxKey) => {
         setBlockList((prevCheckboxes) => {
-            return prevCheckboxes.map((checkbox) =>
+            const updatedBlockList = prevCheckboxes.map((checkbox) =>
                 checkbox.key === checkboxKey ? { ...checkbox, status: !checkbox.status } : checkbox
             );
+            if (isInitialized) {
+                console.log(updatedBlockList);
+                fetchData(updatedBlockList);
+            }
+            return updatedBlockList;
         });
     };
+    
+    // Set the initialization flag after the first render
+    useState(() => {
+        setIsInitialized(true);
+    }, []);
 
     return (
         blockList.map((current, index) => {
@@ -207,11 +232,11 @@ const Cards = ({showCategory, search}) => {
                     search == ''
                     ?
                     <>
-                        {(current.category == showCategory || 'all' == showCategory) && <Card blockList={blockList} handleCheckboxChange={handleCheckboxChange} category={current.category} title={current.title} docs={current.docs} demo={current.demo} status={current.status} index={index} blockKey={current.key} />}
+                        {(current.category == showCategory || 'all' == showCategory) && <Card blockList={blockList} handleToggle={handleToggle} category={current.category} title={current.title} docs={current.docs} demo={current.demo} status={current.status} index={index} blockKey={current.key} />}
                     </>
                     :
                     <>
-                        {current.title.toLowerCase().includes(search) && <Card blockList={blockList} handleCheckboxChange={handleCheckboxChange} category={current.category} title={current.title} docs={current.docs} demo={current.demo} status={current.status} index={index} blockKey={current.key} />}
+                        {current.title.toLowerCase().includes(search) && <Card blockList={blockList} handleToggle={handleToggle} category={current.category} title={current.title} docs={current.docs} demo={current.demo} status={current.status} index={index} blockKey={current.key} />}
                     </>
                 }
                 </>
@@ -220,7 +245,7 @@ const Cards = ({showCategory, search}) => {
     )
 }
 
-const Card = ({blockList, handleCheckboxChange, category, title, docs, demo, status, index, blockKey}) => {
+const Card = ({handleToggle, category, title, docs, demo, status, index, blockKey}) => {
 
     return (
         <div className={"col-lg-4 col-md-4 gy-3 rbea-block-category-card rbea-block-category-" + (category)}>
@@ -232,7 +257,7 @@ const Card = ({blockList, handleCheckboxChange, category, title, docs, demo, sta
                     <a className="rbea-blocks-docs-demo-links" href={docs} target="_blank"><img src={rbealocalize.responsiveurl + 'admin/images/icon-article.svg'} alt="icon-article" /></a>&nbsp;
                     <a className="rbea-blocks-docs-demo-links" href={demo} target="_blank"><img src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" /></a>&nbsp;
                     <label className="rbea-blocks-switch">
-                        <input className="rbea-blocks-input-checkbox" data-index={index} type="checkbox" id={blockKey} checked={status} onChange={() => handleCheckboxChange(blockKey)} />
+                        <input className="rbea-blocks-input-checkbox" data-index={index} type="checkbox" id={blockKey} checked={status} onChange={() => handleToggle(blockKey)} />
                         <span className="rbea-blocks-slider rbea-blocks-round"></span>
                     </label>
                 </div>

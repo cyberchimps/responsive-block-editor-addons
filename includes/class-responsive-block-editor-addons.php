@@ -91,6 +91,10 @@ class Responsive_Block_Editor_Addons {
 
 		// Stores and Displays the blocks.
 		add_action( 'init', array( $this, 'responsive_block_editor_addons_blocks_display' ) );
+
+		// RBEA Getting Started Blocks Toggle.
+		add_action( 'wp_ajax_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
+		add_action( 'wp_ajax_nopriv_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
 	}
 
 	/**
@@ -527,6 +531,20 @@ class Responsive_Block_Editor_Addons {
 			array( 'wp-edit-blocks' ),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-editor.css' )
 		);
+
+		error_log( 'responsive_block_editor_addons_editor_assets' );
+
+		wp_enqueue_script( 'responsive_block_editor_addons_deactivate_blocks', RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-block-editor-addons-blocks-deactivate.js', array( 'wp-blocks' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, true );
+
+		$blocks = get_option( 'rbea_blocks' );
+
+		wp_localize_script(
+			'responsive_block_editor_addons_deactivate_blocks',
+			'rbea_deactivate_blocks',
+			array(
+				'deactivated_blocks' => $blocks,
+			)
+		);
 	}
 
 	/**
@@ -855,6 +873,7 @@ class Responsive_Block_Editor_Addons {
 					'review_link'           => esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/#new-post' ),
 					'rst_url'               => esc_url( 'https://wordpress.org/plugins/responsive-add-ons/' ),
 					'rbea_blocks'           => $blocks,
+					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
 				)
 			);
 
@@ -1011,4 +1030,23 @@ class Responsive_Block_Editor_Addons {
 		}
 
 	}
+
+	/**
+	 * Saves the block data in database when the block is toggled.
+	 *
+	 * @since 1.7.0
+	 */
+	public function rbea_blocks_toggle() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+		$value = json_decode( stripslashes( wp_unslash( $_POST['value'] ) ), true ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		update_option( 'rbea_blocks', $value );
+
+		wp_send_json_success();
+	}
+
 }
