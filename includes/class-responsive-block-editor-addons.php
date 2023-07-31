@@ -88,6 +88,9 @@ class Responsive_Block_Editor_Addons {
 
 		// Check the input value on review admin notice.
 		add_action( 'admin_init', array( $this, 'rbea_review_already_done' ), 5 );
+
+		// Stores and Displays the blocks.
+		add_action( 'init', array( $this, 'responsive_block_editor_addons_blocks_display' ) );
 	}
 
 	/**
@@ -821,6 +824,16 @@ class Responsive_Block_Editor_Addons {
 
 			wp_enqueue_script( 'updates' );
 
+			require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
+
+			$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+
+			$blocks = $rbea_blocks->get_rbea_blocks();
+
+			if ( $rbea_blocks->is_blocks_in_db() ) {
+				$blocks = get_option( 'rbea_blocks' );
+			}
+
 			wp_localize_script(
 				'responsive-block-editor-addons-admin-jsfile',
 				'rbealocalize',
@@ -841,6 +854,7 @@ class Responsive_Block_Editor_Addons {
 					'rbea_version'          => RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 					'review_link'           => esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/#new-post' ),
 					'rst_url'               => esc_url( 'https://wordpress.org/plugins/responsive-add-ons/' ),
+					'rbea_blocks'           => $blocks,
 				)
 			);
 
@@ -961,5 +975,40 @@ class Responsive_Block_Editor_Addons {
 		if ( '1' === $dnd ) {
 			update_option( 'responsive_block_editor_addons_review_pending', '2', true );
 		}
+	}
+
+	/**
+	 * Stores and Displays the Blocks.
+	 *
+	 * @since 1.7.0
+	 */
+	public function responsive_block_editor_addons_blocks_display() {
+
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
+
+		$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+
+		$rbea_path = 'responsive-block-editor-addons/responsive-block-editor-addons.php';
+
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		$installed_plugins = get_plugins();
+
+		if ( isset( $installed_plugins[ $rbea_path ] ) ) {
+			$installed_rbea_version = $installed_plugins[ $rbea_path ]['Version'];
+
+			$blocks = get_option( 'rbea_blocks' );
+			if ( ! $blocks ) {
+				$rbea_blocks->insert_blocks_data();
+			}
+			// else {
+				// if ( version_compare( RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, $installed_rbea_version, '>' ) ) {
+				// 	$this->update_frontend_assets( $widgets, true );
+				// }
+			// }
+		}
+
 	}
 }
