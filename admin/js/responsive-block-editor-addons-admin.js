@@ -251,7 +251,6 @@ const Blocks = ({showCategory, setShowCategory}) => {
     const [search, setSearch] = useState('')
     const areAllBlocksSelected = blockList.every((block) => block.status == 1);
     const [toggleAll, setToggleAll] = useState(areAllBlocksSelected)
-    console.log('areAllBlocksSelected -> ' + areAllBlocksSelected + ' toggleAll -> ' + toggleAll)
     const [isInitialized, setIsInitialized] = useState(false);
 
     const displayToast = ( msg, status ) => {
@@ -265,7 +264,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
             offset: {
                 x: 0,
                 y: 30
-              },
+            },
             style: {
                 background,
             },
@@ -295,11 +294,9 @@ const Blocks = ({showCategory, setShowCategory}) => {
             );
 
             const areAllUpdatedBlocksChecked = updatedBlockList.every((block) => block.status == 1);
-            console.log('areAllUpdatedBlocksSelected -> ' + areAllUpdatedBlocksChecked)
             setToggleAll(areAllUpdatedBlocksChecked)
 
             if (isInitialized) {
-                // console.log(updatedBlockList);
                 fetchData(updatedBlockList);
             }
             return updatedBlockList;
@@ -308,8 +305,8 @@ const Blocks = ({showCategory, setShowCategory}) => {
 
     const handleToggleAll = () => {
         setToggleAll(!toggleAll)
-        console.log('toggleAll -> ' + !toggleAll)
         setBlockList((prevCheckboxes) => { const updatedBlockList = prevCheckboxes.map((checkbox) =>({ ...checkbox, status: !toggleAll }));
+            fetchData(updatedBlockList);
             return updatedBlockList;
         });
     }
@@ -371,7 +368,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
     )
 }
 
-const Cards = ({blockList, setBlockList, showCategory, search, handleToggle}) => {
+const Cards = ({blockList, showCategory, search, handleToggle}) => {
 
     return (
         blockList.map((current, index) => {
