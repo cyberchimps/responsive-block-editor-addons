@@ -88,6 +88,13 @@ class Responsive_Block_Editor_Addons {
 
 		// Check the input value on review admin notice.
 		add_action( 'admin_init', array( $this, 'rbea_review_already_done' ), 5 );
+
+		// Stores and Displays the blocks.
+		add_action( 'init', array( $this, 'responsive_block_editor_addons_blocks_display' ) );
+
+		// RBEA Getting Started Blocks Toggle.
+		add_action( 'wp_ajax_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
+		add_action( 'wp_ajax_nopriv_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
 	}
 
 	/**
@@ -367,7 +374,7 @@ class Responsive_Block_Editor_Addons {
 	 * @access public
 	 */
 	public function responsive_block_editor_addons_getting_started() {
-		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'admin/partials/rbea-getting-started.php';
+		echo '<div id="rbea-getting-started-page-app"></div>';
 	}
 
 	/**
@@ -523,6 +530,26 @@ class Responsive_Block_Editor_Addons {
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-editor.css',
 			array( 'wp-edit-blocks' ),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons-editor.css' )
+		);
+
+		wp_enqueue_script( 'responsive_block_editor_addons_deactivate_blocks', RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-block-editor-addons-blocks-deactivate.js', array( 'wp-blocks' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, true );
+
+		$blocks = get_option( 'rbea_blocks' );
+
+		$deactivated_blocks = array();
+
+		foreach ( $blocks as $block ) {
+			if ( false === $block['status'] ) {
+				array_push( $deactivated_blocks, $block );
+			}
+		}
+
+		wp_localize_script(
+			'responsive_block_editor_addons_deactivate_blocks',
+			'rbea_deactivate_blocks',
+			array(
+				'deactivated_blocks' => $deactivated_blocks,
+			)
 		);
 	}
 
@@ -795,6 +822,30 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
+	 * Check if RST plugin is installed or activated.
+	 *
+	 * @return string
+	 */
+	public function rst_status() {
+		// Check if RST is activate.
+
+		$rst_path = 'responsive-add-ons/responsive-add-ons.php';
+
+		if ( is_plugin_active( $rst_path ) ) {
+			return 'activated';
+		}
+
+		// Check if RST is installed.
+		$installed_plugins = get_plugins();
+
+		if ( isset( $installed_plugins[ $rst_path ] ) ) {
+			return 'activate';
+		} else {
+			return 'install';
+		}
+	}
+
+	/**
 	 * Include Admin css
 	 *
 	 * @return void [description]
@@ -811,15 +862,40 @@ class Responsive_Block_Editor_Addons {
 
 			wp_enqueue_style( 'responsive-block-editor-addons-getting-started' );
 
+			wp_enqueue_script( 'rbea-toastify', 'https://cdn.jsdelivr.net/npm/toastify-js', array( 'jquery' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, true );
+
 			wp_enqueue_script(
 				'responsive-block-editor-addons-admin-jsfile',
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-block-editor-addons-admin.js',
-				array( 'jquery' ),
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-getting-started.js',
+				array( 'jquery', 'react', 'react-dom' ),
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 				true
 			);
 
 			wp_enqueue_script( 'updates' );
+
+			require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
+
+			$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+
+			$blocks = $rbea_blocks->get_rbea_blocks();
+
+			if ( $rbea_blocks->is_blocks_in_db() ) {
+				$blocks = get_option( 'rbea_blocks' );
+			}
+
+			$rst_path = 'responsive-add-ons/responsive-add-ons.php';
+
+			$nonce = add_query_arg(
+				array(
+					'action'        => 'activate',
+					'plugin'        => rawurlencode( $rst_path ),
+					'plugin_status' => 'all',
+					'paged'         => '1',
+					'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $rst_path ),
+				),
+				network_admin_url( 'plugins.php' )
+			);
 
 			wp_localize_script(
 				'responsive-block-editor-addons-admin-jsfile',
@@ -828,7 +904,6 @@ class Responsive_Block_Editor_Addons {
 					'ajaxurl'               => admin_url( 'admin-ajax.php' ),
 					'responsiveurl'         => RESPONSIVE_BLOCK_EDITOR_ADDONS_URL,
 					'siteurl'               => site_url(),
-					'isRSTActivated'        => is_plugin_active( 'responsive-add-ons/responsive-add-ons.php' ),
 					'installing'            => esc_html__( 'Installing ', 'responsive' ),
 					'activating'            => esc_html__( 'Activating ', 'responsive' ),
 					'verify_network'        => esc_html__( 'Not connect. Verify Network.', 'responsive' ),
@@ -838,6 +913,14 @@ class Responsive_Block_Editor_Addons {
 					'timeout_error'         => esc_html__( 'Time out error', 'responsive' ),
 					'ajax_req_aborted'      => esc_html__( 'Ajax request aborted', 'responsive' ),
 					'uncaught_error'        => esc_html__( 'Uncaught Error', 'responsive' ),
+					'rbea_version'          => RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+					'review_link'           => esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/#new-post' ),
+					'rst_url'               => esc_url( 'https://wordpress.org/plugins/responsive-add-ons/' ),
+					'rbea_blocks'           => $blocks,
+					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
+					'rst_status'            => $this->rst_status(),
+					'rst_nonce'             => $nonce,
+					'rst_redirect'          => admin_url( 'admin.php?page=responsive_add_ons' ),
 				)
 			);
 
@@ -959,4 +1042,58 @@ class Responsive_Block_Editor_Addons {
 			update_option( 'responsive_block_editor_addons_review_pending', '2', true );
 		}
 	}
+
+	/**
+	 * Stores and Displays the Blocks.
+	 *
+	 * @since 1.7.0
+	 */
+	public function responsive_block_editor_addons_blocks_display() {
+
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
+
+		$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+
+		$rbea_path = 'responsive-block-editor-addons/responsive-block-editor-addons.php';
+
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		$installed_plugins = get_plugins();
+
+		if ( isset( $installed_plugins[ $rbea_path ] ) ) {
+			$installed_rbea_version = $installed_plugins[ $rbea_path ]['Version'];
+
+			$blocks = get_option( 'rbea_blocks' );
+			if ( ! $blocks ) {
+				$rbea_blocks->insert_blocks_data();
+			}
+			// else {
+				// if ( version_compare( RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, $installed_rbea_version, '>' ) ) {
+				// 	$this->update_frontend_assets( $widgets, true );
+				// }
+			// }
+		}
+
+	}
+
+	/**
+	 * Saves the block data in database when the block is toggled.
+	 *
+	 * @since 1.7.0
+	 */
+	public function rbea_blocks_toggle() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+		$value = json_decode( stripslashes( wp_unslash( $_POST['value'] ) ), true ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		update_option( 'rbea_blocks', $value );
+
+		wp_send_json_success();
+	}
+
 }
