@@ -106,6 +106,55 @@ const Help = () => {
 }
 
 const StarterTemplates = () => {
+
+    const generateButton = (rstStatus, rstRedirect, rstNonce) => {
+        switch (rstStatus) {
+          case 'install':
+            return (
+                <div class="plugin-card-responsive-add-ons" style={{padding: '8px 0 5px'}}>
+                    <a
+                        id="rbea-rst"
+                        data-redirect={rstRedirect}
+                        data-slug="responsive-add-ons"
+                        className="rbea-install-plugin install-now button"
+                        href={rstNonce}
+                        data-name="responsive-add-ons"
+                        aria-label="Install responsive-add-ons"
+                    >
+                        {__('Install', 'responsive-add-ons')}
+                    </a>
+              </div>
+            );
+          case 'activate':
+            return (
+                <div class="plugin-card-responsive-add-ons" style={{padding: '8px 0 5px'}}>
+                    <a
+                        data-redirect={rstRedirect}
+                        data-slug="responsive-add-ons"
+                        className="rbea-plugin-activated-button-disabled button"
+                        href={rstNonce}
+                        aria-label="Activate responsive-add-ons"
+                    >
+                        {__('Activate', 'responsive-add-ons')}
+                    </a>
+              </div>
+            );
+          case 'activated':
+            return (
+                <div class="plugin-card-responsive-add-ons" style={{padding: '8px 0 5px'}}>
+                    <button
+                        className="rbea-plugin-activated-button-disabled button"
+                        aria-label="Activated responsive-add-ons"
+                    >
+                        {__('Activated', 'responsive-add-ons')}
+                    </button>
+              </div>
+            )
+        }
+    }
+
+    const [button, setButton] = useState(generateButton(rbealocalize.rst_status, rbealocalize.rst_redirect, rbealocalize.rst_nonce));
+
     return (
         <div className="container">
             <div className="row">
@@ -118,7 +167,7 @@ const StarterTemplates = () => {
                                 <p className="rbea-rst-brand-desc">{ __( 'Browse 150+ fully-functional ready site templates by installing the free Responsive Starter Templates plugin. Click the button below to get started.', 'responsive-block-editor-addons' )}</p>
                             </div>
                             <div className="rbea-rst-button-section">
-                                
+                                {button}
                                 <div className="rbea-rst-learn-more">
                                     <a href={rbealocalize.rst_url} target="_blank">{ __( 'Learn More', 'responsive-block-editor-addons' )}</a>
                                 </div>
@@ -135,6 +184,62 @@ const Blocks = ({showCategory, setShowCategory}) => {
     const [blockList, setBlockList] = useState(rbealocalize.rbea_blocks)
     const [search, setSearch] = useState('')
     const areAllBlocksSelected = blockList.every((block) => block.status == 1);
+    const [toggleAll, setToggleAll] = useState(areAllBlocksSelected)
+    const [isInitialized, setIsInitialized] = useState(false);
+
+    const displayToast = ( msg, status ) => {
+        let background = status === 'error' ? '#FF5151' : '#00CF21';
+        Toastify({
+            text: msg,
+            duration: 3000,
+            gravity: "top", 
+            position: "center",
+            stopOnFocus: true,
+            offset: {
+                x: 0,
+                y: 30
+              },
+            style: {
+                background,
+            },
+        }).showToast();
+    }
+
+    const fetchData = async (data) => {
+        const formData = new FormData()
+
+        formData.append( 'action', 'rbea_blocks_toggle' );
+        formData.append( 'nonce', rbealocalize.nonce );
+        formData.append( 'value', JSON.stringify( data ) );
+
+        const response = await fetch(rbealocalize.ajaxurl, {
+            method: 'POST',
+            body: formData
+        })
+
+        response.status === 200 ? displayToast('Settings Saved','success') : displayToast('Error','error')
+
+        console.log(response.status)
+        return response.json() 
+    }
+
+    const handleToggle = (checkboxKey) => {
+        setBlockList((prevCheckboxes) => {
+            const updatedBlockList = prevCheckboxes.map((checkbox) =>
+                checkbox.key === checkboxKey ? { ...checkbox, status: !checkbox.status } : checkbox
+            );
+            if (isInitialized) {
+                console.log(updatedBlockList);
+                fetchData(updatedBlockList);
+            }
+            return updatedBlockList;
+        });
+    };
+    
+    // Set the initialization flag after the first render
+    useState(() => {
+        setIsInitialized(true);
+    }, []);
 
     return (
         <div className="container">
@@ -173,7 +278,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
                             </div>
                             <div className="rbea-blocks-toggle-block-switch">
                                 <label className="rbea-blocks-switch mt-2">
-                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" checked={areAllBlocksSelected} />
+                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" onChange={(e) => setToggleAll(!toggleAll)} checked={toggleAll} />
                                     <span className="rbea-blocks-slider rbea-blocks-round"></span>
                                 </label>
                             </div>
@@ -182,47 +287,13 @@ const Blocks = ({showCategory, setShowCategory}) => {
                 </div>
             </div>
             <div className="row rbea-block-cards-group">
-                <Cards blockList={blockList} setBlockList={setBlockList} showCategory={showCategory} search={search} />
+                <Cards blockList={blockList} setBlockList={setBlockList} showCategory={showCategory} search={search} handleToggle={handleToggle} />
             </div>
         </div>
     )
 }
 
-const Cards = ({blockList, setBlockList, showCategory, search}) => {
-
-    const [isInitialized, setIsInitialized] = useState(false);
-
-    const fetchData = async (data) => {
-        const formData = new FormData()
-
-        formData.append( 'action', 'rbea_blocks_toggle' );
-        formData.append( 'nonce', rbealocalize.nonce );
-        formData.append( 'value', JSON.stringify( data ) );
-
-        const response = await fetch(rbealocalize.ajaxurl, {
-            method: 'POST',
-            body: formData
-        })
-        return response.json()
-    }
-
-    const handleToggle = (checkboxKey) => {
-        setBlockList((prevCheckboxes) => {
-            const updatedBlockList = prevCheckboxes.map((checkbox) =>
-                checkbox.key === checkboxKey ? { ...checkbox, status: !checkbox.status } : checkbox
-            );
-            if (isInitialized) {
-                console.log(updatedBlockList);
-                fetchData(updatedBlockList);
-            }
-            return updatedBlockList;
-        });
-    };
-    
-    // Set the initialization flag after the first render
-    useState(() => {
-        setIsInitialized(true);
-    }, []);
+const Cards = ({blockList, setBlockList, showCategory, search, handleToggle}) => {
 
     return (
         blockList.map((current, index) => {

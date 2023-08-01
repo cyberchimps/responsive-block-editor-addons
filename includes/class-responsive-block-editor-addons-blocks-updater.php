@@ -39,7 +39,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'advanced-columns',
+				'key'      => 'advance-columns',
 				'title'    => 'Advance Columns',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/advanced-column/',
 				'demo'     => 'https://cyberchimps.com/blocks/advanced-columns/',
@@ -87,7 +87,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'call-to-action',
+				'key'      => 'responsive-block-editor-addons-cta',
 				'title'    => 'Call To Action',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/call-to-action',
 				'demo'     => 'https://cyberchimps.com/blocks/call-to-action/',
@@ -111,7 +111,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'countdown',
+				'key'      => 'count-down',
 				'title'    => 'Countdown',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/count-down/',
 				'demo'     => 'https://cyberchimps.com/blocks/countdown/',
@@ -119,7 +119,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'countup',
+				'key'      => 'count-up',
 				'title'    => 'Countup',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/count-up/',
 				'demo'     => 'https://cyberchimps.com/blocks/count-up/',
@@ -135,7 +135,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'expand-show-more',
+				'key'      => 'expand',
 				'title'    => 'Expand/Show More',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/expand-show-more/',
 				'demo'     => 'https://cyberchimps.com/blocks/expand/',
@@ -159,7 +159,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'google-map',
+				'key'      => 'googlemap',
 				'title'    => 'Google Map',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/google-map/',
 				'demo'     => 'https://cyberchimps.com/blocks/google-map/',
@@ -207,7 +207,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'inline-notice-block',
+				'key'      => 'inline-notice',
 				'title'    => 'Inline Notice Block',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/inline-notice-block/',
 				'demo'     => 'https://cyberchimps.com/blocks/inline-notice/',
@@ -215,7 +215,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'instagram-feed',
+				'key'      => 'instagram',
 				'title'    => 'Instagram Feed',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/instagram-feed/',
 				'demo'     => 'https://cyberchimps.com/blocks/instagram-feed/',
@@ -223,7 +223,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'masonry',
+				'key'      => 'gallery-masonry',
 				'title'    => 'Masonry',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/masonry/',
 				'demo'     => 'https://cyberchimps.com/blocks/masonry/',
@@ -231,7 +231,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'multi-buttons',
+				'key'      => 'buttons',
 				'title'    => 'Multi Buttons',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/multi-buttons/',
 				'demo'     => 'https://cyberchimps.com/blocks/multi-buttons/',
@@ -287,7 +287,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'post-page-grid',
+				'key'      => 'responsive-block-editor-addons-post-grid',
 				'title'    => 'Post And Page Grid',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/post-and-page-grid/',
 				'demo'     => 'https://cyberchimps.com/blocks/post-and-page-grid/',
