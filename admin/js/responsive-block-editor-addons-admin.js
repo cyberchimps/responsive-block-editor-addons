@@ -251,6 +251,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
     const [search, setSearch] = useState('')
     const areAllBlocksSelected = blockList.every((block) => block.status == 1);
     const [toggleAll, setToggleAll] = useState(areAllBlocksSelected)
+    console.log('areAllBlocksSelected -> ' + areAllBlocksSelected + ' toggleAll -> ' + toggleAll)
     const [isInitialized, setIsInitialized] = useState(false);
 
     const displayToast = ( msg, status ) => {
@@ -284,8 +285,6 @@ const Blocks = ({showCategory, setShowCategory}) => {
         })
 
         response.status === 200 ? displayToast('Settings Saved','success') : displayToast('Error','error')
-
-        console.log(response.status)
         return response.json() 
     }
 
@@ -294,13 +293,26 @@ const Blocks = ({showCategory, setShowCategory}) => {
             const updatedBlockList = prevCheckboxes.map((checkbox) =>
                 checkbox.key === checkboxKey ? { ...checkbox, status: !checkbox.status } : checkbox
             );
+
+            const areAllUpdatedBlocksChecked = updatedBlockList.every((block) => block.status == 1);
+            console.log('areAllUpdatedBlocksSelected -> ' + areAllUpdatedBlocksChecked)
+            setToggleAll(areAllUpdatedBlocksChecked)
+
             if (isInitialized) {
-                console.log(updatedBlockList);
+                // console.log(updatedBlockList);
                 fetchData(updatedBlockList);
             }
             return updatedBlockList;
         });
     };
+
+    const handleToggleAll = () => {
+        setToggleAll(!toggleAll)
+        console.log('toggleAll -> ' + !toggleAll)
+        setBlockList((prevCheckboxes) => { const updatedBlockList = prevCheckboxes.map((checkbox) =>({ ...checkbox, status: !toggleAll }));
+            return updatedBlockList;
+        });
+    }
     
     // Set the initialization flag after the first render
     useState(() => {
@@ -344,7 +356,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
                             </div>
                             <div className="rbea-blocks-toggle-block-switch">
                                 <label className="rbea-blocks-switch mt-2">
-                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" onChange={(e) => setToggleAll(!toggleAll)} checked={toggleAll} />
+                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" onChange={(e) => handleToggleAll()} checked={toggleAll} />
                                     <span className="rbea-blocks-slider rbea-blocks-round"></span>
                                 </label>
                             </div>
