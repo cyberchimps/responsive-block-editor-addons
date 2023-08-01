@@ -114,7 +114,7 @@ const StarterTemplates = () => {
     }, [])
     
 
-    const [buttonText, setButtonText] = useState(rbealocalize.rst_status.charAt(0).toUpperCase() + rbealocalize.rst_status.slice(1));
+    const [buttonText, setButtonText] = useState(rbealocalize.rst_status === 'install' ? 'Install & Activate' : rbealocalize.rst_status.charAt(0).toUpperCase() + rbealocalize.rst_status.slice(1));
     const [buttonClass, setButtonClass] = useState('rbea-install-plugin install-now button');
 
     // Function to handle plugin installation.
