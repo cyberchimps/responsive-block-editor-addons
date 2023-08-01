@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import {HelpContents, Categories} from './ContentList';
 const { __ } = wp.i18n;
@@ -106,6 +106,13 @@ const Help = () => {
 }
 
 const StarterTemplates = () => {
+
+    useEffect(() => {
+      if ( rbealocalize.rst_status == 'activated' ) {
+        window.location.href = rbealocalize.rst_redirect
+      }
+    }, [])
+    
 
     const [buttonText, setButtonText] = useState(rbealocalize.rst_status.charAt(0).toUpperCase() + rbealocalize.rst_status.slice(1));
     const [buttonClass, setButtonClass] = useState('rbea-install-plugin install-now button');
