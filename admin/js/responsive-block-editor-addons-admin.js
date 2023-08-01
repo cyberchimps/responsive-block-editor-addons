@@ -107,6 +107,65 @@ const Help = () => {
 
 const StarterTemplates = () => {
 
+    const [buttonText, setButtonText] = useState(rbealocalize.rst_status.charAt(0).toUpperCase() + rbealocalize.rst_status.slice(1));
+    const [buttonClass, setButtonClass] = useState('rbea-install-plugin install-now button');
+
+    // Function to handle plugin installation.
+    const handleInstall = (e) => {
+        e.preventDefault();
+        const button = e.target;
+        const slug = button.getAttribute('data-slug');
+        const url = button.getAttribute('href');
+        const redirect = button.dataset.redirect;
+
+        setButtonText(rbealocalize.installing + '...');
+        setButtonClass('rbea-install-plugin install-now button updating-message');
+
+        wp.updates.installPlugin({
+            slug: slug,
+            success: function () {
+                setButtonText(rbealocalize.activating + '...');
+                setButtonClass('rbea-install-plugin install-now button updating-message');
+                activatePlugin(url, redirect);
+            },
+        });
+    };
+
+    // Function to handle plugin activation.
+    const handleActivation = (e) => {
+        e.preventDefault
+        const button = e.target;
+        const slug = button.getAttribute('data-slug');
+        const url = button.getAttribute('href');
+        const redirect = button.dataset.redirect;
+        setButtonText(rbealocalize.activating + '...');
+        activatePlugin(url, redirect);
+    }
+
+    // Function to activate the plugin.
+    const activatePlugin = (url, redirect) => {
+        if (typeof url === 'undefined' || !url) {
+            return;
+        }
+        fetch(url, { method: 'GET' })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then((data) => {
+            if (typeof redirect !== 'undefined' && redirect !== '') {
+                window.location.replace(redirect);
+            } else {
+                window.location.reload();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    };
+
     const generateButton = (rstStatus, rstRedirect, rstNonce) => {
         switch (rstStatus) {
           case 'install':
@@ -120,8 +179,9 @@ const StarterTemplates = () => {
                         href={rstNonce}
                         data-name="responsive-add-ons"
                         aria-label="Install responsive-add-ons"
+                        onClick={handleInstall}
                     >
-                        {__('Install', 'responsive-add-ons')}
+                        {__(buttonText, 'responsive-add-ons')}
                     </a>
               </div>
             );
@@ -131,11 +191,12 @@ const StarterTemplates = () => {
                     <a
                         data-redirect={rstRedirect}
                         data-slug="responsive-add-ons"
-                        className="rbea-plugin-activated-button-disabled button"
+                        className="rbea-activate-plugin activate-now button button-primary"
                         href={rstNonce}
                         aria-label="Activate responsive-add-ons"
+                        onClick={handleActivation}
                     >
-                        {__('Activate', 'responsive-add-ons')}
+                        {__(buttonText, 'responsive-add-ons')}
                     </a>
               </div>
             );
@@ -153,8 +214,6 @@ const StarterTemplates = () => {
         }
     }
 
-    const [button, setButton] = useState(generateButton(rbealocalize.rst_status, rbealocalize.rst_redirect, rbealocalize.rst_nonce));
-
     return (
         <div className="container">
             <div className="row">
@@ -167,7 +226,7 @@ const StarterTemplates = () => {
                                 <p className="rbea-rst-brand-desc">{ __( 'Browse 150+ fully-functional ready site templates by installing the free Responsive Starter Templates plugin. Click the button below to get started.', 'responsive-block-editor-addons' )}</p>
                             </div>
                             <div className="rbea-rst-button-section">
-                                {button}
+                                {generateButton(rbealocalize.rst_status, rbealocalize.rst_redirect, rbealocalize.rst_nonce)}
                                 <div className="rbea-rst-learn-more">
                                     <a href={rbealocalize.rst_url} target="_blank">{ __( 'Learn More', 'responsive-block-editor-addons' )}</a>
                                 </div>
