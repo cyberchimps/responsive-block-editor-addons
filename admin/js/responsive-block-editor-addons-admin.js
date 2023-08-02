@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import {HelpContents, Categories} from './ContentList';
 const { __ } = wp.i18n;
@@ -107,6 +107,72 @@ const Help = () => {
 
 const StarterTemplates = () => {
 
+    useEffect(() => {
+      if ( rbealocalize.rst_status == 'activated' ) {
+        window.location.href = rbealocalize.rst_redirect
+      }
+    }, [])
+    
+
+    const [buttonText, setButtonText] = useState(rbealocalize.rst_status === 'install' ? 'Install & Activate' : rbealocalize.rst_status.charAt(0).toUpperCase() + rbealocalize.rst_status.slice(1));
+    const [buttonClass, setButtonClass] = useState('rbea-install-plugin install-now button');
+
+    // Function to handle plugin installation.
+    const handleInstall = (e) => {
+        e.preventDefault();
+        const button = e.target;
+        const slug = button.getAttribute('data-slug');
+        const url = button.getAttribute('href');
+        const redirect = button.dataset.redirect;
+
+        setButtonText(rbealocalize.installing + '...');
+        setButtonClass('rbea-install-plugin install-now button updating-message');
+
+        wp.updates.installPlugin({
+            slug: slug,
+            success: function () {
+                setButtonText(rbealocalize.activating + '...');
+                setButtonClass('rbea-install-plugin install-now button updating-message');
+                activatePlugin(url, redirect);
+            },
+        });
+    };
+
+    // Function to handle plugin activation.
+    const handleActivation = (e) => {
+        e.preventDefault
+        const button = e.target;
+        const slug = button.getAttribute('data-slug');
+        const url = button.getAttribute('href');
+        const redirect = button.dataset.redirect;
+        setButtonText(rbealocalize.activating + '...');
+        activatePlugin(url, redirect);
+    }
+
+    // Function to activate the plugin.
+    const activatePlugin = (url, redirect) => {
+        if (typeof url === 'undefined' || !url) {
+            return;
+        }
+        fetch(url, { method: 'GET' })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then((data) => {
+            if (typeof redirect !== 'undefined' && redirect !== '') {
+                window.location.replace(redirect);
+            } else {
+                window.location.reload();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    };
+
     const generateButton = (rstStatus, rstRedirect, rstNonce) => {
         switch (rstStatus) {
           case 'install':
@@ -120,8 +186,9 @@ const StarterTemplates = () => {
                         href={rstNonce}
                         data-name="responsive-add-ons"
                         aria-label="Install responsive-add-ons"
+                        onClick={handleInstall}
                     >
-                        {__('Install', 'responsive-add-ons')}
+                        {__(buttonText, 'responsive-add-ons')}
                     </a>
               </div>
             );
@@ -131,11 +198,12 @@ const StarterTemplates = () => {
                     <a
                         data-redirect={rstRedirect}
                         data-slug="responsive-add-ons"
-                        className="rbea-plugin-activated-button-disabled button"
+                        className="rbea-activate-plugin activate-now button button-primary"
                         href={rstNonce}
                         aria-label="Activate responsive-add-ons"
+                        onClick={handleActivation}
                     >
-                        {__('Activate', 'responsive-add-ons')}
+                        {__(buttonText, 'responsive-add-ons')}
                     </a>
               </div>
             );
@@ -153,8 +221,6 @@ const StarterTemplates = () => {
         }
     }
 
-    const [button, setButton] = useState(generateButton(rbealocalize.rst_status, rbealocalize.rst_redirect, rbealocalize.rst_nonce));
-
     return (
         <div className="container">
             <div className="row">
@@ -167,7 +233,7 @@ const StarterTemplates = () => {
                                 <p className="rbea-rst-brand-desc">{ __( 'Browse 150+ fully-functional ready site templates by installing the free Responsive Starter Templates plugin. Click the button below to get started.', 'responsive-block-editor-addons' )}</p>
                             </div>
                             <div className="rbea-rst-button-section">
-                                {button}
+                                {generateButton(rbealocalize.rst_status, rbealocalize.rst_redirect, rbealocalize.rst_nonce)}
                                 <div className="rbea-rst-learn-more">
                                     <a href={rbealocalize.rst_url} target="_blank">{ __( 'Learn More', 'responsive-block-editor-addons' )}</a>
                                 </div>
@@ -198,7 +264,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
             offset: {
                 x: 0,
                 y: 30
-              },
+            },
             style: {
                 background,
             },
@@ -218,8 +284,6 @@ const Blocks = ({showCategory, setShowCategory}) => {
         })
 
         response.status === 200 ? displayToast('Settings Saved','success') : displayToast('Error','error')
-
-        console.log(response.status)
         return response.json() 
     }
 
@@ -228,13 +292,24 @@ const Blocks = ({showCategory, setShowCategory}) => {
             const updatedBlockList = prevCheckboxes.map((checkbox) =>
                 checkbox.key === checkboxKey ? { ...checkbox, status: !checkbox.status } : checkbox
             );
+
+            const areAllUpdatedBlocksChecked = updatedBlockList.every((block) => block.status == 1);
+            setToggleAll(areAllUpdatedBlocksChecked)
+
             if (isInitialized) {
-                console.log(updatedBlockList);
                 fetchData(updatedBlockList);
             }
             return updatedBlockList;
         });
     };
+
+    const handleToggleAll = () => {
+        setToggleAll(!toggleAll)
+        setBlockList((prevCheckboxes) => { const updatedBlockList = prevCheckboxes.map((checkbox) =>({ ...checkbox, status: !toggleAll }));
+            fetchData(updatedBlockList);
+            return updatedBlockList;
+        });
+    }
     
     // Set the initialization flag after the first render
     useState(() => {
@@ -278,7 +353,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
                             </div>
                             <div className="rbea-blocks-toggle-block-switch">
                                 <label className="rbea-blocks-switch mt-2">
-                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" onChange={(e) => setToggleAll(!toggleAll)} checked={toggleAll} />
+                                    <input id="rbea-blocks-toggle-blocks" type="checkbox" onChange={(e) => handleToggleAll()} checked={toggleAll} />
                                     <span className="rbea-blocks-slider rbea-blocks-round"></span>
                                 </label>
                             </div>
@@ -293,7 +368,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
     )
 }
 
-const Cards = ({blockList, setBlockList, showCategory, search, handleToggle}) => {
+const Cards = ({blockList, showCategory, search, handleToggle}) => {
 
     return (
         blockList.map((current, index) => {
@@ -345,7 +420,7 @@ const Header = () => {
                 <h1 className="rbea-brand-name">{__("Responsive Blocks", "responsive-block-editor-addons")}</h1>
                 <div className="rbea-version">{rbealocalize.rbea_version}</div>
             </div>
-            <p className="rbea-brand-desc">{__( 'Thank you for choosing Responsive Gutenberg Blocks Library - A Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' )}</p>
+            <p className="rbea-brand-desc">{__( 'Thank You For Choosing Responsive Blocks – WordPress Gutenberg Blocks Plugin', 'responsive-block-editor-addons' )}</p>
         </div>
     )
 }

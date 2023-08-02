@@ -1069,11 +1069,6 @@ class Responsive_Block_Editor_Addons {
 			if ( ! $blocks ) {
 				$rbea_blocks->insert_blocks_data();
 			}
-			// else {
-				// if ( version_compare( RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, $installed_rbea_version, '>' ) ) {
-				// 	$this->update_frontend_assets( $widgets, true );
-				// }
-			// }
 		}
 
 	}
