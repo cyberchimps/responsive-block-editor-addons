@@ -420,7 +420,7 @@ const Header = () => {
                 <h1 className="rbea-brand-name">{__("Responsive Blocks", "responsive-block-editor-addons")}</h1>
                 <div className="rbea-version">{rbealocalize.rbea_version}</div>
             </div>
-            <p className="rbea-brand-desc">{__( 'Thank you for choosing Responsive Gutenberg Blocks Library - A Powerful WordPress Editor Plugin', 'responsive-block-editor-addons' )}</p>
+            <p className="rbea-brand-desc">{__( 'Thank You For Choosing Responsive Blocks – WordPress Gutenberg Blocks Plugin', 'responsive-block-editor-addons' )}</p>
         </div>
     )
 }

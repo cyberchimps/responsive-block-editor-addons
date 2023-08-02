@@ -79,8 +79,8 @@ const Categories = [
         title: 'All'
     },
     {
-        key: 'constructive',
-        title: 'Constructive'
+        key: 'content',
+        title: 'Content'
     },
     {
         key: 'timelines',
