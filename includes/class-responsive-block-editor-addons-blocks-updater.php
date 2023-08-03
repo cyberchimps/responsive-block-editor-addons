@@ -167,7 +167,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'icon-list',
+				'key'      => 'icons-list',
 				'title'    => 'Icon List',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/icon-list/',
 				'demo'     => 'https://cyberchimps.com/blocks/icon-list/',
@@ -175,7 +175,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'image-boxes',
+				'key'      => 'image-boxes-block',
 				'title'    => 'Image Boxes',
 				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/image-boxes/',
 				'demo'     => 'https://cyberchimps.com/blocks/image-boxes/',
