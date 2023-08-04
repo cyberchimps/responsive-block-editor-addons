@@ -15,7 +15,7 @@ function responsive_block_editor_addons_image_slider_add_frontend_assets() {
 	if ( has_block( 'responsive-block-editor-addons/image-slider' ) ) {
 		wp_enqueue_script(
 			'responsive_block_editor_addons-image-slider-front-script',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/js/vendors/flickity.js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/flickity.js',
 			array(),
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 			true
@@ -23,7 +23,7 @@ function responsive_block_editor_addons_image_slider_add_frontend_assets() {
 
 		wp_enqueue_script(
 			'responsive_block_editor_addons-image-slider-lightbox',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/responsive-block-editor-addons-lightbox.js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-lightbox.js',
 			array(),
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 			true
