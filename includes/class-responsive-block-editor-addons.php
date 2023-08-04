@@ -695,7 +695,7 @@ class Responsive_Block_Editor_Addons {
 				// Load the compiled blocks into the editor.
 				wp_enqueue_script(
 					'responsive_blocks-frontend-js',
-					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
+					RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/frontend_blocks.js',
 					array( 'jquery' ),
 					filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
 					true
