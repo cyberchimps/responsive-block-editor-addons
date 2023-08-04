@@ -342,7 +342,7 @@ class Responsive_Block_Editor_Addons {
 			'manage_options',
 			'responsive_block_editor_addons',
 			array( $this, 'responsive_block_editor_addons_getting_started' ),
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/admin/images/responsive-block-editor-addons-menu-icon.png',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/responsive-block-editor-addons-menu-icon.png',
 			59
 		);
 
@@ -490,7 +490,7 @@ class Responsive_Block_Editor_Addons {
 		// Load the compiled blocks into the editor.
 		wp_enqueue_script(
 			'responsive_block_editor_addons-block-js',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/responsive-block-editor-addons.js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons.js',
 			array( 'lodash', 'react', 'react-dom', 'wp-api-fetch', 'wp-blob', 'wp-block-editor', 'wp-blocks', 'wp-components', 'wp-compose', 'wp-data', 'wp-date', 'wp-dom-ready', 'wp-edit-post', 'wp-editor', 'wp-element', 'wp-hooks', 'wp-i18n', 'wp-keycodes', 'wp-plugins', 'wp-polyfill', 'wp-rich-text', 'wp-token-list', 'wp-url', 'jquery' ),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/responsive-block-editor-addons.js' ),
 			true
@@ -781,7 +781,7 @@ class Responsive_Block_Editor_Addons {
 		// Load the compiled blocks into the editor.
 		wp_enqueue_script(
 			'responsive_blocks-frontend-js',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/frontend_blocks.js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/frontend_blocks.js',
 			array( 'jquery' ),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
 			true
