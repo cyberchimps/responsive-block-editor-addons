@@ -15,7 +15,7 @@ import EditorStyles from "./editor-styles";
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { Dashicon } = wp.components;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 import renderSVG from "../../../renderIcon";
 const { dateI18n, __experimentalGetSettings } = wp.date;
 import * as JQuery from "jquery";

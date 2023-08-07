@@ -21,7 +21,7 @@ const {
   URLInput,
   MediaUploadCheck,
   figure,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -499,6 +499,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingTable: data_copy });
                         }}
+                        __nextHasNoMarginBottom={true}
                       />
                       <Button
                         label={__("Apply", "responsive-block-editor-addons")}

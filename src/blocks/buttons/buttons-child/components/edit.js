@@ -23,7 +23,7 @@ const {
   InnerBlocks,
   InspectorControls,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const {
   Button,
   Icon,

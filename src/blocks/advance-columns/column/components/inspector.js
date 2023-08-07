@@ -16,10 +16,7 @@ import ImageHoverBackgroundSettings from "../../../../settings-components/BlockB
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { ColorPalette, MediaUpload } = wp.blockEditor;
-
-// Import block components
-const { InspectorControls } = wp.editor;
+const { ColorPalette, MediaUpload, InspectorControls } = wp.blockEditor;
 
 // Import Inspector components
 const {

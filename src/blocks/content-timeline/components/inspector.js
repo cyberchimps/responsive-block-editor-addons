@@ -21,7 +21,7 @@ const { Component, Fragment } = wp.element;
 const { dateI18n, __experimentalGetSettings } = wp.date;
 
 // Import block components
-const { InspectorControls, PanelColorSettings, ColorPalette } = wp.editor;
+const { InspectorControls, PanelColorSettings, ColorPalette } = wp.blockEditor;
 
 // Import Inspector components
 const {

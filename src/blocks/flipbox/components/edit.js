@@ -14,7 +14,7 @@ import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { Button, Dashicon, Icon } = wp.components;
-const { RichText, URLInput } = wp.editor;
+const { RichText, URLInput } = wp.blockEditor;
 
 import memoize from "memize";
 import map from "lodash/map";
@@ -443,6 +443,7 @@ export default class Edit extends Component {
                             data_copy[index] = new_content;
                             setAttributes({ flipboxArray: data_copy });
                           }}
+                          __nextHasNoMarginBottom={true}
                         />
                         <Button
                           label={__("Apply", "responsive-block-editor-addons")}

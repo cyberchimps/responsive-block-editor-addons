@@ -9,7 +9,7 @@ import { applyFilters, addFilter } from "@wordpress/hooks";
 const { Component, Fragment } = wp.element;
 import { compose } from "@wordpress/compose";
 const { PanelBody, SelectControl, TextControl } = wp.components;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 import { createVideoBackground, hasBackgroundOverlay } from "../util/index.js";
 

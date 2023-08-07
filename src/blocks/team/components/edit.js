@@ -22,7 +22,7 @@ const {
   MediaUploadCheck,
   figure,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -345,6 +345,7 @@ export default class Edit extends Component {
                                 data_copy[index] = new_content;
                                 setAttributes({ teamBlock: data_copy });
                               }}
+                              __nextHasNoMarginBottom={true}
                             />
                             <Button
                               label={__(
@@ -396,6 +397,7 @@ export default class Edit extends Component {
                                 data_copy[index] = new_content;
                                 setAttributes({ teamBlock: data_copy });
                               }}
+                              __nextHasNoMarginBottom={true}
                             />
                             <Button
                               label={__(
@@ -447,6 +449,7 @@ export default class Edit extends Component {
                                 data_copy[index] = new_content;
                                 setAttributes({ teamBlock: data_copy });
                               }}
+                              __nextHasNoMarginBottom={true}
                             />
                             <Button
                               label={__(
@@ -497,6 +500,7 @@ export default class Edit extends Component {
                                 data_copy[index] = new_content;
                                 setAttributes({ teamBlock: data_copy });
                               }}
+                              __nextHasNoMarginBottom={true}
                             />
                             <Button
                               label={__(
@@ -547,6 +551,7 @@ export default class Edit extends Component {
                                 data_copy[index] = new_content;
                                 setAttributes({ teamBlock: data_copy });
                               }}
+                              __nextHasNoMarginBottom={true}
                             />
                             <Button
                               label={__(
@@ -598,6 +603,7 @@ export default class Edit extends Component {
                                 data_copy[index] = new_content;
                                 setAttributes({ teamBlock: data_copy });
                               }}
+                              __nextHasNoMarginBottom={true}
                             />
                             <Button
                               label={__(
@@ -648,6 +654,7 @@ export default class Edit extends Component {
                                 data_copy[index] = new_content;
                                 setAttributes({ teamBlock: data_copy });
                               }}
+                              __nextHasNoMarginBottom={true}
                             />
                             <Button
                               label={__(

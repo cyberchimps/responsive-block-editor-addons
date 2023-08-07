@@ -8,7 +8,7 @@ import Style from "style-it";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {

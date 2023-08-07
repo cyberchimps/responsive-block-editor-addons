@@ -4,7 +4,7 @@
 
 // Setup the block
 const { Component } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 // Import block dependencies and components
 import classnames from "classnames";

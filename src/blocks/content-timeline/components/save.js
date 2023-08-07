@@ -12,7 +12,7 @@ import renderSVG from "../../../renderIcon";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 const { Dashicon } = wp.components;
 const { dateI18n } = wp.date;
 
