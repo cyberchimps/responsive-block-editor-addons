@@ -191,7 +191,6 @@ export default class Edit extends Component {
             />
             <RichText
               tagName="div"
-              multiline="p"
               placeholder={__(
                 "Call To Action Text",
                 "responsive-block-editor-addons"
@@ -275,6 +274,7 @@ export default class Edit extends Component {
               className="button-url"
               value={buttonUrl}
               onChange={(value) => setAttributes({ buttonUrl: value })}
+              __nextHasNoMarginBottom={true}
             />
             <Button
               label={__("Apply", "responsive-block-editor-addons")}

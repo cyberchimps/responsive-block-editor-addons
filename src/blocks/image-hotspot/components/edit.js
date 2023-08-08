@@ -241,15 +241,15 @@ class Edit extends Component {
     $imageDots.off();
     imageWrapper.off();
 
-    imageWrapper.contextmenu(function () {
+    imageWrapper.on( 'contextmenu', function () {
       return false;
     });
 
-    $imageDots.contextmenu(function () {
+    $imageDots.on( 'contextmenu', function () {
       return false;
     });
 
-    $imageDots.click((event) => {
+    $imageDots.on( 'click', (event) => {
       event.stopPropagation();
 
       const dot = event.currentTarget;
@@ -267,7 +267,7 @@ class Edit extends Component {
       handleStateChange("currentHotspot", $(dot).data("point-id"));
     });
 
-    $imageDots.mousedown(function (e) {
+    $imageDots.on( 'mousedown', function (e) {
       if (e.button == 1) {
         e.preventDefault();
         handleStateChange("currentHotspot", jQuery(this).data("point-id"));
@@ -331,7 +331,7 @@ class Edit extends Component {
       });
     }
 
-    $(document).keyup(function (e) {
+    $(document).on( 'keyup', function (e) {
       if (
         getState("currentHotspot") != null &&
         getState("currentStatus") == "drop" &&
@@ -346,7 +346,7 @@ class Edit extends Component {
       }
     });
 
-    imageWrapper.click((event) => {
+    imageWrapper.on( 'click', (event) => {
       const wrapper = event.target;
 
       $imageDots.removeClass("is-selected");
@@ -849,10 +849,10 @@ class Edit extends Component {
       $imageDots.removeClass("is-selected");
     }
 
-    $(`.responsive_block_addons___modal-delete`).contextmenu(function () {
+    $(`.responsive_block_addons___modal-delete`).on( 'contextmenu', function () {
       return false;
     });
-    $(`.components-modal__screen-overlay`).contextmenu(function () {
+    $(`.components-modal__screen-overlay`).on( 'contextmenu', function () {
       return false;
     });
 

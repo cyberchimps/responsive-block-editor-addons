@@ -102,7 +102,6 @@ export default class Edit extends Component {
           <RichText
             tagName="div"
             placeholder={__("Add notice content...", "responsive-block-editor-addons")}
-            multiline="p"
             value={noticeContent}
             className="responsive-block-editor-addons-block-inline-notice-content"
             onChange={(value) => setAttributes({ noticeContent: value })}

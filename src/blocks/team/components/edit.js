@@ -230,7 +230,7 @@ export default class Edit extends Component {
               {showDesignation && (
                 <RichText
                   tagName="div"
-                  multiline="p"
+                  multiline={false}
                   placeholder={__(
                     "Designation",
                     "responsive-block-editor-addons"
@@ -269,7 +269,7 @@ export default class Edit extends Component {
               {showDescription && (
                 <RichText
                   tagName="div"
-                  multiline="p"
+                  multiline={false}
                   placeholder={__(
                     "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
                     "responsive-block-editor-addons"
