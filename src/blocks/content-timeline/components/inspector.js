@@ -14,6 +14,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import moment from "moment";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -405,23 +406,23 @@ export default class Inspector extends Component {
                   value={dateFormat}
                   onChange={(value) => setAttributes({ dateFormat: value })}
                   options={[
-                    { value: "M j, Y", label: dateI18n("M j, Y", today) },
-                    { value: "F j, Y", label: dateI18n("F j, Y", today) },
-                    { value: "m/d/Y", label: dateI18n("m/d/Y", today) },
-                    { value: "m-d-Y", label: dateI18n("m-d-Y", today) },
-                    { value: "m.d.Y", label: dateI18n("m.d.Y", today) },
-                    { value: "d M Y", label: dateI18n("d M Y", today) },
-                    { value: "d F Y", label: dateI18n("d F Y", today) },
-                    { value: "d-m-Y", label: dateI18n("d-m-Y", today) },
-                    { value: "d.m.Y", label: dateI18n("d.m.Y", today) },
-                    { value: "d/m/Y", label: dateI18n("d/m/Y", today) },
-                    { value: "Y-m-d", label: dateI18n("Y-m-d", today) },
-                    { value: "Y.m.d", label: dateI18n("Y.m.d", today) },
-                    { value: "Y/m/d", label: dateI18n("Y/m/d", today) },
-                    { value: "M, Y", label: dateI18n("M, Y", today) },
-                    { value: "M Y", label: dateI18n("M Y", today) },
-                    { value: "F, Y", label: dateI18n("F, Y", today) },
-                    { value: "F Y", label: dateI18n("F Y", today) },
+                    { value: "M j, Y", label: dateI18n("M j, Y", moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "F j, Y", label: dateI18n("F j, Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "m/d/Y", label: dateI18n("m/d/Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "m-d-Y", label: dateI18n("m-d-Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "m.d.Y", label: dateI18n("m.d.Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "d M Y", label: dateI18n("d M Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "d F Y", label: dateI18n("d F Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "d-m-Y", label: dateI18n("d-m-Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "d.m.Y", label: dateI18n("d.m.Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "d/m/Y", label: dateI18n("d/m/Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "Y-m-d", label: dateI18n("Y-m-d",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "Y.m.d", label: dateI18n("Y.m.d",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "Y/m/d", label: dateI18n("Y/m/d",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "M, Y", label: dateI18n("M, Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "M Y", label: dateI18n("M Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "F, Y", label: dateI18n("F, Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
+                    { value: "F Y", label: dateI18n("F Y",  moment( today, 'MM/DD/YYYY' ).format("YYYY-MM-DD")) },
                     { value: "custom", label: __("Normal Text", "responsive-block-editor-addons") },
                   ]}
                 />
