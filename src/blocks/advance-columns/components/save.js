@@ -34,6 +34,7 @@ export default class Save extends Component {
     return [
       <div
         className={classnames(
+          this.props.className, 
           backgroundType == "image" ? "background-type-image" : "",
           `block-${block_id}`,
           "responsive-block-editor-addons-advanced-column-outer-wrap",

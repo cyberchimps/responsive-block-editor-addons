@@ -32,7 +32,7 @@ function rbea_instagram_fetch_data( $url ) {
  * @param Number $expire time.
  * @return void [description]
  */
-function rbea_instagram_data_to_cache( $result, $suffix = '', $expire = ( 60 * 60 * 6 ) ) {
+function rbea_instagram_data_to_cache( $result, $suffix = '', $expire = ( 5 * MINUTE_IN_SECONDS ) ) {
 	set_transient( 'rbea-instagram-api_' . $suffix, $result, $expire );
 }
 
@@ -73,7 +73,8 @@ function rbea_instagram_render_callback( array $attributes ) {
 	$show_aptions    = $attributes['showCaptions'];
 	$border_radius   = $attributes['borderRadius'];
 
-	$suffix = $token;
+	// Can make a suffix of first 20 chars and the last 30 chars from the token. Hopefully unique.
+	$suffix = substr_replace( $token, '', 20, strlen( $token ) - 50 );
 
 	if ( ! rbea_instagram_data_from_cache( $suffix ) ) {
 		$result = json_decode( rbea_instagram_fetch_data( "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token={$token}" ) );
@@ -87,7 +88,7 @@ function rbea_instagram_render_callback( array $attributes ) {
 		$insta_posts = $result->data;
 	}
 
-	$image_container = '<div class="responsive-block-editor-addons-block-instagram block-' . $attributes['block_id'] . '">
+	$image_container = '<div class="responsive-block-editor-addons-block-instagram ' . $attributes['className'] . ' block-' . $attributes['block_id'] . '">
     <div class="responsive-block-editor-addons-instagram-wrapper">
 	<div class="responsive-block-editor-addons-instagram-posts-container responsive-block-editor-addons-grid">';
 

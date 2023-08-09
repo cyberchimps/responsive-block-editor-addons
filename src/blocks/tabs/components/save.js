@@ -31,6 +31,7 @@
      return [
        <div
          className={classnames(
+           this.props.className,
            "responsive-block-editor-addons-block-tabs",
            `block-${block_id}`,
            `responsive-block-editor-addons-tabs__wrap`,

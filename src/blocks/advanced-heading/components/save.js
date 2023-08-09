@@ -42,6 +42,7 @@ export default class Save extends Component {
       <div
         id={anchor}
         className={classnames(
+          this.props.className, 
           "responsive-block-editor-addons-block-advanced-heading",
           `block-${block_id}`
         )}

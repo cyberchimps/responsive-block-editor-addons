@@ -207,6 +207,7 @@ export default class Edit extends Component {
         backgroundColor,
         opacity,
         icon,
+        stack,
       },
       setAttributes,
       mergeBlocks,
@@ -216,11 +217,11 @@ export default class Edit extends Component {
     setAttributes({ counterId: this.props.clientId });
 
     var data_copy = [...timelineItems];
-    var post_date;
     var content_align_class = AlignClass(this.props.attributes, 0); // Get classname for layout alignment
     var day_align_class = DayAlignClass(this.props.attributes, 0); // Get classname for day alignment.
     var display_inner_date = false;
     var isCenter = "";
+    var stackedDate = "";
     var border_with_color = "13px solid" + backgroundColor;
 
     let imgopacity = opacity / 100;
@@ -257,7 +258,18 @@ export default class Edit extends Component {
                       this.props.attributes,
                       index
                     );
+                    if (stack != "none") {
+                      stackedDate = isCenter;
+                    }
                     isCenter = "";
+                  }
+
+                  var post_date = t_date[index].title;
+                  if ("custom" != dateFormat) {
+                    post_date = dateI18n(dateFormat, t_date[index].title);
+                    if (post_date === "Invalid date") {
+                      post_date = t_date[index].title;
+                    }
                   }
 
                   return (
@@ -292,6 +304,11 @@ export default class Edit extends Component {
                                       "responsive-timeline__inner-date-new"
                                     }
                                   >
+                                    <span
+                                      className={`responsive-timeline__inner-date-new--${stack}`}
+                                    >
+                                      {stackedDate}
+                                    </span>
                                     {isCenter}
                                   </div>
                                 )}
@@ -302,7 +319,10 @@ export default class Edit extends Component {
                                   <RichText
                                     tagName={headingTag}
                                     value={post.time_heading}
-                                    placeholder={__("Write a Heading", "responsive-block-editor-addons")}
+                                    placeholder={__(
+                                      "Write a Heading",
+                                      "responsive-block-editor-addons"
+                                    )}
                                     className="responsive-timeline__heading"
                                     onChange={(value) => {
                                       var p = {
@@ -336,7 +356,10 @@ export default class Edit extends Component {
                                 <RichText
                                   tagName="p"
                                   value={post.time_desc}
-                                  placeholder={__("Write a Description", "responsive-block-editor-addons")}
+                                  placeholder={__(
+                                    "Write a Description",
+                                    "responsive-block-editor-addons"
+                                  )}
                                   className="responsive-timeline-desc-content"
                                   onChange={(value) => {
                                     var p = {
@@ -364,7 +387,7 @@ export default class Edit extends Component {
                           <div className="responsive-timeline__date-new">
                             {displayPostDate && t_date[index].title && (
                               <div className={"responsive-timeline__date-new"}>
-                                {dateI18n(dateFormat, t_date[index].title)}
+                                {post_date}
                               </div>
                             )}
                           </div>

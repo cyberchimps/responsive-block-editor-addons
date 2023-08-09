@@ -199,6 +199,7 @@ export default class Edit extends Component {
     let backimageopacity = backImageOpacity / 100;
 
     const classes = classnames(
+      this.props.className, 
       "wp-block-responsive-block-editor-addons-flipbox",
       "responsive-block-editor-addons-block-flipbox",
       `block-${block_id}`,

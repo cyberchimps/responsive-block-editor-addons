@@ -85,6 +85,7 @@ export default class Edit extends Component {
     var data_copy = [...featureGrid];
 
     const classes = classnames(
+      this.props.className, 
       "responsive-block-editor-addons-block-feature-grid",
       `block-${block_id}`,
       `grid-layout-${layout}`,

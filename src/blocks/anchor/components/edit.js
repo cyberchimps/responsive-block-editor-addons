@@ -66,6 +66,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
        // Show the block markup in the editor
        <div
          className={classnames(
+           this.props.className,
            "responsive-block-editor-addons-block-anchor",
            `block-${block_id}`
          )}

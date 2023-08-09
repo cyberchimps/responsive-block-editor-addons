@@ -74,6 +74,7 @@ export default class Edit extends Component {
       <Fragment>
         <div
           className={classnames(
+            this.props.className, 
             "responsive-block-editor-addons-block-expand",
             `block-${block_id}`
           )}

@@ -35,6 +35,7 @@
      return [
        <div
          className={classnames(
+          this.props.className,
            "responsive-block-editor-addons-block-inline-notice",
            `block-${block_id}`,
            `${ active }`

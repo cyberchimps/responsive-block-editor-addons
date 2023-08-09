@@ -30,6 +30,7 @@ export default class Save extends Component {
         <CustomTag
           id={anchor}
           className={classnames(
+            this.props.className, 
             "responsive-block-editor-addons-block-advanced-text",
             `block-${block_id}`,
             displayColumnSeparator && 'responsive-block-editor-addons-separator-present',

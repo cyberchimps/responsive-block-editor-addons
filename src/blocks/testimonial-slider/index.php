@@ -15,7 +15,7 @@ function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets
 	if ( has_block( 'responsive-block-editor-addons/testimonial-slider' ) ) {
 		wp_enqueue_script(
 			'test-slick-js',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/js/vendors/slick.min.js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/slick.min.js',
 			array( 'jquery' ),
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 			true

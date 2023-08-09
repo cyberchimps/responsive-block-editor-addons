@@ -4,6 +4,27 @@
  * CSS for both Frontend+Backend.
  */
 
+ /* Fix for when used inside Section block. */
+ @media screen and (min-width: 1024px) {
+   .responsive-block-editor-addons-block-section {
+     .responsive-testimonial-slick-carousel.slick-initialized {
+       width: 85%;
+       margin: 0 auto;
+     }
+   }
+
+   .page.page-template-gutenberg-fullwidth .alignfull.responsive-block-editor-addons-block-section-outer-wrap,
+   .page.sidebar-position-no:not(.woocommerce) .alignfull.responsive-block-editor-addons-block-section-outer-wrap,
+   .page.page-template-gutenberg-fullwidth .alignfull.responsive-block-editor-addons-block-section-outer-wrap .alignfull,
+   .page.page-template-gutenberg-fullwidth .alignfull.responsive-block-editor-addons-block-section-outer-wrap .alignwide {
+     .responsive-block-editor-addons-block-section {
+       .responsive-testimonial-slick-carousel.slick-initialized {
+         width: 100%;
+       }
+     }
+   }
+ }
+
 .responsive-block-editor-addons-testimonial__wrap {
   position: relative;
   box-sizing: border-box;
@@ -295,4 +316,9 @@
 
 .responsive-block-editor-addons-testomonial__outer-wrap .slick-track {
   max-width: initial !important;
+}
+
+.responsive-block-editor-addons-slick-carousel ul.slick-dots {
+  position: relative;
+  transform: unset;
 }

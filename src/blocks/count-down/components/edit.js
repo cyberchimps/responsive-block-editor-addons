@@ -52,7 +52,7 @@
 	  }
  
 	 render() {
-		 const { isSelected, attributes, setAttributes } = this.props;
+		 const { isSelected, attributes, setAttributes, className } = this.props;
  
 		 const {
 			 block_id,
@@ -78,6 +78,7 @@
 			<Fragment>
 			 <BoxContainer
 				 block_id={block_id}
+				 className={className}
 			 >
 				 {showDaysBox &&<Box
 					 boxName="days"

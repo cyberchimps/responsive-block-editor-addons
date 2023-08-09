@@ -33,6 +33,7 @@ export default class Save extends Component {
     return [
       <div
         className={classnames(
+          this.props.className, 
           "responsive-block-editor-addons-block-call-mail-button",
           `block-${block_id}`
         )}

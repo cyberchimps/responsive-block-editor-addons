@@ -3,7 +3,7 @@
  */
 import edit from "./components/edit";
 import metadata from "./block.json";
-import save from "./components/save";
+import Save from "./components/save";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -44,20 +44,9 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
     align: ["wide", "full"],
     html: false,
   },
-  example: {
-    attributes: {
-      gridSize: "lrg",
-      gutter: 5,
-      images: [
-        {
-          url:
-            "https://s.w.org/images/core/5.3/Biologia_Centrali-Americana_-_Cantorchilus_semibadius_1902.jpg",
-        },
-        { url: "https://s.w.org/images/core/5.3/Glacial_lakes,_Bhutan.jpg" },
-        { url: "https://s.w.org/images/core/5.3/MtBlanc1.jpg" },
-      ],
-    },
-  },
   edit,
-  save,
+  // save,
+  save: (props) => {
+    return <Save {...props} />;
+  },
 });

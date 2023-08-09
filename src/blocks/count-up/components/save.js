@@ -43,6 +43,7 @@ export default class Save extends Component {
       <div className={classes}>
         <div
           className={classnames(
+            this.props.className, 
             "responsive-block-editor-addons-block-count-up",
             `block-${block_id}`,
             "responsive-count__inner"

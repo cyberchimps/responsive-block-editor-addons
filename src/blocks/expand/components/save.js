@@ -35,6 +35,7 @@ export default class Save extends Component {
       <Fragment>
         <div
           className={classnames(
+            this.props.className, 
             "responsive-block-editor-addons-block-expand",
             `block-${block_id}`
           )}

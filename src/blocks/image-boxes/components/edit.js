@@ -111,6 +111,7 @@ export default class Edit extends Component {
       ]);
     });
     const classes = classnames(
+      this.props.className, 
       "wp-block-responsive-block-editor-addons-image-boxes-block",
       {
         [`has-text-align-${contentAlign}`]: contentAlign,

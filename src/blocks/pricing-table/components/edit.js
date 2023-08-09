@@ -135,6 +135,7 @@ export default class Edit extends Component {
       ]);
     });
     const classes = classnames(
+      this.props.className, 
       "responsive-block-editor-addons-block-pricing-table",
       `block-${block_id}`,
       "wp-block-responsive-block-editor-addons-pricing-table",

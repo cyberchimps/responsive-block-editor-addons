@@ -106,6 +106,7 @@ export default class Save extends Component {
     }
 
     const classes = classnames(
+      this.props.className, 
       "responsive-block-editor-addons-block-flipbox",
       `block-${block_id}`,
       {

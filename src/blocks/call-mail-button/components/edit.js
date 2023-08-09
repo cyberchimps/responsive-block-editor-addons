@@ -98,6 +98,7 @@ export default class Edit extends Component {
       // Show the block markup in the editor
       <div
         className={classnames(
+          this.props.className, 
           "responsive-block-editor-addons-block-call-mail-button",
           `block-${block_id}`
         )}

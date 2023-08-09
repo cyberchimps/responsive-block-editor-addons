@@ -71,6 +71,7 @@ export default class Edit extends Component {
         {textFontFamily && loadGoogleFont(textFontFamily)}
         <CustomTag
           className={classnames(
+            this.props.className, 
             "responsive-block-editor-addons-block-advanced-text",
             `block-${block_id}`,
             displayColumnSeparator && 'responsive-block-editor-addons-separator-present',

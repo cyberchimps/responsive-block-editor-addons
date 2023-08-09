@@ -65,7 +65,7 @@ class Responsive_Block_Editor_Addons_Test extends WP_UnitTestCase {
 	 */
 	public function test_get_plugin_version() {
 		$value = self::$rbea->get_plugin_version();
-		$this->assertEquals( '1.6.0', $value );
+		$this->assertEquals( '1.6.2', $value );
 	}
 
 	/**

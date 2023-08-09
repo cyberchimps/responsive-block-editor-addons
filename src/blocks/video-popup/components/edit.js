@@ -138,6 +138,7 @@ export default class Edit extends Component {
 
         <div
           className={classnames(
+            className,
             "responsive-block-editor-addons-block-video-popup",
             `block-${block_id}`,
             "responsive-block-editor-addons-video-popup",

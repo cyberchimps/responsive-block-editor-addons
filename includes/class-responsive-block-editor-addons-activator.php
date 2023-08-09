@@ -34,5 +34,8 @@ class Responsive_Block_Editor_Addons_Activator {
 		if ( ! $rbea_review_option_exists ) {
 			add_option( 'responsive_block_editor_addons_review_pending', '0', '', true );
 		}
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
+		$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+		$rbea_blocks->insert_blocks_data();
 	}
 }

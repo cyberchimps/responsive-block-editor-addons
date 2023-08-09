@@ -213,7 +213,7 @@ class TypographyControl extends Component {
                         onChange={this.props.onChangeLineHeight}
                         min={0}
                         max={100}
-                        step={1}
+                        step={0.0001}
                         allowReset
                     />
                     {this.props.showLetterSpacing == true && (

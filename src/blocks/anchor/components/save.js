@@ -25,6 +25,7 @@
        <div
          id={anchor}
          className={classnames(
+           this.props.className,
            "responsive-block-editor-addons-block-anchor",
            `block-${block_id}`
          )}

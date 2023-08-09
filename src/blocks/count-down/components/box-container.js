@@ -1,7 +1,8 @@
 import classnames from "classnames";
 
-const BoxContainer = ({ wrapperStyle,  children, block_id }) => (
+const BoxContainer = ({ wrapperStyle,  children, block_id, className }) => (
 	<div className={classnames(
+		className,
 		"responsive-block-editor-addons-countdown-wrapper",
 		"responsive-block-editor-addons-block-count-down",
 		`block-${block_id}`,

@@ -164,11 +164,12 @@ const save = ({ attributes, className }) => {
     <Fragment>
       <div
         className={
-          (classes,
           classnames(
+            className,
+            classes,
             "responsive-block-editor-addons-block-image-slider",
             `block-${block_id}`
-          ))
+          )
         }
       >
         <div className={innerClasses}>

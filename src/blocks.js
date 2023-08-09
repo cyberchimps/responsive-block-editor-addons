@@ -51,8 +51,5 @@ import "./blocks/instagram/index.js";
 import "./blocks/advanced-text/index.js";
 import "./blocks/image-hotspot/index.js";
 
-//do not move
-import "./blocks/rbea-templates/index.js";
-
 // Extensions
 import "./extensions/cover-styles";

@@ -163,6 +163,7 @@ export default class Edit extends Component {
 
       <div
         className={classnames(
+          this.props.className, 
           "responsive-block-editior-addons-pricing-list-outer-wrap",
           "responsive-block-editor-addons-block-pricing-list",
           `block-${block_id}`,

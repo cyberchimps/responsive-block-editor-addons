@@ -54,6 +54,7 @@ export default class Save extends Component {
     return [
       <div
         className={classnames(
+          this.props.className,
           "responsive-block-editor-addons-block-card",
           `block-${block_id}`,
           `responsive-columns__stack-${stack}`

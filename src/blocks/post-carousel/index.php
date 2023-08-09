@@ -15,7 +15,7 @@ function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attr
 	if ( has_block( 'responsive-block-editor-addons/post-carousel' ) ) {
 		wp_enqueue_script(
 			'responsive_block_editor_addons-slick-js',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . '/dist/js/vendors/slick.min.js',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/slick.min.js',
 			array( 'jquery' ),
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 			true

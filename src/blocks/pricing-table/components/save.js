@@ -51,7 +51,9 @@ export default class Save extends Component {
       buttonBoxShadowPositionCSS = "";
     }
 
-    const classes = classnames({
+    const classes = classnames(
+      this.props.className, 
+      {
       [`has-text-align-${contentAlign}`]: contentAlign,
     });
 
