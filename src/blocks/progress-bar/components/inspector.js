@@ -15,7 +15,7 @@ import InspectorTab from "../../../components/InspectorTab"
 import InspectorTabs from "../../../components/InspectorTabs"
 
 // Import block components
-const { InspectorControls, PanelColorSettings } = wp.editor;
+const { InspectorControls, PanelColorSettings } = wp.blockEditor;
 
 // Import Inspector components
 const {

@@ -9,7 +9,7 @@ import classnames from "classnames";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText, InnerBlocks } = wp.editor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 const { Dashicon } = wp.components;
 
 export default class Save extends Component {

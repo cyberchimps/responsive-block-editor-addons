@@ -32,7 +32,6 @@ const {
   Button,
   Dashicon,
   ToggleControl,
-  IconButton,
 } = wp.components;
 
 class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {

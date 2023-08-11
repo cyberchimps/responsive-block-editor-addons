@@ -437,6 +437,7 @@ class GalleryCarouselEdit extends Component {
           </div>
         )}
         {carouselGalleryPlaceholder}
+        {primaryCaption[0] === undefined ? 'undefined' : console.log(primaryCaption[0] + ' -> ' + typeof primaryCaption[0])}
         {(!RichText.isEmpty(primaryCaption) || isSelected) && (
           <RichText
             tagName="figcaption"
@@ -444,12 +445,12 @@ class GalleryCarouselEdit extends Component {
               "Write gallery caption…",
               "responsive-block-editor-addons"
             )}
-            value={primaryCaption}
+            value={primaryCaption[0] === undefined ? '' : primaryCaption[0]}
             className="responsive-block-editor-addons-gallery--caption responsive-block-editor-addons-gallery--primary-caption"
             unstableOnFocus={this.onFocusCaption}
             onChange={(value) => setAttributes({ primaryCaption: value })}
             isSelected={this.state.captionFocused}
-            keepPlaceholderOnFocus
+            keepplaceholderonfocus={true}
             inlineToolbar
           />
         )}

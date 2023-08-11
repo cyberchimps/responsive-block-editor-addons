@@ -8,7 +8,7 @@
 const { BaseControl, Dashicon } = wp.components;
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { MediaUpload } = wp.editor;
+const { MediaUpload } = wp.blockEditor;
 
 const ImageControl = (props) => {
   const type =

@@ -10,7 +10,7 @@ import { hexToRgba } from "../../../utils/index.js";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { InnerBlocks, RichText } = wp.editor;
+const { InnerBlocks, RichText } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {

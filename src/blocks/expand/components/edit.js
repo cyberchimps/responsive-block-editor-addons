@@ -11,7 +11,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, BlockControls, AlignmentToolbar } = wp.editor;
+const { RichText, BlockControls, AlignmentToolbar } = wp.blockEditor;
 
 export default class Edit extends Component {
   constructor() {

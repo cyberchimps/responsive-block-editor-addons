@@ -19,7 +19,7 @@ const {
   BlockControls,
   MediaUpload,
   ColorPalette,
-} = wp.editor;
+} = wp.blockEditor;
 
 const {
   PanelBody,

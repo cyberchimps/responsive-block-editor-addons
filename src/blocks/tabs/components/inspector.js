@@ -18,13 +18,10 @@ const { Component, Fragment } = wp.element;
 
 // Import block components
 const {
-  ColorPalette,
-} = wp.editor;
-
-const {
   InspectorControls,
   BlockAlignmentToolbar,
-  InspectorAdvancedControls
+  InspectorAdvancedControls,
+  ColorPalette
 } = wp.blockEditor;
 
 // Import Inspector components

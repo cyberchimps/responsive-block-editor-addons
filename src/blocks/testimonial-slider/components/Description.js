@@ -12,6 +12,9 @@ class Description extends React.Component {
     let description = "";
     if (test_arr && typeof test_arr !== "undefined") {
       description = test_arr["description"];
+      if (Array.isArray(description)) {
+        description = description[0];
+      }
     }
 
     var data_copy = [...attributes.test_block];

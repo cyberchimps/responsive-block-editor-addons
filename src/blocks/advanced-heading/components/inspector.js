@@ -14,11 +14,10 @@ import InspectorTabs from "../../../components/InspectorTabs";
 
 // Import block components
 const {
-  InspectorControls,
   PanelColorSettings,
-  ColorPalette,
-  AlignmentToolbar,
 } = wp.editor;
+
+const { InspectorControls, AlignmentToolbar, ColorPalette } = wp.blockEditor
 
 // Import Inspector components
 const {

@@ -21,7 +21,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
 // Import block components
-const { InspectorControls, PanelColorSettings, AlignmentToolbar } = wp.editor;
+const { InspectorControls, PanelColorSettings, AlignmentToolbar } = wp.blockEditor;
 
 // Import Inspector components
 const { PanelBody, RangeControl, SelectControl, ToggleControl } = wp.components;

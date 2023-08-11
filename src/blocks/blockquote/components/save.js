@@ -8,7 +8,7 @@ import renderSVG from "../renderQuoteIcon";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 const { Dashicon } = wp.components;
 
 export default class Save extends Component {
