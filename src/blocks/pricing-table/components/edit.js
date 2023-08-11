@@ -282,7 +282,6 @@ export default class Edit extends Component {
                     ></MediaUpload>
                   </div>
                 )}
-                {console.log(pricingTable[index]["title"] + ' -> ' + typeof pricingTable[index]["title"])}
                 {showTitle && (
                   <RichText
                     tagName="span"
@@ -310,7 +309,6 @@ export default class Edit extends Component {
                   />
                 )}
                 <div className="wp-block-responsive-block-editor-addons-pricing-table-item__price-wrapper">
-                {console.log(pricingTable[index]["currency"] + ' -> ' + typeof pricingTable[index]["currency"])}
                   {showPrefix && (
                     <RichText
                       tagName="p"
@@ -337,7 +335,6 @@ export default class Edit extends Component {
                       keepPlaceholderOnFocus
                     />
                   )}
-                  {console.log(pricingTable[index]["amount"] + ' -> ' + typeof pricingTable[index]["amount"])}
                   {showPrice && (
                     <RichText
                       tagName="p"
@@ -364,7 +361,6 @@ export default class Edit extends Component {
                       keepPlaceholderOnFocus
                     />
                   )}
-                  {console.log(pricingTable[index]["price_suffix"] + ' -> ' + typeof pricingTable[index]["price_suffix"])}
                   {showSuffix && (
                     <RichText
                       tagName="p"
@@ -392,7 +388,6 @@ export default class Edit extends Component {
                     />
                   )}
                 </div>
-                {console.log(pricingTable[index]["sub_price"] + ' -> ' + typeof pricingTable[index]["sub_price"])}
                 {showSubprice && (
                   <RichText
                     tagName="p"
@@ -422,7 +417,6 @@ export default class Edit extends Component {
                     keepPlaceholderOnFocus
                   />
                 )}
-                {console.log(pricingTable[index]["features"] + ' -> ' + typeof pricingTable[index]["features"])}
                 {showFeatures && (
                   <RichText
                     tagName="ul"
@@ -451,7 +445,6 @@ export default class Edit extends Component {
                     keepPlaceholderOnFocus
                   />
                 )}
-                {console.log(pricingTable[index]["button"] + ' -> ' + typeof pricingTable[index]["button"])}
                 {showButton && (
                   <Fragment>
                     <RichText
