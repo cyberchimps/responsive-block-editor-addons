@@ -437,7 +437,6 @@ class GalleryCarouselEdit extends Component {
           </div>
         )}
         {carouselGalleryPlaceholder}
-        {primaryCaption[0] === undefined ? 'undefined' : console.log(primaryCaption[0] + ' -> ' + typeof primaryCaption[0])}
         {(!RichText.isEmpty(primaryCaption) || isSelected) && (
           <RichText
             tagName="figcaption"
