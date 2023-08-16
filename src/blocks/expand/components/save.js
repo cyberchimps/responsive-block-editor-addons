@@ -9,7 +9,7 @@ import classnames from "classnames";
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {

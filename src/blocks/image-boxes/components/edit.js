@@ -20,7 +20,7 @@ const {
   InnerBlocks,
   MediaUpload,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -240,6 +240,7 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ imageboxesBlock: data_copy });
                       }}
+                      __nextHasNoMarginBottom={true}
                     />
                     <Button
                       label={__("Apply", "responsive-block-editor-addons")}

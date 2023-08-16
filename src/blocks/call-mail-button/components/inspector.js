@@ -17,7 +17,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 
 // Import block components
-const { InspectorControls, ColorPalette, AlignmentToolbar } = wp.editor;
+const { InspectorControls, ColorPalette, AlignmentToolbar } = wp.blockEditor;
 
 // Import Inspector components
 const {

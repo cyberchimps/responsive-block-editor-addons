@@ -18,7 +18,7 @@ const { __ } = wp.i18n;
 import { applyFilters, addFilter } from "@wordpress/hooks";
 const { Component, Fragment } = wp.element;
 const { PanelBody, SelectControl, TextControl } = wp.components;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 const DivBackground = (props) => {
   const {

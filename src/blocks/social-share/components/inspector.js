@@ -23,7 +23,7 @@ const {
   AlignmentToolbar,
   BlockAlignmentToolbar,
   InspectorAdvancedControls,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

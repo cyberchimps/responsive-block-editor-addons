@@ -23,7 +23,7 @@ const {
   InnerBlocks,
   InspectorControls,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const {
   Button,
   Icon,
@@ -179,6 +179,7 @@ export default class Edit extends Component {
                 className="button-url"
                 value={link}
                 onChange={(value) => setAttributes({ link: value })}
+                __nextHasNoMarginBottom={true}
               />
               <Button
                 label={__("Apply", "responsive-block-editor-addons")}

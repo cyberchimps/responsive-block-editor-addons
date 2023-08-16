@@ -18,7 +18,7 @@ const {
   InnerBlocks,
   MediaUpload,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";

@@ -259,7 +259,7 @@ export default class Edit extends Component {
                           />
                           <br />
                           <Button
-                            isDefault
+                            variant="secondary"
                             isPrimary
                             className="rbea-share-button-save"
                             onClick={(e) => this.setState({ activeIcon: -1 })}
@@ -267,7 +267,7 @@ export default class Edit extends Component {
                             {__("Save", "responsive-block-editor-addons")}
                           </Button>
                           <Button
-                            isDefault
+                            variant="secondary"
                             className="rbea-share-button-remove"
                             onClick={(e) => this.removeIconHandler()}
                           >

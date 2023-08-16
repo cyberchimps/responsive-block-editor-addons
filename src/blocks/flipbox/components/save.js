@@ -11,7 +11,7 @@ import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 const { Dashicon } = wp.components;
 import Style from "style-it";
 import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";

@@ -28,7 +28,7 @@ const {
   PanelColorSettings,
   ColorPalette,
   MediaUpload,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

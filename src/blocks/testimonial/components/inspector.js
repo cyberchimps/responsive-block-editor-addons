@@ -26,7 +26,7 @@ const {
   PanelColorSettings,
   MediaUpload,
   ColorPalette,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {
@@ -453,7 +453,7 @@ export default class Inspector extends Component {
                   allowedTypes={["image"]}
                   value={backgroundImage}
                   render={({ open }) => (
-                    <Button isDefault onClick={open}>
+                    <Button variant="secondary" onClick={open}>
                       {!backgroundImage
                         ? __(
                             "Select Background Image",

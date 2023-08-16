@@ -39,7 +39,6 @@ const {
   Button,
   Dashicon,
   ToggleControl,
-  IconButton,
 } = wp.components;
 
 const ALLOWED_BLOCKS = ["responsive-block-editor-addons/accordion-item"];
@@ -345,7 +344,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           {"grid" === layout && (
             <Fragment>
               <h2> {__("Alignment", "responsive-block-editor-addons")}</h2>
-              <IconButton
+              <Button
                 key={"left"}
                 icon="editor-alignleft"
                 label="Left"
@@ -353,7 +352,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                 aria-pressed={"left" === align}
                 isPrimary={"left" === align}
               />
-              <IconButton
+              <Button
                 key={"center"}
                 icon="editor-aligncenter"
                 label="Right"
@@ -361,7 +360,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                 aria-pressed={"center" === align}
                 isPrimary={"center" === align}
               />
-              <IconButton
+              <Button
                 key={"right"}
                 icon="editor-alignright"
                 label="Right"
@@ -655,7 +654,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
           />
           <h2> {__("Icon Alignment", "responsive-block-editor-addons")}</h2>
-          <IconButton
+          <Button
             key={"row"}
             icon="editor-alignleft"
             label="Left"
@@ -663,7 +662,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             aria-pressed={"row" === iconAlign}
             isPrimary={"row" === iconAlign}
           />
-          <IconButton
+          <Button
             key={"row-reverse"}
             icon="editor-alignright"
             label="Right"

@@ -21,7 +21,7 @@ const {
   AlignmentToolbar,
   BlockControls,
   InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

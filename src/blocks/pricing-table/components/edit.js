@@ -21,7 +21,7 @@ const {
   URLInput,
   MediaUploadCheck,
   figure,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -420,7 +420,6 @@ export default class Edit extends Component {
                 {showFeatures && (
                   <RichText
                     tagName="ul"
-                    multiline="li"
                     className="wp-block-responsive-block-editor-addons-pricing-table-item__features"
                     value={pricingTable[index]["features"]}
                     placeholder={__(
@@ -499,6 +498,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingTable: data_copy });
                         }}
+                        __nextHasNoMarginBottom={true}
                       />
                       <Button
                         label={__("Apply", "responsive-block-editor-addons")}
