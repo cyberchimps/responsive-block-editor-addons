@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
 const { InspectorControls, ColorPalette, MediaUpload } =
-  wp.blockEditor || wp.editor;
+  wp.blockEditor;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 

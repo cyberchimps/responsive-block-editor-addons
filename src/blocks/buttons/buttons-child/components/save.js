@@ -11,7 +11,7 @@ import renderSVG from "../../../../renderIcon";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 

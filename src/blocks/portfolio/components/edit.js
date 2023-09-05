@@ -16,7 +16,7 @@ const { __ } = wp.i18n;
 const { decodeEntities } = wp.htmlEntities;
 
 const { withSelect } = wp.data;
-const { AlignmentToolbar } = wp.editor;
+const { AlignmentToolbar } = wp.blockEditor;
 
 const {
   Placeholder,
