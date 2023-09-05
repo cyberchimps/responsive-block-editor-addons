@@ -11,7 +11,7 @@ import SchemaNotices from "./schema-notice";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls, InnerBlocks } = wp.editor;
+const { RichText, AlignmentToolbar, BlockControls, InnerBlocks } = wp.blockEditor;
 const { compose } = wp.compose;
 const { select, withSelect } = wp.data;
 
