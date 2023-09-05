@@ -7,7 +7,7 @@ import classnames from "classnames";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText, InnerBlocks } = wp.editor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 
 export default class Save extends Component {
     constructor() {

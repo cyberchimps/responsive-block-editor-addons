@@ -12,7 +12,7 @@ const { compose } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { ToolbarGroup, ToolbarButton } = wp.components;
 const { BlockControls, MediaPlaceholder, MediaUpload, MediaUploadCheck } =
-  wp.blockEditor || wp.editor;
+  wp.blockEditor;
 const { withSelect, withDispatch } = wp.data;
 
 const ALLOWED_MEDIA = ["image"];

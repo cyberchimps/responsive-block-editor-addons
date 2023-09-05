@@ -12,7 +12,7 @@ import classnames from "classnames";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 const deprecated = [
   {
