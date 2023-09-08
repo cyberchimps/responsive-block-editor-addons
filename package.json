@@ -1,10 +1,10 @@
 {
   "name": "responsive-block-editor-addons",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "",
   "author": "CyberChimps",
   "license": "GPL-2.0-or-later",
-  "tested_up_to": "6.2.2",
+  "tested_up_to": "6.3",
   "keywords": [
     "blocks",
     "gutenberg",
