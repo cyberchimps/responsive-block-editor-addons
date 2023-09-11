@@ -11,8 +11,8 @@ import renderSVG from "../../../renderIcon";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
-const {Toolbar} = wp.components;
+const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
+const {ToolbarGroup} = wp.components;
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -90,7 +90,7 @@ export default class Edit extends Component {
 
     return [
       <BlockControls key="controls">
-        <Toolbar controls={toolbarControls} />
+        <ToolbarGroup controls={toolbarControls} />
       </BlockControls>,
       // Show the block controls on focus
       <Inspector {...{ setAttributes, ...this.props }} />,

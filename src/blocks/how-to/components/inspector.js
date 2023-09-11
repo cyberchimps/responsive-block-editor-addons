@@ -21,7 +21,7 @@ const {
     ColorPalette,
     AlignmentToolbar,
     MediaUpload
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

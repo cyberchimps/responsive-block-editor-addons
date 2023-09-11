@@ -8,6 +8,7 @@ import DayAlignClass from "./day-align-classes";
 import ContentTmClasses from "./classes";
 import React from "react";
 import EditorStyles from "./editor-styles";
+import moment from "moment";
 
 /**
  * WordPress dependencies
@@ -15,7 +16,7 @@ import EditorStyles from "./editor-styles";
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { Dashicon } = wp.components;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 import renderSVG from "../../../renderIcon";
 const { dateI18n, __experimentalGetSettings } = wp.date;
 import * as JQuery from "jquery";
@@ -35,7 +36,7 @@ export default class Edit extends Component {
     window.addEventListener("load", this.timelineContent_back(id));
     window.addEventListener("resize", this.timelineContent_back(id));
     var time = this;
-    $(".edit-post-layout__content").scroll(function (event) {
+    $(".edit-post-layout__content").on( 'scroll', function (event) {
       time.timelineContent_back(id);
     });
 
@@ -61,7 +62,7 @@ export default class Edit extends Component {
     window.addEventListener("load", this.timelineContent_back(id));
     window.addEventListener("resize", this.timelineContent_back(id));
     var time = this;
-    $(".edit-post-layout__content").scroll(function (event) {
+    $(".edit-post-layout__content").on( 'scroll', function (event) {
       time.timelineContent_back(id);
     });
   }
@@ -247,7 +248,7 @@ export default class Edit extends Component {
             <div className="responsive-timeline__main">
               <div className="responsive-timeline__days">
                 {timelineItems.map((post, index) => {
-                  isCenter = dateI18n(dateFormat, t_date[index].title);
+                  isCenter = dateI18n(dateFormat, moment( t_date[index].title, 'MM/DD/YYYY' ).format("YYYY-MM-DD"));
                   if (timelinAlignment == "center") {
                     display_inner_date = true;
                     content_align_class = AlignClass(
@@ -266,7 +267,7 @@ export default class Edit extends Component {
 
                   var post_date = t_date[index].title;
                   if ("custom" != dateFormat) {
-                    post_date = dateI18n(dateFormat, t_date[index].title);
+                    post_date = dateI18n(dateFormat, moment( t_date[index].title, 'MM/DD/YYYY' ).format("YYYY-MM-DD"));
                     if (post_date === "Invalid date") {
                       post_date = t_date[index].title;
                     }

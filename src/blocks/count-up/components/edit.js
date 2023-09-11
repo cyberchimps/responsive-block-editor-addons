@@ -14,7 +14,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
-const { RichText, InnerBlocks, BlockControls, AlignmentToolbar } = wp.editor;
+const { RichText, InnerBlocks, BlockControls, AlignmentToolbar } = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 import memoize from "memize";
 import map from "lodash/map";

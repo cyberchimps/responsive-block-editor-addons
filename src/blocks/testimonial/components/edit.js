@@ -24,7 +24,7 @@ const {
   MediaUploadCheck,
   figure,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon } = wp.components;
 
 const ALLOWED_MEDIA_TYPES = ["image"];

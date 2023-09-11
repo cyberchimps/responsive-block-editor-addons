@@ -64,7 +64,7 @@ class LatestPostsBlock extends Component {
     window.addEventListener("load", this.postTimelineContent_back(this.props.clientId));
     window.addEventListener("resize", this.postTimelineContent_back(this.props.clientId));
     var post_time = this;
-    $(".edit-post-layout__content").scroll(function (event) {
+    $(".edit-post-layout__content").on( 'scroll', function (event) {
       post_time.postTimelineContent_back(this.props.clientId);
     });
   }
@@ -77,7 +77,7 @@ class LatestPostsBlock extends Component {
     window.addEventListener("load", this.postTimelineContent_back(this.props.clientId));
     window.addEventListener("resize", this.postTimelineContent_back(this.props.clientId));
     var post_time = this;
-    $(".edit-post-layout__content").scroll(function (event) {
+    $(".edit-post-layout__content").on( 'scroll', function (event) {
       post_time.postTimelineContent_back(this.props.clientId);
     });
 

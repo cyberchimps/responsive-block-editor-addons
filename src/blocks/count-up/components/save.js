@@ -11,7 +11,7 @@ import React from "react";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { InnerBlocks, RichText } = wp.editor;
+const { InnerBlocks, RichText } = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);

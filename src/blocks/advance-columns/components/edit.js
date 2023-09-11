@@ -11,7 +11,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InnerBlocks, AlignmentToolbar, BlockControls } = wp.editor;
+const {BlockControls, InnerBlocks, AlignmentToolbar } = wp.blockEditor;
 const ALLOWED_BLOCKS = ["responsive-block-editor-addons/column"];
 
 const getColumnsTemplate = memoize((columns) => {

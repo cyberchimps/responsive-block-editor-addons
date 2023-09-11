@@ -1,6 +1,6 @@
 import classnames from "classnames";
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.blockEditor || wp.editor;
+const { RichText } = wp.blockEditor;
 import { range } from "lodash";
 
 export default class Save extends Component {

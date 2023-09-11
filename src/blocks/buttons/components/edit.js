@@ -18,7 +18,7 @@ const {
   BlockControls,
   InnerBlocks,
   InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 const {
   Button,
   Dashicon,

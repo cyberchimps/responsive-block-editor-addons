@@ -19,10 +19,7 @@ import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { MediaUpload } = wp.blockEditor;
-
-// Import block components
-const { InspectorControls, PanelColorSettings, ColorPalette } = wp.editor;
+const { MediaUpload, InspectorControls, PanelColorSettings, ColorPalette } = wp.blockEditor;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 

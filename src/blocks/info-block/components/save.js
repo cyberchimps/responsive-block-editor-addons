@@ -16,7 +16,7 @@ import generateCSSUnit from "../../../generateCSSUnit";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 const { Dashicon } = wp.components;
 
 export default class Save extends Component {

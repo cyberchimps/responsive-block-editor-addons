@@ -23,7 +23,7 @@ const {
 	BlockControls,
 	InnerBlocks,
 	ColorPalette,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

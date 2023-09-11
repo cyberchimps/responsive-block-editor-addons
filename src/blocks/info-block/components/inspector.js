@@ -34,7 +34,7 @@ const {
   BlockControls,
   MediaUpload,
   ColorPalette,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

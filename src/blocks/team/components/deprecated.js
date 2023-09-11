@@ -7,7 +7,7 @@ import attributes from "../attributes";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText, InnerBlocks } = wp.editor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 const { Dashicon } = wp.components;
 
 const deprecated = [

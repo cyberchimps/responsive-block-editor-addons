@@ -13,7 +13,7 @@ import EditorStyles from "./editor-styles";
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { Dashicon, Icon, Button } = wp.components;
-const { RichText, URLInput, BlockControls, AlignmentToolbar } = wp.editor;
+const { RichText, URLInput, BlockControls, AlignmentToolbar } = wp.blockEditor;
 import { loadGoogleFont } from "../../../utils/font";
 export default class Edit extends Component {
   constructor() {
@@ -287,6 +287,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ cardsArray: data_copy });
                     }}
+                    __nextHasNoMarginBottom={true}
                   />
                   <Button
                     label={__("Apply", "responsive-block-editor-addons")}

@@ -227,7 +227,7 @@ const StarterTemplates = () => {
                 <div className="col-md-8 offset-md-2 col-12">
                     <div className="rbea-rst-content">
                         <div className="rbea-text-content text-center">
-                            <img className="rbea-responsive-logo rounded mx-auto d-block" src={rbealocalize.responsiveurl + 'admin/images/responsive-thumbnail.jpg'} alt="" />
+                            <img className="rbea-responsive-logo rounded mx-auto d-block" src={rbealocalize.responsiveurl + 'admin/images/responsive-starter-templates-thumbnail.png'} alt="" />
                             <div className="rbea-brand-text mt-4">
                                 <p className="rbea-rst-brand-name">{ __( 'Responsive Starter Templates', 'responsive-block-editor-addons' ) }</p>
                                 <p className="rbea-rst-brand-desc">{ __( 'Browse 150+ fully-functional ready site templates by installing the free Responsive Starter Templates plugin. Click the button below to get started.', 'responsive-block-editor-addons' )}</p>
@@ -416,7 +416,7 @@ const Header = () => {
     return (
         <div className="rbea-header">
             <div className="rbea-brand">
-                <img className="rbea-logo" src={rbealocalize.responsiveurl + 'admin/images/responsive-thumbnail.jpg'} alt="responsive-thumbnail" />
+                <img className="rbea-logo" src={rbealocalize.responsiveurl + 'admin/images/responsive-block-editor-addons-thumbnail.png'} alt="responsive-thumbnail" />
                 <h1 className="rbea-brand-name">{__("Responsive Blocks", "responsive-block-editor-addons")}</h1>
                 <div className="rbea-version">{rbealocalize.rbea_version}</div>
             </div>

@@ -14,14 +14,13 @@ import TypographyHelperControl from "../../../settings-components/TypographySett
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar } = wp.editor;
 
 import compact from "lodash/compact";
 import map from "lodash/map";
 import { loadGoogleFont } from "../../../utils/font";
 
 // Import block components
-const { BlockAlignmentToolbar, BlockVerticalAlignmentToolbar, InspectorControls, ColorPalette } = wp.blockEditor;
+const { BlockAlignmentToolbar, BlockVerticalAlignmentToolbar, InspectorControls, ColorPalette, AlignmentToolbar } = wp.blockEditor;
 
 
 // Import Inspector components

@@ -11,7 +11,7 @@ import renderSVG from "../../../renderIcon";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
+const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 export default class Edit extends Component {
   constructor() {
@@ -102,7 +102,6 @@ export default class Edit extends Component {
           <RichText
             tagName="div"
             placeholder={__("Add notice content...", "responsive-block-editor-addons")}
-            multiline="p"
             value={noticeContent}
             className="responsive-block-editor-addons-block-inline-notice-content"
             onChange={(value) => setAttributes({ noticeContent: value })}
