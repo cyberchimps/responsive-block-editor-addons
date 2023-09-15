@@ -64,7 +64,6 @@ export default class Edit extends Component {
       insertBlocksAfter,
       onReplace,
     } = this.props;
-    this.props.setAttributes({ block_id: this.props.clientId });
     return [
       <BlockControls key="controls">
         <AlignmentToolbar
@@ -73,7 +72,7 @@ export default class Edit extends Component {
         />
       </BlockControls>,
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <div
@@ -82,7 +81,8 @@ export default class Edit extends Component {
           "responsive-block-editor-addons-block-advanced-heading",
           `block-${block_id}`
         )}
-      >
+        key={`mainDiv-${block_id}`}
+        >
         {headingTitleFontFamily && loadGoogleFont(headingTitleFontFamily)}
         {showHeading && (
           <RichText
@@ -95,17 +95,6 @@ export default class Edit extends Component {
               setAttributes({ headingTitle: value });
             }}
             onMerge={mergeBlocks}
-            unstableOnSplit={
-              insertBlocksAfter
-                ? (before, after, ...blocks) => {
-                    setAttributes({ content: before });
-                    insertBlocksAfter([
-                      ...blocks,
-                      createBlock("core/paragraph", { content: after }),
-                    ]);
-                  }
-                : undefined
-            }
             onRemove={() => onReplace([])}
           />
         )}
@@ -123,7 +112,6 @@ export default class Edit extends Component {
             className="responsive-heading-desc-text"
             onChange={(value) => setAttributes({ headingDesc: value })}
             onMerge={mergeBlocks}
-            unstableOnSplit={this.splitBlock}
             onRemove={() => onReplace([])}
           />
         )}
