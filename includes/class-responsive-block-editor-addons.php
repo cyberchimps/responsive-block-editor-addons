@@ -710,7 +710,8 @@ class Responsive_Block_Editor_Addons {
 				$blocks = parse_blocks( $post->post_content );
 
 				foreach ( $blocks as $block ) {
-					if ( strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false ) {
+					$blockName = $block['blockName'];
+					if ( isset($blockName) && strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false ) {
 						$flag = true;
 						break;
 					}
