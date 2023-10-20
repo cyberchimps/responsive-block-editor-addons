@@ -33,7 +33,7 @@ With more than 50+ creative blocks, you can design beautiful pages without writi
 
 ==Professional Designer-made Gutenberg Websites==
 
-Import professionally designed websites in minutes built with Responsive Blocks, and the Responsive theme. With no compromises on performance, and zero limits on what you can design, cut down your website designing time by 90%.
+Import professionally designed websites in minutes built with Responsive Blocks, and the [free Responsive theme](https://cyberchimps.com/responsive-theme/). With no compromises on performance, and zero limits on what you can design, cut down your website designing time by 90%.
 
 Responsive Theme offers a wide library of fully-functional professionally built Responsive Starter Templates that you can import and launch your website in just a few clicks!
 
