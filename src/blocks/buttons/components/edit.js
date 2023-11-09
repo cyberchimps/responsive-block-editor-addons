@@ -34,11 +34,15 @@ export default class Edit extends Component {
   constructor() {
     super(...arguments);
   }
+  componentDidMount() {
+    // Assigning block_id in the attribute.
+    this.props.setAttributes({ block_id: this.props.clientId });
+  }
 
   render() {
     // Setup the attributes
     const {
-      attributes: { buttons, stack, btn_count },
+      attributes: { buttons, stack, btn_count, block_id, },
       setAttributes,
     } = this.props;
 
@@ -51,10 +55,10 @@ export default class Edit extends Component {
 
     return [
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
-      <Buttons {...this.props}>
+      <Buttons key={`${block_id}`} {...this.props}>
         <div id="draggable-panel">
           <Draggable elementId="draggable-panel" transferData={{}}>
             {({ onDraggableStart, onDraggableEnd }) => (
