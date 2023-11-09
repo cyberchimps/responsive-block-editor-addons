@@ -63,7 +63,6 @@ export default class Edit extends Component {
       insertBlocksAfter,
       onReplace,
     } = this.props;
-    this.props.setAttributes({ block_id: this.props.clientId });
     let callHref = `tel:${phone}`;
     let mailHref = `mailto: ${mail}`;
 
@@ -93,7 +92,7 @@ export default class Edit extends Component {
         <ToolbarGroup controls={toolbarControls} />
       </BlockControls>,
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <div
@@ -102,6 +101,7 @@ export default class Edit extends Component {
           "responsive-block-editor-addons-block-call-mail-button",
           `block-${block_id}`
         )}
+        key={`${block_id}`}
       >
         <a
           className={classnames(

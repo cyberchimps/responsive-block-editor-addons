@@ -259,7 +259,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     };
     return (
       <Fragment>
-        <InspectorControls>{accordionChildControls}</InspectorControls>
+        <InspectorControls>{accordionChildControls()}</InspectorControls>
         <div
           className={classnames(
             "responsive-block-editor-addons-accordion-item__outer-wrap",
