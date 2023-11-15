@@ -393,6 +393,8 @@ const Cards = ({blockList, showCategory, search, handleToggle}) => {
 
 const Card = ({handleToggle, category, title, docs, demo, status, index, blockKey}) => {
 
+    console.log('HIIIIIIIIIIIIIIIIIIIIII');
+
     return (
         <div className={"col-lg-4 col-md-4 gy-3 rbea-block-category-card rbea-block-category-" + (category)}>
             <div className="rbea-blocks-card d-flex justify-content-between h-100">
