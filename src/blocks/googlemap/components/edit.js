@@ -58,7 +58,7 @@ export default class Edit extends Component {
       attributes: { block_id, address, zoom, height, pinned },
       setAttributes,
       isSelected,
-      unstableOnSplit,
+      onSplit,
     } = this.props;
 
     const renderMap = (event) => {

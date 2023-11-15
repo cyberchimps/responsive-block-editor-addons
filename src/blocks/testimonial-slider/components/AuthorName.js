@@ -45,7 +45,7 @@ class AuthorName extends React.Component {
             setAttributes({ test_block: data_copy });
           }}
           onMerge={props.mergeBlocks}
-          unstableOnSplit={
+          onSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });

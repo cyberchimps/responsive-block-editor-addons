@@ -65,7 +65,7 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_block_assets' ) );
 
-		add_filter( 'block_categories_all', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ) );
+		add_filter( 'block_categories_all', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ), 9999999,2 );
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'responsive_block_editor_addons_editor_assets' ) );
 

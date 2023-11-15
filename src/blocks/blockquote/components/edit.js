@@ -116,7 +116,6 @@ export default class Edit extends Component {
               "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. ",
               "responsive-block-editor-addons"
             )}
-            keepPlaceholderOnFocus
             value={quoteContent}
             className={classnames(
               "responsive-block-editor-addons-block-blockquote-text"

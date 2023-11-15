@@ -114,7 +114,7 @@ export default class Edit extends Component {
                 "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
                 "responsive-block-editor-addons"
               )}
-              keepPlaceholderOnFocus
+              
               value={testimonialBlock[index]["testimonialContent"]}
               formattingControls={["bold", "italic", "strikethrough", "link"]}
               className={classnames(
@@ -220,7 +220,7 @@ export default class Edit extends Component {
                       "John Doe",
                       "responsive-block-editor-addons"
                     )}
-                    keepPlaceholderOnFocus
+                    
                     value={testimonialBlock[index]["testimonialName"]}
                     className="responsive-block-editor-addons-testimonial-name"
                     onChange={(value) => {
@@ -244,7 +244,7 @@ export default class Edit extends Component {
                       "Add title/designation",
                       "responsive-block-editor-addons"
                     )}
-                    keepPlaceholderOnFocus
+                    
                     value={testimonialBlock[index]["testimonialTitle"]}
                     className="responsive-block-editor-addons-testimonial-title"
                     onChange={(value) => {

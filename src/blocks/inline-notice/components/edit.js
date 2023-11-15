@@ -89,7 +89,6 @@ export default class Edit extends Component {
           <RichText
             tagName={headingTag}
             placeholder={__("Notice Title", "responsive-block-editor-addons")}
-            keepplaceholderonfocus="true"
             value={noticeTitle}
             className="responsive-block-editor-addons-block-inline-notice-title"
             onChange={(value) => setAttributes({ noticeTitle: value })}

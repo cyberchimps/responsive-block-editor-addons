@@ -95,7 +95,7 @@ export default class Edit extends Component {
               setAttributes({ headingTitle: value });
             }}
             onMerge={mergeBlocks}
-            unstableOnSplit={
+            onSplit={
               insertBlocksAfter
                 ? (before, after, ...blocks) => {
                     setAttributes({ content: before });
@@ -123,7 +123,7 @@ export default class Edit extends Component {
             className="responsive-heading-desc-text"
             onChange={(value) => setAttributes({ headingDesc: value })}
             onMerge={mergeBlocks}
-            unstableOnSplit={this.splitBlock}
+            onSplit={this.splitBlock}
             onRemove={() => onReplace([])}
           />
         )}

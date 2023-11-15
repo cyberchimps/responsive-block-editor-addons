@@ -449,7 +449,6 @@ class GalleryCarouselEdit extends Component {
             unstableOnFocus={this.onFocusCaption}
             onChange={(value) => setAttributes({ primaryCaption: value })}
             isSelected={this.state.captionFocused}
-            keepplaceholderonfocus={true}
             inlineToolbar
           />
         )}

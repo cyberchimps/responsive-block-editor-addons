@@ -196,7 +196,7 @@ export default class Edit extends Component {
                     setAttributes({ imageboxesBlock: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />)}
                 {showDescription && (<RichText
                   tagName="p"
@@ -215,7 +215,7 @@ export default class Edit extends Component {
                     setAttributes({ imageboxesBlock: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />)}
                 {hasArrow && <span className="imagebox-arrow">&#x21AA;</span>}
                 {isSelected && (
