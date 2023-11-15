@@ -3,9 +3,9 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: block, blocks, block editor, editor, gutenberg blocks, page builder, gutenberg library, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -196,6 +196,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+
+= 1.7.3 - 21st November 2023 =
+* New - Compatibility with WordPress 6.4 
 
 = 1.7.2 - 5th October 2023 =
 * Fix - Image Slider block- Gutter is not working for Mobile.
