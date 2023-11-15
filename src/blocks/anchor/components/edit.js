@@ -61,7 +61,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
        <BlockControls key="controls">
        </BlockControls>,
        // Show the block controls on focus
-       <Inspector {...{ setAttributes, ...this.props }} />,
+       <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
  
        // Show the block markup in the editor
        <div
@@ -70,6 +70,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
            "responsive-block-editor-addons-block-anchor",
            `block-${block_id}`
          )}
+         key={`${block_id}`}
        >
           <div
             id={anchor}

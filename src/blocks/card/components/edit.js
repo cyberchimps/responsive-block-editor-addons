@@ -90,14 +90,14 @@ export default class Edit extends Component {
     return [
       // Show the alignment toolbar on focus
       <BlockControls key="controls">
-        <AlignmentToolbar
+        <AlignmentToolbar key="align-tool-bar"
           value={contentAlignment}
           onChange={(value) => setAttributes({ contentAlignment: value })}
         />
       </BlockControls>,
       // Show the block controls on focus
 
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
       <div
         className={classnames(
           this.props.className,
@@ -105,21 +105,25 @@ export default class Edit extends Component {
           `block-${block_id}`,
           `responsive-columns__stack-${stack}`
         )}
+        key={`${block_id}`}
       >
         {" "}
         <div
           className={classnames(
             "wp-block-responsive-block-editor-addons-card__inner"
           )}
+          key={`card__inner-${block_id}`}
         >
           {cardsArray.map((test, index) => (
             <div
+              key={index}
               className={classnames(
                 "wp-block-responsive-block-editor-addons-card-item"
               )}
             >
+              {console.log("index=> "+index)}
               {"image" == backgroundType && backgroundImage && (
-                <div className="responsive-block-editor-addons-card-background-image-wrap">
+                <div className="responsive-block-editor-addons-card-background-image-wrap" key={`card-background-image-wrap-${index}`}>
                   <div
                     className={classnames(
                       "responsive-block-editor-addons-card-background-image",
@@ -128,6 +132,7 @@ export default class Edit extends Component {
                         "has-background-dim": 0 !== imageopacity,
                       }
                     )}
+                    key={`card-background-image-${index}`}
                   ></div>
                 </div>
               )}
@@ -136,20 +141,22 @@ export default class Edit extends Component {
                   className={classnames(
                     "responsive-block-editor-addons-card-avatar"
                   )}
+                  key={`card-avatar-${index}`}
                 >
                   <div
                     className={classnames(
                       "responsive-block-editor-addons-card-avatar-img",
                       `responsive-block-editor-addons-card-avatar-img-${index}`
                     )}
+                    key={`card-avatar-img-${index}`}
                   >
                   </div>
-                  <div className={`responsive-block-editor-addons-card-avatar-img responsive-block-editor-addons-card-avatar-img-dashicon-${index}`}>
+                  <div className={`responsive-block-editor-addons-card-avatar-img responsive-block-editor-addons-card-avatar-img-dashicon-${index}`} key={`card-avatar-img-dashicon-${index}`}>
                       <Dashicon icon="format-image" />
                   </div>
                 </div>
               )}
-              <div className="card-content-wrap">
+              <div className="card-content-wrap" key={`card-content-wrap-${index}`}>
                 {headingFontFamily && loadGoogleFont(headingFontFamily)}
                 {subFontFamily && loadGoogleFont(subFontFamily)}
                 {contentFontFamily && loadGoogleFont(contentFontFamily)}
@@ -193,7 +200,7 @@ export default class Edit extends Component {
                   formattingControls={formattingControls}
                   
                 />
-                <div className="wp-block-responsive-block-editor-addons-card-item__price-wrapper">
+                <div className="wp-block-responsive-block-editor-addons-card-item__price-wrapper" key={`card-item__price-wrapper-${index}`}>
                   <RichText
                     tagName="p"
                     className="wp-block-responsive-block-editor-addons-card-item__content"
@@ -216,7 +223,7 @@ export default class Edit extends Component {
                   />
                 </div>
 
-                <div className="wp-block-responsive-block-editor-addons-card-item__button-wrapper">
+                <div className="wp-block-responsive-block-editor-addons-card-item__button-wrapper" key={`card-item__button-wrapper-${index}`}>
                   <div className="responsive-block-editor-addons-card-button-inner">
                     {"" !== icon && iconPosition == "before" && (
                       <span

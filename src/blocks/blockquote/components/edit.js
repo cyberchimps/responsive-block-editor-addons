@@ -72,7 +72,7 @@ export default class Edit extends Component {
       </BlockControls>,
 
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <div
@@ -83,6 +83,7 @@ export default class Edit extends Component {
           "responsive-block-editor-addons-block-blockquote",
           `block-${block_id}`
         )}
+        key={`${block_id}`}
       >
         {backgroundType == "image" && (
           <div className="responsive-block-editor-addons-section-background-image-wrap">

@@ -99,7 +99,6 @@ export default class Edit extends Component {
       boxShadowPositionCSS = "";
     }
 
-    setAttributes({ counterId: this.props.clientId });
 
     const onSelectImage = (img) => {
       setAttributes({
