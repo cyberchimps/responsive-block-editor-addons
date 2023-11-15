@@ -413,7 +413,6 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 
 	/**
 	 * Inserts the RBEA blocks into the database.
-	 *s
 	 * @since 1.7.0
 	 */
 	public function insert_blocks_data() {
