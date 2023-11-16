@@ -180,6 +180,7 @@ export default class Edit extends Component {
                 "Call-To-Action Title",
                 "responsive-block-editor-addons"
               )}
+              
               value={ctaTitle}
               className={classnames(
                 "responsive-block-editor-addons-cta-title",
@@ -193,6 +194,7 @@ export default class Edit extends Component {
                 "Call To Action Text",
                 "responsive-block-editor-addons"
               )}
+              
               value={ctaText}
               className={classnames(
                 "responsive-block-editor-addons-cta-text",

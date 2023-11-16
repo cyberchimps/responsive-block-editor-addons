@@ -95,6 +95,17 @@ export default class Edit extends Component {
               setAttributes({ headingTitle: value });
             }}
             onMerge={mergeBlocks}
+            onSplit={
+              insertBlocksAfter
+                ? (before, after, ...blocks) => {
+                    setAttributes({ content: before });
+                    insertBlocksAfter([
+                      ...blocks,
+                      createBlock("core/paragraph", { content: after }),
+                    ]);
+                  }
+                : undefined
+            }
             onRemove={() => onReplace([])}
           />
         )}
@@ -112,6 +123,7 @@ export default class Edit extends Component {
             className="responsive-heading-desc-text"
             onChange={(value) => setAttributes({ headingDesc: value })}
             onMerge={mergeBlocks}
+            onSplit={this.splitBlock}
             onRemove={() => onReplace([])}
           />
         )}

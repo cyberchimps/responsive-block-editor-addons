@@ -45,7 +45,7 @@ class Company extends React.Component {
           multiline={false}
           placeholder={__("Company Name", "responsive-block-editor-addons")}
           onMerge={props.mergeBlocks}
-          unstableOnSplit={
+          onSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });

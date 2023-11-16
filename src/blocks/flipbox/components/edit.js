@@ -287,7 +287,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showFrontSubtitle && (
@@ -313,7 +313,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                 </div>
@@ -355,7 +355,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showBackSubtitle && (
@@ -381,7 +381,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showBackButton && (
@@ -415,7 +415,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ flipboxArray: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                       <form
                         key="form-link"

@@ -178,7 +178,7 @@ export default class Edit extends Component {
                     setAttributes({ cardsArray: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />
                 <RichText
                   tagName="p"
@@ -198,7 +198,7 @@ export default class Edit extends Component {
                     setAttributes({ cardsArray: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />
                 <div className="wp-block-responsive-block-editor-addons-card-item__price-wrapper" key={`card-item__price-wrapper-${index}`}>
                   <RichText
@@ -219,7 +219,7 @@ export default class Edit extends Component {
                       setAttributes({ cardsArray: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 </div>
 
@@ -258,7 +258,7 @@ export default class Edit extends Component {
                       target={buttonTarget ? "_blank" : null}
                       rel={buttonTarget ? "noopener noreferrer" : null}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                     {"" !== icon && iconPosition == "after" && (
                       <span

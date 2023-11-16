@@ -337,7 +337,7 @@ export default class Edit extends Component {
                                       });
                                     }}
                                     onMerge={mergeBlocks}
-                                    unstableOnSplit={
+                                    onSplit={
                                       insertBlocksAfter
                                         ? (before, after, ...blocks) => {
                                             setAttributes({ content: before });
@@ -372,7 +372,7 @@ export default class Edit extends Component {
                                     setAttributes({ timelineItems: data_copy });
                                   }}
                                   onMerge={mergeBlocks}
-                                  unstableOnSplit={this.splitBlock}
+                                  onSplit={this.splitBlock}
                                   onRemove={() => onReplace([])}
                                 />
 

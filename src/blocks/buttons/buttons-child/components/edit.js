@@ -154,6 +154,8 @@ export default class Edit extends Component {
                 }}
                 allowedFormats={["bold", "italic", "strikethrough"]}
                 className={updatedButtonTextClass}
+                hoverEffect={hoverEffect}
+                
               />
               {"" !== icon && iconPosition == "after" && (
                 <span

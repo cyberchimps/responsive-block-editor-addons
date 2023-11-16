@@ -220,7 +220,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingList: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                       <RichText
                         tagName="div"
@@ -241,7 +241,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingList: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                     </div>
                     <div className="responsive-block-editior-addons-pricing-list-item-price-wrap">
@@ -261,7 +261,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingList: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                     </div>
                   </div>
