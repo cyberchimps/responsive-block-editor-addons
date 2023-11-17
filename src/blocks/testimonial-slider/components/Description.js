@@ -12,6 +12,9 @@ class Description extends React.Component {
     let description = "";
     if (test_arr && typeof test_arr !== "undefined") {
       description = test_arr["description"];
+      if (Array.isArray(description)) {
+        description = description[0];
+      }
     }
 
     var data_copy = [...attributes.test_block];
@@ -42,7 +45,7 @@ class Description extends React.Component {
             setAttributes({ test_block: data_copy });
           }}
           onMerge={props.mergeBlocks}
-          unstableOnSplit={
+          onSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });

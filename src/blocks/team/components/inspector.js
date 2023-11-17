@@ -17,7 +17,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
 // Import block components
-const { InspectorControls, PanelColorSettings, MediaUpload, ColorPalette } = wp.editor;
+const { InspectorControls, PanelColorSettings, MediaUpload, ColorPalette } = wp.blockEditor;
 
 // Import Inspector components
 const {

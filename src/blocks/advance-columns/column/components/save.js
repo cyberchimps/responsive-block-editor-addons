@@ -11,7 +11,7 @@ import { hexToRgba } from "../../../../utils";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {
@@ -28,7 +28,7 @@ export default class Save extends Component {
     return [
       <div
         className={classnames(
-          this.props.className,
+          this.props.className, 
           "responsive-block-editor-addons-advanced-column-child",
           `block-${block_id}`
         )}

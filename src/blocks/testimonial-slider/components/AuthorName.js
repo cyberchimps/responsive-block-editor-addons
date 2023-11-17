@@ -12,6 +12,9 @@ class AuthorName extends React.Component {
     let author_name = "";
     if (test_arr && typeof test_arr !== "undefined") {
       author_name = test_arr["name"];
+      if (Array.isArray(author_name)) {
+        author_name = author_name[0];
+      }
     }
 
     var data_copy = [...attributes.test_block];
@@ -42,7 +45,7 @@ class AuthorName extends React.Component {
             setAttributes({ test_block: data_copy });
           }}
           onMerge={props.mergeBlocks}
-          unstableOnSplit={
+          onSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });

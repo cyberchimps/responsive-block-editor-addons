@@ -9,7 +9,7 @@ import generateCSSUnit from "../../../generateCSSUnit";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 import { hexToRgba } from "../../../utils";
 
 export default class Save extends Component {

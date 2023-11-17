@@ -25,7 +25,7 @@ const {
   MediaUploadCheck,
   figure,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);

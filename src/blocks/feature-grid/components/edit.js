@@ -18,7 +18,7 @@ const {
   BlockControls,
   MediaUpload,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -85,7 +85,7 @@ export default class Edit extends Component {
     var data_copy = [...featureGrid];
 
     const classes = classnames(
-      this.props.className,
+      this.props.className, 
       "responsive-block-editor-addons-block-feature-grid",
       `block-${block_id}`,
       `grid-layout-${layout}`,
@@ -236,7 +236,7 @@ export default class Edit extends Component {
                       setAttributes({ featureGrid: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 {showDesc && (
@@ -257,7 +257,7 @@ export default class Edit extends Component {
                       setAttributes({ featureGrid: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
 
@@ -286,7 +286,7 @@ export default class Edit extends Component {
                         setAttributes({ featureGrid: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                     <form
                       key="form-link"
@@ -313,6 +313,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ featureGrid: data_copy });
                         }}
+                        __nextHasNoMarginBottom={true}
                       />
                       <Button
                         label={__("Apply", "responsive-block-editor-addons")}

@@ -11,7 +11,7 @@ import React from "react";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { InnerBlocks, RichText } = wp.editor;
+const { InnerBlocks, RichText } = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
@@ -43,7 +43,7 @@ export default class Save extends Component {
       <div className={classes}>
         <div
           className={classnames(
-            this.props.className,
+            this.props.className, 
             "responsive-block-editor-addons-block-count-up",
             `block-${block_id}`,
             "responsive-count__inner"

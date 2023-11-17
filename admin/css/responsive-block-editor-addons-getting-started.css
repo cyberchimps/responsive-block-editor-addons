@@ -1,0 +1,663 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+@import url('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600&display=swap');
+
+* {
+    font-family: 'Libre Franklin', sans-serif;
+    font-style: normal;
+}
+
+body.toplevel_page_responsive_block_editor_addons #wpcontent {
+    padding-left: 0;
+    background: #F0F0F1;
+}
+
+body.toplevel_page_responsive_block_editor_addons #wpfooter {
+    display: none;
+}
+
+body.toplevel_page_responsive_block_editor_addons #wpbody-content {
+    padding-bottom: 30px;
+}
+
+.rbea-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+    gap: 16px;
+    height: 125px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.rbea-brand {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 20px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.rbea-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: -10px;
+}
+
+.rbea-brand-name {
+    display: contents;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #1F2937;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.rbea-version {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 8px;
+    width: 41px;
+    height: 24px;
+    background: #E5E7EB;
+    border-radius: 2px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    font-family: 'Libre Franklin', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #4B5563;
+}
+
+.rbea-brand-desc {
+    font-family: 'Libre Franklin', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #4B5563;
+    text-transform: capitalize;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+
+.rbea-tabs-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 40px 0px;
+    gap: 8px;
+    height: 93px;
+}
+
+.rbea-tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    height: 53px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.rbea-tab {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 16px 40px;
+    gap: 8px;
+    height: 53px;
+    background: #F3F4F6;
+    border: 1px solid #E5E7EB;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    cursor: pointer;
+}
+
+.rbea-active-tab {
+    background: #FFFFFF;
+    border-width: 1px 1px 0px 1px;
+    border-style: solid;
+    border-color: #E5E7EB;
+}
+
+.rbea-active-tab .rbea-tab-name {
+    color: #111827;
+}
+
+.rbea-tab-name {
+    text-transform: capitalize;
+    height: 21px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    color: #6B7280;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.rbea-tabs-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 40px;
+    gap: 8px;
+}
+
+.rbea-tabs-inner-content {
+    padding: 50px 40px;
+    width: 100%;
+    background: #FFFFFF;
+}
+
+.rbea-tab-content {
+    display: none;
+}
+
+.rbea-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px 0px;
+    gap: 10px;
+    height: 130px;
+}
+
+.rbea-mobile-line-break {
+    display: none;
+}
+
+.rbea-footer-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+    height: 45px;
+}
+
+.rbea-footer-text-line {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    color: #6B7280;
+}
+
+.rbea-footer-brand-name {
+    font-weight: 500;
+    color: #374151;
+}
+
+.rbea-star-rating {
+    vertical-align: text-bottom;
+    text-decoration: none;
+}
+
+.rbea-hr {
+    width: 200px;
+    height: 0px;
+    border: 1px solid #E5E7EB;
+    margin: 0 auto;
+}
+
+.rbea-cyberchimps-logo {
+    width: 119px;
+    height: 35px;
+}
+
+/* Starter Template Tab Starts */
+
+.rbea-rst-content {
+    padding: 40px 60px;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+
+.rbea-responsive-logo {
+    width: 47px;
+    height: 44px;
+}
+
+.rbea-rst-brand-name {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: #4B5563;
+}
+
+.rbea-rst-brand-desc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #6B7280;
+}
+
+.rbea-rst-button-section {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 16px;
+}
+
+.rbea-rst-button-section .plugin-card-responsive-add-ons a {
+    background-color: #2271B1;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    padding: 10px 20px;
+}
+
+.rbea-rst-learn-more a, .rbea-home-links a  {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration-line: underline;
+    color: #2271B1;
+}
+
+.rbea-home-desc-text {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 170%;
+    color: #6B7280;
+}
+
+.rbea-plugin-activated-button-disabled {
+    color: #C1C1C1 !important;
+    border-color: #C1C1C1 !important;
+}
+
+.rbea-rst-content .rbea-plugin-activated-button-disabled {
+    font-weight: 600;
+    font-size: 16px !important;
+    line-height: 21px !important;
+    padding: 10px 20px !important;
+
+}
+
+.rbea-plugin-activated-button-disabled:hover {
+    background: #f6f7f7 !important;
+    cursor: auto;
+}
+
+.rbea-plugin-activated-button-disabled:focus {
+    box-shadow: none !important;
+}
+
+/* Starter Template Tab Ends */
+
+/* Help Tab Starts */
+
+.rbea-help-feature-cards {
+    border: 1px solid #E5E7EB;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.rbea-help-title {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150%;
+    color: #374151;
+}
+
+.rbea-help-desc {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 170%;
+    color: #6B7280;
+}
+
+.rbea-help-links {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    text-decoration-line: underline;
+    color: #2271B1;
+}
+
+.rbea-help-links-divider {
+    margin: 0 16px;
+    color: #E5E7EB;
+}
+
+/* Help Tab Ends */
+
+/* Blocks Tab Starts */
+
+.rbea-blocks-category, .rbea-active-blocks-category {
+    color: #4B5563;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
+.rbea-active-blocks-category {
+    color: #2271B1;
+    text-decoration-line: underline;
+}
+
+.rbea-blocks-search-box {
+    position: relative;
+    display: inline-block;
+    top: -8px;
+}
+
+.rbea-blocks-search-box input {
+    border: none;
+    border-bottom: 2px solid #E5E7EB;
+    outline: none;
+    width: 200px;
+    border-radius: 0;
+}
+
+.rbea-blocks-search-box input, .rbea-blocks-search-box input::placeholder {
+    color: #9CA3AF;
+}
+
+.rbea-blocks-search-box input:focus {
+    box-shadow: none;
+}
+
+.rbea-blocks-search-box .rbea-blocks-search-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.rbea-blocks-search-box .dashicons.dashicons-search {
+    color: #2271B1;
+}
+
+.rbea-blocks-toogle-block-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #4B5563;
+}
+
+.rbea-blocks-toogle-block-desc {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: #4B5563;
+}
+
+.rbea-blocks-switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+}
+  
+.rbea-blocks-switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.rbea-blocks-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.rbea-blocks-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .rbea-blocks-slider {
+    background-color: #2271B1;
+}
+
+input:focus + .rbea-blocks-slider {
+    box-shadow: 0 0 1px #2271B1;
+}
+
+input:checked + .rbea-blocks-slider:before {
+    transform: translateX(16px);
+}
+
+.rbea-blocks-slider.rbea-blocks-round {
+    border-radius: 10px;
+}
+
+.rbea-blocks-slider.rbea-blocks-round:before {
+    border-radius: 50%;
+}
+
+.rbea-blocks-card {
+    padding: 16px 18px;
+    background: #FFFFFF;
+    border: 1px solid #F3F4F6;
+    box-shadow: 0px 4px 15px -1px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.rbea-blocks-card-title {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    color: #4B5563;
+    text-transform: capitalize;
+}
+
+.rbea-blocks-card-title p {
+    margin: 4px 0 0 0;
+}
+
+.rbea-blocks-docs-demo-links:focus {
+    box-shadow: none;
+}
+
+/* Blocks Tab Ends */
+
+@media (max-width: 768px) {
+    .rbea-header {
+        padding: 20px;
+        height: auto;
+    }
+      
+    .rbea-brand {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .rbea-brand .rbea-logo {
+        margin: inherit;
+    }
+      
+    .rbea-brand-name {
+        font-size: 16px;
+    }
+      
+    .rbea-version {
+        width: auto;
+        height: auto;
+        padding: 4px;
+        font-size: 10px;
+    }
+      
+    .rbea-brand-desc {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .rbea-tabs-section {
+        padding: 20px 10px 0;
+        height: auto;
+    }
+
+    .rbea-tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+        height: auto;
+    }
+
+    .rbea-tab {
+        width: auto;
+        flex-grow: 1;
+        max-width: 200px;
+        padding: 10px 20px;
+        height: 40px;
+    }
+      
+    .rbea-tab-name {
+        width: auto;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .rbea-tabs-content {
+        padding: 0 10px;
+        height: auto;
+    }
+
+    .rbea-tabs-inner-content {
+        padding: 50px 0;
+        width: 100%;
+    }
+
+    .rbea-footer {
+        padding: 20px 0;
+        height: auto;
+    }
+
+    .rbea-star-rating {
+        vertical-align: baseline;
+    }
+
+    .rbea-star-rating img {
+        width: 14px;
+        height: 14px;
+    }
+      
+    .rbea-footer-text {
+        gap: 12px;
+        height: auto;
+    }
+      
+    .rbea-footer-text-line {
+        font-size: 14px;
+        text-align: center;
+    }
+      
+    .rbea-cyberchimps-logo {
+        width: 100px;
+        height: auto;
+    }
+
+    .rbea-mobile-line-break {
+        display: block;
+    }
+
+}
+
+@media (min-width: 767px) and (max-width: 1024px) {
+    .rbea-header {
+      padding: 20px 40px;
+    }
+  
+    .rbea-brand {
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 20px;
+      align-items: center;
+    }
+  
+    .rbea-brand-name {
+      font-size: 20px;
+    }
+  
+    .rbea-version {
+      font-size: 12px;
+    }
+  
+    .rbea-brand-desc {
+      font-size: 14px;
+    }
+
+    .rbea-tabs-section {
+        padding: 40px 40px 0;
+        height: auto;
+    }
+    
+    .rbea-tab {
+        padding: 16px 40px;
+        height: 53px;
+    }
+
+    .rbea-tab-name {
+        font-size: 16px;
+    }
+
+    .rbea-tabs-content {
+        padding: 0px 40px;
+    }
+
+    .rbea-tabs-inner-content {
+        width: 100%;
+    }
+
+    .rbea-footer {
+        padding: 40px 0px 0px;
+        gap: 20px;
+        height: auto;
+    }
+    
+    .rbea-footer-text-line {
+        font-size: 16px;
+    }
+
+    .rbea-cyberchimps-logo {
+        width: 119px;
+        height: 35px;
+    }
+
+}

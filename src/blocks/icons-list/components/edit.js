@@ -15,7 +15,7 @@ import EditorStyles from "./editor-styles";
 const { __ } = wp.i18n;
 const { select } = wp.data;
 const { Component, Fragment } = wp.element;
-const { AlignmentToolbar, BlockControls, InnerBlocks } = wp.editor;
+const { AlignmentToolbar, BlockControls, InnerBlocks } = wp.blockEditor;
 
 const ALLOWED_BLOCKS = ["responsive-block-editor-addons/icons-list-child"];
 

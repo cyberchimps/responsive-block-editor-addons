@@ -19,7 +19,7 @@ const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 
 // Import block components
-const { InspectorControls, ColorPalette, AlignmentToolbar } = wp.editor;
+const { InspectorControls, ColorPalette, AlignmentToolbar } = wp.blockEditor;
 
 // Import Inspector components
 const {

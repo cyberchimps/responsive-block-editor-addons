@@ -14,7 +14,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
-const { RichText, InnerBlocks, BlockControls, AlignmentToolbar } = wp.editor;
+const { RichText, InnerBlocks, BlockControls, AlignmentToolbar } = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 import memoize from "memize";
 import map from "lodash/map";
@@ -108,7 +108,7 @@ export default class Edit extends Component {
         {" "}
         <div
           className={classnames(
-            this.props.className,
+            this.props.className, 
             "responsive-block-editor-addons-block-count-up",
             `block-${block_id}`,
             "responsive-count__inner"
@@ -148,7 +148,7 @@ export default class Edit extends Component {
                     setAttributes({ countUp: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />
               )}
               {resshowNum && (
@@ -171,7 +171,7 @@ export default class Edit extends Component {
                       setAttributes({ countUp: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 </div>
               )}
@@ -194,7 +194,7 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ countUp: data_copy });
                   }}
-                  keepPlaceholderOnFocus
+                  
                 />
               )}
             </div>

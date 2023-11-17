@@ -20,7 +20,7 @@ const {
   InnerBlocks,
   MediaUpload,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -111,7 +111,7 @@ export default class Edit extends Component {
       ]);
     });
     const classes = classnames(
-      this.props.className,
+      this.props.className, 
       "wp-block-responsive-block-editor-addons-image-boxes-block",
       {
         [`has-text-align-${contentAlign}`]: contentAlign,
@@ -196,7 +196,7 @@ export default class Edit extends Component {
                     setAttributes({ imageboxesBlock: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />)}
                 {showDescription && (<RichText
                   tagName="p"
@@ -215,7 +215,7 @@ export default class Edit extends Component {
                     setAttributes({ imageboxesBlock: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />)}
                 {hasArrow && <span className="imagebox-arrow">&#x21AA;</span>}
                 {isSelected && (
@@ -240,6 +240,7 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ imageboxesBlock: data_copy });
                       }}
+                      __nextHasNoMarginBottom={true}
                     />
                     <Button
                       label={__("Apply", "responsive-block-editor-addons")}

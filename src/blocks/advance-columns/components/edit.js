@@ -11,7 +11,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InnerBlocks, AlignmentToolbar, BlockControls } = wp.editor;
+const {BlockControls, InnerBlocks, AlignmentToolbar } = wp.blockEditor;
 const ALLOWED_BLOCKS = ["responsive-block-editor-addons/column"];
 
 const getColumnsTemplate = memoize((columns) => {
@@ -65,11 +65,11 @@ export default class Edit extends Component {
         blockAlign,
         align,
         backgroundType,
+        block_id,
       },
       setAttributes,
     } = this.props;
 
-    setAttributes({ block_id: this.props.clientId });
 
     return [
       <BlockControls key="controls">
@@ -79,14 +79,15 @@ export default class Edit extends Component {
         />
       </BlockControls>,
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`ac-inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
       // Show the block markup in the editor
       <div
         className={classnames(
           this.props.className,
           backgroundType == "image" ? "background-type-image" : ""
-        )}
-      >
+          )}
+        key = {`ac-mainDiv-${block_id}`}
+          >
         <div
           className={classnames(
             "responsive-block-editor-addons-block-columns",

@@ -5,7 +5,7 @@ import EditorStyles from "./editor-styles";
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.blockEditor || wp.editor;
+const { RichText } = wp.blockEditor;
 import { range } from "lodash";
 
 export default class Edit extends Component {
@@ -71,7 +71,7 @@ export default class Edit extends Component {
         {textFontFamily && loadGoogleFont(textFontFamily)}
         <CustomTag
           className={classnames(
-            this.props.className,
+            this.props.className, 
             "responsive-block-editor-addons-block-advanced-text",
             `block-${block_id}`,
             displayColumnSeparator && 'responsive-block-editor-addons-separator-present',

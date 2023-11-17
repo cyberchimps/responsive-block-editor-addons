@@ -9,7 +9,7 @@ import classnames from "classnames";
 import { __ } from "@wordpress/i18n";
 import { Component, Fragment } from "@wordpress/element";
 import { compose } from "@wordpress/compose";
-import { IconButton, Spinner, Dashicon } from "@wordpress/components";
+import { Button, Spinner, Dashicon } from "@wordpress/components";
 import { RichText, URLInput } from "@wordpress/block-editor";
 import { withSelect } from "@wordpress/data";
 import { BACKSPACE, DELETE } from "@wordpress/keycodes";
@@ -199,7 +199,7 @@ class GalleryImage extends Component {
 
             {supportsMoving && (
               <div className="components-responsive-block-editor-addons-gallery-item__move-menu">
-                <IconButton
+                <Button
                   icon={verticalMoving ? "arrow-up" : "arrow-left"}
                   onClick={!isFirstItem && onMoveBackward}
                   className="responsive-block-editor-addons-gallery-item__button"
@@ -210,7 +210,7 @@ class GalleryImage extends Component {
                   aria-disabled={isFirstItem}
                   disabled={!isSelected}
                 />
-                <IconButton
+                <Button
                   icon={verticalMoving ? "arrow-down" : "arrow-right"}
                   onClick={!isLastItem && onMoveForward}
                   className="responsive-block-editor-addons-gallery-item__button"
@@ -224,7 +224,7 @@ class GalleryImage extends Component {
               </div>
             )}
             <div className="components-responsive-block-editor-addons-gallery-item__remove-menu">
-              <IconButton
+              <Button
                 icon="no-alt"
                 onClick={onRemove}
                 className="responsive-block-editor-addons-gallery-item__button"
@@ -242,7 +242,7 @@ class GalleryImage extends Component {
                   value={imgLink}
                   onChange={(value) => setAttributes({ imgLink: value })}
                 />
-                <IconButton
+                <Button
                   icon={this.state.isSaved ? "saved" : "editor-break"}
                   label={this.state.isSaved ? __("Saving", "responsive-block-editor-addons") : __("Apply", "responsive-block-editor-addons")}
                   onClick={this.saveCustomLink}

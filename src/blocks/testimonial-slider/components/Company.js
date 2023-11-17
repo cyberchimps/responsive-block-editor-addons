@@ -12,6 +12,9 @@ class Company extends React.Component {
     let company = "";
     if (test_arr && typeof test_arr !== "undefined") {
       company = test_arr["company"];
+      if (Array.isArray(company)) {
+        company = company[0];
+      }
     }
 
     var data_copy = [...attributes.test_block];
@@ -42,7 +45,7 @@ class Company extends React.Component {
           multiline={false}
           placeholder={__("Company Name", "responsive-block-editor-addons")}
           onMerge={props.mergeBlocks}
-          unstableOnSplit={
+          onSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });

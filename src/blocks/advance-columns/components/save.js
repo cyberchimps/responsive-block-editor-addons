@@ -7,7 +7,7 @@ import classnames from "classnames";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {
@@ -34,7 +34,7 @@ export default class Save extends Component {
     return [
       <div
         className={classnames(
-          this.props.className,
+          this.props.className, 
           backgroundType == "image" ? "background-type-image" : "",
           `block-${block_id}`,
           "responsive-block-editor-addons-advanced-column-outer-wrap",

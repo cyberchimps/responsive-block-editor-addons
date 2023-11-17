@@ -11,8 +11,8 @@ import renderSVG from "../../../renderIcon";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
-const {Toolbar} = wp.components;
+const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
+const {ToolbarGroup} = wp.components;
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -63,7 +63,6 @@ export default class Edit extends Component {
       insertBlocksAfter,
       onReplace,
     } = this.props;
-    this.props.setAttributes({ block_id: this.props.clientId });
     let callHref = `tel:${phone}`;
     let mailHref = `mailto: ${mail}`;
 
@@ -90,18 +89,19 @@ export default class Edit extends Component {
 
     return [
       <BlockControls key="controls">
-        <Toolbar controls={toolbarControls} />
+        <ToolbarGroup controls={toolbarControls} />
       </BlockControls>,
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <div
         className={classnames(
-          this.props.className,
+          this.props.className, 
           "responsive-block-editor-addons-block-call-mail-button",
           `block-${block_id}`
         )}
+        key={`${block_id}`}
       >
         <a
           className={classnames(

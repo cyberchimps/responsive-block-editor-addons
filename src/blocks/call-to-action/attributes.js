@@ -58,9 +58,7 @@ const attributes = {
     default: false,
   },
   ctaTitle: {
-    type: "array",
-    selector: ".responsive-block-editor-addons-cta-title",
-    source: "children",
+    type: "string",
     default: "Call-To-Action Title",
   },
   ctaTitleFontFamily: {
@@ -94,9 +92,7 @@ const attributes = {
     default: "16",
   },
   ctaText: {
-    type: "array",
-    selector: ".responsive-block-editor-addons-cta-text",
-    source: "children",
+    type: "string",
     default: "Call To Action Text",
   },
   ctaWidth: {

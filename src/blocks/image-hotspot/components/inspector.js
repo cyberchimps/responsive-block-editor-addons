@@ -10,7 +10,7 @@ const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
 const { InspectorControls, ColorPalette, MediaUpload } =
-  wp.blockEditor || wp.editor;
+  wp.blockEditor;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
@@ -329,7 +329,7 @@ class Inspector extends Component {
 
                     {getState("currentStatus") == "drop" && (
                       <Button
-                        isDefault
+                        variant="secondary"
                         onClick={() => {
                           handleStateChange({
                             currentStatus: false,
@@ -605,7 +605,7 @@ class Inspector extends Component {
                     allowedTypes={["image"]}
                     value={id}
                     render={({ open }) => (
-                      <Button isDefault onClick={open}>
+                      <Button variant="secondary" onClick={open}>
                         {!id
                           ? __(
                               "Select Background Image",

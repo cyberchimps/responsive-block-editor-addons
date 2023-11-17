@@ -12,7 +12,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { AlignmentToolbar, BlockControls } = wp.editor;
+const { AlignmentToolbar, BlockControls } = wp.blockEditor;
 
 export default class Edit extends Component {
   constructor() {

@@ -14,7 +14,7 @@ import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 const { __, sprintf } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { Button, Dashicon, Icon } = wp.components;
-const { RichText, URLInput } = wp.editor;
+const { RichText, URLInput } = wp.blockEditor;
 
 import memoize from "memize";
 import map from "lodash/map";
@@ -199,7 +199,7 @@ export default class Edit extends Component {
     let backimageopacity = backImageOpacity / 100;
 
     const classes = classnames(
-      this.props.className,
+      this.props.className, 
       "wp-block-responsive-block-editor-addons-flipbox",
       "responsive-block-editor-addons-block-flipbox",
       `block-${block_id}`,
@@ -287,7 +287,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showFrontSubtitle && (
@@ -313,7 +313,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                 </div>
@@ -355,7 +355,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showBackSubtitle && (
@@ -381,7 +381,7 @@ export default class Edit extends Component {
                         setAttributes({ flipboxArray: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showBackButton && (
@@ -415,7 +415,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ flipboxArray: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                       <form
                         key="form-link"
@@ -443,6 +443,7 @@ export default class Edit extends Component {
                             data_copy[index] = new_content;
                             setAttributes({ flipboxArray: data_copy });
                           }}
+                          __nextHasNoMarginBottom={true}
                         />
                         <Button
                           label={__("Apply", "responsive-block-editor-addons")}

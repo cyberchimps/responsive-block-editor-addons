@@ -8,7 +8,7 @@ import Style from "style-it";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {
@@ -42,7 +42,7 @@ export default class Save extends Component {
       <div
         id={anchor}
         className={classnames(
-          this.props.className,
+          this.props.className, 
           "responsive-block-editor-addons-block-advanced-heading",
           `block-${block_id}`
         )}

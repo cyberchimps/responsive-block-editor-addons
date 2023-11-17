@@ -6,13 +6,14 @@ import Inspector from "./inspector";
 import IconList from "./iconlist";
 import renderSVG from "../../../../renderIcon";
 import EditorStyles from "./editor-styles";
+import { createBlock, replaceBlocks } from '@wordpress/blocks';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default class Edit extends Component {
   constructor() {
@@ -45,7 +46,7 @@ export default class Edit extends Component {
 
   render() {
     // Setup the attributes
-    const { attributes, setAttributes } = this.props;
+    const { attributes, setAttributes, onReplace, mergeBlocks } = this.props;
 
     const {
       label,
@@ -125,6 +126,10 @@ export default class Edit extends Component {
                     "core/italic",
                     "core/strikethrough",
                   ]}
+                  onSplit={ ( value ) => createBlock( 'responsive-block-editor-addons/icons-list-child', { ...attributes, label: value } )}
+                  onMerge={ mergeBlocks }
+                  onReplace={ onReplace }
+                  onRemove={ () => onReplace( [] ) }
                 />
               </div>
             )}

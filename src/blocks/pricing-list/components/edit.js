@@ -18,7 +18,7 @@ const {
   InnerBlocks,
   MediaUpload,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -163,7 +163,7 @@ export default class Edit extends Component {
 
       <div
         className={classnames(
-          this.props.className,
+          this.props.className, 
           "responsive-block-editior-addons-pricing-list-outer-wrap",
           "responsive-block-editor-addons-block-pricing-list",
           `block-${block_id}`,
@@ -220,7 +220,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingList: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                       <RichText
                         tagName="div"
@@ -241,7 +241,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingList: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                     </div>
                     <div className="responsive-block-editior-addons-pricing-list-item-price-wrap">
@@ -261,7 +261,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingList: data_copy });
                         }}
-                        keepPlaceholderOnFocus
+                        
                       />
                     </div>
                   </div>

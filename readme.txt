@@ -1,11 +1,11 @@
-=== Responsive Gutenberg Blocks Library ===
+=== Responsive Blocks - WordPress Gutenberg Blocks ===
 Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
-Tags: gutenberg, blocks, gutenberg blocks, page builder, editor, block, gutenberg library, block editor, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
+Tags: block, blocks, block editor, editor, gutenberg blocks, page builder, gutenberg library, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
-Tested up to: 6.1.1
+Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.6.5
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,29 +14,46 @@ Use professional starter block patterns & templates to create websites within mi
 
 == Description ==
 
-<strong>Responsive Blocks Library for Gutenberg</strong>
+<strong>Responsive Blocks - WordPress Gutenberg Blocks</strong>
 
-Unleash your creativity with the Responsive Gutenberg Blocks Library plugin. Within minutes create professional content layouts for your website with free starter templates. Use the pattern importer to include the pages and sections layouts you like in your existing website.
+Responsive Blocks offers a library of fully functional blocks that extend the customizability of your WordPress block editor. Within minutes create professional content layouts for your website with free starter templates. Use the pattern import feature to include the pages and section layouts you like in your existing website.
 
-[youtube https://www.youtube.com/watch?v=Gs-h74Qnrlw]
+With more than 50+ creative blocks, you can design beautiful pages without writing a single line of code, and the settings are easy to customize to create your unique look.
 
-<a href="https://www.cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=demolink" target="_blank">Checkout the Gutenberg blocks demos</a> to see it live in action
 
-Quickly choose your favorite templates to launch your websites in no time. You can also pick any advanced blocks with completely customizable settings to make your creative templates.
+<a href="https://www.cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=demolink" target="_blank">Checkout the Gutenberg blocks demos</a> 
 
-With more than **40+ creative blocks for Gutenberg**, you can design beautiful pages without writing a single line of code, and the settings are easy to customize to create your unique look.
+==Features of Responsive Blocks - WordPress Gutenberg Blocks Plugin==
 
-==Features of the Responsive Gutenberg Blocks Library==
+- **Simple User Interface**: The user interface of each block is easy to use.
+- **No Coding Knowledge Required**: Create fantastic landing pages without a line of code. These blocks are designed for non-coders and coders alike.
+- **Pattern Importer**: You can import beautifully designed Gutenberg sections and pages to your site using this feature.
+- **Responsive Layout**: These blocks are AMP optimized, considering AMP is one of the most important ranking factors for search engines.
+- **Easy Customization**: The blocks are extremely easy to customize as per your requirements. You can create complex layouts in a very short time.
 
-**No Coding Knowledge Required**: Create fantastic landing pages without a line of code. These blocks are designed for non-coders and coders alike.
-**Pattern Importer**: Using this feature, you can import beautifully designed Gutenberg sections and pages to your site.
-**Plain & Simple UI**: The user interface of each block has been kept simple
-**Responsive Layout**: These blocks are AMP optimized, considering AMP is one of the most important ranking factors for search engines.
-**Easy Customization**: The blocks are extremely easy to customize as per your requirements. You can create complex layouts in a very short time.
+==Professional Designer-made Gutenberg Websites==
+
+Import professionally designed websites in minutes built with Responsive Blocks, and the [free Responsive theme](https://cyberchimps.com/responsive-theme/). With no compromises on performance, and zero limits on what you can design, cut down your website designing time by 90%.
+
+Responsive Theme offers a wide library of fully-functional professionally built Responsive Starter Templates that you can import and launch your website in just a few clicks!
+
+[Check Ready Websites and Starter Templates](https://cyberchimps.com/wordpress-themes/?page-builder=gutenberg)
+
+==Compatible with Responsive and other Gutenberg Themes==
+
+[Responsive theme](https://wordpress.org/themes/responsive/) is a fast, lightweight, and fully Gutenberg-compatible theme that loads under 100 KB. It’s free to use and actively installed on more than 30,000 websites, with all the settings you need to build beautiful websites.
+
+Reasons to choose the Responsive WordPress Theme
+
+- **Blazing Fast Speed**: Responsive requires less than 100 KB to load completely with minified assets, and optimized database queries.
+- **Fully Customizable Theme**: Responsive theme offers you all the necessary customization settings to customize your layouts, typographies, and colors.
+- **Translation Ready**: Responsive comes with built-in multilingual support, and you would not require any third-party plugin for translating. Currently, the theme is translated into 45 other languages.
+- **Integration with Popular Plugins**: Responsive theme is 100% compatible with popular plugins like Mailchimp, Yoast, WooCommerce, WP Legal Pages Pro, and more!
+
 
 
 **Responsive Gutenberg Blocks Editor Addons Library**
-Have a look at our customizable and feature rich blocks from the Responsive Gutenberg Blocks Editor Addons Library:
+Check out our customizable, feature rich WordPress blocks that'll help you design pages or posts without a single line of code. 
 
 **Responsive Blocks**
 
@@ -99,11 +116,25 @@ Have a look at our customizable and feature rich blocks from the Responsive Gute
 - [Post-Timeline](https://cyberchimps.com/blocks/post-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): The Post Timeline block helps you design beautiful and responsive timelines that will display your posts or events in an ordered list according to the dates they are published on. You can also customize the content for each blog post with a new option to select an icon for the connector.
 
 More Gutenberg blocks coming soon!
-== Help Resources==
-To get started go through our help resources:
 
-- [Product documentation](https://docs.cyberchimps.com/responsive-gutenberg-addons/?utm_source=wporg&utm_medium=rbea&utm_campaign=helpsection)
-- [Video tutorials](https://www.youtube.com/playlist?list=PLXTwxw3ZJwPSCqW__jo6fkUlEh2uXAsuF)
+== Support & Documentation==
+
+- Have any questions? Visit support on [Responsive Blocks Plugin Forum](https://wordpress.org/support/plugin/responsive-block-editor-addons/).
+- Learn more about using Responsive Blocks plugin with our detailed [documentation](https://docs.cyberchimps.com/responsive-gutenberg-addons/).
+- Get easy access to [Video Tutorials](https://www.youtube.com/@CyberChimpsThemes/)
+
+== What’s Next?==
+If you like Responsive Blocks, consider checking out our other WordPress Plugins:
+
+- **[Responsive Starter Templates](https://wordpress.org/plugins/responsive-add-ons/)**: Offers you a library of premium Elementor and block templates to launch your website quickly. Just select your favorite website template, click import and launch your website.
+
+- **[WPLegalPages](https://wordpress.org/plugins/wplegalpages/)**: It’s a popular plugin that helps you generate a professional Privacy Policy, terms of use, terms & conditions, eCommerce returns & refunds policy, affiliate disclaimers & more.
+
+- **[WP Cookie Notice & Consent Banner for GDPR, CCPA & ePrivacy](https://wordpress.org/plugins/gdpr-cookie-consent/)**: WP Cookie Notice for GDPR, CCPA & ePrivacy Cons.
+
+- **[WP AdCenter](https://wordpress.org/plugins/wpadcenter/)**: Easily Manage Ads on WordPress – Banner, Amazon, Google Adsense Ads.
+
+
 
 == Frequently Asked Questions ==
 = 1. What are Blocks? =
@@ -113,7 +144,7 @@ No, you’re not required to learn any coding to use these blocks. They are easy
 = 3. Are Responsive Gutenberg Blocks Free? =
 Yes, Responsive Gutenberg Blocks are completely free to use.
 = 4. Do you have a live website demo? =
-Yes, we have live demos of the blocks. [Check out block demos here](https://cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=faqsection). The Responsive Gutenberg Blocks Library gives you free access to over 40 blocks which you can add to your WordPress website and create any kind of pages you want.
+Yes, we have live demos of the blocks. [Check out block demos here](https://cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=faqsection). The Responsive Blocks - WordPress Gutenberg Blocks gives you free access to over 40 blocks which you can add to your WordPress website and create any kind of pages you want.
 = 5. What themes can I use with Responsive Gutenberg Blocks ? =
 You can use any theme that you want with this plugin.
 
@@ -127,22 +158,22 @@ This section describes how to install the plugin and get it working.
 
 [youtube https://www.youtube.com/watch?v=ALTDNWpp2eI]
 
-To install the Responsive Gutenberg Blocks Library plugin manually from the WordPress admin dashboard:
+To install the Responsive Blocks - WordPress Gutenberg Blocks plugin manually from the WordPress admin dashboard:
 
 <ol>
-	<li>Download the latest Responsive Gutenberg Blocks Library plugin from the WordPress Repository</li>
+	<li>Download the latest Responsive Blocks - WordPress Gutenberg Blocks plugin from the WordPress Repository</li>
 <li>Login to your WordPress Dashboard</li>
 <li>Go to Plugins > Add New</li>
-<li>Search for Responsive Gutenberg Blocks Library</li>
-<li>Install the Responsive Gutenberg Blocks Library plugin</li>
+<li>Search for Responsive Blocks - WordPress Gutenberg Blocks</li>
+<li>Install the Responsive Blocks - WordPress Gutenberg Blocks plugin</li>
 <li>Activate it</li>
 </ol>
 
 **FTP Installation**
 
-To install the Responsive Gutenberg Blocks Library plugin via FTP
+To install the Responsive Blocks - WordPress Gutenberg Blocks plugin via FTP
 <ol>
-<li>Download the latest Responsive Gutenberg Blocks Library plugin zip  from the WordPress repository</li>
+<li>Download the latest Responsive Blocks - WordPress Gutenberg Blocks plugin zip  from the WordPress repository</li>
 <li>Unzip the plugin zip file</li>
 <li>Open your WordPress site via FTP. We would recommend you to use FileZilla</li>
 <li>From FTP, visit the root of the WordPress install</li>
@@ -165,6 +196,34 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+
+= 1.7.3 - 21st November 2023 =
+* New - Compatibility with WordPress 6.4 
+
+= 1.7.2 - 5th October 2023 =
+* Fix - Image Slider block- Gutter is not working for Mobile.
+* Fix - Fixed PHP Deprecated warnings.
+
+= 1.7.1 - 11th September 2023 =
+* New - Compatibility with WordPress 6.3
+* Improvement - Icon List block- Added Usability feature.
+
+= 1.7.0 - 7th August 2023 =
+* New - Implemented the blocks Enable/Disable toggle settings for optimized asset loading.
+
+= 1.6.9 - 21st June 2023 =
+* New - Rebranded the plugin name from Responsive Block Editor Addons to Responsive Blocks - WordPress Gutenberg Blocks.
+* New - Introduced a new User Admin Interface.
+
+= 1.6.8 - 13th march 2023 =
+* Fix: Fix Attempt Block Recovery issue in some blocks.
+
+= 1.6.7 - 8th march 2023 =
+* Fix: Gutenberg ready site template, RBEA blocks showing  "attempt block recovery" message
+
+= 1.6.6 - 23rd February 2023 =
+* Fix: Minor bug fixes.
+
 = 1.6.5 - 25th November 2022 =
 * Fix - Changes as per wordpress.org guidelines
 
@@ -259,7 +318,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 * Fix - Table of Contents - Anchor doesn’t work when headings are inside section/cover block
 
 = 1.3.3 - 2nd September 2021 =
-* New - Feature to import pre-designed Gutenberg sections and pages for the Responsive Gutenberg Blocks Library.
+* New - Feature to import pre-designed Gutenberg sections and pages for the Responsive Blocks - WordPress Gutenberg Blocks.
 
 = 1.3.2 - 17th August 2021 =
 * Feature - Table Of Contents - Added smooth scrolling and scroll offset options for frontend.

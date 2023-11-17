@@ -32,7 +32,6 @@ const {
   Button,
   Dashicon,
   ToggleControl,
-  IconButton,
 } = wp.components;
 
 class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
@@ -260,7 +259,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     };
     return (
       <Fragment>
-        <InspectorControls>{accordionChildControls}</InspectorControls>
+        <InspectorControls>{accordionChildControls()}</InspectorControls>
         <div
           className={classnames(
             "responsive-block-editor-addons-accordion-item__outer-wrap",

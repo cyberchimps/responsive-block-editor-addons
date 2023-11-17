@@ -9,7 +9,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
 // Import block components
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 
 // Import Inspector components
 const {

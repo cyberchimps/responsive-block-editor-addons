@@ -5034,7 +5034,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' .responsive-block-editor-addons-gallery--item' => array(
+					'margin-left'   => $attr['gutterMobile'] >= 0 && ! ( $attr['responsiveHeight'] ) ? $attr['gutterMobile'] . 'px' : null,
+					'margin-right'  => $attr['gutterMobile'] >= 0 && ! ( $attr['responsiveHeight'] ) ? $attr['gutterMobile'] . 'px' : null,
+				),
+			);
 
 			$tablet_selectors = array();
 

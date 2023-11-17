@@ -25,7 +25,7 @@ const {
   MediaUploadCheck,
   figure,
   BlockAlignmentToolbar,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
@@ -99,7 +99,6 @@ export default class Edit extends Component {
       boxShadowPositionCSS = "";
     }
 
-    setAttributes({ counterId: this.props.clientId });
 
     const onSelectImage = (img) => {
       setAttributes({
@@ -181,7 +180,7 @@ export default class Edit extends Component {
                 "Call-To-Action Title",
                 "responsive-block-editor-addons"
               )}
-              keepPlaceholderOnFocus
+              
               value={ctaTitle}
               className={classnames(
                 "responsive-block-editor-addons-cta-title",
@@ -191,12 +190,11 @@ export default class Edit extends Component {
             />
             <RichText
               tagName="div"
-              multiline="p"
               placeholder={__(
                 "Call To Action Text",
                 "responsive-block-editor-addons"
               )}
-              keepPlaceholderOnFocus
+              
               value={ctaText}
               className={classnames(
                 "responsive-block-editor-addons-cta-text",
@@ -275,6 +273,7 @@ export default class Edit extends Component {
               className="button-url"
               value={buttonUrl}
               onChange={(value) => setAttributes({ buttonUrl: value })}
+              __nextHasNoMarginBottom={true}
             />
             <Button
               label={__("Apply", "responsive-block-editor-addons")}

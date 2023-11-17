@@ -7,7 +7,7 @@ import classnames from "classnames";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { InnerBlocks, RichText } = wp.editor;
+const { InnerBlocks, RichText } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {
@@ -35,7 +35,7 @@ export default class Save extends Component {
     } = this.props.attributes;
 
     const classes = classnames(
-      this.props.className,
+      this.props.className, 
       {
       [`has-text-align-${contentAlign}`]: contentAlign,
     });

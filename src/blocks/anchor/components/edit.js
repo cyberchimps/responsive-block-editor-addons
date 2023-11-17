@@ -14,7 +14,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
   */
  const { __ } = wp.i18n;
  const { Component, Fragment } = wp.element;
- const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
+ const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
  export default class Edit extends Component {
    constructor() {
      super(...arguments);
@@ -61,15 +61,16 @@ import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
        <BlockControls key="controls">
        </BlockControls>,
        // Show the block controls on focus
-       <Inspector {...{ setAttributes, ...this.props }} />,
+       <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
  
        // Show the block markup in the editor
        <div
          className={classnames(
-          this.props.className,
+           this.props.className,
            "responsive-block-editor-addons-block-anchor",
            `block-${block_id}`
          )}
+         key={`${block_id}`}
        >
           <div
             id={anchor}

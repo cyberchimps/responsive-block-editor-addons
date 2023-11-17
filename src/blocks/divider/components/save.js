@@ -9,7 +9,7 @@ import appendImportant from "./appendImportant";
  * WordPress dependencies
  */
 const { Component } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {

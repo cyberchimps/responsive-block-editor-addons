@@ -19,7 +19,7 @@ const {
   MediaUploadCheck,
   figure,
   URLInput,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon } = wp.components;
 
 export default class Save extends Component {

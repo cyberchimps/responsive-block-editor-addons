@@ -11,7 +11,7 @@ import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 const { Dashicon } = wp.components;
 import Style from "style-it";
 import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
@@ -106,7 +106,7 @@ export default class Save extends Component {
     }
 
     const classes = classnames(
-      this.props.className,
+      this.props.className, 
       "responsive-block-editor-addons-block-flipbox",
       `block-${block_id}`,
       {

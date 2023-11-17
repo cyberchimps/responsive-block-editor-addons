@@ -19,7 +19,7 @@ const {
 } = wp.components;
 
 // Import block components
-const { InspectorControls } = wp.editor;
+const { InspectorControls } = wp.blockEditor;
 
 const { compose, withInstanceId } = wp.compose;
 const { withDispatch } = wp.data;

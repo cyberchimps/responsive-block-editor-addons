@@ -10,7 +10,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
+const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -64,7 +64,6 @@ export default class Edit extends Component {
       insertBlocksAfter,
       onReplace,
     } = this.props;
-    this.props.setAttributes({ block_id: this.props.clientId });
     return [
       <BlockControls key="controls">
         <AlignmentToolbar
@@ -73,16 +72,17 @@ export default class Edit extends Component {
         />
       </BlockControls>,
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <div
         className={classnames(
-          this.props.className,
+          this.props.className, 
           "responsive-block-editor-addons-block-advanced-heading",
           `block-${block_id}`
         )}
-      >
+        key={`mainDiv-${block_id}`}
+        >
         {headingTitleFontFamily && loadGoogleFont(headingTitleFontFamily)}
         {showHeading && (
           <RichText
@@ -95,7 +95,7 @@ export default class Edit extends Component {
               setAttributes({ headingTitle: value });
             }}
             onMerge={mergeBlocks}
-            unstableOnSplit={
+            onSplit={
               insertBlocksAfter
                 ? (before, after, ...blocks) => {
                     setAttributes({ content: before });
@@ -123,7 +123,7 @@ export default class Edit extends Component {
             className="responsive-heading-desc-text"
             onChange={(value) => setAttributes({ headingDesc: value })}
             onMerge={mergeBlocks}
-            unstableOnSplit={this.splitBlock}
+            onSplit={this.splitBlock}
             onRemove={() => onReplace([])}
           />
         )}

@@ -10,7 +10,7 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
     currency: __("$", "responsive-block-editor-addons"),
     price_suffix: __(".00", "responsive-block-editor-addons"),
     sub_price: __("SUB PRICE", "responsive-block-editor-addons"),
-    features: [__("Add features", "responsive-block-editor-addons")],
+    features: __("Add features", "responsive-block-editor-addons"),
     img_url: "",
     img_id: "",
     img_width: "",

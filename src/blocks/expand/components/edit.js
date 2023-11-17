@@ -11,7 +11,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, BlockControls, AlignmentToolbar } = wp.editor;
+const { RichText, BlockControls, AlignmentToolbar } = wp.blockEditor;
 
 export default class Edit extends Component {
   constructor() {
@@ -74,7 +74,7 @@ export default class Edit extends Component {
       <Fragment>
         <div
           className={classnames(
-            this.props.className,
+            this.props.className, 
             "responsive-block-editor-addons-block-expand",
             `block-${block_id}`
           )}
@@ -86,7 +86,7 @@ export default class Edit extends Component {
             {showTitle && (
               <RichText
                 tagName="h4"
-                keepPlaceholderOnFocus
+                
                 value={blockTitle}
                 className="responsive-block-editor-addons-expand-title"
                 onChange={(value) =>
@@ -101,7 +101,7 @@ export default class Edit extends Component {
             )}
             <RichText
               tagName="p"
-              keepPlaceholderOnFocus
+              
               value={expandLessText}
               className="responsive-block-editor-addons-expand-less-text"
               onChange={(value) =>
@@ -112,7 +112,7 @@ export default class Edit extends Component {
               <a>
                 <RichText
                   tagName="p"
-                  keepPlaceholderOnFocus
+                  
                   value={moreLabel}
                   className="responsive-block-editor-addons-expand-more-toggle-text"
                   onChange={(value) =>
@@ -128,7 +128,7 @@ export default class Edit extends Component {
                 </label>
                 <RichText
                   tagName="p"
-                  keepPlaceholderOnFocus
+                  
                   value={expandMoreText}
                   className="responsive-block-editor-addons-expand-more-text"
                   onChange={(value) =>
@@ -139,7 +139,7 @@ export default class Edit extends Component {
                   <a>
                     <RichText
                       tagName="p"
-                      keepPlaceholderOnFocus
+                      
                       value={lessLabel}
                       className="responsive-block-editor-addons-expand-less-toggle-text"
                       onChange={(value) =>

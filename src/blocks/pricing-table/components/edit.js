@@ -21,7 +21,7 @@ const {
   URLInput,
   MediaUploadCheck,
   figure,
-} = wp.editor;
+} = wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 
 import memoize from "memize";
@@ -135,7 +135,7 @@ export default class Edit extends Component {
       ]);
     });
     const classes = classnames(
-      this.props.className,
+      this.props.className, 
       "responsive-block-editor-addons-block-pricing-table",
       `block-${block_id}`,
       "wp-block-responsive-block-editor-addons-pricing-table",
@@ -305,7 +305,7 @@ export default class Edit extends Component {
                       setAttributes({ pricingTable: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 <div className="wp-block-responsive-block-editor-addons-pricing-table-item__price-wrapper">
@@ -332,7 +332,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showPrice && (
@@ -358,7 +358,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showSuffix && (
@@ -384,7 +384,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                 </div>
@@ -414,13 +414,12 @@ export default class Edit extends Component {
                       setAttributes({ pricingTable: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 {showFeatures && (
                   <RichText
                     tagName="ul"
-                    multiline="li"
                     className="wp-block-responsive-block-editor-addons-pricing-table-item__features"
                     value={pricingTable[index]["features"]}
                     placeholder={__(
@@ -443,7 +442,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ pricingTable: data_copy });
                     }}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 {showButton && (
@@ -472,7 +471,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                     <form
                       key="form-link"
@@ -499,6 +498,7 @@ export default class Edit extends Component {
                           data_copy[index] = new_content;
                           setAttributes({ pricingTable: data_copy });
                         }}
+                        __nextHasNoMarginBottom={true}
                       />
                       <Button
                         label={__("Apply", "responsive-block-editor-addons")}

@@ -14,7 +14,7 @@ import EditorStyles from "./editor-styles";
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 
 export default class Edit extends Component {
   constructor() {
@@ -49,21 +49,21 @@ export default class Edit extends Component {
   render() {
     // Setup the attributes
     const {
-      attributes: { overlayType, gradientOverlayType },
+      attributes: { overlayType, gradientOverlayType, block_id },
       setAttributes,
     } = this.props;
-    setAttributes({ block_id: this.props.clientId });
 
     return [
       // Show the block controls on focus
 
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key = {`ac-col-inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
       <div
         className={classnames(
-          this.props.className,
+          this.props.className, 
           "responsive-column-wrap",
           "responsive-block-editor-addons-block-column"
         )}
+        key = {`ac-col-wrap-${block_id}`}
       >
         <div
           className={classnames(

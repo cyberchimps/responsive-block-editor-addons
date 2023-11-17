@@ -9,7 +9,7 @@ import classnames from "classnames";
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {
@@ -35,7 +35,7 @@ export default class Save extends Component {
       <Fragment>
         <div
           className={classnames(
-            this.props.className,
+            this.props.className, 
             "responsive-block-editor-addons-block-expand",
             `block-${block_id}`
           )}

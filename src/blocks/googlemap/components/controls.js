@@ -3,7 +3,7 @@
  */
 import { __ } from "@wordpress/i18n";
 import { BlockControls } from "@wordpress/block-editor";
-import { Toolbar } from "@wordpress/components";
+import { Toolbar, ToolbarButton, ToolbarGroup  } from "@wordpress/components";
 
 function Controls({ attributes, setAttributes }) {
   const { address, pinned } = attributes;
@@ -19,7 +19,19 @@ function Controls({ attributes, setAttributes }) {
 
   return (
     <BlockControls>
-      {address && <Toolbar controls={toolbarControls} />}
+      {address && <ToolbarGroup>
+        {toolbarControls.map((current) => {
+          return (
+            <ToolbarButton
+              icon={current.icon}
+              title={current.title}
+              isActive={current.isActive}
+              onClick={current.onClick} 
+            />
+          )
+        })}
+      </ToolbarGroup>
+      }
     </BlockControls>
   );
 }

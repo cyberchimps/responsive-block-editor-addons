@@ -19,12 +19,13 @@ const { __ } = wp.i18n;
 const { decodeEntities } = wp.htmlEntities;
 
 const { withSelect } = wp.data;
-const { AlignmentToolbar } = wp.editor;
+const { AlignmentToolbar } = wp.blockEditor;
 
 const {
   Placeholder,
   Spinner,
-  Toolbar,
+  ToolbarButton,
+  ToolbarGroup,
   PanelBody,
   SelectControl,
 } = wp.components;
@@ -257,7 +258,17 @@ class LatestPostsBlock extends Component {
             }}
             controls={["left", "center", "right", "wide", "full"]}
           />
-          <Toolbar controls={layoutControls} />
+          <ToolbarGroup>
+            {layoutControls.map((current) => {
+              return (
+              <ToolbarButton
+                icon={current.icon}
+                title={current.title}
+                isActive={current.isActive}
+                onClick={current.onClick}
+              />)
+            })}
+          </ToolbarGroup>
         </BlockControls>
 
         <SectionTag
