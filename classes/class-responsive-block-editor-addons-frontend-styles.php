@@ -13033,22 +13033,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$background_image_gradient = '';
 			$btn_color                 = $attr['ctaBackColor'];
-			$btn_opacity               = $attr['buttonopacity'];
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
 				$background_image_gradient = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonbackgroundType'] ) {
 				$btn_color   = $attr['ctaBackColor'];
-				$btn_opacity = $attr['buttonopacity'];
 			};
 
 			$background_hover_image_gradient = '';
 			$btn_h_color                     = $attr['ctaHoverBackColor'];
-			$btn_h_opacity                   = $attr['buttonHopacity'];
 			if ( 'gradient' === $attr['buttonHbackgroundType'] ) {
 				$background_hover_image_gradient = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '%, ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonHbackgroundType'] ) {
 				$btn_h_color   = $attr['ctaHoverBackColor'];
-				$btn_h_opacity = $attr['buttonHopacity'];
 			}
 			
 			$box_shadow_position_css = $attr['boxShadowPosition'];
@@ -13113,7 +13109,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'    => self::get_css_value( $attr['bottomMargin'], 'px' ),
 					'margin-left'      => self::get_css_value( $attr['leftMargin'], 'px' ),
 					'margin-right'     => self::get_css_value( $attr['rightMargin'], 'px' ),
-					'border-width'     => self::get_css_value( $attr['formBorderWidth'], '%' ),
+					'border-width'     => self::get_css_value( $attr['formBorderWidth'], 'px' ),
 					'border-color'     => $attr['formBorderColor'],
 					'border-style'     => $attr['formBorderStyle'],
 					'border-radius'    => self::get_css_value( $attr['formBorderRadius'], 'px' ),
@@ -13341,7 +13337,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-color'     => $attr['ctaBorderColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
 					'border-radius'    => self::get_css_value( $attr['ctaBorderRadius'], 'px' ),
-					'width'            => self::get_css_value( $attr['submitButtonWidth'], 'px' ),
+					'width'            => self::get_css_value( $attr['submitButtonWidth'], '%' ),
 					'height'           => self::get_css_value( $attr['submitButtonHeight'], 'px' ),
 					'box-shadow'       => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $box_shadow_position_css,
 
@@ -13420,7 +13416,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['inputBottomPaddingMobile'], 'px' ),
 					'padding-left'   => self::get_css_value( $attr['inputLeftPaddingMobile'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['inputRightPaddingMobile'], 'px' ),
-					'text-indent'    => self::get_css_value( $attr['textIndentMobilet'], 'px' ),
+					'text-indent'    => self::get_css_value( $attr['textIndentMobile'], 'px' ),
 					'font-size'      => self::get_css_value( $attr['inputFontSizeMobile'], 'px' ),
 					'margin-top'     => self::get_css_value( $attr['labelSpacingMobile'], 'px' ),
 				),
@@ -13469,7 +13465,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
 					'padding-left'   => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
-					'width'          => self::get_css_value( $attr['submitButtonWidthMobile'], 'px' ),
+					'width'          => self::get_css_value( $attr['submitButtonWidthMobile'], '%' ),
 					'height'         => self::get_css_value( $attr['submitButtonHeightMobile'], 'px' ),
 				),
 
@@ -13574,7 +13570,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
 					'padding-left'   => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
-					'width'          => self::get_css_value( $attr['submitButtonWidthTablet'], 'px' ),
+					'width'          => self::get_css_value( $attr['submitButtonWidthTablet'], '%' ),
 					'height'         => self::get_css_value( $attr['submitButtonHeightTablet'], 'px' ),
 				),
 
@@ -13807,7 +13803,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'submitButtonFontFamily'         => '',
 				'submitButtonFontSize'           => '',
 				'submitButtonFontSizeMobile'     => '',
-				'submitButtonFontSizetablet'     => '',
+				'submitButtonFontSizeTablet'     => '',
 				'submitButtonFontWeight'         => 400,
 				'submitButtonLineHeight'         => 1,
 				'submitButtonLetterSpacing'      => 0,

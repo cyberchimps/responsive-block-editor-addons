@@ -53,9 +53,7 @@ const {
   TabPanel,
   Dashicon,
   BaseControl,
-  formId,
 	align,
-	isHtml,
 	formJson,
 } = wp.components;
 
@@ -186,7 +184,7 @@ export default class Inspector extends Component {
     // Setup the attributes
     const {
       attributes: {
-        // formId,
+        formId,
         align,
         isHtml,
         formJson,
@@ -511,10 +509,8 @@ export default class Inspector extends Component {
             >  
               <SelectControl
               label={__("Select Form", "responsive-block-editor-addons")}
-					    data={ {
-                value: formId,
-              } }
-              onChange={ this.props.onSelectForm }
+					    value={formId}
+              onChange={(newformId)=> this.props.onSelectForm(newformId) }
 					    options={ responsive_globals.cf7_forms }
 				      />
               

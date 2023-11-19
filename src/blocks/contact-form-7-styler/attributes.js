@@ -29,7 +29,7 @@ const attributes = {
     default: false,
   },
   formJson: {
-    type: 'object',
+    type: 'string',
     default: null,
   },
   showFormTitle: {

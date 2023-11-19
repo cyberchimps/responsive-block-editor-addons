@@ -63,15 +63,9 @@ export default class Edit extends Component {
   }
 
   onSelectForm(id) {
-    console.log(id);
-
-    // console.log(this.formJson);
-
-
+   
     const { setAttributes } = this.props;
     const { formId, isHtml, formJson } = this.props.attributes;
-    console.log(formId);
-
 
     if (!id) {
       setAttributes({ isHtml: false });
@@ -81,9 +75,6 @@ export default class Edit extends Component {
 
     setAttributes({ isHtml: true });
     setAttributes({ formId: id });
-    console.log(formId);
-
-
 
     let jsonData = '';
 
@@ -104,9 +95,7 @@ export default class Edit extends Component {
       setAttributes({ isHtml: true });
       setAttributes({ formJson: data.data.html });
       jsonData = data;
-      console.log(id);
     });
-    console.log(id);
   }
 
   componentWillMount() {
