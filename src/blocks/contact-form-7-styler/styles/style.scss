@@ -1,0 +1,205 @@
+.form-container {
+  display: flex;
+}
+
+.form { 
+  width: -webkit-fill-available;
+}
+
+.wpcf7-form-control {
+  max-width: -webkit-fill-available;
+}
+
+.responsive-form-title-text {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.responsive-form-desc-text {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+input[type=checkbox]:checked::before {
+  content: "\2714" !important;
+  line-height: 1.2;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: self-end;
+  margin: auto;
+  float: initial;
+  height: auto;
+  width: auto;
+}
+
+
+input[type=radio]:checked::before {
+  border: solid;
+  content: "";
+  border-radius: 50px;
+  margin: .1875rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+input[type="radio"] , input[type="checkbox"]{
+    line-height: 1 !important;
+    text-indent: 0 !important;
+  }
+
+
+.wpcf7-checkbox input[type=checkbox]+span:before {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.wpcf7-list-item {
+  display: inline-block;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.wpcf7-list-item.first {
+  margin-left: 0;
+}
+
+.wpcf7-list-item-label {
+  margin-right: 0.2em;
+  vertical-align: middle;
+}
+
+.wpcf7 input[type="radio"] {
+  margin-top: 0 !important;
+}
+
+.wpcf7 input[type="checkbox"]{
+  margin-top: 0 !important;   
+
+}
+
+.wpcf7 input[type=checkbox], input[type=radio]{
+  border: 1px solid #8c8f94;
+  background: #fff;
+  color: #50575e;
+  clear: none;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 0;
+  height: 1rem;
+  margin: -.25rem .25rem 0 0;
+  outline: 0;
+  padding: 0!important;
+  text-align: center;
+  vertical-align: middle;
+  width: 1rem;
+  min-width: 1rem;
+  -webkit-appearance: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+  transition: .05s border-color ease-in-out;    
+}
+
+
+input[type='radio']::before{
+  background-color: #0066cc;
+  color: #0066cc;
+  font-size: calc( 20px * 0.4 );
+  border: solid;
+  width: calc( 20px * 0.4 );
+  height: calc( 20px * 0.4 );
+}
+
+.wpcf7-not-valid-tip {
+  margin-top: 10px;
+}
+
+p>label {
+  display: block;
+}
+
+.wpcf7 .wpcf7-submit{
+  display: flex;
+  justify-content:center;
+}
+
+// We need this particular block to maintain consistent input field height across WP Editor and Frontend.
+	// And also because the min-height and line-height in the WP Editor were inherited from core WordPress directory: wp-admin/forms.css.
+	// All the selectors here are also copied from wp-admin/forms.css.
+	input[type="text"],
+	input[type="password"],
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="textarea"],
+	input[type="week"] {
+		min-height: 30px;
+		line-height: 30px;
+		box-shadow: 0 0 0 transparent;
+		border-radius: 4px;
+		border: 1px solid #8c8f94;
+		background-color: #fff;
+		color: #2c3338;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
+	.wpcf7 *,
+	.wpcf7 ::after,
+	.wpcf7 ::before {
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.wpcf7-acceptance input[type="checkbox"] + span::before,
+	.wpcf7-checkbox input[type="checkbox"] + span::before,
+	.wpcf7-radio input[type="radio"] + span::before {
+		display: inline-block;
+		vertical-align: middle;
+		width: 15px;
+		height: 15px;
+		margin-right: 10px;
+		border-color: #eaeaea;
+		border-style: solid;
+		border-width: 1px 1px 1px 1px;
+		text-align: center;
+	}
+
+	span.wpcf7-list-item {
+		display: inline-block;
+		margin: 0 1em 0 0;
+	}
+	.wpcf7-list-item-label::before, .wpcf7-list-item-label::after{
+		content: none !important;
+	}
+
+	.wpcf7-acceptance input[type="checkbox"] + span::before,
+	.wpcf7-acceptance input[type="checkbox"]:checked + span::before,
+	.wpcf7-checkbox input[type="checkbox"] + span::before,
+	.wpcf7-checkbox input[type="checkbox"]:checked + span::before,
+	.wpcf7-radio input[type="radio"] + span::before {
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+	}
+
+	input[type="checkbox"]:checked + span::before {
+		font-size: -webkit-calc(12px / 1.2);
+		font-size: calc(12px / 1.2);
+	}
+
+	.wpcf7-radio input[type="radio"] + span::before {
+		-webkit-border-radius: 100%;
+		border-radius: 100%;
+	}
