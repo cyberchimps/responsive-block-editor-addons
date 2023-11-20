@@ -4,18 +4,12 @@
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import ButtonSettingsControl from "./ButtonSettings";
-// import ButtonSettingsControl from "./SubmitButtonSettings";
-// import inputBoxShadowControl from "../../../utils/components/input-box-shadow";
-
 
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import BoxShadowControl from "../../../utils/components/box-shadow";
-// import inputBoxShadowControl from "./input-box-shadow";
-// import inputBoxShadowControlHelper from "./input-box-shadow-helper";
 
 
-// import BoxShadowControlHelper from "../../../../utils/components/box-shadow-helper";
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
@@ -91,9 +85,7 @@ export default class Inspector extends Component {
   onTagChange(value) {
     const { setAttributes } = this.props;
 
-    // let level_val = parseInt(value.replace("h", ""));
 
-    // setAttributes({ level: level_val });
     setAttributes({ formTitleTag: value });
   }
   
@@ -192,7 +184,6 @@ export default class Inspector extends Component {
         showFormTitle,
         showFormDescription,
         showLabels,
-        // showRequiredMark,
         showErrorMsgs,
         formAlignment,
         formAlignmentMobile,
@@ -333,7 +324,6 @@ export default class Inspector extends Component {
         radioCheckboxFontWeight,
         radioCheckboxLineHeight,
         radioCheckboxLetterSpacing,
-        //
         radioCheckboxTextColor,
         radioCheckboxColor,
         hoverRadioCheckboxColor,
@@ -1592,31 +1582,6 @@ export default class Inspector extends Component {
               >
                   {advancedControls}
               </PanelBody>
-                  {/* <inputBoxShadowControl
-                    setAttributes={setAttributes}
-                    label={__("Box Shadow", "responsive-block-editor-addons")}
-                    inputBoxShadowColor={{ value: inputBoxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                    inputBoxShadowHOffset={{
-                      value: inputBoxShadowHOffset,
-                      label: __("Horizontal", "responsive-block-editor-addons"),
-                    }}
-                    inputBoxShadowVOffset={{
-                      value: inputBoxShadowVOffset,
-                      label: __("Vertical", "responsive-block-editor-addons"),
-                    }}
-                    inputBoxShadowBlur={{
-                      value: inputBoxShadowBlur,
-                      label: __("Blur", "responsive-block-editor-addons"),
-                    }}
-                    inputBoxShadowSpread={{
-                      value: inputBoxShadowSpread,
-                      label: __("Spread", "responsive-block-editor-addons"),
-                    }}
-                    inputBoxShadowPosition={{
-                      value: inputBoxShadowPosition,
-                      label: __("Position", "responsive-block-editor-addons"),
-                    }}
-                  /> */}
                 </PanelBody>
                 <PanelBody
                   title={__("Padding", "responsive-block-editor-addons")}
@@ -2674,49 +2639,7 @@ export default class Inspector extends Component {
                   showBackColorOpacity={false}
                   showGradientHover={false}
                   showTextOpacity={false}
-                /> 
-                {/* <PanelBody
-              title={__("Box Shadow", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-                <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                boxShadowHOffset={{
-                  value: boxShadowHOffset,
-                  label: __("Horizontal", "responsive-block-editor-addons"),
-                }}
-                boxShadowVOffset={{
-                  value: boxShadowVOffset,
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                }}
-                boxShadowBlur={{
-                  value: boxShadowBlur,
-                  label: __("Blur", "responsive-block-editor-addons"),
-                }}
-                boxShadowSpread={{
-                  value: boxShadowSpread,
-                  label: __("Spread", "responsive-block-editor-addons"),
-                }}
-                boxShadowPosition={{
-                  value: boxShadowPosition,
-                  label: __("Position", "responsive-block-editor-addons"),
-                }}
-              />
-              <BoxShadowControlHelper
-                setAttributes={setAttributes}
-                boxShadowColor={{ value: hoverboxShadowColor }}
-                boxShadowHOffset={{ value: hoverboxShadowHOffset }}
-                boxShadowVOffset={{ value: hoverboxShadowVOffset }}
-                boxShadowBlur={{ value: hoverboxShadowBlur }}
-                boxShadowSpread={{ value: hoverboxShadowSpread }}
-                boxShadowPosition={{ value: hoverboxShadowPosition }}
-                label={__("Hover Box Shadow", "responsive-block-editor-addons")}
-                attrNameTemplate="hover%s"
-              />
-              </PanelBody>   */}
-                                    
+                />                        
             </PanelBody>
             <PanelBody
               title={__("Messages", "responsive-block-editor-addons")}

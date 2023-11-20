@@ -23,7 +23,7 @@
 input[type=checkbox]:checked::before {
   content: "\2714" !important;
   line-height: 1.2;
-  // display: contents;
+
   display: flex;
   justify-content: space-around;
   align-items: self-end;
@@ -58,7 +58,6 @@ input[type="radio"] , input[type="checkbox"]{
 
 .wpcf7-list-item {
   display: inline-block;
-  // margin: 0 0 0 1em;
   margin-bottom: 0;
   margin-right: 0;
   margin-left: 0;
@@ -175,7 +174,6 @@ p>label {
 		border-style: solid;
 		border-width: 1px 1px 1px 1px;
 		text-align: center;
-		// content: "";
 	}
 
 	span.wpcf7-list-item {
@@ -185,12 +183,6 @@ p>label {
 	.wpcf7-list-item-label::before, .wpcf7-list-item-label::after{
 		content: none !important;
 	}
-
-	// .wpcf7-acceptance input[type="checkbox"]:checked + span::before,
-	// .wpcf7-checkbox input[type="checkbox"]:checked + span::before {
-	// 	line-height: 1.2;
-	// 	content: "\2714";
-	// }
 
 	.wpcf7-acceptance input[type="checkbox"] + span::before,
 	.wpcf7-acceptance input[type="checkbox"]:checked + span::before,

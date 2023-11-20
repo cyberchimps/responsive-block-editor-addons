@@ -47,12 +47,6 @@
            `block-${block_id}`
          )}
        >
-        {/* <SelectControl
-              label={__("Select the Form", "responsive-block-editor-addons")}
-					    value={ formId }
-              onChange={ (value) => this.onSelectForm(value) }
-					    options={ responsive_globals.cf7_forms }
-				      /> */}
         <div className={classnames("form-container")}>
         <div className={classnames("form")}>
         {showFormTitle && (
@@ -70,9 +64,6 @@
             className="responsive-form-desc-text"
           />
         )}
-        {/* { isHtml && (
-					<div dangerouslySetInnerHTML={ { __html: formJson } } />
-				) } */}
          <div dangerouslySetInnerHTML={ { __html: formJson } } />
          </div>
          </div>

@@ -213,20 +213,6 @@ export default class Edit extends Component {
                 {labelFontFamily && loadGoogleFont(labelFontFamily)}
                 {submitButtonFontFamily && loadGoogleFont(submitButtonFontFamily)}
                 <div dangerouslySetInnerHTML={{ __html: formJson }} />
-                {/* { isHtml && (
-					<div dangerouslySetInnerHTML={ { __html: formJson } } />
-				) } */}
-                {/* { isHtml === false && (
-					<Placeholder
-						icon="admin-post"
-						label={ __(
-							'Loading',
-							'responsive-block-editor-addons'
-						) }
-					>
-						<Spinner />
-					</Placeholder>
-				) } */}
               </div>
             </div>
 
