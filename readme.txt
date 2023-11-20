@@ -197,7 +197,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 1.7.3 - 21st November 2023 =
+= 1.7.3 - 20th November 2023 =
 * New - Compatibility with WordPress 6.4 
 
 = 1.7.2 - 5th October 2023 =
