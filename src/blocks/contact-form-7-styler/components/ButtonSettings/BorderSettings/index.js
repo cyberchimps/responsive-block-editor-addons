@@ -212,42 +212,6 @@ class ButtonBorderControl extends Component {
                         >
                             {buttonboxshadowadvancedControls}
                         </PanelBody>
-                        {/* <BoxShadowControl
-                            setAttributes={setAttributes}
-                            label={__("Box Shadow", "responsive-block-editor-addons")}
-                            submitButtonBoxShadowColor={{ value: submitButtonBoxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                            submitButtonBoxShadowHOffset={{
-                                value: submitButtonBoxShadowHOffset,
-                                label: __("Horizontal", "responsive-block-editor-addons"),
-                            }}
-                            submitButtonBoxShadowVOffset={{
-                                value: submitButtonBoxShadowVOffset,
-                                label: __("Vertical", "responsive-block-editor-addons"),
-                            }}
-                            submitButtonBoxShadowBlur={{
-                                value: submitButtonBoxShadowBlur,
-                                label: __("Blur", "responsive-block-editor-addons"),
-                            }}
-                            submitButtonBoxShadowSpread={{
-                                value: submitButtonBoxShadowSpread,
-                                label: __("Spread", "responsive-block-editor-addons"),
-                            }}
-                            submitButtonBoxShadowPosition={{
-                                value: submitButtonBoxShadowPosition,
-                                label: __("Position", "responsive-block-editor-addons"),
-                            }}
-                        />
-                        <BoxShadowControlHelper
-                            setAttributes={setAttributes}
-                            submitButtonHoverBoxShadowColor={{ value: submitButtonHoverBoxShadowColor }}
-                            submitButtonHoverBoxShadowHOffset={{ value: submitButtonHoverBoxShadowHOffset }}
-                            submitButtonHoverBoxShadowVOffset={{ value: submitButtonHoverBoxShadowVOffset }}
-                            submitButtonHoverBoxShadowBlur={{ value: submitButtonHoverBoxShadowBlur }}
-                            submitButtonHoverBoxShadowSpread={{ value: submitButtonHoverBoxShadowSpread }}
-                            submitButtonHoverBoxShadowPosition={{ value: submitButtonHoverBoxShadowPosition }}
-                            label={__("Hover Box Shadow", "responsive-block-editor-addons")}
-                            attrNameTemplate="submitButtonHover%s"
-                        /> */}
                     </Fragment>
                 )}
             </PanelBody>
