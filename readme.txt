@@ -120,7 +120,7 @@ More Gutenberg blocks coming soon!
 == Support & Documentation==
 
 - Have any questions? Visit support on [Responsive Blocks Plugin Forum](https://wordpress.org/support/plugin/responsive-block-editor-addons/).
-- Learn more about using Responsive Blocks plugin with our detailed [documentation](https://docs.cyberchimps.com/responsive-gutenberg-addons/).
+- Learn more about using Responsive Blocks plugin with our detailed [documentation](https://cyberchimps.com/blocks/docs/).
 - Get easy access to [Video Tutorials](https://www.youtube.com/@CyberChimpsThemes/)
 
 == What’s Next?==
