@@ -305,7 +305,7 @@ export default class Edit extends Component {
                       setAttributes({ pricingTable: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 <div className="wp-block-responsive-block-editor-addons-pricing-table-item__price-wrapper">
@@ -332,7 +332,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showPrice && (
@@ -358,7 +358,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                   {showSuffix && (
@@ -384,7 +384,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                   )}
                 </div>
@@ -414,7 +414,7 @@ export default class Edit extends Component {
                       setAttributes({ pricingTable: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 {showFeatures && (
@@ -442,7 +442,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ pricingTable: data_copy });
                     }}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 {showButton && (
@@ -471,7 +471,7 @@ export default class Edit extends Component {
                         setAttributes({ pricingTable: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                     <form
                       key="form-link"

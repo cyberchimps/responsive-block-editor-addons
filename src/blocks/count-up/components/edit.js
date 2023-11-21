@@ -148,7 +148,7 @@ export default class Edit extends Component {
                     setAttributes({ countUp: data_copy });
                   }}
                   formattingControls={formattingControls}
-                  keepPlaceholderOnFocus
+                  
                 />
               )}
               {resshowNum && (
@@ -171,7 +171,7 @@ export default class Edit extends Component {
                       setAttributes({ countUp: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 </div>
               )}
@@ -194,7 +194,7 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ countUp: data_copy });
                   }}
-                  keepPlaceholderOnFocus
+                  
                 />
               )}
             </div>

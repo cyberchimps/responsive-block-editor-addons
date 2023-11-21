@@ -204,7 +204,7 @@ export default class Edit extends Component {
                 <RichText
                   tagName="h3"
                   placeholder={__("John Doe", "responsive-block-editor-addons")}
-                  keepPlaceholderOnFocus
+                  
                   value={teamBlock[index]["teamName"]}
                   className="responsive-block-editor-addons-team-name"
                   onChange={(value) => {
@@ -235,7 +235,7 @@ export default class Edit extends Component {
                     "Designation",
                     "responsive-block-editor-addons"
                   )}
-                  keepPlaceholderOnFocus
+                  
                   value={convertTag(teamBlock[index]["teamDesignation"])}
                   formattingControls={[
                     "bold",
@@ -274,7 +274,7 @@ export default class Edit extends Component {
                     "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
                     "responsive-block-editor-addons"
                   )}
-                  keepPlaceholderOnFocus
+                  
                   value={convertTag(teamBlock[index]["teamDescription"])}
                   formattingControls={[
                     "bold",

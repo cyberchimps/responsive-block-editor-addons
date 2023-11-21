@@ -8,8 +8,8 @@ const HelpContents = [
         'links': [
             {
                 'title': __( 'Docs', 'responsive-block-editor-addons' ),
-                'url': 'https://docs.cyberchimps.com/responsive-gutenberg-addons/',
-            },
+                'url': 'https://cyberchimps.com/blocks/docs/',
+            },  
             {
                 'title': __( 'Changelog', 'responsive-block-editor-addons' ),
                 'url': 'https://cyberchimps.com/changelog/responsive-block-editor-addons/',

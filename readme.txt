@@ -3,9 +3,9 @@ Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: block, blocks, block editor, editor, gutenberg blocks, page builder, gutenberg library, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,7 @@ With more than 50+ creative blocks, you can design beautiful pages without writi
 
 ==Professional Designer-made Gutenberg Websites==
 
-Import professionally designed websites in minutes built with Responsive Blocks, and the Responsive theme. With no compromises on performance, and zero limits on what you can design, cut down your website designing time by 90%.
+Import professionally designed websites in minutes built with Responsive Blocks, and the [free Responsive theme](https://cyberchimps.com/responsive-theme/). With no compromises on performance, and zero limits on what you can design, cut down your website designing time by 90%.
 
 Responsive Theme offers a wide library of fully-functional professionally built Responsive Starter Templates that you can import and launch your website in just a few clicks!
 
@@ -120,7 +120,7 @@ More Gutenberg blocks coming soon!
 == Support & Documentation==
 
 - Have any questions? Visit support on [Responsive Blocks Plugin Forum](https://wordpress.org/support/plugin/responsive-block-editor-addons/).
-- Learn more about using Responsive Blocks plugin with our detailed [documentation](https://docs.cyberchimps.com/responsive-gutenberg-addons/).
+- Learn more about using Responsive Blocks plugin with our detailed [documentation](https://cyberchimps.com/blocks/docs/).
 - Get easy access to [Video Tutorials](https://www.youtube.com/@CyberChimpsThemes/)
 
 == What’s Next?==
@@ -196,6 +196,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+
+= 1.7.3 - 20th November 2023 =
+* New - Compatibility with WordPress 6.4 
 
 = 1.7.2 - 5th October 2023 =
 * Fix - Image Slider block- Gutter is not working for Mobile.

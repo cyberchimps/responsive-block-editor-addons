@@ -33,7 +33,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'accordion',
 				'title'    => 'Accordion Block',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/accordion-block/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/accordion-block/',
 				'demo'     => 'https://cyberchimps.com/blocks/accordion/',
 				'category' => 'content',
 				'status'   => 1,
@@ -41,7 +41,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'advance-columns',
 				'title'    => 'Advance Columns',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/advanced-column/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/advanced-column/',
 				'demo'     => 'https://cyberchimps.com/blocks/advanced-columns/',
 				'category' => 'content',
 				'status'   => 1,
@@ -49,7 +49,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'advanced-heading',
 				'title'    => 'Advance Heading',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/advanced-heading/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/advanced-heading/',
 				'demo'     => 'https://cyberchimps.com/blocks/advanced-heading/',
 				'category' => 'content',
 				'status'   => 1,
@@ -57,7 +57,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'advanced-text',
 				'title'    => 'Advance Text',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/advanced-text/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/advanced-text/',
 				'demo'     => 'https://cyberchimps.com/blocks/advanced-text/',
 				'category' => 'content',
 				'status'   => 1,
@@ -65,7 +65,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'anchor',
 				'title'    => 'Anchor Block',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/anchor-block/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/anchor-block/',
 				'demo'     => 'https://cyberchimps.com/blocks/anchor/',
 				'category' => 'content',
 				'status'   => 1,
@@ -73,7 +73,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'blockquote',
 				'title'    => 'Blockquote',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/blockquote/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/blockquote/',
 				'demo'     => 'https://cyberchimps.com/blocks/block-quote/',
 				'category' => 'content',
 				'status'   => 1,
@@ -81,7 +81,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'call-mail-button',
 				'title'    => 'Call/Mail Button',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/call-mail-button/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/call-mail-button/',
 				'demo'     => 'https://cyberchimps.com/blocks/call-mail-button/',
 				'category' => 'content',
 				'status'   => 1,
@@ -89,7 +89,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'responsive-block-editor-addons-cta',
 				'title'    => 'Call To Action',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/call-to-action',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/call-to-action/',
 				'demo'     => 'https://cyberchimps.com/blocks/call-to-action/',
 				'category' => 'cro',
 				'status'   => 1,
@@ -97,7 +97,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'card',
 				'title'    => 'Card',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/card/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/card/',
 				'demo'     => 'https://cyberchimps.com/blocks/card-block/',
 				'category' => 'content',
 				'status'   => 1,
@@ -105,7 +105,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'content-timeline',
 				'title'    => 'Content Timeline',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/content-timeline/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/content-timeline/',
 				'demo'     => 'https://cyberchimps.com/blocks/content-timeline/',
 				'category' => 'timelines',
 				'status'   => 1,
@@ -113,7 +113,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'count-down',
 				'title'    => 'Countdown',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/count-down/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/count-down/',
 				'demo'     => 'https://cyberchimps.com/blocks/countdown/',
 				'category' => 'timelines',
 				'status'   => 1,
@@ -121,7 +121,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'count-up',
 				'title'    => 'Countup',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/count-up/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/count-up/',
 				'demo'     => 'https://cyberchimps.com/blocks/count-up/',
 				'category' => 'timelines',
 				'status'   => 1,
@@ -129,7 +129,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'divider',
 				'title'    => 'Divider',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/divider/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/divider/',
 				'demo'     => 'https://cyberchimps.com/blocks/divider/',
 				'category' => 'content',
 				'status'   => 1,
@@ -137,7 +137,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'expand',
 				'title'    => 'Expand/Show More',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/expand-show-more/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/expand-show-more/',
 				'demo'     => 'https://cyberchimps.com/blocks/expand/',
 				'category' => 'content',
 				'status'   => 1,
@@ -145,7 +145,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'feature-grid',
 				'title'    => 'Feature Grid',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/feature-grid/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/feature-grid/',
 				'demo'     => 'https://cyberchimps.com/blocks/feature-grid/',
 				'category' => 'content',
 				'status'   => 1,
@@ -153,7 +153,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'flipbox',
 				'title'    => 'Flip Box',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/flip-box/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/flip-box/',
 				'demo'     => 'https://cyberchimps.com/blocks/flip-box/',
 				'category' => 'content',
 				'status'   => 1,
@@ -161,7 +161,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'googlemap',
 				'title'    => 'Google Map',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/google-map/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/google-map/',
 				'demo'     => 'https://cyberchimps.com/blocks/google-map/',
 				'category' => 'content',
 				'status'   => 1,
@@ -169,7 +169,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'icons-list',
 				'title'    => 'Icon List',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/icon-list/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/icon-list/',
 				'demo'     => 'https://cyberchimps.com/blocks/icon-list/',
 				'category' => 'content',
 				'status'   => 1,
@@ -177,7 +177,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'image-boxes-block',
 				'title'    => 'Image Boxes',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/image-boxes/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/image-boxes/',
 				'demo'     => 'https://cyberchimps.com/blocks/image-boxes/',
 				'category' => 'content',
 				'status'   => 1,
@@ -185,7 +185,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'image-hotspot',
 				'title'    => 'Image Hotspot',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/image-hotspot',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/image-hotspot/',
 				'demo'     => 'https://cyberchimps.com/blocks/image-hotspot/',
 				'category' => 'content',
 				'status'   => 1,
@@ -193,7 +193,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'image-slider',
 				'title'    => 'Image Slider',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/image-slider/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/image-slider/',
 				'demo'     => 'https://cyberchimps.com/blocks/image-slider/',
 				'category' => 'content',
 				'status'   => 1,
@@ -201,7 +201,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'info-block',
 				'title'    => 'Info Block',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/info-block/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/info-block/',
 				'demo'     => 'https://cyberchimps.com/blocks/info-block/',
 				'category' => 'content',
 				'status'   => 1,
@@ -209,7 +209,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'inline-notice',
 				'title'    => 'Inline Notice Block',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/inline-notice-block/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/inline-notice-block/',
 				'demo'     => 'https://cyberchimps.com/blocks/inline-notice/',
 				'category' => 'content',
 				'status'   => 1,
@@ -217,7 +217,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'instagram',
 				'title'    => 'Instagram Feed',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/instagram-feed/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/instagram-feed/',
 				'demo'     => 'https://cyberchimps.com/blocks/instagram-feed/',
 				'category' => 'content',
 				'status'   => 1,
@@ -225,7 +225,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'gallery-masonry',
 				'title'    => 'Masonry',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/masonry/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/masonry/',
 				'demo'     => 'https://cyberchimps.com/blocks/masonry/',
 				'category' => 'content',
 				'status'   => 1,
@@ -233,7 +233,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'buttons',
 				'title'    => 'Multi Buttons',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/multi-buttons/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/multi-buttons/',
 				'demo'     => 'https://cyberchimps.com/blocks/multi-buttons/',
 				'category' => 'cro',
 				'status'   => 1,
@@ -241,7 +241,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'portfolio',
 				'title'    => 'Portfolio',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/portfolio/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/portfolio/',
 				'demo'     => 'https://cyberchimps.com/blocks/portfolio/',
 				'category' => 'content',
 				'status'   => 1,
@@ -249,7 +249,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'post-carousel',
 				'title'    => 'Post Carousel',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/post-carousel/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/post-carousel/',
 				'demo'     => 'https://cyberchimps.com/blocks/post-carousel/',
 				'category' => 'content',
 				'status'   => 1,
@@ -257,7 +257,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'post-timeline',
 				'title'    => 'Post Timeline',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/post-timeline/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/post-timeline/',
 				'demo'     => 'https://cyberchimps.com/blocks/post-timeline/',
 				'category' => 'timelines',
 				'status'   => 1,
@@ -265,7 +265,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'pricing-list',
 				'title'    => 'Pricing List',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/pricing-list/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/pricing-list/',
 				'demo'     => 'https://cyberchimps.com/blocks/pricing-list/',
 				'category' => 'content',
 				'status'   => 1,
@@ -273,7 +273,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'pricing-table',
 				'title'    => 'Pricing Table',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/pricing-table/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/pricing-table/',
 				'demo'     => 'https://cyberchimps.com/blocks/pricing-table/',
 				'category' => 'content',
 				'status'   => 1,
@@ -281,7 +281,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'progress-bar',
 				'title'    => 'Progress Bar',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/progress-bar/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/progress-bar/',
 				'demo'     => 'https://cyberchimps.com/blocks/progress-bar/',
 				'category' => 'content',
 				'status'   => 1,
@@ -289,7 +289,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'responsive-block-editor-addons-post-grid',
 				'title'    => 'Post And Page Grid',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/post-and-page-grid/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/post-and-page-grid/',
 				'demo'     => 'https://cyberchimps.com/blocks/post-and-page-grid/',
 				'category' => 'content',
 				'status'   => 1,
@@ -297,7 +297,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'section',
 				'title'    => 'Section',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/section/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/section/',
 				'demo'     => 'https://cyberchimps.com/blocks/section/',
 				'category' => 'content',
 				'status'   => 1,
@@ -305,7 +305,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'shape-divider',
 				'title'    => 'Shape Divider',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/shape-divider/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/shape-divider/',
 				'demo'     => 'https://cyberchimps.com/blocks/shape-divider/',
 				'category' => 'content',
 				'status'   => 1,
@@ -313,7 +313,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'social-share',
 				'title'    => 'Social Share',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/social-share/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/social-share/',
 				'demo'     => 'https://cyberchimps.com/blocks/social-share/',
 				'category' => 'content',
 				'status'   => 1,
@@ -321,7 +321,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'spacer',
 				'title'    => 'Spacer',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/spacer/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/spacer/',
 				'demo'     => 'https://cyberchimps.com/blocks/spacer/',
 				'category' => 'content',
 				'status'   => 1,
@@ -329,7 +329,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'table-of-contents',
 				'title'    => 'Table Of Contents',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/table-of-contents/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/table-of-contents/',
 				'demo'     => 'https://cyberchimps.com/blocks/table-of-content/',
 				'category' => 'content',
 				'status'   => 1,
@@ -337,7 +337,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'tabs',
 				'title'    => 'Tabs',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/tabs/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/tabs/',
 				'demo'     => 'https://cyberchimps.com/blocks/tabs/',
 				'category' => 'content',
 				'status'   => 1,
@@ -345,7 +345,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'taxonomy-list',
 				'title'    => 'Taxonomy List',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/taxonomy-list/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/taxonomy-list/',
 				'demo'     => 'https://cyberchimps.com/blocks/taxonomy-list/',
 				'category' => 'content',
 				'status'   => 1,
@@ -353,7 +353,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'team',
 				'title'    => 'Team',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/team/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/team/',
 				'demo'     => 'https://cyberchimps.com/blocks/team/',
 				'category' => 'content',
 				'status'   => 1,
@@ -361,7 +361,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'testimonial',
 				'title'    => 'Testimonial',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/testimonial/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/testimonial/',
 				'demo'     => 'https://cyberchimps.com/blocks/testimonial/',
 				'category' => 'content',
 				'status'   => 1,
@@ -369,7 +369,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'testimonial-slider',
 				'title'    => 'Testimonial Slider',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/testimonial-slider/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/testimonial-slider/',
 				'demo'     => 'https://cyberchimps.com/blocks/testimonial-slider/',
 				'category' => 'content',
 				'status'   => 1,
@@ -377,7 +377,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'video-popup',
 				'title'    => 'Video Popup',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/video-popup/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/video-popup/',
 				'demo'     => 'https://cyberchimps.com/blocks/video-popup/',
 				'category' => 'content',
 				'status'   => 1,
@@ -385,7 +385,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'wp-search',
 				'title'    => 'WP Search',
-				'docs'     => 'https://docs.cyberchimps.com/responsive-gutenberg-addons/blocks/wp-search/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/wp-search/',
 				'demo'     => 'https://cyberchimps.com/blocks/wp-search/',
 				'category' => 'content',
 				'status'   => 1,
@@ -407,12 +407,12 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 		if ( ! $rbea_blocks ) {
 			return false;
 		}
+		update_option( 'rbea_blocks', $this->get_rbea_blocks() );
 		return true;
 	}
 
 	/**
 	 * Inserts the RBEA blocks into the database.
-	 *
 	 * @since 1.7.0
 	 */
 	public function insert_blocks_data() {

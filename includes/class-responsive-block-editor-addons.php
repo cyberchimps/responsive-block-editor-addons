@@ -65,7 +65,7 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_block_assets' ) );
 
-		add_filter( 'block_categories_all', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ) );
+		add_filter( 'block_categories_all', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ), 9999999,2 );
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'responsive_block_editor_addons_editor_assets' ) );
 
@@ -437,15 +437,24 @@ class Responsive_Block_Editor_Addons {
 	 * @return array Updated block categories.
 	 */
 	public function responsive_block_editor_addons_add_custom_block_category( $categories ) {
-		return array_merge(
-			$categories,
-			array(
-				array(
-					'slug'  => 'responsive_block_editor_addons',
-					'title' => __( 'Responsive Gutenberg Blocks', 'responsive-block-editor-addons' ),
-				),
-			)
+		$category = array(
+			'slug'  => 'responsive_block_editor_addons',
+			'title' => __( 'Responsive Gutenberg Blocks', 'responsive-block-editor-addons' ),
 		);
+	
+		if ( is_array( $categories ) ) {
+			$existingSlugs = array_column( $categories, 'slug' );
+	
+			if ( is_array( $existingSlugs ) ) {
+				if ( in_array( $category['slug'], $existingSlugs ) ) {
+					return $categories; // Bail early if category exists
+				}
+			}
+		}
+			
+		array_unshift( $categories, $category ); // Add category on top of pile
+	
+		return $categories;
 	}
 
 

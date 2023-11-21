@@ -236,7 +236,7 @@ export default class Edit extends Component {
                       setAttributes({ featureGrid: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
                 {showDesc && (
@@ -257,7 +257,7 @@ export default class Edit extends Component {
                       setAttributes({ featureGrid: data_copy });
                     }}
                     formattingControls={formattingControls}
-                    keepPlaceholderOnFocus
+                    
                   />
                 )}
 
@@ -286,7 +286,7 @@ export default class Edit extends Component {
                         setAttributes({ featureGrid: data_copy });
                       }}
                       formattingControls={formattingControls}
-                      keepPlaceholderOnFocus
+                      
                     />
                     <form
                       key="form-link"

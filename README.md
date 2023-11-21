@@ -13,7 +13,7 @@ Welcome to the Responsive Block Editor Addons repository on GitHub. Here you can
 If you are not a developer, please use the Responsive Block Editor Addons plugin page on [WordPress.org](https://wordpress.org/plugins/responsive-block-editor-addons/).
 
 ## Documentation
-- [Responsive Block Editor Addons Documentation](https://docs.cyberchimps.com/responsive-gutenberg-addons/)
+- [Responsive Block Editor Addons Documentation](https://cyberchimps.com/blocks/docs/)
 
 ## Support
 Please don't use this repository or our issue tracker here for support requests. You can raise only core Responsive Block Editor Addons issues here. Support can be accessible through the appropriate channels:

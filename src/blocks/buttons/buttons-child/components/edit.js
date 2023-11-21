@@ -114,7 +114,7 @@ export default class Edit extends Component {
     return (
       <Fragment>
         {buttonFontFamily && loadGoogleFont(buttonFontFamily)}
-        <Inspector {...{ setAttributes, ...this.props }} />
+        <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />
 
         <Buttons {...this.props}>
           <div
@@ -124,6 +124,7 @@ export default class Edit extends Component {
               `responsive-block-editor-addons-button__effect-${hoverEffect}`,
               inheritFromTheme ? "wp-block-button" : null
             )}
+            key={`${block_id}`}
           >
             <a
               className={classnames(
@@ -154,7 +155,7 @@ export default class Edit extends Component {
                 allowedFormats={["bold", "italic", "strikethrough"]}
                 className={updatedButtonTextClass}
                 hoverEffect={hoverEffect}
-                keepPlaceholderOnFocus
+                
               />
               {"" !== icon && iconPosition == "after" && (
                 <span
