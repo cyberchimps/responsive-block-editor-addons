@@ -522,15 +522,7 @@ export default class Inspector extends Component {
                   })
                 }
               />
-              <ToggleControl
-                label={__("Labels", "responsive-block-editor-addons")}
-                checked={showLabels}
-                onChange={() =>
-                  this.props.setAttributes({
-                    showLabels: !showLabels,
-                  })
-                }
-              />
+              
             </PanelBody>            
             <PanelBody
               title={__(

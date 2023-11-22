@@ -547,7 +547,7 @@
 
     ' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email': {
       "width": generateCSSUnit(inputWidth, "%"),
-      "height": generateCSSUnit(inputHeight, "px"),
+      "height": generateCSSUnit(inputHeight, "px" + "!important" ),
 		},
 
     ' .wpcf7-select': {

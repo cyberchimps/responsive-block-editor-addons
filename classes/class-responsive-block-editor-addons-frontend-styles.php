@@ -13202,7 +13202,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email'                     => array(
 					'width'  => self::get_css_value( $attr['inputWidth'], '%' ),
-					'height' => self::get_css_value( $attr['inputHeight'], 'px' ),
+					'height' => self::get_css_value( $attr['inputHeight'], 'px !important' ),
 				),
 
 				' .wpcf7-select'                           => array(
