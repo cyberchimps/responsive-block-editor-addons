@@ -13439,7 +13439,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wpcf7-form-control'                => array(
 					'width'  => self::get_css_value( $attr['inputWidthMobile'], '%' ),
-					'height' => self::get_css_value( $attr['inputHeightMobile'], 'px' ),
+					'height' => self::get_css_value( $attr['inputHeightMobile'], 'px !important' ),
 				),
 
 				' .wpcf7 form.wpcf7-form:not(input)'  => array(
@@ -13544,7 +13544,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wpcf7-form-control'                => array(
 					'width'  => self::get_css_value( $attr['inputWidthTablet'], '%' ),
-					'height' => self::get_css_value( $attr['inputHeightTablet'], 'px' ),
+					'height' => self::get_css_value( $attr['inputHeightTablet'], 'px !important' ),
 				),
 
 				' .wpcf7 form.wpcf7-form:not(input)'  => array(

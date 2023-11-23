@@ -101,7 +101,17 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'demo'     => 'https://cyberchimps.com/blocks/card-block/',
 				'category' => 'content',
 				'status'   => 1,
-			),
+			)
+			,
+			array(
+				'key'      => 'contact-form-7-styler',
+				'title'    => 'Contact Form 7 Styler',
+				'docs'     => 'https://cyberchimps.com/blocks/',
+				'demo'     => 'https://cyberchimps.com/blocks/',
+				'category' => 'content',
+				'status'   => 1,
+			)
+			,
 			array(
 				'key'      => 'content-timeline',
 				'title'    => 'Content Timeline',
