@@ -200,7 +200,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 = 1.7.4 - 24th November 2023 =
 * New - Contact Form 7 Styler Block
 
-= 1.7.3 - 21st November 2023 =
+= 1.7.3 - 20th November 2023 =
 * New - Compatibility with WordPress 6.4 
 
 = 1.7.2 - 5th October 2023 =
