@@ -27,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/contact-form-7-styler", {
     "Modify or enhance the contact form 7 design",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,
+  icon: ResponsiveBlockEditorAddonsIcons.contact_form_7_styler,
   category: "responsive_block_editor_addons",
   keywords: [
     __("contact-form-7-styler", "responsive-block-editor-addons"),

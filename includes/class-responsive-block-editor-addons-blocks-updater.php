@@ -105,8 +105,8 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'contact-form-7-styler',
 				'title'    => 'Contact Form 7 Styler',
-				'docs'     => 'https://cyberchimps.com/blocks/',
-				'demo'     => 'https://cyberchimps.com/blocks/',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/contact-form-7-styler/',
+				'demo'     => 'https://cyberchimps.com/blocks/contact-form-7-styler/',
 				'category' => 'content',
 				'status'   => 1,
 			),
