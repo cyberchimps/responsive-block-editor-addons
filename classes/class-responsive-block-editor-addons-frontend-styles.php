@@ -13065,9 +13065,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$inputBox_shadow_position_css = '';
 			}
 
-			$submit_button_box_shadow_position_css = $attr['inputBoxShadowPosition'];
+			$submit_button_box_shadow_position_css = $attr['submitButtonBoxShadowPosition'];
 
-			if ( 'outset' === $attr['inputBoxShadowPosition'] ) {
+			if ( 'outset' === $attr['submitButtonBoxShadowPosition'] ) {
 				$submit_button_box_shadow_position_css = '';
 			}
 
@@ -13339,7 +13339,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-radius'    => self::get_css_value( $attr['ctaBorderRadius'], 'px' ),
 					'width'            => self::get_css_value( $attr['submitButtonWidth'], '%' ),
 					'height'           => self::get_css_value( $attr['submitButtonHeight'], 'px' ),
-					'box-shadow'       => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $box_shadow_position_css,
+					'box-shadow'       => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $submit_button_box_shadow_position_css,
 
 				),
 
@@ -13349,7 +13349,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-color'     => $attr['ctaHoverBorderColor'],
 					'color'            => $attr['ctaHoverColor'] . '!important',
 					'border-color'     => $attr['ctaHoverBorderColor'],
-					'box-shadow'       => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $box_shadow_position_css,
+					'box-shadow'       => self::get_css_value( $attr['submitButtonBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['submitButtonBoxShadowSpread'], 'px' ) . ' ' . $attr['submitButtonBoxShadowColor'] . ' ' . $submit_button_box_shadow_position_css,
 				),
 
 				' .wpcf7 form .wpcf7-response-output'      => array(					
@@ -13439,7 +13439,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wpcf7-form-control'                => array(
 					'width'  => self::get_css_value( $attr['inputWidthMobile'], '%' ),
-					'height' => self::get_css_value( $attr['inputHeightMobile'], 'px' ),
+					'height' => self::get_css_value( $attr['inputHeightMobile'], 'px !important' ),
 				),
 
 				' .wpcf7 form.wpcf7-form:not(input)'  => array(
@@ -13544,7 +13544,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .wpcf7-form-control'                => array(
 					'width'  => self::get_css_value( $attr['inputWidthTablet'], '%' ),
-					'height' => self::get_css_value( $attr['inputHeightTablet'], 'px' ),
+					'height' => self::get_css_value( $attr['inputHeightTablet'], 'px !important' ),
 				),
 
 				' .wpcf7 form.wpcf7-form:not(input)'  => array(
