@@ -790,7 +790,7 @@
 
     ' .wpcf7-form-control': {
       "width": generateCSSUnit(inputWidthMobile, "%"),
-      "height": generateCSSUnit(inputHeightMobile, "px"),
+      "height": generateCSSUnit(inputHeightMobile, "px" + "!important"),
 		},
 
     ' .wpcf7 form.wpcf7-form:not(input)': {
@@ -880,7 +880,7 @@
 
     ' .wpcf7-form-control': {
       "width": generateCSSUnit(inputWidthTablet, "%"),
-      "height": generateCSSUnit(inputHeightTablet, "px"),
+      "height": generateCSSUnit(inputHeightTablet, "px" + "!important"),
 		},
 
     ' .wpcf7 form.wpcf7-form:not(input)': {
