@@ -13900,7 +13900,218 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'afterSubmitMsgbgColor'          =>'',
 			);
 		}
-		
+		public static function get_responsive_block_image_css($attr, $id)
+		{	
+			//get the protocol
+			$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+			// Get the host (domain and port)
+			$host = $_SERVER['HTTP_HOST'];
+			$baseUrl = $protocol . '://' . $host;
+
+			$defaults = self::get_responsive_block_image_block_default_attributes();
+			$attr     = array_merge($defaults, (array) $attr);
+			$filterValue = ($attr['imageOnHoverImage'] === "grayscale") ? "grayscale(100%)" : (($attr['imageOnHoverImage'] === "blur") ? "blur(5px)" : null);
+			$zoomintransition = ($attr['imageOnHoverImage'] === "zoomin" || "slide" ) ? "transform .35s ease-in-out" : null;
+			$zoomintransform = ($attr['imageOnHoverImage'] === "zoomin") ? "scale(1.1)" :
+				(($attr['imageOnHoverImage'] === "slide") ? "translate3d(0px, 0, 0)" :
+				null);
+			$slidetransform = ($attr['imageOnHoverImage'] === "slide") ? "translate3d(-40px, 0, 0)" : null;
+	
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+			$maskImageUrl = $baseUrl . $attr['MaskShape'];
+			$selectors = array(
+				' .img-main-block'=> array (
+					'text-align' => $attr['imageAlignment'],
+				),
+				"  .responsive-blocks-image-block" => array(
+					"border-color" => $attr['imageBorderColor'],
+					"border-width" => self::get_css_value($attr['imageBorderWidth'], 'px'),
+					"border-radius" => self::get_css_value($attr['imageBorderRadius'], 'px'),
+					"border-style" => $attr['imageBorderStyle'],
+					"box-shadow" =>
+					self::get_css_value($attr['imageboxShadowHOffset'], 'px') . " " .
+						self::get_css_value($attr['imageboxShadowVOffset'], 'px') .
+						" " .
+						self::get_css_value($attr['imageboxShadowBlur'], 'px') .
+						" " .
+						self::get_css_value($attr['imageboxShadowSpread'], 'px') .
+						" " .
+						$attr['imageboxShadowColor'],
+					"margin-top" => self::get_css_value($attr['imagetopmargin'], 'px'),
+					"margin-bottom" => self::get_css_value($attr['imagebottommargin'], 'px'),
+					"margin-left" => self::get_css_value($attr['imageleftmargin'], 'px'),
+					"margin-right" => self::get_css_value($attr['imagerightmargin'], 'px'),
+					"-webkit-mask-image" => $attr['MaskShape'] !== "none" ? "url('" . $maskImageUrl . "')" : null,
+					"mask-shape" => $attr['MaskShape'] !== "none" ? "url('" . $maskImageUrl . "')" : null,
+					"-webkit-mask-size"=> $attr['MaskSize'],
+					"mask-size"=> $attr['MaskSize'],
+					"-webkit-mask-position"=> $attr['MaskPosition'],
+					"mask-position"=> $attr['MaskPosition'],
+					"-webkit-mask-repeat"=> $attr['MaskRepeat'],
+					"mask-repeat"=> $attr['MaskRepeat'],
+					"transform"=> $slidetransform,
+					"object-fit"=> $attr['imageObjectFit'],
+					"width"=> self::get_css_value($attr['imageWidth'], 'px'),
+					"height"=>self::get_css_value($attr['imageHeight'], 'px'),
+				),
+				"  .responsive-blocks-image-block:hover" => array(
+					"box-shadow" =>
+					self::get_css_value($attr['imageboxShadowHoverHOffset'], 'px') . " " .
+						self::get_css_value($attr['imageboxShadowHoverVOffset'], 'px') .
+						" " .
+						self::get_css_value($attr['imageboxShadowHoverBlur'], 'px') .
+						" " .
+						self::get_css_value($attr['imageboxShadowHoverSpread'], 'px') .
+						" " .
+						$attr['imageboxShadowHoverColor'],
+					"filter"=> $filterValue,
+					"transition"=> $zoomintransition,
+					"transform"=> $zoomintransform	
+
+				),
+				" .responsive-img-caption" => array(
+					"font-family" => $attr['captionFontFamily'],
+					"font-size" => self::get_css_value($attr['captionFontSize'], 'px'),
+					"line-height" =>  $attr['captionLineHeight'],
+					"letter-spacing" => self::get_css_value($attr['captionLetterSpacing'], 'px'),
+					"text-transform" => $attr['captionTextTransform'],
+					"color" => $attr['captionColor'],
+					"margin-top"=> self::get_css_value($attr['captiontopmargin'], 'px'),
+					"margin-bottom"=> self::get_css_value($attr['captionbottommargin'], 'px'),
+					"margin-left"=> self::get_css_value($attr['captionleftmargin'], 'px'),
+					"margin-right"=> self::get_css_value($attr['captionrightmargin'], 'px'),
+					"text-align" => $attr['captionimageAlignment']
+				)
+			);
+			$tablet_selectors = array(
+				' .img-main-block' => array(
+					'text-align' => $attr['imageAlignmentTablet'],
+				),
+				"  .responsive-blocks-image-block" => array(
+					"margin-top" => self::get_css_value($attr['imagetopmarginTablet'], 'px'),
+					"margin-bottom" => self::get_css_value($attr['imagebottommarginTablet'], 'px'),
+					"margin-left" => self::get_css_value($attr['imageleftmarginTablet'], 'px'),
+					"margin-right" => self::get_css_value($attr['imagerightmarginTablet'], 'px'),
+					"width"=> self::get_css_value($attr['imageWidthTablet'], 'px'),
+					"height"=>self::get_css_value($attr['imageHeightTablet'], 'px'),
+				),
+				" .responsive-img-caption" => array(
+					"font-size" => self::get_css_value($attr['captionFontSizeTablet'], 'px'),
+					"margin-top"=> self::get_css_value($attr['captiontopmarginTablet'], 'px'),
+					"margin-bottom"=> self::get_css_value($attr['captionbottommarginTablet'], 'px'),
+					"margin-left"=> self::get_css_value($attr['captionleftmarginTablet'], 'px'),
+					"margin-right"=> self::get_css_value($attr['captionrightmarginTablet'], 'px'),
+					"text-align" => $attr['captionimageAlignmentTablet']				
+				)
+			);
+
+			$mobile_selectors = array(
+				' .img-main-block' => array(
+					'text-align' => $attr['imageAlignmentMobile'],
+				),
+				"  .responsive-blocks-image-block" => array(
+					"margin-top" => self::get_css_value($attr['imagetopmarginMobile'], 'px'),
+					"margin-bottom" => self::get_css_value($attr['imagebottommarginMobile'], 'px'),
+					"margin-left" => self::get_css_value($attr['imageleftmarginMobile'], 'px'),
+					"margin-right" => self::get_css_value($attr['imagerightmarginMobile'], 'px'),
+				),
+				" .responsive-img-caption" => array(
+					"font-size" => self::get_css_value($attr['captionFontSizeMobile'], 'px'),
+					"margin-top"=> self::get_css_value($attr['captiontopmarginMobile'], 'px'),
+					"margin-bottom"=> self::get_css_value($attr['captionbottommarginMobile'], 'px'),
+					"margin-left"=> self::get_css_value($attr['captionleftmarginMobile'], 'px'),
+					"margin-right"=> self::get_css_value($attr['captionrightmarginMobile'], 'px'),
+					"text-align" => $attr['captionimageAlignmentMobile'],
+					"width"=> self::get_css_value($attr['imageWidthMobile'], 'px'),
+					"height"=>self::get_css_value($attr['imageHeightMobile'], 'px'),				
+				)
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-image.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css($combined_selectors, $id);
+			return $css;
+		}
+		public static function get_responsive_block_image_block_default_attributes()
+		{
+			return array(
+				'imageUrl' => '',
+				'altText' => '',
+				'caption' => '',
+				'sourceType' => '',
+				'imageAlignment' => 'left',
+				'imageAlignmentTablet' => 'left',
+				'imageAlignmentMobile' => 'left',
+				'imageBorderColor' => 'none',
+				'imageBorderRadius' => '0',
+				'imageBorderStyle' => '0',
+				'imageBorderWidth' => '0',
+				'imageboxShadowColor' => 'none',
+				'imageboxShadowHOffset' => '0',
+				'imageboxShadowVOffset' => '0',
+				'imageboxShadowBlur' => '0',
+				'imageboxShadowSpread' => '0',
+				'imagebottommargin' => '0',
+				'imagetopmargin' => '0',
+				'imageleftmargin' => '0',
+				'imagerightmargin' => '0',
+				'imagetopmarginTablet' => '0',
+				'imagebottommarginTablet' => '0',
+				'imageleftmarginTablet' => '0',
+				'imagerightmarginTablet' => '0',
+				'imagetopmarginMobile' => '0',
+				'imagebottommarginMobile' => '0',
+				'imageleftmarginMobile' => '0',
+				'imagerightmarginMobile' => '0',
+				'imageboxShadowHoverColor' => 'none',
+				'imageboxShadowHoverHOffset' => '0',
+				'imageboxShadowHoverVOffset' => '0',
+				'imageboxShadowHoverBlur' => '0',
+				'imageboxShadowHoverSpread' => '0',
+				'imageboxShadowHoverPosition' => '0',
+				'captionFontFamily' => '',
+				'captionFontSize' => '13',
+				'captionLineHeight' => '1',
+				'captionLetterSpacing' => '0',
+				'captionTextTransform' => 'default',
+				'captionFontSizeMobile' => '13',
+				'captionFontSizeTablet' => '13',
+				'captionColor' => '',
+				'captiontopmargin' => '0',
+				'captionbottommargin' => '0',
+				'captionleftmargin' => '0',
+				'captionrightmargin' => '0',
+				'captiontopmarginTablet' => '0',
+				'captionbottommarginTablet' => '0',
+				'captionleftmarginTablet' => '0',
+				'captionrightmarginTablet' => '0',
+				'captiontopmarginMobile' => '0',
+				'captionbottommarginMobile' => '0',
+				'captionleftmarginMobile' => '0',
+				'captionrightmarginMobile' => '0',
+				'captionimageAlignment' => 'left',
+    			'captionimageAlignmentTablet' => 'left',
+    			'captionimageAlignmentMobile' => 'left',
+				'MaskShape'=>'none',
+    			'MaskSize'=>'auto',
+    			'MaskPosition'=>'center top',
+    			'MaskRepeat'=>'no-repeat',
+				'imageOnHoverImage'=>'',
+				'imageObjectFit'=> 'inherit',
+				'imageWidth'=> '',
+      			'imageHeight'=> '',
+      			'imageWidthTablet'=> '',
+      			'imageHeightTablet'=> '',
+      			'imageWidthMobile'=> '',
+      			'imageHeightMobile'=> '',
+			);
+		}
 		/**
 		 * Generate gradient effect
 		 *

@@ -1,0 +1,28 @@
+.image-container{
+    padding: 20px;
+}
+.image-container h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+}
+.image-container p{
+    font-size: 13px;
+}
+.img-block{
+    display: inline-block;
+    vertical-align: top;
+}
+.image-selection-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.responsive-elementor-addons-image-div{
+    display: flex;
+}
+.block-editor-block-toolbar__slot {
+    border-right: 1px solid #1e1e1e;
+}
