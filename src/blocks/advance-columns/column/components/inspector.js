@@ -199,6 +199,7 @@ export default class Inspector extends Component {
                 value={width}
                 min={0}
                 max={100}
+                step={0.01}
                 onChange={(value) =>
                   setAttributes({ width: value !== undefined ? value : 50 })
                 }
