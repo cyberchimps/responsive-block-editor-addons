@@ -279,7 +279,133 @@ const attributes = {
   imageHeightMobile:{
     type:"number",
     default:0
-  }
+  },
+  Layoverswitch:{
+    type:"boolean",
+    default:false
+  },
+  LayoverHeading:{
+    type:"string",
+    default:""
+  },
+  LayoverContentPosition:{
+    type:"string",
+    default:"centercenter"
+  },
+  layoverimageBorderColor: {
+    type: "string",
+  },
+  layoverimageBorderRadius: {
+    type: "number",
+    default: 0,
+  },
+  layoverimageBorderStyle: {
+    type: "string",
+    default: "none",
+  },
+  layoverimageBorderWidth: {
+    type: "number",
+    default: 0,
+  },
+  layoverInputDistance: {
+    type:"number",
+    default:"15"
+  },
+  layoverBackgroundcolor:{
+    type:"string",
+    default:""
+  },
+  layoverOpacity:{
+    type:"number",
+    default:20
+  },
+  layoverHoverOpacity:{
+    type:"number",
+    default:100
+  },
+  layoverHeadingTag:{
+    type:"string",
+    default:"h2"
+  },
+  layoverHeadingFontFamily: {
+    type: "string",
+  },
+  layoverHeadingFontSize: {
+    type: "number",
+  },
+  layoverHeadingFontSizeMobile: {
+    type: "number",
+  },
+  layoverHeadingFontSizeTablet: {
+    type: "number",
+  },
+  layoverHeadingFontWeight: {
+    type: "string",
+    default: "600",
+  },
+  layoverHeadingLineHeight: {
+    type: "number",
+    default: 1,
+  },
+  layoverHeadingLetterSpacing: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingTextTransform: {
+    type: "string",
+  },
+  layoverHeadingColor: {
+    type: "string",
+  },
+  layoverHeadingtopmargin: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingbottommargin: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingleftmargin: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingrightmargin: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingtopmarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingbottommarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingleftmarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingrightmarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingtopmarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingbottommarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingleftmarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  layoverHeadingrightmarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  
 };
 
 export default attributes;

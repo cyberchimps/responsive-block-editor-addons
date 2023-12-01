@@ -13901,7 +13901,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 		}
 		public static function get_responsive_block_image_css($attr, $id)
-		{	
+		{
 			//get the protocol
 			$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
 			// Get the host (domain and port)
@@ -13911,17 +13911,45 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$defaults = self::get_responsive_block_image_block_default_attributes();
 			$attr     = array_merge($defaults, (array) $attr);
 			$filterValue = ($attr['imageOnHoverImage'] === "grayscale") ? "grayscale(100%)" : (($attr['imageOnHoverImage'] === "blur") ? "blur(5px)" : null);
-			$zoomintransition = ($attr['imageOnHoverImage'] === "zoomin" || "slide" ) ? "transform .35s ease-in-out" : null;
-			$zoomintransform = ($attr['imageOnHoverImage'] === "zoomin") ? "scale(1.1)" :
-				(($attr['imageOnHoverImage'] === "slide") ? "translate3d(0px, 0, 0)" :
+			$zoomintransition = ($attr['imageOnHoverImage'] === "zoomin" || "slide") ? "transform .35s ease-in-out" : null;
+			$zoomintransform = ($attr['imageOnHoverImage'] === "zoomin") ? "scale(1.1)" : (($attr['imageOnHoverImage'] === "slide") ? "translate3d(0px, 0, 0)" :
 				null);
 			$slidetransform = ($attr['imageOnHoverImage'] === "slide") ? "translate3d(-40px, 0, 0)" : null;
-	
+
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 			$maskImageUrl = $baseUrl . $attr['MaskShape'];
+			$leftOverlayAlign =
+				$attr['LayoverContentPosition'] === "lefttop" ||
+				$attr['LayoverContentPosition'] === "leftcenter" ||
+				$attr['LayoverContentPosition'] === "leftbottom"
+				? "flex-start"
+				: ($attr['LayoverContentPosition'] === "centertop" ||
+					$attr['LayoverContentPosition'] === "centercenter" ||
+					$attr['LayoverContentPosition'] === "centerbottom"
+					? "center"
+					: ($attr['LayoverContentPosition'] === "righttop" ||
+						$attr['LayoverContentPosition'] === "rightcenter" ||
+						$attr['LayoverContentPosition'] === "rightbottom"
+						? "flex-end"
+						: "center"));
+
+			$leftOverlayJustify =
+				$attr['LayoverContentPosition'] === "lefttop" ||
+				$attr['LayoverContentPosition'] === "centertop" ||
+				$attr['LayoverContentPosition'] === "righttop"
+				? "flex-start"
+				: ($attr['LayoverContentPosition'] === "leftcenter" ||
+					$attr['LayoverContentPosition'] === "centercenter" ||
+					$attr['LayoverContentPosition'] === "rightcenter"
+					? "center"
+					: ($attr['LayoverContentPosition'] === "leftbottom" ||
+						$attr['LayoverContentPosition'] === "centerbottom" ||
+						$attr['LayoverContentPosition'] === "rightbottom"
+						? "flex-end"
+						: "center"));
 			$selectors = array(
-				' .img-main-block'=> array (
+				' .img-main-block' => array(
 					'text-align' => $attr['imageAlignment'],
 				),
 				"  .responsive-blocks-image-block" => array(
@@ -13944,16 +13972,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"margin-right" => self::get_css_value($attr['imagerightmargin'], 'px'),
 					"-webkit-mask-image" => $attr['MaskShape'] !== "none" ? "url('" . $maskImageUrl . "')" : null,
 					"mask-shape" => $attr['MaskShape'] !== "none" ? "url('" . $maskImageUrl . "')" : null,
-					"-webkit-mask-size"=> $attr['MaskSize'],
-					"mask-size"=> $attr['MaskSize'],
-					"-webkit-mask-position"=> $attr['MaskPosition'],
-					"mask-position"=> $attr['MaskPosition'],
-					"-webkit-mask-repeat"=> $attr['MaskRepeat'],
-					"mask-repeat"=> $attr['MaskRepeat'],
-					"transform"=> $slidetransform,
-					"object-fit"=> $attr['imageObjectFit'],
-					"width"=> self::get_css_value($attr['imageWidth'], 'px'),
-					"height"=>self::get_css_value($attr['imageHeight'], 'px'),
+					"-webkit-mask-size" => $attr['MaskSize'],
+					"mask-size" => $attr['MaskSize'],
+					"-webkit-mask-position" => $attr['MaskPosition'],
+					"mask-position" => $attr['MaskPosition'],
+					"-webkit-mask-repeat" => $attr['MaskRepeat'],
+					"mask-repeat" => $attr['MaskRepeat'],
+					"transform" => $slidetransform,
+					"object-fit" => $attr['imageObjectFit'],
+					"width" => self::get_css_value($attr['imageWidth'], 'px'),
+					"height" => self::get_css_value($attr['imageHeight'], 'px'),
 				),
 				"  .responsive-blocks-image-block:hover" => array(
 					"box-shadow" =>
@@ -13965,11 +13993,35 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						self::get_css_value($attr['imageboxShadowHoverSpread'], 'px') .
 						" " .
 						$attr['imageboxShadowHoverColor'],
-					"filter"=> $filterValue,
-					"transition"=> $zoomintransition,
-					"transform"=> $zoomintransform	
+					"filter" => $filterValue,
+					"transition" => $zoomintransition,
+					"transform" => $zoomintransform
 
 				),
+				" .responsive-image-block-description" => array(
+					"align-items" => $leftOverlayAlign,
+					"justify-content" => $leftOverlayJustify,
+					"border-color" => $attr['layoverimageBorderColor'],
+					"border-width" => self::get_css_value($attr['layoverimageBorderWidth'], "px"),
+					"border-radius" => self::get_css_value($attr['layoverimageBorderRadius'], "px"),
+					"border-style" => $attr['layoverimageBorderStyle'],
+					"top" => self::get_css_value($attr['layoverInputDistance'], "px"),
+					"bottom" => self::get_css_value($attr['layoverInputDistance'], "px"),
+					"right" => self::get_css_value($attr['layoverInputDistance'], "px"),
+					"left" => self::get_css_value($attr['layoverInputDistance'], "px"),
+					"background" => $attr['layoverBackgroundcolor'],
+					"opacity" => self::get_css_value($attr['layoverOpacity'], "%")
+				),
+				" .responsive-image-block-description:hover" => array(
+					"opacity" => self::get_css_value($attr['layoverHoverOpacity'], "%"),
+				),
+				" .responsive-image-block-description-overlay" => array(
+					"opacity" => self::get_css_value($attr['layoverOpacity'], "%")
+				),
+				" .responsive-image-block-description-overlay:hover" => array(
+					"opacity" => self::get_css_value($attr['layoverHoverOpacity'], "%"),
+				),
+
 				" .responsive-img-caption" => array(
 					"font-family" => $attr['captionFontFamily'],
 					"font-size" => self::get_css_value($attr['captionFontSize'], 'px'),
@@ -13977,15 +14029,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"letter-spacing" => self::get_css_value($attr['captionLetterSpacing'], 'px'),
 					"text-transform" => $attr['captionTextTransform'],
 					"color" => $attr['captionColor'],
-					"margin-top"=> self::get_css_value($attr['captiontopmargin'], 'px'),
-					"margin-bottom"=> self::get_css_value($attr['captionbottommargin'], 'px'),
-					"margin-left"=> self::get_css_value($attr['captionleftmargin'], 'px'),
-					"margin-right"=> self::get_css_value($attr['captionrightmargin'], 'px'),
+					"margin-top" => self::get_css_value($attr['captiontopmargin'], 'px'),
+					"margin-bottom" => self::get_css_value($attr['captionbottommargin'], 'px'),
+					"margin-left" => self::get_css_value($attr['captionleftmargin'], 'px'),
+					"margin-right" => self::get_css_value($attr['captionrightmargin'], 'px'),
 					"text-align" => $attr['captionimageAlignment']
 				)
 			);
 			$tablet_selectors = array(
-				' .img-main-block' => array(
+				' .img-block' => array(
 					'text-align' => $attr['imageAlignmentTablet'],
 				),
 				"  .responsive-blocks-image-block" => array(
@@ -13993,21 +14045,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"margin-bottom" => self::get_css_value($attr['imagebottommarginTablet'], 'px'),
 					"margin-left" => self::get_css_value($attr['imageleftmarginTablet'], 'px'),
 					"margin-right" => self::get_css_value($attr['imagerightmarginTablet'], 'px'),
-					"width"=> self::get_css_value($attr['imageWidthTablet'], 'px'),
-					"height"=>self::get_css_value($attr['imageHeightTablet'], 'px'),
+					"width" => self::get_css_value($attr['imageWidthTablet'], 'px'),
+					"height" => self::get_css_value($attr['imageHeightTablet'], 'px'),
 				),
 				" .responsive-img-caption" => array(
 					"font-size" => self::get_css_value($attr['captionFontSizeTablet'], 'px'),
-					"margin-top"=> self::get_css_value($attr['captiontopmarginTablet'], 'px'),
-					"margin-bottom"=> self::get_css_value($attr['captionbottommarginTablet'], 'px'),
-					"margin-left"=> self::get_css_value($attr['captionleftmarginTablet'], 'px'),
-					"margin-right"=> self::get_css_value($attr['captionrightmarginTablet'], 'px'),
-					"text-align" => $attr['captionimageAlignmentTablet']				
+					"margin-top" => self::get_css_value($attr['captiontopmarginTablet'], 'px'),
+					"margin-bottom" => self::get_css_value($attr['captionbottommarginTablet'], 'px'),
+					"margin-left" => self::get_css_value($attr['captionleftmarginTablet'], 'px'),
+					"margin-right" => self::get_css_value($attr['captionrightmarginTablet'], 'px'),
+					"text-align" => $attr['captionimageAlignmentTablet']
 				)
 			);
 
 			$mobile_selectors = array(
-				' .img-main-block' => array(
+				' .img-block' => array(
 					'text-align' => $attr['imageAlignmentMobile'],
 				),
 				"  .responsive-blocks-image-block" => array(
@@ -14018,13 +14070,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				" .responsive-img-caption" => array(
 					"font-size" => self::get_css_value($attr['captionFontSizeMobile'], 'px'),
-					"margin-top"=> self::get_css_value($attr['captiontopmarginMobile'], 'px'),
-					"margin-bottom"=> self::get_css_value($attr['captionbottommarginMobile'], 'px'),
-					"margin-left"=> self::get_css_value($attr['captionleftmarginMobile'], 'px'),
-					"margin-right"=> self::get_css_value($attr['captionrightmarginMobile'], 'px'),
+					"margin-top" => self::get_css_value($attr['captiontopmarginMobile'], 'px'),
+					"margin-bottom" => self::get_css_value($attr['captionbottommarginMobile'], 'px'),
+					"margin-left" => self::get_css_value($attr['captionleftmarginMobile'], 'px'),
+					"margin-right" => self::get_css_value($attr['captionrightmarginMobile'], 'px'),
 					"text-align" => $attr['captionimageAlignmentMobile'],
-					"width"=> self::get_css_value($attr['imageWidthMobile'], 'px'),
-					"height"=>self::get_css_value($attr['imageHeightMobile'], 'px'),				
+					"width" => self::get_css_value($attr['imageWidthMobile'], 'px'),
+					"height" => self::get_css_value($attr['imageHeightMobile'], 'px'),
 				)
 			);
 
@@ -14096,20 +14148,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'captionleftmarginMobile' => '0',
 				'captionrightmarginMobile' => '0',
 				'captionimageAlignment' => 'left',
-    			'captionimageAlignmentTablet' => 'left',
-    			'captionimageAlignmentMobile' => 'left',
-				'MaskShape'=>'none',
-    			'MaskSize'=>'auto',
-    			'MaskPosition'=>'center top',
-    			'MaskRepeat'=>'no-repeat',
-				'imageOnHoverImage'=>'',
-				'imageObjectFit'=> 'inherit',
-				'imageWidth'=> '',
-      			'imageHeight'=> '',
-      			'imageWidthTablet'=> '',
-      			'imageHeightTablet'=> '',
-      			'imageWidthMobile'=> '',
-      			'imageHeightMobile'=> '',
+				'captionimageAlignmentTablet' => 'left',
+				'captionimageAlignmentMobile' => 'left',
+				'MaskShape' => 'none',
+				'MaskSize' => 'auto',
+				'MaskPosition' => 'center top',
+				'MaskRepeat' => 'no-repeat',
+				'imageOnHoverImage' => '',
+				'imageObjectFit' => 'inherit',
+				'imageWidth' => '',
+				'imageHeight' => '',
+				'imageWidthTablet' => '',
+				'imageHeightTablet' => '',
+				'imageWidthMobile' => '',
+				'imageHeightMobile' => '',
+				'LayoverContentPosition' => '',
+				'layoverimageBorderColor' => 'none',
+				'layoverimageBorderRadius' => '0',
+				'layoverimageBorderStyle' => '',
+				'layoverimageBorderWidth' => '0',
+				'layoverInputDistance' => '15',
+				'layoverBackgroundcolor' => 'none',
+				'layoverOpacity' => '20',
+				'layoverHoverOpacity' => '100',
+				'Layoverswitch' => 'false'
 			);
 		}
 		/**

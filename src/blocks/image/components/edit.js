@@ -100,11 +100,14 @@ export default class Edit extends Component {
     const {
       imageUrl,
       caption,
+      Layoverswitch,
+      LayoverHeading,
       block_id,
       altText,
       captionText,
       imageHeight,
       imageWidth,
+      layoverHeadingTag
     } = attributes;
     const {showUrlInput, isDropdownOpen} = this.state;
     this.props.setAttributes({block_id: this.props.clientId});
@@ -188,6 +191,8 @@ export default class Edit extends Component {
                 <MenuItem></MenuItem>
               </MenuGroup>
             )}
+            // isOpen={this.state.isDropdownOpen}
+            // onToggle={() => this.setState({ isDropdownOpen: !this.state.isDropdownOpen })}
           />
         </BlockControls>
         {imageUrl !== "" ? (
@@ -238,8 +243,37 @@ export default class Edit extends Component {
                   src={imageUrl}
                   alt={altText}
                 />
+                {Layoverswitch && <div className="responsive-image-block-description-overlay" ></div> }
+                { Layoverswitch && <div className="responsive-image-block-description" >
+                <RichText
+                  tagName={layoverHeadingTag}
+                  placeholder={__(
+                    "Add Heading",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={LayoverHeading}
+                  className="responsive-img-heading"
+                  onChange={(value) => setAttributes({LayoverHeading: value})}
+                  onMerge={mergeBlocks}
+                  unstableOnSplit={this.splitBlock}
+                  onRemove={() => onReplace([])}
+              />
+                <RichText
+                  tagName="figcaption"
+                  placeholder={__(
+                    "Add caption",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={captionText}
+                  className="responsive-img-caption"
+                  onChange={(value) => setAttributes({captionText: value})}
+                  onMerge={mergeBlocks}
+                  unstableOnSplit={this.splitBlock}
+                  onRemove={() => onReplace([])}
+              />
+                </div>}
               </ResizableBox>
-              {caption && (
+              {caption && !Layoverswitch && (
                 <RichText
                   tagName="figcaption"
                   placeholder={__(

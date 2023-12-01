@@ -5,7 +5,7 @@ import classnames from "classnames";
 export default class Save extends Component {
   render() {
     const { attributes } = this.props;
-    const { imageUrl, altText, caption, captionText,sourceType, block_id } = attributes;
+    const { imageUrl, altText, caption, layoverSwitch,LayoverHeading,captionText,sourceType, block_id } = attributes;
 
     return (
       <div className={classnames(
@@ -17,7 +17,12 @@ export default class Save extends Component {
           <div className="img-main-block" >
          <figure className="img-block" > 
           <img className="responsive-blocks-image-block" src={imageUrl} alt={altText}  />
-          {caption && <figcaption className="responsive-img-caption" >{captionText}</figcaption>}
+          {caption && !layoverSwitch && <figcaption className="responsive-img-caption" >{captionText}</figcaption>}
+          {<div className="responsive-image-block-description-overlay" ></div> }
+          {<div className="responsive-image-block-description" >
+            <h2 className="responsive-img-heading" >{LayoverHeading}</h2>
+          <figcaption className="responsive-img-caption" >{captionText}</figcaption>
+            </div>}
           </figure>
           </div>
         )}
@@ -25,7 +30,12 @@ export default class Save extends Component {
           <div className="img-main-block" >
           <figure className="img-block" >
             <img className="responsive-blocks-image-block" src={imageUrl} alt={altText}  />
-            {caption && <figcaption className="responsive-img-caption" >{captionText}</figcaption>}
+            {caption && !layoverSwitch && <figcaption className="responsive-img-caption" >{captionText}</figcaption>}
+          { <div className="responsive-image-block-description-overlay" ></div> }
+          { <div className="responsive-image-block-description" >
+            <h2 className="responsive-img-heading" >{LayoverHeading}</h2>
+          <figcaption className="responsive-img-caption" >{captionText}</figcaption>
+            </div>}
           </figure>
           </div>
         )}

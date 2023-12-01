@@ -15,13 +15,9 @@ const {
   RangeControl,
   SelectControl,
   ColorPalette,
-  AlignmentMatrixControl
+  AlignmentMatrixControl,
 } = wp.components;
-const {
-  InspectorControls,
-  MediaUpload,
-  AlignmentToolbar,
-} = wp.blockEditor;
+const {InspectorControls, MediaUpload, AlignmentToolbar} = wp.blockEditor;
 const {__} = wp.i18n;
 
 import InspectorTab from "../../../components/InspectorTab";
@@ -102,6 +98,38 @@ export default class Inspector extends Component {
       imageHeightTablet,
       imageWidthMobile,
       imageHeightMobile,
+      Layoverswitch,
+      LayoverContentPosition,
+      layoverimageBorderColor,
+      layoverimageBorderRadius,
+      layoverimageBorderStyle,
+      layoverimageBorderWidth,
+      layoverInputDistance,
+      layoverBackgroundcolor,
+      layoverOpacity,
+      layoverHoverOpacity,
+      layoverHeadingTag,
+      layoverHeadingFontFamily,
+      layoverHeadingFontSize,
+      layoverHeadingFontSizeMobile,
+      layoverHeadingFontSizeTablet,
+      layoverHeadingFontWeight,
+      layoverHeadingLineHeight,
+      layoverHeadingLetterSpacing,
+      layoverHeadingTextTransform,
+      layoverHeadingColor,
+      layoverHeadingtopmargin,
+      layoverHeadingbottommargin,
+      layoverHeadingleftmargin,
+      layoverHeadingrightmargin,
+      layoverHeadingtopmarginTablet,
+      layoverHeadingbottommarginTablet,
+      layoverHeadingleftmarginTablet,
+      layoverHeadingrightmarginTablet,
+      layoverHeadingtopmarginMobile,
+      layoverHeadingbottommarginMobile,
+      layoverHeadingleftmarginMobile,
+      layoverHeadingrightmarginMobile,
     } = attributes;
     const handleChangeImage = () => {
       // Check if the WordPress media library is available
@@ -155,6 +183,7 @@ export default class Inspector extends Component {
           }
           allowReset
         />
+
         <h2>{__("Horizontal", "responsive-block-editor-addons")}</h2>
         <RangeControl
           value={imageboxShadowHoverHOffset}
@@ -228,17 +257,20 @@ export default class Inspector extends Component {
           <InspectorTab key={"content"}>
             <PanelBody title="Image" initialOpen={true}>
               <div>
-              {attributes.imageUrl && (
+                {attributes.imageUrl && (
                   <div style={{textAlign: "center"}}>
-                    <img src={attributes.imageUrl}  alt="Image" />
+                    <img src={attributes.imageUrl} alt="Image" />
                     {/* Adjust the styles as needed */}
                   </div>
                 )}
                 <PanelRow>
-                  <Button isPrimary onClick={handleChangeImage}> {attributes.imageUrl !==""? "Change Image":"Add Image"} </Button>
+                  <Button isPrimary onClick={handleChangeImage}>
+                    {" "}
+                    {attributes.imageUrl !== ""
+                      ? "Change Image"
+                      : "Add Image"}{" "}
+                  </Button>
                 </PanelRow>
-
-                
               </div>
 
               <TabPanel
@@ -562,17 +594,24 @@ export default class Inspector extends Component {
                 ]}
               />
 
-              <ToggleControl
-                className="enable-caption-class"
-                label={__("Enable Caption", "responsive-block-editor-addons")}
-                checked={caption}
-                onChange={() =>
-                  this.props.setAttributes({
-                    caption: !caption,
-                  })
-                }
-              />
-              {caption && (
+              {!Layoverswitch && (
+                <>
+                  <ToggleControl
+                    className="enable-caption-class"
+                    label={__(
+                      "Enable Caption",
+                      "responsive-block-editor-addons"
+                    )}
+                    checked={caption}
+                    onChange={() =>
+                      this.props.setAttributes({
+                        caption: !caption,
+                      })
+                    }
+                  />
+                </>
+              )}
+              {caption && !Layoverswitch && (
                 <TabPanel
                   className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                   activeClass="active-tab"
@@ -676,7 +715,110 @@ export default class Inspector extends Component {
                 </TabPanel>
               )}
             </PanelBody>
-            <PanelBody title="Layout" initialOpen={false}>
+            <PanelBody title="Layover" initialOpen={false}>
+              <>
+                <ToggleControl
+                  label={__("Layover", "responsive-block-editor-addons")}
+                  checked={Layoverswitch}
+                  onChange={() =>
+                    this.props.setAttributes({
+                      Layoverswitch: !Layoverswitch,
+                    })
+                  }
+                />
+                <SelectControl
+                  label={__(
+                    "Content Position",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={LayoverContentPosition}
+                  onChange={(value) =>
+                    setAttributes({LayoverContentPosition: value})
+                  }
+                  options={[
+                    {
+                      value: "centertop",
+                      label: __("Center Top", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "centercenter",
+                      label: __(
+                        "Center Center",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                    {
+                      value: "centerbottom",
+                      label: __(
+                        "Center Bottom",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                    {
+                      value: "lefttop",
+                      label: __("Left Top", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "leftcenter",
+                      label: __(
+                        "Left Center",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                    {
+                      value: "leftbottom",
+                      label: __(
+                        "Left Bottom",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                    {
+                      value: "righttop",
+                      label: __("Right Top", "responsive-block-editor-addons"),
+                    },
+                    {
+                      value: "rightcenter",
+                      label: __(
+                        "Right Center",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                    {
+                      value: "rightbottom",
+                      label: __(
+                        "Right Bottom",
+                        "responsive-block-editor-addons"
+                      ),
+                    },
+                  ]}
+                />
+                <BlockBorderHelperControl
+                  attrNameTemplate="layoverimage%s"
+                  values={{
+                    radius: layoverimageBorderRadius,
+                    style: layoverimageBorderStyle,
+                    width: layoverimageBorderWidth,
+                    color: layoverimageBorderColor,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+                <RangeControl
+                  label={__(
+                    "Border Distance From EDGE",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={layoverInputDistance}
+                  onChange={(value) =>
+                    setAttributes({
+                      layoverInputDistance: value,
+                    })
+                  }
+                  min={-100}
+                  max={100}
+                  allowReset
+                />
+              </>
             </PanelBody>
             <PanelBody title="Masks" initialOpen={false}>
               <SelectControl
@@ -730,100 +872,125 @@ export default class Inspector extends Component {
                   },
                 ]}
               />
-              { MaskShape !== "none" && 
-              <>
-              <SelectControl
-                label={__("Mask Size", "responsive-block-editor-addons")}
-                value={MaskSize}
-                onChange={(value) => setAttributes({MaskSize: value})}
-                options={[
-                  {
-                    value: "auto",
-                    label: __("Auto", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "contain",
-                    label: __("Contain", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "cover",
-                    label: __("Cover", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              <SelectControl
-                label={__("Mask Position", "responsive-block-editor-addons")}
-                value={MaskPosition}
-                onChange={(value) => setAttributes({MaskPosition: value})}
-                options={[
-                  {
-                    value: "center top",
-                    label: __("Center Top", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "center center",
-                    label: __(
-                      "Center Center",
+              {MaskShape !== "none" && (
+                <>
+                  <SelectControl
+                    label={__("Mask Size", "responsive-block-editor-addons")}
+                    value={MaskSize}
+                    onChange={(value) => setAttributes({MaskSize: value})}
+                    options={[
+                      {
+                        value: "auto",
+                        label: __("Auto", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "contain",
+                        label: __("Contain", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "cover",
+                        label: __("Cover", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__(
+                      "Mask Position",
                       "responsive-block-editor-addons"
-                    ),
-                  },
-                  {
-                    value: "center bottom",
-                    label: __(
-                      "Center Bottom",
-                      "responsive-block-editor-addons"
-                    ),
-                  },
-                  {
-                    value: "left top",
-                    label: __("Left Top", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "left center",
-                    label: __("Left Center", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "left bottom",
-                    label: __("Left Bottom", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "right top",
-                    label: __("Right Top", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "right center",
-                    label: __("Right Center", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "right bottom",
-                    label: __("Right Bottom", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              <SelectControl
-                label={__("Mask Repeat", "responsive-block-editor-addons")}
-                value={MaskRepeat}
-                onChange={(value) => setAttributes({MaskRepeat: value})}
-                options={[
-                  {
-                    value: "no-repeat",
-                    label: __("No Repeat", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "repeat",
-                    label: __("Repeat", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "repeat-x",
-                    label: __("Repeat-X", "responsive-block-editor-addons"),
-                  },
-                  {
-                    value: "repeat-y",
-                    label: __("Repeat-Y", "responsive-block-editor-addons"),
-                  },
-                ]}
-              />
-              </>}
+                    )}
+                    value={MaskPosition}
+                    onChange={(value) => setAttributes({MaskPosition: value})}
+                    options={[
+                      {
+                        value: "center top",
+                        label: __(
+                          "Center Top",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "center center",
+                        label: __(
+                          "Center Center",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "center bottom",
+                        label: __(
+                          "Center Bottom",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "left top",
+                        label: __("Left Top", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "left center",
+                        label: __(
+                          "Left Center",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "left bottom",
+                        label: __(
+                          "Left Bottom",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "right top",
+                        label: __(
+                          "Right Top",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "right center",
+                        label: __(
+                          "Right Center",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "right bottom",
+                        label: __(
+                          "Right Bottom",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Mask Repeat", "responsive-block-editor-addons")}
+                    value={MaskRepeat}
+                    onChange={(value) => setAttributes({MaskRepeat: value})}
+                    options={[
+                      {
+                        value: "no-repeat",
+                        label: __(
+                          "No Repeat",
+                          "responsive-block-editor-addons"
+                        ),
+                      },
+                      {
+                        value: "repeat",
+                        label: __("Repeat", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "repeat-x",
+                        label: __("Repeat-X", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "repeat-y",
+                        label: __("Repeat-Y", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                </>
+              )}
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
@@ -1069,7 +1236,371 @@ export default class Inspector extends Component {
               />
               {imageboxshadowSeprateHover && HoverBoxShadowControls}
             </PanelBody>
-            {caption && (
+            {Layoverswitch && (
+              <>
+                <PanelBody title="Overlay" initialOpen={false}>
+                  <Fragment>
+                    <p className="responsive-block-editor-addons-setting-label">
+                      {__("Background", "responsive-block-editor-addons")}
+                      <span className="components-base-control__label">
+                        <span
+                          className="component-color-indicator"
+                          style={{backgroundColor: layoverBackgroundcolor}}
+                        ></span>
+                      </span>
+                    </p>
+                    <ColorPalette
+                      value={layoverBackgroundcolor}
+                      onChange={(colorValue) =>
+                        setAttributes({
+                          layoverBackgroundcolor:
+                            colorValue !== undefined ? colorValue : "",
+                        })
+                      }
+                      allowReset
+                    />
+                    <RangeControl
+                      label={__(
+                        "Overlay Opacity",
+                        "responsive-block-editor-addons"
+                      )}
+                      value={layoverOpacity}
+                      onChange={(value) =>
+                        setAttributes({
+                          layoverOpacity: value,
+                        })
+                      }
+                      min={0}
+                      max={100}
+                      allowReset
+                    />
+                    <RangeControl
+                      label={__(
+                        "Overlay Hover Opacity",
+                        "responsive-block-editor-addons"
+                      )}
+                      value={layoverHoverOpacity}
+                      onChange={(value) =>
+                        setAttributes({
+                          layoverHoverOpacity: value,
+                        })
+                      }
+                      min={0}
+                      max={100}
+                      allowReset
+                    />
+                    
+                  </Fragment>
+                </PanelBody>
+                <PanelBody title="Heading" initialOpen={false}>
+                  <SelectControl
+                    label={__("Heading Tag", "responsive-block-editor-addons")}
+                    value={layoverHeadingTag}
+                    onChange={(value) =>
+                      setAttributes({layoverHeadingTag: value})
+                    }
+                    options={[
+                      {
+                        value: "h1",
+                        label: __("H1", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h2",
+                        label: __("H2", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h3",
+                        label: __("H3", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h4",
+                        label: __("H4", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h5",
+                        label: __("H5", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "h6",
+                        label: __("H6", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                  <TypographyHelperControl
+                    title={__("Typography", "responsive-block-editor-addons")}
+                    attrNameTemplate="layoverHeading%s"
+                    values={{
+                      family: layoverHeadingFontFamily,
+                      size: layoverHeadingFontSize,
+                      sizeMobile: layoverHeadingFontSizeMobile,
+                      sizeTablet: layoverHeadingFontSizeTablet,
+                      weight: layoverHeadingFontWeight,
+                      height: layoverHeadingLineHeight,
+                      spacing: layoverHeadingLetterSpacing,
+                      transform: layoverHeadingTextTransform,
+                    }}
+                    showLetterSpacing={true}
+                    showTextTransform={true}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  <ColorPalette
+                    value={layoverHeadingColor}
+                    onChange={(layoverHeadingColor) =>
+                      setAttributes({
+                        layoverHeadingColor:
+                          colorValue !== undefined ? colorValue : "",
+                      })
+                    }
+                    allowReset
+                  />
+
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className:
+                          " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className:
+                          " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                  >
+                    {(tab) => {
+                      let tabout;
+
+                      if ("mobile" === tab.name) {
+                        tabout = (
+                          <Fragment>
+                            <p>
+                              {__(
+                                "Margin Mobile",
+                                "responsive-block-editor-addons"
+                              )}
+                            </p>
+                            <RangeControl
+                              label={__(
+                                "Top",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingtopmarginMobile}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingtopmarginMobile: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Bottom",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingbottommarginMobile}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingbottommarginMobile: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Left",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingleftmarginMobile}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingleftmarginMobile: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Right",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingrightmarginMobile}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingrightmarginMobile: value,
+                                })
+                              }
+                            />
+                          </Fragment>
+                        );
+                      } else if ("tablet" === tab.name) {
+                        tabout = (
+                          <Fragment>
+                            <p>
+                              {__(
+                                "Margin Tablet",
+                                "responsive-block-editor-addons"
+                              )}
+                            </p>
+                            <RangeControl
+                              label={__(
+                                "Top",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingtopmarginTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingtopmarginTablet: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Bottom",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingbottommarginTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingbottommarginTablet: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Left",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingleftmarginTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingleftmarginTablet: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Right",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingrightmarginTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingrightmarginTablet: value,
+                                })
+                              }
+                            />
+                          </Fragment>
+                        );
+                      } else {
+                        tabout = (
+                          <Fragment>
+                            <p>
+                              {__("Margin", "responsive-block-editor-addons")}
+                            </p>
+                            <RangeControl
+                              label={__(
+                                "Top",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingtopmargin}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingtopmargin: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Bottom",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingbottommargin}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingbottommargin: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Left",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingleftmargin}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingleftmargin: value,
+                                })
+                              }
+                            />
+                            <RangeControl
+                              label={__(
+                                "Right",
+                                "responsive-block-editor-addons"
+                              )}
+                              min={0}
+                              max={2000}
+                              allowReset={true}
+                              value={layoverHeadingrightmargin}
+                              onChange={(value) =>
+                                setAttributes({
+                                  layoverHeadingrightmargin: value,
+                                })
+                              }
+                            />
+                          </Fragment>
+                        );
+                      }
+
+                      return <div>{tabout}</div>;
+                    }}
+                  </TabPanel>
+                </PanelBody>
+              </>
+            )}
+            {(caption || Layoverswitch) && (
               <PanelBody title="Caption" initialOpen={true}>
                 <TypographyHelperControl
                   title={__("Typography", "responsive-block-editor-addons")}

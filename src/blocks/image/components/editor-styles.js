@@ -72,7 +72,17 @@ function EditorStyles(props) {
     imageHeightTablet,
     imageWidthMobile,
     imageHeightMobile,
-    imageOnHoverImage
+    imageOnHoverImage,
+    LayoverContentPosition,
+    layoverimageBorderColor,
+      layoverimageBorderRadius,
+      layoverimageBorderStyle,
+      layoverimageBorderWidth,
+      layoverInputDistance,
+      layoverBackgroundcolor,
+      layoverOpacity,
+      layoverHoverOpacity,
+      Layoverswitch
   } = props.attributes;
   var base_url = window.location.origin;
   
@@ -80,8 +90,9 @@ function EditorStyles(props) {
   var zoomintransition = imageOnHoverImage === "zoomin" || "slide" ? "transform .35s ease-in-out" : null;
   var zoomintransform = imageOnHoverImage === "zoomin" ? "scale(1.1)" : imageOnHoverImage === "slide" ? "translate3d(0px, 0, 0)" : null;
   var slidetranform = imageOnHoverImage === "slide" ? "translate3d(-40px, 0, 0)" : null;
-  
-  var selectors = {
+  var leftoverlayalign = LayoverContentPosition === "lefttop" || LayoverContentPosition === "leftcenter" || LayoverContentPosition === "leftbottom" ? "flex-start" : LayoverContentPosition === "centertop" || LayoverContentPosition === "centercenter" || LayoverContentPosition === "centerbottom" ? "center" : LayoverContentPosition === "righttop" || LayoverContentPosition === "rightcenter" || LayoverContentPosition === "rightbottom" ? "flex-end": "center";
+  var leftoverlayjustify = LayoverContentPosition === "lefttop" || LayoverContentPosition === "centertop" || LayoverContentPosition === "righttop" ? "flex-start" : LayoverContentPosition === "leftcenter" || LayoverContentPosition === "centercenter" || LayoverContentPosition === "rightcenter" ? "center" : LayoverContentPosition === "leftbottom" || LayoverContentPosition === "centerbottom" || LayoverContentPosition === "rightbottom" ? "flex-end" : "center";
+   var selectors = {
     
     " .img-main-block": {  
       "text-align": imageAlignment,
@@ -108,7 +119,6 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(imagebottommargin, "px"),
       "margin-left": generateCSSUnit(imageleftmargin, "px"),
       "margin-right": generateCSSUnit(imagerightmargin, "px"),
-      
       "-webkit-mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
       "mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
       "-webkit-mask-position":MaskPosition,
@@ -119,6 +129,20 @@ function EditorStyles(props) {
       "mask-size":MaskSize,
       "transform": slidetranform
     },
+    " .responsive-image-block-description":{
+      "align-items":leftoverlayalign,
+      "justify-content":leftoverlayjustify,
+      "border-color": layoverimageBorderColor,
+      "border-width": generateCSSUnit(layoverimageBorderWidth, "px"),
+      "border-radius": generateCSSUnit(layoverimageBorderRadius, "px"),
+      "border-style": layoverimageBorderStyle,
+      "top":generateCSSUnit(layoverInputDistance, "px"),
+      "bottom":generateCSSUnit(layoverInputDistance, "px"),
+      "right":generateCSSUnit(layoverInputDistance, "px"),
+      "left":generateCSSUnit(layoverInputDistance, "px"),
+      "background":layoverBackgroundcolor,
+    },
+    
 
     " .responsive-img-caption ": {
       "text-align": captionimageAlignment,
@@ -148,6 +172,12 @@ function EditorStyles(props) {
         "filter": filtervalue,
         "transition": zoomintransition,
         "transform": zoomintransform,
+    },
+    " .responsive-image-block-description-overlay":{
+      "opacity": generateCSSUnit(layoverOpacity, "%")
+    },
+    " .responsive-image-block-description-overlay:hover":{
+      "opacity": generateCSSUnit( layoverHoverOpacity, "%"),
     },
     
   };
