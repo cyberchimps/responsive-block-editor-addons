@@ -14010,7 +14010,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"right" => self::get_css_value($attr['layoverInputDistance'], "px"),
 					"left" => self::get_css_value($attr['layoverInputDistance'], "px"),
 					"background" => $attr['layoverBackgroundcolor'],
-					"opacity" => self::get_css_value($attr['layoverOpacity'], "%")
+					"opacity" => self::get_css_value($attr['layoverOpacity'], "%"),
+				),
+				" .responsive-img-heading"=> array(
+					"font-family" => $attr['layoverHeadingFontFamily'],
+					"font-size" => self::get_css_value($attr['layoverHeadingFontSize'], "px"),
+					"font-weight" => $attr['layoverHeadingFontWeight'],
+					"line-height" => $attr['layoverHeadingLineHeight'],
+					"letter-spacing" => self::get_css_value($attr['layoverHeadingLetterSpacing'], "px"),
+					"text-transform" => $attr['layoverHeadingTextTransform'],
+					"color" => $attr['layoverHeadingColor'],
+					"margin-top" => self::get_css_value($attr['layoverHeadingtopmargin'], "px"),
+					"margin-bottom" => self::get_css_value($attr['layoverHeadingbottommargin'], "px"),
+					"margin-left" => self::get_css_value($attr['layoverHeadingleftmargin'], "px"),
+					"margin-right" => self::get_css_value($attr['layoverHeadingrightmargin'], "px"),
 				),
 				" .responsive-image-block-description:hover" => array(
 					"opacity" => self::get_css_value($attr['layoverHoverOpacity'], "%"),
@@ -14055,7 +14068,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"margin-left" => self::get_css_value($attr['captionleftmarginTablet'], 'px'),
 					"margin-right" => self::get_css_value($attr['captionrightmarginTablet'], 'px'),
 					"text-align" => $attr['captionimageAlignmentTablet']
-				)
+				),
+				" .responsive-img-heading" => array(
+					"font-size" => self::get_css_value($attr['layoverHeadingFontSizeTablet'],"px"),
+					"margin-top" => self::get_css_value($attr['layoverHeadingtopmarginTablet'],"px"),
+					"margin-bottom" => self::get_css_value($attr['layoverHeadingbottommarginTablet'],"px"),
+					"margin-left" => self::get_css_value($attr['layoverHeadingleftmarginTablet'],"px"),
+					"margin-right" => self::get_css_value($attr['layoverHeadingrightmarginTablet'],"px"),
+				),
 			);
 
 			$mobile_selectors = array(
@@ -14077,7 +14097,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"text-align" => $attr['captionimageAlignmentMobile'],
 					"width" => self::get_css_value($attr['imageWidthMobile'], 'px'),
 					"height" => self::get_css_value($attr['imageHeightMobile'], 'px'),
-				)
+				),
+				" .responsive-img-heading" => array(
+					"font-size" => self::get_css_value($attr['layoverHeadingFontSizeMobile'],"px"),
+					"margin-top" => self::get_css_value($attr['layoverHeadingtopmarginMobile'],"px"),
+					"margin-bottom" => self::get_css_value($attr['layoverHeadingbottommarginMobile'],"px"),
+					"margin-left" => self::get_css_value($attr['layoverHeadingleftmarginMobile'],"px"),
+					"margin-right" => self::get_css_value($attr['layoverHeadingrightmarginMobile'],"px"),
+				),
 			);
 
 			$combined_selectors = array(
@@ -14171,7 +14198,28 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'layoverBackgroundcolor' => 'none',
 				'layoverOpacity' => '20',
 				'layoverHoverOpacity' => '100',
-				'Layoverswitch' => 'false'
+				'Layoverswitch' => 'false',
+				'layoverHeadingFontFamily' => 'none',
+				'layoverHeadingFontSize' => '16',
+				'layoverHeadingFontSizeMobile' => '16',
+				'layoverHeadingFontSizeTablet' => '16',
+				'layoverHeadingFontWeight' => '600',
+				'layoverHeadingLineHeight' => '1',
+				'layoverHeadingLetterSpacing' => '0',
+				'layoverHeadingTextTransform' => 'default',
+				'layoverHeadingColor' => 'none',
+				'layoverHeadingtopmargin' => '0',
+				'layoverHeadingbottommargin' => '0',
+				'layoverHeadingleftmargin' => '0',
+				'layoverHeadingrightmargin' => '0',
+				'layoverHeadingtopmarginTablet' => '0',
+				'layoverHeadingbottommarginTablet' => '0',
+				'layoverHeadingleftmarginTablet' => '0',
+				'layoverHeadingrightmarginTablet' => '0',
+				'layoverHeadingtopmarginMobile' => '0',
+				'layoverHeadingbottommarginMobile' => '0',
+				'layoverHeadingleftmarginMobile' => '0',
+				'layoverHeadingrightmarginMobile' => '0',
 			);
 		}
 		/**

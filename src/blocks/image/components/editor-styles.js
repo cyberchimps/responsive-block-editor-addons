@@ -75,31 +75,90 @@ function EditorStyles(props) {
     imageOnHoverImage,
     LayoverContentPosition,
     layoverimageBorderColor,
-      layoverimageBorderRadius,
-      layoverimageBorderStyle,
-      layoverimageBorderWidth,
-      layoverInputDistance,
-      layoverBackgroundcolor,
-      layoverOpacity,
-      layoverHoverOpacity,
-      Layoverswitch
+    layoverimageBorderRadius,
+    layoverimageBorderStyle,
+    layoverimageBorderWidth,
+    layoverInputDistance,
+    layoverBackgroundcolor,
+    layoverOpacity,
+    layoverHoverOpacity,
+    Layoverswitch,
+    layoverHeadingFontFamily,
+    layoverHeadingFontSize,
+    layoverHeadingFontSizeMobile,
+    layoverHeadingFontSizeTablet,
+    layoverHeadingFontWeight,
+    layoverHeadingLineHeight,
+    layoverHeadingLetterSpacing,
+    layoverHeadingTextTransform,
+    layoverHeadingColor,
+    layoverHeadingtopmargin,
+    layoverHeadingbottommargin,
+    layoverHeadingleftmargin,
+    layoverHeadingrightmargin,
+    layoverHeadingtopmarginTablet,
+    layoverHeadingbottommarginTablet,
+    layoverHeadingleftmarginTablet,
+    layoverHeadingrightmarginTablet,
+    layoverHeadingtopmarginMobile,
+    layoverHeadingbottommarginMobile,
+    layoverHeadingleftmarginMobile,
+    layoverHeadingrightmarginMobile,
   } = props.attributes;
   var base_url = window.location.origin;
-  
-  var filtervalue =  imageOnHoverImage === "grayscale" ? "grayscale(100%)" : imageOnHoverImage === "blur" ? "blur(5px)" : null;
-  var zoomintransition = imageOnHoverImage === "zoomin" || "slide" ? "transform .35s ease-in-out" : null;
-  var zoomintransform = imageOnHoverImage === "zoomin" ? "scale(1.1)" : imageOnHoverImage === "slide" ? "translate3d(0px, 0, 0)" : null;
-  var slidetranform = imageOnHoverImage === "slide" ? "translate3d(-40px, 0, 0)" : null;
-  var leftoverlayalign = LayoverContentPosition === "lefttop" || LayoverContentPosition === "leftcenter" || LayoverContentPosition === "leftbottom" ? "flex-start" : LayoverContentPosition === "centertop" || LayoverContentPosition === "centercenter" || LayoverContentPosition === "centerbottom" ? "center" : LayoverContentPosition === "righttop" || LayoverContentPosition === "rightcenter" || LayoverContentPosition === "rightbottom" ? "flex-end": "center";
-  var leftoverlayjustify = LayoverContentPosition === "lefttop" || LayoverContentPosition === "centertop" || LayoverContentPosition === "righttop" ? "flex-start" : LayoverContentPosition === "leftcenter" || LayoverContentPosition === "centercenter" || LayoverContentPosition === "rightcenter" ? "center" : LayoverContentPosition === "leftbottom" || LayoverContentPosition === "centerbottom" || LayoverContentPosition === "rightbottom" ? "flex-end" : "center";
-   var selectors = {
-    
-    " .img-main-block": {  
+  var filtervalue =
+    imageOnHoverImage === "grayscale"
+      ? "grayscale(100%)"
+      : imageOnHoverImage === "blur"
+      ? "blur(5px)"
+      : null;
+  var zoomintransition =
+    imageOnHoverImage === "zoomin" || "slide"
+      ? "transform .35s ease-in-out"
+      : null;
+  var zoomintransform =
+    imageOnHoverImage === "zoomin"
+      ? "scale(1.1)"
+      : imageOnHoverImage === "slide"
+      ? "translate3d(0px, 0, 0)"
+      : null;
+  var slidetranform =
+    imageOnHoverImage === "slide" ? "translate3d(-40px, 0, 0)" : null;
+  var leftoverlayalign =
+    LayoverContentPosition === "lefttop" ||
+    LayoverContentPosition === "leftcenter" ||
+    LayoverContentPosition === "leftbottom"
+      ? "flex-start"
+      : LayoverContentPosition === "centertop" ||
+        LayoverContentPosition === "centercenter" ||
+        LayoverContentPosition === "centerbottom"
+      ? "center"
+      : LayoverContentPosition === "righttop" ||
+        LayoverContentPosition === "rightcenter" ||
+        LayoverContentPosition === "rightbottom"
+      ? "flex-end"
+      : "center";
+  var leftoverlayjustify =
+    LayoverContentPosition === "lefttop" ||
+    LayoverContentPosition === "centertop" ||
+    LayoverContentPosition === "righttop"
+      ? "flex-start"
+      : LayoverContentPosition === "leftcenter" ||
+        LayoverContentPosition === "centercenter" ||
+        LayoverContentPosition === "rightcenter"
+      ? "center"
+      : LayoverContentPosition === "leftbottom" ||
+        LayoverContentPosition === "centerbottom" ||
+        LayoverContentPosition === "rightbottom"
+      ? "flex-end"
+      : "center";
+  var selectors = {
+    " .img-main-block": {
       "text-align": imageAlignment,
     },
     "  .responsive-blocks-image-block": {
-      "width":generateCSSUnit(imageWidth, "px"),
-      "height":generateCSSUnit(imageHeight, "px"),
+      width: generateCSSUnit(imageWidth, "px"),
+      height: generateCSSUnit(imageHeight, "px"),
       "border-color": imageBorderColor,
       "border-width": generateCSSUnit(imageBorderWidth, "px"),
       "border-radius": generateCSSUnit(imageBorderRadius, "px"),
@@ -114,35 +173,47 @@ function EditorStyles(props) {
         generateCSSUnit(imageboxShadowSpread, "px") +
         " " +
         imageboxShadowColor,
-      "object-fit":imageObjectFit,  
+      "object-fit": imageObjectFit,
       "margin-top": generateCSSUnit(imagetopmargin, "px"),
       "margin-bottom": generateCSSUnit(imagebottommargin, "px"),
       "margin-left": generateCSSUnit(imageleftmargin, "px"),
       "margin-right": generateCSSUnit(imagerightmargin, "px"),
       "-webkit-mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
       "mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
-      "-webkit-mask-position":MaskPosition,
-      "mask-position":MaskPosition,
-      "-webkit-mask-repeat":MaskRepeat,
-      "mask-repeat":MaskRepeat,
-      "-webkit-mask-size":MaskSize,
-      "mask-size":MaskSize,
-      "transform": slidetranform
+      "-webkit-mask-position": MaskPosition,
+      "mask-position": MaskPosition,
+      "-webkit-mask-repeat": MaskRepeat,
+      "mask-repeat": MaskRepeat,
+      "-webkit-mask-size": MaskSize,
+      "mask-size": MaskSize,
+      transform: slidetranform,
     },
-    " .responsive-image-block-description":{
-      "align-items":leftoverlayalign,
-      "justify-content":leftoverlayjustify,
+    " .responsive-image-block-description": {
+      "align-items": leftoverlayalign,
+      "justify-content": leftoverlayjustify,
       "border-color": layoverimageBorderColor,
       "border-width": generateCSSUnit(layoverimageBorderWidth, "px"),
       "border-radius": generateCSSUnit(layoverimageBorderRadius, "px"),
       "border-style": layoverimageBorderStyle,
-      "top":generateCSSUnit(layoverInputDistance, "px"),
-      "bottom":generateCSSUnit(layoverInputDistance, "px"),
-      "right":generateCSSUnit(layoverInputDistance, "px"),
-      "left":generateCSSUnit(layoverInputDistance, "px"),
-      "background":layoverBackgroundcolor,
+      "top": generateCSSUnit(layoverInputDistance, "px"),
+      "bottom": generateCSSUnit(layoverInputDistance, "px"),
+      "right": generateCSSUnit(layoverInputDistance, "px"),
+      "left": generateCSSUnit(layoverInputDistance, "px"),
+      "background": layoverBackgroundcolor,
     },
-    
+    " .responsive-img-heading":{
+      "font-family":layoverHeadingFontFamily,
+      "font-size":generateCSSUnit(layoverHeadingFontSize, "px"),
+      "font-weight":layoverHeadingFontWeight,
+      "line-height":layoverHeadingLineHeight,
+      "letter-spacing":generateCSSUnit(layoverHeadingLetterSpacing,"px"),
+      "text-transform": layoverHeadingTextTransform,
+      "color":layoverHeadingColor,
+      "margin-top":generateCSSUnit(layoverHeadingtopmargin,"px"),
+      "margin-bottom":generateCSSUnit(layoverHeadingbottommargin,"px"),
+      "margin-left":generateCSSUnit(layoverHeadingleftmargin,"px"),
+      "margin-right":generateCSSUnit(layoverHeadingrightmargin,"px"),
+    },
 
     " .responsive-img-caption ": {
       "text-align": captionimageAlignment,
@@ -169,25 +240,24 @@ function EditorStyles(props) {
         generateCSSUnit(imageboxShadowHoverSpread, "px") +
         " " +
         imageboxShadowHoverColor,
-        "filter": filtervalue,
-        "transition": zoomintransition,
-        "transform": zoomintransform,
+      filter: filtervalue,
+      transition: zoomintransition,
+      transform: zoomintransform,
     },
-    " .responsive-image-block-description-overlay":{
-      "opacity": generateCSSUnit(layoverOpacity, "%")
+    " .responsive-image-block-description-overlay": {
+      opacity: generateCSSUnit(layoverOpacity, "%"),
     },
-    " .responsive-image-block-description-overlay:hover":{
-      "opacity": generateCSSUnit( layoverHoverOpacity, "%"),
+    " .responsive-image-block-description-overlay:hover": {
+      opacity: generateCSSUnit(layoverHoverOpacity, "%"),
     },
-    
   };
   var tablet_selectors = {
     " .img-block": {
       "text-align": imageAlignmentTablet,
     },
     "  .responsive-blocks-image-block": {
-      "width":generateCSSUnit(imageWidthTablet, "px"),
-      "height":generateCSSUnit(imageHeightTablet, "px"),
+      width: generateCSSUnit(imageWidthTablet, "px"),
+      height: generateCSSUnit(imageHeightTablet, "px"),
       "border-color": imageBorderColor,
       "border-width": generateCSSUnit(imageBorderWidth, "px"),
       "border-radius": generateCSSUnit(imageBorderRadius, "px"),
@@ -209,6 +279,13 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(imageleftmarginTablet, "px"),
       "margin-right": generateCSSUnit(imagerightmarginTablet, "px"),
     },
+    " .responsive-img-heading": {
+    "font-size":generateCSSUnit(layoverHeadingFontSizeTablet,"px"),
+    "margin-top":generateCSSUnit(layoverHeadingtopmarginTablet,"px"),
+    "margin-bottom":generateCSSUnit(layoverHeadingbottommarginTablet,"px"),
+    "margin-left":generateCSSUnit(layoverHeadingleftmarginTablet,"px"),
+    "margin-right":generateCSSUnit(layoverHeadingrightmarginTablet,"px"),
+    },
     " .responsive-img-caption ": {
       "text-align": captionimageAlignmentTablet,
       "font-size": captionFontSizeTablet,
@@ -218,14 +295,14 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(captionrightmarginTablet, "px"),
     },
   };
-  
+
   var mobile_selectors = {
     " .img-block": {
       "text-align": imageAlignmentMobile,
     },
     "  .responsive-blocks-image-block": {
-      "width":generateCSSUnit(imageWidthMobile, "px"),
-      "height":generateCSSUnit(imageHeightMobile, "px"),
+      width: generateCSSUnit(imageWidthMobile, "px"),
+      height: generateCSSUnit(imageHeightMobile, "px"),
       "border-color": imageBorderColor,
       "border-width": generateCSSUnit(imageBorderWidth, "px"),
       "border-radius": generateCSSUnit(imageBorderRadius, "px"),
@@ -246,6 +323,13 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(imagebottommarginMobile, "px"),
       "margin-left": generateCSSUnit(imageleftmarginMobile, "px"),
       "margin-right": generateCSSUnit(imagerightmarginMobile, "px"),
+    },
+    " .responsive-img-heading": {
+      "font-size":generateCSSUnit(layoverHeadingFontSizeMobile,"px"),
+      "margin-top":generateCSSUnit(layoverHeadingtopmarginMobile,"px"),
+      "margin-bottom":generateCSSUnit(layoverHeadingbottommarginMobile,"px"),
+      "margin-left":generateCSSUnit(layoverHeadingleftmarginMobile,"px"),
+      "margin-right":generateCSSUnit(layoverHeadingrightmarginMobile,"px"),
     },
     " .responsive-img-caption ": {
       "text-align": captionimageAlignmentMobile,

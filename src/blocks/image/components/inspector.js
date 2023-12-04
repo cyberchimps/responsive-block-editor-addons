@@ -1346,7 +1346,7 @@ export default class Inspector extends Component {
                   />
                   <ColorPalette
                     value={layoverHeadingColor}
-                    onChange={(layoverHeadingColor) =>
+                    onChange={(colorValue) =>
                       setAttributes({
                         layoverHeadingColor:
                           colorValue !== undefined ? colorValue : "",

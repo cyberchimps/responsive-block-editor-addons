@@ -8,11 +8,13 @@ const {
   Dropdown,
   MenuGroup,
   MenuItem,
+  ToolbarButton
 } = wp.components;
 const {MediaUpload, MediaUploadCheck, RichText, BlockControls} = wp.blockEditor;
 import EditorStyles from "./editor-styles";
 import Inspector from "./inspector";
 import classnames from "classnames";
+import { loadGoogleFont } from "../../../utils/font";
 const {__} = wp.i18n;
 
 export default class Edit extends Component {
@@ -107,7 +109,9 @@ export default class Edit extends Component {
       captionText,
       imageHeight,
       imageWidth,
-      layoverHeadingTag
+      layoverHeadingTag,
+      captionFontFamily,
+      layoverHeadingFontFamily
     } = attributes;
     const {showUrlInput, isDropdownOpen} = this.state;
     this.props.setAttributes({block_id: this.props.clientId});
@@ -234,6 +238,7 @@ export default class Edit extends Component {
                     imageHeight: newImageHeight,
                     imageWidth: newImageWidth,
                   });
+                 
                 }}
                 onResizeStart={() => {
                 }}
@@ -243,8 +248,10 @@ export default class Edit extends Component {
                   src={imageUrl}
                   alt={altText}
                 />
+                
+                {LayoverHeading && loadGoogleFont(layoverHeadingFontFamily)}
                 {Layoverswitch && <div className="responsive-image-block-description-overlay" ></div> }
-                { Layoverswitch && <div className="responsive-image-block-description" >
+                { Layoverswitch  && <div className="responsive-image-block-description" >
                 <RichText
                   tagName={layoverHeadingTag}
                   placeholder={__(
@@ -258,6 +265,7 @@ export default class Edit extends Component {
                   unstableOnSplit={this.splitBlock}
                   onRemove={() => onReplace([])}
               />
+              {captionText && loadGoogleFont(captionFontFamily)}
                 <RichText
                   tagName="figcaption"
                   placeholder={__(
@@ -273,6 +281,7 @@ export default class Edit extends Component {
               />
                 </div>}
               </ResizableBox>
+              {captionText && loadGoogleFont(captionFontFamily)}
               {caption && !Layoverswitch && (
                 <RichText
                   tagName="figcaption"

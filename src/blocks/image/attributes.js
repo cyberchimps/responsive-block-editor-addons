@@ -329,6 +329,7 @@ const attributes = {
   },
   layoverHeadingFontFamily: {
     type: "string",
+    default: "",
   },
   layoverHeadingFontSize: {
     type: "number",
