@@ -50,6 +50,7 @@ const attributes = {
   },
   captionFontFamily: {
     type: "string",
+    default: ""
   },
   captionFontSize: {
     type: "number",

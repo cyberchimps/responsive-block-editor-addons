@@ -117,88 +117,45 @@ export default class Edit extends Component {
     this.props.setAttributes({block_id: this.props.clientId});
     return (
       <Fragment>
-        <BlockControls style={{borderRight: "1px solid"}}>
-          {/* Add your custom dropdown button to the toolbar */}
-          <Dropdown
-            style={{margin: "auto"}}
-            position="bottom right"
-            contentClassName="my-dropdown-content"
-            renderToggle={({onToggle, isOpen}) => (
-              <Button id="toggle-btn" onClick={onToggle} aria-expanded={isOpen}>
-                Replace
-              </Button>
-            )}
-            renderContent={() => (
-              <MenuGroup>
-                <MenuItem>
-                  <div>
-                    <p
-                      type="button"
-                      onClick={() => (
-                        (document.getElementsByClassName(
-                          "components-popover__content"
-                        )[0].style.display = "none"),
-                        document.getElementById("imageUpload").click()
-                      )}
-                    >
-                      Upload
-                    </p>
-                    <input
-                      style={{display: "none"}}
-                      type="file"
-                      id="imageUpload"
-                      accept="image/*"
-                      onChange={this.handleImageUpload}
-                    />
-                  </div>
-                </MenuItem>
-
-                <MenuItem>
-                  <div>
-                    <MediaUploadCheck>
-                      <MediaUpload
-                        onSelect={(media) => {
-                          // this.setState({ isDropdownOpen: false });
-                          if (media.url) {
-                            // Create an Image element
-                            const img = new Image();
-
-                            // Set the source of the Image element
-                            img.src = media.url;
-
-                            // Wait for the image to load
-                            img.onload = () => {
-                              // Get the height and width of the image
-                              const height = img.height;
-                              const width = img.width;
-
-                              // Update state with the selected image, its dimensions, and other attributes
-                              setAttributes({
-                                imageUrl: media.url,
-                                sourceType: "media-library",
-                                imageHeight: height,
-                                imageWidth: width,
-                                // Add other attributes as needed
-                              });
-                            };
-                          }
-                        }}
-                        allowedTypes={["image"]}
-                        value={imageUrl}
-                        render={({open}) => (
-                          <p onClick={open}>Open Media Library</p>
-                        )}
-                      />
-                    </MediaUploadCheck>
-                  </div>
-                </MenuItem>
-                <MenuItem></MenuItem>
-              </MenuGroup>
-            )}
-            // isOpen={this.state.isDropdownOpen}
-            // onToggle={() => this.setState({ isDropdownOpen: !this.state.isDropdownOpen })}
-          />
-        </BlockControls>
+        { imageUrl !== "" && <BlockControls style={{ borderRight: "1px solid" }}>
+  {/* Add your custom dropdown button to the toolbar */}
+  <Dropdown
+    style={{ "margin": "auto"}}
+    position="bottom right"
+    contentClassName="my-dropdown-content"
+    renderToggle={({ onToggle, isOpen, }) => (
+      <Button id="toggle-btn" onClick={onToggle} aria-expanded={isOpen}>
+        Replace
+      </Button>
+    )}
+    renderContent={({ onClose }) => ( // Pass onClose function to close the dropdown
+      <MenuGroup>
+        <MenuItem >
+          <div>
+            <p
+              type="button"
+              onClick={() => {
+                
+                document.getElementById("imageUpload").click();
+                // Do not close the dropdown here
+                onClose;
+              }}
+            >
+              Upload
+            </p>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              id="imageUpload"
+              accept="image/*"
+              onChange={this.handleImageUpload}
+            />
+          </div>
+        </MenuItem>
+      </MenuGroup>
+    )}
+  />
+</BlockControls>}
         {imageUrl !== "" ? (
           <div
             className={classnames(
@@ -366,16 +323,19 @@ export default class Edit extends Component {
                   />
                 </MediaUploadCheck>
               </div>
-              <div>
-                <Button variant="secondary" onClick={this.toggleUrlInput}>
+              <div style={{display:"flex",flexDirection:"column",gap:"5px"}} >
+                <Button style={{"position":"relative"}} variant="secondary" onClick={this.toggleUrlInput}>
                   Insert from URL
                 </Button>
                 {showUrlInput && (
-                  <TextControl
-                    label="Image URL"
-                    value={imageUrl}
-                    onChange={this.onUrlInputChange}
-                  />
+                            <input
+                            style={{position:"absolute",marginTop:"40px",background:"inherit"}}
+                            type="text"
+                            placeholder="Enter Image URL"
+                            value={imageUrl}
+                            onChange={this.onUrlInputChange}
+                          />
+                
                 )}
               </div>
             </div>

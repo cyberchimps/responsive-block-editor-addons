@@ -13952,6 +13952,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .img-main-block' => array(
 					'text-align' => $attr['imageAlignment'],
 				),
+				' .img-block' => array(
+					"transform" => $slidetransform,
+				), 
 				"  .responsive-blocks-image-block" => array(
 					"border-color" => $attr['imageBorderColor'],
 					"border-width" => self::get_css_value($attr['imageBorderWidth'], 'px'),
@@ -13978,12 +13981,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"mask-position" => $attr['MaskPosition'],
 					"-webkit-mask-repeat" => $attr['MaskRepeat'],
 					"mask-repeat" => $attr['MaskRepeat'],
-					"transform" => $slidetransform,
 					"object-fit" => $attr['imageObjectFit'],
 					"width" => self::get_css_value($attr['imageWidth'], 'px'),
 					"height" => self::get_css_value($attr['imageHeight'], 'px'),
 				),
-				"  .responsive-blocks-image-block:hover" => array(
+				"  .img-main-block:hover figure" => array(
 					"box-shadow" =>
 					self::get_css_value($attr['imageboxShadowHoverHOffset'], 'px') . " " .
 						self::get_css_value($attr['imageboxShadowHoverVOffset'], 'px') .
@@ -14050,7 +14052,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				)
 			);
 			$tablet_selectors = array(
-				' .img-block' => array(
+				' .img-main-block' => array(
 					'text-align' => $attr['imageAlignmentTablet'],
 				),
 				"  .responsive-blocks-image-block" => array(
@@ -14079,7 +14081,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
-				' .img-block' => array(
+				' .img-main-block' => array(
 					'text-align' => $attr['imageAlignmentMobile'],
 				),
 				"  .responsive-blocks-image-block" => array(
@@ -14087,6 +14089,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"margin-bottom" => self::get_css_value($attr['imagebottommarginMobile'], 'px'),
 					"margin-left" => self::get_css_value($attr['imageleftmarginMobile'], 'px'),
 					"margin-right" => self::get_css_value($attr['imagerightmarginMobile'], 'px'),
+					"width" => self::get_css_value($attr['imageWidthMobile'], 'px'),
+					"height" => self::get_css_value($attr['imageHeightMobile'], 'px'),
 				),
 				" .responsive-img-caption" => array(
 					"font-size" => self::get_css_value($attr['captionFontSizeMobile'], 'px'),
@@ -14095,8 +14099,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"margin-left" => self::get_css_value($attr['captionleftmarginMobile'], 'px'),
 					"margin-right" => self::get_css_value($attr['captionrightmarginMobile'], 'px'),
 					"text-align" => $attr['captionimageAlignmentMobile'],
-					"width" => self::get_css_value($attr['imageWidthMobile'], 'px'),
-					"height" => self::get_css_value($attr['imageHeightMobile'], 'px'),
 				),
 				" .responsive-img-heading" => array(
 					"font-size" => self::get_css_value($attr['layoverHeadingFontSizeMobile'],"px"),
