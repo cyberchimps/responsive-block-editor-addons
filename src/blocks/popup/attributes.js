@@ -2,17 +2,28 @@ const attributes = {
     block_id: {
       type: "string",
     },
-    popupContainerWidth: {
+    isPopupVariantSelected: {
+        type: "boolean",
+        default: false,
+    },
+    popupVariant: {
         type: "string",
-        default: "center",
+    },
+    popupIcon: {
+        type: "string",
+        default: "fa fa-angellist",
+    },
+    popupContainerWidth: {
+        type: "number",
+        default: 600,
     },
     popupContainerWidthTablet: {
-        type: "string",
-        default: "center",
+        type: "number",
+        default: 600,
     },
     popupContainerWidthMobile: {
-        type: "string",
-        default: "center",
+        type: "number",
+        default: 600,
     },
     popupHeightType: {
         type: "string",

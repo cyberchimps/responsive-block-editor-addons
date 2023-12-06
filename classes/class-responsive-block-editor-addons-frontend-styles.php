@@ -13914,6 +13914,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array();
 			$tablet_selectors = array();
+
+			$selectors        = array();
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-popup.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
 		}
 
 		/**
@@ -13923,7 +13935,44 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_popup_block_default_attributes() {
 			return array(
-				'block_id'                       => '',
+				'block_id'                    => '',
+				'isPopupVariantSelected'      => false,
+				'popupVariant'                => '',
+				'popupIcon'                   => 'fa fa-angellist',
+				'popupContainerWidth'         => 600,
+				'popupContainerWidthTablet'   => 600,
+				'popupContainerWidthMobile'   => 600,
+				'popupHeightType'             => 'custom',
+				'popupHeightCustom'           => 350,
+				'popupHeightCustomTablet'     => 350,
+				'popupHeightCustomMobile'     => 350,
+				'popupPaddingTop'             => 15,
+				'popupPaddingTopMobile'       => 15,
+				'popupPaddingBottom'          => 15,
+				'popupPaddingBottomTablet'    => 15,
+				'popupPaddingBottomMobile'    => 15,
+				'popupPaddingLeft'            => 15,
+				'popupPaddingLeftTablet'      => 15,
+				'popupPaddingLeftMobile'      => 15,
+				'popupPaddingRight'           => 15,
+				'popupPaddingRightTablet'     => 15,
+				'popupPaddingRightMobile'     => 15,
+				'popupScreenType'             => 'center center',
+				'popupScreenTypeMobile'       => 'center center',
+				'popupScreenTypeTablet'       => 'center center',
+				'popupScreenTypeTablet'       => 'center center',
+				'popupTrigger'                => 'load',
+				'popupTriggerDelay'           => 1,
+				'popupToggleCloseBtn'         => false,
+				'popupToggleCloseBtnPosition' => "top-right",
+				'popupBgColor'                => "#fff",
+				'popupCloseBtnColor'          => "#ffa500",
+				'popupOverlayColor'           => "#000",
+				'popupOverlayOpacity'         => 95,
+				'popupBlockBorderStyle'       => "solid",
+				'popupBlockBorderWidth'       => 1,
+				'popupBlockBorderRadius'      => 2,
+				'popupBlockBorderColor'       => "black",
 			);
 		}
 

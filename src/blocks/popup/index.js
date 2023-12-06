@@ -27,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/popup", {
     "Responsive Popup",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,
+  icon: ResponsiveBlockEditorAddonsIcons.popup,
   category: "responsive_block_editor_addons",
   keywords: [
     __("modal", "responsive-block-editor-addons"),

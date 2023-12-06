@@ -3,30 +3,46 @@
  */
 import classnames from "classnames";
 import Inspector from "./inspector";
-import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import icons from "./icons";
+import { BLOCKS_TEMPLATE_PRESET1, BLOCKS_TEMPLATE_PRESET2, BLOCKS_TEMPLATE_CUSTOM } from "./variations";
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls, InnerBlocks } = wp.blockEditor;
-// const ALLOWED_BLOCKS = [ 'core/image', 'core/paragraph' ];
-// const MY_TEMPLATE = [
-//   [ 'core/image', {} ],
-//   [ 'core/heading', { placeholder: 'Book Title' } ],
-//   [ 'core/paragraph', { placeholder: 'Summary' } ],
+const { Component } = wp.element;
+const { BlockControls, InnerBlocks } = wp.blockEditor;
+// const BLOCKS_TEMPLATE = [
+//   ['core/columns', {}, [
+//       ['core/column', {}, [
+//           ['core/image'],
+//       ]],
+//       ['core/column', {}, [
+//           ['core/paragraph', { placeholder: 'Enter side content...' }],
+//       ]],
+//   ]]
 // ];
-const BLOCKS_TEMPLATE = [
-  ['core/columns', {}, [
-      ['core/column', {}, [
-          ['core/image'],
-      ]],
-      ['core/column', {}, [
-          ['core/paragraph', { placeholder: 'Enter side content...' }],
-      ]],
-  ]]
-];
+
+const presets = [
+  {
+    name: 'preset1',
+    title: 'Style 1',
+    desc: '(Icon, Heading, Text, CTA)',
+    icon: icons.preset1
+  },
+  {
+    name: 'preset2',
+    title: 'Style 2',
+    desc: '(Heading, Text, Image, CTA)',
+    icon: icons.preset2
+  },
+  {
+    name: 'custom',
+    title: 'Custom',
+    desc: '',
+    icon: icons.custom
+  },
+]
 
 export default class Edit extends Component {
   constructor() {
@@ -35,7 +51,7 @@ export default class Edit extends Component {
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
       "responsive-block-editor-addons-popup-style-" +
-        this.props.clientId
+      this.props.clientId
     );
 
     if (null !== element && undefined !== element) {
@@ -54,7 +70,7 @@ export default class Edit extends Component {
     $style.setAttribute(
       "id",
       "responsive-block-editor-addons-popup-style-" +
-        this.props.clientId
+      this.props.clientId
     );
     document.head.appendChild($style);
   }
@@ -62,18 +78,8 @@ export default class Edit extends Component {
     // Setup the attributes
     const {
       attributes: {
-        headingTitle,
-        headingDesc,
-        seperatorStyle,
-        headingTitleFontFamily,
-        subHeadingTitleFontFamily,
-        headingTag,
-        headingAlignment,
-        showHeading,
-        showSubHeading,
-        showSeparator,
-        seperatorPosition,
-        textJustify,
+        isPopupVariantSelected,
+        popupVariant,
         block_id,
       },
       setAttributes,
@@ -81,12 +87,33 @@ export default class Edit extends Component {
       insertBlocksAfter,
       onReplace,
     } = this.props;
+
+    const VariantSelector = () => {
+      return (
+        <div class="rba-popup-selector">
+          <div class="rba-popup-selector-head">
+            {icons.logo}
+            <p class="rba-popup-block-name">{__("Popup", "responsive-block-editor-addons")}</p>
+          </div>
+          <p class="rba-popup-block-text">{__("Select a Preset or create your own.", "responsive-block-editor-addons")}</p>
+          <div class="rba-popup-preset-selection">
+            {
+              presets.map((current, index) => {
+                return (
+                  <div key={index} class="rba-popup-preset" onClick={() => setAttributes({ isPopupVariantSelected: true, popupVariant: current.name })}>{current.icon}
+                    <p class="rba-popup-preset-title">{current.title}</p>
+                    <p class="rba-popup-preset-desc">{current.desc}</p>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+      )
+    }
+
     return [
       <BlockControls key="controls">
-        <AlignmentToolbar
-          value={headingAlignment}
-          onChange={(value) => setAttributes({ headingAlignment: value })}
-        />
       </BlockControls>,
       // Show the block controls on focus
       <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
@@ -94,70 +121,52 @@ export default class Edit extends Component {
       // Show the block markup in the editor
       <div
         className={classnames(
-          this.props.className, 
+          this.props.className,
           "responsive-block-editor-addons-block-popup",
           `block-${block_id}`
         )}
         key={`mainDiv-${block_id}`}
-        >
-        {headingTitleFontFamily && loadGoogleFont(headingTitleFontFamily)}
-        {showHeading && (
-          <RichText
-            tagName={headingTag}
-            placeholder={__("Write a Heading", "responsive-block-editor-addons")}
-            value={headingTitle}
-            className="responsive-heading-title-text"
-            multiline={false}
-            onChange={(value) => {
-              setAttributes({ headingTitle: value });
-            }}
-            onMerge={mergeBlocks}
-            onSplit={
-              insertBlocksAfter
-                ? (before, after, ...blocks) => {
-                    setAttributes({ content: before });
-                    insertBlocksAfter([
-                      ...blocks,
-                      createBlock("core/paragraph", { content: after }),
-                    ]);
-                  }
-                : undefined
-            }
-            onRemove={() => onReplace([])}
-          />
-        )}
-        {seperatorPosition == "belowTitle" && seperatorStyle !== "none" && showSeparator && (
-          <div className="responsive-heading-seperator-wrap">
-            <div className="responsive-heading-seperator"></div>
+      >
+        {!isPopupVariantSelected &&
+          VariantSelector()
+        }
+        {isPopupVariantSelected && popupVariant === 'preset1' &&
+          <>
+          <div className="responsive-block-editor-addons-innerblock">
+            <InnerBlocks
+              // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
+              // directInsert
+              // template={MY_TEMPLATE}
+              // templateLock="all"
+              templateLock={false}
+              // allowedBlocks={ALLOWED_BLOCKS}
+              template={BLOCKS_TEMPLATE_PRESET1}
+            />
           </div>
-        )}
-        {subHeadingTitleFontFamily && loadGoogleFont(subHeadingTitleFontFamily)}
-        <InnerBlocks 
-          // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
-          // directInsert
-          // template={MY_TEMPLATE}
-          // templateLock="all"
-          templateLock={false}
-          // allowedBlocks={ALLOWED_BLOCKS}
-          template={BLOCKS_TEMPLATE}
-        />
-        {showSubHeading && (
-          <RichText
-            tagName="p"
-            placeholder={__("Write some text", "responsive-block-editor-addons")}
-            value={headingDesc}
-            className="responsive-heading-desc-text"
-            onChange={(value) => setAttributes({ headingDesc: value })}
-            onMerge={mergeBlocks}
-            onSplit={this.splitBlock}
-            onRemove={() => onReplace([])}
+          </>
+        }
+        {isPopupVariantSelected && popupVariant === 'preset2' &&
+          <InnerBlocks
+            // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
+            // directInsert
+            // template={MY_TEMPLATE}
+            // templateLock="all"
+            templateLock={false}
+            // allowedBlocks={ALLOWED_BLOCKS}
+            template={BLOCKS_TEMPLATE_PRESET2}
           />
-        )}
-      {seperatorPosition == "belowDesc" && seperatorStyle !== "none" && showSeparator && (
-      <div className="responsive-heading-seperator-wrap">
-          <div className="responsive-heading-seperator"></div>
-          </div>
-      )}
+        }
+        {isPopupVariantSelected && popupVariant === 'custom' &&
+          <InnerBlocks
+            // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
+            // directInsert
+            // template={MY_TEMPLATE}
+            // templateLock="all"
+            templateLock={false}
+            // allowedBlocks={ALLOWED_BLOCKS}
+            template={BLOCKS_TEMPLATE_CUSTOM}
+          />
+        }
       </div>,
     ];
   }
