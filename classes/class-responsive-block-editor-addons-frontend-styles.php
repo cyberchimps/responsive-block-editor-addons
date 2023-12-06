@@ -13900,7 +13900,33 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'afterSubmitMsgbgColor'          =>'',
 			);
 		}
-		
+
+		/**
+		 * Get Popup CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_popup_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_popup_block_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+		}
+
+		/**
+		 * Get Defaults for Contact Form 7 Styler block
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_popup_block_default_attributes() {
+			return array(
+				'block_id'                       => '',
+			);
+		}
+
 		/**
 		 * Generate gradient effect
 		 *
