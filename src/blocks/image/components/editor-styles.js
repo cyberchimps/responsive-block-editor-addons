@@ -156,6 +156,9 @@ function EditorStyles(props) {
     " .img-main-block": {
       "text-align": imageAlignment,
     },
+    " .img-block":{
+      "transform": slidetranform,
+    },
     "  .responsive-blocks-image-block": {
       width: generateCSSUnit(imageWidth, "px"),
       height: generateCSSUnit(imageHeight, "px"),
@@ -186,7 +189,7 @@ function EditorStyles(props) {
       "mask-repeat": MaskRepeat,
       "-webkit-mask-size": MaskSize,
       "mask-size": MaskSize,
-      transform: slidetranform,
+      
     },
     " .responsive-image-block-description": {
       "align-items": leftoverlayalign,
@@ -229,7 +232,7 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(captionleftmargin, "px"),
       "margin-right": generateCSSUnit(captionrightmargin, "px"),
     },
-    "  .responsive-blocks-image-block:hover": {
+    "  .img-main-block:hover figure": {
       "box-shadow":
         generateCSSUnit(imageboxShadowHoverHOffset, "px") +
         " " +
@@ -240,15 +243,15 @@ function EditorStyles(props) {
         generateCSSUnit(imageboxShadowHoverSpread, "px") +
         " " +
         imageboxShadowHoverColor,
-      filter: filtervalue,
-      transition: zoomintransition,
-      transform: zoomintransform,
+      "filter": filtervalue,
+      "transition": zoomintransition,
+      "transform": zoomintransform,
     },
     " .responsive-image-block-description-overlay": {
-      opacity: generateCSSUnit(layoverOpacity, "%"),
+      "opacity": generateCSSUnit(layoverOpacity, "%"),
     },
     " .responsive-image-block-description-overlay:hover": {
-      opacity: generateCSSUnit(layoverHoverOpacity, "%"),
+      "opacity": generateCSSUnit(layoverHoverOpacity, "%"),
     },
   };
   var tablet_selectors = {
@@ -256,8 +259,8 @@ function EditorStyles(props) {
       "text-align": imageAlignmentTablet,
     },
     "  .responsive-blocks-image-block": {
-      width: generateCSSUnit(imageWidthTablet, "px"),
-      height: generateCSSUnit(imageHeightTablet, "px"),
+      "width": generateCSSUnit(imageWidthTablet, "px"),
+      "height": generateCSSUnit(imageHeightTablet, "px"),
       "border-color": imageBorderColor,
       "border-width": generateCSSUnit(imageBorderWidth, "px"),
       "border-radius": generateCSSUnit(imageBorderRadius, "px"),
