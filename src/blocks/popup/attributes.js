@@ -13,6 +13,10 @@ const attributes = {
         type: "string",
         default: "fa fa-angellist",
     },
+    popupInitiateBtn: {
+        type: "boolean",
+        default: false,
+    },
     popupContainerWidth: {
         type: "number",
         default: 600,

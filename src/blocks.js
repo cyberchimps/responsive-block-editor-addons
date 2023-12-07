@@ -52,6 +52,7 @@ import "./blocks/advanced-text/index.js";
 import "./blocks/image-hotspot/index.js";
 import "./blocks/contact-form-7-styler/index.js";
 import "./blocks/image/index.js"
+import "./blocks/popup/index.js";
 
 
 // Extensions

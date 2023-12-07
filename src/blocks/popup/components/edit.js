@@ -80,6 +80,7 @@ export default class Edit extends Component {
       attributes: {
         isPopupVariantSelected,
         popupVariant,
+        popupInitiateBtn,
         block_id,
       },
       setAttributes,
@@ -130,43 +131,35 @@ export default class Edit extends Component {
         {!isPopupVariantSelected &&
           VariantSelector()
         }
-        {isPopupVariantSelected && popupVariant === 'preset1' &&
-          <>
-          <div className="responsive-block-editor-addons-innerblock">
-            <InnerBlocks
-              // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
-              // directInsert
-              // template={MY_TEMPLATE}
-              // templateLock="all"
-              templateLock={false}
-              // allowedBlocks={ALLOWED_BLOCKS}
-              template={BLOCKS_TEMPLATE_PRESET1}
-            />
+
+        {isPopupVariantSelected && <button onClick={() => setAttributes({ popupInitiateBtn: true })}>Hello World</button>}
+        {popupInitiateBtn && (
+          <div className="responsive-block-editor-addons-popup-modal-wrap">
+            <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay" onClick={() => setAttributes({ popupInitiateBtn: false })}></div>
+            <div className="responsive-block-editor-addons-popup-modal-content">
+              <div className="responsive-block-editor-addons-popup-modal-header"></div>
+              <div className="responsive-block-editor-addons-popup-modal-body">
+                <div className="responsive-block-editor-addons-popup-innerblock">
+                  <InnerBlocks
+                    // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
+                    // directInsert
+                    // template={MY_TEMPLATE}
+                    // templateLock="all"
+                    templateLock={false}
+                    // allowedBlocks={ALLOWED_BLOCKS}
+                    template={
+                      popupVariant === 'preset1'
+                        ? BLOCKS_TEMPLATE_PRESET1
+                        : popupVariant === 'preset2'
+                          ? BLOCKS_TEMPLATE_PRESET2
+                          : BLOCKS_TEMPLATE_CUSTOM
+                    }
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-          </>
-        }
-        {isPopupVariantSelected && popupVariant === 'preset2' &&
-          <InnerBlocks
-            // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
-            // directInsert
-            // template={MY_TEMPLATE}
-            // templateLock="all"
-            templateLock={false}
-            // allowedBlocks={ALLOWED_BLOCKS}
-            template={BLOCKS_TEMPLATE_PRESET2}
-          />
-        }
-        {isPopupVariantSelected && popupVariant === 'custom' &&
-          <InnerBlocks
-            // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
-            // directInsert
-            // template={MY_TEMPLATE}
-            // templateLock="all"
-            templateLock={false}
-            // allowedBlocks={ALLOWED_BLOCKS}
-            template={BLOCKS_TEMPLATE_CUSTOM}
-          />
-        }
+        )}
       </div>,
     ];
   }
