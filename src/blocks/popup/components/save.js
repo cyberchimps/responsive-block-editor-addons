@@ -31,7 +31,7 @@ export default class Save extends Component {
           `block-${block_id}`
         )}
       >
-        <div className="responsive-block-editor-addons-popup-modal-wrap">
+        <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide">
           <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay"></div>
           <div className="responsive-block-editor-addons-popup-modal-content">
             <div className="responsive-block-editor-addons-popup-modal-header"></div>

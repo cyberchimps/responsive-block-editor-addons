@@ -118,5 +118,27 @@
       }
     }
   }
+
+  .responsive-block-editor-popup-modal-show {
+    display: flex;
+  }
+
+  .responsive-block-editor-popup-modal-hide {
+    display: none;
+  }
+}
+
+// Custom Styles of Alignment Matrix Control.
+.responsive-block-editor-addons-alignment-matrix-control {
+
+  .component-alignment-matrix-control {
+    grid-template-rows: repeat(3,35.6667px);
+    width: 245px;
+  }
+  
+  .component-alignment-matrix-control span[role=presentation] {
+    height: 23px;
+    width: 60px;
+  }
 }
   

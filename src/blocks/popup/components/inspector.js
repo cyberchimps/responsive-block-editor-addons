@@ -279,6 +279,7 @@ export default class Inspector extends Component {
                   </TabPanel>
                 }
 
+                <hr className="responsive-block-editor-addons-editor__separator" />
                 <ResponsiveSpacingControl
                   title={__("Padding Top", "responsive-block-editor-addons")}
                   attrNameTemplate="popupPaddingTop%s"
@@ -359,38 +360,44 @@ export default class Inspector extends Component {
                       tabout = (
                         <>
                           <Text variant="title.small" as="h3">{__("Screen Type (Mobile)", "responsive-block-editor-addons")}</Text>
-                          <AlignmentMatrixControl
-                            value={popupScreenTypeMobile}
-                            onChange={(value) => this.props.setAttributes({
-                              popupScreenTypeMobile: value
-                            })}
-                          />
+                          <div className="responsive-block-editor-addons-alignment-matrix-control">
+                            <AlignmentMatrixControl
+                              value={popupScreenTypeMobile}
+                              onChange={(value) => this.props.setAttributes({
+                                popupScreenTypeMobile: value
+                              })}
+                            />
+                          </div>
                         </>
                       );
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <>
                           <Text variant="title.small" as="h3">{__("Screen Type (Tablet)", "responsive-block-editor-addons")}</Text>
-                          <AlignmentMatrixControl
-                            value={popupScreenTypeTablet}
-                            onChange={(value) => this.props.setAttributes({
-                              popupScreenTypeTablet: value
-                            })}
-                          />
+                          <div className="responsive-block-editor-addons-alignment-matrix-control">
+                            <AlignmentMatrixControl
+                              value={popupScreenTypeTablet}
+                              onChange={(value) => this.props.setAttributes({
+                                popupScreenTypeTablet: value
+                              })}
+                            />
+                          </div>
                         </>
                       );
                     } else {
                       tabout = (
                         <>
                           <Text variant="title.small" as="h3">{__("Screen Type", "responsive-block-editor-addons")}</Text>
-                          <AlignmentMatrixControl
-                            value={popupScreenType}
-                            onChange={(value) => {
-                              this.props.setAttributes({
-                                popupScreenType: value
-                              })
-                            }}
-                          />
+                          <div className="responsive-block-editor-addons-alignment-matrix-control">
+                            <AlignmentMatrixControl
+                              value={popupScreenType}
+                              onChange={(value) => {
+                                this.props.setAttributes({
+                                  popupScreenType: value
+                                })
+                              }}
+                            />
+                          </div>
                         </>
                       );
                     }
