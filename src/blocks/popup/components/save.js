@@ -31,7 +31,18 @@ export default class Save extends Component {
           `block-${block_id}`
         )}
       >
-        {isPopupVariantSelected && popupVariant !== null && <InnerBlocks.Content />}
+        <div className="responsive-block-editor-addons-popup-modal-wrap">
+          <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay"></div>
+          <div className="responsive-block-editor-addons-popup-modal-content">
+            <div className="responsive-block-editor-addons-popup-modal-header"></div>
+            <div className="responsive-block-editor-addons-popup-modal-body">
+              <div className="responsive-block-editor-addons-popup-innerblock">
+                <InnerBlocks.Content />
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>,
     ];
   }

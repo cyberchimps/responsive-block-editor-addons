@@ -12,16 +12,6 @@ import { BLOCKS_TEMPLATE_PRESET1, BLOCKS_TEMPLATE_PRESET2, BLOCKS_TEMPLATE_CUSTO
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { BlockControls, InnerBlocks } = wp.blockEditor;
-// const BLOCKS_TEMPLATE = [
-//   ['core/columns', {}, [
-//       ['core/column', {}, [
-//           ['core/image'],
-//       ]],
-//       ['core/column', {}, [
-//           ['core/paragraph', { placeholder: 'Enter side content...' }],
-//       ]],
-//   ]]
-// ];
 
 const presets = [
   {
@@ -47,6 +37,11 @@ const presets = [
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
+
+    this.state = {
+      isModalOpen: false,
+    };
+
   }
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
@@ -84,9 +79,6 @@ export default class Edit extends Component {
         block_id,
       },
       setAttributes,
-      mergeBlocks,
-      insertBlocksAfter,
-      onReplace,
     } = this.props;
 
     const VariantSelector = () => {
@@ -132,34 +124,31 @@ export default class Edit extends Component {
           VariantSelector()
         }
 
-        {isPopupVariantSelected && <button onClick={() => setAttributes({ popupInitiateBtn: true })}>Hello World</button>}
-        {popupInitiateBtn && (
-          <div className="responsive-block-editor-addons-popup-modal-wrap">
-            <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay" onClick={() => setAttributes({ popupInitiateBtn: false })}></div>
-            <div className="responsive-block-editor-addons-popup-modal-content">
-              <div className="responsive-block-editor-addons-popup-modal-header"></div>
-              <div className="responsive-block-editor-addons-popup-modal-body">
-                <div className="responsive-block-editor-addons-popup-innerblock">
-                  <InnerBlocks
-                    // defaultBlock={['core/paragraph', {placeholder: "Lorem ipsum..."}]}
-                    // directInsert
-                    // template={MY_TEMPLATE}
-                    // templateLock="all"
-                    templateLock={false}
-                    // allowedBlocks={ALLOWED_BLOCKS}
-                    template={
-                      popupVariant === 'preset1'
-                        ? BLOCKS_TEMPLATE_PRESET1
-                        : popupVariant === 'preset2'
-                          ? BLOCKS_TEMPLATE_PRESET2
-                          : BLOCKS_TEMPLATE_CUSTOM
-                    }
-                  />
+        {isPopupVariantSelected &&
+          <>
+            <button onClick={() => this.setState({ isModalOpen: true })}>Hello World</button>
+            <div className={`responsive-block-editor-addons-popup-modal-wrap ${this.state.isModalOpen ? 'responsive-block-editor-popup-modal-show' : 'responsive-block-editor-popup-modal-hide'}`}>
+              <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay" onClick={() => this.setState({ isModalOpen: false })}></div>
+              <div className="responsive-block-editor-addons-popup-modal-content">
+                <div className="responsive-block-editor-addons-popup-modal-header"></div>
+                <div className="responsive-block-editor-addons-popup-modal-body">
+                  <div className="responsive-block-editor-addons-popup-innerblock">
+                    <InnerBlocks
+                      templateLock={false}
+                      template={
+                        popupVariant === 'preset1'
+                          ? BLOCKS_TEMPLATE_PRESET1
+                          : popupVariant === 'preset2'
+                            ? BLOCKS_TEMPLATE_PRESET2
+                            : BLOCKS_TEMPLATE_CUSTOM
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          </>
+        }
       </div>,
     ];
   }
