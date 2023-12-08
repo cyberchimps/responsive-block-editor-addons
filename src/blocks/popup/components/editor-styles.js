@@ -226,13 +226,6 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(popupPaddingLeftMobile, "px"),
       ...tablet,
     },
-    " .responsive-heading-desc-text": {
-      "font-size": generateCSSUnit(subHeadingTitleFontSizeMobile, "px"),
-      "margin-bottom": generateCSSUnit(subheadSpacingMobile, "px"),
-    },
-    " .responsive-heading-seperator": {
-      "margin-bottom": generateCSSUnit(separatorSpacingMobile, "px"),
-    },
   };
 
   var tablet_selectors = {
@@ -247,13 +240,6 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(popupPaddingBottomTablet, "px"),
       "padding-left": generateCSSUnit(popupPaddingLeftTablet, "px"),
       ...mobile,
-    },
-    " .responsive-heading-desc-text": {
-      "font-size": generateCSSUnit(subHeadingTitleFontSizeTablet, "px"),
-      "margin-bottom": generateCSSUnit(subheadSpacingTablet, "px"),
-    },
-    " .responsive-heading-seperator": {
-      "margin-bottom": generateCSSUnit(separatorSpacingTablet, "px"),
     },
   };
 

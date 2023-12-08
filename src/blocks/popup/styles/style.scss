@@ -38,18 +38,24 @@
         margin-top: 25px;
         position: absolute;
         z-index: 100000;
-        background-color: #fff;
-        width: 860px;
         max-width: 100%;
-        height: fit-content;
-        padding: 20px;
-        border-width: 0px 0px 0px 0px;
-        border-radius: 0px 0px 0px 0px;
-        border-color: #000;
-        border-style: solid;
         box-sizing: border-box;
         scroll-behavior: auto;
         box-shadow: unset;
+
+        .responsive-block-editor-addons-popup-modal-header {
+          display: flex;
+  
+          button {
+            background-color: rgba(0, 0, 0, 0);
+            height: auto;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+          }
+        }
   
         .responsive-block-editor-addons-popup-modal-body {
           max-height: 75vh;

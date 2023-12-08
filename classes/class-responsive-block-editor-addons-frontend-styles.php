@@ -14241,6 +14241,178 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors        = array();
 
+			$popupScreenPositions = [];
+
+			// Define a private method to set popup positions based on screen type
+			$set_popup_position = function (&$popup_screen_positions, $screen, $top, $left, $center, $right, $bottom) {
+				$popup_screen_position = &$popup_screen_positions[$screen];
+				$popup_screen_position['top'] = $top !== '' ? self::get_css_value($top, "px") : '';
+				$popup_screen_position['left'] = $left !== '' ? self::get_css_value($left, "px") : '';
+				$popup_screen_position['center'] = $center;
+				$popup_screen_position['right'] = $right !== '' ? self::get_css_value($right, "px") : '';
+				$popup_screen_position['bottom'] = $bottom !== '' ? self::get_css_value($bottom, "px") : '';
+			};
+
+			// Set positions for desktop
+			switch ( $attr['popupScreenType'] ) {
+				case 'top left':
+					$set_popup_position($popupScreenPositions, 'desktop', 30, 30, '', '', '');
+					break;
+				case 'top center':
+					$set_popup_position($popupScreenPositions, 'desktop', 30, '', '', '', '');
+					break;
+				case 'top right':
+					$set_popup_position($popupScreenPositions, 'desktop', 30, '', '', 30, '');
+					break;
+				case 'center left':
+					$set_popup_position($popupScreenPositions, 'desktop', '', 30, '', '', '');
+					break;
+				case 'center center':
+					$set_popup_position($popupScreenPositions, 'desktop', '', '', '', '', '');
+					break;
+				case 'center right':
+					$set_popup_position($popupScreenPositions, 'desktop', '', '', '', 30, '');
+					break;
+				case 'bottom left':
+					$set_popup_position($popupScreenPositions, 'desktop', '', 30, '', '', 30);
+					break;
+				case 'bottom center':
+					$set_popup_position($popupScreenPositions, 'desktop', '', '', '', '', 30);
+					break;
+				case 'bottom right':
+					$set_popup_position($popupScreenPositions, 'desktop', '', '', '', 30, 30);
+					break;
+			}
+
+			// Set positions for tablet
+			switch ( $attr['popupScreenTypeTablet'] ) {
+				case 'top left':
+					$set_popup_position($popupScreenPositions, 'tablet', 15, 15, '', '', '');
+					break;
+				case 'top center':
+					$set_popup_position($popupScreenPositions, 'tablet', 15, '', '', '', '');
+					break;
+				case 'top right':
+					$set_popup_position($popupScreenPositions, 'tablet', 15, '', '', 15, '');
+					break;
+				case 'center left':
+					$set_popup_position($popupScreenPositions, 'tablet', '', 15, '', '', '');
+					break;
+				case 'center center':
+					$set_popup_position($popupScreenPositions, 'tablet', '', '', '', '', '');
+					break;
+				case 'center right':
+					$set_popup_position($popupScreenPositions, 'tablet', '', '', '', 15, '');
+					break;
+				case 'bottom left':
+					$set_popup_position($popupScreenPositions, 'tablet', '', 15, '', '', 15);
+					break;
+				case 'bottom center':
+					$set_popup_position($popupScreenPositions, 'tablet', '', '', '', '', 15);
+					break;
+				case 'bottom right':
+					$set_popup_position($popupScreenPositions, 'tablet', '', '', '', 15, 15);
+					break;
+			}
+
+			// Set positions for mobile
+			switch ( $attr['popupScreenTypeMobile'] ) {
+				case 'top left':
+					$set_popup_position($popupScreenPositions, 'mobile', 10, 10, '', '', '');
+					break;
+				case 'top center':
+					$set_popup_position($popupScreenPositions, 'mobile', 10, '', '', '', '');
+					break;
+				case 'top right':
+					$set_popup_position($popupScreenPositions, 'mobile', 10, '', '', 10, '');
+					break;
+				case 'center left':
+					$set_popup_position($popupScreenPositions, 'mobile', '', 10, '', '', '');
+					break;
+				case 'center center':
+					$set_popup_position($popupScreenPositions, 'mobile', '', '', '', '', '');
+					break;
+				case 'center right':
+					$set_popup_position($popupScreenPositions, 'mobile', '', '', '', 10, '');
+					break;
+				case 'bottom left':
+					$set_popup_position($popupScreenPositions, 'mobile', '', 10, '', '', 10);
+					break;
+				case 'bottom center':
+					$set_popup_position($popupScreenPositions, 'mobile', '', '', '', '', 10);
+					break;
+				case 'bottom right':
+					$set_popup_position($popupScreenPositions, 'mobile', '', '', '', 10, 10);
+					break;
+			}
+
+			[$desktop, $tablet, $mobile] = array_values($popupScreenPositions);
+
+			$selectors        = array(
+				'' => array(),
+				' .responsive-block-editor-addons-popup-modal-content' => array(
+					'width'            => self::get_css_value( $attr['popupContainerWidth'], 'px' ),
+					'height'           => 'auto' !== $attr['popupHeightType'] ? self::get_css_value( $attr['popupHeightCustom'], "px" ) : 'auto',
+					'padding-top'      => self::get_css_value( $attr['popupPaddingTop'], 'px' ),
+					'padding-right'    => self::get_css_value( $attr['popupPaddingRight'], 'px' ),
+					'padding-bottom'   => self::get_css_value( $attr['popupPaddingBottom'], 'px' ),
+					'padding-left'     => self::get_css_value( $attr['popupPaddingLeft'], 'px' ),
+					'top'              => $desktop['top'],
+					'left'             => $desktop['left'],
+					'right'            => $desktop['right'],
+					'bottom'           => $desktop['bottom'],
+					'background-image' => 'gradient' === $attr['popupBgType'] ? $attr['popupGradient'] : 'none',
+					'background-color' => 'color' === $attr['popupBgType'] ? $attr['popupBgColor'] : 'unset',
+					'border-style'     => $attr['popupBlockBorderStyle'],
+					'border-width'     => self::get_css_value( $attr['popupBlockBorderWidth'], 'px' ),
+					'border-radius'    => self::get_css_value( $attr['popupBlockBorderRadius'], 'px' ),
+					'border-color'     => $attr['popupBlockBorderColor'],
+				),
+				' .responsive-block-editor-addons-popup-modal-header' => array(
+					'justify-content' => $attr['popupToggleCloseBtnPosition'],
+				),
+				' .responsive-block-editor-addons-popup-modal-header .dashicons.dashicons-no' => array(
+					'color' => $attr['popupCloseBtnColor'],
+				),
+				' .responsive-block-editor-addons-popup-modal-wrap-overlay' => array(
+					'background-color' => $attr['popupOverlayColor'],
+					'opacity'          => (int) $attr['popupOverlayOpacity'] / 100,
+				),
+			);
+			$mobile_selectors = array(
+				// ''                                => array(
+
+				// ),
+				// ' .responsive-heading-title-text' => array(
+				// 	'font-size'     => self::get_css_value( $attr['headingTitleFontSizeMobile'], 'px' ),
+				// 	'margin-bottom' => self::get_css_value( $attr['headSpacingMobile'], 'px' ),
+				// ),
+				// ' .responsive-heading-seperator'  => array(
+				// 	'margin-bottom' => self::get_css_value( $attr['separatorSpacingMobile'], 'px' ),
+				// ),
+				// ' .responsive-heading-desc-text'  => array(
+				// 	'font-size'     => self::get_css_value( $attr['subHeadingTitleFontSizeMobile'], 'px' ),
+				// 	'margin-bottom' => self::get_css_value( $attr['subheadSpacingMobile'], 'px' ),
+				// ),
+			);
+
+			$tablet_selectors = array(
+				// ''                                => array(
+
+				// ),
+				// ' .responsive-heading-title-text' => array(
+				// 	'font-size'     => self::get_css_value( $attr['headingTitleFontSizeTablet'], 'px' ),
+				// 	'margin-bottom' => self::get_css_value( $attr['headSpacingTablet'], 'px' ),
+				// ),
+				// ' .responsive-heading-seperator'  => array(
+				// 	'margin-bottom' => self::get_css_value( $attr['separatorSpacingTablet'], 'px' ),
+				// ),
+				// ' .responsive-heading-desc-text'  => array(
+				// 	'font-size'     => self::get_css_value( $attr['subHeadingTitleFontSizeTablet'], 'px' ),
+				// 	'margin-bottom' => self::get_css_value( $attr['subheadSpacingTablet'], 'px' ),
+				// ),
+			);
+
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $tablet_selectors,
