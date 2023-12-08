@@ -69,7 +69,6 @@ export default class Edit extends Component {
       setAttributes,
     } = this.props;
 
-    setAttributes({ counterId: this.props.clientId });
 
     var data_copy = [...cardsArray];
 
@@ -79,7 +78,7 @@ export default class Edit extends Component {
       boxShadowPositionCSS = "";
     }
 
-    const formattingControls = ["bold", "italic", "strikethrough"];
+    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
 
     const dimRatioToClass = (ratio) => {
       return 0 === ratio || 50 === ratio
@@ -177,7 +176,7 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ cardsArray: data_copy });
                   }}
-                  formattingControls={formattingControls}
+                  allowedFormats={formattingControls}
                   
                 />
                 <RichText
@@ -197,7 +196,7 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ cardsArray: data_copy });
                   }}
-                  formattingControls={formattingControls}
+                  allowedFormats={formattingControls}
                   
                 />
                 <div className="wp-block-responsive-block-editor-addons-card-item__price-wrapper" key={`card-item__price-wrapper-${index}`}>
@@ -218,7 +217,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ cardsArray: data_copy });
                     }}
-                    formattingControls={formattingControls}
+                    allowedFormats={formattingControls}
                     
                   />
                 </div>
@@ -257,7 +256,7 @@ export default class Edit extends Component {
                       }}
                       target={buttonTarget ? "_blank" : null}
                       rel={buttonTarget ? "noopener noreferrer" : null}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingControls}
                       
                     />
                     {"" !== icon && iconPosition == "after" && (

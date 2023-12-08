@@ -89,10 +89,10 @@ export default class Save extends Component {
 
     return [
       <div className={classes}>
-        <div className={innerClasses}>
+        <div key={`block-${block_id}`} className={innerClasses}>
           {imageboxesBlock.map((test, index) => (
-            <a href={imageboxesBlock[index]["cta_url"]}>
-              <div
+            <a key={`block-image-href-${block_id}`} href={imageboxesBlock[index]["cta_url"]}>
+              <div key={`block-image-${block_id}`}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-image-boxes-block-item",
                   `responsive-block-editor-addons-block-image-boxes-${index}`,

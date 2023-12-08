@@ -66,7 +66,7 @@ export default class Edit extends Component {
 
     const { align, block_id, icon_count, icons, labelFontFamily } = attributes;
 
-    setAttributes({ block_id: this.props.clientId });
+    
 
     const getIconTemplate = memoize((icon_block, icons) => {
       return times(icon_block, (n) => [

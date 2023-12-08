@@ -215,7 +215,6 @@ export default class Edit extends Component {
       insertBlocksAfter,
     } = this.props;
 
-    setAttributes({ counterId: this.props.clientId });
 
     var data_copy = [...timelineItems];
     var content_align_class = AlignClass(this.props.attributes, 0); // Get classname for layout alignment

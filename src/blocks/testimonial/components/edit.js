@@ -81,16 +81,18 @@ export default class Edit extends Component {
       // Show the alignment toolbar on focus
       <BlockControls key="controls">
         <AlignmentToolbar
+                  key="alignment-toolbar"
           value={testimonialAlignment}
           onChange={(value) => setAttributes({ testimonialAlignment: value })}
         />
       </BlockControls>,
 
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
       <div
+      key={`testimonial-wrapper-${block_id}`}
         className={classnames(
           "wp-block-responsive-block-editor-addons-testimonial-wrapper",
           "responsive-block-editor-addons-block-testimonial",
@@ -104,11 +106,12 @@ export default class Edit extends Component {
         )}
       >
         {testimonialBlock.map((test, index) => (
-          <Testimonial {...this.props}>
+          <Testimonial key={`testimonial-${index}`} {...this.props}>
             {titleFontFamily && loadGoogleFont(titleFontFamily)}
             {nameFontFamily && loadGoogleFont(nameFontFamily)}
             {contentFontFamily && loadGoogleFont(contentFontFamily)}
             <RichText
+                          key={`testimonial-content-${index}`}
               tagName="div"
               placeholder={__(
                 "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
@@ -116,7 +119,7 @@ export default class Edit extends Component {
               )}
               
               value={testimonialBlock[index]["testimonialContent"]}
-              formattingControls={["bold", "italic", "strikethrough", "link"]}
+              allowedFormats={["core/bold", "core/italic", "core/strikethrough", "core/link"]}
               className={classnames(
                 "responsive-block-editor-addons-testimonial-text"
               )}
@@ -138,6 +141,7 @@ export default class Edit extends Component {
                 <div className="responsive-block-editor-addons-testimonial-avatar-wrap">
                   <div className="responsive-block-editor-addons-testimonial-image-wrap">
                     <MediaUpload
+                      key={`media-upload-${index}`}
                       buttonProps={{
                         className: "change-image",
                       }}
@@ -215,6 +219,7 @@ export default class Edit extends Component {
 
                 <div className="responsive-block-editor-addons-testimonial-details">
                   <RichText
+                    key={`testimonial-name-${index}`}
                     tagName="h2"
                     placeholder={__(
                       "John Doe",
@@ -239,6 +244,7 @@ export default class Edit extends Component {
                   />
 
                   <RichText
+                                      key={`testimonial-title-${index}`}
                     tagName="small"
                     placeholder={__(
                       "Add title/designation",
