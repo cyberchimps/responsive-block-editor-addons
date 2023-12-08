@@ -183,6 +183,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
+				'key'      => 'image',
+				'title'    => 'Image',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/image-block/',
+				'demo'     => 'https://cyberchimps.com/blocks/image-block/',
+				'category' => 'content',
+				'status'   => 1,
+			),
+			array(
 				'key'      => 'image-boxes-block',
 				'title'    => 'Image Boxes',
 				'docs'     => 'https://cyberchimps.com/blocks/docs/image-boxes/',
