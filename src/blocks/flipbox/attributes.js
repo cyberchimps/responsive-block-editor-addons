@@ -281,31 +281,31 @@ const attributes = {
   },
   showFrontIcon: {
     type: "boolean",
-    default: "true",
+    default: true,
   },
   showFrontTitle: {
     type: "boolean",
-    default: "true",
+    default: true,
   },
   showFrontSubtitle: {
     type: "boolean",
-    default: "true",
+    default: true,
   },
   showBackIcon: {
     type: "boolean",
-    default: "true",
+    default: true,
   },
   showBackTitle: {
     type: "boolean",
-    default: "true",
+    default: true,
   },
   showBackSubtitle: {
     type: "boolean",
-    default: "true",
+    default: true,
   },
   showBackButton: {
     type: "boolean",
-    default: "true",
+    default: true,
   },
   colorButtonSelected: {
     type: "string",

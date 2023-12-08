@@ -100,7 +100,6 @@ export default class Edit extends Component {
       setAttributes,
     } = this.props;
 
-    setAttributes({ counterId: this.props.clientId });
 
     var boxShadowPositionCSS = boxShadowPosition;
 

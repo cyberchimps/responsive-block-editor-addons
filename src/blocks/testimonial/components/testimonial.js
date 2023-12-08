@@ -28,8 +28,9 @@ export default class Testimonial extends Component {
     } = this.props;
 
     return (
-      <Fragment>
+      <Fragment key={testimonialImgURL} >
         <div
+          key={"div-block"+testimonialImgURL}
           className={classnames(
             this.props.className,
             testimonialCiteAlign,

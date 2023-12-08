@@ -237,11 +237,11 @@ export default class Edit extends Component {
                   )}
                   
                   value={convertTag(teamBlock[index]["teamDesignation"])}
-                  formattingControls={[
-                    "bold",
-                    "italic",
-                    "strikethrough",
-                    "link",
+                  allowedFormats={[
+                    "core/bold",
+                    "core/italic",
+                    "core/strikethrough",
+                    "core/link",
                   ]}
                   className={classnames(
                     "responsive-block-editor-addons-team-designation"
@@ -276,11 +276,11 @@ export default class Edit extends Component {
                   )}
                   
                   value={convertTag(teamBlock[index]["teamDescription"])}
-                  formattingControls={[
-                    "bold",
-                    "italic",
-                    "strikethrough",
-                    "link",
+                  allowedFormats={[
+                    "core/bold",
+                    "core/italic",
+                    "core/strikethrough",
+                    "core/link",
                   ]}
                   className={classnames(
                     "responsive-block-editor-addons-team-description"

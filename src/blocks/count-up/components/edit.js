@@ -89,7 +89,7 @@ export default class Edit extends Component {
       [`has-text-align-${contentAlign}`]: contentAlign,
     });
 
-    const formattingControls = ["bold", "italic", "strikethrough"];
+    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
 
     return [
       // Show the alignment toolbar on focus
@@ -102,11 +102,10 @@ export default class Edit extends Component {
 
       // Show the block controls on focus
 
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
-      <div className={classes}>
-        {" "}
-        <div
+      <div key={`block-${block_id}`} className={classes}>
+        <div key={`block-main-${block_id}`}
           className={classnames(
             this.props.className, 
             "responsive-block-editor-addons-block-count-up",
@@ -118,21 +117,22 @@ export default class Edit extends Component {
           {headingFontFamily && loadGoogleFont(headingFontFamily)}
           {contentFontFamily && loadGoogleFont(contentFontFamily)}
           {countUp.map((test, index) => (
-            <div className={classnames("responsive-count-item")}>
+            <div key={`count-up-${index}`} className={classnames("responsive-count-item")}>
               {resshowIcon && (
-                <div
+                <div key={`count-up-item-${index}`}
                   className={classnames(
                     "responsive-block-editor-addons-count-up__source-wrap",
                     `res-countup-icon-design-${iconStyle}`
                   )}
                 >
-                  <div className="responsive-block-editor-addons-count-up__source-icon">
+                  <div key={`count-up-source-${index}`}  className="responsive-block-editor-addons-count-up__source-icon">
                     {renderSVG(countUp[index]["icon"])}
                   </div>
                 </div>
               )}
               {resshowTitle && (
                 <RichText
+                  key={`count-up-title-${index}`}
                   tagName="span"
                   className="responsive-count-item__title"
                   value={countUp[index]["title"]}
@@ -147,13 +147,14 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ countUp: data_copy });
                   }}
-                  formattingControls={formattingControls}
+                  allowed={formattingControls}
                   
                 />
               )}
               {resshowNum && (
-                <div className="responsive-count-item__price-wrapper">
+                <div key={`count-up-price-${index}`} className="responsive-count-item__price-wrapper">
                   <RichText
+                  key={`count-up-price-${index}`}
                     tagName="div"
                     className="responsive-count-item__amount"
                     data-duration="1000"
@@ -170,7 +171,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ countUp: data_copy });
                     }}
-                    formattingControls={formattingControls}
+                    allowedFormats={formattingControls}
                     
                   />
                 </div>
@@ -178,6 +179,7 @@ export default class Edit extends Component {
               {resshowDesc && (
                 <RichText
                   tagName="div"
+                  key={`count-up-features-${index}`}
                   className="responsive-count-item__features"
                   value={countUp[index]["features"]}
                   placeholder={__(

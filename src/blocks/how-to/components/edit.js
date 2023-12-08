@@ -116,7 +116,7 @@ export default class Edit extends Component {
             insertBlocksAfter,
             onReplace,
         } = this.props;
-        this.props.setAttributes({ block_id: this.props.clientId });
+        
 
         const yearLabel = years > 1 ? " years " : " year ";
         const monthLabel = months > 1 ? " months " : " month ";

@@ -60,7 +60,6 @@ export default class Edit extends Component {
       disableLink,
     } = attributes;
 
-    setAttributes({ block_id: this.props.clientId });
 
     let image_icon_html = "";
 

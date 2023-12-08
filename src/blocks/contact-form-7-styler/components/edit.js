@@ -133,7 +133,6 @@ export default class Edit extends Component {
       insertBlocksAfter,
       onReplace,
     } = this.props;
-    this.props.setAttributes({ block_id: this.props.clientId });
 
     return [
       <BlockControls key="controls">

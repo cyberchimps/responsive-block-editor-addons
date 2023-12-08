@@ -154,7 +154,7 @@ export default class Edit extends Component {
       }
     );
 
-    const formattingControls = ["bold", "italic", "strikethrough"];
+    const formattingcontrols = ["core/bold", "core/italic", "core/strikethrough"];
 
     let alignStyle = "center";
     if ("left" == blockAlign) {
@@ -193,10 +193,11 @@ export default class Edit extends Component {
             />
           )}
         </div>
-        <div className={innerClasses}>
+        <div key="pricing-table-block" className={innerClasses}>
           {pricingTable.map((test, index) => (
             <Fragment>
               <div
+              key={index}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-pricing-table-item",
                   backgroundType == "image" ? "background-type-image" : ""
@@ -304,7 +305,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ pricingTable: data_copy });
                     }}
-                    formattingControls={formattingControls}
+                    allowedFormats={formattingcontrols}
                     
                   />
                 )}
@@ -331,7 +332,7 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ pricingTable: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingcontrols}
                       
                     />
                   )}
@@ -357,7 +358,7 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ pricingTable: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingcontrols}
                       
                     />
                   )}
@@ -383,7 +384,7 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ pricingTable: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingcontrols}
                       
                     />
                   )}
@@ -413,7 +414,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ pricingTable: data_copy });
                     }}
-                    formattingControls={formattingControls}
+                    allowedFormats={formattingcontrols}
                     
                   />
                 )}
@@ -470,7 +471,7 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ pricingTable: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingcontrols}
                       
                     />
                     <form
