@@ -40,8 +40,8 @@ export default class Save extends Component {
     });
 
     return [
-      <div className={classes}>
-        <div
+      <div key={`main-block-${block_id}`} className={classes}>
+        <div key={`block-${block_id}`}
           className={classnames(
             this.props.className, 
             "responsive-block-editor-addons-block-count-up",
@@ -50,7 +50,7 @@ export default class Save extends Component {
           )}
         >
           {countUp.map((test, index) => (
-            <div className={classnames("responsive-count-item")}>
+            <div key={`count-up-${index}`} className={classnames("responsive-count-item")}>
               {resshowIcon && (
                 <div
                   className={classnames(

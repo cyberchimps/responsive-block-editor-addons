@@ -141,7 +141,7 @@ export default class Save extends Component {
       <div className={classes}>
         <div className={innerClasses}>
           {flipboxArray.map((test, index) => (
-            <div
+            <div key={`flipbox-${index}`}
               className={classnames(
                 "wp-block-responsive-block-editor-addons-flip-box"
               )}

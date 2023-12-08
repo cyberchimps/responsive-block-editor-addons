@@ -156,18 +156,18 @@ export default class Edit extends Component {
       boxShadowPositionCSS = "";
     }
 
-    const formattingControls = ["bold", "italic", "strikethrough"];
+    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
 
     return [
       // Show the block controls on focus
 
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
-      <div className={classes}>
-        <div className={innerClasses}>
+      <div key={`image-${block_id}`} className={classes}>
+        <div key={`image-block-${block_id}`} className={innerClasses}>
           {imageboxesBlock.map((test, index) => (
-            <div className="wp-block-responsive-block-editor-addons-image-boxes-block-item-wrapper">
-              <div
+            <div key={`block-${index}`} className="wp-block-responsive-block-editor-addons-image-boxes-block-item-wrapper">
+              <div key={`block-image-${index}`}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-image-boxes-block-item",
                   "editor",
@@ -195,7 +195,7 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ imageboxesBlock: data_copy });
                   }}
-                  formattingControls={formattingControls}
+                  allowedFormats={formattingControls}
                   
                 />)}
                 {showDescription && (<RichText
@@ -214,7 +214,7 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ imageboxesBlock: data_copy });
                   }}
-                  formattingControls={formattingControls}
+                  allowedFormats={formattingControls}
                   
                 />)}
                 {hasArrow && <span className="imagebox-arrow">&#x21AA;</span>}

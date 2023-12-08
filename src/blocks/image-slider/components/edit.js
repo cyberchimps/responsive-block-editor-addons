@@ -206,7 +206,6 @@ class GalleryCarouselEdit extends Component {
       isSmallImage,
     } = attributes;
 
-    setAttributes({ counterId: this.props.clientId });
 
     let imgopacity = iconBackgroundOpacity / 100;
 

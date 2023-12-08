@@ -253,7 +253,7 @@ class Edit extends Component {
     }
 
     return (
-      <Fragment>
+      <Fragment key="shape-divider-fragment" >
         {isSelected && <Inspector {...this.props} />}
         {isSelected && <Controls {...this.props} />}
         <div className={classes}>

@@ -84,7 +84,6 @@ export default class Save extends Component {
               value={label}
               tagName="div"
               className={updatedButtonTextClass}
-              hoverEffect={hoverEffect}
             />
             {"" !== icon && iconPosition == "after" && (
               <span

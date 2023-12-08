@@ -93,7 +93,6 @@ export default class Edit extends Component {
       setAttributes,
     } = this.props;
 
-    setAttributes({ counterId: this.props.clientId });
     var imageBoxShadowPositionCSS = imageBoxShadowPosition;
 
     if ("outset" === imageBoxShadowPosition) {
@@ -215,7 +214,7 @@ export default class Edit extends Component {
     }
     let imgopacity = imageopacity / 100;
     return [
-      <Fragment>
+      <Fragment key="above-below-title-fragment" >
         {(imgiconPosition == "above-title" ||
           imgiconPosition == "below-title") && (
           <BlockControls key="controls">
@@ -225,9 +224,10 @@ export default class Edit extends Component {
             />
           </BlockControls>
         )}
-        <Inspector {...{ setAttributes, ...this.props }} />
-        <InfoBlock {...this.props}>
+        <Inspector key="inspector" {...{ setAttributes, ...this.props }} />
+        <InfoBlock key={`block-info-${block_id}`} {...this.props}>
           <div
+          key={`block-${block_id}`}
             className={classnames(
               "responsive-block-editor-addons-infobox__content-wrap",
               ...InfoBoxPositionClasses(this.props.attributes)
@@ -235,7 +235,7 @@ export default class Edit extends Component {
           >
 			{ctaTextFontFamily && loadGoogleFont(ctaTextFontFamily)}
             {(backgroundImage || imgURL !== 'empty') && (!!backgroundImage?.length || !!imgURL?.length) && (
-              <div className="responsive-block-editor-addons-cta-image-wrap">
+              <div key={`block-wrapper-${block_id}`} className="responsive-block-editor-addons-cta-image-wrap">
                 <img
                   className={classnames(
                     "responsive-block-editor-addons-cta-image",
@@ -298,7 +298,7 @@ export default class Edit extends Component {
 
                 {(imgiconPosition == "above-title" ||
                   imgiconPosition == "below-title") && (
-                  <Fragment>
+                  <Fragment key="above-below-title-inner-fragment" >
                     {"none" !== resseperatorStyle &&
                       seperator_position == "after_title" &&
                       show_seperator &&
@@ -313,7 +313,7 @@ export default class Edit extends Component {
                             "responsive-block-editor-addons"
                           )}
                           className="responsive-block-editor-addons-ifb-desc"
-                          value={resDescHeading}
+                          
                           onChange={(value) =>
                             setAttributes({ resDescHeading: value })
                           }
@@ -360,7 +360,7 @@ export default class Edit extends Component {
                 )}
 
                 {imgiconPosition === "left-title" && (
-                  <Fragment>
+                  <Fragment key="left-title-fragment" >
                     <div className="responsive-block-editor-addons-ifb-left-title-image">
                       {icon_image_html}
                       <div className="responsive-block-editor-addons-ifb-title-wrap">
@@ -413,7 +413,6 @@ export default class Edit extends Component {
                             "responsive-block-editor-addons"
                           )}
                           className="responsive-block-editor-addons-ifb-desc"
-                          value={resDescHeading}
                           onChange={(value) =>
                             setAttributes({ resDescHeading: value })
                           }
@@ -460,7 +459,7 @@ export default class Edit extends Component {
                 )}
 
                 {imgiconPosition === "right-title" && (
-                  <Fragment>
+                  <Fragment key="left-right-fragment" >
                     <div className="responsive-block-editor-addons-ifb-right-title-image">
                       <div className="responsive-block-editor-addons-ifb-title-wrap">
                         {resshowPrefix && (
@@ -560,7 +559,7 @@ export default class Edit extends Component {
                 )}
 
                 {(imgiconPosition == "left" || imgiconPosition == "right") && (
-                  <Fragment>
+                  <Fragment key="left-right-title-fragment" >
                     <div className="responsive-block-editor-addons-ifb-title-wrap">
                       {resshowPrefix && (
                         <RichText
