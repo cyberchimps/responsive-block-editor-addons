@@ -76,6 +76,9 @@ export default class Edit extends Component {
         isPopupVariantSelected,
         popupVariant,
         popupInitiateBtn,
+        popupToggleCloseBtn,
+        popupTrigger,
+        popupTriggerDelay,
         block_id,
       },
       setAttributes,
@@ -126,11 +129,14 @@ export default class Edit extends Component {
 
         {isPopupVariantSelected &&
           <>
-            <button type="button" className="button button-primary" onClick={() => this.setState({ isModalOpen: true })}> <span class="dashicons dashicons-external"></span> <p>{__( "Edit Popup", "responsive-block-editor-addons" )}</p></button>
-            <div className={`responsive-block-editor-addons-popup-modal-wrap ${this.state.isModalOpen ? 'responsive-block-editor-popup-modal-show' : 'responsive-block-editor-popup-modal-hide'}`}>
+            <button type="button" className="button button-primary" onClick={() => this.setState({ isModalOpen: true })}> <span class="dashicons dashicons-external"></span> <p>{__("Edit Popup", "responsive-block-editor-addons")}</p></button>
+            <div className={`responsive-block-editor-addons-popup-modal-wrap ${this.state.isModalOpen ? 'responsive-block-editor-popup-modal-show' : 'responsive-block-editor-popup-modal-hide'}`} data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'}>
               <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay" onClick={() => this.setState({ isModalOpen: false })}></div>
               <div className="responsive-block-editor-addons-popup-modal-content">
-                <div className="responsive-block-editor-addons-popup-modal-header"></div>
+                {popupToggleCloseBtn &&
+                  <div className="responsive-block-editor-addons-popup-modal-header">
+                    <button onClick={() => this.setState({ isModalOpen: false })} type="button"><span class="dashicons dashicons-no"></span></button>
+                  </div>}
                 <div className="responsive-block-editor-addons-popup-modal-body">
                   <div className="responsive-block-editor-addons-popup-innerblock">
                     <InnerBlocks

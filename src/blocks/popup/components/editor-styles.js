@@ -7,91 +7,224 @@ import generateCSSUnit from "../../../generateCSSUnit";
 
 function EditorStyles(props) {
   const {
-    headingTitle,
-    headingDesc,
-    seperatorStyle,
-    headSpacing,
-    subheadSpacing,
-    separatorSpacing,
-    headSpacingTablet,
+    popupContainerWidth,
+    popupContainerWidthTablet,
+    popupContainerWidthMobile,
+    popupToggleCloseBtnPosition,
+    popupHeightType,
+    popupHeightCustom,
+    popupHeightCustomTablet,
+    popupHeightCustomMobile,
+    popupPaddingTop,
+    popupPaddingTopTablet,
+    popupPaddingTopMobile,
+    popupPaddingBottom,
+    popupPaddingBottomTablet,
+    popupPaddingBottomMobile,
+    popupPaddingLeft,
+    popupPaddingLeftTablet,
+    popupPaddingLeftMobile,
+    popupPaddingRight,
+    popupPaddingRightTablet,
+    popupPaddingRightMobile,
+    popupScreenType,
+    popupScreenTypeTablet,
+    popupScreenTypeMobile,
+    popupBgType,
+    popupBgColor,
+    popupGradient,
+    popupCloseBtnColor,
+    popupOverlayColor,
+    popupOverlayOpacity,
+    popupBlockBorderStyle,
+    popupBlockBorderWidth,
+    popupBlockBorderRadius,
+    popupBlockBorderColor,
+
     subheadSpacingTablet,
     separatorSpacingTablet,
-    headSpacingMobile,
     subheadSpacingMobile,
     separatorSpacingMobile,
-    separatorHeight,
-    separatorWidth,
-    separatorWidthType,
-    separatorColor,
-    headingTitleFontFamily,
-    headingTitleFontSize,
-    headingTitleFontSizeTablet,
-    headingTitleFontSizeMobile,
-    headingTitleFontWeight,
-    headingTitleLineHeight,
-    headingTitleLetterSpacing,
-    headingTitleColor,
-    subHeadingTitleFontFamily,
-    subHeadingTitleFontSize,
     subHeadingTitleFontSizeMobile,
     subHeadingTitleFontSizeTablet,
-    subHeadingTitleFontWeight,
-    subHeadingTitleLineHeight,
-    subHeadingTitleLetterSpacing,
-    subHeadingTitleColor,
-    headingTag,
-    level,
-    headingAlignment,
     headingAlignmentTablet,
     headingAlignmentMobile,
-    showHeading,
-    showSubHeading,
-    showSeparator,
-    textDecoration,
-    textDecorationSubHeading,
     block_id,
   } = props.attributes;
 
+  const popupScreenPositions = {
+    desktop: {
+      top: '',
+      right: '',
+      bottom: '',
+      left: '',
+    },
+    tablet: {
+      top: '',
+      right: '',
+      bottom: '',
+      left: '',
+    },
+    mobile: {
+      top: '',
+      right: '',
+      bottom: '',
+      left: '',
+    },
+  };
+
+  // Define a function to set popup positions based on screen type
+  function setPopupPosition(screen, top, left, center, right, bottom) {
+    const popupScreenPosition = popupScreenPositions[screen];
+    popupScreenPosition.top = top !== '' ? generateCSSUnit(top, "px") : '';
+    popupScreenPosition.left = left !== '' ? generateCSSUnit(left, "px") : '';
+    popupScreenPosition.center = center;
+    popupScreenPosition.right = right !== '' ? generateCSSUnit(right, "px") : '';
+    popupScreenPosition.bottom = bottom !== '' ? generateCSSUnit(bottom, "px") : '';
+  }
+
+  // Set positions for desktop
+  switch (popupScreenType) {
+    case 'top left':
+      setPopupPosition('desktop', 30, 30, '', '', '');
+      break
+    case 'top center':
+      setPopupPosition('desktop', 30, '', '', '', '');
+      break
+    case 'top right':
+      setPopupPosition('desktop', 30, '', '', 30, '');
+      break;
+    case 'center left':
+      setPopupPosition('desktop', '', 30, '', '', '');
+      break;
+    case 'center center':
+      setPopupPosition('desktop', '', '', '', '', '');
+      break;
+    case 'center right':
+      setPopupPosition('desktop', '', '', '', 30, '');
+      break;
+    case 'bottom left':
+      setPopupPosition('desktop', '', 30, '', '', 30);
+      break;
+    case 'bottom center':
+      setPopupPosition('desktop', '', '', '', '', 30);
+      break;
+    case 'bottom right':
+      setPopupPosition('desktop', '', '', '', 30, 30);
+      break;
+  }
+
+  // Set positions for tablet
+  switch (popupScreenTypeTablet) {
+    case 'top left':
+      setPopupPosition('tablet', 15, 15, '', '', '');
+      break
+    case 'top center':
+      setPopupPosition('tablet', 15, '', '', '', '');
+      break
+    case 'top right':
+      setPopupPosition('tablet', 15, '', '', 15, '');
+      break;
+    case 'center left':
+      setPopupPosition('tablet', '', 15, '', '', '');
+      break;
+    case 'center center':
+      setPopupPosition('tablet', '', '', '', '', '');
+      break;
+    case 'center right':
+      setPopupPosition('tablet', '', '', '', 15, '');
+      break;
+    case 'bottom left':
+      setPopupPosition('tablet', '', 15, '', '', 15);
+      break;
+    case 'bottom center':
+      setPopupPosition('tablet', '', '', '', '', 15);
+      break;
+    case 'bottom right':
+      setPopupPosition('tablet', '', '', '', 15, 15);
+      break;
+  }
+
+  // Set positions for mobile
+  switch (popupScreenTypeMobile) {
+    case 'top left':
+      setPopupPosition('mobile', 10, 10, '', '', '');
+      break
+    case 'top center':
+      setPopupPosition('mobile', 10, '', '', '', '');
+      break
+    case 'top right':
+      setPopupPosition('mobile', 10, '', '', 10, '');
+      break;
+    case 'center left':
+      setPopupPosition('mobile', '', 10, '', '', '');
+      break;
+    case 'center center':
+      setPopupPosition('mobile', '', '', '', '', '');
+      break;
+    case 'center right':
+      setPopupPosition('mobile', '', '', '', 10, '');
+      break;
+    case 'bottom left':
+      setPopupPosition('mobile', '', 10, '', '', 10);
+      break;
+    case 'bottom center':
+      setPopupPosition('mobile', '', '', '', '', 10);
+      break;
+    case 'bottom right':
+      setPopupPosition('mobile', '', '', '', 10, 10);
+      break;
+  }
+
+  const { desktop, tablet, mobile } = popupScreenPositions;
+  
+  let popupContainerBackground = { 'background-color': popupBgColor }
+  if ( popupBgType === 'gradient' ) {
+    popupContainerBackground = { 'background-image': popupGradient }
+  }
+
   var selectors = {
     "": {
-      "text-align": headingAlignment,
+      
     },
-    " .responsive-heading-title-text": {
-      "font-family": headingTitleFontFamily,
-      "font-size": generateCSSUnit(headingTitleFontSize, "px"),
-      "font-weight": headingTitleFontWeight,
-      "line-height": headingTitleLineHeight,
-      "letter-spacing": generateCSSUnit(headingTitleLetterSpacing, "px"),
-      color: headingTitleColor,
-      "margin-bottom": generateCSSUnit(headSpacing, "px"),
-      "text-decoration": textDecoration,
+    " .responsive-block-editor-addons-popup-modal-content": {
+      "width": generateCSSUnit(popupContainerWidth, "px"),
+      "height": 'auto' !== popupHeightType ? generateCSSUnit(popupHeightCustom, "px") : 'auto',
+      "padding-top": generateCSSUnit(popupPaddingTop, "px"),
+      "padding-right": generateCSSUnit(popupPaddingRight, "px"),
+      "padding-bottom": generateCSSUnit(popupPaddingBottom, "px"),
+      "padding-left": generateCSSUnit(popupPaddingLeft, "px"),
+      ...desktop,
+      ...popupContainerBackground,
+      "border-style": popupBlockBorderStyle,
+      "border-width": generateCSSUnit(popupBlockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(popupBlockBorderRadius, "px"),
+      "border-color": popupBlockBorderColor,
     },
-    " .responsive-heading-seperator": {
-      "border-top-style": seperatorStyle,
-      "border-top-width": generateCSSUnit(separatorHeight, "px"),
-      "width": generateCSSUnit( separatorWidth, separatorWidthType ),
-      "border-color": separatorColor,
-      "margin-bottom": generateCSSUnit(separatorSpacing, "px"),
+    " .responsive-block-editor-addons-popup-modal-header": {
+      "justify-content": popupToggleCloseBtnPosition,
     },
-    " .responsive-heading-desc-text": {
-      "font-family": subHeadingTitleFontFamily,
-      "font-size": generateCSSUnit(subHeadingTitleFontSize, "px"),
-      "font-weight": subHeadingTitleFontWeight,
-      "line-height": subHeadingTitleLineHeight,
-      "letter-spacing": generateCSSUnit(subHeadingTitleLetterSpacing, "px"),
-      color: subHeadingTitleColor,
-      "margin-bottom": generateCSSUnit(subheadSpacing, "px"),
-      "text-decoration": textDecorationSubHeading,
+    " .responsive-block-editor-addons-popup-modal-header .dashicons.dashicons-no": {
+      "color": popupCloseBtnColor,
+    },
+    " .responsive-block-editor-addons-popup-modal-wrap-overlay": {
+      "background-color": popupOverlayColor,
+      "opacity": parseInt(popupOverlayOpacity)/100,
     },
   };
 
   var mobile_selectors = {
     "": {
-      "text-align": headingAlignmentMobile,
+      
     },
-    " .responsive-heading-title-text": {
-      "font-size": generateCSSUnit(headingTitleFontSizeMobile, "px"),
-      "margin-bottom": generateCSSUnit(headSpacingMobile, "px"),
+    " .responsive-block-editor-addons-popup-modal-content": {
+      "width": generateCSSUnit(popupContainerWidthMobile, "px"),
+      "height": 'auto' !== popupHeightType ? generateCSSUnit(popupHeightCustomMobile, "px") : 'auto',
+      "padding-top": generateCSSUnit(popupPaddingTopMobile, "px"),
+      "padding-right": generateCSSUnit(popupPaddingRightMobile, "px"),
+      "padding-bottom": generateCSSUnit(popupPaddingBottomMobile, "px"),
+      "padding-left": generateCSSUnit(popupPaddingLeftMobile, "px"),
+      ...tablet,
     },
     " .responsive-heading-desc-text": {
       "font-size": generateCSSUnit(subHeadingTitleFontSizeMobile, "px"),
@@ -104,11 +237,16 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "text-align": headingAlignmentTablet,
+      
     },
-    " .responsive-heading-title-text": {
-      "font-size": generateCSSUnit(headingTitleFontSizeTablet, "px"),
-      "margin-bottom": generateCSSUnit(headSpacingTablet, "px"),
+    " .responsive-block-editor-addons-popup-modal-content": {
+      "width": generateCSSUnit(popupContainerWidthTablet, "px"),
+      "height": 'auto' !== popupHeightType ? generateCSSUnit(popupHeightCustomTablet, "px") : 'auto',
+      "padding-top": generateCSSUnit(popupPaddingTopTablet, "px"),
+      "padding-right": generateCSSUnit(popupPaddingRightTablet, "px"),
+      "padding-bottom": generateCSSUnit(popupPaddingBottomTablet, "px"),
+      "padding-left": generateCSSUnit(popupPaddingLeftTablet, "px"),
+      ...mobile,
     },
     " .responsive-heading-desc-text": {
       "font-size": generateCSSUnit(subHeadingTitleFontSizeTablet, "px"),
@@ -120,7 +258,7 @@ function EditorStyles(props) {
   };
 
   var styling_css = "";
-  var id = `.responsive-block-editor-addons-block-advanced-heading.block-${block_id}`;
+  var id = `.responsive-block-editor-addons-block-popup.block-${block_id}`;
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");

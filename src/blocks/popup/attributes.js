@@ -31,23 +31,23 @@ const attributes = {
     },
     popupHeightType: {
         type: "string",
-        default: "custom",
+        default: "auto",
     },
     popupHeightCustom: {
         type: "number",
-        default: 350,
+        default: 500,
     },
     popupHeightCustomTablet: {
         type: "number",
-        default: 350,
+        default: 500,
     },
     popupHeightCustomMobile: {
         type: "number",
-        default: 350,
+        default: 500,
     },
     popupPaddingTop: {
         type: "number",
-        default: 15,
+        default: 20,
     },
     popupPaddingTopTablet: {
         type: "number",
@@ -55,11 +55,11 @@ const attributes = {
     },
     popupPaddingTopMobile: {
         type: "number",
-        default: 15,
+        default: 10,
     },
     popupPaddingBottom: {
         type: "number",
-        default: 15,
+        default: 20,
     },
     popupPaddingBottomTablet: {
         type: "number",
@@ -67,11 +67,11 @@ const attributes = {
     },
     popupPaddingBottomMobile: {
         type: "number",
-        default: 15,
+        default: 10,
     },
     popupPaddingLeft: {
         type: "number",
-        default: 15,
+        default: 20,
     },
     popupPaddingLeftTablet: {
         type: "number",
@@ -79,11 +79,11 @@ const attributes = {
     },
     popupPaddingLeftMobile: {
         type: "number",
-        default: 15,
+        default: 10,
     },
     popupPaddingRight: {
         type: "number",
-        default: 15,
+        default: 20,
     },
     popupPaddingRightTablet: {
         type: "number",
@@ -91,7 +91,7 @@ const attributes = {
     },
     popupPaddingRightMobile: {
         type: "number",
-        default: 15,
+        default: 10,
     },
     popupScreenType: {
         type: "string",
@@ -119,7 +119,15 @@ const attributes = {
     },
     popupToggleCloseBtnPosition: {
         type: "string",
-        default: "top-right"
+        default: "flex-end"
+    },
+    popupBgType: {
+        type: "string",
+        default: "color",
+    },
+    popupGradient: {
+        type: "string",
+        default: 'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
     },
     popupBgColor: {
         type: "string",
@@ -127,11 +135,11 @@ const attributes = {
     },
     popupCloseBtnColor: {
         type: "string",
-        default: "#ffa500",
+        default: "#000",
     },
     popupOverlayColor: {
         type: "string",
-        default: "#000",
+        default: "#10659C",
     },
     popupOverlayOpacity: {
         type: "number",

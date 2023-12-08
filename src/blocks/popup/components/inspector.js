@@ -23,7 +23,10 @@ const {
   ToggleControl,
   TabPanel,
   Dashicon,
-  ColorPalette
+  ColorPalette,
+  Button,
+  ButtonGroup,
+  GradientPicker 
 } = wp.components;
 
 const colors = [
@@ -75,6 +78,8 @@ export default class Inspector extends Component {
         popupToggleCloseBtn,
         popupToggleCloseBtnPosition,
         popupBgColor,
+        popupBgType,
+        popupGradient,
         popupCloseBtnColor,
         popupOverlayColor,
         popupOverlayOpacity,
@@ -228,14 +233,14 @@ export default class Inspector extends Component {
                             value={popupHeightCustomMobile}
                             onChange={(value) =>
                               setAttributes({
-                                popupHeightCustomMobile: value !== undefined ? value : 600,
+                                popupHeightCustomMobile: value !== undefined ? value : 500,
                               })
                             }
                             min={0}
                             max={1500}
                             beforeIcon=""
                             allowReset
-                            initialPosition={600}
+                            initialPosition={500}
                           />
                         );
                       } else if ("tablet" === tab.name) {
@@ -245,14 +250,14 @@ export default class Inspector extends Component {
                             value={popupHeightCustomTablet}
                             onChange={(value) =>
                               setAttributes({
-                                popupHeightCustomTablet: value !== undefined ? value : 600,
+                                popupHeightCustomTablet: value !== undefined ? value : 500,
                               })
                             }
                             min={0}
                             max={1500}
                             beforeIcon=""
                             allowReset
-                            initialPosition={600}
+                            initialPosition={500}
                           />
                         );
                       } else {
@@ -262,14 +267,14 @@ export default class Inspector extends Component {
                             value={popupHeightCustom}
                             onChange={(value) =>
                               setAttributes({
-                                popupHeightCustom: value !== undefined ? value : 600,
+                                popupHeightCustom: value !== undefined ? value : 500,
                               })
                             }
                             min={0}
                             max={1500}
                             beforeIcon=""
                             allowReset
-                            initialPosition={600}
+                            initialPosition={500}
                           />
                         );
                       }
@@ -392,6 +397,7 @@ export default class Inspector extends Component {
                             <AlignmentMatrixControl
                               value={popupScreenType}
                               onChange={(value) => {
+                                console.log(value)
                                 this.props.setAttributes({
                                   popupScreenType: value
                                 })
@@ -455,8 +461,8 @@ export default class Inspector extends Component {
                     value={popupToggleCloseBtnPosition}
                     onChange={(value) => setAttributes({ popupToggleCloseBtnPosition: value })}
                     options={[
-                      { value: "top-right", label: __("Top Right", "responsive-block-editor-addons") },
-                      { value: "top-left", label: __("Top Left", "responsive-block-editor-addons") },
+                      { value: "flex-end", label: __("Top Right", "responsive-block-editor-addons") },
+                      { value: "flex-start", label: __("Top Left", "responsive-block-editor-addons") },
                     ]}
                   />}
               </PanelBody>
@@ -466,19 +472,57 @@ export default class Inspector extends Component {
                 title={__("Color & Background", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <Text variant="title.small" as="h3">{__("Background Color", "responsive-block-editor-addons")}</Text>
-                <ColorPalette
-                  colors={colors}
-                  value={popupBgColor}
-                  onChange={(value) => setAttributes({ popupBgColor: value })}
-                />
+                <Text variant="title.small" as="h3">{__("Container Background", "responsive-block-editor-addons")}</Text>
+                <ButtonGroup>
+                  <Button onClick={() => setAttributes({ popupBgType: 'color' })} variant={popupBgType === 'color' ? 'primary' : 'secondary'}>{__("Color", "responsive-block-editor-addons")}</Button>
+                  <Button onClick={() => setAttributes({ popupBgType: 'gradient' })} variant={popupBgType !== 'color' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
+                </ButtonGroup>
 
+                {popupBgType === 'color' && <>
+                  <Text style={{marginTop: '16px'}} variant="title.small" as="h3">{__("Container Background Color", "responsive-block-editor-addons")}</Text>
+                  <ColorPalette
+                    colors={colors}
+                    value={popupBgColor}
+                    onChange={(value) => setAttributes({ popupBgColor: value })}
+                  /> </>
+                }
+
+                {popupBgType !== 'color' && <>
+                  <Text style={{marginTop: '16px'}} variant="title.small" as="h3">{__("Container Gradient", "responsive-block-editor-addons")}</Text>
+                  <GradientPicker
+                    __nextHasNoMargin
+                    value={ popupGradient }
+                    onChange={ ( value ) => {console.log(value); setAttributes({ popupGradient: value }) }}
+                    gradients={ [
+                        {
+                            name: 'JShine',
+                            gradient:
+                                'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+                            slug: 'jshine',
+                        },
+                        {
+                            name: 'Moonlit Asteroid',
+                            gradient:
+                                'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+                            slug: 'moonlit-asteroid',
+                        },
+                        {
+                            name: 'Rastafarie',
+                            gradient:
+                                'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+                            slug: 'rastafari',
+                        },
+                    ] }
+                  /> </>
+                }
+
+                {popupToggleCloseBtn && <>
                 <Text variant="title.small" as="h3">{__("Close Button Color", "responsive-block-editor-addons")}</Text>
                 <ColorPalette
                   colors={colors}
                   value={popupCloseBtnColor}
                   onChange={(value) => setAttributes({ popupCloseBtnColor: value })}
-                />
+                /> </>}
 
                 <Text variant="title.small" as="h3">{__("Overlay Color", "responsive-block-editor-addons")}</Text>
                 <ColorPalette
@@ -507,17 +551,19 @@ export default class Inspector extends Component {
                 title={__("Border", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <BlockBorderHelperControl
-                  attrNameTemplate="popupBlock%s"
-                  values={{
-                    radius: popupBlockBorderRadius,
-                    style: popupBlockBorderStyle,
-                    width: popupBlockBorderWidth,
-                    color: popupBlockBorderColor,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
+                <div className="responsive-block-editor-addons-popup-border-helper">
+                  <BlockBorderHelperControl
+                    attrNameTemplate="popupBlock%s"
+                    values={{
+                      radius: popupBlockBorderRadius,
+                      style: popupBlockBorderStyle,
+                      width: popupBlockBorderWidth,
+                      color: popupBlockBorderColor,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                </div>
               </PanelBody>
             </InspectorTab>
             <InspectorTab key={"advance"}></InspectorTab>
