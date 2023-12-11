@@ -14349,7 +14349,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			[$desktop, $tablet, $mobile] = array_values($popupScreenPositions);
 
 			$selectors        = array(
-				'' => array(),
+				''                                                     => array(),
 				' .responsive-block-editor-addons-popup-modal-content' => array(
 					'width'            => self::get_css_value( $attr['popupContainerWidth'], 'px' ),
 					'height'           => 'auto' !== $attr['popupHeightType'] ? self::get_css_value( $attr['popupHeightCustom'], "px" ) : 'auto',
@@ -14380,37 +14380,35 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
-				// ''                                => array(
-
-				// ),
-				// ' .responsive-heading-title-text' => array(
-				// 	'font-size'     => self::get_css_value( $attr['headingTitleFontSizeMobile'], 'px' ),
-				// 	'margin-bottom' => self::get_css_value( $attr['headSpacingMobile'], 'px' ),
-				// ),
-				// ' .responsive-heading-seperator'  => array(
-				// 	'margin-bottom' => self::get_css_value( $attr['separatorSpacingMobile'], 'px' ),
-				// ),
-				// ' .responsive-heading-desc-text'  => array(
-				// 	'font-size'     => self::get_css_value( $attr['subHeadingTitleFontSizeMobile'], 'px' ),
-				// 	'margin-bottom' => self::get_css_value( $attr['subheadSpacingMobile'], 'px' ),
-				// ),
+				''                                                     => array(),
+				' .responsive-block-editor-addons-popup-modal-content' => array(
+					'width'          => self::get_css_value( $attr['popupContainerWidthMobile'], 'px' ),
+					'height'         => 'auto' !== $attr['popupHeightType'] ? self::get_css_value( $attr['popupHeightCustomMobile'], 'px' ) : 'auto',
+					'padding-top'    => self::get_css_value( $attr['popupPaddingTopMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['popupPaddingRightMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['popupPaddingBottomMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['popupPaddingLeftMobile'], 'px' ),
+					'top'            => $mobile['top'],
+					'left'           => $mobile['left'],
+					'right'          => $mobile['right'],
+					'bottom'         => $mobile['bottom'],
+				),
 			);
 
 			$tablet_selectors = array(
-				// ''                                => array(
-
-				// ),
-				// ' .responsive-heading-title-text' => array(
-				// 	'font-size'     => self::get_css_value( $attr['headingTitleFontSizeTablet'], 'px' ),
-				// 	'margin-bottom' => self::get_css_value( $attr['headSpacingTablet'], 'px' ),
-				// ),
-				// ' .responsive-heading-seperator'  => array(
-				// 	'margin-bottom' => self::get_css_value( $attr['separatorSpacingTablet'], 'px' ),
-				// ),
-				// ' .responsive-heading-desc-text'  => array(
-				// 	'font-size'     => self::get_css_value( $attr['subHeadingTitleFontSizeTablet'], 'px' ),
-				// 	'margin-bottom' => self::get_css_value( $attr['subheadSpacingTablet'], 'px' ),
-				// ),
+				''                                                     => array(),
+				' .responsive-block-editor-addons-popup-modal-content' => array(
+					'width'          => self::get_css_value( $attr['popupContainerWidthTablet'], 'px' ),
+					'height'         => 'auto' !== $attr['popupHeightType'] ? self::get_css_value( $attr['popupHeightCustomTablet'], 'px' ) : 'auto',
+					'padding-top'    => self::get_css_value( $attr['popupPaddingTopTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['popupPaddingRightTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['popupPaddingBottomTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['popupPaddingLeftTablet'], 'px' ),
+					'top'            => $tablet['top'],
+					'left'           => $tablet['left'],
+					'right'          => $tablet['right'],
+					'bottom'         => $tablet['bottom'],
+				),
 			);
 
 			$combined_selectors = array(

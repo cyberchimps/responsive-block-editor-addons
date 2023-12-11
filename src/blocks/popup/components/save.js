@@ -19,6 +19,8 @@ export default class Save extends Component {
       isPopupVariantSelected,
       popupVariant,
       popupToggleCloseBtn,
+      popupTrigger,
+      popupTriggerDelay,
       block_id,
       anchor,
     } = this.props.attributes;
@@ -27,18 +29,20 @@ export default class Save extends Component {
       <div
         id={anchor}
         className={classnames(
-          this.props.className, 
+          this.props.className,
           "responsive-block-editor-addons-block-popup",
           `block-${block_id}`
         )}
       >
-        <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide">
+        {popupTrigger && popupTrigger === 'click' &&
+          <button type="button" className="button button-primary responsive-block-editor-addons-popup-modal-trigger"> <span class="dashicons dashicons-external"></span> <p>{"Edit Popup"}</p></button>}
+        <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'}>
           <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay"></div>
           <div className="responsive-block-editor-addons-popup-modal-content">
-            {popupToggleCloseBtn && 
-            <div className="responsive-block-editor-addons-popup-modal-header">
-              <button type="button"><span class="dashicons dashicons-no"></span></button>
-            </div>}
+            {popupToggleCloseBtn &&
+              <div className="responsive-block-editor-addons-popup-modal-header">
+                <button type="button"><span class="dashicons dashicons-no"></span></button>
+              </div>}
             <div className="responsive-block-editor-addons-popup-modal-body">
               <div className="responsive-block-editor-addons-popup-innerblock">
                 <InnerBlocks.Content />
@@ -46,7 +50,7 @@ export default class Save extends Component {
             </div>
           </div>
         </div>
-        
+
       </div>,
     ];
   }
