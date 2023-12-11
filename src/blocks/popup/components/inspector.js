@@ -4,7 +4,11 @@
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import { __experimentalAlignmentMatrixControl as AlignmentMatrixControl } from '@wordpress/components';
+import renderSVG from "../../../renderIcon";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import { __experimentalText as Text } from '@wordpress/components';
+import presets from "./button-presets";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -13,7 +17,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 
 // Import block components
-const { InspectorControls } = wp.blockEditor
+const { InspectorControls, AlignmentToolbar, MediaUpload } = wp.blockEditor
 
 // Import Inspector components
 const {
@@ -26,7 +30,8 @@ const {
   ColorPalette,
   Button,
   ButtonGroup,
-  GradientPicker 
+  GradientPicker,
+  TextControl,
 } = wp.components;
 
 const colors = [
@@ -38,12 +43,31 @@ const colors = [
   { name: 'orange', color: '#ffa500' },
 ];
 
+let svg_icons = Object.keys(ResponsiveBlocksIcon);
+
 /**
  * Create an Inspector Controls wrapper Component
  */
 export default class Inspector extends Component {
   constructor(props) {
     super(...arguments);
+    this.onSelectImageTrigger = this.onSelectImageTrigger.bind(this);
+  }
+
+  onSelectImageTrigger(media) {
+    const { setAttributes } = this.props;
+    const { popupImageTrigger } = this.props.attributes;
+
+    if (!media || !media.url) {
+      setAttributes({ popupImageTrigger: null });
+      return;
+    }
+
+    if (!media.type || "image" != media.type) {
+      return;
+    }
+
+    setAttributes({ popupImageTrigger: media.url });
   }
 
   render() {
@@ -87,9 +111,45 @@ export default class Inspector extends Component {
         popupBlockBorderStyle,
         popupBlockBorderWidth,
         popupBlockBorderColor,
+        popupTriggerType,
+        popupTriggerAlign,
+        popupTriggerAlignTablet,
+        popupTriggerAlignMobile,
+        popupButtonPreset,
+        popupIconTrigger,
+        popupImageTrigger,
+        popupTextTrigger,
+        popupButtonHoverState ,
+        popupButtonColor,
+        popupButtonBGColor,
+        popupButtonHoverColor,
+        popupButtonBGHoverColor,
       },
       setAttributes,
     } = this.props;
+
+    const buttonPresets = [
+      { label: presets.preset1, title: "Preset 1", value: "preset1" },
+      { label: presets.preset2, title: "Preset 2", value: "preset2" },
+      { label: presets.preset3, title: "Preset 3", value: "preset3" },
+      { label: presets.preset4, title: "Preset 4", value: "preset4" },
+      { label: presets.preset5, title: "Preset 5", value: "preset5" },
+      { label: presets.preset6, title: "Preset 6", value: "preset6" },
+    ]
+
+    const renderButtonPresets = buttonPresets.map((preset) => {
+      return {
+        label: (
+          <div className="responsive-blocks-editor-addons-design-panel-item">
+            <div className="responsive-blocks-editor-addons-design-panel-item__svg">
+              {preset.label}
+            </div>
+            <span className="design-label">{preset.title}</span>
+          </div>
+        ),
+        value: preset.value,
+      };
+    })
 
     return (
       <InspectorControls key="inspector">
@@ -441,6 +501,187 @@ export default class Inspector extends Component {
                     allowReset
                     initialPosition={1}
                   />}
+
+                {popupTrigger === 'click' && <>
+                  <SelectControl
+                    label={__("Popup Trigger Type", "responsive-block-editor-addons")}
+                    value={popupTriggerType}
+                    onChange={(value) => setAttributes({ popupTriggerType: value })}
+                    options={[
+                      { value: "button", label: __("Button", "responsive-block-editor-addons") },
+                      { value: "text", label: __("Text", "responsive-block-editor-addons") },
+                      { value: "icon", label: __("Icon", "responsive-block-editor-addons") },
+                      { value: "image", label: __("Image", "responsive-block-editor-addons") },
+                    ]}
+                  />
+
+                  {popupTriggerType === 'button' && <>
+                    <div className="responsive-block-editor-addons-popup-div-flex">
+                      <Text variant="title.small" as="h3">{__("Select Preset", "responsive-block-editor-addons")}</Text>
+                      <Button size="small"><Dashicon icon="image-rotate" /></Button>
+                    </div>
+                    <div className="responsive-block-editor-addons-popup-button-preset-wrap">
+                      <div className="responsive-block-editor-addons-popup-button-preset">
+                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset1' })}>{presets.preset1}</button>
+                      </div>
+                      <div className="responsive-block-editor-addons-popup-button-preset">
+                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset2' })}>{presets.preset2}</button>
+                      </div>
+                      <div className="responsive-block-editor-addons-popup-button-preset">
+                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset3' })}>{presets.preset3}</button>
+                      </div>
+                      <div className="responsive-block-editor-addons-popup-button-preset">
+                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset4' })}>{presets.preset4}</button>
+                      </div>
+                      <div className="responsive-block-editor-addons-popup-button-preset">
+                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset5' })}>{presets.preset5}</button>
+                      </div>
+                      <div className="responsive-block-editor-addons-popup-button-preset">
+                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset6' })}>{presets.preset6}</button>
+                      </div>
+                    </div>
+                  </>
+                  }
+
+                  {popupTriggerType === 'icon' &&
+                    <FontIconPicker
+                      icons={svg_icons}
+                      renderFunc={renderSVG}
+                      theme="default"
+                      value={popupIconTrigger}
+                      onChange={(value) => setAttributes({ popupIconTrigger: value })}
+                      isMulti={false}
+                      noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
+                    />}
+
+                  {popupTriggerType === 'image' && <>
+                    <Text variant="title.small" as="h3">{__("Select Image", "responsive-block-editor-addons")}</Text>
+                    <MediaUpload
+                      title={__(
+                        "Select Image",
+                        "responsive-block-editor-addons"
+                      )}
+                      onSelect={this.onSelectImageTrigger}
+                      allowedTypes={["image"]}
+                      value={popupImageTrigger}
+                      render={({ open }) => (
+                        <Button variant="secondary" onClick={open}>
+                          {!popupImageTrigger
+                            ? __(
+                              "Select Image",
+                              "responsive-block-editor-addons"
+                            )
+                            : __(
+                              "Replace image",
+                              "responsive-block-editor-addons"
+                            )}
+                        </Button>
+                      )}
+                    /></>}
+
+                  {popupTriggerType === 'image' && popupImageTrigger && (
+                    <Button
+                      className="rbea-rm-btn"
+                      onClick={() => setAttributes({ popupImageTrigger: null })}
+                      isLink
+                      isDestructive
+                    >
+                      {__("Remove Image", "responsive-block-editor-addons")}
+                    </Button>
+                  )}
+
+                  {popupTriggerType === 'text' &&
+                    <TextControl
+                      label={__("Enter Text", "responsive-block-editor-addons")}
+                      value={popupTextTrigger}
+                      onChange={(value) => setAttributes({ popupTextTrigger: value })}
+                    />}
+
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className:
+                          " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className:
+                          " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                  >
+                    {(tab) => {
+                      let tabout;
+
+                      if ("mobile" === tab.name) {
+                        tabout = (
+                          <>
+                            <p>{__("Alignment (Mobile)", "responsive-block-editor-addons")}</p>
+                            <AlignmentToolbar
+                              value={popupTriggerAlignMobile}
+                              onChange={(value) =>
+                                setAttributes({
+                                  popupTriggerAlignMobile: value,
+                                })
+                              }
+                              controls={["left", "center", "right"]}
+                              isCollapsed={false}
+                            />
+                          </>
+                        );
+                      } else if ("tablet" === tab.name) {
+                        tabout = (
+                          <>
+                            <p>{__("Alignment (Tablet)", "responsive-block-editor-addons")}</p>
+                            <AlignmentToolbar
+                              value={popupTriggerAlignTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  popupTriggerAlignTablet: value,
+                                })
+                              }
+                              controls={["left", "center", "right"]}
+                              isCollapsed={false}
+                            />
+                          </>
+                        );
+                      } else {
+                        tabout = (
+                          <>
+                            <p>
+                              {__("Alignment", "responsive-block-editor-addons")}
+                            </p>
+                            <AlignmentToolbar
+                              value={popupTriggerAlign}
+                              onChange={(value) =>
+                                setAttributes({
+                                  popupTriggerAlign: value,
+                                })
+                              }
+                              controls={["left", "center", "right"]}
+                              isCollapsed={false}
+                            />
+                          </>
+                        );
+                      }
+
+                      return <div>{tabout}</div>;
+                    }}
+                  </TabPanel>
+                </>
+                }
+
               </PanelBody>
               <PanelBody
                 title={__("Close Button", "responsive-block-editor-addons")}
@@ -468,18 +709,71 @@ export default class Inspector extends Component {
               </PanelBody>
             </InspectorTab>
             <InspectorTab key={"style"}>
+              {popupTrigger === 'click' &&
+                <PanelBody
+                  title={__("Trigger", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                >
+                  {popupTriggerType === 'button' && <>
+                    <div className="responsive-block-editor-addons-popup-button-group-tab">
+                      <ButtonGroup>
+                        <Button onClick={() => setAttributes({ popupButtonHoverState: false })} variant={!popupButtonHoverState ? 'primary' : 'secondary'}>{__("Normal", "responsive-block-editor-addons")}</Button>
+                        <Button onClick={() => setAttributes({ popupButtonHoverState: true })} variant={popupButtonHoverState ? 'primary' : 'secondary'}>{__("Hover", "responsive-block-editor-addons")}</Button>
+                      </ButtonGroup>
+                    </div>
+
+                    {!popupButtonHoverState && <>
+
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Color", "responsive-block-editor-addons")}</Text>
+                      <ColorPalette
+                        colors={colors}
+                        value={popupButtonHoverColor}
+                        onChange={(value) => setAttributes({ popupButtonHoverColor: value })}
+                      />
+
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Color", "responsive-block-editor-addons")}</Text>
+                      <ColorPalette
+                        colors={colors}
+                        value={popupButtonBGHoverColor}
+                        onChange={(value) => setAttributes({ popupButtonBGHoverColor: value })}
+                      />
+                      
+                    </>}
+
+                    {popupButtonHoverState && <>
+
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Hover Color", "responsive-block-editor-addons")}</Text>
+                      <ColorPalette
+                        colors={colors}
+                        value={popupButtonColor}
+                        onChange={(value) => setAttributes({ popupButtonColor: value })}
+                      />
+
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Hover Color", "responsive-block-editor-addons")}</Text>
+                      <ColorPalette
+                        colors={colors}
+                        value={popupButtonBGColor}
+                        onChange={(value) => setAttributes({ popupButtonBGColor: value })}
+                      />
+                      
+                    </>}
+
+                  </>}
+                </PanelBody>}
               <PanelBody
                 title={__("Color & Background", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
                 <Text variant="title.small" as="h3">{__("Container Background", "responsive-block-editor-addons")}</Text>
-                <ButtonGroup>
-                  <Button onClick={() => setAttributes({ popupBgType: 'color' })} variant={popupBgType === 'color' ? 'primary' : 'secondary'}>{__("Color", "responsive-block-editor-addons")}</Button>
-                  <Button onClick={() => setAttributes({ popupBgType: 'gradient' })} variant={popupBgType !== 'color' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
-                </ButtonGroup>
+                <div className="responsive-block-editor-addons-popup-button-group-tab">
+                  <ButtonGroup>
+                    <Button onClick={() => setAttributes({ popupBgType: 'color' })} variant={popupBgType === 'color' ? 'primary' : 'secondary'}>{__("Color", "responsive-block-editor-addons")}</Button>
+                    <Button onClick={() => setAttributes({ popupBgType: 'gradient' })} variant={popupBgType !== 'color' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
+                  </ButtonGroup>
+                </div>
 
                 {popupBgType === 'color' && <>
-                  <Text style={{marginTop: '16px'}} variant="title.small" as="h3">{__("Container Background Color", "responsive-block-editor-addons")}</Text>
+                  <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Container Background Color", "responsive-block-editor-addons")}</Text>
                   <ColorPalette
                     colors={colors}
                     value={popupBgColor}
@@ -488,41 +782,41 @@ export default class Inspector extends Component {
                 }
 
                 {popupBgType !== 'color' && <>
-                  <Text style={{marginTop: '16px'}} variant="title.small" as="h3">{__("Container Gradient", "responsive-block-editor-addons")}</Text>
+                  <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Container Gradient", "responsive-block-editor-addons")}</Text>
                   <GradientPicker
                     __nextHasNoMargin
-                    value={ popupGradient }
-                    onChange={ ( value ) => {console.log(value); setAttributes({ popupGradient: value }) }}
-                    gradients={ [
-                        {
-                            name: 'JShine',
-                            gradient:
-                                'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
-                            slug: 'jshine',
-                        },
-                        {
-                            name: 'Moonlit Asteroid',
-                            gradient:
-                                'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
-                            slug: 'moonlit-asteroid',
-                        },
-                        {
-                            name: 'Rastafarie',
-                            gradient:
-                                'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
-                            slug: 'rastafari',
-                        },
-                    ] }
+                    value={popupGradient}
+                    onChange={(value) => { console.log(value); setAttributes({ popupGradient: value }) }}
+                    gradients={[
+                      {
+                        name: 'JShine',
+                        gradient:
+                          'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+                        slug: 'jshine',
+                      },
+                      {
+                        name: 'Moonlit Asteroid',
+                        gradient:
+                          'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+                        slug: 'moonlit-asteroid',
+                      },
+                      {
+                        name: 'Rastafarie',
+                        gradient:
+                          'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+                        slug: 'rastafari',
+                      },
+                    ]}
                   /> </>
                 }
 
                 {popupToggleCloseBtn && <>
-                <Text variant="title.small" as="h3">{__("Close Button Color", "responsive-block-editor-addons")}</Text>
-                <ColorPalette
-                  colors={colors}
-                  value={popupCloseBtnColor}
-                  onChange={(value) => setAttributes({ popupCloseBtnColor: value })}
-                /> </>}
+                  <Text variant="title.small" as="h3">{__("Close Button Color", "responsive-block-editor-addons")}</Text>
+                  <ColorPalette
+                    colors={colors}
+                    value={popupCloseBtnColor}
+                    onChange={(value) => setAttributes({ popupCloseBtnColor: value })}
+                  /> </>}
 
                 <Text variant="title.small" as="h3">{__("Overlay Color", "responsive-block-editor-addons")}</Text>
                 <ColorPalette

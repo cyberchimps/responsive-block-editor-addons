@@ -9,10 +9,6 @@ const attributes = {
     popupVariant: {
         type: "string",
     },
-    popupIcon: {
-        type: "string",
-        default: "fa fa-angellist",
-    },
     popupInitiateBtn: {
         type: "boolean",
         default: false,
@@ -160,6 +156,57 @@ const attributes = {
     popupBlockBorderColor: {
         type: "string",
         default: "black",
+    },
+    popupTriggerType: {
+        type: "string",
+        default: "button",
+    },
+    popupTriggerAlign: {
+        type: "string",
+        default: "left",
+    },
+    popupTriggerAlignTablet: {
+        type: "string",
+        default: "left",
+    },
+    popupTriggerAlignMobile: {
+        type: "string",
+        default: "left",
+    },
+    popupButtonPreset: {
+        type: "string",
+        default: "empty"
+    },
+    popupIconTrigger: {
+        type: "string",
+        default: "fa fa-angellist",
+    },
+    popupImageTrigger: {
+        type: "string",
+    },
+    popupTextTrigger: {
+        type: "string",
+        default: "Click Here"
+    },
+    popupButtonHoverState: {
+        type: "boolean",
+        default: false,
+    },
+    popupButtonColor: {
+        type: "string",
+        default: "#fff",
+    },
+    popupButtonBGColor: {
+        type: "string",
+        default: "#10659C",
+    },
+    popupButtonHoverColor: {
+        type: "string",
+        default: "#fff",
+    },
+    popupButtonBGHoverColor: {
+        type: "string",
+        default: "#10659C",
     },
   };
   

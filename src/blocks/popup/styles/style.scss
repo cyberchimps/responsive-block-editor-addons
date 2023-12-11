@@ -2,6 +2,10 @@
     padding: 0;
     margin: 0 auto;
 
+    .responsive-block-editor-addons-popup-trigger-wrap {
+      display: flex;
+    }
+
     .button.button-primary {
       display: flex;
       align-items: center;

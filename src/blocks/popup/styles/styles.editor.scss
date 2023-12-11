@@ -2,6 +2,10 @@
   padding: 0;
   margin: 0 auto;
 
+  .responsive-block-editor-addons-popup-trigger-wrap {
+    display: flex;
+  }
+
   .rba-popup-selector {
     border: 2px solid #000;
     border-radius: 4px;
@@ -134,6 +138,7 @@
   }
 }
 
+// Styling for Inspector Controls.
 // Custom Styles of Alignment Matrix Control.
 .responsive-block-editor-addons-alignment-matrix-control {
 
@@ -145,6 +150,47 @@
   .component-alignment-matrix-control span[role=presentation] {
     height: 23px;
     width: 60px;
+  }
+}
+
+.responsive-block-editor-addons-popup-div-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+    span.dashicon.dashicons.dashicons-image-rotate {
+      color: #007cba;
+
+      &::before {
+        font-size: 10px;
+      }
+    }
+}
+
+.responsive-block-editor-addons-popup-button-preset-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4px;
+
+  .responsive-block-editor-addons-popup-button-preset {
+    text-align: center;
+    padding: 10px;
+
+    svg {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.responsive-block-editor-addons-popup-button-group-tab {
+  .components-button-group {
+    display: flex;
+
+    .components-button.is-primary, .components-button.is-secondary {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }
   
