@@ -3,6 +3,7 @@
  */
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import { __experimentalAlignmentMatrixControl as AlignmentMatrixControl } from '@wordpress/components';
 import renderSVG from "../../../renderIcon";
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
@@ -119,11 +120,43 @@ export default class Inspector extends Component {
         popupIconTrigger,
         popupImageTrigger,
         popupTextTrigger,
-        popupButtonHoverState ,
+        popupButtonHoverState,
         popupButtonColor,
         popupButtonBGColor,
         popupButtonHoverColor,
         popupButtonBGHoverColor,
+        popupButtonBGState,
+        popupButtonBGTransparent,
+        popupButtonBGGradient,
+        popupButtonBGHoverState,
+        popupButtonHoverBGTransparent,
+        popupButtonHoverBGGradient,
+        popupButtonTypographyFontFamily,
+        popupButtonTypographyFontSize,
+        popupButtonTypographyFontSizeMobile,
+        popupButtonTypographyFontSizeTablet,
+        popupButtonTypographyFontWeight,
+        popupButtonTypographyLineHeight,
+        popupButtonTypographyLetterSpacing,
+        popupButtonBorderStyle,
+        popupButtonBorderWidth,
+        popupButtonBorderRadius,
+        popupButtonBorderColor,
+        popupButtonBorderHoverColor,
+        popupTextColor,
+        popupTextTypographyFontFamily,
+        popupTextTypographyFontSize,
+        popupTextTypographyFontSizeMobile,
+        popupTextTypographyFontSizeTablet,
+        popupTextTypographyFontWeight,
+        popupTextTypographyLineHeight,
+        popupTextTypographyLetterSpacing,
+        popupIconTriggerSize,
+        popupIconTriggerColor,
+        popupImageTriggerWidth,
+        popupImageTriggerWidthTablet,
+        popupImageTriggerWidthMobile,
+        popupImageTriggerBorderRadius,
       },
       setAttributes,
     } = this.props;
@@ -457,7 +490,6 @@ export default class Inspector extends Component {
                             <AlignmentMatrixControl
                               value={popupScreenType}
                               onChange={(value) => {
-                                console.log(value)
                                 this.props.setAttributes({
                                   popupScreenType: value
                                 })
@@ -724,41 +756,314 @@ export default class Inspector extends Component {
 
                     {!popupButtonHoverState && <>
 
-                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Color", "responsive-block-editor-addons")}</Text>
-                      <ColorPalette
-                        colors={colors}
-                        value={popupButtonHoverColor}
-                        onChange={(value) => setAttributes({ popupButtonHoverColor: value })}
-                      />
-
-                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Color", "responsive-block-editor-addons")}</Text>
-                      <ColorPalette
-                        colors={colors}
-                        value={popupButtonBGHoverColor}
-                        onChange={(value) => setAttributes({ popupButtonBGHoverColor: value })}
-                      />
-                      
-                    </>}
-
-                    {popupButtonHoverState && <>
-
-                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Hover Color", "responsive-block-editor-addons")}</Text>
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Text Color", "responsive-block-editor-addons")}</Text>
                       <ColorPalette
                         colors={colors}
                         value={popupButtonColor}
                         onChange={(value) => setAttributes({ popupButtonColor: value })}
                       />
 
-                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Hover Color", "responsive-block-editor-addons")}</Text>
-                      <ColorPalette
-                        colors={colors}
-                        value={popupButtonBGColor}
-                        onChange={(value) => setAttributes({ popupButtonBGColor: value })}
-                      />
-                      
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Type", "responsive-block-editor-addons")}</Text>
+                      <div className="responsive-block-editor-addons-popup-button-group-tab">
+                        <ButtonGroup>
+                          <Button onClick={() => setAttributes({ popupButtonBGState: 'transparent', popupButtonBGTransparent: 'transparent' })} variant={popupButtonBGState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
+                          <Button onClick={() => setAttributes({ popupButtonBGState: 'solid' })} variant={popupButtonBGState === 'solid' ? 'primary' : 'secondary'}>{__("Solid", "responsive-block-editor-addons")}</Button>
+                          <Button onClick={() => setAttributes({ popupButtonBGState: 'gradient' })} variant={popupButtonBGState === 'gradient' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
+                        </ButtonGroup>
+                      </div>
+
+                      {popupButtonBGState === 'solid' && <>
+                        <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Color", "responsive-block-editor-addons")}</Text>
+                        <ColorPalette
+                          colors={colors}
+                          value={popupButtonBGColor}
+                          onChange={(value) => setAttributes({ popupButtonBGColor: value })}
+                        /> </>}
+
+                      {popupButtonBGState === 'gradient' && <>
+                        <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Gradient", "responsive-block-editor-addons")}</Text>
+                        <GradientPicker
+                          __nextHasNoMargin
+                          value={popupButtonBGGradient}
+                          onChange={(value) => { setAttributes({ popupButtonBGGradient: value }) }}
+                          gradients={[
+                            {
+                              name: 'JShine',
+                              gradient:
+                                'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+                              slug: 'jshine',
+                            },
+                            {
+                              name: 'Moonlit Asteroid',
+                              gradient:
+                                'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+                              slug: 'moonlit-asteroid',
+                            },
+                            {
+                              name: 'Rastafarie',
+                              gradient:
+                                'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+                              slug: 'rastafari',
+                            },
+                          ]}
+                        /> </>
+                      }
                     </>}
 
+                    {popupButtonHoverState && <>
+
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Text Hover Color", "responsive-block-editor-addons")}</Text>
+                      <ColorPalette
+                        colors={colors}
+                        value={popupButtonHoverColor}
+                        onChange={(value) => setAttributes({ popupButtonHoverColor: value })}
+                      />
+
+                      <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Hover Background Type", "responsive-block-editor-addons")}</Text>
+                      <div className="responsive-block-editor-addons-popup-button-group-tab">
+                        <ButtonGroup>
+                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'transparent', popupButtonBGTransparent: 'transparent' })} variant={popupButtonBGHoverState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
+                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'solid' })} variant={popupButtonBGHoverState === 'solid' ? 'primary' : 'secondary'}>{__("Solid", "responsive-block-editor-addons")}</Button>
+                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'gradient' })} variant={popupButtonBGHoverState === 'gradient' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
+                        </ButtonGroup>
+                      </div>
+
+                      {popupButtonBGHoverState === 'solid' && <>
+                        <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Hover Color", "responsive-block-editor-addons")}</Text>
+                        <ColorPalette
+                          colors={colors}
+                          value={popupButtonBGHoverColor}
+                          onChange={(value) => setAttributes({ popupButtonBGHoverColor: value })}
+                        /></>}
+
+                      {popupButtonBGHoverState === 'gradient' && <>
+                        <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Gradient", "responsive-block-editor-addons")}</Text>
+                        <GradientPicker
+                          __nextHasNoMargin
+                          value={popupButtonHoverBGGradient}
+                          onChange={(value) => { setAttributes({ popupButtonHoverBGGradient: value }) }}
+                          gradients={[
+                            {
+                              name: 'JShine',
+                              gradient:
+                                'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+                              slug: 'jshine',
+                            },
+                            {
+                              name: 'Moonlit Asteroid',
+                              gradient:
+                                'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+                              slug: 'moonlit-asteroid',
+                            },
+                            {
+                              name: 'Rastafarie',
+                              gradient:
+                                'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+                              slug: 'rastafari',
+                            },
+                          ]}
+                        /> </>
+                      }
+
+                    </>}
+
+                    <TypographyHelperControl
+                      title={__(
+                        "Button Typography",
+                        "responsive-block-editor-addons"
+                      )}
+                      attrNameTemplate="popupButtonTypography%s"
+                      values={{
+                        family: popupButtonTypographyFontFamily,
+                        size: popupButtonTypographyFontSize,
+                        sizeMobile: popupButtonTypographyFontSizeMobile,
+                        sizeTablet: popupButtonTypographyFontSizeTablet,
+                        weight: popupButtonTypographyFontWeight,
+                        height: popupButtonTypographyLineHeight,
+                        spacing: popupButtonTypographyLetterSpacing,
+                      }}
+                      showLetterSpacing={true}
+                      showTextTransform={false}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+
+                    <BlockBorderHelperControl
+                      attrNameTemplate="popupButton%s"
+                      values={{
+                        radius: popupButtonBorderRadius,
+                        style: popupButtonBorderStyle,
+                        width: popupButtonBorderWidth,
+                        color: popupButtonBorderColor,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+
+                    <p className="responsive-setting-label">{__("Border Hover Color", "responsive-block-editor-addons")}</p>
+                    <ColorPalette
+                      colors={colors}
+                      value={popupButtonBorderHoverColor}
+                      onChange={(value) => setAttributes({ popupButtonBorderHoverColor: value })}
+                    />
+
                   </>}
+
+                  {popupTriggerType === 'text' && <>
+                    <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Text Color", "responsive-block-editor-addons")}</Text>
+                    <ColorPalette
+                      colors={colors}
+                      value={popupTextColor}
+                      onChange={(value) => setAttributes({ popupTextColor: value })}
+                    />
+
+                    <TypographyHelperControl
+                      title={__(
+                        "Text Typography",
+                        "responsive-block-editor-addons"
+                      )}
+                      attrNameTemplate="popupTextTypography%s"
+                      values={{
+                        family: popupTextTypographyFontFamily,
+                        size: popupTextTypographyFontSize,
+                        sizeMobile: popupTextTypographyFontSizeMobile,
+                        sizeTablet: popupTextTypographyFontSizeTablet,
+                        weight: popupTextTypographyFontWeight,
+                        height: popupTextTypographyLineHeight,
+                        spacing: popupTextTypographyLetterSpacing,
+                      }}
+                      showLetterSpacing={true}
+                      showTextTransform={false}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+                  </>}
+
+                  {popupTriggerType === 'icon' && <>
+                    <RangeControl
+                      label={__("Icon Size", "responsive-block-editor-addons")}
+                      value={popupIconTriggerSize}
+                      onChange={(value) =>
+                        setAttributes({
+                          popupIconTriggerSize: value !== undefined ? value : 30,
+                        })
+                      }
+                      min={0}
+                      max={150}
+                      beforeIcon=""
+                      allowReset
+                      initialPosition={30}
+                    />
+
+                    <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Icon Color", "responsive-block-editor-addons")}</Text>
+                    <ColorPalette
+                      colors={colors}
+                      value={popupIconTriggerColor}
+                      onChange={(value) => setAttributes({ popupIconTriggerColor: value })}
+                    />
+                  </>}
+
+                  {popupTriggerType === 'image' && <>
+                    <TabPanel
+                      className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                      activeClass="active-tab"
+                      tabs={[
+                        {
+                          name: "desktop",
+                          title: <Dashicon icon="desktop" />,
+                          className:
+                            " responsive-desktop-tab  responsive-responsive-tabs",
+                        },
+                        {
+                          name: "tablet",
+                          title: <Dashicon icon="tablet" />,
+                          className:
+                            " responsive-tablet-tab  responsive-responsive-tabs",
+                        },
+                        {
+                          name: "mobile",
+                          title: <Dashicon icon="smartphone" />,
+                          className:
+                            " responsive-mobile-tab  responsive-responsive-tabs",
+                        },
+                      ]}
+                    >
+                      {(tab) => {
+                        let tabout;
+
+                        if ("mobile" === tab.name) {
+                          tabout = (
+                            <RangeControl
+                              label={__("Image Width (Mobile)", "responsive-block-editor-addons")}
+                              value={popupImageTriggerWidthMobile}
+                              onChange={(value) =>
+                                setAttributes({
+                                  popupImageTriggerWidthMobile: value !== undefined ? value : 350,
+                                })
+                              }
+                              min={0}
+                              max={500}
+                              beforeIcon=""
+                              allowReset
+                              initialPosition={350}
+                            />
+                          );
+                        } else if ("tablet" === tab.name) {
+                          tabout = (
+                            <RangeControl
+                              label={__("Image Width (Tablet)", "responsive-block-editor-addons")}
+                              value={popupImageTriggerWidthTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  popupImageTriggerWidthTablet: value !== undefined ? value : 350,
+                                })
+                              }
+                              min={0}
+                              max={500}
+                              beforeIcon=""
+                              allowReset
+                              initialPosition={350}
+                            />
+                          );
+                        } else {
+                          tabout = (
+                            <RangeControl
+                              label={__("Image Width", "responsive-block-editor-addons")}
+                              value={popupImageTriggerWidth}
+                              onChange={(value) =>
+                                setAttributes({
+                                  popupImageTriggerWidth: value !== undefined ? value : 350,
+                                })
+                              }
+                              min={0}
+                              max={500}
+                              beforeIcon=""
+                              allowReset
+                              initialPosition={350}
+                            />
+                          );
+                        }
+
+                        return <div>{tabout}</div>;
+                      }}
+                    </TabPanel>
+
+                    <RangeControl
+                      label={__("Image Border Radius", "responsive-block-editor-addons")}
+                      value={popupImageTriggerBorderRadius}
+                      onChange={(value) =>
+                        setAttributes({
+                          popupImageTriggerBorderRadius: value !== undefined ? value : 0,
+                        })
+                      }
+                      min={0}
+                      max={100}
+                      beforeIcon=""
+                      allowReset
+                      initialPosition={0}
+                    />
+                  </>}
+
                 </PanelBody>}
               <PanelBody
                 title={__("Color & Background", "responsive-block-editor-addons")}
@@ -786,7 +1091,7 @@ export default class Inspector extends Component {
                   <GradientPicker
                     __nextHasNoMargin
                     value={popupGradient}
-                    onChange={(value) => { console.log(value); setAttributes({ popupGradient: value }) }}
+                    onChange={(value) => { setAttributes({ popupGradient: value }) }}
                     gradients={[
                       {
                         name: 'JShine',

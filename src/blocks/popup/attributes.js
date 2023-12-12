@@ -1,6 +1,6 @@
 const attributes = {
     block_id: {
-      type: "string",
+        type: "string",
     },
     isPopupVariantSelected: {
         type: "boolean",
@@ -200,6 +200,14 @@ const attributes = {
         type: "string",
         default: "#10659C",
     },
+    popupButtonBGTransparent: {
+        type: "string",
+        default: "transparent",
+    },
+    popupButtonBGGradient: {
+        type: "string",
+        default: "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
+    },
     popupButtonHoverColor: {
         type: "string",
         default: "#fff",
@@ -208,7 +216,117 @@ const attributes = {
         type: "string",
         default: "#10659C",
     },
-  };
-  
-  export default attributes;
-  
+    popupButtonHoverBGTransparent: {
+        type: "string",
+        default: "transparent",
+    },
+    popupButtonHoverBGGradient: {
+        type: "string",
+        default: "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
+    },
+    popupButtonBGState: {
+        type: "string",
+        default: "transparent",
+    },
+    popupButtonBGHoverState: {
+        type: "string",
+        default: "transparent",
+    },
+    popupButtonTypographyFontFamily: {
+        type: "string",
+    },
+    popupButtonTypographyFontSize: {
+        type: "number",
+    },
+    popupButtonTypographyFontSizeMobile: {
+        type: "number",
+    },
+    popupButtonTypographyFontSizeTablet: {
+        type: "number",
+    },
+    popupButtonTypographyFontWeight: {
+        type: "string",
+        default: "600",
+    },
+    popupButtonTypographyLineHeight: {
+        type: "number",
+        default: 1,
+    },
+    popupButtonTypographyLetterSpacing: {
+        type: "number",
+        default: 0,
+    },
+    popupButtonBorderStyle: {
+        type: "string",
+        default: "solid",
+    },
+    popupButtonBorderWidth: {
+        type: "number",
+        default: 1,
+    },
+    popupButtonBorderRadius: {
+        type: "number",
+        default: 2,
+    },
+    popupButtonBorderColor: {
+        type: "string",
+        default: 'black',
+    },
+    popupButtonBorderHoverColor: {
+        type: "string",
+    },
+    popupTextColor: {
+        type: "string",
+        default: "black",
+    },
+    popupTextTypographyFontFamily: {
+        type: "string",
+    },
+    popupTextTypographyFontSize: {
+        type: "number",
+    },
+    popupTextTypographyFontSizeMobile: {
+        type: "number",
+    },
+    popupTextTypographyFontSizeTablet: {
+        type: "number",
+    },
+    popupTextTypographyFontWeight: {
+        type: "string",
+        default: "600",
+    },
+    popupTextTypographyLineHeight: {
+        type: "number",
+        default: 1,
+    },
+    popupTextTypographyLetterSpacing: {
+        type: "number",
+        default: 0,
+    },
+    popupIconTriggerSize: {
+        type: "number",
+        default: 30,
+    },
+    popupIconTriggerColor: {
+        type: "string",
+        default: "#000",
+    },
+    popupImageTriggerWidth: {
+        type: "number",
+        default: 350,
+    },
+    popupImageTriggerWidthTablet: {
+        type: "number",
+        default: 350,
+    },
+    popupImageTriggerWidthMobile: {
+        type: "number",
+        default: 350,
+    },
+    popupImageTriggerBorderRadius: {
+        type: "number",
+        default: 0,
+    }
+};
+
+export default attributes;
