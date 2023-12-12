@@ -4,6 +4,16 @@
 
   .responsive-block-editor-addons-popup-trigger-wrap {
     display: flex;
+
+    .responsive-block-editor-addons-popup-button-trigger {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .responsive-popup-trigger-anchor {
+      cursor: pointer;
+    }
   }
 
   .rba-popup-selector {
@@ -45,7 +55,7 @@
       &:hover {
         background-color: #F6F6F6;
       }
-      
+
       &:nth-child(3) {
         width: 140px;
       }
@@ -56,13 +66,13 @@
         line-height: 14px;
         text-align: center;
       }
-      
+
       .rba-popup-preset-desc {
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 9.31px;
-          text-align: center;
-          color: #8A8A8A;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 9.31px;
+        text-align: center;
+        color: #8A8A8A;
       }
     }
   }
@@ -143,10 +153,10 @@
 .responsive-block-editor-addons-alignment-matrix-control {
 
   .component-alignment-matrix-control {
-    grid-template-rows: repeat(3,35.6667px);
+    grid-template-rows: repeat(3, 35.6667px);
     width: 245px;
   }
-  
+
   .component-alignment-matrix-control span[role=presentation] {
     height: 23px;
     width: 60px;
@@ -158,13 +168,24 @@
   justify-content: space-between;
   align-items: baseline;
 
-    span.dashicon.dashicons.dashicons-image-rotate {
-      color: #007cba;
-
-      &::before {
-        font-size: 10px;
-      }
+  button.components-button.is-small {
+    &:focus {
+      box-shadow: none;
     }
+  }
+
+  span.dashicon.dashicons-image-rotate {
+    color: #007cba;
+
+    &.image-rotate-reset {
+      color: #ccc;
+    }
+
+    &::before {
+      font-size: 10px;
+    }
+  }
+
 }
 
 .responsive-block-editor-addons-popup-button-preset-wrap {
@@ -175,6 +196,15 @@
   .responsive-block-editor-addons-popup-button-preset {
     text-align: center;
     padding: 10px;
+    border-color: 2px solid black;
+
+    button.selectedPresetBorder {
+      border: 2px solid #007cba;
+    }
+
+    button.disabledPresetBorder {
+      border: 2px solid #000;
+    }
 
     svg {
       width: 100px;
@@ -187,10 +217,10 @@
   .components-button-group {
     display: flex;
 
-    .components-button.is-primary, .components-button.is-secondary {
+    .components-button.is-primary,
+    .components-button.is-secondary {
       width: 100%;
       justify-content: center;
     }
   }
 }
-  

@@ -175,7 +175,7 @@ const attributes = {
     },
     popupButtonPreset: {
         type: "string",
-        default: "empty"
+        default: "",
     },
     popupIconTrigger: {
         type: "string",
@@ -226,11 +226,11 @@ const attributes = {
     },
     popupButtonBGState: {
         type: "string",
-        default: "transparent",
+        default: "solid",
     },
     popupButtonBGHoverState: {
         type: "string",
-        default: "transparent",
+        default: "solid",
     },
     popupButtonTypographyFontFamily: {
         type: "string",
@@ -326,7 +326,59 @@ const attributes = {
     popupImageTriggerBorderRadius: {
         type: "number",
         default: 0,
-    }
+    },
+    popupButtonText: {
+        type: "string",
+        default: "Edit Popup",
+    },
+    popupButtonPaddingTop: {
+        type: "string",
+        default: 14, 
+    },
+    popupButtonPaddingTopTablet: {
+        type: "string",
+        default: 14, 
+    },
+    popupButtonPaddingTopMobile: {
+        type: "string",
+        default: 14, 
+    },
+    popupButtonPaddingBottom: {
+        type: "string",
+        default: 14, 
+    },
+    popupButtonPaddingBottomTablet: {
+        type: "string",
+        default: 14, 
+    },
+    popupButtonPaddingBottomMobile: {
+        type: "string",
+        default: 14, 
+    },
+    popupButtonPaddingLeft: {
+        type: "string",
+        default: 32, 
+    },
+    popupButtonPaddingLeftTablet: {
+        type: "string",
+        default: 32, 
+    },
+    popupButtonPaddingLeftMobile: {
+        type: "string",
+        default: 32, 
+    },
+    popupButtonPaddingRight: {
+        type: "string",
+        default: 32, 
+    },
+    popupButtonPaddingRightTablet: {
+        type: "string",
+        default: 32, 
+    },
+    popupButtonPaddingRightMobile: {
+        type: "string",
+        default: 32,
+    },
 };
 
 export default attributes;

@@ -5,6 +5,8 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 import icons from "./icons";
+import { loadGoogleFont } from "../../../utils/font";
+import renderSVG from "../../../renderIcon";
 import { BLOCKS_TEMPLATE_PRESET1, BLOCKS_TEMPLATE_PRESET2, BLOCKS_TEMPLATE_CUSTOM } from "./variations";
 /**
  * WordPress dependencies
@@ -79,6 +81,13 @@ export default class Edit extends Component {
         popupToggleCloseBtn,
         popupTrigger,
         popupTriggerDelay,
+        popupTriggerType,
+        popupTextTrigger,
+        popupIconTrigger,
+        popupImageTrigger,
+        popupButtonText,
+        popupButtonTypographyFontFamily,
+        popupTextTypographyFontFamily,
         block_id,
       },
       setAttributes,
@@ -130,8 +139,27 @@ export default class Edit extends Component {
         {isPopupVariantSelected &&
           <>
             <div className="responsive-block-editor-addons-popup-trigger-wrap">
-              <button type="button" className="button button-primary responsive-block-editor-addons-popup-modal-trigger" onClick={() => this.setState({ isModalOpen: true })}> <span class="dashicons dashicons-external"></span> <p>{__("Edit Popup", "responsive-block-editor-addons")}</p>
-              </button>
+
+              {popupButtonTypographyFontFamily && loadGoogleFont(popupButtonTypographyFontFamily)}
+              {popupTriggerType === 'button' &&
+                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span class="dashicons dashicons-external"></span> <p>{__("Edit Popup", "responsive-block-editor-addons")}</p></>}
+                </button>
+              }
+
+              {popupTextTypographyFontFamily && loadGoogleFont(popupTextTypographyFontFamily)}
+              {popupTriggerType === 'text' &&
+                <p onClick={() => this.setState({ isModalOpen: true })} className="responsive-block-editor-addons-popup-text-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-modal-trigger">{popupTextTrigger}</p>
+              }
+
+              {popupTriggerType === 'icon' &&
+                <div onClick={() => this.setState({ isModalOpen: true })} className="responsive-popup-trigger-anchor responsive-block-editor-addons-popup-icon-trigger">
+                  {renderSVG(popupIconTrigger)}
+                </div>
+              }
+
+              {popupTriggerType === 'image' && popupImageTrigger == undefined && <p>Please Select Image</p>}
+              {popupTriggerType === 'image' && popupImageTrigger != undefined && <img onClick={() => this.setState({ isModalOpen: true })} className="responsive-popup-trigger-anchor responsive-block-editor-addons-popup-image-trigger" src={popupImageTrigger} alt="popupImageTrigger" />}
+
             </div>
             <div className={`responsive-block-editor-addons-popup-modal-wrap ${this.state.isModalOpen ? 'responsive-block-editor-popup-modal-show' : 'responsive-block-editor-popup-modal-hide'}`} data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'}>
               <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay" onClick={() => this.setState({ isModalOpen: false })}></div>

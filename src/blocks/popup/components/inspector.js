@@ -157,32 +157,22 @@ export default class Inspector extends Component {
         popupImageTriggerWidthTablet,
         popupImageTriggerWidthMobile,
         popupImageTriggerBorderRadius,
+        popupButtonText,
+        popupButtonPaddingTop,
+        popupButtonPaddingTopTablet,
+        popupButtonPaddingTopMobile,
+        popupButtonPaddingBottom,
+        popupButtonPaddingBottomTablet,
+        popupButtonPaddingBottomMobile,
+        popupButtonPaddingLeft,
+        popupButtonPaddingLeftTablet,
+        popupButtonPaddingLeftMobile,
+        popupButtonPaddingRight,
+        popupButtonPaddingRightTablet,
+        popupButtonPaddingRightMobile,
       },
       setAttributes,
     } = this.props;
-
-    const buttonPresets = [
-      { label: presets.preset1, title: "Preset 1", value: "preset1" },
-      { label: presets.preset2, title: "Preset 2", value: "preset2" },
-      { label: presets.preset3, title: "Preset 3", value: "preset3" },
-      { label: presets.preset4, title: "Preset 4", value: "preset4" },
-      { label: presets.preset5, title: "Preset 5", value: "preset5" },
-      { label: presets.preset6, title: "Preset 6", value: "preset6" },
-    ]
-
-    const renderButtonPresets = buttonPresets.map((preset) => {
-      return {
-        label: (
-          <div className="responsive-blocks-editor-addons-design-panel-item">
-            <div className="responsive-blocks-editor-addons-design-panel-item__svg">
-              {preset.label}
-            </div>
-            <span className="design-label">{preset.title}</span>
-          </div>
-        ),
-        value: preset.value,
-      };
-    })
 
     return (
       <InspectorControls key="inspector">
@@ -548,28 +538,35 @@ export default class Inspector extends Component {
                   />
 
                   {popupTriggerType === 'button' && <>
+
+                    <TextControl
+                      label={__("Button Text", "responsive-block-editor-addons")}
+                      value={popupButtonText}
+                      onChange={(value) => setAttributes({ popupButtonText: value })}
+                    />
+
                     <div className="responsive-block-editor-addons-popup-div-flex">
                       <Text variant="title.small" as="h3">{__("Select Preset", "responsive-block-editor-addons")}</Text>
-                      <Button size="small"><Dashicon icon="image-rotate" /></Button>
+                      <Button onClick={() => setAttributes({ popupButtonPreset: '' })} size="small"><Dashicon icon="image-rotate" className={popupButtonPreset === '' ? 'image-rotate-reset' : ''} /></Button>
                     </div>
                     <div className="responsive-block-editor-addons-popup-button-preset-wrap">
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset1' })}>{presets.preset1}</button>
+                        <button className={popupButtonPreset === 'preset1' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset1' })}>{presets.preset1}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset2' })}>{presets.preset2}</button>
+                        <button className={popupButtonPreset === 'preset2' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset2' })}>{presets.preset2}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset3' })}>{presets.preset3}</button>
+                        <button className={popupButtonPreset === 'preset3' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset3' })}>{presets.preset3}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset4' })}>{presets.preset4}</button>
+                        <button className={popupButtonPreset === 'preset4' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset4' })}>{presets.preset4}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset5' })}>{presets.preset5}</button>
+                        <button className={popupButtonPreset === 'preset5' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset5' })}>{presets.preset5}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button onClick={() => setAttributes({ popupButtonPreset: 'preset6' })}>{presets.preset6}</button>
+                        <button className={popupButtonPreset === 'preset6' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset6' })}>{presets.preset6}</button>
                       </div>
                     </div>
                   </>
@@ -887,6 +884,56 @@ export default class Inspector extends Component {
                       setAttributes={setAttributes}
                       {...this.props}
                     />
+
+                    <ResponsiveSpacingControl
+                      title={__("Button Padding Top", "responsive-block-editor-addons")}
+                      attrNameTemplate="popupButtonPaddingTop%s"
+                      values={{
+                        desktop: popupButtonPaddingTop,
+                        tablet: popupButtonPaddingTopTablet,
+                        mobile: popupButtonPaddingTopMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+
+                    <ResponsiveSpacingControl
+                      title={__("Button Padding Bottom", "responsive-block-editor-addons")}
+                      attrNameTemplate="popupButtonPaddingBottom%s"
+                      values={{
+                        desktop: popupButtonPaddingBottom,
+                        tablet: popupButtonPaddingBottomTablet,
+                        mobile: popupButtonPaddingBottomMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+
+                    <ResponsiveSpacingControl
+                      title={__("Button Padding Left", "responsive-block-editor-addons")}
+                      attrNameTemplate="popupButtonPaddingLeft%s"
+                      values={{
+                        desktop: popupButtonPaddingLeft,
+                        tablet: popupButtonPaddingLeftTablet,
+                        mobile: popupButtonPaddingLeftMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+
+                    <ResponsiveSpacingControl
+                      title={__("Button Padding Right", "responsive-block-editor-addons")}
+                      attrNameTemplate="popupButtonPaddingRight%s"
+                      values={{
+                        desktop: popupButtonPaddingRight,
+                        tablet: popupButtonPaddingRightTablet,
+                        mobile: popupButtonPaddingRightMobile,
+                      }}
+                      setAttributes={setAttributes}
+                      {...this.props}
+                    />
+
+                    <hr className="responsive-block-editor-addons-editor__separator" />
 
                     <BlockBorderHelperControl
                       attrNameTemplate="popupButton%s"

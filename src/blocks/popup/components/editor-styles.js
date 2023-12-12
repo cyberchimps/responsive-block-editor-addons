@@ -40,15 +40,56 @@ function EditorStyles(props) {
     popupBlockBorderWidth,
     popupBlockBorderRadius,
     popupBlockBorderColor,
-
-    subheadSpacingTablet,
-    separatorSpacingTablet,
-    subheadSpacingMobile,
-    separatorSpacingMobile,
-    subHeadingTitleFontSizeMobile,
-    subHeadingTitleFontSizeTablet,
-    headingAlignmentTablet,
-    headingAlignmentMobile,
+    popupTriggerAlign,
+    popupTriggerAlignTablet,
+    popupTriggerAlignMobile,
+    popupButtonColor,
+    popupButtonBGState,
+    popupButtonBGTransparent,
+    popupButtonBGColor,
+    popupButtonBGGradient,
+    popupButtonTypographyFontFamily,
+    popupButtonTypographyFontSize,
+    popupButtonTypographyFontSizeMobile,
+    popupButtonTypographyFontSizeTablet,
+    popupButtonTypographyFontWeight,
+    popupButtonTypographyLineHeight,
+    popupButtonTypographyLetterSpacing,
+    popupButtonPaddingTop,
+    popupButtonPaddingTopTablet,
+    popupButtonPaddingTopMobile,
+    popupButtonPaddingBottom,
+    popupButtonPaddingBottomTablet,
+    popupButtonPaddingBottomMobile,
+    popupButtonPaddingLeft,
+    popupButtonPaddingLeftTablet,
+    popupButtonPaddingLeftMobile,
+    popupButtonPaddingRight,
+    popupButtonPaddingRightTablet,
+    popupButtonPaddingRightMobile,
+    popupButtonBorderRadius,
+    popupButtonBorderStyle,
+    popupButtonBorderWidth,
+    popupButtonBorderColor,
+    popupButtonBGHoverState,
+    popupButtonHoverColor,
+    popupButtonBGHoverColor,
+    popupButtonHoverBGGradient,
+    popupButtonBorderHoverColor,
+    popupTextColor,
+    popupTextTypographyFontFamily,
+    popupTextTypographyFontSize,
+    popupTextTypographyFontSizeMobile,
+    popupTextTypographyFontSizeTablet,
+    popupTextTypographyFontWeight,
+    popupTextTypographyLineHeight,
+    popupTextTypographyLetterSpacing,
+    popupIconTriggerSize,
+    popupIconTriggerColor,
+    popupImageTriggerWidth,
+    popupImageTriggerWidthTablet,
+    popupImageTriggerWidthMobile,
+    popupImageTriggerBorderRadius,
     block_id,
   } = props.attributes;
 
@@ -177,15 +218,67 @@ function EditorStyles(props) {
   }
 
   const { desktop, tablet, mobile } = popupScreenPositions;
-  
-  let popupContainerBackground = { 'background-color': popupBgColor }
-  if ( popupBgType === 'gradient' ) {
-    popupContainerBackground = { 'background-image': popupGradient }
-  }
+
+  const popupContainerBackground = popupBgType === 'gradient' ? { 'background-image': popupGradient } : { 'background-color': popupBgColor };
+
+  const buttonBGColor = {
+    'solid': { 'background-color': popupButtonBGColor },
+    'gradient': { 'background-image': popupButtonBGGradient },
+  }[popupButtonBGState] || { 'background-color': 'transparent' };
+
+  const buttonHoverBGColor = {
+    'solid': { 'background-color': popupButtonBGHoverColor },
+    'gradient': { 'background-image': popupButtonHoverBGGradient },
+  }[popupButtonBGHoverState] || { 'background-color': 'transparent' };
 
   var selectors = {
     "": {
-      
+
+    },
+    " .responsive-block-editor-addons-popup-trigger-wrap": {
+      "justify-content": popupTriggerAlign,
+    },
+    " .responsive-block-editor-addons-popup-button-trigger": {
+      "color": popupButtonColor,
+      "background-color": popupButtonBGTransparent,
+      ...buttonBGColor,
+      "font-family": popupButtonTypographyFontFamily,
+      "font-size": generateCSSUnit(popupButtonTypographyFontSize, "px"),
+      "font-weight": parseInt(popupButtonTypographyFontWeight),
+      "line-height": popupButtonTypographyLineHeight,
+      "letter-spacing": generateCSSUnit(popupButtonTypographyLetterSpacing, "px"),
+      "padding-top": generateCSSUnit(popupButtonPaddingTop, "px"),
+      "padding-bottom": generateCSSUnit(popupButtonPaddingBottom, "px"),
+      "padding-left": generateCSSUnit(popupButtonPaddingLeft, "px"),
+      "padding-right": generateCSSUnit(popupButtonPaddingRight, "px"),
+      "border-width": generateCSSUnit(popupButtonBorderWidth, "px"),
+      "border-style": popupButtonBorderStyle,
+      "border-color": popupButtonBorderColor,
+      "border-radius": generateCSSUnit(popupButtonBorderRadius, "px"),
+    },
+    " .responsive-block-editor-addons-popup-button-trigger:hover": {
+      "color": popupButtonHoverColor,
+      ...buttonHoverBGColor,
+      "border-color": popupButtonBorderHoverColor,
+    },
+    " .responsive-block-editor-addons-popup-text-trigger": {
+      "color": popupTextColor,
+      "font-family": popupTextTypographyFontFamily,
+      "font-size": generateCSSUnit(popupTextTypographyFontSize, "px"),
+      "font-weight": parseInt(popupTextTypographyFontWeight),
+      "line-height": popupTextTypographyLineHeight,
+      "letter-spacing": generateCSSUnit(popupTextTypographyLetterSpacing, "px"),
+    },
+    " .responsive-block-editor-addons-popup-icon-trigger svg": {
+      "fill": popupIconTriggerColor,
+      "width": generateCSSUnit(popupIconTriggerSize, "px"),
+      "height": generateCSSUnit(popupIconTriggerSize, "px"),
+      "line-height": generateCSSUnit(popupIconTriggerSize, "px"),
+      "font-size": generateCSSUnit(popupIconTriggerSize, "px"),popupImageTriggerBorderRadius
+    },
+    " .responsive-block-editor-addons-popup-image-trigger": {
+      "width": generateCSSUnit(popupImageTriggerWidth, "px"),
+      "border-radius": generateCSSUnit(popupImageTriggerBorderRadius, "px"),
     },
     " .responsive-block-editor-addons-popup-modal-content": {
       "width": generateCSSUnit(popupContainerWidth, "px"),
@@ -209,13 +302,22 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-popup-modal-wrap-overlay": {
       "background-color": popupOverlayColor,
-      "opacity": parseInt(popupOverlayOpacity)/100,
+      "opacity": parseInt(popupOverlayOpacity) / 100,
     },
   };
 
   var mobile_selectors = {
     "": {
-      
+
+    },
+    " .responsive-block-editor-addons-popup-trigger-wrap": {
+      "justify-content": popupTriggerAlignMobile,
+    },
+    " .responsive-block-editor-addons-popup-text-trigger": {
+      "font-size": generateCSSUnit(popupTextTypographyFontSizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-popup-image-trigger": {
+      "width": generateCSSUnit(popupImageTriggerWidthMobile, "px"),
     },
     " .responsive-block-editor-addons-popup-modal-content": {
       "width": generateCSSUnit(popupContainerWidthMobile, "px"),
@@ -225,12 +327,26 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(popupPaddingBottomMobile, "px"),
       "padding-left": generateCSSUnit(popupPaddingLeftMobile, "px"),
       ...tablet,
+      "font-size": generateCSSUnit(popupButtonTypographyFontSizeMobile, "px"),
+      "padding-top": generateCSSUnit(popupButtonPaddingTopMobile, "px"),
+      "padding-bottom": generateCSSUnit(popupButtonPaddingBottomMobile, "px"),
+      "padding-left": generateCSSUnit(popupButtonPaddingLeftMobile, "px"),
+      "padding-right": generateCSSUnit(popupButtonPaddingRightMobile, "px"),
     },
   };
 
   var tablet_selectors = {
     "": {
-      
+
+    },
+    " .responsive-block-editor-addons-popup-trigger-wrap": {
+      "justify-content": popupTriggerAlignTablet,
+    },
+    " .responsive-block-editor-addons-popup-text-trigger": {
+      "font-size": generateCSSUnit(popupTextTypographyFontSizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-popup-image-trigger": {
+      "width": generateCSSUnit(popupImageTriggerWidthMobile, "px"),
     },
     " .responsive-block-editor-addons-popup-modal-content": {
       "width": generateCSSUnit(popupContainerWidthTablet, "px"),
@@ -240,6 +356,11 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(popupPaddingBottomTablet, "px"),
       "padding-left": generateCSSUnit(popupPaddingLeftTablet, "px"),
       ...mobile,
+      "font-size": generateCSSUnit(popupButtonTypographyFontSizeTablet, "px"),
+      "padding-top": generateCSSUnit(popupButtonPaddingTopTablet, "px"),
+      "padding-bottom": generateCSSUnit(popupButtonPaddingBottomTablet, "px"),
+      "padding-left": generateCSSUnit(popupButtonPaddingLeftTablet, "px"),
+      "padding-right": generateCSSUnit(popupButtonPaddingRightTablet, "px"),
     },
   };
 
