@@ -142,7 +142,7 @@ export default class Edit extends Component {
 
               {popupButtonTypographyFontFamily && loadGoogleFont(popupButtonTypographyFontFamily)}
               {popupTriggerType === 'button' &&
-                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span class="dashicons dashicons-external"></span> <p>{__("Edit Popup", "responsive-block-editor-addons")}</p></>}
+                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span class="dashicons dashicons-external"></span> <span>{__("Edit Popup", "responsive-block-editor-addons")}</span></>}
                 </button>
               }
 

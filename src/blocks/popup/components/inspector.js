@@ -538,7 +538,6 @@ export default class Inspector extends Component {
                   />
 
                   {popupTriggerType === 'button' && <>
-
                     <TextControl
                       label={__("Button Text", "responsive-block-editor-addons")}
                       value={popupButtonText}
@@ -551,22 +550,22 @@ export default class Inspector extends Component {
                     </div>
                     <div className="responsive-block-editor-addons-popup-button-preset-wrap">
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button className={popupButtonPreset === 'preset1' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset1' })}>{presets.preset1}</button>
+                        <button className={popupButtonPreset === 'preset1' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset1', popupButtonBGColor: '#007cba', popupButtonColor: '#fff', popupButtonBorderRadius: 0 })}>{presets.preset1}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button className={popupButtonPreset === 'preset2' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset2' })}>{presets.preset2}</button>
+                        <button className={popupButtonPreset === 'preset2' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset2', popupButtonBGColor: '#fff', popupButtonColor: '#007cba', popupButtonBorderRadius: 0 })}>{presets.preset2}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button className={popupButtonPreset === 'preset3' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset3' })}>{presets.preset3}</button>
+                        <button className={popupButtonPreset === 'preset3' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset3', popupButtonBGColor: '#007cba', popupButtonColor: '#fff', popupButtonBorderRadius: 4 })}>{presets.preset3}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button className={popupButtonPreset === 'preset4' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset4' })}>{presets.preset4}</button>
+                        <button className={popupButtonPreset === 'preset4' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset4', popupButtonBGColor: '#fff', popupButtonColor: '#007cba', popupButtonBorderRadius: 4  })}>{presets.preset4}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button className={popupButtonPreset === 'preset5' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset5' })}>{presets.preset5}</button>
+                        <button className={popupButtonPreset === 'preset5' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset5', popupButtonBGColor: '#007cba', popupButtonColor: '#fff', popupButtonBorderRadius: 30 })}>{presets.preset5}</button>
                       </div>
                       <div className="responsive-block-editor-addons-popup-button-preset">
-                        <button className={popupButtonPreset === 'preset6' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset6' })}>{presets.preset6}</button>
+                        <button className={popupButtonPreset === 'preset6' ? 'selectedPresetBorder' : 'disabledPresetBorder'} onClick={() => setAttributes({ popupButtonPreset: 'preset6', popupButtonBGColor: '#fff', popupButtonColor: '#007cba', popupButtonBorderRadius: 30 })}>{presets.preset6}</button>
                       </div>
                     </div>
                   </>

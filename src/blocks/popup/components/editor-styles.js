@@ -240,7 +240,6 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-popup-button-trigger": {
       "color": popupButtonColor,
-      "background-color": popupButtonBGTransparent,
       ...buttonBGColor,
       "font-family": popupButtonTypographyFontFamily,
       "font-size": generateCSSUnit(popupButtonTypographyFontSize, "px"),

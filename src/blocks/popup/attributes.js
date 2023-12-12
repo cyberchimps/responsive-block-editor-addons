@@ -329,7 +329,7 @@ const attributes = {
     },
     popupButtonText: {
         type: "string",
-        default: "Edit Popup",
+        default: "Click Here",
     },
     popupButtonPaddingTop: {
         type: "string",
