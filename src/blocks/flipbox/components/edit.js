@@ -185,7 +185,7 @@ export default class Edit extends Component {
       }
     }
 
-    const formattingControls = ["bold", "italic", "strikethrough"];
+    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
     const transitionSpeedSec = transitionSpeed / 10;
 
     const flipboxTransition =
@@ -230,17 +230,19 @@ export default class Edit extends Component {
     return [
       // Show the block controls on focus
 
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <div className={classes}>
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <div key={`block-${block_id}`} className={classes}>
         {" "}
-        <div className={innerClasses}>
+        <div key={`block-main-${block_id}`} className={innerClasses}>
           {flipboxArray.map((test, index) => (
             <div
+            key={`flipbox-${index}`}
               className={classnames(
                 "wp-block-responsive-block-editor-addons-flip-box"
               )}
             >
               <div
+              key={`flipbox-inner-${index}`}
                 className={classnames(
                   "flip-box-inner",
                   flipStyleSelected,
@@ -248,10 +250,11 @@ export default class Edit extends Component {
                 )}
               >
                 <div
+              key={`flipbox-box-front-${index}`}
                   className={classnames("flip-box-front", flipStyleSelected)}
                 >
                   {showFrontIcon && (
-                    <div
+                    <div key={`flipbox-box-front-icon-${index}`}
                       className={classnames(
                         "wp-block-responsive-block-editor-addons-flip-box-dashicon-fronticon-wrap"
                       )}
@@ -266,6 +269,7 @@ export default class Edit extends Component {
                   )}
                   {showFrontTitle && (
                     <RichText
+                    key="front-title"
                       tagName="p"
                       className="wp-block-responsive-block-editor-addons-flip-box__title"
                       value={flipboxArray[index]["title"]}
@@ -286,12 +290,13 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ flipboxArray: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingControls}
                       
                     />
                   )}
                   {showFrontSubtitle && (
                     <RichText
+                    key="front-subtitle"
                       tagName="p"
                       className="wp-block-responsive-block-editor-addons-flip-box__subtitle"
                       value={flipboxArray[index]["subtitle"]}
@@ -312,12 +317,12 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ flipboxArray: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingControls}
                       
                     />
                   )}
                 </div>
-                <div className={classnames("flip-box-back", flipStyleSelected)}>
+                <div key={`flipbox-box-back-${index}`} className={classnames("flip-box-back", flipStyleSelected)}>
                   {showBackIcon && (
                     <div
                       className={classnames(
@@ -334,6 +339,7 @@ export default class Edit extends Component {
                   )}
                   {showBackTitle && (
                     <RichText
+                    key="backtitle"
                       tagName="p"
                       className="wp-block-responsive-block-editor-addons-flip-box__backtitle"
                       value={flipboxArray[index]["back_title"]}
@@ -354,12 +360,13 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ flipboxArray: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingControls}
                       
                     />
                   )}
                   {showBackSubtitle && (
                     <RichText
+                      key="back-subtitle"
                       tagName="p"
                       className="wp-block-responsive-block-editor-addons-flip-box__backsubtitle"
                       value={flipboxArray[index]["back_subtitle"]}
@@ -380,13 +387,14 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ flipboxArray: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingControls}
                       
                     />
                   )}
                   {showBackButton && (
                     <Fragment>
                       <RichText
+                      key="back-button"
                         tagName="p"
                         className={classnames(
                           "wp-block-responsive-block-editor-addons-flipbox-item__button res-button wp-block-button__link",
@@ -424,6 +432,7 @@ export default class Edit extends Component {
                       >
                         <Dashicon icon={"admin-links"} />
                         <URLInput
+                          key="url-input"
                           className="button-url"
                           value={flipboxArray[index]["back_buttonURL"]}
                           onChange={(value) => {

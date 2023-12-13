@@ -60,9 +60,9 @@ export default class Edit extends Component {
     const CustomTag = `${sectionTag}`;
 
     return [
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <Fragment>
-        <div
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <Fragment key="section-block-fragment">
+        <div key={`block-${block_id}`}
           className={classnames(
             this.props.className,
             "responsive-block-editor-addons-block-section-outer-wrap",
@@ -70,7 +70,7 @@ export default class Edit extends Component {
             backgroundType ? `background-type-${backgroundType}` : ""
           )}
         >
-          <CustomTag
+          <CustomTag key={`overlay-type-${overlayType}`}
             className={classnames(
               "responsive-section-wrap",
               "responsive-block-editor-addons-block-section",
@@ -79,7 +79,7 @@ export default class Edit extends Component {
             )}
           >
              {"video" == backgroundType && (
-              <div className="responsive-block-editor-addons-section__video-wrap">
+              <div key={`block-wrap-${block_id}`} className="responsive-block-editor-addons-section__video-wrap">
                 {backgroundVideo && (
                 <video autoplay loop muted playsinline>
                   <source src={backgroundVideo.url} type="video/mp4" />
@@ -87,7 +87,7 @@ export default class Edit extends Component {
                 )}
               </div>
             )}
-            <div className="responsive-section-inner-wrap">
+            <div key={`block-inner-wrap-${block_id}`} className="responsive-section-inner-wrap">
               <InnerBlocks templateLock={false} />
             </div>
           </CustomTag>

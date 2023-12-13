@@ -79,7 +79,6 @@ class LatestPostsBlock extends Component {
       equalHeight,
       buttonTarget,
     } = attributes;
-    setAttributes({ block_id: this.props.clientId });
     let imgopacity = opacity / 100;
     // Check if there are posts
     const hasPosts = Array.isArray(latestPosts) && latestPosts.length;

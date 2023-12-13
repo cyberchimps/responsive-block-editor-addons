@@ -200,12 +200,13 @@ class GalleryMasonryEdit extends Component {
     }
 
     return (
-      <Fragment>
+      <Fragment key="div-block" >
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <div className={className}>
           <div className={innerClasses}>
             <Masonry
+            key={`masonary-block-${gridSize}`}
               elementType={"ul"}
               className={masonryClasses}
               options={masonryOptions}
@@ -225,10 +226,12 @@ class GalleryMasonryEdit extends Component {
 
                 return (
                   <li
+                  key={`img-${index}`}
                     className="responsive-block-editor-addons-gallery--item"
-                    key={img.id || img.url}
+                    
                   >
                     <GalleryImage
+                    key={`img-${img.id}`}
                   caption={img.caption}
                   lightbox={lightbox}
                   url={img.url}

@@ -176,16 +176,17 @@ export default class Edit extends Component {
         {pricingList.map((test, index) => (
           <Fragment>
             <div
+              key={'resp-key-'+index}
               className={classnames(
                 "responsive-block-editior-addons-pricing-list-item-wrap",
                 `resp-desktop-column-${columns}`,
                 `image-position-${imagePosition}`
               )}
             >
-              <div className="responsive-block-editior-addons-pricing-list-item-content">
+              <div className="responsive-block-editior-addons-pricing-list-item-content" key={'resp-'+index}  >
                 {(imagePosition == "top" || imagePosition == "left") &&
                   pricingList[index]["image"] && (
-                    <div className="responsive-block-editior-addons-pricing-list-item-image-wrap">
+                    <div key={index} className="responsive-block-editior-addons-pricing-list-item-image-wrap">
                       <img
                         className={classnames(
                           "responsive-block-editior-addons-pricing-list-item-image"

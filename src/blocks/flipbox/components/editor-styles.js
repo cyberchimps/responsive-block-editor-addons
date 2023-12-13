@@ -216,7 +216,7 @@ function EditorStyles(props) {
     }
   }
 
-  const formattingControls = ["bold", "italic", "strikethrough"];
+  const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
   const transitionSpeedSec = transitionSpeed / 10;
 
   const flipboxTransition =

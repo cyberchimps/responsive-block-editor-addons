@@ -89,6 +89,9 @@ class Responsive_Block_Editor_Addons {
 		// Check the input value on review admin notice.
 		add_action( 'admin_init', array( $this, 'rbea_review_already_done' ), 5 );
 
+		add_action( 'wp_ajax_responsive_block_editor_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
+		add_action( 'wp_ajax_nopriv_responsive_block_editor_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
+
 		// Stores and Displays the blocks.
 		add_action( 'init', array( $this, 'responsive_block_editor_addons_blocks_display' ) );
 
@@ -530,6 +533,7 @@ class Responsive_Block_Editor_Addons {
 				'responsive_block_editor_ajax_nonce' => $responsive_block_editor_ajax_nonce,
 				'taxonomy_list'                      => $this->get_taxonomy_list(),
 				'home_url'                           => home_url(),
+				'cf7_forms'                          => $this->get_cf7_forms(),
 			)
 		);
 
@@ -1101,4 +1105,58 @@ class Responsive_Block_Editor_Addons {
 		wp_send_json_success();
 	}
 
+
+		/**
+		 * Function to integrate CF7 Forms.
+		 *
+		 * @since 1.10.0
+		 */
+	public function get_cf7_forms() {
+		$field_options = array();
+
+		if ( class_exists( 'WPCF7_ContactForm' ) ) {
+			$args             = array(
+				'post_type'      => 'wpcf7_contact_form',
+				'posts_per_page' => -1,
+			);
+			$forms            = get_posts( $args );
+			$field_options[0] = array(
+				'value' => -1,
+				'label' => __( 'Select Form', 'responsive-block-editor-addons' ),
+			);
+			if ( $forms ) {
+				foreach ( $forms as $form ) {
+					$field_options[] = array(
+						'value' => $form->ID,
+						'label' => $form->post_title,
+					);
+				}
+			}
+		}
+
+		if ( empty( $field_options ) ) {
+			$field_options = array(
+				'-1' => __( 'You have not added any Contact Form 7 yet.', 'responsive-block-editor-addons' ),
+			);
+		}
+		return $field_options;
+	}
+
+
+	/**
+	 * Renders the Contact Form 7 shortcode.
+	 *
+	 * @since 1.10.0
+	 */
+	public function cf7_shortcode() {
+
+		$id = intval( $_POST['formId'] );
+
+		if ( $id && 0 !== $id && -1 !== $id ) {
+			$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
+		} else {
+			$data['html'] = '<p>' . __( 'Please select a valid Contact Form 7.', 'responsive-block-editor-addons' ) . '</p>';
+		}
+		wp_send_json_success( $data );
+	}
 }

@@ -105,7 +105,7 @@ export default class Edit extends Component {
       }
     );
 
-    const formattingControls = ["bold", "italic", "strikethrough"];
+    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
 
     let alignStyle = "center";
     if ("left" == blockAlign) {
@@ -235,7 +235,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ featureGrid: data_copy });
                     }}
-                    formattingControls={formattingControls}
+                    allowedFormats={formattingControls}
                     
                   />
                 )}
@@ -256,7 +256,7 @@ export default class Edit extends Component {
                       data_copy[index] = new_content;
                       setAttributes({ featureGrid: data_copy });
                     }}
-                    formattingControls={formattingControls}
+                    allowedFormats={formattingControls}
                     
                   />
                 )}
@@ -285,7 +285,7 @@ export default class Edit extends Component {
                         data_copy[index] = new_content;
                         setAttributes({ featureGrid: data_copy });
                       }}
-                      formattingControls={formattingControls}
+                      allowedFormats={formattingControls}
                       
                     />
                     <form

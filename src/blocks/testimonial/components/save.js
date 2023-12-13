@@ -34,10 +34,11 @@ export default class Save extends Component {
       count,
       gutter,
       imageSize,
+      testimonialImgURL
     } = this.props.attributes;
 
     return (
-      <div
+      <div key={`div-block${block_id}`}
         className={classnames(
           "wp-block-responsive-block-editor-addons-testimonial-wrapper",
           "responsive-block-editor-addons-block-testimonial",
@@ -51,7 +52,7 @@ export default class Save extends Component {
         )}
       >
         {testimonialBlock.map((test, index) => (
-          <Testimonial {...this.props}>
+          <Testimonial key={`testimonial-${index}`} {...this.props}>
             <RichText.Content
               tagName="div"
               className="responsive-block-editor-addons-testimonial-text"

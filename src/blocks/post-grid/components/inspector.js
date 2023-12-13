@@ -195,11 +195,11 @@ export default class Inspector extends Component {
 
     // Section title tags
     const sectionTitleTags = [
-      { value: "h2", label: __("H2", "responsive-block-editor-addons") },
-      { value: "h3", label: __("H3", "responsive-block-editor-addons") },
-      { value: "h4", label: __("H4", "responsive-block-editor-addons") },
-      { value: "h5", label: __("H5", "responsive-block-editor-addons") },
-      { value: "h6", label: __("H6", "responsive-block-editor-addons") },
+      { key: 'h2', value: 'h2', label: __('H2', 'responsive-block-editor-addons') },
+      { key: 'h3', value: 'h3', label: __('H3', 'responsive-block-editor-addons') },
+      { key: 'h4', value: 'h4', label: __('H4', 'responsive-block-editor-addons') },
+      { key: 'h5', value: 'h5', label: __('H5', 'responsive-block-editor-addons') },
+      { key: 'h6', value: 'h6', label: __('H6', 'responsive-block-editor-addons') },
     ];
 
     // Check for posts
@@ -246,6 +246,7 @@ export default class Inspector extends Component {
         return categoryListOptions.push({
           value: categoriesList[item]["id"],
           label: categoriesList[item]["name"],
+          key:thisIndex
         });
       });
     }
@@ -418,6 +419,7 @@ export default class Inspector extends Component {
             >
               {"list" === attributes.postLayout && (
                 <ToggleControl
+                key="stackOnMobile"
                   label={__(
                     "Stack Image & Content on mobile",
                     "responsive-block-editor-addons"
@@ -431,6 +433,7 @@ export default class Inspector extends Component {
                 />
               )}
               <ToggleControl
+                  key="displaySectionTitle"
                 label={__(
                   "Display Section Title",
                   "responsive-block-editor-addons"
@@ -444,6 +447,7 @@ export default class Inspector extends Component {
               />
               {attributes.displaySectionTitle && (
                 <TextControl
+                key="sectionTitle"
                   label={__("Section Title", "responsive-block-editor-addons")}
                   type="text"
                   value={attributes.sectionTitle}
@@ -455,6 +459,7 @@ export default class Inspector extends Component {
                 />
               )}
               <ToggleControl
+                  key="displayPostImage"
                 label={__(
                   "Display Featured Image",
                   "responsive-block-editor-addons"
@@ -468,6 +473,7 @@ export default class Inspector extends Component {
               />
               {attributes.postLayout === 'list' && [
                 <TabPanel
+                key="imageHeightTabPanel"
                   className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                   activeClass="active-tab"
                   tabs={[
@@ -537,6 +543,8 @@ export default class Inspector extends Component {
               </TabPanel>
                   ,
                 <TabPanel
+                key="imageWidthTabPanel"
+
                   className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                   activeClass="active-tab"
                   tabs={[
@@ -607,6 +615,7 @@ export default class Inspector extends Component {
               ]}
               {attributes.displayPostImage && [
                 <SelectControl
+                key="imageSizeControl"
                   label={__("Image Size", "responsive-block-editor-addons")}
                   value={imageSizeValue()}
                   options={imageSizeOptions}
@@ -617,7 +626,8 @@ export default class Inspector extends Component {
                   }
                 />,
                 <SelectControl
-                  label={__("Image Position", "responsive-block-editor-addons")}
+                key="imagePositionControl"  
+                label={__("Image Position", "responsive-block-editor-addons")}
                   value={attributes.imagePosition}
                   options={[
                     {
@@ -636,6 +646,7 @@ export default class Inspector extends Component {
                   }
                 />,
                 <SelectControl
+                key="layoutControl"
                   label={__("Layout", "responsive-block-editor-addons")}
                   value={attributes.layout}
                   options={[
@@ -655,6 +666,7 @@ export default class Inspector extends Component {
                   }
                 />,
                 <RangeControl
+                key="imageBorderRadiusControl"
                   label={__("Image Border Radius", "responsive-block-editor-addons")}
                   value={attributes.imageBorderRadius}
                   onChange={(value) =>
@@ -667,6 +679,7 @@ export default class Inspector extends Component {
                 />,
               ]}
               <ToggleControl
+                  key="displayPostTitle"
                 label={__("Display Title", "responsive-block-editor-addons")}
                 checked={attributes.displayPostTitle}
                 onChange={() =>
@@ -677,6 +690,7 @@ export default class Inspector extends Component {
               />
               {isPost && (
                 <ToggleControl
+                key="displayPostAuthor"
                   label={__("Display Author", "responsive-block-editor-addons")}
                   checked={attributes.displayPostAuthor}
                   onChange={() =>
@@ -688,6 +702,7 @@ export default class Inspector extends Component {
               )}
               {isPost && (
                 <ToggleControl
+                key="displayPostDate"
                   label={__("Display Date", "responsive-block-editor-addons")}
                   checked={attributes.displayPostDate}
                   onChange={() =>
@@ -698,6 +713,7 @@ export default class Inspector extends Component {
                 />
               )}
               <ToggleControl
+                  key="displayPostExcerpt"
                 label={__("Display Excerpt", "responsive-block-editor-addons")}
                 checked={attributes.displayPostExcerpt}
                 onChange={() =>
@@ -708,6 +724,7 @@ export default class Inspector extends Component {
               />
               {attributes.displayPostExcerpt && (
                 <RangeControl
+                key="excerptLengthControl"
                   label={__("Excerpt Length", "responsive-block-editor-addons")}
                   value={attributes.excerptLength}
                   onChange={(value) => setAttributes({ excerptLength: value })}
@@ -716,6 +733,7 @@ export default class Inspector extends Component {
                 />
               )}
               <ToggleControl
+                  key="displayPostLink"
                 label={__(
                   "Display Continue Reading Link",
                   "responsive-block-editor-addons"
@@ -729,6 +747,7 @@ export default class Inspector extends Component {
               />
               {attributes.displayPostLink && (
                 <TextControl
+                key="readMoreTextControl"
                   label={__(
                     "Customize Continue Reading Text",
                     "responsive-block-editor-addons"
