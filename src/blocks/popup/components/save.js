@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import classnames from "classnames";
+import renderSVG from "../../../renderIcon";
 
 /**
  * WordPress dependencies
@@ -16,11 +17,14 @@ export default class Save extends Component {
 
   render() {
     const {
-      isPopupVariantSelected,
-      popupVariant,
       popupToggleCloseBtn,
       popupTrigger,
       popupTriggerDelay,
+      popupTriggerType,
+      popupTextTrigger,
+      popupIconTrigger,
+      popupImageTrigger,
+      popupButtonText,
       block_id,
       anchor,
     } = this.props.attributes;
@@ -34,8 +38,28 @@ export default class Save extends Component {
           `block-${block_id}`
         )}
       >
-        {popupTrigger && popupTrigger === 'click' &&
-          <button type="button" className="button button-primary responsive-block-editor-addons-popup-modal-trigger"> <span class="dashicons dashicons-external"></span> <p>{"Edit Popup"}</p></button>}
+
+        <div className="responsive-block-editor-addons-popup-trigger-wrap">
+
+          {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'button' &&
+            <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger"> {popupButtonText}
+            </button>
+          }
+
+          {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'text' &&
+            <p className="responsive-block-editor-addons-popup-text-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-modal-trigger">{popupTextTrigger}</p>
+          }
+
+          {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'icon' &&
+            <div className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-icon-trigger">
+              {renderSVG(popupIconTrigger)}
+            </div>
+          }
+
+          {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'image' && popupImageTrigger != undefined && <img className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-image-trigger" src={popupImageTrigger} alt="popupImageTrigger" />}
+
+        </div>
+
         <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'}>
           <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay"></div>
           <div className="responsive-block-editor-addons-popup-modal-content">
@@ -50,7 +74,6 @@ export default class Save extends Component {
             </div>
           </div>
         </div>
-
       </div>,
     ];
   }

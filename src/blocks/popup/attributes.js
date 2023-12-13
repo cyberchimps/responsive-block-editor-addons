@@ -9,10 +9,6 @@ const attributes = {
     popupVariant: {
         type: "string",
     },
-    popupInitiateBtn: {
-        type: "boolean",
-        default: false,
-    },
     popupContainerWidth: {
         type: "number",
         default: 600,

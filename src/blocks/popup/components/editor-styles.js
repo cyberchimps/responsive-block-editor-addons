@@ -45,7 +45,6 @@ function EditorStyles(props) {
     popupTriggerAlignMobile,
     popupButtonColor,
     popupButtonBGState,
-    popupButtonBGTransparent,
     popupButtonBGColor,
     popupButtonBGGradient,
     popupButtonTypographyFontFamily,
@@ -345,7 +344,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(popupTextTypographyFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-popup-image-trigger": {
-      "width": generateCSSUnit(popupImageTriggerWidthMobile, "px"),
+      "width": generateCSSUnit(popupImageTriggerWidthTablet, "px"),
     },
     " .responsive-block-editor-addons-popup-modal-content": {
       "width": generateCSSUnit(popupContainerWidthTablet, "px"),
