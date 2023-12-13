@@ -255,6 +255,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
+				'key'      => 'popup',
+				'title'    => 'Popup',
+				'docs'     => '',
+				'demo'     => '',
+				'category' => 'content',
+				'status'   => 1,
+			),
+			array(
 				'key'      => 'portfolio',
 				'title'    => 'Portfolio',
 				'docs'     => 'https://cyberchimps.com/blocks/docs/portfolio/',
