@@ -126,10 +126,8 @@ export default class Inspector extends Component {
         popupButtonHoverColor,
         popupButtonBGHoverColor,
         popupButtonBGState,
-        popupButtonBGTransparent,
         popupButtonBGGradient,
         popupButtonBGHoverState,
-        popupButtonHoverBGTransparent,
         popupButtonHoverBGGradient,
         popupButtonTypographyFontFamily,
         popupButtonTypographyFontSize,
@@ -510,7 +508,7 @@ export default class Inspector extends Component {
 
                 {popupTrigger === 'load' &&
                   <RangeControl
-                    label={__("Trigger Delay", "responsive-block-editor-addons")}
+                    label={__("Trigger Delay (in seconds)", "responsive-block-editor-addons")}
                     value={popupTriggerDelay}
                     onChange={(value) =>
                       setAttributes({
@@ -546,7 +544,7 @@ export default class Inspector extends Component {
 
                     <div className="responsive-block-editor-addons-popup-div-flex">
                       <Text variant="title.small" as="h3">{__("Select Preset", "responsive-block-editor-addons")}</Text>
-                      <Button onClick={() => setAttributes({ popupButtonPreset: '' })} size="small"><Dashicon icon="image-rotate" className={popupButtonPreset === '' ? 'image-rotate-reset' : ''} /></Button>
+                      <Button style={popupButtonPreset === '' ? {cursor: 'auto'} : {cursor: 'pointer'}} onClick={() => setAttributes({ popupButtonPreset: '', popupButtonBGColor: '#10659C', popupButtonColor: '#fff', popupButtonBorderRadius: 0 })} size="small"><Dashicon icon="image-rotate" className={popupButtonPreset === '' ? 'image-rotate-reset' : ''} /></Button>
                     </div>
                     <div className="responsive-block-editor-addons-popup-button-preset-wrap">
                       <div className="responsive-block-editor-addons-popup-button-preset">
@@ -762,7 +760,7 @@ export default class Inspector extends Component {
                       <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Type", "responsive-block-editor-addons")}</Text>
                       <div className="responsive-block-editor-addons-popup-button-group-tab">
                         <ButtonGroup>
-                          <Button onClick={() => setAttributes({ popupButtonBGState: 'transparent', popupButtonBGTransparent: 'transparent' })} variant={popupButtonBGState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
+                          <Button onClick={() => setAttributes({ popupButtonBGState: 'transparent' })} variant={popupButtonBGState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
                           <Button onClick={() => setAttributes({ popupButtonBGState: 'solid' })} variant={popupButtonBGState === 'solid' ? 'primary' : 'secondary'}>{__("Solid", "responsive-block-editor-addons")}</Button>
                           <Button onClick={() => setAttributes({ popupButtonBGState: 'gradient' })} variant={popupButtonBGState === 'gradient' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
                         </ButtonGroup>
@@ -818,7 +816,7 @@ export default class Inspector extends Component {
                       <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Hover Background Type", "responsive-block-editor-addons")}</Text>
                       <div className="responsive-block-editor-addons-popup-button-group-tab">
                         <ButtonGroup>
-                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'transparent', popupButtonBGTransparent: 'transparent' })} variant={popupButtonBGHoverState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
+                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'transparent' })} variant={popupButtonBGHoverState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
                           <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'solid' })} variant={popupButtonBGHoverState === 'solid' ? 'primary' : 'secondary'}>{__("Solid", "responsive-block-editor-addons")}</Button>
                           <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'gradient' })} variant={popupButtonBGHoverState === 'gradient' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
                         </ButtonGroup>

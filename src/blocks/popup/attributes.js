@@ -196,10 +196,6 @@ const attributes = {
         type: "string",
         default: "#10659C",
     },
-    popupButtonBGTransparent: {
-        type: "string",
-        default: "transparent",
-    },
     popupButtonBGGradient: {
         type: "string",
         default: "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
@@ -211,10 +207,6 @@ const attributes = {
     popupButtonBGHoverColor: {
         type: "string",
         default: "#10659C",
-    },
-    popupButtonHoverBGTransparent: {
-        type: "string",
-        default: "transparent",
     },
     popupButtonHoverBGGradient: {
         type: "string",
