@@ -311,6 +311,9 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignMobile,
     },
+    " .responsive-block-editor-addons-popup-button-trigger": {
+      "font-size": generateCSSUnit(popupButtonTypographyFontSizeMobile, "px"),
+    },
     " .responsive-block-editor-addons-popup-text-trigger": {
       "font-size": generateCSSUnit(popupTextTypographyFontSizeMobile, "px"),
     },
@@ -325,7 +328,6 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(popupPaddingBottomMobile, "px"),
       "padding-left": generateCSSUnit(popupPaddingLeftMobile, "px"),
       ...tablet,
-      "font-size": generateCSSUnit(popupButtonTypographyFontSizeMobile, "px"),
       "padding-top": generateCSSUnit(popupButtonPaddingTopMobile, "px"),
       "padding-bottom": generateCSSUnit(popupButtonPaddingBottomMobile, "px"),
       "padding-left": generateCSSUnit(popupButtonPaddingLeftMobile, "px"),
@@ -339,6 +341,9 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignTablet,
+    },
+    " .responsive-block-editor-addons-popup-button-trigger": {
+      "font-size": generateCSSUnit(popupButtonTypographyFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-popup-text-trigger": {
       "font-size": generateCSSUnit(popupTextTypographyFontSizeTablet, "px"),
@@ -354,7 +359,6 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(popupPaddingBottomTablet, "px"),
       "padding-left": generateCSSUnit(popupPaddingLeftTablet, "px"),
       ...mobile,
-      "font-size": generateCSSUnit(popupButtonTypographyFontSizeTablet, "px"),
       "padding-top": generateCSSUnit(popupButtonPaddingTopTablet, "px"),
       "padding-bottom": generateCSSUnit(popupButtonPaddingBottomTablet, "px"),
       "padding-left": generateCSSUnit(popupButtonPaddingLeftTablet, "px"),

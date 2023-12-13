@@ -14349,12 +14349,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			[$desktop, $tablet, $mobile] = array_values($popupScreenPositions);
 
 			$selectors        = array(
-				''                                                            => array(),
-				' .responsive-block-editor-addons-popup-trigger-wrap'         => array(
+				''                                                                            => array(),
+				' .responsive-block-editor-addons-popup-trigger-wrap'                         => array(
 				    'justify-content' => $attr['popupTriggerAlign'],
 				),
-				' .responsive-block-editor-addons-popup-button-trigger'       => array(
-					'color' =>  $attr['popupButtonColor'],
+				' .responsive-block-editor-addons-popup-button-trigger'                       => array(
+					'color'            =>  $attr['popupButtonColor'],
 					'background-color' => $attr['popupButtonBGState'] === 'transparent' ? 'transparent' : ( $attr['popupButtonBGState'] === 'solid' ? $attr['popupButtonBGColor'] : 'unset' ),
 					'background-image' => $attr['popupButtonBGState'] === 'gradient' ? $attr['popupButtonBGGradient'] : 'unset',
 					'font-family'      => $attr['popupButtonTypographyFontFamily'],
@@ -14371,13 +14371,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-color'     => $attr['popupButtonBorderColor'],
 					'border-radius'    => self::get_css_value( $attr['popupButtonBorderRadius'], 'px' ),
 				),
-				' .responsive-block-editor-addons-popup-button-trigger:hover' => array(
+				' .responsive-block-editor-addons-popup-button-trigger:hover'                 => array(
 				    'color'            => $attr['popupButtonHoverColor'],
 					'background-color' => $attr['popupButtonBGHoverState'] === 'transparent' ? 'transparent' : ( $attr['popupButtonBGHoverState'] === 'solid' ? $attr['popupButtonBGHoverColor'] : 'unset' ),
 					'background-image' => $attr['popupButtonBGHoverState'] === 'gradient' ? $attr['popupButtonHoverBGGradient'] : 'unset',
 					'border-color'     => $attr['popupButtonBorderHoverColor'],
 				),
-				' .responsive-block-editor-addons-popup-text-trigger'         => array(
+				' .responsive-block-editor-addons-popup-text-trigger'                         => array(
 				    'color'          => $attr['popupTextColor'],
 				    'font-family'    => $attr['popupTextTypographyFontFamily'],
 				    'font-size'      => self::get_css_value( $attr['popupTextTypographyFontSize'], 'px' ),
@@ -14385,18 +14385,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'line-height'    => $attr['popupTextTypographyLineHeight'],
 				    'letter-spacing' => self::get_css_value( $attr['popupTextTypographyLetterSpacing'], 'px' ),
 				),
-				' .responsive-block-editor-addons-popup-icon-trigger svg'     => array(
+				' .responsive-block-editor-addons-popup-icon-trigger svg'                     => array(
 				    'fill'        => $attr['popupIconTriggerColor'],
 					'width'       => self::get_css_value( $attr['popupIconTriggerSize'], 'px' ),
 					'height'      => self::get_css_value( $attr['popupIconTriggerSize'], 'px' ),
 					'line-height' => self::get_css_value( $attr['popupIconTriggerSize'], 'px' ),
 					'font-size'   => self::get_css_value( $attr['popupIconTriggerSize'], 'px' ),
 				),
-				' .responsive-block-editor-addons-popup-image-trigger'        => array(
+				' .responsive-block-editor-addons-popup-image-trigger'                        => array(
 				    'width'         => self::get_css_value( $attr['popupImageTriggerWidth'], 'px'),
       				'border-radius' => self::get_css_value( $attr['popupImageTriggerBorderRadius'], 'px'),
 				),
-				' .responsive-block-editor-addons-popup-modal-content'        => array(
+				' .responsive-block-editor-addons-popup-modal-content'                        => array(
 					'width'            => self::get_css_value( $attr['popupContainerWidth'], 'px' ),
 					'height'           => 'auto' !== $attr['popupHeightType'] ? self::get_css_value( $attr['popupHeightCustom'], "px" ) : 'auto',
 					'padding-top'      => self::get_css_value( $attr['popupPaddingTop'], 'px' ),
@@ -14414,29 +14414,32 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-radius'    => self::get_css_value( $attr['popupBlockBorderRadius'], 'px' ),
 					'border-color'     => $attr['popupBlockBorderColor'],
 				),
-				' .responsive-block-editor-addons-popup-modal-header'         => array(
+				' .responsive-block-editor-addons-popup-modal-header'                         => array(
 					'justify-content' => $attr['popupToggleCloseBtnPosition'],
 				),
 				' .responsive-block-editor-addons-popup-modal-header .dashicons.dashicons-no' => array(
 					'color' => $attr['popupCloseBtnColor'],
 				),
-				' .responsive-block-editor-addons-popup-modal-wrap-overlay'   => array(
+				' .responsive-block-editor-addons-popup-modal-wrap-overlay'                   => array(
 					'background-color' => $attr['popupOverlayColor'],
 					'opacity'          => (int) $attr['popupOverlayOpacity'] / 100,
 				),
 			);
 			$mobile_selectors = array(
-				''                                                     => array(),
-				' .responsive-block-editor-addons-popup-trigger-wrap'  => array(
+				''                                                      => array(),
+				' .responsive-block-editor-addons-popup-trigger-wrap'   => array(
 					'justify-content' => $attr['popupTriggerAlignMobile'],
 				),
-				' .responsive-block-editor-addons-popup-text-trigger'  => array(
+				' .responsive-block-editor-addons-popup-button-trigger' => array(
+					'font-size' => self::get_css_value( $attr['popupButtonTypographyFontSizeMobile'], 'px'),
+				),
+				' .responsive-block-editor-addons-popup-text-trigger'   => array(
 					'font-size' => self::get_css_value( $attr['popupTextTypographyFontSizeMobile'], 'px'),
 				),
-				' .responsive-block-editor-addons-popup-image-trigger' => array(
+				' .responsive-block-editor-addons-popup-image-trigger'  => array(
 					'width' => self::get_css_value( $attr['popupImageTriggerWidthMobile'], 'px'),
 				),
-				' .responsive-block-editor-addons-popup-modal-content' => array(
+				' .responsive-block-editor-addons-popup-modal-content'  => array(
 					'width'          => self::get_css_value( $attr['popupContainerWidthMobile'], 'px' ),
 					'height'         => 'auto' !== $attr['popupHeightType'] ? self::get_css_value( $attr['popupHeightCustomMobile'], 'px' ) : 'auto',
 					'padding-top'    => self::get_css_value( $attr['popupPaddingTopMobile'], 'px' ),
@@ -14451,17 +14454,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
-				''                                                     => array(),
-				' .responsive-block-editor-addons-popup-trigger-wrap'  => array(
+				''                                                      => array(),
+				' .responsive-block-editor-addons-popup-trigger-wrap'   => array(
 					'justify-content' => $attr['popupTriggerAlignTablet'],
 				),
-				' .responsive-block-editor-addons-popup-text-trigger'  => array(
+				' .responsive-block-editor-addons-popup-button-trigger' => array(
+					'font-size' => self::get_css_value( $attr['popupButtonTypographyFontSizeTablet'], 'px'),
+				),
+				' .responsive-block-editor-addons-popup-text-trigger'   => array(
 					'font-size' => self::get_css_value( $attr['popupTextTypographyFontSizeTablet'], 'px'),
 				),
-				' .responsive-block-editor-addons-popup-image-trigger' => array(
+				' .responsive-block-editor-addons-popup-image-trigger'  => array(
 					'width' => self::get_css_value( $attr['popupImageTriggerWidthTablet'], 'px'),
 				),
-				' .responsive-block-editor-addons-popup-modal-content' => array(
+				' .responsive-block-editor-addons-popup-modal-content'  => array(
 					'width'          => self::get_css_value( $attr['popupContainerWidthTablet'], 'px' ),
 					'height'         => 'auto' !== $attr['popupHeightType'] ? self::get_css_value( $attr['popupHeightCustomTablet'], 'px' ) : 'auto',
 					'padding-top'    => self::get_css_value( $attr['popupPaddingTopTablet'], 'px' ),
