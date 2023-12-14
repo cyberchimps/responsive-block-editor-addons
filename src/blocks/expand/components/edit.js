@@ -70,9 +70,9 @@ export default class Edit extends Component {
         />
       </BlockControls>,
 
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <Fragment>
-        <div
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <Fragment key={`fragment-expand-${block_id}`} >
+        <div key={`expand-div-${block_id}`}
           className={classnames(
             this.props.className, 
             "responsive-block-editor-addons-block-expand",

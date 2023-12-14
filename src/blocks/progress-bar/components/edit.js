@@ -135,8 +135,8 @@ export default class Edit extends Component {
 			<BlockControls key="controls">
 			</BlockControls>,
 			// Show the block controls on focus
-			<Inspector {...{ setAttributes, ...this.props }} />,
-			<div className={classnames(
+			<Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+			<div key={`progress-bar-${block_id}`} className={classnames(
 				this.props.className,
 				"responsive-block-editor-addons-block-progress-bar",
 				`block-${block_id}`,

@@ -142,8 +142,8 @@ export default class Edit extends Component {
         />
       </BlockControls>,
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <div className={classnames(
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <div key={`contact-form-${block_id}`} className={classnames(
         this.props.className,
         "responsive-block-editor-addons-block-contact-form-7-styler",
         `block-${block_id}`
@@ -161,9 +161,9 @@ export default class Edit extends Component {
           </Placeholder>
 
         ) : (
-          <Fragment>
+          <Fragment key={`contact-form-fragment-${block_id}`} >
 
-            <div className="form-container">
+            <div className="form-container" >
 
               <div className="form">
 
