@@ -313,6 +313,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-popup-button-trigger": {
       "font-size": generateCSSUnit(popupButtonTypographyFontSizeMobile, "px"),
+      "padding-top": generateCSSUnit(popupButtonPaddingTopMobile, "px"),
+      "padding-bottom": generateCSSUnit(popupButtonPaddingBottomMobile, "px"),
+      "padding-left": generateCSSUnit(popupButtonPaddingLeftMobile, "px"),
+      "padding-right": generateCSSUnit(popupButtonPaddingRightMobile, "px"),
     },
     " .responsive-block-editor-addons-popup-text-trigger": {
       "font-size": generateCSSUnit(popupTextTypographyFontSizeMobile, "px"),
@@ -328,10 +332,6 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(popupPaddingBottomMobile, "px"),
       "padding-left": generateCSSUnit(popupPaddingLeftMobile, "px"),
       ...tablet,
-      "padding-top": generateCSSUnit(popupButtonPaddingTopMobile, "px"),
-      "padding-bottom": generateCSSUnit(popupButtonPaddingBottomMobile, "px"),
-      "padding-left": generateCSSUnit(popupButtonPaddingLeftMobile, "px"),
-      "padding-right": generateCSSUnit(popupButtonPaddingRightMobile, "px"),
     },
   };
 
@@ -344,6 +344,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-popup-button-trigger": {
       "font-size": generateCSSUnit(popupButtonTypographyFontSizeTablet, "px"),
+      "padding-top": generateCSSUnit(popupButtonPaddingTopTablet, "px"),
+      "padding-bottom": generateCSSUnit(popupButtonPaddingBottomTablet, "px"),
+      "padding-left": generateCSSUnit(popupButtonPaddingLeftTablet, "px"),
+      "padding-right": generateCSSUnit(popupButtonPaddingRightTablet, "px"),
     },
     " .responsive-block-editor-addons-popup-text-trigger": {
       "font-size": generateCSSUnit(popupTextTypographyFontSizeTablet, "px"),
@@ -359,10 +363,6 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(popupPaddingBottomTablet, "px"),
       "padding-left": generateCSSUnit(popupPaddingLeftTablet, "px"),
       ...mobile,
-      "padding-top": generateCSSUnit(popupButtonPaddingTopTablet, "px"),
-      "padding-bottom": generateCSSUnit(popupButtonPaddingBottomTablet, "px"),
-      "padding-left": generateCSSUnit(popupButtonPaddingLeftTablet, "px"),
-      "padding-right": generateCSSUnit(popupButtonPaddingRightTablet, "px"),
     },
   };
 

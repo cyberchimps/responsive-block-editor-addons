@@ -14431,7 +14431,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'justify-content' => $attr['popupTriggerAlignMobile'],
 				),
 				' .responsive-block-editor-addons-popup-button-trigger' => array(
-					'font-size' => self::get_css_value( $attr['popupButtonTypographyFontSizeMobile'], 'px'),
+					'font-size'      => self::get_css_value( $attr['popupButtonTypographyFontSizeMobile'], 'px'),
+					'padding-top'    => self::get_css_value( $attr['popupButtonPaddingTopMobile'], 'px'),
+					'padding-bottom' => self::get_css_value( $attr['popupButtonPaddingBottomMobile'], 'px'),
+					'padding-left'   => self::get_css_value( $attr['popupButtonPaddingLeftMobile'], 'px'),
+					'padding-right'  => self::get_css_value( $attr['popupButtonPaddingRightMobile'], 'px'),
 				),
 				' .responsive-block-editor-addons-popup-text-trigger'   => array(
 					'font-size' => self::get_css_value( $attr['popupTextTypographyFontSizeMobile'], 'px'),
@@ -14460,6 +14464,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-popup-button-trigger' => array(
 					'font-size' => self::get_css_value( $attr['popupButtonTypographyFontSizeTablet'], 'px'),
+					'padding-top'    => self::get_css_value( $attr['popupButtonPaddingTopTablet'], 'px'),
+					'padding-bottom' => self::get_css_value( $attr['popupButtonPaddingBottomTablet'], 'px'),
+					'padding-left'   => self::get_css_value( $attr['popupButtonPaddingLeftTablet'], 'px'),
+					'padding-right'  => self::get_css_value( $attr['popupButtonPaddingRightTablet'], 'px'),
 				),
 				' .responsive-block-editor-addons-popup-text-trigger'   => array(
 					'font-size' => self::get_css_value( $attr['popupTextTypographyFontSizeTablet'], 'px'),
