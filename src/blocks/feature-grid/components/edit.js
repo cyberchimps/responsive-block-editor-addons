@@ -125,15 +125,15 @@ export default class Edit extends Component {
       </BlockControls>,
 
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <div className={classnames(classes, "image-shape-" + imageShape)}>
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <div key={`feature-grid-${block_id}`} className={classnames(classes, "image-shape-" + imageShape)}>
         {titleFontFamily && loadGoogleFont(titleFontFamily)}
         {descFontFamily && loadGoogleFont(descFontFamily)}
         {ctaFontFamily && loadGoogleFont(ctaFontFamily)}
         <div className={innerClasses}>
           {featureGrid.map((test, index) => (
-            <Fragment>
-              <div
+            <Fragment key={`feature-grid-fragment-${index}`} >
+              <div key={`feature-grid-div-${index}`}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-feature-grid-item",
                     backgroundType == "image" ? "background-type-image" : ""

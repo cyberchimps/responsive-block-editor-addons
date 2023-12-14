@@ -114,9 +114,9 @@ export default class Edit extends Component {
     } = this.props;
 
     return [
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <Fragment>
-        <div
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <Fragment key={`fragment-socail-share-${block_id}`} >
+        <div key={`socail-share-${block_id}`}
           className={classnames(
             this.props.className,
             "responsive-block-editor-addons-block-social-share",
@@ -283,7 +283,7 @@ export default class Edit extends Component {
                 onClick={() => this.insertIconHandler()}
                 className="rbea-add-icon-btn"
                 role="button"
-                areaLabel={__("Add new icon", "responsive-block-editor-addons")}
+                aria-label={__("Add new icon", "responsive-block-editor-addons")}
               >
                 {renderSVG("plus")}
               </span>

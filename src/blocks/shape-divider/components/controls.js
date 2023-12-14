@@ -33,12 +33,12 @@ class Controls extends Component {
     ];
 
     return (
-      <Fragment>
+      <Fragment key="shape-divider-control-fragment" >
         <BlockControls>
           <ToolbarGroup>
-            {toolbarControls.map((current) => {
+            {toolbarControls.map((current,index) => {
               return (
-              <ToolbarButton
+              <ToolbarButton key={`shape-divider-${index}`}
                 icon={current.icon}
                 title={current.title}
                 isActive={current.isActive}

@@ -63,8 +63,8 @@ export default class Save extends Component {
       >
         <div className={innerClasses}>
           {featureGrid.map((test, index) => (
-            <Fragment>
-              <div
+            <Fragment key={`feature-grid-fragment-${block_id}`} >
+              <div key={`feature-grid-div-${block_id}`}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-feature-grid-item",
                   `responsive-block-editor-addons-${blockId}`,

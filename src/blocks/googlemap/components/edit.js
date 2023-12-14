@@ -78,13 +78,13 @@ export default class Edit extends Component {
 
     return [
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
-      <Googlemap {...this.props}>
-        {isSelected && <Controls {...this.props} />}
+      <Googlemap key={`googlemap-${block_id}`} {...this.props}>
+        {isSelected && <Controls key={`googlemap-controls-${block_id}`} {...this.props} />}
         {pinned ? (
-          <Fragment>
+          <Fragment key={`fragment-googlemap-${block_id}`} >
             <div className="responsive-block-editor-addons-block-googlemap-external-element" />
             <div
               className={classnames(
