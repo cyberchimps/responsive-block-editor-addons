@@ -9,7 +9,7 @@ Stable tag: 1.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-40+ creative blocks to create rich content layouts in the Gutenberg editor.
+50+ creative blocks to create rich content layouts in the Gutenberg editor.
 Use professional starter block patterns & templates to create websites within minutes.
 
 == Description ==
@@ -66,6 +66,8 @@ Check out our customizable, feature rich WordPress blocks that'll help you desig
 - [Table of Contents](https://cyberchimps.com/blocks/table-of-content/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): This block allows access to large contents of the post/page through the heading of the contents. This makes it easier for visitors to directly go to the specific section on the page or the post.
 - [Icon-List](https://cyberchimps.com/blocks/icon-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks) : Create impressive lists on your website. Design your own styled lists. Pick your favorite icons or images to highlight items. Use this to create checklists, feature lists, or any other items on your pages.
 - [Shape-Divider](https://cyberchimps.com/blocks/shape-divider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): The Shape-Divider Block allows you to create a visually beautiful transition between your content with an optional divider. Add shapes like Wavy, Hills, Angled, Sloped, etc., with one click.
+- [Contact form 7 styler](https://cyberchimps.com/blocks/contact-form-7-styler/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocksl): This block helps you customize the Contact form 7 plugin’s form styling like colors, backgrounds, and typography.
+- [Image Block](https://cyberchimps.com/blocks/image-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocksl): With the Responsive blocks image block, you can add nice-looking images to your website with additional design settings.
 
 **Animation Blocks**
 
@@ -144,7 +146,7 @@ No, you’re not required to learn any coding to use these blocks. They are easy
 = 3. Are Responsive Gutenberg Blocks Free? =
 Yes, Responsive Gutenberg Blocks are completely free to use.
 = 4. Do you have a live website demo? =
-Yes, we have live demos of the blocks. [Check out block demos here](https://cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=faqsection). The Responsive Blocks - WordPress Gutenberg Blocks gives you free access to over 40 blocks which you can add to your WordPress website and create any kind of pages you want.
+Yes, we have live demos of the blocks. [Check out block demos here](https://cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=faqsection). The Responsive Blocks - WordPress Gutenberg Blocks gives you free access to over 50 blocks which you can add to your WordPress website and create any kind of pages you want.
 = 5. What themes can I use with Responsive Gutenberg Blocks ? =
 You can use any theme that you want with this plugin.
 
