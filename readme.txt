@@ -111,6 +111,7 @@ Check out our customizable, feature rich WordPress blocks that'll help you desig
 - [Social Share](https://cyberchimps.com/blocks/social-share/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Social share block allows you to add modern social media icons for all popular networks and link them to your brand or personal accounts.
 
 **Timeline Blocks**
+
 - [Count up](https://cyberchimps.com/blocks/count-up/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Show animated statistics in a Count Up block. You can display facts and figures attractively with animated counters. The counter will count up to your designated number when the page is visited.
 - [Count down](https://cyberchimps.com/blocks/countdown/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Countdown block allows you to add countdowns to your page with customizable styles in an attractive way.
 - [Content Timeline](https://cyberchimps.com/blocks/content-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Use the Gutenberg Content Timeline Block to create visual flowcharts, vertical timelines, and event layouts.
