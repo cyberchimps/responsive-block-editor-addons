@@ -352,7 +352,7 @@ class Responsive_Block_Editor_Addons {
 			'manage_options',
 			'responsive_block_editor_addons',
 			array( $this, 'responsive_block_editor_addons_getting_started' ),
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/responsive-block-editor-addons-menu-icon.png',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/responsive-block-editor-addons-menu-icon.svg',
 			59
 		);
 
