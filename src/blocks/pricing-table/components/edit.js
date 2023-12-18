@@ -174,8 +174,8 @@ export default class Edit extends Component {
       </BlockControls>,
 
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <div className={classnames(classes, "image-shape-" + imageShape)}>
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <div key={`image-shape-${block_id}`} className={classnames(classes, "image-shape-" + imageShape)}>
         {titleFontFamily && loadGoogleFont(titleFontFamily)}
         {amountFontFamily && loadGoogleFont(amountFontFamily)}
         {prefixFontFamily && loadGoogleFont(prefixFontFamily)}
@@ -195,9 +195,9 @@ export default class Edit extends Component {
         </div>
         <div key="pricing-table-block" className={innerClasses}>
           {pricingTable.map((test, index) => (
-            <Fragment>
+            <Fragment key={`fragment-pricing-table-${index}`} >
               <div
-              key={index}
+              key={`pricning-table-item-${index}`}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-pricing-table-item",
                   backgroundType == "image" ? "background-type-image" : ""

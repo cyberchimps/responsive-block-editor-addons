@@ -114,7 +114,6 @@ export default class Edit extends Component {
       layoverHeadingFontFamily
     } = attributes;
     const {showUrlInput, isDropdownOpen} = this.state;
-    this.props.setAttributes({block_id: this.props.clientId});
     return (
       <Fragment>
         { imageUrl !== "" && <BlockControls style={{ borderRight: "1px solid" }}>

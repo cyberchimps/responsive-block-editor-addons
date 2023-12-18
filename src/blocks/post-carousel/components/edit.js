@@ -88,8 +88,8 @@ class LatestPostsBlock extends Component {
 
     if (!hasPosts) {
       return (
-        <Fragment>
-          <Inspector {...{ setAttributes, ...this.props }} />
+        <Fragment key="fragment-post-carousel"  >
+          <Inspector key="inspector" {...{ setAttributes, ...this.props }} />
           <Placeholder
             icon="admin-post"
             label={__("Post Carousel", "responsive-block-editor-addons")}
@@ -256,7 +256,7 @@ class LatestPostsBlock extends Component {
             {ctaFontFamily && loadGoogleFont(ctaFontFamily)}
             <Slider {...settings}>
               {displayPosts.map((post, index) => (
-                <div>
+                <div key={post.id} >
                   <div
                     className={classnames(
                       "responsive-block-editor-addons-post-carousel-inner",
@@ -376,7 +376,7 @@ class LatestPostsBlock extends Component {
                             <a
                               className="responsive-block-editor-addons-block-post-carousel-more-link responsive-block-editor-addons-text-link"
                               href={post.link}
-                              target={buttonTarget}
+                              target={buttonTarget.toString()}
                               rel="bookmark"
                             >
                               {readMoreText}

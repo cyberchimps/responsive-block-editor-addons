@@ -124,13 +124,13 @@ class RBEATaxonomyList extends Component {
         } else if ("list" == layout) {
             var Tag = titleTag ? titleTag : "div";
         }
-
+        
         return (
             <Fragment>
 
                 <InspectorControls></InspectorControls>
-                <Inspector {...{ setAttributes, ...this.props }} />
-                <div
+                <Inspector key="inspector" {...{ setAttributes, ...this.props }} />
+                <div key={`rbea-taxonomy-${block_id}`}
                     className={classnames(
                         this.props.className,
                         "responsive-block-editor-addons-block-taxonomy-list",
@@ -143,7 +143,7 @@ class RBEATaxonomyList extends Component {
                     {"grid" === layout && (
                         <div className="responsive-block-editor-addons-block-grid">
                             {categoriesList.map((p, index) =>
-                                <div className="responsive-block-editor-addons-block-box">
+                                <div key={`rbea-taxonomy-block-${index}`} className="responsive-block-editor-addons-block-box">
                                     <a className="responsive-block-editor-addons-block-link" href={p.link}>
                                         <Tag className="responsive-block-editor-addons-block-title" dangerouslySetInnerHTML={{ __html: p.name }}></Tag>
                                         {showPostCount && <div className="responsive-block-editor-addons-block-count">
@@ -158,7 +158,7 @@ class RBEATaxonomyList extends Component {
                         <div className="responsive-block-editor-addons-block-list">
                             <ul className="responsive-block-editor-addons-block-list-wrap">
                                 {categoriesList.map((p, index) =>
-                                    <li key={index} className="responsive-block-editor-addons-block-list-item">
+                                    <li key={`rbea-taxonomy-${index}`} className="responsive-block-editor-addons-block-list-item">
                                         <Tag className="responsive-block-editor-addons-block-link-wrap">
                                             <a className="responsive-block-editor-addons-block-link" href={p.link}>
                                                 <div className="responsive-block-editor-addons-block-link-name" dangerouslySetInnerHTML={{ __html: p.name }}></div>

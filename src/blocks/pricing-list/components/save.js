@@ -38,8 +38,8 @@ export default class Save extends Component {
         )}
       >
         {pricingList.map((test, index) => (
-          <Fragment>
-            <div
+          <Fragment key={`fragment-pricing-list-${index}`} >
+            <div key={`pricning-table-list-${index}`}
               className={classnames(
                 "responsive-block-editior-addons-pricing-list-item-wrap",
                 `resp-desktop-column-${columns}`,
