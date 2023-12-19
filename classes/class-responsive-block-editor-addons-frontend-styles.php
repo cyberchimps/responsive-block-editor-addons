@@ -14542,7 +14542,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'popupBgColor'                        => "#fff",
 				'popupCloseBtnColor'                  => "#000",
 				'popupOverlayColor'                   => "#10659C",
-				'popupOverlayOpacity'                 => 95,
+				'popupOverlayOpacity'                 => 30,
 				'popupBlockBorderStyle'               => "solid",
 				'popupBlockBorderWidth'               => 1,
 				'popupBlockBorderRadius'              => 2,

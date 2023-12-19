@@ -135,7 +135,7 @@ const attributes = {
     },
     popupOverlayOpacity: {
         type: "number",
-        default: 95,
+        default: 30,
     },
     popupBlockBorderStyle: {
         type: "string",

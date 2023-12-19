@@ -1179,14 +1179,14 @@ export default class Inspector extends Component {
                   value={popupOverlayOpacity}
                   onChange={(value) =>
                     setAttributes({
-                      popupOverlayOpacity: value !== undefined ? value : 95,
+                      popupOverlayOpacity: value !== undefined ? value : 30,
                     })
                   }
                   min={0}
                   max={100}
                   beforeIcon=""
                   allowReset
-                  initialPosition={95}
+                  initialPosition={30}
                 />
 
               </PanelBody>

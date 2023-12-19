@@ -24,7 +24,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType("responsive-block-editor-addons/popup", {
   title: __("Popup", "responsive-block-editor-addons"),
   description: __(
-    "Responsive Popup",
+    "The Popup block helps you built beautiful popups.",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.popup,
@@ -36,6 +36,7 @@ registerBlockType("responsive-block-editor-addons/popup", {
   ],
 
   attributes: attributes,
+  example: {},
   supports: {
 		anchor: true
   },
