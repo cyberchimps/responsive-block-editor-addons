@@ -116,103 +116,103 @@ function EditorStyles(props) {
   // Define a function to set popup positions based on screen type
   function setPopupPosition(screen, top, left, center, right, bottom) {
     const popupScreenPosition = popupScreenPositions[screen];
-    popupScreenPosition.top = top !== '' ? generateCSSUnit(top, "px") : '';
-    popupScreenPosition.left = left !== '' ? generateCSSUnit(left, "px") : '';
+    popupScreenPosition.top = top !== 'unset' ? generateCSSUnit(top, "px") : 'unset';
+    popupScreenPosition.left = left !== 'unset' ? generateCSSUnit(left, "px") : 'unset';
     popupScreenPosition.center = center;
-    popupScreenPosition.right = right !== '' ? generateCSSUnit(right, "px") : '';
-    popupScreenPosition.bottom = bottom !== '' ? generateCSSUnit(bottom, "px") : '';
+    popupScreenPosition.right = right !== 'unset' ? generateCSSUnit(right, "px") : 'unset';
+    popupScreenPosition.bottom = bottom !== 'unset' ? generateCSSUnit(bottom, "px") : 'unset';
   }
 
   // Set positions for desktop
   switch (popupScreenType) {
     case 'top left':
-      setPopupPosition('desktop', 30, 30, '', '', '');
+      setPopupPosition('desktop', 30, 30, 'unset', 'unset', 'unset');
       break
     case 'top center':
-      setPopupPosition('desktop', 30, '', '', '', '');
+      setPopupPosition('desktop', 30, 'unset', 'unset', 'unset', 'unset');
       break
     case 'top right':
-      setPopupPosition('desktop', 30, '', '', 30, '');
+      setPopupPosition('desktop', 30, 'unset', 'unset', 30, 'unset');
       break;
     case 'center left':
-      setPopupPosition('desktop', '', 30, '', '', '');
+      setPopupPosition('desktop', 'unset', 30, 'unset', 'unset', 'unset');
       break;
     case 'center center':
-      setPopupPosition('desktop', '', '', '', '', '');
+      setPopupPosition('desktop', 'unset', 'unset', 'unset', 'unset', 'unset');
       break;
     case 'center right':
-      setPopupPosition('desktop', '', '', '', 30, '');
+      setPopupPosition('desktop', 'unset', 'unset', 'unset', 30, 'unset');
       break;
     case 'bottom left':
-      setPopupPosition('desktop', '', 30, '', '', 30);
+      setPopupPosition('desktop', 'unset', 30, 'unset', 'unset', 30);
       break;
     case 'bottom center':
-      setPopupPosition('desktop', '', '', '', '', 30);
+      setPopupPosition('desktop', 'unset', 'unset', 'unset', 'unset', 30);
       break;
     case 'bottom right':
-      setPopupPosition('desktop', '', '', '', 30, 30);
+      setPopupPosition('desktop', 'unset', 'unset', 'unset', 30, 30);
       break;
   }
 
   // Set positions for tablet
   switch (popupScreenTypeTablet) {
     case 'top left':
-      setPopupPosition('tablet', 15, 15, '', '', '');
+      setPopupPosition('tablet', 15, 15, 'unset', 'unset', 'unset');
       break
     case 'top center':
-      setPopupPosition('tablet', 15, '', '', '', '');
+      setPopupPosition('tablet', 15, 'unset', 'unset', 'unset', 'unset');
       break
     case 'top right':
-      setPopupPosition('tablet', 15, '', '', 15, '');
+      setPopupPosition('tablet', 15, 'unset', 'unset', 15, 'unset');
       break;
     case 'center left':
-      setPopupPosition('tablet', '', 15, '', '', '');
+      setPopupPosition('tablet', 'unset', 15, 'unset', 'unset', 'unset');
       break;
     case 'center center':
-      setPopupPosition('tablet', '', '', '', '', '');
+      setPopupPosition('tablet', 'unset', 'unset', 'unset', 'unset', 'unset');
       break;
     case 'center right':
-      setPopupPosition('tablet', '', '', '', 15, '');
+      setPopupPosition('tablet', 'unset', 'unset', 'unset', 15, 'unset');
       break;
     case 'bottom left':
-      setPopupPosition('tablet', '', 15, '', '', 15);
+      setPopupPosition('tablet', 'unset', 15, 'unset', 'unset', 15);
       break;
     case 'bottom center':
-      setPopupPosition('tablet', '', '', '', '', 15);
+      setPopupPosition('tablet', 'unset', 'unset', 'unset', 'unset', 15);
       break;
     case 'bottom right':
-      setPopupPosition('tablet', '', '', '', 15, 15);
+      setPopupPosition('tablet', 'unset', 'unset', 'unset', 15, 15);
       break;
   }
 
   // Set positions for mobile
   switch (popupScreenTypeMobile) {
     case 'top left':
-      setPopupPosition('mobile', 10, 10, '', '', '');
+      setPopupPosition('mobile', 10, 10, 'unset', 'unset', 'unset');
       break
     case 'top center':
-      setPopupPosition('mobile', 10, '', '', '', '');
+      setPopupPosition('mobile', 10, 'unset', 'unset', 'unset', 'unset');
       break
     case 'top right':
-      setPopupPosition('mobile', 10, '', '', 10, '');
+      setPopupPosition('mobile', 10, 'unset', 'unset', 10, 'unset');
       break;
     case 'center left':
-      setPopupPosition('mobile', '', 10, '', '', '');
+      setPopupPosition('mobile', 'unset', 10, 'unset', 'unset', 'unset');
       break;
     case 'center center':
-      setPopupPosition('mobile', '', '', '', '', '');
+      setPopupPosition('mobile', 'unset', 'unset', 'unset', 'unset', 'unset');
       break;
     case 'center right':
-      setPopupPosition('mobile', '', '', '', 10, '');
+      setPopupPosition('mobile', 'unset', 'unset', 'unset', 10, 'unset');
       break;
     case 'bottom left':
-      setPopupPosition('mobile', '', 10, '', '', 10);
+      setPopupPosition('mobile', 'unset', 10, 'unset', 'unset', 10);
       break;
     case 'bottom center':
-      setPopupPosition('mobile', '', '', '', '', 10);
+      setPopupPosition('mobile', 'unset', 'unset', 'unset', 'unset', 10);
       break;
     case 'bottom right':
-      setPopupPosition('mobile', '', '', '', 10, 10);
+      setPopupPosition('mobile', 'unset', 'unset', 'unset', 10, 10);
       break;
   }
 
