@@ -67,7 +67,7 @@ export default class Save extends Component {
               <div className="responsive-block-editor-addons-popup-modal-content">
                 {popupToggleCloseBtn &&
                   <div className="responsive-block-editor-addons-popup-modal-header">
-                    <button type="button"><span class="dashicons dashicons-no"></span></button>
+                    <button type="button"><span className="dashicons dashicons-no"></span></button>
                   </div>}
                 <div className="responsive-block-editor-addons-popup-modal-body">
                   <div className="responsive-block-editor-addons-popup-innerblock">

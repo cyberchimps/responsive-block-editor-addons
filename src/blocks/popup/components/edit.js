@@ -94,19 +94,19 @@ export default class Edit extends Component {
 
     const VariantSelector = () => {
       return (
-        <div class="rba-popup-selector">
-          <div class="rba-popup-selector-head">
+        <div className="rba-popup-selector">
+          <div className="rba-popup-selector-head">
             {icons.logo}
-            <p class="rba-popup-block-name">{__("Popup", "responsive-block-editor-addons")}</p>
+            <p className="rba-popup-block-name">{__("Popup", "responsive-block-editor-addons")}</p>
           </div>
-          <p class="rba-popup-block-text">{__("Select a Preset or create your own.", "responsive-block-editor-addons")}</p>
-          <div class="rba-popup-preset-selection">
+          <p className="rba-popup-block-text">{__("Select a Preset or create your own.", "responsive-block-editor-addons")}</p>
+          <div className="rba-popup-preset-selection">
             {
               presets.map((current, index) => {
                 return (
-                  <div key={index} class="rba-popup-preset" onClick={() => setAttributes({ isPopupVariantSelected: true, popupVariant: current.name })}>{current.icon}
-                    <p class="rba-popup-preset-title">{current.title}</p>
-                    <p class="rba-popup-preset-desc">{current.desc}</p>
+                  <div key={index} className="rba-popup-preset" onClick={() => setAttributes({ isPopupVariantSelected: true, popupVariant: current.name })}>{current.icon}
+                    <p className="rba-popup-preset-title">{current.title}</p>
+                    <p className="rba-popup-preset-desc">{current.desc}</p>
                   </div>
                 )
               })
@@ -141,7 +141,7 @@ export default class Edit extends Component {
 
               {popupButtonTypographyFontFamily && loadGoogleFont(popupButtonTypographyFontFamily)}
               {popupTriggerType === 'button' &&
-                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span class="dashicons dashicons-external"></span> <span>{__("Edit Popup", "responsive-block-editor-addons")}</span></>}
+                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span className="dashicons dashicons-external"></span> <span>{__("Edit Popup", "responsive-block-editor-addons")}</span></>}
                 </button>
               }
 
@@ -165,7 +165,7 @@ export default class Edit extends Component {
               <div className="responsive-block-editor-addons-popup-modal-content">
                 {popupToggleCloseBtn &&
                   <div className="responsive-block-editor-addons-popup-modal-header">
-                    <button onClick={() => this.setState({ isModalOpen: false })} type="button"><span class="dashicons dashicons-no"></span></button>
+                    <button onClick={() => this.setState({ isModalOpen: false })} type="button"><span className="dashicons dashicons-no"></span></button>
                   </div>}
                 <div className="responsive-block-editor-addons-popup-modal-body">
                   <div className="responsive-block-editor-addons-popup-innerblock">
