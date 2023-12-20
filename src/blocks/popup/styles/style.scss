@@ -1,0 +1,89 @@
+.responsive-block-editor-addons-block-popup {
+  padding: 0;
+  margin: 0 auto;
+
+  .responsive-block-editor-addons-popup-trigger-wrap {
+    display: flex;
+
+    .responsive-block-editor-addons-popup-button-trigger {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      text-transform: none;
+    }
+
+    .responsive-popup-trigger-anchor {
+      cursor: pointer;
+    }
+  }
+
+  .responsive-block-editor-addons-popup-modal-wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    .responsive-block-editor-addons-popup-modal-wrap-overlay {
+      background-color: #10659C;
+      opacity: 0.95;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      z-index: 99998;
+    }
+
+    .responsive-block-editor-addons-popup-modal-content {
+      margin-top: 25px;
+      position: absolute;
+      z-index: 100000;
+      max-width: 100%;
+      box-sizing: border-box;
+      scroll-behavior: auto;
+      box-shadow: unset;
+
+      .responsive-block-editor-addons-popup-modal-header {
+        display: flex;
+
+        button {
+          background-color: rgba(0, 0, 0, 0);
+          height: auto;
+          display: flex;
+          align-items: center;
+          padding: 0;
+          border: none;
+          cursor: pointer;
+        }
+      }
+
+      .responsive-block-editor-addons-popup-modal-body {
+        max-height: 75vh;
+        overflow: auto;
+        overflow: -moz-scrollbars-none;
+        height: 100%;
+        min-height: 70px;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .responsive-block-editor-popup-modal-show {
+    display: flex;
+  }
+
+  .responsive-block-editor-popup-modal-hide {
+    display: none;
+  }
+
+}
