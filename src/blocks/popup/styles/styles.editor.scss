@@ -1,0 +1,229 @@
+.responsive-block-editor-addons-block-popup {
+  padding: 0;
+  margin: 0 auto;
+
+  .responsive-block-editor-addons-popup-trigger-wrap {
+    display: flex;
+
+    .responsive-block-editor-addons-popup-button-trigger {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .responsive-popup-trigger-anchor {
+      cursor: pointer;
+    }
+  }
+
+  .rba-popup-selector {
+    border: 2px solid #000;
+    border-radius: 4px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    .rba-popup-selector-head {
+      display: flex;
+      align-items: center;
+
+      .rba-popup-block-name {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 26.6px;
+        color: #1e1e1e;
+        margin-left: 12px;
+      }
+    }
+
+    .rba-popup-block-text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18.62px;
+      margin-top: 10px;
+    }
+
+    .rba-popup-preset-selection {
+      display: flex;
+      margin-top: 30px;
+    }
+
+    .rba-popup-preset {
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #e4e4e4;
+      }
+
+      &:nth-child(3) {
+        width: 140px;
+      }
+
+      .rba-popup-preset-title {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        text-align: center;
+      }
+
+      .rba-popup-preset-desc {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 9.31px;
+        text-align: center;
+        color: #8A8A8A;
+      }
+    }
+  }
+
+  .responsive-block-editor-addons-popup-modal-wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    .responsive-block-editor-addons-popup-modal-wrap-overlay {
+      background-color: #10659C;
+      opacity: 0.95;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+      z-index: 99998;
+    }
+
+    .responsive-block-editor-addons-popup-modal-content {
+      margin-top: 25px;
+      margin-right: 295px;
+      position: absolute;
+      z-index: 100000;
+      max-width: 100%;
+      box-sizing: border-box;
+      scroll-behavior: auto;
+      box-shadow: unset;
+
+      .responsive-block-editor-addons-popup-modal-header {
+        display: flex;
+
+        button {
+          background-color: rgba(0, 0, 0, 0);
+          height: auto;
+          display: flex;
+          align-items: center;
+          padding: 0;
+          border: none;
+          cursor: pointer;
+        }
+      }
+
+      .responsive-block-editor-addons-popup-modal-body {
+        max-height: 75vh;
+        overflow: auto;
+        overflow: -moz-scrollbars-none;
+        height: 100%;
+        min-height: 70px;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .responsive-block-editor-popup-modal-show {
+    display: flex;
+  }
+
+  .responsive-block-editor-popup-modal-hide {
+    display: none;
+  }
+}
+
+// Styling for Inspector Controls.
+// Custom Styles of Alignment Matrix Control.
+.responsive-block-editor-addons-alignment-matrix-control {
+
+  .component-alignment-matrix-control {
+    grid-template-rows: repeat(3, 35.6667px);
+    width: 245px;
+  }
+
+  .component-alignment-matrix-control span[role=presentation] {
+    height: 23px;
+    width: 60px;
+  }
+}
+
+.responsive-block-editor-addons-popup-div-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  button.components-button.is-small {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  span.dashicon.dashicons-image-rotate {
+    color: #007cba;
+
+    &.image-rotate-reset {
+      color: #ccc;
+      cursor: auto;
+    }
+
+    &::before {
+      font-size: 10px;
+    }
+  }
+
+}
+
+.responsive-block-editor-addons-popup-button-preset-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 4px;
+
+  .responsive-block-editor-addons-popup-button-preset {
+    text-align: center;
+
+    button {
+      cursor: pointer;
+    }
+
+    button.selectedPresetBorder {
+      border: 2px solid #007cba;
+    }
+
+    button.disabledPresetBorder {
+      border: 2px solid #000;
+    }
+
+    svg {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.responsive-block-editor-addons-popup-button-group-tab {
+  .components-button-group {
+    display: flex;
+
+    .components-button.is-primary,
+    .components-button.is-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
