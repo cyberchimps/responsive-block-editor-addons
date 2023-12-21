@@ -50,7 +50,7 @@ export default class Save extends Component {
     }
 
     return (
-      <div
+      <div key={`block-${block_id}`}
         className={classnames(
           "wp-block-responsive-block-editor-addons-team-wrapper",
           `block-${block_id}`,
@@ -64,7 +64,7 @@ export default class Save extends Component {
         )}
       >
         {teamBlock.map((test, index) => (
-          <Team {...this.props}>
+          <Team key={`team-avatar-${index}`} {...this.props}>
             {teamBlock[index]["teamImgURL"] && showImage && (
               <div className="responsive-block-editor-addons-team-avatar-wrapper">
                 <figure

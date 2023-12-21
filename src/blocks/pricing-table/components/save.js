@@ -97,8 +97,8 @@ export default class Save extends Component {
         </div>
         <div className={innerClasses}>
           {pricingTable.map((test, index) => (
-            <Fragment>
-              <div
+            <Fragment key={`fragment-pricing-table-${index}`} >
+              <div key={`pricning-table-item-${index}`}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-pricing-table-item",
                   `responsive-block-editor-addons-${blockId}`,

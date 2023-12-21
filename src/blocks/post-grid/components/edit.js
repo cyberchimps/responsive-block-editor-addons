@@ -167,12 +167,14 @@ class LatestPostsBlock extends Component {
     // Add toolbar controls to change layout
     const layoutControls = [
       {
+        key: "grid-layout",
         icon: "grid-view",
         title: __("Grid View", "responsive-block-editor-addons"),
         onClick: () => setAttributes({ postLayout: "grid" }),
         isActive: "grid" === attributes.postLayout,
       },
       {
+        key: "list-layout",
         icon: "list-view",
         title: __("List View", "responsive-block-editor-addons"),
         onClick: () => setAttributes({ postLayout: "list" }),
@@ -262,6 +264,7 @@ class LatestPostsBlock extends Component {
             {layoutControls.map((current) => {
               return (
               <ToolbarButton
+              key={current.key}
                 icon={current.icon}
                 title={current.title}
                 isActive={current.isActive}

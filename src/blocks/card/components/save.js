@@ -66,7 +66,7 @@ export default class Save extends Component {
           )}
         >
           {cardsArray.map((test, index) => (
-            <div
+            <div key={`card-item-${index}`}
               className={classnames(
                 "wp-block-responsive-block-editor-addons-card-item"
               )}

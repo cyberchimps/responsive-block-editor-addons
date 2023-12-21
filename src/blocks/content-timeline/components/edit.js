@@ -228,8 +228,8 @@ export default class Edit extends Component {
 
     return [
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
-      <div
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
+      <div key={`${block_id}`}
         className={classnames(
           `wp-block-responsive-content-timeline-${block_id}`,
           "responsive-timeline__outer-wrap",
@@ -238,14 +238,15 @@ export default class Edit extends Component {
         )}
       >
         <div
+        key={`timeline-content-wrapper-${block_id}`}
           className={classnames(
             "responsive-timeline__content-wrap",
             ...ContentTmClasses(this.props.attributes)
           )}
         >
-          <div className="responsive-timeline-wrapper">
-            <div className="responsive-timeline__main">
-              <div className="responsive-timeline__days">
+          <div key={`timeline-wrapper-${block_id}`} className="responsive-timeline-wrapper">
+            <div key={`timeline-main-${block_id}`} className="responsive-timeline__main">
+              <div key={`timeline-days-${block_id}`} className="responsive-timeline__days">
                 {timelineItems.map((post, index) => {
                   isCenter = dateI18n(dateFormat, moment( t_date[index].title, 'MM/DD/YYYY' ).format("YYYY-MM-DD"));
                   if (timelinAlignment == "center") {
@@ -275,13 +276,13 @@ export default class Edit extends Component {
                   return (
                     <article
                       className="responsive-timeline__field responsive-timeline__field-wrap"
-                      key={index}
+                      key={`timeline-item-${index}`}
                     >
-                      <div className={content_align_class}>
+                      <div key={`Align-${block_id}`} className={content_align_class}>
                         <div className="responsive-timeline__marker responsive-timeline__out-view-icon">
                           <span>
                             {" "}
-                            <div className="responsive-block-editor-addons-ifb-icon-wrap">
+                            <div key={`icon-wrap-${block_id}`} className="responsive-block-editor-addons-ifb-icon-wrap">
                               <span className="responsive-block-editor-addons-ifb-icon">
                                 {renderSVG(icon)}
                               </span>
@@ -289,17 +290,17 @@ export default class Edit extends Component {
                           </span>
                         </div>
 
-                        <div className={day_align_class}>
-                          <div className="responsive-timeline__events-new">
-                            <div className="responsive-timeline__events-inner-new">
+                        <div key={`day-align-${block_id}`} className={day_align_class}>
+                          <div key={`events-new-${block_id}`} className="responsive-timeline__events-new">
+                            <div key={`inner-new-${block_id}`} className="responsive-timeline__events-inner-new">
                               {dateFontFamily && loadGoogleFont(dateFontFamily)}
                               {headingFontFamily &&
                                 loadGoogleFont(headingFontFamily)}
                               {contentFontFamily &&
                                 loadGoogleFont(contentFontFamily)}
-                              <div className="responsive-timeline__date-hide responsive-timeline__date-inner">
+                              <div key={`timeline-date-${block_id}`} className="responsive-timeline__date-hide responsive-timeline__date-inner">
                                 {displayPostDate && t_date[index].title && (
-                                  <div
+                                  <div key={`post-date-${block_id}`}
                                     className={
                                       "responsive-timeline__inner-date-new"
                                     }
@@ -314,9 +315,9 @@ export default class Edit extends Component {
                                 )}
                               </div>
 
-                              <div className="responsive-content">
-                                <div className="responsive-timeline__heading-text">
-                                  <RichText
+                              <div key={`responsive-content-${block_id}`} className="responsive-content">
+                                <div key={`heading-text-${block_id}`} className="responsive-timeline__heading-text">
+                                  <RichText key={`heading-${block_id}`}
                                     tagName={headingTag}
                                     value={post.time_heading}
                                     placeholder={__(
@@ -353,7 +354,7 @@ export default class Edit extends Component {
                                   />
                                 </div>
 
-                                <RichText
+                                <RichText key={`desc-${block_id}`}
                                   tagName="p"
                                   value={post.time_desc}
                                   placeholder={__(
@@ -375,7 +376,7 @@ export default class Edit extends Component {
                                   onRemove={() => onReplace([])}
                                 />
 
-                                <div className="responsive-timeline__arrow">
+                                <div key={`timeline-arrow-${block_id}`} className="responsive-timeline__arrow">
                                   {" "}
                                 </div>
                               </div>
@@ -384,9 +385,9 @@ export default class Edit extends Component {
                         </div>
 
                         {display_inner_date && (
-                          <div className="responsive-timeline__date-new">
+                          <div key={`timeline-date-new-${block_id}`} className="responsive-timeline__date-new">
                             {displayPostDate && t_date[index].title && (
-                              <div className={"responsive-timeline__date-new"}>
+                              <div key={`timeline-date-newer-${block_id}`} className={"responsive-timeline__date-new"}>
                                 {post_date}
                               </div>
                             )}
@@ -397,8 +398,8 @@ export default class Edit extends Component {
                   );
                 })}
               </div>
-              <div className="responsive-timeline__line">
-                <div className="responsive-timeline__line__inner"></div>
+              <div key={`timeline-line-${block_id}`} className="responsive-timeline__line">
+                <div key={`timeline-inner-${block_id}`} className="responsive-timeline__line__inner"></div>
               </div>
             </div>
           </div>

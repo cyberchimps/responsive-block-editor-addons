@@ -159,9 +159,9 @@ export default class Edit extends Component {
       </BlockControls>,
       // Show the block controls on focus
 
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
-      <div
+      <div key={`pricing-list-${block_id}`}
         className={classnames(
           this.props.className, 
           "responsive-block-editior-addons-pricing-list-outer-wrap",
@@ -174,9 +174,9 @@ export default class Edit extends Component {
         {descriptionFontFamily && loadGoogleFont(descriptionFontFamily)}
         {priceFontFamily && loadGoogleFont(priceFontFamily)}
         {pricingList.map((test, index) => (
-          <Fragment>
-            <div
-              key={'resp-key-'+index}
+          <Fragment key={`fragment-pricing-list-${index}`} >
+            <div key={`pricning-table-list-${index}`}
+              
               className={classnames(
                 "responsive-block-editior-addons-pricing-list-item-wrap",
                 `resp-desktop-column-${columns}`,

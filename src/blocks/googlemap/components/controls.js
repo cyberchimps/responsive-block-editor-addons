@@ -20,9 +20,10 @@ function Controls({ attributes, setAttributes }) {
   return (
     <BlockControls>
       {address && <ToolbarGroup>
-        {toolbarControls.map((current) => {
+        {toolbarControls.map((current,index) => {
           return (
-            <ToolbarButton
+            <ToolbarButton 
+            key={`toolbar-button-${index}`}
               icon={current.icon}
               title={current.title}
               isActive={current.isActive}
