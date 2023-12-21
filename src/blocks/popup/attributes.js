@@ -107,7 +107,7 @@ const attributes = {
     },
     popupToggleCloseBtn: {
         type: "boolean",
-        default: false,
+        default: true,
     },
     popupToggleCloseBtnPosition: {
         type: "string",
