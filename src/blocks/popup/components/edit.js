@@ -141,7 +141,7 @@ export default class Edit extends Component {
 
               {popupButtonTypographyFontFamily && loadGoogleFont(popupButtonTypographyFontFamily)}
               {popupTriggerType === 'button' &&
-                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span className="dashicons dashicons-external"></span> <span>{__("Edit Popup", "responsive-block-editor-addons")}</span></>}
+                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" data-trigger-id={`trigger-${block_id}`} onClick={() => this.setState({ isModalOpen: true })}> {popupTrigger === 'click' ? popupButtonText : <><span className="dashicons dashicons-external"></span> <span>{__("Edit Popup", "responsive-block-editor-addons")}</span></>}
                 </button>
               }
 
@@ -160,7 +160,7 @@ export default class Edit extends Component {
               {popupTriggerType === 'image' && popupImageTrigger != undefined && <img onClick={() => this.setState({ isModalOpen: true })} className="responsive-block-editor-addons-popup-modal-trigger responsive-popup-trigger-anchor responsive-block-editor-addons-popup-image-trigger" src={popupImageTrigger} alt="popupImageTrigger" />}
 
             </div>
-            <div className={`responsive-block-editor-addons-popup-modal-wrap ${this.state.isModalOpen ? 'responsive-block-editor-popup-modal-show' : 'responsive-block-editor-popup-modal-hide'}`} data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'}>
+            <div className={`responsive-block-editor-addons-popup-modal-wrap ${this.state.isModalOpen ? 'responsive-block-editor-popup-modal-show' : 'responsive-block-editor-popup-modal-hide'}`} data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'} data-popup-id={`popup-${block_id}`}>
               <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay" onClick={() => this.setState({ isModalOpen: false })}></div>
               <div className="responsive-block-editor-addons-popup-modal-content">
                 {popupToggleCloseBtn &&

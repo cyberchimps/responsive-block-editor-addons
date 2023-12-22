@@ -33,7 +33,7 @@ const BLOCKS_TEMPLATE_PRESET2 = [
                     ],
                     ['responsive-block-editor-addons/column', {},
                         [
-                            ['core/image', { url: image_url, width: '250', aspectRatio: '9/16' }],
+                            ['core/image', { url: image_url, width: '250', scale: 'cover', aspectRatio: '9/16' }],
                         ]
                     ],
                 ]
