@@ -607,9 +607,10 @@ export default class Inspector extends Component {
 
                   {popupTriggerType === 'image' && popupImageTrigger && (
                     <Button
+                      variant="secondary"
                       className="rbea-rm-btn"
+                      style={{marginLeft: '10px'}}
                       onClick={() => setAttributes({ popupImageTrigger: null })}
-                      isLink
                       isDestructive
                     >
                       {__("Remove Image", "responsive-block-editor-addons")}

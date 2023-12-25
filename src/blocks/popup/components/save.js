@@ -44,7 +44,7 @@ export default class Save extends Component {
             <div className="responsive-block-editor-addons-popup-trigger-wrap">
 
               {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'button' &&
-                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger"> {popupButtonText}
+                <button type="button" className="responsive-block-editor-addons-popup-button-trigger responsive-block-editor-addons-popup-modal-trigger" data-trigger-id={`trigger-${block_id}`}> {popupButtonText}
                 </button>
               }
 
@@ -62,7 +62,7 @@ export default class Save extends Component {
 
             </div>
 
-            <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'}>
+            <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'} data-popup-id={`popup-${block_id}`}>
               <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay"></div>
               <div className="responsive-block-editor-addons-popup-modal-content">
                 {popupToggleCloseBtn &&
