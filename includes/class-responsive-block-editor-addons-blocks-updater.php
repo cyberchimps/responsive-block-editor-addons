@@ -257,8 +257,8 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'popup',
 				'title'    => 'Popup',
-				'docs'     => '',
-				'demo'     => '',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/popup-block/',
+				'demo'     => 'https://cyberchimps.com/blocks/popup/',
 				'category' => 'content',
 				'status'   => 1,
 			),
