@@ -14535,7 +14535,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'popupScreenTypeTablet'               => 'center center',
 				'popupTrigger'                        => 'load',
 				'popupTriggerDelay'                   => 1,
-				'popupToggleCloseBtn'                 => false,
+				'popupToggleCloseBtn'                 => true,
 				'popupToggleCloseBtnPosition'         => "flex-end",
 				'popupBgType'                         => "color",
 				'popupGradient'                       => "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
