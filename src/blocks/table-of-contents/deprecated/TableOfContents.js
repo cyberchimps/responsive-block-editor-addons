@@ -87,7 +87,9 @@ class TableOfContents extends React.Component {
         }
     }
     componentWillUnmount() {
-        this.state.unsubscribe();
+        if(typeof this.state.unsubscribe==='function'){
+            this.state.unsubscribe();
+        }
     }
     render() {
         const { headers } = this.state;
