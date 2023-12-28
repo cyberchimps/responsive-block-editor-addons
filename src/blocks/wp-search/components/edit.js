@@ -72,10 +72,10 @@
        <BlockControls key="controls">
        </BlockControls>,
        // Show the block controls on focus
-       <Inspector {...{ setAttributes, ...this.props }} />,
+       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
  
        // Show the block markup in the editor
-       <div
+       <div key={`block-${block_id}`}
          className={classnames(
           this.props.className,
            "responsive-block-editor-addons-block-wp-search",

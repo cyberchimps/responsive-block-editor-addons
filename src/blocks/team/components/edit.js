@@ -123,10 +123,10 @@ export default class Edit extends Component {
 
     return [
       // Show the block controls on focus
-      <Inspector {...{ setAttributes, ...this.props }} />,
+      <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
       // Show the block markup in the editor
-      <div
+      <div key={`team-wrapper-${block_id}`}
         className={classnames(
           "wp-block-responsive-block-editor-addons-team-wrapper",
           `block-${block_id}`,
@@ -145,7 +145,7 @@ export default class Edit extends Component {
           </BlockControls>
         }
         {teamBlock.map((test, index) => (
-          <Team {...this.props}>
+          <Team key={`team-avatar-${index}`} {...this.props}>
             {showImage && (
               <div className="responsive-block-editor-addons-team-avatar-wrapper">
                 {titleFontFamily && loadGoogleFont(titleFontFamily)}

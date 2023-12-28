@@ -132,10 +132,11 @@ export default class Edit extends Component {
     let playopacity = butopacity / 100;
 
     return [
-      <Fragment>
-        <Inspector {...{ setAttributes, ...this.props }} />
+      <Fragment key={`video-popup-fragment-${block_id}`} >
+        <Inspector key="inspector" {...{ setAttributes, ...this.props }} />
 
         <div
+        key={`video-popup-${block_id}`}
           className={classnames(
             className,
             "responsive-block-editor-addons-block-video-popup",
