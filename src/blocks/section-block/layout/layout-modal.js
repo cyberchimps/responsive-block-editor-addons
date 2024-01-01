@@ -62,7 +62,6 @@ export function LayoutModal(props) {
   
       // Check if no results are found and set noSearchResult accordingly
       setNoSearchResult(searchedData.length === 0);
-      console.log(noSearchResult);
     } else {
       setSitesData(siteData);
       setNoSearchResult(false); // Reset noSearchResult when searchQuery is empty
@@ -81,7 +80,6 @@ export function LayoutModal(props) {
       const response = await apiFetch({
         path: "custom/v1/responsive-pro-activation-status", // Replace with your actual endpoint
       });
-      console.log(response);
       // Check the response and set isProactive state accordingly
       setIsProactive(response && response.pro_active);
     } catch (error) {
@@ -99,11 +97,9 @@ export function LayoutModal(props) {
   };
   const closeModal = () => {
     setModalOpen(false);
-    console.log("i ran");
   };
   const handleTabClick = (tab) => {
     setCurrentTab(tab);
-    console.log("i ran");
   };
   const renderTabContent = () => {
     switch (currentTab) {
@@ -144,7 +140,6 @@ export function LayoutModal(props) {
   const PagesTabContent = () => {
     // Content for the Pages tab
     const handleCardClick = (site) => {
-      console.log("I m called", site);
       setCurrentTab("pageinnertab");
       setSelectedSite(site);
       setRequiredPlugins(site.required_plugins);
@@ -166,7 +161,7 @@ export function LayoutModal(props) {
             >
               <img
                 src={site.featured_image_url}
-                alt={site.title.rendered}
+                alt={(site.title.rendered).replace(/&#8211;|Gutenberg/g, '')}
                 style={{
                   width: "321px",
                   height: "396px",
@@ -193,7 +188,7 @@ export function LayoutModal(props) {
               )}
               <div className="card-content">
                 <div className="card-content-heading">
-                  {site.title.rendered}
+                  {(site.title.rendered).replace(/&#8211;|Gutenberg/g, '')}
                 </div>
                 <div className="card-content-para">
                   {Array.isArray(site.pages) ? site.pages.length : 1} Templates
@@ -216,13 +211,8 @@ export function LayoutModal(props) {
     );
     const handlePageClick = (page) => {
       setSelectedPage(page);
-      console.log(
-        "here are the required plugins for the site",
-        requiredPlugins
-      );
     };
     const handleInstallPlugins = async (pluginsToInstall) => {
-      console.log("I'm in handle install", pluginsToInstall);
     
       // Iterate over the plugins and enqueue them for installation
       for (const plugin of pluginsToInstall) {
@@ -273,7 +263,6 @@ export function LayoutModal(props) {
       await Promise.all(activationPromises);
 
       // Next function can start executing here
-      console.log("All plugins activated. Proceeding to the next step.");
     };
     const activatePlugin = (singlePlugin) => {
       return new Promise(async (resolve, reject) => {
@@ -294,7 +283,6 @@ export function LayoutModal(props) {
           if (response.success) {
             // Assuming the response object contains the data you need
             const data = response.data;
-            console.log(data);
             resolve(data); // Resolve the promise with the data when activation is successful
           } else {
             reject(new Error(`HTTP error! Status: ${response.success}`));
@@ -369,7 +357,6 @@ export function LayoutModal(props) {
           if (response.success) {
             // Assuming the response object contains the data you need
             const data = response.data;
-            console.log(data);
             resolve(data); // Resolve the promise with the data when the operation is successful
           } else {
             reject(new Error(`HTTP error! Status: ${response.success}`));
@@ -386,11 +373,9 @@ export function LayoutModal(props) {
     };
 
     const import_page = async (site_url, page_id,clientId) => {
-      console.log(selectedSite.site_url);
-      console.log(selectedPage.page_id);
+      
       const currenturl =
         selectedSite.site_url + "/wp-json/wp/v2/pages/" + selectedPage.page_id;
-      console.log(currenturl);
       try {
         const response = await fetch(currenturl);
 
@@ -399,12 +384,9 @@ export function LayoutModal(props) {
         }
 
         const data = await response.json();
-        console.log(data.original_content);
 
         const content = data.original_content;
-        console.log("content rendered", content);
         let modified_content = await importApiCall(content);
-        console.log(modified_content.data);
         props.import(modified_content["data"], clientId);
       } catch (error) {
         console.error(error);
@@ -429,14 +411,12 @@ export function LayoutModal(props) {
     async function handleImportButtonClick(clientId, site) {
       // console.groupCollapsed("IMPORT STARTED...");
       let pluginsArray  = selectedSite.required_plugins;
-      console.log(pluginsArray);
       const filteredPlugins = pluginsArray.filter(plugin => plugin.name !== "Responsive Block Editor Addons");
-      console.log(filteredPlugins);
-      handleInstallPlugins(filteredPlugins);
+      // handleInstallPlugins(filteredPlugins);
       if (selectedSite.demo_type === "free") {
         setImportStatus("Importing...");
         import_page(selectedSite.site_url,selectedPage.page_id,clientId);
-      } else if (selectedSite.demo_type !== "free" && isProactive === "true") {
+      } else if (selectedSite.demo_type !== "free" && isProactive === true) {
         setImportStatus("Importing...");
         import_page(selectedSite.site_url, selectedPage.page_id,clientId);
       } else {
@@ -497,7 +477,8 @@ export function LayoutModal(props) {
         </div>
         <div className="rba-section-blocks-inner-div-buttons">
           <div className="rba-inner-div-bottom-site-title">
-            {selectedSite.title.rendered}{" "}
+            {(selectedSite.title.rendered).replace(/&#8211;|Gutenberg/g, '')}{" "
+            }
           </div>
           <div className="rba-section-blocks-inner-div-buttons-container">
             <button
@@ -519,7 +500,7 @@ export function LayoutModal(props) {
                     )
               }
             >
-              Preview '{selectedSite.title.rendered}' Site
+              Preview '{(selectedSite.title.rendered).replace(/&#8211;|Gutenberg/g, '')}' Site
             </button>
 
             <button
@@ -530,7 +511,7 @@ export function LayoutModal(props) {
             >
               {selectedSite.demo_type === "free"
                 ? importStatus
-                : isProactive === "true"
+                : isProactive === true
                 ? importStatus
                 : "Get access"}
             </button>
@@ -582,7 +563,6 @@ export function LayoutModal(props) {
   
             if (response.success) {
               // Assuming the response object contains the data you need
-              console.log(response);
               const data = JSON.parse(response.data.filtered_data);
               setSitesData(data);
               setXmlUpdateStatus(false);
@@ -658,8 +638,7 @@ export function LayoutModal(props) {
                       type="text"
                       placeholder={__("Search Templates...", "my-textdomain")}
                       onChange={(e) => {
-                        setSearchQuery(e.target.value),
-                          console.log(e.target.value);
+                        setSearchQuery(e.target.value)
                       }}
                     />
 
@@ -687,7 +666,6 @@ export function LayoutModal(props) {
                 <button
                   className="rba-pop-up-search-button"
                   onClick={() => {
-                    console.log("Button inside modal");
                     checkForXMLUpdates();
                   }}
                 >
