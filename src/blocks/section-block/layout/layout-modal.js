@@ -247,26 +247,6 @@ export function LayoutModal(props) {
       wp.updates.queueChecker();
     };
 
-    // const handleInstallPlugins = async (pluginsToInstall) => {
-
-    //   // Iterate over the plugins and enqueue them for installation
-    //   pluginsToInstall.map((plugin) => {
-    //     wp.updates.queue.push({
-    //       action: "install-plugin",
-    //       data: {
-    //         slug: plugin.slug,
-    //       },
-    //     });
-    //   });
-    //   // After all plugins are enqueued, trigger the queueChecker
-    //   await wp.updates.queueChecker();
-    // };
-
-    // const activateAllPlugins = async (activatePlugins) => {
-    //   await  activatePlugins.forEach((singlePlugin) => {
-    //       activatePlugin(singlePlugin);
-    //     });
-    // };
     const activateAllPlugins = async (activatePlugins) => {
       // Create an array of promises for each plugin activation
       const activationPromises = activatePlugins.map((singlePlugin) => {
@@ -308,53 +288,6 @@ export function LayoutModal(props) {
       });
     };
 
-    // const activatePlugin = async (singlePlugin) => {
-    //   const formData = new window.FormData();
-    //   formData.append("action", "responsive_ready_sites_required_plugin_activate");
-    //   formData.append("init", singlePlugin.init);
-
-    //   try {
-    //     const response = await apiFetch({
-    //       url: responsive_globals.ajax_url,
-    //       method: "POST",
-    //       body: formData,
-    //     });
-
-    //     if (response.success) {
-    //       // Assuming the response object contains the data you need
-    //       const data = response.data;
-    //       console.log(data);
-    //     } else {
-    //       throw new Error(`HTTP error! Status: ${response.success}`);
-    //     }
-    //   } catch (error) {
-    //     console.error('Fetch error:', error);
-    //   }
-    // };
-    // const AddWpForms = async () => {
-    //   const formData = new window.FormData();
-    //   formData.append("action", "responsive_ready_sites_import_wpforms");
-    //   formData.append("wpforms_path", selectedSite.wpforms_path);
-
-    //   try {
-    //     const response = await apiFetch({
-    //       url: responsive_globals.ajax_url,
-    //       method: "POST",
-    //       body: formData,
-
-    //     });
-
-    //     if (response.success) {
-    //       // Assuming the response object contains the data you need
-    //       const data = response.data;
-    //       console.log(data);
-    //     } else {
-    //       throw new Error(`HTTP error! Status: ${response.success}`);
-    //     }
-    //   } catch (error) {
-    //     console.error('Fetch error:', error);
-    //   }
-    // }
     const AddWpForms = () => {
       return new Promise(async (resolve, reject) => {
         const formData = new window.FormData();

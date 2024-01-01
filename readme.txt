@@ -199,7 +199,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 1.7.8 - 1st January 2024 =
+= 1.7.8 - 4th January 2024 =
 * New - Section Block
 
 = 1.7.7 - 25th December 2023 =
