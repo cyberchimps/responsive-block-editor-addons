@@ -1,0 +1,67 @@
+.responsive-block-editor-addons-block-form-input {
+  padding: 0;
+  margin: 0 auto;
+
+  .responsive-block-editor-addons-form-input-label {
+    display: block;
+
+    .responsive-block-editor-addons-form-input__required {
+      color: #ff0000;
+    }
+  }
+}
+
+
+// Inspector Controls.
+.responsive-block-editor-addons-checkbox-option {
+  display: flex;
+  border: 1px solid #d5dadf;
+  margin: 10px 0;
+  background-color: #fff;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .components-checkbox-control__input-container {
+    margin-right: 0;
+  }
+
+  .responsive-block-editor-addons-checkbox-options__checkbox {
+    margin: 6px 0 0 8px !important;
+  }
+
+  .responsive-block-editor-addons-checkbox-options__drag {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-basis: 20%;
+    padding: 15px 0 15px 5px;
+    cursor: move;
+
+    span {
+      display: flex;
+      align-self: center;
+      width: 18px;
+      height: 11px;
+      background: linear-gradient(180deg, #000, #000 20%, #fff 0, #fff 40%, #000 0, #000 60%, #fff 0, #fff 80%, #000 0, #000);
+    }
+  }
+
+  .responsive-block-editor-addons-checkbox-options__text {
+    overflow: hidden;
+    flex-basis: 80%;
+    padding: 9px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .responsive-block-editor-addons-checkbox-options__button {
+    display: flex;
+    flex-basis: 20%;
+    justify-content: center;
+    padding: 10px 5px;
+    border-left: 1px solid #d5dadf;
+    cursor: pointer;
+  }
+
+}
