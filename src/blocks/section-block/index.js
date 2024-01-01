@@ -28,7 +28,7 @@ registerBlockType("responsive-block-editor-addons/rbea-templates", {
     "Add beautiful pre-designed sections and pages to your website",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.block_importer,
+  icon: ResponsiveBlockEditorAddonsIcons.template_library,
   category: "responsive_block_editor_addons",
   keywords: [
     __("patterns", "responsive-block-editor-addons"),

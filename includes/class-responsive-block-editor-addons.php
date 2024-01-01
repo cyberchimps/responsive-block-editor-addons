@@ -1228,7 +1228,12 @@ class Responsive_Block_Editor_Addons {
 					add_option('last_xml_export_checksums', $new_value);
 				} else {
 					// The option already exists, update it
-					update_option('last_xml_export_checksums', $new_value);
+					if ($existing_value !== $new_value) {
+						// The existing value and new value are different, update the option
+						update_option('last_xml_export_checksums', $new_value);
+						$this->rbea_sync_library();
+						
+					}
 				}
 			}
 		}
@@ -1286,10 +1291,9 @@ class Responsive_Block_Editor_Addons {
 
 		// Check if the data was successfully written to the file
 		if ($file_path_all !== false) {
-			error_log('Filtered data for all pages has been written to: ' . $file_path_all);
 			wp_send_json_success(array('filtered_data' => $filtered_json_all));
 		} else {
-			error_log('Error writing filtered data to the file.');
+			wp_send_json_error(array('message' => 'Error writing filtered data to the file.'));
 		}
 		wp_send_json_success();
 	}

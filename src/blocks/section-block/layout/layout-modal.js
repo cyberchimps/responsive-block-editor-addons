@@ -28,7 +28,7 @@ export function LayoutModal(props) {
   const [requiredPlugins, setRequiredPlugins] = useState([]);
   const [importStatus, setImportStatus] = useState("Import Template");
   const [isProactive, setIsProactive] = useState(false); // New state for proactivity
-  const [Xmlupdatestatus,setXmlUpdateStatus] =useState(false);
+  const [Xmlupdatestatus, setXmlUpdateStatus] = useState(false);
   const {apiFetch} = wp;
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,11 +43,11 @@ export function LayoutModal(props) {
       }, delay);
     };
   };
-  
+
   // Debounce the filter function
   const debouncedFilter = debounce((query) => {
     let searchedData;
-  
+
     if (query) {
       searchedData = sitesData.filter(
         (site) =>
@@ -57,9 +57,9 @@ export function LayoutModal(props) {
             category.toLowerCase().includes(query.toLowerCase())
           )
       );
-  
+
       setSitesData(searchedData);
-  
+
       // Check if no results are found and set noSearchResult accordingly
       setNoSearchResult(searchedData.length === 0);
     } else {
@@ -67,13 +67,13 @@ export function LayoutModal(props) {
       setNoSearchResult(false); // Reset noSearchResult when searchQuery is empty
     }
   }, 300); // Adjust the delay (in milliseconds) as needed
-    
+
   useEffect(() => {
     debouncedFilter(searchQuery);
     if (modalOpen) {
       checkIsProActive();
     }
-  }, [searchQuery,siteData,noSearchResult,currentTab]);
+  }, [searchQuery, siteData, noSearchResult, currentTab]);
   const {removeBlock} = useDispatch("core/block-editor");
   const checkIsProActive = async () => {
     try {
@@ -112,7 +112,7 @@ export function LayoutModal(props) {
       case "pageinnertab":
         return <PagesinnerTab />;
       case "nosearchresult":
-        return <Noresultfound />
+        return <Noresultfound />;
       default:
         return <PagesTabContent />;
     }
@@ -145,57 +145,72 @@ export function LayoutModal(props) {
       setRequiredPlugins(site.required_plugins);
     };
     return (
-      <div style={{display: "flex", flexWrap: "wrap",margin:"0 40px",padding:"40px 0"}}>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          margin: "0 40px",
+          padding: "40px 0",
+        }}
+      >
         <Toast
-          message={ !Xmlupdatestatus ? "Template library refreshed!" :"Syncing template library in the background. The process can take anywhere between 2 to 3 minutes. We will notify you once done." }
+          message={
+            !Xmlupdatestatus
+              ? "Template library refreshed!"
+              : "Syncing template library in the background. The process can take anywhere between 2 to 3 minutes. We will notify you once done."
+          }
           showToast={showToast}
           onClose={handleCloseToast}
         />
         <div className="pages-tab-content">
-
-         {noSearchResult ? <Noresultfound/> : sitesData?.map((site) => (
-            <div
-              className="rba-popup-card-component"
-              key={site.id}
-              onClick={(e) => handleCardClick(site)}
-            >
-              <img
-                src={site.featured_image_url}
-                alt={(site.title.rendered).replace(/&#8211;|Gutenberg/g, '')}
-                style={{
-                  width: "321px",
-                  height: "396px",
-                  objectPosition: "top",
-                  objectFit: "cover",
-                }}
-              />
-              {site.demo_type === "pro" && (
-                <div class="rba-popup-pro-badge">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M15.4141 15H4.58073C4.35156 15 4.16406 15.1875 4.16406 15.4167V16.25C4.16406 16.4792 4.35156 16.6667 4.58073 16.6667H15.4141C15.6432 16.6667 15.8307 16.4792 15.8307 16.25V15.4167C15.8307 15.1875 15.6432 15 15.4141 15ZM17.0807 6.66671C16.3906 6.66671 15.8307 7.2266 15.8307 7.91671C15.8307 8.1016 15.8724 8.27348 15.9453 8.43233L14.0599 9.56254C13.6589 9.80212 13.1406 9.66671 12.9089 9.26046L10.7865 5.54692C11.0651 5.31775 11.2474 4.974 11.2474 4.58337C11.2474 3.89327 10.6875 3.33337 9.99739 3.33337C9.30729 3.33337 8.74739 3.89327 8.74739 4.58337C8.74739 4.974 8.92969 5.31775 9.20833 5.54692L7.08594 9.26046C6.85417 9.66671 6.33333 9.80212 5.9349 9.56254L4.05208 8.43233C4.1224 8.27608 4.16667 8.1016 4.16667 7.91671C4.16667 7.2266 3.60677 6.66671 2.91667 6.66671C2.22656 6.66671 1.66406 7.2266 1.66406 7.91671C1.66406 8.60681 2.22396 9.16671 2.91406 9.16671C2.98177 9.16671 3.04948 9.15629 3.11458 9.14587L4.9974 14.1667H14.9974L16.8802 9.14587C16.9453 9.15629 17.013 9.16671 17.0807 9.16671C17.7708 9.16671 18.3307 8.60681 18.3307 7.91671C18.3307 7.2266 17.7708 6.66671 17.0807 6.66671Z"
-                      fill="#374151"
-                    />
-                  </svg>
-                  Pro
-                </div>
-              )}
-              <div className="card-content">
-                <div className="card-content-heading">
-                  {(site.title.rendered).replace(/&#8211;|Gutenberg/g, '')}
-                </div>
-                <div className="card-content-para">
-                  {Array.isArray(site.pages) ? site.pages.length : 1} Templates
+          {noSearchResult ? (
+            <Noresultfound />
+          ) : (
+            sitesData?.map((site) => (
+              <div
+                className="rba-popup-card-component"
+                key={site.id}
+                onClick={(e) => handleCardClick(site)}
+              >
+                <img
+                  src={site.featured_image_url}
+                  alt={site.title.rendered.replace(/&#8211;|Gutenberg/g, "")}
+                  style={{
+                    width: "100%",
+                    height: "396px",
+                    objectPosition: "top",
+                    objectFit: "cover",
+                  }}
+                />
+                {site.demo_type === "pro" && (
+                  <div className="rba-popup-pro-badge">
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.4141 15H4.58073C4.35156 15 4.16406 15.1875 4.16406 15.4167V16.25C4.16406 16.4792 4.35156 16.6667 4.58073 16.6667H15.4141C15.6432 16.6667 15.8307 16.4792 15.8307 16.25V15.4167C15.8307 15.1875 15.6432 15 15.4141 15ZM17.0807 6.66671C16.3906 6.66671 15.8307 7.2266 15.8307 7.91671C15.8307 8.1016 15.8724 8.27348 15.9453 8.43233L14.0599 9.56254C13.6589 9.80212 13.1406 9.66671 12.9089 9.26046L10.7865 5.54692C11.0651 5.31775 11.2474 4.974 11.2474 4.58337C11.2474 3.89327 10.6875 3.33337 9.99739 3.33337C9.30729 3.33337 8.74739 3.89327 8.74739 4.58337C8.74739 4.974 8.92969 5.31775 9.20833 5.54692L7.08594 9.26046C6.85417 9.66671 6.33333 9.80212 5.9349 9.56254L4.05208 8.43233C4.1224 8.27608 4.16667 8.1016 4.16667 7.91671C4.16667 7.2266 3.60677 6.66671 2.91667 6.66671C2.22656 6.66671 1.66406 7.2266 1.66406 7.91671C1.66406 8.60681 2.22396 9.16671 2.91406 9.16671C2.98177 9.16671 3.04948 9.15629 3.11458 9.14587L4.9974 14.1667H14.9974L16.8802 9.14587C16.9453 9.15629 17.013 9.16671 17.0807 9.16671C17.7708 9.16671 18.3307 8.60681 18.3307 7.91671C18.3307 7.2266 17.7708 6.66671 17.0807 6.66671Z"
+                        fill="#374151"
+                      />
+                    </svg>
+                    Pro
+                  </div>
+                )}
+                <div className="card-content">
+                  <div className="card-content-heading">
+                    {site.title.rendered.replace(/&#8211;|Gutenberg/g, "")}
+                  </div>
+                  <div className="card-content-para">
+                    {Array.isArray(site.pages) ? site.pages.length : 1}{" "}
+                    Templates
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     );
@@ -213,7 +228,6 @@ export function LayoutModal(props) {
       setSelectedPage(page);
     };
     const handleInstallPlugins = async (pluginsToInstall) => {
-    
       // Iterate over the plugins and enqueue them for installation
       for (const plugin of pluginsToInstall) {
         await new Promise((resolve) => {
@@ -228,11 +242,11 @@ export function LayoutModal(props) {
           });
         });
       }
-    
+
       // Check the queue after all installations are completed
       wp.updates.queueChecker();
     };
-    
+
     // const handleInstallPlugins = async (pluginsToInstall) => {
 
     //   // Iterate over the plugins and enqueue them for installation
@@ -368,12 +382,9 @@ export function LayoutModal(props) {
       });
     };
 
-    const importTemplate = async () => {
-      
-    };
+    const importTemplate = async () => {};
 
-    const import_page = async (site_url, page_id,clientId) => {
-      
+    const import_page = async (site_url, page_id, clientId) => {
       const currenturl =
         selectedSite.site_url + "/wp-json/wp/v2/pages/" + selectedPage.page_id;
       try {
@@ -391,7 +402,6 @@ export function LayoutModal(props) {
       } catch (error) {
         console.error(error);
       }
-
     };
 
     function importApiCall(content) {
@@ -410,15 +420,17 @@ export function LayoutModal(props) {
 
     async function handleImportButtonClick(clientId, site) {
       // console.groupCollapsed("IMPORT STARTED...");
-      let pluginsArray  = selectedSite.required_plugins;
-      const filteredPlugins = pluginsArray.filter(plugin => plugin.name !== "Responsive Block Editor Addons");
-      // handleInstallPlugins(filteredPlugins);
+      let pluginsArray = selectedSite.required_plugins;
+      const filteredPlugins = pluginsArray.filter(
+        (plugin) => plugin.name !== "Responsive Block Editor Addons"
+      );
+      handleInstallPlugins(filteredPlugins);
       if (selectedSite.demo_type === "free") {
         setImportStatus("Importing...");
-        import_page(selectedSite.site_url,selectedPage.page_id,clientId);
+        import_page(selectedSite.site_url, selectedPage.page_id, clientId);
       } else if (selectedSite.demo_type !== "free" && isProactive === true) {
         setImportStatus("Importing...");
-        import_page(selectedSite.site_url, selectedPage.page_id,clientId);
+        import_page(selectedSite.site_url, selectedPage.page_id, clientId);
       } else {
         window.open("https://cyberchimps.com/pricing/", "_blank");
       }
@@ -477,8 +489,7 @@ export function LayoutModal(props) {
         </div>
         <div className="rba-section-blocks-inner-div-buttons">
           <div className="rba-inner-div-bottom-site-title">
-            {(selectedSite.title.rendered).replace(/&#8211;|Gutenberg/g, '')}{" "
-            }
+            {selectedSite.title.rendered.replace(/&#8211;|Gutenberg/g, "")}{" "}
           </div>
           <div className="rba-section-blocks-inner-div-buttons-container">
             <button
@@ -500,7 +511,9 @@ export function LayoutModal(props) {
                     )
               }
             >
-              Preview '{(selectedSite.title.rendered).replace(/&#8211;|Gutenberg/g, '')}' Site
+              Preview '
+              {selectedSite.title.rendered.replace(/&#8211;|Gutenberg/g, "")}'
+              Site
             </button>
 
             <button
@@ -525,42 +538,56 @@ export function LayoutModal(props) {
     if (searchInput) {
       searchInput.value = "";
     }
-    setSearchQuery(prevSearchQuery => "");
-    setNoSearchResult(false)
-  }
+    setSearchQuery((prevSearchQuery) => "");
+    setNoSearchResult(false);
+  };
   const Noresultfound = () => {
     return (
-      <div className="rbea-no-search-result"  style={{width:"calc(100vw - 80px)",justifyContent:"center",display:"flex"}} >
+      <div
+        className="rbea-no-search-result"
+        style={{
+          width: "calc(100vw - 80px)",
+          justifyContent: "center",
+          display: "flex",
+        }}
+      >
         <h3>Sorry no results found.</h3>
-        <button onClick={() => { handleClearSearchInput() } } className="rbea-back-to-templates" >Back to Templates</button>
+        <button
+          onClick={() => {
+            handleClearSearchInput();
+          }}
+          className="rbea-back-to-templates"
+        >
+          Back to Templates
+        </button>
       </div>
     );
   };
   const checkForXMLUpdates = async () => {
     setShowToast(true);
-  
+
     return new Promise(async (resolve, reject) => {
       try {
         const response = await apiFetch({
           path: "custom/v1/responsive-pro-activation-status", // Replace with your actual endpoint
         });
-  
+
         // let xml_update = response && response.xml_update;
         let xml_update = true;
         setXmlUpdateStatus(xml_update);
         setShowToast(true);
-  
+
         if (xml_update) {
           const formData = new window.FormData();
           formData.append("action", "rbea_sync_library");
-  
+
           try {
             const response = await apiFetch({
               url: responsive_globals.ajax_url,
               method: "POST",
               body: formData,
             });
-  
+
             if (response.success) {
               // Assuming the response object contains the data you need
               const data = JSON.parse(response.data.filtered_data);
@@ -582,7 +609,7 @@ export function LayoutModal(props) {
       }
     });
   };
-  
+
   return (
     <Fragment key={"pattern-modal-" + props.clientId}>
       <Button
@@ -633,12 +660,12 @@ export function LayoutModal(props) {
                 <div className="modal-header">
                   <div className="rba-popup-searchform">
                     <input
-                    id="search-input-query"
+                      id="search-input-query"
                       className="rba-pop-up-search-button-input"
                       type="text"
                       placeholder={__("Search Templates...", "my-textdomain")}
                       onChange={(e) => {
-                        setSearchQuery(e.target.value)
+                        setSearchQuery(e.target.value);
                       }}
                     />
 

@@ -106,7 +106,7 @@
 .pages-tab-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 38px;
+  gap: 2.4rem;
 }
 .card-content {
   display: flex;
@@ -134,8 +134,7 @@
   color: #6d6d6d;
 }
 .rba-popup-card-component {
-  width: 331px;
-  height: 473px;
+  flex: 0 0 calc(25% - 1.8rem);  
   padding: 5px;
   box-shadow: 0px 0px 14px 0px #00000029;
   background: #ffffff;
@@ -324,7 +323,7 @@
 .toast .dashicons-dismiss:hover {
   color: red;
 }
-.rba-pop-up-search-button path:hover {
+.rba-pop-up-search-button:hover path {
   fill: #9ea0a1;
 }
 .rbea-no-search-result {
