@@ -1,3 +1,5 @@
+const formCheckBoxOptions = []
+
 const attributes = {
     block_id: {
       type: "string",
@@ -48,6 +50,10 @@ const attributes = {
     formInputInline: {
       type: "boolean",
       default: false,
+    },
+    formCheckBoxOptions: {
+      type: "array",
+      default: formCheckBoxOptions,
     }
   };
   

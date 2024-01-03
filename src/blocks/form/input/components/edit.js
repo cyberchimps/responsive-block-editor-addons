@@ -5,6 +5,7 @@ import classnames from "classnames";
 import Inspector from "./inspector";
 import EditorStyles from "./editor-styles";
 
+import { Disabled } from '@wordpress/components';
 /**
  * WordPress dependencies
  */
@@ -54,12 +55,41 @@ export default class Edit extends Component {
         formInputPlaceholder,
         formInputHideLabel,
         formInputDefaultValue,
+        formCheckBoxOptions,
       },
       setAttributes,
       mergeBlocks,
       insertBlocksAfter,
       onReplace,
     } = this.props;
+
+    const CheckBox = () => {
+      return (
+        <>
+        {formCheckBoxOptions.map((current, index) => {
+          return (
+            <div key={index} className="responsive-block-editor-addons-form-input-checkbox-container">
+              <Disabled>
+                <input type="checkbox" name={`rba-form-input-${block_id}`} id={`rba-form-input-${block_id}`} checked={current.checkboxValue} readOnly/>
+              </Disabled>
+              <label>
+                <RichText
+                  placeholder={__( 'Enter Option Label', 'otter-blocks' )}
+                  value={current.label}
+                  onChange={ (value) => {
+                    const updatedOptions = [ ...formCheckBoxOptions ];
+                    updatedOptions[index] = { ...updatedOptions[index], label: value };
+                    setAttributes({ formCheckBoxOptions: updatedOptions });
+                  }}
+                  tagName="div"
+                />
+              </label>
+            </div>
+          );
+        })}
+        </>
+      )
+    }
 
     return [
       <BlockControls key="controls">
@@ -101,6 +131,8 @@ export default class Edit extends Component {
               value={formInputDefaultValue}
               disabled
             />}
+
+          {formInputFieldType === 'checkbox' && CheckBox()}
 
           {formInputFieldType === 'textarea' &&
             <textarea

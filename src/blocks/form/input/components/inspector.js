@@ -7,6 +7,7 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 import InspectorTab from "../../../../components/InspectorTab";
 import InspectorTabs from "../../../../components/InspectorTabs";
+import { debounce } from 'lodash';
 
 // Import block components
 const { InspectorControls, PanelColorSettings, RichText } = wp.blockEditor
@@ -49,9 +50,71 @@ export default class Inspector extends Component {
         formInputDefaultValue,
         formInputLabelColor,
         formInputInline,
+        formCheckBoxOptions,
       },
       setAttributes,
     } = this.props;
+
+    const checkboxOptions = {
+      checkboxValue: false,
+      placeholder: __( 'Enter Option Label', 'responsive-block-editor-addons' ),
+      label: '',
+    }
+    
+    const debouncedSet = debounce( setAttributes, 800 );
+
+    const CheckBox = () => {
+      return (
+        <>
+        <Text variant="title.small" as="h3">{__("Options", "responsive-block-editor-addons")}</Text>
+        <div className="responsive-block-editor-addons-checkbox-options-container">
+          {formCheckBoxOptions.map((current, index) => {
+            return (
+              <div className="responsive-block-editor-addons-checkbox-options-draggable" draggable="true" key={index}>
+                <div className="responsive-block-editor-addons-checkbox-options">
+                  <div className="responsive-block-editor-addons-checkbox-option">
+                    <CheckboxControl className="responsive-block-editor-addons-checkbox-options__checkbox" checked={ current.checkboxValue } onChange={ (value) => {
+                      let duplicateOptions = [...formCheckBoxOptions];
+                      duplicateOptions[index].checkboxValue = !current.checkboxValue;
+                      setAttributes({ formCheckBoxOptions: duplicateOptions });
+                    }}/>
+                    <div className="responsive-block-editor-addons-checkbox-options__drag">
+                      <span></span>
+                    </div>
+                    <RichText
+                      placeholder={current.placeholder}
+                      className="responsive-block-editor-addons-checkbox-options__text"
+                      value={ current.label }
+                      onChange={ (value) => {
+                        const updatedOptions = [ ...formCheckBoxOptions ];
+                        updatedOptions[index] = { ...updatedOptions[index], label: value };
+                        debouncedSet({ formCheckBoxOptions: updatedOptions });
+                      }}
+                      tagName="span"
+                    />
+                    <Button 
+                      className="responsive-block-editor-addons-checkbox-options__button" 
+                      icon="no-alt"
+                      onClick={() => {
+                        console.log(index)
+                        let updatedOptions = [...formCheckBoxOptions];
+                        updatedOptions.splice(index, 1);
+                        setAttributes({ formCheckBoxOptions: updatedOptions });
+                      }}>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        <Button 
+          onClick={() => setAttributes({ formCheckBoxOptions: [...formCheckBoxOptions, checkboxOptions] })} className="responsive-block-editor-addons-checkbox__add-options"
+          variant="secondary">{__( 'Add Option', 'responsive-block-editor-addons' )}
+        </Button>
+        </>
+      )
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -89,24 +152,7 @@ export default class Inspector extends Component {
                 onChange={(value) => setAttributes({ formInputHideLabel: !formInputHideLabel }) }
               />
 
-              {formInputFieldType === 'checkbox' && <>
-              <Text variant="title.small" as="h3">{__("Options", "responsive-block-editor-addons")}</Text>
-              <div className="responsive-block-editor-addons-checkbox-options">
-                <div className="responsive-block-editor-addons-checkbox-option">
-                  <CheckboxControl className="responsive-block-editor-addons-checkbox-options__checkbox" checked={ formInputHideLabel } onChange={ (value) => setAttributes({ formInputHideLabel: !formInputHideLabel }) }/>
-                  <div className="responsive-block-editor-addons-checkbox-options__drag">
-                    <span></span>
-                  </div>
-                  <RichText
-                    placeholder={ __( 'Enter Option Label', 'responsive-block-editor-addons' ) }
-                    className="responsive-block-editor-addons-checkbox-options__text"
-                    value={ formInputFieldLabel }
-                    onChange={ value => setAttributes({ formInputFieldLabel: value }) }
-                    tagName="span"
-                  />
-                  <Button className="responsive-block-editor-addons-checkbox-options__button" icon="no-alt"></Button>
-                </div>
-              </div></>}
+              {formInputFieldType === 'checkbox' && CheckBox()}
 
               {formInputFieldType !== 'checkbox' &&
               <ToggleGroupControl label="Width" value={formInputWidth} onChange={(value) => setAttributes({ formInputWidth: value }) } isBlock>
