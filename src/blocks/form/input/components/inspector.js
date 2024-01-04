@@ -8,6 +8,8 @@ const { Component, Fragment } = wp.element;
 import InspectorTab from "../../../../components/InspectorTab";
 import InspectorTabs from "../../../../components/InspectorTabs";
 import { debounce } from 'lodash';
+import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 
 // Import block components
 const { InspectorControls, PanelColorSettings, RichText } = wp.blockEditor
@@ -63,54 +65,78 @@ export default class Inspector extends Component {
     
     const debouncedSet = debounce( setAttributes, 800 );
 
+    const DragHandle = SortableHandle(() => <div className="responsive-block-editor-addons-checkbox-sort-options__drag"><span className="responsive-block-editor-addons-checkbox-sort-options__dragspan"></span></div>);
+
+    const SortableCheckboxOption = SortableElement(({current, position}) => {
+      return (
+        <div className="responsive-block-editor-addons-checkbox-sort-option">
+          <CheckboxControl className="responsive-block-editor-addons-checkbox-sort-options__checkbox" checked={ current.checkboxValue } onChange={ (value) => {
+            let duplicateOptions = [...formCheckBoxOptions];
+            duplicateOptions[position].checkboxValue = !current.checkboxValue;
+            setAttributes({ formCheckBoxOptions: duplicateOptions });
+          }}/>
+          <DragHandle />
+          <RichText
+            placeholder={current.placeholder}
+            className="responsive-block-editor-addons-checkbox-sort-options__text"
+            value={current.label}
+            onChange={(value) => {
+              const updatedOptions = [...formCheckBoxOptions];
+              updatedOptions[position] = { ...updatedOptions[position], label: value };
+              debouncedSet({ formCheckBoxOptions: updatedOptions });
+            }}
+            tagName="span"
+          />
+
+          <Button 
+            className="responsive-block-editor-addons-checkbox-sort-options__button" 
+            icon="no-alt"
+            onClick={() => {
+              let updatedOptions = [...formCheckBoxOptions];
+              updatedOptions.splice(position, 1);
+              setAttributes({ formCheckBoxOptions: updatedOptions });
+            }}>
+          </Button>
+        </div>
+      );
+    });
+    
+    const SortableCheckboxList = SortableContainer(() => {
+      return (
+        <div className="responsive-block-editor-addons-checkbox-sort-options-container">
+          {formCheckBoxOptions.map((current, index) => (
+            <SortableCheckboxOption
+              key={index}
+              index={index}
+              current={current}
+              position={index}
+            />
+          ))}
+        </div>
+      );
+    });
+
     const CheckBox = () => {
       return (
         <>
         <Text variant="title.small" as="h3">{__("Options", "responsive-block-editor-addons")}</Text>
-        <div className="responsive-block-editor-addons-checkbox-options-container">
-          {formCheckBoxOptions.map((current, index) => {
-            return (
-              <div className="responsive-block-editor-addons-checkbox-options-draggable" draggable="true" key={index}>
-                <div className="responsive-block-editor-addons-checkbox-options">
-                  <div className="responsive-block-editor-addons-checkbox-option">
-                    <CheckboxControl className="responsive-block-editor-addons-checkbox-options__checkbox" checked={ current.checkboxValue } onChange={ (value) => {
-                      let duplicateOptions = [...formCheckBoxOptions];
-                      duplicateOptions[index].checkboxValue = !current.checkboxValue;
-                      setAttributes({ formCheckBoxOptions: duplicateOptions });
-                    }}/>
-                    <div className="responsive-block-editor-addons-checkbox-options__drag">
-                      <span></span>
-                    </div>
-                    <RichText
-                      placeholder={current.placeholder}
-                      className="responsive-block-editor-addons-checkbox-options__text"
-                      value={ current.label }
-                      onChange={ (value) => {
-                        const updatedOptions = [ ...formCheckBoxOptions ];
-                        updatedOptions[index] = { ...updatedOptions[index], label: value };
-                        debouncedSet({ formCheckBoxOptions: updatedOptions });
-                      }}
-                      tagName="span"
-                    />
-                    <Button 
-                      className="responsive-block-editor-addons-checkbox-options__button" 
-                      icon="no-alt"
-                      onClick={() => {
-                        console.log(index)
-                        let updatedOptions = [...formCheckBoxOptions];
-                        updatedOptions.splice(index, 1);
-                        setAttributes({ formCheckBoxOptions: updatedOptions });
-                      }}>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        <Button 
-          onClick={() => setAttributes({ formCheckBoxOptions: [...formCheckBoxOptions, checkboxOptions] })} className="responsive-block-editor-addons-checkbox__add-options"
-          variant="secondary">{__( 'Add Option', 'responsive-block-editor-addons' )}
+        <SortableCheckboxList
+          onSortEnd={({ oldIndex, newIndex }) => {
+            let updatedOptions = [ ...formCheckBoxOptions ];
+            updatedOptions = arrayMove(formCheckBoxOptions, oldIndex, newIndex);
+            setAttributes({ formCheckBoxOptions: updatedOptions });
+            console.log(formCheckBoxOptions)
+          }}
+          axis="y"
+          lockAxis="y"
+          useDragHandle
+        />
+        <Button
+          onClick={() => setAttributes({ formCheckBoxOptions: [...formCheckBoxOptions, checkboxOptions] })}
+          className="responsive-block-editor-addons-checkbox__add-options"
+          variant="secondary"
+        >
+          {__("Add Option", "responsive-block-editor-addons")}
         </Button>
         </>
       )
