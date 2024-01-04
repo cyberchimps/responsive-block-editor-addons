@@ -6,8 +6,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=11681"
         },
-        "modified": "2023-12-08T12:35:41",
-        "modified_gmt": "2023-12-08T12:35:41",
+        "modified": "2024-01-04T04:41:25",
+        "modified_gmt": "2024-01-04T04:41:25",
         "slug": "gutenberg-christmas-decor",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -19,7 +19,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 11682,
+        "featured_media": 12413,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -27,7 +27,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gutenberg-christmas-decor",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/302\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Christmas-Decor.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Christmas-Decor.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -67,7 +67,7 @@
             {
                 "page_id": "7",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Christmas-Decor.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Christmas-Decor.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -352,7 +352,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11682"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12413"
                 }
             ],
             "wp:attachment": [
@@ -376,8 +376,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=11650"
         },
-        "modified": "2023-12-01T06:36:38",
-        "modified_gmt": "2023-12-01T06:36:38",
+        "modified": "2024-01-03T11:43:15",
+        "modified_gmt": "2024-01-03T11:43:15",
         "slug": "gutenberg-halloween-party",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -389,7 +389,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 11656,
+        "featured_media": 12292,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -397,7 +397,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ghalloween-party",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/291\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Halloween-Party.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Halloween-Party-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -429,7 +429,7 @@
             {
                 "page_id": "9",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Halloween-Party.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/12\/Gutenberg-Halloween-Party-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -687,7 +687,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11656"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12292"
                 }
             ],
             "wp:attachment": [
@@ -711,8 +711,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=11537"
         },
-        "modified": "2023-11-22T11:09:09",
-        "modified_gmt": "2023-11-22T11:09:09",
+        "modified": "2024-01-02T10:27:56",
+        "modified_gmt": "2024-01-02T10:27:56",
         "slug": "gutenberg-farmer",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -724,7 +724,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 11538,
+        "featured_media": 12152,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -732,7 +732,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gfarmer",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/295\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/11\/Farmer.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/11\/Farmer-1-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -766,7 +766,7 @@
             {
                 "page_id": "7",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/11\/Farmer.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/11\/Farmer-1-1.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -1046,7 +1046,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11538"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12152"
                 }
             ],
             "wp:attachment": [
@@ -1393,8 +1393,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=11451"
         },
-        "modified": "2023-12-05T04:27:52",
-        "modified_gmt": "2023-12-05T04:27:52",
+        "modified": "2024-01-02T12:19:25",
+        "modified_gmt": "2024-01-02T12:19:25",
         "slug": "gutenberg-car-rental",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -1406,7 +1406,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 11455,
+        "featured_media": 12295,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -1414,7 +1414,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcar-rental",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/293\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Car-Rental-1.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Car-Rental.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -1446,7 +1446,7 @@
             {
                 "page_id": "9",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Car-Rental-1.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Car-Rental.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -1669,7 +1669,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11455"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12295"
                 }
             ],
             "wp:attachment": [
@@ -1693,8 +1693,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=11398"
         },
-        "modified": "2023-11-10T06:48:32",
-        "modified_gmt": "2023-11-10T06:48:32",
+        "modified": "2024-01-02T12:21:25",
+        "modified_gmt": "2024-01-02T12:21:25",
         "slug": "gutenberg-nature",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -1706,7 +1706,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 11399,
+        "featured_media": 12297,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -1714,7 +1714,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gnature",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/292\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Nature-Home1.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Nature.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -1749,7 +1749,7 @@
             {
                 "page_id": "16",
                 "page_title": "Home 1",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Nature-Home1.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/10\/Gutenberg-Nature.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -2005,7 +2005,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11399"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12297"
                 }
             ],
             "wp:attachment": [
@@ -2029,8 +2029,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5851"
         },
-        "modified": "2023-11-10T05:27:03",
-        "modified_gmt": "2023-11-10T05:27:03",
+        "modified": "2024-01-02T12:24:13",
+        "modified_gmt": "2024-01-02T12:24:13",
         "slug": "gutenberg-watch-store",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -2042,7 +2042,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5853,
+        "featured_media": 12299,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -2050,7 +2050,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gwatch-store",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/257\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Home-Gutenberg-Watch-Store.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Watch-Store.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -2093,7 +2093,7 @@
             {
                 "page_id": "13",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Home-Gutenberg-Watch-Store.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Watch-Store.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -2374,7 +2374,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5853"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12299"
                 }
             ],
             "wp:attachment": [
@@ -2686,8 +2686,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5835"
         },
-        "modified": "2023-11-10T05:59:57",
-        "modified_gmt": "2023-11-10T05:59:57",
+        "modified": "2024-01-02T12:27:50",
+        "modified_gmt": "2024-01-02T12:27:50",
         "slug": "gutenberg-florist",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -2699,7 +2699,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5836,
+        "featured_media": 12301,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -2707,7 +2707,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gflorist",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/251\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Florist.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Florist.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -2750,7 +2750,7 @@
             {
                 "page_id": "8",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Florist.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Florist.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -3071,7 +3071,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5836"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12301"
                 }
             ],
             "wp:attachment": [
@@ -3095,8 +3095,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5827"
         },
-        "modified": "2023-11-10T05:31:55",
-        "modified_gmt": "2023-11-10T05:31:55",
+        "modified": "2024-01-02T12:33:57",
+        "modified_gmt": "2024-01-02T12:33:57",
         "slug": "gutenberg-halloween",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -3108,7 +3108,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5828,
+        "featured_media": 12303,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -3116,7 +3116,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ghalloween",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/249\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Halloween.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Halloween.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -3150,7 +3150,7 @@
             {
                 "page_id": "9",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Halloween.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Halloween.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -3338,7 +3338,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5828"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12303"
                 }
             ],
             "wp:attachment": [
@@ -3707,8 +3707,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5792"
         },
-        "modified": "2023-11-10T06:05:58",
-        "modified_gmt": "2023-11-10T06:05:58",
+        "modified": "2024-01-02T12:41:48",
+        "modified_gmt": "2024-01-02T12:41:48",
         "slug": "gutenberg-painter",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -3720,7 +3720,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5793,
+        "featured_media": 12311,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -3728,7 +3728,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gpainter",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/248\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Painter-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Painter-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -3769,7 +3769,7 @@
             {
                 "page_id": "413",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Painter-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Painter-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -4070,7 +4070,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5793"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12311"
                 }
             ],
             "wp:attachment": [
@@ -4094,8 +4094,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5780"
         },
-        "modified": "2023-11-10T06:20:41",
-        "modified_gmt": "2023-11-10T06:20:41",
+        "modified": "2024-01-02T12:43:17",
+        "modified_gmt": "2024-01-02T12:43:17",
         "slug": "gutenberg-seo-expert",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -4107,7 +4107,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5781,
+        "featured_media": 12313,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -4115,7 +4115,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gseo-expert",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/246\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-SEO-Expert-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-SEO-Expert-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -4153,7 +4153,7 @@
             {
                 "page_id": "545",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-SEO-Expert-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-SEO-Expert-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -4432,7 +4432,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5781"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12313"
                 }
             ],
             "wp:attachment": [
@@ -4456,8 +4456,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5771"
         },
-        "modified": "2023-11-10T06:10:22",
-        "modified_gmt": "2023-11-10T06:10:22",
+        "modified": "2024-01-02T12:56:25",
+        "modified_gmt": "2024-01-02T12:56:25",
         "slug": "gutenberg-entrepreneur-portfolio",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -4469,7 +4469,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5773,
+        "featured_media": 12315,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -4477,7 +4477,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gentrepreneur",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/245\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Entrepreneur-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Entrepreneur-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -4514,7 +4514,7 @@
             {
                 "page_id": "18",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Entrepreneur-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2023\/02\/Gutenberg-Entrepreneur-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -4784,7 +4784,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5773"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12315"
                 }
             ],
             "wp:attachment": [
@@ -4808,8 +4808,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5616"
         },
-        "modified": "2023-12-22T10:17:55",
-        "modified_gmt": "2023-12-22T10:17:55",
+        "modified": "2024-01-02T12:58:06",
+        "modified_gmt": "2024-01-02T12:58:06",
         "slug": "gutenberg-juice-shop",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -4821,7 +4821,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5617,
+        "featured_media": 12317,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -4829,7 +4829,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gjuice-shop",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/229\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Juice-Shop-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Juice-Shop-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -4873,7 +4873,7 @@
             {
                 "page_id": "23",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Juice-Shop-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Juice-Shop-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -5223,7 +5223,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5617"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12317"
                 }
             ],
             "wp:attachment": [
@@ -5247,8 +5247,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5597"
         },
-        "modified": "2023-12-11T10:03:40",
-        "modified_gmt": "2023-12-11T10:03:40",
+        "modified": "2024-01-02T13:00:36",
+        "modified_gmt": "2024-01-02T13:00:36",
         "slug": "gutenberg-coldrock",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -5260,7 +5260,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5600,
+        "featured_media": 12319,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -5268,7 +5268,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcoldrock",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/224\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/gcoldrock-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-ColdRock-\u2013-Just-another-Cyberchimps-Sites-site-2.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -5323,7 +5323,7 @@
             {
                 "page_id": "1519",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/gcoldrock-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-ColdRock-\u2013-Just-another-Cyberchimps-Sites-site-2.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -5713,7 +5713,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5600"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12319"
                 }
             ],
             "wp:attachment": [
@@ -5737,8 +5737,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5589"
         },
-        "modified": "2023-11-10T05:15:37",
-        "modified_gmt": "2023-11-10T05:15:37",
+        "modified": "2024-01-02T13:32:10",
+        "modified_gmt": "2024-01-02T13:32:10",
         "slug": "gutenberg-hr-agency",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -5750,7 +5750,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5590,
+        "featured_media": 12321,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -5758,7 +5758,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ghr-agency",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/226\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Hr-Agency-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Hr-Agency-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -5804,7 +5804,7 @@
             {
                 "page_id": "402",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Hr-Agency-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/09\/Gutenberg-Hr-Agency-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -6043,7 +6043,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5590"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12321"
                 }
             ],
             "wp:attachment": [
@@ -6067,8 +6067,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5562"
         },
-        "modified": "2023-11-10T05:08:29",
-        "modified_gmt": "2023-11-10T05:08:29",
+        "modified": "2024-01-03T05:19:44",
+        "modified_gmt": "2024-01-03T05:19:44",
         "slug": "gutenberg-college",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -6080,7 +6080,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5563,
+        "featured_media": 12323,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -6088,7 +6088,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcollege",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/223\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-College-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-College-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -6128,7 +6128,7 @@
             {
                 "page_id": "54",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-College-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-College-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -6425,7 +6425,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5563"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12323"
                 }
             ],
             "wp:attachment": [
@@ -6449,8 +6449,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5533"
         },
-        "modified": "2023-11-10T04:41:16",
-        "modified_gmt": "2023-11-10T04:41:16",
+        "modified": "2024-01-03T05:21:33",
+        "modified_gmt": "2024-01-03T05:21:33",
         "slug": "gutenberg-dance-studio",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -6462,7 +6462,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5534,
+        "featured_media": 12325,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -6470,7 +6470,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gdance-studio",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/219\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Dance-Studio-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Dance-Studio-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -6521,7 +6521,7 @@
             {
                 "page_id": "28",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Dance-Studio-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Dance-Studio-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -7099,7 +7099,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5534"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12325"
                 }
             ],
             "wp:attachment": [
@@ -7123,8 +7123,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5525"
         },
-        "modified": "2023-11-10T04:52:10",
-        "modified_gmt": "2023-11-10T04:52:10",
+        "modified": "2024-01-04T04:44:25",
+        "modified_gmt": "2024-01-04T04:44:25",
         "slug": "gutenberg-nail-club",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -7136,7 +7136,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5526,
+        "featured_media": 12415,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -7144,7 +7144,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gnail-club",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/220\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/ccreadysites-cyberchimps-gnail-club-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Nail-Club-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -7191,7 +7191,7 @@
             {
                 "page_id": "1192",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/ccreadysites-cyberchimps-gnail-club-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Nail-Club-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -7639,7 +7639,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5526"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12415"
                 }
             ],
             "wp:attachment": [
@@ -7663,8 +7663,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5512"
         },
-        "modified": "2023-11-10T04:26:49",
-        "modified_gmt": "2023-11-10T04:26:49",
+        "modified": "2024-01-03T05:23:33",
+        "modified_gmt": "2024-01-03T05:23:33",
         "slug": "gutenberg-chimpshoes",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -7676,7 +7676,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5513,
+        "featured_media": 12327,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -7684,7 +7684,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gchimpshoes",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/214\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-ChimpShoes-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-ChimpShoes-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -7728,7 +7728,7 @@
             {
                 "page_id": "12",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-ChimpShoes-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-ChimpShoes-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -8050,7 +8050,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5513"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12327"
                 }
             ],
             "wp:attachment": [
@@ -8074,8 +8074,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5505"
         },
-        "modified": "2023-11-10T04:32:22",
-        "modified_gmt": "2023-11-10T04:32:22",
+        "modified": "2024-01-04T04:45:55",
+        "modified_gmt": "2024-01-04T04:45:55",
         "slug": "gutenberg-painto",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -8087,7 +8087,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5510,
+        "featured_media": 12417,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -8095,7 +8095,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gpainto",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/213\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/ccreadysites-cyberchimps-gpainto-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Painto-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -8140,7 +8140,7 @@
             {
                 "page_id": "973",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/ccreadysites-cyberchimps-gpainto-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Painto-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -8546,7 +8546,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5510"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12417"
                 }
             ],
             "wp:attachment": [
@@ -8570,8 +8570,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5496"
         },
-        "modified": "2023-11-10T04:35:08",
-        "modified_gmt": "2023-11-10T04:35:08",
+        "modified": "2024-01-04T04:47:44",
+        "modified_gmt": "2024-01-04T04:47:44",
         "slug": "gutenberg-johnny-bikes",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -8583,7 +8583,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5499,
+        "featured_media": 12419,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -8591,7 +8591,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gjohnny-bikes",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/217\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/ccreadysites-cyberchimps-gjohnny-bikes-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Johnny-Bikes-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -8631,7 +8631,7 @@
             {
                 "page_id": "772",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/ccreadysites-cyberchimps-gjohnny-bikes-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/08\/Gutenberg-Johnny-Bikes-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -9075,7 +9075,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5499"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12419"
                 }
             ],
             "wp:attachment": [
@@ -9099,8 +9099,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5442"
         },
-        "modified": "2022-06-30T07:12:34",
-        "modified_gmt": "2022-06-30T07:12:34",
+        "modified": "2024-01-02T11:00:27",
+        "modified_gmt": "2024-01-02T11:00:27",
         "slug": "gutenberg-car-refresh",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -9112,7 +9112,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5444,
+        "featured_media": 12186,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -9120,7 +9120,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcar-refresh",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/208\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Car-Refresh-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Car-Refresh-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -9158,7 +9158,7 @@
             {
                 "page_id": "16",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Car-Refresh-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Car-Refresh-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -9462,7 +9462,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5444"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12186"
                 }
             ],
             "wp:attachment": [
@@ -9486,8 +9486,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5433"
         },
-        "modified": "2023-11-14T03:28:20",
-        "modified_gmt": "2023-11-14T03:28:20",
+        "modified": "2024-01-02T11:21:48",
+        "modified_gmt": "2024-01-02T11:21:48",
         "slug": "gutenberg-gaming-box",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -9499,7 +9499,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5435,
+        "featured_media": 12190,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -9507,7 +9507,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ggaming-box",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/209\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/ccreadysites-cyberchimps-ggaming-box-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gaming-Box-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -9550,7 +9550,7 @@
             {
                 "page_id": "1208",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/ccreadysites-cyberchimps-ggaming-box-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gaming-Box-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "woocommerce",
                     "responsive-block-editor-addons"
@@ -10005,7 +10005,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5435"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12190"
                 }
             ],
             "wp:attachment": [
@@ -10029,8 +10029,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5380"
         },
-        "modified": "2023-11-10T04:12:57",
-        "modified_gmt": "2023-11-10T04:12:57",
+        "modified": "2024-01-02T11:24:11",
+        "modified_gmt": "2024-01-02T11:24:11",
         "slug": "gutenberg-automotive",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -10042,7 +10042,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5382,
+        "featured_media": 12219,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -10050,7 +10050,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gautomotive",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/205\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/gautomotive-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Automotive-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -10092,7 +10092,7 @@
             {
                 "page_id": "1157",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/gautomotive-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Automotive-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -10455,7 +10455,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5382"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12219"
                 }
             ],
             "wp:attachment": [
@@ -10479,8 +10479,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5371"
         },
-        "modified": "2023-11-10T04:09:49",
-        "modified_gmt": "2023-11-10T04:09:49",
+        "modified": "2024-01-03T05:26:37",
+        "modified_gmt": "2024-01-03T05:26:37",
         "slug": "gutenberg-fitness-store",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -10492,7 +10492,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5373,
+        "featured_media": 12329,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -10500,7 +10500,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gfit-store",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/203\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Fitness-Store-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Fitness-Store-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -10548,7 +10548,7 @@
             {
                 "page_id": "12",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Fitness-Store-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Fitness-Store-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "elementor",
                     "wpforms-lite",
@@ -10838,7 +10838,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5373"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12329"
                 }
             ],
             "wp:attachment": [
@@ -10862,8 +10862,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5338"
         },
-        "modified": "2023-11-09T11:53:03",
-        "modified_gmt": "2023-11-09T11:53:03",
+        "modified": "2024-01-03T05:32:17",
+        "modified_gmt": "2024-01-03T05:32:17",
         "slug": "gutenberg-nature-leaf",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -10875,7 +10875,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5339,
+        "featured_media": 12331,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -10883,7 +10883,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gnature-leaf",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/200\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/gnature-leaf-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Nature-Leaf-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -10926,7 +10926,7 @@
             {
                 "page_id": "920",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/gnature-leaf-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Nature-Leaf-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "woocommerce",
                     "responsive-block-editor-addons"
@@ -11292,7 +11292,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5339"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12331"
                 }
             ],
             "wp:attachment": [
@@ -11316,8 +11316,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5326"
         },
-        "modified": "2022-06-13T10:53:49",
-        "modified_gmt": "2022-06-13T10:53:49",
+        "modified": "2024-01-03T06:02:51",
+        "modified_gmt": "2024-01-03T06:02:51",
         "slug": "gutenberg-travel-go",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -11329,7 +11329,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5327,
+        "featured_media": 12334,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -11337,7 +11337,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtravel-go",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/198\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Travel-Go-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Travel-Go-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -11381,7 +11381,7 @@
             {
                 "page_id": "340",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Travel-Go-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/06\/Gutenberg-Travel-Go-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -11660,7 +11660,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5327"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12334"
                 }
             ],
             "wp:attachment": [
@@ -11684,8 +11684,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5313"
         },
-        "modified": "2023-11-09T11:46:47",
-        "modified_gmt": "2023-11-09T11:46:47",
+        "modified": "2024-01-02T11:35:09",
+        "modified_gmt": "2024-01-02T11:35:09",
         "slug": "gutenberg-book-author",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -11697,7 +11697,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5315,
+        "featured_media": 12225,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -11705,7 +11705,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gbook-author",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/197\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/gbook-author-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Book-Author-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -11753,7 +11753,7 @@
             {
                 "page_id": "1397",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/gbook-author-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Book-Author-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -12189,7 +12189,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5315"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12225"
                 }
             ],
             "wp:attachment": [
@@ -12213,8 +12213,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5292"
         },
-        "modified": "2022-05-24T12:47:04",
-        "modified_gmt": "2022-05-24T12:47:04",
+        "modified": "2024-01-03T06:04:36",
+        "modified_gmt": "2024-01-03T06:04:36",
         "slug": "gutenberg-jewel-house",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -12226,7 +12226,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5293,
+        "featured_media": 12336,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -12234,7 +12234,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gjewel-house",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/194\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Jewel-House-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Jewel-House-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -12275,7 +12275,7 @@
             {
                 "page_id": "137",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Jewel-House-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Jewel-House-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -12607,7 +12607,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5293"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12336"
                 }
             ],
             "wp:attachment": [
@@ -12631,8 +12631,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5275"
         },
-        "modified": "2023-11-09T11:20:15",
-        "modified_gmt": "2023-11-09T11:20:15",
+        "modified": "2024-01-03T06:06:11",
+        "modified_gmt": "2024-01-03T06:06:11",
         "slug": "gutenberg-coffee-plaza",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -12644,7 +12644,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5291,
+        "featured_media": 12338,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -12652,7 +12652,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcoffee-plaza",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/193\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/gcoffee-plaza-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Coffee-Plaza-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -12690,7 +12690,7 @@
             {
                 "page_id": "1796",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/gcoffee-plaza-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Coffee-Plaza-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -13171,7 +13171,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5291"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12338"
                 }
             ],
             "wp:attachment": [
@@ -13195,8 +13195,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5261"
         },
-        "modified": "2023-11-09T05:01:51",
-        "modified_gmt": "2023-11-09T05:01:51",
+        "modified": "2024-01-03T06:07:50",
+        "modified_gmt": "2024-01-03T06:07:50",
         "slug": "gutenberg-hair-studio",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -13208,7 +13208,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5263,
+        "featured_media": 12339,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -13216,7 +13216,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ghair-studio",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/190\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Hair-Studio-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Hair-Studio-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -13257,7 +13257,7 @@
             {
                 "page_id": "1530",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Hair-Studio-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/05\/Gutenberg-Hair-Studio-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -13632,7 +13632,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5263"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12339"
                 }
             ],
             "wp:attachment": [
@@ -13656,8 +13656,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5194"
         },
-        "modified": "2022-04-13T11:45:24",
-        "modified_gmt": "2022-04-13T11:45:24",
+        "modified": "2024-01-03T06:09:32",
+        "modified_gmt": "2024-01-03T06:09:32",
         "slug": "gutenberg-tiny-tots",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -13669,7 +13669,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5196,
+        "featured_media": 12341,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -13677,7 +13677,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtiny-tots",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/187\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/gutenberg-tiny-tots-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/Gutenberg-Tiny-Tots-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -13725,7 +13725,7 @@
             {
                 "page_id": "2833",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/gutenberg-tiny-tots-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/Gutenberg-Tiny-Tots-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -14170,7 +14170,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5196"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12341"
                 }
             ],
             "wp:attachment": [
@@ -14786,8 +14786,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5166"
         },
-        "modified": "2023-11-09T10:24:23",
-        "modified_gmt": "2023-11-09T10:24:23",
+        "modified": "2024-01-03T06:22:44",
+        "modified_gmt": "2024-01-03T06:22:44",
         "slug": "gutenberg-edukids",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -14799,7 +14799,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5177,
+        "featured_media": 12343,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -14807,7 +14807,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gedukids",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/186\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/gutenberg-edukids-home1-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/Gutenberg-Edukids-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -14864,7 +14864,7 @@
             {
                 "page_id": "3829",
                 "page_title": "Home1",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/gutenberg-edukids-home1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/04\/Gutenberg-Edukids-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -15271,7 +15271,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5177"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12343"
                 }
             ],
             "wp:attachment": [
@@ -15742,8 +15742,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5108"
         },
-        "modified": "2023-11-09T10:19:51",
-        "modified_gmt": "2023-11-09T10:19:51",
+        "modified": "2024-01-03T09:11:23",
+        "modified_gmt": "2024-01-03T09:11:23",
         "slug": "gutenberg-toy-delivery-pro",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -15755,7 +15755,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5113,
+        "featured_media": 12347,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -15763,7 +15763,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtoy-delivery-pro",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/182\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Toy-Delivery-Home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Toy-Delivery-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -15804,7 +15804,7 @@
             {
                 "page_id": "1094",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Toy-Delivery-Home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Toy-Delivery-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -16233,7 +16233,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5113"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12347"
                 }
             ],
             "wp:attachment": [
@@ -16257,8 +16257,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5092"
         },
-        "modified": "2023-11-09T10:33:14",
-        "modified_gmt": "2023-11-09T10:33:14",
+        "modified": "2024-01-03T09:13:11",
+        "modified_gmt": "2024-01-03T09:13:11",
         "slug": "gutenberg-portfolio",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -16270,7 +16270,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5097,
+        "featured_media": 12350,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -16278,7 +16278,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gportfolio",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/181\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/gutenberg-portfolio-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Portfolio-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -16495,7 +16495,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5097"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12350"
                 }
             ],
             "wp:attachment": [
@@ -16519,8 +16519,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5077"
         },
-        "modified": "2023-11-09T11:04:32",
-        "modified_gmt": "2023-11-09T11:04:32",
+        "modified": "2024-01-03T09:16:36",
+        "modified_gmt": "2024-01-03T09:16:36",
         "slug": "gutenberg-digital-marketing-agency",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -16532,7 +16532,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5082,
+        "featured_media": 12353,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -16540,7 +16540,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gdigital-marketing-agency",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/178\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/gutenberg-digital-marketing-agency-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Digital-Marketing-Agency-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -16577,7 +16577,7 @@
             {
                 "page_id": "1349",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/gutenberg-digital-marketing-agency-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Digital-Marketing-Agency-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -16955,7 +16955,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5082"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12353"
                 }
             ],
             "wp:attachment": [
@@ -16979,8 +16979,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5062"
         },
-        "modified": "2023-11-09T11:02:57",
-        "modified_gmt": "2023-11-09T11:02:57",
+        "modified": "2024-01-03T09:18:35",
+        "modified_gmt": "2024-01-03T09:18:35",
         "slug": "gutenberg-electronics-store",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -16992,7 +16992,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5064,
+        "featured_media": 12355,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -17000,7 +17000,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gelectronics-store",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/177\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/gutenberg-electronics-store-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Electronics-Store-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -17040,7 +17040,7 @@
             {
                 "page_id": "894",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/gutenberg-electronics-store-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/03\/Gutenberg-Electronics-Store-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -17332,7 +17332,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5064"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12355"
                 }
             ],
             "wp:attachment": [
@@ -17356,8 +17356,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4050"
         },
-        "modified": "2023-11-09T10:02:41",
-        "modified_gmt": "2023-11-09T10:02:41",
+        "modified": "2024-01-04T06:00:21",
+        "modified_gmt": "2024-01-04T06:00:21",
         "slug": "one-page-business-gutenberg-2",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -17369,7 +17369,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4051,
+        "featured_media": 12357,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -17377,7 +17377,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gone-page-business",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/129\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/Gutenberg-One-Page-Business-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-One-Page-Business-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -17408,7 +17408,19 @@
         ],
         "container_template": false,
         "required_pro_plugins": false,
-        "allow_pages": false,
+        "allow_pages": true,
+        "pages": [
+            {
+                "page_id": "326",
+                "page_title": "Home",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-One-Page-Business-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
+                "free_plugins": [
+                    "responsive-block-editor-addons"
+                ],
+                "includes_wp_forms": false,
+                "pro_plugins": []
+            }
+        ],
         "check_plugins_installed": false,
         "demo_type": "pro",
         "page_builder": "gutenberg",
@@ -17584,7 +17596,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4051"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12357"
                 }
             ],
             "wp:attachment": [
@@ -17608,8 +17620,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4685"
         },
-        "modified": "2023-11-09T10:07:03",
-        "modified_gmt": "2023-11-09T10:07:03",
+        "modified": "2024-01-03T09:26:39",
+        "modified_gmt": "2024-01-03T09:26:39",
         "slug": "gutenberg-travel-blogger",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -17621,7 +17633,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4690,
+        "featured_media": 12360,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -17629,7 +17641,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtravel-blogger",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/130\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-home-1-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Travel-Blogger-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -17668,7 +17680,7 @@
             {
                 "page_id": "441",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-about-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Travel-Blogger-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -17679,7 +17691,7 @@
             {
                 "page_id": "7",
                 "page_title": "Home 1",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-contact-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-home1-scaled.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -17690,7 +17702,7 @@
             {
                 "page_id": "587",
                 "page_title": "About",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-about-scaled.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -17700,7 +17712,7 @@
             {
                 "page_id": "649",
                 "page_title": "Contact",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-home1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/travel-blogger-contact-scaled.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -17925,7 +17937,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4690"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12360"
                 }
             ],
             "wp:attachment": [
@@ -17949,8 +17961,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3057"
         },
-        "modified": "2023-11-09T09:51:50",
-        "modified_gmt": "2023-11-09T09:51:50",
+        "modified": "2024-01-02T11:41:23",
+        "modified_gmt": "2024-01-02T11:41:23",
         "slug": "corporate-business-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -17962,7 +17974,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3061,
+        "featured_media": 12255,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -17970,7 +17982,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcorporate-business",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/115\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-1-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Corporate-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -18007,7 +18019,7 @@
             {
                 "page_id": "5",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Corporate-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -18289,7 +18301,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3061"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12255"
                 }
             ],
             "wp:attachment": [
@@ -18313,8 +18325,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3012"
         },
-        "modified": "2023-11-10T10:59:18",
-        "modified_gmt": "2023-11-10T10:59:18",
+        "modified": "2024-01-03T09:35:19",
+        "modified_gmt": "2024-01-03T09:35:19",
         "slug": "photography-studio-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -18326,7 +18338,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3013,
+        "featured_media": 12362,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -18334,7 +18346,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gphotography-studio",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/118\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/gphotography-studio-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Photography-Studio-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -18373,7 +18385,7 @@
             {
                 "page_id": "12",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/photography-home.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Photography-Studio-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -18650,7 +18662,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3013"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12362"
                 }
             ],
             "wp:attachment": [
@@ -18674,8 +18686,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2971"
         },
-        "modified": "2023-11-10T12:03:26",
-        "modified_gmt": "2023-11-10T12:03:26",
+        "modified": "2024-01-02T11:45:10",
+        "modified_gmt": "2024-01-02T11:45:10",
         "slug": "lms-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -18687,7 +18699,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2972,
+        "featured_media": 12260,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -18695,7 +18707,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/glms",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/109\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/lmsg.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/GLMS-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -18744,7 +18756,7 @@
             {
                 "page_id": "7",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/lmsg.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/GLMS-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -18964,7 +18976,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2972"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12260"
                 }
             ],
             "wp:attachment": [
@@ -18988,8 +19000,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2918"
         },
-        "modified": "2023-11-10T10:46:53",
-        "modified_gmt": "2023-11-10T10:46:53",
+        "modified": "2024-01-03T09:39:23",
+        "modified_gmt": "2024-01-03T09:39:23",
         "slug": "construction-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -19001,7 +19013,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2919,
+        "featured_media": 12364,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -19009,7 +19021,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gconstruction",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/108\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/gconstruction.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Construction-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -19040,7 +19052,19 @@
         ],
         "container_template": false,
         "required_pro_plugins": false,
-        "allow_pages": false,
+        "allow_pages": true,
+        "pages": [
+            {
+                "page_id": "19",
+                "page_title": "Home",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Construction-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
+                "free_plugins": [
+                    "responsive-block-editor-addons"
+                ],
+                "includes_wp_forms": true,
+                "pro_plugins": []
+            }
+        ],
         "check_plugins_installed": false,
         "demo_type": "free",
         "page_builder": "gutenberg",
@@ -19280,7 +19304,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2919"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12364"
                 }
             ],
             "wp:attachment": [
@@ -19304,8 +19328,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4818"
         },
-        "modified": "2023-11-09T10:26:35",
-        "modified_gmt": "2023-11-09T10:26:35",
+        "modified": "2024-01-03T09:50:32",
+        "modified_gmt": "2024-01-03T09:50:32",
         "slug": "gutenberg-finance-consulting",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -19317,7 +19341,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4824,
+        "featured_media": 12367,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -19325,7 +19349,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gfinance-consulting",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/156\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/12\/gfinance-consulting-home2-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Finance-Consulting-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -19358,7 +19382,7 @@
             {
                 "page_id": "6",
                 "page_title": "Home 1",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/12\/gfinance-consulting-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Finance-Consulting-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -19704,7 +19728,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4824"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12367"
                 }
             ],
             "wp:attachment": [
@@ -19728,8 +19752,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4862"
         },
-        "modified": "2023-11-08T09:04:33",
-        "modified_gmt": "2023-11-08T09:04:33",
+        "modified": "2024-01-03T09:52:36",
+        "modified_gmt": "2024-01-03T09:52:36",
         "slug": "gutenberg-food-blogger",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -19741,7 +19765,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4866,
+        "featured_media": 12369,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -19749,7 +19773,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gfood-blogger",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/161\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/gfood-blogger-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Food-Blogger-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -19780,7 +19804,7 @@
             {
                 "page_id": "692",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/gfood-blogger-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Food-Blogger-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -20123,7 +20147,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4866"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12369"
                 }
             ],
             "wp:attachment": [
@@ -20147,8 +20171,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4970"
         },
-        "modified": "2023-11-09T10:58:05",
-        "modified_gmt": "2023-11-09T10:58:05",
+        "modified": "2024-01-02T11:46:55",
+        "modified_gmt": "2024-01-02T11:46:55",
         "slug": "gutenberg-bookstore",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -20160,7 +20184,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4974,
+        "featured_media": 12267,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -20168,7 +20192,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gbookstore",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/170\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/01\/gbookstore-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Bookstore-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -20212,7 +20236,7 @@
             {
                 "page_id": "1688",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/01\/gbookstore-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Bookstore-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -20592,7 +20616,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4974"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12267"
                 }
             ],
             "wp:attachment": [
@@ -20616,8 +20640,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4950"
         },
-        "modified": "2023-11-09T10:48:50",
-        "modified_gmt": "2023-11-09T10:48:50",
+        "modified": "2024-01-03T10:07:00",
+        "modified_gmt": "2024-01-03T10:07:00",
         "slug": "gutenberg-music-band",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -20629,7 +20653,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4956,
+        "featured_media": 12372,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -20637,7 +20661,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gmusic-band",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/169\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/01\/gmusic-band-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Music-Band-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -20679,7 +20703,7 @@
             {
                 "page_id": "1166",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/01\/gmusic-band-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Music-Band-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -21064,7 +21088,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4956"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12372"
                 }
             ],
             "wp:attachment": [
@@ -21088,8 +21112,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4963"
         },
-        "modified": "2023-11-09T10:53:42",
-        "modified_gmt": "2023-11-09T10:53:42",
+        "modified": "2024-01-03T10:20:55",
+        "modified_gmt": "2024-01-03T10:20:55",
         "slug": "gutenberg-retail-store",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -21101,7 +21125,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 6286,
+        "featured_media": 12374,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -21109,7 +21133,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gretail-store",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/168\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Retail-Store-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Retail-Store-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -21151,7 +21175,7 @@
             {
                 "page_id": "18",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Retail-Store-\u2013-Just-another-Cyberchimps-Sites-site-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Retail-Store-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -21503,7 +21527,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/6286"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12374"
                 }
             ],
             "wp:attachment": [
@@ -21527,8 +21551,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4852"
         },
-        "modified": "2023-11-09T10:35:53",
-        "modified_gmt": "2023-11-09T10:35:53",
+        "modified": "2024-01-03T10:22:46",
+        "modified_gmt": "2024-01-03T10:22:46",
         "slug": "gutenberg-organic-product-store",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -21540,7 +21564,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4855,
+        "featured_media": 12376,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -21548,7 +21572,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gorganic-products-store",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/159\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/12\/gutenberg-organic-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Organic-Products-Store-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -21592,7 +21616,7 @@
             {
                 "page_id": "1229",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/12\/gutenberg-organic-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Organic-Products-Store-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -21964,7 +21988,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4855"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12376"
                 }
             ],
             "wp:attachment": [
@@ -21988,8 +22012,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4880"
         },
-        "modified": "2023-11-09T10:38:23",
-        "modified_gmt": "2023-11-09T10:38:23",
+        "modified": "2024-01-03T10:25:10",
+        "modified_gmt": "2024-01-03T10:25:10",
         "slug": "gutenberg-optical-store",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -22001,7 +22025,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4888,
+        "featured_media": 12378,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -22009,7 +22033,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/goptical-store",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/162\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/goptical-store-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Optical-Store-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -22047,7 +22071,7 @@
             {
                 "page_id": "2",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/goptical-store-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Optical-Store-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -22408,7 +22432,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4888"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12378"
                 }
             ],
             "wp:attachment": [
@@ -22432,8 +22456,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4802"
         },
-        "modified": "2023-11-09T10:15:28",
-        "modified_gmt": "2023-11-09T10:15:28",
+        "modified": "2024-01-02T11:48:52",
+        "modified_gmt": "2024-01-02T11:48:52",
         "slug": "gutenberg-app-press",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -22445,7 +22469,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4805,
+        "featured_media": 12271,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -22453,7 +22477,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gapppress",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/136\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/12\/Gapppress-home1-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/AppPress-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -22486,7 +22510,7 @@
             {
                 "page_id": "12",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/12\/Gapppress-home1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/AppPress-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -22813,7 +22837,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4805"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12271"
                 }
             ],
             "wp:attachment": [
@@ -22837,8 +22861,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=5005"
         },
-        "modified": "2023-11-09T10:29:41",
-        "modified_gmt": "2023-11-09T10:29:41",
+        "modified": "2024-01-03T10:27:10",
+        "modified_gmt": "2024-01-03T10:27:10",
         "slug": "gutenberg-real-estate-pro",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -22850,7 +22874,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5012,
+        "featured_media": 12381,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -22858,7 +22882,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/greal-estate-pro",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/171\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/02\/greal-estate-pro-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Real-Estate-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -22891,7 +22915,7 @@
             {
                 "page_id": "2156",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2022\/02\/greal-estate-pro-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Real-Estate-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -23272,7 +23296,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5012"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12381"
                 }
             ],
             "wp:attachment": [
@@ -23296,8 +23320,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3049"
         },
-        "modified": "2023-11-10T11:36:08",
-        "modified_gmt": "2023-11-10T11:36:08",
+        "modified": "2024-01-03T10:29:12",
+        "modified_gmt": "2024-01-03T10:29:12",
         "slug": "construction-service-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -23309,7 +23333,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3050,
+        "featured_media": 12383,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -23317,7 +23341,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gconstruction-services",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/117\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Construction-Services-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -23355,7 +23379,7 @@
             {
                 "page_id": "21",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/11\/Gutenberg-Construction-Services-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -23669,7 +23693,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3050"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12383"
                 }
             ],
             "wp:attachment": [
@@ -23693,8 +23717,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4338"
         },
-        "modified": "2023-11-09T09:40:28",
-        "modified_gmt": "2023-11-09T09:40:28",
+        "modified": "2024-01-03T10:35:05",
+        "modified_gmt": "2024-01-03T10:35:05",
         "slug": "yoga-instructor-pro-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -23706,7 +23730,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4339,
+        "featured_media": 12386,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -23714,7 +23738,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gyoga-instructor-pro",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/128\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/home-1-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/Gutenberg-Yoga-Instructor-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WooCommerce",
@@ -23778,7 +23802,7 @@
             {
                 "page_id": "86",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/home-1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/Gutenberg-Yoga-Instructor-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -24182,7 +24206,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4339"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12386"
                 }
             ],
             "wp:attachment": [
@@ -24206,8 +24230,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4322"
         },
-        "modified": "2023-11-10T10:54:15",
-        "modified_gmt": "2023-11-10T10:54:15",
+        "modified": "2024-01-03T10:36:24",
+        "modified_gmt": "2024-01-03T10:36:24",
         "slug": "tattoo-studio-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -24219,7 +24243,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4323,
+        "featured_media": 12389,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -24227,7 +24251,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtattoo-studio",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/100\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/Gutenberg-Tattoo-Studio-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -24266,7 +24290,7 @@
             {
                 "page_id": "9",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/08\/Gutenberg-Tattoo-Studio-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -24585,7 +24609,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4323"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12389"
                 }
             ],
             "wp:attachment": [
@@ -24609,8 +24633,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4212"
         },
-        "modified": "2023-11-10T10:48:56",
-        "modified_gmt": "2023-11-10T10:48:56",
+        "modified": "2024-01-01T05:36:55",
+        "modified_gmt": "2024-01-01T05:36:55",
         "slug": "guternberg-barber-shop",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -24622,7 +24646,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4229,
+        "featured_media": 11977,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -24630,7 +24654,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gbarber-shop",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/97\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Barber-Shop-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/gbarber-shop.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -24668,7 +24692,7 @@
             {
                 "page_id": "23",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/gbarber-shop.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -24902,7 +24926,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4229"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11977"
                 }
             ],
             "wp:attachment": [
@@ -24926,8 +24950,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4191"
         },
-        "modified": "2023-11-09T09:45:17",
-        "modified_gmt": "2023-11-09T09:45:17",
+        "modified": "2024-01-03T10:38:37",
+        "modified_gmt": "2024-01-03T10:38:37",
         "slug": "transport-pro-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -24939,7 +24963,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4193,
+        "featured_media": 12391,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -24947,7 +24971,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtransport-pro",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/126\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Transport-Pro-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Transport-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -24982,7 +25006,7 @@
             {
                 "page_id": "42",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/home-5-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Transport-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -25285,7 +25309,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4193"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12391"
                 }
             ],
             "wp:attachment": [
@@ -25309,8 +25333,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4180"
         },
-        "modified": "2023-11-10T10:45:24",
-        "modified_gmt": "2023-11-10T10:45:24",
+        "modified": "2024-01-03T10:41:37",
+        "modified_gmt": "2024-01-03T10:41:37",
         "slug": "gutenberg-interior-design",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -25322,7 +25346,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4185,
+        "featured_media": 12392,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -25330,7 +25354,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ginterior-design",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/99\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Interior-Design-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Interior-Design-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -25367,7 +25391,7 @@
             {
                 "page_id": "4",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/home-2-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Interior-Design-1.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -25606,7 +25630,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4185"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12392"
                 }
             ],
             "wp:attachment": [
@@ -25630,8 +25654,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4172"
         },
-        "modified": "2023-11-10T10:51:12",
-        "modified_gmt": "2023-11-10T10:51:12",
+        "modified": "2024-01-03T11:12:37",
+        "modified_gmt": "2024-01-03T11:12:37",
         "slug": "gutenberg-lawyer",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -25643,7 +25667,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4174,
+        "featured_media": 12394,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -25651,7 +25675,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/glawyer",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/116\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/Gutenberg-lawyer-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/07\/Gutenberg-Lawyer-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -25683,7 +25707,7 @@
             {
                 "page_id": "19",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/home-1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/Gutenberg-Lawyer-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -25913,7 +25937,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4174"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12394"
                 }
             ],
             "wp:attachment": [
@@ -25937,8 +25961,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4150"
         },
-        "modified": "2023-11-10T10:37:04",
-        "modified_gmt": "2023-11-10T10:37:04",
+        "modified": "2024-01-01T06:00:24",
+        "modified_gmt": "2024-01-01T06:00:24",
         "slug": "gutenberg-accountant",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -25950,7 +25974,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4152,
+        "featured_media": 11983,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -25991,7 +26015,7 @@
             {
                 "page_id": "7",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/Gutenberg-Accountant.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -26240,7 +26264,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4152"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11983"
                 }
             ],
             "wp:attachment": [
@@ -26264,8 +26288,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=4087"
         },
-        "modified": "2023-11-10T11:04:42",
-        "modified_gmt": "2023-11-10T11:04:42",
+        "modified": "2024-01-04T05:29:31",
+        "modified_gmt": "2024-01-04T05:29:31",
         "slug": "restaurant-2",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -26277,7 +26301,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4090,
+        "featured_media": 12455,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -26285,7 +26309,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/grestaurant",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/85\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/Gutenberg-Restau-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/Gutenberg-Restaurant-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -26321,7 +26345,7 @@
             {
                 "page_id": "7",
                 "page_title": "Home 1",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/home-3-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/06\/Gutenberg-Restaurant-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -26670,7 +26694,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4090"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12455"
                 }
             ],
             "wp:attachment": [
@@ -26694,8 +26718,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3120"
         },
-        "modified": "2023-11-10T12:15:27",
-        "modified_gmt": "2023-11-10T12:15:27",
+        "modified": "2024-01-03T11:17:27",
+        "modified_gmt": "2024-01-03T11:17:27",
         "slug": "insurance-pro-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -26707,7 +26731,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3127,
+        "featured_media": 12401,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -26715,7 +26739,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ginsurance-pro",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/125\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/02\/homepage-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/02\/Gutenberg-Insurance-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -26750,7 +26774,7 @@
             {
                 "page_id": "18",
                 "page_title": "Homepage",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/02\/homepage-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/02\/Gutenberg-Insurance-Pro-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -27015,7 +27039,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3127"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12401"
                 }
             ],
             "wp:attachment": [
@@ -27039,8 +27063,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3109"
         },
-        "modified": "2023-11-10T06:41:39",
-        "modified_gmt": "2023-11-10T06:41:39",
+        "modified": "2024-01-03T11:25:09",
+        "modified_gmt": "2024-01-03T11:25:09",
         "slug": "dental-clinic-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -27052,7 +27076,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3115,
+        "featured_media": 12403,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -27060,7 +27084,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gdental-clinic",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/90\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-5-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Dental-Clinic-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -27104,7 +27128,7 @@
             {
                 "page_id": "8",
                 "page_title": "Homepage",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-5-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Dental-Clinic-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -27420,7 +27444,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3115"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12403"
                 }
             ],
             "wp:attachment": [
@@ -27444,8 +27468,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3104"
         },
-        "modified": "2023-11-09T06:04:41",
-        "modified_gmt": "2023-11-09T06:04:41",
+        "modified": "2024-01-03T11:28:07",
+        "modified_gmt": "2024-01-03T11:28:07",
         "slug": "jewellery-shop-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -27457,7 +27481,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4843,
+        "featured_media": 12404,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -27465,7 +27489,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gjewellery-shop",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/157\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/gjewellery-shop-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Jewellery-Shop-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WooCommerce",
@@ -27505,7 +27529,7 @@
             {
                 "page_id": "1980",
                 "page_title": "Homepage",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/gjewellery-shop-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Jewellery-Shop-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "woocommerce",
@@ -27937,7 +27961,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4843"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12404"
                 }
             ],
             "wp:attachment": [
@@ -27961,8 +27985,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3102"
         },
-        "modified": "2023-11-10T11:55:04",
-        "modified_gmt": "2023-11-10T11:55:04",
+        "modified": "2024-01-03T11:30:31",
+        "modified_gmt": "2024-01-03T11:30:31",
         "slug": "one-page-business-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -27974,7 +27998,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3103,
+        "featured_media": 12406,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -27982,7 +28006,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gone-page-biz",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/86\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-3-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-One-Page-Biz-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -28018,7 +28042,19 @@
         ],
         "container_template": false,
         "required_pro_plugins": false,
-        "allow_pages": false,
+        "allow_pages": true,
+        "pages": [
+            {
+                "page_id": "12",
+                "page_title": "Home",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-One-Page-Biz-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
+                "free_plugins": [
+                    "responsive-block-editor-addons"
+                ],
+                "includes_wp_forms": true,
+                "pro_plugins": []
+            }
+        ],
         "check_plugins_installed": false,
         "demo_type": "free",
         "page_builder": "gutenberg",
@@ -28278,7 +28314,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3103"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12406"
                 }
             ],
             "wp:attachment": [
@@ -28302,8 +28338,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3087"
         },
-        "modified": "2023-11-09T09:59:29",
-        "modified_gmt": "2023-11-09T09:59:29",
+        "modified": "2024-01-03T11:37:49",
+        "modified_gmt": "2024-01-03T11:37:49",
         "slug": "techmo-consultancy-theme-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -28315,7 +28351,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3094,
+        "featured_media": 12408,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -28323,7 +28359,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gconsultancy",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/91\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/homepage-2-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Consultancy-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -28360,7 +28396,7 @@
             {
                 "page_id": "44",
                 "page_title": "Homepage",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Homepage1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Consultancy-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -28653,7 +28689,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3094"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12408"
                 }
             ],
             "wp:attachment": [
@@ -28677,8 +28713,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3082"
         },
-        "modified": "2023-11-10T11:19:43",
-        "modified_gmt": "2023-11-10T11:19:43",
+        "modified": "2024-01-02T12:04:04",
+        "modified_gmt": "2024-01-02T12:04:04",
         "slug": "corporate-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -28690,7 +28726,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3086,
+        "featured_media": 12281,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -28698,7 +28734,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcorporate",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/123\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/home-3-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Corporate-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -28735,7 +28771,7 @@
             {
                 "page_id": "31",
                 "page_title": "Homepage",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/home-3-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Corporate-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -28976,7 +29012,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3086"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12281"
                 }
             ],
             "wp:attachment": [
@@ -29000,8 +29036,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3071"
         },
-        "modified": "2021-06-23T12:46:37",
-        "modified_gmt": "2021-06-23T12:46:37",
+        "modified": "2024-01-01T05:57:57",
+        "modified_gmt": "2024-01-01T05:57:57",
         "slug": "transport-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -29013,7 +29049,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3076,
+        "featured_media": 11981,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -29021,7 +29057,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtransport",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/103\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/home-2-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/GTransport-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -29052,7 +29088,7 @@
             {
                 "page_id": "7",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/home-2-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/GTransport-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -29281,7 +29317,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3076"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11981"
                 }
             ],
             "wp:attachment": [
@@ -29305,8 +29341,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3066"
         },
-        "modified": "2023-11-10T11:26:03",
-        "modified_gmt": "2023-11-10T11:26:03",
+        "modified": "2024-01-03T11:41:04",
+        "modified_gmt": "2024-01-03T11:41:04",
         "slug": "business-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -29318,7 +29354,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 11357,
+        "featured_media": 12411,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -29326,7 +29362,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gbusiness",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/107\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Business-Mainhome-\u2013-Just-another-Cyberchimps-Sites-site.png",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Business-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -29362,7 +29398,7 @@
             {
                 "page_id": "9",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Business-Mainhome-\u2013-Just-another-Cyberchimps-Sites-site.png",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Business-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -29776,7 +29812,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/11357"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12411"
                 }
             ],
             "wp:attachment": [
@@ -29800,8 +29836,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3063"
         },
-        "modified": "2023-11-10T11:09:32",
-        "modified_gmt": "2023-11-10T11:09:32",
+        "modified": "2024-01-02T12:05:43",
+        "modified_gmt": "2024-01-02T12:05:43",
         "slug": "fashion-shop-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -29813,7 +29849,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5026,
+        "featured_media": 12286,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -29821,7 +29857,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gfashion-shop",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/175\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/home-4-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Fashion-Shop-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -29862,7 +29898,7 @@
             {
                 "page_id": "2235",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/home-4-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Fashion-Shop-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -30285,7 +30321,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5026"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12286"
                 }
             ],
             "wp:attachment": [
@@ -30309,8 +30345,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3040"
         },
-        "modified": "2023-11-09T06:41:07",
-        "modified_gmt": "2023-11-09T06:41:07",
+        "modified": "2024-01-04T04:49:20",
+        "modified_gmt": "2024-01-04T04:49:20",
         "slug": "startup-business-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -30322,7 +30358,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3042,
+        "featured_media": 12421,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -30330,7 +30366,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gstartup-business",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/111\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/startupbiz-home.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Startup-Business-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -30370,7 +30406,7 @@
             {
                 "page_id": "5",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/startupbiz-home.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Startup-Business-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -30643,7 +30679,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3042"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12421"
                 }
             ],
             "wp:attachment": [
@@ -30667,8 +30703,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3028"
         },
-        "modified": "2023-11-10T11:48:28",
-        "modified_gmt": "2023-11-10T11:48:28",
+        "modified": "2024-01-04T04:50:46",
+        "modified_gmt": "2024-01-04T04:50:46",
         "slug": "charity-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -30680,7 +30716,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3035,
+        "featured_media": 12423,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -30688,7 +30724,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcharity",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/89\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/charity-home.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Charity-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -30730,7 +30766,7 @@
             {
                 "page_id": "98",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/charity-home.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Charity-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -30993,7 +31029,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3035"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12423"
                 }
             ],
             "wp:attachment": [
@@ -31017,8 +31053,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3026"
         },
-        "modified": "2023-11-10T11:46:45",
-        "modified_gmt": "2023-11-10T11:46:45",
+        "modified": "2024-01-04T04:52:16",
+        "modified_gmt": "2024-01-04T04:52:16",
         "slug": "corporate-lawyer-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -31030,7 +31066,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3037,
+        "featured_media": 12425,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -31038,7 +31074,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gcorporate-lawyer",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/122\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/clawyer-home.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Lawyer-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -31073,7 +31109,7 @@
             {
                 "page_id": "11",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/clawyer-home.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Lawyer-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -31301,7 +31337,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3037"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12425"
                 }
             ],
             "wp:attachment": [
@@ -31325,8 +31361,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3010"
         },
-        "modified": "2023-11-10T10:22:33",
-        "modified_gmt": "2023-11-10T10:22:33",
+        "modified": "2024-01-04T06:11:01",
+        "modified_gmt": "2024-01-04T06:11:01",
         "slug": "lifestyle-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -31338,7 +31374,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3011,
+        "featured_media": 12467,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -31346,7 +31382,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/glifestyle",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/121\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/glifestyle-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Lifestyle-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -31393,7 +31429,7 @@
             {
                 "page_id": "13",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/glifestyle-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Lifestyle-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -31620,7 +31656,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3011"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12467"
                 }
             ],
             "wp:attachment": [
@@ -31644,8 +31680,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=3007"
         },
-        "modified": "2023-11-10T11:18:32",
-        "modified_gmt": "2023-11-10T11:18:32",
+        "modified": "2024-01-04T04:57:38",
+        "modified_gmt": "2024-01-04T04:57:38",
         "slug": "spa-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -31657,7 +31693,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3008,
+        "featured_media": 12429,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -31665,7 +31701,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gspa",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/114\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/spahome.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Spa-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -31702,7 +31738,7 @@
             {
                 "page_id": "16",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/spahome.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2021\/01\/Gutenberg-Spa-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -31951,7 +31987,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3008"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12429"
                 }
             ],
             "wp:attachment": [
@@ -31975,8 +32011,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2995"
         },
-        "modified": "2023-11-10T10:16:07",
-        "modified_gmt": "2023-11-10T10:16:07",
+        "modified": "2024-01-04T04:59:40",
+        "modified_gmt": "2024-01-04T04:59:40",
         "slug": "travel-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -31988,7 +32024,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2996,
+        "featured_media": 12431,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -31996,7 +32032,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gtravel",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/267\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gtravel.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/Gutenberg-Travel-Blog.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -32035,7 +32071,7 @@
             {
                 "page_id": "1808",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gtravel-1.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/Gutenberg-Travel-Blog.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -32298,7 +32334,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2996"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12431"
                 }
             ],
             "wp:attachment": [
@@ -32322,8 +32358,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2994"
         },
-        "modified": "2023-11-10T10:13:07",
-        "modified_gmt": "2023-11-10T10:13:07",
+        "modified": "2024-01-04T05:02:36",
+        "modified_gmt": "2024-01-04T05:02:36",
         "slug": "doctor-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -32335,7 +32371,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 5875,
+        "featured_media": 12433,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -32343,7 +32379,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gdoctor",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/261\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/responsive-gutenberg-doctor-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/Gutenberg-Doctor.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -32388,7 +32424,7 @@
             {
                 "page_id": "8",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/responsive-gutenberg-doctor-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/Gutenberg-Doctor.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -32817,7 +32853,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/5875"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12433"
                 }
             ],
             "wp:attachment": [
@@ -32841,8 +32877,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2980"
         },
-        "modified": "2023-11-10T10:19:20",
-        "modified_gmt": "2023-11-10T10:19:20",
+        "modified": "2024-01-02T12:11:26",
+        "modified_gmt": "2024-01-02T12:11:26",
         "slug": "food-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -32854,7 +32890,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2981,
+        "featured_media": 12288,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -32862,7 +32898,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gfood",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/95\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gfoodhome.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gfood-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -32901,7 +32937,7 @@
             {
                 "page_id": "68",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gfoodhome.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gfood-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -33152,7 +33188,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2981"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12288"
                 }
             ],
             "wp:attachment": [
@@ -33176,8 +33212,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2973"
         },
-        "modified": "2023-11-09T06:09:15",
-        "modified_gmt": "2023-11-09T06:09:15",
+        "modified": "2024-01-04T05:04:15",
+        "modified_gmt": "2024-01-04T05:04:15",
         "slug": "furniture-shop-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -33189,7 +33225,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4757,
+        "featured_media": 12437,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -33197,7 +33233,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gfurniture-shop",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/113\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gutenberg-furniture-shop-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/Gutenberg-Furniture-Shop-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -33238,7 +33274,7 @@
             {
                 "page_id": "53",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/gutenberg-furniture-shop-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/12\/Gutenberg-Furniture-Shop-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -33679,7 +33715,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4757"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12437"
                 }
             ],
             "wp:attachment": [
@@ -33703,8 +33739,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2944"
         },
-        "modified": "2023-11-09T09:55:12",
-        "modified_gmt": "2023-11-09T09:55:12",
+        "modified": "2024-01-04T05:06:25",
+        "modified_gmt": "2024-01-04T05:06:25",
         "slug": "gutenberg-health-coach",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -33716,7 +33752,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2946,
+        "featured_media": 12440,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -33724,7 +33760,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ghealth-coach",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/112\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/ghealth-coach.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Health-Coach-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -33759,7 +33795,7 @@
             {
                 "page_id": "10",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/ghealth-coach.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Health-Coach-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -34021,7 +34057,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2946"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12440"
                 }
             ],
             "wp:attachment": [
@@ -34045,8 +34081,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2937"
         },
-        "modified": "2023-11-10T12:08:04",
-        "modified_gmt": "2023-11-10T12:08:04",
+        "modified": "2024-01-04T05:08:14",
+        "modified_gmt": "2024-01-04T05:08:14",
         "slug": "insurance-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -34058,7 +34094,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2939,
+        "featured_media": 12443,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -34066,7 +34102,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ginsurance",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/102\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/ginsurance.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Insurance-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -34101,7 +34137,7 @@
             {
                 "page_id": "4",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/home-2-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Insurance-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -34372,7 +34408,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2939"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12443"
                 }
             ],
             "wp:attachment": [
@@ -34396,8 +34432,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2931"
         },
-        "modified": "2023-11-10T11:58:22",
-        "modified_gmt": "2023-11-10T11:58:22",
+        "modified": "2024-01-04T05:09:51",
+        "modified_gmt": "2024-01-04T05:09:51",
         "slug": "yoga-instructor-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -34409,7 +34445,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2936,
+        "featured_media": 12445,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -34417,7 +34453,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gyoga-instructor",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/92\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/gyoga-instructor.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Yoga-Instructor-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -34456,7 +34492,7 @@
             {
                 "page_id": "8",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/home-1-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Yoga-Instructor-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -34770,7 +34806,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2936"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12445"
                 }
             ],
             "wp:attachment": [
@@ -34794,8 +34830,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2926"
         },
-        "modified": "2023-11-10T11:43:37",
-        "modified_gmt": "2023-11-10T11:43:37",
+        "modified": "2024-01-04T05:11:24",
+        "modified_gmt": "2024-01-04T05:11:24",
         "slug": "ecommerce-fashion-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -34807,7 +34843,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2929,
+        "featured_media": 12446,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -34815,7 +34851,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gecommerce-fashion",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/106\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/gecommerce-fashion.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Ecommerce-Fashion-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -34858,7 +34894,7 @@
             {
                 "page_id": "15",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/home-3-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Ecommerce-Fashion-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -35164,7 +35200,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2929"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12446"
                 }
             ],
             "wp:attachment": [
@@ -35188,8 +35224,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2925"
         },
-        "modified": "2023-11-10T12:11:37",
-        "modified_gmt": "2023-11-10T12:11:37",
+        "modified": "2024-01-04T05:12:58",
+        "modified_gmt": "2024-01-04T05:12:58",
         "slug": "home-decor-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -35201,7 +35237,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2928,
+        "featured_media": 12448,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -35209,7 +35245,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ghome-decor",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/110\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/ghome-decor-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Home-Decor-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -35245,7 +35281,7 @@
             {
                 "page_id": "8",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/home-4-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Home-Decor-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -35543,7 +35579,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2928"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12448"
                 }
             ],
             "wp:attachment": [
@@ -35567,8 +35603,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2920"
         },
-        "modified": "2023-11-10T11:56:07",
-        "modified_gmt": "2023-11-10T11:56:07",
+        "modified": "2024-01-04T05:14:26",
+        "modified_gmt": "2024-01-04T05:14:26",
         "slug": "pet-shop-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -35580,7 +35616,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4792,
+        "featured_media": 12450,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -35588,7 +35624,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gpet-shop",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/105\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/gpet-shop-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Pet-Shop-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -35630,7 +35666,7 @@
             {
                 "page_id": "9",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/gpet-shop-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Gutenberg-Pet-Shop-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -36125,7 +36161,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4792"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12450"
                 }
             ],
             "wp:attachment": [
@@ -36149,8 +36185,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2913"
         },
-        "modified": "2023-11-10T12:01:23",
-        "modified_gmt": "2023-11-10T12:01:23",
+        "modified": "2024-01-02T12:14:48",
+        "modified_gmt": "2024-01-02T12:14:48",
         "slug": "church-gutenberg",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -36162,7 +36198,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 2914,
+        "featured_media": 12290,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -36170,7 +36206,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gchurch",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/104\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/gchurch.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Church-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -36210,7 +36246,7 @@
             {
                 "page_id": "10",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/home-6-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/11\/Church-\u2013-Just-another-Cyberchimps-Sites-site-1.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -36749,7 +36785,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/2914"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12290"
                 }
             ],
             "wp:attachment": [
@@ -36773,8 +36809,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2875"
         },
-        "modified": "2023-11-10T11:00:52",
-        "modified_gmt": "2023-11-10T11:00:52",
+        "modified": "2024-01-04T06:03:54",
+        "modified_gmt": "2024-01-04T06:03:54",
         "slug": "gutenberg-real-estate",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -36818,7 +36854,19 @@
         "sites_tags": [],
         "container_template": false,
         "required_pro_plugins": false,
-        "allow_pages": false,
+        "allow_pages": true,
+        "pages": [
+            {
+                "page_id": "169",
+                "page_title": "Home 1",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/10\/grealestate-screenshot.jpg",
+                "free_plugins": [
+                    "responsive-block-editor-addons"
+                ],
+                "includes_wp_forms": true,
+                "pro_plugins": []
+            }
+        ],
         "check_plugins_installed": false,
         "demo_type": "free",
         "page_builder": "gutenberg",
@@ -37107,8 +37155,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=2870"
         },
-        "modified": "2023-11-13T14:59:47",
-        "modified_gmt": "2023-11-13T14:59:47",
+        "modified": "2024-01-04T05:26:01",
+        "modified_gmt": "2024-01-04T05:26:01",
         "slug": "gutenberg-gym",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -37120,7 +37168,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 3099,
+        "featured_media": 12451,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -37128,7 +37176,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/ggym",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/88\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/10\/homepage-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/10\/Gutenberg-Gym-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "WPForms Lite",
@@ -37164,7 +37212,7 @@
             {
                 "page_id": "10",
                 "page_title": "Homepage",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/10\/homepage-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/10\/Gutenberg-Gym-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "responsive-block-editor-addons"
                 ],
@@ -37438,7 +37486,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/3099"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12451"
                 }
             ],
             "wp:attachment": [
@@ -37462,8 +37510,8 @@
         "guid": {
             "rendered": "https:\/\/ccreadysites.cyberchimps.com\/?post_type=cyberchimps-sites&#038;p=180"
         },
-        "modified": "2023-11-09T11:09:45",
-        "modified_gmt": "2023-11-09T11:09:45",
+        "modified": "2024-01-04T05:27:27",
+        "modified_gmt": "2024-01-04T05:27:27",
         "slug": "podcast",
         "status": "publish",
         "type": "cyberchimps-sites",
@@ -37475,7 +37523,7 @@
             "rendered": "",
             "protected": false
         },
-        "featured_media": 4984,
+        "featured_media": 12453,
         "template": "",
         "meta": {
             "_uag_custom_page_level_css": ""
@@ -37483,7 +37531,7 @@
         "acf": [],
         "site_url": "https:\/\/ccreadysites.cyberchimps.com\/gpodcast",
         "xml_path": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/sites\/164\/wxr.xml",
-        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/02\/gpodcast-home-scaled.jpg",
+        "featured_image_url": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/02\/Podcast-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
         "required_plugins": [
             {
                 "name": "Responsive Block Editor Addons",
@@ -37519,7 +37567,7 @@
             {
                 "page_id": "303",
                 "page_title": "Home",
-                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/02\/gpodcast-home-scaled.jpg",
+                "featured_image": "https:\/\/ccreadysites.cyberchimps.com\/wp-content\/uploads\/2020\/02\/Podcast-\u2013-Just-another-Cyberchimps-Sites-site.jpg",
                 "free_plugins": [
                     "wpforms-lite",
                     "responsive-block-editor-addons"
@@ -37956,7 +38004,7 @@
             "wp:featuredmedia": [
                 {
                     "embeddable": true,
-                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/4984"
+                    "href": "https:\/\/ccreadysites.cyberchimps.com\/wp-json\/wp\/v2\/media\/12453"
                 }
             ],
             "wp:attachment": [
