@@ -54,6 +54,7 @@ import "./blocks/contact-form-7-styler/index.js";
 import "./blocks/image/index.js"
 import "./blocks/popup/index.js";
 
-
+//Section block
+import "./blocks/section-block/index.js";
 // Extensions
 import "./extensions/cover-styles";

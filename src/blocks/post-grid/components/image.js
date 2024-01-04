@@ -41,7 +41,9 @@ export default class PostGridImage extends Component {
     /**
      * Cancel the image URL subscription.
      */
-    this.state.setImageUrlSubscription();
+    if(typeof this.state.setImageUrlSubscription==='function'){
+      this.state.setImageUrlSubscription();
+    }
   }
 
   setImageUrl() {
