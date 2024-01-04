@@ -98,6 +98,9 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Getting Started Blocks Toggle.
 		add_action( 'wp_ajax_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
 		add_action( 'wp_ajax_nopriv_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
+		add_action('rest_api_init', array($this, 'register_custom_rest_endpoint'));
+		add_action('admin_init', array($this, 'responsive_block_editor_addons_xmlupdate_checksum'));
+		add_action('wp_ajax_rbea_sync_library', array($this, 'rbea_sync_library'));
 	}
 
 	/**
@@ -431,6 +434,11 @@ class Responsive_Block_Editor_Addons {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/image-hotspot/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/portfolio/index.php';
 
+		/**
+		 * REST API Endpoints for Layouts.
+		 */
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-endpoints.php';
+
 	}
 
 	/** Adds the Responsive Blocks block category.
@@ -534,6 +542,7 @@ class Responsive_Block_Editor_Addons {
 				'taxonomy_list'                      => $this->get_taxonomy_list(),
 				'home_url'                           => home_url(),
 				'cf7_forms'                          => $this->get_cf7_forms(),
+				'plugin_url'						 =>	plugin_dir_url( dirname( __FILE__ ) )
 			)
 		);
 
@@ -1158,5 +1167,137 @@ class Responsive_Block_Editor_Addons {
 			$data['html'] = '<p>' . __( 'Please select a valid Contact Form 7.', 'responsive-block-editor-addons' ) . '</p>';
 		}
 		wp_send_json_success( $data );
+	}
+
+	public function custom_rest_endpoint_callback($data)
+	{
+		// Check if the option exists and its value is "Activated"
+		$is_pro_active = get_option('wc_am_client_responsive_addons_pro_activated');
+		$is_xml_updated = get_option('last_xml_export_checksums');
+		$data = get_option( 'total-responsive-sites-data' );
+    	// Fetch data from the external endpoint
+    	$external_data = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum');
+
+    if (is_wp_error($external_data)) {
+        // Handle error from the external endpoint, if any
+        return new WP_REST_Response(['error' => $external_data->get_error_message()], 500);
+    }
+
+    $external_data_body = wp_remote_retrieve_body($external_data);
+    $external_data_decoded = json_decode($external_data_body, true);
+	$response_data = [
+        'pro_active' => $is_pro_active === 'Activated',
+        'xml_update' => $external_data_decoded['last_xml_export_checksums'] !== $is_xml_updated,
+		'data' => $data
+    ];
+
+
+		return new WP_REST_Response($response_data, 200);
+	}
+
+	public function register_custom_rest_endpoint()
+	{
+		register_rest_route(
+			'custom/v1', // Namespace
+			'/responsive-pro-activation-status/', // Route
+			array(
+				'methods'             => 'GET',
+				'callback'            => array($this, 'custom_rest_endpoint_callback'),
+				'permission_callback' => '__return_true', // No specific permissions for simplicity
+			)
+		);
+	}
+	public function responsive_block_editor_addons_xmlupdate_checksum()
+	{
+		// Check if the option already exists
+		$existing_value = get_option('last_xml_export_checksums');
+
+		// Make an HTTP request to the endpoint
+		$response = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum');
+
+		// Check if the request was successful
+		if (is_array($response) && !is_wp_error($response)) {
+			// Parse the response (assuming JSON format)
+			$data = json_decode(wp_remote_retrieve_body($response), true);
+
+			// Check if the data is successfully parsed and contains the desired key
+			if ($data && isset($data['last_xml_export_checksums'])) {
+				$new_value = $data['last_xml_export_checksums'];
+
+				// Check if the option already exists
+				if (false === $existing_value) {
+					// The option doesn't exist, create a new one
+					add_option('last_xml_export_checksums', $new_value);
+				} else {
+					// The option already exists, update it
+					if ($existing_value !== $new_value) {
+						// The existing value and new value are different, update the option
+						update_option('last_xml_export_checksums', $new_value);
+						$this->rbea_sync_library();
+						
+					}
+				}
+			}
+		}
+	}
+	public function rbea_sync_library()
+	{
+		// Step 1: Get the count from the API hit
+		$count_api_url = 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-ready-sites-requests-count';
+		$count_response = wp_remote_get($count_api_url);
+
+		if (is_wp_error($count_response)) {
+			wp_send_json_error();
+		}
+
+		$total_count = intval(wp_remote_retrieve_body($count_response));
+
+		if ($total_count <= 0) {
+			wp_send_json_error();
+		}
+
+		// Step 2: Calculate total pages
+		$per_page = 15;
+		$total_pages = ceil(($total_count * $per_page) / 100);
+
+		// Step 3: Store total pages in wp_options table
+		update_option('total-responsive-site-pages', $total_pages);
+		$all_filtered_data = array();
+
+		// Step 4 and 5: Loop through pages and filter the response
+		for ($page = 1; $page <= $total_pages; $page++) {
+
+			$api_url = "https://ccreadysites.cyberchimps.com/wp-json/wp/v2/cyberchimps-sites/?per_page=100&page={$page}";
+			$response = wp_remote_get($api_url);
+
+			if (!is_wp_error($response)) {
+				$data = json_decode(wp_remote_retrieve_body($response), true);
+
+				// Step 6: Filter the response by page_builder = gutenberg
+				$filtered_data = array_filter($data, function ($site) {
+					return isset($site['page_builder']) && $site['page_builder'] === 'gutenberg';
+				});
+				$all_filtered_data = array_merge($all_filtered_data, $filtered_data);
+
+			}
+		}
+		$filtered_json_all = json_encode($all_filtered_data, JSON_PRETTY_PRINT);
+		update_option('total-responsive-sites-data', $filtered_json_all);
+
+		// error_log(print_r($filtered_json_all,true));
+		$plugin_dir_path = plugin_dir_path(__FILE__);
+		$relative_path = 'data/';
+		$full_path = $plugin_dir_path . $relative_path;
+		$file_path_all = $full_path . 'responsive-sites-gutenberg-all.json';
+
+		file_put_contents($file_path_all, $filtered_json_all);
+
+		// Check if the data was successfully written to the file
+		if ($file_path_all !== false) {
+			wp_send_json_success(array('filtered_data' => $filtered_json_all));
+		} else {
+			wp_send_json_error(array('message' => 'Error writing filtered data to the file.'));
+		}
+		wp_send_json_success();
 	}
 }

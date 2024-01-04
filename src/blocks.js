@@ -56,6 +56,7 @@ import "./blocks/popup/index.js";
 import "./blocks/form/index.js";
 import "./blocks/form/input/index.js";
 
-
+//Section block
+import "./blocks/section-block/index.js";
 // Extensions
 import "./extensions/cover-styles";
