@@ -1,3 +1,5 @@
+const { __ } = wp.i18n;
+
 const attributes = {
   block_id: {
     type: "string",
@@ -8,6 +10,10 @@ const attributes = {
   },
   formVariant: {
     type: "string",
+  },
+  formSubmitBtnLabel: {
+    type: "string",
+    default: __( "Submit", "responsive-block-editor-addons" ),
   },
 };
 

@@ -74,7 +74,7 @@ export default class Edit extends Component {
               </Disabled>
               <label>
                 <RichText
-                  placeholder={__( 'Enter Option Label', 'otter-blocks' )}
+                  placeholder={__( 'Enter Option Label', 'responsive-block-editor-addons' )}
                   value={current.label}
                   onChange={ (value) => {
                     const updatedOptions = [ ...formCheckBoxOptions ];

@@ -29,7 +29,7 @@ registerBlockType("responsive-block-editor-addons/form-input", {
   ),
   icon: ResponsiveBlockEditorAddonsIcons.formInput,
   category: "responsive_block_editor_addons",
-  // parent: ["responsive-block-editor-addons/form"],
+  parent: ["responsive-block-editor-addons/form"],
   keywords: [
     __("form", "responsive-block-editor-addons"),
     __("input", "responsive-block-editor-addons"),

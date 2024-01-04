@@ -3,7 +3,6 @@
  */
 import classnames from "classnames";
 import Inspector from "./inspector";
-import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons"
 import EditorStyles from "./editor-styles";
 import variations from './variations';
@@ -23,7 +22,7 @@ export default class Edit extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
-      "responsive-block-editor-addons-advanced-heading-style-" +
+      "responsive-block-editor-addons-form-style-" +
         this.props.clientId
     );
 
@@ -42,7 +41,7 @@ export default class Edit extends Component {
     const $style = document.createElement("style");
     $style.setAttribute(
       "id",
-      "responsive-block-editor-addons-advanced-heading-style-" +
+      "responsive-block-editor-addons-form-style-" +
         this.props.clientId
     );
     document.head.appendChild($style);
@@ -53,9 +52,11 @@ export default class Edit extends Component {
       attributes: {
         isFormVariantSelected,
         formVariant,
+        formSubmitBtnLabel,
         block_id,
       },
       setAttributes,
+      isSelected,
       mergeBlocks,
       insertBlocksAfter,
       onReplace,
@@ -67,7 +68,12 @@ export default class Edit extends Component {
 					icon={ResponsiveBlockEditorAddonsIcons.form}
 					label={__( 'Choose variation' )}
 					instructions={__( 'Select a variation to start with.' )}
-					onSelect={(variation) => {console.log(variation);setAttributes({ isFormVariantSelected: true, formVariant: variation && variation.key ? variation.key : 'skip' })}}
+					onSelect={(variation) => {
+            setAttributes({
+              isFormVariantSelected: true,
+              formVariant: variation && variation.key ? variation.key : 'skip'
+            })
+          }}
 					variations={variations}
           allowSkip
 				/>
@@ -90,13 +96,34 @@ export default class Edit extends Component {
         key={`mainDiv-${block_id}`}
         >
         {!isFormVariantSelected && VariantSelector()}
-        {isFormVariantSelected && formVariant === 'contact' && 
+        {isFormVariantSelected && 
+        <>
           <InnerBlocks
             templateLock={false}
-            template={variations[0]?.innerBlocks}
+            template={formVariant === 'contact' ? variations[0]?.innerBlocks : variations[1]?.innerBlocks}
           />
+
+          <div className="responsive-block-editor-addons-form-submit-message-container">
+            <RichText
+              className="responsive-block-editor-addons-form-submit-message"
+              placeholder={ __( "Submit", "responsive-block-editor-addons" ) }
+              value={ formSubmitBtnLabel }
+              onChange={ (value) => setAttributes({ formSubmitBtnLabel: value }) }
+              tagName="button"
+              type="submit"
+              onClick={ (e) => e.preventDefault() }
+            />
+          </div>
+
+          {isSelected &&
+            <div className="responsive-block-editor-addons-form-submit-message-wrapper">
+              <div className="responsive-block-editor-addons-form-submit-success-message">Success</div>
+              <div className="responsive-block-editor-addons-form-submit-error-message">Error. Please Try Again</div>
+            </div>
+          }
+        </>
         }
-        {/* {isFormVariantSelected && formVariant === 'subscribe'} */}
+
       </div>,
     ];
   }
