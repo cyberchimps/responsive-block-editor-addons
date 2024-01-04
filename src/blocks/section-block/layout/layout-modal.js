@@ -2,13 +2,13 @@ const {rawHandler} = wp.blocks;
 /**
  * Pattern Importer Modal with tabs.
  */
-import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 
 /**
  * WordPress dependencies.
  */
-const {withSelect, withDispatch} = wp.data;
+const { select } = wp.data;
 
+const {withSelect, withDispatch} = wp.data;
 const siteData = require("../../../../includes/data/responsive-sites-gutenberg-all.json");
 const {map} = require("lodash");
 import "./style.scss";
@@ -82,6 +82,9 @@ export function LayoutModal(props) {
       });
       // Check the response and set isProactive state accordingly
       setIsProactive(response && response.pro_active);
+      // let data = response && response.data;
+// 
+      // setSitesData()
     } catch (error) {
       console.error("Error checking endpoint:", error);
     }
@@ -561,6 +564,7 @@ export function LayoutModal(props) {
             <Fragment>
               <div className="modal-header-content">
                 <div className="modal-title">
+                {<img src={responsive_globals.plugin_url + 'admin/images/RBA-Logo-without-text.png'} alt="rbea-logo" />}
                   {__("Template Library", "my-textdomain")}
                 </div>
 

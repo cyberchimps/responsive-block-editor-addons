@@ -204,7 +204,7 @@ const ResponsiveBlockEditorAddonsIcons = {
     </svg>,
     popup: <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18 0.5H7.97375C6.6 0.5 5.5 1.6 5.5 2.975V13C5.5 14.375 6.625 15.5 8 15.5H18C19.375 15.5 20.5 14.375 20.5 13V3C20.5 1.625 19.375 0.5 18 0.5ZM18 13H8V3H18V13ZM3 10.5H0.5V18C0.5 19.375 1.625 20.5 3 20.5H10.5V18H3V10.5Z" fill="#FE6E5A"/></svg>,
-    template_library: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="#FF6F61" d="M18 11.3l-1-1.1-4 4V3h-1.5v11.3L7 10.2l-1 1.1 6.2 5.8 5.8-5.8zm.5 3.7v3.5h-13V15H4v5h16v-5h-1.5z"></path></svg>
+    template_library: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="#FF6F61" d="M18 11.3l-1-1.1-4 4V3h-1.5v11.3L7 10.2l-1 1.1 6.2 5.8 5.8-5.8zm.5 3.7v3.5h-13V15H4v5h16v-5h-1.5z"></path></svg>,    
 }
 
 

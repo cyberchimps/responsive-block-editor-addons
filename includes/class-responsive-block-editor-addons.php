@@ -542,6 +542,7 @@ class Responsive_Block_Editor_Addons {
 				'taxonomy_list'                      => $this->get_taxonomy_list(),
 				'home_url'                           => home_url(),
 				'cf7_forms'                          => $this->get_cf7_forms(),
+				'plugin_url'						 =>	plugin_dir_url( dirname( __FILE__ ) )
 			)
 		);
 
@@ -1173,7 +1174,7 @@ class Responsive_Block_Editor_Addons {
 		// Check if the option exists and its value is "Activated"
 		$is_pro_active = get_option('wc_am_client_responsive_addons_pro_activated');
 		$is_xml_updated = get_option('last_xml_export_checksums');
-
+		$data = get_option( 'total-responsive-sites-data' );
     	// Fetch data from the external endpoint
     	$external_data = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum');
 
@@ -1187,6 +1188,7 @@ class Responsive_Block_Editor_Addons {
 	$response_data = [
         'pro_active' => $is_pro_active === 'Activated',
         'xml_update' => $external_data_decoded['last_xml_export_checksums'] !== $is_xml_updated,
+		'data' => $data
     ];
 
 
@@ -1280,13 +1282,14 @@ class Responsive_Block_Editor_Addons {
 			}
 		}
 		$filtered_json_all = json_encode($all_filtered_data, JSON_PRETTY_PRINT);
+		update_option('total-responsive-sites-data', $filtered_json_all);
+
 		// error_log(print_r($filtered_json_all,true));
 		$plugin_dir_path = plugin_dir_path(__FILE__);
 		$relative_path = 'data/';
 		$full_path = $plugin_dir_path . $relative_path;
 		$file_path_all = $full_path . 'responsive-sites-gutenberg-all.json';
 
-		// Write the JSON data to the file
 		file_put_contents($file_path_all, $filtered_json_all);
 
 		// Check if the data was successfully written to the file
