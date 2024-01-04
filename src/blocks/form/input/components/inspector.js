@@ -57,6 +57,8 @@ export default class Inspector extends Component {
       setAttributes,
     } = this.props;
 
+    const parentBlocks = wp.data.select('core/block-editor').getBlockParents(this.props.clientId)
+
     const checkboxOptions = {
       checkboxValue: false,
       placeholder: __( 'Enter Option Label', 'responsive-block-editor-addons' ),
@@ -149,6 +151,15 @@ export default class Inspector extends Component {
               title={__("Field Settings", "responsive-block-editor-addons")}
               initialOpen={true}
             >
+
+              <Button
+                variant="secondary"
+                style={{marginBottom: '16px'}}
+                onClick={ () => wp.data.dispatch( 'core/block-editor' ).selectBlock( parentBlocks[0] ) }
+              >
+                { __( 'Back to the Form', 'responsive-block-editor-addons' ) }
+              </Button>
+
               <SelectControl
                 label={__("Field Type", "responsive-block-editor-addons")}
                 value={formInputFieldType}
