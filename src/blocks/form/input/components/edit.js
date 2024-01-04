@@ -132,7 +132,7 @@ export default class Edit extends Component {
               disabled
             />}
 
-          {formInputFieldType === 'checkbox' && CheckBox()}
+          {formInputFieldType === 'checkbox' && <div className="responsive-block-editor-addons-form-input-checkbox-wrapper">{CheckBox()}</div>}
 
           {formInputFieldType === 'textarea' &&
             <textarea

@@ -125,7 +125,6 @@ export default class Inspector extends Component {
             let updatedOptions = [ ...formCheckBoxOptions ];
             updatedOptions = arrayMove(formCheckBoxOptions, oldIndex, newIndex);
             setAttributes({ formCheckBoxOptions: updatedOptions });
-            console.log(formCheckBoxOptions)
           }}
           axis="y"
           lockAxis="y"

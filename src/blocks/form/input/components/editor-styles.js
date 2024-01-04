@@ -9,8 +9,19 @@ function EditorStyles(props) {
   const {
     formInputWidth,
     formInputLabelColor,
+    formInputInline,
     block_id,
   } = props.attributes;
+
+  let inlineList = ''
+  if ( formInputInline ) {
+    inlineList = {
+      "display": "flex",
+      "flex-direction": "row",
+      "flex-wrap": "wrap",
+      "gap": "8px",
+    }
+  }
 
   var selectors = {
     "": {
@@ -20,6 +31,9 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-form-input__input": {
       "width": generateCSSUnit(formInputWidth, "%"),
+    },
+    " .responsive-block-editor-addons-form-input-checkbox-wrapper": {
+      ...inlineList
     },
   };
 
