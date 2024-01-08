@@ -32,6 +32,20 @@ export default class Inspector extends Component {
     super(...arguments);
   }
 
+  componentDidUpdate() {
+    const { clientId, setAttributes } = this.props
+    const { formInnerBlocks } = this.props.attributes
+    if ( formInnerBlocks.length === 0) {
+      setTimeout(
+        () => {
+          let allFormInnerBlocks = wp.data.select( 'core/block-editor' ).getBlock(clientId).innerBlocks;
+          let filteredInnerBlocks = allFormInnerBlocks.filter((block) => block.name === 'responsive-block-editor-addons/form-input' )
+          setAttributes({ formInnerBlocks: filteredInnerBlocks })
+          , 100}
+      );
+    }
+  }
+
   render() {
 
     // Setup the attributes

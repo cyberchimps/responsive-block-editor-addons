@@ -1,5 +1,7 @@
 const { __ } = wp.i18n;
 
+const formInnerBlocks = []
+
 const attributes = {
   block_id: {
     type: "string",
@@ -15,6 +17,10 @@ const attributes = {
     type: "string",
     default: __( "Submit", "responsive-block-editor-addons" ),
   },
+  formInnerBlocks: {
+    type: "array",
+    default: formInnerBlocks,
+  }
 };
 
 export default attributes;
