@@ -4,12 +4,16 @@
 
 // Setup the block
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
+const { Component } = wp.element;
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import { __experimentalText as Text } from '@wordpress/components';
+import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
+import { createBlock } from '@wordpress/blocks';
 
 // Import block components
-const { InspectorControls, AlignmentToolbar, ColorPalette, PanelColorSettings } = wp.blockEditor
+const { InspectorControls } = wp.blockEditor
 
 // Import Inspector components
 const {
@@ -51,10 +55,84 @@ export default class Inspector extends Component {
     // Setup the attributes
     const {
       attributes: {
-        
+        isFormVariantSelected,
+        formInnerBlocks,
       },
       setAttributes,
+      clientId
     } = this.props;
+
+    const inputFieldActions = {
+      select: ( blockId ) => {
+        if ( 0 < formInnerBlocks?.length ) {
+          wp.data.dispatch( 'core/block-editor' ).selectBlock( blockId );
+        }
+      },
+      move: ( blockId, position ) => {
+        const blockClientId = formInnerBlocks.find( block => block.clientId === blockId )?.clientId;
+        if ( blockClientId ) {
+          wp.data.dispatch( 'core/block-editor' ).moveBlockToPosition( blockClientId, clientId, clientId, position );
+        }
+      },
+      delete: ( blockId ) => {
+        if ( 0 < formInnerBlocks?.length ) {
+          wp.data.dispatch( 'core/block-editor' ).removeBlock( blockId, false );
+          let filteredInnerBlocks = formInnerBlocks.filter((block) => block.clientId !== blockId )
+          setAttributes({ formInnerBlocks: filteredInnerBlocks })
+        }
+      },
+      add: ( blockName ) => {
+        const itemBlock = createBlock( blockName );
+        wp.data.dispatch('core/block-editor').insertBlocks(itemBlock, ( formInnerBlocks?.length ) || 0, clientId);
+        setTimeout(() => {
+          const allFormInnerBlocks = wp.data.select('core/block-editor').getBlock(clientId).innerBlocks;
+          const filteredInnerBlocks = allFormInnerBlocks.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
+          setAttributes({ formInnerBlocks: filteredInnerBlocks });
+        }, 100);
+      }
+    };
+
+    const DragHandle = SortableHandle(() => <div className="responsive-block-editor-addons-checkbox-sort-options__drag"><span className="responsive-block-editor-addons-checkbox-sort-options__dragspan"></span></div>);
+
+    const SortableInputField = SortableElement(({ item, actions }) => {
+      return (
+        <div className="responsive-block-editor-addons-checkbox-sort-option">
+          <DragHandle />
+          <div className="responsive-block-editor-addons-checkbox-sort-options__text">{item?.attributes?.formInputFieldLabel}</div>
+          <Button
+            icon="edit"
+            label={__("Edit Field", "responsive-block-editor-addons")}
+            showTooltip={true}
+            className="responsive-block-editor-addons-checkbox-sort-options__button"
+            onClick={() => actions?.select?.(item.clientId)}
+          />
+          <Button
+            icon="no-alt"
+            label={__("Remove Field", "responsive-block-editor-addons")}
+            showTooltip={true}
+            className="responsive-block-editor-addons-checkbox-sort-options__button"
+            onClick={() => actions?.delete?.(item.clientId)}
+          />
+        </div>
+      )
+    })    
+
+    const InputFieldList = SortableContainer( ({ items }) => {
+      return (
+        <div>
+          { items.map( ( item, index ) => {
+            return (
+              <SortableInputField
+                key={ item.clientId }
+                index={ index }
+                item={ item }
+                actions={inputFieldActions}
+              />
+            );
+          }) }
+        </div>
+      );
+    });
 
     return (
       <InspectorControls key="inspector">
@@ -64,7 +142,38 @@ export default class Inspector extends Component {
               title={__("General", "responsive-block-editor-addons")}
               initialOpen={true}
             >
+              <Text variant="title.small" as="h3">{__( 'Input Fields', 'responsive-block-editor-addons' )}</Text>
+              <Text variant="subtitle">{__( 'Press and hold to use drag and drop to sort the tabs', 'responsive-block-editor-addons' )}</Text>
+              {formInnerBlocks.length !== 0 && (
+                <>
+                  <InputFieldList
+										items={ formInnerBlocks }
+										onSortEnd={({ oldIndex, newIndex }) => {
+                      const movedClientId = formInnerBlocks?.[oldIndex]?.clientId;
+                      if (movedClientId) {
+                        const updatedBlocks = arrayMove(formInnerBlocks, oldIndex, newIndex);
+                        setAttributes({ formInnerBlocks: updatedBlocks });
+                        inputFieldActions.move(movedClientId, newIndex);
+                      }
+                    }}
+										useDragHandle
+										axis="y"
+										lockAxis="y"
+									/>
+                </>
+              )}
+
+              {isFormVariantSelected && <>
+                <Button
+									variant="secondary"
+									className="responsive-block-editor-addons-checkbox__add-options"
+									onClick={ () => inputFieldActions?.add?.( 'responsive-block-editor-addons/form-input' ) }
+								>
+									{ __( 'Add Input Field', 'responsive-block-editor-addons' ) }
+								</Button>
               
+              </>}
+
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
