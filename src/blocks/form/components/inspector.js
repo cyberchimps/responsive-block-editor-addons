@@ -36,17 +36,35 @@ export default class Inspector extends Component {
     super(...arguments);
   }
 
-  componentDidUpdate() {
+  checkLabelEquality(prevFormInnerBlocks, currentFormInnerBlocks) {
+    const { setAttributes } = this.props
+    const { formInnerBlocks } = this.props.attributes
+    for (let i = 0; i < prevFormInnerBlocks.length; i++) {
+      const label1 = prevFormInnerBlocks[i]?.attributes.formInputFieldLabel;
+      const label2 = currentFormInnerBlocks[i]?.attributes.formInputFieldLabel;
+      if (label1 !== label2) {
+          setAttributes({ formInnerBlocks:  currentFormInnerBlocks})
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
     const { clientId, setAttributes } = this.props
     const { formInnerBlocks } = this.props.attributes
     if ( formInnerBlocks.length === 0) {
-      setTimeout(
-        () => {
-          let allFormInnerBlocks = wp.data.select( 'core/block-editor' ).getBlock(clientId).innerBlocks;
-          let filteredInnerBlocks = allFormInnerBlocks.filter((block) => block.name === 'responsive-block-editor-addons/form-input' )
-          setAttributes({ formInnerBlocks: filteredInnerBlocks })
-          , 100}
+      setTimeout( () => {
+          let allFormInnerBlocks = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
+          let filteredInnerBlocks = allFormInnerBlocks?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
+          setAttributes({ formInnerBlocks: filteredInnerBlocks });
+        },
+        100
       );
+    } else {
+      if (prevProps.attributes.formInnerBlocks.length !== 0) {
+        let allFormInnerBlocks1 = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
+        let filteredInnerBlocks1 = allFormInnerBlocks1?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
+        this.checkLabelEquality(prevProps.attributes.formInnerBlocks, filteredInnerBlocks1)
+      }
     }
   }
 
