@@ -53,6 +53,8 @@ export default class Edit extends Component {
         isFormVariantSelected,
         formVariant,
         formSubmitBtnLabel,
+        formSuccessMessage,
+        formErrorMessage,
         block_id,
       },
       setAttributes,
@@ -98,27 +100,29 @@ export default class Edit extends Component {
         {!isFormVariantSelected && VariantSelector()}
         {isFormVariantSelected && 
         <>
-          <InnerBlocks
-            templateLock={false}
-            template={formVariant === 'contact' ? variations[0]?.innerBlocks : variations[1]?.innerBlocks}
-          />
-
-          <div className="responsive-block-editor-addons-form-submit-message-container">
-            <RichText
-              className="responsive-block-editor-addons-form-submit-message"
-              placeholder={ __( "Submit", "responsive-block-editor-addons" ) }
-              value={ formSubmitBtnLabel }
-              onChange={ (value) => setAttributes({ formSubmitBtnLabel: value }) }
-              tagName="button"
-              type="submit"
-              onClick={ (e) => e.preventDefault() }
+          <form className="responsive-block-editor-addons-form__form">
+            <InnerBlocks
+              templateLock={false}
+              template={formVariant === 'contact' ? variations[0]?.innerBlocks : variations[1]?.innerBlocks}
             />
-          </div>
+
+            <div className="responsive-block-editor-addons-form-submit-button-container">
+              <RichText
+                className="responsive-block-editor-addons-form-submit-button"
+                placeholder={ __( "Submit", "responsive-block-editor-addons" ) }
+                value={ formSubmitBtnLabel }
+                onChange={ (value) => setAttributes({ formSubmitBtnLabel: value }) }
+                tagName="button"
+                type="submit"
+                onClick={ (e) => e.preventDefault() }
+              />
+            </div>
+          </form>
 
           {isSelected &&
             <div className="responsive-block-editor-addons-form-submit-message-wrapper">
-              <div className="responsive-block-editor-addons-form-submit-success-message">Success</div>
-              <div className="responsive-block-editor-addons-form-submit-error-message">Error. Please Try Again</div>
+              <div className="responsive-block-editor-addons-form-submit-success-message">{formSuccessMessage}</div>
+              <div className="responsive-block-editor-addons-form-submit-error-message">{formErrorMessage}</div>
             </div>
           }
         </>

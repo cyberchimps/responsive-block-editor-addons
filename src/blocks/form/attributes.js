@@ -39,7 +39,7 @@ const attributes = {
   },
   formLabelSize: {
     type: "string",
-    default: "",
+    default: "16px",
   },
   formLabelInputGap: {
     type: "number",
@@ -47,67 +47,50 @@ const attributes = {
   },
   formInputSize: {
     type: "string",
-    default: "",
+    default: "16px",
   },
   formFieldInputGap: {
     type: "number",
     default: 16,
   },
-  inputFieldPaddingTop: {
-    type: "number",
-    default: 8,
+  inputFieldPadding: {
+    type: "object",
+    default: {
+      top: '8px',
+      left: '8px',
+      right: '8px',
+      bottom: '8px',
+    }
   },
-  inputFieldPaddingTopTablet: {
-    type: "number",
-    default: 8,
+  inputFieldPaddingTablet: {
+    type: "object",
+    default: {
+      top: '6px',
+      left: '6px',
+      right: '6px',
+      bottom: '6px',
+    }
   },
-  inputFieldPaddingTopMobile: {
-    type: "number",
-    default: 8,
+  inputFieldPaddingMobile: {
+    type: "object",
+    default: {
+      top: '4px',
+      left: '4px',
+      right: '4px',
+      bottom: '4px',
+    }
   },
-  inputFieldPaddingBottom: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingBottomTablet: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingBottomMobile: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingLeft: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingLeftTablet: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingLeftMobile: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingRight: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingRightTablet: {
-    type: "number",
-    default: 8,
-  },
-  inputFieldPaddingRightMobile: {
-    type: "number",
-    default: 8,
+  formInputPaddingToggle: {
+    type: "string",
+    default: "desktop",
   },
   formButtonLabelColor:{
     type: "string",
-    default: "",
+    default: "#f9f9f9",
   },
   formButtonLabelBGColor:{
     type: "string",
-    default: "",
+    default: "#111111",
   },
   formButtonLabelHoverColor:{
     type: "string",
@@ -117,53 +100,45 @@ const attributes = {
     type: "string",
     default: "",
   },
-  formButtonPaddingTop: {
-    type: "number",
-    default: 8,
+  formButtonPadding: {
+    type: "object",
+    default: {
+      top: '10px',
+      left: '20px',
+      right: '20px',
+      bottom: '10px',
+    }
   },
-  formButtonPaddingTopTablet: {
-    type: "number",
-    default: 8,
+  formButtonPaddingTablet: {
+    type: "object",
+    default: {
+      top: '8px',
+      left: '16px',
+      right: '16px',
+      bottom: '8px',
+    }
   },
-  formButtonPaddingTopMobile: {
-    type: "number",
-    default: 8,
+  formButtonPaddingMobile: {
+    type: "object",
+    default: {
+      top: '6px',
+      left: '12px',
+      right: '12px',
+      bottom: '6px',
+    }
   },
-  formButtonPaddingBottom: {
-    type: "number",
-    default: 8,
+  formButtonBorderRadius: {
+    type: "object",
+    default: {
+      top: '4px',
+      left: '4px',
+      right: '4px',
+      bottom: '4px',
+    }
   },
-  formButtonPaddingBottomTablet: {
-    type: "number",
-    default: 8,
-  },
-  formButtonPaddingBottomMobile: {
-    type: "number",
-    default: 8,
-  },
-  formButtonPaddingLeft: {
-    type: "number",
-    default: 8,
-  },
-  formButtonPaddingLeftTablet: {
-    type: "number",
-    default: 8,
-  },
-  formButtonPaddingLeftMobile: {
-    type: "number",
-    default: 8,
-  },
-  formButtonPaddingRight: {
-    type: "number",
-    default: 8,
-  },
-  formButtonPaddingRightTablet: {
-    type: "number",
-    default: 8,
-  },
-  formButtonPaddingRightMobile: {
-    type: "number",
-    default: 8,
+  formButtonPaddingToggle: {
+    type: "string",
+    default: "desktop",
   },
   formButtonAlign: {
     type: "string",
@@ -229,9 +204,9 @@ const attributes = {
   },
   formHelperTextSize: {
     type: "string",
-    default: "16px",
+    default: "14px",
   },
-  formsSuccessErrorMessageSize: {
+  formSuccessErrorMessageSize: {
     type: "string",
     default: "16px",
   },

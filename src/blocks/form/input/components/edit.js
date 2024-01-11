@@ -123,7 +123,7 @@ export default class Edit extends Component {
 
           {(formInputFieldType !== 'checkbox' && formInputFieldType !== 'textarea') &&
             <input 
-              className="responsive-block-editor-addons-form-input__input"
+              className="responsive-block-editor-addons-form-input__input responsive-block-editor-addons-form-input__text"
               type={formInputFieldType}
               name={`rba-form-input-${block_id}`}
               id={`rba-form-input-${block_id}`}
@@ -137,7 +137,7 @@ export default class Edit extends Component {
           {formInputFieldType === 'textarea' &&
             <textarea
               rows={10}
-              className="responsive-block-editor-addons-form-input__input"
+              className="responsive-block-editor-addons-form-input__input responsive-block-editor-addons-form-input__textarea"
               type={formInputFieldType}
               name={`rba-form-input-${block_id}`}
               id={`rba-form-input-${block_id}`}

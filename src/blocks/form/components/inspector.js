@@ -7,11 +7,11 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import { __experimentalText as Text, FontSizePicker, __experimentalBoxControl as BoxControl } from '@wordpress/components';
+import { __experimentalText as Text, FontSizePicker, __experimentalBoxControl as BoxControl, __experimentalToggleGroupControl as ToggleGroupControl, __experimentalToggleGroupControlOption as ToggleGroupControlOption, __experimentalToggleGroupControlOptionIcon as ToggleGroupControlOptionIcon } from '@wordpress/components';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import arrayMove from 'array-move';
 import { createBlock } from '@wordpress/blocks';
-import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import { tablet, mobile, desktop } from '@wordpress/icons';
 
 // Import block components
 const { InspectorControls, PanelColorSettings, AlignmentToolbar } = wp.blockEditor
@@ -82,34 +82,19 @@ export default class Inspector extends Component {
         formInputSize,
         formLabelInputGap,
         formFieldInputGap,
-        inputFieldPaddingTop,
-        inputFieldPaddingTopTablet,
-        inputFieldPaddingTopMobile,
-        inputFieldPaddingBottom,
-        inputFieldPaddingBottomTablet,
-        inputFieldPaddingBottomMobile,
-        inputFieldPaddingLeft,
-        inputFieldPaddingLeftTablet,
-        inputFieldPaddingLeftMobile,
-        inputFieldPaddingRight,
-        inputFieldPaddingRightTablet,
-        inputFieldPaddingRightMobile,
+        formInputPaddingToggle,
+        inputFieldPadding,
+        inputFieldPaddingTablet,
+        inputFieldPaddingMobile,
         formButtonLabelColor,
         formButtonLabelBGColor,
         formButtonLabelHoverColor,
         formButtonLabelHoverBGColor,
-        formButtonPaddingTop,
-        formButtonPaddingTopTablet,
-        formButtonPaddingTopMobile,
-        formButtonPaddingBottom,
-        formButtonPaddingBottomTablet,
-        formButtonPaddingBottomMobile,
-        formButtonPaddingLeft,
-        formButtonPaddingLeftTablet,
-        formButtonPaddingLeftMobile,
-        formButtonPaddingRight,
-        formButtonPaddingRightTablet,
-        formButtonPaddingRightMobile,
+        formButtonPadding,
+        formButtonPaddingTablet,
+        formButtonPaddingMobile,
+        formButtonPaddingToggle,
+        formButtonBorderRadius,
         formButtonAlign,
         formButtonAlignTablet,
         formButtonAlignMobile,
@@ -124,7 +109,7 @@ export default class Inspector extends Component {
         formBorderRadius,
         formBorderWidth,
         formHelperTextSize,
-        formsSuccessErrorMessageSize,
+        formSuccessErrorMessageSize,
       },
       setAttributes,
       clientId
@@ -325,14 +310,16 @@ export default class Inspector extends Component {
               title={__("Labels", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-
-              <FontSizePicker
-                fontSizes={defaultFontSizes}
-                value={ formLabelSize }
-                onChange={ ( value ) => {setAttributes({ formLabelSize: value })} }
-                units={[{ value: 'px', label: 'px', default: 16 }]}
-                __nextHasNoMarginBottom
-              />
+              
+              <div className="responsive-block-editor-addons-form-controls-spacing">
+                <FontSizePicker
+                  fontSizes={defaultFontSizes}
+                  value={ formLabelSize }
+                  onChange={ ( value ) => {setAttributes({ formLabelSize: value })} }
+                  units={[{ value: 'px', label: 'px', default: 16 }]}
+                  __nextHasNoMarginBottom
+                />
+              </div>
 
               <RangeControl
                 label={ __( "Spacing", "responsive-block-editor-addons" ) }
@@ -342,6 +329,7 @@ export default class Inspector extends Component {
                 step={ 0.1 }
                 min={ 0 }
                 max={ 50 }
+                resetFallbackValue={10}
                 initialPosition={ 10 }
               />
 
@@ -352,13 +340,15 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
 
-              <FontSizePicker
-                fontSizes={defaultFontSizes}
-                value={ formInputSize }
-                onChange={ ( value ) => {setAttributes({ formInputSize: value })} }
-                units={[{ value: 'px', label: 'px', default: 16 }]}
-                __nextHasNoMarginBottom
-              />
+              <div className="responsive-block-editor-addons-form-controls-spacing">
+                <FontSizePicker
+                  fontSizes={defaultFontSizes}
+                  value={ formInputSize }
+                  onChange={ ( value ) => {setAttributes({ formInputSize: value })} }
+                  units={[{ value: 'px', label: 'px', default: 16 }]}
+                  __nextHasNoMarginBottom
+                />
+              </div>
 
               <RangeControl
                 label={ __( "Field Spacing", "responsive-block-editor-addons" ) }
@@ -368,56 +358,41 @@ export default class Inspector extends Component {
                 step={ 0.1 }
                 min={ 0 }
                 max={ 50 }
+                resetFallbackValue={16}
                 initialPosition={ 16 }
               />
 
-              <ResponsiveSpacingControl
-                title={__("Input Padding Top", "responsive-block-editor-addons")}
-                attrNameTemplate="inputFieldPaddingTop%s"
-                values={{
-                  desktop: inputFieldPaddingTop,
-                  tablet: inputFieldPaddingTopTablet,
-                  mobile: inputFieldPaddingTopMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              <hr className="responsive-block-editor-addons-editor__separator" />
 
-              <ResponsiveSpacingControl
-                title={__("Input Padding Bottom", "responsive-block-editor-addons")}
-                attrNameTemplate="inputFieldPaddingBottom%s"
-                values={{
-                  desktop: inputFieldPaddingBottom,
-                  tablet: inputFieldPaddingBottomTablet,
-                  mobile: inputFieldPaddingBottomMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              <ToggleGroupControl onChange={(value) => setAttributes({ formInputPaddingToggle: value })} label={__("Screen Type", "responsive-block-editor-addons")} value={formInputPaddingToggle}>
+                <ToggleGroupControlOptionIcon value="desktop" icon={ desktop } label="Desktop" />
+                <ToggleGroupControlOptionIcon value="tablet" icon={ tablet } label="Tablet" />
+                <ToggleGroupControlOptionIcon value="mobile" icon={ mobile } label="Mobile" />
+              </ToggleGroupControl>
 
-              <ResponsiveSpacingControl
-                title={__("Input Padding Left", "responsive-block-editor-addons")}
-                attrNameTemplate="inputFieldPaddingLeft%s"
-                values={{
-                  desktop: inputFieldPaddingLeft,
-                  tablet: inputFieldPaddingLeftTablet,
-                  mobile: inputFieldPaddingLeftMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              {formInputPaddingToggle === 'desktop' && 
+                <BoxControl
+                  label={__("Input Padding", "responsive-block-editor-addons")}
+                  values={inputFieldPadding}
+                  units={[{ value: 'px', label: 'px', default: 8 }]}
+                  onChange={ ( value ) => {setAttributes({ inputFieldPadding: value }) } }
+                />}
 
-              <ResponsiveSpacingControl
-                title={__("Input Padding Right", "responsive-block-editor-addons")}
-                attrNameTemplate="inputFieldPaddingRight%s"
-                values={{
-                  desktop: inputFieldPaddingRight,
-                  tablet: inputFieldPaddingRightTablet,
-                  mobile: inputFieldPaddingRightMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              {formInputPaddingToggle === 'tablet' && 
+                <BoxControl
+                  label={__("Input Padding (Tablet)", "responsive-block-editor-addons")}
+                  values={inputFieldPaddingTablet}
+                  units={[{ value: 'px', label: 'px', default: 8 }]}
+                  onChange={ ( value ) => {setAttributes({ inputFieldPaddingTablet: value }) } }
+                />}
+
+              {formInputPaddingToggle === 'mobile' && 
+                <BoxControl
+                  label={__("Input Padding (Mobile)", "responsive-block-editor-addons")}
+                  values={inputFieldPaddingMobile}
+                  units={[{ value: 'px', label: 'px', default: 8 }]}
+                  onChange={ ( value ) => {setAttributes({ inputFieldPaddingMobile: value }) } }
+                />}
 
             </PanelBody>
 
@@ -460,53 +435,51 @@ export default class Inspector extends Component {
                 ]}
               ></PanelColorSettings>
 
-              <ResponsiveSpacingControl
-                title={__("Button Padding Top", "responsive-block-editor-addons")}
-                attrNameTemplate="formButtonPaddingTop%s"
-                values={{
-                  desktop: formButtonPaddingTop,
-                  tablet: formButtonPaddingTopTablet,
-                  mobile: formButtonPaddingTopMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              <hr className="responsive-block-editor-addons-editor__separator" />
 
-              <ResponsiveSpacingControl
-                title={__("Button Padding Bottom", "responsive-block-editor-addons")}
-                attrNameTemplate="formButtonPaddingBottom%s"
-                values={{
-                  desktop: formButtonPaddingBottom,
-                  tablet: formButtonPaddingBottomTablet,
-                  mobile: formButtonPaddingBottomMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              <ToggleGroupControl onChange={(value) => setAttributes({ formButtonPaddingToggle: value })} label={__("Screen Type", "responsive-block-editor-addons")} value={formButtonPaddingToggle}>
+                <ToggleGroupControlOptionIcon value="desktop" icon={ desktop } label="Desktop" />
+                <ToggleGroupControlOptionIcon value="tablet" icon={ tablet } label="Tablet" />
+                <ToggleGroupControlOptionIcon value="mobile" icon={ mobile } label="Mobile" />
+              </ToggleGroupControl>
 
-              <ResponsiveSpacingControl
-                title={__("Button Padding Left", "responsive-block-editor-addons")}
-                attrNameTemplate="formButtonPaddingLeft%s"
-                values={{
-                  desktop: formButtonPaddingLeft,
-                  tablet: formButtonPaddingLeftTablet,
-                  mobile: formButtonPaddingLeftMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              {formButtonPaddingToggle === 'desktop' && 
+                <BoxControl
+                  label={__("Button Padding", "responsive-block-editor-addons")}
+                  values={formButtonPadding}
+                  units={[{ value: 'px', label: 'px', default: 8 }]}
+                  onChange={ ( value ) => {setAttributes({ inputFieldPadding: value }) } }
+                />}
 
-              <ResponsiveSpacingControl
-                title={__("Button Padding Right", "responsive-block-editor-addons")}
-                attrNameTemplate="formButtonPaddingRight%s"
-                values={{
-                  desktop: formButtonPaddingRight,
-                  tablet: formButtonPaddingRightTablet,
-                  mobile: formButtonPaddingRightMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
+              {formButtonPaddingToggle === 'tablet' && 
+                <BoxControl
+                  label={__("Button Padding (Tablet)", "responsive-block-editor-addons")}
+                  values={formButtonPaddingTablet}
+                  units={[{ value: 'px', label: 'px', default: 8 }]}
+                  onChange={ ( value ) => {setAttributes({ formButtonPaddingTablet: value }) } }
+                />}
+
+              {formButtonPaddingToggle === 'mobile' && 
+                <BoxControl
+                  label={__("Button Padding (Mobile)", "responsive-block-editor-addons")}
+                  values={formButtonPaddingMobile}
+                  units={[{ value: 'px', label: 'px', default: 8 }]}
+                  onChange={ ( value ) => {setAttributes({ formButtonPaddingMobile: value }) } }
+                />}
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <div className="responsive-block-editor-addons-form-border-radius-control">
+                <BoxControl
+                  label={__("Button Border Radius", "responsive-block-editor-addons")}
+                  values={formButtonBorderRadius}
+                  units={[{ value: 'px', label: 'px', default: 8 }]}
+                  onChange={ ( value ) => {setAttributes({ formButtonBorderRadius: value }) } }
+                  resetValues={{ top: '4px', right: '4px', bottom: '4px', left: '4px' }}
+                />
+              </div>
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
 
               <TabPanel
                 className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
@@ -657,14 +630,16 @@ export default class Inspector extends Component {
                   values={formBorderRadius}
                   units={[{ value: 'px', label: 'px', default: 4 }]}
                   onChange={ ( value ) => {setAttributes({ formBorderRadius: value }) } }
+                  resetValues={{ top: '4px', right: '4px', bottom: '4px', left: '4px' }}
                 />
               </div>
 
               <BoxControl
-                label={__("Border Radius", "responsive-block-editor-addons")}
+                label={__("Border Width", "responsive-block-editor-addons")}
                 values={formBorderWidth}
-                units={[{ value: 'px', label: 'px', default: 16 }]}
+                units={[{ value: 'px', label: 'px', default: 1 }]}
                 onChange={ ( value ) => {setAttributes({ formBorderWidth: value })} }
+                resetValues={{ top: '1px', right: '1px', bottom: '1px', left: '1px' }}
               />
 
             </PanelBody>
@@ -675,22 +650,26 @@ export default class Inspector extends Component {
             >
 
               <Text variant="title.small" as="h3">{__( 'Helper Text', 'responsive-block-editor-addons' )}</Text>
-              <FontSizePicker
-                fontSizes={defaultFontSizes}
-                value={ formHelperTextSize }
-                onChange={ ( value ) => {setAttributes({ formHelperTextSize: value })} }
-                units={[{ value: 'px', label: 'px', default: 16 }]}
-                __nextHasNoMarginBottom
-              />
+              <div className="responsive-block-editor-addons-form-controls-spacing">
+                <FontSizePicker
+                  fontSizes={defaultFontSizes}
+                  value={ formHelperTextSize }
+                  onChange={ ( value ) => {setAttributes({ formHelperTextSize: value })} }
+                  units={[{ value: 'px', label: 'px', default: 14 }]}
+                  __nextHasNoMarginBottom
+                />
+              </div>
 
               <Text variant="title.small" as="h3">{__( 'Success/Error Message', 'responsive-block-editor-addons' )}</Text>
-              <FontSizePicker
-                fontSizes={defaultFontSizes}
-                value={ formsSuccessErrorMessageSize }
-                onChange={ ( value ) => {setAttributes({ formsSuccessErrorMessageSize: value })} }
-                units={[{ value: 'px', label: 'px', default: 16 }]}
-                __nextHasNoMarginBottom
-              />
+              <div className="responsive-block-editor-addons-form-controls-spacing">
+                <FontSizePicker
+                  fontSizes={defaultFontSizes}
+                  value={ formSuccessErrorMessageSize }
+                  onChange={ ( value ) => {setAttributes({ formSuccessErrorMessageSize: value })} }
+                  units={[{ value: 'px', label: 'px', default: 16 }]}
+                  __nextHasNoMarginBottom
+                />
+              </div>
 
             </PanelBody>
 
