@@ -10,8 +10,8 @@ import variations from './variations';
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls, InnerBlocks } = wp.blockEditor;
+const { Component } = wp.element;
+const { RichText, BlockControls, InnerBlocks } = wp.blockEditor;
 import {
 	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
