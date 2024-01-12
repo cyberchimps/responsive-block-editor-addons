@@ -58,9 +58,6 @@ export default class Edit extends Component {
         formCheckBoxOptions,
       },
       setAttributes,
-      mergeBlocks,
-      insertBlocksAfter,
-      onReplace,
     } = this.props;
 
     const CheckBox = () => {

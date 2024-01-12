@@ -31,7 +31,7 @@ const attributes = {
   },
   formSuccessMessage: {
     type: "string",
-    default: __( "Success", "responsive-block-editpr-addons" ),
+    default: __( "Success", "responsive-block-editor-addons" ),
   },
   formErrorMessage: {
     type: "string",

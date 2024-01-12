@@ -2,7 +2,6 @@
  * Internal dependencies
  */
 import classnames from "classnames";
-import Style from "style-it";
 
 /**
  * WordPress dependencies
@@ -17,27 +16,38 @@ export default class Save extends Component {
 
   render() {
     const {
-      headingTitle,
-      headingId,
-      headingDesc,
-      seperatorStyle,
-      seperatorPosition,
-      headingTag,
-      showHeading,
-      showSubHeading,
-      showSeparator,
+      formInputFieldLabel,
+      formInputRequired,
+      formInputHelpText,
+      formInputFieldType,
+      formInputPlaceholder,
+      formInputHideLabel,
+      formInputDefaultValue,
+      formCheckBoxOptions,
       block_id,
       anchor,
     } = this.props.attributes;
 
-    var seprator_output = "";
-    if (seperatorStyle !== "none") {
-      seprator_output = (
-        <div className="responsive-heading-seperator-wrap">
-          <div className="responsive-heading-seperator"></div>
-        </div>
-      );
+    const CheckBox = () => {
+      return (
+        <>
+        {formCheckBoxOptions.map((current, index) => {
+          return (
+            <div key={index} className="responsive-block-editor-addons-form-input-checkbox-container">
+              <input type="checkbox" name={`rba-form-input-${block_id}`} id={`rba-form-input-${block_id}`} checked={current.checkboxValue} />
+              <label>
+                <RichText.Content
+                  value={current.label}
+                  tagName="div"
+                />
+              </label>
+            </div>
+          );
+        })}
+        </>
+      )
     }
+
     return [
       <div
         id={anchor}
@@ -47,23 +57,45 @@ export default class Save extends Component {
           `block-${block_id}`
         )}
       >
-        {showHeading && (
-          <RichText.Content
-            tagName={headingTag}
-            value={headingTitle}
-            className="responsive-heading-title-text"
-            id={headingId}
-          />
-        )}
-        {seperatorPosition == "belowTitle" && showSeparator && seprator_output}
-        {showSubHeading && (
-          <RichText.Content
-            tagName="p"
-            value={headingDesc}
-            className="responsive-heading-desc-text"
-          />
-        )}
-        {seperatorPosition == "belowDesc" && showSeparator && seprator_output}
+        <div className="responsive-block-editor-addons-form-input">
+          {!formInputHideLabel &&
+          <label htmlFor={`rba-form-input-${block_id}`} className="responsive-block-editor-addons-form-input-label">
+            <RichText.Content
+              className="responsive-block-editor-addons-form-input__label"
+              value={ formInputFieldLabel }
+              tagName="span"
+            />
+
+              { formInputRequired && <span className="responsive-block-editor-addons-form-input__required">*</span> }
+
+          </label>}
+
+          {(formInputFieldType !== 'checkbox' && formInputFieldType !== 'textarea') &&
+            <input 
+              className="responsive-block-editor-addons-form-input__input responsive-block-editor-addons-form-input__text"
+              type={formInputFieldType}
+              name={`rba-form-input-${block_id}`}
+              id={`rba-form-input-${block_id}`}
+              placeholder={formInputPlaceholder}
+              value={formInputDefaultValue}
+            />}
+
+          {formInputFieldType === 'checkbox' && <div className="responsive-block-editor-addons-form-input-checkbox-wrapper">{CheckBox()}</div>}
+
+          {formInputFieldType === 'textarea' &&
+            <textarea
+              rows={10}
+              className="responsive-block-editor-addons-form-input__input responsive-block-editor-addons-form-input__textarea"
+              type={formInputFieldType}
+              name={`rba-form-input-${block_id}`}
+              id={`rba-form-input-${block_id}`}
+              placeholder={formInputPlaceholder}
+              defaultValue={formInputDefaultValue}
+            ></textarea>}
+
+          {formInputHelpText && <span className="responsive-block-editor-addons-form-input__helper">{formInputHelpText}</span>}
+
+        </div>
       </div>,
     ];
   }

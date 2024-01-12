@@ -14501,7 +14501,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
-		 * Get Defaults for Contact Form 7 Styler block
+		 * Get Defaults for Popup block.
 		 *
 		 * @return array
 		 */
@@ -14604,6 +14604,258 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'popupButtonPaddingRight'             => 32,
 				'popupButtonPaddingRightTablet'       => 32,
 				'popupButtonPaddingRightMobile'       => 32,
+			);
+		}
+
+		/**
+		 * Get Form CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_form_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_form_block_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$selectors        = array();
+
+			$selectors        = array(
+				''                                                              => array(),
+				' .responsive-block-editor-addons-form-input'                   => array(
+				    "margin-bottom" => self::get_css_value( $attr['formFieldInputGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-form-input-label'             => array(
+					"font-size"     => $attr['formLabelSize'],
+					"margin-bottom" => self::get_css_value( $attr['formLabelInputGap'], 'px' ),
+				),
+				' .responsive-block-editor-addons-form-input__label'            => array(
+					"color" => $attr['formLabelColor'],
+				),
+				' .responsive-block-editor-addons-form-input__required'         => array(
+					"color" => $attr['formRequiredLabelColor'] === null || $attr['formRequiredLabelColor'] === '' ? '#ff0000' : $attr['formRequiredLabelColor'],
+				),
+				' .responsive-block-editor-addons-form-input__input'            => array(
+					"font-size"                  => $attr['formInputSize'],
+					"color"                      => $attr['formInputTextColor'],
+					"background-color"           => $attr['formInputBGColor'],
+					"border-color"               => $attr['formBorderColor'] === null || $attr['formBorderColor'] === '' ? '#111111': $attr['formBorderColor'],
+					"border-top-left-radius"     => $attr['formBorderRadius']['top'],
+					"border-top-right-radius"    => $attr['formBorderRadius']['right'],
+					"border-bottom-left-radius"  => $attr['formBorderRadius']['left'],
+					"border-bottom-right-radius" => $attr['formBorderRadius']['right'],
+					"border-top-width"           => $attr['formBorderWidth']['top'],
+					"border-bottom-width"        => $attr['formBorderWidth']['bottom'],
+					"border-left-width"          => $attr['formBorderWidth']['left'],
+					"border-right-width"         => $attr['formBorderWidth']['right'],
+				),
+				' .responsive-block-editor-addons-form-input__text'             => array(
+					"padding-top"    => $attr['inputFieldPadding']['top'],
+					"padding-bottom" => $attr['inputFieldPadding']['bottom'],
+					"padding-left"   => $attr['inputFieldPadding']['left'],
+					"padding-right"  => $attr['inputFieldPadding']['right'],
+				),
+				' .responsive-block-editor-addons-form-input__helper'           => array(
+					"color"     => $attr['formHelperLabelColor'],
+      				"font-size" => $attr['formHelperTextSize'],
+				),
+				' .responsive-block-editor-addons-form-submit-button-container' => array(
+					"justify-content" => $attr['formButtonAlign'],
+      				"margin-top"      => self::get_css_value( $attr['formFieldInputGap'], "px"),
+				),
+				' .responsive-block-editor-addons-form-submit-button'           => array(
+					"color"                      => $attr['formButtonLabelColor'],
+					"background-color"           => $attr['formButtonLabelBGColor'],
+					"padding-top"                => $attr['formButtonPadding']['top'],
+					"padding-bottom"             => $attr['formButtonPadding']['bottom'],
+					"padding-left"               => $attr['formButtonPadding']['left'],
+					"padding-right"              => $attr['formButtonPadding']['right'],
+					"border-top-left-radius"     => $attr['formButtonBorderRadius']['top'],
+					"border-top-right-radius"    => $attr['formButtonBorderRadius']['right'],
+					"border-bottom-left-radius"  => $attr['formButtonBorderRadius']['left'],
+					"border-bottom-right-radius" => $attr['formButtonBorderRadius']['right'],
+				),
+				' .responsive-block-editor-addons-form-submit-button:hover'     => array(
+					"color"            => $attr['formButtonLabelHoverColor'],
+      				"background-color" => $attr['formButtonLabelHoverBGColor'],
+				),			
+				' .responsive-block-editor-addons-form-submit-success-message'  => array(
+					"color"     => $attr['formSuccessMessageColor'] === null || $attr['formSuccessMessageColor'] === '' ? '#008000' : $attr['formSuccessMessageColor'],
+      				"font-size" => $attr['formSuccessErrorMessageSize'],
+				),			
+				' .responsive-block-editor-addons-form-submit-error-message'    => array(
+					"color"     => $attr['formErrorMessageColor'] === null || $attr['formErrorMessageColor'] === '' ? '#FF0000' : $attr['formErrorMessageColor'],
+      				"font-size" =>  $attr['formSuccessErrorMessageSize'],
+				),			
+			);
+			$mobile_selectors = array(
+				''                                                             => array(),
+				' .responsive-block-editor-addons-form-input__text'            => array(
+					"padding-top"    => $attr['inputFieldPaddingMobile']['top'],
+					"padding-bottom" => $attr['inputFieldPaddingMobile']['bottom'],
+					"padding-left"   => $attr['inputFieldPaddingMobile']['left'],
+					"padding-right"  => $attr['inputFieldPaddingMobile']['right'],
+				),
+				' .responsive-block-editor-addons-form-submit-button-container' => array(
+					"justify-content" => $attr['formButtonAlignMobile'],
+				),
+				' .responsive-block-editor-addons-form-submit-button'           => array(
+					"padding-top"    => $attr['formButtonPaddingMobile']['top'],
+					"padding-bottom" => $attr['formButtonPaddingMobile']['bottom'],
+					"padding-left"   => $attr['formButtonPaddingMobile']['left'],
+					"padding-right"  => $attr['formButtonPaddingMobile']['right'],
+				),
+			);
+
+			$tablet_selectors = array(
+				''                                                              => array(),
+				' .responsive-block-editor-addons-form-input__text'             => array(
+					"padding-top"    => $attr['inputFieldPaddingTablet']['top'],
+					"padding-bottom" => $attr['inputFieldPaddingTablet']['bottom'],
+					"padding-left"   => $attr['inputFieldPaddingTablet']['left'],
+					"padding-right"  => $attr['inputFieldPaddingTablet']['right'],
+				),
+				' .responsive-block-editor-addons-form-submit-button-container' => array(
+					"justify-content" => $attr['formButtonAlignTablet'],
+				),
+				' .responsive-block-editor-addons-form-submit-button'           => array(
+					"padding-top"    => $attr['formButtonPaddingTablet']['top'],
+					"padding-bottom" => $attr['formButtonPaddingTablet']['bottom'],
+					"padding-left"   => $attr['formButtonPaddingTablet']['left'],
+					"padding-right"  => $attr['formButtonPaddingTablet']['right'],
+				),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-form.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for Form block.
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_form_block_default_attributes() {
+			return array(
+				'block_id'                    => '',
+				'isFormVariantSelected'       => false,
+				'formSubmitBtnLabel'          => __( 'Submit', 'responsive-block-editor-addons'),
+				'formEmailTo'                 => '',
+				'formEmailSubject'            => '',
+				'formEmailSubject'            => '',
+				'formSuccessMessage'          => __( "Success", "responsive-block-editor-addons" ),
+				'formErrorMessage'            => __( "Error. Please try again.", "responsive-block-editor-addons" ),
+				'formLabelSize'               => '16px',
+				'formLabelInputGap'           => 10,
+				'formInputSize'               => '16px',
+				'formFieldInputGap'           => 16,
+				'inputFieldPadding'           => array( 'top' => '8px', 'bottom' => '8px', 'left' => '8px', 'right' => '8px' ),
+				'inputFieldPaddingTablet'     => array( 'top' => '6px', 'bottom' => '6px', 'left' => '6px', 'right' => '6px' ),
+				'inputFieldPaddingMobile'     => array( 'top' => '4px', 'bottom' => '4px', 'left' => '4px', 'right' => '4px' ),
+				'formButtonLabelColor'        => '#f9f9f9',
+				'formButtonLabelBGColor'      => '#111111',
+				'formButtonLabelHoverColor'   => '',
+				'formButtonLabelHoverBGColor' => '',
+				'formButtonPadding'           => array( 'top' => '10px', 'bottom' => '10px', 'left' => '20px', 'right' => '20px' ),
+				'formButtonPaddingTablet'     => array( 'top' => '8px', 'bottom' => '8px', 'left' => '16px', 'right' => '16px' ),
+				'formButtonPaddingMobile'     => array( 'top' => '6px', 'bottom' => '6px', 'left' => '12px', 'right' => '12px' ),
+				'formButtonBorderRadius'      => array( 'top' => '4px', 'bottom' => '4px', 'left' => '4px', 'right' => '4px' ),
+				'formButtonAlign'             => 'left',
+				'formButtonAlignTablet'       => 'left',
+				'formButtonAlignMobile'       => 'left',
+				'formLabelColor'              => '',
+				'formInputTextColor'          => '',
+				'formInputBGColor'            => '',
+				'formBorderColor'             => '',
+				'formHelperLabelColor'        => '',
+				'formRequiredLabelColor'      => '',
+				'formSuccessMessageColor'     => '',
+				'formErrorMessageColor'       => '',
+				'formBorderRadius'            => array( 'top' => '4px', 'bottom' => '4px', 'left' => '4px', 'right' => '4px' ),
+				'formBorderWidth'             => array( 'top' => '1px', 'bottom' => '1px', 'left' => '1px', 'right' => '1px' ),
+				'formHelperTextSize'          => '14px',
+				'formSuccessErrorMessageSize' => '16px',
+			);
+		}
+
+		/**
+		 * Get Form Input CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_form_input_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_form_input_block_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$mobile_selectors = array();
+			$tablet_selectors = array();
+
+			$selectors        = array();
+
+			$selectors        = array(
+				''                                                             => array(),
+				' .responsive-block-editor-addons-form-input-label'            => array(
+				    'color' => $attr['formInputLabelColor'],
+				),
+				' .responsive-block-editor-addons-form-input__input'           => array(
+					'width' => $attr['formInputWidth'] . '%',
+				),
+				' .responsive-block-editor-addons-form-input-checkbox-wrapper' => array(
+					'display'   => $attr['formInputInline'] ? 'flex' : 'block',
+					"flex-wrap" => "wrap",
+					"gap"       => "8px",
+				),
+			);
+			$mobile_selectors = array(
+				'' => array(),
+			);
+
+			$tablet_selectors = array(
+				'' => array(),
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.responsive-block-editor-addons-block-form-input.block-' . $id;
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for Form block.
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_form_input_block_default_attributes() {
+			return array(
+				'block_id'              => '',
+				'formInputFieldType'    => 'text',
+				'formInputFieldLabel'   => 'Name',
+				'formInputHideLabel'    => false,
+				'formInputWidth'        => 100,
+				'formInputPlaceholder'  => '',
+				'formInputHelpText'     => '',
+				'formInputRequired'     => true,
+				'formInputDefaultValue' => '',
+				'formInputLabelColor'   => '',
+				'formInputInline'       => false,
+				'formCheckBoxOptions'   => array(),
 			);
 		}
 

@@ -8,7 +8,7 @@ import Style from "style-it";
  * WordPress dependencies
  */
 const { Component, Fragment } = wp.element;
-const { RichText } = wp.blockEditor;
+const { RichText, InnerBlocks } = wp.blockEditor;
 
 export default class Save extends Component {
   constructor() {
@@ -17,27 +17,15 @@ export default class Save extends Component {
 
   render() {
     const {
-      headingTitle,
-      headingId,
-      headingDesc,
-      seperatorStyle,
-      seperatorPosition,
-      headingTag,
-      showHeading,
-      showSubHeading,
-      showSeparator,
+      isFormVariantSelected,
+      formVariant,
+      formSubmitBtnLabel,
+      formSuccessMessage,
+      formErrorMessage,
       block_id,
       anchor,
     } = this.props.attributes;
 
-    var seprator_output = "";
-    if (seperatorStyle !== "none") {
-      seprator_output = (
-        <div className="responsive-heading-seperator-wrap">
-          <div className="responsive-heading-seperator"></div>
-        </div>
-      );
-    }
     return [
       <div
         id={anchor}
@@ -47,23 +35,20 @@ export default class Save extends Component {
           `block-${block_id}`
         )}
       >
-        {showHeading && (
-          <RichText.Content
-            tagName={headingTag}
-            value={headingTitle}
-            className="responsive-heading-title-text"
-            id={headingId}
-          />
-        )}
-        {seperatorPosition == "belowTitle" && showSeparator && seprator_output}
-        {showSubHeading && (
-          <RichText.Content
-            tagName="p"
-            value={headingDesc}
-            className="responsive-heading-desc-text"
-          />
-        )}
-        {seperatorPosition == "belowDesc" && showSeparator && seprator_output}
+
+        {isFormVariantSelected &&
+        <form className="responsive-block-editor-addons-form__form">
+          <InnerBlocks.Content />
+
+          <div className="responsive-block-editor-addons-form-submit-button-container">
+            <RichText.Content
+              className="responsive-block-editor-addons-form-submit-button"
+              value={ formSubmitBtnLabel }
+              tagName="button"
+              type="submit"
+            />
+          </div>
+        </form>}
       </div>,
     ];
   }

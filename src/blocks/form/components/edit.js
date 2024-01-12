@@ -59,9 +59,6 @@ export default class Edit extends Component {
       },
       setAttributes,
       isSelected,
-      mergeBlocks,
-      insertBlocksAfter,
-      onReplace,
     } = this.props;
 
     const VariantSelector = () => {

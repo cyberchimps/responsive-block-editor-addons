@@ -390,6 +390,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				case 'responsive-block-editor-addons/popup':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_popup_css( $blockattr, $block_id );
 					break;
+				case 'responsive-block-editor-addons/form':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_form_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/form-input':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_form_input_css( $blockattr, $block_id );
+					break;
 				default:
 					// Nothing to do here.
 					break;
