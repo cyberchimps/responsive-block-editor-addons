@@ -14678,6 +14678,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					"border-bottom-left-radius"  => $attr['formButtonBorderRadius']['left'],
 					"border-bottom-right-radius" => $attr['formButtonBorderRadius']['right'],
 				),
+				' .responsive-block-editor-addons-form-submit-button-spinner::before'                             => array(
+					"border-color" => $attr['formButtonLabelColor'] . '!important',
+				),
 				' .responsive-block-editor-addons-form-submit-button:hover'     => array(
 					"color"            => $attr['formButtonLabelHoverColor'],
       				"background-color" => $attr['formButtonLabelHoverBGColor'],

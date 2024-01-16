@@ -55,6 +55,8 @@ export default class Edit extends Component {
         formSubmitBtnLabel,
         formSuccessMessage,
         formErrorMessage,
+        formEmailTo,
+        formEmailSubject,
         block_id,
       },
       setAttributes,
@@ -74,7 +76,6 @@ export default class Edit extends Component {
             })
           }}
 					variations={variations}
-          allowSkip
 				/>
       )
     }
@@ -97,7 +98,7 @@ export default class Edit extends Component {
         {!isFormVariantSelected && VariantSelector()}
         {isFormVariantSelected && 
         <>
-          <form className="responsive-block-editor-addons-form__form">
+          <form className="responsive-block-editor-addons-form__form" id={`rba-form-${block_id}`} data-email-to={formEmailTo} data-subject={formEmailSubject}>
             <InnerBlocks
               templateLock={false}
               template={formVariant === 'contact' ? variations[0]?.innerBlocks : variations[1]?.innerBlocks}
@@ -106,6 +107,7 @@ export default class Edit extends Component {
             <div className="responsive-block-editor-addons-form-submit-button-container">
               <RichText
                 className="responsive-block-editor-addons-form-submit-button"
+                data-form-submit={`rba-form-submit-${block_id}`}
                 placeholder={ __( "Submit", "responsive-block-editor-addons" ) }
                 value={ formSubmitBtnLabel }
                 onChange={ (value) => setAttributes({ formSubmitBtnLabel: value }) }

@@ -57,12 +57,12 @@ export default class Inspector extends Component {
           setAttributes({ formInnerBlocks: filteredInnerBlocks });
         },
         100
-      );
-    } else {
-      if (prevProps.attributes.formInnerBlocks.length !== 0) {
-        let allFormInnerBlocks1 = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
-        let filteredInnerBlocks1 = allFormInnerBlocks1?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
-        this.checkLabelEquality(prevProps.attributes.formInnerBlocks, filteredInnerBlocks1)
+        );
+      } else {
+        if (prevProps.attributes.formInnerBlocks.length !== 0) {
+          let allFormInnerBlocks1 = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
+          let filteredInnerBlocks1 = allFormInnerBlocks1?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
+          this.checkLabelEquality(prevProps.attributes.formInnerBlocks, filteredInnerBlocks1)
       }
     }
   }

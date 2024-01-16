@@ -34,7 +34,7 @@ export default class Save extends Component {
         {formCheckBoxOptions.map((current, index) => {
           return (
             <div key={index} className="responsive-block-editor-addons-form-input-checkbox-container">
-              <input type="checkbox" name={`rba-form-input-${block_id}`} id={`rba-form-input-${block_id}`} checked={current.checkboxValue} />
+              <input type="checkbox" name={`rba-form-input-${block_id}`} id={`rba-form-input-${block_id}`} checked={current.checkboxValue} value={current.label} />
               <label>
                 <RichText.Content
                   value={current.label}
@@ -77,6 +77,7 @@ export default class Save extends Component {
               name={`rba-form-input-${block_id}`}
               id={`rba-form-input-${block_id}`}
               placeholder={formInputPlaceholder}
+              required={formInputRequired}
               value={formInputDefaultValue}
             />}
 
@@ -90,6 +91,7 @@ export default class Save extends Component {
               name={`rba-form-input-${block_id}`}
               id={`rba-form-input-${block_id}`}
               placeholder={formInputPlaceholder}
+              required={formInputRequired}
               defaultValue={formInputDefaultValue}
             ></textarea>}
 

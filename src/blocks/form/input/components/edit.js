@@ -67,7 +67,7 @@ export default class Edit extends Component {
           return (
             <div key={index} className="responsive-block-editor-addons-form-input-checkbox-container">
               <Disabled>
-                <input type="checkbox" name={`rba-form-input-${block_id}`} id={`rba-form-input-${block_id}`} checked={current.checkboxValue} readOnly/>
+                <input type="checkbox" name={`rba-form-input-${block_id}`} id={`rba-form-input-${block_id}`} checked={current.checkboxValue} value={current.label} readOnly/>
               </Disabled>
               <label>
                 <RichText
@@ -125,6 +125,7 @@ export default class Edit extends Component {
               name={`rba-form-input-${block_id}`}
               id={`rba-form-input-${block_id}`}
               placeholder={formInputPlaceholder}
+              required={formInputRequired}
               value={formInputDefaultValue}
               disabled
             />}
@@ -139,6 +140,7 @@ export default class Edit extends Component {
               name={`rba-form-input-${block_id}`}
               id={`rba-form-input-${block_id}`}
               placeholder={formInputPlaceholder}
+              required={formInputRequired}
               defaultValue={formInputDefaultValue}
               disabled
             ></textarea>}
