@@ -158,6 +158,7 @@ export default class Edit extends Component {
         ];
 
         return [
+            <style id={`responsive-block-editor-addons-how-to-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
             <SchemaNotices
                 headingTitle={mainHeadingText}
                 headingDesc={headingDesc}

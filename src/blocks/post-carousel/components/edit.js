@@ -89,6 +89,7 @@ class LatestPostsBlock extends Component {
     if (!hasPosts) {
       return (
         <Fragment key="fragment-post-carousel"  >
+          <style id={`responsive-block-editor-addons-post-carousel-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
           <Inspector key="inspector" {...{ setAttributes, ...this.props }} />
           <Placeholder
             icon="admin-post"
@@ -214,6 +215,7 @@ class LatestPostsBlock extends Component {
     };
     return (
       <Fragment>
+        <style id={`responsive-block-editor-addons-post-carousel-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <Inspector
           {...{ setAttributes, ...this.props }}
           postCount={latestPosts && latestPosts.length}

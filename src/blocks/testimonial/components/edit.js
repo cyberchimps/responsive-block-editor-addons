@@ -78,6 +78,7 @@ export default class Edit extends Component {
     var data_copy = [...testimonialBlock];
 
     return [
+      <style id={`responsive-block-editor-addons-testimonial-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       // Show the alignment toolbar on focus
       <BlockControls key="controls">
         <AlignmentToolbar

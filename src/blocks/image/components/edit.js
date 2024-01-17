@@ -116,6 +116,7 @@ export default class Edit extends Component {
     const {showUrlInput, isDropdownOpen} = this.state;
     return (
       <Fragment>
+      <style id={`responsive-block-editor-addons-image-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         { imageUrl !== "" && <BlockControls style={{ borderRight: "1px solid" }}>
   {/* Add your custom dropdown button to the toolbar */}
   <Dropdown

@@ -123,6 +123,7 @@ class LatestPostsBlock extends Component {
     if (!hasPosts) {
       return (
         <Fragment>
+          <style id={`responsive-block-editor-addons-portfolio-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
           <Inspector {...{ setAttributes, ...this.props }} />
           <Placeholder
             icon="admin-post"
@@ -205,6 +206,7 @@ class LatestPostsBlock extends Component {
 
     return (
       <Fragment>
+        <style id={`responsive-block-editor-addons-portfolio-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar

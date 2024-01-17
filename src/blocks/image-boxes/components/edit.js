@@ -160,7 +160,7 @@ export default class Edit extends Component {
 
     return [
       // Show the block controls on focus
-
+      <style id={`responsive-block-editor-addons-image-boxes-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
       <div key={`image-${block_id}`} className={classes}>

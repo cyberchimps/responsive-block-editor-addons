@@ -72,6 +72,7 @@ class Edit extends Component {
 		} = attributes;
 
 		return [
+			<style id={`responsive-block-editor-addons-count-down-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
 			isSelected && (
 				<Inspector key="inspector" attributes={attributes} setAttributes={setAttributes} />
 			),

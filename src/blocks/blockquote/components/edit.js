@@ -64,6 +64,7 @@ export default class Edit extends Component {
 
     return [
       // Show the alignment toolbar on focus
+      <style id={`responsive-block-editor-addons-blockquote-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <BlockControls key="controls">
         <AlignmentToolbar
           value={quoteAlign}
