@@ -102,6 +102,7 @@ class Responsive_Block_Editor_Addons {
 		add_action('admin_init', array($this, 'responsive_block_editor_addons_xmlupdate_checksum'));
 		add_action('wp_ajax_rbea_sync_library', array($this, 'rbea_sync_library'));
 
+		// RBA Form Block Processing.
 		add_action( 'rest_api_init', array( $this, 'rba_form_block_processing' ) );
 	}
 
@@ -1332,16 +1333,16 @@ class Responsive_Block_Editor_Addons {
 		$params    = $request->get_params();
 		$form_data = $params['form_data'];
 		$page_url  = $params['page_url'];
-		$email_to  = $params['email_to'];
-		$subject   = $params['subject'];
+		$email_to  = sanitize_email( $params['email_to'] );
+		$subject   = sanitize_text_field( $params['subject'] );
 		$site_name = $params['site_name'];
 		$site_url  = $params['site_url'];
 
 		$table_content = '';
 
 		foreach ( $form_data as $data ) {
-			$labels         = explode( ':', $data, 2 )[0];
-			$info           = explode( ':', $data, 2 )[1];
+			$labels         = sanitize_text_field( explode( ':', $data, 2 )[0] );
+			$info           = sanitize_text_field( explode( ':', $data, 2 )[1] );
 			$table_content .= '<tr><td><strong>' . $labels . ':</strong> ' . $info . '</td></tr>';
 		}
 
