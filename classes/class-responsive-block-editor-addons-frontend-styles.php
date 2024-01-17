@@ -14809,7 +14809,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors        = array(
 				''                                                             => array(),
-				' .responsive-block-editor-addons-form-input-label'            => array(
+				' .responsive-block-editor-addons-form-input__label'            => array(
 				    'color' => $attr['formInputLabelColor'],
 				),
 				' .responsive-block-editor-addons-form-input__input'           => array(

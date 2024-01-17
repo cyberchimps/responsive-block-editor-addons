@@ -26,7 +26,7 @@ function EditorStyles(props) {
   var selectors = {
     "": {
     },
-    " .responsive-block-editor-addons-form-input-label": {
+    " .responsive-block-editor-addons-form-input__label": {
       "color": formInputLabelColor,
     },
     " .responsive-block-editor-addons-form-input__input": {
