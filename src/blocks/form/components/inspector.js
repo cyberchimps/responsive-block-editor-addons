@@ -33,6 +33,7 @@ const {
 export default class Inspector extends Component {
   constructor(props) {
     super(...arguments);
+    this.state = { isCloseClicked: false }
   }
 
   checkLabelEquality(prevFormInnerBlocks, currentFormInnerBlocks) {
@@ -47,22 +48,34 @@ export default class Inspector extends Component {
     }
   }
 
+  componentDidMount() {
+    const { clientId, setAttributes } = this.props
+    const { formInnerBlocks } = this.props.attributes
+    if (formInnerBlocks.length !== 0) {
+      let allFormInnerBlocks = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
+      let filteredInnerBlocks = allFormInnerBlocks?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
+      setAttributes({ formInnerBlocks: filteredInnerBlocks });
+    }
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { clientId, setAttributes } = this.props
     const { formInnerBlocks } = this.props.attributes
-    if ( formInnerBlocks.length === 0) {
-      setTimeout( () => {
-          let allFormInnerBlocks = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
-          let filteredInnerBlocks = allFormInnerBlocks?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
-          setAttributes({ formInnerBlocks: filteredInnerBlocks });
-        },
-        100
+    if (formInnerBlocks.length === 0 ) {
+      if ( ! this.state.isCloseClicked ) {
+        setTimeout(() => {
+            let allFormInnerBlocks = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
+            let filteredInnerBlocks = allFormInnerBlocks?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
+            setAttributes({ formInnerBlocks: filteredInnerBlocks });
+          },
+          100
         );
-      } else {
-        if (prevProps.attributes.formInnerBlocks.length !== 0) {
-          let allFormInnerBlocks1 = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
-          let filteredInnerBlocks1 = allFormInnerBlocks1?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
-          this.checkLabelEquality(prevProps.attributes.formInnerBlocks, filteredInnerBlocks1)
+      }
+    } else {
+      if (prevProps.attributes.formInnerBlocks.length !== 0) {
+        let allFormInnerBlocks1 = wp.data.select('core/block-editor').getBlock(clientId)?.innerBlocks;
+        let filteredInnerBlocks1 = allFormInnerBlocks1?.filter((block) => block.name === 'responsive-block-editor-addons/form-input');
+        this.checkLabelEquality(prevProps.attributes.formInnerBlocks, filteredInnerBlocks1)
       }
     }
   }
@@ -164,7 +177,7 @@ export default class Inspector extends Component {
             label={__("Remove Field", "responsive-block-editor-addons")}
             showTooltip={true}
             className="responsive-block-editor-addons-checkbox-sort-options__button"
-            onClick={() => actions?.delete?.(item.clientId)}
+            onClick={() => {actions?.delete?.(item.clientId); this.setState({ isCloseClicked: true })}}
           />
         </div>
       )
