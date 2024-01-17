@@ -80,6 +80,10 @@
                 success: function(response) {  
                     if ( response.success ) {
                         $('.responsive-block-editor-addons-form-submit-success-message').show();
+                            inputFields.forEach(function(input) {
+                                console.log(input)
+                                input.value = '';
+                            });
                     } else {
                         $('.responsive-block-editor-addons-form-submit-error-message').show();
                     }
