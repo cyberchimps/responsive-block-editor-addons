@@ -1,0 +1,44 @@
+.responsive-block-editor-addons-block-form {
+  padding: 0;
+  margin: 0 auto;
+
+
+  .responsive-block-editor-addons-form-submit-button-container{
+    display: flex;
+    .responsive-block-editor-addons-form-submit-button {
+      cursor: pointer;
+      font-size: 16px;
+      
+      .responsive-block-editor-addons-form-submit-button-spinner {
+        position: relative;
+        padding: 24px;
+
+        &::before {
+          content: "";
+          box-sizing: border-box;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 20px;
+          height: 20px;
+          margin-top: -10px;
+          margin-left: -10px;
+          border-radius: 50%;
+          border-right: 2px solid rgba(0,0,0,0);
+          animation: rba-form-submit-spinner .6s linear infinite;
+        }
+
+        @keyframes rba-form-submit-spinner {
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+
+  .responsive-block-editor-addons-form-submit-success-message,
+  .responsive-block-editor-addons-form-submit-error-message {
+    margin-top: 20px;
+  }
+}
