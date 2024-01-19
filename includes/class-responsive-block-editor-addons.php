@@ -101,6 +101,9 @@ class Responsive_Block_Editor_Addons {
 		add_action('rest_api_init', array($this, 'register_custom_rest_endpoint'));
 		add_action('admin_init', array($this, 'responsive_block_editor_addons_xmlupdate_checksum'));
 		add_action('wp_ajax_rbea_sync_library', array($this, 'rbea_sync_library'));
+
+		// RBA Form Block Processing.
+		add_action( 'rest_api_init', array( $this, 'rba_form_block_processing' ) );
 	}
 
 	/**
@@ -433,6 +436,7 @@ class Responsive_Block_Editor_Addons {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/instagram/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/image-hotspot/index.php';
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/portfolio/index.php';
+		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'src/blocks/form/index.php';
 
 		/**
 		 * REST API Endpoints for Layouts.
@@ -1299,5 +1303,95 @@ class Responsive_Block_Editor_Addons {
 			wp_send_json_error(array('message' => 'Error writing filtered data to the file.'));
 		}
 		wp_send_json_success();
+	}
+
+	/**
+	 * Process the form of Form Block.
+	 *
+	 * @since 1.7.9
+	 */
+	public function rba_form_block_processing() {
+
+		register_rest_route(
+			'wp/v2',
+			'/rba_process_form',
+			array(
+				'methods'             => 'POST',
+				'callback'            => array( $this, 'rba_form_processing' ),
+				'permission_callback' => '__return_true',
+			)
+		);
+	}
+
+	/**
+	 * RBA Form Block Processing.
+	 *
+	 * @param WP_REST_Request $request WP_Query object.
+	 * @since 1.7.9
+	 */
+	public function rba_form_processing( WP_REST_Request $request ) {
+		$params    = $request->get_params();
+		$form_data = $params['form_data'];
+		$page_url  = $params['page_url'];
+		$email_to  = sanitize_email( $params['email_to'] );
+		$subject   = sanitize_text_field( $params['subject'] );
+		$site_name = $params['site_name'];
+		$site_url  = $params['site_url'];
+
+		$table_content = '';
+
+		foreach ( $form_data as $data ) {
+			$labels         = sanitize_text_field( explode( ':', $data, 2 )[0] );
+			$info           = sanitize_text_field( explode( ':', $data, 2 )[1] );
+			$table_content .= '<tr><td><strong>' . $labels . ':</strong> ' . $info . '</td></tr>';
+		}
+
+		$email_content = '<div>
+		<h3>Form submission from ' . $site_name . '
+		</h3>
+		<hr>
+		<table>
+		  <tbody>
+			<tr>
+			  <td>
+				<strong>Form submission from:</strong>
+				<a href="' . $page_url . '" target="_blank" >' . $page_url . '</a>
+			  </td>
+			</tr>' . $table_content . '
+			</tbody>
+			<tfoot>
+				<tr>
+				<td>
+					<hr>You received this email because your email address is set in the content form settings on <a href="' . $site_url . '" target="_blank" >' . $site_name . '</a>
+				</td>
+				</tr>
+			</tfoot>
+			</table>
+		</div>';
+
+		$headers = array(
+			'Content-Type: text/html; charset=UTF-8',
+		);
+
+		$sent = wp_mail( $email_to, $subject, $email_content, $headers );
+
+		if ( $sent ) {
+			$response = rest_ensure_response(
+				array(
+					'success' => true,
+					'message' => 'Email sent successfully!',
+				)
+			);
+		} else {
+			$response = rest_ensure_response(
+				array(
+					'success' => false,
+					'message' => 'Error sending email.',
+				)
+			);
+		}
+
+		return $response;
+
 	}
 }

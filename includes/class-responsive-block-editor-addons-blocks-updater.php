@@ -167,6 +167,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
+				'key'      => 'form',
+				'title'    => 'Form',
+				'docs'     => 'https://cyberchimps.com/blocks/docs/form/',
+				'demo'     => 'https://cyberchimps.com/blocks/form/',
+				'category' => 'content',
+				'status'   => 1,
+			),
+			array(
 				'key'      => 'googlemap',
 				'title'    => 'Google Map',
 				'docs'     => 'https://cyberchimps.com/blocks/docs/google-map/',

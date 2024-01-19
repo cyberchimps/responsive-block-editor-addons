@@ -1,0 +1,23 @@
+.responsive-block-editor-addons-block-form-input {
+  padding: 0;
+  margin: 0 auto;
+
+  .responsive-block-editor-addons-form-input__input{
+    box-sizing: border-box;
+  }
+
+  .responsive-block-editor-addons-form-input-label {
+    display: block;
+  }
+
+  .responsive-block-editor-addons-form-input__helper {
+    display: block;
+  }
+
+  .responsive-block-editor-addons-form-input-checkbox-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+  }
+}
