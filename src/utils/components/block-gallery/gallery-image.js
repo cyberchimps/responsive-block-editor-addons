@@ -83,6 +83,8 @@ class GalleryImage extends Component {
       this.props.setAttributes({
         url: image.source_url,
         alt: image.alt_text,
+        customHeight:customHeight,
+        customWidth:customWidth
       });
     }
 
@@ -131,12 +133,13 @@ class GalleryImage extends Component {
         lightbox,
       "aria-label": ariaLabel,
       imgLink,
+      customHeight,
+      customWidth
     } = this.props;
 
     const imgClasses = classnames({
       [`has-shadow-${shadow}`]: shadow !== "none" || shadow !== undefined,
     });
-
     // Disable reason: Image itself is not meant to be
     // interactive, but should direct image selection and unfocus caption fields
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
@@ -155,6 +158,10 @@ class GalleryImage extends Component {
           tabIndex="0"
           onKeyDown={this.onImageClick}
           aria-label={ariaLabel}
+          style={{
+            height: customHeight ? `${customHeight}px` : '',
+            width: customWidth ? `${customWidth}px` : '', 
+          }}
         />
         {isBlobURL(url) && <Spinner />}
       </Fragment>
