@@ -55,7 +55,7 @@ export default class Edit extends Component {
 
     return [
       // Show the block controls on focus
-
+      <style id={`responsive-block-editor-addons-advanced-columns-child-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector key = {`ac-col-inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
       <div
         className={classnames(

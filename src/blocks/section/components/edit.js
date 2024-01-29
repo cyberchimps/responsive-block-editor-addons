@@ -60,6 +60,7 @@ export default class Edit extends Component {
     const CustomTag = `${sectionTag}`;
 
     return [
+      <style id={`responsive-block-editor-addons-section-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
       <Fragment key="section-block-fragment">
         <div key={`block-${block_id}`}

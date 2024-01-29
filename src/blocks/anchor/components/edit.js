@@ -58,6 +58,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
        onReplace,
      } = this.props;
      return [
+       <style id={`responsive-block-editor-addons-anchor-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
        <BlockControls key="controls">
        </BlockControls>,
        // Show the block controls on focus

@@ -242,6 +242,7 @@ class LatestPostsBlock extends Component {
     if (!hasPosts) {
       return (
         <Fragment>
+          <style id={`responsive-block-editor-addons-post-timeline-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
           <Inspector {...{ setAttributes, ...this.props, queryControls }} />
           <Placeholder
             icon="admin-post"
@@ -326,6 +327,7 @@ class LatestPostsBlock extends Component {
 
     return (
       <Fragment>
+        <style id={`responsive-block-editor-addons-post-timeline-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <Inspector {...{ setAttributes, ...this.props, queryControls }} />
         <BlockControls>
           <BlockAlignmentToolbar

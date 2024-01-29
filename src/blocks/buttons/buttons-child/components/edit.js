@@ -113,6 +113,7 @@ export default class Edit extends Component {
 
     return (
       <Fragment>
+      <style id={`responsive-block-editor-addons-buttons-child-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         {buttonFontFamily && loadGoogleFont(buttonFontFamily)}
         <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />
 

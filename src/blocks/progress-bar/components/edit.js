@@ -132,6 +132,7 @@ export default class Edit extends Component {
 		let valToPassToCss = { "--circlestrokeval": circleStrokeVal };
 
 		return [
+			<style id={`responsive-block-editor-addons-progress-bar-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
 			<BlockControls key="controls">
 			</BlockControls>,
 			// Show the block controls on focus

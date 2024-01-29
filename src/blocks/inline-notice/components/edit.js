@@ -66,6 +66,7 @@ export default class Edit extends Component {
     } = this.props;
     
     return [
+      <style id={`responsive-block-editor-addons-inline-notice-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <BlockControls key="controls">
         <AlignmentToolbar
           value={noticeAlignment}

@@ -77,6 +77,7 @@ export default class Edit extends Component {
     };
 
     return [
+      <style id={`responsive-block-editor-addons-googlemap-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       // Show the block controls on focus
       <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 

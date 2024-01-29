@@ -114,6 +114,7 @@ export default class Edit extends Component {
     } = this.props;
 
     return [
+      <style id={`responsive-block-editor-addons-social-share-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
       <Fragment key={`fragment-socail-share-${block_id}`} >
         <div key={`socail-share-${block_id}`}

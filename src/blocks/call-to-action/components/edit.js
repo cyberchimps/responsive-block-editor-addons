@@ -119,6 +119,7 @@ export default class Edit extends Component {
     }
 
     return [
+      <style id={`responsive-block-editor-addons-call-to-action-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       // Show the alignment toolbar on focus
       <BlockControls
         key={

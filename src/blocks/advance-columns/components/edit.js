@@ -72,6 +72,7 @@ export default class Edit extends Component {
 
 
     return [
+      <style id={`responsive-block-editor-addons-advanced-columns-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <BlockControls key="controls">
         <AlignmentToolbar
           value={blockAlign}

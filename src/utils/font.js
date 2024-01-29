@@ -4,6 +4,7 @@
 
 // Fonts already done loading.
 const loadedFonts = [];
+const iframeLoadedFonts = [];
 
 // @from https://github.com/elementor/elementor/blob/45eaa6704fe1ad18f6190c8e95952b38b8a38dc7/assets/dev/js/editor/utils/helpers.js#L23
 const subsets = {
@@ -33,18 +34,38 @@ export const isWebFont = (fontName) =>
  * @param {string} fontName The name of the font
  */
 export const loadGoogleFont = (fontName) => {
-  if (loadedFonts.includes(fontName)) {
+  if (loadedFonts.includes(fontName) && iframeLoadedFonts.includes(fontName)) {
     return;
   }
-  if (document && isWebFont(fontName)) {
+
+  if (!loadedFonts.includes(fontName) && document && isWebFont(fontName)) {
     const link = document.createElement("link");
     link.setAttribute("href", getGoogleFontURL(fontName));
     link.setAttribute("rel", "stylesheet");
     link.setAttribute("type", "text/css");
     document.querySelector("head").appendChild(link);
+
+    loadedFonts.push(fontName);
   }
 
-  loadedFonts.push(fontName);
+  const iframe = document.querySelector('iframe[name^="editor-canvas"]');
+
+  if (!iframeLoadedFonts.includes(fontName) && iframe && isWebFont(fontName)) {
+      // Accessing the contentDocument of the iframe
+      const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+      // Accessing the head of the iframe document
+      const iframeHead = iframeDocument.head;
+
+      // Append link element to head of iframe
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = getGoogleFontURL(fontName);
+      iframeHead.appendChild(link);
+
+      iframeLoadedFonts.push(fontName)
+  }
 };
 
 export const getFontFamily = (fontName) => {

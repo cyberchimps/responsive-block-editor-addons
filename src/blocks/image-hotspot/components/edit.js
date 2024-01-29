@@ -788,6 +788,7 @@ class Edit extends Component {
 
     return (
       <Fragment>
+        <style id={`responsive-block-editor-addons-image-hotspot-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <div {...containerClasses}>
           {controls}
           {!!url && (

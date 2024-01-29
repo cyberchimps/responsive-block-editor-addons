@@ -254,6 +254,7 @@ class Edit extends Component {
 
     return (
       <Fragment key="shape-divider-fragment" >
+        <style id={`responsive-block-editor-addons-shape-divider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         {isSelected && <Inspector {...this.props} />}
         {isSelected && <Controls {...this.props} />}
         <div className={classes}>
