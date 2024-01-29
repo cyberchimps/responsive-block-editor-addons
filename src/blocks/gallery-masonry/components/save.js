@@ -2,6 +2,7 @@
  * External dependencies
  */
 import classnames from "classnames";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 /**
  * Internal dependencies
@@ -19,14 +20,16 @@ import { RichText } from "@wordpress/block-editor";
 const save = ({ attributes, className }) => {
   const {
     captions,
-    gridSize,
     gutter,
     gutterMobile,
-    images,
     linkTo,
     lightbox,
     rel,
     target,
+    columnsize,
+    customHeight,
+    customWidth,
+    images, // No longer using useMemo for memoizing images
   } = attributes;
 
   const innerClasses = classnames(...GalleryClasses(attributes), {
@@ -34,7 +37,7 @@ const save = ({ attributes, className }) => {
     "has-lightbox": lightbox,
   });
 
-  const masonryClasses = classnames(`has-grid-${gridSize}`, {
+  const masonryClasses = classnames({
     [`has-gutter-${gutter}`]: gutter > 0,
     [`has-gutter-mobile-${gutterMobile}`]: gutterMobile > 0,
   });
@@ -46,7 +49,11 @@ const save = ({ attributes, className }) => {
   return (
     <div className={className}>
       <div className={innerClasses}>
-        <ul className={masonryClasses} style={masonryStyles}>
+        <Masonry
+          className={masonryClasses}
+          columnsCount={columnsize}
+          style={masonryStyles}
+        >
           {images.map((image) => {
             let href;
 
@@ -70,6 +77,7 @@ const save = ({ attributes, className }) => {
 
             const img = (
               <img
+                style={{ width: customWidth, height: customHeight }}
                 src={image.url}
                 alt={image.alt}
                 data-id={image.id}
@@ -85,7 +93,7 @@ const save = ({ attributes, className }) => {
                 className="responsive-block-editor-addons-gallery--item"
               >
                 <figure className="responsive-block-editor-addons-gallery--figure">
-                  {href && "custom" === linkTo ? (
+                  {href && linkTo === "custom" ? (
                     <a href={href} target={target} rel={rel}>
                       {img}
                     </a>
@@ -103,7 +111,7 @@ const save = ({ attributes, className }) => {
               </li>
             );
           })}
-        </ul>
+        </Masonry>
       </div>
     </div>
   );
