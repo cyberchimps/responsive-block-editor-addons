@@ -199,8 +199,10 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 1.7.9 - 25th January 2024 =
-* Fix - Block styles not appearing in tablet and mobile preview in gutenberg editor.
+= 1.7.9 - 30th January 2024 =
+* New - Form Block.
+* New - Additional settings added in masonry block
+* Fix - Preview issue for some blocks
 
 = 1.7.8 - 4th January 2024 =
 * New - Section Block
