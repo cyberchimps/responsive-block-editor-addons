@@ -355,7 +355,7 @@ class Responsive_Block_Editor_Addons {
 	public function responsive_block_editor_addons_admin_menu() {
 
 		if ( 'responsive' !== get_stylesheet() ) {
-			add_menu_page( 'Responsive', 'Responsive', 'manage_options', 'responsive_block_editor_addons', array( $this, 'responsive_block_editor_addons_getting_started' ), '', 59 );
+			add_menu_page( __( 'Responsive', 'responsive-block-editor-addons' ), __( 'Responsive', 'responsive-block-editor-addons' ), 'manage_options', 'responsive_block_editor_addons', array( $this, 'responsive_block_editor_addons_getting_started' ), esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/responsive-add-ons-menu-icon.png', 59 );
 			$parent_slug = 'responsive_block_editor_addons';
 			do_action( 'responsive_register_admin_menu', $parent_slug );
 		}
