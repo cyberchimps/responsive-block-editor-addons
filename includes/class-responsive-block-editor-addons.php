@@ -104,6 +104,8 @@ class Responsive_Block_Editor_Addons {
 
 		// RBA Form Block Processing.
 		add_action( 'rest_api_init', array( $this, 'rba_form_block_processing' ) );
+
+		add_action( 'responsive_register_admin_menu', array( $this, 'rba_register_admin_menu' ) );
 	}
 
 	/**
@@ -351,28 +353,12 @@ class Responsive_Block_Editor_Addons {
 	 * @return void [description]
 	 */
 	public function responsive_block_editor_addons_admin_menu() {
-		// Create Menu for Responsive Block Editor Addons.
-		add_menu_page(
-			__( 'Responsive Blocks', 'responsive-block-editor-addons' ),
-			__( 'Resp Blocks', 'responsive-block-editor-addons' ),
-			'manage_options',
-			'responsive_block_editor_addons',
-			array( $this, 'responsive_block_editor_addons_getting_started' ),
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/responsive-block-editor-addons-menu-icon.svg',
-			59
-		);
 
-		// Create Sub Menu for Getting Started Page.
-		add_submenu_page(
-			'responsive_block_editor_addons',
-			__( 'Getting Started', 'responsive-block-editor-addons' ),
-			__( 'Getting Started', 'responsive-block-editor-addons' ),
-			'manage_options',
-			'responsive_block_editor_addons',
-			array( $this, 'responsive_block_editor_addons_getting_started' ),
-			10
-		);
-
+		if ( 'responsive' !== get_stylesheet() ) {
+			add_menu_page( 'Responsive', 'Responsive', 'manage_options', 'responsive_block_editor_addons', array( $this, 'responsive_block_editor_addons_getting_started' ), '', 59 );
+			$parent_slug = 'responsive_block_editor_addons';
+			do_action( 'responsive_register_admin_menu', $parent_slug );
+		}
 	}
 
 	/**
@@ -1393,5 +1379,22 @@ class Responsive_Block_Editor_Addons {
 
 		return $response;
 
+	}
+
+	/**
+	 * RBA Register Admin Menu.
+	 *
+	 * @param string $slug parent slug of submenu.
+	 * @since 1.8.0
+	 */
+	public function rba_register_admin_menu( $slug ) {
+		add_submenu_page(
+			$slug,
+			'Responsive Blocks',
+			'Blocks',
+			'manage_options',
+			'responsive_block_editor_addons',
+			array( $this, 'responsive_block_editor_addons_getting_started' ),
+		);
 	}
 }
