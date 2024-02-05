@@ -71,6 +71,8 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'admin_enqueue_scripts', array( &$this, 'responsive_block_editor_addons_admin_enqueue_styles' ) );
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'responsive_block_editor_addons_responsive_menu' ) );
+
 		// Responsive Addons Menu.
 		add_action( 'admin_menu', array( $this, 'responsive_block_editor_addons_admin_menu' ) );
 
@@ -952,6 +954,15 @@ class Responsive_Block_Editor_Addons {
 			add_filter( 'admin_footer_text', '__return_false' );
 			remove_filter( 'update_footer', 'core_update_footer' );
 		}
+	}
+
+	/**
+	 * Add Icon for Theme Builder under Elementor Addons Submenu.
+	 *
+	 * @return void [description]
+	 */
+	public function responsive_block_editor_addons_responsive_menu() {
+		wp_enqueue_script( 'responsive_block_editor_addons_responsive_menu', RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-menu.js', array( 'jquery' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, true );
 	}
 
 	/**
