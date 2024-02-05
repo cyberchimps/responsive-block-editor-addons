@@ -359,6 +359,18 @@ class Responsive_Block_Editor_Addons {
 			$parent_slug = 'responsive_block_editor_addons';
 			do_action( 'responsive_register_admin_menu', $parent_slug );
 		}
+
+		if ( 'responsive' === get_stylesheet() && version_compare( RESPONSIVE_THEME_VERSION, '4.9.7.1', '<=' ) ) {
+			add_menu_page(
+				__( 'Responsive Blocks', 'responsive-block-editor-addons' ),
+				__( 'Resp Blocks', 'responsive-block-editor-addons' ),
+				'manage_options',
+				'responsive_block_editor_addons',
+				array( $this, 'responsive_block_editor_addons_getting_started' ),
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/responsive-block-editor-addons-menu-icon.svg',
+				59
+			);
+		}
 	}
 
 	/**
