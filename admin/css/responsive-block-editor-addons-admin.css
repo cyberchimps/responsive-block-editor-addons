@@ -56,6 +56,10 @@
     vertical-align: middle;
 }
 
+.responsive-theme-builder-icon {
+    transform: scaleX(-1);
+    color: #c3c4c7;
+}
 
 @media (max-width: 768px) {
     .rbea-review-notice.updated {

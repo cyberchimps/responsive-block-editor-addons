@@ -71,6 +71,8 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'admin_enqueue_scripts', array( &$this, 'responsive_block_editor_addons_admin_enqueue_styles' ) );
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'responsive_block_editor_addons_responsive_menu' ) );
+
 		// Responsive Addons Menu.
 		add_action( 'admin_menu', array( $this, 'responsive_block_editor_addons_admin_menu' ) );
 
@@ -104,6 +106,8 @@ class Responsive_Block_Editor_Addons {
 
 		// RBA Form Block Processing.
 		add_action( 'rest_api_init', array( $this, 'rba_form_block_processing' ) );
+
+		add_action( 'responsive_register_admin_menu', array( $this, 'rba_register_admin_menu' ) );
 	}
 
 	/**
@@ -351,28 +355,24 @@ class Responsive_Block_Editor_Addons {
 	 * @return void [description]
 	 */
 	public function responsive_block_editor_addons_admin_menu() {
-		// Create Menu for Responsive Block Editor Addons.
-		add_menu_page(
-			__( 'Responsive Blocks', 'responsive-block-editor-addons' ),
-			__( 'Resp Blocks', 'responsive-block-editor-addons' ),
-			'manage_options',
-			'responsive_block_editor_addons',
-			array( $this, 'responsive_block_editor_addons_getting_started' ),
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/responsive-block-editor-addons-menu-icon.svg',
-			59
-		);
 
-		// Create Sub Menu for Getting Started Page.
-		add_submenu_page(
-			'responsive_block_editor_addons',
-			__( 'Getting Started', 'responsive-block-editor-addons' ),
-			__( 'Getting Started', 'responsive-block-editor-addons' ),
-			'manage_options',
-			'responsive_block_editor_addons',
-			array( $this, 'responsive_block_editor_addons_getting_started' ),
-			10
-		);
+		if ( 'responsive' !== get_stylesheet() ) {
+			add_menu_page( __( 'Responsive', 'responsive-block-editor-addons' ), __( 'Responsive', 'responsive-block-editor-addons' ), 'manage_options', 'responsive_block_editor_addons', array( $this, 'responsive_block_editor_addons_getting_started' ), esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/responsive-add-ons-menu-icon.png', 59 );
+			$parent_slug = 'responsive_block_editor_addons';
+			do_action( 'responsive_register_admin_menu', $parent_slug );
+		}
 
+		if ( 'responsive' === get_stylesheet() && version_compare( RESPONSIVE_THEME_VERSION, '4.9.7.1', '<=' ) ) {
+			add_menu_page(
+				__( 'Responsive Blocks', 'responsive-block-editor-addons' ),
+				__( 'Resp Blocks', 'responsive-block-editor-addons' ),
+				'manage_options',
+				'responsive_block_editor_addons',
+				array( $this, 'responsive_block_editor_addons_getting_started' ),
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/images/responsive-block-editor-addons-menu-icon.svg',
+				59
+			);
+		}
 	}
 
 	/**
@@ -957,6 +957,15 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
+	 * Add Icon for Theme Builder under Elementor Addons Submenu.
+	 *
+	 * @return void [description]
+	 */
+	public function responsive_block_editor_addons_responsive_menu() {
+		wp_enqueue_script( 'responsive_block_editor_addons_responsive_menu', RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-menu.js', array( 'jquery' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, true );
+	}
+
+	/**
 	 * On admin init.
 	 *
 	 * Preform actions on WordPress admin initialization.
@@ -1393,5 +1402,22 @@ class Responsive_Block_Editor_Addons {
 
 		return $response;
 
+	}
+
+	/**
+	 * RBA Register Admin Menu.
+	 *
+	 * @param string $slug parent slug of submenu.
+	 * @since 1.8.0
+	 */
+	public function rba_register_admin_menu( $slug ) {
+		add_submenu_page(
+			$slug,
+			'Responsive Blocks',
+			'Blocks',
+			'manage_options',
+			'responsive_block_editor_addons',
+			array( $this, 'responsive_block_editor_addons_getting_started' ),
+		);
 	}
 }
