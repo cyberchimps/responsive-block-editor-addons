@@ -356,13 +356,15 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function responsive_block_editor_addons_admin_menu() {
 
-		if ( 'responsive' !== get_stylesheet() ) {
+		$theme = wp_get_theme();
+
+		if ( 'Responsive' !== $theme->name && 'Responsive' !== $theme->parent_theme ) {
 			add_menu_page( __( 'Responsive', 'responsive-block-editor-addons' ), __( 'Responsive', 'responsive-block-editor-addons' ), 'manage_options', 'responsive_block_editor_addons', array( $this, 'responsive_block_editor_addons_getting_started' ), esc_url( RESPONSIVE_BLOCK_EDITOR_ADDONS_URL ) . 'admin/images/responsive-add-ons-menu-icon.png', 59 );
 			$parent_slug = 'responsive_block_editor_addons';
 			do_action( 'responsive_register_admin_menu', $parent_slug );
 		}
 
-		if ( 'responsive' === get_stylesheet() && version_compare( RESPONSIVE_THEME_VERSION, '4.9.7.1', '<=' ) ) {
+		if ( ( 'Responsive' === $theme->name || 'Responsive' === $theme->parent_theme ) && version_compare( RESPONSIVE_THEME_VERSION, '4.9.7.1', '<=' ) ) {
 			add_menu_page(
 				__( 'Responsive Blocks', 'responsive-block-editor-addons' ),
 				__( 'Resp Blocks', 'responsive-block-editor-addons' ),
