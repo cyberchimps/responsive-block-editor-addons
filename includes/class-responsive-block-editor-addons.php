@@ -1191,7 +1191,7 @@ class Responsive_Block_Editor_Addons {
 		$is_xml_updated = get_option('last_xml_export_checksums');
 		$data = get_option( 'total-responsive-sites-data' );
     	// Fetch data from the external endpoint
-    	$external_data = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum');
+    	$external_data = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2');
 
     if (is_wp_error($external_data)) {
         // Handle error from the external endpoint, if any
@@ -1228,7 +1228,7 @@ class Responsive_Block_Editor_Addons {
 		$existing_value = get_option('last_xml_export_checksums');
 
 		// Make an HTTP request to the endpoint
-		$response = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum');
+		$response = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2');
 
 		// Check if the request was successful
 		if (is_array($response) && !is_wp_error($response)) {
