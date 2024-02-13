@@ -51,7 +51,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     const $style = document.createElement("style");
     $style.setAttribute(
       "id",
-      "responsive-block-editor-addons-accordian-item-style-" +
+      "responsive-block-editor-addons-accordion-item-style-" +
         this.props.clientId
     );
     document.head.appendChild($style);
@@ -73,7 +73,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     }
 
     var element = document.getElementById(
-      "responsive-block-editor-addons-accordian-item-style-" +
+      "responsive-block-editor-addons-accordion-item-style-" +
         this.props.clientId
     );
 
@@ -259,6 +259,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
     };
     return (
       <Fragment>
+      <style id={`responsive-block-editor-addons-accordion-item-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <InspectorControls>{accordionChildControls()}</InspectorControls>
         <div
           className={classnames(

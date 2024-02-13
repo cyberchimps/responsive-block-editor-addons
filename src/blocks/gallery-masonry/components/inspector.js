@@ -27,9 +27,16 @@ import {
 class Inspector extends Component {
 	constructor() {
 		super(...arguments);
-		this.setSizeControl = this.setSizeControl.bind(this);
+		this.state = {
+			columns: this.props.attributes.columnsize,
+			customHeight: this.props.attributes.customHeight,
+			customWidth: this.props.attributes.customWidth,
+		  };  
 		this.setRadiusTo = this.setRadiusTo.bind(this);
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind(this);
+		this.setNumberOfColumns = this.setNumberOfColumns.bind(this);
+		this.setCustomHeight = this.setCustomHeight.bind(this);
+		this.setCustomWidth = this.setCustomWidth.bind(this);
 	}
 
 	componentDidUpdate() {
@@ -39,18 +46,24 @@ class Inspector extends Component {
 			});
 		}
 	}
-
+	setNumberOfColumns(value) {
+		this.setState({ columns: value });
+		this.props.setAttributes({ columnsize: value });
+	  }
+	
 	setRadiusTo(value) {
 		this.props.setAttributes({ radius: value });
 	}
-
-	setSizeControl(value) {
-		this.props.setAttributes({ gridSize: value });
-	}
-
 	setCaptionStyleTo(value) {
 		this.props.setAttributes({ captionStyle: value });
 	}
+	setCustomHeight(value) {
+		console.log(value)
+		this.props.setAttributes({ customHeight: value });
+	  }
+	  setCustomWidth(value) {
+		this.props.setAttributes({ customWidth: value });
+	  }
 
 	getCaptionsHelp(checked) {
 		return checked
@@ -76,11 +89,13 @@ class Inspector extends Component {
 		const {
 			captions,
 			captionStyle,
-			gridSize,
 			gutter,
 			radius,
 			lightbox,
 			linkTo,
+			columnsize,
+			customHeight,
+			customWidth
 		} = attributes;
 
 		return (
@@ -90,17 +105,36 @@ class Inspector extends Component {
 						<PanelBody
 							title={__("Masonry settings", "responsive-block-editor-addons")}
 						>
-							<SizeControl
-								{...this.props}
-								type={"grid"}
-								label={__("Size", "responsive-block-editor-addons")}
-								onChange={this.setSizeControl}
-								value={gridSize}
-								resetValue={"xlrg"}
-							/>
-
 							<ResponsiveTabsControl {...this.props} />
+							<RangeControl
+									label={__("Columns", "responsive-block-editor-addons")}
+									aria-label={__(
+										"Number of columns for masonary",
+										"responsive-block-editor-addons"
+									)}
+									value={columnsize}
+									onChange={this.setNumberOfColumns}
+									min={1}
+									max={10}
+									step={1}
+								/>
+							<RangeControl
+              label={__("Custom Height", "responsive-block-editor-addons")}
+              value={customHeight}
+              onChange={this.setCustomHeight}
+              min={0}
+              max={1000}
+              step={1}
+            />
 
+            <RangeControl
+              label={__("Custom Width", "responsive-block-editor-addons")}
+              value={customWidth}
+              onChange={(value) => this.setCustomWidth(value)}
+              min={0}
+              max={1000}
+              step={1}
+            />	
 							{gutter > 0 && (
 								<RangeControl
 									label={__("Rounded corners", "responsive-block-editor-addons")}

@@ -1143,6 +1143,7 @@ class edit extends Component {
 
     return (
       <Fragment>
+        <style id={`responsive-block-editor-addons-testimonial-slider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <Style>
           {`
              .responsive-block-editor-addons-slick-carousel.responsive-block-editor-addons-block-${this.props.clientId.substr(

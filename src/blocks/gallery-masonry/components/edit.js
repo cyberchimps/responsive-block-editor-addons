@@ -3,7 +3,7 @@
  */
 import classnames from "classnames";
 import filter from "lodash/filter";
-import Masonry from "react-masonry-component";
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
 
 /**
  * Internal dependencies
@@ -41,21 +41,26 @@ class GalleryMasonryEdit extends Component {
     this.onMoveForward = this.onMoveForward.bind(this);
     this.onMoveBackward = this.onMoveBackward.bind(this);
     this.setImageAttributes = this.setImageAttributes.bind(this);
-
     this.state = {
       selectedImage: null,
+      migrationDone: false, // Add a state variable to track migration
     };
   }
 
   componentDidMount() {
     if (
       this.props.wideControlsEnabled === true &&
-      !this.props.attributes.align &&
-      this.props.attributes.gridSize === "lrg"
+      !this.props.attributes.align 
     ) {
       this.props.setAttributes({
         align: "",
-        gridSize: "lrg",
+      });
+    }
+    if (!this.state.migrationDone) {
+      this.handleSizeMigration(this.props.attributes.gridSize);
+      // Update the state to indicate that migration has been done
+      this.setState({
+        migrationDone: true,
       });
     }
   }
@@ -139,6 +144,25 @@ class GalleryMasonryEdit extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.attributes.gutter <= 0) {
+      this.props.setAttributes({
+        radius: 0,
+      });
+    }
+  }
+  handleSizeMigration(size) {
+    // Map old size options to columnsize
+    if (size === 'lrg' ) {
+      this.setNumberOfColumns(2);
+    } else if (size === 'xlrg') {
+      this.setNumberOfColumns(3);
+    }
+  }
+  setNumberOfColumns(value) {
+    this.setState({ columns: value });
+    this.props.setAttributes({ columnsize: value });
+  }
   render() {
     const {
       attributes,
@@ -153,14 +177,15 @@ class GalleryMasonryEdit extends Component {
     const {
       align,
       captions,
-      gridSize,
       gutter,
       gutterMobile,
       images,
       linkTo,
       lightbox,
+      columnsize,
+      customHeight,
+      customWidth
     } = attributes;
-
     const hasImages = !!images.length;
 
     const sidebarIsOpened =
@@ -177,7 +202,7 @@ class GalleryMasonryEdit extends Component {
       }
     );
 
-    const masonryClasses = classnames(`has-grid-${gridSize}`, {
+    const masonryClasses = classnames( {
       [`has-gutter-${gutter}`]: gutter > 0,
       [`has-gutter-null`]: gutter === 0,
       [`has-gutter-mobile-${gutterMobile}`]: gutterMobile > 0,
@@ -198,21 +223,17 @@ class GalleryMasonryEdit extends Component {
     if (!hasImages) {
       return masonryGalleryPlaceholder;
     }
-
     return (
       <Fragment key="div-block" >
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <div className={className}>
           <div className={innerClasses}>
-            <Masonry
-            key={`masonary-block-${gridSize}`}
-              elementType={"ul"}
+          <Masonry
               className={masonryClasses}
-              options={masonryOptions}
-              disableImagesLoaded={false}
-              updateOnEachImageLoad={false}
+              columnsCount={columnsize}
             >
+
               {images.map((img, index) => {
                 const ariaLabel = sprintf(
                   /* translators: %1$d is the order number of the image, %2$d is the total number of images */
@@ -255,6 +276,8 @@ class GalleryMasonryEdit extends Component {
                       aria-label={ariaLabel}
                       captions={captions}
                       supportsCaption={true}
+                      customHeight={customHeight}  
+                      customWidth={customWidth}
                     />
                   </li>
                 );

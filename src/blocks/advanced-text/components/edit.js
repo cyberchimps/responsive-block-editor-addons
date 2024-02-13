@@ -61,6 +61,7 @@ export default class Edit extends Component {
     let CustomTag = `${blockTag}`;
 
     return [
+      <style id={`responsive-block-editor-addons-advanced-text-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector
         key="advanced-text-inspector"
         {...{ setAttributes, ...this.props }}

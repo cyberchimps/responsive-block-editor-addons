@@ -208,6 +208,7 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
      } = this.props;
 
      return [
+        <style id={`responsive-block-editor-addons-tabs-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
        <Inspector key={'tabs_inspector'} {...{ setAttributes, ...this.props }} />,
  
        <div

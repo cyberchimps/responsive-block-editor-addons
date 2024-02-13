@@ -65,6 +65,7 @@ export default class Edit extends Component {
       onReplace,
     } = this.props;
     return [
+      <style id={`responsive-block-editor-addons-advanced-heading-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <BlockControls key="controls">
         <AlignmentToolbar
           value={headingAlignment}

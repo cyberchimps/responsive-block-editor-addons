@@ -214,6 +214,7 @@ export default class Edit extends Component {
     }
     let imgopacity = imageopacity / 100;
     return [
+      <style id={`responsive-block-editor-addons-info-block-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Fragment key="above-below-title-fragment" >
         {(imgiconPosition == "above-title" ||
           imgiconPosition == "below-title") && (
@@ -233,7 +234,7 @@ export default class Edit extends Component {
               ...InfoBoxPositionClasses(this.props.attributes)
             )}
           >
-			{ctaTextFontFamily && loadGoogleFont(ctaTextFontFamily)}
+			      {ctaTextFontFamily && loadGoogleFont(ctaTextFontFamily)}
             {(backgroundImage || imgURL !== 'empty') && (!!backgroundImage?.length || !!imgURL?.length) && (
               <div key={`block-wrapper-${block_id}`} className="responsive-block-editor-addons-cta-image-wrap">
                 <img
@@ -512,7 +513,6 @@ export default class Edit extends Component {
                             "responsive-block-editor-addons"
                           )}
                           className="responsive-block-editor-addons-ifb-desc"
-                          value={resDescHeading}
                           onChange={(value) =>
                             setAttributes({ resDescHeading: value })
                           }
@@ -609,7 +609,6 @@ export default class Edit extends Component {
                             "responsive-block-editor-addons"
                           )}
                           className="responsive-block-editor-addons-ifb-desc"
-                          value={resDescHeading}
                           onChange={(value) =>
                             setAttributes({ resDescHeading: value })
                           }

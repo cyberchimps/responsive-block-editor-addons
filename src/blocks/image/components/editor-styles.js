@@ -255,7 +255,7 @@ function EditorStyles(props) {
     },
   };
   var tablet_selectors = {
-    " .img-block": {
+    " .img-main-block": {
       "text-align": imageAlignmentTablet,
     },
     "  .responsive-blocks-image-block": {
@@ -300,7 +300,7 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-    " .img-block": {
+    " .img-main-block": {
       "text-align": imageAlignmentMobile,
     },
     "  .responsive-blocks-image-block": {

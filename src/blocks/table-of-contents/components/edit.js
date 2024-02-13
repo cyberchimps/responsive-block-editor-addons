@@ -89,6 +89,7 @@ class Edit extends Component {
     }
 
     return [
+      <style id={`responsive-block-editor-addons-table-of-contents-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector key={"toc-inspector"} {...{ setAttributes, ...this.props }} />,
 
       <CustomTag

@@ -88,6 +88,7 @@ export default class Edit extends Component {
     ];
 
     return [
+      <style id={`responsive-block-editor-addons-call-mail-button-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <BlockControls key="controls">
         <ToolbarGroup controls={toolbarControls} />
       </BlockControls>,

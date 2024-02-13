@@ -314,6 +314,7 @@ class GalleryCarouselEdit extends Component {
 
     return (
       <Fragment>
+        <style id={`responsive-block-editor-addons-image-slider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <ResizableBox

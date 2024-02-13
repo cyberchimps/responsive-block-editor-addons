@@ -865,6 +865,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     };
     return (
       <Fragment>
+        <style id={`responsive-block-editor-addons-style-accordion-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <InspectorControls>
           <InspectorTabs>
             <InspectorTab key={"content"}>

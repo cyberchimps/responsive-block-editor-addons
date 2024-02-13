@@ -7,16 +7,19 @@
     font-style: normal;
 }
 
-body.toplevel_page_responsive_block_editor_addons #wpcontent {
+body.toplevel_page_responsive_block_editor_addons #wpcontent,
+body.responsive_page_responsive_block_editor_addons #wpcontent {
     padding-left: 0;
     background: #F0F0F1;
 }
 
-body.toplevel_page_responsive_block_editor_addons #wpfooter {
+body.toplevel_page_responsive_block_editor_addons #wpfooter,
+body.responsive_page_responsive_block_editor_addons #wpfooter {
     display: none;
 }
 
-body.toplevel_page_responsive_block_editor_addons #wpbody-content {
+body.toplevel_page_responsive_block_editor_addons #wpbody-content,
+body.responsive_page_responsive_block_editor_addons #wpbody-content {
     padding-bottom: 30px;
 }
 

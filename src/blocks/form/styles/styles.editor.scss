@@ -1,0 +1,19 @@
+.responsive-block-editor-addons-block-form {
+  padding: 0;
+  margin: 0 auto;
+}
+
+// Inspector Controls Styling.
+.responsive-block-editor-addons-form-border-radius-control {
+	.component-box-control__header-control-wrapper {
+		.components-flex-item {
+			&:first-child {
+				transform: rotate(315deg);
+			}
+		}
+	}
+}
+
+.responsive-block-editor-addons-form-controls-spacing {
+	margin-bottom: 24px;
+}

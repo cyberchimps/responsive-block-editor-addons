@@ -127,6 +127,7 @@ class RBEATaxonomyList extends Component {
         
         return (
             <Fragment>
+                <style id={`responsive-block-editor-addons-taxonomy-list-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
 
                 <InspectorControls></InspectorControls>
                 <Inspector key="inspector" {...{ setAttributes, ...this.props }} />
