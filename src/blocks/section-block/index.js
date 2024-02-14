@@ -103,7 +103,7 @@ function appendImportButton() {
  */
 function rbeaRenderModalBlock() {
   
-  let {rootClientId,index} = wp.data.select( 'core/editor' ).getBlockInsertionPoint();
+  let {rootClientId,index} = wp.data.select( 'core/block-editor' ).getBlockInsertionPoint();
   const block = wp.blocks.createBlock(
     "responsive-block-editor-addons/rbea-templates"
   );
