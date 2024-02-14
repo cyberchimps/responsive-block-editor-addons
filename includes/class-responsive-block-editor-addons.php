@@ -100,9 +100,8 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Getting Started Blocks Toggle.
 		add_action( 'wp_ajax_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
 		add_action( 'wp_ajax_nopriv_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
-		add_action('rest_api_init', array($this, 'register_custom_rest_endpoint'));
-		add_action('admin_init', array($this, 'responsive_block_editor_addons_xmlupdate_checksum'));
-		add_action('wp_ajax_rbea_sync_library', array($this, 'rbea_sync_library'));
+		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
+		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
 		// RBA Form Block Processing.
 		add_action( 'rest_api_init', array( $this, 'rba_form_block_processing' ) );
@@ -1184,30 +1183,44 @@ class Responsive_Block_Editor_Addons {
 		wp_send_json_success( $data );
 	}
 
-	public function custom_rest_endpoint_callback($data)
-	{
-		// Check if the option exists and its value is "Activated"
-		$is_pro_active = get_option('wc_am_client_responsive_addons_pro_activated');
-		$is_xml_updated = get_option('last_xml_export_checksums');
-		$data = get_option( 'total-responsive-sites-data' );
-    	// Fetch data from the external endpoint
-    	$external_data = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2');
+	public function custom_rest_endpoint_callback( $data ) {
 
-    if (is_wp_error($external_data)) {
-        // Handle error from the external endpoint, if any
-        return new WP_REST_Response(['error' => $external_data->get_error_message()], 500);
-    }
+		$params = $data->get_params();
 
-    $external_data_body = wp_remote_retrieve_body($external_data);
-    $external_data_decoded = json_decode($external_data_body, true);
-	$response_data = [
-        'pro_active' => $is_pro_active === 'Activated',
-        'xml_update' => $external_data_decoded['last_xml_export_checksums'] !== $is_xml_updated,
-		'data' => $data
-    ];
+		if ( ! isset( $params['sync'] ) ) {
+			return new WP_REST_Response( array( 'error' => 'Insufficient params' ), 500 );
+		}
 
+		// Check if the option exists and its value is "Activated".
+		$is_pro_active = get_option( 'wc_am_client_responsive_addons_pro_activated' );
 
-		return new WP_REST_Response($response_data, 200);
+		if ( 'false' === $params['sync'] ) {
+			$response_data = array(
+				'pro_active' => 'Activated' === $is_pro_active,
+			);
+		}
+
+		if ( 'true' === $params['sync'] ) {
+			$is_xml_updated = get_option( 'last_xml_export_checksums' );
+			$data           = get_option( 'total-responsive-sites-data' );
+			// Fetch data from the external endpoint.
+			$external_data = wp_remote_get( 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2' );
+
+			if ( is_wp_error( $external_data ) ) {
+				// Handle error from the external endpoint, if any.
+				return new WP_REST_Response( array( 'error' => $external_data->get_error_message() ), 500 );
+			}
+
+			$external_data_body    = wp_remote_retrieve_body( $external_data );
+			$external_data_decoded = json_decode( $external_data_body, true );
+			$response_data         = array(
+				'pro_active' => 'Activated' === $is_pro_active,
+				'xml_update' => $external_data_decoded['last_xml_export_checksums'] !== $is_xml_updated,
+				'data'       => $data,
+			);
+		}
+
+		return new WP_REST_Response( $response_data, 200 );
 	}
 
 	public function register_custom_rest_endpoint()
@@ -1222,39 +1235,7 @@ class Responsive_Block_Editor_Addons {
 			)
 		);
 	}
-	public function responsive_block_editor_addons_xmlupdate_checksum()
-	{
-		// Check if the option already exists
-		$existing_value = get_option('last_xml_export_checksums');
 
-		// Make an HTTP request to the endpoint
-		$response = wp_remote_get('https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-last-xml-export-checksum2');
-
-		// Check if the request was successful
-		if (is_array($response) && !is_wp_error($response)) {
-			// Parse the response (assuming JSON format)
-			$data = json_decode(wp_remote_retrieve_body($response), true);
-
-			// Check if the data is successfully parsed and contains the desired key
-			if ($data && isset($data['last_xml_export_checksums'])) {
-				$new_value = $data['last_xml_export_checksums'];
-
-				// Check if the option already exists
-				if (false === $existing_value) {
-					// The option doesn't exist, create a new one
-					add_option('last_xml_export_checksums', $new_value);
-				} else {
-					// The option already exists, update it
-					if ($existing_value !== $new_value) {
-						// The existing value and new value are different, update the option
-						update_option('last_xml_export_checksums', $new_value);
-						$this->rbea_sync_library();
-						
-					}
-				}
-			}
-		}
-	}
 	public function rbea_sync_library()
 	{
 		// Step 1: Get the count from the API hit

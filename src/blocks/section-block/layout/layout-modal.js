@@ -18,6 +18,7 @@ const {__} = wp.i18n;
 const {Fragment, useState, useEffect} = wp.element;
 const {Button, Dashicon, Modal, TabPanel} = wp.components;
 const {useDispatch} = wp.data;
+import { addQueryArgs } from '@wordpress/url';
 export function LayoutModal(props) {
   const [currentTab, setCurrentTab] = useState("rbea-patterns-tab-sections");
   const [modalOpen, setModalOpen] = useState(true);
@@ -78,7 +79,7 @@ export function LayoutModal(props) {
   const checkIsProActive = async () => {
     try {
       const response = await apiFetch({
-        path: "custom/v1/responsive-pro-activation-status", // Replace with your actual endpoint
+        path: addQueryArgs("custom/v1/responsive-pro-activation-status", { sync: false }), // Replace with your actual endpoint
       });
       // Check the response and set isProactive state accordingly
       setIsProactive(response && response.pro_active);
@@ -505,7 +506,7 @@ export function LayoutModal(props) {
     return new Promise(async (resolve, reject) => {
       try {
         const response = await apiFetch({
-          path: "custom/v1/responsive-pro-activation-status", // Replace with your actual endpoint
+          path: addQueryArgs("custom/v1/responsive-pro-activation-status", { sync: true }), // Replace with your actual endpoint
         });
 
         // let xml_update = response && response.xml_update;
