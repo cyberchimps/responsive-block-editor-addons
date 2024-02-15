@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Responsive Blocks - WordPress Gutenberg Blocks
  * Plugin URI:      cyberchimps.com
- * Description:     Responsive Blocks for Gutenberg
+ * Description:     Responsive Blocks offers 50+ Gutenberg blocks so you can design beautiful pages without writing a single line of code.
  * Author:          CyberChimps
  * Text Domain:     responsive-block-editor-addons
  * Domain Path:     /languages
