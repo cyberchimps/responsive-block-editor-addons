@@ -42,6 +42,15 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
   columnsGapTablet: {
     type: "number",
     default: 10,

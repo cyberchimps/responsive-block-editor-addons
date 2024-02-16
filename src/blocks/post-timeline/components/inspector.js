@@ -33,6 +33,7 @@ const {
   ToggleControl,
   TabPanel,
   Icon,
+  Dashicon
 } = wp.components;
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
@@ -1176,7 +1177,8 @@ export default class Inspector extends Component {
               />
             </PanelBody>
           </InspectorTab>
-          <InspectorTab key={"advance"}></InspectorTab>
+          <InspectorTab key={"advance"}>
+          </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
     );

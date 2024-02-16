@@ -128,5 +128,17 @@ const attributes = {
 	type: "string",
 	default: "#000000",
   },
+  z_index: {
+    type: "number",
+    default: 1,
+  },
+  z_indexTablet: {
+    type: "number",
+    default: 1,
+  },
+  z_indexMobile: {
+    type: "number",
+    default: 1,
+  },
 };
 export default attributes;

@@ -233,6 +233,15 @@ const attributes = {
   quoteFontSizeTablet: {
 	  type: "number",
   },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
   borderColor: {
 	type: "string",
 	default: "empty",
