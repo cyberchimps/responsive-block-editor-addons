@@ -955,15 +955,15 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'z_index'               => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => 1,
 				), 
 				'z_indexMobile'         => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => 1,
 				),  
 				'z_indexTablet'         => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => 1,
 				),         
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',
