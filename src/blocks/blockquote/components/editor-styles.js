@@ -63,15 +63,18 @@ function EditorStyles(props) {
     textRightPadding,
     textRightPaddingMobile,
     textRightPaddingTablet,
-	quoteFontSizeMobile,
-	quoteFontSizeTablet,
+    quoteFontSizeMobile,
+    quoteFontSizeTablet,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
     borderColor, // For compatibility with v1.3.2.
-	borderStyle, // For compatibility with v1.3.2.
-	borderWidth, // For compatibility with v1.3.2.
-	topPadding, // For compatibility with v1.3.2.
-	bottomPadding, // For compatibility with v1.3.2.
-	leftPadding, // For compatibility with v1.3.2.
-	rightPadding, // For compatibility with v1.3.2.
+    borderStyle, // For compatibility with v1.3.2.
+    borderWidth, // For compatibility with v1.3.2.
+    topPadding, // For compatibility with v1.3.2.
+    bottomPadding, // For compatibility with v1.3.2.
+    leftPadding, // For compatibility with v1.3.2.
+    rightPadding, // For compatibility with v1.3.2.
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -83,6 +86,7 @@ function EditorStyles(props) {
   }
   var selectors = {
     "": {
+      'opacity': hideWidget ? 0.2 : 1,
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
@@ -157,6 +161,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
+      'opacity': hideWidgetMobile ? 0.2 : 1,
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
@@ -175,6 +180,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
+      'opacity': hideWidgetTablet ? 0.2 : 1,
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),

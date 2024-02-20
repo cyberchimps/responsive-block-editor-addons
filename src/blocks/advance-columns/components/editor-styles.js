@@ -72,6 +72,9 @@ function EditorStyles(props) {
     verticalAlign,
     block_id,
     z_index,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
     align,
 	backgroundPosition, // For compatibility with v1.3.2.
 	backgroundRepeat, // For compatibility with v1.3.2.
@@ -112,6 +115,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .background-type-image": {
       "background-image":
         backgroundType == "image"
@@ -202,6 +208,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-block-columns": {
       "padding-top": topPaddingMobile !== 999 && boxTopPaddingMobile === "" ? generateCSSUnit(topPaddingMobile, "px") : generateCSSUnit(boxTopPaddingMobile, "px"), // For compatibility with v1.3.2.
       "padding-bottom": bottomPaddingMobile !== 999 && boxBottomPaddingMobile === "" ? generateCSSUnit(bottomPaddingMobile, "px") : generateCSSUnit(boxBottomPaddingMobile, "px"), // For compatibility with v1.3.2.
@@ -213,6 +222,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-block-columns": {
       "padding-top": topPaddingTablet !== 999 && boxTopPaddingTablet === "" ? generateCSSUnit(topPaddingTablet, "px") : generateCSSUnit(boxTopPaddingTablet, "px"), // For compatibility with v1.3.2.
       "padding-bottom": bottomPaddingTablet !== 999 && boxBottomPaddingTablet === "" ? generateCSSUnit(bottomPaddingTablet, "px") : generateCSSUnit(boxBottomPaddingTablet, "px"), // For compatibility with v1.3.2.

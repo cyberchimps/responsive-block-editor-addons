@@ -239,5 +239,17 @@ const attributes = {
     type: "string",
     default: "empty",
   },
+  hideWidget: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetTablet: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetMobile: {
+    type: "boolean",
+    default: false,
+  },
 };
 export default attributes;

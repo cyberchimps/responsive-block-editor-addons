@@ -233,6 +233,18 @@ const attributes = {
   quoteFontSizeTablet: {
 	  type: "number",
   },
+  hideWidget: {
+  type: "boolean",
+  default: false,
+  },
+  hideWidgetTablet: {
+  type: "boolean",
+  default: false,
+  },
+  hideWidgetMobile: {
+  type: "boolean",
+  default: false,
+  },
   borderColor: {
 	type: "string",
 	default: "empty",

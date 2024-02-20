@@ -25,6 +25,7 @@ const {
   Button,
   TabPanel,
   Dashicon,
+  ToggleControl,
 } = wp.components;
 
 /**
@@ -123,6 +124,9 @@ export default class Inspector extends Component {
         formBorderWidth,
         formHelperTextSize,
         formSuccessErrorMessageSize,
+        hideWidget,
+        hideWidgetTablet,
+        hideWidgetMobile,
       },
       setAttributes,
       clientId
@@ -688,7 +692,43 @@ export default class Inspector extends Component {
 
           </>}
           </InspectorTab>
-          <InspectorTab key={"advance"}></InspectorTab>
+          <InspectorTab key={"advance"}>
+            <PanelBody
+              title={__("Responsive Conditions", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__(
+                  "Hide on Desktop",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidget}
+                onChange={(value) =>
+                  setAttributes({ hideWidget: !hideWidget })
+                }
+              />
+              <ToggleControl
+                label={__(
+                  "Hide on Tablet",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetTablet}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+                }
+              />
+              <ToggleControl
+                label={__(
+                  "Hide on Mobile",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetMobile}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+                }
+              />
+            </PanelBody>
+          </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
     );

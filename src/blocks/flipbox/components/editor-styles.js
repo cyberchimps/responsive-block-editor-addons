@@ -167,6 +167,9 @@ function EditorStyles(props) {
     ctaColor,
     ctaBorderColor,
     ctaBackColor,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -272,6 +275,7 @@ function EditorStyles(props) {
 
   var selectors = {
     " ": {
+      "opacity": hideWidget ? 0.2 : 1,
       "margin-bottom": generateCSSUnit(bottomMargin, "px"),
       "margin-top": generateCSSUnit(topMargin, "px"),
     },
@@ -436,6 +440,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
     " .has-medium-gutter.responsive-flipbox-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",
@@ -481,6 +488,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
     " .has-medium-gutter.responsive-flipbox-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",

@@ -130,6 +130,9 @@ export default class Inspector extends Component {
       layoverHeadingbottommarginMobile,
       layoverHeadingleftmarginMobile,
       layoverHeadingrightmarginMobile,
+      hideWidget,
+      hideWidgetTablet,
+      hideWidgetMobile,
     } = attributes;
     const handleChangeImage = () => {
       // Check if the WordPress media library is available
@@ -1855,6 +1858,43 @@ export default class Inspector extends Component {
                 </TabPanel>
               </PanelBody>
             )}
+          </InspectorTab>
+          <InspectorTab key={"advance"}>
+            <PanelBody
+            title={__("Responsive Conditions", "responsive-block-editor-addons")}
+            initialOpen={false}
+            >
+              <ToggleControl
+                label={__(
+                "Hide on Desktop",
+                "responsive-block-editor-addons"
+                )}
+                checked={hideWidget}
+                onChange={(value) =>
+                setAttributes({ hideWidget: !hideWidget })
+                }
+              />
+              <ToggleControl
+                label={__(
+                "Hide on Tablet",
+                "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetTablet}
+                onChange={(value) =>
+                setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+                }
+              />
+              <ToggleControl
+                label={__(
+                "Hide on Mobile",
+                "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetMobile}
+                onChange={(value) =>
+                setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+                }
+              />
+            </PanelBody>
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
