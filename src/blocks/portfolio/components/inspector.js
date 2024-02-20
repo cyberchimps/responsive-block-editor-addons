@@ -98,12 +98,9 @@ export default class Inspector extends Component {
       latestPosts,
       taxonomyList,
       queryControls,
-      z_index,
-      z_indexMobile,
-      z_indexTablet,
     } = this.props;
 
-    const { order, orderBy } = attributes;
+    const { order, orderBy, z_index, z_indexMobile, z_indexTablet, } = attributes;
 
     const { categoriesList } = this.state;
 

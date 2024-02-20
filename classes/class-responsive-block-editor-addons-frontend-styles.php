@@ -1309,9 +1309,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageHeight'                 => '',
 				'imageHeightTablet'           => '',
 				'imageHeightMobile'           => '',
-				'z_index'                     => 0,
-				'z_indexTablet'               => 0,
-				'z_indexMobile'               => 0,
+				'z_index'                     => 1,
+				'z_indexTablet'               => 1,
+				'z_indexMobile'               => 1,
 			);
 		}
 
@@ -1426,9 +1426,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaVpaddingTablet'       => 15,
 				'ctaVpaddingMobile'       => 15,
 				'buttonHbackgroundType'   => 'none',
-				'z_index'                 => 0,
-				'z_indexMobile'           => 0,
-				'z_indexTablet'           => 0,
+				'z_index'                 => 1,
+				'z_indexMobile'           => 1,
+				'z_indexTablet'           => 1,
 			);
 		}
 
@@ -1978,9 +1978,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'level'                         => 2,
 				'textDecoration'                => 'none',
 				'textDecorationSubHeading'      => 'none',
-				'z_index'						=> '',
-				'z_indexTablet'					=> '',
-				'z_indexMobile'					=> '',
+				'z_index'						=> 1,
+				'z_indexTablet'					=> 1,
+				'z_indexMobile'					=> 1,
 			);
 		}
 
@@ -2942,9 +2942,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaVpaddingTablet'        => '',
 				'ctaHpaddingTablet'        => '',
 				'ctaTextOpacity'           => 100,
-				'z_index'				   => '',
-				'z_indexTablet'            => '',
-				'z_indexMobile'            => '',
+				'z_index'				   => 1,
+				'z_indexTablet'            => 1,
+				'z_indexMobile'            => 1,
 				'buttonHbackgroundType'    => 'none',
 				'buttonBackgroundColor'    => 'empty', // For compatibility with v1.3.2.
 				'hbuttonBackgroundColor'   => 'empty', // For compatibility with v1.3.2.
@@ -3399,9 +3399,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hMarginTablet'           => '',
 				'hMarginMobile'           => '',
 				'buttonHbackgroundType'   => 'none',
-				'z_index'                 => '',
-				'z_indexTablet'           => '',
-				'z_indexMobile'           => '',
+				'z_index'                 => 1,
+				'z_indexTablet'           => 1,
+				'z_indexMobile'           => 1,
 			);
 		}
 
@@ -3548,6 +3548,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' '                                      => array(
+					'z-index'   => $attr['z_indexMobile'],
+				),
 				' .responsive-timeline__center-block.responsive-timeline__responsive-mobile .responsive-timeline__line' => array(
 					'left'  => $attr['connectorBgsize'] / 2 . 'px',
 					'right' => $attr['connectorBgsize'] / 2 . 'px',
@@ -3584,6 +3587,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' '                                      => array(
+					'z-index'   => $attr['z_indexTablet'],
+				),
 				' .responsive-timeline__center-block.responsive-timeline__responsive-tablet .responsive-timeline__line' => array(
 					'left'  => $attr['connectorBgsize'] / 2 . 'px',
 					'right' => $attr['connectorBgsize'] / 2 . 'px',
@@ -3699,9 +3705,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'headingFontSizeTablet'     => '',
 				'contentFontSizeMobile'     => '',
 				'contentFontSizeTablet'     => '',
-				'z_index'                   => '',
-				'z_indexTablet'             => '',
-				'z_indexMobile'             => '',
+				'z_index'                   => 1,
+				'z_indexTablet'             => 1,
+				'z_indexMobile'             => 1,
 			);
 		}
 
@@ -3884,9 +3890,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'textFontSizeTablet'  => '',
 				'linkFontSizeMobile'  => '',
 				'linkFontSizeTablet'  => '',
-				'z_index'             => '',
-				'z_indexMobile'       => '',
-				'z_indexTablet'       => '',
+				'z_index'             => 1,
+				'z_indexMobile'       => 1,
+				'z_indexTablet'       => 1,
 			);
 		}
 
@@ -4447,9 +4453,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaColor'                    => '',
 				'ctaBorderColor'              => '#0066cc',
 				'ctaHoverBorderColor'         => '#0066cc',
-				'z_index'                     => '',
-				'z_indexMobile'               => '',
-				'z_indexTablet'               => '',
+				'z_index'                     => 1,
+				'z_indexMobile'               => 1,
+				'z_indexTablet'               => 1,
 			);
 		}
 
@@ -4546,9 +4552,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'heightTablet' => '',
 				'heightMobile' => '',
 				'pinned'       => false,
-				'z_index'      => '',
-				'z_indexMobile' => '',
-				'z_indexTablet'=> '',
+				'z_index'      => 1,
+				'z_indexMobile' => 1,
+				'z_indexTablet'=> 1,
 			);
 		}
 
@@ -4722,9 +4728,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'fontSizeType'        => 'px',
 				'block_id'            => 1,
 				'labelFontLineHeight' => 999, // For compatibility with v1.3.2.
-				'z_index'             => '',
-				'z_indexMobile'       => '',
-				'z_indexTablet'       => '',
+				'z_index'             => 1,
+				'z_indexMobile'       => 1,
+				'z_indexTablet'       => 1,
 			);
 		}
 
@@ -5140,9 +5146,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'descriptionFontSizeMobile'     => '',
 				'descriptionFontSizeTablet'     => '',
 				'boxRadius'                     => 999, // For compatibility with v1.3.2.
-				'z_index'                       => '',
-				'z_indexMobile'                 => '',
-				'z_indexTablet'                 => '',
+				'z_index'                       => 1,
+				'z_indexMobile'                 => 1,
+				'z_indexTablet'                 => 1,
 			);
 		}
 
@@ -5857,16 +5863,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonbackgroundColor2'   => '#fff',
 				'buttonbackgroundType'     => '',
 				'buttonHbackgroundType'    => 'none',
-				'zIndex'                   => 0,
 				'animationName'            => 'none',
 				'animationDirection'       => 'Left',
 				'animationRepeat'          => 'once',
 				'animationDuration'        => 1000,
 				'animationDelay'           => 1000,
 				'animationCurve'           => '',
-				'z_index'                  => '',
-				'z_indexMobile'            => '',
-				'z_indexTablet'            => '',
+				'z_index'                  => 1,
+				'z_indexMobile'            => 1,
+				'z_indexTablet'            => 1,
 			);
 		}
 
@@ -6305,7 +6310,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'continueFontSizeTablet' => '',
 				'z_index'                => 1,
 				'z_indexMobile'          => 1,
-				'z_indexTablet'         => 1,
+				'z_indexTablet'          => 1,
 			);
 		}
 
@@ -6520,9 +6525,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'bottomPadding'             => 999, // For compatibility with v1.3.2.
 				'leftPadding'               => 999, // For compatibility with v1.3.2.
 				'rightPadding'              => 999, // For compatibility with v1.3.2.
-				'z_index'                   => 0,
-				'z_indexMobile'             => 0,
-				'z_indexTablet'             => 0,
+				'z_index'                   => 1,
+				'z_indexMobile'             => 1,
+				'z_indexTablet'             => 1,
 			);
 		}
 
@@ -7066,9 +7071,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'featuresFontSizeTablet'    => '',
 				'ctaFontSizeMobile'         => '',
 				'ctaFontSizeTablet'         => '',
-				'z_index'                   => 0,
-				'z_indexTablet'             => 0,
-				'z_indexMobile'             => 0,
+				'z_index'                   => 1,
+				'z_indexTablet'             => 1,
+				'z_indexMobile'             => 1,
 			);
 		}
 
@@ -8735,8 +8740,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
 					'max-width' => self::get_css_value( $attr['vidwidthMobile'], 'px' ),
 					'height'    => self::get_css_value( $attr['vidheightMobile'], 'px' ),
-				),
-				' '                           => array(
 					'z-index'          => $attr['z_indexMobile'],
 				),
 			);
@@ -8745,8 +8748,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
 					'max-width' => self::get_css_value( $attr['vidwidthTablet'], 'px' ),
 					'height'    => self::get_css_value( $attr['vidheightTablet'], 'px' ),
-				),
-				' '                           => array(
 					'z-index'          => $attr['z_indexTablet'],
 				),
 			);
@@ -8878,9 +8879,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockId'                  => '',
 				'height'                   => 'normal',
 				'customHeight'             => 50,
-				'z_index'                  => '',
-				'z_indexMobile'            => '',
-				'z_indexTablet'            => '',
+				'z_index'                  => 1,
+				'z_indexMobile'            => 1,
+				'z_indexTablet'            => 1,
 				'backgroundPosition'       => 'empty', // For compatibility with v1.3.2.
 				'backgroundRepeat'         => 'empty', // For compatibility with v1.3.2.
 				'backgroundSize'           => 'empty', // For compatibility with v1.3.2.
@@ -8969,9 +8970,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconSpacing'           => 16,
 				'iconSpacingTablet'     => '',
 				'iconSpacingMobile'     => '',
-				'z_index'               => '',
-				'z_indexMobile'         => '',
-				'z_indexTablet'         => '',
+				'z_index'               => 1,
+				'z_indexMobile'         => 1,
+				'z_indexTablet'         => 1,
 			);
 		}
 
@@ -9044,9 +9045,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'textRightPaddingTablet'   => 35,
 				'quoteFontSizeMobile'      => '',
 				'quoteFontSizeTablet'      => '',
-				'z_index'                  => '',
-				'z_indexTablet'            => '',
-				'z_indexMobile'            => '',
+				'z_index'                  => 1,
+				'z_indexTablet'            => 1,
+				'z_indexMobile'            => 1,
 				'borderColor'              => 'empty', // For compatibility with v1.3.2.
 				'borderStyle'              => 'empty', // For compatibility with v1.3.2.
 				'borderWidth'              => 999, // For compatibility with v1.3.2.
@@ -9074,9 +9075,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'spacerDividerHeight'    => 7,
 				'spacerDividerWidth'     => 60,
 				'spacerDividerAlignment' => 'center',
-				'z_index'                => '',
-				'z_indexMobile'          => '',
-				'z_indexTablet'          => '',
+				'z_index'                => 1,
+				'z_indexMobile'          => 1,
+				'z_indexTablet'          => 1,
 			);
 		}
 
@@ -9443,9 +9444,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerRightPaddingMobile'  => '',
 				'containerBottomPaddingMobile' => '',
 				'containerLeftPaddingMobile'   => '',
-				'z_index'                      => '',
-				'z_indexMobile'                => '',
-				'z_indexTablet'                => '',
+				'z_index'                      => 1,
+				'z_indexMobile'                => 1,
+				'z_indexTablet'                => 1,
 				'justifyItems'                 => 'center',
 				'displayInline'                => false,
 				'stackOnMobile'                => false,
@@ -9800,9 +9801,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockLeftMargin'            => 0,
 				'blockLeftMarginTablet'      => 0,
 				'blockLeftMarginMobile'      => 0,
-				'z_index'                    => 0,
-				'z_indexMobile'				 => 0,
-				'z_indexTablet'              => 0,
+				'z_index'                    => 1,
+				'z_indexMobile'				 => 1,
+				'z_indexTablet'              => 1,
 				'headingFontFamily'          => '',
 				'headingFontWeight'          => '500',
 				'headingFontSize'            => 16,
@@ -10488,9 +10489,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titlePaddingHorizontalMobile'   => 2,
 				'titlePaddingVerticalTablet'     => 5,
 				'titlePaddingHorizontalTablet'   => 5,
-				'z_index'                        => '',
-				'z_indexMobile'                  => '',
-				'z_indexTablet'                  => '',
+				'z_index'                        => 1,
+				'z_indexMobile'                  => 1,
+				'z_indexTablet'                  => 1,
 			);
 		}
 
@@ -10693,9 +10694,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconTextGapMobile'        => 3,
 				'iconTextGapTablet'        => 5,
 				'buttonAlign'              => 'left',
-				'z_index'                  => '',
-				'z_indexMobile'            => '',
-				'z_indexTablet'            => '',
+				'z_index'                  => 1,
+				'z_indexMobile'            => 1,
+				'z_indexTablet'            => 1,
 			);
 		}
 
@@ -11721,9 +11722,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'tabContentFontWeight'     => '',
 				'tabContentLineHeight'     => '',
 				'alignTabs'                => '',
-				'z_index'                  => 0,
-				'z_indexMobile'            => 0,
-				'z_indexTablet'            => 0,
+				'z_index'                  => 1,
+				'z_indexMobile'            => 1,
+				'z_indexTablet'            => 1,
 				'tabsTopPadding'           => 0,
 				'tabsBottomPadding'        => 0,
 				'tabsLeftPadding'          => 0,
@@ -12562,9 +12563,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'pulseEffect'          => true,
 				'hotspotSize'          => 16,
 				'pointSpacing'         => 6,
-				'z_index'              => '',
-				'z_indexMobile'        => '',
-				'z_indexTablet'        => '',       
+				'z_index'              => 1,
+				'z_indexMobile'        => 1,
+				'z_indexTablet'        => 1,       
 			);
 		}
 
@@ -13224,9 +13225,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleColor'                => '',
 				'descColor'                 => '',
 				'ctaHoverBorderColor'       => '',
-				'z_index'                   => '',
-				'z_indexMobile'             => '',
-				'z_indexTablet'             => '',
+				'z_index'                   => 1,
+				'z_indexMobile'             => 1,
+				'z_indexTablet'             => 1,
 			);
 		}
 
@@ -13400,9 +13401,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockBorderStyle'         => 'none',
 				'blockBorderColor'         => '#333',
 				'taxonomyType'             => 'category',
-				'z_index'                  => 0,
-				'z_indexMobile'            => 0,
-				'z_indexTablet'            => 0,
+				'z_index'                  => 1,
+				'z_indexMobile'            => 1,
+				'z_indexTablet'            => 1,
 			);
 		}
 
@@ -14308,10 +14309,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'messageLetterSpacing'           => 0,
 				'successMsgColor'                => '',
 				'afterSubmitErrorMsgColor'       => '',
-				'afterSubmitMsgbgColor'          =>'',
-				'z_index'                        =>'',
-				'z_indexMobile'                  =>'',
-				'z_indexTablet'                  =>'',
+				'afterSubmitMsgbgColor'          => '',
+				'z_index'                        => 1,
+				'z_indexMobile'                  => 1,
+				'z_indexTablet'                  => 1,
 			);
 		}
 		public static function get_responsive_block_image_css($attr, $id)
@@ -14646,9 +14647,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'layoverHeadingbottommarginMobile' => '0',
 				'layoverHeadingleftmarginMobile' => '0',
 				'layoverHeadingrightmarginMobile' => '0',
-				'z_index'                         => '',
-				'z_indexMobile'                   => '',
-				'z_indexTablet'                   => '',  
+				'z_index'                         => 1,
+				'z_indexMobile'                   => 1,
+				'z_indexTablet'                   => 1,  
 			);
 		}
 
@@ -15222,9 +15223,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'formBorderWidth'             => array( 'top' => '1px', 'bottom' => '1px', 'left' => '1px', 'right' => '1px' ),
 				'formHelperTextSize'          => '14px',
 				'formSuccessErrorMessageSize' => '16px',
-				'z_index'                     => '',
-				'z_indexMobile'               => '',
-				'z_indexTablet'               => '',
+				'z_index'                     => 1,
+				'z_indexMobile'               => 1,
+				'z_indexTablet'               => 1,
 			);
 		}
 

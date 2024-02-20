@@ -325,7 +325,6 @@ export default class Inspector extends Component {
         buttongradientDirection,
         buttonbackgroundType,
         buttonHbackgroundType,
-        zIndex,
         animationName,
         animationDirection,
         animationRepeat,
@@ -1818,16 +1817,6 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
-            {/* <InspectorAdvancedControls>
-              <RangeControl
-                label={__("Z-index", "responsive-block-editor-addons")}
-                value={zIndex}
-                onChange={(value) => setAttributes({zIndex: value})}
-                min={0}
-                max={500}
-                allowReset
-              />
-            </InspectorAdvancedControls> */}
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
