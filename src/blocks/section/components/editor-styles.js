@@ -107,6 +107,9 @@ function EditorStyles(props) {
 	leftPaddingTablet, // For compatibility with v1.3.2.
 	rightPaddingTablet, // For compatibility with v1.3.2.
     align,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -158,6 +161,9 @@ function EditorStyles(props) {
 
 
   var selectors = {
+		" ": {
+		  "opacity": hideWidget? 0.2 : 1,
+		},
     " > .responsive-block-editor-addons-block-section": {
       "margin-top": topMargin !== 999 && blockTopMargin === 0 ? generateCSSUnit(topMargin, "px") : generateCSSUnit(blockTopMargin, "px"), // For compatibility with v1.3.2.
       "margin-bottom": bottomMargin !== 999 && blockBottomMargin === 0 ? generateCSSUnit(bottomMargin, "px") : generateCSSUnit(blockBottomMargin, "px"), // For compatibility with v1.3.2.
@@ -228,6 +234,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+		" ": {
+		  "opacity": hideWidgetMobile? 0.2 : 1,
+		},
     " > .responsive-block-editor-addons-block-section": {
       "margin-top": topMarginMobile !== 999 && blockTopMarginMobile === "" ? generateCSSUnit(topMarginMobile, "px") : (blockTopMarginMobile ? generateCSSUnit(blockTopMarginMobile, "px") : generateCSSUnit(blockTopMargin, "px")), // For compatibility with v1.3.2.
       "margin-bottom": bottomMarginMobile !== 999 && blockBottomMarginMobile === "" ? generateCSSUnit(bottomMarginMobile, "px") : (blockBottomMarginMobile ? generateCSSUnit(blockBottomMarginMobile, "px") : generateCSSUnit(blockBottomMargin, "px")), // For compatibility with v1.3.2.
@@ -249,6 +258,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+		" ": {
+		  "opacity": hideWidgetTablet? 0.2 : 1,
+		},
     " > .responsive-block-editor-addons-block-section": {
 	  "margin-top": topMarginTablet !== 999 && blockTopMarginTablet === "" ? generateCSSUnit(topMarginTablet, "px") : (blockTopMarginTablet ? generateCSSUnit(blockTopMarginTablet, "px") : generateCSSUnit(blockTopMargin, "px")), // For compatibility with v1.3.2.
 	  "margin-bottom": bottomMarginTablet !== 999 && blockBottomMarginTablet === "" ? generateCSSUnit(bottomMarginTablet, "px") : (blockBottomMarginTablet ? generateCSSUnit(blockBottomMarginTablet, "px") : generateCSSUnit(blockBottomMargin, "px")), // For compatibility with v1.3.2.

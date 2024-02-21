@@ -122,6 +122,18 @@ const attributes = {
   gridSize: {
     type: "number",
     default: 700,
-  }
+  },
+  hideWidget: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetTablet: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetMobile: {
+    type: "boolean",
+    default: false,
+  },
 };
 export default attributes;

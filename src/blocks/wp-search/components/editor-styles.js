@@ -56,6 +56,9 @@
      buttonFontSizeTablet,
      buttonFontWeight,
      buttonLineHeight,
+     hideWidget,
+     hideWidgetTablet,
+     hideWidgetMobile,
    } = props.attributes;
 
    let width;
@@ -107,6 +110,7 @@
 
    var selectors = {
     " ": {
+      "opacity": hideWidget? 0.2 : 1,
       "width": width,
       "border-radius": borderRadius,
       "padding": 0,
@@ -189,6 +193,9 @@
    }
  
    var mobile_selectors = {
+    " ":{
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-search-form__input": {
       "font-size": generateCSSUnit(inputFontSizeMobile, "px"),
      "padding": inputBoxPaddingMobile
@@ -206,6 +213,9 @@
    };
  
    var tablet_selectors = {
+    " ":{
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-search-form__input": {
       "font-size": generateCSSUnit(inputFontSizeTablet, "px"),
       "padding": inputBoxPaddingTablet,

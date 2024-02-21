@@ -103,6 +103,9 @@ function EditorStyles(props) {
     imageHeightTablet,
     imageHeightMobile,
     postLayout,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -174,6 +177,9 @@ function EditorStyles(props) {
 
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-post-grid-items": {
         "grid-column-gap": generateCSSUnit(varcolumnGap, "px"),
         "grid-row-gap": generateCSSUnit(varrowGap, "px"),
@@ -319,6 +325,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
       " .responsive-block-editor-addons-block-post-grid-image img": {
           "margin-bottom": generateCSSUnit(imageBottomSpacingMobile, "px"),
       },
@@ -364,6 +373,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
       " .responsive-block-editor-addons-block-post-grid-image img": {
           "margin-bottom": generateCSSUnit(imageBottomSpacingTablet, "px"),
       },

@@ -311,6 +311,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-post-slick-carousel-' . $id . ' .slick-prev.slick-arrow' => $slick_button_styles,
 				' .responsive-post-slick-carousel-' . $id . ' .slick-next.slick-arrow' => $slick_button_styles,
 				' .responsive-post-slick-carousel-' . $id . ' .slick-slide>div:first-child' => array(
@@ -411,6 +414,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			);
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-block-post-carousel-text-wrap' => array(
 					'padding' => self::get_css_value( $attr['contentPaddingMobile'], 'px' ),
 				),
@@ -439,6 +445,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-block-post-carousel-text-wrap' => array(
 					'padding' => self::get_css_value( $attr['contentPaddingTablet'], 'px' ),
 				),
@@ -563,6 +572,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-post-grid-items' => array(
 					'grid-column-gap' => self::get_css_value( $column_gap, 'px' ),
 					'grid-row-gap'    => self::get_css_value( $row_gap, 'px' ),
@@ -690,6 +702,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$tablet_content_padding = $attr['contentPaddingTablet'];
 			}
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-block-post-grid-image img' => array(
 					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingMobile'], 'px' ),
 				),
@@ -726,6 +741,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-block-post-grid-image img' => array(
 					'margin-bottom' => self::get_css_value( $attr['imageBottomSpacingTablet'], 'px' ),
 				),
@@ -788,7 +806,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' '                                        => array(
-					'display'    	   => true === $attr['hideWidget'] ? 'none' : 'block',
+					'display'    	   => true === $attr['hideWidget'] ? 'none' : 'grid',
 				),
 				'.responsive-count__inner .responsive-count-item__features li' => array(
 					'line-height' => $attr['contentLineHeight'],
@@ -1215,7 +1233,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'continueLineHeight'          => '',
 				'continueFontWeight'          => '',
 				'continueTextTransform'       => '',
-				'continueFontFamily'          => '',
+				'continueFontFamily'          => 'ABeeZee',
 				'titleFontSize'               => '',
 				'titleFontSizeMobile'         => '',
 				'titleFontSizeTablet'         => '',
@@ -1226,9 +1244,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'metaLineHeight'              => '',
 				'metaFontWeight'              => '',
 				'metaTextTransform'           => '',
-				'titleFontFamily'             => '',
-				'metaFontFamily'              => '',
-				'excerptFontFamily'           => '',
+				'titleFontFamily'             => 'ABeeZee',
+				'metaFontFamily'              => 'ABeeZee',
+				'excerptFontFamily'           => 'ABeeZee',
 				'excerptFontSize'             => '',
 				'excerptLineHeight'           => '',
 				'excerptFontWeight'           => '',
@@ -1282,6 +1300,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageHeight'                 => '',
 				'imageHeightTablet'           => '',
 				'imageHeightMobile'           => '',
+				'hideWidgetTablet'        => false,
+				'hideWidgetMobile'        => false,
+				'hideWidget' 			  => false,
 			);
 		}
 
@@ -1396,6 +1417,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaVpaddingTablet'       => 15,
 				'ctaVpaddingMobile'       => 15,
 				'buttonHbackgroundType'   => 'none',
+				'hideWidgetTablet'        => false,
+				'hideWidgetMobile'        => false,
+				'hideWidget' 			  => false,
 			);
 		}
 
@@ -2223,13 +2247,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$defaults = self::get_responsive_block_buttons_default_attributes();
 			$attr     = array_merge( $defaults, (array) $attr );
 
-			$mobile_selectors = array();
-			$tablet_selectors = array();
+			$selectors        = array(
+				' '           		=> array(
+					'display'    	=> true === $attr['hideWidget'] ? 'none' : 'block',
+				),
+			);
 
-			$selectors        = array();
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' '                 => array(
+					'display'    	=> true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' '           		=> array(
+					'display'    	=> true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -2248,7 +2282,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 * @return array
 		 */
 		public static function get_responsive_block_buttons_default_attributes() {
-			return array();
+			return array(
+				'hideWidget' 					 => false,
+				'hideWidgetMobile'      		 => false,
+				'hideWidgetTablet'    			 => false,
+			);
 		}
 
 		/**
@@ -3126,7 +3164,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				'' => array(
-					'display' => true === $attr['hideWidgetMoblie'] ? 'none' : 'block',
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 					'margin-bottom' => self::get_css_value( $attr['blockbotmarginMobile'], 'px' ) . ' !important',
 					'margin-top'    => self::get_css_value( $attr['blockmarginMobile'], 'px' ) . ' !important',
 					'margin-left'   => self::get_css_value( $attr['blockleftmarginMobile'], 'px' ),
@@ -5841,6 +5879,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-timeline__icon-new svg' => array(
 					'width'  => self::get_css_value( $attr['iconSize'], 'px' ),
 					'height' => self::get_css_value( $attr['iconSize'], 'px' ),
@@ -5996,6 +6037,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-timeline__center-block.responsive-block-editor-addons-timeline__responsive-mobile .responsive-block-editor-addons-timeline__line' => array(
 					'left'  => 'calc(' . $attr['bgSize'] . '/2)px',
 					'right' => 'calc(' . $attr['bgSize'] . '/2)px',
@@ -6053,6 +6097,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-timeline__center-block.responsive-block-editor-addons-timeline__responsive-tablet .responsive-block-editor-addons-timeline__line' => array(
 					'left'  => 'calc(' . $attr['bgSize'] . '/2)px',
 					'right' => 'calc(' . $attr['bgSize'] . '/2)px',
@@ -6244,6 +6291,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentFontSizeTablet'  => '',
 				'continueFontSizeMobile' => '',
 				'continueFontSizeTablet' => '',
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
 			);
 		}
 
@@ -6269,6 +6319,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors        = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-block-editior-addons-pricing-list-item-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['rowGap'], 'px' ),
 					'padding-left'  => self::get_css_value( $attr['columnGap'] / 2, 'px' ),
@@ -6324,6 +6377,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editior-addons-pricing-list-item-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['rowGapMobile'], 'px' ),
 					'padding-left'  => self::get_css_value( $attr['columnGapMobile'] / 2, 'px' ),
@@ -6348,6 +6404,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editior-addons-pricing-list-item-wrap' => array(
 					'margin-bottom' => self::get_css_value( $attr['rowGapTablet'], 'px' ),
 					'padding-left'  => self::get_css_value( $attr['columnGapTablet'] / 2, 'px' ),
@@ -6448,6 +6507,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'bottomPadding'             => 999, // For compatibility with v1.3.2.
 				'leftPadding'               => 999, // For compatibility with v1.3.2.
 				'rightPadding'              => 999, // For compatibility with v1.3.2.
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
 			);
 		}
 
@@ -6557,6 +6619,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				'' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
 					'text-align'       => $attr['blockAlign'],
 					'padding-top'      => self::get_css_value( $attr['blockTopPadding'], 'px!important' ),
 					'padding-bottom'   => self::get_css_value( $attr['blockBottomPadding'], 'px!important' ),
@@ -6690,6 +6753,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				'' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 					'padding-top'    => self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ) . ' !important',
 					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ) . ' !important',
 					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ) . ' !important',
@@ -6745,6 +6809,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				'' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
 					'padding-top'    => self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ) . ' !important',
 					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ) . ' !important',
 					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingTablet'], 'px' ) . ' !important',
@@ -6987,6 +7052,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'featuresFontSizeTablet'    => '',
 				'ctaFontSizeMobile'         => '',
 				'ctaFontSizeTablet'         => '',
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
 			);
 		}
 
@@ -7093,6 +7161,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'bottomPaddingTablet'      => 999, // For compatibility with v1.3.2.
 				'leftPaddingTablet'        => 999, // For compatibility with v1.3.2.
 				'rightPaddingTablet'       => 999, // For compatibility with v1.3.2.
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
 			);
 		}
 
@@ -7122,6 +7193,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				'' => array(
+					'display'          => true === $attr['hideWidget'] ? 'none' : 'block',
 					'background-color' => $updated_background_color,
 					'background-image' => $updated_background_image,
 					'color'            => $attr['customColor'],
@@ -7136,6 +7208,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .wp-block-responsive-block-editor-addons-shape-divider__svg-wrapper' => array(
 					'min-height' => $attr['shapeHeightMobile'] ? self::get_css_value( $attr['shapeHeightMobile'], 'px' ) : self::get_css_value( $attr['shapeHeight'], 'px' ),
 				),
@@ -7145,6 +7220,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .wp-block-responsive-block-editor-addons-shape-divider__svg-wrapper' => array(
 					'min-height' => $attr['shapeHeightTablet'] ? self::get_css_value( $attr['shapeHeightTablet'], 'px' ) : self::get_css_value( $attr['shapeHeight'], 'px' ),
 				),
@@ -7200,6 +7278,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundColor1'       => '#fff',
 				'backgroundColor2'       => '#fff',
 				'backgroundType'         => 'none',
+				'hideWidget'			 => false,
+				'hideWidgetMobile'		 => false,
+				'hideWidgetTablet'		 => false,
 			);
 		}
 
@@ -7218,6 +7299,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$tablet_selectors = array();
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				'.responsive-block-editor-addons-spacer' => array(
 					'height' => self::get_css_value( $attr['height'], 'px' ),
 					'margin' => '0px',
@@ -7225,12 +7309,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				'.responsive-block-editor-addons-spacer' => array(
 					'height' => self::get_css_value( $attr['heightMobile'], 'px' ),
 				),
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				'.responsive-block-editor-addons-spacer' => array(
 					'height' => self::get_css_value( $attr['heightTablet'], 'px' ),
 				),
@@ -7258,6 +7348,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'height'       => 100,
 				'heightTablet' => '',
 				'heightMobile' => '',
+				'hideWidget'			 => false,
+				'hideWidgetMobile'		 => false,
+				'hideWidgetTablet'		 => false,
 			);
 		}
 
@@ -7325,6 +7418,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidget'] ? 'none' : 'flex',
+				),
 				' .responsive-block-editor-addons-team-avatar-wrapper' => array(
 					'text-align' => $attr['alignment'],
 					'text-align' => '-webkit-' . $attr['alignment'],
@@ -7474,6 +7570,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidgetMobile'] ? 'none' : 'flex',
+				),
 				' .wp-block-responsive-block-editor-addons-team'    => array(
 					'margin-bottom' => $gutter_margin,
 				),
@@ -7509,6 +7608,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidgetTablet'] ? 'none' : 'flex',
+				),
 				' .wp-block-responsive-block-editor-addons-team'    => array(
 					'margin-bottom' => $gutter_margin,
 				),
@@ -7660,6 +7762,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconBackgroundSize'             => '',
 				'iconBorderSize'                 => '',
 				'iconBorderRadius'               => 0,
+				'hideWidget' 					 => false,
+				'hideWidgetMobile'      		 => false,
+				'hideWidgetTablet'    			 => false,
 			);
 		}
 
@@ -7706,6 +7811,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidget'] ? 'none' : 'flex',
+				),
 				' .wp-block-responsive-block-editor-addons-testimonial:last-child' => array(
 					'margin-bottom' => '0 !important',
 				),
@@ -7793,6 +7901,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			);
 			$mobile_selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial' => array(
 					'padding' => self::get_css_value( $attr['paddingMobile'], 'px' ),
 				),
@@ -7827,6 +7938,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial' => array(
 					'padding' => self::get_css_value( $attr['paddingTablet'], 'px' ),
 				),
@@ -7965,6 +8079,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'borderRadius'               => 999, // For compatibility with v1.3.2.
 				'borderColor'                => 'empty', // For compatibility with v1.3.2.
 				'secondaryBackgroundColor'   => 'empty', // For compatibility with v1.3.2.
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
 			);
 		}
 
@@ -8007,6 +8124,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' '                   => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
 					'padding' => self::get_css_value( $attr['blockPadding'], 'px' ) . ' !important',
 				),
 				' .slick-arrow svg'   => array(
@@ -8088,6 +8206,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 					'padding' => self::get_css_value( $attr['blockPaddingMobile'], 'px' ) . ' !important',
 				),
 				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content' => array(
@@ -8124,6 +8243,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
 					'padding' => self::get_css_value( $attr['blockPaddingTablet'], 'px' ) . ' !important',
 				),
 				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__content' => array(
@@ -8239,6 +8359,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' > .responsive-block-editor-addons-block-section' => array(
 					'margin-top'       => 999 !== $attr['topMargin'] && 0 === $attr['blockTopMargin'] ? self::get_css_value( $attr['topMargin'], 'px' ) : self::get_css_value( $attr['blockTopMargin'], 'px' ), // For compatibility with v1.3.2.
 					'margin-bottom'    => 999 !== $attr['bottomMargin'] && 0 === $attr['blockBottomMargin'] ? self::get_css_value( $attr['bottomMargin'], 'px' ) : self::get_css_value( $attr['blockBottomMargin'], 'px' ), // For compatibility with v1.3.2.
@@ -8308,6 +8431,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' > .responsive-block-editor-addons-block-section' => array(
 					'margin-top'     => 999 !== $attr['topMarginMobile'] && '' === $attr['blockTopMarginMobile'] ? self::get_css_value( $attr['topMarginMobile'], 'px' ) : self::get_css_value( $attr['blockTopMarginMobile'], 'px' ), // For compatibility with v1.3.2.
 					'margin-bottom'  => 999 !== $attr['bottomMarginMobile'] && '' === $attr['blockBottomMarginMobile'] ? self::get_css_value( $attr['bottomMarginMobile'], 'px' ) : self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ), // For compatibility with v1.3.2.
@@ -8329,6 +8455,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' > .responsive-block-editor-addons-block-section' => array(
 					'margin-top'     => 999 !== $attr['topMarginTablet'] && '' === $attr['blockTopMarginTablet'] ? self::get_css_value( $attr['topMarginTablet'], 'px' ) : self::get_css_value( $attr['blockTopMarginTablet'], 'px' ), // For compatibility with v1.3.2.
 					'margin-bottom'  => 999 !== $attr['bottomMarginTablet'] && '' === $attr['blockBottomMarginTablet'] ? self::get_css_value( $attr['bottomMarginTablet'], 'px' ) : self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ), // For compatibility with v1.3.2.
@@ -8517,6 +8646,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'borderColor'              => 'empty', // For compatibility with v1.3.2.
 				'borderWidth'              => 999, // For compatibility with v1.3.2.
 				'borderRadius'             => 999, // For compatibility with v1.3.2.
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
 			);
 		}
 
@@ -8555,6 +8687,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
+
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
 					'background-image' => 'empty' !== $attr['imgURL'] && '' === $attr['backgroundImage'] ? 'url(' . $attr['imgURL'] . ')' : $bg_image_with_opacity, // For compatibility with v1.3.2.
 					'background-color' => self::hex_to_rgb( $attr['vidBackgroundColor'] || '#000000', $imgopacity ),
@@ -8587,6 +8723,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
 					'max-width' => self::get_css_value( $attr['vidwidthMobile'], 'px' ),
 					'height'    => self::get_css_value( $attr['vidheightMobile'], 'px' ),
@@ -8594,6 +8733,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-video-popup__wrapper' => array(
 					'max-width' => self::get_css_value( $attr['vidwidthTablet'], 'px' ),
 					'height'    => self::get_css_value( $attr['vidheightTablet'], 'px' ),
@@ -8653,6 +8795,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hoverEffect'            => '',
 				'backgroundImage'        => '',
 				'vidBackgroundColor'     => '#000000',
+				'hideWidget'			 => false,
+				'hideWidgetMobile'		 => false,
+				'hideWidgetTablet'		 => false,
 			);
 		}
 
@@ -9408,6 +9553,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'flex',
 					'background-image'    => $updated_background_image,
 					'padding-top'         => self::get_css_value( $attr['blockTopPadding'], 'px' ) . '!important',
 					'padding-bottom'      => self::get_css_value( $attr['blockBottomPadding'], 'px' ) . '!important',
@@ -9416,7 +9562,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-top'          => self::get_css_value( $attr['blockTopMargin'], 'px' ) . '!important',
 					'margin-bottom'       => self::get_css_value( $attr['blockBottomMargin'], 'px' ) . '!important',
 					'z-index'             => $attr['zIndex'],
-					'display'             => 'flex',
 					'background-position' => $attr['backgroundPosition'],
 					'background-repeat'   => $attr['backgroundRepeat'],
 					'background-size'     => $attr['backgroundSize'],
@@ -9522,6 +9667,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'flex',
 					'padding-top'    => self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ) . '!important',
 					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ) . '!important',
 					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ) . '!important',
@@ -9557,6 +9703,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'flex',
 					'padding-top'    => self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ) . '!important',
 					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ) . '!important',
 					'padding-left'   => self::get_css_value( $attr['blockLeftPaddingTablet'], 'px' ) . '!important',
@@ -9737,6 +9884,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundColor'            => '',
 				'backgroundVideo'            => '',
 				'backgroundType'             => 'none',
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
+				'hideWidget'			   => false,
 			);
 		}
 
@@ -10179,7 +10329,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' ' => array(
-					'display' => true === $attr['hideWidget'] ? 'none' : 'inline-block',
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
 					'text-align' => $attr['noticeAlignment'],
 					'padding'    => '' . self::get_css_value( $attr['blockTopPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPadding'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPadding'], 'px' ) . ' !important',
 					'margin'     => '' . self::get_css_value( $attr['blockTopMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMargin'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMargin'], 'px' ) . ' !important',
@@ -10226,7 +10376,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				' ' => array(
-					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'inlie-block',
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 					'padding' => '' . self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPaddingMobile'], 'px' ) . ' !important',
 					'margin'  => '' . self::get_css_value( $attr['blockTopMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ) . ' !important',
 				),
@@ -10242,7 +10392,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' ' => array(
-					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'inline-block',
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
 					'padding' => '' . self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightPaddingTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftPaddingTablet'], 'px' ) . ' !important',
 					'margin'  => '' . self::get_css_value( $attr['blockTopMarginTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockRightMarginTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ) . ' ' . self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ) . ' !important',
 				),
@@ -10548,9 +10698,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconTextGapMobile'        => 3,
 				'iconTextGapTablet'        => 5,
 				'buttonAlign'              => 'left',
-				'hideWidgetTablet' => false,
-				'hideWidgetMobile' => false,
-				'hideWidget' => false,
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'	  	   => false,
 			);
 		}
 
@@ -10619,6 +10769,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-horizontal-progress-bar' => array(
 					'height'           => self::get_css_value( $attr['horizontalProgressBarSize'], 'px' ),
 					'background-color' => $attr['horizontalProgressBarBackgroundColor'],
@@ -10821,6 +10974,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-horizontal-progress-bar-top-title'   => array(
 					'font-size' => self::get_css_value( $attr['topTitleValueFontSizeMobile'], 'px' ),
 				),
@@ -10872,6 +11028,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-horizontal-progress-bar-top-title'   => array(
 					'font-size' => self::get_css_value( $attr['topTitleValueFontSizeTablet'], 'px' ),
 				),
@@ -11068,6 +11227,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'semiCircularInnerValueLetterSpacing'      => 1,
 				'semiCircularProgressBarBackgroundColor'   => '#d9d9d9',
 				'semiCircularProgressBarTrackColor'        => '#1a8cff',
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'	  	   => false,
 			);
 		}
 
@@ -11104,6 +11266,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
 					'margin-top'       => self::get_css_value( $attr['blockTopMargin'], 'px' ) . '!important',
 					'margin-bottom'    => self::get_css_value( $attr['blockBottomMargin'], 'px' ) . '!important',
 					'margin-left'      => self::get_css_value( $attr['blockLeftMargin'], 'px' ) . '!important',
@@ -11227,6 +11390,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 					'margin-top'     => self::get_css_value( $attr['blockTopMarginMobile'], 'px' ) . '!important',
 					'margin-bottom'  => self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ) . '!important',
 					'margin-left'    => self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ) . '!important',
@@ -11249,6 +11413,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
 					'margin-top'     => self::get_css_value( $attr['blockTopMarginTablet'], 'px' ) . '!important',
 					'margin-bottom'  => self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ) . '!important',
 					'margin-left'    => self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ) . '!important',
@@ -11350,6 +11515,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'opacity'                  => 100,
 				'iconColumnsMobile'        => '2',
 				'iconColumnsTablet'        => 'auto',
+				'hideWidget'			 => false,
+				'hideWidgetMobile'		 => false,
+				'hideWidgetTablet'		 => false,
 			);
 		}
 
@@ -11385,6 +11553,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$selectors          = array(
 				' '      => array(
+					'display'					=> true === $attr['hideWidget'] ? 'none' : 'flex',
 					'padding-top'               => self::get_css_value( $attr['tabsTopPadding'], 'px' ) . '!important',
 					'padding-bottom'            => self::get_css_value( $attr['tabsBottomPadding'], 'px' ) . '!important',
 					'padding-left'              => self::get_css_value( $attr['tabsLeftPadding'], 'px' ) . '!important',
@@ -11476,6 +11645,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$mobile_selectors   = array(
 				' ' => array(
+					'display'		 => true === $attr['hideWidgetMobile'] ? 'none' : 'flex',
 					'padding-top'    => self::get_css_value( $attr['tabsTopPaddingMobile'], 'px' ) . '!important',
 					'padding-bottom' => self::get_css_value( $attr['tabsBottomPaddingMobile'], 'px' ) . '!important',
 					'padding-left'   => self::get_css_value( $attr['tabsLeftPaddingMobile'], 'px' ) . '!important',
@@ -11494,6 +11664,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$tablet_selectors   = array(
 				' ' => array(
+					'display'		 => true === $attr['hideWidgetTablet'] ? 'none' : 'flex',
 					'padding-top'    => self::get_css_value( $attr['tabsTopPaddingTablet'], 'px' ) . '!important',
 					'padding-bottom' => self::get_css_value( $attr['tabsBottomPaddingTablet'], 'px' ) . '!important',
 					'padding-left'   => self::get_css_value( $attr['tabsLeftPaddingTablet'], 'px' ) . '!important',
@@ -11610,6 +11781,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowSpread'          => 0,
 				'boxShadowColor'           => '#000',
 				'alignTabsVertical'        => 'left',
+				'hideWidget'			   => false,
+				'hideWidgetMobile'		   => false,
+				'hideWidgetTablet'		   => false,
 			);
 		}
 
@@ -11674,6 +11848,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$box_shadow = self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css;
 
 			$selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-block-grid'      => array(
 					'display'               => 'grid',
 					'grid-template-columns' => 'repeat(' . $attr['columns'] . ', 1fr)',
@@ -11734,6 +11911,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$mobile_selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-block-grid'      => array(
 					'display'               => 'grid',
 					'grid-template-columns' => 'repeat(' . $attr['columnsMobile'] . ', 1fr)',
@@ -11760,6 +11940,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' '      => array(
+					'display'				=> true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-block-grid'      => array(
 					'display'               => 'grid',
 					'grid-template-columns' => 'repeat(' . $attr['columnsTablet'] . ', 1fr)',
@@ -11884,6 +12067,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'separatorStyle'         => 'solid',
 				'separatorColor'         => '#b2b4b5',
 				'separatorWidth'         => 1,
+				'hideWidget'			 => false,
+				'hideWidgetMobile'		 => false,
+				'hideWidgetTablet'		 => false,
 			);
 		}
 
@@ -11948,6 +12134,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' ' => array(
+					'display' 		=> true === $attr['hideWidget'] ? 'none' : 'block',
 					'width'         => $width,
 					'border-radius' => $border_radius,
 					'padding'       => '0 !important',
@@ -12028,6 +12215,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$mobile_selectors = array(
+				' ' => array(
+					'display' 	=> true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-search-form__input' => array(
 					'font-size' => self::get_css_value( $attr['inputFontSizeMobile'], 'px' ),
 					'padding'   => $input_box_padding_mobile,
@@ -12045,6 +12235,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
+				' ' => array(
+					'display' 	=> true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-search-form__input' => array(
 					'font-size' => self::get_css_value( $attr['inputFontSizeTablet'], 'px' ),
 					'padding'   => $input_box_padding_tablet,
@@ -12129,6 +12322,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonFontSizeTablet'       => 16,
 				'buttonFontWeight'           => '100',
 				'buttonLineHeight'           => 1,
+				'hideWidget'			     => false,
+				'hideWidgetMobile'		     => false,
+				'hideWidgetTablet'		     => false,
 			);
 		}
 
@@ -12148,6 +12344,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
 					'padding-top'    => self::get_css_value( $attr['instaTopPadding'], 'px' ) . '!important',
 					'padding-bottom' => self::get_css_value( $attr['instaBottomPadding'], 'px' ) . '!important',
 					'padding-left'   => self::get_css_value( $attr['instaLeftPadding'], 'px' ) . '!important',
@@ -12178,6 +12375,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 					'padding-top'    => self::get_css_value( $attr['instaTopPaddingMobile'], 'px' ) . '!important',
 					'padding-bottom' => self::get_css_value( $attr['instaBottomPaddingMobile'], 'px' ) . '!important',
 					'padding-left'   => self::get_css_value( $attr['instaLeftPaddingMobile'], 'px' ) . '!important',
@@ -12194,6 +12392,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
 					'padding-top'    => self::get_css_value( $attr['instaTopPaddingTablet'], 'px' ) . '!important',
 					'padding-bottom' => self::get_css_value( $attr['instaBottomPaddingTablet'], 'px' ) . '!important',
 					'padding-left'   => self::get_css_value( $attr['instaLeftPaddingTablet'], 'px' ) . '!important',
@@ -12265,6 +12464,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'instaLeftMarginTablet'    => '',
 				'gridSize'                 => 700,
 				'imagesGap'                => 0,
+				'hideWidgetTablet'        => false,
+				'hideWidgetMobile'        => false,
+				'hideWidget' 			  => false,
 			);
 		}
 
@@ -13071,6 +13273,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$opacity = $attr['overlayOpacity'] / 100;
 
 			$selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-portfolio-items' => array(
 					'grid-column-gap' => self::get_css_value( $column_gap, 'px' ),
 					'grid-row-gap'    => self::get_css_value( $row_gap, 'px' ),
@@ -13122,9 +13327,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			);
 
-			$mobile_selectors = array();
+			$mobile_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
+			);
 
-			$tablet_selectors = array();
+			$tablet_selectors = array(
+				' ' => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -13194,6 +13407,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockBorderStyle'         => 'none',
 				'blockBorderColor'         => '#333',
 				'taxonomyType'             => 'category',
+				'hideWidgetTablet' 			=> false,
+				'hideWidgetMobile' 			=> false,
+				'hideWidget' 				=> false,
 			);
 		}
 
@@ -14571,7 +14787,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			[$desktop, $tablet, $mobile] = array_values($popupScreenPositions);
 
 			$selectors        = array(
-				''                                                                            => array(),
+				''                                                                            => array(
+					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-popup-trigger-wrap'                         => array(
 				    'justify-content' => $attr['popupTriggerAlign'],
 				),
@@ -14648,7 +14866,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
-				''                                                      => array(),
+				''                                                      => array(
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-popup-trigger-wrap'   => array(
 					'justify-content' => $attr['popupTriggerAlignMobile'],
 				),
@@ -14680,7 +14900,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
-				''                                                      => array(),
+				''                                                      => array(
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+				),
 				' .responsive-block-editor-addons-popup-trigger-wrap'   => array(
 					'justify-content' => $attr['popupTriggerAlignTablet'],
 				),
@@ -14826,6 +15048,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'popupButtonPaddingRight'             => 32,
 				'popupButtonPaddingRightTablet'       => 32,
 				'popupButtonPaddingRightMobile'       => 32,
+				'hideWidgetTablet'        => false,
+				'hideWidgetMobile'        => false,
+				'hideWidget' 			  => false,
 			);
 		}
 

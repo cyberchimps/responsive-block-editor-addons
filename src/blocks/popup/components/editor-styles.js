@@ -90,6 +90,9 @@ function EditorStyles(props) {
     popupImageTriggerWidthMobile,
     popupImageTriggerBorderRadius,
     block_id,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   const popupScreenPositions = {
@@ -232,7 +235,7 @@ function EditorStyles(props) {
 
   var selectors = {
     "": {
-
+      "opacity": hideWidget? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlign,
@@ -306,7 +309,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-
+      "opacity": hideWidgetMobile? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignMobile,
@@ -337,7 +340,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-
+      "opacity": hideWidgetTablet? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignTablet,

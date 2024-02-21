@@ -20,6 +20,7 @@ export default class Buttons extends Component {
     // Setup the attributes
     const {
       attributes: {
+        block_id,
         buttonAlignment,
         buttonAlignmentTablet,
         buttonAlignmentMobile,
@@ -35,7 +36,8 @@ export default class Buttons extends Component {
           buttonAlignment,
           `tabletAlign${buttonAlignmentTablet}`,
           `mobileAlign${buttonAlignmentMobile}`,
-          "responsive-block-editor-addons-block-button",
+          "responsive-block-editor-addons-block-buttons",
+          `block-${block_id}`,
           "responsive-block-editor-addons-buttons__outer-wrap",
           `responsive-block-editor-addons-buttons-stack-${stack}`
         )}

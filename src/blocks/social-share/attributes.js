@@ -246,7 +246,19 @@ const attributes = {
   currentColumnTab: {
     type: "string",
     default: "desktop",
-  }
+  },
+	hideWidget: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetTablet: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetMobile: {
+	  type: "boolean",
+	  default: false,
+	},
 };
 
 export default attributes;

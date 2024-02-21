@@ -32,6 +32,9 @@ function EditorStyles(props) {
     mobileContentPadding, 
     contentPaddingTablet,
     layout,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
 
@@ -60,6 +63,9 @@ function EditorStyles(props) {
   let opacity = overlayOpacity / 100;
 
   var selectors = {
+    "": {
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-portfolio-items": {
         "grid-column-gap": generateCSSUnit(varcolumnGap, "px"),
         "grid-row-gap": generateCSSUnit(varrowGap, "px"),
@@ -112,10 +118,16 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    "": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
   };
 
   var tablet_selectors = {
-     };
+    "": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-portfolio.block-id-${block_id}`;
