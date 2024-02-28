@@ -534,6 +534,42 @@ const attributes = {
   bodyBorderRadius: {
     type: "number",
   },
+  bodyBorderTopLeftRadiusMobile: {
+    type: "number",
+  },
+bodyBorderTopRightRadiusMobile: {
+  type: "number",
+},
+bodyBorderBottomLeftRadiusMobile: {
+  type: "number",
+},
+bodyBorderBottomRightRadiusMobile: {
+  type: "number",
+},
+bodyBorderTopLeftRadiusTablet: {
+  type: "number",
+},
+bodyBorderTopRightRadiusTablet: {
+  type: "number",
+},
+bodyBorderBottomLeftRadiusTablet: {
+  type: "number",
+},
+bodyBorderBottomRightRadiusTablet: {
+  type: "number",
+},
+bodyBorderTopLeftRadius: {
+  type: "number",
+},
+bodyBorderTopRightRadius: {
+  type: "number",
+},
+bodyBorderBottomLeftRadius: {
+  type: "number",
+},
+bodyBorderBottomRightRadius: {
+  type: "number",
+},
   bodyBorderColor: {
     type: "string",
   },

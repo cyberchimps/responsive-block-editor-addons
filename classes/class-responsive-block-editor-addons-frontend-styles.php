@@ -9288,8 +9288,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'     => self::get_css_value( $attr['headingRightMargin'], 'px' ) . '!important',
 					'border-style'     => $attr['headingBorderStyle'],
 					'border-color'     => $attr['headingBorderColor'],
-					'border-top-left-radius' => self::get_css_value( $attr['blockBorderBottomLeftRadius'], 'px' ) . ' !important',
-					'border-top-right-radius' => self::get_css_value( $attr['blockBorderBottomRightRadius'], 'px' ) . ' !important',
+					// 'border-top-left-radius' => self::get_css_value( $attr['blockBorderBottomLeftRadius'], 'px' ) . ' !important',
+					// 'border-top-right-radius' => self::get_css_value( $attr['blockBorderBottomRightRadius'], 'px' ) . ' !important',
 					'border-radius'    => self::get_css_value( $attr['headingBorderRadius'], 'px' ),
 					// 'border-width'     => self::get_css_value( $attr['headingBorderWidth'], 'px' ),
 					//Border Radius
@@ -9323,22 +9323,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'        => self::get_css_value( $attr['contentRightMargin'], 'px' ) . '!important',
 					'border-style'        => $attr['bodyBorderStyle'],
 					'border-color'        => $attr['bodyBorderColor'],
-					'border-radius'       => self::get_css_value( $attr['bodyBorderRadius'], 'px' ) . ' !important',
+					'border-radius'       => self::get_css_value( $attr['bodyBorderRadius'], 'px' ),
 					'border-top-width'    => self::get_css_value( 0, 'px' ),
 					'border-left-width'   => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
 					'border-right-width'  => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
 					'border-bottom-width' => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
+
+					// Border Width
+					'border-top-width'    => self::get_css_value( $attr['bodyBorderTopWidth'], 'px' ),
+					'border-left-width'   => self::get_css_value( $attr['bodyBorderLeftWidth'], 'px' ),
+					'border-right-width'  => self::get_css_value( $attr['bodyBorderRightWidth'], 'px' ),
+					'border-bottom-width' => self::get_css_value( $attr['bodyBorderBottomWidth'], 'px' ),
 
 					//Border Radius
 					'border-top-left-radius' => self::get_css_value( $attr['bodyBorderTopLeftRadius'], 'px' ) . ' !important',
 					'border-top-right-radius' => self::get_css_value( $attr['bodyBorderTopRightRadius'], 'px' ) . ' !important',
 					'border-bottom-left-radius' => self::get_css_value( $attr['bodyBorderBottomLeftRadius'], 'px' ) . ' !important',
 					'border-bottom-right-radius' => self::get_css_value( $attr['bodyBorderBottomRightRadius'], 'px' ) . ' !important',
-					// Border Width
-					'border-top-width'    => self::get_css_value( $attr['bodyBorderTopWidth'], 'px' ),
-					'border-left-width'   => self::get_css_value( $attr['bodyBorderLeftWidth'], 'px' ),
-					'border-right-width'  => self::get_css_value( $attr['bodyBorderRightWidth'], 'px' ),
-					'border-bottom-width' => self::get_css_value( $attr['bodyBorderBottomWidth'], 'px' ),
 				),
 				' .responsive-block-editor-addons_table-of-contents-placeholder' => array(
 					'font-family'         => $attr['contentFontFamily'],
