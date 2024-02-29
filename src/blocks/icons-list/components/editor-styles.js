@@ -8,6 +8,8 @@ import generateCSSUnit from "../../../generateCSSUnit";
 function EditorStyles(props) {
   const {
     align,
+    alignTablet,
+    alignMobile,
     gap,
     inner_gap,
     size,
@@ -87,6 +89,8 @@ function EditorStyles(props) {
     },
   };
 
+  var alignment =
+  alignMobile == "left" ? "flex-start" : align == "right" ? "flex-end" : "center";
   var mobile_selectors = {
 	" .responsive-block-editor-addons-icon-list__source-icon": {
 		"width": sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
@@ -102,7 +106,18 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-icon-list__source-wrap": {
       padding: bgSizeMobile ? generateCSSUnit(bgSizeMobile, "px") : generateCSSUnit(bgSize, "px"),
     },
+    ".responsive-block-editor-addons-icon-list__layout-horizontal .block-editor-block-list__layout ": {
+      "justify-content": alignment,
+      "-webkit-box-pack": alignment,
+      "-ms-flex-pack": alignment,
+    },
+    " .responsive-block-editor-addons-icon-list__wrap .block-editor-inner-blocks": {
+      "text-align": alignMobile,
+    },
   };
+
+  var alignment =
+  alignTablet == "left" ? "flex-start" : align == "right" ? "flex-end" : "center";
 
   var tablet_selectors = {
 	" .responsive-block-editor-addons-icon-list__source-icon": {
@@ -118,6 +133,14 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-icon-list__source-wrap": {
 	  padding: bgSizeTablet ? generateCSSUnit(bgSizeTablet, "px") : generateCSSUnit(bgSize, "px"),
+    },
+    ".responsive-block-editor-addons-icon-list__layout-horizontal .block-editor-block-list__layout ": {
+      "justify-content": alignment,
+      "-webkit-box-pack": alignment,
+      "-ms-flex-pack": alignment,
+    },
+    " .responsive-block-editor-addons-icon-list__wrap .block-editor-inner-blocks": {
+      "text-align": alignTablet,
     },
   };
 

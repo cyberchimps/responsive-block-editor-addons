@@ -27,6 +27,14 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  alignTablet: {
+    type: "string",
+    default: "left",
+  },
+  alignMobile: {
+    type: "string",
+    default: "left",
+  },
   icon_count: {
     type: "number",
     default: ITEM_COUNT,
