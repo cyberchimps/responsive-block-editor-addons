@@ -5,6 +5,9 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
+import renderSVG from "../../../renderIcon";
+import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 
 /**
  * Inspector Controls
@@ -38,6 +41,8 @@ const {
   BaseControl,
   PanelRow,
 } = wp.components;
+
+let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
 /**
  * Create an Inspector Controls wrapper Component
@@ -237,6 +242,11 @@ export default class Inspector extends Component {
         allowedAnchors,
         smoothScroll,
         scrollOffset,
+        icon,
+        icon_color,
+        size,
+        sizeTablet,
+        sizeMobile,
       },
       setAttributes,
     } = this.props;
@@ -445,6 +455,131 @@ export default class Inspector extends Component {
                   { value: "footer", label: __("Footer", "responsive-block-editor-addons") },
                 ]}
               />
+              <Fragment>
+                <p className="components-base-control__label">
+                  {__("Icon", "responsive-block-editor-addons")}
+                </p>
+                <FontIconPicker
+                  icons={svg_icons}
+                  renderFunc={renderSVG}
+                  theme="default"
+                  value={icon}
+                  onChange={(value) => setAttributes({ icon: value })}
+                  // isMulti={false}
+                  noSelectedPlaceholder={__(
+                    "Select Icon",
+                    "responsive-block-editor-addons"
+                  )}
+                />
+                <hr className="responsive-block-editor-addons-editor__separator" />
+              </Fragment>
+              <p className="responsive-block-editor-addons-setting-label">
+                {__("Icon Color", "responsive-block-editor-addons")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{ backgroundColor: icon_color }}
+                  ></span>
+                </span>
+              </p>
+              <ColorPalette
+                value={icon_color}
+                onChange={(value) => setAttributes({ icon_color: value })}
+                allowReset
+              />
+              <hr className="responsive-block-editor-addons-editor__separator" />
+            <TabPanel
+              className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    " responsive-desktop-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className:
+                    " responsive-tablet-tab  responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className:
+                    " responsive-mobile-tab  responsive-responsive-tabs",
+                },
+              ]}
+            >
+                {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Icon Size Mobile",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={sizeMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                sizeMobile: value !== undefined ? value : 20,
+                              })
+                            }
+                            min={0}
+                            max={500}
+                            allowReset
+                          />
+                        </Fragment>
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Icon Size Tablet",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={sizeTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                sizeTablet: value !== undefined ? value : 20,
+                              })
+                            }
+                            min={0}
+                            max={500}
+                            allowReset
+                          />
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Icon Size",
+                              "responsive-block-editor-addons"
+                            )}
+                            value={size}
+                            onChange={(value) =>
+                              setAttributes({
+                                size: value !== undefined ? value : 20,
+                              })
+                            }
+                            min={0}
+                            max={500}
+                            allowReset
+                          />
+                        </Fragment>
+                      );
+                    }
+
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
             </PanelBody>
             <PanelBody title={__("Smooth Scroll", "responsive-block-editor-addons")} initialOpen={false}>
               <ToggleControl
@@ -461,6 +596,23 @@ export default class Inspector extends Component {
                   onChange={(scrollOffset) => setAttributes({ scrollOffset })}
                 />
               )}
+            </PanelBody>
+            <PanelBody
+              title={__("Collapsible", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__(
+                  "Collapsible Content",
+                  "responsive-block-editor-addons"
+                )}
+                checked={isCollapsible}
+                onChange={() =>
+                  this.props.setAttributes({
+                    isCollapsible: !isCollapsible,
+                  })
+                }
+              />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
@@ -1102,23 +1254,6 @@ export default class Inspector extends Component {
                   </Fragment>
                 )}
               </PanelBody>
-            </PanelBody>
-            <PanelBody
-              title={__("Collapsible", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Collapsible Content",
-                  "responsive-block-editor-addons"
-                )}
-                checked={isCollapsible}
-                onChange={() =>
-                  this.props.setAttributes({
-                    isCollapsible: !isCollapsible,
-                  })
-                }
-              />
             </PanelBody>
             <PanelBody
               title={__("Background", "responsive-block-editor-addons")}

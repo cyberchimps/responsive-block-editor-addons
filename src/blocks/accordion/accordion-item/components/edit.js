@@ -132,7 +132,7 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
           <InspectorTabs hasContent={false}>
             <InspectorTab key={"style"}>
               <PanelBody
-                title={__("Style", "responsive-block-editor-addons")}
+                title={__("Box Shadow", "responsive-block-editor-addons")}
                 initialOpen={false}
                 className="responsive_block_editor_addons__url-panel-body"
               >
@@ -141,20 +141,6 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
                     "For the styling options please select the Parent Block."
                   )}
                 </p>
-                <hr className="responsive-block-editor-addons-editor__separator" />
-                <h2>{__("Border", "responsive-block-editor-addons")}</h2>
-                <BlockBorderHelperControl
-                  attrNameTemplate="block%s"
-                  values={{
-                    radius: blockBorderRadius,
-                    style: blockBorderStyle,
-                    width: blockBorderWidth,
-                    color: blockBorderColor,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-
                 <BoxShadowControl
                   setAttributes={setAttributes}
                   label={__("Box Shadow", "responsive-block-editor-addons")}
@@ -176,34 +162,6 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
                     value: boxShadowPosition,
                     label: __("Position", "responsive-block-editor-addons"),
                   }}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Spacing", "responsive-block-editor-addons")}
-                initialOpen={false}
-                className="responsive_block_editor_addons__url-panel-body"
-              >
-                <ResponsiveSpacingControl
-                  title={"Title Padding"}
-                  attrNameTemplate="titlePadding%s"
-                  values={{
-                    desktop: titlePadding,
-                    tablet: titlePaddingTablet,
-                    mobile: titlePaddingMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={"Content Padding"}
-                  attrNameTemplate="contentPadding%s"
-                  values={{
-                    desktop: contentPadding,
-                    tablet: contentPaddingTablet,
-                    mobile: contentPaddingMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
                 />
               </PanelBody>
             </InspectorTab>

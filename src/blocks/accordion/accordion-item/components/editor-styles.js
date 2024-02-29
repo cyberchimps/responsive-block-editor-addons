@@ -59,10 +59,6 @@ function EditorStyles(props) {
         generateCSSUnit(boxShadowSpread, "px") +
         " " +
         boxShadowColor,
-      "border-color": borderColor !== "empty" && blockBorderColor === "black" ? borderColor : blockBorderColor,//For compatibility with v1.3.2
-      "border-style": borderStyle !== "empty" && blockBorderStyle === "solid" ? borderStyle : blockBorderStyle,//For compatibility with v1.3.2
-      "border-width": borderWidth !== 999 && blockBorderWidth === 1 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"),//For compatibility with v1.3.2
-      "border-radius": borderRadius !== 999 && blockBorderRadius === 2 ? generateCSSUnit(borderRadius, "px") : generateCSSUnit(blockBorderRadius, "px"),//For compatibility with v1.3.2
       "overflow": "hidden",
     },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
@@ -84,7 +80,6 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-accordion-content span": {
       margin: "0",
-      padding: generateCSSUnit(contentPadding, "px"),
     },
   };
 
@@ -93,7 +88,6 @@ function EditorStyles(props) {
       padding: generateCSSUnit(titlePaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-accordion-content span": {
-      padding: generateCSSUnit(contentPaddingTablet, "px"),
     },
   };
 
@@ -102,7 +96,6 @@ function EditorStyles(props) {
       padding: generateCSSUnit(titlePaddingMobile, "px"),
     },
     " .responsive-block-editor-addons-accordion-content span": {
-      padding: generateCSSUnit(contentPaddingMobile, "px"),
     },
   };
 

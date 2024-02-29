@@ -468,6 +468,20 @@ const attributes = {
       type: 'number',
       default: 30
   },
+  icon_color: {
+    type: "string",
+    default: "#3a3a3a",
+  },
+  size: {
+    type: "number",
+    default: 16,
+  },
+  sizeMobile: {
+    type: "number",
+  },
+  sizeTablet:{
+    type: "number",
+  },
 };
 
 export default attributes;
