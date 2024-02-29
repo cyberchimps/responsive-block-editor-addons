@@ -242,7 +242,6 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(headingRightMargin, "px"),
       "border-color": headingBorderColor,
       "border-style": headingBorderStyle,
-      // "border-width": generateCSSUnit(headingBorderWidth, "px"),
       //Border Width
       "border-top-width": generateCSSUnit(headingBorderTopWidth, "px"),
       "border-left-width": generateCSSUnit(headingBorderLeftWidth, "px"),
@@ -253,7 +252,6 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(headingBorderTopRightRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(headingBorderBottomLeftRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(headingBorderBottomRightRadius, "px"),
-      // "border-radius": generateCSSUnit(headingBorderRadius, "px"),
     },
     " .responsive-block-editor-addons-toc__title-wrap:hover": {
       color: headingColorHover,
@@ -320,18 +318,6 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-toc__wrap": {
       "width": generateCSSUnit(blockWidth, "%"),
-      // "border-color": blockBorderColor,
-      // "border-style": blockBorderStyle,
-      //Border Width
-      // "border-top-width": generateCSSUnit(blockBorderTopWidth, "px"),
-      // "border-left-width": generateCSSUnit(blockBorderLeftWidth, "px"),
-      // "border-right-width": generateCSSUnit(blockBorderRightWidth, "px"),
-      // "border-bottom-width": generateCSSUnit(blockBorderBottomWidth, "px"),
-      //border-radius
-      // "border-top-left-radius": generateCSSUnit(blockBorderTopLeftRadius, "px"),
-      // "border-top-right-radius": generateCSSUnit(blockBorderTopRightRadius, "px"),
-      // "border-bottom-left-radius": generateCSSUnit(blockBorderBottomLeftRadius, "px"),
-      // "border-bottom-right-radius": generateCSSUnit(blockBorderBottomRightRadius, "px"),
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
       "padding-left": generateCSSUnit(blockLeftPadding, "px"),
@@ -367,15 +353,6 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
-      // "border-top-width": generateCSSUnit(blockBorderTopWidthMobile, "px"),
-      // "border-left-width": generateCSSUnit(blockBorderLeftWidthMobile, "px"),
-      // "border-right-width": generateCSSUnit(blockBorderRightWidthMobile, "px"),
-      // "border-bottom-width": generateCSSUnit(blockBorderBottomWidthMobile, "px"),
-      //Border Radius
-      // "border-top-left-radius": generateCSSUnit(blockBorderTopLeftRadiusMobile, "px"),
-      // "border-top-right-radius": generateCSSUnit(blockBorderTopRightRadiusMobile, "px"),
-      // "border-bottom-left-radius": generateCSSUnit(blockBorderBottomLeftRadiusMobile, "px"),
-      // "border-bottom-right-radius": generateCSSUnit(blockBorderBottomRightRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-toc__title-wrap": {
       "font-size": generateCSSUnit(headingFontSizeMobile, "px"),
@@ -440,15 +417,6 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
       "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
-      // "border-top-width": generateCSSUnit(blockBorderTopWidthTablet, "px"),
-      // "border-left-width": generateCSSUnit(blockBorderLeftWidthTablet, "px"),
-      // "border-right-width": generateCSSUnit(blockBorderRightWidthTablet, "px"),
-      // "border-bottom-width": generateCSSUnit(blockBorderBottomWidthTablet, "px"),
-      //Border Radius
-      // "border-top-left-radius": generateCSSUnit(blockBorderTopLeftRadiusTablet, "px"),
-      // "border-top-right-radius": generateCSSUnit(blockBorderTopRightRadiusTablet, "px"),
-      // "border-bottom-left-radius": generateCSSUnit(blockBorderBottomLeftRadiusTablet, "px"),
-      // "border-bottom-right-radius": generateCSSUnit(blockBorderBottomRightRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-toc__title-wrap": {
       "font-size": generateCSSUnit(headingFontSizeTablet, "px"),
