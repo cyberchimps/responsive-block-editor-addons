@@ -95,6 +95,8 @@ export default class Inspector extends Component {
         // advanced panel
         blockOpacity,
         zIndex,
+        zIndexTablet,
+        zIndexMobile,
         blockTag,
         containerWidth,
         containerWidthTablet,
@@ -731,13 +733,6 @@ export default class Inspector extends Component {
                 min={0}
                 max={100}
               />
-              <RangeControl
-                label={__("Z-Index", "responsive-block-editor-addons")}
-                value={zIndex}
-                onChange={(value) => setAttributes({ zIndex: value })}
-                min={0}
-                max={1000}
-              />
             </PanelBody>
             <PanelBody
               title={__("Block Spacing", "responsive-block-editor-addons")}
@@ -864,6 +859,85 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
               </PanelBody>
+            </PanelBody>
+            <PanelBody
+              title={__("Z Index", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index (Mobile)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={zIndexMobile}
+                        onChange={(value) =>
+                          setAttributes({ zIndexMobile: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index (Tablet)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={zIndexTablet}
+                        onChange={(value) =>
+                          setAttributes({ zIndexTablet: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index ", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={zIndex}
+                        onChange={(value) =>
+                          setAttributes({ zIndex: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    }
+
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
             </PanelBody>
           </InspectorTab>
         </InspectorTabs>

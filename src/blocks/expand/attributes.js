@@ -145,5 +145,14 @@
     type: "boolean",
     default: false,
   },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
 };
 export default attributes;

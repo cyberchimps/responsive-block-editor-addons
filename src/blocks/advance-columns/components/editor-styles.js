@@ -75,6 +75,8 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    z_indexMobile,
+    z_indexTablet,
     align,
 	backgroundPosition, // For compatibility with v1.3.2.
 	backgroundRepeat, // For compatibility with v1.3.2.
@@ -218,6 +220,7 @@ function EditorStyles(props) {
       "padding-right": rightPaddingMobile !== 999 && boxRightPaddingMobile === "" ? generateCSSUnit(rightPaddingMobile, "px") : generateCSSUnit(boxRightPaddingMobile, "px"), // For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(topMarginMobile, "px"),
       "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
+      "z-index": z_indexMobile,
     },
   };
 
@@ -232,6 +235,7 @@ function EditorStyles(props) {
       "padding-right": rightPaddingTablet !== 999 && boxRightPaddingTablet === "" ? generateCSSUnit(rightPaddingTablet, "px") : generateCSSUnit(boxRightPaddingTablet, "px"), // For compatibility with v1.3.2.
       "margin-top": generateCSSUnit(topMarginTablet, "px"),
       "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
+      "z-index": z_indexTablet,
     },
   };
 

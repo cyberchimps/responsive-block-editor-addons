@@ -352,6 +352,18 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'z_index'         => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'z_indexMobile'    => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'z_indexTablet'   => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_taxonomy_list',
 		)

@@ -256,6 +256,12 @@ const attributes = {
   zIndex: {
     type: "number",
   },
+  zIndexTablet: {
+    type: "number",
+  },
+  zIndexMobile: {
+    type: "number",
+  },
   containerWidth: {
     type: "number",
   },
@@ -348,6 +354,9 @@ const attributes = {
   hideWidgetMobile: {
   type: "boolean",
   default: false,
+  },
+  blockPosition: {
+    type: "string",
   },
 };
 

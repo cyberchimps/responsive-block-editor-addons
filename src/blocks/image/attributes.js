@@ -407,6 +407,15 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
   hideWidget: {
     type: "boolean",
     default: false,
