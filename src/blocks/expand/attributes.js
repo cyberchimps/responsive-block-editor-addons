@@ -133,5 +133,14 @@
   linkFontSizeTablet: {
 	type: "number",
   },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
 };
 export default attributes;
