@@ -263,6 +263,14 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
       type: "number",
       default: 1,
     },
+    z_indexTablet: {
+      type: "number",
+      default: 1,
+    },
+    z_indexMobile: {
+      type: "number",
+      default: 1,
+    },
 	backgroundPosition: {
 	  type: "string",
 	  default: "empty",
