@@ -12,5 +12,17 @@ const attributes = {
   heightMobile: {
     type: "number",
   },
+  z_index: {
+    type: "number",
+    default: 1,
+  },
+  z_indexTablet: {
+    type: "number",
+    default: 1,
+  },
+  z_indexMobile: {
+    type: "number",
+    default: 1,
+  },
 };
 export default attributes;
