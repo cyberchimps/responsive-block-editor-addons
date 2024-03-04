@@ -26,7 +26,7 @@ const {
   SelectControl,
   BaseControl,
   Button,
-  ToggleControl
+  ToggleControl,
   TabPanel,
   Dashicon,
 } = wp.components;
