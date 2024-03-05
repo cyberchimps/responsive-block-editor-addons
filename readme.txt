@@ -108,7 +108,7 @@ Check out our customizable, feature rich WordPress blocks that'll help you desig
 **Social Blocks**
 
 - [Instagram Feed](https://cyberchimps.com/blocks/instagram-feed/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): This block allows you to stream Instagram content directly to your WordPress website, thus increasing your odds of getting new followers and clients.
-- [Social Share](https://cyberchimps.com/blocks/social-share/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Social share block allows you to add modern social media icons for all popular networks and link them to your brand or personal accounts.
+- [Social Icons](https://cyberchimps.com/blocks/social-share/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Social icons block allows you to add modern social media icons for all popular networks and link them to your brand or personal accounts.
 
 **Timeline Blocks**
 

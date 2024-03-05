@@ -75,7 +75,7 @@ export default class Edit extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     var element = document.getElementById(
-      "responsive-block-editor-addons-social-share-style-" + this.props.clientId
+      "responsive-block-editor-addons-social-icons-style-" + this.props.clientId
     );
 
     if (null !== element && undefined !== element) {
@@ -92,7 +92,7 @@ export default class Edit extends Component {
     const $style = document.createElement("style");
     $style.setAttribute(
       "id",
-      "responsive-block-editor-addons-social-share-style-" + this.props.clientId
+      "responsive-block-editor-addons-social-icons-style-" + this.props.clientId
     );
     document.head.appendChild($style);
   }
@@ -114,13 +114,13 @@ export default class Edit extends Component {
     } = this.props;
 
     return [
-      <style id={`responsive-block-editor-addons-social-share-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <style id={`responsive-block-editor-addons-social-icons-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
       <Fragment key={`fragment-socail-share-${block_id}`} >
         <div key={`socail-share-${block_id}`}
           className={classnames(
             this.props.className,
-            "responsive-block-editor-addons-block-social-share",
+            "responsive-block-editor-addons-block-social-icons",
             `block-${block_id}`
           )}
         >
@@ -128,11 +128,11 @@ export default class Edit extends Component {
           <div
             className={`responsive-block-editior-addons-share-icons-align-${iconsAlign}`}
           >
-            <ul className="rbea-icons-wrapper responsive-block-editor-addons-share-icons-container">
+            <ul className="rbea-icons-wrapper responsive-block-editor-addons-social-icons-container">
               {socialMediaIcons.map((icon, index) => (
                 <li
                   key={index}
-                  className="responsive-block-editor-addons-share-icon"
+                  className="responsive-block-editor-addons-social-icon"
                 >
                   {(viewOption === "icon" || viewOption === "icontext") && (
                     <a
@@ -150,10 +150,10 @@ export default class Edit extends Component {
                         });
                       }}
                     >
-                      <div className="rbea-social-icon responsive-block-editor-addons-share-icon-svg-container">
+                      <div className="rbea-social-icon responsive-block-editor-addons-social-icon-svg-container">
                         <span
                           className={classnames(
-                            "rbea-social-icon responsive-block-editor-addons-share-icon-svg",
+                            "rbea-social-icon responsive-block-editor-addons-social-icon-svg",
                             iconColorType === "official"
                               ? `responsive-block-editor-addons-icon-${icon.icon}`
                               : ""
@@ -182,7 +182,7 @@ export default class Edit extends Component {
                         }}
                       >
                         <div
-                          className="responsive-block-editor-addons-share-icon-label"
+                          className="responsive-block-editor-addons-social-icon-label"
                           contentEditable="true"
                           suppressContentEditableWarning={true}
                           onBlur={(e) =>
@@ -201,9 +201,9 @@ export default class Edit extends Component {
                     <Fragment>
                       <Popover
                         position="bottom center"
-                        className="responsive-block-editor-addons-share-icon-modal-container"
+                        className="responsive-block-editor-addons-social-icon-modal-container"
                       >
-                        <div className="responsive-block-editor-addons-share-icon-modal">
+                        <div className="responsive-block-editor-addons-social-icon-modal">
                           <p className="components-base-control__label">
                             {__("Icon", "responsive-block-editor-addons")}
                           </p>

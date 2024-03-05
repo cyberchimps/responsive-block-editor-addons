@@ -120,7 +120,7 @@ function EditorStyles(props) {
         "min-width": 'fit-content',
         "max-width": '100%',
     },
-    " .responsive-block-editor-addons-share-icon": {
+    " .responsive-block-editor-addons-social-icon": {
       "border-radius": iconShapeRadius,
       fill: iconColorType === "custom" ? iconPrimaryColor : "",
       "background-color":
@@ -137,19 +137,19 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(iconContainerSize, "px"),
       width: "fit-content"
     },
-    " .responsive-block-editor-addons-share-icon > a:first-child": {
+    " .responsive-block-editor-addons-social-icon > a:first-child": {
       padding: skin === "boxed" || skin === "minimal" ? "0 10px 0 10px" : "",
       "background-color":
         (skin === "boxed" || skin === "minimal") && iconSecondaryColor,
     },
-    " .responsive-block-editor-addons-share-icon > a:last-child": {
+    " .responsive-block-editor-addons-social-icon > a:last-child": {
       padding: (skin === "boxed" || skin === "minimal") && "0 10px 0 0",
     },
-    " .responsive-block-editor-addons-share-icon-svg svg": {
+    " .responsive-block-editor-addons-social-icon-svg svg": {
       height: generateCSSUnit(iconSize, "px"),
       width: generateCSSUnit(iconSize, "px"),
     },
-    " .responsive-block-editor-addons-share-icons-container": {
+    " .responsive-block-editor-addons-social-icons-container": {
       display: "inline-grid",
       "grid-template-columns":
         iconColumns !== "auto" ? `repeat(${iconColumns} , auto)` : "",
@@ -161,7 +161,7 @@ function EditorStyles(props) {
         newopacity || 0
       )}`,
     },
-    " .responsive-block-editor-addons-share-icon-label": {
+    " .responsive-block-editor-addons-social-icon-label": {
       "font-size": generateCSSUnit(labelFontSize, "px"),
       "font-family": labelFontFamily,
       "font-weight": labelFontWeight,
@@ -231,10 +231,10 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
     },
-    " .responsive-block-editor-addons-share-icon-label": {
+    " .responsive-block-editor-addons-social-icon-label": {
       "font-size": generateCSSUnit(labelFontSizeMobile, "px"),
     },
-    " .responsive-block-editor-addons-share-icons-container": {
+    " .responsive-block-editor-addons-social-icons-container": {
       "grid-template-columns":
         iconColumnsMobile !== "auto" ? `repeat(${iconColumnsMobile} , auto)` : "",
         "grid-auto-flow": iconColumnsMobile !== "auto" ? "unset" : "column",
@@ -253,10 +253,10 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
     },
-    " .responsive-block-editor-addons-share-icon-label": {
+    " .responsive-block-editor-addons-social-icon-label": {
       "font-size": generateCSSUnit(labelFontSizeTablet, "px"),
     },
-    " .responsive-block-editor-addons-share-icons-container": {
+    " .responsive-block-editor-addons-social-icons-container": {
       "grid-template-columns":
         iconColumnsTablet !== "auto" ? `repeat(${iconColumnsTablet} , auto)` : "",
       "grid-auto-flow": iconColumnsTablet !== "auto" ? "unset" : "column",
@@ -264,7 +264,7 @@ function EditorStyles(props) {
   };
 
   var styling_css = "";
-  var id = `.responsive-block-editor-addons-block-social-share.block-${block_id}`;
+  var id = `.responsive-block-editor-addons-block-social-icons.block-${block_id}`;
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");
