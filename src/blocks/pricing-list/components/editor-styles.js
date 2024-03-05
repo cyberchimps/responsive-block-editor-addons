@@ -64,6 +64,9 @@ function EditorStyles(props) {
 	bottomPadding, // For compatibility with v1.3.2.
 	leftPadding, // For compatibility with v1.3.2.
 	rightPadding, // For compatibility with v1.3.2.
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   var align = contentAlign;
@@ -74,6 +77,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .responsive-block-editior-addons-pricing-list-item-wrap": {
       "margin-bottom": generateCSSUnit(rowGap, "px"),
       "padding-left": generateCSSUnit(columnGap / 2, "px"),
@@ -130,6 +136,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .responsive-block-editior-addons-pricing-list-item-wrap": {
       "margin-bottom": generateCSSUnit(rowGapMobile, "px"),
       "padding-left": generateCSSUnit(columnGapMobile / 2, "px"),
@@ -154,6 +163,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .responsive-block-editior-addons-pricing-list-item-wrap": {
       "margin-bottom": generateCSSUnit(rowGapTablet, "px"),
       "padding-left": generateCSSUnit(columnGapTablet / 2, "px"),

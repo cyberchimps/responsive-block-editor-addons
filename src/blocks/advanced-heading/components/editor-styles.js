@@ -50,10 +50,14 @@ function EditorStyles(props) {
     textDecoration,
     textDecorationSubHeading,
     block_id,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {
     "": {
+      "opacity": hideWidget? 0.2 : 1,
       "text-align": headingAlignment,
     },
     " .responsive-heading-title-text": {
@@ -87,6 +91,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
       "text-align": headingAlignmentMobile,
     },
     " .responsive-heading-title-text": {
@@ -104,6 +109,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
       "text-align": headingAlignmentTablet,
     },
     " .responsive-heading-title-text": {

@@ -93,6 +93,9 @@ function EditorStyles(props) {
 	borderRadius, //For compatibility with v1.3.2.
 	borderColor, //For compatibility with v1.3.2.
 	secondaryBackgroundColor, //For compatibility with v1.3.2.
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -124,6 +127,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " ":{
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : '0 !important',
     },
@@ -189,7 +195,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-
+    " ":{
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingMobile, "px"),
     },
@@ -224,6 +232,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ":{
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingTablet, "px"),
     },

@@ -417,6 +417,18 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'string',
 					'default' => '',
 				),
+				'hideWidget'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'hideWidgetMobile'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'hideWidgetTablet'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'z_index'             => array(
 					'type'    => 'number',
 					'default' => 1,

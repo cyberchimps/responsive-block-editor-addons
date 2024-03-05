@@ -24,6 +24,18 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  hideWidget: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetTablet: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetMobile: {
+    type: "boolean",
+    default: false,
+  },
   z_index: {
     type: "number",
   },

@@ -39,9 +39,16 @@ function EditorStyles(props) {
 	textFontSizeTablet,
 	linkFontSizeMobile,
 	linkFontSizeTablet,
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget ? 0.2 : 1,
+    },
+
     " .responsive-block-editor-addons-expand-block-content": {
       "text-align": expandAlignment,
     },
@@ -93,6 +100,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-expand-title": {
       "margin-bottom": generateCSSUnit(titleSpaceMobile, "px"),
 	  "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
@@ -116,6 +126,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-expand-title": {
       "margin-bottom": generateCSSUnit(titleSpaceTablet, "px"),
 	  "font-size": generateCSSUnit(titleFontSizeTablet, "px"),

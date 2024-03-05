@@ -128,6 +128,18 @@ const attributes = {
 	type: "string",
 	default: "#000000",
   },
+	hideWidget: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetTablet: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetMobile: {
+	  type: "boolean",
+	  default: false,
+	},
   z_index: {
     type: "number",
     default: 1,

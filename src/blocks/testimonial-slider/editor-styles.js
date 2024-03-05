@@ -103,6 +103,9 @@ function EditorStyles(props) {
 	borderColor, // For compatibility with v1.3.2.
 	borderWidth, // For compatibility with v1.3.2.
 	borderRadius, // For compatibility with v1.3.2.
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   var img_align = "center";
@@ -150,6 +153,7 @@ function EditorStyles(props) {
 
   var selectors = {
     " ": {
+      "opacity": hideWidget? 0.2 : 1,
       "padding": generateCSSUnit(blockPadding, "px"),
     },
     " .slick-arrow svg": {
@@ -266,6 +270,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
+    "opacity": hideWidgetMobile? 0.2 : 1,
     "padding": generateCSSUnit(blockPaddingMobile, "px"),
   },
   " .responsive-block-editor-addons-testimonial__wrap": {
@@ -304,6 +309,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
       "padding": generateCSSUnit(blockPaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-testimonial__wrap": {

@@ -20,10 +20,14 @@ function EditorStyles(props) {
     gradientDirection,
     backgroundType,
     align,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {
     "": {
+		  "opacity": hideWidget? 0.2 : 1,
       color: props.color.color,
       "background-color": backgroundType == "color" ? backgroundColor : null,
       "background-image":
@@ -42,9 +46,17 @@ function EditorStyles(props) {
     }
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+		"": {
+		  "opacity": hideWidgetMobile? 0.2 : 1,
+		},
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+		"": {
+		  "opacity": hideWidgetTablet? 0.2 : 1,
+		},
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-shape-divider.block-${block_id}`;

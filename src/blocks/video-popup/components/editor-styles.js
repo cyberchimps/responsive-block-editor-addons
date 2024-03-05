@@ -31,7 +31,10 @@ function EditorStyles(props) {
     boxShadowSpread,
     boxShadowPosition,
     backgroundImage,
-	vidBackgroundColor
+	vidBackgroundColor,
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -57,6 +60,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " ":{
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-video-popup__wrapper": {
       "background-image": (imgURL !== "empty" && !!imgURL.length) && backgroundImage === "" ? `url(${imgURL})` : bgImageWithOpacity, // For compatibility with v1.3.2.
       "background-color": hexToRgba(
@@ -92,6 +98,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ":{
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-video-popup__wrapper": {
       "max-width": generateCSSUnit(vidwidthMobile, "px"),
       height: generateCSSUnit(vidheightMobile, "px"),
@@ -99,6 +108,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ":{
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-video-popup__wrapper": {
       "max-width": generateCSSUnit(vidwidthTablet, "px"),
       height: generateCSSUnit(vidheightTablet, "px"),

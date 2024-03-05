@@ -120,6 +120,9 @@ class Inspector extends Component {
       iconBackgroundOpacity,
       width,
       customWidth,
+      hideWidget,
+      hideWidgetTablet,
+      hideWidgetMobile,
       z_index,
       z_indexMobile,
       z_indexTablet,
@@ -317,6 +320,42 @@ class Inspector extends Component {
                   </PanelBody>
               </InspectorTab>
               <InspectorTab key={"advance"}>
+                <PanelBody
+                title={__("Responsive Conditions", "responsive-block-editor-addons")}
+                initialOpen={false}
+                >
+                  <ToggleControl
+                    label={__(
+                    "Hide on Desktop",
+                    "responsive-block-editor-addons"
+                    )}
+                    checked={hideWidget}
+                    onChange={(value) =>
+                    setAttributes({ hideWidget: !hideWidget })
+                    }
+                  />
+                  <ToggleControl
+                    label={__(
+                    "Hide on Tablet",
+                    "responsive-block-editor-addons"
+                    )}
+                    checked={hideWidgetTablet}
+                    onChange={(value) =>
+                    setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+                    }
+                  />
+                  <ToggleControl
+                    label={__(
+                    "Hide on Mobile",
+                    "responsive-block-editor-addons"
+                    )}
+                    checked={hideWidgetMobile}
+                    onChange={(value) =>
+                    setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+                    }
+                  />
+                </PanelBody>
+              
               <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}
               initialOpen={false}
