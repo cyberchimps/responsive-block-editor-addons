@@ -440,9 +440,6 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-    " ": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
-    },
     " .has-medium-gutter.responsive-flipbox-columns__stack-mobile > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",
@@ -453,6 +450,7 @@ function EditorStyles(props) {
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
       "margin-top": generateCSSUnit(topMarginMobile, "px"),
+      "opacity": hideWidgetMobile ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "padding-top": generateCSSUnit(frontTopPaddingMobile, "px"),
@@ -488,9 +486,6 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
-    " ": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
-    },
     " .has-medium-gutter.responsive-flipbox-columns__stack-tablet > *:not(.block-editor-inner-blocks)": {
       "min-width": "100%",
       "max-width": "100%",
@@ -501,6 +496,7 @@ function EditorStyles(props) {
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
       "margin-top": generateCSSUnit(topMarginTablet, "px"),
+      "opacity": hideWidgetTablet ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "padding-top": generateCSSUnit(frontTopPaddingTablet, "px"),

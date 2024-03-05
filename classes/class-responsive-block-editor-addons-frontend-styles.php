@@ -4267,9 +4267,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
-				' '               => array(
-					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
-				),
 				' .has-medium-gutter.responsive-flipbox-columns__stack-mobile > *:not(.block-editor-inner-blocks)' => array(
 					'min-width' => '100%',
 					'max-width' => '100%',
@@ -4281,6 +4278,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['bottomMarginMobile'], 'px' ) . ' !important',
 					'margin-top'    => self::get_css_value( $attr['topMarginMobile'], 'px' ) . ' !important',
 					'z-index'       => $attr['z_indexMobile'],
+					'display' => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box .flip-box-front' => array(
 					'padding-top'    => self::get_css_value( $attr['frontTopPaddingMobile'], 'px' ),
@@ -4316,9 +4314,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
-				' '               => array(
-					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
-				),
 				' .has-medium-gutter.responsive-flipbox-columns__stack-tablet > *:not(.block-editor-inner-blocks)' => array(
 					'min-width' => '100%',
 					'max-width' => '100%',
@@ -4330,6 +4325,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['bottomMarginTablet'], 'px' ) . ' !important',
 					'margin-top'    => self::get_css_value( $attr['topMarginTablet'], 'px' ) . ' !important',
 					'z-index'       => $attr['z_indexTablet'],
+					'display' => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box .flip-box-front' => array(
 					'padding-top'    => self::get_css_value( $attr['frontTopPaddingTablet'], 'px' ),
