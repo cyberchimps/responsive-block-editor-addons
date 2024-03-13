@@ -57,6 +57,9 @@
      iconTextGapMobile,
      iconTextGapTablet,
      buttonAlign,
+     hideWidget,
+     hideWidgetTablet,
+     hideWidgetMobile,
    } = props.attributes;
 
    let buttonWidthCSS = "fixed" === buttonWidthType ? "fit-content" : "flexible" === buttonWidthType ? generateCSSUnit(buttonWidth, "px") : generateCSSUnit(100, "%");
@@ -82,6 +85,7 @@
 
    var selectors = {
     "": {
+      'opacity': hideWidget ? 0.2 : 1,
       "margin": `${generateCSSUnit(blockTopMargin, "px")} ${generateCSSUnit(blockRightMargin, "px")} ${generateCSSUnit(blockBottomMargin, "px")} ${generateCSSUnit(blockLeftMargin, "px")}`,
       "padding": `${generateCSSUnit(blockTopPadding, "px")} ${generateCSSUnit(blockRightPadding, "px")} ${generateCSSUnit(blockBottomPadding, "px")} ${generateCSSUnit(blockLeftPadding, "px")}`,
       "display": 'flex',
@@ -127,6 +131,7 @@
  
    var mobile_selectors = {
     "": {
+      'opacity': hideWidgetMobile ? 0.2 : 1,
       "margin": `${generateCSSUnit(blockTopMarginMobile, "px")} ${generateCSSUnit(blockRightMarginMobile, "px")} ${generateCSSUnit(blockBottomMarginMobile, "px")} ${generateCSSUnit(blockLeftMarginMobile, "px")}`,
       "padding": `${generateCSSUnit(blockTopPaddingMobile, "px")} ${generateCSSUnit(blockRightPaddingMobile, "px")} ${generateCSSUnit(blockBottomPaddingMobile, "px")} ${generateCSSUnit(blockLeftPaddingMobile, "px")}`,
     },
@@ -150,6 +155,7 @@
  
    var tablet_selectors = {
     "": {
+      'opacity': hideWidgetTablet ? 0.2 : 1,
       "margin": `${generateCSSUnit(blockTopMarginTablet, "px")} ${generateCSSUnit(blockRightMarginTablet, "px")} ${generateCSSUnit(blockBottomMarginTablet, "px")} ${generateCSSUnit(blockLeftMarginTablet, "px")}`,
       "padding": `${generateCSSUnit(blockTopPaddingTablet, "px")} ${generateCSSUnit(blockRightPaddingTablet, "px")} ${generateCSSUnit(blockBottomPaddingTablet, "px")} ${generateCSSUnit(blockLeftPaddingTablet, "px")}`,
     },

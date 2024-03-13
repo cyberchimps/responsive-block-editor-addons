@@ -16,13 +16,17 @@ function EditorStyles(props) {
     animationCurve,
     pulseEffect,
     pointSpacing,
-    imageSize
+    imageSize,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   let updatedPointOpacity = pointOpacity / 100;
 
   var selectors = {
     " ": {
+      "opacity": hideWidget ? 0.2 : 1,
       display: "flex",
       "justify-content": "center",
     },
@@ -63,9 +67,17 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-image-hotspot.block-${block_id}`;

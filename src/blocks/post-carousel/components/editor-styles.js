@@ -94,6 +94,9 @@ function EditorStyles(props) {
     ctaVpaddingTablet,
     ctaVpaddingMobile,
     buttonHbackgroundType,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -119,6 +122,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-block-post-carousel-title": {
       "margin-top": generateCSSUnit(imageSpace, "px"),
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
@@ -226,6 +232,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-block-post-carousel-title": {
       "font-size": generateCSSUnit(titleFontSizeMobile, "px"),
     },
@@ -254,6 +263,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-block-post-carousel-title": {
       "font-size": generateCSSUnit(titleFontSizeTablet, "px"),
     },

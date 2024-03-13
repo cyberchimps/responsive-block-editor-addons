@@ -226,6 +226,9 @@
      submitButtonBoxShadowSpread,
      submitButtonBoxShadowPosition,
      block_id,
+     hideWidget,
+     hideWidgetTablet,
+     hideWidgetMobile,
    } = props.attributes;
 
 
@@ -374,6 +377,10 @@
 
  
    var selectors = {   
+
+    "": {
+      "opacity": hideWidget ? 0.2 : 1,
+    },
 
     " .responsive-form-title-text": {
       "font-family": formTitleFontFamily,
@@ -739,6 +746,10 @@
    };
  
    var mobile_selectors = {
+    "": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
+    
     " .responsive-form-title-text": {      
       "font-size": generateCSSUnit(formTitleFontSizeMobile, "px"),      
       "text-align": formTitleAlignmentMobile,
@@ -829,6 +840,10 @@
    };
  
    var tablet_selectors = {
+    "": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
+
     " .responsive-form-title-text": {      
       "font-size": generateCSSUnit(formTitleFontSizeTablet, "px"),      
       "text-align": formTitleAlignmentTablet,

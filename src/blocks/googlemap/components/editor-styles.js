@@ -6,10 +6,22 @@ import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 
 function EditorStyles(props) {
-  const { block_id, address, zoom, height, heightTablet, heightMobile, pinned } = props.attributes;
+  const { 
+    block_id,
+    address,
+    zoom,
+    height,
+    heightTablet,
+    heightMobile,
+    pinned,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
+  } = props.attributes;
 
   var selectors = {
     " ": {
+      "opacity": hideWidget ? 0.2 : 1,
       "max-height": height ? generateCSSUnit(height, "px") : `${400}px`,
     },
       " .responsive-block-editor-addons-block-map-frame": {
@@ -20,6 +32,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
       " ": {
+          "opacity": hideWidgetMobile ? 0.2 : 1,
           "max-height": heightMobile ? generateCSSUnit(heightMobile, "px") : `${400}px`,
       },
       " .responsive-block-editor-addons-block-map-frame": {
@@ -30,6 +43,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
       " ": {
+          "opacity": hideWidgetTablet ? 0.2 : 1,
           "max-height": heightTablet ? generateCSSUnit(heightTablet, "px") : `${400}px`,
       },
       " .responsive-block-editor-addons-block-map-frame": {

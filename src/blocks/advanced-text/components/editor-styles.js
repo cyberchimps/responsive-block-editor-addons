@@ -85,13 +85,16 @@ function EditorStyles(props) {
     subtitleRightMargin,
     subtitleRightMarginTablet,
     subtitleRightMarginMobile,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
 
   var selectors = {
     " ": {
-      'opacity': blockOpacityModified,
+      'opacity': hideWidget ? 0.2 : blockOpacityModified,
       'z-index': zIndex,
       'max-width': generateCSSUnit(containerWidth, "px"),
       "margin-top": generateCSSUnit(containerTopMargin, "px"),
@@ -147,6 +150,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
+      'opacity': hideWidgetMobile ? 0.2 : blockOpacityModified,
       'max-width': generateCSSUnit(containerWidthMobile, "px"),
       "margin-top": generateCSSUnit(containerTopMarginMobile, "px"),
 		  "margin-bottom": generateCSSUnit(containerBottomMarginMobile, "px"),
@@ -180,6 +184,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
+      'opacity': hideWidgetTablet ? 0.2 : blockOpacityModified,
       'max-width': generateCSSUnit(containerWidthTablet, "px"),
       "margin-top": generateCSSUnit(containerTopMarginTablet, "px"),
 		  "margin-bottom": generateCSSUnit(containerBottomMarginTablet, "px"),

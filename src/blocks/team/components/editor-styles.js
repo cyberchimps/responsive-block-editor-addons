@@ -86,6 +86,9 @@ function EditorStyles(props) {
     iconBackgroundSize,
     iconBorderSize,
     iconBorderRadius,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
@@ -142,6 +145,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " ":{
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-team-avatar-wrapper": {
       "text-align": alignment,
       "text-align": `-webkit-${alignment}`,
@@ -285,6 +291,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ":{
+        "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .wp-block-responsive-block-editor-addons-team": {
         "margin-bottom": gutterMargin,
     },
@@ -320,6 +329,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ":{
+        "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .wp-block-responsive-block-editor-addons-team": {
       "margin-bottom": gutterMargin,
     },

@@ -28,6 +28,9 @@ function EditorStyles(props) {
     labelFontSizeMobile,
     hideLabel,
 	labelFontLineHeight, // For compatibility with v1.3.2.
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   var editor_gap = undefined !== typeof gap && "" !== gap ? gap + 0 : 0;
@@ -36,6 +39,9 @@ function EditorStyles(props) {
     align == "left" ? "flex-start" : align == "right" ? "flex-end" : "center";
 
   var selectors = {
+    "": {
+        "opacity": hideWidget ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-icon-list__source-icon svg": {
       width: generateCSSUnit(size, fontSizeType),
       height: generateCSSUnit(size, fontSizeType),
@@ -88,6 +94,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    "": {
+        "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
 	" .responsive-block-editor-addons-icon-list__source-icon": {
 		"width": sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
 		"height": sizeMobile ? generateCSSUnit(sizeMobile, fontSizeType) : generateCSSUnit(size, fontSizeType),
@@ -105,6 +114,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    "": {
+        "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
 	" .responsive-block-editor-addons-icon-list__source-icon": {
 		"width": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),
 		"height": sizeTablet ? generateCSSUnit(sizeTablet, fontSizeType) : generateCSSUnit(size, fontSizeType),

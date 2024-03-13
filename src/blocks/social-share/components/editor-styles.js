@@ -67,6 +67,9 @@ function EditorStyles(props) {
     opacity,
     iconColumnsMobile,
     iconColumnsTablet,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -88,6 +91,7 @@ function EditorStyles(props) {
 
   var selectors = {
     " ": {
+		  "opacity": hideWidget? 0.2 : 1,
       "z-index": socialZindex,
       "margin-top": generateCSSUnit(blockTopMargin, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
@@ -217,6 +221,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
+		  "opacity": hideWidgetMobile? 0.2 : 1,
       "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
@@ -238,6 +243,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
+		  "opacity": hideWidgetTablet? 0.2 : 1,
       "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),

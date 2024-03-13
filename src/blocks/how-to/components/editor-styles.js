@@ -57,6 +57,9 @@ function EditorStyles(props) {
         stepsMargin,
         stepsMarginMobile,
         stepsMarginTablet,
+        hideWidget,
+        hideWidgetTablet,
+        hideWidgetMobile,
     } = props.attributes;
 
     const border = "none" !== borderStyle ? generateCSSUnit(borderWidth, "px") + " " + borderStyle + " " + borderColor : "";
@@ -64,6 +67,7 @@ function EditorStyles(props) {
 
     var selectors = {
         "": {
+            "opacity": hideWidget ? 0.2 : 1,
             "text-align": overallAlignment,
             "padding": generateCSSUnit(10, "px"),
         },
@@ -181,6 +185,9 @@ function EditorStyles(props) {
     };
 
     var mobile_selectors = {
+        "": {
+            "opacity": hideWidgetMobile ? 0.2 : 1,
+        },
         " .responsive-block-editor-addons-block-how-to-main-heading": {
             "line-height": mainHeadingLineHeight,
             "font-size": generateCSSUnit(mainHeadingFontSizeMobile, "px"),
@@ -245,6 +252,9 @@ function EditorStyles(props) {
     };
 
     var tablet_selectors = {
+        "": {
+            "opacity": hideWidgetTablet ? 0.2 : 1,
+        },
         " .responsive-block-editor-addons-block-how-to-main-heading": {
             "line-height": mainHeadingLineHeight,
             "font-size": generateCSSUnit(mainHeadingFontSizeTablet, "px"),

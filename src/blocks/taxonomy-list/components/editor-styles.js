@@ -76,6 +76,9 @@ function EditorStyles(props) {
         titleLineHeight,
         titleLineHeightMobile,
         titleLineHeightTablet,
+        hideWidget,
+        hideWidgetTablet,
+        hideWidgetMobile,
     } = props.attributes;
 
 
@@ -92,6 +95,9 @@ function EditorStyles(props) {
     const boxShadowValues = generateCSSUnit(boxShadowHOffset, "px") + " " + generateCSSUnit(boxShadowVOffset, "px") + " " + generateCSSUnit(boxShadowBlur, "px") + " " + generateCSSUnit(boxShadowSpread, "px") + " " + boxShadowColor + " " + boxShadowPositionCSS;
 
     var selectors = {
+        " ":{
+            "opacity": hideWidget? 0.2 : 1,
+        },
         " .responsive-block-editor-addons-block-grid": {
             "display": "grid",
             "grid-template-columns": 'repeat(' + columns + ', 1fr)',
@@ -153,6 +159,9 @@ function EditorStyles(props) {
     };
 
     var mobile_selectors = {
+        " ":{
+            "opacity": hideWidgetMobile? 0.2 : 1,
+        },
         " .responsive-block-editor-addons-block-grid": {
             "display": "grid",
             "grid-template-columns": 'repeat(' + columnsMobile + ', 1fr)',
@@ -180,6 +189,9 @@ function EditorStyles(props) {
     };
 
     var tablet_selectors = {
+        " ":{
+            "opacity": hideWidgetTablet? 0.2 : 1,
+        },
         " .responsive-block-editor-addons-block-grid": {
             "display": "grid",
             "grid-template-columns": 'repeat(' + columnsTablet + ', 1fr)',
