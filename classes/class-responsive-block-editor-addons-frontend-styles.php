@@ -4743,6 +4743,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-size'   => self::get_css_value( $attr['labelFontSize'], 'px' ),
 				),
 			);
+			$alignment = 'center';
+			if ( 'left' === $attr['alignMobile'] ) {
+				$alignment = 'flex-start';
+			}
+			if ( 'right' === $attr['alignMobile'] ) {
+				$alignment = 'flex-end';
+			}
 			$mobile_selectors = array(
 				' '                                        => array(
 					'display'    	   => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
@@ -4762,8 +4769,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-icon-list__source-wrap' => array(
 					'padding' => $attr['bgSizeMobile'] ? self::get_css_value( $attr['bgSizeMobile'], 'px' ) : self::get_css_value( $attr['bgSize'], 'px' ),
 				),
+				' .responsive-block-editor-addons-icon-list__wrap' => array(
+					'align-items'     => $alignment,
+					'justify-content' => $alignment,
+				),
 			);
 
+			$alignment = 'center';
+			if ( 'left' === $attr['alignTablet'] ) {
+				$alignment = 'flex-start';
+			}
+			if ( 'right' === $attr['alignTablet'] ) {
+				$alignment = 'flex-end';
+			}
 			$tablet_selectors = array(
 				' '                                        => array(
 					'display'    	   => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
@@ -4782,6 +4800,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-icon-list__source-wrap' => array(
 					'padding' => $attr['bgSizeTablet'] ? self::get_css_value( $attr['bgSizeTablet'], 'px' ) : self::get_css_value( $attr['bgSize'], 'px' ),
+				),
+				' .responsive-block-editor-addons-icon-list__wrap' => array(
+					'align-items'     => $alignment,
+					'justify-content' => $alignment,
 				),
 			);
 
@@ -4805,6 +4827,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			return array(
 				'align'               => 'left',
+				'alignTablet'         => 'left',
+				'alignMobile'         => 'left', 
 				'icon_count'          => 1,
 				'icons'               => array(),
 				'gap'                 => 10,
