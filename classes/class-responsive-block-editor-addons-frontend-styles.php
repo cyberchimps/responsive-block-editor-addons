@@ -9906,6 +9906,26 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-color'  => $attr['blockBorderColor'],
 					'border-radius' => self::get_css_value( $attr['blockBorderRadius'], 'px' ) . ' !important',
 					'border-width'  => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
+					'padding-top'   => self::get_css_value( $attr['blockTopPadding'], 'px' ) . '!important',
+					'padding-bottom'=> self::get_css_value( $attr['blockBottomPadding'], 'px' ) . '!important',
+					'padding-left'  => self::get_css_value( $attr['blockLeftPadding'], 'px' ) . '!important',
+					'padding-right' => self::get_css_value( $attr['blockRightPadding'], 'px' ) . '!important',
+					'margin-top'    => self::get_css_value( $attr['blockTopMargin'], 'px' ) . '!important',
+					'margin-bottom' => self::get_css_value( $attr['blockBottomMargin'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-toc__collapsible-wrap .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'color' => $attr['icon_color'],
+				),
+				' .responsive-block-editor-addons-toc__collapsible-wrap .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'fill' => $attr['icon_color'],
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'width'  => self::get_css_value( $attr['size'], 'px' ),
+					'height' => self::get_css_value( $attr['size'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'width'  => self::get_css_value( $attr['size'], 'px' ),
+					'height' => self::get_css_value( $attr['size'], 'px' ),
 				),
 			);
 
@@ -9944,6 +9964,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $attr['contentLeftMarginMobile'], 'px' ) . '!important',
 					'margin-right'   => self::get_css_value( $attr['contentRightMarginMobile'], 'px' ) . '!important',
 				),
+				' .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'width'  => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'width'  => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -9980,6 +10008,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'  => self::get_css_value( $attr['contentBottomMarginTablet'], 'px' ) . '!important',
 					'margin-left'    => self::get_css_value( $attr['contentLeftMarginTablet'], 'px' ) . '!important',
 					'margin-right'   => self::get_css_value( $attr['contentRightMarginTablet'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'width'  => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'width'  => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
 				),
 			);
 
@@ -10132,6 +10168,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundColor'            => '',
 				'backgroundVideo'            => '',
 				'backgroundType'             => 'none',
+				'size'                       => 20,
+				'sizeMobile'                 => '',
+				'sizeTablet'                 => '',
+				'icon_color'                 => '#3a3a3a',
 				'hideWidgetMobile'		   => false,
 				'hideWidgetTablet'		   => false,
 				'hideWidget'			   => false,

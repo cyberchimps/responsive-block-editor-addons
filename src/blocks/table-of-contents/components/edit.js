@@ -73,8 +73,8 @@ class Edit extends Component {
 
     if (isCollapsible && icon) {
       icon_html = (
-        <span className="responsive-block-editor-addons-toc__collapsible-wrap">
-          {renderSVG("angle-down")}
+        <span className="responsive-block-editor-addons-toc__collapsible-icon">
+          {renderSVG(icon)}
         </span>
       );
     }
@@ -128,7 +128,9 @@ class Edit extends Component {
               multiline={false}
               onRemove={() => props.onReplace([])}
             />
-            {icon_html}
+            <span className="responsive-block-editor-addons-toc__collapsible-wrap">
+             {icon_html}
+            </span>
           </div>
           <TableOfContents
             headers={

@@ -126,6 +126,10 @@ function EditorStyles(props) {
     backgroundRepeat,
     backgroundSize,
     backgroundVideo,
+    icon_color,
+    size,
+    sizeMobile,
+    sizeTablet,
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
@@ -267,7 +271,29 @@ function EditorStyles(props) {
       "border-style": blockBorderStyle,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
-    }
+      "padding-top": generateCSSUnit(blockTopPadding, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
+      "padding-right": generateCSSUnit(blockRightPadding, "px"),
+      "margin-top": generateCSSUnit(blockTopMargin, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
+      "margin-left": generateCSSUnit(blockLeftMargin, "px"),
+      "margin-right": generateCSSUnit(blockRightMargin, "px"),
+    },
+    " .responsive-block-editor-addons-toc__collapsible-wrap .responsive-block-editor-addons-toc__collapsible-icon": {
+      color: icon_color,
+    },
+    " .responsive-block-editor-addons-toc__collapsible-wrap .responsive-block-editor-addons-toc__collapsible-icon svg": {
+      fill: icon_color,
+    },
+    " .responsive-block-editor-addons-toc__collapsible-icon svg": {
+      width: generateCSSUnit(size, "px"),
+      height: generateCSSUnit(size, "px"),
+    },
+    " .responsive-block-editor-addons-toc__collapsible-icon": {
+      width: generateCSSUnit(size, "px"),
+      height: generateCSSUnit(size, "px"),
+    },
   };
 
   var mobile_selectors = {
@@ -304,6 +330,14 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(contentLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(contentRightMarginMobile, "px"),
     },
+    " .responsive-block-editor-addons-toc__collapsible-icon": {
+      "width": sizeMobile ? generateCSSUnit(sizeMobile, "px") : generateCSSUnit(size, "px"),
+      "height": sizeMobile ? generateCSSUnit(sizeMobile, "px") : generateCSSUnit(size, "px"),
+    },
+      " .responsive-block-editor-addons-toc__collapsible-icon svg": {
+      "width": sizeMobile ? generateCSSUnit(sizeMobile, "px") : generateCSSUnit(size, "px"),
+      "height": sizeMobile ? generateCSSUnit(sizeMobile, "px") : generateCSSUnit(size, "px"),
+      },
   };
 
   var tablet_selectors = {
@@ -340,6 +374,14 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(contentLeftMarginTablet, "px"),
       "margin-right": generateCSSUnit(contentRightMarginTablet, "px"),
     },
+    " .responsive-block-editor-addons-toc__collapsible-icon": {
+      "width": sizeTablet ? generateCSSUnit(sizeTablet, "px") : generateCSSUnit(size, "px"),
+      "height": sizeTablet ? generateCSSUnit(sizeTablet, "px") : generateCSSUnit(size, "px"),
+    },
+      " .responsive-block-editor-addons-toc__collapsible-icon svg": {
+      "width": sizeTablet ? generateCSSUnit(sizeTablet, "px") : generateCSSUnit(size, "px"),
+      "height": sizeTablet ? generateCSSUnit(sizeTablet, "px") : generateCSSUnit(size, "px"),
+      },
   };
 
   var styling_css = "";
