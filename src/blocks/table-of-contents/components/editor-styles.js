@@ -180,6 +180,59 @@ function EditorStyles(props) {
     size,
     sizeMobile,
     sizeTablet,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
+    headingBorderTopWidth,
+    headingBorderBottomWidth,
+    headingBorderLeftWidth,
+    headingBorderRightWidth,
+    headingBorderTopWidthMobile,
+    headingBorderBottomWidthMobile,
+    headingBorderLeftWidthMobile,
+    headingBorderRightWidthMobile,
+    headingBorderTopWidthTablet,
+    headingBorderBottomWidthTablet,
+    headingBorderLeftWidthTablet,
+    headingBorderRightWidthTablet,
+    headingBorderTopLeftRadius,
+    headingBorderTopRightRadius,
+    headingBorderBottomLeftRadius,
+    headingBorderBottomRightRadius,
+    headingBorderTopLeftRadiusMobile,
+    headingBorderTopRightRadiusMobile,
+    headingBorderBottomLeftRadiusMobile,
+    headingBorderBottomRightRadiusMobile,
+    headingBorderTopLeftRadiusTablet,
+    headingBorderTopRightRadiusTablet,
+    headingBorderBottomLeftRadiusTablet,
+    headingBorderBottomRightRadiusTablet,
+    bodyBorderTopWidth,
+    bodyBorderLeftWidth,
+    bodyBorderRightWidth,
+    bodyBorderBottomWidth,
+    bodyBorderTopWidthTablet,
+    bodyBorderLeftWidthTablet,
+    bodyBorderRightWidthTablet,
+    bodyBorderBottomWidthTablet,
+    bodyBorderTopWidthMobile,
+    bodyBorderLeftWidthMobile,
+    bodyBorderRightWidthMobile,
+    bodyBorderBottomWidthMobile,
+     //body Border radius
+     bodyBorderTopLeftRadiusMobile,
+     bodyBorderTopRightRadiusMobile,
+     bodyBorderBottomLeftRadiusMobile,
+     bodyBorderBottomRightRadiusMobile,
+     bodyBorderTopLeftRadiusTablet,
+     bodyBorderTopRightRadiusTablet,
+     bodyBorderBottomLeftRadiusTablet,
+     bodyBorderBottomRightRadiusTablet,
+     bodyBorderTopLeftRadius,
+     bodyBorderTopRightRadius,
+     bodyBorderBottomLeftRadius,
+     bodyBorderBottomRightRadius,
+
   } = props.attributes;
 
   let justifyContent = "flex-start";
@@ -252,6 +305,9 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(headingBorderTopRightRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(headingBorderBottomLeftRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(headingBorderBottomRightRadius, "px"),
+
+      // "border-radius": generateCSSUnit(headingBorderRadius, "px"),
+
     },
     " .responsive-block-editor-addons-toc__title-wrap:hover": {
       color: headingColorHover,
@@ -318,6 +374,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-toc__wrap": {
       "width": generateCSSUnit(blockWidth, "%"),
+
+      "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
       "padding-left": generateCSSUnit(blockLeftPadding, "px"),
@@ -364,6 +424,17 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(headingBottomMarginMobile, "px"),
       "margin-left": generateCSSUnit(headingLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(headingRightMarginMobile, "px"),
+       //Border Width
+       "border-top-width": generateCSSUnit(headingBorderTopWidthMobile, "px"),
+       "border-left-width": generateCSSUnit(headingBorderLeftWidthMobile, "px"),
+       "border-right-width": generateCSSUnit(headingBorderRightWidthMobile, "px"),
+       "border-bottom-width": generateCSSUnit(headingBorderBottomWidthMobile, "px"),
+       //border-radius
+       "border-top-left-radius": generateCSSUnit(headingBorderTopLeftRadiusMobile, "px"),
+       "border-top-right-radius": generateCSSUnit(headingBorderTopRightRadiusMobile, "px"),
+       "border-bottom-left-radius": generateCSSUnit(headingBorderBottomLeftRadiusMobile, "px"),
+       "border-bottom-right-radius": generateCSSUnit(headingBorderBottomRightRadiusMobile, "px"),
+
       //Border Width
       "border-top-width": generateCSSUnit(headingBorderTopWidthMobile, "px"),
       "border-left-width": generateCSSUnit(headingBorderLeftWidthMobile, "px"),
@@ -385,6 +456,18 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(contentBottomMarginMobile, "px"),
       "margin-left": generateCSSUnit(contentLeftMarginMobile, "px"),
       "margin-right": generateCSSUnit(contentRightMarginMobile, "px"),
+       //Body Border Width
+       "border-top-width": generateCSSUnit(bodyBorderTopWidthMobile, "px"),
+       "border-left-width": generateCSSUnit(bodyBorderLeftWidthMobile, "px"),
+       "border-right-width": generateCSSUnit(bodyBorderRightWidthMobile, "px"),
+       "border-bottom-width": generateCSSUnit(bodyBorderBottomWidthMobile, "px"),
+ 
+       // border-radius
+       "border-top-left-radius": generateCSSUnit(bodyBorderTopLeftRadiusMobile, "px"),
+       "border-top-right-radius": generateCSSUnit(bodyBorderTopRightRadiusMobile, "px"),
+       "border-bottom-left-radius": generateCSSUnit(bodyBorderBottomLeftRadiusMobile, "px"),
+       "border-bottom-right-radius": generateCSSUnit(bodyBorderBottomRightRadiusMobile, "px"),
+
       //Body Border Width
       "border-top-width": generateCSSUnit(bodyBorderTopWidthMobile, "px"),
       "border-left-width": generateCSSUnit(bodyBorderLeftWidthMobile, "px"),
@@ -425,6 +508,9 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(headingLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(headingRightPaddingTablet, "px"),
       "margin-top": generateCSSUnit(headingTopMarginTablet, "px"),
+
+     
+
       "margin-bottom": generateCSSUnit(headingBottomMarginTablet, "px"),
       "margin-left": generateCSSUnit(headingLeftMarginTablet, "px"),
       "margin-right": generateCSSUnit(headingRightMarginTablet, "px"),

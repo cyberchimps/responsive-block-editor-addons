@@ -9962,8 +9962,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-left-width'   => self::get_css_value( $attr['headingBorderLeftWidth'], 'px' ),
 					'border-right-width'  => self::get_css_value( $attr['headingBorderRightWidth'], 'px' ),
 					'border-bottom-width' => self::get_css_value( $attr['headingBorderBottomWidth'], 'px' ),
+
 					'border-radius'    => self::get_css_value( $attr['headingBorderRadius'], 'px' ) . ' !important',
 					'border-width'     => self::get_css_value( $attr['headingBorderWidth'], 'px' ),
+
 				),
 				' .responsive-block-editor-addons-toc__title-wrap:hover' => array(
 					'color'            => $attr['headingColorHover'],
@@ -9985,7 +9987,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'        => self::get_css_value( $attr['contentRightMargin'], 'px' ) . '!important',
 					'border-style'        => $attr['bodyBorderStyle'],
 					'border-color'        => $attr['bodyBorderColor'],
-					'border-radius'       => self::get_css_value( $attr['bodyBorderRadius'], 'px' ) . ' !important',
+					'border-radius'       => self::get_css_value( $attr['bodyBorderRadius'], 'px' ),
 					'border-top-width'    => self::get_css_value( 0, 'px' ),
 					'border-left-width'   => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
 					'border-right-width'  => self::get_css_value( $attr['bodyBorderWidth'], 'px' ),
@@ -10044,6 +10046,27 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'width'         => self::get_css_value( $attr['blockWidth'], '%' ),
 					'border-style'  => $attr['blockBorderStyle'],
 					'border-color'  => $attr['blockBorderColor'],
+					'padding-top'   => self::get_css_value( $attr['blockTopPadding'], 'px' ) . '!important',
+					'padding-bottom'=> self::get_css_value( $attr['blockBottomPadding'], 'px' ) . '!important',
+					'padding-left'  => self::get_css_value( $attr['blockLeftPadding'], 'px' ) . '!important',
+					'padding-right' => self::get_css_value( $attr['blockRightPadding'], 'px' ) . '!important',
+					'margin-top'    => self::get_css_value( $attr['blockTopMargin'], 'px' ) . '!important',
+					'margin-bottom' => self::get_css_value( $attr['blockBottomMargin'], 'px' ) . '!important',
+				),
+				' .responsive-block-editor-addons-toc__collapsible-wrap .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'color' => $attr['icon_color'],
+				),
+				' .responsive-block-editor-addons-toc__collapsible-wrap .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'fill' => $attr['icon_color'],
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'width'  => self::get_css_value( $attr['size'], 'px' ),
+					'height' => self::get_css_value( $attr['size'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'width'  => self::get_css_value( $attr['size'], 'px' ),
+					'height' => self::get_css_value( $attr['size'], 'px' ),
+
 				),
 			);
 
@@ -10102,6 +10125,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-right-width'  => self::get_css_value( $attr['bodyBorderRightWidthMobile'], 'px' ),
 					'border-bottom-width' => self::get_css_value( $attr['bodyBorderBottomWidthMobile'], 'px' ),
 				),
+				' .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'width'  => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'width'  => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeMobile'] ? self::get_css_value( $attr['sizeMobile'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -10148,7 +10179,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'  => self::get_css_value( $attr['contentBottomMarginTablet'], 'px' ) . '!important',
 					'margin-left'    => self::get_css_value( $attr['contentLeftMarginTablet'], 'px' ) . '!important',
 					'margin-right'   => self::get_css_value( $attr['contentRightMarginTablet'], 'px' ) . '!important',
+
 					//Border Radius
+
 					'border-top-left-radius' => self::get_css_value( $attr['bodyBorderTopLeftRadiusTablet'], 'px' ) . ' !important',
 					'border-top-right-radius' => self::get_css_value( $attr['bodyBorderTopRightRadiusTablet'], 'px' ) . ' !important',
 					'border-bottom-left-radius' => self::get_css_value( $attr['bodyBorderBottomLeftRadiusTablet'], 'px' ) . ' !important',
@@ -10158,6 +10191,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-left-width'   => self::get_css_value( $attr['bodyBorderLeftWidthTablet'], 'px' ),
 					'border-right-width'  => self::get_css_value( $attr['bodyBorderRightWidthTablet'], 'px' ),
 					'border-bottom-width' => self::get_css_value( $attr['bodyBorderBottomWidthTablet'], 'px' ),
+
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon' => array(
+					'width'  => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+				),
+				' .responsive-block-editor-addons-toc__collapsible-icon svg' => array(
+					'width'  => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+					'height' => $attr['sizeTablet'] ? self::get_css_value( $attr['sizeTablet'], 'px' ) : self::get_css_value( $attr['size'], 'px' ),
+
 				),
 			);
 
@@ -10289,6 +10332,73 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentLeftMarginMobile'    => 0,
 				'blockWidth'                 => 100,
 				'blockBorderStyle'           => 'solid',
+				'headingBorderTopWidth'        => 1,
+				'headingBorderBottomWidth'     => 1,
+				'headingBorderLeftWidth'       => 1,
+				'headingBorderRightWidth'      => 1,
+				'headingBorderTopWidthTablet'  => 1,
+				'headingBorderBottomWidthTablet'=> 1,
+				'headingBorderLeftWidthTablet'  => 1,
+				'headingBorderRightWidthTablet' => 1,
+				'headingBorderTopWidthMobile'   => 1,
+				'headingBorderBottomWidthMobile'=> 1,
+				'headingBorderLeftWidthMobile'  => 1,
+				'headingBorderRightWidthMobile' => 1,				
+				//Border Radius
+				'headingBorderTopLeftRadius'   => '',
+				'headingBorderTopRightRadius'  => '',
+				'headingBorderBottomLeftRadius'=> '',
+				'headingBorderBottomRightRadius'=> '',
+				'headingBorderTopLeftRadiusMobile'=> '',
+				'headingBorderTopRightRadiusMobile'=> '',
+				'headingBorderBottomLeftRadiusMobile'=> '',
+				'headingBorderBottomRightRadiusMobile'=> '',
+				'headingBorderTopLeftRadiusTablet'    => '',
+				'headingBorderTopRightRadiusTablet'  => '',
+				'headingBorderBottomLeftRadiusTablet'  => '',
+				'headingBorderBottomRightRadiusTablet'  => '',
+				'blockBorderColor'           			=> '#0984ff',
+				'headingBorderStyle'        			 => '',
+				'headingBorderWidth'         			=> 1,
+				'headingBorderRadius'        			=> '',
+				'headingBorderColor'         			=> '',
+				'bodyBorderStyle'            			=> '',
+				'bodyBorderWidth'            			=> 1,
+				'bodyBorderTopWidth'					=> 1,
+				'bodyBorderLeftWidth'					=> 1,
+				'bodyBorderRightWidth'					=> 1,
+				'bodyBorderBottomWidth'					=> 1,
+				'bodyBorderTopWidthTablet'				=> 1,
+				'bodyBorderLeftWidthTablet'				=> 1,
+				'bodyBorderRightWidthTablet'			=> 1,
+				'bodyBorderBottomWidthTablet'			=> 1,
+				'bodyBorderTopWidthMobile'				=> 1,
+				'bodyBorderLeftWidthMobile'				=> 1,
+				'bodyBorderRightWidthMobile'			=> 1,
+				'bodyBorderBottomWidthMobile'			=> 1,
+				//Body radius
+				'bodyBorderTopLeftRadiusMobile'			=>'',
+				'bodyBorderTopRightRadiusMobile'		=> '',
+				'bodyBorderBottomLeftRadiusMobile'		=> '',
+				'bodyBorderBottomRightRadiusMobile'		=> '',
+				'bodyBorderTopLeftRadiusTablet'			=> '',
+				'bodyBorderTopRightRadiusTablet'		=> '',
+				'bodyBorderBottomLeftRadiusTablet'		=> '',
+				'bodyBorderBottomRightRadiusTablet'		=> '',
+				'bodyBorderTopLeftRadius'				=> '',
+				'bodyBorderTopRightRadius'				=> '',
+				'bodyBorderBottomLeftRadius'			=> '',
+				'bodyBorderBottomRightRadius'			 => '',
+				'blockBorderWidth'           => 1,
+				'blockBorderRadius'          => '',
+				'blockBorderColor'           => '#0984ff',
+				'headingBorderStyle'         => '',
+				'headingBorderWidth'         => 1,
+				'headingBorderRadius'        => 0,
+				'headingBorderColor'         => '',
+				'bodyBorderStyle'            => '',
+				'bodyBorderWidth'            => 1,
+
 				'bodyBorderRadius'           => 0,
 				'bodyBorderColor'            => '',
 				'tableType'                  => 'unordered',
@@ -10301,6 +10411,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundColor'            => '',
 				'backgroundVideo'            => '',
 				'backgroundType'             => 'none',
+				'size'                       => 20,
+				'sizeMobile'                 => '',
+				'sizeTablet'                 => '',
+				'icon_color'                 => '#3a3a3a',
 				'hideWidgetMobile'		   => false,
 				'hideWidgetTablet'		   => false,
 				'hideWidget'			   => false,
