@@ -106,7 +106,31 @@ function EditorStyles(props) {
     blockWidth,
     blockBorderStyle,
     blockBorderWidth,
+    headingBorderTopWidth,
+    headingBorderBottomWidth,
+    headingBorderLeftWidth,
+    headingBorderRightWidth,
+    headingBorderTopWidthMobile,
+    headingBorderBottomWidthMobile,
+    headingBorderLeftWidthMobile,
+    headingBorderRightWidthMobile,
+    headingBorderTopWidthTablet,
+    headingBorderBottomWidthTablet,
+    headingBorderLeftWidthTablet,
+    headingBorderRightWidthTablet,
     blockBorderRadius,
+    headingBorderTopLeftRadius,
+    headingBorderTopRightRadius,
+    headingBorderBottomLeftRadius,
+    headingBorderBottomRightRadius,
+    headingBorderTopLeftRadiusMobile,
+    headingBorderTopRightRadiusMobile,
+    headingBorderBottomLeftRadiusMobile,
+    headingBorderBottomRightRadiusMobile,
+    headingBorderTopLeftRadiusTablet,
+    headingBorderTopRightRadiusTablet,
+    headingBorderBottomLeftRadiusTablet,
+    headingBorderBottomRightRadiusTablet,
     blockBorderColor,
     headingBorderStyle,
     headingBorderWidth,
@@ -114,6 +138,32 @@ function EditorStyles(props) {
     headingBorderColor,
     bodyBorderStyle,
     bodyBorderWidth,
+    //Body border width
+    bodyBorderTopWidth,
+    bodyBorderLeftWidth,
+    bodyBorderRightWidth,
+    bodyBorderBottomWidth,
+    bodyBorderTopWidthTablet,
+    bodyBorderLeftWidthTablet,
+    bodyBorderRightWidthTablet,
+    bodyBorderBottomWidthTablet,
+    bodyBorderTopWidthMobile,
+    bodyBorderLeftWidthMobile,
+    bodyBorderRightWidthMobile,
+    bodyBorderBottomWidthMobile,
+    //body Border radius
+    bodyBorderTopLeftRadiusMobile,
+    bodyBorderTopRightRadiusMobile,
+    bodyBorderBottomLeftRadiusMobile,
+    bodyBorderBottomRightRadiusMobile,
+    bodyBorderTopLeftRadiusTablet,
+    bodyBorderTopRightRadiusTablet,
+    bodyBorderBottomLeftRadiusTablet,
+    bodyBorderBottomRightRadiusTablet,
+    bodyBorderTopLeftRadius,
+    bodyBorderTopRightRadius,
+    bodyBorderBottomLeftRadius,
+    bodyBorderBottomRightRadius,
     bodyBorderRadius,
     bodyBorderColor,
     tableType,
@@ -182,6 +232,7 @@ function EditorStyles(props) {
      bodyBorderTopRightRadius,
      bodyBorderBottomLeftRadius,
      bodyBorderBottomRightRadius,
+
   } = props.attributes;
 
   let justifyContent = "flex-start";
@@ -215,15 +266,6 @@ function EditorStyles(props) {
 
   var selectors = {
     " ": {
-		  "opacity": hideWidget? 0.2 : 1,
-      "padding-top": generateCSSUnit(blockTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
-      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
-      "padding-right": generateCSSUnit(blockRightPadding, "px"),
-      "margin-top": generateCSSUnit(blockTopMargin, "px"),
-      "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
-      "margin-left": generateCSSUnit(blockLeftMargin, "px"),
-      "margin-right": generateCSSUnit(blockRightMargin, "px"),
       "z-index": zIndex,
       display: "flex",
       "background-color":
@@ -263,7 +305,9 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(headingBorderTopRightRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(headingBorderBottomLeftRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(headingBorderBottomRightRadius, "px"),
+
       // "border-radius": generateCSSUnit(headingBorderRadius, "px"),
+
     },
     " .responsive-block-editor-addons-toc__title-wrap:hover": {
       color: headingColorHover,
@@ -330,8 +374,10 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-toc__wrap": {
       "width": generateCSSUnit(blockWidth, "%"),
+
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
       "padding-left": generateCSSUnit(blockLeftPadding, "px"),
@@ -358,8 +404,7 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-    " ": {
-		  "opacity": hideWidgetMobile? 0.2 : 1,
+    " .responsive-block-editor-addons-toc__wrap": {
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -389,6 +434,17 @@ function EditorStyles(props) {
        "border-top-right-radius": generateCSSUnit(headingBorderTopRightRadiusMobile, "px"),
        "border-bottom-left-radius": generateCSSUnit(headingBorderBottomLeftRadiusMobile, "px"),
        "border-bottom-right-radius": generateCSSUnit(headingBorderBottomRightRadiusMobile, "px"),
+
+      //Border Width
+      "border-top-width": generateCSSUnit(headingBorderTopWidthMobile, "px"),
+      "border-left-width": generateCSSUnit(headingBorderLeftWidthMobile, "px"),
+      "border-right-width": generateCSSUnit(headingBorderRightWidthMobile, "px"),
+      "border-bottom-width": generateCSSUnit(headingBorderBottomWidthMobile, "px"),
+      //border-radius
+      "border-top-left-radius": generateCSSUnit(headingBorderTopLeftRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(headingBorderTopRightRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(headingBorderBottomLeftRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(headingBorderBottomRightRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-toc__list-wrap": {
       "font-size": generateCSSUnit(contentFontSizeMobile, "px"),
@@ -411,6 +467,18 @@ function EditorStyles(props) {
        "border-top-right-radius": generateCSSUnit(bodyBorderTopRightRadiusMobile, "px"),
        "border-bottom-left-radius": generateCSSUnit(bodyBorderBottomLeftRadiusMobile, "px"),
        "border-bottom-right-radius": generateCSSUnit(bodyBorderBottomRightRadiusMobile, "px"),
+
+      //Body Border Width
+      "border-top-width": generateCSSUnit(bodyBorderTopWidthMobile, "px"),
+      "border-left-width": generateCSSUnit(bodyBorderLeftWidthMobile, "px"),
+      "border-right-width": generateCSSUnit(bodyBorderRightWidthMobile, "px"),
+      "border-bottom-width": generateCSSUnit(bodyBorderBottomWidthMobile, "px"),
+
+      // border-radius
+      "border-top-left-radius": generateCSSUnit(bodyBorderTopLeftRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(bodyBorderTopRightRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(bodyBorderBottomLeftRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(bodyBorderBottomRightRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-toc__collapsible-icon": {
       "width": sizeMobile ? generateCSSUnit(sizeMobile, "px") : generateCSSUnit(size, "px"),
@@ -423,8 +491,7 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
-    " ": {
-		  "opacity": hideWidgetTablet? 0.2 : 1,
+    " .responsive-block-editor-addons-toc__wrap": {
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
@@ -441,7 +508,12 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(headingLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(headingRightPaddingTablet, "px"),
       "margin-top": generateCSSUnit(headingTopMarginTablet, "px"),
+
      
+
+      "margin-bottom": generateCSSUnit(headingBottomMarginTablet, "px"),
+      "margin-left": generateCSSUnit(headingLeftMarginTablet, "px"),
+      "margin-right": generateCSSUnit(headingRightMarginTablet, "px"),
       //Border Width
       "border-top-width": generateCSSUnit(headingBorderTopWidthTablet, "px"),
       "border-left-width": generateCSSUnit(headingBorderLeftWidthTablet, "px"),
