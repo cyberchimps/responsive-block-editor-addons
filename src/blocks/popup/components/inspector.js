@@ -506,6 +506,8 @@ export default class Inspector extends Component {
                   options={[
                     { value: "click", label: __("On Click", "responsive-block-editor-addons") },
                     { value: "load", label: __("On Load", "responsive-block-editor-addons") },
+                    { value: "scroll", label: __("On Scroll", "responsive-block-editor-addons") },
+                    { value: "end", label: __("On End", "responsive-block-editor-addons") },
                   ]}
                 />
 
@@ -524,7 +526,22 @@ export default class Inspector extends Component {
                     allowReset
                     initialPosition={1}
                   />}
-
+                  
+                {popupTrigger === 'scroll' &&
+                  <RangeControl
+                    label={__("Distance (in percentage)", "responsive-block-editor-addons")}
+                    value={popupTriggerDelay}
+                    onChange={(value) =>
+                      setAttributes({
+                        popupTriggerDelay: value !== undefined ? value : 90,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    beforeIcon=""
+                    allowReset
+                    initialPosition={1}
+                  />}
                 {popupTrigger === 'click' && <>
                   <SelectControl
                     label={__("Popup Trigger Type", "responsive-block-editor-addons")}

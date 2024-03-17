@@ -62,7 +62,7 @@ export default class Save extends Component {
 
             </div>
 
-            <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'} data-popup-id={`popup-${block_id}`}>
+            <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'scroll' === popupTrigger ? popupTriggerDelay : 'none'} data-popup-id={`popup-${block_id}`}>
               <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay"></div>
               <div className="responsive-block-editor-addons-popup-modal-content">
                 {popupToggleCloseBtn &&
