@@ -1,5 +1,5 @@
 /**
- * BLOCK: Responsive Blocks Social Share
+ * BLOCK: Responsive Blocks Social Icons
  **/
 
 // Import block dependencies and components
@@ -21,8 +21,8 @@ const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 // Register the block
-registerBlockType("responsive-block-editor-addons/social-share", {
-  title: __("Social Share", "responsive-block-editor-addons"),
+registerBlockType("responsive-block-editor-addons/social-icons", {
+  title: __("Social Icons", "responsive-block-editor-addons"),
   description: __(
     "This block allows you to display icons linking to your social media profiles or websites",
     "responsive-block-editor-addons"
@@ -30,7 +30,7 @@ registerBlockType("responsive-block-editor-addons/social-share", {
   icon: ResponsiveBlockEditorAddonsIcons.social_share,
   category: "responsive_block_editor_addons",
   keywords: [
-    __("Social Share", "responsive-block-editor-addons"),
+    __("Social Icons", "responsive-block-editor-addons"),
     __("social icons", "responsive-block-editor-addons"),
     __("Responsive", "responsive-block-editor-addons"),
   ],
