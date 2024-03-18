@@ -214,6 +214,16 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+      "border-style": parentBlockBorderStyle,
+      "border-color": parentBlockBorderColor,
+      "border-top-width": generateCSSUnit(parentBlockBorderTopWidth, "px"),
+      "border-left-width": generateCSSUnit(parentBlockBorderLeftWidth, "px"),
+      "border-right-width": generateCSSUnit(parentBlockBorderRightWidth, "px"),
+      "border-bottom-width": generateCSSUnit(parentBlockBorderBottomWidth, "px"),
+      "border-top-left-radius": generateCSSUnit(parentBlockBorderTopLeftRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(parentBlockBorderTopRightRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(parentBlockBorderBottomLeftRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(parentBlockBorderBottomRightRadius, "px"),
       "margin-bottom": generateCSSUnit(rowsGap, "px"),
     },
     " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
@@ -264,18 +274,6 @@ function EditorStyles(props) {
       "flex-direction": iconAlign,
       "color": titleTextColor,
       "background-color": `${hexToRgba(titleBackgroundColor || "#fff", contentOpacity || 0)}`,
-      "border-style": parentBlockBorderStyle,
-      "border-color": parentBlockBorderColor,
-      "border-top-width": generateCSSUnit(parentBlockBorderTopWidth, "px"),
-      "border-left-width": generateCSSUnit(parentBlockBorderLeftWidth, "px"),
-      "border-right-width": generateCSSUnit(parentBlockBorderRightWidth, "px"),
-      "border-bottom-width": generateCSSUnit(parentBlockBorderBottomWidth, "px"),
-      //border radius
-      "border-top-left-radius": generateCSSUnit(parentBlockBorderTopLeftRadius, "px"),
-      "border-top-right-radius": generateCSSUnit(parentBlockBorderTopRightRadius, "px"),
-      "border-bottom-left-radius": generateCSSUnit(parentBlockBorderBottomLeftRadius, "px"),
-      "border-bottom-right-radius": generateCSSUnit(parentBlockBorderBottomRightRadius, "px"),
-
       "padding-top": generateCSSUnit(titleTopSpacing, "px"),
       "padding-bottom": generateCSSUnit(titleBottomSpacing, "px"),
       "padding-left": generateCSSUnit(titleLeftSpacing, "px"),

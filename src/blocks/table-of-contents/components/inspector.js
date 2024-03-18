@@ -515,9 +515,49 @@ export default class Inspector extends Component {
                   { value: "footer", label: __("Footer", "responsive-block-editor-addons") },
                 ]}
               />
-              <Fragment>
+            </PanelBody>
+            <PanelBody title={__("Smooth Scroll", "responsive-block-editor-addons")} initialOpen={false}>
+              <ToggleControl
+                label={__("Enable Smooth Scroll", "responsive-block-editor-addons")}
+                checked={smoothScroll}
+                onChange={() => setAttributes({ smoothScroll: !smoothScroll })}
+              />
+              {smoothScroll === true && (
+                <RangeControl
+                  label={__("Scroll offset", "responsive-block-editor-addons")}
+                  value={scrollOffset}
+                  min={0}
+                  max={200}
+                  onChange={(scrollOffset) => setAttributes({ scrollOffset })}
+                />
+              )}
+            </PanelBody>
+            <PanelBody
+              title={__("Collapsible", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__(
+                  "Collapsible Content",
+                  "responsive-block-editor-addons"
+                )}
+                checked={isCollapsible}
+                onChange={() =>
+                  this.props.setAttributes({
+                    isCollapsible: !isCollapsible,
+                  })
+                }
+              />
+            </PanelBody>
+            { isCollapsible &&
+            <>
+              <PanelBody
+                title={__("Icon", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <Fragment>
                 <p className="components-base-control__label">
-                  {__("Icon", "responsive-block-editor-addons")}
+                  {__("Select Icon", "responsive-block-editor-addons")}
                 </p>
                 <FontIconPicker
                   icons={svg_icons}
@@ -533,22 +573,7 @@ export default class Inspector extends Component {
                 />
                 <hr className="responsive-block-editor-addons-editor__separator" />
               </Fragment>
-              <p className="responsive-block-editor-addons-setting-label">
-                {__("Icon Color", "responsive-block-editor-addons")}
-                <span className="components-base-control__label">
-                  <span
-                    className="component-color-indicator"
-                    style={{ backgroundColor: icon_color }}
-                  ></span>
-                </span>
-              </p>
-              <ColorPalette
-                value={icon_color}
-                onChange={(value) => setAttributes({ icon_color: value })}
-                allowReset
-              />
-              <hr className="responsive-block-editor-addons-editor__separator" />
-            <TabPanel
+              <TabPanel
               className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
               activeClass="active-tab"
               tabs={[
@@ -640,40 +665,9 @@ export default class Inspector extends Component {
                   return <div>{tabout}</div>;
                 }}
               </TabPanel>
-            </PanelBody>
-            <PanelBody title={__("Smooth Scroll", "responsive-block-editor-addons")} initialOpen={false}>
-              <ToggleControl
-                label={__("Enable Smooth Scroll", "responsive-block-editor-addons")}
-                checked={smoothScroll}
-                onChange={() => setAttributes({ smoothScroll: !smoothScroll })}
-              />
-              {smoothScroll === true && (
-                <RangeControl
-                  label={__("Scroll offset", "responsive-block-editor-addons")}
-                  value={scrollOffset}
-                  min={0}
-                  max={200}
-                  onChange={(scrollOffset) => setAttributes({ scrollOffset })}
-                />
-              )}
-            </PanelBody>
-            <PanelBody
-              title={__("Collapsible", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Collapsible Content",
-                  "responsive-block-editor-addons"
-                )}
-                checked={isCollapsible}
-                onChange={() =>
-                  this.props.setAttributes({
-                    isCollapsible: !isCollapsible,
-                  })
-                }
-              />
-            </PanelBody>
+              </PanelBody>
+            </>
+            }
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -3407,6 +3401,30 @@ export default class Inspector extends Component {
                 )}
               </PanelBody>
             </PanelBody>
+            { isCollapsible &&
+              <>
+              <PanelBody
+               title={__("Icon", "responsive-block-editor-addons")}
+               initialOpen={false}
+              >
+                <p className="responsive-block-editor-addons-setting-label">
+                {__("Icon Color", "responsive-block-editor-addons")}
+                <span className="components-base-control__label">
+                  <span
+                    className="component-color-indicator"
+                    style={{ backgroundColor: icon_color }}
+                  ></span>
+                </span>
+              </p>
+              <ColorPalette
+                value={icon_color}
+                onChange={(value) => setAttributes({ icon_color: value })}
+                allowReset
+              />
+
+              </PanelBody>
+              </>
+            }
           </InspectorTab>
           <InspectorTab key={"advance"}>
           <PanelBody
