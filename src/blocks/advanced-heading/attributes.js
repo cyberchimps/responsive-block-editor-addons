@@ -189,6 +189,194 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  blockTopPadding: {
+    type: "number",
+    default: 10,
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+  },
+  blockBottomPadding: {
+    type: "number",
+    default: 10,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+  },
+  blockLeftPadding: {
+    type: "number",
+    default: 10,
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+  },
+  blockRightPadding: {
+    type: "number",
+    default: 10,
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+  },
+  blockTopMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockRightMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockTopMarginTablet: {
+    type: "number",
+  },
+  blockBottomMarginTablet: {
+    type: "number",
+  },
+  blockLeftMarginTablet: {
+    type: "number",
+  },
+  blockRightMarginTablet: {
+    type: "number",
+  },
+  blockTopMarginMobile: {
+    type: "number",
+  },
+  blockBottomMarginMobile: {
+    type: "number",
+  },
+  blockLeftMarginMobile: {
+    type: "number",
+  },
+  blockRightMarginMobile: {
+    type: "number",
+  },
+  topMargin: {
+	  type: "number",
+	  default: 999,
+  },
+  bottomMargin: {
+	type: "number",
+	default: 999,
+  },
+  leftMargin: {
+	type: "number",
+	default: 999,
+  },
+  rightMargin: {
+	type: "number",
+	default: 999,
+  },
+  topPadding: {
+	type: "number",
+	default: 999,
+  },
+  bottomPadding: {
+    type: "number",
+    default: 999,
+  },
+  leftPadding: {
+    type: "number",
+    default: 999,
+  },
+  rightPadding: {
+    type: "number",
+    default: 999,
+  },
+  topMarginMobile: {
+	type: "number",
+	default: 999,
+  },
+  bottomMarginMobile: {
+    type: "number",
+    default: 999,
+  },
+  leftMarginMobile: {
+    type: "number",
+    default: 999,
+  },
+  rightMarginMobile: {
+    type: "number",
+    default: 999,
+  },
+  topPaddingMobile: {
+    type: "number",
+    default: 999,
+  },
+  bottomPaddingMobile: {
+    type: "number",
+    default: 999,
+  },
+  leftPaddingMobile: {
+    type: "number",
+    default: 999,
+  },
+  rightPaddingMobile: {
+    type: "number",
+    default: 999,
+  },
+  topMarginTablet: {
+	type: "number",
+	default: 999,
+  },
+  bottomMarginTablet: {
+	type: "number",
+	default: 999,
+  },
+  leftMarginTablet: {
+	type: "number",
+	default: 999,
+  },
+  rightMarginTablet: {
+	type: "number",
+	default: 999,
+  },
+  topPaddingTablet: {
+	type: "number",
+	default: 999,
+  },
+  bottomPaddingTablet: {
+	type: "number",
+	default: 999,
+  },
+  leftPaddingTablet: {
+	type: "number",
+	default: 999,
+  },
+  rightPaddingTablet: {
+	type: "number",
+	default: 999,
+  },
+	hideWidget: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetTablet: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetMobile: {
+	  type: "boolean",
+	  default: false,
+	},
 };
 
 export default attributes;

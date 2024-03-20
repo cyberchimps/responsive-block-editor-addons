@@ -183,56 +183,6 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
-    headingBorderTopWidth,
-    headingBorderBottomWidth,
-    headingBorderLeftWidth,
-    headingBorderRightWidth,
-    headingBorderTopWidthMobile,
-    headingBorderBottomWidthMobile,
-    headingBorderLeftWidthMobile,
-    headingBorderRightWidthMobile,
-    headingBorderTopWidthTablet,
-    headingBorderBottomWidthTablet,
-    headingBorderLeftWidthTablet,
-    headingBorderRightWidthTablet,
-    headingBorderTopLeftRadius,
-    headingBorderTopRightRadius,
-    headingBorderBottomLeftRadius,
-    headingBorderBottomRightRadius,
-    headingBorderTopLeftRadiusMobile,
-    headingBorderTopRightRadiusMobile,
-    headingBorderBottomLeftRadiusMobile,
-    headingBorderBottomRightRadiusMobile,
-    headingBorderTopLeftRadiusTablet,
-    headingBorderTopRightRadiusTablet,
-    headingBorderBottomLeftRadiusTablet,
-    headingBorderBottomRightRadiusTablet,
-    bodyBorderTopWidth,
-    bodyBorderLeftWidth,
-    bodyBorderRightWidth,
-    bodyBorderBottomWidth,
-    bodyBorderTopWidthTablet,
-    bodyBorderLeftWidthTablet,
-    bodyBorderRightWidthTablet,
-    bodyBorderBottomWidthTablet,
-    bodyBorderTopWidthMobile,
-    bodyBorderLeftWidthMobile,
-    bodyBorderRightWidthMobile,
-    bodyBorderBottomWidthMobile,
-     //body Border radius
-     bodyBorderTopLeftRadiusMobile,
-     bodyBorderTopRightRadiusMobile,
-     bodyBorderBottomLeftRadiusMobile,
-     bodyBorderBottomRightRadiusMobile,
-     bodyBorderTopLeftRadiusTablet,
-     bodyBorderTopRightRadiusTablet,
-     bodyBorderBottomLeftRadiusTablet,
-     bodyBorderBottomRightRadiusTablet,
-     bodyBorderTopLeftRadius,
-     bodyBorderTopRightRadius,
-     bodyBorderBottomLeftRadius,
-     bodyBorderBottomRightRadius,
-
   } = props.attributes;
 
   let justifyContent = "flex-start";
@@ -267,6 +217,7 @@ function EditorStyles(props) {
   var selectors = {
     " ": {
       "z-index": zIndex,
+		  "opacity": hideWidget? 0.2 : 1,
       display: "flex",
       "background-color":
         backgroundType == "color"
@@ -404,6 +355,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-toc__wrap": {
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -491,6 +445,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-toc__wrap": {
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
