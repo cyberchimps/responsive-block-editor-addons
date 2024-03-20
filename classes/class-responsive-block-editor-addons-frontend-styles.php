@@ -15531,7 +15531,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-color'     => $attr['popupBlockBorderColor'],
 				),
 				' .responsive-block-editor-addons-popup-modal-header'                         => array(
-					'justify-content' => $attr['popupToggleCloseBtnPosition'],
+					'justify-content' => $attr['popupToggleCloseBtnAlignment'],
 				),
 				' .responsive-block-editor-addons-popup-modal-header .dashicons.dashicons-no' => array(
 					'color' => $attr['popupCloseBtnColor'],
@@ -15539,6 +15539,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-popup-modal-wrap-overlay'                   => array(
 					'background-color' => $attr['popupOverlayColor'],
 					'opacity'          => (int) $attr['popupOverlayOpacity'] / 100,
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-icon'                 => array(
+					'width'  => self::get_css_value( $attr['size'], 'px' ),
+					'height' => self::get_css_value( $attr['size'], 'px' ),
+					'fill'   => $attr['icon_color'],
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-icon svg'				=> array(
+					'width'  => self::get_css_value( $attr['size'], 'px' ),
+					'height' => self::get_css_value( $attr['size'], 'px' ),
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-image'				=> array(
+					'width'  => self::get_css_value( $attr['size'], 'px' ),
+					'height' => self::get_css_value( $attr['size'], 'px' ),
 				),
 			);
 			$mobile_selectors = array(
@@ -15572,6 +15585,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'left'           => $mobile['left'],
 					'right'          => $mobile['right'],
 					'bottom'         => $mobile['bottom'],
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-icon'                 => array(
+					'width'  => self::get_css_value( $attr['sizeMobile'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-icon svg'				=> array(
+					'width'  => self::get_css_value( $attr['sizeMobile'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeMobile'], 'px' ),
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-image'				=> array(
+					'width'  => self::get_css_value( $attr['sizeMobile'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeMobile'], 'px' ),
 				),
 			);
 
@@ -15607,6 +15632,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'right'          => $tablet['right'],
 					'bottom'         => $tablet['bottom'],
 				),
+				' .responsive-block-editor-addons-popup-close-button__source-icon'                 => array(
+					'width'  => self::get_css_value( $attr['sizeTablet'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-icon svg'				=> array(
+					'width'  => self::get_css_value( $attr['sizeTablet'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-popup-close-button__source-image'				=> array(
+					'width'  => self::get_css_value( $attr['sizeTablet'], 'px' ),
+					'height' => self::get_css_value( $attr['sizeTablet'], 'px' ),
+				),
+				
 			);
 
 			$combined_selectors = array(
@@ -15656,7 +15694,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'popupTrigger'                        => 'load',
 				'popupTriggerDelay'                   => 1,
 				'popupToggleCloseBtn'                 => true,
-				'popupToggleCloseBtnPosition'         => "flex-end",
+				'popupToggleCloseBtnAlignment'         => "flex-end",
 				'popupBgType'                         => "color",
 				'popupGradient'                       => "linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)",
 				'popupBgColor'                        => "#fff",
@@ -15727,6 +15765,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hideWidgetTablet'        => false,
 				'hideWidgetMobile'        => false,
 				'hideWidget' 			  => false,
+				'size'					  => 20,
+				'sizeMobile'			  => '',
+				'sizeTablet'			  => '',
+				'icon_color'			  => '#3a3a3a',
 			);
 		}
 

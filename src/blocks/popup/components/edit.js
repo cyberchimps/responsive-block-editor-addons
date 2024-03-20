@@ -88,9 +88,60 @@ export default class Edit extends Component {
         popupButtonTypographyFontFamily,
         popupTextTypographyFontFamily,
         block_id,
+        icon,
+        image,
+        source_type,
+        popupToggleCloseBtnPosition,
+        popupToggleCloseBtnAlignment,
       },
       setAttributes,
     } = this.props;
+
+    let image_icon_html = "";
+
+    if (source_type == "icon") {
+      if (icon) {
+        image_icon_html = (
+          <span className="responsive-block-editor-addons-popup-close-button__source-icon">
+            {renderSVG(icon)}
+          </span>
+        );
+      }
+    } else {
+      if (image && image.url) {
+        image_icon_html = (
+          <img
+            className="responsive-block-editor-addons-popup-close-button__source-image"
+            src={image.url}
+          />
+        );
+      }
+    }
+
+    let close_btn_position= "";
+
+    if(popupToggleCloseBtnPosition == "inside"){
+      close_btn_position =(
+        <span className="responsive-block-editor-addons-popup-close-button-position-inside">
+          {image_icon_html}
+        </span>
+      );
+    }else{
+      if ( popupToggleCloseBtnPosition == "outside" && popupToggleCloseBtnAlignment == "flex-end" ){
+        close_btn_position=(
+          <span className="responsive-block-editor-addons-popup-close-button-position-outside-align-right">
+          {image_icon_html}
+        </span>
+        );        
+      }
+      else{
+        close_btn_position=(
+          <span className="responsive-block-editor-addons-popup-close-button-position-outside-align-left">
+          {image_icon_html}
+        </span>
+        );
+      }
+    }
 
     const VariantSelector = () => {
       return (
@@ -167,7 +218,9 @@ export default class Edit extends Component {
               <div className="responsive-block-editor-addons-popup-modal-content">
                 {popupToggleCloseBtn &&
                   <div className="responsive-block-editor-addons-popup-modal-header">
-                    <button onClick={() => this.setState({ isModalOpen: false })} type="button"><span className="dashicons dashicons-no"></span></button>
+                    <button onClick={() => this.setState({ isModalOpen: false })} type="button">
+                     {close_btn_position}
+                     </button>
                   </div>}
                 <div className="responsive-block-editor-addons-popup-modal-body">
                   <div className="responsive-block-editor-addons-popup-innerblock">
