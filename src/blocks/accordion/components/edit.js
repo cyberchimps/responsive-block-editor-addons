@@ -605,6 +605,26 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               max={100}
             />
           </PanelColorSettings>
+          {"none" != parentBlockBorderStyle && (
+          <Fragment>
+            <p className="responsive-setting-label">
+              {__("Border Color")}
+              <span className="components-base-control__label">
+                <span
+                  className="component-color-indicator"
+                  style={{ backgroundColor: parentBlockBorderColor }}
+                ></span>
+              </span>
+            </p>
+            <ColorPalette
+              value={parentBlockBorderColor}
+              onChange={(colorValue) =>
+                setAttributes({ parentBlockBorderColor: colorValue })
+              }
+              allowReset
+            />
+          </Fragment>
+        )}
         </PanelBody>
       );
     };
@@ -1097,26 +1117,6 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             return <div>{tabout}</div>;
           }}
         </TabPanel>
-        {"none" != parentBlockBorderStyle && (
-          <Fragment>
-            <p className="responsive-setting-label">
-              {__("Border Color")}
-              <span className="components-base-control__label">
-                <span
-                  className="component-color-indicator"
-                  style={{ backgroundColor: parentBlockBorderColor }}
-                ></span>
-              </span>
-            </p>
-            <ColorPalette
-              value={parentBlockBorderColor}
-              onChange={(colorValue) =>
-                setAttributes({ parentBlockBorderColor: colorValue })
-              }
-              allowReset
-            />
-          </Fragment>
-        )}
       </PanelBody>
       );
     };
