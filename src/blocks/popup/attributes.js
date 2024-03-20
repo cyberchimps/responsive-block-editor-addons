@@ -111,6 +111,10 @@ const attributes = {
     },
     popupToggleCloseBtnPosition: {
         type: "string",
+        default: "inside"
+    },
+    popupToggleCloseBtnAlignment: {
+        type: "string",
         default: "flex-end"
     },
     popupBgType: {
@@ -378,6 +382,31 @@ const attributes = {
     hideWidgetMobile: {
       type: "boolean",
       default: false,
+    },
+    icon: {
+        type: "string",
+        default: "fab fa-arrow-circle-right",
+    },
+    image: {
+        type: "object",
+    },
+    icon_color: {
+        type: "string",
+        default: "#3a3a3a",
+    },
+    size: {
+        type: "number",
+        default: 20,
+    },
+    sizeMobile: {
+        type: "number",
+    },
+    sizeTablet:{
+        type: "number",
+    },
+    source_type: {
+        type: "string",
+        default: "icon",
     },
 };
 

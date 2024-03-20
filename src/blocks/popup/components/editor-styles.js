@@ -11,6 +11,7 @@ function EditorStyles(props) {
     popupContainerWidthTablet,
     popupContainerWidthMobile,
     popupToggleCloseBtnPosition,
+    popupToggleCloseBtnAlignment,
     popupHeightType,
     popupHeightCustom,
     popupHeightCustomTablet,
@@ -93,6 +94,10 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    size,
+    sizeMobile,
+    sizeTablet,
+    icon_color,
   } = props.attributes;
 
   const popupScreenPositions = {
@@ -296,7 +301,7 @@ function EditorStyles(props) {
       "border-color": popupBlockBorderColor,
     },
     " .responsive-block-editor-addons-popup-modal-header": {
-      "justify-content": popupToggleCloseBtnPosition,
+      "justify-content": popupToggleCloseBtnAlignment,
     },
     " .responsive-block-editor-addons-popup-modal-header .dashicons.dashicons-no": {
       "color": popupCloseBtnColor,
@@ -304,6 +309,15 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-popup-modal-wrap-overlay": {
       "background-color": popupOverlayColor,
       "opacity": parseInt(popupOverlayOpacity) / 100,
+    },
+    " .responsive-block-editor-addons-popup-close-button__source-icon svg": {
+      width: generateCSSUnit(size, "px"),
+      height: generateCSSUnit(size, "px"),
+      fill: icon_color,
+    },
+    " .responsive-block-editor-addons-popup-close-button__source-image": {
+      width: generateCSSUnit(size, "px"),
+      height: generateCSSUnit(size, "px"),
     },
   };
 
@@ -336,6 +350,14 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(popupPaddingLeftMobile, "px"),
       ...tablet,
     },
+    " .responsive-block-editor-addons-popup-close-button__source-icon svg": {
+      width: generateCSSUnit(sizeMobile, "px"),
+      height: generateCSSUnit(sizeMobile, "px"),
+    },
+    " .responsive-block-editor-addons-popup-close-button__source-image": {
+      width: generateCSSUnit(sizeMobile, "px"),
+      height: generateCSSUnit(sizeMobile, "px"),
+    }
   };
 
   var tablet_selectors = {
@@ -367,6 +389,14 @@ function EditorStyles(props) {
       "padding-left": generateCSSUnit(popupPaddingLeftTablet, "px"),
       ...mobile,
     },
+    " .responsive-block-editor-addons-popup-close-button__source-icon svg": {
+      width: generateCSSUnit(sizeTablet, "px"),
+      height: generateCSSUnit(sizeTablet, "px"),
+    },
+    " .responsive-block-editor-addons-popup-close-button__source-image": {
+      width: generateCSSUnit(sizeTablet, "px"),
+      height: generateCSSUnit(sizeTablet, "px"),
+    }
   };
 
   var styling_css = "";

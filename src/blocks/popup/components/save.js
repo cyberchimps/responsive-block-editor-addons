@@ -18,6 +18,8 @@ export default class Save extends Component {
   render() {
     const {
       isPopupVariantSelected,
+      popupToggleCloseBtnPosition,
+      popupToggleCloseBtnAlignment,
       popupToggleCloseBtn,
       popupTrigger,
       popupTriggerDelay,
@@ -28,7 +30,56 @@ export default class Save extends Component {
       popupButtonText,
       block_id,
       anchor,
+      source_type,
+      icon,
+      image,
     } = this.props.attributes;
+
+    let image_icon_html = "";
+
+    if (source_type == "icon") {
+      if (icon) {
+        image_icon_html = (
+          <span className="responsive-block-editor-addons-popup-close-button__source-icon">
+            {renderSVG(icon)}
+          </span>
+        );
+      }
+    } else {
+      if (image && image.url) {
+        image_icon_html = (
+          <img
+            className="responsive-block-editor-addons-popup-close-button__source-image"
+            src={image.url}
+          />
+        );
+      }
+    }
+
+    let close_btn_position= "";
+
+    if(popupToggleCloseBtnPosition == "inside"){
+      close_btn_position =(
+        <span className="responsive-block-editor-addons-popup-close-button-position-inside">
+          {image_icon_html}
+        </span>
+      );
+    }else{
+      if ( popupToggleCloseBtnPosition == "outside" && popupToggleCloseBtnAlignment == "flex-end"){
+        close_btn_position=(
+          <span className="responsive-block-editor-addons-popup-close-button-position-outside-align-right">
+          {image_icon_html}
+        </span>
+        );        
+      }
+      else{
+        close_btn_position=(
+          <span className="responsive-block-editor-addons-popup-close-button-position-outside-align-left">
+          {image_icon_html}
+        </span>
+        );
+      }
+    }
 
     return [
       <div
@@ -62,12 +113,14 @@ export default class Save extends Component {
 
             </div>
 
-            <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'none'} data-popup-id={`popup-${block_id}`}>
+            <div className="responsive-block-editor-addons-popup-modal-wrap responsive-block-editor-popup-modal-hide" data-trigger-type={popupTrigger} data-trigger-delay={'load' === popupTrigger ? popupTriggerDelay : 'scroll' === popupTrigger ? popupTriggerDelay : 'none'} data-popup-id={`popup-${block_id}`}>
               <div role="presentation" className="responsive-block-editor-addons-popup-modal-wrap-overlay"></div>
               <div className="responsive-block-editor-addons-popup-modal-content">
                 {popupToggleCloseBtn &&
                   <div className="responsive-block-editor-addons-popup-modal-header">
-                    <button type="button"><span className="dashicons dashicons-no"></span></button>
+                    <button type="button">
+                      {close_btn_position}
+                    </button>
                   </div>}
                 <div className="responsive-block-editor-addons-popup-modal-body">
                   <div className="responsive-block-editor-addons-popup-innerblock">

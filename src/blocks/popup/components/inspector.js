@@ -33,6 +33,7 @@ const {
   ButtonGroup,
   GradientPicker,
   TextControl,
+  BaseControl,
 } = wp.components;
 
 const colors = [
@@ -53,6 +54,23 @@ export default class Inspector extends Component {
   constructor(props) {
     super(...arguments);
     this.onSelectImageTrigger = this.onSelectImageTrigger.bind(this);
+    this.onSelectImage = this.onSelectImage.bind(this);
+    this.onRemoveImage = this.onRemoveImage.bind(this);
+  }
+
+  onSelectImage(media) {
+    const { setAttributes } = this.props;
+
+    if (!media || !media.url) {
+      setAttributes({ image: null });
+      return;
+    }
+
+    if (!media.type || "image" != media.type) {
+      return;
+    }
+
+    setAttributes({ image: media });
   }
 
   onSelectImageTrigger(media) {
@@ -71,6 +89,13 @@ export default class Inspector extends Component {
     setAttributes({ popupImageTrigger: media.url });
   }
 
+    /*
+   * Event to set Image as null while removing.
+   */
+    onRemoveImage() {
+      const { setAttributes } = this.props;
+      setAttributes({ image: null });
+    }
   render() {
     // Setup the attributes
     const {
@@ -102,6 +127,7 @@ export default class Inspector extends Component {
         popupTriggerDelay,
         popupToggleCloseBtn,
         popupToggleCloseBtnPosition,
+        popupToggleCloseBtnAlignment,
         popupBgColor,
         popupBgType,
         popupGradient,
@@ -171,9 +197,25 @@ export default class Inspector extends Component {
         hideWidget,
         hideWidgetTablet,
         hideWidgetMobile,
+        source_type,
+        size,
+        sizeMobile,
+        sizeTablet,
+        image,
+        icon,
+        icon_color,        
       },
       setAttributes,
     } = this.props;
+
+    let image_name = __("Select Image", "responsive-block-editor-addons");
+    if (image) {
+      if (image.url == null || image.url == "") {
+        image_name = __("Select Image", "responsive-block-editor-addons");
+      } else {
+        image_name = __("Replace Image", "responsive-block-editor-addons");
+      }
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -506,6 +548,8 @@ export default class Inspector extends Component {
                   options={[
                     { value: "click", label: __("On Click", "responsive-block-editor-addons") },
                     { value: "load", label: __("On Load", "responsive-block-editor-addons") },
+                    { value: "scroll", label: __("On Scroll", "responsive-block-editor-addons") },
+                    { value: "end", label: __("On End", "responsive-block-editor-addons") },
                   ]}
                 />
 
@@ -524,7 +568,22 @@ export default class Inspector extends Component {
                     allowReset
                     initialPosition={1}
                   />}
-
+                  
+                {popupTrigger === 'scroll' &&
+                  <RangeControl
+                    label={__("Distance (in percentage)", "responsive-block-editor-addons")}
+                    value={popupTriggerDelay}
+                    onChange={(value) =>
+                      setAttributes({
+                        popupTriggerDelay: value !== undefined ? value : 90,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    beforeIcon=""
+                    allowReset
+                    initialPosition={1}
+                  />}
                 {popupTrigger === 'click' && <>
                   <SelectControl
                     label={__("Popup Trigger Type", "responsive-block-editor-addons")}
@@ -727,15 +786,290 @@ export default class Inspector extends Component {
                   }
                 />
                 {popupToggleCloseBtn &&
+                <>
+                  <SelectControl
+                    label={__("Select Button Source", "responsive-block-editor-addons")}
+                    value={source_type}
+                    onChange={(value) => setAttributes({ source_type: value })}
+                    options={[
+                      {
+                        value: "icon",
+                        label: __("Icon", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "image",
+                        label: __("Image", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                  {"icon" == source_type && (
+                  <>
+                    <p className="components-base-control__label">
+                      {__("Icon", "responsive-block-editor-addons")}
+                    </p>
+                    <FontIconPicker
+                      icons={svg_icons}
+                      renderFunc={renderSVG}
+                      theme="default"
+                      value={icon}
+                      onChange={(value) => setAttributes({ icon: value })}
+                      noSelectedPlaceholder={__(
+                        "Select Icon",
+                        "responsive-block-editor-addons"
+                      )}
+                    />
+                    <hr className="responsive-block-editor-addons-editor__separator" />
+                    <p className="responsive-block-editor-addons-setting-label">
+                      {__("Icon Color", "responsive-block-editor-addons")}
+                      <span className="components-base-control__label">
+                        <span
+                          className="component-color-indicator"
+                          style={{ backgroundColor: icon_color }}
+                          ></span>
+                      </span>
+                    </p>
+                    <ColorPalette
+                      value={icon_color}
+                      onChange={(value) => setAttributes({ icon_color: value })}
+                      allowReset
+                      />
+                    <hr className="responsive-block-editor-addons-editor__separator" />
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                    >
+                  {(tab) => {
+                    let tabout;
+                    
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <>
+                          <RangeControl
+                            label={__(
+                              "Icon Size Mobile",
+                              "responsive-block-editor-addons"
+                              )}
+                              value={sizeMobile}
+                              onChange={(value) =>
+                              setAttributes({
+                                sizeMobile: value !== undefined ? value : 20,
+                              })
+                            }
+                            min={0}
+                            max={500}
+                            allowReset
+                            />
+                        </>
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <>
+                          <RangeControl
+                            label={__(
+                              "Icon Size Tablet",
+                              "responsive-block-editor-addons"
+                              )}
+                              value={sizeTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  sizeTablet: value !== undefined ? value : 20,
+                                })
+                              }
+                              min={0}
+                              max={500}
+                              allowReset
+                              />
+                        </>
+                      );
+                    } else {
+                      tabout = (
+                        <>
+                          <RangeControl
+                            label={__(
+                              "Icon Size",
+                              "responsive-block-editor-addons"
+                              )}
+                              value={size}
+                              onChange={(value) =>
+                                setAttributes({
+                                  size: value !== undefined ? value : 20,
+                                })
+                              }
+                              min={0}
+                              max={500}
+                              allowReset
+                          />
+                        </>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                  </TabPanel>
+                  </>)}
+                  {"image" == source_type && (
+                  <>
+                    <p
+                      className="editor-bg-image-control"
+                      label={__("Image", "responsive-block-editor-addons")}
+                    >
+                      <MediaUpload
+                        title={__(
+                          "Select Image",
+                          "responsive-block-editor-addons"
+                        )}
+                        onSelect={this.onSelectImage}
+                        allowedTypes={["image"]}
+                        value={image}
+                        render={({ open }) => (
+                          <Button variant="secondary" onClick={open}>
+                            {image_name}
+                          </Button>
+                        )}
+                      />
+                      {image && image.url !== "null" && image.url !== "" && (
+                        <Button
+                          className="responsive-block-editor-addons-rm-btn"
+                          onClick={this.onRemoveImage}
+                          isLink
+                          isDestructive
+                        >
+                          {__("Remove Image", "responsive-block-editor-addons")}
+                        </Button>
+                      )}
+                    </p>
+                    <hr className="responsive-block-editor-addons-editor__separator" />
+                    <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                    >
+                  {(tab) => {
+                    let tabout;
+                    
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <>
+                          <RangeControl
+                            label={__(
+                              "Icon Size Mobile",
+                              "responsive-block-editor-addons"
+                              )}
+                              value={sizeMobile}
+                              onChange={(value) =>
+                              setAttributes({
+                                sizeMobile: value !== undefined ? value : 20,
+                              })
+                            }
+                            min={0}
+                            max={500}
+                            allowReset
+                            />
+                        </>
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <>
+                          <RangeControl
+                            label={__(
+                              "Icon Size Tablet",
+                              "responsive-block-editor-addons"
+                              )}
+                              value={sizeTablet}
+                              onChange={(value) =>
+                                setAttributes({
+                                  sizeTablet: value !== undefined ? value : 20,
+                                })
+                              }
+                              min={0}
+                              max={500}
+                              allowReset
+                              />
+                        </>
+                      );
+                    } else {
+                      tabout = (
+                        <>
+                          <RangeControl
+                            label={__(
+                              "Icon Size",
+                              "responsive-block-editor-addons"
+                              )}
+                              value={size}
+                              onChange={(value) =>
+                                setAttributes({
+                                  size: value !== undefined ? value : 20,
+                                })
+                              }
+                              min={0}
+                              max={500}
+                              allowReset
+                          />
+                        </>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                  </TabPanel>
+                  </>
+                  )}
                   <SelectControl
                     label={__("Close Button Position", "responsive-block-editor-addons")}
                     value={popupToggleCloseBtnPosition}
                     onChange={(value) => setAttributes({ popupToggleCloseBtnPosition: value })}
                     options={[
+                      { value: "inside", label: __("Inside", "responsive-block-editor-addons") },
+                      { value: "outside", label: __("Outside", "responsive-block-editor-addons") },
+                    ]}
+                  />
+                  <SelectControl
+                    label={__("Close Button Alignment", "responsive-block-editor-addons")}
+                    value={popupToggleCloseBtnAlignment}
+                    onChange={(value) => setAttributes({ popupToggleCloseBtnAlignment: value })}
+                    options={[
                       { value: "flex-end", label: __("Top Right", "responsive-block-editor-addons") },
                       { value: "flex-start", label: __("Top Left", "responsive-block-editor-addons") },
                     ]}
-                  />}
+                  />
+                </>}
               </PanelBody>
             </InspectorTab>
             <InspectorTab key={"style"}>
