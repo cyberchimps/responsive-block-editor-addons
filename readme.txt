@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, editor, gutenberg blocks, page builder, guten
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -108,7 +108,7 @@ Check out our customizable, feature rich WordPress blocks that'll help you desig
 **Social Blocks**
 
 - [Instagram Feed](https://cyberchimps.com/blocks/instagram-feed/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): This block allows you to stream Instagram content directly to your WordPress website, thus increasing your odds of getting new followers and clients.
-- [Social Share](https://cyberchimps.com/blocks/social-share/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Social share block allows you to add modern social media icons for all popular networks and link them to your brand or personal accounts.
+- [Social Icons](https://cyberchimps.com/blocks/social-share/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks): Social icons block allows you to add modern social media icons for all popular networks and link them to your brand or personal accounts.
 
 **Timeline Blocks**
 
@@ -198,6 +198,15 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+
+= 1.8.2 - 20th March 2024 =
+* New - Introduced Z-Index in advance Settings.
+* New - Introduced Responsive Condition in advance Settings.
+* New - Renamed Social Share block to Social Icons block.
+* Improvements - Introduced Alignment option in Icon List block.
+* Improvements - Added options for padding, border, change icon for Table Of Content block.
+* Improvements - Introduced Border option in Accordion block.
+* Improvements - Introduced Spacing option in Advanced Heading block.
 
 = 1.8.1 - 14th February 2024 =
 * Added - Minor API Changes.

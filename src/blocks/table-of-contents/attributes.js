@@ -371,7 +371,91 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  headingBorderTopWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderBottomWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderLeftWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderRightWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderTopWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderBottomWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderLeftWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderRightWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderTopWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderBottomWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderLeftWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderRightWidthTablet: {
+    type: "number",
+    default: 1,
+  },
   blockBorderRadius: {
+    type: "number",
+  },
+  headingBorderTopLeftRadius: {
+    type: "number",
+  },
+  headingBorderTopRightRadius: {
+    type: "number",
+  },
+  headingBorderBottomLeftRadius: {
+    type: "number",
+  },
+  headingBorderBottomRightRadius: {
+    type: "number",
+  },
+  headingBorderTopLeftRadiusMobile: {
+    type: "number",
+  },
+  headingBorderTopRightRadiusMobile: {
+    type: "number",
+  },
+  headingBorderBottomLeftRadiusMobile: {
+    type: "number",
+  },
+  headingBorderBottomRightRadiusMobile: {
+    type: "number",
+  },
+  headingBorderTopLeftRadiusTablet: {
+    type: "number",
+  },
+  headingBorderTopRightRadiusTablet: {
+    type: "number",
+  },
+  headingBorderBottomLeftRadiusTablet: {
+    type: "number",
+  },
+  headingBorderBottomRightRadiusTablet: {
     type: "number",
   },
   blockBorderColor: {
@@ -398,6 +482,91 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  bodyBorderTopLeftRadiusMobile: {
+    type: "number",
+  },
+bodyBorderTopRightRadiusMobile: {
+  type: "number",
+},
+bodyBorderBottomLeftRadiusMobile: {
+  type: "number",
+},
+bodyBorderBottomRightRadiusMobile: {
+  type: "number",
+},
+bodyBorderTopLeftRadiusTablet: {
+  type: "number",
+},
+bodyBorderTopRightRadiusTablet: {
+  type: "number",
+},
+bodyBorderBottomLeftRadiusTablet: {
+  type: "number",
+},
+bodyBorderBottomRightRadiusTablet: {
+  type: "number",
+},
+bodyBorderTopLeftRadius: {
+  type: "number",
+},
+bodyBorderTopRightRadius: {
+  type: "number",
+},
+bodyBorderBottomLeftRadius: {
+  type: "number",
+},
+bodyBorderBottomRightRadius: {
+  type: "number",
+},
+  bodyBorderTopWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderLeftWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderRightWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderBottomWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderTopWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderLeftWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderRightWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderBottomWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderTopWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderLeftWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderRightWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderBottomWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+
   bodyBorderRadius: {
     type: "number",
   },
@@ -468,6 +637,211 @@ const attributes = {
       type: 'number',
       default: 30
   },
+  icon_color: {
+    type: "string",
+    default: "#3a3a3a",
+  },
+  size: {
+
+    type: "number",
+    default: 16,
+  },
+  sizeMobile: {
+    type: "number",
+  },
+  sizeTablet:{
+    type: "number",
+  },
+	hideWidget: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetTablet: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetMobile: {
+	  type: "boolean",
+	  default: false,
+	},
+  z_index: {
+    type: "number",
+    default: 16,
+  },
+  sizeMobile: {
+    type: "number",
+  },
+  sizeTablet:{
+    type: "number",
+  },
+  headingBorderTopWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderBottomWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderLeftWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderRightWidth: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderTopWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderBottomWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderLeftWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderRightWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderTopWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderBottomWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderLeftWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderRightWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  headingBorderTopLeftRadius: {
+    type: "number",
+  },
+  headingBorderTopRightRadius: {
+    type: "number",
+  },
+  headingBorderBottomLeftRadius: {
+    type: "number",
+  },
+  headingBorderBottomRightRadius: {
+    type: "number",
+  },
+  headingBorderTopLeftRadiusMobile: {
+    type: "number",
+  },
+  headingBorderTopRightRadiusMobile: {
+    type: "number",
+  },
+  headingBorderBottomLeftRadiusMobile: {
+    type: "number",
+  },
+  headingBorderBottomRightRadiusMobile: {
+    type: "number",
+  },
+  headingBorderTopLeftRadiusTablet: {
+    type: "number",
+  },
+  headingBorderTopRightRadiusTablet: {
+    type: "number",
+  },
+  headingBorderBottomLeftRadiusTablet: {
+    type: "number",
+  },
+  headingBorderBottomRightRadiusTablet: {
+    type: "number",
+  },
+  bodyBorderTopWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderLeftWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderRightWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderBottomWidth: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderTopWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderLeftWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderRightWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderBottomWidthTablet: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderTopWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderLeftWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderRightWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderBottomWidthMobile: {
+    type: "number",
+    default: 1,
+  },
+  bodyBorderTopLeftRadiusMobile: {
+    type: "number",
+  },
+bodyBorderTopRightRadiusMobile: {
+  type: "number",
+},
+bodyBorderBottomLeftRadiusMobile: {
+  type: "number",
+},
+bodyBorderBottomRightRadiusMobile: {
+  type: "number",
+},
+bodyBorderTopLeftRadiusTablet: {
+  type: "number",
+},
+bodyBorderTopRightRadiusTablet: {
+  type: "number",
+},
+bodyBorderBottomLeftRadiusTablet: {
+  type: "number",
+},
+bodyBorderBottomRightRadiusTablet: {
+  type: "number",
+},
+bodyBorderTopLeftRadius: {
+  type: "number",
+},
+bodyBorderTopRightRadius: {
+  type: "number",
+},
+bodyBorderBottomLeftRadius: {
+  type: "number",
+},
+bodyBorderBottomRightRadius: {
+  type: "number",
+},
 };
 
 export default attributes;

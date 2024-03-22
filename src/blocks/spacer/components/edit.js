@@ -4,6 +4,7 @@
 import classnames from "classnames";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import EditorStyles from "./editor-styles";
 
 /**
  * WordPress dependencies
@@ -16,6 +17,7 @@ const {
   RangeControl,
   TabPanel,
   Dashicon,
+  ToggleControl
 } = wp.components;
 
 // Import block components
@@ -31,16 +33,42 @@ class SpacerEdit extends Component {
     super(...arguments);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    var element = document.getElementById(
+      "responsive-block-editor-addons-section-style-" + this.props.clientId
+    );
+
+    if (null !== element && undefined !== element) {
+      element.innerHTML = EditorStyles(this.props);
+    }
+  }
+
   componentDidMount() {
     // Assigning block_id in the attribute.
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
+
+    // Pushing Style tag for this block css.
+    const $style = document.createElement("style");
+    $style.setAttribute(
+      "id",
+      "responsive-block-editor-addons-section-style-" + this.props.clientId
+    );
+    document.head.appendChild($style);
   }
 
   render() {
     // Setup the attributes
     const {
-      attributes: { height, heightTablet, heightMobile, block_id },
+      attributes: {
+        height,
+        heightTablet,
+        heightMobile,
+        block_id,
+				hideWidget,
+				hideWidgetTablet,
+				hideWidgetMobile,
+        z_index, z_indexMobile, z_indexTablet},
       isSelected,
       setAttributes,
       onResizeStart,
@@ -65,6 +93,7 @@ class SpacerEdit extends Component {
 
     return (
       <>
+        <style id={`responsive-block-editor-addons-section-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         <ResizableBox
           className={classnames(
             this.props.className,
@@ -182,7 +211,123 @@ class SpacerEdit extends Component {
                 </TabPanel>
               </PanelBody>
             </InspectorTab>
-            <InspectorTab key={"advance"}></InspectorTab>
+            <InspectorTab key={"advance"}>
+              <PanelBody
+                title={__("Responsive Conditions", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <ToggleControl
+                  label={__(
+                  "Hide on Desktop",
+                  "responsive-block-editor-addons"
+                  )}
+                  checked={hideWidget}
+                  onChange={(value) =>
+                  setAttributes({ hideWidget: !hideWidget })
+                  }
+                />
+                <ToggleControl
+                  label={__(
+                  "Hide on Tablet",
+                  "responsive-block-editor-addons"
+                  )}
+                  checked={hideWidgetTablet}
+                  onChange={(value) =>
+                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+                  }
+                />
+                <ToggleControl
+                  label={__(
+                  "Hide on Mobile",
+                  "responsive-block-editor-addons"
+                  )}
+                  checked={hideWidgetMobile}
+                  onChange={(value) =>
+                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+                  }
+                />
+              </PanelBody>
+            
+            <PanelBody
+              title={__("Z Index", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index (Mobile)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexMobile}
+                        onChange={(value) =>
+                          setAttributes({ z_indexMobile: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index (Tablet)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexTablet}
+                        onChange={(value) =>
+                          setAttributes({ z_indexTablet: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index ", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_index}
+                        onChange={(value) =>
+                          setAttributes({ z_index: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    }
+
+                    return <div>{tabout}</div>;
+                  }}
+              </TabPanel>
+            </PanelBody>
+            </InspectorTab>
           </InspectorTabs>
         </InspectorControls>
       </>

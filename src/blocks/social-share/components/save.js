@@ -27,18 +27,18 @@ export default class Save extends Component {
       <div
         className={classnames(
           this.props.className,
-          "responsive-block-editor-addons-block-social-share",
+          "responsive-block-editor-addons-block-social-icons",
           `block-${block_id}`
         )}
       >
         <div
           className={`responsive-block-editior-addons-share-icons-align-${iconsAlign}`}
         >
-          <ul className="rbea-icons-wrapper responsive-block-editor-addons-share-icons-container">
+          <ul className="rbea-icons-wrapper responsive-block-editor-addons-social-icons-container">
             {socialMediaIcons.map((icon, index) => (
               <li
                 key={index}
-                className={"responsive-block-editor-addons-share-icon"}
+                className={"responsive-block-editor-addons-social-icon"}
                 areaLabel={icon.label}
               >
                 <a
@@ -46,9 +46,9 @@ export default class Save extends Component {
                   target={icon.newTab ? "_blank" : null}
                   rel="nofollow noopener noreferrer"
                 >
-                  <div className="rbea-social-icon responsive-block-editor-addons-share-icon-svg-container">
+                  <div className="rbea-social-icon responsive-block-editor-addons-social-icon-svg-container">
                       { (viewOption==='icon' || viewOption==='icontext') && <span className={classnames(
-                          "rbea-social-icon responsive-block-editor-addons-share-icon-svg",
+                          "rbea-social-icon responsive-block-editor-addons-social-icon-svg",
                           iconColorType === 'official' ?`responsive-block-editor-addons-icon-${icon.icon}` : '',
                         )}>
                         {renderSVG(icon.icon)}
@@ -62,7 +62,7 @@ export default class Save extends Component {
                   rel="nofollow noopener noreferrer"
                   >
                   {icon.label && (viewOption==='text' || viewOption==='icontext') && (
-                    <span className="responsive-block-editor-addons-share-icon-label">
+                    <span className="responsive-block-editor-addons-social-icon-label">
                       {icon.label}
                     </span>
                   )}

@@ -13,6 +13,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
@@ -39,6 +40,7 @@ const {
   Button,
   Dashicon,
   ToggleControl,
+  BaseControl,
 } = wp.components;
 
 const ALLOWED_BLOCKS = ["responsive-block-editor-addons/accordion-item"];
@@ -239,6 +241,60 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 	  titleFontSizeTablet,
 	  contentFontSizeMobile,
 	  contentFontSizeTablet,
+    //Parent block border radius
+    parentBlockBorderTopLeftRadius,
+    parentBlockBorderTopLeftRadiusMobile,
+    parentBlockBorderTopLeftRadiusTablet,
+    parentBlockBorderTopRightRadius,
+    parentBlockBorderTopRightRadiusMobile,
+    parentBlockBorderTopRightRadiusTablet,
+    parentBlockBorderBottomLeftRadius,
+    parentBlockBorderBottomLeftRadiusMobile,
+    parentBlockBorderBottomLeftRadiusTablet,
+    parentBlockBorderBottomRightRadius,
+    parentBlockBorderBottomRightRadiusMobile,
+    parentBlockBorderBottomRightRadiusTablet,
+    //Parent block border width
+    parentBlockBorderTopWidth,
+    parentBlockBorderTopWidthMobile,
+    parentBlockBorderTopWidthTablet,
+    parentBlockBorderBottomWidth,
+    parentBlockBorderBottomWidthMobile,
+    parentBlockBorderBottomWidthTablet,
+    parentBlockBorderLeftWidth,
+    parentBlockBorderLeftWidthMobile,
+    parentBlockBorderLeftWidthTablet,
+    parentBlockBorderRightWidth,
+    parentBlockBorderRightWidthTablet,
+    parentBlockBorderRightWidthMobile,
+    parentBlockBorderStyle,
+    parentBlockBorderColor,
+
+    titleTopSpacing,
+    titleTopSpacingMobile,
+    titleTopSpacingTablet,
+    titleBottomSpacing,
+    titleBottomSpacingMobile,
+    titleBottomSpacingTablet,
+    titleLeftSpacing,
+    titleLeftSpacingMobile,
+    titleLeftSpacingTablet,
+    titleRightSpacing,
+    titleRightSpacingMobile,
+    titleRightSpacingTablet,
+
+    contentTopSpacing,
+    contentTopSpacingMobile,
+    contentTopSpacingTablet,
+    contentBottomSpacing,
+    contentBottomSpacingMobile,
+    contentBottomSpacingTablet,
+    contentLeftSpacing,
+    contentLeftSpacingMobile,
+    contentLeftSpacingTablet,
+    contentRightSpacing,
+    contentRightSpacingMobile,
+    contentRightSpacingTablet,
     } = attributes;
 
     const fontWeightOptions = [
@@ -549,7 +605,519 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               max={100}
             />
           </PanelColorSettings>
+          {"none" != parentBlockBorderStyle && (
+          <Fragment>
+            <p className="responsive-setting-label">
+              {__("Border Color")}
+              <span className="components-base-control__label">
+                <span
+                  className="component-color-indicator"
+                  style={{ backgroundColor: parentBlockBorderColor }}
+                ></span>
+              </span>
+            </p>
+            <ColorPalette
+              value={parentBlockBorderColor}
+              onChange={(colorValue) =>
+                setAttributes({ parentBlockBorderColor: colorValue })
+              }
+              allowReset
+            />
+          </Fragment>
+        )}
         </PanelBody>
+      );
+    };
+    const accordionBorderSettings = () => {
+      return (
+        <PanelBody
+        title={__("Border", "responsive-block-editor-addons")}
+        initialOpen={false}
+      >
+        <SelectControl
+          label={__("Border Style")}
+          value={parentBlockBorderStyle}
+          onChange={(value) =>
+            setAttributes({ parentBlockBorderStyle: value })
+          }
+          options={[
+            { value: "none", label: __("None") },
+            { value: "solid", label: __("Solid") },
+            { value: "dotted", label: __("Dotted") },
+            { value: "dashed", label: __("Dashed") },
+            { value: "double", label: __("Double") },
+            { value: "groove", label: __("Groove") },
+            { value: "inset", label: __("Inset") },
+            { value: "outset", label: __("Outset") },
+            { value: "ridge", label: __("Ridge") },
+          ]}
+        />
+        {"none" != parentBlockBorderStyle && (
+          <Fragment>
+          <BaseControl.VisualLabel>
+              {__("Border Width:", "responsive-block-editor-addons")}
+            </BaseControl.VisualLabel> 
+            <br></br>                 
+          <TabPanel
+            className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+            activeClass="active-tab"
+            tabs={[
+              {
+                name: "desktop",
+                title: <Dashicon icon="desktop" />,
+                className:
+                  " responsive-desktop-tab  responsive-responsive-tabs",
+              },
+              {
+                name: "tablet",
+                title: <Dashicon icon="tablet" />,
+                className:
+                  " responsive-tablet-tab  responsive-responsive-tabs",
+              },
+              {
+                name: "mobile",
+                title: <Dashicon icon="smartphone" />,
+                className:
+                  " responsive-mobile-tab  responsive-responsive-tabs",
+              },
+            ]}
+          >
+            {(tab) => {
+              let tabout;
+
+              if ("mobile" === tab.name) {
+                tabout = (
+                  <Fragment>
+                    <RangeControl
+                      label={__(
+                        "Top (Mobile)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderTopWidthMobile}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderTopWidthMobile: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Bottom (Mobile)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderBottomWidthMobile}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderBottomWidthMobile: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Left (Mobile)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderLeftWidthMobile}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderLeftWidthMobile: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Right (Mobile)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderRightWidthMobile}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderRightWidthMobile: value,
+                        })
+                      }
+                    />
+                  </Fragment>
+                );
+              } else if ("tablet" === tab.name) {
+                tabout = (
+                  <Fragment>
+                    <RangeControl
+                      label={__(
+                        "Top (Tablet)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderTopWidthTablet}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderTopWidthTablet: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Bottom (Tablet)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderBottomWidthTablet}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderBottomWidthTablet: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Left (Tablet)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderLeftWidthTablet}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderLeftWidthTablet: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Right (Tablet)",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderRightWidthTablet}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderRightWidthTablet: value,
+                        })
+                      }
+                    />
+                  </Fragment>
+                );
+              } else {
+                tabout = (
+                  <Fragment>
+                    <RangeControl
+                      label={__(
+                        "Top",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderTopWidth}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderTopWidth: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Bottom",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderBottomWidth}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderBottomWidth: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Left",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderLeftWidth}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderLeftWidth: value,
+                        })
+                      }
+                    />
+                    <RangeControl
+                      label={__(
+                        "Right",
+                        "responsive-block-editor-addons"
+                      )}
+                      min={0}
+                      max={2000}
+                      allowReset
+                      value={parentBlockBorderRightWidth}
+                      onChange={(value) =>
+                        setAttributes({
+                          parentBlockBorderRightWidth: value,
+                        })
+                      }
+                    />
+                  </Fragment>
+                );
+              }
+              return <div>{tabout}</div>;
+            }}
+          </TabPanel>
+        </Fragment>
+        )}
+        <br></br>
+        <BaseControl.VisualLabel>
+            {__("Border Radius:", "responsive-block-editor-addons")}
+          </BaseControl.VisualLabel>
+          <br></br>
+          <TabPanel
+          className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+          activeClass="active-tab"
+          tabs={[
+            {
+              name: "desktop",
+              title: <Dashicon icon="desktop" />,
+              className:
+                " responsive-desktop-tab  responsive-responsive-tabs",
+            },
+            {
+              name: "tablet",
+              title: <Dashicon icon="tablet" />,
+              className:
+                " responsive-tablet-tab  responsive-responsive-tabs",
+            },
+            {
+              name: "mobile",
+              title: <Dashicon icon="smartphone" />,
+              className:
+                " responsive-mobile-tab  responsive-responsive-tabs",
+            },
+          ]}
+        >
+          {(tab) => {
+            let tabout;
+
+            if ("mobile" === tab.name) {
+              tabout = (
+                <Fragment>
+                  <RangeControl
+                    label={__(
+                      "Top Left (Mobile)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderTopLeftRadiusMobile}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderTopLeftRadiusMobile: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Top Right (Mobile)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderTopRightRadiusMobile}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderTopRightRadiusMobile: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Bottom Left (Mobile)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderBottomLeftRadiusMobile}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderBottomLeftRadiusMobile: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Bottom Right (Mobile)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderBottomRightRadiusMobile}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderBottomRightRadiusMobile: value,
+                      })
+                    }
+                  />
+                </Fragment>
+              );
+            } else if ("tablet" === tab.name) {
+              tabout = (
+                <Fragment>
+                  <RangeControl
+                    label={__(
+                      "Top Left(Tablet)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderTopLeftRadiusTablet}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderTopLeftRadiusTablet: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Top Right (Tablet)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderTopRightRadiusTablet}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderTopRightRadiusTablet: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Bottom Left (Tablet)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderBottomLeftRadiusTablet}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderBottomLeftRadiusTablet: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Bottom Right (Tablet)",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderBottomRightRadiusTablet}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderBottomRightRadiusTablet: value,
+                      })
+                    }
+                  />
+                </Fragment>
+              );
+            } else {
+              tabout = (
+                <Fragment>
+                  <RangeControl
+                    label={__(
+                      "Top Left",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderTopLeftRadius}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderTopLeftRadius: value !== undefined ? value : "",
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Top Right",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderTopRightRadius}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderTopRightRadius: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Bottom Left",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderBottomLeftRadius}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderBottomLeftRadius: value,
+                      })
+                    }
+                  />
+                  <RangeControl
+                    label={__(
+                      "Bottom Right",
+                      "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={2000}
+                    allowReset
+                    value={parentBlockBorderBottomRightRadius}
+                    onChange={(value) =>
+                      setAttributes({
+                        parentBlockBorderBottomRightRadius: value,
+                      })
+                    }
+                  />
+                </Fragment>
+              );
+            }
+            return <div>{tabout}</div>;
+          }}
+        </TabPanel>
+      </PanelBody>
       );
     };
     const accordionTypographySettings = () => {
@@ -626,6 +1194,470 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             setAttributes={ setAttributes }
             {...this.props}
           />
+          <br></br>
+          <BaseControl.VisualLabel>
+              {__("Title Padding :", "responsive-block-editor-addons")}
+          </BaseControl.VisualLabel> 
+          <br></br>
+          <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Top (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleTopSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleTopSpacingMobile: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Bottom (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleBottomSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleBottomSpacingMobile: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Left (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleLeftSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleLeftSpacingMobile: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Right (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleRightSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleRightSpacingMobile: value,
+                              })
+                            }
+                          />
+                        </Fragment>
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Top (Tablet) ",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleTopSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleTopSpacingTablet: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Bottom (Tablet)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleBottomSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleBottomSpacingTablet: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Left (Tablet)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleLeftSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleLeftSpacingTablet: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Right (Tablet)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleRightSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleRightSpacingTablet: value,
+                              })
+                            }
+                          />
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Top",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleTopSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleTopSpacing: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Bottom",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleBottomSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleBottomSpacing: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Left",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleLeftSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleLeftSpacing: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Right",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={titleRightSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                titleRightSpacing: value,
+                              })
+                            }
+                          />
+                        </Fragment>
+                      );
+                    }
+
+                    return <div>{tabout}</div>;
+                  }}
+          </TabPanel>
+          <br></br>
+          <BaseControl.VisualLabel>
+              {__("Content Padding :", "responsive-block-editor-addons")}
+          </BaseControl.VisualLabel> 
+          <br></br>
+          <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Top (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentTopSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentTopSpacingMobile: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Bottom (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentBottomSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentBottomSpacingMobile: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Left (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentLeftSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentLeftSpacingMobile: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Right (Mobile)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentRightSpacingMobile}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentRightSpacingMobile: value,
+                              })
+                            }
+                          />
+                        </Fragment>
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Top (Tablet) ",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentTopSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentTopSpacingTablet: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Bottom (Tablet)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentBottomSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentBottomSpacingTablet: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Left (Tablet)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentLeftSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentLeftSpacingTablet: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Right (Tablet)",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentRightSpacingTablet}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentRightSpacingTablet: value,
+                              })
+                            }
+                          />
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <RangeControl
+                            label={__(
+                              "Top",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentTopSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentTopSpacing: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Bottom",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentBottomSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentBottomSpacing: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Left",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentLeftSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentLeftSpacing: value,
+                              })
+                            }
+                          />
+                          <RangeControl
+                            label={__(
+                              "Right",
+                              "responsive-block-editor-addons"
+                            )}
+                            min={0}
+                            max={2000}
+                            allowReset
+                            value={contentRightSpacing}
+                            onChange={(value) =>
+                              setAttributes({
+                                contentRightSpacing: value,
+                              })
+                            }
+                          />
+                        </Fragment>
+                      );
+                    }
+
+                    return <div>{tabout}</div>;
+                  }}
+          </TabPanel>
         </PanelBody>
       );
     };
@@ -877,6 +1909,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               {accordionTypographySettings()}
               {titleFontFamily && loadGoogleFont(titleFontFamily)}
               {contentFontFamily && loadGoogleFont(contentFontFamily)}
+              {accordionBorderSettings()}
             </InspectorTab>
             <InspectorTab key={"advance"}>
             </InspectorTab>

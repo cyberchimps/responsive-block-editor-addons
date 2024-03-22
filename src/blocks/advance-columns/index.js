@@ -263,6 +263,26 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
       type: "number",
       default: 1,
     },
+    hideWidget: {
+      type: "boolean",
+      default: false,
+    },
+    hideWidgetTablet: {
+      type: "boolean",
+      default: false,
+    },
+    hideWidgetMobile: {
+      type: "boolean",
+      default: false,
+    },
+    z_indexTablet: {
+      type: "number",
+      default: 1,
+    },
+    z_indexMobile: {
+      type: "number",
+      default: 1,
+    },
 	backgroundPosition: {
 	  type: "string",
 	  default: "empty",

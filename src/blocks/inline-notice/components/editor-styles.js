@@ -69,7 +69,10 @@ function EditorStyles(props) {
     titlePaddingHorizontalMobile,
     titlePaddingVerticalMobile,
     titlePaddingHorizontalTablet,
-    titlePaddingVerticalTablet
+    titlePaddingVerticalTablet,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   let noticeTypeColor;
@@ -92,6 +95,7 @@ function EditorStyles(props) {
 
   var selectors = {
     "": {
+      "opacity": hideWidget? 0.2 : 1,
       "text-align": noticeAlignment,
       "padding": `${generateCSSUnit(blockTopPadding ,"px")} ${generateCSSUnit(blockRightPadding ,"px")} ${generateCSSUnit(blockBottomPadding ,"px")} ${generateCSSUnit(blockLeftPadding ,"px")}`,
       "margin": `${generateCSSUnit(blockTopMargin ,"px")} ${generateCSSUnit(blockRightMargin ,"px")} ${generateCSSUnit(blockBottomMargin ,"px")} ${generateCSSUnit(blockLeftMargin ,"px")}`,
@@ -139,6 +143,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
       "padding": `${generateCSSUnit(blockTopPaddingMobile ,"px")} ${generateCSSUnit(blockRightPaddingMobile ,"px")} ${generateCSSUnit(blockBottomPaddingMobile ,"px")} ${generateCSSUnit(blockLeftPaddingMobile ,"px")}`,
       "margin": `${generateCSSUnit(blockTopMarginMobile ,"px")} ${generateCSSUnit(blockRightMarginMobile ,"px")} ${generateCSSUnit(blockBottomMarginMobile ,"px")} ${generateCSSUnit(blockLeftMarginMobile ,"px")}`,
     },
@@ -154,6 +159,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
       "padding": `${generateCSSUnit(blockTopPaddingTablet ,"px")} ${generateCSSUnit(blockRightPaddingTablet ,"px")} ${generateCSSUnit(blockBottomPaddingTablet ,"px")} ${generateCSSUnit(blockLeftPaddingTablet ,"px")}`,
       "margin": `${generateCSSUnit(blockTopMarginTablet ,"px")} ${generateCSSUnit(blockRightMarginTablet ,"px")} ${generateCSSUnit(blockBottomMarginTablet ,"px")} ${generateCSSUnit(blockLeftMarginTablet ,"px")}`,
     },

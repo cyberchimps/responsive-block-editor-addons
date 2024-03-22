@@ -351,8 +351,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 				case 'responsive-block-editor-addons/progress-bar':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_progress_bar_css( $blockattr, $block_id );
 					break;
-				case 'responsive-block-editor-addons/social-share':
-					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_social_share_css( $blockattr, $block_id );
+				case 'responsive-block-editor-addons/social-icons':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_social_icons_css( $blockattr, $block_id );
 					break;
 				case 'responsive-block-editor-addons/tabs':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_tabs_css( $blockattr, $block_id );

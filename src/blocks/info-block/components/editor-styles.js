@@ -166,6 +166,9 @@ function EditorStyles(props) {
     animationDelay,
     animationCurve,
     resctaType,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -233,6 +236,7 @@ function EditorStyles(props) {
     " ": {
       "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
+      "opacity": hideWidget? 0.2 : 1,
       "background-color": "empty" !== boxBackgroundColor && "#ffffff" === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
         boxBackgroundColor || "#ffffff",
         newopacity || 0
@@ -428,6 +432,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
       padding: generateCSSUnit(contentPaddingMobile, "px"),
     },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-mobile .responsive-block-editor-addons-ifb-content": {
@@ -480,6 +485,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
       padding: generateCSSUnit(contentPaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-infobox__content-wrap.responsive-block-editor-addons-infobox-stacked-tablet .responsive-block-editor-addons-ifb-content": {

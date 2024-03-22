@@ -150,7 +150,10 @@ function EditorStyles(props) {
     containerPaddingRight, // For compatibility with v1.3.2.
     containerPaddingRightMobile, // For compatibility with v1.3.2.
     containerPaddingRightTablet, // For compatibility with v1.3.2.
-	boxBackgroundColor, // For compatibility with v1.3.2.
+    boxBackgroundColor, // For compatibility with v1.3.2.
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   let boxShadowPositionCSS = boxShadowPosition;
@@ -166,6 +169,9 @@ function EditorStyles(props) {
   let flexColumn = stackOnMobile ? "column" : "row";
 
   var selectors = {
+    "": {
+      "opacity": hideWidget ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-countdown-box-stylings": {
       height: generateCSSUnit(boxHeight, "px"),
       width: generateCSSUnit(boxWidth, "px"),
@@ -245,6 +251,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    "": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-countdown-box-stylings": {
       height: generateCSSUnit(boxHeightMobile, "px"),
       width: stackOnMobile && generateCSSUnit(100, "%"),
@@ -311,6 +320,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    "": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-countdown-box-stylings": {
       height: generateCSSUnit(boxHeightTablet, "px"),
       width: generateCSSUnit(boxWidthTablet, "px"),

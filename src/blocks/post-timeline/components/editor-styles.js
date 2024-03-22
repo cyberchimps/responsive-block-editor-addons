@@ -88,6 +88,9 @@ function EditorStyles(props) {
 	verSpaceMobile,
 	horSpaceTablet,
 	horSpaceMobile,
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -97,6 +100,9 @@ function EditorStyles(props) {
   }
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-timeline__icon-new svg": {
       width: generateCSSUnit(iconSize, "px"),
       height: generateCSSUnit(iconSize, "px"),
@@ -235,6 +241,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-timeline__center-block.responsive-block-editor-addons-timeline__responsive-mobile .responsive-block-editor-addons-timeline__line": {
       left: `calc(${bgSize}px/2)`,
       right: `calc(${bgSize}px/2)`,
@@ -292,6 +301,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-timeline__center-block.responsive-block-editor-addons-timeline__responsive-tablet .responsive-block-editor-addons-timeline__line": {
       left: `calc(${bgSize}px/2)`,
       right: `calc(${bgSize}px/2)`,

@@ -269,7 +269,28 @@ const attributes = {
     titlePaddingHorizontalTablet: {
         type: "number",
         default: 5
-    }
+    },
+    hideWidget: {
+      type: "boolean",
+      default: false,
+    },
+    hideWidgetTablet: {
+      type: "boolean",
+      default: false,
+    },
+    hideWidgetMobile: {
+      type: "boolean",
+      default: false,
+    },
+    z_index: {
+        type: "number",
+      },
+      z_indexTablet: {
+        type: "number",
+      },
+      z_indexMobile: {
+        type: "number",
+      },
 }
 
 export default attributes;

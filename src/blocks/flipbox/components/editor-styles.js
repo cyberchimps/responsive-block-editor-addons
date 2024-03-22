@@ -167,6 +167,9 @@ function EditorStyles(props) {
     ctaColor,
     ctaBorderColor,
     ctaBackColor,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -272,6 +275,7 @@ function EditorStyles(props) {
 
   var selectors = {
     " ": {
+      "opacity": hideWidget ? 0.2 : 1,
       "margin-bottom": generateCSSUnit(bottomMargin, "px"),
       "margin-top": generateCSSUnit(topMargin, "px"),
     },
@@ -446,6 +450,7 @@ function EditorStyles(props) {
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
       "margin-top": generateCSSUnit(topMarginMobile, "px"),
+      "opacity": hideWidgetMobile ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "padding-top": generateCSSUnit(frontTopPaddingMobile, "px"),
@@ -491,6 +496,7 @@ function EditorStyles(props) {
     " ": {
       "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
       "margin-top": generateCSSUnit(topMarginTablet, "px"),
+      "opacity": hideWidgetTablet ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "padding-top": generateCSSUnit(frontTopPaddingTablet, "px"),

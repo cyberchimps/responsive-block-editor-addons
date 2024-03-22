@@ -387,6 +387,27 @@ const attributes = {
     type: "string",
     default: "none",
   },
+  hideWidget: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetTablet: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetMobile: {
+    type: "boolean",
+    default: false,
+  },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
   buttonBackgroundColor: {
 	type: "string",
 	default: "empty",

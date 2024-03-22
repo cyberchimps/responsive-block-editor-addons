@@ -16,11 +16,15 @@ function EditorStyles(props) {
     spacerDividerWidth,
     spacerDividerStyle,
     spacerDividerAlignment,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {
     " ": {
       color: spacerDividerColor,
+      "opacity": hideWidget ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-spacer-handle": {
       color: spacerDividerColor,
@@ -54,6 +58,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    "": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content": {
       "margin-top": generateCSSUnit(spacerHeightMobile, "px"),
       "margin-bottom": generateCSSUnit(spacerHeightMobile, "px"),
@@ -61,6 +68,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    "": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-divider-inner .responsive-block-editor-addons-divider-content": {
       "margin-top": generateCSSUnit(spacerHeightTablet, "px"),
       "margin-bottom": generateCSSUnit(spacerHeightTablet, "px"),

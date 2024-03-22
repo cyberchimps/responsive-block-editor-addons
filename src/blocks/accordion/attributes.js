@@ -42,6 +42,15 @@ const attributes = {
     type: "number",
     default: 10,
   },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
   columnsGapTablet: {
     type: "number",
     default: 10,
@@ -327,6 +336,219 @@ const attributes = {
   contentFontSizeMobile: {
     type: "number",
   },
+  hideWidget: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetTablet: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetMobile: {
+    type: "boolean",
+    default: false,
+  },
+  parentBlockBorderStyle: {
+    type: "string",
+    default: "solid",
+  },
+  parentBlockBorderTopWidth: {
+    type: "number",
+    default: 1,
+  },
+    parentBlockBorderTopWidthMobile: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderTopWidthTablet: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderBottomWidth: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderBottomWidthMobile: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderBottomWidthTablet: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderLeftWidth: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderLeftWidthMobile: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderLeftWidthTablet: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderRightWidth: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderRightWidthTablet: {
+      type: "number",
+      default: 1,
+    },
+    parentBlockBorderRightWidthMobile: {
+      type: "number",
+      default: 1,
+    },
+  parentBlockBorderTopLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderTopLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderTopLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderTopRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderTopRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderTopRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderBottomLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderBottomLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderBottomLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderBottomRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderBottomRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderBottomRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  parentBlockBorderColor: {
+    type: "string",
+    default: 'black',
+  },
+  titleTopSpacing: {
+    type: "number",
+    default: 10,
+  },
+  titleTopSpacingMobile: {
+    type: "number",
+    default: 10,
+  },
+  titleTopSpacingTablet: {
+    type: "number",
+    default: 10,
+  },
+  titleBottomSpacing: {
+    type: "number",
+    default: 10,
+  },
+  titleBottomSpacingMobile: {
+    type: "number",
+    default: 10,
+  },
+  titleBottomSpacingTablet: {
+    type: "number",
+    default: 10,
+  },
+  titleLeftSpacing: {
+    type: "number",
+    default: 10,
+  },
+  titleLeftSpacingMobile: {
+    type: "number",
+    default: 10,
+  },
+  titleLeftSpacingTablet: {
+    type: "number",
+    default: 10,
+  },
+  titleRightSpacing: {
+    type: "number",
+    default: 10,
+  },
+  titleRightSpacingMobile: {
+    type: "number",
+    default: 10,
+  },
+  titleRightSpacingTablet: {
+    type: "number",
+    default: 10,
+  },
+  //Variables for content padding
+contentTopSpacing: {
+  type: "number",
+  default: 10,
+},
+contentTopSpacingMobile: {
+  type: "number",
+  default: 10,
+},
+contentTopSpacingTablet: {
+  type: "number",
+  default: 10,
+},
+contentBottomSpacing: {
+  type: "number",
+  default: 10,
+},
+contentBottomSpacingMobile: {
+  type: "number",
+  default: 10,
+},
+contentBottomSpacingTablet: {
+  type: "number",
+  default: 10,
+},
+contentLeftSpacing: {
+  type: "number",
+  default: 10,
+},
+contentLeftSpacingMobile: {
+  type: "number",
+  default: 10,
+},
+contentLeftSpacingTablet: {
+  type: "number",
+  default: 10,
+},
+contentRightSpacing: {
+  type: "number",
+  default: 10,
+},
+contentRightSpacingMobile: {
+  type: "number",
+  default: 10,
+},
+contentRightSpacingTablet: {
+  type: "number",
+  default: 10,
+},
 };
 
 export default attributes;

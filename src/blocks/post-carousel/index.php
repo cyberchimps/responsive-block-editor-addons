@@ -1043,6 +1043,30 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'string',
 					'default' => 'none',
 				),
+				'hideWidget'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'hideWidgetMobile'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'hideWidgetTablet'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'z_index'    => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'z_indexMobile'    => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'z_indexTablet'    => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts2',
 		)

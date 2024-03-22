@@ -307,6 +307,18 @@ const attributes = {
         selector: "p",
         default: __("So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements.", "responsive-block-editor-addons"),
     },
+    hideWidget: {
+      type: "boolean",
+      default: false,
+    },
+    hideWidgetTablet: {
+      type: "boolean",
+      default: false,
+    },
+    hideWidgetMobile: {
+      type: "boolean",
+      default: false,
+    },
 };
 
 export default attributes;

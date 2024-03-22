@@ -60,11 +60,17 @@ function EditorStyles(props) {
 	numSpaceMobile,
 	contentSpaceTablet,
 	contentSpaceMobile,
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
 
   var selectors = {
+    "": {
+      "opacity": hideWidget ? 0.2 : 1,
+    },
     ".responsive-count__inner .responsive-count-item__features li": {
       "line-height": contentLineHeight,
     },
@@ -124,6 +130,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    "": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
     ".responsive-count__inner .responsive-count-item__title": {
       "font-size": `${headingFontSizeMobile}px`,
     },
@@ -144,6 +153,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    "": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
     ".responsive-count__inner .responsive-count-item__title": {
       "font-size": `${headingFontSizeTablet}px`,
     },

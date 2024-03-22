@@ -3,6 +3,8 @@
  */
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -152,6 +154,60 @@ export default class Inspector extends Component {
         separatorSpacingMobile,
         textDecoration,
         textDecorationSubHeading,
+        hideWidget,
+        hideWidgetTablet,
+        hideWidgetMobile,
+        z_index,
+        z_indexMobile,
+        z_indexTablet,
+        blockTopPadding,
+        blockBottomPadding,
+        blockLeftPadding,
+        blockRightPadding,
+        blockTopPaddingMobile,
+        blockBottomPaddingMobile,
+        blockLeftPaddingMobile,
+        blockRightPaddingMobile,
+        blockTopPaddingTablet,
+        blockBottomPaddingTablet,
+        blockLeftPaddingTablet,
+        blockRightPaddingTablet,
+        blockTopMargin,
+        blockBottomMargin,
+        blockLeftMargin,
+        blockRightMargin,
+        blockTopMarginMobile,
+        blockBottomMarginMobile,
+        blockLeftMarginMobile,
+        blockRightMarginMobile,
+        blockTopMarginTablet,
+        blockBottomMarginTablet,
+        blockLeftMarginTablet,
+        blockRightMarginTablet, 
+          topPadding,
+          bottomPadding,
+          leftPadding,
+          rightPadding,
+          topPaddingTablet,
+          bottomPaddingTablet,
+          leftPaddingTablet,
+          rightPaddingTablet,
+          topPaddingMobile,
+          bottomPaddingMobile,
+          leftPaddingMobile,
+          rightPaddingMobile,
+          topMargin,
+          bottomMargin,
+          leftMargin,
+          rightMargin,
+          topMarginTablet,
+          bottomMarginTablet,
+          leftMarginTablet,
+          rightMarginTablet,
+          topMarginMobile,
+          bottomMarginMobile,
+          leftMarginMobile,
+          rightMarginMobile,
       },
       setAttributes,
     } = this.props;
@@ -570,9 +626,169 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
               )}
+              <hr />
+              <ResponsivePaddingControl
+                attrNameTemplate="block%s"
+                values={{
+                  desktopTop: topPadding !== 999 && blockTopPadding === 10 ? topPadding : blockTopPadding,
+                  desktopBottom: bottomPadding !== 999 && blockBottomPadding === 10 ? bottomPadding : blockBottomPadding,
+                  desktopLeft: leftPadding !== 999 && blockLeftPadding === 10 ? leftPadding : blockLeftPadding,
+                  desktopRight: rightPadding !== 999 && blockRightPadding === 10 ? rightPadding : blockRightPadding,
+
+                  tabletTop: topPaddingTablet !== 999 && !blockTopPaddingTablet ? topPaddingTablet : blockTopPaddingTablet,
+                  tabletBottom: bottomPaddingTablet !== 999 && !blockBottomPaddingTablet ? bottomPaddingTablet : blockBottomPaddingTablet,
+                  tabletLeft: leftPaddingTablet !== 999 && !blockLeftPaddingTablet ? leftPaddingTablet : blockLeftPaddingTablet,
+                  tabletRight: rightPaddingTablet !== 999 && !blockRightPaddingTablet ? rightPaddingTablet : blockRightPaddingTablet,
+
+                  mobileTop: topPaddingMobile !== 999 && !blockTopPaddingMobile ? topPaddingMobile : blockTopPaddingMobile,
+                  mobileBottom: bottomPaddingMobile !== 999 && !blockBottomPaddingMobile ? bottomPaddingMobile : blockBottomPaddingMobile,
+                  mobileLeft: leftPaddingMobile !== 999 && !blockLeftPaddingMobile ? leftPaddingMobile : blockLeftPaddingMobile,
+                  mobileRight: rightPaddingMobile !== 999 && !blockRightPaddingMobile ? rightPaddingMobile : blockRightPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <hr />
+              <ResponsiveMarginControl
+                attrNameTemplate="block%s"
+                values={{
+                  desktopTop: topMargin !== 999 && blockTopMargin === 0 ? topMargin : blockTopMargin,
+                  desktopBottom: bottomMargin !== 999 && blockBottomMargin === 0 ? bottomMargin : blockBottomMargin,
+                  desktopLeft: leftMargin !== 999 && blockLeftMargin === 0 ? leftMargin : blockLeftMargin,
+                  desktopRight: rightMargin !== 999 && blockRightMargin === 0 ? rightMargin : blockRightMargin,
+
+                  tabletTop: topMarginTablet !== 999 && !blockTopMarginTablet ? topMarginTablet : blockTopMarginTablet,
+                  tabletBottom: bottomMarginTablet !== 999 && !blockBottomMarginTablet ? bottomMarginTablet : blockBottomMarginTablet,
+                  tabletLeft: leftMarginTablet !== 999 && !blockLeftMarginTablet ? leftMarginTablet : blockLeftMarginTablet,
+                  tabletRight: rightMarginTablet !== 999 && !blockRightMarginTablet ? rightMarginTablet : blockRightMarginTablet,
+
+                  mobileTop: topMarginMobile !== 999 && blockTopMarginMobile === "" ? topMarginMobile : blockTopMarginMobile,
+                  mobileBottom: bottomMarginMobile !== 999 && blockBottomMarginMobile === "" ? bottomMarginMobile : blockBottomMarginMobile,
+                  mobileLeft: leftMarginMobile !== 999 && blockLeftMarginMobile === "" ? leftMarginMobile : blockLeftMarginMobile,
+                  mobileRight: rightMarginMobile !== 999 && blockRightMarginMobile === "" ? rightMarginMobile : blockRightMarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
           </InspectorTab>
-          <InspectorTab key={"advance"}></InspectorTab>
+          <InspectorTab key={"advance"}>
+            <PanelBody
+              title={__("Responsive Conditions", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__(
+                  "Hide on Desktop",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidget}
+                onChange={(value) =>
+                  setAttributes({ hideWidget: !hideWidget })
+                }
+              />
+              <ToggleControl
+                label={__(
+                  "Hide on Tablet",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetTablet}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+                }
+              />
+              <ToggleControl
+                label={__(
+                  "Hide on Mobile",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetMobile}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+                }
+              />
+            </PanelBody>
+          
+          <PanelBody
+              title={__("Z Index", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index (Mobile)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexMobile}
+                        onChange={(value) =>
+                          setAttributes({ z_indexMobile: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index (Tablet)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexTablet}
+                        onChange={(value) =>
+                          setAttributes({ z_indexTablet: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else {
+                      tabout = (
+                        <RangeControl
+                        label={__("z-index ", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_index}
+                        onChange={(value) =>
+                          setAttributes({ z_index: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    }
+
+                    return <div>{tabout}</div>;
+                  }}
+              </TabPanel>
+          </PanelBody>
+          </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
     );

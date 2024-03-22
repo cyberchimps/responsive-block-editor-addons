@@ -22,12 +22,18 @@ function EditorStyles(props) {
     width,
 	borderWidth, // For compatibility with v1.3.2.
 	borderStyle, // For compatibility with v1.3.2.
-	borderColor // For compatibility with v1.3.2.
+	borderColor, // For compatibility with v1.3.2.
+  hideWidget,
+  hideWidgetTablet,
+  hideWidgetMobile,
   } = props.attributes;
 
   let imgopacity = iconBackgroundOpacity / 100;
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget ? 0.2 : 1,
+    },
     " .flickity-button .flickity-button-icon": {
       fill: iconColor,
     },
@@ -56,9 +62,17 @@ function EditorStyles(props) {
     },
   };
 
-  var mobile_selectors = {};
+  var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
+  };
 
-  var tablet_selectors = {};
+  var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
+  };
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-image-slider.block-${block_id}`;

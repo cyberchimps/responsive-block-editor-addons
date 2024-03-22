@@ -38,10 +38,14 @@ function EditorStyles(props) {
     formHelperTextSize,
     formSuccessErrorMessageSize,
     block_id,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {
     "": {
+      "opacity": hideWidget ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-form-input": {
       "margin-bottom": generateCSSUnit(formFieldInputGap, "px"),
@@ -112,6 +116,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-form-input__text": {
       "padding-top": inputFieldPaddingMobile.top,
@@ -132,6 +137,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-form-input__text": {
       "padding-top": inputFieldPaddingTablet.top,

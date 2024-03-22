@@ -343,8 +343,8 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'status'   => 1,
 			),
 			array(
-				'key'      => 'social-share',
-				'title'    => 'Social Share',
+				'key'      => 'social-icons',
+				'title'    => 'Social Icons',
 				'docs'     => 'https://cyberchimps.com/blocks/docs/social-share/',
 				'demo'     => 'https://cyberchimps.com/blocks/social-share/',
 				'category' => 'content',
