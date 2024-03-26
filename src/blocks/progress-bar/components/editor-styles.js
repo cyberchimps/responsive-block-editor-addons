@@ -110,7 +110,10 @@ function EditorStyles(props) {
 		semiCircularBottomTitleValueLetterSpacing,
 		semiCircularBottomTitleValueTextTransform,
 		semiCircularProgressBarBackgroundColor,
-		semiCircularProgressBarTrackColor
+		semiCircularProgressBarTrackColor,
+		hideWidget,
+		hideWidgetTablet,
+		hideWidgetMobile,
 	} = props.attributes;
 
 	let circleRadiusVal = 0;
@@ -164,6 +167,9 @@ function EditorStyles(props) {
 	}
 
 	var selectors = {
+		" ": {
+		  "opacity": hideWidget? 0.2 : 1,
+		},
 		" .responsive-horizontal-progress-bar": {
 			"height": generateCSSUnit(horizontalProgressBarSize, "px"),
 			"background-color": horizontalProgressBarBackgroundColor,
@@ -368,6 +374,9 @@ function EditorStyles(props) {
 	};
 
 	var mobile_selectors = {
+		" ": {
+		  "opacity": hideWidgetMobile? 0.2 : 1,
+		},
 		" .responsive-horizontal-progress-bar-top-title": {
 			"font-size": generateCSSUnit(topTitleValueFontSizeMobile, "px"),
 		},
@@ -419,6 +428,9 @@ function EditorStyles(props) {
 	};
 
 	var tablet_selectors = {
+		" ": {
+		  "opacity": hideWidgetTablet? 0.2 : 1,
+		},
 		" .responsive-horizontal-progress-bar-top-title": {
 			"font-size": generateCSSUnit(topTitleValueFontSizeTablet, "px"),
 		},

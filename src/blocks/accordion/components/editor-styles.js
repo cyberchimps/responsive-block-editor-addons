@@ -75,10 +75,66 @@ function EditorStyles(props) {
     contentBgGradient,
     contentBackgroundColor,
     contentBackgroundColorOpacity,
-	titleFontSizeMobile,
-	titleFontSizeTablet,
-	contentFontSizeMobile,
-	contentFontSizeTablet,
+    titleFontSizeMobile,
+    titleFontSizeTablet,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
+    //Parent block border width
+    parentBlockBorderTopWidth,
+    parentBlockBorderTopWidthMobile,
+    parentBlockBorderTopWidthTablet,
+    parentBlockBorderBottomWidth,
+    parentBlockBorderBottomWidthMobile,
+    parentBlockBorderBottomWidthTablet,
+    parentBlockBorderLeftWidth,
+    parentBlockBorderLeftWidthMobile,
+    parentBlockBorderLeftWidthTablet,
+    parentBlockBorderRightWidth,
+    parentBlockBorderRightWidthTablet,
+    parentBlockBorderRightWidthMobile,
+    parentBlockBorderStyle,
+    parentBlockBorderColor,
+    //Parent block border radius
+    parentBlockBorderTopLeftRadius,
+    parentBlockBorderTopLeftRadiusMobile,
+    parentBlockBorderTopLeftRadiusTablet,
+    parentBlockBorderTopRightRadius,
+    parentBlockBorderTopRightRadiusMobile,
+    parentBlockBorderTopRightRadiusTablet,
+    parentBlockBorderBottomLeftRadius,
+    parentBlockBorderBottomLeftRadiusMobile,
+    parentBlockBorderBottomLeftRadiusTablet,
+    parentBlockBorderBottomRightRadius,
+    parentBlockBorderBottomRightRadiusMobile,
+    parentBlockBorderBottomRightRadiusTablet,
+    titleTopSpacing,
+    titleTopSpacingMobile,
+    titleTopSpacingTablet,
+    titleBottomSpacing,
+    titleBottomSpacingMobile,
+    titleBottomSpacingTablet,
+    titleLeftSpacing,
+    titleLeftSpacingMobile,
+    titleLeftSpacingTablet,
+    titleRightSpacing,
+    titleRightSpacingMobile,
+    titleRightSpacingTablet,
+
+    contentTopSpacing,
+    contentTopSpacingMobile,
+    contentTopSpacingTablet,
+    contentBottomSpacing,
+    contentBottomSpacingMobile,
+    contentBottomSpacingTablet,
+    contentLeftSpacing,
+    contentLeftSpacingMobile,
+    contentLeftSpacingTablet,
+    contentRightSpacing,
+    contentRightSpacingMobile,
+    contentRightSpacingTablet,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {};
@@ -136,6 +192,7 @@ function EditorStyles(props) {
 
   selectors = {
     " ": {
+      "opacity": hideWidget? 0.2 : 1,
       "margin-top": marginV + "px",
       "margin-bottom": marginV + "px",
       "margin-left": marginH + "px",
@@ -157,6 +214,16 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-accordion-item__outer-wrap": {
+      "border-style": parentBlockBorderStyle,
+      "border-color": parentBlockBorderColor,
+      "border-top-width": generateCSSUnit(parentBlockBorderTopWidth, "px"),
+      "border-left-width": generateCSSUnit(parentBlockBorderLeftWidth, "px"),
+      "border-right-width": generateCSSUnit(parentBlockBorderRightWidth, "px"),
+      "border-bottom-width": generateCSSUnit(parentBlockBorderBottomWidth, "px"),
+      "border-top-left-radius": generateCSSUnit(parentBlockBorderTopLeftRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(parentBlockBorderTopRightRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(parentBlockBorderBottomLeftRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(parentBlockBorderBottomRightRadius, "px"),
       "margin-bottom": generateCSSUnit(rowsGap, "px"),
     },
     " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
@@ -198,11 +265,19 @@ function EditorStyles(props) {
         hcontentPaddingDesktop,
         contentPaddingTypeDesktop
       ),
+      "padding-top": generateCSSUnit(contentTopSpacing, "px"),
+      "padding-bottom": generateCSSUnit(contentBottomSpacing, "px"),
+      "padding-left": generateCSSUnit(contentLeftSpacing, "px"),
+      "padding-right": generateCSSUnit(contentRightSpacing, "px"),
     },
     " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       "flex-direction": iconAlign,
       "color": titleTextColor,
       "background-color": `${hexToRgba(titleBackgroundColor || "#fff", contentOpacity || 0)}`,
+      "padding-top": generateCSSUnit(titleTopSpacing, "px"),
+      "padding-bottom": generateCSSUnit(titleBottomSpacing, "px"),
+      "padding-left": generateCSSUnit(titleLeftSpacing, "px"),
+      "padding-right": generateCSSUnit(titleRightSpacing, "px"),
     },
     " .responsive-block-editor-addons-accordion__active .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles ": {
       "color": titleActiveTextColor,
@@ -228,7 +303,24 @@ function EditorStyles(props) {
   };
 
   tablet_selectors = {
+    " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+      "border-top-width": generateCSSUnit(parentBlockBorderTopWidthTablet, "px"),
+      "border-left-width": generateCSSUnit(parentBlockBorderLeftWidthTablet, "px"),
+      "border-right-width": generateCSSUnit(parentBlockBorderRightWidthTablet, "px"),
+      "border-bottom-width": generateCSSUnit(parentBlockBorderBottomWidthTablet, "px"), 
+      //border radius
+      "border-top-left-radius": generateCSSUnit(parentBlockBorderTopLeftRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(parentBlockBorderTopRightRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(parentBlockBorderBottomLeftRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(parentBlockBorderBottomRightRadiusTablet, "px"),
+
+      "padding-top": generateCSSUnit(titleTopSpacingTablet, "px"),
+      "padding-bottom": generateCSSUnit(titleBottomSpacingTablet, "px"),
+      "padding-left": generateCSSUnit(titleLeftSpacingTablet, "px"),
+      "padding-right": generateCSSUnit(titleRightSpacingTablet, "px"),
+    },
     " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
       "margin-top": marginVTablet + "px",
       "margin-bottom": marginVTablet + "px",
       "margin-left": marginHTablet + "px",
@@ -261,6 +353,11 @@ function EditorStyles(props) {
         vcontentPaddingTablet,
         contentPaddingTypeDesktop
       ),
+      "padding-top": generateCSSUnit(contentTopSpacingTablet, "px"),
+      "padding-bottom": generateCSSUnit(contentBottomSpacingTablet, "px"),
+      "padding-left": generateCSSUnit(contentLeftSpacingTablet, "px"),
+      "padding-right": generateCSSUnit(contentRightSpacingTablet, "px"),
+
       "margin-right": generateCSSUnit(
         hcontentPaddingTablet,
         contentPaddingTypeDesktop
@@ -296,7 +393,25 @@ function EditorStyles(props) {
   };
 
   mobile_selectors = {
+    " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
+      "border-top-width": generateCSSUnit(parentBlockBorderTopWidthMobile, "px"),
+      "border-left-width": generateCSSUnit(parentBlockBorderLeftWidthMobile, "px"),
+      "border-right-width": generateCSSUnit(parentBlockBorderRightWidthMobile, "px"),
+      "border-bottom-width": generateCSSUnit(parentBlockBorderBottomWidthMobile, "px"), 
+
+      //border radius
+      "border-top-left-radius": generateCSSUnit(parentBlockBorderTopLeftRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(parentBlockBorderTopRightRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(parentBlockBorderBottomLeftRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(parentBlockBorderBottomRightRadiusMobile, "px"),
+
+      "padding-top": generateCSSUnit(titleTopSpacingMobile, "px"),
+      "padding-bottom": generateCSSUnit(titleBottomSpacingMobile, "px"),
+      "padding-left": generateCSSUnit(titleLeftSpacingMobile, "px"),
+      "padding-right": generateCSSUnit(titleRightSpacingMobile, "px"),
+    },
     " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
       "margin-top": marginVMobile + "px",
       "margin-bottom": marginVMobile + "px",
       "margin-left": marginHMobile + "px",
@@ -337,6 +452,10 @@ function EditorStyles(props) {
         hcontentPaddingMobile,
         contentPaddingTypeDesktop
       ),
+      "padding-top": generateCSSUnit(contentTopSpacingMobile, "px"),
+      "padding-bottom": generateCSSUnit(contentBottomSpacingMobile, "px"),
+      "padding-left": generateCSSUnit(contentLeftSpacingMobile, "px"),
+      "padding-right": generateCSSUnit(contentRightSpacingMobile, "px"),
     },
     " .responsive-block-editor-addons-icon svg": {
       "width": generateCSSUnit(iconSizeMobile, iconSizeType),

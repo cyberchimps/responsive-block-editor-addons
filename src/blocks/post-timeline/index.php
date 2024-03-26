@@ -953,6 +953,18 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'string',
 					'default' => 'not_set',
 				),
+				'hideWidget'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'hideWidgetMobile'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'hideWidgetTablet'                 => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'z_index'               => array(
 					'type'    => 'number',
 					'default' => 1,

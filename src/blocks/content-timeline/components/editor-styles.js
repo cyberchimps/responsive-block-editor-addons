@@ -53,12 +53,15 @@ function EditorStyles(props) {
     headingBottomMargin,
     headingBottomMarginMobile,
     headingBottomMarginTablet,
-	dateFontSizeMobile,
-	dateFontSizeTablet,
-	headingFontSizeMobile,
-	headingFontSizeTablet,
-	contentFontSizeMobile,
-	contentFontSizeTablet,
+    dateFontSizeMobile,
+    dateFontSizeTablet,
+    headingFontSizeMobile,
+    headingFontSizeTablet,
+    contentFontSizeMobile,
+    contentFontSizeTablet,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var border_with_color = "13px solid" + backgroundColor;
@@ -66,6 +69,10 @@ function EditorStyles(props) {
   let imgopacity = opacity / 100;
 
   var selectors = {
+    "": {
+      "opacity": hideWidget ? 0.2 : 1,
+    },
+
     " .responsive-timeline__left .responsive-timeline__day-left .responsive-timeline__arrow:after": {
       "border-right": border_with_color,
     },
@@ -188,6 +195,10 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    "": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
+
     " .responsive-timeline__center-block.responsive-timeline__responsive-mobile .responsive-timeline__line": {
       left: connectorBgsize / 2 + "px",
       right: connectorBgsize / 2 + "px",
@@ -224,6 +235,10 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    "": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
+
     " .responsive-timeline__center-block.responsive-timeline__responsive-tablet .responsive-timeline__line": {
       left: connectorBgsize / 2 + "px",
       right: connectorBgsize / 2 + "px",

@@ -103,6 +103,9 @@ function EditorStyles(props) {
     imageHeightTablet,
     imageHeightMobile,
     postLayout,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
     z_index,
     z_indexTablet,
     z_indexMobile,
@@ -178,7 +181,8 @@ function EditorStyles(props) {
 
   var selectors = {
     " ": {
-        "z-index": z_index,
+      "opacity": hideWidget? 0.2 : 1,
+      "z-index": z_index,
     },
     " .responsive-block-editor-addons-post-grid-items": {
         "grid-column-gap": generateCSSUnit(varcolumnGap, "px"),
@@ -326,6 +330,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
       "z-index": z_indexMobile,
   },
       " .responsive-block-editor-addons-block-post-grid-image img": {
@@ -373,9 +378,10 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
-        " ": {
-          "z-index": z_indexTablet,
-      },
+    " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
+      "z-index": z_indexTablet,
+    },
       " .responsive-block-editor-addons-block-post-grid-image img": {
           "margin-bottom": generateCSSUnit(imageBottomSpacingTablet, "px"),
       },

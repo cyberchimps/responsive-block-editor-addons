@@ -95,6 +95,9 @@ function EditorStyles(props) {
     ctaVpaddingMobile,
     ctaTextOpacity,
     buttonHbackgroundType,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
 	buttonBackgroundColor, // For compatibility with v1.3.2.
 	hbuttonBackgroundColor, // For compatibility with v1.3.2.
 	buttonTextColor, // For compatibility with v1.3.2.
@@ -189,6 +192,7 @@ function EditorStyles(props) {
     },
 
     "": {
+      "opacity": hideWidget ? 0.2 : 1,
       "background-color":
         backgroundType == "color"
           ? (ctaBackgroundColor !== "empty" && backgroundColor === "#f2f2f2" ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`) // For compatibility with v1.3.2.
@@ -283,6 +287,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px") + "!important",
     },
     "": {
+      "opacity": hideWidgetMobile ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -313,6 +318,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaTitleFontSizeTablet, "px"),
     },
     "": {
+      "opacity": hideWidgetTablet ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),

@@ -496,6 +496,18 @@ const attributes = {
 	type: "number",
 	default: 999,
   }, // For compatibility with v1.3.2.
+	hideWidget: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetTablet: {
+	  type: "boolean",
+	  default: false,
+	},
+	hideWidgetMobile: {
+	  type: "boolean",
+	  default: false,
+	},
   z_index: {
     type: "number",
     default: 1,

@@ -165,7 +165,10 @@ function EditorStyles(props) {
     ctaFontSizeTablet,
       imageWidth,
       imageWidthTablet,
-      imageWidthMobile
+      imageWidthMobile,
+      hideWidget,
+      hideWidgetTablet,
+      hideWidgetMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -260,6 +263,7 @@ function EditorStyles(props) {
     },
 
     "": {
+      "opacity": hideWidget? 0.2 : 1,
       "text-align": blockAlign,
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
@@ -405,6 +409,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -455,6 +460,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),

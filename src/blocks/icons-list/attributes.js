@@ -27,6 +27,14 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  alignTablet: {
+    type: "string",
+    default: "left",
+  },
+  alignMobile: {
+    type: "string",
+    default: "left",
+  },
   icon_count: {
     type: "number",
     default: ITEM_COUNT,
@@ -114,6 +122,18 @@ const attributes = {
 	type: "number",
 	default: 999,
   }, // For compatibility with v1.3.2.
+  hideWidget: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetTablet: {
+    type: "boolean",
+    default: false,
+  },
+  hideWidgetMobile: {
+    type: "boolean",
+    default: false,
+  },
   z_index: {
     type: "number",
   },

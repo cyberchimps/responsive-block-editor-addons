@@ -104,6 +104,9 @@ function EditorStyles(props) {
     layoverHeadingbottommarginMobile,
     layoverHeadingleftmarginMobile,
     layoverHeadingrightmarginMobile,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
   var base_url = window.location.origin;
   var filtervalue =
@@ -153,6 +156,9 @@ function EditorStyles(props) {
       ? "flex-end"
       : "center";
   var selectors = {
+    "": {
+        "opacity": hideWidget ? 0.2 : 1,
+    },
     " .img-main-block": {
       "text-align": imageAlignment,
     },
@@ -255,6 +261,9 @@ function EditorStyles(props) {
     },
   };
   var tablet_selectors = {
+    "": {
+        "opacity": hideWidgetTablet ? 0.2 : 1,
+    },
     " .img-main-block": {
       "text-align": imageAlignmentTablet,
     },
@@ -300,6 +309,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    "": {
+        "opacity": hideWidgetMobile ? 0.2 : 1,
+    },
     " .img-main-block": {
       "text-align": imageAlignmentMobile,
     },
