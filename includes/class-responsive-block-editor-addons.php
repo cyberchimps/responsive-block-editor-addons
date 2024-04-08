@@ -1040,7 +1040,7 @@ class Responsive_Block_Editor_Addons {
 					echo sprintf(
 						'<div class="rbea-review-notice updated">
 						<div class="rbea-review-notice-text-container">
-						<p><span>%3$s<strong>Responsive Block Editor Addons</strong>.%4$s</span></p>
+						<p><span>%3$s<strong>Responsive Blocks</strong>.%4$s</span></p>
 						<div><a class="rbea-review-dismiss-btn" href="%2$s"><i class="dashicons dashicons-dismiss"></i>%5$s</a></div>
 						</div>
 						<div class="rbea-review-btns-container">
