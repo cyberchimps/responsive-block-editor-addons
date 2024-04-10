@@ -5223,7 +5223,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors = array(
 				' '                => array(
-					'display'    	      => true === $attr['hideWidget'] ? 'none' : 'block',
+					'display'    	      => true === $attr['hideWidget'] ? 'none' : 'flex',
 					'position'            => 'relative',
 					'z-index'             => $attr['z_index'],
 					'text-align'          => $attr['contentAlign'],
@@ -5303,7 +5303,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$mobile_selectors = array(
 				' '                                        => array(
-					'display'    	   => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+					'display'    	   => true === $attr['hideWidgetMobile'] ? 'none' : 'flex',
 					'z-index'            => $attr['z_indexMobile'],
 				),
 				' .wp-block-responsive-block-editor-addons-image-boxes-block-item__title' => array(
@@ -5318,7 +5318,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' '                                        => array(
-					'display'    	   => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+					'display'    	   => true === $attr['hideWidgetTablet'] ? 'none' : 'flex',
 					'z-index'            => $attr['z_indexTablet'],
 				),
 				' .wp-block-responsive-block-editor-addons-image-boxes-block-item__title' => array(
