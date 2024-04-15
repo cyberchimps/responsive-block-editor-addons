@@ -1,15 +1,15 @@
 === Responsive Blocks - WordPress Gutenberg Blocks ===
 Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
-Tags: block, blocks, block editor, editor, gutenberg blocks, page builder, gutenberg library, gutenberg editor, templates, section, google maps, visual editor, design, google fonts, patterns, reusable, drag-and-drop, landing page, website builder, dual buttons, svg icons, editor width, patterns, post grid block, google map, columns block, advanced columns, row, layout, lottie, progress bar, product review, image hotspot, testimonial, slider
+Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.8.2
+Stable tag: 1.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-50+ creative blocks to create rich content layouts in the Gutenberg editor.
+50+ blocks to create rich sections in the Gutenberg editor.
 Use professional starter block patterns & templates to create websites within minutes.
 
 == Description ==
@@ -198,6 +198,9 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 7. Shape Divider
 
 == Changelog ==
+
+= 1.8.3 - 16th April 2024 =
+* Fix - Vertical alignment issue for Image Boxes block.
 
 = 1.8.2 - 20th March 2024 =
 * New - Introduced Z-Index in advance Settings.
