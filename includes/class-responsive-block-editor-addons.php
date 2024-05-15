@@ -1403,4 +1403,17 @@ class Responsive_Block_Editor_Addons {
 			array( $this, 'responsive_block_editor_addons_getting_started' ),
 		);
 	}
+
+	/**
+	 * Get allowed HTML title tag.
+	 *
+	 * @param string $title_Tag HTML tag of title.
+	 * @param array  $allowed_array Array of allowed HTML tags.
+	 * @param string $default_tag Default HTML tag.
+	 * @since 1.8.4
+	 * @return string $title_Tag | $default_tag.
+	 */
+	public function rbea_post_title_tag_allowed_html( $title_Tag, $allowed_array, $default_tag ) {
+		return in_array( $title_Tag, $allowed_array, true ) ? sanitize_key( $title_Tag ) : $default_tag;
+	}
 }
