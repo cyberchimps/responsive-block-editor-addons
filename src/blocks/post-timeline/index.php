@@ -225,6 +225,10 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 					$post_title_tag = 'h2';
 				}
 
+				$main_class = new Responsive_Block_Editor_Addons();
+				$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+				$post_title_tag        = $main_class->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_HTML, 'h3' );
+
 				$post_grid_markup .= sprintf(
 					'<%3$s class="responsive-block-editor-addons-block-post-timeline-title"><a class="responsive-block-editor-addons-block-post-timeline-title-heading" href="%1$s" rel="bookmark">%2$s</a></%3$s>',
 					esc_url( get_permalink( $post_id ) ),
