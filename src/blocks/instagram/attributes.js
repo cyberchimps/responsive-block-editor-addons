@@ -57,27 +57,35 @@ const attributes = {
   },
   instaTopPaddingMobile: {
     type: "number",
+    default: '',
   },
   instaBottomPaddingMobile: {
     type: "number",
+    default: '',
   },
   instaRightPaddingMobile: {
     type: "number",
+    default: '',
   },
   instaLeftPaddingMobile: {
     type: "number",
+    default: '',
   },
   instaTopPaddingTablet: {
     type: "number",
+    default: '',
   },
   instaBottomPaddingTablet: {
     type: "number",
+    default: '',
   },
   instaRightPaddingTablet: {
     type: "number",
+    default: '',
   },
   instaLeftPaddingTablet: {
     type: "number",
+    default: '',
   },
   instaTopMargin: {
     type: "number",
@@ -97,27 +105,35 @@ const attributes = {
   },
   instaTopMarginMobile: {
     type: "number",
+    default: '',
   },
   instaBottomMarginMobile: {
     type: "number",
+    default: '',
   },
   instaRightMarginMobile: {
     type: "number",
+    default: '',
   },
   instaLeftMarginMobile: {
     type: "number",
+    default: '',
   },
   instaTopMarginTablet: {
     type: "number",
+    default: '',
   },
   instaBottomMarginTablet: {
     type: "number",
+    default: '',
   },
   instaRightMarginTablet: {
     type: "number",
+    default: '',
   },
   instaLeftMarginTablet: {
     type: "number",
+    default: '',
   },
   gridSize: {
     type: "number",
@@ -144,5 +160,13 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  instaIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  instaIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 };
 export default attributes;

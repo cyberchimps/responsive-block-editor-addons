@@ -12,10 +12,10 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -153,8 +153,24 @@ export default class Inspector extends Component {
       z_index,
       z_indexMobile,
       z_indexTablet,
+      blockIsPaddingControlConnected,
     } = this.props.attributes;
     const { setAttributes } = this.props;
+
+    const spacingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
 
     // Button size values
     const buttonSizeOptions = [
@@ -926,25 +942,9 @@ export default class Inspector extends Component {
                 title={__("Padding", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <ResponsivePaddingControl
+                <ResponsiveNewPaddingControl
                   attrNameTemplate="block%s"
-                  values={{
-                    desktopTop: blockTopPadding,
-                    desktopBottom: blockBottomPadding,
-                    desktopLeft: blockLeftPadding,
-                    desktopRight: blockRightPadding,
-
-                    tabletTop: blockTopPaddingTablet,
-                    tabletBottom: blockBottomPaddingTablet,
-                    tabletLeft: blockLeftPaddingTablet,
-                    tabletRight: blockRightPaddingTablet,
-
-                    mobileTop: blockTopPaddingMobile,
-                    mobileBottom: blockBottomPaddingMobile,
-                    mobileLeft: blockLeftPaddingMobile,
-                    mobileRight: blockRightPaddingMobile,
-                  }}
-                  setAttributes={setAttributes}
+                  resetValues={spacingResetValues}
                   {...this.props}
                 />
               </PanelBody>

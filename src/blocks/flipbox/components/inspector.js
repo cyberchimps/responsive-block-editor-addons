@@ -12,9 +12,9 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -300,10 +300,41 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        frontIsPaddingControlConnected,
+        backIsPaddingControlConnected,
       },
       setAttributes,
     } = this.props;
     var data_copy = [...flipboxArray];
+
+    const backFlipPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const frontFlipPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
 
     // Update color value
     const onChangeFrontTextColor = (value) =>
@@ -1321,12 +1352,12 @@ export default class Inspector extends Component {
                     {
                       name: "front",
                       title: __("Front", "responsive-block-editor-addons"),
-                      className: "rbea-normal-tab",
+                      className: "rbea-normal-tab rbea-flip-box-tab",
                     },
                     {
                       name: "back",
                       title: __("Back", "responsive-block-editor-addons"),
-                      className: "rbea-focus-tab",
+                      className: "rbea-focus-tab rbea-flip-box-tab",
                     },
                   ]}
                 >
@@ -1335,25 +1366,9 @@ export default class Inspector extends Component {
                     if ("back" === tabName.name) {
                       tabout = (
                         <Fragment>
-                          <ResponsivePaddingControl
+                          <ResponsiveNewPaddingControl
                             attrNameTemplate="back%s"
-                            values={{
-                              desktopTop: backTopPadding,
-                              desktopBottom: backBottomPadding,
-                              desktopLeft: backLeftPadding,
-                              desktopRight: backRightPadding,
-
-                              tabletTop: backTopPaddingTablet,
-                              tabletBottom: backBottomPaddingTablet,
-                              tabletLeft: backLeftPaddingTablet,
-                              tabletRight: backRightPaddingTablet,
-
-                              mobileTop: backTopPaddingMobile,
-                              mobileBottom: backBottomPaddingMobile,
-                              mobileLeft: backLeftPaddingMobile,
-                              mobileRight: backRightPaddingMobile,
-                            }}
-                            setAttributes={setAttributes}
+                            resetValues={backFlipPaddingResetValues}
                             {...this.props}
                           />
                         </Fragment>
@@ -1361,25 +1376,9 @@ export default class Inspector extends Component {
                     } else {
                       tabout = (
                         <Fragment>
-                          <ResponsivePaddingControl
+                          <ResponsiveNewPaddingControl
                             attrNameTemplate="front%s"
-                            values={{
-                              desktopTop: frontTopPadding,
-                              desktopBottom: frontBottomPadding,
-                              desktopLeft: frontLeftPadding,
-                              desktopRight: frontRightPadding,
-
-                              tabletTop: frontTopPaddingTablet,
-                              tabletBottom: frontBottomPaddingTablet,
-                              tabletLeft: frontLeftPaddingTablet,
-                              tabletRight: frontRightPaddingTablet,
-
-                              mobileTop: frontTopPaddingMobile,
-                              mobileBottom: frontBottomPaddingMobile,
-                              mobileLeft: frontLeftPaddingMobile,
-                              mobileRight: frontRightPaddingMobile,
-                            }}
-                            setAttributes={setAttributes}
+                            resetValues={frontFlipPaddingResetValues}
                             {...this.props}
                           />
                         </Fragment>

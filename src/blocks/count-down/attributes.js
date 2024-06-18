@@ -360,51 +360,67 @@ const attributes = {
   },
   containerTopMarginTablet: {
     type: "number",
+    default: 0,
   },
   containerRightMarginTablet: {
     type: "number",
+    default: 0,
   },
   containerBottomMarginTablet: {
     type: "number",
+    default: 0,
   },
   containerLeftMarginTablet: {
     type: "number",
+    default: 0,
   },
   containerTopPaddingTablet: {
     type: "number",
+    default: 0,
   },
   containerRightPaddingTablet: {
     type: "number",
+    default: 0,
   },
   containerBottomPaddingTablet: {
     type: "number",
+    default: 0,
   },
   containerLeftPaddingTablet: {
     type: "number",
+    default: 0,
   },
   containerTopMarginMobile: {
     type: "number",
+    default: 0,
   },
   containerRightMarginMobile: {
     type: "number",
+    default: 0,
   },
   containerBottomMarginMobile: {
     type: "number",
+    default: 0,
   },
   containerLeftMarginMobile: {
     type: "number",
+    default: 0,
   },
   containerTopPaddingMobile: {
     type: "number",
+    default: 0,
   },
   containerRightPaddingMobile: {
     type: "number",
+    default: 0,
   },
   containerBottomPaddingMobile: {
     type: "number",
+    default: 0,
   },
   containerLeftPaddingMobile: {
     type: "number",
+    default: 0,
   },
   justifyItems: {
     type: "string",
@@ -441,6 +457,18 @@ const attributes = {
   },
   z_indexMobile: {
     type: "number",
+  },
+  containerIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  containerIsMarginControlConnected: {
+    type: "boolean",
+		default: false,
+	},
+  boxIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
   },
   boxPaddingTop: {
     type: "number",

@@ -358,6 +358,14 @@ const attributes = {
   blockPosition: {
     type: "string",
   },
+  containerIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  containerIsMarginControlConnected: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 export default attributes;

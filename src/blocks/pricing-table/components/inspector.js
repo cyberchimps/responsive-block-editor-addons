@@ -15,8 +15,8 @@ import ColorBackgroundControl from "../../../settings-components/BlockBackground
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -291,9 +291,41 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        blockIsPaddingControlConnected,
+        columnIsPaddingControlConnected,
       },
       setAttributes,
     } = this.props;
+
+    const blockPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+
+    const columnPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
 
     // Cite Alignment Options
     const citeAlignOptions = [
@@ -860,25 +892,9 @@ export default class Inspector extends Component {
                 title={__("Block Spacing", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <ResponsivePaddingControl
+                <ResponsiveNewPaddingControl
                   attrNameTemplate="block%s"
-                  values={{
-                    desktopTop: blockTopPadding,
-                    desktopBottom: blockBottomPadding,
-                    desktopLeft: blockLeftPadding,
-                    desktopRight: blockRightPadding,
-
-                    tabletTop: blockTopPaddingTablet,
-                    tabletBottom: blockBottomPaddingTablet,
-                    tabletLeft: blockLeftPaddingTablet,
-                    tabletRight: blockRightPaddingTablet,
-
-                    mobileTop: blockTopPaddingMobile,
-                    mobileBottom: blockBottomPaddingMobile,
-                    mobileLeft: blockLeftPaddingMobile,
-                    mobileRight: blockRightPaddingMobile,
-                  }}
-                  setAttributes={setAttributes}
+                  resetValues={blockPaddingResetValues}
                   {...this.props}
                 />
               </PanelBody>
@@ -886,25 +902,9 @@ export default class Inspector extends Component {
                 title={__("Column Spacing", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <ResponsivePaddingControl
+                <ResponsiveNewPaddingControl
                   attrNameTemplate="column%s"
-                  values={{
-                    desktopTop: columnTopPadding,
-                    desktopBottom: columnBottomPadding,
-                    desktopLeft: columnLeftPadding,
-                    desktopRight: columnRightPadding,
-
-                    tabletTop: columnTopPaddingTablet,
-                    tabletBottom: columnBottomPaddingTablet,
-                    tabletLeft: columnLeftPaddingTablet,
-                    tabletRight: columnRightPaddingTablet,
-
-                    mobileTop: columnTopPaddingMobile,
-                    mobileBottom: columnBottomPaddingMobile,
-                    mobileLeft: columnLeftPaddingMobile,
-                    mobileRight: columnRightPaddingMobile,
-                  }}
-                  setAttributes={setAttributes}
+                  resetValues={columnPaddingResetValues}
                   {...this.props}
                 />
               </PanelBody>

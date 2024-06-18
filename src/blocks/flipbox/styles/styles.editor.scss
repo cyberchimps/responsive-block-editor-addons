@@ -192,4 +192,8 @@
   .components-button.rbea-focus-tab {
     width: 50%;
   }
+  .components-button.rbea-normal-tab.rbea-flip-box-tab.active-tab,
+  .components-button.rbea-focus-tab.rbea-flip-box-tab.active-tab{
+    color: #2184F9;
+  }
 }

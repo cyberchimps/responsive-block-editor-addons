@@ -10,11 +10,11 @@ import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 
 import InspectorTab from "../../../components/InspectorTab"
 import InspectorTabs from "../../../components/InspectorTabs"
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 // Import block components
 const {
@@ -158,9 +158,25 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        inputIsPaddingControlConnected,
       },
       setAttributes,
     } = this.props;
+
+    const inputPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -298,25 +314,9 @@ export default class Inspector extends Component {
                   title={__("Padding", "responsive-block-editor-addons")}
                   initialOpen={false}
                 >
-                  <ResponsivePaddingControl
+                  <ResponsiveNewPaddingControl
                     attrNameTemplate="input%s"
-                    values = {{
-                      desktopTop:inputTopPadding,
-                      desktopBottom:inputBottomPadding,
-                      desktopLeft:inputLeftPadding,
-                      desktopRight:inputRightPadding,
-
-                      tabletTop:inputTopPaddingTablet,
-                      tabletBottom:inputBottomPaddingTablet,
-                      tabletLeft:inputLeftPaddingTablet,
-                      tabletRight:inputRightPaddingTablet,
-
-                      mobileTop:inputTopPaddingMobile,
-                      mobileBottom:inputBottomPaddingMobile,
-                      mobileLeft:inputLeftPaddingMobile,
-                      mobileRight:inputRightPaddingMobile,
-                    }}
-                    setAttributes={ setAttributes }
+                    resetValues={inputPaddingResetValues}
                     {...this.props}
                   />
                 </PanelBody>
