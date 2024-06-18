@@ -377,6 +377,14 @@ const attributes = {
 	  type: "boolean",
 	  default: false,
 	},
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;

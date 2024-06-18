@@ -16,8 +16,8 @@ import TypographyHelperControl from "../../../settings-components/TypographySett
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
-import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Import block components
 const {
@@ -175,9 +175,41 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        blockIsMarginControlConnected,
+        blockIsPaddingControlConnected,
       },
       setAttributes,
     } = this.props;
+
+    const blockMarginResetValues = {
+      marginTop: 10,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 10,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 10,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+
+    const blockPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -458,25 +490,9 @@ export default class Inspector extends Component {
                   title={__("Block Padding", "responsive-block-editor-addons")}
                   initialOpen={false}
                 >
-                  <ResponsivePaddingControl
+                  <ResponsiveNewPaddingControl
                     attrNameTemplate="block%s"
-                    values = {{
-                      desktopTop:blockTopPadding,
-                      desktopBottom:blockBottomPadding,
-                      desktopLeft:blockLeftPadding,
-                      desktopRight:blockRightPadding,
-
-                      tabletTop:blockTopPaddingTablet,
-                      tabletBottom:blockBottomPaddingTablet,
-                      tabletLeft:blockLeftPaddingTablet,
-                      tabletRight:blockRightPaddingTablet,
-
-                      mobileTop:blockTopPaddingMobile,
-                      mobileBottom:blockBottomPaddingMobile,
-                      mobileLeft:blockLeftPaddingMobile,
-                      mobileRight:blockRightPaddingMobile,
-                    }}
-                    setAttributes={ setAttributes }
+                    resetValues={blockPaddingResetValues}
                     {...this.props}
                   />
                 </PanelBody>
@@ -484,25 +500,9 @@ export default class Inspector extends Component {
                   title={__("Block Margin", "responsive-block-editor-addons")}
                   initialOpen={false}
                 >
-                  <ResponsiveMarginControl
+                  <ResponsiveNewMarginControl
                     attrNameTemplate="block%s"
-                    values = {{
-                      desktopTop:blockTopMargin,
-                      desktopBottom:blockBottomMargin,
-                      desktopLeft:blockLeftMargin,
-                      desktopRight:blockRightMargin,
-
-                      tabletTop:blockTopMarginTablet,
-                      tabletBottom:blockBottomMarginTablet,
-                      tabletLeft:blockLeftMarginTablet,
-                      tabletRight:blockRightMarginTablet,
-
-                      mobileTop:blockTopMarginMobile,
-                      mobileBottom:blockBottomMarginMobile,
-                      mobileLeft:blockLeftMarginMobile,
-                      mobileRight:blockRightMarginMobile,
-                    }}
-                    setAttributes={ setAttributes }
+                    resetValues={blockMarginResetValues}
                     {...this.props}
                   />
                 </PanelBody>

@@ -1133,6 +1133,10 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  inputIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 
 };
 

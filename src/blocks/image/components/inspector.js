@@ -1,6 +1,7 @@
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 const {Component, Fragment} = wp.element;
 const {
@@ -136,7 +137,58 @@ export default class Inspector extends Component {
       z_index,
       z_indexMobile,
       z_indexTablet,
+      imageTopMargin,
+      imageBottomMargin,
+      imageLeftMargin,
+      imageRightMargin,
+      imageTopMarginTablet,
+      imageBottomMarginTablet,
+      imageLeftMarginTablet,
+      imageRightMarginTablet,
+      imageTopMarginMobile,
+      imageBottomMarginMobile,
+      imageLeftMarginMobile,
+      imageRightMarginMobile,
+      newSpacingValuesUpdated,
+      imageIsMarginControlConnected,
     } = attributes;
+
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!newSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          imageTopMargin:          imagetopmargin !== undefined ? imagetopmargin : imageTopMargin,
+          imageBottomMargin:       imagebottommargin !== undefined ? imagebottommargin : imageBottomMargin,
+          imageLeftMargin:         imageleftmargin !== undefined ? imageleftmargin : imageLeftMargin,
+          imageRightMargin:        imagerightmargin !== undefined ? imagerightmargin : imageRightMargin,
+          imageTopMarginTablet:    imagetopmarginTablet !== undefined ? imagetopmarginTablet : imageTopMarginTablet,
+          imageBottomMarginTablet: imagebottommarginTablet !== undefined ? imagebottommarginTablet : imageBottomMarginTablet,
+          imageRightMarginTablet:  imagerightmarginTablet !== undefined ? imagerightmarginTablet : imageRightMarginTablet,
+          imageLeftMarginTablet:   imageleftmarginTablet !== undefined ? imageleftmarginTablet : imageLeftMarginTablet,
+          imageTopMarginMobile:    imagetopmarginMobile !== undefined ? imagetopmarginMobile : imageTopMarginMobile,
+          imageBottomMarginMobile: imagebottommarginMobile !== undefined ? imagebottommarginMobile : imageBottomMarginMobile,
+          imageLeftMarginMobile:   imageleftmarginMobile !== undefined ? imageleftmarginMobile : imageLeftMarginMobile,
+          imageRightMarginMobile:  imagerightmarginMobile !== undefined ? imagerightmarginMobile : imageRightMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({newSpacingValuesUpdated: true});
+
+    const imageMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+
     const handleChangeImage = () => {
       // Check if the WordPress media library is available
       if (wp && wp.media) {
@@ -1012,211 +1064,11 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
-
-              <TabPanel
-                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                activeClass="active-tab"
-                tabs={[
-                  {
-                    name: "desktop",
-                    title: <Dashicon icon="desktop" />,
-                    className:
-                      " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "tablet",
-                    title: <Dashicon icon="tablet" />,
-                    className:
-                      " responsive-tablet-tab  responsive-responsive-tabs",
-                  },
-                  {
-                    name: "mobile",
-                    title: <Dashicon icon="smartphone" />,
-                    className:
-                      " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-                ]}
-              >
-                {(tab) => {
-                  let tabout;
-
-                  if ("mobile" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <p>
-                          {__(
-                            "Margin Mobile",
-                            "responsive-block-editor-addons"
-                          )}
-                        </p>
-                        <RangeControl
-                          label={__("Top", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagetopmarginMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagetopmarginMobile: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Bottom", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagebottommarginMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagebottommarginMobile: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Left", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imageleftmarginMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              imageleftmarginMobile: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Right", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagerightmarginMobile}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagerightmarginMobile: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else if ("tablet" === tab.name) {
-                    tabout = (
-                      <Fragment>
-                        <p>
-                          {__(
-                            "Margin Tablet",
-                            "responsive-block-editor-addons"
-                          )}
-                        </p>
-                        <RangeControl
-                          label={__("Top", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagetopmarginTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagetopmarginTablet: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Bottom", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagebottommarginTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagebottommarginTablet: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Left", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imageleftmarginTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              imageleftmarginTablet: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Right", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagerightmarginTablet}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagerightmarginTablet: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  } else {
-                    tabout = (
-                      <Fragment>
-                        <p>{__("Margin", "responsive-block-editor-addons")}</p>
-                        <RangeControl
-                          label={__("Top", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagetopmargin}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagetopmargin: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Bottom", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagebottommargin}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagebottommargin: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Left", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imageleftmargin}
-                          onChange={(value) =>
-                            setAttributes({
-                              imageleftmargin: value,
-                            })
-                          }
-                        />
-                        <RangeControl
-                          label={__("Right", "responsive-block-editor-addons")}
-                          min={0}
-                          max={2000}
-                          allowReset={true}
-                          value={imagerightmargin}
-                          onChange={(value) =>
-                            setAttributes({
-                              imagerightmargin: value,
-                            })
-                          }
-                        />
-                      </Fragment>
-                    );
-                  }
-
-                  return <div>{tabout}</div>;
-                }}
-              </TabPanel>
+              <ResponsiveNewMarginControl
+                attrNameTemplate="image%s"
+                resetValues={imageMarginResetValues}
+                {...this.props}
+              />
               <BoxShadowControlHelper
                 setAttributes={setAttributes}
                 boxShadowColor={{value: imageboxShadowColor}}

@@ -296,27 +296,35 @@ const attributes = {
   },
   iconLeftMarginMobile: {
     type: "number",
+    default: '',
   },
   iconRightMarginMobile: {
     type: "number",
+    default: '',
   },
   iconTopMarginMobile: {
     type: "number",
+    default: '',
   },
   iconBottomMarginMobile: {
     type: "number",
+    default: '',
   },
   iconLeftMarginTablet: {
     type: "number",
+    default: '',
   },
   iconRightMarginTablet: {
     type: "number",
+    default: '',
   },
   iconTopMarginTablet: {
     type: "number",
+    default: '',
   },
   iconBottomMarginTablet: {
     type: "number",
+    default: '',
   },
   iconImage: {
     type: "object",
@@ -729,5 +737,9 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  iconIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 };
 export default attributes;

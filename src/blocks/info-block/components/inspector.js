@@ -16,9 +16,9 @@ import BlockBorderHelperControl from "../../../settings-components/BlockBorderSe
 import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
-import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -337,9 +337,25 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        iconIsMarginControlConnected,
       },
       setAttributes,
     } = this.props;
+
+    const iconMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
 
     // Font Weight Options
     const fontWeightOptions = [
@@ -1215,27 +1231,11 @@ export default class Inspector extends Component {
                   )}
                   initialOpen={false}
                 >
-                  <ResponsiveMarginControl
-                    attrNameTemplate="icon%s"
-                    values={{
-                      desktopTop: iconTopMargin,
-                      desktopBottom: iconBottomMargin,
-                      desktopLeft: iconLeftMargin,
-                      desktopRight: iconRightMargin,
-
-                      tabletTop: iconTopMarginTablet,
-                      tabletBottom: iconBottomMarginTablet,
-                      tabletLeft: iconLeftMarginTablet,
-                      tabletRight: iconRightMarginTablet,
-
-                      mobileTop: iconTopMarginMobile,
-                      mobileBottom: iconBottomMarginMobile,
-                      mobileLeft: iconLeftMarginMobile,
-                      mobileRight: iconRightMarginMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
+                  <ResponsiveNewMarginControl
+                  attrNameTemplate="icon%s"
+                  resetValues={iconMarginResetValues}
+                  {...this.props}
+                />
                 </PanelBody>
               )}
             </PanelBody>

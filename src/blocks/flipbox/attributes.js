@@ -662,6 +662,14 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  frontIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  backIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;

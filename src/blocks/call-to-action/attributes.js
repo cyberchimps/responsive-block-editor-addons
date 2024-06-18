@@ -408,6 +408,10 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   buttonBackgroundColor: {
 	type: "string",
 	default: "empty",

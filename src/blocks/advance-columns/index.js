@@ -63,19 +63,19 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
     },
     boxTopPadding: {
       type: "number",
-      default: 10,
+      default: 0,
     },
     boxBottomPadding: {
       type: "number",
-      default: 10,
+      default: 0,
     },
     boxLeftPadding: {
       type: "number",
-      default: 10,
+      default: 0,
     },
     boxRightPadding: {
       type: "number",
-      default: 10,
+      default: 0,
     },
     boxTopPaddingTablet: {
       type: "number",
@@ -283,6 +283,58 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
       type: "number",
       default: 1,
     },
+    boxIsPaddingControlConnected: {
+      type: "boolean",
+      default: false,
+    },
+    boxIsMarginControlConnected: {
+      type: "boolean",
+      default: false,
+    },
+    boxTopMargin: {
+      type: "number",
+      default: 0,
+    },
+    boxBottomMargin: {
+      type: "number",
+      default: 0,
+    },
+    boxLeftMargin: {
+      type: "number",
+      default: 0,
+    },
+    boxRightMargin: {
+      type: "number",
+      default: 0,
+    },
+    boxTopMarginTablet: {
+      type: "number",
+    },
+    boxBottomMarginTablet: {
+      type: "number",
+    },
+    boxLeftMarginTablet: {
+      type: "number",
+    },
+    boxRightMarginTablet: {
+      type: "number",
+    },
+    boxTopMarginMobile: {
+      type: "number",
+    },
+    boxBottomMarginMobile: {
+      type: "number",
+    },
+    boxLeftMarginMobile: {
+      type: "number",
+    },
+    boxRightMarginMobile: {
+      type: "number",
+    },
+    newMarginValuesUpdated: {
+      type: "boolean",
+      default: false,
+    },
 	backgroundPosition: {
 	  type: "string",
 	  default: "empty",
@@ -294,54 +346,6 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
 	backgroundSize: {
 	  type: "string",
 	  default: "empty",
-	}, // For compatibility with v1.3.2.
-	topPadding: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	bottomPadding: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	leftPadding: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	rightPadding: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	topPaddingMobile: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	bottomPaddingMobile: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	leftPaddingMobile: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	rightPaddingMobile: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	topPaddingTablet: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	bottomPaddingTablet: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	leftPaddingTablet: {
-	  type: "number",
-	  default: 999,
-	}, // For compatibility with v1.3.2.
-	rightPaddingTablet: {
-	  type: "number",
-	  default: 999,
 	}, // For compatibility with v1.3.2.
   },
     example:{

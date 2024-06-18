@@ -104,75 +104,99 @@ const attributes = {
   },
   tabsTopPadding: {
     type: "number",
+    default: 0,
   },
   tabsBottomPadding: {
     type: "number",
+    default: 0,
   },
   tabsLeftPadding: {
     type: "number",
+    default: 0,
   },
   tabsRightPadding: {
     type: "number",
+    default: 0,
   },
   tabsTopPaddingTablet: {
     type: "number",
+    default: 0,
   },
   tabsBottomPaddingTablet: {
     type: "number",
+    default: 0,
   },
   tabsLeftPaddingTablet: {
     type: "number",
+    default: 0,
   },
   tabsRightPaddingTablet: {
     type: "number",
+    default: 0,
   },
   tabsTopPaddingMobile: {
     type: "number",
+    default: 0,
   },
   tabsBottomPaddingMobile: {
     type: "number",
+    default: 0,
   },
   tabsLeftPaddingMobile: {
     type: "number",
+    default: 0,
   },
   tabsRightPaddingMobile: {
     type: "number",
+    default: 0,
   },
   tabsTopMargin: {
     type: "number",
+    default: 0,
   },
   tabsBottomMargin: {
     type: "number",
+    default: 0,
   },
   tabsLeftMargin: {
     type: "number",
+    default: 0,
   },
   tabsRightMargin: {
     type: "number",
+    default: 0,
   },
   tabsTopMarginTablet: {
     type: "number",
+    default: 0,
   },
   tabsBottomMarginTablet: {
     type: "number",
+    default: 0,
   },
   tabsLeftMarginTablet: {
     type: "number",
+    default: 0,
   },
   tabsRightMarginTablet: {
     type: "number",
+    default: 0,
   },
   tabsTopMarginMobile: {
     type: "number",
+    default: 0,
   },
   tabsBottomMarginMobile: {
     type: "number",
+    default: 0,
   },
   tabsLeftMarginMobile: {
     type: "number",
+    default: 0,
   },
   tabsRightMarginMobile: {
     type: "number",
+    default: 0,
   },
   backgroundType: {
     type: "string",
@@ -308,6 +332,14 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  tabsIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  tabsIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;

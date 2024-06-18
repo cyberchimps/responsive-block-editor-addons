@@ -223,6 +223,10 @@ const attributes = {
       type: "number",
       default: 1,
     },
+    inputIsPaddingControlConnected: {
+      type: "boolean",
+      default: false,
+    },
   };
   
   export default attributes;
