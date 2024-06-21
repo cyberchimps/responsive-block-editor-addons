@@ -2,6 +2,7 @@ import BlockBorderHelperControl from "../../../settings-components/BlockBorderSe
 import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 const {Component, Fragment} = wp.element;
 const {
@@ -151,6 +152,19 @@ export default class Inspector extends Component {
       imageRightMarginMobile,
       newSpacingValuesUpdated,
       imageIsMarginControlConnected,
+      imageTopPadding,
+      imageTopPaddingMobile,
+      imageTopPaddingTablet,
+      imageBottomPadding,
+      imageBottomPaddingMobile,
+      imageBottomPaddingTablet,
+      imageLeftPadding,
+      imageLeftPaddingMobile,
+      imageLeftPaddingTablet,
+      imageRightPadding,
+      imageRightPaddingMobile,
+      imageRightPaddingTablet,
+      imageIsPaddingControlConnected
     } = attributes;
 
     // To populate new control values with existing padding margin control values for backward compatibility.
@@ -188,6 +202,20 @@ export default class Inspector extends Component {
       marginMobileBottom: 0,
       marginMobileLeft: 0,
     }
+    const imagePaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
 
     const handleChangeImage = () => {
       // Check if the WordPress media library is available
@@ -1064,11 +1092,6 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
-              <ResponsiveNewMarginControl
-                attrNameTemplate="image%s"
-                resetValues={imageMarginResetValues}
-                {...this.props}
-              />
               <BoxShadowControlHelper
                 setAttributes={setAttributes}
                 boxShadowColor={{value: imageboxShadowColor}}
@@ -1093,6 +1116,20 @@ export default class Inspector extends Component {
                 }
               />
               {imageboxshadowSeprateHover && HoverBoxShadowControls}
+            </PanelBody>
+            <PanelBody
+              title="Spacing" initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="image%s"
+                resetValues={imagePaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="image%s"
+                resetValues={imageMarginResetValues}
+                {...this.props}
+              />
             </PanelBody>
             {Layoverswitch && (
               <>

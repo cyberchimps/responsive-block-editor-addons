@@ -15,6 +15,7 @@ import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -185,23 +186,64 @@ export default class Inspector extends Component {
         z_indexTablet,
         columnIsPaddingControlConnected,
         blockIsPaddingControlConnected,
+        blockTopMargin,
+        blockTopMarginMobile,
+        blockTopMarginTablet,
+        blockBottomMargin,
+        blockBottomMarginMobile,
+        blockBottomMarginTablet,
+        blockLeftMargin,
+        blockLeftMarginMobile,
+        blockLeftMarginTablet,
+        blockRightMargin,
+        blockRightMarginMobile,
+        blockRightMarginTablet,
+        blockIsMarginControlConnected,
       },
       setAttributes,
     } = this.props;
 
     const columnPaddingResetValues = {
-      paddingTop: 10,
+      paddingTop: 0,
       paddingRight: 0,
       paddingBottom: 0,
       paddingLeft: 0,
-      paddingTabletTop: 10,
+      paddingTabletTop: 0,
       paddingTabletRight: 0,
       paddingTabletBottom: 0,
       paddingTabletLeft: 0,
-      paddingMobileTop: 10,
+      paddingMobileTop: 0,
       paddingMobileRight: 0,
       paddingMobileBottom: 0,
       paddingMobileLeft: 0,
+    }
+    const blockPaddingResetValues = {
+      paddingTop: 0,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 0,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 0,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const blockMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
     }
 
     // Cite Alignment Options
@@ -793,9 +835,24 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <PanelBody
+                title={__("Padding", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <ResponsiveNewPaddingControl
+                  attrNameTemplate="block%s"
+                  resetValues={blockPaddingResetValues}
+                  {...this.props}
+                />
+              </PanelBody>
+              <PanelBody
                 title={__("Margin", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="block%s"
+                  resetValues={blockMarginResetValues}
+                  {...this.props}
+                />
                 <ResponsiveSpacingControl
                   title={"Image Bottom"}
                   attrNameTemplate="imageSpace%s"
@@ -908,16 +965,6 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
-              />
-            </PanelBody>
-            <PanelBody
-              title={__("Padding", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl
-                attrNameTemplate="block%s"
-                resetValues={columnPaddingResetValues}
-                {...this.props}
               />
             </PanelBody>
             <PanelBody
