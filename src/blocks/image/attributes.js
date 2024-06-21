@@ -484,6 +484,58 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+  imageIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  imageTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
 };
 
 export default attributes;

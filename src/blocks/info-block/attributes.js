@@ -741,5 +741,113 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+  blockTopMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockRightMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockTopMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockTopMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  newSpacingValuesUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 export default attributes;

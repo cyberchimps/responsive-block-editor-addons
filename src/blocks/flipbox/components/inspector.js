@@ -15,6 +15,7 @@ import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpa
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -302,6 +303,20 @@ export default class Inspector extends Component {
         z_indexTablet,
         frontIsPaddingControlConnected,
         backIsPaddingControlConnected,
+        blockTopMargin,
+        blockTopMarginMobile,
+        blockTopMarginTablet,
+        blockBottomMargin,
+        blockBottomMarginMobile,
+        blockBottomMarginTablet,
+        blockLeftMargin,
+        blockLeftMarginMobile,
+        blockLeftMarginTablet,
+        blockRightMargin,
+        blockRightMarginMobile,
+        blockRightMarginTablet,
+        blockIsMarginControlConnected,
+        blockNewSpacingValuesUpdated
       },
       setAttributes,
     } = this.props;
@@ -335,6 +350,35 @@ export default class Inspector extends Component {
       paddingMobileBottom: 0,
       paddingMobileLeft: 0,
     }
+    const blockMarginResetValues = {
+      marginTop: 5,
+      marginRight: 5,
+      marginBottom: 5,
+      marginLeft: 5,
+      marginTabletTop: 5,
+      marginTabletRight: 5,
+      marginTabletBottom: 5,
+      marginTabletLeft: 5,
+      marginMobileTop: 5,
+      marginMobileRight: 5,
+      marginMobileBottom: 5,
+      marginMobileLeft: 5,
+    }
+
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!blockNewSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopMargin:          topMargin !== undefined ? topMargin : blockTopMargin,
+          blockBottomMargin:       bottomMargin !== undefined ? bottomMargin : blockBottomMargin,
+          blockTopMarginTablet:    topMarginTablet !== undefined ? topMarginTablet : blockTopMarginTablet,
+          blockBottomMarginTablet: bottomMarginTablet !== undefined ? bottomMarginTablet : blockBottomMarginTablet,
+          blockTopMarginMobile:    topMarginMobile !== undefined ? topMarginMobile : blockTopMarginMobile,
+          blockBottomMarginMobile: bottomMarginMobile !== undefined ? bottomMarginMobile : blockBottomMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({blockNewSpacingValuesUpdated: true});
 
     // Update color value
     const onChangeFrontTextColor = (value) =>
@@ -1317,26 +1361,9 @@ export default class Inspector extends Component {
                 title={__("Margin", "responsive-block-editor-addons")}
                 initialOpen={true}
               >
-                <ResponsiveSpacingControl
-                  title={__("Top Margin", "responsive-block-editor-addons")}
-                  attrNameTemplate="topMargin%s"
-                  values={{
-                    desktop: topMargin,
-                    tablet: topMarginTablet,
-                    mobile: topMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={__("Bottom Margin", "responsive-block-editor-addons")}
-                  attrNameTemplate="bottomMargin%s"
-                  values={{
-                    desktop: bottomMargin,
-                    tablet: bottomMarginTablet,
-                    mobile: bottomMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="block%s"
+                  resetValues={blockMarginResetValues}
                   {...this.props}
                 />
               </PanelBody>
