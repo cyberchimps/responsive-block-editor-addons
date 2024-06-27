@@ -17,6 +17,7 @@ import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -293,38 +294,66 @@ export default class Inspector extends Component {
         z_indexTablet,
         blockIsPaddingControlConnected,
         columnIsPaddingControlConnected,
+        blockTopMargin,
+        blockBottomMargin,
+        blockLeftMargin,
+        blockRightMargin,
+        blockTopMarginTablet,
+        blockBottomMarginTablet,
+        blockLeftMarginTablet,
+        blockRightMarginTablet,
+        blockTopMarginMobile,
+        blockBottomMarginMobile,
+        blockLeftMarginMobile,
+        blockRightMarginMobile,
+        blockIsMarginControlConnected,
       },
       setAttributes,
     } = this.props;
 
     const blockPaddingResetValues = {
       paddingTop: 10,
-      paddingRight: 0,
-      paddingBottom: 0,
-      paddingLeft: 0,
+      paddingRight: 10,
+      paddingBottom: 10,
+      paddingLeft: 10,
       paddingTabletTop: 10,
-      paddingTabletRight: 0,
-      paddingTabletBottom: 0,
-      paddingTabletLeft: 0,
+      paddingTabletRight: 10,
+      paddingTabletBottom: 10,
+      paddingTabletLeft: 10,
       paddingMobileTop: 10,
-      paddingMobileRight: 0,
-      paddingMobileBottom: 0,
-      paddingMobileLeft: 0,
+      paddingMobileRight: 10,
+      paddingMobileBottom: 10,
+      paddingMobileLeft: 10,
     }
 
     const columnPaddingResetValues = {
       paddingTop: 10,
-      paddingRight: 0,
-      paddingBottom: 0,
-      paddingLeft: 0,
+      paddingRight: 10,
+      paddingBottom: 10,
+      paddingLeft: 10,
       paddingTabletTop: 10,
-      paddingTabletRight: 0,
-      paddingTabletBottom: 0,
-      paddingTabletLeft: 0,
+      paddingTabletRight: 10,
+      paddingTabletBottom: 10,
+      paddingTabletLeft: 10,
       paddingMobileTop: 10,
-      paddingMobileRight: 0,
-      paddingMobileBottom: 0,
-      paddingMobileLeft: 0,
+      paddingMobileRight: 10,
+      paddingMobileBottom: 10,
+      paddingMobileLeft: 10,
+    }
+
+    const blockMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
     }
 
     // Cite Alignment Options
@@ -895,6 +924,11 @@ export default class Inspector extends Component {
                 <ResponsiveNewPaddingControl
                   attrNameTemplate="block%s"
                   resetValues={blockPaddingResetValues}
+                  {...this.props}
+                />
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="block%s"
+                  resetValues={blockMarginResetValues}
                   {...this.props}
                 />
               </PanelBody>

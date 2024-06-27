@@ -18,6 +18,8 @@ import BlockBorderHelperControl from "../../../settings-components/BlockBorderSe
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
@@ -295,8 +297,48 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     contentRightSpacing,
     contentRightSpacingMobile,
     contentRightSpacingTablet,
+    blockTopMargin,
+    blockBottomMargin,
+    blockLeftMargin,
+    blockRightMargin,
+    blockTopMarginTablet,
+    blockBottomMarginTablet,
+    blockLeftMarginTablet,
+    blockRightMarginTablet,
+    blockTopMarginMobile,
+    blockBottomMarginMobile,
+    blockLeftMarginMobile,
+    blockRightMarginMobile,
+    blockTopPadding,
+    blockTopPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPadding,
+    blockBottomPaddingMobile,
+    blockBottomPaddingTablet,
+    blockLeftPadding,
+    blockLeftPaddingMobile,
+    blockLeftPaddingTablet,
+    blockRightPadding,
+    blockRightPaddingMobile,
+    blockRightPaddingTablet,
+    blockIsMarginControlConnected,
+    blockIsPaddingControlConnected,
     } = attributes;
 
+    const blockPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
     const fontWeightOptions = [
       {
         value: "",
@@ -1155,6 +1197,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           initialOpen={false}
           className="responsive_block_editor_addons__url-panel-body"
         >
+          <ResponsiveNewPaddingControl
+            attrNameTemplate="block%s"
+            resetValues={blockPaddingResetValues}
+            {...this.props}
+          />
           <ResponsiveSpacingControl
             title={"Row Gap"}
             attrNameTemplate="rowsGap%s"
