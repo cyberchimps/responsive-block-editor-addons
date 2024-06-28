@@ -22,6 +22,8 @@ import ColorBackgroundControl from "../../../settings-components/BlockBackground
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 const { __ } = wp.i18n;
 
@@ -311,7 +313,84 @@ class edit extends Component {
       hideWidget,
       hideWidgetTablet,
       hideWidgetMobile,
+      blockTopMargin,
+      blockBottomMargin,
+      blockLeftMargin,
+      blockRightMargin,
+      blockTopMarginTablet,
+      blockBottomMarginTablet,
+      blockLeftMarginTablet,
+      blockRightMarginTablet,
+      blockTopMarginMobile,
+      blockBottomMarginMobile,
+      blockLeftMarginMobile,
+      blockRightMarginMobile,
+      blockTopPadding,
+      blockTopPaddingMobile,
+      blockTopPaddingTablet,
+      blockBottomPadding,
+      blockBottomPaddingMobile,
+      blockBottomPaddingTablet,
+      blockLeftPadding,
+      blockLeftPaddingMobile,
+      blockLeftPaddingTablet,
+      blockRightPadding,
+      blockRightPaddingMobile,
+      blockRightPaddingTablet,
+      blockIsMarginControlConnected,
+      blockIsPaddingControlConnected,
+      newSpacingValuesUpdated
     } = attributes;
+
+    const blockMarginResetValues = {
+			marginTop: 0,
+			marginRight: 0,
+			marginBottom: 0,
+			marginLeft: 0,
+			marginTabletTop: 0,
+			marginTabletRight: 0,
+			marginTabletBottom: 0,
+			marginTabletLeft: 0,
+			marginMobileTop: 0,
+			marginMobileRight: 0,
+			marginMobileBottom: 0,
+			marginMobileLeft: 0,
+		}
+		const blockPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
+
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!newSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopMargin:          blockPadding !== undefined ? blockPadding : blockTopMargin,
+          blockBottomMargin:       blockPadding !== undefined ? blockPadding : blockBottomMargin,
+          blockLeftMargin:         blockPadding !== undefined ? blockPadding : blockLeftMargin,
+          blockRightMargin:        blockPadding !== undefined ? blockPadding : blockRightMargin,
+          blockTopMarginTablet:    blockPaddingTablet !== undefined ? blockPaddingTablet : blockTopMarginTablet,
+          blockBottomMarginTablet: blockPaddingTablet !== undefined ? blockPaddingTablet : blockBottomMarginTablet,
+          blockRightMarginTablet:  blockPaddingTablet !== undefined ? blockPaddingTablet : blockRightMarginTablet,
+          blockLeftMarginTablet:   blockPaddingTablet !== undefined ? blockPaddingTablet : blockLeftMarginTablet,
+          blockTopMarginMobile:    blockPaddingMobile !== undefined ? blockPaddingMobile : blockTopMarginMobile,
+          blockBottomMarginMobile: blockPaddingMobile !== undefined ? blockPaddingMobile : blockBottomMarginMobile,
+          blockLeftMarginMobile:   blockPaddingMobile !== undefined ? blockPaddingMobile : blockLeftMarginMobile,
+          blockRightMarginMobile:  blockPaddingMobile !== undefined ? blockPaddingMobile : blockRightMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({newSpacingValuesUpdated: true});
 
     const fontWeightOptions = [
       {
@@ -448,6 +527,16 @@ class edit extends Component {
     // Margin Settings.
     const marginSettings = (
       <PanelBody title={__("Spacing", "responsive-block-editor-addons")} initialOpen={false}>
+        <ResponsiveNewPaddingControl
+          attrNameTemplate="block%s"
+          resetValues={blockPaddingResetValues}
+          {...this.props}
+        />
+        <ResponsiveNewMarginControl
+          attrNameTemplate="block%s"
+          resetValues={blockMarginResetValues}
+          {...this.props}
+        />
         <ResponsiveSpacingControl
           title={__("Content and Dots Gap", "responsive-block-editor-addons")}
           attrNameTemplate="rowGap%s"
@@ -466,17 +555,6 @@ class edit extends Component {
             desktop: columnGap,
             tablet: columnGapTablet,
             mobile: columnGapMobile,
-          }}
-          setAttributes={setAttributes}
-          {...this.props}
-        />
-        <ResponsiveSpacingControl
-          title={"Block Padding"}
-          attrNameTemplate="blockPadding%s"
-          values={{
-            desktop: blockPadding,
-            tablet: blockPaddingTablet,
-            mobile: blockPaddingMobile,
           }}
           setAttributes={setAttributes}
           {...this.props}

@@ -135,6 +135,30 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    blockTopMargin,
+    blockBottomMargin,
+    blockLeftMargin,
+    blockRightMargin,
+    blockTopMarginTablet,
+    blockBottomMarginTablet,
+    blockLeftMarginTablet,
+    blockRightMarginTablet,
+    blockTopMarginMobile,
+    blockBottomMarginMobile,
+    blockLeftMarginMobile,
+    blockRightMarginMobile,
+    blockTopPadding,
+    blockTopPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPadding,
+    blockBottomPaddingMobile,
+    blockBottomPaddingTablet,
+    blockLeftPadding,
+    blockLeftPaddingMobile,
+    blockLeftPaddingTablet,
+    blockRightPadding,
+    blockRightPaddingMobile,
+    blockRightPaddingTablet,
   } = props.attributes;
 
   var selectors = {};
@@ -197,6 +221,10 @@ function EditorStyles(props) {
       "margin-bottom": marginV + "px",
       "margin-left": marginH + "px",
       "margin-right": marginH + "px",
+      'padding-top': generateCSSUnit(blockTopPadding, "px"),
+			'padding-right': generateCSSUnit(blockRightPadding, "px"),
+			'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
+			'padding-left': generateCSSUnit(blockLeftPadding, "px"),
     },
     " .responsive-block-editor-addons-icon svg": {
       "width": generateCSSUnit(iconSize, iconSizeType),
@@ -325,6 +353,10 @@ function EditorStyles(props) {
       "margin-bottom": marginVTablet + "px",
       "margin-left": marginHTablet + "px",
       "margin-right": marginHTablet + "px",
+      'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
+      'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
+      'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),
+      'padding-left': generateCSSUnit(blockLeftPaddingTablet, "px"),
     },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(
@@ -416,6 +448,10 @@ function EditorStyles(props) {
       "margin-bottom": marginVMobile + "px",
       "margin-left": marginHMobile + "px",
       "margin-right": marginHMobile + "px",
+      'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
+      'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
+      'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
+      'padding-left': generateCSSUnit(blockLeftPaddingMobile, "px"),
     },
     " .responsive-block-editor-addons-accordion-titles-button": {
       "padding-top": generateCSSUnit(

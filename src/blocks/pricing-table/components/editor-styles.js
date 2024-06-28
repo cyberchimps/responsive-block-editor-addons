@@ -169,6 +169,18 @@ function EditorStyles(props) {
       hideWidget,
       hideWidgetTablet,
       hideWidgetMobile,
+    blockTopMargin,
+    blockBottomMargin,
+    blockLeftMargin,
+    blockRightMargin,
+    blockTopMarginTablet,
+    blockBottomMarginTablet,
+    blockLeftMarginTablet,
+    blockRightMarginTablet,
+    blockTopMarginMobile,
+    blockBottomMarginMobile,
+    blockLeftMarginMobile,
+    blockRightMarginMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -269,6 +281,10 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
       "padding-left": generateCSSUnit(blockLeftPadding, "px"),
       "padding-right": generateCSSUnit(blockRightPadding, "px"),
+      'margin-top': generateCSSUnit(blockTopMargin, "px"),
+      'margin-right': generateCSSUnit(blockRightMargin, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
+      'margin-left': generateCSSUnit(blockLeftMargin, "px"),
       "background-color":
         blockbackgroundType == "color"
           ? `${hexToRgba(blockbackgroundColor || "#fff", 0)}`
@@ -414,6 +430,10 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+      'margin-top': generateCSSUnit(blockTopMarginMobile, "px"),
+      'margin-right': generateCSSUnit(blockRightMarginMobile, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMarginMobile, "px"),
+      'margin-left': generateCSSUnit(blockLeftMarginMobile, "px"),
     },
     " .wp-block-responsive-block-editor-addons-pricing-table-item": {
       "padding-top": generateCSSUnit(columnTopPaddingMobile, "px"),
@@ -465,6 +485,10 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+      'margin-top': generateCSSUnit(blockTopMarginTablet, "px"),
+      'margin-right': generateCSSUnit(blockRightMarginTablet, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMarginTablet, "px"),
+      'margin-left': generateCSSUnit(blockLeftMarginTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-pricing-table-item": {
       "padding-top": generateCSSUnit(columnTopPaddingTablet, "px"),

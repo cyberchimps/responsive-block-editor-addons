@@ -980,6 +980,110 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				'z_indexTablet'         => array(
 					'type'    => 'number',
 					'default' => 1,
+				),
+				'blockTopMargin' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockBottomMargin' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockLeftMargin' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockRightMargin' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockTopMarginTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockBottomMarginTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockLeftMarginTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockRightMarginTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockTopMarginMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockBottomMarginMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockLeftMarginMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockRightMarginMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockIsMarginControlConnected' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'blockIsPaddingControlConnected' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'blockTopPadding' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockTopPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockTopPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockBottomPadding' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockBottomPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockBottomPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockLeftPadding' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockLeftPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockLeftPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockRightPadding' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockRightPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'blockRightPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => 0,
 				),         
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',
