@@ -553,5 +553,113 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  blockIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  blockTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockTopMargin: {
+    type: "number",
+    default: 2,
+  },
+  blockBottomMargin: {
+    type: "number",
+    default: 2,
+  },
+  blockLeftMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockRightMargin: {
+    type: "number",
+    default: 0,
+  },
+  blockTopMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockTopMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockIsMarginControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  blockNewSpacingValuesUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 export default attributes;

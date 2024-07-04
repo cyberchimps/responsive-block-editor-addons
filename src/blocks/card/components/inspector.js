@@ -18,6 +18,8 @@ import GradientBackgroundControl from "../../../settings-components/BlockBackgro
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 
 // Setup the block
@@ -385,10 +387,85 @@ export default class Inspector extends Component {
         hideWidget,
         hideWidgetTablet,
         hideWidgetMobile,
+        blockTopMargin,
+				blockBottomMargin,
+				blockLeftMargin,
+				blockRightMargin,
+				blockTopMarginTablet,
+				blockBottomMarginTablet,
+				blockLeftMarginTablet,
+				blockRightMarginTablet,
+				blockTopMarginMobile,
+				blockBottomMarginMobile,
+				blockLeftMarginMobile,
+				blockRightMarginMobile,
+				blockTopPadding,
+				blockTopPaddingMobile,
+				blockTopPaddingTablet,
+				blockBottomPadding,
+				blockBottomPaddingMobile,
+				blockBottomPaddingTablet,
+				blockLeftPadding,
+				blockLeftPaddingMobile,
+				blockLeftPaddingTablet,
+				blockRightPadding,
+				blockRightPaddingMobile,
+				blockRightPaddingTablet,
+				blockIsMarginControlConnected,
+				blockIsPaddingControlConnected,
+        blockNewSpacingValuesUpdated,
       },
       setAttributes,
     } = this.props;
 
+    const blockMarginResetValues = {
+			marginTop: 0,
+			marginRight: 0,
+			marginBottom: 0,
+			marginLeft: 0,
+			marginTabletTop: 0,
+			marginTabletRight: 0,
+			marginTabletBottom: 0,
+			marginTabletLeft: 0,
+			marginMobileTop: 0,
+			marginMobileRight: 0,
+			marginMobileBottom: 0,
+			marginMobileLeft: 0,
+		}
+		const blockPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!blockNewSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopMargin:          blockmargin !== undefined ? blockmargin : blockTopMargin,
+          blockBottomMargin:       blockbotmargin !== undefined ? blockbotmargin : blockBottomMargin,
+          blockLeftMargin:         blockleftmargin !== undefined ? blockleftmargin : blockLeftMargin,
+          blockRightMargin:        blockrightmargin !== undefined ? blockrightmargin : blockRightMargin,
+          blockTopMarginTablet:    blockmarginTablet !== undefined ? blockmarginTablet : blockTopMarginTablet,
+          blockBottomMarginTablet: blockbotmarginTablet !== undefined ? blockbotmarginTablet : blockBottomMarginTablet,
+          blockRightMarginTablet:  blockrightmarginTablet !== undefined ? blockrightmarginTablet : blockRightMarginTablet,
+          blockLeftMarginTablet:   blockleftmarginTablet !== undefined ? blockleftmarginTablet : blockLeftMarginTablet,
+          blockTopMarginMobile:    blockmarginMobile !== undefined ? blockmarginMobile : blockTopMarginMobile,
+          blockBottomMarginMobile: blockbotmarginMobile !== undefined ? blockbotmarginMobile : blockBottomMarginMobile,
+          blockLeftMarginMobile:   blockleftmarginMobile !== undefined ? blockleftmarginMobile : blockLeftMarginMobile,
+          blockRightMarginMobile:  blockrightmarginMobile !== undefined ? blockrightmarginMobile : blockRightMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({blockNewSpacingValuesUpdated: true});
     // Font Weight Options
     const fontWeightOptions = [
       {
@@ -1123,90 +1200,6 @@ export default class Inspector extends Component {
                 />
               </Fragment>
             </PanelBody>
-
-            <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveSpacingControl
-                title={"Title Bottom Margin"}
-                attrNameTemplate="titleSpace%s"
-                values={{
-                  desktop: titleSpace,
-                  tablet: titleSpaceTablet,
-                  mobile: titleSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Subtitle Bottom Margin"}
-                attrNameTemplate="subtitleSpace%s"
-                values={{
-                  desktop: subtitleSpace,
-                  tablet: subtitleSpaceTablet,
-                  mobile: subtitleSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Content Bottom Margin"}
-                attrNameTemplate="contentSpace%s"
-                values={{
-                  desktop: contentSpace,
-                  tablet: contentSpaceTablet,
-                  mobile: contentSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Block Top Margin"}
-                attrNameTemplate="blockmargin%s"
-                values={{
-                  desktop: blockmargin,
-                  tablet: blockmarginTablet,
-                  mobile: blockmarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Block Bottom Margin"}
-                attrNameTemplate="blockbotmargin%s"
-                values={{
-                  desktop: blockbotmargin,
-                  tablet: blockbotmarginTablet,
-                  mobile: blockbotmarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Block Left Margin"}
-                attrNameTemplate="blockleftmargin%s"
-                values={{
-                  desktop: blockleftmargin,
-                  tablet: blockleftmarginTablet,
-                  mobile: blockleftmarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Block Right Margin"}
-                attrNameTemplate="blockrightmargin%s"
-                values={{
-                  desktop: blockrightmargin,
-                  tablet: blockrightmarginTablet,
-                  mobile: blockrightmarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
-
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -1249,7 +1242,6 @@ export default class Inspector extends Component {
                 }}
               />
             </PanelBody>
-
             <PanelColorSettings
               title={__(
                 "Text Color Settings",
@@ -1264,6 +1256,54 @@ export default class Inspector extends Component {
                 },
               ]}
             ></PanelColorSettings>
+                        <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+								attrNameTemplate="block%s"
+								resetValues={blockPaddingResetValues}
+								{...this.props}
+							/>
+							<ResponsiveNewMarginControl
+								attrNameTemplate="block%s"
+								resetValues={blockMarginResetValues}
+								{...this.props}
+							/>
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Subtitle Bottom Margin"}
+                attrNameTemplate="subtitleSpace%s"
+                values={{
+                  desktop: subtitleSpace,
+                  tablet: subtitleSpaceTablet,
+                  mobile: subtitleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Content Bottom Margin"}
+                attrNameTemplate="contentSpace%s"
+                values={{
+                  desktop: contentSpace,
+                  tablet: contentSpaceTablet,
+                  mobile: contentSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+            </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody

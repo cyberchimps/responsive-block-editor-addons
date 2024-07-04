@@ -63,6 +63,30 @@ function EditorStyles(props) {
   hideWidget,
   hideWidgetTablet,
   hideWidgetMobile,
+    blockTopPadding,
+    blockTopPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPadding,
+    blockBottomPaddingMobile,
+    blockBottomPaddingTablet,
+    blockLeftPadding,
+    blockLeftPaddingMobile,
+    blockLeftPaddingTablet,
+    blockRightPadding,
+    blockRightPaddingMobile,
+    blockRightPaddingTablet,
+    blockTopMargin,
+    blockTopMarginMobile,
+    blockTopMarginTablet,
+    blockBottomMargin,
+    blockBottomMarginMobile,
+    blockBottomMarginTablet,
+    blockLeftMargin,
+    blockLeftMarginMobile,
+    blockLeftMarginTablet,
+    blockRightMargin,
+    blockRightMarginMobile,
+    blockRightMarginTablet,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -70,6 +94,14 @@ function EditorStyles(props) {
   var selectors = {
     "": {
       "opacity": hideWidget ? 0.2 : 1,
+      "padding-top": generateCSSUnit(blockTopPadding, "px"),
+      "padding-right": generateCSSUnit(blockRightPadding, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
+      "margin-top": generateCSSUnit(blockTopMargin, "px"),
+      "margin-right": generateCSSUnit(blockRightMargin, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
+      "margin-left": generateCSSUnit(blockLeftMargin, "px"),
     },
     ".responsive-count__inner .responsive-count-item__features li": {
       "line-height": contentLineHeight,
@@ -132,6 +164,14 @@ function EditorStyles(props) {
   var mobile_selectors = {
     "": {
       "opacity": hideWidgetMobile ? 0.2 : 1,
+      "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
     },
     ".responsive-count__inner .responsive-count-item__title": {
       "font-size": `${headingFontSizeMobile}px`,
@@ -155,6 +195,14 @@ function EditorStyles(props) {
   var tablet_selectors = {
     "": {
       "opacity": hideWidgetTablet ? 0.2 : 1,
+      "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
     },
     ".responsive-count__inner .responsive-count-item__title": {
       "font-size": `${headingFontSizeTablet}px`,
