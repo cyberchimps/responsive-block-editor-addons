@@ -136,6 +136,30 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    blockTopPadding,
+		blockTopPaddingMobile,
+		blockTopPaddingTablet,
+		blockBottomPadding,
+		blockBottomPaddingMobile,
+		blockBottomPaddingTablet,
+		blockLeftPadding,
+		blockLeftPaddingMobile,
+		blockLeftPaddingTablet,
+		blockRightPadding,
+		blockRightPaddingMobile,
+		blockRightPaddingTablet,
+    blockTopMargin,
+		blockBottomMargin,
+		blockLeftMargin,
+		blockRightMargin,
+		blockTopMarginTablet,
+		blockBottomMarginTablet,
+		blockLeftMarginTablet,
+		blockRightMarginTablet,
+		blockTopMarginMobile,
+		blockBottomMarginMobile,
+		blockLeftMarginMobile,
+		blockRightMarginMobile,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -208,11 +232,15 @@ function EditorStyles(props) {
 
     "": {
       "opacity": hideWidget ? 0.2 : 1,
-      "margin-bottom": generateCSSUnit(blockbotmargin, "px"),
-      "margin-top": generateCSSUnit(blockmargin, "px"),
-      "margin-left": generateCSSUnit(blockleftmargin, "px"),
-      "margin-right": generateCSSUnit(blockrightmargin, "px"),
+      'margin-top': generateCSSUnit(blockTopMargin, "px"),
+			'margin-right': generateCSSUnit(blockRightMargin, "px"),
+			'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
+			'margin-left': generateCSSUnit(blockLeftMargin, "px"),
       "z-index": blockzindex,
+      'padding-top': generateCSSUnit(blockTopPadding, "px"),
+			'padding-right': generateCSSUnit(blockRightPadding, "px"),
+			'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
+			'padding-left': generateCSSUnit(blockLeftPadding, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-card-item": {
@@ -363,10 +391,14 @@ function EditorStyles(props) {
   var mobile_selectors = {
     "": {
       "opacity": hideWidgetMobile ? 0.2 : 1,
-      "margin-bottom": generateCSSUnit(blockbotmarginMobile, "px"),
-      "margin-top": generateCSSUnit(blockmarginMobile, "px"),
-      "margin-left": generateCSSUnit(blockleftmarginMobile, "px"),
-      "margin-right": generateCSSUnit(blockrightmarginMobile, "px"),
+      'margin-top': generateCSSUnit(blockTopMarginMobile, "px"),
+      'margin-right': generateCSSUnit(blockRightMarginMobile, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMarginMobile, "px"),
+      'margin-left': generateCSSUnit(blockLeftMarginMobile, "px"),
+      'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
+      'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
+      'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
+      'padding-left': generateCSSUnit(blockLeftPaddingMobile, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__title": {
@@ -397,10 +429,14 @@ function EditorStyles(props) {
   var tablet_selectors = {
     "": {
       "opacity": hideWidgetTablet ? 0.2 : 1,
-      "margin-bottom": generateCSSUnit(blockbotmarginTablet, "px"),
-      "margin-top": generateCSSUnit(blockmarginTablet, "px"),
-      "margin-left": generateCSSUnit(blockleftmarginTablet, "px"),
-      "margin-right": generateCSSUnit(blockrightmarginTablet, "px"),
+      'margin-top': generateCSSUnit(blockTopMarginTablet, "px"),
+      'margin-right': generateCSSUnit(blockRightMarginTablet, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMarginTablet, "px"),
+      'margin-left': generateCSSUnit(blockLeftMarginTablet, "px"),
+      'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
+      'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
+      'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),
+      'padding-left': generateCSSUnit(blockLeftPaddingTablet, "px"),
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__title": {
