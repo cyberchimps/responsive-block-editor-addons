@@ -5,8 +5,8 @@ import BlockBorderHelperControl from "../../../settings-components/BlockBorderSe
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
-import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 /**
  * Inspector Controls
@@ -137,9 +137,68 @@ export default class Inspector extends Component {
         hideWidgetMobile,
         z_indexTablet,
         z_indexMobile,
+        boxIsPaddingControlConnected,
+        boxTopMargin,
+        boxTopMarginTablet,
+        boxTopMarginMobile,
+        boxBottomMargin,
+        boxBottomMarginTablet,
+        boxBottomMarginMobile,
+        boxLeftMargin,
+        boxLeftMarginTablet,
+        boxLeftMarginMobile,
+        boxRightMargin,
+        boxRightMarginTablet,
+        boxRightMarginMobile,
+        boxIsMarginControlConnected,
+        newMarginValuesUpdated,
       },
       setAttributes,
     } = this.props;
+
+    const boxPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+  }
+    const boxMarginResetValues = {
+      marginTop: 5,
+      marginRight: 5,
+      marginBottom: 5,
+      marginLeft: 5,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+  }
+
+      // To populate new control values with existing padding margin control values for backward compatibility.
+      if (!newMarginValuesUpdated) {
+        this.props.setAttributes(
+          {
+            boxTopMargin:          topMargin !== undefined ? topMargin : boxTopMargin,
+            boxBottomMargin:       bottomMargin !== undefined ? bottomMargin : boxBottomMargin,
+            boxTopMarginTablet:    topMarginTablet !== undefined ? topMarginTablet : boxTopMarginTablet,
+            boxBottomMarginTablet: bottomMarginTablet !== undefined ? bottomMarginTablet : boxBottomMarginTablet,
+            boxTopMarginMobile:    topMarginMobile !== undefined ? topMarginMobile : boxTopMarginMobile,
+            boxBottomMarginMobile: bottomMarginMobile !== undefined ? bottomMarginMobile : boxBottomMarginMobile,
+          }
+        )
+      }
+      this.props.setAttributes({newMarginValuesUpdated: true});
 
     // Background Type Options
     const backgroundTypeOptions = [
@@ -397,49 +456,16 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-				<ResponsivePaddingControl
-					attrNameTemplate="box%s"
-					values={{
-						desktopTop: boxTopPadding,
-						desktopBottom: boxBottomPadding,
-						desktopLeft: boxLeftPadding,
-						desktopRight: boxRightPadding,
-
-						tabletTop: boxTopPaddingTablet,
-						tabletBottom: boxBottomPaddingTablet,
-						tabletLeft: boxLeftPaddingTablet,
-						tabletRight: boxRightPaddingTablet,
-
-						mobileTop: boxTopPaddingMobile,
-						mobileBottom: boxBottomPaddingMobile,
-						mobileLeft: boxLeftPaddingMobile,
-						mobileRight: boxRightPaddingMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Top Margin"}
-					attrNameTemplate="topMargin%s"
-					values={{
-						desktop: topMargin,
-						tablet: topMarginTablet,
-						mobile: topMarginMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Bottom Margin"}
-					attrNameTemplate="bottomMargin%s"
-					values={{
-						desktop: bottomMargin,
-						tablet: bottomMarginTablet,
-						mobile: bottomMarginMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="box%s"
+                resetValues={boxPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="box%s"
+                resetValues={boxMarginResetValues}
+                {...this.props}
+              />
             </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}

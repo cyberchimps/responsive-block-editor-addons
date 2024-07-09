@@ -16,9 +16,10 @@ import BlockBorderHelperControl from "../../../settings-components/BlockBorderSe
 import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
-import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ButtonSettingsControl from "../../../settings-components/ButtonSettings";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -337,9 +338,102 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        iconIsMarginControlConnected,
+        blockTopMargin,
+        blockBottomMargin,
+        blockLeftMargin,
+        blockRightMargin,
+        blockTopMarginTablet,
+        blockBottomMarginTablet,
+        blockLeftMarginTablet,
+        blockRightMarginTablet,
+        blockTopMarginMobile,
+        blockBottomMarginMobile,
+        blockLeftMarginMobile,
+        blockRightMarginMobile,
+        blockIsMarginControlConnected,
+        blockTopPadding,
+        blockTopPaddingMobile,
+        blockTopPaddingTablet,
+        blockBottomPadding,
+        blockBottomPaddingMobile,
+        blockBottomPaddingTablet,
+        blockLeftPadding,
+        blockLeftPaddingMobile,
+        blockLeftPaddingTablet,
+        blockRightPadding,
+        blockRightPaddingMobile,
+        blockRightPaddingTablet,
+        blockIsPaddingControlConnected,
+        newSpacingValuesUpdated
       },
       setAttributes,
     } = this.props;
+
+    const iconMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+
+    const blockMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+    const blockPaddingResetValues = {
+			paddingTop: 10,
+			paddingRight: 10,
+			paddingBottom: 10,
+			paddingLeft: 10,
+			paddingTabletTop: 10,
+			paddingTabletRight: 10,
+			paddingTabletBottom: 10,
+			paddingTabletLeft: 10,
+			paddingMobileTop: 10,
+			paddingMobileRight: 10,
+			paddingMobileBottom: 10,
+			paddingMobileLeft: 10,
+		}
+
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!newSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopPadding:          contentPadding !== undefined ? contentPadding : blockTopPadding,
+          blockBottomPadding:       contentPadding !== undefined ? contentPadding : blockBottomPadding,
+          blockLeftPadding:         contentPadding !== undefined ? contentPadding : blockLeftPadding,
+          blockRightPadding:        contentPadding !== undefined ? contentPadding : blockRightPadding,
+          blockTopPaddingTablet:    contentPaddingTablet !== undefined ? contentPaddingTablet : blockTopPaddingTablet,
+          blockBottomPaddingTablet: contentPaddingTablet !== undefined ? contentPaddingTablet : blockBottomPaddingTablet,
+          blockRightPaddingTablet:  contentPaddingTablet !== undefined ? contentPaddingTablet : blockRightPaddingTablet,
+          blockLeftPaddingTablet:   contentPaddingTablet !== undefined ? contentPaddingTablet : blockLeftPaddingTablet,
+          blockTopPaddingMobile:    contentPaddingMobile !== undefined ? contentPaddingMobile : blockTopPaddingMobile,
+          blockBottomPaddingMobile: contentPaddingMobile !== undefined ? contentPaddingMobile : blockBottomPaddingMobile,
+          blockLeftPaddingMobile:   contentPaddingMobile !== undefined ? contentPaddingMobile : blockLeftPaddingMobile,
+          blockRightPaddingMobile:  contentPaddingMobile !== undefined ? contentPaddingMobile : blockRightPaddingMobile,
+        }
+      )
+    }
+    this.props.setAttributes({newSpacingValuesUpdated: true});
 
     // Font Weight Options
     const fontWeightOptions = [
@@ -1139,15 +1233,14 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <ResponsiveSpacingControl
-                title={"Content Padding"}
-                attrNameTemplate="contentPadding%s"
-                values={{
-                  desktop: contentPadding,
-                  tablet: contentPaddingTablet,
-                  mobile: contentPaddingMobile,
-                }}
-                setAttributes={setAttributes}
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
                 {...this.props}
               />
               <ResponsiveSpacingControl
@@ -1215,27 +1308,11 @@ export default class Inspector extends Component {
                   )}
                   initialOpen={false}
                 >
-                  <ResponsiveMarginControl
-                    attrNameTemplate="icon%s"
-                    values={{
-                      desktopTop: iconTopMargin,
-                      desktopBottom: iconBottomMargin,
-                      desktopLeft: iconLeftMargin,
-                      desktopRight: iconRightMargin,
-
-                      tabletTop: iconTopMarginTablet,
-                      tabletBottom: iconBottomMarginTablet,
-                      tabletLeft: iconLeftMarginTablet,
-                      tabletRight: iconRightMarginTablet,
-
-                      mobileTop: iconTopMarginMobile,
-                      mobileBottom: iconBottomMarginMobile,
-                      mobileLeft: iconLeftMarginMobile,
-                      mobileRight: iconRightMarginMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
+                  <ResponsiveNewMarginControl
+                  attrNameTemplate="icon%s"
+                  resetValues={iconMarginResetValues}
+                  {...this.props}
+                />
                 </PanelBody>
               )}
             </PanelBody>

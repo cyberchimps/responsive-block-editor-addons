@@ -1,0 +1,128 @@
+.rbea-spacing-control {
+    position: relative;
+    display: inline-block;
+  
+    .rbea-spacing-control__inputs {
+      display: flex;
+  
+      > :first-child.rbea-spacing-control__number {
+        border-radius: 3px 0 0 3px;
+      }
+      > :last-child {
+        border-radius: 0 3px 3px 0;
+      }
+    }
+  
+    input[type="number"].rbea-spacing-control__number, .rbea-spacing-control__link{
+      border-left: 1px solid;
+      border-right: 1px solid;
+      border-color: #e6e7e9;
+      color: #50575e;
+      border-radius: 0;
+      box-shadow: none !important;
+      height: 30px;
+      margin: 0 -1px 0 0;
+      padding-right: 1px;
+      width: 25%;
+      font-size: 14px;
+      line-height: 20px;
+      padding-left: 4px;
+    }
+    .rbea-spacing-control__link {
+      border: 1px solid #959595;
+      background-color: #959595;
+      color: #ffffff;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      padding: 2px 0;
+      font-size: 12px;
+      line-height: 28px;
+      cursor: pointer;
+      transition: none;
+  
+      &.rbea-spacing-control-disconnected {
+        border-color: #e6e7e9;
+        background-color: #ffffff;
+        color: #959595;
+    }
+    }
+    .rbea-spacing-control__input-labels {
+      display: flex;
+      margin-bottom: -3px;
+  
+      span {
+        text-align: center;
+        width: 20%;
+      }
+      .rbea-spacing-control__link-label {
+        width: 10%;
+      }
+    }
+  
+    .rbea-spacing-control__number-label {
+      color: #cccccc;
+      display: block;
+      font-size: 10px;
+      margin-top: 5px;
+    }
+  }
+  .rbea-control__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  
+    .uag-responsive-label-wrap {
+      display: flex;
+      align-items: center;
+  
+      .uag-control-label {
+        color: #50575e;
+        font-size: 13px !important;
+        line-height: 1.4em !important;
+        margin-bottom: 10px;
+        text-transform: none !important;
+        font-weight: 400 !important;
+        margin-bottom: 0;
+      }
+    }
+  
+    .rbea-control__actions {
+      position: relative;
+      top: 0;
+      display: flex;
+      direction: initial;
+  
+      .components-button.is-secondary:disabled{
+        background: 0 0;
+        color: #ccc;
+      }
+      .rbea-reset{
+        padding: 0;
+  
+        .dashicons-image-rotate {
+          width: 10px;
+          height: 10px;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+  
+  button.components-button.rbea-reset.is-secondary.is-small {
+    box-shadow: unset;
+    background: 0 0;
+    color: #ccc;
+  }
+
+.responsive-size-type-field-tabs.rbea-responsive-controls{
+
+    & .components-tab-panel__tabs {
+        position: relative;
+        text-align: center;
+        margin-left: -20px;
+        top: 3px;
+    }
+}

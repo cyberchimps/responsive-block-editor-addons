@@ -255,6 +255,114 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  pricingTopMargin: {
+    type: "number",
+    default: 0,
+  },
+  pricingBottomMargin: {
+    type: "number",
+    default: 0,
+  },
+  pricingLeftMargin: {
+    type: "number",
+    default: 0,
+  },
+  pricingRightMargin: {
+    type: "number",
+    default: 0,
+  },
+  pricingTopMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  pricingBottomMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  pricingLeftMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  pricingRightMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  pricingTopMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingBottomMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingLeftMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingRightMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  pricingIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  pricingTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  pricingTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  pricingBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  pricingBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  pricingLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  pricingLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  pricingRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  pricingRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  pricingRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
 };
 
 export default attributes;

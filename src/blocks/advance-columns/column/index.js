@@ -308,6 +308,115 @@ registerBlockType("responsive-block-editor-addons/column", {
 	  type: "string",
 	  default: "empty",
 	}, // For compatibility with v1.3.2.
+  columnTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  columnRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  columnBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  columnLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  columnTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+
+  columnTopMargin: {
+    type: "number",
+    default: 0,
+  },
+  columnRightMargin: {
+    type: "number",
+    default: 0,
+  },
+  columnBottomMargin: {
+    type: "number",
+    default: 0,
+  },
+  columnLeftMargin: {
+    type: "number",
+    default: 0,
+  },
+  columnTopMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnRightMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnBottomMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnLeftMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  columnTopMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnRightMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnBottomMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnLeftMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  columnIsMarginControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  newSpacingValuesUpdated: {
+    type: "boolean",
+    default: false,
+  },
   },
 
   /* Render the block in the editor. */

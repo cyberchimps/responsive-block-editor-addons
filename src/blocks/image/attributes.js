@@ -428,6 +428,114 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  imageTopMargin: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomMargin: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftMargin: {
+    type: "number",
+    default: 0,
+  },
+  imageRightMargin: {
+    type: "number",
+    default: 0,
+  },
+  imageTopMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageRightMarginTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageTopMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageRightMarginMobile: {
+    type: "number",
+    default: 0,
+  },
+  newSpacingValuesUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  imageIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  imageIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  imageTopPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageTopPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageTopPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageBottomPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageLeftPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
+  imageRightPadding: {
+    type: "number",
+    default: 0,
+  },
+  imageRightPaddingMobile: {
+    type: "number",
+    default: 0,
+  },
+  imageRightPaddingTablet: {
+    type: "number",
+    default: 0,
+  },
 };
 
 export default attributes;

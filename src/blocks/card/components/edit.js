@@ -121,7 +121,6 @@ export default class Edit extends Component {
                 "wp-block-responsive-block-editor-addons-card-item"
               )}
             >
-              {console.log("index=> "+index)}
               {"image" == backgroundType && backgroundImage && (
                 <div className="responsive-block-editor-addons-card-background-image-wrap" key={`card-background-image-wrap-${index}`}>
                   <div

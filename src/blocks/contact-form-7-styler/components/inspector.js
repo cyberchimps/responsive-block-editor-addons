@@ -6,7 +6,6 @@ import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpa
 import ButtonSettingsControl from "./ButtonSettings";
 
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 
 
@@ -16,6 +15,8 @@ import ImageBackgroundControl from "../../../settings-components/BlockBackground
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import ImageHoverBackgroundSettings from "../../../settings-components/BlockBackgroundSettings/ImageHoverBackgroundSettings";
 import { Placeholder} from '@wordpress/components';
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 
 // Setup the block
@@ -410,10 +411,114 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        inputIsPaddingControlConnected,
+        formTopPadding,
+        formTopPaddingMobile,
+        formTopPaddingTablet,
+        formBottomPadding,
+        formBottomPaddingMobile,
+        formBottomPaddingTablet,
+        formLeftPadding,
+        formLeftPaddingMobile,
+        formLeftPaddingTablet,
+        formRightPadding,
+        formRightPaddingMobile,
+        formRightPaddingTablet,
+        formIsPaddingControlConnected,
+        formTopMargin,
+        formTopMarginMobile,
+        formTopMarginTablet,
+        formBottomMargin,
+        formBottomMarginMobile,
+        formBottomMarginTablet,
+        formLeftMargin,
+        formLeftMarginMobile,
+        formLeftMarginTablet,
+        formRightMargin,
+        formRightMarginMobile,
+        formRightMarginTablet,
+        formIsMarginControlConnected,
+        formNewSpacingValuesUpdated,
       },
       setAttributes,
     } = this.props;
 
+    const spacingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const formPaddingResetValues = {
+      paddingTop: 0,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 0,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 0,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const formMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+
+     // To populate new control values with existing padding margin control values for backward compatibility.
+     if (!formNewSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          formTopPadding:          topPadding !== undefined ? topPadding : formTopPadding,
+          formRightPadding:        rightPadding !== undefined ? rightPadding : formRightPadding,
+          formBottomPadding:       bottomPadding !== undefined ? bottomPadding : formBottomPadding,
+          formLeftPadding:         leftPadding !== undefined ? leftPadding : formLeftPadding,
+          formTopPaddingTablet:    topPaddingTablet !== undefined ? topPaddingTablet : formTopPaddingTablet,
+          formRightPaddingTablet:  rightPaddingTablet !== undefined ? rightPaddingTablet : formRightPaddingTablet,
+          formBottomPaddingTablet: bottomPaddingTablet !== undefined ? bottomPaddingTablet : formBottomPaddingTablet,
+          formLeftPaddingTablet:   leftPaddingTablet !== undefined ? leftPaddingTablet : formLeftPaddingTablet,
+          formTopPaddingMobile:    topPaddingMobile !== undefined ? topPaddingMobile : formTopPaddingMobile,
+          formRightPaddingMobile:  rightPaddingMobile !== undefined ? rightPaddingMobile : formRightPaddingMobile,
+          formBottomPaddingMobile: bottomPaddingMobile !== undefined ? bottomPaddingMobile : formBottomPaddingMobile,
+          formLeftPaddingMobile:   leftPaddingMobile !== undefined ? leftPaddingMobile : formLeftPaddingMobile,
+
+          formTopMargin:          topMargin !== undefined ? topMargin : formTopMargin,
+          formRightMargin:        rightMargin !== undefined ? rightMargin : formRightMargin,
+          formBottomMargin:       bottomMargin !== undefined ? bottomMargin : formBottomMargin,
+          formLeftMargin:         leftMargin !== undefined ? leftMargin : formLeftMargin,
+          formTopMarginTablet:    topMarginTablet !== undefined ? topMarginTablet : formTopMarginTablet,
+          formRightMarginTablet:  rightMarginTablet !== undefined ? rightMarginTablet : formRightMarginTablet,
+          formBottomMarginTablet: bottomMarginTablet !== undefined ? bottomMarginTablet : formBottomMarginTablet,
+          formLeftMarginTablet:   leftMarginTablet !== undefined ? leftMarginTablet : formLeftMarginTablet,
+          formTopMarginMobile:    topMarginMobile !== undefined ? topMarginMobile : formTopMarginMobile,
+          formRightMarginMobile:  rightMarginMobile !== undefined ? rightMarginMobile : formRightMarginMobile,
+          formBottomMarginMobile: bottomMarginMobile !== undefined ? bottomMarginMobile : formBottomMarginMobile,
+          formLeftMarginMobile:   leftMarginMobile !== undefined ? leftMarginMobile : formLeftMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({formNewSpacingValuesUpdated: true});
 
     // Update color values    
     var advancedControls;
@@ -833,464 +938,16 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-                  <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                      {
-                          name: "desktop",
-                          title: <Dashicon icon="desktop" />,
-                      className:
-                          " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className: " responsive-tablet-tab  responsive-responsive-tabs",
-              },
-                  {
-                      name: "mobile",
-                          title: <Dashicon icon="smartphone" />,
-                      className: " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-              ]}
-              >
-                  {(tab) => {
-                      let tabout;
-
-                      if ("mobile" === tab.name) {
-                          tabout = (
-                              <Fragment>
-                              <p>{__("Padding Mobile", "responsive-block-editor-addons")}</p>
-                                  <RangeControl
-                                      label={__(
-                                          "Top",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                                      allowReset={true}
-                                      value={topPaddingMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          topPaddingMobile: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Bottom",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={bottomPaddingMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          bottomPaddingMobile: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Left",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={leftPaddingMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          leftPaddingMobile: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Right",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={rightPaddingMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          rightPaddingMobile: value,
-                                      })
-                                    }
-                                  />
-                              </Fragment>
-                      );
-                      } else if ("tablet" === tab.name) {
-                          tabout = (
-                              <Fragment>
-                              <p>{__("Padding Tablet", "responsive-block-editor-addons")}</p>
-                                  <RangeControl
-                                      label={__(
-                                          "Top",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={topPaddingTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          topPaddingTablet: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Bottom",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={bottomPaddingTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          bottomPaddingTablet: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Left",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={leftPaddingTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          leftPaddingTablet: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Right",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={rightPaddingTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          rightPaddingTablet: value,
-                                      })
-                                    }
-                                  />
-                              </Fragment>
-                      );
-                      } else {
-                          tabout = (
-                              <Fragment>
-                              <p>{__("Padding", "responsive-block-editor-addons")}</p>
-                                  <RangeControl
-                                      label={__(
-                                          "Top",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={topPadding}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          topPadding: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Bottom",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={bottomPadding}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          bottomPadding: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Left",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={leftPadding}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          leftPadding: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Right",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={rightPadding}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          rightPadding: value,
-                                      })
-                                    }
-                                  />
-
-                              </Fragment>
-                      );
-                      }
-
-                      return <div>{tabout}</div>;
-                  }}
-              </TabPanel>
-              <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                      {
-                          name: "desktop",
-                          title: <Dashicon icon="desktop" />,
-                      className:
-                          " responsive-desktop-tab  responsive-responsive-tabs",
-                  },
-                  {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className: " responsive-tablet-tab  responsive-responsive-tabs",
-              },
-                  {
-                      name: "mobile",
-                          title: <Dashicon icon="smartphone" />,
-                      className: " responsive-mobile-tab  responsive-responsive-tabs",
-                  },
-              ]}
-              >
-                  {(tab) => {
-                      let tabout;
-
-                      if ("mobile" === tab.name) {
-                          tabout = (
-                              <Fragment>
-                              <p>{__("Margin Mobile", "responsive-block-editor-addons")}</p>
-                                  <RangeControl
-                                      label={__(
-                                          "Top",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                                      allowReset={true}
-                                      value={topMarginMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          topMarginMobile: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Bottom",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={bottomMarginMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          bottomMarginMobile: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Left",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={leftMarginMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          leftMarginMobile: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Right",
-                                          "responsive-block-editor-addons"
-                                        )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={rightMarginMobile}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          rightMarginMobile: value,
-                                      })
-                                    }
-                                  />
-                              </Fragment>
-                      );
-                      } else if ("tablet" === tab.name) {
-                          tabout = (
-                              <Fragment>
-                              <p>{__("Margin Tablet", "responsive-block-editor-addons")}</p>
-                                  <RangeControl
-                                      label={__(
-                                          "Top",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={topMarginTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          topMarginTablet: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Bottom",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={bottomMarginTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          bottomMarginTablet: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Left",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={leftMarginTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          leftMarginTablet: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Right",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={rightMarginTablet}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          rightMarginTablet: value,
-                                      })
-                                    }
-                                  />
-                              </Fragment>
-                      );
-                      } else {
-                          tabout = (
-                              <Fragment>
-                              <p>{__("Margin", "responsive-block-editor-addons")}</p>
-                                  <RangeControl
-                                      label={__(
-                                          "Top",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={topMargin}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          topMargin: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Bottom",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={bottomMargin}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          bottomMargin: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Left",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={leftMargin}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          leftMargin: value,
-                                      })
-                                    }
-                                  />
-                                  <RangeControl
-                                      label={__(
-                                          "Right",
-                                          "responsive-block-editor-addons"
-                                    )}
-                                      min={0}
-                                      max={2000}
-                          allowReset={true}
-                                      value={rightMargin}
-                                      onChange={(value) =>
-                                      setAttributes({
-                                          rightMargin: value,
-                                      })
-                                    }
-                                  />
-
-                              </Fragment>
-                      );
-                      }
-
-                      return <div>{tabout}</div>;
-                  }}
-              </TabPanel>             
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="form%s"
+                resetValues={formPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="form%s"
+                resetValues={formMarginResetValues}
+                {...this.props}
+              />      
             </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
@@ -1589,25 +1246,9 @@ export default class Inspector extends Component {
                   title={__("Padding", "responsive-block-editor-addons")}
                   initialOpen={false}
                 >
-                  <ResponsivePaddingControl
+                  <ResponsiveNewPaddingControl
                     attrNameTemplate="input%s"
-                    values = {{
-                      desktopTop:inputTopPadding,
-                      desktopBottom:inputBottomPadding,
-                      desktopLeft:inputLeftPadding,
-                      desktopRight:inputRightPadding,
-
-                      tabletTop:inputTopPaddingTablet,
-                      tabletBottom:inputBottomPaddingTablet,
-                      tabletLeft:inputLeftPaddingTablet,
-                      tabletRight:inputRightPaddingTablet,
-
-                      mobileTop:inputTopPaddingMobile,
-                      mobileBottom:inputBottomPaddingMobile,
-                      mobileLeft:inputLeftPaddingMobile,
-                      mobileRight:inputRightPaddingMobile,
-                    }}
-                    setAttributes={ setAttributes }
+                    resetValues={spacingResetValues}
                     {...this.props}
                   />
                 </PanelBody>

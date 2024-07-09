@@ -3,7 +3,8 @@
  */
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings/index";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -37,9 +38,86 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        blockTopPadding,
+        blockTopPaddingMobile,
+        blockTopPaddingTablet,
+        blockBottomPadding,
+        blockBottomPaddingMobile,
+        blockBottomPaddingTablet,
+        blockLeftPadding,
+        blockLeftPaddingMobile,
+        blockLeftPaddingTablet,
+        blockRightPadding,
+        blockRightPaddingMobile,
+        blockRightPaddingTablet,
+        blockTopMargin,
+        blockTopMarginMobile,
+        blockTopMarginTablet,
+        blockBottomMargin,
+        blockBottomMarginMobile,
+        blockBottomMarginTablet,
+        blockLeftMargin,
+        blockLeftMarginMobile,
+        blockLeftMarginTablet,
+        blockRightMargin,
+        blockRightMarginMobile,
+        blockRightMarginTablet,
+        blockIsPaddingControlConnected,
+        blockIsMarginControlConnected,
+        blockNewSpacingValuesUpdated,
       },
       setAttributes,
     } = this.props;
+
+    const blockPaddingResetValues = {
+      paddingTop: 0,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 0,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 0,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const blockMarginResetValues = {
+      marginTop: 5,
+      marginRight: 5,
+      marginBottom: 5,
+      marginLeft: 5,
+      marginTabletTop: 5,
+      marginTabletRight: 5,
+      marginTabletBottom: 5,
+      marginTabletLeft: 5,
+      marginMobileTop: 5,
+      marginMobileRight: 5,
+      marginMobileBottom: 5,
+      marginMobileLeft: 5,
+    }
+
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!blockNewSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopMargin:          spacerHeight !== undefined ? spacerHeight : blockTopMargin,
+          blockRightMargin:        spacerHeight !== undefined ? spacerHeight : blockRightMargin,
+          blockBottomMargin:       spacerHeight !== undefined ? spacerHeight : blockBottomMargin,
+          blockLeftMargin:         spacerHeight !== undefined ? spacerHeight : blockLeftMargin,
+          blockTopMarginTablet:    spacerHeightTablet !== undefined ? spacerHeightTablet : blockTopMarginTablet,
+          blockRightMarginTablet:  spacerHeightTablet !== undefined ? spacerHeightTablet : blockRightMarginTablet,
+          blockBottomMarginTablet: spacerHeightTablet !== undefined ? spacerHeightTablet : blockBottomMarginTablet,
+          blockLeftMarginTablet:   spacerHeightTablet !== undefined ? spacerHeightTablet : blockLeftMarginTablet,
+          blockTopMarginMobile:    spacerHeightMobile !== undefined ? spacerHeightMobile : blockTopMarginMobile,
+          blockRightMarginMobile:  spacerHeightMobile !== undefined ? spacerHeightMobile : blockRightMarginMobile,
+          blockBottomMarginMobile: spacerHeightMobile !== undefined ? spacerHeightMobile : blockBottomMarginMobile,
+          blockLeftMarginMobile:   spacerHeightMobile !== undefined ? spacerHeightMobile : blockLeftMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({blockNewSpacingValuesUpdated: true});
 
     // Button size values
     const spacerStyleOptions = [
@@ -80,19 +158,6 @@ export default class Inspector extends Component {
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
-            <PanelBody>
-              <ResponsiveSpacingControl
-                title={"Vertical Margin"}
-                attrNameTemplate="spacerHeight%s"
-                values={{
-                  desktop: spacerHeight,
-                  tablet: spacerHeightTablet,
-                  mobile: spacerHeightMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
             <PanelBody>
               <SelectControl
                 label={__("Divider Style", "responsive-block-editor-addons")}
@@ -144,6 +209,21 @@ export default class Inspector extends Component {
                 },
               ]}
             ></PanelColorSettings>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl 
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl 
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+            </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody

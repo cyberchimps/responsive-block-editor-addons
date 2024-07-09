@@ -842,6 +842,14 @@ bodyBorderBottomLeftRadius: {
 bodyBorderBottomRightRadius: {
   type: "number",
 },
+  blockIsMarginControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  blockIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 export default attributes;

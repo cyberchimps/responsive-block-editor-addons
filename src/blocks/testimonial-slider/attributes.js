@@ -520,6 +520,114 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  blockTopMargin: {
+		type: "number",
+		default: 0,
+	},
+	blockBottomMargin: {
+		type: "number",
+		default: 0,
+	},
+	blockLeftMargin: {
+		type: "number",
+		default: 0,
+	},
+	blockRightMargin: {
+		type: "number",
+		default: 0,
+	},
+	blockTopMarginTablet: {
+		type: "number",
+		default: 0,
+	},
+	blockBottomMarginTablet: {
+		type: "number",
+		default: 0,
+	},
+	blockLeftMarginTablet: {
+		type: "number",
+		default: 0,
+	},
+	blockRightMarginTablet: {
+		type: "number",
+		default: 0,
+	},
+	blockTopMarginMobile: {
+		type: "number",
+		default: 0,
+	},
+	blockBottomMarginMobile: {
+		type: "number",
+		default: 0,
+	},
+	blockLeftMarginMobile: {
+		type: "number",
+		default: 0,
+	},
+	blockRightMarginMobile: {
+		type: "number",
+		default: 0,
+	},
+	blockIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+	blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+	blockTopPadding: {
+		type: "number",
+		default: 45,
+	},
+	blockTopPaddingMobile: {
+		type: "number",
+		default: 45,
+	},
+	blockTopPaddingTablet: {
+		type: "number",
+		default: 45,
+	},
+	blockBottomPadding: {
+		type: "number",
+		default: 45,
+	},
+	blockBottomPaddingMobile: {
+		type: "number",
+		default: 45,
+	},
+	blockBottomPaddingTablet: {
+		type: "number",
+		default: 45,
+	},
+	blockLeftPadding: {
+		type: "number",
+		default: 45,
+	},
+	blockLeftPaddingMobile: {
+		type: "number",
+		default: 45,
+	},
+	blockLeftPaddingTablet: {
+		type: "number",
+		default: 45,
+	},
+	blockRightPadding: {
+		type: "number",
+		default: 45,
+	},
+	blockRightPaddingMobile: {
+		type: "number",
+		default: 45,
+	},
+	blockRightPaddingTablet: {
+		type: "number",
+		default: 45,
+	},
+  newSpacingValuesUpdated: {
+    type: "boolean",
+    default: false,
+  }
 };
 
 export default attributes;

@@ -7,6 +7,8 @@ import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpac
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import rbeaOptions from "./rbea-options";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -143,6 +145,36 @@ export default class Inspector extends Component {
       },
       setAttributes,
     } = this.props;
+
+    const containerPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 10,
+      paddingBottom: 10,
+      paddingLeft: 10,
+      paddingTabletTop: 10,
+      paddingTabletRight: 10,
+      paddingTabletBottom: 10,
+      paddingTabletLeft: 10,
+      paddingMobileTop: 10,
+      paddingMobileRight: 10,
+      paddingMobileBottom: 10,
+      paddingMobileLeft: 10,
+    }
+
+    const containerMarginResetValues = {
+      marginTop: 10,
+      marginRight: 10,
+      marginBottom: 10,
+      marginLeft: 10,
+      marginTabletTop: 10,
+      marginTabletRight: 10,
+      marginTabletBottom: 10,
+      marginTabletLeft: 10,
+      marginMobileTop: 10,
+      marginMobileRight: 10,
+      marginMobileBottom: 10,
+      marginMobileLeft: 10,
+  }
 
     const handleLayoutChange = (value) => {
       if (value === "layout3") {
@@ -811,25 +843,9 @@ export default class Inspector extends Component {
                 title={__("Padding", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <ResponsivePaddingControl
+                <ResponsiveNewPaddingControl
                   attrNameTemplate="container%s"
-                  values={{
-                    desktopTop: containerTopPadding,
-                    desktopBottom: containerBottomPadding,
-                    desktopLeft: containerLeftPadding,
-                    desktopRight: containerRightPadding,
-
-                    tabletTop: containerTopPaddingTablet,
-                    tabletBottom: containerBottomPaddingTablet,
-                    tabletLeft: containerLeftPaddingTablet,
-                    tabletRight: containerRightPaddingTablet,
-
-                    mobileTop: containerTopPaddingMobile,
-                    mobileBottom: containerBottomPaddingMobile,
-                    mobileLeft: containerLeftPaddingMobile,
-                    mobileRight: containerRightPaddingMobile,
-                  }}
-                  setAttributes={setAttributes}
+                  resetValues={containerPaddingResetValues}
                   {...this.props}
                 />
               </PanelBody>
@@ -837,25 +853,9 @@ export default class Inspector extends Component {
                 title={__("Margin", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <ResponsiveMarginControl
+                <ResponsiveNewMarginControl
                   attrNameTemplate="container%s"
-                  values={{
-                    desktopTop: containerTopMargin,
-                    desktopBottom: containerBottomMargin,
-                    desktopLeft: containerLeftMargin,
-                    desktopRight: containerRightMargin,
-
-                    tabletTop: containerTopMarginTablet,
-                    tabletBottom: containerBottomMarginTablet,
-                    tabletLeft: containerLeftMarginTablet,
-                    tabletRight: containerRightMarginTablet,
-
-                    mobileTop: containerTopMarginMobile,
-                    mobileBottom: containerBottomMarginMobile,
-                    mobileLeft: containerLeftMarginMobile,
-                    mobileRight: containerRightMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
+                  resetValues={containerMarginResetValues}
                   {...this.props}
                 />
               </PanelBody>

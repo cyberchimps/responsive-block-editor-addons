@@ -3,8 +3,8 @@
  */
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
-import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -110,6 +110,34 @@ export default class Inspector extends Component {
       },
     ];
 
+    const blockMarginResetValues = {
+      marginTop: 10,
+      marginRight: 10,
+      marginBottom: 10,
+      marginLeft: 10,
+      marginTabletTop: 10,
+      marginTabletRight: 10,
+      marginTabletBottom: 10,
+      marginTabletLeft: 10,
+      marginMobileTop: 10,
+      marginMobileRight: 10,
+      marginMobileBottom: 10,
+      marginMobileLeft: 10,
+    }
+    const blockPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 10,
+      paddingBottom: 10,
+      paddingLeft: 10,
+      paddingTabletTop: 10,
+      paddingTabletRight: 10,
+      paddingTabletBottom: 10,
+      paddingTabletLeft: 10,
+      paddingMobileTop: 10,
+      paddingMobileRight: 10,
+      paddingMobileBottom: 10,
+      paddingMobileLeft: 10,
+    }
     // Setup the attributes
     const {
       attributes: {
@@ -208,6 +236,8 @@ export default class Inspector extends Component {
           bottomMarginMobile,
           leftMarginMobile,
           rightMarginMobile,
+          blockIsPaddingControlConnected,
+          blockIsMarginControlConnected,
       },
       setAttributes,
     } = this.props;
@@ -627,47 +657,14 @@ export default class Inspector extends Component {
                 />
               )}
               <hr />
-              <ResponsivePaddingControl
+              <ResponsiveNewPaddingControl
                 attrNameTemplate="block%s"
-                values={{
-                  desktopTop: topPadding !== 999 && blockTopPadding === 10 ? topPadding : blockTopPadding,
-                  desktopBottom: bottomPadding !== 999 && blockBottomPadding === 10 ? bottomPadding : blockBottomPadding,
-                  desktopLeft: leftPadding !== 999 && blockLeftPadding === 10 ? leftPadding : blockLeftPadding,
-                  desktopRight: rightPadding !== 999 && blockRightPadding === 10 ? rightPadding : blockRightPadding,
-
-                  tabletTop: topPaddingTablet !== 999 && !blockTopPaddingTablet ? topPaddingTablet : blockTopPaddingTablet,
-                  tabletBottom: bottomPaddingTablet !== 999 && !blockBottomPaddingTablet ? bottomPaddingTablet : blockBottomPaddingTablet,
-                  tabletLeft: leftPaddingTablet !== 999 && !blockLeftPaddingTablet ? leftPaddingTablet : blockLeftPaddingTablet,
-                  tabletRight: rightPaddingTablet !== 999 && !blockRightPaddingTablet ? rightPaddingTablet : blockRightPaddingTablet,
-
-                  mobileTop: topPaddingMobile !== 999 && !blockTopPaddingMobile ? topPaddingMobile : blockTopPaddingMobile,
-                  mobileBottom: bottomPaddingMobile !== 999 && !blockBottomPaddingMobile ? bottomPaddingMobile : blockBottomPaddingMobile,
-                  mobileLeft: leftPaddingMobile !== 999 && !blockLeftPaddingMobile ? leftPaddingMobile : blockLeftPaddingMobile,
-                  mobileRight: rightPaddingMobile !== 999 && !blockRightPaddingMobile ? rightPaddingMobile : blockRightPaddingMobile,
-                }}
-                setAttributes={setAttributes}
+                resetValues={blockPaddingResetValues}
                 {...this.props}
               />
-              <hr />
-              <ResponsiveMarginControl
+              <ResponsiveNewMarginControl
                 attrNameTemplate="block%s"
-                values={{
-                  desktopTop: topMargin !== 999 && blockTopMargin === 0 ? topMargin : blockTopMargin,
-                  desktopBottom: bottomMargin !== 999 && blockBottomMargin === 0 ? bottomMargin : blockBottomMargin,
-                  desktopLeft: leftMargin !== 999 && blockLeftMargin === 0 ? leftMargin : blockLeftMargin,
-                  desktopRight: rightMargin !== 999 && blockRightMargin === 0 ? rightMargin : blockRightMargin,
-
-                  tabletTop: topMarginTablet !== 999 && !blockTopMarginTablet ? topMarginTablet : blockTopMarginTablet,
-                  tabletBottom: bottomMarginTablet !== 999 && !blockBottomMarginTablet ? bottomMarginTablet : blockBottomMarginTablet,
-                  tabletLeft: leftMarginTablet !== 999 && !blockLeftMarginTablet ? leftMarginTablet : blockLeftMarginTablet,
-                  tabletRight: rightMarginTablet !== 999 && !blockRightMarginTablet ? rightMarginTablet : blockRightMarginTablet,
-
-                  mobileTop: topMarginMobile !== 999 && blockTopMarginMobile === "" ? topMarginMobile : blockTopMarginMobile,
-                  mobileBottom: bottomMarginMobile !== 999 && blockBottomMarginMobile === "" ? bottomMarginMobile : blockBottomMarginMobile,
-                  mobileLeft: leftMarginMobile !== 999 && blockLeftMarginMobile === "" ? leftMarginMobile : blockLeftMarginMobile,
-                  mobileRight: rightMarginMobile !== 999 && blockRightMarginMobile === "" ? rightMarginMobile : blockRightMarginMobile,
-                }}
-                setAttributes={setAttributes}
+                resetValues={blockMarginResetValues}
                 {...this.props}
               />
             </PanelBody>
