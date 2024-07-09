@@ -1256,7 +1256,7 @@ export default class Inspector extends Component {
                 },
               ]}
             ></PanelColorSettings>
-                        <PanelBody
+            <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >

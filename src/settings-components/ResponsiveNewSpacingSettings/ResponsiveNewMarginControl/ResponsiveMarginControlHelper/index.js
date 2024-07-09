@@ -34,7 +34,10 @@ export default function ResponsiveNewMarginControlHelper (props) {
         setSpaceControlConnected(!isSpaceControlConnected);
         props.setAttributes({ [getAttrName('IsMarginControlConnected')]: !isSpaceControlConnected });
         if (!isSpaceControlConnected) {
-            const commonValue = marginValues[`margin${device}Top`];
+            let commonValue = marginValues[`margin${device}Top`];
+            if( commonValue === undefined || commonValue === '' ) {
+                commonValue  = 0;
+            }
             setMarginValues({
                 [`margin${device}Top`]: commonValue,
                 [`margin${device}Right`]: commonValue,

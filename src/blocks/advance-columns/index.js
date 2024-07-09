@@ -63,51 +63,59 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
     },
     boxTopPadding: {
       type: "number",
-      default: 0,
+      default: 10,
     },
     boxBottomPadding: {
       type: "number",
-      default: 0,
+      default: 10,
     },
     boxLeftPadding: {
       type: "number",
-      default: 0,
+      default: 10,
     },
     boxRightPadding: {
       type: "number",
-      default: 0,
+      default: 10,
     },
     boxTopPaddingTablet: {
       type: "number",
+      default: '',
     },
     boxBottomPaddingTablet: {
       type: "number",
+      default: '',
     },
     boxLeftPaddingTablet: {
       type: "number",
+      default: '',
     },
     boxRightPaddingTablet: {
       type: "number",
+      default: '',
     },
     boxTopPaddingMobile: {
       type: "number",
+      default: '',
     },
     boxBottomPaddingMobile: {
       type: "number",
+      default: '',
     },
     boxLeftPaddingMobile: {
       type: "number",
+      default: '',
     },
     boxRightPaddingMobile: {
       type: "number",
+      default: '',
     },
     topMargin: {
       type: "number",
-      default: 0,
+      default: '',
     },
     bottomMargin: {
       type: "number",
-      default: 0,
+      default: '',
     },
     topMarginTablet: {
       type: "number",
@@ -293,43 +301,51 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
     },
     boxTopMargin: {
       type: "number",
-      default: 0,
+      default: '',
     },
     boxBottomMargin: {
       type: "number",
-      default: 0,
+      default: '',
     },
     boxLeftMargin: {
       type: "number",
-      default: 0,
+      default: '',
     },
     boxRightMargin: {
       type: "number",
-      default: 0,
+      default: '',
     },
     boxTopMarginTablet: {
       type: "number",
+      default: '',
     },
     boxBottomMarginTablet: {
       type: "number",
+      default: '',
     },
     boxLeftMarginTablet: {
       type: "number",
+      default: '',
     },
     boxRightMarginTablet: {
       type: "number",
+      default: '',
     },
     boxTopMarginMobile: {
       type: "number",
+      default: '',
     },
     boxBottomMarginMobile: {
       type: "number",
+      default: '',
     },
     boxLeftMarginMobile: {
       type: "number",
+      default: '',
     },
     boxRightMarginMobile: {
       type: "number",
+      default: '',
     },
     newMarginValuesUpdated: {
       type: "boolean",

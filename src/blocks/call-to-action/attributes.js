@@ -337,51 +337,51 @@ const attributes = {
   },
   blockTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockTopMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockTopMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   backgroundImagePosition: {
     type: "string",
