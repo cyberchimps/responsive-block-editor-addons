@@ -92,75 +92,99 @@ const attributes = {
   },
   blockTopPadding: {
     type: "number",
+    default: '',
   },
   blockBottomPadding: {
     type: "number",
+    default: '',
   },
   blockLeftPadding: {
     type: "number",
+    default: '',
   },
   blockRightPadding: {
     type: "number",
+    default: '',
   },
   blockTopPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockBottomPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockLeftPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockRightPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockTopPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockBottomPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockLeftPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockRightPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockTopMargin: {
     type: "number",
+    default: '',
   },
   blockBottomMargin: {
     type: "number",
+    default: '',
   },
   blockLeftMargin: {
     type: "number",
+    default: '',
   },
   blockRightMargin: {
     type: "number",
+    default: '',
   },
   blockTopMarginMobile: {
     type: "number",
+    default: '',
   },
   blockBottomMarginMobile: {
     type: "number",
+    default: '',
   },
   blockLeftMarginMobile: {
     type: "number",
+    default: '',
   },
   blockRightMarginMobile: {
     type: "number",
+    default: '',
   },
   blockTopMarginTablet: {
     type: "number",
+    default: '',
   },
   blockBottomMarginTablet: {
     type: "number",
+    default: '',
   },
   blockLeftMarginTablet: {
     type: "number",
+    default: '',
   },
   blockRightMarginTablet: {
     type: "number",
+    default: '',
   },
   labelFontFamily: {
     type: "string",
@@ -271,6 +295,14 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  blockIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;

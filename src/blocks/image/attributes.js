@@ -146,51 +146,51 @@ const attributes = {
   },
   imagetopmargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagebottommargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageleftmargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagerightmargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagetopmarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagebottommarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageleftmarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagerightmarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagetopmarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagebottommarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageleftmarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagerightmarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   captiontopmargin: {
     type: "number",
@@ -427,6 +427,114 @@ const attributes = {
   hideWidgetMobile: {
     type: "boolean",
     default: false,
+  },
+  imageTopMargin: {
+    type: "number",
+    default: '',
+  },
+  imageBottomMargin: {
+    type: "number",
+    default: '',
+  },
+  imageLeftMargin: {
+    type: "number",
+    default: '',
+  },
+  imageRightMargin: {
+    type: "number",
+    default: '',
+  },
+  imageTopMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  imageBottomMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  imageLeftMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  imageRightMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  imageTopMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  imageBottomMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  imageLeftMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  imageRightMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  newSpacingValuesUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  imageIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  imageIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  imageTopPadding: {
+    type: "number",
+    default: '',
+  },
+  imageTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  imageTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  imageBottomPadding: {
+    type: "number",
+    default: '',
+  },
+  imageBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  imageBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  imageLeftPadding: {
+    type: "number",
+    default: '',
+  },
+  imageLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  imageLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  imageRightPadding: {
+    type: "number",
+    default: '',
+  },
+  imageRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  imageRightPaddingTablet: {
+    type: "number",
+    default: '',
   },
 };
 

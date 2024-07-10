@@ -170,6 +170,18 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    blockTopMargin,
+    blockTopMarginMobile,
+    blockTopMarginTablet,
+    blockBottomMargin,
+    blockBottomMarginMobile,
+    blockBottomMarginTablet,
+    blockLeftMargin,
+    blockLeftMarginMobile,
+    blockLeftMarginTablet,
+    blockRightMargin,
+    blockRightMarginMobile,
+    blockRightMarginTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -276,8 +288,10 @@ function EditorStyles(props) {
   var selectors = {
     " ": {
       "opacity": hideWidget ? 0.2 : 1,
-      "margin-bottom": generateCSSUnit(bottomMargin, "px"),
-      "margin-top": generateCSSUnit(topMargin, "px"),
+      "margin-top": generateCSSUnit(blockTopMargin, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
+      "margin-right": generateCSSUnit(blockRightMargin, "px"),
+      "margin-left": generateCSSUnit(blockLeftMargin, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box": {
       height: generateCSSUnit(height, "px"),
@@ -448,8 +462,10 @@ function EditorStyles(props) {
 		"margin-bottom": generateCSSUnit(flipBoxGutterGap, "px"),
 	},
     " ": {
-      "margin-bottom": generateCSSUnit(bottomMarginMobile, "px"),
-      "margin-top": generateCSSUnit(topMarginMobile, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
       "opacity": hideWidgetMobile ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
@@ -494,8 +510,10 @@ function EditorStyles(props) {
 		"margin-bottom": generateCSSUnit(flipBoxGutterGap, "px"),
 	},
     " ": {
-      "margin-bottom": generateCSSUnit(bottomMarginTablet, "px"),
-      "margin-top": generateCSSUnit(topMarginTablet, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
       "opacity": hideWidgetTablet ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {

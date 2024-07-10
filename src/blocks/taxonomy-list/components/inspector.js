@@ -5,6 +5,8 @@ import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpa
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 /**
  * Inspector Controls
@@ -151,7 +153,62 @@ export default class Inspector extends Component {
       z_index,
       z_indexMobile,
       z_indexTablet,
+      blockTopMargin,
+			blockBottomMargin,
+			blockLeftMargin,
+			blockRightMargin,
+			blockTopMarginTablet,
+			blockBottomMarginTablet,
+			blockLeftMarginTablet,
+			blockRightMarginTablet,
+			blockTopMarginMobile,
+			blockBottomMarginMobile,
+			blockLeftMarginMobile,
+			blockRightMarginMobile,
+			blockTopPadding,
+			blockTopPaddingMobile,
+			blockTopPaddingTablet,
+			blockBottomPadding,
+			blockBottomPaddingMobile,
+			blockBottomPaddingTablet,
+			blockLeftPadding,
+			blockLeftPaddingMobile,
+			blockLeftPaddingTablet,
+			blockRightPadding,
+			blockRightPaddingMobile,
+			blockRightPaddingTablet,
+      blockIsMarginControlConnected,
+      blockIsPaddingControlConnected,
     } = attributes;
+
+    const blockMarginResetValues = {
+			marginTop: 0,
+			marginRight: 0,
+			marginBottom: 0,
+			marginLeft: 0,
+			marginTabletTop: 0,
+			marginTabletRight: 0,
+			marginTabletBottom: 0,
+			marginTabletLeft: 0,
+			marginMobileTop: 0,
+			marginMobileRight: 0,
+			marginMobileBottom: 0,
+			marginMobileLeft: 0,
+		}
+		const blockPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
 
     const taxonomy_list_setting = showEmptyTaxonomy ? taxonomyList : termsList;
 
@@ -591,89 +648,6 @@ export default class Inspector extends Component {
               )}
             </PanelBody>
             <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              {"grid" === layout && (
-                <Fragment>
-                  <ResponsiveSpacingControl
-                    title={"Row Gap"}
-                    attrNameTemplate="rowGap%s"
-                    values={{
-                      desktop: rowGap,
-                      tablet: rowGapTablet,
-                      mobile: rowGapMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  <ResponsiveSpacingControl
-                    title={"Column Gap"}
-                    attrNameTemplate="columnGap%s"
-                    values={{
-                      desktop: columnGap,
-                      tablet: columnGapTablet,
-                      mobile: columnGapMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  <ResponsiveSpacingControl
-                    title={"Content Padding"}
-                    attrNameTemplate="contentPadding%s"
-                    values={{
-                      desktop: contentPadding,
-                      tablet: contentPaddingTablet,
-                      mobile: contentPaddingMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  {showPostCount && (
-                    <Fragment>
-                      <ResponsiveSpacingControl
-                        title={"Title Bottom Spacing"}
-                        attrNameTemplate="titleBottomSpace%s"
-                        values={{
-                          desktop: titleBottomSpace,
-                          tablet: titleBottomSpaceTablet,
-                          mobile: titleBottomSpaceMobile,
-                        }}
-                        setAttributes={setAttributes}
-                        {...this.props}
-                      />
-                    </Fragment>
-                  )}
-                </Fragment>
-              )}
-              {"list" === layout && (
-                <Fragment>
-                  <ResponsiveSpacingControl
-                    title={"Top Margin"}
-                    attrNameTemplate="listTopMargin%s"
-                    values={{
-                      desktop: listTopMargin,
-                      tablet: listTopMarginTablet,
-                      mobile: listTopMarginMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  <ResponsiveSpacingControl
-                    title={"Bottom Margin"}
-                    attrNameTemplate="listBottomMargin%s"
-                    values={{
-                      desktop: listBottomMargin,
-                      tablet: listBottomMarginTablet,
-                      mobile: listBottomMarginMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                </Fragment>
-              )}
-            </PanelBody>
-            <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -870,6 +844,99 @@ export default class Inspector extends Component {
                       />
                     </Fragment>
                   )}
+                </Fragment>
+              )}
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              {"grid" === layout && (
+                <Fragment>
+                  <ResponsiveSpacingControl
+                    title={"Row Gap"}
+                    attrNameTemplate="rowGap%s"
+                    values={{
+                      desktop: rowGap,
+                      tablet: rowGapTablet,
+                      mobile: rowGapMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  <ResponsiveSpacingControl
+                    title={"Column Gap"}
+                    attrNameTemplate="columnGap%s"
+                    values={{
+                      desktop: columnGap,
+                      tablet: columnGapTablet,
+                      mobile: columnGapMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  <ResponsiveSpacingControl
+                    title={"Content Padding"}
+                    attrNameTemplate="contentPadding%s"
+                    values={{
+                      desktop: contentPadding,
+                      tablet: contentPaddingTablet,
+                      mobile: contentPaddingMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  {showPostCount && (
+                    <Fragment>
+                      <ResponsiveSpacingControl
+                        title={"Title Bottom Spacing"}
+                        attrNameTemplate="titleBottomSpace%s"
+                        values={{
+                          desktop: titleBottomSpace,
+                          tablet: titleBottomSpaceTablet,
+                          mobile: titleBottomSpaceMobile,
+                        }}
+                        setAttributes={setAttributes}
+                        {...this.props}
+                      />
+                    </Fragment>
+                  )}
+                </Fragment>
+              )}
+              {"list" === layout && (
+                <Fragment>
+                  <ResponsiveSpacingControl
+                    title={"Top Margin"}
+                    attrNameTemplate="listTopMargin%s"
+                    values={{
+                      desktop: listTopMargin,
+                      tablet: listTopMarginTablet,
+                      mobile: listTopMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  <ResponsiveSpacingControl
+                    title={"Bottom Margin"}
+                    attrNameTemplate="listBottomMargin%s"
+                    values={{
+                      desktop: listBottomMargin,
+                      tablet: listBottomMarginTablet,
+                      mobile: listBottomMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
                 </Fragment>
               )}
             </PanelBody>

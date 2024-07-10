@@ -379,6 +379,110 @@ const attributes = {
       type: "boolean",
       default: false,
     },
+    buttonTopMargin: {
+      type: "number",
+      default: '',
+    },
+    buttonBottomMargin: {
+      type: "number",
+      default: '',
+    },
+    buttonLeftMargin: {
+      type: "number",
+      default: '',
+    },
+    buttonRightMargin: {
+      type: "number",
+      default: '',
+    },
+    buttonTopMarginTablet: {
+      type: "number",
+      default: '',
+    },
+    buttonBottomMarginTablet: {
+      type: "number",
+      default: '',
+    },
+    buttonLeftMarginTablet: {
+      type: "number",
+      default: '',
+    },
+    buttonRightMarginTablet: {
+      type: "number",
+      default: '',
+    },
+    buttonTopMarginMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonBottomMarginMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonLeftMarginMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonRightMarginMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonIsMarginControlConnected: {
+      type: "boolean",
+      default: false,
+    },
+    buttonIsPaddingControlConnected: {
+      type: "boolean",
+      default: false,
+    },
+    buttonTopPadding: {
+      type: "number",
+      default: '',
+    },
+    buttonTopPaddingMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonTopPaddingTablet: {
+      type: "number",
+      default: '',
+    },
+    buttonBottomPadding: {
+      type: "number",
+      default: '',
+    },
+    buttonBottomPaddingMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonBottomPaddingTablet: {
+      type: "number",
+      default: '',
+    },
+    buttonLeftPadding: {
+      type: "number",
+      default: '',
+    },
+    buttonLeftPaddingMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonLeftPaddingTablet: {
+      type: "number",
+      default: '',
+    },
+    buttonRightPadding: {
+      type: "number",
+      default: '',
+    },
+    buttonRightPaddingMobile: {
+      type: "number",
+      default: '',
+    },
+    buttonRightPaddingTablet: {
+      type: "number",
+      default: '',
+    },
 };
 
 export default attributes;

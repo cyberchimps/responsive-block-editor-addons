@@ -93,6 +93,31 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    popupTrigger,
+    buttonTopMargin,
+    buttonBottomMargin,
+    buttonLeftMargin,
+    buttonRightMargin,
+    buttonTopMarginTablet,
+    buttonBottomMarginTablet,
+    buttonLeftMarginTablet,
+    buttonRightMarginTablet,
+    buttonTopMarginMobile,
+    buttonBottomMarginMobile,
+    buttonLeftMarginMobile,
+    buttonRightMarginMobile,
+    buttonTopPadding,
+    buttonTopPaddingMobile,
+    buttonTopPaddingTablet,
+    buttonBottomPadding,
+    buttonBottomPaddingMobile,
+    buttonBottomPaddingTablet,
+    buttonLeftPadding,
+    buttonLeftPaddingMobile,
+    buttonLeftPaddingTablet,
+    buttonRightPadding,
+    buttonRightPaddingMobile,
+    buttonRightPaddingTablet,
   } = props.attributes;
 
   const popupScreenPositions = {
@@ -238,7 +263,7 @@ function EditorStyles(props) {
       "opacity": hideWidget? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
-      "justify-content": popupTriggerAlign,
+        "justify-content": popupTriggerAlign,  
     },
     " .responsive-block-editor-addons-popup-button-trigger": {
       "color": popupButtonColor,
@@ -368,6 +393,39 @@ function EditorStyles(props) {
       ...mobile,
     },
   };
+
+  if( popupTrigger === 'click' ) {
+    selectors[" .responsive-block-editor-addons-popup-trigger-wrap"]= {
+      'padding-top': generateCSSUnit(buttonTopPadding, "px"),
+      'padding-right': generateCSSUnit(buttonRightPadding, "px"),
+      'padding-bottom': generateCSSUnit(buttonBottomPadding, "px"),
+      'padding-left': generateCSSUnit(buttonLeftPadding, "px"),
+      'margin-top': generateCSSUnit(buttonTopMargin, "px"),
+      'margin-right': generateCSSUnit(buttonRightMargin, "px"),
+      'margin-bottom': generateCSSUnit(buttonBottomMargin, "px"),
+      'margin-left': generateCSSUnit(buttonLeftMargin, "px"),
+    };
+    mobile_selectors[" .responsive-block-editor-addons-popup-trigger-wrap"]= {
+      'padding-top': generateCSSUnit(buttonTopPaddingMobile, "px"),
+      'padding-right': generateCSSUnit(buttonRightPaddingMobile, "px"),
+      'padding-bottom': generateCSSUnit(buttonBottomPaddingMobile, "px"),
+      'padding-left': generateCSSUnit(buttonLeftPaddingMobile, "px"),
+      'margin-top': generateCSSUnit(buttonTopMarginMobile, "px"),
+      'margin-right': generateCSSUnit(buttonRightMarginMobile, "px"),
+      'margin-bottom': generateCSSUnit(buttonBottomMarginMobile, "px"),
+      'margin-left': generateCSSUnit(buttonLeftMarginMobile, "px"),
+    };
+    tablet_selectors[" .responsive-block-editor-addons-popup-trigger-wrap"]= {
+      'padding-top': generateCSSUnit(buttonTopPaddingTablet, "px"),
+      'padding-right': generateCSSUnit(buttonRightPaddingTablet, "px"),
+      'padding-bottom': generateCSSUnit(buttonBottomPaddingTablet, "px"),
+      'padding-left': generateCSSUnit(buttonLeftPaddingTablet, "px"),
+      'margin-top': generateCSSUnit(buttonTopMarginTablet, "px"),
+      'margin-right': generateCSSUnit(buttonRightMarginTablet, "px"),
+      'margin-bottom': generateCSSUnit(buttonBottomMarginTablet, "px"),
+      'margin-left': generateCSSUnit(buttonLeftMarginTablet, "px"),
+    };
+  }
 
   var styling_css = "";
   var id = `.responsive-block-editor-addons-block-popup.block-${block_id}`;
