@@ -445,6 +445,110 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'number',
 					'default' => 1,
 				),
+				'blockTopMargin' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockBottomMargin' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockLeftMargin' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockRightMargin' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockTopMarginTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockBottomMarginTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockLeftMarginTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockRightMarginTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockTopMarginMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockBottomMarginMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockLeftMarginMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockRightMarginMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockIsMarginControlConnected' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'blockIsPaddingControlConnected' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'blockTopPadding' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockTopPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockTopPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockBottomPadding' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockBottomPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockBottomPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockLeftPadding' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockLeftPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockLeftPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockRightPadding' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockRightPaddingMobile' => array(
+					'type'    => 'number',
+					'default' => '',
+				),
+				'blockRightPaddingTablet' => array(
+					'type'    => 'number',
+					'default' => '',
+				),				
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts_portfolio',
 		)

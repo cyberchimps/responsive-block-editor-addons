@@ -231,6 +231,110 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  formIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  formTopMargin: {
+    type: "number",
+    default: '',
+  },
+  formTopMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  formTopMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  formBottomMargin: {
+    type: "number",
+    default: '',
+  },
+  formBottomMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  formBottomMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  formLeftMargin: {
+    type: "number",
+    default: '',
+  },
+  formLeftMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  formLeftMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  formRightMargin: {
+    type: "number",
+    default: '',
+  },
+  formRightMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  formRightMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  formIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  formTopPadding: {
+    type: "number",
+    default: '',
+  },
+  formTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  formTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  formBottomPadding: {
+    type: "number",
+    default: '',
+  },
+  formBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  formBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  formLeftPadding: {
+    type: "number",
+    default: '',
+  },
+  formLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  formLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  formRightPadding: {
+    type: "number",
+    default: '',
+  },
+  formRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  formRightPaddingTablet: {
+    type: "number",
+    default: '',
+  },
 };
 
 export default attributes;

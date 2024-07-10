@@ -41,11 +41,43 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    formTopPadding,
+    formTopPaddingMobile,
+    formTopPaddingTablet,
+    formBottomPadding,
+    formBottomPaddingMobile,
+    formBottomPaddingTablet,
+    formLeftPadding,
+    formLeftPaddingMobile,
+    formLeftPaddingTablet,
+    formRightPadding,
+    formRightPaddingMobile,
+    formRightPaddingTablet,
+    formTopMargin,
+    formTopMarginMobile,
+    formTopMarginTablet,
+    formBottomMargin,
+    formBottomMarginMobile,
+    formBottomMarginTablet,
+    formLeftMargin,
+    formLeftMarginMobile,
+    formLeftMarginTablet,
+    formRightMargin,
+    formRightMarginMobile,
+    formRightMarginTablet,
   } = props.attributes;
 
   var selectors = {
     "": {
       "opacity": hideWidget ? 0.2 : 1,
+      "padding-top": generateCSSUnit(formTopPadding, "px"),
+      "padding-right": generateCSSUnit(formRightPadding, "px"),
+      "padding-bottom": generateCSSUnit(formBottomPadding, "px"),
+      "padding-left": generateCSSUnit(formLeftPadding, "px"),
+      "margin-top": generateCSSUnit(formTopMargin, "px"),
+      "margin-right": generateCSSUnit(formRightMargin, "px"),
+      "margin-bottom": generateCSSUnit(formBottomMargin, "px"),
+      "margin-left": generateCSSUnit(formLeftMargin, "px"),
     },
     " .responsive-block-editor-addons-form-input": {
       "margin-bottom": generateCSSUnit(formFieldInputGap, "px"),
@@ -117,6 +149,14 @@ function EditorStyles(props) {
   var mobile_selectors = {
     "": {
       "opacity": hideWidgetMobile ? 0.2 : 1,
+      "padding-top": generateCSSUnit(formTopPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(formRightPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(formBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(formLeftPaddingMobile, "px"),
+      "margin-top": generateCSSUnit(formTopMarginMobile, "px"),
+      "margin-right": generateCSSUnit(formRightMarginMobile, "px"),
+      "margin-bottom": generateCSSUnit(formBottomMarginMobile, "px"),
+      "margin-left": generateCSSUnit(formLeftMarginMobile, "px"),
     },
     " .responsive-block-editor-addons-form-input__text": {
       "padding-top": inputFieldPaddingMobile.top,
@@ -138,6 +178,14 @@ function EditorStyles(props) {
   var tablet_selectors = {
     "": {
       "opacity": hideWidgetTablet ? 0.2 : 1,
+      "padding-top": generateCSSUnit(formTopPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(formRightPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(formBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(formLeftPaddingTablet, "px"),
+      "margin-top": generateCSSUnit(formTopMarginTablet, "px"),
+      "margin-right": generateCSSUnit(formRightMarginTablet, "px"),
+      "margin-bottom": generateCSSUnit(formBottomMarginTablet, "px"),
+      "margin-left": generateCSSUnit(formLeftMarginTablet, "px"),
     },
     " .responsive-block-editor-addons-form-input__text": {
       "padding-top": inputFieldPaddingTablet.top,

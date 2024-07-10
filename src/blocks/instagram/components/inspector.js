@@ -3,8 +3,8 @@
  */
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
-import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -76,9 +76,41 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        instaIsMarginControlConnected,
+        instaIsPaddingControlConnected,
       },
       setAttributes,
     } = this.props;
+
+    const instaMarginResetValues = {
+      marginTop: 10,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 10,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 10,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+
+    const instaPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
 
     return (
       <InspectorControls key="inspector">
@@ -203,55 +235,17 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
-              title={__("Padding", "responsive-block-editor-addons")}
-              initialOpen={false}
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={true}
             >
-              <ResponsivePaddingControl
+              <ResponsiveNewPaddingControl
                 attrNameTemplate="insta%s"
-                values={{
-                  desktopTop: instaTopPadding,
-                  desktopBottom: instaBottomPadding,
-                  desktopLeft: instaLeftPadding,
-                  desktopRight: instaRightPadding,
-
-                  tabletTop: instaTopPaddingTablet,
-                  tabletBottom: instaBottomPaddingTablet,
-                  tabletLeft: instaLeftPaddingTablet,
-                  tabletRight: instaRightPaddingTablet,
-
-                  mobileTop: instaTopPaddingMobile,
-                  mobileBottom: instaBottomPaddingMobile,
-                  mobileLeft: instaLeftPaddingMobile,
-                  mobileRight: instaRightPaddingMobile,
-                }}
-                setAttributes={setAttributes}
+                resetValues={instaPaddingResetValues}
                 {...this.props}
               />
-            </PanelBody>
-
-            <PanelBody
-              title={__("Margin", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveMarginControl
+              <ResponsiveNewMarginControl
                 attrNameTemplate="insta%s"
-                values={{
-                  desktopTop: instaTopMargin,
-                  desktopBottom: instaBottomMargin,
-                  desktopLeft: instaLeftMargin,
-                  desktopRight: instaRightMargin,
-
-                  tabletTop: instaTopMarginTablet,
-                  tabletBottom: instaBottomMarginTablet,
-                  tabletLeft: instaLeftMarginTablet,
-                  tabletRight: instaRightMarginTablet,
-
-                  mobileTop: instaTopMarginMobile,
-                  mobileBottom: instaBottomMarginMobile,
-                  mobileLeft: instaLeftMarginMobile,
-                  mobileRight: instaRightMarginMobile,
-                }}
-                setAttributes={setAttributes}
+                resetValues={instaMarginResetValues}
                 {...this.props}
               />
             </PanelBody>

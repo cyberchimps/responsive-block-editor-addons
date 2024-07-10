@@ -7,6 +7,8 @@ import SizeControl from "../../../utils/components/size-control";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 
 /**
@@ -126,7 +128,62 @@ class Inspector extends Component {
       z_index,
       z_indexMobile,
       z_indexTablet,
+      blockTopMargin,
+      blockBottomMargin,
+      blockLeftMargin,
+      blockRightMargin,
+      blockTopMarginTablet,
+      blockBottomMarginTablet,
+      blockLeftMarginTablet,
+      blockRightMarginTablet,
+      blockTopMarginMobile,
+      blockBottomMarginMobile,
+      blockLeftMarginMobile,
+      blockRightMarginMobile,
+      blockIsMarginControlConnected,
+      blockTopPadding,
+      blockTopPaddingMobile,
+      blockTopPaddingTablet,
+      blockBottomPadding,
+      blockBottomPaddingMobile,
+      blockBottomPaddingTablet,
+      blockLeftPadding,
+      blockLeftPaddingMobile,
+      blockLeftPaddingTablet,
+      blockRightPadding,
+      blockRightPaddingMobile,
+      blockRightPaddingTablet,
+      blockIsPaddingControlConnected,
     } = attributes;
+
+    const blockMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+    const blockPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
 
     const { temporaryInput } = this.state;
 
@@ -317,6 +374,21 @@ class Inspector extends Component {
                           setAttributes={ setAttributes }
                           {...this.props}
                       />
+                  </PanelBody>
+                  <PanelBody
+                    title={__("Spacing", 'responsive-block-editor-addons')}
+                    initialOpen={false}
+                  >
+                    <ResponsiveNewPaddingControl
+                      attrNameTemplate="block%s"
+                      resetValues={blockPaddingResetValues}
+                      {...this.props}
+                    />
+                    <ResponsiveNewMarginControl
+                      attrNameTemplate="block%s"
+                      resetValues={blockMarginResetValues}
+                      {...this.props}
+                    />
                   </PanelBody>
               </InspectorTab>
               <InspectorTab key={"advance"}>
