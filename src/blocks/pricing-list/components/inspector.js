@@ -560,6 +560,62 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             <PanelBody
+              title={__("Typography", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+				<TypographyHelperControl
+					title={__("Title Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="title%s"
+					values={{
+					family: titleFontFamily,
+					size: titleFontSize,
+					sizeMobile: titleFontSizeMobile,
+					sizeTablet: titleFontSizeTablet,
+					weight: titleFontWeight,
+					height: titleLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__(
+					"Description Typography",
+					"responsive-block-editor-addons"
+					)}
+					attrNameTemplate="description%s"
+					values={{
+					family: descriptionFontFamily,
+					size: descriptionFontSize,
+					sizeMobile: descriptionFontSizeMobile,
+					sizeTablet: descriptionFontSizeTablet,
+					weight: descriptionFontWeight,
+					height: descriptionLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+				<TypographyHelperControl
+					title={__("Price Typography", "responsive-block-editor-addons")}
+					attrNameTemplate="price%s"
+					values={{
+					family: priceFontFamily,
+					size: priceFontSize,
+					sizeMobile: priceFontSizeMobile,
+					sizeTablet: priceFontSizeTablet,
+					weight: priceFontWeight,
+					height: priceLineHeight,
+					}}
+					showLetterSpacing={false}
+					showTextTransform={false}
+					setAttributes={setAttributes}
+					{...this.props}
+				/>
+            </PanelBody>
+            <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -632,63 +688,6 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
-            </PanelBody>
-
-            <PanelBody
-              title={__("Typography", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-				<TypographyHelperControl
-					title={__("Title Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="title%s"
-					values={{
-					family: titleFontFamily,
-					size: titleFontSize,
-					sizeMobile: titleFontSizeMobile,
-					sizeTablet: titleFontSizeTablet,
-					weight: titleFontWeight,
-					height: titleLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__(
-					"Description Typography",
-					"responsive-block-editor-addons"
-					)}
-					attrNameTemplate="description%s"
-					values={{
-					family: descriptionFontFamily,
-					size: descriptionFontSize,
-					sizeMobile: descriptionFontSizeMobile,
-					sizeTablet: descriptionFontSizeTablet,
-					weight: descriptionFontWeight,
-					height: descriptionLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<TypographyHelperControl
-					title={__("Price Typography", "responsive-block-editor-addons")}
-					attrNameTemplate="price%s"
-					values={{
-					family: priceFontFamily,
-					size: priceFontSize,
-					sizeMobile: priceFontSizeMobile,
-					sizeTablet: priceFontSizeTablet,
-					weight: priceFontWeight,
-					height: priceLineHeight,
-					}}
-					showLetterSpacing={false}
-					showTextTransform={false}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

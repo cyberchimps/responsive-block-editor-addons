@@ -77,19 +77,19 @@ const attributes = {
   },
   blockTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockTopMarginTablet: {
     type: "number",

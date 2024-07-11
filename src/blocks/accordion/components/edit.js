@@ -75,6 +75,25 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       vtitlePaddingMobile,
       titleLeftPaddingMobile,
       htitlePaddingMobile,
+      marginV,
+      marginVMobile,
+      marginVTablet,
+      marginH,
+      marginHMobile,
+      marginHTablet,
+      blockTopMargin,
+      blockBottomMargin,
+      blockLeftMargin,
+      blockRightMargin,
+      blockTopMarginTablet,
+      blockBottomMarginTablet,
+      blockLeftMarginTablet,
+      blockRightMarginTablet,
+      blockTopMarginMobile,
+      blockBottomMarginMobile,
+      blockLeftMarginMobile,
+      blockRightMarginMobile,
+      blockNewSpacingValuesUpdated,
     } = attributes;
 
     // Assigning block_id in the attribute.
@@ -118,6 +137,26 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     if (10 === titleLeftPaddingMobile && 10 !== htitlePaddingMobile) {
       setAttributes({ titleLeftPaddingMobile: htitlePaddingMobile });
     }
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!blockNewSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopMargin:          marginV !== undefined ? marginV : blockTopMargin,
+          blockBottomMargin:       marginV !== undefined ? marginV : blockBottomMargin,
+          blockLeftMargin:         marginH !== undefined ? marginH : blockLeftMargin,
+          blockRightMargin:        marginH !== undefined ? marginH : blockRightMargin,
+          blockTopMarginTablet:    marginVTablet !== undefined ? marginVTablet : blockTopMarginTablet,
+          blockBottomMarginTablet: marginVTablet !== undefined ? marginVTablet : blockBottomMarginTablet,
+          blockRightMarginTablet:  marginHTablet !== undefined ? marginHTablet : blockRightMarginTablet,
+          blockLeftMarginTablet:   marginHTablet !== undefined ? marginHTablet : blockLeftMarginTablet,
+          blockTopMarginMobile:    marginVMobile !== undefined ? marginVMobile : blockTopMarginMobile,
+          blockBottomMarginMobile: marginVMobile !== undefined ? marginVMobile : blockBottomMarginMobile,
+          blockLeftMarginMobile:   marginHMobile !== undefined ? marginHMobile : blockLeftMarginMobile,
+          blockRightMarginMobile:  marginHMobile !== undefined ? marginHMobile : blockRightMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({blockNewSpacingValuesUpdated: true});
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -187,8 +226,9 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
   }
 
   render() {
-    const { attributes, setAttributes } = this.props;
+    // const { attributes, setAttributes } = this.props;
     const {
+      attributes:{
       block_id,
       layout,
       inactiveOtherItems,
@@ -323,7 +363,10 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     blockRightPaddingTablet,
     blockIsMarginControlConnected,
     blockIsPaddingControlConnected,
-    } = attributes;
+    blockNewSpacingValuesUpdated,
+      },
+      setAttributes,
+    } = this.props;
 
     const blockPaddingResetValues = {
 			paddingTop: 0,
@@ -338,6 +381,20 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 			paddingMobileRight: 0,
 			paddingMobileBottom: 0,
 			paddingMobileLeft: 0,
+		}
+    const blockMarginResetValues = {
+			marginTop: 0,
+			marginRight: 0,
+			marginBottom: 0,
+			marginLeft: 0,
+			marginTabletTop: 0,
+			marginTabletRight: 0,
+			marginTabletBottom: 0,
+			marginTabletLeft: 0,
+			marginMobileTop: 0,
+			marginMobileRight: 0,
+			marginMobileBottom: 0,
+			marginMobileLeft: 0,
 		}
     const fontWeightOptions = [
       {
@@ -1202,6 +1259,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             resetValues={blockPaddingResetValues}
             {...this.props}
           />
+          <ResponsiveNewMarginControl
+            attrNameTemplate="block%s"
+            resetValues={blockMarginResetValues}
+            {...this.props}
+          />
           <ResponsiveSpacingControl
             title={"Row Gap"}
             attrNameTemplate="rowsGap%s"
@@ -1227,20 +1289,6 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               />
             </Fragment>
           )}
-          <ResponsiveSpacingControl
-            title={"Vertical Margin"}
-            attrNameTemplate="marginV%s"
-            values = {{desktop:marginV, tablet:marginVTablet, mobile:marginVMobile}}
-            setAttributes={ setAttributes }
-            {...this.props}
-          />
-          <ResponsiveSpacingControl
-            title={"Horizontal Margin"}
-            attrNameTemplate="marginH%s"
-            values = {{desktop:marginH, tablet:marginHTablet, mobile:marginHMobile}}
-            setAttributes={ setAttributes }
-            {...this.props}
-          />
           <br></br>
           <BaseControl.VisualLabel>
               {__("Title Padding :", "responsive-block-editor-addons")}
@@ -1952,11 +2000,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             </InspectorTab>
             <InspectorTab key={"style"}>
               {accordionColorSettings()}
-              {accordionStylingSettings()}
               {accordionTypographySettings()}
               {titleFontFamily && loadGoogleFont(titleFontFamily)}
               {contentFontFamily && loadGoogleFont(contentFontFamily)}
               {accordionBorderSettings()}
+              {accordionStylingSettings()}
             </InspectorTab>
             <InspectorTab key={"advance"}>
             </InspectorTab>

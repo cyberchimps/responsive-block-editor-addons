@@ -648,99 +648,6 @@ export default class Inspector extends Component {
               )}
             </PanelBody>
             <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-              />
-              <ResponsiveNewMarginControl
-                attrNameTemplate="block%s"
-                resetValues={blockMarginResetValues}
-                {...this.props}
-              />
-              {"grid" === layout && (
-                <Fragment>
-                  <ResponsiveSpacingControl
-                    title={"Row Gap"}
-                    attrNameTemplate="rowGap%s"
-                    values={{
-                      desktop: rowGap,
-                      tablet: rowGapTablet,
-                      mobile: rowGapMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  <ResponsiveSpacingControl
-                    title={"Column Gap"}
-                    attrNameTemplate="columnGap%s"
-                    values={{
-                      desktop: columnGap,
-                      tablet: columnGapTablet,
-                      mobile: columnGapMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  <ResponsiveSpacingControl
-                    title={"Content Padding"}
-                    attrNameTemplate="contentPadding%s"
-                    values={{
-                      desktop: contentPadding,
-                      tablet: contentPaddingTablet,
-                      mobile: contentPaddingMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  {showPostCount && (
-                    <Fragment>
-                      <ResponsiveSpacingControl
-                        title={"Title Bottom Spacing"}
-                        attrNameTemplate="titleBottomSpace%s"
-                        values={{
-                          desktop: titleBottomSpace,
-                          tablet: titleBottomSpaceTablet,
-                          mobile: titleBottomSpaceMobile,
-                        }}
-                        setAttributes={setAttributes}
-                        {...this.props}
-                      />
-                    </Fragment>
-                  )}
-                </Fragment>
-              )}
-              {"list" === layout && (
-                <Fragment>
-                  <ResponsiveSpacingControl
-                    title={"Top Margin"}
-                    attrNameTemplate="listTopMargin%s"
-                    values={{
-                      desktop: listTopMargin,
-                      tablet: listTopMarginTablet,
-                      mobile: listTopMarginMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                  <ResponsiveSpacingControl
-                    title={"Bottom Margin"}
-                    attrNameTemplate="listBottomMargin%s"
-                    values={{
-                      desktop: listBottomMargin,
-                      tablet: listBottomMarginTablet,
-                      mobile: listBottomMarginMobile,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                </Fragment>
-              )}
-            </PanelBody>
-            <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -937,6 +844,99 @@ export default class Inspector extends Component {
                       />
                     </Fragment>
                   )}
+                </Fragment>
+              )}
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              {"grid" === layout && (
+                <Fragment>
+                  <ResponsiveSpacingControl
+                    title={"Row Gap"}
+                    attrNameTemplate="rowGap%s"
+                    values={{
+                      desktop: rowGap,
+                      tablet: rowGapTablet,
+                      mobile: rowGapMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  <ResponsiveSpacingControl
+                    title={"Column Gap"}
+                    attrNameTemplate="columnGap%s"
+                    values={{
+                      desktop: columnGap,
+                      tablet: columnGapTablet,
+                      mobile: columnGapMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  <ResponsiveSpacingControl
+                    title={"Content Padding"}
+                    attrNameTemplate="contentPadding%s"
+                    values={{
+                      desktop: contentPadding,
+                      tablet: contentPaddingTablet,
+                      mobile: contentPaddingMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  {showPostCount && (
+                    <Fragment>
+                      <ResponsiveSpacingControl
+                        title={"Title Bottom Spacing"}
+                        attrNameTemplate="titleBottomSpace%s"
+                        values={{
+                          desktop: titleBottomSpace,
+                          tablet: titleBottomSpaceTablet,
+                          mobile: titleBottomSpaceMobile,
+                        }}
+                        setAttributes={setAttributes}
+                        {...this.props}
+                      />
+                    </Fragment>
+                  )}
+                </Fragment>
+              )}
+              {"list" === layout && (
+                <Fragment>
+                  <ResponsiveSpacingControl
+                    title={"Top Margin"}
+                    attrNameTemplate="listTopMargin%s"
+                    values={{
+                      desktop: listTopMargin,
+                      tablet: listTopMarginTablet,
+                      mobile: listTopMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
+                  <ResponsiveSpacingControl
+                    title={"Bottom Margin"}
+                    attrNameTemplate="listBottomMargin%s"
+                    values={{
+                      desktop: listBottomMargin,
+                      tablet: listBottomMarginTablet,
+                      mobile: listBottomMarginMobile,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                  />
                 </Fragment>
               )}
             </PanelBody>

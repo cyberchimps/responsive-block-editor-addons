@@ -437,13 +437,15 @@ const attributes = {
   },
   contentPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   contentPaddingMobile: {
     type: "number",
+    default: '',
   },
   contentPaddingTablet: {
     type: "number",
+    default: '',
   },
   opacity: {
     type: "number",
@@ -743,51 +745,51 @@ const attributes = {
 	},
   blockTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockTopMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockTopMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockIsMarginControlConnected: {
 		type: "boolean",
@@ -799,7 +801,7 @@ const attributes = {
 	},
   blockTopPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockTopPaddingMobile: {
     type: "number",
@@ -811,7 +813,7 @@ const attributes = {
   },
   blockBottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockBottomPaddingMobile: {
     type: "number",
@@ -823,7 +825,7 @@ const attributes = {
   },
   blockLeftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockLeftPaddingMobile: {
     type: "number",
@@ -835,7 +837,7 @@ const attributes = {
   },
   blockRightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   blockRightPaddingMobile: {
     type: "number",

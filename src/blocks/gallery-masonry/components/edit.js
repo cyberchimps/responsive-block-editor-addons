@@ -4,6 +4,7 @@
 import classnames from "classnames";
 import filter from "lodash/filter";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
+import EditorStyles from "./editor-styles";
 
 /**
  * Internal dependencies
@@ -63,6 +64,17 @@ class GalleryMasonryEdit extends Component {
         migrationDone: true,
       });
     }
+     // Assigning block_id in the attribute.
+     this.props.setAttributes({ block_id: this.props.clientId });
+ 
+     // Pushing Style tag for this block css.
+     const $style = document.createElement("style");
+     $style.setAttribute(
+       "id",
+       "responsive-block-editor-addons-advanced-gallery-masonry-style-" +
+         this.props.clientId
+     );
+     document.head.appendChild($style);
   }
 
   componentDidUpdate(prevProps) {
@@ -150,6 +162,14 @@ class GalleryMasonryEdit extends Component {
         radius: 0,
       });
     }
+    var element = document.getElementById(
+      "responsive-block-editor-addons-advanced-gallery-masonry-style-" +
+        this.props.clientId
+    );
+  
+    if (null !== element && undefined !== element) {
+      element.innerHTML = EditorStyles(this.props);
+    }
   }
   handleSizeMigration(size) {
     // Map old size options to columnsize
@@ -184,7 +204,8 @@ class GalleryMasonryEdit extends Component {
       lightbox,
       columnsize,
       customHeight,
-      customWidth
+      customWidth,
+      block_id,
     } = attributes;
     const hasImages = !!images.length;
 
@@ -225,6 +246,7 @@ class GalleryMasonryEdit extends Component {
     }
     return (
       <Fragment key="div-block" >
+        <style id={`responsive-block-editor-addons-advanced-gallery-masonry-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <div className={className}>

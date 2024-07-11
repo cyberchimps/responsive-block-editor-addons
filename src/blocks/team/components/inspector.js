@@ -896,7 +896,39 @@ export default class Inspector extends Component {
               />
             </PanelBody>
 
-            <PanelBody
+            <PanelColorSettings
+              title={__("Color Settings", "responsive-block-editor-addons")}
+              initialOpen={false}
+              colorSettings={[
+                {
+                  value: borderColor,
+                  onChange: onChangeBorderColor,
+                  label: __("Border Color", "responsive-block-editor-addons"),
+                },
+                {
+                  value: titleColor,
+                  onChange: onChangetitleColor,
+                  label: __("Title Color", "responsive-block-editor-addons"),
+                },
+                {
+                  value: designationColor,
+                  onChange: onChangeDesignationColor,
+                  label: __(
+                    "Designation Color",
+                    "responsive-block-editor-addons"
+                  ),
+                },
+                {
+                  value: descriptionColor,
+                  onChange: onChangeDescriptionColor,
+                  label: __(
+                    "Description Color",
+                    "responsive-block-editor-addons"
+                  ),
+                },
+              ]}
+            ></PanelColorSettings>
+                        <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -977,38 +1009,6 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
-            <PanelColorSettings
-              title={__("Color Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: borderColor,
-                  onChange: onChangeBorderColor,
-                  label: __("Border Color", "responsive-block-editor-addons"),
-                },
-                {
-                  value: titleColor,
-                  onChange: onChangetitleColor,
-                  label: __("Title Color", "responsive-block-editor-addons"),
-                },
-                {
-                  value: designationColor,
-                  onChange: onChangeDesignationColor,
-                  label: __(
-                    "Designation Color",
-                    "responsive-block-editor-addons"
-                  ),
-                },
-                {
-                  value: descriptionColor,
-                  onChange: onChangeDescriptionColor,
-                  label: __(
-                    "Description Color",
-                    "responsive-block-editor-addons"
-                  ),
-                },
-              ]}
-            ></PanelColorSettings>
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody

@@ -273,75 +273,99 @@ const attributes = {
   },
   containerTopPadding: {
     type: "number",
+    default: '',
   },
   containerBottomPadding: {
     type: "number",
+    default: '',
   },
   containerLeftPadding: {
     type: "number",
+    default: '',
   },
   containerRightPadding: {
     type: "number",
+    default: '',
   },
   containerTopPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerBottomPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerLeftPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerRightPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerTopPaddingMobile: {
     type: "number",
+    default: '',
   },
   containerBottomPaddingMobile: {
     type: "number",
+    default: '',
   },
   containerLeftPaddingMobile: {
     type: "number",
+    default: '',
   },
   containerRightPaddingMobile: {
     type: "number",
+    default: '',
   },
   containerTopMargin: {
     type: "number",
+    default: '',
   },
   containerBottomMargin: {
     type: "number",
+    default: '',
   },
   containerLeftMargin: {
     type: "number",
+    default: '',
   },
   containerRightMargin: {
     type: "number",
+    default: '',
   },
   containerTopMarginTablet: {
     type: "number",
+    default: '',
   },
   containerBottomMarginTablet: {
     type: "number",
+    default: '',
   },
   containerLeftMarginTablet: {
     type: "number",
+    default: '',
   },
   containerRightMarginTablet: {
     type: "number",
+    default: '',
   },
   containerTopMarginMobile: {
     type: "number",
+    default: '',
   },
   containerBottomMarginMobile: {
     type: "number",
+    default: '',
   },
   containerLeftMarginMobile: {
     type: "number",
+    default: '',
   },
   containerRightMarginMobile: {
     type: "number",
+    default: '',
   },
   hideWidget: {
   type: "boolean",

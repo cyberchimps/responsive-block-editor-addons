@@ -902,110 +902,6 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-              />
-              <ResponsiveNewMarginControl
-                attrNameTemplate="block%s"
-                resetValues={blockMarginResetValues}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Content Padding"}
-                attrNameTemplate="contentPadding%s"
-                values={{
-                  desktop: contentPadding,
-                  tablet: contentPaddingTablet,
-                  mobile: contentPaddingMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <RangeControl
-                label={__("Gap Between Content & Dots", "responsive-block-editor-addons")}
-                value={rowGap}
-                onChange={(value) =>
-                  setAttributes({ rowGap: value !== undefined ? value : 20 })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <ResponsiveSpacingControl
-                title={"Column Gap"}
-                attrNameTemplate="columnGap%s"
-                values={{
-                  desktop: columnGap,
-                  tablet: columnGapTablet,
-                  mobile: columnGapMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <RangeControl
-                label={__("Title Top Margin", "responsive-block-editor-addons")}
-                value={imageSpace}
-                onChange={(value) =>
-                  setAttributes({
-                    imageSpace: value !== undefined ? value : "",
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <RangeControl
-                label={__("Title Bottom Margin", "responsive-block-editor-addons")}
-                value={titleSpace}
-                onChange={(value) =>
-                  setAttributes({
-                    titleSpace: value !== undefined ? value : "",
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <RangeControl
-                label={__("Meta Bottom Margin", "responsive-block-editor-addons")}
-                value={dateSpace}
-                onChange={(value) =>
-                  setAttributes({ dateSpace: value !== undefined ? value : "" })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <RangeControl
-                label={__("Excerpt Bottom Margin", "responsive-block-editor-addons")}
-                value={excerptSpace}
-                onChange={(value) =>
-                  setAttributes({
-                    excerptSpace: value !== undefined ? value : "",
-                  })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-              <RangeControl
-                label={__("CTA Bottom Margin", "responsive-block-editor-addons")}
-                value={ctaSpace}
-                onChange={(value) =>
-                  setAttributes({ ctaSpace: value !== undefined ? value : "" })
-                }
-                min={0}
-                max={50}
-                allowReset
-              />
-            </PanelBody>
-
-            <PanelBody
               title={__("Color Settings", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -1105,6 +1001,109 @@ export default class Inspector extends Component {
                     arrowDotsColor: value,
                   })
                 }
+                allowReset
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Content Padding"}
+                attrNameTemplate="contentPadding%s"
+                values={{
+                  desktop: contentPadding,
+                  tablet: contentPaddingTablet,
+                  mobile: contentPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <RangeControl
+                label={__("Gap Between Content & Dots", "responsive-block-editor-addons")}
+                value={rowGap}
+                onChange={(value) =>
+                  setAttributes({ rowGap: value !== undefined ? value : 20 })
+                }
+                min={0}
+                max={50}
+                allowReset
+              />
+              <ResponsiveSpacingControl
+                title={"Column Gap"}
+                attrNameTemplate="columnGap%s"
+                values={{
+                  desktop: columnGap,
+                  tablet: columnGapTablet,
+                  mobile: columnGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <RangeControl
+                label={__("Title Top Margin", "responsive-block-editor-addons")}
+                value={imageSpace}
+                onChange={(value) =>
+                  setAttributes({
+                    imageSpace: value !== undefined ? value : "",
+                  })
+                }
+                min={0}
+                max={50}
+                allowReset
+              />
+              <RangeControl
+                label={__("Title Bottom Margin", "responsive-block-editor-addons")}
+                value={titleSpace}
+                onChange={(value) =>
+                  setAttributes({
+                    titleSpace: value !== undefined ? value : "",
+                  })
+                }
+                min={0}
+                max={50}
+                allowReset
+              />
+              <RangeControl
+                label={__("Meta Bottom Margin", "responsive-block-editor-addons")}
+                value={dateSpace}
+                onChange={(value) =>
+                  setAttributes({ dateSpace: value !== undefined ? value : "" })
+                }
+                min={0}
+                max={50}
+                allowReset
+              />
+              <RangeControl
+                label={__("Excerpt Bottom Margin", "responsive-block-editor-addons")}
+                value={excerptSpace}
+                onChange={(value) =>
+                  setAttributes({
+                    excerptSpace: value !== undefined ? value : "",
+                  })
+                }
+                min={0}
+                max={50}
+                allowReset
+              />
+              <RangeControl
+                label={__("CTA Bottom Margin", "responsive-block-editor-addons")}
+                value={ctaSpace}
+                onChange={(value) =>
+                  setAttributes({ ctaSpace: value !== undefined ? value : "" })
+                }
+                min={0}
+                max={50}
                 allowReset
               />
             </PanelBody>

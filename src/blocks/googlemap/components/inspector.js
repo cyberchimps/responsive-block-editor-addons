@@ -3,6 +3,8 @@
  */
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -56,13 +58,68 @@ export default class Inspector extends Component {
             z_index,
             z_indexMobile,
             z_indexTablet,
+            blockTopMargin,
+            blockBottomMargin,
+            blockLeftMargin,
+            blockRightMargin,
+            blockTopMarginTablet,
+            blockBottomMarginTablet,
+            blockLeftMarginTablet,
+            blockRightMarginTablet,
+            blockTopMarginMobile,
+            blockBottomMarginMobile,
+            blockLeftMarginMobile,
+            blockRightMarginMobile,
+            blockTopPadding,
+            blockTopPaddingMobile,
+            blockTopPaddingTablet,
+            blockBottomPadding,
+            blockBottomPaddingMobile,
+            blockBottomPaddingTablet,
+            blockLeftPadding,
+            blockLeftPaddingMobile,
+            blockLeftPaddingTablet,
+            blockRightPadding,
+            blockRightPaddingMobile,
+            blockRightPaddingTablet,
+            blockIsMarginControlConnected,
+            blockIsPaddingControlConnected,
         },
 			setAttributes,
 		} = this.props;
 
+        const blockMarginResetValues = {
+			marginTop: 0,
+			marginRight: 0,
+			marginBottom: 0,
+			marginLeft: 0,
+			marginTabletTop: 0,
+			marginTabletRight: 0,
+			marginTabletBottom: 0,
+			marginTabletLeft: 0,
+			marginMobileTop: 0,
+			marginMobileRight: 0,
+			marginMobileBottom: 0,
+			marginMobileLeft: 0,
+		}
+		const blockPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
+
 		return (
 			<InspectorControls key="inspector">
-				<InspectorTabs hasStyle={false}>
+				<InspectorTabs>
 					<InspectorTab key={"content"}>
 						<PanelBody title={__("Map settings", "responsive-block-editor-addons")}>
 							<RangeControl
@@ -173,6 +230,20 @@ export default class Inspector extends Component {
 						</PanelBody>
 
 					</InspectorTab>
+                    <InspectorTab key={'style'}>
+                        <PanelBody title={__("Spacing", "responsive-block-editor-addons")} initialOpen={true}>
+                            <ResponsiveNewPaddingControl
+                            attrNameTemplate="block%s"
+                            resetValues={blockPaddingResetValues}
+                            {...this.props}
+                            />
+                            <ResponsiveNewMarginControl
+                            attrNameTemplate="block%s"
+                            resetValues={blockMarginResetValues}
+                            {...this.props}
+                            />
+                        </PanelBody>
+                    </InspectorTab>
 					<InspectorTab key={"advance"}>
                         <PanelBody
                         title={__("Responsive Conditions", "responsive-block-editor-addons")}

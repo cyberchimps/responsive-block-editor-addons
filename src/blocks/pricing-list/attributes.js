@@ -261,51 +261,51 @@ const attributes = {
 	},
   pricingTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingTopMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingBottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingLeftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingRightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingTopMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingBottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingLeftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingRightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingIsMarginControlConnected: {
 		type: "boolean",
@@ -317,51 +317,51 @@ const attributes = {
 	},
   pricingTopPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingTopPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingTopPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingBottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingBottomPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingBottomPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingLeftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingLeftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingLeftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingRightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingRightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   pricingRightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
 };
 

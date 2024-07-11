@@ -34,7 +34,10 @@ export default function ResponsiveNewPaddingControlHelper (props) {
         setSpaceControlConnected(!isSpaceControlConnected);
         props.setAttributes({ [getAttrName('IsPaddingControlConnected')]: !isSpaceControlConnected });
         if (!isSpaceControlConnected) {
-            const commonValue = paddingValues[`padding${device}Top`];
+            let commonValue = paddingValues[`padding${device}Top`];
+            if( commonValue === undefined || commonValue === '' ) {
+                commonValue  = 0;
+            }
             setPaddingValues({
                 [`padding${device}Top`]: commonValue,
                 [`padding${device}Right`]: commonValue,

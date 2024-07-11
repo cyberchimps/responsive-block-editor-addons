@@ -1030,35 +1030,6 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-              />
-              <ResponsiveNewMarginControl
-                attrNameTemplate="block%s"
-                resetValues={blockMarginResetValues}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={__("Title Spacing", "responsive-block-editor-addons")}
-                attrNameTemplate="titleSpacing%s"
-                values={{ desktop: titleSpacing, tablet: titleSpacingTablet, mobile: titleSpacingMobile }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={__("Description Spacing", "responsive-block-editor-addons")}
-                attrNameTemplate="descriptionSpacing%s"
-                values={{ desktop: descriptionSpacing, tablet: descriptionSpacingTablet, mobile: descriptionSpacingMobile }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
-            <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -1213,6 +1184,35 @@ export default class Inspector extends Component {
                 min={0}
                 max={100}
                 step={1}
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={__("Title Spacing", "responsive-block-editor-addons")}
+                attrNameTemplate="titleSpacing%s"
+                values={{ desktop: titleSpacing, tablet: titleSpacingTablet, mobile: titleSpacingMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={__("Description Spacing", "responsive-block-editor-addons")}
+                attrNameTemplate="descriptionSpacing%s"
+                values={{ desktop: descriptionSpacing, tablet: descriptionSpacingTablet, mobile: descriptionSpacingMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
               />
             </PanelBody>
           </InspectorTab>

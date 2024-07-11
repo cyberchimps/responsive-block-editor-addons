@@ -7,52 +7,47 @@ import generateCSSUnit from "../../../generateCSSUnit";
 function EditorStyles(props) {
   const {
     block_id,
-    hideWidget,
-    hideWidgetTablet,
-    hideWidgetMobile,
     blockTopMargin,
-		blockBottomMargin,
-		blockLeftMargin,
-		blockRightMargin,
-		blockTopMarginTablet,
-		blockBottomMarginTablet,
-		blockLeftMarginTablet,
-		blockRightMarginTablet,
-		blockTopMarginMobile,
-		blockBottomMarginMobile,
-		blockLeftMarginMobile,
-		blockRightMarginMobile,
-		blockTopPadding,
-		blockTopPaddingMobile,
-		blockTopPaddingTablet,
-		blockBottomPadding,
-		blockBottomPaddingMobile,
-		blockBottomPaddingTablet,
-		blockLeftPadding,
-		blockLeftPaddingMobile,
-		blockLeftPaddingTablet,
-		blockRightPadding,
-		blockRightPaddingMobile,
-		blockRightPaddingTablet,
+    blockBottomMargin,
+    blockLeftMargin,
+    blockRightMargin,
+    blockTopMarginTablet,
+    blockBottomMarginTablet,
+    blockLeftMarginTablet,
+    blockRightMarginTablet,
+    blockTopMarginMobile,
+    blockBottomMarginMobile,
+    blockLeftMarginMobile,
+    blockRightMarginMobile,
+    blockTopPadding,
+    blockTopPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPadding,
+    blockBottomPaddingMobile,
+    blockBottomPaddingTablet,
+    blockLeftPadding,
+    blockLeftPaddingMobile,
+    blockLeftPaddingTablet,
+    blockRightPadding,
+    blockRightPaddingMobile,
+    blockRightPaddingTablet,
   } = props.attributes;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
-			'padding-right': generateCSSUnit(blockRightPadding, "px"),
-			'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
-			'padding-left': generateCSSUnit(blockLeftPadding, "px"),
-			'margin-top': generateCSSUnit(blockTopMargin, "px"),
-			'margin-right': generateCSSUnit(blockRightMargin, "px"),
-			'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
-			'margin-left': generateCSSUnit(blockLeftMargin, "px"),
+      'padding-right': generateCSSUnit(blockRightPadding, "px"),
+      'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
+      'padding-left': generateCSSUnit(blockLeftPadding, "px"),
+      'margin-top': generateCSSUnit(blockTopMargin, "px"),
+      'margin-right': generateCSSUnit(blockRightMargin, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
+      'margin-left': generateCSSUnit(blockLeftMargin, "px"),
     },
   };
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -66,7 +61,6 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),
@@ -79,7 +73,7 @@ function EditorStyles(props) {
   };
 
   var styling_css = "";
-  var id = `.responsive-block-editor-addons-block-buttons.block-${props.clientId}`;
+  var id = '.wp-block-responsive-block-editor-addons-gallery-masonry';
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");

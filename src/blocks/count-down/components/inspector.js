@@ -681,31 +681,6 @@ export default class Inspector extends Component {
                 />
             </PanelBody>
             <PanelBody
-              title={__("Container Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <PanelBody
-                title={__("Padding", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewPaddingControl
-                  attrNameTemplate="container%s"
-                  resetValues={containerPaddingResetValues}
-                  {...this.props}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Margin", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewMarginControl
-                  attrNameTemplate="container%s"
-                  resetValues={containerMarginResetValues}
-                  {...this.props}
-                />
-              </PanelBody>
-            </PanelBody>
-            <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -743,6 +718,21 @@ export default class Inspector extends Component {
                 setAttributes={ setAttributes }
                 {...this.props}
               />
+            </PanelBody>
+            <PanelBody
+              title={__("Container Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                <ResponsiveNewPaddingControl
+                  attrNameTemplate="container%s"
+                  resetValues={containerPaddingResetValues}
+                  {...this.props}
+                />
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="container%s"
+                  resetValues={containerMarginResetValues}
+                  {...this.props}
+                />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

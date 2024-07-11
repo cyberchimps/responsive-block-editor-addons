@@ -104,99 +104,99 @@ const attributes = {
   },
   tabsTopPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsBottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsLeftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsRightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsTopPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsBottomPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsLeftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsRightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsTopPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsBottomPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsLeftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsRightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsTopMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsBottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsLeftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsRightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsTopMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsBottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsLeftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   tabsRightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   backgroundType: {
     type: "string",

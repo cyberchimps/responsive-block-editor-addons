@@ -235,20 +235,14 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
-              title={__("Padding", "responsive-block-editor-addons")}
-              initialOpen={false}
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={true}
             >
               <ResponsiveNewPaddingControl
                 attrNameTemplate="insta%s"
                 resetValues={instaPaddingResetValues}
                 {...this.props}
               />
-            </PanelBody>
-
-            <PanelBody
-              title={__("Margin", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
               <ResponsiveNewMarginControl
                 attrNameTemplate="insta%s"
                 resetValues={instaMarginResetValues}
