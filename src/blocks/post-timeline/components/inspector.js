@@ -1137,6 +1137,39 @@ export default class Inspector extends Component {
 				/>
             </PanelBody>
             <PanelBody
+              title={__("CTA Box Shadow", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <BoxShadowControl
+                setAttributes={setAttributes}
+                label={__("Box Shadow")}
+                boxShadowColor={{
+                  value: attributes.boxShadowColor,
+                  label: __("Color"),
+                }}
+                boxShadowHOffset={{
+                  value: attributes.boxShadowHOffset,
+                  label: __("Horizontal"),
+                }}
+                boxShadowVOffset={{
+                  value: attributes.boxShadowVOffset,
+                  label: __("Vertical"),
+                }}
+                boxShadowBlur={{
+                  value: attributes.boxShadowBlur,
+                  label: __("Blur"),
+                }}
+                boxShadowSpread={{
+                  value: attributes.boxShadowSpread,
+                  label: __("Spread"),
+                }}
+                boxShadowPosition={{
+                  value: attributes.boxShadowPosition,
+                  label: __("Position"),
+                }}
+              />
+            </PanelBody>
+            <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -1216,39 +1249,6 @@ export default class Inspector extends Component {
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
-            </PanelBody>
-            <PanelBody
-              title={__("CTA Box Shadow", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow")}
-                boxShadowColor={{
-                  value: attributes.boxShadowColor,
-                  label: __("Color"),
-                }}
-                boxShadowHOffset={{
-                  value: attributes.boxShadowHOffset,
-                  label: __("Horizontal"),
-                }}
-                boxShadowVOffset={{
-                  value: attributes.boxShadowVOffset,
-                  label: __("Vertical"),
-                }}
-                boxShadowBlur={{
-                  value: attributes.boxShadowBlur,
-                  label: __("Blur"),
-                }}
-                boxShadowSpread={{
-                  value: attributes.boxShadowSpread,
-                  label: __("Spread"),
-                }}
-                boxShadowPosition={{
-                  value: attributes.boxShadowPosition,
-                  label: __("Position"),
-                }}
-              />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

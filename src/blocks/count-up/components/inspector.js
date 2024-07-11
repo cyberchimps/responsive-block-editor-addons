@@ -700,65 +700,6 @@ export default class Inspector extends Component {
 				/>
             </PanelBody>
 
-            <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl 
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-              />
-              <ResponsiveNewMarginControl 
-                attrNameTemplate="block%s"
-                resetValues={blockMarginResetValues}
-                {...this.props}
-              />
-				<ResponsiveSpacingControl
-					title={"Icon Bottom Spacing"}
-					attrNameTemplate="iconSpacing%s"
-					values={{
-						desktop: iconSpacing,
-						tablet: iconSpacingTablet,
-						mobile: iconSpacingMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Title Bottom Margin"}
-					attrNameTemplate="titleSpace%s"
-					values={{
-						desktop: titleSpace,
-						tablet: titleSpaceTablet,
-						mobile: titleSpaceMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Number Bottom Margin"}
-					attrNameTemplate="numSpace%s"
-					values={{
-						desktop: numSpace,
-						tablet: numSpaceTablet,
-						mobile: numSpaceMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Description Bottom Margin"}
-					attrNameTemplate="contentSpace%s"
-					values={{
-						desktop: contentSpace,
-						tablet: contentSpaceTablet,
-						mobile: contentSpaceMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-            </PanelBody>
 
             <PanelColorSettings
               title={__("Color Settings", "responsive-block-editor-addons")}
@@ -810,6 +751,65 @@ export default class Inspector extends Component {
                     setAttributes={ setAttributes }
                     {...this.props}
                 />
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl 
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl 
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Icon Bottom Spacing"}
+                attrNameTemplate="iconSpacing%s"
+                values={{
+                  desktop: iconSpacing,
+                  tablet: iconSpacingTablet,
+                  mobile: iconSpacingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Number Bottom Margin"}
+                attrNameTemplate="numSpace%s"
+                values={{
+                  desktop: numSpace,
+                  tablet: numSpaceTablet,
+                  mobile: numSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Description Bottom Margin"}
+                attrNameTemplate="contentSpace%s"
+                values={{
+                  desktop: contentSpace,
+                  tablet: contentSpaceTablet,
+                  mobile: contentSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

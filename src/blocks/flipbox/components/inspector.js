@@ -1354,6 +1354,44 @@ export default class Inspector extends Component {
               )
             }
             <PanelBody
+              title={__("Border", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                <BlockBorderHelperControl
+                    attrNameTemplate="block%s"
+                    values={{
+                        radius: blockBorderRadius,
+                        style: blockBorderStyle,
+                        width: blockBorderWidth,
+                        color: blockBorderColor,
+                    }}
+                    setAttributes={setAttributes}
+                    {...this.props}
+                />
+              <BoxShadowControl
+                setAttributes={setAttributes}
+                label={__("Box Shadow", "responsive-block-editor-addons")}
+                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
+                boxShadowHOffset={{
+                  value: boxShadowHOffset,
+                  label: __("Horizontal", "responsive-block-editor-addons"),
+                }}
+                boxShadowVOffset={{
+                  value: boxShadowVOffset,
+                  label: __("Vertical", "responsive-block-editor-addons"),
+                }}
+                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
+                boxShadowSpread={{
+                  value: boxShadowSpread,
+                  label: __("Spread", "responsive-block-editor-addons"),
+                }}
+                boxShadowPosition={{
+                  value: boxShadowPosition,
+                  label: __("Position", "responsive-block-editor-addons"),
+                }}
+              />
+            </PanelBody>
+            <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -1415,44 +1453,6 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
               </PanelBody>
-            </PanelBody>
-            <PanelBody
-              title={__("Border", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-                <BlockBorderHelperControl
-                    attrNameTemplate="block%s"
-                    values={{
-                        radius: blockBorderRadius,
-                        style: blockBorderStyle,
-                        width: blockBorderWidth,
-                        color: blockBorderColor,
-                    }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                />
-              <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                boxShadowHOffset={{
-                  value: boxShadowHOffset,
-                  label: __("Horizontal", "responsive-block-editor-addons"),
-                }}
-                boxShadowVOffset={{
-                  value: boxShadowVOffset,
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                }}
-                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
-                boxShadowSpread={{
-                  value: boxShadowSpread,
-                  label: __("Spread", "responsive-block-editor-addons"),
-                }}
-                boxShadowPosition={{
-                  value: boxShadowPosition,
-                  label: __("Position", "responsive-block-editor-addons"),
-                }}
-              />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

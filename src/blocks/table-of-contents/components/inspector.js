@@ -704,48 +704,6 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
-              title={__("General", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <PanelBody
-                title={__("Width", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <RangeControl
-                  label={__("Width", "responsive-block-editor-addons")}
-                  value={blockWidth}
-                  onChange={(value) =>
-                    this.props.setAttributes({
-                      blockWidth: value,
-                    })
-                  }
-                  min={0}
-                  max={100}
-                  step={1}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Padding", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewPaddingControl
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Margin", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewMarginControl
-                  attrNameTemplate="block%s"
-                  resetValues={blockMarginResetValues}
-                  {...this.props}
-                />
-              </PanelBody>
-            </PanelBody>
-            <PanelBody
               title={__("Heading", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -3014,6 +2972,33 @@ export default class Inspector extends Component {
                   </Fragment>
                 )}
               </PanelBody>
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                <RangeControl
+                  label={__("Width", "responsive-block-editor-addons")}
+                  value={blockWidth}
+                  onChange={(value) =>
+                    this.props.setAttributes({
+                      blockWidth: value,
+                    })
+                  }
+                  min={0}
+                  max={100}
+                  step={1}
+                />
+                <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+                />
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="block%s"
+                  resetValues={blockMarginResetValues}
+                  {...this.props}
+                />
             </PanelBody>
             { isCollapsible &&
               <>

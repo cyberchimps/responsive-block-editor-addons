@@ -473,6 +473,21 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="tabs%s"
+                resetValues={tabsPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="tabs%s"
+                resetValues={tabsMarginResetValues}
+                {...this.props}
+              />
+            </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -596,26 +611,6 @@ export default class Inspector extends Component {
                   </Fragment>
                 )}
               </PanelBody>
-            </PanelBody>
-            <PanelBody
-              title={__("Margin", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewMarginControl
-                attrNameTemplate="tabs%s"
-                resetValues={tabsMarginResetValues}
-                {...this.props}
-              />
-            </PanelBody>
-            <PanelBody
-              title={__("Padding", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl
-                attrNameTemplate="tabs%s"
-                resetValues={tabsPaddingResetValues}
-                {...this.props}
-              />
             </PanelBody>
             {/* <InspectorAdvancedControls>
               <RangeControl

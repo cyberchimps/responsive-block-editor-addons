@@ -237,51 +237,51 @@ const attributes = {
 	},
   formTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formIsPaddingControlConnected: {
 		type: "boolean",
@@ -289,51 +289,51 @@ const attributes = {
 	},
   formTopPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
 };
 

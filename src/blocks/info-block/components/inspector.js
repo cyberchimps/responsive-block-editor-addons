@@ -1230,93 +1230,6 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-              />
-              <ResponsiveNewMarginControl
-                attrNameTemplate="block%s"
-                resetValues={blockMarginResetValues}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Prefix Bottom Margin"}
-                attrNameTemplate="resprefixSpace%s"
-                values={{
-                  desktop: resprefixSpace,
-                  tablet: resprefixSpaceTablet,
-                  mobile: resprefixSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Title Bottom Margin"}
-                attrNameTemplate="resheadSpace%s"
-                values={{
-                  desktop: resheadSpace,
-                  tablet: resheadSpaceTablet,
-                  mobile: resheadSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Separator Bottom Margin"}
-                attrNameTemplate="sepSpace%s"
-                values={{
-                  desktop: sepSpace,
-                  tablet: sepSpaceTablet,
-                  mobile: sepSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Description Bottom Margin"}
-                attrNameTemplate="ressubHeadSpace%s"
-                values={{
-                  desktop: ressubHeadSpace,
-                  tablet: ressubHeadSpaceTablet,
-                  mobile: ressubHeadSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              {resctaType !== "none" && (
-                <ResponsiveSpacingControl
-                  title={"CTA Bottom Margin"}
-                  attrNameTemplate="ctaBottomMargin%s"
-                  values={{
-                    desktop: ctaBottomMargin,
-                    tablet: ctaBottomMarginTablet,
-                    mobile: ctaBottomMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-              )}
-              {source_type !== "none" && (
-                <PanelBody
-                  title={__(
-                    "Image/Icon Margin",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={false}
-                >
-                  <ResponsiveNewMarginControl
-                  attrNameTemplate="icon%s"
-                  resetValues={iconMarginResetValues}
-                  {...this.props}
-                />
-                </PanelBody>
-              )}
-            </PanelBody>
-            <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -1735,6 +1648,93 @@ export default class Inspector extends Component {
                     allowReset
                   />
                 </Fragment>
+              )}
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Prefix Bottom Margin"}
+                attrNameTemplate="resprefixSpace%s"
+                values={{
+                  desktop: resprefixSpace,
+                  tablet: resprefixSpaceTablet,
+                  mobile: resprefixSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="resheadSpace%s"
+                values={{
+                  desktop: resheadSpace,
+                  tablet: resheadSpaceTablet,
+                  mobile: resheadSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Separator Bottom Margin"}
+                attrNameTemplate="sepSpace%s"
+                values={{
+                  desktop: sepSpace,
+                  tablet: sepSpaceTablet,
+                  mobile: sepSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Description Bottom Margin"}
+                attrNameTemplate="ressubHeadSpace%s"
+                values={{
+                  desktop: ressubHeadSpace,
+                  tablet: ressubHeadSpaceTablet,
+                  mobile: ressubHeadSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              {resctaType !== "none" && (
+                <ResponsiveSpacingControl
+                  title={"CTA Bottom Margin"}
+                  attrNameTemplate="ctaBottomMargin%s"
+                  values={{
+                    desktop: ctaBottomMargin,
+                    tablet: ctaBottomMarginTablet,
+                    mobile: ctaBottomMarginMobile,
+                  }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+              )}
+              {source_type !== "none" && (
+                <PanelBody
+                  title={__(
+                    "Image/Icon Margin",
+                    "responsive-block-editor-addons"
+                  )}
+                  initialOpen={false}
+                >
+                  <ResponsiveNewMarginControl
+                  attrNameTemplate="icon%s"
+                  resetValues={iconMarginResetValues}
+                  {...this.props}
+                />
+                </PanelBody>
               )}
             </PanelBody>
           </InspectorTab>

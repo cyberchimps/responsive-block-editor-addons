@@ -555,51 +555,107 @@ blockIsPaddingControlConnected: {
 },
 blockTopPadding: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockTopPaddingMobile: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockTopPaddingTablet: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockBottomPadding: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockBottomPaddingMobile: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockBottomPaddingTablet: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockLeftPadding: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockLeftPaddingMobile: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockLeftPaddingTablet: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockRightPadding: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockRightPaddingMobile: {
   type: "number",
-  default: 0,
+  default: '',
 },
 blockRightPaddingTablet: {
   type: "number",
-  default: 0,
+  default: '',
+},
+blockTopMargin: {
+  type: "number",
+  default: '',
+},
+blockBottomMargin: {
+  type: "number",
+  default: '',
+},
+blockLeftMargin: {
+  type: "number",
+  default: '',
+},
+blockRightMargin: {
+  type: "number",
+  default: '',
+},
+blockTopMarginTablet: {
+  type: "number",
+  default: '',
+},
+blockBottomMarginTablet: {
+  type: "number",
+  default: '',
+},
+blockLeftMarginTablet: {
+  type: "number",
+  default: '',
+},
+blockRightMarginTablet: {
+  type: "number",
+  default: '',
+},
+blockTopMarginMobile: {
+  type: "number",
+  default: '',
+},
+blockBottomMarginMobile: {
+  type: "number",
+  default: '',
+},
+blockLeftMarginMobile: {
+  type: "number",
+  default: '',
+},
+blockRightMarginMobile: {
+  type: "number",
+  default: '',
+},
+blockIsMarginControlConnected: {
+  type: "boolean",
+  default: false,
+},
+blockNewSpacingValuesUpdated: {
+  type: "boolean",
+  default: false,
 },
 };
 

@@ -211,99 +211,99 @@ const attributes = {
 
   topMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   bottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   leftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   rightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   topMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   bottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   leftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   rightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   topMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   bottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   leftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   rightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   topPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   bottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   leftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   rightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   topPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   bottomPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   leftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   rightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   topPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   bottomPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   leftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   rightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBorderColor: {
     type: "string",
@@ -1151,99 +1151,99 @@ const attributes = {
 	},
   formTopPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formTopMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formBottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formLeftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   formRightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
 
 };

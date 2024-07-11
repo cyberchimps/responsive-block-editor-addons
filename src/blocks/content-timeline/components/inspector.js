@@ -669,54 +669,6 @@ export default class Inspector extends Component {
                 </TabPanel>
               </PanelBody>
             </PanelBody>
-            <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveNewPaddingControl 
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-              />
-              <ResponsiveNewMarginControl 
-                attrNameTemplate="block%s"
-                resetValues={blockMarginResetValues}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Horizontal Spacing"}
-                attrNameTemplate="horizontalSpace%s"
-                values={{
-                  desktop: horizontalSpace,
-                  tablet: horizontalSpaceTablet,
-                  mobile: horizontalSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Vertical Spacing"}
-                attrNameTemplate="verticalSpace%s"
-                values={{
-                  desktop: verticalSpace,
-                  tablet: verticalSpaceTablet,
-                  mobile: verticalSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Heading Bottom Margin"}
-                attrNameTemplate="headingBottomMargin%s"
-                values={{
-                  desktop: headingBottomMargin,
-                  tablet: headingBottomMarginTablet,
-                  mobile: headingBottomMarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
 
             <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
@@ -811,6 +763,54 @@ export default class Inspector extends Component {
                 allowReset
               />
             </PanelColorSettings>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl 
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl 
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Horizontal Spacing"}
+                attrNameTemplate="horizontalSpace%s"
+                values={{
+                  desktop: horizontalSpace,
+                  tablet: horizontalSpaceTablet,
+                  mobile: horizontalSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Vertical Spacing"}
+                attrNameTemplate="verticalSpace%s"
+                values={{
+                  desktop: verticalSpace,
+                  tablet: verticalSpaceTablet,
+                  mobile: verticalSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Heading Bottom Margin"}
+                attrNameTemplate="headingBottomMargin%s"
+                values={{
+                  desktop: headingBottomMargin,
+                  tablet: headingBottomMarginTablet,
+                  mobile: headingBottomMarginMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+            </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody

@@ -983,51 +983,51 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'blockTopMargin' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockBottomMargin' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockLeftMargin' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockRightMargin' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockTopMarginTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockBottomMarginTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockLeftMarginTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockRightMarginTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockTopMarginMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockBottomMarginMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockLeftMarginMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockRightMarginMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockIsMarginControlConnected' => array(
 					'type'    => 'boolean',
@@ -1039,51 +1039,51 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'blockTopPadding' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockTopPaddingMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockTopPaddingTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockBottomPadding' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockBottomPaddingMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockBottomPaddingTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockLeftPadding' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockLeftPaddingMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockLeftPaddingTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockRightPadding' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockRightPaddingMobile' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),
 				'blockRightPaddingTablet' => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => '',
 				),         
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',

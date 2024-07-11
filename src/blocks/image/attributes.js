@@ -146,51 +146,51 @@ const attributes = {
   },
   imagetopmargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagebottommargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageleftmargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagerightmargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagetopmarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagebottommarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageleftmarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagerightmarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagetopmarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagebottommarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageleftmarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imagerightmarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   captiontopmargin: {
     type: "number",
@@ -430,51 +430,51 @@ const attributes = {
   },
   imageTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageTopMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageBottomMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageLeftMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageRightMarginTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageTopMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageBottomMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageLeftMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageRightMarginMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   newSpacingValuesUpdated: {
     type: "boolean",
@@ -490,51 +490,51 @@ const attributes = {
 	},
   imageTopPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageTopPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageTopPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageBottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageBottomPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageBottomPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageLeftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageLeftPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageLeftPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageRightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageRightPaddingMobile: {
     type: "number",
-    default: 0,
+    default: '',
   },
   imageRightPaddingTablet: {
     type: "number",
-    default: 0,
+    default: '',
   },
 };
 

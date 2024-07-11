@@ -247,6 +247,27 @@ export default class Inspector extends Component {
 					{...this.props}            
 				/>
 			</PanelBody>
+            <PanelColorSettings
+              title={__("Color Setting", "responsive-block-editor-addons")}
+              initialOpen={false}
+              colorSettings={[
+                {
+                  value: textColor,
+                  onChange: onChangeTextColor,
+                  label: __("Text Color", "responsive-block-editor-addons"),
+                },
+                {
+                  value: linkColor,
+                  onChange: onChangeLinkColor,
+                  label: __("Link Color", "responsive-block-editor-addons"),
+                },
+                {
+                  value: titleColor,
+                  onChange: onChangeTitleColor,
+                  label: __("Title Color", "responsive-block-editor-addons"),
+                },
+              ]}
+            ></PanelColorSettings>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -295,27 +316,6 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
-            <PanelColorSettings
-              title={__("Color Setting", "responsive-block-editor-addons")}
-              initialOpen={false}
-              colorSettings={[
-                {
-                  value: textColor,
-                  onChange: onChangeTextColor,
-                  label: __("Text Color", "responsive-block-editor-addons"),
-                },
-                {
-                  value: linkColor,
-                  onChange: onChangeLinkColor,
-                  label: __("Link Color", "responsive-block-editor-addons"),
-                },
-                {
-                  value: titleColor,
-                  onChange: onChangeTitleColor,
-                  label: __("Title Color", "responsive-block-editor-addons"),
-                },
-              ]}
-            ></PanelColorSettings>
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody

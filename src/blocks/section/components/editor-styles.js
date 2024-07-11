@@ -196,8 +196,6 @@ function EditorStyles(props) {
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "z-index": z_index,
       "max-width": align != "full" ? generateCSSUnit(width, "px") : "",
-      "margin-left": align != "full" ? "auto" : "",
-      "margin-right": align != "full" ? "auto" : "",
     },
     " > .responsive-section-wrap.responsive-block-editor-addons-block-section": {
       "border-width": generateCSSUnit(blockBorderWidth, "px"),

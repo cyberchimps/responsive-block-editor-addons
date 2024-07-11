@@ -304,36 +304,6 @@ export default class Inspector extends Component {
           <InspectorTab key={"style"}>
 		  	
             <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <RangeControl
-                  label={__("Row Gap", "responsive-block-editor-addons")}
-                  value={attributes.rowGap}
-                  onChange={(value) => setAttributes({ rowGap: value })}
-                  min={0}
-                  max={100}
-                />
-                <RangeControl
-                  label={__("Column Gap", "responsive-block-editor-addons")}
-                  value={attributes.columnGap}
-                  onChange={(value) => setAttributes({ columnGap: value })}
-                  min={0}
-                  max={100}
-                />
-              <ResponsiveNewPaddingControl
-                attrNameTemplate="block%s"
-                resetValues={blockPaddingResetValues}
-                {...this.props}
-              />
-              <ResponsiveNewMarginControl
-                attrNameTemplate="block%s"
-                resetValues={blockMarginResetValues}
-                {...this.props}
-              />
-      
-            </PanelBody>
-            <PanelBody
               title={__("Border", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -463,6 +433,35 @@ export default class Inspector extends Component {
                   max={100}
                 />
               </PanelBody>
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <RangeControl
+                  label={__("Row Gap", "responsive-block-editor-addons")}
+                  value={attributes.rowGap}
+                  onChange={(value) => setAttributes({ rowGap: value })}
+                  min={0}
+                  max={100}
+                />
+                <RangeControl
+                  label={__("Column Gap", "responsive-block-editor-addons")}
+                  value={attributes.columnGap}
+                  onChange={(value) => setAttributes({ columnGap: value })}
+                  min={0}
+                  max={100}
+                />
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

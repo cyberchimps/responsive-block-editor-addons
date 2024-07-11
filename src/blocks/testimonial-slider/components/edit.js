@@ -1217,8 +1217,8 @@ class edit extends Component {
           </InspectorTab>
           <InspectorTab key={"style"}>
             {TypographySettings}
-            {marginSettings}
             {background_settings}
+            {marginSettings}
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
