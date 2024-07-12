@@ -195,9 +195,11 @@ const attributes = {
   },
   blockTopPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockTopPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockBottomPadding: {
     type: "number",
@@ -205,9 +207,11 @@ const attributes = {
   },
   blockBottomPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockBottomPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockLeftPadding: {
     type: "number",
@@ -215,9 +219,11 @@ const attributes = {
   },
   blockLeftPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockLeftPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockRightPadding: {
     type: "number",
@@ -225,9 +231,11 @@ const attributes = {
   },
   blockRightPaddingMobile: {
     type: "number",
+    default: '',
   },
   blockRightPaddingTablet: {
     type: "number",
+    default: '',
   },
   blockTopMargin: {
     type: "number",
@@ -247,27 +255,35 @@ const attributes = {
   },
   blockTopMarginTablet: {
     type: "number",
+    default: '',
   },
   blockBottomMarginTablet: {
     type: "number",
+    default: '',
   },
   blockLeftMarginTablet: {
     type: "number",
+    default: '',
   },
   blockRightMarginTablet: {
     type: "number",
+    default: '',
   },
   blockTopMarginMobile: {
     type: "number",
+    default: '',
   },
   blockBottomMarginMobile: {
     type: "number",
+    default: '',
   },
   blockLeftMarginMobile: {
     type: "number",
+    default: '',
   },
   blockRightMarginMobile: {
     type: "number",
+    default: '',
   },
   topMargin: {
 	  type: "number",
@@ -376,6 +392,14 @@ const attributes = {
 	hideWidgetMobile: {
 	  type: "boolean",
 	  default: false,
+	},
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
 	},
 };
 

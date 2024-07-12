@@ -11,6 +11,8 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -169,9 +171,65 @@ export default class Inspector extends Component {
     z_index,
     z_indexMobile,
     z_indexTablet,
-      },
+    pricingTopMargin,
+    pricingBottomMargin,
+    pricingLeftMargin,
+    pricingRightMargin,
+    pricingTopMarginTablet,
+    pricingBottomMarginTablet,
+    pricingLeftMarginTablet,
+    pricingRightMarginTablet,
+    pricingTopMarginMobile,
+    pricingBottomMarginMobile,
+    pricingLeftMarginMobile,
+    pricingRightMarginMobile,
+    pricingIsMarginControlConnected,
+    pricingTopPadding,
+    pricingTopPaddingMobile,
+    pricingTopPaddingTablet,
+    pricingBottomPadding,
+    pricingBottomPaddingMobile,
+    pricingBottomPaddingTablet,
+    pricingLeftPadding,
+    pricingLeftPaddingMobile,
+    pricingLeftPaddingTablet,
+    pricingRightPadding,
+    pricingRightPaddingMobile,
+    pricingRightPaddingTablet,
+    pricingIsPaddingControlConnected,
+    },
       setAttributes,
     } = this.props;
+
+    const pricingMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+    const pricingPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
+
     const tmControls = (index) => {
       let image_val = null;
       if (pricingList[index] && typeof pricingList[index] !== "undefined") {
@@ -502,66 +560,6 @@ export default class Inspector extends Component {
               />
             </PanelBody>
             <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveSpacingControl
-                title={"Row Gap"}
-                attrNameTemplate="rowGap%s"
-                values={{
-                  desktop: rowGap,
-                  tablet: rowGapTablet,
-                  mobile: rowGapMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Column Gap"}
-                attrNameTemplate="columnGap%s"
-                values={{
-                  desktop: columnGap,
-                  tablet: columnGapTablet,
-                  mobile: columnGapMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsiveSpacingControl
-                title={"Title Bottom Margin"}
-                attrNameTemplate="titleSpace%s"
-                values={{
-                  desktop: titleSpace,
-                  tablet: titleSpaceTablet,
-                  mobile: titleSpaceMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-              <ResponsivePaddingControl
-                attrNameTemplate="block%s"
-                values={{
-                  desktopTop: blockTopPadding,
-                  desktopBottom: blockBottomPadding,
-                  desktopLeft: blockLeftPadding,
-                  desktopRight: blockRightPadding,
-
-                  tabletTop: blockTopPaddingTablet,
-                  tabletBottom: blockBottomPaddingTablet,
-                  tabletLeft: blockLeftPaddingTablet,
-                  tabletRight: blockRightPaddingTablet,
-
-                  mobileTop: blockTopPaddingMobile,
-                  mobileBottom: blockBottomPaddingMobile,
-                  mobileLeft: blockLeftPaddingMobile,
-                  mobileRight: blockRightPaddingMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
-
-            <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -616,6 +614,80 @@ export default class Inspector extends Component {
 					setAttributes={setAttributes}
 					{...this.props}
 				/>
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <PanelBody
+                title={__("Block Spacing", "responsive-block-editor-addons")}
+                initialOpen={true}
+              >
+                <ResponsiveNewPaddingControl
+                  attrNameTemplate="pricing%s"
+                  resetValues={pricingPaddingResetValues}
+                  {...this.props}
+                  />
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="pricing%s"
+                  resetValues={pricingMarginResetValues}
+                  {...this.props}
+                  />
+              </PanelBody>
+              <ResponsiveSpacingControl
+                title={"Row Gap"}
+                attrNameTemplate="rowGap%s"
+                values={{
+                  desktop: rowGap,
+                  tablet: rowGapTablet,
+                  mobile: rowGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Column Gap"}
+                attrNameTemplate="columnGap%s"
+                values={{
+                  desktop: columnGap,
+                  tablet: columnGapTablet,
+                  mobile: columnGapMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsivePaddingControl
+                attrNameTemplate="block%s"
+                values={{
+                  desktopTop: blockTopPadding,
+                  desktopBottom: blockBottomPadding,
+                  desktopLeft: blockLeftPadding,
+                  desktopRight: blockRightPadding,
+
+                  tabletTop: blockTopPaddingTablet,
+                  tabletBottom: blockBottomPaddingTablet,
+                  tabletLeft: blockLeftPaddingTablet,
+                  tabletRight: blockRightPaddingTablet,
+
+                  mobileTop: blockTopPaddingMobile,
+                  mobileBottom: blockBottomPaddingMobile,
+                  mobileLeft: blockLeftPaddingMobile,
+                  mobileRight: blockRightPaddingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

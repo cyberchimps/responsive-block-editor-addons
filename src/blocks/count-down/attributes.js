@@ -328,83 +328,99 @@ const attributes = {
   },
   containerTopMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerRightMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerBottomMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerLeftMargin: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerTopPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerRightPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerBottomPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerLeftPadding: {
     type: "number",
-    default: 0,
+    default: '',
   },
   containerTopMarginTablet: {
     type: "number",
+    default: '',
   },
   containerRightMarginTablet: {
     type: "number",
+    default: '',
   },
   containerBottomMarginTablet: {
     type: "number",
+    default: '',
   },
   containerLeftMarginTablet: {
     type: "number",
+    default: '',
   },
   containerTopPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerRightPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerBottomPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerLeftPaddingTablet: {
     type: "number",
+    default: '',
   },
   containerTopMarginMobile: {
     type: "number",
+    default: '',
   },
   containerRightMarginMobile: {
     type: "number",
+    default: '',
   },
   containerBottomMarginMobile: {
     type: "number",
+    default: '',
   },
   containerLeftMarginMobile: {
     type: "number",
+    default: '',
   },
   containerTopPaddingMobile: {
     type: "number",
+    default: '',
   },
   containerRightPaddingMobile: {
     type: "number",
+    default: '',
   },
   containerBottomPaddingMobile: {
     type: "number",
+    default: '',
   },
   containerLeftPaddingMobile: {
     type: "number",
+    default: '',
   },
   justifyItems: {
     type: "string",
@@ -441,6 +457,18 @@ const attributes = {
   },
   z_indexMobile: {
     type: "number",
+  },
+  containerIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  containerIsMarginControlConnected: {
+    type: "boolean",
+		default: false,
+	},
+  boxIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
   },
   boxPaddingTop: {
     type: "number",

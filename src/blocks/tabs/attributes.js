@@ -104,75 +104,99 @@ const attributes = {
   },
   tabsTopPadding: {
     type: "number",
+    default: '',
   },
   tabsBottomPadding: {
     type: "number",
+    default: '',
   },
   tabsLeftPadding: {
     type: "number",
+    default: '',
   },
   tabsRightPadding: {
     type: "number",
+    default: '',
   },
   tabsTopPaddingTablet: {
     type: "number",
+    default: '',
   },
   tabsBottomPaddingTablet: {
     type: "number",
+    default: '',
   },
   tabsLeftPaddingTablet: {
     type: "number",
+    default: '',
   },
   tabsRightPaddingTablet: {
     type: "number",
+    default: '',
   },
   tabsTopPaddingMobile: {
     type: "number",
+    default: '',
   },
   tabsBottomPaddingMobile: {
     type: "number",
+    default: '',
   },
   tabsLeftPaddingMobile: {
     type: "number",
+    default: '',
   },
   tabsRightPaddingMobile: {
     type: "number",
+    default: '',
   },
   tabsTopMargin: {
     type: "number",
+    default: '',
   },
   tabsBottomMargin: {
     type: "number",
+    default: '',
   },
   tabsLeftMargin: {
     type: "number",
+    default: '',
   },
   tabsRightMargin: {
     type: "number",
+    default: '',
   },
   tabsTopMarginTablet: {
     type: "number",
+    default: '',
   },
   tabsBottomMarginTablet: {
     type: "number",
+    default: '',
   },
   tabsLeftMarginTablet: {
     type: "number",
+    default: '',
   },
   tabsRightMarginTablet: {
     type: "number",
+    default: '',
   },
   tabsTopMarginMobile: {
     type: "number",
+    default: '',
   },
   tabsBottomMarginMobile: {
     type: "number",
+    default: '',
   },
   tabsLeftMarginMobile: {
     type: "number",
+    default: '',
   },
   tabsRightMarginMobile: {
     type: "number",
+    default: '',
   },
   backgroundType: {
     type: "string",
@@ -308,6 +332,14 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  tabsIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  tabsIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
 };
 
 export default attributes;

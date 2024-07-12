@@ -44,18 +44,6 @@ function EditorStyles(props) {
     imageboxShadowSpread,
     imageboxShadowColor,
     imageboxShadowPosition,
-    imagetopmargin,
-    imagebottommargin,
-    imageleftmargin,
-    imagerightmargin,
-    imagetopmarginTablet,
-    imagebottommarginTablet,
-    imageleftmarginTablet,
-    imagerightmarginTablet,
-    imagetopmarginMobile,
-    imagebottommarginMobile,
-    imageleftmarginMobile,
-    imagerightmarginMobile,
     imageboxShadowHoverColor,
     imageboxShadowHoverHOffset,
     imageboxShadowHoverVOffset,
@@ -107,6 +95,30 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    imageTopMargin,
+    imageBottomMargin,
+    imageLeftMargin,
+    imageRightMargin,
+    imageTopMarginTablet,
+    imageBottomMarginTablet,
+    imageLeftMarginTablet,
+    imageRightMarginTablet,
+    imageTopMarginMobile,
+    imageBottomMarginMobile,
+    imageLeftMarginMobile,
+    imageRightMarginMobile,
+    imageTopPadding,
+    imageTopPaddingMobile,
+    imageTopPaddingTablet,
+    imageBottomPadding,
+    imageBottomPaddingMobile,
+    imageBottomPaddingTablet,
+    imageLeftPadding,
+    imageLeftPaddingMobile,
+    imageLeftPaddingTablet,
+    imageRightPadding,
+    imageRightPaddingMobile,
+    imageRightPaddingTablet,
   } = props.attributes;
   var base_url = window.location.origin;
   var filtervalue =
@@ -158,6 +170,14 @@ function EditorStyles(props) {
   var selectors = {
     "": {
         "opacity": hideWidget ? 0.2 : 1,
+        "padding-top": generateCSSUnit(imageTopPadding, "px"),
+        "padding-bottom": generateCSSUnit(imageBottomPadding, "px"),
+        "padding-left": generateCSSUnit(imageLeftPadding, "px"),
+        "padding-right": generateCSSUnit(imageRightPadding, "px"),
+        "margin-top": generateCSSUnit(imageTopMargin, "px"),
+        "margin-bottom": generateCSSUnit(imageBottomMargin, "px"),
+        "margin-left": generateCSSUnit(imageLeftMargin, "px"),
+        "margin-right": generateCSSUnit(imageRightMargin, "px"),
     },
     " .img-main-block": {
       "text-align": imageAlignment,
@@ -183,10 +203,6 @@ function EditorStyles(props) {
         " " +
         imageboxShadowColor,
       "object-fit": imageObjectFit,
-      "margin-top": generateCSSUnit(imagetopmargin, "px"),
-      "margin-bottom": generateCSSUnit(imagebottommargin, "px"),
-      "margin-left": generateCSSUnit(imageleftmargin, "px"),
-      "margin-right": generateCSSUnit(imagerightmargin, "px"),
       "-webkit-mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
       "mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
       "-webkit-mask-position": MaskPosition,
@@ -263,6 +279,14 @@ function EditorStyles(props) {
   var tablet_selectors = {
     "": {
         "opacity": hideWidgetTablet ? 0.2 : 1,
+        "padding-top": generateCSSUnit(imageTopPaddingTablet, "px"),
+        "padding-bottom": generateCSSUnit(imageBottomPaddingTablet, "px"),
+        "padding-left": generateCSSUnit(imageLeftPaddingTablet, "px"),
+        "padding-right": generateCSSUnit(imageRightPaddingTablet, "px"),
+        "margin-top": generateCSSUnit(imageTopMarginTablet, "px"),
+        "margin-bottom": generateCSSUnit(imageBottomMarginTablet, "px"),
+        "margin-left": generateCSSUnit(imageLeftMarginTablet, "px"),
+        "margin-right": generateCSSUnit(imageRightMarginTablet, "px"),
     },
     " .img-main-block": {
       "text-align": imageAlignmentTablet,
@@ -286,10 +310,6 @@ function EditorStyles(props) {
         imageboxShadowColor +
         " " +
         "!important",
-      "margin-top": generateCSSUnit(imagetopmarginTablet, "px"),
-      "margin-bottom": generateCSSUnit(imagebottommarginTablet, "px"),
-      "margin-left": generateCSSUnit(imageleftmarginTablet, "px"),
-      "margin-right": generateCSSUnit(imagerightmarginTablet, "px"),
     },
     " .responsive-img-heading": {
     "font-size":generateCSSUnit(layoverHeadingFontSizeTablet,"px"),
@@ -311,6 +331,14 @@ function EditorStyles(props) {
   var mobile_selectors = {
     "": {
         "opacity": hideWidgetMobile ? 0.2 : 1,
+        "padding-top": generateCSSUnit(imageTopPaddingMobile, "px"),
+        "padding-bottom": generateCSSUnit(imageBottomPaddingMobile, "px"),
+        "padding-left": generateCSSUnit(imageLeftPaddingMobile, "px"),
+        "padding-right": generateCSSUnit(imageRightPaddingMobile, "px"),
+        "margin-top": generateCSSUnit(imageTopMarginMobile, "px"),
+        "margin-bottom": generateCSSUnit(imageBottomMarginMobile, "px"),
+        "margin-left": generateCSSUnit(imageLeftMarginMobile, "px"),
+        "margin-right": generateCSSUnit(imageRightMarginMobile, "px"),
     },
     " .img-main-block": {
       "text-align": imageAlignmentMobile,
@@ -334,10 +362,6 @@ function EditorStyles(props) {
         imageboxShadowColor +
         " " +
         "!important",
-      "margin-top": generateCSSUnit(imagetopmarginMobile, "px"),
-      "margin-bottom": generateCSSUnit(imagebottommarginMobile, "px"),
-      "margin-left": generateCSSUnit(imageleftmarginMobile, "px"),
-      "margin-right": generateCSSUnit(imagerightmarginMobile, "px"),
     },
     " .responsive-img-heading": {
       "font-size":generateCSSUnit(layoverHeadingFontSizeMobile,"px"),

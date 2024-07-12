@@ -12,6 +12,8 @@ import { SortableContainer, SortableElement, SortableHandle } from 'react-sortab
 import arrayMove from 'array-move';
 import { createBlock } from '@wordpress/blocks';
 import { tablet, mobile, desktop } from '@wordpress/icons';
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Import block components
 const { InspectorControls, PanelColorSettings, AlignmentToolbar } = wp.blockEditor
@@ -130,10 +132,65 @@ export default class Inspector extends Component {
         z_index,
         z_indexMobile,
         z_indexTablet,
+        formTopPadding,
+        formTopPaddingMobile,
+        formTopPaddingTablet,
+        formBottomPadding,
+        formBottomPaddingMobile,
+        formBottomPaddingTablet,
+        formLeftPadding,
+        formLeftPaddingMobile,
+        formLeftPaddingTablet,
+        formRightPadding,
+        formRightPaddingMobile,
+        formRightPaddingTablet,
+        formTopMargin,
+        formTopMarginMobile,
+        formTopMarginTablet,
+        formBottomMargin,
+        formBottomMarginMobile,
+        formBottomMarginTablet,
+        formLeftMargin,
+        formLeftMarginMobile,
+        formLeftMarginTablet,
+        formRightMargin,
+        formRightMarginMobile,
+        formRightMarginTablet,
+        formIsPaddingControlConnected,
+        formIsMarginControlConnected,
       },
       setAttributes,
       clientId
     } = this.props;
+
+    const formPaddingResetValues = {
+      paddingTop: 0,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 0,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 0,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const formMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
 
     const inputFieldActions = {
       select: ( blockId ) => {
@@ -691,6 +748,21 @@ export default class Inspector extends Component {
                 />
               </div>
 
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="form%s"
+                resetValues={formPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="form%s"
+                resetValues={formMarginResetValues}
+                {...this.props}
+              />
             </PanelBody>
 
           </>}

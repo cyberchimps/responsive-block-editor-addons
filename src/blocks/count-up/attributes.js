@@ -198,13 +198,15 @@ const attributes = {
   },
   contentSpacing: {
     type: "number",
-    default: 0,
+    default: '',
   },
   contentSpacingTablet: {
 	  type: "number",
+    default: '',
   },
   contentSpacingMobile: {
 	  type: "number",
+    default: '',
   },
   iconSpacing: {
     type: "number",
@@ -260,5 +262,113 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockTopPadding: {
+    type: "number",
+    default: '',
+  },
+  blockTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPadding: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPadding: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightPadding: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  blockTopMargin: {
+    type: "number",
+    default: '',
+  },
+  blockTopMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockTopMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMargin: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMargin: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightMargin: {
+    type: "number",
+    default: '',
+  },
+  blockRightMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockNewSpacingValuesUpdated: {
+    type: "boolean",
+    default: false,
+  }
 };
 export default attributes;

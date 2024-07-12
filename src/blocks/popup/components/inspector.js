@@ -10,6 +10,8 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import { __experimentalText as Text } from '@wordpress/components';
 import presets from "./button-presets";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -171,10 +173,64 @@ export default class Inspector extends Component {
         hideWidget,
         hideWidgetTablet,
         hideWidgetMobile,
+        buttonTopMargin,
+        buttonBottomMargin,
+        buttonLeftMargin,
+        buttonRightMargin,
+        buttonTopMarginTablet,
+        buttonBottomMarginTablet,
+        buttonLeftMarginTablet,
+        buttonRightMarginTablet,
+        buttonTopMarginMobile,
+        buttonBottomMarginMobile,
+        buttonLeftMarginMobile,
+        buttonRightMarginMobile,
+        buttonTopPadding,
+        buttonTopPaddingMobile,
+        buttonTopPaddingTablet,
+        buttonBottomPadding,
+        buttonBottomPaddingMobile,
+        buttonBottomPaddingTablet,
+        buttonLeftPadding,
+        buttonLeftPaddingMobile,
+        buttonLeftPaddingTablet,
+        buttonRightPadding,
+        buttonRightPaddingMobile,
+        buttonRightPaddingTablet,
+        buttonIsMarginControlConnected,
+        buttonIsPaddingControlConnected,
       },
       setAttributes,
     } = this.props;
 
+    const buttonMarginResetValues = {
+			marginTop: 0,
+			marginRight: 0,
+			marginBottom: 0,
+			marginLeft: 0,
+			marginTabletTop: 0,
+			marginTabletRight: 0,
+			marginTabletBottom: 0,
+			marginTabletLeft: 0,
+			marginMobileTop: 0,
+			marginMobileRight: 0,
+			marginMobileBottom: 0,
+			marginMobileLeft: 0,
+		}
+		const buttonPaddingResetValues = {
+			paddingTop: 0,
+			paddingRight: 0,
+			paddingBottom: 0,
+			paddingLeft: 0,
+			paddingTabletTop: 0,
+			paddingTabletRight: 0,
+			paddingTabletBottom: 0,
+			paddingTabletLeft: 0,
+			paddingMobileTop: 0,
+			paddingMobileRight: 0,
+			paddingMobileBottom: 0,
+			paddingMobileLeft: 0,
+		}
     return (
       <InspectorControls key="inspector">
         {isPopupVariantSelected &&
@@ -1212,6 +1268,20 @@ export default class Inspector extends Component {
                   />
                 </div>
               </PanelBody>
+              {popupTrigger === 'click' &&
+                <PanelBody title={__("Spacing", "responsive-block-editor-addons")} initialOpen={false}>
+                  <ResponsiveNewPaddingControl
+                    attrNameTemplate="button%s"
+                    resetValues={buttonPaddingResetValues}
+                    {...this.props}
+                  />
+                  <ResponsiveNewMarginControl
+                    attrNameTemplate="button%s"
+                    resetValues={buttonMarginResetValues}
+                    {...this.props}
+                  />
+                </PanelBody>
+              }
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <PanelBody

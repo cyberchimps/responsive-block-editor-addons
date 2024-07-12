@@ -335,6 +335,54 @@ const attributes = {
     type: "number",
     default: 20,
   },
+  blockTopMargin: {
+    type: "number",
+    default: '',
+  },
+  blockTopMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockTopMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMargin: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMargin: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  blockRightMargin: {
+    type: "number",
+    default: '',
+  },
+  blockRightMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  blockRightMarginTablet: {
+    type: "number",
+    default: '',
+  },
   backgroundImagePosition: {
     type: "string",
     default: "center center",
@@ -408,6 +456,14 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
   buttonBackgroundColor: {
 	type: "string",
 	default: "empty",

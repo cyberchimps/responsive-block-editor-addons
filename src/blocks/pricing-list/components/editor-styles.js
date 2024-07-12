@@ -67,6 +67,30 @@ function EditorStyles(props) {
   hideWidget,
   hideWidgetTablet,
   hideWidgetMobile,
+  pricingTopMargin,
+  pricingBottomMargin,
+  pricingLeftMargin,
+  pricingRightMargin,
+  pricingTopMarginTablet,
+  pricingBottomMarginTablet,
+  pricingLeftMarginTablet,
+  pricingRightMarginTablet,
+  pricingTopMarginMobile,
+  pricingBottomMarginMobile,
+  pricingLeftMarginMobile,
+  pricingRightMarginMobile,
+  pricingTopPadding,
+  pricingTopPaddingMobile,
+  pricingTopPaddingTablet,
+  pricingBottomPadding,
+  pricingBottomPaddingMobile,
+  pricingBottomPaddingTablet,
+  pricingLeftPadding,
+  pricingLeftPaddingMobile,
+  pricingLeftPaddingTablet,
+  pricingRightPadding,
+  pricingRightPaddingMobile,
+  pricingRightPaddingTablet,
   } = props.attributes;
 
   var align = contentAlign;
@@ -79,6 +103,14 @@ function EditorStyles(props) {
   var selectors = {
     " ": {
       "opacity": hideWidget? 0.2 : 1,
+      'padding-top': generateCSSUnit(pricingTopPadding, "px"),
+      'padding-right': generateCSSUnit(pricingRightPadding, "px"),
+      'padding-bottom': generateCSSUnit(pricingBottomPadding, "px"),
+      'padding-left': generateCSSUnit(pricingLeftPadding, "px"),
+      'margin-top': generateCSSUnit(pricingTopMargin, "px"),
+      'margin-right': generateCSSUnit(pricingRightMargin, "px"),
+      'margin-bottom': generateCSSUnit(pricingBottomMargin, "px"),
+      'margin-left': generateCSSUnit(pricingLeftMargin, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-wrap": {
       "margin-bottom": generateCSSUnit(rowGap, "px"),
@@ -138,6 +170,14 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " ": {
       "opacity": hideWidgetMobile? 0.2 : 1,
+      'padding-top': generateCSSUnit(pricingTopPaddingMobile, "px"),
+      'padding-right': generateCSSUnit(pricingRightPaddingMobile, "px"),
+      'padding-bottom': generateCSSUnit(pricingBottomPaddingMobile, "px"),
+      'padding-left': generateCSSUnit(pricingLeftPaddingMobile, "px"),
+      'margin-top': generateCSSUnit(pricingTopMarginMobile, "px"),
+      'margin-right': generateCSSUnit(pricingRightMarginMobile, "px"),
+      'margin-bottom': generateCSSUnit(pricingBottomMarginMobile, "px"),
+      'margin-left': generateCSSUnit(pricingLeftMarginMobile, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-wrap": {
       "margin-bottom": generateCSSUnit(rowGapMobile, "px"),
@@ -165,6 +205,14 @@ function EditorStyles(props) {
   var tablet_selectors = {
     " ": {
       "opacity": hideWidgetTablet? 0.2 : 1,
+      'padding-top': generateCSSUnit(pricingTopPaddingTablet, "px"),
+      'padding-right': generateCSSUnit(pricingRightPaddingTablet, "px"),
+      'padding-bottom': generateCSSUnit(pricingBottomPaddingTablet, "px"),
+      'padding-left': generateCSSUnit(pricingLeftPaddingTablet, "px"),
+      'margin-top': generateCSSUnit(pricingTopMarginTablet, "px"),
+      'margin-right': generateCSSUnit(pricingRightMarginTablet, "px"),
+      'margin-bottom': generateCSSUnit(pricingBottomMarginTablet, "px"),
+      'margin-left': generateCSSUnit(pricingLeftMarginTablet, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-wrap": {
       "margin-bottom": generateCSSUnit(rowGapTablet, "px"),

@@ -4,12 +4,12 @@
 import InspectorTabs from "../../../components/InspectorTabs";
 import InspectorTab from "../../../components/InspectorTab";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
-import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 
 // Setup the block
@@ -128,11 +128,43 @@ export default class Inspector extends Component {
         hideWidget,
         hideWidgetTablet,
         hideWidgetMobile,
+        tabsIsMarginControlConnected,
+        tabsIsPaddingControlConnected,
       },
       setAttributes,
       deviceType,
       className,
     } = this.props;
+
+    const tabsMarginResetValues = {
+      marginTop: 10,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 10,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 10,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+
+    const tabsPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
 
     const backgroundTypeOptions = [
       { value: "none", label: __("None", "responsive-block-editor-addons") },
@@ -441,6 +473,21 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="tabs%s"
+                resetValues={tabsPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="tabs%s"
+                resetValues={tabsMarginResetValues}
+                {...this.props}
+              />
+            </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -564,58 +611,6 @@ export default class Inspector extends Component {
                   </Fragment>
                 )}
               </PanelBody>
-            </PanelBody>
-            <PanelBody
-              title={__("Margin", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsiveMarginControl
-                attrNameTemplate="tabs%s"
-                values={{
-                  desktopTop: tabsTopMargin,
-                  desktopBottom: tabsBottomMargin,
-                  desktopLeft: tabsLeftMargin,
-                  desktopRight: tabsRightMargin,
-
-                  tabletTop: tabsTopMarginTablet,
-                  tabletBottom: tabsBottomMarginTablet,
-                  tabletLeft: tabsLeftMarginTablet,
-                  tabletRight: tabsRightMarginTablet,
-
-                  mobileTop: tabsTopMarginMobile,
-                  mobileBottom: tabsBottomMarginMobile,
-                  mobileLeft: tabsLeftMarginMobile,
-                  mobileRight: tabsRightMarginMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
-            <PanelBody
-              title={__("Padding", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ResponsivePaddingControl
-                attrNameTemplate="tabs%s"
-                values={{
-                  desktopTop: tabsTopPadding,
-                  desktopBottom: tabsBottomPadding,
-                  desktopLeft: tabsLeftPadding,
-                  desktopRight: tabsRightPadding,
-
-                  tabletTop: tabsTopPaddingTablet,
-                  tabletBottom: tabsBottomPaddingTablet,
-                  tabletLeft: tabsLeftPaddingTablet,
-                  tabletRight: tabsRightPaddingTablet,
-
-                  mobileTop: tabsTopPaddingMobile,
-                  mobileBottom: tabsBottomPaddingMobile,
-                  mobileLeft: tabsLeftPaddingMobile,
-                  mobileRight: tabsRightPaddingMobile,
-                }}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
             </PanelBody>
             {/* <InspectorAdvancedControls>
               <RangeControl

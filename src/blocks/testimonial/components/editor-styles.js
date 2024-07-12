@@ -96,6 +96,30 @@ function EditorStyles(props) {
   hideWidget,
   hideWidgetTablet,
   hideWidgetMobile,
+  blockTopMargin,
+  blockBottomMargin,
+  blockLeftMargin,
+  blockRightMargin,
+  blockTopMarginTablet,
+  blockBottomMarginTablet,
+  blockLeftMarginTablet,
+  blockRightMarginTablet,
+  blockTopMarginMobile,
+  blockBottomMarginMobile,
+  blockLeftMarginMobile,
+  blockRightMarginMobile,
+  blockTopPadding,
+  blockTopPaddingMobile,
+  blockTopPaddingTablet,
+  blockBottomPadding,
+  blockBottomPaddingMobile,
+  blockBottomPaddingTablet,
+  blockLeftPadding,
+  blockLeftPaddingMobile,
+  blockLeftPaddingTablet,
+  blockRightPadding,
+  blockRightPaddingMobile,
+  blockRightPaddingTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -129,6 +153,14 @@ function EditorStyles(props) {
   var selectors = {
     " ":{
       "opacity": hideWidget? 0.2 : 1,
+      'padding-top': generateCSSUnit(blockTopPadding, "px"),
+			'padding-right': generateCSSUnit(blockRightPadding, "px"),
+			'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
+			'padding-left': generateCSSUnit(blockLeftPadding, "px"),
+			'margin-top': generateCSSUnit(blockTopMargin, "px"),
+			'margin-right': generateCSSUnit(blockRightMargin, "px"),
+			'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
+			'margin-left': generateCSSUnit(blockLeftMargin, "px"),
     },
     " .wp-block-responsive-block-editor-addons-testimonial:last-child": {
       "margin-bottom" : '0 !important',
@@ -197,6 +229,14 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " ":{
       "opacity": hideWidgetMobile? 0.2 : 1,
+      'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
+      'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
+      'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
+      'padding-left': generateCSSUnit(blockLeftPaddingMobile, "px"),
+      'margin-top': generateCSSUnit(blockTopMarginMobile, "px"),
+      'margin-right': generateCSSUnit(blockRightMarginMobile, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMarginMobile, "px"),
+      'margin-left': generateCSSUnit(blockLeftMarginMobile, "px"),
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingMobile, "px"),
@@ -234,6 +274,14 @@ function EditorStyles(props) {
   var tablet_selectors = {
     " ":{
       "opacity": hideWidgetTablet? 0.2 : 1,
+      'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
+      'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
+      'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),
+      'padding-left': generateCSSUnit(blockLeftPaddingTablet, "px"),
+      'margin-top': generateCSSUnit(blockTopMarginTablet, "px"),
+      'margin-right': generateCSSUnit(blockRightMarginTablet, "px"),
+      'margin-bottom': generateCSSUnit(blockBottomMarginTablet, "px"),
+      'margin-left': generateCSSUnit(blockLeftMarginTablet, "px"),
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       padding: generateCSSUnit(paddingTablet, "px"),

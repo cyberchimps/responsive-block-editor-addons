@@ -255,6 +255,114 @@ const attributes = {
   z_indexMobile: {
     type: "number",
   },
+  blockIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  pricingTopMargin: {
+    type: "number",
+    default: '',
+  },
+  pricingBottomMargin: {
+    type: "number",
+    default: '',
+  },
+  pricingLeftMargin: {
+    type: "number",
+    default: '',
+  },
+  pricingRightMargin: {
+    type: "number",
+    default: '',
+  },
+  pricingTopMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  pricingBottomMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  pricingLeftMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  pricingRightMarginTablet: {
+    type: "number",
+    default: '',
+  },
+  pricingTopMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingBottomMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingLeftMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingRightMarginMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingIsMarginControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  pricingIsPaddingControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  pricingTopPadding: {
+    type: "number",
+    default: '',
+  },
+  pricingTopPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingTopPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  pricingBottomPadding: {
+    type: "number",
+    default: '',
+  },
+  pricingBottomPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingBottomPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  pricingLeftPadding: {
+    type: "number",
+    default: '',
+  },
+  pricingLeftPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingLeftPaddingTablet: {
+    type: "number",
+    default: '',
+  },
+  pricingRightPadding: {
+    type: "number",
+    default: '',
+  },
+  pricingRightPaddingMobile: {
+    type: "number",
+    default: '',
+  },
+  pricingRightPaddingTablet: {
+    type: "number",
+    default: '',
+  },
 };
 
 export default attributes;

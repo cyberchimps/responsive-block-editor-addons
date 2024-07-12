@@ -78,6 +78,18 @@ function EditorStyles(props) {
     blockRightPadding,
     blockRightPaddingMobile,
     blockRightPaddingTablet,
+    blockTopMargin,
+    blockTopMarginMobile,
+    blockTopMarginTablet,
+    blockBottomMargin,
+    blockBottomMarginMobile,
+    blockBottomMarginTablet,
+    blockLeftMargin,
+    blockLeftMarginMobile,
+    blockLeftMarginTablet,
+    blockRightMargin,
+    blockRightMarginMobile,
+    blockRightMarginTablet,
     backgroundImagePosition,
     backgroundImageRepeat,
     backgroundImageSize,
@@ -224,6 +236,10 @@ function EditorStyles(props) {
       "padding-bottom": bottomPadding !== 999 && blockBottomPadding === 20 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(blockBottomPadding, "px"), // For compatibility with v1.3.2.
       "padding-left": leftPadding !== 999 && blockLeftPadding === 20 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(blockLeftPadding, "px"), // For compatibility with v1.3.2.
       "padding-right": rightPadding !== 999 && blockRightPadding === 20 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(blockRightPadding, "px"), // For compatibility with v1.3.2.
+      "margin-top": generateCSSUnit(blockTopMargin, "px"),
+      "margin-right": generateCSSUnit(blockRightMargin, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
+      "margin-left": generateCSSUnit(blockLeftMargin, "px"),
     },
 
     " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {
@@ -292,6 +308,10 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-text": {
       "margin-bottom": generateCSSUnit(subtitleSpaceMobile, "px"),
@@ -323,6 +343,10 @@ function EditorStyles(props) {
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),
+      "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
+      "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
+      "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
+      "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-text": {
       "margin-bottom": generateCSSUnit(subtitleSpaceTablet, "px"),

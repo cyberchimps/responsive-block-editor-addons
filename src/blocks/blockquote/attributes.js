@@ -97,6 +97,54 @@ const attributes = {
     type: "number",
     default: 70,
   },
+  blockTopMargin: {
+    type: "number",
+    default: '',
+  },
+  blockBottomMargin: {
+    type: "number",
+    default: '',
+  },
+  blockLeftMargin: {
+    type: "number",
+    default: '',
+  },
+  blockRightMargin: {
+    type: "number",
+    default: ''
+  },
+  blockTopMarginMobile: {
+    type: "number",
+    default: ''
+  },
+  blockBottomMarginMobile: {
+    type: "number",
+    default: ''
+  },
+  blockLeftMarginMobile: {
+    type: "number",
+    default: ''
+  },
+  blockRightMarginMobile: {
+    type: "number",
+    default: ''
+  },
+  blockTopMarginTablet: {
+    type: "number",
+    default: ''
+  },
+  blockBottomMarginTablet: {
+    type: "number",
+    default: ''
+  },
+  blockLeftMarginTablet: {
+    type: "number",
+    default: ''
+  },
+  blockRightMarginTablet: {
+    type: "number",
+    default: ''
+  },
   quoteHposition: {
     type: "number",
     default: 30,
@@ -282,6 +330,18 @@ const attributes = {
 	type: "number",
 	default: 999,
   }, // For compatibility with v1.3.2.
+  textIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  blockIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+  blockIsMarginControlConnected: {
+    type: "boolean",
+    default: false,
+  }
 };
 
 export default attributes;

@@ -13,6 +13,8 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -116,9 +118,86 @@ export default class Inspector extends Component {
     z_index,
     z_indexTablet,
     z_indexMobile,
+    blockTopPadding,
+    blockTopPaddingMobile,
+    blockTopPaddingTablet,
+    blockBottomPadding,
+    blockBottomPaddingMobile,
+    blockBottomPaddingTablet,
+    blockLeftPadding,
+    blockLeftPaddingMobile,
+    blockLeftPaddingTablet,
+    blockRightPadding,
+    blockRightPaddingMobile,
+    blockRightPaddingTablet,
+    blockTopMargin,
+    blockTopMarginMobile,
+    blockTopMarginTablet,
+    blockBottomMargin,
+    blockBottomMarginMobile,
+    blockBottomMarginTablet,
+    blockLeftMargin,
+    blockLeftMarginMobile,
+    blockLeftMarginTablet,
+    blockRightMargin,
+    blockRightMarginMobile,
+    blockRightMarginTablet,
+    blockIsPaddingControlConnected,
+    blockIsMarginControlConnected,
+    blockNewSpacingValuesUpdated,
       },
       setAttributes,
     } = this.props;
+
+    const blockPaddingResetValues = {
+      paddingTop: 5,
+      paddingRight: 5,
+      paddingBottom: 5,
+      paddingLeft: 5,
+      paddingTabletTop: 5,
+      paddingTabletRight: 5,
+      paddingTabletBottom: 5,
+      paddingTabletLeft: 5,
+      paddingMobileTop: 5,
+      paddingMobileRight: 5,
+      paddingMobileBottom: 5,
+      paddingMobileLeft: 5,
+    }
+    const blockMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
+
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!blockNewSpacingValuesUpdated) {
+     this.props.setAttributes(
+       {
+         blockTopPadding:          contentSpacing !== undefined ? contentSpacing : blockTopPadding,
+         blockRightPadding:        contentSpacing !== undefined ? contentSpacing : blockRightPadding,
+         blockBottomPadding:       contentSpacing !== undefined ? contentSpacing : blockBottomPadding,
+         blockLeftPadding:         contentSpacing !== undefined ? contentSpacing : blockLeftPadding,
+         blockTopPaddingTablet:    contentSpacingTablet !== undefined ? contentSpacingTablet : blockTopPaddingTablet,
+         blockRightPaddingTablet:  contentSpacingTablet !== undefined ? contentSpacingTablet : blockRightPaddingTablet,
+         blockBottomPaddingTablet: contentSpacingTablet !== undefined ? contentSpacingTablet : blockBottomPaddingTablet,
+         blockLeftPaddingTablet:   contentSpacingTablet !== undefined ? contentSpacingTablet : blockLeftPaddingTablet,
+         blockTopPaddingMobile:    contentSpacingMobile !== undefined ? contentSpacingMobile : blockTopPaddingMobile,
+         blockRightPaddingMobile:  contentSpacingMobile !== undefined ? contentSpacingMobile : blockRightPaddingMobile,
+         blockBottomPaddingMobile: contentSpacingMobile !== undefined ? contentSpacingMobile : blockBottomPaddingMobile,
+         blockLeftPaddingMobile:   contentSpacingMobile !== undefined ? contentSpacingMobile : blockLeftPaddingMobile,
+       }
+     )
+    }
+        this.props.setAttributes({blockNewSpacingValuesUpdated: true});
 
     var data_copy = [...countUp];
 
@@ -621,66 +700,6 @@ export default class Inspector extends Component {
 				/>
             </PanelBody>
 
-            <PanelBody
-              title={__("Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-				<ResponsiveSpacingControl
-					title={"Content Padding"}
-					attrNameTemplate="contentSpacing%s"
-					values={{
-						desktop: contentSpacing,
-						tablet: contentSpacingTablet,
-						mobile: contentSpacingMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Icon Bottom Spacing"}
-					attrNameTemplate="iconSpacing%s"
-					values={{
-						desktop: iconSpacing,
-						tablet: iconSpacingTablet,
-						mobile: iconSpacingMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Title Bottom Margin"}
-					attrNameTemplate="titleSpace%s"
-					values={{
-						desktop: titleSpace,
-						tablet: titleSpaceTablet,
-						mobile: titleSpaceMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Number Bottom Margin"}
-					attrNameTemplate="numSpace%s"
-					values={{
-						desktop: numSpace,
-						tablet: numSpaceTablet,
-						mobile: numSpaceMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-				<ResponsiveSpacingControl
-					title={"Description Bottom Margin"}
-					attrNameTemplate="contentSpace%s"
-					values={{
-						desktop: contentSpace,
-						tablet: contentSpaceTablet,
-						mobile: contentSpaceMobile,
-					}}
-					setAttributes={setAttributes}
-					{...this.props}
-				/>
-            </PanelBody>
 
             <PanelColorSettings
               title={__("Color Settings", "responsive-block-editor-addons")}
@@ -732,6 +751,65 @@ export default class Inspector extends Component {
                     setAttributes={ setAttributes }
                     {...this.props}
                 />
+            </PanelBody>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ResponsiveNewPaddingControl 
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl 
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Icon Bottom Spacing"}
+                attrNameTemplate="iconSpacing%s"
+                values={{
+                  desktop: iconSpacing,
+                  tablet: iconSpacingTablet,
+                  mobile: iconSpacingMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Bottom Margin"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Number Bottom Margin"}
+                attrNameTemplate="numSpace%s"
+                values={{
+                  desktop: numSpace,
+                  tablet: numSpaceTablet,
+                  mobile: numSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Description Bottom Margin"}
+                attrNameTemplate="contentSpace%s"
+                values={{
+                  desktop: contentSpace,
+                  tablet: contentSpaceTablet,
+                  mobile: contentSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>

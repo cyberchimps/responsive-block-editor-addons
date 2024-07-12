@@ -7,12 +7,12 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import BoxShadowControl from "../../../utils/components/box-shadow";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
-import ResponsivePaddingControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsivePaddingControl";
-import ResponsiveMarginControl from "../../../settings-components/ResponsiveSpacingSettings/ResponsiveMarginControl";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -189,9 +189,55 @@ export default class Inspector extends Component {
         z_index,
         z_indexTablet,
         z_indexMobile,
+        containerIsPaddingControlConnected,
+        containerIsMarginControlConnected,
+        boxIsPaddingControlConnected,
       },
       setAttributes,
     } = this.props;
+
+    const containerPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const boxPaddingResetValues = {
+      paddingTop: 10,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 10,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 10,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    }
+    const containerMarginResetValues = {
+      marginTop: 10,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 10,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 10,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    }
 
     let dateDefault = new Date();
     dateDefault.setDate(dateDefault.getDate() + 30);
@@ -433,25 +479,9 @@ export default class Inspector extends Component {
                   max={100}
                 />
               )}
-              <ResponsivePaddingControl
+              <ResponsiveNewPaddingControl
                 attrNameTemplate="box%s"
-                values={{
-                  desktopTop: boxTopPadding === 0 && boxPaddingTop !== 999 ?  boxPaddingTop : boxTopPadding,
-                  desktopBottom: boxBottomPadding == 10 && boxPaddingBottom !== 999 ? boxPaddingBottom : boxBottomPadding,
-                  desktopLeft: boxLeftPadding == 0 && boxPaddingLeft !== 999 ? boxPaddingLeft : boxLeftPadding,
-                  desktopRight: boxRightPadding == 0 && boxPaddingRight !== 999 ? boxPaddingRight : boxRightPadding,
-
-                  tabletTop: boxTopPaddingTablet === '' && boxPaddingTopTablet !== 999 ? boxPaddingTopTablet : boxTopPaddingTablet,
-                  tabletBottom: boxBottomPaddingTablet === '' && boxPaddingBottomTablet !== 999 ? boxPaddingBottomTablet : boxBottomPaddingTablet,
-                  tabletLeft: boxLeftPaddingTablet === '' && boxPaddingLeftTablet !== 999 ?  boxPaddingLeftTablet : boxLeftPaddingTablet,
-                  tabletRight: boxRightPaddingTablet === '' && boxPaddingRightTablet !== 999 ?  boxPaddingRightTablet : boxRightPaddingTablet,
-
-                  mobileTop: boxTopPaddingMobile === '' && boxPaddingTopMobile !== 999 ? boxPaddingTopMobile : boxTopPaddingMobile,
-                  mobileBottom: boxBottomPaddingMobile === '' && boxPaddingTopMobile !== 999 ? boxPaddingBottomMobile : boxBottomPaddingMobile,
-                  mobileLeft: boxLeftPaddingMobile === '' && boxPaddingLeftMobile !== 999 ? boxPaddingLeftMobile : boxLeftPaddingMobile,
-                  mobileRight: boxRightPaddingMobile === '' && boxPaddingRightMobile !== 999 ? boxPaddingRightMobile : boxRightPaddingMobile,
-                }}
-                setAttributes={setAttributes}
+                resetValues={boxPaddingResetValues}
                 {...this.props}
               />
               <PanelBody
@@ -651,63 +681,6 @@ export default class Inspector extends Component {
                 />
             </PanelBody>
             <PanelBody
-              title={__("Container Spacing", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <PanelBody
-                title={__("Padding", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsivePaddingControl
-                  attrNameTemplate="container%s"
-                  values={{
-                    desktopTop: containerTopPadding,
-                    desktopBottom: containerBottomPadding,
-                    desktopLeft: containerLeftPadding,
-                    desktopRight: containerRightPadding,
-
-                    tabletTop: containerTopPaddingTablet,
-                    tabletBottom: containerBottomPaddingTablet,
-                    tabletLeft: containerLeftPaddingTablet,
-                    tabletRight: containerRightPaddingTablet,
-
-                    mobileTop: containerTopPaddingMobile,
-                    mobileBottom: containerBottomPaddingMobile,
-                    mobileLeft: containerLeftPaddingMobile,
-                    mobileRight: containerRightPaddingMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Margin", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveMarginControl
-                  attrNameTemplate="container%s"
-                  values={{
-                    desktopTop: containerTopMargin,
-                    desktopBottom: containerBottomMargin,
-                    desktopLeft: containerLeftMargin,
-                    desktopRight: containerRightMargin,
-
-                    tabletTop: containerTopMarginTablet,
-                    tabletBottom: containerBottomMarginTablet,
-                    tabletLeft: containerLeftMarginTablet,
-                    tabletRight: containerRightMarginTablet,
-
-                    mobileTop: containerTopMarginMobile,
-                    mobileBottom: containerBottomMarginMobile,
-                    mobileLeft: containerLeftMarginMobile,
-                    mobileRight: containerRightMarginMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-              </PanelBody>
-            </PanelBody>
-            <PanelBody
               title={__("Typography", "responsive-block-editor-addons")}
               initialOpen={false}
             >
@@ -745,6 +718,21 @@ export default class Inspector extends Component {
                 setAttributes={ setAttributes }
                 {...this.props}
               />
+            </PanelBody>
+            <PanelBody
+              title={__("Container Spacing", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                <ResponsiveNewPaddingControl
+                  attrNameTemplate="container%s"
+                  resetValues={containerPaddingResetValues}
+                  {...this.props}
+                />
+                <ResponsiveNewMarginControl
+                  attrNameTemplate="container%s"
+                  resetValues={containerMarginResetValues}
+                  {...this.props}
+                />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"advance"}>
