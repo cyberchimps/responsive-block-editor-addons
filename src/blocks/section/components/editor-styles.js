@@ -164,7 +164,7 @@ function EditorStyles(props) {
 		" ": {
 		  "opacity": hideWidget? 0.2 : 1,
 		},
-    " > .responsive-block-editor-addons-block-section": {
+    " > .responsive-block-editor-addons-block-section.responsive-section-wrap": {
       "margin-top": topMargin !== 999 && blockTopMargin === 0 ? generateCSSUnit(topMargin, "px") : generateCSSUnit(blockTopMargin, "px"), // For compatibility with v1.3.2.
       "margin-bottom": bottomMargin !== 999 && blockBottomMargin === 0 ? generateCSSUnit(bottomMargin, "px") : generateCSSUnit(blockBottomMargin, "px"), // For compatibility with v1.3.2.
       "margin-left": leftMargin !== 999 && blockLeftMargin === 0 ? generateCSSUnit(leftMargin, "px") : generateCSSUnit(blockLeftMargin, "px"), // For compatibility with v1.3.2.
@@ -196,6 +196,8 @@ function EditorStyles(props) {
       "border-radius": generateCSSUnit(blockBorderRadius, "px"),
       "z-index": z_index,
       "max-width": align != "full" ? generateCSSUnit(width, "px") : "",
+      "margin-left": align != "full" ? "auto" : "",
+      "margin-right": align != "full" ? "auto" : "",
     },
     " > .responsive-section-wrap.responsive-block-editor-addons-block-section": {
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
