@@ -8501,10 +8501,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockRightPadding'        => 10,
 				'blockRightPaddingMobile'  => '',
 				'blockRightPaddingTablet'  => '',
-				'blockTopMargin'           => 0,
-				'blockBottomMargin'        => 0,
-				'blockLeftMargin'          => 0,
-				'blockRightMargin'         => 0,
+				'blockTopMargin'           => '',
+				'blockBottomMargin'        => '',
+				'blockLeftMargin'          => '',
+				'blockRightMargin'         => '',
 				'blockTopMarginTablet'     => '',
 				'blockBottomMarginTablet'  => '',
 				'blockLeftMarginTablet'    => '',
@@ -9980,7 +9980,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' ' => array(
 					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
 				),
-				' > .responsive-block-editor-addons-block-section' => array(
+				' > .responsive-block-editor-addons-block-section.responsive-section-wrap' => array(
 					'margin-top'       => 999 !== $attr['topMargin'] && 0 === $attr['blockTopMargin'] ? self::get_css_value( $attr['topMargin'], 'px' ) : self::get_css_value( $attr['blockTopMargin'], 'px' ), // For compatibility with v1.3.2.
 					'margin-bottom'    => 999 !== $attr['bottomMargin'] && 0 === $attr['blockBottomMargin'] ? self::get_css_value( $attr['bottomMargin'], 'px' ) : self::get_css_value( $attr['blockBottomMargin'], 'px' ), // For compatibility with v1.3.2.
 					'margin-left'      => 999 !== $attr['leftMargin'] && 0 === $attr['blockLeftMargin'] ? self::get_css_value( $attr['leftMargin'], 'px' ) : self::get_css_value( $attr['blockLeftMargin'], 'px' ), // For compatibility with v1.3.2.
@@ -10011,6 +10011,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-radius'         => self::get_css_value( $attr['blockBorderRadius'], 'px' ),
 					'z-index'               => $attr['z_index'],
 					'max-width'             => 'full' !== $attr['align'] ? self::get_css_value( $attr['width'], 'px' ) : '',
+					'margin-left'           => 'full' !== $attr['align'] ? 'auto' : '',
+					'margin-right'          => 'full' !== $attr['align'] ? 'auto' : '',
 				),
 				' > .responsive-section-wrap.responsive-block-editor-addons-block-section' => array(
 					'border-width'     => self::get_css_value( $attr['blockBorderWidth'], 'px' ),
