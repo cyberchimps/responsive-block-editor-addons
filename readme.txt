@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 5.6
-Stable tag: 1.8.6
+Stable tag: 1.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Responsive Blocks offers a library of fully functional blocks that extend the cu
 With more than 50+ creative blocks, you can design beautiful pages without writing a single line of code, and the settings are easy to customize to create your unique look.
 
 
-<a href="https://www.cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=demolink" target="_blank">Checkout the Gutenberg blocks demos</a> 
+<a href="https://www.cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=demolink" target="_blank">Checkout the Gutenberg blocks demos</a>
 
 ==Features of Responsive Blocks - WordPress Gutenberg Blocks Plugin==
 
@@ -53,7 +53,7 @@ Reasons to choose the Responsive WordPress Theme
 
 
 **Responsive Gutenberg Blocks Editor Addons Library**
-Check out our customizable, feature rich WordPress blocks that'll help you design pages or posts without a single line of code. 
+Check out our customizable, feature rich WordPress blocks that'll help you design pages or posts without a single line of code.
 
 **Responsive Blocks**
 
@@ -199,6 +199,10 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
+= 1.8.7 -  =
+* Fix - Enhanced Security
+* Added backward compatibility for section block
+
 = 1.8.6 - 10th July 2024 =
 * New - Introduced new padding and margin control in all remaining blocks.
 
@@ -248,7 +252,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 * New - Contact Form 7 Styler Block
 
 = 1.7.3 - 20th November 2023 =
-* New - Compatibility with WordPress 6.4 
+* New - Compatibility with WordPress 6.4
 
 = 1.7.2 - 5th October 2023 =
 * Fix - Image Slider block- Gutter is not working for Mobile.
