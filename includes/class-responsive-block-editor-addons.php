@@ -1018,7 +1018,7 @@ class Responsive_Block_Editor_Addons {
 			case '0':
 				$check_for_review_transient = get_transient( 'responsive_block_editor_addons_review_transient' );
 				if ( false === $check_for_review_transient ) {
-					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', RESPONSIVE_BLOCK_EDITOR_ADDONS_THIRTY_DAYS_IN_SECONDS );
+					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', RESPONSIVE_BLOCK_EDITOR_ADDONS_SEVEN_DAYS_IN_SECONDS );
 					update_option( 'responsive_block_editor_addons_review_pending', '1', true );
 				}
 				break;
