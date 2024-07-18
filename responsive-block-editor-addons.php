@@ -6,16 +6,16 @@
  * Author:          CyberChimps
  * Text Domain:     responsive-block-editor-addons
  * Domain Path:     /languages
- * Version:         1.8.6
+ * Version:         1.8.7
  *
  * @package         Responsive_Block_Editor_Addons
  */
 
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER', '1.8.6' );
+define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_VER', '1.8.7' );
 define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_BASENAME', plugin_basename( __FILE__ ) );
-define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_THIRTY_DAYS_IN_SECONDS', 2592000 );
+define( 'RESPONSIVE_BLOCK_EDITOR_ADDONS_SEVEN_DAYS_IN_SECONDS', 604800 );
 
 // Responsive Block Editor Addons plugin's main file.
 require plugin_dir_path( __FILE__ ) . 'includes/class-responsive-block-editor-addons.php';

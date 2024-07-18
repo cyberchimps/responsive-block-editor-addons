@@ -457,19 +457,19 @@ class Responsive_Block_Editor_Addons {
 			'slug'  => 'responsive_block_editor_addons',
 			'title' => __( 'Responsive Gutenberg Blocks', 'responsive-block-editor-addons' ),
 		);
-	
+
 		if ( is_array( $categories ) ) {
 			$existingSlugs = array_column( $categories, 'slug' );
-	
+
 			if ( is_array( $existingSlugs ) ) {
 				if ( in_array( $category['slug'], $existingSlugs ) ) {
 					return $categories; // Bail early if category exists
 				}
 			}
 		}
-			
+
 		array_unshift( $categories, $category ); // Add category on top of pile
-	
+
 		return $categories;
 	}
 
@@ -613,13 +613,7 @@ class Responsive_Block_Editor_Addons {
 					}
 					$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax_terms;
 				}
-				$new_categories_list = get_terms(
-					$tax_slug,
-					array(
-						'hide_empty' => true,
-						'parent'     => 0,
-					)
-				);
+				$new_categories_list = get_terms( $tax_slug	);
 				$related_tax         = array();
 				if ( ! empty( $new_categories_list ) ) {
 					foreach ( $new_categories_list as $t_index => $t_obj ) {
@@ -627,7 +621,7 @@ class Responsive_Block_Editor_Addons {
 							'hide_empty' => true,
 							'parent'     => $t_obj->term_id,
 						);
-						$child_cat     = get_terms( $tax_slug, $child_arg );
+						$child_cat     = get_terms( $tax_slug );
 						$child_cat_arr = $child_cat ? $child_cat : null;
 						$related_tax[] = array(
 							'id'            => $t_obj->term_id,
@@ -640,13 +634,7 @@ class Responsive_Block_Editor_Addons {
 					}
 					$return_array[ $post_type ]['without_empty_taxonomy'][ $tax_slug ] = $related_tax;
 				}
-				$new_categories_list_empty_tax = get_terms(
-					$tax_slug,
-					array(
-						'hide_empty' => false,
-						'parent'     => 0,
-					)
-				);
+				$new_categories_list_empty_tax = get_terms( $tax_slug	);
 				$related_tax_empty_tax         = array();
 				if ( ! empty( $new_categories_list_empty_tax ) ) {
 					foreach ( $new_categories_list_empty_tax as $t_index => $t_obj ) {
@@ -654,7 +642,7 @@ class Responsive_Block_Editor_Addons {
 							'hide_empty' => false,
 							'parent'     => $t_obj->term_id,
 						);
-						$child_cat_empty_tax     = get_terms( $tax_slug, $child_arg_empty_tax );
+						$child_cat_empty_tax     = get_terms( $tax_slug );
 						$child_cat_empty_tax_arr = $child_cat_empty_tax ? $child_cat_empty_tax : null;
 						$related_tax_empty_tax[] = array(
 							'id'            => $t_obj->term_id,
@@ -1030,7 +1018,7 @@ class Responsive_Block_Editor_Addons {
 			case '0':
 				$check_for_review_transient = get_transient( 'responsive_block_editor_addons_review_transient' );
 				if ( false === $check_for_review_transient ) {
-					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', RESPONSIVE_BLOCK_EDITOR_ADDONS_THIRTY_DAYS_IN_SECONDS );
+					set_transient( 'responsive_block_editor_addons_review_transient', 'Review Pending', RESPONSIVE_BLOCK_EDITOR_ADDONS_SEVEN_DAYS_IN_SECONDS );
 					update_option( 'responsive_block_editor_addons_review_pending', '1', true );
 				}
 				break;
@@ -1121,7 +1109,7 @@ class Responsive_Block_Editor_Addons {
 		if ( ! isset( $_POST['value'] ) ) {
 			wp_send_json_error();
 		}
-		$value = json_decode( stripslashes( wp_unslash( $_POST['value'] ) ), true ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$value = json_decode( stripslashes( wp_unslash( $_POST['value'] ) ), true );
 
 		update_option( 'rbea_blocks', $value );
 
@@ -1277,7 +1265,7 @@ class Responsive_Block_Editor_Addons {
 
 			}
 		}
-		$filtered_json_all = json_encode($all_filtered_data, JSON_PRETTY_PRINT);
+		$filtered_json_all = wp_json_encode($all_filtered_data, JSON_PRETTY_PRINT);
 		update_option('total-responsive-sites-data', $filtered_json_all);
 
 		// error_log(print_r($filtered_json_all,true));
@@ -1286,7 +1274,7 @@ class Responsive_Block_Editor_Addons {
 		$full_path = $plugin_dir_path . $relative_path;
 		$file_path_all = $full_path . 'responsive-sites-gutenberg-all.json';
 
-		file_put_contents($file_path_all, $filtered_json_all);
+		file_put_contents($file_path_all, $filtered_json_all); //phpcs:ignore
 
 		// Check if the data was successfully written to the file
 		if ($file_path_all !== false) {
