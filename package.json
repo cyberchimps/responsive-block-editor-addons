@@ -1,10 +1,10 @@
 {
   "name": "responsive-block-editor-addons",
-  "version": "1.8.7",
+  "version": "1.8.8",
   "description": "",
   "author": "CyberChimps",
   "license": "GPL-2.0-or-later",
-  "tested_up_to": "6.4",
+  "tested_up_to": "6.6",
   "keywords": [
     "blocks",
     "gutenberg",
@@ -28,6 +28,7 @@
   "dependencies": {
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
     "@ng-select/ng-select": "^5.0.1",
+    "@types/regenerator-runtime": "^0.13.6",
     "@wordpress/dom-ready": "^2.5.1",
     "array-move": "^3.0.1",
     "bigpicture": "^2.5.3",
