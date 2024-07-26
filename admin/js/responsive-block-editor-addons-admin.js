@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import {HelpContents, Categories} from './ContentList';
+import 'regenerator-runtime/runtime';
 const { __ } = wp.i18n;
 
 const GettingStarted = () => {
