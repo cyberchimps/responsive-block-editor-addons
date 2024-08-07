@@ -319,7 +319,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
 
     return (
         <div className="container">
-            <div className="row">
+            <div className="row rbea-blocks-nav-container">
                 <div className="col-lg-9">
                     <div className="rbea-blocks-list">
                         <p>
@@ -398,11 +398,14 @@ const Card = ({handleToggle, category, title, docs, demo, status, index, blockKe
         <div className={"col-lg-4 col-md-4 gy-3 rbea-block-category-card rbea-block-category-" + (category)}>
             <div className="rbea-blocks-card d-flex justify-content-between h-100">
                 <div className="rbea-blocks-card-text-content">
-                    <div className="rbea-blocks-card-title"><p>{__(title, 'responsive-block-editor-addons')}</p></div>
+                    <div className="rbea-blocks-card-title"><p>{__(title, 'responsive-block-editor-addons')}</p></div>                    
+
+                    <a className="rbea-blocks-docs-demo-links d-flex" href={demo} target="_blank">
+                        <div class="rbea-widgets-card-demo-text">{__( 'Demo', 'responsive-block-editor-addons' )}</div>
+                        <img class = "rbea-widgets-card-demo-icon" src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" />&nbsp;
+                    </a>                                        
                 </div>
                 <div className="rbea-blocks-card-switch align-self-center">
-                    <a className="rbea-blocks-docs-demo-links" href={docs} target="_blank"><img src={rbealocalize.responsiveurl + 'admin/images/icon-article.svg'} alt="icon-article" /></a>&nbsp;
-                    <a className="rbea-blocks-docs-demo-links" href={demo} target="_blank"><img src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" /></a>&nbsp;
                     <label className="rbea-blocks-switch">
                         <input className="rbea-blocks-input-checkbox" data-index={index} type="checkbox" id={blockKey} checked={status} onChange={() => handleToggle(blockKey)} />
                         <span className="rbea-blocks-slider rbea-blocks-round"></span>
@@ -417,8 +420,7 @@ const Header = () => {
     return (
         <div className="rbea-header">
             <div className="rbea-brand">
-                <img className="rbea-logo" src={rbealocalize.responsiveurl + 'admin/images/responsive-block-editor-addons-thumbnail.png'} alt="responsive-thumbnail" />
-                <h1 className="rbea-brand-name">{__("Responsive Blocks", "responsive-block-editor-addons")}</h1>
+                <img className="rbea-logo" src={rbealocalize.responsiveurl + 'admin/images/responsive-blocks-logo.png'} alt="responsive-thumbnail" />
                 <div className="rbea-version">{rbealocalize.rbea_version}</div>
             </div>
             <p className="rbea-brand-desc">{__( 'Thank You For Choosing Responsive Blocks – WordPress Gutenberg Blocks Plugin', 'responsive-block-editor-addons' )}</p>
