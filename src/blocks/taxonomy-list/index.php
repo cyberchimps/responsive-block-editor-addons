@@ -495,6 +495,7 @@ function responsive_block_editor_addons_render_taxonomy_list( $attributes ) {
 		?>
 			<div class="<?php echo esc_html( $main_class ); ?>">
 		<?php
+			$attributes = responsive_block_editor_addons_sanitize_title_tag_taxonomy_list( $attributes );
 		if ( 'grid' === $layout ) {
 			responsive_block_editor_addons_render_grid_layout( $attributes );
 		} else {
@@ -651,4 +652,19 @@ function responsive_block_editor_addons_render_list_layout( $attributes ) {
 	}
 	?>
 		<?php
+}
+
+/**
+ * Function to sanitize title tag.
+ *
+ * @param [type] $attributes The attributes.
+ * @return array $attributes
+ */
+function responsive_block_editor_addons_sanitize_title_tag_taxonomy_list( $attributes ) {
+	$main_rbea_class         = new Responsive_Block_Editor_Addons();
+	$array_of_allowed_HTML   = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
+	$taxonomy_list_title_tag = $attributes['titleTag'];
+	$taxonomy_list_title_tag = $main_rbea_class->rbea_post_title_tag_allowed_html( $taxonomy_list_title_tag, $array_of_allowed_HTML, 'div' );
+	$attributes['titleTag']  = $taxonomy_list_title_tag;
+	return $attributes;
 }

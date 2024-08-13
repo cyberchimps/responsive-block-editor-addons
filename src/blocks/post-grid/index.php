@@ -298,6 +298,9 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 			} else {
 				$section_title_tag = 'h2';
 			}
+			$main_class            = new Responsive_Block_Editor_Addons();
+			$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+			$section_title_tag     = $main_class->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_HTML, 'h2' );
 
 			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-grid-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {

@@ -201,6 +201,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 = 1.8.9 - 14th August 2024 =
 * Improvements - Minor UI changes.
+* Fix - Enhanced Security: Strengthened the codebase to further protect your website.
 
 = 1.8.8 - 26th July 2024 =
 * Fix - Fixed compatibility issue with WordPress 6.6.1
