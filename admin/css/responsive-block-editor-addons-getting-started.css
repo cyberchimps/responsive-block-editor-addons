@@ -28,8 +28,9 @@ body.responsive_page_responsive_block_editor_addons #wpbody-content {
     flex-direction: column;
     align-items: center;
     padding: 30px 40px;
-    gap: 16px;
-    height: 125px;
+    padding-top: 33px;
+    gap: 12px;
+    height: 159px;
     background: #FFFFFF;
     border-bottom: 1px solid #E5E7EB;
 }
@@ -40,31 +41,16 @@ body.responsive_page_responsive_block_editor_addons #wpbody-content {
     justify-content: center;
     align-items: center;
     padding: 0px;
-    gap: 20px;
+    gap: 26px;
     flex: none;
     order: 0;
     flex-grow: 0;
 }
 
 .rbea-logo {
-    width: 30px;
-    height: 30px;
+    width: 228px;
+    height: 62px;
     margin-right: -10px;
-}
-
-.rbea-brand-name {
-    display: contents;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: #1F2937;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
 }
 
 .rbea-version {
@@ -426,6 +412,7 @@ body.responsive_page_responsive_block_editor_addons #wpbody-content {
     display: inline-block;
     width: 36px;
     height: 20px;
+    margin-top: 8.1px;
 }
   
 .rbea-blocks-switch input { 
@@ -480,8 +467,13 @@ input:checked + .rbea-blocks-slider:before {
     padding: 16px 18px;
     background: #FFFFFF;
     border: 1px solid #F3F4F6;
-    box-shadow: 0px 4px 15px -1px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
+
+.rbea-blocks-card:hover {
+    box-shadow: 0px 4px 20px -1px rgba(12, 41, 66, 0.13);
+}
+
+
 
 .rbea-blocks-card-title {
     font-weight: 600;
@@ -492,12 +484,14 @@ input:checked + .rbea-blocks-slider:before {
 }
 
 .rbea-blocks-card-title p {
-    margin: 4px 0 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 1em 0;
+    margin-top: 0;
+    margin-bottom: 1rem;
+
 }
 
-.rbea-blocks-docs-demo-links:focus {
-    box-shadow: none;
-}
 
 /* Blocks Tab Ends */
 
@@ -514,10 +508,6 @@ input:checked + .rbea-blocks-slider:before {
 
     .rbea-brand .rbea-logo {
         margin: inherit;
-    }
-      
-    .rbea-brand-name {
-        font-size: 16px;
     }
       
     .rbea-version {
@@ -614,10 +604,6 @@ input:checked + .rbea-blocks-slider:before {
       align-items: center;
     }
   
-    .rbea-brand-name {
-      font-size: 20px;
-    }
-  
     .rbea-version {
       font-size: 12px;
     }
@@ -663,4 +649,47 @@ input:checked + .rbea-blocks-slider:before {
         height: 35px;
     }
 
+}
+
+@media (min-width : 768px) {
+    .rbea-block-category-card{
+        width: 25%;
+        margin-top: 20px;
+        height: 83.1px;
+        padding-left: 10px;
+        padding-right: 10px;
+    
+    }
+
+}
+
+.rbea-blocks-docs-demo-links {
+    text-decoration: none;
+    gap: 2px;
+}
+
+.rbea-blocks-docs-demo-links .rbea-widgets-card-demo-text {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    text-decoration-line: underline;
+    color: #2271B1;
+}
+
+.rbea-blocks-docs-demo-links .rbea-widgets-card-demo-icon{
+    height: 17px;
+    width: 17px;
+}
+
+
+.rbea-blocks-nav-container{ 
+    justify-content: space-between;
+}
+
+.rbea-blocks-search-box{
+    width: 100%;
+}
+
+.rbea-blocks-search-box input {
+    width: 100%;
 }
