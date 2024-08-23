@@ -439,7 +439,6 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 		if ( ! $rbea_blocks ) {
 			return false;
 		}
-		update_option( 'rbea_blocks', $this->get_rbea_blocks() );
 		return true;
 	}
 
