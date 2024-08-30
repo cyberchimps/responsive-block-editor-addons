@@ -12,6 +12,7 @@ const {withSelect, withDispatch} = wp.data;
 const siteData = require("../../../../includes/data/responsive-sites-gutenberg-all.json");
 const {map} = require("lodash");
 import "./style.scss";
+import 'regenerator-runtime/runtime';
 const {compose} = wp.compose;
 
 const {__} = wp.i18n;

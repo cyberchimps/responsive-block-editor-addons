@@ -979,6 +979,32 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function responsive_block_editor_addons_admin_init() {
 
+		// Update option autoload value.
+		if( get_option( 'total-responsive-sites-data' ) ) {
+
+			global $wpdb;
+		
+			$option_name = 'total-responsive-sites-data';
+
+			$autoload_value = $wpdb->get_var($wpdb->prepare(
+				"SELECT autoload FROM {$wpdb->options} WHERE option_name = %s",
+				$option_name
+			));
+		
+			if( $autoload_value && 'no' !== $autoload_value ) {
+		
+				$sql = $wpdb->prepare(
+					"UPDATE {$wpdb->options} SET autoload = %s WHERE option_name = %s",
+					'no',
+					$option_name
+				);
+
+				// Execute the SQL query
+				$result = $wpdb->query($sql);
+
+			}
+		}
+
 		$this->responsive_block_editor_addons_remove_all_admin_notices();
 	}
 
