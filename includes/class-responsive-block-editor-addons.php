@@ -613,15 +613,22 @@ class Responsive_Block_Editor_Addons {
 					}
 					$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax_terms;
 				}
-				$new_categories_list = get_terms( $tax_slug	);
+				$new_categories_list = get_terms(
+					array(
+						'taxonomy'   => $tax_slug,
+						'hide_empty' => true,
+						'parent'     => 0,
+					)
+				);
 				$related_tax         = array();
 				if ( ! empty( $new_categories_list ) ) {
 					foreach ( $new_categories_list as $t_index => $t_obj ) {
 						$child_arg     = array(
+							'taxonomy'   => $tax_slug,
 							'hide_empty' => true,
 							'parent'     => $t_obj->term_id,
 						);
-						$child_cat     = get_terms( $tax_slug );
+						$child_cat = get_terms( $child_arg );
 						$child_cat_arr = $child_cat ? $child_cat : null;
 						$related_tax[] = array(
 							'id'            => $t_obj->term_id,
@@ -634,15 +641,22 @@ class Responsive_Block_Editor_Addons {
 					}
 					$return_array[ $post_type ]['without_empty_taxonomy'][ $tax_slug ] = $related_tax;
 				}
-				$new_categories_list_empty_tax = get_terms( $tax_slug	);
+				$new_categories_list_empty_tax = get_terms(
+					array(
+						'taxonomy'   => $tax_slug,
+						'hide_empty' => false,
+						'parent'     => 0,
+					)
+				);
 				$related_tax_empty_tax         = array();
 				if ( ! empty( $new_categories_list_empty_tax ) ) {
 					foreach ( $new_categories_list_empty_tax as $t_index => $t_obj ) {
 						$child_arg_empty_tax     = array(
+							'taxonomy'   => $tax_slug,
 							'hide_empty' => false,
 							'parent'     => $t_obj->term_id,
 						);
-						$child_cat_empty_tax     = get_terms( $tax_slug );
+						$child_cat_empty_tax = get_terms( $child_arg_empty_tax );
 						$child_cat_empty_tax_arr = $child_cat_empty_tax ? $child_cat_empty_tax : null;
 						$related_tax_empty_tax[] = array(
 							'id'            => $t_obj->term_id,
@@ -964,6 +978,32 @@ class Responsive_Block_Editor_Addons {
 	 * @access public
 	 */
 	public function responsive_block_editor_addons_admin_init() {
+
+		// Update option autoload value.
+		if( get_option( 'total-responsive-sites-data' ) ) {
+
+			global $wpdb;
+		
+			$option_name = 'total-responsive-sites-data';
+
+			$autoload_value = $wpdb->get_var($wpdb->prepare(
+				"SELECT autoload FROM {$wpdb->options} WHERE option_name = %s",
+				$option_name
+			));
+		
+			if( $autoload_value && 'no' !== $autoload_value ) {
+		
+				$sql = $wpdb->prepare(
+					"UPDATE {$wpdb->options} SET autoload = %s WHERE option_name = %s",
+					'no',
+					$option_name
+				);
+
+				// Execute the SQL query
+				$result = $wpdb->query($sql);
+
+			}
+		}
 
 		$this->responsive_block_editor_addons_remove_all_admin_notices();
 	}
