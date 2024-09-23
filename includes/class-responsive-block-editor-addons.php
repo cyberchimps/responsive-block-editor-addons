@@ -739,10 +739,22 @@ class Responsive_Block_Editor_Addons {
 				$blocks = parse_blocks( $post->post_content );
 
 				foreach ( $blocks as $block ) {
-					$blockName = $block['blockName'];
-					if ( isset($blockName) && strpos( $block['blockName'], 'responsive-block-editor-addons' ) !== false ) {
+					// Retrieve all block names for the current block and its inner blocks.
+					$getBlockNames = $this->rbaGetBlockNames( $block );
+
+					// If true is returned, break out of the loop early.
+					if ( $getBlockNames === true ) {
 						$flag = true;
 						break;
+					}
+					// Check the block names if array is returned.
+					if ( !empty($getBlockNames) ) {
+						foreach ( $getBlockNames as $blockName ) {
+							if ( strpos( $blockName, 'responsive-block-editor-addons' ) !== false ) {
+								$flag = true;
+								break 2;  // Exit both loops when match is found.
+							}
+						}
 					}
 				}
 			}
@@ -849,6 +861,31 @@ class Responsive_Block_Editor_Addons {
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
+	}
+
+	public function rbaGetBlockNames($blocks, &$blockNames = []) {
+
+		// Check if the 'blockName' key exists and store its value
+		if (isset($blocks['blockName'])) {
+			$blockNames[] = $blocks['blockName'];
+
+			// If the blockName contains 'responsive-block-editor-addons', return true immediately.
+			if (strpos($blocks['blockName'], 'responsive-block-editor-addons') !== false) {
+				return true;
+			}
+		}
+
+		// If 'innerBlocks' exists, iterate over each block and call the function recursively.
+		if (isset($blocks['innerBlocks']) && is_array($blocks['innerBlocks'])) {
+			foreach ($blocks['innerBlocks'] as $innerBlock) {
+				// If any recursive call returns true, exit early.
+				if ($this->rbaGetBlockNames($innerBlock, $blockNames) === true) {
+					return true;
+				}
+			}
+		}
+
+		return $blockNames;
 	}
 
 	/**
