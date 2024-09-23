@@ -234,7 +234,7 @@ class GalleryMasonryEdit extends Component {
         {!hasImages ? noticeUI : null}
         <GalleryPlaceholder
           {...this.props}
-          label={__("Masonry", "responsive-block-editor-addons")}
+          label={__("Image", "responsive-block-editor-addons")}
           icon={icon}
           gutter={gutter}
         />
