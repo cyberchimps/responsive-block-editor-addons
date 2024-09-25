@@ -15,7 +15,9 @@ Use professional starter block patterns & templates to create websites within mi
 == Description ==
 
 <a href = "https://cyberchimps.com/blocks/">Responsive Blocks</a> is a free WordPress Gutenberg Blocks plugin that offers a library of 50+ fully functional native WordPress blocks and 100+ WordPress Website Templates and sections. This way, you can create stunning pages in the default WordPress editor without any coding. 
+
 The settings in the plugin allow easy customization and build stunning pages without adding any extra page builder plugins . Also, the free Gutenberg Starter Templates help you build designer content layouts for your website in minutes. 
+
 Additionally, you can import patterns to incorporate preferred page and section layouts into your existing website.
 
 
