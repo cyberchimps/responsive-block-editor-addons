@@ -1,0 +1,59 @@
+.rbea-inspector-tab{
+    .rbea-tab-radio-control-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 24px;
+
+      label {
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16.41px;
+        text-align: left;
+        color: #666;
+      }
+  
+      .rbea-tab-radio-options {
+        display: flex;
+        overflow: hidden;
+        margin-top: 8px;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+    
+        .rbea-tab-radio-option {
+          font-family: Roboto;
+          color: #666;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16.41px;
+          text-align: center;
+          padding-top: 8px;
+          padding-bottom: 8px; 
+          display: block;
+          flex: 1;
+          height: 32px;
+          border: 1px solid #ccc;
+          border-left: none;
+          cursor: pointer;
+        }
+        
+        .rbea-tab-radio-option:first-child {
+          border-left: 1px solid #ccc;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+        }
+
+        .rbea-tab-radio-option:last-child {
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
+
+        .rbea-tab-radio-option.is-active {
+          background-color: #007CBA;
+          color: white;
+        }
+    
+      }
+    }
+  }

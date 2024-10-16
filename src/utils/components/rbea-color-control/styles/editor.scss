@@ -1,0 +1,50 @@
+.rbea-inspector-tab {
+    .rbea-color-control{
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        .rbea-color-control__popup {
+            position: absolute;
+            top: 46px;
+            left: 1px;
+        }
+        .rbea-color-control__wrapper {
+            display: flex;
+            align-items: center;    
+            gap: 10px; 
+        }
+    
+        .rbea-color-control__label{
+            margin-bottom: 0px;
+            font-family: Roboto;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 16.41px;
+            text-align: left;
+            color: #666;
+        }
+    
+        .rbea-reset {
+            padding: 0px;
+    
+            .dashicons-image-rotate{
+                font-size: 10px;
+                height: fit-content;
+                width: fit-content;
+            }
+        }
+
+        .rbea-color-control__indicator{
+            background-size: 10px 10px;
+            background-position: 0 0, 5px 5px;
+            border-radius: 50%;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,3 +1,12 @@
 .responsive-block-editor-addons-typography-settings > .responsive-block-editor-addons-typography-settings > .components-panel__body {
 	border-top: 1px solid #e0e0e0 !important;
 }
+
+.rbea-inspector-tab .responsive-block-editor-addons-typography-settings > .responsive-block-editor-addons-typography-settings {
+	.components-panel__body  {
+		padding: 0px;
+	}
+	.components-panel__body-title{
+		margin-top: 0px;
+	}
+}

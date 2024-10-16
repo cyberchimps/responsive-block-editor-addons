@@ -1,0 +1,25 @@
+.rbea-angle-range-control {
+    display: flex;
+    flex-direction: column;
+
+    .rbea-control__header {
+        margin-bottom: 0px;
+    }
+    
+    .components-range-control {
+        margin: 0px 0px !important; 
+        width: 100%;
+    }
+
+    .rbea-angle-range-control__inputs{
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        align-items: center;
+    }
+    
+}
+
+
+
+

@@ -1,8 +1,9 @@
-import RbeaDimensionControl from "../../RbeaDimensionControl"
+import RbeaDimensionControl from "../RbeaDimensionControl"
 
 const { Dashicon, TabPanel } = wp.components;
 
-export default function ResponsiveNewMarginControl (props) {
+export default function RbeaBorderRadiusControl (props) {
+
 
     return (
         <>  
@@ -33,18 +34,16 @@ export default function ResponsiveNewMarginControl (props) {
   
             if ("mobile" === tab.name) {
                 tabout = (
-                    <RbeaDimensionControl
-                     {...{...props, tabName: 'Mobile', controlName: 'margin'}}
-                    />
+                    <RbeaDimensionControl {...{...props, tabName: 'Mobile', controlName: 'radius'}}/>
             );
             } else if ("tablet" === tab.name) {
                 tabout = (
-                    <RbeaDimensionControl {...{...props, tabName: 'Tablet', controlName: 'margin'}}/>
+                    <RbeaDimensionControl {...{...props, tabName: 'Tablet', controlName: 'radius'}}/>
             );
             } else {
                 tabout = (
                     <RbeaDimensionControl
-                    {...{...props, tabName: '', controlName: 'margin'}}
+                    {...{...props, tabName: '', controlName: 'radius'}}
                     />
             );
             }
