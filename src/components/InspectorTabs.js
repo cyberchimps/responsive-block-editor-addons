@@ -57,7 +57,7 @@ const InspectorTabs = props => {
                             <Tooltip text={__('Content', 'responsive-block-editor-addons')}>
                                 <button className={classnames({ 'rbea-active': currentActiveTab === CONTENT })} onClick={() => onTabChange(CONTENT)}>
                                 <img  src= {responsive_globals.plugin_url + 'admin/images/' + ((currentActiveTab === CONTENT) ? 'inspector_content_active.png' : 'inspector_content.png')} className="rbea-inspector-content-icon" alt = "inspector tab content"></img>
-                                <h5 className = "rbea-inspector-tab-title">{__('Content', 'responsive-block-editor-addons')}</h5>
+                                <h5 className = "rbea-inspector-tab-title">{__('General', 'responsive-block-editor-addons')}</h5>
                                 </button>
                             </Tooltip>
                         )
