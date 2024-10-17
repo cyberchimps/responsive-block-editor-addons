@@ -1,0 +1,84 @@
+.rbea-inspector-tab{
+
+    .rbea-inline-radio-tab-control-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    
+    .rbea-inline-radio-tab-options{
+      display: flex;
+      flex-direction: row;
+      gap: 0px;
+    }
+    
+    .rbea-inline-radio-tab-control-wrapper svg {
+      height: fit-content;
+    }
+    
+    .rbea-inline-radio-tab-control-wrapper .rbea-inline-radio-tab-option{
+      margin: 0px 0px;
+      border: 0.5px solid #D9D9D9;
+      border-left: none;
+      cursor: pointer;
+    }
+  
+    .rbea-inline-radio-tab-control-wrapper .rbea-inline-radio-tab-option:first-child{
+      border-left: 0.5px solid #D9D9D9;
+    }
+    
+    .rbea-inline-radio-tab-control-wrapper .rbea-inline-radio-tab-option .responsive-blocks-editor-addons-design-panel-item{
+      margin: 0px 0px;
+      padding: 0px;
+    }
+    
+    .rbea-inline-radio-tab-control-wrapper .responsive-blocks-editor-addons-design-panel-item__svg {
+      height: 30px;
+      width: 40px;
+      padding: 0px;
+      text-align: center;
+    }
+    
+    .rbea-inline-radio-tab-control-wrapper .responsive-blocks-editor-addons-design-panel-item__svg svg{
+      width: 18px;
+    }
+    
+    .rbea-inline-radio-tab-option.is-active .responsive-blocks-editor-addons-design-panel-item {
+      background-color: #666666;
+    }
+    
+    .rbea-inline-radio-tab-option.is-active .rbea-radio-inline-tab-control-icons  path {
+      fill: white;
+    }
+    
+    .rbea-inline-radio-tab-option.is-active .rbea-radio-inline-tab-control-icons  circle {
+      stroke: white;
+    }
+  
+    .rbea-inline-radio-tab-option.is-active
+    {
+      .rbea-radio-inline-tab-control-image-icon{
+        background: #666;
+      }
+
+      .rbea-radio-inline-tab-control-image-icon path ,  .rbea-radio-inline-tab-control-image-icon circle{
+        fill: white;
+      }
+     
+      .rbea-radio-inline-tab-control-image-icon path.middle-path{
+        fill: none;
+        stroke: white;
+      }
+    }
+    .rbea-inline-radio-tab-control-wrapper {
+      font-family: Roboto;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16.41px;
+      text-align: left;
+      color: #666666;
+    }
+  }
+  
+  

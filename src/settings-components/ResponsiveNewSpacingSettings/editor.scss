@@ -4,6 +4,7 @@
   
     .rbea-spacing-control__inputs {
       display: flex;
+      height: 36px;
   
       > :first-child.rbea-spacing-control__number {
         border-radius: 3px 0 0 3px;
@@ -16,17 +17,17 @@
     input[type="number"].rbea-spacing-control__number, .rbea-spacing-control__link{
       border-left: 1px solid;
       border-right: 1px solid;
-      border-color: #e6e7e9;
+      border-color: #E1E1E1;
       color: #50575e;
       border-radius: 0;
       box-shadow: none !important;
-      height: 30px;
+      height: 36px;
       margin: 0 -1px 0 0;
       padding-right: 1px;
       width: 25%;
       font-size: 14px;
       line-height: 20px;
-      padding-left: 4px;
+      padding-left: 8px;
     }
     .rbea-spacing-control__link {
       border: 1px solid #959595;
@@ -36,15 +37,21 @@
       display: flex;
       align-items: center;
       padding: 2px 0;
-      font-size: 12px;
+      font-size: 17px;
       line-height: 28px;
       cursor: pointer;
       transition: none;
   
       &.rbea-spacing-control-disconnected {
-        border-color: #e6e7e9;
+        border-color: #E1E1E1;
         background-color: #ffffff;
         color: #959595;
+    }
+
+      &.rbea-spacing-control-connected {
+        border-color: #E1E1E1;
+        color: #FFFFFF;
+        background: #007CBA;   
     }
     }
     .rbea-spacing-control__input-labels {
@@ -61,10 +68,15 @@
     }
   
     .rbea-spacing-control__number-label {
-      color: #cccccc;
       display: block;
+      margin-top: 6px;
+      font-family: Roboto;
       font-size: 10px;
-      margin-top: 5px;
+      font-weight: 400;
+      line-height: 11.72px;
+      text-align: center;
+      color: #949698;
+
     }
   }
   .rbea-control__header {
@@ -72,7 +84,15 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16.41px;
+    text-align: left;
+    color: #666666;
+
+
   
     .uag-responsive-label-wrap {
       display: flex;
@@ -80,9 +100,10 @@
   
       .uag-control-label {
         color: #50575e;
-        font-size: 13px !important;
-        line-height: 1.4em !important;
-        margin-bottom: 10px;
+        font-family: Roboto;
+        font-size: 13px;
+        line-height: 16.41px;
+        text-align: left;
         text-transform: none !important;
         font-weight: 400 !important;
         margin-bottom: 0;

@@ -135,6 +135,62 @@ const attributes = {
     type: "number",
     default: 0,
   },
+  blockTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  blockTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  blockIsRadiusControlConnected: {
+		type: "boolean",
+		default: false,
+	},
+  blockIsRadiusValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
   blockBorderColor: {
     type: "string",
     default: "#000",
@@ -228,7 +284,7 @@ const attributes = {
     default: "center center",
   },
   backgroundVideo: {
-    type: "object",
+    type: "string",
   },
   backgroundColor: {
     type: "string",
