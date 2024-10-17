@@ -248,7 +248,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			),
 			array(
 				'key'      => 'gallery-masonry',
-				'title'    => 'Masonry',
+				'title'    => 'Image Gallery',
 				'docs'     => 'https://cyberchimps.com/blocks/docs/masonry/',
 				'demo'     => 'https://cyberchimps.com/blocks/masonry/',
 				'category' => 'content',

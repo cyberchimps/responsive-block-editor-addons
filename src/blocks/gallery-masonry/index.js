@@ -28,11 +28,11 @@ import { registerBlockType } from "@wordpress/blocks";
 
 registerBlockType("responsive-block-editor-addons/gallery-masonry", {
   /* translators: block name */
-  title: __("Masonry", "responsive-block-editor-addons"),
+  title: __("Image Gallery", "responsive-block-editor-addons"),
   category: "responsive_block_editor_addons",
   /* translators: block description */
   description: __(
-    "Display multiple images in an organized masonry gallery",
+    "Display multiple images in an organized Image gallery",
     "responsive-block-editor-addons"
   ),
   icon: ResponsiveBlockEditorAddonsIcons.gallery_masonry,
