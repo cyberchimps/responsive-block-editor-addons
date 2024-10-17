@@ -381,8 +381,8 @@ export default class Inspector extends Component {
       ];
 
       const fixedOptions = getFixedOptions(backgroundTypeOptions);
-
       return (
+        
         <RbeaInlineTabRadioControl
           label = {"Type"}
           selectedValue={backgroundType}
@@ -392,38 +392,14 @@ export default class Inspector extends Component {
       );
     }
 
-    let imagePositionControl = (device) => {
+    // Background image URL
+    let background_image_url = backgroundImage || '';
 
-      let image_url = backgroundImage || '';
-
-      return (
-        <Fragment>
-        <div className = "rbea-background-image-positon-control"
-        style={{
-          backgroundImage: `url(${image_url})`,
-          backgroundSize: 'cover',
-          backgroundPosition:  'center',
-        }}>
-          <RadioControl 
-              className = "rbea-background-image-positon-control-options"
-              selected={backgroundPosition}
-              options={imagePositionOptions}
-              onChange={(value) =>
-                setAttributes({ backgroundPosition: value })
-              }
-          />
-        </div>
-      </Fragment>
-      )
-    }
+    
     return (
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
-            <PanelBody
-              title={__("General", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
               {align != "full" && (
                 <RbeaRangeControl
                   label={__("Width", "responsive-block-editor-addons")}
@@ -585,7 +561,6 @@ export default class Inspector extends Component {
                     return <div>{tabout}</div>;
                   }}
               </TabPanel>
-            </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
           <PanelBody
@@ -614,7 +589,7 @@ export default class Inspector extends Component {
               {"image" == backgroundType && (
                 <Fragment>
                     <RbeaMediaUploadControl
-                      label={__('Enable Background Image', 'responsive-block-editor-addons')}
+                      label={__('Image', 'responsive-block-editor-addons')}
                       value={{
                           enable: backgroundImage ? true : false,
                           media_url: backgroundImage || '',
@@ -665,9 +640,45 @@ export default class Inspector extends Component {
                         }}
                       </TabPanel>
                       </div>
-                      {imagePositionTab === "desktop" && imagePositionControl("Desktop")}
-                      {imagePositionTab === "tablet" && imagePositionControl("Tablet")}
-                      {imagePositionTab === "mobile" && imagePositionControl("Mobile")}
+                        <Fragment>
+                          <div className = "rbea-background-image-positon-control"
+                          style={{
+                            backgroundImage: `url(${background_image_url})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition:  'center',
+                          }}>
+                          { imagePositionTab === "desktop" && 
+                              <RadioControl 
+                                className = "rbea-background-image-positon-control-options"
+                                selected={backgroundPosition}
+                                options={imagePositionOptions}
+                                onChange={(value) =>
+                                  setAttributes({ backgroundPosition: value })
+                                }
+                              />
+                          }
+                          {imagePositionTab === "tablet" &&
+                             <RadioControl 
+                                className = "rbea-background-image-positon-control-options"
+                                selected={backgroundPositionTablet}
+                                options={imagePositionOptions}
+                                onChange={(value) =>
+                                  setAttributes({ backgroundPositionTablet: value })
+                                }
+                            />
+                          }
+                          {imagePositionTab === "mobile" && 
+                            <RadioControl 
+                                className = "rbea-background-image-positon-control-options"
+                                selected={backgroundPositionMobile}
+                                options={imagePositionOptions}
+                                onChange={(value) =>
+                                  setAttributes({ backgroundPositionMobile: value })
+                                }
+                            />
+                          }
+                          </div>
+                        </Fragment>
                       <RbeaTabRadioControl
                         label={__("Attachment", "responsive-block-editor-addons")}
                         selectedValue={backgroundAttachment}
@@ -675,9 +686,10 @@ export default class Inspector extends Component {
                           setAttributes({ backgroundAttachment: value })
                         }
                         options={[
-                          { value: "fixed", label: __("Fixed", "responsive-block-editor-addons") },
                           { value: "scroll", label: __("Scroll", "responsive-block-editor-addons") },
+                          { value: "fixed", label: __("Fixed", "responsive-block-editor-addons") },
                         ]}
+                        defaultValue={"fixed"}
                       />
                      <div className = "rbea-tab-selector-label-wrapper">
                      <label>{__("Size", "responsive-block-editor-addons")}</label>
@@ -729,6 +741,7 @@ export default class Inspector extends Component {
                             { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
                             { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                           ]}
+                          defaultValue={"cover"}
                         />
                       </>
                       )}
@@ -744,6 +757,7 @@ export default class Inspector extends Component {
                           { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
                           { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                         ]}
+                        defaultValue={"cover"}
                         />
                       )}
                       {imageSizeTab === "mobile" && (
@@ -758,6 +772,7 @@ export default class Inspector extends Component {
                             { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
                             { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
                           ]}
+                          defaultValue={"cover"}
                         />
                       )}
                       <div className = "rbea-repeat-selector-wrapper">
@@ -773,6 +788,7 @@ export default class Inspector extends Component {
                           { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
                           { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
                         ]}
+                        defaultValue={"no-repeat"}
                       /></div>
 
                       <RbeaInlineTabRadioControl
@@ -848,6 +864,7 @@ export default class Inspector extends Component {
                               { value: "linear", label: __("Linear", "responsive-block-editor-addons") },
                               { value: "radial", label: __("Radial", "responsive-block-editor-addons") },
                             ]}
+                            defaultValue={"linear"}
                           />
                           {"linear" == gradientOverlayType && (
                             <RbeaAngleRangeControl
@@ -912,7 +929,7 @@ export default class Inspector extends Component {
               {"video" == backgroundType && (
                 <>
                     <RbeaMediaUploadControl
-                      label={__('Enable Background Video', 'responsive-block-editor-addons')}
+                      label={__('Video', 'responsive-block-editor-addons')}
                       value={{
                           enable: backgroundVideo ? true : false,
                           media_url: backgroundVideo || '',
@@ -926,15 +943,17 @@ export default class Inspector extends Component {
                     />
                 </>
               )}
-              <RbeaRangeControl
-                label={__("Opacity", "responsive-block-editor-addons")}
-                value={opacity}
-                onChange={(value) =>
-                  setAttributes({ opacity: value !== undefined ? value : 20 })
-                }
-                min={0}
-                max={100}
-              />
+              {backgroundType && backgroundType !== 'none' &&
+                <RbeaRangeControl
+                  label={__("Opacity", "responsive-block-editor-addons")}
+                  value={opacity}
+                  onChange={(value) =>
+                    setAttributes({ opacity: value !== undefined ? value : 20 })
+                  }
+                  min={0}
+                  max={100}
+                />
+              }
             </PanelBody>
             <PanelBody
               title={__("Border", "responsive-block-editor-addons")}

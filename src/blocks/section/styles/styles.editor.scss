@@ -304,7 +304,7 @@
 
    label {
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 16.41px;
     text-align: left;
@@ -357,4 +357,8 @@
     border-left: 1px solid #C9C8C8!important ;
   }
 }
+}
+
+.rbea-inspector-tab>.rbea-Z-index-control-tabs , .rbea-inspector-tab>.rbea-range-control {
+  margin : 20px 24px;
 }

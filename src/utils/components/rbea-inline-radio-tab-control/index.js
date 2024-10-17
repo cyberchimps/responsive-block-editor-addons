@@ -1,14 +1,19 @@
 import { useState, Fragment } from '@wordpress/element';
-import { RadioControl } from '@wordpress/components';
 
-const RbeaInlineTabRadioControl = ({ label, selectedValue, onChange, options }) => {
+const RbeaInlineTabRadioControl = ({ label, selectedValue, onChange, options, defaultValue = "none" }) => {
   // Track the currently selected option
   const [activeOption, setActiveOption] = useState(selectedValue);
 
   // Handle the option change
   const handleChange = (value) => {
-    setActiveOption(value); // Update the active option in the state
-    onChange(value); // Call the onChange handler
+    // If the clicked option is already selected, reset to the default (unselect it)
+    if (activeOption === value) {
+      setActiveOption(null); 
+      onChange(defaultValue); 
+    } else {
+      setActiveOption(value); 
+      onChange(value);
+    }
   };
 
   return (

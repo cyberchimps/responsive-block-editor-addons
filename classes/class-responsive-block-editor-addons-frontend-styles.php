@@ -10170,7 +10170,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$css             = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
 			$css['desktop'] .= '
             .responsive-block-editor-addons-section__video-wrap {
-                // border-radius:' . $attr['blockBorderRadius'] . 'px;
 				border-top-left-radius:' . $attr['blockTopRadius'] . 'px );
 				border-top-right-radius:' . $attr['blockRightRadius'] . 'px );
 				border-bottom-right-radius:' . $attr['blockBottomRadius'] . 'px );
@@ -10189,7 +10188,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
             .page.page-template-gutenberg-fullwidth .alignfull' . $id . ' > .responsive-section-wrap > .responsive-section-inner-wrap{
                 max-width:' . ( 'full' === $attr['align'] ? self::get_css_value( $attr['innerWidthTablet'], 'px' ) : ' ' ) . ' ;}
             .responsive-block-editor-addons-section__video-wrap {
-                // border-radius:' . $attr['blockBorderRadius'] . 'px;
 				border-top-left-radius:' . $attr['blockTopRadiusTablet'] . 'px );
 				border-top-right-radius:' . $attr['blockRightRadiusTablet'] . 'px );
 				border-bottom-right-radius:' . $attr['blockBottomRadiusTablet'] . 'px );
@@ -10199,7 +10197,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
             .page.page-template-gutenberg-fullwidth .alignfull' . $id . ' > .responsive-section-wrap > .responsive-section-inner-wrap{
                 max-width:' . ( 'full' === $attr['align'] ? self::get_css_value( $attr['innerWidthMobile'], 'px' ) : ' ' ) . ' ;}
             .responsive-block-editor-addons-section__video-wrap {
-                // border-radius:' . $attr['blockBorderRadius'] . 'px;
 				border-top-left-radius:' . $attr['blockTopRadiusMobile'] . 'px );
 				border-top-right-radius:' . $attr['blockRightRadiusMobile'] . 'px );
 				border-bottom-right-radius:' . $attr['blockBottomRadiusMobile'] . 'px );

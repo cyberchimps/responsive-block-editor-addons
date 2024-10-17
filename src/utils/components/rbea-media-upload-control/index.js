@@ -44,6 +44,11 @@ const RbeaMediaUploadControl = ({ label, description, value, onChange , mediaTyp
 
     return (
         <div className="rbea-media-upload-control">
+             <div className="rbea-control__header">
+                <div className="uag-responsive-label-wrap">
+                    <span className="uag-control-label">{__(`${label}`, 'responsive-block-editor-addons')}</span>
+                </div>
+            </div>
 
             {(
                 <div className="media-control-wrapper" style={{ position: 'relative' }}>

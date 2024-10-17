@@ -152,7 +152,7 @@ $border-color: #D6D9DD;
     }
     &.rbea-active h5{
       font-family: Roboto;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
       line-height: 16.41px;
       text-align: center;
@@ -250,7 +250,7 @@ $border-color: #D6D9DD;
 
   .components-panel__body-toggle.components-button {
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     line-height: 16.41px;
     text-align: left;
@@ -293,7 +293,7 @@ $border-color: #D6D9DD;
 .rbea-inspector-tabs-container {
   .rbea-inspector-tab-title {
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 16.41px;
     text-align: center;
@@ -325,11 +325,51 @@ $border-color: #D6D9DD;
 
   .rbea-border-style-select-control-label{
     font-family: Roboto;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     line-height: 16.41px;
     text-align: center;
     color: #666666;
     margin-bottom: 0px;
   }
+}
+
+.rbea-inspector-tab {
+  .components-panel__body.is-opened > .components-panel__body-title{
+    margin-bottom: 16px;
+  }
+
+  .rbea-repeater-panel{
+    padding-top:20px;
+  }
+
+  .rbea-repeater-panel.is-opened {
+    padding-left : 0px ;
+    padding-right: 0px;
+  }
+
+  .responsive-block-editor-addons-typography-settings .responsive-block-editor-addons-typography-settings {
+    .components-panel__body.is-opened{
+      padding-left: 24px;
+      padding-right: 24px;
+    } 
+  }
+
+  .components-panel__body.is-opened {
+
+    .components-panel__body{
+      padding-top: 20px;
+    }
+
+    .components-panel__body.is-opened {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    
+  }
+
+  button.rbea-flip-box-tab.components-tab-panel__tabs-item{
+    justify-content: center;
+  }
+  
 }
