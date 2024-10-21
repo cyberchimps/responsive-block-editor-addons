@@ -107,6 +107,9 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'rest_api_init', array( $this, 'rba_form_block_processing' ) );
 
 		add_action( 'responsive_register_admin_menu', array( $this, 'rba_register_admin_menu' ) );
+
+		// Add media input script for media input
+		add_action('admin_enqueue_scripts', array($this, 'my_enqueue_media_scripts'));
 	}
 
 	/**
@@ -910,6 +913,15 @@ class Responsive_Block_Editor_Addons {
 		} else {
 			return 'install';
 		}
+	}
+
+	/**
+	 * Include Admin css
+	 *
+	 * @return void [description]
+	 */
+	public function my_enqueue_media_scripts() {
+		wp_enqueue_media();
 	}
 
 	/**

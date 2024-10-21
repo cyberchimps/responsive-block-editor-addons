@@ -1,5 +1,4 @@
-
-import ResponsiveNewMarginControlHelper from "./ResponsiveMarginControlHelper"
+import RbeaDimensionControl from "../../RbeaDimensionControl"
 
 const { Dashicon, TabPanel } = wp.components;
 
@@ -34,18 +33,18 @@ export default function ResponsiveNewMarginControl (props) {
   
             if ("mobile" === tab.name) {
                 tabout = (
-                    <ResponsiveNewMarginControlHelper
-                     {...{...props, tabName: 'Mobile'}}
+                    <RbeaDimensionControl
+                     {...{...props, tabName: 'Mobile', controlName: 'margin'}}
                     />
             );
             } else if ("tablet" === tab.name) {
                 tabout = (
-                    <ResponsiveNewMarginControlHelper {...{...props, tabName: 'Tablet'}}/>
+                    <RbeaDimensionControl {...{...props, tabName: 'Tablet', controlName: 'margin'}}/>
             );
             } else {
                 tabout = (
-                    <ResponsiveNewMarginControlHelper
-                    {...{...props, tabName: ''}}
+                    <RbeaDimensionControl
+                    {...{...props, tabName: '', controlName: 'margin'}}
                     />
             );
             }

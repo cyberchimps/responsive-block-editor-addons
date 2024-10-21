@@ -1,5 +1,5 @@
 
-import ResponsiveNewPaddingControlHelper from "./ResponsivePaddingControlHelper"
+import RbeaDimensionControl from "../../RbeaDimensionControl"
 
 const { Dashicon, TabPanel } = wp.components;
 
@@ -34,19 +34,17 @@ export default function ResponsiveNewPaddingControl (props) {
   
             if ("mobile" === tab.name) {
                 tabout = (
-                    <ResponsiveNewPaddingControlHelper
-                     {...{...props, tabName: 'Mobile'}}
+                    <RbeaDimensionControl
+                     {...{...props, tabName: 'Mobile', controlName: 'padding'}}
                     />
             );
             } else if ("tablet" === tab.name) {
                 tabout = (
-                    <ResponsiveNewPaddingControlHelper {...{...props, tabName: 'Tablet'}}/>
+                    <RbeaDimensionControl {...{...props, tabName: 'Tablet', controlName: 'padding' }}/>
             );
             } else {
                 tabout = (
-                    <ResponsiveNewPaddingControlHelper
-                    {...{...props, tabName: ''}}
-                    />
+                    <RbeaDimensionControl {...{...props, tabName: '', controlName: 'padding'}}/>
             );
             }
   

@@ -83,7 +83,7 @@ export default class Edit extends Component {
               <div key={`block-wrap-${block_id}`} className="responsive-block-editor-addons-section__video-wrap">
                 {backgroundVideo && (
                 <video autoplay loop muted playsinline>
-                  <source src={backgroundVideo.url} type="video/mp4" />
+                  <source src={backgroundVideo} type="video/mp4" />
                 </video>
                 )}
               </div>

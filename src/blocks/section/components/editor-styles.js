@@ -45,7 +45,18 @@ function EditorStyles(props) {
 	blockRightMarginTablet,
     blockBorderStyle,
     blockBorderWidth,
-    blockBorderRadius,
+    blockTopRadius,
+    blockRightRadius,
+    blockBottomRadius,
+    blockLeftRadius,
+    blockTopRadiusMobile,
+    blockRightRadiusMobile,
+    blockBottomRadiusMobile,
+    blockLeftRadiusMobile,
+    blockTopRadiusTablet,
+    blockRightRadiusTablet,
+    blockBottomRadiusTablet,
+    blockLeftRadiusTablet,
     blockBorderColor,
     sectionTag,
     backgroundColor,
@@ -193,7 +204,10 @@ function EditorStyles(props) {
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "z-index": z_index,
       "max-width": align != "full" ? generateCSSUnit(width, "px") : "",
       "margin-left": align != "full" ? "auto" : "",
@@ -203,7 +217,10 @@ function EditorStyles(props) {
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
       "border-color": blockBorderColor,
       "border-style": blockBorderStyle,
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
@@ -246,6 +263,10 @@ function EditorStyles(props) {
       "padding-bottom": bottomPaddingMobile !== 999 && blockBottomPaddingMobile === "" ? generateCSSUnit(bottomPaddingMobile, "px") : (blockBottomPaddingMobile ? generateCSSUnit(blockBottomPaddingMobile, "px") : generateCSSUnit(blockBottomPadding, "px")), // For compatibility with v1.3.2.
       "padding-left": leftPaddingMobile !== 999 && blockLeftPaddingMobile === "" ? generateCSSUnit(leftPaddingMobile, "px") : (blockLeftPaddingMobile ? generateCSSUnit(blockLeftPaddingMobile, "px") : generateCSSUnit(blockLeftPadding, "px")), // For compatibility with v1.3.2.
       "padding-right": rightPaddingMobile !== 999 && blockRightPaddingMobile === "" ? generateCSSUnit(rightPaddingMobile, "px") : (blockRightPaddingMobile ? generateCSSUnit(blockRightPaddingMobile, "px") : generateCSSUnit(blockRightPadding, "px")), // For compatibility with v1.3.2.
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " > .responsive-section-wrap > .responsive-section-inner-wrap": {
       "max-width":
@@ -254,7 +275,7 @@ function EditorStyles(props) {
     " > .responsive-section-wrap": {
       "background-position": backgroundPositionMobile,
       "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
-    }
+    },
   };
 
   var tablet_selectors = {
@@ -270,6 +291,10 @@ function EditorStyles(props) {
 	  "padding-bottom": bottomPaddingTablet !== 999 && blockBottomPaddingTablet === "" ? generateCSSUnit(bottomPaddingTablet, "px") : (blockBottomPaddingTablet ? generateCSSUnit(blockBottomPaddingTablet, "px") : generateCSSUnit(blockBottomPadding, "px")), // For compatibility with v1.3.2.
 	  "padding-left": leftPaddingTablet !== 999 && blockLeftPaddingTablet === "" ? generateCSSUnit(leftPaddingTablet, "px") : (blockLeftPaddingTablet ? generateCSSUnit(blockLeftPaddingTablet, "px") : generateCSSUnit(blockLeftPadding, "px")), // For compatibility with v1.3.2.
 	  "padding-right": rightPaddingTablet !== 999 && blockRightPaddingTablet === "" ? generateCSSUnit(rightPaddingTablet, "px") : (blockRightPaddingTablet ? generateCSSUnit(blockRightPaddingTablet, "px") : generateCSSUnit(blockRightPadding, "px")), // For compatibility with v1.3.2.
+    "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+    "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+    "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+    "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .responsive-section-inner-wrap": {
       "max-width":
@@ -278,22 +303,46 @@ function EditorStyles(props) {
     " > .responsive-section-wrap": {
       "background-position": backgroundPositionTablet,
       "background-size": backgroundSizeTablet === '' ? backgroundSize : backgroundSizeTablet,
-    }
+    },
   };
 
   var outerElement = {
     ".responsive-block-editor-addons-section__video-wrap": {
-      "border-radius": generateCSSUnit(blockBorderRadius, "px"),
+      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
     },
   };
 
+  var outerElementTablet = {
+    ".responsive-block-editor-addons-section__video-wrap": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
+  };
+
+  var outerElementMobile = {
+    ".responsive-block-editor-addons-section__video-wrap": {
+      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
+  }
+
   var styling_css = "";
-  var id = `.responsive-block-editor-addons-block-section-outer-wrap.block-${props.clientId}`;
+  var id = ` .responsive-block-editor-addons-block-section-outer-wrap.block-${props.clientId}`;
+  var id_high_specificity = `.editor-styles-wrapper .responsive-block-editor-addons-block-section-outer-wrap.block-${props.clientId}`;
 
   styling_css = generateCSS(selectors, id);
-  styling_css += generateCSS(tablet_selectors, id, true, "tablet");
-  styling_css += generateCSS(mobile_selectors, id, true, "mobile");
-  styling_css += generateCSS(outerElement, "");
+  styling_css += generateCSS(tablet_selectors, id_high_specificity, true, "tablet");
+  styling_css += generateCSS(mobile_selectors, id_high_specificity, true, "mobile");
+  styling_css += generateCSS(outerElement, " ");
+  styling_css += generateCSS(outerElementTablet, " ", true, "tablet");
+  styling_css += generateCSS(outerElementMobile, " ", true, "mobile");
 
   return styling_css;
 }

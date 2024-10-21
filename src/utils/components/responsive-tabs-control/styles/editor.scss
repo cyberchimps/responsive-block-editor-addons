@@ -271,3 +271,13 @@
     }
   }
 }
+
+.rbea-inspector-tab {
+  .components-panel__body.is-opened {
+    padding: 20px 24px;
+  }
+
+  .dashicons-image-rotate {
+    color: #666666;
+  }
+}

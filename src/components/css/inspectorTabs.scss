@@ -151,7 +151,12 @@ $border-color: #D6D9DD;
       z-index: 2;
     }
     &.rbea-active h5{
-      color: #2184F9;
+      font-family: Roboto;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16.41px;
+      text-align: center;
+      color: #007CBA;
     }
     &:focus path,
     &.rbea-active path{
@@ -223,4 +228,148 @@ $border-color: #D6D9DD;
 .edit-post-settings-sidebar__panel-block .rbea-inspector-tab .components-panel__body:first-child{
   margin-top: 0;
   border-top: none !important;
+}
+
+.rbea-inspector-tab , .block-editor-block-inspector__advanced{
+  .components-panel__body-title {
+    .components-button{
+      padding: 20px 24px;      
+    }
+  }
+
+  .components-panel__body.is-opened{
+    .components-panel__body-title{
+      margin: -20px -24px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .components-panel__body-toggle.components-button:focus {
+    box-shadow: none;
+  }
+
+  .components-panel__body-toggle.components-button {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16.41px;
+    text-align: left;
+    color: #000
+  }
+
+  .components-base-control {
+    margin-top: 4px;
+    margin-bottom: 24px;
+  }
+  .responsive-size-type-field-tabs {
+    margin-top: 0px;
+  }
+
+  .components-panel__arrow {
+    color: #222222;
+  }
+
+}
+
+.rbea-inspector-tabs>button::after , .rbea-inspector-tabs>button::before  {
+  border-radius: 0px;
+  border: none;
+
+}
+
+
+.rbea-inspector-tabs button.rbea-active::after {
+  border-bottom: 1px solid #007CBA;
+}
+
+.rbea-inspector-tabs button.rbea-active::after , .rbea-inspector-tabs button.rbea-active::before {
+  background: #F1FAFF;
+}
+
+.rbea-inspector-tabs button.rbea-active img {
+  z-index: 10;
+}
+
+.rbea-inspector-tabs-container {
+  .rbea-inspector-tab-title {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16.41px;
+    text-align: center;
+    color: #666666;
+  }
+
+
+}
+
+.rbea-border-style-selector {
+
+  .components-radio-control__option{
+    height: 35px;
+    width: 100%;
+    border: 1px solid #D9D9D9;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .components-flex.components-h-stack.components-v-stack{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 0px; 
+    column-gap: 3px; 
+  }
+
+  .rbea-border-style-select-control-label{
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16.41px;
+    text-align: center;
+    color: #666666;
+    margin-bottom: 0px;
+  }
+}
+
+.rbea-inspector-tab {
+  .components-panel__body.is-opened > .components-panel__body-title{
+    margin-bottom: 16px;
+  }
+
+  .rbea-repeater-panel{
+    padding-top:20px;
+  }
+
+  .rbea-repeater-panel.is-opened {
+    padding-left : 0px ;
+    padding-right: 0px;
+  }
+
+  .responsive-block-editor-addons-typography-settings .responsive-block-editor-addons-typography-settings {
+    .components-panel__body.is-opened{
+      padding-left: 24px;
+      padding-right: 24px;
+    } 
+  }
+
+  .components-panel__body.is-opened {
+
+    .components-panel__body{
+      padding-top: 20px;
+    }
+
+    .components-panel__body.is-opened {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    
+  }
+
+  button.rbea-flip-box-tab.components-tab-panel__tabs-item{
+    justify-content: center;
+  }
+  
 }
