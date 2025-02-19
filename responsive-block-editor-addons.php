@@ -4,7 +4,7 @@
  * Plugin URI:      cyberchimps.com
  * Description:     Responsive Blocks offers 50+ Gutenberg blocks so you can design beautiful pages without writing a single line of code.
  * Author:          CyberChimps
- * Author URI:		https://cyberchimps.com/responsive-blocks/
+ * Author URI:      https://cyberchimps.com/responsive-blocks/
  * Text Domain:     responsive-block-editor-addons
  * Domain Path:     /languages
  * Version:         2.0.0

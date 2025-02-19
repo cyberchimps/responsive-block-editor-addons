@@ -444,6 +444,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 
 	/**
 	 * Inserts the RBEA blocks into the database.
+	 *
 	 * @since 1.7.0
 	 */
 	public function insert_blocks_data() {
@@ -453,7 +454,5 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			// If blocks exist in the database update the information
 			update_option( 'rbea_blocks', $this->get_rbea_blocks() );
 		}
-
 	}
-
 }

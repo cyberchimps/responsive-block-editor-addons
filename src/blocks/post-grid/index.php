@@ -159,7 +159,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 					$post_title_tag = 'h2';
 				}
 
-				$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+				$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
 				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_HTML, 'h3' );
 
 				$post_grid_markup .= sprintf(
@@ -300,7 +300,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 				$section_title_tag = 'h2';
 			}
 
-			$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+			$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
 			$section_title_tag     = $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_HTML, 'h2' );
 
 			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-grid-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
@@ -354,831 +354,831 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 		'responsive-block-editor-addons/responsive-block-editor-addons-post-grid',
 		array(
 			'attributes'      => array(
-				'categories'                  => array(
+				'categories'                         => array(
 					'type' => 'string',
 				),
-				'tags'                        => array(
+				'tags'                               => array(
 					'type' => 'string',
 				),
-				'textAlignment'               => array(
+				'textAlignment'                      => array(
 					'type'    => 'string',
 					'default' => 'left',
 				),
-				'className'                   => array(
+				'className'                          => array(
 					'type' => 'string',
 				),
-				'postsToShow'                 => array(
+				'postsToShow'                        => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'stackonMobile'               => array(
+				'stackonMobile'                      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostDate'             => array(
+				'displayPostDate'                    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'excludeCurrentPost'          => array(
+				'excludeCurrentPost'                 => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt'          => array(
+				'displayPostExcerpt'                 => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostAuthor'           => array(
+				'displayPostAuthor'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'            => array(
+				'displayPostImage'                   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostLink'             => array(
+				'displayPostLink'                    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'            => array(
+				'displayPostTitle'                   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displaySectionTitle'         => array(
+				'displaySectionTitle'                => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'postPagination'              => array(
+				'postPagination'                     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'equalHeight'                 => array(
+				'equalHeight'                        => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'postTitleTag'                => array(
+				'postTitleTag'                       => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'postLayout'                  => array(
+				'postLayout'                         => array(
 					'type'    => 'string',
 					'default' => 'grid',
 				),
-				'columns'                     => array(
+				'columns'                            => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'align'                       => array(
+				'align'                              => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'width'                       => array(
+				'width'                              => array(
 					'type'    => 'string',
 					'default' => 'wide',
 				),
-				'order'                       => array(
+				'order'                              => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'                     => array(
+				'orderBy'                            => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'readMoreText'                => array(
+				'readMoreText'                       => array(
 					'type'    => 'string',
 					'default' => 'Read More »',
 				),
-				'offset'                      => array(
+				'offset'                             => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'excerptLength'               => array(
+				'excerptLength'                      => array(
 					'type'    => 'number',
 					'default' => 55,
 				),
-				'postType'                    => array(
+				'postType'                           => array(
 					'type'    => 'string',
 					'default' => 'post',
 				),
-				'postTaxonomy'                => array(
+				'postTaxonomy'                       => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'taxonomyType'                => array(
+				'taxonomyType'                       => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'paginationAlignment'         => array(
+				'paginationAlignment'                => array(
 					'type'    => 'string',
 					'default' => 'left',
 				),
-				'paginationLayout'            => array(
+				'paginationLayout'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'sectionTag'                  => array(
+				'sectionTag'                         => array(
 					'type'    => 'string',
 					'default' => 'section',
 				),
-				'sectionTitle'                => array(
+				'sectionTitle'                       => array(
 					'type' => 'string',
 				),
-				'sectionTitleTag'             => array(
+				'sectionTitleTag'                    => array(
 					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'imageSize'                   => array(
+				'imageSize'                          => array(
 					'type'    => 'string',
 					'default' => 'full',
 				),
-				'url'                         => array(
+				'url'                                => array(
 					'type'      => 'string',
 					'source'    => 'attribute',
 					'selector'  => 'img',
 					'attribute' => 'src',
 				),
-				'id'                          => array(
+				'id'                                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'bgColor'                     => array(
+				'bgColor'                            => array(
 					'type'    => 'string',
 					'default' => '#e4e4e4',
 				),
-				'paginationBorderColor'       => array(
+				'paginationBorderColor'              => array(
 					'type'    => 'string',
 					'default' => '#e4e4e4',
 				),
-				'paginationTextActiveColor'   => array(
+				'paginationTextActiveColor'          => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'paginationTextColor'         => array(
+				'paginationTextColor'                => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'paginationActiveBorderColor' => array(
+				'paginationActiveBorderColor'        => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'paginationBorderWidth'       => array(
+				'paginationBorderWidth'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'paginationBorderRadius'      => array(
+				'paginationBorderRadius'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'paginationSpacing'           => array(
+				'paginationSpacing'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageBorderRadius'           => array(
+				'imageBorderRadius'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageTopRadius' => array(
-					'type' => "number",
+				'imageTopRadius'                     => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageRightRadius' => array(
-					'type' => "number",
+				'imageRightRadius'                   => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageBottomRadius' => array(
-					'type' => "number",
+				'imageBottomRadius'                  => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageLeftRadius' => array(
-					'type' => "number",
+				'imageLeftRadius'                    => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageTopRadiusTablet' => array(
-					'type' => "number",
+				'imageTopRadiusTablet'               => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageRightRadiusTablet' => array(
-					'type' => "number",
+				'imageRightRadiusTablet'             => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageBottomRadiusTablet' => array(
-					'type' => "number",
+				'imageBottomRadiusTablet'            => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageLeftRadiusTablet' => array(
-					'type' => "number",
+				'imageLeftRadiusTablet'              => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageTopRadiusMobile' => array(
-					'type' => "number",
+				'imageTopRadiusMobile'               => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageRightRadiusMobile' => array(
-					'type' => "number",
+				'imageRightRadiusMobile'             => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageBottomRadiusMobile' => array(
-					'type' => "number",
+				'imageBottomRadiusMobile'            => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageLeftRadiusMobile' => array(
-					'type' => "number",
+				'imageLeftRadiusMobile'              => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'imageIsRadiusControlConnected' => array(
-					'type' => "boolean",
+				'imageIsRadiusControlConnected'      => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'imageIsRadiusValueUpdated' => array(
-					'type' => "boolean",
+				'imageIsRadiusValueUpdated'          => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'paginationTopRadius' => array(
-					'type' => "number",
+				'paginationTopRadius'                => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationRightRadius' => array(
-					'type' => "number",
+				'paginationRightRadius'              => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationBottomRadius' => array(
-					'type' => "number",
+				'paginationBottomRadius'             => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationLeftRadius' => array(
-					'type' => "number",
+				'paginationLeftRadius'               => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationTopRadiusTablet' => array(
-					'type' => "number",
+				'paginationTopRadiusTablet'          => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationRightRadiusTablet' => array(
-					'type' => "number",
+				'paginationRightRadiusTablet'        => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationBottomRadiusTablet' => array(
-					'type' => "number",
+				'paginationBottomRadiusTablet'       => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationLeftRadiusTablet' => array(
-					'type' => "number",
+				'paginationLeftRadiusTablet'         => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationTopRadiusMobile' => array(
-					'type' => "number",
+				'paginationTopRadiusMobile'          => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationRightRadiusMobile' => array(
-					'type' => "number",
+				'paginationRightRadiusMobile'        => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationBottomRadiusMobile' => array(
-					'type' => "number",
+				'paginationBottomRadiusMobile'       => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'paginationLeftRadiusMobile' => array(
-					'type' => "number",
+				'paginationLeftRadiusMobile'         => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
 				'paginationIsRadiusControlConnected' => array(
-					'type' => "boolean",
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'paginationIsRadiusValueUpdated' => array(
-					'type' => "boolean",
+				'paginationIsRadiusValueUpdated'     => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'textColor'                   => array(
+				'textColor'                          => array(
 					'type'    => 'string',
 					'default' => '#444444',
 				),
-				'previousButtonText'          => array(
+				'previousButtonText'                 => array(
 					'type'    => 'string',
 					'default' => 'Previous',
 				),
-				'nextButtonText'              => array(
+				'nextButtonText'                     => array(
 					'type'    => 'string',
 					'default' => 'Next',
 				),
-				'imagePosition'               => array(
+				'imagePosition'                      => array(
 					'type'    => 'string',
 					'default' => 'top',
 				),
-				'layout'                      => array(
+				'layout'                             => array(
 					'type'    => 'string',
 					'default' => 'boxed',
 				),
-				'metaColor'                   => array(
+				'metaColor'                          => array(
 					'type'    => 'string',
 					'default' => '#444444',
 				),
-				'readMoreLinkColor'           => array(
+				'readMoreLinkColor'                  => array(
 					'type'    => 'string',
 					'default' => '#0066cc',
 				),
-				'readMoreHoverColor'          => array(
+				'readMoreHoverColor'                 => array(
 					'type'    => 'string',
 					'default' => '#0558ab',
 				),
-				'titleColor'                  => array(
+				'titleColor'                         => array(
 					'type'    => 'string',
 					'default' => '#444444',
 				),
-				'titleHoverColor'             => array(
+				'titleHoverColor'                    => array(
 					'type'    => 'string',
 					'default' => '#444444',
 				),
-				'contentPadding'              => array(
+				'contentPadding'                     => array(
 					'type'    => 'number',
 					'default' => 30,
 				),
-				'contentPaddingMobile'        => array(
+				'contentPaddingMobile'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'mobileContentPadding'        => array( // For compatibility with v1.3.2.
+				'mobileContentPadding'               => array( // For compatibility with v1.3.2.
 					'type'    => 'number',
 					'default' => 999,
 				),
-				'contentPaddingTablet'        => array(
+				'contentPaddingTablet'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueFontSize'            => array(
+				'continueFontSize'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueFontFamily'          => array(
+				'continueFontFamily'                 => array(
 					'type'    => 'string',
 					'default' => 'ABeeZee',
 				),
-				'continueFontWeight'          => array(
+				'continueFontWeight'                 => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'continueLineHeight'          => array(
+				'continueLineHeight'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueFontSizeMobile'      => array(
+				'continueFontSizeMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueFontSizeTablet'      => array(
+				'continueFontSizeTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueTextTransform'       => array(
+				'continueTextTransform'              => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'titleFontSize'               => array(
+				'titleFontSize'                      => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleFontSizeMobile'         => array(
+				'titleFontSizeMobile'                => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleFontSizeTablet'         => array(
+				'titleFontSizeTablet'                => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleLineHeight'             => array(
+				'titleLineHeight'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleFontWeight'             => array(
+				'titleFontWeight'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'titleTextTransform'          => array(
+				'titleTextTransform'                 => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'metaFontSize'                => array(
+				'metaFontSize'                       => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaFontSizeMobile'          => array(
+				'metaFontSizeMobile'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaFontSizeTablet'          => array(
+				'metaFontSizeTablet'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaLineHeight'              => array(
+				'metaLineHeight'                     => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaFontWeight'              => array(
+				'metaFontWeight'                     => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'metaTextTransform'           => array(
+				'metaTextTransform'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'titleFontFamily'             => array(
-					'type'    => 'string',
-					'default' => 'ABeeZee',
-				),
-				'metaFontFamily'              => array(
+				'titleFontFamily'                    => array(
 					'type'    => 'string',
 					'default' => 'ABeeZee',
 				),
-				'excerptFontFamily'           => array(
+				'metaFontFamily'                     => array(
 					'type'    => 'string',
 					'default' => 'ABeeZee',
 				),
-				'excerptFontSize'             => array(
+				'excerptFontFamily'                  => array(
+					'type'    => 'string',
+					'default' => 'ABeeZee',
+				),
+				'excerptFontSize'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptFontSizeMobile'       => array(
+				'excerptFontSizeMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptFontSizeTablet'       => array(
+				'excerptFontSizeTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptLineHeight'           => array(
+				'excerptLineHeight'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptFontWeight'           => array(
+				'excerptFontWeight'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'excerptTextTransform'        => array(
+				'excerptTextTransform'               => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'excerptBottomSpacing'        => array(
+				'excerptBottomSpacing'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptBottomSpacingMobile'  => array(
+				'excerptBottomSpacingMobile'         => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptBottomSpacingTablet'  => array(
+				'excerptBottomSpacingTablet'         => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaBottomSpacing'           => array(
+				'metaBottomSpacing'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaBottomSpacingMobile'     => array(
+				'metaBottomSpacingMobile'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaBottomSpacingTablet'     => array(
+				'metaBottomSpacingTablet'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageBottomSpacing'          => array(
+				'imageBottomSpacing'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageBottomSpacingTablet'          => array(
+				'imageBottomSpacingTablet'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageBottomSpacingMobile'          => array(
+				'imageBottomSpacingMobile'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleBottomSpacing'          => array(
+				'titleBottomSpacing'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleBottomSpacingMobile'    => array(
+				'titleBottomSpacingMobile'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'titleBottomSpacingTablet'    => array(
+				'titleBottomSpacingTablet'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'columnGap'                   => array(
+				'columnGap'                          => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGapTablet'             => array(
+				'columnGapTablet'                    => array(
 					'type' => 'number',
 				),
-				'columnGapMobile'             => array(
+				'columnGapMobile'                    => array(
 					'type' => 'number',
 				),
-				'rowGap'                      => array(
+				'rowGap'                             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'rowGapTablet'                => array(
+				'rowGapTablet'                       => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'rowGapMobile'                => array(
+				'rowGapMobile'                       => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBorderWidth'            => array(
+				'blockBorderWidth'                   => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockBorderRadius'           => array(
+				'blockBorderRadius'                  => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockTopRadius'           => array(
+				'blockTopRadius'                     => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockRightRadius'           => array(
+				'blockRightRadius'                   => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockBottomRadius'           => array(
+				'blockBottomRadius'                  => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockLeftRadius'           => array(
+				'blockLeftRadius'                    => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockTopRadiusTablet'           => array(
+				'blockTopRadiusTablet'               => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockRightRadiusTablet'           => array(
+				'blockRightRadiusTablet'             => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockBottomRadiusTablet'           => array(
+				'blockBottomRadiusTablet'            => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockLeftRadiusTablet'           => array(
+				'blockLeftRadiusTablet'              => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockTopRadiusMobile'           => array(
+				'blockTopRadiusMobile'               => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockRightRadiusMobile'           => array(
+				'blockRightRadiusMobile'             => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockBottomRadiusMobile'           => array(
+				'blockBottomRadiusMobile'            => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockLeftRadiusMobile'           => array(
+				'blockLeftRadiusMobile'              => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'blockIsRadiusControlConnected'           => array(
+				'blockIsRadiusControlConnected'      => array(
 					'type'    => 'boolean',
 					'default' => 'false',
 				),
-				'blockIsRadiusValueUpdated'           => array(
+				'blockIsRadiusValueUpdated'          => array(
 					'type'    => 'boolean',
 					'default' => 'false',
 				),
-				'blockBorderStyle'            => array(
+				'blockBorderStyle'                   => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'blockBorderColor'            => array(
+				'blockBorderColor'                   => array(
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'pageLimit'                   => array(
+				'pageLimit'                          => array(
 					'type'    => 'number',
 					'default' => '10',
 				),
-				'taxonomyType'                => array(
+				'taxonomyType'                       => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'block_id'                    => array(
+				'block_id'                           => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'boxShadowColor'              => array(
+				'boxShadowColor'                     => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'boxShadowHOffset'            => array(
+				'boxShadowHOffset'                   => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'boxShadowVOffset'            => array(
+				'boxShadowVOffset'                   => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'boxShadowBlur'               => array(
+				'boxShadowBlur'                      => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'boxShadowSpread'             => array(
+				'boxShadowSpread'                    => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'boxShadowPosition'           => array(
+				'boxShadowPosition'                  => array(
 					'type'    => 'string',
 					'default' => 'outset',
 				),
-				'hoverboxShadowColor'         => array(
+				'hoverboxShadowColor'                => array(
 					'type'    => 'string',
 					'default' => '#cccccc',
 				),
-				'hoverboxShadowHOffset'       => array(
+				'hoverboxShadowHOffset'              => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'hoverboxShadowVOffset'       => array(
+				'hoverboxShadowVOffset'              => array(
 					'type'    => 'number',
 					'default' => '0',
 				),
-				'hoverboxShadowBlur'          => array(
+				'hoverboxShadowBlur'                 => array(
 					'type'    => 'number',
 					'default' => '6',
 				),
-				'hoverboxShadowSpread'        => array(
+				'hoverboxShadowSpread'               => array(
 					'type'    => 'number',
 					'default' => '1',
 				),
-				'hoverboxShadowPosition'      => array(
+				'hoverboxShadowPosition'             => array(
 					'type'    => 'string',
 					'default' => 'outset',
 				),
-				'imageWidth'                  => array(
+				'imageWidth'                         => array(
 					'type' => 'number',
 				),
-				'imageWidthTablet'            => array(
+				'imageWidthTablet'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageWidthMobile'            => array(
+				'imageWidthMobile'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageHeight'                 => array(
+				'imageHeight'                        => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageHeightTablet'           => array(
+				'imageHeightTablet'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'imageHeightMobile'           => array(
+				'imageHeightMobile'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'hideWidget'                 => array(
+				'hideWidget'                         => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetMobile'                 => array(
+				'hideWidgetMobile'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetTablet'                 => array(
+				'hideWidgetTablet'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'z_index'                     => array(
+				'z_index'                            => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'z_indexMobile'              => array(
+				'z_indexMobile'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'z_indexTablet'              => array(
+				'z_indexTablet'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'blockTopMargin' => array(
+				'blockTopMargin'                     => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMargin' => array(
+				'blockBottomMargin'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMargin' => array(
+				'blockLeftMargin'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMargin' => array(
+				'blockRightMargin'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopMarginTablet' => array(
+				'blockTopMarginTablet'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMarginTablet' => array(
+				'blockBottomMarginTablet'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMarginTablet' => array(
+				'blockLeftMarginTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMarginTablet' => array(
+				'blockRightMarginTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopMarginMobile' => array(
+				'blockTopMarginMobile'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMarginMobile' => array(
+				'blockBottomMarginMobile'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMarginMobile' => array(
+				'blockLeftMarginMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMarginMobile' => array(
+				'blockRightMarginMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockIsMarginControlConnected' => array(
+				'blockIsMarginControlConnected'      => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockIsPaddingControlConnected' => array(
+				'blockIsPaddingControlConnected'     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockTopPadding' => array(
+				'blockTopPadding'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopPaddingMobile' => array(
+				'blockTopPaddingMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopPaddingTablet' => array(
+				'blockTopPaddingTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPadding' => array(
+				'blockBottomPadding'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPaddingMobile' => array(
+				'blockBottomPaddingMobile'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPaddingTablet' => array(
+				'blockBottomPaddingTablet'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPadding' => array(
+				'blockLeftPadding'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPaddingMobile' => array(
+				'blockLeftPaddingMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPaddingTablet' => array(
+				'blockLeftPaddingTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPadding' => array(
+				'blockRightPadding'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPaddingMobile' => array(
+				'blockRightPaddingMobile'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPaddingTablet' => array(
+				'blockRightPaddingTablet'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptTypographyColor'  => array(
-					'type'	=> 'string',
+				'excerptTypographyColor'             => array(
+					'type'    => 'string',
 					'default' => '#444444',
 				),
-      			'metaTypographyColor'  => array(
-					'type'	=> 'string',
+				'metaTypographyColor'                => array(
+					'type'    => 'string',
 					'default' => '#444444',
 				),
-      			'blockIsTypographyColorValueUpdated'  => array(
-					'type'	=> 'boolean',
+				'blockIsTypographyColorValueUpdated' => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
 			),

@@ -12,7 +12,7 @@
  * @param Array $attributes Attributes.
  */
 function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attributes ) {
-	$widget_blocks = get_option('widget_block');
+	$widget_blocks = get_option( 'widget_block' );
 	if ( has_block( 'responsive-block-editor-addons/post-carousel' ) ) {
 		wp_enqueue_script(
 			'responsive_block_editor_addons-slick-js',
@@ -25,8 +25,7 @@ function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attr
 		$selector = '.responsive-post-slick-carousel';
 		$js       = 'jQuery( document ).ready( function( $ ) { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).slick( ); } } );';
 		wp_add_inline_script( 'responsive_block_editor_addons-slick-js-post-carousel', $js );
-	}
-	else if ( ! empty( $widget_blocks ) ) {
+	} elseif ( ! empty( $widget_blocks ) ) {
 		foreach ( $widget_blocks as $widget ) {
 			if ( ! empty( $widget['content'] ) ) {
 				wp_enqueue_script(
@@ -36,7 +35,7 @@ function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attr
 					RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 					true
 				);
-		
+
 				$selector = '.responsive-post-slick-carousel';
 				$js       = 'jQuery( document ).ready( function( $ ) { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).slick( ); } } );';
 				wp_add_inline_script( 'responsive_block_editor_addons-slick-js-post-carousel', $js );
@@ -53,8 +52,8 @@ add_action( 'the_post', 'responsive_block_editor_addons_post_carousel_add_fronte
  */
 function post_carousel_generate_script() {
 	global $post;
-	$this_post = $post;
-	$widget_blocks = get_option('widget_block');
+	$this_post     = $post;
+	$widget_blocks = get_option( 'widget_block' );
 
 	if ( ! is_object( $this_post ) ) {
 		return;
@@ -75,7 +74,7 @@ function post_carousel_generate_script() {
 		get_responsive_post_carousel_scripts( $blocks );
 	}
 
-	if(!empty($widget_blocks)) {
+	if ( ! empty( $widget_blocks ) ) {
 		foreach ( $widget_blocks as $widget ) {
 			if ( ! empty( $widget['content'] ) ) {
 				$blocks_from_widgets = responsive_parse_gutenberg_blocks_post_carousel( $widget['content'] );
@@ -83,7 +82,7 @@ function post_carousel_generate_script() {
 				if ( ! is_array( $blocks_from_widgets ) || empty( $blocks_from_widgets ) ) {
 					return;
 				}
-			
+
 				get_responsive_post_carousel_scripts( $blocks_from_widgets );
 			}
 		}
@@ -102,7 +101,6 @@ function responsive_parse_gutenberg_blocks_post_carousel( $content ) {
 	global $wp_version;
 
 	return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
-
 }
 
 /**
@@ -259,62 +257,62 @@ function get_responsive_post_js( $attr, $id ) { 			// @codingStandardsIgnoreStar
  */
 function get_responsive_post_carousel_default_attributes() {
 	return array(
-		'blockAlign'            => 'left',
-		'columns'               => 2,
-		'autoplaySpeed'         => 2000,
-		'autoplay'              => true,
-		'infiniteLoop'          => true,
-		'pauseOnHover'          => true,
-		'transitionSpeed'       => 500,
-		'tcolumns'              => 1,
-		'mcolumns'              => 1,
-		'arrowSize'             => 20,
-		'arrowDots'             => 'arrows_dots',
-		'arrowDotsColor'        => '#333',
-		'arrowBorderSize'       => 1,
-		'arrowBorderRadius'     => 0,
-		'arrowTopRadiusMobile'     => '',
-		'arrowRightRadiusMobile'   => '',
-		'arrowBottomRadiusMobile'  => '',
-		'arrowLeftRadiusMobile'    => '',
-		'arrowTopRadiusTablet'     => '',
-		'arrowRightRadiusTablet'   => '',
-		'arrowBottomRadiusTablet'  => '',
-		'arrowLeftRadiusTablet'    => '',
-		'arrowTopRadius'           => '',
-		'arrowRightRadius'         => '',
-		'arrowBottomRadius'        => '',
-		'arrowLeftRadius'          => '',
-		'postsToShow'           => 6,
-		'displayPostDate'       => true,
-		'displayPostExcerpt'    => true,
-		'displayPostAuthor'     => true,
-		'displayPostImage'      => false,
-		'displayPostLink'       => true,
-		'displayPostTitle'      => true,
-		'postTitleTag'          => 'h3',
-		'align'                 => 'center',
-		'order'                 => 'desc',
-		'orderBy'               => 'date',
-		'readMoreText'          => 'Continue Reading',
-		'offset'                => 0,
-		'excerptLength'         => 20,
-		'postType'              => 'post',
-		'sectionTag'            => 'section',
-		'sectionTitleTag'       => 'h2',
-		'imageSize'             => 'full',
-		'bgColor'               => '#ffffff',
-		'contentPadding'        => 20,
-		'contentPaddingMobile'  => 20,
-		'contentPaddingTablet'  => 20,
-		'columnsTablet'         => '',
-		'columnsMobile'         => '',
-		'metaFontSizeMobile'    => '',
-		'metaFontSizeTablet'    => '',
-		'excerptFontSizeMobile' => '',
-		'excerptFontSizeTablet' => '',
-		'ctaFontSizeMobile'     => '',
-		'ctaFontSizeTablet'     => '',
+		'blockAlign'              => 'left',
+		'columns'                 => 2,
+		'autoplaySpeed'           => 2000,
+		'autoplay'                => true,
+		'infiniteLoop'            => true,
+		'pauseOnHover'            => true,
+		'transitionSpeed'         => 500,
+		'tcolumns'                => 1,
+		'mcolumns'                => 1,
+		'arrowSize'               => 20,
+		'arrowDots'               => 'arrows_dots',
+		'arrowDotsColor'          => '#333',
+		'arrowBorderSize'         => 1,
+		'arrowBorderRadius'       => 0,
+		'arrowTopRadiusMobile'    => '',
+		'arrowRightRadiusMobile'  => '',
+		'arrowBottomRadiusMobile' => '',
+		'arrowLeftRadiusMobile'   => '',
+		'arrowTopRadiusTablet'    => '',
+		'arrowRightRadiusTablet'  => '',
+		'arrowBottomRadiusTablet' => '',
+		'arrowLeftRadiusTablet'   => '',
+		'arrowTopRadius'          => '',
+		'arrowRightRadius'        => '',
+		'arrowBottomRadius'       => '',
+		'arrowLeftRadius'         => '',
+		'postsToShow'             => 6,
+		'displayPostDate'         => true,
+		'displayPostExcerpt'      => true,
+		'displayPostAuthor'       => true,
+		'displayPostImage'        => false,
+		'displayPostLink'         => true,
+		'displayPostTitle'        => true,
+		'postTitleTag'            => 'h3',
+		'align'                   => 'center',
+		'order'                   => 'desc',
+		'orderBy'                 => 'date',
+		'readMoreText'            => 'Continue Reading',
+		'offset'                  => 0,
+		'excerptLength'           => 20,
+		'postType'                => 'post',
+		'sectionTag'              => 'section',
+		'sectionTitleTag'         => 'h2',
+		'imageSize'               => 'full',
+		'bgColor'                 => '#ffffff',
+		'contentPadding'          => 20,
+		'contentPaddingMobile'    => 20,
+		'contentPaddingTablet'    => 20,
+		'columnsTablet'           => '',
+		'columnsMobile'           => '',
+		'metaFontSizeMobile'      => '',
+		'metaFontSizeTablet'      => '',
+		'excerptFontSizeMobile'   => '',
+		'excerptFontSizeTablet'   => '',
+		'ctaFontSizeMobile'       => '',
+		'ctaFontSizeTablet'       => '',
 	);
 }
 
@@ -670,627 +668,627 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 		'responsive-block-editor-addons/post-carousel',
 		array(
 			'attributes'      => array(
-				'blockAlign'              => array(
+				'blockAlign'                         => array(
 					'type'    => 'string',
 					'default' => 'left',
 				),
-				'columns'                 => array(
+				'columns'                            => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'columnsTablet'           => array(
+				'columnsTablet'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'columnsMobile'           => array(
+				'columnsMobile'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'block_id'                => array(
+				'block_id'                           => array(
 					'type'    => 'string',
 					'default' => 1,
 				),
 
-				'tcolumns'                => array(
+				'tcolumns'                           => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'mcolumns'                => array(
+				'mcolumns'                           => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'pauseOnHover'            => array(
+				'pauseOnHover'                       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'infiniteLoop'            => array(
+				'infiniteLoop'                       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'transitionSpeed'         => array(
+				'transitionSpeed'                    => array(
 					'type'    => 'number',
 					'default' => 500,
 				),
-				'autoplay'                => array(
+				'autoplay'                           => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'autoplaySpeed'           => array(
+				'autoplaySpeed'                      => array(
 					'type'    => 'number',
 					'default' => 2000,
 				),
-				'arrowDots'               => array(
+				'arrowDots'                          => array(
 					'type'    => 'string',
 					'default' => 'arrows_dots',
 				),
-				'arrowSize'               => array(
+				'arrowSize'                          => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'arrowBorderSize'         => array(
+				'arrowBorderSize'                    => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'arrowBorderRadius'       => array(
+				'arrowBorderRadius'                  => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowTopRadius' => array(
-					'type' => "number",
+				'arrowTopRadius'                     => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowRightRadius' => array(
-					'type' => "number",
+				'arrowRightRadius'                   => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowBottomRadius' => array(
-					'type' => "number",
+				'arrowBottomRadius'                  => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowLeftRadius' => array(
-					'type' => "number",
+				'arrowLeftRadius'                    => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowTopRadiusTablet' => array(
-					'type' => "number",
+				'arrowTopRadiusTablet'               => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowRightRadiusTablet' => array(
-					'type' => "number",
+				'arrowRightRadiusTablet'             => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowBottomRadiusTablet' => array(
-					'type' => "number",
+				'arrowBottomRadiusTablet'            => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowLeftRadiusTablet' => array(
-					'type' => "number",
+				'arrowLeftRadiusTablet'              => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowTopRadiusMobile' => array(
-					'type' => "number",
+				'arrowTopRadiusMobile'               => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowRightRadiusMobile' => array(
-					'type' => "number",
+				'arrowRightRadiusMobile'             => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowBottomRadiusMobile' => array(
-					'type' => "number",
+				'arrowBottomRadiusMobile'            => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowLeftRadiusMobile' => array(
-					'type' => "number",
+				'arrowLeftRadiusMobile'              => array(
+					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowIsRadiusControlConnected' => array(
-					'type' => "boolean",
+				'arrowIsRadiusControlConnected'      => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
-				'arrowIsRadiusValueUpdated' => array(
-					'type' => "boolean",
+				'arrowIsRadiusValueUpdated'          => array(
+					'type'    => 'boolean',
 					'default' => false,
 				),
 
-				'categories'              => array(
+				'categories'                         => array(
 					'type' => 'string',
 				),
-				'className'               => array(
+				'className'                          => array(
 					'type' => 'string',
 				),
-				'postsToShow'             => array(
+				'postsToShow'                        => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'equalHeight'             => array(
+				'equalHeight'                        => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostDate'         => array(
+				'displayPostDate'                    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostComment'      => array(
+				'displayPostComment'                 => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTaxonomy'     => array(
+				'displayPostTaxonomy'                => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt'      => array(
+				'displayPostExcerpt'                 => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostAuthor'       => array(
+				'displayPostAuthor'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'        => array(
+				'displayPostImage'                   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostLink'         => array(
+				'displayPostLink'                    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'        => array(
+				'displayPostTitle'                   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'postTitleTag'            => array(
+				'postTitleTag'                       => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'align'                   => array(
+				'align'                              => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'order'                   => array(
+				'order'                              => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'                 => array(
+				'orderBy'                            => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'readMoreText'            => array(
+				'readMoreText'                       => array(
 					'type'    => 'string',
 					'default' => 'Continue Reading',
 				),
-				'offset'                  => array(
+				'offset'                             => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'excerptLength'           => array(
+				'excerptLength'                      => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'postType'                => array(
+				'postType'                           => array(
 					'type'    => 'string',
 					'default' => 'post',
 				),
-				'sectionTag'              => array(
+				'sectionTag'                         => array(
 					'type'    => 'string',
 					'default' => 'section',
 				),
-				'sectionTitle'            => array(
+				'sectionTitle'                       => array(
 					'type' => 'string',
 				),
-				'sectionTitleTag'         => array(
+				'sectionTitleTag'                    => array(
 					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'imageSize'               => array(
+				'imageSize'                          => array(
 					'type'    => 'string',
 					'default' => 'full',
 				),
-				'url'                     => array(
+				'url'                                => array(
 					'type'      => 'string',
 					'source'    => 'attribute',
 					'selector'  => 'img',
 					'attribute' => 'src',
 				),
-				'id'                      => array(
+				'id'                                 => array(
 					'type' => 'number',
 				),
-				'bgColor'                 => array(
+				'bgColor'                            => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'titleColor'              => array(
+				'titleColor'                         => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'contentColor'            => array(
+				'contentColor'                       => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'metaColor'               => array(
+				'metaColor'                          => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'arrowDotsColor'          => array(
+				'arrowDotsColor'                     => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'ctaColor'                => array(
+				'ctaColor'                           => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'ctaBackColor'            => array(
+				'ctaBackColor'                       => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'ctaHoverColor'           => array(
+				'ctaHoverColor'                      => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'ctaHoverBackColor'       => array(
+				'ctaHoverBackColor'                  => array(
 					'type'    => 'string',
 					'default' => '#444444',
 				),
-				'ctaBorderColor'          => array(
+				'ctaBorderColor'                     => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaHoverBorderColor'     => array(
+				'ctaHoverBorderColor'                => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaBorderStyle'          => array(
+				'ctaBorderStyle'                     => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'ctaBorderRadius'         => array(
+				'ctaBorderRadius'                    => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'ctaBorderWidth'          => array(
+				'ctaBorderWidth'                     => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'ctaHpadding'             => array(
+				'ctaHpadding'                        => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'ctaVpadding'             => array(
+				'ctaVpadding'                        => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'contentPadding'          => array(
+				'contentPadding'                     => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'contentPaddingMobile'    => array(
+				'contentPaddingMobile'               => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'contentPaddingTablet'    => array(
+				'contentPaddingTablet'               => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'rowGap'                  => array(
+				'rowGap'                             => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGap'               => array(
+				'columnGap'                          => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGapMobile'         => array(
+				'columnGapMobile'                    => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGapTablet'         => array(
+				'columnGapTablet'                    => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'imageSpace'              => array(
+				'imageSpace'                         => array(
 					'type' => 'number',
 				),
-				'titleSpace'              => array(
+				'titleSpace'                         => array(
 					'type' => 'number',
 				),
-				'dateSpace'               => array(
+				'dateSpace'                          => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'excerptSpace'            => array(
+				'excerptSpace'                       => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'ctaSpace'                => array(
+				'ctaSpace'                           => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontSize'           => array(
+				'titleFontSize'                      => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontSizeMobile'     => array(
+				'titleFontSizeMobile'                => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontSizeTablet'     => array(
+				'titleFontSizeTablet'                => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleFontWeight'         => array(
+				'titleFontWeight'                    => array(
 					'type'    => 'number',
 					'default' => 600,
 				),
-				'titleLineHeight'         => array(
+				'titleLineHeight'                    => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'metaFontSize'            => array(
+				'metaFontSize'                       => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'metaFontWeight'          => array(
+				'metaFontWeight'                     => array(
 					'type'    => 'number',
 					'default' => 300,
 				),
-				'metaLineHeight'          => array(
+				'metaLineHeight'                     => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'excerptFontSize'         => array(
+				'excerptFontSize'                    => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'excerptFontWeight'       => array(
+				'excerptFontWeight'                  => array(
 					'type'    => 'number',
 					'default' => 300,
 				),
-				'excerptLineHeight'       => array(
+				'excerptLineHeight'                  => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'ctaFontSize'             => array(
+				'ctaFontSize'                        => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'ctaFontWeight'           => array(
+				'ctaFontWeight'                      => array(
 					'type'    => 'number',
 					'default' => 100,
 				),
-				'ctaLineHeight'           => array(
+				'ctaLineHeight'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'opacity'                 => array(
+				'opacity'                            => array(
 					'type'    => 'number',
 					'default' => 50,
 				),
-				'imagePosition'           => array(
+				'imagePosition'                      => array(
 					'type'    => 'string',
 					'default' => 'top',
 				),
-				'titleFontFamily'         => array(
+				'titleFontFamily'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'metaFontFamily'          => array(
+				'metaFontFamily'                     => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'excerptFontFamily'       => array(
+				'excerptFontFamily'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaFontFamily'           => array(
+				'ctaFontFamily'                      => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'buttonTarget'            => array(
+				'buttonTarget'                       => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'metaFontSizeMobile'      => array(
+				'metaFontSizeMobile'                 => array(
 					'type' => 'number',
 				),
-				'metaFontSizeTablet'      => array(
+				'metaFontSizeTablet'                 => array(
 					'type' => 'number',
 				),
-				'excerptFontSizeMobile'   => array(
+				'excerptFontSizeMobile'              => array(
 					'type' => 'number',
 				),
-				'excerptFontSizeTablet'   => array(
+				'excerptFontSizeTablet'              => array(
 					'type' => 'number',
 				),
-				'ctaFontSizeMobile'       => array(
+				'ctaFontSizeMobile'                  => array(
 					'type' => 'number',
 				),
-				'ctaFontSizeTablet'       => array(
+				'ctaFontSizeTablet'                  => array(
 					'type' => 'number',
 				),
-				'buttoncolorLocation1'    => array(
+				'buttoncolorLocation1'               => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'buttoncolorLocation2'    => array(
+				'buttoncolorLocation2'               => array(
 					'type'    => 'number',
 					'default' => 100,
 				),
-				'buttongradientDirection' => array(
+				'buttongradientDirection'            => array(
 					'type'    => 'number',
 					'default' => 90,
 				),
-				'buttonbackgroundColor1'  => array(
+				'buttonbackgroundColor1'             => array(
 					'type' => 'string',
 				),
-				'buttonbackgroundColor2'  => array(
+				'buttonbackgroundColor2'             => array(
 					'type'    => 'string',
 					'default' => '#fff',
 				),
-				'buttonbackgroundType'    => array(
+				'buttonbackgroundType'               => array(
 					'type'    => 'string',
 					'default' => 'color',
 				),
-				'ctaHpaddingTablet'       => array(
+				'ctaHpaddingTablet'                  => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'ctaHpaddingMobile'       => array(
+				'ctaHpaddingMobile'                  => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'ctaVpaddingTablet'       => array(
+				'ctaVpaddingTablet'                  => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'ctaVpaddingMobile'       => array(
+				'ctaVpaddingMobile'                  => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'buttonHbackgroundType'   => array(
+				'buttonHbackgroundType'              => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'hideWidget'                 => array(
+				'hideWidget'                         => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetMobile'                 => array(
+				'hideWidgetMobile'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetTablet'                 => array(
+				'hideWidgetTablet'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'z_index'    => array(
+				'z_index'                            => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'z_indexMobile'    => array(
+				'z_indexMobile'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'z_indexTablet'    => array(
+				'z_indexTablet'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'blockTopMargin' => array(
+				'blockTopMargin'                     => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMargin' => array(
+				'blockBottomMargin'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMargin' => array(
+				'blockLeftMargin'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMargin' => array(
+				'blockRightMargin'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopMarginTablet' => array(
+				'blockTopMarginTablet'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMarginTablet' => array(
+				'blockBottomMarginTablet'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMarginTablet' => array(
+				'blockLeftMarginTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMarginTablet' => array(
+				'blockRightMarginTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopMarginMobile' => array(
+				'blockTopMarginMobile'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMarginMobile' => array(
+				'blockBottomMarginMobile'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMarginMobile' => array(
+				'blockLeftMarginMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMarginMobile' => array(
+				'blockRightMarginMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockIsMarginControlConnected' => array(
+				'blockIsMarginControlConnected'      => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockIsPaddingControlConnected' => array(
+				'blockIsPaddingControlConnected'     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockTopPadding' => array(
+				'blockTopPadding'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopPaddingMobile' => array(
+				'blockTopPaddingMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopPaddingTablet' => array(
+				'blockTopPaddingTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPadding' => array(
+				'blockBottomPadding'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPaddingMobile' => array(
+				'blockBottomPaddingMobile'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPaddingTablet' => array(
+				'blockBottomPaddingTablet'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPadding' => array(
+				'blockLeftPadding'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPaddingMobile' => array(
+				'blockLeftPaddingMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPaddingTablet' => array(
+				'blockLeftPaddingTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPadding' => array(
+				'blockRightPadding'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPaddingMobile' => array(
+				'blockRightPaddingMobile'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPaddingTablet' => array(
+				'blockRightPaddingTablet'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
 				'blockIsTypographyColorValueUpdated' => array(
-					'type' => 'boolean',
+					'type'    => 'boolean',
 					'default' => false,
 				),
-      			'excerptTypographyColor' => array(
-					'type' => 'string',
+				'excerptTypographyColor'             => array(
+					'type'    => 'string',
 					'default' => '#333333',
 				),
-      			'titleTypographyColor' => array(
-					'type' => 'string',
+				'titleTypographyColor'               => array(
+					'type'    => 'string',
 					'default' => '#333333',
 				),
-      			'metaTypographyColor' => array(
-					'type' => 'string',
+				'metaTypographyColor'                => array(
+					'type'    => 'string',
 					'default' => '#333333',
 				),
 			),
@@ -1424,7 +1422,6 @@ function responsive_block_editor_addons_get_author_info2( $object, $field_name, 
 function responsive_block_editor_addons_get_post_category_info( $object, $field_name, $request ) {
 
 	return get_the_category_list( esc_html__( ', ', 'responsive-block-editor-addons' ), '', $object['id'] );
-
 }
 
 /**

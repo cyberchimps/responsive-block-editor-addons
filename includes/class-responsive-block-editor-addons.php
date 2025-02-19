@@ -65,7 +65,7 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'enqueue_block_assets', array( $this, 'responsive_block_editor_addons_block_assets' ) );
 
-		add_filter( 'block_categories_all', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ), 9999999,2 );
+		add_filter( 'block_categories_all', array( $this, 'responsive_block_editor_addons_add_custom_block_category' ), 9999999, 2 );
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'responsive_block_editor_addons_editor_assets' ) );
 
@@ -108,7 +108,7 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'responsive_register_admin_menu', array( $this, 'rba_register_admin_menu' ) );
 
 		// Add media input script for media input
-		add_action('admin_enqueue_scripts', array($this, 'my_enqueue_media_scripts'));
+		add_action( 'admin_enqueue_scripts', array( $this, 'my_enqueue_media_scripts' ) );
 	}
 
 	/**
@@ -445,7 +445,6 @@ class Responsive_Block_Editor_Addons {
 		 * REST API Endpoints for Layouts.
 		 */
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/layout-endpoints.php';
-
 	}
 
 	/** Adds the Responsive Blocks block category.
@@ -549,7 +548,7 @@ class Responsive_Block_Editor_Addons {
 				'taxonomy_list'                      => $this->get_taxonomy_list(),
 				'home_url'                           => home_url(),
 				'cf7_forms'                          => $this->get_cf7_forms(),
-				'plugin_url'						 =>	plugin_dir_url( dirname( __FILE__ ) )
+				'plugin_url'                         => plugin_dir_url( __DIR__ ),
 			)
 		);
 
@@ -630,7 +629,7 @@ class Responsive_Block_Editor_Addons {
 							'hide_empty' => true,
 							'parent'     => $t_obj->term_id,
 						);
-						$child_cat = get_terms( $child_arg );
+						$child_cat     = get_terms( $child_arg );
 						$child_cat_arr = $child_cat ? $child_cat : null;
 						$related_tax[] = array(
 							'id'            => $t_obj->term_id,
@@ -658,7 +657,7 @@ class Responsive_Block_Editor_Addons {
 							'hide_empty' => false,
 							'parent'     => $t_obj->term_id,
 						);
-						$child_cat_empty_tax = get_terms( $child_arg_empty_tax );
+						$child_cat_empty_tax     = get_terms( $child_arg_empty_tax );
 						$child_cat_empty_tax_arr = $child_cat_empty_tax ? $child_cat_empty_tax : null;
 						$related_tax_empty_tax[] = array(
 							'id'            => $t_obj->term_id,
@@ -733,43 +732,43 @@ class Responsive_Block_Editor_Addons {
 
 		if ( ! is_admin() ) {
 
-			$post = get_post();
-			$widget_blocks = get_option('widget_block');
+			$post          = get_post();
+			$widget_blocks = get_option( 'widget_block' );
 
 			$flag = false;
 
-			if ( ($post && ! empty( $post )) || !empty($widget_blocks) ) {
-				$blocks = [];
+			if ( ( $post && ! empty( $post ) ) || ! empty( $widget_blocks ) ) {
+				$blocks = array();
 
 				/**
- 				* Handle potential 'post_content' null warning.
- 				* This warning typically occurs when users have added widget blocks from the Responsive theme
- 				* but there is no post content to render. This ensures compatibility by preventing
- 				* errors in scenarios where widget blocks exist without posts.
- 				*/
-				if(!empty($post)) {
+				* Handle potential 'post_content' null warning.
+				* This warning typically occurs when users have added widget blocks from the Responsive theme
+				* but there is no post content to render. This ensures compatibility by preventing
+				* errors in scenarios where widget blocks exist without posts.
+				*/
+				if ( ! empty( $post ) ) {
 					$blocks = parse_blocks( $post->post_content );
 				}
 
-				foreach ($widget_blocks as $widget) {
-					if (!empty($widget['content'])) {
+				foreach ( $widget_blocks as $widget ) {
+					if ( ! empty( $widget['content'] ) ) {
 						$flag = true;
 						break;
 					}
 				}
 
-				if(!empty($blocks)) {
+				if ( ! empty( $blocks ) ) {
 					foreach ( $blocks as $block ) {
 						// Retrieve all block names for the current block and its inner blocks.
 						$getBlockNames = $this->rbaGetBlockNames( $block );
-	
+
 						// If true is returned, break out of the loop early.
 						if ( $getBlockNames === true ) {
 							$flag = true;
 							break;
 						}
 						// Check the block names if array is returned.
-						if ( !empty($getBlockNames) ) {
+						if ( ! empty( $getBlockNames ) ) {
 							foreach ( $getBlockNames as $blockName ) {
 								if ( strpos( $blockName, 'responsive-block-editor-addons' ) !== false ) {
 									$flag = true;
@@ -779,7 +778,6 @@ class Responsive_Block_Editor_Addons {
 						}
 					}
 				}
-
 			}
 
 			if ( $flag ) {
@@ -886,23 +884,23 @@ class Responsive_Block_Editor_Addons {
 		);
 	}
 
-	public function rbaGetBlockNames($blocks, &$blockNames = []) {
+	public function rbaGetBlockNames( $blocks, &$blockNames = array() ) {
 
 		// Check if the 'blockName' key exists and store its value
-		if (isset($blocks['blockName'])) {
+		if ( isset( $blocks['blockName'] ) ) {
 			$blockNames[] = $blocks['blockName'];
 
 			// If the blockName contains 'responsive-block-editor-addons', return true immediately.
-			if (strpos($blocks['blockName'], 'responsive-block-editor-addons') !== false) {
+			if ( strpos( $blocks['blockName'], 'responsive-block-editor-addons' ) !== false ) {
 				return true;
 			}
 		}
 
 		// If 'innerBlocks' exists, iterate over each block and call the function recursively.
-		if (isset($blocks['innerBlocks']) && is_array($blocks['innerBlocks'])) {
-			foreach ($blocks['innerBlocks'] as $innerBlock) {
+		if ( isset( $blocks['innerBlocks'] ) && is_array( $blocks['innerBlocks'] ) ) {
+			foreach ( $blocks['innerBlocks'] as $innerBlock ) {
 				// If any recursive call returns true, exit early.
-				if ($this->rbaGetBlockNames($innerBlock, $blockNames) === true) {
+				if ( $this->rbaGetBlockNames( $innerBlock, $blockNames ) === true ) {
 					return true;
 				}
 			}
@@ -1049,19 +1047,21 @@ class Responsive_Block_Editor_Addons {
 	public function responsive_block_editor_addons_admin_init() {
 
 		// Update option autoload value.
-		if( get_option( 'total-responsive-sites-data' ) ) {
+		if ( get_option( 'total-responsive-sites-data' ) ) {
 
 			global $wpdb;
-		
+
 			$option_name = 'total-responsive-sites-data';
 
-			$autoload_value = $wpdb->get_var($wpdb->prepare(
-				"SELECT autoload FROM {$wpdb->options} WHERE option_name = %s",
-				$option_name
-			));
-		
-			if( $autoload_value && 'no' !== $autoload_value ) {
-		
+			$autoload_value = $wpdb->get_var(
+				$wpdb->prepare(
+					"SELECT autoload FROM {$wpdb->options} WHERE option_name = %s",
+					$option_name
+				)
+			);
+
+			if ( $autoload_value && 'no' !== $autoload_value ) {
+
 				$sql = $wpdb->prepare(
 					"UPDATE {$wpdb->options} SET autoload = %s WHERE option_name = %s",
 					'no',
@@ -1069,7 +1069,7 @@ class Responsive_Block_Editor_Addons {
 				);
 
 				// Execute the SQL query
-				$result = $wpdb->query($sql);
+				$result = $wpdb->query( $sql );
 
 			}
 		}
@@ -1128,7 +1128,7 @@ class Responsive_Block_Editor_Addons {
 			update_option( 'responsive_block_editor_addons_review_notice', true );
 		} elseif ( false === (bool) get_transient( 'responsive_block_editor_addons_ask_review_flag' ) && false === get_option( 'responsive_block_editor_addons_review_notice_dismissed' ) ) {
 			$image_url = plugins_url( 'admin/images/responsive-blocks.svg', __DIR__ );
-			echo sprintf(
+			printf(
 				'<div class="notice notice-info rbea-ask-for-review-notice">
 					<div class="rbea-notice-content-wrapper">
 						<div class="rbea-notice-image">
@@ -1158,15 +1158,15 @@ class Responsive_Block_Editor_Addons {
 						<a href="%7$s"><button type="button" class="rbea-ask-review-notice-dismiss"></button></a>
 					</div>
 				</div>',
-				esc_url('https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/'),
+				esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' ),
 				esc_html__( 'Hello! Seems like you have used Responsive Blocks Plugin to build this website — Thanks a ton!', 'responsive-block-editor-addons' ),
 				esc_html__( 'Could you please do us a BIG favor and give it a 5-star rating on WordPress? This would boost our motivation and help other users make a comfortable decision while choosing the Responsive Blocks.', 'responsive-block-editor-addons' ),
 				esc_html__( 'Ok, you deserve it', 'responsive-block-editor-addons' ),
 				esc_html__( 'Nope, maybe later', 'responsive-block-editor-addons' ),
 				esc_html__( 'I already did', 'responsive-block-editor-addons' ),
-				esc_url('?responsive-block-editor-addons-notice-dismissed=true'),
-				esc_url($image_url),
-				esc_url('?responsive-block-editor-addons-review-notice-change-timeout=true')
+				esc_url( '?responsive-block-editor-addons-notice-dismissed=true' ),
+				esc_url( $image_url ),
+				esc_url( '?responsive-block-editor-addons-review-notice-change-timeout=true' )
 			);
 		}
 	}
@@ -1205,12 +1205,12 @@ class Responsive_Block_Editor_Addons {
 		$rbea_path = 'responsive-block-editor-addons/responsive-block-editor-addons.php';
 
 		// Get the current value of 'rbea_plugin_updated' option
-        $exist_rbea_blocks_data_update = get_option( 'rbea_blocks_data_update', false );
+		$exist_rbea_blocks_data_update = get_option( 'rbea_blocks_data_update', false );
 
 		// If the option does not exist, add it with a value of false
-		if ( ! $exist_rbea_blocks_data_update) {
+		if ( ! $exist_rbea_blocks_data_update ) {
 			$rbea_blocks->insert_blocks_data();
-            update_option( 'rbea_blocks_data_update', true );
+			update_option( 'rbea_blocks_data_update', true );
 		}
 
 		if ( ! function_exists( 'get_plugins' ) ) {
@@ -1227,7 +1227,6 @@ class Responsive_Block_Editor_Addons {
 				$rbea_blocks->insert_blocks_data();
 			}
 		}
-
 	}
 
 	/**
@@ -1343,76 +1342,77 @@ class Responsive_Block_Editor_Addons {
 		return new WP_REST_Response( $response_data, 200 );
 	}
 
-	public function register_custom_rest_endpoint()
-	{
+	public function register_custom_rest_endpoint() {
 		register_rest_route(
 			'custom/v1', // Namespace
 			'/responsive-pro-activation-status/', // Route
 			array(
 				'methods'             => 'GET',
-				'callback'            => array($this, 'custom_rest_endpoint_callback'),
+				'callback'            => array( $this, 'custom_rest_endpoint_callback' ),
 				'permission_callback' => '__return_true', // No specific permissions for simplicity
 			)
 		);
 	}
 
-	public function rbea_sync_library()
-	{
+	public function rbea_sync_library() {
 		// Step 1: Get the count from the API hit
-		$count_api_url = 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-ready-sites-requests-count';
-		$count_response = wp_remote_get($count_api_url);
+		$count_api_url  = 'https://ccreadysites.cyberchimps.com/wp-json/wp/v2/get-ready-sites-requests-count';
+		$count_response = wp_remote_get( $count_api_url );
 
-		if (is_wp_error($count_response)) {
+		if ( is_wp_error( $count_response ) ) {
 			wp_send_json_error();
 		}
 
-		$total_count = intval(wp_remote_retrieve_body($count_response));
+		$total_count = intval( wp_remote_retrieve_body( $count_response ) );
 
-		if ($total_count <= 0) {
+		if ( $total_count <= 0 ) {
 			wp_send_json_error();
 		}
 
 		// Step 2: Calculate total pages
-		$per_page = 15;
-		$total_pages = ceil(($total_count * $per_page) / 100);
+		$per_page    = 15;
+		$total_pages = ceil( ( $total_count * $per_page ) / 100 );
 
 		// Step 3: Store total pages in wp_options table
-		update_option('total-responsive-site-pages', $total_pages);
+		update_option( 'total-responsive-site-pages', $total_pages );
 		$all_filtered_data = array();
 
 		// Step 4 and 5: Loop through pages and filter the response
-		for ($page = 1; $page <= $total_pages; $page++) {
+		for ( $page = 1; $page <= $total_pages; $page++ ) {
 
-			$api_url = "https://ccreadysites.cyberchimps.com/wp-json/wp/v2/cyberchimps-sites/?per_page=100&page={$page}";
-			$response = wp_remote_get($api_url);
+			$api_url  = "https://ccreadysites.cyberchimps.com/wp-json/wp/v2/cyberchimps-sites/?per_page=100&page={$page}";
+			$response = wp_remote_get( $api_url );
 
-			if (!is_wp_error($response)) {
-				$data = json_decode(wp_remote_retrieve_body($response), true);
+			if ( ! is_wp_error( $response ) ) {
+				$data = json_decode( wp_remote_retrieve_body( $response ), true );
 
 				// Step 6: Filter the response by page_builder = gutenberg
-				$filtered_data = array_filter($data, function ($site) {
-					return isset($site['page_builder']) && $site['page_builder'] === 'gutenberg';
-				});
-				$all_filtered_data = array_merge($all_filtered_data, $filtered_data);
+				$filtered_data     = array_filter(
+					$data,
+					function ( $site ) {
+						return isset( $site['page_builder'] ) && $site['page_builder'] === 'gutenberg';
+					}
+				);
+				$all_filtered_data = array_merge( $all_filtered_data, $filtered_data );
 
 			}
 		}
-		$filtered_json_all = wp_json_encode($all_filtered_data, JSON_PRETTY_PRINT);
-		update_option('total-responsive-sites-data', $filtered_json_all);
+		$filtered_json_all = wp_json_encode( $all_filtered_data, JSON_PRETTY_PRINT );
+		update_option( 'total-responsive-sites-data', $filtered_json_all );
 
 		// error_log(print_r($filtered_json_all,true));
-		$plugin_dir_path = plugin_dir_path(__FILE__);
-		$relative_path = 'data/';
-		$full_path = $plugin_dir_path . $relative_path;
-		$file_path_all = $full_path . 'responsive-sites-gutenberg-all.json';
+		$plugin_dir_path = plugin_dir_path( __FILE__ );
+		$relative_path   = 'data/';
+		$full_path       = $plugin_dir_path . $relative_path;
+		$file_path_all   = $full_path . 'responsive-sites-gutenberg-all.json';
 
 		file_put_contents($file_path_all, $filtered_json_all); //phpcs:ignore
 
 		// Check if the data was successfully written to the file
-		if ($file_path_all !== false) {
-			wp_send_json_success(array('filtered_data' => $filtered_json_all));
+		if ( $file_path_all !== false ) {
+			wp_send_json_success( array( 'filtered_data' => $filtered_json_all ) );
 		} else {
-			wp_send_json_error(array('message' => 'Error writing filtered data to the file.'));
+			wp_send_json_error( array( 'message' => 'Error writing filtered data to the file.' ) );
 		}
 		wp_send_json_success();
 	}
@@ -1503,7 +1503,6 @@ class Responsive_Block_Editor_Addons {
 		}
 
 		return $response;
-
 	}
 
 	/**
@@ -1522,5 +1521,4 @@ class Responsive_Block_Editor_Addons {
 			array( $this, 'responsive_block_editor_addons_getting_started' ),
 		);
 	}
-
 }

@@ -19,18 +19,18 @@
  */
 class Responsive_Block_Editor_Addons_Helper {
 
-    private static $instance;
+	private static $instance;
 
-    private function __construct() {}
+	private function __construct() {}
 
-    public static function get_instance() {
-        if ( ! isset( self::$instance ) ) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
 
-    /**
+	/**
 	 * Get allowed HTML title tag.
 	 *
 	 * @param string $title_Tag HTML tag of title.
@@ -59,5 +59,4 @@ class Responsive_Block_Editor_Addons_Helper {
 		}
 		return ''; // Return an empty string if not valid
 	}
-
 }
