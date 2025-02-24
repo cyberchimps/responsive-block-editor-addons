@@ -608,7 +608,7 @@ function responsive_block_editor_addons_render_grid_layout( $attributes ) {
 		'parent'     => 0,
 	);
 
-	$new_categories_list = get_terms( $attributes['taxonomyType'] );
+	$new_categories_list = get_terms( array ( 'taxonomy' => $attributes['taxonomyType'], 'hide_empty' => $attributes['showEmptyTaxonomy'] ? false : true ) );
 
 	?>
 	<?php
@@ -676,7 +676,7 @@ function responsive_block_editor_addons_render_list_layout( $attributes ) {
 		'parent'     => 0,
 	);
 
-	$new_categories_list = get_terms( $attributes['taxonomyType'] );
+	$new_categories_list = get_terms( array ( 'taxonomy' => $attributes['taxonomyType'], 'hide_empty' => $attributes['showEmptyTaxonomy'] ? false : true ) );
 
 	?>
 	<?php
