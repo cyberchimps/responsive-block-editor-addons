@@ -22,518 +22,518 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 		array(
 			'attributes'      => array(
 
-				'block_id'               => array(
+				'block_id'                           => array(
 					'type' => 'string',
 				),
 				// General Attributes.
-				'columns'                => array(
+				'columns'                            => array(
 					'type'    => 'number',
 					'default' => 3,
 				),
-				'columnsMobile'          => array(
+				'columnsMobile'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'columnsTablet'          => array(
+				'columnsTablet'                      => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'layout'                 => array(
+				'layout'                             => array(
 					'type'    => 'string',
 					'default' => 'grid',
 				),
-				'postType'               => array(
+				'postType'                           => array(
 					'type'    => 'string',
 					'default' => 'post',
 				),
-				'showEmptyTaxonomy'      => array(
+				'showEmptyTaxonomy'                  => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'showPostCount'          => array(
+				'showPostCount'                      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'taxonomyType'           => array(
+				'taxonomyType'                       => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'categories'             => array(
+				'categories'                         => array(
 					'type' => 'string',
 				),
-				'order'                  => array(
+				'order'                              => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'                => array(
+				'orderBy'                            => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'postsToShow'            => array(
+				'postsToShow'                        => array(
 					'type'    => 'number',
 					'default' => '8',
 				),
-				'noTaxDisplaytext'       => array(
+				'noTaxDisplaytext'                   => array(
 					'type'    => 'string',
 					'default' => __( 'Taxonomy Not Available.', 'responsive-block-editor-addons' ),
 				),
-				'showEmptyTaxonomy'      => array(
+				'showEmptyTaxonomy'                  => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'titleTag'               => array(
+				'titleTag'                           => array(
 					'type'    => 'string',
 					'default' => 'div',
 				),
 				// Grid Alignment Attributes.
-				'alignment'              => array(
+				'alignment'                          => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
 				// List Style Attributes.
-				'listStyle'              => array(
+				'listStyle'                          => array(
 					'type'    => 'string',
 					'default' => 'disc',
 				),
 				// Grid Color Attributes.
-				'bgColor'                => array(
+				'bgColor'                            => array(
 					'type'    => 'string',
 					'default' => '#f5f5f5',
 				),
-				'titleColor'             => array(
+				'titleColor'                         => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'countColor'             => array(
+				'countColor'                         => array(
 					'type'    => 'string',
 					'default' => '#777777',
 				),
 				// List Color Attributes.
-				'listTextColor'          => array(
+				'listTextColor'                      => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'listStyleColor'         => array(
+				'listStyleColor'                     => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'listTextColorHover'     => array(
+				'listTextColorHover'                 => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'listStyleColorHover'    => array(
+				'listStyleColorHover'                => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
 				// Grid Spacing Attributes.
-				'rowGap'                 => array(
+				'rowGap'                             => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGap'              => array(
+				'columnGap'                          => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'rowGapMobile'           => array(
+				'rowGapMobile'                       => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGapMobile'        => array(
+				'columnGapMobile'                    => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'rowGapTablet'           => array(
+				'rowGapTablet'                       => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGapTablet'        => array(
+				'columnGapTablet'                    => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleBottomSpace'       => array(
+				'titleBottomSpace'                   => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'titleBottomSpaceMobile' => array(
+				'titleBottomSpaceMobile'             => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'titleBottomSpaceTablet' => array(
+				'titleBottomSpaceTablet'             => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'contentPadding'         => array(
+				'contentPadding'                     => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'contentPaddingMobile'   => array(
+				'contentPaddingMobile'               => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'contentPaddingTablet'   => array(
+				'contentPaddingTablet'               => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
 				// List Spacing Attributes.
-				'listBottomMargin'       => array(
+				'listBottomMargin'                   => array(
 					'type'    => 'number',
 					'default' => 5,
 				),
-				'listBottomMarginMobile' => array(
+				'listBottomMarginMobile'             => array(
 					'type'    => 'number',
 					'default' => 5,
 				),
-				'listBottomMarginTablet' => array(
+				'listBottomMarginTablet'             => array(
 					'type'    => 'number',
 					'default' => 5,
 				),
-				'listTopMargin'          => array(
+				'listTopMargin'                      => array(
 					'type'    => 'number',
 					'default' => 5,
 				),
-				'listTopMarginMobile'    => array(
+				'listTopMarginMobile'                => array(
 					'type'    => 'number',
 					'default' => 5,
 				),
-				'listTopMarginTablet'    => array(
+				'listTopMarginTablet'                => array(
 					'type'    => 'number',
 					'default' => 5,
 				),
 				// Grid Styling Attributes - Typography.
-				'titleFontFamily'        => array(
+				'titleFontFamily'                    => array(
 					'type' => 'string',
 				),
-				'titleFontSize'          => array(
+				'titleFontSize'                      => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'titleFontSizeMobile'    => array(
+				'titleFontSizeMobile'                => array(
 					'type'    => 'number',
 					'default' => 14,
 				),
-				'titleFontSizeTablet'    => array(
+				'titleFontSizeTablet'                => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'titleFontWeight'        => array(
+				'titleFontWeight'                    => array(
 					'type' => 'string',
 				),
-				'titleLineHeight'        => array(
+				'titleLineHeight'                    => array(
 					'type' => 'number',
 				),
-				'titleLineHeightMobile'  => array(
+				'titleLineHeightMobile'              => array(
 					'type' => 'number',
 				),
-				'titleLineHeightTablet'  => array(
+				'titleLineHeightTablet'              => array(
 					'type' => 'number',
 				),
-				'countFontFamily'        => array(
+				'countFontFamily'                    => array(
 					'type' => 'string',
 				),
-				'countFontSize'          => array(
+				'countFontSize'                      => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'countFontSizeMobile'    => array(
+				'countFontSizeMobile'                => array(
 					'type'    => 'number',
 					'default' => 14,
 				),
-				'countFontSizeTablet'    => array(
+				'countFontSizeTablet'                => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'countFontWeight'        => array(
+				'countFontWeight'                    => array(
 					'type' => 'string',
 				),
-				'countLineHeight'        => array(
+				'countLineHeight'                    => array(
 					'type' => 'number',
 				),
-				'countLineHeightMobile'  => array(
+				'countLineHeightMobile'              => array(
 					'type' => 'number',
 				),
-				'countLineHeightTablet'  => array(
+				'countLineHeightTablet'              => array(
 					'type' => 'number',
 				),
 				// Grid Styling Attributes - Border.
-				'gridBorderStyle'        => array(
+				'gridBorderStyle'                    => array(
 					'type'    => 'string',
 					'default' => 'solid',
 				),
-				'gridBorderWidth'        => array(
+				'gridBorderWidth'                    => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'gridBorderRadius'       => array(
+				'gridBorderRadius'                   => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'gridTopRadius' => array(
-					'type' => 'number',
+				'gridTopRadius'                      => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridRightRadius' => array(
-					'type' => 'number',
+				),
+				'gridRightRadius'                    => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridBottomRadius' => array(
-					'type' => 'number',
+				),
+				'gridBottomRadius'                   => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridLeftRadius' => array(
-					'type' => 'number',
+				),
+				'gridLeftRadius'                     => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridTopRadiusTablet' => array(
-					'type' => 'number',
+				),
+				'gridTopRadiusTablet'                => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridRightRadiusTablet' => array(
-					'type' => 'number',
+				),
+				'gridRightRadiusTablet'              => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridBottomRadiusTablet' => array(
-					'type' => 'number',
+				),
+				'gridBottomRadiusTablet'             => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridLeftRadiusTablet' => array(
-					'type' => 'number',
+				),
+				'gridLeftRadiusTablet'               => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridTopRadiusMobile' => array(
-					'type' => 'number',
+				),
+				'gridTopRadiusMobile'                => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridRightRadiusMobile' => array(
-					'type' => 'number',
+				),
+				'gridRightRadiusMobile'              => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridBottomRadiusMobile' => array(
-					'type' => 'number',
+				),
+				'gridBottomRadiusMobile'             => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridLeftRadiusMobile' => array(
-					'type' => 'number',
+				),
+				'gridLeftRadiusMobile'               => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'gridIsRadiusControlConnected' => array(
-						'type' => 'boolean',
-						'default' => false,
-					),
-				  'gridIsRadiusValueUpdated' => array(
-					'type' => 'boolean',
+				),
+				'gridIsRadiusControlConnected'       => array(
+					'type'    => 'boolean',
 					'default' => false,
-				  ),
-				'gridBorderColor'        => array(
+				),
+				'gridIsRadiusValueUpdated'           => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'gridBorderColor'                    => array(
 					'type'    => 'string',
 					'default' => '#e0e0e0',
 				),
 				// Grid Styling Attribute -  Box Shadow.
-				'boxShadow'              => array(
+				'boxShadow'                          => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'boxShadowColor'         => array(
+				'boxShadowColor'                     => array(
 					'type' => 'string',
 				),
-				'boxShadowHOffset'       => array(
+				'boxShadowHOffset'                   => array(
 					'type' => 'number',
 				),
-				'boxShadowVOffset'       => array(
+				'boxShadowVOffset'                   => array(
 					'type' => 'number',
 				),
-				'boxShadowBlur'          => array(
+				'boxShadowBlur'                      => array(
 					'type' => 'number',
 				),
-				'boxShadowSpread'        => array(
+				'boxShadowSpread'                    => array(
 					'type' => 'number',
 				),
-				'boxShadowPosition'      => array(
+				'boxShadowPosition'                  => array(
 					'type'    => 'string',
 					'default' => 'outset',
 				),
 				// List Styling Attributes - Typography.
-				'listFontFamily'         => array(
+				'listFontFamily'                     => array(
 					'type' => 'string',
 				),
-				'listFontSize'           => array(
+				'listFontSize'                       => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'listFontSizeMobile'     => array(
+				'listFontSizeMobile'                 => array(
 					'type'    => 'number',
 					'default' => 14,
 				),
-				'listFontSizeTablet'     => array(
+				'listFontSizeTablet'                 => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'listFontWeight'         => array(
+				'listFontWeight'                     => array(
 					'type' => 'string',
 				),
-				'listLineHeight'         => array(
+				'listLineHeight'                     => array(
 					'type' => 'number',
 				),
-				'listLineHeightMobile'   => array(
+				'listLineHeightMobile'               => array(
 					'type' => 'number',
 				),
-				'listLineHeightTablet'   => array(
+				'listLineHeightTablet'               => array(
 					'type' => 'number',
 				),
 				// List Styling Attributes - Separator.
-				'separatorStyle'         => array(
+				'separatorStyle'                     => array(
 					'type'    => 'string',
 					'default' => 'solid',
 				),
-				'separatorColor'         => array(
+				'separatorColor'                     => array(
 					'type'    => 'string',
 					'default' => '#b2b4b5',
 				),
-				'separatorWidth'         => array(
+				'separatorWidth'                     => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'taxonomyAvailable'      => array(
+				'taxonomyAvailable'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'hideWidget'                 => array(
+				'hideWidget'                         => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetMobile'                 => array(
+				'hideWidgetMobile'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetTablet'                 => array(
+				'hideWidgetTablet'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'z_index'         => array(
+				'z_index'                            => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'z_indexMobile'    => array(
+				'z_indexMobile'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'z_indexTablet'   => array(
+				'z_indexTablet'                      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'blockTopMargin' => array(
+				'blockTopMargin'                     => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockBottomMargin' => array(
+				'blockBottomMargin'                  => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockLeftMargin' => array(
+				'blockLeftMargin'                    => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockRightMargin' => array(
+				'blockRightMargin'                   => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockTopMarginTablet' => array(
+				'blockTopMarginTablet'               => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockBottomMarginTablet' => array(
+				'blockBottomMarginTablet'            => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockLeftMarginTablet' => array(
+				'blockLeftMarginTablet'              => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockRightMarginTablet' => array(
+				'blockRightMarginTablet'             => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockTopMarginMobile' => array(
+				'blockTopMarginMobile'               => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockBottomMarginMobile' => array(
+				'blockBottomMarginMobile'            => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockLeftMarginMobile' => array(
+				'blockLeftMarginMobile'              => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockRightMarginMobile' => array(
+				'blockRightMarginMobile'             => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockIsMarginControlConnected' => array(
+				'blockIsMarginControlConnected'      => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockIsPaddingControlConnected' => array(
+				'blockIsPaddingControlConnected'     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockTopPadding' => array(
+				'blockTopPadding'                    => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockTopPaddingMobile' => array(
+				'blockTopPaddingMobile'              => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockTopPaddingTablet' => array(
+				'blockTopPaddingTablet'              => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockBottomPadding' => array(
+				'blockBottomPadding'                 => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockBottomPaddingMobile' => array(
+				'blockBottomPaddingMobile'           => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockBottomPaddingTablet' => array(
+				'blockBottomPaddingTablet'           => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockLeftPadding' => array(
+				'blockLeftPadding'                   => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockLeftPaddingMobile' => array(
+				'blockLeftPaddingMobile'             => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockLeftPaddingTablet' => array(
+				'blockLeftPaddingTablet'             => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockRightPadding' => array(
+				'blockRightPadding'                  => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockRightPaddingMobile' => array(
+				'blockRightPaddingMobile'            => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'blockRightPaddingTablet' => array(
+				'blockRightPaddingTablet'            => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
 				'blockIsTypographyColorValueUpdated' => array(
-					'type'	=> 'boolean',
+					'type'    => 'boolean',
 					'default' => false,
 				),
-      			'countTypographyColor' => array(
-					'type'	=> 'string',
+				'countTypographyColor'               => array(
+					'type'    => 'string',
 					'default' => '#777777',
 				),
-      			'titleTypographyColor' => array(
-					'type'	=> 'string',
+				'titleTypographyColor'               => array(
+					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
 			),
@@ -598,8 +598,8 @@ function responsive_block_editor_addons_render_grid_layout( $attributes ) {
 	$title_tag     = $attributes['titleTag'];
 
 	$helper                = Responsive_Block_Editor_Addons_Helper::get_instance();
-	$array_of_allowed_HTML = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
-	$title_tag             = $helper->rbea_post_title_tag_allowed_html( $title_tag, $array_of_allowed_HTML, 'section' );
+	$array_of_allowed_html = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+	$title_tag             = $helper->rbea_post_title_tag_allowed_html( $title_tag, $array_of_allowed_html, 'section' );
 
 	$pt            = get_post_type_object( $post_type );
 	$singular_name = $pt->labels->singular_name;
@@ -666,8 +666,8 @@ function responsive_block_editor_addons_render_list_layout( $attributes ) {
 	$separator_style = $attributes['separatorStyle'];
 
 	$helper                = Responsive_Block_Editor_Addons_Helper::get_instance();
-	$array_of_allowed_HTML = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
-	$title_tag             = $helper->rbea_post_title_tag_allowed_html( $title_tag, $array_of_allowed_HTML, 'section' );
+	$array_of_allowed_html = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
+	$title_tag             = $helper->rbea_post_title_tag_allowed_html( $title_tag, $array_of_allowed_html, 'section' );
 
 	$pt            = get_post_type_object( $post_type );
 	$singular_name = $pt->labels->singular_name;
@@ -739,9 +739,9 @@ function responsive_block_editor_addons_render_list_layout( $attributes ) {
  */
 function responsive_block_editor_addons_sanitize_title_tag_taxonomy_list( $attributes ) {
 	$helper                  = Responsive_Block_Editor_Addons_Helper::get_instance();
-	$array_of_allowed_HTML   = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', );
+	$array_of_allowed_html   = array( 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6' );
 	$taxonomy_list_title_tag = $attributes['titleTag'];
-	$taxonomy_list_title_tag = $helper->rbea_post_title_tag_allowed_html( $taxonomy_list_title_tag, $array_of_allowed_HTML, 'div' );
+	$taxonomy_list_title_tag = $helper->rbea_post_title_tag_allowed_html( $taxonomy_list_title_tag, $array_of_allowed_html, 'div' );
 	$attributes['titleTag']  = $taxonomy_list_title_tag;
 	return $attributes;
 }

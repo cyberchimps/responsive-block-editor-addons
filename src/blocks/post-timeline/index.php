@@ -227,8 +227,8 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 					$post_title_tag = 'h2';
 				}
 
-				$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
-				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_HTML, 'h3' );
+				$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
+				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_html, 'h3' );
 
 				$post_grid_markup .= sprintf(
 					'<%3$s class="responsive-block-editor-addons-block-post-timeline-title"><a class="responsive-block-editor-addons-block-post-timeline-title-heading" href="%1$s" rel="bookmark">%2$s</a></%3$s>',
@@ -386,7 +386,7 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 				'</section>'
 			);
 
-			$index++;
+			++$index;
 
 		}
 
@@ -448,8 +448,8 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 				$section_title_tag = 'h2';
 			}
 
-			$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
-			$section_title_tag     = $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_HTML, 'h2' );
+			$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
+			$section_title_tag     = $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_html, 'h2' );
 
 			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-grid-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {
@@ -458,9 +458,9 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 
 		/* Post grid section tag */
 		if ( isset( $attributes['sectionTag'] ) ) {
-			$section_tag = $attributes['sectionTag'];
-			$array_of_allowed_HTML = array( 'div', 'header', 'section', 'article', 'main', 'aside', 'footer' );
-			$section_tag           = $helper->rbea_post_title_tag_allowed_html( $section_tag, $array_of_allowed_HTML, 'section' );
+			$section_tag           = $attributes['sectionTag'];
+			$array_of_allowed_html = array( 'div', 'header', 'section', 'article', 'main', 'aside', 'footer' );
+			$section_tag           = $helper->rbea_post_title_tag_allowed_html( $section_tag, $array_of_allowed_html, 'section' );
 		} else {
 			$section_tag = 'section';
 		}
@@ -527,669 +527,669 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 		'responsive-block-editor-addons/post-timeline',
 		array(
 			'attributes'      => array(
-				'categories'             => array(
+				'categories'                         => array(
 					'type' => 'string',
 				),
-				'className'              => array(
+				'className'                          => array(
 					'type' => 'string',
 				),
-				'postsToShow'            => array(
+				'postsToShow'                        => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'displayPostDate'        => array(
+				'displayPostDate'                    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt'     => array(
+				'displayPostExcerpt'                 => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostAuthor'      => array(
+				'displayPostAuthor'                  => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'       => array(
+				'displayPostImage'                   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostLink'        => array(
+				'displayPostLink'                    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'       => array(
+				'displayPostTitle'                   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displaySectionTitle'    => array(
+				'displaySectionTitle'                => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'postTitleTag'           => array(
+				'postTitleTag'                       => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'postLayout'             => array(
+				'postLayout'                         => array(
 					'type'    => 'string',
 					'default' => 'grid',
 				),
-				'columns'                => array(
+				'columns'                            => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'align'                  => array(
+				'align'                              => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'timelinAlignment'       => array(
+				'timelinAlignment'                   => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'arrowlinAlignment'      => array(
+				'arrowlinAlignment'                  => array(
 					'type'    => 'string',
 					'default' => 'center',
 				),
-				'width'                  => array(
+				'width'                              => array(
 					'type'    => 'string',
 					'default' => 'wide',
 				),
-				'order'                  => array(
+				'order'                              => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'                => array(
+				'orderBy'                            => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'readMoreText'           => array(
+				'readMoreText'                       => array(
 					'type'    => 'string',
 					'default' => 'Continue Reading',
 				),
-				'offset'                 => array(
+				'offset'                             => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'excerptLength'          => array(
+				'excerptLength'                      => array(
 					'type'    => 'number',
 					'default' => 55,
 				),
-				'postType'               => array(
+				'postType'                           => array(
 					'type'    => 'string',
 					'default' => 'post',
 				),
-				'sectionTag'             => array(
+				'sectionTag'                         => array(
 					'type'    => 'string',
 					'default' => 'section',
 				),
-				'sectionTitle'           => array(
+				'sectionTitle'                       => array(
 					'type' => 'string',
 				),
-				'sectionTitleTag'        => array(
+				'sectionTitleTag'                    => array(
 					'type'    => 'string',
 					'default' => 'h2',
 				),
-				'imageSize'              => array(
+				'imageSize'                          => array(
 					'type'    => 'string',
 					'default' => 'full',
 				),
-				'url'                    => array(
+				'url'                                => array(
 					'type'      => 'string',
 					'source'    => 'attribute',
 					'selector'  => 'img',
 					'attribute' => 'src',
 				),
-				'id'                     => array(
+				'id'                                 => array(
 					'type' => 'number',
 				),
-				'bgColor'                => array(
+				'bgColor'                            => array(
 					'type'    => 'string',
 					'default' => '#e4e4e4',
 				),
-				'textColor'              => array(
+				'textColor'                          => array(
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'contentPadding'         => array(
+				'contentPadding'                     => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'contentPaddingMobile'   => array(
+				'contentPaddingMobile'               => array(
 					'type' => 'number',
 				),
-				'contentPaddingTablet'   => array(
+				'contentPaddingTablet'               => array(
 					'type' => 'number',
 				),
-				'authorSpace'            => array(
+				'authorSpace'                        => array(
 					'type' => 'number',
 				),
-				'excerptSpace'           => array(
+				'excerptSpace'                       => array(
 					'type' => 'number',
 				),
-				'excerptSpaceTablet'     => array(
+				'excerptSpaceTablet'                 => array(
 					'type' => 'number',
 				),
-				'excerptSpaceMobile'     => array(
+				'excerptSpaceMobile'                 => array(
 					'type' => 'number',
 				),
-				'blockSpace'             => array(
+				'blockSpace'                         => array(
 					'type' => 'number',
 				),
-				'blockSpaceTablet'       => array(
+				'blockSpaceTablet'                   => array(
 					'type' => 'number',
 				),
-				'blockSpaceMobile'       => array(
+				'blockSpaceMobile'                   => array(
 					'type' => 'number',
 				),
-				'headingSpace'           => array(
+				'headingSpace'                       => array(
 					'type' => 'number',
 				),
-				'headingSpaceTablet'     => array(
+				'headingSpaceTablet'                 => array(
 					'type' => 'number',
 				),
-				'headingSpaceMobile'     => array(
+				'headingSpaceMobile'                 => array(
 					'type' => 'number',
 				),
-				'headingColor'           => array(
+				'headingColor'                       => array(
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'authorColor'            => array(
+				'authorColor'                        => array(
 					'type'    => 'string',
 					'default' => '#626e81',
 				),
-				'authorSpaceTablet'      => array(
+				'authorSpaceTablet'                  => array(
 					'type' => 'number',
 				),
-				'authorSpaceMobile'      => array(
+				'authorSpaceMobile'                  => array(
 					'type' => 'number',
 				),
-				'continueColor'          => array(
+				'continueColor'                      => array(
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'dateFontFamily'         => array(
+				'dateFontFamily'                     => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'headingFontFamily'      => array(
+				'headingFontFamily'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'authorFontFamily'       => array(
+				'authorFontFamily'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'contentFontFamily'      => array(
+				'contentFontFamily'                  => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'continueFontFamily'     => array(
+				'continueFontFamily'                 => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'connectorColor'         => array(
+				'connectorColor'                     => array(
 					'type'    => 'string',
 					'default' => '#eeeeee',
 				),
-				'dateFontSize'           => array(
+				'dateFontSize'                       => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'dateFontSizeMobile'     => array(
+				'dateFontSizeMobile'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'dateFontSizeTablet'     => array(
+				'dateFontSizeTablet'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'dateFontWeight'         => array(
+				'dateFontWeight'                     => array(
 					'type'    => 'string',
 					'default' => 400,
 				),
-				'dateLineHeight'         => array(
+				'dateLineHeight'                     => array(
 					'type'    => 'number',
 					'default' => 1.75,
 				),
-				'headingFontSize'        => array(
+				'headingFontSize'                    => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'headingFontSizeMobile'  => array(
+				'headingFontSizeMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'headingFontSizeTablet'  => array(
+				'headingFontSizeTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'headingFontWeight'      => array(
+				'headingFontWeight'                  => array(
 					'type'    => 'string',
 					'default' => 700,
 				),
-				'headingLineHeight'      => array(
+				'headingLineHeight'                  => array(
 					'type'    => 'number',
 					'default' => 1.5,
 				),
-				'authorFontSize'         => array(
+				'authorFontSize'                     => array(
 					'type'    => 'number',
 					'default' => 14,
 				),
-				'authorFontSizeMobile'   => array(
+				'authorFontSizeMobile'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'authorFontSizeTablet'   => array(
+				'authorFontSizeTablet'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'authorFontWeight'       => array(
+				'authorFontWeight'                   => array(
 					'type'    => 'string',
 					'default' => 400,
 				),
-				'authorLineHeight'       => array(
+				'authorLineHeight'                   => array(
 					'type'    => 'number',
 					'default' => 1.5,
 				),
-				'contentFontSize'        => array(
+				'contentFontSize'                    => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'contentFontSizeMobile'  => array(
+				'contentFontSizeMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'contentFontSizeTablet'  => array(
+				'contentFontSizeTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'contentFontWeight'      => array(
+				'contentFontWeight'                  => array(
 					'type'    => 'string',
 					'default' => 400,
 				),
-				'contentLineHeight'      => array(
+				'contentLineHeight'                  => array(
 					'type'    => 'number',
 					'default' => 1.75,
 				),
-				'continueFontSize'       => array(
+				'continueFontSize'                   => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'continueFontSizeMobile' => array(
+				'continueFontSizeMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueFontSizeTablet' => array(
+				'continueFontSizeTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'continueFontWeight'     => array(
+				'continueFontWeight'                 => array(
 					'type'    => 'string',
 					'default' => 700,
 				),
-				'continueLineHeight'     => array(
+				'continueLineHeight'                 => array(
 					'type'    => 'number',
 					'default' => 1.75,
 				),
-				'icon'                   => array(
+				'icon'                               => array(
 					'type'    => 'string',
 					'default' => 'fa fa-calendar-alt',
 				),
-				'iconSize'               => array(
+				'iconSize'                           => array(
 					'type'    => 'number',
 					'default' => 16,
 				),
-				'bgSize'                 => array(
+				'bgSize'                             => array(
 					'type'    => 'number',
 					'default' => 35,
 				),
-				'borderWidth'            => array(
+				'borderWidth'                        => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'connectorWidth'         => array(
+				'connectorWidth'                     => array(
 					'type'    => 'number',
 					'default' => 3,
 				),
-				'iconColor'              => array(
+				'iconColor'                          => array(
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'separatorBg'            => array(
+				'separatorBg'                        => array(
 					'type'    => 'string',
 					'default' => '#eee',
 				),
-				'separatorBorder'        => array(
+				'separatorBorder'                    => array(
 					'type'    => 'string',
 					'default' => '#eee',
 				),
-				'separatorFillColor'     => array(
+				'separatorFillColor'                 => array(
 					'type'    => 'string',
 					'default' => '#61ce70',
 				),
-				'iconFocus'              => array(
+				'iconFocus'                          => array(
 					'type'    => 'string',
 					'default' => '#fff',
 				),
-				'iconBgFocus'            => array(
+				'iconBgFocus'                        => array(
 					'type'    => 'string',
 					'default' => '#61ce70',
 				),
-				'borderFocus'            => array(
+				'borderFocus'                        => array(
 					'type'    => 'string',
 					'default' => '#5cb85c',
 				),
-				'continuebgColor'        => array(
+				'continuebgColor'                    => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'borderColor'            => array(
+				'borderColor'                        => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'hColor'                 => array(
+				'hColor'                             => array(
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'continuebghColor'       => array(
+				'continuebghColor'                   => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'borderHColor'           => array(
+				'borderHColor'                       => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'target'                 => array(
+				'target'                             => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'borderRadius'           => array(
+				'borderRadius'                       => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				 'blockTopRadius' => array(
-					'type' => "number",
+				'blockTopRadius'                     => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockRightRadius' => array(
-					'type' => "number",
+				),
+				'blockRightRadius'                   => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockBottomRadius' => array(
-					'type' => "number",
+				),
+				'blockBottomRadius'                  => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockLeftRadius' => array(
-					'type' => "number",
+				),
+				'blockLeftRadius'                    => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockTopRadiusTablet' => array(
-					'type' => "number",
+				),
+				'blockTopRadiusTablet'               => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockRightRadiusTablet' => array(
-					'type' => "number",
+				),
+				'blockRightRadiusTablet'             => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockBottomRadiusTablet' => array(
-					'type' => "number",
+				),
+				'blockBottomRadiusTablet'            => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockLeftRadiusTablet' => array(
-					'type' => "number",
+				),
+				'blockLeftRadiusTablet'              => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockTopRadiusMobile' => array(
-					'type' => "number",
+				),
+				'blockTopRadiusMobile'               => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockRightRadiusMobile' => array(
-					'type' => "number",
+				),
+				'blockRightRadiusMobile'             => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockBottomRadiusMobile' => array(
-					'type' => "number",
+				),
+				'blockBottomRadiusMobile'            => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockLeftRadiusMobile' => array(
-					'type' => "number",
+				),
+				'blockLeftRadiusMobile'              => array(
+					'type'    => 'number',
 					'default' => 0,
-				  ),
-				  'blockIsRadiusControlConnected' => array(
-					'type' => "boolean",
+				),
+				'blockIsRadiusControlConnected'      => array(
+					'type'    => 'boolean',
 					'default' => false,
-				  ),
-				  'blockIsRadiusValueUpdated' => array(
-					'type' => "boolean",
+				),
+				'blockIsRadiusValueUpdated'          => array(
+					'type'    => 'boolean',
 					'default' => false,
-				  ),
-				'verSpace'               => array(
+				),
+				'verSpace'                           => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'verSpaceTablet'         => array(
+				'verSpaceTablet'                     => array(
 					'type' => 'number',
 				),
-				'verSpaceMobile'         => array(
+				'verSpaceMobile'                     => array(
 					'type' => 'number',
 				),
-				'horSpace'               => array(
+				'horSpace'                           => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'horSpaceTablet'         => array(
+				'horSpaceTablet'                     => array(
 					'type' => 'number',
 				),
-				'horSpaceMobile'         => array(
+				'horSpaceMobile'                     => array(
 					'type' => 'number',
 				),
-				'stack'                  => array(
+				'stack'                              => array(
 					'type'    => 'string',
 					'default' => 'mobile',
 				),
-				'boxShadowColor'         => array(
+				'boxShadowColor'                     => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'boxShadowPosition'      => array(
+				'boxShadowPosition'                  => array(
 					'type'    => 'string',
 					'default' => 'outset',
 				),
-				'boxShadowHOffset'       => array(
+				'boxShadowHOffset'                   => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'boxShadowVOffset'       => array(
+				'boxShadowVOffset'                   => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'boxShadowBlur'          => array(
+				'boxShadowBlur'                      => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'boxShadowSpread'        => array(
+				'boxShadowSpread'                    => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'taxonomyType'           => array(
+				'taxonomyType'                       => array(
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'block_id'               => array(
+				'block_id'                           => array(
 					'type'    => 'string',
 					'default' => 'not_set',
 				),
-				'hideWidget'                 => array(
+				'hideWidget'                         => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetMobile'                 => array(
+				'hideWidgetMobile'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'hideWidgetTablet'                 => array(
+				'hideWidgetTablet'                   => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'z_index'               => array(
-					'type'    => 'number',
-					'default' => 1,
-				), 
-				'z_indexMobile'         => array(
-					'type'    => 'number',
-					'default' => 1,
-				),  
-				'z_indexTablet'         => array(
+				'z_index'                            => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'blockTopMargin' => array(
+				'z_indexMobile'                      => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'z_indexTablet'                      => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'blockTopMargin'                     => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMargin' => array(
+				'blockBottomMargin'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMargin' => array(
+				'blockLeftMargin'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMargin' => array(
+				'blockRightMargin'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopMarginTablet' => array(
+				'blockTopMarginTablet'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMarginTablet' => array(
+				'blockBottomMarginTablet'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMarginTablet' => array(
+				'blockLeftMarginTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMarginTablet' => array(
+				'blockRightMarginTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopMarginMobile' => array(
+				'blockTopMarginMobile'               => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomMarginMobile' => array(
+				'blockBottomMarginMobile'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftMarginMobile' => array(
+				'blockLeftMarginMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightMarginMobile' => array(
+				'blockRightMarginMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockIsMarginControlConnected' => array(
+				'blockIsMarginControlConnected'      => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockIsPaddingControlConnected' => array(
+				'blockIsPaddingControlConnected'     => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'blockTopPadding' => array(
+				'blockTopPadding'                    => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopPaddingMobile' => array(
+				'blockTopPaddingMobile'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockTopPaddingTablet' => array(
+				'blockTopPaddingTablet'              => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPadding' => array(
+				'blockBottomPadding'                 => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPaddingMobile' => array(
+				'blockBottomPaddingMobile'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockBottomPaddingTablet' => array(
+				'blockBottomPaddingTablet'           => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPadding' => array(
+				'blockLeftPadding'                   => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPaddingMobile' => array(
+				'blockLeftPaddingMobile'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockLeftPaddingTablet' => array(
+				'blockLeftPaddingTablet'             => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPadding' => array(
+				'blockRightPadding'                  => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPaddingMobile' => array(
+				'blockRightPaddingMobile'            => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'blockRightPaddingTablet' => array(
+				'blockRightPaddingTablet'            => array(
 					'type'    => 'number',
 					'default' => '',
-				),    
+				),
 				'blockIsTypographyColorValueUpdated' => array(
-					'type' => 'boolean',
+					'type'    => 'boolean',
 					'default' => false,
 				),
-      			'headingTypographyColor' => array(
-					'type' => 'string',
+				'headingTypographyColor'             => array(
+					'type'    => 'string',
 					'default' => '#333',
 				),
-      			'authorTypographyColor' => array(
-					'type' => 'string',
+				'authorTypographyColor'              => array(
+					'type'    => 'string',
 					'default' => '#626e81',
 				),
-      			'contentTypographyColor' => array(
-					'type' => 'string',
+				'contentTypographyColor'             => array(
+					'type'    => 'string',
 					'default' => '#333',
 				),
-      			'headingBottomSpacing' => array(
+				'headingBottomSpacing'               => array(
 					'type' => 'number',
 				),
-      			'headingBottomSpacingMobile' => array(
+				'headingBottomSpacingMobile'         => array(
 					'type' => 'number',
 				),
-      			'headingBottomSpacingTablet' => array(
+				'headingBottomSpacingTablet'         => array(
 					'type' => 'number',
 				),
-      			'authorBottomSpacing' => array(
+				'authorBottomSpacing'                => array(
 					'type' => 'number',
 				),
-      			'authorBottomSpacingMobile' => array(
+				'authorBottomSpacingMobile'          => array(
 					'type' => 'number',
 				),
-      			'authorBottomSpacingTablet' => array(
+				'authorBottomSpacingTablet'          => array(
 					'type' => 'number',
 				),
-      			'contentBottomSpacing' => array(
+				'contentBottomSpacing'               => array(
 					'type' => 'number',
 				),
-      			'contentBottomSpacingMobile' => array(
+				'contentBottomSpacingMobile'         => array(
 					'type' => 'number',
 				),
-      			'contentBottomSpacingTablet' => array(
+				'contentBottomSpacingTablet'         => array(
 					'type' => 'number',
-				),     
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',
 		)

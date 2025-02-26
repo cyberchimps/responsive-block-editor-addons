@@ -159,8 +159,8 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 					$post_title_tag = 'h2';
 				}
 
-				$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
-				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_HTML, 'h3' );
+				$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_html, 'h3' );
 
 				$post_grid_markup .= sprintf(
 					'<%3$s class="responsive-block-editor-addons-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s>',
@@ -300,8 +300,8 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 				$section_title_tag = 'h2';
 			}
 
-			$array_of_allowed_HTML = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
-			$section_title_tag     = $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_HTML, 'h2' );
+			$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+			$section_title_tag     = $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_html, 'h2' );
 
 			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-grid-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {
@@ -311,8 +311,8 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 		/* Post grid section tag */
 		if ( isset( $attributes['sectionTag'] ) ) {
 			$section_tag           = $attributes['sectionTag'];
-			$array_of_allowed_HTML = array( 'div', 'header', 'section', 'article', 'main', 'aside', 'footer' );
-			$section_tag           = $helper->rbea_post_title_tag_allowed_html( $section_tag, $array_of_allowed_HTML, 'section' );
+			$array_of_allowed_html = array( 'div', 'header', 'section', 'article', 'main', 'aside', 'footer' );
+			$section_tag           = $helper->rbea_post_title_tag_allowed_html( $section_tag, $array_of_allowed_html, 'section' );
 		} else {
 			$section_tag = 'section';
 		}

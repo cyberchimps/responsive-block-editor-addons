@@ -33,14 +33,14 @@ class Responsive_Block_Editor_Addons_Helper {
     /**
 	 * Get allowed HTML title tag.
 	 *
-	 * @param string $title_Tag HTML tag of title.
+	 * @param string $title_tag HTML tag of title.
 	 * @param array  $allowed_array Array of allowed HTML tags.
 	 * @param string $default_tag Default HTML tag.
 	 * @since 1.8.4
-	 * @return string $title_Tag | $default_tag.
+	 * @return string $title_tag | $default_tag.
 	 */
-	public function rbea_post_title_tag_allowed_html( $title_Tag, $allowed_array, $default_tag ) {
-		return in_array( $title_Tag, $allowed_array, true ) ? sanitize_key( $title_Tag ) : $default_tag;
+	public function rbea_post_title_tag_allowed_html( $title_tag, $allowed_array, $default_tag ) {
+		return in_array( $title_tag, $allowed_array, true ) ? sanitize_key( $title_tag ) : $default_tag;
 	}
 
 	/**

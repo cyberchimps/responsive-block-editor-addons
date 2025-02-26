@@ -133,8 +133,8 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 			}
 
 			$helper                = Responsive_Block_Editor_Addons_Helper::get_instance();
-			$array_of_allowed_HTML = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p');
-			$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_HTML, 'h3' );
+			$array_of_allowed_html = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p');
+			$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_html, 'h3' );
 
 			/* Get the featured image */
 

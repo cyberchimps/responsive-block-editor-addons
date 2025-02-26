@@ -12,13 +12,13 @@
  * @param Array $attributes Attributes.
  */
 function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets( $attributes ) {
-	$widget_blocks = get_option('widget_block');
-	if ( has_block( 'responsive-block-editor-addons/testimonial-slider') ) {
+	$widget_blocks = get_option( 'widget_block' );
+	if ( has_block( 'responsive-block-editor-addons/testimonial-slider' ) ) {
 		include_slick_lib();
 	}
 
 	if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
-		if ( is_archive() || is_home() || is_search() || is_404()|| is_singular() ) {
+		if ( is_archive() || is_home() || is_search() || is_404() || is_singular() ) {
 			wp_enqueue_script(
 				'responsive_blocks-frontend-js',
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/frontend_blocks.js',
@@ -36,8 +36,7 @@ function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets
 			);
 			include_slick_lib();
 		}
-	}
-	else if (!empty($widget_blocks)) {
+	} elseif ( ! empty( $widget_blocks ) ) {
 		wp_enqueue_script(
 			'responsive_blocks-frontend-js',
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/frontend_blocks.js',
@@ -45,7 +44,7 @@ function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/frontend_blocks.js' ),
 			true
 		);
-	
+
 		// Load the compiled styles.
 		wp_enqueue_style(
 			'responsive_block_editor_addons-style-css',
@@ -81,8 +80,8 @@ function include_slick_lib() {
  */
 function testimonial_carousel_generate_script() {
 	global $post;
-	$this_post = $post;
-	$widget_blocks = get_option('widget_block');
+	$this_post     = $post;
+	$widget_blocks = get_option( 'widget_block' );
 
 	if ( ! is_object( $this_post ) ) {
 		return;
@@ -103,7 +102,7 @@ function testimonial_carousel_generate_script() {
 		get_responsive_testimonial_carousel_scripts( $blocks );
 	}
 
-	if(!empty($widget_blocks)) {
+	if ( ! empty( $widget_blocks ) ) {
 		foreach ( $widget_blocks as $widget ) {
 			if ( ! empty( $widget['content'] ) ) {
 				$blocks_from_widgets = responsive_parse_gutenberg_blocks_testimonial_carousel( $widget['content'] );
@@ -111,7 +110,7 @@ function testimonial_carousel_generate_script() {
 				if ( ! is_array( $blocks_from_widgets ) || empty( $blocks_from_widgets ) ) {
 					return;
 				}
-			
+
 				get_responsive_testimonial_carousel_scripts( $blocks_from_widgets );
 			}
 		}
@@ -126,7 +125,7 @@ add_action( 'wp_enqueue_scripts', 'testimonial_carousel_generate_script' );
 function testimonial_carousel_generate_script_for_fse() {
 	if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
 		if ( is_archive() || is_home() || is_search() || is_404() ) {
-			$wp_query_args = array(
+			$wp_query_args        = array(
 				'post_status' => array( 'publish' ),
 				'post_type'   => array( 'wp_template', 'wp_template_part' ),
 			);
@@ -159,7 +158,6 @@ function responsive_parse_gutenberg_blocks_testimonial_carousel( $content ) {
 	global $wp_version;
 
 	return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
-
 }
 
 /**
@@ -169,7 +167,7 @@ function responsive_parse_gutenberg_blocks_testimonial_carousel( $content ) {
  */
 function get_responsive_testimonial_carousel_scripts( $blocks ) {
 	global $responsive_post_carousel_js;
-	$widget_blocks = get_option('widget_block');
+	$widget_blocks = get_option( 'widget_block' );
 	foreach ( $blocks as $i => $block ) {
 		if ( is_array( $block ) ) {
 			if ( 'core/block' === $block['blockName'] ) {
@@ -313,54 +311,53 @@ function get_responsive_testimonial_js( $attr, $id ) { 			// @codingStandardsIgn
  */
 function get_responsive_testimonial_carousel_default_attributes() {
 	return array(
-		'blockAlign'           => 'left',
-		'columns'              => 1,
-		'autoplaySpeed'        => 2000,
-		'autoplay'             => true,
-		'infiniteLoop'         => true,
-		'pauseOnHover'         => true,
-		'transitionSpeed'      => 500,
-		'tcolumns'             => 1,
-		'mcolumns'             => 1,
-		'arrowSize'            => 20,
-		'arrowDots'            => 'arrows_dots',
-		'arrowColor'           => '#333',
-		'arrowBorderWidth'     => 1,
-		'arrowBorderRadius'    => 0,
-		'arrowTopRadiusMobile'     => '',
-		'arrowRightRadiusMobile'   => '',
-		'arrowBottomRadiusMobile'  => '',
-		'arrowLeftRadiusMobile'    => '',
-		'arrowTopRadiusTablet'     => '',
-		'arrowRightRadiusTablet'   => '',
-		'arrowBottomRadiusTablet'  => '',
-		'arrowLeftRadiusTablet'    => '',
-		'arrowTopRadius'           => '',
-		'arrowRightRadius'         => '',
-		'arrowBottomRadius'        => '',
-		'arrowLeftRadius'          => '',
-		'postsToShow'          => 6,
-		'displayPostDate'      => true,
-		'displayPostExcerpt'   => true,
-		'displayPostAuthor'    => true,
-		'displayPostImage'     => false,
-		'displayPostLink'      => true,
-		'displayPostTitle'     => true,
-		'postTitleTag'         => 'h3',
-		'align'                => 'center',
-		'order'                => 'desc',
-		'orderBy'              => 'date',
-		'readMoreText'         => 'Continue Reading',
-		'offset'               => 0,
-		'excerptLength'        => 20,
-		'postType'             => 'post',
-		'sectionTag'           => 'section',
-		'sectionTitleTag'      => 'h2',
-		'imageSize'            => 'full',
-		'bgColor'              => '#ffffff',
-		'contentPadding'       => 20,
-		'contentPaddingMobile' => 20,
-		'blockPadding'         => 45,
+		'blockAlign'              => 'left',
+		'columns'                 => 1,
+		'autoplaySpeed'           => 2000,
+		'autoplay'                => true,
+		'infiniteLoop'            => true,
+		'pauseOnHover'            => true,
+		'transitionSpeed'         => 500,
+		'tcolumns'                => 1,
+		'mcolumns'                => 1,
+		'arrowSize'               => 20,
+		'arrowDots'               => 'arrows_dots',
+		'arrowColor'              => '#333',
+		'arrowBorderWidth'        => 1,
+		'arrowBorderRadius'       => 0,
+		'arrowTopRadiusMobile'    => '',
+		'arrowRightRadiusMobile'  => '',
+		'arrowBottomRadiusMobile' => '',
+		'arrowLeftRadiusMobile'   => '',
+		'arrowTopRadiusTablet'    => '',
+		'arrowRightRadiusTablet'  => '',
+		'arrowBottomRadiusTablet' => '',
+		'arrowLeftRadiusTablet'   => '',
+		'arrowTopRadius'          => '',
+		'arrowRightRadius'        => '',
+		'arrowBottomRadius'       => '',
+		'arrowLeftRadius'         => '',
+		'postsToShow'             => 6,
+		'displayPostDate'         => true,
+		'displayPostExcerpt'      => true,
+		'displayPostAuthor'       => true,
+		'displayPostImage'        => false,
+		'displayPostLink'         => true,
+		'displayPostTitle'        => true,
+		'postTitleTag'            => 'h3',
+		'align'                   => 'center',
+		'order'                   => 'desc',
+		'orderBy'                 => 'date',
+		'readMoreText'            => 'Continue Reading',
+		'offset'                  => 0,
+		'excerptLength'           => 20,
+		'postType'                => 'post',
+		'sectionTag'              => 'section',
+		'sectionTitleTag'         => 'h2',
+		'imageSize'               => 'full',
+		'bgColor'                 => '#ffffff',
+		'contentPadding'          => 20,
+		'contentPaddingMobile'    => 20,
+		'blockPadding'            => 45,
 	);
 }
-
