@@ -12,6 +12,10 @@ const attributes = {
     type: "string",
     default: "",
   },
+  mediaUploadAltText: {
+    type: "string",
+    default: "",
+  },
   caption: {
     type: "boolean",
     default: false,

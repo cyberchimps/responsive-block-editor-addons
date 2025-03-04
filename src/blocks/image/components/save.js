@@ -5,7 +5,7 @@ import classnames from "classnames";
 export default class Save extends Component {
   render() {
     const { attributes } = this.props;
-    const { imageUrl, altText, caption, Layoverswitch,LayoverHeading,captionText,sourceType, block_id } = attributes;
+    const { imageUrl, altText, mediaUploadAltText, caption, Layoverswitch,LayoverHeading,captionText,sourceType, block_id } = attributes;
 
     return (
       <div className={classnames(
@@ -16,7 +16,7 @@ export default class Save extends Component {
         {sourceType === 'url' && imageUrl && (
           <div className="img-main-block" >
          <figure className="img-block" > 
-          <img className="responsive-blocks-image-block" src={imageUrl} alt={altText}  />
+          <img className="responsive-blocks-image-block" src={imageUrl} alt={altText ? altText : mediaUploadAltText ? mediaUploadAltText : ''}  />
           {caption && !Layoverswitch && <figcaption className="responsive-img-caption" >{captionText}</figcaption>}
           {Layoverswitch && <div className="responsive-image-block-description-overlay" ></div> }
           {Layoverswitch && <div className="responsive-image-block-description" >
@@ -29,7 +29,7 @@ export default class Save extends Component {
         {sourceType !== 'url' && imageUrl && (
           <div className="img-main-block" >
           <figure className="img-block" >
-            <img className="responsive-blocks-image-block" src={imageUrl} alt={altText}  />
+            <img className="responsive-blocks-image-block" src={imageUrl} alt={altText ? altText : mediaUploadAltText ? mediaUploadAltText : ''}  />
             {caption && !Layoverswitch && <figcaption className="responsive-img-caption" >{captionText}</figcaption>}
           { Layoverswitch && <div className="responsive-image-block-description-overlay" ></div> }
           { Layoverswitch && <div className="responsive-image-block-description" >
