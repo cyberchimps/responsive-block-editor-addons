@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,15 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.0.2 - 5th March 2025 =
+* Improvement - Testimonial Block - Added Inherit and Initial settings in background size settings.
+* Fix - Image block, Pricing List block - Fixed alt text not rendering issue.
+* Fix - Taxonomy List block - Fixed show empty taxonomy setting not working issue.
+* Fix - Pricing List block - Fixed attempt recovery issue in editor.
+* Fix - Image Boxes block - Fixed backward compatibility issue.
+* Fix - Content Timeline block- Fixed invalid date issue.
+* Fix - Content Timeline block - Fixed the indicator line in editor.
 
 = 2.0.1 - 25th February 2025 =
 * Fix - Improved code as per WordPress and PHPCS standards.
