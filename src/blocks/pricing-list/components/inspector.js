@@ -55,24 +55,16 @@ export default class Inspector extends Component {
     const { pricingList } = this.props.attributes;
     const { setAttributes } = this.props;
 
-    let imag_url = null;
-    if (!media || !media.url) {
-      imag_url = null;
-    } else {
-      imag_url = media;
-    }
+    const imag_url = media?.url ? media : null;
 
-    const newItems = pricingList.map((item, thisIndex) => {
-      if (index === thisIndex) {
-        (item["image"] = imag_url), (item["imageUrl"] = imag_url);
-      }
-      return item;
-    });
+    const newItems = pricingList.map((item, thisIndex) => 
+      index === thisIndex 
+        ? { ...item, image: imag_url, imageUrl: imag_url } 
+        : item
+    );
 
-    setAttributes({
-      pricingList: newItems,
-    });
-  }
+    setAttributes({ pricingList: newItems });
+}
 
   /*
    * Event to set Image selectot label.
