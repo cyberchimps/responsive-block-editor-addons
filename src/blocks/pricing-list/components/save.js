@@ -46,18 +46,23 @@ export default class Save extends Component {
                 `image-position-${imagePosition}`
               )}
             >
-              <div className="responsive-block-editior-addons-pricing-list-item-content">
-                {(imagePosition == "top" || imagePosition == "left") &&
+              <div className="responsive-block-editior-addons-pricing-list-item-content" key={'resp-'+index}>
+                {(imagePosition === "top" || imagePosition === "left") &&
                   pricingList[index]["image"] && (
-                    <div className="responsive-block-editior-addons-pricing-list-item-image-wrap">
+                    <div key={index} className="responsive-block-editior-addons-pricing-list-item-image-wrap">
                       <img
                         className={classnames(
                           "responsive-block-editior-addons-pricing-list-item-image"
                         )}
                         src={
-                          pricingList[index]["image"].sizes[imageSize]
-                            ? pricingList[index]["image"].sizes[imageSize].url
-                            : pricingList[index]["image"].sizes["full"].url
+                          pricingList[index]["image"]?.sizes[imageSize]
+                            ? pricingList[index]["image"]?.sizes[imageSize]?.url
+                            : pricingList[index]["image"]?.sizes["full"]?.url
+                        }
+                        alt={
+                          pricingList[index]["image"]?.alt
+                            ? pricingList[index]["image"]?.alt
+                            : ''
                         }
                       />
                     </div>
@@ -85,13 +90,22 @@ export default class Save extends Component {
                     </div>
                   </div>
                 </div>
-                {imagePosition == "right" && pricingList[index]["image"] && (
+                {imagePosition === "right" && pricingList[index]["image"] && (
                   <div className="responsive-block-editior-addons-pricing-list-item-image-wrap">
                     <img
                       className={classnames(
                         "responsive-block-editior-addons-pricing-list-item-image"
                       )}
-                      src={pricingList[index]["image"].sizes[imageSize].url}
+                      src={
+                          pricingList[index]["image"]?.sizes[imageSize]
+                          ? pricingList[index]["image"]?.sizes[imageSize]?.url
+                          : pricingList[index]["image"]?.sizes["full"]?.url
+                      }
+                      alt={
+                          pricingList[index]["image"]?.alt
+                          ? pricingList[index]["image"]?.alt
+                          : ''
+                      }
                     />
                   </div>
                 )}
