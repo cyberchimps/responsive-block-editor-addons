@@ -48,11 +48,18 @@ class RBEATaxonomyList extends Component {
         if (null !== element && undefined !== element) {
             element.innerHTML = EditorStyles(this.props);
         }
+
+        if (this.props.categoriesList.length !== prevProps.categoriesList.length) {
+            this.props.setAttributes({
+                taxonomyAvailable: this.props.categoriesList.length > 0
+            });
+        }
     }
 
     componentDidMount() {
         this.props.setAttributes({
-            block_id: this.props.clientId
+            block_id: this.props.clientId,
+            taxonomyAvailable: this.props.categoriesList.length > 0
         });
 
         // Pushing Style tag for this block css.
@@ -177,9 +184,6 @@ class RBEATaxonomyList extends Component {
                             </ul>
                         </div>
                     )}
-                    {
-                        categoriesList.length === 0 ? setAttributes({taxonomyAvailable : false}) : setAttributes({taxonomyAvailable: true})
-                    }
                     {categoriesList.length === 0 && (
                         <div className="reponsive-block-editor-addons-taxonomy-list-no-taxonomy-available">
                             {noTaxDisplaytext}
