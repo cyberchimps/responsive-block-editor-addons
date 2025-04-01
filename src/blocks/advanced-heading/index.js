@@ -14,7 +14,6 @@ import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 import deprecated from "./components/deprecated";
-import { dependencies } from "webpack";
 
 // Internationalization
 const { __ } = wp.i18n;
