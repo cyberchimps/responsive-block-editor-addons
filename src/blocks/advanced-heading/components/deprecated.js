@@ -79,7 +79,7 @@ const deprecated = [
         showSeparator,
         block_id,
         anchor,
-      } = this.props.attributes;
+      } = props.attributes;
 
       var seprator_output = "";
       if (seperatorStyle !== "none") {

@@ -13,6 +13,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+import deprecated from "./components/deprecated";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -58,4 +59,5 @@ registerBlockType("responsive-block-editor-addons/advanced-heading", {
   save: (props) => {
     return <Save {...props} />;
   },
+  deprecated: deprecated,
 });
