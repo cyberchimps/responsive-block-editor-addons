@@ -64,7 +64,7 @@ function appendImportButton() {
   if (patternButtonExist) {
     return;
   }
-  const toolbar = document.querySelector(".edit-post-header__center");
+  const toolbar = document.querySelector(".editor-header__toolbar");
   if (!toolbar) {
     return;
   }
@@ -82,10 +82,11 @@ function appendImportButton() {
   )}</Button>`;
   html += "</div>";
   buttonDiv.innerHTML = html;
+  buttonDiv.style.margin = "0px 15px 0px 23px";
   toolbar.appendChild(buttonDiv);
 
   const innerToolbar = document.querySelector(
-    ".edit-post-header__center"
+    ".editor-header__toolbar"
   );
   if (innerToolbar) {
     innerToolbar.style.justifyContent = "flex-start";
