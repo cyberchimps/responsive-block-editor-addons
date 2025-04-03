@@ -2,6 +2,8 @@ import classnames from "classnames";
 import DeprecatedSectionSave from "./deprecated-section";
 import attributes from "../attributes";
 
+import Save from "./save";
+
 /**
  * WordPress dependencies
  */
@@ -11,6 +13,16 @@ const { InnerBlocks } = wp.editor;
 const deprecated = [
     {
         attributes,
+        supports: {
+            align: ["wide", "full"],
+            anchor: true,
+        },
+        migrate( attributes, innerBlocks ) {
+            return [
+                attributes,
+                innerBlocks,
+            ];
+        },
         save: function (props) {
             // Setup the attributes
             const {
