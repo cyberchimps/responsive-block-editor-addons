@@ -25,10 +25,6 @@ export default class DeprecatedColumnSave extends Component {
             setAttributes,
         } = this.props;
 
-        console.log("overlayType: ", overlayType);
-        console.log("gradientOverlayType: ", gradientOverlayType);
-        console.log("block_id: ", block_id);
-
         return [
             <div
                 className={classnames(
