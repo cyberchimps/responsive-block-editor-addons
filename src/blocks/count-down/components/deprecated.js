@@ -1,8 +1,15 @@
 import BoxContainer from "./box-container";
 import Box from "./box";
 import attributes from "../attributes";
+import DeprecatedCountDownSave from "./deprecated/deprecated-count-down";
 
 const deprecated = [
+  {
+    attributes: attributes,
+    save: function (props) {
+      return DeprecatedCountDownSave(props);
+    }
+  },
   {
     // attributes,
     attributes: attributes,
@@ -80,7 +87,7 @@ const deprecated = [
 		showHoursBox,
 		showMinutesBox,
 		showSecondsBox,
-      } = this.props.attributes;
+      } = props.attributes;
 
       let dateDefault = new Date()
 	  dateDefault.setDate(dateDefault.getDate()+30)
