@@ -1,8 +1,35 @@
 import classnames from "classnames";
 import attributes from "../attributes";
 const { Component } = wp.element;
+import Save from "./spacer-deprecated";
+import SaveTwo from "./spacer-deprecated-two";
 
 const deprecated = [
+  {
+    attributes,
+    save: function (props) {
+      const {
+        setAttributes,
+      } = props;
+
+      return (
+        <Save {...props} />
+      )
+    },
+  },
+  {
+    attributes,
+    save: function (props) {
+      const {
+        setAttributes,
+      } = props;
+
+      return (
+        <SaveTwo {...props} />
+      )
+    },
+  },
+  // This is the older deprecated version of the block.
   {
     save: function (props) {
       const {
