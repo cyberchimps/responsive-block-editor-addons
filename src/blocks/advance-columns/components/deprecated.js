@@ -8,6 +8,15 @@ const { InnerBlocks } = wp.editor;
 const deprecated = [
     {
         attributes,
+        supports: {
+            align: ["wide", "full"],
+        },
+        migrate( attributes, innerBlocks ) {
+            return [
+                attributes,
+                innerBlocks,
+            ];
+        },
         save: function (props) {
             const {
                 setAttributes,
