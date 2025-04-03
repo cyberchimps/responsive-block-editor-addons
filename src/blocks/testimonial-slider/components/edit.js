@@ -88,12 +88,11 @@ class edit extends Component {
     }
 
 
-    const newItems = test_block.map((item, thisIndex) => {
-      if (index === thisIndex) {
-        item["image"] = imag_url, (item["imageUrl"] = imag_url);
-      }
-      return item;
-    });
+    const newItems = test_block.map((item, thisIndex) => 
+      index === thisIndex 
+        ? { ...item, image: imag_url, imageUrl: imag_url } 
+        : item
+    );
 
     setAttributes({
       test_block: newItems,
@@ -106,8 +105,6 @@ class edit extends Component {
   onRemoveTestImage(index) {
     const { test_block } = this.props.attributes;
     const { setAttributes } = this.props;
-
-
 
     const newItems = test_block.map((item, thisIndex) => {
       if (index === thisIndex) {
