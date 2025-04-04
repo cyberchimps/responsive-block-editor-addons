@@ -80,7 +80,7 @@ const deprecated = [
 		showHoursBox,
 		showMinutesBox,
 		showSecondsBox,
-      } = this.props.attributes;
+      } = props.attributes;
 
       let dateDefault = new Date()
 	  dateDefault.setDate(dateDefault.getDate()+30)
