@@ -13,14 +13,12 @@ const deprecated = [
     {
         attributes: attributes,
         migrate(attributes, innerBlocks) {
-            console.log("In thhe migrate function");
             return [
                 attributes,
                 innerBlocks,
             ];
         },
         save: function (props) {
-            console.log("In thhe save function");
             return deprecatedImageSliderSave(props);
         },
     },
