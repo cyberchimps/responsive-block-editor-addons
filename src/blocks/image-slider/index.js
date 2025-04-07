@@ -24,6 +24,7 @@ const attributes = {
   ...metadata.attributes,
 };
 import { registerBlockType } from "@wordpress/blocks";
+import deprecated from "./components/deprecated";
 
 registerBlockType("responsive-block-editor-addons/image-slider", {
   /* translators: block name */
@@ -49,4 +50,5 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
   save: (props) => {
     return <Save {...props} />;
   },
+  deprecated: deprecated,
 });
