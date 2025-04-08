@@ -297,7 +297,7 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 			}
 
 			if ( ! $excerpt ) {
-				$excerpt = null;
+				$excerpt = '';
 			}
 
 			if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
