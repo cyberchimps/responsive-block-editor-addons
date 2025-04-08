@@ -84,7 +84,7 @@ function rbea_instagram_render_callback( array $attributes ) {
 	}
 
 	$insta_posts = array();
-	if ( $result ) {
+	if ( $result && isset( $result->data )) {
 		$insta_posts = $result->data;
 	}
 	$helper = Responsive_Block_Editor_Addons_Helper::get_instance();
