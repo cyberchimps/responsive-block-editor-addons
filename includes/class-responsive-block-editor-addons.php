@@ -1562,7 +1562,7 @@ class Responsive_Block_Editor_Addons {
 			return $links;
 		}
 		
-		$rate_url = 'https://wordpress.org/support/plugin/responsive-add-ons/reviews/#new-post';
+		$rate_url = 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/';
 		$rate_link = '<a target="_blank" href="' . esc_url( $rate_url ) . '" title="' . esc_attr__( 'Rate the plugin', 'responsive-addons' ) . '">' . esc_html__( 'Rate the plugin ★★★★★', 'responsive-addons' ) . '</a>';
 		$links[] = $rate_link;
 		return $links;
