@@ -197,6 +197,11 @@ export default class Edit extends Component {
                             ? pricingList[index]["image"].sizes[imageSize].url
                             : pricingList[index]["image"].sizes["full"].url
                         }
+                        alt={
+                          pricingList[index]["image"].alt
+                            ? pricingList[index]["image"].alt
+                            : ''
+                        }
                       />
                     </div>
                   )}
@@ -278,6 +283,11 @@ export default class Edit extends Component {
                         pricingList[index]["image"].sizes[imageSize]
                             ? pricingList[index]["image"].sizes[imageSize].url
                             : pricingList[index]["image"].sizes["full"].url
+                      }
+                      alt={
+                        pricingList[index]["image"].alt
+                          ? pricingList[index]["image"].alt
+                          : ''
                       }
                     />
                   </div>

@@ -12,6 +12,7 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
     name: [author_text],
     company: [company_text],
     image: "",
+    imageUrl: "",
   });
 }
 

@@ -561,7 +561,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 			}
 
 			if ( ! $excerpt ) {
-				$excerpt = null;
+				$excerpt = '';
 			}
 
 			if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
@@ -597,14 +597,14 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "responsive-block-editor-addons-block-post-carousel block-{$attributes['block_id']} responsive-post-grid  responsive-post__image-position-{$attributes['imagePosition']} featured{$attributes['postType']} align{$attributes['align']}";
+		$class = "responsive-block-editor-addons-block-post-carousel block-" . sanitize_html_class( $attributes['block_id'] ) . "responsive-post-grid  responsive-post__image-position-{$attributes['imagePosition']} featured{$attributes['postType']} align{$attributes['align']}";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . sanitize_html_class( $attributes['className'] );
 		}
 
 		/* Layout orientation class */
-		$carousel_class = 'responsive-post-slick-carousel-' . $attributes['block_id'] . ' responsive-post_carousel-equal-height-' . $attributes['equalHeight'];
+		$carousel_class = 'responsive-post-slick-carousel-' . sanitize_html_class( $attributes['block_id'] ) . ' responsive-post_carousel-equal-height-' . $attributes['equalHeight'];
 
 		if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
 			$carousel_class .= ' is-list';
@@ -648,7 +648,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 			esc_attr( $carousel_class ),
 			$post_carousel_markup,
 			'data-slick=' . $settings,
-			$attributes['block_id']
+			esc_attr( $attributes['block_id'] )
 		);
 		return $block_content;
 	}

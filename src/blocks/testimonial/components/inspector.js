@@ -893,7 +893,7 @@ export default class Inspector extends Component {
                       </TabPanel>
                       </div>
                       {imageSizeTab === "desktop" && (
-                        <>
+                        <div className="rbea-select-control-grid5-container">
                         <RbeaTabRadioControl
                           label={__("", "responsive-block-editor-addons")}
                           value={backgroundSize}
@@ -904,10 +904,12 @@ export default class Inspector extends Component {
                             { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
                             { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
                             { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
+                            { value: "initial", label: __("Initial", "responsive-block-editor-addons") },
+                            { value: "inherit", label: __("Inherit", "responsive-block-editor-addons") },
                           ]}
                           defaultValue={"cover"}
                         />
-                      </>
+                      </div>
                       )}
                       {imageSizeTab === "tablet" && (
                         <RbeaTabRadioControl

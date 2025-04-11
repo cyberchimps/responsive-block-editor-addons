@@ -1,9 +1,34 @@
 import classnames from "classnames";
 import attributes from "../attributes";
+import DeprecatedAdvancedHeadingSave from "./deprecated-advanced-heading";
 
 const { RichText } = wp.blockEditor;
 
 const deprecated = [
+  {
+    // attributes,
+    attributes: attributes,
+    save: function (props) {
+      const {
+        attributes: {
+          headingTitle,
+          headingId,
+          headingDesc,
+          seperatorStyle,
+          seperatorPosition,
+          headingTag,
+          showHeading,
+          showSubHeading,
+          showSeparator,
+          block_id,
+        },
+        setAttributes,
+      } = props;
+      return (
+        <DeprecatedAdvancedHeadingSave {...props} />
+      )
+    }
+  },
   {
     // attributes,
     attributes: attributes,
@@ -79,7 +104,7 @@ const deprecated = [
         showSeparator,
         block_id,
         anchor,
-      } = this.props.attributes;
+      } = props.attributes;
 
       var seprator_output = "";
       if (seperatorStyle !== "none") {

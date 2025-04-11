@@ -37,6 +37,7 @@ export default class Inspector extends Component {
     const {
       imageUrl,
       altText,
+      mediaUploadAltText,
       imageAlignment,
       imageAlignmentTablet,
       imageAlignmentMobile,

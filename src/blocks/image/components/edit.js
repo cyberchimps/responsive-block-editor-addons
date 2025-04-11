@@ -106,6 +106,7 @@ export default class Edit extends Component {
       LayoverHeading,
       block_id,
       altText,
+      mediaUploadAltText,
       captionText,
       imageHeight,
       imageWidth,
@@ -203,7 +204,7 @@ export default class Edit extends Component {
                 <img
                   className="responsive-blocks-image-block"
                   src={imageUrl}
-                  alt={altText}
+                  alt={altText ? altText : mediaUploadAltText ? mediaUploadAltText : ''}
                 />
                 
                 {LayoverHeading && loadGoogleFont(layoverHeadingFontFamily)}
@@ -295,12 +296,14 @@ export default class Edit extends Component {
 
                         // Set the source of the Image element
                         img.src = media.url;
+                        img.alt = media.alt;
 
                         // Wait for the image to load
                         img.onload = () => {
                           // Get the height and width of the image
                           const height = img.height;
                           const width = img.width;
+                          const alt = img.alt;
 
                           // Update state with the selected image, its dimensions, and other attributes
                           setAttributes({
@@ -308,6 +311,8 @@ export default class Edit extends Component {
                             sourceType: "media-library",
                             imageHeight: height,
                             imageWidth: width,
+                            mediaUploadAltText: alt,
+                            altText: altText ? altText : alt,
                             // Add other attributes as needed
                           });
                         };
