@@ -236,7 +236,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 2.0.3 - 10th April 2025 =
+= 2.0.3 - 11th April 2025 =
 * Improvement - Added Gutenberg Template Import button.
 * Fix - Enhanced Security: Strengthened the codebase to further protect your website.
 * Fix - Taxonomy List Block - Fixed page unresponsive bug.
