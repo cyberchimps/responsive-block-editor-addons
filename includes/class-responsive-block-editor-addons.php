@@ -109,6 +109,10 @@ class Responsive_Block_Editor_Addons {
 
 		// Add media input script for media input
 		add_action( 'admin_enqueue_scripts', array( $this, 'my_enqueue_media_scripts' ) );
+
+		// Add rating links to plugin's description in plugins table
+		add_filter('plugin_row_meta', array($this, 'responsive_block_editor_addons_rate_plugin_link'), 10, 2);
+
 	}
 
 	/**
@@ -1543,5 +1547,24 @@ class Responsive_Block_Editor_Addons {
 			'responsive_block_editor_addons',
 			array( $this, 'responsive_block_editor_addons_getting_started' ),
 		);
+	}
+
+	/**
+     * Add links to plugin's description in plugins table
+     *
+     * @param array  $links  Initial list of links.
+     * @param string $file   Basename of current plugin.
+     *
+     * @return array
+     */
+    function responsive_block_editor_addons_rate_plugin_link( $links, $file ) {
+		if ( $file !== plugin_basename( RESPONSIVE_BLOCK_EDITOR_ADDONS_BASENAME ) ) {
+			return $links;
+		}
+		
+		$rate_url = 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/';
+		$rate_link = '<a target="_blank" href="' . esc_url( $rate_url ) . '" title="' . esc_attr__( 'Rate the plugin', 'responsive-addons' ) . '">' . esc_html__( 'Rate the plugin ★★★★★', 'responsive-addons' ) . '</a>';
+		$links[] = $rate_link;
+		return $links;
 	}
 }
