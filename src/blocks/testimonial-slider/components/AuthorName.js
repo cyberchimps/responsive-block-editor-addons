@@ -11,9 +11,8 @@ class AuthorName extends React.Component {
     const test_arr = attributes.test_block[index_value];
     let author_name = "";
     if (test_arr && typeof test_arr !== "undefined") {
-      author_name = test_arr["name"];
-      if (Array.isArray(author_name)) {
-        author_name = author_name[0];
+      if(test_arr["name"] !== "") {
+        author_name = test_arr["name"];
       }
     }
 
