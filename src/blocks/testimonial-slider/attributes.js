@@ -815,15 +815,15 @@ const attributes = {
   },
   descBottomSpacing: {
     type: 'number',
-    default: 15,
+    default: 25,
   },
   descBottomSpacingMobile: {
     type: 'number',
-    default: 15,
+    default: 25,
   },
   descBottomSpacingTablet: {
     type: 'number',
-    default: 15,
+    default: 25,
   },
   nameBottomSpacing: {
     type: 'number',
@@ -903,10 +903,6 @@ const attributes = {
   },
   backgroundColor1: {
     type: "string",
-  },
-  backgroundType: {
-    type: "string",
-    default: "none",
   },
 };
 

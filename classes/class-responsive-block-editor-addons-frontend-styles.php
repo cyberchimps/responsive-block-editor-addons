@@ -12112,7 +12112,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'companyTypographyColor'  => 'companyColor' ? 'companyColor' : '',
 				'descBottomSpacing'       => 'descSpace' ? 'descSpace' : '',
 				'descBottomSpacingMobile' => 'descSpaceMobile' ? 'descSpaceMobile' : '',
-				'descBottomSpacingTablet' => 'descSpaceMobileTablet' ? 'descSpaceMobileTablet' : '',
+				'descBottomSpacingTablet' => 'descSpaceTablet' ? 'descSpaceTablet' : '',
 				'nameBottomSpacing'       => 'nameSpace' ? 'nameSpace' : '',
 				'nameBottomSpacingMobile' => 'nameSpaceMobile' ? 'nameSpaceMobile' : '',
 				'nameBottomSpacingTablet' => 'nameSpaceTablet' ? 'nameSpaceTablet' : '',
@@ -12283,9 +12283,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-tm__desc' => array(
 					'font-size' => self::get_css_value( $attr['descFontSize'], $attr['descFontSizeType'] ),
 					'color'     => $attr['descTypographyColor'],
+					'margin-bottom' => self::get_css_value( $attr['descBottomSpacing'], 'px' ) . ' !important',
 				),
 				' .responsive-block-editor-addons-tm__author-name' => array(
 					'font-size' => self::get_css_value( $attr['nameFontSize'], $attr['nameFontSizeType'] ),
+					'margin-bottom' => self::get_css_value( $attr['nameBottomSpacing'], 'px' ) . ' !important',
 				),
 				' .responsive-block-editor-addons-tm__company' => array(
 					'font-size' => self::get_css_value( $attr['companyFontSize'], $attr['companyFontSizeType'] ),
