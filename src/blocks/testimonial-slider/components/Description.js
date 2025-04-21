@@ -25,14 +25,6 @@ class Description extends React.Component {
           value={description}
           placeholder={__("Write Description", "responsive-block-editor-addons")}
           className="responsive-block-editor-addons-tm__desc"
-          style={{
-            color: attributes.descTypographyColor,
-            marginBottom: attributes.descBottomSpacing,
-            fontFamily: attributes.descFontFamily,
-            fontWeight: attributes.descFontWeight,
-            lineHeight: attributes.descLineHeight,
-            fontSize: attributes.descFontSize,
-          }}
           onChange={(value) => {
             var new_content = {
               description: value,
@@ -64,14 +56,6 @@ class Description extends React.Component {
           tagName="div"
           value={description}
           className="responsive-block-editor-addons-tm__desc"
-          style={{
-            color: attributes.descTypographyColor,
-            marginBottom: attributes.descBottomSpacing,
-            fontFamily: attributes.descFontFamily,
-            fontWeight: attributes.descFontWeight,
-            lineHeight: attributes.descLineHeight,
-            fontSize: attributes.descFontSize,
-          }}
         />
       );
     }

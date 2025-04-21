@@ -797,8 +797,8 @@ const attributes = {
     type: "boolean",
     default: false,
   },
-  blockIsTypographyColorValueUpdated: {
-    type: 'boolean',
+  blockIsTypographyColorValueUpdated : {
+    type: "boolean",
     default: false,
   },
   descTypographyColor: {
@@ -815,15 +815,15 @@ const attributes = {
   },
   descBottomSpacing: {
     type: 'number',
-    default: 25,
+    default: 15,
   },
   descBottomSpacingMobile: {
     type: 'number',
-    default: 25,
+    default: 15,
   },
   descBottomSpacingTablet: {
     type: 'number',
-    default: 25,
+    default: 15,
   },
   nameBottomSpacing: {
     type: 'number',

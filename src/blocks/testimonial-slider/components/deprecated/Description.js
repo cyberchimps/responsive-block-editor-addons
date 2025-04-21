@@ -4,16 +4,14 @@ const { __ } = wp.i18n;
 
 const { createBlock } = wp.blocks;
 
-class AuthorName extends React.Component {
+class Description extends React.Component {
   render() {
     const { attributes, setAttributes, props, index_value } = this.props;
 
     const test_arr = attributes.test_block[index_value];
-    let author_name = "";
+    let description = "";
     if (test_arr && typeof test_arr !== "undefined") {
-      if(test_arr["name"] !== "") {
-        author_name = test_arr["name"];
-      }
+      description = test_arr["description"];
     }
 
     var data_copy = [...attributes.test_block];
@@ -22,13 +20,21 @@ class AuthorName extends React.Component {
       return (
         <RichText
           tagName="div"
-          value={author_name}
-          placeholder={__("Author Name", "responsive-block-editor-addons")}
-          className="responsive-block-editor-addons-tm__author-name"
+          value={description}
+          placeholder={__("Write Description", "responsive-block-editor-addons")}
+          className="responsive-block-editor-addons-tm__desc"
+          style={{
+            color: attributes.descColor,
+            marginBottom: attributes.descSpace,
+            fontFamily: attributes.descFontFamily,
+            fontWeight: attributes.descFontWeight,
+            lineHeight: attributes.descLineHeight,
+            fontSize: attributes.descFontSize,
+          }}
           onChange={(value) => {
             var new_content = {
-              description: data_copy[index_value]["description"],
-              name: value,
+              description: value,
+              name: data_copy[index_value]["name"],
               company: data_copy[index_value]["company"],
               image: data_copy[index_value]["image"],
             };
@@ -36,7 +42,7 @@ class AuthorName extends React.Component {
             setAttributes({ test_block: data_copy });
           }}
           onMerge={props.mergeBlocks}
-          onSplit={
+          unstableOnSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });
@@ -53,13 +59,21 @@ class AuthorName extends React.Component {
     } else {
       return (
         <RichText.Content
-          tagName="span"
-          value={author_name}
-          className="responsive-block-editor-addons-tm__author-name"
+          tagName="div"
+          value={description}
+          className="responsive-block-editor-addons-tm__desc"
+          style={{
+            color: attributes.descColor,
+            marginBottom: attributes.descSpace,
+            fontFamily: attributes.descFontFamily,
+            fontWeight: attributes.descFontWeight,
+            lineHeight: attributes.descLineHeight,
+            fontSize: attributes.descFontSize,
+          }}
         />
       );
     }
   }
 }
 
-export default AuthorName;
+export default Description;
