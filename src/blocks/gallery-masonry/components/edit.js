@@ -75,6 +75,25 @@ class GalleryMasonryEdit extends Component {
          this.props.clientId
      );
      document.head.appendChild($style);
+
+     const images = this.props.attributes.images;
+
+     if (images && images.length > 0) {
+      const sortedImages = [...images].sort((a, b) => a.order - b.order);
+      // Only update if order was wrong.
+      if (!this.isSorted(images)) {
+        this.props.setAttributes({ images: sortedImages });
+      }
+    }
+  }
+
+  isSorted(images) {
+    for (let i = 1; i < images.length; i++) {
+      if (images[i-1].order > images[i].order) {
+        return false;
+      }
+    }
+    return true;
   }
 
   componentDidUpdate(prevProps) {
@@ -88,6 +107,7 @@ class GalleryMasonryEdit extends Component {
   }
 
   onSelectImage(index) {
+    // console.log( 'onSelectImage', index );
     return () => {
       if (this.state.selectedImage !== index) {
         this.setState({
@@ -99,10 +119,24 @@ class GalleryMasonryEdit extends Component {
 
   onMove(oldIndex, newIndex) {
     const images = [...this.props.attributes.images];
-    images.splice(newIndex, 1, this.props.attributes.images[oldIndex]);
-    images.splice(oldIndex, 1, this.props.attributes.images[newIndex]);
+    
+    // Get the image being moved
+    const movedImage = images[oldIndex];
+    
+    // Remove from old position
+    images.splice(oldIndex, 1);
+    
+    // Insert at new position
+    images.splice(newIndex, 0, movedImage);
+    
+    // Update order properties for all images
+    const updatedImages = images.map((img, index) => ({
+      ...img,
+      order: index // Reset order to match new position
+    }));
+    
     this.setState({ selectedImage: newIndex });
-    this.props.setAttributes({ images });
+    this.props.setAttributes({ images: updatedImages });
   }
 
   onMoveForward(oldIndex) {
@@ -128,11 +162,14 @@ class GalleryMasonryEdit extends Component {
       const images = filter(
         this.props.attributes.images,
         (_img, i) => index !== i
-      );
+      )
+      .map((img, newIndex) => ({
+        ...img,
+        order: newIndex // Reassign order after removal.
+      }));
+      
       this.setState({ selectedImage: null });
-      this.props.setAttributes({
-        images,
-      });
+      this.props.setAttributes({ images });
     };
   }
 
@@ -246,6 +283,7 @@ class GalleryMasonryEdit extends Component {
     if (!hasImages) {
       return masonryGalleryPlaceholder;
     }
+  const sortedImages = [...images].sort((a, b) => a.order - b.order);
     return (
       <Fragment key="div-block" >
         <style id={`responsive-block-editor-addons-advanced-gallery-masonry-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
@@ -258,20 +296,20 @@ class GalleryMasonryEdit extends Component {
               columnsCount={columnsize}
             >
 
-              {images.map((img, index) => {
+              {sortedImages.map((img, index) => {
                 const ariaLabel = sprintf(
-                  /* translators: %1$d is the order number of the image, %2$d is the total number of images */
+                  /* translators: %1$d is the order number of the image, %2$d is the total number of sortedImages */
                   __(
                     "image %1$d of %2$d in gallery",
                     "responsive-block-editor-addons"
                   ),
                   index + 1,
-                  images.length
+                  sortedImages.length
                 );
 
                 return (
                   <li
-                  key={`img-${index}`}
+                  key={`img-${img.id}`}
                     className="responsive-block-editor-addons-gallery--item"
                     
                   >
@@ -285,7 +323,7 @@ class GalleryMasonryEdit extends Component {
                       imgLink={img.imgLink}
                       linkTo={linkTo}
                       isFirstItem={index === 0}
-                      isLastItem={index + 1 === images.length}
+                      isLastItem={index + 1 === sortedImages.length}
                       isSelected={
                         isSelected && this.state.selectedImage === index
                       }

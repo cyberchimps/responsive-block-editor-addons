@@ -41,6 +41,13 @@ const GalleryAttributes = {
         source: "children",
         selector: "figcaption",
       },
+      order: {
+        type: "number",
+        source: "attribute",
+        selector: "img",
+        attribute: "data-order",
+        default: 0,
+      },
     },
   },
   linkTo: {

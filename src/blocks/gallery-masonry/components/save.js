@@ -48,6 +48,8 @@ const save = ({ attributes, className }) => {
     ...GalleryStyles(attributes),
   };
 
+  const sortedImages = [...images].sort((a, b) => a.order - b.order);
+
   return (
     <div className={className}>
       <div className={innerClasses}>
@@ -56,7 +58,7 @@ const save = ({ attributes, className }) => {
           columnsCount={columnsize}
           style={masonryStyles}
         >
-          {images.map((image) => {
+          {sortedImages.map((image, index) => {
             let href;
 
             switch (linkTo) {
@@ -85,6 +87,7 @@ const save = ({ attributes, className }) => {
                 data-id={image.id}
                 data-imglink={image.imgLink}
                 data-link={image.link}
+                data-order={image.order !== undefined ? image.order : index}
                 className={image.id ? `wp-image-${image.id}` : null}
               />
             );
