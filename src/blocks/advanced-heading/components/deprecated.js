@@ -34,20 +34,18 @@ const deprecated = [
     attributes: attributes,
     save: function (props) {
       const {
-        attributes: {
-          headingTitle,
-          headingId,
-          headingDesc,
-          seperatorStyle,
-          seperatorPosition,
-          headingTag,
-          showHeading,
-          showSubHeading,
-          showSeparator,
-          block_id,
-        },
-        setAttributes,
-      } = props;
+        headingTitle,
+        headingId,
+        headingDesc,
+        seperatorStyle,
+        seperatorPosition,
+        headingTag,
+        showHeading,
+        showSubHeading,
+        showSeparator,
+        block_id,
+        anchor,
+      } = props.attributes;
 
       var seprator_output = "";
       if (seperatorStyle !== "none") {
@@ -60,6 +58,7 @@ const deprecated = [
 
       return (
         <div
+          id={anchor}
           className={classnames(
             "responsive-block-editor-addons-block-advanced-heading",
             `block-${block_id}`
@@ -93,18 +92,20 @@ const deprecated = [
     attributes: attributes,
     save: function (props) {
       const {
-        headingTitle,
-        headingId,
-        headingDesc,
-        seperatorStyle,
-        seperatorPosition,
-        headingTag,
-        showHeading,
-        showSubHeading,
-        showSeparator,
-        block_id,
-        anchor,
-      } = props.attributes;
+        attributes: {
+          headingTitle,
+          headingId,
+          headingDesc,
+          seperatorStyle,
+          seperatorPosition,
+          headingTag,
+          showHeading,
+          showSubHeading,
+          showSeparator,
+          block_id,
+        },
+        setAttributes,
+      } = props;
 
       var seprator_output = "";
       if (seperatorStyle !== "none") {
@@ -116,7 +117,6 @@ const deprecated = [
       }
       return (
         <div
-          id={anchor}
           className={classnames(
             "responsive-block-editor-addons-block-advanced-heading",
             `block-${block_id}`
