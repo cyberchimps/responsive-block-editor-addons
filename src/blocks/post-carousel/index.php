@@ -597,7 +597,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "responsive-block-editor-addons-block-post-carousel block-" . sanitize_html_class( $attributes['block_id'] ) . "responsive-post-grid  responsive-post__image-position-{$attributes['imagePosition']} featured{$attributes['postType']} align{$attributes['align']}";
+		$class = "responsive-block-editor-addons-block-post-carousel block-" . sanitize_html_class( $attributes['block_id'] ) . " responsive-post-grid  responsive-post__image-position-{$attributes['imagePosition']} featured{$attributes['postType']} align{$attributes['align']}";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . sanitize_html_class( $attributes['className'] );

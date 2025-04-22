@@ -24,6 +24,13 @@ class Company extends React.Component {
           tagName="div"
           value={company}
           className="responsive-block-editor-addons-tm__company"
+          style={{
+            color: attributes.companyColor,
+            fontFamily: attributes.companyFontFamily,
+            fontWeight: attributes.companyFontWeight,
+            lineHeight: attributes.companyLineHeight,
+            fontSize: attributes.companyFontSize,
+          }}
           onChange={(value) => {
             var new_content = {
               description: data_copy[index_value]["description"],
@@ -56,6 +63,13 @@ class Company extends React.Component {
           tagName="span"
           value={company}
           className="responsive-block-editor-addons-tm__company"
+          style={{
+            color: attributes.companyColor,
+            fontFamily: attributes.companyFontFamily,
+            fontWeight: attributes.companyFontWeight,
+            lineHeight: attributes.companyLineHeight,
+            fontSize: attributes.companyFontSize,
+          }}
         />
       );
     }
