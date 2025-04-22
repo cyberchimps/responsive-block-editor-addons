@@ -25,6 +25,14 @@ class AuthorName extends React.Component {
           value={author_name}
           placeholder={__("Author Name", "responsive-block-editor-addons")}
           className="responsive-block-editor-addons-tm__author-name"
+          style={{
+            color: attributes.authorColor,
+            marginBottom: attributes.nameSpace,
+            fontFamily: attributes.nameFontFamily,
+            fontWeight: attributes.nameFontWeight,
+            lineHeight: attributes.nameLineHeight,
+            fontSize: attributes.nameFontSize,
+          }}
           onChange={(value) => {
             var new_content = {
               description: data_copy[index_value]["description"],
@@ -56,6 +64,14 @@ class AuthorName extends React.Component {
           tagName="span"
           value={author_name}
           className="responsive-block-editor-addons-tm__author-name"
+          style={{
+            color: attributes.authorColor,
+            marginBottom: attributes.nameSpace,
+            fontFamily: attributes.nameFontFamily,
+            fontWeight: attributes.nameFontWeight,
+            lineHeight: attributes.nameLineHeight,
+            fontSize: attributes.nameFontSize,
+          }}
         />
       );
     }
