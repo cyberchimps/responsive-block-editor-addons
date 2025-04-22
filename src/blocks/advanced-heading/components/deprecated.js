@@ -8,6 +8,9 @@ const deprecated = [
   {
     // attributes,
     attributes: attributes,
+    supports: {
+      anchor: true
+    },
     save: function (props) {
       const {
         attributes: {
@@ -21,6 +24,7 @@ const deprecated = [
           showSubHeading,
           showSeparator,
           block_id,
+          anchor,
         },
         setAttributes,
       } = props;
