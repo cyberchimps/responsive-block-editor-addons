@@ -1,19 +1,17 @@
 const { RichText } = wp.blockEditor;
 
-const { __ } = wp.i18n;
-
 const { createBlock } = wp.blocks;
 
-class AuthorName extends React.Component {
+const { __ } = wp.i18n;
+
+class Company extends React.Component {
   render() {
     const { attributes, setAttributes, props, index_value } = this.props;
 
     const test_arr = attributes.test_block[index_value];
-    let author_name = "";
+    let company = "";
     if (test_arr && typeof test_arr !== "undefined") {
-      if(test_arr["name"] !== "") {
-        author_name = test_arr["name"];
-      }
+      company = test_arr["company"];
     }
 
     var data_copy = [...attributes.test_block];
@@ -22,21 +20,29 @@ class AuthorName extends React.Component {
       return (
         <RichText
           tagName="div"
-          value={author_name}
-          placeholder={__("Author Name", "responsive-block-editor-addons")}
-          className="responsive-block-editor-addons-tm__author-name"
+          value={company}
+          className="responsive-block-editor-addons-tm__company"
+          style={{
+            color: attributes.companyColor,
+            fontFamily: attributes.companyFontFamily,
+            fontWeight: attributes.companyFontWeight,
+            lineHeight: attributes.companyLineHeight,
+            fontSize: attributes.companyFontSize,
+          }}
           onChange={(value) => {
             var new_content = {
               description: data_copy[index_value]["description"],
-              name: value,
-              company: data_copy[index_value]["company"],
+              name: data_copy[index_value]["name"],
+              company: value,
               image: data_copy[index_value]["image"],
             };
             data_copy[index_value] = new_content;
             setAttributes({ test_block: data_copy });
           }}
+          multiline={false}
+          placeholder={__("Company Name", "responsive-block-editor-addons")}
           onMerge={props.mergeBlocks}
-          onSplit={
+          unstableOnSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });
@@ -54,12 +60,19 @@ class AuthorName extends React.Component {
       return (
         <RichText.Content
           tagName="span"
-          value={author_name}
-          className="responsive-block-editor-addons-tm__author-name"
+          value={company}
+          className="responsive-block-editor-addons-tm__company"
+          style={{
+            color: attributes.companyColor,
+            fontFamily: attributes.companyFontFamily,
+            fontWeight: attributes.companyFontWeight,
+            lineHeight: attributes.companyLineHeight,
+            fontSize: attributes.companyFontSize,
+          }}
         />
       );
     }
   }
 }
 
-export default AuthorName;
+export default Company;

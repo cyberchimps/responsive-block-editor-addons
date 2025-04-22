@@ -6,13 +6,48 @@ import PositionClasses from "../classes";
 import TestimonialImage from "./Image";
 import oldAttributes from "./deprecated/attributes";
 import attributes from "../attributes";
+import save from "../../accordion/components/save";
+import DeprecatedTestimonialSliderSave from "./deprecated/deprecated-testimonial-slider-save";
 
 const { Fragment } = wp.element;
 
 const deprecated = [
   {
     // attributes,
-    attributes: oldAttributes,
+    attributes: attributes,
+    save: function (props) {
+      const {
+        attributes: {
+          block_id,
+          className,
+          columns,
+          autoplaySpeed,
+          autoplay,
+          infiniteLoop,
+          pauseOnHover,
+          transitionSpeed,
+          tcolumns,
+          arrowSize,
+          mcolumns,
+          test_block,
+          imagePosition,
+          arrowDots,
+          backgroundPosition,
+          backgroundOpacity,
+          headingAlign,
+          skin,
+        },
+        setAttributes,
+      } = props;
+
+      return (
+        DeprecatedTestimonialSliderSave(props)
+      )
+    }
+  },
+  {
+    // attributes,
+    attributes: attributes,
     save: function (props) {
       const {
         attributes: {

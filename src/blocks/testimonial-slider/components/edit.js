@@ -73,6 +73,220 @@ class edit extends Component {
     this.onSelectImage = this.onSelectImage.bind(this);
   }
 
+  componentDidMount() {
+    // Assigning block_id in the attribute.
+    this.props.setAttributes({ block_id: this.props.clientId });
+
+    this.props.setAttributes({ classMigrate: true });
+
+    const {
+      attributes: {
+      companyColor,
+      descColor,
+      authorColor,
+      descSpace,
+      descSpaceMobile,
+      descSpaceTablet,
+      nameSpace,
+      nameSpaceMobile,
+      nameSpaceTablet,
+      arrowBorderRadius, 
+      arrowTopRadius,
+      arrowRightRadius,
+      arrowBottomRadius,
+      arrowLeftRadius,
+      arrowTopRadiusTablet,
+      arrowRightRadiusTablet,
+      arrowBottomRadiusTablet,
+      arrowLeftRadiusTablet,
+      arrowTopRadiusMobile,
+      arrowRightRadiusMobile,
+      arrowBottomRadiusMobile,
+      arrowLeftRadiusMobile,
+      arrowIsRadiusValueUpdated,
+        blockBorderRadius,
+        blockTopRadius,
+        blockRightRadius,
+        blockBottomRadius,
+        blockLeftRadius,
+        blockTopRadiusTablet,
+        blockRightRadiusTablet,
+        blockBottomRadiusTablet,
+        blockLeftRadiusTablet,
+        blockTopRadiusMobile,
+        blockRightRadiusMobile,
+        blockBottomRadiusMobile,
+        blockLeftRadiusMobile,
+        blockIsRadiusValueUpdated,
+      bubbleBorderRadius,
+      bubbleTopRadius,
+      bubbleRightRadius,
+      bubbleBottomRadius,
+      bubbleLeftRadius,
+      bubbleTopRadiusTablet,
+      bubbleRightRadiusTablet,
+      bubbleBottomRadiusTablet,
+      bubbleLeftRadiusTablet,
+      bubbleTopRadiusMobile,
+      bubbleRightRadiusMobile,
+      bubbleBottomRadiusMobile,
+      bubbleLeftRadiusMobile,
+      bubbleIsRadiusValueUpdated,
+      blockPadding,
+      blockPaddingTablet,
+      blockPaddingMobile,
+      blockTopMargin,
+      blockBottomMargin,
+      blockLeftMargin,
+      blockRightMargin,
+      blockTopMarginTablet,
+      blockBottomMarginTablet,
+      blockLeftMarginTablet,
+      blockRightMarginTablet,
+      blockTopMarginMobile,
+      blockBottomMarginMobile,
+      blockLeftMarginMobile,
+      blockRightMarginMobile,
+      newSpacingValuesUpdated,
+      blockIsTypographyColorValueUpdated,
+      descTypographyColor,
+      nameTypographyColor,
+      companyTypographyColor,
+      descBottomSpacing,
+      descBottomSpacingMobile,
+      descBottomSpacingTablet,
+      nameBottomSpacing,
+      nameBottomSpacingMobile,
+      nameBottomSpacingTablet,
+      },
+    } = this.props;
+
+    // backward compatibility for border radius control
+
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadius,
+          blockBottomRadius:       blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadius,
+          blockLeftRadius:         blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadius,
+          blockRightRadius:        blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadius,
+          blockTopRadiusTablet:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for border radius control
+
+    if (!arrowIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+        arrowTopRadius:          arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadius,
+        arrowBottomRadius:       arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadius,
+        arrowLeftRadius:         arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadius,
+        arrowRightRadius:        arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadius,
+        arrowTopRadiusTablet:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusTablet,
+        arrowBottomRadiusTablet: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusTablet,
+        arrowRightRadiusTablet:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusTablet,
+        arrowLeftRadiusTablet:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusTablet,
+        arrowTopRadiusMobile:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusMobile,
+        arrowBottomRadiusMobile: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusMobile,
+        arrowLeftRadiusMobile:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusMobile,
+        arrowRightRadiusMobile:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({arrowIsRadiusValueUpdated: true});
+      }
+
+      // backward compatibility for typography color control
+    if (!blockIsTypographyColorValueUpdated) {
+      this.props.setAttributes(
+        {
+          descTypographyColor:          descColor !== undefined ? descColor : descTypographyColor,
+          nameTypographyColor:         authorColor !== undefined ? authorColor : nameTypographyColor,
+          companyTypographyColor:         companyColor !== undefined ? companyColor : companyTypographyColor,
+          descBottomSpacing: descSpace !== undefined ? descSpace : descBottomSpacing,
+          descBottomSpacingMobile: descSpaceMobile !== undefined ? descSpaceMobile : descBottomSpacingMobile,
+          descBottomSpacingTablet: descSpaceTablet !== undefined ? descSpaceTablet : descBottomSpacingTablet,
+          nameBottomSpacing: nameSpace !== undefined ? nameSpace : nameBottomSpacing,
+          nameBottomSpacingMobile: nameSpaceMobile !== undefined ? nameSpaceMobile : nameBottomSpacingMobile,
+          nameBottomSpacingTablet: nameSpaceTablet !== undefined ? nameSpaceTablet : nameBottomSpacingTablet,
+        }
+      )
+      this.props.setAttributes({blockIsTypographyColorValueUpdated: true});
+    }
+
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!newSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopMargin:          blockPadding !== undefined ? blockPadding : blockTopMargin,
+          blockBottomMargin:       blockPadding !== undefined ? blockPadding : blockBottomMargin,
+          blockLeftMargin:         blockPadding !== undefined ? blockPadding : blockLeftMargin,
+          blockRightMargin:        blockPadding !== undefined ? blockPadding : blockRightMargin,
+          blockTopMarginTablet:    blockPaddingTablet !== undefined ? blockPaddingTablet : blockTopMarginTablet,
+          blockBottomMarginTablet: blockPaddingTablet !== undefined ? blockPaddingTablet : blockBottomMarginTablet,
+          blockRightMarginTablet:  blockPaddingTablet !== undefined ? blockPaddingTablet : blockRightMarginTablet,
+          blockLeftMarginTablet:   blockPaddingTablet !== undefined ? blockPaddingTablet : blockLeftMarginTablet,
+          blockTopMarginMobile:    blockPaddingMobile !== undefined ? blockPaddingMobile : blockTopMarginMobile,
+          blockBottomMarginMobile: blockPaddingMobile !== undefined ? blockPaddingMobile : blockBottomMarginMobile,
+          blockLeftMarginMobile:   blockPaddingMobile !== undefined ? blockPaddingMobile : blockLeftMarginMobile,
+          blockRightMarginMobile:  blockPaddingMobile !== undefined ? blockPaddingMobile : blockRightMarginMobile,
+        }
+      )
+    }
+    this.props.setAttributes({newSpacingValuesUpdated: true});
+
+    // backward compatibility for border radius control
+  
+    if ( ! bubbleIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          bubbleTopRadius:          bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadius,
+          bubbleBottomRadius:       bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadius,
+          bubbleLeftRadius:         bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadius,
+          bubbleRightRadius:        bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadius,
+          bubbleTopRadiusTablet:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusTablet,
+          bubbleBottomRadiusTablet: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusTablet,
+          bubbleRightRadiusTablet:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusTablet,
+          bubbleLeftRadiusTablet:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusTablet,
+          bubbleTopRadiusMobile:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusMobile,
+          bubbleBottomRadiusMobile: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusMobile,
+          bubbleLeftRadiusMobile:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusMobile,
+          bubbleRightRadiusMobile:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({bubbleIsRadiusValueUpdated: true});
+    }
+
+    // Pushing Style tag for this block css.
+    const $style = document.createElement("style");
+    $style.setAttribute(
+      "id",
+      "responsive-block-editor-addons-testimonial-slider-style-" +
+        this.props.clientId
+    );
+    document.head.appendChild($style);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    var element = document.getElementById(
+      "responsive-block-editor-addons-testimonial-slider-style-" +
+        this.props.clientId
+    );
+
+    if (null !== element && undefined !== element) {
+      element.innerHTML = EditorStyles(this.props);
+    }
+  }
+
   /*
    * Event to set Image as while adding.
    */
@@ -186,11 +400,9 @@ class edit extends Component {
 
   
   render() {
-    const { className, setAttributes, attributes } = this.props;
-
-    // Setup the attributes.
     const {
-      z_index,
+      attributes: {
+        z_index,
       z_indexMobile,
       z_indexTablet,
       test_item_count,
@@ -406,8 +618,10 @@ class edit extends Component {
       imageSizeTab,
       backgroundImageValueUpdated,
       backgroundColor1,
-        
-    } = attributes;
+      },
+      setAttributes,
+      className,
+    } = this.props;
 
     const blockMarginResetValues = {
 			marginTop: 0,
@@ -437,49 +651,6 @@ class edit extends Component {
 			paddingMobileBottom: 0,
 			paddingMobileLeft: 0,
 		}
-
-    // To populate new control values with existing padding margin control values for backward compatibility.
-    if (!newSpacingValuesUpdated) {
-      this.props.setAttributes(
-        {
-          blockTopMargin:          blockPadding !== undefined ? blockPadding : blockTopMargin,
-          blockBottomMargin:       blockPadding !== undefined ? blockPadding : blockBottomMargin,
-          blockLeftMargin:         blockPadding !== undefined ? blockPadding : blockLeftMargin,
-          blockRightMargin:        blockPadding !== undefined ? blockPadding : blockRightMargin,
-          blockTopMarginTablet:    blockPaddingTablet !== undefined ? blockPaddingTablet : blockTopMarginTablet,
-          blockBottomMarginTablet: blockPaddingTablet !== undefined ? blockPaddingTablet : blockBottomMarginTablet,
-          blockRightMarginTablet:  blockPaddingTablet !== undefined ? blockPaddingTablet : blockRightMarginTablet,
-          blockLeftMarginTablet:   blockPaddingTablet !== undefined ? blockPaddingTablet : blockLeftMarginTablet,
-          blockTopMarginMobile:    blockPaddingMobile !== undefined ? blockPaddingMobile : blockTopMarginMobile,
-          blockBottomMarginMobile: blockPaddingMobile !== undefined ? blockPaddingMobile : blockBottomMarginMobile,
-          blockLeftMarginMobile:   blockPaddingMobile !== undefined ? blockPaddingMobile : blockLeftMarginMobile,
-          blockRightMarginMobile:  blockPaddingMobile !== undefined ? blockPaddingMobile : blockRightMarginMobile,
-        }
-      )
-    }
-    this.props.setAttributes({newSpacingValuesUpdated: true});
-
-    // backward compatibility for border radius control
-  
-    if ( ! bubbleIsRadiusValueUpdated) {
-      this.props.setAttributes(
-        {
-          bubbleTopRadius:          bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadius,
-          bubbleBottomRadius:       bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadius,
-          bubbleLeftRadius:         bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadius,
-          bubbleRightRadius:        bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadius,
-          bubbleTopRadiusTablet:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusTablet,
-          bubbleBottomRadiusTablet: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusTablet,
-          bubbleRightRadiusTablet:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusTablet,
-          bubbleLeftRadiusTablet:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusTablet,
-          bubbleTopRadiusMobile:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusMobile,
-          bubbleBottomRadiusMobile: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusMobile,
-          bubbleLeftRadiusMobile:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusMobile,
-          bubbleRightRadiusMobile:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusMobile,
-        }
-      )
-      this.props.setAttributes({bubbleIsRadiusValueUpdated: true});
-    }
 
     const fontWeightOptions = [
       {
@@ -524,7 +695,51 @@ class edit extends Component {
       },
     ];
 
-    // backward compatibility for typography color control
+    // backward compatibility for border radius control
+
+    if (!blockIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopRadius:          blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadius,
+          blockBottomRadius:       blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadius,
+          blockLeftRadius:         blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadius,
+          blockRightRadius:        blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadius,
+          blockTopRadiusTablet:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusTablet,
+          blockBottomRadiusTablet: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusTablet,
+          blockRightRadiusTablet:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusTablet,
+          blockLeftRadiusTablet:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusTablet,
+          blockTopRadiusMobile:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusMobile,
+          blockBottomRadiusMobile: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusMobile,
+          blockLeftRadiusMobile:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusMobile,
+          blockRightRadiusMobile:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({blockIsRadiusValueUpdated: true});
+    }
+
+    // backward compatibility for border radius control
+
+    if (!arrowIsRadiusValueUpdated) {
+      this.props.setAttributes(
+        {
+        arrowTopRadius:          arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadius,
+        arrowBottomRadius:       arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadius,
+        arrowLeftRadius:         arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadius,
+        arrowRightRadius:        arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadius,
+        arrowTopRadiusTablet:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusTablet,
+        arrowBottomRadiusTablet: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusTablet,
+        arrowRightRadiusTablet:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusTablet,
+        arrowLeftRadiusTablet:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusTablet,
+        arrowTopRadiusMobile:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusMobile,
+        arrowBottomRadiusMobile: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusMobile,
+        arrowLeftRadiusMobile:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusMobile,
+        arrowRightRadiusMobile:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({arrowIsRadiusValueUpdated: true});
+      }
+
+      // backward compatibility for typography color control
     if (!blockIsTypographyColorValueUpdated) {
       this.props.setAttributes(
         {
@@ -542,6 +757,48 @@ class edit extends Component {
       this.props.setAttributes({blockIsTypographyColorValueUpdated: true});
     }
 
+    // To populate new control values with existing padding margin control values for backward compatibility.
+    if (!newSpacingValuesUpdated) {
+      this.props.setAttributes(
+        {
+          blockTopMargin:          blockPadding !== undefined ? blockPadding : blockTopMargin,
+          blockBottomMargin:       blockPadding !== undefined ? blockPadding : blockBottomMargin,
+          blockLeftMargin:         blockPadding !== undefined ? blockPadding : blockLeftMargin,
+          blockRightMargin:        blockPadding !== undefined ? blockPadding : blockRightMargin,
+          blockTopMarginTablet:    blockPaddingTablet !== undefined ? blockPaddingTablet : blockTopMarginTablet,
+          blockBottomMarginTablet: blockPaddingTablet !== undefined ? blockPaddingTablet : blockBottomMarginTablet,
+          blockRightMarginTablet:  blockPaddingTablet !== undefined ? blockPaddingTablet : blockRightMarginTablet,
+          blockLeftMarginTablet:   blockPaddingTablet !== undefined ? blockPaddingTablet : blockLeftMarginTablet,
+          blockTopMarginMobile:    blockPaddingMobile !== undefined ? blockPaddingMobile : blockTopMarginMobile,
+          blockBottomMarginMobile: blockPaddingMobile !== undefined ? blockPaddingMobile : blockBottomMarginMobile,
+          blockLeftMarginMobile:   blockPaddingMobile !== undefined ? blockPaddingMobile : blockLeftMarginMobile,
+          blockRightMarginMobile:  blockPaddingMobile !== undefined ? blockPaddingMobile : blockRightMarginMobile,
+        }
+      )
+      this.props.setAttributes({newSpacingValuesUpdated: true});
+    }
+
+    // backward compatibility for border radius control
+  
+    if ( ! bubbleIsRadiusValueUpdated) {
+      this.props.setAttributes(
+      {
+          bubbleTopRadius:          bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadius,
+          bubbleBottomRadius:       bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadius,
+          bubbleLeftRadius:         bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadius,
+          bubbleRightRadius:        bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadius,
+          bubbleTopRadiusTablet:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusTablet,
+          bubbleBottomRadiusTablet: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusTablet,
+          bubbleRightRadiusTablet:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusTablet,
+          bubbleLeftRadiusTablet:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusTablet,
+          bubbleTopRadiusMobile:    bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleTopRadiusMobile,
+          bubbleBottomRadiusMobile: bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleBottomRadiusMobile,
+          bubbleLeftRadiusMobile:   bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleLeftRadiusMobile,
+          bubbleRightRadiusMobile:  bubbleBorderRadius !== undefined ? bubbleBorderRadius : bubbleRightRadiusMobile,
+        }
+      )
+      this.props.setAttributes({bubbleIsRadiusValueUpdated: true});
+    }
 
     // Typography settings.
     const TypographySettings = (
@@ -560,7 +817,6 @@ class edit extends Component {
         bottomSpacing: descBottomSpacing,
         bottomSpacingMoible: descBottomSpacingMobile,
         bottomSpacingTablet: descBottomSpacingTablet,
-
 				}}
 				showLetterSpacing={false}
 				showTextTransform={false}
@@ -1814,49 +2070,6 @@ class edit extends Component {
       </InspectorControls>
     );
 
-     // backward compatibility for border radius control
-
-     if (!blockIsRadiusValueUpdated) {
-      this.props.setAttributes(
-        {
-          blockTopRadius:          blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadius,
-          blockBottomRadius:       blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadius,
-          blockLeftRadius:         blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadius,
-          blockRightRadius:        blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadius,
-          blockTopRadiusTablet:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusTablet,
-          blockBottomRadiusTablet: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusTablet,
-          blockRightRadiusTablet:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusTablet,
-          blockLeftRadiusTablet:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusTablet,
-          blockTopRadiusMobile:    blockBorderRadius !== undefined ? blockBorderRadius : blockTopRadiusMobile,
-          blockBottomRadiusMobile: blockBorderRadius !== undefined ? blockBorderRadius : blockBottomRadiusMobile,
-          blockLeftRadiusMobile:   blockBorderRadius !== undefined ? blockBorderRadius : blockLeftRadiusMobile,
-          blockRightRadiusMobile:  blockBorderRadius !== undefined ? blockBorderRadius : blockRightRadiusMobile,
-        }
-      )
-      this.props.setAttributes({blockIsRadiusValueUpdated: true});
-    }
-
-    // backward compatibility for border radius control
-
-    if (!arrowIsRadiusValueUpdated) {
-      this.props.setAttributes(
-        {
-        arrowTopRadius:          arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadius,
-        arrowBottomRadius:       arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadius,
-        arrowLeftRadius:         arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadius,
-        arrowRightRadius:        arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadius,
-        arrowTopRadiusTablet:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusTablet,
-        arrowBottomRadiusTablet: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusTablet,
-        arrowRightRadiusTablet:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusTablet,
-        arrowLeftRadiusTablet:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusTablet,
-        arrowTopRadiusMobile:    arrowBorderRadius !== undefined ? arrowBorderRadius : arrowTopRadiusMobile,
-        arrowBottomRadiusMobile: arrowBorderRadius !== undefined ? arrowBorderRadius : arrowBottomRadiusMobile,
-        arrowLeftRadiusMobile:   arrowBorderRadius !== undefined ? arrowBorderRadius : arrowLeftRadiusMobile,
-        arrowRightRadiusMobile:  arrowBorderRadius !== undefined ? arrowBorderRadius : arrowRightRadiusMobile,
-        }
-      )
-      this.props.setAttributes({arrowIsRadiusValueUpdated: true});
-      }
 
     return (
       <Fragment>
@@ -1934,7 +2147,7 @@ class edit extends Component {
               <div
                 className={classnames(
                   "responsive-block-editor-addons-testimonial__wrap",
-                  ...PositionClasses(attributes)
+                  ...PositionClasses(this.props.attributes)
                 )}
                 key={"wrap-" + index}
               >
@@ -1949,7 +2162,7 @@ class edit extends Component {
                   <div className="responsive-block-editor-addons-tm__overlay"></div>
                   {(imagePosition == "top" || imagePosition == "left") && (
                     <TestimonialImage
-                      attributes={attributes}
+                      attributes={this.props.attributes}
                       index_value={index}
                     />
                   )}
@@ -1963,7 +2176,7 @@ class edit extends Component {
                           key={"text-wrap-" + index}
                         >
                           <Description
-                            attributes={attributes}
+                            attributes={this.props.attributes}
                             setAttributes={setAttributes}
                             props={this.props}
                             index_value={index}
@@ -1975,7 +2188,7 @@ class edit extends Component {
                       <div className="responsive-block-editor-addons-tm__meta-inner">
                         {imagePosition == "bottom" && (
                           <TestimonialImage
-                            attributes={attributes}
+                            attributes={this.props.attributes}
                             index_value={index}
                           />
                         )}
@@ -1989,18 +2202,18 @@ class edit extends Component {
                             >
                               {imagePosition == "stacked" && (
                                 <TestimonialImage
-                                  attributes={attributes}
+                                  attributes={this.props.attributes}
                                   index_value={index}
                                 />
                               )}
                               <AuthorName
-                                attributes={attributes}
+                                attributes={this.props.attributes}
                                 setAttributes={setAttributes}
                                 props={this.props}
                                 index_value={index}
                               />
                               <Company
-                                attributes={attributes}
+                                attributes={this.props.attributes}
                                 setAttributes={setAttributes}
                                 props={this.props}
                                 index_value={index}
@@ -2013,7 +2226,7 @@ class edit extends Component {
                   </div>
                   {imagePosition == "right" && (
                     <TestimonialImage
-                      attributes={attributes}
+                      attributes={this.props.attributes}
                       index_value={index}
                     />
                   )}
@@ -2029,32 +2242,7 @@ class edit extends Component {
     );
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    var element = document.getElementById(
-      "responsive-block-editor-addons-testimonial-slider-style-" +
-        this.props.clientId
-    );
-
-    if (null !== element && undefined !== element) {
-      element.innerHTML = EditorStyles(this.props);
-    }
-  }
-
-  componentDidMount() {
-    // Assigning block_id in the attribute.
-    this.props.setAttributes({ block_id: this.props.clientId });
-
-    this.props.setAttributes({ classMigrate: true });
-
-    // Pushing Style tag for this block css.
-    const $style = document.createElement("style");
-    $style.setAttribute(
-      "id",
-      "responsive-block-editor-addons-testimonial-slider-style-" +
-        this.props.clientId
-    );
-    document.head.appendChild($style);
-  }
+  
 }
 
 export default edit;

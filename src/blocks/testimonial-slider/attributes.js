@@ -8,9 +8,9 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
   var author_text = "John Doe ";
   var company_text = "Company" + i;
   testimonial_block.push({
-    description: [desc_text],
-    name: [author_text],
-    company: [company_text],
+    description: desc_text,
+    name: author_text,
+    company: company_text,
     image: "",
     imageUrl: "",
   });
@@ -797,8 +797,8 @@ const attributes = {
     type: "boolean",
     default: false,
   },
-  blockIsTypographyColorValueUpdated: {
-    type: 'boolean',
+  blockIsTypographyColorValueUpdated : {
+    type: "boolean",
     default: false,
   },
   descTypographyColor: {
@@ -903,10 +903,6 @@ const attributes = {
   },
   backgroundColor1: {
     type: "string",
-  },
-  backgroundType: {
-    type: "string",
-    default: "none",
   },
 };
 

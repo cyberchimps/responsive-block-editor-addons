@@ -3,10 +3,43 @@ import classnames from "classnames";
 import TableOfContent from "./TableOfContents";
 import TableOfContents from "../deprecated/TableOfContents";
 import renderSVG from "../../../renderIcon";
+import DeprecatedTableOfContentsSave from "../deprecated/DeprecatedTableOfContentsSave";
 
 const { Fragment } = wp.element;
 
 const deprecated = [
+    {
+        // attributes,
+        attributes: attributes,
+        save: function (props) {
+            const {
+                attributes: {
+                    block_id,
+                    align,
+                    isCollapsible,
+                    initialCollapse,
+                    icon,
+                    tColumnsDesktop,
+                    headingTitle,
+                    tableType,
+                    backgroundVideo,
+                    backgroundType,
+                    sectionHtmlTag,
+                    headerLinks,
+                    allowedAnchors,
+                    orderListType,
+                },
+                setAttributes,
+                className,
+                } = props;
+
+            
+            return (
+                <DeprecatedTableOfContentsSave {...props} />
+            )
+            
+        }
+    },
   {
     // attributes,
     attributes: attributes,
