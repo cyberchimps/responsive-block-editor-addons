@@ -11,9 +11,8 @@ class AuthorName extends React.Component {
     const test_arr = attributes.test_block[index_value];
     let author_name = "";
     if (test_arr && typeof test_arr !== "undefined") {
-      author_name = test_arr["name"];
-      if (Array.isArray(author_name)) {
-        author_name = author_name[0];
+      if(test_arr["name"] !== "") {
+        author_name = test_arr["name"];
       }
     }
 
@@ -27,8 +26,8 @@ class AuthorName extends React.Component {
           placeholder={__("Author Name", "responsive-block-editor-addons")}
           className="responsive-block-editor-addons-tm__author-name"
           style={{
-            color: attributes.nameTypographyColor,
-            marginBottom: attributes.nameBottomSpacing,
+            color: attributes.authorColor,
+            marginBottom: attributes.nameSpace,
             fontFamily: attributes.nameFontFamily,
             fontWeight: attributes.nameFontWeight,
             lineHeight: attributes.nameLineHeight,
@@ -66,8 +65,8 @@ class AuthorName extends React.Component {
           value={author_name}
           className="responsive-block-editor-addons-tm__author-name"
           style={{
-            color: attributes.nameTypographyColor,
-            marginBottom: attributes.nameBottomSpacing,
+            color: attributes.authorColor,
+            marginBottom: attributes.nameSpace,
             fontFamily: attributes.nameFontFamily,
             fontWeight: attributes.nameFontWeight,
             lineHeight: attributes.nameLineHeight,

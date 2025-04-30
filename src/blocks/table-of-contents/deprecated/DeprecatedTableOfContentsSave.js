@@ -9,7 +9,7 @@ import renderSVG from "../../../renderIcon";
  */
 const { Component, Fragment } = wp.element;
 
-export default class Save extends Component {
+export default class DeprecatedTableOfContentsSave extends Component {
   constructor() {
     super(...arguments);
   }
@@ -49,10 +49,8 @@ export default class Save extends Component {
     let icon_html = "";
     if (isCollapsible && icon) {
       icon_html = (
-        <span className="responsive-block-editor-addons-toc__collapsible-icon">
-          <span className="responsive-block-editor-addons-toc__collapsible-wrap">
-            {renderSVG(icon)}
-          </span>
+        <span className="responsive-block-editor-addons-toc__collapsible-wrap">
+          {renderSVG("angle-down")}
         </span>
       );
     }
@@ -82,7 +80,7 @@ export default class Save extends Component {
             <div class="responsive-block-editor-addons-toc__title">
               {headingTitle}
             </div>
-              {icon_html}
+            {icon_html}
           </div>
           <TableOfContents
             headers={

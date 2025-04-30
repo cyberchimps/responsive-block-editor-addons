@@ -94,8 +94,9 @@ class GalleryPlaceholder extends Component {
       })),
     });
     this.props.setAttributes({
-      images: newImages.map((image) => ({
+      images: newImages.map((image, index) => ({
         ...helper.pickRelevantMediaFiles(image),
+        order: index,
         caption: this.selectCaption(image, images, attachmentCaptions),
         imgLink: this.selectImgLink(image, images, imgLinks),
       })),

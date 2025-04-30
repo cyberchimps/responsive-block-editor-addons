@@ -1,19 +1,17 @@
 const { RichText } = wp.blockEditor;
 
-const { createBlock } = wp.blocks;
-
 const { __ } = wp.i18n;
 
-class Company extends React.Component {
+const { createBlock } = wp.blocks;
+
+class Description extends React.Component {
   render() {
     const { attributes, setAttributes, props, index_value } = this.props;
 
     const test_arr = attributes.test_block[index_value];
-    let company = "";
+    let description = "";
     if (test_arr && typeof test_arr !== "undefined") {
-      if(test_arr["company"] !== "") {
-        company = test_arr["company"];
-      }
+      description = test_arr["description"];
     }
 
     var data_copy = [...attributes.test_block];
@@ -22,28 +20,29 @@ class Company extends React.Component {
       return (
         <RichText
           tagName="div"
-          value={company}
-          className="responsive-block-editor-addons-tm__company"
+          value={description}
+          placeholder={__("Write Description", "responsive-block-editor-addons")}
+          className="responsive-block-editor-addons-tm__desc"
           style={{
-            color: attributes.companyColor,
-            fontFamily: attributes.companyFontFamily,
-            fontWeight: attributes.companyFontWeight,
-            lineHeight: attributes.companyLineHeight,
-            fontSize: attributes.companyFontSize,
+            color: attributes.descColor,
+            marginBottom: attributes.descSpace,
+            fontFamily: attributes.descFontFamily,
+            fontWeight: attributes.descFontWeight,
+            lineHeight: attributes.descLineHeight,
+            fontSize: attributes.descFontSize,
           }}
           onChange={(value) => {
             var new_content = {
-              description: data_copy[index_value]["description"],
+              description: value,
               name: data_copy[index_value]["name"],
-              company: value,
+              company: data_copy[index_value]["company"],
               image: data_copy[index_value]["image"],
             };
             data_copy[index_value] = new_content;
             setAttributes({ test_block: data_copy });
           }}
-          placeholder={__("Company Name", "responsive-block-editor-addons")}
           onMerge={props.mergeBlocks}
-          onSplit={
+          unstableOnSplit={
             props.insertBlocksAfter
               ? (before, after, ...blocks) => {
                   setAttributes({ content: before });
@@ -60,15 +59,16 @@ class Company extends React.Component {
     } else {
       return (
         <RichText.Content
-          tagName="span"
-          value={company}
-          className="responsive-block-editor-addons-tm__company"
+          tagName="div"
+          value={description}
+          className="responsive-block-editor-addons-tm__desc"
           style={{
-            color: attributes.companyColor,
-            fontFamily: attributes.companyFontFamily,
-            fontWeight: attributes.companyFontWeight,
-            lineHeight: attributes.companyLineHeight,
-            fontSize: attributes.companyFontSize,
+            color: attributes.descColor,
+            marginBottom: attributes.descSpace,
+            fontFamily: attributes.descFontFamily,
+            fontWeight: attributes.descFontWeight,
+            lineHeight: attributes.descLineHeight,
+            fontSize: attributes.descFontSize,
           }}
         />
       );
@@ -76,4 +76,4 @@ class Company extends React.Component {
   }
 }
 
-export default Company;
+export default Description;
