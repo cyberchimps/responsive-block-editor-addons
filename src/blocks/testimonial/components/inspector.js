@@ -59,7 +59,6 @@ export default class Inspector extends Component {
     super(...arguments);
     this.onRemoveImage = this.onRemoveImage.bind(this);
     this.onSelectImage = this.onSelectImage.bind(this);
-    this.onSelectImage = this.onSelectImage.bind(this);
     this.onSelectVideo = this.onSelectVideo.bind(this);
   }
 
@@ -430,6 +429,7 @@ export default class Inspector extends Component {
         titleTypographyColor,
         nameTypographyColor,
         isAlignmentValueUpdated,
+        newTestimonialCiteAlign,
         testimonialCiteAlignTablet,
         testimonialCiteAlignMobile,
     },
@@ -528,7 +528,7 @@ export default class Inspector extends Component {
     if (!isAlignmentValueUpdated) {
       this.props.setAttributes(
         {
-          testimonialCiteAlign:          testimonialCiteAlign !== undefined ? testimonialCiteAlign : testimonialCiteAlign,
+          newTestimonialCiteAlign:          testimonialCiteAlign !== undefined ? testimonialCiteAlign : newTestimonialCiteAlign,
           testimonialCiteAlignTablet:       testimonialCiteAlign !== undefined ? testimonialCiteAlign : testimonialCiteAlignTablet,
           testimonialCiteAlignMobile:         testimonialCiteAlign !== undefined ? testimonialCiteAlign : testimonialCiteAlignMobile,
         }
@@ -680,10 +680,10 @@ export default class Inspector extends Component {
                           </p>
                           <div className="responsive-block-editor-addons-alignment">
                             <AlignmentToolbar
-                              value={testimonialCiteAlign}
+                              value={newTestimonialCiteAlign}
                               onChange={(value) =>
                                 setAttributes({
-                                  testimonialCiteAlign: value,
+                                  newTestimonialCiteAlign: value,
                                 })
                               }
                               controls={["left", "center", "right"]}

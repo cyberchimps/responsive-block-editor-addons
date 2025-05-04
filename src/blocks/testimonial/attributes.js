@@ -105,9 +105,13 @@ const attributes = {
   contentTextTransform: {
     type: "string",
   },
-  testimonialCiteAlign: {
+  newTestimonialCiteAlign: {
     type: "string",
     default: "left",
+  },
+  testimonialCiteAlign: {
+    type: "string",
+    default: "left-aligned",
   },
   backgroundColor: {
     type: "string",

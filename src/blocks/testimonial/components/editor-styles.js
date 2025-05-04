@@ -176,6 +176,7 @@ function EditorStyles(props) {
   contentTypographyColor,
   titleTypographyColor,
   nameTypographyColor,
+  newTestimonialCiteAlign,
   testimonialCiteAlignTablet,
   testimonialCiteAlignMobile,
   } = props.attributes;
@@ -210,7 +211,11 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
-  let updatedBackgroundImage = `url(${backgroundImage})`;
+  let backgroundTypeValue = backgroundType === 'none' ? backgroundImage ? 'image' : backgroundColor ? 'color' : backgroundVideo ? 'video' : (backgroundColor1 || backgroundColor2) ? 'gradient' : backgroundType : backgroundType;
+
+  // TODO
+  // let updatedBackgroundImage = `url(${backgroundImage})`;
+  let updatedBackgroundImage = "";
   let backgroundImageEffect = "";
   let colorType = "";
   if (overlayType === "color") {
@@ -277,7 +282,7 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-testimonial-info": {
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
-      "text-align": testimonialCiteAlign,
+      "text-align": newTestimonialCiteAlign,
     },
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
       "padding-right": generateCSSUnit(imageSpacing, "px"),
@@ -319,12 +324,12 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-testimonial": {
       "background-color":
-        backgroundType == "color"
+      backgroundTypeValue == "color"
           ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
           : undefined,
-      "background-image": backgroundType === "image" && overlayType === "gradient"
+      "background-image": backgroundTypeValue === "image" && overlayType === "gradient"
         ? backgroundImageEffect
-        : backgroundType === "gradient"
+        : backgroundTypeValue === "gradient"
         ? generateBackgroundImageEffect(
             `${hexToRgba(backgroundColor1 || "#fff", imgopacity || 0)}`,
             `${hexToRgba(backgroundColor2 || "#fff", imgopacity || 0)}`,
@@ -332,7 +337,7 @@ function EditorStyles(props) {
             colorLocation1,
             colorLocation2
           )
-        : backgroundType === "image"
+        : backgroundTypeValue === "image"
         ? updatedBackgroundImage
         : undefined,
       "background-position": backgroundPosition,

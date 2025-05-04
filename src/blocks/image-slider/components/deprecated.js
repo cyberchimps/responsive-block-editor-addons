@@ -12,7 +12,7 @@ const attributes = {
 const deprecated = [
     {
         attributes: attributes,
-        migrate(attributes, innerBlocks) {
+        migrate: function (attributes, innerBlocks) {
             return [
                 attributes,
                 innerBlocks,

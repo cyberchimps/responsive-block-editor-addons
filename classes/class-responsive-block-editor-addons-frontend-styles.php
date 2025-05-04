@@ -11538,7 +11538,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$new_alignment_keys = array(
-				'testimonialCiteAlign'       => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
+				'newTestimonialCiteAlign'       => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 				'testimonialCiteAlignTablet' => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 				'testimonialCiteAlignMobile' => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 			);
@@ -11566,6 +11566,25 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$imgopacity = $attr['opacity'] / 100;
+
+			// Determine backgroundTypeValue similar to JS ternary logic
+			$background_type_value = 'none';
+					
+			if ( 'none' === $attr['backgroundType'] ) {
+				if ( ! empty( $attr['backgroundImage'] ) ) {
+					$background_type_value = 'image';
+				} elseif ( ! empty( $attr['backgroundColor'] ) ) {
+					$background_type_value = 'color';
+				} elseif ( ! empty( $attr['backgroundVideo'] ) ) {
+					$background_type_value = 'video';
+				} elseif ( ! empty( $attr['backgroundColor1'] ) || ! empty( $attr['backgroundColor2'] ) ) {
+					$background_type_value = 'gradient';
+				} else {
+					$background_type_value = $attr['backgroundType'];
+				}
+			} else {
+				$background_type_value = $attr['backgroundType'];
+			}
 
 			$background_image_effect  = '';
 			$updated_background_image = '';
@@ -11647,7 +11666,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-testimonial-info' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacing'], 'px' ),
-					'text-align'    => $attr['testimonialCiteAlign'],
+					'text-align'    => $attr['newTestimonialCiteAlign'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
 					'padding-right' => self::get_css_value( $attr['imageSpacing'], 'px' ),
@@ -11711,14 +11730,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-testimonial' => array(
 					'background-color'           =>
-						'color' === $attr['backgroundType']
+						'color' === $background_type_value
 						? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity )
 						: '',
 					'background-image'           =>
-						'gradient' === $attr['overlayType'] && 'image' === $attr['backgroundType']
+						'gradient' === $attr['overlayType'] && 'image' === $background_type_value
 						? $background_image_effect
 						: (
-							'gradient' === $attr['backgroundType']
+							'gradient' === $background_type_value
 							? self::generate_background_image_effect(
 								self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								self::hex_to_rgb( $attr['backgroundColor2'] ? $attr['backgroundColor2'] : '#fff', $imgopacity ? $imgopacity : 0 ),
@@ -11726,7 +11745,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 								$attr['colorLocation1'],
 								$attr['colorLocation2']
 							)
-							: ( 'image' === $attr['backgroundType'] ? $updated_background_image : '' )
+							: ( 'image' === $background_type_value ? $updated_background_image : '' )
 						),
 					'background-size'            => $attr['backgroundSize'],
 					'background-attachment'      => $attr['backgroundAttachment'],
@@ -11901,7 +11920,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentLineHeight'          => 1.6,
 				'contentFontWeight'          => '',
 				'contentTextTransform'       => '',
-				'testimonialCiteAlign'       => 'left',
+				'testimonialCiteAlign'       => 'left-align',
+				'newTestimonialCiteAlign'    => 'left',
 				'backgroundColor'            => '#f2f2f2',
 				'blockBorderStyle'           => 'none',
 				'blockBorderWidth'           => 1,
