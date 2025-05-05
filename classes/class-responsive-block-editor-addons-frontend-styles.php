@@ -11712,14 +11712,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-testimonial' => array(
 					'background-color'           =>
-						'color' === 'color' === $attr['backgroundType']
+						'color' === $attr['backgroundType']
 						? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity )
 						: '',
 					'background-image'           =>
-						'gradient' === $attr['overlayType'] && 'image' === 'color' === $attr['backgroundType']
+						'gradient' === $attr['overlayType'] && 'image' === $attr['backgroundType']
 						? $background_image_effect
 						: (
-							'gradient' === 'color' === $attr['backgroundType']
+							'gradient' === $attr['backgroundType']
 							? self::generate_background_image_effect(
 								self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								self::hex_to_rgb( $attr['backgroundColor2'] ? $attr['backgroundColor2'] : '#fff', $imgopacity ? $imgopacity : 0 ),
@@ -11727,7 +11727,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 								$attr['colorLocation1'],
 								$attr['colorLocation2']
 							)
-							: ( 'image' === 'color' === $attr['backgroundType'] ? $updated_background_image : '' )
+							: ( 'image' === $attr['backgroundType'] ? $updated_background_image : '' )
 						),
 					'background-size'            => $attr['backgroundSize'],
 					'background-attachment'      => $attr['backgroundAttachment'],

@@ -6,7 +6,7 @@ const {
 } = wp.element;
 const { select, subscribe } = wp.data;
 
-class TableOfContents extends React.Component {
+class DeprecatedTableOfContents extends React.Component {
 
 	constructor(props) {
         super(props);
@@ -149,4 +149,4 @@ class TableOfContents extends React.Component {
     }
 }
 
-export default TableOfContents;
+export default DeprecatedTableOfContents;
