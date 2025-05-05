@@ -7212,6 +7212,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'link'                     => '#',
 				'target'                   => true,
 				'disableLink'              => true,
+				'enableLink'			   => false,
 				'block_id'                 => 1,
 				'source_type'              => 'icon',
 				'blockTopMargin'           => '',

@@ -26,6 +26,7 @@ export default class Save extends Component {
       link,
       target,
       disableLink,
+      enableLink,
       block_id,
       image,
       source_type,
@@ -53,11 +54,11 @@ export default class Save extends Component {
     }
 
     let target_val = target ? "_blank" : "_self";
-    let link_url = disableLink ? link : "/";
+    let link_url = enableLink ? link : "/";
 
     return [
       <IconList {...this.props}>
-        {disableLink && (
+        {enableLink && (
           <a
             target={target_val}
             rel="noopener noreferrer"

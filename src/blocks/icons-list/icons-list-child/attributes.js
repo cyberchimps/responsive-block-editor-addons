@@ -51,7 +51,15 @@ const attributes = {
     type: "boolean",
     default: false,
   },
-  disableLink: {
+  disableLink: { // Deprecated since v2.0.0
+    type: "boolean",
+    default: true,
+  },
+  enableLink: {
+    type: "boolean",
+    default: false,
+  },
+  blockIsEnableLinkValueUpdated: {
     type: "boolean",
     default: false,
   },

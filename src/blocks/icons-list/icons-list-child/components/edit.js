@@ -58,6 +58,7 @@ export default class Edit extends Component {
       link,
       target,
       disableLink,
+      enableLink,
     } = attributes;
 
 
@@ -83,14 +84,14 @@ export default class Edit extends Component {
     }
 
     let target_val = target ? "_blank" : "_self";
-    let link_url = disableLink ? link : "/";
+    let link_url = enableLink ? link : "/";
 
     return (
       <Fragment>
         <Inspector {...{ setAttributes, ...this.props }} />
 
         <IconList {...this.props}>
-          {disableLink && (
+          {enableLink && (
             <a
               target={target_val}
               rel="noopener noreferrer"
