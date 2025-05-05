@@ -211,8 +211,6 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
-  let backgroundTypeValue = backgroundType === 'none' ? backgroundImage ? 'image' : backgroundColor ? 'color' : backgroundVideo ? 'video' : (backgroundColor1 || backgroundColor2) ? 'gradient' : backgroundType : backgroundType;
-
   // TODO
   // let updatedBackgroundImage = `url(${backgroundImage})`;
   let updatedBackgroundImage = "";
@@ -324,12 +322,12 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-testimonial": {
       "background-color":
-      backgroundTypeValue == "color"
+      backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
           : undefined,
-      "background-image": backgroundTypeValue === "image" && overlayType === "gradient"
+      "background-image": backgroundType === "image" && overlayType === "gradient"
         ? backgroundImageEffect
-        : backgroundTypeValue === "gradient"
+        : backgroundType === "gradient"
         ? generateBackgroundImageEffect(
             `${hexToRgba(backgroundColor1 || "#fff", imgopacity || 0)}`,
             `${hexToRgba(backgroundColor2 || "#fff", imgopacity || 0)}`,
@@ -337,7 +335,7 @@ function EditorStyles(props) {
             colorLocation1,
             colorLocation2
           )
-        : backgroundTypeValue === "image"
+        : backgroundType === "image"
         ? updatedBackgroundImage
         : undefined,
       "background-position": backgroundPosition,

@@ -11568,25 +11568,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$imgopacity = $attr['opacity'] / 100;
 
-			// Determine backgroundTypeValue similar to JS ternary logic
-			$background_type_value = 'none';
-					
-			if ( 'none' === $attr['backgroundType'] ) {
-				if ( ! empty( $attr['backgroundImage'] ) ) {
-					$background_type_value = 'image';
-				} elseif ( ! empty( $attr['backgroundColor'] ) ) {
-					$background_type_value = 'color';
-				} elseif ( ! empty( $attr['backgroundVideo'] ) ) {
-					$background_type_value = 'video';
-				} elseif ( ! empty( $attr['backgroundColor1'] ) || ! empty( $attr['backgroundColor2'] ) ) {
-					$background_type_value = 'gradient';
-				} else {
-					$background_type_value = $attr['backgroundType'];
-				}
-			} else {
-				$background_type_value = $attr['backgroundType'];
-			}
-
 			$background_image_effect  = '';
 			$updated_background_image = '';
 
@@ -11731,14 +11712,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-block-testimonial' => array(
 					'background-color'           =>
-						'color' === $background_type_value
+						'color' === 'color' === $attr['backgroundType']
 						? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $imgopacity )
 						: '',
 					'background-image'           =>
-						'gradient' === $attr['overlayType'] && 'image' === $background_type_value
+						'gradient' === $attr['overlayType'] && 'image' === 'color' === $attr['backgroundType']
 						? $background_image_effect
 						: (
-							'gradient' === $background_type_value
+							'gradient' === 'color' === $attr['backgroundType']
 							? self::generate_background_image_effect(
 								self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								self::hex_to_rgb( $attr['backgroundColor2'] ? $attr['backgroundColor2'] : '#fff', $imgopacity ? $imgopacity : 0 ),
@@ -11746,7 +11727,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 								$attr['colorLocation1'],
 								$attr['colorLocation2']
 							)
-							: ( 'image' === $background_type_value ? $updated_background_image : '' )
+							: ( 'image' === 'color' === $attr['backgroundType'] ? $updated_background_image : '' )
 						),
 					'background-size'            => $attr['backgroundSize'],
 					'background-attachment'      => $attr['backgroundAttachment'],
