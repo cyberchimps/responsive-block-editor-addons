@@ -1,7 +1,7 @@
 import attributes from "../attributes";
 import classnames from "classnames";
-import TableOfContent from "./TableOfContents";
-import TableOfContents from "../deprecated/TableOfContents";
+import TableOfContents from "./TableOfContents";
+import DeprecatedTableOfContents from "../deprecated/TableOfContents";
 import renderSVG from "../../../renderIcon";
 import DeprecatedTableOfContentsSave from "../deprecated/DeprecatedTableOfContentsSave";
 
@@ -112,7 +112,7 @@ const deprecated = [
                     </div>
                     {icon_html}
                 </div>
-                <TableOfContents
+                <DeprecatedTableOfContents
                     headers={
                     headerLinks && JSON.parse(headerLinks.replace(/u0022/g, '"'))
                     }
@@ -200,7 +200,7 @@ const deprecated = [
                         </div>
                         {icon_html}
                     </div>
-                    <TableOfContent
+                    <TableOfContents
                         headers={
                         headerLinks && JSON.parse(headerLinks.replace(/u0022/g, '"'))
                         }

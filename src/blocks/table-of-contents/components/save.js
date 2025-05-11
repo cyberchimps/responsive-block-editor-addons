@@ -49,8 +49,8 @@ export default class Save extends Component {
     let icon_html = "";
     if (isCollapsible && icon) {
       icon_html = (
-        <span className="responsive-block-editor-addons-toc__collapsible-icon">
-          <span className="responsive-block-editor-addons-toc__collapsible-wrap">
+        <span className="responsive-block-editor-addons-toc__collapsible-wrap">
+          <span className="responsive-block-editor-addons-toc__collapsible-icon">
             {renderSVG(icon)}
           </span>
         </span>

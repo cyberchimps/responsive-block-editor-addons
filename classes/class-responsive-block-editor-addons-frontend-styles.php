@@ -7212,6 +7212,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'link'                     => '#',
 				'target'                   => true,
 				'disableLink'              => true,
+				'enableLink'			   => false,
 				'block_id'                 => 1,
 				'source_type'              => 'icon',
 				'blockTopMargin'           => '',
@@ -11538,7 +11539,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			$new_alignment_keys = array(
-				'testimonialCiteAlign'       => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
+				'newTestimonialCiteAlign'       => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 				'testimonialCiteAlignTablet' => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 				'testimonialCiteAlignMobile' => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 			);
@@ -11647,7 +11648,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-testimonial-info' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacing'], 'px' ),
-					'text-align'    => $attr['testimonialCiteAlign'],
+					'text-align'    => $attr['newTestimonialCiteAlign'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
 					'padding-right' => self::get_css_value( $attr['imageSpacing'], 'px' ),
@@ -11901,7 +11902,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentLineHeight'          => 1.6,
 				'contentFontWeight'          => '',
 				'contentTextTransform'       => '',
-				'testimonialCiteAlign'       => 'left',
+				'testimonialCiteAlign'       => 'left-align',
+				'newTestimonialCiteAlign'    => 'left',
 				'backgroundColor'            => '#f2f2f2',
 				'blockBorderStyle'           => 'none',
 				'blockBorderWidth'           => 1,

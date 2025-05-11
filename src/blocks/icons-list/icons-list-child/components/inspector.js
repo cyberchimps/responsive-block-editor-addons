@@ -99,6 +99,8 @@ export default class Inspector extends Component {
         link,
         target,
         disableLink,
+        enableLink,
+        blockIsEnableLinkValueUpdated,
         hideLabel,
         source_type,
       },
@@ -177,6 +179,15 @@ export default class Inspector extends Component {
       emptyColorControl = (
         <div className="responsive-block-editor-addons-empty-color-control"></div>
       );
+
+      if (!blockIsEnableLinkValueUpdated) {
+        this.props.setAttributes(
+          {
+            enableLink: disableLink !== undefined ? !disableLink : enableLink,
+          }
+        )
+        this.props.setAttributes({blockIsEnableLinkValueUpdated: true});
+      }
 
       return (
         <TabPanel
@@ -406,12 +417,12 @@ export default class Inspector extends Component {
                 )}
                 <ToggleControl
                   label={__("Link", "responsive-block-editor-addons")}
-                  checked={disableLink} // The "Disable Link" option has been changed to enabling the link. This functionality is inverted.
+                  checked={enableLink} // The "Disable Link" option has been changed to enabling the link. This functionality is inverted.
                   onChange={(value) =>
-                    setAttributes({ disableLink: !disableLink })
+                    setAttributes({ enableLink: !enableLink })
                   }
                 />
-                {disableLink && (
+                {enableLink && (
                   <Fragment>
                     <p className="components-base-control__label">
                       {__("URL", "responsive-block-editor-addons")}
