@@ -301,7 +301,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' . $attr['gradientOverlayLocation1'] . '%,' . self::hex_to_rgb( $attr['gradientOverlayColor2'] ? $attr['gradientOverlayColor2'] : '#fff', $imgopacity ) .
 						' ' . $attr['gradientOverlayLocation2'] . '%)',
 				),
-				' .responsive-block-editor-addons-block-column' => array(
+				'> .responsive-block-editor-addons-block-column' => array(
 					'min-height'  => $column_height_style,
 					'align-items' => $attr['verticalAlign'],
 				),
@@ -3151,7 +3151,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'' => array(
 					'width' => $column_width,
 				),
-				' .responsive-block-editor-addons-block-column' => array_merge(
+				'> .responsive-block-editor-addons-block-column' => array_merge(
 					array(
 						'padding-top'                => self::get_css_value( $attr['columnTopPadding'], 'px' ),
 						'padding-right'              => self::get_css_value( $attr['columnRightPadding'], 'px' ),
@@ -3181,7 +3181,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					),
 					$background_type_image_styles
 				),
-				' .responsive-block-editor-addons-block-column:hover' => array_merge(
+				'> .responsive-block-editor-addons-block-column:hover' => array_merge(
 					array(
 						'box-shadow'       => '' !== $attr['hoverboxShadowColor'] ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
 						'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
@@ -3197,7 +3197,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
-				' .responsive-block-editor-addons-block-column' => array(
+				'> .responsive-block-editor-addons-block-column' => array(
 					'padding-top'                => self::get_css_value( $attr['columnTopPaddingMobile'], 'px' ),
 					'padding-right'              => self::get_css_value( $attr['columnRightPaddingMobile'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['columnBottomPaddingMobile'], 'px' ),
@@ -3214,7 +3214,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
-				' .responsive-block-editor-addons-block-column' => array(
+				'> .responsive-block-editor-addons-block-column' => array(
 					'padding-top'                => self::get_css_value( $attr['columnTopPaddingTablet'], 'px' ),
 					'padding-right'              => self::get_css_value( $attr['columnRightPaddingTablet'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['columnBottomPaddingTablet'], 'px' ),
@@ -16310,6 +16310,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				if ( array_key_exists( $attr_key, $defaults ) ) {
 					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
 				}
+			}
+
+			// Change the vaule of iconContainerSize to 5px for backward compatibility.
+			if(isset($attr['iconContainerSize']) && ($attr['iconContainerSize'] === 120 || $attr['iconContainerSize'] === 103)) {
+				$attr['iconContainerSize'] = 5;
 			}
 
 			$new_border_radius_keys = array(

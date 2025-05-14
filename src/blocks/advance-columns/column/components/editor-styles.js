@@ -222,7 +222,7 @@ function EditorStyles(props) {
     ".block-editor-block-list__block": {
       width: generateCSSUnit(width, "%"),
     },
-    " .responsive-block-editor-addons-block-column:hover": {
+    "> .responsive-block-editor-addons-block-column:hover": {
       "background-image": blockBackgroundHover,
       "box-shadow":
 	  	hoverboxShadowColor !== ""
@@ -247,7 +247,7 @@ function EditorStyles(props) {
       "background-repeat": backgroundImageHoverRepeat,
       "background-size": backgroundImageHoverSize,
     },
-    " .responsive-block-editor-addons-block-column": {
+    "> .responsive-block-editor-addons-block-column": {
       "padding-top": generateCSSUnit(columnTopPadding, "px"),
       "padding-right": generateCSSUnit(columnRightPadding, "px"),
       "padding-bottom": generateCSSUnit(columnBottomPadding, "px"),
@@ -288,7 +288,7 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
-    " .responsive-block-editor-addons-block-column": {
+    "> .responsive-block-editor-addons-block-column": {
       "padding-top": generateCSSUnit(columnTopPaddingMobile, "px"),
       "padding-right": generateCSSUnit(columnRightPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(columnBottomPaddingMobile, "px"),
@@ -305,7 +305,7 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
-    " .responsive-block-editor-addons-block-column": {
+    "> .responsive-block-editor-addons-block-column": {
       "padding-top": generateCSSUnit(columnTopPaddingTablet, "px"),
       "padding-right": generateCSSUnit(columnRightPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(columnBottomPaddingTablet, "px"),
