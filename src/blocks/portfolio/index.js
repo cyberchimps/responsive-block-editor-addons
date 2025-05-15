@@ -11,6 +11,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+import attributes from "./attributes";
 
 // Components
 const { __ } = wp.i18n;
@@ -38,8 +39,11 @@ registerBlockType(
     keywords: [
       __("portfolio", "responsive-block-editor-addons"),
     ],
-      example: {},
-
+    attributes: attributes,
+    example: {
+      attributes:{}
+    },
+    
     getEditWrapperProps(attributes) {
       const { align } = attributes;
       if (-1 !== validAlignments.indexOf(align)) {
