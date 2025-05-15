@@ -39,7 +39,11 @@ registerBlockType("responsive-block-editor-addons/flipbox", {
   },
 
   attributes: attributes,
-
+  example: {
+    attributes: {
+      count: 1
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

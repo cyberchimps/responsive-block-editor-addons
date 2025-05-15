@@ -21,6 +21,7 @@ const Edit = (props) => {
     previewDescription,
   } = attributes;
 
+
   const isInExample = useSelect(
     (select) =>
       select("core/block-editor").isBlockInExampleMode(clientId),
