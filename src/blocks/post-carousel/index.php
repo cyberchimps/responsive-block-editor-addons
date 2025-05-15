@@ -468,20 +468,12 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 					$post_title_tag = 'h2';
 				}
 
-				// $post_carousel_markup .= sprintf(
-				// 	'<%3$s class="responsive-block-editor-addons-block-post-carousel-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s>',
-				// 	esc_url( get_permalink( $post_id ) ),
-				// 	esc_html( $title ),
-				// 	esc_attr( $post_title_tag )
-				// );
-
 				$post_carousel_markup .= sprintf(
-					'<%3$s class="responsive-block-editor-addons-block-post-carousel-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s><span class="test-check">TEST</span>',
+					'<%3$s class="responsive-block-editor-addons-block-post-carousel-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s>',
 					esc_url( get_permalink( $post_id ) ),
 					esc_html( $title ),
 					esc_attr( $post_title_tag )
 				);
-				
 			}
 
 			if ( isset( $attributes['postType'] ) && 'post' === $attributes['postType'] ) {
@@ -582,9 +574,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 					'<p class="responsive-block-editor-addons-block-post-carousel-more-link-wrapper"><a class="responsive-block-editor-addons-block-post-carousel-more-link responsive-block-editor-addons-text-link" href="%1$s" target="' . $button_target . '"rel="bookmark">%2$s <span class="screen-reader-text">%3$s</span></a></p>',
 					esc_url( get_permalink( $post_id ) ),
 					esc_html( $attributes['readMoreText'] ),
-					// esc_html( $title )
-
-					esc_html( 'Testing about ' . $title )
+					esc_html( $title )
 				);
 			}
 

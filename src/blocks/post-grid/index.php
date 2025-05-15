@@ -256,7 +256,6 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 					'<p><a class="responsive-block-editor-addons-block-post-grid-more-link responsive-block-editor-addons-text-link" href="%1$s" rel="bookmark">%2$s <span class="screen-reader-text">%3$s</span></a></p>',
 					esc_url( get_permalink( $post_id ) ),
 					esc_html( $attributes['readMoreText'] ),
-					esc_html( "About 2 test" . $title )
 				);
 			}
 			/* Close the text content */
