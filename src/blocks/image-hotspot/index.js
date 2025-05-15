@@ -25,7 +25,11 @@ registerBlockType("responsive-block-editor-addons/image-hotspot", {
   ],
 
   attributes: attributes,
-
+  example: {
+    attributes:{
+      alt: "This is an alt text"
+    }
+  },
   edit: (props) => {
     return <Edit {...props} />;
   },
