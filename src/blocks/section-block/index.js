@@ -6,7 +6,7 @@
  * Import dependencies.
  */
 import {download} from "@wordpress/icons";
-
+import attributes from './attributes';
 import Edit from "./components/edit";
 import {Button} from "@wordpress/components";
 
@@ -35,13 +35,14 @@ registerBlockType("responsive-block-editor-addons/rbea-templates", {
     __("importer", "responsive-block-editor-addons"),
     __("layouts", "responsive-block-editor-addons"),
   ],
+  attributes: attributes,
   example: {
     attributes: {
       // previewImage: "https://images.unsplash.com/photo-1581093458790-ec69b1f69c61?auto=format&fit=crop&w=600&q=80",
       previewTitle: __("Template Library", "responsive-block-editor-addons"),
       previewDescription: __("Click to browse a collection of templates", "responsive-block-editor-addons"),
     },
-    innerBlocks: [],
+    // innerBlocks: [],
   },
   /* Render the block in editor. */
   edit: (props) => {

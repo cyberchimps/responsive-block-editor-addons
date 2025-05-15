@@ -5,7 +5,7 @@
 // Import block dependencies and components
 import Edit from "./components/edit";
 import Save from "./components/save";
-import attributes from "./attributes";
+// import attributes from "./attributes";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -20,7 +20,53 @@ const { __ } = wp.i18n;
 
 // Register block
 const { registerBlockType } = wp.blocks;
+const ITEM_COUNT = 2;
 
+// ✅ Define default testimonial block content FIRST
+const testimonialBlock = [];
+
+for (let i = 1; i <= ITEM_COUNT; i++) {
+  testimonialBlock.push({
+    testimonialName: __("John Doe", "responsive-block-editor-addons"),
+    testimonialTitle: __("Add title/designation", "responsive-block-editor-addons"),
+    testimonialContent: __("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.", "responsive-block-editor-addons"),
+    testimonialImgURL: "",
+    testimonialImgID: "",
+  });
+}
+
+// ✅ Attributes
+const attributes = {
+  block_id: {
+    type: "string",
+  },
+  testimonialBlock: {
+    type: "array",
+    default: testimonialBlock,
+  },
+  counterId: {
+    type: "string",
+    default: "1",
+  },
+  count: {
+    type: "number",
+    default: ITEM_COUNT,
+  },
+  gutter: {
+    type: "string",
+    default: "medium",
+  },
+  testimonialAlignment: {
+    type: "string",
+  },
+  testimonialBackgroundColor: {
+    type: "string",
+    default: "#f2f2f2",
+  },
+  testimonialTextColor: {
+    type: "string",
+  },
+};
 // Register the block
 registerBlockType("responsive-block-editor-addons/testimonial", {
   title: __("Testimonial", "responsive-block-editor-addons"),
@@ -35,7 +81,37 @@ registerBlockType("responsive-block-editor-addons/testimonial", {
     __("quote", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
   ],
-  attributes: attributes,
+  attributes: attributes,example: {
+    attributes: {
+      block_id: "example-testimonials",
+      testimonialBlock: testimonialBlock,
+      count: ITEM_COUNT,
+      gutter: "medium",
+      testimonialBackgroundColor: "#f2f2f2",
+    },
+    innerBlocks: [
+      {
+        name: "responsive-block-editor-addons/testimonial-item",
+        attributes: {
+          testimonialName: "John Doe",
+          testimonialTitle: "CEO, Company",
+          testimonialContent: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+          testimonialImgURL: "",
+          testimonialImgID: "",
+        },
+      },
+      {
+        name: "responsive-block-editor-addons/testimonial-item",
+        attributes: {
+          testimonialName: "Jane Smith",
+          testimonialTitle: "CTO, Company",
+          testimonialContent: "Aenean commodo ligula eget dolor. Aenean massa.",
+          testimonialImgURL: "",
+          testimonialImgID: "",
+        },
+      },
+    ],
+  },
 
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_testimonial_testimonialFontSize: {
