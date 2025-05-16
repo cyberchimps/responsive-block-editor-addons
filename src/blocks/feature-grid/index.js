@@ -35,7 +35,11 @@ registerBlockType("responsive-block-editor-addons/feature-grid", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+  example: {
+    attributes: {
+      img_width: 75
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

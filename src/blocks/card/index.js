@@ -49,7 +49,11 @@ registerBlockType("responsive-block-editor-addons/card", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    
+  example : {
+    attributes: {
+      count: 1
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

@@ -37,7 +37,11 @@ registerBlockType("responsive-block-editor-addons/buttons", {
   ],
     
   attributes: attributes,
-
+  example: {
+    atrributes: {
+      btn_count: 2
+    }
+  },
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_button_buttonAlignment: {
       title: __("Alignment", "responsive-block-editor-addons"),

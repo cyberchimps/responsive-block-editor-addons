@@ -7,6 +7,11 @@
 	window.addEventListener("resize", responsivePostTimelineInit);
 	window.addEventListener("scroll", responsivePostTimelineInit);
 
+	// const respTimelines = document.querySelectorAll('.interface-interface-skeleton__content');
+    // respTimelines.forEach((timeline) => {
+    //   timeline.addEventListener('scroll', responsivePostTimelineInit);
+    // });
+
 	// Callback function for all event listeners.
 	function responsivePostTimelineInit() {
 		var post_timeline = $(".responsive-block-editor-addons-timeline");
@@ -135,6 +140,6 @@
 		}
 	}
 	
-		
+
   })(jQuery);
   

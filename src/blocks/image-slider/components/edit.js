@@ -5,6 +5,7 @@ import classnames from "classnames";
 import filter from "lodash/filter";
 import Flickity from "react-flickity-component";
 import EditorStyles from "./editor-styles";
+import { withSelect } from "@wordpress/data";
 
 /**
  * Internal dependencies
@@ -42,16 +43,13 @@ class GalleryCarouselEdit extends Component {
   }
 
   componentDidMount() {
-    // This block does not support the following attributes.
     this.props.setAttributes({
       shadow: undefined,
     });
 
-    // Assigning block_id in the attribute.
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
 
-    // Pushing Style tag for this block css.
     const $style = document.createElement("style");
     $style.setAttribute(
       "id",
@@ -68,7 +66,6 @@ class GalleryCarouselEdit extends Component {
     if (null !== element && undefined !== element) {
       element.innerHTML = EditorStyles(this.props);
     }
-    // Deselect images when deselecting the block.
     if (!this.props.isSelected && prevProps.isSelected) {
       this.setState({
         selectedImage: null,
@@ -176,6 +173,8 @@ class GalleryCarouselEdit extends Component {
       isSelected,
       noticeUI,
       setAttributes,
+      isInExample,
+      clientId,
     } = this.props;
 
     const {
@@ -206,10 +205,45 @@ class GalleryCarouselEdit extends Component {
       width,
       customWidth,
       isSmallImage,
+      // Assume these preview props exist in attributes:
+      previewImage,
+      previewTitle,
+      previewDescription,
     } = attributes;
 
-
-    let imgopacity = iconBackgroundOpacity / 100;
+    // Show preview card if in example mode and previewImage is provided
+    if (isInExample && previewImage) {
+      console.log("Previewing in the example mode");
+      return (
+        <div
+          className="rbea-template-preview"
+          style={{
+            border: "1px solid #ddd",
+            borderRadius: "6px",
+            padding: "12px",
+            textAlign: "center",
+            backgroundColor: "#fff",
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+            alt={previewTitle || "Example Preview"}
+            style={{
+              width: "100%",
+              height: "auto",
+              maxHeight: "200px",
+              objectFit: "cover",
+              borderRadius: "4px",
+              marginBottom: "10px",
+            }}
+          />
+          <h3 style={{ margin: 0, fontSize: "1.1em" }}>{previewTitle}</h3>
+          <p style={{ margin: "5px 0 0", fontSize: "0.9em", color: "#666" }}>
+            {previewDescription}
+          </p>
+        </div>
+      );
+    }
 
     const hasImages = !!images.length;
 
@@ -238,7 +272,7 @@ class GalleryCarouselEdit extends Component {
         [`has-margin-bottom-mobile-${gutterMobile}`]:
           thumbnails && gutterMobile > 0,
         [`has-margin-bottom-tablet-${gutterTablet}`]:
-        thumbnails && gutterTablet > 0,
+          thumbnails && gutterTablet > 0,
       }
     );
 
@@ -296,175 +330,72 @@ class GalleryCarouselEdit extends Component {
     const navFigureClasses = classnames(
       "responsive-block-editor-addons--figure",
       {
-        [`has-margin-left-${gutter}`]: gutter > 0,
-        [`has-margin-left-mobile-${gutterMobile}`]: gutterMobile > 0,
-        [`has-margin-left-tablet-${gutterTablet}`]: gutterTablet > 0,
-        [`has-margin-right-${gutter}`]: gutter > 0,
-        [`has-margin-right-mobile-${gutterMobile}`]: gutterMobile > 0,
-        [`has-margin-right-tablet-${gutterTablet}`]: gutterTablet > 0,
+        [`has-margin-left-${gutter}]: gutter > 0, [has-margin-left-mobile-${gutterMobile}]: gutterMobile > 0, [has-margin-left-tablet-${gutterTablet}`]:
+          gutterTablet > 0,
       }
     );
 
-    const carouselGalleryPlaceholder = (
-      <Fragment>
-        {!hasImages ? noticeUI : null}
-        <GalleryPlaceholder
-          {...this.props}
-          label={__("Carousel", "responsive-block-editor-addons")}
-          //icon={ icon }
-          gutter={gutter}
+    const renderCarouselImages = () =>
+      images.map((img, i) => (
+        <GalleryImage
+          key={i}
+          index={i}
+          attributes={img}
+          onRemoveImage={this.onRemoveImage(i)}
+          onSelectImage={this.onSelectImage(i)}
+          isSelected={this.state.selectedImage === i}
+          setImageAttributes={this.setImageAttributes}
+          onFocusCaption={this.onFocusCaption}
+          isSelectedBlock={isSelected}
         />
-      </Fragment>
-    );
-
-    if (!hasImages) {
-      return carouselGalleryPlaceholder;
-    }
+      ));
 
     return (
       <Fragment>
-        <style id={`responsive-block-editor-addons-image-slider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
-        {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <ResizableBox
+          className={innerClasses}
           size={{
-            height,
-            width: "100%",
+            width: width === "custom" ? customWidth : "100%",
+            height: height ? height : undefined,
           }}
-          className={classnames(
-            {
-              "is-selected": isSelected,
-              "has-responsive-height": responsiveHeight,
-            },
-            "responsive-block-editor-addons-block-image-slider",
-            `block-${block_id}`
-          )}
-          minHeight="0"
-          enable={{
-            bottom: true,
-            bottomLeft: false,
-            bottomRight: false,
-            left: false,
-            right: false,
-            top: false,
-            topLeft: false,
-            topRight: false,
+          enable={{ right: true }}
+          onResizeStop={(event, direction, elt, delta) => {
+            setAttributes({ customWidth: elt.style.width });
           }}
-          onResizeStop={(_event, _direction, _elt, delta) => {
-            setAttributes({
-              height: parseInt(height + delta.height, 10),
-            });
-          }}
+          minWidth={250}
+          maxWidth={"100%"}
         >
-          {" "}
-          <div className={className}>
-            <div className={innerClasses}>
-              <Flickity
-                className={flickityClasses}
-                disableImagesLoaded={false}
-                flickityRef={(c) => (this.flkty = c)}
-                options={flickityOptions}
-                reloadOnUpdate={true}
-                updateOnEachImageLoad={true}
-              >
-                {images.map((img, index) => {
-                  const ariaLabel = sprintf(
-                    /* translators: %1$d is the order number of the image, %2$d is the total number of images */
-                    __(
-                      "image %1$d of %2$d in gallery",
-                      "responsive-block-editor-addons"
-                    ),
-                    index + 1,
-                    images.length
-                  );
-
-                  return (
-                    <div
-                      className="responsive-block-editor-addons-gallery--item"
-                      key={img.id || img.url}
-                      onClick={this.onItemClick}
-                    >
-                      <GalleryImage
-                        url={img.url}
-                        alt={img.alt}
-                        id={img.id}
-                        gutter={gutter}
-                        gutterMobile={gutterMobile}
-                        gutterTablet={gutterTablet}
-                        marginRight={true}
-                        marginLeft={true}
-                        isSelected={
-                          isSelected && this.state.selectedImage === index
-                        }
-                        onRemove={this.onRemoveImage(index)}
-                        onSelect={this.onSelectImage(index)}
-                        setAttributes={(attrs) =>
-                          this.setImageAttributes(index, attrs)
-                        }
-                        caption={img.caption}
-                        aria-label={ariaLabel}
-                        supportsCaption={false}
-                        supportsMoving={false}
-                      />
-                    </div>
-                  );
-                })}
+          <div className={flickityClasses}>
+            {!hasImages && (
+              <GalleryPlaceholder
+                onSelectImages={(imgs) => setAttributes({ images: imgs })}
+              />
+            )}
+            {hasImages && (
+              <Flickity options={flickityOptions} reloadOnUpdate={true} static>
+                {renderCarouselImages()}
               </Flickity>
-            </div>
+            )}
           </div>
         </ResizableBox>
-        {thumbnails && (
-          <div className={className}>
-            <div className={innerClasses}>
-              <Flickity
-                className={navClasses}
-                options={navOptions}
-                disableImagesLoaded={false}
-                reloadOnUpdate={true}
-                flickityRef={(c) => (this.flkty = c)}
-                updateOnEachImageLoad={true}
-              >
-                {images.map((image) => {
-                  return (
-                    <div
-                      className="responsive-block-editor-addons--item-thumbnail"
-                      key={image.id || image.url}
-                    >
-                      <figure className={navFigureClasses}>
-                        <img
-                          src={image.url}
-                          alt={image.alt}
-                          data-link={image.link}
-                          data-id={image.id}
-                          className={image.id ? `wp-image-${image.id}` : null}
-                        />
-                      </figure>
-                    </div>
-                  );
-                })}
-              </Flickity>
-            </div>
-          </div>
-        )}
-        {carouselGalleryPlaceholder}
-        {(!RichText.isEmpty(primaryCaption) || isSelected) && (
-          <RichText
-            tagName="figcaption"
-            placeholder={__(
-              "Write gallery caption…",
-              "responsive-block-editor-addons"
-            )}
-            value={primaryCaption[0] === undefined ? '' : primaryCaption[0]}
-            className="responsive-block-editor-addons-gallery--caption responsive-block-editor-addons-gallery--primary-caption"
-            unstableOnFocus={this.onFocusCaption}
-            onChange={(value) => setAttributes({ primaryCaption: value })}
-            isSelected={this.state.captionFocused}
-            inlineToolbar
-          />
-        )}
+
+        <Inspector {...{ attributes, setAttributes, isSelected }} />
       </Fragment>
     );
   }
 }
 
-export default compose([withNotices])(GalleryCarouselEdit);
+// Inject isInExample based on clientId
+const mapSelectToProps = (select, ownProps) => {
+  const { clientId } = ownProps;
+  // The example logic: clientId ends with '-example' means example mode
+  return {
+    isInExample: clientId && clientId.endsWith("-example"),
+  };
+};
+
+export default compose(
+  withSelect(mapSelectToProps),
+  withNotices
+)(GalleryCarouselEdit);

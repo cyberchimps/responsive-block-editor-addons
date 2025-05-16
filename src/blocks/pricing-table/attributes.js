@@ -1,4 +1,4 @@
-const ITEM_COUNT = 2;
+const ITEM_COUNT = 1;
 
 const pricingTable = [];
 const { __ } = wp.i18n;

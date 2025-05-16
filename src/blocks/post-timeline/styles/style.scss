@@ -2,7 +2,6 @@
  * Post grid styles
  * Loads on front end and back end
  */
-
 .responsive-block-editor-addons-block-post-timeline {
   margin: 0 0 1.2em 0;
   position: relative;
@@ -325,9 +324,15 @@ h6.responsive-block-editor-addons-timeline__heading {
   p {
   margin-bottom: 0px;
 }
-.responsive-block-editor-addons-timeline__line {
-  background-color: #eeeeee;
-}
+// .responsive-block-editor-addons-timeline__line {
+//   background-color: #eeeeee;
+//   position: fixed;
+//   left: 50%; 
+//   top: 0;
+//   height: 100vh;
+//   z-index: 1;
+//   pointer-events: none;
+// }
 .responsive-block-editor-addons-timeline__line__inner {
   background-color: #5cb85c;
   width: 100%;
@@ -895,7 +900,15 @@ h6.responsive-block-editor-addons-timeline__heading {
     height 0.25s ease-in-out, color 0.25s ease-in-out, font-size 0.25s ease-out;
   transition: background 0.25s ease-out 0.25s, width 0.25s ease-in-out,
     height 0.25s ease-in-out, color 0.25s ease-in-out, font-size 0.25s ease-out;
+    
 }
+
+// .responsive-block-editor-addons-timeline__in-view-icon {
+//   background-color: #28a745 !important; /* or any shade of green */
+//   border-color: #28a745 !important;
+//   color: white !important;
+//   transition: background-color 0.3s, border-color 0.3s;
+// }
 /* LEFT CSS STARTS */
 .responsive-block-editor-addons-timeline__left-block
   .responsive-block-editor-addons-timeline__days {

@@ -2,16 +2,16 @@ import { type } from "jquery";
 
 const { __ } = wp.i18n;
 
-const ITEM_COUNT = 2;
+const ITEM_COUNT = 1;
 
 const imageboxesBlock = [];
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
   imageboxesBlock.push({
-    title: __("Image Box Title", "responsive-block-editor-addons") + i,
+    title: __("Image Box ", "responsive-block-editor-addons") + i,
     hover_description:
       __(
-        "Description - This space for describing this imagebox block",
+        "This space for describing this imagebox block",
         "responsive-block-editor-addons"
       ) + i,
     img_url: "",
