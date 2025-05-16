@@ -16,7 +16,7 @@ import "./styles/styles.editor.scss";
 
 // Internationalization
 const { __ } = wp.i18n;
-const ITEM_COUNT = 2;
+const ITEM_COUNT = 1;
 
 const pricingTable = [];
 
@@ -55,7 +55,11 @@ registerBlockType("responsive-block-editor-addons/pricing-table", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    
+  example: {
+    attributes: {
+      count: 1
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;
