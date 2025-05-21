@@ -173,8 +173,6 @@ class LatestPostsBlock extends Component {
     if (null !== element && undefined !== element) {
       element.innerHTML = EditorStyles(this.props);
     }
-    // window.addEventListener("load", this.postTimelineContent_back(this.props.clientId));
-    // window.addEventListener("resize", this.postTimelineContent_back(this.props.clientId));
 
     window.addEventListener("load", responsivePostTimelineInit);
     window.addEventListener("resize", responsivePostTimelineInit);
@@ -195,9 +193,6 @@ class LatestPostsBlock extends Component {
     // Assigning block_id in the attribute.
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
-
-    // window.addEventListener("load", this.postTimelineContent_back(this.props.clientId));
-    // window.addEventListener("resize", this.postTimelineContent_back(this.props.clientId));
 
     window.addEventListener("load", responsivePostTimelineInit);
     window.addEventListener("resize", responsivePostTimelineInit);

@@ -32,7 +32,11 @@ registerBlockType("responsive-block-editor-addons/icons-list", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+  example: {
+    attributes: {
+      count: 1
+    }
+  },
     responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_icon_icon_layout: {
       title: __("Layout", "responsive-block-editor-addons"),
