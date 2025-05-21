@@ -8,7 +8,7 @@ const HelpContents = [
         'links': [
             {
                 'title': __( 'Docs', 'responsive-block-editor-addons' ),
-                'url': 'https://cyberchimps.com/blocks/docs/',
+                'url': 'https://cyberchimps.com/docs/responsive-blocks/',
             },  
             {
                 'title': __( 'Changelog', 'responsive-block-editor-addons' ),
