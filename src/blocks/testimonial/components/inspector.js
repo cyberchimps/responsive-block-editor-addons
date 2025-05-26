@@ -410,6 +410,8 @@ export default class Inspector extends Component {
         gradientOverlayPosition,
         backgroundVideo,
         backgroundColor,
+        isBackgroundColorUpdated,
+        isBackgroundTypeUpdated,
         backgroundColor1,
         imagePositionTab,
         imageSizeTab,
@@ -534,6 +536,28 @@ export default class Inspector extends Component {
         }
       )
       this.props.setAttributes({isAlignmentValueUpdated: true});
+    }
+
+    if(!isBackgroundTypeUpdated) {
+      this.props.setAttributes({
+        backgroundType: (backgroundVideo !== undefined && backgroundVideo !== '') ? 'video'
+          :  (backgroundImage !== undefined && backgroundImage !== '') ? 'image'  
+          : (bgGradient === true && testimonialBackgroundColor !== undefined && backgroundColor2 !== undefined && testimonialBackgroundColor !== '' && backgroundColor2 !== '') ? 'gradient'
+          : (bgGradient === false && testimonialBackgroundColor !== undefined && testimonialBackgroundColor !== '') ? 'color'
+          : backgroundType,
+      })
+      this.props.setAttributes({isBackgroundTypeUpdated: true});
+    }
+
+    if(!isBackgroundColorUpdated) {
+      this.props.setAttributes({
+        backgroundColor: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : backgroundColor, // Normal background color
+        backgroundColor1: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : backgroundColor1, // For gradient backgrond color 1
+        backgroundImageColor: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : backgroundImageColor, // For overlay background color with image when linear overlay is selected
+        gradientOverlayColor1: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : gradientOverlayColor1, // For overlay background color 1 with image when gradient overlay is selected
+        gradientOverlayColor2: backgroundColor2 !== undefined ? backgroundColor2 : gradientOverlayColor2, // For overlay background color 2 with image when gradient overlay is selected
+      })
+      this.props.setAttributes({isBackgroundColorUpdated: true});
     }
 
     // Background image URL
@@ -962,6 +986,7 @@ export default class Inspector extends Component {
                         onChange={(value) =>
                           setAttributes({ overlayType: value })
                         }
+                        defaultValue={"color"}
                         options={[
                           { label: "color", value: "color" },
                           { label: "gradient", value: "gradient" },

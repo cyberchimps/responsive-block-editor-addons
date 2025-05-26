@@ -302,7 +302,7 @@ const attributes = {
   },
   opacity: {
     type: "number",
-    default: 0.7,
+    default: 70,
   },
   gradientDirection: {
     type: "number",
@@ -513,10 +513,6 @@ const attributes = {
     type: "string",
     default: "section",
   },
-  opacity: {
-    type: "number",
-    default: 20,
-  },
   colorLocation1: {
     type: "number",
     default: 0,
@@ -592,7 +588,7 @@ const attributes = {
   },
   gradientOverlayAngle: {
     type: "number",
-    default: 0,
+    default: 180,
   },
   gradientOverlayPosition: {
     type: "string",
@@ -743,6 +739,14 @@ const attributes = {
     default: "left",
   },
   isAlignmentValueUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  isBackgroundColorUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  isBackgroundTypeUpdated: {
     type: "boolean",
     default: false,
   }
