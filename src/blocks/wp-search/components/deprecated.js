@@ -13,6 +13,12 @@ const { InnerBlocks } = wp.editor;
 const deprecated = [
     {
         attributes,
+        migrate: function( attributes, innerBlocks ) {
+            return [
+                attributes,
+                innerBlocks,
+            ];
+        },
         save: function (props) {
             // Setup the attributes
             const {

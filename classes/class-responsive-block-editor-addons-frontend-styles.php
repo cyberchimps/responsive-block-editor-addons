@@ -11538,6 +11538,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				}
 			}
 
+			// To Populate the Alignment Keys
 			$new_alignment_keys = array(
 				'newTestimonialCiteAlign'       => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 				'testimonialCiteAlignTablet' => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
@@ -11550,6 +11551,96 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
 				}
 			}
+
+			// To Populate the Typography Control
+			$new_typography_control_keys = array(
+				'contentTypographyColor'          => 'testimonialTextColor' ? 'testimonialTextColor' : '',
+				'nameTypographyColor'             => 'testimonialNameColor' ? 'testimonialNameColor' : '',
+				'titleTypographyColor'            => 'testimonialTitleColor' ? 'testimonialTitleColor' : '',
+
+				'contentBottomSpacing'            => 'contentSpacing' ? 'contentSpacing' : '',
+				'contentBottomSpacingMobile'      => 'contentSpacingMobile' ? 'contentSpacingMobile' : '',
+				'contentBottomSpacingTablet'      => 'contentSpacingTablet' ? 'contentSpacingTablet' : '',
+
+				'nameBottomSpacing'               => 'nameSpacing' ? 'nameSpacing' : '',
+				'nameBottomSpacingMobile'         => 'nameSpacingMobile' ? 'nameSpacingMobile' : '',
+				'nameBottomSpacingTablet'         => 'nameSpacingTablet' ? 'nameSpacingTablet' : '',
+
+				'titleBottomSpacing'              => 'titleSpacing' ? 'titleSpacing' : '',
+				'titleBottomSpacingMobile'        => 'titleSpacingMobile' ? 'titleSpacingMobile' : '',
+				'titleBottomSpacingTablet'        => 'titleSpacingTablet' ? 'titleSpacingTablet' : '',
+			);
+
+			// To populate new control values with existing control values for backward compatibility.
+			foreach ( $new_typography_control_keys as $attr_key => $default_key ) {
+				if ( array_key_exists( $attr_key, $defaults ) ) {
+					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
+				}
+			}
+
+			// To Populate the Background Colors for various types of backgrounds.
+			$new_background_color_keys = array(
+				'backgroundColor'        => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'backgroundColor',
+				'backgroundColor1'       => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'backgroundColor1',
+				'backgroundImageColor'   => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'backgroundImageColor',
+				'gradientOverlayColor1'  => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'gradientOverlayColor1',
+				'gradientOverlayColor2'  => 'backgroundColor2' ? 'backgroundColor2' : 'gradientOverlayColor2',
+				'gradientOverlayLocation1' => 'colorLocation1' ? 'colorLocation1' : 'gradientOverlayLocation1',
+				'gradientOverlayLocation2' => 'colorLocation2' ? 'colorLocation2' : 'gradientOverlayLocation2',
+			);
+
+			// Populate new background color values using existing ones for backward compatibility.
+			foreach ( $new_background_color_keys as $attr_key => $default_key ) {
+				if ( array_key_exists( $attr_key, $defaults ) ) {
+					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
+				}
+			}
+
+			// To populate backgroundType based on existing attribute values.
+			$background_type_conditions = array(
+				'video' => ( isset( $attr['backgroundVideo'] ) && '' !== $attr['backgroundVideo'] ),
+				'image' => ( isset( $attr['backgroundImage'] ) && '' !== $attr['backgroundImage'] ),
+				'gradient' => (
+					isset( $attr['bgGradient'] ) && true === $attr['bgGradient']
+					&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+					&& isset( $attr['backgroundColor2'] ) && '' !== $attr['backgroundColor2']
+				),
+				'color' => (
+					( ! isset( $attr['bgGradient']) || false === $attr['bgGradient'] || '' === $attr['bgGradient'] )
+					&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+				),
+			);
+
+			// Default backgroundType value
+			$defaults['backgroundType'] = isset( $attr['backgroundType'] ) ? $attr['backgroundType'] : $defaults['backgroundType'];
+
+			// Evaluate the conditions in order
+			foreach ( $background_type_conditions as $type => $condition ) {
+				if ( $condition ) {
+					$defaults['backgroundType'] = $type;
+					break;
+				}
+			}
+
+			// To set the Overlay Background Type
+			$overlay_type = isset( $attr['overlayType'] ) ? $attr['overlayType'] : $defaults['overlayType'];
+
+			if (
+				isset( $attr['backgroundImage'] ) && '' !== $attr['backgroundImage']
+				&& isset( $attr['bgGradient'] ) && true === $attr['bgGradient']
+				&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+				&& isset( $attr['backgroundColor2'] ) && '' !== $attr['backgroundColor2']
+			) {
+				$overlay_type = 'gradient';
+			} elseif (
+				isset( $attr['backgroundImage'] ) && '' !== $attr['backgroundImage']
+				&& isset( $attr['bgGradient'] ) && false === $attr['bgGradient']
+				&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+			) {
+				$overlay_type = 'color';
+			}
+
+			$attr['overlayType'] = $overlay_type;
 
 			$attr = array_merge( $defaults, (array) $attr );
 
@@ -11569,7 +11660,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$imgopacity = $attr['opacity'] / 100;
 
 			$background_image_effect  = '';
-			$updated_background_image = '';
+			$updated_background_image = 'url(' . $attr['backgroundImage'] . ')';
 
 			$color_type = '';
 			if ( 'color' === $attr['overlayType'] ) {
@@ -11940,7 +12031,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hoverboxShadowSpread'       => 1,
 				'hoverboxShadowPosition'     => 'outset',
 				'opacity'                    => 70,
-				'gradientDirection'          => 90,
+				'gradientDirection'          => 180,
 				'bgGradient'                 => false,
 				'backgroundImage'            => '',
 				'colorLocation1'             => 0,

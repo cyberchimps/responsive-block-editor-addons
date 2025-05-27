@@ -306,7 +306,7 @@ const attributes = {
   },
   gradientDirection: {
     type: "number",
-    default: 90,
+    default: 180,
   },
   bgGradient: {
     type: "boolean",
@@ -523,7 +523,7 @@ const attributes = {
   },
   gradientDirection: {
     type: "number",
-    default: 90,
+    default: 180,
   },
   backgroundImage: {
     type: "string",
@@ -749,7 +749,11 @@ const attributes = {
   isBackgroundTypeUpdated: {
     type: "boolean",
     default: false,
-  }
+  },
+  isOverlayBackgroundTypeUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 export default attributes;
