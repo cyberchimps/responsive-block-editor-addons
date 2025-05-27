@@ -212,8 +212,8 @@ function EditorStyles(props) {
   let imgopacity = opacity / 100;
 
   // TODO
-  // let updatedBackgroundImage = `url(${backgroundImage})`;
-  let updatedBackgroundImage = "";
+  let updatedBackgroundImage = `url(${backgroundImage})`;
+  // let updatedBackgroundImage = "";
   let backgroundImageEffect = "";
   let colorType = "";
   if (overlayType === "color") {

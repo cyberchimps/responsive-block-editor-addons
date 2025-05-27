@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Use professional starter block patterns & templates to create websites within mi
 
 == Description ==
 
-<a href = "https://cyberchimps.com/blocks/">Responsive Blocks</a> is a free WordPress Gutenberg Blocks plugin that offers a library of 50+ fully functional native WordPress blocks and 100+ WordPress Website Templates and sections. This way, you can create stunning pages in the default WordPress editor without any coding. 
+<a href = "https://cyberchimps.com/responsive-blocks/">Responsive Blocks</a> is a free WordPress Gutenberg Blocks plugin that offers a library of 50+ fully functional native WordPress blocks and 100+ WordPress Website Templates and sections. This way, you can create stunning pages in the default WordPress editor without any coding. 
 
 The settings in the plugin allow easy customization and build stunning pages without adding any extra page builder plugins. Also, the free Gutenberg Starter Templates help you build designer content layouts for your website in minutes. 
 
@@ -22,7 +22,7 @@ Additionally, you can import patterns to incorporate preferred page and section 
 
 
 
-<a href="https://www.cyberchimps.com/blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=demolink" target="_blank">Checkout the Gutenberg blocks demos</a>
+<a href="https://www.cyberchimps.com/responsive-blocks/?utm_source=wporg&utm_medium=rbea&utm_campaign=demolink" target="_blank">Checkout the Gutenberg blocks demos</a>
 
 ==Key Features of Responsive Blocks Plugin==
 <ol>
@@ -47,7 +47,7 @@ https://www.youtube.com/watch?v=Gs-h74Qnrlw
 - **🛠️ Modular Control**: You can quickly turn on or off the block or sections you want to enhance the site's performance.
 - **📱 Responsiveness**: You have direct control over each block’s responsiveness. Its flexible, responsive customization options enable you to create user-friendly websites for all devices efficiently.
 - **🚀 Continuous Updates**: Stay ahead with regular updates and new additions to our collection of WordPress Blocks, giving you the best features to enhance your website.
-- **🌐 Trusted Development**: Created by the <a href = "https://cyberchimps.com/responsive-addons-for-elementor/">Cyberchimps</a> team, Responsive Blocks plugin delivers top-notch WordPress features. Join our satisfied users and elevate your website-building experience.
+- **🌐 Trusted Development**: Created by the <a href = "https://cyberchimps.com/">Cyberchimps</a> team, Responsive Blocks plugin delivers top-notch WordPress features. Join our satisfied users and elevate your website-building experience.
 
 
 ==Professional Designer-made Starter Templates and Ready-to-use WordPress Websites==
@@ -63,50 +63,50 @@ Responsive Blocks plugin integrates seamlessly with the <a href = "https://wordp
 Using 50+ Responsive Blocks for Gutenberg, design your website without limits.
 
 <ol>
-	<li><a href = "https://cyberchimps.com/blocks/section/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Container Block</a>: The section block acts as an outer wrapper and allows the addition of any Gutenberg block within it. Use the section block to create a page with different content areas, which helps you manage layouts, backgrounds, spacing, and more.</li>
-	<li><a href = "https://cyberchimps.com/blocks/advanced-columns/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Advanced Columns</a>: Build beautiful column layouts with the Advanced Columns block. You can use the block options to define the number of columns or create beautiful column layouts for the rows and columns. It has shape dividers, custom widths, background designs, colors, and spacing options. You can also embed other blocks, like testimonials, inside the columns.</li>
-	<li><a href = "https://cyberchimps.com/blocks/advanced-heading/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Advanced Heading</a>: You can have complete control over your headings. Style your typography (Fonts, sizes, spacing, line heights). This block highlights your page headings. You can change the width and position of the separator in the heading.</li>
-	<li><a href = "https://cyberchimps.com/blocks/advanced-text/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Advanced Text</a>: Display your business message in an eye-catching manner with this Advanced Text block.</li>
-	<li><a href = "https://cyberchimps.com/blocks/info-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Info-Block</a>Design creative and informative boxes with images, headings, and subheadings. You can now display information about features on your website in elegant info boxes, which is perfect for helping your visitors understand the features of your products and services.</li>
-	<li><a href = "https://cyberchimps.com/blocks/image-box/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Image Boxes</a>: Use the Gutenberg Image Boxes block to build a beautiful gallery of images to highlight your portfolio, photos, and more.</li>
-	<li><a href = "https://cyberchimps.com/blocks/table-of-content/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Table of Contents</a>: This block allows access to extensive content of the post/page through the contents heading. This makes it easier for visitors to directly go to the specific section on the page or the post.</li>
-	<li><a href = "https://cyberchimps.com/blocks/icon-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Icon List</a>: Create impressive lists on your website. Design your styled lists. Pick your favorite icons or images to highlight items. Use this to create checklists, feature lists, or any other items on your pages.</li>
-	<li><a href = "https://cyberchimps.com/blocks/shape-divider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Shape-Divider</a>: The Shape-Divider Block allows you to create a visually beautiful transition between your content with an optional divider. With one click, you can add shapes like Wavy, Hills, Angled, Sloping, etc.</li>
-	<li><a href = "https://cyberchimps.com/blocks/contact-form-7-styler/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocksl">Contact Form 7 styler</a>: This block helps you customize the Contact Form 7 plugin’s form styling, like colors, backgrounds, and typography.</li>
-	<li><a href = "https://cyberchimps.com/blocks/image-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocksl">Image Block</a>: The Responsive block image block allows you to add nice-looking images to your website with additional design settings.</li>
-	<li><a href = "https://cyberchimps.com/blocks/flip-box/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Flip Box</a>: The Flip Box block allows you to create stunning animated content that flips on hover. Use icons and images with additional content on flip boxes' front and back sides.</li>
-	<li><a href = "https://cyberchimps.com/blocks/image-slider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Image Slider</a>: Create a fully responsive and smooth image slideshow of your products, services, or clients.</li>
-	<li><a href = "https://cyberchimps.com/blocks/image-hotspot/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Image Hotspot</a>: Highlight specific parts of the image with animated pointers to make images more interactive.</li>
-	<li><a href = "https://cyberchimps.com/blocks/accordion/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Accordion Block</a>: This block lets you answer the user’s common queries quickly and attractively. It can also display content such as FAQs or descriptive content.</li>
-	<li><a href = "https://cyberchimps.com/blocks/post-carousel/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post Carousel</a> You can embed your popular posts or any category of posts in modern-looking carousels. The system provides an option to select available post types—posts, pages, media, or any CPT you have.</li>
-	<li><a href = "https://cyberchimps.com/blocks/testimonial/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Testimonials</a>: Testimonials are customer reviews that can be displayed on the site to add credibility. Testimonial block allows you to display a single testimonial block on your site.</li>
-	<li><a href = "https://cyberchimps.com/blocks/multi-buttons/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Multi Buttons</a>: Easily add multiple buttons within a block. It can add attractive call-to-action buttons within a block with the Gutenberg Multi Buttons block. You can add many buttons to your content using this multi-button block.</li>
-	<li><a href = "https://cyberchimps.com/blocks/call-mail-button/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Call/Mail Button</a>: This block allows you to add a button that automatically makes a call or sends an email.</li>
-	<li><a href = "https://cyberchimps.com/blocks/inline-notice/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Inline Notice Block</a>: You can highlight important information on your page.</li>
-	<li><a href = "https://cyberchimps.com/blocks/wp-search/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">WP Search</a>: This block allows you to add the WordPress search field to your page. This will help your users easily find the required information.</li>
-	<li><a href = "https://cyberchimps.com/blocks/team/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Team</a>: The Team Block allows you to display team members with a descriptive block. You can display a team with their name, pictures, designation, social links, etc.</li>
-	<li><a href = "https://cyberchimps.com/blocks/anchor/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Anchor Block</a>: Anchor blocks allow you to create internal links to quickly move from one part/block of your page to another.</li>
-	<li><a href = "https://cyberchimps.com/blocks/spacer/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Spacer</a>: This block allows you to add white space between blocks and customize height.</li>
-	<li><a href = "https://cyberchimps.com/blocks/divider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Divider</a>: Using the Gutenberg Divider Block, add a divider between your blocks to make them more distinguishable.</li>
-	<li><a href = "https://cyberchimps.com/blocks/tabs/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Tabs</a>: The tabs block allows you to display key information in an interactive manner. It supports custom-made nested tabs designed to attract your users.</li>
-	<li><a href = "https://cyberchimps.com/blocks/block-quote/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Blockquote</a>: Easily embed and customize quotes in your posts. You can change quote styles, and various customization options are provided to make your favorite quotes stand out on your blog post.</li>
-	<li><a href = "https://cyberchimps.com/blocks/call-to-action/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Call-to-Action</a>: Make your marketing pages effective using the stunning designs of the Call-To-Action button block for Gutenberg. This block allows you to add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.</li>
-	<li><a href = "https://cyberchimps.com/blocks/card-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Card</a>: Display details, images, and more with the Gutenberg Card block in a lightweight, easy-to-understand layout. This block allows you to add cards to describe your product or service.</li>
-	<li><a href = "https://cyberchimps.com/blocks/expand/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Expand/Show More</a>: With the Gutenberg Expand More block, show your visitors small snippets of text before showing the entire information.</li>
-	<li><a href = "https://cyberchimps.com/blocks/video-popup/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Video Popup</a>: Use the Video Popup block to show a thumbnail that allows your users to view a video in a pop-up window. Embed a YouTube, Vimeo, or self-hosted video and display a thumbnail, which will allow your users to view the video in a pop-up window.</li>
-	<li><a href = "https://cyberchimps.com/blocks/google-map/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Google Map</a>: You can now integrate Google Maps into your Gutenberg editor or anywhere on the website. Customize the block and share your business location on your website.</li>
-	<li><a href = "https://cyberchimps.com/blocks/taxonomy-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Taxonomy List</a>: The Taxonomy List block allows you to display content categorization anywhere on your page to help your readers navigate to related content.</li>
-	<li><a href = "https://cyberchimps.com/blocks/progress-bar/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Progress Bar</a>: Showcase any activity's progress through animated indicators with the Progress Bar block.</li>
-	<li><a href = "https://cyberchimps.com/blocks/post-and-page-grid/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post And Page Grid</a>: This block provides options to showcase custom post types anywhere on the page. It provides category controls for choosing categories or tags.</li>
-	<li><a href = "https://cyberchimps.com/blocks/feature-grid/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Feature Grid</a>: Showcase several features in an impressive layout with this Feature Grid block.</li>
-	<li><a href = "https://cyberchimps.com/blocks/pricing-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Pricing List</a>: With the Gutenberg Pricing List block, you can design a beautiful and comprehensive pricing list for your goods, services, and memberships. You can add names, images, descriptions, and prices for particular menu items.</li>
-	<li><a href = "https://cyberchimps.com/blocks/pricing-table/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Pricing table</a>: Create impressive pricing tables to compare features and your various membership options. This tool allows you to add item names, images, descriptions, and prices.</li>
-	<li><a href = "https://cyberchimps.com/blocks/instagram-feed/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Instagram Feed</a>: This block allows you to stream Instagram content directly to your WordPress website, thus increasing your odds of getting new followers and clients.</li>
-	<li><a href = "https://cyberchimps.com/blocks/social-share/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Social Icons</a>: Social icons block allows you to add modern social media icons for all popular networks and link them to your brand or personal accounts.</li>
-	<li><a href = "https://cyberchimps.com/blocks/count-up/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Count up</a>: Show animated statistics in a Count Up block. You can display facts and figures attractively with animated counters. The counter will count to your designated number when the page is visited.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/section/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Container Block</a>: The section block acts as an outer wrapper and allows the addition of any Gutenberg block within it. Use the section block to create a page with different content areas, which helps you manage layouts, backgrounds, spacing, and more.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/advanced-columns/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Advanced Columns</a>: Build beautiful column layouts with the Advanced Columns block. You can use the block options to define the number of columns or create beautiful column layouts for the rows and columns. It has shape dividers, custom widths, background designs, colors, and spacing options. You can also embed other blocks, like testimonials, inside the columns.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/advanced-heading/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Advanced Heading</a>: You can have complete control over your headings. Style your typography (Fonts, sizes, spacing, line heights). This block highlights your page headings. You can change the width and position of the separator in the heading.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/advanced-text/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Advanced Text</a>: Display your business message in an eye-catching manner with this Advanced Text block.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/info-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Info-Block</a>Design creative and informative boxes with images, headings, and subheadings. You can now display information about features on your website in elegant info boxes, which is perfect for helping your visitors understand the features of your products and services.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/image-box/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Image Boxes</a>: Use the Gutenberg Image Boxes block to build a beautiful gallery of images to highlight your portfolio, photos, and more.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/table-of-content/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Table of Contents</a>: This block allows access to extensive content of the post/page through the contents heading. This makes it easier for visitors to directly go to the specific section on the page or the post.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/icon-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Icon List</a>: Create impressive lists on your website. Design your styled lists. Pick your favorite icons or images to highlight items. Use this to create checklists, feature lists, or any other items on your pages.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/shape-divider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Shape-Divider</a>: The Shape-Divider Block allows you to create a visually beautiful transition between your content with an optional divider. With one click, you can add shapes like Wavy, Hills, Angled, Sloping, etc.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/contact-form-7-styler/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocksl">Contact Form 7 styler</a>: This block helps you customize the Contact Form 7 plugin’s form styling, like colors, backgrounds, and typography.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/image-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocksl">Image Block</a>: The Responsive block image block allows you to add nice-looking images to your website with additional design settings.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/flip-box/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Flip Box</a>: The Flip Box block allows you to create stunning animated content that flips on hover. Use icons and images with additional content on flip boxes' front and back sides.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/image-slider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Image Slider</a>: Create a fully responsive and smooth image slideshow of your products, services, or clients.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/image-hotspot/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Image Hotspot</a>: Highlight specific parts of the image with animated pointers to make images more interactive.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/accordion/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Accordion Block</a>: This block lets you answer the user’s common queries quickly and attractively. It can also display content such as FAQs or descriptive content.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/post-carousel/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post Carousel</a> You can embed your popular posts or any category of posts in modern-looking carousels. The system provides an option to select available post types—posts, pages, media, or any CPT you have.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/testimonial/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Testimonials</a>: Testimonials are customer reviews that can be displayed on the site to add credibility. Testimonial block allows you to display a single testimonial block on your site.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/multi-buttons/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Multi Buttons</a>: Easily add multiple buttons within a block. It can add attractive call-to-action buttons within a block with the Gutenberg Multi Buttons block. You can add many buttons to your content using this multi-button block.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/call-mail-button/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Call/Mail Button</a>: This block allows you to add a button that automatically makes a call or sends an email.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/inline-notice/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Inline Notice Block</a>: You can highlight important information on your page.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/wp-search/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">WP Search</a>: This block allows you to add the WordPress search field to your page. This will help your users easily find the required information.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/team/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Team</a>: The Team Block allows you to display team members with a descriptive block. You can display a team with their name, pictures, designation, social links, etc.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/anchor/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Anchor Block</a>: Anchor blocks allow you to create internal links to quickly move from one part/block of your page to another.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/spacer/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Spacer</a>: This block allows you to add white space between blocks and customize height.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/divider/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Divider</a>: Using the Gutenberg Divider Block, add a divider between your blocks to make them more distinguishable.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/tabs/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Tabs</a>: The tabs block allows you to display key information in an interactive manner. It supports custom-made nested tabs designed to attract your users.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/block-quote/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Blockquote</a>: Easily embed and customize quotes in your posts. You can change quote styles, and various customization options are provided to make your favorite quotes stand out on your blog post.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/call-to-action/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Call-to-Action</a>: Make your marketing pages effective using the stunning designs of the Call-To-Action button block for Gutenberg. This block allows you to add an eye-catching, full-width section with a big title, paragraph text, and a customizable button.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/card-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Card</a>: Display details, images, and more with the Gutenberg Card block in a lightweight, easy-to-understand layout. This block allows you to add cards to describe your product or service.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/expand/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Expand/Show More</a>: With the Gutenberg Expand More block, show your visitors small snippets of text before showing the entire information.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/video-popup/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Video Popup</a>: Use the Video Popup block to show a thumbnail that allows your users to view a video in a pop-up window. Embed a YouTube, Vimeo, or self-hosted video and display a thumbnail, which will allow your users to view the video in a pop-up window.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/google-map/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Google Map</a>: You can now integrate Google Maps into your Gutenberg editor or anywhere on the website. Customize the block and share your business location on your website.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/taxonomy-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Taxonomy List</a>: The Taxonomy List block allows you to display content categorization anywhere on your page to help your readers navigate to related content.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/progress-bar/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Progress Bar</a>: Showcase any activity's progress through animated indicators with the Progress Bar block.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/post-and-page-grid/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post And Page Grid</a>: This block provides options to showcase custom post types anywhere on the page. It provides category controls for choosing categories or tags.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/feature-grid/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Feature Grid</a>: Showcase several features in an impressive layout with this Feature Grid block.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/pricing-list/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Pricing List</a>: With the Gutenberg Pricing List block, you can design a beautiful and comprehensive pricing list for your goods, services, and memberships. You can add names, images, descriptions, and prices for particular menu items.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/pricing-table/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Pricing table</a>: Create impressive pricing tables to compare features and your various membership options. This tool allows you to add item names, images, descriptions, and prices.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/instagram-feed/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Instagram Feed</a>: This block allows you to stream Instagram content directly to your WordPress website, thus increasing your odds of getting new followers and clients.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/social-share/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Social Icons</a>: Social icons block allows you to add modern social media icons for all popular networks and link them to your brand or personal accounts.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/count-up/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Count up</a>: Show animated statistics in a Count Up block. You can display facts and figures attractively with animated counters. The counter will count to your designated number when the page is visited.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/countdown/">Countdown</a>: The countdown block allows you to add countdowns to your page with attractive customizable styles.</li>
-	<li><a href = "https://cyberchimps.com/blocks/content-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Content Timeline</a>: Use the Gutenberg Content Timeline Block to create visual flowcharts, vertical timelines, and event layouts.</li>
-	<li><a href = "https://cyberchimps.com/blocks/post-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post-Timeline</a>: The Post Timeline block helps you design beautiful and responsive timelines that display your posts or events in an ordered list according to the dates they were published. You can also customize the content for each blog post with a new option to select an icon for the connector.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/content-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Content Timeline</a>: Use the Gutenberg Content Timeline Block to create visual flowcharts, vertical timelines, and event layouts.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/post-timeline/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post-Timeline</a>: The Post Timeline block helps you design beautiful and responsive timelines that display your posts or events in an ordered list according to the dates they were published. You can also customize the content for each blog post with a new option to select an icon for the connector.</li>
 </ol>
 
 <strong>More Gutenberg blocks are coming soon!<strong>
@@ -140,11 +140,11 @@ I’m just sad I haven't found it before 😉
 	
 Great plugin. Not as well known as other plugins with gutenberg blocks. But I found in it what I need and more. This is Post-Timeline, Content Timeline, Flip Box, Video Popup, Image Hotspot, and other (and cool lightbox)….. The blocks look neat and there is a separate tab for design. Plus this plugin loads its files on pages where there are his blocks. I wish good luck to the developers and thank you for a good and free plugin.
 
-- Give your valuable review on [WordPress](https://wordpress.org/plugins/responsive-addons-for-elementor/#reviews). 
+- Give your valuable review on [WordPress](https://wordpress.org/plugins/responsive-block-editor-addons/#reviews). 
 
 == Support & Documentation==
 - Have any questions? Visit support on [Responsive Blocks Plugin Forum](https://wordpress.org/support/plugin/responsive-block-editor-addons/).
-- Learn more about using Responsive Blocks plugin with our detailed [documentation](https://cyberchimps.com/blocks/docs/).
+- Learn more about using Responsive Blocks plugin with our detailed [documentation](https://cyberchimps.com/docs/responsive-blocks/).
 - Get easy access to [Video Tutorials](https://www.youtube.com/@CyberChimpsThemes/)
 - Join our [Facebook](https://www.facebook.com/groups/responsive.theme) Group for the latest updates.
 
@@ -159,7 +159,7 @@ If you like Responsive Blocks, consider checking out our other WordPress Plugins
 
 1. **[WPLegalPages](https://wordpress.org/plugins/wplegalpages/)**: is a popular plugin that helps you generate a professional Privacy Policy, terms of use, terms and conditions, eCommerce returns and refunds policy, affiliate disclaimers, and more.
 
-1. **[WP Cookie Notice & Consent Banner for GDPR, CCPA & ePrivacy](https://wordpress.org/plugins/gdpr-cookie-consent/)**: WP Cookie Notice for GDPR, CCPA & ePrivacy Cons.
+1. **[WP Cookie Consent](https://wordpress.org/plugins/gdpr-cookie-consent/)**: WP Cookie Notice for GDPR, CCPA & ePrivacy Cons.
 
 1. **[WP AdCenter](https://wordpress.org/plugins/wpadcenter/)**: Easily Manage Ads on WordPress – Banner, Amazon, Google Adsense Ads.
 
@@ -235,6 +235,12 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.0.5 - 27th May 2025 =
+* Fix - Fixed Attempt Block Recovery issue in some blocks.
+* Fix - Testimonial Block - Fixed backward compatibility for the block.
+* Fix - Social Icon Block - Fixed overflow of the block due to colour setting change. 
+* Fix - Advanced Columns - Fixed minor issue with background image setting.
 
 = 2.0.4 - 29th April 2025 =
 * Fix - Fixed Attempt Block Recovery issue in some blocks.

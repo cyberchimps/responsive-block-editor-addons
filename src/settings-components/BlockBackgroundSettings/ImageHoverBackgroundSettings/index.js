@@ -8,6 +8,7 @@ const { ColorPalette, MediaUpload } = wp.blockEditor;
 
 const { SelectControl, RangeControl, BaseControl, Button } = wp.components;
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 
 // Extend component
 const { Component, Fragment } = wp.element;
@@ -61,42 +62,19 @@ class ImageBackgroundControl extends Component {
     var advancedControls;
     advancedControls = (
       <Fragment>
-        <BaseControl
-          className="editor-bg-image-control"
-          label={__("Background Image Hover", "responsive-block-editor-addons")}
-        >
-          <br />
-          <br />
-          <MediaUpload
-            title={__(
-              "Select Background Image",
-              "responsive-block-editor-addons"
-            )}
-            onSelect={this.onSelectImage}
-            allowedTypes={["image"]}
-            value={backgroundHoverImage}
-            render={({ open }) => (
-              <Button isDefault onClick={open}>
-                {!backgroundHoverImage
-                  ? __(
-                      "Select Background Image",
-                      "responsive-block-editor-addons"
-                    )
-                  : __("Replace image", "responsive-block-editor-addons")}
-              </Button>
-            )}
-          />
-          {backgroundHoverImage && (
-            <Button
-              className="responsive-rm-btn"
-              onClick={this.onRemoveImage}
-              isLink
-              isDestructive
-            >
-              {__("Remove Image", "responsive-block-editor-addons")}
-            </Button>
-          )}
-        </BaseControl>
+        {/* New Hover Control for Background Image Type */}
+        <RbeaMediaUploadControl
+          label={__('Image', 'responsive-block-editor-addons')}
+          value={{
+              url: backgroundHoverImage || '',
+          }}
+          onChange={(newValue) => {
+              setAttributes({
+                backgroundHoverImage: newValue.url,
+              });
+          }}
+          mediaType={'image'}
+        />
 
         {backgroundHoverImage &&
           (this.props.showSomeImageOptions == true ||

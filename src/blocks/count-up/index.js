@@ -13,6 +13,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 import attributes from "./attributes";
+import deprecated from "./components/deprecated";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -46,4 +47,5 @@ registerBlockType("responsive-block-editor-addons/count-up", {
   save: (props) => {
     return <Save {...props} />;
   },
+  deprecated: deprecated,
 });

@@ -14,7 +14,7 @@ import { GalleryClasses } from "../../../utils/components/block-gallery/shared";
 import { Component, Fragment } from "@wordpress/element";
 import { RichText } from "@wordpress/block-editor";
 
-const deprecatedImageSliderSave = ({ attributes, className }) => {
+const DeprecatedImageSliderSave = ({ attributes, className }) => {
   const {
     block_id,
     autoPlay,
@@ -236,4 +236,4 @@ const deprecatedImageSliderSave = ({ attributes, className }) => {
   );
 };
 
-export default deprecatedImageSliderSave;
+export default DeprecatedImageSliderSave;
