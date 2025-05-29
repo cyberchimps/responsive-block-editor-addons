@@ -209,7 +209,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
  * Validate the incoming section_title_tag is present in the allowed HTML tags.
  * 
  * @param string $section_title_tag The section title tag to check.
- * @return string The section title tag if it is allowed, otherwise 'h2'.
+ * @return bool true if the $section_title_tag is present in the allowed html tags, otherwise false.
  * @since 2.0.5
  */
 function responsive_block_editor_addons_validate_section_title_tag( $section_title_tag ) {
