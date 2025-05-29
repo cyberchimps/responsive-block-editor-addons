@@ -176,6 +176,7 @@ function EditorStyles(props) {
   contentTypographyColor,
   titleTypographyColor,
   nameTypographyColor,
+  newTestimonialCiteAlign,
   testimonialCiteAlignTablet,
   testimonialCiteAlignMobile,
   } = props.attributes;
@@ -210,7 +211,9 @@ function EditorStyles(props) {
 
   let imgopacity = opacity / 100;
 
+  // TODO
   let updatedBackgroundImage = `url(${backgroundImage})`;
+  // let updatedBackgroundImage = "";
   let backgroundImageEffect = "";
   let colorType = "";
   if (overlayType === "color") {
@@ -277,7 +280,7 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-testimonial-info": {
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
-      "text-align": testimonialCiteAlign,
+      "text-align": newTestimonialCiteAlign,
     },
     " .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap": {
       "padding-right": generateCSSUnit(imageSpacing, "px"),
@@ -319,7 +322,7 @@ function EditorStyles(props) {
     },
     " .responsive-block-editor-addons-block-testimonial": {
       "background-color":
-        backgroundType == "color"
+      backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`
           : undefined,
       "background-image": backgroundType === "image" && overlayType === "gradient"

@@ -4,9 +4,10 @@ import attributes from "../attributes";
  * Internal dependencies
  */
 import IconList from "./iconlist";
-import renderSVG from "../../../../renderIcon";
+import  renderSVG from "../../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../../ResponsiveBlocksIcon.json";
 import classnames from "classnames";
+import DeprecatedIconListChildSave from "../deprecated/DeprecatedIconListChildSave";
 
 /**
  * WordPress dependencies
@@ -15,6 +16,35 @@ const { Component } = wp.element;
 const { RichText } = wp.blockEditor;
 
 const deprecated = [
+  {
+    attributes: attributes,
+    migrate: function (attributes, innerBlocks) {
+      return [
+          attributes,
+          innerBlocks,
+      ];
+    },
+    save: function (props) {
+      const {
+        attributes: {
+          label,
+          hideLabel,
+          icon,
+          link,
+          target,
+          disableLink,
+          block_id,
+          image,
+          source_type,
+        },
+        setAttributes,
+      } = props;
+
+      return (
+        <DeprecatedIconListChildSave {...props} />
+      );
+    },
+  },
   {
     // attributes,
     attributes: attributes,

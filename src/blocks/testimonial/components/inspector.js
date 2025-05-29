@@ -59,7 +59,6 @@ export default class Inspector extends Component {
     super(...arguments);
     this.onRemoveImage = this.onRemoveImage.bind(this);
     this.onSelectImage = this.onSelectImage.bind(this);
-    this.onSelectImage = this.onSelectImage.bind(this);
     this.onSelectVideo = this.onSelectVideo.bind(this);
   }
 
@@ -411,6 +410,9 @@ export default class Inspector extends Component {
         gradientOverlayPosition,
         backgroundVideo,
         backgroundColor,
+        isBackgroundColorUpdated,
+        isBackgroundTypeUpdated,
+        isOverlayBackgroundTypeUpdated,
         backgroundColor1,
         imagePositionTab,
         imageSizeTab,
@@ -430,6 +432,7 @@ export default class Inspector extends Component {
         titleTypographyColor,
         nameTypographyColor,
         isAlignmentValueUpdated,
+        newTestimonialCiteAlign,
         testimonialCiteAlignTablet,
         testimonialCiteAlignMobile,
     },
@@ -528,12 +531,51 @@ export default class Inspector extends Component {
     if (!isAlignmentValueUpdated) {
       this.props.setAttributes(
         {
-          testimonialCiteAlign:          testimonialCiteAlign !== undefined ? testimonialCiteAlign : testimonialCiteAlign,
+          newTestimonialCiteAlign:          testimonialCiteAlign !== undefined ? testimonialCiteAlign : newTestimonialCiteAlign,
           testimonialCiteAlignTablet:       testimonialCiteAlign !== undefined ? testimonialCiteAlign : testimonialCiteAlignTablet,
           testimonialCiteAlignMobile:         testimonialCiteAlign !== undefined ? testimonialCiteAlign : testimonialCiteAlignMobile,
         }
       )
       this.props.setAttributes({isAlignmentValueUpdated: true});
+    }
+
+    if(!isBackgroundTypeUpdated) {
+      this.props.setAttributes({
+        backgroundType: (backgroundVideo !== undefined && backgroundVideo !== '') ? 'video'
+          :  (backgroundImage !== undefined && backgroundImage !== '') ? 'image'  
+          : (bgGradient === true && testimonialBackgroundColor !== undefined && backgroundColor2 !== undefined && testimonialBackgroundColor !== '' && backgroundColor2 !== '') ? 'gradient'
+          : (bgGradient === false && testimonialBackgroundColor !== undefined && testimonialBackgroundColor !== '') ? 'color'
+          : backgroundType,
+      })
+      this.props.setAttributes({isBackgroundTypeUpdated: true});
+    }
+
+    if(!isBackgroundColorUpdated) {
+      this.props.setAttributes({
+        backgroundColor: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : backgroundColor, // Normal background color
+        backgroundColor1: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : backgroundColor1, // For gradient backgrond color 1
+        backgroundImageColor: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : backgroundImageColor, // For overlay background color with image when linear overlay is selected
+        gradientOverlayColor1: testimonialBackgroundColor !== undefined ? testimonialBackgroundColor : gradientOverlayColor1, // For overlay background color 1 with image when gradient overlay is selected
+        gradientOverlayColor2: backgroundColor2 !== undefined ? backgroundColor2 : gradientOverlayColor2, // For overlay background color 2 with image when gradient overlay is selected
+        gradientOverlayLocation1: colorLocation1 !== undefined ? colorLocation1 : gradientOverlayLocation1, // For overlay background color location 1 with image when gradient overlay is selected
+        gradientOverlayLocation2: colorLocation2 !== undefined ? colorLocation2 : gradientOverlayLocation2, // For overlay background color location 2 with image when gradient overlay is selected
+      })
+      this.props.setAttributes({isBackgroundColorUpdated: true});
+    }
+
+    if(!isOverlayBackgroundTypeUpdated) {
+      this.props.setAttributes({
+        overlayType: (
+          backgroundImage !== undefined && backgroundImage !== '' && bgGradient === true && 
+          testimonialBackgroundColor !== undefined && backgroundColor2 !== undefined && 
+          testimonialBackgroundColor !== '' && backgroundColor2 !== ''
+        ) ? 'gradient' :
+          (
+            backgroundImage !== undefined && backgroundImage !== '' && bgGradient === false && 
+            testimonialBackgroundColor !== undefined && testimonialBackgroundColor !== ''
+          ) ? 'color' : '',
+      })
+      this.props.setAttributes({isOverlayBackgroundTypeUpdated: true});
     }
 
     // Background image URL
@@ -680,10 +722,10 @@ export default class Inspector extends Component {
                           </p>
                           <div className="responsive-block-editor-addons-alignment">
                             <AlignmentToolbar
-                              value={testimonialCiteAlign}
+                              value={newTestimonialCiteAlign}
                               onChange={(value) =>
                                 setAttributes({
-                                  testimonialCiteAlign: value,
+                                  newTestimonialCiteAlign: value,
                                 })
                               }
                               controls={["left", "center", "right"]}
@@ -962,6 +1004,7 @@ export default class Inspector extends Component {
                         onChange={(value) =>
                           setAttributes({ overlayType: value })
                         }
+                        defaultValue={"color"}
                         options={[
                           { label: "color", value: "color" },
                           { label: "gradient", value: "gradient" },

@@ -301,7 +301,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' . $attr['gradientOverlayLocation1'] . '%,' . self::hex_to_rgb( $attr['gradientOverlayColor2'] ? $attr['gradientOverlayColor2'] : '#fff', $imgopacity ) .
 						' ' . $attr['gradientOverlayLocation2'] . '%)',
 				),
-				' .responsive-block-editor-addons-block-column' => array(
+				'> .responsive-block-editor-addons-block-column' => array(
 					'min-height'  => $column_height_style,
 					'align-items' => $attr['verticalAlign'],
 				),
@@ -3151,7 +3151,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'' => array(
 					'width' => $column_width,
 				),
-				' .responsive-block-editor-addons-block-column' => array_merge(
+				'> .responsive-block-editor-addons-block-column' => array_merge(
 					array(
 						'padding-top'                => self::get_css_value( $attr['columnTopPadding'], 'px' ),
 						'padding-right'              => self::get_css_value( $attr['columnRightPadding'], 'px' ),
@@ -3181,7 +3181,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					),
 					$background_type_image_styles
 				),
-				' .responsive-block-editor-addons-block-column:hover' => array_merge(
+				'> .responsive-block-editor-addons-block-column:hover' => array_merge(
 					array(
 						'box-shadow'       => '' !== $attr['hoverboxShadowColor'] ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
 						'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
@@ -3197,7 +3197,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 			);
 			$mobile_selectors = array(
-				' .responsive-block-editor-addons-block-column' => array(
+				'> .responsive-block-editor-addons-block-column' => array(
 					'padding-top'                => self::get_css_value( $attr['columnTopPaddingMobile'], 'px' ),
 					'padding-right'              => self::get_css_value( $attr['columnRightPaddingMobile'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['columnBottomPaddingMobile'], 'px' ),
@@ -3214,7 +3214,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 
 			$tablet_selectors = array(
-				' .responsive-block-editor-addons-block-column' => array(
+				'> .responsive-block-editor-addons-block-column' => array(
 					'padding-top'                => self::get_css_value( $attr['columnTopPaddingTablet'], 'px' ),
 					'padding-right'              => self::get_css_value( $attr['columnRightPaddingTablet'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['columnBottomPaddingTablet'], 'px' ),
@@ -7212,6 +7212,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'link'                     => '#',
 				'target'                   => true,
 				'disableLink'              => true,
+				'enableLink'			   => false,
 				'block_id'                 => 1,
 				'source_type'              => 'icon',
 				'blockTopMargin'           => '',
@@ -11537,8 +11538,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				}
 			}
 
+			// To Populate the Alignment Keys
 			$new_alignment_keys = array(
-				'testimonialCiteAlign'       => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
+				'newTestimonialCiteAlign'       => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 				'testimonialCiteAlignTablet' => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 				'testimonialCiteAlignMobile' => 'testimonialCiteAlign' ? 'testimonialCiteAlign' : '',
 			);
@@ -11549,6 +11551,96 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
 				}
 			}
+
+			// To Populate the Typography Control
+			$new_typography_control_keys = array(
+				'contentTypographyColor'          => 'testimonialTextColor' ? 'testimonialTextColor' : '',
+				'nameTypographyColor'             => 'testimonialNameColor' ? 'testimonialNameColor' : '',
+				'titleTypographyColor'            => 'testimonialTitleColor' ? 'testimonialTitleColor' : '',
+
+				'contentBottomSpacing'            => 'contentSpacing' ? 'contentSpacing' : '',
+				'contentBottomSpacingMobile'      => 'contentSpacingMobile' ? 'contentSpacingMobile' : '',
+				'contentBottomSpacingTablet'      => 'contentSpacingTablet' ? 'contentSpacingTablet' : '',
+
+				'nameBottomSpacing'               => 'nameSpacing' ? 'nameSpacing' : '',
+				'nameBottomSpacingMobile'         => 'nameSpacingMobile' ? 'nameSpacingMobile' : '',
+				'nameBottomSpacingTablet'         => 'nameSpacingTablet' ? 'nameSpacingTablet' : '',
+
+				'titleBottomSpacing'              => 'titleSpacing' ? 'titleSpacing' : '',
+				'titleBottomSpacingMobile'        => 'titleSpacingMobile' ? 'titleSpacingMobile' : '',
+				'titleBottomSpacingTablet'        => 'titleSpacingTablet' ? 'titleSpacingTablet' : '',
+			);
+
+			// To populate new control values with existing control values for backward compatibility.
+			foreach ( $new_typography_control_keys as $attr_key => $default_key ) {
+				if ( array_key_exists( $attr_key, $defaults ) ) {
+					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
+				}
+			}
+
+			// To Populate the Background Colors for various types of backgrounds.
+			$new_background_color_keys = array(
+				'backgroundColor'        => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'backgroundColor',
+				'backgroundColor1'       => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'backgroundColor1',
+				'backgroundImageColor'   => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'backgroundImageColor',
+				'gradientOverlayColor1'  => 'testimonialBackgroundColor' ? 'testimonialBackgroundColor' : 'gradientOverlayColor1',
+				'gradientOverlayColor2'  => 'backgroundColor2' ? 'backgroundColor2' : 'gradientOverlayColor2',
+				'gradientOverlayLocation1' => 'colorLocation1' ? 'colorLocation1' : 'gradientOverlayLocation1',
+				'gradientOverlayLocation2' => 'colorLocation2' ? 'colorLocation2' : 'gradientOverlayLocation2',
+			);
+
+			// Populate new background color values using existing ones for backward compatibility.
+			foreach ( $new_background_color_keys as $attr_key => $default_key ) {
+				if ( array_key_exists( $attr_key, $defaults ) ) {
+					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
+				}
+			}
+
+			// To populate backgroundType based on existing attribute values.
+			$background_type_conditions = array(
+				'video' => ( isset( $attr['backgroundVideo'] ) && '' !== $attr['backgroundVideo'] ),
+				'image' => ( isset( $attr['backgroundImage'] ) && '' !== $attr['backgroundImage'] ),
+				'gradient' => (
+					isset( $attr['bgGradient'] ) && true === $attr['bgGradient']
+					&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+					&& isset( $attr['backgroundColor2'] ) && '' !== $attr['backgroundColor2']
+				),
+				'color' => (
+					( ! isset( $attr['bgGradient']) || false === $attr['bgGradient'] || '' === $attr['bgGradient'] )
+					&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+				),
+			);
+
+			// Default backgroundType value
+			$defaults['backgroundType'] = isset( $attr['backgroundType'] ) ? $attr['backgroundType'] : $defaults['backgroundType'];
+
+			// Evaluate the conditions in order
+			foreach ( $background_type_conditions as $type => $condition ) {
+				if ( $condition ) {
+					$defaults['backgroundType'] = $type;
+					break;
+				}
+			}
+
+			// To set the Overlay Background Type
+			$overlay_type = isset( $attr['overlayType'] ) ? $attr['overlayType'] : $defaults['overlayType'];
+
+			if (
+				isset( $attr['backgroundImage'] ) && '' !== $attr['backgroundImage']
+				&& isset( $attr['bgGradient'] ) && true === $attr['bgGradient']
+				&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+				&& isset( $attr['backgroundColor2'] ) && '' !== $attr['backgroundColor2']
+			) {
+				$overlay_type = 'gradient';
+			} elseif (
+				isset( $attr['backgroundImage'] ) && '' !== $attr['backgroundImage']
+				&& isset( $attr['bgGradient'] ) && false === $attr['bgGradient']
+				&& isset( $attr['testimonialBackgroundColor'] ) && '' !== $attr['testimonialBackgroundColor']
+			) {
+				$overlay_type = 'color';
+			}
+
+			$attr['overlayType'] = $overlay_type;
 
 			$attr = array_merge( $defaults, (array) $attr );
 
@@ -11568,7 +11660,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$imgopacity = $attr['opacity'] / 100;
 
 			$background_image_effect  = '';
-			$updated_background_image = '';
+			$updated_background_image = 'url(' . $attr['backgroundImage'] . ')';
 
 			$color_type = '';
 			if ( 'color' === $attr['overlayType'] ) {
@@ -11647,7 +11739,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-testimonial-info' => array(
 					'margin-bottom' => self::get_css_value( $attr['titleBottomSpacing'], 'px' ),
-					'text-align'    => $attr['testimonialCiteAlign'],
+					'text-align'    => $attr['newTestimonialCiteAlign'],
 				),
 				' .responsive-block-editor-addons-testimonial-info .responsive-block-editor-addons-testimonial-inner-block .responsive-block-editor-addons-testimonial-avatar-wrap' => array(
 					'padding-right' => self::get_css_value( $attr['imageSpacing'], 'px' ),
@@ -11901,7 +11993,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'contentLineHeight'          => 1.6,
 				'contentFontWeight'          => '',
 				'contentTextTransform'       => '',
-				'testimonialCiteAlign'       => 'left',
+				'testimonialCiteAlign'       => 'left-align',
+				'newTestimonialCiteAlign'    => 'left',
 				'backgroundColor'            => '#f2f2f2',
 				'blockBorderStyle'           => 'none',
 				'blockBorderWidth'           => 1,
@@ -11937,8 +12030,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'hoverboxShadowBlur'         => 6,
 				'hoverboxShadowSpread'       => 1,
 				'hoverboxShadowPosition'     => 'outset',
-				'opacity'                    => 20,
-				'gradientDirection'          => 90,
+				'opacity'                    => 70,
+				'gradientDirection'          => 180,
 				'bgGradient'                 => false,
 				'backgroundImage'            => '',
 				'colorLocation1'             => 0,
@@ -12014,7 +12107,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'gradientOverlayType'        => 'linear',
 				'gradientOverlayLocation1'   => 0,
 				'gradientOverlayLocation2'   => 100,
-				'gradientOverlayAngle'       => 0,
+				'gradientOverlayAngle'       => 180,
 				'gradientOverlayPosition'    => 'center center',
 				'backgroundVideo'            => '',
 				'backgroundType'             => 'none',
@@ -16308,6 +16401,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				if ( array_key_exists( $attr_key, $defaults ) ) {
 					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
 				}
+			}
+
+			// Change the vaule of iconContainerSize to 5px for backward compatibility.
+			if(isset($attr['iconContainerSize']) && ($attr['iconContainerSize'] === 120 || $attr['iconContainerSize'] === 103)) {
+				$attr['iconContainerSize'] = 5;
 			}
 
 			$new_border_radius_keys = array(

@@ -15,6 +15,12 @@ const deprecated = [
   {
     // attributes,
     attributes: attributes,
+    migrate: function (attributes, innerBlocks) {
+      return [
+          attributes,
+          innerBlocks,
+      ];
+    },
     save: function (props) {
       const {
         attributes: {

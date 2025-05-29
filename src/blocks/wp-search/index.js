@@ -6,6 +6,7 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
+import deprecated from "./components/deprecated";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -50,4 +51,5 @@ registerBlockType("responsive-block-editor-addons/wp-search", {
   save: (props) => {
     return <Save {...props} />;
   },
+  deprecated: deprecated,
 });

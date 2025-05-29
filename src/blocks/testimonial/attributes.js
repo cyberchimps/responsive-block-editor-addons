@@ -105,9 +105,13 @@ const attributes = {
   contentTextTransform: {
     type: "string",
   },
-  testimonialCiteAlign: {
+  newTestimonialCiteAlign: {
     type: "string",
     default: "left",
+  },
+  testimonialCiteAlign: {
+    type: "string",
+    default: "left-aligned",
   },
   backgroundColor: {
     type: "string",
@@ -298,11 +302,11 @@ const attributes = {
   },
   opacity: {
     type: "number",
-    default: 0.7,
+    default: 70,
   },
   gradientDirection: {
     type: "number",
-    default: 90,
+    default: 180,
   },
   bgGradient: {
     type: "boolean",
@@ -509,10 +513,6 @@ const attributes = {
     type: "string",
     default: "section",
   },
-  opacity: {
-    type: "number",
-    default: 20,
-  },
   colorLocation1: {
     type: "number",
     default: 0,
@@ -523,7 +523,7 @@ const attributes = {
   },
   gradientDirection: {
     type: "number",
-    default: 90,
+    default: 180,
   },
   backgroundImage: {
     type: "string",
@@ -588,7 +588,7 @@ const attributes = {
   },
   gradientOverlayAngle: {
     type: "number",
-    default: 0,
+    default: 180,
   },
   gradientOverlayPosition: {
     type: "string",
@@ -741,7 +741,19 @@ const attributes = {
   isAlignmentValueUpdated: {
     type: "boolean",
     default: false,
-  }
+  },
+  isBackgroundColorUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  isBackgroundTypeUpdated: {
+    type: "boolean",
+    default: false,
+  },
+  isOverlayBackgroundTypeUpdated: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 export default attributes;

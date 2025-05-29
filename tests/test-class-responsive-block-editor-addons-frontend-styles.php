@@ -1599,6 +1599,7 @@ class Responsive_Block_Editor_Addons_Frontend_Styles_Test extends WP_UnitTestCas
 			'link'                    => '#',
 			'target'                  => false,
 			'disableLink'             => true,
+			'enableLink'              => false,
 			'block_id'                => 1,
 			'source_type'             => 'icon',
 		);

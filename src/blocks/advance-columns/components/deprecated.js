@@ -11,7 +11,7 @@ const deprecated = [
         supports: {
             align: ["wide", "full"],
         },
-        migrate( attributes, innerBlocks ) {
+        migrate: function( attributes, innerBlocks ) {
             return [
                 attributes,
                 innerBlocks,

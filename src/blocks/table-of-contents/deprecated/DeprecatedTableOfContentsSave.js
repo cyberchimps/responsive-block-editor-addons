@@ -2,7 +2,7 @@
  * Internal dependencies
  */
 import classnames from "classnames";
-import TableOfContents from "./TableOfContents";
+import DeprecatedTableOfContents from "./TableOfContents";
 import renderSVG from "../../../renderIcon";
 /**
  * WordPress dependencies
@@ -82,7 +82,7 @@ export default class DeprecatedTableOfContentsSave extends Component {
             </div>
             {icon_html}
           </div>
-          <TableOfContents
+          <DeprecatedTableOfContents
             headers={
               headerLinks && JSON.parse(headerLinks.replace(/u0022/g, '"'))
             }

@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import IconList from "./iconlist";
+import DeprecatedIconList from "./DeprecatedIconList";
 import renderSVG from "../../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../../ResponsiveBlocksIcon.json";
 import classnames from "classnames";
@@ -12,7 +12,7 @@ import classnames from "classnames";
 const { Component } = wp.element;
 const { RichText } = wp.blockEditor;
 
-export default class Save extends Component {
+export default class DeprecatedIconListChildSave extends Component {
   constructor() {
     super(...arguments);
   }
@@ -26,7 +26,6 @@ export default class Save extends Component {
       link,
       target,
       disableLink,
-      enableLink,
       block_id,
       image,
       source_type,
@@ -54,11 +53,11 @@ export default class Save extends Component {
     }
 
     let target_val = target ? "_blank" : "_self";
-    let link_url = enableLink ? link : "/";
+    let link_url = !disableLink ? link : "/";
 
     return [
-      <IconList {...this.props}>
-        {enableLink && (
+      <DeprecatedIconList {...this.props}>
+        {!disableLink && (
           <a
             target={target_val}
             rel="noopener noreferrer"
@@ -86,7 +85,7 @@ export default class Save extends Component {
             </div>
           )}
         </div>
-      </IconList>,
+      </DeprecatedIconList>,
     ];
   }
 }
