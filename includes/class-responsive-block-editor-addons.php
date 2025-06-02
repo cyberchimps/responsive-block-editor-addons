@@ -887,6 +887,7 @@ class Responsive_Block_Editor_Addons {
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
+		wp_enqueue_style( 'dashicons' );
 	}
 
 	public function rba_get_block_names( $blocks, &$block_names = array() ) {

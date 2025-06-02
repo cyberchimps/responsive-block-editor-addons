@@ -148,6 +148,20 @@
   }
 }
 
+// Tablet-specific modification
+.responsive-block-editor-addons-block-popup.device-tablet {
+  .responsive-block-editor-addons-popup-modal-content {
+    margin-right: 0;
+  }
+}
+
+// Mobile-specific modification
+.responsive-block-editor-addons-block-popup.device-mobile {
+  .responsive-block-editor-addons-popup-modal-content {
+    margin-right: 0;
+  }
+}
+
 // Styling for Inspector Controls.
 // Custom Styles of Alignment Matrix Control.
 
