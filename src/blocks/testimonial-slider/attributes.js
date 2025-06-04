@@ -339,6 +339,14 @@ const attributes = {
     type: "number",
     default: 60,
   },
+  imageWidthTablet: {
+    type: "number",
+    default: 60,
+  },
+  imageWidthMobile: {
+    type: "number",
+    default: 60,
+  },
   columns: {
     type: "number",
     default: 1,
