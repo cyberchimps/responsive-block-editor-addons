@@ -12,6 +12,7 @@ import "./styles/styles.editor.scss";
 
 //Import block icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import deprecated from "./components/deprecated";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -74,4 +75,6 @@ registerBlockType("responsive-block-editor-addons/tabs", {
   save: (props) => {
     return <Save {...props} />;
   },
+
+  deprecated: deprecated,
 });
