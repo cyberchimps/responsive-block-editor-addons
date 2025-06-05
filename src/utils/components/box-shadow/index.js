@@ -19,6 +19,7 @@ class BoxShadowControl extends Component {
   render() {
     const {
       setAttributes,
+      controlKey, 
       boxShadowColor,
       boxShadowHOffset,
       boxShadowVOffset,
@@ -27,87 +28,69 @@ class BoxShadowControl extends Component {
       boxShadowPosition,
     } = this.props;
 
-    var advancedControls;
-    
-      advancedControls = (
-        <div>
-          <Fragment>
-            <RbeaColorControl
-              label = {"Color"}
-              colorValue={boxShadowColor.value}
-              onChange={(colorValue) =>
-                setAttributes({
-                  boxShadowColor: colorValue !== undefined ? colorValue : "",
-                })
-              }
-              resetColor={() => setAttributes({ boxShadowColor: "" })}
-            />
-          </Fragment>
-          <Fragment>
-            <RbeaRangeControl
-              label={boxShadowHOffset.label}
-              value={boxShadowHOffset.value}
-              onChange={(value) =>
-                setAttributes({
-                  boxShadowHOffset: value !== undefined ? value : 0,
-                })
-              }
-              min={-100}
-              max={100}
-            />
-          </Fragment>
-          <Fragment>
-            <RbeaRangeControl
+    const setAttr = (key, value) => {
+      setAttributes({ [`${controlKey}${key}`]: value });
+    };
+
+    return (
+      <div className="res-typography-option-actions">
+        <Fragment>
+          <RbeaColorControl
+            label={boxShadowColor.label}
+            colorValue={boxShadowColor.value}
+            onChange={(colorValue) => setAttr("Color", colorValue || "")}
+            resetColor={() => setAttr("Color", "")}
+          />
+        </Fragment>
+        <Fragment>
+          <RbeaRangeControl
+            label={boxShadowHOffset.label}
+            value={boxShadowHOffset.value}
+            onChange={(value) => setAttr("HOffset", value ?? 0)}
+            min={-100}
+            max={100}
+          />
+        </Fragment>
+        <Fragment>
+          <RbeaRangeControl
             label={boxShadowVOffset.label}
-              value={boxShadowVOffset.value}
-              onChange={(value) =>
-                setAttributes({
-                  boxShadowVOffset: value !== undefined ? value : 0,
-                })
-              }
-              min={-100}
-              max={100}
-            />
-          </Fragment>
-          <Fragment>
-            <RbeaRangeControl
-              label={boxShadowBlur.label}
-              value={boxShadowBlur.value}
-              onChange={(value) =>
-                setAttributes({
-                  boxShadowBlur: value !== undefined ? value : 0,
-                })
-              }
-              min={0}
-              max={100}
-            />
-          </Fragment>
-          <Fragment>
-            <RbeaRangeControl
-              label={boxShadowSpread.label}
-              value={boxShadowSpread.value}
-              onChange={(value) =>
-                setAttributes({
-                  boxShadowSpread: value !== undefined ? value : 0,
-                })
-              }
-              min={0}
-              max={100}
-            />
-          </Fragment>
-          <Fragment>
-            <RbeaTabRadioControl
-              label = {boxShadowPosition.label}
-              value={boxShadowPosition}
-              options={[
-                { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
-                { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
-              ]}
-              onChange={(value) => setAttributes({ boxShadowPosition: value })}
-            />
-          </Fragment>
-        </div>
-      );
+            value={boxShadowVOffset.value}
+            onChange={(value) => setAttr("VOffset", value ?? 0)}
+            min={-100}
+            max={100}
+          />
+        </Fragment>
+        <Fragment>
+          <RbeaRangeControl
+            label={boxShadowBlur.label}
+            value={boxShadowBlur.value}
+            onChange={(value) => setAttr("Blur", value ?? 0)}
+            min={0}
+            max={100}
+          />
+        </Fragment>
+        <Fragment>
+          <RbeaRangeControl
+            label={boxShadowSpread.label}
+            value={boxShadowSpread.value}
+            onChange={(value) => setAttr("Spread", value ?? 0)}
+            min={0}
+            max={100}
+          />
+        </Fragment>
+        <Fragment>
+          <RbeaTabRadioControl
+            label={boxShadowPosition.label}
+            value={boxShadowPosition.value}
+            options={[
+              { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
+              { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
+            ]}
+            onChange={(value) => setAttr("Position", value)}
+          />
+        </Fragment>
+      </div>
+    );
     return (
       <div className="res-typography-option-actions">
         {advancedControls}

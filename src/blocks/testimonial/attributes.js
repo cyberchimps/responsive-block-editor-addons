@@ -278,7 +278,6 @@ const attributes = {
   },
   hoverboxShadowColor: {
     type: "string",
-    default: "#cccccc",
   },
   hoverboxShadowHOffset: {
     type: "number",
@@ -290,11 +289,11 @@ const attributes = {
   },
   hoverboxShadowBlur: {
     type: "number",
-    default: 6,
+    default: 0,
   },
   hoverboxShadowSpread: {
     type: "number",
-    default: 1,
+    default: 0,
   },
   hoverboxShadowPosition: {
     type: "string",
