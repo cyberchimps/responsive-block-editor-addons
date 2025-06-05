@@ -179,12 +179,9 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 
 		/* portfolio section title */
 		if ( isset( $attributes['displaySectionTitle'] ) && $attributes['displaySectionTitle'] && ! empty( $attributes['sectionTitle'] ) ) {
-			if ( isset( $attributes['sectionTitleTag'] ) && responsive_block_editor_addons_validate_section_title_tag( $attributes['sectionTitleTag'] ) ) {
-				$section_title_tag = $attributes['sectionTitleTag'];
-			} else {
-				$section_title_tag = 'h2';
-			}
-
+			$helper                = Responsive_Block_Editor_Addons_Helper::get_instance();
+			$array_of_allowed_html = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p' );
+			$section_title_tag	   =  $helper->rbea_post_title_tag_allowed_html( $attributes['sectionTitleTag'], $array_of_allowed_html, 'h2' );
 			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-portfolio-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {
 			$section_title = null;
@@ -203,22 +200,6 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 		);
 		return $block_content;
 	}
-}
-
-/**
- * Validate the incoming section_title_tag is present in the allowed HTML tags.
- * 
- * @param string $section_title_tag The section title tag to check.
- * @return bool true if the $section_title_tag is present in the allowed html tags, otherwise false.
- * @since 2.0.6
- */
-function responsive_block_editor_addons_validate_section_title_tag( $section_title_tag ) {
-	$allowed_html_tags = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p' );
-	// Check if the section title tag is in the allowed HTML tags.
-	if ( in_array( $section_title_tag, $allowed_html_tags, true ) ) {
-		return true;
-	}
-	return false; // Default to false if the tag is not allowed.
 }
 
 /**
