@@ -11515,7 +11515,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		public static function get_responsive_block_testimonial_css( $attr, $id ) {
 			$defaults = self::get_responsive_block_testimonial_default_attributes();
 			if (empty($attr['hoverboxShadowColor'])) {
-				error_log("The hover by default is disabled");
 				$attr['hoverboxShadowColor'] = '#FFFFFF';
 			}
 			// Frontend backward compatibility.
@@ -11618,13 +11617,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					')';
 				}
 			}
-			
-			error_log("The box shadow color upon hover is: " . $attr['hoverboxShadowColor']);
-			error_log("Hover Box Shadow H Offset: " . $attr['hoverboxShadowHOffset']);
-			error_log("Hover Box Shadow V Offset: " . $attr['hoverboxShadowVOffset']);
-			error_log("Hover Box Shadow Blur: " . $attr['hoverboxShadowBlur']);
-			error_log("Hover Box Shadow Spread: " . $attr['hoverboxShadowSpread']);
-
 			// Ensure the background image logic is correctly applied.
 			$bgimage = ! empty( $updated_background_image ) ? $updated_background_image : $background_image_effect;
 
