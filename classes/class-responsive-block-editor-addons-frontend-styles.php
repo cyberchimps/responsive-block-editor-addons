@@ -15,7 +15,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 	 * Class Responsive_Block_Editor_Addons_Frontend_Styles.
 	 */
 	final class Responsive_Block_Editor_Addons_Frontend_Styles {
-
+		
 		/**
 		 * Get Advanced Heading CSS
 		 *
@@ -11514,7 +11514,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_testimonial_css( $attr, $id ) {
 			$defaults = self::get_responsive_block_testimonial_default_attributes();
-
+			if (empty($attr['hoverboxShadowColor'])) {
+				$attr['hoverboxShadowColor'] = '#FFFFFF';
+			}
 			// Frontend backward compatibility.
 			$new_border_radius_keys = array(
 				'blockTopRadius'          => 'blockBorderRadius' ? 'blockBorderRadius' : 2,
@@ -11706,7 +11708,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					')';
 				}
 			}
-
 			// Ensure the background image logic is correctly applied.
 			$bgimage = ! empty( $updated_background_image ) ? $updated_background_image : $background_image_effect;
 
@@ -11787,7 +11788,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['contentBottomPadding'], 'px' ),
 					'padding-left'   => self::get_css_value( $attr['contentLeftPadding'], 'px' ),
 				),
-				' .responsive-block-editor-addons-block-testimonial:hover' => array(
+				' .testimonial-box.responsive-block-editor-addons-block-testimonial:hover' => array(
 					'box-shadow' =>
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
@@ -12024,7 +12025,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'              => 0,
 				'boxShadowSpread'            => 0,
 				'boxShadowPosition'          => 'outset',
-				'hoverboxShadowColor'        => '#ccc',
+				'hoverboxShadowColor'        => '#fff',
 				'hoverboxShadowHOffset'      => 0,
 				'hoverboxShadowVOffset'      => 0,
 				'hoverboxShadowBlur'         => 6,

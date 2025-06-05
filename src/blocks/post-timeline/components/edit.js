@@ -48,6 +48,117 @@ const {
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
+function responsivePostTimelineInit() {
+	const iframeEl = document.querySelector(`iframe[name='editor-canvas']`);
+	let mainDiv;
+	if (iframeEl) {
+		mainDiv = iframeEl.contentDocument.querySelectorAll('.responsive-block-editor-addons-timeline');
+	} else {
+		mainDiv = document.querySelectorAll('.responsive-block-editor-addons-timeline');
+	}
+
+	const timeline = mainDiv;
+	if (timeline.length === 0) {
+		return;
+	}
+
+	for (const content of timeline) {
+		const lineInner = content.querySelector('.responsive-block-editor-addons-timeline__line__inner');
+		const lineOuter = content.querySelector('.responsive-block-editor-addons-timeline__line');
+		const iconClass = content.querySelectorAll('.responsive-block-editor-addons-timeline__marker');
+		const timelineField = content.querySelector('.responsive-block-editor-addons-timeline__field:nth-last-child(2)');
+		const cardLast = timelineField
+			? timelineField
+			: content.querySelector('.block-editor-block-list__block:last-child');
+		const timelineStartIcon = iconClass[0];
+		const timelineEndIcon = iconClass[iconClass.length - 1];
+
+		setTimeout(() => {
+			lineOuter.style.top = timelineStartIcon?.offsetTop + 'px';
+		}, 300);
+
+		const timelineCardHeight = cardLast?.offsetHeight;
+
+		if (content.classList.contains('responsive-block-editor-addons-timeline__arrow-center')) {
+			lineOuter.style.bottom = timelineEndIcon?.offsetTop + 'px';
+		} else if (content.classList.contains('responsive-block-editor-addons-timeline__arrow-top')) {
+			const topHeight = timelineCardHeight - timelineEndIcon?.offsetTop;
+			lineOuter.style.bottom = topHeight + 'px';
+		} else if (content.classList.contains('responsive-block-editor-addons-timeline__arrow-bottom')) {
+			const bottomHeight = timelineCardHeight - timelineEndIcon?.offsetTop;
+			lineOuter.style.bottom = bottomHeight + 'px';
+		}
+
+		const connectorHeight = 3 * iconClass[0]?.offsetHeight;
+		const viewportHeight = document?.documentElement?.clientHeight;
+		const viewportHeightHalf = viewportHeight / 2 + connectorHeight;
+
+		const body = document.body;
+		const html = document.documentElement;
+		const height = Math.max(
+			body.scrollHeight,
+			body.offsetHeight,
+			html.clientHeight,
+			html.scrollHeight,
+			html.offsetHeight
+		);
+
+		const timelineEndIconOffsetBottom = height - timelineEndIcon?.getBoundingClientRect()?.top;
+
+		const totalTimelineLineHeight =
+			height - timelineStartIcon?.getBoundingClientRect()?.top - timelineEndIconOffsetBottom;
+
+		const startFlag =
+			timelineStartIcon?.getBoundingClientRect()?.top +
+			window?.scrollY -
+			(window?.innerHeight - window?.innerHeight / 3);
+
+		if (startFlag < document?.documentElement?.scrollTop) {
+			const tscrollPerc =
+				((document?.documentElement?.scrollTop - startFlag) / totalTimelineLineHeight) * 100;
+			const percHeight = (totalTimelineLineHeight / 100) * tscrollPerc;
+
+			if (percHeight < totalTimelineLineHeight + 60) {
+				lineInner.style.height = percHeight + 'px';
+			}
+		}
+
+		// Icon color & visibility management
+		let timelineIconPos, timelineCardPos;
+		let timelineIconTop, timelineCardTop;
+		const timelineIcon = content.querySelectorAll('.responsive-block-editor-addons-timeline__marker');
+
+		let animateBorder = content.querySelectorAll('.responsive-block-editor-addons-timeline__field-wrap');
+		if (animateBorder.length === 0) {
+			animateBorder = content.querySelectorAll('.responsive-block-editor-addons-timeline__animate-border');
+		}
+
+		for (let j = 0; j < timelineIcon.length; j++) {
+			timelineIconPos = timelineIcon[j].lastElementChild.getBoundingClientRect().top + window.scrollY;
+			timelineCardPos = animateBorder[j].lastElementChild.getBoundingClientRect().top + window.scrollY;
+
+			timelineIconTop = timelineIconPos - document.documentElement.scrollTop;
+			timelineCardTop = timelineCardPos - document.documentElement.scrollTop;
+
+			if (timelineCardTop < viewportHeightHalf) {
+				animateBorder[j].classList.remove('out-view');
+				animateBorder[j].classList.add('in-view');
+			} else {
+				animateBorder[j].classList.add('out-view');
+				animateBorder[j].classList.remove('in-view');
+			}
+
+			if (timelineIconTop < viewportHeightHalf) {
+				timelineIcon[j].classList.remove('responsive-block-editor-addons-timeline__out-view-icon');
+				timelineIcon[j].classList.add('responsive-block-editor-addons-timeline__in-view-icon');
+			} else {
+				timelineIcon[j].classList.add('responsive-block-editor-addons-timeline__out-view-icon');
+				timelineIcon[j].classList.remove('responsive-block-editor-addons-timeline__in-view-icon');
+			}
+		}
+	}
+}
+
 class LatestPostsBlock extends Component {
   constructor() {
     super(...arguments);
@@ -62,11 +173,19 @@ class LatestPostsBlock extends Component {
     if (null !== element && undefined !== element) {
       element.innerHTML = EditorStyles(this.props);
     }
-    window.addEventListener("load", this.postTimelineContent_back(this.props.clientId));
-    window.addEventListener("resize", this.postTimelineContent_back(this.props.clientId));
+
+    window.addEventListener("load", responsivePostTimelineInit);
+    window.addEventListener("resize", responsivePostTimelineInit);
+
+    const respTimelines = document.querySelectorAll('.interface-interface-skeleton__content');
+    respTimelines.forEach((timeline) => {
+      timeline.addEventListener('scroll', responsivePostTimelineInit);
+    });
+
     var post_time = this;
     $(".edit-post-layout__content").on( 'scroll', function (event) {
-      post_time.postTimelineContent_back(this.props.clientId);
+      // post_time.postTimelineContent_back(this.props.clientId);
+      responsivePostTimelineInit;
     });
   }
 
@@ -75,11 +194,17 @@ class LatestPostsBlock extends Component {
     this.props.setAttributes({ block_id: this.props.clientId });
     this.props.setAttributes({ classMigrate: true });
 
-    window.addEventListener("load", this.postTimelineContent_back(this.props.clientId));
-    window.addEventListener("resize", this.postTimelineContent_back(this.props.clientId));
+    window.addEventListener("load", responsivePostTimelineInit);
+    window.addEventListener("resize", responsivePostTimelineInit);
+
+    const respTimelines = document.querySelectorAll('.interface-interface-skeleton__content');
+    respTimelines.forEach((timeline) => {
+      timeline.addEventListener('scroll', responsivePostTimelineInit);
+    });
     var post_time = this;
     $(".edit-post-layout__content").on( 'scroll', function (event) {
-      post_time.postTimelineContent_back(this.props.clientId);
+      // post_time.postTimelineContent_back(this.props.clientId);
+      responsivePostTimelineInit;
     });
 
     // Pushing Style tag for this block css.

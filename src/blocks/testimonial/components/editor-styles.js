@@ -253,6 +253,7 @@ function EditorStyles(props) {
     }
   }
 
+  
   var selectors = {
     " ":{
       "opacity": hideWidget? 0.2 : 1,

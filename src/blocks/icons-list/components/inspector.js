@@ -447,55 +447,146 @@ export default class Inspector extends Component {
           />
         )}
 
-        {!hideLabel && (
-          <PanelBody
-            title={__("Icon", "responsive-block-editor-addons")}
-            initialOpen={false}
-          >
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
+            <PanelBody
+              title={__("Icon", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className:
+                          " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className:
+                          " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                  >
+                    {(tab) => {
+                      let tabout;
+
+                        if ("mobile" === tab.name) {
+                          tabout = (
+                            <Fragment>
+                              <RbeaRangeControl
+                                label={__(
+                                  "Icon Size Mobile",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={sizeMobile}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    sizeMobile: value !== undefined ? value : 16,
+                                  })
+                                }
+                                min={0}
+                                max={500}
+                                allowReset
+                              />
+                            </Fragment>
+                          );
+                        } else if ("tablet" === tab.name) {
+                          tabout = (
+                            <Fragment>
+                              <RbeaRangeControl
+                                label={__(
+                                  "Icon Size Tablet",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={sizeTablet}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    sizeTablet: value !== undefined ? value : 16,
+                                  })
+                                }
+                                min={0}
+                                max={500}
+                                allowReset
+                              />
+                            </Fragment>
+                          );
+                        } else {
+                          tabout = (
+                            <Fragment>
+                              <RbeaRangeControl
+                                label={__(
+                                  "Icon Size",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={size}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    size: value !== undefined ? value : 16,
+                                  })
+                                }
+                                min={0}
+                                max={500}
+                                allowReset
+                              />
+                            </Fragment>
+                          );
+                        }
+
+                      return <div>{tabout}</div>;
+                    }}
+                  </TabPanel>
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className:
+                          " responsive-tablet-tab responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className:
+                          " responsive-mobile-tab responsive-responsive-tabs",
+                      },
+                    ]}
+                  >
+                    {(tab) => {
+                      let tabout;
 
                       if ("mobile" === tab.name) {
                         tabout = (
                           <Fragment>
                             <RbeaRangeControl
                               label={__(
-                                "Icon Size Mobile",
+                                "Icon Background Size Mobile",
                                 "responsive-block-editor-addons"
                               )}
-                              value={sizeMobile}
+                              value={bgSizeMobile}
                               onChange={(value) =>
-                                setAttributes({
-                                  sizeMobile: value !== undefined ? value : 16,
-                                })
+                                setAttributes({ bgSizeMobile: value })
                               }
+                              help={__(
+                                "Note: Background Size option is useful when one adds background color to the icons."
+                              )}
                               min={0}
                               max={500}
-                              allowReset
                             />
                           </Fragment>
                         );
@@ -504,18 +595,18 @@ export default class Inspector extends Component {
                           <Fragment>
                             <RbeaRangeControl
                               label={__(
-                                "Icon Size Tablet",
+                                "Icon Background Size Tablet",
                                 "responsive-block-editor-addons"
                               )}
-                              value={sizeTablet}
+                              value={bgSizeTablet}
                               onChange={(value) =>
-                                setAttributes({
-                                  sizeTablet: value !== undefined ? value : 16,
-                                })
+                                setAttributes({ bgSizeTablet: value })
                               }
+                              help={__(
+                                "Note: Background Size option is useful when one adds background color to the icons.", "responsive-block-editor-addons"
+                              )}
                               min={0}
                               max={500}
-                              allowReset
                             />
                           </Fragment>
                         );
@@ -524,134 +615,41 @@ export default class Inspector extends Component {
                           <Fragment>
                             <RbeaRangeControl
                               label={__(
-                                "Icon Size",
+                                "Icon Background Size",
                                 "responsive-block-editor-addons"
                               )}
-                              value={size}
+                              value={bgSize}
                               onChange={(value) =>
-                                setAttributes({
-                                  size: value !== undefined ? value : 16,
-                                })
+                                setAttributes({ bgSize: value })
                               }
+                              help={__(
+                                "Note: Background Size option is useful when one adds background color to the icons."
+                              )}
                               min={0}
                               max={500}
-                              allowReset
                             />
                           </Fragment>
                         );
                       }
 
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-                <TabPanel
-                  className=" responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className:
-                        " responsive-tablet-tab responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className:
-                        " responsive-mobile-tab responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Icon Background Size Mobile",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={bgSizeMobile}
-                            onChange={(value) =>
-                              setAttributes({ bgSizeMobile: value })
-                            }
-                            help={__(
-                              "Note: Background Size option is useful when one adds background color to the icons."
-                            )}
-                            min={0}
-                            max={500}
-                          />
-                        </Fragment>
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Icon Background Size Tablet",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={bgSizeTablet}
-                            onChange={(value) =>
-                              setAttributes({ bgSizeTablet: value })
-                            }
-                            help={__(
-                              "Note: Background Size option is useful when one adds background color to the icons.", "responsive-block-editor-addons"
-                            )}
-                            min={0}
-                            max={500}
-                          />
-                        </Fragment>
-                      );
-                    } else {
-                      tabout = (
-                        <Fragment>
-                          <RbeaRangeControl
-                            label={__(
-                              "Icon Background Size",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={bgSize}
-                            onChange={(value) =>
-                              setAttributes({ bgSize: value })
-                            }
-                            help={__(
-                              "Note: Background Size option is useful when one adds background color to the icons."
-                            )}
-                            min={0}
-                            max={500}
-                          />
-                        </Fragment>
-                      );
-                    }
-
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-                <RbeaRangeControl
-                  label={__("Border", "responsive-block-editor-addons")}
-                  value={border}
-                  onChange={(value) => setAttributes({ border: value })}
-                  help={__(
-                    "Note: Border option is useful when one adds border color to the icons.", "responsive-block-editor-addons"
-                  )}
-                  min={0}
-                  max={10}
-                />
-                <RbeaBorderRadiusControl
-                  attrNameTemplate="block%s"
-                  {...this.props}
-                />
-          </PanelBody>
-        )}
+                      return <div>{tabout}</div>;
+                    }}
+                  </TabPanel>
+                  <RbeaRangeControl
+                    label={__("Border", "responsive-block-editor-addons")}
+                    value={border}
+                    onChange={(value) => setAttributes({ border: value })}
+                    help={__(
+                      "Note: Border option is useful when one adds border color to the icons.", "responsive-block-editor-addons"
+                    )}
+                    min={0}
+                    max={10}
+                  />
+                  <RbeaBorderRadiusControl
+                    attrNameTemplate="block%s"
+                    {...this.props}
+                  />
+            </PanelBody>
         
               <PanelBody
                 title={__("Spacing", "responsive-block-editor-addons")}
