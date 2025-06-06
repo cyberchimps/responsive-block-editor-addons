@@ -450,16 +450,18 @@ export function LayoutModal(props) {
             </button>
 
             <button
-              className="rba-sectoin-block-inner-div-btn"
+              className={`rba-sectoin-block-inner-div-btn ${importStatus !== 'Import Template' ? 'update-message updating-message' : '' }`}
               onClick={() =>
                 handleImportButtonClick(props.clientId, selectedSite.site_url)
               }
             >
+              <p>
               {selectedSite.demo_type === "free"
-                ? importStatus
+                ? ' ' + importStatus
                 : isProactive === true
-                ? importStatus
+                ? ' ' + importStatus
                 : "Get access"}
+              </p>
             </button>
           </div>
         </div>

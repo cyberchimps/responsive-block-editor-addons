@@ -272,6 +272,14 @@
   padding: 0 20px;
   cursor: pointer;
 }
+.rba-sectoin-block-inner-div-btn p {
+  font-size: 12px;
+  line-height: 13px;
+}
+.rba-sectoin-block-inner-div-btn p::before {
+  margin-top: -3px;
+  color: #fff;
+}
 .full-screen-modal .rba-popup-inner-img-div::-webkit-scrollbar {
   width: 8px;
 }
