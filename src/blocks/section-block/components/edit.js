@@ -11,7 +11,8 @@ const { Placeholder, Button } = wp.components;
 const { Component, Fragment } = wp.element;
 const { BlockControls, BlockAlignmentToolbar } = wp.blockEditor;
 
-const ButtonComponent = () => {
+// Button Component to render in the preview.
+const ExampleButtonComponent = () => {
   return (
     <Button
       key={"layout-modal-library-button-1"}
@@ -61,7 +62,7 @@ export default class Edit extends Component {
           className={"rbea-pattern-placeholder"}
           icon="editor-table"
         >
-          {isSelected ? <LayoutModal clientId={clientId} /> : <ButtonComponent />}
+          {isSelected ? <LayoutModal clientId={clientId} /> : <ExampleButtonComponent />}
         </Placeholder>
       </Fragment>
     );
