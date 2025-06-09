@@ -98,13 +98,17 @@ export default class Edit extends Component {
     if ("outset" === imageBoxShadowPosition) {
       imageBoxShadowPositionCSS = "";
     }
+    
     const onSelectBgImage = (img) => {
       setAttributes({
-        imgID: img.id,
-        backgroundImage: img.url,
-        imgAlt: img.alt,
+        iconImage: {
+          url: img.url,
+          alt: img.alt,
+          id: img.id, 
+        },
       });
     };
+
 
     const dimRatioToClass = (ratio) => {
       return 0 === ratio || 50 === ratio
@@ -165,17 +169,18 @@ export default class Edit extends Component {
         </div>
       );
     }
-    if (source_type === "image") {
-      is_image = (
-        <div className="responsive-block-editor-addons-ifb-image-icon-content responsive-block-editor-addons-ifb-imgicon-wrap">
-          <div className="responsive-block-editor-addons-ifb-image">
-            <div className="responsive-block-editor-addons-ifb-image-content">
-              <img className="" src={url} alt={alt} />
+      if (source_type === "image") {
+        is_image = (
+          <div className="responsive-block-editor-addons-ifb-image-icon-content responsive-block-editor-addons-ifb-imgicon-wrap">
+            <div className="responsive-block-editor-addons-ifb-image">
+              <div className="responsive-block-editor-addons-ifb-image-content">
+
+                <img className="" src={iconImage.url} alt={iconImage.alt} />
+              </div>
             </div>
           </div>
-        </div>
-      );
-    }
+        );
+      }
     var icon_image_html = is_image;
     var seperator_position = resseperatorPosition;
     var seperator_html = (
