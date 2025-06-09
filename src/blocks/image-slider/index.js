@@ -35,8 +35,10 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
   attributes,
   example: {
     attributes: {
-      images: [
-        {
+      images: {
+        type: "array",
+        default: [],
+        query: {
           url: "https://via.placeholder.com/600x400?text=Slide+1",
           link: "#",
           imgLink: "#",
@@ -44,14 +46,10 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
           id: "1",
           caption: ["Caption for Slide 1"],
           order: 0,
-        },
-      ],
+        }
+      },
       linkTo: "none",
-      align: "center",
-      gutter: 20,
-      radius: 10,
-      shadow: "medium",
-      filter: "grayscale",
+      rel: "",
     },
   },
   icon: ResponsiveBlockEditorAddonsIcons.image_slider,
