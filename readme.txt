@@ -239,9 +239,10 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 = 2.0.6 - 9th June 2025 =
 * Fix - Added preview for the Image, Image boxes, Templates Library, Image Slider Blocks.
 * Fix - Post Timeline block - Fixed the indicator line in editor.
-* Fix - Info Box block - Fixed highlighting issue for the selected image in media library.
+* Fix - Info Box block - Fixed selected image highlight in media library.
 * Fix - Testimonial block - Fixed the default box shadow hover issue on frontend.
 * Fix - Enhanced Security - Strengthened the codebase to further protect your website.
+* Fix - Icons List block - Fixed Icon Panel visiblity issue.
 
 = 2.0.5 - 27th May 2025 =
 * Fix - Fixed Attempt Block Recovery issue in some blocks.
