@@ -331,6 +331,7 @@ const attributes = {
     default: {
       url: "",
       alt: "",
+      id: null,
     },
   },
   imageSize: {

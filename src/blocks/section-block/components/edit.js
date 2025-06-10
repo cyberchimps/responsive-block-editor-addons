@@ -7,9 +7,22 @@ import LayoutModal from "../layout/layout-modal";
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { Placeholder } = wp.components;
+const { Placeholder, Button } = wp.components;
 const { Component, Fragment } = wp.element;
 const { BlockControls, BlockAlignmentToolbar } = wp.blockEditor;
+
+// Button Component to render in the preview.
+const PreviewButtonComponent = () => {
+  return (
+    <Button
+      key={"layout-modal-library-button-1"}
+      isPrimary
+      className="rbea-pattern-modal-button"
+    >
+      {__("Layout Library", "responsive-block-editor-addons")}
+    </Button>
+  );
+}
 
 export default class Edit extends Component {
   constructor(props) {
@@ -17,13 +30,21 @@ export default class Edit extends Component {
   }
 
   render() {
-    const { attributes, setAttributes, clientId } = this.props;
+    const { attributes, setAttributes, isSelected, clientId } = this.props;
+    const {
+      align,
+      previewImage,
+      previewTitle,
+      previewDescription,
+    } = attributes;
 
-    return [
-      <Fragment key={this.props.clientId}>
+
+    // Actual block UI when selected
+    return (
+      <Fragment key={clientId}>
         <BlockControls key="controls">
           <BlockAlignmentToolbar
-            value={attributes.align}
+            value={align}
             onChange={(align) => setAttributes({ align })}
             controls={[]}
           />
@@ -41,11 +62,9 @@ export default class Edit extends Component {
           className={"rbea-pattern-placeholder"}
           icon="editor-table"
         >
-        
-            <LayoutModal clientId={clientId} />
-        
+          {isSelected ? <LayoutModal clientId={clientId} /> : <PreviewButtonComponent />}
         </Placeholder>
-      </Fragment>,
-    ];
+      </Fragment>
+    );
   }
 }

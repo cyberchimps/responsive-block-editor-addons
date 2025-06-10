@@ -26,7 +26,11 @@ registerBlockType("responsive-block-editor-addons/image", {
   ],
 
   attributes: attributes,
-
+  example: {
+    attributes: {
+      imageAlt: "Preview of scenic nature",
+    },
+  },
   edit: (props) => {
     return <Edit {...props} />;
   },

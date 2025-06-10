@@ -38,7 +38,45 @@ registerBlockType("responsive-block-editor-addons/image-boxes-block", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-
+  example: {
+    attributes: {
+      block_id: "example-preview",
+      count: 3,
+      contentAlign: "center",
+      textColor: "#333333",
+      itemBackgroundColor: "#f9f9f9",
+      hoverTextColor: "#ffffff",
+      itemHoverBackgroundColor: "#0073aa",
+      hoverBorderColor: "#005177",
+      verticalAlignment: "center",
+      titleHeadingTag: "h3",
+      gutter: "medium",
+      blockBorderRadius: 12,
+      imageboxesBlock: [
+        {
+          title: "Box 1",
+          hover_description: "This is box 1",
+          img_url: "https://images.unsplash.com/photo-1603415526960-f7e0328d06f0?auto=format&fit=crop&w=600&q=80",
+          img_id: "",
+          cta_url: "#",
+        },
+        {
+          title: "Box 2",
+          hover_description: "This is box 2",
+          img_url: "https://images.unsplash.com/photo-1508923567004-3a6b8004f3d3?auto=format&fit=crop&w=600&q=80",
+          img_id: "",
+          cta_url: "#",
+        },
+        {
+          title: "Box 3",
+          hover_description: "This is  box 3",
+          img_url: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=600&q=80",
+          img_id: "",
+          cta_url: "#",
+        },
+      ],
+    },
+  },
   /* Render the block in the editor. */
   edit: (props) => {
     return <Edit {...props} />;

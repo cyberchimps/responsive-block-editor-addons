@@ -34,6 +34,7 @@ const TypographyHelperControl = (props) => {
     advancedControls = (
         <TypographyControl
             title={props.attrNameTemplate}
+            colorAttrKey={getAttrName('TypographyColor')}
             onChangeFontSizeMobile={value => props.setAttributes({ [getAttrName('FontSizeMobile')]: value })}
             onChangeFontSizeTablet={value => props.setAttributes({ [getAttrName('FontSizeTablet')]: value })}
             onChangeFontSize={value => props.setAttributes({ [getAttrName('FontSize')]: value })}
@@ -154,7 +155,8 @@ class TypographyControl extends Component {
                             label={__("Color", "responsive-block-editor-addons")}
                             colorValue={this.props.values.color}
                             onChange={this.props.onChangeTypographyColor}
-                            resetColor={() => setAttributes({ [this.props.values.color]: "" })}
+                            resetColor={() => this.props.setAttributes({ [this.props.colorAttrKey]: "" })}
+
                         />
                     )}
                     {(this.props.showActiveColorControl == true) && (
@@ -162,7 +164,7 @@ class TypographyControl extends Component {
                             label={__("Active Color", "responsive-block-editor-addons")}
                             colorValue={this.props.values.activeColor}
                             onChange={this.props.onChangeActiveTypographyColor}
-                            resetColor={() => setAttributes({ [this.props.values.activeColor]: "" })}
+                            resetColor={() => this.props.setAttributes({ [this.props.values.activeColor]: "" })}
                         />
                     )}
                     <SelectControl

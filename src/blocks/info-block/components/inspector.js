@@ -119,8 +119,9 @@ export default class Inspector extends Component {
   onSelectImage(media) {
     const { iconImage } = this.props.attributes;
     const { setAttributes } = this.props;
+    console.log(media);
 
-    if (!media || !media.url) {
+    if (!media || !media.url ) {
       setAttributes({ iconImage: null });
       return;
     }
@@ -768,7 +769,11 @@ export default class Inspector extends Component {
           <RbeaMediaUploadControl
             label={__("Image", "responsive-block-editor-addons")}
             value={{
-              url: iconImage? iconImage.url : '',
+              // url: iconImage? iconImage.url : '',
+              id: iconImage?.id || '',
+              url: iconImage?.url || '',
+              alt: iconImage?.alt || '',
+              sizes: iconImage?.sizes || {},
             }}
             onChange={this.onSelectImage}
             mediaType={'image'}

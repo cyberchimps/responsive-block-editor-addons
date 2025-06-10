@@ -33,6 +33,25 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
   /* translators: block description */
   description: __("Create a fully responsive and smooth image slideshow of your products, services", "responsive-block-editor-addons"),
   attributes,
+  example: {
+    attributes: {
+      images: {
+        type: "array",
+        default: [],
+        query: {
+          url: "https://via.placeholder.com/600x400?text=Slide+1",
+          link: "#",
+          imgLink: "#",
+          alt: "Slide 1",
+          id: "1",
+          caption: ["Caption for Slide 1"],
+          order: 0,
+        }
+      },
+      linkTo: "none",
+      rel: "",
+    },
+  },
   icon: ResponsiveBlockEditorAddonsIcons.image_slider,
   keywords: [
     "responsive-block-editor-addons",
