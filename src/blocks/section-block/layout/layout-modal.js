@@ -77,6 +77,11 @@ export function LayoutModal(props) {
       checkIsProActive();
     }
   }, [searchQuery, siteData, noSearchResult, currentTab]);
+  useEffect(() => {
+    if(modalOpen) {
+      isUserProCapableCheck();
+    }
+  }, [modalOpen]);
   const {removeBlock} = useDispatch("core/block-editor");
   const isUserProCapableCheck = async () => {
     try {
@@ -158,7 +163,6 @@ export function LayoutModal(props) {
   const PagesTabContent = () => {
     // Content for the Pages tab
     const handleCardClick = (site) => {
-      isUserProCapableCheck();
       setCurrentTab("pageinnertab");
       setSelectedSite(site);
       setRequiredPlugins(site.required_plugins);
