@@ -78,10 +78,8 @@ export function LayoutModal(props) {
     }
   }, [searchQuery, siteData, noSearchResult, currentTab]);
   useEffect(() => {
-    if(modalOpen) {
-      isUserProCapableCheck();
-    }
-  }, [modalOpen]);
+    isUserProCapableCheck();
+  }, []);
   const {removeBlock} = useDispatch("core/block-editor");
   const isUserProCapableCheck = async () => {
     try {
