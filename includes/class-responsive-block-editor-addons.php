@@ -1369,6 +1369,24 @@ class Responsive_Block_Editor_Addons {
 		return new WP_REST_Response( $response_data, 200 );
 	}
 
+	/**
+	 * Check if the user has capabilities to import Pro templates.
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function check_user_capabilities_for_pro_templates() {
+		$product_id = get_option( 'wc_am_product_id_responsive_add_ons' );
+		$allowed_ids = array( "560", "561", "562" );
+	
+		$is_capable = in_array( $product_id, $allowed_ids, true );
+
+		return new WP_REST_Response(
+			array(
+				'is_capable' => $is_capable,
+			),
+		);
+	}
+
 	public function register_custom_rest_endpoint() {
 		register_rest_route(
 			'custom/v1', // Namespace
@@ -1376,6 +1394,16 @@ class Responsive_Block_Editor_Addons {
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'custom_rest_endpoint_callback' ),
+				'permission_callback' => '__return_true', // No specific permissions for simplicity
+			)
+		);
+
+		register_rest_route(
+			'custom/v1', // Namespace
+			'/pro-template-capability/', // Route
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'check_user_capabilities_for_pro_templates' ),
 				'permission_callback' => '__return_true', // No specific permissions for simplicity
 			)
 		);
