@@ -1375,15 +1375,27 @@ class Responsive_Block_Editor_Addons {
 	 * @return WP_REST_Response
 	 */
 	public function check_user_capabilities_for_pro_templates() {
-		$product_id = get_option( 'wc_am_product_id_responsive_add_ons' );
-		$allowed_ids = array( "560", "561", "562" );
+		$product_details = get_option( 'reads_app_settings' );
+
+		if ( ! isset( $product_details ) || ! is_array( $product_details ) || empty( $product_details['account'] ) ) {
+			return new WP_REST_Response(
+				array( 'is_capable' => false ),
+				403
+			);
+		}
+		$product_id = $product_details['account']['product_id'] ?? "";
+	
+		$allowed_ids = array( '560', '561', '562' );
 	
 		$is_capable = in_array( $product_id, $allowed_ids, true );
-
+	
+		$status_code = $is_capable ? 200 : 403;
+	
 		return new WP_REST_Response(
 			array(
 				'is_capable' => $is_capable,
 			),
+			$status_code
 		);
 	}
 
