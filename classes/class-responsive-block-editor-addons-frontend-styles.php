@@ -6565,6 +6565,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$selectors        = array(
 				' ' => array(
+					'display'    => true === $attr['hideWidget'] ? 'none' : 'block',
+					'z-index'    => $attr['z_index'],
 					'padding-top'    => self::get_css_value( $attr['blockTopPadding'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['blockRightPadding'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['blockBottomPadding'], 'px' ),
@@ -6577,6 +6579,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			);
 			$mobile_selectors = array(
 				' ' => array(
+					'display'    => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
+					'z-index'    => $attr['z_indexMobile'],
 					'padding-top'    => self::get_css_value( $attr['blockTopPaddingMobile'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['blockRightPaddingMobile'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingMobile'], 'px' ),
@@ -6590,6 +6594,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				' ' => array(
+					'display'    => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
+					'z-index'    => $attr['z_indexTablet'],
 					'padding-top'    => self::get_css_value( $attr['blockTopPaddingTablet'], 'px' ),
 					'padding-right'  => self::get_css_value( $attr['blockRightPaddingTablet'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['blockBottomPaddingTablet'], 'px' ),
@@ -6607,7 +6613,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'mobile'  => $mobile_selectors,
 			);
 
-			$id  = '.wp-block-responsive-block-editor-addons-gallery-masonry';
+			$id  = '.wp-block-responsive-block-editor-addons-gallery-masonry.block-' . $id;
 			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
 
 			return $css;
@@ -6644,6 +6650,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockRightMargin'         => '',
 				'blockRightMarginMobile'   => '',
 				'blockRightMarginTablet'   => '',
+				'hideWidget'               => false,
+				'hideWidgetMobile'         => false,
+				'hideWidgetTablet'         => false,
+				'z_index'                  => 1,
+				'z_indexMobile'            => 1,
+				'z_indexTablet'            => 1,
 			);
 		}
 

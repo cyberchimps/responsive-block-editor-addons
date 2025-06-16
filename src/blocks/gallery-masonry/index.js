@@ -3,7 +3,7 @@
  */
 import edit from "./components/edit";
 import metadata from "./block.json";
-import save from "./components/save";
+import Save from "./components/save";
 import { GalleryAttributes } from "../../utils/components/block-gallery/shared";
 import Deprecated from "./components/deprecated";
 
@@ -77,6 +77,8 @@ registerBlockType("responsive-block-editor-addons/gallery-masonry", {
   },
   attributes,
   edit,
-  save,
+  save : (props) => {
+    return <Save {...props} />;
+  },
   deprecated: Deprecated,
 });
