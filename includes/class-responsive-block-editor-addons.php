@@ -1383,7 +1383,18 @@ class Responsive_Block_Editor_Addons {
 				403
 			);
 		}
-		$product_id = $product_details['account']['product_id'] ?? "";
+
+		// Get the product ID from the product details.
+		$product_id = $product_details['account']['product_id'] ?? null;
+
+		if ( is_null( $product_id ) ) {
+			return new WP_REST_Response(
+				array(
+					'is_capable' => false
+				),
+				403
+			);
+		}
 	
 		$allowed_ids = array( '560', '561', '562' );
 	
