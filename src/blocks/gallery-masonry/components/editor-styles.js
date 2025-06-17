@@ -31,10 +31,14 @@ function EditorStyles(props) {
     blockRightPadding,
     blockRightPaddingMobile,
     blockRightPaddingTablet,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   var selectors = {
     " ": {
+      "opacity": hideWidget? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
       'padding-right': generateCSSUnit(blockRightPadding, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
@@ -48,6 +52,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
+      "opacity": hideWidgetMobile? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -61,6 +66,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
+      "opacity": hideWidgetTablet? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),
@@ -73,7 +79,7 @@ function EditorStyles(props) {
   };
 
   var styling_css = "";
-  var id = '.wp-block-responsive-block-editor-addons-gallery-masonry';
+  var id = `.wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id}`;
 
   styling_css = generateCSS(selectors, id);
   styling_css += generateCSS(tablet_selectors, id, true, "tablet");

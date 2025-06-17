@@ -37,7 +37,7 @@ class Inspector extends Component {
 			columns: this.props.attributes.columnsize,
 			customHeight: this.props.attributes.customHeight,
 			customWidth: this.props.attributes.customWidth,
-		  };  
+		};
 		this.setRadiusTo = this.setRadiusTo.bind(this);
 		this.setCaptionStyleTo = this.setCaptionStyleTo.bind(this);
 		this.setNumberOfColumns = this.setNumberOfColumns.bind(this);
@@ -55,8 +55,8 @@ class Inspector extends Component {
 	setNumberOfColumns(value) {
 		this.setState({ columns: value });
 		this.props.setAttributes({ columnsize: value });
-	  }
-	
+	}
+
 	setRadiusTo(value) {
 		this.props.setAttributes({ radius: value });
 	}
@@ -66,10 +66,10 @@ class Inspector extends Component {
 	setCustomHeight(value) {
 		console.log(value)
 		this.props.setAttributes({ customHeight: value });
-	  }
-	  setCustomWidth(value) {
+	}
+	setCustomWidth(value) {
 		this.props.setAttributes({ customWidth: value });
-	  }
+	}
 
 	getCaptionsHelp(checked) {
 		return checked
@@ -104,6 +104,12 @@ class Inspector extends Component {
 			columnsize,
 			customHeight,
 			customWidth,
+			z_index,
+			hideWidget,
+			hideWidgetTablet,
+			hideWidgetMobile,
+			z_indexTablet,
+			z_indexMobile,
 			blockTopMargin,
 			blockBottomMargin,
 			blockLeftMargin,
@@ -168,10 +174,10 @@ class Inspector extends Component {
 							title={__("Masonry settings", "responsive-block-editor-addons")}
 						>
 							<div className="rbea-gallery-masonry-slider-control-container">
-							<ResponsiveTabsControl {...this.props} />
+								<ResponsiveTabsControl {...this.props} />
 							</div>
 							<div className="rbea-gallery-masonry-slider-control-container">
-							<RbeaRangeControl
+								<RbeaRangeControl
 									label={__("Columns", "responsive-block-editor-addons")}
 									aria-label={__(
 										"Number of columns for masonary",
@@ -183,42 +189,42 @@ class Inspector extends Component {
 									max={10}
 									step={1}
 								/>
-								</div>
-							<div className="rbea-gallery-masonry-slider-control-container">
-							<RbeaRangeControl
-            				  label={__("Custom Height", "responsive-block-editor-addons")}
-            				  value={customHeight}
-            				  onChange={this.setCustomHeight}
-            				  min={0}
-            				  max={1000}
-            				  step={1}
-            				/>
 							</div>
-							
 							<div className="rbea-gallery-masonry-slider-control-container">
-            				<RbeaRangeControl
-            				  label={__("Custom Width", "responsive-block-editor-addons")}
-            				  value={customWidth}
-            				  onChange={(value) => this.setCustomWidth(value)}
-            				  min={0}
-            				  max={1000}
-            				  step={1}
-            				/>	
+								<RbeaRangeControl
+									label={__("Custom Height", "responsive-block-editor-addons")}
+									value={customHeight}
+									onChange={this.setCustomHeight}
+									min={0}
+									max={1000}
+									step={1}
+								/>
+							</div>
+
+							<div className="rbea-gallery-masonry-slider-control-container">
+								<RbeaRangeControl
+									label={__("Custom Width", "responsive-block-editor-addons")}
+									value={customWidth}
+									onChange={(value) => this.setCustomWidth(value)}
+									min={0}
+									max={1000}
+									step={1}
+								/>
 							</div>
 							{gutter > 0 && (
 								<div className="rbea-gallery-masonry-slider-control-container">
-								<RbeaRangeControl
-									label={__("Rounded corners", "responsive-block-editor-addons")}
-									aria-label={__(
-										"Add rounded corners to the gallery items.",
-										"responsive-block-editor-addons"
-									)}
-									value={radius}
-									onChange={this.setRadiusTo}
-									min={0}
-									max={20}
-									step={1}
-								/>
+									<RbeaRangeControl
+										label={__("Rounded corners", "responsive-block-editor-addons")}
+										aria-label={__(
+											"Add rounded corners to the gallery items.",
+											"responsive-block-editor-addons"
+										)}
+										value={radius}
+										onChange={this.setRadiusTo}
+										min={0}
+										max={20}
+										step={1}
+									/>
 								</div>
 							)}
 
@@ -265,6 +271,121 @@ class Inspector extends Component {
 						</PanelBody>
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
+						<PanelBody
+							title={__("Responsive Conditions", "responsive-block-editor-addons")}
+							initialOpen={false}
+						>
+							<ToggleControl
+								label={__(
+									"Hide on Desktop",
+									"responsive-block-editor-addons"
+								)}
+								checked={hideWidget}
+								onChange={(value) =>
+									setAttributes({ hideWidget: !hideWidget })
+								}
+							/>
+							<ToggleControl
+								label={__(
+									"Hide on Tablet",
+									"responsive-block-editor-addons"
+								)}
+								checked={hideWidgetTablet}
+								onChange={(value) =>
+									setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+								}
+							/>
+							<ToggleControl
+								label={__(
+									"Hide on Mobile",
+									"responsive-block-editor-addons"
+								)}
+								checked={hideWidgetMobile}
+								onChange={(value) =>
+									setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+								}
+							/>
+						</PanelBody>
+
+						<PanelBody
+							title={__("Z Index", "responsive-block-editor-addons")}
+							initialOpen={false}
+						>
+							<TabPanel
+								className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+								activeClass="active-tab"
+								tabs={[
+									{
+										name: "desktop",
+										title: <Dashicon icon="desktop" />,
+										className:
+											" responsive-desktop-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "tablet",
+										title: <Dashicon icon="tablet" />,
+										className:
+											" responsive-tablet-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "mobile",
+										title: <Dashicon icon="smartphone" />,
+										className:
+											" responsive-mobile-tab  responsive-responsive-tabs",
+									},
+								]}
+							>
+								{(tab) => {
+									let tabout;
+
+									if ("mobile" === tab.name) {
+										tabout = (
+											<RbeaRangeControl
+												label={__("z-index (Mobile)", "responsive-block-editor-addons")}
+												min={-1}
+												max={99999}
+												allowReset={true}
+												resetFallbackValue={1}
+												value={z_indexMobile}
+												onChange={(value) =>
+													setAttributes({ z_indexMobile: value !== undefined ? value : 1 })
+												}
+											/>
+										);
+									} else if ("tablet" === tab.name) {
+										tabout = (
+											<RbeaRangeControl
+												label={__("z-index (Tablet)", "responsive-block-editor-addons")}
+												min={-1}
+												max={99999}
+												allowReset={true}
+												resetFallbackValue={1}
+												value={z_indexTablet}
+												onChange={(value) =>
+													setAttributes({ z_indexTablet: value !== undefined ? value : 1 })
+												}
+											/>
+										);
+									} else {
+										tabout = (
+											<RbeaRangeControl
+												label={__("z-index ", "responsive-block-editor-addons")}
+												min={-1}
+												max={99999}
+												allowReset={true}
+												resetFallbackValue={1}
+												value={z_index}
+												onChange={(value) =>
+													setAttributes({ z_index: value !== undefined ? value : 1 })
+												}
+											/>
+										);
+									}
+
+									return <div>{tabout}</div>;
+								}}
+							</TabPanel>
+						</PanelBody>
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

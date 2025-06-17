@@ -31,6 +31,7 @@ const save = ({ attributes, className }) => {
     customHeight,
     customWidth,
     images, // No longer using useMemo for memoizing images
+    block_id
   } = attributes;
 
   const innerClasses = classnames(...GalleryClasses(attributes), {
@@ -50,75 +51,81 @@ const save = ({ attributes, className }) => {
 
   const sortedImages = [...images].sort((a, b) => a.order - b.order);
 
+  const appendClass = `block-${block_id}`;
+  const outerClasses = classnames(
+    className,
+    appendClass
+  );
+
   return (
-    <div className={className}>
-      <div className={innerClasses}>
-        <Masonry
-          className={masonryClasses}
-          columnsCount={columnsize}
-          style={masonryStyles}
-        >
-          {sortedImages.map((image, index) => {
-            let href;
+      <div className={outerClasses}>
+        <div className={innerClasses}>
+          <Masonry
+            className={masonryClasses}
+            columnsCount={columnsize}
+            style={masonryStyles}
+          >
+            {sortedImages.map((image, index) => {
+              let href;
 
-            switch (linkTo) {
-              case "media":
-                href = image.url;
-                break;
-              case "attachment":
-                href = image.link;
-                break;
-            }
+              switch (linkTo) {
+                case "media":
+                  href = image.url;
+                  break;
+                case "attachment":
+                  href = image.link;
+                  break;
+              }
 
-            // If an image has a custom link, override the linkTo selection.
-            if (image.imgLink) {
-              href = image.imgLink;
-            }
+              // If an image has a custom link, override the linkTo selection.
+              if (image.imgLink) {
+                href = image.imgLink;
+              }
 
-            if (lightbox) {
-              href = "";
-            }
+              if (lightbox) {
+                href = "";
+              }
 
-            const img = (
-              <img
-                style={{ width: customWidth, height: customHeight }}
-                src={image.url}
-                alt={image.alt}
-                data-id={image.id}
-                data-imglink={image.imgLink}
-                data-link={image.link}
-                data-order={image.order !== undefined ? image.order : index}
-                className={image.id ? `wp-image-${image.id}` : null}
-              />
-            );
+              const img = (
+                <img
+                  style={{ width: customWidth, height: customHeight }}
+                  src={image.url}
+                  alt={image.alt}
+                  data-id={image.id}
+                  data-imglink={image.imgLink}
+                  data-link={image.link}
+                  data-order={image.order !== undefined ? image.order : index}
+                  className={image.id ? `wp-image-${image.id}` : null}
+                />
+              );
 
-            return (
-              <li
-                key={image.id || image.url}
-                className="responsive-block-editor-addons-gallery--item"
-              >
-                <figure className="responsive-block-editor-addons-gallery--figure">
-                  {href && linkTo === "custom" ? (
-                    <a href={href} target={target} rel={rel}>
-                      {img}
-                    </a>
-                  ) : (
-                    img
-                  )}
-                  {captions && image.caption && image.caption.length > 0 && (
-                    <RichText.Content
-                      tagName="figcaption"
-                      className="responsive-block-editor-addons-gallery--caption"
-                      value={image.caption}
-                    />
-                  )}
-                </figure>
-              </li>
-            );
-          })}
-        </Masonry>
+              return (
+                <li
+                  key={image.id || image.url}
+                  className="responsive-block-editor-addons-gallery--item"
+                >
+                  <figure className="responsive-block-editor-addons-gallery--figure">
+                    {href && linkTo === "custom" ? (
+                      <a href={href} target={target} rel={rel}>
+                        {img}
+                      </a>
+                    ) : (
+                      img
+                    )}
+                    {captions && image.caption && image.caption.length > 0 && (
+                      <RichText.Content
+                        tagName="figcaption"
+                        className="responsive-block-editor-addons-gallery--caption"
+                        value={image.caption}
+                      />
+                    )}
+                  </figure>
+                </li>
+              );
+            })}
+          </Masonry>
+        </div>
       </div>
-    </div>
   );
 };
 

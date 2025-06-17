@@ -283,13 +283,19 @@ class GalleryMasonryEdit extends Component {
     if (!hasImages) {
       return masonryGalleryPlaceholder;
     }
+
+    const appendClass = `block-${block_id}`
+    const outerClasses = classnames(
+      className,
+      appendClass
+    )
   const sortedImages = [...images].sort((a, b) => a.order - b.order);
     return (
       <Fragment key="div-block" >
         <style id={`responsive-block-editor-addons-advanced-gallery-masonry-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
-        <div className={className}>
+        <div className={outerClasses}>
           <div className={innerClasses}>
           <Masonry
               className={masonryClasses}
