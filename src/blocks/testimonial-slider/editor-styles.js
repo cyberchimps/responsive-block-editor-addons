@@ -59,6 +59,8 @@ function EditorStyles(props) {
     imgHrPaddingMobile,
     imgHrPaddingTablet,
     imageWidth,
+    imageWidthTablet,
+    imageWidthMobile,
     rowGap,
     rowGapMobile,
     rowGapTablet,
@@ -433,6 +435,10 @@ function EditorStyles(props) {
     "padding-top": generateCSSUnit(imgVrPaddingMobile, "px"),
     "padding-bottom": generateCSSUnit(imgVrPaddingMobile, "px"),
   },
+    " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image img": {
+      "width": generateCSSUnit(imageWidthMobile, "px"),
+      "max-width": generateCSSUnit(imageWidthMobile, "px"),
+    },
     " .responsive-block-editor-addons-tm__desc": {
       "font-size": generateCSSUnit(descFontSizeMobile, descFontSizeType) + "!important",
       "line-height": generateCSSUnit(descLineHeightMobile, descLineHeightType),
@@ -479,6 +485,10 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(imgHrPaddingTablet, "px"),
       "padding-top": generateCSSUnit(imgVrPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(imgVrPaddingTablet, "px"),
+    },
+    " .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image img": {
+      "width": generateCSSUnit(imageWidthTablet, "px"),
+      "max-width": generateCSSUnit(imageWidthTablet, "px"),
     },
     " .responsive-block-editor-addons-tm__desc": {
       "font-size": generateCSSUnit(descFontSizeTablet, descFontSizeType)  + "!important",

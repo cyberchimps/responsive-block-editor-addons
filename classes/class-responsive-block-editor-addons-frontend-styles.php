@@ -12420,6 +12420,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => self::get_css_value( $attr['imgVrPaddingMobile'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['imgVrPaddingMobile'], 'px' ),
 				),
+				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image img' => array(
+					'width'     => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
+					'max-width' => self::get_css_value( $attr['imageWidthMobile'], 'px' ),
+				),
 				' .responsive-block-editor-addons-tm__author-name' => array(
 					'margin-bottom' => self::get_css_value( $attr['nameSpaceMobile'], 'px' ) . ' !important',
 				),
@@ -12480,6 +12484,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'  => self::get_css_value( $attr['imgHrPaddingTablet'], 'px' ),
 					'padding-top'    => self::get_css_value( $attr['imgVrPaddingTablet'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['imgVrPaddingTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-testimonial__wrap .responsive-block-editor-addons-tm__image img' => array(
+					'width'     => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
+					'max-width' => self::get_css_value( $attr['imageWidthTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-tm__author-name' => array(
 					'margin-bottom' => self::get_css_value( $attr['nameSpaceTablet'], 'px' ) . ' !important',
@@ -12900,6 +12908,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				'imageSize'                => 'thumbnail',
 				'imageWidth'               => 60,
+				'imageWidthTablet'         => 60,
+				'imageWidthMobile'         => 60,
 				'columns'                  => 1,
 				'tcolumns'                 => 1,
 				'mcolumns'                 => 1,
