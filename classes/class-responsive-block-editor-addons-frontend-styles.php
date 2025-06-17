@@ -4587,7 +4587,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'gradient' === $attr['backgroundType'] ) {
-				$updated_background_type = self::generate_background_image_effect( $attr['backgroundColor1'], $attr['backgroundColor2'], $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2'] );
+				$updated_background_type = self::generate_background_image_effect( self::hex_to_rgba($attr['backgroundColor1'],$imgopacity), self::hex_to_rgba($attr['backgroundColor2'],$imgopacity), $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2']);
 			}
 
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
