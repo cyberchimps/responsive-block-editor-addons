@@ -1970,6 +1970,7 @@ class edit extends Component {
                             min={0}
                             max={500}
                             allowReset
+                            resetFallbackValue={60}
                           />
                         );
                       } else if ("tablet" === tab.name) {
@@ -1981,6 +1982,7 @@ class edit extends Component {
                             min={0}
                             max={500}
                             allowReset
+                            resetFallbackValue={60}
                           />
                         );
                       } else {
@@ -1992,6 +1994,7 @@ class edit extends Component {
                             min={0}
                             max={500}
                             allowReset
+                            resetFallbackValue={60}
                           />
                         );
                       }
