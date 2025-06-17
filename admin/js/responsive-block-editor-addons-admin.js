@@ -303,15 +303,25 @@ const Blocks = ({showCategory, setShowCategory}) => {
             return updatedBlockList;
         });
     };
-
+    
     const handleToggleAll = () => {
-        setToggleAll(!toggleAll)
-        setBlockList((prevCheckboxes) => { const updatedBlockList = prevCheckboxes.map((checkbox) =>({ ...checkbox, status: !toggleAll }));
+        setToggleAll(!toggleAll);
+
+        setBlockList((prevCheckboxes) => {
+            const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image'];
+
+            const updatedBlockList = prevCheckboxes.map((checkbox) => {
+                if (permanentlyEnabledBlocks.includes(checkbox.key)) {
+                    return checkbox;
+                }
+                return { ...checkbox, status: !toggleAll };
+            });
+
             fetchData(updatedBlockList);
             return updatedBlockList;
         });
-    }
-    
+    };
+
     // Set the initialization flag after the first render
     useState(() => {
         setIsInitialized(true);
@@ -393,21 +403,30 @@ const Cards = ({blockList, showCategory, search, handleToggle}) => {
 }
 
 const Card = ({handleToggle, category, title, docs, demo, status, index, blockKey}) => {
+    const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image'];
+    const isPermanentlyEnabled = permanentlyEnabledBlocks.includes(blockKey);
 
     return (
         <div className={"col-lg-4 col-md-4 gy-3 rbea-block-category-card rbea-block-category-" + (category)}>
-            <div className="rbea-blocks-card d-flex justify-content-between h-100">
+            <div className={`rbea-blocks-card d-flex justify-content-between h-100 ${isPermanentlyEnabled ? 'rbea-disabled-block' : ''}`}>
                 <div className="rbea-blocks-card-text-content">
                     <div className="rbea-blocks-card-title"><p>{__(title, 'responsive-block-editor-addons')}</p></div>                    
-
                     <a className="rbea-blocks-docs-demo-links d-flex" href={demo} target="_blank">
-                        <div class="rbea-widgets-card-demo-text">{__( 'Demo', 'responsive-block-editor-addons' )}</div>
-                        <img class = "rbea-widgets-card-demo-icon" src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" />&nbsp;
+                        <div class="rbea-widgets-card-demo-text">{__('Demo', 'responsive-block-editor-addons')}</div>
+                        <img class="rbea-widgets-card-demo-icon" src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" />
                     </a>                                        
                 </div>
                 <div className="rbea-blocks-card-switch align-self-center">
                     <label className="rbea-blocks-switch">
-                        <input className="rbea-blocks-input-checkbox" data-index={index} type="checkbox" id={blockKey} checked={status} onChange={() => handleToggle(blockKey)} />
+                        <input
+                            className="rbea-blocks-input-checkbox"
+                            data-index={index}
+                            type="checkbox"
+                            id={blockKey}
+                            checked={status}
+                            disabled={isPermanentlyEnabled}
+                            onChange={() => !isPermanentlyEnabled && handleToggle(blockKey)}
+                        />
                         <span className="rbea-blocks-slider rbea-blocks-round"></span>
                     </label>
                 </div>
