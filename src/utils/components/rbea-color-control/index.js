@@ -6,7 +6,27 @@ import { useState, useEffect, useRef } from '@wordpress/element';
 const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
   const [isOpen, setIsOpen] = useState(false);
   const popupRef = useRef(null);
-  
+  const popupSizeRef = useRef(null);
+  const [popupHeight, setPopupHeight] = useState(0);
+
+    
+  useEffect(() => {
+    if (!isOpen || !popupSizeRef.current) return;
+
+    const timeout = setTimeout(() => {
+      const observer = new ResizeObserver(([entry]) => {
+        const height = entry.contentRect.height;
+        setPopupHeight(height);
+      });
+
+      observer.observe(popupSizeRef.current);
+
+      return () => observer.disconnect();
+    }, 50);
+
+    return () => clearTimeout(timeout);
+  }, [isOpen]);
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -21,11 +41,13 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
   }, []);
 
   return (
+    
     <div className="rbea-color-control"
       style = {{
-        marginBottom: isOpen? "444px" : "24px",
+        marginBottom: isOpen ? `${popupHeight + 10}px` : "24px", 
       }}
     >
+      
   
       <p className="rbea-color-control__label">
         {label}
@@ -52,15 +74,17 @@ const RbeaColorControl = ({ colorValue, onChange, label, resetColor }) => {
         </div>
 
         {isOpen && (
-          <div className="rbea-color-control__popup">
-            <ColorPicker
-              color={colorValue}
-              onChangeComplete={(newColor) => {
-                onChange(newColor.hex);
-              }}
-            />
-          </div>
-        )}
+            <div className="rbea-color-control__popup">
+              <div ref={popupSizeRef}>
+                <ColorPicker
+                  color={colorValue}
+                  onChangeComplete={(newColor) => {
+                    onChange(newColor.hex);
+                  }}
+                />
+              </div>
+            </div>
+          )}
       </div>
     </div>
   );

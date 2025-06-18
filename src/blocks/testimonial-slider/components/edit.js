@@ -470,6 +470,8 @@ class edit extends Component {
       imgVrPaddingTablet,
       imageSize,
       imageWidth,
+      imageWidthTablet,
+      imageWidthMobile,
       columns,
       tcolumns,
       mcolumns,
@@ -1932,14 +1934,73 @@ class edit extends Component {
                     value={imageSize}
                     onChange={(value) => setAttributes({ imageSize: value })}
                   />
-                  <RbeaRangeControl
-                    label={__("Width", "responsive-block-editor-addons")}
-                    value={imageWidth}
-                    onChange={(value) => setAttributes({ imageWidth: value })}
-                    min={0}
-                    max={500}
-                    allowReset
-                  />
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className:
+                          " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className:
+                          " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                  >
+                    {(tab) => {
+                      let tabout;
+
+                      if ("mobile" === tab.name) {
+                        tabout = (
+                          <RbeaRangeControl
+                            label={__("Width", "responsive-block-editor-addons")}
+                            value={imageWidthMobile}
+                            onChange={(value) => setAttributes({ imageWidthMobile: value })}
+                            min={0}
+                            max={500}
+                            allowReset
+                            resetFallbackValue={60}
+                          />
+                        );
+                      } else if ("tablet" === tab.name) {
+                        tabout = (
+                          <RbeaRangeControl
+                            label={__("Width", "responsive-block-editor-addons")}
+                            value={imageWidthTablet}
+                            onChange={(value) => setAttributes({ imageWidthTablet: value })}
+                            min={0}
+                            max={500}
+                            allowReset
+                            resetFallbackValue={60}
+                          />
+                        );
+                      } else {
+                        tabout = (
+                          <RbeaRangeControl
+                            label={__("Width", "responsive-block-editor-addons")}
+                            value={imageWidth}
+                            onChange={(value) => setAttributes({ imageWidth: value })}
+                            min={0}
+                            max={500}
+                            allowReset
+                            resetFallbackValue={60}
+                          />
+                        );
+                      }
+                      return <div>{tabout}</div>;
+                    }}
+                  </TabPanel>
                 </Fragment>
               )}
             </PanelBody>
