@@ -19,6 +19,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaSeparatorStyleTabControl from "../../../utils/components/rbea-separator-style-tab-control";
 import separatorPositionIcons from "../../../utils/components/rbea-separator-style-tab-control/separator-position-icons";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 
 // Import block components
 const { InspectorControls, AlignmentToolbar, ColorPalette, PanelColorSettings } = wp.blockEditor
@@ -452,6 +453,7 @@ export default class Inspector extends Component {
                   })
                 }
               />
+              <RbeaSupportControl blockSlug={"advanced-heading"} />
             </PanelBody>
           </InspectorTab>
           <InspectorTab key={"style"}>
