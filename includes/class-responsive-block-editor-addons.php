@@ -537,6 +537,36 @@ class Responsive_Block_Editor_Addons {
 		$user_data = wp_get_current_user();
 		unset( $user_data->user_pass, $user_data->user_email );
 
+		$blocks = get_option( 'rbea_blocks' );
+
+		$is_taxonomy_list_on         = 1;
+		$is_contact_7_form_styler_on = 1;
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['taxonomy-list'] ) ) {
+			$is_taxonomy_list_on = $block_status_map['taxonomy-list'];
+		}
+
+		if ( isset( $block_status_map['contact-form-7-styler'] ) ) {
+			$is_contact_7_form_styler_on = $block_status_map['contact-form-7-styler'];
+		}
+
+		$include_all_taxonomy = 0;
+
+		$all_taxonomy_required_blocks = array(
+			'portfolio',
+			'responsive-block-editor-addons-post-grid',
+			'post-timeline'
+		);
+
+		foreach ( $all_taxonomy_required_blocks as $block_key ) {
+			if ( isset( $block_status_map[ $block_key ] ) && 1 === (int) $block_status_map[ $block_key ] ) {
+				$include_all_taxonomy = 1;
+				break;
+			}
+		}
+
 		// Pass in REST URL.
 		wp_localize_script(
 			'responsive_block_editor_addons-block-js',
@@ -547,12 +577,12 @@ class Responsive_Block_Editor_Addons {
 				'user_data'                          => $user_data,
 				'pro_activated'                      => false,
 				'is_wpe'                             => function_exists( 'is_wpe' ),
-				'post_types'                         => $this->get_post_types(),
-				'all_taxonomy'                       => $this->get_related_taxonomy(),
+				'post_types'                         => $is_taxonomy_list_on ? $this->get_post_types() : array(),
+				'all_taxonomy'                       => $include_all_taxonomy ? $this->get_related_taxonomy() : array(),
 				'responsive_block_editor_ajax_nonce' => $responsive_block_editor_ajax_nonce,
-				'taxonomy_list'                      => $this->get_taxonomy_list(),
+				'taxonomy_list'                      => $is_taxonomy_list_on ? $this->get_taxonomy_list() : array(),
 				'home_url'                           => home_url(),
-				'cf7_forms'                          => $this->get_cf7_forms(),
+				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
 			)
 		);
@@ -567,12 +597,10 @@ class Responsive_Block_Editor_Addons {
 
 		wp_enqueue_script( 'responsive_block_editor_addons_deactivate_blocks', RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-block-editor-addons-blocks-deactivate.js', array( 'wp-blocks' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, true );
 
-		$blocks = get_option( 'rbea_blocks' );
-
 		$deactivated_blocks = array();
 
 		foreach ( $blocks as $block ) {
-			if ( false === $block['status'] ) {
+			if ( '' === $block['status'] ) {
 				array_push( $deactivated_blocks, $block );
 			}
 		}
@@ -887,6 +915,7 @@ class Responsive_Block_Editor_Addons {
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
+		wp_enqueue_style( 'dashicons' );
 	}
 
 	public function rba_get_block_names( $blocks, &$block_names = array() ) {

@@ -14,6 +14,7 @@ import { BLOCKS_TEMPLATE_PRESET1, BLOCKS_TEMPLATE_PRESET2, BLOCKS_TEMPLATE_CUSTO
 const { __ } = wp.i18n;
 const { Component } = wp.element;
 const { BlockControls, InnerBlocks } = wp.blockEditor;
+import { withSelect } from "@wordpress/data";
 
 const presets = [
   {
@@ -36,7 +37,7 @@ const presets = [
   },
 ]
 
-export default class Edit extends Component {
+class Edit extends Component {
   constructor() {
     super(...arguments);
 
@@ -90,6 +91,7 @@ export default class Edit extends Component {
         block_id,
       },
       setAttributes,
+      deviceType,
     } = this.props;
 
     const VariantSelector = () => {
@@ -128,7 +130,8 @@ export default class Edit extends Component {
         className={classnames(
           this.props.className,
           "responsive-block-editor-addons-block-popup",
-          `block-${block_id}`
+          `block-${block_id}`,
+          `device-${deviceType?.toLowerCase()}` // Add class for responsive styling.
         )}
         key={`mainDiv-${block_id}`}
       >
@@ -190,3 +193,11 @@ export default class Edit extends Component {
     ];
   }
 }
+
+// Export the component wrapped with withSelect to inject deviceType.
+export default withSelect((select) => {
+  const deviceType = select('core/edit-post')?.__experimentalGetPreviewDeviceType?.() || 'Desktop';
+  return {
+    deviceType,
+  };
+})(Edit);

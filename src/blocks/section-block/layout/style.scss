@@ -1,8 +1,8 @@
 .full-screen-modal {
   height: 100%;
   width: 100%;
-  max-width: 100%;
-  max-height: 100%;
+  max-width: calc(100% - 100px);
+  max-height: calc(100% - 80px);
 }
 .full-screen-modal .components-modal__content {
   padding: 0;
@@ -82,6 +82,7 @@
 .rba-pop-up-search-button {
   background: white;
   border: none;
+  cursor: pointer;
 }
 .rba-pop-up-search-button-input {
   border: none !important;
@@ -117,7 +118,8 @@
   flex-direction: column;
   gap: 4px;
   margin-top: 10px;
-  margin-left: 8px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 .card-content-heading {
   font-family: Segoe UI;
@@ -138,17 +140,22 @@
   color: #6d6d6d;
 }
 .rba-popup-card-component {
-  flex: 0 0 calc(25% - 1.8rem);  
-  padding: 5px;
+  flex: 0 0 calc(25% - 1.8rem);
   box-shadow: 0px 0px 14px 0px #00000029;
   background: #ffffff;
   cursor: pointer;
   position: relative;
 }
+.rba-popup-card-component .rba-popup-card-component-image {
+  width: 100%;
+  height: 300px;
+  object-position: top;
+  object-fit: cover;
+}
 .rba-popup-pro-badge {
   position: absolute;
-  top: 3px;
-  right: 3px;
+  top: 10px;
+  right: 10px;
   background-color: #fde047;
   width: 81px;
   height: 28px;
@@ -159,7 +166,7 @@
   letter-spacing: 0em;
   text-align: left;
   padding: 4px 12px 4px 12px;
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -167,7 +174,7 @@
 }
 .rba-popup-inner-img-div {
   width: 907px;
-  height: 60vh;
+  height: 90%;
   border-radius: 4px;
   overflow: auto;
   border: 0.3px solid #bababa;
@@ -199,8 +206,8 @@
 .rba-pop-up-inner-block {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 80vh;
+  height: 70vh;
+  margin-top: 20px;
   // width: 100vw;
   // height: 78vh;
 }
@@ -224,9 +231,8 @@
   align-items: center;
   padding: 20px 60px;
   position: fixed;
-  width: inherit;
   bottom: 0px;
-  width: 100vw;
+  width: 100%;
   box-shadow: 0px 0px 4px 0px #0000008c;
 }
 .rba-section-blocks-inner-div-buttons-container {
@@ -265,6 +271,14 @@
   width: auto;
   padding: 0 20px;
   cursor: pointer;
+}
+.rba-sectoin-block-inner-div-btn p {
+  font-size: 12px;
+  line-height: 13px;
+}
+.rba-sectoin-block-inner-div-btn p::before {
+  margin-top: -3px;
+  color: #fff;
 }
 .full-screen-modal .rba-popup-inner-img-div::-webkit-scrollbar {
   width: 8px;

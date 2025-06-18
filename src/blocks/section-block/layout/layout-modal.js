@@ -179,13 +179,8 @@ export function LayoutModal(props) {
               >
                 <img
                   src={site.featured_image_url}
+                  className="rba-popup-card-component-image"
                   alt={site.title.rendered.replace(/&#8211;|Gutenberg/g, "")}
-                  style={{
-                    width: "100%",
-                    height: "396px",
-                    objectPosition: "top",
-                    objectFit: "cover",
-                  }}
                 />
                 {site.demo_type === "pro" && (
                   <div className="rba-popup-pro-badge">
@@ -455,16 +450,18 @@ export function LayoutModal(props) {
             </button>
 
             <button
-              className="rba-sectoin-block-inner-div-btn"
+              className={`rba-sectoin-block-inner-div-btn ${importStatus !== 'Import Template' ? 'update-message updating-message' : '' }`}
               onClick={() =>
                 handleImportButtonClick(props.clientId, selectedSite.site_url)
               }
             >
+              <p>
               {selectedSite.demo_type === "free"
-                ? importStatus
+                ? ' ' + importStatus
                 : isProactive === true
-                ? importStatus
+                ? ' ' + importStatus
                 : "Get access"}
+              </p>
             </button>
           </div>
         </div>
@@ -566,7 +563,7 @@ export function LayoutModal(props) {
             <Fragment>
               <div className="modal-header-content">
                 <div className="modal-title">
-                {<img src={responsive_globals.plugin_url + 'admin/images/RBA-Logo-without-text.png'} alt="rbea-logo" />}
+                {<img src={responsive_globals.plugin_url + 'admin/images/responsive-blocks.svg'} alt="rbea-logo" />}
                   {__("Template Library", "my-textdomain")}
                 </div>
 

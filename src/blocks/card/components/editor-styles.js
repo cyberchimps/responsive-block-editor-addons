@@ -316,22 +316,22 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
-      "opacity": generateCSSUnit(imgopacity, "px"),
-      color: headingTypographyColor,
-      "background-color":
-        backgroundType == "color"
-          ? itemBackgroundColor !== 'empty' && backgroundColor === '' ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`  //For compatibility with v1.3.2.
-          : undefined,
-      "background-image":
-        backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
-              backgroundColor1,
-              backgroundColor2,
-              gradientDirection,
-              colorLocation1,
-              colorLocation2
-            )
-          : undefined,
+        color: headingTypographyColor,
+        "background-color":
+          backgroundType == "color"
+            ? itemBackgroundColor !== 'empty' && backgroundColor === '' ? `${hexToRgba(itemBackgroundColor || "#fff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#fff", imgopacity || 0)}`  //For compatibility with v1.3.2.
+            : undefined,
+        "background-image":
+          backgroundType == "gradient"
+            ? 
+            generateBackgroundImageEffect(
+                hexToRgba( backgroundColor1 === undefined ? "ffffff" : backgroundColor1, imgopacity),
+                hexToRgba( backgroundColor2 === undefined ? "ffffff" : backgroundColor2, imgopacity),
+                gradientDirection,
+                colorLocation1,
+                colorLocation2
+              )
+            : undefined,
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +

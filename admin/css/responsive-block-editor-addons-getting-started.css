@@ -693,3 +693,24 @@ input:checked + .rbea-blocks-slider:before {
 .rbea-blocks-search-box input {
     width: 100%;
 }
+
+
+.rbea-blocks-switch input:disabled + .rbea-blocks-slider {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.rbea-blocks-switch input:disabled + .rbea-blocks-slider::before {
+    background-color: #999;
+}
+
+.rbea-disabled-block .rbea-blocks-switch {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+
+.rbea-blocks-input-checkbox:disabled:checked::before {
+    content: '';
+}

@@ -3,7 +3,7 @@ const image_url = responsive_globals.home_url + '/wp-content/plugins/responsive-
 const BLOCKS_TEMPLATE_PRESET1 = [
     ['responsive-block-editor-addons/section', { topPadding: 0, bottomPadding: 0, leftPadding: 0, rightPadding: 0 },
         [
-            ['responsive-block-editor-addons/image', { imageUrl: image_url, imageWidth: 560, imageHeight: 300, imagebottommargin: 10 }],
+            ['responsive-block-editor-addons/image', { imageUrl: image_url, imageWidth: 560, imageHeight: 300, imagebottommargin: 10, imageWidthMobile: 325, imageHeightMobile: 180 }],
             ['responsive-block-editor-addons/advanced-heading', { headingTitle: 'Its a Beautiful Day', showSeparator: false, showSubHeading: false, headingAlignment: 'center' }],
             ['core/paragraph', { placeholder: 'Enter your content...', content: 'Sun is shining and flowers are blooming. Get your pot of indoor flowers at 25% OFF! Limited Time offer.', align: 'center' }],
             ['responsive-block-editor-addons/buttons', {},
