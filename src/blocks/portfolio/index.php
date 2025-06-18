@@ -179,9 +179,16 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 
 		/* portfolio section title */
 		if ( isset( $attributes['displaySectionTitle'] ) && $attributes['displaySectionTitle'] && ! empty( $attributes['sectionTitle'] ) ) {
-			$helper                = Responsive_Block_Editor_Addons_Helper::get_instance();
+			$section_title_tag = '';
+			if ( isset( $attributes['sectionTitleTag'] ) ) {
+				$section_title_tag = $attributes['sectionTitleTag'];
+			} else {
+				$section_title_tag = 'h2';
+			}
+
 			$array_of_allowed_html = array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'span', 'p' );
-			$section_title_tag	   =  $helper->rbea_post_title_tag_allowed_html( $attributes['sectionTitleTag'], $array_of_allowed_html, 'h2' );
+			$section_title_tag	   =  $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_html, 'h2' );
+
 			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-portfolio-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {
 			$section_title = null;

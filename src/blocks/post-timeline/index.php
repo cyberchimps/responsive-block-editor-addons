@@ -442,6 +442,7 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 
 		/* Post grid section title */
 		if ( isset( $attributes['displaySectionTitle'] ) && $attributes['displaySectionTitle'] && ! empty( $attributes['sectionTitle'] ) ) {
+			$section_title_tag = '';
 			if ( isset( $attributes['sectionTitleTag'] ) ) {
 				$section_title_tag = $attributes['sectionTitleTag'];
 			} else {

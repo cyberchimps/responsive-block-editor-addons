@@ -294,6 +294,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 
 		/* Post grid section title */
 		if ( isset( $attributes['displaySectionTitle'] ) && $attributes['displaySectionTitle'] && ! empty( $attributes['sectionTitle'] ) ) {
+			$section_title_tag = '';
 			if ( isset( $attributes['sectionTitleTag'] ) ) {
 				$section_title_tag = $attributes['sectionTitleTag'];
 			} else {
