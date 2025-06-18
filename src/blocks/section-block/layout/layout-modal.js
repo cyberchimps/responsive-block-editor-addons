@@ -478,7 +478,7 @@ export function LayoutModal(props) {
               {selectedSite.demo_type === "free"
                 ? ' ' + importStatus
                 : isProactive === true
-                ? importStatus
+                ? ' ' + importStatus
                 : isUserProCapable === true
                 ? ' ' + importStatus
                 : "Get access"}
