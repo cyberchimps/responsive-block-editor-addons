@@ -1416,6 +1416,8 @@ class Responsive_Block_Editor_Addons {
 		// Get the product ID from the product details.
 		$product_id = $product_details['account']['product_id'] ?? null;
 
+		$product_id = (int) $product_id;
+
 		if ( is_null( $product_id ) ) {
 			return new WP_REST_Response(
 				array(
@@ -1425,7 +1427,7 @@ class Responsive_Block_Editor_Addons {
 			);
 		}
 	
-		$allowed_ids = array( '560', '561', '562' );
+		$allowed_ids = array( 560, 561, 562 );
 	
 		$is_capable = in_array( $product_id, $allowed_ids, true );
 	
