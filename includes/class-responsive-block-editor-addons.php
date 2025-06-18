@@ -1398,6 +1398,47 @@ class Responsive_Block_Editor_Addons {
 		return new WP_REST_Response( $response_data, 200 );
 	}
 
+	/**
+	 * Check if the user has capabilities to import Pro templates.
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function check_user_capabilities_for_pro_templates() {
+		$product_details = get_option( 'reads_app_settings' );
+
+		if ( ! isset( $product_details ) || ! is_array( $product_details ) || empty( $product_details['account'] ) ) {
+			return new WP_REST_Response(
+				array( 'is_capable' => false ),
+				403
+			);
+		}
+
+		// Get the product ID from the product details.
+		$product_id = $product_details['account']['product_id'] ?? null;
+
+		if ( is_null( $product_id ) ) {
+			return new WP_REST_Response(
+				array(
+					'is_capable' => false
+				),
+				403
+			);
+		}
+	
+		$allowed_ids = array( '560', '561', '562' );
+	
+		$is_capable = in_array( $product_id, $allowed_ids, true );
+	
+		$status_code = $is_capable ? 200 : 403;
+	
+		return new WP_REST_Response(
+			array(
+				'is_capable' => $is_capable,
+			),
+			$status_code
+		);
+	}
+
 	public function register_custom_rest_endpoint() {
 		register_rest_route(
 			'custom/v1', // Namespace
@@ -1405,6 +1446,16 @@ class Responsive_Block_Editor_Addons {
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'custom_rest_endpoint_callback' ),
+				'permission_callback' => '__return_true', // No specific permissions for simplicity
+			)
+		);
+
+		register_rest_route(
+			'custom/v1', // Namespace
+			'/pro-template-capability/', // Route
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'check_user_capabilities_for_pro_templates' ),
 				'permission_callback' => '__return_true', // No specific permissions for simplicity
 			)
 		);

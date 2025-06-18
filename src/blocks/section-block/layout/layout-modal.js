@@ -30,6 +30,7 @@ export function LayoutModal(props) {
   const [requiredPlugins, setRequiredPlugins] = useState([]);
   const [importStatus, setImportStatus] = useState("Import Template");
   const [isProactive, setIsProactive] = useState(false); // New state for proactivity
+  const [isUserProCapable, setIsUserProCapable] = useState(false);
   const [Xmlupdatestatus, setXmlUpdateStatus] = useState(false);
   const {apiFetch} = wp;
 
@@ -76,7 +77,22 @@ export function LayoutModal(props) {
       checkIsProActive();
     }
   }, [searchQuery, siteData, noSearchResult, currentTab]);
+  useEffect(() => {
+    isUserProCapableCheck();
+  }, []);
   const {removeBlock} = useDispatch("core/block-editor");
+  const isUserProCapableCheck = async () => {
+    try {
+      const responseForImportCapabilities = await apiFetch({
+        path: addQueryArgs("custom/v1/pro-template-capability"), // Replace with your actual endpoint
+      });
+
+      // Check the response and set isUserProCapable state accordingly
+      setIsUserProCapable(responseForImportCapabilities && responseForImportCapabilities.is_capable);
+    } catch (error) {
+      console.error("Error checking endpoint:", error);
+    }
+  }
   const checkIsProActive = async () => {
     try {
       const response = await apiFetch({
@@ -364,6 +380,9 @@ export function LayoutModal(props) {
       } else if (selectedSite.demo_type !== "free" && isProactive === true) {
         setImportStatus("Importing...");
         import_page(selectedSite.site_url, selectedPage.page_id, clientId);
+      } else if (selectedSite.demo_type !== "free" && isUserProCapable === true) {
+        setImportStatus("Importing...");
+        import_page(selectedSite.site_url, selectedPage.page_id, clientId);
       } else {
         window.open("https://cyberchimps.com/pricing/", "_blank");
       }
@@ -459,6 +478,8 @@ export function LayoutModal(props) {
               {selectedSite.demo_type === "free"
                 ? ' ' + importStatus
                 : isProactive === true
+                ? importStatus
+                : isUserProCapable === true
                 ? ' ' + importStatus
                 : "Get access"}
               </p>
