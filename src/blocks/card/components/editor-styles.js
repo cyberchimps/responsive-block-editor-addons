@@ -325,8 +325,8 @@ function EditorStyles(props) {
           backgroundType == "gradient"
             ? 
             generateBackgroundImageEffect(
-                hexToRgba( backgroundColor1, imgopacity),
-                hexToRgba( backgroundColor2, imgopacity),
+                hexToRgba( backgroundColor1 === undefined ? "ffffff" : backgroundColor1, imgopacity),
+                hexToRgba( backgroundColor2 === undefined ? "ffffff" : backgroundColor2, imgopacity),
                 gradientDirection,
                 colorLocation1,
                 colorLocation2
