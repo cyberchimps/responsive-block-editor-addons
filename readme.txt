@@ -247,6 +247,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 * Fix - Fixed Responsive Tabs button in block settings.
 * Fix - Fixed Broken Color Picker control in block editor for RGB/HSL mode.
 * Fix - Fixed redirection to the pricing page when importing a Pro template with a Pro account.
+* Fix - Resolved blocks visibility issue in the block insert panel for pages and posts on specific hosting platforms.
 * Fix - Enhanced Security - Strengthened the codebase to further protect your website.
 
 = 2.0.6 - 9th June 2025 =
