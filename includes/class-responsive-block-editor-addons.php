@@ -45,6 +45,73 @@ class Responsive_Block_Editor_Addons {
 	protected $version;
 
 	/**
+	 * Responsive Block Editor Addons Blocks.
+	 * 
+	 * @since 2.0.7
+	 * @access protected
+	 * @var array $responsive_block_editor_addons_blocks
+	 * @description This array contains the list of blocks that are registered by Responsive Block Editor Addons.
+	 */
+	protected $responsive_block_editor_addons_blocks = [
+		'responsive-block-editor-addons/section',
+		'responsive-block-editor-addons/advance-columns',
+		'responsive-block-editor-addons/advance-columns/column',
+		'responsive-block-editor-addons/advanced-heading',
+		'responsive-block-editor-addons/advanced-text',
+		'responsive-block-editor-addons/image',
+		'responsive-block-editor-addons/multi-buttons',
+		'responsive-block-editor-addons/multi-buttons/buttons-child',
+		'responsive-block-editor-addons/call-to-action',
+		'responsive-block-editor-addons/blockquote',
+		'responsive-block-editor-addons/divider',
+		'responsive-block-editor-addons/info-block',
+		'responsive-block-editor-addons/count-down',
+		'responsive-block-editor-addons/spacer',
+		'responsive-block-editor-addons/inline-notice',
+		'responsive-block-editor-addons/progress-bar',
+		'responsive-block-editor-addons/table-of-contents',
+		'responsive-block-editor-addons/testimonial',
+		'responsive-block-editor-addons/count-up',
+		'responsive-block-editor-addons/flipbox',
+		'responsive-block-editor-addons/icons-list',
+		'responsive-block-editor-addons/icons-list/icons-list-child',
+		'responsive-block-editor-addons/googlemap',
+		'responsive-block-editor-addons/gallery-masonry',
+		'responsive-block-editor-addons/post-grid',
+		'responsive-block-editor-addons/post-carousel',
+		'responsive-block-editor-addons/post-timeline',
+		'responsive-block-editor-addons/image-boxes',
+		'responsive-block-editor-addons/shape-divider',
+		'responsive-block-editor-addons/accordion',
+		'responsive-block-editor-addons/accordion/accordion-item',
+		'responsive-block-editor-addons/content-timeline',
+		'responsive-block-editor-addons/image-slider',
+		'responsive-block-editor-addons/team',
+		'responsive-block-editor-addons/expand',
+		'responsive-block-editor-addons/card',
+		'responsive-block-editor-addons/pricing-table',
+		'responsive-block-editor-addons/pricing-list',
+		'responsive-block-editor-addons/video-popup',
+		'responsive-block-editor-addons/testimonial-slider',
+		'responsive-block-editor-addons/feature-grid',
+		'responsive-block-editor-addons/portfolio',
+		'responsive-block-editor-addons/anchor',
+		'responsive-block-editor-addons/call-mail-button',
+		'responsive-block-editor-addons/social-share',
+		'responsive-block-editor-addons/tabs',
+		'responsive-block-editor-addons/tabs/tabs-child',
+		'responsive-block-editor-addons/taxonomy-list',
+		'responsive-block-editor-addons/wp-search',
+		'responsive-block-editor-addons/instagram',
+		'responsive-block-editor-addons/image-hotspot',
+		'responsive-block-editor-addons/contact-form-7-styler',
+		'responsive-block-editor-addons/popup',
+		'responsive-block-editor-addons/form',
+		'responsive-block-editor-addons/form/input',
+		'responsive-block-editor-addons/rbea-templates',
+	];
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -111,7 +178,10 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'admin_enqueue_scripts', array( $this, 'my_enqueue_media_scripts' ) );
 
 		// Add rating links to plugin's description in plugins table
-		add_filter('plugin_row_meta', array($this, 'responsive_block_editor_addons_rate_plugin_link'), 10, 2);
+		add_filter('plugin_row_meta', array( $this, 'responsive_block_editor_addons_rate_plugin_link' ), 10, 2);
+
+		// Add the post types to the block editor.
+		add_filter( 'allowed_block_types_all', array( $this, 'responsive_block_editor_addons_allow_blocks_in_editor' ), 20, 2 );
 
 	}
 
@@ -1416,6 +1486,7 @@ class Responsive_Block_Editor_Addons {
 		// Get the product ID from the product details.
 		$product_id = $product_details['account']['product_id'] ?? null;
 
+		
 		if ( is_null( $product_id ) ) {
 			return new WP_REST_Response(
 				array(
@@ -1424,8 +1495,10 @@ class Responsive_Block_Editor_Addons {
 				403
 			);
 		}
-	
-		$allowed_ids = array( '560', '561', '562' );
+		
+		$product_id = (int) $product_id;
+		
+		$allowed_ids = array( 560, 561, 562 );
 	
 		$is_capable = in_array( $product_id, $allowed_ids, true );
 	
@@ -1637,7 +1710,7 @@ class Responsive_Block_Editor_Addons {
      *
      * @return array
      */
-    function responsive_block_editor_addons_rate_plugin_link( $links, $file ) {
+    public function responsive_block_editor_addons_rate_plugin_link( $links, $file ) {
 		if ( $file !== plugin_basename( RESPONSIVE_BLOCK_EDITOR_ADDONS_BASENAME ) ) {
 			return $links;
 		}
@@ -1646,5 +1719,34 @@ class Responsive_Block_Editor_Addons {
 		$rate_link = '<a target="_blank" href="' . esc_url( $rate_url ) . '" title="' . esc_attr__( 'Rate the plugin', 'responsive-addons' ) . '">' . esc_html__( 'Rate the plugin ★★★★★', 'responsive-addons' ) . '</a>';
 		$links[] = $rate_link;
 		return $links;
+	}
+
+
+	/**	 
+	 * Function to ensure that the blocks from Responsive Blocks plugin are available in the block editor.
+	 * 
+	 * @param array $allowed_block_types The allowed block types.
+	 * @param WP_Block_Editor_Context $editor_context The editor context.
+	 * @return array The modified list of allowed block types.
+	 * @since 2.0.7
+	 */
+	public function responsive_block_editor_addons_allow_blocks_in_editor( $allowed_block_types, $editor_context ) {
+		if ( ! $editor_context->post ) {
+			return $allowed_block_types;
+		}
+	
+		// If $allowed_block_types is false or not an array, reinitialize it.
+		if ( ! is_array( $allowed_block_types ) ) {
+			$allowed_block_types = array_keys( WP_Block_Type_Registry::get_instance()->get_all_registered() );
+		}
+	
+		// Merge your blocks into the allowed list if not present
+		foreach ( $this->responsive_block_editor_addons_blocks as $block ) {
+			if ( ! in_array( $block, $allowed_block_types, true ) ) {
+				$allowed_block_types[] = $block;
+			}
+		}
+	
+		return $allowed_block_types;
 	}
 }
