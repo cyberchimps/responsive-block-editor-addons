@@ -108,8 +108,8 @@ class Responsive_Block_Editor_Addons {
 		'responsive-block-editor-addons/popup',
 		'responsive-block-editor-addons/form',
 		'responsive-block-editor-addons/form/input',
-		'responsive-block-editor-addons/section-block',
-	];	
+		'responsive-block-editor-addons/rbea-templates',
+	];
 
 	/**
 	 * Define the core functionality of the plugin.
