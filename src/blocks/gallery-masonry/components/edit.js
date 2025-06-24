@@ -44,7 +44,7 @@ class GalleryMasonryEdit extends Component {
     this.setImageAttributes = this.setImageAttributes.bind(this);
     this.state = {
       selectedImage: null,
-      migrationDone: false, // Add a state variable to track migration
+      migrationDone: true, // Add a state variable to track migration
     };
   }
 
