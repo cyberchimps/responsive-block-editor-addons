@@ -1731,22 +1731,26 @@ class Responsive_Block_Editor_Addons {
 	 * @since 2.0.7
 	 */
 	public function responsive_block_editor_addons_allow_blocks_in_editor( $allowed_block_types, $editor_context ) {
-		if ( ! $editor_context->post ) {
+		if(is_plugin_active("ionos-essentials/ionos-essentials.php")){
+			if ( ! $editor_context->post ) {
+				return $allowed_block_types;
+			}
+		
+			// If $allowed_block_types is false or not an array, reinitialize it.
+			if ( ! is_array( $allowed_block_types ) ) {
+				$allowed_block_types = array_keys( WP_Block_Type_Registry::get_instance()->get_all_registered() );
+			}
+		
+			// Merge your blocks into the allowed list if not present
+			foreach ( $this->responsive_block_editor_addons_blocks as $block ) {
+				if ( ! in_array( $block, $allowed_block_types, true ) ) {
+					$allowed_block_types[] = $block;
+				}
+			}
+		
 			return $allowed_block_types;
 		}
-	
-		// If $allowed_block_types is false or not an array, reinitialize it.
-		if ( ! is_array( $allowed_block_types ) ) {
-			$allowed_block_types = array_keys( WP_Block_Type_Registry::get_instance()->get_all_registered() );
-		}
-	
-		// Merge your blocks into the allowed list if not present
-		foreach ( $this->responsive_block_editor_addons_blocks as $block ) {
-			if ( ! in_array( $block, $allowed_block_types, true ) ) {
-				$allowed_block_types[] = $block;
-			}
-		}
-	
 		return $allowed_block_types;
+		
 	}
 }
