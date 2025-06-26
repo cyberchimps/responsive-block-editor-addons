@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,20 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.0.7 - 20th June 2025 =
+* Improvement - Testimonial Slider block - Added option to set responsive image sizes.
+* Improvement - Optimized the usage of localized variables for improved performance.
+* Improvement - Matched block sequence in All Blocks page to that of editor and disabled toggle button for some blocks.
+* Improvement - Template Library Popup - Improved the design and layout of the popup.
+* Fix - Popup block - Fixed broken UI in mobile/tablet preview.
+* Fix - Image Gallery block - Added Responsive Conditions and Z-index settings.
+* Fix - Card block - Fixed opacity setting in gradient background. 
+* Fix - Fixed Responsive Tabs button in block settings.
+* Fix - Fixed Broken Color Picker control in block editor for RGB/HSL mode.
+* Fix - Fixed redirection to the pricing page when importing a Pro template with a Pro account.
+* Fix - Resolved blocks visibility issue in the block insert panel for pages and posts on specific hosting platforms.
+* Fix - Enhanced Security - Strengthened the codebase to further protect your website.
 
 = 2.0.6 - 9th June 2025 =
 * Fix - Added preview for the Image, Image boxes, Templates Library, Image Slider Blocks.
