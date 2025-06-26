@@ -453,8 +453,8 @@ export default class Inspector extends Component {
                   })
                 }
               />
-              <RbeaSupportControl blockSlug={"advanced-heading"} />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"advanced-heading"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <TypographyHelperControl
@@ -607,6 +607,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"advanced-heading"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -724,6 +725,7 @@ export default class Inspector extends Component {
                 }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"advanced-heading"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
