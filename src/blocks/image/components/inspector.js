@@ -8,7 +8,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 const {Component, Fragment} = wp.element;
 const {
   PanelBody,
@@ -1296,6 +1296,7 @@ if (!imageIsRadiusValueUpdated) {
                 </>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"image"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody title="Image" initialOpen={true}>
@@ -1731,6 +1732,7 @@ if (!imageIsRadiusValueUpdated) {
               {...this.props}
             />
             )}
+            <RbeaSupportControl blockSlug={"image-block"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1847,6 +1849,7 @@ if (!imageIsRadiusValueUpdated) {
                   }}
                 </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"image-block"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

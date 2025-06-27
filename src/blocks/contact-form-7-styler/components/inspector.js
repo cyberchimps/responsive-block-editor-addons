@@ -23,7 +23,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -854,6 +854,7 @@ export default class Inspector extends Component {
               />
              
             </PanelBody>
+            <RbeaSupportControl blockSlug={"contact-form-7-styler"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -2508,6 +2509,7 @@ export default class Inspector extends Component {
               
             </PanelBody>            
             </PanelBody>
+            <RbeaSupportControl blockSlug={"contact-form-7-styler"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -2624,6 +2626,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"contact-form-7-styler"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

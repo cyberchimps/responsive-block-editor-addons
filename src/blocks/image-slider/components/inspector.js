@@ -12,7 +12,7 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * WordPress dependencies
  */
@@ -348,6 +348,7 @@ class Inspector extends Component {
                   />
                 </PanelBody>
                 <SliderPanel {...this.props} />
+                <RbeaSupportControl blockSlug={"icons-hotspot"} />
               </InspectorTab>
               <InspectorTab key={"style"}>
                 <PanelBody
@@ -428,6 +429,7 @@ class Inspector extends Component {
                       {...this.props}
                     />
                   </PanelBody>
+                  <RbeaSupportControl blockSlug={"icons-hotspot"} />
               </InspectorTab>
               <InspectorTab key={"advance"}>
                 <PanelBody
@@ -545,6 +547,7 @@ class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"icons-hotspot"} />
               </InspectorTab>
             </InspectorTabs>
           </InspectorControls>

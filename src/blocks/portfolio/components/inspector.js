@@ -12,7 +12,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * Inspector Controls
  */
@@ -364,6 +364,7 @@ export default class Inspector extends Component {
                 />
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"portfolio"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
 		  	
@@ -508,6 +509,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"portfolio"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -625,6 +627,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"portfolio"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

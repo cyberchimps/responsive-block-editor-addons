@@ -11,7 +11,7 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * WordPress dependencies
  */
@@ -252,6 +252,7 @@ class Inspector extends Component {
 							)}
 						</PanelBody>
 						<GalleryLinkSettings {...this.props} />
+						<RbeaSupportControl blockSlug={"gallery-masonry"} />
 					</InspectorTab>
 					<InspectorTab key={"style"}>
 						<PanelBody
@@ -269,6 +270,7 @@ class Inspector extends Component {
 								{...this.props}
 							/>
 						</PanelBody>
+						<RbeaSupportControl blockSlug={"gallery-masonry"} />
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 						<PanelBody
@@ -386,6 +388,7 @@ class Inspector extends Component {
 								}}
 							</TabPanel>
 						</PanelBody>
+						<RbeaSupportControl blockSlug={"gallery-masonry"} />
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

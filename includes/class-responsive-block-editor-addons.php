@@ -152,6 +152,7 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'wp_ajax_responsive_block_editor_post_pagination', array( $this, 'post_pagination' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
+		add_action( 'enqueue_block_editor_assets', array( $this, 'localize_blocks_data_for_editor' ) );
 		// Display admin notice for RBEA review.
 		add_action( 'admin_notices', array( $this, 'rbea_admin_review_notice' ) );
 		add_action( 'admin_init', array( $this, 'rba_notice_dismissed' ) );
@@ -585,8 +586,30 @@ class Responsive_Block_Editor_Addons {
 
 		return $options;
 	}
-
-
+	public function localize_blocks_data_for_editor() {
+		require_once plugin_dir_path( __FILE__ ) . 'class-responsive-block-editor-addons-blocks-updater.php';
+	
+		$updater = new Responsive_Block_Editor_Addons_Blocks_Updater();
+		$blocks = $updater->get_rbea_blocks();
+	
+		wp_enqueue_script(
+			'rbea-editor-script',
+			plugins_url( '../src/utils/components/rbea-support-control/index.js', __FILE__ ),
+			array( 'wp-blocks', 'wp-element', 'wp-components' ),
+			$this->version,
+			true
+		);
+	
+		wp_localize_script(
+			'rbea-editor-script',
+			'rbeaSupportBlocks',
+			array(
+				'blocks' => $blocks,
+				'pluginUrl' => plugins_url( '', __FILE__ ),
+			)
+		);
+	}
+	
 	/**
 	 * Enqueue assets for backend editor
 	 *

@@ -28,7 +28,7 @@ import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlock
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1332,6 +1332,7 @@ export default class Inspector extends Component {
                 />
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"info-block"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1941,6 +1942,7 @@ export default class Inspector extends Component {
                 </PanelBody>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"info-block"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -2057,6 +2059,7 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"info-block"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

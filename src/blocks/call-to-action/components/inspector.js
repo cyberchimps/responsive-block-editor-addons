@@ -23,6 +23,8 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+<RbeaSupportControl blockSlug={"multi-buttons"} />
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -528,6 +530,7 @@ export default class Inspector extends Component {
                 }}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"responsive-block-editor-addons-cta"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
 			
@@ -1059,6 +1062,7 @@ export default class Inspector extends Component {
                 />
               </PanelBody>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"responsive-block-editor-addons-cta"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1176,6 +1180,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"responsive-block-editor-addons-cta"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

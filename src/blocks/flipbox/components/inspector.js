@@ -23,7 +23,7 @@ import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import { RadioControl} from "@wordpress/components";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1494,6 +1494,7 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"flipbox"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             {frontTitleFontFamily && loadGoogleFont(frontTitleFontFamily)}
@@ -1761,6 +1762,7 @@ export default class Inspector extends Component {
                   </TabPanel>
                 </div>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"flipbox"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1878,6 +1880,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"flipbox"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

@@ -1,15 +1,17 @@
-import React from "react";
-// import { Icon } from "@wordpress/icons";
-// import { video, book } from "@wordpress/icons";
-
-// import DashIcons from "@wordpress/components";
-
 const Logo = responsive_globals.home_url + '/wp-content/plugins/responsive-block-editor-addons/admin/images/responsive-blocks.svg';
 
-const rbeaDemoBaseUrl = "https://cyberchimps.com/responsive-blocks/";
-const rbeaDocsBaseUrl = "https://cyberchimps.com/docs/responsive-blocks/blocks/";
-
 const RbeaSupportControl = ({ blockSlug }) => {
+    // Safely get the blockData, fallback to null if data not available
+    const blockData = (typeof rbeaSupportBlocks !== 'undefined' && Array.isArray(rbeaSupportBlocks.blocks))
+        ? rbeaSupportBlocks.blocks.find(block => block.key === blockSlug)
+        : null;
+
+    const demoUrl = blockData ? blockData.demo : '#';
+    const docsUrl = blockData ? blockData.docs : '#';
+    
+    // console.log(demoUrl);
+    // console.log(docsUrl);
+
     return (
         <div className="rbea-support-control-panel">
             <div className="rbea-support-control-panel__header">
@@ -19,7 +21,7 @@ const RbeaSupportControl = ({ blockSlug }) => {
 
             <div className="rbea-support-control-panel__links">
                 <a
-                    href={rbeaDemoBaseUrl + blockSlug}
+                    href={demoUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="rbea-support-control-panel__link"
@@ -29,7 +31,7 @@ const RbeaSupportControl = ({ blockSlug }) => {
                 </a>
 
                 <a
-                    href={rbeaDocsBaseUrl + blockSlug}
+                    href={docsUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="rbea-support-control-panel__link"

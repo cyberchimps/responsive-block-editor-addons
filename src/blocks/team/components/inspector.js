@@ -21,7 +21,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-control";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -876,6 +876,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"team"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
           <PanelBody
@@ -1434,6 +1435,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"team"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1551,6 +1553,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"team"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

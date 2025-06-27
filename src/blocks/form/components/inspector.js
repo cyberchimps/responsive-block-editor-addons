@@ -18,7 +18,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import ResponsiveBorderWidthControl from "../../../settings-components/ResponsiveBorderWidthSettings";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Import block components
 const { InspectorControls, PanelColorSettings, AlignmentToolbar } = wp.blockEditor
 
@@ -608,6 +608,7 @@ export default class Inspector extends Component {
 
             </PanelBody>
             </>}
+            <RbeaSupportControl blockSlug={"form"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
           {isFormVariantSelected && <>
@@ -1013,6 +1014,7 @@ export default class Inspector extends Component {
             </PanelBody>
 
           </>}
+          <RbeaSupportControl blockSlug={"form"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1130,6 +1132,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"form"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

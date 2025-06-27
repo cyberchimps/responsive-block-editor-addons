@@ -12,7 +12,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaSeparatorStyleTabControl from "../../../utils/components/rbea-separator-style-tab-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * Inspector Controls
  */
@@ -570,6 +570,7 @@ if (!gridIsRadiusValueUpdated) {
                 </BaseControl>
               </Fragment>)}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"taxonomy-list"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -951,6 +952,7 @@ if (!gridIsRadiusValueUpdated) {
                 </Fragment>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"taxonomy-list"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1068,6 +1070,7 @@ if (!gridIsRadiusValueUpdated) {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"taxonomy-list"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

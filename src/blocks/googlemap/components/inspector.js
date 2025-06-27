@@ -5,7 +5,7 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 
 // Setup the block
@@ -230,7 +230,7 @@ export default class Inspector extends Component {
         }}
     </TabPanel>
 						</PanelBody>
-
+                        <RbeaSupportControl blockSlug={"googlemap"} />
 					</InspectorTab>
                     <InspectorTab key={'style'}>
                         <PanelBody title={__("Spacing", "responsive-block-editor-addons")} initialOpen={true}>
@@ -245,6 +245,7 @@ export default class Inspector extends Component {
                             {...this.props}
                             />
                         </PanelBody>
+                        <RbeaSupportControl blockSlug={"googlemap"} />
                     </InspectorTab>
 					<InspectorTab key={"advance"}>
                         <PanelBody
@@ -361,6 +362,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
                     </PanelBody>
+                    <RbeaSupportControl blockSlug={"googlemap"} />
                     </InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

@@ -8,6 +8,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -198,6 +199,7 @@ export default class Inspector extends Component {
                 max={100}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"divider"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -228,6 +230,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"divider"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -345,6 +348,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"divider"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

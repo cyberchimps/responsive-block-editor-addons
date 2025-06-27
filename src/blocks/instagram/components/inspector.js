@@ -7,7 +7,7 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -266,6 +266,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"instagram"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -283,6 +284,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"instagram"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -400,6 +402,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"instagram"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

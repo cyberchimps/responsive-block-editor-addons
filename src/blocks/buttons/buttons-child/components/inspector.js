@@ -18,7 +18,7 @@ import ResponsiveNewMarginControl from "../../../../settings-components/Responsi
 import ResponsiveNewPaddingControl from "../../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl";
 import RbeaBorderRadiusControl from "../../../../settings-components/RbeaBorderRadiusControl";
 import GradientBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
-
+import RbeaSupportControl from "../../../../utils/components/rbea-support-control";
 import borderStyleIcons from "../icons/border-style-icons";
 
 // Setup the block
@@ -492,6 +492,7 @@ export default class Inspector extends Component {
 								]}
 							/>
 						</PanelBody>
+						<RbeaSupportControl blockSlug={"multi-buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"style"}>
 						{!inheritFromTheme && (
@@ -832,6 +833,7 @@ export default class Inspector extends Component {
 								{...this.props}
 							/>
 						</PanelBody>
+						<RbeaSupportControl blockSlug={"multi-buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 						<PanelBody
@@ -913,6 +915,7 @@ export default class Inspector extends Component {
 								}}
 							</TabPanel>
 						</PanelBody>
+						<RbeaSupportControl blockSlug={"multi-buttons"} />
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
