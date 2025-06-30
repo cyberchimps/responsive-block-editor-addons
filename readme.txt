@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,10 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.0.8 - 30th June 2025 =
+* Fix - Image Gallery block - Fixed non-persistent column count values.
+* Fix - Image Gallery block - Fixed disappeared controls for moving/removing images.
 
 = 2.0.7 - 20th June 2025 =
 * Improvement - Testimonial Slider block - Added option to set responsive image sizes.
