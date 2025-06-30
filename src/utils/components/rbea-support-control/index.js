@@ -1,22 +1,20 @@
+import React from "react";
+
 const Logo = responsive_globals.home_url + '/wp-content/plugins/responsive-block-editor-addons/admin/images/responsive-blocks.svg';
 
 const RbeaSupportControl = ({ blockSlug }) => {
-    // Safely get the blockData, fallback to null if data not available
     const blockData = (typeof rbeaSupportBlocks !== 'undefined' && Array.isArray(rbeaSupportBlocks.blocks))
         ? rbeaSupportBlocks.blocks.find(block => block.key === blockSlug)
         : null;
 
     const demoUrl = blockData ? blockData.demo : '#';
     const docsUrl = blockData ? blockData.docs : '#';
-    
-    // console.log(demoUrl);
-    // console.log(docsUrl);
 
     return (
         <div className="rbea-support-control-panel">
             <div className="rbea-support-control-panel__header">
                 <img src={Logo} alt="Responsive Blocks" className="rbea-support-control-panel__logo" />
-                <a href="#" className="rbea-support-control-panel__title">Need Help?</a>
+                <span className="rbea-support-control-panel__title">Need Help?</span>
             </div>
 
             <div className="rbea-support-control-panel__links">
