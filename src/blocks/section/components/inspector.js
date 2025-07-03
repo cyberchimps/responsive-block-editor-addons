@@ -18,7 +18,7 @@ import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-co
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 
 
 // Setup the block
@@ -488,6 +488,7 @@ export default class Inspector extends Component {
                     return <div>{tabout}</div>;
                   }}
               </TabPanel>
+              <RbeaSupportControl blockSlug={"section"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
           <PanelBody
@@ -975,6 +976,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"section"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1012,6 +1014,7 @@ export default class Inspector extends Component {
                 }
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"section"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

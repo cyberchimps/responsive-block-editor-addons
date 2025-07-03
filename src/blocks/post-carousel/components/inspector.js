@@ -10,7 +10,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * Inspector Controls
  */
@@ -877,6 +877,7 @@ export default class Inspector extends Component {
                 showTextOpacity={false}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"post-carousel"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
           <TypographyHelperControl
@@ -1072,6 +1073,7 @@ export default class Inspector extends Component {
                 allowReset
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"post-carousel"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1189,6 +1191,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"post-carousel"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

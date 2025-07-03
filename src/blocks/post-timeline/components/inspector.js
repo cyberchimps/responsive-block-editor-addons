@@ -11,7 +11,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * Inspector Controls
  */
@@ -916,6 +916,7 @@ export default class Inspector extends Component {
                 </TabPanel>
               </PanelBody>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"post-timeline"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1214,6 +1215,7 @@ export default class Inspector extends Component {
 					{...this.props}
 				/>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"post-timeline"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1331,6 +1333,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"post-timeline"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

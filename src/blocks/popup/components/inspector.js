@@ -18,7 +18,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1017,6 +1017,7 @@ export default class Inspector extends Component {
                     ]}
                   />}
               </PanelBody>
+              <RbeaSupportControl blockSlug={"popup"} />
             </InspectorTab>
             <InspectorTab key={"style"}>
               {popupTrigger === 'click' &&
@@ -1541,6 +1542,7 @@ export default class Inspector extends Component {
                   />
                 </PanelBody>
               }
+              <RbeaSupportControl blockSlug={"popup"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <PanelBody
@@ -1578,6 +1580,7 @@ export default class Inspector extends Component {
                   }
                 />
               </PanelBody>
+              <RbeaSupportControl blockSlug={"popup"} />
             </InspectorTab>
           </InspectorTabs>
         }

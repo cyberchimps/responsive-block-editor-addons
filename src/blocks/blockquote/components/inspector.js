@@ -22,6 +22,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 
 let svg_icons = Object.keys(ResponsiveBlocksQuoteIcon);
 // Setup the block
@@ -562,6 +563,7 @@ export default class Inspector extends Component {
                 allowReset
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"blockquote"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -744,6 +746,7 @@ export default class Inspector extends Component {
 				    	setAttributes={ setAttributes }
 				    	{...this.props}
 				    />
+            <RbeaSupportControl blockSlug={"block-quote"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -861,6 +864,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"block-quote"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

@@ -12,7 +12,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -354,6 +354,7 @@ export default class Inspector extends Component {
                 defaultValue={"layout1"}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"advanced-text"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -673,6 +674,7 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
+            <RbeaSupportControl blockSlug={"advanced-text"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -904,6 +906,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"advanced-text"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

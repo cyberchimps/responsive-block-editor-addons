@@ -11,7 +11,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * WordPress dependencies
  */
@@ -226,6 +226,7 @@ class Inspector extends Component {
                   min="20"
                 />
               </PanelBody>
+              <RbeaSupportControl blockSlug={"shape-divider"} />
             </InspectorTab>
             <InspectorTab key="style">
               <PanelBody
@@ -341,6 +342,7 @@ class Inspector extends Component {
                 {...this.props}
                 />
 						  </PanelBody>
+              <RbeaSupportControl blockSlug={"shape-divider"} />
             </InspectorTab>
             <InspectorTab key="advance">
               <PanelBody
@@ -458,6 +460,7 @@ class Inspector extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"shape-divider"} />
             </InspectorTab>
           </InspectorTabs>
         </InspectorControls>

@@ -22,7 +22,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -750,6 +750,7 @@ export default class Inspector extends Component {
                 showTextOpacity={false}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"feature-grid"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1009,6 +1010,7 @@ export default class Inspector extends Component {
                 />
               </PanelBody>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"feature-grid"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1125,6 +1127,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"feature-grid"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

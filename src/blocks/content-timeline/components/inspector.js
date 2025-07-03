@@ -22,7 +22,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -585,6 +585,7 @@ export default class Inspector extends Component {
                 />
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"content-timeline"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody title={__("Connector", "responsive-block-editor-addons")} initialOpen={false}>
@@ -886,6 +887,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"content-timeline"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1003,6 +1005,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"content-timeline"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
