@@ -19,18 +19,33 @@
  */
 class Responsive_Block_Editor_Addons_Helper {
 
-    private static $instance;
+	/**
+	 * Holds the singleton instance of the class.
+	 *
+	 * @var self
+	 */
+	private static $instance;
 
-    private function __construct() {}
+	/**
+	 * Class constructor.
+	 *
+	 * Private to prevent direct instantiation.
+	 */
+	private function __construct() {}
 
-    public static function get_instance() {
-        if ( ! isset( self::$instance ) ) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
+	/**
+	 * Retrieves the singleton instance of the class.
+	 *
+	 * @return self The single instance of the class.
+	 */
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
 
-    /**
+	/**
 	 * Get allowed HTML title tag.
 	 *
 	 * @param string $title_tag HTML tag of title.
@@ -53,11 +68,10 @@ class Responsive_Block_Editor_Addons_Helper {
 	 * @return string The sanitized UUID, or an empty string if invalid.
 	 */
 	function rba_sanitize_uuid( $uuid ) {
-		// Regular expression to match a valid UUID
+		// Regular expression to match a valid UUID.
 		if ( preg_match( '/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/', $uuid ) ) {
-			return $uuid; // Return the valid UUID
+			return $uuid; // Return the valid UUID.
 		}
-		return ''; // Return an empty string if not valid
+		return ''; // Return an empty string if not valid.
 	}
-
 }

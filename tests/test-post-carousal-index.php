@@ -8,7 +8,7 @@
 /**
  * Require post carousal index.php file
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/post-grid/index.php';
+require_once plugin_dir_path( __DIR__ ) . 'src/blocks/post-grid/index.php';
 
 /**
  * Post Carousal frontend assets funciton test

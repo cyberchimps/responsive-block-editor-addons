@@ -7,8 +7,8 @@
 
 namespace RBEA\Blocks\Layouts;
 
-use \WP_REST_Response;
-use \WP_REST_Server;
+use WP_REST_Response;
+use WP_REST_Server;
 
 require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . '/includes/layout/class-rbea-block-templates.php';
 

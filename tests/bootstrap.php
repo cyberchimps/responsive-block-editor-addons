@@ -23,7 +23,7 @@ require_once "{$_tests_dir}/includes/functions.php";
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/responsive-block-editor-addons.php';
+	require dirname( __DIR__ ) . '/responsive-block-editor-addons.php';
 }
 
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
@@ -32,7 +32,7 @@ tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 * Load PHPUnit Polyfills for the WP testing suite.
 * @see https://github.com/WordPress/wordpress-develop/pull/1563/
 */
-define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( dirname( __FILE__ ) ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php' );
+define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( __DIR__ ) . '/vendor/yoast/phpunit-polyfills/phpunitpolyfills-autoload.php' );
 
 // Start up the WP testing environment.
 require "{$_tests_dir}/includes/bootstrap.php";

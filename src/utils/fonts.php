@@ -37,7 +37,7 @@ add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_add_google_fon
 function gather_google_fonts( $blocks ) {
 	$google_fonts = array();
 	foreach ( $blocks as $block ) {
-		
+
 		// Gather all "fontFamily" attribute values.
 		if ( isset( $block['attrs'] ) && ( is_array( $block['attrs'] ) || is_object( $block['attrs'] ) ) ) {
 			// Gather all "fontFamily" attribute values.

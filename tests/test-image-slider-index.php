@@ -8,7 +8,7 @@
 /**
  * Require image-slider index.php file
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/image-slider/index.php';
+require_once plugin_dir_path( __DIR__ ) . 'src/blocks/image-slider/index.php';
 
 /**
  * Image Slider frontend assets funciton test

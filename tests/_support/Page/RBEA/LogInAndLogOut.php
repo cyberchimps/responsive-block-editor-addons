@@ -1,68 +1,65 @@
 <?php
 namespace Page\RBEA;
 
-class LogInAndLogOut
-{
-    // include url of current page
-    public static $URL = '';
+class LogInAndLogOut {
 
-    // Include variables for test 
-    public $usernameField = '#user_login';
-    public $usernameValue = 'admin';
-    public $passwordField = '#user_pass';
-    public $passwordValue = 'password';
-    public $submitBtn = '#wp-submit';
-    public $wordpressProfile='//*[@id="wp-admin-bar-my-account"]/a/span';
-    public $logOutLink='//*[@id="wp-admin-bar-logout"]/a';
+	// include url of current page
+	public static $URL = '';
 
-    /**
-     * Declare UI map for this page here. CSS or XPath allowed.
-     * public static $usernameField = '#username';
-     * public static $formSubmitButton = "#mainForm input[type=submit]";
-     */
+	// Include variables for test
+	public $usernameField    = '#user_login';
+	public $usernameValue    = 'admin';
+	public $passwordField    = '#user_pass';
+	public $passwordValue    = 'password';
+	public $submitBtn        = '#wp-submit';
+	public $wordpressProfile = '//*[@id="wp-admin-bar-my-account"]/a/span';
+	public $logOutLink       = '//*[@id="wp-admin-bar-logout"]/a';
 
-    /**
-     * Basic route example for your current URL
-     * You can append any additional parameter to URL
-     * and use it in tests like: Page\Edit::route('/123-post');
-     */
-    public static function route($param)
-    {
-        return static::$URL.$param;
-    }
+	/**
+	 * Declare UI map for this page here. CSS or XPath allowed.
+	 * public static $usernameField = '#username';
+	 * public static $formSubmitButton = "#mainForm input[type=submit]";
+	 */
 
-    /**
-     * @var \RBEATester;
-     */
-    protected $rBEATester;
+	/**
+	 * Basic route example for your current URL
+	 * You can append any additional parameter to URL
+	 * and use it in tests like: Page\Edit::route('/123-post');
+	 */
+	public static function route( $param ) {
+		return static::$URL . $param;
+	}
 
-    public function __construct(\RBEATester $I)
-    {
-        $this->rBEATester = $I;
-    }
+	/**
+	 * @var \RBEATester;
+	 */
+	protected $rBEATester;
 
-     /**
-     * User login.
-     */
-    public function userLogin($I) {
-        $I->amGoingTo('Login as admin.');
-        $I->amOnPage("/wp-admin");
-        $I->fillField( $this->usernameField , $this->usernameValue );
-        $I->fillField($this->passwordField , $this->passwordValue );
-        $I->click($this->submitBtn);     
-        $I->amOnPage('/rbea-block');
-    }
+	public function __construct( \RBEATester $I ) {
+		$this->rBEATester = $I;
+	}
 
-    /**
-     * User Logout.
-     */
-    public function userLogout($I) {
-        $I->amGoingTo('Logout');
-        $I->wait(2);
-        $I->moveMouseOver($this->wordpressProfile);
-        $I->click($this->logOutLink);
-        $I->wait(2);
-        $I->see('You are now logged out.');
-    }
+	/**
+	 * User login.
+	 */
+	public function userLogin( $I ) {
+		$I->amGoingTo( 'Login as admin.' );
+		$I->amOnPage( '/wp-admin' );
+		$I->fillField( $this->usernameField, $this->usernameValue );
+		$I->fillField( $this->passwordField, $this->passwordValue );
+		$I->click( $this->submitBtn );
+		$I->amOnPage( '/rbea-block' );
+	}
 
+	/**
+	 * User Logout.
+	 */
+	public function userLogout( $I ) {
+		$I->amGoingTo( 'Logout' );
+		$I->wait( 2 );
+		$I->moveMouseOver( $this->wordpressProfile );
+		$I->click( $this->logOutLink );
+		$I->wait( 2 );
+		$I->see( 'You are now logged out.' );
+	}
 }

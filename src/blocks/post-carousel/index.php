@@ -468,7 +468,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 					$post_title_tag = 'h2';
 				}
 
-				$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+				$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
 				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_html, 'h3' );
 
 				$post_grid_markup .= sprintf(
@@ -632,7 +632,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 			$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
 			$section_title_tag     = $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_html, 'h2' );
 
-			$section_title         = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-carousel-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
+			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-carousel-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {
 			$section_title = null;
 		}

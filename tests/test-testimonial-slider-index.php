@@ -8,7 +8,7 @@
 /**
  * Require testimonial slider index.php file
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/testimonial-slider/index.php';
+require_once plugin_dir_path( __DIR__ ) . 'src/blocks/testimonial-slider/index.php';
 
 /**
  * Accordion frontend assets funciton test
@@ -306,7 +306,7 @@ class Testimonial_Slider_Index_Test extends WP_UnitTestCase {
 			'arrowSize'            => 20,
 			'arrowDots'            => 'arrows_dots',
 			'arrowColor'           => '#333',
-			'arrowBorderWidth'      => 1,
+			'arrowBorderWidth'     => 1,
 			'arrowBorderRadius'    => 0,
 			'postsToShow'          => 6,
 			'displayPostDate'      => true,
@@ -335,5 +335,3 @@ class Testimonial_Slider_Index_Test extends WP_UnitTestCase {
 		$this->assertEquals( $expected, $result );
 	}
 }
-
-

@@ -8,12 +8,12 @@
 /**
  * Require frontend styles helper class
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-responsive-block-editor-addons-frontend-styles-helper.php';
+require_once plugin_dir_path( __DIR__ ) . 'classes/class-responsive-block-editor-addons-frontend-styles-helper.php';
 
 /**
  * Require frontend styles class
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-responsive-block-editor-addons-frontend-styles.php';
+require_once plugin_dir_path( __DIR__ ) . 'classes/class-responsive-block-editor-addons-frontend-styles.php';
 
 /**
  * Test class for frontend styles helper

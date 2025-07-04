@@ -10,7 +10,7 @@
 /**
  * Require deactivator class
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-responsive-block-editor-addons-deactivator.php';
+require_once plugin_dir_path( __DIR__ ) . 'includes/class-responsive-block-editor-addons-deactivator.php';
 
 /**
  * Class test for deactivator

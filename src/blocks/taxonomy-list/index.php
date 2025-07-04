@@ -77,10 +77,6 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'string',
 					'default' => __( 'Taxonomy Not Available.', 'responsive-block-editor-addons' ),
 				),
-				'showEmptyTaxonomy'                  => array(
-					'type'    => 'boolean',
-					'default' => false,
-				),
 				'titleTag'                           => array(
 					'type'    => 'string',
 					'default' => 'div',
@@ -608,7 +604,12 @@ function responsive_block_editor_addons_render_grid_layout( $attributes ) {
 		'parent'     => 0,
 	);
 
-	$new_categories_list = get_terms( array ( 'taxonomy' => $attributes['taxonomyType'], 'hide_empty' => $attributes['showEmptyTaxonomy'] ? false : true ) );
+	$new_categories_list = get_terms(
+		array(
+			'taxonomy'   => $attributes['taxonomyType'],
+			'hide_empty' => $attributes['showEmptyTaxonomy'] ? false : true,
+		)
+	);
 
 	?>
 	<?php
@@ -676,7 +677,12 @@ function responsive_block_editor_addons_render_list_layout( $attributes ) {
 		'parent'     => 0,
 	);
 
-	$new_categories_list = get_terms( array ( 'taxonomy' => $attributes['taxonomyType'], 'hide_empty' => $attributes['showEmptyTaxonomy'] ? false : true ) );
+	$new_categories_list = get_terms(
+		array(
+			'taxonomy'   => $attributes['taxonomyType'],
+			'hide_empty' => $attributes['showEmptyTaxonomy'] ? false : true,
+		)
+	);
 
 	?>
 	<?php
