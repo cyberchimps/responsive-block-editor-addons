@@ -19,7 +19,7 @@ import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Import block components
 const {
     InspectorControls,

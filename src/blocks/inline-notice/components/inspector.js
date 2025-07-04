@@ -21,7 +21,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Import block components
 const {
   InspectorControls,
@@ -312,6 +312,7 @@ export default class Inspector extends Component {
               </Fragment>
             }
           </PanelBody>
+          <RbeaSupportControl blockSlug={"inline-notice"} />
           </InspectorTab>
           <InspectorTab key={'style'}>
             <PanelBody
@@ -435,6 +436,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"inline-notice"} />
           </InspectorTab>
           <InspectorTab key={'advance'}>
             <PanelBody
@@ -551,6 +553,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
                 </PanelBody>
+                <RbeaSupportControl blockSlug={"inline-notice"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

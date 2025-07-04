@@ -26,7 +26,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-control";
 import { RadioControl} from "@wordpress/components";
 import ResponsiveContentPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveContentPaddingControl";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -747,6 +747,7 @@ export default class Inspector extends Component {
             >
                   <ImageSettingsControl {...this.props} />
       </PanelBody>
+      <RbeaSupportControl blockSlug={"testimonial"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
           <PanelBody
@@ -1347,7 +1348,7 @@ export default class Inspector extends Component {
                 />
               </div>
             </PanelBody>
-            
+            <RbeaSupportControl blockSlug={"testimonial"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1465,6 +1466,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"testimonial"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

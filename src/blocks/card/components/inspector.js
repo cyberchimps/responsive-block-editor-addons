@@ -28,7 +28,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import { RadioControl} from "@wordpress/components";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1139,6 +1139,7 @@ export default class Inspector extends Component {
                 showTextOpacity={true}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"card"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
           <PanelBody
@@ -1642,6 +1643,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"card"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1759,6 +1761,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"card"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

@@ -21,7 +21,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Import block components
 const {
   InspectorControls,
@@ -359,6 +359,7 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"wp-search"} />
           </InspectorTab>
           <InspectorTab key={'style'}>
               <PanelBody
@@ -657,6 +658,7 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
               </PanelBody>
+              <RbeaSupportControl blockSlug={"wp-search"} />
           </InspectorTab>
           <InspectorTab key={'advance'}>
             <PanelBody
@@ -773,6 +775,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"wp-search"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

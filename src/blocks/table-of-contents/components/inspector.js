@@ -17,7 +17,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import { RadioControl} from "@wordpress/components";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * Inspector Controls
  */
@@ -887,6 +887,7 @@ export default class Inspector extends Component {
               </PanelBody>
             </>
             }
+            <RbeaSupportControl blockSlug={"table-of-contents"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1914,6 +1915,7 @@ export default class Inspector extends Component {
               </PanelBody>
               </>
             }
+            <RbeaSupportControl blockSlug={"table-of-contents"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
           <PanelBody
@@ -2030,7 +2032,9 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"table-of-contents"} />
           </InspectorTab>
+          <RbeaSupportControl blockSlug={"table-of-contents"} />
         </InspectorTabs>
       </InspectorControls>
     );

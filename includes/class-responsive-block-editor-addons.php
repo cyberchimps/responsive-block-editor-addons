@@ -45,6 +45,73 @@ class Responsive_Block_Editor_Addons {
 	protected $version;
 
 	/**
+	 * Responsive Block Editor Addons Blocks.
+	 * 
+	 * @since 2.0.7
+	 * @access protected
+	 * @var array $responsive_block_editor_addons_blocks
+	 * @description This array contains the list of blocks that are registered by Responsive Block Editor Addons.
+	 */
+	protected $responsive_block_editor_addons_blocks = [
+		'responsive-block-editor-addons/section',
+		'responsive-block-editor-addons/advance-columns',
+		'responsive-block-editor-addons/advance-columns/column',
+		'responsive-block-editor-addons/advanced-heading',
+		'responsive-block-editor-addons/advanced-text',
+		'responsive-block-editor-addons/image',
+		'responsive-block-editor-addons/buttons',
+		'responsive-block-editor-addons/buttons/buttons-child',
+		'responsive-block-editor-addons/responsive-block-editor-addons-cta',
+		'responsive-block-editor-addons/blockquote',
+		'responsive-block-editor-addons/divider',
+		'responsive-block-editor-addons/info-block',
+		'responsive-block-editor-addons/count-down',
+		'responsive-block-editor-addons/spacer',
+		'responsive-block-editor-addons/inline-notice',
+		'responsive-block-editor-addons/progress-bar',
+		'responsive-block-editor-addons/table-of-contents',
+		'responsive-block-editor-addons/testimonial',
+		'responsive-block-editor-addons/count-up',
+		'responsive-block-editor-addons/flipbox',
+		'responsive-block-editor-addons/icons-list',
+		'responsive-block-editor-addons/icons-list/icons-list-child',
+		'responsive-block-editor-addons/googlemap',
+		'responsive-block-editor-addons/gallery-masonry',
+		'responsive-block-editor-addons/post-grid',
+		'responsive-block-editor-addons/post-carousel',
+		'responsive-block-editor-addons/post-timeline',
+		'responsive-block-editor-addons/image-boxes-block',
+		'responsive-block-editor-addons/shape-divider',
+		'responsive-block-editor-addons/accordion',
+		'responsive-block-editor-addons/accordion/accordion-item',
+		'responsive-block-editor-addons/content-timeline',
+		'responsive-block-editor-addons/image-slider',
+		'responsive-block-editor-addons/team',
+		'responsive-block-editor-addons/expand',
+		'responsive-block-editor-addons/card',
+		'responsive-block-editor-addons/pricing-table',
+		'responsive-block-editor-addons/pricing-list',
+		'responsive-block-editor-addons/video-popup',
+		'responsive-block-editor-addons/testimonial-slider',
+		'responsive-block-editor-addons/feature-grid',
+		'responsive-block-editor-addons/portfolio',
+		'responsive-block-editor-addons/anchor',
+		'responsive-block-editor-addons/call-mail-button',
+		'responsive-block-editor-addons/social-icons',
+		'responsive-block-editor-addons/tabs',
+		'responsive-block-editor-addons/tabs/tabs-child',
+		'responsive-block-editor-addons/taxonomy-list',
+		'responsive-block-editor-addons/wp-search',
+		'responsive-block-editor-addons/instagram',
+		'responsive-block-editor-addons/image-hotspot',
+		'responsive-block-editor-addons/contact-form-7-styler',
+		'responsive-block-editor-addons/popup',
+		'responsive-block-editor-addons/form',
+		'responsive-block-editor-addons/form/input',
+		'responsive-block-editor-addons/rbea-templates',
+	];
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -85,6 +152,7 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'wp_ajax_responsive_block_editor_post_pagination', array( $this, 'post_pagination' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
 
+		add_action( 'enqueue_block_editor_assets', array( $this, 'localize_blocks_data_for_editor' ) );
 		// Display admin notice for RBEA review.
 		add_action( 'admin_notices', array( $this, 'rbea_admin_review_notice' ) );
 		add_action( 'admin_init', array( $this, 'rba_notice_dismissed' ) );
@@ -111,7 +179,10 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'admin_enqueue_scripts', array( $this, 'my_enqueue_media_scripts' ) );
 
 		// Add rating links to plugin's description in plugins table
-		add_filter('plugin_row_meta', array($this, 'responsive_block_editor_addons_rate_plugin_link'), 10, 2);
+		add_filter('plugin_row_meta', array( $this, 'responsive_block_editor_addons_rate_plugin_link' ), 10, 2);
+
+		// Add the post types to the block editor.
+		add_filter( 'allowed_block_types_all', array( $this, 'responsive_block_editor_addons_allow_blocks_in_editor' ), 20, 2 );
 
 	}
 
@@ -515,8 +586,30 @@ class Responsive_Block_Editor_Addons {
 
 		return $options;
 	}
-
-
+	public function localize_blocks_data_for_editor() {
+		require_once plugin_dir_path( __FILE__ ) . 'class-responsive-block-editor-addons-blocks-updater.php';
+	
+		$updater = new Responsive_Block_Editor_Addons_Blocks_Updater();
+		$blocks = $updater->get_rbea_blocks();
+	
+		wp_enqueue_script(
+			'rbea-editor-script',
+			plugins_url( '../src/utils/components/rbea-support-control/index.js', __FILE__ ),
+			array( 'wp-blocks', 'wp-element', 'wp-components' ),
+			$this->version,
+			true
+		);
+	
+		wp_localize_script(
+			'rbea-editor-script',
+			'rbeaSupportBlocks',
+			array(
+				'blocks' => $blocks,
+				'pluginUrl' => plugins_url( '', __FILE__ ),
+			)
+		);
+	}
+	
 	/**
 	 * Enqueue assets for backend editor
 	 *
@@ -537,6 +630,36 @@ class Responsive_Block_Editor_Addons {
 		$user_data = wp_get_current_user();
 		unset( $user_data->user_pass, $user_data->user_email );
 
+		$blocks = get_option( 'rbea_blocks' );
+
+		$is_taxonomy_list_on         = 1;
+		$is_contact_7_form_styler_on = 1;
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['taxonomy-list'] ) ) {
+			$is_taxonomy_list_on = $block_status_map['taxonomy-list'];
+		}
+
+		if ( isset( $block_status_map['contact-form-7-styler'] ) ) {
+			$is_contact_7_form_styler_on = $block_status_map['contact-form-7-styler'];
+		}
+
+		$include_all_taxonomy = 0;
+
+		$all_taxonomy_required_blocks = array(
+			'portfolio',
+			'responsive-block-editor-addons-post-grid',
+			'post-timeline'
+		);
+
+		foreach ( $all_taxonomy_required_blocks as $block_key ) {
+			if ( isset( $block_status_map[ $block_key ] ) && 1 === (int) $block_status_map[ $block_key ] ) {
+				$include_all_taxonomy = 1;
+				break;
+			}
+		}
+
 		// Pass in REST URL.
 		wp_localize_script(
 			'responsive_block_editor_addons-block-js',
@@ -547,12 +670,12 @@ class Responsive_Block_Editor_Addons {
 				'user_data'                          => $user_data,
 				'pro_activated'                      => false,
 				'is_wpe'                             => function_exists( 'is_wpe' ),
-				'post_types'                         => $this->get_post_types(),
-				'all_taxonomy'                       => $this->get_related_taxonomy(),
+				'post_types'                         => $is_taxonomy_list_on ? $this->get_post_types() : array(),
+				'all_taxonomy'                       => $include_all_taxonomy ? $this->get_related_taxonomy() : array(),
 				'responsive_block_editor_ajax_nonce' => $responsive_block_editor_ajax_nonce,
-				'taxonomy_list'                      => $this->get_taxonomy_list(),
+				'taxonomy_list'                      => $is_taxonomy_list_on ? $this->get_taxonomy_list() : array(),
 				'home_url'                           => home_url(),
-				'cf7_forms'                          => $this->get_cf7_forms(),
+				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
 			)
 		);
@@ -567,12 +690,10 @@ class Responsive_Block_Editor_Addons {
 
 		wp_enqueue_script( 'responsive_block_editor_addons_deactivate_blocks', RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'admin/js/responsive-block-editor-addons-blocks-deactivate.js', array( 'wp-blocks' ), RESPONSIVE_BLOCK_EDITOR_ADDONS_VER, true );
 
-		$blocks = get_option( 'rbea_blocks' );
-
 		$deactivated_blocks = array();
 
 		foreach ( $blocks as $block ) {
-			if ( false === $block['status'] ) {
+			if ( '' === $block['status'] ) {
 				array_push( $deactivated_blocks, $block );
 			}
 		}
@@ -887,6 +1008,7 @@ class Responsive_Block_Editor_Addons {
 			array(),
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
+		wp_enqueue_style( 'dashicons' );
 	}
 
 	public function rba_get_block_names( $blocks, &$block_names = array() ) {
@@ -1369,6 +1491,50 @@ class Responsive_Block_Editor_Addons {
 		return new WP_REST_Response( $response_data, 200 );
 	}
 
+	/**
+	 * Check if the user has capabilities to import Pro templates.
+	 *
+	 * @return WP_REST_Response
+	 */
+	public function check_user_capabilities_for_pro_templates() {
+		$product_details = get_option( 'reads_app_settings' );
+
+		if ( ! isset( $product_details ) || ! is_array( $product_details ) || empty( $product_details['account'] ) ) {
+			return new WP_REST_Response(
+				array( 'is_capable' => false ),
+				403
+			);
+		}
+
+		// Get the product ID from the product details.
+		$product_id = $product_details['account']['product_id'] ?? null;
+
+		
+		if ( is_null( $product_id ) ) {
+			return new WP_REST_Response(
+				array(
+					'is_capable' => false
+				),
+				403
+			);
+		}
+		
+		$product_id = (int) $product_id;
+		
+		$allowed_ids = array( 560, 561, 562 );
+	
+		$is_capable = in_array( $product_id, $allowed_ids, true );
+	
+		$status_code = $is_capable ? 200 : 403;
+	
+		return new WP_REST_Response(
+			array(
+				'is_capable' => $is_capable,
+			),
+			$status_code
+		);
+	}
+
 	public function register_custom_rest_endpoint() {
 		register_rest_route(
 			'custom/v1', // Namespace
@@ -1376,6 +1542,16 @@ class Responsive_Block_Editor_Addons {
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'custom_rest_endpoint_callback' ),
+				'permission_callback' => '__return_true', // No specific permissions for simplicity
+			)
+		);
+
+		register_rest_route(
+			'custom/v1', // Namespace
+			'/pro-template-capability/', // Route
+			array(
+				'methods'             => 'GET',
+				'callback'            => array( $this, 'check_user_capabilities_for_pro_templates' ),
 				'permission_callback' => '__return_true', // No specific permissions for simplicity
 			)
 		);
@@ -1557,7 +1733,7 @@ class Responsive_Block_Editor_Addons {
      *
      * @return array
      */
-    function responsive_block_editor_addons_rate_plugin_link( $links, $file ) {
+    public function responsive_block_editor_addons_rate_plugin_link( $links, $file ) {
 		if ( $file !== plugin_basename( RESPONSIVE_BLOCK_EDITOR_ADDONS_BASENAME ) ) {
 			return $links;
 		}
@@ -1566,5 +1742,38 @@ class Responsive_Block_Editor_Addons {
 		$rate_link = '<a target="_blank" href="' . esc_url( $rate_url ) . '" title="' . esc_attr__( 'Rate the plugin', 'responsive-addons' ) . '">' . esc_html__( 'Rate the plugin ★★★★★', 'responsive-addons' ) . '</a>';
 		$links[] = $rate_link;
 		return $links;
+	}
+
+
+	/**	 
+	 * Function to ensure that the blocks from Responsive Blocks plugin are available in the block editor.
+	 * 
+	 * @param array $allowed_block_types The allowed block types.
+	 * @param WP_Block_Editor_Context $editor_context The editor context.
+	 * @return array The modified list of allowed block types.
+	 * @since 2.0.7
+	 */
+	public function responsive_block_editor_addons_allow_blocks_in_editor( $allowed_block_types, $editor_context ) {
+		if(is_plugin_active("ionos-essentials/ionos-essentials.php")){
+			if ( ! $editor_context->post ) {
+				return $allowed_block_types;
+			}
+		
+			// If $allowed_block_types is false or not an array, reinitialize it.
+			if ( ! is_array( $allowed_block_types ) ) {
+				$allowed_block_types = array_keys( WP_Block_Type_Registry::get_instance()->get_all_registered() );
+			}
+		
+			// Merge your blocks into the allowed list if not present
+			foreach ( $this->responsive_block_editor_addons_blocks as $block ) {
+				if ( ! in_array( $block, $allowed_block_types, true ) ) {
+					$allowed_block_types[] = $block;
+				}
+			}
+		
+			return $allowed_block_types;
+		}
+		return $allowed_block_types;
+		
 	}
 }

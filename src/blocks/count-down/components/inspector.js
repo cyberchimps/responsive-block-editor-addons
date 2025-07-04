@@ -17,7 +17,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
@@ -510,6 +510,7 @@ export default class Inspector extends Component {
                 }
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"count-down"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -668,6 +669,7 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"count-down"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -785,6 +787,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"count-down"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

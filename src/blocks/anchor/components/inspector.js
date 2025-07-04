@@ -9,7 +9,7 @@ import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import InspectorTab from "../../../components/InspectorTab"
 import InspectorTabs from "../../../components/InspectorTabs"
 
@@ -126,6 +126,7 @@ export default class Inspector extends Component {
                 }}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"anchor"} />
           </InspectorTab>
           <InspectorTab key={'advance'}>
           </InspectorTab>

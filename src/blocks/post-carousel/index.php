@@ -468,7 +468,10 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 					$post_title_tag = 'h2';
 				}
 
-				$post_carousel_markup .= sprintf(
+				$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
+				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_html, 'h3' );
+
+				$post_grid_markup .= sprintf(
 					'<%3$s class="responsive-block-editor-addons-block-post-carousel-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s>',
 					esc_url( get_permalink( $post_id ) ),
 					esc_html( $title ),
@@ -597,7 +600,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "responsive-block-editor-addons-block-post-carousel block-" . sanitize_html_class( $attributes['block_id'] ) . " responsive-post-grid  responsive-post__image-position-{$attributes['imagePosition']} featured{$attributes['postType']} align{$attributes['align']}";
+		$class = 'responsive-block-editor-addons-block-post-carousel block-' . sanitize_html_class( $attributes['block_id'] ) . " responsive-post-grid  responsive-post__image-position-{$attributes['imagePosition']} featured{$attributes['postType']} align{$attributes['align']}";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . sanitize_html_class( $attributes['className'] );
@@ -619,13 +622,17 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 
 		/* Post carousel section title */
 		if ( isset( $attributes['displaySectionTitle'] ) && $attributes['displaySectionTitle'] && ! empty( $attributes['sectionTitle'] ) ) {
+			$section_title_tag = '';
 			if ( isset( $attributes['sectionTitleTag'] ) ) {
 				$section_title_tag = $attributes['sectionTitleTag'];
 			} else {
 				$section_title_tag = 'h2';
 			}
 
-			$section_title = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-carousel-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
+			$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
+			$section_title_tag     = $helper->rbea_post_title_tag_allowed_html( $section_title_tag, $array_of_allowed_html, 'h2' );
+
+			$section_title         = '<' . esc_attr( $section_title_tag ) . ' class="responsive-block-editor-addons-post-carousel-section-title">' . esc_html( $attributes['sectionTitle'] ) . '</' . esc_attr( $section_title_tag ) . '>';
 		} else {
 			$section_title = null;
 		}

@@ -20,7 +20,7 @@ import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import { RadioControl} from "@wordpress/components";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -1193,6 +1193,7 @@ export default class Inspector extends Component {
                       />
                     )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"icons-boxes"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1605,6 +1606,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"icons-boxes"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1722,6 +1724,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"icons-boxes"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

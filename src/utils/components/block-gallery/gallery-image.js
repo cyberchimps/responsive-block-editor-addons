@@ -206,6 +206,9 @@ class GalleryImage extends Component {
       <figure
         className={className}
         tabIndex="-1"
+        onClick={() => {
+          this.onImageClick();
+        }}
         onKeyDown={this.onKeyDown}
         ref={this.bindContainer}
       >

@@ -24,7 +24,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -783,6 +783,7 @@ export default class Inspector extends Component {
                 showTextOpacity={false}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"pricing-table"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1148,6 +1149,7 @@ export default class Inspector extends Component {
 								resetColor={() => setAttributes({ textColor: "" })}
 							/>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"pricing-table"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1265,6 +1267,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"pricing-table"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

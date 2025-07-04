@@ -30,6 +30,7 @@ export function LayoutModal(props) {
   const [requiredPlugins, setRequiredPlugins] = useState([]);
   const [importStatus, setImportStatus] = useState("Import Template");
   const [isProactive, setIsProactive] = useState(false); // New state for proactivity
+  const [isUserProCapable, setIsUserProCapable] = useState(false);
   const [Xmlupdatestatus, setXmlUpdateStatus] = useState(false);
   const {apiFetch} = wp;
 
@@ -76,7 +77,22 @@ export function LayoutModal(props) {
       checkIsProActive();
     }
   }, [searchQuery, siteData, noSearchResult, currentTab]);
+  useEffect(() => {
+    isUserProCapableCheck();
+  }, []);
   const {removeBlock} = useDispatch("core/block-editor");
+  const isUserProCapableCheck = async () => {
+    try {
+      const responseForImportCapabilities = await apiFetch({
+        path: addQueryArgs("custom/v1/pro-template-capability"), // Replace with your actual endpoint
+      });
+
+      // Check the response and set isUserProCapable state accordingly
+      setIsUserProCapable(responseForImportCapabilities && responseForImportCapabilities.is_capable);
+    } catch (error) {
+      console.error("Error checking endpoint:", error);
+    }
+  }
   const checkIsProActive = async () => {
     try {
       const response = await apiFetch({
@@ -179,13 +195,8 @@ export function LayoutModal(props) {
               >
                 <img
                   src={site.featured_image_url}
+                  className="rba-popup-card-component-image"
                   alt={site.title.rendered.replace(/&#8211;|Gutenberg/g, "")}
-                  style={{
-                    width: "100%",
-                    height: "396px",
-                    objectPosition: "top",
-                    objectFit: "cover",
-                  }}
                 />
                 {site.demo_type === "pro" && (
                   <div className="rba-popup-pro-badge">
@@ -369,6 +380,9 @@ export function LayoutModal(props) {
       } else if (selectedSite.demo_type !== "free" && isProactive === true) {
         setImportStatus("Importing...");
         import_page(selectedSite.site_url, selectedPage.page_id, clientId);
+      } else if (selectedSite.demo_type !== "free" && isUserProCapable === true) {
+        setImportStatus("Importing...");
+        import_page(selectedSite.site_url, selectedPage.page_id, clientId);
       } else {
         window.open("https://cyberchimps.com/pricing/", "_blank");
       }
@@ -455,16 +469,20 @@ export function LayoutModal(props) {
             </button>
 
             <button
-              className="rba-sectoin-block-inner-div-btn"
+              className={`rba-sectoin-block-inner-div-btn ${importStatus !== 'Import Template' ? 'update-message updating-message' : '' }`}
               onClick={() =>
                 handleImportButtonClick(props.clientId, selectedSite.site_url)
               }
             >
+              <p>
               {selectedSite.demo_type === "free"
-                ? importStatus
+                ? ' ' + importStatus
                 : isProactive === true
-                ? importStatus
+                ? ' ' + importStatus
+                : isUserProCapable === true
+                ? ' ' + importStatus
                 : "Get access"}
+              </p>
             </button>
           </div>
         </div>
@@ -566,7 +584,7 @@ export function LayoutModal(props) {
             <Fragment>
               <div className="modal-header-content">
                 <div className="modal-title">
-                {<img src={responsive_globals.plugin_url + 'admin/images/RBA-Logo-without-text.png'} alt="rbea-logo" />}
+                {<img src={responsive_globals.plugin_url + 'admin/images/responsive-blocks.svg'} alt="rbea-logo" />}
                   {__("Template Library", "my-textdomain")}
                 </div>
 

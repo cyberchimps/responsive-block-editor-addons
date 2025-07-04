@@ -1,0 +1,50 @@
+.rbea-support-control-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 5px 20px 5px;
+    border-top: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd;  
+
+    .rbea-support-control-panel__header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .rbea-support-control-panel__logo {
+            width: 25px;
+            height: auto;
+        }
+
+        .rbea-support-control-panel__title {
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    }
+
+    .rbea-support-control-panel__links {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        margin-top: 12px;
+
+        .rbea-support-control-panel__link {
+            display: flex;
+            text-transform: capitalize;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 6px 12px;
+
+            span {
+                font-size: 18px;
+            }
+        }
+    }
+}

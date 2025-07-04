@@ -18,7 +18,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaSeparatorStyleTabControl from "../../../utils/components/rbea-separator-style-tab-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -441,6 +441,7 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"pricing-list"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody title={__("Separator", "responsive-block-editor-addons")} initialOpen={false}>
@@ -632,6 +633,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"pricing-list"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -749,6 +751,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"pricing-list"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

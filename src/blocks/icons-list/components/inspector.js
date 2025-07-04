@@ -9,7 +9,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
 * Inspector Controls
 */
@@ -423,6 +423,7 @@ export default class Inspector extends Component {
                 />
                 <hr className="responsive-block-editor-addons-editor__separator" />
               </PanelBody>
+              <RbeaSupportControl blockSlug={"icons-list"} />
             </InspectorTab>
             <InspectorTab key={"style"}>
         {!hideLabel && (
@@ -690,6 +691,7 @@ export default class Inspector extends Component {
                   {...this.props}
                 />
               </PanelBody>
+              <RbeaSupportControl blockSlug={"icons-list"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <PanelBody
@@ -807,6 +809,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"icons-list"} />
             </InspectorTab>
           </InspectorTabs>
         </InspectorControls>

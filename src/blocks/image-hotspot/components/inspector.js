@@ -11,7 +11,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
@@ -737,6 +737,7 @@ class Inspector extends Component {
                   allowReset
                 />
               </PanelBody>
+              <RbeaSupportControl blockSlug={"icons-hotspot"} />
             </InspectorTab>
             <InspectorTab key={"style"}>
               <PanelBody initialOpen={true}>
@@ -872,6 +873,7 @@ class Inspector extends Component {
                   {...this.props}
                 />
               </PanelBody>
+              <RbeaSupportControl blockSlug={"icons-hotspot"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <PanelBody
@@ -988,6 +990,7 @@ class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"icons-hotspot"} />
             </InspectorTab>
           </InspectorTabs>
         )}

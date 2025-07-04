@@ -8,7 +8,7 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
-
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 /**
  * Inspector Controls
  */
@@ -223,6 +223,7 @@ export default class Inspector extends Component {
                 }
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"expand"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
 				{showTitle && (
@@ -308,6 +309,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"expand"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -425,6 +427,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"expand"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
