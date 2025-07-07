@@ -2034,7 +2034,6 @@ export default class Inspector extends Component {
             </PanelBody>
             <RbeaSupportControl blockSlug={"table-of-contents"} />
           </InspectorTab>
-          <RbeaSupportControl blockSlug={"table-of-contents"} />
         </InspectorTabs>
       </InspectorControls>
     );

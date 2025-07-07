@@ -984,7 +984,7 @@ export default class Inspector extends Component {
                 />
               )}
             </PanelBody>
-            <RbeaSupportControl blockSlug={"post-grid"} />
+            <RbeaSupportControl blockSlug={"responsive-block-editor-addons-post-grid"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
           <TypographyHelperControl
@@ -1349,7 +1349,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
-            <RbeaSupportControl blockSlug={"post-grid"} />
+            <RbeaSupportControl blockSlug={"responsive-block-editor-addons-post-grid"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1467,7 +1467,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
           </PanelBody>
-          <RbeaSupportControl blockSlug={"post-grid"} />
+          <RbeaSupportControl blockSlug={"responsive-block-editor-addons-post-grid"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

@@ -19,6 +19,8 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+
 // Import block components
 const { InspectorControls, ColorPalette, AlignmentToolbar } = wp.blockEditor;
 
@@ -501,6 +503,7 @@ export default class Inspector extends Component {
                 </TabPanel>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"call-mail-button"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             {textFontFamily && loadGoogleFont(textFontFamily)}
@@ -834,6 +837,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"call-mail-button"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -950,6 +954,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
           </PanelBody>
+          <RbeaSupportControl blockSlug={"call-mail-button"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

@@ -6,6 +6,8 @@ import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import EditorStyles from "./editor-styles";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+
 
 /**
  * WordPress dependencies
@@ -211,6 +213,8 @@ class SpacerEdit extends Component {
                   }}
                 </TabPanel>
               </PanelBody>
+     					<RbeaSupportControl blockSlug={"spacer"} />
+
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <PanelBody
@@ -328,6 +332,8 @@ class SpacerEdit extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+   					<RbeaSupportControl blockSlug={"spacer"} />
+
             </InspectorTab>
           </InspectorTabs>
         </InspectorControls>

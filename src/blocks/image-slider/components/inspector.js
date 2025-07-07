@@ -348,7 +348,7 @@ class Inspector extends Component {
                   />
                 </PanelBody>
                 <SliderPanel {...this.props} />
-                <RbeaSupportControl blockSlug={"icons-hotspot"} />
+                <RbeaSupportControl blockSlug={"image-slider"} />
               </InspectorTab>
               <InspectorTab key={"style"}>
                 <PanelBody
@@ -429,7 +429,7 @@ class Inspector extends Component {
                       {...this.props}
                     />
                   </PanelBody>
-                  <RbeaSupportControl blockSlug={"icons-hotspot"} />
+                  <RbeaSupportControl blockSlug={"image-slider"} />
               </InspectorTab>
               <InspectorTab key={"advance"}>
                 <PanelBody
@@ -547,7 +547,7 @@ class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
-            <RbeaSupportControl blockSlug={"icons-hotspot"} />
+            <RbeaSupportControl blockSlug={"image-slider"} />
               </InspectorTab>
             </InspectorTabs>
           </InspectorControls>

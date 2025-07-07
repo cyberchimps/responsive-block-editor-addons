@@ -27,6 +27,8 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import ResponsiveBorderWidthControl from "../../../settings-components/ResponsiveBorderWidthSettings";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
@@ -1160,6 +1162,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           <InspectorTabs>
             <InspectorTab key={"content"}>
               {accordionGeneralSettings()}
+              <RbeaSupportControl blockSlug={"accordion"} />
             </InspectorTab>
             <InspectorTab key={"style"}>
               {accordionColorSettings()}
@@ -1168,8 +1171,10 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               {contentFontFamily && loadGoogleFont(contentFontFamily)}
               {accordionBorderSettings()}
               {accordionStylingSettings()}
+              <RbeaSupportControl blockSlug={"accordion"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
+              <RbeaSupportControl blockSlug={"accordion"} />
             </InspectorTab>
           </InspectorTabs>
         </InspectorControls>
