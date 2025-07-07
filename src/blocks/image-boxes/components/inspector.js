@@ -1193,7 +1193,7 @@ export default class Inspector extends Component {
                       />
                     )}
             </PanelBody>
-            <RbeaSupportControl blockSlug={"icons-boxes"} />
+            <RbeaSupportControl blockSlug={"image-boxes-block"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -1606,7 +1606,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
-            <RbeaSupportControl blockSlug={"icons-boxes"} />
+            <RbeaSupportControl blockSlug={"image-boxes-block"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -1724,7 +1724,7 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
-            <RbeaSupportControl blockSlug={"icons-boxes"} />
+            <RbeaSupportControl blockSlug={"image-boxes-block"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

@@ -18,7 +18,7 @@ const RbeaSupportControl = ({ blockSlug }) => {
             </div>
 
             <div className="rbea-support-control-panel__links">
-                <a
+                { blockSlug !==  'popup' && blockSlug !== 'form' && ( <a
                     href={demoUrl}
                     target="_blank"
                     rel="noreferrer"
@@ -26,7 +26,7 @@ const RbeaSupportControl = ({ blockSlug }) => {
                 >
                     <span className="dashicons dashicons-controls-play"></span>
                     Demo
-                </a>
+                </a>)  }
 
                 <a
                     href={docsUrl}

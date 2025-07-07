@@ -16,6 +16,8 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import { alignLeft, alignRight} from '@wordpress/icons';
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -332,6 +334,7 @@ export default class Inspector extends Component {
               </BaseControl>
               </Fragment>)}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"tabs"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             <PanelBody
@@ -544,6 +547,7 @@ export default class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            <RbeaSupportControl blockSlug={"tabs"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
             <PanelBody
@@ -757,6 +761,7 @@ export default class Inspector extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"tabs"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

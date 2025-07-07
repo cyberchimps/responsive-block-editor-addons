@@ -317,10 +317,7 @@ class GalleryCarouselEdit extends Component {
       </Fragment>
     );
 
-    if (!hasImages) {
-      return carouselGalleryPlaceholder;
-    }
-
+   
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-image-slider-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
