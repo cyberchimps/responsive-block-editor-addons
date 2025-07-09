@@ -8,7 +8,7 @@
 /**
  * Require accordion index.php file
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/accordion/index.php';
+require_once plugin_dir_path( __DIR__ ) . 'src/blocks/accordion/index.php';
 
 /**
  * Accordion frontend assets funciton test
@@ -107,5 +107,3 @@ class Accordion_Index_Test extends WP_UnitTestCase {
 		$this->assertTrue( wp_script_is( 'responsive_block_editor_addons-accordion-front-script' ) );
 	}
 }
-
-

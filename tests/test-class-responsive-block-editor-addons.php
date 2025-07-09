@@ -10,7 +10,7 @@
 /**
  * Require activator class
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-responsive-block-editor-addons.php';
+require_once plugin_dir_path( __DIR__ ) . 'includes/class-responsive-block-editor-addons.php';
 
 /**
  * Class Responsive_Block_Editor_Addons Test

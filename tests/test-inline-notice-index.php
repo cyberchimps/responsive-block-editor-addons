@@ -8,7 +8,7 @@
 /**
  * Require inline notice index.php file
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/inline-notice/index.php';
+require_once plugin_dir_path( __DIR__ ) . 'src/blocks/inline-notice/index.php';
 
 /**
  * Inline Notice frontend assets funciton test
@@ -108,5 +108,3 @@ class Inline_Notice_Index_Test extends WP_UnitTestCase {
 		$this->assertTrue( wp_script_is( 'responsive_block_editor_addons-inline-notice-cookies-script' ) );
 	}
 }
-
-

@@ -232,7 +232,6 @@ if ( ! class_exists( 'RBEA_Block_Templates_Image_Importer' ) ) :
 
 			return false;
 		}
-
 	}
 
 	/**

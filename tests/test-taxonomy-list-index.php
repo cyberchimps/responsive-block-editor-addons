@@ -8,7 +8,7 @@
 /**
  * Require taxonomy list index.php file
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'src/blocks/taxonomy-list/index.php';
+require_once plugin_dir_path( __DIR__ ) . 'src/blocks/taxonomy-list/index.php';
 
 /**
  * Taxonomy list funcitons test
@@ -274,8 +274,7 @@ class Taxonomy_List_Index_Test extends WP_UnitTestCase {
 		);
 		$render_code = responsive_block_editor_addons_render_taxonomy_list( $attributes );
 		$render_code = preg_replace( '/\s+/', '', $render_code );
-		$expected = '<divclass="responsive-block-editor-addons-block-taxonomy-listblock-"><divclass="responsive-block-editor-addons-block-list"><ulclass="responsive-block-editor-addons-block-list-wrap"><liclass="responsive-block-editor-addons-block-list-item"><divclass="responsive-block-editor-addons-block-link-wrap"><aclass="responsive-block-editor-addons-block-link"href="http://example.org/?cat=1"><divclass="responsive-block-editor-addons-block-link-name">Uncategorized</div></a><spanclass="responsive-block-editor-addons-block-list-count">(1)</span></div><divclass="responsive-block-editor-addons-block-separator-wrap"><divclass="responsive-block-editor-addons-block-separator"></div></div></li></ul></div></div>';
+		$expected    = '<divclass="responsive-block-editor-addons-block-taxonomy-listblock-"><divclass="responsive-block-editor-addons-block-list"><ulclass="responsive-block-editor-addons-block-list-wrap"><liclass="responsive-block-editor-addons-block-list-item"><divclass="responsive-block-editor-addons-block-link-wrap"><aclass="responsive-block-editor-addons-block-link"href="http://example.org/?cat=1"><divclass="responsive-block-editor-addons-block-link-name">Uncategorized</div></a><spanclass="responsive-block-editor-addons-block-list-count">(1)</span></div><divclass="responsive-block-editor-addons-block-separator-wrap"><divclass="responsive-block-editor-addons-block-separator"></div></div></li></ul></div></div>';
 		$this->assertEquals( $expected, $render_code );
 	}
-
 }
