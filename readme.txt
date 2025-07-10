@@ -236,7 +236,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 2.0.9 - 9th July 2025 =
+= 2.0.9 - 10th July 2025 =
 * Improvement - Added Demo and Doc links for all the blocks.
 * Fix - Section block - Moved z-index settings to the advanced tab.
 
