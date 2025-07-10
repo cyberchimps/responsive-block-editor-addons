@@ -737,7 +737,7 @@ class Inspector extends Component {
                   allowReset
                 />
               </PanelBody>
-              <RbeaSupportControl blockSlug={"icons-hotspot"} />
+              <RbeaSupportControl blockSlug={"image-hotspot"} />
             </InspectorTab>
             <InspectorTab key={"style"}>
               <PanelBody initialOpen={true}>
@@ -873,7 +873,7 @@ class Inspector extends Component {
                   {...this.props}
                 />
               </PanelBody>
-              <RbeaSupportControl blockSlug={"icons-hotspot"} />
+              <RbeaSupportControl blockSlug={"image-hotspot"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
               <PanelBody
@@ -990,7 +990,7 @@ class Inspector extends Component {
                   }}
                 </TabPanel>
             </PanelBody>
-            <RbeaSupportControl blockSlug={"icons-hotspot"} />
+            <RbeaSupportControl blockSlug={"image-hotspot"} />
             </InspectorTab>
           </InspectorTabs>
         )}

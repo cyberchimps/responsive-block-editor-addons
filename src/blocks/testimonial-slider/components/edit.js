@@ -33,6 +33,8 @@ import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlock
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-control";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+
 
 const { __ } = wp.i18n;
 
@@ -910,6 +912,7 @@ class edit extends Component {
 
     // Margin Settings.
     const marginSettings = (
+      <>
       <PanelBody title={__("Spacing", "responsive-block-editor-addons")} initialOpen={false}>
         <ResponsiveNewPaddingControl
           attrNameTemplate="block%s"
@@ -999,6 +1002,8 @@ class edit extends Component {
           {...this.props}
         />
       </PanelBody>
+      <RbeaSupportControl blockSlug={"testimonial-slider"} />
+      </>
     );
 
     const imagePositionOptions = [
@@ -1517,6 +1522,7 @@ class edit extends Component {
         image_val = test_block[index]["image"];
       }
       return (
+        <>
         <PanelBody
           key={index}
           title={__("Image", "responsive-block-editor-addons") + " " + (index + 1) + " " + __("Settings", "responsive-block-editor-addons")}
@@ -1534,6 +1540,8 @@ class edit extends Component {
               mediaType={'image'}
             />
         </PanelBody>
+       
+       </>
       );
     };
 
@@ -1867,6 +1875,7 @@ class edit extends Component {
 
             <PanelBody title={__("Image", "responsive-block-editor-addons")} initialOpen={false}>
               {times(test_item_count, (n) => tmControls(n))}
+              
 
               {cnt > 0 && (
                 <Fragment>
@@ -2004,6 +2013,7 @@ class edit extends Component {
                 </Fragment>
               )}
             </PanelBody>
+            <RbeaSupportControl blockSlug={"testimonial-slider"} />
           </InspectorTab>
           <InspectorTab key={"style"}>
             {TypographySettings}
@@ -2126,6 +2136,7 @@ class edit extends Component {
                   }}
               </TabPanel>
             </PanelBody>
+            <RbeaSupportControl blockSlug={"testimonial-slider"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>

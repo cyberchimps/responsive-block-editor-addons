@@ -7,6 +7,8 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
+import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -238,6 +240,8 @@ export default class Inspector extends Component {
 								optionHasBorder={true}
 							/>
 						</PanelBody>
+					<RbeaSupportControl blockSlug={"buttons"} />
+
 					</InspectorTab>
 					<InspectorTab key={"style"}>
 						<PanelBody
@@ -255,6 +259,8 @@ export default class Inspector extends Component {
 								{...this.props}
 							/>
 						</PanelBody>
+						<RbeaSupportControl blockSlug={"buttons"} />
+
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 						<PanelBody
@@ -292,6 +298,8 @@ export default class Inspector extends Component {
 								}
 							/>
 						</PanelBody>
+						<RbeaSupportControl blockSlug={"buttons"} />
+
             		</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>
