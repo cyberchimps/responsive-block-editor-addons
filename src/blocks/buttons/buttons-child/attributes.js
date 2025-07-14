@@ -387,7 +387,15 @@ const attributes = {
   borderOpacity: {
     type: "number",
     default: 100,
-  }
+  },
+  buttonTextTransform: {
+    type: "string",
+    default: "",
+  },
+  buttonFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

@@ -175,6 +175,12 @@ function EditorStyles(props) {
   backgroundSizeMobile,
   imagePositionTab,
   imageSizeTab,
+  ctaTitleTextTransform,
+  ctaTitleFontStyle,
+  ctaTextTextTransform,
+  ctaTextFontStyle,
+  buttonTextTextTransform,
+  buttonTextFontStyle,
   } = props.attributes;
 
   let updatedButtonBackgroundColor = "";
@@ -229,6 +235,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
       "font-weight": buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
+      "text-transform": buttonTextTextTransform,
+      "font-style": buttonTextFontStyle,
     },
 
     " .responsive-block-editor-addons-cta-link-text:hover": {
@@ -306,6 +314,8 @@ function EditorStyles(props) {
       "font-weight": headingFontWeight !== 'empty' && ctaTitleFontWeight === "400" ? headingFontWeight : ctaTitleFontWeight, // For compatibility with v1.3.2.
       "margin-bottom": generateCSSUnit(ctaTitleBottomSpacing, "px"),
       "font-size": generateCSSUnit(ctaTitleFontSize, "px"),
+      "text-transform": ctaTitleTextTransform,
+      "font-style": ctaTitleFontStyle,
     },
 
     " .responsive-block-editor-addons-cta-text": {
@@ -315,6 +325,8 @@ function EditorStyles(props) {
       "line-height": contentLineHeight !== 999 && ctaTextLineHeight === 1.75 ? contentLineHeight : ctaTextLineHeight, // For compatibility with v1.3.2
       "font-weight": contentFontWeight !== 'empty' && ctaTextFontWeight === "400" ? contentFontWeight : ctaTextFontWeight, // For compatibility with v1.3.2.
       "margin-bottom": generateCSSUnit(ctaTextBottomSpacing, "px"),
+      "text-transform": ctaTextTextTransform,
+      "font-style": ctaTextFontStyle,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper": {
@@ -345,6 +357,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
       "font-weight": buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
+      "text-transform": buttonTextTextTransform,
+      "font-style": buttonTextFontStyle,
     }
   };
 

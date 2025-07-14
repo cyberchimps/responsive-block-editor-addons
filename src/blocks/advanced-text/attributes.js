@@ -403,6 +403,30 @@ const attributes = {
   textTypographyColor: {
     type: "string",
   },
+  titleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  subtitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  subtitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  textTextTransform: {
+    type: "string",
+    default: "",
+  },
+  textFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

@@ -260,6 +260,10 @@ export default class Inspector extends Component {
         subHeadingTitleTextDecoration,
         widthTypeValueUpdated,
         widthType,
+        headingTitleTextTransform,
+        headingTitleFontStyle,
+        subHeadingTitleTextTransform,
+        subHeadingTitleFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -476,11 +480,12 @@ export default class Inspector extends Component {
                 bottomSpacingMobile: headingTitleBottomSpacingMobile,
                 bottomSpacingTablet: headingTitleBottomSpacingTablet,
                 textDecoration: headingTitleTextDecoration,
+                transform: headingTitleTextTransform,
+                fontstyle: headingTitleFontStyle,
               }}
               showLetterSpacing={true}
               showTextDecoration={true}
               showTextBottomSpacing={true}
-              showTextTransform={false}
               showColorControl={true}
               setAttributes={setAttributes}
               {...this.props}
@@ -502,12 +507,13 @@ export default class Inspector extends Component {
                   bottomSpacingMobile: subHeadingTitleBottomSpacingMobile,
                   bottomSpacingTablet: subHeadingTitleBottomSpacingTablet,
                   textDecoration: subHeadingTitleTextDecoration,
+                  transform: subHeadingTitleTextTransform,
+                  fontstyle: subHeadingTitleFontStyle,
                 }}
                 showLetterSpacing={true}
                 showTextBottomSpacing={true}
                 showTextDecoration={true}
                 showColorControl={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
