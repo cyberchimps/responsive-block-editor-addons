@@ -690,6 +690,22 @@ const attributes = {
     type: "string",
     default: '#fff',
   },
+  digitTextTransform: {
+    type: "string",
+    default: "",
+  },
+  digitFontStyle: {
+    type: "string",
+    default: "",
+  },
+  labelTextTransform: {
+    type: "string",
+    default: "",
+  },
+  labelFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

@@ -262,6 +262,8 @@ export default class Inspector extends Component {
         quoteTypographyColor,
         blockIsTypographyColorValueUpdated,
         isAlignmentValueUpdated,
+        quoteTextTransform,
+        quoteFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -739,9 +741,10 @@ export default class Inspector extends Component {
 				    		weight: quoteFontWeight,
 				    		height: quoteLineHeight,
                 color: quoteTypographyColor,
+                transform: quoteTextTransform,
+                fontstyle: quoteFontStyle,
 				    	}}
 				    	showLetterSpacing = { false }
-				    	showTextTransform = { false }
               showColorControl={true}
 				    	setAttributes={ setAttributes }
 				    	{...this.props}

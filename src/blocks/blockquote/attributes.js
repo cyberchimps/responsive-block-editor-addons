@@ -418,6 +418,14 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  quoteTextTransform: {
+    type: "string",
+    default: "",
+  },
+  quoteFontStyle: {
+    type: "string",
+    default: "",
+  }
 };
 
 export default attributes;

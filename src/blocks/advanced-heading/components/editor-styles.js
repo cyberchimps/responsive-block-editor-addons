@@ -138,6 +138,10 @@ function EditorStyles(props) {
     headingTitleTextDecoration,
     subHeadingTitleTextDecoration,
     widthType,
+    headingTitleTextTransform,
+    headingTitleFontStyle,
+    subHeadingTitleTextTransform,
+    subHeadingTitleFontStyle,
   } = props.attributes;
 
   var selectors = {
@@ -161,7 +165,9 @@ function EditorStyles(props) {
       "letter-spacing": generateCSSUnit(headingTitleLetterSpacing, "px"),
       "margin-bottom": generateCSSUnit(headingTitleBottomSpacing, "px"),
       "text-decoration": headingTitleTextDecoration,
-      color: headingTitleTypographyColor,
+      "color": headingTitleTypographyColor,
+      "text-transform": headingTitleTextTransform,
+      "font-style": headingTitleFontStyle,
     },
     " .responsive-heading-seperator": {
       "border-top-style": seperatorStyle,
@@ -178,7 +184,9 @@ function EditorStyles(props) {
       "letter-spacing": generateCSSUnit(subHeadingTitleLetterSpacing, "px"),
       "margin-bottom": generateCSSUnit(subHeadingTitleBottomSpacing, "px"),
       "text-decoration": subHeadingTitleTextDecoration,
-      color: subHeadingTitleTypographyColor,
+      "color": subHeadingTitleTypographyColor,
+      "text-transform": subHeadingTitleTextTransform,
+      "font-style": subHeadingTitleFontStyle,
     },
   };
 

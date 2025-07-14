@@ -727,5 +727,29 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  ctaTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  ctaTextTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaTextFontStyle: {
+    type: "string",
+    default: "",
+  },
+  buttonTextTextTransform: {
+    type: "string",
+    default: "",
+  },
+  buttonTextFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

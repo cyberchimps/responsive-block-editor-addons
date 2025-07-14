@@ -102,6 +102,8 @@ function EditorStyles(props) {
     leftPadding, // For compatibility with v1.3.2.
     rightPadding, // For compatibility with v1.3.2.
     quoteTypographyColor,
+    quoteTextTransform,
+    quoteFontStyle,
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -187,6 +189,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(quoteFontSize, "px"),
       "font-weight": quoteFontWeight,
       "line-height": quoteLineHeight,
+      "text-transform": quoteTextTransform,
+      "font-style": quoteFontStyle,
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPadding, "px"),

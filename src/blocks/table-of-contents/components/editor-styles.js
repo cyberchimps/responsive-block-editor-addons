@@ -217,6 +217,10 @@ function EditorStyles(props) {
     backgroundPositionMobile,
     backgroundPositionTablet,
     imageSizeTab,
+    headingTextTransform,
+    headingFontStyle,
+    contentTextTransform,
+    contentFontStyle,
   } = props.attributes;
 
   let justifyContent = "flex-start";
@@ -292,7 +296,8 @@ function EditorStyles(props) {
       "border-bottom-right-radius": generateCSSUnit(headingBorderBottomRadius, "px"),
 
       // "border-radius": generateCSSUnit(headingBorderRadius, "px"),
-
+      "text-transform": headingTextTransform,
+			"font-style": headingFontStyle,
     },
     " .responsive-block-editor-addons-toc__title-wrap:hover": {
       color: headingColorHover,
@@ -324,6 +329,8 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(bodyBorderRightRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(bodyBorderLeftRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(bodyBorderBottomRadius, "px"),
+      "text-transform": contentTextTransform,
+			"font-style": contentFontStyle,
     },
     ' .responsive-block-editor-addons_table-of-contents-placeholder': {
       "font-family": contentFontFamily,
@@ -347,6 +354,8 @@ function EditorStyles(props) {
       "border-bottom-width": generateCSSUnit(bodyBorderWidth, "px"),
       "border-radius": generateCSSUnit(bodyBorderRadius, "px"),
       color: bodyColor,
+      "text-transform": contentTextTransform,
+			"font-style": contentFontStyle,
     },
     " .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li, .responsive-block-editor-addons-toc__list-wrap .responsive-block-editor-addons-toc__list li a": {
       color: bodyColor,
