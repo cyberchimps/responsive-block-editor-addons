@@ -102,6 +102,10 @@ function EditorStyles(props) {
     tabTitleTypographyColor,
     tabTitleActiveTypographyColor,
     tabContentTypographyColor,
+    tabTitleTextTransform,
+    tabTitleFontStyle,
+    tabContentTextTransform,
+    tabContentFontStyle,
   } = props.attributes;
 
 
@@ -228,6 +232,8 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p" : {
 			"color": tabTitleTypographyColor,
       "font-family": tabTitleFontFamily,
+      "text-transform": tabTitleTextTransform,
+      "font-style": tabTitleFontStyle,
 			"font-weight": tabTitleFontWeight,
 			"font-size": generateCSSUnit( tabTitleFontSize, "px" ),
 			"line-height": generateCSSUnit( tabTitleLineHeight, "px" ),
@@ -238,6 +244,8 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
 			"color": tabContentTypographyColor,
       "font-family": tabContentFontFamily,
+      "text-transform": tabContentTextTransform,
+      "font-style": tabContentFontStyle,
 			"font-weight": tabContentFontWeight,
 			"font-size": generateCSSUnit( tabContentFontSize, "px" ),
 			"line-height": generateCSSUnit( tabContentLineHeight, "px" ),

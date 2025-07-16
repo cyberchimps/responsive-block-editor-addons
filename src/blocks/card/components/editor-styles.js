@@ -225,6 +225,12 @@ function EditorStyles(props) {
     ctaButtonBottomMarginMobile,
     ctaButtonLeftMarginMobile,
     ctaButtonRightMarginMobile,
+    headingTextTransform,
+    headingFontStyle,
+    subTextTransform,
+    subFontStyle,
+    contentTextTransform,
+    contentFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -416,6 +422,8 @@ function EditorStyles(props) {
       "font-family": headingFontFamily,
       "font-weight": headingFontWeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
+      "text-transform": headingTextTransform,
+      "font-style": headingFontStyle,
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__subtitle": {
@@ -426,6 +434,8 @@ function EditorStyles(props) {
       "font-weight": subFontWeight,
       "font-family": subFontFamily,
       "font-size": generateCSSUnit(subFontSize, "px"),
+      "text-transform": subTextTransform,
+      "font-style": subFontStyle,
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__content": {
@@ -436,6 +446,8 @@ function EditorStyles(props) {
       "font-weight": contentFontWeight,
       "font-size": generateCSSUnit(contentFontSize, "px"),
       "font-family": contentFontFamily,
+      "text-transform": contentTextTransform,
+      "font-style": contentFontStyle,
     },
 
     " .responsive-block-editor-addons-card-button-inner": {

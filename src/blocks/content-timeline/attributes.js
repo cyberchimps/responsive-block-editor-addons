@@ -457,6 +457,30 @@ const attributes = {
   dateTypographyColor: {
     type: "string",
     default: '',
-  }
+  },
+  dateTextTransform: {
+    type: "string",
+    default: '',
+  },
+  dateFontStyle: {
+    type: "string",
+    default: '',
+  },
+  headingTextTransform: {
+    type: "string",
+    default: '',
+  },
+  headingFontStyle: {
+    type: "string",
+    default: '',
+  },
+  contentTextTransform: {
+    type: "string",
+    default: '',
+  },
+  contentFontStyle: {
+    type: "string",
+    default: '',
+  },
 };
 export default attributes;

@@ -256,6 +256,10 @@ export default class Inspector extends Component {
         ctaBlockLeftRadiusMobile,
         ctaBlockIsRadiusControlConnected,
         isCtaButtonBorderRadiusValueUpdated,
+        ctaTextTransform,
+        ctaFontStyle,
+        titleFontStyle,
+        descFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -834,9 +838,9 @@ export default class Inspector extends Component {
                   height: titleLineHeight,
                   transform: titleTextTransform,
                   color: titleTypographyColor,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={true}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -856,9 +860,9 @@ export default class Inspector extends Component {
                   height: descLineHeight,
                   transform: descTextTransform,
                   color: descTypographyColor,
+                  fontstyle: descFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={true}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -876,9 +880,10 @@ export default class Inspector extends Component {
                   sizeTablet: ctaFontSizeTablet,
                   weight: ctaFontWeight,
                   height: ctaLineHeight,
+                  transform: ctaTextTransform,
+                  fontstyle: ctaFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />

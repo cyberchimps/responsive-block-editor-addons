@@ -549,7 +549,7 @@ const attributes = {
   },
   ctaHoverBorderColor: {
     type: "string",
-    defaulr: "#333",
+    default: "#333",
   },
   ctaHpaddingTablet: {
     type: "number",
@@ -755,6 +755,22 @@ const attributes = {
   isCtaButtonBorderRadiusValueUpdated: {
     type: "boolean",
     default: false,
+  },
+  ctaTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaFontStyle: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  descFontStyle: {
+    type: "string",
+    default: "",
   },
 };
 export default attributes;

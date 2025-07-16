@@ -502,6 +502,30 @@ const attributes = {
   isAlignmentValueUpdated: {
     type: "boolean",
     default: false,
-  }
+  },
+  headingTextTransform: {
+    type: "string",
+    default: "",
+  },
+  headingFontStyle: {
+    type: "string",
+    default: "",
+  },
+  contentTextTransform: {
+    type: "string",
+    default: "",
+  },
+  contentFontStyle: {
+    type: "string",
+    default: "",
+  },
+  dateTextTransform: {
+    type: "string",
+    default: "",
+  },
+  dateFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

@@ -104,6 +104,14 @@ const attributes = {
       },
     },
   },
+  overlayTextFontStyle: {
+		type: 'string',
+		default: "",
+  },
+  overlayTextTextTransform: {
+		type: 'string',
+		default: "",
+  }
 };
 
 export default attributes;

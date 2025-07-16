@@ -1300,6 +1300,38 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'string',
 					'default' => '#333333',
 				),
+				'titleTextTransform'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'titleFontStyle'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'metaTextTransform'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'metaFontStyle'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'excerptTextTransform'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'excerptFontStyle'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'ctaTextTransform'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'ctaFontStyle'                => array(
+					'type'    => 'string',
+					'default' => '',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts2',
 		)

@@ -418,7 +418,15 @@ const attributes = {
   isCtaButtonPaddingMarginValueUpdated: {
     type: "boolean",
     default: false,
-  }
+  },
+  labelTextTransform: {
+    type: "string",
+    default: "",
+  },
+  labelFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

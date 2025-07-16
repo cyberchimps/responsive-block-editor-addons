@@ -388,6 +388,30 @@ const attributes = {
     type: 'number',
     default: 10,
   },
+  titleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextTransform: {
+    type: "string",
+    default: "",
+  },
+  descriptionFontStyle: {
+    type: "string",
+    default: "",
+  },
+  priceTextTransform: {
+    type: "string",
+    default: "",
+  },
+  priceFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

@@ -491,6 +491,12 @@ export default class Inspector extends Component {
         ctaButtonLeftMarginMobile,
         ctaButtonRightMarginMobile,
         isCtaButtonPaddingMarginValueUpdated,
+        headingTextTransform,
+        headingFontStyle,
+        subTextTransform,
+        subFontStyle,
+        contentTextTransform,
+        contentFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -1406,9 +1412,10 @@ export default class Inspector extends Component {
                   bottomSpacing: headingBottomSpacing,
                   bottomSpacingMoible: headingBottomSpacingMobile,
                   bottomSpacingTablet: headingBottomSpacingTablet,
+                  transform: headingTextTransform,
+                  fontstyle: headingFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
@@ -1430,9 +1437,10 @@ export default class Inspector extends Component {
                   bottomSpacing: subBottomSpacing,
                   bottomSpacingMoible: subBottomSpacingMobile,
                   bottomSpacingTablet: subBottomSpacingTablet,
+                  transform: subTextTransform,
+                  fontstyle: subFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -1453,9 +1461,10 @@ export default class Inspector extends Component {
                   bottomSpacing: contentBottomSpacing,
                   bottomSpacingMoible: contentBottomSpacingMobile,
                   bottomSpacingTablet: contentBottomSpacingTablet,
+                  transform: contentTextTransform,
+                  fontstyle: contentFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
                 {...this.props}

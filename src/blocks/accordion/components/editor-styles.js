@@ -185,6 +185,10 @@ function EditorStyles(props) {
     contentRightPadding,
     contentRightPaddingTablet,
     contentRightPaddingMobile,
+    titleTextTransform,
+    titleFontStyle,
+    contentTextTransform,
+    contentFontStyle,
   } = props.attributes;
 
   var selectors = {};
@@ -345,6 +349,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content": {
       "color": contentTypographyColor,
@@ -353,6 +359,8 @@ function EditorStyles(props) {
       "font-family": contentFontFamily,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
+      "text-transform": contentTextTransform,
+      "font-style": contentFontStyle,
     },
   };
 

@@ -707,5 +707,29 @@ const attributes = {
     type: "string",
     default: "none",
   },
+  titleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  designationTextTransform: {
+    type: "string",
+    default: "",
+  },
+  designationFontStyle: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextTransform: {
+    type: "string",
+    default: "",
+  },
+  descriptionFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;
