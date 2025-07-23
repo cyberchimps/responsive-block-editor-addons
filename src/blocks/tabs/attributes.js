@@ -24,7 +24,23 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  alignTabsT: {
+    type: "string",
+    default: "left",
+  },
+  alignTabsM: {
+    type: "string",
+    default: "left",
+  },
   alignTabsVertical: {
+    type: 'string',
+    default: "left",
+  },
+  alignTabsVerticalT: {
+    type: 'string',
+    default: "left",
+  },
+  alignTabsVerticalM: {
     type: 'string',
     default: "left",
   },
@@ -411,6 +427,10 @@ const attributes = {
   tabContentTypographyColor: {
     type: "string",
     default: "#000",
+  },
+  positionTab: {
+    type: "string",
+    default: "desktop",
   },
 };
 
