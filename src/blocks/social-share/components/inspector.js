@@ -153,6 +153,8 @@ export default class Inspector extends Component {
         iconContainerLeftPaddingMobile,
         iconContainerRightPaddingMobile,
         isCtaButtonPaddingMarginValueUpdated,
+        labelTextTransform,
+        labelFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -689,9 +691,10 @@ export default class Inspector extends Component {
                 weight: labelFontWeight,
                 height: labelLineHeight,
                 color: labelTypographyColor,
+                transform: labelTextTransform,
+                fontstyle: labelFontStyle,
               }}
               showLetterSpacing={false}
-              showTextTransform={false}
               showColorControl={true}
               setAttributes={setAttributes}
               {...this.props}

@@ -317,6 +317,12 @@ export default class Inspector extends Component {
         backgroundSizeMobile,
         backgroundRepeat,
         backgroundImageValueUpdated,
+        titleTextTransform,
+        titleFontStyle,
+        designationTextTransform,
+        designationFontStyle,
+        descriptionTextTransform,
+        descriptionFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -1292,9 +1298,10 @@ export default class Inspector extends Component {
                   bottomSpacing: titleBottomSpacing,
                   bottomSpacingMoible: titleBottomSpacingMobile,
                   bottomSpacingTablet: titleBottomSpacingTablet,
+                  transform: titleTextTransform,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
@@ -1317,9 +1324,10 @@ export default class Inspector extends Component {
                   bottomSpacing: designationBottomSpacing,
                   bottomSpacingMoible: designationBottomSpacingMobile,
                   bottomSpacingTablet: designationBottomSpacingTablet,
+                  transform: designationTextTransform,
+                  fontstyle: designationFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
                 setAttributes={setAttributes}
@@ -1342,9 +1350,10 @@ export default class Inspector extends Component {
                   bottomSpacing: descriptionBottomSpacing,
                   bottomSpacingMoible: descriptionBottomSpacingMobile,
                   bottomSpacingTablet: descriptionBottomSpacingTablet,
+                  transform: descriptionTextTransform,
+                  fontstyle: descriptionFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
                 setAttributes={setAttributes}

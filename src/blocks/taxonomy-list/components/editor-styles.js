@@ -117,6 +117,12 @@ function EditorStyles(props) {
 		blockRightPaddingTablet,
         countTypographyColor,
         titleTypographyColor,
+        titleTextTransform,
+        titleFontStyle,
+        countTextTransform,
+        countFontStyle,
+        listTextTransform,
+        listFontStyle,
     } = props.attributes;
 
 
@@ -167,14 +173,18 @@ function EditorStyles(props) {
             "font-family": titleFontFamily,
             "font-size": `${generateCSSUnit(titleFontSize, "px")} !important`,
             "font-weight": titleFontWeight,
-            "line-height": titleLineHeight
+            "line-height": titleLineHeight,
+            "text-transform": titleTextTransform,
+            "font-style": titleFontStyle,
         },
         " .responsive-block-editor-addons-block-count": {
             "color": countTypographyColor,
             "font-family": countFontFamily,
             "font-size": `${generateCSSUnit(countFontSize, "px")} !important`,
             "font-weight": countFontWeight,
-            "line-height": countLineHeight
+            "line-height": countLineHeight,
+            "text-transform": countTextTransform,
+            "font-style": countFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item": {
             "list-style": listStyle,
@@ -182,7 +192,9 @@ function EditorStyles(props) {
             "font-family": listFontFamily,
             "font-size": `${generateCSSUnit(listFontSize, "px")} !important`,
             "font-weight": listFontWeight,
-            "line-height": generateCSSUnit(listLineHeight, "px")
+            "line-height": generateCSSUnit(listLineHeight, "px"),
+            "text-transform": listTextTransform,
+            "font-style": listFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item:hover": {
             "color": listStyleColorHover

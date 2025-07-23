@@ -607,6 +607,22 @@ const attributes = {
   blockIsPaddingValueUpdated: {
     type: "boolean",
     default: false,
+  }, 
+  titleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextTransform: {
+    type: "string",
+    default: "",
+  },
+  descriptionFontStyle: {
+    type: "string",
+    default: "",
   }
 };
 

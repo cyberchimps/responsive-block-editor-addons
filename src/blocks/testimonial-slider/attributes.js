@@ -912,6 +912,30 @@ const attributes = {
   backgroundColor1: {
     type: "string",
   },
+  descTextTransform: {
+    type: "string",
+    default: "",
+  },
+  descFontStyle: {
+    type: "string",
+    default: "",
+  },
+  nameTextTransform: {
+    type: "string",
+    default: "",
+  },
+  nameFontStyle: {
+    type: "string",
+    default: "",
+  },
+  companyTextTransform: {
+    type: "string",
+    default: "",
+  },
+  companyFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

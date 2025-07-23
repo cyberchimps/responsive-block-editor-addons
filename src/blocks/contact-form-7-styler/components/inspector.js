@@ -530,6 +530,22 @@ export default class Inspector extends Component {
         ctaButtonLeftPaddingMobile,
         ctaButtonRightPaddingMobile,
         isCtaButtonPaddingMarginValueUpdated,
+        formTitleTextTransform,
+        formTitleFontStyle,
+        formDescriptionTextTransform,
+        formDescriptionFontStyle,
+        inputTextTransform,
+        inputFontStyle,
+        labelTextTransform,
+        labelFontStyle,
+        radioCheckboxTextTransform,
+        radioCheckboxFontStyle,
+        submitButtonTextTransform,
+        submitButtonFontStyle,
+        messageTextTransform,
+        messageFontStyle,
+        afterSubmitTextTransform,
+        afterSubmitFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -1359,9 +1375,10 @@ export default class Inspector extends Component {
                   weight: formTitleFontWeight,
                   height: formTitleLineHeight,
                   spacing: formTitleLetterSpacing,
+                  transform: formTitleTextTransform,
+                  fontstyle: formTitleFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1384,9 +1401,10 @@ export default class Inspector extends Component {
                   weight: formDescriptionFontWeight,
                   height: formDescriptionLineHeight,
                   spacing: formDescriptionLetterSpacing,
+                  transform: formDescriptionTextTransform,
+                  fontstyle: formDescriptionFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1911,9 +1929,10 @@ export default class Inspector extends Component {
                     height: inputLineHeight,
                     spacing: inputLetterSpacing,
                     color: inputTypographyColor,
+                    transform: inputTextTransform,
+                    fontstyle: inputFontStyle,
                   }}
                   showLetterSpacing = { false }
-                  showTextTransform = { false }
                   showColorControl = {true}
                   setAttributes={ setAttributes }
                   {...this.props}
@@ -1936,9 +1955,10 @@ export default class Inspector extends Component {
                   bottomSpacing: labelBottomSpacing,
                   bottomSpacingTablet: labelBottomSpacingTablet,
                   bottomSpacingMobile: labelBottomSpacingMobile,
+                  transform: labelTextTransform,
+                  fontstyle: labelFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
                 setAttributes={setAttributes}
@@ -2006,9 +2026,10 @@ export default class Inspector extends Component {
                   weight: radioCheckboxFontWeight,
                   height: radioCheckboxLineHeight,
                   spacing: radioCheckboxLetterSpacing,
+                  transform: radioCheckboxTextTransform,
+                  fontstyle: radioCheckboxFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               /> 
@@ -2378,9 +2399,10 @@ export default class Inspector extends Component {
                   weight: submitButtonFontWeight,
                   height: submitButtonLineHeight,
                   spacing: submitButtonLetterSpacing,
+                  transform: submitButtonTextTransform,
+                  fontstyle: submitButtonFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -2412,9 +2434,10 @@ export default class Inspector extends Component {
                   weight: messageFontWeight,
                   height: messageLineHeight,
                   spacing: messageLetterSpacing,
+                  transform: messageTextTransform,
+                  fontstyle: messageFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />              
@@ -2446,9 +2469,10 @@ export default class Inspector extends Component {
                   weight: afterSubmitFontWeight,
                   height: afterSubmitLineHeight,
                   spacing: afterSubmitLetterSpacing,
+                  transform: afterSubmitTextTransform,
+                  fontstyle: afterSubmitFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />

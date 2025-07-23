@@ -361,6 +361,19 @@ export default class Inspector extends Component {
         ctaButtonLeftPaddingMobile,
         ctaButtonRightPaddingMobile,
         isCtaButtonPaddingMarginValueUpdated,
+        titleTextTransform,
+        titleFontStyle,
+        prefixTextTransform,
+        prefixFontStyle,
+        amountTextTransform,
+        amountFontStyle,
+        suffixTextTransform,
+        suffixFontStyle,
+        subpriceFontStyle,
+        featuresTextTransform,
+        featuresFontStyle,
+        ctaTextTransform,
+        ctaFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -869,9 +882,10 @@ export default class Inspector extends Component {
                   bottomSpacing: titleBottomSpacing,
                   bottomSpacingMobile: titleBottomSpacingMobile,
                   bottomSpacingTablet: titleBottomSpacingTablet,
+                  transform: titleTextTransform,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
@@ -891,9 +905,10 @@ export default class Inspector extends Component {
                   weight: prefixFontWeight,
                   height: prefixLineHeight,
                   color: prefixTypographyColor,
+                  transform: prefixTextTransform,
+                  fontstyle: prefixFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -912,9 +927,10 @@ export default class Inspector extends Component {
                   bottomSpacing: amountBottomSpacing,
                   bottomSpacingMobile: amountBottomSpacingMobile,
                   bottomSpacingTablet: amountBottomSpacingTablet,
+                  transform: amountTextTransform,
+                  fontstyle: amountFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
@@ -934,9 +950,10 @@ export default class Inspector extends Component {
                   weight: suffixFontWeight,
                   height: suffixLineHeight,
                   color: suffixTypographyColor,
+                  transform: suffixTextTransform,
+                  fontstyle: suffixFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -959,9 +976,9 @@ export default class Inspector extends Component {
                   bottomSpacing: subpriceBottomSpacing,
                   bottomSpacingMobile: subpriceBottomSpacingMobile,
                   bottomSpacingTablet: subpriceBottomSpacingTablet,
+                  fontstyle: subpriceFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={true}
                 showColorControl={true}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
@@ -984,9 +1001,10 @@ export default class Inspector extends Component {
                   bottomSpacing: featuresBottomSpacing,
                   bottomSpacingMobile: featuresBottomSpacingMobile,
                   bottomSpacingTablet: featuresBottomSpacingTablet,
+                  transform: featuresTextTransform,
+                  fontstyle: featuresFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 showTextBottomSpacing={true}
                 setAttributes={setAttributes}
@@ -1002,9 +1020,10 @@ export default class Inspector extends Component {
                   sizeTablet: ctaFontSizeTablet,
                   weight: ctaFontWeight,
                   height: ctaLineHeight,
+                  transform: ctaTextTransform,
+                  fontstyle: ctaFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
