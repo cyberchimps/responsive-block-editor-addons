@@ -71,6 +71,10 @@ class TypographyControl extends Component {
         // Font Weight Options
         const fontWeightOptions = [
             {
+                value: "inherit",
+                label: __("Default", "responsive-block-editor-addons"),
+            },
+            {
                 value: "100",
                 label: __("100", "responsive-block-editor-addons"),
             },
@@ -128,6 +132,12 @@ class TypographyControl extends Component {
 
         // Text Decoration Options
         const textDecorationOptions = [
+            {
+                value: "none",
+                label: __("Default", "responsive-block-editor-addons"),
+                class: ""
+                // icon: textDecorationIcons.underline,
+            },
             {
                 value: "underline",
                 label: __("Header", "responsive-block-editor-addons"),
