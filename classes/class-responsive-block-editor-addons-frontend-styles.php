@@ -9055,10 +9055,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$box_shadow_position_css       = $attr['boxShadowPosition'];
+			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
 			}
 
 			$selectors = array(
@@ -9123,6 +9127,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-timeline__link_parent:hover' => array(
 					'background-color' => $attr['continuebghColor'],
 					'border'           => '1px solid ' . $attr['borderHColor'] . '',
+					'box-shadow'       =>
+					self::get_css_value(
+						$attr['hoverboxShadowHOffset'],
+						'px'
+					) .
+					' ' .
+					self::get_css_value(
+						$attr['hoverboxShadowVOffset'],
+						'px'
+					) .
+					' ' .
+					self::get_css_value(
+						$attr['hoverboxShadowBlur'],
+						'px'
+					) .
+					' ' .
+					self::get_css_value(
+						$attr['hoverboxShadowSpread'],
+						'px'
+					) .
+					' ' .
+					$attr['hoverboxShadowColor'] .
+					' ' .
+					$hover_box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link' => array(
 					'color'       => $attr['continueColor'] . '!important',
@@ -9510,6 +9538,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowVOffset'           => 0,
 				'boxShadowBlur'              => 0,
 				'boxShadowSpread'            => 0,
+				'hoverboxShadowColor'        => '',
+				'hoverboxShadowPosition'     => 'outset',
+				'hoverboxShadowHOffset'      => 0,
+				'hoverboxShadowVOffset'      => 0,
+				'hoverboxShadowBlur'         => 0,
+				'hoverboxShadowSpread'       => 0,
 				'taxonomyType'               => 'category',
 				'block_id'                   => '',
 				'dateFontSizeMobile'         => '',
