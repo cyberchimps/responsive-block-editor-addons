@@ -362,7 +362,31 @@ const attributes = {
   },
   boxShadowColor: {
     type: "string",
-    default: "#000",
+    default: "",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowColor: {
+    type: "string",
+    default: "",
   },
 	hideWidget: {
 	  type: "boolean",

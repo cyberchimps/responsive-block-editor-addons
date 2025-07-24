@@ -17169,9 +17169,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$active_tab_border_right  = self::get_css_value( $attr['tabBorderWidth'], 'px' );
 				$active_tab_border_left   = '0px';
 			}
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$box_shadow_position_css       = $attr['boxShadowPosition'];
+			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
 			}
 			$selectors          = array(
 				' '      => array(
@@ -17217,6 +17221,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['hovercolorLocation1'],
 						$attr['hovercolorLocation2']
 					) : '',
+					'box-shadow'       => $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
 				),
 				' > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active' => array(
 					'background' => $attr['tabBackgroundColor'],
@@ -17429,7 +17434,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'                 => 0,
 				'boxShadowPosition'             => 'outset',
 				'boxShadowSpread'               => 0,
-				'boxShadowColor'                => '#000',
+				'boxShadowColor'                => '',
+				'hoverboxShadowHOffset'         => 0,
+				'hoverboxShadowVOffset'         => 0,
+				'hoverboxShadowBlur'            => 0,
+				'hoverboxShadowPosition'        => 'outset',
+				'hoverboxShadowSpread'          => 0,
+				'hoverboxShadowColor'           => '',
 				'alignTabsVertical'             => 'left',
 				'hideWidget'                    => false,
 				'hideWidgetMobile'              => false,
