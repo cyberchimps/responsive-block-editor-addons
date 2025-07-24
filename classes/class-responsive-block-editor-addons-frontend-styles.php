@@ -13873,9 +13873,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$box_shadow_position_css       = $attr['boxShadowPosition'];
+			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
 			}
 
 			$display_days    = $attr['showDaysBox'] ? 'block' : 'none';
@@ -13906,6 +13910,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadius'], 'px' ),
 					'background-color'           => 'empty' !== $attr['boxBackgroundColor'] && '#6EC1E4' === $attr['backgroundColor'] ? $attr['boxBackgroundColor'] : $attr['backgroundColor'], // For compatibility with v1.3.2.
 					'box-shadow'                 => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
+				),
+				' .responsive-block-editor-addons-countdown-box-stylings:hover' => array(
+					'box-shadow'                 => $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
 					'margin-left' => '0px !important',
@@ -14221,7 +14228,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'                => 0,
 				'boxShadowPosition'            => 'outset',
 				'boxShadowSpread'              => 0,
-				'boxShadowColor'               => '#000',
+				'boxShadowColor'               => '',
+				'hoverboxShadowHOffset'        => 0,
+				'hoverboxShadowVOffset'        => 0,
+				'hoverboxShadowBlur'           => 0,
+				'hoverboxShadowPosition'       => 'outset',
+				'hoverboxShadowSpread'         => 0,
+				'hoverboxShadowColor'          => '',
 				'backgroundColor'              => '#6EC1E4',
 				'containerTopMargin'           => '',
 				'containerRightMargin'         => '',
