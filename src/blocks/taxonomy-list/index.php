@@ -336,18 +336,45 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type' => 'string',
 				),
 				'boxShadowHOffset'                   => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowVOffset'                   => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowBlur'                      => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowSpread'                    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowPosition'                  => array(
+					'type'    => 'string',
+					'default' => 'outset',
+				),
+				'hoverboxShadowColor'                => array(
+					'type' => 'string',
+				),
+				'hoverboxShadowHOffset'              => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowVOffset'              => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowBlur'                 => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowSpread'               => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowPosition'             => array(
 					'type'    => 'string',
 					'default' => 'outset',
 				),
