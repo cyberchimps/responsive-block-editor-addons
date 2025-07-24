@@ -3559,6 +3559,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
 			}
+			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
+
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
+			}
 
 			$icon_space_right = '';
 			if ( 'before' === $attr['iconPosition'] ) {
@@ -3712,6 +3717,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover' => array(
 					'border-color'     => $attr['borderHColor'] ? self::hex_to_rgb( $updated_border_h_color, $border_opacity_control_value ) : '#000',
 					'background-color' => $updated_background_h_color,
+					'box-shadow'       =>
+					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+					' ' .
+					$attr['hoverboxShadowColor'] .
+					' ' .
+					$hover_box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-button__icon' => array(
 					'margin-left'  => $icon_space_left . 'px',
@@ -3837,9 +3854,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowColor'           => '',
 				'boxShadowHOffset'         => 0,
 				'boxShadowVOffset'         => 0,
-				'boxShadowBlur'            => '',
-				'boxShadowSpread'          => '',
+				'boxShadowBlur'            => 0,
+				'boxShadowSpread'          => 0,
 				'boxShadowPosition'        => 'outset',
+				'hoverboxShadowColor'      => '',
+				'hoverboxShadowHOffset'    => 0,
+				'hoverboxShadowVOffset'    => 0,
+				'hoverboxShadowBlur'       => 0,
+				'hoverboxShadowSpread'     => 0,
+				'hoverboxShadowPosition'   => 'outset',
 				'icon_color'               => '#3a3a3a',
 				'icon_hover_color'         => '',
 				'hbackground'              => '',
