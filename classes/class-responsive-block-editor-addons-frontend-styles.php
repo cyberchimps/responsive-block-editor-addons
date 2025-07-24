@@ -4677,10 +4677,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$updated_background_type         = '';
 			$updated_button_background_color = '';
 			$box_shadow_position_css         = $attr['boxShadowPosition'];
+			$hover_box_shadow_position_css   = $attr['hoverboxShadowPosition'];
 			$background_image_url_check      = $attr['backgroundImage'] ? $attr['backgroundImage'] : null;
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
 			}
 
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
@@ -4768,6 +4772,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['boxShadowColor'] .
 						' ' .
 						$box_shadow_position_css,
+				),
+				' .wp-block-responsive-block-editor-addons-card-item:hover' => array(
+					'box-shadow' => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+						' ' .
+						$attr['hoverboxShadowColor'] .
+						' ' .
+						$hover_box_shadow_position_css,
 				),
 
 				' .responsive-block-editor-addons-card-background-image' => array(
@@ -5004,6 +5021,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'                => 0,
 				'boxShadowSpread'              => 0,
 				'boxShadowPosition'            => 'outset',
+				'hoverboxShadowColor'          => '',
+				'hoverboxShadowHOffset'        => 0,
+				'hoverboxShadowVOffset'        => 0,
+				'hoverboxShadowBlur'           => 0,
+				'hoverboxShadowSpread'         => 0,
+				'hoverboxShadowPosition'       => 'outset',
 				'titleSpace'                   => 8,
 				'subtitleSpace'                => 16,
 				'contentSpace'                 => 16,
