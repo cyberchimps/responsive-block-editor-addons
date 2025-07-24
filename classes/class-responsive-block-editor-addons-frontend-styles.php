@@ -215,10 +215,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$column_height_style = $attr['customHeight'] . 'px !important';
 			}
 
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$box_shadow_position_css       = $attr['boxShadowPosition'];
+			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
 			}
 			$max_width = '100%';
 
@@ -279,6 +283,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['colorLocation2']
 					) : '',
 					'box-shadow'                 => self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
+				),
+				' .responsive-columns-wrap:hover'       => array(
+					'box-shadow' => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
 				),
 				' .responsive-columns-inner-wrap' => array(
 					'max-width' => $max_width,
@@ -13379,6 +13386,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'            => 0,
 				'boxShadowSpread'          => 0,
 				'boxShadowPosition'        => 'outset',
+				'hoverboxShadowColor'      => '#fff',
+				'hoverboxShadowHOffset'    => 0,
+				'hoverboxShadowVOffset'    => 0,
+				'hoverboxShadowBlur'       => 0,
+				'hoverboxShadowSpread'     => 0,
+				'hoverboxShadowPosition'   => 'outset',
 				'opacity'                  => 20,
 				'colorLocation1'           => 0,
 				'colorLocation2'           => 100,
