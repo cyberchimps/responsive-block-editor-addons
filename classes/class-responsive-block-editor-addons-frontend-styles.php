@@ -1477,12 +1477,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$quoteopacity            = $attr['quoteOpacity'] / 100;
-			$imgopacity              = $attr['opacity'] / 100;
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$quoteopacity                  = $attr['quoteOpacity'] / 100;
+			$imgopacity                    = $attr['opacity'] / 100;
+			$box_shadow_position_css       = $attr['boxShadowPosition'];
+			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
 			}
 
 			$selectors = array(
@@ -1537,6 +1541,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'               => self::get_css_value( $attr['blockRightMargin'], 'px' ),
 					'margin-bottom'              => self::get_css_value( $attr['blockBottomMargin'], 'px' ),
 					'margin-left'                => self::get_css_value( $attr['blockLeftMargin'], 'px' ),
+				),
+				':hover' => array(
+					'box-shadow' =>
+					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+					' ' .
+					self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+					' ' .
+					$attr['hoverboxShadowColor'] .
+					' ' .
+					$hover_box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-section__video-wrap' => array(
 					'opacity' => $imgopacity,
@@ -13717,6 +13735,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'            => 20,
 				'boxShadowSpread'          => 20,
 				'boxShadowPosition'        => 'outset',
+				'hoverboxShadowColor'      => '#fff',
+				'hoverboxShadowHOffset'    => 0,
+				'hoverboxShadowVOffset'    => 0,
+				'hoverboxShadowBlur'       => 0,
+				'hoverboxShadowSpread'     => 0,
+				'hoverboxShadowPosition'   => 'outset',
 				'textTopPadding'           => 60,
 				'textTopPaddingMobile'     => 30,
 				'textTopPaddingTablet'     => 30,
