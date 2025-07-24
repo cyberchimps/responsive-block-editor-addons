@@ -2788,10 +2788,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$mobile_selectors = array();
 			$tablet_selectors = array();
 
-			$box_shadow_position_css = $attr['boxShadowPosition'];
+			$box_shadow_position_css       = $attr['boxShadowPosition'];
+			$hover_box_shadow_position_css = $attr['hoverboxShadowPosition'];
 
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$hover_box_shadow_position_css = '';
 			}
 			$selectors = array(
 				' ' => array(
@@ -2810,6 +2814,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'overflow'   => 'hidden',
 
 				),
+				':hover' => array(
+					'box-shadow' =>
+						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+						' ' .
+						$attr['hoverboxShadowColor'] .
+						' ' .
+						$hover_box_shadow_position_css,
+
+				),
 				' .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles' => array(
 					'box-shadow' => 'inset' === $box_shadow_position_css ?
 						$box_shadow_position_css .
@@ -2823,6 +2842,20 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						self::get_css_value( $attr['boxShadowSpread'], 'px' ) .
 						' ' .
 						$attr['boxShadowColor'] : '',
+				),
+				' .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles:hover' => array(
+					'box-shadow' => 'inset' === $hover_box_shadow_position_css ?
+						$hover_box_shadow_position_css .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+						' ' .
+						$attr['hoverboxShadowColor'] : '',
 				),
 				' .responsive-block-editor-addons-accordion-content span' => array(
 					'margin' => '0',
@@ -2850,33 +2883,39 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_accordian_child_block_default_attributes() {
 			return array(
-				'block_id'             => '',
-				'title'                => 'What is Accordion?',
-				'content'              => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-				'icon'                 => 'fas fa-plus',
-				'iconActive'           => 'fas fa-minus',
-				'layout'               => 'accordion',
-				'headingTag'           => 'span',
-				'blockBorderStyle'     => 'solid',
-				'blockBorderColor'     => 'black',
-				'blockBorderWidth'     => 1,
-				'blockBorderRadius'    => 2,
-				'boxShadowColor'       => '#fff',
-				'boxShadowHOffset'     => 9,
-				'boxShadowVOffset'     => 9,
-				'boxShadowBlur'        => 9,
-				'boxShadowSpread'      => 9,
-				'boxShadowPosition'    => 'outset',
-				'titlePadding'         => 10,
-				'contentPadding'       => 10,
-				'titlePaddingMobile'   => '',
-				'contentPaddingMobile' => '',
-				'titlePaddingTablet'   => '',
-				'contentPaddingTablet' => '',
-				'borderColor'          => 'empty', // For compatibility with v1.3.2.
-				'borderStyle'          => 'empty', // For compatibility with v1.3.2.
-				'borderWidth'          => 999, // For compatibility with v1.3.2.
-				'borderRadius'         => 999, // For compatibility with v1.3.2.
+				'block_id'               => '',
+				'title'                  => 'What is Accordion?',
+				'content'                => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				'icon'                   => 'fas fa-plus',
+				'iconActive'             => 'fas fa-minus',
+				'layout'                 => 'accordion',
+				'headingTag'             => 'span',
+				'blockBorderStyle'       => 'solid',
+				'blockBorderColor'       => 'black',
+				'blockBorderWidth'       => 1,
+				'blockBorderRadius'      => 2,
+				'boxShadowColor'         => '',
+				'boxShadowHOffset'       => 0,
+				'boxShadowVOffset'       => 0,
+				'boxShadowBlur'          => 0,
+				'boxShadowSpread'        => 0,
+				'boxShadowPosition'      => 'outset',
+				'hoverboxShadowColor'    => '',
+				'hoverboxShadowHOffset'  => 0,
+				'hoverboxShadowVOffset'  => 0,
+				'hoverboxShadowBlur'     => 0,
+				'hoverboxShadowSpread'   => 0,
+				'hoverboxShadowPosition' => 'outset',
+				'titlePadding'           => 10,
+				'contentPadding'         => 10,
+				'titlePaddingMobile'     => '',
+				'contentPaddingMobile'   => '',
+				'titlePaddingTablet'     => '',
+				'contentPaddingTablet'   => '',
+				'borderColor'            => 'empty', // For compatibility with v1.3.2.
+				'borderStyle'            => 'empty', // For compatibility with v1.3.2.
+				'borderWidth'            => 999, // For compatibility with v1.3.2.
+				'borderRadius'           => 999, // For compatibility with v1.3.2.
 			);
 		}
 
