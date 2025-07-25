@@ -74,6 +74,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     opacity,
     backgroundColor2,
     gradientDirection,
@@ -180,10 +186,14 @@ function EditorStyles(props) {
 
   let bgopacity = opacity / 100;
 
-  var boxShadowPositionCSS = boxShadowPosition;
+  var boxShadowPositionCSS      = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   let gutterMargin = ""
@@ -418,6 +428,20 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
+    },
+    " .wp-block-responsive-block-editor-addons-team:hover": {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
   };
 
