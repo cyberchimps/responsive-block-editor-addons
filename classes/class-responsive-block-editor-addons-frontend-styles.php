@@ -21174,6 +21174,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						'rightbottom' === $attr['LayoverContentPosition']
 						? 'flex-end'
 						: 'center' ) );
+
+			$box_shadow_position_css       = $attr['imageboxShadowPosition'];
+			$hover_box_shadow_position_css = $attr['imageboxShadowHoverPosition'];
+
+			if ( 'outset' === $attr['imageboxShadowPosition'] ) {
+				$box_shadow_position_css = '';
+			}
+			if ( 'outset' === $attr['imageboxShadowHoverPosition'] ) {
+				$hover_box_shadow_position_css = '';
+			}
+			
 			$selectors            = array(
 				' '                                    => array(
 					'display'        => true === $attr['hideWidget'] ? 'none' : 'block',
@@ -21203,14 +21214,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['imageLeftRadius'], 'px' ),
 					'border-style'               => $attr['imageBorderStyle'],
 					'box-shadow'                 =>
-					self::get_css_value( $attr['imageboxShadowHOffset'], 'px' ) . ' ' .
+						self::get_css_value( $attr['imageboxShadowHOffset'], 'px' ) . ' ' .
 						self::get_css_value( $attr['imageboxShadowVOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['imageboxShadowBlur'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['imageboxShadowSpread'], 'px' ) .
 						' ' .
-						$attr['imageboxShadowColor'],
+						$attr['imageboxShadowColor'] .
+						' ' .
+						$box_shadow_position_css,
 					'-webkit-mask-image'         => 'none' !== $attr['MaskShape'] ? "url('" . $mask_image_url . "')" : null,
 					'mask-shape'                 => 'none' !== $attr['MaskShape'] ? "url('" . $mask_image_url . "')" : null,
 					'-webkit-mask-size'          => $attr['MaskSize'],
@@ -21222,6 +21235,19 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'object-fit'                 => $attr['imageObjectFit'],
 					'width'                      => self::get_css_value( $attr['imageWidth'], 'px' ),
 					'height'                     => self::get_css_value( $attr['imageHeight'], 'px' ),
+				),
+				'  .responsive-blocks-image-block:hover'     => array(
+					'box-shadow'                 =>
+						self::get_css_value( $attr['imageboxShadowHoverHOffset'], 'px' ) . ' ' .
+						self::get_css_value( $attr['imageboxShadowHoverVOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['imageboxShadowHoverBlur'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['imageboxShadowHoverSpread'], 'px' ) .
+						' ' .
+						$attr['imageboxShadowHoverColor'] .
+						' ' .
+						$hover_box_shadow_position_css,
 				),
 				'  .img-main-block:hover figure'       => array(
 					'box-shadow' =>
@@ -21412,10 +21438,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageBorderStyle'                 => '0',
 				'imageBorderWidth'                 => '0',
 				'imageboxShadowColor'              => 'none',
-				'imageboxShadowHOffset'            => '0',
-				'imageboxShadowVOffset'            => '0',
-				'imageboxShadowBlur'               => '0',
-				'imageboxShadowSpread'             => '0',
+				'imageboxShadowHOffset'            => 0,
+				'imageboxShadowVOffset'            => 0,
+				'imageboxShadowBlur'               => 0,
+				'imageboxShadowSpread'             => 0,
+				'imageboxShadowPosition'           => 'outset',
 				'imagebottommargin'                => '0',
 				'imagetopmargin'                   => '0',
 				'imageleftmargin'                  => '0',
@@ -21429,11 +21456,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'imageleftmarginMobile'            => '0',
 				'imagerightmarginMobile'           => '0',
 				'imageboxShadowHoverColor'         => 'none',
-				'imageboxShadowHoverHOffset'       => '0',
-				'imageboxShadowHoverVOffset'       => '0',
-				'imageboxShadowHoverBlur'          => '0',
-				'imageboxShadowHoverSpread'        => '0',
-				'imageboxShadowHoverPosition'      => '0',
+				'imageboxShadowHoverHOffset'       => 0,
+				'imageboxShadowHoverVOffset'       => 0,
+				'imageboxShadowHoverBlur'          => 0,
+				'imageboxShadowHoverSpread'        => 0,
+				'imageboxShadowHoverPosition'      => 'outset',
 				'captionFontFamily'                => '',
 				'captionFontSize'                  => '13',
 				'captionLineHeight'                => '1',
