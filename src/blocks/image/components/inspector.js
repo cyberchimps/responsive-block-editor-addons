@@ -1231,7 +1231,9 @@ if (!imageIsRadiusValueUpdated) {
                 setAttributes={setAttributes}
                 {...this.props}
               />
-                <TabPanel
+            </PanelBody>
+            <PanelBody title="Box Shadow" initialOpen={false}>
+              <TabPanel
                   className="responsive-block-editor-addons-inspect-tabs 
                             responsive-block-editor-addons-inspect-tabs-col-2  
                             responsive-block-editor-addons-color-inspect-tabs"
@@ -1281,7 +1283,7 @@ if (!imageIsRadiusValueUpdated) {
                       />
                     );
                   }}
-                </TabPanel>
+              </TabPanel>
             </PanelBody>
             <PanelBody
               title="Spacing" initialOpen={false}
