@@ -6,17 +6,17 @@
       "type": "string",
       "default": "xlrg"
     },
-    "columnsize":{
-      "type":"number",
-      "default":3
+    "columnsize": {
+      "type": "number",
+      "default": 3
     },
-    "customHeight":{
-      "type":"number",
-      "default":""
+    "customHeight": {
+      "type": "number",
+      "default": ""
     },
-    "customWidth":{
-      "type":"number",
-      "default":""
+    "customWidth": {
+      "type": "number",
+      "default": ""
     },
     "block_id": {
       "type": "string"
@@ -145,6 +145,22 @@
     },
     "z_indexMobile": {
       "type": "number"
+    },
+    "enableCategoryFilter": {
+      "type": "boolean",
+      "default": false
+    },
+    "allTabLabel": {
+      "type": "string",
+      "default": "All"
+    },
+    "setDefaultCategory": {
+      "type": "boolean",
+      "default": false
+    },
+    "defaultCategory": {
+      "type": "string",
+      "default": ""
     }
   }
 }
