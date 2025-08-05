@@ -79,6 +79,38 @@ const attributes = {
     type: "string",
     default: "%",
   },
+  minHeight: {
+    type: "number",
+    default: 100,
+  },
+  minHeightTablet: {
+    type: "number",
+    default: 100,
+  },
+  minHeightMobile: {
+    type: "number",
+    default: 100,
+  },
+  equalHeight: {
+    type: "boolean",
+    default: false,
+  },
+  htmlTag: {
+    type: "string",
+    default: "div",
+  },
+  htmlTagLink: {
+    type: "string",
+    default: '',
+  },
+  linkTarget: {
+    type: "boolean",
+    default: false,
+  },
+  overflow: {
+    type: "string",
+    default: "visible",
+  }
 };
 
 export default attributes;

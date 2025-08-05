@@ -6,6 +6,8 @@ import {
   ToggleControl,
   TabPanel,
   Dashicon,
+  SelectControl,
+  TextControl,
 } from "@wordpress/components";
 
 import InspectorTab from "../../../components/InspectorTab";
@@ -45,6 +47,14 @@ export default function Inspector(props) {
     customWidthTypeMobile,
     customWidthTypeUpdated,
     customWidthType,
+    minHeight,
+    minHeightTablet,
+    minHeightMobile,
+    equalHeight,
+    htmlTag,
+    htmlTagLink,
+    linkTarget,
+    overflow,
   } = attributes;
 
   const [unitDesktop, setUnitDesktop] = useState(
@@ -186,6 +196,19 @@ export default function Inspector(props) {
     customWidthMobile,
     customWidthTypeMobile,
   ]);
+
+  const onChangeHeight = (value) => {
+    setAttributes({ equalHeight: value });
+    // if (value) {
+    //   setAttributes({ alignItemsDesktop: "stretch" });
+    //   setAttributes({ alignItemsTablet: "stretch" });
+    //   setAttributes({ alignItemsMobile: "stretch" });
+    // } else {
+    //   setAttributes({ alignItemsDesktop: "center" });
+    //   setAttributes({ alignItemsTablet: "center" });
+    //   setAttributes({ alignItemsMobile: "center" });
+    // }
+  };
 
   return (
     <InspectorControls key="inspector">
@@ -372,6 +395,186 @@ export default function Inspector(props) {
                 }}
               </TabPanel>
             )}
+
+            <TabPanel
+              className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    "responsive-desktop-tab responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className: "responsive-tablet-tab responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className: "responsive-mobile-tab responsive-responsive-tabs",
+                },
+              ]}
+            >
+              {(tab) => {
+                const tabSettings = {
+                  desktop: {
+                    label: __(
+                      "Minimum Height",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: minHeight,
+                    attributeKey: "minHeight",
+                  },
+                  tablet: {
+                    label: __(
+                      "Minimum Height (Tablet)",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: minHeightTablet,
+                    attributeKey: "minHeightTablet",
+                  },
+                  mobile: {
+                    label: __(
+                      "Minimum Height (Mobile)",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: minHeightMobile,
+                    attributeKey: "minHeightMobile",
+                  },
+                };
+
+                const { label, value, attributeKey } =
+                  tabSettings[tab.name] || tabSettings.desktop;
+
+                return (
+                  <div>
+                    <RbeaRangeControl
+                      label={label}
+                      min={0}
+                      max={1000}
+                      allowReset={true}
+                      resetFallbackValue={1}
+                      value={value}
+                      onChange={(val) =>
+                        setAttributes({
+                          [attributeKey]: val !== undefined ? val : 1,
+                        })
+                      }
+                    />
+                  </div>
+                );
+              }}
+            </TabPanel>
+
+            <ToggleControl
+              label={__("Equal Height", "responsive-block-editor-addons")}
+              checked={equalHeight}
+              onChange={(value) => onChangeHeight(value)}
+              help={__(
+                "Enabling this will change the Align Items value to Stretch.",
+                "responsive-block-editor-addons"
+              )}
+            />
+
+            <SelectControl
+              label={__("HTML Tag", "responsive-block-editor-addons")}
+              value={htmlTag}
+              options={[
+                {
+                  value: "div",
+                  label: __("div", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "header",
+                  label: __("header", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "footer",
+                  label: __("footer", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "main",
+                  label: __("main", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "article",
+                  label: __("article", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "section",
+                  label: __("section", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "aside",
+                  label: __("aside", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "figure",
+                  label: __("figure", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "figcaption",
+                  label: __("figcaption", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "summary",
+                  label: __("summary", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "nav",
+                  label: __("nav", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "a",
+                  label: __("link", "responsive-block-editor-addons"),
+                },
+              ]}
+              onChange={(value) => setAttributes({ htmlTag: value })}
+            />
+            {htmlTag === "a" && (
+              <>
+                <TextControl
+                  __nextHasNoMarginBottom
+                  __next40pxDefaultSize
+                  label={__("Link", "responsive-block-editor-addons")}
+                  value={htmlTagLink}
+                  onChange={(value) => setAttributes({ htmlTagLink: value })}
+                />
+                <ToggleControl
+                  checked={linkTarget}
+                  onChange={() => setAttributes({ linkTarget: !linkTarget })}
+                  label={__(
+                    "Open in new window",
+                    "responsive-block-editor-addons"
+                  )}
+                />
+              </>
+            )}
+
+            <RbeaTabRadioControl
+              label={__("Container Width", "responsive-block-editor-addons")}
+              value={overflow}
+              onChange={(value) => setAttributes({ overflow: value })}
+              options={[
+                {
+                  value: "visible",
+                  label: __("Visible", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "hidden",
+                  label: __("Hidden", "responsive-block-editor-addons"),
+                },
+                {
+                  value: "auto",
+                  label: __("Auto", "responsive-block-editor-addons"),
+                },
+              ]}
+              defaultValue="visible"
+              optionHasBorder={true}
+            />
           </PanelBody>
 
           <RbeaSupportControl blockSlug="container" />
