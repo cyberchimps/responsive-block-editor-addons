@@ -8,6 +8,7 @@ import {
   Dashicon,
   SelectControl,
   TextControl,
+  Icon,
 } from "@wordpress/components";
 
 import InspectorTab from "../../../components/InspectorTab";
@@ -17,6 +18,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import renderCustomIcon from "../renderCustomIcon";
 
 export default function Inspector(props) {
   const { attributes, setAttributes } = props;
@@ -55,6 +57,9 @@ export default function Inspector(props) {
     htmlTagLink,
     linkTarget,
     overflow,
+    direction,
+    directionTablet,
+    directionMobile,
   } = attributes;
 
   const [unitDesktop, setUnitDesktop] = useState(
@@ -210,12 +215,43 @@ export default function Inspector(props) {
     // }
   };
 
+  const directionOptions = [
+    {
+      label: "Row",
+      value: "row",
+      tooltip: __("Row", "ultimate-addons-for-gutenberg"),
+      icon: <Icon icon={renderCustomIcon("flex-direction-row")} />,
+    },
+    {
+      label: "Column",
+      value: "column",
+      tooltip: __("Column", "ultimate-addons-for-gutenberg"),
+      icon: <Icon icon={renderCustomIcon("flex-direction-column")} />,
+    },
+    {
+      label: "Row Reverse",
+      value: "row-reverse",
+      tooltip: __("Row Reverse", "ultimate-addons-for-gutenberg"),
+      icon: <Icon icon={renderCustomIcon("flex-direction-row-reverse")} />,
+    },
+    {
+      label: "Column Reverse",
+      value: "column-reverse",
+      tooltip: __("Column Reverse", "ultimate-addons-for-gutenberg"),
+      icon: <Icon icon={renderCustomIcon("flex-direction-column-reverse")} />,
+    },
+  ];
+
   return (
     <InspectorControls key="inspector">
       <InspectorTabs>
         {/* Content Tab */}
         <InspectorTab key={"content"}>
-          <PanelBody>
+          <PanelBody
+            title={__("Container Type", "responsive-block-editor-addons")}
+            initialOpen={false}
+            className="responsive_block_editor_addons__url-panel-body"
+          >
             <RbeaTabRadioControl
               label={__("Container Width", "responsive-block-editor-addons")}
               value={contentWidth}
@@ -577,13 +613,97 @@ export default function Inspector(props) {
             />
           </PanelBody>
 
+          <PanelBody
+            title={__("Layout", "responsive-block-editor-addons")}
+            initialOpen={false}
+            className="responsive_block_editor_addons__url-panel-body"
+          >
+            <TabPanel
+              className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    "responsive-desktop-tab responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className: "responsive-tablet-tab responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className: "responsive-mobile-tab responsive-responsive-tabs",
+                },
+              ]}
+            >
+              {(tab) => {
+                const tabSettings = {
+                  desktop: {
+                    label: __(
+                      "Direction",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: direction,
+                    attributeKey: "direction",
+                  },
+                  tablet: {
+                    label: __(
+                      "Direction (Tablet)",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: directionTablet,
+                    attributeKey: "directionTablet",
+                  },
+                  mobile: {
+                    label: __(
+                      "Direction (Mobile)",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: directionMobile,
+                    attributeKey: "directionMobile",
+                  },
+                };
+
+                const { label, value, attributeKey } =
+                  tabSettings[tab.name] || tabSettings.desktop;
+
+                  console.log("Tab:", tab.name, "Value:", value);
+
+                return (
+                  <div style={{ marginTop: "20px" }}>
+                    <RbeaTabRadioControl
+                        label={label}
+                        value={value}
+                        options={directionOptions}
+                        onChange={(val) =>
+                            setAttributes({
+                                [attributeKey]: val || 'row',
+                            })
+                        }
+                        help={__(
+                            "Define the direction in which blocks inside this container will be placed one after the other.",
+                            "responsive-block-editor-addons"
+                        )}
+                        defaultValue={"row"}
+                        allowReset={true}
+                        hasIcon={true}
+                        optionHasBorder={true}
+                    />
+                  </div>
+                );
+              }}
+            </TabPanel>
+          </PanelBody>
+
           <RbeaSupportControl blockSlug="container" />
         </InspectorTab>
 
         {/* Style Tab */}
         <InspectorTab key={"style"}>
-          {/* Heading Typography */}
-
           <RbeaSupportControl blockSlug={"container"} />
         </InspectorTab>
 

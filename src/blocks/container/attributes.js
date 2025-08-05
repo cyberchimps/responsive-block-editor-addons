@@ -110,7 +110,19 @@ const attributes = {
   overflow: {
     type: "string",
     default: "visible",
-  }
+  },
+  direction: {
+    type: "string",
+    default: "row",
+  },
+  directionTablet: {
+    type: "string",
+    default: "row",
+  },
+  directionMobile: {
+    type: "string",
+    default: "row",
+  },
 };
 
 export default attributes;
