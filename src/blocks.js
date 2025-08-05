@@ -156,5 +156,8 @@ import "./blocks/form/input/index.js";
 
 //Section block
 import "./blocks/section-block/index.js";
+
+//Container
+import "./blocks/container/index.js";
 // Extensions
 import "./extensions/cover-styles";

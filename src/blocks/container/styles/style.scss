@@ -1,0 +1,100 @@
+.responsive-block-editor-addons-block-advanced-heading {
+  padding: 0;
+  margin: 0 auto;
+
+  .responsive-heading-seperator-wrap {
+    font-size: 0;
+  }
+
+  .responsive-heading-seperator {
+    border-top-style: solid;
+    display: inline-block;
+    border-top-width: 2px;
+    width: 5%;
+    margin: 0px 0px 10px 0px;
+  }
+}
+
+.components-base-control__field {
+
+  p {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16.41px;
+    text-align: left;
+    color: #666666;
+  }
+
+  .responsive-block-editor-addons-alignment, 
+  .responsive-block-editor-addons-alignment-tablet,
+  .responsive-block-editor-addons-alignment-mobile  {
+    max-height: 32px;
+    height: 100%;
+    margin-top: 8px;
+
+    .components-toolbar {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      min-height: 32px;
+      max-height: 32px;
+      height: 100%;
+      border: 1px solid #C9C8C8;
+      border-radius: 4px;
+    
+      > div {
+        width: 100%;
+        max-height: 32px;
+        height: 100%;
+
+        // First child styling
+        &:first-child {
+          border-right: 1px solid #C9C8C8;
+        }
+      
+        // Last child styling
+        &:last-child {
+          border-left: 1px solid #C9C8C8;
+        }
+      
+        .components-toolbar__control {
+          width: 100%;
+          max-height: 32px;
+          height: 100%;
+          &::before {
+            width: 100%;
+            left: 0px;
+            right: 0px;
+          }
+        }
+      
+        .components-toolbar__control.is-pressed {
+          &::before {
+            background: #007CBA;
+            width: 100%;
+            left: 0px;
+            right: 0px;
+            max-height: 32px;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.components-base-control {
+  .components-base-control__field {
+    .components-toggle-control__label {
+      font-family: Roboto;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 16.41px;
+      text-align: left;
+      color: #666666;
+    }
+  }
+}
