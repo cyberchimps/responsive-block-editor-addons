@@ -55,6 +55,30 @@ const attributes = {
     type: "string",
     default: "%",
   },
+  customWidthDesktop: {
+    type: "number",
+    default: 100,
+  },
+  customWidthTablet: {
+    type: "number",
+    default: 100,
+  },
+  customWidthMobile: {
+    type: "number",
+    default: 100,
+  },
+  customWidthTypeDesktop: {
+    type: "string",
+    default: "%",
+  },
+  customWidthTypeTablet: {
+    type: "string",
+    default: "%",
+  },
+  customWidthTypeMobile: {
+    type: "string",
+    default: "%",
+  },
 };
 
 export default attributes;

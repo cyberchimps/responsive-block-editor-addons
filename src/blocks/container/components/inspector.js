@@ -37,6 +37,14 @@ export default function Inspector(props) {
     innerContentBoxWidthTypeMobile,
     innerContentBoxWidthTypeUpdated,
     innerContentWidthType,
+    customWidthDesktop,
+    customWidthTablet,
+    customWidthMobile,
+    customWidthTypeDesktop,
+    customWidthTypeTablet,
+    customWidthTypeMobile,
+    customWidthTypeUpdated,
+    customWidthType,
   } = attributes;
 
   const [unitDesktop, setUnitDesktop] = useState(
@@ -47,6 +55,17 @@ export default function Inspector(props) {
   );
   const [unitMobile, setUnitMobile] = useState(
     attributes.innerContentBoxWidthTypeMobile
+  );
+
+  // custom width.
+  const [unitCustomWidthDesktop, setCustomWidthUnitDesktop] = useState(
+    attributes.customWidthTypeDesktop
+  );
+  const [unitCustomWidthTablet, setCustomWidthUnitTablet] = useState(
+    attributes.customWidthTypeTablet
+  );
+  const [unitCustomWidthMobile, setCustomWidthUnitMobile] = useState(
+    attributes.customWidthTypeMobile
   );
 
   useEffect(() => {
@@ -61,37 +80,112 @@ export default function Inspector(props) {
     setUnitMobile(attributes.innerContentBoxWidthTypeMobile);
   }, [attributes.innerContentBoxWidthTypeMobile]);
 
+  // custom width.
   useEffect(() => {
-  const needsMigration =
-    !innerContentBoxWidthTypeUpdated &&
-    !innerContentBoxWidthTypeDesktop &&
-    !innerContentBoxWidthTypeTablet &&
-    !innerContentBoxWidthTypeMobile;
+    setCustomWidthUnitDesktop(attributes.customWidthTypeDesktop);
+  }, [attributes.customWidthTypeDesktop]);
 
-  if (needsMigration) {
-    setAttributes({
-      innerContentBoxWidthTypeDesktop: innerContentWidthType ?? "px",
-      innerContentBoxWidthTypeTablet: innerContentWidthType ?? "px",
-      innerContentBoxWidthTypeMobile: innerContentWidthType ?? "px",
-      innerContentBoxWidthTypeUpdated: true,
-    });
-    console.log("🔁 Migrated innerContentBoxWidthType attributes from innerContentWidthType");
-  }
-}, []);
+  useEffect(() => {
+    setCustomWidthUnitTablet(attributes.customWidthTypeTablet);
+  }, [attributes.customWidthTypeTablet]);
+
+  useEffect(() => {
+    setCustomWidthUnitMobile(attributes.customWidthTypeMobile);
+  }, [attributes.customWidthTypeMobile]);
+
+  useEffect(() => {
+    const needsMigration =
+      !innerContentBoxWidthTypeUpdated &&
+      !innerContentBoxWidthTypeDesktop &&
+      !innerContentBoxWidthTypeTablet &&
+      !innerContentBoxWidthTypeMobile;
+
+    if (needsMigration) {
+      setAttributes({
+        innerContentBoxWidthTypeDesktop: innerContentWidthType ?? "px",
+        innerContentBoxWidthTypeTablet: innerContentWidthType ?? "px",
+        innerContentBoxWidthTypeMobile: innerContentWidthType ?? "px",
+        innerContentBoxWidthTypeUpdated: true,
+      });
+      console.log(
+        "🔁 Migrated innerContentBoxWidthType attributes from innerContentWidthType"
+      );
+    }
+  }, []);
+
+  // custom width.
+  useEffect(() => {
+    const needsMigrationCustomWidth =
+      !customWidthTypeUpdated &&
+      !customWidthDesktop &&
+      !customWidthTablet &&
+      !customWidthMobile;
+
+    if (needsMigrationCustomWidth) {
+      setAttributes({
+        customWidthDesktop: customWidthType ?? "px",
+        customWidthTablet: customWidthType ?? "px",
+        customWidthMobile: customWidthType ?? "px",
+        customWidthTypeUpdated: true,
+      });
+      console.log(
+        "🔁 Migrated innerContentBoxWidthType attributes from customWidthType"
+      );
+    }
+  }, []);
 
   useEffect(() => {
     console.log("📐 Device Width Attributes:");
-    console.log("Desktop Width:", innerContentCustomWidthDesktop, innerContentBoxWidthTypeDesktop);
-    console.log("Tablet Width:", innerContentCustomWidthTablet, innerContentBoxWidthTypeTablet);
-    console.log("Mobile Width:", innerContentCustomWidthMobile, innerContentBoxWidthTypeMobile);
-    }, [
+    console.log(
+      "Desktop Width:",
+      innerContentCustomWidthDesktop,
+      innerContentBoxWidthTypeDesktop
+    );
+    console.log(
+      "Tablet Width:",
+      innerContentCustomWidthTablet,
+      innerContentBoxWidthTypeTablet
+    );
+    console.log(
+      "Mobile Width:",
+      innerContentCustomWidthMobile,
+      innerContentBoxWidthTypeMobile
+    );
+  }, [
     innerContentCustomWidthDesktop,
     innerContentBoxWidthTypeDesktop,
     innerContentCustomWidthTablet,
     innerContentBoxWidthTypeTablet,
     innerContentCustomWidthMobile,
     innerContentBoxWidthTypeMobile,
-    ]);
+  ]);
+
+  // custom width.
+  useEffect(() => {
+    console.log("📐 Device Custom Width Attributes:");
+    console.log(
+      "Desktop Custom Width:",
+      customWidthDesktop,
+      customWidthTypeDesktop
+    );
+    console.log(
+      "Tablet Custom Width:",
+      customWidthTablet,
+      customWidthTypeTablet
+    );
+    console.log(
+      "Mobile Custom Width:",
+      customWidthMobile,
+      customWidthTypeMobile
+    );
+  }, [
+    customWidthDesktop,
+    customWidthTypeDesktop,
+    customWidthTablet,
+    customWidthTypeTablet,
+    customWidthMobile,
+    customWidthTypeMobile,
+  ]);
 
   return (
     <InspectorControls key="inspector">
@@ -213,9 +307,71 @@ export default function Inspector(props) {
               </>
             )}
 
-            {/* {"default" === contentWidth && (
-              
-            )} */}
+            {"default" === contentWidth && (
+              <TabPanel
+                className="responsive-size-type-field-tabs"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className: "responsive-desktop-tab",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className: "responsive-tablet-tab",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className: "responsive-mobile-tab",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  const widthKey = {
+                    desktop: "customWidthDesktop",
+                    tablet: "customWidthTablet",
+                    mobile: "customWidthMobile",
+                  }[tab.name];
+
+                  const typeKey = {
+                    desktop: "customWidthTypeDesktop",
+                    tablet: "customWidthTypeTablet",
+                    mobile: "customWidthTypeMobile",
+                  }[tab.name];
+
+                  const value = attributes[widthKey];
+                  const widthType = {
+                    desktop: unitCustomWidthDesktop,
+                    tablet: unitCustomWidthTablet,
+                    mobile: unitCustomWidthMobile,
+                  }[tab.name];
+
+                  return (
+                    <div style={{ marginTop: "20px" }}>
+                      <RbeaWidthRangeControl
+                        label={__(
+                          "Custom Width (" + tab.name + ")",
+                          "responsive-block-editor-addons"
+                        )}
+                        value={value}
+                        onChange={(val) => setAttributes({ [widthKey]: val })}
+                        min={0}
+                        max={widthType === "%" ? 100 : 2000}
+                        allowReset
+                        initialPosition={20}
+                        widthType={widthType}
+                        setAttributes={setAttributes}
+                        extraControls={true}
+                        widthTypeKey={typeKey}
+                      />
+                    </div>
+                  );
+                }}
+              </TabPanel>
+            )}
           </PanelBody>
 
           <RbeaSupportControl blockSlug="container" />
