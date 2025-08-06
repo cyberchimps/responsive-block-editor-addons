@@ -66,6 +66,9 @@ export default function Inspector(props) {
     justifyContentDesktop,
     justifyContentTablet,
     justifyContentMobile,
+    childrenWidthDesktop,
+    childrenWidthTablet,
+    childrenWidthMobile,
   } = attributes;
 
   const [activeTab, setActiveTab] = useState("desktop");
@@ -210,29 +213,118 @@ export default function Inspector(props) {
     customWidthTypeMobile,
   ]);
 
+  const getCurrentDirection = () => {
+    return activeTab === "desktop"
+      ? direction
+      : activeTab === "tablet"
+      ? directionTablet
+      : directionMobile;
+  };
+
+  // Helper function to check direction type
+  const isDirectionType = (types) => {
+    const currentDir = getCurrentDirection()?.split("-")[0];
+    return types.includes(currentDir);
+  };
+
+  const htmlTagOptions = [
+    {
+      value: "div",
+      label: __("div", "responsive-block-editor-addons"),
+    },
+    {
+      value: "header",
+      label: __("header", "responsive-block-editor-addons"),
+    },
+    {
+      value: "footer",
+      label: __("footer", "responsive-block-editor-addons"),
+    },
+    {
+      value: "main",
+      label: __("main", "responsive-block-editor-addons"),
+    },
+    {
+      value: "article",
+      label: __("article", "responsive-block-editor-addons"),
+    },
+    {
+      value: "section",
+      label: __("section", "responsive-block-editor-addons"),
+    },
+    {
+      value: "aside",
+      label: __("aside", "responsive-block-editor-addons"),
+    },
+    {
+      value: "figure",
+      label: __("figure", "responsive-block-editor-addons"),
+    },
+    {
+      value: "figcaption",
+      label: __("figcaption", "responsive-block-editor-addons"),
+    },
+    {
+      value: "summary",
+      label: __("summary", "responsive-block-editor-addons"),
+    },
+    {
+      value: "nav",
+      label: __("nav", "responsive-block-editor-addons"),
+    },
+    {
+      value: "a",
+      label: __("link", "responsive-block-editor-addons"),
+    },
+  ];
+
+  const getChildWidthOptions = (flexDirection) => {
+    return flexDirection === "row"
+      ? [
+          {
+            value: "auto",
+            label: __("Auto", "responsive-block-editor-addons"),
+          },
+          {
+            value: "equal",
+            label: __("Full", "responsive-block-editor-addons"),
+          },
+        ]
+      : [
+          {
+            value: "auto",
+            label: __("Auto", "responsive-block-editor-addons"),
+          },
+          {
+            value: "equal",
+            label: __("Equal", "responsive-block-editor-addons"),
+          },
+        ];
+  };
+
   const directionOptions = [
     {
       label: "Row",
       value: "row",
-      tooltip: __("Row", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Row", "responsive-block-editor-addons"),
       icon: <Icon icon={renderCustomIcon("flex-direction-row")} />,
     },
     {
       label: "Column",
       value: "column",
-      tooltip: __("Column", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Column", "responsive-block-editor-addons"),
       icon: <Icon icon={renderCustomIcon("flex-direction-column")} />,
     },
     {
       label: "Row Reverse",
       value: "row-reverse",
-      tooltip: __("Row Reverse", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Row Reverse", "responsive-block-editor-addons"),
       icon: <Icon icon={renderCustomIcon("flex-direction-row-reverse")} />,
     },
     {
       label: "Column Reverse",
       value: "column-reverse",
-      tooltip: __("Column Reverse", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Column Reverse", "responsive-block-editor-addons"),
       icon: <Icon icon={renderCustomIcon("flex-direction-column-reverse")} />,
     },
   ];
@@ -246,22 +338,22 @@ export default function Inspector(props) {
     return [
       {
         value: "flex-start",
-        tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Flex Start", "responsive-block-editor-addons"),
         icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-start`)} />,
       },
       {
         value: "center",
-        tooltip: __("Center", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Center", "responsive-block-editor-addons"),
         icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-center`)} />,
       },
       {
         value: "flex-end",
-        tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Flex End", "responsive-block-editor-addons"),
         icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-end`)} />,
       },
       {
         value: "stretch",
-        tooltip: __("Stretch", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Stretch", "responsive-block-editor-addons"),
         icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-strech`)} />,
       },
     ];
@@ -276,26 +368,22 @@ export default function Inspector(props) {
     return [
       {
         value: "flex-start",
-        tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
-        icon: (
-          <Icon icon={renderCustomIcon(`flex-${flexDirection}-start`)} />
-        ),
+        tooltip: __("Flex Start", "responsive-block-editor-addons"),
+        icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-start`)} />,
       },
       {
         value: "center",
-        tooltip: __("Center", "ultimate-addons-for-gutenberg"),
-        icon: (
-          <Icon icon={renderCustomIcon(`flex-${flexDirection}-center`)} />
-        ),
+        tooltip: __("Center", "responsive-block-editor-addons"),
+        icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-center`)} />,
       },
       {
         value: "flex-end",
-        tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Flex End", "responsive-block-editor-addons"),
         icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-end`)} />,
       },
       {
         value: "space-between",
-        tooltip: __("Space Between", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Space Between", "responsive-block-editor-addons"),
         icon: (
           <Icon
             icon={renderCustomIcon(`flex-${flexDirection}-space-between`)}
@@ -304,20 +392,16 @@ export default function Inspector(props) {
       },
       {
         value: "space-around",
-        tooltip: __("Space Around", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Space Around", "responsive-block-editor-addons"),
         icon: (
-          <Icon
-            icon={renderCustomIcon(`flex-${flexDirection}-space-around`)}
-          />
+          <Icon icon={renderCustomIcon(`flex-${flexDirection}-space-around`)} />
         ),
       },
       {
         value: "space-evenly",
-        tooltip: __("Space Evenly", "ultimate-addons-for-gutenberg"),
+        tooltip: __("Space Evenly", "responsive-block-editor-addons"),
         icon: (
-          <Icon
-            icon={renderCustomIcon(`flex-${flexDirection}-space-evenly`)}
-          />
+          <Icon icon={renderCustomIcon(`flex-${flexDirection}-space-evenly`)} />
         ),
       },
     ];
@@ -628,56 +712,7 @@ export default function Inspector(props) {
             <SelectControl
               label={__("HTML Tag", "responsive-block-editor-addons")}
               value={htmlTag}
-              options={[
-                {
-                  value: "div",
-                  label: __("div", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "header",
-                  label: __("header", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "footer",
-                  label: __("footer", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "main",
-                  label: __("main", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "article",
-                  label: __("article", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "section",
-                  label: __("section", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "aside",
-                  label: __("aside", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "figure",
-                  label: __("figure", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "figcaption",
-                  label: __("figcaption", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "summary",
-                  label: __("summary", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "nav",
-                  label: __("nav", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "a",
-                  label: __("link", "responsive-block-editor-addons"),
-                },
-              ]}
+              options={htmlTagOptions}
               onChange={(value) => setAttributes({ htmlTag: value })}
             />
             {htmlTag === "a" && (
@@ -762,7 +797,7 @@ export default function Inspector(props) {
                           setAttributes({ [attributeKey]: val || "row" })
                         }
                         help={__(
-                          "Define the direction...",
+                          "Define the direction in which blocks inside this container will be placed one after the other.",
                           "responsive-block-editor-addons"
                         )}
                         defaultValue={"row"}
@@ -775,6 +810,66 @@ export default function Inspector(props) {
                 );
               }}
             </ResponsiveTabPanel>
+
+            {isDirectionType(["column", "column-reverse"]) && (
+              <RbeaTabRadioControl
+                label={__("Children Width", "responsive-block-editor-addons")}
+                value={
+                  attributes[
+                    `childrenWidth${
+                      activeTab === "desktop"
+                        ? "Desktop"
+                        : activeTab === "tablet"
+                        ? "Tablet"
+                        : "Mobile"
+                    }`
+                  ]
+                }
+                options={getChildWidthOptions("column")}
+                onChange={(value) =>
+                  setAttributes({
+                    [`childrenWidth${
+                      activeTab === "desktop"
+                        ? "Desktop"
+                        : activeTab === "tablet"
+                        ? "Tablet"
+                        : "Mobile"
+                    }`]: value,
+                  })
+                }
+                defaultValue="equal"
+              />
+            )}
+
+            {isDirectionType(["row", "row-reverse"]) && (
+              <RbeaTabRadioControl
+                label={__("Children Width", "responsive-block-editor-addons")}
+                value={
+                  attributes[
+                    `childrenWidth${
+                      activeTab === "desktop"
+                        ? "Desktop"
+                        : activeTab === "tablet"
+                        ? "Tablet"
+                        : "Mobile"
+                    }`
+                  ]
+                }
+                options={getChildWidthOptions("row")}
+                onChange={(value) =>
+                  setAttributes({
+                    [`childrenWidth${
+                      activeTab === "desktop"
+                        ? "Desktop"
+                        : activeTab === "tablet"
+                        ? "Tablet"
+                        : "Mobile"
+                    }`]: value,
+                  })
+                }
+                defaultValue="equal"
+              />
+            )}
 
             <ResponsiveTabPanel label="Alignment">
               {(tab) => {
@@ -819,17 +914,10 @@ export default function Inspector(props) {
                           onChange={(val) =>
                             setAttributes({ [attributeKey]: val || "center" })
                           }
-                          help={
-                            currentDirection.includes("column")
-                              ? __(
-                                  "Align items horizontally",
-                                  "responsive-block-editor-addons"
-                                )
-                              : __(
-                                  "Align items vertically",
-                                  "responsive-block-editor-addons"
-                                )
-                          }
+                          help={__(
+                            "Define the horizontal alignment inside this container.",
+                            "responsive-block-editor-addons"
+                          )}
                           defaultValue="center"
                           allowReset
                           hasIcon
@@ -908,17 +996,10 @@ export default function Inspector(props) {
                               [attributeKey]: val || "flex-start",
                             })
                           }
-                          help={
-                            currentDirection.includes("column")
-                              ? __(
-                                  "Distribute items vertically",
-                                  "responsive-block-editor-addons"
-                                )
-                              : __(
-                                  "Distribute items horizontally",
-                                  "responsive-block-editor-addons"
-                                )
-                          }
+                          help={__(
+                            "Define the vertical alignment inside this container.",
+                            "responsive-block-editor-addons"
+                          )}
                           defaultValue="flex-start"
                           allowReset
                           hasIcon
@@ -951,7 +1032,6 @@ export default function Inspector(props) {
                 );
               }}
             </ResponsiveTabPanel>
-
           </PanelBody>
 
           <RbeaSupportControl blockSlug="container" />

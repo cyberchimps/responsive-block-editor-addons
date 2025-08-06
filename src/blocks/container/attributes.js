@@ -147,6 +147,18 @@ const attributes = {
     type: 'string',
     default: 'flex-start',
   },
+  childrenWidthDesktop: {
+    type: 'string',
+    default: 'equal',
+  },
+  childrenWidthTablet: {
+    type: 'string',
+    default: 'equal',
+  },
+  childrenWidthMobile: {
+    type: 'string',
+    default: 'equal',
+  },
 };
 
 export default attributes;
