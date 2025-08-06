@@ -948,7 +948,7 @@ export default function Inspector(props) {
                             setAttributes({ [attributeKey]: val || "center" })
                           }
                           help={__(
-                            "Define the horizontal alignment inside this container.",
+                            `Define the ${currentDirection === 'row' || currentDirection === 'row-reverse' ? 'vertical' : 'horizontal'} alignment inside this container.`,
                             "responsive-block-editor-addons"
                           )}
                           defaultValue="center"
@@ -1030,7 +1030,7 @@ export default function Inspector(props) {
                             })
                           }
                           help={__(
-                            "Define the vertical alignment inside this container.",
+                            `Define the ${currentDirection === 'row' || currentDirection === 'row-reverse' ? 'horizontal' : 'vertical'} alignment inside this container.`,
                             "responsive-block-editor-addons"
                           )}
                           defaultValue="flex-start"
@@ -1196,7 +1196,7 @@ export default function Inspector(props) {
                               })
                             }
                             help={__(
-                              "Define the vertical alignment inside this container.",
+                              `Define the ${currentDirection === 'row' || currentDirection === 'row-reverse' ? 'vertical' : 'horizontal'} alignment inside this container.`,
                               "responsive-block-editor-addons"
                             )}
                             defaultValue="flex-start"
