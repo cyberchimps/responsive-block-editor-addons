@@ -123,6 +123,30 @@ const attributes = {
     type: "string",
     default: "row",
   },
+  alignItemsDesktop: {
+    type: 'string',
+    default: 'center',
+  },
+  alignItemsTablet: {
+    type: 'string',
+    default: 'center',
+  },
+  alignItemsMobile: {
+    type: 'string',
+    default: 'center',
+  },
+  justifyContentDesktop: {
+    type: 'string',
+    default: 'flex-start',
+  },
+  justifyContentTablet: {
+    type: 'string',
+    default: 'flex-start',
+  },
+  justifyContentMobile: {
+    type: 'string',
+    default: 'flex-start',
+  },
 };
 
 export default attributes;

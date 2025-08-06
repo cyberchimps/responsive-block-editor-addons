@@ -60,7 +60,15 @@ export default function Inspector(props) {
     direction,
     directionTablet,
     directionMobile,
+    alignItemsDesktop,
+    alignItemsTablet,
+    alignItemsMobile,
+    justifyContentDesktop,
+    justifyContentTablet,
+    justifyContentMobile,
   } = attributes;
+
+  const [activeTab, setActiveTab] = useState("desktop");
 
   const [unitDesktop, setUnitDesktop] = useState(
     attributes.innerContentBoxWidthTypeDesktop
@@ -202,19 +210,6 @@ export default function Inspector(props) {
     customWidthTypeMobile,
   ]);
 
-  const onChangeHeight = (value) => {
-    setAttributes({ equalHeight: value });
-    // if (value) {
-    //   setAttributes({ alignItemsDesktop: "stretch" });
-    //   setAttributes({ alignItemsTablet: "stretch" });
-    //   setAttributes({ alignItemsMobile: "stretch" });
-    // } else {
-    //   setAttributes({ alignItemsDesktop: "center" });
-    //   setAttributes({ alignItemsTablet: "center" });
-    //   setAttributes({ alignItemsMobile: "center" });
-    // }
-  };
-
   const directionOptions = [
     {
       label: "Row",
@@ -241,6 +236,121 @@ export default function Inspector(props) {
       icon: <Icon icon={renderCustomIcon("flex-direction-column-reverse")} />,
     },
   ];
+
+  const getAlignItemsOptions = (currentDirection) => {
+    console.log("currentDirection -> " + currentDirection);
+    const flexDirection = currentDirection.includes("column")
+      ? "column"
+      : "row";
+
+    return [
+      {
+        value: "flex-start",
+        tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
+        icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-start`)} />,
+      },
+      {
+        value: "center",
+        tooltip: __("Center", "ultimate-addons-for-gutenberg"),
+        icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-center`)} />,
+      },
+      {
+        value: "flex-end",
+        tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
+        icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-end`)} />,
+      },
+      {
+        value: "stretch",
+        tooltip: __("Stretch", "ultimate-addons-for-gutenberg"),
+        icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-strech`)} />,
+      },
+    ];
+  };
+
+  const getJustifyContentOptions = (currentDirection) => {
+    console.log("JC currentDirection -> " + currentDirection);
+    const flexDirection = currentDirection.includes("column")
+      ? "row"
+      : "column";
+
+    return [
+      {
+        value: "flex-start",
+        tooltip: __("Flex Start", "ultimate-addons-for-gutenberg"),
+        icon: (
+          <Icon icon={renderCustomIcon(`flex-${flexDirection}-start`)} />
+        ),
+      },
+      {
+        value: "center",
+        tooltip: __("Center", "ultimate-addons-for-gutenberg"),
+        icon: (
+          <Icon icon={renderCustomIcon(`flex-${flexDirection}-center`)} />
+        ),
+      },
+      {
+        value: "flex-end",
+        tooltip: __("Flex End", "ultimate-addons-for-gutenberg"),
+        icon: <Icon icon={renderCustomIcon(`flex-${flexDirection}-end`)} />,
+      },
+      {
+        value: "space-between",
+        tooltip: __("Space Between", "ultimate-addons-for-gutenberg"),
+        icon: (
+          <Icon
+            icon={renderCustomIcon(`flex-${flexDirection}-space-between`)}
+          />
+        ),
+      },
+      {
+        value: "space-around",
+        tooltip: __("Space Around", "ultimate-addons-for-gutenberg"),
+        icon: (
+          <Icon
+            icon={renderCustomIcon(`flex-${flexDirection}-space-around`)}
+          />
+        ),
+      },
+      {
+        value: "space-evenly",
+        tooltip: __("Space Evenly", "ultimate-addons-for-gutenberg"),
+        icon: (
+          <Icon
+            icon={renderCustomIcon(`flex-${flexDirection}-space-evenly`)}
+          />
+        ),
+      },
+    ];
+  };
+
+  const ResponsiveTabPanel = ({ children, label = "" }) => (
+    <TabPanel
+      className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
+      activeClass="active-tab"
+      initialTabName={activeTab}
+      onSelect={(tabName) => setActiveTab(tabName)}
+      style={{ marginTop: "20px" }}
+      tabs={[
+        {
+          name: "desktop",
+          title: <Dashicon icon="desktop" />,
+          className: "responsive-desktop-tab responsive-responsive-tabs",
+        },
+        {
+          name: "tablet",
+          title: <Dashicon icon="tablet" />,
+          className: "responsive-tablet-tab responsive-responsive-tabs",
+        },
+        {
+          name: "mobile",
+          title: <Dashicon icon="smartphone" />,
+          className: "responsive-mobile-tab responsive-responsive-tabs",
+        },
+      ]}
+    >
+      {(tab) => children(tab)}
+    </TabPanel>
+  );
 
   return (
     <InspectorControls key="inspector">
@@ -618,85 +728,230 @@ export default function Inspector(props) {
             initialOpen={false}
             className="responsive_block_editor_addons__url-panel-body"
           >
-            <TabPanel
-              className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
-              activeClass="active-tab"
-              tabs={[
-                {
-                  name: "desktop",
-                  title: <Dashicon icon="desktop" />,
-                  className:
-                    "responsive-desktop-tab responsive-responsive-tabs",
-                },
-                {
-                  name: "tablet",
-                  title: <Dashicon icon="tablet" />,
-                  className: "responsive-tablet-tab responsive-responsive-tabs",
-                },
-                {
-                  name: "mobile",
-                  title: <Dashicon icon="smartphone" />,
-                  className: "responsive-mobile-tab responsive-responsive-tabs",
-                },
-              ]}
-            >
+            <ResponsiveTabPanel label="Direction">
               {(tab) => {
                 const tabSettings = {
                   desktop: {
-                    label: __(
-                      "Direction",
-                      "responsive-block-editor-addons"
-                    ),
                     value: direction,
                     attributeKey: "direction",
                   },
                   tablet: {
-                    label: __(
-                      "Direction (Tablet)",
-                      "responsive-block-editor-addons"
-                    ),
                     value: directionTablet,
                     attributeKey: "directionTablet",
                   },
                   mobile: {
-                    label: __(
-                      "Direction (Mobile)",
-                      "responsive-block-editor-addons"
-                    ),
                     value: directionMobile,
                     attributeKey: "directionMobile",
                   },
                 };
 
-                const { label, value, attributeKey } =
+                const { value, attributeKey } =
                   tabSettings[tab.name] || tabSettings.desktop;
 
-                  console.log("Tab:", tab.name, "Value:", value);
-
                 return (
-                  <div style={{ marginTop: "20px" }}>
-                    <RbeaTabRadioControl
-                        label={label}
+                  <>
+                    <div style={{ marginTop: "20px" }}>
+                      <RbeaTabRadioControl
+                        label={__(
+                          `Direction (${tab.name})`,
+                          "responsive-block-editor-addons"
+                        )}
                         value={value}
                         options={directionOptions}
                         onChange={(val) =>
-                            setAttributes({
-                                [attributeKey]: val || 'row',
-                            })
+                          setAttributes({ [attributeKey]: val || "row" })
                         }
                         help={__(
-                            "Define the direction in which blocks inside this container will be placed one after the other.",
-                            "responsive-block-editor-addons"
+                          "Define the direction...",
+                          "responsive-block-editor-addons"
                         )}
                         defaultValue={"row"}
                         allowReset={true}
                         hasIcon={true}
                         optionHasBorder={true}
-                    />
+                      />
+                    </div>
+                  </>
+                );
+              }}
+            </ResponsiveTabPanel>
+
+            <ResponsiveTabPanel label="Alignment">
+              {(tab) => {
+                const currentDirection = {
+                  desktop: direction,
+                  tablet: directionTablet,
+                  mobile: directionMobile,
+                }[tab.name];
+
+                const tabSettings = {
+                  desktop: {
+                    value: alignItemsDesktop,
+                    attributeKey: "alignItemsDesktop",
+                  },
+                  tablet: {
+                    value: alignItemsTablet,
+                    attributeKey: "alignItemsTablet",
+                  },
+                  mobile: {
+                    value: alignItemsMobile,
+                    attributeKey: "alignItemsMobile",
+                  },
+                };
+
+                const { value, attributeKey } =
+                  tabSettings[tab.name] || tabSettings.desktop;
+
+                const getAlignmentControls = () => {
+                  switch (currentDirection) {
+                    case "row":
+                    case "row-reverse":
+                    case "column":
+                    case "column-reverse":
+                      return (
+                        <RbeaTabRadioControl
+                          label={__(
+                            `Align Items (${tab.name})`,
+                            "responsive-block-editor-addons"
+                          )}
+                          value={value}
+                          options={getAlignItemsOptions(currentDirection)}
+                          onChange={(val) =>
+                            setAttributes({ [attributeKey]: val || "center" })
+                          }
+                          help={
+                            currentDirection.includes("column")
+                              ? __(
+                                  "Align items horizontally",
+                                  "responsive-block-editor-addons"
+                                )
+                              : __(
+                                  "Align items vertically",
+                                  "responsive-block-editor-addons"
+                                )
+                          }
+                          defaultValue="center"
+                          allowReset
+                          hasIcon
+                          optionHasBorder
+                        />
+                      );
+
+                    default:
+                      return (
+                        <div
+                          style={{
+                            color: "#757575",
+                            fontStyle: "italic",
+                            padding: "8px 0",
+                          }}
+                        >
+                          {__(
+                            "Select a flex direction to see alignment options",
+                            "responsive-block-editor-addons"
+                          )}
+                        </div>
+                      );
+                  }
+                };
+
+                return (
+                  <div style={{ marginTop: "20px" }}>
+                    {getAlignmentControls()}
                   </div>
                 );
               }}
-            </TabPanel>
+            </ResponsiveTabPanel>
+
+            <ResponsiveTabPanel label="Justify Content">
+              {(tab) => {
+                const currentDirection = {
+                  desktop: direction,
+                  tablet: directionTablet,
+                  mobile: directionMobile,
+                }[tab.name];
+
+                const tabSettings = {
+                  desktop: {
+                    value: justifyContentDesktop,
+                    attributeKey: "justifyContentDesktop",
+                  },
+                  tablet: {
+                    value: justifyContentTablet,
+                    attributeKey: "justifyContentTablet",
+                  },
+                  mobile: {
+                    value: justifyContentMobile,
+                    attributeKey: "justifyContentMobile",
+                  },
+                };
+
+                const { value, attributeKey } =
+                  tabSettings[tab.name] || tabSettings.desktop;
+
+                const getJustifyContentControls = () => {
+                  switch (currentDirection) {
+                    case "row":
+                    case "row-reverse":
+                    case "column":
+                    case "column-reverse":
+                      return (
+                        <RbeaTabRadioControl
+                          label={__(
+                            `Justify Content (${tab.name})`,
+                            "responsive-block-editor-addons"
+                          )}
+                          value={value}
+                          options={getJustifyContentOptions(currentDirection)}
+                          onChange={(val) =>
+                            setAttributes({
+                              [attributeKey]: val || "flex-start",
+                            })
+                          }
+                          help={
+                            currentDirection.includes("column")
+                              ? __(
+                                  "Distribute items vertically",
+                                  "responsive-block-editor-addons"
+                                )
+                              : __(
+                                  "Distribute items horizontally",
+                                  "responsive-block-editor-addons"
+                                )
+                          }
+                          defaultValue="flex-start"
+                          allowReset
+                          hasIcon
+                          optionHasBorder
+                        />
+                      );
+
+                    default:
+                      return (
+                        <div
+                          style={{
+                            color: "#757575",
+                            fontStyle: "italic",
+                            padding: "8px 0",
+                          }}
+                        >
+                          {__(
+                            "Select a flex direction to see justification options",
+                            "responsive-block-editor-addons"
+                          )}
+                        </div>
+                      );
+                  }
+                };
+
+                return (
+                  <div style={{ marginTop: "20px" }}>
+                    {getJustifyContentControls()}
+                  </div>
+                );
+              }}
+            </ResponsiveTabPanel>
+
           </PanelBody>
 
           <RbeaSupportControl blockSlug="container" />
