@@ -69,9 +69,16 @@ export default function Inspector(props) {
     childrenWidthDesktop,
     childrenWidthTablet,
     childrenWidthMobile,
+    wrapDesktop,
+    wrapTablet,
+    wrapMobile,
+    alignContentDesktop,
+    alignContentTablet,
+    alignContentMobile,
   } = attributes;
 
   const [activeTab, setActiveTab] = useState("desktop");
+  const [activeWrapTab, setActiveWrapTab] = useState("desktop");
 
   const [unitDesktop, setUnitDesktop] = useState(
     attributes.innerContentBoxWidthTypeDesktop
@@ -227,6 +234,10 @@ export default function Inspector(props) {
     return types.includes(currentDir);
   };
 
+  const capitalizeString = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   const htmlTagOptions = [
     {
       value: "div",
@@ -332,8 +343,8 @@ export default function Inspector(props) {
   const getAlignItemsOptions = (currentDirection) => {
     console.log("currentDirection -> " + currentDirection);
     const flexDirection = currentDirection.includes("column")
-      ? "column"
-      : "row";
+      ? "row"
+      : "column";
 
     return [
       {
@@ -359,11 +370,15 @@ export default function Inspector(props) {
     ];
   };
 
-  const getJustifyContentOptions = (currentDirection) => {
+  const getJustifyContentOptions = (
+    currentDirection,
+    isAlignContent = false
+  ) => {
     console.log("JC currentDirection -> " + currentDirection);
-    const flexDirection = currentDirection.includes("column")
-      ? "row"
-      : "column";
+    let flexDirection = currentDirection.includes("column") ? "column" : "row";
+    if (isAlignContent) {
+      flexDirection = currentDirection.includes("column") ? "row" : "column";
+    }
 
     return [
       {
@@ -406,6 +421,24 @@ export default function Inspector(props) {
       },
     ];
   };
+
+  const wrapOptions = [
+    {
+      value: "wrap",
+      tooltip: __("Wrap", "ultimate-addons-for-gutenberg"),
+      icon: <Icon icon={renderCustomIcon("flex-wrap")} />,
+    },
+    {
+      value: "nowrap",
+      tooltip: __("No Wrap", "ultimate-addons-for-gutenberg"),
+      icon: <Icon icon={renderCustomIcon("flex-no-wrap")} />,
+    },
+    {
+      value: "wrap-reverse",
+      tooltip: __("Wrap Reverse", "ultimate-addons-for-gutenberg"),
+      icon: <Icon icon={renderCustomIcon("flex-wrap-reverse")} />,
+    },
+  ];
 
   const ResponsiveTabPanel = ({ children, label = "" }) => (
     <TabPanel
@@ -825,7 +858,7 @@ export default function Inspector(props) {
                     }`
                   ]
                 }
-                options={getChildWidthOptions("column")}
+                options={getChildWidthOptions("row")}
                 onChange={(value) =>
                   setAttributes({
                     [`childrenWidth${
@@ -855,7 +888,7 @@ export default function Inspector(props) {
                     }`
                   ]
                 }
-                options={getChildWidthOptions("row")}
+                options={getChildWidthOptions("column")}
                 onChange={(value) =>
                   setAttributes({
                     [`childrenWidth${
@@ -1032,6 +1065,156 @@ export default function Inspector(props) {
                 );
               }}
             </ResponsiveTabPanel>
+
+            <TabPanel
+              className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
+              activeClass="active-tab"
+              onSelect={(tabName) => setActiveWrapTab(tabName)}
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className:
+                    "responsive-desktop-tab responsive-responsive-tabs",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className: "responsive-tablet-tab responsive-responsive-tabs",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className: "responsive-mobile-tab responsive-responsive-tabs",
+                },
+              ]}
+            >
+              {(tab) => {
+                const tabSettings = {
+                  desktop: {
+                    label: __(
+                      "Wrap (Desktop)",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: wrapDesktop,
+                    attributeKey: "wrapDesktop",
+                  },
+                  tablet: {
+                    label: __(
+                      "Wrap (Tablet)",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: wrapTablet,
+                    attributeKey: "wrapTablet",
+                  },
+                  mobile: {
+                    label: __(
+                      "Wrap (Mobile)",
+                      "responsive-block-editor-addons"
+                    ),
+                    value: wrapMobile,
+                    attributeKey: "wrapMobile",
+                  },
+                };
+
+                const { label, value, attributeKey } =
+                  tabSettings[tab.name] || tabSettings.desktop;
+
+                return (
+                  <RbeaTabRadioControl
+                    label={__(
+                      `Wrap (${tab.name})`,
+                      "responsive-block-editor-addons"
+                    )}
+                    value={value}
+                    options={wrapOptions}
+                    onChange={(val) =>
+                      setAttributes({
+                        [attributeKey]: val,
+                      })
+                    }
+                    help={__(
+                      "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap).",
+                      "responsive-block-editor-addons"
+                    )}
+                    hasIcon
+                    optionHasBorder
+                  />
+                );
+              }}
+            </TabPanel>
+
+            {("wrap" === attributes["wrap" + capitalizeString(activeWrapTab)] ||
+              "wrap-reverse" ===
+                attributes["wrap" + capitalizeString(activeWrapTab)]) && (
+              <ResponsiveTabPanel label="Align Content">
+                {(tab) => {
+                  const currentDirection = {
+                    desktop: direction,
+                    tablet: directionTablet,
+                    mobile: directionMobile,
+                  }[tab.name];
+
+                  const tabSettings = {
+                    desktop: {
+                      value: alignContentDesktop,
+                      attributeKey: "alignContentDesktop",
+                    },
+                    tablet: {
+                      value: alignContentTablet,
+                      attributeKey: "alignContentTablet",
+                    },
+                    mobile: {
+                      value: alignContentMobile,
+                      attributeKey: "alignContentMobile",
+                    },
+                  };
+
+                  const { value, attributeKey } =
+                    tabSettings[tab.name] || tabSettings.desktop;
+
+                  const getAlignContentControls = () => {
+                    switch (currentDirection) {
+                      case "row":
+                      case "row-reverse":
+                      case "column":
+                      case "column-reverse":
+                        return (
+                          <RbeaTabRadioControl
+                            label={__(
+                              `Align Content (${tab.name})`,
+                              "responsive-block-editor-addons"
+                            )}
+                            value={value}
+                            options={getJustifyContentOptions(
+                              currentDirection,
+                              true
+                            )}
+                            onChange={(val) =>
+                              setAttributes({
+                                [attributeKey]: val || "flex-start",
+                              })
+                            }
+                            help={__(
+                              "Define the vertical alignment inside this container.",
+                              "responsive-block-editor-addons"
+                            )}
+                            defaultValue="flex-start"
+                            hasIcon
+                            optionHasBorder
+                          />
+                        );
+                    }
+                  };
+
+                  return (
+                    <div style={{ marginTop: "20px" }}>
+                      {getAlignContentControls()}
+                    </div>
+                  );
+                }}
+              </ResponsiveTabPanel>
+            )}
           </PanelBody>
 
           <RbeaSupportControl blockSlug="container" />

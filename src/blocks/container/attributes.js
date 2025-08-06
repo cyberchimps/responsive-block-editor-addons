@@ -159,6 +159,30 @@ const attributes = {
     type: 'string',
     default: 'equal',
   },
+  wrapDesktop: {
+    type: 'string',
+    default: 'nowrap',
+  },
+  wrapTablet: {
+    type: 'string',
+    default: 'nowrap',
+  },
+  wrapMobile: {
+    type: 'string',
+    default: 'wrap',
+  },
+  alignContentDesktop: {
+    type: 'string',
+    default: ''
+  },
+  alignContentTablet: {
+    type: 'string',
+    default: ''
+  },
+  alignContentMobile: {
+    type: 'string',
+    default: ''
+  },
 };
 
 export default attributes;
