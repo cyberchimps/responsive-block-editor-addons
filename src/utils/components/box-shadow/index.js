@@ -29,7 +29,11 @@ class BoxShadowControl extends Component {
     } = this.props;
 
     const setAttr = (key, value) => {
-      setAttributes({ [`${controlKey}${key}`]: value });
+      if (controlKey) {
+        setAttributes({ [`${controlKey}${key}`]: value });
+      } else {
+        setAttributes({ [`boxShadow${key}`]: value });
+      }
     };
 
     return (
@@ -89,11 +93,6 @@ class BoxShadowControl extends Component {
             onChange={(value) => setAttr("Position", value)}
           />
         </Fragment>
-      </div>
-    );
-    return (
-      <div className="res-typography-option-actions">
-        {advancedControls}
       </div>
     );
   }
