@@ -3,40 +3,56 @@
  */
 import classnames from "classnames";
 import Inspector from "./inspector";
-import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import { VariationPicker } from "../variationPicker";
+import { useSelect } from '@wordpress/data';
+import Render from './render';
 
 /**
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
 const { useEffect } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
-const { createBlock } = wp.blocks;
 
 export default function Edit(props) {
   const {
-    attributes: {
-      headingTitle,
-      headingDesc,
-      seperatorStyle,
-      headingTitleFontFamily,
-      subHeadingTitleFontFamily,
-      headingTag,
-      headingAlignment,
-      showHeading,
-      showSubHeading,
-      showSeparator,
-      seperatorPosition,
-      block_id,
-    },
+    attributes,
+    attributes: { block_id, variationSelected },
     setAttributes,
-    mergeBlocks,
-    insertBlocksAfter,
-    onReplace,
     className,
     clientId,
+		name,
   } = props;
+
+  console.log(attributes)
+
+  const {
+    isParentOfSelectedBlock,
+    variations,
+    defaultVariation,
+    getBlockParents,
+    parentBlocks,
+    parentAttributes,
+    deviceType,
+  } = useSelect((select) => {
+    const coreBlocks = select("core/blocks");
+    const coreBlockEditor = select("core/block-editor");
+    const getBlockParentStore = coreBlockEditor?.getBlockParents(clientId);
+    const { __experimentalGetPreviewDeviceType } = select('core/edit-post');
+    const parentClientId = coreBlockEditor.getBlockRootClientId(props.clientId);
+    return {
+      defaultVariation: coreBlocks?.getDefaultBlockVariation(name),
+      variations: coreBlocks?.getBlockVariations(name),
+      isParentOfSelectedBlock: coreBlockEditor?.hasSelectedInnerBlock(
+        clientId,
+        true
+      ),
+      getBlockParents: getBlockParentStore,
+      parentBlocks: coreBlockEditor?.getBlocksByClientId(getBlockParentStore),
+      parentAttributes: coreBlockEditor.getBlockAttributes(parentClientId),
+      deviceType: __experimentalGetPreviewDeviceType?.() || 'Desktop',
+    };
+  });
 
   // Equivalent to componentDidMount
   useEffect(() => {
@@ -66,6 +82,39 @@ export default function Edit(props) {
     }
   }, [props]);
 
+  if ( isParentOfSelectedBlock ) {
+		const emptyBlockInserter = document.querySelector( '.block-editor-block-list__empty-block-inserter' );
+		if ( emptyBlockInserter ) {
+			emptyBlockInserter.style.display = 'none';
+		}
+	}
+
+  useEffect( () => {
+		// Check if a parent of this container is one of these special blocks.
+		const attributesToUpdate = {};
+
+		// Conditionally set the isBlockRootParent attribute
+		if ( ! parentBlocks || parentBlocks.length === 0 || ! parentBlocks.some( parent => parent.name === 'responsive-block-editor-addons/container' ) ) {
+			attributesToUpdate.isBlockRootParent = true;
+		}
+
+		// Compare with attribute and attributeToUpdate and update only if there is a change.
+		if ( attributesToUpdate.isBlockRootParent !== attributes.isBlockRootParent ) {
+			setAttributes( attributesToUpdate );
+		}
+	}, [] );
+
+  if ( isParentOfSelectedBlock ) {
+		const emptyBlockInserter = document.querySelector( '.block-editor-block-list__empty-block-inserter' );
+		if ( emptyBlockInserter ) {
+			emptyBlockInserter.style.display = 'none';
+		}
+	}
+
+  if (!variationSelected && 0 === getBlockParents?.length) {
+    return <VariationPicker {...{ ...props, variations, defaultVariation }} />;
+  }
+
   return [
     <style
       key="inner-style"
@@ -74,14 +123,10 @@ export default function Edit(props) {
       {EditorStyles(props)}
     </style>,
 
-    <BlockControls key="controls">
-      <AlignmentToolbar
-        value={headingAlignment}
-        onChange={(value) => setAttributes({ headingAlignment: value })}
-      />
-    </BlockControls>,
-
-    <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...props }} />,
+    <Inspector
+      key={`inspector-${block_id}`}
+      {...{ setAttributes, ...props }}
+    />,
 
     <div
       key={`mainDiv-${block_id}`}
@@ -91,62 +136,9 @@ export default function Edit(props) {
         `block-${block_id}`
       )}
     >
-      {headingTitleFontFamily && loadGoogleFont(headingTitleFontFamily)}
 
-      {showHeading && (
-        <RichText
-          tagName={headingTag}
-          placeholder={__("Write a Heading", "responsive-block-editor-addons")}
-          value={headingTitle}
-          className="responsive-heading-title-text"
-          multiline={false}
-          onChange={(value) => setAttributes({ headingTitle: value })}
-          onMerge={mergeBlocks}
-          onSplit={
-            insertBlocksAfter
-              ? (before, after, ...blocks) => {
-                  setAttributes({ content: before });
-                  insertBlocksAfter([
-                    ...blocks,
-                    createBlock("core/paragraph", { content: after }),
-                  ]);
-                }
-              : undefined
-          }
-          onRemove={() => onReplace([])}
-        />
-      )}
+      <Render { ...props } />
 
-      {seperatorPosition === "belowTitle" &&
-        seperatorStyle !== "none" &&
-        showSeparator && (
-          <div className="responsive-heading-seperator-wrap">
-            <div className="responsive-heading-seperator"></div>
-          </div>
-        )}
-
-      {subHeadingTitleFontFamily && loadGoogleFont(subHeadingTitleFontFamily)}
-
-      {showSubHeading && (
-        <RichText
-          tagName="p"
-          placeholder={__("Write some text", "responsive-block-editor-addons")}
-          value={headingDesc}
-          className="responsive-heading-desc-text"
-          onChange={(value) => setAttributes({ headingDesc: value })}
-          onMerge={mergeBlocks}
-          onSplit={undefined}
-          onRemove={() => onReplace([])}
-        />
-      )}
-
-      {seperatorPosition === "belowDesc" &&
-        seperatorStyle !== "none" &&
-        showSeparator && (
-          <div className="responsive-heading-seperator-wrap">
-            <div className="responsive-heading-seperator"></div>
-          </div>
-        )}
     </div>,
   ];
 }

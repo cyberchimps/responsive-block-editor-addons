@@ -159,7 +159,7 @@ const attributes = {
     type: "string",
     default: "visible",
   },
-  direction: {
+  directionDesktop: {
     type: "string",
     default: "row",
   },
@@ -366,6 +366,18 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  widthSetByUser: {
+    type: "boolean",
+    default: false,
+  },
+  variationSelected: {
+    type: "boolean",
+    default: false,
+  },
+  isBlockRootParent: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

@@ -81,7 +81,7 @@ export default function Inspector(props) {
     htmlTagLink,
     linkTarget,
     overflow,
-    direction,
+    directionDesktop,
     directionTablet,
     directionMobile,
     alignItemsDesktop,
@@ -383,7 +383,7 @@ export default function Inspector(props) {
 
   const getCurrentDirection = () => {
     return activeTab === "desktop"
-      ? direction
+      ? directionDesktop
       : activeTab === "tablet"
       ? directionTablet
       : directionMobile;
@@ -626,17 +626,17 @@ export default function Inspector(props) {
   const wrapOptions = [
     {
       value: "wrap",
-      tooltip: __("Wrap", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Wrap", "responsive-block-editor-addons"),
       icon: <Icon icon={renderCustomIcon("flex-wrap")} />,
     },
     {
       value: "nowrap",
-      tooltip: __("No Wrap", "ultimate-addons-for-gutenberg"),
+      tooltip: __("No Wrap", "responsive-block-editor-addons"),
       icon: <Icon icon={renderCustomIcon("flex-no-wrap")} />,
     },
     {
       value: "wrap-reverse",
-      tooltip: __("Wrap Reverse", "ultimate-addons-for-gutenberg"),
+      tooltip: __("Wrap Reverse", "responsive-block-editor-addons"),
       icon: <Icon icon={renderCustomIcon("flex-wrap-reverse")} />,
     },
   ];
@@ -680,121 +680,138 @@ export default function Inspector(props) {
             initialOpen={false}
             className="responsive_block_editor_addons__url-panel-body"
           >
-            <RbeaTabRadioControl
-              label={__("Container Width", "responsive-block-editor-addons")}
-              value={contentWidth}
-              onChange={(value) => setAttributes({ contentWidth: value })}
-              options={[
-                {
-                  value: "alignfull",
-                  label: __("Full Width", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "alignwide",
-                  label: __("Boxed", "responsive-block-editor-addons"),
-                },
-                {
-                  value: "default",
-                  label: __("Custom", "responsive-block-editor-addons"),
-                },
-              ]}
-              defaultValue="alignfull"
-              optionHasBorder={true}
-            />
-
-            {"alignfull" === contentWidth && (
+            {/* from here */}
+            {isBlockRootParent && (
               <>
                 <RbeaTabRadioControl
-                  label={__("Content Width", "responsive-block-editor-addons")}
-                  value={innerContentWidth}
-                  onChange={(value) =>
-                    setAttributes({ innerContentWidth: value })
-                  }
+                  label={__(
+                    "Container Width",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={contentWidth}
+                  onChange={(value) => setAttributes({ contentWidth: value })}
                   options={[
+                    {
+                      value: "alignfull",
+                      label: __("Full Width", "responsive-block-editor-addons"),
+                    },
                     {
                       value: "alignwide",
                       label: __("Boxed", "responsive-block-editor-addons"),
                     },
                     {
-                      value: "alignfull",
-                      label: __("Full Width", "responsive-block-editor-addons"),
+                      value: "default",
+                      label: __("Custom", "responsive-block-editor-addons"),
                     },
                   ]}
-                  defaultValue="alignwide"
+                  defaultValue="alignfull"
                   optionHasBorder={true}
                 />
 
-                {innerContentWidth === "alignwide" && (
-                  <TabPanel
-                    className="responsive-size-type-field-tabs"
-                    activeClass="active-tab"
-                    tabs={[
-                      {
-                        name: "desktop",
-                        title: <Dashicon icon="desktop" />,
-                        className: "responsive-desktop-tab",
-                      },
-                      {
-                        name: "tablet",
-                        title: <Dashicon icon="tablet" />,
-                        className: "responsive-tablet-tab",
-                      },
-                      {
-                        name: "mobile",
-                        title: <Dashicon icon="smartphone" />,
-                        className: "responsive-mobile-tab",
-                      },
-                    ]}
-                  >
-                    {(tab) => {
-                      const widthKey = {
-                        desktop: "innerContentCustomWidthDesktop",
-                        tablet: "innerContentCustomWidthTablet",
-                        mobile: "innerContentCustomWidthMobile",
-                      }[tab.name];
+                {"alignfull" === contentWidth && (
+                  <>
+                    <RbeaTabRadioControl
+                      label={__(
+                        "Content Width",
+                        "responsive-block-editor-addons"
+                      )}
+                      value={innerContentWidth}
+                      onChange={(value) =>
+                        setAttributes({ innerContentWidth: value })
+                      }
+                      options={[
+                        {
+                          value: "alignwide",
+                          label: __("Boxed", "responsive-block-editor-addons"),
+                        },
+                        {
+                          value: "alignfull",
+                          label: __(
+                            "Full Width",
+                            "responsive-block-editor-addons"
+                          ),
+                        },
+                      ]}
+                      defaultValue="alignwide"
+                      optionHasBorder={true}
+                    />
 
-                      const typeKey = {
-                        desktop: "innerContentBoxWidthTypeDesktop",
-                        tablet: "innerContentBoxWidthTypeTablet",
-                        mobile: "innerContentBoxWidthTypeMobile",
-                      }[tab.name];
+                    {innerContentWidth === "alignwide" && (
+                      <TabPanel
+                        className="responsive-size-type-field-tabs"
+                        activeClass="active-tab"
+                        tabs={[
+                          {
+                            name: "desktop",
+                            title: <Dashicon icon="desktop" />,
+                            className: "responsive-desktop-tab",
+                          },
+                          {
+                            name: "tablet",
+                            title: <Dashicon icon="tablet" />,
+                            className: "responsive-tablet-tab",
+                          },
+                          {
+                            name: "mobile",
+                            title: <Dashicon icon="smartphone" />,
+                            className: "responsive-mobile-tab",
+                          },
+                        ]}
+                      >
+                        {(tab) => {
+                          const widthKey = {
+                            desktop: "innerContentCustomWidthDesktop",
+                            tablet: "innerContentCustomWidthTablet",
+                            mobile: "innerContentCustomWidthMobile",
+                          }[tab.name];
 
-                      const value = attributes[widthKey];
-                      const widthType = {
-                        desktop: unitDesktop,
-                        tablet: unitTablet,
-                        mobile: unitMobile,
-                      }[tab.name];
+                          const typeKey = {
+                            desktop: "innerContentBoxWidthTypeDesktop",
+                            tablet: "innerContentBoxWidthTypeTablet",
+                            mobile: "innerContentBoxWidthTypeMobile",
+                          }[tab.name];
 
-                      return (
-                        <div style={{ marginTop: "20px" }}>
-                          <RbeaWidthRangeControl
-                            label={__(
-                              "Content Box Width (" + tab.name + ")",
-                              "responsive-block-editor-addons"
-                            )}
-                            value={value}
-                            onChange={(val) =>
-                              setAttributes({ [widthKey]: val })
-                            }
-                            min={0}
-                            max={widthType === "%" ? 100 : 2000}
-                            allowReset
-                            initialPosition={20}
-                            widthType={widthType}
-                            setAttributes={setAttributes}
-                            extraControls={true}
-                            widthTypeKey={typeKey}
-                          />
-                        </div>
-                      );
-                    }}
-                  </TabPanel>
+                          const value = attributes[widthKey];
+                          const widthType = {
+                            desktop: unitDesktop,
+                            tablet: unitTablet,
+                            mobile: unitMobile,
+                          }[tab.name];
+
+                          return (
+                            <div style={{ marginTop: "20px" }}>
+                              <RbeaWidthRangeControl
+                                label={__(
+                                  "Content Box Width (" + tab.name + ")",
+                                  "responsive-block-editor-addons"
+                                )}
+                                value={value}
+                                onChange={(val) =>
+                                  setAttributes({ [widthKey]: val })
+                                }
+                                min={0}
+                                max={widthType === "%" ? 100 : 2000}
+                                allowReset
+                                initialPosition={20}
+                                widthType={widthType}
+                                setAttributes={setAttributes}
+                                extraControls={true}
+                                widthTypeKey={typeKey}
+                              />
+                            </div>
+                          );
+                        }}
+                      </TabPanel>
+                    )}
+                  </>
                 )}
               </>
             )}
+            {/* till here */}
 
-            {"default" === contentWidth && (
+            {/* from here */}
+
+            { ( ( isBlockRootParent && 'default' === contentWidth ) || ! isBlockRootParent ) && (
               <TabPanel
                 className="responsive-size-type-field-tabs"
                 activeClass="active-tab"
@@ -844,7 +861,10 @@ export default function Inspector(props) {
                           "responsive-block-editor-addons"
                         )}
                         value={value}
-                        onChange={(val) => setAttributes({ [widthKey]: val })}
+                        onChange={(val) => {
+                          setAttributes({ [widthKey]: val });
+                          setAttributes({ widthSetByUser: true });
+                        }}
                         min={0}
                         max={widthType === "%" ? 100 : 2000}
                         allowReset
@@ -859,6 +879,7 @@ export default function Inspector(props) {
                 }}
               </TabPanel>
             )}
+            {/* till here */}
 
             <TabPanel
               className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
@@ -1001,8 +1022,8 @@ export default function Inspector(props) {
               {(tab) => {
                 const tabSettings = {
                   desktop: {
-                    value: direction,
-                    attributeKey: "direction",
+                    value: directionDesktop,
+                    attributeKey: "directionDesktop",
                   },
                   tablet: {
                     value: directionTablet,
@@ -1108,7 +1129,7 @@ export default function Inspector(props) {
             <ResponsiveTabPanel label="Alignment">
               {(tab) => {
                 const currentDirection = {
-                  desktop: direction,
+                  desktop: directionDesktop,
                   tablet: directionTablet,
                   mobile: directionMobile,
                 }[tab.name];
@@ -1193,7 +1214,7 @@ export default function Inspector(props) {
             <ResponsiveTabPanel label="Justify Content">
               {(tab) => {
                 const currentDirection = {
-                  desktop: direction,
+                  desktop: directionDesktop,
                   tablet: directionTablet,
                   mobile: directionMobile,
                 }[tab.name];
@@ -1361,7 +1382,7 @@ export default function Inspector(props) {
               <ResponsiveTabPanel label="Align Content">
                 {(tab) => {
                   const currentDirection = {
-                    desktop: direction,
+                    desktop: directionDesktop,
                     tablet: directionTablet,
                     mobile: directionMobile,
                   }[tab.name];

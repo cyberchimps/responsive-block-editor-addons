@@ -1,16 +1,14 @@
-.responsive-block-editor-addons-block-advanced-heading {
-  padding: 0;
-  margin: 0 auto;
+.responsive-block-editor-addons-variation-picker {
+  .components-placeholder__fieldset {
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    max-width: 90%;
 
-  .responsive-heading-seperator-wrap {
-    font-size: 0;
-  }
-
-  .responsive-heading-seperator {
-    border-top-style: solid;
-    display: inline-block;
-    border-top-width: 2px;
-    width: 5%;
-    margin: 0px 0px 10px 0px;
+    .block-editor-block-variation-picker__variations {
+      width: 75%;
+      gap: 0;
+      margin: 16px 0;
+    }
   }
 }

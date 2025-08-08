@@ -1,62 +1,74 @@
 /**
- * Internal dependencies
+ * BLOCK: Container - Save Block
  */
-import classnames from "classnames";
-import Style from "style-it";
 
-/**
- * WordPress dependencies
- */
-const { RichText } = wp.blockEditor;
+import classnames from 'classnames';
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
-export default function Save({ attributes, className }) {
-  const {
-    headingTitle,
-    headingId,
-    headingDesc,
-    seperatorStyle,
-    seperatorPosition,
-    headingTag,
-    showHeading,
-    showSubHeading,
-    showSeparator,
-    block_id,
-    anchor,
-  } = attributes;
+export default function save( props ) {
+	const {
+		block_id,
+		htmlTag,
+		htmlTagLink,
+		contentWidth,
+		innerContentWidth,
+		isBlockRootParent,
+		backgroundType,
+		backgroundVideo,
+		linkTarget,
+	} = props.attributes;
 
-  const separatorOutput =
-    seperatorStyle !== "none" ? (
-      <div className="responsive-heading-seperator-wrap">
-        <div className="responsive-heading-seperator"></div>
-      </div>
-    ) : null;
+	const CustomTag = 'a' === htmlTag ? 'div' : `${ htmlTag }`;
+	const customTagLinkAttributes = {};
+	if ( htmlTag === 'a' ) {
+		customTagLinkAttributes.rel = 'noopener';
+    if ( htmlTagLink?.url ) {
+      customTagLinkAttributes.href = htmlTagLink?.url;
+    }
+    if ( htmlTagLink?.opensInNewTab ) {
+      customTagLinkAttributes.target = '_blank';
+    }
+    if ( htmlTagLink?.noFollow ) {
+      customTagLinkAttributes.rel = 'nofollow noopener';
+    }
+	}
 
-  return (
-    <div
-      id={anchor}
-      className={classnames(
-        className,
-        "responsive-block-editor-addons-block-container",
-        `block-${block_id}`
-      )}
-    >
-      {showHeading && (
-        <RichText.Content
-          tagName={headingTag}
-          value={headingTitle}
-          className="responsive-heading-title-text"
-          id={headingId}
-        />
-      )}
-      {seperatorPosition === "belowTitle" && showSeparator && separatorOutput}
-      {showSubHeading && (
-        <RichText.Content
-          tagName="p"
-          value={headingDesc}
-          className="responsive-heading-desc-text"
-        />
-      )}
-      {seperatorPosition === "belowDesc" && showSeparator && separatorOutput}
-    </div>
-  );
+	const blockProps = useBlockProps.save();
+
+	return (
+		<>
+			<CustomTag
+				id={ blockProps.id }
+				className={ classnames(
+					blockProps.className,
+					`rba-block-${ block_id }`,
+					isBlockRootParent ? `${ contentWidth } rba-is-root-container` : ''
+				) }
+			>
+				{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
+				{ 'video' === backgroundType && (
+					<div className="rba-container__video-wrap">
+						{ backgroundVideo && (
+							<video autoPlay loop muted playsinline>
+								<source src={ backgroundVideo.url } type="video/mp4" />
+							</video>
+						) }
+					</div>
+				) }
+				{/* Render the content above the Video Background if any and above the Shape Dividers. */}
+				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ? (
+					<div className="rba-container-inner-blocks-wrap">
+						<InnerBlocks.Content />
+					</div>
+				) : (
+					<InnerBlocks.Content />
+					) }
+				{ 
+					htmlTag === 'a' && 'undefined' !== typeof customTagLinkAttributes.href && (
+						<a className='spectra-container-link-overlay' { ...customTagLinkAttributes } > </a>
+					)
+				}
+			</CustomTag>
+		</>
+	);
 }
