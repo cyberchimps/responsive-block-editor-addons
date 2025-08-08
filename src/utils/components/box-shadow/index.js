@@ -95,6 +95,11 @@ class BoxShadowControl extends Component {
         </Fragment>
       </div>
     );
+    return (
+      <div className="res-typography-option-actions">
+        {advancedControls}
+      </div>
+    );
   }
 }
 
