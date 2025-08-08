@@ -13,7 +13,13 @@ import {
 
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
-
+import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
+import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
+import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
+import RbeaColorControl from "../../../utils/components/rbea-color-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
+import BoxShadowControl from "../../../utils/components/box-shadow";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
@@ -49,6 +55,14 @@ export default function Inspector(props) {
     customWidthTypeMobile,
     customWidthTypeUpdated,
     customWidthType,
+    rowGapDesktop,
+    rowGapTablet,
+    rowGapMobile,
+    rowGapTypeDesktop,
+    rowGapTypeTablet,
+    rowGapTypeMobile,
+    rowGapTypeUpdated,
+    rowGapType,
     minHeight,
     minHeightTablet,
     minHeightMobile,
@@ -75,6 +89,30 @@ export default function Inspector(props) {
     alignContentDesktop,
     alignContentTablet,
     alignContentMobile,
+    backgroundType,
+    opacity,
+    backgroundColor,
+    backgroundImage,
+    backgroundVideo,
+    textColor,
+    linkColor,
+    linkColorHover,
+    containerBorderRadius,
+    containerBorderStyle,
+    containerBorderWidth,
+    containerBorderColor,
+    boxShadowColor,
+    boxShadowHOffset,
+    boxShadowVOffset,
+    boxShadowBlur,
+    boxShadowSpread,
+    boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
   } = attributes;
 
   const [activeTab, setActiveTab] = useState("desktop");
@@ -101,6 +139,17 @@ export default function Inspector(props) {
     attributes.customWidthTypeMobile
   );
 
+  // row gap.
+  const [unitRowGapDesktop, setUnitRowGapDesktop] = useState(
+    attributes.rowGapTypeDesktop
+  );
+  const [unitRowGapTablet, setUnitRowGapTablet] = useState(
+    attributes.rowGapTypeTablet
+  );
+  const [unitRowGapMobile, setUnitRowGapMobile] = useState(
+    attributes.rowGapTypeMobile
+  );
+
   useEffect(() => {
     setUnitDesktop(attributes.innerContentBoxWidthTypeDesktop);
   }, [attributes.innerContentBoxWidthTypeDesktop]);
@@ -125,6 +174,19 @@ export default function Inspector(props) {
   useEffect(() => {
     setCustomWidthUnitMobile(attributes.customWidthTypeMobile);
   }, [attributes.customWidthTypeMobile]);
+
+  // row gap.
+  useEffect(() => {
+    setUnitRowGapDesktop(attributes.rowGapTypeDesktop);
+  }, [attributes.rowGapTypeDesktop]);
+
+  useEffect(() => {
+    setUnitRowGapTablet(attributes.rowGapTypeTablet);
+  }, [attributes.rowGapTypeTablet]);
+
+  useEffect(() => {
+    setUnitRowGapMobile(attributes.rowGapTypeMobile);
+  }, [attributes.rowGapTypeMobile]);
 
   useEffect(() => {
     const needsMigration =
@@ -163,6 +225,27 @@ export default function Inspector(props) {
       });
       console.log(
         "🔁 Migrated innerContentBoxWidthType attributes from customWidthType"
+      );
+    }
+  }, []);
+
+  // row gap.
+  useEffect(() => {
+    const needsMigrationRowGap =
+      !rowGapTypeUpdated &&
+      !rowGapDesktop &&
+      !rowGapTablet &&
+      !rowGapMobile;
+
+    if (needsMigrationRowGap) {
+      setAttributes({
+        rowGapDesktop: rowGapType ?? "px",
+        rowGapTablet: rowGapType ?? "px",
+        rowGapMobile: rowGapType ?? "px",
+        rowGapTypeUpdated: true,
+      });
+      console.log(
+        "🔁 Migrated attributes for row gap"
       );
     }
   }, []);
@@ -218,6 +301,33 @@ export default function Inspector(props) {
     customWidthTypeTablet,
     customWidthMobile,
     customWidthTypeMobile,
+  ]);
+
+  // row gap.
+  useEffect(() => {
+    console.log("📐 Row Gap Attributes:");
+    console.log(
+      "Desktop Row Gap:",
+      rowGapDesktop,
+      rowGapTypeDesktop
+    );
+    console.log(
+      "Tablet Row Gap:",
+      rowGapTablet,
+      rowGapTypeTablet
+    );
+    console.log(
+      "Mobile Row Gap:",
+      rowGapMobile,
+      rowGapTypeMobile
+    );
+  }, [
+    rowGapDesktop,
+    rowGapTypeDesktop,
+    rowGapTablet,
+    rowGapTypeTablet,
+    rowGapMobile,
+    rowGapTypeMobile,
   ]);
 
   const getCurrentDirection = () => {
@@ -287,6 +397,16 @@ export default function Inspector(props) {
       value: "a",
       label: __("link", "responsive-block-editor-addons"),
     },
+  ];
+
+  const backgroundTypeOptions = [
+    { value: "color", label: __("Color", "responsive-block-editor-addons") },
+    {
+      value: "gradient",
+      label: __("Gradient", "responsive-block-editor-addons"),
+    },
+    { value: "image", label: __("Image", "responsive-block-editor-addons") },
+    { value: "video", label: __("Video", "responsive-block-editor-addons") },
   ];
 
   const getChildWidthOptions = (flexDirection) => {
@@ -948,7 +1068,12 @@ export default function Inspector(props) {
                             setAttributes({ [attributeKey]: val || "center" })
                           }
                           help={__(
-                            `Define the ${currentDirection === 'row' || currentDirection === 'row-reverse' ? 'vertical' : 'horizontal'} alignment inside this container.`,
+                            `Define the ${
+                              currentDirection === "row" ||
+                              currentDirection === "row-reverse"
+                                ? "vertical"
+                                : "horizontal"
+                            } alignment inside this container.`,
                             "responsive-block-editor-addons"
                           )}
                           defaultValue="center"
@@ -1030,7 +1155,12 @@ export default function Inspector(props) {
                             })
                           }
                           help={__(
-                            `Define the ${currentDirection === 'row' || currentDirection === 'row-reverse' ? 'horizontal' : 'vertical'} alignment inside this container.`,
+                            `Define the ${
+                              currentDirection === "row" ||
+                              currentDirection === "row-reverse"
+                                ? "horizontal"
+                                : "vertical"
+                            } alignment inside this container.`,
                             "responsive-block-editor-addons"
                           )}
                           defaultValue="flex-start"
@@ -1196,7 +1326,12 @@ export default function Inspector(props) {
                               })
                             }
                             help={__(
-                              `Define the ${currentDirection === 'row' || currentDirection === 'row-reverse' ? 'vertical' : 'horizontal'} alignment inside this container.`,
+                              `Define the ${
+                                currentDirection === "row" ||
+                                currentDirection === "row-reverse"
+                                  ? "vertical"
+                                  : "horizontal"
+                              } alignment inside this container.`,
                               "responsive-block-editor-addons"
                             )}
                             defaultValue="flex-start"
@@ -1222,6 +1357,370 @@ export default function Inspector(props) {
 
         {/* Style Tab */}
         <InspectorTab key={"style"}>
+          <PanelBody
+            title={__("Background", "responsive-block-editor-addons")}
+            initialOpen={false}
+            className="responsive_block_editor_addons__url-panel-body"
+          >
+            <RbeaBackgroundTypeControl
+              label={__("Type", "responsive-block-editor-addons")}
+              value={backgroundType}
+              onChange={(value) => setAttributes({ backgroundType: value })}
+              options={backgroundTypeOptions}
+            />
+            {"color" == backgroundType && (
+              <>
+                <ColorBackgroundControl {...props} />
+                {backgroundColor && (
+                  <RbeaRangeControl
+                    label={__("Opacity", "responsive-block-editor-addons")}
+                    value={opacity}
+                    onChange={(value) =>
+                      setAttributes({
+                        opacity: value !== undefined ? value : 20,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    allowReset
+                  />
+                )}
+              </>
+            )}
+            {"gradient" == backgroundType && (
+              <GradientBackgroundControl {...props} showHoverGradient={false} />
+            )}
+            {"image" == backgroundType && (
+              <>
+                <RbeaMediaUploadControl
+                  label={__("Image", "responsive-block-editor-addons")}
+                  value={{
+                    url: backgroundImage || "",
+                  }}
+                  onChange={(newValue) => {
+                    setAttributes({
+                      backgroundImage: newValue.url,
+                    });
+                  }}
+                  mediaType={"image"}
+                />
+                {backgroundImage && (
+                  <RbeaRangeControl
+                    label={__("Opacity", "responsive-block-editor-addons")}
+                    value={opacity}
+                    onChange={(value) =>
+                      setAttributes({
+                        opacity: value !== undefined ? value : 20,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    allowReset
+                  />
+                )}
+              </>
+            )}
+            {"video" == backgroundType && (
+              <>
+                <RbeaMediaUploadControl
+                  label={__("Video", "responsive-block-editor-addons")}
+                  value={{
+                    url: backgroundVideo ? backgroundVideo.url : "",
+                  }}
+                  onChange={(newValue) => {
+                    setAttributes({
+                      backgroundVideo: newValue,
+                    });
+                  }}
+                  mediaType={"video"}
+                />
+                {backgroundVideo && (
+                  <RbeaRangeControl
+                    label={__("Opacity", "responsive-block-editor-addons")}
+                    value={opacity}
+                    onChange={(value) =>
+                      setAttributes({
+                        opacity: value !== undefined ? value : 20,
+                      })
+                    }
+                    min={0}
+                    max={100}
+                    allowReset
+                  />
+                )}
+              </>
+            )}
+          </PanelBody>
+
+          <PanelBody
+            title={__("Color", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <RbeaColorControl
+              label={__("Text Color", "responsive-block-editor-addons")}
+              colorValue={textColor}
+              onChange={(colorValue) =>
+                setAttributes({ textColor: colorValue })
+              }
+              resetColor={() => setAttributes({ textColor: "" })}
+            />
+            <TabPanel
+              className="responsive-block-editor-addons-inspect-tabs 
+                  responsive-block-editor-addons-inspect-tabs-col-2  
+                  responsive-block-editor-addons-color-inspect-tabs"
+              activeClass="active-tab"
+              initialTabName="normal" // Set the default active tab here
+              tabs={[
+                {
+                  name: "empty-1",
+                  title: __("", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-empty-tab",
+                },
+                {
+                  name: "normal",
+                  title: __("Normal", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-normal-tab",
+                },
+                {
+                  name: "empty-2",
+                  title: __("", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-empty-tab-middle",
+                },
+                {
+                  name: "hover",
+                  title: __("Hover", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-hover-tab",
+                },
+                {
+                  name: "empty-3",
+                  title: __("", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-empty-tab",
+                },
+              ]}
+            >
+              {(tabName) => {
+                let color_tab;
+                if ("normal" === tabName.name) {
+                  color_tab = (
+                    <RbeaColorControl
+                      label={__("Link Color", "responsive-block-editor-addons")}
+                      colorValue={linkColor}
+                      onChange={(colorValue) =>
+                        setAttributes({ linkColor: colorValue })
+                      }
+                      resetColor={() => setAttributes({ linkColor: "" })}
+                    />
+                  );
+                } else if ("hover" === tabName.name) {
+                  color_tab = (
+                    <RbeaColorControl
+                      label={__(
+                        "Link Color Hover",
+                        "responsive-block-editor-addons"
+                      )}
+                      colorValue={linkColorHover}
+                      onChange={(colorValue) =>
+                        setAttributes({ linkColorHover: colorValue })
+                      }
+                      resetColor={() => setAttributes({ linkColorHover: "" })}
+                    />
+                  );
+                } else {
+                  color_tab = emptyColorControl;
+                }
+                return <div>{color_tab}</div>;
+              }}
+            </TabPanel>
+          </PanelBody>
+
+          <PanelBody
+            title={__("Border", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <RbeaBlockBorderHelperControl
+              attrNameTemplate="container%s"
+              values={{
+                radius: containerBorderRadius,
+                style: containerBorderStyle,
+                width: containerBorderWidth,
+                color: containerBorderColor,
+              }}
+              setAttributes={setAttributes}
+              {...props}
+            />
+          </PanelBody>
+
+          <PanelBody
+            title={__("Box Shadow", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <TabPanel
+              className="responsive-block-editor-addons-inspect-tabs 
+                  responsive-block-editor-addons-inspect-tabs-col-2  
+                  responsive-block-editor-addons-color-inspect-tabs"
+              activeClass="active-tab"
+              initialTabName="normal"
+              tabs={[
+                {
+                  name: "empty-1",
+                  title: "",
+                  className: "responsive-block-editor-addons-empty-tab",
+                },
+                {
+                  name: "normal",
+                  title: __("Normal", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-normal-tab",
+                },
+                {
+                  name: "empty-2",
+                  title: "",
+                  className: "responsive-block-editor-addons-empty-tab-middle",
+                },
+                {
+                  name: "hover",
+                  title: __("Hover", "responsive-block-editor-addons"),
+                  className: "responsive-block-editor-addons-hover-tab",
+                },
+                {
+                  name: "empty-3",
+                  title: "",
+                  className: "responsive-block-editor-addons-empty-tab",
+                },
+              ]}
+            >
+              {(tab) => {
+                const isHover = tab.name === "hover";
+                const modeLabel = isHover
+                  ? __("Box Shadow (Hover)", "responsive-block-editor-addons")
+                  : __("Box Shadow", "responsive-block-editor-addons");
+
+                return (
+                  <BoxShadowControl
+                    controlKey={isHover ? "hoverboxShadow" : "boxShadow"}
+                    setAttributes={setAttributes}
+                    label={modeLabel}
+                    boxShadowColor={{
+                      value: isHover ? hoverboxShadowColor : boxShadowColor,
+                      label: isHover
+                        ? __("Color (Hover)", "responsive-block-editor-addons")
+                        : __("Color", "responsive-block-editor-addons"),
+                    }}
+                    boxShadowHOffset={{
+                      value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+                      label: isHover
+                        ? __(
+                            "Horizontal (Hover)",
+                            "responsive-block-editor-addons"
+                          )
+                        : __("Horizontal", "responsive-block-editor-addons"),
+                    }}
+                    boxShadowVOffset={{
+                      value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+                      label: isHover
+                        ? __(
+                            "Vertical (Hover)",
+                            "responsive-block-editor-addons"
+                          )
+                        : __("Vertical", "responsive-block-editor-addons"),
+                    }}
+                    boxShadowBlur={{
+                      value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+                      label: isHover
+                        ? __("Blur (Hover)", "responsive-block-editor-addons")
+                        : __("Blur", "responsive-block-editor-addons"),
+                    }}
+                    boxShadowSpread={{
+                      value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+                      label: isHover
+                        ? __("Spread (Hover)", "responsive-block-editor-addons")
+                        : __("Spread", "responsive-block-editor-addons"),
+                    }}
+                    boxShadowPosition={{
+                      value: isHover
+                        ? hoverboxShadowPosition
+                        : boxShadowPosition,
+                      label: isHover
+                        ? __(
+                            "Position (Hover)",
+                            "responsive-block-editor-addons"
+                          )
+                        : __("Position", "responsive-block-editor-addons"),
+                    }}
+                  />
+                );
+              }}
+            </TabPanel>
+          </PanelBody>
+
+          <PanelBody
+            title={__("Spacing", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <TabPanel
+              className="responsive-size-type-field-tabs"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className: "responsive-desktop-tab",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className: "responsive-tablet-tab",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className: "responsive-mobile-tab",
+                },
+              ]}
+            >
+              {(tab) => {
+                const widthKey = {
+                  desktop: "rowGapDesktop",
+                  tablet: "rowGapTablet",
+                  mobile: "rowGapMobile",
+                }[tab.name];
+
+                const typeKey = {
+                  desktop: "rowGapTypeDesktop",
+                  tablet: "rowGapTypeTablet",
+                  mobile: "rowGapTypeMobile",
+                }[tab.name];
+
+                const value = attributes[widthKey];
+                const widthType = {
+                  desktop: unitRowGapDesktop,
+                  tablet: unitRowGapTablet,
+                  mobile: unitRowGapMobile,
+                }[tab.name];
+
+                return (
+                  <div style={{ marginTop: "20px" }}>
+                    <RbeaWidthRangeControl
+                      label={__(
+                        "Row Gap (" + tab.name + ")",
+                        "responsive-block-editor-addons"
+                      )}
+                      value={value}
+                      onChange={(val) => setAttributes({ [widthKey]: val })}
+                      min={0}
+                      max={widthType === "%" ? 100 : 200}
+                      allowReset
+                      initialPosition={20}
+                      widthType={widthType}
+                      setAttributes={setAttributes}
+                      extraControls={true}
+                      widthTypeKey={typeKey}
+                    />
+                  </div>
+                );
+              }}
+            </TabPanel>
+          </PanelBody>
+
           <RbeaSupportControl blockSlug={"container"} />
         </InspectorTab>
 
