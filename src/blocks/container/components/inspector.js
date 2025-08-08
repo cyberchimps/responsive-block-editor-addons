@@ -20,6 +20,8 @@ import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
+import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
+import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
@@ -264,10 +266,7 @@ export default function Inspector(props) {
   // row gap.
   useEffect(() => {
     const needsMigrationRowGap =
-      !rowGapTypeUpdated &&
-      !rowGapDesktop &&
-      !rowGapTablet &&
-      !rowGapMobile;
+      !rowGapTypeUpdated && !rowGapDesktop && !rowGapTablet && !rowGapMobile;
 
     if (needsMigrationRowGap) {
       setAttributes({
@@ -276,9 +275,7 @@ export default function Inspector(props) {
         rowGapMobile: rowGapType ?? "px",
         rowGapTypeUpdated: true,
       });
-      console.log(
-        "🔁 Migrated attributes for row gap"
-      );
+      console.log("🔁 Migrated attributes for row gap");
     }
   }, []);
 
@@ -297,9 +294,7 @@ export default function Inspector(props) {
         columnGapMobile: columnGapType ?? "px",
         columnGapTypeUpdated: true,
       });
-      console.log(
-        "🔁 Migrated attributes for column gap"
-      );
+      console.log("🔁 Migrated attributes for column gap");
     }
   }, []);
 
@@ -359,21 +354,9 @@ export default function Inspector(props) {
   // row gap.
   useEffect(() => {
     console.log("📐 Row Gap Attributes:");
-    console.log(
-      "Desktop Row Gap:",
-      rowGapDesktop,
-      rowGapTypeDesktop
-    );
-    console.log(
-      "Tablet Row Gap:",
-      rowGapTablet,
-      rowGapTypeTablet
-    );
-    console.log(
-      "Mobile Row Gap:",
-      rowGapMobile,
-      rowGapTypeMobile
-    );
+    console.log("Desktop Row Gap:", rowGapDesktop, rowGapTypeDesktop);
+    console.log("Tablet Row Gap:", rowGapTablet, rowGapTypeTablet);
+    console.log("Mobile Row Gap:", rowGapMobile, rowGapTypeMobile);
   }, [
     rowGapDesktop,
     rowGapTypeDesktop,
@@ -386,21 +369,9 @@ export default function Inspector(props) {
   // column gap.
   useEffect(() => {
     console.log("📐 Column Gap Attributes:");
-    console.log(
-      "Desktop Column Gap:",
-      columnGapDesktop,
-      columnGapTypeDesktop
-    );
-    console.log(
-      "Tablet Column Gap:",
-      columnGapTablet,
-      columnGapTypeTablet
-    );
-    console.log(
-      "Mobile Column Gap:",
-      columnGapMobile,
-      columnGapTypeMobile
-    );
+    console.log("Desktop Column Gap:", columnGapDesktop, columnGapTypeDesktop);
+    console.log("Tablet Column Gap:", columnGapTablet, columnGapTypeTablet);
+    console.log("Mobile Column Gap:", columnGapMobile, columnGapTypeMobile);
   }, [
     columnGapDesktop,
     columnGapTypeDesktop,
@@ -620,6 +591,36 @@ export default function Inspector(props) {
         ),
       },
     ];
+  };
+
+  const containerMarginResetValues = {
+    marginTop: 0,
+    marginRight: 0,
+    marginBottom: 0,
+    marginLeft: 0,
+    marginTabletTop: 10,
+    marginTabletRight: 0,
+    marginTabletBottom: 0,
+    marginTabletLeft: 0,
+    marginMobileTop: 10,
+    marginMobileRight: 0,
+    marginMobileBottom: 0,
+    marginMobileLeft: 0,
+  };
+
+  const containerPaddingResetValues = {
+    paddingTop: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingTabletTop: 10,
+    paddingTabletRight: 0,
+    paddingTabletBottom: 0,
+    paddingTabletLeft: 0,
+    paddingMobileTop: 10,
+    paddingMobileRight: 0,
+    paddingMobileBottom: 0,
+    paddingMobileLeft: 0,
   };
 
   const wrapOptions = [
@@ -1864,6 +1865,18 @@ export default function Inspector(props) {
                 );
               }}
             </TabPanel>
+
+            <ResponsiveNewMarginControl
+              attrNameTemplate="container%s"
+              resetValues={containerMarginResetValues}
+              {...props}
+            />
+
+            <ResponsiveNewPaddingControl
+              attrNameTemplate="container%s"
+              resetValues={containerPaddingResetValues}
+              {...props}
+            />
           </PanelBody>
 
           <RbeaSupportControl blockSlug={"container"} />
