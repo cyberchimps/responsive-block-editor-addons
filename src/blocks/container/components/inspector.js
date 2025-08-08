@@ -63,6 +63,14 @@ export default function Inspector(props) {
     rowGapTypeMobile,
     rowGapTypeUpdated,
     rowGapType,
+    columnGapDesktop,
+    columnGapTablet,
+    columnGapMobile,
+    columnGapTypeDesktop,
+    columnGapTypeTablet,
+    columnGapTypeMobile,
+    columnGapTypeUpdated,
+    columnGapType,
     minHeight,
     minHeightTablet,
     minHeightMobile,
@@ -150,6 +158,17 @@ export default function Inspector(props) {
     attributes.rowGapTypeMobile
   );
 
+  // column gap.
+  const [unitColumnGapDesktop, setUnitColumnGapDesktop] = useState(
+    attributes.columnGapTypeDesktop
+  );
+  const [unitColumnGapTablet, setUnitColumnGapTablet] = useState(
+    attributes.columnGapTypeTablet
+  );
+  const [unitColumnGapMobile, setUnitColumnGapMobile] = useState(
+    attributes.columnGapTypeMobile
+  );
+
   useEffect(() => {
     setUnitDesktop(attributes.innerContentBoxWidthTypeDesktop);
   }, [attributes.innerContentBoxWidthTypeDesktop]);
@@ -187,6 +206,19 @@ export default function Inspector(props) {
   useEffect(() => {
     setUnitRowGapMobile(attributes.rowGapTypeMobile);
   }, [attributes.rowGapTypeMobile]);
+
+  // column gap.
+  useEffect(() => {
+    setUnitColumnGapDesktop(attributes.columnGapTypeDesktop);
+  }, [attributes.columnGapTypeDesktop]);
+
+  useEffect(() => {
+    setUnitColumnGapTablet(attributes.columnGapTypeTablet);
+  }, [attributes.columnGapTypeTablet]);
+
+  useEffect(() => {
+    setUnitColumnGapMobile(attributes.columnGapTypeMobile);
+  }, [attributes.columnGapTypeMobile]);
 
   useEffect(() => {
     const needsMigration =
@@ -246,6 +278,27 @@ export default function Inspector(props) {
       });
       console.log(
         "🔁 Migrated attributes for row gap"
+      );
+    }
+  }, []);
+
+  // column gap.
+  useEffect(() => {
+    const needsMigrationColumnGap =
+      !columnGapTypeUpdated &&
+      !columnGapDesktop &&
+      !columnGapTablet &&
+      !columnGapMobile;
+
+    if (needsMigrationColumnGap) {
+      setAttributes({
+        columnGapDesktop: columnGapType ?? "px",
+        columnGapTablet: columnGapType ?? "px",
+        columnGapMobile: columnGapType ?? "px",
+        columnGapTypeUpdated: true,
+      });
+      console.log(
+        "🔁 Migrated attributes for column gap"
       );
     }
   }, []);
@@ -328,6 +381,33 @@ export default function Inspector(props) {
     rowGapTypeTablet,
     rowGapMobile,
     rowGapTypeMobile,
+  ]);
+
+  // column gap.
+  useEffect(() => {
+    console.log("📐 Column Gap Attributes:");
+    console.log(
+      "Desktop Column Gap:",
+      columnGapDesktop,
+      columnGapTypeDesktop
+    );
+    console.log(
+      "Tablet Column Gap:",
+      columnGapTablet,
+      columnGapTypeTablet
+    );
+    console.log(
+      "Mobile Column Gap:",
+      columnGapMobile,
+      columnGapTypeMobile
+    );
+  }, [
+    columnGapDesktop,
+    columnGapTypeDesktop,
+    columnGapTablet,
+    columnGapTypeTablet,
+    columnGapMobile,
+    columnGapTypeMobile,
   ]);
 
   const getCurrentDirection = () => {
@@ -1702,6 +1782,71 @@ export default function Inspector(props) {
                     <RbeaWidthRangeControl
                       label={__(
                         "Row Gap (" + tab.name + ")",
+                        "responsive-block-editor-addons"
+                      )}
+                      value={value}
+                      onChange={(val) => setAttributes({ [widthKey]: val })}
+                      min={0}
+                      max={widthType === "%" ? 100 : 200}
+                      allowReset
+                      initialPosition={20}
+                      widthType={widthType}
+                      setAttributes={setAttributes}
+                      extraControls={true}
+                      widthTypeKey={typeKey}
+                    />
+                  </div>
+                );
+              }}
+            </TabPanel>
+
+            {/* Column Gap */}
+            <TabPanel
+              className="responsive-size-type-field-tabs"
+              activeClass="active-tab"
+              tabs={[
+                {
+                  name: "desktop",
+                  title: <Dashicon icon="desktop" />,
+                  className: "responsive-desktop-tab",
+                },
+                {
+                  name: "tablet",
+                  title: <Dashicon icon="tablet" />,
+                  className: "responsive-tablet-tab",
+                },
+                {
+                  name: "mobile",
+                  title: <Dashicon icon="smartphone" />,
+                  className: "responsive-mobile-tab",
+                },
+              ]}
+            >
+              {(tab) => {
+                const widthKey = {
+                  desktop: "columnGapDesktop",
+                  tablet: "columnGapTablet",
+                  mobile: "columnGapMobile",
+                }[tab.name];
+
+                const typeKey = {
+                  desktop: "columnGapTypeDesktop",
+                  tablet: "columnGapTypeTablet",
+                  mobile: "columnGapTypeMobile",
+                }[tab.name];
+
+                const value = attributes[widthKey];
+                const widthType = {
+                  desktop: unitColumnGapDesktop,
+                  tablet: unitColumnGapTablet,
+                  mobile: unitColumnGapMobile,
+                }[tab.name];
+
+                return (
+                  <div style={{ marginTop: "20px" }}>
+                    <RbeaWidthRangeControl
+                      label={__(
+                        "Column Gap (" + tab.name + ")",
                         "responsive-block-editor-addons"
                       )}
                       value={value}

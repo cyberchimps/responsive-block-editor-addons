@@ -103,6 +103,30 @@ const attributes = {
     type: "string",
     default: "px",
   },
+  columnGapDesktop: {
+    type: "number",
+    default: 20,
+  },
+  columnGapTablet: {
+    type: "number",
+    default: 20,
+  },
+  columnGapMobile: {
+    type: "number",
+    default: 20,
+  },
+  columnGapTypeDesktop: {
+    type: "string",
+    default: "px",
+  },
+  columnGapTypeTablet: {
+    type: "string",
+    default: "px",
+  },
+  columnGapTypeMobile: {
+    type: "string",
+    default: "px",
+  },
   minHeight: {
     type: "number",
     default: 100,
