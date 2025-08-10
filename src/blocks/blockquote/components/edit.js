@@ -58,9 +58,29 @@ export default class Edit extends Component {
         backgroundImage,
         backgroundVideo,
         icon,
+        twEnabled,
+        twView, 
+        twStyle,
+        twUrlMode,
+        twCustomUrl,
+        twLabel,
       },
       setAttributes,
     } = this.props;
+
+    const previewHref =
+      twUrlMode === "custom" && twCustomUrl
+        ? twCustomUrl
+        : (typeof window !== "undefined" ? window.location.href : "#");
+
+    const showIcon  = (twView || "both") !== "text";
+    const showLabel = (twView || "both") !== "icon";
+
+    const tweetBtnClasses = classnames(
+      "rbea-bq__tweet",
+      `rbea-bq__tweet--${twStyle || "classic"}`
+    );
+
 
     return [
       // Show the alignment toolbar on focus
@@ -124,6 +144,21 @@ export default class Edit extends Component {
             )}
             onChange={(value) => setAttributes({ quoteContent: value })}
           />
+          {twEnabled && (
+            <div className="rbea-bq__tweet-wrap">
+              <a
+                className={tweetBtnClasses}
+                href={previewHref}
+                target="_blank"
+                rel="noopener"
+                onClick={(e) => e.preventDefault()} // editor preview only
+              >
+                {showIcon && <Dashicon icon="twitter" />}
+                {showLabel && <span className="rbea-bq__label">{twLabel || __("Tweet","responsive-block-editor-addons")}</span>}
+              </a>
+            </div>
+          )}
+
         </div>
       </div>,
     ];
