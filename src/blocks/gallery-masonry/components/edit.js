@@ -153,13 +153,13 @@ class GalleryMasonryEdit extends Component {
             .then((mediaResponse) => {
               return {
                 id: image.id,
-                rba_category: mediaResponse.rba_category || "uncategorized"
+                rba_category: (mediaResponse?.rba_category || "").trim()
               };
             })
             .catch((error) => {
               return {
                 id: image.id,
-                rba_category: "uncategorized"
+                rba_category: ""
               };
             });
         }
@@ -256,16 +256,24 @@ class GalleryMasonryEdit extends Component {
   getCategories() {
     const { mediaData } = this.state;
     const categories = new Set();
+
     Object.values(mediaData).forEach((media) => {
-      if (media.rba_category) {
-        media.rba_category
-          .split(",")
-          .map((c) => c.trim())
-          .forEach((cat) => categories.add(cat));
-      }
+      const raw = (media?.rba_category || "").trim();
+      if (!raw) return;
+
+      raw
+        .split(",")
+        .map((c) => c.trim())
+        .forEach((cat) => {
+          if (cat && cat.toLowerCase() !== "uncategorized") {
+            categories.add(cat);
+          }
+        });
     });
+
     return ["All", ...Array.from(categories)];
-  }
+}
+
 
   render() {
     const { attributes, className, isSelected, noticeUI } = this.props;
