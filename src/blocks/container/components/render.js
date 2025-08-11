@@ -33,10 +33,10 @@ const Render = ( props ) => {
 	const CustomTag = 'a' === htmlTag ? 'div' : `${ htmlTag }`;	
 
 	const hasChildren = 0 !== select( 'core/block-editor' ).getBlocks( clientId ).length;
-	const hasChildrenClass = hasChildren ? 'rba-container-has-children' : '';
-	const isRootContainerClass = isBlockRootParent ? `${ contentWidth } rba-is-root-container` : '';
+	const hasChildrenClass = hasChildren ? 'responsive-block-editor-addons-container-has-children' : '';
+	const isRootContainerClass = isBlockRootParent ? `${ contentWidth } responsive-block-editor-addons-is-root-container` : '';
 	const blockProps = useBlockProps( {
-		className: `rba-block-${ block_id } ${ hasChildrenClass } rba-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
+		className: `responsive-block-editor-addons-block-${ block_id } ${ hasChildrenClass } responsive-block-editor-addons-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
 	} );
 
 	const innerBlocksParams = {
@@ -57,7 +57,7 @@ const Render = ( props ) => {
 			<CustomTag { ...blockProps } key={ block_id }>
 				{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
 				{ 'video' === backgroundType && (
-					<div className="rba-container__video-wrap">
+					<div className="responsive-block-editor-addons-container__video-wrap">
 						{ backgroundVideo && (
 							<video autoPlay loop muted playsinline>
 								<source src={ backgroundVideo.url } type="video/mp4" />
@@ -68,7 +68,7 @@ const Render = ( props ) => {
 
 				{/* Render the content above the Video Background if any and above the Shape Dividers. */}
 				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ? (
-					<div className="rba-container-inner-blocks-wrap">
+					<div className="responsive-block-editor-addons-container-inner-blocks-wrap">
 						<InnerBlocks { ...innerBlocksParams } />
 					</div>
 				) : (

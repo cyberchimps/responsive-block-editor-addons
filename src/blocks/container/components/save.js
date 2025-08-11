@@ -41,13 +41,13 @@ export default function save( props ) {
 				id={ blockProps.id }
 				className={ classnames(
 					blockProps.className,
-					`rba-block-${ block_id }`,
-					isBlockRootParent ? `${ contentWidth } rba-is-root-container` : ''
+					`responsive-block-editor-addons-block-${ block_id }`,
+					isBlockRootParent ? `${ contentWidth } responsive-block-editor-addons-is-root-container` : ''
 				) }
 			>
 				{/* Video Background is positioned absolutely. The place in the DOM is to render it underneath the shape dividers and content. */}
 				{ 'video' === backgroundType && (
-					<div className="rba-container__video-wrap">
+					<div className="responsive-block-editor-addons-container__video-wrap">
 						{ backgroundVideo && (
 							<video autoPlay loop muted playsinline>
 								<source src={ backgroundVideo.url } type="video/mp4" />
@@ -57,7 +57,7 @@ export default function save( props ) {
 				) }
 				{/* Render the content above the Video Background if any and above the Shape Dividers. */}
 				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ? (
-					<div className="rba-container-inner-blocks-wrap">
+					<div className="responsive-block-editor-addons-container-inner-blocks-wrap">
 						<InnerBlocks.Content />
 					</div>
 				) : (
