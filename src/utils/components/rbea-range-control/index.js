@@ -45,6 +45,8 @@ const RbeaRangeControl = ( props ) => {
                     min={min}
                     max={max}
                     allowReset = {false}
+                    __nextHasNoMarginBottom 
+                    __next40pxDefaultSize={true}
                     {...restProps}
                 />
             </div>
