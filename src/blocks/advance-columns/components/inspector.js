@@ -353,6 +353,8 @@ export default class Inspector extends Component {
                   "Note: The individual Column Gap can be managed from Column Settings.",
                   "responsive-block-editor-addons"
                 )}
+                __next40pxDefaultSize={true}
+                __nextHasNoMarginBottom
               />
               <RbeaTabRadioControl
                 label={__("Stack on", "responsive-block-editor-addons")}
@@ -876,6 +878,8 @@ export default class Inspector extends Component {
                                   label: __("Bottom Right", "responsive-block-editor-addons"),
                                 },
                               ]}
+                              __next40pxDefaultSize={true}
+                              __nextHasNoMarginBottom
                             />
                           )}
                         </Fragment>
