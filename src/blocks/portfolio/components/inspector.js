@@ -389,7 +389,9 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
             <Fragment>
-              <BaseControl>
+              <BaseControl
+                __nextHasNoMarginBottom
+              >
                 <p>
                   {__(
                     "Horizontal Alignment",

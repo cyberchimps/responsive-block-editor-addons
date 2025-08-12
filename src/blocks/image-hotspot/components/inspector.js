@@ -285,6 +285,7 @@ class Inspector extends Component {
           />
             <BaseControl
               label={__("Hotspot Icon", "responsive-block-editor-addons")}
+              __nextHasNoMarginBottom
             >
                 <FontIconPicker
                   icons={svg_icons}

@@ -188,6 +188,7 @@ class ResponsiveBaseControl extends Component {
                             min={min}
                             step={step}
                             max={max}
+                            __nextHasNoMarginBottom
                           />
                         </BaseControl>
                       </div>
@@ -208,6 +209,7 @@ class ResponsiveBaseControl extends Component {
                             min={min}
                             step={step}
                             max={max}
+                            __nextHasNoMarginBottom
                           />
                         </BaseControl>
                       </div>
@@ -228,6 +230,7 @@ class ResponsiveBaseControl extends Component {
                           min={min}
                           step={step}
                           max={max}
+                          __nextHasNoMarginBottom
                         />
                       </BaseControl>
                     </div>

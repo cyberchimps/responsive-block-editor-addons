@@ -290,7 +290,9 @@ export default class Inspector extends Component {
                 />
               </Fragment>
               {tabsStyleD === 'hstyle3' && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -309,7 +311,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>)}
               {tabsStyleD === 'vstyle8' && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Alignment", "responsive-block-editor-addons")}
                   </p>

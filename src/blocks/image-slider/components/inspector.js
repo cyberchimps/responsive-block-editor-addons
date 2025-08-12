@@ -301,6 +301,7 @@ class Inspector extends Component {
                           "responsive-block-editor-addons"
                         )}
                         className={"block-height-control"}
+                        __nextHasNoMarginBottom
                       >
                         <input
                           type="number"

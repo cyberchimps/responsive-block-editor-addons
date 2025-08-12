@@ -73,6 +73,8 @@ const RbeaWidthRangeControl = ( props ) => {
                     min={min}
                     max={max}
                     allowReset = {false}
+                    __next40pxDefaultSize={true}
+                    __nextHasNoMarginBottom
                     {...restProps}
                 />
             </div>

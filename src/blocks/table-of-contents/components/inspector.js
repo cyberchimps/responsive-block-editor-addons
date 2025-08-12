@@ -599,7 +599,9 @@ export default class Inspector extends Component {
                 ]}
               />
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Header Alignment", "responsive-block-editor-addons")}
                   </p>

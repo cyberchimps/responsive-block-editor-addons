@@ -558,7 +558,9 @@ if (!imageIsRadiusValueUpdated) {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -583,7 +585,9 @@ if (!imageIsRadiusValueUpdated) {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -608,7 +612,9 @@ if (!imageIsRadiusValueUpdated) {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -662,7 +668,9 @@ if (!imageIsRadiusValueUpdated) {
                     if ("mobile" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions Mobile",
@@ -705,7 +713,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions Tablet",
@@ -748,7 +758,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions",
@@ -904,7 +916,9 @@ if (!imageIsRadiusValueUpdated) {
                     if ("mobile" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment Mobile",
@@ -929,7 +943,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment Tablet",
@@ -954,7 +970,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment",

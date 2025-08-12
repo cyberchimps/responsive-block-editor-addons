@@ -266,7 +266,9 @@ export default class Inspector extends Component {
                 />
               )}
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Block Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -285,7 +287,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>
               {displayTitle && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Title Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -304,7 +308,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>)}
               {displaySubtitle && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Subtitle Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -323,7 +329,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>)}
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Text Alignment", "responsive-block-editor-addons")}
                   </p>

@@ -603,7 +603,9 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           )}
           {"grid" === layout && (
             <Fragment>
-              <BaseControl>
+              <BaseControl
+                __nextHasNoMarginBottom
+              >
                 <p>
                   {__("Alignment", "responsive-block-editor-addons")}
                 </p>
@@ -992,17 +994,33 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                       tabout = (
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
-                           <__experimentalToggleGroupControl
-                               label={__("Size Type")}
-                               value={iconSizeType}
-                               onChange={(val) => setAttributes({ iconSizeType: val })}
-                               isBlock={false}
-                               __nextHasNoMarginBottom={true}
-                               __next40pxDefaultSize={true}
-                             >
-                               <__experimentalToggleGroupControlOption value="px" label="px" />
-                               <__experimentalToggleGroupControlOption value="%" label="%" />
-                            </__experimentalToggleGroupControl>
+                            <ButtonGroup
+                                className="responsive-block-editor-addons-size-type-field"
+                                aria-label={__("Size Type")}
+                            >
+                            <Button
+                                key={"px"}
+                                className="responsive-block-editor-addons-size-btn"
+                                isSmall
+                                isPrimary={iconSizeType === "px"}
+                                aria-pressed={iconSizeType === "px"}
+                                onClick={() =>
+                                setAttributes({ iconSizeType: "px" })
+                            }
+                            >
+                                {"px"}
+                            </Button>
+                                <Button
+                                key={"%"}
+                                className="responsive-block-editor-addons-size-btn"
+                                isSmall
+                                isPrimary={iconSizeType === "%"}
+                                aria-pressed={iconSizeType === "%"}
+                                onClick={() => setAttributes({ iconSizeType: "%" })}
+                            >
+                                {"%"}
+                            </Button>
+                          </ButtonGroup>
                       <p>{__("")}</p>
                       <RbeaRangeControl
                       label={"Icon Size (Mobile)"}
@@ -1021,17 +1039,33 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                       tabout = (
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
-                            <__experimentalToggleGroupControl
-                              label={__("Size Type")}
-                              value={iconSizeType}
-                              onChange={(val) => setAttributes({ iconSizeType: val })}
-                              isBlock={false}
-                              __nextHasNoMarginBottom={true}
-                              __next40pxDefaultSize={true}
+                            <ButtonGroup
+                                className="responsive-block-editor-addons-size-type-field"
+                                aria-label={__("Size Type")}
                             >
-                              <__experimentalToggleGroupControlOption value="px" label="px" />
-                              <__experimentalToggleGroupControlOption value="%" label="%" />
-                            </__experimentalToggleGroupControl>
+                            <Button
+                                key={"px"}
+                                className="responsive-block-editor-addons-size-btn"
+                                isSmall
+                                isPrimary={iconSizeType === "px"}
+                                aria-pressed={iconSizeType === "px"}
+                                onClick={() =>
+                                setAttributes({ iconSizeType: "px" })
+                            }
+                            >
+                                {"px"}
+                            </Button>
+                                <Button
+                                key={"%"}
+                                className="responsive-block-editor-addons-size-btn"
+                                isSmall
+                                isPrimary={iconSizeType === "%"}
+                                aria-pressed={iconSizeType === "%"}
+                                onClick={() => setAttributes({ iconSizeType: "%" })}
+                            >
+                                {"%"}
+                            </Button>
+                            </ButtonGroup>
                       <p>{__("")}</p>
                       <RbeaRangeControl
                       label={"Icon Size (Tablet)"}
@@ -1050,17 +1084,33 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                       tabout = (
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
-                           <__experimentalToggleGroupControl
-                            label={__("Size Type")}
-                            value={iconSizeType}
-                            onChange={(val) => setAttributes({ iconSizeType: val })}
-                            isBlock={false}
-                            __nextHasNoMarginBottom={true}
-                            __next40pxDefaultSize={true}
-                          >
-                            <__experimentalToggleGroupControlOption value="px" label="px" />
-                            <__experimentalToggleGroupControlOption value="%" label="%" />
-                          </__experimentalToggleGroupControl>
+                           <ButtonGroup
+                                className="responsive-block-editor-addons-size-type-field"
+                                aria-label={__("Size Type")}
+                            >
+                            <Button
+                                key={"px"}
+                                className="responsive-block-editor-addons-size-btn"
+                                isSmall
+                                isPrimary={iconSizeType === "px"}
+                                aria-pressed={iconSizeType === "px"}
+                                onClick={() =>
+                                setAttributes({ iconSizeType: "px" })
+                            }
+                            >
+                                {"px"}
+                            </Button>
+                                <Button
+                                key={"%"}
+                                className="responsive-block-editor-addons-size-btn"
+                                isSmall
+                                isPrimary={iconSizeType === "%"}
+                                aria-pressed={iconSizeType === "%"}
+                                onClick={() => setAttributes({ iconSizeType: "%" })}
+                            >
+                                {"%"}
+                            </Button>
+                            </ButtonGroup>
                       <p>{__("")}</p>
                       <RbeaRangeControl
                       label={"Icon Size"}

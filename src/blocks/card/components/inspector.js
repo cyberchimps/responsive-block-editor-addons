@@ -638,7 +638,11 @@ export default class Inspector extends Component {
           initialOpen={true}
           className={"rbea-repeater-panel"}
         >
-          <BaseControl className="editor-bg-image-control" label={__("", "responsive-block-editor-addons")}>
+          <BaseControl 
+            className="editor-bg-image-control" 
+            label={__("", "responsive-block-editor-addons")}
+            __nextHasNoMarginBottom
+          >
             <MediaUpload
               title={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
               onSelect={(media) => {

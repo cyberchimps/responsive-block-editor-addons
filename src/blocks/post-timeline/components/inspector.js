@@ -473,7 +473,9 @@ export default class Inspector extends Component {
                   },
                 ]}
               /> */}
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Orientation", "responsive-block-editor-addons")}
                   </p>

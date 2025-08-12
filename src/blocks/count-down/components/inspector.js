@@ -391,6 +391,7 @@ export default class Inspector extends Component {
               <BaseControl
                 id="responsive-block-editor-addons-countdown-due-date"
                 label={__("Due Date", "responsive-block-editor-addons")}
+                __nextHasNoMarginBottom
               >
                 <DateTime
                   value={date}
@@ -408,7 +409,9 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Text Alignment", "responsive-block-editor-addons")}
                   </p>

@@ -551,7 +551,9 @@ if (!gridIsRadiusValueUpdated) {
                 )}
               />
               {"grid" == layout && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Alignment", "responsive-block-editor-addons")}
                   </p>

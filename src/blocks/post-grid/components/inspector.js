@@ -1164,7 +1164,9 @@ export default class Inspector extends Component {
                 }
               />
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__(
                       "Pagination Alignment",

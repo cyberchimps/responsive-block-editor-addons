@@ -415,7 +415,9 @@ export default class Inspector extends Component {
                 step={1}
               />
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Orientation", "responsive-block-editor-addons")}
                   </p>
@@ -434,7 +436,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Arrow Alignment", "responsive-block-editor-addons")}
                   </p>
