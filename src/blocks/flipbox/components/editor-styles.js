@@ -234,6 +234,16 @@ function EditorStyles(props) {
     ctaBlockRightRadiusMobile,
     ctaBlockBottomRadiusMobile,
     ctaBlockLeftRadiusMobile,
+    frontTitleTextTransform,
+    frontTitleFontStyle,
+    frontSubtitleTextTransform,
+    frontSubtitleFontStyle,
+    backTitleTextTransform,
+    backTitleFontStyle,
+    backSubtitleTextTransform,
+    backSubtitleFontStyle,
+    backButtonTextTransform,
+    backButtonFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -362,7 +372,9 @@ function EditorStyles(props) {
         frontBackgroundColor || "#ffffff",
         coloropacity
       )}`,
-      color: frontTitleTypographyColor,
+      "color": frontTitleTypographyColor,
+      "text-transform": frontTitleTextTransform,
+      "font-style": frontTitleFontStyle,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
       "border-width": borderWidth !== 999 && blockBorderWidth === 2 ? generateCSSUnit(borderWidth, "px") : generateCSSUnit(blockBorderWidth, "px"), // For compatibility with v1.3.2.
@@ -389,14 +401,18 @@ function EditorStyles(props) {
       "padding-right": rightPadding !== 999 && frontRightPadding === 0 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(frontRightPadding, "px"), // For compatibility with v1.3.2.
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
-      color: frontTitleTypographyColor,
+      "color": frontTitleTypographyColor,
+      "text-transform": frontTitleTextTransform,
+      "font-style": frontTitleFontStyle,
       "font-family": frontTitleFontFamily,
       "font-size": generateCSSUnit(frontTitleFontSize, "px"),
       "font-weight": frontTitleFontWeight,
       "line-height": frontTitleLineHeight,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__subtitle": {
-      color: frontTitleTypographyColor,
+      "color": frontTitleTypographyColor,
+      "text-transform": frontSubtitleTextTransform,
+      "font-style": frontSubtitleFontStyle,
       "font-family": frontSubtitleFontFamily,
       "font-size": generateCSSUnit(frontSubtitleFontSize, "px"),
       "font-weight": frontSubtitleFontWeight,
@@ -412,7 +428,9 @@ function EditorStyles(props) {
         backBackgroundColor || "#ffffff",
         backcoloropacity
       )}`,
-      color: backTitleTypographyColor,
+      "color": backTitleTypographyColor,
+      "text-transform": backTitleTextTransform,
+      "font-style": backTitleFontStyle,
       transform: flipStyleBack,
       "border-color": borderColor !== 'empty' && blockBorderColor === '' ? borderColor : blockBorderColor, // For compatibility with v1.3.2.
       "border-style": borderStyle !== 'empty' && blockBorderStyle === 'none' ? borderStyle : blockBorderStyle, // For compatibility with v1.3.2.
@@ -445,9 +463,13 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(backTitleFontSize, "px"),
       "font-weight": backTitleFontWeight,
       "line-height": backTitleLineHeight,
+      "text-transform": backTitleTextTransform,
+      "font-style": backTitleFontStyle,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__backsubtitle": {
       color: backTitleTypographyColor,
+      "text-transform": backSubtitleTextTransform,
+      "font-style": backSubtitleFontStyle,
       "font-family": backSubtitleFontFamily,
       "font-size": generateCSSUnit(backSubtitleFontSize, "px"),
       "font-weight": backSubtitleFontWeight,
@@ -495,6 +517,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(backButtonFontSize, "px"),
       "font-weight": backButtonFontWeight,
       "line-height": backButtonLineHeight,
+      "text-transform": backButtonTextTransform,
+      "font-style": backButtonFontStyle,
     },
     " .wp-block-responsive-block-editor-addons-flipbox-item__button.wp-block-button__link:hover": {
       "background-image": buttonHbackgroundType == 'color' ? 'none' : backgroundHoverImageGradient,

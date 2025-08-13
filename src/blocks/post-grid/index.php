@@ -1182,6 +1182,22 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 					'type'	=> 'boolean',
 					'default' => false,
 				),
+				'excerptFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
+				),
+				'metaFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
+				),
+				'titleFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
+				),
+				'continueFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts',
 		)

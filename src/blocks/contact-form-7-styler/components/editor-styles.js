@@ -333,7 +333,23 @@
       ctaButtonBottomPaddingMobile,
       ctaButtonLeftPaddingMobile,
       ctaButtonRightPaddingMobile,
-      isCtaButtonPaddingMarginValueUpdated
+      isCtaButtonPaddingMarginValueUpdated,
+      formTitleTextTransform,
+      formTitleFontStyle,
+      formDescriptionTextTransform,
+      formDescriptionFontStyle,
+      inputTextTransform,
+      inputFontStyle,
+      labelTextTransform,
+      labelFontStyle,
+      radioCheckboxTextTransform,
+      radioCheckboxFontStyle,
+      submitButtonTextTransform,
+      submitButtonFontStyle,
+      messageTextTransform,
+      messageFontStyle,
+      afterSubmitTextTransform,
+      afterSubmitFontStyle,
    } = props.attributes;
 
 
@@ -495,6 +511,8 @@
       "letter-spacing": generateCSSUnit(formTitleLetterSpacing, "px"),
       "color": formTitleColor,
       "text-align": formTitleAlignment,
+      "text-transform": formTitleTextTransform,
+      "font-style": formTitleFontStyle,
     },
 
     " .responsive-form-desc-text": {
@@ -505,6 +523,8 @@
       "letter-spacing": generateCSSUnit(formDescriptionLetterSpacing, "px"),
       "color": formDescriptionColor,
       "text-align": formTitleAlignment,
+      "text-transform": formDescriptionTextTransform,
+      "font-style": formDescriptionFontStyle,
     },
 
     " .form-container": {
@@ -626,6 +646,8 @@
         inputBoxShadowColor +
         " " +
         inputBoxShadowPositionCSS,
+      "text-transform": inputTextTransform,
+      "font-style": inputFontStyle,
        
     },
 
@@ -664,6 +686,8 @@
         inputBoxShadowColor +
         " " +
         inputBoxShadowPositionCSS + "!important" ,
+      "text-transform": inputTextTransform,
+      "font-style": inputFontStyle,
 		},
 
     ' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email': {
@@ -684,6 +708,8 @@
       "line-height": labelLineHeight,
       "letter-spacing": generateCSSUnit(labelLetterSpacing, "px"),
       "margin-top": generateCSSUnit( labelBottomSpacing, 'px' ),
+      "text-transform": labelTextTransform,
+      "font-style": labelFontStyle,
 		},
 
     ' p>label': {
@@ -806,6 +832,8 @@
       "font-weight": radioCheckboxFontWeight,
       "line-height": radioCheckboxLineHeight,
       "letter-spacing": generateCSSUnit(radioCheckboxLetterSpacing, "px"),
+      "text-transform": radioCheckboxTextTransform,
+      "font-style": radioCheckboxFontStyle,
 		},
 
 
@@ -852,6 +880,8 @@
         submitButtonBoxShadowColor +
         " " +
         submitButtonBoxShadowPositionCSS,
+      "text-transform": submitButtonTextTransform,
+      "font-style": submitButtonFontStyle,
       
 		},  
      

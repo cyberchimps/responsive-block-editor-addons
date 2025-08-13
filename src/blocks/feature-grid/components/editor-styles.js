@@ -225,6 +225,10 @@ function EditorStyles(props) {
       ctaBlockRightRadiusMobile,
       ctaBlockBottomRadiusMobile,
       ctaBlockLeftRadiusMobile,
+      ctaTextTransform,
+        ctaFontStyle,
+        titleFontStyle,
+        descFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -295,6 +299,8 @@ function EditorStyles(props) {
         buttonBoxShadowColor +
         " " +
         buttonBoxShadowPositionCSS,
+      "text-transform": ctaTextTransform,
+      "font-style": ctaFontStyle,
     },
 
     " .wp-block-responsive-block-editor-addons-feature-grid-item__button:hover": {
@@ -415,6 +421,7 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
       "font-family": titleFontFamily,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
     },
@@ -424,6 +431,7 @@ function EditorStyles(props) {
       color: descTypographyColor,
       "line-height": descLineHeight,
       "text-transform": descTextTransform,
+      "font-style": descFontStyle,
       "font-weight": descFontWeight,
       "font-size": generateCSSUnit(descFontSize, "px"),
       "font-family": descFontFamily,

@@ -405,6 +405,10 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     contentRightPaddingTablet,
     contentRightPaddingMobile,
     titleContentIsPaddingControlConnected,
+    titleTextTransform,
+    titleFontStyle,
+    contentTextTransform,
+    contentFontStyle,
     },
       setAttributes,
     } = this.props;
@@ -818,10 +822,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               sizeTablet: titleFontSizeTablet, 
               weight: titleFontWeight, 
               height: titleLineHeight, 
-              color: titleTypographyColor
+              color: titleTypographyColor,
+              transform: titleTextTransform,
+              fontstyle: titleFontStyle,
             }}
 			    	showLetterSpacing = { false }
-			    	showTextTransform = { false }
             showColorControl={ true }
 			    	setAttributes={ setAttributes }
 			    	{...this.props}
@@ -836,10 +841,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               sizeTablet: contentFontSizeTablet, weight: 
               contentFontWeight, 
               height: contentLineHeight, 
-              color: contentTypographyColor
+              color: contentTypographyColor,
+              transform: contentTextTransform,
+              fontstyle: contentFontStyle,
             }}
 			    	showLetterSpacing = { false }
-			    	showTextTransform = { false }
             showColorControl = { true }
 			    	setAttributes={ setAttributes }
 			    	{...this.props}

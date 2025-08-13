@@ -1111,5 +1111,29 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  ctaTextTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaTextFontStyle: {
+    type: "string",
+    default: "",
+  },
+  resheadTextTransform: {
+    type: "string",
+    default: "",
+  },
+  resheadFontStyle: {
+    type: "string",
+    default: "",
+  },
+  ressubHeadTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ressubHeadFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

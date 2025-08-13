@@ -61,6 +61,7 @@ const attributes = {
   },
   titleTextTransform: {
     type: "string",
+    default: "",
   },
   nameFontSize: {
     type: "number",
@@ -91,6 +92,7 @@ const attributes = {
   },
   nameTextTransform: {
     type: "string",
+    default: "",
   },
   contentFontSize: {
     type: "number",
@@ -104,6 +106,7 @@ const attributes = {
   },
   contentTextTransform: {
     type: "string",
+    default: "",
   },
   newTestimonialCiteAlign: {
     type: "string",
@@ -752,6 +755,18 @@ const attributes = {
   isOverlayBackgroundTypeUpdated: {
     type: "boolean",
     default: false,
+  },
+  contentFontStyle: {
+    type: "string",
+    default: "",
+  },
+  nameFontStyle: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
   },
 };
 

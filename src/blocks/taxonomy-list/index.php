@@ -536,6 +536,30 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
+				'titleTextTransform'                 => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'titleFontStyle'                     => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'countTextTransform'                 => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'countFontStyle'                     => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'listTextTransform'                  => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'listFontStyle'                      => array(
+					'type'    => 'string',
+					'default' => '',
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_taxonomy_list',
 		)

@@ -263,6 +263,8 @@ export default class Inspector extends Component {
 
         buttonStyleToggle,
         hasButtonStyleToggleUpdated,
+        textTextTransform,
+        textFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -815,9 +817,10 @@ export default class Inspector extends Component {
                 typographyColorControl: typographyColorControl,
 								typographyColorControlHover: typographyColorControlHover,
 								emptyColorControl: emptyColorControl,
+                transform: textTextTransform,
+                fontstyle: textFontStyle,
               }}
               showLetterSpacing={false}
-              showTextTransform={false}
               showColorWithHoverControlTab={true}
               setAttributes={setAttributes}
               {...this.props}

@@ -254,6 +254,14 @@ export default class Inspector extends Component {
       excerptTypographyColor,
       titleTypographyColor,
       metaTypographyColor,
+      titleTextTransform,
+      titleFontStyle,
+      metaTextTransform,
+      metaFontStyle,
+      excerptTextTransform,
+      excerptFontStyle,
+      ctaTextTransform,
+      ctaFontStyle,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -891,9 +899,10 @@ export default class Inspector extends Component {
                   weight: titleFontWeight,
                   height: titleLineHeight,
                   color: titleTypographyColor,
+                  transform: titleTextTransform,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -909,9 +918,10 @@ export default class Inspector extends Component {
                   weight: metaFontWeight,
                   height: metaLineHeight,
                   color: metaTypographyColor,
+                  transform: metaTextTransform,
+                  fontstyle: metaFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -930,9 +940,10 @@ export default class Inspector extends Component {
                   weight: excerptFontWeight,
                   height: excerptLineHeight,
                   color: excerptTypographyColor,
+                  transform: excerptTextTransform,
+                  fontstyle: excerptFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -947,9 +958,10 @@ export default class Inspector extends Component {
                   sizeTablet: ctaFontSizeTablet,
                   weight: ctaFontWeight,
                   height: ctaLineHeight,
+                  transform: ctaTextTransform,
+                  fontstyle: ctaFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />

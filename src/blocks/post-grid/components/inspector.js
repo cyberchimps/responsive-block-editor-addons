@@ -186,6 +186,10 @@ export default class Inspector extends Component {
       excerptTypographyColor,
       metaTypographyColor,
       blockIsTypographyColorValueUpdated,
+      excerptFontStyle,
+      metaFontStyle,
+      titleFontStyle,
+      continueFontStyle,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -998,10 +1002,10 @@ export default class Inspector extends Component {
 					weight: attributes.excerptFontWeight,
 					height: attributes.excerptLineHeight,
 					transform: attributes.excerptTextTransform,
+          fontstyle: attributes.excerptFontStyle,
           color: attributes.excerptTypographyColor,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { true }
           showColorControl={true}
 					setAttributes={ setAttributes }
 					{...this.props}
@@ -1017,6 +1021,7 @@ export default class Inspector extends Component {
 					weight: attributes.metaFontWeight,
 					height: attributes.metaLineHeight,
 					transform: attributes.metaTextTransform,
+          fontstyle: attributes.metaFontStyle,
           color: attributes.metaTypographyColor,
 					}}
 					showLetterSpacing = { false }
@@ -1036,6 +1041,7 @@ export default class Inspector extends Component {
 					weight: attributes.titleFontWeight,
 					height: attributes.titleLineHeight,
 					transform: attributes.titleTextTransform,
+          fontstyle: attributes.titleFontStyle,
           typographyColorControl: typographyColorControl,
 					typographyColorControlHover: typographyColorControlHover,
 					emptyColorControl: emptyColorControl,
@@ -1057,6 +1063,7 @@ export default class Inspector extends Component {
 					weight: attributes.continueFontWeight,
 					height: attributes.continueLineHeight,
 					transform: attributes.continueTextTransform,
+          fontstyle: attributes.continueFontStyle,
           typographyColorControl: readmoreTypographyColorControl,
 					typographyColorControlHover: readmoreTypographyColorControlHover,
 					emptyColorControl: emptyColorControl,

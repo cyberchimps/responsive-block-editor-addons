@@ -767,6 +767,22 @@ const attributes = {
       type: "boolean",
       default: false,
     },
+    popupButtonTypographyTextTransform: {
+        type: "string",
+        default: "", 
+    },
+    popupButtonTypographyFontStyle: {
+        type: "string",
+        default: "", 
+    },
+    popupTextTypographyTextTransform: {
+        type: "string",
+        default: "", 
+    },
+    popupTextTypographyFontStyle: {
+        type: "string",
+        default: "", 
+    },
 };
 
 export default attributes;

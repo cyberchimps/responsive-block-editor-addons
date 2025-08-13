@@ -950,5 +950,29 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  headingTextTransform: {
+    type: "string",
+    default: "",
+  },
+  headingFontStyle: {
+    type: "string",
+    default: "",
+  },
+  subTextTransform: {
+    type: "string",
+    default: "",
+  },
+  subFontStyle: {
+    type: "string",
+    default: "",
+  },
+  contentTextTransform: {
+    type: "string",
+    default: "",
+  },
+  contentFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

@@ -157,6 +157,8 @@ function EditorStyles(props) {
     captionBottomMarginMobile,
     captionLeftMarginMobile,
     captionRightMarginMobile,
+    layoverHeadingFontStyle,
+    captionFontStyle,
   } = props.attributes;
   var base_url = window.location.origin;
   var filtervalue =
@@ -282,6 +284,7 @@ function EditorStyles(props) {
       "margin-bottom":generateCSSUnit(layoverHeadingbottommargin,"px"),
       "margin-left":generateCSSUnit(layoverHeadingleftmargin,"px"),
       "margin-right":generateCSSUnit(layoverHeadingrightmargin,"px"),
+      "font-style": layoverHeadingFontStyle,
     },
 
     " .responsive-img-caption ": {
@@ -297,6 +300,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(captionBottomMargin, "px"),
       "margin-left": generateCSSUnit(captionLeftMargin, "px"),
       "margin-right": generateCSSUnit(captionRightMargin, "px"),
+      "font-style": captionFontStyle,
     },
     "  .img-main-block:hover figure": {
       "box-shadow":

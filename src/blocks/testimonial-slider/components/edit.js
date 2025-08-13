@@ -622,6 +622,12 @@ class edit extends Component {
       imageSizeTab,
       backgroundImageValueUpdated,
       backgroundColor1,
+      descTextTransform,
+      descFontStyle,
+      nameTextTransform,
+      nameFontStyle,
+      companyTextTransform,
+      companyFontStyle,
       },
       setAttributes,
       className,
@@ -821,9 +827,10 @@ class edit extends Component {
         bottomSpacing: descBottomSpacing,
         bottomSpacingMoible: descBottomSpacingMobile,
         bottomSpacingTablet: descBottomSpacingTablet,
+        transform: descTextTransform,
+        fontstyle: descFontStyle,
 				}}
 				showLetterSpacing={false}
-				showTextTransform={false}
         showColorControl={true}
         showTextBottomSpacing={true}
 				setAttributes={setAttributes}
@@ -843,9 +850,10 @@ class edit extends Component {
         bottomSpacing: nameBottomSpacing,
         bottomSpacingMoible: nameBottomSpacingMobile,
         bottomSpacingTablet: nameBottomSpacingTablet,
+        transform: nameTextTransform,
+        fontstyle: nameFontStyle,
 				}}
 				showLetterSpacing={false}
-				showTextTransform={false}
         showColorControl={true}
         showTextBottomSpacing={true}
 				setAttributes={setAttributes}
@@ -862,10 +870,11 @@ class edit extends Component {
 				weight: companyFontWeight,
 				height: companyLineHeight,
         color: companyTypographyColor,
+        transform: companyTextTransform,
+        fontstyle: companyFontStyle,
 				}}
 				showLetterSpacing={false}
         showColorControl={true}
-				showTextTransform={false}
         showTextBottomSpacing={true}
 				setAttributes={setAttributes}
 				{...this.props}

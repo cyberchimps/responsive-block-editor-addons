@@ -91,6 +91,12 @@ function EditorStyles(props) {
     titleTypographyColor,
     subtitleTypographyColor,
     textTypographyColor,
+    titleTextTransform,
+    titleFontStyle,
+    subtitleTextTransform,
+    subtitleFontStyle,
+    textTextTransform,
+    textFontStyle,
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
@@ -128,6 +134,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "font-weight": titleFontWeight,
       "line-height": titleLineHeight,
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-subtitle": {
       "margin-bottom": generateCSSUnit(subtitleBottomMargin, "px"),
@@ -139,6 +147,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(subtitleFontSize, "px"),
       "font-weight": subtitleFontWeight,
       "line-height": subtitleLineHeight,
+      "text-transform": subtitleTextTransform,
+      "font-style": subtitleFontStyle,
     },
     " .responsive-block-editor-addons-text-content": {
       "margin-bottom": generateCSSUnit(textBottomMargin, "px"),
@@ -148,6 +158,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(textFontSize, "px"),
       "font-weight": textFontWeight,
       "line-height": textLineHeight,
+      "text-transform": textTextTransform,
+      "font-style": textFontStyle,
     },
   };
 

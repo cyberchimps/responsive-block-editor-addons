@@ -263,6 +263,10 @@ export default class Inspector extends Component {
         popupIsPaddingControlConnected,
         popupTextTypographyTypographyColor,
         blockIsTypographyColorValueUpdated,
+        popupButtonTypographyTextTransform,
+        popupButtonTypographyFontStyle,
+        popupTextTypographyTextTransform,
+        popupTextTypographyFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -1344,9 +1348,10 @@ export default class Inspector extends Component {
                         typographyColorControl: buttonTypographyColorControl,
 										    typographyColorControlHover: buttonTypographyColorControlHover,
                         emptyColorControl: emptyColorControl,
+                        transform: popupButtonTypographyTextTransform,
+                        fontstyle: popupButtonTypographyFontStyle,
                       }}
                       showLetterSpacing={true}
-                      showTextTransform={false}
                       showColorWithHoverControlTab={true}
                       setAttributes={setAttributes}
                       {...this.props}
@@ -1369,9 +1374,10 @@ export default class Inspector extends Component {
                       height: popupTextTypographyLineHeight,
                       spacing: popupTextTypographyLetterSpacing,
                       color: popupTextTypographyTypographyColor,
+                      transform: popupTextTypographyTextTransform,
+                      fontstyle: popupTextTypographyFontStyle,
                     }}
                     showLetterSpacing={true}
-                    showTextTransform={false}
                     showColorControl={true}
                     setAttributes={setAttributes}
                     {...this.props}

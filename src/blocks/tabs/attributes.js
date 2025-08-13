@@ -412,6 +412,22 @@ const attributes = {
     type: "string",
     default: "#000",
   },
+  tabTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  tabTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  tabContentTextTransform: {
+    type: "string",
+    default: "",
+  },
+  tabContentFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;
