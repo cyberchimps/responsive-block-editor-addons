@@ -116,29 +116,12 @@ export default function Edit(props) {
   }
 
   return [
-    <style
-      key="inner-style"
-      id={`responsive-block-editor-addons-container-style-${clientId}-inner`}
-    >
-      {EditorStyles(props)}
-    </style>,
-
-    <Inspector
-      key={`inspector-${block_id}`}
-      {...{ setAttributes, ...props }}
-    />,
-
-    <div
-      key={`mainDiv-${block_id}`}
-      className={classnames(
-        className,
-        "responsive-block-editor-addons-block-container",
-        `block-${block_id}`
-      )}
-    >
-
-      <Render { ...props } />
-
-    </div>,
+    <>
+      <Inspector
+        key={`inspector-${block_id}`}
+        {...{ setAttributes, ...props }}
+      />
+      <Render key={`mainDiv-${block_id}`} {...props} />
+    </>
   ];
 }
