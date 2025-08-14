@@ -18,382 +18,478 @@ import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import { __ } from "@wordpress/i18n";
 import { Component, Fragment } from "@wordpress/element";
 import { InspectorControls } from "@wordpress/block-editor";
+
 import {
-	PanelBody,
-	RangeControl,
-	ToggleControl,
-	SelectControl,
-	TabPanel,
-	Dashicon,
+  PanelBody,
+  TextControl,
+  RangeControl,
+  ToggleControl,
+  SelectControl,
+  TabPanel,
+  Dashicon,
+  CheckboxControl,
 } from "@wordpress/components";
 
 /**
  * Inspector controls
  */
 class Inspector extends Component {
-	constructor() {
-		super(...arguments);
-		this.state = {
-			columns: this.props.attributes.columnsize,
-			customHeight: this.props.attributes.customHeight,
-			customWidth: this.props.attributes.customWidth,
-		};
-		this.setRadiusTo = this.setRadiusTo.bind(this);
-		this.setCaptionStyleTo = this.setCaptionStyleTo.bind(this);
-		this.setNumberOfColumns = this.setNumberOfColumns.bind(this);
-		this.setCustomHeight = this.setCustomHeight.bind(this);
-		this.setCustomWidth = this.setCustomWidth.bind(this);
-	}
+  constructor() {
+    super(...arguments);
+    this.state = {
+      columns: this.props.attributes.columnsize,
+      customHeight: this.props.attributes.customHeight,
+      customWidth: this.props.attributes.customWidth,
+    };
+    this.setRadiusTo = this.setRadiusTo.bind(this);
+    this.setCaptionStyleTo = this.setCaptionStyleTo.bind(this);
+    this.setNumberOfColumns = this.setNumberOfColumns.bind(this);
+    this.setCustomHeight = this.setCustomHeight.bind(this);
+    this.setCustomWidth = this.setCustomWidth.bind(this);
+  }
 
-	componentDidUpdate() {
-		if (this.props.attributes.gutter <= 0) {
-			this.props.setAttributes({
-				radius: 0,
-			});
-		}
-	}
-	setNumberOfColumns(value) {
-		this.setState({ columns: value });
-		this.props.setAttributes({ columnsize: value });
-	}
+  componentDidUpdate() {
+    if (this.props.attributes.gutter <= 0) {
+      this.props.setAttributes({
+        radius: 0,
+      });
+    }
+  }
 
-	setRadiusTo(value) {
-		this.props.setAttributes({ radius: value });
-	}
-	setCaptionStyleTo(value) {
-		this.props.setAttributes({ captionStyle: value });
-	}
-	setCustomHeight(value) {
-		console.log(value)
-		this.props.setAttributes({ customHeight: value });
-	}
-	setCustomWidth(value) {
-		this.props.setAttributes({ customWidth: value });
-	}
+  // Get dynamic categories from the edit component
+  getDynamicCategories() {
+    const { attributes } = this.props;
+    const { images } = attributes;
+    
+    if (!images || images.length === 0) {
+      return [{ label: "No categories available", value: "" }];
+    }
 
-	getCaptionsHelp(checked) {
-		return checked
-			? __(
-				"Showing captions for each media item.",
-				"responsive-block-editor-addons"
-			)
-			: __("Toggle to show media captions.", "responsive-block-editor-addons");
-	}
+    // Extract unique categories from images
+    const categories = new Set();
+    images.forEach((image) => {
+      if (image.rba_category) {
+        image.rba_category
+          .split(",")
+          .map((c) => c.trim())
+          .forEach((cat) => {
+            if (cat && cat !== "uncategorized") {
+              categories.add(cat);
+            }
+          });
+      }
+    });
 
-	getLightboxHelp(checked) {
-		return checked
-			? __("Image lightbox is enabled.", "responsive-block-editor-addons")
-			: __(
-				"Toggle to enable the image lightbox.",
-				"responsive-block-editor-addons"
-			);
-	}
+    const categoryOptions = Array.from(categories).map((cat) => ({
+      label: cat,
+      value: cat,
+    }));
 
-	render() {
-		const { attributes, setAttributes } = this.props;
+    // Add "All" option at the beginning
+    return [
+      { label: "All", value: "all" },
+      ...categoryOptions,
+    ];
+  }
 
-		const {
-			captions,
-			captionStyle,
-			gutter,
-			gutterMobile,
-			gutterTablet,
-			radius,
-			lightbox,
-			linkTo,
-			columnsize,
-			customHeight,
-			customWidth,
-			z_index,
-			hideWidget,
-			hideWidgetTablet,
-			hideWidgetMobile,
-			z_indexTablet,
-			z_indexMobile,
-			blockTopMargin,
-			blockBottomMargin,
-			blockLeftMargin,
-			blockRightMargin,
-			blockTopMarginTablet,
-			blockBottomMarginTablet,
-			blockLeftMarginTablet,
-			blockRightMarginTablet,
-			blockTopMarginMobile,
-			blockBottomMarginMobile,
-			blockLeftMarginMobile,
-			blockRightMarginMobile,
-			blockTopPadding,
-			blockTopPaddingMobile,
-			blockTopPaddingTablet,
-			blockBottomPadding,
-			blockBottomPaddingMobile,
-			blockBottomPaddingTablet,
-			blockLeftPadding,
-			blockLeftPaddingMobile,
-			blockLeftPaddingTablet,
-			blockRightPadding,
-			blockRightPaddingMobile,
-			blockRightPaddingTablet,
-			blockIsMarginControlConnected,
-			blockIsPaddingControlConnected,
-		} = attributes;
+  setNumberOfColumns(value) {
+    this.setState({ columns: value });
+    this.props.setAttributes({ columnsize: value });
+  }
 
-		const blockMarginResetValues = {
-			marginTop: 0,
-			marginRight: 0,
-			marginBottom: 0,
-			marginLeft: 0,
-			marginTabletTop: 0,
-			marginTabletRight: 0,
-			marginTabletBottom: 0,
-			marginTabletLeft: 0,
-			marginMobileTop: 0,
-			marginMobileRight: 0,
-			marginMobileBottom: 0,
-			marginMobileLeft: 0,
-		}
-		const blockPaddingResetValues = {
-			paddingTop: 0,
-			paddingRight: 0,
-			paddingBottom: 0,
-			paddingLeft: 0,
-			paddingTabletTop: 0,
-			paddingTabletRight: 0,
-			paddingTabletBottom: 0,
-			paddingTabletLeft: 0,
-			paddingMobileTop: 0,
-			paddingMobileRight: 0,
-			paddingMobileBottom: 0,
-			paddingMobileLeft: 0,
-		}
-		return (
-			<InspectorControls>
-				<InspectorTabs>
-					<InspectorTab key={"content"}>
-						<PanelBody
-							title={__("Masonry settings", "responsive-block-editor-addons")}
-						>
-							<div className="rbea-gallery-masonry-slider-control-container">
-								<ResponsiveTabsControl {...this.props} />
-							</div>
-							<div className="rbea-gallery-masonry-slider-control-container">
-								<RbeaRangeControl
-									label={__("Columns", "responsive-block-editor-addons")}
-									aria-label={__(
-										"Number of columns for masonary",
-										"responsive-block-editor-addons"
-									)}
-									value={columnsize}
-									onChange={this.setNumberOfColumns}
-									min={1}
-									max={10}
-									step={1}
-								/>
-							</div>
-							<div className="rbea-gallery-masonry-slider-control-container">
-								<RbeaRangeControl
-									label={__("Custom Height", "responsive-block-editor-addons")}
-									value={customHeight}
-									onChange={this.setCustomHeight}
-									min={0}
-									max={1000}
-									step={1}
-								/>
-							</div>
+  setRadiusTo(value) {
+    this.props.setAttributes({ radius: value });
+  }
+  setCaptionStyleTo(value) {
+    this.props.setAttributes({ captionStyle: value });
+  }
+  setCustomHeight(value) {
+    console.log(value);
+    this.props.setAttributes({ customHeight: value });
+  }
+  setCustomWidth(value) {
+    this.props.setAttributes({ customWidth: value });
+  }
 
-							<div className="rbea-gallery-masonry-slider-control-container">
-								<RbeaRangeControl
-									label={__("Custom Width", "responsive-block-editor-addons")}
-									value={customWidth}
-									onChange={(value) => this.setCustomWidth(value)}
-									min={0}
-									max={1000}
-									step={1}
-								/>
-							</div>
-							{gutter > 0 && (
-								<div className="rbea-gallery-masonry-slider-control-container">
-									<RbeaRangeControl
-										label={__("Rounded corners", "responsive-block-editor-addons")}
-										aria-label={__(
-											"Add rounded corners to the gallery items.",
-											"responsive-block-editor-addons"
-										)}
-										value={radius}
-										onChange={this.setRadiusTo}
-										min={0}
-										max={20}
-										step={1}
-									/>
-								</div>
-							)}
+  getCaptionsHelp(checked) {
+    return checked
+      ? __(
+          "Showing captions for each media item.",
+          "responsive-block-editor-addons"
+        )
+      : __("Toggle to show media captions.", "responsive-block-editor-addons");
+  }
 
-							<ToggleControl
-								label={__("Lightbox", "responsive-block-editor-addons")}
-								checked={!!lightbox}
-								onChange={() => setAttributes({ lightbox: !lightbox, linkTo: 'none' })}
-								help={this.getLightboxHelp}
-							/>
+  getLightboxHelp(checked) {
+    return checked
+      ? __("Image lightbox is enabled.", "responsive-block-editor-addons")
+      : __(
+          "Toggle to enable the image lightbox.",
+          "responsive-block-editor-addons"
+        );
+  }
 
-							<ToggleControl
-								label={__("Captions", "responsive-block-editor-addons")}
-								checked={!!captions}
-								onChange={() => setAttributes({ captions: !captions })}
-								help={this.getCaptionsHelp}
-							/>
+  render() {
+    const { attributes, setAttributes } = this.props;
 
-							{captions && (
-								<RbeaTabRadioControl
-									label={__("Caption style", "responsive-block-editor-addons")}
-									value={captionStyle}
-									onChange={this.setCaptionStyleTo}
-									options={captionOptions}
-								/>
-							)}
-						</PanelBody>
-						<GalleryLinkSettings {...this.props} />
-						<RbeaSupportControl blockSlug={"gallery-masonry"} />
-					</InspectorTab>
-					<InspectorTab key={"style"}>
-						<PanelBody
-							title={__("Spacing", "responsive-block-editor-addons")}
-							initialOpen={true}
-						>
-							<ResponsiveNewPaddingControl
-								attrNameTemplate="block%s"
-								resetValues={blockPaddingResetValues}
-								{...this.props}
-							/>
-							<ResponsiveNewMarginControl
-								attrNameTemplate="block%s"
-								resetValues={blockMarginResetValues}
-								{...this.props}
-							/>
-						</PanelBody>
-						<RbeaSupportControl blockSlug={"gallery-masonry"} />
-					</InspectorTab>
-					<InspectorTab key={"advance"}>
-						<PanelBody
-							title={__("Responsive Conditions", "responsive-block-editor-addons")}
-							initialOpen={false}
-						>
-							<ToggleControl
-								label={__(
-									"Hide on Desktop",
-									"responsive-block-editor-addons"
-								)}
-								checked={hideWidget}
-								onChange={(value) =>
-									setAttributes({ hideWidget: !hideWidget })
-								}
-							/>
-							<ToggleControl
-								label={__(
-									"Hide on Tablet",
-									"responsive-block-editor-addons"
-								)}
-								checked={hideWidgetTablet}
-								onChange={(value) =>
-									setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-								}
-							/>
-							<ToggleControl
-								label={__(
-									"Hide on Mobile",
-									"responsive-block-editor-addons"
-								)}
-								checked={hideWidgetMobile}
-								onChange={(value) =>
-									setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-								}
-							/>
-						</PanelBody>
+    const {
+      captions,
+      captionStyle,
+      gutter,
+      gutterMobile,
+      gutterTablet,
+      radius,
+      lightbox,
+      linkTo,
+      columnsize,
+      customHeight,
+      customWidth,
+      z_index,
+      hideWidget,
+      hideWidgetTablet,
+      hideWidgetMobile,
+      z_indexTablet,
+      z_indexMobile,
+      blockTopMargin,
+      blockBottomMargin,
+      blockLeftMargin,
+      blockRightMargin,
+      blockTopMarginTablet,
+      blockBottomMarginTablet,
+      blockLeftMarginTablet,
+      blockRightMarginTablet,
+      blockTopMarginMobile,
+      blockBottomMarginMobile,
+      blockLeftMarginMobile,
+      blockRightMarginMobile,
+      blockTopPadding,
+      blockTopPaddingMobile,
+      blockTopPaddingTablet,
+      blockBottomPadding,
+      blockBottomPaddingMobile,
+      blockBottomPaddingTablet,
+      blockLeftPadding,
+      blockLeftPaddingMobile,
+      blockLeftPaddingTablet,
+      blockRightPadding,
+      blockRightPaddingMobile,
+      blockRightPaddingTablet,
+      blockIsMarginControlConnected,
+      blockIsPaddingControlConnected,
+    } = attributes;
 
-						<PanelBody
-							title={__("Z Index", "responsive-block-editor-addons")}
-							initialOpen={false}
-						>
-							<TabPanel
-								className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-								activeClass="active-tab"
-								tabs={[
-									{
-										name: "desktop",
-										title: <Dashicon icon="desktop" />,
-										className:
-											" responsive-desktop-tab  responsive-responsive-tabs",
-									},
-									{
-										name: "tablet",
-										title: <Dashicon icon="tablet" />,
-										className:
-											" responsive-tablet-tab  responsive-responsive-tabs",
-									},
-									{
-										name: "mobile",
-										title: <Dashicon icon="smartphone" />,
-										className:
-											" responsive-mobile-tab  responsive-responsive-tabs",
-									},
-								]}
-							>
-								{(tab) => {
-									let tabout;
+    const blockMarginResetValues = {
+      marginTop: 0,
+      marginRight: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginTabletTop: 0,
+      marginTabletRight: 0,
+      marginTabletBottom: 0,
+      marginTabletLeft: 0,
+      marginMobileTop: 0,
+      marginMobileRight: 0,
+      marginMobileBottom: 0,
+      marginMobileLeft: 0,
+    };
+    const blockPaddingResetValues = {
+      paddingTop: 0,
+      paddingRight: 0,
+      paddingBottom: 0,
+      paddingLeft: 0,
+      paddingTabletTop: 0,
+      paddingTabletRight: 0,
+      paddingTabletBottom: 0,
+      paddingTabletLeft: 0,
+      paddingMobileTop: 0,
+      paddingMobileRight: 0,
+      paddingMobileBottom: 0,
+      paddingMobileLeft: 0,
+    };
 
-									if ("mobile" === tab.name) {
-										tabout = (
-											<RbeaRangeControl
-												label={__("z-index (Mobile)", "responsive-block-editor-addons")}
-												min={-1}
-												max={99999}
-												allowReset={true}
-												resetFallbackValue={1}
-												value={z_indexMobile}
-												onChange={(value) =>
-													setAttributes({ z_indexMobile: value !== undefined ? value : 1 })
-												}
-											/>
-										);
-									} else if ("tablet" === tab.name) {
-										tabout = (
-											<RbeaRangeControl
-												label={__("z-index (Tablet)", "responsive-block-editor-addons")}
-												min={-1}
-												max={99999}
-												allowReset={true}
-												resetFallbackValue={1}
-												value={z_indexTablet}
-												onChange={(value) =>
-													setAttributes({ z_indexTablet: value !== undefined ? value : 1 })
-												}
-											/>
-										);
-									} else {
-										tabout = (
-											<RbeaRangeControl
-												label={__("z-index ", "responsive-block-editor-addons")}
-												min={-1}
-												max={99999}
-												allowReset={true}
-												resetFallbackValue={1}
-												value={z_index}
-												onChange={(value) =>
-													setAttributes({ z_index: value !== undefined ? value : 1 })
-												}
-											/>
-										);
-									}
+    // Get dynamic categories for the dropdown
+    const dynamicCategories = this.getDynamicCategories();
 
-									return <div>{tabout}</div>;
-								}}
-							</TabPanel>
-						</PanelBody>
-						<RbeaSupportControl blockSlug={"gallery-masonry"} />
-					</InspectorTab>
-				</InspectorTabs>
-			</InspectorControls>
-		);
-	}
+    return (
+      <InspectorControls>
+        <InspectorTabs>
+          <InspectorTab key={"content"}>
+            <PanelBody
+              title={__("Masonry settings", "responsive-block-editor-addons")}
+            >
+              <div className="rbea-gallery-masonry-slider-control-container">
+                <ResponsiveTabsControl {...this.props} />
+              </div>
+              <div className="rbea-gallery-masonry-slider-control-container">
+                <RbeaRangeControl
+                  label={__("Columns", "responsive-block-editor-addons")}
+                  aria-label={__(
+                    "Number of columns for masonary",
+                    "responsive-block-editor-addons"
+                  )}
+                  value={columnsize}
+                  onChange={this.setNumberOfColumns}
+                  min={1}
+                  max={10}
+                  step={1}
+                />
+              </div>
+              <div className="rbea-gallery-masonry-slider-control-container">
+                <RbeaRangeControl
+                  label={__("Custom Height", "responsive-block-editor-addons")}
+                  value={customHeight}
+                  onChange={this.setCustomHeight}
+                  min={0}
+                  max={1000}
+                  step={1}
+                />
+              </div>
+
+              <div className="rbea-gallery-masonry-slider-control-container">
+                <RbeaRangeControl
+                  label={__("Custom Width", "responsive-block-editor-addons")}
+                  value={customWidth}
+                  onChange={(value) => this.setCustomWidth(value)}
+                  min={0}
+                  max={1000}
+                  step={1}
+                />
+              </div>
+              {gutter > 0 && (
+                <div className="rbea-gallery-masonry-slider-control-container">
+                  <RbeaRangeControl
+                    label={__(
+                      "Rounded corners",
+                      "responsive-block-editor-addons"
+                    )}
+                    aria-label={__(
+                      "Add rounded corners to the gallery items.",
+                      "responsive-block-editor-addons"
+                    )}
+                    value={radius}
+                    onChange={this.setRadiusTo}
+                    min={0}
+                    max={20}
+                    step={1}
+                  />
+                </div>
+              )}
+
+              <ToggleControl
+                label={__("Lightbox", "responsive-block-editor-addons")}
+                checked={!!lightbox}
+                onChange={() =>
+                  setAttributes({ lightbox: !lightbox, linkTo: "none" })
+                }
+                help={this.getLightboxHelp}
+              />
+
+              <ToggleControl
+                label={__("Captions", "responsive-block-editor-addons")}
+                checked={!!captions}
+                onChange={() => setAttributes({ captions: !captions })}
+                help={this.getCaptionsHelp}
+              />
+
+              {captions && (
+                <RbeaTabRadioControl
+                  label={__("Caption style", "responsive-block-editor-addons")}
+                  value={captionStyle}
+                  onChange={this.setCaptionStyleTo}
+                  options={captionOptions}
+                />
+              )}
+            </PanelBody>
+
+            <PanelBody
+              title={__("Filter Image Gallery", "textdomain")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__("Filterable Image Gallery", "textdomain")}
+                checked={attributes.enableCategoryFilter}
+                onChange={(value) =>
+                  setAttributes({ enableCategoryFilter: value })
+                }
+              />
+
+              {attributes.enableCategoryFilter && (
+                <>
+                  <TextControl
+                    label={__('"All" Tab Label', "textdomain")}
+                    value={attributes.allTabLabel}
+                    onChange={(value) => setAttributes({ allTabLabel: value })}
+                  />
+
+                  <ToggleControl
+                    label={__("Default Tab on Page Load", "textdomain")}
+                    checked={attributes.setDefaultCategory}
+                    onChange={(value) =>
+                      setAttributes({ setDefaultCategory: value })
+                    }
+                  />
+
+                  {attributes.setDefaultCategory && (
+                    <SelectControl
+                      label={__("Default Category", "textdomain")}
+                      value={attributes.defaultCategory}
+                      options={dynamicCategories}
+                      onChange={(value) =>
+                        setAttributes({ defaultCategory: value })
+                      }
+                    />
+                  )}
+                </>
+              )}
+            </PanelBody>
+
+            <GalleryLinkSettings {...this.props} />
+            <RbeaSupportControl blockSlug={"gallery-masonry"} />
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            <PanelBody
+              title={__("Spacing", "responsive-block-editor-addons")}
+              initialOpen={true}
+            >
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+            </PanelBody>
+            <RbeaSupportControl blockSlug={"gallery-masonry"} />
+          </InspectorTab>
+          <InspectorTab key={"advance"}>
+            <PanelBody
+              title={__(
+                "Responsive Conditions",
+                "responsive-block-editor-addons"
+              )}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__("Hide on Desktop", "responsive-block-editor-addons")}
+                checked={hideWidget}
+                onChange={(value) => setAttributes({ hideWidget: !hideWidget })}
+              />
+              <ToggleControl
+                label={__("Hide on Tablet", "responsive-block-editor-addons")}
+                checked={hideWidgetTablet}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+                }
+              />
+              <ToggleControl
+                label={__("Hide on Mobile", "responsive-block-editor-addons")}
+                checked={hideWidgetMobile}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+                }
+              />
+            </PanelBody>
+
+            <PanelBody
+              title={__("Z Index", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <TabPanel
+                className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                activeClass="active-tab"
+                tabs={[
+                  {
+                    name: "desktop",
+                    title: <Dashicon icon="desktop" />,
+                    className:
+                      " responsive-desktop-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "tablet",
+                    title: <Dashicon icon="tablet" />,
+                    className:
+                      " responsive-tablet-tab  responsive-responsive-tabs",
+                  },
+                  {
+                    name: "mobile",
+                    title: <Dashicon icon="smartphone" />,
+                    className:
+                      " responsive-mobile-tab  responsive-responsive-tabs",
+                  },
+                ]}
+              >
+                {(tab) => {
+                  let tabout;
+
+                  if ("mobile" === tab.name) {
+                    tabout = (
+                      <RbeaRangeControl
+                        label={__(
+                          "z-index (Mobile)",
+                          "responsive-block-editor-addons"
+                        )}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexMobile}
+                        onChange={(value) =>
+                          setAttributes({
+                            z_indexMobile: value !== undefined ? value : 1,
+                          })
+                        }
+                      />
+                    );
+                  } else if ("tablet" === tab.name) {
+                    tabout = (
+                      <RbeaRangeControl
+                        label={__(
+                          "z-index (Tablet)",
+                          "responsive-block-editor-addons"
+                        )}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexTablet}
+                        onChange={(value) =>
+                          setAttributes({
+                            z_indexTablet: value !== undefined ? value : 1,
+                          })
+                        }
+                      />
+                    );
+                  } else {
+                    tabout = (
+                      <RbeaRangeControl
+                        label={__("z-index ", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_index}
+                        onChange={(value) =>
+                          setAttributes({
+                            z_index: value !== undefined ? value : 1,
+                          })
+                        }
+                      />
+                    );
+                  }
+
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
+            </PanelBody>
+            <RbeaSupportControl blockSlug={"gallery-masonry"} />
+          </InspectorTab>
+        </InspectorTabs>
+      </InspectorControls>
+    );
+  }
 }
 
 export default Inspector;

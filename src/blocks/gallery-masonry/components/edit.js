@@ -3,7 +3,7 @@
  */
 import classnames from "classnames";
 import filter from "lodash/filter";
-import Masonry, {ResponsiveMasonry} from "react-responsive-masonry";
+import Masonry from "react-responsive-masonry";
 import EditorStyles from "./editor-styles";
 
 /**
@@ -24,9 +24,6 @@ import { compose } from "@wordpress/compose";
 import { withSelect } from "@wordpress/data";
 import { withNotices } from "@wordpress/components";
 
-/**
- * Block consts
- */
 const masonryOptions = {
   transitionDuration: 0,
   percentPosition: true,
@@ -35,61 +32,82 @@ const masonryOptions = {
 class GalleryMasonryEdit extends Component {
   constructor() {
     super(...arguments);
-
     this.onSelectImage = this.onSelectImage.bind(this);
     this.onRemoveImage = this.onRemoveImage.bind(this);
     this.onMove = this.onMove.bind(this);
     this.onMoveForward = this.onMoveForward.bind(this);
     this.onMoveBackward = this.onMoveBackward.bind(this);
     this.setImageAttributes = this.setImageAttributes.bind(this);
+
     this.state = {
       selectedImage: null,
-      migrationDone: true, // Add a state variable to track migration
+      migrationDone: true,
+      mediaData: {}, // Media ID -> Media Object
+      selectedCategory: "All", // Currently active filter
     };
   }
 
   componentDidMount() {
-    if (
-      this.props.wideControlsEnabled === true &&
-      !this.props.attributes.align 
-    ) {
-      this.props.setAttributes({
-        align: "",
-      });
+    const { wideControlsEnabled, attributes, setAttributes, clientId } =
+      this.props;
+
+    if (wideControlsEnabled && !attributes.align) {
+      setAttributes({ align: "" });
     }
+
     if (!this.state.migrationDone) {
-      this.handleSizeMigration(this.props.attributes.gridSize);
-      // Update the state to indicate that migration has been done
-      this.setState({
-        migrationDone: true,
-      });
+      this.handleSizeMigration(attributes.gridSize);
+      this.setState({ migrationDone: true });
     }
-     // Assigning block_id in the attribute.
-     this.props.setAttributes({ block_id: this.props.clientId });
- 
-     // Pushing Style tag for this block css.
-     const $style = document.createElement("style");
-     $style.setAttribute(
-       "id",
-       "responsive-block-editor-addons-advanced-gallery-masonry-style-" +
-         this.props.clientId
-     );
-     document.head.appendChild($style);
 
-     const images = this.props.attributes.images;
+    setAttributes({ block_id: clientId });
 
-     if (images && images.length > 0) {
+    const $style = document.createElement("style");
+    $style.setAttribute(
+      "id",
+      `responsive-block-editor-addons-advanced-gallery-masonry-style-${clientId}`
+    );
+    document.head.appendChild($style);
+
+    const images = attributes.images;
+
+    if (images && images.length > 0) {
       const sortedImages = [...images].sort((a, b) => a.order - b.order);
-      // Only update if order was wrong.
       if (!this.isSorted(images)) {
-        this.props.setAttributes({ images: sortedImages });
+        setAttributes({ images: sortedImages });
       }
+
+      const imageIds = images.map((img) => img.id);
+
+      const fetchMediaData = async () => {
+        const mediaResponses = await Promise.all(
+          imageIds.map((id) =>
+            wp
+              .apiFetch({ path: `/wp/v2/media/${id}` })
+              .then((media) => {
+                return { id, media };
+              })
+              .catch(() => ({ id, media: null }))
+          )
+        );
+
+        const mediaData = {};
+        mediaResponses.forEach(({ id, media }) => {
+          if (media) {
+            mediaData[id] = media;
+          }
+        });
+
+        this.setState({ mediaData });
+      };
+
+      fetchMediaData();
     }
   }
 
   isSorted(images) {
     for (let i = 1; i < images.length; i++) {
-      if (images[i-1].order > images[i].order) {
+      if (images[i - 1].order > images[i].order) {
         return false;
       }
     }
@@ -97,63 +115,116 @@ class GalleryMasonryEdit extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Deselect images when deselecting the block.
+    // Force re-render when attributes change to show real-time updates
+    if (
+      prevProps.attributes.allTabLabel !== this.props.attributes.allTabLabel ||
+      prevProps.attributes.enableCategoryFilter !== this.props.attributes.enableCategoryFilter ||
+      prevProps.attributes.images !== this.props.attributes.images
+    ) {
+      // If images changed, refresh media data
+      if (prevProps.attributes.images !== this.props.attributes.images) {
+        this.refreshMediaData();
+      }
+      
+      this.forceUpdate();
+    }
+
     if (!this.props.isSelected && prevProps.isSelected) {
-      this.setState({
-        selectedImage: null,
-        captionSelected: false,
+      this.setState({ selectedImage: null, captionSelected: false });
+    }
+
+    if (this.props.attributes.gutter <= 0) {
+      this.props.setAttributes({
+        radius: 0,
       });
     }
   }
 
+  // Refresh media data when images change
+  refreshMediaData() {
+    const { images } = this.props.attributes;
+    if (!images || images.length === 0) return;
+    
+    // Fetch category data for all images
+    Promise.all(
+      images.map((image) => {
+        if (image.id) {
+          return wp.apiFetch({ path: `/wp/v2/media/${image.id}` })
+            .then((mediaResponse) => {
+              return {
+                id: image.id,
+                rba_category: (mediaResponse?.rba_category || "").trim()
+              };
+            })
+            .catch((error) => {
+              return {
+                id: image.id,
+                rba_category: ""
+              };
+            });
+        }
+        return Promise.resolve({
+          id: image.id,
+          rba_category: "uncategorized"
+        });
+      })
+    ).then((mediaDataArray) => {
+      const newMediaData = {};
+      mediaDataArray.forEach((media) => {
+        newMediaData[media.id] = media;
+      });
+      
+      this.setState({ mediaData: newMediaData });
+    });
+  }
+
+  handleSizeMigration(size) {
+    if (size === "lrg") {
+      this.setNumberOfColumns(2);
+    } else if (size === "xlrg") {
+      this.setNumberOfColumns(3);
+    }
+  }
+
+  setNumberOfColumns(value) {
+    this.setState({ columns: value });
+    this.props.setAttributes({ columnsize: value });
+  }
+
   onSelectImage(index) {
-    // console.log( 'onSelectImage', index );
     return () => {
       if (this.state.selectedImage !== index) {
-        this.setState({
-          selectedImage: index,
-        });
+        this.setState({ selectedImage: index });
       }
     };
   }
 
   onMove(oldIndex, newIndex) {
     const images = [...this.props.attributes.images];
-    
-    // Get the image being moved
     const movedImage = images[oldIndex];
-    
-    // Remove from old position
     images.splice(oldIndex, 1);
-    
-    // Insert at new position
     images.splice(newIndex, 0, movedImage);
-    
-    // Update order properties for all images
     const updatedImages = images.map((img, index) => ({
       ...img,
-      order: index // Reset order to match new position
+      order: index,
     }));
-    
     this.setState({ selectedImage: newIndex });
     this.props.setAttributes({ images: updatedImages });
   }
 
   onMoveForward(oldIndex) {
     return () => {
-      if (oldIndex === this.props.attributes.images.length - 1) {
-        return;
+      if (oldIndex < this.props.attributes.images.length - 1) {
+        this.onMove(oldIndex, oldIndex + 1);
       }
-      this.onMove(oldIndex, oldIndex + 1);
     };
   }
 
   onMoveBackward(oldIndex) {
     return () => {
-      if (oldIndex === 0) {
-        return;
+      if (oldIndex > 0) {
+        this.onMove(oldIndex, oldIndex - 1);
       }
-      this.onMove(oldIndex, oldIndex - 1);
     };
   }
 
@@ -162,75 +233,50 @@ class GalleryMasonryEdit extends Component {
       const images = filter(
         this.props.attributes.images,
         (_img, i) => index !== i
-      )
-      .map((img, newIndex) => ({
+      ).map((img, newIndex) => ({
         ...img,
-        order: newIndex // Reassign order after removal.
+        order: newIndex,
       }));
-      
       this.setState({ selectedImage: null });
       this.props.setAttributes({ images });
     };
   }
 
   setImageAttributes(index, attributes) {
-    const {
-      attributes: { images },
-      setAttributes,
-    } = this.props;
-    if (!images[index]) {
-      return;
-    }
-    setAttributes({
-      images: [
-        ...images.slice(0, index),
-        {
-          ...images[index],
-          ...attributes,
-        },
-        ...images.slice(index + 1),
-      ],
+    const { images } = this.props.attributes;
+    if (!images[index]) return;
+    const updatedImages = [
+      ...images.slice(0, index),
+      { ...images[index], ...attributes },
+      ...images.slice(index + 1),
+    ];
+    this.props.setAttributes({ images: updatedImages });
+  }
+
+  getCategories() {
+    const { mediaData } = this.state;
+    const categories = new Set();
+
+    Object.values(mediaData).forEach((media) => {
+      const raw = (media?.rba_category || "").trim();
+      if (!raw) return;
+
+      raw
+        .split(",")
+        .map((c) => c.trim())
+        .forEach((cat) => {
+          if (cat && cat.toLowerCase() !== "uncategorized") {
+            categories.add(cat);
+          }
+        });
     });
-  }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.attributes.gutter <= 0) {
-      this.props.setAttributes({
-        radius: 0,
-      });
-    }
-    var element = document.getElementById(
-      "responsive-block-editor-addons-advanced-gallery-masonry-style-" +
-        this.props.clientId
-    );
-  
-    if (null !== element && undefined !== element) {
-      element.innerHTML = EditorStyles(this.props);
-    }
-  }
-  handleSizeMigration(size) {
-    // Map old size options to columnsize
-    if (size === 'lrg' ) {
-      this.setNumberOfColumns(2);
-    } else if (size === 'xlrg') {
-      this.setNumberOfColumns(3);
-    }
-  }
-  setNumberOfColumns(value) {
-    this.setState({ columns: value });
-    this.props.setAttributes({ columnsize: value });
-  }
+    return ["All", ...Array.from(categories)];
+}
+
+
   render() {
-    const {
-      attributes,
-      className,
-      editorSidebarOpened,
-      isSelected,
-      noticeUI,
-      pluginSidebarOpened,
-      publishSidebarOpened,
-    } = this.props;
-
+    const { attributes, className, isSelected, noticeUI } = this.props;
     const {
       align,
       captions,
@@ -244,33 +290,29 @@ class GalleryMasonryEdit extends Component {
       customHeight,
       customWidth,
       block_id,
+      enableCategoryFilter,
+      allTabLabel = "All",
     } = attributes;
+
     const hasImages = !!images.length;
 
-    const sidebarIsOpened =
-      editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
+    const innerClasses = classnames(...GalleryClasses(attributes), {
+      [`align${align}`]: align,
+      "has-gutter": gutter > 0,
+      "has-lightbox": lightbox,
+      [`link-type-${linkTo}`]: linkTo && !lightbox,
+    });
 
-    const innerClasses = classnames(
-      ...GalleryClasses(attributes),
-      sidebarIsOpened,
-      {
-        [`align${align}`]: align,
-        "has-gutter": gutter > 0,
-        "has-lightbox": lightbox,
-        [`link-type-${linkTo}`]: linkTo && !lightbox,
-      }
-    );
-
-    const masonryClasses = classnames( {
+    const masonryClasses = classnames({
       [`has-gutter-${gutter}`]: gutter > 0,
-      [`has-gutter-null`]: gutter === 0,
+      "has-gutter-null": gutter === 0,
       [`has-gutter-mobile-${gutterMobile}`]: gutterMobile > 0,
       [`has-gutter-tablet-${gutterTablet}`]: gutterTablet > 0,
     });
 
-    const masonryGalleryPlaceholder = (
+    const masonryGalleryPlaceholder = !hasImages ? (
       <Fragment>
-        {!hasImages ? noticeUI : null}
+        {noticeUI}
         <GalleryPlaceholder
           {...this.props}
           label={__("Image", "responsive-block-editor-addons")}
@@ -278,58 +320,86 @@ class GalleryMasonryEdit extends Component {
           gutter={gutter}
         />
       </Fragment>
-    );
+    ) : null;
 
-    if (!hasImages) {
-      return masonryGalleryPlaceholder;
-    }
+    const appendClass = `block-${block_id}`;
+    const outerClasses = classnames(className, appendClass);
 
-    const appendClass = `block-${block_id}`
-    const outerClasses = classnames(
-      className,
-      appendClass
-    )
-  const sortedImages = [...images].sort((a, b) => a.order - b.order);
+    const sortedImages = [...images].sort((a, b) => a.order - b.order);
+    const categories = this.getCategories();
+
+    const filteredImages = sortedImages.filter((img) => {
+      if (this.state.selectedCategory === "All") return true;
+      const media = this.state.mediaData[img.id];
+      if (!media || !media.rba_category) return false;
+      return media.rba_category
+        .split(",")
+        .map((c) => c.trim())
+        .includes(this.state.selectedCategory);
+    });
+
     return (
-      <Fragment key="div-block" >
-        <style id={`responsive-block-editor-addons-advanced-gallery-masonry-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+      <Fragment>
+        <style
+          id={`responsive-block-editor-addons-advanced-gallery-masonry-style-${this.props.clientId}-inner`}
+        >
+          {EditorStyles(this.props)}
+        </style>
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <div className={outerClasses}>
-          <div className={innerClasses}>
-          <Masonry
-              className={masonryClasses}
-              columnsCount={columnsize}
-            >
+          {/* Only show category filters if enableCategoryFilter is true */}
+          {enableCategoryFilter && categories.length > 1 && (
+            <div className="category-filters" style={{ marginBottom: "1em" }}>
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => this.setState({ selectedCategory: cat })}
+                  style={{
+                    marginRight: "0.5em",
+                    padding: "0.4em 0.8em",
+                    backgroundColor:
+                      this.state.selectedCategory === cat ? "#0073aa" : "#f3f4f5",
+                    color: this.state.selectedCategory === cat ? "#fff" : "#000",
+                    border: "none",
+                    borderRadius: "4px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {cat === "All" ? allTabLabel : cat}
+                </button>
+              ))}
+            </div>
+          )}
 
-              {sortedImages.map((img, index) => {
+          <div className={innerClasses}>
+            <Masonry className={masonryClasses} columnsCount={columnsize}>
+              {filteredImages.map((img, index) => {
                 const ariaLabel = sprintf(
-                  /* translators: %1$d is the order number of the image, %2$d is the total number of sortedImages */
                   __(
                     "image %1$d of %2$d in gallery",
                     "responsive-block-editor-addons"
                   ),
                   index + 1,
-                  sortedImages.length
+                  filteredImages.length
                 );
 
                 return (
                   <li
-                  key={`img-${img.id}`}
+                    key={`img-${img.id}`}
                     className="responsive-block-editor-addons-gallery--item"
-                    
                   >
                     <GalleryImage
-                    key={`img-${img.id}`}
-                  caption={img.caption}
-                  lightbox={lightbox}
-                  url={img.url}
+                      key={`img-${img.id}`}
+                      caption={img.caption}
+                      lightbox={lightbox}
+                      url={img.url}
                       alt={img.alt}
                       id={img.id}
                       imgLink={img.imgLink}
                       linkTo={linkTo}
                       isFirstItem={index === 0}
-                      isLastItem={index + 1 === sortedImages.length}
+                      isLastItem={index + 1 === filteredImages.length}
                       isSelected={
                         isSelected && this.state.selectedImage === index
                       }
@@ -340,11 +410,10 @@ class GalleryMasonryEdit extends Component {
                       setAttributes={(attrs) =>
                         this.setImageAttributes(index, attrs)
                       }
-
                       aria-label={ariaLabel}
                       captions={captions}
                       supportsCaption={true}
-                      customHeight={customHeight}  
+                      customHeight={customHeight}
                       customWidth={customWidth}
                     />
                   </li>
