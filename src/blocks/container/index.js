@@ -22,6 +22,7 @@ import { registerBlockType } from "@wordpress/blocks";
 
 // Register the block
 registerBlockType("responsive-block-editor-addons/container", {
+  apiVersion: 2,
   title: __("Container", "responsive-block-editor-addons"),
   description: __("Flexbox Container", "responsive-block-editor-addons"),
   icon: ResponsiveBlockEditorAddonsIcons.advanced_heading,
