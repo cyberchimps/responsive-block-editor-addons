@@ -399,6 +399,19 @@ export default function Inspector(props) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  const onChangeHeight = ( value ) => {
+		setAttributes( { equalHeight: value } );
+		if ( value ) {
+			setAttributes( { alignItemsDesktop: 'stretch' } );
+			setAttributes( { alignItemsTablet: 'stretch' } );
+			setAttributes( { alignItemsMobile: 'stretch' } );
+		} else {
+			setAttributes( { alignItemsDesktop: 'center' } );
+			setAttributes( { alignItemsTablet: 'center' } );
+			setAttributes( { alignItemsMobile: 'center' } );
+		}
+	};
+
   const htmlTagOptions = [
     {
       value: "div",
@@ -677,7 +690,7 @@ export default function Inspector(props) {
         <InspectorTab key={"content"}>
           <PanelBody
             title={__("Container Type", "responsive-block-editor-addons")}
-            initialOpen={false}
+            initialOpen={true}
             className="responsive_block_editor_addons__url-panel-body"
           >
             {/* from here */}
@@ -790,13 +803,14 @@ export default function Inspector(props) {
                                   setAttributes({ [widthKey]: val })
                                 }
                                 min={0}
-                                max={widthType === "%" ? 100 : 2000}
+                                max={widthType === "%" ? 100 : 1600}
                                 allowReset
                                 initialPosition={20}
                                 widthType={widthType}
                                 setAttributes={setAttributes}
                                 extraControls={true}
                                 widthTypeKey={typeKey}
+                                resetFallbackValue={widthType === "%" ? 100 : 1200}
                               />
                             </div>
                           );
@@ -866,13 +880,14 @@ export default function Inspector(props) {
                           setAttributes({ widthSetByUser: true });
                         }}
                         min={0}
-                        max={widthType === "%" ? 100 : 2000}
+                        max={widthType === "%" ? 100 : 1200}
                         allowReset
                         initialPosition={20}
                         widthType={widthType}
                         setAttributes={setAttributes}
                         extraControls={true}
                         widthTypeKey={typeKey}
+                        resetFallbackValue={widthType === "%" ? 100 : 1200}
                       />
                     </div>
                   );
@@ -991,7 +1006,7 @@ export default function Inspector(props) {
             )}
 
             <RbeaTabRadioControl
-              label={__("Container Width", "responsive-block-editor-addons")}
+              label={__("Overflow", "responsive-block-editor-addons")}
               value={overflow}
               onChange={(value) => setAttributes({ overflow: value })}
               options={[
@@ -1166,8 +1181,11 @@ export default function Inspector(props) {
                           )}
                           value={value}
                           options={getAlignItemsOptions(currentDirection)}
-                          onChange={(val) =>
-                            setAttributes({ [attributeKey]: val || "center" })
+                          onChange={(val) => {
+                              const newAlign = val || "center";
+                              setAttributes({ [attributeKey]: newAlign });
+                              setAttributes({ equalHeight: newAlign === 'stretch' });
+                            }
                           }
                           help={__(
                             `Define the ${

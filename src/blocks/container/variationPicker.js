@@ -332,7 +332,7 @@ export const VariationPicker = (props) => {
   };
 
   return (
-    <div {...useBlockProps()} className="responsive-block-editor-addons-variation-picker">
+    <div {...useBlockProps()} className="responsive-block-editor-addons-container-variation-picker">
       <BlockVariationPicker
         icon={ResponsiveBlockEditorAddonsIcons.advanced_heading}
         label={__("Container", "responsive-block-editor-addons")}

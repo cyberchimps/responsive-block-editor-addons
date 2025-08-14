@@ -1,4 +1,4 @@
-.responsive-block-editor-addons-variation-picker {
+.responsive-block-editor-addons-container-variation-picker {
   .components-placeholder__fieldset {
     align-items: center;
     text-align: center;
@@ -12,3 +12,25 @@
     }
   }
 }
+
+.wp-block-responsive-block-editor-addons-container {
+  display: flex;
+}
+
+.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block {
+  width: 100%;
+}
+
+.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-editor-block-list__block {
+  max-width: 100%;
+  width: 100%;
+}
+.wp-block-responsive-block-editor-addons-container > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-editor-block-list__block {
+  max-width: 100%;
+  width: 100%;
+}
+
+// .wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap {
+//   margin-left: auto;
+//   margin-right: auto;
+// }

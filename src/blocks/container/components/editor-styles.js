@@ -20,26 +20,83 @@ function EditorStyles(props) {
     justifyContentDesktop,
     justifyContentTablet,
     justifyContentMobile,
+    innerContentCustomWidthDesktop,
+    innerContentCustomWidthTablet,
+    innerContentCustomWidthMobile,
+    innerContentBoxWidthTypeDesktop,
+    innerContentBoxWidthTypeTablet,
+    innerContentBoxWidthTypeMobile,
+    contentWidth,
+    innerContentWidth,
+    isBlockRootParent,
+    customWidthDesktop,
+    customWidthTablet,
+    customWidthMobile,
+    customWidthTypeDesktop,
+    customWidthTypeTablet,
+    customWidthTypeMobile,
+    minHeight,
+    minHeightTablet,
+    minHeightMobile,
+    overflow,
   } = props.attributes;
 
   var selectors = {
     "": {
       "opacity": hideWidget? 0.2 : 1,
     },
-    " > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout": {
-      'display': 'flex',
-      'flex-direction': directionDesktop,
-      'align-items': alignItemsDesktop,
-      'justify-content': justifyContentDesktop,
-      'flex-wrap': 'nowrap',
-      'row-gap': '20px',
-      'column-gap': '20px',
-    },
-    " > .responsive-block-editor-addons-is-root-container > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > .block-editor-block-list__block": {
-      'max-width': '100%',
-			'width': '100%',
-    }
   };
+
+  // " > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout": {
+  //     'display': 'flex',
+  //     'flex-direction': directionDesktop,
+  //     'align-items': alignItemsDesktop,
+  //     'justify-content': justifyContentDesktop,
+  //     'flex-wrap': 'nowrap',
+  //     'row-gap': '20px',
+  //     'column-gap': '20px',
+  //   },
+
+  let containerFlexSelector = '.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
+  if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
+    containerFlexSelector = '.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-has-children > .block-editor-inner-blocks > .block-editor-block-list__layout'
+  }
+
+  selectors[ containerFlexSelector ] = {
+    'display': 'flex',
+    'flex-direction': directionDesktop,
+    'align-items': alignItemsDesktop,
+    'justify-content': justifyContentDesktop,
+    'flex-wrap': 'nowrap',
+    'row-gap': '20px',
+    'column-gap': '20px',
+    'min-height': generateCSSUnit( minHeight, 'px' ),
+    'overflow': overflow,
+  };
+
+  if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
+    selectors[" > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap"] = {
+      '--inner-content-custom-width': `min(100vw, ${generateCSSUnit(innerContentCustomWidthDesktop, innerContentBoxWidthTypeDesktop)})`,
+      'max-width': 'var(--inner-content-custom-width)',
+      'width': '100%',
+      'margin-left': 'auto',
+      'margin-right': 'auto',
+    }
+  }
+
+  if ( 'default' === contentWidth ) {
+    selectors[" "] = {
+      'max-width': generateCSSUnit(customWidthDesktop, customWidthTypeDesktop),
+      'margin-left': 'auto',
+      'margin-right': 'auto',
+    }
+  }
+
+  // selectors[ containerFlexSelector ] = { 
+	// 	'min-height': generateCSSUnit( minHeight, 'px' ),
+	// }
+
+
 
   var mobile_selectors = {
     "": {

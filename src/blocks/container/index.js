@@ -35,7 +35,9 @@ registerBlockType("responsive-block-editor-addons/container", {
   attributes: attributes,
   example: {},
 
-  supports: {},
+  supports: {
+    html: false,
+  },
 
   /* Render the block in the editor. */
   edit: (props) => {
