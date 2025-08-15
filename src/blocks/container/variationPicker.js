@@ -25,7 +25,7 @@ export const variations = [
     icon: rowIcons["50-50"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapMobile: "wrap",
     },
     isDefault: true,
@@ -46,7 +46,7 @@ export const variations = [
     icon: rowIcons["33-33-33"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapMobile: "wrap",
     },
     innerBlocks: [
@@ -70,7 +70,7 @@ export const variations = [
     icon: rowIcons["25-25-25-25"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapMobile: "wrap",
     },
     innerBlocks: [
@@ -98,7 +98,7 @@ export const variations = [
     icon: rowIcons["50-50_50-50"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapDesktop: "wrap",
       wrapMobile: "wrap",
     },
@@ -127,7 +127,7 @@ export const variations = [
     icon: rowIcons["25-75"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapMobile: "wrap",
     },
     innerBlocks: [
@@ -147,7 +147,7 @@ export const variations = [
     icon: rowIcons["33-33-33_33-33-33"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapDesktop: "wrap",
       wrapMobile: "wrap",
     },
@@ -184,7 +184,7 @@ export const variations = [
     icon: rowIcons["25-50-25"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapMobile: "wrap",
     },
     innerBlocks: [
@@ -208,7 +208,7 @@ export const variations = [
     icon: rowIcons["75-25"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapMobile: "wrap",
     },
     innerBlocks: [
@@ -228,7 +228,7 @@ export const variations = [
     icon: rowIcons["75-25_25_75"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapDesktop: "wrap",
       wrapMobile: "wrap",
     },
@@ -257,14 +257,14 @@ export const variations = [
     icon: rowIcons["50-50_100"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapDesktop: "wrap",
       wrapMobile: "wrap",
     },
     innerBlocks: [
       [
         "responsive-block-editor-addons/container",
-        { customWidthDesktop: 100, widthSetByUser: true, direction: "row" },
+        { customWidthDesktop: 100, widthSetByUser: true, directionDesktop: "row" },
         [
           [
             "responsive-block-editor-addons/container",
@@ -288,7 +288,7 @@ export const variations = [
     icon: rowIcons["25-75_75-25"],
     attributes: {
       variationSelected: true,
-      direction: "row",
+      directionDesktop: "row",
       wrapDesktop: "wrap",
       wrapMobile: "wrap",
     },

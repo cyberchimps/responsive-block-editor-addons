@@ -36,7 +36,7 @@ const Render = ( props ) => {
 	const hasChildrenClass = hasChildren ? 'responsive-block-editor-addons-container-has-children' : '';
 	const isRootContainerClass = isBlockRootParent ? `${ contentWidth } responsive-block-editor-addons-is-root-container` : '';
 	const blockProps = useBlockProps( {
-		className: `responsive-block-editor-addons-block-${ block_id } ${ hasChildrenClass } responsive-block-editor-addons-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
+		className: `responsive-block-editor-addons-block-container block-${block_id} responsive-block-editor-addons-block-${ block_id } ${ hasChildrenClass } responsive-block-editor-addons-editor-preview-mode-${ deviceType.toLowerCase() } ${ isRootContainerClass }`,
 	} );
 
 	const innerBlocksParams = {

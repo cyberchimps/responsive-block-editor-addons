@@ -61,11 +61,9 @@ const attributes = {
   },
   customWidthTablet: {
     type: "number",
-    default: 100,
   },
   customWidthMobile: {
     type: "number",
-    default: 100,
   },
   customWidthTypeDesktop: {
     type: "string",
@@ -73,11 +71,9 @@ const attributes = {
   },
   customWidthTypeTablet: {
     type: "string",
-    default: "%",
   },
   customWidthTypeMobile: {
     type: "string",
-    default: "%",
   },
   rowGapDesktop: {
     type: "number",
@@ -129,15 +125,12 @@ const attributes = {
   },
   minHeight: {
     type: "number",
-    default: 100,
   },
   minHeightTablet: {
     type: "number",
-    default: 100,
   },
   minHeightMobile: {
     type: "number",
-    default: 100,
   },
   equalHeight: {
     type: "boolean",
@@ -149,7 +142,6 @@ const attributes = {
   },
   htmlTagLink: {
     type: "string",
-    default: "",
   },
   linkTarget: {
     type: "boolean",
@@ -161,7 +153,7 @@ const attributes = {
   },
   directionDesktop: {
     type: "string",
-    default: "row",
+    default: "column",
   },
   directionTablet: {
     type: "string",
@@ -185,15 +177,15 @@ const attributes = {
   },
   justifyContentDesktop: {
     type: "string",
-    default: "flex-start",
+    default: "center",
   },
   justifyContentTablet: {
     type: "string",
-    default: "flex-start",
+    default: "center",
   },
   justifyContentMobile: {
     type: "string",
-    default: "flex-start",
+    default: "center",
   },
   childrenWidthDesktop: {
     type: "string",
@@ -217,7 +209,7 @@ const attributes = {
   },
   wrapMobile: {
     type: "string",
-    default: "wrap",
+    default: "nowrap",
   },
   alignContentDesktop: {
     type: "string",

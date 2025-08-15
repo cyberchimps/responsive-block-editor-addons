@@ -39,7 +39,12 @@ function EditorStyles(props) {
     minHeightTablet,
     minHeightMobile,
     overflow,
+    wrapDesktop,
+    wrapTablet,
+    wrapMobile,
   } = props.attributes;
+
+  const { clientId } = props;
 
   var selectors = {
     "": {
@@ -47,35 +52,56 @@ function EditorStyles(props) {
     },
   };
 
-  // " > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout": {
-  //     'display': 'flex',
-  //     'flex-direction': directionDesktop,
-  //     'align-items': alignItemsDesktop,
-  //     'justify-content': justifyContentDesktop,
-  //     'flex-wrap': 'nowrap',
-  //     'row-gap': '20px',
-  //     'column-gap': '20px',
-  //   },
-
-  let containerFlexSelector = '.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
-  if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
-    containerFlexSelector = '.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-has-children > .block-editor-inner-blocks > .block-editor-block-list__layout'
+  
+  if( isBlockRootParent ) {
+    console.log('parentprops ID -> ' + clientId);
+  } else {
+    console.log('childprops ID -> ' + clientId);
   }
+
+  let containerFlexSelector = '.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
+  if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
+    containerFlexSelector = '.wp-block-responsive-block-editor-addons-container > .block-editor-inner-blocks > .block-editor-block-list__layout';
+  }
+
+  const gbsWidthSelector = `#block-${ clientId }`;
+  const widthSelectorsDesktop = {};
+	const widthSelectorsTablet = {};
+	const widthSelectorsMobile = {};
 
   selectors[ containerFlexSelector ] = {
     'display': 'flex',
     'flex-direction': directionDesktop,
     'align-items': alignItemsDesktop,
     'justify-content': justifyContentDesktop,
-    'flex-wrap': 'nowrap',
+    'flex-wrap': wrapDesktop,
     'row-gap': '20px',
     'column-gap': '20px',
     'min-height': generateCSSUnit( minHeight, 'px' ),
-    'overflow': overflow,
   };
 
+  selectors[ '.block-editor-block-list__block' ] = {
+    'flex-direction': directionDesktop,
+    'align-items': alignItemsDesktop,
+    'justify-content': justifyContentDesktop,
+    'flex-wrap': wrapDesktop,
+    'min-height': generateCSSUnit( minHeight, 'px' ),
+  };
+
+  widthSelectorsDesktop[ `.is-root-container > .block-editor-block-list__block .block-editor-block-list__block${ gbsWidthSelector } ` ] = {
+    'max-width': generateCSSUnit( customWidthDesktop, customWidthTypeDesktop ),
+    'width': '100%',
+  };
+
+  // console.log(`.is-root-container > .block-editor-block-list__block .block-editor-block-list__block${ gbsWidthSelector }`)
+
+  // selectors[`.editor-styles-wrapper .is-root-container > .block-editor-block-list__block .block-editor-block-list__block${ gbsWidthSelector } `] = {
+  //   'max-width': generateCSSUnit( customWidthDesktop, customWidthTypeDesktop ),
+  //   'width': '100%',
+  // }
+
   if ( 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ) {
-    selectors[" > .responsive-block-editor-addons-container-has-children > .responsive-block-editor-addons-container-inner-blocks-wrap"] = {
+    selectors[`.block-editor-block-list__block.wp-block-responsive-block-editor-addons-container${ gbsWidthSelector } > .responsive-block-editor-addons-container-inner-blocks-wrap`] = {
       '--inner-content-custom-width': `min(100vw, ${generateCSSUnit(innerContentCustomWidthDesktop, innerContentBoxWidthTypeDesktop)})`,
       'max-width': 'var(--inner-content-custom-width)',
       'width': '100%',
@@ -84,17 +110,14 @@ function EditorStyles(props) {
     }
   }
 
+  // custom width.
   if ( 'default' === contentWidth ) {
-    selectors[" "] = {
+    selectors[".block-editor-block-list__block"] = {
       'max-width': generateCSSUnit(customWidthDesktop, customWidthTypeDesktop),
       'margin-left': 'auto',
       'margin-right': 'auto',
     }
   }
-
-  // selectors[ containerFlexSelector ] = { 
-	// 	'min-height': generateCSSUnit( minHeight, 'px' ),
-	// }
 
 
 
@@ -110,12 +133,23 @@ function EditorStyles(props) {
     },
   };
 
-  var styling_css = "";
-  var id = `.responsive-block-editor-addons-block-container.block-${block_id}`;
+  const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
-  styling_css = generateCSS(selectors, id);
-  styling_css += generateCSS(tablet_selectors, id, true, "tablet");
-  styling_css += generateCSS(mobile_selectors, id, true, "mobile");
+  let styling_css = generateCSS( selectors, base_selector );
+
+  styling_css += generateCSS( widthSelectorsDesktop, '.editor-styles-wrapper ' );
+
+
+  // var id = `.responsive-block-editor-addons-block-container.block-${block_id}`;
+
+  // styling_css = generateCSS(selectors, id);
+  styling_css += generateCSS(tablet_selectors, `${ base_selector }`, true, "tablet");
+  styling_css += generateCSS(widthSelectorsTablet, '.editor-styles-wrapper ', true, 'tablet' );
+  styling_css += generateCSS(mobile_selectors, `${ base_selector }`, true, "mobile");
+  styling_css += generateCSS(widthSelectorsMobile, '.editor-styles-wrapper ', true, 'tablet' );
+  
+  console.log('STYLING CSS');
+  console.log(styling_css);
 
   return styling_css;
 }

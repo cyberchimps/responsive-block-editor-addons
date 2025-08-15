@@ -65,7 +65,7 @@ export default function save( props ) {
 					) }
 				{ 
 					htmlTag === 'a' && 'undefined' !== typeof customTagLinkAttributes.href && (
-						<a className='spectra-container-link-overlay' { ...customTagLinkAttributes } > </a>
+						<a className='responsive-block-editor-addons-container-link-overlay' { ...customTagLinkAttributes } > </a>
 					)
 				}
 			</CustomTag>
