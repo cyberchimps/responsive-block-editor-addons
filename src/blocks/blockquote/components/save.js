@@ -34,6 +34,14 @@ export default class Save extends Component {
         twUrlMode,
         twCustomUrl,
         twLabel,
+        twColor,
+        twBg,
+        twHColor,
+        twHBg,
+        twFontFamily,
+        twTextTransform,
+        twTextDecoration,
+        twIconTextSpacing,
       },
       setAttributes,
     } = this.props;
@@ -90,16 +98,31 @@ export default class Save extends Component {
                 data-url-mode={twUrlMode || "current"}
                 data-custom-url={twCustomUrl || ""}
                 data-view={twView || "both"}
-                data-label={twLabel || "Tweet"}
+                data-label={twLabel || "Post"}
+                data-hover-color={twHColor || ""}
+                data-hover-bg={twHBg || ""}
                 target="_blank"
                 rel="noopener"
+                style={{
+                  color: twColor || undefined,
+                  backgroundColor: twBg || undefined,
+                  fontFamily: twFontFamily ? `"${twFontFamily}", sans-serif` : undefined,
+                  textTransform: twTextTransform || undefined,
+                  textDecoration: twTextDecoration || undefined,
+                  gap: twIconTextSpacing ? `${twIconTextSpacing}px` : undefined,
+                  "--icon-text-spacing": twIconTextSpacing ? `${twIconTextSpacing}px` : undefined,
+                  "--hover-color": twHColor || undefined,
+                  "--hover-bg": twHBg || undefined,
+                }}
               >
                 { (twView !== "text") && (
-                  // Use dashicons class on frontend (no React needed here)
-                  <span className="dashicons dashicons-twitter" aria-hidden="true"></span>
+                  // Custom X icon since dashicons-x doesn't exist
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
                 )}
                 { (twView !== "icon") && (
-                  <span className="rbea-bq__label">{ twLabel || "Tweet" }</span>
+                  <span className="rbea-bq__label">{ twLabel || "Post" }</span>
                 )}
               </a>
             </div>

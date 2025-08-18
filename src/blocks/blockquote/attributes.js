@@ -440,7 +440,7 @@ const attributes = {
   },
   twLabel: {
     type: "string",  
-    default: "Tweet",
+    default: "Post",
   },
     twEnabled: { 
     type: "boolean", 
@@ -464,25 +464,25 @@ const attributes = {
   },
   twLabel: {
     type: "string",  
-    default: "Tweet",
+    default: "Post",
   },
 
   // ==== Twitter Colors ====
   twColor: {
     type: "string",
-    default: "",
+    default: "#ffffff",
   },
   twBg: {
     type: "string",
-    default: "",
+    default: "#000000",
   },
   twHColor: {
     type: "string",
-    default: "",
+    default: "#ffffff",
   },
   twHBg: {
     type: "string",
-    default: "",
+    default: "#000000",
   },
 
   // ==== Twitter Padding (Responsive) ====
@@ -566,6 +566,18 @@ const attributes = {
   twLineHeight: {
     type: "number",
     default: "",
+  },
+  twTextTransform: {
+    type: "string",
+    default: "",
+  },
+  twTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  twIconTextSpacing: {
+    type: "number",
+    default: 8,
   },
   twTypographyColor: {
     type: "string",

@@ -124,6 +124,9 @@ function EditorStyles(props) {
     twFontSizeMobile, 
     twFontWeight, 
     twLineHeight,
+    twTextTransform,
+    twTextDecoration,
+    twIconTextSpacing,
     twTypographyColor,
   } = props.attributes;
 
@@ -228,7 +231,7 @@ function EditorStyles(props) {
     " .rbea-bq__tweet": {
       display: "inline-flex",
       "align-items": "center",
-      gap: "8px",
+      gap: generateCSSUnit(twIconTextSpacing, "px"),
       "text-decoration": "none",
       "line-height": "1",
       "border-radius": "999px",
@@ -245,6 +248,8 @@ function EditorStyles(props) {
       "font-weight": twFontWeight,
       "line-height": twLineHeight,
       "font-size": generateCSSUnit(twFontSize, "px"),
+      "text-transform": twTextTransform,
+      "text-decoration": twTextDecoration,
     },
 
     // Hover (attributes-driven)

@@ -277,6 +277,7 @@ export default class Inspector extends Component {
         quoteTypographyColor,
         blockIsTypographyColorValueUpdated,
         isAlignmentValueUpdated,
+        twStyle,
         twColor,
         twBg, 
         twHColor, 
@@ -299,6 +300,9 @@ export default class Inspector extends Component {
         twFontSizeMobile, 
         twFontWeight, 
         twLineHeight,
+        twTextTransform,
+        twTextDecoration,
+        twIconTextSpacing,
         twTypographyColor,
       },
       setAttributes,
@@ -517,59 +521,84 @@ export default class Inspector extends Component {
                 onChange={(v) => setAttributes({ twEnabled: !!v })}
               />
 
-              {/* Icon View: Both | Icon | Text */}
-              <RbeaTabRadioControl
-                label={__("Icon View", "responsive-block-editor-addons")}
-                value={this.props.attributes.twView || "both"}
-                onChange={(v) => setAttributes({ twView: v })}
-                options={[
-                  { value: "both", label: __("Both", "responsive-block-editor-addons") },
-                  { value: "icon", label: __("Icon", "responsive-block-editor-addons") },
-                  { value: "text", label: __("Text", "responsive-block-editor-addons") },
-                ]}
-              />
+              {/* Show other Twitter options only when Enable Icon is turned on */}
+              {this.props.attributes.twEnabled && (
+                <Fragment>
+                  {/* Icon View: Both | Icon | Text */}
+                  <RbeaTabRadioControl
+                    label={__("Icon View", "responsive-block-editor-addons")}
+                    value={this.props.attributes.twView || "both"}
+                    onChange={(v) => setAttributes({ twView: v })}
+                    options={[
+                      { value: "both", label: __("Both", "responsive-block-editor-addons") },
+                      { value: "icon", label: __("Icon", "responsive-block-editor-addons") },
+                      { value: "text", label: __("Text", "responsive-block-editor-addons") },
+                    ]}
+                  />
 
-              {/* Icon Style: Classic | Bubble | Link */}
-              <RbeaTabRadioControl
-                label={__("Icon Style", "responsive-block-editor-addons")}
-                value={this.props.attributes.twStyle || "classic"}
-                onChange={(v) => setAttributes({ twStyle: v })}
-                options={[
-                  { value: "classic", label: __("Classic", "responsive-block-editor-addons") },
-                  { value: "bubble",  label: __("Bubble",  "responsive-block-editor-addons") },
-                  { value: "link",    label: __("Link",    "responsive-block-editor-addons") },
-                ]}
-              />
+                  {/* Icon Style: Classic | Bubble | Link */}
+                  <RbeaTabRadioControl
+                    label={__("Icon Style", "responsive-block-editor-addons")}
+                    value={this.props.attributes.twStyle || "classic"}
+                    onChange={(v) => {
+                      if (v === "link") {
+                        // Unset backgrounds and force text color to black for link style
+                        setAttributes({ 
+                          twStyle: v,
+                          twBg: "",
+                          twHBg: "",
+                          twColor: "#000000",
+                          twHColor: "#000000",
+                        });
+                      } else {
+                        // For classic and bubble styles, set text color to white and background to black
+                        setAttributes({ 
+                          twStyle: v,
+                          twColor: "#ffffff",
+                          twHColor: "#ffffff",
+                          twBg: "#000000",
+                          twHBg: "#000000",
+                        });
+                      }
+                    }}
+                    options={[
+                      { value: "classic", label: __("Classic", "responsive-block-editor-addons") },
+                      { value: "bubble",  label: __("Bubble",  "responsive-block-editor-addons") },
+                      { value: "link",    label: __("Link",    "responsive-block-editor-addons") },
+                    ]}
+                  />
 
-              {/* Target URL: Current Page | Custom URL */}
-              <RbeaTabRadioControl
-                label={__("Target URL", "responsive-block-editor-addons")}
-                value={this.props.attributes.twUrlMode || "current"}
-                onChange={(v) => setAttributes({ twUrlMode: v })}
-                options={[
-                  { value: "current", label: __("Current Page", "responsive-block-editor-addons") },
-                  { value: "custom",  label: __("Custom URL",  "responsive-block-editor-addons") },
-                ]}
-              />
+                  {/* Target URL: Current Page | Custom URL */}
+                  <RbeaTabRadioControl
+                    label={__("Target URL", "responsive-block-editor-addons")}
+                    value={this.props.attributes.twUrlMode || "current"}
+                    onChange={(v) => setAttributes({ twUrlMode: v })}
+                    options={[
+                      { value: "current", label: __("Current Page", "responsive-block-editor-addons") },
+                      { value: "custom",  label: __("Custom URL",  "responsive-block-editor-addons") },
+                    ]}
+                  />
 
-              {/* Custom URL field appears only when "Custom URL" is chosen */}
-              {this.props.attributes.twUrlMode === "custom" && (
-                <TextControl
-                  label={__("Custom URL", "responsive-block-editor-addons")}
-                  value={this.props.attributes.twCustomUrl || ""}
-                  onChange={(v) => setAttributes({ twCustomUrl: v })}
-                  placeholder="https://twitter.com/intent/tweet"
-                  type="url"
-                />
+                  {/* Custom URL field appears only when "Custom URL" is chosen */}
+                  {this.props.attributes.twUrlMode === "custom" && (
+                    <TextControl
+                      label={__("Custom URL", "responsive-block-editor-addons")}
+                      value={this.props.attributes.twCustomUrl || ""}
+                      onChange={(v) => setAttributes({ twCustomUrl: v })}
+                      placeholder="https://twitter.com/intent/tweet"
+                      type="url"
+                    />
+                  )}
+
+                  {/* Label */}
+                  <TextControl
+                    label={__("Label", "responsive-block-editor-addons")}
+                    value={this.props.attributes.twLabel || ""}
+                    onChange={(v) => setAttributes({ twLabel: v })}
+                    placeholder={__("Post", "responsive-block-editor-addons")}
+                  />
+                </Fragment>
               )}
-
-              {/* Label */}
-              <TextControl
-                label={__("Label", "responsive-block-editor-addons")}
-                value={this.props.attributes.twLabel || ""}
-                onChange={(v) => setAttributes({ twLabel: v })}
-                placeholder={__("Tweet", "responsive-block-editor-addons")}
-              />
             </PanelBody>
 
             <PanelBody
@@ -850,90 +879,116 @@ export default class Inspector extends Component {
 				    	setAttributes={ setAttributes }
 				    	{...this.props}
 				    />
-            <PanelBody
-              title={__("Twitter Icon", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              {/* Normal / Hover color groups */}
-              <TabPanel
-                activeClass="active-tab"
-                tabs={[
-                  { name: "normal", title: __("Normal", "responsive-block-editor-addons") },
-                  { name: "hover",  title: __("Hover",  "responsive-block-editor-addons") },
-                ]}
+            {this.props.attributes.twEnabled && (
+              <PanelBody
+                title={__("Twitter Icon", "responsive-block-editor-addons")}
+                initialOpen={false}
               >
-                {(tab) => {
-                  if (tab.name === "hover") {
+                {/* Normal / Hover color groups */}
+                <TabPanel
+                  activeClass="active-tab"
+                  tabs={[
+                    { name: "normal", title: __("Normal", "responsive-block-editor-addons") },
+                    { name: "hover",  title: __("Hover",  "responsive-block-editor-addons") },
+                  ]}
+                >
+                  {(tab) => {
+                    if (tab.name === "hover") {
+                      return (
+                        <Fragment>
+                          <RbeaColorControl
+                            label={__("Tweet Color (Hover)", "responsive-block-editor-addons")}
+                            colorValue={twHColor}
+                            onChange={(value) => setAttributes({ twHColor: value })}
+                            resetColor={() => setAttributes({ twHColor: "" })}
+                          />
+                          {twStyle !== "link" && (
+                            <RbeaColorControl
+                              label={__("Tweet Background (Hover)", "responsive-block-editor-addons")}
+                              colorValue={twHBg}
+                              onChange={(value) => setAttributes({ twHBg: value })}
+                              resetColor={() => setAttributes({ twHBg: "" })}
+                            />
+                          )}
+                        </Fragment>
+                      );
+                    }
+                    // normal
                     return (
                       <Fragment>
                         <RbeaColorControl
-                          label={__("Tweet Color (Hover)", "responsive-block-editor-addons")}
-                          colorValue={twHColor}
-                          onChange={(value) => setAttributes({ twHColor: value })}
-                          resetColor={() => setAttributes({ twHColor: "" })}
+                          label={__("Tweet Color", "responsive-block-editor-addons")}
+                          colorValue={twColor}
+                          onChange={(value) => setAttributes({ twColor: value })}
+                          resetColor={() => setAttributes({ twColor: "" })}
                         />
-                        <RbeaColorControl
-                          label={__("Tweet Background (Hover)", "responsive-block-editor-addons")}
-                          colorValue={twHBg}
-                          onChange={(value) => setAttributes({ twHBg: value })}
-                          resetColor={() => setAttributes({ twHBg: "" })}
-                        />
+                        {twStyle !== "link" && (
+                          <RbeaColorControl
+                            label={__("Tweet Background", "responsive-block-editor-addons")}
+                            colorValue={twBg}
+                            onChange={(value) => setAttributes({ twBg: value })}
+                            resetColor={() => setAttributes({ twBg: "" })}
+                          />
+                        )}
                       </Fragment>
                     );
-                  }
-                  // normal
-                  return (
-                    <Fragment>
-                      <RbeaColorControl
-                        label={__("Tweet Color", "responsive-block-editor-addons")}
-                        colorValue={twColor}
-                        onChange={(value) => setAttributes({ twColor: value })}
-                        resetColor={() => setAttributes({ twColor: "" })}
-                      />
-                      <RbeaColorControl
-                        label={__("Tweet Background", "responsive-block-editor-addons")}
-                        colorValue={twBg}
-                        onChange={(value) => setAttributes({ twBg: value })}
-                        resetColor={() => setAttributes({ twBg: "" })}
-                      />
-                    </Fragment>
-                  );
-                }}
-              </TabPanel>
+                  }}
+                </TabPanel>
 
-              {/* Button Padding (responsive) */}
-              <PanelBody
-                title={__("Button Padding (px)", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewPaddingControl
+                {/* Icon and Text Spacing */}
+                <PanelBody
+                  title={__("Icon and Text Spacing", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                >
+                  <RangeControl
+                    label={__("Spacing (px)", "responsive-block-editor-addons")}
+                    value={twIconTextSpacing}
+                    onChange={(value) => setAttributes({ twIconTextSpacing: value })}
+                    min={0}
+                    max={50}
+                    step={1}
+                    allowReset={true}
+                    resetFallbackValue={8}
+                  />
+                </PanelBody>
+
+                {/* Button Padding (responsive) */}
+                <PanelBody
+                  title={__("Button Padding (px)", "responsive-block-editor-addons")}
+                  initialOpen={false}
+                >
+                  <ResponsiveNewPaddingControl
+                    attrNameTemplate="tw%s"
+                    resetValues={twPaddingResetValues}
+                    {...this.props}
+                  />
+                </PanelBody>
+
+                {/* Typography for label */}
+                <TypographyHelperControl
+                  title={__("Typography", "responsive-block-editor-addons")}
                   attrNameTemplate="tw%s"
-                  resetValues={twPaddingResetValues}
+                  values={{
+                    family: twFontFamily,
+                    size: twFontSize,
+                    sizeMobile: twFontSizeMobile,
+                    sizeTablet: twFontSizeTablet,
+                    weight: twFontWeight,
+                    height: twLineHeight,
+                    transform: twTextTransform,
+                    textDecoration: twTextDecoration,
+                    // We manage button text color with twColor/twHColor, so no color picker here:
+                    color: twTypographyColor,
+                  }}
+                  showLetterSpacing={false}
+                  showTextTransform={true}
+                  showTextDecoration={true}
+                  showColorControl={false}
+                  setAttributes={setAttributes}
                   {...this.props}
                 />
               </PanelBody>
-
-              {/* Typography for label */}
-              <TypographyHelperControl
-                title={__("Typography", "responsive-block-editor-addons")}
-                attrNameTemplate="tw%s"
-                values={{
-                  family: twFontFamily,
-                  size: twFontSize,
-                  sizeMobile: twFontSizeMobile,
-                  sizeTablet: twFontSizeTablet,
-                  weight: twFontWeight,
-                  height: twLineHeight,
-                  // We manage button text color with twColor/twHColor, so no color picker here:
-                  color: twTypographyColor,
-                }}
-                showLetterSpacing={false}
-                showTextTransform={false}
-                showColorControl={false}
-                setAttributes={setAttributes}
-                {...this.props}
-              />
-            </PanelBody>
+            )}
 
             <RbeaSupportControl blockSlug={"blockquote"} />
           </InspectorTab>

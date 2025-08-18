@@ -64,6 +64,7 @@ export default class Edit extends Component {
         twUrlMode,
         twCustomUrl,
         twLabel,
+        twFontFamily,
       },
       setAttributes,
     } = this.props;
@@ -132,6 +133,7 @@ export default class Edit extends Component {
             {showQuote && renderSVG(icon)}
           </div>
           {quoteFontFamily && loadGoogleFont(quoteFontFamily)}
+          {twFontFamily && loadGoogleFont(twFontFamily)}
           <RichText
             tagName="span"
             placeholder={__(
@@ -153,8 +155,12 @@ export default class Edit extends Component {
                 rel="noopener"
                 onClick={(e) => e.preventDefault()} // editor preview only
               >
-                {showIcon && <Dashicon icon="twitter" />}
-                {showLabel && <span className="rbea-bq__label">{twLabel || __("Tweet","responsive-block-editor-addons")}</span>}
+                {showIcon && (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                )}
+                                  {showLabel && <span className="rbea-bq__label">{twLabel || __("Post","responsive-block-editor-addons")}</span>}
               </a>
             </div>
           )}
