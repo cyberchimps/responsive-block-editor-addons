@@ -99,6 +99,12 @@ function EditorStyles(props) {
     boxShadowSpread,
     backgroundColor,
     boxShadowColor,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     containerTopPadding, 
     containerBottomPadding, 
     containerLeftPadding, 
@@ -171,8 +177,12 @@ function EditorStyles(props) {
   } = props.attributes;
 
   let boxShadowPositionCSS = boxShadowPosition;
+  let hoverboxShadowPositionCSS = hoverboxShadowPosition;
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   const displayDays = showDaysBox ? "block" : "none";
@@ -201,6 +211,9 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
       "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, // For compatibility with v1.3.2.
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
+    },
+    " .responsive-block-editor-addons-countdown-box-stylings:hover": {
+      "box-shadow": `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`,
     },
     " .responsive-block-editor-addons-countdown-box-stylings:first-child": {
       "margin-left": "0px",

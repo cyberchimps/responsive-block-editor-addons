@@ -61,6 +61,7 @@ function EditorStyles(props) {
     imageboxShadowHoverVOffset,
     imageboxShadowHoverBlur,
     imageboxShadowHoverSpread,
+    imageboxShadowHoverPosition,
     MaskShape,
     MaskSize,
     MaskPosition,
@@ -205,6 +206,17 @@ function EditorStyles(props) {
         LayoverContentPosition === "rightbottom"
       ? "flex-end"
       : "center";
+
+  var boxShadowPositionCSS = imageboxShadowPosition;
+  var hoverboxShadowPositionCSS = imageboxShadowHoverPosition;
+
+  if ("outset" === imageboxShadowPosition) {
+    boxShadowPositionCSS = "";
+  }
+  if ("outset" === imageboxShadowHoverPosition) {
+    hoverboxShadowPositionCSS = "";
+  }
+
   var selectors = {
     "": {
         "opacity": hideWidget ? 0.2 : 1,
@@ -242,7 +254,9 @@ function EditorStyles(props) {
         " " +
         generateCSSUnit(imageboxShadowSpread, "px") +
         " " +
-        imageboxShadowColor,
+        imageboxShadowColor +
+        " " +
+        boxShadowPositionCSS,
       "object-fit": imageObjectFit,
       "-webkit-mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
       "mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
@@ -253,6 +267,20 @@ function EditorStyles(props) {
       "-webkit-mask-size": MaskSize,
       "mask-size": MaskSize,
       
+    },
+    "  .responsive-blocks-image-block:hover": {
+      "box-shadow":
+        generateCSSUnit(imageboxShadowHoverHOffset, "px") +
+        " " +
+        generateCSSUnit(imageboxShadowHoverVOffset, "px") +
+        " " +
+        generateCSSUnit(imageboxShadowHoverBlur, "px") +
+        " " +
+        generateCSSUnit(imageboxShadowHoverSpread, "px") +
+        " " +
+        imageboxShadowHoverColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
     " .responsive-image-block-description": {
       "align-items": leftoverlayalign,

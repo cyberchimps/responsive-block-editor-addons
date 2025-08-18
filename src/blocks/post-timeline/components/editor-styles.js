@@ -64,6 +64,12 @@ function EditorStyles(props) {
     boxShadowVOffset,
     boxShadowBlur,
     boxShadowSpread,
+    hoverboxShadowColor,
+    hoverboxShadowPosition,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
 	dateFontSizeMobile,
 	dateFontSizeTablet,
 	headingFontSizeMobile,
@@ -142,9 +148,13 @@ function EditorStyles(props) {
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   var selectors = {
@@ -194,6 +204,18 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-timeline__link_parent:hover": {
       "background-color": continuebghColor,
       border: `1px solid ${borderHColor}`,
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
     " .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link": {
       color: `${continueColor} !important`,

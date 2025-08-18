@@ -184,6 +184,8 @@ class Responsive_Block_Editor_Addons {
 		// Add the post types to the block editor.
 		add_filter( 'allowed_block_types_all', array( $this, 'responsive_block_editor_addons_allow_blocks_in_editor' ), 20, 2 );
 
+		add_filter( 'plugin_action_links_responsive-block-editor-addons/responsive-block-editor-addons.php', array( $this, 'responsive_block_editor_addons_settings_link' ) );
+
 	}
 
 	/**
@@ -1739,8 +1741,13 @@ class Responsive_Block_Editor_Addons {
 		}
 		
 		$rate_url = 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/';
-		$rate_link = '<a target="_blank" href="' . esc_url( $rate_url ) . '" title="' . esc_attr__( 'Rate the plugin', 'responsive-addons' ) . '">' . esc_html__( 'Rate the plugin ★★★★★', 'responsive-addons' ) . '</a>';
+		$rate_link = '<a target="_blank" href="' . esc_url( $rate_url ) . '" title="' . esc_attr__( 'Rate the plugin', 'responsive-block-editor-addons' ) . '">' . esc_html__( 'Rate the plugin ★★★★★', 'responsive-block-editor-addons' ) . '</a>';
 		$links[] = $rate_link;
+
+		$docs_url  = esc_url( 'https://cyberchimps.com/docs/responsive-blocks/' );
+		$docs_link = '<a target="_blank" href="' . esc_url( $docs_url ) . '" title="' . esc_attr__( 'Support', 'responsive-block-editor-addons' ) . '">' . esc_html__( 'Support', 'responsive-block-editor-addons' ) . '</a>';
+		$links[] = $docs_link;
+
 		return $links;
 	}
 
@@ -1775,5 +1782,19 @@ class Responsive_Block_Editor_Addons {
 		}
 		return $allowed_block_types;
 		
+	}
+
+	/**
+	 * Adds a "Settings" link to the plugin actions row on the Plugins page.
+	 *
+	 * This link redirects the user to the plugin's settings page in the WordPress admin.
+	 *
+	 * @param array $links Existing plugin action links.
+	 * @return array Modified plugin action links with the "Settings" link prepended.
+	 */
+	public function responsive_block_editor_addons_settings_link( $links ) {
+		$settings_link = '<a href="' . admin_url( 'admin.php?page=responsive_block_editor_addons' ) . '">' . __( 'Settings', 'responsive-block-editor-addons' ) . '</a>';
+		array_unshift( $links, $settings_link );
+		return $links;
 	}
 }
