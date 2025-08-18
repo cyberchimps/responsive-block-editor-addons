@@ -426,6 +426,22 @@ const attributes = {
       type: "boolean",
       default: false,
     },
+    inputTextTransform: {
+      type: "string",
+      default: ""
+    }, 
+    inputFontStyle: {
+      type: "string",
+      default: ""
+    },
+    buttonTextTransform: {
+      type: "string",
+      default: ""
+    }, 
+    buttonFontStyle: {
+      type: "string",
+      default: ""
+    },
   };
   
   export default attributes;

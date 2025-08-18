@@ -149,6 +149,10 @@ function EditorStyles(props) {
     boxLeftPaddingMobile,
     boxTopPaddingMobile,
     boxBottomPaddingMobile,
+    titleTextTransform,
+    titleFontStyle,
+    descriptionTextTransform,
+    descriptionFontStyle
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -324,6 +328,8 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-family": titleFontFamily,
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
@@ -332,6 +338,8 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
       "font-family": descriptionFontFamily,
+      "text-transform": descriptionTextTransform,
+      "font-style": descriptionFontStyle,
       "font-size": generateCSSUnit(descriptionFontSize, "px"),
       "font-weight": descriptionFontWeight,
       "line-height": descriptionLineHeight,

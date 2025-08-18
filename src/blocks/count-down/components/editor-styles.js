@@ -174,6 +174,10 @@ function EditorStyles(props) {
     hideWidgetMobile,
     labelTypographyColor,
     digitTypographyColor,
+    digitTextTransform,
+    digitFontStyle,
+    labelTextTransform,
+    labelFontStyle,
   } = props.attributes;
 
   let boxShadowPositionCSS = boxShadowPosition;
@@ -228,6 +232,8 @@ function EditorStyles(props) {
       display: displayInline ? "flex" : "block",
       flex: displayInline ? 1 : undefined,
       "justify-content": displayInline ? "flex-end" : undefined,
+      "text-transform": digitTextTransform,
+      "font-style": digitFontStyle,
     },
     " .responsive-block-editor-addons-countdown-label": {
       "font-family": labelFontFamily,
@@ -240,6 +246,8 @@ function EditorStyles(props) {
       display: showDigitLabels ? ( displayInline ? "flex" : "block" ) : 'none',
       flex: displayInline ? 1 : undefined,
       "justify-content": displayInline ? "flex-start" : undefined,
+      "text-transform": labelTextTransform,
+      "font-style": labelFontStyle,
     },
     " .responsive-block-editor-addons-countdown-box-margins": {
       "margin-top": generateCSSUnit(boxItemMarginTop, "px"),

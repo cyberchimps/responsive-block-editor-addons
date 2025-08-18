@@ -102,6 +102,8 @@ function EditorStyles(props) {
     iconContainerBottomPaddingMobile,
     iconContainerLeftPaddingMobile,
     iconContainerRightPaddingMobile,
+    labelTextTransform,
+    labelFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -217,6 +219,8 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-social-icon-label": {
       "font-size": generateCSSUnit(labelFontSize, "px"),
       "font-family": labelFontFamily,
+      "text-transform": labelTextTransform,
+      "font-style": labelFontStyle,
       "font-weight": labelFontWeight,
       "line-height": labelLineHeight,
       "margin-left": generateCSSUnit(iconLabelGap, "px"),

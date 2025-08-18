@@ -217,6 +217,10 @@ export default class Inspector extends Component {
         buttonTypographyColor,
         widthType,
         widthTypeValueUpdated,
+        inputTextTransform, 
+        inputFontStyle,
+        buttonTextTransform, 
+        buttonFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -460,9 +464,8 @@ export default class Inspector extends Component {
               <TypographyHelperControl
                   title={__("Input Typography", "responsive-block-editor-addons")}
                   attrNameTemplate="input%s"
-                  values = {{family: inputFontFamily, size: inputFontSize, sizeMobile: inputFontSizeMobile, sizeTablet: inputFontSizeTablet, weight: inputFontWeight, height: inputLineHeight, color: inputTypographyColor,}}
+                  values = {{family: inputFontFamily, size: inputFontSize, sizeMobile: inputFontSizeMobile, sizeTablet: inputFontSizeTablet, weight: inputFontWeight, height: inputLineHeight, color: inputTypographyColor, transform: inputTextTransform, fontstyle: inputFontStyle,}}
                   showLetterSpacing = { false }
-                  showTextTransform = { false }
                   showColorControl={true}
                   setAttributes={ setAttributes }
                   {...this.props}
@@ -671,9 +674,10 @@ export default class Inspector extends Component {
                     typographyColorControl: typographyColorControl,
 										typographyColorControlHover: typographyColorControlHover,
 										emptyColorControl: emptyColorControl,
+                    transform: buttonTextTransform, 
+                    fontstyle: buttonFontStyle,
                   }}
                   showLetterSpacing = { false }
-                  showTextTransform = { false }
                   showColorWithHoverControlTab={true}
                   setAttributes={ setAttributes }
                   {...this.props}

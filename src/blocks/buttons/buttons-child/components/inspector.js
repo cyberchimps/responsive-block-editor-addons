@@ -172,6 +172,8 @@ export default class Inspector extends Component {
 				blockIsRadiusValueUpdated,
 				typographyOpacity,
 				borderOpacity,
+				buttonTextTransform,
+				buttonFontStyle,
 			},
 			setAttributes,
 		} = this.props;
@@ -602,9 +604,10 @@ export default class Inspector extends Component {
 										typographyColorControlHover: typographyColorControlHover,
 										emptyColorControl: emptyColorControl,
 										typographyOpacityControl: typographyOpacityControl,
+										transform: buttonTextTransform,
+										fontstyle: buttonFontStyle,
 									}}
 									showLetterSpacing={false}
-									showTextTransform={false}
 									showColorWithHoverControlTab={true}
 									showOpacity={true}
 									setAttributes={setAttributes}

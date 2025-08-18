@@ -100,7 +100,13 @@ function EditorStyles(props) {
     blockRightMarginTablet,
     contentTypographyColor,
     headingTypographyColor,
-    dateTypographyColor
+    dateTypographyColor,
+    dateTextTransform,
+    dateFontStyle,
+    headingTextTransform,
+    headingFontStyle,
+    contentTextTransform,
+    contentFontStyle,
   } = props.attributes;
 
   var border_with_color = "13px solid" + backgroundColor;
@@ -198,7 +204,9 @@ function EditorStyles(props) {
     },
 
     " .responsive-timeline__inner-date-new": {
-      color: dateTypographyColor,
+      "color": dateTypographyColor,
+      "text-transform": dateTextTransform,
+      "font-style": dateFontStyle,
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,
       "font-size": generateCSSUnit(dateFontSize, "px"),
@@ -206,7 +214,9 @@ function EditorStyles(props) {
     },
 
     " .responsive-timeline__heading": {
-      color: headingTypographyColor,
+      "color": headingTypographyColor,
+      "text-transform": headingTextTransform,
+      "font-style": headingFontStyle,
       "line-height": headingLineHeight,
       "font-weight": headingFontWeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
@@ -215,7 +225,9 @@ function EditorStyles(props) {
     },
 
     " .responsive-timeline-desc-content": {
-      color: contentTypographyColor,
+      "color": contentTypographyColor,
+      "text-transform": contentTextTransform,
+      "font-style": contentFontStyle,
       "line-height": contentLineHeight,
       "font-weight": contentFontWeight,
       "font-size": generateCSSUnit(contentFontSize, "px"),
@@ -223,7 +235,9 @@ function EditorStyles(props) {
     },
 
     " .responsive-timeline__date-new": {
-      color: dateTypographyColor,
+      "color": dateTypographyColor,
+      "text-transform": dateTextTransform,
+      "font-style": dateFontStyle,
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,
       "font-size": generateCSSUnit(dateFontSize, "px"),

@@ -163,6 +163,10 @@ export default class Inspector extends Component {
         tabTitleTypographyColor,
         tabTitleActiveTypographyColor,
         tabContentTypographyColor,
+        tabTitleTextTransform,
+        tabTitleFontStyle,
+        tabContentTextTransform,
+        tabContentFontStyle,
       },
       setAttributes,
       deviceType,
@@ -544,9 +548,10 @@ export default class Inspector extends Component {
                   height: tabTitleLineHeight,
                   color: tabTitleTypographyColor,
                   activeColor: tabTitleActiveTypographyColor,
+                  transform: tabTitleTextTransform,
+                  fontstyle: tabTitleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showActiveColorControl={true}
                 showColorControl={true}
                 setAttributes={setAttributes}
@@ -563,9 +568,10 @@ export default class Inspector extends Component {
                   weight: tabContentFontWeight,
                   height: tabContentLineHeight,
                   color: tabContentTypographyColor,
+                  transform: tabContentTextTransform,
+                  fontstyle: tabContentFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}

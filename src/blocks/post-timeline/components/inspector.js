@@ -1038,9 +1038,10 @@ export default class Inspector extends Component {
 					sizeTablet: attributes.dateFontSizeTablet,
 					weight: attributes.dateFontWeight,
 					height: attributes.dateLineHeight,
+          transform: attributes.dateTextTransform,
+          fontstyle: attributes.dateFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -1058,9 +1059,10 @@ export default class Inspector extends Component {
           bottomSpacing: attributes.headingBottomSpacing,
           bottomSpacingMoible: attributes.headingBottomSpacingMobile,
           bottomSpacingTablet: attributes.headingBottomSpacingTablet,
+          transform: attributes.headingTextTransform,
+          fontstyle: attributes.headingFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={ setAttributes }
@@ -1080,9 +1082,10 @@ export default class Inspector extends Component {
           bottomSpacing: attributes.authorBottomSpacing,
           bottomSpacingMoible: attributes.authorBottomSpacingMobile,
           bottomSpacingTablet: attributes.authorBottomSpacingTablet,
+          transform: attributes.authorTextTransform,
+          fontstyle: attributes.authorFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={ setAttributes }
@@ -1102,9 +1105,10 @@ export default class Inspector extends Component {
           bottomSpacing: attributes.contentBottomSpacing,
           bottomSpacingMoible: attributes.contentBottomSpacingMobile,
           bottomSpacingTablet: attributes.contentBottomSpacingTablet,
+          transform: attributes.contentTextTransform,
+          fontstyle: attributes.contentFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={ setAttributes }
@@ -1123,10 +1127,11 @@ export default class Inspector extends Component {
           typographyColorControl: ctaTypographyColorControl,
 					typographyColorControlHover: ctaTypographyColorControlHover,
 					emptyColorControl: emptyColorControl,
+          transform: attributes.continueTextTransform,
+          fontstyle: attributes.continueFontStyle,
 					}}
 					showLetterSpacing = { false }
           showColorWithHoverControlTab={true}
-					showTextTransform = { false }
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>

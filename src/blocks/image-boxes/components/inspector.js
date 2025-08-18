@@ -311,6 +311,10 @@ export default class Inspector extends Component {
         boxTopPaddingMobile,
         boxBottomPaddingMobile,
         blockIsPaddingValueUpdated,
+        titleTextTransform,
+        titleFontStyle,
+        descriptionTextTransform,
+        descriptionFontStyle
       },
       setAttributes,
     } = this.props;
@@ -1384,9 +1388,10 @@ export default class Inspector extends Component {
           bottomSpacing: titleBottomSpacing,
           bottomSpacingMobile: titleBottomSpacingMobile,
           bottomSpacingTablet: titleBottomSpacingTablet,
+          transform: titleTextTransform,
+          fontstyle: titleFontStyle
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}
@@ -1406,9 +1411,10 @@ export default class Inspector extends Component {
           bottomSpacing: descriptionBottomSpacing,
           bottomSpacingMobile: descriptionBottomSpacingMobile,
           bottomSpacingTablet: descriptionBottomSpacingTablet,
+          transform: descriptionTextTransform,
+          fontstyle: descriptionFontStyle
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}

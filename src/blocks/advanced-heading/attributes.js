@@ -455,6 +455,22 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  headingTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  headingTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  subHeadingTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  subHeadingTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

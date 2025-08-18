@@ -100,6 +100,8 @@ function EditorStyles(props) {
 		blockLeftRadiusTablet,
     typographyOpacity,
     borderOpacity,
+    buttonTextTransform,
+    buttonFontStyle,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -246,6 +248,8 @@ function EditorStyles(props) {
       "opacity": imgopacity,
       color:  inheritFromTheme ? '' : color ? color : '#000',
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,
+      "text-transform": buttonTextTransform,
+      "font-style": buttonFontStyle,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper div": {
       color:  inheritFromTheme ? '' : color ? color : '#000',

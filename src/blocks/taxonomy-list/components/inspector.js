@@ -209,6 +209,12 @@ export default class Inspector extends Component {
       blockIsTypographyColorValueUpdated,
       countTypographyColor,
       titleTypographyColor,
+      titleTextTransform,
+      titleFontStyle,
+      countTextTransform,
+      countFontStyle,
+      listTextTransform,
+      listFontStyle,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -674,9 +680,10 @@ if (!gridIsRadiusValueUpdated) {
                       weight: titleFontWeight,
                       height: titleLineHeight,
                       color: titleTypographyColor,
+                      transform: titleTextTransform,
+                      fontstyle: titleFontStyle,
                     }}
                     showLetterSpacing={false}
-                    showTextTransform={false}
                     showColorControl={true}
                     setAttributes={setAttributes}
                     {...this.props}
@@ -696,9 +703,10 @@ if (!gridIsRadiusValueUpdated) {
                         weight: countFontWeight,
                         height: countLineHeight,
                         color: countTypographyColor,
+                        transform: countTextTransform,
+                        fontstyle: countFontStyle,
                       }}
                       showLetterSpacing={false}
-                      showTextTransform={false}
                       showColorControl={true}
                       setAttributes={setAttributes}
                       {...this.props}
@@ -723,9 +731,10 @@ if (!gridIsRadiusValueUpdated) {
                     typographyColorControl: listTypographyColorControl,
 										typographyColorControlHover: listTypographyColorControlHover,
 										emptyColorControl: emptyColorControl,
+                    transform: listTextTransform,
+                    fontstyle: listFontStyle,
                   }}
                   showLetterSpacing={false}
-                  showTextTransform={false}
                   showColorWithHoverControlTab={true}
                   setAttributes={setAttributes}
                   {...this.props}

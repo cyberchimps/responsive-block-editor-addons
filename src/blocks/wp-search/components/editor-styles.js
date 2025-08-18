@@ -103,6 +103,10 @@
      blockRightPaddingTablet,
      inputTypographyColor,
      widthType,
+     inputTextTransform, 
+     inputFontStyle,
+     buttonTextTransform, 
+     buttonFontStyle,
    } = props.attributes;
 
    let width;
@@ -216,6 +220,8 @@
      "background-color": inputBackgroundColor,
      "margin": 0,
      "font-family": inputFontFamily,
+     "text-transform": inputTextTransform,
+     "font-style": inputFontStyle,
      "font-size": generateCSSUnit(inputFontSize, "px"),
      "font-weight": inputFontWeight,
      "line-height": inputLineHeight,
@@ -265,6 +271,8 @@
     " .responsive-block-editor-addons-search-button-text": {
       "color": buttonTextColor,
       "font-family": buttonFontFamily,
+      "text-transform": buttonTextTransform,
+      "font-style": buttonFontStyle,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-weight": buttonFontWeight,
       "line-height": buttonLineHeight,

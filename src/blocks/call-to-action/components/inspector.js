@@ -230,6 +230,12 @@ export default class Inspector extends Component {
       imagePositionTab,
       imageSizeTab,
       backgroundImageValueUpdated,
+      ctaTitleTextTransform,
+      ctaTitleFontStyle,
+      ctaTextTextTransform,
+      ctaTextFontStyle,
+      buttonTextTextTransform,
+      buttonTextFontStyle,
     } = this.props.attributes;
     const { setAttributes } = this.props;
 
@@ -580,9 +586,10 @@ export default class Inspector extends Component {
             bottomSpacing: ctaTitleBottomSpacing,
             bottomSpacingMoible: ctaTitleBottomSpacingMobile,
             bottomSpacingTablet: ctaTitleBottomSpacingTablet,
+            transform: ctaTitleTextTransform,
+            fontstyle: ctaTitleFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}
@@ -601,9 +608,10 @@ export default class Inspector extends Component {
             bottomSpacing: ctaTextBottomSpacing,
             bottomSpacingMoible: ctaTextBottomSpacingMobile,
             bottomSpacingTablet: ctaTextBottomSpacingTablet,
+            transform: ctaTextTextTransform,
+            fontstyle: ctaTextFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}
 					{...this.props}
@@ -619,9 +627,10 @@ export default class Inspector extends Component {
 						sizeTablet: buttonTextFontSizeTablet,
 						weight: buttonTextFontWeight,
 						height: buttonTextLineHeight,
+            transform: buttonTextTextTransform,
+            fontstyle: buttonTextFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showTextBottomSpacing={false}
 					setAttributes={setAttributes}
 					{...this.props}
@@ -638,9 +647,10 @@ export default class Inspector extends Component {
 				  		sizeTablet: buttonTextFontSizeTablet,
 				  		weight: buttonTextFontWeight,
 				  		height: buttonTextLineHeight,
+              transform: buttonTextTextTransform,
+              fontstyle: buttonTextFontStyle,
 				  	}}
 				  	showLetterSpacing={false}
-				  	showTextTransform={false}
             showTextBottomSpacing={false}
 				  	setAttributes={setAttributes}
 				  	{...this.props}

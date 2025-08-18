@@ -1689,6 +1689,70 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  formTitleTextTransform: {
+    type: "string",
+    default: '',
+  },
+  formTitleFontStyle: {
+    type: "string",
+    default: '',
+  },
+  formDescriptionTextTransform: {
+    type: "string",
+    default: '',
+  },
+  formDescriptionFontStyle: {
+    type: "string",
+    default: '',
+  },
+  inputTextTransform: {
+    type: "string",
+    default: '',
+  },
+  inputFontStyle: {
+    type: "string",
+    default: '',
+  },
+  labelTextTransform: {
+    type: "string",
+    default: '',
+  },
+  labelFontStyle: {
+    type: "string",
+    default: '',
+  },
+  radioCheckboxTextTransform: {
+    type: "string",
+    default: '',
+  },
+  radioCheckboxFontStyle: {
+    type: "string",
+    default: '',
+  },
+  submitButtonTextTransform: {
+    type: "string",
+    default: '',
+  },
+  submitButtonFontStyle: {
+    type: "string",
+    default: '',
+  },
+  messageTextTransform: {
+    type: "string",
+    default: '',
+  },
+  messageFontStyle: {
+    type: "string",
+    default: '',
+  },
+  afterSubmitTextTransform: {
+    type: "string",
+    default: '',
+  },
+  afterSubmitFontStyle: {
+    type: "string",
+    default: '',
+  },
 };
 
 export default attributes;
