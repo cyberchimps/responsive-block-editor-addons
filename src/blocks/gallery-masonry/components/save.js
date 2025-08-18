@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { RichText } from "@wordpress/block-editor";
+import { getFontFamily } from "../../../utils/font";
 
 const save = ({ attributes, className }) => {
   const {
@@ -19,9 +20,60 @@ const save = ({ attributes, className }) => {
     images,
     block_id,
     enableCategoryFilter,
+
     allTabLabel = "All",
     setDefaultCategory,
     defaultCategory,
+    filterTabAlignment,
+    filterTabAlignmentTablet,
+    filterTabAlignmentMobile,
+    filterTabTypographyFontFamily,
+    filterTabTypographyFontSize,
+    filterTabTypographyFontSizeTablet,
+    filterTabTypographyFontSizeMobile,
+    filterTabTypographyFontWeight,
+    filterTabTypographyLineHeight,
+    filterTabTypographyLetterSpacing,
+    filterTabTypographyTextTransform,
+    filterTabTypographyTextDecoration,
+    filterTabTopPadding,
+    filterTabRightPadding,
+    filterTabBottomPadding,
+    filterTabLeftPadding,
+    filterTabTopPaddingTablet,
+    filterTabRightPaddingTablet,
+    filterTabBottomPaddingTablet,
+    filterTabLeftPaddingTablet,
+    filterTabTopPaddingMobile,
+    filterTabRightPaddingMobile,
+    filterTabBottomPaddingMobile,
+    filterTabLeftPaddingMobile,
+    filterTabIsPaddingControlConnected,
+    filterTabSpacingBetween,
+    filterTabSpacingBetweenTablet,
+    filterTabSpacingBetweenMobile,
+    filterTabBottomSpacing,
+    filterTabBottomSpacingTablet,
+    filterTabBottomSpacingMobile,
+    filterTabTextColor,
+    filterTabBackgroundColor,
+    filterTabHoverTextColor,
+    filterTabHoverBackgroundColor,
+    filterTabBorderStyle,
+    filterTabTopBorderwidth,
+    filterTabRightBorderwidth,
+    filterTabBottomBorderwidth,
+    filterTabLeftBorderwidth,
+    filterTabTopBorderwidthTablet,
+    filterTabRightBorderwidthTablet,
+    filterTabBottomBorderwidthTablet,
+    filterTabLeftBorderwidthTablet,
+    filterTabTopBorderwidthMobile,
+    filterTabRightBorderwidthMobile,
+    filterTabBottomBorderwidthMobile,
+    filterTabLeftBorderwidthMobile,
+    filterTabIsBorderwidthControlConnected,
+    filterTabBorderColor,
   } = attributes;
 
   if (!images || images.length === 0) {
@@ -57,50 +109,143 @@ const save = ({ attributes, className }) => {
     cursor: "pointer",
   };
 
-  const shouldShowFilters = enableCategoryFilter && categories.length > 0;
+  const shouldShowFilters = enableCategoryFilter;
 
   // Determine which category should be active by default
   const defaultActiveCategory = setDefaultCategory && defaultCategory ? defaultCategory : "All";
 
+  // Map alignment values from WordPress toolbar to CSS values
+  const getAlignmentValue = (alignment) => {
+    if (!alignment) return "left";
+    switch (alignment) {
+      case "start":
+        return "left";
+      case "center":
+        return "center";
+      case "end":
+        return "right";
+      default:
+        return alignment;
+    }
+  };
+
+  const desktopAlignment = getAlignmentValue(filterTabAlignment);
+  const tabletAlignment = getAlignmentValue(filterTabAlignmentTablet);
+  const mobileAlignment = getAlignmentValue(filterTabAlignmentMobile);
+
   return (
     <div className={outerClasses} data-rba-gallery-block>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `
+            <style>
+              .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-button:hover {
+                background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
+                color: ${filterTabHoverTextColor || "#fff"} !important;
+              }
+            </style>
+          `
+        }}
+      />
       {shouldShowFilters && (
-        <div className="gallery-filter-wrapper" style={{ marginBottom: "20px" }}>
+        <div 
+          className={`gallery-filter-wrapper filter-tab-alignment-${desktopAlignment}`}
+          style={{ 
+            marginBottom: filterTabBottomSpacing ? `${filterTabBottomSpacing}px` : "20px",
+            textAlign: desktopAlignment,
+            fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+            fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+            fontWeight: filterTabTypographyFontWeight || undefined,
+            lineHeight: filterTabTypographyLineHeight || undefined,
+            letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+            textTransform: filterTabTypographyTextTransform || undefined,
+            textDecoration: filterTabTypographyTextDecoration || undefined,
+            '--filter-tab-bottom-spacing-tablet': filterTabBottomSpacingTablet ? `${filterTabBottomSpacingTablet}px` : undefined,
+            '--filter-tab-bottom-spacing-mobile': filterTabBottomSpacingMobile ? `${filterTabBottomSpacingMobile}px` : undefined,
+            '--filter-tab-padding-top-tablet': filterTabTopPaddingTablet ? `${filterTabTopPaddingTablet}px` : undefined,
+            '--filter-tab-padding-right-tablet': filterTabRightPaddingTablet ? `${filterTabRightPaddingTablet}px` : undefined,
+            '--filter-tab-padding-bottom-tablet': filterTabBottomPaddingTablet ? `${filterTabBottomPaddingTablet}px` : undefined,
+            '--filter-tab-padding-left-tablet': filterTabLeftPaddingTablet ? `${filterTabLeftPaddingTablet}px` : undefined,
+            '--filter-tab-padding-top-mobile': filterTabTopPaddingMobile ? `${filterTabTopPaddingMobile}px` : undefined,
+            '--filter-tab-padding-right-mobile': filterTabRightPaddingMobile ? `${filterTabRightPaddingMobile}px` : undefined,
+            '--filter-tab-padding-bottom-mobile': filterTabBottomPaddingMobile ? `${filterTabBottomPaddingMobile}px` : undefined,
+            '--filter-tab-padding-left-mobile': filterTabLeftPaddingMobile ? `${filterTabLeftPaddingMobile}px` : undefined,
+            '--filter-tab-spacing-between-tablet': filterTabSpacingBetweenTablet ? `${filterTabSpacingBetweenTablet}px` : undefined,
+            '--filter-tab-spacing-between-mobile': filterTabSpacingBetweenMobile ? `${filterTabSpacingBetweenMobile}px` : undefined,
+            '--filter-tab-font-size-tablet': filterTabTypographyFontSizeTablet ? `${filterTabTypographyFontSizeTablet}px` : undefined,
+            '--filter-tab-font-size-mobile': filterTabTypographyFontSizeMobile ? `${filterTabTypographyFontSizeMobile}px` : undefined,
+            '--filter-tab-border-style': filterTabBorderStyle || undefined,
+            '--filter-tab-border-color': filterTabBorderColor || undefined,
+            '--filter-tab-border-top-width-tablet': filterTabTopBorderwidthTablet ? `${filterTabTopBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-right-width-tablet': filterTabRightBorderwidthTablet ? `${filterTabRightBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-bottom-width-tablet': filterTabBottomBorderwidthTablet ? `${filterTabBottomBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-left-width-tablet': filterTabLeftBorderwidthTablet ? `${filterTabLeftBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-top-width-mobile': filterTabTopBorderwidthMobile ? `${filterTabTopBorderwidthMobile}px` : undefined,
+            '--filter-tab-border-right-width-mobile': filterTabRightBorderwidthMobile ? `${filterTabRightBorderwidthMobile}px` : undefined,
+            '--filter-tab-border-bottom-width-mobile': filterTabBottomBorderwidthMobile ? `${filterTabBottomBorderwidthMobile}px` : undefined,
+            '--filter-tab-border-left-width-mobile': filterTabLeftBorderwidthMobile ? `${filterTabLeftBorderwidthMobile}px` : undefined,
+          }}
+          data-tab-alignment={desktopAlignment}
+          data-tab-alignment-tablet={tabletAlignment}
+          data-tab-alignment-mobile={mobileAlignment}
+        >
           <button 
             className={`gallery-filter-button ${defaultActiveCategory === "All" || defaultActiveCategory === "all" ? "is-active" : ""}`}
             data-category="All"
             style={{
-              marginRight: "10px",
-              padding: "6px 12px",
+              marginRight: filterTabSpacingBetween ? `${filterTabSpacingBetween}px` : "10px",
+              padding: `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px`,
               cursor: "pointer",
-              border: "1px solid #ccc",
+              borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+              borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+              borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+              borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
               borderRadius: "4px",
-              backgroundColor: (defaultActiveCategory === "All" || defaultActiveCategory === "all") ? "#0073aa" : "#f2f2f2",
-              color: (defaultActiveCategory === "All" || defaultActiveCategory === "all") ? "#fff" : "#000"
+              backgroundColor: (defaultActiveCategory === "All" || defaultActiveCategory === "all") ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
+              color: (defaultActiveCategory === "All" || defaultActiveCategory === "all") ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),
+              fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+              fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+              fontWeight: filterTabTypographyFontWeight || undefined,
+              lineHeight: filterTabTypographyLineHeight || undefined,
+              letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+              textTransform: filterTabTypographyTextTransform || undefined,
+              textDecoration: filterTabTypographyTextDecoration || undefined,
             }}
           >
             {allTabLabel}
           </button>
-          {categories.map((cat) => (
+                    {categories.map((cat) => (
             <button 
               key={cat}
               className={`gallery-filter-button ${defaultActiveCategory === cat ? "is-active" : ""}`}
               data-category={cat}
               style={{
-                marginRight: "10px",
-                padding: "6px 12px",
+                marginRight: filterTabSpacingBetween ? `${filterTabSpacingBetween}px` : "10px",
+                padding: `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px`,
                 cursor: "pointer",
-                border: "1px solid #ccc",
+                borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
                 borderRadius: "4px",
-                backgroundColor: defaultActiveCategory === cat ? "#0073aa" : "#f2f2f2",
-                color: defaultActiveCategory === cat ? "#fff" : "#000"
+                backgroundColor: defaultActiveCategory === cat ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
+                color: defaultActiveCategory === cat ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),
+                fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+                fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+                fontWeight: filterTabTypographyFontWeight || undefined,
+                lineHeight: filterTabTypographyLineHeight || undefined,
+                letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+                textTransform: filterTabTypographyTextTransform || undefined,
+                textDecoration: filterTabTypographyTextDecoration || undefined,
               }}
             >
-              {cat}
+              {cat === "All" ? allTabLabel : cat}
             </button>
           ))}
-        </div>
-      )}
+        
+
+      </div>
+    )}
       <div className="rba-gallery-items" style={masonryStyles}>
         {sortedImages.map((image) => {
           let href = "";

@@ -5,6 +5,7 @@ import classnames from "classnames";
 import filter from "lodash/filter";
 import Masonry from "react-responsive-masonry";
 import EditorStyles from "./editor-styles";
+import { loadGoogleFont, getFontFamily } from "../../../utils/font";
 
 /**
  * Internal dependencies
@@ -44,6 +45,7 @@ class GalleryMasonryEdit extends Component {
       migrationDone: true,
       mediaData: {}, // Media ID -> Media Object
       selectedCategory: "All", // Currently active filter
+
     };
   }
 
@@ -62,12 +64,19 @@ class GalleryMasonryEdit extends Component {
 
     setAttributes({ block_id: clientId });
 
+    // Load Google font for filter tabs if set
+    if (attributes.filterTabTypographyFontFamily && attributes.filterTabTypographyFontFamily !== "Default") {
+      loadGoogleFont(attributes.filterTabTypographyFontFamily);
+    }
+
     const $style = document.createElement("style");
     $style.setAttribute(
       "id",
       `responsive-block-editor-addons-advanced-gallery-masonry-style-${clientId}`
     );
     document.head.appendChild($style);
+
+
 
     const images = attributes.images;
 
@@ -115,6 +124,13 @@ class GalleryMasonryEdit extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    // Load Google font if font family changed
+    if (prevProps.attributes.filterTabTypographyFontFamily !== this.props.attributes.filterTabTypographyFontFamily) {
+      if (this.props.attributes.filterTabTypographyFontFamily && this.props.attributes.filterTabTypographyFontFamily !== "Default") {
+        loadGoogleFont(this.props.attributes.filterTabTypographyFontFamily);
+      }
+    }
+
     // Force re-render when attributes change to show real-time updates
     if (
       prevProps.attributes.allTabLabel !== this.props.attributes.allTabLabel ||
@@ -139,6 +155,8 @@ class GalleryMasonryEdit extends Component {
       });
     }
   }
+
+
 
   // Refresh media data when images change
   refreshMediaData() {
@@ -291,7 +309,58 @@ class GalleryMasonryEdit extends Component {
       customWidth,
       block_id,
       enableCategoryFilter,
+
       allTabLabel = "All",
+      filterTabAlignment,
+      filterTabAlignmentTablet,
+      filterTabAlignmentMobile,
+      filterTabTypographyFontFamily,
+      filterTabTypographyFontSize,
+      filterTabTypographyFontSizeTablet,
+      filterTabTypographyFontSizeMobile,
+      filterTabTypographyFontWeight,
+      filterTabTypographyLineHeight,
+      filterTabTypographyLetterSpacing,
+      filterTabTypographyTextTransform,
+          filterTabTypographyTextDecoration,
+    filterTabTopPadding,
+    filterTabRightPadding,
+    filterTabBottomPadding,
+    filterTabLeftPadding,
+    filterTabTopPaddingTablet,
+    filterTabRightPaddingTablet,
+    filterTabBottomPaddingTablet,
+    filterTabLeftPaddingTablet,
+    filterTabTopPaddingMobile,
+    filterTabRightPaddingMobile,
+    filterTabBottomPaddingMobile,
+    filterTabLeftPaddingMobile,
+    filterTabIsPaddingControlConnected,
+    filterTabSpacingBetween,
+    filterTabSpacingBetweenTablet,
+    filterTabSpacingBetweenMobile,
+    filterTabBottomSpacing,
+    filterTabBottomSpacingTablet,
+    filterTabBottomSpacingMobile,
+    filterTabTextColor,
+    filterTabBackgroundColor,
+    filterTabHoverTextColor,
+    filterTabHoverBackgroundColor,
+    filterTabBorderStyle,
+    filterTabTopBorderwidth,
+    filterTabRightBorderwidth,
+    filterTabBottomBorderwidth,
+    filterTabLeftBorderwidth,
+    filterTabTopBorderwidthTablet,
+    filterTabRightBorderwidthTablet,
+    filterTabBottomBorderwidthTablet,
+    filterTabLeftBorderwidthTablet,
+    filterTabTopBorderwidthMobile,
+    filterTabRightBorderwidthMobile,
+    filterTabBottomBorderwidthMobile,
+    filterTabLeftBorderwidthMobile,
+    filterTabIsBorderwidthControlConnected,
+    filterTabBorderColor,
     } = attributes;
 
     const hasImages = !!images.length;
@@ -328,6 +397,25 @@ class GalleryMasonryEdit extends Component {
     const sortedImages = [...images].sort((a, b) => a.order - b.order);
     const categories = this.getCategories();
 
+    // Map alignment values from WordPress toolbar to CSS values
+    const getAlignmentValue = (alignment) => {
+      if (!alignment) return "left";
+      switch (alignment) {
+        case "start":
+          return "left";
+        case "center":
+          return "center";
+        case "end":
+          return "right";
+        default:
+          return alignment;
+      }
+    };
+
+    const desktopAlignment = getAlignmentValue(filterTabAlignment);
+    const tabletAlignment = getAlignmentValue(filterTabAlignmentTablet);
+    const mobileAlignment = getAlignmentValue(filterTabAlignmentMobile);
+
     const filteredImages = sortedImages.filter((img) => {
       if (this.state.selectedCategory === "All") return true;
       const media = this.state.mediaData[img.id];
@@ -345,25 +433,64 @@ class GalleryMasonryEdit extends Component {
         >
           {EditorStyles(this.props)}
         </style>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+              <style>
+                .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .category-filters button:hover {
+                  background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
+                  color: ${filterTabHoverTextColor || "#fff"} !important;
+                }
+              </style>
+            `
+          }}
+        />
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <div className={outerClasses}>
           {/* Only show category filters if enableCategoryFilter is true */}
-          {enableCategoryFilter && categories.length > 1 && (
-            <div className="category-filters" style={{ marginBottom: "1em" }}>
+          {enableCategoryFilter && (
+            <div 
+              className={`category-filters gallery-filter-wrapper filter-tab-alignment-${desktopAlignment}`}
+              style={{ 
+                marginBottom: filterTabBottomSpacing ? `${filterTabBottomSpacing}px` : "20px",
+                textAlign: desktopAlignment,
+                fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+                fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+                fontWeight: filterTabTypographyFontWeight || undefined,
+                lineHeight: filterTabTypographyLineHeight || undefined,
+                letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+                textTransform: filterTabTypographyTextTransform || undefined,
+                textDecoration: filterTabTypographyTextDecoration || undefined,
+              }}
+              data-tab-alignment={desktopAlignment}
+              data-tab-alignment-tablet={tabletAlignment}
+              data-tab-alignment-mobile={mobileAlignment}
+            >
               {categories.map((cat) => (
                 <button
                   key={cat}
+                  className="gallery-filter-button"
                   onClick={() => this.setState({ selectedCategory: cat })}
                   style={{
-                    marginRight: "0.5em",
-                    padding: "0.4em 0.8em",
+                    marginRight: filterTabSpacingBetween ? `${filterTabSpacingBetween}px` : "10px",
+                    padding: `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px`,
                     backgroundColor:
-                      this.state.selectedCategory === cat ? "#0073aa" : "#f3f4f5",
-                    color: this.state.selectedCategory === cat ? "#fff" : "#000",
-                    border: "none",
+                      this.state.selectedCategory === cat ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
+                    color: this.state.selectedCategory === cat ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),
+                    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
                     borderRadius: "4px",
                     cursor: "pointer",
+                    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+                    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+                    fontWeight: filterTabTypographyFontWeight || undefined,
+                    lineHeight: filterTabTypographyLineHeight || undefined,
+                    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+                    textTransform: filterTabTypographyTextTransform || undefined,
+                    textDecoration: filterTabTypographyTextDecoration || undefined,
                   }}
                 >
                   {cat === "All" ? allTabLabel : cat}

@@ -12,12 +12,18 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import TypographyHelperControl from "../../../settings-components/TypographySettings";
+import ResponsiveSpacingControl from "../../../settings-components/ResponsiveSpacingSettings";
+import RbeaColorControl from "../../../utils/components/rbea-color-control";
+import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
+import RbeaDimensionControl from "../../../settings-components/RbeaDimensionControl";
+import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 /**
  * WordPress dependencies
  */
 import { __ } from "@wordpress/i18n";
 import { Component, Fragment } from "@wordpress/element";
-import { InspectorControls } from "@wordpress/block-editor";
+import { InspectorControls, AlignmentToolbar } from "@wordpress/block-editor";
 
 import {
   PanelBody,
@@ -28,6 +34,7 @@ import {
   TabPanel,
   Dashicon,
   CheckboxControl,
+  BaseControl,
 } from "@wordpress/components";
 
 /**
@@ -176,6 +183,47 @@ class Inspector extends Component {
       blockRightPaddingTablet,
       blockIsMarginControlConnected,
       blockIsPaddingControlConnected,
+      filterTabAlignment,
+      filterTabAlignmentTablet,
+      filterTabAlignmentMobile,
+      filterTabTopPadding,
+      filterTabRightPadding,
+      filterTabBottomPadding,
+      filterTabLeftPadding,
+      filterTabTopPaddingTablet,
+      filterTabRightPaddingTablet,
+      filterTabBottomPaddingTablet,
+      filterTabLeftPaddingTablet,
+      filterTabTopPaddingMobile,
+      filterTabRightPaddingMobile,
+      filterTabBottomPaddingMobile,
+      filterTabLeftPaddingMobile,
+      filterTabIsPaddingControlConnected,
+      filterTabSpacingBetween,
+      filterTabSpacingBetweenTablet,
+      filterTabSpacingBetweenMobile,
+      filterTabBottomSpacing,
+      filterTabBottomSpacingTablet,
+      filterTabBottomSpacingMobile,
+      filterTabTextColor,
+      filterTabBackgroundColor,
+      filterTabHoverTextColor,
+      filterTabHoverBackgroundColor,
+      filterTabBorderStyle,
+      filterTabTopBorderwidth,
+      filterTabRightBorderwidth,
+      filterTabBottomBorderwidth,
+      filterTabLeftBorderwidth,
+      filterTabTopBorderwidthTablet,
+      filterTabRightBorderwidthTablet,
+      filterTabBottomBorderwidthTablet,
+      filterTabLeftBorderwidthTablet,
+      filterTabTopBorderwidthMobile,
+      filterTabRightBorderwidthMobile,
+      filterTabBottomBorderwidthMobile,
+      filterTabLeftBorderwidthMobile,
+      filterTabIsBorderwidthControlConnected,
+      filterTabBorderColor,
     } = attributes;
 
     const blockMarginResetValues = {
@@ -205,6 +253,21 @@ class Inspector extends Component {
       paddingMobileRight: 0,
       paddingMobileBottom: 0,
       paddingMobileLeft: 0,
+    };
+
+    const filterTabPaddingResetValues = {
+      paddingTop: 7,
+      paddingRight: 7,
+      paddingBottom: 7,
+      paddingLeft: 7,
+      paddingTabletTop: 7,
+      paddingTabletRight: 7,
+      paddingTabletBottom: 7,
+      paddingTabletLeft: 7,
+      paddingMobileTop: 7,
+      paddingMobileRight: 7,
+      paddingMobileBottom: 7,
+      paddingMobileLeft: 7,
     };
 
     // Get dynamic categories for the dropdown
@@ -362,6 +425,470 @@ class Inspector extends Component {
                 {...this.props}
               />
             </PanelBody>
+            {attributes.enableCategoryFilter && (
+              <PanelBody
+                title={__("Filterable Tabs", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <BaseControl>
+                            <p>
+                              {__(
+                                "Tab Alignment Mobile",
+                                "responsive-block-editor-addons"
+                              )}
+                            </p>
+                            <div className="responsive-block-editor-addons-alignment-mobile">
+                              <AlignmentToolbar
+                                value={filterTabAlignmentMobile}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    filterTabAlignmentMobile: value,
+                                  })
+                                }
+                                controls={["start", "center", "end"]}
+                                isCollapsed={false}
+                              />
+                            </div>
+                          </BaseControl>
+                        </Fragment>
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <Fragment>
+                          <BaseControl>
+                            <p>
+                              {__(
+                                "Tab Alignment Tablet",
+                                "responsive-block-editor-addons"
+                              )}
+                            </p>
+                            <div className="responsive-block-editor-addons-alignment-tablet">
+                              <AlignmentToolbar
+                                value={filterTabAlignmentTablet}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    filterTabAlignmentTablet: value,
+                                  })
+                                }
+                                controls={["start", "center", "end"]}
+                                isCollapsed={false}
+                              />
+                            </div>
+                          </BaseControl>
+                        </Fragment>
+                      );
+                    } else {
+                      tabout = (
+                        <Fragment>
+                          <BaseControl>
+                            <p>
+                              {__("Tab Alignment", "responsive-block-editor-addons")}
+                            </p>
+                            <div className="responsive-block-editor-addons-alignment">
+                              <AlignmentToolbar
+                                value={filterTabAlignment}
+                                onChange={(value) =>
+                                  setAttributes({
+                                    filterTabAlignment: value,
+                                  })
+                                }
+                                controls={["start", "center", "end"]}
+                                isCollapsed={false}
+                              />
+                            </div>
+                          </BaseControl>
+                        </Fragment>
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
+                
+                <TypographyHelperControl
+                  title={__(
+                    "Typography",
+                    "responsive-block-editor-addons"
+                  )}
+                  attrNameTemplate="filterTabTypography%s"
+                  values={{
+                    family: attributes.filterTabTypographyFontFamily,
+                    size: attributes.filterTabTypographyFontSize,
+                    sizeMobile: attributes.filterTabTypographyFontSizeMobile,
+                    sizeTablet: attributes.filterTabTypographyFontSizeTablet,
+                    weight: attributes.filterTabTypographyFontWeight,
+                    height: attributes.filterTabTypographyLineHeight,
+                    spacing: attributes.filterTabTypographyLetterSpacing,
+                    transform: attributes.filterTabTypographyTextTransform,
+                    textDecoration: attributes.filterTabTypographyTextDecoration,
+                  }}
+                  showLetterSpacing={true}
+                  showTextDecoration={true}
+                  showTextBottomSpacing={false}
+                  showTextTransform={true}
+                  showColorControl={false}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+                
+                {/* Padding Control */}
+                <ResponsiveNewPaddingControl
+                  attrNameTemplate="filterTab%s"
+                  resetValues={filterTabPaddingResetValues}
+                  {...this.props}
+                />
+
+                {/* Spacing Between Tabs (0-100) */}
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <RbeaRangeControl
+                          label={__("Spacing Between Tabs", "responsive-block-editor-addons")}
+                          min={0}
+                          max={100}
+                          allowReset={true}
+                          resetFallbackValue={17}
+                          value={filterTabSpacingBetweenMobile}
+                          onChange={(value) =>
+                            setAttributes({
+                              filterTabSpacingBetweenMobile:
+                                value !== undefined ? value : 0,
+                            })
+                          }
+                        />
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <RbeaRangeControl
+                          label={__("Spacing Between Tabs", "responsive-block-editor-addons")}
+                          min={0}
+                          max={100}
+                          allowReset={true}
+                          resetFallbackValue={17}
+                          value={filterTabSpacingBetweenTablet}
+                          onChange={(value) =>
+                            setAttributes({
+                              filterTabSpacingBetweenTablet:
+                                value !== undefined ? value : 0,
+                            })
+                          }
+                        />
+                      );
+                    } else {
+                      tabout = (
+                        <RbeaRangeControl
+                          label={__("Spacing Between Tabs", "responsive-block-editor-addons")}
+                          min={0}
+                          max={100}
+                          allowReset={true}
+                          resetFallbackValue={17}
+                          value={filterTabSpacingBetween}
+                          onChange={(value) =>
+                            setAttributes({
+                              filterTabSpacingBetween:
+                                value !== undefined ? value : 0,
+                            })
+                          }
+                        />
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
+
+                {/* Tabs Bottom Spacing (0-100) */}
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <RbeaRangeControl
+                          label={__("Tabs Bottom Spacing", "responsive-block-editor-addons")}
+                          min={0}
+                          max={100}
+                          allowReset={true}
+                          resetFallbackValue={17}
+                          value={filterTabBottomSpacingMobile}
+                          onChange={(value) =>
+                            setAttributes({
+                              filterTabBottomSpacingMobile:
+                                value !== undefined ? value : 0,
+                            })
+                          }
+                        />
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <RbeaRangeControl
+                          label={__("Tabs Bottom Spacing", "responsive-block-editor-addons")}
+                          min={0}
+                          max={100}
+                          allowReset={true}
+                          resetFallbackValue={17}
+                          value={filterTabBottomSpacingTablet}
+                          onChange={(value) =>
+                            setAttributes({
+                              filterTabBottomSpacingTablet:
+                                value !== undefined ? value : 0,
+                            })
+                          }
+                        />
+                      );
+                    } else {
+                      tabout = (
+                        <RbeaRangeControl
+                          label={__("Tabs Bottom Spacing", "responsive-block-editor-addons")}
+                          min={0}
+                          max={100}
+                          allowReset={true}
+                          resetFallbackValue={17}
+                          value={filterTabBottomSpacing}
+                          onChange={(value) =>
+                            setAttributes({
+                              filterTabBottomSpacing:
+                                value !== undefined ? value : 0,
+                            })
+                          }
+                        />
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
+
+                {/* Color Controls */}
+                <TabPanel
+                  className="rbea-tab-panel"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "normal",
+                      title: __("Normal", "responsive-block-editor-addons"),
+                      className: "rbea-tab",
+                    },
+                    {
+                      name: "hover",
+                      title: __("Hover", "responsive-block-editor-addons"),
+                      className: "rbea-tab",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    if (tab.name === "normal") {
+                      return (
+                        <div>
+                          <RbeaColorControl
+                            label={__("Text Color", "responsive-block-editor-addons")}
+                            colorValue={filterTabTextColor}
+                            onChange={(colorValue) =>
+                              setAttributes({ filterTabTextColor: colorValue })
+                            }
+                            resetColor={() => setAttributes({ filterTabTextColor: "#000000" })}
+                          />
+                          <RbeaColorControl
+                            label={__("Background Color", "responsive-block-editor-addons")}
+                            colorValue={filterTabBackgroundColor}
+                            onChange={(colorValue) =>
+                              setAttributes({ filterTabBackgroundColor: colorValue })
+                            }
+                            resetColor={() => setAttributes({ filterTabBackgroundColor: "#ffffff" })}
+                          />
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div>
+                          <RbeaColorControl
+                            label={__("Text Color", "responsive-block-editor-addons")}
+                            colorValue={filterTabHoverTextColor}
+                            onChange={(colorValue) =>
+                              setAttributes({ filterTabHoverTextColor: colorValue })
+                            }
+                            resetColor={() => setAttributes({ filterTabHoverTextColor: "#ffffff" })}
+                          />
+                          <RbeaColorControl
+                            label={__("Background Color", "responsive-block-editor-addons")}
+                            colorValue={filterTabHoverBackgroundColor}
+                            onChange={(colorValue) =>
+                              setAttributes({ filterTabHoverBackgroundColor: colorValue })
+                            }
+                            resetColor={() => setAttributes({ filterTabHoverBackgroundColor: "#0073aa" })}
+                          />
+                        </div>
+                      );
+                    }
+                  }}
+                </TabPanel>
+
+                {/* Border Style */}
+                <RbeaBorderStyleTabControl
+                  selected={filterTabBorderStyle}
+                  onChange={(value) =>
+                    setAttributes({ filterTabBorderStyle: value })
+                  }
+                />
+                
+                {/* Border Width */}
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className: " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className: " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <RbeaDimensionControl
+                          {...{...this.props, tabName: 'Mobile', controlName: 'borderwidth'}}
+                          attrNameTemplate="filterTab%s"
+                          values={{
+                            borderwidthMobileTop: filterTabTopBorderwidthMobile,
+                            borderwidthMobileRight: filterTabRightBorderwidthMobile,
+                            borderwidthMobileBottom: filterTabBottomBorderwidthMobile,
+                            borderwidthMobileLeft: filterTabLeftBorderwidthMobile,
+                          }}
+                          setAttributes={setAttributes}
+                        />
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <RbeaDimensionControl
+                          {...{...this.props, tabName: 'Tablet', controlName: 'borderwidth'}}
+                          attrNameTemplate="filterTab%s"
+                          values={{
+                            borderwidthTabletTop: filterTabTopBorderwidthTablet,
+                            borderwidthTabletRight: filterTabRightBorderwidthTablet,
+                            borderwidthTabletBottom: filterTabBottomBorderwidthTablet,
+                            borderwidthTabletLeft: filterTabLeftBorderwidthTablet,
+                          }}
+                          setAttributes={setAttributes}
+                        />
+                      );
+                    } else {
+                      tabout = (
+                        <RbeaDimensionControl
+                          {...{...this.props, tabName: '', controlName: 'borderwidth'}}
+                          attrNameTemplate="filterTab%s"
+                          values={{
+                            borderwidthTop: filterTabTopBorderwidth,
+                            borderwidthRight: filterTabRightBorderwidth,
+                            borderwidthBottom: filterTabBottomBorderwidth,
+                            borderwidthLeft: filterTabLeftBorderwidth,
+                          }}
+                          setAttributes={setAttributes}
+                        />
+                      );
+                    }
+                    return <div>{tabout}</div>;
+                  }}
+                </TabPanel>
+                
+                {/* Border Color */}
+                <RbeaColorControl
+                  label={__("Border Color", "responsive-block-editor-addons")}
+                  colorValue={filterTabBorderColor}
+                  onChange={(colorValue) =>
+                    setAttributes({ filterTabBorderColor: colorValue })
+                  }
+                  resetColor={() => setAttributes({ filterTabBorderColor: "#000000" })}
+                />
+
+              </PanelBody>
+            )}
             <RbeaSupportControl blockSlug={"gallery-masonry"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
