@@ -50,6 +50,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     height,
     topMargin,
     bottomMargin,
@@ -247,9 +253,13 @@ function EditorStyles(props) {
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   let flipStyle = "rotateY(0deg)";
@@ -399,6 +409,20 @@ function EditorStyles(props) {
       "padding-bottom": bottomPadding !== 999 && frontBottomPadding === 0 ? generateCSSUnit(bottomPadding, "px") : generateCSSUnit(frontBottomPadding, "px"), // For compatibility with v1.3.2.
       "padding-left": leftPadding !== 999 && frontLeftPadding === 0 ? generateCSSUnit(leftPadding, "px") : generateCSSUnit(frontLeftPadding, "px"), // For compatibility with v1.3.2.
       "padding-right": rightPadding !== 999 && frontRightPadding === 0 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(frontRightPadding, "px"), // For compatibility with v1.3.2.
+    },
+    " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front:hover": {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       "color": frontTitleTypographyColor,

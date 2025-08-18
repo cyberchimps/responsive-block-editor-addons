@@ -1012,6 +1012,30 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 0,
 				),
+				'hoverboxShadowColor'                => array(
+					'type' => 'string',
+					'default' => ''
+				),
+				'hoverboxShadowHOffset'              => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowVOffset'              => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowBlur'                 => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowSpread'               => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowPosition'             => array(
+					'type' => 'string',
+					'default' => 'outset'
+				),
 				'taxonomyType'                       => array(
 					'type'    => 'string',
 					'default' => 'category',

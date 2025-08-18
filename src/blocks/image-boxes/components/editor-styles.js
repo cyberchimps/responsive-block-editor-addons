@@ -22,6 +22,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     boxPaddingRight,
     boxPaddingLeft,
     boxPaddingTop,
@@ -160,9 +166,13 @@ function EditorStyles(props) {
     : itemHoverBackgroundColor;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   var hoverGradient =
@@ -298,6 +308,18 @@ function EditorStyles(props) {
 
     ":hover": {
       "transform": `scale(${imageHoverEffect})`,
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
 
     " .responsive-block-editor-addons-imagebox-image": {

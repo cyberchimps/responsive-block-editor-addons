@@ -95,6 +95,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     alignTabsVertical,
     hideWidget,
     hideWidgetTablet,
@@ -147,9 +153,13 @@ function EditorStyles(props) {
     }
   }
 
-  let boxShadowPositionCSS = boxShadowPosition;
+  let boxShadowPositionCSS      = boxShadowPosition;
+  let hoverboxShadowPositionCSS = hoverboxShadowPosition;
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   var selectors = {
@@ -204,6 +214,7 @@ function EditorStyles(props) {
             hovercolorLocation2
           )
           : undefined,
+      "box-shadow": `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`,
     },
     " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active" : {
 			"background": tabBackgroundColor,

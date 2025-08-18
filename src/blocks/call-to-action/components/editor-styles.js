@@ -78,6 +78,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     icon_color,
     blockTopPadding,
     blockTopPaddingMobile,
@@ -206,10 +212,14 @@ function EditorStyles(props) {
   }
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
   let imgopacity = opacity / 100;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   let ctaIconMargin = '';
@@ -293,6 +303,20 @@ function EditorStyles(props) {
       "margin-right": generateCSSUnit(blockRightMargin, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
       "margin-left": generateCSSUnit(blockLeftMargin, "px"),
+    },
+    ":hover": {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
 
     " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {

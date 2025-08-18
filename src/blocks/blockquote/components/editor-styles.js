@@ -61,6 +61,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
@@ -109,9 +115,13 @@ function EditorStyles(props) {
   let quoteopacity = quoteOpacity / 100;
   let imgopacity = opacity / 100;
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
   var selectors = {
     "": {
@@ -163,6 +173,20 @@ function EditorStyles(props) {
       "margin-right" : generateCSSUnit(blockRightMargin, "px"),
       "margin-bottom" : generateCSSUnit(blockBottomMargin, "px"),
       "margin-left" : generateCSSUnit(blockLeftMargin, "px"),
+    },
+    ":hover": {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
     " .responsive-block-editor-addons-section__video-wrap": {
       opacity: imgopacity,

@@ -225,6 +225,29 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  hoverboxShadowColor: {
+    type: "string",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 2,
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 1,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
   buttonBoxShadowColor: {
     type: "string",
   },
