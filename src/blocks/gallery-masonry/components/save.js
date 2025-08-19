@@ -74,6 +74,7 @@ const save = ({ attributes, className }) => {
     filterTabLeftBorderwidthMobile,
     filterTabIsBorderwidthControlConnected,
     filterTabBorderColor,
+    enableResponsiveSupport,
   } = attributes;
 
   if (!images || images.length === 0) {
@@ -86,13 +87,13 @@ const save = ({ attributes, className }) => {
   const outerClasses = className ? `${className} ${appendClass}` : appendClass;
 
   // Get unique categories for filter buttons
-  const categories = Array.from(
+  const categories = ["All", ...Array.from(
     new Set(
       sortedImages
         .map((image) => image.rba_category || "uncategorized")
         .filter((cat) => cat && cat !== "uncategorized")
     )
-  );
+  )];
 
   // Build the complete HTML structure
   const masonryStyles = {
@@ -143,13 +144,18 @@ const save = ({ attributes, className }) => {
                 background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
                 color: ${filterTabHoverTextColor || "#fff"} !important;
               }
+              .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:hover,
+              .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:active {
+                background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
+                color: ${filterTabHoverTextColor || "#fff"} !important;
+              }
             </style>
           `
         }}
       />
       {shouldShowFilters && (
         <div 
-          className={`gallery-filter-wrapper filter-tab-alignment-${desktopAlignment}`}
+          className={`gallery-filter-wrapper filter-tab-alignment-${desktopAlignment} ${enableResponsiveSupport ? 'has-responsive-support' : ''}`}
           style={{ 
             marginBottom: filterTabBottomSpacing !== undefined ? `${filterTabBottomSpacing}px` : "20px",
             textAlign: desktopAlignment,
@@ -218,6 +224,30 @@ const save = ({ attributes, className }) => {
               {cat === "All" ? allTabLabel : cat}
             </button>
           ))}
+
+          {/* Dropdown menu for mobile - only when responsive support is enabled */}
+          {enableResponsiveSupport && (
+            <div className="dropdown-menu" id={`gallery-dropdown-${block_id}`}>
+              {categories.map((cat) => (
+                <button 
+                  key={cat}
+                  className={`dropdown-item ${defaultActiveCategory === cat ? "active" : ""}`}
+                  data-category={cat}
+                  style={{
+                    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+                    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+                    fontWeight: filterTabTypographyFontWeight || undefined,
+                    lineHeight: filterTabTypographyLineHeight || undefined,
+                    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+                    textTransform: filterTabTypographyTextTransform || undefined,
+                    textDecoration: filterTabTypographyTextDecoration || undefined,
+                  }}
+                >
+                  {cat === "All" ? allTabLabel : cat}
+                </button>
+              ))}
+            </div>
+          )}
         
 
       </div>

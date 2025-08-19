@@ -375,7 +375,6 @@ class Inspector extends Component {
                   setAttributes({ enableCategoryFilter: value })
                 }
               />
-
               {attributes.enableCategoryFilter && (
                 <>
                   <TextControl
@@ -402,6 +401,18 @@ class Inspector extends Component {
                       }
                     />
                   )}
+                </>
+              )}
+              {attributes.enableCategoryFilter && (
+                <>
+                  <ToggleControl
+                    label={__("Responsive Support", "textdomain")}
+                    checked={attributes.enableResponsiveSupport}
+                    onChange={(value) =>
+                      setAttributes({ enableResponsiveSupport: value })
+                    }
+                    help={__("Enable this option to display Filterable Tabs in a Dropdown on Mobile.", "textdomain")}
+                  />
                 </>
               )}
             </PanelBody>

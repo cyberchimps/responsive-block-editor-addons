@@ -360,6 +360,7 @@ class GalleryMasonryEdit extends Component {
     filterTabLeftBorderwidthMobile,
     filterTabIsBorderwidthControlConnected,
     filterTabBorderColor,
+    enableResponsiveSupport,
     } = attributes;
 
     const hasImages = !!images.length;
@@ -440,6 +441,11 @@ class GalleryMasonryEdit extends Component {
                   background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
                   color: ${filterTabHoverTextColor || "#fff"} !important;
                 }
+                .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:hover,
+                .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:active {
+                  background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
+                  color: ${filterTabHoverTextColor || "#fff"} !important;
+                }
               </style>
             `
           }}
@@ -450,7 +456,7 @@ class GalleryMasonryEdit extends Component {
           {/* Only show category filters if enableCategoryFilter is true */}
           {enableCategoryFilter && (
             <div 
-              className={`category-filters gallery-filter-wrapper filter-tab-alignment-${desktopAlignment}`}
+              className={`category-filters gallery-filter-wrapper filter-tab-alignment-${desktopAlignment} ${enableResponsiveSupport ? 'has-responsive-support' : ''}`}
               style={{ 
                 marginBottom: filterTabBottomSpacing !== undefined ? `${filterTabBottomSpacing}px` : "20px",
                 textAlign: desktopAlignment,
@@ -496,6 +502,8 @@ class GalleryMasonryEdit extends Component {
                   {cat === "All" ? allTabLabel : cat}
                 </button>
               ))}
+
+
             </div>
           )}
 

@@ -72,7 +72,117 @@
   .gallery-filter-button {
     margin-bottom: 8px !important;
   }
-  
+
+  // Responsive Support - Mobile Only Dropdown
+  &.has-responsive-support {
+    // Desktop and tablet - no changes, show all buttons normally
+    @media (min-width: 768px) {
+      // Hide dropdown menu on desktop/tablet
+      .dropdown-menu {
+        display: none !important;
+      }
+      
+      // Show all buttons normally on desktop/tablet
+      .gallery-filter-button {
+        display: inline-block !important;
+      }
+    }
+    
+    // Mobile only - hide all buttons except "All"
+    @media (max-width: 767px) {
+      position: relative; // Add this for proper dropdown positioning
+      
+      .gallery-filter-button:not(:first-child) {
+        display: none !important;
+      }
+      
+      // Add dropdown arrow to the "All" button
+      .gallery-filter-button:first-child {
+        position: relative;
+        padding-right: 30px !important; // Space for arrow
+      }
+      
+      .gallery-filter-button:first-child::after {
+        content: "\25BC"; // ▼ dropdown arrow
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10px;
+        opacity: 0.7;
+        pointer-events: none;
+      }
+      
+      // Dropdown menu styling
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        min-width: 120px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 1000;
+        margin-top: 2px;
+      }
+      
+      // Align dropdown based on button alignment
+      &.filter-tab-alignment-left .dropdown-menu {
+        left: 0;
+      }
+      
+      &.filter-tab-alignment-center .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      &.filter-tab-alignment-right .dropdown-menu {
+        right: 0;
+      }
+      
+      // Show dropdown when open
+      &.dropdown-open .dropdown-menu {
+        display: block;
+      }
+      
+      // Change arrow direction when open
+      &.dropdown-open .gallery-filter-button:first-child::after {
+        content: "\25B2"; // ▲
+      }
+      
+      // Dropdown items
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 8px 12px;
+        border: none;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+        font-size: inherit;
+        color: inherit;
+        
+        &:hover,
+        &:active {
+          background-color: #f5f5f5;
+        }
+        
+        &:first-child {
+          border-radius: 4px 4px 0 0;
+        }
+        
+        &:last-child {
+          border-radius: 0 0 4px 4px;
+        }
+        
+        &.active {
+          background-color: #0073aa;
+          color: #fff;
+        }
+      }
+    }
+  }
 
   
   &.filter-tab-alignment-left {
@@ -109,14 +219,27 @@
 @media (max-width: 767px) {
   .gallery-filter-wrapper[data-tab-alignment-mobile="left"] {
     text-align: left !important;
+    
+    &.has-responsive-support .dropdown-menu {
+      left: 0;
+    }
   }
   
   .gallery-filter-wrapper[data-tab-alignment-mobile="center"] {
     text-align: center !important;
+    
+    &.has-responsive-support .dropdown-menu {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
   
   .gallery-filter-wrapper[data-tab-alignment-mobile="right"] {
     text-align: right !important;
+    
+    &.has-responsive-support .dropdown-menu {
+      right: 0;
+    }
   }
 }
 

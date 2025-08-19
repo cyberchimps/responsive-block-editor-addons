@@ -337,6 +337,10 @@
     "filterTabBorderColor": {
       "type": "string",
       "default": "#000000"
+    },
+    "enableResponsiveSupport": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
