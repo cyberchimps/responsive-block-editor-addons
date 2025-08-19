@@ -612,7 +612,7 @@ class Inspector extends Component {
                           min={0}
                           max={100}
                           allowReset={true}
-                          resetFallbackValue={17}
+                          resetFallbackValue={10}
                           value={filterTabSpacingBetweenMobile}
                           onChange={(value) =>
                             setAttributes({
@@ -629,7 +629,7 @@ class Inspector extends Component {
                           min={0}
                           max={100}
                           allowReset={true}
-                          resetFallbackValue={17}
+                          resetFallbackValue={10}
                           value={filterTabSpacingBetweenTablet}
                           onChange={(value) =>
                             setAttributes({
@@ -646,7 +646,7 @@ class Inspector extends Component {
                           min={0}
                           max={100}
                           allowReset={true}
-                          resetFallbackValue={17}
+                          resetFallbackValue={10}
                           value={filterTabSpacingBetween}
                           onChange={(value) =>
                             setAttributes({
@@ -695,7 +695,7 @@ class Inspector extends Component {
                           min={0}
                           max={100}
                           allowReset={true}
-                          resetFallbackValue={17}
+                          resetFallbackValue={20}
                           value={filterTabBottomSpacingMobile}
                           onChange={(value) =>
                             setAttributes({
@@ -712,7 +712,7 @@ class Inspector extends Component {
                           min={0}
                           max={100}
                           allowReset={true}
-                          resetFallbackValue={17}
+                          resetFallbackValue={20}
                           value={filterTabBottomSpacingTablet}
                           onChange={(value) =>
                             setAttributes({
@@ -729,7 +729,7 @@ class Inspector extends Component {
                           min={0}
                           max={100}
                           allowReset={true}
-                          resetFallbackValue={17}
+                          resetFallbackValue={20}
                           value={filterTabBottomSpacing}
                           onChange={(value) =>
                             setAttributes({
