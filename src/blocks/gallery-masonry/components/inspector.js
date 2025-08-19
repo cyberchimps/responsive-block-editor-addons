@@ -746,24 +746,43 @@ class Inspector extends Component {
 
                 {/* Color Controls */}
                 <TabPanel
-                  className="rbea-tab-panel"
+                  className="responsive-block-editor-addons-inspect-tabs 
+                  responsive-block-editor-addons-inspect-tabs-col-2  
+                  responsive-block-editor-addons-color-inspect-tabs"
                   activeClass="active-tab"
+                  initialTabName="normal"
                   tabs={[
+                    {
+                      name: "empty-1",
+                      title: __("", "responsive-block-editor-addons"),
+                      className: "responsive-block-editor-addons-empty-tab",
+                    },
                     {
                       name: "normal",
                       title: __("Normal", "responsive-block-editor-addons"),
-                      className: "rbea-tab",
+                      className: "responsive-block-editor-addons-normal-tab",
+                    },
+                    {
+                      name: "empty-2",
+                      title: __("", "responsive-block-editor-addons"),
+                      className: "responsive-block-editor-addons-empty-tab-middle",
                     },
                     {
                       name: "hover",
                       title: __("Hover", "responsive-block-editor-addons"),
-                      className: "rbea-tab",
+                      className: "responsive-block-editor-addons-hover-tab",
+                    },
+                    {
+                      name: "empty-3",
+                      title: __("", "responsive-block-editor-addons"),
+                      className: "responsive-block-editor-addons-empty-tab",
                     },
                   ]}
                 >
-                  {(tab) => {
-                    if (tab.name === "normal") {
-                      return (
+                  {(tabName) => {
+                    let color_tab;
+                    if ("normal" === tabName.name) {
+                      color_tab = (
                         <div>
                           <RbeaColorControl
                             label={__("Text Color", "responsive-block-editor-addons")}
@@ -783,8 +802,8 @@ class Inspector extends Component {
                           />
                         </div>
                       );
-                    } else {
-                      return (
+                    } else if("hover" === tabName.name) {
+                      color_tab = (
                         <div>
                           <RbeaColorControl
                             label={__("Text Color", "responsive-block-editor-addons")}
@@ -804,7 +823,10 @@ class Inspector extends Component {
                           />
                         </div>
                       );
+                    } else {
+                      color_tab = null;
                     }
+                    return <div>{color_tab}</div>;
                   }}
                 </TabPanel>
 
@@ -816,87 +838,91 @@ class Inspector extends Component {
                   }
                 />
                 
-                {/* Border Width */}
-                <TabPanel
-                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                  activeClass="active-tab"
-                  tabs={[
-                    {
-                      name: "desktop",
-                      title: <Dashicon icon="desktop" />,
-                      className:
-                        " responsive-desktop-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "tablet",
-                      title: <Dashicon icon="tablet" />,
-                      className: " responsive-tablet-tab  responsive-responsive-tabs",
-                    },
-                    {
-                      name: "mobile",
-                      title: <Dashicon icon="smartphone" />,
-                      className: " responsive-mobile-tab  responsive-responsive-tabs",
-                    },
-                  ]}
-                >
-                  {(tab) => {
-                    let tabout;
-                    if ("mobile" === tab.name) {
-                      tabout = (
-                        <RbeaDimensionControl
-                          {...{...this.props, tabName: 'Mobile', controlName: 'borderwidth'}}
-                          attrNameTemplate="filterTab%s"
-                          values={{
-                            borderwidthMobileTop: filterTabTopBorderwidthMobile,
-                            borderwidthMobileRight: filterTabRightBorderwidthMobile,
-                            borderwidthMobileBottom: filterTabBottomBorderwidthMobile,
-                            borderwidthMobileLeft: filterTabLeftBorderwidthMobile,
-                          }}
-                          setAttributes={setAttributes}
-                        />
-                      );
-                    } else if ("tablet" === tab.name) {
-                      tabout = (
-                        <RbeaDimensionControl
-                          {...{...this.props, tabName: 'Tablet', controlName: 'borderwidth'}}
-                          attrNameTemplate="filterTab%s"
-                          values={{
-                            borderwidthTabletTop: filterTabTopBorderwidthTablet,
-                            borderwidthTabletRight: filterTabRightBorderwidthTablet,
-                            borderwidthTabletBottom: filterTabBottomBorderwidthTablet,
-                            borderwidthTabletLeft: filterTabLeftBorderwidthTablet,
-                          }}
-                          setAttributes={setAttributes}
-                        />
-                      );
-                    } else {
-                      tabout = (
-                        <RbeaDimensionControl
-                          {...{...this.props, tabName: '', controlName: 'borderwidth'}}
-                          attrNameTemplate="filterTab%s"
-                          values={{
-                            borderwidthTop: filterTabTopBorderwidth,
-                            borderwidthRight: filterTabRightBorderwidth,
-                            borderwidthBottom: filterTabBottomBorderwidth,
-                            borderwidthLeft: filterTabLeftBorderwidth,
-                          }}
-                          setAttributes={setAttributes}
-                        />
-                      );
-                    }
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
+                {/* Border Width - Only show if border style is not "none" */}
+                {filterTabBorderStyle && filterTabBorderStyle !== "none" && (
+                  <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                      {
+                        name: "desktop",
+                        title: <Dashicon icon="desktop" />,
+                        className:
+                          " responsive-desktop-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "tablet",
+                        title: <Dashicon icon="tablet" />,
+                        className: " responsive-tablet-tab  responsive-responsive-tabs",
+                      },
+                      {
+                        name: "mobile",
+                        title: <Dashicon icon="smartphone" />,
+                        className: " responsive-mobile-tab  responsive-responsive-tabs",
+                      },
+                    ]}
+                  >
+                    {(tab) => {
+                      let tabout;
+                      if ("mobile" === tab.name) {
+                        tabout = (
+                          <RbeaDimensionControl
+                            {...{...this.props, tabName: 'Mobile', controlName: 'borderwidth'}}
+                            attrNameTemplate="filterTab%s"
+                            values={{
+                              borderwidthMobileTop: filterTabTopBorderwidthMobile,
+                              borderwidthMobileRight: filterTabRightBorderwidthMobile,
+                              borderwidthMobileBottom: filterTabBottomBorderwidthMobile,
+                              borderwidthMobileLeft: filterTabLeftBorderwidthMobile,
+                            }}
+                            setAttributes={setAttributes}
+                          />
+                        );
+                      } else if ("tablet" === tab.name) {
+                        tabout = (
+                          <RbeaDimensionControl
+                            {...{...this.props, tabName: 'Tablet', controlName: 'borderwidth'}}
+                            attrNameTemplate="filterTab%s"
+                            values={{
+                              borderwidthTabletTop: filterTabTopBorderwidthTablet,
+                              borderwidthTabletRight: filterTabRightBorderwidthTablet,
+                              borderwidthTabletBottom: filterTabBottomBorderwidthTablet,
+                              borderwidthTabletLeft: filterTabLeftBorderwidthTablet,
+                            }}
+                            setAttributes={setAttributes}
+                          />
+                        );
+                      } else {
+                        tabout = (
+                          <RbeaDimensionControl
+                            {...{...this.props, tabName: '', controlName: 'borderwidth'}}
+                            attrNameTemplate="filterTab%s"
+                            values={{
+                              borderwidthTop: filterTabTopBorderwidth,
+                              borderwidthRight: filterTabRightBorderwidth,
+                              borderwidthBottom: filterTabBottomBorderwidth,
+                              borderwidthLeft: filterTabLeftBorderwidth,
+                            }}
+                            setAttributes={setAttributes}
+                          />
+                        );
+                      }
+                      return <div>{tabout}</div>;
+                    }}
+                  </TabPanel>
+                )}
                 
-                {/* Border Color */}
-                <RbeaColorControl
-                  label={__("Border Color", "responsive-block-editor-addons")}
-                  colorValue={filterTabBorderColor}
-                  onChange={(colorValue) =>
-                    setAttributes({ filterTabBorderColor: colorValue })
-                  }
-                  resetColor={() => setAttributes({ filterTabBorderColor: "#000000" })}
-                />
+                {/* Border Color - Only show if border style is not "none" */}
+                {filterTabBorderStyle && filterTabBorderStyle !== "none" && (
+                  <RbeaColorControl
+                    label={__("Border Color", "responsive-block-editor-addons")}
+                    colorValue={filterTabBorderColor}
+                    onChange={(colorValue) =>
+                      setAttributes({ filterTabBorderColor: colorValue })
+                    }
+                    resetColor={() => setAttributes({ filterTabBorderColor: "#000000" })}
+                  />
+                )}
 
               </PanelBody>
             )}
