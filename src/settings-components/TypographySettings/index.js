@@ -213,8 +213,6 @@ class TypographyControl extends Component {
                                                 max={500}
                                                 value={this.props.values.sizeMobile}
                                                 onChange={this.props.onChangeFontSizeMobile}
-                                                allowReset={true}
-                                                resetFallbackValue={14}
                                             />
                                         </div>
                                     </Fragment>
@@ -232,8 +230,6 @@ class TypographyControl extends Component {
                                                 max={500}
                                                 value={this.props.values.sizeTablet}
                                                 onChange={this.props.onChangeFontSizeTablet}
-                                                allowReset={true}
-                                                resetFallbackValue={14}
                                             />
                                         </div>
                                     </Fragment>
@@ -251,8 +247,6 @@ class TypographyControl extends Component {
                                                 max={500}
                                                 value={this.props.values.size}
                                                 onChange={this.props.onChangeFontSize}
-                                                allowReset={true}
-                                                resetFallbackValue={14}
                                             />
                                         </div>
                                     </Fragment>
