@@ -151,7 +151,7 @@ const save = ({ attributes, className }) => {
         <div 
           className={`gallery-filter-wrapper filter-tab-alignment-${desktopAlignment}`}
           style={{ 
-            marginBottom: filterTabBottomSpacing ? `${filterTabBottomSpacing}px` : "20px",
+            marginBottom: filterTabBottomSpacing !== undefined ? `${filterTabBottomSpacing}px` : "20px",
             textAlign: desktopAlignment,
             fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
             fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
@@ -160,73 +160,49 @@ const save = ({ attributes, className }) => {
             letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
             textTransform: filterTabTypographyTextTransform || undefined,
             textDecoration: filterTabTypographyTextDecoration || undefined,
-            '--filter-tab-bottom-spacing-tablet': filterTabBottomSpacingTablet ? `${filterTabBottomSpacingTablet}px` : undefined,
-            '--filter-tab-bottom-spacing-mobile': filterTabBottomSpacingMobile ? `${filterTabBottomSpacingMobile}px` : undefined,
-            '--filter-tab-padding-top-tablet': filterTabTopPaddingTablet ? `${filterTabTopPaddingTablet}px` : undefined,
-            '--filter-tab-padding-right-tablet': filterTabRightPaddingTablet ? `${filterTabRightPaddingTablet}px` : undefined,
-            '--filter-tab-padding-bottom-tablet': filterTabBottomPaddingTablet ? `${filterTabBottomPaddingTablet}px` : undefined,
-            '--filter-tab-padding-left-tablet': filterTabLeftPaddingTablet ? `${filterTabLeftPaddingTablet}px` : undefined,
-            '--filter-tab-padding-top-mobile': filterTabTopPaddingMobile ? `${filterTabTopPaddingMobile}px` : undefined,
-            '--filter-tab-padding-right-mobile': filterTabRightPaddingMobile ? `${filterTabRightPaddingMobile}px` : undefined,
-            '--filter-tab-padding-bottom-mobile': filterTabBottomPaddingMobile ? `${filterTabBottomPaddingMobile}px` : undefined,
-            '--filter-tab-padding-left-mobile': filterTabLeftPaddingMobile ? `${filterTabLeftPaddingMobile}px` : undefined,
-            '--filter-tab-spacing-between-tablet': filterTabSpacingBetweenTablet ? `${filterTabSpacingBetweenTablet}px` : undefined,
-            '--filter-tab-spacing-between-mobile': filterTabSpacingBetweenMobile ? `${filterTabSpacingBetweenMobile}px` : undefined,
+            '--filter-tab-bottom-spacing-tablet': filterTabBottomSpacingTablet !== undefined ? `${filterTabBottomSpacingTablet}px` : undefined,
+            '--filter-tab-bottom-spacing-mobile': filterTabBottomSpacingMobile !== undefined ? `${filterTabBottomSpacingMobile}px` : undefined,
+            '--filter-tab-padding-top-tablet': filterTabTopPaddingTablet !== undefined ? `${filterTabTopPaddingTablet}px` : undefined,
+            '--filter-tab-padding-right-tablet': filterTabRightPaddingTablet !== undefined ? `${filterTabRightPaddingTablet}px` : undefined,
+            '--filter-tab-padding-bottom-tablet': filterTabBottomPaddingTablet !== undefined ? `${filterTabBottomPaddingTablet}px` : undefined,
+            '--filter-tab-padding-left-tablet': filterTabLeftPaddingTablet !== undefined ? `${filterTabLeftPaddingTablet}px` : undefined,
+            '--filter-tab-padding-top-mobile': filterTabTopPaddingMobile !== undefined ? `${filterTabTopPaddingMobile}px` : undefined,
+            '--filter-tab-padding-right-mobile': filterTabRightPaddingMobile !== undefined ? `${filterTabRightPaddingMobile}px` : undefined,
+            '--filter-tab-padding-bottom-mobile': filterTabBottomPaddingMobile !== undefined ? `${filterTabBottomPaddingMobile}px` : undefined,
+            '--filter-tab-padding-left-mobile': filterTabLeftPaddingMobile !== undefined ? `${filterTabLeftPaddingMobile}px` : undefined,
+            '--filter-tab-spacing-between-tablet': filterTabSpacingBetweenTablet !== undefined ? `${filterTabSpacingBetweenTablet}px` : undefined,
+            '--filter-tab-spacing-between-mobile': filterTabSpacingBetweenMobile !== undefined ? `${filterTabSpacingBetweenMobile}px` : undefined,
             '--filter-tab-font-size-tablet': filterTabTypographyFontSizeTablet ? `${filterTabTypographyFontSizeTablet}px` : undefined,
             '--filter-tab-font-size-mobile': filterTabTypographyFontSizeMobile ? `${filterTabTypographyFontSizeMobile}px` : undefined,
             '--filter-tab-border-style': filterTabBorderStyle || undefined,
             '--filter-tab-border-color': filterTabBorderColor || undefined,
-            '--filter-tab-border-top-width-tablet': filterTabTopBorderwidthTablet ? `${filterTabTopBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-right-width-tablet': filterTabRightBorderwidthTablet ? `${filterTabRightBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-bottom-width-tablet': filterTabBottomBorderwidthTablet ? `${filterTabBottomBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-left-width-tablet': filterTabLeftBorderwidthTablet ? `${filterTabLeftBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-top-width-mobile': filterTabTopBorderwidthMobile ? `${filterTabTopBorderwidthMobile}px` : undefined,
-            '--filter-tab-border-right-width-mobile': filterTabRightBorderwidthMobile ? `${filterTabRightBorderwidthMobile}px` : undefined,
-            '--filter-tab-border-bottom-width-mobile': filterTabBottomBorderwidthMobile ? `${filterTabBottomBorderwidthMobile}px` : undefined,
-            '--filter-tab-border-left-width-mobile': filterTabLeftBorderwidthMobile ? `${filterTabLeftBorderwidthMobile}px` : undefined,
+            '--filter-tab-border-top-width-tablet': filterTabTopBorderwidthTablet !== undefined ? `${filterTabTopBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-right-width-tablet': filterTabRightBorderwidthTablet !== undefined ? `${filterTabRightBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-bottom-width-tablet': filterTabBottomBorderwidthTablet !== undefined ? `${filterTabBottomBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-left-width-tablet': filterTabLeftBorderwidthTablet !== undefined ? `${filterTabLeftBorderwidthTablet}px` : undefined,
+            '--filter-tab-border-top-width-mobile': filterTabTopBorderwidthMobile !== undefined ? `${filterTabTopBorderwidthMobile}px` : undefined,
+            '--filter-tab-border-right-width-mobile': filterTabRightBorderwidthMobile !== undefined ? `${filterTabRightBorderwidthMobile}px` : undefined,
+            '--filter-tab-border-bottom-width-mobile': filterTabBottomBorderwidthMobile !== undefined ? `${filterTabBottomBorderwidthMobile}px` : undefined,
+            '--filter-tab-border-left-width-mobile': filterTabLeftBorderwidthMobile !== undefined ? `${filterTabLeftBorderwidthMobile}px` : undefined,
           }}
           data-tab-alignment={desktopAlignment}
           data-tab-alignment-tablet={tabletAlignment}
           data-tab-alignment-mobile={mobileAlignment}
         >
-          <button 
-            className={`gallery-filter-button ${defaultActiveCategory === "All" || defaultActiveCategory === "all" ? "is-active" : ""}`}
-            data-category="All"
-            style={{
-              marginRight: filterTabSpacingBetween ? `${filterTabSpacingBetween}px` : "10px",
-              padding: `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px`,
-              cursor: "pointer",
-              borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-              borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-              borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-              borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-              borderRadius: "4px",
-              backgroundColor: (defaultActiveCategory === "All" || defaultActiveCategory === "all") ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
-              color: (defaultActiveCategory === "All" || defaultActiveCategory === "all") ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),
-              fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-              fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-              fontWeight: filterTabTypographyFontWeight || undefined,
-              lineHeight: filterTabTypographyLineHeight || undefined,
-              letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-              textTransform: filterTabTypographyTextTransform || undefined,
-              textDecoration: filterTabTypographyTextDecoration || undefined,
-            }}
-          >
-            {allTabLabel}
-          </button>
                     {categories.map((cat) => (
             <button 
               key={cat}
               className={`gallery-filter-button ${defaultActiveCategory === cat ? "is-active" : ""}`}
               data-category={cat}
               style={{
-                marginRight: filterTabSpacingBetween ? `${filterTabSpacingBetween}px` : "10px",
-                padding: `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px`,
+                marginRight: filterTabSpacingBetween !== undefined ? `${filterTabSpacingBetween}px` : "10px",
+                marginBottom: "8px",
+                padding: `${filterTabTopPadding !== undefined ? filterTabTopPadding : 6}px ${filterTabRightPadding !== undefined ? filterTabRightPadding : 12}px ${filterTabBottomPadding !== undefined ? filterTabBottomPadding : 6}px ${filterTabLeftPadding !== undefined ? filterTabLeftPadding : 12}px`,
                 cursor: "pointer",
-                borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
                 borderRadius: "4px",
                 backgroundColor: defaultActiveCategory === cat ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
                 color: defaultActiveCategory === cat ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),

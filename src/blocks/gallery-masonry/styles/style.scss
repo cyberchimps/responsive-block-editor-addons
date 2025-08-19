@@ -68,6 +68,13 @@
 .gallery-filter-wrapper {
   border: none;
   outline: none;
+  
+  .gallery-filter-button {
+    margin-bottom: 8px !important;
+  }
+  
+
+  
   &.filter-tab-alignment-left {
     text-align: left !important;
   }

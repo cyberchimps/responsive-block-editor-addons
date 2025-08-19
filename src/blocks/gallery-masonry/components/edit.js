@@ -45,7 +45,6 @@ class GalleryMasonryEdit extends Component {
       migrationDone: true,
       mediaData: {}, // Media ID -> Media Object
       selectedCategory: "All", // Currently active filter
-
     };
   }
 
@@ -453,7 +452,7 @@ class GalleryMasonryEdit extends Component {
             <div 
               className={`category-filters gallery-filter-wrapper filter-tab-alignment-${desktopAlignment}`}
               style={{ 
-                marginBottom: filterTabBottomSpacing ? `${filterTabBottomSpacing}px` : "20px",
+                marginBottom: filterTabBottomSpacing !== undefined ? `${filterTabBottomSpacing}px` : "20px",
                 textAlign: desktopAlignment,
                 fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
                 fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
@@ -467,21 +466,22 @@ class GalleryMasonryEdit extends Component {
               data-tab-alignment-tablet={tabletAlignment}
               data-tab-alignment-mobile={mobileAlignment}
             >
-              {categories.map((cat) => (
+                                          {categories.map((cat) => (
                 <button
                   key={cat}
                   className="gallery-filter-button"
                   onClick={() => this.setState({ selectedCategory: cat })}
                   style={{
-                    marginRight: filterTabSpacingBetween ? `${filterTabSpacingBetween}px` : "10px",
-                    padding: `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px`,
+                    marginRight: filterTabSpacingBetween !== undefined ? `${filterTabSpacingBetween}px` : "10px",
+                    marginBottom: "8px",
+                    padding: `${filterTabTopPadding !== undefined ? filterTabTopPadding : 6}px ${filterTabRightPadding !== undefined ? filterTabRightPadding : 12}px ${filterTabBottomPadding !== undefined ? filterTabBottomPadding : 6}px ${filterTabLeftPadding !== undefined ? filterTabLeftPadding : 12}px`,
                     backgroundColor:
                       this.state.selectedCategory === cat ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
                     color: this.state.selectedCategory === cat ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),
-                    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+                    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
                     borderRadius: "4px",
                     cursor: "pointer",
                     fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
