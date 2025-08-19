@@ -433,23 +433,6 @@ class GalleryMasonryEdit extends Component {
         >
           {EditorStyles(this.props)}
         </style>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `
-              <style>
-                .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .category-filters button:hover {
-                  background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
-                  color: ${filterTabHoverTextColor || "#fff"} !important;
-                }
-                .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:hover,
-                .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:active {
-                  background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
-                  color: ${filterTabHoverTextColor || "#fff"} !important;
-                }
-              </style>
-            `
-          }}
-        />
         {isSelected && <Inspector {...this.props} />}
         {noticeUI}
         <div className={outerClasses}>
@@ -467,6 +450,8 @@ class GalleryMasonryEdit extends Component {
                 letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
                 textTransform: filterTabTypographyTextTransform || undefined,
                 textDecoration: filterTabTypographyTextDecoration || undefined,
+                '--filter-tab-hover-background-color': filterTabHoverBackgroundColor || "#0073aa",
+                '--filter-tab-hover-text-color': filterTabHoverTextColor || "#fff",
               }}
               data-tab-alignment={desktopAlignment}
               data-tab-alignment-tablet={tabletAlignment}

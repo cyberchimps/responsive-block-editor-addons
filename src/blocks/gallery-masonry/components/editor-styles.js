@@ -131,8 +131,8 @@ function EditorStyles(props) {
       'border-left': filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
     },
     " .gallery-filter-wrapper button:hover, .category-filters button:hover": {
-      'background-color': filterTabHoverBackgroundColor || undefined,
-      'color': filterTabHoverTextColor || undefined,
+      'background-color': filterTabHoverBackgroundColor || '#0073aa',
+      'color': filterTabHoverTextColor || '#fff',
       'border-top': filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
       'border-right': filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
       'border-bottom': filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",

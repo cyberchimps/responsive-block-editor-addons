@@ -136,23 +136,6 @@ const save = ({ attributes, className }) => {
 
   return (
     <div className={outerClasses} data-rba-gallery-block>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `
-            <style>
-              .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-button:hover {
-                background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
-                color: ${filterTabHoverTextColor || "#fff"} !important;
-              }
-              .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:hover,
-              .wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id} .gallery-filter-wrapper .dropdown-menu .dropdown-item:active {
-                background-color: ${filterTabHoverBackgroundColor || "#0073aa"} !important;
-                color: ${filterTabHoverTextColor || "#fff"} !important;
-              }
-            </style>
-          `
-        }}
-      />
       {shouldShowFilters && (
         <div 
           className={`gallery-filter-wrapper filter-tab-alignment-${desktopAlignment} ${enableResponsiveSupport ? 'has-responsive-support' : ''}`}
@@ -190,6 +173,8 @@ const save = ({ attributes, className }) => {
             '--filter-tab-border-right-width-mobile': filterTabRightBorderwidthMobile !== undefined ? `${filterTabRightBorderwidthMobile}px` : undefined,
             '--filter-tab-border-bottom-width-mobile': filterTabBottomBorderwidthMobile !== undefined ? `${filterTabBottomBorderwidthMobile}px` : undefined,
             '--filter-tab-border-left-width-mobile': filterTabLeftBorderwidthMobile !== undefined ? `${filterTabLeftBorderwidthMobile}px` : undefined,
+            '--filter-tab-hover-background-color': filterTabHoverBackgroundColor || "#0073aa",
+            '--filter-tab-hover-text-color': filterTabHoverTextColor || "#fff",
           }}
           data-tab-alignment={desktopAlignment}
           data-tab-alignment-tablet={tabletAlignment}

@@ -71,6 +71,11 @@
   
   .gallery-filter-button {
     margin-bottom: 8px !important;
+    
+    &:hover {
+      background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+      color: var(--filter-tab-hover-text-color, #fff) !important;
+    }
   }
 
   // Responsive Support - Mobile Only Dropdown
@@ -165,7 +170,8 @@
         
         &:hover,
         &:active {
-          background-color: #f5f5f5;
+          background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+          color: var(--filter-tab-hover-text-color, #fff) !important;
         }
         
         &:first-child {
