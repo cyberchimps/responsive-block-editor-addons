@@ -95,6 +95,50 @@ const save = ({ attributes, className }) => {
     )
   )];
 
+  // Function to generate button styles (used for both tabs and dropdown items)
+  const getButtonStyles = () => ({
+    marginRight: filterTabSpacingBetween !== undefined ? `${filterTabSpacingBetween}px` : "10px",
+    marginBottom: "8px",
+    padding: filterTabTopPadding !== undefined || filterTabRightPadding !== undefined || filterTabBottomPadding !== undefined || filterTabLeftPadding !== undefined ? `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px` : "6px 12px",
+    backgroundColor: filterTabBackgroundColor || "#f2f2f2",
+    color: filterTabTextColor || "#000",
+    border: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderRadius: "4px",
+    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+    fontWeight: filterTabTypographyFontWeight || undefined,
+    lineHeight: filterTabTypographyLineHeight || undefined,
+    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+    textTransform: filterTabTypographyTextTransform || undefined,
+    textDecoration: filterTabTypographyTextDecoration || undefined,
+  });
+
+  // Function to generate dropdown item styles (without margins)
+  const getDropdownItemStyles = () => ({
+    marginRight: "0px",
+    marginBottom: "0px",
+    padding: filterTabTopPadding !== undefined || filterTabRightPadding !== undefined || filterTabBottomPadding !== undefined || filterTabLeftPadding !== undefined ? `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px` : "6px 12px",
+    backgroundColor: filterTabBackgroundColor || "#f2f2f2",
+    color: filterTabTextColor || "#000",
+    border: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
+    borderRadius: "0px",
+    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
+    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
+    fontWeight: filterTabTypographyFontWeight || undefined,
+    lineHeight: filterTabTypographyLineHeight || undefined,
+    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
+    textTransform: filterTabTypographyTextTransform || undefined,
+    textDecoration: filterTabTypographyTextDecoration || undefined,
+  });
+
   // Build the complete HTML structure
   const masonryStyles = {
     display: "grid",
@@ -180,61 +224,46 @@ const save = ({ attributes, className }) => {
           data-tab-alignment-tablet={tabletAlignment}
           data-tab-alignment-mobile={mobileAlignment}
         >
-                    {categories.map((cat) => (
-            <button 
-              key={cat}
-              className={`gallery-filter-button ${defaultActiveCategory === cat ? "is-active" : ""}`}
-              data-category={cat}
-              style={{
-                marginRight: filterTabSpacingBetween !== undefined ? `${filterTabSpacingBetween}px` : "10px",
-                marginBottom: "8px",
-                padding: `${filterTabTopPadding !== undefined ? filterTabTopPadding : 6}px ${filterTabRightPadding !== undefined ? filterTabRightPadding : 12}px ${filterTabBottomPadding !== undefined ? filterTabBottomPadding : 6}px ${filterTabLeftPadding !== undefined ? filterTabLeftPadding : 12}px`,
-                cursor: "pointer",
-                borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                borderRadius: "4px",
-                backgroundColor: defaultActiveCategory === cat ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
-                color: defaultActiveCategory === cat ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),
-                fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-                fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-                fontWeight: filterTabTypographyFontWeight || undefined,
-                lineHeight: filterTabTypographyLineHeight || undefined,
-                letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-                textTransform: filterTabTypographyTextTransform || undefined,
-                textDecoration: filterTabTypographyTextDecoration || undefined,
-              }}
-            >
-              {cat === "All" ? allTabLabel : cat}
-            </button>
-          ))}
+          {/* Filter tabs for desktop/tablet */}
+          <div className="rba-gf-tabs">
+            {categories.map((cat) => (
+              <button 
+                key={cat}
+                className={`gallery-filter-button ${defaultActiveCategory === cat ? "is-active" : ""}`}
+                data-category={cat}
+                style={getButtonStyles()}
+              >
+                {cat === "All" ? allTabLabel : cat}
+              </button>
+            ))}
+          </div>
 
-          {/* Dropdown menu for mobile - only when responsive support is enabled */}
+          {/* Dropdown for mobile using native details/summary */}
           {enableResponsiveSupport && (
-            <div className="dropdown-menu" id={`gallery-dropdown-${block_id}`}>
-              {categories.map((cat) => (
-                <button 
-                  key={cat}
-                  className={`dropdown-item ${defaultActiveCategory === cat ? "active" : ""}`}
-                  data-category={cat}
-                  style={{
-                    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-                    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-                    fontWeight: filterTabTypographyFontWeight || undefined,
-                    lineHeight: filterTabTypographyLineHeight || undefined,
-                    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-                    textTransform: filterTabTypographyTextTransform || undefined,
-                    textDecoration: filterTabTypographyTextDecoration || undefined,
-                  }}
-                >
-                  {cat === "All" ? allTabLabel : cat}
-                </button>
-              ))}
-            </div>
+            <details className="rba-gf-dropdown">
+              <summary 
+                className={`gallery-filter-button rba-gf-toggle is-active`}
+                data-category={defaultActiveCategory}
+                style={getButtonStyles()}
+              >
+                {defaultActiveCategory === "All" ? allTabLabel : defaultActiveCategory}
+              </summary>
+              <ul className="rba-gf-menu" role="listbox">
+                {categories.map((cat) => (
+                  <li key={cat}>
+                    <button 
+                      className={`gallery-filter-button dropdown-item ${defaultActiveCategory === cat ? "is-active" : ""}`}
+                      data-category={cat}
+                      style={getDropdownItemStyles()}
+                    >
+                      {cat === "All" ? allTabLabel : cat}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </details>
           )}
         
-
       </div>
     )}
       <div className="rba-gallery-items" style={masonryStyles}>

@@ -64,98 +64,123 @@
       }
     }
 
-    // Responsive Support - Mobile Only Dropdown
+    // Responsive Support - CSS-only approach
     &.has-responsive-support {
-      // Desktop and tablet - no changes, show all buttons normally
+      // Desktop and tablet - show tabs, hide dropdown
       @media (min-width: 768px) {
-        // Hide dropdown menu on desktop/tablet
-        .dropdown-menu {
-          display: none !important;
+        .rba-gf-tabs {
+          display: inline-block;
         }
-        
-        // Show all buttons normally on desktop/tablet
-        .gallery-filter-button {
-          display: inline-block !important;
+        .rba-gf-dropdown {
+          display: none;
         }
       }
       
-      // Mobile only - hide all buttons except "All"
+      // Mobile - hide tabs, show dropdown
       @media (max-width: 767px) {
-        position: relative; // Add this for proper dropdown positioning
-        
-        .gallery-filter-button:not(:first-child) {
-          display: none !important;
+        .rba-gf-tabs {
+          display: none;
         }
-        
-        // Add dropdown arrow to the "All" button
-        .gallery-filter-button:first-child {
+        .rba-gf-dropdown {
+          display: inline-block;
           position: relative;
-          padding-right: 30px !important; // Space for arrow
+          width: fit-content;
         }
         
-        .gallery-filter-button:first-child::after {
-          content: "\25BC"; // ▼ dropdown arrow
-          position: absolute;
-          right: 8px;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 10px;
-          opacity: 0.7;
-          pointer-events: none;
+        // Style the dropdown toggle button
+        .rba-gf-toggle {
+          display: inline-block;
+          position: relative;
+          padding-right: 30px !important;
+          cursor: pointer;
+          user-select: none;
+          
+          &::after {
+            content: "\25BC"; // ▼ dropdown arrow
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            opacity: 0.7;
+            pointer-events: none;
+            transition: transform 0.2s ease;
+          }
+          
+          // Remove default summary styling
+          &::-webkit-details-marker {
+            display: none;
+          }
+          
+          &::marker {
+            content: "";
+          }
         }
         
-        // Dropdown menu styling
-        .dropdown-menu {
+        // Style the dropdown menu to match single label width
+        .rba-gf-menu {
           display: none;
           position: absolute;
           top: 100%;
-          min-width: 120px;
-          background: #fff;
+          left: 0;
+          right: 0;
+          background: white;
           border: 1px solid #ddd;
-          border-radius: 4px;
+          border-top: none;
+          border-radius: 0 0 4px 4px;
           box-shadow: 0 2px 8px rgba(0,0,0,0.1);
           z-index: 1000;
-          margin-top: 2px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          box-sizing: border-box;
         }
-        
-        // Align dropdown based on button alignment
-        &.filter-tab-alignment-left .dropdown-menu {
-          left: 0;
-        }
-        
-        &.filter-tab-alignment-center .dropdown-menu {
-          left: 50%;
-          transform: translateX(-50%);
-        }
-        
-        &.filter-tab-alignment-right .dropdown-menu {
-          right: 0;
-        }
-        
-        // Show dropdown when open
-        &.dropdown-open .dropdown-menu {
+
+        // Show menu when details is open
+        .rba-gf-dropdown[open] .rba-gf-menu {
           display: block;
         }
         
-        // Change arrow direction when open
-        &.dropdown-open .gallery-filter-button:first-child::after {
+        // Change arrow when open
+        .rba-gf-dropdown[open] .rba-gf-toggle::after {
           content: "\25B2"; // ▲
+          transform: translateY(-50%);
         }
         
-        // Dropdown items
+        // Style the dropdown trigger when showing a selected category (not "All")
+        .rba-gf-toggle.is-active {
+          background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+          color: var(--filter-tab-hover-text-color, #fff) !important;
+        }
+        
+        // Ensure dropdown trigger shows hover colors when displaying selected category
+        .gallery-filter-button.rba-gf-toggle.is-active {
+          background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+          color: var(--filter-tab-hover-text-color, #fff) !important;
+        }
+        
+        // Style dropdown items to match single label appearance
         .dropdown-item {
           display: block;
-          width: 100%;
-          padding: 8px 12px;
-          border: none;
-          background: none;
+          margin: 0;
+          border-radius: 0;
           text-align: left;
+          border: none;
+          background: white;
           cursor: pointer;
-          font-size: inherit;
-          color: inherit;
+          transition: background-color 0.2s ease, color 0.2s ease;
           
-          &:hover,
-          &:active {
+          &:hover, &:active {
+            background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+            color: var(--filter-tab-hover-text-color, #fff) !important;
+          }
+          
+          &.is-active {
+            background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+            color: var(--filter-tab-hover-text-color, #fff) !important;
+          }
+          
+          &.gallery-filter-button.is-active {
             background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
             color: var(--filter-tab-hover-text-color, #fff) !important;
           }
@@ -167,16 +192,22 @@
           &:last-child {
             border-radius: 0 0 4px 4px;
           }
-          
-          &.active {
-            background-color: #0073aa;
-            color: #fff;
-          }
+        }
+        
+        // Dropdown alignment to match single label
+        &[data-tab-alignment-mobile="center"] .rba-gf-menu {
+          left: 50%;
+          transform: translateX(-50%);
+          right: auto;
+        }
+        
+        &[data-tab-alignment-mobile="right"] .rba-gf-menu {
+          left: auto;
+          right: 0;
         }
       }
     }
-
-    
+  
     &.filter-tab-alignment-left {
       text-align: left !important;
     }
@@ -189,9 +220,7 @@
       text-align: right !important;
     }
   }
-
-
-
+  
   // Responsive alignment for tablet
   @media (max-width: 976px) {
     .gallery-filter-wrapper[data-tab-alignment-tablet="left"] {
@@ -211,27 +240,14 @@
   @media (max-width: 767px) {
     .gallery-filter-wrapper[data-tab-alignment-mobile="left"] {
       text-align: left !important;
-      
-      &.has-responsive-support .dropdown-menu {
-        left: 0;
-      }
     }
     
     .gallery-filter-wrapper[data-tab-alignment-mobile="center"] {
       text-align: center !important;
-      
-      &.has-responsive-support .dropdown-menu {
-        left: 50%;
-        transform: translateX(-50%);
-      }
     }
     
     .gallery-filter-wrapper[data-tab-alignment-mobile="right"] {
       text-align: right !important;
-      
-      &.has-responsive-support .dropdown-menu {
-        right: 0;
-      }
     }
   }
 
