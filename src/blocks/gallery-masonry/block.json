@@ -276,7 +276,7 @@
     },
     "filterTabBackgroundColor": {
       "type": "string",
-      "default": "#ffffff"
+      "default": "#F2F2F2"
     },
     "filterTabHoverTextColor": {
       "type": "string",
