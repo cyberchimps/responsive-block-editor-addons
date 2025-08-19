@@ -35,7 +35,6 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
-
     filterTabTypographyFontFamily,
     filterTabTypographyFontSize,
     filterTabTypographyFontSizeTablet,

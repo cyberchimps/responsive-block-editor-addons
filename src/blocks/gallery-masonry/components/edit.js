@@ -75,8 +75,6 @@ class GalleryMasonryEdit extends Component {
     );
     document.head.appendChild($style);
 
-
-
     const images = attributes.images;
 
     if (images && images.length > 0) {
@@ -154,8 +152,6 @@ class GalleryMasonryEdit extends Component {
       });
     }
   }
-
-
 
   // Refresh media data when images change
   refreshMediaData() {
@@ -291,7 +287,6 @@ class GalleryMasonryEdit extends Component {
     return ["All", ...Array.from(categories)];
 }
 
-
   render() {
     const { attributes, className, isSelected, noticeUI } = this.props;
     const {
@@ -321,47 +316,47 @@ class GalleryMasonryEdit extends Component {
       filterTabTypographyLineHeight,
       filterTabTypographyLetterSpacing,
       filterTabTypographyTextTransform,
-          filterTabTypographyTextDecoration,
-    filterTabTopPadding,
-    filterTabRightPadding,
-    filterTabBottomPadding,
-    filterTabLeftPadding,
-    filterTabTopPaddingTablet,
-    filterTabRightPaddingTablet,
-    filterTabBottomPaddingTablet,
-    filterTabLeftPaddingTablet,
-    filterTabTopPaddingMobile,
-    filterTabRightPaddingMobile,
-    filterTabBottomPaddingMobile,
-    filterTabLeftPaddingMobile,
-    filterTabIsPaddingControlConnected,
-    filterTabSpacingBetween,
-    filterTabSpacingBetweenTablet,
-    filterTabSpacingBetweenMobile,
-    filterTabBottomSpacing,
-    filterTabBottomSpacingTablet,
-    filterTabBottomSpacingMobile,
-    filterTabTextColor,
-    filterTabBackgroundColor,
-    filterTabHoverTextColor,
-    filterTabHoverBackgroundColor,
-    filterTabBorderStyle,
-    filterTabTopBorderwidth,
-    filterTabRightBorderwidth,
-    filterTabBottomBorderwidth,
-    filterTabLeftBorderwidth,
-    filterTabTopBorderwidthTablet,
-    filterTabRightBorderwidthTablet,
-    filterTabBottomBorderwidthTablet,
-    filterTabLeftBorderwidthTablet,
-    filterTabTopBorderwidthMobile,
-    filterTabRightBorderwidthMobile,
-    filterTabBottomBorderwidthMobile,
-    filterTabLeftBorderwidthMobile,
-    filterTabIsBorderwidthControlConnected,
-    filterTabBorderColor,
-    enableResponsiveSupport,
-    } = attributes;
+      filterTabTypographyTextDecoration,
+      filterTabTopPadding,
+      filterTabRightPadding,
+      filterTabBottomPadding,
+      filterTabLeftPadding,
+      filterTabTopPaddingTablet,
+      filterTabRightPaddingTablet,
+      filterTabBottomPaddingTablet,
+      filterTabLeftPaddingTablet,
+      filterTabTopPaddingMobile,
+      filterTabRightPaddingMobile,
+      filterTabBottomPaddingMobile,
+      filterTabLeftPaddingMobile,
+      filterTabIsPaddingControlConnected,
+      filterTabSpacingBetween,
+      filterTabSpacingBetweenTablet,
+      filterTabSpacingBetweenMobile,
+      filterTabBottomSpacing,
+      filterTabBottomSpacingTablet,
+      filterTabBottomSpacingMobile,
+      filterTabTextColor,
+      filterTabBackgroundColor,
+      filterTabHoverTextColor,
+      filterTabHoverBackgroundColor,
+      filterTabBorderStyle,
+      filterTabTopBorderwidth,
+      filterTabRightBorderwidth,
+      filterTabBottomBorderwidth,
+      filterTabLeftBorderwidth,
+      filterTabTopBorderwidthTablet,
+      filterTabRightBorderwidthTablet,
+      filterTabBottomBorderwidthTablet,
+      filterTabLeftBorderwidthTablet,
+      filterTabTopBorderwidthMobile,
+      filterTabRightBorderwidthMobile,
+      filterTabBottomBorderwidthMobile,
+      filterTabLeftBorderwidthMobile,
+      filterTabIsBorderwidthControlConnected,
+      filterTabBorderColor,
+      enableResponsiveSupport,
+      } = attributes;
 
     const hasImages = !!images.length;
 
@@ -487,8 +482,6 @@ class GalleryMasonryEdit extends Component {
                   {cat === "All" ? allTabLabel : cat}
                 </button>
               ))}
-
-
             </div>
           )}
 
