@@ -1766,34 +1766,18 @@ export default function Inspector(props) {
               </>
             )}
             {"video" == backgroundType && (
-              <>
-                <RbeaMediaUploadControl
-                  label={__("Video", "responsive-block-editor-addons")}
-                  value={{
-                    url: backgroundVideo ? backgroundVideo.url : "",
-                  }}
-                  onChange={(newValue) => {
-                    setAttributes({
-                      backgroundVideo: newValue,
-                    });
-                  }}
-                  mediaType={"video"}
-                />
-                {backgroundVideo && (
-                  <RbeaRangeControl
-                    label={__("Opacity", "responsive-block-editor-addons")}
-                    value={opacity}
-                    onChange={(value) =>
-                      setAttributes({
-                        opacity: value !== undefined ? value : 20,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    allowReset
-                  />
-                )}
-              </>
+              <RbeaMediaUploadControl
+                label={__("Video", "responsive-block-editor-addons")}
+                value={{
+                  url: backgroundVideo ? backgroundVideo.url : "",
+                }}
+                onChange={(newValue) => {
+                  setAttributes({
+                    backgroundVideo: newValue,
+                  });
+                }}
+                mediaType={"video"}
+              />
             )}
           </PanelBody>
 

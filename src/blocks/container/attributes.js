@@ -33,27 +33,27 @@ const attributes = {
   },
   innerContentCustomWidthDesktop: {
     type: "number",
-    default: 100,
+    default: 1340,
   },
   innerContentCustomWidthTablet: {
     type: "number",
-    default: 100,
+    default: 1024,
   },
   innerContentCustomWidthMobile: {
     type: "number",
-    default: 100,
+    default: 767,
   },
   innerContentBoxWidthTypeDesktop: {
     type: "string",
-    default: "%",
+    default: "px",
   },
   innerContentBoxWidthTypeTablet: {
     type: "string",
-    default: "%",
+    default: "px",
   },
   innerContentBoxWidthTypeMobile: {
     type: "string",
-    default: "%",
+    default: "px",
   },
   customWidthDesktop: {
     type: "number",
@@ -64,6 +64,7 @@ const attributes = {
   },
   customWidthMobile: {
     type: "number",
+    default: 100,
   },
   customWidthTypeDesktop: {
     type: "string",
@@ -71,9 +72,11 @@ const attributes = {
   },
   customWidthTypeTablet: {
     type: "string",
+    default: "%",
   },
   customWidthTypeMobile: {
     type: "string",
+    default: "%",
   },
   rowGapDesktop: {
     type: "number",
@@ -81,11 +84,9 @@ const attributes = {
   },
   rowGapTablet: {
     type: "number",
-    default: 20,
   },
   rowGapMobile: {
     type: "number",
-    default: 20,
   },
   rowGapTypeDesktop: {
     type: "string",
@@ -105,11 +106,9 @@ const attributes = {
   },
   columnGapTablet: {
     type: "number",
-    default: 20,
   },
   columnGapMobile: {
     type: "number",
-    default: 20,
   },
   columnGapTypeDesktop: {
     type: "string",
@@ -157,11 +156,9 @@ const attributes = {
   },
   directionTablet: {
     type: "string",
-    default: "row",
   },
   directionMobile: {
     type: "string",
-    default: "row",
   },
   alignItemsDesktop: {
     type: "string",
@@ -169,11 +166,9 @@ const attributes = {
   },
   alignItemsTablet: {
     type: "string",
-    default: "center",
   },
   alignItemsMobile: {
     type: "string",
-    default: "center",
   },
   justifyContentDesktop: {
     type: "string",
@@ -181,11 +176,9 @@ const attributes = {
   },
   justifyContentTablet: {
     type: "string",
-    default: "center",
   },
   justifyContentMobile: {
     type: "string",
-    default: "center",
   },
   childrenWidthDesktop: {
     type: "string",
@@ -193,11 +186,9 @@ const attributes = {
   },
   childrenWidthTablet: {
     type: "string",
-    default: "equal",
   },
   childrenWidthMobile: {
     type: "string",
-    default: "equal",
   },
   wrapDesktop: {
     type: "string",
@@ -205,11 +196,9 @@ const attributes = {
   },
   wrapTablet: {
     type: "string",
-    default: "nowrap",
   },
   wrapMobile: {
     type: "string",
-    default: "nowrap",
   },
   alignContentDesktop: {
     type: "string",
@@ -217,11 +206,9 @@ const attributes = {
   },
   alignContentTablet: {
     type: "string",
-    default: "",
   },
   alignContentMobile: {
     type: "string",
-    default: "",
   },
   backgroundType: {
     type: "string",
@@ -246,11 +233,9 @@ const attributes = {
   },
   backgroundPositionMobile: {
     type: 'string',
-    default: "center center",
   },
   backgroundPositionTablet: {
     type: 'string',
-    default: "center center",
   },
   backgroundRepeat: {
     type: 'string',
@@ -262,17 +247,12 @@ const attributes = {
   },
   backgroundSizeTablet: {
     type: 'string',
-    default: "cover",
   },
   backgroundSizeMobile: {
     type: 'string',
-    default: "cover",
   },
   backgroundVideo: {
     type: "object",
-  },
-  buttonColor: {
-    type: "string",
   },
   textColor: {
     type: "string",
@@ -283,59 +263,7 @@ const attributes = {
   linkColorHover: {
     type: "string",
   },
-  containerBorderStyle: {
-    type: "string",
-    default: "none",
-  },
-  containerBorderWidth: {
-    type: "number",
-    default: 1,
-  },
   containerBorderRadius: {
-    type: "number",
-    default: 0,
-  },
-  containerTopRadius: {
-    type: "number",
-    default: 0,
-  },
-  containerRightRadius: {
-    type: "number",
-    default: 0,
-  },
-  containerBottomRadius: {
-    type: "number",
-    default: 0,
-  },
-  containerLeftRadius: {
-    type: "number",
-    default: 0,
-  },
-  containerTopRadiusTablet: {
-    type: "number",
-    default: 0,
-  },
-  containerRightRadiusTablet: {
-    type: "number",
-    default: 0,
-  },
-  containerBottomRadiusTablet: {
-    type: "number",
-    default: 0,
-  },
-  containerLeftRadiusTablet: {
-    type: "number",
-    default: 0,
-  },
-  containerTopRadiusMobile: {
-    type: "number",
-    default: 0,
-  },
-  containerRightRadiusMobile: {
-    type: "number",
-    default: 0,
-  },
-  containerBottomRadiusMobile: {
     type: "number",
     default: 0,
   },
@@ -453,10 +381,6 @@ const attributes = {
     type: "number",
     default: 0,
   },
-  containerLeftRadiusMobile: {
-    type: "number",
-    default: 0,
-  },
   containerBorderStyle: {
     type: "string",
   },
@@ -465,54 +389,6 @@ const attributes = {
   },
   containerBorderColor: {
     type: "string",
-  },
-  rowGapDesktop: {
-    type: "number",
-    default: 20,
-  },
-  rowGapTablet: {
-    type: "number",
-    default: 20,
-  },
-  rowGapMobile: {
-    type: "number",
-    default: 20,
-  },
-  rowGapTypeDesktop: {
-    type: "string",
-    default: "px",
-  },
-  rowGapTypeTablet: {
-    type: "string",
-    default: "px",
-  },
-  rowGapTypeMobile: {
-    type: "string",
-    default: "px",
-  },
-  columnGapDesktop: {
-    type: "number",
-    default: 20,
-  },
-  columnGapTablet: {
-    type: "number",
-    default: 20,
-  },
-  columnGapMobile: {
-    type: "number",
-    default: 20,
-  },
-  columnGapTypeDesktop: {
-    type: "string",
-    default: "px",
-  },
-  columnGapTypeTablet: {
-    type: "string",
-    default: "px",
-  },
-  columnGapTypeMobile: {
-    type: "string",
-    default: "px",
   },
   containerTopPadding: {
     type: "number",

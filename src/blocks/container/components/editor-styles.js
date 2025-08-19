@@ -117,15 +117,24 @@ function EditorStyles(props) {
     linkColor,
     linkColorHover,
     opacity,
+	backgroundColor,
+	backgroundRepeat,
+	backgroundPosition,
+	backgroundPositionTablet,
+	backgroundPositionMobile,
+	backgroundSize,
+	backgroundSizeTablet,
+	backgroundSizeMobile,
+	backgroundImage,
   } = props.attributes;
 
   const { clientId } = props;
   
-  if ( isBlockRootParent ) {
-    console.log('parentprops ID -> ' + clientId);
-  } else {
-    console.log('childprops ID -> ' + clientId);
-  }
+  // if ( isBlockRootParent ) {
+  //   console.log('parentprops ID -> ' + clientId);
+  // } else {
+  //   console.log('childprops ID -> ' + clientId);
+  // }
 
   const borderStyles = {
     'border-style': containerBorderStyle,
@@ -199,9 +208,9 @@ function EditorStyles(props) {
 		'.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block': {
 			'color': textColor,
 		},
-		'.wp-block-responsive-block-editor-addons-container *': {
-			'color': textColor,
-		},
+		// '.wp-block-responsive-block-editor-addons-container *': {
+		// 	'color': textColor,
+		// },
 		'.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block a': {
 			'color': linkColor,
 		},
@@ -225,9 +234,38 @@ function EditorStyles(props) {
 		boxShadowPositionCSSHover = '';
 	}
 
-  let containerBackgroundCSSMobile = {};
+  	let containerBackgroundCSSMobile = {};
 	let containerBackgroundCSSTablet = {};
 	let containerBackgroundCSSDesktop = {};
+
+	if ( backgroundType === 'color' ) {
+		containerBackgroundCSSDesktop = {
+			'background-color': backgroundColor,
+			'opacity': parseInt(opacity)/100,
+		}
+	}
+	if ( backgroundType === 'gradient' ) {
+		containerBackgroundCSSDesktop = {
+			'background-image': gradient,
+		}
+	}
+	if ( backgroundType === 'image' ) {
+		containerBackgroundCSSDesktop = {
+			'background-image': `url(${backgroundImage})`,
+			'opacity': parseInt(opacity)/100,
+			'background-repeat': backgroundRepeat,
+			'background-position': backgroundPosition,
+			'background-size': backgroundSize,
+		}
+		containerBackgroundCSSTablet = {
+			'background-position': backgroundPositionTablet,
+			'background-size': backgroundSizeTablet,
+		}
+		containerBackgroundCSSMobile = {
+			'background-position': backgroundPositionMobile,
+			'background-size': backgroundSizeMobile,
+		}
+	}
 
   const containerCSS = {
 		'padding-top': generateCSSUnit( containerTopPadding, 'px' ),
@@ -365,7 +403,7 @@ function EditorStyles(props) {
       "opacity": hideWidgetMobile? 0.2 : 1,
     },
 		// Handeling Edge case for mobile. 
-		'.wp-block-uagb-container .block-editor-inner-blocks .block-editor-block-list__layout .wp-block[data-type="core/quote"]' : {
+		'.wp-block-responsive-block-editor-addons-container .block-editor-inner-blocks .block-editor-block-list__layout .wp-block[data-type="core/quote"]' : {
 			'margin-inline-start': '0px',
       'margin-inline-end': '0px',
 		},
@@ -455,18 +493,19 @@ function EditorStyles(props) {
 			const boxShadowBlurHoverCSSUnit =
 				'' === hoverboxShadowBlur ? '' : generateCSSUnit( hoverboxShadowBlur, 'px' );
 
-			selectors[ '.wp-block-responsive-block-editor-addons-container:hover .responsive-block-editor-addons-container__video-wrap' ][ 'box-shadow' ] =
-				generateCSSUnit( hoverboxShadowHOffset, 'px' ) +
-				' ' +
-				generateCSSUnit( hoverboxShadowVOffset, 'px' ) +
-				' ' +
-				boxShadowBlurHoverCSSUnit +
-				' ' +
-				generateCSSUnit( hoverboxShadowSpread, 'px' ) +
-				' ' +
-				hoverboxShadowColor +
-				' ' +
-				boxShadowPositionCSSHover;
+			selectors[ '.wp-block-responsive-block-editor-addons-container:hover .responsive-block-editor-addons-container__video-wrap' ] = {
+        		'box-shadow': generateCSSUnit( hoverboxShadowHOffset, 'px' ) +
+					' ' +
+					generateCSSUnit( hoverboxShadowVOffset, 'px' ) +
+					' ' +
+					boxShadowBlurHoverCSSUnit +
+					' ' +
+					generateCSSUnit( hoverboxShadowSpread, 'px' ) +
+					' ' +
+					hoverboxShadowColor +
+					' ' +
+					boxShadowPositionCSSHover,
+			}
 		}
 	} else {
 		selectors[ '.wp-block-responsive-block-editor-addons-container' ] = containerCSS;
@@ -484,7 +523,7 @@ function EditorStyles(props) {
 			'margin-left': generateCSSUnit( containerLeftMarginTablet, 'px' ) + ' !important',
 			'margin-right': generateCSSUnit( containerRightMarginTablet, 'px' ) + ' !important',
 			'min-height': generateCSSUnit( minHeightTablet, 'px' ) + ' !important',
-      ...borderStylesTablet,
+      		...borderStylesTablet,
 			...containerBackgroundCSSTablet,
 			'order': 'custom' === orderTablet ? customOrderTablet : orderTablet,
 		};

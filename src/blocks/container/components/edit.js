@@ -24,8 +24,6 @@ export default function Edit(props) {
 		name,
   } = props;
 
-  console.log(attributes)
-
   const {
     isParentOfSelectedBlock,
     variations,
