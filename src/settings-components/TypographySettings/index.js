@@ -271,8 +271,7 @@ class TypographyControl extends Component {
                         min={0}
                         max={100}
                         step={0.0001}
-                        allowReset={true}
-                        resetFallbackValue={1}
+                        allowReset
                     />
                     {this.props.showLetterSpacing == true && (
                         <RbeaRangeControl
