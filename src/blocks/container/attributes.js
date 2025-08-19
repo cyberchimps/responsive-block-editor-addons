@@ -234,8 +234,39 @@ const attributes = {
   backgroundColor: {
     type: "string",
   },
+  gradient: {
+    type: "string",
+  },
   backgroundImage: {
     type: "string",
+  },
+  backgroundPosition: {
+    type: 'string',
+    default: "center center",
+  },
+  backgroundPositionMobile: {
+    type: 'string',
+    default: "center center",
+  },
+  backgroundPositionTablet: {
+    type: 'string',
+    default: "center center",
+  },
+  backgroundRepeat: {
+    type: 'string',
+    default: "no-repeat",
+  },
+  backgroundSize: {
+    type: 'string',
+    default: "cover",
+  },
+  backgroundSizeTablet: {
+    type: 'string',
+    default: "cover",
+  },
+  backgroundSizeMobile: {
+    type: 'string',
+    default: "cover",
   },
   backgroundVideo: {
     type: "object",
@@ -370,6 +401,195 @@ const attributes = {
 		type: 'boolean',
 		default: false,
 	},
+  imagePositionTab: {
+    type: "string",
+    default: "desktop",
+  },
+  imageSizeTab: {
+    type: "string",
+    default: "desktop",
+  },
+  containerTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  containerRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  containerBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  containerLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  containerTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  containerRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  containerBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  containerLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  containerTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  containerRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  containerBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  containerLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  containerBorderStyle: {
+    type: "string",
+  },
+  containerBorderWidth: {
+    type: "number",
+  },
+  containerBorderColor: {
+    type: "string",
+  },
+  rowGapDesktop: {
+    type: "number",
+    default: 20,
+  },
+  rowGapTablet: {
+    type: "number",
+    default: 20,
+  },
+  rowGapMobile: {
+    type: "number",
+    default: 20,
+  },
+  rowGapTypeDesktop: {
+    type: "string",
+    default: "px",
+  },
+  rowGapTypeTablet: {
+    type: "string",
+    default: "px",
+  },
+  rowGapTypeMobile: {
+    type: "string",
+    default: "px",
+  },
+  columnGapDesktop: {
+    type: "number",
+    default: 20,
+  },
+  columnGapTablet: {
+    type: "number",
+    default: 20,
+  },
+  columnGapMobile: {
+    type: "number",
+    default: 20,
+  },
+  columnGapTypeDesktop: {
+    type: "string",
+    default: "px",
+  },
+  columnGapTypeTablet: {
+    type: "string",
+    default: "px",
+  },
+  columnGapTypeMobile: {
+    type: "string",
+    default: "px",
+  },
+  containerTopPadding: {
+    type: "number",
+    default: 10,
+  },
+  containerBottomPadding: {
+    type: "number",
+    default: 10,
+  },
+  containerLeftPadding: {
+    type: "number",
+    default: 10,
+  },
+  containerRightPadding: {
+    type: "number",
+    default: 10,
+  },
+  containerTopPaddingTablet: {
+    type: "number",
+  },
+  containerBottomPaddingTablet: {
+    type: "number",
+  },
+  containerLeftPaddingTablet: {
+    type: "number",
+  },
+  containerRightPaddingTablet: {
+    type: "number",
+  },
+  containerTopPaddingMobile: {
+    type: "number",
+  },
+  containerBottomPaddingMobile: {
+    type: "number",
+  },
+  containerLeftPaddingMobile: {
+    type: "number",
+  },
+  containerRightPaddingMobile: {
+    type: "number",
+  },
+  containerTopMargin: {
+    type: "number",
+  },
+  containerBottomMargin: {
+    type: "number",
+  },
+  containerLeftMargin: {
+    type: "number",
+  },
+  containerRightMargin: {
+    type: "number",
+  },
+  containerTopMarginTablet: {
+    type: "number",
+  },
+  containerBottomMarginTablet: {
+    type: "number",
+  },
+  containerLeftMarginTablet: {
+    type: "number",
+  },
+  containerRightMarginTablet: {
+    type: "number",
+  },
+  containerTopMarginMobile: {
+    type: "number",
+  },
+  containerBottomMarginMobile: {
+    type: "number",
+  },
+  containerLeftMarginMobile: {
+    type: "number",
+  },
+  containerRightMarginMobile: {
+    type: "number",
+  },
 };
 
 export default attributes;
