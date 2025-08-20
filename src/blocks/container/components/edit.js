@@ -76,7 +76,7 @@ export default function Edit(props) {
       "responsive-block-editor-addons-container-style-" + clientId
     );
     if (styleEl) {
-      styleEl.innerHTML = EditorStyles(props);
+      styleEl.innerHTML = EditorStyles(props, deviceType);
     }
   }, [props]);
 
@@ -115,6 +115,7 @@ export default function Edit(props) {
 
   return [
     <>
+      <style id={`responsive-block-editor-addons-container-style-${clientId}-inner`}>{EditorStyles(props, deviceType)}</style>
       <Inspector
         key={`inspector-${block_id}`}
         {...{ setAttributes, ...props }}

@@ -199,6 +199,7 @@ const attributes = {
   },
   wrapMobile: {
     type: "string",
+    default: "wrap",
   },
   alignContentDesktop: {
     type: "string",

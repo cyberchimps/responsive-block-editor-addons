@@ -5,7 +5,7 @@
 import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 
-function EditorStyles(props) {
+function EditorStyles(props, deviceType) {
   let {
     block_id,
     hideWidget,
@@ -202,9 +202,9 @@ function EditorStyles(props) {
   const containerFullWidth = '100vw';
 
   const selectors = {
-    '': {
-      'opacity': hideWidget ? 0.2 : 1,
-    },
+		'': {
+			'opacity': hideWidget ? 0.2 : 1,
+		},
 		'.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block': {
 			'color': textColor,
 		},
@@ -296,7 +296,7 @@ function EditorStyles(props) {
 	};
 
   hoverboxShadowBlur = isNaN( hoverboxShadowBlur ) ? '' : hoverboxShadowBlur;
-	hoverboxShadowColor = hoverboxShadowColor ? hoverboxShadowColor : '';
+  hoverboxShadowColor = hoverboxShadowColor ? hoverboxShadowColor : '';
 
   let containerFlexSelector = '.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout';
   if ( ! isBlockRootParent || 'alignfull' !== contentWidth || 'alignwide' !== innerContentWidth ) {
@@ -305,8 +305,8 @@ function EditorStyles(props) {
 
   const gbsWidthSelector = `#block-${ clientId }`;
   const widthSelectorsDesktop = {};
-	const widthSelectorsTablet = {};
-	const widthSelectorsMobile = {};
+  const widthSelectorsTablet = {};
+  const widthSelectorsMobile = {};
 
   selectors[ containerFlexSelector ] = {
     'flex-direction': directionDesktop,
