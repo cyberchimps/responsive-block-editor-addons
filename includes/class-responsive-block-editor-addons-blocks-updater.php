@@ -22,6 +22,23 @@
 class Responsive_Block_Editor_Addons_Blocks_Updater {
 
 	/**
+	 * Private Instance.
+	 */
+	private static $instance;
+
+	/**
+	 * Constructor.
+	 */
+    private function __construct() {}
+
+    public static function get_instance() {
+        if ( ! isset( self::$instance ) ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+	/**
 	 * Retrieves the RBEA Blocks
 	 *
 	 * List of all the RBEA Blocks
@@ -30,6 +47,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 	 */
 	public function get_rbea_blocks() {
 		$blocks = array(
+			array(
+				'key'      => 'container',
+				'title'    => 'Container',
+				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/container/',
+				'demo'     => 'https://cyberchimps.com/responsive-blocks/container/',
+				'category' => 'content',
+				'status'   => 1,
+			),
 			array(
 				'key'      => 'section',
 				'title'    => 'Section',
