@@ -22,15 +22,15 @@ export default function save( props ) {
 	const customTagLinkAttributes = {};
 	if ( htmlTag === 'a' ) {
 		customTagLinkAttributes.rel = 'noopener';
-    if ( htmlTagLink?.url ) {
-      customTagLinkAttributes.href = htmlTagLink?.url;
-    }
-    if ( htmlTagLink?.opensInNewTab ) {
-      customTagLinkAttributes.target = '_blank';
-    }
-    if ( htmlTagLink?.noFollow ) {
-      customTagLinkAttributes.rel = 'nofollow noopener';
-    }
+		if ( htmlTagLink?.url ) {
+			customTagLinkAttributes.href = htmlTagLink?.url;
+		}
+		if ( htmlTagLink?.opensInNewTab ) {
+			customTagLinkAttributes.target = '_blank';
+		}
+		if ( htmlTagLink?.noFollow ) {
+			customTagLinkAttributes.rel = 'nofollow noopener';
+		}
 	}
 
 	const blockProps = useBlockProps.save();
