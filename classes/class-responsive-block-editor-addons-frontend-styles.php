@@ -22412,8 +22412,71 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			// Border CSS to be applied here.
 
+			$border = array(
+				'border-style'               => $attr['containerBorderStyle'],
+				'border-width'               => self::get_css_value( $attr['containerBorderWidth'], 'px' ),
+				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadius'], 'px' ),
+				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadius'], 'px' ),
+				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadius'], 'px' ),
+				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadius'], 'px' ),
+				'border-color'               => $attr['containerBorderColor'],
+			);
+
+			// If there's no border-color, set it to inherit.
+			if ( empty( $border['border-color'] ) ) {
+				$border['border-color'] = 'inherit';
+			}
+
+			$border_tablet = array(
+				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusTablet'], 'px' ),
+				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusTablet'], 'px' ),
+				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusTablet'], 'px' ),
+				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusTablet'], 'px' ),
+			);
+
+			$border_mobile = array(
+				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusMobile'], 'px' ),
+				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusMobile'], 'px' ),
+				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusMobile'], 'px' ),
+				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusMobile'], 'px' ),
+			);
 
 			// Container Background CSS to be applied here.
+
+			$container_bg_css_desktop = array();
+			$container_bg_css_tablet  = array();
+			$container_bg_css_mobile  = array();
+
+			if ( 'color' === $attr['backgroundType'] ) {
+				$container_bg_css_desktop = array(
+					'background-color' => $attr['backgroundColor'],
+					'opacity'          => $attr['opacity'] / 100,
+				);
+			}
+
+			if ( 'gradient' === $attr['backgroundType'] ) {
+				$container_bg_css_desktop = array(
+					'background-image' => $attr['gradient'],
+				);
+			}
+
+			if ( 'image' === $attr['backgroundType'] ) {
+				$container_bg_css_desktop = array(
+					'background-image'    => 'url(' . $attr['backgroundImage'] . ')',
+					'opacity'             => $attr['opacity'] / 100,
+					'background-repeat'   => $attr['backgroundRepeat'],
+					'background-position' => $attr['backgroundPosition'],
+					'background-size'     => $attr['backgroundSize'],
+				);
+				$container_bg_css_tablet = array(
+					'background-position' => $attr['backgroundPositionTablet'],
+					'background-size'     => $attr['backgroundSizeTablet'],
+				);
+				$container_bg_css_mobile = array(
+					'background-position' => $attr['backgroundPositionMobile'],
+					'background-size'     => $attr['backgroundSizeMobile'],
+				);
+			}
 
 			// Tablet Padding.
 			$left_padding_tablet   = '' !== $attr['containerLeftPaddingTablet'] ? $attr['containerLeftPaddingTablet'] : $attr['containerLeftPadding'];
@@ -22476,9 +22539,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'   => self::get_css_value( $attr['containerRightMargin'], 'px' ),
 					'overflow'       => $attr['overflow'],
 					'order'          => $order_desktop,
-					// Use border CSS here.
-					// Use Background CSS here.
-				)
+				),
+				$border,
+				$container_bg_css_desktop,
 			);
 
 			$inner_container_css = array(
@@ -22524,8 +22587,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'   => self::get_css_value( $right_margin_tablet, 'px' ),
 					'order'          => $order_tablet,
 				),
-				// Use Tablet Border CSS here.
-				// Use Tablet Background CSS here.
+				$border_tablet,
+				$container_bg_css_tablet,
 			);
 
 			$inner_container_tablet_css = array(
@@ -22555,8 +22618,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'column-gap'     => self::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 					'order'          => $order_mobile,
 				),
-				// Use Mobile Border CSS here.
-				// Use Mobile Background CSS here.
+				$border_mobile,
+				$container_bg_css_mobile,
 			);
 
 			$inner_container_mobile_css = array(
@@ -22636,9 +22699,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'video' === $attr['backgroundType'] ) {
-				// $selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ]   = array_merge( $video_bg_css, $border );
-				// $tablet_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_tablet;
-				// $mobile_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_mobile;
+				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ]   = array_merge( array(), $border );
+				$tablet_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_tablet;
+				$mobile_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_mobile;
 
 				$selectorClass = '.wp-block-responsive-block-editor-addons-container' . $base_selector;
 
@@ -22820,32 +22883,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$mobile_selectors[ $base_width_selector_2 ] = $set_width;
 				}
 			}
-
-			// $mobile_selectors = array();
-			// $tablet_selectors = array();
-			// $selectors        = array();
-
-			// $selectors        = array(
-			// 	'' => array(),
-			// 	' .responsive-block-editor-addons-form-input__label' => array(
-			// 		'color' => $attr['formInputLabelColor'],
-			// 	),
-			// 	' .responsive-block-editor-addons-form-input__input' => array(
-			// 		'width' => $attr['formInputWidth'] . '%',
-			// 	),
-			// 	' .responsive-block-editor-addons-form-input-checkbox-wrapper' => array(
-			// 		'display'   => $attr['formInputInline'] ? 'flex' : 'block',
-			// 		'flex-wrap' => 'wrap',
-			// 		'gap'       => '8px',
-			// 	),
-			// );
-			// $mobile_selectors = array(
-			// 	'' => array(),
-			// );
-
-			// $tablet_selectors = array(
-			// 	'' => array(),
-			// );
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
