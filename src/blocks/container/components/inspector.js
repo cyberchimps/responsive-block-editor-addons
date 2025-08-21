@@ -1484,7 +1484,6 @@ export default function Inspector(props) {
                               "responsive-block-editor-addons"
                             )}
                             defaultValue="flex-start"
-                            hasIcon
                             optionHasBorder
                           />
                         );
@@ -1492,7 +1491,7 @@ export default function Inspector(props) {
                   };
 
                   return (
-                    <div style={{ marginTop: "20px" }}>
+                    <div className="rbea-container-custom-radio-control">
                       {getAlignContentControls()}
                     </div>
                   );
