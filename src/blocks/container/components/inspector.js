@@ -1086,7 +1086,7 @@ export default function Inspector(props) {
 
                 return (
                   <>
-                    <div style={{ marginTop: "20px" }}>
+                    <div className="rbea-container-custom-radio-control">
                       <RbeaTabRadioControl
                         label={__(
                           `Direction (${tab.name})`,
@@ -1103,7 +1103,6 @@ export default function Inspector(props) {
                         )}
                         defaultValue={"row"}
                         allowReset={true}
-                        hasIcon={true}
                         optionHasBorder={true}
                       />
                     </div>
@@ -1229,7 +1228,6 @@ export default function Inspector(props) {
                           )}
                           defaultValue="center"
                           allowReset
-                          hasIcon
                           optionHasBorder
                         />
                       );
@@ -1253,7 +1251,7 @@ export default function Inspector(props) {
                 };
 
                 return (
-                  <div style={{ marginTop: "20px" }}>
+                  <div className="rbea-container-custom-radio-control">
                     {getAlignmentControls()}
                   </div>
                 );
@@ -1316,7 +1314,6 @@ export default function Inspector(props) {
                           )}
                           defaultValue="flex-start"
                           allowReset
-                          hasIcon
                           optionHasBorder
                         />
                       );
@@ -1340,7 +1337,7 @@ export default function Inspector(props) {
                 };
 
                 return (
-                  <div style={{ marginTop: "20px" }}>
+                  <div className="rbea-container-custom-radio-control">
                     {getJustifyContentControls()}
                   </div>
                 );
@@ -1402,25 +1399,26 @@ export default function Inspector(props) {
                   tabSettings[tab.name] || tabSettings.desktop;
 
                 return (
-                  <RbeaTabRadioControl
-                    label={__(
-                      `Wrap (${tab.name})`,
-                      "responsive-block-editor-addons"
-                    )}
-                    value={value}
-                    options={wrapOptions}
-                    onChange={(val) =>
-                      setAttributes({
-                        [attributeKey]: val,
-                      })
-                    }
-                    help={__(
-                      "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap).",
-                      "responsive-block-editor-addons"
-                    )}
-                    hasIcon
-                    optionHasBorder
-                  />
+                  <div className="rbea-container-custom-radio-control">
+                    <RbeaTabRadioControl
+                      label={__(
+                        `Wrap (${tab.name})`,
+                        "responsive-block-editor-addons"
+                      )}
+                      value={value}
+                      options={wrapOptions}
+                      onChange={(val) =>
+                        setAttributes({
+                          [attributeKey]: val,
+                        })
+                      }
+                      help={__(
+                        "Define whether the items are forced in a single line (No Wrap) or can be flowed into multiple lines (Wrap).",
+                        "responsive-block-editor-addons"
+                      )}
+                      optionHasBorder
+                    />
+                  </div>
                 );
               }}
             </TabPanel>

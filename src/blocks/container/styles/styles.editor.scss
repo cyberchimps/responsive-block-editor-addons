@@ -166,3 +166,23 @@
 	outline: 1.5px solid #2271b1;
 	outline-offset: 0;
 }
+
+// Container Block Inspector.
+.rbea-container-custom-radio-control {
+	margin-top: 20px;
+	.rbea-tab-radio-option {
+		padding-top: 6px !important; // Override for container block only.
+		.rbea-tab-radio-option-border {
+			svg {
+				width: 20px;
+				height: 20px;
+				fill: #666666;
+			}
+		}
+		&.is-active {
+			svg {
+				fill: #fff;
+			}
+		}
+	}
+}
