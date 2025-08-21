@@ -337,7 +337,7 @@ export const VariationPicker = (props) => {
         icon={ResponsiveBlockEditorAddonsIcons.container}
         label={__("Container", "responsive-block-editor-addons")}
         instructions={__(
-          "Select a Container Layout to start with.",
+          "Select a layout to start with.",
           "responsive-block-editor-addons"
         )}
         variations={variations}
