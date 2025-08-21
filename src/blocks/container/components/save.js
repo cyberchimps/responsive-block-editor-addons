@@ -25,7 +25,7 @@ export default function save( props ) {
 		if ( htmlTagLink?.url ) {
 			customTagLinkAttributes.href = htmlTagLink?.url;
 		}
-		if ( htmlTagLink?.opensInNewTab ) {
+		if ( linkTarget ) {
 			customTagLinkAttributes.target = '_blank';
 		}
 		if ( htmlTagLink?.noFollow ) {

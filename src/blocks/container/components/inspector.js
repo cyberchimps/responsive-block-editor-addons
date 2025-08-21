@@ -1022,8 +1022,8 @@ export default function Inspector(props) {
                   __nextHasNoMarginBottom
                   __next40pxDefaultSize
                   label={__("Link", "responsive-block-editor-addons")}
-                  value={htmlTagLink}
-                  onChange={(value) => setAttributes({ htmlTagLink: value })}
+                  value={htmlTagLink?.url}
+                  onChange={(value) => setAttributes({ htmlTagLink: { ...htmlTagLink, url: value } })}
                 />
                 <ToggleControl
                   checked={linkTarget}

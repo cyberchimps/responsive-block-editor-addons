@@ -140,7 +140,7 @@ const attributes = {
     default: "div",
   },
   htmlTagLink: {
-    type: "string",
+    type: "object",
   },
   linkTarget: {
     type: "boolean",
