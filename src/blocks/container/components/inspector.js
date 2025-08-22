@@ -724,7 +724,7 @@ export default function Inspector(props) {
             initialOpen={true}
             className="responsive_block_editor_addons__url-panel-body"
           >
-            {/* from here */}
+
             {isBlockRootParent && (
               <>
                 <RbeaTabRadioControl
@@ -852,9 +852,6 @@ export default function Inspector(props) {
                 )}
               </>
             )}
-            {/* till here */}
-
-            {/* from here */}
 
             { ( ( isBlockRootParent && 'default' === contentWidth ) || ! isBlockRootParent ) && (
               <TabPanel
@@ -925,7 +922,6 @@ export default function Inspector(props) {
                 }}
               </TabPanel>
             )}
-            {/* till here */}
 
             <TabPanel
               className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
@@ -1001,6 +997,7 @@ export default function Inspector(props) {
             </TabPanel>
 
             <ToggleControl
+              __nextHasNoMarginBottom
               label={__("Equal Height", "responsive-block-editor-addons")}
               checked={equalHeight}
               onChange={(value) => onChangeHeight(value)}
@@ -1011,6 +1008,8 @@ export default function Inspector(props) {
             />
 
             <SelectControl
+              __next40pxDefaultSize
+              __nextHasNoMarginBottom
               label={__("HTML Tag", "responsive-block-editor-addons")}
               value={htmlTag}
               options={htmlTagOptions}
@@ -1026,6 +1025,7 @@ export default function Inspector(props) {
                   onChange={(value) => setAttributes({ htmlTagLink: { ...htmlTagLink, url: value } })}
                 />
                 <ToggleControl
+                  __nextHasNoMarginBottom
                   checked={linkTarget}
                   onChange={() => setAttributes({ linkTarget: !linkTarget })}
                   label={__(
@@ -1102,7 +1102,6 @@ export default function Inspector(props) {
                           "responsive-block-editor-addons"
                         )}
                         defaultValue={"row"}
-                        allowReset={true}
                         optionHasBorder={true}
                       />
                     </div>
@@ -1175,8 +1174,8 @@ export default function Inspector(props) {
               {(tab) => {
                 const currentDirection = {
                   desktop: directionDesktop,
-                  tablet: directionTablet,
-                  mobile: directionMobile,
+                  tablet: directionTablet || directionDesktop,
+                  mobile: directionMobile || directionTablet || directionDesktop,
                 }[tab.name];
 
                 const tabSettings = {
@@ -1227,7 +1226,6 @@ export default function Inspector(props) {
                             "responsive-block-editor-addons"
                           )}
                           defaultValue="center"
-                          allowReset
                           optionHasBorder
                         />
                       );
@@ -1262,8 +1260,8 @@ export default function Inspector(props) {
               {(tab) => {
                 const currentDirection = {
                   desktop: directionDesktop,
-                  tablet: directionTablet,
-                  mobile: directionMobile,
+                  tablet: directionTablet || directionDesktop,
+                  mobile: directionMobile || directionTablet || directionDesktop,
                 }[tab.name];
 
                 const tabSettings = {
@@ -1313,7 +1311,6 @@ export default function Inspector(props) {
                             "responsive-block-editor-addons"
                           )}
                           defaultValue="flex-start"
-                          allowReset
                           optionHasBorder
                         />
                       );
@@ -1430,8 +1427,8 @@ export default function Inspector(props) {
                 {(tab) => {
                   const currentDirection = {
                     desktop: directionDesktop,
-                    tablet: directionTablet,
-                    mobile: directionMobile,
+                    tablet: directionTablet || directionDesktop,
+                    mobile: directionMobile || directionTablet || directionDesktop,
                   }[tab.name];
 
                   const tabSettings = {
@@ -2138,11 +2135,13 @@ export default function Inspector(props) {
             initialOpen={false}
           >
             <ToggleControl
+              __nextHasNoMarginBottom
               label={__("Hide on Desktop", "responsive-block-editor-addons")}
               checked={hideWidget}
               onChange={() => setAttributes({ hideWidget: !hideWidget })}
             />
             <ToggleControl
+              __nextHasNoMarginBottom
               label={__("Hide on Tablet", "responsive-block-editor-addons")}
               checked={hideWidgetTablet}
               onChange={() =>
@@ -2150,6 +2149,7 @@ export default function Inspector(props) {
               }
             />
             <ToggleControl
+              __nextHasNoMarginBottom
               label={__("Hide on Mobile", "responsive-block-editor-addons")}
               checked={hideWidgetMobile}
               onChange={() =>
