@@ -642,26 +642,26 @@ export default function Inspector(props) {
     marginRight: 0,
     marginBottom: 0,
     marginLeft: 0,
-    marginTabletTop: 10,
+    marginTabletTop: 0,
     marginTabletRight: 0,
     marginTabletBottom: 0,
     marginTabletLeft: 0,
-    marginMobileTop: 10,
+    marginMobileTop: 0,
     marginMobileRight: 0,
     marginMobileBottom: 0,
     marginMobileLeft: 0,
   };
 
   const containerPaddingResetValues = {
-    paddingTop: 0,
-    paddingRight: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingTabletTop: 10,
+    paddingTop: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingTabletTop: 0,
     paddingTabletRight: 0,
     paddingTabletBottom: 0,
     paddingTabletLeft: 0,
-    paddingMobileTop: 10,
+    paddingMobileTop: 0,
     paddingMobileRight: 0,
     paddingMobileBottom: 0,
     paddingMobileLeft: 0,
@@ -841,7 +841,7 @@ export default function Inspector(props) {
                                 setAttributes={setAttributes}
                                 extraControls={true}
                                 widthTypeKey={typeKey}
-                                resetFallbackValue={widthType === "%" ? 100 : 1200}
+                                resetFallbackValue={widthType === "%" ? 100 : ( tab.name === 'desktop' ? 1340 : ( tab.name === 'tablet' ? 1024 : 767 ) ) }
                               />
                             </div>
                           );
@@ -908,14 +908,14 @@ export default function Inspector(props) {
                           setAttributes({ widthSetByUser: true });
                         }}
                         min={0}
-                        max={widthType === "%" ? 100 : 1200}
+                        max={widthType === "%" ? 100 : 1600}
                         allowReset
                         initialPosition={20}
                         widthType={widthType}
                         setAttributes={setAttributes}
                         extraControls={true}
                         widthTypeKey={typeKey}
-                        resetFallbackValue={widthType === "%" ? 100 : 1200}
+                        resetFallbackValue={widthType === "%" ? 100 : ( tab.name === 'desktop' ? 1340 : ( tab.name === 'tablet' ? 1024 : 767 ) ) }
                       />
                     </div>
                   );
@@ -983,7 +983,7 @@ export default function Inspector(props) {
                       min={0}
                       max={1000}
                       allowReset={true}
-                      resetFallbackValue={1}
+                      resetFallbackValue={0}
                       value={value}
                       onChange={(val) =>
                         setAttributes({
@@ -2036,6 +2036,7 @@ export default function Inspector(props) {
                       widthType={widthType}
                       setAttributes={setAttributes}
                       extraControls={true}
+                      resetFallbackValue={widthType === "%" ? 5 : 20 }
                       widthTypeKey={typeKey}
                     />
                   </div>
@@ -2101,6 +2102,7 @@ export default function Inspector(props) {
                       widthType={widthType}
                       setAttributes={setAttributes}
                       extraControls={true}
+                      resetFallbackValue={widthType === "%" ? 5 : 20 }
                       widthTypeKey={typeKey}
                     />
                   </div>
