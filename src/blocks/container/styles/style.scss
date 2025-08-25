@@ -63,11 +63,11 @@
 body
   .wp-block-responsive-block-editor-addons-container
   > .responsive-block-editor-addons-container-inner-blocks-wrap
-  > *:not(.wp-block-responsive-block-editor-addons-container):not(.wp-block-responsive-block-editor-addons-container):not(.responsive-block-editor-addons-container__video-wrap),
+  > *:not(.wp-block-responsive-block-editor-addons-container):not(.wp-block-responsive-block-editor-addons-container):not(.responsive-block-editor-addons-container__video-wrap):not(.wp-block-responsive-block-editor-addons-wp-search),
 body .wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-inner-blocks-wrap,
 body
   .wp-block-responsive-block-editor-addons-container
-  > *:not(.wp-block-responsive-block-editor-addons-container):not(.wp-block-responsive-block-editor-addons-container):not(.responsive-block-editor-addons-container__video-wrap):not(.responsive-block-editor-addons-container-link-overlay) {
+  > *:not(.wp-block-responsive-block-editor-addons-container):not(.wp-block-responsive-block-editor-addons-container):not(.responsive-block-editor-addons-container__video-wrap):not(.responsive-block-editor-addons-container-link-overlay):not(.wp-block-responsive-block-editor-addons-wp-search) {
   min-width: unset !important;
   width: 100%;
   position: relative;
