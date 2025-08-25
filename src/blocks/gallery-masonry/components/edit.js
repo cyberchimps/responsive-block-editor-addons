@@ -48,10 +48,6 @@ class GalleryMasonryEdit extends Component {
     };
   }
 
-  getOwnerDocument() {
-    return this.containerRef?.ownerDocument || document;
-  }
-
   componentDidMount() {
     const { wideControlsEnabled, attributes, setAttributes, clientId } =
       this.props;
