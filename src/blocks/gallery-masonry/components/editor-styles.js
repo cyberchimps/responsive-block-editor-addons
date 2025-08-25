@@ -173,7 +173,7 @@ function EditorStyles(props) {
       'margin-bottom': filterTabBottomSpacingMobile ? generateCSSUnit(filterTabBottomSpacingMobile, 'px') : undefined,
       'text-align': mapAlign(filterTabAlignmentMobile),
     },
-    " .rba-filter-tabs .gallery-filter-button": {
+    " .rba-filter-tabs .gallery-filter-button, .gallery-filter-button.dropdown-item": {
       'font-size': filterTabTypographyFontSizeMobile ? generateCSSUnit(filterTabTypographyFontSizeMobile, 'px') : undefined,
       'padding-top': filterTabTopPaddingMobile !== undefined && filterTabTopPaddingMobile !== '' ? generateCSSUnit(filterTabTopPaddingMobile, 'px') : undefined,
       'padding-right': filterTabRightPaddingMobile !== undefined && filterTabRightPaddingMobile !== '' ? generateCSSUnit(filterTabRightPaddingMobile, 'px') : undefined,
@@ -204,7 +204,7 @@ function EditorStyles(props) {
       'margin-bottom': filterTabBottomSpacingTablet ? generateCSSUnit(filterTabBottomSpacingTablet, 'px') : undefined,
       'text-align': mapAlign(filterTabAlignmentTablet),
     },
-    " .rba-gf-tabs .gallery-filter-button": {
+    " .rba-gf-tabs .gallery-filter-button, .gallery-filter-button.dropdown-item": {
       'font-size': filterTabTypographyFontSizeTablet ? generateCSSUnit(filterTabTypographyFontSizeTablet, 'px') : undefined,
       'padding-top': filterTabTopPaddingTablet !== undefined && filterTabTopPaddingTablet !== '' ? generateCSSUnit(filterTabTopPaddingTablet, 'px') : undefined,
       'padding-right': filterTabRightPaddingTablet !== undefined && filterTabRightPaddingTablet !== '' ? generateCSSUnit(filterTabRightPaddingTablet, 'px') : undefined,
