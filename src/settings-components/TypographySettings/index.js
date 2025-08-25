@@ -329,6 +329,8 @@ class TypographyControl extends Component {
                             options={textDecorationOptions}
                             value={this.props.values.textDecoration}
                             onChange={this.props.onChangeTextDecoration}
+                            allowReset
+                            defaultValue="none"
                         />
                     )}
                     {this.props.showTextBottomSpacing == true && (

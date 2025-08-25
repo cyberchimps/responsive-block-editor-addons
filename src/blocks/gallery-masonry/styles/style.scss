@@ -24,6 +24,14 @@
     vertical-align: bottom;
   }
 
+  .rba-gallery-items {
+    width: 100%;
+  }
+
+  .is-hidden-by-default {
+    display: none !important;
+  }
+
   figcaption {
     background: linear-gradient(
       0deg,
@@ -48,6 +56,215 @@
 
   .responsive-block-editor-addons-gallery.link-type-custom figcaption {
     bottom: 3em;
+  }
+  
+  // Lightbox styles
+  &.has-lightbox, .has-lightbox {
+    .responsive-block-editor-addons-gallery--figure {
+      cursor: zoom-in;
+      
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+  
+  // Caption styles
+  .responsive-block-editor-addons-gallery--caption {
+    display: block !important;
+  }
+  
+  &.has-caption-style-dark, .has-caption-style-dark {
+    .responsive-block-editor-addons-gallery--caption {
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.7) 0,
+        rgba(0, 0, 0, 0.3) 50%,
+        transparent
+      );
+      color: #fff;
+    }
+  }
+  
+  &.has-caption-style-light, .has-caption-style-light {
+    .responsive-block-editor-addons-gallery--caption {
+      background: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.9) 0,
+        rgba(255, 255, 255, 0.7) 50%,
+        transparent
+      );
+      color: #000;
+    }
+  }
+  
+  &.has-caption-style-none, .has-caption-style-none {
+    .responsive-block-editor-addons-gallery--caption {
+      display: none !important;
+    }
+  }
+  
+  // Filterable Gallery Tab Alignment Styles
+  .gallery-filter-wrapper {
+    border: none;
+    outline: none;
+    
+    .gallery-filter-button {
+      cursor: pointer !important;
+      transition: background-color 0.2s ease, color 0.2s ease !important;
+      
+      &:hover {
+        background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+        color: var(--filter-tab-hover-text-color, #fff) !important;
+      }
+      
+      &.is-active {
+        background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+        color: var(--filter-tab-hover-text-color, #fff) !important;
+      }
+    }
+
+    // Responsive Support - CSS-only approach
+    &.has-responsive-support {
+      // Desktop and tablet - show tabs, hide dropdown
+      @media (min-width: 768px) {
+        .rba-gf-tabs {
+          display: inline-block;
+        }
+        .rba-gf-dropdown {
+          display: none;
+        }
+      }
+      
+      // Mobile - hide tabs, show dropdown
+      @media (max-width: 767px) {
+        .gallery-filter-button.rba-gf-toggle{
+          margin-bottom: 0;
+        }
+        .gallery-filter-button.dropdown-item{
+          border-radius: 0;
+          width: 70vw;
+          margin-bottom: 0;
+        }
+        .rba-gf-tabs {
+          display: none;
+        }
+        .rba-gf-dropdown {
+          display: inline-block;
+          position: relative;
+          width: fit-content;
+        }
+        
+        // Style the dropdown toggle button
+        .rba-gf-toggle {
+          display: inline-block;
+          position: relative;
+          padding-right: 20px !important;
+          cursor: pointer;
+          user-select: none;
+          
+          &::after {
+            content: "\25BC"; // ▼ dropdown arrow
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            opacity: 0.7;
+            pointer-events: none;
+            transition: transform 0.2s ease;
+          }
+          
+          // Remove default summary styling
+          &::-webkit-details-marker {
+            display: none;
+          }
+          
+          &::marker {
+            content: "";
+          }
+        }
+        
+        // Style the dropdown menu to match single label width
+        .rba-gf-menu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          z-index: 1000;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          box-sizing: border-box;
+        }
+
+        // Show menu when details is open
+        .rba-gf-dropdown[open] .rba-gf-menu {
+          display: block;
+        }
+        
+        // Change arrow when open
+        .rba-gf-dropdown[open] .rba-gf-toggle::after {
+          content: "\25B2"; // ▲
+          transform: translateY(-50%);
+        }
+        
+        // Style the dropdown trigger when showing a selected category (not "All")
+        .rba-gf-toggle.is-active {
+          background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+          color: var(--filter-tab-hover-text-color, #fff) !important;
+        }
+        
+        // Ensure dropdown trigger shows hover colors when displaying selected category
+        .gallery-filter-button.rba-gf-toggle.is-active {
+          background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+          color: var(--filter-tab-hover-text-color, #fff) !important;
+        }
+        
+        // Always show active colors for the dropdown toggle button
+        .rba-gf-toggle {
+          background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+          color: var(--filter-tab-hover-text-color, #fff) !important;
+        }
+        
+        // Style dropdown items to match single label appearance
+        .dropdown-item {
+          display: block;
+          margin: 0;
+          text-align: left;
+          cursor: pointer;
+          transition: background-color 0.2s ease, color 0.2s ease;
+          
+          &:hover, &:active {
+            background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+            color: var(--filter-tab-hover-text-color, #fff) !important;
+          }
+          
+          &.is-active {
+            background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+            color: var(--filter-tab-hover-text-color, #fff) !important;
+          }
+          
+          &.gallery-filter-button.is-active {
+            background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
+            color: var(--filter-tab-hover-text-color, #fff) !important;
+          }
+        }
+        
+        // Dropdown alignment to match single label
+        &[data-tab-alignment-mobile="center"] .rba-gf-menu {
+          left: 50%;
+          transform: translateX(-50%);
+          right: auto;
+        }
+        
+        &[data-tab-alignment-mobile="right"] .rba-gf-menu {
+          left: auto;
+          right: 0;
+        }
+      }
+    }
   }
 }
 

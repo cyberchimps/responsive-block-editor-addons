@@ -48,6 +48,13 @@ const GalleryAttributes = {
         attribute: "data-order",
         default: 0,
       },
+      rba_category: {
+        type: "string",
+        source: "attribute",
+        selector: "img",
+        attribute: "data-category",
+        default: "uncategorized",
+      },
     },
   },
   linkTo: {

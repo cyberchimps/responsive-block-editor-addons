@@ -83,8 +83,8 @@ class GalleryImage extends Component {
       this.props.setAttributes({
         url: image.source_url,
         alt: image.alt_text,
-        customHeight:customHeight,
-        customWidth:customWidth
+        customHeight: customHeight,
+        customWidth: customWidth,
       });
     }
 
@@ -131,11 +131,11 @@ class GalleryImage extends Component {
       supportsMoving = true,
       verticalMoving = false,
       url,
-        lightbox,
+      lightbox,
       "aria-label": ariaLabel,
       imgLink,
       customHeight,
-      customWidth
+      customWidth,
     } = this.props;
 
     const imgClasses = classnames({
@@ -160,8 +160,8 @@ class GalleryImage extends Component {
           onKeyDown={this.onImageClick}
           aria-label={ariaLabel}
           style={{
-            height: customHeight ? `${customHeight}px` : '',
-            width: customWidth ? `${customWidth}px` : '', 
+            height: customHeight ? `${customHeight}px` : "",
+            width: customWidth ? `${customWidth}px` : "",
           }}
         />
         {isBlobURL(url) && <Spinner />}
@@ -183,17 +183,17 @@ class GalleryImage extends Component {
       [`has-margin-right-${gutter}`]: marginRight && gutter > 0,
       [`has-margin-right-mobile-${gutterMobile}`]:
         marginRight && gutterMobile > 0,
-        [`has-margin-right-tablet-${gutterTablet}`]:
+      [`has-margin-right-tablet-${gutterTablet}`]:
         marginRight && gutterTablet > 0,
       [`has-margin-bottom-${gutter}`]: marginBottom && gutter > 0,
       [`has-margin-bottom-mobile-${gutterMobile}`]:
         marginBottom && gutterMobile > 0,
-        [`has-margin-bottom-tablet-${gutterTablet}`]:
+      [`has-margin-bottom-tablet-${gutterTablet}`]:
         marginBottom && gutterTablet > 0,
       [`has-margin-left-${gutter}`]: marginLeft && gutter > 0,
       [`has-margin-left-mobile-${gutterMobile}`]:
         marginLeft && gutterMobile > 0,
-        [`has-margin-left-tablet-${gutterTablet}`]:
+      [`has-margin-left-tablet-${gutterTablet}`]:
         marginLeft && gutterTablet > 0,
     });
 
@@ -214,7 +214,6 @@ class GalleryImage extends Component {
       >
         {isSelected && (
           <Fragment>
-
             {supportsMoving && (
               <div className="components-responsive-block-editor-addons-gallery-item__move-menu">
                 <Button
@@ -262,7 +261,11 @@ class GalleryImage extends Component {
                 />
                 <Button
                   icon={this.state.isSaved ? "saved" : "editor-break"}
-                  label={this.state.isSaved ? __("Saving", "responsive-block-editor-addons") : __("Apply", "responsive-block-editor-addons")}
+                  label={
+                    this.state.isSaved
+                      ? __("Saving", "responsive-block-editor-addons")
+                      : __("Apply", "responsive-block-editor-addons")
+                  }
                   onClick={this.saveCustomLink}
                   type="submit"
                 />

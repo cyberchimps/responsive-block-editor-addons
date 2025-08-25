@@ -83,23 +83,51 @@ class GalleryPlaceholder extends Component {
     const { images } = this.props.attributes;
     const { attachmentCaptions, imgLinks } = this.state;
 
-    this.setState({
-      attachmentCaptions: newImages.map((newImage) => ({
-        id: newImage.id,
-        caption: newImage.caption,
-      })),
-      imgLinks: newImages.map((newImage) => ({
-        id: newImage.id,
-        imgLink: newImage.imgLink,
-      })),
-    });
-    this.props.setAttributes({
-      images: newImages.map((image, index) => ({
+    // Fetch category data for each selected image
+    Promise.all(
+      newImages.map((image) => {
+        if (image.id) {
+          return wp.apiFetch({ path: `/wp/v2/media/${image.id}` })
+            .then((mediaResponse) => {
+              return {
+                ...image,
+                rba_category: mediaResponse.rba_category || "uncategorized"
+              };
+            })
+            .catch((error) => {
+              return {
+                ...image,
+                rba_category: "uncategorized"
+              };
+            });
+        }
+        return Promise.resolve({
+          ...image,
+          rba_category: "uncategorized"
+        });
+      })
+    ).then((imagesWithCategories) => {
+      this.setState({
+        attachmentCaptions: imagesWithCategories.map((newImage) => ({
+          id: newImage.id,
+          caption: newImage.caption,
+        })),
+        imgLinks: imagesWithCategories.map((newImage) => ({
+          id: newImage.id,
+          imgLink: newImage.imgLink,
+        })),
+      });
+      
+      const finalImages = imagesWithCategories.map((image, index) => ({
         ...helper.pickRelevantMediaFiles(image),
         order: index,
         caption: this.selectCaption(image, images, attachmentCaptions),
         imgLink: this.selectImgLink(image, images, imgLinks),
-      })),
+      }));
+
+      this.props.setAttributes({
+        images: finalImages,
+      });
     });
   }
 
