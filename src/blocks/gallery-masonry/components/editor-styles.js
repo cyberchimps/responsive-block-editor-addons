@@ -185,8 +185,6 @@ function EditorStyles(props) {
       'border-bottom': filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidthMobile !== undefined && filterTabBottomBorderwidthMobile !== '' ? filterTabBottomBorderwidthMobile : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
       'border-left': filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidthMobile !== undefined && filterTabLeftBorderwidthMobile !== '' ? filterTabLeftBorderwidthMobile : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
     },
-    " .rba-filter-tabs .gallery-filter-button.is-active, .rba-filter-tabs .gallery-filter-button:hover, .gallery-filter-wrapper button:hover, .category-filters button:hover": {
-    }
   };
 
   var tablet_selectors = {
@@ -218,8 +216,6 @@ function EditorStyles(props) {
       'border-bottom': filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidthTablet !== undefined && filterTabBottomBorderwidthTablet !== '' ? filterTabBottomBorderwidthTablet : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
       'border-left': filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidthTablet !== undefined && filterTabLeftBorderwidthTablet !== '' ? filterTabLeftBorderwidthTablet : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
     },
-    " .rba-filter-tabs .gallery-filter-button.is-active, .rba-filter-tabs .gallery-filter-button:hover, .gallery-filter-wrapper button:hover, .category-filters button:hover": {
-    }
   };
 
   var styling_css = "";

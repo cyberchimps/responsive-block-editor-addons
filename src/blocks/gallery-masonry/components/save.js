@@ -35,9 +35,6 @@ const save = ({ attributes, className }) => {
   const appendClass = `block-${block_id}`;
   let outerClasses = className ? `${className} ${appendClass}` : appendClass;
   
-  // Note: Lightbox class is now applied to individual figures instead of main container
-  // to match the release version lightbox expectations
-  
   // Add caption style class
   if (captions) {
     outerClasses += ` has-caption-style-${captionStyle}`;
