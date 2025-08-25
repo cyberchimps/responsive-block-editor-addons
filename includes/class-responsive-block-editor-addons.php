@@ -1352,6 +1352,8 @@ class Responsive_Block_Editor_Addons {
 			$blocks = get_option( 'rbea_blocks' );
 			if ( ! $blocks ) {
 				$rbea_blocks->insert_blocks_data();
+			} else {
+				$rbea_blocks->sync_blocks_data( $blocks );
 			}
 		}
 	}

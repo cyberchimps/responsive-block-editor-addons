@@ -481,4 +481,26 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 
 	}
 
+	/**
+	 * Syncs the blocks data when the plugin is updated.
+	 * @since 2.1.1
+	 */
+	public function sync_blocks_data( $blocks ) {
+		// Check if container exists in blocks array, if not, then append the container array into blocks array.
+		$rbea_has_container = get_option( 'rbea_has_container' );
+		if ( ! $rbea_has_container ) {
+			$container = array(
+				'key'      => 'container',
+				'title'    => 'Container',
+				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/container/',
+				'demo'     => 'https://cyberchimps.com/responsive-blocks/container/',
+				'category' => 'content',
+				'status'   => 1,
+			);
+			array_unshift( $blocks, $container );
+			update_option( 'rbea_has_container', true );
+			update_option( 'rbea_blocks', $blocks );
+		}
+	}
+
 }
