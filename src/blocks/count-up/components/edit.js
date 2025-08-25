@@ -16,7 +16,8 @@ require("waypoints/lib/noframework.waypoints.js");
  */
 const { __, sprintf } = wp.i18n;
 const { Component } = wp.element;
-const { RichText, InnerBlocks, BlockControls, AlignmentToolbar } = wp.blockEditor;
+const { RichText, InnerBlocks, BlockControls, AlignmentToolbar } =
+  wp.blockEditor;
 const { Button, Dashicon, Icon } = wp.components;
 import memoize from "memize";
 import map from "lodash/map";
@@ -58,7 +59,10 @@ export default class Edit extends Component {
     this.props.setAttributes({ classMigrate: true });
 
     const $style = document.createElement("style");
-    $style.setAttribute("id", `responsive-block-editor-addons-count-up-style-${this.props.clientId}`);
+    $style.setAttribute(
+      "id",
+      `responsive-block-editor-addons-count-up-style-${this.props.clientId}`
+    );
     document.head.appendChild($style);
 
     // Using MutationObserver instead of setTimeout
@@ -66,33 +70,38 @@ export default class Edit extends Component {
       this.handleAmountChange();
       observer.disconnect(); // Stop observing once changes are detected and handled
     });
-  
+
     // Observe the editor for changes in child nodes
     observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    }); 
+      childList: true,
+      subtree: true,
+    });
   }
 
   handleAmountChange() {
-    const elems = document.querySelectorAll(`[id^="responsive-count-item__amount-${this.props.clientId}-"]`);
+    const elems = document.querySelectorAll(
+      `[id^="responsive-count-item__amount-${this.props.clientId}-"]`
+    );
 
     // Initialize Intersection Observer for better performance
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const elem = entry.target;
-                elem.classList.add("responsive-countup--hide");
-                
-                counterUp(elem); // Start the animation
-                elem.classList.remove("responsive-countup--hide");
-                observer.unobserve(elem); // Stop observing after animation triggers
-            }
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const elem = entry.target;
+            elem.classList.add("responsive-countup--hide");
+
+            counterUp(elem); // Start the animation
+            elem.classList.remove("responsive-countup--hide");
+            observer.unobserve(elem); // Stop observing after animation triggers
+          }
         });
-    }, { threshold: 0.75 }); // Trigger when 75% of the element is visible
+      },
+      { threshold: 0.75 }
+    ); // Trigger when 75% of the element is visible
 
     // Observe all targeted elements
-    elems.forEach(elem => observer.observe(elem));
+    elems.forEach((elem) => observer.observe(elem));
   }
 
   render() {
@@ -116,14 +125,26 @@ export default class Edit extends Component {
     } = this.props;
     var data_copy = [...countUp];
 
+    const { contentAlignTablet, contentAlignMobile } = this.props.attributes;
+
     const classes = classnames("responsive-count", {
       [`has-text-align-${contentAlign}`]: contentAlign,
+      [`rba-align-tablet-${contentAlignTablet}`]: contentAlignTablet,
+      [`rba-align-mobile-${contentAlignMobile}`]: contentAlignMobile,
     });
 
-    const formattingControls = ["core/bold", "core/italic", "core/strikethrough"];
+    const formattingControls = [
+      "core/bold",
+      "core/italic",
+      "core/strikethrough",
+    ];
 
     return [
-      <style id={`responsive-block-editor-addons-count-up-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <style
+        id={`responsive-block-editor-addons-count-up-style-${this.props.clientId}-inner`}
+      >
+        {EditorStyles(this.props)}
+      </style>,
       // Show the alignment toolbar on focus
       <BlockControls key="controls">
         <AlignmentToolbar
@@ -137,9 +158,10 @@ export default class Edit extends Component {
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 
       <div key={`block-${block_id}`} className={classes}>
-        <div key={`block-main-${block_id}`}
+        <div
+          key={`block-main-${block_id}`}
           className={classnames(
-            this.props.className, 
+            this.props.className,
             "responsive-block-editor-addons-block-count-up",
             `block-${block_id}`,
             "responsive-count__inner"
@@ -149,15 +171,22 @@ export default class Edit extends Component {
           {headingFontFamily && loadGoogleFont(headingFontFamily)}
           {contentFontFamily && loadGoogleFont(contentFontFamily)}
           {countUp.map((test, index) => (
-            <div key={`count-up-${index}`} className={classnames("responsive-count-item")}>
+            <div
+              key={`count-up-${index}`}
+              className={classnames("responsive-count-item")}
+            >
               {resshowIcon && (
-                <div key={`count-up-item-${index}`}
+                <div
+                  key={`count-up-item-${index}`}
                   className={classnames(
                     "responsive-block-editor-addons-count-up__source-wrap",
                     `res-countup-icon-design-${iconStyle}`
                   )}
                 >
-                  <div key={`count-up-source-${index}`}  className="responsive-block-editor-addons-count-up__source-icon">
+                  <div
+                    key={`count-up-source-${index}`}
+                    className="responsive-block-editor-addons-count-up__source-icon"
+                  >
                     {renderSVG(countUp[index]["icon"])}
                   </div>
                 </div>
@@ -180,13 +209,15 @@ export default class Edit extends Component {
                     setAttributes({ countUp: data_copy });
                   }}
                   allowed={formattingControls}
-                  
                 />
               )}
               {resshowNum && (
-                <div key={`count-up-price-${index}`} className="responsive-count-item__price-wrapper">
-                  <RichText
+                <div
                   key={`count-up-price-${index}`}
+                  className="responsive-count-item__price-wrapper"
+                >
+                  <RichText
+                    key={`count-up-price-${index}`}
                     tagName="div"
                     id={`responsive-count-item__amount-${this.props.clientId}-${index}`}
                     className="responsive-count-item__amount"
@@ -205,7 +236,6 @@ export default class Edit extends Component {
                       setAttributes({ countUp: data_copy });
                     }}
                     allowedFormats={formattingControls}
-                    
                   />
                 </div>
               )}
@@ -229,7 +259,6 @@ export default class Edit extends Component {
                     data_copy[index] = new_content;
                     setAttributes({ countUp: data_copy });
                   }}
-                  
                 />
               )}
             </div>
