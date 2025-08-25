@@ -78,6 +78,14 @@
       
       // Mobile - hide tabs, show dropdown
       @media (max-width: 767px) {
+        .gallery-filter-button.rba-gf-toggle{
+          margin-bottom: 0;
+        }
+        .gallery-filter-button.dropdown-item{
+          border-radius: 0;
+          width: 70vw;
+          margin-bottom: 0;
+        }
         .rba-gf-tabs {
           display: none;
         }
@@ -184,14 +192,6 @@
             background-color: var(--filter-tab-hover-background-color, #0073aa) !important;
             color: var(--filter-tab-hover-text-color, #fff) !important;
           }
-          
-          &:first-child {
-            border-radius: 4px 4px 0 0;
-          }
-          
-          &:last-child {
-            border-radius: 0 0 4px 4px;
-          }
         }
         
         // Dropdown alignment to match single label
@@ -206,88 +206,6 @@
           right: 0;
         }
       }
-    }
-  
-    &.filter-tab-alignment-left {
-      text-align: left !important;
-    }
-    
-    &.filter-tab-alignment-center {
-      text-align: center !important;
-    }
-    
-    &.filter-tab-alignment-right {
-      text-align: right !important;
-    }
-  }
-  
-  // Responsive alignment for tablet
-  @media (max-width: 976px) {
-    .gallery-filter-wrapper[data-tab-alignment-tablet="left"] {
-      text-align: left !important;
-    }
-    
-    .gallery-filter-wrapper[data-tab-alignment-tablet="center"] {
-      text-align: center !important;
-    }
-    
-    .gallery-filter-wrapper[data-tab-alignment-tablet="right"] {
-      text-align: right !important;
-    }
-  }
-
-  // Responsive alignment for mobile
-  @media (max-width: 767px) {
-    .gallery-filter-wrapper[data-tab-alignment-mobile="left"] {
-      text-align: left !important;
-    }
-    
-    .gallery-filter-wrapper[data-tab-alignment-mobile="center"] {
-      text-align: center !important;
-    }
-    
-    .gallery-filter-wrapper[data-tab-alignment-mobile="right"] {
-      text-align: right !important;
-    }
-  }
-
-  // Responsive styles for filter tabs - Tablet
-  @media (max-width: 976px) {
-    .gallery-filter-wrapper {
-      margin-bottom: var(--filter-tab-bottom-spacing-tablet, 20px) !important;
-    }
-    
-    .gallery-filter-button {
-      padding: var(--filter-tab-padding-top-tablet, 6px) var(--filter-tab-padding-right-tablet, 12px) var(--filter-tab-padding-bottom-tablet, 6px) var(--filter-tab-padding-left-tablet, 12px) !important;
-      margin-right: var(--filter-tab-spacing-between-tablet, 10px) !important;
-      font-size: var(--filter-tab-font-size-tablet, inherit) !important;
-    }
-    
-    .gallery-filter-button[style*="border"] {
-      border-top: var(--filter-tab-border-top-width-tablet, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
-      border-right: var(--filter-tab-border-right-width-tablet, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
-      border-bottom: var(--filter-tab-border-bottom-width-tablet, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
-      border-left: var(--filter-tab-border-left-width-tablet, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
-    }
-  }
-
-  // Responsive styles for filter tabs - Mobile
-  @media (max-width: 767px) {
-    .gallery-filter-wrapper {
-      margin-bottom: var(--filter-tab-bottom-spacing-mobile, 20px) !important;
-    }
-    
-    .gallery-filter-button {
-      padding: var(--filter-tab-padding-top-mobile, 6px) var(--filter-tab-padding-right-mobile, 12px) var(--filter-tab-padding-bottom-mobile, 6px) var(--filter-tab-padding-left-mobile, 12px) !important;
-      margin-right: var(--filter-tab-spacing-between-mobile, 10px) !important;
-      font-size: var(--filter-tab-font-size-mobile, inherit) !important;
-    }
-    
-    .gallery-filter-button[style*="border"] {
-      border-top: var(--filter-tab-border-top-width-mobile, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
-      border-right: var(--filter-tab-border-right-width-mobile, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
-      border-bottom: var(--filter-tab-border-bottom-width-mobile, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
-      border-left: var(--filter-tab-border-left-width-mobile, 1px) var(--filter-tab-border-style, solid) var(--filter-tab-border-color, #ccc) !important;
     }
   }
 }
