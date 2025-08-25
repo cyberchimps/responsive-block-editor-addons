@@ -5,6 +5,7 @@ import classnames from "classnames";
 import filter from "lodash/filter";
 import Masonry from "react-responsive-masonry";
 import EditorStyles from "./editor-styles";
+import { loadGoogleFont } from "../../../utils/font";
 
 /**
  * Internal dependencies
@@ -242,6 +243,10 @@ class GalleryMasonryEdit extends Component {
     };
   }
 
+  resetSelectedCategory() {
+    this.setState({ selectedCategory: "All" });
+  }
+
   setImageAttributes(index, attributes) {
     const { images } = this.props.attributes;
     if (!images[index]) return;
@@ -254,29 +259,31 @@ class GalleryMasonryEdit extends Component {
   }
 
   getCategories() {
-    const { mediaData } = this.state;
-    const categories = new Set();
-
-    Object.values(mediaData).forEach((media) => {
-      const raw = (media?.rba_category || "").trim();
-      if (!raw) return;
-
-      raw
-        .split(",")
-        .map((c) => c.trim())
-        .forEach((cat) => {
-          if (cat && cat.toLowerCase() !== "uncategorized") {
-            categories.add(cat);
-          }
-        });
-    });
-
-    return ["All", ...Array.from(categories)];
-}
-
+    const { images } = this.props.attributes;
+    const sortedImages = [...images].sort((a, b) => a.order - b.order);
+    
+    // Get unique categories for filter buttons - same logic as save.js
+    const categories = ["All", ...Array.from(
+      new Set(
+        sortedImages
+          .map((image) => image.rba_category || "uncategorized")
+          .filter((cat) => cat && cat !== "uncategorized")
+      )
+    ).sort()]; // Sort alphabetically for consistent order
+    
+    return categories;
+  }
 
   render() {
-    const { attributes, className, isSelected, noticeUI } = this.props;
+    const {
+      attributes,
+      className,
+      editorSidebarOpened,
+      isSelected,
+      noticeUI,
+      pluginSidebarOpened,
+      publishSidebarOpened,
+    } = this.props;
     const {
       align,
       captions,
@@ -291,28 +298,87 @@ class GalleryMasonryEdit extends Component {
       customWidth,
       block_id,
       enableCategoryFilter,
+
       allTabLabel = "All",
-    } = attributes;
+      filterTabAlignment,
+      filterTabAlignmentTablet,
+      filterTabAlignmentMobile,
+      filterTabTypographyFontFamily,
+      filterTabTypographyFontSize,
+      filterTabTypographyFontSizeTablet,
+      filterTabTypographyFontSizeMobile,
+      filterTabTypographyFontWeight,
+      filterTabTypographyLineHeight,
+      filterTabTypographyLetterSpacing,
+      filterTabTypographyTextTransform,
+      filterTabTypographyTextDecoration,
+      filterTabTopPadding,
+      filterTabRightPadding,
+      filterTabBottomPadding,
+      filterTabLeftPadding,
+      filterTabTopPaddingTablet,
+      filterTabRightPaddingTablet,
+      filterTabBottomPaddingTablet,
+      filterTabLeftPaddingTablet,
+      filterTabTopPaddingMobile,
+      filterTabRightPaddingMobile,
+      filterTabBottomPaddingMobile,
+      filterTabLeftPaddingMobile,
+      filterTabIsPaddingControlConnected,
+      filterTabSpacingBetween,
+      filterTabSpacingBetweenTablet,
+      filterTabSpacingBetweenMobile,
+      filterTabBottomSpacing,
+      filterTabBottomSpacingTablet,
+      filterTabBottomSpacingMobile,
+      filterTabTextColor,
+      filterTabBackgroundColor,
+      filterTabHoverTextColor,
+      filterTabHoverBackgroundColor,
+      filterTabBorderStyle,
+      filterTabTopBorderwidth,
+      filterTabRightBorderwidth,
+      filterTabBottomBorderwidth,
+      filterTabLeftBorderwidth,
+      filterTabTopBorderwidthTablet,
+      filterTabRightBorderwidthTablet,
+      filterTabBottomBorderwidthTablet,
+      filterTabLeftBorderwidthTablet,
+      filterTabTopBorderwidthMobile,
+      filterTabRightBorderwidthMobile,
+      filterTabBottomBorderwidthMobile,
+      filterTabLeftBorderwidthMobile,
+      filterTabIsBorderwidthControlConnected,
+      filterTabBorderColor,
+      enableResponsiveSupport,
+      } = attributes;
 
     const hasImages = !!images.length;
 
-    const innerClasses = classnames(...GalleryClasses(attributes), {
-      [`align${align}`]: align,
-      "has-gutter": gutter > 0,
-      "has-lightbox": lightbox,
-      [`link-type-${linkTo}`]: linkTo && !lightbox,
-    });
-
+    const sidebarIsOpened =
+      editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
+      
+    const innerClasses = classnames(
+      ...GalleryClasses(attributes),
+      sidebarIsOpened,
+      {
+        [`align${align}`]: align,
+        "has-gutter": gutter > 0,
+        "has-lightbox": lightbox,
+        [`link-type-${linkTo}`]: linkTo && !lightbox,
+      }
+    );
+    
     const masonryClasses = classnames({
       [`has-gutter-${gutter}`]: gutter > 0,
-      "has-gutter-null": gutter === 0,
+      [`has-gutter-null`]: gutter === 0,
       [`has-gutter-mobile-${gutterMobile}`]: gutterMobile > 0,
       [`has-gutter-tablet-${gutterTablet}`]: gutterTablet > 0,
     });
 
-    const masonryGalleryPlaceholder = !hasImages ? (
+    const masonryGalleryPlaceholder = (
       <Fragment>
-        {noticeUI}
+        {!hasImages ? noticeUI : null}
         <GalleryPlaceholder
           {...this.props}
           label={__("Image", "responsive-block-editor-addons")}
@@ -320,13 +386,36 @@ class GalleryMasonryEdit extends Component {
           gutter={gutter}
         />
       </Fragment>
-    ) : null;
+    );
+
+    if (!hasImages) {
+      return masonryGalleryPlaceholder;
+    }
 
     const appendClass = `block-${block_id}`;
     const outerClasses = classnames(className, appendClass);
 
     const sortedImages = [...images].sort((a, b) => a.order - b.order);
     const categories = this.getCategories();
+
+    // Map alignment values from WordPress toolbar to CSS values
+    const getAlignmentValue = (alignment) => {
+      if (!alignment) return "left";
+      switch (alignment) {
+        case "start":
+          return "left";
+        case "center":
+          return "center";
+        case "end":
+          return "right";
+        default:
+          return alignment;
+      }
+    };
+
+    const desktopAlignment = getAlignmentValue(filterTabAlignment);
+    const tabletAlignment = getAlignmentValue(filterTabAlignmentTablet);
+    const mobileAlignment = getAlignmentValue(filterTabAlignmentMobile);
 
     const filteredImages = sortedImages.filter((img) => {
       if (this.state.selectedCategory === "All") return true;
@@ -345,30 +434,74 @@ class GalleryMasonryEdit extends Component {
         >
           {EditorStyles(this.props)}
         </style>
-        {isSelected && <Inspector {...this.props} />}
+        {filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" && loadGoogleFont(filterTabTypographyFontFamily)}
+        {isSelected && <Inspector {...this.props} onResetCategory={this.resetSelectedCategory.bind(this)} />}
         {noticeUI}
-        <div className={outerClasses}>
+        <div 
+          className={outerClasses}
+          ref={(node) => (this.containerRef = node)}
+        >
           {/* Only show category filters if enableCategoryFilter is true */}
-          {enableCategoryFilter && categories.length > 1 && (
-            <div className="category-filters" style={{ marginBottom: "1em" }}>
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => this.setState({ selectedCategory: cat })}
-                  style={{
-                    marginRight: "0.5em",
-                    padding: "0.4em 0.8em",
-                    backgroundColor:
-                      this.state.selectedCategory === cat ? "#0073aa" : "#f3f4f5",
-                    color: this.state.selectedCategory === cat ? "#fff" : "#000",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
-                  {cat === "All" ? allTabLabel : cat}
-                </button>
-              ))}
+          {enableCategoryFilter && (
+            <div
+              className={[
+                "gallery-filter-wrapper",
+                "rba-filter-tabs",
+                `filter-tab-align-${desktopAlignment}`,
+                enableResponsiveSupport ? "has-responsive-support" : "",
+              ].join(" ")}
+              data-align-desktop={desktopAlignment}
+              data-align-tablet={tabletAlignment}
+              data-align-mobile={mobileAlignment}
+            >
+              {/* Desktop tabs */}
+              <div className="rba-gf-tabs">
+                {categories.map((cat) => {
+                  const isActive = this.state.selectedCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      className={[
+                        "gallery-filter-button",
+                        isActive ? "is-active" : "",
+                      ].join(" ")}
+                      data-cat={cat}
+                      onClick={() => this.setState({ selectedCategory: cat })}
+                      type="button"
+                      aria-pressed={isActive}
+                    >
+                      {cat === "All" ? allTabLabel : cat}
+                    </button>
+                  );
+                })}
+              </div>
+              
+              {/* Mobile dropdown */}
+              {enableResponsiveSupport && (
+                <details className="rba-gf-dropdown">
+                  <summary className="gallery-filter-button rba-gf-toggle">
+                    {this.state.selectedCategory === "All" ? allTabLabel : this.state.selectedCategory}
+                  </summary>
+                  <ul className="rba-gf-menu">
+                    {categories.map((cat) => (
+                      <li key={cat}>
+                        <button
+                          className={[
+                            "gallery-filter-button",
+                            "dropdown-item",
+                            this.state.selectedCategory === cat ? "is-active" : "",
+                          ].join(" ")}
+                          data-cat={cat}
+                          onClick={() => this.setState({ selectedCategory: cat })}
+                          type="button"
+                        >
+                          {cat === "All" ? allTabLabel : cat}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
             </div>
           )}
 
