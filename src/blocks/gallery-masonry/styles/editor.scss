@@ -153,4 +153,8 @@
   .gallery-filter-wrapper[data-tab-alignment-mobile="right"] {
     text-align: right !important;
   }
+  .gallery-filter-button.dropdown-item{
+    width: 70vw;
+    margin-bottom: 0;
+  } 
 }

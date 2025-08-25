@@ -2,11 +2,11 @@
  * WordPress dependencies
  */
 import { RichText } from "@wordpress/block-editor";
-import { getFontFamily } from "../../../utils/font";
 
 const save = ({ attributes, className }) => {
   const {
     captions,
+    captionStyle = "dark",
     gutter,
     gutterMobile,
     gutterTablet,
@@ -20,60 +20,9 @@ const save = ({ attributes, className }) => {
     images,
     block_id,
     enableCategoryFilter,
-
     allTabLabel = "All",
     setDefaultCategory,
     defaultCategory,
-    filterTabAlignment,
-    filterTabAlignmentTablet,
-    filterTabAlignmentMobile,
-    filterTabTypographyFontFamily,
-    filterTabTypographyFontSize,
-    filterTabTypographyFontSizeTablet,
-    filterTabTypographyFontSizeMobile,
-    filterTabTypographyFontWeight,
-    filterTabTypographyLineHeight,
-    filterTabTypographyLetterSpacing,
-    filterTabTypographyTextTransform,
-    filterTabTypographyTextDecoration,
-    filterTabTopPadding,
-    filterTabRightPadding,
-    filterTabBottomPadding,
-    filterTabLeftPadding,
-    filterTabTopPaddingTablet,
-    filterTabRightPaddingTablet,
-    filterTabBottomPaddingTablet,
-    filterTabLeftPaddingTablet,
-    filterTabTopPaddingMobile,
-    filterTabRightPaddingMobile,
-    filterTabBottomPaddingMobile,
-    filterTabLeftPaddingMobile,
-    filterTabIsPaddingControlConnected,
-    filterTabSpacingBetween,
-    filterTabSpacingBetweenTablet,
-    filterTabSpacingBetweenMobile,
-    filterTabBottomSpacing,
-    filterTabBottomSpacingTablet,
-    filterTabBottomSpacingMobile,
-    filterTabTextColor,
-    filterTabBackgroundColor,
-    filterTabHoverTextColor,
-    filterTabHoverBackgroundColor,
-    filterTabBorderStyle,
-    filterTabTopBorderwidth,
-    filterTabRightBorderwidth,
-    filterTabBottomBorderwidth,
-    filterTabLeftBorderwidth,
-    filterTabTopBorderwidthTablet,
-    filterTabRightBorderwidthTablet,
-    filterTabBottomBorderwidthTablet,
-    filterTabLeftBorderwidthTablet,
-    filterTabTopBorderwidthMobile,
-    filterTabRightBorderwidthMobile,
-    filterTabBottomBorderwidthMobile,
-    filterTabLeftBorderwidthMobile,
-    filterTabIsBorderwidthControlConnected,
-    filterTabBorderColor,
     enableResponsiveSupport,
   } = attributes;
 
@@ -84,189 +33,88 @@ const save = ({ attributes, className }) => {
   const sortedImages = [...images].sort((a, b) => a.order - b.order);
 
   const appendClass = `block-${block_id}`;
-  const outerClasses = className ? `${className} ${appendClass}` : appendClass;
+  let outerClasses = className ? `${className} ${appendClass}` : appendClass;
+  
+  // Note: Lightbox class is now applied to individual figures instead of main container
+  // to match the release version lightbox expectations
+  
+  // Add caption style class
+  if (captions) {
+    outerClasses += ` has-caption-style-${captionStyle}`;
+  }
 
   // Get unique categories for filter buttons
-  const categories = ["All", ...Array.from(
+  const categories = Array.from(
     new Set(
       sortedImages
         .map((image) => image.rba_category || "uncategorized")
         .filter((cat) => cat && cat !== "uncategorized")
     )
-  )];
-
-  // Function to generate button styles (used for both tabs and dropdown items)
-  const getButtonStyles = () => ({
-    marginRight: filterTabSpacingBetween !== undefined ? `${filterTabSpacingBetween}px` : "10px",
-    marginBottom: "8px",
-    padding: filterTabTopPadding !== undefined || filterTabRightPadding !== undefined || filterTabBottomPadding !== undefined || filterTabLeftPadding !== undefined ? `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px` : "6px 12px",
-    backgroundColor: filterTabBackgroundColor || "#f2f2f2",
-    color: filterTabTextColor || "#000",
-    border: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderRadius: "4px",
-    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-    fontWeight: filterTabTypographyFontWeight || undefined,
-    lineHeight: filterTabTypographyLineHeight || undefined,
-    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-    textTransform: filterTabTypographyTextTransform || undefined,
-    textDecoration: filterTabTypographyTextDecoration || undefined,
-  });
-
-  // Function to generate dropdown item styles (without margins)
-  const getDropdownItemStyles = () => ({
-    marginRight: "0px",
-    marginBottom: "0px",
-    padding: filterTabTopPadding !== undefined || filterTabRightPadding !== undefined || filterTabBottomPadding !== undefined || filterTabLeftPadding !== undefined ? `${filterTabTopPadding || 6}px ${filterTabRightPadding || 12}px ${filterTabBottomPadding || 6}px ${filterTabLeftPadding || 12}px` : "6px 12px",
-    backgroundColor: filterTabBackgroundColor || "#f2f2f2",
-    color: filterTabTextColor || "#000",
-    border: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : undefined,
-    borderRadius: "0px",
-    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-    fontWeight: filterTabTypographyFontWeight || undefined,
-    lineHeight: filterTabTypographyLineHeight || undefined,
-    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-    textTransform: filterTabTypographyTextTransform || undefined,
-    textDecoration: filterTabTypographyTextDecoration || undefined,
-  });
+  ).sort(); // Sort alphabetically for consistent order
 
   // Build the complete HTML structure
-  const masonryStyles = {
-    display: "grid",
-    gridTemplateColumns: `repeat(${columnsize}, 1fr)`,
-    gap: `${gutter}px`,
-  };
-
-  const buttonStyles = {
-    marginRight: "0.5em",
-    padding: "0.4em 0.8em",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-  };
-
-  const shouldShowFilters = enableCategoryFilter;
+  const shouldShowFilters = enableCategoryFilter && categories.length > 0;
 
   // Determine which category should be active by default
   const defaultActiveCategory = setDefaultCategory && defaultCategory ? defaultCategory : "All";
 
-  // Map alignment values from WordPress toolbar to CSS values
-  const getAlignmentValue = (alignment) => {
-    if (!alignment) return "left";
-    switch (alignment) {
-      case "start":
-        return "left";
-      case "center":
-        return "center";
-      case "end":
-        return "right";
-      default:
-        return alignment;
-    }
-  };
-
-  const desktopAlignment = getAlignmentValue(filterTabAlignment);
-  const tabletAlignment = getAlignmentValue(filterTabAlignmentTablet);
-  const mobileAlignment = getAlignmentValue(filterTabAlignmentMobile);
-
   return (
-    <div className={outerClasses} data-rba-gallery-block>
+    <div className={`${outerClasses} ${lightbox ? 'has-lightbox' : ''}`} data-rba-gallery-block>
       {shouldShowFilters && (
-        <div 
-          className={`gallery-filter-wrapper filter-tab-alignment-${desktopAlignment} ${enableResponsiveSupport ? 'has-responsive-support' : ''}`}
-          style={{ 
-            marginBottom: filterTabBottomSpacing !== undefined ? `${filterTabBottomSpacing}px` : "20px",
-            textAlign: desktopAlignment,
-            fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-            fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-            fontWeight: filterTabTypographyFontWeight || undefined,
-            lineHeight: filterTabTypographyLineHeight || undefined,
-            letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-            textTransform: filterTabTypographyTextTransform || undefined,
-            textDecoration: filterTabTypographyTextDecoration || undefined,
-            '--filter-tab-bottom-spacing-tablet': filterTabBottomSpacingTablet !== undefined ? `${filterTabBottomSpacingTablet}px` : undefined,
-            '--filter-tab-bottom-spacing-mobile': filterTabBottomSpacingMobile !== undefined ? `${filterTabBottomSpacingMobile}px` : undefined,
-            '--filter-tab-padding-top-tablet': filterTabTopPaddingTablet !== undefined ? `${filterTabTopPaddingTablet}px` : undefined,
-            '--filter-tab-padding-right-tablet': filterTabRightPaddingTablet !== undefined ? `${filterTabRightPaddingTablet}px` : undefined,
-            '--filter-tab-padding-bottom-tablet': filterTabBottomPaddingTablet !== undefined ? `${filterTabBottomPaddingTablet}px` : undefined,
-            '--filter-tab-padding-left-tablet': filterTabLeftPaddingTablet !== undefined ? `${filterTabLeftPaddingTablet}px` : undefined,
-            '--filter-tab-padding-top-mobile': filterTabTopPaddingMobile !== undefined ? `${filterTabTopPaddingMobile}px` : undefined,
-            '--filter-tab-padding-right-mobile': filterTabRightPaddingMobile !== undefined ? `${filterTabRightPaddingMobile}px` : undefined,
-            '--filter-tab-padding-bottom-mobile': filterTabBottomPaddingMobile !== undefined ? `${filterTabBottomPaddingMobile}px` : undefined,
-            '--filter-tab-padding-left-mobile': filterTabLeftPaddingMobile !== undefined ? `${filterTabLeftPaddingMobile}px` : undefined,
-            '--filter-tab-spacing-between-tablet': filterTabSpacingBetweenTablet !== undefined ? `${filterTabSpacingBetweenTablet}px` : undefined,
-            '--filter-tab-spacing-between-mobile': filterTabSpacingBetweenMobile !== undefined ? `${filterTabSpacingBetweenMobile}px` : undefined,
-            '--filter-tab-font-size-tablet': filterTabTypographyFontSizeTablet ? `${filterTabTypographyFontSizeTablet}px` : undefined,
-            '--filter-tab-font-size-mobile': filterTabTypographyFontSizeMobile ? `${filterTabTypographyFontSizeMobile}px` : undefined,
-            '--filter-tab-border-style': filterTabBorderStyle || undefined,
-            '--filter-tab-border-color': filterTabBorderColor || undefined,
-            '--filter-tab-border-top-width-tablet': filterTabTopBorderwidthTablet !== undefined ? `${filterTabTopBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-right-width-tablet': filterTabRightBorderwidthTablet !== undefined ? `${filterTabRightBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-bottom-width-tablet': filterTabBottomBorderwidthTablet !== undefined ? `${filterTabBottomBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-left-width-tablet': filterTabLeftBorderwidthTablet !== undefined ? `${filterTabLeftBorderwidthTablet}px` : undefined,
-            '--filter-tab-border-top-width-mobile': filterTabTopBorderwidthMobile !== undefined ? `${filterTabTopBorderwidthMobile}px` : undefined,
-            '--filter-tab-border-right-width-mobile': filterTabRightBorderwidthMobile !== undefined ? `${filterTabRightBorderwidthMobile}px` : undefined,
-            '--filter-tab-border-bottom-width-mobile': filterTabBottomBorderwidthMobile !== undefined ? `${filterTabBottomBorderwidthMobile}px` : undefined,
-            '--filter-tab-border-left-width-mobile': filterTabLeftBorderwidthMobile !== undefined ? `${filterTabLeftBorderwidthMobile}px` : undefined,
-            '--filter-tab-hover-background-color': filterTabHoverBackgroundColor || "#0073aa",
-            '--filter-tab-hover-text-color': filterTabHoverTextColor || "#fff",
-          }}
-          data-tab-alignment={desktopAlignment}
-          data-tab-alignment-tablet={tabletAlignment}
-          data-tab-alignment-mobile={mobileAlignment}
-        >
-          {/* Filter tabs for desktop/tablet */}
+        <div className={`gallery-filter-wrapper ${enableResponsiveSupport ? 'has-responsive-support' : ''}`}>
+          {/* Desktop tabs */}
           <div className="rba-gf-tabs">
+            <button 
+              className={`gallery-filter-button ${defaultActiveCategory === "All" || defaultActiveCategory === "all" ? "is-active" : ""}`}
+              data-category="All"
+            >
+              {allTabLabel}
+            </button>
             {categories.map((cat) => (
               <button 
                 key={cat}
                 className={`gallery-filter-button ${defaultActiveCategory === cat ? "is-active" : ""}`}
                 data-category={cat}
-                style={getButtonStyles()}
               >
-                {cat === "All" ? allTabLabel : cat}
+                {cat}
               </button>
             ))}
           </div>
-
-          {/* Dropdown for mobile using native details/summary */}
+          
+          {/* Mobile dropdown */}
           {enableResponsiveSupport && (
             <details className="rba-gf-dropdown">
-              <summary 
-                className={`gallery-filter-button rba-gf-toggle is-active`}
-                data-category={defaultActiveCategory}
-                style={getButtonStyles()}
-              >
-                {defaultActiveCategory === "All" ? allTabLabel : defaultActiveCategory}
+              <summary className="gallery-filter-button rba-gf-toggle">
+                {defaultActiveCategory === "All" || defaultActiveCategory === "all" ? allTabLabel : defaultActiveCategory}
               </summary>
-              <ul className="rba-gf-menu" role="listbox">
+              <ul className="rba-gf-menu">
+                <li>
+                  <button 
+                    className={`gallery-filter-button dropdown-item ${defaultActiveCategory === "All" || defaultActiveCategory === "all" ? "is-active" : ""}`}
+                    data-category="All"
+                  >
+                    {allTabLabel}
+                  </button>
+                </li>
                 {categories.map((cat) => (
                   <li key={cat}>
                     <button 
                       className={`gallery-filter-button dropdown-item ${defaultActiveCategory === cat ? "is-active" : ""}`}
                       data-category={cat}
-                      style={getDropdownItemStyles()}
                     >
-                      {cat === "All" ? allTabLabel : cat}
+                      {cat}
                     </button>
                   </li>
                 ))}
               </ul>
             </details>
           )}
-        
-      </div>
-    )}
-      <div className="rba-gallery-items" style={masonryStyles}>
+        </div>
+      )}
+      <div 
+        className="rba-gallery-items"
+        data-columnsize={columnsize}
+      >
         {sortedImages.map((image) => {
           let href = "";
 
@@ -287,10 +135,6 @@ const save = ({ attributes, className }) => {
             href = "";
           }
 
-          const imgStyle = {
-            width: customWidth || "auto",
-            height: customHeight || "auto",
-          };
           const imgClass = image.id ? `wp-image-${image.id}` : "";
           const imageCategory = image.rba_category || "uncategorized";
           
@@ -302,7 +146,6 @@ const save = ({ attributes, className }) => {
           
           const img = (
             <img
-              style={imgStyle}
               src={image.url}
               alt={image.alt || ""}
               data-id={image.id || ""}
@@ -316,11 +159,10 @@ const save = ({ attributes, className }) => {
             : img;
 
           return (
-            <li 
+            <div
               key={image.id || image.url}
               className="responsive-block-editor-addons-gallery--item" 
               data-category={imageCategory}
-              style={{ display: shouldShowByDefault ? "" : "none" }}
             >
               <figure className="responsive-block-editor-addons-gallery--figure">
                 {imageContent}
@@ -332,7 +174,7 @@ const save = ({ attributes, className }) => {
                   />
                 )}
               </figure>
-            </li>
+            </div>
           );
         })}
       </div>

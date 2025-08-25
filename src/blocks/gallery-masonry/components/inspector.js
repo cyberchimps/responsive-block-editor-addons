@@ -371,9 +371,13 @@ class Inspector extends Component {
               <ToggleControl
                 label={__("Filterable Image Gallery", "textdomain")}
                 checked={attributes.enableCategoryFilter}
-                onChange={(value) =>
-                  setAttributes({ enableCategoryFilter: value })
-                }
+                onChange={(value) => {
+                  setAttributes({ enableCategoryFilter: value });
+                  // Reset selected category when filter is turned off
+                  if (!value && this.props.onResetCategory) {
+                    this.props.onResetCategory();
+                  }
+                }}
               />
               {attributes.enableCategoryFilter && (
                 <>

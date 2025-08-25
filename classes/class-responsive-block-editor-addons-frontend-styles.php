@@ -6837,6 +6837,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'z_index'                  => 1,
 				'z_indexMobile'            => 1,
 				'z_indexTablet'            => 1,
+				'gutter'       			   => 0,
+				'gutterTablet' 			   => 0,
+				'gutterMobile' 			   => 0,
+				'customWidth'              => '',
+				'customHeight'             => '',
+				'columnsize'               => 3,
+				'filterTabRightPaddingMobile' => 30,
 			);
 		}
 

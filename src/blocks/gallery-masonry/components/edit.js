@@ -5,7 +5,7 @@ import classnames from "classnames";
 import filter from "lodash/filter";
 import Masonry from "react-responsive-masonry";
 import EditorStyles from "./editor-styles";
-import { loadGoogleFont, getFontFamily } from "../../../utils/font";
+import { loadGoogleFont } from "../../../utils/font";
 
 /**
  * Internal dependencies
@@ -48,6 +48,10 @@ class GalleryMasonryEdit extends Component {
     };
   }
 
+  getOwnerDocument() {
+    return this.containerRef?.ownerDocument || document;
+  }
+
   componentDidMount() {
     const { wideControlsEnabled, attributes, setAttributes, clientId } =
       this.props;
@@ -62,11 +66,6 @@ class GalleryMasonryEdit extends Component {
     }
 
     setAttributes({ block_id: clientId });
-
-    // Load Google font for filter tabs if set
-    if (attributes.filterTabTypographyFontFamily && attributes.filterTabTypographyFontFamily !== "Default") {
-      loadGoogleFont(attributes.filterTabTypographyFontFamily);
-    }
 
     const $style = document.createElement("style");
     $style.setAttribute(
@@ -121,13 +120,6 @@ class GalleryMasonryEdit extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Load Google font if font family changed
-    if (prevProps.attributes.filterTabTypographyFontFamily !== this.props.attributes.filterTabTypographyFontFamily) {
-      if (this.props.attributes.filterTabTypographyFontFamily && this.props.attributes.filterTabTypographyFontFamily !== "Default") {
-        loadGoogleFont(this.props.attributes.filterTabTypographyFontFamily);
-      }
-    }
-
     // Force re-render when attributes change to show real-time updates
     if (
       prevProps.attributes.allTabLabel !== this.props.attributes.allTabLabel ||
@@ -255,6 +247,10 @@ class GalleryMasonryEdit extends Component {
     };
   }
 
+  resetSelectedCategory() {
+    this.setState({ selectedCategory: "All" });
+  }
+
   setImageAttributes(index, attributes) {
     const { images } = this.props.attributes;
     if (!images[index]) return;
@@ -267,28 +263,31 @@ class GalleryMasonryEdit extends Component {
   }
 
   getCategories() {
-    const { mediaData } = this.state;
-    const categories = new Set();
-
-    Object.values(mediaData).forEach((media) => {
-      const raw = (media?.rba_category || "").trim();
-      if (!raw) return;
-
-      raw
-        .split(",")
-        .map((c) => c.trim())
-        .forEach((cat) => {
-          if (cat && cat.toLowerCase() !== "uncategorized") {
-            categories.add(cat);
-          }
-        });
-    });
-
-    return ["All", ...Array.from(categories)];
-}
+    const { images } = this.props.attributes;
+    const sortedImages = [...images].sort((a, b) => a.order - b.order);
+    
+    // Get unique categories for filter buttons - same logic as save.js
+    const categories = ["All", ...Array.from(
+      new Set(
+        sortedImages
+          .map((image) => image.rba_category || "uncategorized")
+          .filter((cat) => cat && cat !== "uncategorized")
+      )
+    ).sort()]; // Sort alphabetically for consistent order
+    
+    return categories;
+  }
 
   render() {
-    const { attributes, className, isSelected, noticeUI } = this.props;
+    const {
+      attributes,
+      className,
+      editorSidebarOpened,
+      isSelected,
+      noticeUI,
+      pluginSidebarOpened,
+      publishSidebarOpened,
+    } = this.props;
     const {
       align,
       captions,
@@ -360,23 +359,30 @@ class GalleryMasonryEdit extends Component {
 
     const hasImages = !!images.length;
 
-    const innerClasses = classnames(...GalleryClasses(attributes), {
-      [`align${align}`]: align,
-      "has-gutter": gutter > 0,
-      "has-lightbox": lightbox,
-      [`link-type-${linkTo}`]: linkTo && !lightbox,
-    });
-
+    const sidebarIsOpened =
+      editorSidebarOpened || pluginSidebarOpened || publishSidebarOpened;
+      
+    const innerClasses = classnames(
+      ...GalleryClasses(attributes),
+      sidebarIsOpened,
+      {
+        [`align${align}`]: align,
+        "has-gutter": gutter > 0,
+        "has-lightbox": lightbox,
+        [`link-type-${linkTo}`]: linkTo && !lightbox,
+      }
+    );
+    
     const masonryClasses = classnames({
       [`has-gutter-${gutter}`]: gutter > 0,
-      "has-gutter-null": gutter === 0,
+      [`has-gutter-null`]: gutter === 0,
       [`has-gutter-mobile-${gutterMobile}`]: gutterMobile > 0,
       [`has-gutter-tablet-${gutterTablet}`]: gutterTablet > 0,
     });
 
-    const masonryGalleryPlaceholder = !hasImages ? (
+    const masonryGalleryPlaceholder = (
       <Fragment>
-        {noticeUI}
+        {!hasImages ? noticeUI : null}
         <GalleryPlaceholder
           {...this.props}
           label={__("Image", "responsive-block-editor-addons")}
@@ -384,7 +390,11 @@ class GalleryMasonryEdit extends Component {
           gutter={gutter}
         />
       </Fragment>
-    ) : null;
+    );
+
+    if (!hasImages) {
+      return masonryGalleryPlaceholder;
+    }
 
     const appendClass = `block-${block_id}`;
     const outerClasses = classnames(className, appendClass);
@@ -428,60 +438,74 @@ class GalleryMasonryEdit extends Component {
         >
           {EditorStyles(this.props)}
         </style>
-        {isSelected && <Inspector {...this.props} />}
+        {filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" && loadGoogleFont(filterTabTypographyFontFamily)}
+        {isSelected && <Inspector {...this.props} onResetCategory={this.resetSelectedCategory.bind(this)} />}
         {noticeUI}
-        <div className={outerClasses}>
+        <div 
+          className={outerClasses}
+          ref={(node) => (this.containerRef = node)}
+        >
           {/* Only show category filters if enableCategoryFilter is true */}
           {enableCategoryFilter && (
-            <div 
-              className={`category-filters gallery-filter-wrapper filter-tab-alignment-${desktopAlignment} ${enableResponsiveSupport ? 'has-responsive-support' : ''}`}
-              style={{ 
-                marginBottom: filterTabBottomSpacing !== undefined ? `${filterTabBottomSpacing}px` : "20px",
-                textAlign: desktopAlignment,
-                fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-                fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-                fontWeight: filterTabTypographyFontWeight || undefined,
-                lineHeight: filterTabTypographyLineHeight || undefined,
-                letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-                textTransform: filterTabTypographyTextTransform || undefined,
-                textDecoration: filterTabTypographyTextDecoration || undefined,
-                '--filter-tab-hover-background-color': filterTabHoverBackgroundColor || "#0073aa",
-                '--filter-tab-hover-text-color': filterTabHoverTextColor || "#fff",
-              }}
-              data-tab-alignment={desktopAlignment}
-              data-tab-alignment-tablet={tabletAlignment}
-              data-tab-alignment-mobile={mobileAlignment}
+            <div
+              className={[
+                "gallery-filter-wrapper",
+                "rba-filter-tabs",
+                `filter-tab-align-${desktopAlignment}`,
+                enableResponsiveSupport ? "has-responsive-support" : "",
+              ].join(" ")}
+              data-align-desktop={desktopAlignment}
+              data-align-tablet={tabletAlignment}
+              data-align-mobile={mobileAlignment}
             >
-                                          {categories.map((cat) => (
-                <button
-                  key={cat}
-                  className="gallery-filter-button"
-                  onClick={() => this.setState({ selectedCategory: cat })}
-                  style={{
-                    marginRight: filterTabSpacingBetween !== undefined ? `${filterTabSpacingBetween}px` : "10px",
-                    marginBottom: "8px",
-                    padding: `${filterTabTopPadding !== undefined ? filterTabTopPadding : 6}px ${filterTabRightPadding !== undefined ? filterTabRightPadding : 12}px ${filterTabBottomPadding !== undefined ? filterTabBottomPadding : 6}px ${filterTabLeftPadding !== undefined ? filterTabLeftPadding : 12}px`,
-                    backgroundColor:
-                      this.state.selectedCategory === cat ? (filterTabHoverBackgroundColor || "#0073aa") : (filterTabBackgroundColor || "#f2f2f2"),
-                    color: this.state.selectedCategory === cat ? (filterTabHoverTextColor || "#fff") : (filterTabTextColor || "#000"),
-                    borderTop: filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                    borderRight: filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                    borderBottom: filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                    borderLeft: filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                    fontFamily: filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? getFontFamily(filterTabTypographyFontFamily) : undefined,
-                    fontSize: filterTabTypographyFontSize ? `${filterTabTypographyFontSize}px` : undefined,
-                    fontWeight: filterTabTypographyFontWeight || undefined,
-                    lineHeight: filterTabTypographyLineHeight || undefined,
-                    letterSpacing: filterTabTypographyLetterSpacing ? `${filterTabTypographyLetterSpacing}px` : undefined,
-                    textTransform: filterTabTypographyTextTransform || undefined,
-                    textDecoration: filterTabTypographyTextDecoration || undefined,
-                  }}
-                >
-                  {cat === "All" ? allTabLabel : cat}
-                </button>
-              ))}
+              {/* Desktop tabs */}
+              <div className="rba-gf-tabs">
+                {categories.map((cat) => {
+                  const isActive = this.state.selectedCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      className={[
+                        "gallery-filter-button",
+                        isActive ? "is-active" : "",
+                      ].join(" ")}
+                      data-cat={cat}
+                      onClick={() => this.setState({ selectedCategory: cat })}
+                      type="button"
+                      aria-pressed={isActive}
+                    >
+                      {cat === "All" ? allTabLabel : cat}
+                    </button>
+                  );
+                })}
+              </div>
+              
+              {/* Mobile dropdown */}
+              {enableResponsiveSupport && (
+                <details className="rba-gf-dropdown">
+                  <summary className="gallery-filter-button rba-gf-toggle">
+                    {this.state.selectedCategory === "All" ? allTabLabel : this.state.selectedCategory}
+                  </summary>
+                  <ul className="rba-gf-menu">
+                    {categories.map((cat) => (
+                      <li key={cat}>
+                        <button
+                          className={[
+                            "gallery-filter-button",
+                            "dropdown-item",
+                            this.state.selectedCategory === cat ? "is-active" : "",
+                          ].join(" ")}
+                          data-cat={cat}
+                          onClick={() => this.setState({ selectedCategory: cat })}
+                          type="button"
+                        >
+                          {cat === "All" ? allTabLabel : cat}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              )}
             </div>
           )}
 

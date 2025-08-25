@@ -3,7 +3,13 @@
  */
 import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
-import { getFontFamily } from "../../../utils/font";
+
+const mapAlign = (a) => {
+  if (!a) return undefined;
+  if (a === "start") return "left";
+  if (a === "end") return "right";
+  return a;
+};
 
 function EditorStyles(props) {
   const {
@@ -84,6 +90,9 @@ function EditorStyles(props) {
     filterTabLeftBorderwidthMobile,
     filterTabIsBorderwidthControlConnected,
     filterTabBorderColor,
+    filterTabAlignment,
+    filterTabAlignmentTablet,
+    filterTabAlignmentMobile,
   } = props.attributes;
 
   var selectors = {
@@ -97,6 +106,8 @@ function EditorStyles(props) {
       'margin-right': generateCSSUnit(blockRightMargin, "px"),
       'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
       'margin-left': generateCSSUnit(blockLeftMargin, "px"),
+      '--filter-tab-hover-background-color': filterTabHoverBackgroundColor || "#0073aa",
+      '--filter-tab-hover-text-color': filterTabHoverTextColor || "#fff",
     },
     " .rba-gallery-items": {
       'display': 'grid',
@@ -114,6 +125,7 @@ function EditorStyles(props) {
       'text-transform': filterTabTypographyTextTransform || 'none',
       'text-decoration': filterTabTypographyTextDecoration || 'none',
       'margin-bottom': filterTabBottomSpacing ? generateCSSUnit(filterTabBottomSpacing, 'px') : '20px',
+      'text-align': mapAlign(filterTabAlignment),
     },
     " .rba-gf-tabs .gallery-filter-button, .gallery-filter-button.dropdown-item": {
       'font-family': filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? filterTabTypographyFontFamily : undefined,
@@ -123,22 +135,22 @@ function EditorStyles(props) {
       'letter-spacing': filterTabTypographyLetterSpacing ? generateCSSUnit(filterTabTypographyLetterSpacing, 'px') : 'normal',
       'text-transform': filterTabTypographyTextTransform || 'none',
       'text-decoration': filterTabTypographyTextDecoration || 'none',
-      'padding-top': filterTabTopPadding ? generateCSSUnit(filterTabTopPadding, 'px') : '6px',
-      'padding-right': filterTabRightPadding ? generateCSSUnit(filterTabRightPadding, 'px') : '12px',
-      'padding-bottom': filterTabBottomPadding ? generateCSSUnit(filterTabBottomPadding, 'px') : '6px',
-      'padding-left': filterTabLeftPadding ? generateCSSUnit(filterTabLeftPadding, 'px') : '12px',
-      'margin-right': filterTabSpacingBetween ? generateCSSUnit(filterTabSpacingBetween, 'px') : '10px',
+      'padding-top': filterTabTopPadding !== undefined && filterTabTopPadding !== '' ? generateCSSUnit(filterTabTopPadding, 'px') : '6px',
+      'padding-right': filterTabRightPadding !== undefined && filterTabRightPadding !== '' ? generateCSSUnit(filterTabRightPadding, 'px') : '12px',
+      'padding-bottom': filterTabBottomPadding !== undefined && filterTabBottomPadding !== '' ? generateCSSUnit(filterTabBottomPadding, 'px') : '6px',
+      'padding-left': filterTabLeftPadding !== undefined && filterTabLeftPadding !== '' ? generateCSSUnit(filterTabLeftPadding, 'px') : '12px',
+      'margin-right': filterTabSpacingBetween !== undefined && filterTabSpacingBetween !== '' ? generateCSSUnit(filterTabSpacingBetween, 'px') : '10px',
       'margin-bottom': '8px',
       'background-color': filterTabBackgroundColor || '#f2f2f2',
       'color': filterTabTextColor || '#000',
       'border-radius': '4px',
       'cursor': 'pointer',
-      'border-top': filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-      'border-right': filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-      'border-bottom': filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
-      'border-left': filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth || 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+      'border-top': filterTabBorderStyle !== "none" ? `${filterTabTopBorderwidth !== undefined && filterTabTopBorderwidth !== '' ? filterTabTopBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+      'border-right': filterTabBorderStyle !== "none" ? `${filterTabRightBorderwidth !== undefined && filterTabRightBorderwidth !== '' ? filterTabRightBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+      'border-bottom': filterTabBorderStyle !== "none" ? `${filterTabBottomBorderwidth !== undefined && filterTabBottomBorderwidth !== '' ? filterTabBottomBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
+      'border-left': filterTabBorderStyle !== "none" ? `${filterTabLeftBorderwidth !== undefined && filterTabLeftBorderwidth !== '' ? filterTabLeftBorderwidth : 1}px ${filterTabBorderStyle || "solid"} ${filterTabBorderColor || "#ccc"}` : "none",
     },
-    " .gallery-filter-wrapper button:hover, .category-filters button:hover": {
+    " .rba-filter-tabs .gallery-filter-button.is-active, .rba-filter-tabs .gallery-filter-button:hover, .gallery-filter-wrapper button:hover, .category-filters button:hover": {
       'background-color': filterTabHoverBackgroundColor || '#0073aa',
       'color': filterTabHoverTextColor || '#fff',
     }
@@ -159,6 +171,7 @@ function EditorStyles(props) {
     " .rba-filter-tabs, .gallery-filter-wrapper, .category-filters": {
       'font-size': filterTabTypographyFontSizeMobile ? generateCSSUnit(filterTabTypographyFontSizeMobile, 'px') : undefined,
       'margin-bottom': filterTabBottomSpacingMobile ? generateCSSUnit(filterTabBottomSpacingMobile, 'px') : undefined,
+      'text-align': mapAlign(filterTabAlignmentMobile),
     },
     " .rba-filter-tabs .gallery-filter-button": {
       'font-size': filterTabTypographyFontSizeMobile ? generateCSSUnit(filterTabTypographyFontSizeMobile, 'px') : undefined,
@@ -191,6 +204,7 @@ function EditorStyles(props) {
     " .rba-filter-tabs, .gallery-filter-wrapper, .category-filters": {
       'font-size': filterTabTypographyFontSizeTablet ? generateCSSUnit(filterTabTypographyFontSizeTablet, 'px') : undefined,
       'margin-bottom': filterTabBottomSpacingTablet ? generateCSSUnit(filterTabBottomSpacingTablet, 'px') : undefined,
+      'text-align': mapAlign(filterTabAlignmentTablet),
     },
     " .rba-gf-tabs .gallery-filter-button": {
       'font-size': filterTabTypographyFontSizeTablet ? generateCSSUnit(filterTabTypographyFontSizeTablet, 'px') : undefined,
@@ -209,11 +223,11 @@ function EditorStyles(props) {
   };
 
   var styling_css = "";
-  var id = `.wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id}`;
+  var idSel = `.wp-block-responsive-block-editor-addons-gallery-masonry.block-${block_id}`;
 
-  styling_css = generateCSS(selectors, id);
-  styling_css += generateCSS(tablet_selectors, id, true, "tablet");
-  styling_css += generateCSS(mobile_selectors, id, true, "mobile");
+  styling_css = generateCSS(selectors, idSel);
+  styling_css += generateCSS(tablet_selectors, idSel, true, "tablet");
+  styling_css += generateCSS(mobile_selectors, idSel, true, "mobile");
 
   return styling_css;
 }

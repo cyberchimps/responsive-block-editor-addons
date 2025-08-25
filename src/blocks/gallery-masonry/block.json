@@ -177,10 +177,11 @@
     },
     "filterTabTypographyFontFamily": {
       "type": "string",
-      "default": ""
+      "default": "Abel"
     },
     "filterTabTypographyFontSize": {
-      "type": "number"
+      "type": "number",
+      "default": 14
     },
     "filterTabTypographyFontSizeTablet": {
       "type": "number"
@@ -190,21 +191,23 @@
     },
     "filterTabTypographyFontWeight": {
       "type": "string",
-      "default": ""
+      "default": "400"
     },
     "filterTabTypographyLineHeight": {
-      "type": "number"
+      "type": "number",
+      "default": 1.5
     },
     "filterTabTypographyLetterSpacing": {
-      "type": "number"
+      "type": "number",
+      "default": 0
     },
     "filterTabTypographyTextTransform": {
       "type": "string",
-      "default": ""
+      "default": "none"
     },
     "filterTabTypographyTextDecoration": {
       "type": "string",
-      "default": ""
+      "default": "none"
     },
     "filterTabTopPadding": {
       "type": "number",
@@ -341,6 +344,22 @@
     "enableResponsiveSupport": {
       "type": "boolean",
       "default": false
+    },
+    "gutter": { 
+      "type": "number", 
+      "default": 0 
+    },
+    "gutterTablet": { 
+      "type": "number",
+      "default": 0
+    },
+    "gutterMobile": { 
+      "type": "number",
+      "default": 0
+    },
+    "radius": {
+      "type": "number",
+      "default": 0
     }
   }
 }
