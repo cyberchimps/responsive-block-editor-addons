@@ -11,9 +11,12 @@
  *
  * @param Array $attributes Attributes.
  */
-function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets( $attributes ) {
+function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets( $post_id = null ) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
 	$widget_blocks = get_option( 'widget_block' );
-	if ( has_block( 'responsive-block-editor-addons/testimonial-slider' ) ) {
+	if ( has_block( 'responsive-block-editor-addons/testimonial-slider', $post_id ) ) {
 		include_slick_lib();
 	}
 
@@ -57,6 +60,7 @@ function responsive_block_editor_addons_testimonial_carousel_add_frontend_assets
 }
 add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_testimonial_carousel_add_frontend_assets' );
 add_action( 'the_post', 'responsive_block_editor_addons_testimonial_carousel_add_frontend_assets' );
+add_action( 'responsive_block_editor_addons_enqueue_scripts', 'responsive_block_editor_addons_testimonial_carousel_add_frontend_assets' );
 
 /**
  * Include slick library.
@@ -118,6 +122,39 @@ function testimonial_carousel_generate_script() {
 }
 
 add_action( 'wp_enqueue_scripts', 'testimonial_carousel_generate_script' );
+
+function rbea_testimonial_carousel_generate_script( $post_id = null ) {
+	$widget_blocks = get_option( 'widget_block' );
+
+	$post_data = get_post($post_id);
+
+	if ( has_blocks( $post_data->ID ) && isset( $post_data->post_content ) ) {
+
+		$blocks = responsive_parse_gutenberg_blocks_testimonial_carousel( $post_data->post_content );
+
+		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+			return;
+		}
+
+		get_responsive_testimonial_carousel_scripts( $blocks );
+	}
+
+	if ( ! empty( $widget_blocks ) ) {
+		foreach ( $widget_blocks as $widget ) {
+			if ( ! empty( $widget['content'] ) ) {
+				$blocks_from_widgets = responsive_parse_gutenberg_blocks_testimonial_carousel( $widget['content'] );
+
+				if ( ! is_array( $blocks_from_widgets ) || empty( $blocks_from_widgets ) ) {
+					return;
+				}
+
+				get_responsive_testimonial_carousel_scripts( $blocks_from_widgets );
+			}
+		}
+	}
+}
+
+add_action( 'responsive_block_editor_addons_enqueue_scripts', 'rbea_testimonial_carousel_generate_script' );
 
 /**
  * Generate Testimonical Carousel script dynamically
