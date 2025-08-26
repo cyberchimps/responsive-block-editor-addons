@@ -19,7 +19,7 @@ function responsive_block_editor_addons_add_google_fonts() {
 }
 add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_add_google_fonts' );
 
-function responsive_block_editor_addons_fetch_google_fonts( $blocks, $is_site_builder = false ) {
+function responsive_block_editor_addons_fetch_google_fonts( $blocks, $layout = false ) {
 	$google_fonts = gather_google_fonts( $blocks );
 
 	if ( $google_fonts && count( $google_fonts ) ) {
@@ -28,8 +28,8 @@ function responsive_block_editor_addons_fetch_google_fonts( $blocks, $is_site_bu
 		}
 
 		$fonts_url = sprintf( 'https://fonts.googleapis.com/css?family=%s', implode( rawurlencode( '|' ), $google_fonts ) );
-		if ( $is_site_builder ) {
-			wp_enqueue_style( 'responsive-block-editor-addons-google-fonts-sb', $fonts_url ); //phpcs:ignore
+		if ( $layout ) {
+			wp_enqueue_style( 'responsive-block-editor-addons-google-fonts-sb-' . $layout, $fonts_url ); //phpcs:ignore
 		} else {
 			wp_enqueue_style( 'responsive-block-editor-addons-google-fonts', $fonts_url ); //phpcs:ignore
 		}
