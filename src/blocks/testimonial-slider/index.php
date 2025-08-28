@@ -82,17 +82,22 @@ function include_slick_lib() {
 /**
  * Generate Testimonical Carousel script dynamically
  */
-function testimonial_carousel_generate_script() {
-	global $post;
-	$this_post     = $post;
+function testimonial_carousel_generate_script( $post_id = null ) {
+
 	$widget_blocks = get_option( 'widget_block' );
+	if ( empty( $post_id ) ) {
+		global $post;
+		$this_post = $post;
 
-	if ( ! is_object( $this_post ) ) {
-		return;
-	}
+		if ( ! is_object( $this_post ) ) {
+			return;
+		}
 
-	if ( ! isset( $this_post->ID ) ) {
-		return;
+		if ( ! isset( $this_post->ID ) ) {
+			return;
+		}
+	} else {
+		$this_post = get_post($post_id);
 	}
 
 	if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
@@ -122,39 +127,7 @@ function testimonial_carousel_generate_script() {
 }
 
 add_action( 'wp_enqueue_scripts', 'testimonial_carousel_generate_script' );
-
-function rbea_testimonial_carousel_generate_script( $post_id = null ) {
-	$widget_blocks = get_option( 'widget_block' );
-
-	$post_data = get_post($post_id);
-
-	if ( has_blocks( $post_data->ID ) && isset( $post_data->post_content ) ) {
-
-		$blocks = responsive_parse_gutenberg_blocks_testimonial_carousel( $post_data->post_content );
-
-		if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-			return;
-		}
-
-		get_responsive_testimonial_carousel_scripts( $blocks );
-	}
-
-	if ( ! empty( $widget_blocks ) ) {
-		foreach ( $widget_blocks as $widget ) {
-			if ( ! empty( $widget['content'] ) ) {
-				$blocks_from_widgets = responsive_parse_gutenberg_blocks_testimonial_carousel( $widget['content'] );
-
-				if ( ! is_array( $blocks_from_widgets ) || empty( $blocks_from_widgets ) ) {
-					return;
-				}
-
-				get_responsive_testimonial_carousel_scripts( $blocks_from_widgets );
-			}
-		}
-	}
-}
-
-add_action( 'responsive_block_editor_addons_enqueue_scripts', 'rbea_testimonial_carousel_generate_script' );
+add_action( 'responsive_block_editor_addons_enqueue_scripts', 'testimonial_carousel_generate_script' );
 
 /**
  * Generate Testimonical Carousel script dynamically

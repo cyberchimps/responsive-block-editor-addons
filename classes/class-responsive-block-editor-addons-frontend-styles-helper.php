@@ -128,6 +128,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
     		$combined_css = $post_css . $widget_css;
     		if ( ! empty( $combined_css ) ) {
     		    echo "<style id='rbea-frontend-styles'>$combined_css</style>"; //phpcs:ignore
+				do_action( 'rbea-frontend-site-builder-styles' );
     		}
 		}
 
