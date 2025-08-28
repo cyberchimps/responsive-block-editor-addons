@@ -486,7 +486,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 	 * @since 2.1.1
 	 */
 	public function sync_blocks_data( $blocks ) {
-		// Check if container exists in blocks array, if not, then append the container array into blocks array.
+
+		$keys = array_column( $blocks, 'key' );
+
+		if ( in_array( 'container', $keys, true ) ) {
+			update_option( 'rbea_has_container', true );
+			return;
+		}
+
 		$rbea_has_container = get_option( 'rbea_has_container' );
 		if ( ! $rbea_has_container ) {
 			$container = array(
