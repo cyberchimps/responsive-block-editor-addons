@@ -237,6 +237,7 @@ export default class Inspector extends Component {
                 label={__("Enable Title", "responsive-block-editor-addons")}
                 checked={displayTitle}
                 onChange={() => setAttributes({ displayTitle: !displayTitle })}
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Enable Subtitle", "responsive-block-editor-addons")}
@@ -244,6 +245,7 @@ export default class Inspector extends Component {
                 onChange={() =>
                   setAttributes({ displaySubtitle: !displaySubtitle })
                 }
+                __nextHasNoMarginBottom
               />
               {columnsCount > 1 && (
                 <ToggleControl
@@ -254,6 +256,7 @@ export default class Inspector extends Component {
                       displayColumnSeparator: !displayColumnSeparator,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               )}
               {displayTitle && (
@@ -698,6 +701,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -708,6 +712,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -718,6 +723,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

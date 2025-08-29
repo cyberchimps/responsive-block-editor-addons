@@ -524,6 +524,8 @@ if (!gridIsRadiusValueUpdated) {
                 value={ noTaxDisplaytext }
                 onChange={ ( value ) => setAttributes( { noTaxDisplaytext: value } ) }
                 help={ __( "What to display if taxonomy not found.", "responsive-block-editor-addons" ) }
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               <ToggleControl
                 label={__(
@@ -538,6 +540,7 @@ if (!gridIsRadiusValueUpdated) {
                   "Show Empty Taxonomy ",
                   "responsive-block-editor-addons"
                 )}
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Show Posts Count", "responsive-block-editor-addons")}
@@ -549,6 +552,7 @@ if (!gridIsRadiusValueUpdated) {
                   "Show Count of taxonomy ",
                   "responsive-block-editor-addons"
                 )}
+                __nextHasNoMarginBottom
               />
               {"grid" == layout && (<Fragment>
                 <BaseControl
@@ -970,6 +974,7 @@ if (!gridIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -980,6 +985,7 @@ if (!gridIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -990,6 +996,7 @@ if (!gridIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

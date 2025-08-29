@@ -158,6 +158,8 @@ export default class Edit extends Component {
               value={formId}
               onChange={(value) => this.onSelectForm(value)}
               options={responsive_globals.cf7_forms}
+              __nextHasNoMarginBottom
+              __next40pxDefaultSize={true}
             />
           </Placeholder>
 

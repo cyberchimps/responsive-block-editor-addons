@@ -341,6 +341,8 @@ export default class Inspector extends Component {
 								label={__("Placeholder", "responsive-block-editor-addons")}
 								value={placeholder}
 								onChange={(value) => setAttributes({placeholder: value})}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
 							/>
               <RbeaWidthRangeControl
                 label={__("Input Width", "responsive-block-editor-addons")}
@@ -479,6 +481,8 @@ export default class Inspector extends Component {
                                 label={__("Text", "responsive-block-editor-addons")}
                                 value={buttonText}
                                 onChange={(value) => setAttributes({buttonText: value})}
+                                __nextHasNoMarginBottom
+                                __next40pxDefaultSize={true}
                               />
                             </Fragment>
                           )
@@ -674,6 +678,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -684,6 +689,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -694,6 +700,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           <PanelBody

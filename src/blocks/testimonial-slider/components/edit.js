@@ -1372,6 +1372,8 @@ class edit extends Component {
                                 label: __("Bottom Right", "responsive-block-editor-addons"),
                               },
                             ]}
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize={true}
                           />
                         )}
                       </Fragment>
@@ -1551,11 +1553,13 @@ class edit extends Component {
           label={__("Pause On Hover", "responsive-block-editor-addons")}
           checked={pauseOnHover}
           onChange={this.togglePauseOnHover}
+          __nextHasNoMarginBottom
         />
         <ToggleControl
           label={__("Autoplay", "responsive-block-editor-addons")}
           checked={autoplay}
           onChange={this.toggleAutoplay}
+          __nextHasNoMarginBottom
         />
         {autoplay == true && (
           <RbeaRangeControl
@@ -1570,6 +1574,7 @@ class edit extends Component {
           label={__("Infinite Loop", "responsive-block-editor-addons")}
           checked={infiniteLoop}
           onChange={this.toggleInfiniteLoop}
+          __nextHasNoMarginBottom
         />
         <RbeaRangeControl
           label={__("Transition Speed (ms)", "responsive-block-editor-addons")}
@@ -2040,6 +2045,7 @@ class edit extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -2050,6 +2056,7 @@ class edit extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -2060,6 +2067,7 @@ class edit extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

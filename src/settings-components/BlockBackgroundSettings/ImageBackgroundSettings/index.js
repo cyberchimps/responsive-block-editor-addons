@@ -109,6 +109,8 @@ class ImageBackgroundControl extends Component {
                                 { value: "bottom center", label: __("Bottom Center", "responsive-block-editor-addons") },
                                 { value: "bottom right", label: __("Bottom Right", "responsive-block-editor-addons") },
                             ]}
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize={true}
                         />
                         <SelectControl
                             label={__("Repeat", "responsive-block-editor-addons")}
@@ -122,6 +124,8 @@ class ImageBackgroundControl extends Component {
                                 { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
                                 { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
                             ]}
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize={true}
                         />
                         <RbeaTabRadioControl
                             label={__("Size", "responsive-block-editor-addons")}
@@ -258,6 +262,8 @@ class ImageBackgroundControl extends Component {
                                                         label: __("Bottom Right", "responsive-block-editor-addons"),
                                                     },
                                                 ]}
+                                                __nextHasNoMarginBottom
+                                                __next40pxDefaultSize={true}
                                             />
                                         )}
                                     </Fragment>

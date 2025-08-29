@@ -449,6 +449,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ inheritFromTheme: !inheritFromTheme })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__("Open link in new tab", "responsive-block-editor-addons")}
@@ -456,6 +457,7 @@ export default class Inspector extends Component {
 								onChange={() => {
 									setAttributes({ target: !target });
 								}}
+								__nextHasNoMarginBottom
 							/>
 							<SelectControl
 								label={__("Hover Effect", "responsive-block-editor-addons")}
@@ -490,6 +492,8 @@ export default class Inspector extends Component {
 										),
 									},
 								]}
+								__nextHasNoMarginBottom
+                				__next40pxDefaultSize={true}
 							/>
 						</PanelBody>
 						<RbeaSupportControl blockSlug={"multi-buttons"} />

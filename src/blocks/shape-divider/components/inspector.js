@@ -358,6 +358,7 @@ class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -368,6 +369,7 @@ class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -378,6 +380,7 @@ class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
             

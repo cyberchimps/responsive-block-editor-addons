@@ -421,6 +421,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ enableLink: !enableLink })
                   }
+                  __nextHasNoMarginBottom
                 />
                 {enableLink && (
                   <Fragment>
@@ -431,11 +432,14 @@ export default class Inspector extends Component {
                       value={link}
                       onChange={(value) => setAttributes({ link: value })}
                       placeholder={__("Enter URL", "responsive-block-editor-addons")}
+                      __nextHasNoMarginBottom
+                      __next40pxDefaultSize={true}
                     />
                     <ToggleControl
                       label={__("Open in New Tab", "responsive-block-editor-addons")}
                       checked={target}
                       onChange={(value) => setAttributes({ target: !target })}
+                      __nextHasNoMarginBottom
                     />
                   </Fragment>
                 )}

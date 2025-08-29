@@ -708,6 +708,7 @@ export default class Inspector extends Component {
                     showImage: !showImage,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label="Name"
@@ -717,6 +718,7 @@ export default class Inspector extends Component {
                     showName: !showName,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label="Designation"
@@ -726,6 +728,7 @@ export default class Inspector extends Component {
                     showDesignation: !showDesignation,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label="Description"
@@ -735,6 +738,7 @@ export default class Inspector extends Component {
                     showDescription: !showDescription,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label="Social Icons"
@@ -744,6 +748,7 @@ export default class Inspector extends Component {
                     showSocialIcons: !showSocialIcons,
                   })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
 
@@ -773,6 +778,7 @@ export default class Inspector extends Component {
                       facebook: !facebook,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label="Twitter"
@@ -782,6 +788,7 @@ export default class Inspector extends Component {
                       twitter: !twitter,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label="Linkedin"
@@ -791,6 +798,7 @@ export default class Inspector extends Component {
                       linkedin: !linkedin,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label="Instagram"
@@ -800,6 +808,7 @@ export default class Inspector extends Component {
                       instagram: !instagram,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label="Email"
@@ -809,6 +818,7 @@ export default class Inspector extends Component {
                       email: !email,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label="Youtube"
@@ -818,6 +828,7 @@ export default class Inspector extends Component {
                       youtube: !youtube,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label="Pinterest"
@@ -827,6 +838,7 @@ export default class Inspector extends Component {
                       pinterest: !pinterest,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
               <PanelBody
@@ -1258,6 +1270,8 @@ export default class Inspector extends Component {
                                   label: __("Bottom Right", "responsive-block-editor-addons"),
                                 },
                               ]}
+                              __nextHasNoMarginBottom
+                              __next40pxDefaultSize={true}
                             />
                           )}
                         </Fragment>
@@ -1451,6 +1465,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1461,6 +1476,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1471,6 +1487,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

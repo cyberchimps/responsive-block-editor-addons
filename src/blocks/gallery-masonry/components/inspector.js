@@ -233,6 +233,7 @@ class Inspector extends Component {
 								checked={!!lightbox}
 								onChange={() => setAttributes({ lightbox: !lightbox, linkTo: 'none' })}
 								help={this.getLightboxHelp}
+								__nextHasNoMarginBottom
 							/>
 
 							<ToggleControl
@@ -240,6 +241,7 @@ class Inspector extends Component {
 								checked={!!captions}
 								onChange={() => setAttributes({ captions: !captions })}
 								help={this.getCaptionsHelp}
+								__nextHasNoMarginBottom
 							/>
 
 							{captions && (
@@ -286,6 +288,7 @@ class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ hideWidget: !hideWidget })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__(
@@ -296,6 +299,7 @@ class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ hideWidgetTablet: !hideWidgetTablet })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__(
@@ -306,6 +310,7 @@ class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ hideWidgetMobile: !hideWidgetMobile })
 								}
+								__nextHasNoMarginBottom
 							/>
 						</PanelBody>
 

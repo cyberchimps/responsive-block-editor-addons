@@ -538,6 +538,8 @@ export default class Inspector extends Component {
               data_copy[index] = new_content;
               setAttributes({ flipboxArray: data_copy });
             }}
+            __nextHasNoMarginBottom
+            __next40pxDefaultSize={true}
           />
           <TextControl
             label={__("Content", "responsive-block-editor-addons")}
@@ -557,6 +559,8 @@ export default class Inspector extends Component {
               data_copy[index] = new_content;
               setAttributes({ flipboxArray: data_copy });
             }}
+            __nextHasNoMarginBottom
+            __next40pxDefaultSize={true}
           />
         </PanelBody>
       );
@@ -679,6 +683,8 @@ export default class Inspector extends Component {
               data_copy[index] = new_content;
               setAttributes({ flipboxArray: data_copy });
             }}
+            __nextHasNoMarginBottom
+            __next40pxDefaultSize={true}
           />
           <TextControl
             label={__("Content", "responsive-block-editor-addons")}
@@ -698,6 +704,8 @@ export default class Inspector extends Component {
               data_copy[index] = new_content;
               setAttributes({ flipboxArray: data_copy });
             }}
+            __nextHasNoMarginBottom
+            __next40pxDefaultSize={true}
           />
         </PanelBody>
       );
@@ -876,6 +884,7 @@ export default class Inspector extends Component {
                         showFrontIcon: !showFrontIcon,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__("Front Title", "responsive-block-editor-addons")}
@@ -885,6 +894,7 @@ export default class Inspector extends Component {
                         showFrontTitle: !showFrontTitle,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__(
@@ -897,6 +907,7 @@ export default class Inspector extends Component {
                         showFrontSubtitle: !showFrontSubtitle,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                 </Fragment>
               )}
@@ -910,6 +921,7 @@ export default class Inspector extends Component {
                         showBackIcon: !showBackIcon,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__("Back Title", "responsive-block-editor-addons")}
@@ -919,6 +931,7 @@ export default class Inspector extends Component {
                         showBackTitle: !showBackTitle,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__(
@@ -931,6 +944,7 @@ export default class Inspector extends Component {
                         showBackSubtitle: !showBackSubtitle,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__("Back Button", "responsive-block-editor-addons")}
@@ -940,6 +954,7 @@ export default class Inspector extends Component {
                         showBackButton: !showBackButton,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                 </Fragment>
               )}
@@ -1778,6 +1793,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1788,6 +1804,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1798,6 +1815,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

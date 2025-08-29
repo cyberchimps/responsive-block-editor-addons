@@ -743,6 +743,8 @@ export default class Inspector extends Component {
                       label={__("Button Text", "responsive-block-editor-addons")}
                       value={popupButtonText}
                       onChange={(value) => setAttributes({ popupButtonText: value })}
+                      __nextHasNoMarginBottom
+                      __next40pxDefaultSize={true}
                     />
 
                     <div className="responsive-block-editor-addons-popup-div-flex">
@@ -803,6 +805,8 @@ export default class Inspector extends Component {
                       label={__("Enter Text", "responsive-block-editor-addons")}
                       value={popupTextTrigger}
                       onChange={(value) => setAttributes({ popupTextTrigger: value })}
+                      __nextHasNoMarginBottom
+                      __next40pxDefaultSize={true}
                     />}
 
                   {/* <TabPanel
@@ -1011,6 +1015,7 @@ export default class Inspector extends Component {
                       popupToggleCloseBtn: !popupToggleCloseBtn,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 {popupToggleCloseBtn &&
                   <RbeaTabRadioControl
@@ -1564,6 +1569,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -1574,6 +1580,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -1584,6 +1591,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
               <RbeaSupportControl blockSlug={"popup"} />

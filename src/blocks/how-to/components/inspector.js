@@ -241,6 +241,7 @@ export default class Inspector extends Component {
                                 checked={showEstimatedTime}
                                 onChange={(value) => setAttributes({ showEstimatedTime: !showEstimatedTime })}
                                 help={__("It is recommended to show estimated time required for your steps.", "responsive-block-editor-addons")}
+                                __nextHasNoMarginBottom
                             />
                             {
                                 showEstimatedTime && (
@@ -298,6 +299,7 @@ export default class Inspector extends Component {
                                 checked={showEstimatedCost}
                                 onChange={(value) => setAttributes({ showEstimatedCost: !showEstimatedCost })}
                                 help={__("It is recommended to show estimated time required for your steps.", "responsive-block-editor-addons")}
+                                __nextHasNoMarginBottom
                             />
                             <ExternalLink href={"https://en.wikipedia.org/wiki/List_of_circulating_currencies"}>
                                 {__("Click here to find your countrys ISO code.", "responsive-block-editor-addons")}
@@ -306,6 +308,7 @@ export default class Inspector extends Component {
                                 label={__("Show Tools", "responsive-block-editor-addons")}
                                 checked={showTools}
                                 onChange={(value) => setAttributes({ showTools: !showTools })}
+                                __nextHasNoMarginBottom
                             />
                             {
                                 showTools && (
@@ -367,6 +370,7 @@ export default class Inspector extends Component {
                                 label={__("Show Materials", "responsive-block-editor-addons")}
                                 checked={showMaterials}
                                 onChange={(value) => setAttributes({ showMaterials: !showMaterials })}
+                                __nextHasNoMarginBottom
                             />
                             {showMaterials && (
                                 <RbeaRangeControl
@@ -648,6 +652,7 @@ export default class Inspector extends Component {
                                 onChange={(value) =>
                                 setAttributes({ hideWidget: !hideWidget })
                                 }
+                                __nextHasNoMarginBottom
                             />
                             <ToggleControl
                                 label={__(
@@ -658,6 +663,7 @@ export default class Inspector extends Component {
                                 onChange={(value) =>
                                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                                 }
+                                __nextHasNoMarginBottom
                             />
                             <ToggleControl
                                 label={__(
@@ -668,6 +674,7 @@ export default class Inspector extends Component {
                                 onChange={(value) =>
                                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                                 }
+                                __nextHasNoMarginBottom
                             />
                         </PanelBody>
                     </InspectorTab>

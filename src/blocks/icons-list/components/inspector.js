@@ -426,6 +426,7 @@ export default class Inspector extends Component {
                   label={__("Hide Labels", "responsive-block-editor-addons")}
                   checked={hideLabel}
                   onChange={(value) => this.changeChildAttr(value)}
+                  __nextHasNoMarginBottom
                 />
                 <hr className="responsive-block-editor-addons-editor__separator" />
               </PanelBody>
@@ -713,6 +714,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -723,6 +725,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -733,6 +736,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
             
