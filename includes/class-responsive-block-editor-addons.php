@@ -143,6 +143,8 @@ class Responsive_Block_Editor_Addons {
 		// Responsive Addons Menu.
 		add_action( 'admin_menu', array( $this, 'responsive_block_editor_addons_admin_menu' ) );
 
+		add_action( 'admin_menu', array( $this, 'responsive_block_editor_addons_remove_duplicate_submenu' ), 999 );
+
 		// Remove all admin notices from specific pages.
 		add_action( 'admin_init', array( $this, 'responsive_block_editor_addons_admin_init' ) );
 
@@ -425,6 +427,32 @@ class Responsive_Block_Editor_Addons {
 		$query_args = apply_filters( "responsive_block_editor_post_query_args_{$block_type}", $query_args, $attributes );
 
 		return new WP_Query( $query_args );
+	}
+
+	/**
+	 * Remove the unnecessary duplicate submenu.
+	 */
+	public function responsive_block_editor_addons_remove_duplicate_submenu() {
+		$theme = wp_get_theme();
+
+		$rst_path = 'responsive-add-ons/responsive-add-ons.php';
+		$rae_path = 'responsive-addons-for-elementor/responsive-addons-for-elementor.php';
+
+		if ( ('Responsive' !== $theme->name && 'Responsive' !== $theme->parent_theme ) && ! is_plugin_active( $rst_path ) ) {
+			// Remove the duplicate submenu under "Responsive"
+			remove_submenu_page( 
+				'responsive_block_editor_addons', // parent slug
+				'responsive_block_editor_addons'  // same as parent slug (the auto-added submenu)
+			);
+		}
+
+		if ( ('Responsive' !== $theme->name && 'Responsive' !== $theme->parent_theme ) && is_plugin_active( $rst_path ) && is_plugin_active( $rae_path ) ) {
+			// Remove the duplicate submenu under "Responsive"
+			remove_submenu_page( 
+				'responsive_block_editor_addons', // parent slug
+				'responsive_block_editor_addons'  // same as parent slug (the auto-added submenu)
+			);
+		}
 	}
 
 	/**
