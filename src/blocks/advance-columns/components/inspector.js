@@ -17,6 +17,10 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-control";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import {
+  __experimentalToggleGroupControl as ToggleGroupControl,
+  __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
 
 /**
  * Inspector Controls
@@ -402,38 +406,26 @@ export default class Inspector extends Component {
               />
               {contentWidth == "custom" && (
                 <Fragment>
-                  <ButtonGroup
+                  <ToggleGroupControl
                     className="responsive-size-type-field"
-                    aria-label={__(
-                      "Size Type",
-                      "responsive-block-editor-addons"
-                    )}
+                    label={ __("Size Type", "responsive-block-editor-addons") }
+                    aria-label={ __("Size Type", "responsive-block-editor-addons") }
+                    value={ widthType }
+                    onChange={(val) => setAttributes({ widthType: val })}
+                    __next40pxDefaultSize
+                    __nextHasNoMarginBottom
                   >
-                    <Button
-                      key={"px"}
+                    <ToggleGroupControlOption
                       className="responsive-size-btn"
-                      isSmall
-                      isPrimary={widthType === "px"}
-                      aria-pressed={widthType === "px"}
-                      min={0}
-                      max={2000}
-                      onClick={() => setAttributes({ widthType: "px" })}
-                    >
-                      {"px"}
-                    </Button>
-                    <Button
-                      key={"%"}
+                      value="px"
+                      label="px"
+                    />
+                    <ToggleGroupControlOption
                       className="responsive-size-btn"
-                      isSmall
-                      isPrimary={widthType === "%"}
-                      aria-pressed={widthType === "%"}
-                      min={0}
-                      max={100}
-                      onClick={() => setAttributes({ widthType: "%" })}
-                    >
-                      {"%"}
-                    </Button>
-                  </ButtonGroup>
+                      value="%"
+                      label="%"
+                    />
+                  </ToggleGroupControl>
                   <RbeaRangeControl
                     label={__("Inner Width", "responsive-block-editor-addons")}
                     value={width}

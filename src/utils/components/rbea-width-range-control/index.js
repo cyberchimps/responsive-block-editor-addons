@@ -2,6 +2,10 @@ import { __ } from '@wordpress/i18n';
 import { RangeControl, ButtonGroup, Button, } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { Icon, rotateLeft } from '@wordpress/icons';
+import {
+  __experimentalToggleGroupControl as ToggleGroupControl,
+  __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
 
 import './styles/editor.scss';
 
@@ -26,31 +30,27 @@ const RbeaWidthRangeControl = ( props ) => {
                 </div>
                 <div className='rbea-control__header-controls-container'>
                     {extraControls && 
-                        <ButtonGroup
+                        <ToggleGroupControl
                             className="responsive-block-editor-addons-size-type-field"
-                            aria-label={__("Size Type", "responsive-block-editor-addons")}
-                        >
-                            <Button
-                              key={"px"}
-                              className="responsive-block-editor-addons-size-btn"
-                              size='small'
-                              isPrimary={widthType === "px"}
-                              aria-pressed={widthType === "px"}
-                              onClick={() => setAttributes({ widthType: "px" })}
+                            label={ __("Size Type", "responsive-block-editor-addons") }
+                            aria-label={ __("Size Type", "responsive-block-editor-addons") }
+                            value={ widthType }
+                            onChange={(val) => setAttributes({ widthType: val })}
+                            __next40pxDefaultSize
+                            __nextHasNoMarginBottom
                             >
-                                {"px"}
-                            </Button>
-                            <Button
-                              key={"%"}
-                              className="responsive-block-editor-addons-size-btn"
-                              size='small'
-                              isPrimary={widthType === "%"}
-                              aria-pressed={widthType === "%"}
-                              onClick={() => setAttributes({ widthType: "%" })}
-                            >
-                              {"%"}
-                            </Button>
-                        </ButtonGroup>
+                            <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="px"
+                                label="px"
+                            />
+                            <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="%"
+                                label="%"
+                            />
+                        </ToggleGroupControl>
+
                     }
                     {allowReset &&
                         <div className="rbea-control__actions">
