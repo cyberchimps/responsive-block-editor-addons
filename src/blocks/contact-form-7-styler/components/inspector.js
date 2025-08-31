@@ -39,7 +39,7 @@ const {
   PanelColorSettings,
   ColorPalette,
   AlignmentToolbar,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {

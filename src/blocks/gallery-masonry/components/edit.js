@@ -363,7 +363,7 @@ export default compose([
   withSelect((select) => ({
     editorSidebarOpened: select("core/edit-post").isEditorSidebarOpened(),
     pluginSidebarOpened: select("core/edit-post").isPluginSidebarOpened(),
-    publishSidebarOpened: select("core/edit-post").isPublishSidebarOpened(),
+    publishSidebarOpened: select("core/editor").isPublishSidebarOpened(),
     wideControlsEnabled: select("core/editor").getEditorSettings().alignWide,
   })),
   withNotices,

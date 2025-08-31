@@ -600,6 +600,7 @@ export default class Inspector extends Component {
 								value={ formSuccessMessage }
 								onChange={ (value) => setAttributes({ formSuccessMessage: value }) }
 								help={ __( "Show this message after the form was successfully submitted.", "responsive-block-editor-addons" ) }
+                __nextHasNoMarginBottom
 							/>
 
               <TextareaControl
@@ -608,6 +609,7 @@ export default class Inspector extends Component {
 								value={ formErrorMessage }
 								onChange={ (value) => setAttributes({ formErrorMessage: value }) }
 								help={ __( "This message will be displayed when there is a problem with the server.", "responsive-block-editor-addons" ) }
+                __nextHasNoMarginBottom
 							/>
 
             </PanelBody>

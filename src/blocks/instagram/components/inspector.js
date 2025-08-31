@@ -160,6 +160,7 @@ export default class Inspector extends Component {
                 onChange={(value) => {
                   setAttributes({ token: value });
                 }}
+                __nextHasNoMarginBottom
               />
               <p className="rbea-tab-radio-options-help-text">
                 Note: This block requires you to obtain an Instagram Access

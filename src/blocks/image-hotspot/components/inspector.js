@@ -230,6 +230,7 @@ class Inspector extends Component {
               handleUpdateData({ content: escape(value) }, index);
               handleStateChange("updateHotspot", true);
             }}
+            __nextHasNoMarginBottom
           />
           <RbeaRangeControl
             label={__("Horizontal Position", "responsive-block-editor-addons")}
@@ -476,6 +477,7 @@ class Inspector extends Component {
           onChange={(value) => {
             handleUpdateData({ content: escape(value) }, index);
           }}
+          __nextHasNoMarginBottom
         />
       </Fragment>
     );
