@@ -22,7 +22,7 @@ class AuthorName extends React.Component {
       return (
         <RichText
           tagName="div"
-          value={author_name}
+          value={String(author_name)}
           placeholder={__("Author Name", "responsive-block-editor-addons")}
           className="responsive-block-editor-addons-tm__author-name"
           style={{
@@ -62,7 +62,7 @@ class AuthorName extends React.Component {
       return (
         <RichText.Content
           tagName="span"
-          value={author_name}
+          value={String(author_name)}
           className="responsive-block-editor-addons-tm__author-name"
           style={{
             color: attributes.authorColor,

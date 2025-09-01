@@ -22,7 +22,7 @@ class Description extends React.Component {
       return (
         <RichText
           tagName="div"
-          value={description}
+          value={String(description)}
           placeholder={__("Write Description", "responsive-block-editor-addons")}
           className="responsive-block-editor-addons-tm__desc"
           style={{
@@ -62,7 +62,7 @@ class Description extends React.Component {
       return (
         <RichText.Content
           tagName="div"
-          value={description}
+          value={String(description)}
           className="responsive-block-editor-addons-tm__desc"
           style={{
             color: attributes.descColor,
