@@ -22465,15 +22465,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-image'    => 'url(' . $attr['backgroundImage'] . ')',
 					'opacity'             => $attr['opacity'] / 100,
 					'background-repeat'   => $attr['backgroundRepeat'],
-					'background-position' => $attr['backgroundPosition'],
+					'background-position' => self::get_background_position( $attr['backgroundPosition'] ),
 					'background-size'     => $attr['backgroundSize'],
 				);
 				$container_bg_css_tablet = array(
-					'background-position' => $attr['backgroundPositionTablet'],
+					'background-position' => self::get_background_position( $attr['backgroundPositionTablet'] ),
 					'background-size'     => $attr['backgroundSizeTablet'],
 				);
 				$container_bg_css_mobile = array(
-					'background-position' => $attr['backgroundPositionMobile'],
+					'background-position' => self::get_background_position( $attr['backgroundPositionMobile'] ),
 					'background-size'     => $attr['backgroundSizeMobile'],
 				);
 			}
@@ -22966,7 +22966,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundColor'                 => '',
 				'gradient'                        => 'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
 				'backgroundImage'                 => '',
-				'backgroundPosition'              => 'center center',
+				'backgroundPosition'              => '50% 50%',
 				'backgroundPositionMobile'        => '',
 				'backgroundPositionTablet'        => '',
 				'backgroundRepeat'                => 'no-repeat',
@@ -23135,5 +23135,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			return "rgba($r, $g, $b, $opacity)";
 		}
+
+		/**
+		 * Get background position as a CSS value.
+		 *
+		 * Accepts an array with `x` and `y` coordinates or a string value.  
+		 * If an array is provided, it converts the coordinates into percentage-based CSS values.
+		 *
+		 * @param array|string $position Background position. Either an array with 'x' and 'y' keys or a string.
+		 * @return string Background position formatted as a CSS value.
+		 */
+		public static function get_background_position( $position ) {
+			if ( is_array( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
+				return self::get_css_value( $position['x'] * 100, '%' ) . ' ' . self::get_css_value( $position['y'] * 100, '%' );
+			} else {
+				return $position;
+			}
+		}
+
 	}
 }

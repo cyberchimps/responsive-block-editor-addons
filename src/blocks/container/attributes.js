@@ -229,14 +229,14 @@ const attributes = {
     type: "string",
   },
   backgroundPosition: {
-    type: 'string',
-    default: "center center",
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
   },
   backgroundPositionMobile: {
-    type: 'string',
+    type: 'object',
   },
   backgroundPositionTablet: {
-    type: 'string',
+    type: 'object',
   },
   backgroundRepeat: {
     type: 'string',

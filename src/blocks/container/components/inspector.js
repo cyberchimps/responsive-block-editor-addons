@@ -11,6 +11,7 @@ import {
   Icon,
   GradientPicker,
   RadioControl,
+  FocalPointPicker,
 } from "@wordpress/components";
 
 import InspectorTab from "../../../components/InspectorTab";
@@ -1575,80 +1576,57 @@ export default function Inspector(props) {
                 {backgroundImage && (
                   <>
                     {/* Position */}
-                    <div className = "rbea-tab-selector-label-wrapper">
-                      <label className  = "rbea-background-image-positon-control-label">{__("Image Position", "responsive-block-editor-addons")}</label>
+                    <div className="rbea-tab-selector-label-wrapper">
                       <TabPanel
-                        className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                        className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
                         activeClass="active-tab"
                         tabs={[
                           {
                             name: "desktop",
                             title: <Dashicon icon="desktop" />,
-                            className:
-                              " responsive-desktop-tab  responsive-responsive-tabs",
+                            className: "responsive-desktop-tab responsive-responsive-tabs",
                           },
                           {
                             name: "tablet",
                             title: <Dashicon icon="tablet" />,
-                            className:
-                              " responsive-tablet-tab  responsive-responsive-tabs",
+                            className: "responsive-tablet-tab responsive-responsive-tabs",
                           },
                           {
                             name: "mobile",
                             title: <Dashicon icon="smartphone" />,
-                            className:
-                              " responsive-mobile-tab  responsive-responsive-tabs",
+                            className: "responsive-mobile-tab responsive-responsive-tabs",
                           },
                         ]}
                       >
                         {(tab) => {
-                          if ("mobile" === tab.name) {
-                            setAttributes({ imagePositionTab: "mobile" });
-                          } else if ("tablet" === tab.name) {
-                            setAttributes({ imagePositionTab: "tablet" });
-                          } else {
-                            setAttributes({ imagePositionTab: "desktop" });
-                          }
+                          const valueMap = {
+                            desktop: backgroundPosition,
+                            tablet: backgroundPositionTablet,
+                            mobile: backgroundPositionMobile,
+                          };
+
+                          const attrMap = {
+                            desktop: "backgroundPosition",
+                            tablet: "backgroundPositionTablet",
+                            mobile: "backgroundPositionMobile",
+                          };
+
+                          return (
+                            <>
+                              <label>{__("Image Position", "responsive-block-editor-addons")} ({tab.name})</label>
+                              <FocalPointPicker
+                                __nextHasNoMarginBottom
+                                __next40pxDefaultSize
+                                url={background_image_url}
+                                value={valueMap[tab.name]}
+                                onChange={(newFocalPoint) =>
+                                  setAttributes({ [attrMap[tab.name]]: newFocalPoint })
+                                }
+                              />
+                            </>
+                          );
                         }}
                       </TabPanel>
-                    </div>
-                      
-                    <div className = "rbea-background-image-positon-control"
-                      style={{
-                        backgroundImage: `url(${background_image_url})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition:  'center',
-                      }}>
-                      { imagePositionTab === "desktop" && 
-                          <RadioControl 
-                            className = "rbea-background-image-positon-control-options"
-                            selected={backgroundPosition}
-                            options={imagePositionOptions}
-                            onChange={(value) =>
-                              setAttributes({ backgroundPosition: value })
-                            }
-                          />
-                      }
-                      {imagePositionTab === "tablet" &&
-                          <RadioControl 
-                            className = "rbea-background-image-positon-control-options"
-                            selected={backgroundPositionTablet}
-                            options={imagePositionOptions}
-                            onChange={(value) =>
-                              setAttributes({ backgroundPositionTablet: value })
-                            }
-                        />
-                      }
-                      {imagePositionTab === "mobile" && 
-                        <RadioControl 
-                            className = "rbea-background-image-positon-control-options"
-                            selected={backgroundPositionMobile}
-                            options={imagePositionOptions}
-                            onChange={(value) =>
-                              setAttributes({ backgroundPositionMobile: value })
-                            }
-                        />
-                      }
                     </div>
   
                     {/* Repeat */}

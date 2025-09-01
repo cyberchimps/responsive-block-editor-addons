@@ -245,15 +245,15 @@ function EditorStyles(props, deviceType) {
 			'background-image': `url(${backgroundImage})`,
 			'opacity': parseInt(opacity)/100,
 			'background-repeat': backgroundRepeat,
-			'background-position': backgroundPosition,
+			'background-position': `${generateCSSUnit(backgroundPosition?.x * 100, '%')} ${generateCSSUnit(backgroundPosition?.y * 100, '%')}`,
 			'background-size': backgroundSize,
 		}
 		containerBackgroundCSSTablet = {
-			'background-position': backgroundPositionTablet,
+			'background-position': `${generateCSSUnit(backgroundPositionTablet?.x * 100, '%')} ${generateCSSUnit(backgroundPositionTablet?.y * 100, '%')}`,
 			'background-size': backgroundSizeTablet,
 		}
 		containerBackgroundCSSMobile = {
-			'background-position': backgroundPositionMobile,
+			'background-position': `${generateCSSUnit(backgroundPositionMobile?.x * 100, '%')} ${generateCSSUnit(backgroundPositionMobile?.y * 100, '%')}`,
 			'background-size': backgroundSizeMobile,
 		}
 	}
