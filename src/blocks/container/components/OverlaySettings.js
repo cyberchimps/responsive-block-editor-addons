@@ -1,20 +1,23 @@
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import BackgroundImageControls from "./BackgroundImageControls";
+import RbeaColorControl from "../../../utils/components/rbea-color-control";
+import RbeaRangeControl from "../../../utils/components/rbea-range-control";
+import { GradientPicker } from "@wordpress/components";
 import { __ } from "@wordpress/i18n";
 
 const OverlaySettings = ( props ) => {
-    const { attributes, setAttributes, attachmentOptions, backgroundSizeOptions, blendModeOptions, repeatOptions } = props;
+    const { attributes, setAttributes, attachmentOptions, backgroundSizeOptions, blendModeOptions, repeatOptions, gradientOptions } = props;
     const {
         backgroundType,
         backgroundColor,
         backgroundImage,
         backgroundVideo,
         overlayType,
-        gradient
+        gradient,
+        overlayColor,
+        overlayGradient,
+        opacity,
     } = attributes;
-
-    // console.log( 'props' )
-    // console.log( props )
 
     const colorOverlayOptions = [
         { value: "image", label: __("Image", "responsive-block-editor-addons") }
@@ -41,7 +44,7 @@ const OverlaySettings = ( props ) => {
             return (
                 <RbeaBackgroundTypeControl
                     label={__("Overlay", "responsive-block-editor-addons")}
-                    value={overlayType}
+                    selectedValue={overlayType}
                     onChange={(value) => setAttributes({ overlayType: value })}
                     options={colorOverlayOptions}
                 />
@@ -52,7 +55,7 @@ const OverlaySettings = ( props ) => {
             return (
                 <RbeaBackgroundTypeControl
                     label={__("Overlay", "responsive-block-editor-addons")}
-                    value={overlayType}
+                    selectedValue={overlayType}
                     onChange={(value) => setAttributes({ overlayType: value })}
                     options={gradientOverlayOptions}
                 />
@@ -63,7 +66,7 @@ const OverlaySettings = ( props ) => {
             return (
                 <RbeaBackgroundTypeControl
                     label={__("Overlay", "responsive-block-editor-addons")}
-                    value={overlayType}
+                    selectedValue={overlayType}
                     onChange={(value) => setAttributes({ overlayType: value })}
                     options={imageOverlayOptions}
                 />
@@ -74,7 +77,7 @@ const OverlaySettings = ( props ) => {
             return (
                 <RbeaBackgroundTypeControl
                     label={__("Overlay", "responsive-block-editor-addons")}
-                    value={overlayType}
+                    selectedValue={overlayType}
                     onChange={(value) => setAttributes({ overlayType: value })}
                     options={videoOverlayOptions}
                 />
@@ -84,70 +87,137 @@ const OverlaySettings = ( props ) => {
         return null;
     };
 
+    const renderOpacityControl = () => (
+        <RbeaRangeControl
+            label={__("Opacity", "responsive-block-editor-addons")}
+            value={opacity}
+            onChange={ (value) => setAttributes({opacity: value}) }
+            min={0}
+            max={100}
+            allowReset
+        />
+    );
+
+    const renderBackgroundImageControl = () => (
+        <>
+            <BackgroundImageControls
+                attributes={attributes}
+                setAttributes={setAttributes}
+                // Specify overlay-specific attribute names
+                imageAttr="overlayImage"
+                positionAttr="overlayImagePosition"
+                positionTabletAttr="overlayImagePositionTablet"
+                positionMobileAttr="overlayImagePositionMobile"
+                attachmentAttr="overlayAttachment"
+                attachmentTabletAttr="overlayAttachmentTablet"
+                attachmentMobileAttr="overlayAttachmentMobile"
+                blendModeAttr="blendMode"
+                blendModeTabletAttr="blendModeTablet"
+                blendModeMobileAttr="blendModeMobile"
+                repeatAttr="overlayRepeat"
+                repeatTabletAttr="overlayRepeatTablet"
+                repeatMobileAttr="overlayRepeatMobile"
+                sizeAttr="overlayImageSize"
+                sizeTabletAttr="overlayImageSizeTablet"
+                sizeMobileAttr="overlayImageSizeMobile"
+                attachmentTabAttr="attachmentTab"
+                blendModeTabAttr="blendModeTab"
+                repeatTabAttr="overlayRepeatTab"
+                imageSizeTabAttr="overlayImageSizeTab"
+                attachmentOptions={attachmentOptions}
+                blendModeOptions={blendModeOptions}
+                repeatOptions={repeatOptions}
+                backgroundSizeOptions={backgroundSizeOptions}
+                allowBlendMode={true}
+            />
+            {renderOpacityControl()}
+        </>
+    );
+
+    const renderColorControl = () => (
+        <>
+            <RbeaColorControl
+                label={__("Color", "responsive-block-editor-addons")}
+                colorValue={overlayColor}
+                onChange={(colorValue) =>
+                    setAttributes({ overlayColor: colorValue })
+                }
+                resetColor={() => setAttributes({ overlayColor: "" })}
+            />
+            {renderOpacityControl()}
+        </>
+    );
+
+    const renderGradientControl = () => (
+        <>
+            <GradientPicker
+                value={overlayGradient}
+                onChange={(value) => { setAttributes({ overlayGradient: value }) }}
+                gradients={gradientOptions}
+            />
+            {renderOpacityControl()}
+        </>
+    );
+
     const renderOverlayContent = () => {
         // Image Overlays
         if (overlayType === 'image') {
             if (backgroundType === 'image' && backgroundImage) {
                 return (
                     <>
-                        <p>Render The Image Overlay for {backgroundType}</p>
-                        <BackgroundImageControls
-                            attributes={attributes}
-                            setAttributes={setAttributes}
-                            // Specify overlay-specific attribute names
-                            imageAttr="overlayImage"
-                            positionAttr="overlayImagePosition"
-                            positionTabletAttr="overlayImagePositionTablet"
-                            positionMobileAttr="overlayImagePositionMobile"
-                            attachmentAttr="overlayAttachment"
-                            attachmentTabletAttr="overlayAttachmentTablet"
-                            attachmentMobileAttr="overlayAttachmentMobile"
-                            blendModeAttr="blendMode"
-                            blendModeTabletAttr="blendModeTablet"
-                            blendModeMobileAttr="blendModeMobile"
-                            repeatAttr="overlayRepeat"
-                            repeatTabletAttr="overlayRepeatTablet"
-                            repeatMobileAttr="overlayRepeatMobile"
-                            sizeAttr="overlayImageSize"
-                            sizeTabletAttr="overlayImageSizeTablet"
-                            sizeMobileAttr="overlayImageSizeMobile"
-                            attachmentTabAttr="attachmentTab"
-                            blendModeTabAttr="blendModeTab"
-                            repeatTabAttr="overlayRepeatTab"
-                            imageSizeTabAttr="overlayImageSizeTab"
-                            attachmentOptions={attachmentOptions}
-                            blendModeOptions={blendModeOptions}
-                            repeatOptions={repeatOptions}
-                            backgroundSizeOptions={backgroundSizeOptions}
-                        />
+                        {renderBackgroundImageControl()}
                     </>
                 );
             }
             if (backgroundType === 'color' && backgroundColor) {
-                return <p>Render The Image Overlay for {backgroundType}</p>;
+                return (
+                    <>
+                        {renderBackgroundImageControl()}
+                    </>
+                );
             }
             if (backgroundType === 'gradient' && gradient) {
-                return <p>Render The Image Overlay for {backgroundType}</p>;
+                return (
+                    <>
+                        {renderBackgroundImageControl()}
+                    </>
+                );
             }
         }
         
         // Color Overlays
         if (overlayType === 'color') {
             if (backgroundType === 'image' && backgroundImage) {
-                return <p>Render The Color Overlay for {backgroundType}</p>;
+                return (
+                    <>
+                        {renderColorControl()}
+                    </>
+                );
             }
             if (backgroundType === 'video' && backgroundVideo?.url) {
-                return <p>Render The Color Overlay for {backgroundType}</p>;
+                return (
+                    <>
+                        {renderColorControl()}
+                    </>
+                );
             }
         }
         
         // Gradient Overlays
         if (overlayType === 'gradient') {
             if (backgroundType === 'image' && backgroundImage) {
-                return <p>Render The Gradient Overlay for {backgroundType}</p>;
+                return (
+                    <>
+                        {renderGradientControl()}
+                    </>
+                );
             }
             if (backgroundType === 'video' && backgroundVideo?.url) {
-                return <p>Render The Gradient Overlay for {backgroundType}</p>;
+                return (
+                    <>
+                        {renderGradientControl()}
+                    </>
+                );
             }
         }
         

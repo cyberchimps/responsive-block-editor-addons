@@ -10,8 +10,6 @@ import {
   TextControl,
   Icon,
   GradientPicker,
-  RadioControl,
-  FocalPointPicker,
 } from "@wordpress/components";
 
 import InspectorTab from "../../../components/InspectorTab";
@@ -104,49 +102,7 @@ export default function Inspector(props) {
     alignContentTablet,
     alignContentMobile,
     backgroundType,
-    opacity,
     gradient,
-    backgroundColor,
-    imagePositionTab,
-    backgroundImage,
-    backgroundSize,
-    backgroundSizeTablet,
-    backgroundSizeMobile,
-    backgroundPosition,
-    backgroundPositionTablet,
-    backgroundPositionMobile,
-    backgroundRepeat,
-    backgroundRepeatTablet,
-    backgroundRepeatMobile,
-    attachmentTab,
-    repeatTab,
-    backgroundAttachment,
-    backgroundAttachmentTablet,
-    backgroundAttachmentMobile,
-    overlayType,
-    overlayColor,
-    overlayImage,
-    overlayImagePositionTab,
-    overlayImagePosition,
-    overlayImagePositionTablet,
-    overlayImagePositionMobile,
-    overlayAttachmentTab,
-    overlayAttachment,
-    overlayAttachmentTablet,
-    overlayAttachmentMobile,
-    overlayRepeatTab,
-    overlayRepeat,
-    overlayRepeatTablet,
-    overlayRepeatMobile,
-    overlayImageSizeTab,
-    overlayImageSize,
-    overlayImageSizeTablet,
-    overlayImageSizeMobile,
-    blendModeTab,
-    blendMode,
-    blendModeTablet,
-    blendModeMobile,
-    imageSizeTab,
     backgroundVideo,
     textColor,
     linkColor,
@@ -168,6 +124,9 @@ export default function Inspector(props) {
     hoverboxShadowSpread,
     hoverboxShadowPosition,
   } = attributes;
+
+  console.log('backgrounType -> ' + attributes.backgroundType)
+  console.log('overlayType -> ' + attributes.overlayType)
 
   const [activeTab, setActiveTab] = useState("desktop");
   const [activeWrapTab, setActiveWrapTab] = useState("desktop");
@@ -456,9 +415,6 @@ export default function Inspector(props) {
 		}
 	};
 
-  let background_image_url = backgroundImage || '';
-  let overlayBackgroundImageUrl = overlayImage || '';
-
   const htmlTagOptions = [
     {
       value: "div",
@@ -688,6 +644,27 @@ export default function Inspector(props) {
     { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
     { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
     { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
+  ];
+
+  const gradientOptions = [
+    {
+      name: 'JShine',
+      gradient:
+        'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+      slug: 'jshine',
+    },
+    {
+      name: 'Moonlit Asteroid',
+      gradient:
+        'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+      slug: 'moonlit-asteroid',
+    },
+    {
+      name: 'Rastafarie',
+      gradient:
+        'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+      slug: 'rastafari',
+    },
   ];
 
   const containerMarginResetValues = {
@@ -1562,8 +1539,8 @@ export default function Inspector(props) {
           >
             <RbeaBackgroundTypeControl
               label={__("Type", "responsive-block-editor-addons")}
-              value={backgroundType}
-              onChange={(value) => setAttributes({ backgroundType: value, overlayType: undefined })}
+              selectedValue={backgroundType}
+              onChange={(value) => setAttributes({ backgroundType: value })}
               options={backgroundTypeOptions}
             />
             {"color" == backgroundType && (
@@ -1575,58 +1552,11 @@ export default function Inspector(props) {
               <GradientPicker
                 value={gradient}
                 onChange={(value) => { setAttributes({ gradient: value }) }}
-                gradients={[
-                  {
-                    name: 'JShine',
-                    gradient:
-                      'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
-                    slug: 'jshine',
-                  },
-                  {
-                    name: 'Moonlit Asteroid',
-                    gradient:
-                      'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
-                    slug: 'moonlit-asteroid',
-                  },
-                  {
-                    name: 'Rastafarie',
-                    gradient:
-                      'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
-                    slug: 'rastafari',
-                  },
-                ]}
+                gradients={gradientOptions}
               />
             )}
             {"image" == backgroundType && (
               <>
-                {/* <BackgroundImageControls
-                  attributes={attributes}
-                  setAttributes={setAttributes}
-                  backgroundImage={backgroundImage}
-                  backgroundPosition={backgroundPosition}
-                  backgroundPositionTablet={backgroundPositionTablet}
-                  backgroundPositionMobile={backgroundPositionMobile}
-                  backgroundAttachment={backgroundAttachment}
-                  backgroundAttachmentTablet={backgroundAttachmentTablet}
-                  backgroundAttachmentMobile={backgroundAttachmentMobile}
-                  blendMode={blendMode}
-                  blendModeTablet={blendModeTablet}
-                  blendModeMobile={blendModeMobile}
-                  backgroundRepeat={backgroundRepeat}
-                  backgroundRepeatTablet={backgroundRepeatTablet}
-                  backgroundRepeatMobile={backgroundRepeatMobile}
-                  backgroundSize={backgroundSize}
-                  backgroundSizeTablet={backgroundSizeTablet}
-                  backgroundSizeMobile={backgroundSizeMobile}
-                  attachmentTab={attachmentTab}
-                  blendModeTab={blendModeTab}
-                  repeatTab={repeatTab}
-                  imageSizeTab={imageSizeTab}
-                  attachmentOptions={attachmentOptions}
-                  blendModeOptions={blendModeOptions}
-                  repeatOptions={repeatOptions}
-                  backgroundSizeOptions={backgroundSizeOptions}
-                /> */}
                 <BackgroundImageControls
                   attributes={attributes}
                   setAttributes={setAttributes}
@@ -1658,6 +1588,7 @@ export default function Inspector(props) {
               blendModeOptions={blendModeOptions}
               repeatOptions={repeatOptions}
               backgroundSizeOptions={backgroundSizeOptions}
+              gradientOptions={gradientOptions}
             />
 
           </PanelBody>

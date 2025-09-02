@@ -304,16 +304,14 @@ const attributes = {
     default: "desktop",
   },
   overlayImagePosition: {
-    type: 'string',
-    default: "center center",
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
   },
   overlayImagePositionTablet: {
-    type: 'string',
-    default: "center center",
+    type: "object",
   },
   overlayImagePositionMobile: {
-    type: 'string',
-    default: "center center",
+    type: "object",
   },
   overlayAttachmentTab: {
     type: "string",
@@ -362,6 +360,12 @@ const attributes = {
   overlayImageSizeMobile: {
     type: 'string',
     default: "cover",
+  },
+  overlayColor: {
+    type: 'string',
+  },
+  overlayGradient: {
+    type: 'string',
   },
   backgroundSize: {
     type: 'string',

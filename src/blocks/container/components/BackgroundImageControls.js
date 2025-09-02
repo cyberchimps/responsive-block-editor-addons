@@ -35,6 +35,7 @@ const BackgroundImageControls = ({
   blendModeOptions,
   repeatOptions,
   backgroundSizeOptions,
+  allowBlendMode = false,
 }) => {
   // Dynamically get values from attributes using the provided attribute names
   const backgroundImage = attributes[imageAttr];
@@ -85,6 +86,7 @@ const BackgroundImageControls = ({
           blendModeOptions={blendModeOptions}
           repeatOptions={repeatOptions}
           backgroundSizeOptions={backgroundSizeOptions}
+          allowBlendMode={allowBlendMode}
         />
       )}
     </>
@@ -121,6 +123,7 @@ const BackgroundImageSettings = ({
   blendModeOptions,
   repeatOptions,
   backgroundSizeOptions,
+  allowBlendMode,
 }) => {
   // Get the current tab states from attributes
   const attachmentTab = attributes[attachmentTabAttr];
@@ -164,7 +167,7 @@ const BackgroundImageSettings = ({
 
       {/* Attachment */}
       <BackgroundImageControlTab
-        label={__(`Attachment (${attachmentTab})`, "responsive-block-editor-addons")}
+        label={__(`Attachment`, "responsive-block-editor-addons")}
         tabState={attachmentTab}
         onTabChange={(tab) => setAttributes({ [attachmentTabAttr]: tab.name })}
         renderContent={(tab) => {
@@ -201,8 +204,9 @@ const BackgroundImageSettings = ({
       />
 
       {/* Blend Mode */}
+      {allowBlendMode &&
       <BackgroundImageControlTab
-        label={__(`Blend Mode (${blendModeTab})`, "responsive-block-editor-addons")}
+        label={__(`Blend Mode`, "responsive-block-editor-addons")}
         tabState={blendModeTab}
         onTabChange={(tab) => setAttributes({ [blendModeTabAttr]: tab.name })}
         renderContent={(tab) => {
@@ -239,10 +243,11 @@ const BackgroundImageSettings = ({
           );
         }}
       />
+      }
 
       {/* Repeat */}
       <BackgroundImageControlTab
-        label={__(`Repeat (${repeatTab})`, "responsive-block-editor-addons")}
+        label={__(`Repeat`, "responsive-block-editor-addons")}
         tabState={repeatTab}
         onTabChange={(tab) => setAttributes({ [repeatTabAttr]: tab.name })}
         renderContent={(tab) => {
@@ -282,7 +287,7 @@ const BackgroundImageSettings = ({
 
       {/* Size */}
       <BackgroundImageControlTab
-        label={__(`Size (${imageSizeTab})`, "responsive-block-editor-addons")}
+        label={__(`Size`, "responsive-block-editor-addons")}
         tabState={imageSizeTab}
         onTabChange={(tab) => setAttributes({ [imageSizeTabAttr]: tab.name })}
         renderContent={(tab) => {
@@ -348,7 +353,7 @@ const BackgroundImageControlTab = ({ label, tabState, onTabChange, renderContent
         {(tab) => {
           return (
             <>
-              <label>{label} {tab.name !== tabState && `(${tab.name})`}</label>
+              <label>{label} ({tab.name})</label>
               {renderContent(tab)}
             </>
           );
