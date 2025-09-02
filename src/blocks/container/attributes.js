@@ -238,9 +238,130 @@ const attributes = {
   backgroundPositionTablet: {
     type: 'object',
   },
+  repeatTab: {
+    type: "string",
+    default: "desktop",
+  },
   backgroundRepeat: {
     type: 'string',
     default: "no-repeat",
+  },
+  backgroundRepeatTablet: {
+    type: 'string',
+    default: "no-repeat",
+  },
+  backgroundRepeatMobile: {
+    type: 'string',
+    default: "no-repeat",
+  },
+  blendModeTab: {
+    type: "string",
+    default: "desktop",
+  },
+  blendMode: {
+    type: 'string',
+    default: "normal",
+  },
+  blendModeDesktopTablet: {
+    type: 'string',
+    default: "normal",
+  },
+  blendModeDesktopMobile: {
+    type: 'string',
+    default: "normal",
+  },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  backgroundAttachmentTablet: {
+    type: "string",
+    default: "scroll",
+  },
+  backgroundAttachmentMobile: {
+    type: "string",
+    default: "scroll",
+  },
+  attachmentTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayType: {
+    type: "string",
+  },
+  overlayColor: {
+    type: "string",
+  },
+  overlayImage: {
+    type: "string",
+  },
+  overlayImagePositionTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayImagePositionTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayImagePosition: {
+    type: 'string',
+    default: "center center",
+  },
+  overlayImagePositionTablet: {
+    type: 'string',
+    default: "center center",
+  },
+  overlayImagePositionMobile: {
+    type: 'string',
+    default: "center center",
+  },
+  overlayAttachmentTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  overlayAttachmentTablet: {
+    type: "string",
+    default: "scroll",
+  },
+  overlayAttachmentMobile: {
+    type: "string",
+    default: "scroll",
+  },
+  overlayRepeatTab: {
+    type: "string",
+    default: "no-repeat",
+  },
+  overlayRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  overlayRepeatTablet: {
+    type: "string",
+    default: "no-repeat",
+  },
+  overlayRepeatMobile: {
+    type: "string",
+    default: "no-repeat",
+  },
+  overlayImageSizeTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayImageSize: {
+    type: 'string',
+    default: "cover",
+  },
+  overlayImageSizeTablet: {
+    type: 'string',
+    default: "cover",
+  },
+  overlayImageSizeMobile: {
+    type: 'string',
+    default: "cover",
   },
   backgroundSize: {
     type: 'string',
