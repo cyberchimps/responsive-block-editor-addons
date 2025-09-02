@@ -119,6 +119,8 @@ function EditorStyles(props, deviceType) {
 		opacity,
 		backgroundColor,
 		backgroundRepeat,
+		backgroundRepeatTablet,
+		backgroundRepeatMobile,
 		backgroundPosition,
 		backgroundPositionTablet,
 		backgroundPositionMobile,
@@ -126,6 +128,28 @@ function EditorStyles(props, deviceType) {
 		backgroundSizeTablet,
 		backgroundSizeMobile,
 		backgroundImage,
+		backgroundAttachment,
+		backgroundAttachmentTablet,
+		backgroundAttachmentMobile,
+		overlayType,
+		overlayColor,
+		overlayImage,
+		overlayImagePosition,
+		overlayImagePositionTablet,
+		overlayImagePositionMobile,
+		overlayAttachment,
+		overlayAttachmentTablet,
+		overlayAttachmentMobile,
+		overlayRepeat,
+		overlayRepeatTablet,
+		overlayRepeatMobile,
+		overlayImageSize,
+		overlayImageSizeTablet,
+		overlayImageSizeMobile,
+		overlayGradient,
+		blendMode,
+		blendModeTablet,
+		blendModeMobile,
 	} = props.attributes;
 
   	const { clientId } = props;
@@ -195,6 +219,13 @@ function EditorStyles(props, deviceType) {
 
  	const containerFullWidth = '100vw';
 
+	const backgroundVideoOpacityValue =
+		'number' === typeof opacity &&
+		'none' !== overlayType &&
+		( ( 'color' === overlayType && overlayColor ) || ( 'gradient' === overlayType && overlayGradient ) )
+			? 1 - (parseInt(opacity)/100)
+			: 1;
+
   	const selectors = {
 		'': {
 			'opacity': hideWidget ? 0.2 : 1,
@@ -209,7 +240,7 @@ function EditorStyles(props, deviceType) {
 			'color': linkColorHover,
 		},
 		' .responsive-block-editor-addons-container__video-wrap video': {
-			'opacity': opacity,
+			// 'opacity': backgroundVideoOpacityValue,
 		},
 	};
 
@@ -232,7 +263,6 @@ function EditorStyles(props, deviceType) {
 	if ( backgroundType === 'color' ) {
 		containerBackgroundCSSDesktop = {
 			'background-color': backgroundColor,
-			'opacity': parseInt(opacity)/100,
 		}
 	}
 	if ( backgroundType === 'gradient' ) {
@@ -241,19 +271,30 @@ function EditorStyles(props, deviceType) {
 		}
 	}
 	if ( backgroundType === 'image' ) {
+
+		let containerBackgroundDesktop = `${generateCSSUnit(backgroundPosition?.x * 100, '%')} ${generateCSSUnit(backgroundPosition?.y * 100, '%')}`;
+
+		let containerBackgroundTablet = backgroundPositionTablet === undefined ? containerBackgroundDesktop : `${generateCSSUnit(backgroundPositionTablet?.x * 100, '%')} ${generateCSSUnit(backgroundPositionTablet?.y * 100, '%')}`;
+
+		let containerBackgroundMobile = backgroundPositionMobile === undefined ? containerBackgroundTablet : `${generateCSSUnit(backgroundPositionMobile?.x * 100, '%')} ${generateCSSUnit(backgroundPositionMobile?.y * 100, '%')}`;
+
 		containerBackgroundCSSDesktop = {
 			'background-image': `url(${backgroundImage})`,
-			'opacity': parseInt(opacity)/100,
 			'background-repeat': backgroundRepeat,
-			'background-position': `${generateCSSUnit(backgroundPosition?.x * 100, '%')} ${generateCSSUnit(backgroundPosition?.y * 100, '%')}`,
+			'background-position': containerBackgroundDesktop,
+			'background-attachment': backgroundAttachment,
 			'background-size': backgroundSize,
 		}
 		containerBackgroundCSSTablet = {
-			'background-position': `${generateCSSUnit(backgroundPositionTablet?.x * 100, '%')} ${generateCSSUnit(backgroundPositionTablet?.y * 100, '%')}`,
+			'background-repeat': backgroundRepeatTablet || backgroundRepeat,
+			'background-position': containerBackgroundTablet,
+			'background-attachment': backgroundAttachmentTablet || backgroundAttachment,
 			'background-size': backgroundSizeTablet,
 		}
 		containerBackgroundCSSMobile = {
-			'background-position': `${generateCSSUnit(backgroundPositionMobile?.x * 100, '%')} ${generateCSSUnit(backgroundPositionMobile?.y * 100, '%')}`,
+			'background-repeat': backgroundRepeatMobile || backgroundRepeatTablet || backgroundRepeat,
+			'background-position': containerBackgroundMobile,
+			'background-attachment': backgroundAttachmentMobile|| backgroundAttachmentTablet || backgroundAttachment,
 			'background-size': backgroundSizeMobile,
 		}
 	}
@@ -414,7 +455,22 @@ function EditorStyles(props, deviceType) {
   	};
 
   	if ( 'video' === backgroundType ) {
+
+		let overlayVideoCSS = {};
+		if ( overlayType === 'color' ) {
+			overlayVideoCSS = {
+				'background-color': overlayColor
+			}
+		}
+
+		if ( overlayType === 'gradient' ) {
+			overlayVideoCSS = {
+				'background-image': overlayGradient
+			}
+		}
+
 		selectors[ ' .responsive-block-editor-addons-container__video-wrap' ] = {
+			...overlayVideoCSS,
 			...borderStyles,
 		};
 		tablet_selectors[ ' .responsive-block-editor-addons-container__video-wrap' ] = {
@@ -554,6 +610,102 @@ function EditorStyles(props, deviceType) {
 		selectors[ '.block-editor-block-list__block' ][ 'max-width' ] = generateCSSUnit(customWidthDesktop, customWidthTypeDesktop);
 		tablet_selectors[ '.block-editor-block-list__block' ][ 'max-width' ] = generateCSSUnit(customWidthTablet,customWidthTypeTablet);
 		mobile_selectors[ '.block-editor-block-list__block' ][ 'max-width' ] = generateCSSUnit(customWidthMobile,customWidthTypeMobile);
+	}
+
+	if ( overlayType && 'none' !== overlayType ) {
+		const desktopBorderWidth = {
+			'top': containerBorderWidth || 0,
+			'right': containerBorderWidth || 0,
+			'bottom': containerBorderWidth || 0,
+			'left': containerBorderWidth || 0,
+		};
+		const tabletBorderWidth = {
+			'top': containerBorderWidth || desktopBorderWidth.top,
+			'right': containerBorderWidth || desktopBorderWidth.right,
+			'bottom': containerBorderWidth || desktopBorderWidth.bottom,
+			'left': containerBorderWidth || desktopBorderWidth.left,
+		};
+		const mobileBorderWidth = {
+			'top': containerBorderWidth || tabletBorderWidth.top,
+			'right': containerBorderWidth || tabletBorderWidth.right,
+			'bottom': containerBorderWidth || tabletBorderWidth.bottom,
+			'left': containerBorderWidth || tabletBorderWidth.left,
+		}
+
+		let overlayCSSDesktop = {};
+		let overlayCSSTablet = {};
+		let overlayCSSMobile = {};
+
+		if ( overlayType === 'color' ) {
+			overlayCSSDesktop = {
+				'background-color': overlayColor,
+				'opacity': parseInt(opacity)/100,
+			}
+		}
+		if ( overlayType === 'gradient' ) {
+			overlayCSSDesktop = {
+				'background-image': overlayGradient,
+				'opacity': parseInt(opacity)/100,
+			}
+		}
+		if ( overlayType === 'image' ) {
+
+			let overlayContainerDesktop = `${generateCSSUnit(overlayImagePosition?.x * 100, '%')} ${generateCSSUnit(overlayImagePosition?.y * 100, '%')}`;
+
+			let overlayContainerTablet = overlayImagePositionTablet === undefined ? overlayContainerDesktop : `${generateCSSUnit(overlayImagePositionTablet?.x * 100, '%')} ${generateCSSUnit(overlayImagePositionTablet?.y * 100, '%')}`;
+
+			let overlayContainerMobile = overlayImagePositionMobile === undefined ? overlayContainerTablet : `${generateCSSUnit(overlayImagePositionMobile?.x * 100, '%')} ${generateCSSUnit(overlayImagePositionMobile?.y * 100, '%')}`;
+
+			overlayCSSDesktop = {
+				'background-image': `url(${overlayImage})`,
+				'opacity': parseInt(opacity)/100,
+				'background-repeat': overlayRepeat,
+				'background-position': overlayContainerDesktop,
+				'background-attachment': overlayAttachment,
+				'background-size': overlayImageSize,
+				'mix-blend-mode': blendMode,
+				'background-clip': 'padding-box'
+			}
+			overlayCSSTablet = {
+				'background-repeat': overlayRepeatTablet || overlayRepeat,
+				'background-position': overlayContainerTablet,
+				'background-attachment': overlayAttachmentTablet || overlayAttachment,
+				'background-size': overlayImageSizeTablet,
+				'mix-blend-mode': blendModeTablet,
+			}
+			overlayCSSMobile = {
+				'background-repeat': overlayRepeatMobile || overlayRepeatTablet || overlayRepeat,
+				'background-position': overlayContainerMobile,
+				'background-attachment': overlayAttachmentMobile|| overlayAttachmentTablet || overlayAttachment,
+				'background-size': overlayImageSizeMobile,
+				'mix-blend-mode': blendModeMobile,
+			}
+		}
+
+		selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
+			'content': '""',
+			'top': `-${ generateCSSUnit( desktopBorderWidth.top, 'px' ) }`,
+			'left': `-${ generateCSSUnit( desktopBorderWidth.left, 'px' ) }`,
+			'width': `calc(100% + ${ generateCSSUnit( desktopBorderWidth.left, 'px' ) } + ${ generateCSSUnit( desktopBorderWidth.right, 'px' ) })`,
+			'height': `calc(100% + ${ generateCSSUnit( desktopBorderWidth.top, 'px' ) } + ${ generateCSSUnit( desktopBorderWidth.bottom, 'px' ) })`,
+			...overlayCSSDesktop
+		};
+		tablet_selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
+			'top': `-${ generateCSSUnit( tabletBorderWidth.top, 'px' ) }`,
+			'left': `-${ generateCSSUnit( tabletBorderWidth.left, 'px' ) }`,
+			// In the Editor Responsive, 100% seems to take the required width and height including offset...
+			'width': '100%',
+			'height': '100%', 
+			...overlayCSSTablet
+		};
+		mobile_selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
+			'top': `-${ generateCSSUnit( mobileBorderWidth.top, 'px' ) }`,
+			'left': `-${ generateCSSUnit( mobileBorderWidth.left, 'px' ) }`,
+			// In the Editor Responsive, 100% seems to take the required width and height including offset...
+			'width': '100%',
+			'height': '100%',
+			...overlayCSSMobile
+		};
 	}
 
 	const autoWidth = { 'width': 'auto' };

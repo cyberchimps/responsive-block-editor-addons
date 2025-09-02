@@ -248,11 +248,9 @@ const attributes = {
   },
   backgroundRepeatTablet: {
     type: 'string',
-    default: "no-repeat",
   },
   backgroundRepeatMobile: {
     type: 'string',
-    default: "no-repeat",
   },
   blendModeTab: {
     type: "string",
@@ -262,13 +260,11 @@ const attributes = {
     type: 'string',
     default: "normal",
   },
-  blendModeDesktopTablet: {
+  blendModeTablet: {
     type: 'string',
-    default: "normal",
   },
-  blendModeDesktopMobile: {
+  blendModeMobile: {
     type: 'string',
-    default: "normal",
   },
   backgroundAttachment: {
     type: "string",
@@ -276,11 +272,9 @@ const attributes = {
   },
   backgroundAttachmentTablet: {
     type: "string",
-    default: "scroll",
   },
   backgroundAttachmentMobile: {
     type: "string",
-    default: "scroll",
   },
   attachmentTab: {
     type: "string",
@@ -288,16 +282,13 @@ const attributes = {
   },
   overlayType: {
     type: "string",
+    default: 'none',
   },
   overlayColor: {
     type: "string",
   },
   overlayImage: {
     type: "string",
-  },
-  overlayImagePositionTab: {
-    type: "string",
-    default: "desktop",
   },
   overlayImagePositionTab: {
     type: "string",
@@ -323,15 +314,13 @@ const attributes = {
   },
   overlayAttachmentTablet: {
     type: "string",
-    default: "scroll",
   },
   overlayAttachmentMobile: {
     type: "string",
-    default: "scroll",
   },
   overlayRepeatTab: {
     type: "string",
-    default: "no-repeat",
+    default: "desktop",
   },
   overlayRepeat: {
     type: "string",
@@ -339,11 +328,9 @@ const attributes = {
   },
   overlayRepeatTablet: {
     type: "string",
-    default: "no-repeat",
   },
   overlayRepeatMobile: {
     type: "string",
-    default: "no-repeat",
   },
   overlayImageSizeTab: {
     type: "string",
@@ -355,11 +342,9 @@ const attributes = {
   },
   overlayImageSizeTablet: {
     type: 'string',
-    default: "cover",
   },
   overlayImageSizeMobile: {
     type: 'string',
-    default: "cover",
   },
   overlayColor: {
     type: 'string',

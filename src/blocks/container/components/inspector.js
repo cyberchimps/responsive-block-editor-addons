@@ -125,9 +125,6 @@ export default function Inspector(props) {
     hoverboxShadowPosition,
   } = attributes;
 
-  console.log('backgrounType -> ' + attributes.backgroundType)
-  console.log('overlayType -> ' + attributes.overlayType)
-
   const [activeTab, setActiveTab] = useState("desktop");
   const [activeWrapTab, setActiveWrapTab] = useState("desktop");
 

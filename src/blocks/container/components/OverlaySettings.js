@@ -95,6 +95,7 @@ const OverlaySettings = ( props ) => {
             min={0}
             max={100}
             allowReset
+            resetFallbackValue={100}
         />
     );
 
