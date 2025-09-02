@@ -241,19 +241,26 @@ function EditorStyles(props, deviceType) {
 		}
 	}
 	if ( backgroundType === 'image' ) {
+
+		let containerBackgroundDesktop = `${generateCSSUnit(backgroundPosition?.x * 100, '%')} ${generateCSSUnit(backgroundPosition?.y * 100, '%')}`;
+
+		let containerBackgroundTablet = backgroundPositionTablet === undefined ? containerBackgroundDesktop : `${generateCSSUnit(backgroundPositionTablet?.x * 100, '%')} ${generateCSSUnit(backgroundPositionTablet?.y * 100, '%')}`;
+
+		let containerBackgroundMobile = backgroundPositionMobile === undefined ? containerBackgroundTablet : `${generateCSSUnit(backgroundPositionMobile?.x * 100, '%')} ${generateCSSUnit(backgroundPositionMobile?.y * 100, '%')}`;
+
 		containerBackgroundCSSDesktop = {
 			'background-image': `url(${backgroundImage})`,
 			'opacity': parseInt(opacity)/100,
 			'background-repeat': backgroundRepeat,
-			'background-position': `${generateCSSUnit(backgroundPosition?.x * 100, '%')} ${generateCSSUnit(backgroundPosition?.y * 100, '%')}`,
+			'background-position': containerBackgroundDesktop,
 			'background-size': backgroundSize,
 		}
 		containerBackgroundCSSTablet = {
-			'background-position': `${generateCSSUnit(backgroundPositionTablet?.x * 100, '%')} ${generateCSSUnit(backgroundPositionTablet?.y * 100, '%')}`,
+			'background-position': containerBackgroundTablet,
 			'background-size': backgroundSizeTablet,
 		}
 		containerBackgroundCSSMobile = {
-			'background-position': `${generateCSSUnit(backgroundPositionMobile?.x * 100, '%')} ${generateCSSUnit(backgroundPositionMobile?.y * 100, '%')}`,
+			'background-position': containerBackgroundMobile,
 			'background-size': backgroundSizeMobile,
 		}
 	}
