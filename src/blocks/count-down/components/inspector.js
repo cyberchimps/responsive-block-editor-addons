@@ -567,11 +567,11 @@ export default class Inspector extends Component {
                 height: digitLineHeight,
                 spacing: digitLetterSpacing,
                 color: digitTypographyColor,
-                transform: digitTextTransform,
                 fontstyle: digitFontStyle,
                 }}
                 showLetterSpacing = { true }
                 showColorControl={true}
+                showTextTransform={false}
                 setAttributes={ setAttributes }
                 {...this.props}
               />

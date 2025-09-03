@@ -6931,6 +6931,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-family'      => isset( $attr['filterTabTypographyFontFamily'] ) && 'Default' !== $attr['filterTabTypographyFontFamily'] ? $attr['filterTabTypographyFontFamily'] : '',
 					'font-size'        => self::get_css_value( isset( $attr['filterTabTypographyFontSize'] ) ? $attr['filterTabTypographyFontSize'] : '', 'px' ),
 					'font-weight'      => ( isset( $attr['filterTabTypographyFontWeight'] ) && '' !== $attr['filterTabTypographyFontWeight'] ) ? $attr['filterTabTypographyFontWeight'] : '',
+					'font-style'       => isset( $attr['filterTabTypographyFontStyle'] ) ? $attr['filterTabTypographyFontStyle'] : 'normal',
 					'line-height'      => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight'] : '',
 					'letter-spacing'   => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ) : '',
 					'text-transform'   => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',

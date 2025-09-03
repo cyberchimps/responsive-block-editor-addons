@@ -360,6 +360,10 @@
     "radius": {
       "type": "number",
       "default": 0
+    },
+    "filterTabTypographyFontStyle": {
+      "type": "string",
+      "default": "normal"
     }
   }
 }
