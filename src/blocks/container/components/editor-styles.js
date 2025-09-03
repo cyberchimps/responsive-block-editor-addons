@@ -240,7 +240,7 @@ function EditorStyles(props, deviceType) {
 			'color': linkColorHover,
 		},
 		' .responsive-block-editor-addons-container__video-wrap video': {
-			// 'opacity': backgroundVideoOpacityValue,
+			'opacity': backgroundVideoOpacityValue,
 		},
 	};
 
@@ -682,30 +682,33 @@ function EditorStyles(props, deviceType) {
 			}
 		}
 
-		selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
-			'content': '""',
-			'top': `-${ generateCSSUnit( desktopBorderWidth.top, 'px' ) }`,
-			'left': `-${ generateCSSUnit( desktopBorderWidth.left, 'px' ) }`,
-			'width': `calc(100% + ${ generateCSSUnit( desktopBorderWidth.left, 'px' ) } + ${ generateCSSUnit( desktopBorderWidth.right, 'px' ) })`,
-			'height': `calc(100% + ${ generateCSSUnit( desktopBorderWidth.top, 'px' ) } + ${ generateCSSUnit( desktopBorderWidth.bottom, 'px' ) })`,
-			...overlayCSSDesktop
-		};
-		tablet_selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
-			'top': `-${ generateCSSUnit( tabletBorderWidth.top, 'px' ) }`,
-			'left': `-${ generateCSSUnit( tabletBorderWidth.left, 'px' ) }`,
-			// In the Editor Responsive, 100% seems to take the required width and height including offset...
-			'width': '100%',
-			'height': '100%', 
-			...overlayCSSTablet
-		};
-		mobile_selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
-			'top': `-${ generateCSSUnit( mobileBorderWidth.top, 'px' ) }`,
-			'left': `-${ generateCSSUnit( mobileBorderWidth.left, 'px' ) }`,
-			// In the Editor Responsive, 100% seems to take the required width and height including offset...
-			'width': '100%',
-			'height': '100%',
-			...overlayCSSMobile
-		};
+		if ( backgroundType !== 'video' ) {
+
+			selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
+				'content': '""',
+				'top': `-${ generateCSSUnit( desktopBorderWidth.top, 'px' ) }`,
+				'left': `-${ generateCSSUnit( desktopBorderWidth.left, 'px' ) }`,
+				'width': `calc(100% + ${ generateCSSUnit( desktopBorderWidth.left, 'px' ) } + ${ generateCSSUnit( desktopBorderWidth.right, 'px' ) })`,
+				'height': `calc(100% + ${ generateCSSUnit( desktopBorderWidth.top, 'px' ) } + ${ generateCSSUnit( desktopBorderWidth.bottom, 'px' ) })`,
+				...overlayCSSDesktop
+			};
+			tablet_selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
+				'top': `-${ generateCSSUnit( tabletBorderWidth.top, 'px' ) }`,
+				'left': `-${ generateCSSUnit( tabletBorderWidth.left, 'px' ) }`,
+				// In the Editor Responsive, 100% seems to take the required width and height including offset...
+				'width': '100%',
+				'height': '100%', 
+				...overlayCSSTablet
+			};
+			mobile_selectors[ '.wp-block-responsive-block-editor-addons-container::before' ] = {
+				'top': `-${ generateCSSUnit( mobileBorderWidth.top, 'px' ) }`,
+				'left': `-${ generateCSSUnit( mobileBorderWidth.left, 'px' ) }`,
+				// In the Editor Responsive, 100% seems to take the required width and height including offset...
+				'width': '100%',
+				'height': '100%',
+				...overlayCSSMobile
+			};
+		}
 	}
 
 	const autoWidth = { 'width': 'auto' };
