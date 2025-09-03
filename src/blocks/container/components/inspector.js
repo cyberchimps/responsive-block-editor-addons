@@ -1517,20 +1517,6 @@ export default function Inspector(props) {
             {"color" == backgroundType && (
               <>
                 <ColorBackgroundControl {...props} />
-                {backgroundColor && (
-                  <RbeaRangeControl
-                    label={__("Opacity", "responsive-block-editor-addons")}
-                    value={opacity}
-                    onChange={(value) =>
-                      setAttributes({
-                        opacity: value !== undefined ? value : 20,
-                      })
-                    }
-                    min={0}
-                    max={100}
-                    allowReset
-                  />
-                )}
               </>
             )}
             {"gradient" == backgroundType && (
@@ -1720,19 +1706,6 @@ export default function Inspector(props) {
                         defaultValue={"cover"}
                       />
                     )}
-                  
-                    <RbeaRangeControl
-                      label={__("Opacity", "responsive-block-editor-addons")}
-                      value={opacity}
-                      onChange={(value) =>
-                        setAttributes({
-                          opacity: value !== undefined ? value : 20,
-                        })
-                      }
-                      min={0}
-                      max={100}
-                      allowReset
-                    />
                   </>
                 )}
               </>

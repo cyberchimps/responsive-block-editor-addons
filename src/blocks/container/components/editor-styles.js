@@ -208,9 +208,6 @@ function EditorStyles(props, deviceType) {
 		'.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block a:hover': {
 			'color': linkColorHover,
 		},
-		' .responsive-block-editor-addons-container__video-wrap video': {
-			'opacity': opacity,
-		},
 	};
 
   	let boxShadowPositionCSS = boxShadowPosition;
@@ -232,7 +229,6 @@ function EditorStyles(props, deviceType) {
 	if ( backgroundType === 'color' ) {
 		containerBackgroundCSSDesktop = {
 			'background-color': backgroundColor,
-			'opacity': parseInt(opacity)/100,
 		}
 	}
 	if ( backgroundType === 'gradient' ) {
@@ -250,7 +246,6 @@ function EditorStyles(props, deviceType) {
 
 		containerBackgroundCSSDesktop = {
 			'background-image': `url(${backgroundImage})`,
-			'opacity': parseInt(opacity)/100,
 			'background-repeat': backgroundRepeat,
 			'background-position': containerBackgroundDesktop,
 			'background-size': backgroundSize,

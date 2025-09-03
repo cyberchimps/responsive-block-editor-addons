@@ -22450,7 +22450,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'color' === $attr['backgroundType'] ) {
 				$container_bg_css_desktop = array(
 					'background-color' => $attr['backgroundColor'],
-					'opacity'          => $attr['opacity'] / 100,
 				);
 			}
 
@@ -22463,7 +22462,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'image' === $attr['backgroundType'] ) {
 				$container_bg_css_desktop = array(
 					'background-image'    => 'url(' . $attr['backgroundImage'] . ')',
-					'opacity'             => $attr['opacity'] / 100,
 					'background-repeat'   => $attr['backgroundRepeat'],
 					'background-position' => self::get_background_position( $attr['backgroundPosition'] ),
 					'background-size'     => $attr['backgroundSize'],
@@ -22560,17 +22558,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$base_selector . '.wp-block-responsive-block-editor-addons-container'           => array(
 					'color' => $attr['textColor'],
 				),
-				// $base_selector . '.wp-block-responsive-block-editor-addons-container *'      => array(
-				// 	'color' => $attr['textColor'],
-				// ),
 				$base_selector . ' a'                                                           => array(
 					'color' => $attr['linkColor'],
 				),
 				$base_selector . ' a:hover'                                                     => array(
 					'color' => $attr['linkColorHover'],
-				),
-				$base_selector . ' .responsive-block-editor-addons-container__video-wrap video' => array(
-					'opacity' => $attr['opacity'],
 				),
 			);
 
