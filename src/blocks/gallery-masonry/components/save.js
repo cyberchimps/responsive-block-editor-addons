@@ -50,7 +50,7 @@ const save = ({ attributes, className }) => {
   ).sort(); // Sort alphabetically for consistent order
 
   // Build the complete HTML structure
-  const shouldShowFilters = enableCategoryFilter && categories.length > 0;
+  const shouldShowFilters = enableCategoryFilter;
 
   // Determine which category should be active by default
   const defaultActiveCategory = setDefaultCategory && defaultCategory ? defaultCategory : "All";
