@@ -52,21 +52,44 @@ const attributes = {
   },
   boxShadowHOffset: {
     type: "number",
-    default: 9,
+    default: 0,
   },
   boxShadowVOffset: {
     type: "number",
-    default: 9,
+    default: 0,
   },
   boxShadowBlur: {
     type: "number",
-    default: 9,
+    default: 0,
   },
   boxShadowSpread: {
     type: "number",
-    default: 9,
+    default: 0,
   },
   boxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
+  hoverboxShadowColor: {
+    type: "string",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowPosition: {
     type: "string",
     default: "outset",
   },

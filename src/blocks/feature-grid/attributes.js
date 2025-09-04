@@ -225,6 +225,29 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  hoverboxShadowColor: {
+    type: "string",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 2,
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 1,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
   buttonBoxShadowColor: {
     type: "string",
   },
@@ -549,7 +572,7 @@ const attributes = {
   },
   ctaHoverBorderColor: {
     type: "string",
-    defaulr: "#333",
+    default: "#333",
   },
   ctaHpaddingTablet: {
     type: "number",
@@ -755,6 +778,22 @@ const attributes = {
   isCtaButtonBorderRadiusValueUpdated: {
     type: "boolean",
     default: false,
+  },
+  ctaTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaFontStyle: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  descFontStyle: {
+    type: "string",
+    default: "",
   },
 };
 export default attributes;

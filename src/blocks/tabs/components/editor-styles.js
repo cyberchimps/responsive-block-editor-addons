@@ -95,6 +95,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     alignTabsVertical,
     hideWidget,
     hideWidgetTablet,
@@ -102,6 +108,10 @@ function EditorStyles(props) {
     tabTitleTypographyColor,
     tabTitleActiveTypographyColor,
     tabContentTypographyColor,
+    tabTitleTextTransform,
+    tabTitleFontStyle,
+    tabContentTextTransform,
+    tabContentFontStyle,
   } = props.attributes;
 
 
@@ -143,9 +153,13 @@ function EditorStyles(props) {
     }
   }
 
-  let boxShadowPositionCSS = boxShadowPosition;
+  let boxShadowPositionCSS      = boxShadowPosition;
+  let hoverboxShadowPositionCSS = hoverboxShadowPosition;
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   var selectors = {
@@ -200,6 +214,7 @@ function EditorStyles(props) {
             hovercolorLocation2
           )
           : undefined,
+      "box-shadow": `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`,
     },
     " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active" : {
 			"background": tabBackgroundColor,
@@ -228,6 +243,8 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p" : {
 			"color": tabTitleTypographyColor,
       "font-family": tabTitleFontFamily,
+      "text-transform": tabTitleTextTransform,
+      "font-style": tabTitleFontStyle,
 			"font-weight": tabTitleFontWeight,
 			"font-size": generateCSSUnit( tabTitleFontSize, "px" ),
 			"line-height": generateCSSUnit( tabTitleLineHeight, "px" ),
@@ -238,6 +255,8 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
 			"color": tabContentTypographyColor,
       "font-family": tabContentFontFamily,
+      "text-transform": tabContentTextTransform,
+      "font-style": tabContentFontStyle,
 			"font-weight": tabContentFontWeight,
 			"font-size": generateCSSUnit( tabContentFontSize, "px" ),
 			"line-height": generateCSSUnit( tabContentLineHeight, "px" ),
