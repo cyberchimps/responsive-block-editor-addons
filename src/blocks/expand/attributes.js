@@ -302,5 +302,29 @@
   linkBottomSpacingMobile: {
     type: "number",
   },
+  titleTextTransform: {
+    type: "string",
+    default: ""
+  },
+  titleFontStyle: {
+    type: "string",
+    default: ""
+  },
+  textTextTransform: {
+    type: "string",
+    default: ""
+  },
+  textFontStyle: {
+    type: "string",
+    default: ""
+  },
+  linkTextTransform: {
+    type: "string",
+    default: ""
+  },
+  linkFontStyle: {
+    type: "string",
+    default: ""
+  },
 };
 export default attributes;

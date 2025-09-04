@@ -607,6 +607,10 @@ function responsive_block_editor_addons_register_block_core_latest_posts_portfol
 					'type'    => 'string',
 					'default' => '#fff',
 				),
+				'overlayTextFontStyle' => array(
+					'type'    => 'string',
+					'default' => '',
+				)
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts_portfolio',
 		)

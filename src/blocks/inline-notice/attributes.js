@@ -311,6 +311,22 @@ const attributes = {
         type: "string",
         default: "",
     },
+    titleTextTransform: {
+        type: "string",
+        default: ""
+    },
+    titleFontStyle: {
+        type: "string",
+        default: ""
+    },
+    contentTextTransform: {
+        type: "string",
+        default: ""
+    },
+    contentFontStyle: {
+        type: "string",
+        default: ""
+    },
 }
 
 export default attributes;

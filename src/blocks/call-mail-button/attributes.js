@@ -286,6 +286,14 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	textTextTransform: {
+		type: "string",
+		default: "",
+	},
+    textFontStyle: {
+		type: "string",
+		default: "",
+	},
   };
   
   export default attributes;

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Logo = responsive_globals.home_url + '/wp-content/plugins/responsive-block-editor-addons/admin/images/responsive-blocks.svg';
 
 const RbeaSupportControl = ({ blockSlug }) => {

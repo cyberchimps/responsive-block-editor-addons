@@ -9,7 +9,6 @@ import renderSVG from "../../../renderIcon";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import fontOptions from "../../../utils/googlefonts";
 import { loadGoogleFont } from "../../../utils/font";
-import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
@@ -438,6 +437,12 @@ export default class Inspector extends Component {
         backgroundImageValueUpdated,
         widthType,
         widthTypeValueUpdated,
+        ctaTextTextTransform,
+        ctaTextFontStyle,
+        resheadTextTransform,
+        resheadFontStyle,
+        ressubHeadTextTransform,
+        ressubHeadFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -1356,42 +1361,57 @@ export default class Inspector extends Component {
               title={__("Box Shadow", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-            <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                boxShadowHOffset={{
-                  value: boxShadowHOffset,
-                  label: __("Horizontal", "responsive-block-editor-addons"),
+              <TabPanel
+                className="responsive-block-editor-addons-inspect-tabs 
+                          responsive-block-editor-addons-inspect-tabs-col-2  
+                          responsive-block-editor-addons-color-inspect-tabs"
+                activeClass="active-tab"
+                initialTabName="normal"
+                tabs={[
+                  { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                  { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                  { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                  { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                  { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                ]}
+              >
+                {(tab) => {
+                  const isHover = tab.name === "hover";
+                  const mode = isHover ? "hoverboxShadow" : "boxShadow";
+
+                  return (
+                    <BoxShadowControl
+                      controlKey={mode}
+                      setAttributes={setAttributes}
+                      label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+                      boxShadowColor={{
+                        value: isHover ? hoverboxShadowColor : boxShadowColor,
+                        label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowHOffset={{
+                        value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+                        label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowVOffset={{
+                        value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+                        label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowBlur={{
+                        value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+                        label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowSpread={{
+                        value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+                        label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowPosition={{
+                        value: isHover ? hoverboxShadowPosition : boxShadowPosition,
+                        label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+                      }}
+                    />
+                  );
                 }}
-                boxShadowVOffset={{
-                  value: boxShadowVOffset,
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                }}
-                boxShadowBlur={{
-                  value: boxShadowBlur,
-                  label: __("Blur", "responsive-block-editor-addons"),
-                }}
-                boxShadowSpread={{
-                  value: boxShadowSpread,
-                  label: __("Spread", "responsive-block-editor-addons"),
-                }}
-                boxShadowPosition={{
-                  value: boxShadowPosition,
-                  label: __("Position", "responsive-block-editor-addons"),
-                }}
-              />
-              <BoxShadowControlHelper
-                setAttributes={setAttributes}
-                label={__("Hover Box Shadow", "responsive-block-editor-addons")}
-                attrNameTemplate="hover%s"
-                boxShadowColor={{ value: hoverboxShadowColor }}
-                boxShadowHOffset={{ value: hoverboxShadowHOffset }}
-                boxShadowVOffset={{ value: hoverboxShadowVOffset }}
-                boxShadowBlur={{ value: hoverboxShadowBlur }}
-                boxShadowSpread={{ value: hoverboxShadowSpread }}
-                boxShadowPosition={{ value: hoverboxShadowPosition }}
-              />
+              </TabPanel>
             </PanelBody>
             <PanelBody
               title={__("Background", "responsive-block-editor-addons")}
@@ -1755,10 +1775,11 @@ export default class Inspector extends Component {
               bottomSpacing: ctaTextBottomSpacing,
               bottomSpacingMoible: ctaTextBottomSpacingMobile,
               bottomSpacingTablet: ctaTextBottomSpacingTablet,
+              transform: ctaTextTextTransform,
+              fontstyle: ctaTextFontStyle,
 							}}
 							showLetterSpacing={false}
               showColorControl={true}
-							showTextTransform={false}
               showTextBottomSpacing={true}
 							setAttributes={setAttributes}
 							{...this.props}
@@ -1779,9 +1800,10 @@ export default class Inspector extends Component {
                 bottomSpacing: resheadBottomSpacing,
                 bottomSpacingMoible: resheadBottomSpacingMobile,
                 bottomSpacingTablet: resheadBottomSpacingTablet,
+                transform: resheadTextTransform,
+                fontstyle: resheadFontStyle,
 							}}
 							showLetterSpacing = { false }
-							showTextTransform = { false }
               showColorControl={true}
               showTextBottomSpacing={true}
 							setAttributes={ setAttributes }
@@ -1803,9 +1825,10 @@ export default class Inspector extends Component {
                 bottomSpacing: ressubHeadBottomSpacing,
                 bottomSpacingMoible: ressubHeadBottomSpacingMobile,
                 bottomSpacingTablet: ressubHeadBottomSpacingTablet,
+                transform: ressubHeadTextTransform,
+                fontstyle: ressubHeadFontStyle,
 							}}
 							showLetterSpacing = { false }
-							showTextTransform = { false }
               showColorControl={true}
               showTextBottomSpacing={true}
 							setAttributes={ setAttributes }

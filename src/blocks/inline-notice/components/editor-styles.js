@@ -75,6 +75,10 @@ function EditorStyles(props) {
     hideWidgetMobile,
     contentTypographyColor,
     titleTypographyColor,
+    titleTextTransform,
+    titleFontStyle,
+    contentTextTransform,
+    contentFontStyle,
   } = props.attributes;
 
   let noticeTypeColor;
@@ -118,7 +122,9 @@ function EditorStyles(props) {
       "line-height": titleLineHeight,
       "letter-spacing": generateCSSUnit(titleLetterSpacing, "px"),
       "margin": 0,
-      "padding": `${generateCSSUnit(titlePaddingVertical, "px")} ${generateCSSUnit(titlePaddingHorizontal, "px")}`
+      "padding": `${generateCSSUnit(titlePaddingVertical, "px")} ${generateCSSUnit(titlePaddingHorizontal, "px")}`,
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-block-inline-notice-svg > svg": {
       "height": "17px",
@@ -138,7 +144,9 @@ function EditorStyles(props) {
       "font-weight": contentFontWeight,
       "line-height": contentLineHeight,
       "letter-spacing": generateCSSUnit(contentLetterSpacing, "px"),
-      "padding": `${generateCSSUnit(contentPaddingVertical, "px")} ${generateCSSUnit(contentPaddingHorizontal, "px")}`
+      "padding": `${generateCSSUnit(contentPaddingVertical, "px")} ${generateCSSUnit(contentPaddingHorizontal, "px")}`,
+      "text-transform": contentTextTransform,
+      "font-style": contentFontStyle,
     }
   };
 

@@ -61,6 +61,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     blockBorderStyle,
     blockBorderWidth,
     blockBorderRadius,
@@ -102,14 +108,20 @@ function EditorStyles(props) {
     leftPadding, // For compatibility with v1.3.2.
     rightPadding, // For compatibility with v1.3.2.
     quoteTypographyColor,
+    quoteTextTransform,
+    quoteFontStyle,
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
   let imgopacity = opacity / 100;
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
   var selectors = {
     "": {
@@ -162,6 +174,20 @@ function EditorStyles(props) {
       "margin-bottom" : generateCSSUnit(blockBottomMargin, "px"),
       "margin-left" : generateCSSUnit(blockLeftMargin, "px"),
     },
+    ":hover": {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
+    },
     " .responsive-block-editor-addons-section__video-wrap": {
       opacity: imgopacity,
     },
@@ -187,6 +213,8 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(quoteFontSize, "px"),
       "font-weight": quoteFontWeight,
       "line-height": quoteLineHeight,
+      "text-transform": quoteTextTransform,
+      "font-style": quoteFontStyle,
     },
     " .responsive-block-editor-addons-block-blockquote-item": {
       "padding-left": generateCSSUnit(textLeftPadding, "px"),

@@ -997,7 +997,7 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'hoverboxShadowColor'         => array(
 					'type'    => 'string',
-					'default' => '#cccccc',
+					'default' => '',
 				),
 				'hoverboxShadowHOffset'       => array(
 					'type'    => 'number',
@@ -1009,11 +1009,11 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'hoverboxShadowBlur'          => array(
 					'type'    => 'number',
-					'default' => '6',
+					'default' => '0',
 				),
 				'hoverboxShadowSpread'        => array(
 					'type'    => 'number',
-					'default' => '1',
+					'default' => '0',
 				),
 				'hoverboxShadowPosition'      => array(
 					'type'    => 'string',
@@ -1181,6 +1181,22 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
       			'blockIsTypographyColorValueUpdated'  => array(
 					'type'	=> 'boolean',
 					'default' => false,
+				),
+				'excerptFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
+				),
+				'metaFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
+				),
+				'titleFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
+				),
+				'continueFontStyle'  => array(
+					'type'	=> 'string',
+					'default' => '',
 				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts',

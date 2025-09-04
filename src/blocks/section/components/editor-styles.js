@@ -90,6 +90,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     backgroundPositionTablet,
     backgroundPositionMobile,
     z_index,
@@ -124,9 +130,13 @@ function EditorStyles(props) {
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
   let imgopacity = opacity / 100;
 
@@ -247,6 +257,20 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
+    },
+    " > .responsive-section-wrap.responsive-block-editor-addons-block-section:hover": {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
     },
   };
 
