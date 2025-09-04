@@ -168,6 +168,12 @@
      inputBoxShadowBlur,
      inputBoxShadowSpread,
      inputBoxShadowPosition,
+     inputHoverBoxShadowColor,
+     inputHoverBoxShadowHOffset,
+     inputHoverBoxShadowVOffset,
+     inputHoverBoxShadowBlur,
+     inputHoverBoxShadowSpread,
+     inputHoverBoxShadowPosition,
      showErrorMsgs,
      showLabels,
      labelFontFamily,
@@ -430,6 +436,12 @@
     inputBoxShadowPositionCSS = "";
   }
 
+  var inputHoverBoxShadowPositionCSS = inputHoverBoxShadowPosition;
+
+  if ("outset" === inputHoverBoxShadowPosition) {
+    inputHoverBoxShadowPositionCSS = "";
+  }
+
   var submitButtonBoxShadowPositionCSS = submitButtonBoxShadowPosition;
 
   if ("outset" === submitButtonBoxShadowPosition) {
@@ -651,6 +663,21 @@
        
     },
 
+     " .wpcf7 input[type=text]:hover ,.wpcf7 input[type=email]:hover, .wpcf7 .wpcf7-select:hover": {       
+      "box-shadow": inputHoverBoxShadowColor !== '' ?
+        generateCSSUnit(inputHoverBoxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowSpread, "px") +
+        " " +
+        inputHoverBoxShadowColor +
+        " " +
+        inputHoverBoxShadowPositionCSS : '',
+    },
+
     ' .wpcf7 textarea': {
 			"color": inputTypographyColor,
       'background-color': inputBackgroundColor,
@@ -688,6 +715,21 @@
         inputBoxShadowPositionCSS + "!important" ,
       "text-transform": inputTextTransform,
       "font-style": inputFontStyle,
+		},
+
+    ' .wpcf7 textarea:hover': {
+      "box-shadow": inputHoverBoxShadowColor !== '' ?
+        generateCSSUnit(inputHoverBoxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowSpread, "px") +
+        " " +
+        inputHoverBoxShadowColor +
+        " " +
+        inputHoverBoxShadowPositionCSS + "!important" : '',
 		},
 
     ' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email': {

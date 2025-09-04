@@ -20619,6 +20619,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$input_box_shadow_position_css = '';
 			}
 
+			$input_hover_box_shadow_position_css = $attr['inputHoverBoxShadowPosition'];
+
+			if ( 'outset' === $attr['inputHoverBoxShadowPosition'] ) {
+				$input_hover_box_shadow_position_css = '';
+			}
+
 			$submit_button_box_shadow_position_css = $attr['submitButtonBoxShadowPosition'];
 
 			if ( 'outset' === $attr['submitButtonBoxShadowPosition'] ) {
@@ -20741,6 +20747,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-style'     			 => $attr['inputFontStyle'],
 				),
 
+				' .wpcf7 input[type=text]:hover ,.wpcf7 input[type=email]:hover, .wpcf7 .wpcf7-select:hover' => array(
+					'box-shadow'                 => ( isset( $attr['inputHoverBoxShadowColor'] ) && ! empty( $attr['inputHoverBoxShadowColor'] ) ) ? self::get_css_value( $attr['inputHoverBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowSpread'], 'px' ) . ' ' . $attr['inputHoverBoxShadowColor'] . ' ' . $input_hover_box_shadow_position_css : '',
+				),
+
 				' .wpcf7 wpcf7-text'                       => array(
 					'width' => self::get_css_value( $attr['textareaWidth'], '%' ),
 				),
@@ -20770,6 +20780,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-top'                 => self::get_css_value( $attr['labelBottomSpacing'], 'px' ),
 					'box-shadow'                 => self::get_css_value( $attr['inputBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowSpread'], 'px' ) . ' ' . $attr['inputBoxShadowColor'] . ' ' . $input_box_shadow_position_css,
 
+				),
+
+				' .wpcf7 textarea:hover'                   => array(
+					'box-shadow'                 => ( isset( $attr['inputHoverBoxShadowColor'] ) && ! empty( $attr['inputHoverBoxShadowColor'] ) ) ? self::get_css_value( $attr['inputHoverBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowSpread'], 'px' ) . ' ' . $attr['inputHoverBoxShadowColor'] . ' ' . $input_hover_box_shadow_position_css : '',
 				),
 
 				' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email' => array(
@@ -21440,6 +21454,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'inputBoxShadowBlur'                  => 0,
 				'inputBoxShadowSpread'                => 0,
 				'inputBoxShadowPosition'              => 'outset',
+				'inputHoverBoxShadowColor'            => '',
+				'inputHoverBoxShadowHOffset'          => 0,
+				'inputHoverBoxShadowVOffset'          => 0,
+				'inputHoverBoxShadowBlur'             => 0,
+				'inputHoverBoxShadowSpread'           => 0,
+				'inputHoverBoxShadowPosition'         => 'outset',
 				'textareaWidth'                       => 100,
 				'textareaWidthMobile'                 => 100,
 				'textareaWidthTablet'                 => 100,
