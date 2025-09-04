@@ -180,6 +180,23 @@ function EditorStyles(props) {
     }
   }
 
+  let hoverBoxShadowCSS = {};
+  if ( hoverboxShadowColor !== undefined && hoverboxShadowColor !== '' ) {
+    hoverBoxShadowCSS = {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
+    }
+  }
 
   var selectors = {
 		" ": {
@@ -259,18 +276,7 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
     },
     " > .responsive-section-wrap.responsive-block-editor-addons-block-section:hover": {
-      "box-shadow":
-        generateCSSUnit(hoverboxShadowHOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowVOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowBlur, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowSpread, "px") +
-        " " +
-        hoverboxShadowColor +
-        " " +
-        hoverboxShadowPositionCSS,
+      ...hoverBoxShadowCSS
     },
   };
 
