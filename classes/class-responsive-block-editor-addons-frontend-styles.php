@@ -4842,7 +4842,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 				),
 				' .wp-block-responsive-block-editor-addons-card-item:hover' => array(
-					'box-shadow' => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
 						' ' .
@@ -4852,7 +4852,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 
 				' .responsive-block-editor-addons-card-background-image' => array(
@@ -10673,7 +10673,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight' => $attr['prefixFontWeight'],
 					'font-size'   => self::get_css_value( $attr['prefixFontSize'], 'px' ),
 					'font-family' => $attr['prefixFontFamily'],
-					'text-transform'=> $attr['prefixextTransform'],
+					'text-transform'=> $attr['prefixTextTransform'],
 					'font-style'    => $attr['prefixFontStyle'],
 				),
 

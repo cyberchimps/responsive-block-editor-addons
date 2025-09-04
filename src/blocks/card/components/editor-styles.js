@@ -362,7 +362,7 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
     },
     " .wp-block-responsive-block-editor-addons-card-item:hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -373,7 +373,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
 
     " .responsive-block-editor-addons-card-background-image": {
