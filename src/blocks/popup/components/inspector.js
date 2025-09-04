@@ -1068,7 +1068,7 @@ export default class Inspector extends Component {
                         <GradientPicker
                           __nextHasNoMargin
                           value={popupButtonBGGradient}
-                          onChange={(value) => { setAttributes({ popupButtonBGGradient: value }) }}
+                          onChange={(value) => { console.log(value);setAttributes({ popupButtonBGGradient: value }) }}
                           gradients={[
                             {
                               name: 'JShine',

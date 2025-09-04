@@ -36,7 +36,7 @@ const RbeaWidthRangeControl = ( props ) => {
                               size='small'
                               isPrimary={widthType === "px"}
                               aria-pressed={widthType === "px"}
-                              onClick={() => setAttributes({ widthType: "px" })}
+                              onClick={() => setAttributes({ [props.widthTypeKey || "widthType"]: "px" })}
                             >
                                 {"px"}
                             </Button>
@@ -46,7 +46,7 @@ const RbeaWidthRangeControl = ( props ) => {
                               size='small'
                               isPrimary={widthType === "%"}
                               aria-pressed={widthType === "%"}
-                              onClick={() => setAttributes({ widthType: "%" })}
+                              onClick={() => setAttributes({ [props.widthTypeKey || "widthType"]: "%" })}
                             >
                               {"%"}
                             </Button>
