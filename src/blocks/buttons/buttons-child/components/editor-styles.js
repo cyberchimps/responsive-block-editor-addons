@@ -257,18 +257,19 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover": {
       "border-color": borderHColor ? hexToRgba(borderHColor, borderOpacityControlValue) : "#000",
       "background-color": updatedBackgroundHColor,
-      "box-shadow":
-        generateCSSUnit(hoverboxShadowHOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowVOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowBlur, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowSpread, "px") +
-        " " +
-        hoverboxShadowColor +
-        " " +
-        hoverboxShadowPositionCSS,
+      "box-shadow": hoverboxShadowColor !== ""
+		  ? generateCSSUnit(hoverboxShadowHOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowVOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowBlur, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowSpread, "px") +
+        	" " +
+        	hoverboxShadowColor +
+        	" " +
+        	hoverboxShadowPositionCSS
+		  : "",
     },
     " .responsive-block-editor-addons-button__icon": {
       "margin-left": iconSpaceLeft + "px",
