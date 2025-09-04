@@ -21919,7 +21919,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'height'                     => self::get_css_value( $attr['imageHeight'], 'px' ),
 				),
 				'  .responsive-blocks-image-block:hover'     => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['imageboxShadowHoverColor'] ) && ! empty( $attr['imageboxShadowHoverColor'] ) ) ?
 						self::get_css_value( $attr['imageboxShadowHoverHOffset'], 'px' ) . ' ' .
 						self::get_css_value( $attr['imageboxShadowHoverVOffset'], 'px' ) .
 						' ' .
@@ -21929,10 +21929,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['imageboxShadowHoverColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 				'  .img-main-block:hover figure'       => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['imageboxShadowHoverColor'] ) && ! empty( $attr['imageboxShadowHoverColor'] ) ) ?
 					self::get_css_value( $attr['imageboxShadowHoverHOffset'], 'px' ) . ' ' .
 						self::get_css_value( $attr['imageboxShadowHoverVOffset'], 'px' ) .
 						' ' .
@@ -21940,7 +21940,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						self::get_css_value( $attr['imageboxShadowHoverSpread'], 'px' ) .
 						' ' .
-						$attr['imageboxShadowHoverColor'],
+						$attr['imageboxShadowHoverColor'] : '',
 					'filter'     => $filter_value,
 					'transition' => $zoomintransition,
 					'transform'  => $zoomintransform,

@@ -271,7 +271,7 @@ function EditorStyles(props) {
       
     },
     "  .responsive-blocks-image-block:hover": {
-      "box-shadow":
+      "box-shadow": imageboxShadowHoverColor !== '' ?
         generateCSSUnit(imageboxShadowHoverHOffset, "px") +
         " " +
         generateCSSUnit(imageboxShadowHoverVOffset, "px") +
@@ -282,7 +282,7 @@ function EditorStyles(props) {
         " " +
         imageboxShadowHoverColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-image-block-description": {
       "align-items": leftoverlayalign,
@@ -331,7 +331,7 @@ function EditorStyles(props) {
       "font-style": captionFontStyle,
     },
     "  .img-main-block:hover figure": {
-      "box-shadow":
+      "box-shadow": imageboxShadowHoverColor !== '' ?
         generateCSSUnit(imageboxShadowHoverHOffset, "px") +
         " " +
         generateCSSUnit(imageboxShadowHoverVOffset, "px") +
@@ -340,7 +340,7 @@ function EditorStyles(props) {
         " " +
         generateCSSUnit(imageboxShadowHoverSpread, "px") +
         " " +
-        imageboxShadowHoverColor,
+        imageboxShadowHoverColor : '',
       "filter": filtervalue,
       "transition": zoomintransition,
       "transform": zoomintransform,
