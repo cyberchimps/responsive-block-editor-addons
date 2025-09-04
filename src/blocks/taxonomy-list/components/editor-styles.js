@@ -150,7 +150,7 @@ function EditorStyles(props) {
 
     const boxShadowValues = generateCSSUnit(boxShadowHOffset, "px") + " " + generateCSSUnit(boxShadowVOffset, "px") + " " + generateCSSUnit(boxShadowBlur, "px") + " " + generateCSSUnit(boxShadowSpread, "px") + " " + boxShadowColor + " " + boxShadowPositionCSS;
 
-    const hoverboxShadowValues = generateCSSUnit(hoverboxShadowHOffset, "px") + " " + generateCSSUnit(hoverboxShadowVOffset, "px") + " " + generateCSSUnit(hoverboxShadowBlur, "px") + " " + generateCSSUnit(hoverboxShadowSpread, "px") + " " + hoverboxShadowColor + " " + hoverboxShadowPositionCSS;
+    const hoverboxShadowValues = hoverboxShadowColor !== '' ? generateCSSUnit(hoverboxShadowHOffset, "px") + " " + generateCSSUnit(hoverboxShadowVOffset, "px") + " " + generateCSSUnit(hoverboxShadowBlur, "px") + " " + generateCSSUnit(hoverboxShadowSpread, "px") + " " + hoverboxShadowColor + " " + hoverboxShadowPositionCSS : '';
 
     var selectors = {
         " ":{
