@@ -197,7 +197,7 @@
         boxShadowPositionCSS,
     },
     ":hover": {
-      'box-shadow':
+      'box-shadow': hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -208,7 +208,7 @@
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-block-editor-addons-search-form__input": {
      "border-top" : inputBorderTop + ' !important',
