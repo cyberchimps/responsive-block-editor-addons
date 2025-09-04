@@ -93,6 +93,7 @@ function EditorStyles(props) {
     filterTabAlignment,
     filterTabAlignmentTablet,
     filterTabAlignmentMobile,
+    filterTabTypographyFontStyle,
   } = props.attributes;
 
   var selectors = {
@@ -131,6 +132,7 @@ function EditorStyles(props) {
       'font-family': filterTabTypographyFontFamily && filterTabTypographyFontFamily !== "Default" ? filterTabTypographyFontFamily : undefined,
       'font-size': filterTabTypographyFontSize ? generateCSSUnit(filterTabTypographyFontSize, 'px') : '14px',
       'font-weight': filterTabTypographyFontWeight || 'normal',
+      'font-style': filterTabTypographyFontStyle || 'normal',
       'line-height': filterTabTypographyLineHeight || 'normal',
       'letter-spacing': filterTabTypographyLetterSpacing ? generateCSSUnit(filterTabTypographyLetterSpacing, 'px') : 'normal',
       'text-transform': filterTabTypographyTextTransform || 'none',

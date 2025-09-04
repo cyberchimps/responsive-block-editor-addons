@@ -6873,12 +6873,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'         => self::get_css_value( $attr['blockBottomMargin'], 'px' ),
 					'margin-left'           => self::get_css_value( $attr['blockLeftMargin'], 'px' ),
 				),
-				' .rba-gallery-items' => array(
+				'[data-rba-gallery-block] .rba-gallery-items' => array(
 					'column-count'          => (int) $attr['columnsize'],
 					'column-gap'            => self::get_css_value( $attr['gutter'], 'px' ),
 					'position'				=> 'relative',
 				),
-				' .responsive-block-editor-addons-gallery--item' => array(
+				'[data-rba-gallery-block] .responsive-block-editor-addons-gallery--item' => array(
 					'display'                => 'block',
 					'width'                  => '100%',
 					'break-inside'           => 'avoid',
@@ -6931,6 +6931,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-family'      => isset( $attr['filterTabTypographyFontFamily'] ) && 'Default' !== $attr['filterTabTypographyFontFamily'] ? $attr['filterTabTypographyFontFamily'] : '',
 					'font-size'        => self::get_css_value( isset( $attr['filterTabTypographyFontSize'] ) ? $attr['filterTabTypographyFontSize'] : '', 'px' ),
 					'font-weight'      => ( isset( $attr['filterTabTypographyFontWeight'] ) && '' !== $attr['filterTabTypographyFontWeight'] ) ? $attr['filterTabTypographyFontWeight'] : '',
+					'font-style'       => isset( $attr['filterTabTypographyFontStyle'] ) ? $attr['filterTabTypographyFontStyle'] : 'normal',
 					'line-height'      => ( isset( $attr['filterTabTypographyLineHeight'] ) && '' !== $attr['filterTabTypographyLineHeight'] ) ? $attr['filterTabTypographyLineHeight'] : '',
 					'letter-spacing'   => ( isset( $attr['filterTabTypographyLetterSpacing'] ) && '' !== $attr['filterTabTypographyLetterSpacing'] ) ? self::get_css_value( $attr['filterTabTypographyLetterSpacing'], 'px' ) : '',
 					'text-transform'   => isset( $attr['filterTabTypographyTextTransform'] ) ? $attr['filterTabTypographyTextTransform'] : '',
@@ -6956,11 +6957,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'         => self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ),
 					'margin-left'           => self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ),
 				),
-				' .rba-gallery-items' => array(
+				'[data-rba-gallery-block] .rba-gallery-items' => array(
 					'column-count'   => (int) $attr['columnsize'],
 					'column-gap'     => self::get_css_value( $attr['gutterMobile'], 'px' ),
 				),
-				' .responsive-block-editor-addons-gallery--item' => array(
+				'[data-rba-gallery-block] .responsive-block-editor-addons-gallery--item' => array(
 					'display'                => 'block',
 					'width'                  => '100%',
 					'break-inside'           => 'avoid',
@@ -7026,11 +7027,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'         => self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ),
 					'margin-left'           => self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ),
 				),
-				' .rba-gallery-items' => array(
+				'[data-rba-gallery-block] .rba-gallery-items' => array(
 					'column-count'          => (int) $attr['columnsize'],
 					'column-gap'            => self::get_css_value( $attr['gutterTablet'], 'px' ),
 				),
-				' .responsive-block-editor-addons-gallery--item' => array(
+				'[data-rba-gallery-block] .responsive-block-editor-addons-gallery--item' => array(
 					'display'                => 'block',
 					'width'                  => '100%',
 					'break-inside'           => 'avoid',
@@ -7130,9 +7131,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'z_index'                  => 1,
 				'z_indexMobile'            => 1,
 				'z_indexTablet'            => 1,
-				'gutter'       			   => 0,
-				'gutterTablet' 			   => 0,
-				'gutterMobile' 			   => 0,
+				'gutter'       			   => 15,
+				'gutterTablet' 			   => 15,
+				'gutterMobile' 			   => 15,
 				'customWidth'              => '',
 				'customHeight'             => '',
 				'columnsize'               => 3,

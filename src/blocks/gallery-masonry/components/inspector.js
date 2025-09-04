@@ -565,6 +565,7 @@ class Inspector extends Component {
                     spacing: attributes.filterTabTypographyLetterSpacing,
                     transform: attributes.filterTabTypographyTextTransform,
                     textDecoration: attributes.filterTabTypographyTextDecoration,
+                    fontstyle: attributes.filterTabTypographyFontStyle,
                   }}
                   showLetterSpacing={true}
                   showTextDecoration={true}

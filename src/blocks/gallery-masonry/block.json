@@ -347,19 +347,23 @@
     },
     "gutter": { 
       "type": "number", 
-      "default": 0 
+      "default": 15 
     },
     "gutterTablet": { 
       "type": "number",
-      "default": 0
+      "default": 15
     },
     "gutterMobile": { 
       "type": "number",
-      "default": 0
+      "default": 15
     },
     "radius": {
       "type": "number",
       "default": 0
+    },
+    "filterTabTypographyFontStyle": {
+      "type": "string",
+      "default": "normal"
     }
   }
 }
