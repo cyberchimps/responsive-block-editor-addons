@@ -997,7 +997,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'hoverboxShadowColor'         => array(
 					'type'    => 'string',
-					'default' => '',
 				),
 				'hoverboxShadowHOffset'       => array(
 					'type'    => 'number',
