@@ -17772,7 +17772,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['hovercolorLocation1'],
 						$attr['hovercolorLocation2']
 					) : '',
-					'box-shadow'       => $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
+					'box-shadow'       => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css : '',
 				),
 				' > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active' => array(
 					'background' => $attr['tabBackgroundColor'],
