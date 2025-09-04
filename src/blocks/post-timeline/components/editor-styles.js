@@ -214,7 +214,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-timeline__link_parent:hover": {
       "background-color": continuebghColor,
       border: `1px solid ${borderHColor}`,
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -225,7 +225,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link": {
       color: `${continueColor} !important`,

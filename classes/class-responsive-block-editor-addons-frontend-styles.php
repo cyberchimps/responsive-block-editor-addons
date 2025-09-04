@@ -9558,7 +9558,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-timeline__link_parent:hover' => array(
 					'background-color' => $attr['continuebghColor'],
 					'border'           => '1px solid ' . $attr['borderHColor'] . '',
-					'box-shadow'       =>
+					'box-shadow'       => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value(
 						$attr['hoverboxShadowHOffset'],
 						'px'
@@ -9581,7 +9581,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hover_box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link' => array(
 					'color'       => $attr['continueColor'] . '!important',
