@@ -2861,7 +2861,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				),
 				':hover' => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? 
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -2872,7 +2872,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 
 				),
 				' .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles' => array(
@@ -2890,7 +2890,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['boxShadowColor'] : '',
 				),
 				' .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles:hover' => array(
-					'box-shadow' => 'inset' === $hover_box_shadow_position_css ?
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? ('inset' === $hover_box_shadow_position_css ?
 						$hover_box_shadow_position_css .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
@@ -2901,7 +2901,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
 						' ' .
-						$attr['hoverboxShadowColor'] : '',
+						$attr['hoverboxShadowColor'] : '') : '',
 				),
 				' .responsive-block-editor-addons-accordion-content span' => array(
 					'margin' => '0',
