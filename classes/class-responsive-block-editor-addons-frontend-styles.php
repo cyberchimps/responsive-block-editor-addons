@@ -6873,12 +6873,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'         => self::get_css_value( $attr['blockBottomMargin'], 'px' ),
 					'margin-left'           => self::get_css_value( $attr['blockLeftMargin'], 'px' ),
 				),
-				' .rba-gallery-items' => array(
+				'[data-rba-gallery-block] .rba-gallery-items' => array(
 					'column-count'          => (int) $attr['columnsize'],
 					'column-gap'            => self::get_css_value( $attr['gutter'], 'px' ),
 					'position'				=> 'relative',
 				),
-				' .responsive-block-editor-addons-gallery--item' => array(
+				'[data-rba-gallery-block] .responsive-block-editor-addons-gallery--item' => array(
 					'display'                => 'block',
 					'width'                  => '100%',
 					'break-inside'           => 'avoid',
@@ -6957,11 +6957,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'         => self::get_css_value( $attr['blockBottomMarginMobile'], 'px' ),
 					'margin-left'           => self::get_css_value( $attr['blockLeftMarginMobile'], 'px' ),
 				),
-				' .rba-gallery-items' => array(
+				'[data-rba-gallery-block] .rba-gallery-items' => array(
 					'column-count'   => (int) $attr['columnsize'],
 					'column-gap'     => self::get_css_value( $attr['gutterMobile'], 'px' ),
 				),
-				' .responsive-block-editor-addons-gallery--item' => array(
+				'[data-rba-gallery-block] .responsive-block-editor-addons-gallery--item' => array(
 					'display'                => 'block',
 					'width'                  => '100%',
 					'break-inside'           => 'avoid',
@@ -7027,11 +7027,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom'         => self::get_css_value( $attr['blockBottomMarginTablet'], 'px' ),
 					'margin-left'           => self::get_css_value( $attr['blockLeftMarginTablet'], 'px' ),
 				),
-				' .rba-gallery-items' => array(
+				'[data-rba-gallery-block] .rba-gallery-items' => array(
 					'column-count'          => (int) $attr['columnsize'],
 					'column-gap'            => self::get_css_value( $attr['gutterTablet'], 'px' ),
 				),
-				' .responsive-block-editor-addons-gallery--item' => array(
+				'[data-rba-gallery-block] .responsive-block-editor-addons-gallery--item' => array(
 					'display'                => 'block',
 					'width'                  => '100%',
 					'break-inside'           => 'avoid',
