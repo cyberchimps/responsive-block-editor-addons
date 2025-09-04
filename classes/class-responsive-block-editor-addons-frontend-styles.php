@@ -14568,7 +14568,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'box-shadow'                 => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:hover' => array(
-					'box-shadow'                 => $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
 					'margin-left' => '0px !important',
