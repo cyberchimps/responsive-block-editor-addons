@@ -6298,7 +6298,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'              => 999 !== $attr['frontRightPadding'] && 0 === $attr['rightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['frontRightPadding'], 'px' ),  // For compatibility with v1.3.2.
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box .flip-box-front:hover' => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 					' ' .
 					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -6309,7 +6309,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hover_box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box__title' => array(
 					'color'       => $attr['frontTitleTypographyColor'],

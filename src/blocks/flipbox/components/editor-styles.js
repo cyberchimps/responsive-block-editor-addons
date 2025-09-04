@@ -411,7 +411,7 @@ function EditorStyles(props) {
       "padding-right": rightPadding !== 999 && frontRightPadding === 0 ? generateCSSUnit(rightPadding, "px") : generateCSSUnit(frontRightPadding, "px"), // For compatibility with v1.3.2.
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front:hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -422,7 +422,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .wp-block-responsive-block-editor-addons-flip-box__title": {
       "color": frontTitleTypographyColor,
