@@ -977,19 +977,19 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'boxShadowHOffset'            => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'boxShadowVOffset'            => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'boxShadowBlur'               => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'boxShadowSpread'             => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'boxShadowPosition'           => array(
 					'type'    => 'string',
@@ -1000,19 +1000,19 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'hoverboxShadowHOffset'       => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'hoverboxShadowVOffset'       => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'hoverboxShadowBlur'          => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'hoverboxShadowSpread'        => array(
 					'type'    => 'number',
-					'default' => '0',
+					'default' => 0,
 				),
 				'hoverboxShadowPosition'      => array(
 					'type'    => 'string',
