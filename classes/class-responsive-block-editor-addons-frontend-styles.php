@@ -12215,9 +12215,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_testimonial_css( $attr, $id ) {
 			$defaults = self::get_responsive_block_testimonial_default_attributes();
-			if (empty($attr['hoverboxShadowColor'])) {
-				$attr['hoverboxShadowColor'] = '#FFFFFF';
-			}
 			// Frontend backward compatibility.
 			$new_border_radius_keys = array(
 				'blockTopRadius'          => 'blockBorderRadius' ? 'blockBorderRadius' : 2,
@@ -12493,7 +12490,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-left'   => self::get_css_value( $attr['contentLeftPadding'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial:hover' => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -12504,7 +12501,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hoverbox_shadow_position_css,
+						$hoverbox_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-block-testimonial' => array(
 					'background-color'           =>
@@ -12729,7 +12726,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'              => 0,
 				'boxShadowSpread'            => 0,
 				'boxShadowPosition'          => 'outset',
-				'hoverboxShadowColor'        => '#fff',
+				'hoverboxShadowColor'        => '',
 				'hoverboxShadowHOffset'      => 0,
 				'hoverboxShadowVOffset'      => 0,
 				'hoverboxShadowBlur'         => 6,
