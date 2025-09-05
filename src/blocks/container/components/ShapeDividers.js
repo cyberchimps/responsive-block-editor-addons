@@ -185,74 +185,63 @@ const ShapeDividers = ({ attributes, setAttributes }) => {
                       value={topWidth}
                       onChange={(value) => setAttributes({ topWidth: value })}
                     />
-                    <TabPanel
-                      className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
-                      activeClass="active-tab"
-                      onSelect={(topTabName) => setTopHeightTab(topTabName)}
-                      tabs={[
-                        {
-                          name: "desktop",
-                          title: <Dashicon icon="desktop" />,
-                          className:
-                            "responsive-desktop-tab responsive-responsive-tabs",
-                        },
-                        {
-                          name: "tablet",
-                          title: <Dashicon icon="tablet" />,
-                          className: "responsive-tablet-tab responsive-responsive-tabs",
-                        },
-                        {
-                          name: "mobile",
-                          title: <Dashicon icon="smartphone" />,
-                          className: "responsive-mobile-tab responsive-responsive-tabs",
-                        },
-                      ]}
-                    >
-                      {() => {
-                        const topTabSettings = {
-                          desktop: {
-                            label: __(
-                              "Height (Desktop)",
-                              "responsive-block-editor-addons"
-                            ),
-                            value: topHeight,
-                            attributeKey: "topHeight",
-                          },
-                          tablet: {
-                            label: __(
-                              "Height (Tablet)",
-                              "responsive-block-editor-addons"
-                            ),
-                            value: topHeightTablet,
-                            attributeKey: "topHeightTablet",
-                          },
-                          mobile: {
-                            label: __(
-                              "Height (Mobile)",
-                              "responsive-block-editor-addons"
-                            ),
-                            value: topHeightMobile,
-                            attributeKey: "topHeightMobile",
-                          },
-                        };
+                    <div className="rbea-container-responsive-tabs">
+                      <div className="responsive-size-type-field-tabs responsive-inline-margin">
+                        <div className="rbea-tab-buttons">
+                          <button
+                            className={`responsive-desktop-tab responsive-responsive-tabs rbea-responsive-device-tabs ${topHeightTab === "desktop" ? "active-tab" : ""}`}
+                            onClick={() => setTopHeightTab("desktop")}
+                          >
+                            <Dashicon icon="desktop" />
+                          </button>
+                          <button
+                            className={`responsive-tablet-tab responsive-responsive-tabs rbea-responsive-device-tabs ${topHeightTab === "tablet" ? "active-tab" : ""}`}
+                            onClick={() => setTopHeightTab("tablet")}
+                          >
+                            <Dashicon icon="tablet" />
+                          </button>
+                          <button
+                            className={`responsive-mobile-tab responsive-responsive-tabs rbea-responsive-device-tabs ${topHeightTab === "mobile" ? "active-tab" : ""}`}
+                            onClick={() => setTopHeightTab("mobile")}
+                          >
+                            <Dashicon icon="smartphone" />
+                          </button>
+                        </div>
 
-                        const { label, value, attributeKey } =
-                          topTabSettings[topHeightTab] || topTabSettings.desktop;
+                        {topHeightTab === "desktop" && (
+                          <RbeaRangeControl
+                            label={__("Height (Desktop)", "responsive-block-editor-addons")}
+                            min={0}
+                            max={500}
+                            allowReset={true}
+                            value={topHeight}
+                            onChange={(val) => setAttributes({ topHeight: val })}
+                          />
+                        )}
 
-                        return (
-                          <div className="rbea-container-custom-radio-control">
-                            <RbeaRangeControl
-                              label={label}
-                              min={0}
-                              max={500}
-                              allowReset={true}
-                              value={value}
-                              onChange={(val) => setAttributes({ [attributeKey]: val }) }
-                            />
-                          </div>
-                        );
-                      }}
-                    </TabPanel>
+                        {topHeightTab === "tablet" && (
+                          <RbeaRangeControl
+                            label={__("Height (Tablet)", "responsive-block-editor-addons")}
+                            min={0}
+                            max={500}
+                            allowReset={true}
+                            value={topHeightTablet}
+                            onChange={(val) => setAttributes({ topHeightTablet: val })}
+                          />
+                        )}
+
+                        {topHeightTab === "mobile" && (
+                          <RbeaRangeControl
+                            label={__("Height (Mobile)", "responsive-block-editor-addons")}
+                            min={0}
+                            max={500}
+                            allowReset={true}
+                            value={topHeightMobile}
+                            onChange={(val) => setAttributes({ topHeightMobile: val })}
+                          />
+                        )}
+                      </div>
+                    </div>
                     <ToggleControl
                       __nextHasNoMarginBottom
                       label={__("Flip", "responsive-block-editor-addons")}
@@ -305,74 +294,63 @@ const ShapeDividers = ({ attributes, setAttributes }) => {
                       value={bottomWidth}
                       onChange={(value) => setAttributes({ bottomWidth: value })}
                     />
-                    <TabPanel
-                      className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
-                      activeClass="active-tab"
-                      onSelect={(bottomTabName) => setBottomHeightTab(bottomTabName)}
-                      tabs={[
-                        {
-                          name: "desktop",
-                          title: <Dashicon icon="desktop" />,
-                          className:
-                            "responsive-desktop-tab responsive-responsive-tabs",
-                        },
-                        {
-                          name: "tablet",
-                          title: <Dashicon icon="tablet" />,
-                          className: "responsive-tablet-tab responsive-responsive-tabs",
-                        },
-                        {
-                          name: "mobile",
-                          title: <Dashicon icon="smartphone" />,
-                          className: "responsive-mobile-tab responsive-responsive-tabs",
-                        },
-                      ]}
-                    >
-                      {() => {
-                        const bottomTabSettings = {
-                          desktop: {
-                            label: __(
-                              "Height (Desktop)",
-                              "responsive-block-editor-addons"
-                            ),
-                            value: bottomHeight,
-                            attributeKey: "bottomHeight",
-                          },
-                          tablet: {
-                            label: __(
-                              "Height (Tablet)",
-                              "responsive-block-editor-addons"
-                            ),
-                            value: bottomHeightTablet,
-                            attributeKey: "bottomHeightTablet",
-                          },
-                          mobile: {
-                            label: __(
-                              "Height (Mobile)",
-                              "responsive-block-editor-addons"
-                            ),
-                            value: bottomHeightMobile,
-                            attributeKey: "bottomHeightMobile",
-                          },
-                        };
+                    <div className="rbea-container-responsive-tabs">
+                      <div className="responsive-size-type-field-tabs responsive-inline-margin">
+                        <div className="rbea-tab-buttons">
+                          <button
+                            className={`responsive-desktop-tab responsive-responsive-tabs rbea-responsive-device-tabs ${bottomHeightTab === "desktop" ? "active-tab" : ""}`}
+                            onClick={() => setBottomHeightTab("desktop")}
+                          >
+                            <Dashicon icon="desktop" />
+                          </button>
+                          <button
+                            className={`responsive-tablet-tab responsive-responsive-tabs rbea-responsive-device-tabs ${bottomHeightTab === "tablet" ? "active-tab" : ""}`}
+                            onClick={() => setBottomHeightTab("tablet")}
+                          >
+                            <Dashicon icon="tablet" />
+                          </button>
+                          <button
+                            className={`responsive-mobile-tab responsive-responsive-tabs rbea-responsive-device-tabs ${bottomHeightTab === "mobile" ? "active-tab" : ""}`}
+                            onClick={() => setBottomHeightTab("mobile")}
+                          >
+                            <Dashicon icon="smartphone" />
+                          </button>
+                        </div>
 
-                        const { label, value, attributeKey } =
-                          bottomTabSettings[bottomHeightTab] || bottomTabSettings.desktop;
+                        {bottomHeightTab === "desktop" && (
+                          <RbeaRangeControl
+                            label={__("Height (Desktop)", "responsive-block-editor-addons")}
+                            min={0}
+                            max={500}
+                            allowReset={true}
+                            value={bottomHeight}
+                            onChange={(val) => setAttributes({ bottomHeight: val })}
+                          />
+                        )}
 
-                        return (
-                          <div className="rbea-container-custom-radio-control">
-                            <RbeaRangeControl
-                              label={label}
-                              min={0}
-                              max={500}
-                              allowReset={true}
-                              value={value}
-                              onChange={(val) => setAttributes({ [attributeKey]: val }) }
-                            />
-                          </div>
-                        );
-                      }}
-                    </TabPanel>
+                        {bottomHeightTab === "tablet" && (
+                          <RbeaRangeControl
+                            label={__("Height (Tablet)", "responsive-block-editor-addons")}
+                            min={0}
+                            max={500}
+                            allowReset={true}
+                            value={bottomHeightTablet}
+                            onChange={(val) => setAttributes({ bottomHeightTablet: val })}
+                          />
+                        )}
+
+                        {bottomHeightTab === "mobile" && (
+                          <RbeaRangeControl
+                            label={__("Height (Mobile)", "responsive-block-editor-addons")}
+                            min={0}
+                            max={500}
+                            allowReset={true}
+                            value={bottomHeightMobile}
+                            onChange={(val) => setAttributes({ bottomHeightMobile: val })}
+                          />
+                        )}
+                      </div>
+                    </div>
                     <ToggleControl
                       __nextHasNoMarginBottom
                       label={__("Flip", "responsive-block-editor-addons")}
