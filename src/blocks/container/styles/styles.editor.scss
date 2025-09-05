@@ -185,3 +185,32 @@
 		}
 	}
 }
+
+.rbea-inspector-tab {
+	.responsive-block-editor-addons-color-inspect-tabs {
+		.rbea-inspector-container-tab {
+			.components-tab-panel__tabs	{
+				display: block;
+				margin-bottom: 0;
+				width: auto;
+			}
+		}
+	}
+	.rbea-container-select-control {
+		.components-select-control {
+			flex-direction: column;
+			align-items: flex-start;
+			padding-top: 12px;
+		}
+		label {
+			margin-bottom: 0px;
+			font-family: "Roboto", sans-serif;
+			font-size: 13px !important; //WP is overriding
+			font-weight: 400 !important; //WP is overriding
+			line-height: 16.41px !important; //WP is overriding
+			text-align: left !important; //WP is overriding
+			color: #666;
+			text-transform: capitalize !important; //WP is overriding
+		}
+	}
+}

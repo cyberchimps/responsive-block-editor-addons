@@ -577,6 +577,72 @@ const attributes = {
   containerRightMarginMobile: {
     type: "number",
   },
+  topType: {
+    type: "string",
+    default: "none",
+  },
+  topColor: {
+    type: "string",
+    default: '#333',
+  },
+  topWidth: {
+    type: "number",
+    default: 100,
+  },
+  topHeight: {
+    type: "number",
+  },
+  topHeightTablet: {
+    type: "number",
+  },
+  topHeightMobile: {
+    type: "number",
+  },
+  topFlip: {
+    type: "boolean",
+    default: false,
+  },
+  topInvert: {
+    type: "boolean",
+    default: false,
+  },
+  topContentAboveShape: {
+    type: "boolean",
+    default: false,
+  },
+  bottomType: {
+    type: "string",
+    default: "none",
+  },
+  bottomColor: {
+    type: "string",
+    default: '#333',
+  },
+  bottomWidth: {
+    type: "number",
+    default: 100,
+  },
+  bottomHeight: {
+    type: "number",
+  },
+  bottomHeightTablet: {
+    type: "number",
+  },
+  bottomHeightMobile: {
+    type: "number",
+  },
+  bottomFlip: {
+    type: "boolean",
+    default: false,
+  },
+  bottomInvert: {
+    type: "boolean",
+    default: false,
+  },
+  bottomContentAboveShape: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 export default attributes;

@@ -29,6 +29,7 @@ import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import renderCustomIcon from "../renderCustomIcon";
 import BackgroundImageControls from "./BackgroundImageControls";
 import OverlaySettings from "./OverlaySettings";
+import ShapeDividers from './ShapeDividers';
 
 export default function Inspector(props) {
   const { attributes, setAttributes } = props;
@@ -1788,6 +1789,13 @@ export default function Inspector(props) {
                 );
               }}
             </TabPanel>
+          </PanelBody>
+
+          <PanelBody
+            title={__("Shape Dividers", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <ShapeDividers {...props} />
           </PanelBody>
 
           <PanelBody
