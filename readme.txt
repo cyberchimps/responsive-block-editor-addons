@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.0.9
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,13 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.1.0 - 8th September 2025 =
+* New - Added filters in image gallery.
+* New - Added Text transform and font style property in typography setting.
+* Improvement - Add a "Settings" link that take user to RBA default page.
+* Fix -  Fixed minor Bugs in some blocks.
+* Fix - Shadow settings not working in RBA blocks.
 
 = 2.0.9 - 10th July 2025 =
 * Improvement - Added Demo and Doc links for all the blocks.
