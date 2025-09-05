@@ -150,6 +150,16 @@ function EditorStyles(props, deviceType) {
 		blendMode,
 		blendModeTablet,
 		blendModeMobile,
+		topWidth,
+		topHeight,
+		topHeightTablet,
+		topHeightMobile,
+		topColor,
+		bottomWidth,
+		bottomHeight,
+		bottomHeightTablet,
+		bottomHeightMobile,
+		bottomColor,
 	} = props.attributes;
 
   	const { clientId } = props;
@@ -238,6 +248,20 @@ function EditorStyles(props, deviceType) {
 		},
 		'.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block a:hover': {
 			'color': linkColorHover,
+		},
+		' > .responsive-block-editor-addons-container__shape-top svg': {
+			'width': 'calc( ' + topWidth + '% + 1.3px )',
+			'height': generateCSSUnit( topHeight, 'px' ),
+		},
+		' > .responsive-block-editor-addons-container__shape-top .responsive-block-editor-addons-container__shape-fill': {
+			'fill': topColor,
+		},
+		' > .responsive-block-editor-addons-container__shape-bottom svg': {
+			'width': 'calc( ' + bottomWidth + '% + 1.3px )',
+			'height': generateCSSUnit( bottomHeight, 'px' ),
+		},
+		' > .responsive-block-editor-addons-container__shape-bottom .responsive-block-editor-addons-container__shape-fill': {
+			'fill': bottomColor,
 		},
 		' .responsive-block-editor-addons-container__video-wrap video': {
 			'opacity': backgroundVideoOpacityValue,
@@ -423,6 +447,12 @@ function EditorStyles(props, deviceType) {
 			'flex-wrap': wrapTablet,
 			'align-content': alignContentTablet,
 		},
+		' > .responsive-block-editor-addons-container__shape-top svg': {
+			'height': generateCSSUnit( topHeightTablet, 'px' ),
+		},
+		' > .responsive-block-editor-addons-container__shape-bottom svg': {
+			'height': generateCSSUnit( bottomHeightTablet, 'px' ),
+		},
 	};
 
 	const mobile_selectors = {
@@ -451,6 +481,12 @@ function EditorStyles(props, deviceType) {
 			'justify-content': justifyContentMobile,
 			'flex-wrap': wrapMobile,
 			'align-content': alignContentMobile,
+		},
+		' > .responsive-block-editor-addons-container__shape-top svg': {
+			'height': generateCSSUnit( topHeightMobile, 'px' ),
+		},
+		' > .responsive-block-editor-addons-container__shape-bottom svg': {
+			'height': generateCSSUnit( bottomHeightMobile, 'px' ),
 		},
   	};
 

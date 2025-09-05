@@ -22571,10 +22571,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$base_selector . ' a:hover'                                                     => array(
 					'color' => $attr['linkColorHover'],
 				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-top svg'    => array(
+					'height' => self::get_css_value( $attr['topHeight'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape.responsive-block-editor-addons-container__shape-top .responsive-block-editor-addons-container__shape-fill' => array(
+					'fill' => self::hex_to_rgba( $attr['topColor'], ( isset( $attr['topDividerOpacity'] ) && '' !== $attr['topDividerOpacity'] ) ? $attr['topDividerOpacity'] : 100 ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
+					'height' => self::get_css_value( $attr['bottomHeight'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape.responsive-block-editor-addons-container__shape-bottom .responsive-block-editor-addons-container__shape-fill' => array(
+					'fill' => self::hex_to_rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
+				),
 				$base_selector . ' .responsive-block-editor-addons-container__video-wrap video' => array(
 					'opacity' => $background_video_opacity_value,
 				),
 			);
+
+			if ( '' !== $attr['topWidth'] ) {
+				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__shape-top svg' ]['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
+			}
+
+			if ( '' !== $attr['bottomWidth'] ) {
+				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' ]['width'] = 'calc( ' . $attr['bottomWidth'] . '% + 1.3px )';
+			}
 
 			$container_tablet_css = array_merge(
 				array(
@@ -22604,6 +22624,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( $should_merge_inner_container_css ) {
 				$container_tablet_css = array_merge( $container_tablet_css, $inner_container_tablet_css );
 			}
+
+			$tablet_selectors = array(
+				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
+					'height' => self::get_css_value( $attr['bottomHeightTablet'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-top svg'    => array(
+					'height' => self::get_css_value( $attr['topHeightTablet'], 'px' ),
+				),
+			);
 
 			$container_mobile_css = array_merge(
 				array(
@@ -22635,6 +22664,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( $should_merge_inner_container_css ) {
 				$container_mobile_css = array_merge( $container_mobile_css, $inner_container_mobile_css );
 			}
+
+			$mobile_selectors = array(
+				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
+					'height' => self::get_css_value( $attr['bottomHeightMobile'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-top svg'    => array(
+					'height' => self::get_css_value( $attr['topHeightMobile'], 'px' ),
+				),
+			);
 
 			// Add Row and Column Gap.
 			$container_css['row-gap']          = self::get_css_value( $attr['rowGapDesktop'], $attr['rowGapTypeDesktop'] );
@@ -23195,6 +23233,24 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerBottomMarginMobile'     => '',
 				'containerLeftMarginMobile'       => '',
 				'containerRightMarginMobile'      => '',
+				'topType'                         => 'none',
+				'topColor'                        => '#333',
+				'topHeight'                       => '',
+				'topHeightTablet'                 => '',
+				'topHeightMobile'                 => '',
+				'topWidth'                        => 100,
+				'topFlip'                         => false,
+				'topContentAboveShape'            => false,
+				'topInvert'                       => false,
+				'bottomType'                      => 'none',
+				'bottomColor'                     => '#333',
+				'bottomHeight'                    => '',
+				'bottomHeightTablet'              => '',
+				'bottomHeightMobile'              => '',
+				'bottomWidth'                     => 100,
+				'bottomFlip'                      => false,
+				'bottomContentAboveShape'         => false,
+				'bottomInvert'                    => false,
 			);
 		}
 
