@@ -581,6 +581,29 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  inputHoverBoxShadowColor: {
+    type: "string",
+  },
+  inputHoverBoxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  inputHoverBoxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  inputHoverBoxShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  inputHoverBoxShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  inputHoverBoxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
   inputTopPadding: {
     type: "number",
     default: 10,

@@ -175,7 +175,7 @@ function EditorStyles(props) {
       "margin-left" : generateCSSUnit(blockLeftMargin, "px"),
     },
     ":hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -186,7 +186,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-block-editor-addons-section__video-wrap": {
       opacity: imgopacity,

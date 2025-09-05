@@ -386,7 +386,6 @@ const attributes = {
   },
   hoverboxShadowColor: {
     type: "string",
-    default: "",
   },
 	hideWidget: {
 	  type: "boolean",

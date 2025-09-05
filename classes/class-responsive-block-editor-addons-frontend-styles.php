@@ -289,7 +289,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'box-shadow'                 => self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 				),
 				' .responsive-columns-wrap:hover'       => array(
-					'box-shadow' => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css : '',
 				),
 				' .responsive-columns-inner-wrap' => array(
 					'max-width' => $max_width,
@@ -889,7 +889,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				),
 				' article:hover'               => array(
-					'box-shadow' => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css,
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hoverbox_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-post-grid-items article' => array(
 					'padding' => self::get_css_value( $boxed_content_padding, 'px' ),
@@ -1567,7 +1567,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'                => self::get_css_value( $attr['blockLeftMargin'], 'px' ),
 				),
 				':hover' => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 					' ' .
 					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -1578,7 +1578,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hover_box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-section__video-wrap' => array(
 					'opacity' => $imgopacity,
@@ -1950,16 +1950,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'taxonomyType'                 => 'category',
 				'postGridBlockId'              => '',
 				'boxShadowColor'               => '',
-				'boxShadowHOffset'             => '0',
-				'boxShadowVOffset'             => '0',
-				'boxShadowBlur'                => '0',
-				'boxShadowSpread'              => '0',
+				'boxShadowHOffset'             => 0,
+				'boxShadowVOffset'             => 0,
+				'boxShadowBlur'                => 0,
+				'boxShadowSpread'              => 0,
 				'boxShadowPosition'            => 'outset',
-				'hoverboxShadowColor'          => '#cccccc',
+				'hoverboxShadowColor'          => '',
 				'hoverboxShadowHOffset'        => 0,
 				'hoverboxShadowVOffset'        => 0,
-				'hoverboxShadowBlur'           => 6,
-				'hoverboxShadowSpread'         => 1,
+				'hoverboxShadowBlur'           => 0,
+				'hoverboxShadowSpread'         => 0,
 				'hoverboxShadowPosition'       => 'outset',
 				'columnGapTablet'              => '',
 				'columnGapMobile'              => '',
@@ -2861,7 +2861,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				),
 				':hover' => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? 
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -2872,7 +2872,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 
 				),
 				' .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles' => array(
@@ -2890,7 +2890,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['boxShadowColor'] : '',
 				),
 				' .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles:hover' => array(
-					'box-shadow' => 'inset' === $hover_box_shadow_position_css ?
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? ('inset' === $hover_box_shadow_position_css ?
 						$hover_box_shadow_position_css .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
@@ -2901,7 +2901,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
 						' ' .
-						$attr['hoverboxShadowColor'] : '',
+						$attr['hoverboxShadowColor'] : '') : '',
 				),
 				' .responsive-block-editor-addons-accordion-content span' => array(
 					'margin' => '0',
@@ -3826,7 +3826,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover' => array(
 					'border-color'     => $attr['borderHColor'] ? self::hex_to_rgb( $updated_border_h_color, $border_opacity_control_value ) : '#000',
 					'background-color' => $updated_background_h_color,
-					'box-shadow'       =>
+					'box-shadow'       => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 					' ' .
 					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -3837,7 +3837,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hover_box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-button__icon' => array(
 					'margin-left'  => $icon_space_left . 'px',
@@ -4236,7 +4236,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'                => self::get_css_value( $attr['blockLeftMargin'], 'px' ),
 				),
 				':hover' => array(
-					'box-shadow'                 =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -4247,7 +4247,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 
 				' .responsive-block-editor-addons-cta-image' => array(
@@ -4842,7 +4842,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 				),
 				' .wp-block-responsive-block-editor-addons-card-item:hover' => array(
-					'box-shadow' => self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
 						' ' .
@@ -4852,7 +4852,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 
 				' .responsive-block-editor-addons-card-background-image' => array(
@@ -6298,7 +6298,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'              => 999 !== $attr['frontRightPadding'] && 0 === $attr['rightPadding'] ? self::get_css_value( $attr['rightPadding'], 'px' ) : self::get_css_value( $attr['frontRightPadding'], 'px' ),  // For compatibility with v1.3.2.
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box .flip-box-front:hover' => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 					' ' .
 					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -6309,7 +6309,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hover_box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box__title' => array(
 					'color'       => $attr['frontTitleTypographyColor'],
@@ -8007,7 +8007,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				':hover'           => array(
 					'transform' => 'scale(' . $attr['imageHoverEffect'] . ')',
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -8018,7 +8018,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 
 				' .responsive-block-editor-addons-imagebox-image' => array(
@@ -8226,10 +8226,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowHOffset'               => 0,
 				'boxShadowVOffset'               => 0,
 				'boxShadowBlur'                  => 0,
+				'boxShadowPosition'              => 'outset',
 				'opacity'                        => 70,
 				'hoverOpacity'                   => 70,
 				'boxShadowSpread'                => 0,
-				'hoverboxShadowColor'            => '#fff',
+				'hoverboxShadowColor'            => '',
 				'hoverboxShadowHOffset'          => 0,
 				'hoverboxShadowVOffset'          => 0,
 				'hoverboxShadowBlur'             => 0,
@@ -8763,7 +8764,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				':hover'                                   => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 					' ' .
 					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -8774,7 +8775,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hoverbox_shadow_position_css,
+					$hoverbox_shadow_position_css : '',
 				),
 
 				' .responsive-block-editor-addons-ifb-image-icon-content.responsive-block-editor-addons-ifb-imgicon-wrap' => array(
@@ -9323,11 +9324,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaBottomMargin'               => 10,
 				'ctaBottomMarginMobile'         => '',
 				'ctaBottomMarginTablet'         => '',
-				'hoverboxShadowColor'           => '#ccc',
+				'hoverboxShadowColor'           => '',
 				'hoverboxShadowHOffset'         => 0,
 				'hoverboxShadowVOffset'         => 0,
-				'hoverboxShadowBlur'            => 6,
-				'hoverboxShadowSpread'          => 1,
+				'hoverboxShadowBlur'            => 0,
+				'hoverboxShadowSpread'          => 0,
 				'hoverboxShadowPosition'        => 'outset',
 				'iconBackgroundColor'           => '#0066cc',
 				'iconBackgroundHoverColor'      => '',
@@ -9558,7 +9559,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-timeline__link_parent:hover' => array(
 					'background-color' => $attr['continuebghColor'],
 					'border'           => '1px solid ' . $attr['borderHColor'] . '',
-					'box-shadow'       =>
+					'box-shadow'       => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value(
 						$attr['hoverboxShadowHOffset'],
 						'px'
@@ -9581,7 +9582,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hover_box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link' => array(
 					'color'       => $attr['continueColor'] . '!important',
@@ -10636,7 +10637,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 				),
 				' .wp-block-responsive-block-editor-addons-pricing-table-item:hover' => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -10647,7 +10648,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 
 				' .wp-block-responsive-block-editor-addons-pricing-table-item__title' => array(
@@ -10672,7 +10673,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-weight' => $attr['prefixFontWeight'],
 					'font-size'   => self::get_css_value( $attr['prefixFontSize'], 'px' ),
 					'font-family' => $attr['prefixFontFamily'],
-					'text-transform'=> $attr['prefixextTransform'],
+					'text-transform'=> $attr['prefixTextTransform'],
 					'font-style'    => $attr['prefixFontStyle'],
 				),
 
@@ -11215,7 +11216,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'            => 0,
 				'boxShadowSpread'          => 0,
 				'boxShadowPosition'        => 'outset',
-				'hoverboxShadowColor'      => '#fff',
+				'hoverboxShadowColor'      => '',
 				'hoverboxShadowHOffset'    => 0,
 				'hoverboxShadowVOffset'    => 0,
 				'hoverboxShadowBlur'       => 0,
@@ -11858,7 +11859,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 				),
 				' .wp-block-responsive-block-editor-addons-team:hover' => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -11869,7 +11870,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 			);
 
@@ -12214,9 +12215,6 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 */
 		public static function get_responsive_block_testimonial_css( $attr, $id ) {
 			$defaults = self::get_responsive_block_testimonial_default_attributes();
-			if (empty($attr['hoverboxShadowColor'])) {
-				$attr['hoverboxShadowColor'] = '#FFFFFF';
-			}
 			// Frontend backward compatibility.
 			$new_border_radius_keys = array(
 				'blockTopRadius'          => 'blockBorderRadius' ? 'blockBorderRadius' : 2,
@@ -12492,7 +12490,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-left'   => self::get_css_value( $attr['contentLeftPadding'], 'px' ),
 				),
 				' .testimonial-box.responsive-block-editor-addons-block-testimonial:hover' => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -12503,7 +12501,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hoverbox_shadow_position_css,
+						$hoverbox_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-block-testimonial' => array(
 					'background-color'           =>
@@ -12728,7 +12726,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'              => 0,
 				'boxShadowSpread'            => 0,
 				'boxShadowPosition'          => 'outset',
-				'hoverboxShadowColor'        => '#fff',
+				'hoverboxShadowColor'        => '',
 				'hoverboxShadowHOffset'      => 0,
 				'hoverboxShadowVOffset'      => 0,
 				'hoverboxShadowBlur'         => 6,
@@ -13414,18 +13412,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 				),
 				' > .responsive-section-wrap.responsive-block-editor-addons-block-section:hover' => array(
-					'box-shadow'                 =>
-						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
-						' ' .
-						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
-						' ' .
-						self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
-						' ' .
-						self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
-						' ' .
-						$attr['hoverboxShadowColor'] .
-						' ' .
-						$hover_box_shadow_position_css,
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) )
+						? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' .
+						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' .
+						self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' .
+						self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' .
+						$attr['hoverboxShadowColor'] . ' ' .
+						$hover_box_shadow_position_css
+						: '',
 				),
 			);
 
@@ -13878,7 +13872,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-video-popup__wrapper:hover' => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? 
 					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 					' ' .
 					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -13889,7 +13883,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$hover_box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 
 				' .responsive-block-editor-addons-video-popup__play-button svg' => array(
@@ -14103,7 +14097,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'            => 0,
 				'boxShadowSpread'          => 0,
 				'boxShadowPosition'        => 'outset',
-				'hoverboxShadowColor'      => '#fff',
+				'hoverboxShadowColor'      => '',
 				'hoverboxShadowHOffset'    => 0,
 				'hoverboxShadowVOffset'    => 0,
 				'hoverboxShadowBlur'       => 0,
@@ -14393,7 +14387,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxShadowBlur'            => 20,
 				'boxShadowSpread'          => 20,
 				'boxShadowPosition'        => 'outset',
-				'hoverboxShadowColor'      => '#fff',
+				'hoverboxShadowColor'      => '',
 				'hoverboxShadowHOffset'    => 0,
 				'hoverboxShadowVOffset'    => 0,
 				'hoverboxShadowBlur'       => 0,
@@ -14572,7 +14566,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'box-shadow'                 => $attr['boxShadowHOffset'] . 'px ' . $attr['boxShadowVOffset'] . 'px ' . $attr['boxShadowBlur'] . 'px ' . $attr['boxShadowSpread'] . 'px ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css,
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:hover' => array(
-					'box-shadow'                 => $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-countdown-box-stylings:first-of-type' => array(
 					'margin-left' => '0px !important',
@@ -17363,7 +17357,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'max-width'                  => '100%',
 				),
 				':hover' => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 					self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 					' ' .
 					self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -17374,7 +17368,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					' ' .
 					$attr['hoverboxShadowColor'] .
 					' ' .
-					$box_shadow_position_css,
+					$hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-social-icon' => array(
 					'border-radius'    => $icon_shape_radius,
@@ -17775,7 +17769,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$attr['hovercolorLocation1'],
 						$attr['hovercolorLocation2']
 					) : '',
-					'box-shadow'       => $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css,
+					'box-shadow'       => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? $attr['hoverboxShadowHOffset'] . 'px ' . $attr['hoverboxShadowVOffset'] . 'px ' . $attr['hoverboxShadowBlur'] . 'px ' . $attr['hoverboxShadowSpread'] . 'px ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css : '',
 				),
 				' > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active' => array(
 					'background' => $attr['tabBackgroundColor'],
@@ -18126,7 +18120,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			$box_shadow = self::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $box_shadow_position_css;
 
-			$hover_box_shadow = self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css;
+			$hover_box_shadow = ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) . ' ' . $attr['hoverboxShadowColor'] . ' ' . $hover_box_shadow_position_css : '';
 
 			$selectors = array(
 				' ' => array(
@@ -18596,7 +18590,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 				),
 				':hover' => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -18607,7 +18601,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 				' .responsive-block-editor-addons-search-form__input' => array(
 					'border-top'       => $input_border_top . ' !important',
@@ -19698,7 +19692,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						$box_shadow_position_css,
 				),
 				' .wp-block-responsive-block-editor-addons-feature-grid-item:hover' => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ? 
 						self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
 						' ' .
 						self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
@@ -19709,7 +19703,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['hoverboxShadowColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 				' .wp-block-responsive-block-editor-addons-feature-grid-item.background-type-image' => array(
 					'background-image'      => 'linear-gradient(' .
@@ -20622,6 +20616,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$input_box_shadow_position_css = '';
 			}
 
+			$input_hover_box_shadow_position_css = $attr['inputHoverBoxShadowPosition'];
+
+			if ( 'outset' === $attr['inputHoverBoxShadowPosition'] ) {
+				$input_hover_box_shadow_position_css = '';
+			}
+
 			$submit_button_box_shadow_position_css = $attr['submitButtonBoxShadowPosition'];
 
 			if ( 'outset' === $attr['submitButtonBoxShadowPosition'] ) {
@@ -20744,6 +20744,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-style'     			 => $attr['inputFontStyle'],
 				),
 
+				' .wpcf7 input[type=text]:hover ,.wpcf7 input[type=email]:hover, .wpcf7 .wpcf7-select:hover' => array(
+					'box-shadow'                 => ( isset( $attr['inputHoverBoxShadowColor'] ) && ! empty( $attr['inputHoverBoxShadowColor'] ) ) ? self::get_css_value( $attr['inputHoverBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowSpread'], 'px' ) . ' ' . $attr['inputHoverBoxShadowColor'] . ' ' . $input_hover_box_shadow_position_css : '',
+				),
+
 				' .wpcf7 wpcf7-text'                       => array(
 					'width' => self::get_css_value( $attr['textareaWidth'], '%' ),
 				),
@@ -20773,6 +20777,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-top'                 => self::get_css_value( $attr['labelBottomSpacing'], 'px' ),
 					'box-shadow'                 => self::get_css_value( $attr['inputBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputBoxShadowSpread'], 'px' ) . ' ' . $attr['inputBoxShadowColor'] . ' ' . $input_box_shadow_position_css,
 
+				),
+
+				' .wpcf7 textarea:hover'                   => array(
+					'box-shadow'                 => ( isset( $attr['inputHoverBoxShadowColor'] ) && ! empty( $attr['inputHoverBoxShadowColor'] ) ) ? self::get_css_value( $attr['inputHoverBoxShadowHOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowVOffset'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowBlur'], 'px' ) . ' ' . self::get_css_value( $attr['inputHoverBoxShadowSpread'], 'px' ) . ' ' . $attr['inputHoverBoxShadowColor'] . ' ' . $input_hover_box_shadow_position_css : '',
 				),
 
 				' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email' => array(
@@ -21443,6 +21451,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'inputBoxShadowBlur'                  => 0,
 				'inputBoxShadowSpread'                => 0,
 				'inputBoxShadowPosition'              => 'outset',
+				'inputHoverBoxShadowColor'            => '',
+				'inputHoverBoxShadowHOffset'          => 0,
+				'inputHoverBoxShadowVOffset'          => 0,
+				'inputHoverBoxShadowBlur'             => 0,
+				'inputHoverBoxShadowSpread'           => 0,
+				'inputHoverBoxShadowPosition'         => 'outset',
 				'textareaWidth'                       => 100,
 				'textareaWidthMobile'                 => 100,
 				'textareaWidthTablet'                 => 100,
@@ -21902,7 +21916,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'height'                     => self::get_css_value( $attr['imageHeight'], 'px' ),
 				),
 				'  .responsive-blocks-image-block:hover'     => array(
-					'box-shadow'                 =>
+					'box-shadow'                 => ( isset( $attr['imageboxShadowHoverColor'] ) && ! empty( $attr['imageboxShadowHoverColor'] ) ) ?
 						self::get_css_value( $attr['imageboxShadowHoverHOffset'], 'px' ) . ' ' .
 						self::get_css_value( $attr['imageboxShadowHoverVOffset'], 'px' ) .
 						' ' .
@@ -21912,10 +21926,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						$attr['imageboxShadowHoverColor'] .
 						' ' .
-						$hover_box_shadow_position_css,
+						$hover_box_shadow_position_css : '',
 				),
 				'  .img-main-block:hover figure'       => array(
-					'box-shadow' =>
+					'box-shadow' => ( isset( $attr['imageboxShadowHoverColor'] ) && ! empty( $attr['imageboxShadowHoverColor'] ) ) ?
 					self::get_css_value( $attr['imageboxShadowHoverHOffset'], 'px' ) . ' ' .
 						self::get_css_value( $attr['imageboxShadowHoverVOffset'], 'px' ) .
 						' ' .
@@ -21923,7 +21937,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						' ' .
 						self::get_css_value( $attr['imageboxShadowHoverSpread'], 'px' ) .
 						' ' .
-						$attr['imageboxShadowHoverColor'],
+						$attr['imageboxShadowHoverColor'] : '',
 					'filter'     => $filter_value,
 					'transition' => $zoomintransition,
 					'transform'  => $zoomintransform,

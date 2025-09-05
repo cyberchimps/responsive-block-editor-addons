@@ -162,7 +162,7 @@ function EditorStyles(props) {
         "max-width": '100%',
     },
     ":hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -173,7 +173,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-block-editor-addons-social-icon": {
       "border-radius": iconShapeRadius,
