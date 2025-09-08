@@ -20,6 +20,7 @@ import RbeaBorderRadiusControl from "../../../../settings-components/RbeaBorderR
 import GradientBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import RbeaSupportControl from "../../../../utils/components/rbea-support-control";
 import borderStyleIcons from "../icons/border-style-icons";
+import presets from "./button-presets";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -174,6 +175,7 @@ export default class Inspector extends Component {
 				borderOpacity,
 				buttonTextTransform,
 				buttonFontStyle,
+				buttonPreset,
 			},
 			setAttributes,
 		} = this.props;
@@ -499,6 +501,157 @@ export default class Inspector extends Component {
 									},
 								]}
 							/>
+							<hr className="responsive-block-editor-addons-editor__separator" />
+							<div className="responsive-block-editor-addons-button-preset-wrap">
+								<div className="responsive-block-editor-addons-button-preset-header">
+									<p className="components-base-control__label">{__("Presets", "responsive-block-editor-addons")}</p>
+									<Button 
+										style={buttonPreset === '' ? {cursor: 'auto'} : {cursor: 'pointer'}} 
+										onClick={() => setAttributes({ 
+											buttonPreset: '', 
+											background: '#007cba', 
+											color: '#fff', 
+											borderRadius: 0,
+											borderStyle: 'solid',
+											borderWidth: 1,
+											borderColor: '#007cba'
+										})} 
+										size="small"
+									>
+										<Dashicon icon="image-rotate" className={buttonPreset === '' ? 'image-rotate-reset' : ''} />
+									</Button>
+								</div>
+								<div className="responsive-block-editor-addons-button-preset-grid">
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset1' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset1', 
+												background: '#007cba', 
+												color: '#fff', 
+												borderRadius: 0,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#007cba'
+											})}
+										>
+											{presets.preset1}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset2' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset2', 
+												background: '#fff', 
+												color: '#666666', 
+												borderRadius: 0,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#666666'
+											})}
+										>
+											{presets.preset2}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset3' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset3', 
+												background: '#666666', 
+												color: '#fff', 
+												borderRadius: 3,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#666666'
+											})}
+										>
+											{presets.preset3}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset4' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset4', 
+												background: '#fff', 
+												color: '#666666', 
+												borderRadius: 3,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#666666'
+											})}
+										>
+											{presets.preset4}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset5' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset5', 
+												background: '#fff', 
+												color: '#666666', 
+												borderRadius: 0,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#666666'
+											})}
+										>
+											{presets.preset5}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset6' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset6', 
+												background: '#fff', 
+												color: '#666666', 
+												borderRadius: 2,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#666666'
+											})}
+										>
+											{presets.preset6}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset7' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset7', 
+												background: '#fff', 
+												color: '#666666', 
+												borderRadius: 16,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#666666'
+											})}
+										>
+											{presets.preset7}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset8' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => setAttributes({ 
+												buttonPreset: 'preset8', 
+												background: '#fff', 
+												color: '#666666', 
+												borderRadius: 2,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#666666'
+											})}
+										>
+											{presets.preset8}
+										</button>
+									</div>
+								</div>
+							</div>
 						</PanelBody>
 						<RbeaSupportControl blockSlug={"multi-buttons"} />
 					</InspectorTab>

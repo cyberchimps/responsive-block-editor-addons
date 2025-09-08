@@ -421,6 +421,10 @@ const attributes = {
     type: "string",
     default: "",
   },
+  buttonPreset: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;
