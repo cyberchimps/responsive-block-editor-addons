@@ -151,6 +151,7 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'wp_ajax_responsive_block_editor_post_pagination', array( $this, 'post_pagination' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'responsive_block_editor_addons_load_frontend_scripts' ) );
 
 		add_action( 'enqueue_block_editor_assets', array( $this, 'localize_blocks_data_for_editor' ) );
 		// Display admin notice for RBEA review.
@@ -186,6 +187,9 @@ class Responsive_Block_Editor_Addons {
 
 		add_filter( 'plugin_action_links_responsive-block-editor-addons/responsive-block-editor-addons.php', array( $this, 'responsive_block_editor_addons_settings_link' ) );
 
+		if ( ! is_admin() ) {
+			add_action( 'render_block', array( $this, 'responsive_block_editor_addons_render_block' ), 5, 2 );
+		}
 	}
 
 	/**
@@ -1809,5 +1813,36 @@ class Responsive_Block_Editor_Addons {
 		$settings_link = '<a href="' . admin_url( 'admin.php?page=responsive_block_editor_addons' ) . '">' . __( 'Settings', 'responsive-block-editor-addons' ) . '</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
+	}
+
+	/**
+	 * Load Frontend Scripts.
+	 */
+	public function responsive_block_editor_addons_load_frontend_scripts() {
+		wp_enqueue_script(
+			'responsive-block-editor-addons-frontend-scripts',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-aos-initilized.js',
+			array(),
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+			true
+		);
+	}
+
+	/**
+	 * Manipulate the markup of block on frontend.
+	 */
+	public function responsive_block_editor_addons_render_block( $block_content, $block ) {
+
+		if ( ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
+			$attrs = $block['attrs'];
+			$attrs['RBEAAnimationTime']   = isset( $attrs['RBEAAnimationTime'] ) ? $attrs['RBEAAnimationTime'] : 400;
+			$attrs['RBEAAnimationDelay']  = isset( $attrs['RBEAAnimationDelay'] ) ? $attrs['RBEAAnimationDelay'] : 0;
+			$attrs['RBEAAnimationEasing'] = isset( $attrs['RBEAAnimationEasing'] ) ? $attrs['RBEAAnimationEasing'] : 'ease';
+			$attrs['RBEAAnimationRepeat'] = isset( $attrs['RBEAAnimationRepeat'] ) ? 'false' : 'true';
+			
+			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['RBEAAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['RBEAAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['RBEAAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['RBEAAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['RBEAAnimationRepeat'] ) . '" ';
+			$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+		}
+		return $block_content;
 	}
 }

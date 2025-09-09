@@ -1,6 +1,5 @@
 import { ToggleControl, Button, SelectControl, PanelBody } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { addFilter, applyFilters } from '@wordpress/hooks';
 import { useRbeaExtensionContext } from '../context/RbeaExtensionContext';
 import { AnimationList, AnimationEaseType } from './animation-list'
 import RbeaRangeControl from '../../utils/components/rbea-range-control';
