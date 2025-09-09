@@ -68,39 +68,10 @@ export const AnimationList = [
 
 ];
 
-export const AnimationSelectControlObject = {
-	// None.
-	'none': { value: '', label: __( 'None', 'responsive-block-editor-addons' ) },
-
-	// Fade.
-	'fade': { value: 'fade', label: __( 'Fade', 'responsive-block-editor-addons' ) },
-	'fade-down': { value: 'fade-down', label: __( 'Fade Down', 'responsive-block-editor-addons' ) },
-	'fade-up': { value: 'fade-up', label: __( 'Fade Up', 'responsive-block-editor-addons' ) },
-	'fade-left': { value: 'fade-left', label: __( 'Fade Left', 'responsive-block-editor-addons' ) },
-	'fade-right': { value: 'fade-right', label: __( 'Fade Right', 'responsive-block-editor-addons' ) },
-
-	// Flip.
-	'flip-down': { value: 'flip-down', label: __( 'Flip Down', 'responsive-block-editor-addons' ) },
-	'flip-up': { value: 'flip-up', label: __( 'Flip Up', 'responsive-block-editor-addons' ) },
-	'flip-left': { value: 'flip-left', label: __( 'Flip Left', 'responsive-block-editor-addons' ) },
-	'flip-right': { value: 'flip-right', label: __( 'Flip Right', 'responsive-block-editor-addons' ) },
-
-	// Slide.
-	'slide-down': { value: 'slide-down', label: __( 'Slide Down', 'responsive-block-editor-addons' ) },
-	'slide-up': { value: 'slide-up', label: __( 'Slide Up', 'responsive-block-editor-addons' ) },
-	'slide-left': { value: 'slide-left', label: __( 'Slide Left', 'responsive-block-editor-addons' ) },
-	'slide-right': { value: 'slide-right', label: __( 'Slide Right', 'responsive-block-editor-addons' ) },
-
-	// Zoom.
-	'zoom-in': { value: 'zoom-in', label: __( 'Zoom-In', 'responsive-block-editor-addons' ) },
-	'zoom-in-down': { value: 'zoom-in-down', label: __( 'Zoom-In Down', 'responsive-block-editor-addons' ) },
-	'zoom-in-up': { value: 'zoom-in-up', label: __( 'Zoom-In Up', 'responsive-block-editor-addons' ) },
-	'zoom-in-left': { value: 'zoom-in-left', label: __( 'Zoom-In Left', 'responsive-block-editor-addons' ) },
-	'zoom-in-right': { value: 'zoom-in-right', label: __( 'Zoom-In Right', 'responsive-block-editor-addons' ) },
-
-	'zoom-out': { value: 'zoom-out', label: __( 'Zoom-Out', 'responsive-block-editor-addons' ) },
-	'zoom-out-down': { value: 'zoom-out-down', label: __( 'Zoom-Out Down', 'responsive-block-editor-addons' ) },
-	'zoom-out-up': { value: 'zoom-out-up', label: __( 'Zoom-Out Up', 'responsive-block-editor-addons' ) },
-	'zoom-out-left': { value: 'zoom-out-left', label: __( 'Zoom-Out Left', 'responsive-block-editor-addons' ) },
-	'zoom-out-right': { value: 'zoom-out-right', label: __( 'Zoom-Out Right', 'responsive-block-editor-addons' ) },
-};
+export const AnimationEaseType = [
+    { value: 'linear', label: __( 'Linear', 'responsive-block-editor-addons' ) },
+    { value: 'ease', label: __( 'Ease', 'responsive-block-editor-addons' ) },
+    { value: 'ease-in', label: __( 'Ease In', 'responsive-block-editor-addons' ) },
+    { value: 'ease-out', label: __( 'Ease Out', 'responsive-block-editor-addons' ) },
+    { value: 'ease-in-out', label: __( 'Ease In Out', 'responsive-block-editor-addons' ) },
+];
