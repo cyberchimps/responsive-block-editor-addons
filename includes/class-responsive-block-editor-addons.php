@@ -1011,6 +1011,19 @@ class Responsive_Block_Editor_Addons {
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
 		wp_enqueue_style( 'dashicons' );
+		wp_enqueue_style(
+			'responsive-block-editor-addons-aos',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
+			array(),
+			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/aos/aos.min.css' ),
+		);
+		wp_enqueue_script(
+			'responsive-block-editor-addons-aos',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/aos/aos.min.js',
+			array(),
+			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/js/vendors/aos/aos.min.js' ),
+			true
+		);
 	}
 
 	public function rba_get_block_names( $blocks, &$block_names = array() ) {
