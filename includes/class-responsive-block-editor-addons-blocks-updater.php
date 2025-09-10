@@ -422,6 +422,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'category' => 'content',
 				'status'   => 1,
 			),
+			array(
+				'key'      => 'animations',
+				'title'    => 'Animations',
+				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/animations/',
+				'demo'     => 'https://cyberchimps.com/responsive-blocks/animations/',
+				'category' => 'extensions',
+				'status'   => 1,
+			),
 		);
 
 		return $blocks;

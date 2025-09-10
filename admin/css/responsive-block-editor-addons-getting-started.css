@@ -492,6 +492,16 @@ input:checked + .rbea-blocks-slider:before {
 
 }
 
+.rbea-blocks-card-badge {
+    top: 0px;
+    right: 22px;
+    text-transform: uppercase;
+    padding: 3px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 2px;
+}
+
 
 /* Blocks Tab Ends */
 

@@ -1015,19 +1015,30 @@ class Responsive_Block_Editor_Addons {
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
 		wp_enqueue_style( 'dashicons' );
-		wp_enqueue_style(
-			'responsive-block-editor-addons-aos',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
-			array(),
-			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/aos/aos.min.css' ),
-		);
-		wp_enqueue_script(
-			'responsive-block-editor-addons-aos',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/aos/aos.min.js',
-			array(),
-			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/js/vendors/aos/aos.min.js' ),
-			true
-		);
+
+		$rbea_blocks = get_option( 'rbea_blocks' );
+
+		$block_status_map = array_column( (array) $rbea_blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animations_on = $block_status_map['animations'];
+		}
+
+		if ( $is_animations_on ) {
+			wp_enqueue_style(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/aos/aos.min.css' ),
+			);
+			wp_enqueue_script(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/aos/aos.min.js',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/js/vendors/aos/aos.min.js' ),
+				true
+			);
+		}
 	}
 
 	public function rba_get_block_names( $blocks, &$block_names = array() ) {
@@ -1819,13 +1830,24 @@ class Responsive_Block_Editor_Addons {
 	 * Load Frontend Scripts.
 	 */
 	public function responsive_block_editor_addons_load_frontend_scripts() {
-		wp_enqueue_script(
-			'responsive-block-editor-addons-frontend-scripts',
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-aos-initilized.js',
-			array(),
-			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
-			true
-		);
+		$blocks = get_option( 'rbea_blocks' );
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animations_on = $block_status_map['animations'];
+		}
+
+		if ( $is_animations_on ) {
+			wp_enqueue_script(
+				'responsive-block-editor-addons-frontend-scripts',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-aos-initilized.js',
+				array(),
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+				true
+			);
+		}
+
 	}
 
 	/**
@@ -1833,7 +1855,15 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function responsive_block_editor_addons_render_block( $block_content, $block ) {
 
-		if ( ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
+		$blocks = get_option( 'rbea_blocks' );
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animations_on = $block_status_map['animations'];
+		}
+
+		if ( $is_animations_on && ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
 			$attrs = $block['attrs'];
 			$attrs['RBEAAnimationTime']   = isset( $attrs['RBEAAnimationTime'] ) ? $attrs['RBEAAnimationTime'] : 400;
 			$attrs['RBEAAnimationDelay']  = isset( $attrs['RBEAAnimationDelay'] ) ? $attrs['RBEAAnimationDelay'] : 0;
