@@ -10,8 +10,6 @@ const RbeaAnimations = () => {
 
 	const { RBEAAnimationType, RBEAAnimationTime, RBEAAnimationDelay, RBEAAnimationEasing, RBEAAnimationRepeat } = attributes;
 
-	console.log('RBEAAnimationType -> ', RBEAAnimationType, typeof RBEAAnimationType )
-
 	const rbeaPlayAnimation = ( rbeaAnimationType = RBEAAnimationType ) => {
 		// For responsive preview.
 		const editorIframe = document.querySelector( 'iframe[name="editor-canvas"]' );
@@ -113,22 +111,30 @@ const RbeaAnimations = () => {
 						<RbeaRangeControl
 							label={__("Animation Duration", "responsive-block-editor-addons")}
 							value={RBEAAnimationTime}
-							onChange={(value) => setAttributes({ RBEAAnimationTime: value }) }
+							onChange={(value) => {
+								const sanitizedValue = value ? Math.floor(value / 50) * 50 : 0;
+								setAttributes({ RBEAAnimationTime: sanitizedValue });
+							}}
 							min={0}
 							max={3000}
 							allowReset
 							resetFallbackValue={400}
 							initialPosition={400}
+							step={50}
 						/>
 						<RbeaRangeControl
 							label={__("Animation Delay", "responsive-block-editor-addons")}
 							value={RBEAAnimationDelay}
-							onChange={(value) => setAttributes({ RBEAAnimationDelay: value }) }
+							onChange={(value) => {
+								const sanitizedValue = value ? Math.floor(value / 50) * 50 : 0;
+								setAttributes({ RBEAAnimationDelay: sanitizedValue });
+							}}
 							min={0}
 							max={3000}
 							allowReset
 							resetFallbackValue={0}
 							initialPosition={0}
+							step={50}
 						/>
 						<label className="rbea-animations-label">{__("Animation Easing", "responsive-block-editor-addons")}</label>
 						<SelectControl
