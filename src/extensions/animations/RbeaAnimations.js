@@ -121,6 +121,7 @@ const RbeaAnimations = () => {
 							resetFallbackValue={400}
 							initialPosition={400}
 							step={50}
+							help={__("Duration defines the runtime of the animation in milliseconds.", "responsive-block-editor-addons")}
 						/>
 						<RbeaRangeControl
 							label={__("Animation Delay", "responsive-block-editor-addons")}
@@ -135,6 +136,7 @@ const RbeaAnimations = () => {
 							resetFallbackValue={0}
 							initialPosition={0}
 							step={50}
+							help={__("Delay sets the wait time before the animation begins, in milliseconds.", "responsive-block-editor-addons")}
 						/>
 						<label className="rbea-animations-label">{__("Animation Easing", "responsive-block-editor-addons")}</label>
 						<SelectControl
@@ -144,7 +146,7 @@ const RbeaAnimations = () => {
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							options={AnimationEaseType}
-							help={__("Easing can help provide a natural feel to the animation by affecting it's speed at a specific interval.", "responsive-block-editor-addons")}
+							help={__("Easing provides a more natural feel to the animation by controlling its speed at different intervals.", "responsive-block-editor-addons")}
 						>
 						</SelectControl>
 						<ToggleControl

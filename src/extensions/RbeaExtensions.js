@@ -5,7 +5,7 @@ const RbeaExtensions = ( props ) => {
 
   return (
     <RbeaExtensionContext.Provider value={props}>
-      <RbeaAnimations />
+      { responsive_globals?.is_animation_on && <RbeaAnimations /> }
     </RbeaExtensionContext.Provider>
   )
 }

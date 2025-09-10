@@ -640,6 +640,7 @@ class Responsive_Block_Editor_Addons {
 
 		$is_taxonomy_list_on         = 1;
 		$is_contact_7_form_styler_on = 1;
+		$is_animation_on             = 1;
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
@@ -649,6 +650,10 @@ class Responsive_Block_Editor_Addons {
 
 		if ( isset( $block_status_map['contact-form-7-styler'] ) ) {
 			$is_contact_7_form_styler_on = $block_status_map['contact-form-7-styler'];
+		}
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animation_on = $block_status_map['animations'];
 		}
 
 		$include_all_taxonomy = 0;
@@ -683,6 +688,7 @@ class Responsive_Block_Editor_Addons {
 				'home_url'                           => home_url(),
 				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
+				'is_animation_on'                    => $is_animation_on,
 			)
 		);
 
