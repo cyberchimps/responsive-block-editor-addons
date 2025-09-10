@@ -26,6 +26,7 @@ import BoxShadowControl from "../../../utils/components/box-shadow";
 import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
 import renderSVG from "../../../renderIcon";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 // Import block components
 const { InspectorControls, ColorPalette, PanelColorSettings, AlignmentToolbar } = wp.blockEditor;
@@ -1258,6 +1259,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"post-timeline"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
