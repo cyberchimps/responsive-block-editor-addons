@@ -54,7 +54,7 @@ const RbeaAnimations = () => {
 			// Hence we do the calculation on the next line.
 			rbeaAnimatedBlock.style.transitionDuration = RBEAAnimationTime / 1000 + 's';
 			rbeaAnimatedBlock.classList.add( 'aos-animate' );
-		}, 0 );
+		}, RBEAAnimationDelay );
 
 		// Remove the classes and attributes after the animation has played.
 		// Keeping the classes and attributes after the animation has played can lead to buggy behavior in the editor.
