@@ -23,6 +23,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1047,6 +1048,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"feature-grid"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}

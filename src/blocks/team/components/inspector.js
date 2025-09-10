@@ -22,6 +22,7 @@ import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-
 import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-control";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1479,6 +1480,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"team"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
