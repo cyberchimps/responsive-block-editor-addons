@@ -10,8 +10,6 @@ import {
   TextControl,
   Icon,
   GradientPicker,
-  RadioControl,
-  FocalPointPicker,
 } from "@wordpress/components";
 
 import InspectorTab from "../../../components/InspectorTab";
@@ -29,6 +27,9 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import renderCustomIcon from "../renderCustomIcon";
+import BackgroundImageControls from "./BackgroundImageControls";
+import OverlaySettings from "./OverlaySettings";
+import ShapeDividers from './ShapeDividers';
 
 export default function Inspector(props) {
   const { attributes, setAttributes } = props;
@@ -102,19 +103,7 @@ export default function Inspector(props) {
     alignContentTablet,
     alignContentMobile,
     backgroundType,
-    opacity,
     gradient,
-    backgroundColor,
-    imagePositionTab,
-    backgroundImage,
-    backgroundSize,
-    backgroundSizeTablet,
-    backgroundSizeMobile,
-    backgroundPosition,
-    backgroundPositionTablet,
-    backgroundPositionMobile,
-    backgroundRepeat,
-    imageSizeTab,
     backgroundVideo,
     textColor,
     linkColor,
@@ -248,9 +237,6 @@ export default function Inspector(props) {
         innerContentBoxWidthTypeMobile: innerContentWidthType ?? "px",
         innerContentBoxWidthTypeUpdated: true,
       });
-      console.log(
-        "🔁 Migrated innerContentBoxWidthType attributes from innerContentWidthType"
-      );
     }
   }, []);
 
@@ -269,9 +255,6 @@ export default function Inspector(props) {
         customWidthMobile: customWidthType ?? "px",
         customWidthTypeUpdated: true,
       });
-      console.log(
-        "🔁 Migrated innerContentBoxWidthType attributes from customWidthType"
-      );
     }
   }, []);
 
@@ -287,7 +270,6 @@ export default function Inspector(props) {
         rowGapMobile: rowGapType ?? "px",
         rowGapTypeUpdated: true,
       });
-      console.log("🔁 Migrated attributes for row gap");
     }
   }, []);
 
@@ -306,92 +288,8 @@ export default function Inspector(props) {
         columnGapMobile: columnGapType ?? "px",
         columnGapTypeUpdated: true,
       });
-      console.log("🔁 Migrated attributes for column gap");
     }
   }, []);
-
-  useEffect(() => {
-    console.log("📐 Device Width Attributes:");
-    console.log(
-      "Desktop Width:",
-      innerContentCustomWidthDesktop,
-      innerContentBoxWidthTypeDesktop
-    );
-    console.log(
-      "Tablet Width:",
-      innerContentCustomWidthTablet,
-      innerContentBoxWidthTypeTablet
-    );
-    console.log(
-      "Mobile Width:",
-      innerContentCustomWidthMobile,
-      innerContentBoxWidthTypeMobile
-    );
-  }, [
-    innerContentCustomWidthDesktop,
-    innerContentBoxWidthTypeDesktop,
-    innerContentCustomWidthTablet,
-    innerContentBoxWidthTypeTablet,
-    innerContentCustomWidthMobile,
-    innerContentBoxWidthTypeMobile,
-  ]);
-
-  // custom width.
-  useEffect(() => {
-    console.log("📐 Device Custom Width Attributes:");
-    console.log(
-      "Desktop Custom Width:",
-      customWidthDesktop,
-      customWidthTypeDesktop
-    );
-    console.log(
-      "Tablet Custom Width:",
-      customWidthTablet,
-      customWidthTypeTablet
-    );
-    console.log(
-      "Mobile Custom Width:",
-      customWidthMobile,
-      customWidthTypeMobile
-    );
-  }, [
-    customWidthDesktop,
-    customWidthTypeDesktop,
-    customWidthTablet,
-    customWidthTypeTablet,
-    customWidthMobile,
-    customWidthTypeMobile,
-  ]);
-
-  // row gap.
-  useEffect(() => {
-    console.log("📐 Row Gap Attributes:");
-    console.log("Desktop Row Gap:", rowGapDesktop, rowGapTypeDesktop);
-    console.log("Tablet Row Gap:", rowGapTablet, rowGapTypeTablet);
-    console.log("Mobile Row Gap:", rowGapMobile, rowGapTypeMobile);
-  }, [
-    rowGapDesktop,
-    rowGapTypeDesktop,
-    rowGapTablet,
-    rowGapTypeTablet,
-    rowGapMobile,
-    rowGapTypeMobile,
-  ]);
-
-  // column gap.
-  useEffect(() => {
-    console.log("📐 Column Gap Attributes:");
-    console.log("Desktop Column Gap:", columnGapDesktop, columnGapTypeDesktop);
-    console.log("Tablet Column Gap:", columnGapTablet, columnGapTypeTablet);
-    console.log("Mobile Column Gap:", columnGapMobile, columnGapTypeMobile);
-  }, [
-    columnGapDesktop,
-    columnGapTypeDesktop,
-    columnGapTablet,
-    columnGapTypeTablet,
-    columnGapMobile,
-    columnGapTypeMobile,
-  ]);
 
   const getCurrentDirection = () => {
     return activeTab === "desktop"
@@ -423,8 +321,6 @@ export default function Inspector(props) {
 			setAttributes( { alignItemsMobile: 'center' } );
 		}
 	};
-
-  let background_image_url = backgroundImage || '';
 
   const htmlTagOptions = [
     {
@@ -539,7 +435,6 @@ export default function Inspector(props) {
   ];
 
   const getAlignItemsOptions = (currentDirection) => {
-    console.log("currentDirection -> " + currentDirection);
     const flexDirection = currentDirection.includes("column")
       ? "row"
       : "column";
@@ -572,7 +467,6 @@ export default function Inspector(props) {
     currentDirection,
     isAlignContent = false
   ) => {
-    console.log("JC currentDirection -> " + currentDirection);
     let flexDirection = currentDirection.includes("column") ? "column" : "row";
     if (isAlignContent) {
       flexDirection = currentDirection.includes("column") ? "row" : "column";
@@ -620,22 +514,62 @@ export default function Inspector(props) {
     ];
   };
 
-  const imagePositionOptions = [
-    { value: "top left", label: <div className = "rbea-background-image-positon-control-option">{__("Top Left", "responsive-block-editor-addons")}</div> },
-    { value: "top center", label: <div className = "rbea-background-image-positon-control-option">{__("Top Center", "responsive-block-editor-addons")}</div> },
-    { value: "top right", label: <div className = "rbea-background-image-positon-control-option">{__("Top Right", "responsive-block-editor-addons")}</div> },
-    { value: "center left", label: <div className = "rbea-background-image-positon-control-option">{__("Center Left", "responsive-block-editor-addons")}</div> },
-    { value: "center center", label: <div className = "rbea-background-image-positon-control-option">{__("Center Center", "responsive-block-editor-addons")}</div> },
-    { value: "center right", label: <div className = "rbea-background-image-positon-control-option">{__("Center Right", "responsive-block-editor-addons")}</div> },
-    { value: "bottom left", label: <div className = "rbea-background-image-positon-control-option">{__("Bottom Left", "responsive-block-editor-addons")}</div> },
-    { value: "bottom center", label: <div className = "rbea-background-image-positon-control-option">{__("Bottom Center", "responsive-block-editor-addons")}</div> },
-    { value: "bottom right", label: <div className = "rbea-background-image-positon-control-option">{__("Bottom Right", "responsive-block-editor-addons")}</div> },
+  const attachmentOptions = [
+    { value: 'fixed', label: __( 'Fixed', 'responsive-block-editor-addons' ) },
+    { value: 'scroll', label: __( 'Scroll', 'responsive-block-editor-addons' ) },
+  ];
+
+  const blendModeOptions = [
+    { value: 'normal',       label: __( 'Normal', 'responsive-block-editor-addons' ) },
+    { value: 'multiply',     label: __( 'Multiply', 'responsive-block-editor-addons' ) },
+    { value: 'screen',       label: __( 'Screen', 'responsive-block-editor-addons' ) },
+    { value: 'overlay',      label: __( 'Overlay', 'responsive-block-editor-addons' ) },
+    { value: 'darken',       label: __( 'Darken', 'responsive-block-editor-addons' ) },
+    { value: 'lighten',      label: __( 'Lighten', 'responsive-block-editor-addons' ) },
+    { value: 'color-dodge',  label: __( 'Color Dodge', 'responsive-block-editor-addons' ) },
+    { value: 'color-burn',   label: __( 'Color Burn', 'responsive-block-editor-addons' ) },
+    { value: 'hard-light',   label: __( 'Hard Light', 'responsive-block-editor-addons' ) },
+    { value: 'soft-light',   label: __( 'Soft Light', 'responsive-block-editor-addons' ) },
+    { value: 'difference',   label: __( 'Difference', 'responsive-block-editor-addons' ) },
+    { value: 'exclusion',    label: __( 'Exclusion', 'responsive-block-editor-addons' ) },
+    { value: 'hue',          label: __( 'Hue', 'responsive-block-editor-addons' ) },
+    { value: 'saturation',   label: __( 'Saturation', 'responsive-block-editor-addons' ) },
+    { value: 'color',        label: __( 'Color', 'responsive-block-editor-addons' ) },
+    { value: 'luminosity',   label: __( 'Luminosity', 'responsive-block-editor-addons' ) }
+  ];
+
+  const repeatOptions = [
+    { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
+    { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
+    { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
+    { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
   ];
 
   const backgroundSizeOptions = [
     { value: "auto", label: __("Auto", "responsive-block-editor-addons") },
     { value: "cover", label: __("Cover", "responsive-block-editor-addons") },
     { value: "contain", label: __("Contain", "responsive-block-editor-addons") },
+  ];
+
+  const gradientOptions = [
+    {
+      name: 'JShine',
+      gradient:
+        'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+      slug: 'jshine',
+    },
+    {
+      name: 'Moonlit Asteroid',
+      gradient:
+        'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+      slug: 'moonlit-asteroid',
+    },
+    {
+      name: 'Rastafarie',
+      gradient:
+        'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+      slug: 'rastafari',
+    },
   ];
 
   const containerMarginResetValues = {
@@ -1510,7 +1444,7 @@ export default function Inspector(props) {
           >
             <RbeaBackgroundTypeControl
               label={__("Type", "responsive-block-editor-addons")}
-              value={backgroundType}
+              selectedValue={backgroundType}
               onChange={(value) => setAttributes({ backgroundType: value })}
               options={backgroundTypeOptions}
             />
@@ -1523,191 +1457,19 @@ export default function Inspector(props) {
               <GradientPicker
                 value={gradient}
                 onChange={(value) => { setAttributes({ gradient: value }) }}
-                gradients={[
-                  {
-                    name: 'JShine',
-                    gradient:
-                      'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
-                    slug: 'jshine',
-                  },
-                  {
-                    name: 'Moonlit Asteroid',
-                    gradient:
-                      'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
-                    slug: 'moonlit-asteroid',
-                  },
-                  {
-                    name: 'Rastafarie',
-                    gradient:
-                      'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
-                    slug: 'rastafari',
-                  },
-                ]}
+                gradients={gradientOptions}
               />
             )}
             {"image" == backgroundType && (
               <>
-                <RbeaMediaUploadControl
-                  label={__("Image", "responsive-block-editor-addons")}
-                  value={{
-                    url: backgroundImage || "",
-                  }}
-                  onChange={(newValue) => {
-                    setAttributes({
-                      backgroundImage: newValue.url,
-                    });
-                  }}
-                  mediaType={"image"}
+                <BackgroundImageControls
+                  attributes={attributes}
+                  setAttributes={setAttributes}
+                  attachmentOptions={attachmentOptions}
+                  blendModeOptions={blendModeOptions}
+                  repeatOptions={repeatOptions}
+                  backgroundSizeOptions={backgroundSizeOptions}
                 />
-                {backgroundImage && (
-                  <>
-                    {/* Position */}
-                    <div className="rbea-tab-selector-label-wrapper">
-                      <TabPanel
-                        className="responsive-size-type-field-tabs responsive-size-type-field__common-tabs responsive-inline-margin"
-                        activeClass="active-tab"
-                        tabs={[
-                          {
-                            name: "desktop",
-                            title: <Dashicon icon="desktop" />,
-                            className: "responsive-desktop-tab responsive-responsive-tabs",
-                          },
-                          {
-                            name: "tablet",
-                            title: <Dashicon icon="tablet" />,
-                            className: "responsive-tablet-tab responsive-responsive-tabs",
-                          },
-                          {
-                            name: "mobile",
-                            title: <Dashicon icon="smartphone" />,
-                            className: "responsive-mobile-tab responsive-responsive-tabs",
-                          },
-                        ]}
-                      >
-                        {(tab) => {
-                          const valueMap = {
-                            desktop: backgroundPosition,
-                            tablet: backgroundPositionTablet,
-                            mobile: backgroundPositionMobile,
-                          };
-
-                          const attrMap = {
-                            desktop: "backgroundPosition",
-                            tablet: "backgroundPositionTablet",
-                            mobile: "backgroundPositionMobile",
-                          };
-
-                          return (
-                            <>
-                              <label>{__("Image Position", "responsive-block-editor-addons")} ({tab.name})</label>
-                              <FocalPointPicker
-                                __nextHasNoMarginBottom
-                                __next40pxDefaultSize
-                                url={background_image_url}
-                                value={valueMap[tab.name]}
-                                onChange={(newFocalPoint) =>
-                                  setAttributes({ [attrMap[tab.name]]: newFocalPoint })
-                                }
-                              />
-                            </>
-                          );
-                        }}
-                      </TabPanel>
-                    </div>
-  
-                    {/* Repeat */}
-                    <div className = "rbea-repeat-selector-wrapper">
-                      <RbeaTabRadioControl
-                        label={__("Repeat", "responsive-block-editor-addons")}
-                        value={backgroundRepeat}
-                        onChange={(value) =>
-                          setAttributes({ backgroundRepeat: value })
-                        }
-                        options={[
-                          { value: "no-repeat", label: __("No Repeat", "responsive-block-editor-addons") },
-                          { value: "repeat", label: __("Repeat", "responsive-block-editor-addons") },
-                          { value: "repeat-x", label: __("Repeat-x", "responsive-block-editor-addons") },
-                          { value: "repeat-y", label: __("Repeat-y", "responsive-block-editor-addons") },
-                        ]}
-                        defaultValue={"no-repeat"}
-                      />
-                    </div>
-  
-                    {/* Size */}
-                    <div className = "rbea-tab-selector-label-wrapper">
-                      <label>{__("Size", "responsive-block-editor-addons")}</label>
-                      <TabPanel
-                        className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin rbea-section-size-control-tab-selector"
-                        activeClass="active-tab"
-                        tabs={[
-                          {
-                            name: "desktop",
-                            title: <Dashicon icon="desktop" />,
-                            className:
-                              " responsive-desktop-tab  responsive-responsive-tabs",
-                          },
-                          {
-                            name: "tablet",
-                            title: <Dashicon icon="tablet" />,
-                            className:
-                              " responsive-tablet-tab  responsive-responsive-tabs",
-                          },
-                          {
-                            name: "mobile",
-                            title: <Dashicon icon="smartphone" />,
-                            className:
-                              " responsive-mobile-tab  responsive-responsive-tabs",
-                          },
-                        ]}
-                      >
-                        {(tab) => {
-                          if ("mobile" === tab.name) {
-                            setAttributes({ imageSizeTab: "mobile" });
-                          } else if ("tablet" === tab.name) {
-                            setAttributes({ imageSizeTab: "tablet" });
-                          } else {
-                            setAttributes({ imageSizeTab: "desktop" });
-                          }
-                        }}
-                      </TabPanel>
-                    </div>
-                    {imageSizeTab === "desktop" && (
-                      <>
-                      <RbeaTabRadioControl
-                        label={__("", "responsive-block-editor-addons")}
-                        value={backgroundSize}
-                        onChange={(value) =>
-                          setAttributes({ backgroundSize: value })
-                        }
-                        options={backgroundSizeOptions}
-                        defaultValue={"cover"}
-                      />
-                    </>
-                    )}
-                    {imageSizeTab === "tablet" && (
-                      <RbeaTabRadioControl
-                      label={__("", "responsive-block-editor-addons")}
-                      value={backgroundSizeTablet}
-                      onChange={(value) =>
-                        setAttributes({ backgroundSizeTablet: value })
-                      }
-                      options={backgroundSizeOptions}
-                      defaultValue={"cover"}
-                      />
-                    )}
-                    {imageSizeTab === "mobile" && (
-                      <RbeaTabRadioControl
-                        label={__("", "responsive-block-editor-addons")}
-                        value={backgroundSizeMobile}
-                        onChange={(value) =>
-                          setAttributes({ backgroundSizeMobile: value })
-                        }
-                        options={backgroundSizeOptions}
-                        defaultValue={"cover"}
-                      />
-                    )}
-                  </>
-                )}
               </>
             )}
             {"video" == backgroundType && (
@@ -1724,6 +1486,16 @@ export default function Inspector(props) {
                 mediaType={"video"}
               />
             )}
+
+            <OverlaySettings 
+              {...props}
+              attachmentOptions={attachmentOptions}
+              blendModeOptions={blendModeOptions}
+              repeatOptions={repeatOptions}
+              backgroundSizeOptions={backgroundSizeOptions}
+              gradientOptions={gradientOptions}
+            />
+
           </PanelBody>
 
           <PanelBody
@@ -1924,6 +1696,13 @@ export default function Inspector(props) {
                 );
               }}
             </TabPanel>
+          </PanelBody>
+
+          <PanelBody
+            title={__("Shape Dividers", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+            <ShapeDividers {...props} />
           </PanelBody>
 
           <PanelBody

@@ -23539,18 +23539,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			if ( 'image' === $attr['backgroundType'] ) {
 				$container_bg_css_desktop = array(
-					'background-image'    => 'url(' . $attr['backgroundImage'] . ')',
-					'background-repeat'   => $attr['backgroundRepeat'],
-					'background-position' => self::get_background_position( $attr['backgroundPosition'] ),
-					'background-size'     => $attr['backgroundSize'],
+					'background-image'      => 'url(' . $attr['backgroundImage'] . ')',
+					'background-repeat'     => $attr['backgroundRepeat'],
+					'background-position'   => self::get_background_position( $attr['backgroundPosition'] ),
+					'background-attachment' => $attr['backgroundAttachment'],
+					'background-size'       => $attr['backgroundSize'],
 				);
 				$container_bg_css_tablet = array(
-					'background-position' => self::get_background_position( $attr['backgroundPositionTablet'] ),
-					'background-size'     => $attr['backgroundSizeTablet'],
+					'background-repeat'     => $attr['backgroundRepeatTablet'] ?: $attr['backgroundRepeat'],
+					'background-position'   => self::get_background_position( $attr['backgroundPositionTablet'] ),
+					'background-attachment' => $attr['backgroundAttachmentTablet'] ?: $attr['backgroundAttachment'],
+					'background-size'       => $attr['backgroundSizeTablet'],
 				);
 				$container_bg_css_mobile = array(
-					'background-position' => self::get_background_position( $attr['backgroundPositionMobile'] ),
-					'background-size'     => $attr['backgroundSizeMobile'],
+					'background-repeat'     => $attr['backgroundRepeatMobile'] ?: $attr['backgroundRepeatTablet'] ?: $attr['backgroundRepeat'],
+					'background-position'   => self::get_background_position( $attr['backgroundPositionMobile'] ),
+					'background-attachment' => $attr['backgroundAttachmentMobile'] ?: $attr['backgroundAttachmentTablet'] ?: $attr['backgroundAttachment'],
+					'background-size'       => $attr['backgroundSizeMobile'],
 				);
 			}
 
@@ -23632,6 +23637,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$container_css = array_merge( $container_css, $inner_container_css );
 			}
 
+			$background_video_opacity_value = ( isset( $attr['opacity'] ) && 'none' !== $attr['overlayType'] && ( ( 'color' === $attr['overlayType'] && ! empty( $attr['overlayColor'] ) ) || ( 'gradient' === $attr['overlayType'] && ! empty( $attr['overlayGradient'] ) ) ) ) ? 1 - ( $attr['opacity'] / 100 ) : 1;
+
 			$selectors = array(
 				$base_selector . '.wp-block-responsive-block-editor-addons-container'           => array(
 					'color' => $attr['textColor'],
@@ -23642,7 +23649,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$base_selector . ' a:hover'                                                     => array(
 					'color' => $attr['linkColorHover'],
 				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-top svg'    => array(
+					'height' => self::get_css_value( $attr['topHeight'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape.responsive-block-editor-addons-container__shape-top .responsive-block-editor-addons-container__shape-fill' => array(
+					'fill' => self::hex_to_rgba( $attr['topColor'], ( isset( $attr['topDividerOpacity'] ) && '' !== $attr['topDividerOpacity'] ) ? $attr['topDividerOpacity'] : 100 ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
+					'height' => self::get_css_value( $attr['bottomHeight'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape.responsive-block-editor-addons-container__shape-bottom .responsive-block-editor-addons-container__shape-fill' => array(
+					'fill' => self::hex_to_rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' !== $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__video-wrap video' => array(
+					'opacity' => $background_video_opacity_value,
+				),
 			);
+
+			if ( '' !== $attr['topWidth'] ) {
+				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__shape-top svg' ]['width'] = 'calc( ' . $attr['topWidth'] . '% + 1.3px )';
+			}
+
+			if ( '' !== $attr['bottomWidth'] ) {
+				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' ]['width'] = 'calc( ' . $attr['bottomWidth'] . '% + 1.3px )';
+			}
 
 			$container_tablet_css = array_merge(
 				array(
@@ -23672,6 +23702,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( $should_merge_inner_container_css ) {
 				$container_tablet_css = array_merge( $container_tablet_css, $inner_container_tablet_css );
 			}
+
+			$tablet_selectors = array(
+				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
+					'height' => self::get_css_value( $attr['bottomHeightTablet'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-top svg'    => array(
+					'height' => self::get_css_value( $attr['topHeightTablet'], 'px' ),
+				),
+			);
 
 			$container_mobile_css = array_merge(
 				array(
@@ -23703,6 +23742,15 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( $should_merge_inner_container_css ) {
 				$container_mobile_css = array_merge( $container_mobile_css, $inner_container_mobile_css );
 			}
+
+			$mobile_selectors = array(
+				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
+					'height' => self::get_css_value( $attr['bottomHeightMobile'], 'px' ),
+				),
+				$base_selector . ' .responsive-block-editor-addons-container__shape-top svg'    => array(
+					'height' => self::get_css_value( $attr['topHeightMobile'], 'px' ),
+				),
+			);
 
 			// Add Row and Column Gap.
 			$container_css['row-gap']          = self::get_css_value( $attr['rowGapDesktop'], $attr['rowGapTypeDesktop'] );
@@ -23769,7 +23817,21 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'video' === $attr['backgroundType'] ) {
-				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ]   = array_merge( array(), $border );
+
+				$overlay_video_css = array();
+				if ( 'color' === $attr['overlayType'] ) {
+					$overlay_video_css = array(
+						'background-color' => $attr['overlayColor'],
+					);
+				}
+
+				if ( 'gradient' === $attr['overlayType'] ) {
+					$overlay_video_css = array(
+						'background-image' => $attr['overlayGradient'],
+					);
+				}
+
+				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ]   = array_merge( $overlay_video_css, $border );
 				$tablet_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_tablet;
 				$mobile_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_mobile;
 
@@ -23917,6 +23979,127 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$mobile_selectors[ $base_selector ]['margin-right'] = ( '' !== $attr['containerRightMarginMobile'] ? self::get_css_value( $right_margin_mobile, 'px' ) . ' !important' : '' );
 			}
 
+			// Overlay CSS.
+			if ( ! empty( $attr['overlayType'] ) && 'none' !== $attr['overlayType'] ) {
+				$desktop_border_width = array(
+					'top'    => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
+					'right'  => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
+					'bottom' => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
+					'left'   => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : 0,
+				);
+				$tablet_border_width  = array(
+					'top'    => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['top'],
+					'right'  => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['right'],
+					'bottom' => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['bottom'],
+					'left'   => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $desktop_border_width['left'],
+				);
+				$mobile_border_width  = array(
+					'top'    => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['top'],
+					'right'  => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['right'],
+					'bottom' => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['bottom'],
+					'left'   => is_numeric( $attr['containerBorderWidth'] ) ? $attr['containerBorderWidth'] : $tablet_border_width['left'],
+				);
+
+				$overlay_css_desktop = array();
+				$overlay_css_tablet = array();
+				$overlay_css_mobile = array();
+
+				if ( 'color' === $attr['overlayType'] ) {
+					$overlay_css_desktop = array(
+						'background-color' => $attr['overlayColor'],
+						'opacity'          => $attr['opacity']/100
+					);
+				}
+
+				if ( 'gradient' === $attr['overlayType'] ) {
+					$overlay_css_desktop = array(
+						'background-image' => $attr['overlayGradient'],
+						'opacity'          => $attr['opacity']/100
+					);
+				}
+
+				if ( 'image' === $attr['overlayType'] ) {
+
+					$overlay_css_desktop = array(
+						'background-image'      => 'url(' . $attr['overlayImage'] . ')',
+						'opacity'               => $attr['opacity'] / 100,
+						'background-repeat'     => $attr['overlayRepeat'],
+						'background-position'   => self::get_background_position( $attr['overlayImagePosition'] ),
+						'background-attachment' => $attr['overlayAttachment'],
+						'background-size'       => $attr['overlayImageSize'],
+						'mix-blend-mode'        => $attr['blendMode'],
+						'background-clip'       => 'padding-box'
+					);
+
+					$overlay_css_tablet = array(
+						'background-repeat'     => $attr['overlayRepeatTablet'] ?: $attr['overlayRepeat'],
+						'background-position'   => self::get_background_position( $attr['overlayImagePositionTablet'] ),
+						'background-attachment' => $attr['overlayAttachmentTablet'] ?: $attr['overlayAttachment'],
+						'background-size'       => $attr['overlayImageSizeTablet'],
+						'mix-blend-mode'        => $attr['blendModeTablet'],
+					);
+
+					$overlay_css_mobile = array(
+						'background-repeat'     => $attr['overlayRepeatMobile'] ?: $attr['overlayRepeatTablet'] ?: $attr['overlayRepeat'],
+						'background-position'   => self::get_background_position( $attr['overlayImagePositionMobile'] ),
+						'background-attachment' => $attr['overlayAttachmentMobile'] ?: $attr['overlayAttachmentTablet'] ?: $attr['overlayAttachment'],
+						'background-size'       => $attr['overlayImageSizeMobile'],
+						'mix-blend-mode'        => $attr['blendModeMobile'],
+					);
+				}
+
+				if ( 'video' !== $attr['backgroundType'] ) {
+					$selectors = array_merge(
+						$selectors,
+						array(
+							$base_selector . '::before'       => array_merge(
+								array(
+									'content'        => '""',
+									'position'       => 'absolute',
+									'pointer-events' => 'none',
+									'top'            => '-' . self::get_css_value( $desktop_border_width['top'], 'px' ),
+									'left'           => '-' . self::get_css_value( $desktop_border_width['left'], 'px' ),
+									'width'          => 'calc(100% + ' . self::get_css_value( $desktop_border_width['left'], 'px' ) . ' + ' . self::get_css_value( $desktop_border_width['right'], 'px' ) . ')',
+									'height'         => 'calc(100% + ' . self::get_css_value( $desktop_border_width['top'], 'px' ) . ' + ' . self::get_css_value( $desktop_border_width['bottom'], 'px' ) . ')',
+								),
+								$overlay_css_desktop
+							),
+						)
+					);
+
+					$tablet_selectors = array_merge(
+						$tablet_selectors,
+						array(
+							$base_selector . '::before' => array_merge(
+								array(
+									'top'    => '-' . self::get_css_value( $tablet_border_width['top'], 'px' ),
+									'left'   => '-' . self::get_css_value( $tablet_border_width['left'], 'px' ),
+									'width'  => 'calc(100% + ' . self::get_css_value( $tablet_border_width['left'], 'px' ) . ' + ' . self::get_css_value( $tablet_border_width['right'], 'px' ) . ')',
+									'height' => 'calc(100% + ' . self::get_css_value( $tablet_border_width['top'], 'px' ) . ' + ' . self::get_css_value( $tablet_border_width['bottom'], 'px' ) . ')',
+								),
+								$overlay_css_tablet
+							),
+						)
+					);
+
+					$mobile_selectors = array_merge(
+						$mobile_selectors,
+						array(
+							$base_selector . '::before' => array_merge(
+								array(
+									'top'    => '-' . self::get_css_value( $mobile_border_width['top'], 'px' ),
+									'left'   => '-' . self::get_css_value( $mobile_border_width['left'], 'px' ),
+									'width'  => 'calc(100% + ' . self::get_css_value( $mobile_border_width['left'], 'px' ) . ' + ' . self::get_css_value( $mobile_border_width['right'], 'px' ) . ')',
+									'height' => 'calc(100% + ' . self::get_css_value( $mobile_border_width['top'], 'px' ) . ' + ' . self::get_css_value( $mobile_border_width['bottom'], 'px' ) . ')',
+								),
+								$overlay_css_mobile
+							),
+						)
+					);
+				}
+
+			}
+
 			$auto_width = array( 'width' => 'auto !important' );
 			$set_width  = array( 'width' => '100%' );
 
@@ -24040,6 +24223,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundPositionMobile'        => '',
 				'backgroundPositionTablet'        => '',
 				'backgroundRepeat'                => 'no-repeat',
+				'backgroundRepeatTablet'          => '',
+				'backgroundRepeatMobile'          => '',
+				'blendMode'                       => 'normal',
+				'blendModeTablet'                 => '',
+				'blendModeMobile'                 => '',
+				'backgroundAttachment'            => 'scroll',
+				'backgroundAttachmentTablet'      => '',
+				'backgroundAttachmentMobile'      => '',
+				'overlayType'                     => 'none',
+				'overlayColor'                    => '',
+				'overlayGradient'                 => '',
+				'overlayImage'                    => '',
+				'overlayImagePosition'            => '50% 50%',
+				'overlayImagePositionTablet'      => '',
+				'overlayImagePositionMobile'      => '',
+				'overlayAttachment'               => 'scroll',
+				'overlayAttachmentTablet'         => '',
+				'overlayAttachmentMobile'         => '',
+				'overlayRepeat'                   => 'no-repeat',
+				'overlayRepeatTablet'             => '',
+				'overlayRepeatMobile'             => '',
+				'overlayImageSize'                => 'cover',
+				'overlayImageSizeTablet'          => '',
+				'overlayImageSizeMobile'          => '',
 				'backgroundSize'                  => 'cover',
 				'backgroundSizeTablet'            => '',
 				'backgroundSizeMobile'            => '',
@@ -24104,6 +24311,24 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerBottomMarginMobile'     => '',
 				'containerLeftMarginMobile'       => '',
 				'containerRightMarginMobile'      => '',
+				'topType'                         => 'none',
+				'topColor'                        => '#333',
+				'topHeight'                       => '',
+				'topHeightTablet'                 => '',
+				'topHeightMobile'                 => '',
+				'topWidth'                        => 100,
+				'topFlip'                         => false,
+				'topContentAboveShape'            => false,
+				'topInvert'                       => false,
+				'bottomType'                      => 'none',
+				'bottomColor'                     => '#333',
+				'bottomHeight'                    => '',
+				'bottomHeightTablet'              => '',
+				'bottomHeightMobile'              => '',
+				'bottomWidth'                     => 100,
+				'bottomFlip'                      => false,
+				'bottomContentAboveShape'         => false,
+				'bottomInvert'                    => false,
 			);
 		}
 

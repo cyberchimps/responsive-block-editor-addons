@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import { memo } from '@wordpress/element';
 import { select, useSelect } from '@wordpress/data';
+import shapes from '../shapes'
 
 const Render = ( props ) => {
 
@@ -20,11 +21,51 @@ const Render = ( props ) => {
 		isBlockRootParent,
 		contentWidth,
 		innerContentWidth,
+		topType,
+		topFlip,
+		topInvert,
+		topContentAboveShape,
+		bottomType,
+		bottomFlip,
+		bottomInvert,
+		bottomContentAboveShape,
 	} = attributes;
 
 	const direction = attributes[ 'direction' + deviceType ];
 
 	const moverDirection = 'row' === direction ? 'horizontal' : 'vertical';
+
+	const topDividerHtml = 'none' !== topType && (
+		<div
+			className={ classnames(
+				'responsive-block-editor-addons-container__shape',
+				'responsive-block-editor-addons-container__shape-top',
+				{ 'responsive-block-editor-addons-container__shape-flip': topFlip === true },
+				{
+					'responsive-block-editor-addons-container__shape-above-content': topContentAboveShape === true,
+				},
+				{ 'responsive-block-editor-addons-container__invert': topInvert === true }
+			) }
+		>
+			{ shapes[ topType ] }
+		</div>
+	);
+
+	const bottomDividerHtml = 'none' !== bottomType && (
+		<div
+			className={ classnames(
+				'responsive-block-editor-addons-container__shape',
+				'responsive-block-editor-addons-container__shape-bottom',
+				{ 'responsive-block-editor-addons-container__shape-flip': bottomFlip === true },
+				{
+					'responsive-block-editor-addons-container__shape-above-content': bottomContentAboveShape === true,
+				},
+				{ 'responsive-block-editor-addons-container__invert': bottomInvert === true }
+			) }
+		>
+			{ shapes[ bottomType ] }
+		</div>
+	);
 
 	const { getBlockOrder } = select( 'core/block-editor' );
 
@@ -65,7 +106,9 @@ const Render = ( props ) => {
 						) }
 					</div>
 				) }
-
+				{/* Both the dividers are positioned absolutely. Their place in the DOM is just to determine their default Z-index. */}
+				{ topDividerHtml }
+				{ bottomDividerHtml }
 				{/* Render the content above the Video Background if any and above the Shape Dividers. */}
 				{ isBlockRootParent && 'alignfull' === contentWidth && 'alignwide' === innerContentWidth ? (
 					<div className="responsive-block-editor-addons-container-inner-blocks-wrap">

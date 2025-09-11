@@ -238,9 +238,119 @@ const attributes = {
   backgroundPositionTablet: {
     type: 'object',
   },
+  repeatTab: {
+    type: "string",
+    default: "desktop",
+  },
   backgroundRepeat: {
     type: 'string',
     default: "no-repeat",
+  },
+  backgroundRepeatTablet: {
+    type: 'string',
+  },
+  backgroundRepeatMobile: {
+    type: 'string',
+  },
+  blendModeTab: {
+    type: "string",
+    default: "desktop",
+  },
+  blendMode: {
+    type: 'string',
+    default: "normal",
+  },
+  blendModeTablet: {
+    type: 'string',
+  },
+  blendModeMobile: {
+    type: 'string',
+  },
+  backgroundAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  backgroundAttachmentTablet: {
+    type: "string",
+  },
+  backgroundAttachmentMobile: {
+    type: "string",
+  },
+  attachmentTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayType: {
+    type: "string",
+    default: 'none',
+  },
+  overlayColor: {
+    type: "string",
+  },
+  overlayImage: {
+    type: "string",
+  },
+  overlayImagePositionTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayImagePosition: {
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
+  },
+  overlayImagePositionTablet: {
+    type: "object",
+  },
+  overlayImagePositionMobile: {
+    type: "object",
+  },
+  overlayAttachmentTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayAttachment: {
+    type: "string",
+    default: "scroll",
+  },
+  overlayAttachmentTablet: {
+    type: "string",
+  },
+  overlayAttachmentMobile: {
+    type: "string",
+  },
+  overlayRepeatTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayRepeat: {
+    type: "string",
+    default: "no-repeat",
+  },
+  overlayRepeatTablet: {
+    type: "string",
+  },
+  overlayRepeatMobile: {
+    type: "string",
+  },
+  overlayImageSizeTab: {
+    type: "string",
+    default: "desktop",
+  },
+  overlayImageSize: {
+    type: 'string',
+    default: "cover",
+  },
+  overlayImageSizeTablet: {
+    type: 'string',
+  },
+  overlayImageSizeMobile: {
+    type: 'string',
+  },
+  overlayColor: {
+    type: 'string',
+  },
+  overlayGradient: {
+    type: 'string',
   },
   backgroundSize: {
     type: 'string',
@@ -466,6 +576,72 @@ const attributes = {
   },
   containerRightMarginMobile: {
     type: "number",
+  },
+  topType: {
+    type: "string",
+    default: "none",
+  },
+  topColor: {
+    type: "string",
+    default: '#333',
+  },
+  topWidth: {
+    type: "number",
+    default: 100,
+  },
+  topHeight: {
+    type: "number",
+  },
+  topHeightTablet: {
+    type: "number",
+  },
+  topHeightMobile: {
+    type: "number",
+  },
+  topFlip: {
+    type: "boolean",
+    default: false,
+  },
+  topInvert: {
+    type: "boolean",
+    default: false,
+  },
+  topContentAboveShape: {
+    type: "boolean",
+    default: false,
+  },
+  bottomType: {
+    type: "string",
+    default: "none",
+  },
+  bottomColor: {
+    type: "string",
+    default: '#333',
+  },
+  bottomWidth: {
+    type: "number",
+    default: 100,
+  },
+  bottomHeight: {
+    type: "number",
+  },
+  bottomHeightTablet: {
+    type: "number",
+  },
+  bottomHeightMobile: {
+    type: "number",
+  },
+  bottomFlip: {
+    type: "boolean",
+    default: false,
+  },
+  bottomInvert: {
+    type: "boolean",
+    default: false,
+  },
+  bottomContentAboveShape: {
+    type: "boolean",
+    default: false,
   },
 };
 
