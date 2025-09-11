@@ -980,24 +980,7 @@ export default class Inspector extends Component {
                     );
                   }}
                 </TabPanel>
-
-                {/* Icon and Text Spacing */}
-                <PanelBody
-                  title={__("Icon and Text Spacing", "responsive-block-editor-addons")}
-                  initialOpen={false}
-                >
-                  <RangeControl
-                    label={__("Spacing (px)", "responsive-block-editor-addons")}
-                    value={twIconTextSpacing}
-                    onChange={(value) => setAttributes({ twIconTextSpacing: value })}
-                    min={0}
-                    max={50}
-                    step={1}
-                    allowReset={true}
-                    resetFallbackValue={8}
-                  />
-                </PanelBody>
-
+                
                 {/* Button Padding (responsive) */}
                 <PanelBody
                   title={__("Button Padding (px)", "responsive-block-editor-addons")}

@@ -597,10 +597,6 @@ const attributes = {
     type: "string",
     default: "",
   },
-  twIconTextSpacing: {
-    type: "number",
-    default: 8,
-  },
   twTypographyColor: {
     type: "string",
     default: "",
