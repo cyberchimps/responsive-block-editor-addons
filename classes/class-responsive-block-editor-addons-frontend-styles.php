@@ -1615,7 +1615,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['textBottomPadding'], 'px' ),
 				),
 				' .rbea-bq__tweet' => array(
-					'font-family'    => $attr['twFontFamily'] ? '"' . $attr['twFontFamily'] . '", sans-serif' : '',
+					'font-family'    => $attr['twFontFamily'],
 					'font-size'      => self::get_css_value( $attr['twFontSize'], 'px' ),
 					'font-weight'    => $attr['twFontWeight'],
 					'font-style'     => $attr['twFontStyle'],
@@ -14496,6 +14496,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'twTextDecoration'         => '',
 				'twIconTextSpacing'        => 8,
 				'twTypographyColor'        => '',
+				'twFontStyle'              => '',
 			);
 		}
 

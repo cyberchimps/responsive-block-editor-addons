@@ -568,19 +568,18 @@ const attributes = {
   // ==== Twitter Typography ====
   twFontFamily: {
     type: "string",
-    default: "",
   },
   twFontSize: {
     type: "number",
-    default: "20",
+    default: 20,
   },
   twFontSizeTablet: {
     type: "number",
-    default: "20",
+    default: 20,
   },
   twFontSizeMobile: {
     type: "number",
-    default: "20",
+    default: 20,
   },
   twFontWeight: {
     type: "string",
@@ -588,7 +587,7 @@ const attributes = {
   },
   twLineHeight: {
     type: "number",
-    default: "1",
+    default: 1,
   },
   twTextTransform: {
     type: "string",

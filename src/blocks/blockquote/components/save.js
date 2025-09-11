@@ -94,7 +94,7 @@ export default class Save extends Component {
                   "rbea-bq__tweet",
                   `rbea-bq__tweet--${twStyle || "classic"}`
                 )}
-                href={twUrlMode === "custom" && twCustomUrl ? twCustomUrl : "#"}
+                href="#"
                 data-url-mode={twUrlMode || "current"}
                 data-custom-url={twCustomUrl || ""}
                 data-view={twView || "both"}
