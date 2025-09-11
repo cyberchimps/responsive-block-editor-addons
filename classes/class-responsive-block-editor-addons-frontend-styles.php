@@ -1633,6 +1633,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'--hover-color'  => $attr['twHColor'],
 					'--hover-bg'     => $attr['twHBg'],
 				),
+				' .rbea-bq__tweet svg' => array(
+					'width'          => self::get_css_value( $attr['twFontSize'], 'px' ),
+					'height'         => self::get_css_value( $attr['twFontSize'], 'px' ),
+				),
 				' .rbea-bq__tweet:hover' => array(
 					'color'          => $attr['twHColor'],
 					'background-color' => $attr['twHBg'],
@@ -1679,6 +1683,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-bottom' => self::get_css_value( $attr['twBottomPaddingMobile'], 'px' ),
 					'padding-left'   => self::get_css_value( $attr['twLeftPaddingMobile'], 'px' ),
 				),
+				' .rbea-bq__tweet svg' => array(
+					'width'          => self::get_css_value( $attr['twFontSizeMobile'], 'px' ),
+					'height'         => self::get_css_value( $attr['twFontSizeMobile'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -1720,6 +1728,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'  => self::get_css_value( $attr['twRightPaddingTablet'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['twBottomPaddingTablet'], 'px' ),
 					'padding-left'   => self::get_css_value( $attr['twLeftPaddingTablet'], 'px' ),
+				),
+				' .rbea-bq__tweet svg' => array(
+					'width'          => self::get_css_value( $attr['twFontSizeTablet'], 'px' ),
+					'height'         => self::get_css_value( $attr['twFontSizeTablet'], 'px' ),
 				),
 			);
 
