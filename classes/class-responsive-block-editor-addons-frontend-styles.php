@@ -23461,6 +23461,653 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
+		 * Get Container CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array Styles.
+		 */
+		public static function get_responsive_block_container_css( $attr, $id ) {
+			$defaults = self::get_responsive_block_container_block_default_attributes();
+			$attr     = array_merge( $defaults, (array) $attr );
+
+			$base_selector = '.responsive-block-editor-addons-block-' . $id;
+
+			$inner_content_custom_width_tablet_fallback = is_numeric( $attr['innerContentCustomWidthTablet'] ) ? $attr['innerContentCustomWidthTablet'] : $attr['innerContentCustomWidthDesktop'];
+			$inner_content_custom_width_mobile_fallback = is_numeric( $attr['innerContentCustomWidthMobile'] ) ? $attr['innerContentCustomWidthMobile'] : $inner_content_custom_width_tablet_fallback;
+
+			$box_shadow_position_css = $attr['boxShadowPosition'];
+
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$box_shadow_position_css = '';
+			}
+
+			$box_shadow_position_css_hover = $attr['hoverboxShadowPosition'];
+
+			if ( 'outset' === $attr['hoverboxShadowPosition'] ) {
+				$box_shadow_position_css_hover = '';
+			}
+
+			// Border CSS to be applied here.
+
+			$border = array(
+				'border-style'               => $attr['containerBorderStyle'],
+				'border-width'               => self::get_css_value( $attr['containerBorderWidth'], 'px' ),
+				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadius'], 'px' ),
+				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadius'], 'px' ),
+				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadius'], 'px' ),
+				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadius'], 'px' ),
+				'border-color'               => $attr['containerBorderColor'],
+			);
+
+			// If there's no border-color, set it to inherit.
+			if ( empty( $border['border-color'] ) ) {
+				$border['border-color'] = 'inherit';
+			}
+
+			$border_tablet = array(
+				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusTablet'], 'px' ),
+				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusTablet'], 'px' ),
+				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusTablet'], 'px' ),
+				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusTablet'], 'px' ),
+			);
+
+			$border_mobile = array(
+				'border-top-left-radius'     => self::get_css_value( $attr['containerTopRadiusMobile'], 'px' ),
+				'border-top-right-radius'    => self::get_css_value( $attr['containerRightRadiusMobile'], 'px' ),
+				'border-bottom-right-radius' => self::get_css_value( $attr['containerBottomRadiusMobile'], 'px' ),
+				'border-bottom-left-radius'  => self::get_css_value( $attr['containerLeftRadiusMobile'], 'px' ),
+			);
+
+			// Container Background CSS to be applied here.
+
+			$container_bg_css_desktop = array();
+			$container_bg_css_tablet  = array();
+			$container_bg_css_mobile  = array();
+
+			if ( 'color' === $attr['backgroundType'] ) {
+				$container_bg_css_desktop = array(
+					'background-color' => $attr['backgroundColor'],
+				);
+			}
+
+			if ( 'gradient' === $attr['backgroundType'] ) {
+				$container_bg_css_desktop = array(
+					'background-image' => $attr['gradient'],
+				);
+			}
+
+			if ( 'image' === $attr['backgroundType'] ) {
+				$container_bg_css_desktop = array(
+					'background-image'    => 'url(' . $attr['backgroundImage'] . ')',
+					'background-repeat'   => $attr['backgroundRepeat'],
+					'background-position' => self::get_background_position( $attr['backgroundPosition'] ),
+					'background-size'     => $attr['backgroundSize'],
+				);
+				$container_bg_css_tablet = array(
+					'background-position' => self::get_background_position( $attr['backgroundPositionTablet'] ),
+					'background-size'     => $attr['backgroundSizeTablet'],
+				);
+				$container_bg_css_mobile = array(
+					'background-position' => self::get_background_position( $attr['backgroundPositionMobile'] ),
+					'background-size'     => $attr['backgroundSizeMobile'],
+				);
+			}
+
+			// Tablet Padding.
+			$left_padding_tablet   = '' !== $attr['containerLeftPaddingTablet'] ? $attr['containerLeftPaddingTablet'] : $attr['containerLeftPadding'];
+			$right_padding_tablet  = '' !== $attr['containerRightPaddingTablet'] ? $attr['containerRightPaddingTablet'] : $attr['containerRightPadding'];
+			$top_padding_tablet    = '' !== $attr['containerTopPaddingTablet'] ? $attr['containerTopPaddingTablet'] : $attr['containerTopPadding'];
+			$bottom_padding_tablet = '' !== $attr['containerBottomPaddingTablet'] ? $attr['containerBottomPaddingTablet'] : $attr['containerBottomPadding'];
+
+			// Tablet Margin.
+			$left_margin_tablet   = '' !== $attr['containerLeftMarginTablet'] ? $attr['containerLeftMarginTablet'] : $attr['containerLeftMargin'];
+			$right_margin_tablet  = '' !== $attr['containerRightMarginTablet'] ? $attr['containerRightMarginTablet'] : $attr['containerRightMargin'];
+			$top_margin_tablet    = '' !== $attr['containerTopMarginTablet'] ? $attr['containerTopMarginTablet'] : $attr['containerTopMargin'];
+			$bottom_margin_tablet = '' !== $attr['containerBottomMarginTablet'] ? $attr['containerBottomMarginTablet'] : $attr['containerBottomMargin'];
+
+			// Column Gap Tablet.
+			$column_gap_tablet = ! empty( $attr['columnGapTablet'] ) ? $attr['columnGapTablet'] : $attr['columnGapDesktop'];
+
+			// Mobile Padding.
+			$left_padding_mobile   = '' !== $attr['containerLeftPaddingMobile'] ? $attr['containerLeftPaddingMobile'] : $left_padding_tablet;
+			$right_padding_mobile  = '' !== $attr['containerRightPaddingMobile'] ? $attr['containerRightPaddingMobile'] : $right_padding_tablet;
+			$top_padding_mobile    = '' !== $attr['containerTopPaddingMobile'] ? $attr['containerTopPaddingMobile'] : $top_padding_tablet;
+			$bottom_padding_mobile = '' !== $attr['containerBottomPaddingMobile'] ? $attr['containerBottomPaddingMobile'] : $bottom_padding_tablet;
+
+			// Mobile Margin.
+			$left_margin_mobile   = '' !== $attr['containerLeftMarginMobile'] ? $attr['containerLeftMarginMobile'] : $left_margin_tablet;
+			$right_margin_mobile  = '' !== $attr['containerRightMarginMobile'] ? $attr['containerRightMarginMobile'] : $right_margin_tablet;
+			$top_margin_mobile    = '' !== $attr['containerTopMarginMobile'] ? $attr['containerTopMarginMobile'] : $top_margin_tablet;
+			$bottom_margin_mobile = '' !== $attr['containerBottomMarginMobile'] ? $attr['containerBottomMarginMobile'] : $bottom_margin_tablet;
+
+			// Column Gap Mobile.
+			$column_gap_mobile = ! empty( $attr['columnGapMobile'] ) ? $attr['columnGapMobile'] : $column_gap_tablet;
+
+			$order_desktop = $order_tablet = $order_mobile = 'initial';
+
+			$has_inner_blocks_wrap = 'alignwide' === $attr['innerContentWidth'] && 'alignfull' === $attr['contentWidth'];
+
+			$should_merge_inner_container_css = ( $attr['isBlockRootParent'] && ! $has_inner_blocks_wrap ) || ! $attr['isBlockRootParent'] || 'alignwide' !== $attr['innerContentWidth'];
+
+			$container_css = array_merge(
+				array(
+					'min-height' => self::get_css_value( $attr['minHeight'], 'px' ),
+					'box-shadow' =>
+						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['boxShadowBlur'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['boxShadowSpread'], 'px' ) .
+						' ' .
+						$attr['boxShadowColor'] .
+						' ' .
+						$box_shadow_position_css,
+					'padding-top'    => self::get_css_value( $attr['containerTopPadding'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPadding'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPadding'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPadding'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMargin'], 'px' ) . ' !important',
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMargin'], 'px' ) . ' !important',
+					'margin-left'    => self::get_css_value( $attr['containerLeftMargin'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMargin'], 'px' ),
+					'overflow'       => $attr['overflow'],
+					'order'          => $order_desktop,
+				),
+				$border,
+				$container_bg_css_desktop,
+			);
+
+			$inner_container_css = array(
+				'flex-direction'  => $attr['directionDesktop'],
+				'align-items'     => $attr['alignItemsDesktop'],
+				'justify-content' => $attr['justifyContentDesktop'],
+				'flex-wrap'       => $attr['wrapDesktop'],
+				'align-content'   => $attr['alignContentDesktop'],
+			);
+
+			if ( $should_merge_inner_container_css ) {
+				$container_css = array_merge( $container_css, $inner_container_css );
+			}
+
+			$selectors = array(
+				$base_selector . '.wp-block-responsive-block-editor-addons-container'           => array(
+					'color' => $attr['textColor'],
+				),
+				$base_selector . ' a'                                                           => array(
+					'color' => $attr['linkColor'],
+				),
+				$base_selector . ' a:hover'                                                     => array(
+					'color' => $attr['linkColorHover'],
+				),
+			);
+
+			$container_tablet_css = array_merge(
+				array(
+					'min-height'     => self::get_css_value( $attr['minHeightTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $top_padding_tablet, 'px' ),
+					'padding-bottom' => self::get_css_value( $bottom_padding_tablet, 'px' ),
+					'padding-left'   => self::get_css_value( $left_padding_tablet, 'px' ),
+					'padding-right'  => self::get_css_value( $right_padding_tablet, 'px' ),
+					'margin-top'     => self::get_css_value( $top_margin_tablet, 'px' ) . ' !important',
+					'margin-bottom'  => self::get_css_value( $bottom_margin_tablet, 'px' ) . ' !important',
+					'margin-left'    => self::get_css_value( $left_margin_tablet, 'px' ),
+					'margin-right'   => self::get_css_value( $right_margin_tablet, 'px' ),
+					'order'          => $order_tablet,
+				),
+				$border_tablet,
+				$container_bg_css_tablet,
+			);
+
+			$inner_container_tablet_css = array(
+				'flex-direction'  => $attr['directionTablet'],
+				'align-items'     => $attr['alignItemsTablet'],
+				'justify-content' => $attr['justifyContentTablet'],
+				'flex-wrap'       => $attr['wrapTablet'],
+				'align-content'   => $attr['alignContentTablet'],
+			);
+
+			if ( $should_merge_inner_container_css ) {
+				$container_tablet_css = array_merge( $container_tablet_css, $inner_container_tablet_css );
+			}
+
+			$container_mobile_css = array_merge(
+				array(
+					'min-height'     => self::get_css_value( $attr['minHeightMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $top_padding_mobile, 'px' ),
+					'padding-bottom' => self::get_css_value( $bottom_padding_mobile, 'px' ),
+					'padding-left'   => self::get_css_value( $left_padding_mobile, 'px' ),
+					'padding-right'  => self::get_css_value( $right_padding_mobile, 'px' ),
+					'margin-top'     => self::get_css_value( $top_margin_mobile, 'px' ) . ' !important',
+					'margin-bottom'  => self::get_css_value( $bottom_margin_mobile, 'px' ) . ' !important',
+					'margin-left'    => self::get_css_value( $left_margin_mobile, 'px' ),
+					'margin-right'   => self::get_css_value( $right_margin_mobile, 'px' ),
+					'row-gap'        => self::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
+					'column-gap'     => self::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
+					'order'          => $order_mobile,
+				),
+				$border_mobile,
+				$container_bg_css_mobile,
+			);
+
+			$inner_container_mobile_css = array(
+				'flex-direction'  => $attr['directionMobile'],
+				'align-items'     => $attr['alignItemsMobile'],
+				'justify-content' => $attr['justifyContentMobile'],
+				'flex-wrap'       => $attr['wrapMobile'],
+				'align-content'   => $attr['alignContentMobile'],
+			);
+
+			if ( $should_merge_inner_container_css ) {
+				$container_mobile_css = array_merge( $container_mobile_css, $inner_container_mobile_css );
+			}
+
+			// Add Row and Column Gap.
+			$container_css['row-gap']          = self::get_css_value( $attr['rowGapDesktop'], $attr['rowGapTypeDesktop'] );
+			$container_css['column-gap']       = self::get_css_value( $attr['columnGapDesktop'], $attr['columnGapTypeDesktop'] );
+			$inner_container_css['row-gap']    = self::get_css_value( $attr['rowGapDesktop'], $attr['rowGapTypeDesktop'] );
+			$inner_container_css['column-gap'] = self::get_css_value( $attr['columnGapDesktop'], $attr['columnGapTypeDesktop'] );
+
+			// Tablet devices.
+			$container_tablet_css['row-gap']          = self::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] );
+			$container_tablet_css['column-gap']       = self::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] );
+			$inner_container_tablet_css['row-gap']    = self::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] );
+			$inner_container_tablet_css['column-gap'] = self::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] );
+
+			// Mobile devices.
+			$container_mobile_css['row-gap']          = self::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] );
+			$container_mobile_css['column-gap']       = self::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] );
+			$inner_container_mobile_css['row-gap']    = self::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] );
+			$inner_container_mobile_css['column-gap'] = self::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] );
+
+
+			// Add max-width and width.
+			$selectors[ '.responsive-block-editor-addons-is-root-container .responsive-block-editor-addons-block-' . $id ] = array(
+				'max-width' => self::get_css_value( $attr['customWidthDesktop'], $attr['customWidthTypeDesktop'] ),
+				'width'     => '100%',
+			);
+
+			$tablet_selectors[ '.responsive-block-editor-addons-is-root-container ' . $base_selector ] = array(
+				'max-width' => self::get_css_value( $attr['customWidthTablet'], $attr['customWidthTypeTablet'] ),
+				'width'     => '100%',
+			);
+
+			$mobile_selectors[ '.responsive-block-editor-addons-is-root-container ' . $base_selector ] = array(
+				'max-width' => self::get_css_value( $attr['customWidthMobile'], $attr['customWidthTypeMobile'] ),
+				'width'     => '100%',
+			);
+
+			if ( $has_inner_blocks_wrap ) {
+				$selectors[ '.responsive-block-editor-addons-is-root-container.alignfull' . $base_selector . ' > .responsive-block-editor-addons-container-inner-blocks-wrap' ] = array_merge(
+					array(
+					'--inner-content-custom-width' => 'min( 100%, ' . $attr['innerContentCustomWidthDesktop'] . $attr['innerContentBoxWidthTypeDesktop'] . ')',
+					'max-width'                    => 'var(--inner-content-custom-width)',
+					'width'                        => '100%',
+					),
+					$inner_container_css
+				);
+
+				$tablet_selectors[ '.responsive-block-editor-addons-is-root-container.alignfull' . $base_selector . ' > .responsive-block-editor-addons-container-inner-blocks-wrap' ] = array_merge(
+					array(
+					'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_tablet_fallback . $attr['innerContentBoxWidthTypeTablet'] . ')',
+					'max-width'                    => 'var(--inner-content-custom-width)',
+					'width'                        => '100%',
+					),
+					$inner_container_tablet_css
+				);
+
+				$mobile_selectors[ '.responsive-block-editor-addons-is-root-container.alignfull' . $base_selector . ' > .responsive-block-editor-addons-container-inner-blocks-wrap' ] = array_merge(
+					array(
+					'--inner-content-custom-width' => 'min( 100%, ' . $inner_content_custom_width_mobile_fallback . $attr['innerContentBoxWidthTypeMobile'] . ')',
+					'max-width'                    => 'var(--inner-content-custom-width)',
+					'width'                        => '100%',
+					),
+					$inner_container_mobile_css
+				);
+			}
+
+			if ( 'video' === $attr['backgroundType'] ) {
+				$selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ]   = array_merge( array(), $border );
+				$tablet_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_tablet;
+				$mobile_selectors[ $base_selector . ' .responsive-block-editor-addons-container__video-wrap' ] = $border_mobile;
+
+				$selectorClass = '.wp-block-responsive-block-editor-addons-container' . $base_selector;
+
+				$selectors[ $base_selector . ' > div:not(.responsive-block-editor-addons-container__video-wrap):not(.responsive-block-editor-addons-container__shape)' ] = array(
+					'position' => 'relative',
+				);
+				$selectors[ $selectorClass ]   = $inner_container_css;
+				$tablet_selectors[ $selectorClass ] = $inner_container_tablet_css;
+				$mobile_selectors[ $selectorClass ] = $inner_container_mobile_css;
+
+				$selectors[ $base_selector ]   = array(
+					'min-height'     => self::get_css_value( $attr['minHeight'], 'px' ),
+					'box-shadow'     =>
+						self::get_css_value( $attr['boxShadowHOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['boxShadowVOffset'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['boxShadowBlur'], 'px' ) .
+						' ' .
+						self::get_css_value( $attr['boxShadowSpread'], 'px' ) .
+						' ' .
+						$attr['boxShadowColor'] .
+						' ' .
+						$box_shadow_position_css,
+					'padding-top'    => self::get_css_value( $attr['containerTopPadding'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['containerBottomPadding'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['containerLeftPadding'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['containerRightPadding'], 'px' ),
+					'margin-top'     => self::get_css_value( $attr['containerTopMargin'], 'px' ) . ' !important',
+					'margin-bottom'  => self::get_css_value( $attr['containerBottomMargin'], 'px' ) . ' !important',
+					'margin-left'    => self::get_css_value( $attr['containerLeftMargin'], 'px' ),
+					'margin-right'   => self::get_css_value( $attr['containerRightMargin'], 'px' ),
+					'row-gap'        => self::get_css_value( $attr['rowGapDesktop'], $attr['rowGapTypeDesktop'] ),
+					'column-gap'     => self::get_css_value( $attr['columnGapDesktop'], $attr['columnGapTypeDesktop'] ),
+					'overflow'       => $attr['overflow'],
+				);
+				$tablet_selectors[ $base_selector ] = array(
+					'min-height'     => self::get_css_value( $attr['minHeightTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $top_padding_tablet, 'px' ),
+					'padding-bottom' => self::get_css_value( $bottom_padding_tablet, 'px' ),
+					'padding-left'   => self::get_css_value( $left_padding_tablet, 'px' ),
+					'padding-right'  => self::get_css_value( $right_padding_tablet, 'px' ),
+					'margin-top'     => self::get_css_value( $top_margin_tablet, 'px' ) . ' !important',
+					'margin-bottom'  => self::get_css_value( $bottom_margin_tablet, 'px' ) . ' !important',
+					'margin-left'    => self::get_css_value( $left_margin_tablet, 'px' ),
+					'margin-right'   => self::get_css_value( $right_margin_tablet, 'px' ),
+					'row-gap'        => self::get_css_value( $attr['rowGapTablet'], $attr['rowGapTypeTablet'] ),
+					'column-gap'     => self::get_css_value( $attr['columnGapTablet'], $attr['columnGapTypeTablet'] ),
+				);
+				$mobile_selectors[ $base_selector ] = array(
+					'min-height'     => self::get_css_value( $attr['minHeightMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $top_padding_mobile, 'px' ),
+					'padding-bottom' => self::get_css_value( $bottom_padding_mobile, 'px' ),
+					'padding-left'   => self::get_css_value( $left_padding_mobile, 'px' ),
+					'padding-right'  => self::get_css_value( $right_padding_mobile, 'px' ),
+					'margin-top'     => self::get_css_value( $top_margin_mobile, 'px' ) . ' !important',
+					'margin-bottom'  => self::get_css_value( $bottom_margin_mobile, 'px' ) . ' !important',
+					'margin-left'    => self::get_css_value( $left_margin_mobile, 'px' ),
+					'margin-right'   => self::get_css_value( $right_margin_mobile, 'px' ),
+					'row-gap'        => self::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
+					'column-gap'     => self::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
+				);
+				// If hover blur or hover color are set, show the hover shadow.
+				if ( ( ( '' !== $attr['hoverboxShadowBlur'] ) && ( null !== $attr['hoverboxShadowBlur'] ) ) || '' !== $attr['hoverboxShadowColor'] ) {
+
+					$selectors[ $base_selector . ':hover ' ]['box-shadow'] = self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+																			' ' .
+																			self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+																			' ' .
+																			self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+																			' ' .
+																			self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+																			' ' .
+																			$attr['hoverboxShadowColor'] .
+																			' ' .
+																			$box_shadow_position_css_hover;
+
+				}
+			} else {
+				$selectors[ $base_selector ]   = $container_css;
+				$tablet_selectors[ $base_selector ] = $container_tablet_css;
+				$mobile_selectors[ $base_selector ] = $container_mobile_css;
+				// If hover blur or hover color are set, show the hover shadow.
+				if ( ( ( '' !== $attr['hoverboxShadowBlur'] ) && ( null !== $attr['hoverboxShadowBlur'] ) ) || '' !== $attr['hoverboxShadowColor'] ) {
+
+					$selectors[ $base_selector . ':hover' ]['box-shadow'] = self::get_css_value( $attr['hoverboxShadowHOffset'], 'px' ) .
+																			' ' .
+																			self::get_css_value( $attr['hoverboxShadowVOffset'], 'px' ) .
+																			' ' .
+																			self::get_css_value( $attr['hoverboxShadowBlur'], 'px' ) .
+																			' ' .
+																			self::get_css_value( $attr['hoverboxShadowSpread'], 'px' ) .
+																			' ' .
+																			$attr['hoverboxShadowColor'] .
+																			' ' .
+																			$box_shadow_position_css_hover;
+
+				}
+			}
+
+			if ( 'default' === $attr['contentWidth'] ) {
+				$selectors[ $base_selector ]['max-width']    = self::get_css_value( $attr['customWidthDesktop'], $attr['customWidthTypeDesktop'] ) . ' !important';
+				$selectors[ $base_selector ]['margin-left']  = ( '' !== $attr['containerLeftMargin'] ? self::get_css_value( $attr['containerLeftMargin'], 'px' ) . ' !important' : '' );
+				$selectors[ $base_selector ]['margin-right'] = ( '' !== $attr['containerRightMargin'] ? self::get_css_value( $attr['containerRightMargin'], 'px' ) . ' !important' : '' );
+				// FSE container width compatibility.
+				$common_fullwidth_restrictions = ( 'auto' !== $attr['childrenWidthDesktop'] );
+
+				$is_fse_container = ( $common_fullwidth_restrictions && wp_is_block_theme() && ! get_queried_object() );
+
+				// WooCommerce template pages.
+				$is_checkout              = function_exists( 'is_checkout' ) && is_checkout();
+				$is_cart                  = function_exists( 'is_cart' ) && is_cart();
+				$is_order_confirmation    = function_exists( 'is_order_received_page' ) && is_order_received_page();
+				$is_product_catalog       = function_exists( 'is_shop' ) && is_shop();
+				$is_product_search        = function_exists( 'is_product_search' ) && is_product_search();
+				$is_products_by_attribute = function_exists( 'is_product_taxonomy' ) && is_product_taxonomy();
+				$is_products_by_category  = function_exists( 'is_product_category' ) && is_product_category();
+				$is_products_by_tag       = function_exists( 'is_product_tag' ) && is_product_tag();
+				$is_single_product        = function_exists( 'is_product' ) && is_product();
+
+				$requires_fullwidth = $common_fullwidth_restrictions && (
+					$is_fse_container ||
+					$is_checkout ||
+					$is_cart ||
+					$is_order_confirmation ||
+					$is_product_catalog ||
+					$is_product_search ||
+					$is_products_by_attribute ||
+					$is_products_by_category ||
+					$is_products_by_tag ||
+					$is_single_product
+				);
+
+				// Add the FSE compatibility width when required.
+				$selectors[ $base_selector ]['width'] = $requires_fullwidth ? '100%' : '';
+
+				$tablet_selectors[ $base_selector ]['max-width']    = self::get_css_value( $attr['customWidthTablet'], $attr['customWidthTypeTablet'] ) . ' !important';
+				$tablet_selectors[ $base_selector ]['margin-left']  = ( '' !== $attr['containerLeftMarginTablet'] ? self::get_css_value( $left_margin_tablet, 'px' ) . ' !important' : '' );
+				$tablet_selectors[ $base_selector ]['margin-right'] = ( '' !== $attr['containerRightMarginTablet'] ? self::get_css_value( $right_margin_tablet, 'px' ) . ' !important' : '' );
+
+				$mobile_selectors[ $base_selector ]['max-width']    = self::get_css_value( $attr['customWidthMobile'], $attr['customWidthTypeMobile'] ) . ' !important';
+				$mobile_selectors[ $base_selector ]['margin-left']  = ( '' !== $attr['containerLeftMarginMobile'] ? self::get_css_value( $left_margin_mobile, 'px' ) . ' !important' : '' );
+				$mobile_selectors[ $base_selector ]['margin-right'] = ( '' !== $attr['containerRightMarginMobile'] ? self::get_css_value( $right_margin_mobile, 'px' ) . ' !important' : '' );
+			}
+
+			$auto_width = array( 'width' => 'auto !important' );
+			$set_width  = array( 'width' => '100%' );
+
+			$base_width_selector = $base_selector . '.wp-block-responsive-block-editor-addons-container > *:not( .wp-block-responsive-block-editor-addons-column ):not( .wp-block-responsive-block-editor-addons-section ):not( .responsive-block-editor-addons-container__shape ):not( .responsive-block-editor-addons-container__video-wrap ):not( .responsive-block-editor-addons-slider-container ):not( .responsive-block-editor-addons-container-link-overlay ):not(.responsive-block-editor-addons-image-gallery__control-lightbox):not(.responsive-block-editor-addons-container-inner-blocks-wrap)';
+
+			$base_width_selector_2 = $base_selector . '.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-inner-blocks-wrap > *:not( .wp-block-responsive-block-editor-addons-column ):not( .wp-block-responsive-block-editor-addons-section ):not( .responsive-block-editor-addons-container__shape ):not( .responsive-block-editor-addons-container__video-wrap ):not( .responsive-block-editor-addons-slider-container ):not(.responsive-block-editor-addons-image-gallery__control-lightbox)';
+
+			// Add auto width to the inner blocks in desktop.
+			if ( ! empty( $attr['directionDesktop'] ) ) {
+				if ( 'auto' === $attr['childrenWidthDesktop'] ) {
+					$selectors[ $base_width_selector ]   = $auto_width;
+					$selectors[ $base_width_selector_2 ] = $auto_width;
+				}
+			}
+
+			// Add auto width to the inner blocks in tablet.
+			if ( ! empty( $attr['directionTablet'] ) ) {
+				if ( 'auto' === $attr['childrenWidthTablet'] ) {
+					$t_selectors[ $base_width_selector ]   = $auto_width;
+					$t_selectors[ $base_width_selector_2 ] = $auto_width;
+				} else {
+					$t_selectors[ $base_width_selector ]   = $set_width;
+					$t_selectors[ $base_width_selector_2 ] = $set_width;
+				}
+			}
+
+			// Add auto width to the inner blocks in mobile.
+			if ( ! empty( $attr['directionMobile'] ) ) {
+				if ( 'auto' === $attr['childrenWidthMobile'] ) {
+					$mobile_selectors[ $base_width_selector ]   = $auto_width;
+					$mobile_selectors[ $base_width_selector_2 ] = $auto_width;
+				} else {
+					$mobile_selectors[ $base_width_selector ]   = $set_width;
+					$mobile_selectors[ $base_width_selector_2 ] = $set_width;
+				}
+			}
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $tablet_selectors,
+				'mobile'  => $mobile_selectors,
+			);
+
+			$id  = '.wp-block-responsive-block-editor-addons-container';
+			$css = Responsive_Block_Editor_Addons_Frontend_Styles_Helper::responsive_block_editor_addons_generate_all_css( $combined_selectors, $id );
+			return $css;
+		}
+
+		/**
+		 * Get Defaults for Container block.
+		 *
+		 * @return array
+		 */
+		public static function get_responsive_block_container_block_default_attributes() {
+			return array(
+				'block_id'                        => '',
+				'hideWidget'                      => false,
+				'hideWidgetTablet'                => false,
+				'hideWidgetMobile'                => false,
+				'z_index'                         => '1',
+				'z_indexTablet'                   => '1',
+				'z_indexMobile'                   => '1',
+				'contentWidth'                    => 'alignfull',
+				'innerContentWidth'               => 'alignwide',
+				'innerContentCustomWidthDesktop'  => 1340,
+				'innerContentCustomWidthTablet'   => 1024,
+				'innerContentCustomWidthMobile'   => 767,
+				'innerContentBoxWidthTypeDesktop' => 'px',
+				'innerContentBoxWidthTypeTablet'  => 'px',
+				'innerContentBoxWidthTypeMobile'  => 'px',
+				'customWidthDesktop'              => 100,
+				'customWidthTablet'               => '',
+				'customWidthMobile'               => 100,
+				'customWidthTypeDesktop'          => '%',
+				'customWidthTypeTablet'           => '%',
+				'customWidthTypeMobile'           => '%',
+				'rowGapDesktop'                   => 20,
+				'rowGapTablet'                    => '',
+				'rowGapMobile'                    => '',
+				'rowGapTypeDesktop'               => 'px',
+				'rowGapTypeTablet'                => 'px',
+				'rowGapTypeMobile'                => 'px',
+				'columnGapDesktop'                => 20,
+				'columnGapTablet'                 => '',
+				'columnGapMobile'                 => '',
+				'columnGapTypeDesktop'            => 'px',
+				'columnGapTypeTablet'             => 'px',
+				'columnGapTypeMobile'             => 'px',
+				'minHeight'                       => '',
+				'minHeightTablet'                 => '',
+				'minHeightMobile'                 => '',
+				'equalHeight'                     => false,
+				'htmlTag'                         => 'div',
+				'htmlTagLink'                     => '',
+				'linkTarget'                      => false,
+				'overflow'                        => 'visible',
+				'directionDesktop'                => 'column',
+				'directionTablet'                 => '',
+				'directionMobile'                 => '',
+				'alignItemsDesktop'               => 'center',
+				'alignItemsTablet'                => '',
+				'alignItemsMobile'                => '',
+				'justifyContentDesktop'           => 'center',
+				'justifyContentTablet'            => '',
+				'justifyContentMobile'            => '',
+				'childrenWidthDesktop'            => '',
+				'childrenWidthTablet'             => '',
+				'childrenWidthMobile'             => '',
+				'wrapDesktop'                     => 'nowrap',
+				'wrapTablet'                      => '',
+				'wrapMobile'                      => 'wrap',
+				'alignContentDesktop'             => '',
+				'alignContentTablet'              => '',
+				'alignContentMobile'              => '',
+				'backgroundType'                  => 'none',
+				'opacity'                         => 100,
+				'backgroundColor'                 => '',
+				'gradient'                        => 'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+				'backgroundImage'                 => '',
+				'backgroundPosition'              => '50% 50%',
+				'backgroundPositionMobile'        => '',
+				'backgroundPositionTablet'        => '',
+				'backgroundRepeat'                => 'no-repeat',
+				'backgroundSize'                  => 'cover',
+				'backgroundSizeTablet'            => '',
+				'backgroundSizeMobile'            => '',
+				'backgroundVideo'                 => '',
+				'textColor'                       => '',
+				'linkColor'                       => '',
+				'linkColorHover'                  => '',
+				'containerBorderRadius'           => 0,
+				'containerLeftRadiusMobile'       => 0,
+				'boxShadowColor'                  => '#00000070',
+				'boxShadowHOffset'                => 0,
+				'boxShadowVOffset'                => 0,
+				'boxShadowBlur'                   => '',
+				'boxShadowSpread'                 => '',
+				'boxShadowPosition'               => 'outset',
+				'hoverboxShadowColor'             => '',
+				'hoverboxShadowHOffset'           => 0,
+				'hoverboxShadowVOffset'           => 0,
+				'hoverboxShadowBlur'              => '',
+				'hoverboxShadowSpread'            => '',
+				'hoverboxShadowPosition'          => 'outset',
+				'widthSetByUser'                  => false,
+				'variationSelected'               => false,
+				'isBlockRootParent'               => false,
+				'imagePositionTab'                => 'desktop',
+				'imageSizeTab'                    => 'desktop',
+				'containerTopRadius'              => 0,
+				'containerRightRadius'            => 0,
+				'containerBottomRadius'           => 0,
+				'containerLeftRadius'             => 0,
+				'containerTopRadiusTablet'        => 0,
+				'containerRightRadiusTablet'      => 0,
+				'containerBottomRadiusTablet'     => 0,
+				'containerLeftRadiusTablet'       => 0,
+				'containerTopRadiusMobile'        => 0,
+				'containerRightRadiusMobile'      => 0,
+				'containerBottomRadiusMobile'     => 0,
+				'containerBorderStyle'            => '',
+				'containerBorderWidth'            => '',
+				'containerBorderColor'            => '',
+				'containerTopPadding'             => 10,
+				'containerBottomPadding'          => 10,
+				'containerLeftPadding'            => 10,
+				'containerRightPadding'           => 10,
+				'containerTopPaddingTablet'       => '',
+				'containerBottomPaddingTablet'    => '',
+				'containerLeftPaddingTablet'      => '',
+				'containerRightPaddingTablet'     => '',
+				'containerTopPaddingMobile'       => '',
+				'containerBottomPaddingMobile'    => '',
+				'containerLeftPaddingMobile'      => '',
+				'containerRightPaddingMobile'     => '',
+				'containerTopMargin'              => '',
+				'containerBottomMargin'           => '',
+				'containerLeftMargin'             => '',
+				'containerRightMargin'            => '',
+				'containerTopMarginTablet'        => '',
+				'containerBottomMarginTablet'     => '',
+				'containerLeftMarginTablet'       => '',
+				'containerRightMarginTablet'      => '',
+				'containerTopMarginMobile'        => '',
+				'containerBottomMarginMobile'     => '',
+				'containerLeftMarginMobile'       => '',
+				'containerRightMarginMobile'      => '',
+			);
+		}
+
+		/**
 		 * Generate gradient effect
 		 *
 		 * @param string $color1  primary color.
@@ -23558,5 +24205,23 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 			return "rgba($r, $g, $b, $opacity)";
 		}
+
+		/**
+		 * Get background position as a CSS value.
+		 *
+		 * Accepts an array with `x` and `y` coordinates or a string value.  
+		 * If an array is provided, it converts the coordinates into percentage-based CSS values.
+		 *
+		 * @param array|string $position Background position. Either an array with 'x' and 'y' keys or a string.
+		 * @return string Background position formatted as a CSS value.
+		 */
+		public static function get_background_position( $position ) {
+			if ( is_array( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
+				return self::get_css_value( $position['x'] * 100, '%' ) . ' ' . self::get_css_value( $position['y'] * 100, '%' );
+			} else {
+				return $position;
+			}
+		}
+
 	}
 }

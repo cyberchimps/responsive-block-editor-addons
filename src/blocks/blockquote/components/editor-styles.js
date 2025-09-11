@@ -108,6 +108,32 @@ function EditorStyles(props) {
     leftPadding, // For compatibility with v1.3.2.
     rightPadding, // For compatibility with v1.3.2.
     quoteTypographyColor,
+    twColor,
+    twBg, 
+    twHColor, 
+    twHBg,
+    twTopPadding, 
+    twRightPadding, 
+    twBottomPadding, 
+    twLeftPadding,
+    twTopPaddingTablet, 
+    twRightPaddingTablet, 
+    twBottomPaddingTablet, 
+    twLeftPaddingTablet,
+    twTopPaddingMobile, 
+    twRightPaddingMobile, 
+    twBottomPaddingMobile, 
+    twLeftPaddingMobile,
+    twFontFamily, 
+    twFontSize, 
+    twFontSizeTablet, 
+    twFontSizeMobile, 
+    twFontWeight, 
+    twLineHeight,
+    twTextTransform,
+    twTextDecoration,
+    twIconTextSpacing,
+    twTypographyColor,
     quoteTextTransform,
     quoteFontStyle,
   } = props.attributes;
@@ -222,8 +248,68 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(textTopPadding, "px"),
       "padding-bottom": generateCSSUnit(textBottomPadding, "px"),
     },
-  };
+    // ==== Twitter Button Container ====
+    " .rbea-bq__tweet-wrap": {
+      display: "flex",
+      "justify-content": "flex-end",
+      "margin-top": "12px",
+    },
 
+    // ==== Twitter Button (Base, attributes-driven) ====
+    " .rbea-bq__tweet": {
+      display: "inline-flex",
+      "align-items": "center",
+      gap: generateCSSUnit(twIconTextSpacing, "px"),
+      "text-decoration": "none",
+      "line-height": "1",
+      "border-radius": "999px",
+      "border": "1px solid transparent",
+      transition: "all .15s ease-in-out",
+
+      color: twColor || twTypographyColor,
+      background: twBg,
+      "padding-top": generateCSSUnit(twTopPadding, "px"),
+      "padding-right": generateCSSUnit(twRightPadding, "px"),
+      "padding-bottom": generateCSSUnit(twBottomPadding, "px"),
+      "padding-left": generateCSSUnit(twLeftPadding, "px"),
+      "font-family": twFontFamily,
+      "font-weight": twFontWeight,
+      "line-height": twLineHeight,
+      "font-size": generateCSSUnit(twFontSize, "px"),
+      "text-transform": twTextTransform,
+      "text-decoration": twTextDecoration,
+    },
+
+    // Hover (attributes-driven)
+    " .rbea-bq__tweet:hover": {
+      color: twHColor || (twColor || twTypographyColor),
+      background: twHBg || twBg,
+    },
+
+    // Icon size stays consistent
+    " .rbea-bq__tweet .dashicons": {
+      "font-size": "16px",
+      width: "16px",
+      height: "16px",
+    },
+
+    // Variants (structural differences only; colors come from attributes)
+    " .rbea-bq__tweet--bubble": {
+      border: "1px solid currentColor",
+    },
+    " .rbea-bq__tweet--link": {
+      background: "transparent",
+      border: "none",
+      "padding-top": generateCSSUnit("", "px"),
+      "padding-right": generateCSSUnit("", "px"),
+      "padding-bottom": generateCSSUnit("", "px"),
+      "padding-left": generateCSSUnit("", "px"),
+    },
+    " .rbea-bq__tweet--link .dashicons": {
+      position: "relative",
+      top: "1px",
+    },
+  };
   var mobile_selectors = {
     "": {
       'opacity': hideWidgetMobile ? 0.2 : 1,
@@ -255,6 +341,13 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    },
+  " .rbea-bq__tweet": {
+      "padding-top": generateCSSUnit(twTopPaddingMobile, "px"),
+      "padding-right": generateCSSUnit(twRightPaddingMobile, "px"),
+      "padding-bottom": generateCSSUnit(twBottomPaddingMobile, "px"),
+      "padding-left": generateCSSUnit(twLeftPaddingMobile, "px"),
+      "font-size": generateCSSUnit(twFontSizeMobile, "px"),
     },
   };
 
@@ -289,6 +382,13 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    },
+  " .rbea-bq__tweet": {
+      "padding-top": generateCSSUnit(twTopPaddingTablet, "px"),
+      "padding-right": generateCSSUnit(twRightPaddingTablet, "px"),
+      "padding-bottom": generateCSSUnit(twBottomPaddingTablet, "px"),
+      "padding-left": generateCSSUnit(twLeftPaddingTablet, "px"),
+      "font-size": generateCSSUnit(twFontSizeTablet, "px"),
     },
   };
 
