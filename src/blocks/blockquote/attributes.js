@@ -572,15 +572,15 @@ const attributes = {
   },
   twFontSize: {
     type: "number",
-    default: "",
+    default: "20",
   },
   twFontSizeTablet: {
     type: "number",
-    default: "",
+    default: "20",
   },
   twFontSizeMobile: {
     type: "number",
-    default: "",
+    default: "20",
   },
   twFontWeight: {
     type: "string",
@@ -588,7 +588,7 @@ const attributes = {
   },
   twLineHeight: {
     type: "number",
-    default: "",
+    default: "1",
   },
   twTextTransform: {
     type: "string",
@@ -613,7 +613,11 @@ const attributes = {
   quoteFontStyle: {
     type: "string",
     default: "",
-  }
+  },
+  twFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

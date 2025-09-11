@@ -312,6 +312,7 @@ export default class Inspector extends Component {
         twTypographyColor,
         quoteTextTransform,
         quoteFontStyle,
+        twFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -924,10 +925,17 @@ export default class Inspector extends Component {
               >
                 {/* Normal / Hover color groups */}
                 <TabPanel
+                  className="responsive-block-editor-addons-inspect-tabs 
+                            responsive-block-editor-addons-inspect-tabs-col-2  
+                            responsive-block-editor-addons-color-inspect-tabs"
                   activeClass="active-tab"
+                  initialTabName="normal"
                   tabs={[
-                    { name: "normal", title: __("Normal", "responsive-block-editor-addons") },
-                    { name: "hover",  title: __("Hover",  "responsive-block-editor-addons") },
+                    { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                    { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                    { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                    { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                    { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
                   ]}
                 >
                   {(tab) => {
@@ -1015,7 +1023,7 @@ export default class Inspector extends Component {
                     height: twLineHeight,
                     transform: twTextTransform,
                     textDecoration: twTextDecoration,
-                    // We manage button text color with twColor/twHColor, so no color picker here:
+                    fontstyle: twFontStyle,
                     color: twTypographyColor,
                   }}
                   showLetterSpacing={false}

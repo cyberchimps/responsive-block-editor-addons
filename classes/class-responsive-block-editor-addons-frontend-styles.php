@@ -1614,6 +1614,29 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-top'    => self::get_css_value( $attr['textTopPadding'], 'px' ),
 					'padding-bottom' => self::get_css_value( $attr['textBottomPadding'], 'px' ),
 				),
+				' .rbea-bq__tweet' => array(
+					'font-family'    => $attr['twFontFamily'] ? '"' . $attr['twFontFamily'] . '", sans-serif' : '',
+					'font-size'      => self::get_css_value( $attr['twFontSize'], 'px' ),
+					'font-weight'    => $attr['twFontWeight'],
+					'font-style'     => $attr['twFontStyle'],
+					'line-height'    => $attr['twLineHeight'],
+					'padding-top'    => self::get_css_value( $attr['twTopPadding'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['twRightPadding'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['twBottomPadding'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['twLeftPadding'], 'px' ),
+					'color'          => $attr['twColor'],
+					'background-color' => $attr['twBg'],
+					'text-transform' => $attr['twTextTransform'],
+					'text-decoration' => $attr['twTextDecoration'],
+					'gap'            => self::get_css_value( $attr['twIconTextSpacing'], 'px' ),
+					'--icon-text-spacing' => self::get_css_value( $attr['twIconTextSpacing'], 'px' ),
+					'--hover-color'  => $attr['twHColor'],
+					'--hover-bg'     => $attr['twHBg'],
+				),
+				' .rbea-bq__tweet:hover' => array(
+					'color'          => $attr['twHColor'],
+					'background-color' => $attr['twHBg'],
+				),
 
 			);
 			$mobile_selectors = array(
@@ -1649,6 +1672,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusMobile'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusMobile'], 'px' ),
 				),
+				' .rbea-bq__tweet' => array(
+					'font-size'      => self::get_css_value( $attr['twFontSizeMobile'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['twTopPaddingMobile'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['twRightPaddingMobile'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['twBottomPaddingMobile'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['twLeftPaddingMobile'], 'px' ),
+				),
 			);
 
 			$tablet_selectors = array(
@@ -1683,6 +1713,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusTablet'], 'px' ),
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusTablet'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusTablet'], 'px' ),
+				),
+				' .rbea-bq__tweet' => array(
+					'font-size'      => self::get_css_value( $attr['twFontSizeTablet'], 'px' ),
+					'padding-top'    => self::get_css_value( $attr['twTopPaddingTablet'], 'px' ),
+					'padding-right'  => self::get_css_value( $attr['twRightPaddingTablet'], 'px' ),
+					'padding-bottom' => self::get_css_value( $attr['twBottomPaddingTablet'], 'px' ),
+					'padding-left'   => self::get_css_value( $attr['twLeftPaddingTablet'], 'px' ),
 				),
 			);
 
@@ -14425,6 +14462,40 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'quoteAlignTablet'         => 'left',
 				'quoteTextTransform'       => '',
         		'quoteFontStyle'           => '',
+				// Twitter button attributes
+				'twEnabled'                => true,
+				'twView'                   => 'both',
+				'twStyle'                  => 'classic',
+				'twUrlMode'                => 'current',
+				'twCustomUrl'              => '',
+				'twLabel'                  => 'Post',
+				'twColor'                  => '#ffffff',
+				'twBg'                     => '#000000',
+				'twHColor'                 => '#ffffff',
+				'twHBg'                    => '#000000',
+				'twTopPadding'             => 10,
+				'twRightPadding'           => 16,
+				'twBottomPadding'          => 10,
+				'twLeftPadding'            => 16,
+				'twTopPaddingTablet'       => '',
+				'twRightPaddingTablet'     => '',
+				'twBottomPaddingTablet'    => '',
+				'twLeftPaddingTablet'      => '',
+				'twTopPaddingMobile'       => '',
+				'twRightPaddingMobile'     => '',
+				'twBottomPaddingMobile'    => '',
+				'twLeftPaddingMobile'      => '',
+				'twIsPaddingControlConnected' => false,
+				'twFontFamily'             => '',
+				'twFontSize'               => '',
+				'twFontSizeTablet'         => '',
+				'twFontSizeMobile'         => '',
+				'twFontWeight'             => '',
+				'twLineHeight'             => '',
+				'twTextTransform'          => '',
+				'twTextDecoration'         => '',
+				'twIconTextSpacing'        => 8,
+				'twTypographyColor'        => '',
 			);
 		}
 
