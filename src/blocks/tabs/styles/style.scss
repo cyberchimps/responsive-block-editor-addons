@@ -889,17 +889,72 @@
    }
 }
 }
-.responsive-block-editor-addons-tabs__wrap .responsive-block-editor-addons-tabs__panel.responsive-block-editor-addons-tabs__align-center{
-    margin: auto;
+
+
+/* Desktop */
+.responsive-block-editor-addons-tabs-align-vstyle8-left-desktop {
+  flex-direction: row !important;
 }
-.responsive-block-editor-addons-tabs__wrap .responsive-block-editor-addons-tabs__panel.responsive-block-editor-addons-tabs__align-left{
-    margin-right: auto;
-    margin-left: 0;
+.responsive-block-editor-addons-tabs-align-vstyle8-right-desktop {
+  flex-direction: row-reverse !important;
 }
-.responsive-block-editor-addons-tabs__wrap .responsive-block-editor-addons-tabs__panel.responsive-block-editor-addons-tabs__align-right{
-    margin-left: auto;
-    margin-right: 0;
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 991px) {
+  .responsive-block-editor-addons-tabs-align-vstyle8-left-tablet {
+    flex-direction: row !important;
+  }
+  .responsive-block-editor-addons-tabs-align-vstyle8-right-tablet {
+    flex-direction: row-reverse !important;
+  }
 }
+
+/* Mobile */
+@media (max-width: 576px) {
+  .responsive-block-editor-addons-tabs-align-vstyle8-left-mobile {
+    flex-direction: row !important;
+  }
+  .responsive-block-editor-addons-tabs-align-vstyle8-right-mobile {
+    flex-direction: row-reverse !important;
+  }
+}
+
+.responsive-block-editor-addons-tabs-align-left-desktop {
+  justify-content: flex-start;
+}
+.responsive-block-editor-addons-tabs-align-center-desktop {
+  justify-content: center;
+}
+.responsive-block-editor-addons-tabs-align-right-desktop {
+  justify-content: flex-end;
+}
+
+/* Tablet */
+@media (min-width: 577px) and (max-width: 991px) {
+  .responsive-block-editor-addons-tabs-align-left-tablet {
+    justify-content: flex-start;
+  }
+  .responsive-block-editor-addons-tabs-align-center-tablet {
+    justify-content: center;
+  }
+  .responsive-block-editor-addons-tabs-align-right-tablet {
+    justify-content: flex-end;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .responsive-block-editor-addons-tabs-align-left-mobile {
+    justify-content: flex-start;
+  }
+  .responsive-block-editor-addons-tabs-align-center-mobile {
+    justify-content: center;
+  }
+  .responsive-block-editor-addons-tabs-align-right-mobile {
+    justify-content: flex-end;
+  }
+}
+
 
 .responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-active-tab-0 > .responsive-block-editor-addons-tabs__body-wrap > .responsive-block-editor-addons-inner-tab-0 ,
 .responsive-block-editor-addons-tabs__wrap.responsive-block-editor-addons-active-tab-1 > .responsive-block-editor-addons-tabs__body-wrap > .responsive-block-editor-addons-inner-tab-1 ,

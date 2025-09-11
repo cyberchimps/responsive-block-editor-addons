@@ -6,17 +6,17 @@
       "type": "string",
       "default": "xlrg"
     },
-    "columnsize":{
-      "type":"number",
-      "default":3
+    "columnsize": {
+      "type": "number",
+      "default": 3
     },
-    "customHeight":{
-      "type":"number",
-      "default":""
+    "customHeight": {
+      "type": "number",
+      "default": ""
     },
-    "customWidth":{
-      "type":"number",
-      "default":""
+    "customWidth": {
+      "type": "number",
+      "default": ""
     },
     "block_id": {
       "type": "string"
@@ -145,6 +145,225 @@
     },
     "z_indexMobile": {
       "type": "number"
+    },
+    "enableCategoryFilter": {
+      "type": "boolean",
+      "default": false
+    },
+
+    "allTabLabel": {
+      "type": "string",
+      "default": "All"
+    },
+    "setDefaultCategory": {
+      "type": "boolean",
+      "default": false
+    },
+    "defaultCategory": {
+      "type": "string",
+      "default": ""
+    },
+    "filterTabAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "filterTabAlignmentTablet": {
+      "type": "string",
+      "default": "left"
+    },
+    "filterTabAlignmentMobile": {
+      "type": "string",
+      "default": "left"
+    },
+    "filterTabTypographyFontFamily": {
+      "type": "string",
+      "default": "Abel"
+    },
+    "filterTabTypographyFontSize": {
+      "type": "number",
+      "default": 14
+    },
+    "filterTabTypographyFontSizeTablet": {
+      "type": "number"
+    },
+    "filterTabTypographyFontSizeMobile": {
+      "type": "number"
+    },
+    "filterTabTypographyFontWeight": {
+      "type": "string",
+      "default": "400"
+    },
+    "filterTabTypographyLineHeight": {
+      "type": "number",
+      "default": 1.5
+    },
+    "filterTabTypographyLetterSpacing": {
+      "type": "number",
+      "default": 0
+    },
+    "filterTabTypographyTextTransform": {
+      "type": "string",
+      "default": "none"
+    },
+    "filterTabTypographyTextDecoration": {
+      "type": "string",
+      "default": "none"
+    },
+    "filterTabTopPadding": {
+      "type": "number",
+      "default": 7
+    },
+    "filterTabRightPadding": {
+      "type": "number",
+      "default": 7
+    },
+    "filterTabBottomPadding": {
+      "type": "number",
+      "default": 7
+    },
+    "filterTabLeftPadding": {
+      "type": "number",
+      "default": 7
+    },
+    "filterTabTopPaddingTablet": {
+      "type": "number"
+    },
+    "filterTabRightPaddingTablet": {
+      "type": "number"
+    },
+    "filterTabBottomPaddingTablet": {
+      "type": "number"
+    },
+    "filterTabLeftPaddingTablet": {
+      "type": "number"
+    },
+    "filterTabTopPaddingMobile": {
+      "type": "number"
+    },
+    "filterTabRightPaddingMobile": {
+      "type": "number"
+    },
+    "filterTabBottomPaddingMobile": {
+      "type": "number"
+    },
+    "filterTabLeftPaddingMobile": {
+      "type": "number"
+    },
+    "filterTabIsPaddingControlConnected": {
+      "type": "boolean",
+      "default": true
+    },
+    "filterTabSpacingBetween": {
+      "type": "number",
+      "default": 17
+    },
+    "filterTabSpacingBetweenTablet": {
+      "type": "number"
+    },
+    "filterTabSpacingBetweenMobile": {
+      "type": "number"
+    },
+    "filterTabBottomSpacing": {
+      "type": "number",
+      "default": 17
+    },
+    "filterTabBottomSpacingTablet": {
+      "type": "number"
+    },
+    "filterTabBottomSpacingMobile": {
+      "type": "number"
+    },
+    "filterTabTextColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "filterTabBackgroundColor": {
+      "type": "string",
+      "default": "#F2F2F2"
+    },
+    "filterTabHoverTextColor": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "filterTabHoverBackgroundColor": {
+      "type": "string",
+      "default": "#0073aa"
+    },
+    "filterTabBorderStyle": {
+      "type": "string",
+      "default": "none"
+    },
+    "filterTabTopBorderwidth": {
+      "type": "number",
+      "default": 1
+    },
+    "filterTabRightBorderwidth": {
+      "type": "number",
+      "default": 1
+    },
+    "filterTabBottomBorderwidth": {
+      "type": "number",
+      "default": 1
+    },
+    "filterTabLeftBorderwidth": {
+      "type": "number",
+      "default": 1
+    },
+    "filterTabTopBorderwidthTablet": {
+      "type": "number"
+    },
+    "filterTabRightBorderwidthTablet": {
+      "type": "number"
+    },
+    "filterTabBottomBorderwidthTablet": {
+      "type": "number"
+    },
+    "filterTabLeftBorderwidthTablet": {
+      "type": "number"
+    },
+    "filterTabTopBorderwidthMobile": {
+      "type": "number"
+    },
+    "filterTabRightBorderwidthMobile": {
+      "type": "number"
+    },
+    "filterTabBottomBorderwidthMobile": {
+      "type": "number"
+    },
+    "filterTabLeftBorderwidthMobile": {
+      "type": "number"
+    },
+    "filterTabIsBorderwidthControlConnected": {
+      "type": "boolean",
+      "default": true
+    },
+    "filterTabBorderColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "enableResponsiveSupport": {
+      "type": "boolean",
+      "default": false
+    },
+    "gutter": { 
+      "type": "number", 
+      "default": 15 
+    },
+    "gutterTablet": { 
+      "type": "number",
+      "default": 15
+    },
+    "gutterMobile": { 
+      "type": "number",
+      "default": 15
+    },
+    "radius": {
+      "type": "number",
+      "default": 0
+    },
+    "filterTabTypographyFontStyle": {
+      "type": "string",
+      "default": "normal"
     }
   }
 }

@@ -316,6 +316,29 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  hoverboxShadowColor: {
+    type: 'string',
+  },
+  hoverboxShadowHOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowVOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowBlur: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowSpread: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowPosition: {
+    type: 'string',
+    default: 'outset'
+  },
   backgroundColor: {
     type: "string",
   },
@@ -418,7 +441,15 @@ const attributes = {
   isCtaButtonPaddingMarginValueUpdated: {
     type: "boolean",
     default: false,
-  }
+  },
+  labelTextTransform: {
+    type: "string",
+    default: "",
+  },
+  labelFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

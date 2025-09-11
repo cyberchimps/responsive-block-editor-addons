@@ -197,6 +197,12 @@ export default class Inspector extends Component {
     titleBottomSpacing,
     titleBottomSpacingMobile,
     titleBottomSpacingTablet,
+    titleTextTransform,
+    titleFontStyle,
+    descriptionTextTransform,
+    descriptionFontStyle,
+    priceTextTransform,
+    priceFontStyle,
     },
       setAttributes,
     } = this.props;
@@ -539,9 +545,10 @@ export default class Inspector extends Component {
           bottomSpacing: titleBottomSpacing,
           bottomSpacingMoible: titleBottomSpacingMobile,
           bottomSpacingTablet: titleBottomSpacingTablet,
+          transform: titleTextTransform,
+          fontstyle: titleFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}
@@ -561,9 +568,10 @@ export default class Inspector extends Component {
 					weight: descriptionFontWeight,
 					height: descriptionLineHeight,
           color: descriptionTypographyColor,
+          transform: descriptionTextTransform,
+          fontstyle: descriptionFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
 					setAttributes={setAttributes}
 					{...this.props}
@@ -579,9 +587,10 @@ export default class Inspector extends Component {
 					weight: priceFontWeight,
 					height: priceLineHeight,
           color: priceTypographyColor,
+          transform: priceTextTransform,
+          fontstyle: priceFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
 					setAttributes={setAttributes}
 					{...this.props}

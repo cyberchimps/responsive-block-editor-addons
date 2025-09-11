@@ -279,6 +279,29 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  hoverboxShadowColor: {
+    type: 'string',
+  },
+  hoverboxShadowHOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowVOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowBlur: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowSpread: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowPosition: {
+    type: 'string',
+    default: 'outset'
+  },
   opacity: {
     type: "number",
     default: 50,
@@ -706,6 +729,30 @@ const attributes = {
   backgroundType: {
     type: "string",
     default: "none",
+  },
+  titleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  designationTextTransform: {
+    type: "string",
+    default: "",
+  },
+  designationFontStyle: {
+    type: "string",
+    default: "",
+  },
+  descriptionTextTransform: {
+    type: "string",
+    default: "",
+  },
+  descriptionFontStyle: {
+    type: "string",
+    default: "",
   },
 };
 export default attributes;

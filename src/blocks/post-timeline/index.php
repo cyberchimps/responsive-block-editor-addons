@@ -1012,6 +1012,29 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 0,
 				),
+				'hoverboxShadowColor'                => array(
+					'type' => 'string',
+				),
+				'hoverboxShadowHOffset'              => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowVOffset'              => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowBlur'                 => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowSpread'               => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowPosition'             => array(
+					'type' => 'string',
+					'default' => 'outset'
+				),
 				'taxonomyType'                       => array(
 					'type'    => 'string',
 					'default' => 'category',
@@ -1190,6 +1213,46 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'contentBottomSpacingTablet'         => array(
 					'type' => 'number',
+				),
+				'dateTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'dateFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'headingTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'headingFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'authorTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'authorFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'continueTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'continueFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'contentTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'contentFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
 				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',

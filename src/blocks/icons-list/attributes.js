@@ -339,7 +339,15 @@ const attributes = {
   iconListUpdateColorFromParent: {
     type: "boolean",
     default: false,
-  }
+  },
+  labelTextTransform: {
+    type: "string",
+    default: "",
+  },
+  labelFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

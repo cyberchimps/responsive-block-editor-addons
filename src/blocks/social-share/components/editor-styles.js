@@ -75,6 +75,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     backgroundColor,
     opacity,
     iconColumnsMobile,
@@ -96,12 +102,18 @@ function EditorStyles(props) {
     iconContainerBottomPaddingMobile,
     iconContainerLeftPaddingMobile,
     iconContainerRightPaddingMobile,
+    labelTextTransform,
+    labelFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   let newopacity = opacity / 100;
@@ -149,6 +161,20 @@ function EditorStyles(props) {
         "min-width": 'fit-content',
         "max-width": '100%',
     },
+    ":hover": {
+      "box-shadow": hoverboxShadowColor !== '' ?
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS : '',
+    },
     " .responsive-block-editor-addons-social-icon": {
       "border-radius": iconShapeRadius,
       fill: iconColorType === "custom" ? iconPrimaryColor : "",
@@ -193,6 +219,8 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-social-icon-label": {
       "font-size": generateCSSUnit(labelFontSize, "px"),
       "font-family": labelFontFamily,
+      "text-transform": labelTextTransform,
+      "font-style": labelFontStyle,
       "font-weight": labelFontWeight,
       "line-height": labelLineHeight,
       "margin-left": generateCSSUnit(iconLabelGap, "px"),

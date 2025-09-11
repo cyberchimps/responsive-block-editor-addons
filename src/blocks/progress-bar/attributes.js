@@ -320,6 +320,7 @@ const attributes = {
 	},
 	topTitleValueTextTransform: {
 		type: "string",
+		default: "",
 	},
 	innerTitleValueFontFamily: {
 		type: "string",
@@ -347,6 +348,7 @@ const attributes = {
 	},
 	innerTitleValueTextTransform: {
 		type: "string",
+		default: "",
 	},
 	bottomTitleValueFontFamily: {
 		type: "string",
@@ -374,6 +376,7 @@ const attributes = {
 	},
 	bottomTitleValueTextTransform: {
 		type: "string",
+		default: "",
 	},
 	stripedHorizontalProgressBarAnimationTime: {
 		type: "number",
@@ -441,6 +444,7 @@ const attributes = {
 	},
 	circularTopTitleValueTextTransform: {
 		type: "string",
+		default: "",
 	},
 	circularBottomTitleValueFontFamily: {
 		type: "string",
@@ -468,6 +472,7 @@ const attributes = {
 	},
 	circularBottomTitleValueTextTransform: {
 		type: "string",
+		default: "",
 	},
 	circularInnerValueFontFamily: {
 		type: "string",
@@ -519,6 +524,7 @@ const attributes = {
 	},
 	semiCircularTopTitleValueTextTransform: {
 		type: "string",
+		default: "",
 	},
 	semiCircularBottomTitleValueFontFamily: {
 		type: "string",
@@ -546,6 +552,7 @@ const attributes = {
 	},
 	semiCircularBottomTitleValueTextTransform: {
 		type: "string",
+		default: "",
 	},
 	semiCircularInnerValueFontFamily: {
 		type: "string",
@@ -744,6 +751,42 @@ const attributes = {
 		type: "string",
 		default: '#333333',
 	  },
+	topTitleValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	innerTitleValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	bottomTitleValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	circularTopTitleValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	circularInnerValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	circularBottomTitleValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	semiCircularTopTitleValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	semiCircularInnerValueFontStyle: {
+		type: "string",
+		default: "",
+	},
+	semiCircularBottomTitleValueFontStyle: {
+		type: "string",
+		default: "",
+	},
 };
 
 export default attributes;

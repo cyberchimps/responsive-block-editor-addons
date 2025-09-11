@@ -49,6 +49,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     buttonBoxShadowColor,
     buttonBoxShadowHOffset,
     buttonBoxShadowVOffset,
@@ -225,12 +231,20 @@ function EditorStyles(props) {
       ctaBlockRightRadiusMobile,
       ctaBlockBottomRadiusMobile,
       ctaBlockLeftRadiusMobile,
+      ctaTextTransform,
+        ctaFontStyle,
+        titleFontStyle,
+        descFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
   var buttonBoxShadowPositionCSS = buttonBoxShadowPosition;
 
@@ -295,6 +309,8 @@ function EditorStyles(props) {
         buttonBoxShadowColor +
         " " +
         buttonBoxShadowPositionCSS,
+      "text-transform": ctaTextTransform,
+      "font-style": ctaFontStyle,
     },
 
     " .wp-block-responsive-block-editor-addons-feature-grid-item__button:hover": {
@@ -394,6 +410,20 @@ function EditorStyles(props) {
         " " +
         boxShadowPositionCSS,
     },
+    " .wp-block-responsive-block-editor-addons-feature-grid-item:hover": {
+      "box-shadow": hoverboxShadowColor !== '' ?
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS : '',
+    },
 
     " .responsive-block-editor-addons-remove-image": {
       position: "absolute",
@@ -415,6 +445,7 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
       "font-family": titleFontFamily,
       "margin-bottom": generateCSSUnit(titleSpace, "px"),
     },
@@ -424,6 +455,7 @@ function EditorStyles(props) {
       color: descTypographyColor,
       "line-height": descLineHeight,
       "text-transform": descTextTransform,
+      "font-style": descFontStyle,
       "font-weight": descFontWeight,
       "font-size": generateCSSUnit(descFontSize, "px"),
       "font-family": descFontFamily,

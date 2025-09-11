@@ -168,6 +168,12 @@ function EditorStyles(props) {
   backgroundColor2,
   colorLocation1,
   colorLocation2,
+  descTextTransform,
+  descFontStyle,
+  nameTextTransform,
+  nameFontStyle,
+  companyTextTransform,
+  companyFontStyle,
   } = props.attributes;
 
   var img_align = "center";
@@ -306,6 +312,8 @@ function EditorStyles(props) {
       "line-height": generateCSSUnit(nameLineHeight, "px"),
       color: nameTypographyColor,
       "margin-bottom": generateCSSUnit(nameBottomSpacing, "px"),
+      "text-transform": nameTextTransform,
+      "font-style": nameFontStyle,
     },
     // Title Style
     " .responsive-block-editor-addons-tm__company": {
@@ -314,6 +322,8 @@ function EditorStyles(props) {
       "font-weight": companyFontWeight,
       "line-height": generateCSSUnit(companyLineHeight, "px"),
       color: companyTypographyColor,
+      "text-transform": companyTextTransform,
+      "font-style": companyFontStyle,
     },
     // Description Style
     " .responsive-block-editor-addons-tm__desc": {
@@ -323,6 +333,8 @@ function EditorStyles(props) {
       "line-height": generateCSSUnit(descLineHeight, descLineHeightType),
       color: descTypographyColor,
       "margin-bottom": generateCSSUnit(descBottomSpacing, "px"),
+      "text-transform": descTextTransform,
+      "font-style": descFontStyle,
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
       "background-position": backgroundPosition,

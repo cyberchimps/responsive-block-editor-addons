@@ -243,6 +243,29 @@ const attributes = {
       type: "string",
       default: "outset",
     },
+    hoverboxShadowColor: {
+      type: 'string',
+    },
+    hoverboxShadowHOffset: {
+      type: 'number',
+      default: 0
+    },
+    hoverboxShadowVOffset: {
+      type: 'number',
+      default: 0
+    },
+    hoverboxShadowBlur: {
+      type: 'number',
+      default: 0
+    },
+    hoverboxShadowSpread: {
+      type: 'number',
+      default: 0
+    },
+    hoverboxShadowPosition: {
+      type: 'string',
+      default: 'outset'
+    },
     //Icon (Minimal Layout)
     iconSize: {
       type: "number",
@@ -401,6 +424,22 @@ const attributes = {
     widthTypeValueUpdated: {
       type: "boolean",
       default: false,
+    },
+    inputTextTransform: {
+      type: "string",
+      default: ""
+    }, 
+    inputFontStyle: {
+      type: "string",
+      default: ""
+    },
+    buttonTextTransform: {
+      type: "string",
+      default: ""
+    }, 
+    buttonFontStyle: {
+      type: "string",
+      default: ""
     },
   };
   

@@ -16,7 +16,7 @@ const { Button, Dashicon, Icon } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
 
-export default class Save extends Component {
+export default class DeprecatedCountUpSavev2 extends Component {
   constructor() {
     super(...arguments);
   }
@@ -26,8 +26,6 @@ export default class Save extends Component {
       block_id,
       countUp,
       contentAlign,
-      contentAlignTablet,
-      contentAlignMobile,
       count,
       gutter,
       resshowIcon,
@@ -39,26 +37,20 @@ export default class Save extends Component {
 
     const classes = classnames("responsive-count", {
       [`has-text-align-${contentAlign}`]: contentAlign,
-      [`rba-align-tablet-${contentAlignTablet}`]: contentAlignTablet,
-      [`rba-align-mobile-${contentAlignMobile}`]: contentAlignMobile,
     });
 
     return [
       <div key={`main-block-${block_id}`} className={classes}>
-        <div
-          key={`block-${block_id}`}
+        <div key={`block-${block_id}`}
           className={classnames(
-            this.props.className,
+            this.props.className, 
             "responsive-block-editor-addons-block-count-up",
             `block-${block_id}`,
             "responsive-count__inner"
           )}
         >
           {countUp.map((test, index) => (
-            <div
-              key={`count-up-${index}`}
-              className={classnames("responsive-count-item")}
-            >
+            <div key={`count-up-${index}`} className={classnames("responsive-count-item")}>
               {resshowIcon && (
                 <div
                   className={classnames(

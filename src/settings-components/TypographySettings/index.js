@@ -48,6 +48,7 @@ const TypographyHelperControl = (props) => {
             onChangeLineHeight={value => props.setAttributes({ [getAttrName('LineHeight')]: value })}
             onChangeLetterSpacing={value => props.setAttributes({ [getAttrName('LetterSpacing')]: value })}
             onChangeTextTransform={value => props.setAttributes({ [getAttrName('TextTransform')]: value })}
+            onChangeFontStyle={value => props.setAttributes({ [getAttrName('FontStyle')]: value })}
             onChangeTextDecoration={value => props.setAttributes({ [getAttrName('TextDecoration')]: value })}
             onChangeTextColor={value => props.setAttributes({ [getAttrName['Color']]: value })}
             {...props}
@@ -108,16 +109,20 @@ class TypographyControl extends Component {
         ];
         const textTransformOptions = [
             {
+                value: "",
+                label: __("Default", "responsive-block-editor-addons"),
+            },
+            {
                 value: "uppercase",
-                label: __("HEADING", "responsive-block-editor-addons"),
+                label: __("AA", "responsive-block-editor-addons"),
             },
             {
                 value: "lowercase",
-                label: __("heading", "responsive-block-editor-addons"),
+                label: __("aa", "responsive-block-editor-addons"),
             },
             {
                 value: "capitalize",
-                label: __("Heading", "responsive-block-editor-addons"),
+                label: __("Aa", "responsive-block-editor-addons"),
             },
         ];
 
@@ -140,6 +145,23 @@ class TypographyControl extends Component {
                 label: __("Header", "responsive-block-editor-addons"),
                 class: "rbea-text-decoration-line-through-control"
                 // icon: textDecorationIcons.line_through,
+            },
+        ];
+
+        const textFontStyleOptions = [
+            {
+                value: "",
+                label: __("Default", "responsive-block-editor-addons"),
+            },
+            {
+                value: "italic",
+                label: __("Italic", "responsive-block-editor-addons"),
+                // label: __("𝘛", "responsive-block-editor-addons"),
+            },
+            {
+                value: "normal",
+                label: __("Normal", "responsive-block-editor-addons"),
+                // label: __("T", "responsive-block-editor-addons"),
             },
         ];
 
@@ -264,6 +286,20 @@ class TypographyControl extends Component {
                             onChange={this.props.onChangeFontWeight}
                         />
                     </div>
+                    {this.props.showTextTransform !== false && (
+                        <RbeaTabRadioControl
+                            label={__("Text Transform", "responsive-block-editor-addons")}
+                            value={this.props.values.transform}
+                            onChange={this.props.onChangeTextTransform}
+                            options={textTransformOptions}
+                        />
+                    )}
+                    <RbeaTabRadioControl
+                        label={__("Font Style", "responsive-block-editor-addons")}
+                        value={this.props.values.fontstyle}
+                        onChange={this.props.onChangeFontStyle}
+                        options={textFontStyleOptions}
+                    />
                     <RbeaRangeControl
                         label={__("Line Height", "responsive-block-editor-addons")}
                         value={this.props.values.height}
@@ -284,15 +320,6 @@ class TypographyControl extends Component {
                         />
                     )
                     }
-                    {this.props.showTextTransform == true && (
-                        <RbeaTabRadioControl
-                            label={__("Text Transform", "responsive-block-editor-addons")}
-                            value={this.props.values.transform}
-                            onChange={this.props.onChangeTextTransform}
-                            options={textTransformOptions}
-                        />
-                    )
-                    }
                     {this.props.showTextDecoration == true && (
                         <RbeaTabRadioControl
                             label={__(
@@ -302,6 +329,8 @@ class TypographyControl extends Component {
                             options={textDecorationOptions}
                             value={this.props.values.textDecoration}
                             onChange={this.props.onChangeTextDecoration}
+                            allowReset
+                            defaultValue="none"
                         />
                     )}
                     {this.props.showTextBottomSpacing == true && (

@@ -51,6 +51,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     icon_color,
     icon_hover_color,
     hbackground,
@@ -94,6 +100,8 @@ function EditorStyles(props) {
 		blockLeftRadiusTablet,
     typographyOpacity,
     borderOpacity,
+    buttonTextTransform,
+    buttonFontStyle,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -103,9 +111,13 @@ function EditorStyles(props) {
   let borderOpacityControlValue = borderOpacity / 100;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   let iconSpaceRight = "";
@@ -236,6 +248,8 @@ function EditorStyles(props) {
       "opacity": imgopacity,
       color:  inheritFromTheme ? '' : color ? color : '#000',
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,
+      "text-transform": buttonTextTransform,
+      "font-style": buttonFontStyle,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper div": {
       color:  inheritFromTheme ? '' : color ? color : '#000',
@@ -243,6 +257,19 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover": {
       "border-color": borderHColor ? hexToRgba(borderHColor, borderOpacityControlValue) : "#000",
       "background-color": updatedBackgroundHColor,
+      "box-shadow": hoverboxShadowColor !== ""
+		  ? generateCSSUnit(hoverboxShadowHOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowVOffset, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowBlur, "px") +
+        	" " +
+        	generateCSSUnit(hoverboxShadowSpread, "px") +
+        	" " +
+        	hoverboxShadowColor +
+        	" " +
+        	hoverboxShadowPositionCSS
+		  : "",
     },
     " .responsive-block-editor-addons-button__icon": {
       "margin-left": iconSpaceLeft + "px",

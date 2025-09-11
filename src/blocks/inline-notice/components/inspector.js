@@ -183,6 +183,10 @@ export default class Inspector extends Component {
         blockIsTypographyColorValueUpdated,
         contentTypographyColor,
         titleTypographyColor,
+        titleTextTransform,
+        titleFontStyle,
+        contentTextTransform,
+        contentFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -271,6 +275,8 @@ export default class Inspector extends Component {
                 { value: "h2", label: __("H2", "responsive-block-editor-addons") },
                 { value: "h3", label: __("H3", "responsive-block-editor-addons") },
                 { value: "h4", label: __("H4", "responsive-block-editor-addons") },
+                { value: "h5", label: __("H5", "responsive-block-editor-addons") },
+                { value: "h6", label: __("H6", "responsive-block-editor-addons") }
               ]}
             />
             <RbeaTabRadioControl
@@ -352,9 +358,10 @@ export default class Inspector extends Component {
                   height: titleLineHeight,
                   spacing: titleLetterSpacing,
                   color: titleTypographyColor,
+                  transform: titleTextTransform,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -371,9 +378,10 @@ export default class Inspector extends Component {
                   height: contentLineHeight,
                   spacing: contentLetterSpacing,
                   color: contentTypographyColor,
+                  transform: contentTextTransform,
+                  fontstyle: contentFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}

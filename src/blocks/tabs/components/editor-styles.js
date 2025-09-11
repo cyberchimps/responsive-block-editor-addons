@@ -67,6 +67,8 @@ function EditorStyles(props) {
     opacity,
     backgroundHoverColor,
     tabsStyleD,
+    tabsStyleT,
+    tabsStyleM,
     animationName,
     animationDirection,
     animationRepeat,
@@ -95,13 +97,28 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     alignTabsVertical,
+    alignTabsVerticalT,
+    alignTabsVerticalM,
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
     tabTitleTypographyColor,
     tabTitleActiveTypographyColor,
     tabContentTypographyColor,
+    tabTitleTextTransform,
+    tabTitleFontStyle,
+    tabContentTextTransform,
+    tabContentFontStyle,
+    alignTabs,
+    alignTabsT,
+    alignTabsM,
   } = props.attributes;
 
 
@@ -119,14 +136,14 @@ function EditorStyles(props) {
   }
 
   let activeTabBorderWidth = '';
-  if (tabsStyleD === 'hstyle3') {
+  if (tabsStyleD === 'hstyle3' || tabsStyleT === 'hstyle3' || tabsStyleM === 'hstyle3') {
     activeTabBorderWidth = {
       "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-right-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-left-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-bottom-width" : generateCSSUnit( 0, "px" ),
     }
-  }else if (tabsStyleD === 'vstyle8' && alignTabsVertical === 'left') {
+  } else if ( ( tabsStyleD === 'vstyle8' || tabsStyleT === 'vstyle8' || tabsStyleM === 'vstyle8' ) && ( alignTabsVertical === 'left' || alignTabsVerticalT === 'left' || alignTabsVerticalM === 'left' ) ) {
     activeTabBorderWidth = {
       "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-bottom-width" : generateCSSUnit( tabBorderWidth, "px" ),
@@ -134,7 +151,7 @@ function EditorStyles(props) {
       "border-right-width" : generateCSSUnit( 0, "px" ),
     }
   }
-  else if (tabsStyleD === 'vstyle8' && alignTabsVertical === 'right') {
+  else if ( ( tabsStyleD === 'vstyle8' || tabsStyleT === 'vstyle8' || tabsStyleM === 'vstyle8' ) && ( alignTabsVertical === 'right' || alignTabsVerticalT === 'right' || alignTabsVerticalM === 'right' ) ) {
     activeTabBorderWidth = {
       "border-top-width" : generateCSSUnit( tabBorderWidth, "px" ),
       "border-bottom-width" : generateCSSUnit( tabBorderWidth, "px" ),
@@ -143,9 +160,13 @@ function EditorStyles(props) {
     }
   }
 
-  let boxShadowPositionCSS = boxShadowPosition;
+  let boxShadowPositionCSS      = boxShadowPosition;
+  let hoverboxShadowPositionCSS = hoverboxShadowPosition;
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   var selectors = {
@@ -200,6 +221,7 @@ function EditorStyles(props) {
             hovercolorLocation2
           )
           : undefined,
+      "box-shadow": hoverboxShadowColor !== '' ? `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}` : '',
     },
     " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab.responsive-block-editor-addons-tabs__active" : {
 			"background": tabBackgroundColor,
@@ -228,6 +250,8 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__panel .responsive-block-editor-addons-tab a > p" : {
 			"color": tabTitleTypographyColor,
       "font-family": tabTitleFontFamily,
+      "text-transform": tabTitleTextTransform,
+      "font-style": tabTitleFontStyle,
 			"font-weight": tabTitleFontWeight,
 			"font-size": generateCSSUnit( tabTitleFontSize, "px" ),
 			"line-height": generateCSSUnit( tabTitleLineHeight, "px" ),
@@ -238,11 +262,16 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
 			"color": tabContentTypographyColor,
       "font-family": tabContentFontFamily,
+      "text-transform": tabContentTextTransform,
+      "font-style": tabContentFontStyle,
 			"font-weight": tabContentFontWeight,
 			"font-size": generateCSSUnit( tabContentFontSize, "px" ),
 			"line-height": generateCSSUnit( tabContentLineHeight, "px" ),
 		},
-    ".responsive-block-editor-addons-vstyle8-right" :{
+    ".responsive-block-editor-addons-vstyle8-left" : {
+      "flex-direction": "row",
+    },
+    ".responsive-block-editor-addons-vstyle8-right" : {
       "flex-direction": "row-reverse",
     },
   };
@@ -269,6 +298,12 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
 			"font-size": generateCSSUnit( tabContentFontSizeMobile, "px" ),
 		},
+    ".responsive-block-editor-addons-vstyle8-left" : {
+      "flex-direction": "row",
+    },
+    ".responsive-block-editor-addons-vstyle8-right" : {
+      "flex-direction": "row-reverse",
+    },
   };
 
   var tablet_selectors = {
@@ -293,6 +328,12 @@ function EditorStyles(props) {
     " > .responsive-block-editor-addons-tabs__body-wrap > .block-editor-inner-blocks p" : {
 			"font-size": generateCSSUnit( tabContentFontSizeTablet, "px" ),
 		},
+    ".responsive-block-editor-addons-vstyle8-left" : {
+      "flex-direction": "row",
+    },
+    ".responsive-block-editor-addons-vstyle8-right" : {
+      "flex-direction": "row-reverse",
+    },
   };
 
   var styling_css = "";
