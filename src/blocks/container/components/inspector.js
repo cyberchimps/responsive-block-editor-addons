@@ -237,9 +237,6 @@ export default function Inspector(props) {
         innerContentBoxWidthTypeMobile: innerContentWidthType ?? "px",
         innerContentBoxWidthTypeUpdated: true,
       });
-      console.log(
-        "🔁 Migrated innerContentBoxWidthType attributes from innerContentWidthType"
-      );
     }
   }, []);
 
@@ -258,9 +255,6 @@ export default function Inspector(props) {
         customWidthMobile: customWidthType ?? "px",
         customWidthTypeUpdated: true,
       });
-      console.log(
-        "🔁 Migrated innerContentBoxWidthType attributes from customWidthType"
-      );
     }
   }, []);
 
@@ -276,7 +270,6 @@ export default function Inspector(props) {
         rowGapMobile: rowGapType ?? "px",
         rowGapTypeUpdated: true,
       });
-      console.log("🔁 Migrated attributes for row gap");
     }
   }, []);
 
@@ -295,92 +288,8 @@ export default function Inspector(props) {
         columnGapMobile: columnGapType ?? "px",
         columnGapTypeUpdated: true,
       });
-      console.log("🔁 Migrated attributes for column gap");
     }
   }, []);
-
-  useEffect(() => {
-    console.log("📐 Device Width Attributes:");
-    console.log(
-      "Desktop Width:",
-      innerContentCustomWidthDesktop,
-      innerContentBoxWidthTypeDesktop
-    );
-    console.log(
-      "Tablet Width:",
-      innerContentCustomWidthTablet,
-      innerContentBoxWidthTypeTablet
-    );
-    console.log(
-      "Mobile Width:",
-      innerContentCustomWidthMobile,
-      innerContentBoxWidthTypeMobile
-    );
-  }, [
-    innerContentCustomWidthDesktop,
-    innerContentBoxWidthTypeDesktop,
-    innerContentCustomWidthTablet,
-    innerContentBoxWidthTypeTablet,
-    innerContentCustomWidthMobile,
-    innerContentBoxWidthTypeMobile,
-  ]);
-
-  // custom width.
-  useEffect(() => {
-    console.log("📐 Device Custom Width Attributes:");
-    console.log(
-      "Desktop Custom Width:",
-      customWidthDesktop,
-      customWidthTypeDesktop
-    );
-    console.log(
-      "Tablet Custom Width:",
-      customWidthTablet,
-      customWidthTypeTablet
-    );
-    console.log(
-      "Mobile Custom Width:",
-      customWidthMobile,
-      customWidthTypeMobile
-    );
-  }, [
-    customWidthDesktop,
-    customWidthTypeDesktop,
-    customWidthTablet,
-    customWidthTypeTablet,
-    customWidthMobile,
-    customWidthTypeMobile,
-  ]);
-
-  // row gap.
-  useEffect(() => {
-    console.log("📐 Row Gap Attributes:");
-    console.log("Desktop Row Gap:", rowGapDesktop, rowGapTypeDesktop);
-    console.log("Tablet Row Gap:", rowGapTablet, rowGapTypeTablet);
-    console.log("Mobile Row Gap:", rowGapMobile, rowGapTypeMobile);
-  }, [
-    rowGapDesktop,
-    rowGapTypeDesktop,
-    rowGapTablet,
-    rowGapTypeTablet,
-    rowGapMobile,
-    rowGapTypeMobile,
-  ]);
-
-  // column gap.
-  useEffect(() => {
-    console.log("📐 Column Gap Attributes:");
-    console.log("Desktop Column Gap:", columnGapDesktop, columnGapTypeDesktop);
-    console.log("Tablet Column Gap:", columnGapTablet, columnGapTypeTablet);
-    console.log("Mobile Column Gap:", columnGapMobile, columnGapTypeMobile);
-  }, [
-    columnGapDesktop,
-    columnGapTypeDesktop,
-    columnGapTablet,
-    columnGapTypeTablet,
-    columnGapMobile,
-    columnGapTypeMobile,
-  ]);
 
   const getCurrentDirection = () => {
     return activeTab === "desktop"
@@ -526,7 +435,6 @@ export default function Inspector(props) {
   ];
 
   const getAlignItemsOptions = (currentDirection) => {
-    console.log("currentDirection -> " + currentDirection);
     const flexDirection = currentDirection.includes("column")
       ? "row"
       : "column";
@@ -559,7 +467,6 @@ export default function Inspector(props) {
     currentDirection,
     isAlignContent = false
   ) => {
-    console.log("JC currentDirection -> " + currentDirection);
     let flexDirection = currentDirection.includes("column") ? "column" : "row";
     if (isAlignContent) {
       flexDirection = currentDirection.includes("column") ? "row" : "column";
