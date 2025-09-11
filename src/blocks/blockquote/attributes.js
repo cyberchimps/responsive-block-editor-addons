@@ -568,19 +568,18 @@ const attributes = {
   // ==== Twitter Typography ====
   twFontFamily: {
     type: "string",
-    default: "",
   },
   twFontSize: {
     type: "number",
-    default: "",
+    default: 20,
   },
   twFontSizeTablet: {
     type: "number",
-    default: "",
+    default: 20,
   },
   twFontSizeMobile: {
     type: "number",
-    default: "",
+    default: 20,
   },
   twFontWeight: {
     type: "string",
@@ -588,7 +587,7 @@ const attributes = {
   },
   twLineHeight: {
     type: "number",
-    default: "",
+    default: 1,
   },
   twTextTransform: {
     type: "string",
@@ -597,10 +596,6 @@ const attributes = {
   twTextDecoration: {
     type: "string",
     default: "",
-  },
-  twIconTextSpacing: {
-    type: "number",
-    default: 8,
   },
   twTypographyColor: {
     type: "string",
@@ -613,7 +608,11 @@ const attributes = {
   quoteFontStyle: {
     type: "string",
     default: "",
-  }
+  },
+  twFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

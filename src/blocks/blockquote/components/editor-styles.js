@@ -136,6 +136,7 @@ function EditorStyles(props) {
     twTypographyColor,
     quoteTextTransform,
     quoteFontStyle,
+    twFontStyle
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -265,7 +266,7 @@ function EditorStyles(props) {
       "border-radius": "999px",
       "border": "1px solid transparent",
       transition: "all .15s ease-in-out",
-
+      "font-style": twFontStyle,
       color: twColor || twTypographyColor,
       background: twBg,
       "padding-top": generateCSSUnit(twTopPadding, "px"),
