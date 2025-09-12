@@ -94,26 +94,15 @@ export default class Save extends Component {
                   "rbea-bq__tweet",
                   `rbea-bq__tweet--${twStyle || "classic"}`
                 )}
-                href={twUrlMode === "custom" && twCustomUrl ? twCustomUrl : "#"}
+                href="#"
                 data-url-mode={twUrlMode || "current"}
                 data-custom-url={twCustomUrl || ""}
                 data-view={twView || "both"}
-                data-label={twLabel || "Post"}
+                data-label={twLabel}
                 data-hover-color={twHColor || ""}
                 data-hover-bg={twHBg || ""}
                 target="_blank"
                 rel="noopener"
-                style={{
-                  color: twColor || undefined,
-                  backgroundColor: twBg || undefined,
-                  fontFamily: twFontFamily ? `"${twFontFamily}", sans-serif` : undefined,
-                  textTransform: twTextTransform || undefined,
-                  textDecoration: twTextDecoration || undefined,
-                  gap: twIconTextSpacing ? `${twIconTextSpacing}px` : undefined,
-                  "--icon-text-spacing": twIconTextSpacing ? `${twIconTextSpacing}px` : undefined,
-                  "--hover-color": twHColor || undefined,
-                  "--hover-bg": twHBg || undefined,
-                }}
               >
                 { (twView !== "text") && (
                   // Custom X icon since dashicons-x doesn't exist
@@ -122,7 +111,7 @@ export default class Save extends Component {
                   </svg>
                 )}
                 { (twView !== "icon") && (
-                  <span className="rbea-bq__label">{ twLabel || "Post" }</span>
+                  <span className="rbea-bq__label">{ twLabel !== undefined ? twLabel : "Post" }</span>
                 )}
               </a>
             </div>

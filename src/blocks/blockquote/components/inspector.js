@@ -312,6 +312,7 @@ export default class Inspector extends Component {
         twTypographyColor,
         quoteTextTransform,
         quoteFontStyle,
+        twFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -924,10 +925,17 @@ export default class Inspector extends Component {
               >
                 {/* Normal / Hover color groups */}
                 <TabPanel
+                  className="responsive-block-editor-addons-inspect-tabs 
+                            responsive-block-editor-addons-inspect-tabs-col-2  
+                            responsive-block-editor-addons-color-inspect-tabs"
                   activeClass="active-tab"
+                  initialTabName="normal"
                   tabs={[
-                    { name: "normal", title: __("Normal", "responsive-block-editor-addons") },
-                    { name: "hover",  title: __("Hover",  "responsive-block-editor-addons") },
+                    { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                    { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                    { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                    { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                    { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
                   ]}
                 >
                   {(tab) => {
@@ -972,24 +980,7 @@ export default class Inspector extends Component {
                     );
                   }}
                 </TabPanel>
-
-                {/* Icon and Text Spacing */}
-                <PanelBody
-                  title={__("Icon and Text Spacing", "responsive-block-editor-addons")}
-                  initialOpen={false}
-                >
-                  <RangeControl
-                    label={__("Spacing (px)", "responsive-block-editor-addons")}
-                    value={twIconTextSpacing}
-                    onChange={(value) => setAttributes({ twIconTextSpacing: value })}
-                    min={0}
-                    max={50}
-                    step={1}
-                    allowReset={true}
-                    resetFallbackValue={8}
-                  />
-                </PanelBody>
-
+                
                 {/* Button Padding (responsive) */}
                 <PanelBody
                   title={__("Button Padding (px)", "responsive-block-editor-addons")}
@@ -1015,7 +1006,7 @@ export default class Inspector extends Component {
                     height: twLineHeight,
                     transform: twTextTransform,
                     textDecoration: twTextDecoration,
-                    // We manage button text color with twColor/twHColor, so no color picker here:
+                    fontstyle: twFontStyle,
                     color: twTypographyColor,
                   }}
                   showLetterSpacing={false}

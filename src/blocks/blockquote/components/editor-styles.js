@@ -136,6 +136,7 @@ function EditorStyles(props) {
     twTypographyColor,
     quoteTextTransform,
     quoteFontStyle,
+    twFontStyle
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -265,7 +266,7 @@ function EditorStyles(props) {
       "border-radius": "999px",
       "border": "1px solid transparent",
       transition: "all .15s ease-in-out",
-
+      "font-style": twFontStyle,
       color: twColor || twTypographyColor,
       background: twBg,
       "padding-top": generateCSSUnit(twTopPadding, "px"),
@@ -279,7 +280,16 @@ function EditorStyles(props) {
       "text-transform": twTextTransform,
       "text-decoration": twTextDecoration,
     },
-
+    " .rbea-bq__tweet *": {
+      color: "inherit !important" // Make sure that theme does not override color,
+    },
+    " .rbea-bq__tweet-wrap .rbea-bq__tweet": {
+      "margin-right": "0.7rem",
+    },
+    " .rbea-bq__tweet svg": {
+      width: generateCSSUnit(twFontSize, "px"), 
+      height: generateCSSUnit(twFontSize, "px")
+    },
     // Hover (attributes-driven)
     " .rbea-bq__tweet:hover": {
       color: twHColor || (twColor || twTypographyColor),
@@ -333,21 +343,25 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(textTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(textBottomPaddingMobile, "px"),
     },
-	" .responsive-block-editor-addons-block-blockquote-text": {
-		"font-size": generateCSSUnit(quoteFontSizeMobile, "px"),
-	},
-  " .responsive-block-editor-addons-section-background-image-wrap .responsive-block-editor-addons-section-background-image": {
-      "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
-      "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
-      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
-      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+    " .responsive-block-editor-addons-block-blockquote-text": {
+      "font-size": generateCSSUnit(quoteFontSizeMobile, "px"),
     },
-  " .rbea-bq__tweet": {
-      "padding-top": generateCSSUnit(twTopPaddingMobile, "px"),
-      "padding-right": generateCSSUnit(twRightPaddingMobile, "px"),
-      "padding-bottom": generateCSSUnit(twBottomPaddingMobile, "px"),
-      "padding-left": generateCSSUnit(twLeftPaddingMobile, "px"),
-      "font-size": generateCSSUnit(twFontSizeMobile, "px"),
+    " .responsive-block-editor-addons-section-background-image-wrap .responsive-block-editor-addons-section-background-image": {
+        "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
+        "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
+        "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
+        "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
+      },
+    " .rbea-bq__tweet": {
+        "padding-top": generateCSSUnit(twTopPaddingMobile, "px"),
+        "padding-right": generateCSSUnit(twRightPaddingMobile, "px"),
+        "padding-bottom": generateCSSUnit(twBottomPaddingMobile, "px"),
+        "padding-left": generateCSSUnit(twLeftPaddingMobile, "px"),
+        "font-size": generateCSSUnit(twFontSizeMobile, "px"),
+      },
+    " .rbea-bq__tweet svg": {
+      width: generateCSSUnit(twFontSizeMobile, "px"), 
+      height: generateCSSUnit(twFontSizeMobile, "px")
     },
   };
 
@@ -374,21 +388,25 @@ function EditorStyles(props) {
       "padding-top": generateCSSUnit(textTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(textBottomPaddingTablet, "px"),
     },
-	" .responsive-block-editor-addons-block-blockquote-text": {
-		"font-size": generateCSSUnit(quoteFontSizeTablet, "px"),
-	},
-  " .responsive-block-editor-addons-section-background-image-wrap .responsive-block-editor-addons-section-background-image": {
-      "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
-      "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
-      "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
-      "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+    " .responsive-block-editor-addons-block-blockquote-text": {
+      "font-size": generateCSSUnit(quoteFontSizeTablet, "px"),
     },
-  " .rbea-bq__tweet": {
-      "padding-top": generateCSSUnit(twTopPaddingTablet, "px"),
-      "padding-right": generateCSSUnit(twRightPaddingTablet, "px"),
-      "padding-bottom": generateCSSUnit(twBottomPaddingTablet, "px"),
-      "padding-left": generateCSSUnit(twLeftPaddingTablet, "px"),
-      "font-size": generateCSSUnit(twFontSizeTablet, "px"),
+    " .responsive-block-editor-addons-section-background-image-wrap .responsive-block-editor-addons-section-background-image": {
+        "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
+        "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
+        "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
+        "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
+      },
+    " .rbea-bq__tweet": {
+        "padding-top": generateCSSUnit(twTopPaddingTablet, "px"),
+        "padding-right": generateCSSUnit(twRightPaddingTablet, "px"),
+        "padding-bottom": generateCSSUnit(twBottomPaddingTablet, "px"),
+        "padding-left": generateCSSUnit(twLeftPaddingTablet, "px"),
+        "font-size": generateCSSUnit(twFontSizeTablet, "px"),
+      },
+    " .rbea-bq__tweet svg": {
+      width: generateCSSUnit(twFontSizeTablet, "px"), 
+      height: generateCSSUnit(twFontSizeTablet, "px")
     },
   };
 

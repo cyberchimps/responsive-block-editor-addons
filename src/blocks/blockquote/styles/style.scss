@@ -53,6 +53,8 @@
 
 .rbea-bq__tweet {
   display: inline-flex;
+  position: inherit;
+  z-index: 6;
   align-items: center;
   gap: var(--icon-text-spacing, 8px);
   text-decoration: none;
