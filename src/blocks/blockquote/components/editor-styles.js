@@ -283,6 +283,9 @@ function EditorStyles(props) {
     " .rbea-bq__tweet *": {
       color: "inherit !important" // Make sure that theme does not override color,
     },
+    " .rbea-bq__tweet-wrap .rbea-bq__tweet": {
+      "margin-right": "0.7rem",
+    },
     " .rbea-bq__tweet svg": {
       width: generateCSSUnit(twFontSize, "px"), 
       height: generateCSSUnit(twFontSize, "px")
