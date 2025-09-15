@@ -787,6 +787,11 @@ function EditorStyles(props, deviceType) {
 	' .block-editor-inner-blocks .block-editor-block-list__layout > [data-type="responsive-block-editor-addons/shape-divider"]'
 	selectors[shapeChild]        = setWidth;
 
+	// Set padding for pricing table inner element
+	const ptChild =
+	' .wp-block-responsive-block-editor-addons-pricing-table-item'
+	selectors[ptChild]        = {'padding': '0px'};
+
 	const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
