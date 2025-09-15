@@ -782,15 +782,27 @@ function EditorStyles(props, deviceType) {
 		}
 	}
 
-	// Set width 100% to shape divider block so that theme does not override it.
+	// Set width 100% to shape divider block.
 	const shapeChild =
 	' .block-editor-inner-blocks .block-editor-block-list__layout > [data-type="responsive-block-editor-addons/shape-divider"]'
 	selectors[shapeChild]        = setWidth;
 
-	// Set padding for pricing table inner element
+	// Set width 100% to flip box.
+	const flipChild =
+	' .block-editor-inner-blocks .block-editor-block-list__layout > [data-type="responsive-block-editor-addons/flipbox"]'
+	selectors[flipChild]        = setWidth;
+
+	const setPadding = { 'padding': '0px' };
+
+	// Set padding for pricing table inner element.
 	const ptChild =
 	' .wp-block-responsive-block-editor-addons-pricing-table-item'
-	selectors[ptChild]        = {'padding': '0px'};
+	selectors[ptChild]        = setPadding
+
+	// Set padding for feature grid inner element.
+	const fgChild =
+	' .wp-block-responsive-block-editor-addons-feature-grid-item'
+	selectors[fgChild]        = setPadding
 
 	const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
