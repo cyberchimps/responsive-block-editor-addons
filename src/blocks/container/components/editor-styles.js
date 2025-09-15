@@ -782,6 +782,11 @@ function EditorStyles(props, deviceType) {
 		}
 	}
 
+	// Set width 100% to shape divider block so that theme does not override it.
+	const shapeChild =
+	' .block-editor-inner-blocks .block-editor-block-list__layout > [data-type="responsive-block-editor-addons/shape-divider"]'
+	selectors[shapeChild]        = setWidth;
+
 	const base_selector = `.editor-styles-wrapper #block-${ clientId }`;
 
 	let styling_css = generateCSS( selectors, base_selector );
