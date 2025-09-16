@@ -595,7 +595,7 @@ class Responsive_Block_Editor_Addons {
 	public function localize_blocks_data_for_editor() {
 		require_once plugin_dir_path( __FILE__ ) . 'class-responsive-block-editor-addons-blocks-updater.php';
 	
-		$updater = new Responsive_Block_Editor_Addons_Blocks_Updater();
+		$updater = Responsive_Block_Editor_Addons_Blocks_Updater::get_instance();
 		$blocks = $updater->get_rbea_blocks();
 	
 		wp_enqueue_script(
@@ -1136,7 +1136,7 @@ class Responsive_Block_Editor_Addons {
 
 			require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
 
-			$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+			$rbea_blocks = Responsive_Block_Editor_Addons_Blocks_Updater::get_instance();
 
 			$blocks = $rbea_blocks->get_rbea_blocks();
 
@@ -1361,7 +1361,7 @@ class Responsive_Block_Editor_Addons {
 
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
 
-		$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+		$rbea_blocks = Responsive_Block_Editor_Addons_Blocks_Updater::get_instance();
 
 		$rbea_path = 'responsive-block-editor-addons/responsive-block-editor-addons.php';
 
@@ -1386,6 +1386,8 @@ class Responsive_Block_Editor_Addons {
 			$blocks = get_option( 'rbea_blocks' );
 			if ( ! $blocks ) {
 				$rbea_blocks->insert_blocks_data();
+			} else {
+				$rbea_blocks->sync_blocks_data( $blocks );
 			}
 		}
 	}

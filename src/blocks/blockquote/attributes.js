@@ -441,6 +441,166 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  twEnabled: { 
+    type: "boolean", 
+    default: true, 
+  },
+  twView: {
+     type: "string",  
+     default: "both", 
+  },
+  twStyle: { 
+    type: "string",  
+    default: "classic", 
+  },
+  twUrlMode: { 
+    type: "string",  
+    default: "current",
+  },
+  twCustomUrl: {
+    type: "string",
+    default: "",
+  },
+  twLabel: {
+    type: "string",  
+    default: "Post",
+  },
+    twEnabled: { 
+    type: "boolean", 
+    default: true, 
+  },
+  twView: {
+    type: "string",  
+    default: "both", 
+  },
+  twStyle: { 
+    type: "string",  
+    default: "classic", 
+  },
+  twUrlMode: { 
+    type: "string",  
+    default: "current",
+  },
+  twCustomUrl: {
+    type: "string",
+    default: "",
+  },
+  twLabel: {
+    type: "string",  
+    default: "Post",
+  },
+
+  // ==== Twitter Colors ====
+  twColor: {
+    type: "string",
+    default: "#ffffff",
+  },
+  twBg: {
+    type: "string",
+    default: "#000000",
+  },
+  twHColor: {
+    type: "string",
+    default: "#ffffff",
+  },
+  twHBg: {
+    type: "string",
+    default: "#000000",
+  },
+
+  // ==== Twitter Padding (Responsive) ====
+  twTopPadding: {
+    type: "number",
+    default: 10,
+  },
+  twRightPadding: {
+    type: "number",
+    default: 16,
+  },
+  twBottomPadding: {
+    type: "number",
+    default: 10,
+  },
+  twLeftPadding: {
+    type: "number",
+    default: 16,
+  },
+
+  twTopPaddingTablet: {
+    type: "number",
+    default: "",
+  },
+  twRightPaddingTablet: {
+    type: "number",
+    default: "",
+  },
+  twBottomPaddingTablet: {
+    type: "number",
+    default: "",
+  },
+  twLeftPaddingTablet: {
+    type: "number",
+    default: "",
+  },
+
+  twTopPaddingMobile: {
+    type: "number",
+    default: "",
+  },
+  twRightPaddingMobile: {
+    type: "number",
+    default: "",
+  },
+  twBottomPaddingMobile: {
+    type: "number",
+    default: "",
+  },
+  twLeftPaddingMobile: {
+    type: "number",
+    default: "",
+  },
+
+  twIsPaddingControlConnected: {
+    type: "boolean",
+    default: false,
+  },
+
+  // ==== Twitter Typography ====
+  twFontFamily: {
+    type: "string",
+  },
+  twFontSize: {
+    type: "number",
+    default: 20,
+  },
+  twFontSizeTablet: {
+    type: "number",
+    default: 20,
+  },
+  twFontSizeMobile: {
+    type: "number",
+    default: 20,
+  },
+  twFontWeight: {
+    type: "string",
+    default: "",
+  },
+  twLineHeight: {
+    type: "number",
+    default: 1,
+  },
+  twTextTransform: {
+    type: "string",
+    default: "",
+  },
+  twTextDecoration: {
+    type: "string",
+    default: "",
+  },
+  twTypographyColor: {
+    type: "string",
+    default: "",
+  },
   quoteTextTransform: {
     type: "string",
     default: "",
@@ -448,7 +608,11 @@ const attributes = {
   quoteFontStyle: {
     type: "string",
     default: "",
-  }
+  },
+  twFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

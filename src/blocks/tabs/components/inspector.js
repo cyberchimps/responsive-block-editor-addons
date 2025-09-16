@@ -76,6 +76,8 @@ export default class Inspector extends Component {
         tabContentFontWeight,
         tabContentLineHeight,
         alignTabs,
+        alignTabsT,
+        alignTabsM,
         z_index,
         z_indexMobile,
         z_indexTablet,
@@ -154,6 +156,8 @@ export default class Inspector extends Component {
         hoverboxShadowSpread,
         hoverboxShadowPosition,
         alignTabsVertical,
+        alignTabsVerticalT,
+        alignTabsVerticalM,
         hideWidget,
         hideWidgetTablet,
         hideWidgetMobile,
@@ -167,6 +171,7 @@ export default class Inspector extends Component {
         tabTitleFontStyle,
         tabContentTextTransform,
         tabContentFontStyle,
+        positionTab,
       },
       setAttributes,
       deviceType,
@@ -282,24 +287,99 @@ export default class Inspector extends Component {
           <InspectorTab key={"content"}>
             <PanelBody>
               <Fragment>
-                <RbeaTabRadioControl
-                  label={__("Position", "responsive-block-editor-addons")}
-                  value={tabsStyleD}
-                  onChange={(value) => setAttributes({ tabsStyleD: value })}
-                  beforeIcon="editor-textcolor"
-                  options={[
+
+                <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
                     {
-                      value: "hstyle3",
-                      label: __("Horizontal", "responsive-block-editor-addons"),
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
                     },
                     {
-                      value: "vstyle8",
-                      label: __("Vertical", "responsive-block-editor-addons"),
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
                     },
                   ]}
-                />
+                >
+                  {(tab) => {
+                    if ("mobile" === tab.name) {
+                      setAttributes({ positionTab: "mobile" });
+                    } else if ("tablet" === tab.name) {
+                      setAttributes({ positionTab: "tablet" });
+                    } else {
+                      setAttributes({ positionTab: "desktop" });
+                    }
+                  }}
+                </TabPanel>
+                
+                {positionTab === "desktop" && (
+                  <RbeaTabRadioControl
+                    label={__("Position", "responsive-block-editor-addons")}
+                    value={tabsStyleD}
+                    onChange={(value) => setAttributes({ tabsStyleD: value })}
+                    beforeIcon="editor-textcolor"
+                    options={[
+                      {
+                        value: "hstyle3",
+                        label: __("Horizontal", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "vstyle8",
+                        label: __("Vertical", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                )}
+                {positionTab === "tablet" && (
+                  <RbeaTabRadioControl
+                    label={__("Position (Tablet)", "responsive-block-editor-addons")}
+                    value={tabsStyleT}
+                    onChange={(value) => setAttributes({ tabsStyleT: value })}
+                    beforeIcon="editor-textcolor"
+                    options={[
+                      {
+                        value: "hstyle3",
+                        label: __("Horizontal", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "vstyle8",
+                        label: __("Vertical", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                )}
+                {positionTab === "mobile" && (
+                  <RbeaTabRadioControl
+                    label={__("Position (Mobile)", "responsive-block-editor-addons")}
+                    value={tabsStyleM}
+                    onChange={(value) => setAttributes({ tabsStyleM: value })}
+                    beforeIcon="editor-textcolor"
+                    options={[
+                      {
+                        value: "hstyle3",
+                        label: __("Horizontal", "responsive-block-editor-addons"),
+                      },
+                      {
+                        value: "vstyle8",
+                        label: __("Vertical", "responsive-block-editor-addons"),
+                      },
+                    ]}
+                  />
+                )}
+
               </Fragment>
-              {tabsStyleD === 'hstyle3' && (<Fragment>
+              {positionTab === 'desktop' && tabsStyleD === 'hstyle3' && (<Fragment>
                 <BaseControl>
                   <p>
                     {__("Alignment", "responsive-block-editor-addons")}
@@ -318,7 +398,8 @@ export default class Inspector extends Component {
                   </div>
                 </BaseControl>
               </Fragment>)}
-              {tabsStyleD === 'vstyle8' && (<Fragment>
+
+              {positionTab === 'desktop' && tabsStyleD === 'vstyle8' && (<Fragment>
                 <BaseControl>
                   <p>
                     {__("Alignment", "responsive-block-editor-addons")}
@@ -343,6 +424,98 @@ export default class Inspector extends Component {
               </div>
               </BaseControl>
               </Fragment>)}
+
+              {positionTab === 'tablet' && tabsStyleT === 'hstyle3' && (
+                <Fragment>
+                  <BaseControl>
+                    <p>{__("Alignment (Tablet)", "responsive-block-editor-addons")}</p>
+                    <div className="responsive-block-editor-addons-alignment">
+                      <AlignmentToolbar
+                        value={alignTabsT}
+                        onChange={(value) =>
+                          setAttributes({
+                            alignTabsT: value,
+                          })
+                        }
+                        controls={["left", "center", "right"]}
+                        isCollapsed={false}
+                      />
+                    </div>
+                  </BaseControl>
+                </Fragment>
+              )}
+              {positionTab === 'tablet' && tabsStyleT === 'vstyle8' && (
+                <Fragment>
+                  <BaseControl>
+                    <p>{__("Alignment (Tablet)", "responsive-block-editor-addons")}</p>
+                    <div className="responsive-block-editor-addons-tabs-alignment-container">
+                      <Button
+                        key={"left"}
+                        icon={alignLeft}
+                        label="Left"
+                        onClick={() => setAttributes({ alignTabsVerticalT: "left" })}
+                        aria-pressed={"left" === alignTabsVerticalT}
+                        isPrimary={"left" === alignTabsVerticalT}
+                      />
+                      <Button
+                        key={"right"}
+                        icon={alignRight}
+                        label="Right"
+                        onClick={() => setAttributes({ alignTabsVerticalT: "right" })}
+                        aria-pressed={"right" === alignTabsVerticalT}
+                        isPrimary={"right" === alignTabsVerticalT}
+                      />
+                    </div>
+                  </BaseControl>
+                </Fragment>
+              )}
+
+              {positionTab === 'mobile' && tabsStyleM === 'hstyle3' && (
+                <Fragment>
+                  <BaseControl>
+                    <p>{__("Alignment (Mobile)", "responsive-block-editor-addons")}</p>
+                    <div className="responsive-block-editor-addons-alignment">
+                      <AlignmentToolbar
+                        value={alignTabsM}
+                        onChange={(value) =>
+                          setAttributes({
+                            alignTabsM: value,
+                          })
+                        }
+                        controls={["left", "center", "right"]}
+                        isCollapsed={false}
+                      />
+                    </div>
+                  </BaseControl>
+                </Fragment>
+              )}
+
+              {positionTab === 'mobile' && tabsStyleM === 'vstyle8' && (
+                <Fragment>
+                  <BaseControl>
+                    <p>{__("Alignment (Mobile)", "responsive-block-editor-addons")}</p>
+                    <div className="responsive-block-editor-addons-tabs-alignment-container">
+                      <Button
+                        key={"left"}
+                        icon={alignLeft}
+                        label="Left"
+                        onClick={() => setAttributes({ alignTabsVerticalM: "left" })}
+                        aria-pressed={"left" === alignTabsVerticalM}
+                        isPrimary={"left" === alignTabsVerticalM}
+                      />
+                      <Button
+                        key={"right"}
+                        icon={alignRight}
+                        label="Right"
+                        onClick={() => setAttributes({ alignTabsVerticalM: "right" })}
+                        aria-pressed={"right" === alignTabsVerticalM}
+                        isPrimary={"right" === alignTabsVerticalM}
+                      />
+                    </div>
+                  </BaseControl>
+                </Fragment>
+              )}
+
             </PanelBody>
             <RbeaSupportControl blockSlug={"tabs"} />
           </InspectorTab>

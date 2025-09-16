@@ -1,0 +1,257 @@
+.responsive-block-editor-addons-container-variation-picker {
+	.block-editor-block-variation-picker__variations {
+		width: 75%;
+		justify-content: center;
+		gap: 0;
+		margin: 16px 0;
+
+		.components-button,
+		.components-button.is-secondary,
+		.components-button.is-tertiary,
+		.components-button:hover:not( :disabled ) {
+			box-shadow: none;
+			outline: none;
+			color: #E3E3E3 !important; // WP CSS using important, so need to override it.
+			padding: 0;
+			margin-bottom: 0;
+
+			svg {
+				width: 100px;
+				height: 50px;
+				fill: #E3E3E3 !important; // WP CSS using important, so need to override it.
+
+				&:hover {
+					fill: #ADADAD !important; // WP CSS using important, so need to override it.
+				}
+			}
+		}
+
+		.components-button:hover:not( :disabled ) svg {
+			color: #bcc0c4 !important; // WP CSS using important, so need to override it.
+		}
+
+		> li {
+			margin: 20px 16px 0 0;
+			flex-basis: content;
+			width: 80px;
+		}
+	}
+
+	.block-editor-block-variation-picker__skip {
+		.components-button {
+			color: #0073aa;
+		}
+	}
+
+	.components-placeholder {
+		align-items: center;
+		border: 1px dashed #555d66;
+		box-shadow: none;
+
+		&.components-placeholder {
+			// Keeps placeholder in center for all device.
+			align-items: center;
+			gap: 0;
+		}
+
+		&.is-large .components-placeholder__label,
+		.components-placeholder__label {
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 29px;
+			margin-bottom: 4px;
+			color: #1d2327;
+		}
+	}
+
+	.components-placeholder__label {
+		svg {
+			width: 40px;
+			height: 40px;
+			margin-right: 12px;
+		}
+	}
+
+	.block-editor-block-variation-picker__variation::before {
+		padding-bottom: 0;
+	}
+
+	.components-placeholder__fieldset {
+		align-items: center;
+		text-align: center;
+		flex-direction: column;
+		max-width: 90%;
+	}
+
+	.components-placeholder__instructions {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 100%;
+		color: #666666;
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+	}
+}
+
+.wp-block-responsive-block-editor-addons-container::before {
+	content: "";
+	position: absolute;
+	border: 1px dashed #d5dadf;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.responsive-block-editor-addons-container-has-children.wp-block-responsive-block-editor-addons-container::before {
+	border: 0;
+}
+
+.wp-block-responsive-block-editor-addons-container {
+  display: flex;
+
+  .block-editor-block-list__layout {
+		.block-list-appender.wp-block {
+			width: auto;
+
+			button {
+				color: #a0a7ac;
+				font-size: 62px;
+				border: none;
+				box-shadow: none;
+
+				svg {
+					width: 36px;
+					height: 36px;
+				}
+			}
+		}
+	}
+}
+
+.wp-block-responsive-block-editor-addons-container {
+	& > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks,
+	& > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout,
+	& > .block-editor-inner-blocks,
+	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+		display: flex;
+		width: 100%;
+		height: 100%;
+
+		.wp-block[data-type*="responsive-block-editor-addons/"]:not([data-type="responsive-block-editor-addons/buttons-child"]),
+		.wp-block[data-type*="core/"]:not([data-type="core/button"]) {
+			width: 100%;
+			box-sizing: border-box;
+		}
+	}
+}
+
+.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-inner-blocks-wrap > .block-editor-inner-blocks {
+	z-index: 2;
+}
+
+.wp-block-responsive-block-editor-addons-container > .responsive-block-editor-addons-container-inner-blocks-wrap {
+	width: 100%;
+}
+
+.editor-styles-wrapper .has-global-padding > .alignfull.wp-block-responsive-block-editor-addons-container.responsive-block-editor-addons-is-root-container {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Hover CSS to access the nested containers when hovering on them.
+.is-root-container > .block-editor-block-list__block.wp-block-responsive-block-editor-addons-container:not(.is-selected):hover,
+.is-root-container > .block-editor-block-list__block.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block:not(.is-selected):hover {
+	outline: 1.5px solid #2271b1;
+	outline-offset: 0;
+}
+
+// Container Block Inspector.
+.rbea-container-custom-radio-control {
+	.rbea-tab-radio-option {
+		padding-top: 6px !important; // Override for container block only.
+		.rbea-tab-radio-option-border {
+			svg {
+				width: 20px;
+				height: 20px;
+				fill: #666666;
+			}
+		}
+		&.is-active {
+			svg {
+				fill: #fff;
+			}
+		}
+	}
+}
+
+.rbea-inspector-tab {
+	.responsive-block-editor-addons-color-inspect-tabs {
+		.rbea-inspector-container-tab {
+			.components-tab-panel__tabs	{
+				display: block;
+				margin-bottom: 0;
+				width: auto;
+			}
+		}
+	}
+	.rbea-container-select-control {
+		.components-select-control {
+			flex-direction: column;
+			align-items: flex-start;
+			padding-top: 12px;
+		}
+		label {
+			margin-bottom: 0px;
+			font-family: "Roboto", sans-serif;
+			font-size: 13px !important; //WP is overriding
+			font-weight: 400 !important; //WP is overriding
+			line-height: 16.41px !important; //WP is overriding
+			text-align: left !important; //WP is overriding
+			color: #666;
+			text-transform: capitalize !important; //WP is overriding
+		}
+	}
+	.rbea-container-responsive-tabs {
+		.rbea-tab-buttons {
+			border-bottom: 0;
+			text-align: right;
+			margin-right: 10px;
+			display: block;
+			position: relative;
+			top: 22px;
+			button {
+				cursor: pointer;
+				&.rbea-responsive-device-tabs {
+					color: #23282d;
+					background-color: #e4e5e5;
+					box-shadow: none;
+					border: 0;
+					border-bottom: 0;
+					padding: 2px;
+					margin-bottom: 0;
+					outline: 0;
+					width: auto;
+					font-size: 8px;
+					background: transparent;
+					color: #999;
+					display: inline-block;
+					border-radius: 50%;
+					height: 20px !important;
+					width: 20px;
+				}
+				&.active-tab {
+					color: #23282d;
+					background-color: #e4e5e5;
+					box-shadow: none;
+				}
+				.dashicons {
+					width: 15px;
+					font-size: 15px;
+					height: 15px;
+				}
+			}
+		}
+	}
+}

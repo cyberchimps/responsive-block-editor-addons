@@ -31,7 +31,7 @@ class Responsive_Block_Editor_Addons_Activator {
 	public static function activate() {
 		set_transient( 'responsive_block_editor_addons_activation_redirect', true, MINUTE_IN_SECONDS );
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
-		$rbea_blocks = new Responsive_Block_Editor_Addons_Blocks_Updater();
+		$rbea_blocks = Responsive_Block_Editor_Addons_Blocks_Updater::get_instance();
 		$rbea_blocks->insert_blocks_data();
 	}
 }
