@@ -24136,6 +24136,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				}
 
 				if ( 'video' !== $attr['backgroundType'] ) {
+
+					$desktop_border_width_top    = $desktop_border_width['top'] === 0 ? '0px' : self::get_css_value( $desktop_border_width['top'], 'px' );
+					$desktop_border_width_bottom = $desktop_border_width['bottom'] === 0 ? '0px' : self::get_css_value( $desktop_border_width['bottom'], 'px' );
+					$desktop_border_width_left   = $desktop_border_width['left'] === 0 ? '0px' : self::get_css_value( $desktop_border_width['left'], 'px' );
+					$desktop_border_width_right  = $desktop_border_width['right'] === 0 ? '0px' : self::get_css_value( $desktop_border_width['right'], 'px' );
+
 					$selectors = array_merge(
 						$selectors,
 						array(
@@ -24144,40 +24150,50 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 									'content'        => '""',
 									'position'       => 'absolute',
 									'pointer-events' => 'none',
-									'top'            => '-' . self::get_css_value( $desktop_border_width['top'], 'px' ),
-									'left'           => '-' . self::get_css_value( $desktop_border_width['left'], 'px' ),
-									'width'          => 'calc(100% + ' . self::get_css_value( $desktop_border_width['left'], 'px' ) . ' + ' . self::get_css_value( $desktop_border_width['right'], 'px' ) . ')',
-									'height'         => 'calc(100% + ' . self::get_css_value( $desktop_border_width['top'], 'px' ) . ' + ' . self::get_css_value( $desktop_border_width['bottom'], 'px' ) . ')',
+									'top'            => '-' . $desktop_border_width_top,
+									'left'           => '-' . $desktop_border_width_left,
+									'width'          => 'calc(100% + ' . $desktop_border_width_left . ' + ' . $desktop_border_width_right . ')',
+									'height'         => 'calc(100% + ' . $desktop_border_width_top . ' + ' . $desktop_border_width_bottom . ')',
 								),
 								$overlay_css_desktop
 							),
 						)
 					);
 
+					$tablet_border_width_top    = $tablet_border_width['top'] === 0 ? '0px' : self::get_css_value( $tablet_border_width['top'], 'px' );
+					$tablet_border_width_bottom = $tablet_border_width['bottom'] === 0 ? '0px' : self::get_css_value( $tablet_border_width['bottom'], 'px' );
+					$tablet_border_width_left   = $tablet_border_width['left'] === 0 ? '0px' : self::get_css_value( $tablet_border_width['left'], 'px' );
+					$tablet_border_width_right  = $tablet_border_width['right'] === 0 ? '0px' : self::get_css_value( $tablet_border_width['right'], 'px' );
+
 					$tablet_selectors = array_merge(
 						$tablet_selectors,
 						array(
 							$base_selector . '::before' => array_merge(
 								array(
-									'top'    => '-' . self::get_css_value( $tablet_border_width['top'], 'px' ),
-									'left'   => '-' . self::get_css_value( $tablet_border_width['left'], 'px' ),
-									'width'  => 'calc(100% + ' . self::get_css_value( $tablet_border_width['left'], 'px' ) . ' + ' . self::get_css_value( $tablet_border_width['right'], 'px' ) . ')',
-									'height' => 'calc(100% + ' . self::get_css_value( $tablet_border_width['top'], 'px' ) . ' + ' . self::get_css_value( $tablet_border_width['bottom'], 'px' ) . ')',
+									'top'    => '-' . $tablet_border_width_top,
+									'left'   => '-' . $tablet_border_width_left,
+									'width'  => 'calc(100% + ' . $tablet_border_width_left . ' + ' . $tablet_border_width_right . ')',
+									'height' => 'calc(100% + ' . $tablet_border_width_top . ' + ' . $tablet_border_width_bottom . ')',
 								),
 								$overlay_css_tablet
 							),
 						)
 					);
 
+					$mobile_border_width_top    = $mobile_border_width['top'] === 0 ? '0px' : self::get_css_value( $mobile_border_width['top'], 'px' );
+					$mobile_border_width_bottom = $mobile_border_width['bottom'] === 0 ? '0px' : self::get_css_value( $mobile_border_width['bottom'], 'px' );
+					$mobile_border_width_left   = $mobile_border_width['left'] === 0 ? '0px' : self::get_css_value( $mobile_border_width['left'], 'px' );
+					$mobile_border_width_right  = $mobile_border_width['right'] === 0 ? '0px' : self::get_css_value( $mobile_border_width['right'], 'px' );
+
 					$mobile_selectors = array_merge(
 						$mobile_selectors,
 						array(
 							$base_selector . '::before' => array_merge(
 								array(
-									'top'    => '-' . self::get_css_value( $mobile_border_width['top'], 'px' ),
-									'left'   => '-' . self::get_css_value( $mobile_border_width['left'], 'px' ),
-									'width'  => 'calc(100% + ' . self::get_css_value( $mobile_border_width['left'], 'px' ) . ' + ' . self::get_css_value( $mobile_border_width['right'], 'px' ) . ')',
-									'height' => 'calc(100% + ' . self::get_css_value( $mobile_border_width['top'], 'px' ) . ' + ' . self::get_css_value( $mobile_border_width['bottom'], 'px' ) . ')',
+									'top'    => '-' . $mobile_border_width_top,
+									'left'   => '-' . $mobile_border_width_left,
+									'width'  => 'calc(100% + ' . $mobile_border_width_left . ' + ' . $mobile_border_width_right . ')',
+									'height' => 'calc(100% + ' . $mobile_border_width_top . ' + ' . $mobile_border_width_bottom . ')',
 								),
 								$overlay_css_mobile
 							),
