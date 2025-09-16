@@ -23856,9 +23856,12 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 
 			// Add max-width and width.
-			$selectors[ '.responsive-block-editor-addons-is-root-container .responsive-block-editor-addons-block-' . $id ] = array(
+			$selectors['.wp-block-responsive-block-editor-addons-container'.
+			'.responsive-block-editor-addons-is-root-container'.
+       		'[class*="responsive-block-editor-addons-block-' . $id . '"]'] = array(
 				'max-width' => self::get_css_value( $attr['customWidthDesktop'], $attr['customWidthTypeDesktop'] ),
 				'width'     => '100%',
+				'margin'	=> 'auto',
 			);
 
 			$tablet_selectors[ '.responsive-block-editor-addons-is-root-container ' . $base_selector ] = array(
