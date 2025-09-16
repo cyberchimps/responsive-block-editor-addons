@@ -45,6 +45,15 @@ class Responsive_Block_Editor_Addons {
 	protected $version;
 
 	/**
+	 * Verify whether any block is using animations extension .
+	 *
+	 * @since    2.1.2
+	 * @access   protected
+	 * @var      boolean    $is_animations_on    Whether animations extension is used by any block.
+	 */
+	protected static $is_animations_on = false;
+
+	/**
 	 * Responsive Block Editor Addons Blocks.
 	 * 
 	 * @since 2.0.7
@@ -640,7 +649,7 @@ class Responsive_Block_Editor_Addons {
 
 		$is_taxonomy_list_on         = 1;
 		$is_contact_7_form_styler_on = 1;
-		$is_animation_on             = 1;
+		$is_animation_toggled_on     = 1;
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
@@ -653,7 +662,7 @@ class Responsive_Block_Editor_Addons {
 		}
 
 		if ( isset( $block_status_map['animations'] ) ) {
-			$is_animation_on = $block_status_map['animations'];
+			$is_animation_toggled_on = $block_status_map['animations'];
 		}
 
 		$include_all_taxonomy = 0;
@@ -688,7 +697,7 @@ class Responsive_Block_Editor_Addons {
 				'home_url'                           => home_url(),
 				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
-				'is_animation_on'                    => $is_animation_on,
+				'is_animation_on'                    => $is_animation_toggled_on,
 			)
 		);
 
@@ -717,6 +726,28 @@ class Responsive_Block_Editor_Addons {
 				'deactivated_blocks' => $deactivated_blocks,
 			)
 		);
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animation_toggled_ton = $block_status_map['animations'];
+		}
+
+		if ( $is_animation_toggled_ton ) {
+			wp_enqueue_style(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/aos/aos.min.css' ),
+			);
+			wp_enqueue_script(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/aos/aos.min.js',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/js/vendors/aos/aos.min.js' ),
+				true
+			);
+		}
 	}
 
 	/**
@@ -888,6 +919,15 @@ class Responsive_Block_Editor_Addons {
 					$blocks = parse_blocks( $post->post_content );
 				}
 
+				if ( ! self::$is_animations_on ) {
+					foreach ( $blocks as $block ) {
+						error_log( print_r( $block, true ) );
+						if ( ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
+							self::$is_animations_on = true;
+						}
+					}
+				}
+
 				foreach ( $widget_blocks as $widget ) {
 					if ( ! empty( $widget['content'] ) ) {
 						$flag = true;
@@ -1027,10 +1067,10 @@ class Responsive_Block_Editor_Addons {
 		$block_status_map = array_column( (array) $rbea_blocks, 'status', 'key' );
 
 		if ( isset( $block_status_map['animations'] ) ) {
-			$is_animations_on = $block_status_map['animations'];
+			$is_animations_toggled_on = $block_status_map['animations'];
 		}
 
-		if ( $is_animations_on ) {
+		if ( $is_animations_toggled_on && self::$is_animations_on ) {
 			wp_enqueue_style(
 				'responsive-block-editor-addons-aos',
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
@@ -1838,18 +1878,19 @@ class Responsive_Block_Editor_Addons {
 	 * Load Frontend Scripts.
 	 */
 	public function responsive_block_editor_addons_load_frontend_scripts() {
+
 		$blocks = get_option( 'rbea_blocks' );
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
 		if ( isset( $block_status_map['animations'] ) ) {
-			$is_animations_on = $block_status_map['animations'];
+			$is_animations_toggled_on = $block_status_map['animations'];
 		}
 
-		if ( $is_animations_on ) {
+		if ( $is_animations_toggled_on && self::$is_animations_on ) {
 			wp_enqueue_script(
 				'responsive-block-editor-addons-frontend-scripts',
-				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-aos-initilized.js',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-aos-initialized.js',
 				array(),
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 				true
@@ -1868,10 +1909,10 @@ class Responsive_Block_Editor_Addons {
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
 		if ( isset( $block_status_map['animations'] ) ) {
-			$is_animations_on = $block_status_map['animations'];
+			$is_animations_toggled_on = $block_status_map['animations'];
 		}
 
-		if ( $is_animations_on && ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
+		if ( $is_animations_toggled_on && ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
 			$attrs = $block['attrs'];
 			$attrs['RBEAAnimationTime']   = isset( $attrs['RBEAAnimationTime'] ) ? $attrs['RBEAAnimationTime'] : 400;
 			$attrs['RBEAAnimationDelay']  = isset( $attrs['RBEAAnimationDelay'] ) ? $attrs['RBEAAnimationDelay'] : 0;
