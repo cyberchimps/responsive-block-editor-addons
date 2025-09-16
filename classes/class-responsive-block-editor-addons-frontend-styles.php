@@ -19585,6 +19585,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleFontStyle'               => '',
 				'subtitleTextTransform'        => '',
 				'subtitleFontStyle'            => '',
+				'textTextTransform'            => '',
+				'textFontStyle'                => '',
 			);
 		}
 
