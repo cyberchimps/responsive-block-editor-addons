@@ -1,8 +1,8 @@
 const Logo = responsive_globals.home_url + '/wp-content/plugins/responsive-block-editor-addons/admin/images/responsive-blocks.svg';
 
 const RbeaSupportControl = ({ blockSlug }) => {
-    const blockData = (typeof rbeaSupportBlocks !== 'undefined' && Array.isArray(rbeaSupportBlocks.blocks))
-        ? rbeaSupportBlocks.blocks.find(block => block.key === blockSlug)
+    const blockData = (typeof responsive_globals !== 'undefined' && Array.isArray(responsive_globals.blocks))
+        ? responsive_globals.blocks.find(block => block.key === blockSlug)
         : null;
 
     const demoUrl = blockData ? blockData.demo : '#';
