@@ -708,6 +708,7 @@ class Responsive_Block_Editor_Addons {
 				'auto_block_recovery'                => get_option( 'rbea_auto_block_recovery', '1' ),
 				'blocks'                             => $blocks,
 				'is_animation_on'                    => $is_animation_toggled_on,
+				'user_roles'                         => $this->get_user_roles(),
 			)
 		);
 
@@ -1969,5 +1970,33 @@ class Responsive_Block_Editor_Addons {
 			$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
 		}
 		return $block_content;
+	}
+
+	/**
+	 *  Get the User Roles
+	 *
+	 *  @since 2.1.2
+	 */
+	public function get_user_roles() {
+
+		global $wp_roles;
+
+		$field_options = array();
+
+		$role_lists = $wp_roles->get_names();
+
+		$field_options[0] = array(
+			'value' => '',
+			'label' => __( 'None', 'responsive-block-editor-addons' ),
+		);
+
+		foreach ( $role_lists as $key => $role_list ) {
+			$field_options[] = array(
+				'value' => $key,
+				'label' => $role_list,
+			);
+		}
+
+		return $field_options;
 	}
 }
