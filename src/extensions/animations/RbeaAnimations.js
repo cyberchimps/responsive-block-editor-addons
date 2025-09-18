@@ -150,6 +150,7 @@ const RbeaAnimations = () => {
 						>
 						</SelectControl>
 						<ToggleControl
+							__nextHasNoMarginBottom
 							label={__("Play Repeatedly on Scroll", "responsive-block-editor-addons")}
 							checked={RBEAAnimationRepeat}
 							onChange={() => setAttributes({ RBEAAnimationRepeat: !RBEAAnimationRepeat,}) }
