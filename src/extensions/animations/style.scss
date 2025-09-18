@@ -16,4 +16,8 @@
 }
 .rbea-flex-wrapper {
     display: flex;
+    flex-wrap: wrap;
+}
+.rbea-flex-wrapper .rbea-flex-wrapper-items {
+    width: 50%;
 }

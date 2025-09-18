@@ -18,14 +18,23 @@ const RbeaDisplayConditions = () => {
         { value: 'day', label: __( 'Day', 'responsive-block-editor-addons' ) },
     ];
 
-    // const handleChange = ( e ) => {
-	// 	const { value, checked } = e.target;
-	// 	setAttributes( {
-	// 		UAGDay: checked ? [...UAGDay, value] : updateUAGDay( UAGDay, value )
-	// 	} );
-	// };
+	const weekdays = [
+		{ key: 'monday', label: __('Monday', 'responsive-block-editor-addons') },
+		{ key: 'tuesday', label: __('Tuesday', 'responsive-block-editor-addons') },
+		{ key: 'wednesday', label: __('Wednesday', 'responsive-block-editor-addons') },
+		{ key: 'thursday', label: __('Thursday', 'responsive-block-editor-addons') },
+		{ key: 'friday', label: __('Friday', 'responsive-block-editor-addons') },
+		{ key: 'saturday', label: __('Saturday', 'responsive-block-editor-addons') },
+		{ key: 'sunday', label: __('Sunday', 'responsive-block-editor-addons') },
+	];
 
-    const [ isChecked, setChecked ] = useState( true );
+    const handleDayChange = ( dayKey, value ) => {
+		if ( value && !RBEADay.includes(dayKey) ) {
+			setAttributes( { RBEADay: [...RBEADay, dayKey] } );
+		} else  if ( !value ) {
+			setAttributes( { RBEADay: RBEADay.filter((day) => day !== dayKey) } );
+		}
+	}
 
     return (
         <PanelBody
@@ -128,11 +137,19 @@ const RbeaDisplayConditions = () => {
 			)}
             { RBEADisplayConditions === 'day' && (
                 <>
-                    <div className="rbea-flex-wrapper" >
-                        <div>one</div>
-                        <div>two</div>
-                        <div>three</div>
-                        <div>four</div>
+					<p>{__('Select days you want to disable.', 'responsive-block-editor-addons')}</p>
+                    <div className="rbea-flex-wrapper">
+						{weekdays.map(({key, label}) => (
+							<div className="rbea-flex-wrapper-items">
+								<CheckboxControl
+									key={key}
+									__nextHasNoMarginBottom
+									label={label}
+									checked={ RBEADay.includes(key) }
+									onChange={ (value) => handleDayChange( key, value ) }
+								/>
+							</div>
+						))}
                     </div>
                 </>
             )}
