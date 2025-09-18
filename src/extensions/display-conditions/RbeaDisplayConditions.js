@@ -1,7 +1,6 @@
 import { useRbeaExtensionContext } from '../context/RbeaExtensionContext'
 import { ToggleControl, SelectControl, PanelBody, CheckboxControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { useEffect, useState } from "@wordpress/element";
 
 const RbeaDisplayConditions = () => {
 
