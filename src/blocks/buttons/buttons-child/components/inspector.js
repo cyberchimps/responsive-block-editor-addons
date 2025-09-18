@@ -22,6 +22,116 @@ import RbeaSupportControl from "../../../../utils/components/rbea-support-contro
 import borderStyleIcons from "../icons/border-style-icons";
 import presets from "./button-presets";
 
+// Preset configurations
+const presetConfigs = {
+  preset1: {
+	background: '#007cba',
+    color: 'white',
+    borderRadius: 0,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset2: {
+    background: '#007cba',
+    color: 'white',
+    borderRadius: 3,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset3: {
+    background: '#007cba',
+    color: 'white',
+    borderRadius: 20,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset4: {
+    background: '#007cba',
+    color: 'white',
+    borderRadius: 3,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset5: {
+    background: 'white',
+    color: '#007cba',
+    borderRadius: 0,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba'
+  },
+  preset6: {
+    background: 'white',
+    color: '#007cba',
+    borderRadius: 3,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba'
+  },
+  preset7: {
+    background: 'white',
+    color: '#007cba',
+    borderRadius: 20,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba'
+  },
+  preset8: {
+    background: 'white',
+    color: '#007cba',
+    borderRadius: 3,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba'
+  }
+};
+
+// Helper function to apply preset attributes
+const applyPresetAttributes = (presetName, setAttributes) => {
+  const config = presetConfigs[presetName];
+  if (!config) return;
+  
+  const attributes = {
+    buttonPreset: presetName,
+	backgroundType: 'color', 
+    background: config.background,
+    color: config.color,
+    borderStyle: config.borderStyle,
+    borderWidth: config.borderWidth,
+    borderColor: config.borderColor,
+  };
+  
+  // Set icon attributes only for presets 4 and 8
+  if (presetName === 'preset4' || presetName === 'preset8') {
+    attributes.icon = 'arrow-right';
+    attributes.iconPosition = 'after';
+    attributes.icon_color = config.color; // Set icon color to match preset text color
+  } else {
+    // Clear icon attributes for other presets
+    attributes.icon = '';
+    attributes.iconPosition = 'after';
+    attributes.icon_color = '';
+  }
+  
+  // Set border radius for all devices and sides
+  if (config.borderRadius !== undefined) {
+    const radiusAttrs = [
+      'blockTopRadius', 'blockRightRadius', 'blockBottomRadius', 'blockLeftRadius',
+      'blockTopRadiusTablet', 'blockRightRadiusTablet', 'blockBottomRadiusTablet', 'blockLeftRadiusTablet',
+      'blockTopRadiusMobile', 'blockRightRadiusMobile', 'blockBottomRadiusMobile', 'blockLeftRadiusMobile'
+    ];
+    radiusAttrs.forEach(attr => {
+      attributes[attr] = config.borderRadius;
+    });
+  }
+  
+  setAttributes(attributes);
+};
+
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -502,38 +612,46 @@ export default class Inspector extends Component {
 								]}
 							/>
 							<hr className="responsive-block-editor-addons-editor__separator" />
+						</PanelBody>
+						<PanelBody title={__("Presets", "responsive-block-editor-addons")} initialOpen={true}>
 							<div className="responsive-block-editor-addons-button-preset-wrap">
-								<div className="responsive-block-editor-addons-button-preset-header">
-									<p className="components-base-control__label">{__("Presets", "responsive-block-editor-addons")}</p>
-									<Button 
-										style={buttonPreset === '' ? {cursor: 'auto'} : {cursor: 'pointer'}} 
-										onClick={() => setAttributes({ 
-											buttonPreset: '', 
-											background: '#007cba', 
-											color: '#fff', 
-											borderRadius: 0,
-											borderStyle: 'solid',
-											borderWidth: 1,
-											borderColor: '#007cba'
-										})} 
-										size="small"
-									>
-										<Dashicon icon="image-rotate" className={buttonPreset === '' ? 'image-rotate-reset' : ''} />
-									</Button>
-								</div>
-								<div className="responsive-block-editor-addons-button-preset-grid">
+									<div className="responsive-block-editor-addons-button-preset-header">
+										<Button 
+											style={buttonPreset === '' ? {cursor: 'auto'} : {cursor: 'pointer'}} 
+											onClick={() => setAttributes({ 
+												buttonPreset: '',
+												background: '',
+												color: '#000',
+												borderRadius: 2,
+												borderStyle: 'solid',
+												borderWidth: 1,
+												borderColor: '#000',
+												icon: '',
+												iconPosition: 'after',
+												icon_color: '',
+												blockTopRadius: 2,
+												blockRightRadius: 2,
+												blockBottomRadius: 2,
+												blockLeftRadius: 2,
+												blockTopRadiusTablet: 2,
+												blockRightRadiusTablet: 2,
+												blockBottomRadiusTablet: 2,
+												blockLeftRadiusTablet: 2,
+												blockTopRadiusMobile: 2,
+												blockRightRadiusMobile: 2,
+												blockBottomRadiusMobile: 2,
+												blockLeftRadiusMobile: 2
+											})} 
+											size="small"
+										>
+											<Dashicon icon="image-rotate" className={buttonPreset === '' ? 'image-rotate-reset' : ''} />
+										</Button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset-grid">
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset1' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset1', 
-												background: '#007cba', 
-												color: '#fff', 
-												borderRadius: 0,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#007cba'
-											})}
+											onClick={() => applyPresetAttributes('preset1', setAttributes)}
 										>
 											{presets.preset1}
 										</button>
@@ -541,15 +659,7 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset2' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset2', 
-												background: '#fff', 
-												color: '#666666', 
-												borderRadius: 0,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#666666'
-											})}
+											onClick={() => applyPresetAttributes('preset2', setAttributes)}
 										>
 											{presets.preset2}
 										</button>
@@ -557,15 +667,7 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset3' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset3', 
-												background: '#666666', 
-												color: '#fff', 
-												borderRadius: 3,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#666666'
-											})}
+											onClick={() => applyPresetAttributes('preset3', setAttributes)}
 										>
 											{presets.preset3}
 										</button>
@@ -573,15 +675,7 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset4' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset4', 
-												background: '#fff', 
-												color: '#666666', 
-												borderRadius: 3,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#666666'
-											})}
+											onClick={() => applyPresetAttributes('preset4', setAttributes)}
 										>
 											{presets.preset4}
 										</button>
@@ -589,15 +683,7 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset5' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset5', 
-												background: '#fff', 
-												color: '#666666', 
-												borderRadius: 0,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#666666'
-											})}
+											onClick={() => applyPresetAttributes('preset5', setAttributes)}
 										>
 											{presets.preset5}
 										</button>
@@ -605,15 +691,7 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset6' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset6', 
-												background: '#fff', 
-												color: '#666666', 
-												borderRadius: 2,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#666666'
-											})}
+											onClick={() => applyPresetAttributes('preset6', setAttributes)}
 										>
 											{presets.preset6}
 										</button>
@@ -621,15 +699,7 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset7' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset7', 
-												background: '#fff', 
-												color: '#666666', 
-												borderRadius: 16,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#666666'
-											})}
+											onClick={() => applyPresetAttributes('preset7', setAttributes)}
 										>
 											{presets.preset7}
 										</button>
@@ -637,15 +707,7 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset">
 										<button 
 											className={buttonPreset === 'preset8' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
-											onClick={() => setAttributes({ 
-												buttonPreset: 'preset8', 
-												background: '#fff', 
-												color: '#666666', 
-												borderRadius: 2,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#666666'
-											})}
+											onClick={() => applyPresetAttributes('preset8', setAttributes)}
 										>
 											{presets.preset8}
 										</button>

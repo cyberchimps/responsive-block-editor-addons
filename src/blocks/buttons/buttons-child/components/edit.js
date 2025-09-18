@@ -88,10 +88,77 @@ export default class Edit extends Component {
         boxShadowPosition,
         hoverEffect,
         inheritFromTheme,
+        buttonPreset,
+        borderRadius,
+        borderStyle,
+        borderWidth,
+        borderColor,
+        blockTopRadius,
       },
       isSelected,
       setAttributes,
     } = this.props;
+
+  // Apply preset styles by modifying existing attribute values
+  let presetBackground = '#007cba';
+  let presetColor = 'white';
+  let presetBorderRadius = borderRadius;
+  let presetBorderStyle = borderStyle;
+  let presetBorderWidth = '1px';
+  let presetBorderColor = 'black';
+
+
+  //     if (buttonPreset) {
+  //   switch (buttonPreset) {
+  //     case 'preset1':
+  //       this.props.setAttributes({blockTopRadius: 0});
+  //       console.log('preset 1');
+  //       break;
+  //     case 'preset2':
+  //       // presetBorderRadius = 3;
+  //       this.props.setAttributes({blockTopRadius: 3});
+  //       console.log('preset 2');
+  //       break;
+  //     case 'preset3':
+  //       console.log('preset 3');
+  //       presetBackground = '#007cba';
+  //       presetColor = '#fff';
+  //       this.props.setAttributes({blockTopRadius: 20});
+  //       break;
+  //     case 'preset4':
+  //       console.log('preset 4');
+  //       this.props.setAttributes({blockTopRadius: 3});
+  //       break;
+  //     case 'preset5':
+  //       console.log('preset 5');
+  //       presetBackground = 'white';
+  //       presetColor = 'black';
+  //       this.props.setAttributes({blockTopRadius: 0});
+  //       presetBorderStyle = 'solid';
+  //       break;
+  //     case 'preset6':
+  //       console.log('preset 6');  
+  //       presetBackground = 'white';
+  //       presetColor = 'black';
+  //       this.props.setAttributes({blockTopRadius: 3});
+  //       presetBorderStyle = 'solid';
+  //       break;
+  //     case 'preset7':
+  //       console.log('preset 7');
+  //       presetBackground = 'white';
+  //       presetColor = 'black';
+  //       this.props.setAttributes({blockTopRadius: 20});
+  //       presetBorderStyle = 'solid';
+  //       break;
+  //     case 'preset8':
+  //       console.log('preset 8');
+  //       presetBackground = 'white';
+  //       presetColor = 'black';
+  //       this.props.setAttributes({blockTopRadius: 3});
+  //       presetBorderStyle = 'solid';
+  //       break;
+  //   }
+  // }
 
     var element = document.getElementById(
       "responsive-block-editor-addons-style-button-child-" + this.props.clientId

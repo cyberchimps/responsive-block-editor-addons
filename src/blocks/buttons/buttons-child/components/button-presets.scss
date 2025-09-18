@@ -1,10 +1,10 @@
 .responsive-block-editor-addons-button-preset-wrap {
-	margin-top: 16px;
+	margin-top: -16px;
 }
 
 .responsive-block-editor-addons-button-preset-header {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: baseline;
 	margin-bottom: 12px;
 
@@ -69,6 +69,19 @@
 			border-color: #007cba;
 			box-shadow: 0 0 0 2px #007cba;
 			background: #f0f8ff;
+
+			// Override SVG colors when selected - using higher specificity
+			svg rect:first-child {
+				fill: #f0f8ff; // outer background to light blue
+			}
+			
+			svg rect:nth-child(2) {
+				fill: #007cba; // button background to blue
+			}
+			
+			svg path {
+				fill: white; // text to white
+			}
 		}
 
 		&.disabledPresetBorder {
@@ -76,3 +89,4 @@
 		}
 	}
 }
+
