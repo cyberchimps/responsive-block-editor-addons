@@ -707,10 +707,10 @@ class Responsive_Block_Editor_Addons {
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
 		if ( isset( $block_status_map['animations'] ) ) {
-			$is_animation_toggled_ton = $block_status_map['animations'];
+			$is_animation_toggled_on = $block_status_map['animations'];
 		}
 
-		if ( $is_animation_toggled_ton ) {
+		if ( $is_animation_toggled_on ) {
 			wp_enqueue_style(
 				'responsive-block-editor-addons-aos',
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
