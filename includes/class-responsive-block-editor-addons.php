@@ -898,7 +898,6 @@ class Responsive_Block_Editor_Addons {
 
 				if ( ! self::$is_animations_on ) {
 					foreach ( $blocks as $block ) {
-						error_log( print_r( $block, true ) );
 						if ( ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
 							self::$is_animations_on = true;
 						}
@@ -1658,7 +1657,6 @@ class Responsive_Block_Editor_Addons {
 		$filtered_json_all = wp_json_encode( $all_filtered_data, JSON_PRETTY_PRINT );
 		update_option( 'total-responsive-sites-data', $filtered_json_all );
 
-		// error_log(print_r($filtered_json_all,true));
 		$plugin_dir_path = plugin_dir_path( __FILE__ );
 		$relative_path   = 'data/';
 		$full_path       = $plugin_dir_path . $relative_path;
