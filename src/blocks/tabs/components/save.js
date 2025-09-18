@@ -24,23 +24,31 @@
        tabsStyleT,
        tabsStyleM,
        alignTabs,
+       alignTabsT,
+       alignTabsM,
        alignTabsVertical,
+       alignTabsVerticalT,
+       alignTabsVerticalM,
      } = attributes;
  
     
      return [
-       <div
-         className={classnames(
-           this.props.className,
-           "responsive-block-editor-addons-block-tabs",
-           `block-${block_id}`,
-           `responsive-block-editor-addons-tabs__wrap`,
-           `responsive-block-editor-addons-tabs__${tabsStyleD}-desktop`,
-           `responsive-block-editor-addons-${tabsStyleD}-${alignTabsVertical}`,
-         )}
-         data-tab-active={tabActiveFrontend}
-       >
-            <ul className={`responsive-block-editor-addons-tabs__panel responsive-block-editor-addons-tabs__align-${alignTabs}`}>
+      <div
+        className={classnames(
+          className,
+          "responsive-block-editor-addons-block-tabs",
+          `block-${block_id}`,
+          `responsive-block-editor-addons-tabs__wrap`,
+          `responsive-block-editor-addons-tabs__${tabsStyleD}-desktop`,
+          `responsive-block-editor-addons-tabs__${tabsStyleT}-tablet`,
+          `responsive-block-editor-addons-tabs__${tabsStyleM}-mobile`,
+          `responsive-block-editor-addons-tabs-align-${tabsStyleD}-${alignTabsVertical}-desktop`,
+          `responsive-block-editor-addons-tabs-align-${tabsStyleT}-${alignTabsVerticalT}-tablet`,
+          `responsive-block-editor-addons-tabs-align-${tabsStyleM}-${alignTabsVerticalM}-mobile`,
+        )}
+        data-tab-active={tabActiveFrontend}
+      >
+            <ul className={`responsive-block-editor-addons-tabs__panel responsive-block-editor-addons-tabs-align-${alignTabs}-desktop responsive-block-editor-addons-tabs-align-${alignTabsT}-tablet responsive-block-editor-addons-tabs-align-${alignTabsM}-mobile`}>
                 {tabHeaderOptions.map( ( header, index ) => (
                     <li key={ index } className={`responsive-block-editor-addons-tab ${(tabActiveFrontend === index ? 'responsive-block-editor-addons-tabs__active' : '')}`}>
                         <a href={`#responsive-block-editor-addons-tabs__tab${index}`} className={`responsive-block-editor-addons-tabs-list`} data-tab={index}>
@@ -55,7 +63,7 @@
             <div className="responsive-block-editor-addons-tabs__body-wrap">
                 <InnerBlocks.Content />
             </div>
-        </div>
+      </div>
      ];
    }
  }

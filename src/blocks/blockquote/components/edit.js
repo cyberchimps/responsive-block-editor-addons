@@ -58,9 +58,30 @@ export default class Edit extends Component {
         backgroundImage,
         backgroundVideo,
         icon,
+        twEnabled,
+        twView, 
+        twStyle,
+        twUrlMode,
+        twCustomUrl,
+        twLabel,
+        twFontFamily,
       },
       setAttributes,
     } = this.props;
+
+    const previewHref =
+      twUrlMode === "custom" && twCustomUrl
+        ? twCustomUrl
+        : (typeof window !== "undefined" ? window.location.href : "#");
+
+    const showIcon  = (twView || "both") !== "text";
+    const showLabel = (twView || "both") !== "icon";
+
+    const tweetBtnClasses = classnames(
+      "rbea-bq__tweet",
+      `rbea-bq__tweet--${twStyle || "classic"}`
+    );
+
 
     return [
       // Show the alignment toolbar on focus
@@ -112,6 +133,7 @@ export default class Edit extends Component {
             {showQuote && renderSVG(icon)}
           </div>
           {quoteFontFamily && loadGoogleFont(quoteFontFamily)}
+          {twFontFamily && loadGoogleFont(twFontFamily)}
           <RichText
             tagName="span"
             placeholder={__(
@@ -124,6 +146,25 @@ export default class Edit extends Component {
             )}
             onChange={(value) => setAttributes({ quoteContent: value })}
           />
+          {twEnabled && (
+            <div className="rbea-bq__tweet-wrap">
+              <a
+                className={tweetBtnClasses}
+                href={previewHref}
+                target="_blank"
+                rel="noopener"
+                onClick={(e) => e.preventDefault()} // editor preview only
+              >
+                {showIcon && (
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                )}
+                                  {showLabel && <span className="rbea-bq__label">{twLabel}</span>}
+              </a>
+            </div>
+          )}
+
         </div>
       </div>,
     ];
