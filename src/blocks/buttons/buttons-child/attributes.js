@@ -426,6 +426,10 @@ const attributes = {
     type: "string",
     default: "preset1",
   },
+  noFollow: {
+    type: "boolean",
+    default: false,
+  },
 };
 
 export default attributes;
