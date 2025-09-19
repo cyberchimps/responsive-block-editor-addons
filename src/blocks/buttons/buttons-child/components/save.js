@@ -34,6 +34,7 @@ export default class Save extends Component {
       boxShadowPosition,
       hoverEffect,
       inheritFromTheme,
+      noFollow,
     } = this.props.attributes;
 
     let imgopacity = opacity / 100;
@@ -67,7 +68,7 @@ export default class Save extends Component {
               inheritFromTheme ? "wp-block-button__link" : null
             )}
             href={link}
-            rel={target ? "noopener noreferrer" : null}
+            rel={noFollow ? target ? "nofollow noopener noreferrer" : "nofollow": null}
             target={target ? "_blank" : null}
           >
             {"" !== icon && iconPosition == "before" && (

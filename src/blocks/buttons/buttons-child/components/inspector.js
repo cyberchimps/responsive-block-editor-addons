@@ -286,6 +286,7 @@ export default class Inspector extends Component {
 				buttonTextTransform,
 				buttonFontStyle,
 				buttonPreset,
+				noFollow,
 			},
 			setAttributes,
 		} = this.props;
@@ -576,6 +577,13 @@ export default class Inspector extends Component {
 								onChange={() => {
 									setAttributes({ target: !target });
 								}}
+							/>
+							<ToggleControl
+								label={__('Add "nofollow" to link', "responsive-block-editor-addons")}
+								checked={noFollow}
+								onChange={(value) =>
+									setAttributes({ noFollow: !noFollow })
+								}
 							/>
 							<SelectControl
 								label={__("Hover Effect", "responsive-block-editor-addons")}
