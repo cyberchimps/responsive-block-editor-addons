@@ -97,7 +97,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			),
 			array(
 				'key'      => 'buttons',
-				'title'    => 'Multi Buttons',
+				'title'    => 'Buttons',
 				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/multi-buttons/',
 				'demo'     => 'https://cyberchimps.com/responsive-blocks/multi-buttons/',
 				'category' => 'cro',

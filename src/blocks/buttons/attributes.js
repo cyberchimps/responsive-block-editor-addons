@@ -34,15 +34,15 @@ const attributes = {
   },
   buttonAlignment: {
     type: "string",
-    default: "center",
+    default: "left",
   },
   buttonAlignmentTablet: {
     type: "string",
-    default: "center",
+    default: "left",
   },
   buttonAlignmentMobile: {
     type: "string",
-    default: "center",
+    default: "left",
   },
   buttons: {
     type: "array",
@@ -58,7 +58,7 @@ const attributes = {
   },
   btn_count: {
     type: "number",
-    default: 2,
+    default: 1,
   },
   hideWidget: {
   type: "boolean",
