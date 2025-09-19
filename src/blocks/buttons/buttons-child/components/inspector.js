@@ -157,6 +157,7 @@ const {
 	Dashicon,
 	ButtonGroup,
 	Button,
+	TextControl,
 } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
@@ -584,6 +585,13 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ noFollow: !noFollow })
 								}
+							/>
+							<TextControl
+								label={__("Link", "responsive-block-editor-addons")}
+								value={link}
+								onChange={(v) => setAttributes({ link: v })}
+								placeholder="#"
+								type="url"
 							/>
 							<SelectControl
 								label={__("Hover Effect", "responsive-block-editor-addons")}
