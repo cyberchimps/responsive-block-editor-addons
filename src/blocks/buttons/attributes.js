@@ -1,7 +1,7 @@
 const buttons = [];
 
 for (var i = 1; i <= 2; i++) {
-  var label = "#Click Here";
+  var label = "Add Text";
   var link = "#";
   buttons.push({
     label: label,
@@ -9,14 +9,14 @@ for (var i = 1; i <= 2; i++) {
     size: "",
     vPadding: 10,
     hPadding: 14,
-    borderWidth: 1,
-    borderRadius: 2,
-    borderStyle: "solid",
+    borderWidth: 0,
+    borderRadius: 0,
+    borderStyle: "none",
     borderColor: "",
     borderHColor: "",
-    color: "",
-    background: "",
-    hColor: "",
+    color: "white",
+    background: "#007cba",
+    hColor: "white",
     hBackground: "",
     sizeType: "px",
     sizeMobile: "",

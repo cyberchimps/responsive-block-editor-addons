@@ -78,15 +78,15 @@ const attributes = {
   },
   borderWidth: {
     type: "number",
-    default: 1,
+    default: 0,
   },
   borderRadius: {
     type: "number",
-    default: 2,
+    default: 0,
   },
   borderStyle: {
     type: "string",
-    default: "solid",
+    default: "none",
   },
   borderColor: {
     type: "string",
@@ -97,10 +97,11 @@ const attributes = {
   },
   color: {
     type: "string",
-    default: "#000",
+    default: "white",
   },
   background: {
     type: "string",
+    default: "#007cba",
   },
   hColor: {
     type: "string",
@@ -255,7 +256,7 @@ const attributes = {
   },
   backgroundType: {
     type: "string",
-    default: "none",
+    default: "color",
   },
   z_index: {
     type: "number",
@@ -423,7 +424,7 @@ const attributes = {
   },
   buttonPreset: {
     type: "string",
-    default: "",
+    default: "preset1",
   },
 };
 
