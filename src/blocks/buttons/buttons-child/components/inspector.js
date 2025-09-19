@@ -618,30 +618,10 @@ export default class Inspector extends Component {
 									<div className="responsive-block-editor-addons-button-preset-header">
 										<Button 
 											style={buttonPreset === '' ? {cursor: 'auto'} : {cursor: 'pointer'}} 
-											onClick={() => setAttributes({ 
-												buttonPreset: '',
-												background: '',
-												color: '#000',
-												borderRadius: 2,
-												borderStyle: 'solid',
-												borderWidth: 1,
-												borderColor: '#000',
-												icon: '',
-												iconPosition: 'after',
-												icon_color: '',
-												blockTopRadius: 2,
-												blockRightRadius: 2,
-												blockBottomRadius: 2,
-												blockLeftRadius: 2,
-												blockTopRadiusTablet: 2,
-												blockRightRadiusTablet: 2,
-												blockBottomRadiusTablet: 2,
-												blockLeftRadiusTablet: 2,
-												blockTopRadiusMobile: 2,
-												blockRightRadiusMobile: 2,
-												blockBottomRadiusMobile: 2,
-												blockLeftRadiusMobile: 2
-											})} 
+											onClick={() => {
+												setAttributes({ buttonPreset: 'preset1' }); 
+  												applyPresetAttributes('preset1', setAttributes);  
+											}} 
 											size="small"
 										>
 											<Dashicon icon="image-rotate" className={buttonPreset === '' ? 'image-rotate-reset' : ''} />
@@ -715,7 +695,7 @@ export default class Inspector extends Component {
 								</div>
 							</div>
 						</PanelBody>
-						<RbeaSupportControl blockSlug={"multi-buttons"} />
+						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"style"}>
 						{!inheritFromTheme && (
@@ -1086,7 +1066,7 @@ export default class Inspector extends Component {
 								{...this.props}
 							/>
 						</PanelBody>
-						<RbeaSupportControl blockSlug={"multi-buttons"} />
+						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
 						<PanelBody
@@ -1168,7 +1148,7 @@ export default class Inspector extends Component {
 								}}
 							</TabPanel>
 						</PanelBody>
-						<RbeaSupportControl blockSlug={"multi-buttons"} />
+						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

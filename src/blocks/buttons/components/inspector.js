@@ -8,7 +8,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-stack-on-icons";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
-
+import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -81,6 +81,9 @@ export default class Inspector extends Component {
 				blockRightPaddingTablet,
 				blockIsMarginControlConnected,
 				blockIsPaddingControlConnected,
+				z_index,
+				z_indexTablet,
+				z_indexMobile,
 			},
 			setAttributes,
 		} = this.props;
@@ -297,6 +300,85 @@ export default class Inspector extends Component {
 								setAttributes({ hideWidgetMobile: !hideWidgetMobile })
 								}
 							/>
+						</PanelBody>
+						<PanelBody
+							title={__("Z Index", "responsive-block-editor-addons")}
+							initialOpen={false}
+						>
+							<TabPanel
+								className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+								activeClass="active-tab"
+								tabs={[
+									{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className:
+										" responsive-desktop-tab  responsive-responsive-tabs",
+									},
+									{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className:
+										" responsive-tablet-tab  responsive-responsive-tabs",
+									},
+									{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className:
+										" responsive-mobile-tab  responsive-responsive-tabs",
+									},
+								]}
+								>
+								{(tab) => {
+									let tabout;
+
+									if ("mobile" === tab.name) {
+									tabout = (
+										<RbeaRangeControl
+										label={__("z-index (Mobile)", "responsive-block-editor-addons")}
+										min={-1}
+										max={99999}
+										allowReset={true}
+										resetFallbackValue={1}
+										value={z_indexMobile}
+										onChange={(value) =>
+										setAttributes({ z_indexMobile: value !== undefined ? value : 1 })
+										}
+									/>
+									);
+									} else if ("tablet" === tab.name) {
+									tabout = (
+										<RbeaRangeControl
+										label={__("z-index (Tablet)", "responsive-block-editor-addons")}
+										min={-1}
+										max={99999}
+										allowReset={true}
+										resetFallbackValue={1}
+										value={z_indexTablet}
+										onChange={(value) =>
+										setAttributes({ z_indexTablet: value !== undefined ? value : 1 })
+										}
+									/>
+									);
+									} else {
+									tabout = (
+										<RbeaRangeControl
+										label={__("z-index ", "responsive-block-editor-addons")}
+										min={-1}
+										max={99999}
+										allowReset={true}
+										resetFallbackValue={1}
+										value={z_index}
+										onChange={(value) =>
+										setAttributes({ z_index: value !== undefined ? value : 1 })
+										}
+									/>
+									);
+									}
+
+									return <div>{tabout}</div>;
+								}}
+							</TabPanel>
 						</PanelBody>
 						<RbeaSupportControl blockSlug={"buttons"} />
 
