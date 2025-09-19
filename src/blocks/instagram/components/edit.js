@@ -189,7 +189,7 @@ export default class Edit extends Component {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://developers.facebook.com/docs/instagram-basic-display-api"
+              href="https://cyberchimps.com/docs/responsive-blocks/blocks/instagram-feed/"
             >
               {" steps "}
             </a>
