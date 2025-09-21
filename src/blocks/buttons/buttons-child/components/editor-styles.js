@@ -202,7 +202,7 @@ function EditorStyles(props) {
       color: icon_hover_color+ '!important',
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link": {
-      color: hColor ? hColor : '#000',
+      color:  hColor ? hColor : color,
       "opacity": `${typographyOpacityControlValue}`,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link": {
@@ -255,7 +255,7 @@ function EditorStyles(props) {
       color:  inheritFromTheme ? '' : color ? color : '#000',
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover": {
-      "border-color": borderHColor ? hexToRgba(borderHColor, borderOpacityControlValue) : "#000",
+      "border-color": borderHColor,
       "background-color": updatedBackgroundHColor,
       "box-shadow": hoverboxShadowColor !== ""
 		  ? generateCSSUnit(hoverboxShadowHOffset, "px") +

@@ -27,6 +27,7 @@ const presetConfigs = {
   preset1: {
 	background: '#007cba',
     color: 'white',
+	hColor: 'white',
     borderRadius: 0,
     borderStyle: 'none',
     borderWidth: 0,
@@ -35,6 +36,7 @@ const presetConfigs = {
   preset2: {
     background: '#007cba',
     color: 'white',
+	hColor: 'white',
     borderRadius: 3,
     borderStyle: 'none',
     borderWidth: 0,
@@ -43,6 +45,7 @@ const presetConfigs = {
   preset3: {
     background: '#007cba',
     color: 'white',
+	hColor: 'white',
     borderRadius: 20,
     borderStyle: 'none',
     borderWidth: 0,
@@ -51,6 +54,7 @@ const presetConfigs = {
   preset4: {
     background: '#007cba',
     color: 'white',
+	hColor: 'white',	
     borderRadius: 3,
     borderStyle: 'none',
     borderWidth: 0,
@@ -59,34 +63,42 @@ const presetConfigs = {
   preset5: {
     background: 'white',
     color: '#007cba',
+	hColor: '#007cba',
     borderRadius: 0,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: '#007cba'
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
   },
   preset6: {
     background: 'white',
     color: '#007cba',
+	hColor: '#007cba',
     borderRadius: 3,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: '#007cba'
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
   },
   preset7: {
     background: 'white',
     color: '#007cba',
+	hColor: '#007cba',
     borderRadius: 20,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: '#007cba'
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
   },
   preset8: {
     background: 'white',
     color: '#007cba',
+	hColor: '#007cba',
     borderRadius: 3,
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor: '#007cba'
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
   }
 };
 
@@ -100,9 +112,11 @@ const applyPresetAttributes = (presetName, setAttributes) => {
 	backgroundType: 'color', 
     background: config.background,
     color: config.color,
+	hColor: config.hColor,	
     borderStyle: config.borderStyle,
     borderWidth: config.borderWidth,
     borderColor: config.borderColor,
+	borderHColor: config.borderHColor,
   };
   
   // Set icon attributes only for presets 4 and 8

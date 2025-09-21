@@ -105,7 +105,7 @@ const attributes = {
   },
   hColor: {
     type: "string",
-    default: "#000",
+    // default: "red",
   },
   sizeType: {
     type: "string",
@@ -231,7 +231,7 @@ const attributes = {
   },
   icon_color: {
     type: "string",
-    default: "#3a3a3a",
+    // default: "#3a3a3a",
   },
   icon_hover_color: {
     type: "string",

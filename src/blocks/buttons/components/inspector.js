@@ -84,6 +84,9 @@ export default class Inspector extends Component {
 				z_index,
 				z_indexTablet,
 				z_indexMobile,
+				buttonSize,
+				buttonSizeTablet,
+				buttonSizeMobile,
 			},
 			setAttributes,
 		} = this.props;
@@ -116,6 +119,90 @@ export default class Inspector extends Component {
 			paddingMobileBottom: 0,
 			paddingMobileLeft: 0,
 		}
+		// Button Size configurations
+		const buttonSizeConfigs = {
+			Small: {
+				blockTopPadding: 5,
+				blockRightPadding: 10,
+				blockBottomPadding: 5,
+				blockLeftPadding: 10,
+			},
+			Medium: {
+				blockTopPadding: 12,
+				blockRightPadding: 24,
+				blockBottomPadding: 12,
+				blockLeftPadding: 24,
+			},
+			Large: {
+				blockTopPadding: 20,
+				blockRightPadding: 30,
+				blockBottomPadding: 20,
+				blockLeftPadding: 30,
+			},
+			"Extra Large": {
+				blockTopPadding: 30,
+				blockRightPadding: 65,
+				blockBottomPadding: 30,
+				blockLeftPadding: 65,
+			},
+			"Extra Extra Large": {
+				blockTopPadding: 40,
+				blockRightPadding: 80,
+				blockBottomPadding: 40,
+				blockLeftPadding: 80,
+			},
+		};
+
+		// Helper function to apply button size attributes to child blocks
+		const applyButtonSizeToChildren = (sizeName, device = 'desktop') => {
+			const config = buttonSizeConfigs[sizeName];
+			if (!config) return;
+
+			// Get all child blocks using wp.data
+			const { clientId } = this.props;
+			const { getBlocks } = wp.data.select('core/block-editor');
+			const { updateBlockAttributes } = wp.data.dispatch('core/block-editor');
+
+			// Get child blocks
+			const childBlocks = getBlocks(clientId);
+
+			// Update each child block's attributes based on device
+			childBlocks.forEach(childBlock => {
+				if (childBlock.name === 'responsive-block-editor-addons/buttons-child') {
+					const attributesToUpdate = {
+						buttonSize: sizeName,
+					};
+
+					// Apply padding based on device
+					if (device === 'desktop') {
+						attributesToUpdate.blockTopPadding = config.blockTopPadding;
+						attributesToUpdate.blockRightPadding = config.blockRightPadding;
+						attributesToUpdate.blockBottomPadding = config.blockBottomPadding;
+						attributesToUpdate.blockLeftPadding = config.blockLeftPadding;
+					} else if (device === 'tablet') {
+						attributesToUpdate.blockTopPaddingTablet = config.blockTopPadding;
+						attributesToUpdate.blockRightPaddingTablet = config.blockRightPadding;
+						attributesToUpdate.blockBottomPaddingTablet = config.blockBottomPadding;
+						attributesToUpdate.blockLeftPaddingTablet = config.blockLeftPadding;
+					} else if (device === 'mobile') {
+						attributesToUpdate.blockTopPaddingMobile = config.blockTopPadding;
+						attributesToUpdate.blockRightPaddingMobile = config.blockRightPadding;
+						attributesToUpdate.blockBottomPaddingMobile = config.blockBottomPadding;
+						attributesToUpdate.blockLeftPaddingMobile = config.blockLeftPadding;
+					}
+
+					updateBlockAttributes(childBlock.clientId, attributesToUpdate);
+				}
+			});
+		};
+
+		const sizeOptions = [
+			{ label: __("S", "responsive-block-editor-addons"), value: 'Small' },
+			{ label: __("M", "responsive-block-editor-addons"), value: 'Medium' },
+			{ label: __("L", "responsive-block-editor-addons"), value: 'Large' },
+			{ label: __("XL", "responsive-block-editor-addons"), value: 'Extra Large' },
+			{ label: __("XXL", "responsive-block-editor-addons"), value: 'Extra Extra Large' },
+		];
 		return (
 			<InspectorControls key="inspector">
 				<InspectorTabs>
@@ -224,6 +311,90 @@ export default class Inspector extends Component {
 									return <div>{tabout}</div>;
 								}}
 							</TabPanel>
+							<TabPanel
+								className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin rbea-buttons-inspector"
+								activeClass="active-tab"
+								tabs={[
+									{
+										name: "desktop",
+										title: <Dashicon icon="desktop" />,
+										className:
+											" responsive-desktop-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "tablet",
+										title: <Dashicon icon="tablet" />,
+										className: " responsive-tablet-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "mobile",
+										title: <Dashicon icon="smartphone" />,
+										className: " responsive-mobile-tab  responsive-responsive-tabs",
+									},
+								]}
+							>
+								{(tab) => {
+									let tabout;
+
+									if ("mobile" === tab.name) {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+													label={__("Button Size", "responsive-block-editor-addons")}
+													value={buttonSizeMobile}
+													onChange={(value) => {
+														setAttributes({ buttonSizeMobile: value });
+														applyButtonSizeToChildren(value, 'mobile');
+													}}
+													options={sizeOptions}
+													defaultValue={"Default"}
+												/>
+											</Fragment>
+										);
+									} else if ("tablet" === tab.name) {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+													label={__("Button Size", "responsive-block-editor-addons")}
+													value={buttonSizeTablet}
+													onChange={(value) => {
+														setAttributes({ buttonSizeTablet: value });
+														applyButtonSizeToChildren(value, 'tablet');
+													}}
+													options={sizeOptions}
+													defaultValue={"Default"}
+												/>
+											</Fragment>
+										);
+									} else {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+													label={__("Button Size", "responsive-block-editor-addons")}
+													value={buttonSize}
+													onChange={(value) => {
+														setAttributes({ buttonSize: value });
+														applyButtonSizeToChildren(value, 'desktop');
+													}}
+													options={sizeOptions}
+													defaultValue={"Default"}
+												/>
+											</Fragment>
+										);
+									}
+
+									return <div>{tabout}</div>;
+								}}
+							</TabPanel>
+							{/* <SelectControl
+								label={__("Button Size", "responsive-block-editor-addons")}
+								options={sizeOptions}
+								value={buttonSize}
+								onChange={(value) => {
+									setAttributes({ buttonSize: value });
+									applyButtonSizeToChildren(value);
+								}}
+							/> */}
 							<hr className="responsive-block-editor-addons-editor__separator" />
 							<RbeaTabRadioControl
 								label={__("Stack on", "responsive-block-editor-addons")}

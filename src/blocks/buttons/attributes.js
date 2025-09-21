@@ -16,7 +16,6 @@ for (var i = 1; i <= 2; i++) {
     borderHColor: "",
     color: "white",
     background: "#007cba",
-    hColor: "white",
     hBackground: "",
     sizeType: "px",
     sizeMobile: "",
@@ -184,6 +183,18 @@ const attributes = {
   },
   z_indexMobile: {
     type: "number",
+  },
+  buttonSize: {
+    type: "string",
+    default: "Default",
+  },
+  buttonSizeTablet: {
+    type: "string",
+    default: "Default",
+  },
+  buttonSizeMobile: {
+    type: "string",
+    default: "Default",
   },
 };
 
