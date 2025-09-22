@@ -88,6 +88,12 @@ export default class Edit extends Component {
         boxShadowPosition,
         hoverEffect,
         inheritFromTheme,
+        buttonPreset,
+        borderRadius,
+        borderStyle,
+        borderWidth,
+        borderColor,
+        blockTopRadius,
       },
       isSelected,
       setAttributes,
@@ -169,7 +175,7 @@ export default class Edit extends Component {
               )}
             </a>
           </div>
-          {isSelected && (
+          {/* {isSelected && (
             <form
               key="form-link"
               className={`blocks-button__inline-link ab-button`}
@@ -189,7 +195,7 @@ export default class Edit extends Component {
                 <Icon icon="editor-break" />
               </Button>
             </form>
-          )}
+          )} */}
         </Buttons>
       </Fragment>
     );

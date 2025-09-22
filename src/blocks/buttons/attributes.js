@@ -1,7 +1,7 @@
 const buttons = [];
 
 for (var i = 1; i <= 2; i++) {
-  var label = "#Click Here";
+  var label = "Add Text";
   var link = "#";
   buttons.push({
     label: label,
@@ -9,14 +9,13 @@ for (var i = 1; i <= 2; i++) {
     size: "",
     vPadding: 10,
     hPadding: 14,
-    borderWidth: 1,
-    borderRadius: 2,
-    borderStyle: "solid",
+    borderWidth: 0,
+    borderRadius: 0,
+    borderStyle: "none",
     borderColor: "",
     borderHColor: "",
-    color: "",
-    background: "",
-    hColor: "",
+    color: "white",
+    background: "#007cba",
     hBackground: "",
     sizeType: "px",
     sizeMobile: "",
@@ -34,15 +33,15 @@ const attributes = {
   },
   buttonAlignment: {
     type: "string",
-    default: "center",
+    default: "left",
   },
   buttonAlignmentTablet: {
     type: "string",
-    default: "center",
+    default: "left",
   },
   buttonAlignmentMobile: {
     type: "string",
-    default: "center",
+    default: "left",
   },
   buttons: {
     type: "array",
@@ -58,7 +57,7 @@ const attributes = {
   },
   btn_count: {
     type: "number",
-    default: 2,
+    default: 1,
   },
   hideWidget: {
   type: "boolean",
@@ -175,6 +174,27 @@ const attributes = {
   blockRightPaddingTablet: {
     type: "number",
     default: '',
+  },
+  z_index: {
+    type: "number",
+  },
+  z_indexTablet: {
+    type: "number",
+  },
+  z_indexMobile: {
+    type: "number",
+  },
+  buttonSize: {
+    type: "string",
+    default: "Default",
+  },
+  buttonSizeTablet: {
+    type: "string",
+    default: "Default",
+  },
+  buttonSizeMobile: {
+    type: "string",
+    default: "Default",
   },
 };
 

@@ -78,15 +78,15 @@ const attributes = {
   },
   borderWidth: {
     type: "number",
-    default: 1,
+    default: 0,
   },
   borderRadius: {
     type: "number",
-    default: 2,
+    default: 0,
   },
   borderStyle: {
     type: "string",
-    default: "solid",
+    default: "none",
   },
   borderColor: {
     type: "string",
@@ -97,14 +97,15 @@ const attributes = {
   },
   color: {
     type: "string",
-    default: "#000",
+    default: "white",
   },
   background: {
     type: "string",
+    default: "#007cba",
   },
   hColor: {
     type: "string",
-    default: "#000",
+    // default: "red",
   },
   sizeType: {
     type: "string",
@@ -230,7 +231,7 @@ const attributes = {
   },
   icon_color: {
     type: "string",
-    default: "#3a3a3a",
+    // default: "#3a3a3a",
   },
   icon_hover_color: {
     type: "string",
@@ -255,7 +256,7 @@ const attributes = {
   },
   backgroundType: {
     type: "string",
-    default: "none",
+    default: "color",
   },
   z_index: {
     type: "number",
@@ -420,6 +421,14 @@ const attributes = {
   buttonFontStyle: {
     type: "string",
     default: "",
+  },
+  buttonPreset: {
+    type: "string",
+    default: "preset1",
+  },
+  noFollow: {
+    type: "boolean",
+    default: false,
   },
 };
 
