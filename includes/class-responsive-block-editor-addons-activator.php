@@ -33,5 +33,10 @@ class Responsive_Block_Editor_Addons_Activator {
 		require_once RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'includes/class-responsive-block-editor-addons-blocks-updater.php';
 		$rbea_blocks = Responsive_Block_Editor_Addons_Blocks_Updater::get_instance();
 		$rbea_blocks->insert_blocks_data();
+		
+		// Set default value for auto block recovery if it doesn't exist
+		if ( false === get_option( 'rbea_auto_block_recovery' ) ) {
+			update_option( 'rbea_auto_block_recovery', '1' );
+		}
 	}
 }

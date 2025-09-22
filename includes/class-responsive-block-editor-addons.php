@@ -178,6 +178,10 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Getting Started Blocks Toggle.
 		add_action( 'wp_ajax_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
 		add_action( 'wp_ajax_nopriv_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
+
+		// RBEA Auto Block Recovery Toggle.
+		add_action( 'wp_ajax_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
+		add_action( 'wp_ajax_nopriv_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
@@ -701,6 +705,7 @@ class Responsive_Block_Editor_Addons {
 				'home_url'                           => home_url(),
 				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
+				'auto_block_recovery'                => get_option( 'rbea_auto_block_recovery', '1' ),
 				'blocks'                             => $blocks,
 				'is_animation_on'                    => $is_animation_toggled_on,
 			)
@@ -1221,6 +1226,7 @@ class Responsive_Block_Editor_Addons {
 					'review_link'           => esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/#new-post' ),
 					'rst_url'               => esc_url( 'https://wordpress.org/plugins/responsive-add-ons/' ),
 					'rbea_blocks'           => $blocks,
+					'auto_block_recovery'   => get_option( 'rbea_auto_block_recovery', '1' ),
 					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
 					'rst_status'            => $this->rst_status(),
 					'rst_nonce'             => $nonce,
@@ -1455,6 +1461,27 @@ class Responsive_Block_Editor_Addons {
 		// phpcs:enable
 
 		update_option( 'rbea_blocks', $data );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Saves the auto block recovery setting in database when the toggle is changed.
+	 *
+	 * @since 2.0.0
+	 */
+	public function rbea_toggle_auto_block_recovery() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the boolean value.
+		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$value = ( '1' === $value ) ? '1' : '0';
+
+		update_option( 'rbea_auto_block_recovery', $value );
 
 		wp_send_json_success();
 	}
