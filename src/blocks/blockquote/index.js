@@ -6,6 +6,7 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
+import Deprecated from "./components/deprecated";
 
 //Import block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -50,4 +51,7 @@ registerBlockType("responsive-block-editor-addons/blockquote", {
   save: (props) => {
     return <Save {...props} />;
   },
+
+    /* Deprecated versions */
+  deprecated: Deprecated,
 });

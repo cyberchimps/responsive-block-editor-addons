@@ -442,7 +442,7 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
     },
     " .wp-block-responsive-block-editor-addons-team:hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -453,7 +453,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
   };
 

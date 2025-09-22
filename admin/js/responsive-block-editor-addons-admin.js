@@ -403,7 +403,7 @@ const Cards = ({blockList, showCategory, search, handleToggle}) => {
 }
 
 const Card = ({handleToggle, category, title, docs, demo, status, index, blockKey}) => {
-    const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image'];
+    const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image', 'container'];
     const isPermanentlyEnabled = permanentlyEnabledBlocks.includes(blockKey);
 
     return (

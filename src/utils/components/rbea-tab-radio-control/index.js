@@ -1,5 +1,5 @@
-import { useState, Fragment } from '@wordpress/element';
-import { Dashicon, RadioControl } from '@wordpress/components';
+import { useState, useEffect, Fragment } from '@wordpress/element';
+import { Dashicon, RadioControl, Tooltip } from '@wordpress/components';
 
 const RbeaTabRadioControl = ({ label, value, onChange, options, help = '', allowReset = false, hasIcon = false, hasDashIcons=false, optionHasBorder = false, defaultValue = ''}) => {
   // Store the currently selected option in state
@@ -8,6 +8,10 @@ const RbeaTabRadioControl = ({ label, value, onChange, options, help = '', allow
     defaultValue = options[0].value;
   }
   const [activeOption, setActiveOption] = useState(value);
+
+  useEffect(() => {
+    setActiveOption(value);
+  }, [value]);
 
   // Handle the option change
   const handleChange = (value) => {
@@ -57,7 +61,7 @@ const RbeaTabRadioControl = ({ label, value, onChange, options, help = '', allow
                 2. Icons - SVGs
                 3. Dashicons - Wordpress Dashiconss
                */}
-              {option.icon ? <div className={`${optionHasBorder ? 'rbea-tab-radio-option-border': 'rbea-tab-radio-option-icon'}`}>{activeOption !== option.value ? option.icon : option.selectedIcon ? option.selectedIcon : option.icon}</div> 
+              {option.icon ? <Tooltip key={option.value} text={option.label || option.value}><div className={`${optionHasBorder ? 'rbea-tab-radio-option-border': 'rbea-tab-radio-option-icon'}`}>{activeOption !== option.value ? option.icon : option.selectedIcon ? option.selectedIcon : option.icon}</div></Tooltip>
               : hasDashIcons 
               ? <Dashicon icon={option.dashicon}/> 
               : option.label}

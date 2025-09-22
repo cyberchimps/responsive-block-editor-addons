@@ -154,6 +154,24 @@ function EditorStyles(props) {
     columnHeightStyle = customHeight + "px !important";
   }
 
+  let hoverBoxShadowCSS = {};
+  if ( hoverboxShadowColor !== undefined && hoverboxShadowColor !== '' ) {
+    hoverBoxShadowCSS = {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
+    }
+  }
+
   var selectors = {
     " ": {
       "opacity": hideWidget? 0.2 : 1,
@@ -248,18 +266,7 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
     },
     " .responsive-block-editor-addons-block-columns:hover": {
-      "box-shadow":
-        generateCSSUnit(hoverboxShadowHOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowVOffset, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowBlur, "px") +
-        " " +
-        generateCSSUnit(hoverboxShadowSpread, "px") +
-        " " +
-        hoverboxShadowColor +
-        " " +
-        hoverboxShadowPositionCSS,
+      ...hoverBoxShadowCSS
     },
     " .responsive-columns-inner-wrap": {
       "max-width": max_width,

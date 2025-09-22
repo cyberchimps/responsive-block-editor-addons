@@ -305,7 +305,7 @@ function EditorStyles(props) {
       "margin-left": generateCSSUnit(blockLeftMargin, "px"),
     },
     ":hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -316,7 +316,8 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS
+        : '',
     },
 
     " .responsive-block-editor-addons-cta-image-wrap .responsive-block-editor-addons-cta-image": {

@@ -245,7 +245,6 @@ const attributes = {
     },
     hoverboxShadowColor: {
       type: 'string',
-      default: ''
     },
     hoverboxShadowHOffset: {
       type: 'number',

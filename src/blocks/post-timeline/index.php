@@ -1014,7 +1014,6 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'hoverboxShadowColor'                => array(
 					'type' => 'string',
-					'default' => ''
 				),
 				'hoverboxShadowHOffset'              => array(
 					'type' => 'number',

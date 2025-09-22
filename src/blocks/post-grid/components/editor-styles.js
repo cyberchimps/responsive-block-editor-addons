@@ -288,7 +288,7 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
     },
     " article:hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -299,7 +299,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .is-list article": {
       "margin-bottom": generateCSSUnit(varrowGap, "px"),

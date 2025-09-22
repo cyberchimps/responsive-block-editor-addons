@@ -832,11 +832,11 @@ export default class Inspector extends Component {
 					weight: dateFontWeight,
 					height: dateLineHeight,
           color: dateTypographyColor,
-          transform: dateTextTransform,
           fontstyle: dateFontStyle,
 					}}
 					showLetterSpacing = { false }
           showColorControl={true}
+          showTextTransform={false}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>

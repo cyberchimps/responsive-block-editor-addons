@@ -72,7 +72,7 @@ function EditorStyles(props) {
       "overflow": "hidden",
     },
     ":hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         hoverboxShadowPositionCSS +
         " " +
         generateCSSUnit(hoverboxShadowHOffset, "px") +
@@ -83,7 +83,7 @@ function EditorStyles(props) {
         " " +
         generateCSSUnit(hoverboxShadowSpread, "px") +
         " " +
-        hoverboxShadowColor,
+        hoverboxShadowColor : '',
     },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       "box-shadow":
@@ -103,8 +103,8 @@ function EditorStyles(props) {
       padding: generateCSSUnit(titlePadding, "px"),
     },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles:hover": {
-      "box-shadow":
-        hoverboxShadowPositionCSS == "inset"
+      "box-shadow": hoverboxShadowColor !== '' ?
+        ( hoverboxShadowPositionCSS == "inset"
           ? hoverboxShadowPositionCSS +
             " " +
             generateCSSUnit(hoverboxShadowHOffset, "px") +
@@ -116,7 +116,7 @@ function EditorStyles(props) {
             generateCSSUnit(hoverboxShadowSpread, "px") +
             " " +
             hoverboxShadowColor
-          : "",
+          : "" ) : '',
     },
     " .responsive-block-editor-addons-accordion-content span": {
       margin: "0",
