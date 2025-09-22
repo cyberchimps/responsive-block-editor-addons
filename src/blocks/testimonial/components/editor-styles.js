@@ -179,6 +179,9 @@ function EditorStyles(props) {
   newTestimonialCiteAlign,
   testimonialCiteAlignTablet,
   testimonialCiteAlignMobile,
+    contentFontStyle,
+    nameFontStyle,
+    titleFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -278,6 +281,7 @@ function EditorStyles(props) {
       "text-transform": contentTextTransform,
       "margin-bottom": generateCSSUnit(contentBottomSpacing, "px"),
       color: contentTypographyColor,
+      "font-style": contentFontStyle,
     },
     " .responsive-block-editor-addons-testimonial-info": {
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
@@ -302,6 +306,7 @@ function EditorStyles(props) {
       "font-weight": nameFontWeight,
       "text-transform": nameTextTransform,
       "margin-bottom": generateCSSUnit(nameBottomSpacing, "px"),
+      "font-style": nameFontStyle,
     },
     " .responsive-block-editor-addons-testimonial-details .responsive-block-editor-addons-testimonial-title": {
       color: titleTypographyColor,
@@ -310,6 +315,7 @@ function EditorStyles(props) {
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
       "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
     },
     " .testimonial-box.responsive-block-editor-addons-block-testimonial": {
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,

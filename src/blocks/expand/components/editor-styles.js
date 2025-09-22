@@ -80,6 +80,12 @@ function EditorStyles(props) {
         linkBottomSpacing,
         linkBottomSpacingTablet,
         linkBottomSpacingMobile,
+        titleTextTransform,
+        titleFontStyle,
+        textTextTransform,
+        textFontStyle,
+        linkTextTransform,
+        linkFontStyle,
   } = props.attributes;
 
   var selectors = {
@@ -106,6 +112,8 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "line-height": titleLineHeight,
       "color": titleTypographyColor,
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
     },
 
     " .responsive-block-editor-addons-expand-less-text": {
@@ -115,6 +123,8 @@ function EditorStyles(props) {
       "font-weight": textFontWeight,
       "line-height": textLineHeight,
       "color": textTypographyColor,
+      "text-transform": textTextTransform,
+      "font-style": textFontStyle,
     },
 
     " .responsive-block-editor-addons-expand-more-toggle-text": {
@@ -124,6 +134,8 @@ function EditorStyles(props) {
       "font-weight": linkFontWeight,
       "line-height": linkLineHeight,
       "color": linkTypographyColor,
+      "text-transform": linkTextTransform,
+      "font-style": linkFontStyle,
     },
 
     " .responsive-block-editor-addons-expand-more-text": {
@@ -133,6 +145,8 @@ function EditorStyles(props) {
       "font-weight": textFontWeight,
       "line-height": textLineHeight,
       "color": textTypographyColor,
+      "text-transform": textTextTransform,
+      "font-style": textFontStyle,
     },
 
     " .responsive-block-editor-addons-expand-less-toggle-text": {
@@ -142,6 +156,8 @@ function EditorStyles(props) {
       "font-weight": linkFontWeight,
       "line-height": linkLineHeight,
       "color": linkTypographyColor,
+      "text-transform": linkTextTransform,
+      "font-style": linkFontStyle,
     },
   };
 

@@ -171,6 +171,10 @@ function EditorStyles(props) {
     blockRightPaddingTablet,
     excerptTypographyColor,
     metaTypographyColor,
+    excerptFontStyle,
+    metaFontStyle,
+    titleFontStyle,
+    continueFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -284,7 +288,7 @@ function EditorStyles(props) {
         boxShadowPositionCSS,
     },
     " article:hover": {
-      "box-shadow":
+      "box-shadow": hoverboxShadowColor !== '' ?
         generateCSSUnit(hoverboxShadowHOffset, "px") +
         " " +
         generateCSSUnit(hoverboxShadowVOffset, "px") +
@@ -295,7 +299,7 @@ function EditorStyles(props) {
         " " +
         hoverboxShadowColor +
         " " +
-        hoverboxShadowPositionCSS,
+        hoverboxShadowPositionCSS : '',
     },
     " .is-list article": {
       "margin-bottom": generateCSSUnit(varrowGap, "px"),
@@ -335,6 +339,7 @@ function EditorStyles(props) {
       "font-family": titleFontFamily,
       "font-weight": titleFontWeight,
       "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
     },
     " .responsive-block-editor-addons-block-post-grid-title a:hover": {
       color: titleHoverColor,
@@ -348,6 +353,7 @@ function EditorStyles(props) {
       "font-weight": metaFontWeight,
       "line-height": metaLineHeight,
       "text-transform": metaTextTransform,
+      "font-style": metaFontStyle,
       "font-size": generateCSSUnit(metaFontSize, "px"),
       "margin-bottom": generateCSSUnit(metaBottomSpacing, "px"),
     },
@@ -357,6 +363,7 @@ function EditorStyles(props) {
       "font-weight": excerptFontWeight,
       "line-height": excerptLineHeight,
       "text-transform": excerptTextTransform,
+      "font-style": excerptFontStyle,
       "font-size": generateCSSUnit(excerptFontSize, "px"),
     },
     " .responsive-block-editor-addons-block-post-grid-excerpt > div > p": {
@@ -367,6 +374,7 @@ function EditorStyles(props) {
       "font-weight": continueFontWeight,
       "line-height": continueLineHeight,
       "text-transform": continueTextTransform,
+      "font-style": continueFontStyle,
       "font-size": generateCSSUnit(continueFontSize, "px"),
 	  "font-family": continueFontFamily,
     },

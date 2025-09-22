@@ -73,11 +73,30 @@ function rbea_instagram_render_callback( array $attributes ) {
 	$show_aptions    = $attributes['showCaptions'];
 	$border_radius   = $attributes['borderRadius'];
 
+	if ( empty( $token ) ) {
+		return;
+	}
+
 	// Can make a suffix of first 20 chars and the last 30 chars from the token. Hopefully unique.
 	$suffix = substr_replace( $token, '', 20, strlen( $token ) - 50 );
 
 	if ( ! rbea_instagram_data_from_cache( $suffix ) ) {
-		$result = json_decode( rbea_instagram_fetch_data( "https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token={$token}" ) );
+		// Step 1: Get Instagram Business ID.
+		$data = json_decode( rbea_instagram_fetch_data( "https://graph.facebook.com/v19.0/me/accounts?fields=instagram_business_account&access_token={$token}" ), true );
+		
+		if ( empty( $data ) ) {
+			return;
+		} 
+
+		$business_id = $data['data'][0]['instagram_business_account']['id'];
+
+		// Step 2: Fetch Media.
+		$result = json_decode( rbea_instagram_fetch_data( "https://graph.facebook.com/v19.0/{$business_id}/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token={$token}" ) );
+
+		if ( empty( $result ) ) {
+			return;
+		}
+
 		rbea_instagram_data_to_cache( $result, $suffix );
 	} else {
 		$result = rbea_instagram_data_from_cache( $suffix );

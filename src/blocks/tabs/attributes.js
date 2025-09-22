@@ -24,7 +24,23 @@ const attributes = {
     type: "string",
     default: "left",
   },
+  alignTabsT: {
+    type: "string",
+    default: "left",
+  },
+  alignTabsM: {
+    type: "string",
+    default: "left",
+  },
   alignTabsVertical: {
+    type: 'string',
+    default: "left",
+  },
+  alignTabsVerticalT: {
+    type: 'string',
+    default: "left",
+  },
+  alignTabsVerticalM: {
     type: 'string',
     default: "left",
   },
@@ -362,7 +378,30 @@ const attributes = {
   },
   boxShadowColor: {
     type: "string",
-    default: "#000",
+    default: "",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowColor: {
+    type: "string",
   },
 	hideWidget: {
 	  type: "boolean",
@@ -412,6 +451,26 @@ const attributes = {
     type: "string",
     default: "#000",
   },
+  tabTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  tabTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  tabContentTextTransform: {
+    type: "string",
+    default: "",
+  },
+  tabContentFontStyle: {
+    type: "string",
+    default: "",
+  },
+  positionTab: {
+    type: "string",
+    default: "desktop",
+  }
 };
 
 export default attributes;

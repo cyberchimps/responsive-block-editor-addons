@@ -168,6 +168,12 @@
      inputBoxShadowBlur,
      inputBoxShadowSpread,
      inputBoxShadowPosition,
+     inputHoverBoxShadowColor,
+     inputHoverBoxShadowHOffset,
+     inputHoverBoxShadowVOffset,
+     inputHoverBoxShadowBlur,
+     inputHoverBoxShadowSpread,
+     inputHoverBoxShadowPosition,
      showErrorMsgs,
      showLabels,
      labelFontFamily,
@@ -333,7 +339,23 @@
       ctaButtonBottomPaddingMobile,
       ctaButtonLeftPaddingMobile,
       ctaButtonRightPaddingMobile,
-      isCtaButtonPaddingMarginValueUpdated
+      isCtaButtonPaddingMarginValueUpdated,
+      formTitleTextTransform,
+      formTitleFontStyle,
+      formDescriptionTextTransform,
+      formDescriptionFontStyle,
+      inputTextTransform,
+      inputFontStyle,
+      labelTextTransform,
+      labelFontStyle,
+      radioCheckboxTextTransform,
+      radioCheckboxFontStyle,
+      submitButtonTextTransform,
+      submitButtonFontStyle,
+      messageTextTransform,
+      messageFontStyle,
+      afterSubmitTextTransform,
+      afterSubmitFontStyle,
    } = props.attributes;
 
 
@@ -412,6 +434,12 @@
 
   if ("outset" === inputBoxShadowPosition) {
     inputBoxShadowPositionCSS = "";
+  }
+
+  var inputHoverBoxShadowPositionCSS = inputHoverBoxShadowPosition;
+
+  if ("outset" === inputHoverBoxShadowPosition) {
+    inputHoverBoxShadowPositionCSS = "";
   }
 
   var submitButtonBoxShadowPositionCSS = submitButtonBoxShadowPosition;
@@ -495,6 +523,8 @@
       "letter-spacing": generateCSSUnit(formTitleLetterSpacing, "px"),
       "color": formTitleColor,
       "text-align": formTitleAlignment,
+      "text-transform": formTitleTextTransform,
+      "font-style": formTitleFontStyle,
     },
 
     " .responsive-form-desc-text": {
@@ -505,6 +535,8 @@
       "letter-spacing": generateCSSUnit(formDescriptionLetterSpacing, "px"),
       "color": formDescriptionColor,
       "text-align": formTitleAlignment,
+      "text-transform": formDescriptionTextTransform,
+      "font-style": formDescriptionFontStyle,
     },
 
     " .form-container": {
@@ -626,7 +658,24 @@
         inputBoxShadowColor +
         " " +
         inputBoxShadowPositionCSS,
+      "text-transform": inputTextTransform,
+      "font-style": inputFontStyle,
        
+    },
+
+     " .wpcf7 input[type=text]:hover ,.wpcf7 input[type=email]:hover, .wpcf7 .wpcf7-select:hover": {       
+      "box-shadow": inputHoverBoxShadowColor !== '' ?
+        generateCSSUnit(inputHoverBoxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowSpread, "px") +
+        " " +
+        inputHoverBoxShadowColor +
+        " " +
+        inputHoverBoxShadowPositionCSS : '',
     },
 
     ' .wpcf7 textarea': {
@@ -664,6 +713,23 @@
         inputBoxShadowColor +
         " " +
         inputBoxShadowPositionCSS + "!important" ,
+      "text-transform": inputTextTransform,
+      "font-style": inputFontStyle,
+		},
+
+    ' .wpcf7 textarea:hover': {
+      "box-shadow": inputHoverBoxShadowColor !== '' ?
+        generateCSSUnit(inputHoverBoxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(inputHoverBoxShadowSpread, "px") +
+        " " +
+        inputHoverBoxShadowColor +
+        " " +
+        inputHoverBoxShadowPositionCSS + "!important" : '',
 		},
 
     ' .wpcf7-select, .wpcf7-checkbox, .wpcf7-radio, .wpcf7-textarea, .wpcf7-text, .wpcf7-email': {
@@ -684,6 +750,8 @@
       "line-height": labelLineHeight,
       "letter-spacing": generateCSSUnit(labelLetterSpacing, "px"),
       "margin-top": generateCSSUnit( labelBottomSpacing, 'px' ),
+      "text-transform": labelTextTransform,
+      "font-style": labelFontStyle,
 		},
 
     ' p>label': {
@@ -806,6 +874,8 @@
       "font-weight": radioCheckboxFontWeight,
       "line-height": radioCheckboxLineHeight,
       "letter-spacing": generateCSSUnit(radioCheckboxLetterSpacing, "px"),
+      "text-transform": radioCheckboxTextTransform,
+      "font-style": radioCheckboxFontStyle,
 		},
 
 
@@ -852,6 +922,8 @@
         submitButtonBoxShadowColor +
         " " +
         submitButtonBoxShadowPositionCSS,
+      "text-transform": submitButtonTextTransform,
+      "font-style": submitButtonFontStyle,
       
 		},  
      

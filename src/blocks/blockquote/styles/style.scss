@@ -45,6 +45,78 @@
   }
 }
 
+.rbea-bq__tweet-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.rbea-bq__tweet {
+  display: inline-flex;
+  position: inherit;
+  z-index: 6;
+  align-items: center;
+  gap: var(--icon-text-spacing, 8px);
+  text-decoration: none;
+  line-height: 1;
+  border-radius: 999px;
+  padding: 8px 14px;
+  border: 1px solid transparent;
+  transition: all .15s ease-in-out;
+  font-weight: 500;
+  
+  // Hover styles using data attributes
+  &[data-hover-color]:hover {
+    color: var(--hover-color) !important;
+  }
+  
+  &[data-hover-bg]:hover {
+    background-color: var(--hover-bg) !important;
+  }
+}
+
+.rbea-bq__tweet .dashicons {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+/* style variants */
+.rbea-bq__tweet--classic {
+  background: #000000;
+  color: #fff;
+}
+.rbea-bq__tweet--bubble {
+  background: #000000;
+  color: #fff;
+  border: none;
+  position: relative;
+  margin-left: 10px; // reserve room for tail
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -11px; /* slight overlap to avoid hairline gap */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 14px;
+    background: inherit;
+    -webkit-clip-path: polygon(0 50%, 100% 0, 100% 100%); /* left-pointing triangle */
+    clip-path: polygon(0 50%, 100% 0, 100% 100%);
+  }
+}
+.rbea-bq__tweet--link {
+  background: transparent;
+  color: #000000;
+  padding: 0;
+  border: none;
+}
+.rbea-bq__tweet--link .dashicons {
+  position: relative;
+  top: 1px;
+}
+
 @media (max-width: 976px) {
   .responsive-block-editor-addons-block-quote {
     padding: 10px 20px !important;

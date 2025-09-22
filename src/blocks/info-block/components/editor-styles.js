@@ -249,6 +249,12 @@ function EditorStyles(props) {
     backgroundSizeMobile,
     backgroundRepeat,
     widthType,
+    ctaTextTextTransform,
+    ctaTextFontStyle,
+    resheadTextTransform,
+    resheadFontStyle,
+    ressubHeadTextTransform,
+    ressubHeadFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -354,7 +360,7 @@ function EditorStyles(props) {
     },
 
     ":hover": {
-        "box-shadow": `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}`,
+        "box-shadow": hoverboxShadowColor !== '' ? `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}` : '',
       },
 
     " .responsive-block-editor-addons-ifb-image-icon-content.responsive-block-editor-addons-ifb-imgicon-wrap": {
@@ -484,6 +490,8 @@ function EditorStyles(props) {
       "font-weight": resheadFontWeight,
       "line-height": resheadLineHeight,
       "margin-bottom": generateCSSUnit(resheadBottomSpacing, "px"),
+      "text-transform": resheadTextTransform,
+      "font-style": resheadFontStyle,
     },
 
     " .responsive-block-editor-addons-ifb-desc": {
@@ -492,6 +500,8 @@ function EditorStyles(props) {
       "font-weight": ressubHeadFontWeight,
       "line-height": ressubHeadLineHeight,
       "margin-bottom": generateCSSUnit(ressubHeadBottomSpacing, "px"),
+      "text-transform": ressubHeadTextTransform,
+      "font-style": ressubHeadFontStyle,
     },
 
     " .responsive-block-editor-addons-infobox-cta-link": {
@@ -503,7 +513,9 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaTextFontSize, "px"),
       "font-weight": ctaTextFontWeight,
       "font-family": ctaTextFontFamily,
-      "line-height": ctaTextLineHeight
+      "line-height": ctaTextLineHeight,
+      "text-transform": ctaTextTextTransform,
+      "font-style": ctaTextFontStyle,
     },
 
     " .responsive-block-editor-addons-inline-editing ": {

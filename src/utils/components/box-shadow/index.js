@@ -29,7 +29,11 @@ class BoxShadowControl extends Component {
     } = this.props;
 
     const setAttr = (key, value) => {
-      setAttributes({ [`${controlKey}${key}`]: value });
+      if (controlKey) {
+        setAttributes({ [`${controlKey}${key}`]: value });
+      } else {
+        setAttributes({ [`boxShadow${key}`]: value });
+      }
     };
 
     return (

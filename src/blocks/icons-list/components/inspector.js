@@ -157,6 +157,8 @@ export default class Inspector extends Component {
         blockIsPaddingControlConnected,
         blockIsMarginControlConnected,
         iconListUpdateColorFromParent,
+        labelTextTransform,
+        labelFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -444,11 +446,12 @@ export default class Inspector extends Component {
               sizeTablet: labelFontSizeTablet,
               weight: labelFontWeight,
               height: labelLineHeight,
+              transform: labelTextTransform,
+              fontstyle: labelFontStyle
             }}
             showLetterSpacing={false}
             showTextBottomSpacing={false}
             showTextDecoration={false}
-            showTextTransform={false}
             showColorControl={false}
             setAttributes={setAttributes}
             {...this.props}

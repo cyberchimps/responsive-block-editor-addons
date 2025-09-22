@@ -79,6 +79,7 @@ const attributes = {
   },
   captionTextTransform: {
     type: "string",
+    default: "",
   },
   captionColor: {
     type: "string",
@@ -471,6 +472,7 @@ const attributes = {
   },
   layoverHeadingTextTransform: {
     type: "string",
+    default: "",
   },
   layoverHeadingColor: {
     type: "string",
@@ -713,7 +715,15 @@ const attributes = {
   captionIsMarginControlConnected: {
     type: "boolean",
     default: false,
-  }
+  },
+  layoverHeadingFontStyle: {
+    type: "string",
+    default: "",
+  },
+  captionFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

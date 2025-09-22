@@ -195,12 +195,16 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
         activeTab,
         tabActiveFrontend,
         alignTabs,
+        alignTabsT,
+        alignTabsM,
         tabsStyleD,
         tabsStyleM,
         tabsStyleT,
         tabTitleFontFamily,
         tabContentFontFamily,
         alignTabsVertical,
+        alignTabsVerticalT,
+        alignTabsVerticalM,
        },
        setAttributes,
        className,
@@ -212,20 +216,22 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
        <Inspector key={'tabs_inspector'} {...{ setAttributes, ...this.props }} />,
  
        <div
-         key={'tabs_body'}
-         className={classnames(
+            className={classnames(
             this.props.className,
-           `responsive-block-editor-addons-editor-preview-mode-${ deviceType.toLowerCase() }`,
-           "responsive-block-editor-addons-block-tabs",
-           `block-${block_id}`,
-           `responsive-block-editor-addons-tabs__wrap`,
-           `responsive-block-editor-addons-tabs__${tabsStyleD}-desktop`,
-           `responsive-block-editor-addons-${tabsStyleD}-${alignTabsVertical}`,
-         )}
-       >
+            "responsive-block-editor-addons-block-tabs",
+            `block-${block_id}`,
+            `responsive-block-editor-addons-tabs__wrap`,
+            `responsive-block-editor-addons-tabs__${tabsStyleD}-desktop`,
+            `responsive-block-editor-addons-tabs__${tabsStyleT}-tablet`,
+            `responsive-block-editor-addons-tabs__${tabsStyleM}-mobile`,
+            `responsive-block-editor-addons-tabs-align-${tabsStyleD}-${alignTabsVertical}-desktop`,
+            `responsive-block-editor-addons-tabs-align-${tabsStyleT}-${alignTabsVerticalT}-tablet`,
+            `responsive-block-editor-addons-tabs-align-${tabsStyleM}-${alignTabsVerticalM}-mobile`,
+        )}
+        >
             {tabTitleFontFamily && loadGoogleFont(tabTitleFontFamily)}
             {tabContentFontFamily && loadGoogleFont(tabContentFontFamily)}
-            <ul className={`responsive-block-editor-addons-tabs__panel responsive-block-editor-addons-tabs__align-${alignTabs}`}>
+            <ul className={`responsive-block-editor-addons-tabs__panel responsive-block-editor-addons-tabs-align-${alignTabs}-desktop responsive-block-editor-addons-tabs-align-${alignTabsT}-tablet responsive-block-editor-addons-tabs-align-${alignTabsM}-mobile`}>
                 {tabHeaderOptions.map( ( header, index ) => (
                     <li key={ index } className={`responsive-block-editor-addons-tab ${activeTab === index ? 'responsive-block-editor-addons-tabs__active' : ''} ` }
                         id={`responsive-block-editor-addons-tabs__tab${index}`}

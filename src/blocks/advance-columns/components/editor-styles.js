@@ -65,6 +65,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     backgroundImagePosition,
     backgroundAttachment,
     backgroundImageRepeat,
@@ -124,9 +130,13 @@ function EditorStyles(props) {
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
   let imgopacity = opacity / 100;
   let max_width = "100%";
@@ -142,6 +152,24 @@ function EditorStyles(props) {
   if ("full" == height) columnHeightStyle = "100vh !important";
   if ("custom" == height) {
     columnHeightStyle = customHeight + "px !important";
+  }
+
+  let hoverBoxShadowCSS = {};
+  if ( hoverboxShadowColor !== undefined && hoverboxShadowColor !== '' ) {
+    hoverBoxShadowCSS = {
+      "box-shadow":
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS,
+    }
   }
 
   var selectors = {
@@ -236,6 +264,9 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
+    },
+    " .responsive-block-editor-addons-block-columns:hover": {
+      ...hoverBoxShadowCSS
     },
     " .responsive-columns-inner-wrap": {
       "max-width": max_width,

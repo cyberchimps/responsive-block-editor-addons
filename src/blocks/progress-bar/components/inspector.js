@@ -1,7 +1,4 @@
-import BoxShadowControl from "../../../utils/components/box-shadow";
-import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
-import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
@@ -16,12 +13,11 @@ import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { ColorPalette, MediaUpload } = wp.blockEditor;
 import InspectorTab from "../../../components/InspectorTab"
 import InspectorTabs from "../../../components/InspectorTabs"
 
 // Import block components
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 // Import Inspector components
 const {
@@ -225,6 +221,15 @@ export default class Inspector extends Component {
 				semiCircularTopTitleValueTypographyColor,
 				semiCircularInnerValueTypographyColor,
 				semiCircularBottomTitleValueTypographyColor,
+				topTitleValueFontStyle,
+				innerTitleValueFontStyle,
+				bottomTitleValueFontStyle,
+				circularTopTitleValueFontStyle,
+				circularInnerValueFontStyle,
+				circularBottomTitleValueFontStyle,
+				semiCircularTopTitleValueFontStyle,
+				semiCircularInnerValueFontStyle,
+				semiCircularBottomTitleValueFontStyle
 			},
 			setAttributes,
 		} = this.props;
@@ -969,9 +974,9 @@ export default class Inspector extends Component {
 												spacing: topTitleValueLetterSpacing,
 												transform: topTitleValueTextTransform,
 												color: topTitleValueTypographyColor,
+                  								fontstyle: topTitleValueFontStyle,
 											}}
 											showLetterSpacing={true}
-											showTextTransform={true}
 											showColorControl={true}
 											setAttributes={setAttributes}
 											{...this.props}
@@ -995,10 +1000,10 @@ export default class Inspector extends Component {
 													spacing: innerTitleValueLetterSpacing,
 													transform: innerTitleValueTextTransform,
 													color: innerTitleValueTypographyColor,
+													fontstyle: innerTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
-												showTextTransform={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1019,9 +1024,9 @@ export default class Inspector extends Component {
 												spacing: bottomTitleValueLetterSpacing,
 												transform: bottomTitleValueTextTransform,
 												color: bottomTitleValueTypographyColor,
+												fontstyle: bottomTitleValueFontStyle,
 											}}
 											showLetterSpacing={true}
-											showTextTransform={true}
 											showColorControl={true}
 											setAttributes={setAttributes}
 											{...this.props}
@@ -1045,10 +1050,10 @@ export default class Inspector extends Component {
 													spacing: circularTopTitleValueLetterSpacing,
 													transform: circularTopTitleValueTextTransform,
 													color: circularTopTitleValueTypographyColor,
+													fontstyle: circularTopTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
-												showTextTransform={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1069,6 +1074,7 @@ export default class Inspector extends Component {
 													height: circularInnerValueLineHeight,
 													spacing: circularInnerValueLetterSpacing,
 													color: circularInnerValueTypographyColor,
+													fontstyle: circularInnerValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showTextTransform={false}
@@ -1095,9 +1101,9 @@ export default class Inspector extends Component {
 													spacing: circularBottomTitleValueLetterSpacing,
 													transform: circularBottomTitleValueTextTransform,
 													color: circularBottomTitleValueTypographyColor,
+													fontstyle: circularBottomTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
-												showTextTransform={true}
 												showColorControl={true}
 												setAttributes={setAttributes}
 												{...this.props}
@@ -1121,10 +1127,10 @@ export default class Inspector extends Component {
 													spacing: semiCircularTopTitleValueLetterSpacing,
 													transform: semiCircularTopTitleValueTextTransform,
 													color: semiCircularTopTitleValueTypographyColor,
+													fontstyle: semiCircularTopTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
-												showTextTransform={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1145,6 +1151,7 @@ export default class Inspector extends Component {
 													height: semiCircularInnerValueLineHeight,
 													spacing: semiCircularInnerValueLetterSpacing,
 													color: semiCircularInnerValueTypographyColor,
+													fontstyle: semiCircularInnerValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
@@ -1171,9 +1178,9 @@ export default class Inspector extends Component {
 													spacing: semiCircularBottomTitleValueLetterSpacing,
 													transform: semiCircularBottomTitleValueTextTransform,
 													color: semiCircularBottomTitleValueTypographyColor,
+													fontstyle: semiCircularBottomTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
-												showTextTransform={true}
 												showColorControl={true}
 												setAttributes={setAttributes}
 												{...this.props}

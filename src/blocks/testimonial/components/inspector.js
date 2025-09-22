@@ -435,6 +435,9 @@ export default class Inspector extends Component {
         newTestimonialCiteAlign,
         testimonialCiteAlignTablet,
         testimonialCiteAlignMobile,
+        contentFontStyle,
+        nameFontStyle,
+        titleFontStyle,
     },
       setAttributes,
     } = this.props;
@@ -1201,10 +1204,10 @@ export default class Inspector extends Component {
 				      	  transform: contentTextTransform,
                   color: contentTypographyColor,
                   label: __("Text Color", "responsive-block-editor-addons"),
+                  fontstyle: contentFontStyle,
 				      	}}
                 resetColor={() => setAttributes({ contentTypographyColor: "" })}
 				      	showLetterSpacing={false}
-				      	showTextTransform={true}
                 showTextBottomSpacing={true}
                 showColorControl={true}
 				      	setAttributes={setAttributes}
@@ -1226,9 +1229,9 @@ export default class Inspector extends Component {
 				      	  transform: nameTextTransform,
                   label: __("Name Color", "responsive-block-editor-addons"),
                   color: nameTypographyColor,
+                  fontstyle: nameFontStyle,
 				      	}}
 				      	  showLetterSpacing={false}
-				      	  showTextTransform={true}
                   showTextBottomSpacing={true}
                   showColorControl={true}
 				      	  setAttributes={setAttributes}
@@ -1250,9 +1253,9 @@ export default class Inspector extends Component {
 				      	  transform: titleTextTransform,
                   label: __("Title/Designation Color", "responsive-block-editor-addons"),
                   color: titleTypographyColor,
+                  fontstyle: titleFontStyle,
 				      	}}
 				      	  showLetterSpacing={false}
-				      	  showTextTransform={true}
                   showTextBottomSpacing={true}
                   showColorControl={true}
 				      	  setAttributes={setAttributes}

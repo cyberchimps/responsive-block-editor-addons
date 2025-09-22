@@ -33,6 +33,12 @@ function EditorStyles(props) {
         boxShadowBlur,
         boxShadowSpread,
         boxShadowPosition,
+        hoverboxShadowColor,
+        hoverboxShadowHOffset,
+        hoverboxShadowVOffset,
+        hoverboxShadowBlur,
+        hoverboxShadowSpread,
+        hoverboxShadowPosition,
         columns,
         columnsMobile,
         columnsTablet,
@@ -117,6 +123,12 @@ function EditorStyles(props) {
 		blockRightPaddingTablet,
         countTypographyColor,
         titleTypographyColor,
+        titleTextTransform,
+        titleFontStyle,
+        countTextTransform,
+        countFontStyle,
+        listTextTransform,
+        listFontStyle,
     } = props.attributes;
 
 
@@ -127,12 +139,18 @@ function EditorStyles(props) {
     const borderBottomColor = "none" !== separatorStyle ? separatorColor : "";
     const borderBottomWidth = "none" !== separatorStyle ? separatorWidth : 0;
     var boxShadowPositionCSS = boxShadowPosition;
+    var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
     if ("outset" === boxShadowPosition) {
       boxShadowPositionCSS = "";
     }
+    if ("outset" === hoverboxShadowPosition) {
+      hoverboxShadowPositionCSS = "";
+    }
 
     const boxShadowValues = generateCSSUnit(boxShadowHOffset, "px") + " " + generateCSSUnit(boxShadowVOffset, "px") + " " + generateCSSUnit(boxShadowBlur, "px") + " " + generateCSSUnit(boxShadowSpread, "px") + " " + boxShadowColor + " " + boxShadowPositionCSS;
+
+    const hoverboxShadowValues = hoverboxShadowColor !== '' ? generateCSSUnit(hoverboxShadowHOffset, "px") + " " + generateCSSUnit(hoverboxShadowVOffset, "px") + " " + generateCSSUnit(hoverboxShadowBlur, "px") + " " + generateCSSUnit(hoverboxShadowSpread, "px") + " " + hoverboxShadowColor + " " + hoverboxShadowPositionCSS : '';
 
     var selectors = {
         " ":{
@@ -160,6 +178,9 @@ function EditorStyles(props) {
             "text-align": alignment,
             "box-shadow": boxShadowValues,
         },
+        " .responsive-block-editor-addons-block-box:hover": {
+            "box-shadow": hoverboxShadowValues,
+        },
         " .responsive-block-editor-addons-block-title": {
             "color": titleTypographyColor,
             "margin-bottom": generateCSSUnit(titleBottomSpace, "px"),
@@ -167,14 +188,18 @@ function EditorStyles(props) {
             "font-family": titleFontFamily,
             "font-size": `${generateCSSUnit(titleFontSize, "px")} !important`,
             "font-weight": titleFontWeight,
-            "line-height": titleLineHeight
+            "line-height": titleLineHeight,
+            "text-transform": titleTextTransform,
+            "font-style": titleFontStyle,
         },
         " .responsive-block-editor-addons-block-count": {
             "color": countTypographyColor,
             "font-family": countFontFamily,
             "font-size": `${generateCSSUnit(countFontSize, "px")} !important`,
             "font-weight": countFontWeight,
-            "line-height": countLineHeight
+            "line-height": countLineHeight,
+            "text-transform": countTextTransform,
+            "font-style": countFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item": {
             "list-style": listStyle,
@@ -182,7 +207,9 @@ function EditorStyles(props) {
             "font-family": listFontFamily,
             "font-size": `${generateCSSUnit(listFontSize, "px")} !important`,
             "font-weight": listFontWeight,
-            "line-height": generateCSSUnit(listLineHeight, "px")
+            "line-height": generateCSSUnit(listLineHeight, "px"),
+            "text-transform": listTextTransform,
+            "font-style": listFontStyle,
         },
         " .responsive-block-editor-addons-block-list-item:hover": {
             "color": listStyleColorHover

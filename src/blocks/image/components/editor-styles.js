@@ -61,6 +61,7 @@ function EditorStyles(props) {
     imageboxShadowHoverVOffset,
     imageboxShadowHoverBlur,
     imageboxShadowHoverSpread,
+    imageboxShadowHoverPosition,
     MaskShape,
     MaskSize,
     MaskPosition,
@@ -157,6 +158,8 @@ function EditorStyles(props) {
     captionBottomMarginMobile,
     captionLeftMarginMobile,
     captionRightMarginMobile,
+    layoverHeadingFontStyle,
+    captionFontStyle,
   } = props.attributes;
   var base_url = window.location.origin;
   var filtervalue =
@@ -205,6 +208,17 @@ function EditorStyles(props) {
         LayoverContentPosition === "rightbottom"
       ? "flex-end"
       : "center";
+
+  var boxShadowPositionCSS = imageboxShadowPosition;
+  var hoverboxShadowPositionCSS = imageboxShadowHoverPosition;
+
+  if ("outset" === imageboxShadowPosition) {
+    boxShadowPositionCSS = "";
+  }
+  if ("outset" === imageboxShadowHoverPosition) {
+    hoverboxShadowPositionCSS = "";
+  }
+
   var selectors = {
     "": {
         "opacity": hideWidget ? 0.2 : 1,
@@ -242,7 +256,9 @@ function EditorStyles(props) {
         " " +
         generateCSSUnit(imageboxShadowSpread, "px") +
         " " +
-        imageboxShadowColor,
+        imageboxShadowColor +
+        " " +
+        boxShadowPositionCSS,
       "object-fit": imageObjectFit,
       "-webkit-mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
       "mask-image": MaskShape === "none" ? "" : `url("${base_url}/${MaskShape}")`,
@@ -253,6 +269,20 @@ function EditorStyles(props) {
       "-webkit-mask-size": MaskSize,
       "mask-size": MaskSize,
       
+    },
+    "  .responsive-blocks-image-block:hover": {
+      "box-shadow": imageboxShadowHoverColor !== '' ?
+        generateCSSUnit(imageboxShadowHoverHOffset, "px") +
+        " " +
+        generateCSSUnit(imageboxShadowHoverVOffset, "px") +
+        " " +
+        generateCSSUnit(imageboxShadowHoverBlur, "px") +
+        " " +
+        generateCSSUnit(imageboxShadowHoverSpread, "px") +
+        " " +
+        imageboxShadowHoverColor +
+        " " +
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-image-block-description": {
       "align-items": leftoverlayalign,
@@ -282,6 +312,7 @@ function EditorStyles(props) {
       "margin-bottom":generateCSSUnit(layoverHeadingbottommargin,"px"),
       "margin-left":generateCSSUnit(layoverHeadingleftmargin,"px"),
       "margin-right":generateCSSUnit(layoverHeadingrightmargin,"px"),
+      "font-style": layoverHeadingFontStyle,
     },
 
     " .responsive-img-caption ": {
@@ -297,9 +328,10 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(captionBottomMargin, "px"),
       "margin-left": generateCSSUnit(captionLeftMargin, "px"),
       "margin-right": generateCSSUnit(captionRightMargin, "px"),
+      "font-style": captionFontStyle,
     },
     "  .img-main-block:hover figure": {
-      "box-shadow":
+      "box-shadow": imageboxShadowHoverColor !== '' ?
         generateCSSUnit(imageboxShadowHoverHOffset, "px") +
         " " +
         generateCSSUnit(imageboxShadowHoverVOffset, "px") +
@@ -308,7 +340,7 @@ function EditorStyles(props) {
         " " +
         generateCSSUnit(imageboxShadowHoverSpread, "px") +
         " " +
-        imageboxShadowHoverColor,
+        imageboxShadowHoverColor : '',
       "filter": filtervalue,
       "transition": zoomintransition,
       "transform": zoomintransform,

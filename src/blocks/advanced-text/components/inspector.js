@@ -150,6 +150,12 @@ export default class Inspector extends Component {
         titleTypographyColor,
         subtitleTypographyColor,
         textTypographyColor,
+        titleTextTransform,
+        titleFontStyle,
+        subtitleTextTransform,
+        subtitleFontStyle,
+        textTextTransform,
+        textFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -639,9 +645,10 @@ export default class Inspector extends Component {
                   weight: titleFontWeight,
                   height: titleLineHeight,
                   color: titleTypographyColor,
+                  transform: titleTextTransform,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -660,9 +667,10 @@ export default class Inspector extends Component {
                   weight: subtitleFontWeight,
                   height: subtitleLineHeight,
                   color: subtitleTypographyColor,
+                  transform: subtitleTextTransform,
+                  fontstyle: subtitleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -678,9 +686,10 @@ export default class Inspector extends Component {
                   weight: textFontWeight,
                   height: textLineHeight,
                   color: textTypographyColor,
+                  transform: textTextTransform,
+                  fontstyle: textFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}

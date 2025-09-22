@@ -24,6 +24,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     titlePadding,
     titlePaddingMobile,
     titlePaddingTablet,
@@ -41,9 +47,13 @@ function EditorStyles(props) {
   var mobile_selectors = {};
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
   selectors = {
     " ": {
@@ -61,6 +71,20 @@ function EditorStyles(props) {
         boxShadowColor,
       "overflow": "hidden",
     },
+    ":hover": {
+      "box-shadow": hoverboxShadowColor !== '' ?
+        hoverboxShadowPositionCSS +
+        " " +
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor : '',
+    },
     " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles": {
       "box-shadow":
         boxShadowPositionCSS == "inset"
@@ -77,6 +101,22 @@ function EditorStyles(props) {
             boxShadowColor
           : "",
       padding: generateCSSUnit(titlePadding, "px"),
+    },
+    " .responsive-block-editor-addons-accordion-titles-button.responsive-block-editor-addons-accordion-titles:hover": {
+      "box-shadow": hoverboxShadowColor !== '' ?
+        ( hoverboxShadowPositionCSS == "inset"
+          ? hoverboxShadowPositionCSS +
+            " " +
+            generateCSSUnit(hoverboxShadowHOffset, "px") +
+            " " +
+            generateCSSUnit(hoverboxShadowVOffset, "px") +
+            " " +
+            generateCSSUnit(hoverboxShadowBlur, "px") +
+            " " +
+            generateCSSUnit(hoverboxShadowSpread, "px") +
+            " " +
+            hoverboxShadowColor
+          : "" ) : '',
     },
     " .responsive-block-editor-addons-accordion-content span": {
       margin: "0",

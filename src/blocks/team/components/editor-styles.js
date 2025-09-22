@@ -74,6 +74,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     opacity,
     backgroundColor2,
     gradientDirection,
@@ -176,14 +182,24 @@ function EditorStyles(props) {
     gradientOverlayType,
     gradientOverlayAngle,
     gradientOverlayPosition,
+    titleTextTransform,
+    titleFontStyle,
+    designationTextTransform,
+    designationFontStyle,
+    descriptionTextTransform,
+    descriptionFontStyle,
   } = props.attributes;
 
   let bgopacity = opacity / 100;
 
-  var boxShadowPositionCSS = boxShadowPosition;
+  var boxShadowPositionCSS      = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   let gutterMargin = ""
@@ -275,6 +291,8 @@ function EditorStyles(props) {
       "font-weight": titleFontWeight,
       "line-height": titleLineHeight,
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
     },
 
     " .responsive-block-editor-addons-team-designation": {
@@ -284,6 +302,8 @@ function EditorStyles(props) {
       "font-weight": designationFontWeight,
       "line-height": designationLineHeight,
       "margin-bottom": generateCSSUnit(designationBottomSpacing, "px"),
+      "text-transform": designationTextTransform,
+      "font-style": designationFontStyle,
     },
 
     " .responsive-block-editor-addons-team-description": {
@@ -293,6 +313,8 @@ function EditorStyles(props) {
       "font-weight": descriptionFontWeight,
       "line-height": descriptionLineHeight,
       "margin-bottom": generateCSSUnit(descriptionBottomSpacing, "px"),
+      "text-transform": descriptionTextTransform,
+      "font-style": descriptionFontStyle,
     },
 
     " .responsive-block-editor-addons-team-social-icons.edit-block a": {
@@ -418,6 +440,20 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
+    },
+    " .wp-block-responsive-block-editor-addons-team:hover": {
+      "box-shadow": hoverboxShadowColor !== '' ?
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS : '',
     },
   };
 

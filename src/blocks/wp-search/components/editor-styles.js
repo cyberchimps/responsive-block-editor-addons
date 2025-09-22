@@ -53,6 +53,12 @@
      boxShadowBlur,
      boxShadowSpread,
      boxShadowPosition,
+     hoverboxShadowColor,
+     hoverboxShadowHOffset,
+     hoverboxShadowVOffset,
+     hoverboxShadowBlur,
+     hoverboxShadowSpread,
+     hoverboxShadowPosition,
      iconSize,
      iconColor,
      iconHoverColor,
@@ -97,16 +103,23 @@
      blockRightPaddingTablet,
      inputTypographyColor,
      widthType,
+     inputTextTransform, 
+     inputFontStyle,
+     buttonTextTransform, 
+     buttonFontStyle,
    } = props.attributes;
 
    let width;
    width = widthType === "px" ? generateCSSUnit(inputWidth, "px") : `${inputWidth}%`;
 
    var boxShadowPositionCSS = boxShadowPosition;
+   var hoverboxShadowPositionCSS = hoverboxShadowPosition;
    if ("outset" === boxShadowPosition) {
      boxShadowPositionCSS = "";
    }
-   let boxShadow = `${generateCSSUnit(boxShadowHOffset, "px")} ${generateCSSUnit(boxShadowVOffset, "px")} ${generateCSSUnit(boxShadowBlur, "px")} ${generateCSSUnit(boxShadowSpread, "px")} ${boxShadowColor} ${boxShadowPositionCSS}`;
+   if ("outset" === hoverboxShadowPosition) {
+     hoverboxShadowPositionCSS = "";
+   }
 
    let bgColor;
    bgColor = "minimal" === layout ? inputBackgroundColor : "";
@@ -170,6 +183,32 @@
 			'margin-right': generateCSSUnit(blockRightMargin, "px"),
 			'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
 			'margin-left': generateCSSUnit(blockLeftMargin, "px"),
+      'box-shadow':
+        generateCSSUnit(boxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(boxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(boxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(boxShadowSpread, "px") +
+        " " +
+        boxShadowColor +
+        " " +
+        boxShadowPositionCSS,
+    },
+    ":hover": {
+      'box-shadow': hoverboxShadowColor !== '' ?
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-block-editor-addons-search-form__input": {
      "border-top" : inputBorderTop + ' !important',
@@ -181,6 +220,8 @@
      "background-color": inputBackgroundColor,
      "margin": 0,
      "font-family": inputFontFamily,
+     "text-transform": inputTextTransform,
+     "font-style": inputFontStyle,
      "font-size": generateCSSUnit(inputFontSize, "px"),
      "font-weight": inputFontWeight,
      "line-height": inputLineHeight,
@@ -230,6 +271,8 @@
     " .responsive-block-editor-addons-search-button-text": {
       "color": buttonTextColor,
       "font-family": buttonFontFamily,
+      "text-transform": buttonTextTransform,
+      "font-style": buttonFontStyle,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-weight": buttonFontWeight,
       "line-height": buttonLineHeight,
@@ -240,12 +283,6 @@
     },
    };
 
-   if("outset" === boxShadowPosition){
-    selectors[" "]["box-shadow"] = boxShadow;
-   }
-   else{
-    selectors[" .responsive-block-editor-addons-search-form__input"]["box-shadow"] = boxShadow;
-   }
  
    var mobile_selectors = {
     " ":{

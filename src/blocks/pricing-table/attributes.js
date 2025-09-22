@@ -239,6 +239,29 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  hoverboxShadowColor: {
+    type: "string",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
   buttonBoxShadowColor: {
     type: "string",
   },
@@ -885,6 +908,58 @@ const attributes = {
   isCtaButtonPaddingMarginValueUpdated : {
     type: "boolean",
     default: false,
-  }
+  },
+  titleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  titleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  prefixTextTransform: {
+    type: "string",
+    default: "",
+  },
+  prefixFontStyle: {
+    type: "string",
+    default: "",
+  },
+  amountTextTransform: {
+    type: "string",
+    default: "",
+  },
+  amountFontStyle: {
+    type: "string",
+    default: "",
+  },
+  suffixTextTransform: {
+    type: "string",
+    default: "",
+  },
+  suffixFontStyle: {
+    type: "string",
+    default: "",
+  },
+  subpriceFontStyle: {
+    type: "string",
+    default: "",
+  },
+  featuresTextTransform: {
+    type: "string",
+    default: "",
+  },
+  featuresFontStyle: {
+    type: "string",
+    default: "",
+  },
+  ctaTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

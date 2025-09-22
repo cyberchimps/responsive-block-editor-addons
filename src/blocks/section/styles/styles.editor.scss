@@ -297,6 +297,14 @@
    align-items: center;
    margin-bottom: 16px;
 
+   .rbea-tab-selector-full-width {
+    width: 100%;
+   }
+
+   .rbea-tab-selector-zero-margin-bottom {
+    margin-bottom: 0;
+   }
+
    .rbea-section-size-control-tab-selector{
     width: fit-content;
     margin-top: 0px;

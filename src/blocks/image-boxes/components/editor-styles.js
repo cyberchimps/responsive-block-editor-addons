@@ -22,6 +22,12 @@ function EditorStyles(props) {
     boxShadowBlur,
     boxShadowSpread,
     boxShadowPosition,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     boxPaddingRight,
     boxPaddingLeft,
     boxPaddingTop,
@@ -143,6 +149,10 @@ function EditorStyles(props) {
     boxLeftPaddingMobile,
     boxTopPaddingMobile,
     boxBottomPaddingMobile,
+    titleTextTransform,
+    titleFontStyle,
+    descriptionTextTransform,
+    descriptionFontStyle
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -156,9 +166,13 @@ function EditorStyles(props) {
     : itemHoverBackgroundColor;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   var hoverGradient =
@@ -294,6 +308,18 @@ function EditorStyles(props) {
 
     ":hover": {
       "transform": `scale(${imageHoverEffect})`,
+      "box-shadow": hoverboxShadowColor !== '' ?
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS : '',
     },
 
     " .responsive-block-editor-addons-imagebox-image": {
@@ -302,6 +328,8 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__title": {
       "font-family": titleFontFamily,
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
       "line-height": titleLineHeight,
@@ -310,6 +338,8 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-image-boxes-block-item__description": {
       "font-family": descriptionFontFamily,
+      "text-transform": descriptionTextTransform,
+      "font-style": descriptionFontStyle,
       "font-size": generateCSSUnit(descriptionFontSize, "px"),
       "font-weight": descriptionFontWeight,
       "line-height": descriptionLineHeight,

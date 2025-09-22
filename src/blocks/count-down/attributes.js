@@ -320,7 +320,30 @@ const attributes = {
   },
   boxShadowColor: {
     type: "string",
-    default: "#000",
+    default: '',
+  },
+  hoverboxShadowColor: {
+    type: 'string',
+  },
+  hoverboxShadowHOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowVOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowBlur: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowSpread: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowPosition: {
+    type: 'string',
+    default: 'outset'
   },
   backgroundColor: {
     type: "string",
@@ -689,6 +712,22 @@ const attributes = {
   digitTypographyColor: {
     type: "string",
     default: '#fff',
+  },
+  digitTextTransform: {
+    type: "string",
+    default: "",
+  },
+  digitFontStyle: {
+    type: "string",
+    default: "",
+  },
+  labelTextTransform: {
+    type: "string",
+    default: "",
+  },
+  labelFontStyle: {
+    type: "string",
+    default: "",
   },
 };
 
