@@ -250,6 +250,8 @@ class LatestPostsBlock extends Component {
 					value={attributes.categories}
 					onChange={(value) => setAttributes({ categories: value })}
 					options={categoryListOptions}
+          __nextHasNoMarginBottom
+          __next40pxDefaultSize={true}
 				  />
 				</Fragment>
 			  )}

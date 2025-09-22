@@ -810,6 +810,7 @@ export default class Inspector extends Component {
                 "Turn this off to inherit the natural width of Image.",
                 "responsive-block-editor-addons"
               )}
+              __nextHasNoMarginBottom
             />
             {imageWidthType && (
               <TabPanel
@@ -1111,6 +1112,8 @@ export default class Inspector extends Component {
                     ),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               {(imgiconPosition == "left" || imgiconPosition == "right") && (
                 <Fragment>
@@ -1284,6 +1287,8 @@ export default class Inspector extends Component {
                     label: __("Complete Box", "responsive-block-editor-addons"),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               {(resctaType === "text" || resctaType === "button") && (
                 <Fragment>
@@ -1291,6 +1296,8 @@ export default class Inspector extends Component {
                     label={__("Text", "responsive-block-editor-addons")}
                     value={resctaText}
                     onChange={(value) => setAttributes({ resctaText: value })}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                 </Fragment>
               )}
@@ -1300,6 +1307,8 @@ export default class Inspector extends Component {
                     label={__("Link", "responsive-block-editor-addons")}
                     value={resctaLink}
                     onChange={(value) => setAttributes({ resctaLink: value })}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                   <ToggleControl
                     label={__(
@@ -1308,6 +1317,7 @@ export default class Inspector extends Component {
                     )}
                     checked={buttonTarget}
                     onChange={this.toggleTarget}
+                    __nextHasNoMarginBottom
                   />
                 </Fragment>
               )}
@@ -1317,6 +1327,8 @@ export default class Inspector extends Component {
                     label={__("Link", "responsive-block-editor-addons")}
                     value={resBoxLink}
                     onChange={(value) => setAttributes({ resBoxLink: value })}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                   <ToggleControl
                     label={__(
@@ -1325,6 +1337,7 @@ export default class Inspector extends Component {
                     )}
                     checked={resBoxTarget}
                     onChange={this.toggleBoxTarget}
+                    __nextHasNoMarginBottom
                   />
                 </Fragment>
               )}
@@ -1687,6 +1700,8 @@ export default class Inspector extends Component {
                     ),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               </div>
               <div className = "rbea-repeat-selector-wrapper">
@@ -1845,6 +1860,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ resshowPrefix: !resshowPrefix })
                 }
+                __nextHasNoMarginBottom
               />
               {resshowPrefix && (
                 <Fragment>
@@ -1864,6 +1880,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ resshowTitle: !resshowTitle })
                 }
+                __nextHasNoMarginBottom
               />
               {resshowTitle && (
                 <Fragment>
@@ -1912,6 +1929,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ resshowDesc: !resshowDesc })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody
@@ -1985,6 +2003,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1995,6 +2014,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -2005,6 +2025,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody
@@ -2027,6 +2048,8 @@ export default class Inspector extends Component {
                   { value: "fold", label: __("Fold", "responsive-block-editor-addons") },
                   { value: "rotate", label: __("Rotate", "responsive-block-editor-addons") },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               {animationName !== "none" && (
                 <Fragment>
@@ -2082,6 +2105,8 @@ export default class Inspector extends Component {
                       { value: "ease-out", label: "ease-out" },
                       { value: "linear", label: "linear" },
                     ]}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                 </Fragment>
               )}

@@ -78,7 +78,9 @@ export default class Inspector extends Component {
             let duplicateOptions = [...formCheckBoxOptions];
             duplicateOptions[position].checkboxValue = !current.checkboxValue;
             setAttributes({ formCheckBoxOptions: duplicateOptions });
-          }}/>
+          }}
+            __nextHasNoMarginBottom
+          />
           <DragHandle />
           <RichText
             placeholder={current.placeholder}
@@ -172,6 +174,8 @@ export default class Inspector extends Component {
                   { value: "checkbox", label: __("Checkbox", "responsive-block-editor-addons") },
                 ]}
                 onChange={(value) => setAttributes({ formInputFieldType: value })}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
 
               <TextControl
@@ -179,12 +183,15 @@ export default class Inspector extends Component {
                 type="text"
                 value={formInputFieldLabel}
                 onChange={(value) => setAttributes( { formInputFieldLabel: value } ) }
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
 
               <ToggleControl
                 label={__("Hide Label", "responsive-block-editor-addons")}
                 checked={formInputHideLabel}
                 onChange={(value) => setAttributes({ formInputHideLabel: !formInputHideLabel }) }
+                __nextHasNoMarginBottom
               />
 
               {formInputFieldType === 'checkbox' && CheckBox()}
@@ -217,6 +224,8 @@ export default class Inspector extends Component {
                 onChange={(value) => {
                   setAttributes({formInputPlaceholder: value})
                 }}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />}
 
               <TextControl
@@ -226,6 +235,8 @@ export default class Inspector extends Component {
                 onChange={(value) => {
                   setAttributes({formInputHelpText: value})
                 }}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
 
               {formInputFieldType === 'checkbox' && 
@@ -233,6 +244,7 @@ export default class Inspector extends Component {
                 label="Inline List"
                 checked={ formInputInline }
                 onChange={ (value) =>  setAttributes({ formInputInline: !formInputInline })}
+                __nextHasNoMarginBottom
               />}
 
               <ToggleControl
@@ -240,6 +252,7 @@ export default class Inspector extends Component {
                 help={__("If enabled, the input field must be filled out before submitting the form.", "responsive-block-editor-addons")}
                 checked={ formInputRequired }
                 onChange={ (value) =>  setAttributes({ formInputRequired: !formInputRequired })}
+                __nextHasNoMarginBottom
               />
 
               {(formInputFieldType === 'text' || formInputFieldType === 'textarea' || formInputFieldType === 'email' || formInputFieldType === 'url' || formInputFieldType === 'number') &&
@@ -248,6 +261,8 @@ export default class Inspector extends Component {
                 type="text"
                 value={formInputDefaultValue}
                 onChange={(value) => setAttributes({formInputDefaultValue: value})}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />}
 
             </PanelBody>

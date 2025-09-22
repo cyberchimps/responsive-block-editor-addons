@@ -125,6 +125,8 @@ export default class Inspector extends Component {
                 onChange={(value) => {
                   setAttributes({anchor: value})
                 }}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"anchor"} />

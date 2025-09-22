@@ -387,6 +387,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarTopTitleEnable: !progressBarTopTitleEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 										<ToggleControl
 											label={__("Top Value Enable", "responsive-block-editor-addons")}
@@ -394,6 +395,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarTopValueEnable: !progressBarTopValueEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 										{(horizontalProgressBarStyle !== "striped" && horizontalProgressBarStyle !== "animatedstriped") && (
 											<Fragment>
@@ -403,6 +405,7 @@ export default class Inspector extends Component {
 													onChange={(value) =>
 														setAttributes({ progressBarInnerTitleEnable: !progressBarInnerTitleEnable })
 													}
+													__nextHasNoMarginBottom
 												/>
 												<ToggleControl
 													label={__("Inner Value Enable", "responsive-block-editor-addons")}
@@ -410,6 +413,7 @@ export default class Inspector extends Component {
 													onChange={(value) =>
 														setAttributes({ progressBarInnerValueEnable: !progressBarInnerValueEnable })
 													}
+													__nextHasNoMarginBottom
 												/>
 											</Fragment>
 										)}
@@ -419,6 +423,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarBottomTitleEnable: !progressBarBottomTitleEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 										<ToggleControl
 											label={__("Bottom Value Enable", "responsive-block-editor-addons")}
@@ -426,6 +431,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarBottomValueEnable: !progressBarBottomValueEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 									</Fragment>
 							)}
@@ -454,6 +460,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarValueEnable: !circularProgressBarValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Top Title Enable", "responsive-block-editor-addons")}
@@ -461,6 +468,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarTopTitleEnable: !circularProgressBarTopTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Top Value Enable", "responsive-block-editor-addons")}
@@ -468,6 +476,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarTopValueEnable: !circularProgressBarTopValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Bottom Title Enable", "responsive-block-editor-addons")}
@@ -475,6 +484,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarBottomTitleEnable: !circularProgressBarBottomTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Bottom Value Enable", "responsive-block-editor-addons")}
@@ -482,6 +492,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarBottomValueEnable: !circularProgressBarBottomValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 										</Fragment>
 									)}
@@ -493,6 +504,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarValueEnable: !semiCircularProgressBarValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Top Title Enable", "responsive-block-editor-addons")}
@@ -500,6 +512,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarTopTitleEnable: !semiCircularProgressBarTopTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Top Value Enable", "responsive-block-editor-addons")}
@@ -507,6 +520,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarTopValueEnable: !semiCircularProgressBarTopValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Bottom Title Enable", "responsive-block-editor-addons")}
@@ -514,6 +528,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarBottomTitleEnable: !semiCircularProgressBarBottomTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Bottom Value Enable", "responsive-block-editor-addons")}
@@ -521,6 +536,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarBottomValueEnable: !semiCircularProgressBarBottomValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 										</Fragment>
 									)}
@@ -671,6 +687,8 @@ export default class Inspector extends Component {
 									},
 								]}
 								onChange={(value) => setAttributes({ progressBarColorType: value })}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize={true}
 							/>
 							{progressBarColorType === "default" && progressBarStyle === "horizontal" && (
 								<Fragment>
@@ -712,6 +730,7 @@ export default class Inspector extends Component {
 													gradientTrack: !gradientTrack,
 												})
 											}
+											__nextHasNoMarginBottom
 										/>
 										{gradientTrack && (
 											<Fragment>
@@ -1205,6 +1224,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 								setAttributes({ hideWidget: !hideWidget })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__(
@@ -1215,6 +1235,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 								setAttributes({ hideWidgetTablet: !hideWidgetTablet })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__(
@@ -1225,6 +1246,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 								setAttributes({ hideWidgetMobile: !hideWidgetMobile })
 								}
+								__nextHasNoMarginBottom
 							/>
 						</PanelBody>
           			

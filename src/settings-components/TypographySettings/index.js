@@ -194,6 +194,8 @@ class TypographyControl extends Component {
                         options={updatedFontOptions}
                         value={this.props.values.family}
                         onChange={this.props.onChangeFontFamily}
+                        __next40pxDefaultSize={true}
+                        __nextHasNoMarginBottom
                     />
                     <TabPanel
                         className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
@@ -284,6 +286,8 @@ class TypographyControl extends Component {
                             options={fontWeightOptions}
                             value={this.props.values.weight}
                             onChange={this.props.onChangeFontWeight}
+                            __next40pxDefaultSize={true}
+                            __nextHasNoMarginBottom
                         />
                     </div>
                     {this.props.showTextTransform !== false && (

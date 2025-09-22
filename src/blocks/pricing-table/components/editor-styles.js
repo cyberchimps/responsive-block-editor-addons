@@ -293,7 +293,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
       color: ctaColor + "!important",
       "background-color": updatedButtonBackgroundColor,
-      "background-image": updatedButtonBackgroundImage,
+      "background-image": backgroundImage ? updatedButtonBackgroundImage : 'none',
       "margin-left": "left" == blockAlign ? 0 : "",
       "margin-right": "right" == blockAlign ? 0 : "",
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
@@ -333,10 +333,10 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item.background-type-image": {
-      "background-image": `linear-gradient(${hexToRgba(
+      "background-image": backgroundImage ? `linear-gradient(${hexToRgba(
         "#fff",
         1 - imgopacity || 0
-      )},${hexToRgba("#fff", 1 - imgopacity || 0)}),url(${backgroundImage});`,
+      )},${hexToRgba("#fff", 1 - imgopacity || 0)}),url(${backgroundImage});` : 'none',
       "background-position": "center center",
       "background-attachment": "scroll",
       "background-repeat": "no-repeat",

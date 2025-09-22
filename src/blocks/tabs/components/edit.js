@@ -307,10 +307,9 @@ const { withDispatch, select, dispatch, withSelect } = wp.data;
 
  export default compose(
 	withSelect( ( select, props ) => {
-		const { __experimentalGetPreviewDeviceType = null } = select( 'core/edit-post' );
-		let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
+		const { getDeviceType } = select( 'core/editor' );
 		return {
-			deviceType: deviceType,
+			deviceType: getDeviceType(),
 		}
 	}),
 	withDispatch( (dispatch, { clientId }, { select }) => {

@@ -356,7 +356,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -381,7 +383,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -406,7 +410,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -439,6 +445,7 @@ export default class Inspector extends Component {
                     showHeading: !showHeading,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Separator", "responsive-block-editor-addons")}
@@ -448,6 +455,7 @@ export default class Inspector extends Component {
                     showSeparator: !showSeparator,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Sub Heading", "responsive-block-editor-addons")}
@@ -457,6 +465,7 @@ export default class Inspector extends Component {
                     showSubHeading: !showSubHeading,
                   })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"advanced-heading"} />
@@ -633,6 +642,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -643,6 +653,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -653,6 +664,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
 

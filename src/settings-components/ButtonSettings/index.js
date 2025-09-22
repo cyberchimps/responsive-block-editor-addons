@@ -36,6 +36,7 @@ class ButtonSettingsControl extends Component {
                   onChange={() => {
                       setAttributes({ buttonTarget: !buttonTarget });
                   }}
+                  __nextHasNoMarginBottom
               />
               {this.props.showButtonSpacing === false ? false : true && (
                 <ButtonSpacingControl {...this.props}/>

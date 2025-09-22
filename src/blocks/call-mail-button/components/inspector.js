@@ -345,6 +345,8 @@ export default class Inspector extends Component {
                       this.onChangeNumber(value);
                       setAttributes({ phone: value });
                     }}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                   {!isValidNumber && (
                     <p className="rbea-tab-radio-options-help-text" style={{ color: "red" }}>
@@ -366,6 +368,8 @@ export default class Inspector extends Component {
                       this.onChangeMail(value);
                       setAttributes({ mail: value });
                     }}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                   {!isValidMail && (
                     <p className="rbea-tab-radio-options-help-text" style={{ color: "red" }}>
@@ -860,6 +864,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -870,6 +875,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -880,6 +886,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

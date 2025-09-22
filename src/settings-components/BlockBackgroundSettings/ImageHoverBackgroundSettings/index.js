@@ -130,6 +130,8 @@ class ImageBackgroundControl extends Component {
                     label: __("Bottom Right", "responsive-block-editor-addons"),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               <SelectControl
                 label={__("Repeat Hover", "responsive-block-editor-addons")}
@@ -155,6 +157,8 @@ class ImageBackgroundControl extends Component {
                     label: __("Repeat-y", "responsive-block-editor-addons"),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               <RbeaTabRadioControl
                 label={__("Size Hover", "responsive-block-editor-addons")}

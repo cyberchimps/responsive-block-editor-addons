@@ -30,7 +30,10 @@ const ImageControl = (props) => {
 
   return (
     <div className="responsive-block-editor-addons-image-control">
-      <BaseControl help={props.help}>
+      <BaseControl 
+        help={props.help}
+        __nextHasNoMarginBottom
+      >
         <MediaUpload
           onSelect={props.onChange}
           allowedTypes={props.allowedTypes}

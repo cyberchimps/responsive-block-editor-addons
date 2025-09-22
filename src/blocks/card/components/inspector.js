@@ -651,7 +651,11 @@ export default class Inspector extends Component {
           initialOpen={true}
           className={"rbea-repeater-panel"}
         >
-          <BaseControl className="editor-bg-image-control" label={__("", "responsive-block-editor-addons")}>
+          <BaseControl 
+            className="editor-bg-image-control" 
+            label={__("", "responsive-block-editor-addons")}
+            __nextHasNoMarginBottom
+          >
             <MediaUpload
               title={__("Select Image" + (index + 1), "responsive-block-editor-addons")}
               onSelect={(media) => {
@@ -857,6 +861,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ resshowImage: !resshowImage })
                 }
+                __nextHasNoMarginBottom
               />
               {resshowImage && (
                 <Fragment>
@@ -1704,6 +1709,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1714,6 +1720,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1724,6 +1731,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

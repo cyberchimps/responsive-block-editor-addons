@@ -215,7 +215,7 @@ function EditorStyles(props) {
   let imgopacity = opacity / 100;
 
   // TODO
-  let updatedBackgroundImage = `url(${backgroundImage})`;
+  let updatedBackgroundImage = backgroundImage ? `url(${backgroundImage})` : 'none';
   // let updatedBackgroundImage = "";
   let backgroundImageEffect = "";
   let colorType = "";
@@ -237,22 +237,22 @@ function EditorStyles(props) {
     backgroundImageEffect = "";
   }else {
     if (gradientOverlayType === "linear") {
-      backgroundImageEffect = `linear-gradient(${gradientOverlayAngle}deg, ${hexToRgba(
+      backgroundImageEffect = backgroundImage ? `linear-gradient(${gradientOverlayAngle}deg, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
         imgopacity || 0
       )} ${gradientOverlayLocation1}%, ${hexToRgba(
         gradientOverlayColor2 || "#fff",
         imgopacity || 0
-      )} ${gradientOverlayLocation2}%),url(${backgroundImage})`;
+      )} ${gradientOverlayLocation2}%),url(${backgroundImage})` : 'none';
     }
     if (gradientOverlayType === "radial") {
-      backgroundImageEffect = `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
+      backgroundImageEffect = backgroundImage ? `radial-gradient( at ${gradientOverlayPosition}, ${hexToRgba(
         gradientOverlayColor1 || "#fff",
         imgopacity || 0
       )} ${gradientOverlayLocation1}%, ${hexToRgba(
         gradientOverlayColor2 || "#fff",
         imgopacity || 0
-      )} ${gradientOverlayLocation2}%),url(${backgroundImage})`;
+      )} ${gradientOverlayLocation2}%),url(${backgroundImage})` : 'none';
     }
   }
 

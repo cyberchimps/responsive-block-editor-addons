@@ -321,10 +321,10 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-feature-grid-item.background-type-image": {
-      "background-image": `linear-gradient(${hexToRgba(
+      "background-image": backgroundImage ? `linear-gradient(${hexToRgba(
         "#fff",
         1 - imgopacity || 0
-      )},${hexToRgba("#fff", 1 - imgopacity || 0)}),url(${backgroundImage});`,
+      )},${hexToRgba("#fff", 1 - imgopacity || 0)}),url(${backgroundImage})` : "none",
       "background-position": "center center",
       "background-attachment": "scroll",
       "background-repeat": "no-repeat",

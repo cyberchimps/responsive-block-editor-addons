@@ -380,7 +380,9 @@ export default class Inspector extends Component {
 
               </Fragment>
               {positionTab === 'desktop' && tabsStyleD === 'hstyle3' && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -400,7 +402,9 @@ export default class Inspector extends Component {
               </Fragment>)}
 
               {positionTab === 'desktop' && tabsStyleD === 'vstyle8' && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -783,6 +787,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -793,6 +798,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -803,6 +809,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody
@@ -832,6 +839,8 @@ export default class Inspector extends Component {
                     { value: "fold", label: __("Fold", "responsive-block-editor-addons") },
                     { value: "rotate", label: __("Rotate", "responsive-block-editor-addons") },
                   ]}
+                  __nextHasNoMarginBottom
+                  __next40pxDefaultSize={true}
                 />
                 {animationName !== "none" && (
                   <Fragment>
@@ -887,6 +896,8 @@ export default class Inspector extends Component {
                         { value: "ease-out", label: "ease-out" },
                         { value: "linear", label: "linear" },
                       ]}
+                      __nextHasNoMarginBottom
+                      __next40pxDefaultSize={true}
                     />
                   </Fragment>
                 )}

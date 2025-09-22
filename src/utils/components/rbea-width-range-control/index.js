@@ -2,6 +2,10 @@ import { __ } from '@wordpress/i18n';
 import { RangeControl, ButtonGroup, Button, } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { Icon, rotateLeft } from '@wordpress/icons';
+import {
+  __experimentalToggleGroupControl as ToggleGroupControl,
+  __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
 
 import './styles/editor.scss';
 
@@ -73,6 +77,8 @@ const RbeaWidthRangeControl = ( props ) => {
                     min={min}
                     max={max}
                     allowReset = {false}
+                    __next40pxDefaultSize={true}
+                    __nextHasNoMarginBottom
                     {...restProps}
                 />
             </div>

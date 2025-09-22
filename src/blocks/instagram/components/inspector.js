@@ -161,6 +161,7 @@ export default class Inspector extends Component {
                 onChange={(value) => {
                   setAttributes({ token: value });
                 }}
+                __nextHasNoMarginBottom
               />
               <p className="rbea-tab-radio-options-help-text">
                 Note: This block requires you to obtain an Instagram Access
@@ -304,6 +305,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -314,6 +316,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -324,6 +327,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

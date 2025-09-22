@@ -25,6 +25,11 @@ const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 import InspectorTab from "../../../components/InspectorTab";
 import InspectorTabs from "../../../components/InspectorTabs";
+import {
+  __experimentalToggleGroupControl as ToggleGroupControl,
+  __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
+
 
 // Import block components
 const { InspectorControls, AlignmentToolbar, MediaUpload } = wp.blockEditor
@@ -748,6 +753,8 @@ export default class Inspector extends Component {
                       label={__("Button Text", "responsive-block-editor-addons")}
                       value={popupButtonText}
                       onChange={(value) => setAttributes({ popupButtonText: value })}
+                      __nextHasNoMarginBottom
+                      __next40pxDefaultSize={true}
                     />
 
                     <div className="responsive-block-editor-addons-popup-div-flex">
@@ -808,6 +815,8 @@ export default class Inspector extends Component {
                       label={__("Enter Text", "responsive-block-editor-addons")}
                       value={popupTextTrigger}
                       onChange={(value) => setAttributes({ popupTextTrigger: value })}
+                      __nextHasNoMarginBottom
+                      __next40pxDefaultSize={true}
                     />}
 
                   {/* <TabPanel
@@ -923,7 +932,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -948,7 +959,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -973,7 +986,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -1010,6 +1025,7 @@ export default class Inspector extends Component {
                       popupToggleCloseBtn: !popupToggleCloseBtn,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 {popupToggleCloseBtn &&
                   <RbeaTabRadioControl
@@ -1032,10 +1048,15 @@ export default class Inspector extends Component {
                 >
                   {popupTriggerType === 'button' && <>
                     <div className="responsive-block-editor-addons-popup-button-group-tab">
-                      <ButtonGroup>
-                        <Button onClick={() => setAttributes({ popupButtonHoverState: false })} variant={!popupButtonHoverState ? 'primary' : 'secondary'}>{__("Normal", "responsive-block-editor-addons")}</Button>
-                        <Button onClick={() => setAttributes({ popupButtonHoverState: true })} variant={popupButtonHoverState ? 'primary' : 'secondary'}>{__("Hover", "responsive-block-editor-addons")}</Button>
-                      </ButtonGroup>
+                        <ToggleGroupControl
+                          value={ popupButtonHoverState ? 'hover' : 'normal' }
+                          onChange={(val) => setAttributes({ popupButtonHoverState: val === 'hover' })}
+                          __next40pxDefaultSize
+                          __nextHasNoMarginBottom
+                        >
+                          <ToggleGroupControlOption value="normal" label={__("Normal", "responsive-block-editor-addons")} />
+                          <ToggleGroupControlOption value="hover"  label={__("Hover",  "responsive-block-editor-addons")} />
+                        </ToggleGroupControl>
                     </div>
 
                     {!popupButtonHoverState && <>
@@ -1048,11 +1069,16 @@ export default class Inspector extends Component {
 
                       <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Type", "responsive-block-editor-addons")}</Text>
                       <div className="responsive-block-editor-addons-popup-button-group-tab">
-                        <ButtonGroup>
-                          <Button onClick={() => setAttributes({ popupButtonBGState: 'transparent' })} variant={popupButtonBGState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
-                          <Button onClick={() => setAttributes({ popupButtonBGState: 'solid' })} variant={popupButtonBGState === 'solid' ? 'primary' : 'secondary'}>{__("Solid", "responsive-block-editor-addons")}</Button>
-                          <Button onClick={() => setAttributes({ popupButtonBGState: 'gradient' })} variant={popupButtonBGState === 'gradient' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
-                        </ButtonGroup>
+                          <ToggleGroupControl
+                            value={ popupButtonBGState }
+                            onChange={(val) => setAttributes({ popupButtonBGState: val })}
+                            __next40pxDefaultSize
+                            __nextHasNoMarginBottom
+                          >
+                            <ToggleGroupControlOption value="transparent" label={__("Transparent", "responsive-block-editor-addons")} />
+                            <ToggleGroupControlOption value="solid"       label={__("Solid",       "responsive-block-editor-addons")} />
+                            <ToggleGroupControlOption value="gradient"    label={__("Gradient",    "responsive-block-editor-addons")} />
+                          </ToggleGroupControl>
                       </div>
 
                       {popupButtonBGState === 'solid' && <>
@@ -1104,11 +1130,16 @@ export default class Inspector extends Component {
 
                       <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Hover Background Type", "responsive-block-editor-addons")}</Text>
                       <div className="responsive-block-editor-addons-popup-button-group-tab">
-                        <ButtonGroup>
-                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'transparent' })} variant={popupButtonBGHoverState === 'transparent' ? 'primary' : 'secondary'}>{__("Transparent", "responsive-block-editor-addons")}</Button>
-                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'solid' })} variant={popupButtonBGHoverState === 'solid' ? 'primary' : 'secondary'}>{__("Solid", "responsive-block-editor-addons")}</Button>
-                          <Button onClick={() => setAttributes({ popupButtonBGHoverState: 'gradient' })} variant={popupButtonBGHoverState === 'gradient' ? 'primary' : 'secondary'}>{__("Gradient", "responsive-block-editor-addons")}</Button>
-                        </ButtonGroup>
+                          <ToggleGroupControl
+                            value={ popupButtonBGHoverState }
+                            onChange={(val) => setAttributes({ popupButtonBGHoverState: val })}
+                            __next40pxDefaultSize
+                            __nextHasNoMarginBottom
+                          >
+                            <ToggleGroupControlOption value="transparent" label={__("Transparent", "responsive-block-editor-addons")} />
+                            <ToggleGroupControlOption value="solid"       label={__("Solid",       "responsive-block-editor-addons")} />
+                            <ToggleGroupControlOption value="gradient"    label={__("Gradient",    "responsive-block-editor-addons")} />
+                          </ToggleGroupControl>
                       </div>
 
                       {popupButtonBGHoverState === 'solid' && <>
@@ -1568,6 +1599,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -1578,6 +1610,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -1588,6 +1621,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
               <RbeaSupportControl blockSlug={"popup"} />

@@ -586,6 +586,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ inheritFromTheme: !inheritFromTheme })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__("Open link in new tab", "responsive-block-editor-addons")}
@@ -593,6 +594,7 @@ export default class Inspector extends Component {
 								onChange={() => {
 									setAttributes({ target: !target });
 								}}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__('Add "nofollow" to link', "responsive-block-editor-addons")}
@@ -641,6 +643,8 @@ export default class Inspector extends Component {
 										),
 									},
 								]}
+								__nextHasNoMarginBottom
+                				__next40pxDefaultSize={true}
 							/>
 							<hr className="responsive-block-editor-addons-editor__separator" />
 						</PanelBody>

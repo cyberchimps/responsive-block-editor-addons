@@ -481,7 +481,9 @@ if (!imageIsRadiusValueUpdated) {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -506,7 +508,9 @@ if (!imageIsRadiusValueUpdated) {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -531,7 +535,9 @@ if (!imageIsRadiusValueUpdated) {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -585,7 +591,9 @@ if (!imageIsRadiusValueUpdated) {
                     if ("mobile" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions Mobile",
@@ -628,7 +636,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions Tablet",
@@ -671,7 +681,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions",
@@ -725,6 +737,8 @@ if (!imageIsRadiusValueUpdated) {
                     onChange={(newAltText) =>
                       setAttributes({altText: newAltText})
                     }
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                 </PanelRow>
               </div>
@@ -777,6 +791,8 @@ if (!imageIsRadiusValueUpdated) {
                     label: __("Blur", "responsive-block-editor-addons"),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
 
               {!Layoverswitch && (
@@ -793,6 +809,7 @@ if (!imageIsRadiusValueUpdated) {
                         caption: !caption,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                 </>
               )}
@@ -827,7 +844,9 @@ if (!imageIsRadiusValueUpdated) {
                     if ("mobile" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment Mobile",
@@ -852,7 +871,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment Tablet",
@@ -877,7 +898,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment",
@@ -916,6 +939,7 @@ if (!imageIsRadiusValueUpdated) {
                       Layoverswitch: !Layoverswitch,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 {/* <SelectControl
                   label={__(
@@ -1083,6 +1107,8 @@ if (!imageIsRadiusValueUpdated) {
                     label: __("Blob 4", "responsive-block-editor-addons"),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               {MaskShape !== "none" && (
                 <>
@@ -1174,6 +1200,8 @@ if (!imageIsRadiusValueUpdated) {
                         ),
                       },
                     ]}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                   {/* <SelectControl
                     label={__("Mask Repeat", "responsive-block-editor-addons")}
@@ -1703,6 +1731,7 @@ if (!imageIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1713,6 +1742,7 @@ if (!imageIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1723,6 +1753,7 @@ if (!imageIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

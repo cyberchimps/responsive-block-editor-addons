@@ -336,7 +336,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "List Alignment Mobile",
@@ -361,7 +363,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "List Alignment Tablet",
@@ -386,7 +390,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("List Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -423,6 +429,7 @@ export default class Inspector extends Component {
                   label={__("Hide Labels", "responsive-block-editor-addons")}
                   checked={hideLabel}
                   onChange={(value) => this.changeChildAttr(value)}
+                  __nextHasNoMarginBottom
                 />
                 <hr className="responsive-block-editor-addons-editor__separator" />
               </PanelBody>
@@ -714,6 +721,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -724,6 +732,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -734,6 +743,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
             

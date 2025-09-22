@@ -346,6 +346,7 @@ class Inspector extends Component {
                   setAttributes({ lightbox: !lightbox, linkTo: "none" })
                 }
                 help={this.getLightboxHelp}
+                __nextHasNoMarginBottom
               />
 
               <ToggleControl
@@ -353,6 +354,7 @@ class Inspector extends Component {
                 checked={!!captions}
                 onChange={() => setAttributes({ captions: !captions })}
                 help={this.getCaptionsHelp}
+                __nextHasNoMarginBottom
               />
 
               {captions && (
