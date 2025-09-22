@@ -89,6 +89,10 @@ const Categories = [
     {
         key: 'cro',
         title: 'CRO'
+    },
+    {
+        key: 'extensions',
+        title: 'Extensions'
     }
 ]
 

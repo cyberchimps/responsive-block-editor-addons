@@ -11,6 +11,7 @@ import EditorStyles from "./editor-styles";
 import BlockBorderHelperControl from "../../../../settings-components/BlockBorderSettings";
 import ResponsiveSpacingControl from "../../../../settings-components/ResponsiveSpacingSettings";
 import RbeaRangeControl from "../../../../utils/components/rbea-range-control";
+import RbeaExtensions from "../../../../extensions/RbeaExtensions";
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
@@ -200,7 +201,9 @@ class ResponsiveBlockEditorAddonsAccordionItemEdit extends Component {
                   </TabPanel>
               </PanelBody>
             </InspectorTab>
-            <InspectorTab key={"advance"}></InspectorTab>
+            <InspectorTab key={"advance"}>
+              <RbeaExtensions {...this.props} />
+            </InspectorTab>
           </InspectorTabs>
         </InspectorControls>
       );

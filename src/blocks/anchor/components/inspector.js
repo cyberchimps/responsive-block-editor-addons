@@ -12,6 +12,7 @@ import TypographyHelperControl from "../../../settings-components/TypographySett
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import InspectorTab from "../../../components/InspectorTab"
 import InspectorTabs from "../../../components/InspectorTabs"
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 // Import block components
 const {
@@ -129,6 +130,7 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"anchor"} />
           </InspectorTab>
           <InspectorTab key={'advance'}>
+            <RbeaExtensions {...this.props} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
