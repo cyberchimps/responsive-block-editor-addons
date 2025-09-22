@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,12 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.1.1 - 19th September 2025 =
+* New - Flexbox Container: Introduced a new Flexbox container for improved layout flexibility and alignment options.
+* Improvement - Tabs Block: Added responsive settings for tabs position (desktop, tablet, mobile) to enhance mobile usability.
+* Improvement - Blockquote Block: Added option to enable a “Click to Tweet” button for easy content sharing.
+* Fix -  Instagram Block: Fixed API update issue that was preventing the block from working correctly.
 
 = 2.1.0 - 8th September 2025 =
 * New - Added filters in image gallery.
