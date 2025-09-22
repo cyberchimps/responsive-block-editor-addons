@@ -11,8 +11,13 @@
  *
  * @param Array $attributes Attributes.
  */
-function responsive_block_editor_addons_image_hotspot_add_frontend_assets( $attributes ) {
-	if ( has_block( 'responsive-block-editor-addons/image-hotspot' ) ) {
+function responsive_block_editor_addons_image_hotspot_add_frontend_assets( $post_id = null ) {
+
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( has_block( 'responsive-block-editor-addons/image-hotspot', $post_id ) ) {
 
 		if ( ! wp_script_is( 'popper', 'enqueued' ) ) {
 			wp_enqueue_script( 'popper' );
@@ -54,3 +59,4 @@ function responsive_block_editor_addons_image_hotspot_add_frontend_assets( $attr
 
 add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_image_hotspot_add_frontend_assets' );
 add_action( 'the_post', 'responsive_block_editor_addons_image_hotspot_add_frontend_assets' );
+add_action( 'responsive_block_editor_addons_enqueue_scripts', 'responsive_block_editor_addons_image_hotspot_add_frontend_assets' );

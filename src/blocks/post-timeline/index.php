@@ -34,7 +34,7 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 		'offset'              => $attributes['offset'],
 		'post_type'           => $attributes['postType'],
 		'ignore_sticky_posts' => 1,
-		'post__not_in'        => array( get_the_ID() ), // Exclude the current post from the grid.
+		'post__not_in'        => is_singular() ? array( get_the_ID() ) : array(),
 	);
 
 	if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {

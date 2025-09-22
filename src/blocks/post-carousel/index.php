@@ -11,9 +11,12 @@
  *
  * @param Array $attributes Attributes.
  */
-function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attributes ) {
+function responsive_block_editor_addons_post_carousel_add_frontend_assets( $post_id = null ) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
 	$widget_blocks = get_option( 'widget_block' );
-	if ( has_block( 'responsive-block-editor-addons/post-carousel' ) ) {
+	if ( has_block( 'responsive-block-editor-addons/post-carousel', $post_id ) ) {
 		wp_enqueue_script(
 			'responsive_block_editor_addons-slick-js',
 			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/slick.min.js',
@@ -46,21 +49,26 @@ function responsive_block_editor_addons_post_carousel_add_frontend_assets( $attr
 
 add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_post_carousel_add_frontend_assets' );
 add_action( 'the_post', 'responsive_block_editor_addons_post_carousel_add_frontend_assets' );
+add_action( 'responsive_block_editor_addons_enqueue_scripts', 'responsive_block_editor_addons_post_carousel_add_frontend_assets' );
 
 /**
  * Generate Testimonical Carousel script dynamically
  */
-function post_carousel_generate_script() {
-	global $post;
-	$this_post     = $post;
+function post_carousel_generate_script( $post_id = null ) {
 	$widget_blocks = get_option( 'widget_block' );
+	if ( empty( $post_id ) ) {
+		global $post;
+		$this_post = $post;
 
-	if ( ! is_object( $this_post ) ) {
-		return;
-	}
+		if ( ! is_object( $this_post ) ) {
+			return;
+		}
 
-	if ( ! isset( $this_post->ID ) ) {
-		return;
+		if ( ! isset( $this_post->ID ) ) {
+			return;
+		}
+	} else {
+		$this_post = get_post($post_id);
 	}
 
 	if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
@@ -90,6 +98,7 @@ function post_carousel_generate_script() {
 }
 
 add_action( 'wp_enqueue_scripts', 'post_carousel_generate_script' );
+add_action( 'responsive_block_editor_addons_enqueue_scripts', 'post_carousel_generate_script' );
 
 /**
  * Parse hutenberg blocks
@@ -383,7 +392,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 			'offset'              => $attributes['offset'],
 			'post_type'           => $attributes['postType'],
 			'ignore_sticky_posts' => 1,
-			'post__not_in'        => array( $post->ID ), // Exclude the current post from the carousel.
+			'post__not_in'        => is_singular() ? array( get_the_ID() ) : array(),
 		)
 	);
 

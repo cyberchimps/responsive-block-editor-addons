@@ -20,6 +20,7 @@ import RbeaBorderRadiusControl from "../../../../settings-components/RbeaBorderR
 import GradientBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import RbeaSupportControl from "../../../../utils/components/rbea-support-control";
 import borderStyleIcons from "../icons/border-style-icons";
+import RbeaExtensions from "../../../../extensions/RbeaExtensions";
 import presets from "./button-presets";
 
 // Preset configurations
@@ -1099,6 +1100,9 @@ export default class Inspector extends Component {
 						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
+
+						<RbeaExtensions {...this.props} />
+
 						<PanelBody
 							title={__("Z Index", "responsive-block-editor-addons")}
 							initialOpen={false}

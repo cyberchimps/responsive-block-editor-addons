@@ -18,6 +18,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaDimensionControl from "../../../settings-components/RbeaDimensionControl";
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
  * WordPress dependencies
  */
@@ -934,6 +935,9 @@ class Inspector extends Component {
             <RbeaSupportControl blockSlug={"gallery-masonry"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__(
                 "Responsive Conditions",

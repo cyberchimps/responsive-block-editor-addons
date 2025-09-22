@@ -17,7 +17,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import { alignLeft, alignRight} from '@wordpress/icons';
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
-
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -767,6 +767,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"tabs"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}

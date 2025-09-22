@@ -19,7 +19,7 @@ module.exports = {
 		'responsive-block-editor-addons-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 		'responsive-block-editor-addons-masonry': path.resolve( process.cwd(), 'src/blocks/gallery-masonry/responsive-block-editor-addons-masonry.js' ),
 		'responsive-block-editor-addons-lightbox': path.resolve( process.cwd(), 'src/blocks/gallery-masonry/responsive-block-editor-addons-lightbox.js' ),
-
+		'responsive-block-editor-addons-aos-initialized': path.resolve( process.cwd(), 'src/extensions/animations/aos-initialized.js' ),
 		'frontend_blocks': path.resolve( process.cwd(), 'src/block-frontend.js' ),
 	},
 

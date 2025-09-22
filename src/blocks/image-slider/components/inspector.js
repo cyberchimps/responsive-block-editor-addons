@@ -13,6 +13,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
  * WordPress dependencies
  */
@@ -432,6 +433,9 @@ class Inspector extends Component {
                   <RbeaSupportControl blockSlug={"image-slider"} />
               </InspectorTab>
               <InspectorTab key={"advance"}>
+
+                <RbeaExtensions {...this.props} />
+
                 <PanelBody
                 title={__("Responsive Conditions", "responsive-block-editor-addons")}
                 initialOpen={false}

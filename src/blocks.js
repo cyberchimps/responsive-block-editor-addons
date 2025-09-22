@@ -162,3 +162,5 @@ import "./blocks/section-block/index.js";
 
 // Extensions
 import "./extensions/cover-styles";
+import "./extensions/animations/RbeaAnimations.js";
+import "./extensions/attributes.js";
