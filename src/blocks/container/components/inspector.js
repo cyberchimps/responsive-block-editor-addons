@@ -30,6 +30,7 @@ import renderCustomIcon from "../renderCustomIcon";
 import BackgroundImageControls from "./BackgroundImageControls";
 import OverlaySettings from "./OverlaySettings";
 import ShapeDividers from './ShapeDividers';
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 export default function Inspector(props) {
   const { attributes, setAttributes } = props;
@@ -1858,6 +1859,9 @@ export default function Inspector(props) {
 
         {/* Advanced Tab */}
         <InspectorTab key={"advance"}>
+
+          <RbeaExtensions {...props} />
+
           {/* Hide on Desktop/Tablet/Mobile */}
           <PanelBody
             title={__(
