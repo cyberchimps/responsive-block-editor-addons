@@ -15078,11 +15078,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						},
 
 						_toggleCollapse: function( e ) {
+							console.log('this -> ', $( this ).find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length );
 							if ( $( this ).find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 ) {
-								let $root = $( this ).closest( '.wp-block-responsive-block-editor-addons-table-of-contents' )
+								let $root = $(this).closest(
+  '.responsive-block-editor-addons-block-table-of-contents'
+);
+								console.log('root -> ', $root )
+
 								if ( $root.hasClass( 'responsive-block-editor-addons-toc__collapse' ) ) {
+									console.log('remove class');
 									$root.removeClass( 'responsive-block-editor-addons-toc__collapse' );
 								} else {
+									console.log('add class');
 									$root.addClass( 'responsive-block-editor-addons-toc__collapse' );
 								}
 							}
@@ -15090,6 +15097,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 						_run: function( attr, id ) {
 							var $this_scope = $( id );
+							console.log('this -> ', $this_scope.find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 )
 							if ( $this_scope.find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 ) {
 								$this_scope.find( '.responsive-block-editor-addons-toc__title-wrap' ).addClass( 'responsive-block-editor-addons-toc__is-collapsible' );
 							}
