@@ -7,6 +7,7 @@ import ResponsiveNewPaddingControl from "../../../settings-components/Responsive
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -248,6 +249,9 @@ export default class Inspector extends Component {
                         <RbeaSupportControl blockSlug={"googlemap"} />
                     </InspectorTab>
 					<InspectorTab key={"advance"}>
+
+                        <RbeaExtensions {...this.props} />
+
                         <PanelBody
                         title={__("Responsive Conditions", "responsive-block-editor-addons")}
                         initialOpen={false}

@@ -22,6 +22,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Import block components
 const {
   InspectorControls,
@@ -702,6 +703,9 @@ export default class Inspector extends Component {
               <RbeaSupportControl blockSlug={"wp-search"} />
           </InspectorTab>
           <InspectorTab key={'advance'}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}

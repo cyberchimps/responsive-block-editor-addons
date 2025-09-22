@@ -18,6 +18,7 @@ import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-sty
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import { RadioControl} from "@wordpress/components";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
  * Inspector Controls
  */
@@ -1936,6 +1937,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"table-of-contents"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+          <RbeaExtensions {...this.props} />
+
           <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}

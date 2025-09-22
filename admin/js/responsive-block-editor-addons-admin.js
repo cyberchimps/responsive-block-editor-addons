@@ -407,10 +407,13 @@ const Card = ({handleToggle, category, title, docs, demo, status, index, blockKe
     const isPermanentlyEnabled = permanentlyEnabledBlocks.includes(blockKey);
 
     return (
-        <div className={"col-lg-4 col-md-4 gy-3 rbea-block-category-card rbea-block-category-" + (category)}>
+        <div className={`col-lg-4 col-md-4 gy-3 ${category === 'extensions' ? 'position-relative' : '' } rbea-block-category-card rbea-block-category-${category}`}>
             <div className={`rbea-blocks-card d-flex justify-content-between h-100 ${isPermanentlyEnabled ? 'rbea-disabled-block' : ''}`}>
                 <div className="rbea-blocks-card-text-content">
-                    <div className="rbea-blocks-card-title"><p>{__(title, 'responsive-block-editor-addons')}</p></div>                    
+                    <div className="rbea-blocks-card-title"><p>{__(title, 'responsive-block-editor-addons')}</p></div>
+                    {category === 'extensions' && (
+                        <span className={`rbea-blocks-card-badge ${category === 'extensions' ? 'position-absolute' : '' }`}>{__( 'Extension', 'responsive-block-editor-addons' )}</span> 
+                    )}                
                     <a className="rbea-blocks-docs-demo-links d-flex" href={demo} target="_blank">
                         <div class="rbea-widgets-card-demo-text">{__('Demo', 'responsive-block-editor-addons')}</div>
                         <img class="rbea-widgets-card-demo-icon" src={rbealocalize.responsiveurl + 'admin/images/icon-demo.svg'} alt="icon-demo" />

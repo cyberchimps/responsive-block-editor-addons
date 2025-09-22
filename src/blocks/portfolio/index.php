@@ -32,28 +32,9 @@ function responsive_block_editor_addons_render_block_core_latest_posts_portfolio
 		'offset'              => $attributes['offset'],
 		'post_type'           => $attributes['postType'],
 		'ignore_sticky_posts' => 1,
-		'post__not_in'        => array( $post->ID ), // Exclude the current post from the grid.
-		'paged'               => 1,
+		'post__not_in'        => is_singular() ? array( get_the_ID() ) : array(),
+		'paged'               => max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ),
 	);
-
-	if ( get_query_var( 'paged' ) ) {
-
-		$paged = get_query_var( 'paged' );
-
-		$grid_query['offset'] = ( $paged - 1 ) * $attributes['postsToShow'];
-
-	} elseif ( get_query_var( 'page' ) ) {
-
-		$paged = get_query_var( 'page' );
-
-		$grid_query['offset'] = ( $paged - 1 ) * $attributes['postsToShow'];
-
-	} else {
-
-		$paged = 1;
-
-	}
-	$grid_query['paged'] = $paged;
 
 	if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
 		$grid_query['tax_query'][] = array(

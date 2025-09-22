@@ -45,6 +45,15 @@ class Responsive_Block_Editor_Addons {
 	protected $version;
 
 	/**
+	 * Verify whether any block is using animations extension .
+	 *
+	 * @since    2.1.2
+	 * @access   protected
+	 * @var      boolean    $is_animations_on    Whether animations extension is used by any block.
+	 */
+	protected static $is_animations_on = false;
+
+	/**
 	 * Responsive Block Editor Addons Blocks.
 	 * 
 	 * @since 2.0.7
@@ -153,6 +162,7 @@ class Responsive_Block_Editor_Addons {
 
 		add_action( 'wp_ajax_responsive_block_editor_post_pagination', array( $this, 'post_pagination' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_dashicons_front_end' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'responsive_block_editor_addons_load_frontend_scripts' ) );
 
 		// Display admin notice for RBEA review.
 		add_action( 'admin_notices', array( $this, 'rbea_admin_review_notice' ) );
@@ -187,6 +197,9 @@ class Responsive_Block_Editor_Addons {
 
 		add_filter( 'plugin_action_links_responsive-block-editor-addons/responsive-block-editor-addons.php', array( $this, 'responsive_block_editor_addons_settings_link' ) );
 
+		if ( ! is_admin() ) {
+			add_action( 'render_block', array( $this, 'responsive_block_editor_addons_render_block' ), 5, 2 );
+		}
 	}
 
 	/**
@@ -640,6 +653,7 @@ class Responsive_Block_Editor_Addons {
 
 		$is_taxonomy_list_on         = 1;
 		$is_contact_7_form_styler_on = 1;
+		$is_animation_toggled_on     = 1;
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
@@ -649,6 +663,10 @@ class Responsive_Block_Editor_Addons {
 
 		if ( isset( $block_status_map['contact-form-7-styler'] ) ) {
 			$is_contact_7_form_styler_on = $block_status_map['contact-form-7-styler'];
+		}
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animation_toggled_on = $block_status_map['animations'];
 		}
 
 		$include_all_taxonomy = 0;
@@ -684,6 +702,7 @@ class Responsive_Block_Editor_Addons {
 				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
 				'blocks'                             => $blocks,
+				'is_animation_on'                    => $is_animation_toggled_on,
 			)
 		);
 
@@ -712,6 +731,28 @@ class Responsive_Block_Editor_Addons {
 				'deactivated_blocks' => $deactivated_blocks,
 			)
 		);
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animation_toggled_on = $block_status_map['animations'];
+		}
+
+		if ( $is_animation_toggled_on ) {
+			wp_enqueue_style(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/aos/aos.min.css' ),
+			);
+			wp_enqueue_script(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/aos/aos.min.js',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/js/vendors/aos/aos.min.js' ),
+				true
+			);
+		}
 	}
 
 	/**
@@ -883,6 +924,14 @@ class Responsive_Block_Editor_Addons {
 					$blocks = parse_blocks( $post->post_content );
 				}
 
+				if ( ! self::$is_animations_on ) {
+					foreach ( $blocks as $block ) {
+						if ( ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
+							self::$is_animations_on = true;
+						}
+					}
+				}
+
 				foreach ( $widget_blocks as $widget ) {
 					if ( ! empty( $widget['content'] ) ) {
 						$flag = true;
@@ -1016,6 +1065,30 @@ class Responsive_Block_Editor_Addons {
 			filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/animation.css' )
 		);
 		wp_enqueue_style( 'dashicons' );
+
+		$rbea_blocks = get_option( 'rbea_blocks' );
+
+		$block_status_map = array_column( (array) $rbea_blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animations_toggled_on = $block_status_map['animations'];
+		}
+
+		if ( $is_animations_toggled_on && self::$is_animations_on ) {
+			wp_enqueue_style(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/css/aos/aos.min.css',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/css/aos/aos.min.css' ),
+			);
+			wp_enqueue_script(
+				'responsive-block-editor-addons-aos',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/js/vendors/aos/aos.min.js',
+				array(),
+				filemtime( RESPONSIVE_BLOCK_EDITOR_ADDONS_DIR . 'dist/js/vendors/aos/aos.min.js' ),
+				true
+			);
+		}
 	}
 
 	public function rba_get_block_names( $blocks, &$block_names = array() ) {
@@ -1612,7 +1685,6 @@ class Responsive_Block_Editor_Addons {
 		$filtered_json_all = wp_json_encode( $all_filtered_data, JSON_PRETTY_PRINT );
 		update_option( 'total-responsive-sites-data', $filtered_json_all );
 
-		// error_log(print_r($filtered_json_all,true));
 		$plugin_dir_path = plugin_dir_path( __FILE__ );
 		$relative_path   = 'data/';
 		$full_path       = $plugin_dir_path . $relative_path;
@@ -1803,5 +1875,56 @@ class Responsive_Block_Editor_Addons {
 		$settings_link = '<a href="' . admin_url( 'admin.php?page=responsive_block_editor_addons' ) . '">' . __( 'Settings', 'responsive-block-editor-addons' ) . '</a>';
 		array_unshift( $links, $settings_link );
 		return $links;
+	}
+
+	/**
+	 * Load Frontend Scripts.
+	 */
+	public function responsive_block_editor_addons_load_frontend_scripts() {
+
+		$blocks = get_option( 'rbea_blocks' );
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animations_toggled_on = $block_status_map['animations'];
+		}
+
+		if ( $is_animations_toggled_on && self::$is_animations_on ) {
+			wp_enqueue_script(
+				'responsive-block-editor-addons-frontend-scripts',
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-aos-initialized.js',
+				array(),
+				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+				true
+			);
+		}
+
+	}
+
+	/**
+	 * Manipulate the markup of block on frontend.
+	 */
+	public function responsive_block_editor_addons_render_block( $block_content, $block ) {
+
+		$blocks = get_option( 'rbea_blocks' );
+
+		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
+
+		if ( isset( $block_status_map['animations'] ) ) {
+			$is_animations_toggled_on = $block_status_map['animations'];
+		}
+
+		if ( $is_animations_toggled_on && ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
+			$attrs = $block['attrs'];
+			$attrs['RBEAAnimationTime']   = isset( $attrs['RBEAAnimationTime'] ) ? $attrs['RBEAAnimationTime'] : 400;
+			$attrs['RBEAAnimationDelay']  = isset( $attrs['RBEAAnimationDelay'] ) ? $attrs['RBEAAnimationDelay'] : 0;
+			$attrs['RBEAAnimationEasing'] = isset( $attrs['RBEAAnimationEasing'] ) ? $attrs['RBEAAnimationEasing'] : 'ease';
+			$attrs['RBEAAnimationRepeat'] = isset( $attrs['RBEAAnimationRepeat'] ) ? 'false' : 'true';
+			
+			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['RBEAAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['RBEAAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['RBEAAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['RBEAAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['RBEAAnimationRepeat'] ) . '" ';
+			$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
+		}
+		return $block_content;
 	}
 }

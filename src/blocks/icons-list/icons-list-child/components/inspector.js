@@ -12,6 +12,7 @@ import RbeaMediaUploadControl from "../../../../utils/components/rbea-media-uplo
 import RbeaTabRadioControl from "../../../../utils/components/rbea-tab-radio-control";
 import ResponsiveNewPaddingControl from "../../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 import ResponsiveNewMarginControl from "../../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
+import RbeaExtensions from "../../../../extensions/RbeaExtensions";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -474,7 +475,9 @@ export default class Inspector extends Component {
                 />
             </PanelBody>
             </InspectorTab>
-            <InspectorTab key={"advance"}></InspectorTab>
+            <InspectorTab key={"advance"}>
+              <RbeaExtensions {...this.props} />
+            </InspectorTab>
           </InspectorTabs>
         </InspectorControls>
       </Fragment>
