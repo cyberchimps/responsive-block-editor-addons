@@ -32,6 +32,9 @@ const GettingStarted = () => {
                     <div className="rbea-help-content rbea-tab-content" style={hash == 'help' ? {display:'block'} : {display:'none'}} id="rbea_help">
                         {hash == 'help' && <Help /> }
                     </div>
+                    <div className="rbea-settings-content rbea-tab-content" style={hash == 'settings' ? {display:'block'} : {display:'none'}} id="rbea_settings">
+                    {hash == 'settings' && <Settings />}
+                    </div>
                 </div>
             </div>
             <Footer />
@@ -40,7 +43,7 @@ const GettingStarted = () => {
 }
 
 const Tab = ({hash, setHash}) => {
-    const tabList = ['blocks', 'templates', 'help']
+    const tabList = ['blocks', 'settings', 'templates', 'help']
     return (
         <>
             {
@@ -50,7 +53,7 @@ const Tab = ({hash, setHash}) => {
                             <div className={"rbea-tab rbea-templates-tab " + (hash == current || hash == '' ? 'rbea-active-tab' : '')} data-tab="blocks" onClick={() => setHash(current)}>
                                 <p className="rbea-tab-name">
                                     {
-                                        current == 'templates' ? __('Starter Templates','responsive-block-editor-addons') : __(current.charAt(0).toUpperCase() + current.slice(1),'responsive-block-editor-addons')
+                                        current == 'templates' ? __('Starter Templates','responsive-block-editor-addons') : current == 'settings' ? __('RB Settings','responsive-block-editor-addons') : __(current.charAt(0).toUpperCase() + current.slice(1),'responsive-block-editor-addons')
                                     }
                                 </p>
                             </div>
@@ -468,6 +471,123 @@ const Footer = () => {
         </div>
     )
 }
+
+const Settings = () => {
+    // existing logic — unchanged
+    const [autoRecover, setAutoRecover] = useState(
+        String(rbealocalize?.auto_block_recovery) === '1'
+    );
+    const [isSaving, setIsSaving] = useState(false);
+
+    const displayToast = ( msg, status ) => {
+        let background = status === 'error' ? '#FF5151' : '#00CF21';
+        Toastify({
+            text: msg,
+            duration: 3000,
+            gravity: "top",
+            position: "center",
+            stopOnFocus: true,
+            offset: { x: 0, y: 30 },
+            style: { background },
+        }).showToast();
+    };
+
+    const saveSetting = async (nextValue) => {
+        setIsSaving(true);
+        const formData = new FormData();
+        formData.append('action', 'rbea_toggle_auto_block_recovery');
+        formData.append('nonce', rbealocalize.nonce);
+        formData.append('value', nextValue ? '1' : '0');
+
+        try {
+            const res = await fetch(rbealocalize.ajaxurl, { method: 'POST', body: formData });
+            const ok = res?.status === 200;
+            displayToast(ok ? 'Settings Saved' : 'Error', ok ? 'success' : 'error');
+        } catch (e) {
+            displayToast('Error', 'error');
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    const handleToggle = () => {
+        const next = !autoRecover;
+        setAutoRecover(next);
+        saveSetting(next);
+    };
+
+    // NEW: sections — just add more objects to grow later
+    const sections = [
+        { key: 'editor-options',   label: __('Editor Options', 'responsive-block-editor-addons'),   icon: 'dashicons-admin-generic' },
+    ];
+    const [activeSection, setActiveSection] = useState(sections[0].key);
+
+    return (
+        <div className="container">
+            <div className="rbea-settings-grid">
+                {/* LEFT: sections */}
+                <aside className="rbea-sections" aria-label={__('Sections','responsive-block-editor-addons')}>
+                    {sections.map(s => (
+                        <button
+                            key={s.key}
+                            type="button"
+                            className={`rbea-section-link ${activeSection === s.key ? 'is-active' : ''}`}
+                            onClick={() => setActiveSection(s.key)}
+                            role="tab"
+                            aria-selected={activeSection === s.key}
+                        >
+                            <span className={`dashicons ${s.icon}`} aria-hidden="true"></span>
+                            <span>{s.label}</span>
+                        </button>
+                    ))}
+                </aside>
+
+                {/* VERTICAL DIVIDER */}
+                <div className="rbea-vrule" aria-hidden="true" />
+
+                {/* RIGHT: content */}
+                <main className="rbea-section-content" role="tabpanel">
+                    {/* Section: Editor Options (your existing card) */}
+                    {activeSection === 'editor-options' && (
+                        <div className="row gy-4">
+                            <div className="col-xl-8 col-lg-10 col-md-12">
+                                <div className="rbea-help-feature-cards">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-10">
+                                            <p className="rbea-help-title">
+                                                {__('Automatic Block Recovery','responsive-block-editor-addons')}
+                                            </p>
+                                            <p className="rbea-help-desc">
+                                                {__(
+                                                    'Enable this to automatically fix broken blocks on your pages, so you don’t have to manually click ‘Attempt Block Recovery’ every time.',
+                                                    'responsive-block-editor-addons'
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div className="col-md-2 text-end">
+                                            <label className="rbea-blocks-switch">
+                                                <input
+                                                    id="rbea-auto-block-recovery"
+                                                    type="checkbox"
+                                                    checked={autoRecover}
+                                                    disabled={isSaving}
+                                                    onChange={handleToggle}
+                                                />
+                                                <span className="rbea-blocks-slider rbea-blocks-round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </main>
+            </div>
+        </div>
+    );
+};
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
