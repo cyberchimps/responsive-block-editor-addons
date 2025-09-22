@@ -15079,7 +15079,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 						_toggleCollapse: function( e ) {
 							if ( $( this ).find( '.responsive-block-editor-addons-toc__collapsible-wrap' ).length > 0 ) {
-								let $root = $( this ).closest( '.wp-block-responsive-block-editor-addons-table-of-contents' )
+								let $root = $(this).closest(
+  '.responsive-block-editor-addons-block-table-of-contents'
+);
 								if ( $root.hasClass( 'responsive-block-editor-addons-toc__collapse' ) ) {
 									$root.removeClass( 'responsive-block-editor-addons-toc__collapse' );
 								} else {

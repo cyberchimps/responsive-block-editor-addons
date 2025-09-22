@@ -31,20 +31,42 @@ class TableOfContents extends React.Component {
             return childs;
         };
         const getsHeadingBlocks = () => {
-            let targetBlocks = [];
-            const allBlocks = select('core/block-editor').getBlocks();
-            allBlocks.forEach(block => {
-                if (block.name === 'responsive-block-editor-addons/advanced-heading' || block.name === 'core/heading') {
-                    targetBlocks.push(block);
-                } else if (block.innerBlocks.length > 0) {
-                    let childHeadingBlocks = getAllChildHeadingBlocks(block);
-                    if (childHeadingBlocks.length > 0) {
-                        targetBlocks.push(...childHeadingBlocks);
-                    }
-                }
-            })
-            return targetBlocks;
-        };
+    let targetBlocks = [];
+    const allBlocks = select('core/block-editor').getBlocks();
+
+    // helper: push this block if it's a heading; otherwise pull any descendants via your existing recursion
+    const pushIfHeadingOrDesc = (blk) => {
+        if (
+            blk.name === 'responsive-block-editor-addons/advanced-heading' ||
+            blk.name === 'core/heading'
+        ) {
+            targetBlocks.push(blk);
+            return true;
+        }
+        if (blk.innerBlocks && blk.innerBlocks.length > 0) {
+            const childHeadingBlocks = getAllChildHeadingBlocks(blk);
+            if (childHeadingBlocks.length > 0) {
+                targetBlocks.push(...childHeadingBlocks);
+                return true;
+            }
+        }
+        return false;
+    };
+
+    // 1) existing: scan current root blocks
+    allBlocks.forEach(pushIfHeadingOrDesc);
+
+    // 2) NEW: if nothing found, go ONE LEVEL deeper for the FIRST root block only (widget editor case)
+    if (targetBlocks.length === 0 && allBlocks.length) {
+        const firstRoot = allBlocks[0];
+        // Ask the store for its immediate children (don’t rely on firstRoot.innerBlocks)
+        const firstChildren = select('core/block-editor').getBlocks(firstRoot.clientId) || [];
+        firstChildren.forEach(pushIfHeadingOrDesc);
+    }
+
+    return targetBlocks;
+};
+
         const setHeaders = () => {
             let headings = getsHeadingBlocks().map(header => header.attributes);
             headings.forEach((heading, key) => {
