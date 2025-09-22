@@ -57,8 +57,6 @@ jQuery(function ($) {
     var ListTagName = (tableType === "ordered") ? "ol" : "ul";
     var listTypeClass = orderListType ? (" rbea-" + orderListType) : "";
 
-    console.log("Table Type -> ", tableType, " orderListType -> ",  orderListType, "ListTagName -> ", ListTagName, "listTypeClass -> ", listTypeClass, ' ends here');
-
     // Allowed heading levels (mapping) from data attribute if present
     var allowed = $wrap.data("allowed-anchors");
     try { allowed = typeof allowed === "string" ? JSON.parse(allowed) : allowed; }
