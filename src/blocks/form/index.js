@@ -1,5 +1,5 @@
 /**
- * BLOCK: Responsive Blocks Advanced Heading
+ * BLOCK: Responsive Blocks Form
  */
 
 // Import block dependencies and components

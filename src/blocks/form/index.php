@@ -1,18 +1,21 @@
 <?php
 /**
- * Server-side rendering for the accordion block.
+ * Server-side rendering for the form block.
  *
  * @since   1.0.0
  * @package Responsive Blocks
  */
 
 /**
- * Accordion frontend assets funciton.
+ * Form frontend assets funciton.
  *
  * @return void
  */
-function responsive_block_editor_addons_form_add_frontend_assets() {
-	if ( has_block( 'responsive-block-editor-addons/form' ) ) {
+function responsive_block_editor_addons_form_add_frontend_assets( $post_id = null ) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+	if ( has_block( 'responsive-block-editor-addons/form', $post_id ) ) {
 		wp_enqueue_script(
 			'responsive_block_editor_addons-form-front-script',
 			plugins_url( 'form.js', __FILE__ ),
@@ -35,3 +38,4 @@ function responsive_block_editor_addons_form_add_frontend_assets() {
 }
 
 add_action( 'wp_enqueue_scripts', 'responsive_block_editor_addons_form_add_frontend_assets' );
+add_action( 'responsive_block_editor_addons_enqueue_scripts', 'responsive_block_editor_addons_form_add_frontend_assets' );
