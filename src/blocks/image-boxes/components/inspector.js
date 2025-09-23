@@ -21,6 +21,7 @@ import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-sty
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import { RadioControl} from "@wordpress/components";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -187,6 +188,12 @@ export default class Inspector extends Component {
         boxShadowBlur,
         boxShadowSpread,
         boxShadowPosition,
+        hoverboxShadowColor,
+        hoverboxShadowHOffset,
+        hoverboxShadowVOffset,
+        hoverboxShadowBlur,
+        hoverboxShadowSpread,
+        hoverboxShadowPosition,
         boxPaddingRight,
         boxPaddingLeft,
         boxPaddingTop,
@@ -305,6 +312,10 @@ export default class Inspector extends Component {
         boxTopPaddingMobile,
         boxBottomPaddingMobile,
         blockIsPaddingValueUpdated,
+        titleTextTransform,
+        titleFontStyle,
+        descriptionTextTransform,
+        descriptionFontStyle
       },
       setAttributes,
     } = this.props;
@@ -678,6 +689,7 @@ export default class Inspector extends Component {
                 label={__("Enable Title", "responsive-block-editor-addons")}
                 checked={showTitle}
                 onChange={(value) => setAttributes({ showTitle: !showTitle })}
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -688,6 +700,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ showDescription: !showDescription })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
 
@@ -725,7 +738,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Horizontal Alignment",
@@ -750,7 +765,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Horizontal Alignment",
@@ -775,7 +792,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Horizontal Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -829,7 +848,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Vertical Alignment",
@@ -854,7 +875,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Vertical Alignment",
@@ -879,7 +902,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Vertical Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -1216,6 +1241,7 @@ export default class Inspector extends Component {
                     bgGradient: !bgGradient,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               {bgGradient && (
                 <PanelBody
@@ -1288,6 +1314,7 @@ export default class Inspector extends Component {
                     hoverBgGradient: !hoverBgGradient,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               {hoverBgGradient && (
                 <PanelBody
@@ -1378,9 +1405,10 @@ export default class Inspector extends Component {
           bottomSpacing: titleBottomSpacing,
           bottomSpacingMobile: titleBottomSpacingMobile,
           bottomSpacingTablet: titleBottomSpacingTablet,
+          transform: titleTextTransform,
+          fontstyle: titleFontStyle
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}
@@ -1400,9 +1428,10 @@ export default class Inspector extends Component {
           bottomSpacing: descriptionBottomSpacing,
           bottomSpacingMobile: descriptionBottomSpacingMobile,
           bottomSpacingTablet: descriptionBottomSpacingTablet,
+          transform: descriptionTextTransform,
+          fontstyle: descriptionFontStyle
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}
@@ -1528,31 +1557,57 @@ export default class Inspector extends Component {
               title={__("Box Shadow", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-            <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                boxShadowHOffset={{
-                  value: boxShadowHOffset,
-                  label: __("Horizontal", "responsive-block-editor-addons"),
+              <TabPanel
+                className="responsive-block-editor-addons-inspect-tabs 
+                          responsive-block-editor-addons-inspect-tabs-col-2  
+                          responsive-block-editor-addons-color-inspect-tabs"
+                activeClass="active-tab"
+                initialTabName="normal"
+                tabs={[
+                  { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                  { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                  { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                  { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                  { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                ]}
+              >
+                {(tab) => {
+                  const isHover = tab.name === "hover";
+                  const mode = isHover ? "hoverboxShadow" : "boxShadow";
+
+                  return (
+                    <BoxShadowControl
+                      controlKey={mode}
+                      setAttributes={setAttributes}
+                      label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+                      boxShadowColor={{
+                        value: isHover ? hoverboxShadowColor : boxShadowColor,
+                        label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowHOffset={{
+                        value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+                        label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowVOffset={{
+                        value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+                        label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowBlur={{
+                        value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+                        label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowSpread={{
+                        value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+                        label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowPosition={{
+                        value: isHover ? hoverboxShadowPosition : boxShadowPosition,
+                        label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+                      }}
+                    />
+                  );
                 }}
-                boxShadowVOffset={{
-                  value: boxShadowVOffset,
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                }}
-                boxShadowBlur={{
-                  value: boxShadowBlur,
-                  label: __("Blur", "responsive-block-editor-addons"),
-                }}
-                boxShadowSpread={{
-                  value: boxShadowSpread,
-                  label: __("Spread", "responsive-block-editor-addons"),
-                }}
-                boxShadowPosition={{
-                  value: boxShadowPosition,
-                  label: __("Position", "responsive-block-editor-addons"),
-                }}
-              />
+              </TabPanel>
             </PanelBody>
             <PanelBody
               title={__("Arrow", "responsive-block-editor-addons")}
@@ -1566,6 +1621,7 @@ export default class Inspector extends Component {
                     hasArrow: !hasArrow,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <PanelBody
                 title={__("Color", "responsive-block-editor-addons")}
@@ -1609,6 +1665,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"image-boxes-block"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
             title={__("Responsive Conditions", "responsive-block-editor-addons")}
             initialOpen={false}
@@ -1622,6 +1681,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1632,6 +1692,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1642,6 +1703,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

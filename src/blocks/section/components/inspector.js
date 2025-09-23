@@ -19,6 +19,7 @@ import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 
 // Setup the block
@@ -214,6 +215,12 @@ export default class Inspector extends Component {
         boxShadowBlur,
         boxShadowSpread,
         boxShadowPosition,
+        hoverboxShadowColor,
+        hoverboxShadowHOffset,
+        hoverboxShadowVOffset,
+        hoverboxShadowBlur,
+        hoverboxShadowSpread,
+        hoverboxShadowPosition,
         z_index,
         z_indexMobile,
         z_indexTablet,
@@ -795,6 +802,8 @@ export default class Inspector extends Component {
                                   label: __("Bottom Right", "responsive-block-editor-addons"),
                                 },
                               ]}
+                              __nextHasNoMarginBottom
+                              __next40pxDefaultSize={true}
                             />
                           )}
                         </Fragment>
@@ -863,29 +872,55 @@ export default class Inspector extends Component {
               title={__("Box Shadow", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-      
-            <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                boxShadowHOffset={{
-                  value: boxShadowHOffset,
-                  label: __("Horizontal", "responsive-block-editor-addons"),
+              <TabPanel
+                className="responsive-block-editor-addons-inspect-tabs responsive-block-editor-addons-inspect-tabs-col-2 responsive-block-editor-addons-color-inspect-tabs"
+                activeClass="active-tab"
+                initialTabName="normal"
+                tabs={[
+                  { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                  { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                  { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                  { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                  { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                ]}
+              >
+                {(tab) => {
+                  const isHover = tab.name === "hover";
+                  const mode = isHover ? "hoverboxShadow" : "boxShadow";
+
+                  return (
+                    <BoxShadowControl
+                      controlKey={mode}
+                      setAttributes={setAttributes}
+                      label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+                      boxShadowColor={{
+                        value: isHover ? hoverboxShadowColor : boxShadowColor,
+                        label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowHOffset={{
+                        value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+                        label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowVOffset={{
+                        value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+                        label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowBlur={{
+                        value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+                        label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowSpread={{
+                        value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+                        label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowPosition={{
+                        value: isHover ? hoverboxShadowPosition : boxShadowPosition,
+                        label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+                      }}
+                    />
+                  );
                 }}
-                boxShadowVOffset={{
-                  value: boxShadowVOffset,
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                }}
-                boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
-                boxShadowSpread={{
-                  value: boxShadowSpread,
-                  label: __("Spread", "responsive-block-editor-addons"),
-                }}
-                boxShadowPosition={{
-                  value: boxShadowPosition,
-                  label: __("Position", "responsive-block-editor-addons"),
-                }}
-              />
+              </TabPanel>
             </PanelBody>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}
@@ -906,6 +941,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"section"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -919,6 +957,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -929,6 +968,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -939,6 +979,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

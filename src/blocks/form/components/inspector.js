@@ -19,6 +19,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import ResponsiveBorderWidthControl from "../../../settings-components/ResponsiveBorderWidthSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Import block components
 const { InspectorControls, PanelColorSettings, AlignmentToolbar } = wp.blockEditor
 
@@ -569,6 +570,8 @@ export default class Inspector extends Component {
                 onChange={(value) => {
                   setAttributes({formEmailTo: value})
                 }}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
 
               <hr className="responsive-block-editor-addons-editor__separator" />
@@ -582,6 +585,8 @@ export default class Inspector extends Component {
                 onChange={(value) => {
                   setAttributes({formEmailSubject: value})
                 }}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
 
             </PanelBody>
@@ -596,6 +601,7 @@ export default class Inspector extends Component {
 								value={ formSuccessMessage }
 								onChange={ (value) => setAttributes({ formSuccessMessage: value }) }
 								help={ __( "Show this message after the form was successfully submitted.", "responsive-block-editor-addons" ) }
+                __nextHasNoMarginBottom
 							/>
 
               <TextareaControl
@@ -604,6 +610,7 @@ export default class Inspector extends Component {
 								value={ formErrorMessage }
 								onChange={ (value) => setAttributes({ formErrorMessage: value }) }
 								help={ __( "This message will be displayed when there is a problem with the server.", "responsive-block-editor-addons" ) }
+                __nextHasNoMarginBottom
 							/>
 
             </PanelBody>
@@ -1017,6 +1024,9 @@ export default class Inspector extends Component {
           <RbeaSupportControl blockSlug={"form"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -1030,6 +1040,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1040,6 +1051,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1050,6 +1062,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

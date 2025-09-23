@@ -22,6 +22,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Import block components
 const {
   InspectorControls,
@@ -183,6 +184,10 @@ export default class Inspector extends Component {
         blockIsTypographyColorValueUpdated,
         contentTypographyColor,
         titleTypographyColor,
+        titleTextTransform,
+        titleFontStyle,
+        contentTextTransform,
+        contentFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -271,6 +276,8 @@ export default class Inspector extends Component {
                 { value: "h2", label: __("H2", "responsive-block-editor-addons") },
                 { value: "h3", label: __("H3", "responsive-block-editor-addons") },
                 { value: "h4", label: __("H4", "responsive-block-editor-addons") },
+                { value: "h5", label: __("H5", "responsive-block-editor-addons") },
+                { value: "h6", label: __("H6", "responsive-block-editor-addons") }
               ]}
             />
             <RbeaTabRadioControl
@@ -298,6 +305,7 @@ export default class Inspector extends Component {
                   label={ __( "Enable Cookies", "responsive-block-editor-addons" ) }
                   checked={ cookies }
                   onChange={ this.update_cookie_id }
+                  __nextHasNoMarginBottom
                 />
                 {cookies && (
                   <RbeaRangeControl
@@ -352,9 +360,10 @@ export default class Inspector extends Component {
                   height: titleLineHeight,
                   spacing: titleLetterSpacing,
                   color: titleTypographyColor,
+                  transform: titleTextTransform,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -371,9 +380,10 @@ export default class Inspector extends Component {
                   height: contentLineHeight,
                   spacing: contentLetterSpacing,
                   color: contentTypographyColor,
+                  transform: contentTextTransform,
+                  fontstyle: contentFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -439,6 +449,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"inline-notice"} />
           </InspectorTab>
           <InspectorTab key={'advance'}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -452,6 +465,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -462,6 +476,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -472,6 +487,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
                 <PanelBody

@@ -22,7 +22,7 @@ class Company extends React.Component {
       return (
         <RichText
           tagName="div"
-          value={company}
+          value={String(company)}
           className="responsive-block-editor-addons-tm__company"
           style={{
             color: attributes.companyColor,
@@ -61,7 +61,7 @@ class Company extends React.Component {
       return (
         <RichText.Content
           tagName="span"
-          value={company}
+          value={String(company)}
           className="responsive-block-editor-addons-tm__company"
           style={{
             color: attributes.companyColor,

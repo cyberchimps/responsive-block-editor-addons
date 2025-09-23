@@ -13,6 +13,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -150,6 +151,12 @@ export default class Inspector extends Component {
         titleTypographyColor,
         subtitleTypographyColor,
         textTypographyColor,
+        titleTextTransform,
+        titleFontStyle,
+        subtitleTextTransform,
+        subtitleFontStyle,
+        textTextTransform,
+        textFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -237,6 +244,7 @@ export default class Inspector extends Component {
                 label={__("Enable Title", "responsive-block-editor-addons")}
                 checked={displayTitle}
                 onChange={() => setAttributes({ displayTitle: !displayTitle })}
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Enable Subtitle", "responsive-block-editor-addons")}
@@ -244,6 +252,7 @@ export default class Inspector extends Component {
                 onChange={() =>
                   setAttributes({ displaySubtitle: !displaySubtitle })
                 }
+                __nextHasNoMarginBottom
               />
               {columnsCount > 1 && (
                 <ToggleControl
@@ -254,6 +263,7 @@ export default class Inspector extends Component {
                       displayColumnSeparator: !displayColumnSeparator,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               )}
               {displayTitle && (
@@ -266,7 +276,9 @@ export default class Inspector extends Component {
                 />
               )}
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Block Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -285,7 +297,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>
               {displayTitle && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Title Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -304,7 +318,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>)}
               {displaySubtitle && (<Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Subtitle Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -323,7 +339,9 @@ export default class Inspector extends Component {
                 </BaseControl>
               </Fragment>)}
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Text Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -628,9 +646,10 @@ export default class Inspector extends Component {
                   weight: titleFontWeight,
                   height: titleLineHeight,
                   color: titleTypographyColor,
+                  transform: titleTextTransform,
+                  fontstyle: titleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -649,9 +668,10 @@ export default class Inspector extends Component {
                   weight: subtitleFontWeight,
                   height: subtitleLineHeight,
                   color: subtitleTypographyColor,
+                  transform: subtitleTextTransform,
+                  fontstyle: subtitleFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -667,9 +687,10 @@ export default class Inspector extends Component {
                   weight: textFontWeight,
                   height: textLineHeight,
                   color: textTypographyColor,
+                  transform: textTextTransform,
+                  fontstyle: textFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorControl={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -677,6 +698,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"advanced-text"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -690,6 +714,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -700,6 +725,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -710,6 +736,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

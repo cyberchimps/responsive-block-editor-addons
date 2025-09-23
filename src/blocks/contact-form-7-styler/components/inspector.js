@@ -7,9 +7,6 @@ import ButtonSettingsControl from "./ButtonSettings";
 
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import BoxShadowControl from "../../../utils/components/box-shadow";
-
-
-import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
 import ColorBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ColorBackgroundSettings";
 import ImageBackgroundControl from "../../../settings-components/BlockBackgroundSettings/ImageBackgroundSettings";
 import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
@@ -24,6 +21,7 @@ import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -39,7 +37,7 @@ const {
   PanelColorSettings,
   ColorPalette,
   AlignmentToolbar,
-} = wp.editor;
+} = wp.blockEditor;
 
 // Import Inspector components
 const {
@@ -295,6 +293,12 @@ export default class Inspector extends Component {
         inputBoxShadowBlur,
         inputBoxShadowSpread,
         inputBoxShadowPosition,
+        inputHoverBoxShadowColor,
+        inputHoverBoxShadowHOffset,
+        inputHoverBoxShadowVOffset,
+        inputHoverBoxShadowBlur,
+        inputHoverBoxShadowSpread,
+        inputHoverBoxShadowPosition,
         //Padding
         inputTopPadding,
         inputRightPadding,
@@ -530,6 +534,22 @@ export default class Inspector extends Component {
         ctaButtonLeftPaddingMobile,
         ctaButtonRightPaddingMobile,
         isCtaButtonPaddingMarginValueUpdated,
+        formTitleTextTransform,
+        formTitleFontStyle,
+        formDescriptionTextTransform,
+        formDescriptionFontStyle,
+        inputTextTransform,
+        inputFontStyle,
+        labelTextTransform,
+        labelFontStyle,
+        radioCheckboxTextTransform,
+        radioCheckboxFontStyle,
+        submitButtonTextTransform,
+        submitButtonFontStyle,
+        messageTextTransform,
+        messageFontStyle,
+        afterSubmitTextTransform,
+        afterSubmitFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -644,74 +664,57 @@ export default class Inspector extends Component {
     // Update color values    
     var advancedControls;
     advancedControls = (
-      <Fragment>
-        <RbeaColorControl
-					label = {__("Color", "responsive-block-editor-addons")}
-					colorValue={inputBoxShadowColor}
-					onChange={(colorValue) =>
-						setAttributes({ inputBoxShadowColor: colorValue })
-					}
-					resetColor={() => setAttributes({ inputBoxShadowColor: "" })}
-				/>
-        <RbeaRangeControl
-          label = {_("Horizontal", "responsive-block-editor-addons")}
-          value={inputBoxShadowHOffset}
-          onChange={(value) =>
-            setAttributes({
-              inputBoxShadowHOffset: value !== undefined ? value : 0,
-            })
-          }
-          min={-100}
-          max={100}
-          allowReset
-        />
-        <RbeaRangeControl
-          label={__("Vertical", "responsive-block-editor-addons")}
-          value={inputBoxShadowVOffset}
-          onChange={(value) =>
-            setAttributes({
-              inputBoxShadowVOffset: value !== undefined ? value : 0,
-            })
-          }
-          min={-100}
-          max={100}
-          allowReset
-        />
-        <RbeaRangeControl
-          label={__("Blur", "responsive-block-editor-addons")}
-          value={inputBoxShadowBlur}
-          onChange={(value) =>
-            setAttributes({
-              inputBoxShadowBlur: value !== undefined ? value : 0,
-            })
-          }
-          min={0}
-          max={100}
-          allowReset
-        />
-        <RbeaRangeControl
-          label = {__("Spread", "responsive-block-editor-addons")}
-          value={inputBoxShadowSpread}
-          onChange={(value) =>
-            setAttributes({
-              inputBoxShadowSpread: value !== undefined ? value : 0,
-            })
-          }
-          min={0}
-          max={100}
-          allowReset
-        />
-        <RbeaTabRadioControl
-          label={__("Position", "responsive-block-editor-addons")}
-          value={inputBoxShadowPosition}
-          onChange={(value) => setAttributes({ inputBoxShadowPosition: value })}
-          options={[
-            { value: "inset", label: __("Inset", "responsive-block-editor-addons") },
-            { value: "outset", label: __("Outset", "responsive-block-editor-addons") },
-          ]}
-          defaultValue={"inset"}
-        />
-      </Fragment>
+      <TabPanel
+        className="responsive-block-editor-addons-inspect-tabs 
+                  responsive-block-editor-addons-inspect-tabs-col-2  
+                  responsive-block-editor-addons-color-inspect-tabs"
+        activeClass="active-tab"
+        initialTabName="normal"
+        tabs={[
+          { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+          { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+          { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+          { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+          { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+        ]}
+      >
+        {(tab) => {
+          const isHover = tab.name === "hover";
+          const mode = isHover ? "inputHoverBoxShadow" : "inputBoxShadow";
+
+          return (
+            <BoxShadowControl
+              controlKey={mode}
+              setAttributes={setAttributes}
+              label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+              boxShadowColor={{
+                value: isHover ? inputHoverBoxShadowColor : inputBoxShadowColor,
+                label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+              }}
+              boxShadowHOffset={{
+                value: isHover ? inputHoverBoxShadowHOffset : inputBoxShadowHOffset,
+                label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+              }}
+              boxShadowVOffset={{
+                value: isHover ? inputHoverBoxShadowVOffset : inputBoxShadowVOffset,
+                label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+              }}
+              boxShadowBlur={{
+                value: isHover ? inputHoverBoxShadowBlur : inputBoxShadowBlur,
+                label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+              }}
+              boxShadowSpread={{
+                value: isHover ? inputHoverBoxShadowSpread : inputBoxShadowSpread,
+                label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+              }}
+              boxShadowPosition={{
+                value: isHover ? inputHoverBoxShadowPosition : inputBoxShadowPosition,
+                label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+              }}
+            />
+          );
+        }}
+      </TabPanel>
     );
 
   // backward compatibility for border radius control
@@ -814,6 +817,8 @@ export default class Inspector extends Component {
 					    value={formId}
               onChange={(newformId)=> this.props.onSelectForm(newformId) }
 					    options={ responsive_globals.cf7_forms }
+              __nextHasNoMarginBottom
+              __next40pxDefaultSize={true}
 				      />
               
               <ToggleControl
@@ -824,6 +829,7 @@ export default class Inspector extends Component {
                     showFormTitle: !showFormTitle,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Form Description", "responsive-block-editor-addons")}
@@ -833,6 +839,7 @@ export default class Inspector extends Component {
                     showFormDescription: !showFormDescription,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               
             </PanelBody>            
@@ -851,6 +858,7 @@ export default class Inspector extends Component {
                     showErrorMsgs: !showErrorMsgs,
                   })
                 }
+                __nextHasNoMarginBottom
               />
              
             </PanelBody>
@@ -891,7 +899,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -916,7 +926,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -941,7 +953,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -1160,44 +1174,63 @@ export default class Inspector extends Component {
                 }}
                 setAttributes={setAttributes}
                 {...this.props}
-              />              
+              />
+            </PanelBody>            
+            <PanelBody
+              title={__("Box Shadow", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <TabPanel
+                className="responsive-block-editor-addons-inspect-tabs 
+                          responsive-block-editor-addons-inspect-tabs-col-2  
+                          responsive-block-editor-addons-color-inspect-tabs"
+                activeClass="active-tab"
+                initialTabName="normal"
+                tabs={[
+                  { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                  { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                  { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                  { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                  { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                ]}
+              >
+                {(tab) => {
+                  const isHover = tab.name === "hover";
+                  const mode = isHover ? "hoverboxShadow" : "boxShadow";
 
-              <BoxShadowControl
-                setAttributes={setAttributes}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                boxShadowHOffset={{
-                  value: boxShadowHOffset,
-                  label: __("Horizontal", "responsive-block-editor-addons"),
+                  return (
+                    <BoxShadowControl
+                      controlKey={mode}
+                      setAttributes={setAttributes}
+                      label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+                      boxShadowColor={{
+                        value: isHover ? hoverboxShadowColor : boxShadowColor,
+                        label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowHOffset={{
+                        value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+                        label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowVOffset={{
+                        value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+                        label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowBlur={{
+                        value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+                        label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowSpread={{
+                        value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+                        label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+                      }}
+                      boxShadowPosition={{
+                        value: isHover ? hoverboxShadowPosition : boxShadowPosition,
+                        label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+                      }}
+                    />
+                  );
                 }}
-                boxShadowVOffset={{
-                  value: boxShadowVOffset,
-                  label: __("Vertical", "responsive-block-editor-addons"),
-                }}
-                boxShadowBlur={{
-                  value: boxShadowBlur,
-                  label: __("Blur", "responsive-block-editor-addons"),
-                }}
-                boxShadowSpread={{
-                  value: boxShadowSpread,
-                  label: __("Spread", "responsive-block-editor-addons"),
-                }}
-                boxShadowPosition={{
-                  value: boxShadowPosition,
-                  label: __("Position", "responsive-block-editor-addons"),
-                }}
-              />
-              <BoxShadowControlHelper
-                setAttributes={setAttributes}
-                boxShadowColor={{ value: hoverboxShadowColor }}
-                boxShadowHOffset={{ value: hoverboxShadowHOffset }}
-                boxShadowVOffset={{ value: hoverboxShadowVOffset }}
-                boxShadowBlur={{ value: hoverboxShadowBlur }}
-                boxShadowSpread={{ value: hoverboxShadowSpread }}
-                boxShadowPosition={{ value: hoverboxShadowPosition }}
-                label={__("Hover Box Shadow", "responsive-block-editor-addons")}
-                attrNameTemplate="hover%s"
-              />
+              </TabPanel>
             </PanelBody>            
             </PanelBody>
             <PanelBody
@@ -1237,7 +1270,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -1262,7 +1297,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -1287,7 +1324,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -1359,9 +1398,10 @@ export default class Inspector extends Component {
                   weight: formTitleFontWeight,
                   height: formTitleLineHeight,
                   spacing: formTitleLetterSpacing,
+                  transform: formTitleTextTransform,
+                  fontstyle: formTitleFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1384,9 +1424,10 @@ export default class Inspector extends Component {
                   weight: formDescriptionFontWeight,
                   height: formDescriptionLineHeight,
                   spacing: formDescriptionLetterSpacing,
+                  transform: formDescriptionTextTransform,
+                  fontstyle: formDescriptionFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -1911,9 +1952,10 @@ export default class Inspector extends Component {
                     height: inputLineHeight,
                     spacing: inputLetterSpacing,
                     color: inputTypographyColor,
+                    transform: inputTextTransform,
+                    fontstyle: inputFontStyle,
                   }}
                   showLetterSpacing = { false }
-                  showTextTransform = { false }
                   showColorControl = {true}
                   setAttributes={ setAttributes }
                   {...this.props}
@@ -1936,9 +1978,10 @@ export default class Inspector extends Component {
                   bottomSpacing: labelBottomSpacing,
                   bottomSpacingTablet: labelBottomSpacingTablet,
                   bottomSpacingMobile: labelBottomSpacingMobile,
+                  transform: labelTextTransform,
+                  fontstyle: labelFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 showTextBottomSpacing={true}
                 showColorControl={true}
                 setAttributes={setAttributes}
@@ -1955,6 +1998,7 @@ export default class Inspector extends Component {
                 label={__("Show Placeholder", "responsive-block-editor-addons")}
                 checked={showPlaceholder}
                 onChange={this.toggleShowPlaceholder}
+                __nextHasNoMarginBottom
               />
               {showPlaceholder == true && (         
               <RbeaColorControl
@@ -1978,6 +2022,7 @@ export default class Inspector extends Component {
                 label={__("Custom Styles", "responsive-block-editor-addons")}
                 checked={enableCustomStyles}
                 onChange={this.toggleEnableCustomStyles}
+                __nextHasNoMarginBottom
               />
               {enableCustomStyles == true && (
                 <PanelBody>
@@ -2006,9 +2051,10 @@ export default class Inspector extends Component {
                   weight: radioCheckboxFontWeight,
                   height: radioCheckboxLineHeight,
                   spacing: radioCheckboxLetterSpacing,
+                  transform: radioCheckboxTextTransform,
+                  fontstyle: radioCheckboxFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               /> 
@@ -2106,7 +2152,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -2131,7 +2179,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -2156,7 +2206,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -2378,9 +2430,10 @@ export default class Inspector extends Component {
                   weight: submitButtonFontWeight,
                   height: submitButtonLineHeight,
                   spacing: submitButtonLetterSpacing,
+                  transform: submitButtonTextTransform,
+                  fontstyle: submitButtonFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -2412,9 +2465,10 @@ export default class Inspector extends Component {
                   weight: messageFontWeight,
                   height: messageLineHeight,
                   spacing: messageLetterSpacing,
+                  transform: messageTextTransform,
+                  fontstyle: messageFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />              
@@ -2446,9 +2500,10 @@ export default class Inspector extends Component {
                   weight: afterSubmitFontWeight,
                   height: afterSubmitLineHeight,
                   spacing: afterSubmitLetterSpacing,
+                  transform: afterSubmitTextTransform,
+                  fontstyle: afterSubmitFontStyle,
                 }}
                 showLetterSpacing={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -2512,6 +2567,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"contact-form-7-styler"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -2525,6 +2583,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -2535,6 +2594,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -2545,6 +2605,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

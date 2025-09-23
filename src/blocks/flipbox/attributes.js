@@ -334,6 +334,29 @@ const attributes = {
     type: "string",
     default: "outset",
   },
+  hoverboxShadowColor: {
+    type: "string",
+  },
+  hoverboxShadowHOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowVOffset: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowBlur: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowSpread: {
+    type: "number",
+    default: 0,
+  },
+  hoverboxShadowPosition: {
+    type: "string",
+    default: "outset",
+  },
   showFrontIcon: {
     type: "boolean",
     default: true,
@@ -989,7 +1012,47 @@ const attributes = {
   isCtaButtonBorderRadiusValueUpdated: {
     type: "boolean",
     default: false,
-  }
+  },
+  frontTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  frontTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  frontSubtitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  frontSubtitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  backTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  backTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  backSubtitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  backSubtitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  backButtonTextTransform: {
+    type: "string",
+    default: "",
+  },
+  backButtonFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

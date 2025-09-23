@@ -9,6 +9,7 @@ import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveN
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
  * Inspector Controls
  */
@@ -111,6 +112,12 @@ export default class Inspector extends Component {
         linkBottomSpacing,
         linkBottomSpacingTablet,
         linkBottomSpacingMobile,
+        titleTextTransform,
+        titleFontStyle,
+        textTextTransform,
+        textFontStyle,
+        linkTextTransform,
+        linkFontStyle,
 			},
 			setAttributes,
 		} = this.props;
@@ -221,6 +228,7 @@ export default class Inspector extends Component {
                     showTitle: !showTitle,
                   })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"expand"} />
@@ -241,11 +249,12 @@ export default class Inspector extends Component {
             bottomSpacing: titleBottomSpacing,
             bottomSpacingTablet: titleBottomSpacingTablet,
             bottomSpacingMobile: titleBottomSpacingMobile,
+            transform: titleTextTransform,
+            fontstyle: titleFontStyle,
 						}}
 						showLetterSpacing = { false }
             showColorControl={true}
             showTextBottomSpacing={true}
-						showTextTransform = { false }
 						setAttributes={ setAttributes }
 						{...this.props}            
 					/>
@@ -264,9 +273,10 @@ export default class Inspector extends Component {
             bottomSpacing: textBottomSpacing,
             bottomSpacingTablet: textBottomSpacingTablet,
             bottomSpacingMobile: textBottomSpacingMobile,
+            transform: textTextTransform,
+            fontstyle: textFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={ setAttributes }
@@ -286,9 +296,10 @@ export default class Inspector extends Component {
             bottomSpacing: linkBottomSpacing,
             bottomSpacingTablet: linkBottomSpacingTablet,
             bottomSpacingMobile: linkBottomSpacingMobile,
+            transform: linkTextTransform,
+            fontstyle: linkFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showTextBottomSpacing={true}
           showColorControl={true}
 					setAttributes={ setAttributes }
@@ -312,6 +323,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"expand"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -325,6 +339,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -335,6 +350,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -345,6 +361,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

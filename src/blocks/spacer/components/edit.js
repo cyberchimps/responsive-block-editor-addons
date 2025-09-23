@@ -7,7 +7,7 @@ import InspectorTabs from "../../../components/InspectorTabs";
 import EditorStyles from "./editor-styles";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
-
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 /**
  * WordPress dependencies
@@ -217,6 +217,9 @@ class SpacerEdit extends Component {
 
             </InspectorTab>
             <InspectorTab key={"advance"}>
+
+              <RbeaExtensions {...this.props} />
+
               <PanelBody
                 title={__("Responsive Conditions", "responsive-block-editor-addons")}
                 initialOpen={false}
@@ -230,6 +233,7 @@ class SpacerEdit extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -240,6 +244,7 @@ class SpacerEdit extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -250,6 +255,7 @@ class SpacerEdit extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
             

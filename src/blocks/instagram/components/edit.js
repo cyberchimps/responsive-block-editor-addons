@@ -26,38 +26,69 @@ export default class Edit extends Component {
   }
 
   fetchPhotos() {
-    if (!this.props.attributes.token) {
-      return false;
-    }
+  const { token } = this.props.attributes;
 
-    return fetch(
-      `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${this.props.attributes.token}`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.error) {
-          this.setState({ ...this.state, errorMessage: json.error.message });
-        }
-        if (json.data) {
-          this.setState({ ...this.state, responseCode: 200 });
-          this.setState({ ...this.state, loading: false });
+  if (!token) return;
 
-          if (json.data.length > 0) {
-            this.props.setAttributes({ instaPosts: json.data });
-            this.setState({
-              ...this.state,
-              token: this.props.attributes.token,
-            });
-          } else {
-            this.props.setAttributes({ instaPosts: [] });
-            this.setState({ ...this.state, responseCode: 500 });
-          }
-        }
-      })
-      .catch((error)=> {
-        console.log('Invalid token');
-        this.setState({ ...this.state, responseCode: 500 });
+  // Step 1: Get Instagram Business ID
+  fetch(`https://graph.facebook.com/v19.0/me/accounts?fields=instagram_business_account&access_token=${token}`)
+    .then((res) => res.json())
+    .then((json) => {
+      if (json.error || !json.data || !json.data.length || !json.data[0].instagram_business_account) {
+        console.log("Error fetching business account", json.error);
+        this.setState({
+          responseCode: 500,
+          loading: false,
+          errorMessage: "Instagram Business ID not found.",
+        });
+        return;
+      }
+
+      const businessId = json.data[0].instagram_business_account.id;
+
+      // Step 2: Fetch Media
+      return fetch(`https://graph.facebook.com/v19.0/${businessId}/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${token}`);
+    })
+    .then((res) => res?.json?.())
+    .then((mediaJson) => {
+      if (!mediaJson) return;
+
+      if (mediaJson.error) {
+        console.log("Media fetch error", mediaJson.error);
+        this.setState({
+          responseCode: 500,
+          loading: false,
+          errorMessage: mediaJson.error.message,
+        });
+        return;
+      }
+
+      if (mediaJson.data && mediaJson.data.length > 0) {
+        console.log("Fetched IG media", mediaJson.data);
+        this.props.setAttributes({ instaPosts: mediaJson.data });
+        this.setState({
+          responseCode: 200,
+          loading: false,
+          token: token,
+          errorMessage: "",
+        });
+      } else {
+        this.props.setAttributes({ instaPosts: [] });
+        this.setState({
+          responseCode: 500,
+          loading: false,
+          errorMessage: "No media found.",
+        });
+      }
+    })
+    .catch((err) => {
+      console.log("Fetch error", err);
+      this.setState({
+        responseCode: 500,
+        loading: false,
+        errorMessage: "Something went wrong while fetching Instagram feed.",
       });
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -132,7 +163,7 @@ export default class Edit extends Component {
                   >
                     <img
                       className="responsive-block-editor-addons-instagram-image"
-                      src={ 'VIDEO' === img.media_type ? img.thumbnail_url : img.url }
+                      src={ 'VIDEO' === img.media_type ? img.thumbnail_url : img.media_url }
                       alt={img.caption ? img.caption : ""}
                     />
                   </div>
@@ -158,7 +189,7 @@ export default class Edit extends Component {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://developers.facebook.com/docs/instagram-basic-display-api"
+              href="https://cyberchimps.com/docs/responsive-blocks/blocks/instagram-feed/"
             >
               {" steps "}
             </a>

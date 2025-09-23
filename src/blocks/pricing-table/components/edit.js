@@ -288,7 +288,7 @@ export default class Edit extends Component {
                   <RichText
                     tagName="span"
                     className="wp-block-responsive-block-editor-addons-pricing-table-item__title"
-                    value={pricingTable[index]["title"]}
+                    value={String(pricingTable[index]["title"])}
                     placeholder={pricingTable[index]["title"]}
                     onChange={(value) => {
                       var new_content = {
@@ -315,7 +315,7 @@ export default class Edit extends Component {
                     <RichText
                       tagName="p"
                       className="wp-block-responsive-block-editor-addons-pricing-table-item__currency"
-                      value={pricingTable[index]["currency"]}
+                      value={String(pricingTable[index]["currency"])}
                       placeholder={__("$", "responsive-block-editor-addons")}
                       onChange={(value) => {
                         var new_content = {
@@ -342,7 +342,7 @@ export default class Edit extends Component {
                       tagName="p"
                       className="wp-block-responsive-block-editor-addons-pricing-table-item__amount"
                       placeholder={__("99", "responsive-block-editor-addons")}
-                      value={pricingTable[index]["amount"]}
+                      value={String(pricingTable[index]["amount"])}
                       onChange={(value) => {
                         var new_content = {
                           title: data_copy[index]["title"],
@@ -367,7 +367,7 @@ export default class Edit extends Component {
                     <RichText
                       tagName="p"
                       className="wp-block-responsive-block-editor-addons-pricing-table-item__price_suffix"
-                      value={pricingTable[index]["price_suffix"]}
+                      value={String(pricingTable[index]["price_suffix"])}
                       placeholder={__(".00", "responsive-block-editor-addons")}
                       onChange={(value) => {
                         var new_content = {
@@ -394,7 +394,7 @@ export default class Edit extends Component {
                   <RichText
                     tagName="p"
                     className="wp-block-responsive-block-editor-addons-pricing-table-item__sub_price"
-                    value={pricingTable[index]["sub_price"]}
+                    value={String(pricingTable[index]["sub_price"])}
                     placeholder={__(
                       "Sub Price",
                       "responsive-block-editor-addons"
@@ -423,7 +423,7 @@ export default class Edit extends Component {
                   <RichText
                     tagName="ul"
                     className="wp-block-responsive-block-editor-addons-pricing-table-item__features"
-                    value={pricingTable[index]["features"]}
+                    value={String(pricingTable[index]["features"])}
                     placeholder={__(
                       "Add features",
                       "responsive-block-editor-addons"
@@ -454,7 +454,7 @@ export default class Edit extends Component {
                       className={classnames(
                         "wp-block-responsive-block-editor-addons-pricing-table-item__button"
                       )}
-                      value={pricingTable[index]["button"]}
+                      value={String(pricingTable[index]["button"])}
                       placeholder={__("$", "responsive-block-editor-addons")}
                       onChange={(value) => {
                         var new_content = {

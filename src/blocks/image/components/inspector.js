@@ -1,5 +1,5 @@
 import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
-import BoxShadowControlHelper from "../../../utils/components/box-shadow-helper";
+import BoxShadowControl from "../../../utils/components/box-shadow";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
@@ -9,6 +9,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 const {Component, Fragment} = wp.element;
 const {
   PanelBody,
@@ -217,6 +218,8 @@ export default class Inspector extends Component {
       captionRightMarginMobile,
       captionIsMarginControlConnected,
       imagePositionTab,
+      layoverHeadingFontStyle,
+      captionFontStyle
     } = attributes;
 
     // To populate new control values with existing padding margin control values for backward compatibility.
@@ -335,86 +338,6 @@ export default class Inspector extends Component {
         console.error("WordPress media library not available.");
       }
     };
-    var HoverBoxShadowControls;
-    HoverBoxShadowControls = (
-      <Fragment>
-        <RbeaColorControl
-					label = {__("Color", "responsive-block-editor-addons")}
-					colorValue={imageboxShadowHoverColor}
-					onChange={(colorValue) =>
-						setAttributes({ imageboxShadowHoverColor: colorValue })
-					}
-					resetColor={() => setAttributes({ imageboxShadowHoverColor: "" })}
-				/>
-
-        <h2>{__("Horizontal", "responsive-block-editor-addons")}</h2>
-        <RbeaRangeControl
-          value={imageboxShadowHoverHOffset}
-          onChange={(value) =>
-            setAttributes({
-              imageboxShadowHoverHOffset: value !== undefined ? value : 0,
-            })
-          }
-          min={-100}
-          max={100}
-          allowReset
-        />
-        <h2>{__("Vertical", "responsive-block-editor-addons")}</h2>
-        <RbeaRangeControl
-          value={imageboxShadowHoverVOffset}
-          onChange={(value) =>
-            setAttributes({
-              imageboxShadowHoverVOffset: value !== undefined ? value : 0,
-            })
-          }
-          min={-100}
-          max={100}
-          allowReset
-        />
-        <h2>{__("Blur", "responsive-block-editor-addons")}</h2>
-        <RbeaRangeControl
-          value={imageboxShadowHoverBlur}
-          onChange={(value) =>
-            setAttributes({
-              imageboxShadowHoverBlur: value !== undefined ? value : 0,
-            })
-          }
-          min={0}
-          max={100}
-          allowReset
-        />
-        <h2>{__("Spread", "responsive-block-editor-addons")}</h2>
-        <RbeaRangeControl
-          value={imageboxShadowHoverSpread}
-          onChange={(value) =>
-            setAttributes({
-              imageboxShadowHoverSpread: value !== undefined ? value : 0,
-            })
-          }
-          min={0}
-          max={100}
-          allowReset
-        />
-        <RbeaTabRadioControl
-          label={__("Position", "responsive-block-editor-addons")}
-          value={imageboxShadowHoverPosition}
-          onChange={(value) =>
-            setAttributes({imageboxShadowHoverPosition: value})
-          }
-          options={[
-            {
-              value: "inset",
-              label: __("Inset", "responsive-block-editor-addons"),
-            },
-            {
-              value: "outset",
-              label: __("Outset", "responsive-block-editor-addons"),
-            },
-          ]}
-        />
-      </Fragment>
-    );
-
     // backward compatibility for border radius control
 
     if (!layoverimageIsRadiusValueUpdated) {
@@ -558,7 +481,9 @@ if (!imageIsRadiusValueUpdated) {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -583,7 +508,9 @@ if (!imageIsRadiusValueUpdated) {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -608,7 +535,9 @@ if (!imageIsRadiusValueUpdated) {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -662,7 +591,9 @@ if (!imageIsRadiusValueUpdated) {
                     if ("mobile" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions Mobile",
@@ -705,7 +636,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions Tablet",
@@ -748,7 +681,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Image Dimensions",
@@ -802,6 +737,8 @@ if (!imageIsRadiusValueUpdated) {
                     onChange={(newAltText) =>
                       setAttributes({altText: newAltText})
                     }
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                 </PanelRow>
               </div>
@@ -854,6 +791,8 @@ if (!imageIsRadiusValueUpdated) {
                     label: __("Blur", "responsive-block-editor-addons"),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
 
               {!Layoverswitch && (
@@ -870,6 +809,7 @@ if (!imageIsRadiusValueUpdated) {
                         caption: !caption,
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                 </>
               )}
@@ -904,7 +844,9 @@ if (!imageIsRadiusValueUpdated) {
                     if ("mobile" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment Mobile",
@@ -929,7 +871,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment Tablet",
@@ -954,7 +898,9 @@ if (!imageIsRadiusValueUpdated) {
                     } else {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Alignment",
@@ -993,6 +939,7 @@ if (!imageIsRadiusValueUpdated) {
                       Layoverswitch: !Layoverswitch,
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
                 {/* <SelectControl
                   label={__(
@@ -1160,6 +1107,8 @@ if (!imageIsRadiusValueUpdated) {
                     label: __("Blob 4", "responsive-block-editor-addons"),
                   },
                 ]}
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               {MaskShape !== "none" && (
                 <>
@@ -1251,6 +1200,8 @@ if (!imageIsRadiusValueUpdated) {
                         ),
                       },
                     ]}
+                    __nextHasNoMarginBottom
+                    __next40pxDefaultSize={true}
                   />
                   {/* <SelectControl
                     label={__("Mask Repeat", "responsive-block-editor-addons")}
@@ -1311,30 +1262,59 @@ if (!imageIsRadiusValueUpdated) {
                 setAttributes={setAttributes}
                 {...this.props}
               />
-              <BoxShadowControlHelper
-                setAttributes={setAttributes}
-                boxShadowColor={{value: imageboxShadowColor}}
-                boxShadowHOffset={{value: imageboxShadowHOffset}}
-                boxShadowVOffset={{value: imageboxShadowVOffset}}
-                boxShadowBlur={{value: imageboxShadowBlur}}
-                boxShadowSpread={{value: imageboxShadowSpread}}
-                boxShadowPosition={{value: imageboxShadowPosition}}
-                label={__("Box Shadow", "responsive-block-editor-addons")}
-                attrNameTemplate="image%s"
-              />
-              <ToggleControl
-                label={__(
-                  "Seprate Box Shadow Hover",
-                  "responsive-block-editor-addons"
-                )}
-                checked={imageboxshadowSeprateHover}
-                onChange={() =>
-                  this.props.setAttributes({
-                    imageboxshadowSeprateHover: !imageboxshadowSeprateHover,
-                  })
-                }
-              />
-              {imageboxshadowSeprateHover && HoverBoxShadowControls}
+            </PanelBody>
+            <PanelBody title="Box Shadow" initialOpen={false}>
+              <TabPanel
+                  className="responsive-block-editor-addons-inspect-tabs 
+                            responsive-block-editor-addons-inspect-tabs-col-2  
+                            responsive-block-editor-addons-color-inspect-tabs"
+                  activeClass="active-tab"
+                  initialTabName="normal"
+                  tabs={[
+                    { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                    { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                    { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                    { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                    { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                  ]}
+                >
+                  {(tab) => {
+                    const isHover = tab.name === "hover";
+                    const mode = isHover ? "imageboxShadowHover" : "imageboxShadow";
+
+                    return (
+                      <BoxShadowControl
+                        controlKey={mode}
+                        setAttributes={setAttributes}
+                        label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+                        boxShadowColor={{
+                          value: isHover ? imageboxShadowHoverColor : imageboxShadowColor,
+                          label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowHOffset={{
+                          value: isHover ? imageboxShadowHoverHOffset : imageboxShadowHOffset,
+                          label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowVOffset={{
+                          value: isHover ? imageboxShadowHoverVOffset : imageboxShadowVOffset,
+                          label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowBlur={{
+                          value: isHover ? imageboxShadowHoverBlur : imageboxShadowBlur,
+                          label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowSpread={{
+                          value: isHover ? imageboxShadowHoverSpread : imageboxShadowSpread,
+                          label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowPosition={{
+                          value: isHover ? imageboxShadowHoverPosition : imageboxShadowPosition,
+                          label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+                        }}
+                      />
+                    );
+                  }}
+              </TabPanel>
             </PanelBody>
             <PanelBody
               title="Spacing" initialOpen={false}
@@ -1693,9 +1673,9 @@ if (!imageIsRadiusValueUpdated) {
                 spacing: layoverHeadingLetterSpacing,
                 transform: layoverHeadingTextTransform,
                 color: layoverHeadingTypographyColor,
+                fontstyle: layoverHeadingFontStyle,
               }}
               showLetterSpacing={true}
-              showTextTransform={true}
               showColorControl={true}
               setAttributes={setAttributes}
               {...this.props}
@@ -1724,9 +1704,9 @@ if (!imageIsRadiusValueUpdated) {
                 spacing: captionLetterSpacing,
                 transform: captionTextTransform,
                 color: captionTypographyColor,
+                fontstyle: captionFontStyle,
               }}
               showLetterSpacing={true}
-              showTextTransform={true}
               showColorControl={true}
               setAttributes={setAttributes}
               {...this.props}
@@ -1735,6 +1715,9 @@ if (!imageIsRadiusValueUpdated) {
             <RbeaSupportControl blockSlug={"image-block"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
             title={__("Responsive Conditions", "responsive-block-editor-addons")}
             initialOpen={false}
@@ -1748,6 +1731,7 @@ if (!imageIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1758,6 +1742,7 @@ if (!imageIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1768,6 +1753,7 @@ if (!imageIsRadiusValueUpdated) {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

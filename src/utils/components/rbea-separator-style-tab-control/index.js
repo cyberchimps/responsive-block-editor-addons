@@ -51,6 +51,8 @@ const RbeaSeparatorStyleTabControl = ({ selected, onChange }) => {
                 selected={selected}
                 options = {fixedOptions}
                 onChange={onChange}
+                __next40pxDefaultSize={true}
+                __nextHasNoMarginBottom
             />
         </div>
    </Fragment>

@@ -56,6 +56,7 @@ class VideoBackgroundControl extends Component {
           <BaseControl
       className="editor-bg-video-control"
       label={__("Background Video", "responsive-block-editor-addons")}
+      __nextHasNoMarginBottom
   >
   <MediaUpload
       title={__("Select Background Video", "responsive-block-editor-addons")}

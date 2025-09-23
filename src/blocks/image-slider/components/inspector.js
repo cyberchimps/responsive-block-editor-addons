@@ -13,6 +13,7 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
  * WordPress dependencies
  */
@@ -275,6 +276,7 @@ class Inspector extends Component {
                     onChange={() =>
                       setAttributes({ customWidth: !customWidth })
                     }
+                    __nextHasNoMarginBottom
                   />
                   {!!customWidth && (
                     <RbeaRangeControl
@@ -301,6 +303,7 @@ class Inspector extends Component {
                           "responsive-block-editor-addons"
                         )}
                         className={"block-height-control"}
+                        __nextHasNoMarginBottom
                       >
                         <input
                           type="number"
@@ -333,18 +336,21 @@ class Inspector extends Component {
                       setAttributes({ isSmallImage: !isSmallImage })
                     }
                     help={this.getSmallImageNavigationHelp}
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__("Thumbnails", "responsive-block-editor-addons")}
                     checked={!!thumbnails}
                     onChange={() => setAttributes({ thumbnails: !thumbnails })}
                     help={this.getThumbnailNavigationHelp}
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__("Lightbox", "responsive-block-editor-addons")}
                     checked={!!lightbox}
                     onChange={() => setAttributes({ lightbox: !lightbox })}
                     help={this.getLightboxHelp}
+                    __nextHasNoMarginBottom
                   />
                 </PanelBody>
                 <SliderPanel {...this.props} />
@@ -432,6 +438,9 @@ class Inspector extends Component {
                   <RbeaSupportControl blockSlug={"image-slider"} />
               </InspectorTab>
               <InspectorTab key={"advance"}>
+
+                <RbeaExtensions {...this.props} />
+
                 <PanelBody
                 title={__("Responsive Conditions", "responsive-block-editor-addons")}
                 initialOpen={false}
@@ -445,6 +454,7 @@ class Inspector extends Component {
                     onChange={(value) =>
                     setAttributes({ hideWidget: !hideWidget })
                     }
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__(
@@ -455,6 +465,7 @@ class Inspector extends Component {
                     onChange={(value) =>
                     setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                     }
+                    __nextHasNoMarginBottom
                   />
                   <ToggleControl
                     label={__(
@@ -465,6 +476,7 @@ class Inspector extends Component {
                     onChange={(value) =>
                     setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                     }
+                    __nextHasNoMarginBottom
                   />
                 </PanelBody>
               
@@ -559,6 +571,7 @@ class Inspector extends Component {
                 setAttributes({ responsiveHeight: !responsiveHeight })
               }
               help={this.getResponsiveHeightHelp}
+              __nextHasNoMarginBottom
             />
           </InspectorAdvancedControls>
         </Fragment>

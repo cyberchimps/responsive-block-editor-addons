@@ -34,7 +34,7 @@ function responsive_block_editor_addons_post_timeline_render_latest_posts( $attr
 		'offset'              => $attributes['offset'],
 		'post_type'           => $attributes['postType'],
 		'ignore_sticky_posts' => 1,
-		'post__not_in'        => array( get_the_ID() ), // Exclude the current post from the grid.
+		'post__not_in'        => is_singular() ? array( get_the_ID() ) : array(),
 	);
 
 	if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
@@ -1012,6 +1012,29 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'number',
 					'default' => 0,
 				),
+				'hoverboxShadowColor'                => array(
+					'type' => 'string',
+				),
+				'hoverboxShadowHOffset'              => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowVOffset'              => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowBlur'                 => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowSpread'               => array(
+					'type' => 'number',
+					'default' => 0
+				),
+				'hoverboxShadowPosition'             => array(
+					'type' => 'string',
+					'default' => 'outset'
+				),
 				'taxonomyType'                       => array(
 					'type'    => 'string',
 					'default' => 'category',
@@ -1190,6 +1213,46 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 				),
 				'contentBottomSpacingTablet'         => array(
 					'type' => 'number',
+				),
+				'dateTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'dateFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'headingTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'headingFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'authorTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'authorFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'continueTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'continueFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'contentTextTransform'             => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+				'contentFontStyle'             => array(
+					'type'    => 'string',
+					'default' => '',
 				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',

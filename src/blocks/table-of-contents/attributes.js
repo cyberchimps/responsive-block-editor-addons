@@ -1030,6 +1030,22 @@ bodyBorderBottomRightRadius: {
     type: "string",
     default: "desktop",
   },
+  headingTextTransform: {
+    type: "string",
+    default: "",
+  },
+  headingFontStyle: {
+    type: "string",
+    default: "",
+  },
+  contentTextTransform: {
+    type: "string",
+    default: "",
+  },
+  contentFontStyle: {
+    type: "string",
+    default: "",
+  },
 };
 
 export default attributes;

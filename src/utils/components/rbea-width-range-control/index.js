@@ -2,6 +2,10 @@ import { __ } from '@wordpress/i18n';
 import { RangeControl, ButtonGroup, Button, } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import { Icon, rotateLeft } from '@wordpress/icons';
+import {
+  __experimentalToggleGroupControl as ToggleGroupControl,
+  __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
 
 import './styles/editor.scss';
 
@@ -36,7 +40,7 @@ const RbeaWidthRangeControl = ( props ) => {
                               size='small'
                               isPrimary={widthType === "px"}
                               aria-pressed={widthType === "px"}
-                              onClick={() => setAttributes({ widthType: "px" })}
+                              onClick={() => setAttributes({ [props.widthTypeKey || "widthType"]: "px" })}
                             >
                                 {"px"}
                             </Button>
@@ -46,7 +50,7 @@ const RbeaWidthRangeControl = ( props ) => {
                               size='small'
                               isPrimary={widthType === "%"}
                               aria-pressed={widthType === "%"}
-                              onClick={() => setAttributes({ widthType: "%" })}
+                              onClick={() => setAttributes({ [props.widthTypeKey || "widthType"]: "%" })}
                             >
                               {"%"}
                             </Button>
@@ -73,6 +77,8 @@ const RbeaWidthRangeControl = ( props ) => {
                     min={min}
                     max={max}
                     allowReset = {false}
+                    __next40pxDefaultSize={true}
+                    __nextHasNoMarginBottom
                     {...restProps}
                 />
             </div>

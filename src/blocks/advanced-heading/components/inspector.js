@@ -20,6 +20,7 @@ import RbeaSeparatorStyleTabControl from "../../../utils/components/rbea-separat
 import separatorPositionIcons from "../../../utils/components/rbea-separator-style-tab-control/separator-position-icons";
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 // Import block components
 const { InspectorControls, AlignmentToolbar, ColorPalette, PanelColorSettings } = wp.blockEditor
@@ -260,6 +261,10 @@ export default class Inspector extends Component {
         subHeadingTitleTextDecoration,
         widthTypeValueUpdated,
         widthType,
+        headingTitleTextTransform,
+        headingTitleFontStyle,
+        subHeadingTitleTextTransform,
+        subHeadingTitleFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -351,7 +356,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -376,7 +383,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -401,7 +410,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -434,6 +445,7 @@ export default class Inspector extends Component {
                     showHeading: !showHeading,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Separator", "responsive-block-editor-addons")}
@@ -443,6 +455,7 @@ export default class Inspector extends Component {
                     showSeparator: !showSeparator,
                   })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Sub Heading", "responsive-block-editor-addons")}
@@ -452,6 +465,7 @@ export default class Inspector extends Component {
                     showSubHeading: !showSubHeading,
                   })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"advanced-heading"} />
@@ -476,11 +490,12 @@ export default class Inspector extends Component {
                 bottomSpacingMobile: headingTitleBottomSpacingMobile,
                 bottomSpacingTablet: headingTitleBottomSpacingTablet,
                 textDecoration: headingTitleTextDecoration,
+                transform: headingTitleTextTransform,
+                fontstyle: headingTitleFontStyle,
               }}
               showLetterSpacing={true}
               showTextDecoration={true}
               showTextBottomSpacing={true}
-              showTextTransform={false}
               showColorControl={true}
               setAttributes={setAttributes}
               {...this.props}
@@ -502,12 +517,13 @@ export default class Inspector extends Component {
                   bottomSpacingMobile: subHeadingTitleBottomSpacingMobile,
                   bottomSpacingTablet: subHeadingTitleBottomSpacingTablet,
                   textDecoration: subHeadingTitleTextDecoration,
+                  transform: subHeadingTitleTextTransform,
+                  fontstyle: subHeadingTitleFontStyle,
                 }}
                 showLetterSpacing={true}
                 showTextBottomSpacing={true}
                 showTextDecoration={true}
                 showColorControl={true}
-                showTextTransform={false}
                 setAttributes={setAttributes}
                 {...this.props}
               />
@@ -610,6 +626,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"advanced-heading"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -623,6 +642,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -633,6 +653,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -643,6 +664,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
 

@@ -61,6 +61,8 @@
      hideWidgetTablet,
      hideWidgetMobile,
      buttonStyleToggle,
+     textTextTransform,
+     textFontStyle,
    } = props.attributes;
 
    let buttonWidthCSS = "fixed" === buttonWidthType ? "fit-content" : "flexible" === buttonWidthType ? generateCSSUnit(buttonWidth, "px") : generateCSSUnit(100, "%");
@@ -108,6 +110,8 @@
       "font-size": `${generateCSSUnit(textFontSize, "px")} !important`,
       "font-weight": textFontWeight,
       "line-height": textLineHeight,
+      "text-transform": textTextTransform,
+      "font-style": textFontStyle,
     },
     " .responsive-block-editor-addons-call-mail-button-icon": {
       "fill": textColor,

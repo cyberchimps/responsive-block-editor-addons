@@ -97,6 +97,12 @@ function EditorStyles(props) {
   titleBottomSpacing,
   titleBottomSpacingMobile,
   titleBottomSpacingTablet,
+  titleTextTransform,
+  titleFontStyle,
+  descriptionTextTransform,
+  descriptionFontStyle,
+  priceTextTransform,
+  priceFontStyle,
   } = props.attributes;
 
   var align = contentAlign;
@@ -136,7 +142,9 @@ function EditorStyles(props) {
       "max-width": generateCSSUnit(imageWidth, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-title": {
-      color: titleTypographyColor,
+      "color": titleTypographyColor,
+      "text-transform": titleTextTransform,
+      "font-style": titleFontStyle,
       "line-height": titleLineHeight,
       "font-weight": titleFontWeight,
       "font-size": generateCSSUnit(titleFontSize, "px"),
@@ -144,14 +152,18 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(titleBottomSpacing, "px"),
     },
     " .responsive-block-editior-addons-pricing-list-item-description": {
-      color: descriptionTypographyColor,
+      "color": descriptionTypographyColor,
+      "text-transform": descriptionTextTransform,
+      "font-style": descriptionFontStyle,
       "line-height": descriptionLineHeight,
       "font-weight": descriptionFontWeight,
       "font-size": generateCSSUnit(descriptionFontSize, "px"),
       "font-family": descriptionFontFamily,
     },
     " .responsive-block-editior-addons-pricing-list-item-price-wrap": {
-      color: priceTypographyColor,
+      "color": priceTypographyColor,
+      "text-transform": priceTextTransform,
+      "font-style": priceFontStyle,
       "line-height": priceLineHeight,
       "font-weight": priceFontWeight,
       "font-size": generateCSSUnit(priceFontSize, "px"),

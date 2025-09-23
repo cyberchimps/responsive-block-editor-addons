@@ -89,6 +89,7 @@ class SliderPanel extends Component {
             checked={!!autoPlay}
             onChange={() => setAttributes({ autoPlay: !autoPlay })}
             help={this.getAutoPlayHelp}
+            __nextHasNoMarginBottom
           />
           {autoPlay && (
             <Fragment>
@@ -98,12 +99,15 @@ class SliderPanel extends Component {
                 onChange={(value) => setAttributes({ autoPlaySpeed: value })}
                 options={autoPlayOptions}
                 className="components- responsive-block-editor-addons-gallery-inspector__autoplayspeed-select"
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               <ToggleControl
                 label={__("Pause on hover", "responsive-block-editor-addons")}
                 checked={pauseHover}
                 onChange={() => setAttributes({ pauseHover: !pauseHover })}
                 help={this.getPauseAutoplayOnHoverHelp}
+                __nextHasNoMarginBottom
               />
             </Fragment>
           )}
@@ -112,6 +116,7 @@ class SliderPanel extends Component {
             checked={!!draggable}
             onChange={() => setAttributes({ draggable: !draggable })}
             help={this.getDraggableHelp}
+            __nextHasNoMarginBottom
           />
           {draggable && (
             <ToggleControl
@@ -119,6 +124,7 @@ class SliderPanel extends Component {
               checked={!!freeScroll}
               onChange={() => setAttributes({ freeScroll: !freeScroll })}
               help={this.getfreeScrollHelp}
+              __nextHasNoMarginBottom
             />
           )}
           <ToggleControl
@@ -128,18 +134,21 @@ class SliderPanel extends Component {
               setAttributes({ prevNextButtons: !prevNextButtons })
             }
             help={this.getArrowNavigationHelp}
+            __nextHasNoMarginBottom
           />
           <ToggleControl
             label={__("Dot navigation", "responsive-block-editor-addons")}
             checked={!!pageDots}
             onChange={() => setAttributes({ pageDots: !pageDots })}
             help={this.getDotNavigationHelp}
+            __nextHasNoMarginBottom
           />
           <ToggleControl
             label={__("Align cells", "responsive-block-editor-addons")}
             checked={!!alignCells}
             onChange={() => setAttributes({ alignCells: !alignCells })}
             help={this.getAlignCellsHelp}
+            __nextHasNoMarginBottom
           />
         </PanelBody>
       </Fragment>

@@ -29,6 +29,11 @@ import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadi
 import ResponsiveBorderWidthControl from "../../../settings-components/ResponsiveBorderWidthSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 
+import {
+  __experimentalToggleGroupControl as ToggleGroupControl,
+  __experimentalToggleGroupControlOption as ToggleGroupControlOption,
+} from '@wordpress/components';
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
@@ -405,6 +410,10 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     contentRightPaddingTablet,
     contentRightPaddingMobile,
     titleContentIsPaddingControlConnected,
+    titleTextTransform,
+    titleFontStyle,
+    contentTextTransform,
+    contentFontStyle,
     },
       setAttributes,
     } = this.props;
@@ -575,6 +584,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                 onChange={(value) =>
                   setAttributes({ inactiveOtherItems: !inactiveOtherItems })
                 }
+                __nextHasNoMarginBottom
               />
               {true === inactiveOtherItems && (
                 <ToggleControl
@@ -583,6 +593,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                   onChange={(value) =>
                     setAttributes({ expandFirstItem: !expandFirstItem })
                   }
+                  __nextHasNoMarginBottom
                 />
               )}
             </Fragment>
@@ -600,7 +611,9 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           )}
           {"grid" === layout && (
             <Fragment>
-              <BaseControl>
+              <BaseControl
+                __nextHasNoMarginBottom
+              >
                 <p>
                   {__("Alignment", "responsive-block-editor-addons")}
                 </p>
@@ -664,6 +677,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                   titleBgGradient: !titleBgGradient,
                 })
               }
+              __nextHasNoMarginBottom
             />
             {titleBgGradient && (
               
@@ -721,6 +735,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                   contentBgGradient: !contentBgGradient,
                 })
               }
+              __nextHasNoMarginBottom
             />
             {contentBgGradient && [
               <Fragment>
@@ -818,10 +833,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               sizeTablet: titleFontSizeTablet, 
               weight: titleFontWeight, 
               height: titleLineHeight, 
-              color: titleTypographyColor
+              color: titleTypographyColor,
+              transform: titleTextTransform,
+              fontstyle: titleFontStyle,
             }}
 			    	showLetterSpacing = { false }
-			    	showTextTransform = { false }
             showColorControl={ true }
 			    	setAttributes={ setAttributes }
 			    	{...this.props}
@@ -836,10 +852,11 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               sizeTablet: contentFontSizeTablet, weight: 
               contentFontWeight, 
               height: contentLineHeight, 
-              color: contentTypographyColor
+              color: contentTypographyColor,
+              transform: contentTextTransform,
+              fontstyle: contentFontStyle,
             }}
 			    	showLetterSpacing = { false }
-			    	showTextTransform = { false }
             showColorControl = { true }
 			    	setAttributes={ setAttributes }
 			    	{...this.props}
@@ -886,6 +903,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                 onChange={(value) =>
                   setAttributes({ equalHeight: !equalHeight })
                 }
+                __nextHasNoMarginBottom
               />
             </Fragment>
           )}
@@ -986,33 +1004,26 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                       tabout = (
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
-                          <ButtonGroup
-                      className="responsive-block-editor-addons-size-type-field"
-                      aria-label={__("Size Type")}
-                  >
-                  <Button
-                      key={"px"}
-                      className="responsive-block-editor-addons-size-btn"
-                      isSmall
-                      isPrimary={iconSizeType === "px"}
-                      aria-pressed={iconSizeType === "px"}
-                      onClick={() =>
-                      setAttributes({ iconSizeType: "px" })
-                  }
-                  >
-                      {"px"}
-                  </Button>
-                      <Button
-                      key={"%"}
-                      className="responsive-block-editor-addons-size-btn"
-                      isSmall
-                      isPrimary={iconSizeType === "%"}
-                      aria-pressed={iconSizeType === "%"}
-                      onClick={() => setAttributes({ iconSizeType: "%" })}
-                  >
-                      {"%"}
-                  </Button>
-                      </ButtonGroup>
+                            <ToggleGroupControl
+                              className="responsive-block-editor-addons-size-type-field"
+                              label={ __("Size Type") }
+                              aria-label={ __("Size Type") }
+                              value={ iconSizeType }
+                              onChange={(val) => setAttributes({ iconSizeType: val })}
+                              __next40pxDefaultSize
+                              __nextHasNoMarginBottom
+                            >
+                              <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="px"
+                                label="px"
+                              />
+                              <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="%"
+                                label="%"
+                              />
+                            </ToggleGroupControl>
                       <p>{__("")}</p>
                       <RbeaRangeControl
                       label={"Icon Size (Mobile)"}
@@ -1031,33 +1042,26 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                       tabout = (
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
-                          <ButtonGroup
-                      className="responsive-block-editor-addons-size-type-field"
-                      aria-label={__("Size Type")}
-                  >
-                  <Button
-                      key={"px"}
-                      className="responsive-block-editor-addons-size-btn"
-                      isSmall
-                      isPrimary={iconSizeType === "px"}
-                      aria-pressed={iconSizeType === "px"}
-                      onClick={() =>
-                      setAttributes({ iconSizeType: "px" })
-                  }
-                  >
-                      {"px"}
-                  </Button>
-                      <Button
-                      key={"%"}
-                      className="responsive-block-editor-addons-size-btn"
-                      isSmall
-                      isPrimary={iconSizeType === "%"}
-                      aria-pressed={iconSizeType === "%"}
-                      onClick={() => setAttributes({ iconSizeType: "%" })}
-                  >
-                      {"%"}
-                  </Button>
-                      </ButtonGroup>
+                            <ToggleGroupControl
+                              className="responsive-block-editor-addons-size-type-field"
+                              label={ __("Size Type") }
+                              aria-label={ __("Size Type") }
+                              value={ iconSizeType }
+                              onChange={(val) => setAttributes({ iconSizeType: val })}
+                              __next40pxDefaultSize
+                              __nextHasNoMarginBottom
+                            >
+                              <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="px"
+                                label="px"
+                              />
+                              <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="%"
+                                label="%"
+                              />
+                            </ToggleGroupControl>
                       <p>{__("")}</p>
                       <RbeaRangeControl
                       label={"Icon Size (Tablet)"}
@@ -1076,33 +1080,26 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                       tabout = (
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
-                          <ButtonGroup
-                      className="responsive-block-editor-addons-size-type-field"
-                      aria-label={__("Size Type")}
-                  >
-                  <Button
-                      key={"px"}
-                      className="responsive-block-editor-addons-size-btn"
-                      isSmall
-                      isPrimary={iconSizeType === "px"}
-                      aria-pressed={iconSizeType === "px"}
-                      onClick={() =>
-                      setAttributes({ iconSizeType: "px" })
-                  }
-                  >
-                      {"px"}
-                  </Button>
-                      <Button
-                      key={"%"}
-                      className="responsive-block-editor-addons-size-btn"
-                      isSmall
-                      isPrimary={iconSizeType === "%"}
-                      aria-pressed={iconSizeType === "%"}
-                      onClick={() => setAttributes({ iconSizeType: "%" })}
-                  >
-                      {"%"}
-                  </Button>
-                      </ButtonGroup>
+                           <ToggleGroupControl
+                              className="responsive-block-editor-addons-size-type-field"
+                              label={ __("Size Type") }
+                              aria-label={ __("Size Type") }
+                              value={ iconSizeType }
+                              onChange={(val) => setAttributes({ iconSizeType: val })}
+                              __next40pxDefaultSize
+                              __nextHasNoMarginBottom
+                            >
+                              <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="px"
+                                label="px"
+                              />
+                              <ToggleGroupControlOption
+                                className="responsive-block-editor-addons-size-btn"
+                                value="%"
+                                label="%"
+                              />
+                            </ToggleGroupControl>
                       <p>{__("")}</p>
                       <RbeaRangeControl
                       label={"Icon Size"}
@@ -1174,6 +1171,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
               <RbeaSupportControl blockSlug={"accordion"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
+              <RbeaExtensions {...this.props} />
               <RbeaSupportControl blockSlug={"accordion"} />
             </InspectorTab>
           </InspectorTabs>

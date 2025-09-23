@@ -21,6 +21,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -184,6 +185,12 @@ export default class Inspector extends Component {
     contentAlignMobile,
     contentAlignTablet,
     isAlignmentValueUpdated,
+    dateTextTransform,
+    dateFontStyle,
+    headingTextTransform,
+    headingFontStyle,
+    contentTextTransform,
+    contentFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -596,7 +603,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -621,7 +630,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -646,7 +657,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -720,11 +733,13 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ resshowTitle: !resshowTitle })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Enable Number", "responsive-block-editor-addons")}
                 checked={resshowNum}
                 onChange={(value) => setAttributes({ resshowNum: !resshowNum })}
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -735,6 +750,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ resshowDesc: !resshowDesc })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Enable Icon", "responsive-block-editor-addons")}
@@ -742,6 +758,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ resshowIcon: !resshowIcon })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"count-up"} />
@@ -826,10 +843,11 @@ export default class Inspector extends Component {
 					weight: dateFontWeight,
 					height: dateLineHeight,
           color: dateTypographyColor,
+          fontstyle: dateFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showColorControl={true}
+          showTextTransform={false}
 					setAttributes={ setAttributes }
 					{...this.props}
 				/>
@@ -844,9 +862,10 @@ export default class Inspector extends Component {
 					weight: headingFontWeight,
 					height: headingLineHeight,
           color: headingTypographyColor,
+          transform: headingTextTransform,
+          fontstyle: headingFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showColorControl={true}
 					setAttributes={ setAttributes }
 					{...this.props}
@@ -862,9 +881,10 @@ export default class Inspector extends Component {
 					weight: contentFontWeight,
 					height: contentLineHeight,
           color: contentTypographyColor,
+          transform: contentTextTransform,
+          fontstyle: contentFontStyle,
 					}}
 					showLetterSpacing = { false }
-					showTextTransform = { false }
           showColorControl={true}
 					setAttributes={ setAttributes }
 					{...this.props}
@@ -965,6 +985,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"count-up"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -978,6 +1001,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -988,6 +1012,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -998,6 +1023,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

@@ -64,6 +64,12 @@ function EditorStyles(props) {
     boxShadowVOffset,
     boxShadowBlur,
     boxShadowSpread,
+    hoverboxShadowColor,
+    hoverboxShadowPosition,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
 	dateFontSizeMobile,
 	dateFontSizeTablet,
 	headingFontSizeMobile,
@@ -139,12 +145,26 @@ function EditorStyles(props) {
   contentBottomSpacing,
   contentBottomSpacingMobile,
   contentBottomSpacingTablet,
+  dateTextTransform,
+  dateFontStyle,
+  headingTextTransform,
+  headingFontStyle,
+  authorTextTransform,
+  authorFontStyle,
+  contentTextTransform,
+  contentFontStyle,
+  continueTextTransform,
+  continueFontStyle,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
+  var hoverboxShadowPositionCSS = hoverboxShadowPosition;
 
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   var selectors = {
@@ -194,6 +214,18 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-timeline__link_parent:hover": {
       "background-color": continuebghColor,
       border: `1px solid ${borderHColor}`,
+      "box-shadow": hoverboxShadowColor !== '' ?
+        generateCSSUnit(hoverboxShadowHOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowVOffset, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowBlur, "px") +
+        " " +
+        generateCSSUnit(hoverboxShadowSpread, "px") +
+        " " +
+        hoverboxShadowColor +
+        " " +
+        hoverboxShadowPositionCSS : '',
     },
     " .responsive-block-editor-addons-timeline__link_parent .responsive-block-editor-addons-timeline__link": {
       color: `${continueColor} !important`,
@@ -201,6 +233,8 @@ function EditorStyles(props) {
       "font-weight": continueFontWeight,
       "font-size": generateCSSUnit(continueFontSize, "px"),
       "font-family": continueFontFamily,
+      "text-transform": continueTextTransform,
+      "font-style": continueFontStyle,
     },
     " .responsive-block-editor-addons-timeline__link_parent:hover .responsive-block-editor-addons-timeline__link": {
       color: `${hColor} !important`,
@@ -242,6 +276,8 @@ function EditorStyles(props) {
       "font-weight": dateFontWeight,
       "font-size": generateCSSUnit(dateFontSize, "px"),
       "font-family": dateFontFamily,
+      "text-transform": dateTextTransform,
+      "font-style": dateFontStyle,
     },
     " .responsive-block-editor-addons-content": {
       padding: generateCSSUnit(contentPadding, "px"),
@@ -255,6 +291,8 @@ function EditorStyles(props) {
       "font-weight": headingFontWeight,
       "font-size": generateCSSUnit(headingFontSize, "px"),
       "font-family": headingFontFamily,
+      "text-transform": headingTextTransform,
+      "font-style": headingFontStyle,
     },
     " .responsive-block-editor-addons-block-post-timeline-byline": {
       "margin-bottom": generateCSSUnit(authorBottomSpacing, "px"),
@@ -265,6 +303,8 @@ function EditorStyles(props) {
       "font-weight": authorFontWeight,
       "font-size": generateCSSUnit(authorFontSize, "px"),
       "font-family": authorFontFamily,
+      "text-transform": authorTextTransform,
+      "font-style": authorFontStyle,
     },
     " .responsive-block-editor-addons-block-post-timeline-excerpt .responsive-block-editor-addons-timeline__post": {
       color: contentTypographyColor ? contentTypographyColor + "!important" : "#333",
@@ -272,12 +312,16 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(contentFontSize, "px"),
       "font-family": contentFontFamily,
       "margin-bottom": generateCSSUnit(contentBottomSpacing, "px"),
+      "text-transform": contentTextTransform,
+      "font-style": contentFontStyle,
     },
     " .responsive-block-editor-addons-timeline__date-new.responsive-block-editor-addons-timeline__date-outer": {
       "line-height": dateLineHeight,
       "font-weight": dateFontWeight,
       "font-size": generateCSSUnit(dateFontSize, "px"),
       "font-family": dateFontFamily,
+      "text-transform": dateTextTransform,
+      "font-style": dateFontStyle,
     },
 
 

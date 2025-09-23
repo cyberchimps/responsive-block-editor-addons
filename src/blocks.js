@@ -1,3 +1,6 @@
+//Container
+import "./blocks/container/index.js";
+
 //Section
 import "./blocks/section/index.js";
 
@@ -156,5 +159,27 @@ import "./blocks/form/input/index.js";
 
 //Section block
 import "./blocks/section-block/index.js";
+
 // Extensions
 import "./extensions/cover-styles";
+import "./extensions/animations/RbeaAnimations.js";
+import "./extensions/attributes.js";
+
+// Auto Block Recovery System
+import autoBlockRecovery from './utils/autoBlockRecovery';
+import domReady from '@wordpress/dom-ready';
+
+// Initialize Auto Block Recovery - Only if enabled in settings
+export const initAutoBlockRecovery = () => {
+	// Check if auto block recovery is enabled
+	const isAutoRecoveryEnabled = responsive_globals && responsive_globals.auto_block_recovery === '1';
+	
+	if ( isAutoRecoveryEnabled && window._wpLoadBlockEditor ) {
+		window._wpLoadBlockEditor.then( () => {
+			autoBlockRecovery();
+		} );
+	}
+};
+
+// Initialize auto block recovery only if enabled
+domReady( initAutoBlockRecovery );

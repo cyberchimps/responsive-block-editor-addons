@@ -177,7 +177,9 @@ class ResponsiveBaseControl extends Component {
                   return (
                     <Fragment>
                       <div className="components-responsive-block-editor-addons-dimensions-control__inputs component-responsive-block-editor-addons-is-mobile">
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <input
                             type="number"
                             onChange={(newValue) => {
@@ -197,7 +199,9 @@ class ResponsiveBaseControl extends Component {
                   return (
                     <Fragment>
                       <div className="components-responsive-block-editor-addons-dimensions-control__inputs component-responsive-block-editor-addons-is-tablet">
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <input
                             type="number"
                             onChange={(newValue) => {
@@ -217,7 +221,9 @@ class ResponsiveBaseControl extends Component {
                 return (
                   <Fragment>
                     <div className="components-responsive-block-editor-addons-dimensions-control__inputs component-responsive-block-editor-addons-is-desktop">
-                      <BaseControl>
+                      <BaseControl
+                        __nextHasNoMarginBottom
+                      >
                         <input
                           type="number"
                           onChange={(newValue) => {
@@ -227,7 +233,7 @@ class ResponsiveBaseControl extends Component {
                           value={height ? height : ""}
                           min={min}
                           step={step}
-                          max={max}
+                          max={max}    
                         />
                       </BaseControl>
                     </div>

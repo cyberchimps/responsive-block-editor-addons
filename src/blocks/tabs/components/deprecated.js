@@ -1,44 +1,31 @@
-import classnames from "classnames";
 import DeprecatedTabsSave from "../deprecated/DeprecatedTabsSave";
-import attributes from "../attributes";
+import { __ } from "@wordpress/i18n";
 
-import Save from "./save";
-
-/**
- * WordPress dependencies
- */
-const { Component, Fragment } = wp.element;
-const { InnerBlocks } = wp.editor;
+const oldAttributes = {
+	block_id: { type: "string" },
+	tabHeaderOptions: {
+		type: "array",
+		default: [
+			__("Tab 1", "responsive-block-editor-addons"),
+			__("Tab 2", "responsive-block-editor-addons"),
+			__("Tab 3", "responsive-block-editor-addons"),
+		],
+	},
+	tabActiveFrontend: { type: "number", default: 0 },
+	tabsStyleD: { type: "string", default: "hstyle3" },
+	tabsStyleT: { type: "string", default: "hstyle3" },
+	tabsStyleM: { type: "string", default: "hstyle3" },
+	alignTabs: { type: "string", default: "left" },
+	alignTabsVertical: { type: "string", default: "left" },
+};
 
 const deprecated = [
-    {
-        attributes,
-        supports: {
-            anchor: true,
-        },
-        save: function (props) {
-            // Setup the attributes
-            const {
-                attributes: {
-                    block_id,
-                    sectionTag,
-                    backgroundType,
-                    overlayType,
-                    gradientOverlayType,
-                    backgroundVideo,
-                    opacity,
-                    boxShadowPosition,
-                    align,
-                    anchor,
-                },
-                setAttributes,
-            } = props;
-
-            return (
-                <DeprecatedTabsSave {...props} />
-            )
-        },
-    },
+	{
+		attributes: oldAttributes,
+		save({ attributes }) {
+			return <DeprecatedTabsSave attributes={attributes} />;
+		},
+	},
 ];
 
 export default deprecated;

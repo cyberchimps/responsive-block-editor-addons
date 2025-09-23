@@ -28,7 +28,7 @@ const {
  */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { RichText, AlignmentToolbar, BlockControls } = wp.editor;
+const { RichText, AlignmentToolbar, BlockControls } = wp.blockEditor;
 export default class Edit extends Component {
   constructor() {
     super(...arguments);
@@ -158,6 +158,8 @@ export default class Edit extends Component {
               value={formId}
               onChange={(value) => this.onSelectForm(value)}
               options={responsive_globals.cf7_forms}
+              __nextHasNoMarginBottom
+              __next40pxDefaultSize={true}
             />
           </Placeholder>
 

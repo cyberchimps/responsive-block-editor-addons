@@ -199,10 +199,7 @@ export default withSelect((select, props) => {
 
     const { categories, postsToShow, order, orderBy, postType, taxonomyType, showEmptyTaxonomy } = props.attributes
     const { getEntityRecords } = select("core")
-    const { __experimentalGetPreviewDeviceType = null } = select('core/edit-post');
-
-    let deviceType = __experimentalGetPreviewDeviceType ? __experimentalGetPreviewDeviceType() : null;
-
+    const { getDeviceType } = select( 'core/editor' );
 
     let allTaxonomy = responsive_globals.taxonomy_list
     let currentTax = allTaxonomy[postType]
@@ -226,8 +223,7 @@ export default withSelect((select, props) => {
         categoriesList: categoriesList,
         taxonomyList: ("undefined" != typeof currentTax) ? currentTax["taxonomy"] : [],
         termsList: ("undefined" != typeof currentTax) ? currentTax["terms"] : [],
-        deviceType: deviceType,
-
+        deviceType: getDeviceType(),
     }
 
 })(RBEATaxonomyList)

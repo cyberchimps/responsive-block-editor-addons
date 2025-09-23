@@ -65,6 +65,8 @@ class GalleryLinkSettings extends Component {
               value={linkTo}
               options={linkOptions}
               onChange={this.setLinkTo}
+              __nextHasNoMarginBottom
+              __next40pxDefaultSize={true}
             />
             {linkTo !== "none" && (
               <Fragment>
@@ -75,12 +77,15 @@ class GalleryLinkSettings extends Component {
                   )}
                   onChange={this.setNewTab}
                   checked={target === "_blank"}
+                  __nextHasNoMarginBottom
                 />
                 <TextControl
                   /* translators: html attribute that specifies the relationship between two pages */
                   label={__("Link rel", "responsive-block-editor-addons")}
                   value={rel}
                   onChange={(value) => setAttributes({ rel: value })}
+                  __nextHasNoMarginBottom
+                  __next40pxDefaultSize={true}
                 />
               </Fragment>
             )}

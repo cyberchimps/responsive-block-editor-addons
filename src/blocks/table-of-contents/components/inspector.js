@@ -18,6 +18,7 @@ import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-sty
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import { RadioControl} from "@wordpress/components";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
  * Inspector Controls
  */
@@ -352,6 +353,10 @@ export default class Inspector extends Component {
         backgroundPositionMobile,
         backgroundPositionTablet,
         imageSizeTab,
+        headingTextTransform,
+        headingFontStyle,
+        contentTextTransform,
+        contentFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -599,7 +604,9 @@ export default class Inspector extends Component {
                 ]}
               />
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Header Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -637,6 +644,8 @@ export default class Inspector extends Component {
                     { value: "uppercase", label: __("Uppercase Letters", "responsive-block-editor-addons") },
                     { value: "lowercase", label: __("Lowercase Letters", "responsive-block-editor-addons") },
                   ]}
+                  __nextHasNoMarginBottom
+                  __next40pxDefaultSize={true}
                 />
               )}
               <h2>{__("Select Headings", "responsive-block-editor-addons")}</h2>
@@ -651,6 +660,7 @@ export default class Inspector extends Component {
                         allowedAnchors: { ...allowedAnchors, h1: value },
                       })
                     }
+                    __nextHasNoMarginBottom
                   />
                 </div>
               </PanelRow>
@@ -665,6 +675,7 @@ export default class Inspector extends Component {
                       allowedAnchors: { ...allowedAnchors, h2: value },
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelRow>
               </div>
@@ -679,6 +690,7 @@ export default class Inspector extends Component {
                       allowedAnchors: { ...allowedAnchors, h3: value },
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelRow>
               </div>
@@ -693,6 +705,7 @@ export default class Inspector extends Component {
                       allowedAnchors: { ...allowedAnchors, h4: value },
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelRow>
               </div>
@@ -707,6 +720,7 @@ export default class Inspector extends Component {
                       allowedAnchors: { ...allowedAnchors, h5: value },
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelRow>
               </div>
@@ -721,6 +735,7 @@ export default class Inspector extends Component {
                       allowedAnchors: { ...allowedAnchors, h6: value },
                     })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelRow>
               </div>
@@ -740,6 +755,7 @@ export default class Inspector extends Component {
                 label={__("Enable Smooth Scroll", "responsive-block-editor-addons")}
                 checked={smoothScroll}
                 onChange={() => setAttributes({ smoothScroll: !smoothScroll })}
+                __nextHasNoMarginBottom
               />
               {smoothScroll === true && (
                 <RbeaRangeControl
@@ -766,6 +782,7 @@ export default class Inspector extends Component {
                     isCollapsible: !isCollapsible,
                   })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             { isCollapsible &&
@@ -1263,9 +1280,10 @@ export default class Inspector extends Component {
                   typographyColorControl: headingTypographyColorControl,
 									typographyColorControlHover: headingTypographyColorControlHover,
 									emptyColorControl: emptyColorControl,
+                  transform: headingTextTransform,
+                  fontstyle: headingFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorWithHoverControlTab={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -1866,9 +1884,10 @@ export default class Inspector extends Component {
                   typographyColorControl: contentTypographyColorControl,
 									typographyColorControlHover: contentTypographyColorControlHover,
 									emptyColorControl: emptyColorControl,
+                  transform: contentTextTransform,
+                  fontstyle: contentFontStyle,
                 }}
                 showLetterSpacing={false}
-                showTextTransform={false}
                 showColorWithHoverControlTab={true}
                 setAttributes={setAttributes}
                 {...this.props}
@@ -1918,6 +1937,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"table-of-contents"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+          <RbeaExtensions {...this.props} />
+
           <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -1931,6 +1953,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1941,6 +1964,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1951,6 +1975,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <PanelBody

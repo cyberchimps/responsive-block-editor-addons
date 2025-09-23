@@ -20,6 +20,132 @@ import RbeaBorderRadiusControl from "../../../../settings-components/RbeaBorderR
 import GradientBackgroundControl from "../../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 import RbeaSupportControl from "../../../../utils/components/rbea-support-control";
 import borderStyleIcons from "../icons/border-style-icons";
+import RbeaExtensions from "../../../../extensions/RbeaExtensions";
+import presets from "./button-presets";
+
+// Preset configurations
+const presetConfigs = {
+  preset1: {
+	background: '#007cba',
+    color: 'white',
+	hColor: 'white',
+    borderRadius: 0,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset2: {
+    background: '#007cba',
+    color: 'white',
+	hColor: 'white',
+    borderRadius: 3,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset3: {
+    background: '#007cba',
+    color: 'white',
+	hColor: 'white',
+    borderRadius: 20,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset4: {
+    background: '#007cba',
+    color: 'white',
+	hColor: 'white',	
+    borderRadius: 3,
+    borderStyle: 'none',
+    borderWidth: 0,
+    // borderColor: 'transparent'
+  },
+  preset5: {
+    background: 'white',
+    color: '#007cba',
+	hColor: '#007cba',
+    borderRadius: 0,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
+  },
+  preset6: {
+    background: 'white',
+    color: '#007cba',
+	hColor: '#007cba',
+    borderRadius: 3,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
+  },
+  preset7: {
+    background: 'white',
+    color: '#007cba',
+	hColor: '#007cba',
+    borderRadius: 20,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
+  },
+  preset8: {
+    background: 'white',
+    color: '#007cba',
+	hColor: '#007cba',
+    borderRadius: 3,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#007cba',
+	borderHColor: '#007cba',
+  }
+};
+
+// Helper function to apply preset attributes
+const applyPresetAttributes = (presetName, setAttributes) => {
+  const config = presetConfigs[presetName];
+  if (!config) return;
+  
+  const attributes = {
+    buttonPreset: presetName,
+	backgroundType: 'color', 
+    background: config.background,
+    color: config.color,
+	hColor: config.hColor,	
+    borderStyle: config.borderStyle,
+    borderWidth: config.borderWidth,
+    borderColor: config.borderColor,
+	borderHColor: config.borderHColor,
+  };
+  
+  // Set icon attributes only for presets 4 and 8
+  if (presetName === 'preset4' || presetName === 'preset8') {
+    attributes.icon = 'arrow-right';
+    attributes.iconPosition = 'after';
+    attributes.icon_color = config.color; // Set icon color to match preset text color
+  } else {
+    // Clear icon attributes for other presets
+    attributes.icon = '';
+    attributes.iconPosition = 'after';
+    attributes.icon_color = '';
+  }
+  
+  // Set border radius for all devices and sides
+  if (config.borderRadius !== undefined) {
+    const radiusAttrs = [
+      'blockTopRadius', 'blockRightRadius', 'blockBottomRadius', 'blockLeftRadius',
+      'blockTopRadiusTablet', 'blockRightRadiusTablet', 'blockBottomRadiusTablet', 'blockLeftRadiusTablet',
+      'blockTopRadiusMobile', 'blockRightRadiusMobile', 'blockBottomRadiusMobile', 'blockLeftRadiusMobile'
+    ];
+    radiusAttrs.forEach(attr => {
+      attributes[attr] = config.borderRadius;
+    });
+  }
+  
+  setAttributes(attributes);
+};
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -46,6 +172,7 @@ const {
 	Dashicon,
 	ButtonGroup,
 	Button,
+	TextControl,
 } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
@@ -115,6 +242,12 @@ export default class Inspector extends Component {
 				boxShadowBlur,
 				boxShadowSpread,
 				boxShadowPosition,
+				hoverboxShadowColor,
+				hoverboxShadowHOffset,
+				hoverboxShadowVOffset,
+				hoverboxShadowBlur,
+				hoverboxShadowSpread,
+				hoverboxShadowPosition,
 				hoverEffect,
 				icon_color,
 				icon_hover_color,
@@ -166,6 +299,10 @@ export default class Inspector extends Component {
 				blockIsRadiusValueUpdated,
 				typographyOpacity,
 				borderOpacity,
+				buttonTextTransform,
+				buttonFontStyle,
+				buttonPreset,
+				noFollow,
 			},
 			setAttributes,
 		} = this.props;
@@ -449,6 +586,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ inheritFromTheme: !inheritFromTheme })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__("Open link in new tab", "responsive-block-editor-addons")}
@@ -456,6 +594,21 @@ export default class Inspector extends Component {
 								onChange={() => {
 									setAttributes({ target: !target });
 								}}
+								__nextHasNoMarginBottom
+							/>
+							<ToggleControl
+								label={__('Add "nofollow" to link', "responsive-block-editor-addons")}
+								checked={noFollow}
+								onChange={(value) =>
+									setAttributes({ noFollow: !noFollow })
+								}
+							/>
+							<TextControl
+								label={__("Link", "responsive-block-editor-addons")}
+								value={link}
+								onChange={(v) => setAttributes({ link: v })}
+								placeholder="#"
+								type="url"
 							/>
 							<SelectControl
 								label={__("Hover Effect", "responsive-block-editor-addons")}
@@ -490,9 +643,94 @@ export default class Inspector extends Component {
 										),
 									},
 								]}
+								__nextHasNoMarginBottom
+                				__next40pxDefaultSize={true}
 							/>
+							<hr className="responsive-block-editor-addons-editor__separator" />
 						</PanelBody>
-						<RbeaSupportControl blockSlug={"multi-buttons"} />
+						<PanelBody title={__("Presets", "responsive-block-editor-addons")} initialOpen={true}>
+							<div className="responsive-block-editor-addons-button-preset-wrap">
+									<div className="responsive-block-editor-addons-button-preset-header">
+										<Button 
+											style={buttonPreset === '' ? {cursor: 'auto'} : {cursor: 'pointer'}} 
+											onClick={() => {
+												setAttributes({ buttonPreset: 'preset1' }); 
+  												applyPresetAttributes('preset1', setAttributes);  
+											}} 
+											size="small"
+										>
+											<Dashicon icon="image-rotate" className={buttonPreset === '' ? 'image-rotate-reset' : ''} />
+										</Button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset-grid">
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset1' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset1', setAttributes)}
+										>
+											{presets.preset1}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset2' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset2', setAttributes)}
+										>
+											{presets.preset2}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset3' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset3', setAttributes)}
+										>
+											{presets.preset3}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset4' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset4', setAttributes)}
+										>
+											{presets.preset4}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset5' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset5', setAttributes)}
+										>
+											{presets.preset5}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset6' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset6', setAttributes)}
+										>
+											{presets.preset6}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset7' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset7', setAttributes)}
+										>
+											{presets.preset7}
+										</button>
+									</div>
+									<div className="responsive-block-editor-addons-button-preset">
+										<button 
+											className={buttonPreset === 'preset8' ? 'selectedPresetBorder' : 'disabledPresetBorder'} 
+											onClick={() => applyPresetAttributes('preset8', setAttributes)}
+										>
+											{presets.preset8}
+										</button>
+									</div>
+								</div>
+							</div>
+						</PanelBody>
+						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"style"}>
 						{!inheritFromTheme && (
@@ -596,9 +834,10 @@ export default class Inspector extends Component {
 										typographyColorControlHover: typographyColorControlHover,
 										emptyColorControl: emptyColorControl,
 										typographyOpacityControl: typographyOpacityControl,
+										transform: buttonTextTransform,
+										fontstyle: buttonFontStyle,
 									}}
 									showLetterSpacing={false}
-									showTextTransform={false}
 									showColorWithHoverControlTab={true}
 									showOpacity={true}
 									setAttributes={setAttributes}
@@ -794,28 +1033,57 @@ export default class Inspector extends Component {
 								title={__("Box Shadow", "responsive-block-editor-addons")}
 								initialOpen={false}
 							>
-								<BoxShadowControl
-									setAttributes={setAttributes}
-									label={__("Box Shadow", "responsive-block-editor-addons")}
-									boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-									boxShadowHOffset={{
-										value: boxShadowHOffset,
-										label: __("Horizontal", "responsive-block-editor-addons"),
-									}}
-									boxShadowVOffset={{
-										value: boxShadowVOffset,
-										label: __("Vertical", "responsive-block-editor-addons"),
-									}}
-									boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
-									boxShadowSpread={{
-										value: boxShadowSpread,
-										label: __("Spread", "responsive-block-editor-addons"),
-									}}
-									boxShadowPosition={{
-										value: boxShadowPosition,
-										label: __("Position", "responsive-block-editor-addons"),
-									}}
-								/>
+								<TabPanel
+								className="responsive-block-editor-addons-inspect-tabs 
+											responsive-block-editor-addons-inspect-tabs-col-2  
+											responsive-block-editor-addons-color-inspect-tabs"
+								activeClass="active-tab"
+								initialTabName="normal"
+								tabs={[
+									{ name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+									{ name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+									{ name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+									{ name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+									{ name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+								]}
+								>
+								{(tab) => {
+									const isHover = tab.name === "hover";
+									const mode = isHover ? "hoverboxShadow" : "boxShadow";
+
+									return (
+									<BoxShadowControl
+										controlKey={mode}
+										setAttributes={setAttributes}
+										label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+										boxShadowColor={{
+										value: isHover ? hoverboxShadowColor : boxShadowColor,
+										label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+										}}
+										boxShadowHOffset={{
+										value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+										label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+										}}
+										boxShadowVOffset={{
+										value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+										label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+										}}
+										boxShadowBlur={{
+										value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+										label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+										}}
+										boxShadowSpread={{
+										value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+										label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+										}}
+										boxShadowPosition={{
+										value: isHover ? hoverboxShadowPosition : boxShadowPosition,
+										label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+										}}
+									/>
+									);
+								}}
+								</TabPanel>
 							</PanelBody>
 						)}
 						<PanelBody
@@ -833,9 +1101,12 @@ export default class Inspector extends Component {
 								{...this.props}
 							/>
 						</PanelBody>
-						<RbeaSupportControl blockSlug={"multi-buttons"} />
+						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"advance"}>
+
+						<RbeaExtensions {...this.props} />
+
 						<PanelBody
 							title={__("Z Index", "responsive-block-editor-addons")}
 							initialOpen={false}
@@ -915,7 +1186,7 @@ export default class Inspector extends Component {
 								}}
 							</TabPanel>
 						</PanelBody>
-						<RbeaSupportControl blockSlug={"multi-buttons"} />
+						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 				</InspectorTabs>
 			</InspectorControls>

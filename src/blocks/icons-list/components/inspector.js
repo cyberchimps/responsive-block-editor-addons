@@ -10,6 +10,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
 * Inspector Controls
 */
@@ -157,6 +158,8 @@ export default class Inspector extends Component {
         blockIsPaddingControlConnected,
         blockIsMarginControlConnected,
         iconListUpdateColorFromParent,
+        labelTextTransform,
+        labelFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -333,7 +336,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "List Alignment Mobile",
@@ -358,7 +363,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "List Alignment Tablet",
@@ -383,7 +390,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("List Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -420,6 +429,7 @@ export default class Inspector extends Component {
                   label={__("Hide Labels", "responsive-block-editor-addons")}
                   checked={hideLabel}
                   onChange={(value) => this.changeChildAttr(value)}
+                  __nextHasNoMarginBottom
                 />
                 <hr className="responsive-block-editor-addons-editor__separator" />
               </PanelBody>
@@ -437,11 +447,12 @@ export default class Inspector extends Component {
               sizeTablet: labelFontSizeTablet,
               weight: labelFontWeight,
               height: labelLineHeight,
+              transform: labelTextTransform,
+              fontstyle: labelFontStyle
             }}
             showLetterSpacing={false}
             showTextBottomSpacing={false}
             showTextDecoration={false}
-            showTextTransform={false}
             showColorControl={false}
             setAttributes={setAttributes}
             {...this.props}
@@ -694,6 +705,9 @@ export default class Inspector extends Component {
               <RbeaSupportControl blockSlug={"icons-list"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
+
+              <RbeaExtensions {...this.props} />
+
               <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -707,6 +721,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -717,6 +732,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -727,6 +743,7 @@ export default class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
             

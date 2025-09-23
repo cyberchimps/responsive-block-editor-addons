@@ -162,6 +162,7 @@ body.responsive_page_responsive_block_editor_addons #wpbody-content {
     padding: 50px 40px;
     width: 100%;
     background: #FFFFFF;
+    min-height: 525px;
 }
 
 .rbea-tab-content {
@@ -490,6 +491,58 @@ input:checked + .rbea-blocks-slider:before {
     margin-top: 0;
     margin-bottom: 1rem;
 
+}
+
+.rbea-settings-grid{
+  display:flex;
+  align-items:stretch;   
+  gap:24px;
+}
+
+.rbea-sections{
+  width:240px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding-top:4px;
+}
+.rbea-section-link{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:transparent;
+  border:0;
+  padding:6px 0;
+  font-size:16px;
+  cursor:pointer;
+  color:#111827;           
+}
+.rbea-section-link.is-active{ color:#2271B1 ; font-weight:600; } 
+.rbea-section-link .dashicons{ line-height:1; }
+
+.rbea-vrule{
+  width:1px;
+  background:#e5e7eb;      
+  align-self:stretch;      
+}
+
+.rbea-section-content{
+    margin-left: 12px;
+}
+
+
+
+.rbea-blocks-card-badge {
+    top: 5px;
+    right: 22px;
+    text-transform: uppercase;
+    padding: 3px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    border-radius: 2px;
+    color: #8417B2;
+    background-color: #F7E4FF;
+    line-height: 1.2;
 }
 
 

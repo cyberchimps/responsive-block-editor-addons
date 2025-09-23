@@ -78,6 +78,8 @@ function EditorStyles(props) {
   blockRightMarginMobile,
   blockRightMarginTablet,
   iconListUpdateColorFromParent,
+  labelTextTransform,
+  labelFontStyle,
   } = props.attributes;
 
   var editor_gap = undefined !== typeof gap && "" !== gap ? gap + 0 : 0;
@@ -174,6 +176,8 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-icon-list__label": {
       "font-family": labelFontFamily,
       "font-size": generateCSSUnit(labelFontSize, "px"),
+      "text-transform": labelTextTransform,
+      "font-style": labelFontStyle,
       "font-weight": labelFontWeight,
       "line-height": labelFontLineHeight !== 999 && labelLineHeight === 1 ? labelFontLineHeight : labelLineHeight, // For compatibility with v1.3.2.
     },

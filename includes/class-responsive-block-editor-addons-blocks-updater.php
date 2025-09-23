@@ -22,6 +22,23 @@
 class Responsive_Block_Editor_Addons_Blocks_Updater {
 
 	/**
+	 * Private Instance.
+	 */
+	private static $instance;
+
+	/**
+	 * Constructor.
+	 */
+    private function __construct() {}
+
+    public static function get_instance() {
+        if ( ! isset( self::$instance ) ) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+	/**
 	 * Retrieves the RBEA Blocks
 	 *
 	 * List of all the RBEA Blocks
@@ -30,6 +47,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 	 */
 	public function get_rbea_blocks() {
 		$blocks = array(
+			array(
+				'key'      => 'container',
+				'title'    => 'Container',
+				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/container/',
+				'demo'     => 'https://cyberchimps.com/responsive-blocks/container/',
+				'category' => 'content',
+				'status'   => 1,
+			),
 			array(
 				'key'      => 'section',
 				'title'    => 'Section',
@@ -72,7 +97,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			),
 			array(
 				'key'      => 'buttons',
-				'title'    => 'Multi Buttons',
+				'title'    => 'Buttons',
 				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/multi-buttons/',
 				'demo'     => 'https://cyberchimps.com/responsive-blocks/multi-buttons/',
 				'category' => 'cro',
@@ -422,6 +447,14 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'category' => 'content',
 				'status'   => 1,
 			),
+			array(
+				'key'      => 'animations',
+				'title'    => 'Animations',
+				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/animations/',
+				'demo'     => 'https://cyberchimps.com/responsive-blocks/animations/',
+				'category' => 'extensions',
+				'status'   => 1,
+			),
 		);
 
 		return $blocks;
@@ -454,6 +487,84 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			update_option( 'rbea_blocks', $this->get_rbea_blocks() );
 		}
 
+	}
+
+	/**
+	 * Ensures required blocks are present in the blocks array.
+	 *
+	 * This method loops through a predefined list of required blocks
+	 * and delegates the syncing logic to {@see self::sync_single_block()}.
+	 *
+	 * @param array $blocks List of existing blocks.
+	 *
+	 * @return void
+	 */
+	public function sync_blocks_data( $blocks ) {
+		// Define required blocks.
+		$required_blocks = array(
+			'container'  => array(
+				'data'     => array(
+					'key'      => 'container',
+					'title'    => 'Container',
+					'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/container/',
+					'demo'     => 'https://cyberchimps.com/responsive-blocks/container/',
+					'category' => 'content',
+					'status'   => 1,
+				),
+				'position' => 'prepend',
+			),
+			'animations' => array(
+				'data'     => array(
+					'key'      => 'animations',
+					'title'    => 'Animations',
+					'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/animations/',
+					'demo'     => 'https://cyberchimps.com/responsive-blocks/animations/',
+					'category' => 'extensions',
+					'status'   => 1,
+				),
+				'position' => 'append',
+			),
+		);
+
+		// Loop and sync each required block.
+		foreach ( $required_blocks as $key => $block ) {
+			$blocks = $this->sync_single_block( $blocks, $block['data'], $block['position'] );
+		}
+	}
+
+	/**
+	 * Syncs a single block into the blocks array if not already present.
+	 *
+	 * @param array  $blocks   Current blocks.
+	 * @param array  $block    Block definition (key, title, docs, demo, category, status).
+	 * @param string $position 'prepend' or 'append' (default 'append').
+	 *
+	 * @return array Updated blocks array.
+	 */
+	private function sync_single_block( $blocks, $block, $position = 'append' ) {
+		$keys = array_column( $blocks, 'key' );
+		$key  = $block['key'];
+		$flag = "rbea_has_{$key}";
+
+		// Already exists → just mark as synced.
+		if ( in_array( $key, $keys, true ) ) {
+			update_option( $flag, true );
+			return $blocks;
+		}
+
+		// Not synced yet → insert and save.
+		if ( ! get_option( $flag ) ) {
+			if ( 'prepend' === $position ) {
+				array_unshift( $blocks, $block );
+			} else {
+				array_push( $blocks, $block );
+			}
+
+			update_option( $flag, true );
+			update_option( 'rbea_blocks', $blocks );
+		}
+
+		return $blocks;
 	}
 
 }

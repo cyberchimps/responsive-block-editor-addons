@@ -229,6 +229,8 @@ export default class Edit extends Component {
                               this.editShareIconHandler(activeIcon, "url", val)
                             }
                             placeholder={__("URL", "responsive-block-editor-addons")}
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize={true}
                           />
                           <br />
                           <TextControl
@@ -242,6 +244,8 @@ export default class Edit extends Component {
                               )
                             }
                             placeholder={__("Enter label for icon", "responsive-block-editor-addons")}
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize={true}
                           />
                           <br />
                           <ToggleControl
@@ -257,6 +261,7 @@ export default class Edit extends Component {
                                 val
                               )
                             }
+                            __nextHasNoMarginBottom
                           />
                           <br />
                           <Button

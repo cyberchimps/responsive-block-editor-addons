@@ -127,8 +127,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
     		// Combine post CSS and widget CSS and output it.
     		$combined_css = $post_css . $widget_css;
     		if ( ! empty( $combined_css ) ) {
-    		    echo "<style id='rbea-frontend-styles'>$combined_css</style>"; //phpcs:ignore
+				echo "<style id='rbea-frontend-styles'>$combined_css</style>"; //phpcs:ignore
     		}
+			do_action( 'rbea-frontend-site-builder-styles' );
 		}
 
 
@@ -440,6 +441,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 					break;
 				case 'responsive-block-editor-addons/form-input':
 					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_form_input_css( $blockattr, $block_id );
+					break;
+				case 'responsive-block-editor-addons/container':
+					$css += Responsive_Block_Editor_Addons_Frontend_Styles::get_responsive_block_container_css( $blockattr, $block_id );
 					break;
 				default:
 					// Nothing to do here.

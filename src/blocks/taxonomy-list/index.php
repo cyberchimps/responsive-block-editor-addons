@@ -336,18 +336,45 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 					'type' => 'string',
 				),
 				'boxShadowHOffset'                   => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowVOffset'                   => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowBlur'                      => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowSpread'                    => array(
-					'type' => 'number',
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'boxShadowPosition'                  => array(
+					'type'    => 'string',
+					'default' => 'outset',
+				),
+				'hoverboxShadowColor'                => array(
+					'type' => 'string',
+				),
+				'hoverboxShadowHOffset'              => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowVOffset'              => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowBlur'                 => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowSpread'               => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
+				'hoverboxShadowPosition'             => array(
 					'type'    => 'string',
 					'default' => 'outset',
 				),
@@ -535,6 +562,30 @@ function responsive_block_editor_addons_register_taxonomy_list() {
 				'titleTypographyColor'               => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
+				),
+				'titleTextTransform'                 => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'titleFontStyle'                     => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'countTextTransform'                 => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'countFontStyle'                     => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'listTextTransform'                  => array(
+					'type'    => 'string',
+					'default' => '',
+				),
+      			'listFontStyle'                      => array(
+					'type'    => 'string',
+					'default' => '',
 				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_taxonomy_list',

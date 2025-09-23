@@ -19,6 +19,7 @@ import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-contro
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaSeparatorStyleTabControl from "../../../utils/components/rbea-separator-style-tab-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -197,6 +198,12 @@ export default class Inspector extends Component {
     titleBottomSpacing,
     titleBottomSpacingMobile,
     titleBottomSpacingTablet,
+    titleTextTransform,
+    titleFontStyle,
+    descriptionTextTransform,
+    descriptionFontStyle,
+    priceTextTransform,
+    priceFontStyle,
     },
       setAttributes,
     } = this.props;
@@ -539,9 +546,10 @@ export default class Inspector extends Component {
           bottomSpacing: titleBottomSpacing,
           bottomSpacingMoible: titleBottomSpacingMobile,
           bottomSpacingTablet: titleBottomSpacingTablet,
+          transform: titleTextTransform,
+          fontstyle: titleFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
           showTextBottomSpacing={true}
 					setAttributes={setAttributes}
@@ -561,9 +569,10 @@ export default class Inspector extends Component {
 					weight: descriptionFontWeight,
 					height: descriptionLineHeight,
           color: descriptionTypographyColor,
+          transform: descriptionTextTransform,
+          fontstyle: descriptionFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
 					setAttributes={setAttributes}
 					{...this.props}
@@ -579,9 +588,10 @@ export default class Inspector extends Component {
 					weight: priceFontWeight,
 					height: priceLineHeight,
           color: priceTypographyColor,
+          transform: priceTextTransform,
+          fontstyle: priceFontStyle,
 					}}
 					showLetterSpacing={false}
-					showTextTransform={false}
           showColorControl={true}
 					setAttributes={setAttributes}
 					{...this.props}
@@ -636,6 +646,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"pricing-list"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -649,6 +662,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -659,6 +673,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -669,6 +684,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

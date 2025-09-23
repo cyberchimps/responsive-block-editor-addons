@@ -12,6 +12,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 const { __ } = wp.i18n;
 
 const { Component, Fragment } = wp.element;
@@ -190,6 +191,8 @@ class Inspector extends Component {
               handleUpdateData({ title: value }, index);
               handleStateChange("updateHotspot", true);
             }}
+            __nextHasNoMarginBottom
+            __next40pxDefaultSize={true}
           />
           <TextControl
             label={__("Hotspot URL", "responsive-block-editor-addons")}
@@ -201,6 +204,8 @@ class Inspector extends Component {
             onChange={(value) => {
               handleUpdateData({ link: value }, index);
             }}
+            __nextHasNoMarginBottom
+            __next40pxDefaultSize={true}
           />
           <ToggleControl
             label={__("Open in New Tab", "responsive-block-editor-addons")}
@@ -208,6 +213,7 @@ class Inspector extends Component {
             onChange={(value) => {
               handleUpdateData({ newTab: value }, index);
             }}
+            __nextHasNoMarginBottom
           />
           <ToggleControl
             label={__("Opened by default", "responsive-block-editor-addons")}
@@ -215,6 +221,7 @@ class Inspector extends Component {
             onChange={(value) => {
               handleUpdateData({ popUpOpen: value }, index);
             }}
+            __nextHasNoMarginBottom
           />
           <TextareaControl
             label={__("Hotspot Description", "responsive-block-editor-addons")}
@@ -224,6 +231,7 @@ class Inspector extends Component {
               handleUpdateData({ content: escape(value) }, index);
               handleStateChange("updateHotspot", true);
             }}
+            __nextHasNoMarginBottom
           />
           <RbeaRangeControl
             label={__("Horizontal Position", "responsive-block-editor-addons")}
@@ -285,6 +293,7 @@ class Inspector extends Component {
           />
             <BaseControl
               label={__("Hotspot Icon", "responsive-block-editor-addons")}
+              __nextHasNoMarginBottom
             >
                 <FontIconPicker
                   icons={svg_icons}
@@ -420,6 +429,8 @@ class Inspector extends Component {
           onChange={(value) => {
             handleUpdateData({ title: value }, index);
           }}
+          __nextHasNoMarginBottom
+          __next40pxDefaultSize={true}
         />
         <Fragment>
           <div
@@ -436,6 +447,8 @@ class Inspector extends Component {
               onChange={(value) => {
                 handleUpdateData({ link: value }, index);
               }}
+              __nextHasNoMarginBottom
+              __next40pxDefaultSize={true}
             />
             <ToggleControl
               label={__("Open in New Tab", "responsive-block-editor-addons")}
@@ -443,6 +456,7 @@ class Inspector extends Component {
               onChange={(value) => {
                 handleUpdateData({ newTab: value }, index);
               }}
+              __nextHasNoMarginBottom
             />
             <ToggleControl
               label={__("Opened by default", "responsive-block-editor-addons")}
@@ -450,6 +464,7 @@ class Inspector extends Component {
               onChange={(value) => {
                 handleUpdateData({ popUpOpen: value }, index);
               }}
+              __nextHasNoMarginBottom
             />
           </div>
         </Fragment>
@@ -463,6 +478,7 @@ class Inspector extends Component {
           onChange={(value) => {
             handleUpdateData({ content: escape(value) }, index);
           }}
+          __nextHasNoMarginBottom
         />
       </Fragment>
     );
@@ -778,12 +794,16 @@ class Inspector extends Component {
                   value={tooltipTheme}
                   onChange={(tooltipTheme) => setAttributes({ tooltipTheme })}
                   options={rbeaControls.tooltipTheme}
+                  __nextHasNoMarginBottom
+                  __next40pxDefaultSize={true}
                 />
                 <SelectControl
                   label={__('Tooltip Animation', 'responsive-block-editor-addons')}
                   value={tooltipAnimation}
                   onChange={tooltipAnimation => setAttributes({ tooltipAnimation })}
                   options={rbeaControls.tooltipAnimation}
+                  __nextHasNoMarginBottom
+                  __next40pxDefaultSize={true}
                 />
               </PanelBody>
               <PanelBody
@@ -799,12 +819,15 @@ class Inspector extends Component {
                   onChange={(value) =>
                     setAttributes({ pulseEffect: !pulseEffect })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <SelectControl
                   label={__("Animation", "responsive-block-editor-addons")}
                   value={animationName}
                   onChange={(value) => setAttributes({ animationName: value })}
                   options={rbeaControls.rbeaAnimation}
+                  __nextHasNoMarginBottom
+                  __next40pxDefaultSize={true}
                 />
                 {animationName !== "none" && (
                   <Fragment>
@@ -854,6 +877,8 @@ class Inspector extends Component {
                         setAttributes({ animationCurve: value })
                       }
                       options={rbeaControls.rbeaAnimationCurve}
+                      __nextHasNoMarginBottom
+                      __next40pxDefaultSize={true}
                     />
                   </Fragment>
                 )}
@@ -876,6 +901,9 @@ class Inspector extends Component {
               <RbeaSupportControl blockSlug={"image-hotspot"} />
             </InspectorTab>
             <InspectorTab key={"advance"}>
+
+              <RbeaExtensions {...this.props} />
+
               <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -889,6 +917,7 @@ class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -899,6 +928,7 @@ class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                   }
+                  __nextHasNoMarginBottom
                 />
                 <ToggleControl
                   label={__(
@@ -909,6 +939,7 @@ class Inspector extends Component {
                   onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                   }
+                  __nextHasNoMarginBottom
                 />
               </PanelBody>
               <PanelBody

@@ -1,7 +1,4 @@
-import BoxShadowControl from "../../../utils/components/box-shadow";
-import BlockBorderHelperControl from "../../../settings-components/BlockBorderSettings";
 import TypographyHelperControl from "../../../settings-components/TypographySettings";
-import { loadGoogleFont } from "../../../utils/font";
 import ResponsiveNewPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewPaddingControl/index";
 import ResponsiveNewMarginControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveNewMarginControl/index";
 import RbeaRangeControl from "../../../utils/components/rbea-range-control";
@@ -9,6 +6,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaTabRadioControl from "../../../utils/components/rbea-tab-radio-control";
 import RbeaBlockBorderHelperControl from "../../../settings-components/RbeaBlockBorderSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 /**
  * Inspector Controls
  */
@@ -16,12 +14,11 @@ import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { ColorPalette, MediaUpload } = wp.blockEditor;
 import InspectorTab from "../../../components/InspectorTab"
 import InspectorTabs from "../../../components/InspectorTabs"
 
 // Import block components
-const { InspectorControls, PanelColorSettings } = wp.blockEditor;
+const { InspectorControls } = wp.blockEditor;
 
 // Import Inspector components
 const {
@@ -225,6 +222,15 @@ export default class Inspector extends Component {
 				semiCircularTopTitleValueTypographyColor,
 				semiCircularInnerValueTypographyColor,
 				semiCircularBottomTitleValueTypographyColor,
+				topTitleValueFontStyle,
+				innerTitleValueFontStyle,
+				bottomTitleValueFontStyle,
+				circularTopTitleValueFontStyle,
+				circularInnerValueFontStyle,
+				circularBottomTitleValueFontStyle,
+				semiCircularTopTitleValueFontStyle,
+				semiCircularInnerValueFontStyle,
+				semiCircularBottomTitleValueFontStyle
 			},
 			setAttributes,
 		} = this.props;
@@ -381,6 +387,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarTopTitleEnable: !progressBarTopTitleEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 										<ToggleControl
 											label={__("Top Value Enable", "responsive-block-editor-addons")}
@@ -388,6 +395,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarTopValueEnable: !progressBarTopValueEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 										{(horizontalProgressBarStyle !== "striped" && horizontalProgressBarStyle !== "animatedstriped") && (
 											<Fragment>
@@ -397,6 +405,7 @@ export default class Inspector extends Component {
 													onChange={(value) =>
 														setAttributes({ progressBarInnerTitleEnable: !progressBarInnerTitleEnable })
 													}
+													__nextHasNoMarginBottom
 												/>
 												<ToggleControl
 													label={__("Inner Value Enable", "responsive-block-editor-addons")}
@@ -404,6 +413,7 @@ export default class Inspector extends Component {
 													onChange={(value) =>
 														setAttributes({ progressBarInnerValueEnable: !progressBarInnerValueEnable })
 													}
+													__nextHasNoMarginBottom
 												/>
 											</Fragment>
 										)}
@@ -413,6 +423,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarBottomTitleEnable: !progressBarBottomTitleEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 										<ToggleControl
 											label={__("Bottom Value Enable", "responsive-block-editor-addons")}
@@ -420,6 +431,7 @@ export default class Inspector extends Component {
 											onChange={(value) =>
 												setAttributes({ progressBarBottomValueEnable: !progressBarBottomValueEnable })
 											}
+											__nextHasNoMarginBottom
 										/>
 									</Fragment>
 							)}
@@ -448,6 +460,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarValueEnable: !circularProgressBarValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Top Title Enable", "responsive-block-editor-addons")}
@@ -455,6 +468,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarTopTitleEnable: !circularProgressBarTopTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Top Value Enable", "responsive-block-editor-addons")}
@@ -462,6 +476,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarTopValueEnable: !circularProgressBarTopValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Bottom Title Enable", "responsive-block-editor-addons")}
@@ -469,6 +484,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarBottomTitleEnable: !circularProgressBarBottomTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Circular Progress Bar Bottom Value Enable", "responsive-block-editor-addons")}
@@ -476,6 +492,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ circularProgressBarBottomValueEnable: !circularProgressBarBottomValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 										</Fragment>
 									)}
@@ -487,6 +504,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarValueEnable: !semiCircularProgressBarValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Top Title Enable", "responsive-block-editor-addons")}
@@ -494,6 +512,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarTopTitleEnable: !semiCircularProgressBarTopTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Top Value Enable", "responsive-block-editor-addons")}
@@ -501,6 +520,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarTopValueEnable: !semiCircularProgressBarTopValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Bottom Title Enable", "responsive-block-editor-addons")}
@@ -508,6 +528,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarBottomTitleEnable: !semiCircularProgressBarBottomTitleEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 											<ToggleControl
 												label={__("Semi-Circular Progress Bar Bottom Value Enable", "responsive-block-editor-addons")}
@@ -515,6 +536,7 @@ export default class Inspector extends Component {
 												onChange={(value) =>
 													setAttributes({ semiCircularProgressBarBottomValueEnable: !semiCircularProgressBarBottomValueEnable })
 												}
+												__nextHasNoMarginBottom
 											/>
 										</Fragment>
 									)}
@@ -665,6 +687,8 @@ export default class Inspector extends Component {
 									},
 								]}
 								onChange={(value) => setAttributes({ progressBarColorType: value })}
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize={true}
 							/>
 							{progressBarColorType === "default" && progressBarStyle === "horizontal" && (
 								<Fragment>
@@ -706,6 +730,7 @@ export default class Inspector extends Component {
 													gradientTrack: !gradientTrack,
 												})
 											}
+											__nextHasNoMarginBottom
 										/>
 										{gradientTrack && (
 											<Fragment>
@@ -950,9 +975,9 @@ export default class Inspector extends Component {
 												spacing: topTitleValueLetterSpacing,
 												transform: topTitleValueTextTransform,
 												color: topTitleValueTypographyColor,
+                  								fontstyle: topTitleValueFontStyle,
 											}}
 											showLetterSpacing={true}
-											showTextTransform={true}
 											showColorControl={true}
 											setAttributes={setAttributes}
 											{...this.props}
@@ -976,10 +1001,10 @@ export default class Inspector extends Component {
 													spacing: innerTitleValueLetterSpacing,
 													transform: innerTitleValueTextTransform,
 													color: innerTitleValueTypographyColor,
+													fontstyle: innerTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
-												showTextTransform={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1000,9 +1025,9 @@ export default class Inspector extends Component {
 												spacing: bottomTitleValueLetterSpacing,
 												transform: bottomTitleValueTextTransform,
 												color: bottomTitleValueTypographyColor,
+												fontstyle: bottomTitleValueFontStyle,
 											}}
 											showLetterSpacing={true}
-											showTextTransform={true}
 											showColorControl={true}
 											setAttributes={setAttributes}
 											{...this.props}
@@ -1026,10 +1051,10 @@ export default class Inspector extends Component {
 													spacing: circularTopTitleValueLetterSpacing,
 													transform: circularTopTitleValueTextTransform,
 													color: circularTopTitleValueTypographyColor,
+													fontstyle: circularTopTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
-												showTextTransform={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1050,6 +1075,7 @@ export default class Inspector extends Component {
 													height: circularInnerValueLineHeight,
 													spacing: circularInnerValueLetterSpacing,
 													color: circularInnerValueTypographyColor,
+													fontstyle: circularInnerValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showTextTransform={false}
@@ -1076,9 +1102,9 @@ export default class Inspector extends Component {
 													spacing: circularBottomTitleValueLetterSpacing,
 													transform: circularBottomTitleValueTextTransform,
 													color: circularBottomTitleValueTypographyColor,
+													fontstyle: circularBottomTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
-												showTextTransform={true}
 												showColorControl={true}
 												setAttributes={setAttributes}
 												{...this.props}
@@ -1102,10 +1128,10 @@ export default class Inspector extends Component {
 													spacing: semiCircularTopTitleValueLetterSpacing,
 													transform: semiCircularTopTitleValueTextTransform,
 													color: semiCircularTopTitleValueTypographyColor,
+													fontstyle: semiCircularTopTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
-												showTextTransform={true}
 												setAttributes={setAttributes}
 												{...this.props}
 											/>
@@ -1126,6 +1152,7 @@ export default class Inspector extends Component {
 													height: semiCircularInnerValueLineHeight,
 													spacing: semiCircularInnerValueLetterSpacing,
 													color: semiCircularInnerValueTypographyColor,
+													fontstyle: semiCircularInnerValueFontStyle,
 												}}
 												showLetterSpacing={true}
 												showColorControl={true}
@@ -1152,9 +1179,9 @@ export default class Inspector extends Component {
 													spacing: semiCircularBottomTitleValueLetterSpacing,
 													transform: semiCircularBottomTitleValueTextTransform,
 													color: semiCircularBottomTitleValueTypographyColor,
+													fontstyle: semiCircularBottomTitleValueFontStyle,
 												}}
 												showLetterSpacing={true}
-												showTextTransform={true}
 												showColorControl={true}
 												setAttributes={setAttributes}
 												{...this.props}
@@ -1181,6 +1208,9 @@ export default class Inspector extends Component {
 						<RbeaSupportControl blockSlug={"progress-bar"} />
 					</InspectorTab>
 					<InspectorTab key={'advance'}>
+
+						<RbeaExtensions {...this.props} />
+
 						<PanelBody
 							title={__("Responsive Conditions", "responsive-block-editor-addons")}
 							initialOpen={false}
@@ -1194,6 +1224,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 								setAttributes({ hideWidget: !hideWidget })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__(
@@ -1204,6 +1235,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 								setAttributes({ hideWidgetTablet: !hideWidgetTablet })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
 								label={__(
@@ -1214,6 +1246,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 								setAttributes({ hideWidgetMobile: !hideWidgetMobile })
 								}
+								__nextHasNoMarginBottom
 							/>
 						</PanelBody>
           			

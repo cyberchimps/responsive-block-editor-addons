@@ -275,13 +275,38 @@ const attributes = {
   },
   boxShadowBlur: {
     type: "number",
+    default: 0,
   },
   boxShadowSpread: {
     type: "number",
+    default: 0,
   },
   boxShadowPosition: {
     type: "string",
     default: "outset",
+  },
+  hoverboxShadowColor: {
+    type: 'string',
+  },
+  hoverboxShadowHOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowVOffset: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowBlur: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowSpread: {
+    type: 'number',
+    default: 0
+  },
+  hoverboxShadowPosition: {
+    type: 'string',
+    default: 'outset'
   },
   icon_color: {
     type: "string",
@@ -726,6 +751,30 @@ const attributes = {
   backgroundImageValueUpdated: {
     type: "boolean",
     default: false,
+  },
+  ctaTitleTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaTitleFontStyle: {
+    type: "string",
+    default: "",
+  },
+  ctaTextTextTransform: {
+    type: "string",
+    default: "",
+  },
+  ctaTextFontStyle: {
+    type: "string",
+    default: "",
+  },
+  buttonTextTextTransform: {
+    type: "string",
+    default: "",
+  },
+  buttonTextFontStyle: {
+    type: "string",
+    default: "",
   },
 };
 export default attributes;

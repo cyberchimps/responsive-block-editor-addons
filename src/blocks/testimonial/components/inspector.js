@@ -27,6 +27,7 @@ import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-co
 import { RadioControl} from "@wordpress/components";
 import ResponsiveContentPaddingControl from "../../../settings-components/ResponsiveNewSpacingSettings/ResponsiveContentPaddingControl";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 
@@ -435,6 +436,9 @@ export default class Inspector extends Component {
         newTestimonialCiteAlign,
         testimonialCiteAlignTablet,
         testimonialCiteAlignMobile,
+        contentFontStyle,
+        nameFontStyle,
+        titleFontStyle,
     },
       setAttributes,
     } = this.props;
@@ -666,7 +670,9 @@ export default class Inspector extends Component {
                   if ("mobile" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Mobile",
@@ -691,7 +697,9 @@ export default class Inspector extends Component {
                   } else if ("tablet" === tab.name) {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__(
                               "Alignment Tablet",
@@ -716,7 +724,9 @@ export default class Inspector extends Component {
                   } else {
                     tabout = (
                       <Fragment>
-                        <BaseControl>
+                        <BaseControl
+                          __nextHasNoMarginBottom
+                        >
                           <p>
                             {__("Alignment", "responsive-block-editor-addons")}
                           </p>
@@ -1130,6 +1140,8 @@ export default class Inspector extends Component {
                                   label: __("Bottom Right", "responsive-block-editor-addons"),
                                 },
                               ]}
+                              __nextHasNoMarginBottom
+                              __next40pxDefaultSize={true}
                             />
                           )}
                         </Fragment>
@@ -1193,10 +1205,10 @@ export default class Inspector extends Component {
 				      	  transform: contentTextTransform,
                   color: contentTypographyColor,
                   label: __("Text Color", "responsive-block-editor-addons"),
+                  fontstyle: contentFontStyle,
 				      	}}
                 resetColor={() => setAttributes({ contentTypographyColor: "" })}
 				      	showLetterSpacing={false}
-				      	showTextTransform={true}
                 showTextBottomSpacing={true}
                 showColorControl={true}
 				      	setAttributes={setAttributes}
@@ -1218,9 +1230,9 @@ export default class Inspector extends Component {
 				      	  transform: nameTextTransform,
                   label: __("Name Color", "responsive-block-editor-addons"),
                   color: nameTypographyColor,
+                  fontstyle: nameFontStyle,
 				      	}}
 				      	  showLetterSpacing={false}
-				      	  showTextTransform={true}
                   showTextBottomSpacing={true}
                   showColorControl={true}
 				      	  setAttributes={setAttributes}
@@ -1242,9 +1254,9 @@ export default class Inspector extends Component {
 				      	  transform: titleTextTransform,
                   label: __("Title/Designation Color", "responsive-block-editor-addons"),
                   color: titleTypographyColor,
+                  fontstyle: titleFontStyle,
 				      	}}
 				      	  showLetterSpacing={false}
-				      	  showTextTransform={true}
                   showTextBottomSpacing={true}
                   showColorControl={true}
 				      	  setAttributes={setAttributes}
@@ -1351,6 +1363,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"testimonial"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -1364,6 +1379,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1374,6 +1390,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -1384,6 +1401,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                 setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

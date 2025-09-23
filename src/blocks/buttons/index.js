@@ -23,7 +23,7 @@ const { registerBlockType } = wp.blocks;
 
 // Register the block
 registerBlockType("responsive-block-editor-addons/buttons", {
-  title: __("Multi Buttons", "responsive-block-editor-addons"),
+  title: __("Buttons", "responsive-block-editor-addons"),
   description: __(
     "Design better call-to-actions with multiple designer buttons",
     "responsive-block-editor-addons"

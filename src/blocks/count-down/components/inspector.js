@@ -18,6 +18,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-style-tab-control";
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import RbeaExtensions from "../../../extensions/RbeaExtensions";
 // Setup the block
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
@@ -139,6 +140,12 @@ export default class Inspector extends Component {
         boxShadowSpread,
         backgroundColor,
         boxShadowColor,
+        hoverboxShadowColor,
+        hoverboxShadowHOffset,
+        hoverboxShadowVOffset,
+        hoverboxShadowBlur,
+        hoverboxShadowSpread,
+        hoverboxShadowPosition,
         containerTopPadding,
         containerBottomPadding,
         containerLeftPadding,
@@ -214,6 +221,10 @@ export default class Inspector extends Component {
         blockIsTypographyColorValueUpdated,
         labelTypographyColor,
         digitTypographyColor,
+        digitTextTransform,
+        digitFontStyle,
+        labelTextTransform,
+        labelFontStyle,
       },
       setAttributes,
     } = this.props;
@@ -391,6 +402,7 @@ export default class Inspector extends Component {
               <BaseControl
                 id="responsive-block-editor-addons-countdown-due-date"
                 label={__("Due Date", "responsive-block-editor-addons")}
+                __nextHasNoMarginBottom
               >
                 <DateTime
                   value={date}
@@ -408,7 +420,9 @@ export default class Inspector extends Component {
               initialOpen={false}
             >
               <Fragment>
-                <BaseControl>
+                <BaseControl
+                  __nextHasNoMarginBottom
+                >
                   <p>
                     {__("Text Alignment", "responsive-block-editor-addons")}
                   </p>
@@ -432,6 +446,7 @@ export default class Inspector extends Component {
                 onChange={() =>
                   setAttributes({ displayInline: !displayInline })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Stack on Mobile", "responsive-block-editor-addons")}
@@ -439,6 +454,7 @@ export default class Inspector extends Component {
                 onChange={() =>
                   setAttributes({ stackOnMobile: !stackOnMobile })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Labels", "responsive-block-editor-addons")}
@@ -446,18 +462,21 @@ export default class Inspector extends Component {
                 onChange={() =>
                   setAttributes({ showDigitLabels: !showDigitLabels })
                 }
+                __nextHasNoMarginBottom
               />
 
               <ToggleControl
                 label={__("Days", "responsive-block-editor-addons")}
                 checked={showDaysBox}
                 onChange={() => setAttributes({ showDaysBox: !showDaysBox })}
+                __nextHasNoMarginBottom
               />
 
               <ToggleControl
                 label={__("Hours", "responsive-block-editor-addons")}
                 checked={showHoursBox}
                 onChange={() => setAttributes({ showHoursBox: !showHoursBox })}
+                __nextHasNoMarginBottom
               />
 
               <ToggleControl
@@ -466,6 +485,7 @@ export default class Inspector extends Component {
                 onChange={() =>
                   setAttributes({ showMinutesBox: !showMinutesBox })
                 }
+                __nextHasNoMarginBottom
               />
 
               <ToggleControl
@@ -474,6 +494,7 @@ export default class Inspector extends Component {
                 onChange={() =>
                   setAttributes({ showSecondsBox: !showSecondsBox })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
 
@@ -487,6 +508,8 @@ export default class Inspector extends Component {
                 onChange={(newValue) =>
                   setAttributes({ digitDaysLabel: newValue })
                 }
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               <TextControl
                 label={__("Hours", "responsive-block-editor-addons")}
@@ -494,6 +517,8 @@ export default class Inspector extends Component {
                 onChange={(newValue) =>
                   setAttributes({ digitHoursLabel: newValue })
                 }
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               <TextControl
                 label={__("Minutes", "responsive-block-editor-addons")}
@@ -501,6 +526,8 @@ export default class Inspector extends Component {
                 onChange={(newValue) =>
                   setAttributes({ digitMinutesLabel: newValue })
                 }
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
               <TextControl
                 label={__("Seconds", "responsive-block-editor-addons")}
@@ -508,6 +535,8 @@ export default class Inspector extends Component {
                 onChange={(newValue) =>
                   setAttributes({ digitSecondsLabel: newValue })
                 }
+                __nextHasNoMarginBottom
+                __next40pxDefaultSize={true}
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"count-down"} />
@@ -557,10 +586,11 @@ export default class Inspector extends Component {
                 height: digitLineHeight,
                 spacing: digitLetterSpacing,
                 color: digitTypographyColor,
+                fontstyle: digitFontStyle,
                 }}
                 showLetterSpacing = { true }
-                showTextTransform = { false }
                 showColorControl={true}
+                showTextTransform={false}
                 setAttributes={ setAttributes }
                 {...this.props}
               />
@@ -576,9 +606,10 @@ export default class Inspector extends Component {
                 height: labelLineHeight,
                 spacing: labelLetterSpacing,
                 color: labelTypographyColor,
+                transform: labelTextTransform,
+                fontstyle: labelFontStyle,
                 }}
                 showLetterSpacing = { true }
-                showTextTransform = { false }
                 showColorControl={true}
                 setAttributes={ setAttributes }
                 {...this.props}
@@ -631,28 +662,57 @@ export default class Inspector extends Component {
                 title={__("Box Shadow", "responsive-block-editor-addons")}
                 initialOpen={false}
               >
-                <BoxShadowControl
-                  setAttributes={setAttributes}
-                  label={__("Box Shadow", "responsive-block-editor-addons")}
-                  boxShadowColor={{ value: boxShadowColor, label: __("Color", "responsive-block-editor-addons") }}
-                  boxShadowHOffset={{
-                    value: boxShadowHOffset,
-                    label: __("Horizontal", "responsive-block-editor-addons"),
+                <TabPanel
+                  className="responsive-block-editor-addons-inspect-tabs 
+                            responsive-block-editor-addons-inspect-tabs-col-2  
+                            responsive-block-editor-addons-color-inspect-tabs"
+                  activeClass="active-tab"
+                  initialTabName="normal"
+                  tabs={[
+                    { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                    { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                    { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                    { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                    { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                  ]}
+                >
+                  {(tab) => {
+                    const isHover = tab.name === "hover";
+                    const mode = isHover ? "hoverboxShadow" : "boxShadow";
+
+                    return (
+                      <BoxShadowControl
+                        controlKey={mode}
+                        setAttributes={setAttributes}
+                        label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+                        boxShadowColor={{
+                          value: isHover ? hoverboxShadowColor : boxShadowColor,
+                          label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowHOffset={{
+                          value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+                          label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowVOffset={{
+                          value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+                          label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowBlur={{
+                          value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+                          label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowSpread={{
+                          value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+                          label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowPosition={{
+                          value: isHover ? hoverboxShadowPosition : boxShadowPosition,
+                          label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+                        }}
+                      />
+                    );
                   }}
-                  boxShadowVOffset={{
-                    value: boxShadowVOffset,
-                    label: __("Vertical", "responsive-block-editor-addons"),
-                  }}
-                  boxShadowBlur={{ value: boxShadowBlur, label: __("Blur", "responsive-block-editor-addons") }}
-                  boxShadowSpread={{
-                    value: boxShadowSpread,
-                    label: __("Spread", "responsive-block-editor-addons"),
-                  }}
-                  boxShadowPosition={{
-                    value: boxShadowPosition,
-                    label: __("Position", "responsive-block-editor-addons"),
-                  }}
-                />
+                </TabPanel>
               </PanelBody>
             <PanelBody
               title={__("Container Spacing", "responsive-block-editor-addons")}
@@ -672,6 +732,9 @@ export default class Inspector extends Component {
             <RbeaSupportControl blockSlug={"count-down"} />
           </InspectorTab>
           <InspectorTab key={"advance"}>
+
+            <RbeaExtensions {...this.props} />
+
             <PanelBody
               title={__("Responsive Conditions", "responsive-block-editor-addons")}
               initialOpen={false}
@@ -685,6 +748,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidget: !hideWidget })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -695,6 +759,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__(
@@ -705,6 +770,7 @@ export default class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
           

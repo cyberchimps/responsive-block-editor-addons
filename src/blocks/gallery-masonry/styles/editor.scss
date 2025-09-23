@@ -109,3 +109,52 @@
     display: none;
   }
 }
+
+// Filterable Gallery Tab Alignment Styles for Editor
+.gallery-filter-wrapper {
+  &.filter-tab-alignment-left {
+    text-align: left !important;
+  }
+  
+  &.filter-tab-alignment-center {
+    text-align: center !important;
+  }
+  
+  &.filter-tab-alignment-right {
+    text-align: right !important;
+  }
+}
+
+// Responsive alignment for tablet in editor
+@media (max-width: 976px) {
+  .gallery-filter-wrapper[data-tab-alignment-tablet="left"] {
+    text-align: left !important;
+  }
+  
+  .gallery-filter-wrapper[data-tab-alignment-tablet="center"] {
+    text-align: center !important;
+  }
+  
+  .gallery-filter-wrapper[data-tab-alignment-tablet="right"] {
+    text-align: right !important;
+  }
+}
+
+// Responsive alignment for mobile in editor
+@media (max-width: 767px) {
+  .gallery-filter-wrapper[data-tab-alignment-mobile="left"] {
+    text-align: left !important;
+  }
+  
+  .gallery-filter-wrapper[data-tab-alignment-mobile="center"] {
+    text-align: center !important;
+  }
+  
+  .gallery-filter-wrapper[data-tab-alignment-mobile="right"] {
+    text-align: right !important;
+  }
+  .gallery-filter-button.dropdown-item{
+    width: 70vw;
+    margin-bottom: 0;
+  } 
+}

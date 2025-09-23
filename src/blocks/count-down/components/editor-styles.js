@@ -99,6 +99,12 @@ function EditorStyles(props) {
     boxShadowSpread,
     backgroundColor,
     boxShadowColor,
+    hoverboxShadowColor,
+    hoverboxShadowHOffset,
+    hoverboxShadowVOffset,
+    hoverboxShadowBlur,
+    hoverboxShadowSpread,
+    hoverboxShadowPosition,
     containerTopPadding, 
     containerBottomPadding, 
     containerLeftPadding, 
@@ -168,11 +174,19 @@ function EditorStyles(props) {
     hideWidgetMobile,
     labelTypographyColor,
     digitTypographyColor,
+    digitTextTransform,
+    digitFontStyle,
+    labelTextTransform,
+    labelFontStyle,
   } = props.attributes;
 
   let boxShadowPositionCSS = boxShadowPosition;
+  let hoverboxShadowPositionCSS = hoverboxShadowPosition;
   if ("outset" === boxShadowPosition) {
     boxShadowPositionCSS = "";
+  }
+  if ("outset" === hoverboxShadowPosition) {
+    hoverboxShadowPositionCSS = "";
   }
 
   const displayDays = showDaysBox ? "block" : "none";
@@ -202,6 +216,9 @@ function EditorStyles(props) {
       "background-color": boxBackgroundColor !== "empty" && backgroundColor === "#6EC1E4" ? boxBackgroundColor : backgroundColor, // For compatibility with v1.3.2.
       "box-shadow": `${boxShadowHOffset}px ${boxShadowVOffset}px ${boxShadowBlur}px ${boxShadowSpread}px ${boxShadowColor} ${boxShadowPositionCSS}`,
     },
+    " .responsive-block-editor-addons-countdown-box-stylings:hover": {
+      "box-shadow": hoverboxShadowColor !== '' ? `${hoverboxShadowHOffset}px ${hoverboxShadowVOffset}px ${hoverboxShadowBlur}px ${hoverboxShadowSpread}px ${hoverboxShadowColor} ${hoverboxShadowPositionCSS}` : '',
+    },
     " .responsive-block-editor-addons-countdown-box-stylings:first-child": {
       "margin-left": "0px",
     },
@@ -215,6 +232,8 @@ function EditorStyles(props) {
       display: displayInline ? "flex" : "block",
       flex: displayInline ? 1 : undefined,
       "justify-content": displayInline ? "flex-end" : undefined,
+      "text-transform": digitTextTransform,
+      "font-style": digitFontStyle,
     },
     " .responsive-block-editor-addons-countdown-label": {
       "font-family": labelFontFamily,
@@ -227,6 +246,8 @@ function EditorStyles(props) {
       display: showDigitLabels ? ( displayInline ? "flex" : "block" ) : 'none',
       flex: displayInline ? 1 : undefined,
       "justify-content": displayInline ? "flex-start" : undefined,
+      "text-transform": labelTextTransform,
+      "font-style": labelFontStyle,
     },
     " .responsive-block-editor-addons-countdown-box-margins": {
       "margin-top": generateCSSUnit(boxItemMarginTop, "px"),

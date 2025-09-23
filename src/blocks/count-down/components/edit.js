@@ -123,7 +123,7 @@ class Edit extends Component {
 		return [
 			<style id={`responsive-block-editor-addons-count-down-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
 			isSelected && (
-				<Inspector key="inspector" attributes={attributes} setAttributes={setAttributes} />
+				<Inspector key="inspector" clientId={block_id} attributes={attributes} setAttributes={setAttributes} />
 			),
 		   <Fragment key={`count-down-${block_id}`} >
 			<BoxContainer

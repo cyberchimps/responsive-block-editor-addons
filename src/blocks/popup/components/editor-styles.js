@@ -167,6 +167,10 @@ function EditorStyles(props) {
     popupRightPadding,
     popupRightPaddingMobile,
     popupRightPaddingTablet,
+    popupButtonTypographyTextTransform,
+    popupButtonTypographyFontStyle,
+    popupTextTypographyTextTransform,
+    popupTextTypographyFontStyle,
   } = props.attributes;
 
   const popupScreenPositions = {
@@ -333,6 +337,8 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(popupButtonRightRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(popupButtonBottomRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(popupButtonLeftRadius, "px"),
+      "text-transform": popupButtonTypographyTextTransform,
+      "font-style": popupButtonTypographyFontStyle,
     },
     " .responsive-block-editor-addons-popup-button-trigger:hover": {
       "color": popupButtonHoverColor,
@@ -346,6 +352,8 @@ function EditorStyles(props) {
       "font-weight": parseInt(popupTextTypographyFontWeight),
       "line-height": popupTextTypographyLineHeight,
       "letter-spacing": generateCSSUnit(popupTextTypographyLetterSpacing, "px"),
+      "text-transform": popupTextTypographyTextTransform,
+      "font-style": popupTextTypographyFontStyle,
     },
     " .responsive-block-editor-addons-popup-icon-trigger svg": {
       "fill": popupIconTriggerColor,

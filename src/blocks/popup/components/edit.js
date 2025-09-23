@@ -196,7 +196,7 @@ class Edit extends Component {
 
 // Export the component wrapped with withSelect to inject deviceType.
 export default withSelect((select) => {
-  const deviceType = select('core/edit-post')?.__experimentalGetPreviewDeviceType?.() || 'Desktop';
+  const deviceType = select('core/editor')?.getDeviceType?.() || 'Desktop';
   return {
     deviceType,
   };
