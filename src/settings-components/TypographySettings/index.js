@@ -165,38 +165,174 @@ class TypographyControl extends Component {
             },
         ];
 
-        var advancedControls;
-        advancedControls = (
-            <PanelBody
-                title={this.props.title}
-                initialOpen={false}
-            >
-                <Fragment>
-                    {(this.props.showColorControl == true) && (
-                        <RbeaColorControl
-                            label={__("Color", "responsive-block-editor-addons")}
-                            colorValue={this.props.values.color}
-                            onChange={this.props.onChangeTypographyColor}
-                            resetColor={() => this.props.setAttributes({ [this.props.colorAttrKey]: "" })}
+        var typographyControls = (
+            <Fragment>
+                {(this.props.showColorControl == true) && (
+                    <RbeaColorControl
+                        label={__("Color", "responsive-block-editor-addons")}
+                        colorValue={this.props.values.color}
+                        onChange={this.props.onChangeTypographyColor}
+                        resetColor={() => this.props.setAttributes({ [this.props.colorAttrKey]: "" })}
 
-                        />
-                    )}
-                    {(this.props.showActiveColorControl == true) && (
-                        <RbeaColorControl
-                            label={__("Active Color", "responsive-block-editor-addons")}
-                            colorValue={this.props.values.activeColor}
-                            onChange={this.props.onChangeActiveTypographyColor}
-                            resetColor={() => this.props.setAttributes({ [this.props.values.activeColor]: "" })}
-                        />
-                    )}
+                    />
+                )}
+                {(this.props.showActiveColorControl == true) && (
+                    <RbeaColorControl
+                        label={__("Active Color", "responsive-block-editor-addons")}
+                        colorValue={this.props.values.activeColor}
+                        onChange={this.props.onChangeActiveTypographyColor}
+                        resetColor={() => this.props.setAttributes({ [this.props.values.activeColor]: "" })}
+                    />
+                )}
+                <SelectControl
+                    label={__("Font Family", "responsive-block-editor-addons")}
+                    options={updatedFontOptions}
+                    value={this.props.values.family}
+                    onChange={this.props.onChangeFontFamily}
+                    __next40pxDefaultSize={true}
+                    __nextHasNoMarginBottom
+                />
+                <TabPanel
+                    className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                    activeClass="active-tab"
+                    tabs={[
+                        {
+                            name: "desktop",
+                            title: <Dashicon icon="desktop" />,
+                            className:
+                                " responsive-desktop-tab  responsive-responsive-tabs",
+                        },
+                        {
+                            name: "tablet",
+                            title: <Dashicon icon="tablet" />,
+                            className:
+                                " responsive-tablet-tab  responsive-responsive-tabs",
+                        },
+                        {
+                            name: "mobile",
+                            title: <Dashicon icon="smartphone" />,
+                            className:
+                                " responsive-mobile-tab  responsive-responsive-tabs",
+                        },
+                    ]}
+                >
+                    {(tab) => {
+                        let tabout;
+
+                        if ("mobile" === tab.name) {
+                            tabout = (
+                                <Fragment>
+                                    <div className="rbea-typography-font-size-control-container">
+                                        <RbeaRangeControl
+                                            label={__(
+                                                "Font Size",
+                                                "responsive-block-editor-addons"
+                                            )}
+                                            min={0}
+                                            max={500}
+                                            value={this.props.values.sizeMobile}
+                                            onChange={this.props.onChangeFontSizeMobile}
+                                        />
+                                    </div>
+                                </Fragment>
+                            );
+                        } else if ("tablet" === tab.name) {
+                            tabout = (
+                                <Fragment>
+                                    <div className="rbea-typography-font-size-control-container">
+                                        <RbeaRangeControl
+                                            label={__(
+                                                "Font Size",
+                                                "responsive-block-editor-addons"
+                                            )}
+                                            min={0}
+                                            max={500}
+                                            value={this.props.values.sizeTablet}
+                                            onChange={this.props.onChangeFontSizeTablet}
+                                        />
+                                    </div>
+                                </Fragment>
+                            );
+                        } else {
+                            tabout = (
+                                <Fragment>
+                                    <div className="rbea-typography-font-size-control-container">
+                                        <RbeaRangeControl
+                                            label={__(
+                                                "Font Size",
+                                                "responsive-block-editor-addons"
+                                            )}
+                                            min={0}
+                                            max={500}
+                                            value={this.props.values.size}
+                                            onChange={this.props.onChangeFontSize}
+                                        />
+                                    </div>
+                                </Fragment>
+                            );
+                        }
+
+                        return <div>{tabout}</div>;
+                    }}
+                </TabPanel>
+                <div className="rbea-font-weight-control-container">
                     <SelectControl
-                        label={__("Font Family", "responsive-block-editor-addons")}
-                        options={updatedFontOptions}
-                        value={this.props.values.family}
-                        onChange={this.props.onChangeFontFamily}
+                        label={__("Font Weight", "responsive-block-editor-addons")}
+                        options={fontWeightOptions}
+                        value={this.props.values.weight}
+                        onChange={this.props.onChangeFontWeight}
                         __next40pxDefaultSize={true}
                         __nextHasNoMarginBottom
                     />
+                </div>
+                {this.props.showTextTransform !== false && (
+                    <RbeaTabRadioControl
+                        label={__("Text Transform", "responsive-block-editor-addons")}
+                        value={this.props.values.transform}
+                        onChange={this.props.onChangeTextTransform}
+                        options={textTransformOptions}
+                    />
+                )}
+                <RbeaTabRadioControl
+                    label={__("Font Style", "responsive-block-editor-addons")}
+                    value={this.props.values.fontstyle}
+                    onChange={this.props.onChangeFontStyle}
+                    options={textFontStyleOptions}
+                />
+                <RbeaRangeControl
+                    label={__("Line Height", "responsive-block-editor-addons")}
+                    value={this.props.values.height}
+                    onChange={this.props.onChangeLineHeight}
+                    min={0}
+                    max={100}
+                    step={0.0001}
+                    allowReset
+                />
+                {this.props.showLetterSpacing == true && (
+                    <RbeaRangeControl
+                        label={__("Letter Spacing", "responsive-block-editor-addons")}
+                        value={this.props.values.spacing}
+                        onChange={this.props.onChangeLetterSpacing}
+                        min={0}
+                        max={10}
+                        step={0.1}
+                    />
+                )
+                }
+                {this.props.showTextDecoration == true && (
+                    <RbeaTabRadioControl
+                        label={__(
+                            "Text Decoration",
+                            "responsive-block-editor-addons"
+                        )}
+                        options={textDecorationOptions}
+                        value={this.props.values.textDecoration}
+                        onChange={this.props.onChangeTextDecoration}
+                        allowReset
+                        defaultValue="none"
+                    />
+                )}
+                {this.props.showTextBottomSpacing == true && (
                     <TabPanel
                         className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
                         activeClass="active-tab"
@@ -227,256 +363,124 @@ class TypographyControl extends Component {
                             if ("mobile" === tab.name) {
                                 tabout = (
                                     <Fragment>
-                                        <div className="rbea-typography-font-size-control-container">
-                                            <RbeaRangeControl
-                                                label={__(
-                                                    "Font Size",
-                                                    "responsive-block-editor-addons"
-                                                )}
-                                                min={0}
-                                                max={500}
-                                                value={this.props.values.sizeMobile}
-                                                onChange={this.props.onChangeFontSizeMobile}
-                                            />
-                                        </div>
+                                        <RbeaRangeControl
+                                            label={__(
+                                                "Bottom Spacing",
+                                                "responsive-block-editor-addons"
+                                            )}
+                                            min={0}
+                                            max={500}
+                                            value={this.props.values.bottomSpacingMobile}
+                                            onChange={this.props.onChangeBottomSpacingMobile}
+                                        />
                                     </Fragment>
                                 );
                             } else if ("tablet" === tab.name) {
                                 tabout = (
                                     <Fragment>
-                                        <div className="rbea-typography-font-size-control-container">
-                                            <RbeaRangeControl
-                                                label={__(
-                                                    "Font Size",
-                                                    "responsive-block-editor-addons"
-                                                )}
-                                                min={0}
-                                                max={500}
-                                                value={this.props.values.sizeTablet}
-                                                onChange={this.props.onChangeFontSizeTablet}
-                                            />
-                                        </div>
+                                        <RbeaRangeControl
+                                            label={__(
+                                                "Bottom Spacing",
+                                                "responsive-block-editor-addons"
+                                            )}
+                                            min={0}
+                                            max={500}
+                                            value={this.props.values.bottomSpacingTablet}
+                                            onChange={this.props.onChangeBottomSpacingTablet}
+                                        />
                                     </Fragment>
                                 );
                             } else {
                                 tabout = (
                                     <Fragment>
-                                        <div className="rbea-typography-font-size-control-container">
-                                            <RbeaRangeControl
-                                                label={__(
-                                                    "Font Size",
-                                                    "responsive-block-editor-addons"
-                                                )}
-                                                min={0}
-                                                max={500}
-                                                value={this.props.values.size}
-                                                onChange={this.props.onChangeFontSize}
-                                            />
-                                        </div>
+                                        <RbeaRangeControl
+                                            label={__(
+                                                "Bottom Spacing",
+                                                "responsive-block-editor-addons"
+                                            )}
+                                            min={0}
+                                            max={500}
+                                            value={this.props.values.bottomSpacing}
+                                            onChange={this.props.onChangeBottomSpacing}
+                                        />
                                     </Fragment>
                                 );
                             }
-
                             return <div>{tabout}</div>;
                         }}
                     </TabPanel>
-                    <div className="rbea-font-weight-control-container">
-                        <SelectControl
-                            label={__("Font Weight", "responsive-block-editor-addons")}
-                            options={fontWeightOptions}
-                            value={this.props.values.weight}
-                            onChange={this.props.onChangeFontWeight}
-                            __next40pxDefaultSize={true}
-                            __nextHasNoMarginBottom
-                        />
+                )
+                }
+                {(this.props.showColorWithHoverControlTab == true) && (
+                    <TabPanel
+                        className="responsive-block-editor-addons-inspect-tabs 
+                responsive-block-editor-addons-inspect-tabs-col-2  
+                responsive-block-editor-addons-color-inspect-tabs"
+                        activeClass="active-tab"
+                        initialTabName="normal" // Set the default active tab here
+                        tabs={[
+                            {
+                                name: "empty-1",
+                                title: __("", "responsive-block-editor-addons"),
+                                className: "responsive-block-editor-addons-empty-tab",
+                            },
+                            {
+                                name: "normal",
+                                title: __("Normal", "responsive-block-editor-addons"),
+                                className: "responsive-block-editor-addons-normal-tab",
+                            },
+                            {
+                                name: "empty-2",
+                                title: __("", "responsive-block-editor-addons"),
+                                className: "responsive-block-editor-addons-empty-tab-middle",
+                            },
+                            {
+                                name: "hover",
+                                title: __("Hover", "responsive-block-editor-addons"),
+                                className: "responsive-block-editor-addons-hover-tab",
+                            },
+                            {
+                                name: "empty-3",
+                                title: __("", "responsive-block-editor-addons"),
+                                className: "responsive-block-editor-addons-empty-tab",
+                            },
+                        ]}
+                    >
+                        {(tabName) => {
+                            let color_tab;
+                            if ("normal" === tabName.name) {
+                                color_tab = this.props.values.typographyColorControl;
+                            } else if ("hover" === tabName.name) {
+                                color_tab = this.props.values.typographyColorControlHover;
+                            } else {
+                                color_tab = this.props.values.emptyColorControl;
+                            }
+                            return <div>{color_tab}</div>;
+                        }}
+                    </TabPanel>
+                )}
+                {(this.props.showOpacity == true) && (
+                    <div>
+                        {this.props.values.typographyOpacityControl}
                     </div>
-                    {this.props.showTextTransform !== false && (
-                        <RbeaTabRadioControl
-                            label={__("Text Transform", "responsive-block-editor-addons")}
-                            value={this.props.values.transform}
-                            onChange={this.props.onChangeTextTransform}
-                            options={textTransformOptions}
-                        />
-                    )}
-                    <RbeaTabRadioControl
-                        label={__("Font Style", "responsive-block-editor-addons")}
-                        value={this.props.values.fontstyle}
-                        onChange={this.props.onChangeFontStyle}
-                        options={textFontStyleOptions}
-                    />
-                    <RbeaRangeControl
-                        label={__("Line Height", "responsive-block-editor-addons")}
-                        value={this.props.values.height}
-                        onChange={this.props.onChangeLineHeight}
-                        min={0}
-                        max={100}
-                        step={0.0001}
-                        allowReset
-                    />
-                    {this.props.showLetterSpacing == true && (
-                        <RbeaRangeControl
-                            label={__("Letter Spacing", "responsive-block-editor-addons")}
-                            value={this.props.values.spacing}
-                            onChange={this.props.onChangeLetterSpacing}
-                            min={0}
-                            max={10}
-                            step={0.1}
-                        />
-                    )
-                    }
-                    {this.props.showTextDecoration == true && (
-                        <RbeaTabRadioControl
-                            label={__(
-                                "Text Decoration",
-                                "responsive-block-editor-addons"
-                            )}
-                            options={textDecorationOptions}
-                            value={this.props.values.textDecoration}
-                            onChange={this.props.onChangeTextDecoration}
-                            allowReset
-                            defaultValue="none"
-                        />
-                    )}
-                    {this.props.showTextBottomSpacing == true && (
-                        <TabPanel
-                            className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-                            activeClass="active-tab"
-                            tabs={[
-                                {
-                                    name: "desktop",
-                                    title: <Dashicon icon="desktop" />,
-                                    className:
-                                        " responsive-desktop-tab  responsive-responsive-tabs",
-                                },
-                                {
-                                    name: "tablet",
-                                    title: <Dashicon icon="tablet" />,
-                                    className:
-                                        " responsive-tablet-tab  responsive-responsive-tabs",
-                                },
-                                {
-                                    name: "mobile",
-                                    title: <Dashicon icon="smartphone" />,
-                                    className:
-                                        " responsive-mobile-tab  responsive-responsive-tabs",
-                                },
-                            ]}
-                        >
-                            {(tab) => {
-                                let tabout;
+                )}
+            </Fragment>
+        )
 
-                                if ("mobile" === tab.name) {
-                                    tabout = (
-                                        <Fragment>
-                                            <RbeaRangeControl
-                                                label={__(
-                                                    "Bottom Spacing",
-                                                    "responsive-block-editor-addons"
-                                                )}
-                                                min={0}
-                                                max={500}
-                                                value={this.props.values.bottomSpacingMobile}
-                                                onChange={this.props.onChangeBottomSpacingMobile}
-                                            />
-                                        </Fragment>
-                                    );
-                                } else if ("tablet" === tab.name) {
-                                    tabout = (
-                                        <Fragment>
-                                            <RbeaRangeControl
-                                                label={__(
-                                                    "Bottom Spacing",
-                                                    "responsive-block-editor-addons"
-                                                )}
-                                                min={0}
-                                                max={500}
-                                                value={this.props.values.bottomSpacingTablet}
-                                                onChange={this.props.onChangeBottomSpacingTablet}
-                                            />
-                                        </Fragment>
-                                    );
-                                } else {
-                                    tabout = (
-                                        <Fragment>
-                                            <RbeaRangeControl
-                                                label={__(
-                                                    "Bottom Spacing",
-                                                    "responsive-block-editor-addons"
-                                                )}
-                                                min={0}
-                                                max={500}
-                                                value={this.props.values.bottomSpacing}
-                                                onChange={this.props.onChangeBottomSpacing}
-                                            />
-                                        </Fragment>
-                                    );
-                                }
-                                return <div>{tabout}</div>;
-                            }}
-                        </TabPanel>
-                    )
-                    }
-                    {(this.props.showColorWithHoverControlTab == true) && (
-                        <TabPanel
-                            className="responsive-block-editor-addons-inspect-tabs 
-                    responsive-block-editor-addons-inspect-tabs-col-2  
-                    responsive-block-editor-addons-color-inspect-tabs"
-                            activeClass="active-tab"
-                            initialTabName="normal" // Set the default active tab here
-                            tabs={[
-                                {
-                                    name: "empty-1",
-                                    title: __("", "responsive-block-editor-addons"),
-                                    className: "responsive-block-editor-addons-empty-tab",
-                                },
-                                {
-                                    name: "normal",
-                                    title: __("Normal", "responsive-block-editor-addons"),
-                                    className: "responsive-block-editor-addons-normal-tab",
-                                },
-                                {
-                                    name: "empty-2",
-                                    title: __("", "responsive-block-editor-addons"),
-                                    className: "responsive-block-editor-addons-empty-tab-middle",
-                                },
-                                {
-                                    name: "hover",
-                                    title: __("Hover", "responsive-block-editor-addons"),
-                                    className: "responsive-block-editor-addons-hover-tab",
-                                },
-                                {
-                                    name: "empty-3",
-                                    title: __("", "responsive-block-editor-addons"),
-                                    className: "responsive-block-editor-addons-empty-tab",
-                                },
-                            ]}
-                        >
-                            {(tabName) => {
-                                let color_tab;
-                                if ("normal" === tabName.name) {
-                                    color_tab = this.props.values.typographyColorControl;
-                                } else if ("hover" === tabName.name) {
-                                    color_tab = this.props.values.typographyColorControlHover;
-                                } else {
-                                    color_tab = this.props.values.emptyColorControl;
-                                }
-                                return <div>{color_tab}</div>;
-                            }}
-                        </TabPanel>
-                    )}
-                    {(this.props.showOpacity == true) && (
-                        <div>
-                            {this.props.values.typographyOpacityControl}
-                        </div>
-                    )}
-                </Fragment>
+        var advancedControls;
+        advancedControls = (
+            <PanelBody
+                title={this.props.title}
+                initialOpen={false}
+            >
+                {typographyControls}
             </PanelBody>
         );
 
 
         return (
             <div className="responsive-block-editor-addons-typography-settings">
-                {advancedControls}
+                {this.props.isSetting ? typographyControls : advancedControls}
             </div>
         );
     }
