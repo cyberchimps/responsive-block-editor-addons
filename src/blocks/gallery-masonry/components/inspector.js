@@ -381,6 +381,7 @@ class Inspector extends Component {
                     this.props.onResetCategory();
                   }
                 }}
+                __nextHasNoMarginBottom
               />
               {attributes.enableCategoryFilter && (
                 <>
@@ -388,6 +389,8 @@ class Inspector extends Component {
                     label={__('"All" Tab Label', "textdomain")}
                     value={attributes.allTabLabel}
                     onChange={(value) => setAttributes({ allTabLabel: value })}
+                    __next40pxDefaultSize={true}
+								    __nextHasNoMarginBottom
                   />
 
                   <ToggleControl
@@ -396,6 +399,7 @@ class Inspector extends Component {
                     onChange={(value) =>
                       setAttributes({ setDefaultCategory: value })
                     }
+                    __nextHasNoMarginBottom
                   />
 
                   {attributes.setDefaultCategory && (
@@ -406,6 +410,8 @@ class Inspector extends Component {
                       onChange={(value) =>
                         setAttributes({ defaultCategory: value })
                       }
+                      __next40pxDefaultSize={true}
+                      __nextHasNoMarginBottom
                     />
                   )}
                 </>
@@ -419,6 +425,7 @@ class Inspector extends Component {
                       setAttributes({ enableResponsiveSupport: value })
                     }
                     help={__("Enable this option to display Filterable Tabs in a Dropdown on Mobile.", "textdomain")}
+                    __nextHasNoMarginBottom
                   />
                 </>
               )}
@@ -478,7 +485,9 @@ class Inspector extends Component {
                     if ("mobile" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Tab Alignment Mobile",
@@ -503,7 +512,9 @@ class Inspector extends Component {
                     } else if ("tablet" === tab.name) {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__(
                                 "Tab Alignment Tablet",
@@ -528,7 +539,9 @@ class Inspector extends Component {
                     } else {
                       tabout = (
                         <Fragment>
-                          <BaseControl>
+                          <BaseControl
+                            __nextHasNoMarginBottom
+                          >
                             <p>
                               {__("Tab Alignment", "responsive-block-editor-addons")}
                             </p>
@@ -951,6 +964,7 @@ class Inspector extends Component {
                 label={__("Hide on Desktop", "responsive-block-editor-addons")}
                 checked={hideWidget}
                 onChange={(value) => setAttributes({ hideWidget: !hideWidget })}
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Hide on Tablet", "responsive-block-editor-addons")}
@@ -958,6 +972,7 @@ class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetTablet: !hideWidgetTablet })
                 }
+                __nextHasNoMarginBottom
               />
               <ToggleControl
                 label={__("Hide on Mobile", "responsive-block-editor-addons")}
@@ -965,6 +980,7 @@ class Inspector extends Component {
                 onChange={(value) =>
                   setAttributes({ hideWidgetMobile: !hideWidgetMobile })
                 }
+                __nextHasNoMarginBottom
               />
             </PanelBody>
 
