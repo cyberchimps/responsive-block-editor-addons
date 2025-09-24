@@ -1049,6 +1049,7 @@ export default class Inspector extends Component {
                   {popupTriggerType === 'button' && <>
                     <div className="responsive-block-editor-addons-popup-button-group-tab">
                         <ToggleGroupControl
+                          className="responsive-block-editor-addons-size-type-field-popup normalandhover"
                           value={ popupButtonHoverState ? 'hover' : 'normal' }
                           onChange={(val) => setAttributes({ popupButtonHoverState: val === 'hover' })}
                           __next40pxDefaultSize
@@ -1070,6 +1071,7 @@ export default class Inspector extends Component {
                       <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Background Type", "responsive-block-editor-addons")}</Text>
                       <div className="responsive-block-editor-addons-popup-button-group-tab">
                           <ToggleGroupControl
+                            className="responsive-block-editor-addons-size-type-field-popup backgroundtype"
                             value={ popupButtonBGState }
                             onChange={(val) => setAttributes({ popupButtonBGState: val })}
                             __next40pxDefaultSize
@@ -1131,6 +1133,7 @@ export default class Inspector extends Component {
                       <Text style={{ marginTop: '16px' }} variant="title.small" as="h3">{__("Button Hover Background Type", "responsive-block-editor-addons")}</Text>
                       <div className="responsive-block-editor-addons-popup-button-group-tab">
                           <ToggleGroupControl
+                            className="responsive-block-editor-addons-size-type-field-popup backgroundtype"
                             value={ popupButtonBGHoverState }
                             onChange={(val) => setAttributes({ popupButtonBGHoverState: val })}
                             __next40pxDefaultSize

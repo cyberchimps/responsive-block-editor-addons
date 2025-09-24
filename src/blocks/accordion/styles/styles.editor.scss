@@ -28,3 +28,34 @@
 .wp-block-cover .responsive-block-editor-addons-accordion-item__outer-wrap {
   color: #333;
 }
+.responsive-block-editor-addons-size-type-field-accordion.components-toggle-group-control[role="radiogroup"] {
+  position: relative;
+  top: -12px;
+  min-height: 0px;
+  padding-left: 0px;
+  border: none;
+  box-shadow: none;
+}
+.responsive-block-editor-addons-size-type-field-accordion.components-toggle-group-control[role="radiogroup"]::before{
+  left: 0px;
+}
+.responsive-block-editor-addons-icon-size-unit-container
+  .components-base-control:has(.responsive-block-editor-addons-size-type-field-accordion){
+  margin-bottom: 12px;
+}
+.responsive-block-editor-addons-size-type-field-accordion[role="radiogroup"] > div{
+  background-color: white;
+}
+.components-toggle-group-control-option-base.responsive-block-editor-addons-size-btn-accordion[role="radio"]{
+  color: black;
+  text-transform: uppercase;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  padding-left: 2px;
+}
+.components-toggle-group-control-option-base.responsive-block-editor-addons-size-btn-accordion[role="radio"] > div{
+  font-size: 12px;
+}
+.components-toggle-group-control-option-base.responsive-block-editor-addons-size-btn-accordion[role="radio"][aria-checked="true"]{
+  color: #007CBA;
+}

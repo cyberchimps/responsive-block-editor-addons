@@ -362,3 +362,11 @@
     margin-top: 10px !important;
   }
 }
+
+.responsive-size-type-field.components-toggle-group-control[role="radiogroup"]{
+  height: 24px;
+  min-height: 0px;
+  width: 55px;
+  padding: 0px;
+  border: solid 1px black ;
+}

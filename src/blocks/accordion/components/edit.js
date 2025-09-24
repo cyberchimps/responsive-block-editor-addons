@@ -1005,8 +1005,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
                             <ToggleGroupControl
-                              className="responsive-block-editor-addons-size-type-field"
-                              label={ __("Size Type") }
+                              className="responsive-block-editor-addons-size-type-field-accordion"
                               aria-label={ __("Size Type") }
                               value={ iconSizeType }
                               onChange={(val) => setAttributes({ iconSizeType: val })}
@@ -1014,12 +1013,12 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                               __nextHasNoMarginBottom
                             >
                               <ToggleGroupControlOption
-                                className="responsive-block-editor-addons-size-btn"
+                                className="responsive-block-editor-addons-size-btn-accordion"
                                 value="px"
                                 label="px"
                               />
                               <ToggleGroupControlOption
-                                className="responsive-block-editor-addons-size-btn"
+                                className="responsive-block-editor-addons-size-btn-accordion"
                                 value="%"
                                 label="%"
                               />
@@ -1043,8 +1042,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
                             <ToggleGroupControl
-                              className="responsive-block-editor-addons-size-type-field"
-                              label={ __("Size Type") }
+                              className="responsive-block-editor-addons-size-type-field-accordion"
                               aria-label={ __("Size Type") }
                               value={ iconSizeType }
                               onChange={(val) => setAttributes({ iconSizeType: val })}
@@ -1052,12 +1050,12 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                               __nextHasNoMarginBottom
                             >
                               <ToggleGroupControlOption
-                                className="responsive-block-editor-addons-size-btn"
+                                className="responsive-block-editor-addons-size-btn-accordion"
                                 value="px"
                                 label="px"
                               />
                               <ToggleGroupControlOption
-                                className="responsive-block-editor-addons-size-btn"
+                                className="responsive-block-editor-addons-size-btn-accordion"
                                 value="%"
                                 label="%"
                               />
@@ -1081,8 +1079,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                         <div className='responsive-block-editor-addons-icon-size-unit-container'>
                           <Fragment>
                            <ToggleGroupControl
-                              className="responsive-block-editor-addons-size-type-field"
-                              label={ __("Size Type") }
+                              className="responsive-block-editor-addons-size-type-field-accordion"
                               aria-label={ __("Size Type") }
                               value={ iconSizeType }
                               onChange={(val) => setAttributes({ iconSizeType: val })}
@@ -1090,12 +1087,12 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
                               __nextHasNoMarginBottom
                             >
                               <ToggleGroupControlOption
-                                className="responsive-block-editor-addons-size-btn"
+                                className="responsive-block-editor-addons-size-btn-accordion"
                                 value="px"
                                 label="px"
                               />
                               <ToggleGroupControlOption
-                                className="responsive-block-editor-addons-size-btn"
+                                className="responsive-block-editor-addons-size-btn-accordion"
                                 value="%"
                                 label="%"
                               />
