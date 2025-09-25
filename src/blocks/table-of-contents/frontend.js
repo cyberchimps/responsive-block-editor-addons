@@ -1,7 +1,6 @@
 // frontend.js
 jQuery(function ($) {
 
-  // ---------- Build-if-missing pre-pass (for sidebar / cases with no saved list) ----------
   function slugify(text) {
     return (text || "")
       .toString()
