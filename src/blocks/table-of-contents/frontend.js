@@ -109,19 +109,48 @@ jQuery(function ($) {
       var rawText = $.trim($h.text());
       if (!rawText) return;
 
-      // Generate TableOfContents-like anchor: "index-<slug>" with encoding/cleanup
-      // (Matches `${key+1}-` + text-based slug, then encodeURIComponent)
-      var base = (i + 1) + "-" + slugify(rawText);
-      var anchor = encodeURIComponent(base);
-      // Ensure stable/unique id on heading (use our anchor to match hrefs)
-      if (!$h.attr("id") || $h.attr("id") !== anchor) {
-        // Avoid duplicate ids; add suffix if collision happens
-        var final = anchor, n = 2;
-        while (document.getElementById(final)) {
-          final = anchor + "-" + n++;
+      var anchor = "";
+      
+      // Check if this is an advanced heading block
+      var $advancedHeadingBlock = $h.closest('.wp-block-responsive-block-editor-addons-advanced-heading');
+      
+      if ($advancedHeadingBlock.length > 0) {
+        // For advanced headings, check for existing IDs in this order:
+        // 1. headingId on the heading element itself
+        // 2. anchor on the wrapper div
+        var existingHeadingId = $h.attr("id");
+        var existingWrapperId = $advancedHeadingBlock.attr("id");
+        
+        if (existingHeadingId) {
+          anchor = existingHeadingId;
+        } else if (existingWrapperId) {
+          anchor = existingWrapperId;
+        } else {
+          // Generate new anchor if none exists
+          var base = (i + 1) + "-" + slugify(rawText);
+          anchor = encodeURIComponent(base);
+          // Avoid duplicate ids; add suffix if collision happens
+          var final = anchor, n = 2;
+          while (document.getElementById(final)) {
+            final = anchor + "-" + n++;
+          }
+          $h.attr("id", final);
+          anchor = final;
         }
-        $h.attr("id", final);
-        anchor = final;
+      } else {
+        // For regular headings, use existing logic
+        var base = (i + 1) + "-" + slugify(rawText);
+        anchor = encodeURIComponent(base);
+        // Ensure stable/unique id on heading (use our anchor to match hrefs)
+        if (!$h.attr("id") || $h.attr("id") !== anchor) {
+          // Avoid duplicate ids; add suffix if collision happens
+          var final = anchor, n = 2;
+          while (document.getElementById(final)) {
+            final = anchor + "-" + n++;
+          }
+          $h.attr("id", final);
+          anchor = final;
+        }
       }
 
       if (currentLevel === 0) currentLevel = level;
