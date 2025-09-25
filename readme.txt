@@ -1,4 +1,4 @@
-=== Responsive Blocks - WordPress Gutenberg Blocks ===
+=== Responsive Blocks - Page Builder for Blocks & Patterns ===
 Contributors: Cyberchimps
 Donate Link: https://cyberchimps.com
 Tags: block, blocks, block editor, page builder, gutenberg templates
@@ -14,9 +14,9 @@ Use professional starter block patterns & templates to create websites within mi
 
 == Description ==
 
-<a href = "https://cyberchimps.com/responsive-blocks/">Responsive Blocks</a> is a free WordPress Gutenberg Blocks plugin that offers a library of 50+ fully functional native WordPress blocks and 100+ WordPress Website Templates and sections. This way, you can create stunning pages in the default WordPress editor without any coding. 
+<a href = "https://cyberchimps.com/responsive-blocks/">Responsive Blocks</a> is a free WordPress Blocks Editor plugin that offers a library of 50+ fully functional native WordPress blocks and 100+ WordPress Website Templates and readymade Patterns. This way, you can create stunning pages in the default WordPress editor without any coding. 
 
-The settings in the plugin allow easy customization and build stunning pages without adding any extra page builder plugins. Also, the free Gutenberg Starter Templates help you build designer content layouts for your website in minutes. 
+The settings in the plugin allow easy customization and build stunning pages without adding any extra page builder plugins. Also, the free Block Editor Starter Templates help you build designer content layouts for your website in minutes. 
 
 Additionally, you can import patterns to incorporate preferred page and section layouts into your existing website.
 
@@ -28,17 +28,18 @@ Additionally, you can import patterns to incorporate preferred page and section 
 <ol>
 	<li>50+ free WordPress Blocks</li>
 	<li>100+ ready-to-import WordPress Block Templates</li>
-	<li>250+ ready-to-use Block sections</li>
+	<li>250+ ready-to-use Block Patterns</li>
 	<li>WooCommerce Blocks</li>
 	<li>Cross-Browser Compatible</li>
-	<li>Expert Support</li>
-	<li>Seamless integration with WordPress editor</li>
+	<li>Quick Support</li>
+	<li>3+ Global Extensions like User Display Conditions, Block Animations, Responsive Conditions, and much more</li>
 </ol>
 
 https://www.youtube.com/watch?v=Gs-h74Qnrlw
 
 ==Highlights of Responsive Blocks – WordPress Gutenberg Blocks Plugin==
 
+- **🚀 Flexbox Container Technology**: Advanced flexbox container based approach for faster design.
 - **🌐 Simple User Interface**: The user interface of each block is easy to use.
 - **🚫 No Coding Knowledge Required**: Create fantastic landing pages without a line of code. These blocks are designed for non-coders and coders alike.
 - **📦 Pattern Importer**: Using this feature, you can import beautifully designed Gutenberg sections and pages to your site.
@@ -63,8 +64,8 @@ Responsive Blocks plugin integrates seamlessly with the <a href = "https://wordp
 Using 50+ Responsive Blocks for Gutenberg, design your website without limits.
 
 <ol>
-	<li><a href = "https://cyberchimps.com/responsive-blocks/section/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Container Block</a>: The section block acts as an outer wrapper and allows the addition of any Gutenberg block within it. Use the section block to create a page with different content areas, which helps you manage layouts, backgrounds, spacing, and more.</li>
-	<li><a href = "https://cyberchimps.com/responsive-blocks/advanced-columns/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Advanced Columns</a>: Build beautiful column layouts with the Advanced Columns block. You can use the block options to define the number of columns or create beautiful column layouts for the rows and columns. It has shape dividers, custom widths, background designs, colors, and spacing options. You can also embed other blocks, like testimonials, inside the columns.</li>
+	<li><a href = " https://cyberchimps.com/responsive-blocks/container/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Container Block</a>: Create easy to use stunning layouts using the Container block, powered by flexbox technology.
+</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/advanced-heading/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Advanced Heading</a>: You can have complete control over your headings. Style your typography (Fonts, sizes, spacing, line heights). This block highlights your page headings. You can change the width and position of the separator in the heading.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/advanced-text/?utm_source=wporg&utm_medium=rbeak&utm_campaign=gutblocks">Advanced Text</a>: Display your business message in an eye-catching manner with this Advanced Text block.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/info-block/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Info-Block</a>Design creative and informative boxes with images, headings, and subheadings. You can now display information about features on your website in elegant info boxes, which is perfect for helping your visitors understand the features of your products and services.</li>
@@ -80,7 +81,7 @@ Using 50+ Responsive Blocks for Gutenberg, design your website without limits.
 	<li><a href = "https://cyberchimps.com/responsive-blocks/accordion/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Accordion Block</a>: This block lets you answer the user’s common queries quickly and attractively. It can also display content such as FAQs or descriptive content.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/post-carousel/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Post Carousel</a> You can embed your popular posts or any category of posts in modern-looking carousels. The system provides an option to select available post types—posts, pages, media, or any CPT you have.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/testimonial/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Testimonials</a>: Testimonials are customer reviews that can be displayed on the site to add credibility. Testimonial block allows you to display a single testimonial block on your site.</li>
-	<li><a href = "https://cyberchimps.com/responsive-blocks/multi-buttons/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Multi Buttons</a>: Easily add multiple buttons within a block. It can add attractive call-to-action buttons within a block with the Gutenberg Multi Buttons block. You can add many buttons to your content using this multi-button block.</li>
+	<li><a href = "https://cyberchimps.com/responsive-blocks/multi-buttons/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Buttons</a>: Easily add multiple buttons within a block. It can add attractive call-to-action buttons within a block with the Gutenberg Buttons block. You can add many buttons to your content using this button block.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/call-mail-button/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Call/Mail Button</a>: This block allows you to add a button that automatically makes a call or sends an email.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/inline-notice/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">Inline Notice Block</a>: You can highlight important information on your page.</li>
 	<li><a href = "https://cyberchimps.com/responsive-blocks/wp-search/?utm_source=wporg&utm_medium=rbea&utm_campaign=gutblocks">WP Search</a>: This block allows you to add the WordPress search field to your page. This will help your users easily find the required information.</li>
@@ -161,26 +162,20 @@ If you like Responsive Blocks, consider checking out our other WordPress Plugins
 
 1. **[WP Cookie Consent](https://wordpress.org/plugins/gdpr-cookie-consent/)**: WP Cookie Notice for GDPR, CCPA & ePrivacy Cons.
 
-1. **[WP AdCenter](https://wordpress.org/plugins/wpadcenter/)**: Easily Manage Ads on WordPress – Banner, Amazon, Google Adsense Ads.
-
 ==Future Roadmap==
-- Flexbox Container Layout
 - Coming Soon Mode
-- Better UI enhancements for easy use
 - Popup Builder
 - Loop Builder
 - Dynamic Content
-- Animations
-- Display Conditions
 - Custom Fonts
 - Advanced Spacing Controls
 
 
 
 == Frequently Asked Questions ==
-= 1. What are Blocks? =
+= 1. What are Responsive Blocks by Cyberchimps? =
 Responsive Blocks provides a library of fully functional blocks to enhance the customizability of your WordPress block editor. With free starter templates, you can quickly create professional content layouts for your website.
-= 2. Do I need to know how to code to use Responsive Gutenberg Blocks? =
+= 2. Do I need to know how to code to use Responsive Blocks Plugin? =
 You don't need to learn any coding to use these blocks. They are incredibly user-friendly and completely customizable.
 = 3. Are all the blocks free in Responsive Blocks Plugin?=
 Yes. Unlock an extensive list of blocks to expand the customization options of your WordPress block editor with Responsive Blocks Plugin. Download it now for free.
