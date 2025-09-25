@@ -600,21 +600,21 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Block Spacing", "responsive-block-editor-addons")}
-                initialOpen={true}
-              >
-                <ResponsiveNewPaddingControl
-                  attrNameTemplate="pricing%s"
-                  resetValues={pricingPaddingResetValues}
-                  {...this.props}
-                  />
-                <ResponsiveNewMarginControl
-                  attrNameTemplate="pricing%s"
-                  resetValues={pricingMarginResetValues}
-                  {...this.props}
-                  />
-              </PanelBody>
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="pricing%s"
+                resetValues={pricingPaddingResetValues}
+                {...this.props}
+                label={__("Block Padding", "responsive-block-editor-addons")}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="pricing%s"
+                resetValues={pricingMarginResetValues}
+                {...this.props}
+                label={__("Block Margin", "responsive-block-editor-addons")}
+              />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
               <ResponsiveSpacingControl
                 title={"Row Gap"}
                 attrNameTemplate="rowGap%s"
@@ -641,6 +641,7 @@ export default class Inspector extends Component {
                 attrNameTemplate="block%s"
                 resetValues={blockPaddingResetValues}
                 {...this.props}
+                label={__("Price Item Padding", "responsive-block-editor-addons")}
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"pricing-list"} />

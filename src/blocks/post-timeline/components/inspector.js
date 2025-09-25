@@ -950,6 +950,9 @@ export default class Inspector extends Component {
                 onChange={(colorValue) => this.props.setAttributes({ bgColor: colorValue })}
                 resetColor={() => this.props.setAttributes({ bgColor: "" })}
               />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
               <Fragment>
                 <TabPanel
                   className="responsive-block-editor-addons-inspect-tabs 
