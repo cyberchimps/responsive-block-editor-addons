@@ -602,6 +602,7 @@ export default class Inspector extends Component {
 								onChange={(value) =>
 									setAttributes({ noFollow: !noFollow })
 								}
+								__nextHasNoMarginBottom
 							/>
 							<TextControl
 								label={__("Link", "responsive-block-editor-addons")}
@@ -609,6 +610,8 @@ export default class Inspector extends Component {
 								onChange={(v) => setAttributes({ link: v })}
 								placeholder="#"
 								type="url"
+								__next40pxDefaultSize={true}
+								__nextHasNoMarginBottom
 							/>
 							<SelectControl
 								label={__("Hover Effect", "responsive-block-editor-addons")}

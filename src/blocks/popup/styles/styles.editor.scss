@@ -259,3 +259,41 @@
     }
   }
 }
+.responsive-block-editor-addons-size-type-field-popup.normalandhover[role="radiogroup"]{
+  width: 100%;
+  padding: 0px;
+  border: 1px solid #007CBA;
+  >div {
+    width: 50%;
+    >button{
+      background-color: white;
+      color: #007cba;
+    }
+    >button[aria-checked="true"]{
+      background-color: #007CBA;
+      color: white;
+    }
+    >button[aria-checked="false"]:hover{
+      background-color: #f5fafc;
+    }
+  }
+}
+
+.responsive-block-editor-addons-size-type-field-popup.backgroundtype[role="radiogroup"]{
+  width: 100%;
+  padding: 0px;
+  border: 1px solid #007CBA;
+  >div {
+    >button{
+      background-color: white;
+      color: #007cba;
+    }
+    >button[aria-checked="true"]{
+      background-color: #007CBA;
+      color: white;
+    }
+    >button[aria-checked="false"]:hover{
+      background-color: #f5fafc;
+    }
+  }
+}

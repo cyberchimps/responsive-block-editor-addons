@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -235,6 +235,14 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.1.2 - 29th September 2025 =
+* New - Animations Support: Introduced animations across blocks for improved interactivity and design flexibility.
+* New - Attempt Block Recovery Toggle: New option in plugin settings to enable/disable automatic block recovery.
+* Improvement - Multi Buttons Block: Added new functionality for enhanced button customization and control.
+* Improvement - Table of Contents Block: Now supports display in the sidebar for better navigation.
+* Improvement - Compatibility Updates: All RBA blocks are now fully compatible with the Responsive Plus Site Builder.
+* Fixed - Block Audit: Completed a comprehensive audit and fixed all block warnings to ensure stability and cleaner code.
 
 = 2.1.1 - 19th September 2025 =
 * New - Flexbox Container: Introduced a new Flexbox container for improved layout flexibility and alignment options.
