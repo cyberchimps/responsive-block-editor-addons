@@ -165,6 +165,7 @@ import "./extensions/cover-styles";
 import "./extensions/animations/RbeaAnimations.js";
 import "./extensions/attributes.js";
 import "./utils/accordionOneOpen.js"
+import "./utils/responsiveTabSync.js"
 
 // Auto Block Recovery System
 import autoBlockRecovery from './utils/autoBlockRecovery';
