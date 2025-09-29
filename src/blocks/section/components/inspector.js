@@ -20,6 +20,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import { migrateToFocalPoint } from '../../../getImagePosition';
 
 
 // Setup the block
@@ -38,6 +39,7 @@ const {
   Button,
   TabPanel,
   Dashicon,
+  FocalPointPicker,
 } = wp.components;
 
 
@@ -237,6 +239,8 @@ export default class Inspector extends Component {
       },
       setAttributes,
     } = this.props;
+
+    migrateToFocalPoint(backgroundPosition, setAttributes)
 
     const blockMarginResetValues = {
       marginTop: 10,
@@ -524,16 +528,26 @@ export default class Inspector extends Component {
                       </div>
                         <Fragment>
                           <div className = "rbea-background-image-positon-control"
-                          style={{
-                            backgroundImage: `url(${background_image_url})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition:  'center',
-                          }}>
+                          // style={{
+                          //   backgroundImage: `url(${background_image_url})`,
+                          //   backgroundSize: 'cover',
+                          //   backgroundPosition:  'center',
+                          // }}
+                          >
                           { imagePositionTab === "desktop" && 
-                              <RadioControl 
-                                className = "rbea-background-image-positon-control-options"
-                                selected={backgroundPosition}
-                                options={imagePositionOptions}
+                              // <RadioControl 
+                              //   className = "rbea-background-image-positon-control-options"
+                              //   selected={backgroundPosition}
+                              //   options={imagePositionOptions}
+                              //   onChange={(value) =>
+                              //     setAttributes({ backgroundPosition: value })
+                              //   }
+                              // />
+                              <FocalPointPicker
+                                __nextHasNoMarginBottom
+                                __next40pxDefaultSize
+                                url={background_image_url}
+                                value={backgroundPosition}
                                 onChange={(value) =>
                                   setAttributes({ backgroundPosition: value })
                                 }

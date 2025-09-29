@@ -11237,9 +11237,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'colorLocation2'           => 100,
 				'gradientDirection'        => 90,
 				'backgroundImage'          => '',
-				'backgroundPosition'       => 'center-center',
-				'backgroundPositionTablet' => 'center center',
-				'backgroundPositionMobile' => 'center center',
+				'backgroundPosition'       => '50% 50%',
+				'backgroundPositionTablet' => '50% 50%',
+				'backgroundPositionMobile' => '50% 50%',
 				'backgroundSize'           => 'cover',
 				'backgroundSizeTablet'     => 'cover',
 				'backgroundSizeMobile'     => 'cover',
@@ -13412,7 +13412,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' > .responsive-section-wrap' => array(
 					'background-image'           => $updated_background_image,
-					'background-position'        => $attr['backgroundPosition'],
+					'background-position'        => self::get_background_position( self::convert_image_position_to_focalpoint( $attr['backgroundPosition'] ) ),
 					'background-attachment'      => $attr['backgroundAttachment'],
 					'background-repeat'          => $attr['backgroundRepeat'],
 					'background-size'            => $attr['backgroundSize'],
@@ -24550,6 +24550,29 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			} else {
 				return $position;
 			}
+		}
+
+		public static function convert_image_position_to_focalpoint( $position ) {
+
+			error_log( print_r( $position, true ) );
+
+			$position_map = [
+				'top left'      => [ 'x' => 0,   'y' => 0 ],
+				'top center'    => [ 'x' => 0.5, 'y' => 0 ],
+				'top right'     => [ 'x' => 1,   'y' => 0 ],
+				'center left'   => [ 'x' => 0,   'y' => 0.5 ],
+				'center center' => [ 'x' => 0.5, 'y' => 0.5 ],
+				'center right'  => [ 'x' => 1,   'y' => 0.5 ],
+				'bottom left'   => [ 'x' => 0,   'y' => 1 ],
+				'bottom center' => [ 'x' => 0.5, 'y' => 1 ],
+				'bottom right'  => [ 'x' => 1,   'y' => 1 ],
+			];
+
+			if ( isset( $position['x'] ) && isset( $position['y'] ) ) {
+				return $position;
+			}
+
+			return isset($position_map[$position]) ? $position_map[$position] : [ 'x' => 0.5, 'y' => 0.5 ];
 		}
 
 	}

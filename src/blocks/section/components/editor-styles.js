@@ -6,6 +6,7 @@ import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils";
 import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -227,7 +228,7 @@ function EditorStyles(props) {
     },
     " > .responsive-section-wrap": {
       "background-image": updatedBackgroundImage,
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPosition),
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
