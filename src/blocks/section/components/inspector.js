@@ -20,7 +20,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
-import { migrateToFocalPoint } from '../../../getImagePosition';
+import { convertPositionToFocalPoint } from '../../../getImagePosition';
 
 
 // Setup the block
@@ -236,11 +236,26 @@ export default class Inspector extends Component {
 				hideWidgetMobile,
         blockIsMarginControlConnected,
         blockIsPaddingControlConnected,
+        hasImagePositionMigrated,
+        newbackgroundPosition,
+        newbackgroundPositionMobile,
+        newbackgroundPositionTablet,
       },
       setAttributes,
     } = this.props;
 
-    migrateToFocalPoint(backgroundPosition, setAttributes)
+    console.log(this.props.attributes)
+
+    if ( ! hasImagePositionMigrated ) {
+      this.props.setAttributes(
+        {
+          newbackgroundPosition: convertPositionToFocalPoint( backgroundPosition ),
+          newbackgroundPositionMobile: convertPositionToFocalPoint( backgroundPositionMobile ),
+          newbackgroundPositionTablet: convertPositionToFocalPoint( backgroundPositionTablet ),
+          hasImagePositionMigrated: true,
+        }
+      )
+    }
 
     const blockMarginResetValues = {
       marginTop: 10,
@@ -533,9 +548,9 @@ export default class Inspector extends Component {
                               __nextHasNoMarginBottom
                               __next40pxDefaultSize
                               url={background_image_url}
-                              value={backgroundPosition}
+                              value={newbackgroundPosition}
                               onChange={(value) =>
-                                setAttributes({ backgroundPosition: value })
+                                setAttributes({ newbackgroundPosition: value })
                               }
                             />
                           }
@@ -544,9 +559,9 @@ export default class Inspector extends Component {
                               __nextHasNoMarginBottom
                               __next40pxDefaultSize
                               url={background_image_url}
-                              value={backgroundPositionTablet}
+                              value={newbackgroundPositionTablet}
                               onChange={(value) =>
-                                setAttributes({ backgroundPositionTablet: value })
+                                setAttributes({ newbackgroundPositionTablet: value })
                               }
                             />
                           }
@@ -555,9 +570,9 @@ export default class Inspector extends Component {
                               __nextHasNoMarginBottom
                               __next40pxDefaultSize
                               url={background_image_url}
-                              value={backgroundPositionMobile}
+                              value={newbackgroundPositionMobile}
                               onChange={(value) =>
-                                setAttributes({ backgroundPositionMobile: value })
+                                setAttributes({ newbackgroundPositionMobile: value })
                               }
                             />
                           }

@@ -1,21 +1,20 @@
 import generateCSSUnit from './generateCSSUnit';
 
 function getImagePostionCSS(position) {
-  console.log('getImagePostionCSS position ->' ,position)
-  if (!position || typeof position.x !== "number" || typeof position.y !== "number") {
-    // fallback to center if missing/invalid
 
-    console.log( 'fallback -> ', `${generateCSSUnit(50, '%')} ${generateCSSUnit(50, '%')}` );
-
-    return `${generateCSSUnit(50, '%')} ${generateCSSUnit(50, '%')}`;
+  if ( typeof position === 'string' ) {
+    let newPosition = convertPositionToFocalPoint(position)
+    return `${generateCSSUnit(newPosition.x * 100, '%')} ${generateCSSUnit(newPosition.y * 100, '%')}`;
+  } else {
+    return `${generateCSSUnit(position.x * 100, '%')} ${generateCSSUnit(position.y * 100, '%')}`;
   }
-
-  console.log( 'getImagePostionCSS final ->' , `${generateCSSUnit(position.x * 100, '%')} ${generateCSSUnit(position.y * 100, '%')}`  );
-
-  return `${generateCSSUnit(position.x * 100, '%')} ${generateCSSUnit(position.y * 100, '%')}`;
 }
 
 function convertPositionToFocalPoint(position) {
+
+  console.log('convertPositionToFocalPoint -> ', position);
+
+  if ( typeof position === 'object' ) return position;
 
   const positionMap = {
     'top left': { x: 0, y: 0 },
@@ -28,8 +27,10 @@ function convertPositionToFocalPoint(position) {
     'bottom center': { x: 0.5, y: 1 },
     'bottom right': { x: 1, y: 1 }
   };
+
+  console.log('convertPositionToFocalPoint  return -> ', positionMap[position] || { x: 0.4, y: 0.4 } )
     
-  return positionMap[position] || { x: 0.5, y: 0.5 };
+  return positionMap[position] || { x: 0.4, y: 0.4 };
 }
 
 function migrateToFocalPoint( backgroundPosition, setAttributes ) {

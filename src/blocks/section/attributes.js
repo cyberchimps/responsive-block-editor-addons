@@ -230,6 +230,18 @@ const attributes = {
     type: "string",
     default: "center center",
   },
+  newbackgroundPosition: {
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
+  },
+  newbackgroundPositionMobile: {
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
+  },
+  newbackgroundPositionTablet: {
+   type: "object",
+    default: { "x": 0.5, "y": 0.5 }
+  },
   backgroundSize: {
     type: "string",
     default: "cover",
@@ -481,6 +493,10 @@ const attributes = {
 	  type: "boolean",
 	  default: false,
 	},
+  hasImagePositionMigrated: {
+    type: "boolean",
+    default: false,
+  }
 };
 
 export default attributes;
