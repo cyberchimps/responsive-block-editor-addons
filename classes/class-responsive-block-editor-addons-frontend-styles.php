@@ -236,11 +236,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				}
 			}
 
+			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal        = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+			}
+
+
 			$background_type_image_styles = array();
 			if ( 'image' === $attr['backgroundType'] && $attr['backgroundImage'] ) {
 				$background_type_image_styles = array(
 					'background-image'      => 'linear-gradient(' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . ',' . self::hex_to_rgb( $attr['backgroundImageColor'] ? $attr['backgroundImageColor'] : '#fff', $imgopacity ) . '),url(' . $attr['backgroundImage'] . ')',
-					'background-position'   => $attr['backgroundPosition'],
+					'background-position'   => $background_position_focal,
 					'background-attachment' => $attr['backgroundAttachment'],
 					'background-repeat'     => $attr['backgroundRepeat'],
 					'background-size'       => $attr['backgroundSize'],
@@ -250,7 +261,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$background_type_image_styles_mobile = array();
 			if ( 'image' === $attr['backgroundType'] && $attr['backgroundImage'] ) {
 				$background_type_image_styles_mobile = array(
-					'background-position' => $attr['backgroundPositionMobile'],
+					'background-position' => $background_position_focal_tablet,
 					'background-size'     => $attr['backgroundSizeMobile'],
 				);
 			}
@@ -258,7 +269,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$background_type_image_styles_tablet = array();
 			if ( 'image' === $attr['backgroundType'] && $attr['backgroundImage'] ) {
 				$background_type_image_styles_tablet = array(
-					'background-position' => $attr['backgroundPositionTablet'],
+					'background-position' => $background_position_focal_mobile,
 					'background-size'     => $attr['backgroundSizeTablet'],
 				);
 			}
@@ -13322,17 +13333,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
 				}
 			}
-			echo "<pre>";
-			print_r( $attr );
-			echo "</pre>";
-
-			echo $attr['hasImagePositionMigrated'];
 
 			$attr = array_merge( $defaults, (array) $attr );
-
-			echo "<pre>";
-			print_r( $attr );
-			echo "</pre>";
 
 			$mobile_selectors = array();
 			$tablet_selectors = array();
@@ -14236,6 +14238,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxRightMarginMobile'     => '',
 				'backgroundPositionMobile' => 'center center',
 				'backgroundPositionTablet' => 'center center',
+				'backgroundPositionFocal'  => '50% 50%',
+				'backgroundPositionFocalMobile' => '50% 50%',
+				'backgroundPositionFocalTablet' => '50% 50%',
 				'backgroundSizeMobile'     => 'cover',
 				'backgroundSizeTablet'     => 'cover',
 			);

@@ -244,8 +244,6 @@ export default class Inspector extends Component {
       setAttributes,
     } = this.props;
 
-    console.log(this.props.attributes)
-
     if ( ! hasImagePositionMigrated ) {
       this.props.setAttributes(
         {
