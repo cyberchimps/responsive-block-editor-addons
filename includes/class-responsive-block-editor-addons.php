@@ -658,6 +658,7 @@ class Responsive_Block_Editor_Addons {
 		$is_taxonomy_list_on         = 1;
 		$is_contact_7_form_styler_on = 1;
 		$is_animation_toggled_on     = 1;
+		$is_display_conditions_on    = 1;
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
@@ -671,6 +672,10 @@ class Responsive_Block_Editor_Addons {
 
 		if ( isset( $block_status_map['animations'] ) ) {
 			$is_animation_toggled_on = $block_status_map['animations'];
+		}
+
+		if ( isset( $block_status_map['display-conditions'] ) ) {
+			$is_display_conditions_on = $block_status_map['display-conditions'];
 		}
 
 		$include_all_taxonomy = 0;
@@ -708,6 +713,8 @@ class Responsive_Block_Editor_Addons {
 				'auto_block_recovery'                => get_option( 'rbea_auto_block_recovery', '1' ),
 				'blocks'                             => $blocks,
 				'is_animation_on'                    => $is_animation_toggled_on,
+				'is_display_conditions_on'           => $is_display_conditions_on,
+				'user_roles'                         => $is_display_conditions_on ? $this->responsive_block_editor_addons_get_user_roles() : array(),
 			)
 		);
 
@@ -1954,6 +1961,38 @@ class Responsive_Block_Editor_Addons {
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
+		if ( isset( $block_status_map['display-conditions'] ) ) {
+			$is_display_conditions_toggled_on = $block_status_map['display-conditions'];
+		}
+
+		if ( $is_display_conditions_toggled_on && ! empty( $block['attrs']['RBEADisplayConditions'] ) ) {
+			switch ( $block['attrs']['RBEADisplayConditions'] ) {
+				case 'userstate':
+					$block_content = $this->responsive_block_editor_addons_user_state_visibility( $block['attrs'], $block_content );
+					break;
+
+				case 'userrole':
+					$block_content = $this->responsive_block_editor_addons_user_role_visibility( $block['attrs'], $block_content );
+					break;
+
+				case 'browser':
+					$block_content = $this->responsive_block_editor_addons_browser_visibility( $block['attrs'], $block_content );
+					break;
+
+				case 'os':
+					$block_content = $this->responsive_block_editor_addons_os_visibility( $block['attrs'], $block_content );
+					break;
+
+				case 'day':
+					$block_content = $this->responsive_block_editor_addons_day_visibility( $block['attrs'], $block_content );
+					break;
+
+				default:
+					// nothing for now.
+					break;
+			}
+		}
+
 		if ( isset( $block_status_map['animations'] ) ) {
 			$is_animations_toggled_on = $block_status_map['animations'];
 		}
@@ -1969,5 +2008,142 @@ class Responsive_Block_Editor_Addons {
 			$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
 		}
 		return $block_content;
+	}
+
+	/**
+	 *  Get the User Roles
+	 *
+	 *  @since 2.1.2
+	 */
+	public function responsive_block_editor_addons_get_user_roles() {
+
+		global $wp_roles;
+
+		$field_options = array();
+
+		$role_lists = $wp_roles->get_names();
+
+		$field_options[0] = array(
+			'value' => '',
+			'label' => __( 'None', 'responsive-block-editor-addons' ),
+		);
+
+		foreach ( $role_lists as $key => $role_list ) {
+			$field_options[] = array(
+				'value' => $key,
+				'label' => $role_list,
+			);
+		}
+
+		return $field_options;
+	}
+
+	/**
+	 * User State Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since 2.1.2
+	 * @return mixed Returns the new block content.
+	 */
+	public function responsive_block_editor_addons_user_state_visibility( $block_attributes, $block_content ) {
+		if ( ! empty( $block_attributes['RBEALoggedIn'] ) && is_user_logged_in() ) {
+			return '';
+		}
+
+		if ( ! empty( $block_attributes['RBEALoggedOut'] ) && ! is_user_logged_in() ) {
+			return '';
+		}
+
+		return $block_content;
+	}
+
+	/**
+	 * User Role Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since 2.1.2
+	 * @return mixed Returns the new block content.
+	 */
+	public function responsive_block_editor_addons_user_role_visibility( $block_attributes, $block_content ) {
+		if ( empty( $block_attributes['RBEARole'] ) ) {
+			return $block_content;
+		}
+
+		$user = wp_get_current_user();
+		return is_user_logged_in() && ! empty( $user->roles ) && in_array( $block_attributes['RBEARole'], $user->roles, true ) ? '' : $block_content;
+	}
+
+	/**
+	 * Browser Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since 2.1.2
+	 * @return mixed Returns the new block content.
+	 */
+	public function responsive_block_editor_addons_browser_visibility( $block_attributes, $block_content ) {
+
+		if ( empty( $block_attributes['RBEABrowser'] ) ) {
+			return $block_content;
+		}
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? Responsive_Block_Editor_Addons_Helper::get_instance()->rbea_get_browser_name( sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+
+		return $block_attributes['RBEABrowser'] === $user_agent ? '' : $block_content;
+	}
+
+	/**
+	 * Operating System Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 * @since 2.1.2
+	 * @return mixed Returns the new block content.
+	 */
+	public function responsive_block_editor_addons_os_visibility( $block_attributes, $block_content ) {
+
+		if ( empty( $block_attributes['RBEASystem'] ) ) {
+			return $block_content;
+		}
+
+		$os = array(
+			'iphone'   => '(iPhone)',
+			'android'  => '(Android)',
+			'windows'  => 'Win16|(Windows 95)|(Win95)|(Windows_95)|(Windows 98)|(Win98)|(Windows NT 5.0)|(Windows 2000)|(Windows NT 5.1)|(Windows XP)|(Windows NT 5.2)|(Windows NT 6.0)|(Windows Vista)|(Windows NT 6.1)|(Windows 7)|(Windows NT 4.0)|(WinNT4.0)|(WinNT)|(Windows NT)|Windows ME',
+			'open_bsd' => 'OpenBSD',
+			'sun_os'   => 'SunOS',
+			'linux'    => '(Linux)|(X11)',
+			'mac_os'   => '(Mac_PowerPC)|(Macintosh)',
+		);
+
+		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '';
+
+		return isset( $os[ $block_attributes['RBEASystem'] ] ) && preg_match( '@' . $os[ $block_attributes['RBEASystem'] ] . '@', $user_agent ) ? '' : $block_content;
+	}
+
+	/**
+	 * Day Visibility.
+	 *
+	 * @param array $block_attributes The block data.
+	 * @param mixed $block_content The block content.
+	 *
+	 * @since 2.1.2
+	 * @return mixed Returns the new block content.
+	 */
+	public function responsive_block_editor_addons_day_visibility( $block_attributes, $block_content ) {
+
+		// If not set restriction.
+		if ( empty( $block_attributes['RBEADay'] ) ) {
+			return $block_content;
+		}
+
+		$current_day = strtolower( current_datetime()->format( 'l' ) );
+		// Check in restricted day.
+		return ! in_array( $current_day, $block_attributes['RBEADay'] ) ? $block_content : '';
+
 	}
 }
