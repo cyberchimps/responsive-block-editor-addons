@@ -304,7 +304,7 @@ function EditorStyles(props) {
         (align == "full" && innerWidthMobile) ? generateCSSUnit(innerWidthMobile, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
-      "background-position": backgroundPositionMobile,
+      "background-position": getImagePostionCSS(backgroundPositionMobile),
       "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
     },
   };
@@ -332,7 +332,7 @@ function EditorStyles(props) {
         (align == "full" && innerWidthTablet) ? generateCSSUnit(innerWidthTablet, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
-      "background-position": backgroundPositionTablet,
+      "background-position": getImagePostionCSS(backgroundPositionTablet),
       "background-size": backgroundSizeTablet === '' ? backgroundSize : backgroundSizeTablet,
     },
   };

@@ -540,23 +540,25 @@ export default class Inspector extends Component {
                             />
                           }
                           {imagePositionTab === "tablet" &&
-                             <RadioControl 
-                                className = "rbea-background-image-positon-control-options"
-                                selected={backgroundPositionTablet}
-                                options={imagePositionOptions}
-                                onChange={(value) =>
-                                  setAttributes({ backgroundPositionTablet: value })
-                                }
+                            <FocalPointPicker
+                              __nextHasNoMarginBottom
+                              __next40pxDefaultSize
+                              url={background_image_url}
+                              value={backgroundPositionTablet}
+                              onChange={(value) =>
+                                setAttributes({ backgroundPositionTablet: value })
+                              }
                             />
                           }
                           {imagePositionTab === "mobile" && 
-                            <RadioControl 
-                                className = "rbea-background-image-positon-control-options"
-                                selected={backgroundPositionMobile}
-                                options={imagePositionOptions}
-                                onChange={(value) =>
-                                  setAttributes({ backgroundPositionMobile: value })
-                                }
+                            <FocalPointPicker
+                              __nextHasNoMarginBottom
+                              __next40pxDefaultSize
+                              url={background_image_url}
+                              value={backgroundPositionMobile}
+                              onChange={(value) =>
+                                setAttributes({ backgroundPositionMobile: value })
+                              }
                             />
                           }
                           </div>

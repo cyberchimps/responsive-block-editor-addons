@@ -13492,7 +13492,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'z-index'   => $attr['z_indexMobile'],
 				),
 				' > .responsive-section-wrap' => array(
-					'background-position'        => $attr['backgroundPositionMobile'],
+					'background-position'        => self::get_background_position( $attr['backgroundPositionMobile'] ),
 					'background-size'            => '' === $attr['backgroundSizeMobile'] ? $attr['backgroundSize'] : $attr['backgroundSizeMobile'],
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusMobile'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusMobile'], 'px' ),
@@ -13527,7 +13527,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'z-index'   => $attr['z_indexTablet'],
 				),
 				' > .responsive-section-wrap' => array(
-					'background-position'        => $attr['backgroundPositionTablet'],
+					'background-position'        => self::get_background_position( $attr['backgroundPositionTablet'] ),
 					'background-size'            => '' === $attr['backgroundSizeTablet'] ? $attr['backgroundSize'] : $attr['backgroundSizeTablet'],
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusTablet'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusTablet'], 'px' ),
