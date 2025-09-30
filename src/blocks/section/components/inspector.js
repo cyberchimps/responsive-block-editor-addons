@@ -237,9 +237,9 @@ export default class Inspector extends Component {
         blockIsMarginControlConnected,
         blockIsPaddingControlConnected,
         hasImagePositionMigrated,
-        newbackgroundPosition,
-        newbackgroundPositionMobile,
-        newbackgroundPositionTablet,
+        backgroundPositionFocal,
+        backgroundPositionFocalMobile,
+        backgroundPositionFocalTablet,
       },
       setAttributes,
     } = this.props;
@@ -249,9 +249,9 @@ export default class Inspector extends Component {
     if ( ! hasImagePositionMigrated ) {
       this.props.setAttributes(
         {
-          newbackgroundPosition: convertPositionToFocalPoint( backgroundPosition ),
-          newbackgroundPositionMobile: convertPositionToFocalPoint( backgroundPositionMobile ),
-          newbackgroundPositionTablet: convertPositionToFocalPoint( backgroundPositionTablet ),
+          backgroundPositionFocal: convertPositionToFocalPoint( backgroundPosition ),
+          backgroundPositionFocalMobile: convertPositionToFocalPoint( backgroundPositionMobile ),
+          backgroundPositionFocalTablet: convertPositionToFocalPoint( backgroundPositionTablet ),
           hasImagePositionMigrated: true,
         }
       )
@@ -548,9 +548,9 @@ export default class Inspector extends Component {
                               __nextHasNoMarginBottom
                               __next40pxDefaultSize
                               url={background_image_url}
-                              value={newbackgroundPosition}
+                              value={backgroundPositionFocal}
                               onChange={(value) =>
-                                setAttributes({ newbackgroundPosition: value })
+                                setAttributes({ backgroundPositionFocal: value })
                               }
                             />
                           }
@@ -559,9 +559,9 @@ export default class Inspector extends Component {
                               __nextHasNoMarginBottom
                               __next40pxDefaultSize
                               url={background_image_url}
-                              value={newbackgroundPositionTablet}
+                              value={backgroundPositionFocalTablet}
                               onChange={(value) =>
-                                setAttributes({ newbackgroundPositionTablet: value })
+                                setAttributes({ backgroundPositionFocalTablet: value })
                               }
                             />
                           }
@@ -570,9 +570,9 @@ export default class Inspector extends Component {
                               __nextHasNoMarginBottom
                               __next40pxDefaultSize
                               url={background_image_url}
-                              value={newbackgroundPositionMobile}
+                              value={backgroundPositionFocalMobile}
                               onChange={(value) =>
-                                setAttributes({ newbackgroundPositionMobile: value })
+                                setAttributes({ backgroundPositionFocalMobile: value })
                               }
                             />
                           }

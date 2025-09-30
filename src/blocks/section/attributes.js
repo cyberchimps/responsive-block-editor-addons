@@ -230,15 +230,15 @@ const attributes = {
     type: "string",
     default: "center center",
   },
-  newbackgroundPosition: {
+  backgroundPositionFocal: {
     type: "object",
     default: { "x": 0.5, "y": 0.5 }
   },
-  newbackgroundPositionMobile: {
+  backgroundPositionFocalMobile: {
     type: "object",
     default: { "x": 0.5, "y": 0.5 }
   },
-  newbackgroundPositionTablet: {
+  backgroundPositionFocalTablet: {
    type: "object",
     default: { "x": 0.5, "y": 0.5 }
   },

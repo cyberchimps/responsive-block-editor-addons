@@ -11240,9 +11240,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundPosition'       => 'center center',
 				'backgroundPositionTablet' => 'center center',
 				'backgroundPositionMobile' => 'center center',
-				'newbackgroundPosition' => '50% 50%',
-				'newbackgroundPositionMobile' => '50% 50%',
-				'newbackgroundPositionTablet' => '50% 50%',
+				'backgroundPositionFocal'  => '50% 50%',
+				'backgroundPositionFocalMobile' => '50% 50%',
+				'backgroundPositionFocalTablet' => '50% 50%',
 				'backgroundSize'           => 'cover',
 				'backgroundSizeTablet'     => 'cover',
 				'backgroundSizeMobile'     => 'cover',
@@ -13322,8 +13322,17 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					$defaults[ $attr_key ] = isset( $attr[ $default_key ] ) ? $attr[ $default_key ] : $defaults[ $attr_key ];
 				}
 			}
+			echo "<pre>";
+			print_r( $attr );
+			echo "</pre>";
+
+			echo $attr['hasImagePositionMigrated'];
 
 			$attr = array_merge( $defaults, (array) $attr );
+
+			echo "<pre>";
+			print_r( $attr );
+			echo "</pre>";
 
 			$mobile_selectors = array();
 			$tablet_selectors = array();
@@ -13387,6 +13396,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				}
 			}
 
+			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal        = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+			}
+
 			$selectors = array(
 				' '                           => array(
 					'display' => true === $attr['hideWidget'] ? 'none' : 'block',
@@ -13415,7 +13434,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' > .responsive-section-wrap' => array(
 					'background-image'           => $updated_background_image,
-					'background-position'        => self::get_background_position( $attr['newbackgroundPosition'] ),
+					'background-position'        => $background_position_focal,
 					'background-attachment'      => $attr['backgroundAttachment'],
 					'background-repeat'          => $attr['backgroundRepeat'],
 					'background-size'            => $attr['backgroundSize'],
@@ -13495,7 +13514,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'z-index'   => $attr['z_indexMobile'],
 				),
 				' > .responsive-section-wrap' => array(
-					'background-position'        => self::get_background_position( $attr['newbackgroundPositionMobile'] ),
+					'background-position'        => $background_position_focal_mobile,
 					'background-size'            => '' === $attr['backgroundSizeMobile'] ? $attr['backgroundSize'] : $attr['backgroundSizeMobile'],
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusMobile'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusMobile'], 'px' ),
@@ -13530,7 +13549,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'z-index'   => $attr['z_indexTablet'],
 				),
 				' > .responsive-section-wrap' => array(
-					'background-position'        => self::get_background_position( $attr['newbackgroundPositionTablet'] ),
+					'background-position'        => $background_position_focal_tablet,
 					'background-size'            => '' === $attr['backgroundSizeTablet'] ? $attr['backgroundSize'] : $attr['backgroundSizeTablet'],
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusTablet'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusTablet'], 'px' ),

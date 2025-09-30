@@ -128,9 +128,9 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
-    newbackgroundPosition,
-    newbackgroundPositionMobile,
-    newbackgroundPositionTablet,
+    backgroundPositionFocal,
+    backgroundPositionFocalMobile,
+    backgroundPositionFocalTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -231,7 +231,7 @@ function EditorStyles(props) {
     },
     " > .responsive-section-wrap": {
       "background-image": updatedBackgroundImage,
-      "background-position": getImagePostionCSS(newbackgroundPosition),
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
@@ -307,7 +307,7 @@ function EditorStyles(props) {
         (align == "full" && innerWidthMobile) ? generateCSSUnit(innerWidthMobile, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
-      "background-position": getImagePostionCSS(newbackgroundPositionMobile),
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
     },
   };
@@ -335,7 +335,7 @@ function EditorStyles(props) {
         (align == "full" && innerWidthTablet) ? generateCSSUnit(innerWidthTablet, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
-      "background-position": getImagePostionCSS(newbackgroundPositionTablet),
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet === '' ? backgroundSize : backgroundSizeTablet,
     },
   };
