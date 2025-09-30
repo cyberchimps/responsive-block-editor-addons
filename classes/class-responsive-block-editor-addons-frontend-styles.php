@@ -13412,7 +13412,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' > .responsive-section-wrap' => array(
 					'background-image'           => $updated_background_image,
-					'background-position'        => self::get_background_position( self::convert_image_position_to_focalpoint( $attr['backgroundPosition'] ) ),
+					'background-position'        => self::get_background_position( $attr['backgroundPosition'] ),
 					'background-attachment'      => $attr['backgroundAttachment'],
 					'background-repeat'          => $attr['backgroundRepeat'],
 					'background-size'            => $attr['backgroundSize'],
@@ -24536,43 +24536,60 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		}
 
 		/**
-		 * Get background position as a CSS value.
+		 * Converts a background position (string keyword or focal point array) 
+		 * into a CSS-compatible background-position value.
 		 *
-		 * Accepts an array with `x` and `y` coordinates or a string value.  
-		 * If an array is provided, it converts the coordinates into percentage-based CSS values.
+		 * If the input is an array with `x` and `y` keys, those values (0–1 range)
+		 * are converted directly to percentages.
+		 * If the input is a string (e.g. 'top left', 'center center'), it is mapped
+		 * to an [x, y] coordinate pair. Unknown strings fallback to 'center center'.
 		 *
-		 * @param array|string $position Background position. Either an array with 'x' and 'y' keys or a string.
-		 * @return string Background position formatted as a CSS value.
+		 * @param array|string $position Background position, either:
+		 *                               - Array with 'x' and 'y' (values between 0 and 1)
+		 *                               - String keyword ('top left', 'bottom right', etc.)
+		 *
+		 * @return string CSS background-position value (e.g. "50% 50%").
 		 */
 		public static function get_background_position( $position ) {
 			if ( is_array( $position ) && isset( $position['x'] ) && isset( $position['y'] ) ) {
-				return self::get_css_value( $position['x'] * 100, '%' ) . ' ' . self::get_css_value( $position['y'] * 100, '%' );
+				return self::convert_image_position_to_focalpoint( $position );
 			} else {
-				return $position;
+				$position_map = [
+					'top left'      => [ 'x' => 0,   'y' => 0 ],
+					'top center'    => [ 'x' => 0.5, 'y' => 0 ],
+					'top right'     => [ 'x' => 1,   'y' => 0 ],
+					'center left'   => [ 'x' => 0,   'y' => 0.5 ],
+					'center center' => [ 'x' => 0.5, 'y' => 0.5 ],
+					'center right'  => [ 'x' => 1,   'y' => 0.5 ],
+					'bottom left'   => [ 'x' => 0,   'y' => 1 ],
+					'bottom center' => [ 'x' => 0.5, 'y' => 1 ],
+					'bottom right'  => [ 'x' => 1,   'y' => 1 ],
+				];
+
+				return isset( $position_map[$position] ) ? self::convert_image_position_to_focalpoint( $position_map[$position] ) : self::convert_image_position_to_focalpoint( [ 'x' => 0.5, 'y' => 0.5 ] );
 			}
 		}
 
+		/**
+		 * Converts a focal point position array into a CSS-compatible 
+		 * background-position string.
+		 *
+		 * The input array should contain `x` and `y` values in the range 0–1. 
+		 * These values are multiplied by 100 and suffixed with '%' to generate 
+		 * percentage-based CSS values.
+		 *
+		 * Example:
+		 *   [ 'x' => 0.5, 'y' => 0.5 ] → "50% 50%"
+		 *   [ 'x' => 0,   'y' => 1 ]   → "0% 100%"
+		 *
+		 * @param array $position Associative array with:
+		 *                        - 'x' (float) Horizontal position (0–1).
+		 *                        - 'y' (float) Vertical position (0–1).
+		 *
+		 * @return string CSS background-position value (e.g. "20% 80%").
+		 */
 		public static function convert_image_position_to_focalpoint( $position ) {
-
-			error_log( print_r( $position, true ) );
-
-			$position_map = [
-				'top left'      => [ 'x' => 0,   'y' => 0 ],
-				'top center'    => [ 'x' => 0.5, 'y' => 0 ],
-				'top right'     => [ 'x' => 1,   'y' => 0 ],
-				'center left'   => [ 'x' => 0,   'y' => 0.5 ],
-				'center center' => [ 'x' => 0.5, 'y' => 0.5 ],
-				'center right'  => [ 'x' => 1,   'y' => 0.5 ],
-				'bottom left'   => [ 'x' => 0,   'y' => 1 ],
-				'bottom center' => [ 'x' => 0.5, 'y' => 1 ],
-				'bottom right'  => [ 'x' => 1,   'y' => 1 ],
-			];
-
-			if ( isset( $position['x'] ) && isset( $position['y'] ) ) {
-				return $position;
-			}
-
-			return isset($position_map[$position]) ? $position_map[$position] : [ 'x' => 0.5, 'y' => 0.5 ];
+			return self::get_css_value( $position['x'] * 100, '%' ) . ' ' . self::get_css_value( $position['y'] * 100, '%' );
 		}
 
 	}

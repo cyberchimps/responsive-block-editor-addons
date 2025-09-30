@@ -527,31 +527,17 @@ export default class Inspector extends Component {
                       </TabPanel>
                       </div>
                         <Fragment>
-                          <div className = "rbea-background-image-positon-control"
-                          // style={{
-                          //   backgroundImage: `url(${background_image_url})`,
-                          //   backgroundSize: 'cover',
-                          //   backgroundPosition:  'center',
-                          // }}
-                          >
+                          <div className = "rbea-background-image-positon-control">
                           { imagePositionTab === "desktop" && 
-                              // <RadioControl 
-                              //   className = "rbea-background-image-positon-control-options"
-                              //   selected={backgroundPosition}
-                              //   options={imagePositionOptions}
-                              //   onChange={(value) =>
-                              //     setAttributes({ backgroundPosition: value })
-                              //   }
-                              // />
-                              <FocalPointPicker
-                                __nextHasNoMarginBottom
-                                __next40pxDefaultSize
-                                url={background_image_url}
-                                value={backgroundPosition}
-                                onChange={(value) =>
-                                  setAttributes({ backgroundPosition: value })
-                                }
-                              />
+                            <FocalPointPicker
+                              __nextHasNoMarginBottom
+                              __next40pxDefaultSize
+                              url={background_image_url}
+                              value={backgroundPosition}
+                              onChange={(value) =>
+                                setAttributes({ backgroundPosition: value })
+                              }
+                            />
                           }
                           {imagePositionTab === "tablet" &&
                              <RadioControl 
