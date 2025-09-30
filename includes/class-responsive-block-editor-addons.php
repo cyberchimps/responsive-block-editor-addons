@@ -929,12 +929,8 @@ class Responsive_Block_Editor_Addons {
 					$blocks = parse_blocks( $post->post_content );
 				}
 
-				if ( ! self::$is_animations_on ) {
-					foreach ( $blocks as $block ) {
-						if ( ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
-							self::$is_animations_on = true;
-						}
-					}
+				if ( ! self::$is_animations_on && ! empty( $blocks ) ) {
+					self::$is_animations_on = $this->has_rbea_animation( $blocks );
 				}
 
 				foreach ( $widget_blocks as $widget ) {
@@ -1094,6 +1090,26 @@ class Responsive_Block_Editor_Addons {
 				true
 			);
 		}
+	}
+
+	/**
+	 * Recursively checks if any block or its inner blocks
+	 * contains the RBEA animation attribute.
+	 *
+	 * @param array $blocks Array of parsed Gutenberg blocks.
+	 *
+	 * @return bool True if at least one block has 'RBEAAnimationType' set, otherwise false.
+	 */
+	private function has_rbea_animation( $blocks ) {
+		foreach ( $blocks as $block ) {
+			if ( ! empty( $block['attrs']['RBEAAnimationType'] ) ) {
+				return true;
+			}
+			if ( ! empty( $block['innerBlocks'] ) && $this->has_rbea_animation( $block['innerBlocks'] ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public function rba_get_block_names( $blocks, &$block_names = array() ) {
