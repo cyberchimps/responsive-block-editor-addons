@@ -4219,6 +4219,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$cta_icon_margin = 'auto 0 auto ' . self::get_css_value( $attr['iconSpace'], 'px' );
 			}
 
+			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal        = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+			}
+
 			$selectors = array(
 				' .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button' => array(
 					'color'   => 'empty' !== $attr['buttonTextColor'] && '#fff' === $attr['ctaColor'] ? $attr['buttonTextColor'] : $attr['ctaColor'], // For compatibility with v1.3.2.
@@ -4313,7 +4323,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-cta-image' => array(
 					'background-image'           => 'empty' !== $attr['imgURL'] && '' === $attr['backgroundImage'] ? $attr['imgURL'] : ( $attr['backgroundImage'] ? 'url(' . $attr['backgroundImage'] . ')' : null ), // For compatibility with v1.3.2.
 					'height'                     => 100 . '%',
-					'background-position'        => 'empty' !== $attr['imagePosition'] && 'center center' === $attr['backgroundPosition'] ? $attr['imagePosition'] : $attr['backgroundPosition'], // For compatibility with v1.3.2.
+					'background-position'        => $background_position_focal,
 					'background-repeat'          => 'empty' !== $attr['imageRepeat'] && 'no-repeat' === $attr['backgroundRepeat'] ? $attr['imageRepeat'] : $attr['backgroundRepeat'], // For compatibility with v1.3.2.
 					'background-size'            => 'empty' !== $attr['thumbsize'] && 'cover' === $attr['backgroundSize'] ? $attr['thumbsize'] : $attr['backgroundSize'], // For compatibility with v1.3.2.
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadius'], 'px' ),
@@ -4415,7 +4425,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusMobile'], 'px' ),
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusMobile'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusMobile'], 'px' ),
-					'background-position'        => 'empty' !== $attr['imagePosition'] && 'center center' === $attr['backgroundPositionMobile'] ? $attr['imagePosition'] : $attr['backgroundPositionMobile'], // For compatibility with v1.3.2.
+					'background-position'        => $background_position_focal_mobile,
 					'background-size'            => 'empty' !== $attr['thumbsize'] && 'cover' === $attr['backgroundSizeMobile'] ? $attr['thumbsize'] : $attr['backgroundSizeMobile'], // For compatibility with v1.3.2.
 				),
 			);
@@ -4470,7 +4480,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusTablet'], 'px' ),
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusTablet'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusTablet'], 'px' ),
-					'background-position'        => 'empty' !== $attr['imagePosition'] && 'center center' === $attr['backgroundPositionTablet'] ? $attr['imagePosition'] : $attr['backgroundPositionTablet'], // For compatibility with v1.3.2.
+					'background-position'        => $background_position_focal_tablet,
 					'background-size'            => 'empty' !== $attr['thumbsize'] && 'cover' === $attr['backgroundSizeTablet'] ? $attr['thumbsize'] : $attr['backgroundSizeTablet'], // For compatibility with v1.3.2.
 				),
 			);
@@ -4677,6 +4687,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundPosition'          => 'center center',
 				'backgroundPositionMobile'    => 'center center',
 				'backgroundPositionTablet'    => 'center center',
+				'backgroundPositionFocal'     => '50% 50%',
+				'backgroundPositionFocalMobile' => '50% 50%',
+				'backgroundPositionFocalTablet' => '50% 50%',
 				'backgroundRepeat'            => 'no-repeat',
 				'backgroundSize'              => 'cover',
 				'backgroundSizeTablet'        => 'cover',

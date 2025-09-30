@@ -33,17 +33,4 @@ function convertPositionToFocalPoint(position) {
   return positionMap[position] || { x: 0.4, y: 0.4 };
 }
 
-function migrateToFocalPoint( backgroundPosition, setAttributes ) {
-  if (backgroundPosition && typeof backgroundPosition === 'string') {
-      
-    console.log('=== RUNNING MIGRATION (robust) ===');
-    const newFocalPoint = convertPositionToFocalPoint(backgroundPosition);
-    console.log('Migrating from:', backgroundPosition, 'to:', newFocalPoint);
-    
-    setAttributes({ 
-      backgroundPosition: convertPositionToFocalPoint(backgroundPosition),
-    });
-  }
-}
-
-export { getImagePostionCSS, convertPositionToFocalPoint, migrateToFocalPoint };
+export { getImagePostionCSS, convertPositionToFocalPoint };
