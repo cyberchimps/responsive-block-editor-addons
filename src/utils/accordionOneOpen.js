@@ -1,15 +1,3 @@
-// utils/accordionOneOpenGlobal.js
-// Bind once, app-wide (Editor only). No React component or wrapper required.
-//
-// Behavior:
-// - One-open-per-scope (close only true peers; ignore ancestors/descendants).
-// - Works for deeply nested PanelBody (e.g., Typography controller).
-// - Smooth scroll-to-top ONLY for top-level panels.
-// - Confined to Gutenberg Inspector.
-// - Escape hatches:
-//    * data-oneopen="off" on a PanelBody to ignore it.
-//    * data-oneopen-scope="off" on any ancestor to ignore that subtree.
-
 (function () {
   if (window.__rbeaAccordionGlobalBound) return;
   window.__rbeaAccordionGlobalBound = true;
@@ -105,7 +93,7 @@
 
   const onClickCapture = (e) => {
     if (closingPeers) return;
-    if (e.__rbeaAccordionOneOpenHandled) return; // de-dupe within capture
+    if (e.__rbeaAccordionOneOpenHandled) return; 
     e.__rbeaAccordionOneOpenHandled = true;
 
     const headerBtn = e.target.closest(HEADER_SELECTOR);

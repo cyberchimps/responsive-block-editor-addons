@@ -4,11 +4,6 @@
  * This module automatically synchronizes individual block responsive tabs
  * with the global WordPress editor device view.
  * 
- * Features:
- * - Automatically updates body data-device-type attribute
- * - Syncs all responsive tabs across all blocks
- * - Provides custom events for advanced integrations
- * - Works with existing TabPanel components without modifications
  */
 
 import { select, subscribe } from '@wordpress/data';
@@ -45,8 +40,6 @@ class ResponsiveTabSync {
   init() {
     if (this.isInitialized) return;
     
-      // console.log('🎯 RBEA: Initializing responsive tab synchronization...');
-    
     // Set initial device type
     this.updateDeviceType();
     
@@ -63,7 +56,6 @@ class ResponsiveTabSync {
     this.setupResponsiveTabListeners();
     
     this.isInitialized = true;
-    // console.log('✅ RBEA: Responsive tab synchronization initialized');
   }
 
   /**
@@ -105,7 +97,6 @@ class ResponsiveTabSync {
       
       // Stop trying after max attempts to prevent infinite loops
       if (attempts >= maxAttempts) {
-        // console.warn('RBEA: WordPress data store not available after 5 seconds');
         return;
       }
       
@@ -159,7 +150,6 @@ class ResponsiveTabSync {
       
       return deviceType || 'Desktop';
     } catch (error) {
-      // console.warn('RBEA: Could not access device type from WordPress store:', error);
       return 'Desktop';
     }
   }
@@ -183,16 +173,11 @@ class ResponsiveTabSync {
    * Optimized with debouncing and caching
    */
   syncAllVisibleTabs(deviceType) {
-    // console.log(`🔄 RBEA: Global device type changed to: ${deviceType}`);
-    
     const targetTabName = this.deviceTypeMap[deviceType];
     
     if (!targetTabName) {
-      // console.warn(`⚠️ RBEA: Unknown device type: ${deviceType}`);
       return;
     }
-
-    // console.log(`🎯 RBEA: Target tab name: ${targetTabName}`);
 
     // Debounce rapid device changes
     if (this.syncDebounceTimeout) {
@@ -212,22 +197,16 @@ class ResponsiveTabSync {
     
     // Throttle syncs to prevent excessive calls
     if (now - this.lastSyncTime < 100) {
-      // console.log('🚀 RBEA: Throttling sync (too frequent)');
       return;
     }
     this.lastSyncTime = now;
-
-    // console.log(`🚀 RBEA: Performing optimized sync to ${targetTabName}`);
 
     // Get all containers with caching
     const containers = this.getCachedContainers();
     
     if (containers.length === 0) {
-      // console.log('🚀 RBEA: No containers found, nothing to sync');
       return;
     }
-
-    // console.log(`🚀 RBEA: Found ${containers.length} containers to sync`);
 
     // Sync only containers that need updating - optimized loop
     for (let i = 0; i < containers.length; i++) {
@@ -238,7 +217,6 @@ class ResponsiveTabSync {
       
       // Skip if recently synced to this tab
       if (cached && (now - cached.lastSync < 1000)) {
-        // console.log(`🚀 RBEA: Skipping ${containerId} (recently synced)`);
         continue; // Skip to next iteration
       }
 
@@ -265,7 +243,6 @@ class ResponsiveTabSync {
 
     // Use cache if less than 500ms old
     if (cached && (now - cached.timestamp < 500)) {
-      // console.log(`🚀 RBEA: Using cached containers (${cached.containers.length})`);
       return cached.containers;
     }
 
@@ -277,7 +254,6 @@ class ResponsiveTabSync {
       timestamp: now
     });
 
-    // console.log(`🚀 RBEA: Refreshed container cache (${containersArray.length})`);
     return containersArray;
   }
 
@@ -304,11 +280,9 @@ class ResponsiveTabSync {
     
     const checkDOM = () => {
       checkCount++;
-      // console.log(`🔍 RBEA: Checking DOM readiness (attempt ${checkCount}/${maxChecks})`);
       
       // Check if we have responsive tab containers AND they have proper structure
       const containers = document.querySelectorAll(this.responsiveTabSelector);
-      // console.log(`🔍 RBEA: Found ${containers.length} containers`);
       
       if (containers.length > 0) {
         // Check if at least one container has the proper tab structure - optimized
@@ -317,7 +291,6 @@ class ResponsiveTabSync {
           const container = containers[i];
           const tabs = container.querySelectorAll(this.tabSelector);
           const tabPanels = container.querySelectorAll(this.tabPanelSelector);
-          // console.log(`🔍 RBEA: Container ${i + 1}: ${tabs.length} tabs, ${tabPanels.length} tabpanels`);
           if (tabs.length > 0 && tabPanels.length > 0) {
             hasProperStructure = true;
             break; // Early exit when found
@@ -325,7 +298,6 @@ class ResponsiveTabSync {
         }
         
         if (hasProperStructure) {
-          // console.log(`✅ RBEA: Panel DOM is ready, syncing immediately`);
           this.waitForControllerAndSync(targetTabName);
           return;
         }
@@ -335,7 +307,6 @@ class ResponsiveTabSync {
       if (checkCount < maxChecks) {
         setTimeout(checkDOM, 50);
       } else {
-        // console.warn(`⚠️ RBEA: DOM not ready after ${maxChecks} checks, falling back to sync anyway`);
         this.waitForControllerAndSync(targetTabName);
       }
     };
@@ -409,7 +380,6 @@ class ResponsiveTabSync {
     }
 
     if (hasResponsiveTabs) {
-      // console.log('🔍 RBEA: New blocks with responsive tabs detected, syncing...');
       
       // Clear container cache since new elements were added
       this.containerCache.delete('containers-cache');
@@ -434,9 +404,7 @@ class ResponsiveTabSync {
     if (responsiveTabsContainers.length > 0) {
       const deviceType = this.getCurrentDeviceType();
       const targetTabName = this.deviceTypeMap[deviceType];
-      
-      // console.log(`🚀 RBEA: Panel opened with ${responsiveTabsContainers.length} containers, syncing to ${targetTabName}`);
-      
+         
       // Sync all responsive tab containers in this panel - optimized loop
       for (let i = 0; i < responsiveTabsContainers.length; i++) {
         this.syncTabsInContainer(responsiveTabsContainers[i], targetTabName, `panel-${i + 1}`);
@@ -450,28 +418,15 @@ class ResponsiveTabSync {
   syncTabsInContainer(container, targetTabName, containerId = 'unknown') {
     if (!targetTabName) return;
 
-    // console.log(`🎯 RBEA: Syncing ${containerId} to ${targetTabName} tab`);
-
     // Find the target device tab button
     const targetTab = container.querySelector(`.responsive-${targetTabName}-tab`);
     
     if (targetTab && targetTab instanceof HTMLElement) {
-      // Debug: Log the target tab details
-      // console.log(`🔍 RBEA: Target tab for ${containerId}:`, {
-      //   element: targetTab,
-      //   classes: targetTab.className,
-      //   disabled: targetTab.disabled,
-      //   style: targetTab.style.display,
-      //   parentElement: targetTab.parentElement?.className
-      // });
-      
       // Check if this tab is already active
       const isAlreadyActive = targetTab.classList.contains('active-tab');
       
       if (!isAlreadyActive) {
         try {
-          // console.log(`🔄 RBEA: Clicking ${targetTabName} tab for ${containerId}`);
-          
           // Try to find the TabPanel using multiple selectors
           let tabPanel = container.closest('.components-tab-panel');
           if (!tabPanel) {
@@ -484,8 +439,6 @@ class ResponsiveTabSync {
           }
           
           if (tabPanel) {
-            // console.log(`🔍 RBEA: Found TabPanel for ${containerId}, searching for React instance...`);
-            
             // Look for React instance - optimized search
             let reactKey = null;
             const keys = Object.keys(tabPanel);
@@ -500,7 +453,6 @@ class ResponsiveTabSync {
             }
             
             if (reactKey && tabPanel[reactKey]) {
-              // console.log(`🔍 RBEA: Found React key: ${reactKey} for ${containerId}`);
               const reactInstance = tabPanel[reactKey];
               let currentInstance = reactInstance;
               let depth = 0;
@@ -509,33 +461,19 @@ class ResponsiveTabSync {
               while (currentInstance && depth < 20) {
                 if (currentInstance.memoizedProps && 
                     currentInstance.memoizedProps.tabs && 
-                    currentInstance.memoizedProps.onSelect) {
-                  
-                  // console.log(`🎯 RBEA: Found TabPanel onSelect for ${containerId} at depth ${depth}, calling with ${targetTabName}`);
-                  
+                    currentInstance.memoizedProps.onSelect) {          
                   try {
                     currentInstance.memoizedProps.onSelect(targetTabName);
-                    // console.log(`✅ RBEA: Called onSelect successfully for ${containerId}`);
                     return; // Success, exit early
                   } catch (error) {
-                    // console.warn(`⚠️ RBEA: onSelect failed: ${error.message}`);
                   }
                 }
                 currentInstance = currentInstance.child || currentInstance.sibling || currentInstance.return;
                 depth++;
               }
-              
-              // console.log(`⚠️ RBEA: Could not find TabPanel onSelect in React tree for ${containerId} (searched ${depth} levels)`);
-            } else {
-              // console.log(`⚠️ RBEA: No React instance found for ${containerId}`);
             }
-          } else {
-            // console.log(`⚠️ RBEA: No TabPanel found for ${containerId} with any selector`);
           }
-          
           // Fallback: Direct DOM manipulation of ARIA attributes and data attributes
-          // console.log(`🔧 RBEA: Attempting direct DOM manipulation for ${containerId}`);
-          
           // Use the same improved TabPanel finding logic
           let tabPanelElement = container.closest('.components-tab-panel');
           if (!tabPanelElement) {
@@ -575,9 +513,6 @@ class ResponsiveTabSync {
             if (targetTabPanel) {
               targetTabPanel.setAttribute('data-open', 'true');
               targetTabPanel.style.display = 'block';
-              // console.log(`✅ RBEA: Direct DOM manipulation successful for ${containerId}`);
-            } else {
-              // console.warn(`⚠️ RBEA: Target tab panel not found for ${containerId}`);
             }
           }
           
@@ -593,22 +528,12 @@ class ResponsiveTabSync {
           // Verify the click worked
           setTimeout(() => {
             const isNowActive = targetTab.classList.contains('active-tab');
-            if (isNowActive) {
-              // console.log(`✅ RBEA: Successfully synced ${containerId} to ${targetTabName}`);
-            } else {
-              // console.warn(`⚠️ RBEA: Click failed for ${containerId}, tab still not active`);
-            }
           }, 100);
           
         } catch (error) {
-          // console.warn(`RBEA: Error syncing tab in ${containerId}: ${error.message}`);
         }
-      } else {
-        // console.log(`✅ RBEA: ${containerId} already on ${targetTabName} tab`);
       }
-    } else {
-      // console.warn(`⚠️ RBEA: Target tab not found for ${containerId} (${targetTabName})`);
-    }
+    } 
   }
 
   /**
@@ -673,7 +598,6 @@ class ResponsiveTabSync {
         this.setGlobalDeviceType(deviceType);
       }
     } catch (error) {
-      // console.warn(`RBEA: Error handling responsive tab click: ${error.message}`);
     }
   }
 
@@ -708,7 +632,6 @@ class ResponsiveTabSync {
       }
       
     } catch (error) {
-      // console.warn(`RBEA: Error setting global device type: ${error.message}`);
     }
   }
 
@@ -783,7 +706,6 @@ class ResponsiveTabSync {
     }
     
     this.isInitialized = false;
-    // console.log('🧹 RBEA: Responsive tab synchronization destroyed');
   }
 }
 
