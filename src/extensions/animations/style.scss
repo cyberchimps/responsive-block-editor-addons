@@ -14,3 +14,10 @@
     font-weight: 400 !important;
     margin-bottom: 0;
 }
+.rbea-flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+.rbea-flex-wrapper .rbea-flex-wrapper-items {
+    width: 50%;
+}
