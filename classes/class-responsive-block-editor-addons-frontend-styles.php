@@ -15205,12 +15205,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$updated_background_image = '';
 			}
 
+			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal        = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+			}
+
 			$selectors = array(
 				' ' => array(
 					'display'             => true === $attr['hideWidget'] ? 'none' : 'flex',
 					'background-image'    => $updated_background_image,
 					'z-index'             => $attr['z_index'],
-					'background-position' => $attr['backgroundPosition'],
+					'background-position' => $background_position_focal,
 					'background-repeat'   => $attr['backgroundRepeat'],
 					'background-size'     => $attr['backgroundSize'],
 					'background-color'    => 'color' === $attr['backgroundType'] ? self::hex_to_rgb(
@@ -15360,7 +15370,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' ' => array(
 					'display'             => true === $attr['hideWidgetMobile'] ? 'none' : 'flex',
 					'z-index'             => $attr['z_indexMobile'],
-					'background-position' => $attr['backgroundPositionMobile'],
+					'background-position' => $background_position_focal_mobile,
 					'background-size'     => $attr['backgroundSizeMobile'],
 				),
 				' .responsive-block-editor-addons-toc__title-wrap' => array(
@@ -15429,7 +15439,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' ' => array(
 					'display'             => true === $attr['hideWidgetTablet'] ? 'none' : 'flex',
 					'z-index'             => $attr['z_indexTablet'],
-					'background-position' => $attr['backgroundPositionTablet'],
+					'background-position' => $background_position_focal_tablet,
 					'background-size'     => $attr['backgroundSizeTablet'],
 				),
 				' .responsive-block-editor-addons-toc__title-wrap' => array(
@@ -15736,8 +15746,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundSizeMobile'                 => 'cover',
 				'backgroundPositionMobile'             => 'center center',
 				'backgroundPositionTablet'             => 'center center',
+				'backgroundPositionFocal'              => '50% 50%',
+				'backgroundPositionFocalMobile'        => '50% 50%',
+				'backgroundPositionFocalTablet'        => '50% 50%',
 				'imageSizeTab'                         => 'desktop',
-				'headingTextTransform'                => '',
+				'headingTextTransform'                 => '',
 				'headingFontStyle'                     => '',
 				'contentTextTransform'                 => '',
 				'contentFontStyle'                     => '',
