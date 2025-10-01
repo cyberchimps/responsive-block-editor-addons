@@ -11745,6 +11745,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				}
 			}
 
+			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal        = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+			}
+
 			$selectors = array(
 				' ' => array(
 					'display'        => true === $attr['hideWidget'] ? 'none' : 'flex',
@@ -11911,7 +11921,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						),
 					'background-size'            => $attr['backgroundSize'],
 					'background-repeat'          => $attr['backgroundRepeat'],
-					'background-position'        => $attr['backgroundPosition'],
+					'background-position'        => $background_position_focal,
 					'background-attachment'      => $attr['backgroundAttachment'],
 					'border-width'               => self::get_css_value( $attr['borderWidth'], 'px' ),
 					'border-color'               => $attr['borderColor'],
@@ -11965,7 +11975,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .wp-block-responsive-block-editor-addons-team' => array(
 					'background-size'            => $attr['backgroundSizeMobile'],
-					'background-position'        => $attr['backgroundPositionMobile'],
+					'background-position'        => $background_position_focal_mobile,
 					'margin-bottom'              => $gutter_margin,
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusMobile'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusMobile'], 'px' ),
@@ -12022,7 +12032,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .wp-block-responsive-block-editor-addons-team' => array(
 					'background-size'            => $attr['backgroundSizeTablet'],
-					'background-position'        => $attr['backgroundPositionTablet'],
+					'background-position'        => $background_position_focal_tablet,
 					'margin-bottom'              => $gutter_margin,
 					'border-top-left-radius'     => self::get_css_value( $attr['blockTopRadiusTablet'], 'px' ),
 					'border-top-right-radius'    => self::get_css_value( $attr['blockRightRadiusTablet'], 'px' ),
@@ -12265,9 +12275,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'gradientOverlayPosition'        => 'center center',
 				'backgroundType'                 => '',
 				'backgroundColor1'               => '',
-
 				'backgroundPositionTablet'       => 'center center',
 				'backgroundPositionMobile'       => 'center center',
+				'backgroundPositionFocal'        => '50% 50%',
+				'backgroundPositionFocalMobile'  => '50% 50%',
+				'backgroundPositionFocalTablet'  => '50% 50%',
 				'backgroundSizeTablet'           => 'cover',
 				'backgroundSizeMobile'           => 'cover',
 				'backgroundImageColor'           => '',
