@@ -1485,6 +1485,7 @@ class Responsive_Block_Editor_Addons {
 			'responsive-block-editor-addons/call-mail-button',
 			'responsive-block-editor-addons/call-to-action',
 			'responsive-block-editor-addons/card',
+			'responsive-block-editor-addons/container',
 			'responsive-block-editor-addons/contact-form-7-styler',
 			'responsive-block-editor-addons/content-timeline',
 			'responsive-block-editor-addons/count-down',
