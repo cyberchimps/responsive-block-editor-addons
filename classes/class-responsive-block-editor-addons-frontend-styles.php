@@ -4850,6 +4850,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$updated_button_background_color = self::generate_background_image_effect( $attr['buttonbackgroundColor1'], $attr['buttonbackgroundColor2'], $attr['buttongradientDirection'], $attr['buttoncolorLocation1'], $attr['buttoncolorLocation2'] );
 			}
 
+			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+			$card_image_position_focal        = self::get_background_position( $attr['cardImagePosition'] );
+			$card_image_position_focal_tablet = self::get_background_position( $attr['cardImagePositionMobile'] );
+			$card_image_position_focal_mobile = self::get_background_position( $attr['cardImagePositionTablet'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal        = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+				$card_image_position_focal        = self::get_background_position( $attr['cardImagePositionFocal'] );
+				$card_image_position_focal_tablet = self::get_background_position( $attr['cardImagePositionFocalTablet'] );
+				$card_image_position_focal_mobile = self::get_background_position( $attr['cardImagePositionFocalMobile'] );
+			}
+
 			$selectors = array(
 				' .responsive-block-editor-addons-card-button-inner .res-button' => array(
 					'color'   => 'empty' !== $attr['buttonTextColor'] && '#fff' === $attr['ctaColor'] ? $attr['buttonTextColor'] : $attr['ctaColor'], // For compatibility with v1.3.2.
@@ -4931,7 +4947,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-card-background-image' => array(
 					'background-image'    => 'url(' . $background_image_url_check . ')',
 					'height'              => 100 . '%',
-					'background-position' => null !== $attr['backgroundPosition'] ? $attr['backgroundPosition'] : $attr['bgimagePosition'], // For compatibility with v1.3.2.
+					'background-position' => $background_position_focal,
 					'background-repeat'   => null !== $attr['backgroundRepeat'] ? $attr['backgroundRepeat'] : $attr['bgimageRepeat'], // For compatibility with v1.3.2.
 					'background-size'     => null !== $attr['backgroundSize'] ? $attr['backgroundSize'] : $attr['bgthumbsize'], // For compatibility with v1.3.2.
 				),
@@ -4941,7 +4957,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-card-avatar-img' => array(
-					'background-position' => $attr['cardImagePosition'],
+					'background-position' => $card_image_position_focal,
 					'background-repeat'   => $attr['cardImageRepeat'],
 					'background-size'     => $attr['cardImageSize'],
 				),
@@ -5069,11 +5085,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-card-background-image' => array(
-					'background-position' => null !== $attr['backgroundPositionMobile'] ? $attr['backgroundPositionMobile'] : $attr['bgimagePosition'], // For compatibility with v1.3.2.
+					'background-position' => $background_position_focal_mobile,
 					'background-size'     => null !== $attr['backgroundSizeMobile'] ? $attr['backgroundSizeMobile'] : $attr['bgthumbsize'], // For compatibility with v1.3.2.
 				),
 				' .responsive-block-editor-addons-card-avatar-img' => array(
-					'background-position' => $attr['cardImagePositionMobile'],
+					'background-position' => $card_image_position_focal_mobile,
 					'background-size'     => $attr['cardImageSizeMobile'],
 				),
 			);
@@ -5122,11 +5138,11 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-card-background-image' => array(
-					'background-position' => null !== $attr['backgroundPositionTablet'] ? $attr['backgroundPositionTablet'] : $attr['bgimagePosition'], // For compatibility with v1.3.2.
+					'background-position' => $background_position_focal_tablet,
 					'background-size'     => null !== $attr['backgroundSizeTablet'] ? $attr['backgroundSizeTablet'] : $attr['bgthumbsize'], // For compatibility with v1.3.2.
 				),
 				' .responsive-block-editor-addons-card-avatar-img' => array(
-					'background-position' => $attr['cardImagePositionTablet'],
+					'background-position' => $card_image_position_focal_tablet,
 					'background-size'     => $attr['cardImageSizeTablet'],
 				),
 			);
@@ -5344,6 +5360,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundPosition'           => 'center center',
 				'backgroundPositionMobile'     => 'center center',
 				'backgroundPositionTablet'     => 'center center',
+				'backgroundPositionFocal'      => '50% 50%',
+				'backgroundPositionFocalMobile' => '50% 50%',
+				'backgroundPositionFocalTablet' => '50% 50%',
 				'backgroundAttachment'         => 'scroll',
 				'imageSizeTab'                 => 'desktop',
 				'backgroundRepeat'             => 'no-repeat',
@@ -5353,6 +5372,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'cardImagePosition'            => 'center center',
 				'cardImagePositionMobile'      => 'center center',
 				'cardImagePositionTablet'      => 'center center',
+				'cardImagePositionFocal'       => '50% 50%',
+				'cardImagePositionFocalMobile' => '50% 50%',
+				'cardImagePositionFocalTablet' => '50% 50%',
 				'cardImageRepeat'              => 'no-repeat',
 				'headingTypographyColor'       => '',
 				'headingBottomSpacing'         => 8,
