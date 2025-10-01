@@ -6341,6 +6341,22 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$btn_h_opacity = $attr['buttonHopacity'];
 			}
 
+			$background_position_focal             = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet      = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile      = self::get_background_position( $attr['backgroundPositionMobile'] );
+			$back_background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$back_background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$back_background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal             = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet      = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile      = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+				$back_background_position_focal        = self::get_background_position( $attr['backBackgroundPositionFocal'] );
+				$back_background_position_focal_tablet = self::get_background_position( $attr['backBackgroundPositionFocalTablet'] );
+				$back_background_position_focal_mobile = self::get_background_position( $attr['backBackgroundPositionFocalMobile'] );
+			}
+
 			$selectors        = array(
 				' '               => array(
 					'display'       => true === $attr['hideWidget'] ? 'none' : 'block',
@@ -6359,7 +6375,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box .flip-box-front' => array(
 					'background-image'           => $background_front,
-					'background-position'        => $attr['backgroundPosition'],
+					'background-position'        => $background_position_focal,
 					'background-attachment'      => $attr['backgroundAttachment'],
 					'background-repeat'          => $attr['backgroundRepeat'],
 					'background-size'            => $attr['backgroundSize'],
@@ -6426,7 +6442,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .flip-box-back' => array(
 					'background-image'           => $background_back,
-					'background-position'        => $attr['backBackgroundPosition'],
+					'background-position'        => $back_background_position_focal,
 					'background-attachment'      => $attr['backBackgroundAttachment'],
 					'background-repeat'          => $attr['backBackgroundRepeat'],
 					'background-size'            => $attr['backBackgroundSize'],
@@ -6557,7 +6573,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'display'       => true === $attr['hideWidgetMobile'] ? 'none' : 'block',
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box .flip-box-front' => array(
-					'background-position'        => $attr['backgroundPositionMobile'],
+					'background-position'        => $background_position_focal_mobile,
 					'background-size'            => $attr['backgroundSizeMobile'],
 					'padding-top'                => self::get_css_value( $attr['frontTopPaddingMobile'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['frontBottomPaddingMobile'], 'px' ),
@@ -6569,7 +6585,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusMobile'], 'px' ),
 				),
 				' .flip-box-back' => array(
-					'background-position'        => $attr['backBackgroundPositionMobile'],
+					'background-position'        => $back_background_position_focal_mobile,
 					'background-size'            => $attr['backBackgroundSizeMobile'],
 					'padding-top'                => self::get_css_value( $attr['backTopPaddingMobile'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['backBottomPaddingMobile'], 'px' ),
@@ -6622,7 +6638,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'display'       => true === $attr['hideWidgetTablet'] ? 'none' : 'block',
 				),
 				' .wp-block-responsive-block-editor-addons-flip-box .flip-box-front' => array(
-					'background-position'        => $attr['backgroundPositionTablet'],
+					'background-position'        => $background_position_focal_tablet,
 					'background-size'            => $attr['backgroundSizeTablet'],
 					'padding-top'                => self::get_css_value( $attr['frontTopPaddingTablet'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['frontBottomPaddingTablet'], 'px' ),
@@ -6634,7 +6650,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusTablet'], 'px' ),
 				),
 				' .flip-box-back' => array(
-					'background-position'        => $attr['backBackgroundPositionTablet'],
+					'background-position'        => $back_background_position_focal_tablet,
 					'background-size'            => $attr['backBackgroundSizeTablet'],
 					'padding-top'                => self::get_css_value( $attr['backTopPaddingTablet'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['backBottomPaddingTablet'], 'px' ),
@@ -6710,12 +6726,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'backgroundSizeMobile'         => 'cover',
 				'backgroundPositionMobile'     => 'center center',
 				'backgroundPositionTablet'     => 'center center',
+				'backgroundPositionFocal'      => '50% 50%',
+				'backgroundPositionFocalMobile' => '50% 50%',
+				'backgroundPositionFocalTablet' => '50% 50%',
 				'imageSizeTab'                 => 'desktop',
 				'backImagePositionTab'         => 'desktop',
 				'backBackgroundSizeTablet'     => 'cover',
 				'backBackgroundSizeMobile'     => 'cover',
 				'backBackgroundPositionMobile' => 'center center',
 				'backBackgroundPositionTablet' => 'center center',
+				'backBackgroundPositionFocal'  => '50% 50%',
+				'backBackgroundPositionFocalMobile' => '50% 50%',
+				'backBackgroundPositionFocalTablet' => '50% 50%',
 				'backImageSizeTab'             => 'desktop',
 				'colorOpacity'                 => 30,
 				'backColorOpacity'             => 30,
