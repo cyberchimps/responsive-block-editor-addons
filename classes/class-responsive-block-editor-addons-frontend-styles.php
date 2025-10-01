@@ -8077,6 +8077,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				}
 			}
 
+			$box_image_position_focal = self::get_background_position( $attr['boxImagePosition'] );
+			$box_image_position_focal_tablet = self::get_background_position( $attr['boxImagePositionTablet'] );
+			$box_image_position_focal_mobile = self::get_background_position( $attr['boxImagePositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$box_image_position_focal        = self::get_background_position( $attr['boxImagePositionFocal'] );
+				$box_image_position_focal_tablet = self::get_background_position( $attr['boxImagePositionFocalTablet'] );
+				$box_image_position_focal_mobile = self::get_background_position( $attr['boxImagePositionFocalMobile'] );
+			}
+
 			$selectors = array(
 				' '                => array(
 					'display'                    => true === $attr['hideWidget'] ? 'none' : 'flex',
@@ -8094,7 +8104,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-color'           => self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ),
 					'background-size'            => $attr['boxImageSize'],
 					'background-repeat'          => $attr['boxImageRepeat'],
-					'background-position'        => $attr['boxImagePosition'],
+					'background-position'        => $box_image_position_focal,
 					'padding-left'               => self::get_css_value( $attr['boxLeftPadding'], 'px' ),
 					'padding-right'              => self::get_css_value( $attr['boxRightPadding'], 'px' ),
 					'padding-bottom'             => self::get_css_value( $attr['boxBottomPadding'], 'px' ),
@@ -8188,7 +8198,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusMobile'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusMobile'], 'px' ),
 					'background-size'            => $attr['boxImageSizeMobile'],
-					'background-position'        => $attr['boxImagePositionMobile'],
+					'background-position'        => $box_image_position_focal_mobile,
 					'text-align'                 => $attr['contentAlignMobile'],
 					'justify-content'            => $attr['verticalAlignmentMobile'] . '!important',
 					'padding-left'               => self::get_css_value( $attr['boxLeftPaddingMobile'], 'px' ),
@@ -8215,7 +8225,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-right-radius' => self::get_css_value( $attr['blockBottomRadiusTablet'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['blockLeftRadiusTablet'], 'px' ),
 					'background-size'            => $attr['boxImageSizeTablet'],
-					'background-position'        => $attr['boxImagePositionTablet'],
+					'background-position'        => $box_image_position_focal_tablet,
 					'text-align'                 => $attr['contentAlignTablet'],
 					'justify-content'            => $attr['verticalAlignmentTablet'] . '!important',
 					'padding-left'               => self::get_css_value( $attr['boxLeftPaddingTablet'], 'px' ),
@@ -8420,6 +8430,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'boxImagePosition'               => 'center center',
 				'boxImagePositionMobile'         => 'center center',
 				'boxImagePositionTablet'         => 'center center',
+				'boxImagePositionFocal'          => '50% 50%',
+				'boxImagePositionFocalTablet'    => '50% 50%',
+				'boxImagePositionFocalMobile'    => '50% 50%',
 				'boxImageRepeat'                 => 'no-repeat',
 				'descriptionTypographyColor'     => '#1E1E1E',
 				'titleTypographyColor'           => '#1E1E1E',
