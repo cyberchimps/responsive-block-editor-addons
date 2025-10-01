@@ -13109,6 +13109,16 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$position    = str_replace( '-', ' ', $attr['backgroundImagePosition'] );
 			$backopacity = $attr['backgroundOpacity'] ? ( 100 - $attr['backgroundOpacity'] ) / 100 : 0.5;
 
+			$background_position_focal        = self::get_background_position( $attr['backgroundPosition'] );
+			$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionTablet'] );
+			$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionMobile'] );
+
+			if ( isset( $attr['hasImagePositionMigrated'] ) && $attr['hasImagePositionMigrated'] ) {
+				$background_position_focal        = self::get_background_position( $attr['backgroundPositionFocal'] );
+				$background_position_focal_tablet = self::get_background_position( $attr['backgroundPositionFocalTablet'] );
+				$background_position_focal_mobile = self::get_background_position( $attr['backgroundPositionFocalMobile'] );
+			}
+
 			$selectors = array(
 				' '                   => array(
 					'display'        => true === $attr['hideWidget'] ? 'none' : 'block',
@@ -13176,7 +13186,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						),
 					'background-size'       => $attr['backgroundSize'],
 					'background-repeat'     => $attr['backgroundRepeat'],
-					'background-position'   => $attr['backgroundPosition'],
+					'background-position'   => $background_position_focal,
 					'background-attachment' => $attr['backgroundAttachment'],
 					'opacity'               => 'image' === $attr['backgroundType'] ? $attr['imgopacity'] : '',
 				),
@@ -13288,6 +13298,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-bottom-right-radius' => self::get_css_value( $attr['arrowBottomRadiusMobile'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['arrowLeftRadiusMobile'], 'px' ),
 				),
+				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay' => array(
+					'background-size'       => $attr['backgroundSizeMobile'],
+					'background-position'   => $background_position_focal_mobile,
+				),
 			);
 
 			$tablet_selectors = array(
@@ -13352,6 +13366,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-top-right-radius'    => self::get_css_value( $attr['arrowRightRadiusTablet'], 'px' ),
 					'border-bottom-right-radius' => self::get_css_value( $attr['arrowBottomRadiusTablet'], 'px' ),
 					'border-bottom-left-radius'  => self::get_css_value( $attr['arrowLeftRadiusTablet'], 'px' ),
+				),
+				' .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay' => array(
+					'background-size'       => $attr['backgroundSizeTablet'],
+					'background-position'   => $background_position_focal_tablet,
 				),
 			);
 
@@ -13894,6 +13912,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				'backgroundPositionTablet' => 'center center',
 				'backgroundPositionMobile' => 'center center',
+				'backgroundPositionFocal'  => '50% 50%',
+				'backgroundPositionFocalMobile' => '50% 50%',
+				'backgroundPositionFocalTablet' => '50% 50%',
 				'backgroundSizeTablet'     => 'cover',
 				'backgroundSizeMobile'     => 'cover',
 				'backgroundPosition'       => 'center center',

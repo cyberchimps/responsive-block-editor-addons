@@ -6,6 +6,7 @@ import generateCSS from "../../generateCSS";
 import generateCSSUnit from "../../generateCSSUnit";
 import { hexToRgba } from "../../utils/index";
 import generateBackgroundImageEffect from "../../generateBackgroundImageEffect";
+import { getImagePostionCSS } from "../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -156,6 +157,9 @@ function EditorStyles(props) {
   backgroundPosition,
   backgroundPositionMobile,
   backgroundPositionTablet,
+  backgroundPositionFocal,
+  backgroundPositionFocalMobile,
+  backgroundPositionFocalTablet,
   backgroundSizeTablet,
   backgroundSizeMobile,
   imagePositionTab,
@@ -337,7 +341,7 @@ function EditorStyles(props) {
       "font-style": descFontStyle,
     },
     " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
@@ -472,6 +476,10 @@ function EditorStyles(props) {
       "text-align": headingAlignMobile,
       padding: generateCSSUnit(contentPaddingMobile, "px"),
     },
+    " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
+      "background-size": backgroundSizeMobile,
+    }
   };
 
   var tablet_selectors = {
@@ -526,6 +534,10 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-tm__content": {
       "text-align": headingAlignTablet,
     },
+    " .responsive-block-editor-addons-testimonial__wrap.responsive-block-editor-addons-tm__bg-type-image .responsive-block-editor-addons-tm__overlay": {
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
+      "background-size": backgroundSizeTablet,
+    }
   };
 
   var styling_css = "";
