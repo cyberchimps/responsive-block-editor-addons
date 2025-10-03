@@ -1623,19 +1623,20 @@ export default class Inspector extends Component {
                 }
                 __nextHasNoMarginBottom
               />
-              <PanelBody
-                title={__("Color", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                 <RbeaColorControl
-									label = {__("Color", "responsive-block-editor-addons")}
-									colorValue={arrowColor}
-									onChange={(colorValue) =>
-										setAttributes({ arrowColor: colorValue })
-									}
-									resetColor={() => setAttributes({ arrowColor: "" })}
-								/>
-              </PanelBody>
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <RbeaColorControl
+                label = {__("Color", "responsive-block-editor-addons")}
+                colorValue={arrowColor}
+                onChange={(colorValue) =>
+                  setAttributes({ arrowColor: colorValue })
+                }
+                resetColor={() => setAttributes({ arrowColor: "" })}
+              />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
               <RbeaRangeControl
                 label={__("Arrow Size", "responsive-block-editor-addons")}
                 value={arrowSize}

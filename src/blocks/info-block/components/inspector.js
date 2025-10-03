@@ -1946,6 +1946,9 @@ export default class Inspector extends Component {
                 resetValues={blockMarginResetValues}
                 {...this.props}
               />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
               <ResponsiveSpacingControl
                 title={"Prefix Bottom Margin"}
                 attrNameTemplate="resprefixSpace%s"
@@ -1968,20 +1971,16 @@ export default class Inspector extends Component {
                 setAttributes={setAttributes}
                 {...this.props}
               />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+              
               {source_type !== "none" && (
-                <PanelBody
-                  title={__(
-                    "Image/Icon Margin",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={false}
-                >
-                  <ResponsiveNewMarginControl
+                <ResponsiveNewMarginControl
                   attrNameTemplate="icon%s"
                   resetValues={iconMarginResetValues}
                   {...this.props}
+                  label={__("Image/Icon Margin", "responsive-block-editor-addons")}
                 />
-                </PanelBody>
               )}
             </PanelBody>
             <RbeaSupportControl blockSlug={"info-block"} />

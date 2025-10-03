@@ -91,99 +91,13 @@ class ButtonSpacingControl extends Component {
 
     var advancedControls;
       advancedControls = (
-          <PanelBody
-              title={__("Spacing Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-          >
-          {/* <TabPanel
-          className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
-          activeClass="active-tab"
-          tabs={[
-            {
-              name: "desktop",
-              title: <Dashicon icon="desktop" />,
-              className:
-                " responsive-desktop-tab  responsive-responsive-tabs",
-            },
-            {
-              name: "tablet",
-              title: <Dashicon icon="tablet" />,
-              className: " responsive-tablet-tab  responsive-responsive-tabs",
-            },
-            {
-              name: "mobile",
-              title: <Dashicon icon="smartphone" />,
-              className: " responsive-mobile-tab  responsive-responsive-tabs",
-            },
-          ]}
-        >
-          {(tab) => {
-            let tabout;
-
-            if ("mobile" === tab.name) {
-              tabout = (
-                <Fragment>
-                  <RbeaRangeControl
-                    label={__(
-                      "Horizontal Padding",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={ctaHpaddingMobile}
-                    onChange={(value) => {
-                      setAttributes({ ctaHpaddingMobile: value });
-                    }}
-                    min={0}
-                    max={1000}
-                    allowReset
-                  />
-                </Fragment>
-              );
-            } else if ("tablet" === tab.name) {
-              tabout = (
-                <Fragment>
-                  <RbeaRangeControl
-                    label={__(
-                      "Horizontal Padding",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={ctaHpaddingTablet}
-                    onChange={(value) => {
-                      setAttributes({ ctaHpaddingTablet: value });
-                    }}
-                    min={0}
-                    max={1000}
-                    allowReset
-                  />
-                </Fragment>
-              );
-            } else {
-              tabout = (
-                <Fragment>
-                  <RbeaRangeControl
-                    label={__(
-                      "Horizontal Padding",
-                      "responsive-block-editor-addons"
-                    )}
-                    value={ctaHpadding}
-                    onChange={(value) => {
-                      setAttributes({ ctaHpadding: value });
-                    }}
-                    min={0}
-                    max={1000}
-                    allowReset
-                  />
-                </Fragment>
-              );
-            }
-            return <div>{tabout}</div>;
-          }}
-        </TabPanel> */}
-        <ResponsiveNewPaddingControl
-          attrNameTemplate="ctaButton%s"
-          resetValues={ctaButtonPaddingResetValues}
-          {...this.props}
-        />
-        <TabPanel
+        <>
+          <ResponsiveNewPaddingControl
+            attrNameTemplate="ctaButton%s"
+            resetValues={ctaButtonPaddingResetValues}
+            {...this.props}
+          />
+          <TabPanel
             className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
             activeClass="active-tab"
             tabs={[
@@ -449,7 +363,7 @@ class ButtonSpacingControl extends Component {
                 </TabPanel>
             </Fragment>
           )}
-          </PanelBody>
+        </>
       );
 
 

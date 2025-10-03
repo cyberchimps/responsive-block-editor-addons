@@ -526,18 +526,9 @@ export default class Inspector extends Component {
 
     const frontControls = (index) => {
       return (
-        <PanelBody
-          key={index}
-          title={
-            __("Flip Box ", "responsive-block-editor-addons") +
-            " " +
-            (index + 1) +
-            " " +
-            __("Settings", "responsive-block-editor-addons")
-          }
-          initialOpen={false}
-          className={"rbea-repeater-panel"}
-        >
+        <>
+          {index > 0 && <hr className="responsive-block-editor-addons-editor__separator" />}
+          <h3 className="rbea-spacing-secondary-container-title">{__("Flip Box ", "responsive-block-editor-addons") + " " + (index + 1) + " " + __("Settings", "responsive-block-editor-addons")}</h3>
           <TextControl
             label={__("Title", "responsive-block-editor-addons")}
             type="text"
@@ -580,22 +571,14 @@ export default class Inspector extends Component {
             __nextHasNoMarginBottom
             __next40pxDefaultSize={true}
           />
-        </PanelBody>
+        </>
       );
     };
     const frontIconControls = (index) => {
       const icons = svg_icons;
       return (
-        <PanelBody
-          key={index}
-          title={
-            __("Flip Box ", "responsive-block-editor-addons") +
-            " " +
-            (index + 1)
-          }
-          initialOpen={false}
-          className={"rbea-repeater-panel"}
-        >
+        <>
+          {index > 0 && <hr className="responsive-block-editor-addons-editor__separator" />}
           <p>
             {__("Select Icon", "responsive-block-editor-addons")}
             <span className="components-base-control__label"></span>
@@ -622,23 +605,15 @@ export default class Inspector extends Component {
             isMulti={false}
             noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
           />
-        </PanelBody>
+        </>
       );
     };
     const backIconControls = (index) => {
       const icons = svg_icons;
 
       return (
-        <PanelBody
-          key={index}
-          title={
-            __("Flip Box ", "responsive-block-editor-addons") +
-            " " +
-            (index + 1)
-          }
-          initialOpen={false}
-          className={"rbea-repeater-panel"}
-        >
+        <>
+          {index > 0 && <hr className="responsive-block-editor-addons-editor__separator" />}
           <p>
             {__("Select Icon", "responsive-block-editor-addons")}
             <span className="components-base-control__label"></span>
@@ -665,24 +640,14 @@ export default class Inspector extends Component {
             isMulti={false}
             noSelectedPlaceholder={__("Select Icon", "responsive-block-editor-addons")}
           />
-        </PanelBody>
+        </>
       );
     };
 
     const backControls = (index) => {
       return (
-        <PanelBody
-          key={index}
-          title={
-            __("Flip Box ", "responsive-block-editor-addons") +
-            " " +
-            (index + 1) +
-            " " +
-            __("Settings", "responsive-block-editor-addons")
-          }
-          initialOpen={false}
-          className={"rbea-repeater-panel"}
-        >
+        <>
+          {index > 0 && <hr className="responsive-block-editor-addons-editor__separator" />}
           <TextControl
             label={__("Title", "responsive-block-editor-addons")}
             type="text"
@@ -725,7 +690,7 @@ export default class Inspector extends Component {
             __nextHasNoMarginBottom
             __next40pxDefaultSize={true}
           />
-        </PanelBody>
+        </>
       );
     };
 

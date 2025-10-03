@@ -444,26 +444,22 @@ export default class Inspector extends Component {
                 allowReset
               />
              
-              
-              <PanelBody
-                title={__("Overlay Text Spacing", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <RbeaRangeControl
-                  label={__("Horizontal", "responsive-block-editor-addons")}
-                  value={attributes.horizontalSpacing}
-                  onChange={(value) => setAttributes({ horizontalSpacing: value })}
-                  min={0}
-                  max={100}
-                />
-                <RbeaRangeControl
-                  label={__("Vertical", "responsive-block-editor-addons")}
-                  value={attributes.verticalSpacing}
-                  onChange={(value) => setAttributes({ verticalSpacing: value })}
-                  min={0}
-                  max={100}
-                />
-              </PanelBody>
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <RbeaRangeControl
+                label={__("Text Spacing Horizontal", "responsive-block-editor-addons")}
+                value={attributes.horizontalSpacing}
+                onChange={(value) => setAttributes({ horizontalSpacing: value })}
+                min={0}
+                max={100}
+              />
+              <RbeaRangeControl
+                label={__("Text Spacing Vertical", "responsive-block-editor-addons")}
+                value={attributes.verticalSpacing}
+                onChange={(value) => setAttributes({ verticalSpacing: value })}
+                min={0}
+                max={100}
+              />
             </PanelBody>
             <TypographyHelperControl
                 title={__("Overlay Text Typography", "responsive-block-editor-addons")}

@@ -1592,6 +1592,9 @@ class edit extends Component {
           min={100}
           max={5000}
         />
+
+        <hr className="responsive-block-editor-addons-editor__separator" />
+
         <div className = "rbea-repeat-selector-wrapper">
           <RbeaTabRadioControl
             label={__("Show Arrows & Dots", "responsive-block-editor-addons")}
@@ -1614,14 +1617,13 @@ class edit extends Component {
               min={0}
               max={50}
             />
-              <PanelBody title={__("Arrow Border", "responsive-block-editor-addons")} initialOpen={false}>
-              <RbeaBlockBorderHelperControl
-                  attrNameTemplate="arrow%s"
-                  values={{ radius: arrowBorderRadius, style: arrowBorderStyle, width: arrowBorderWidth, color: arrowBorderColor }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-              />
-              </PanelBody>
+              
+            <RbeaBlockBorderHelperControl
+              attrNameTemplate="arrow%s"
+              values={{ radius: arrowBorderRadius, style: arrowBorderStyle, width: arrowBorderWidth, color: arrowBorderColor }}
+              setAttributes={setAttributes}
+              {...this.props}
+            />
 
           </Fragment>
         )}

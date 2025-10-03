@@ -802,90 +802,83 @@ export default class Inspector extends Component {
               title={__("Social", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__(
-                  "Hide Social Icons",
-                  "responsive-block-editor-addons"
-                )}
-                initialOpen={true}
-              >
-                <ToggleControl
-                  label="Facebook"
-                  checked={facebook}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      facebook: !facebook,
-                    })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label="Twitter"
-                  checked={twitter}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      twitter: !twitter,
-                    })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label="Linkedin"
-                  checked={linkedin}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      linkedin: !linkedin,
-                    })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label="Instagram"
-                  checked={instagram}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      instagram: !instagram,
-                    })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label="Email"
-                  checked={email}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      email: !email,
-                    })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label="Youtube"
-                  checked={youtube}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      youtube: !youtube,
-                    })
-                  }
-                  __nextHasNoMarginBottom
-                />
-                <ToggleControl
-                  label="Pinterest"
-                  checked={pinterest}
-                  onChange={() =>
-                    this.props.setAttributes({
-                      pinterest: !pinterest,
-                    })
-                  }
-                  __nextHasNoMarginBottom
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Colors", "responsive-block-editor-addons")}
-                initialOpen={true}
-              >
-                {getSocialIconColors()}
-              </PanelBody>
+              <ToggleControl
+                label={__("Hide Facebook", "responsive-block-editor-addons")}
+                checked={facebook}
+                onChange={() =>
+                  this.props.setAttributes({
+                    facebook: !facebook,
+                  })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__("Hide Twitter", "responsive-block-editor-addons")}
+                checked={twitter}
+                onChange={() =>
+                  this.props.setAttributes({
+                    twitter: !twitter,
+                  })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__("Hide Linkedin", "responsive-block-editor-addons")}
+                checked={linkedin}
+                onChange={() =>
+                  this.props.setAttributes({
+                    linkedin: !linkedin,
+                  })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__("Hide Instagram", "responsive-block-editor-addons")}
+                checked={instagram}
+                onChange={() =>
+                  this.props.setAttributes({
+                    instagram: !instagram,
+                  })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__("Hide Email", "responsive-block-editor-addons")}
+                checked={email}
+                onChange={() =>
+                  this.props.setAttributes({
+                    email: !email,
+                  })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__("Hide Youtube", "responsive-block-editor-addons")}
+                checked={youtube}
+                onChange={() =>
+                  this.props.setAttributes({
+                    youtube: !youtube,
+                  })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__("Hide Pinterest", "responsive-block-editor-addons")}
+                checked={pinterest}
+                onChange={() =>
+                  this.props.setAttributes({
+                    pinterest: !pinterest,
+                  })
+                }
+                __nextHasNoMarginBottom
+              />
+              
+              <hr className="responsive-block-editor-addons-editor__separator" />
+              
+              {getSocialIconColors()}
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+              
               <RbeaRangeControl
                 label={__("Icon Size", "responsive-block-editor-addons")}
                 value={iconSize}
