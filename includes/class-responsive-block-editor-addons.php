@@ -168,6 +168,7 @@ class Responsive_Block_Editor_Addons {
 		add_action( 'admin_notices', array( $this, 'rbea_admin_review_notice' ) );
 		add_action( 'admin_init', array( $this, 'rba_notice_dismissed' ) );
 		add_action( 'admin_init', array( $this, 'rba_notice_change_timeout' ) );
+		add_action( 'admin_init', array( $this, 'rba_notice_cross_dismiss' ) );
 
 		add_action( 'wp_ajax_responsive_block_editor_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
 		add_action( 'wp_ajax_nopriv_responsive_block_editor_cf7_shortcode', array( $this, 'cf7_shortcode' ) );
@@ -1357,10 +1358,40 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rbea_admin_review_notice() {
 
+		// Don't show notice if it has been dismissed
+		if ( get_option( 'responsive_block_editor_addons_review_notice_dismissed' ) ) {
+			return;
+		}
+
+		// Initialize the review notice option if it doesn't exist
 		if ( false === get_option( 'responsive_block_editor_addons_review_notice' ) ) {
-			set_transient( 'responsive_block_editor_addons_ask_review_flag', true, 7 * 24 * 60 * 60 );
+			set_transient( 'responsive_block_editor_addons_intial_timeout', true, 7 * 24 * 60 * 60 );
 			update_option( 'responsive_block_editor_addons_review_notice', true );
-		} elseif ( false === (bool) get_transient( 'responsive_block_editor_addons_ask_review_flag' ) && false === get_option( 'responsive_block_editor_addons_review_notice_dismissed' ) ) {
+		}
+
+		// Check if the "maybe later" transient is active (user clicked "maybe later")
+		$maybe_later_active = (bool) get_transient( 'responsive_block_editor_addons_timeout' );
+		
+		// If "maybe later" is active, don't show notice regardless of other conditions
+		if ( $maybe_later_active ) {
+			return;
+		}
+		
+		// Check if 7-day delay has passed (original 7-day timer)
+		$seven_day_delay_passed = false === get_option( 'responsive_block_editor_addons_intial_timeout' ) ? false : true;
+		
+		// Check if user has at least 5 posts/pages with RBA blocks
+		$posts_with_blocks = $this->count_posts_with_rba_blocks();
+		$has_five_posts_with_blocks = $posts_with_blocks >= 5;
+		
+		// Check if user has used template library
+		$template_library_used = (bool) get_option( 'responsive_block_editor_addons_template_library_used' );
+		
+		// Show notice if:
+		// 1. 7-day delay has passed, OR
+		// 2. User has 5+ posts/pages with RBA blocks, OR
+		// 3. User has used template library
+		if ( $seven_day_delay_passed || $has_five_posts_with_blocks || $template_library_used ) {
 			$image_url = plugins_url( 'admin/images/responsive-blocks.svg', __DIR__ );
 			printf(
 				'<div class="notice notice-info rbea-ask-for-review-notice">
@@ -1389,7 +1420,7 @@ class Responsive_Block_Editor_Addons {
 						</div>
 					</div>
 					<div>
-						<a href="%7$s"><button type="button" class="rbea-ask-review-notice-dismiss"></button></a>
+						<a href="%10$s"><button type="button" class="rbea-ask-review-notice-dismiss"></button></a>
 					</div>
 				</div>',
 				esc_url( 'https://wordpress.org/support/plugin/responsive-block-editor-addons/reviews/' ),
@@ -1400,7 +1431,8 @@ class Responsive_Block_Editor_Addons {
 				esc_html__( 'I already did', 'responsive-block-editor-addons' ),
 				esc_url( '?responsive-block-editor-addons-notice-dismissed=true' ),
 				esc_url( $image_url ),
-				esc_url( '?responsive-block-editor-addons-review-notice-change-timeout=true' )
+				esc_url( '?responsive-block-editor-addons-review-notice-change-timeout=true' ),
+				esc_url( '?responsive-block-editor-addons-cross-dismiss=true' )
 			);
 		}
 	}
@@ -1420,9 +1452,105 @@ class Responsive_Block_Editor_Addons {
 	 */
 	public function rba_notice_change_timeout() {
 		if ( isset( $_GET['responsive-block-editor-addons-review-notice-change-timeout'] ) ) {
-			set_transient( 'responsive_block_editor_addons_ask_review_flag', true, DAY_IN_SECONDS );
+			set_transient( 'responsive_block_editor_addons_timeout', true, DAY_IN_SECONDS );
 			wp_safe_redirect( remove_query_arg( array( 'responsive-block-editor-addons-review-notice-change-timeout' ), wp_get_referer() ) );
 		}
+	}
+
+	/**
+	 * Handle cross button dismiss with 30-day timeout.
+	 */
+	public function rba_notice_cross_dismiss() {
+		if ( isset( $_GET['responsive-block-editor-addons-cross-dismiss'] ) ) {
+			set_transient( 'responsive_block_editor_addons_timeout', true, 30 * DAY_IN_SECONDS );
+			wp_safe_redirect( remove_query_arg( array( 'responsive-block-editor-addons-cross-dismiss' ), wp_get_referer() ) );
+		}
+	}
+
+	/**
+	 * Count posts and pages that contain at least one RBA block.
+	 *
+	 * @return int Number of posts/pages with RBA blocks.
+	 */
+	public function count_posts_with_rba_blocks() {
+		// Get all RBA block names
+		$rba_blocks = array(
+			'responsive-block-editor-addons/accordion',
+			'responsive-block-editor-addons/advance-columns',
+			'responsive-block-editor-addons/advanced-heading',
+			'responsive-block-editor-addons/advanced-text',
+			'responsive-block-editor-addons/anchor',
+			'responsive-block-editor-addons/blockquote',
+			'responsive-block-editor-addons/buttons',
+			'responsive-block-editor-addons/call-mail-button',
+			'responsive-block-editor-addons/call-to-action',
+			'responsive-block-editor-addons/card',
+			'responsive-block-editor-addons/container',
+			'responsive-block-editor-addons/contact-form-7-styler',
+			'responsive-block-editor-addons/content-timeline',
+			'responsive-block-editor-addons/count-down',
+			'responsive-block-editor-addons/count-up',
+			'responsive-block-editor-addons/divider',
+			'responsive-block-editor-addons/expand',
+			'responsive-block-editor-addons/feature-grid',
+			'responsive-block-editor-addons/flipbox',
+			'responsive-block-editor-addons/form',
+			'responsive-block-editor-addons/gallery-masonry',
+			'responsive-block-editor-addons/googlemap',
+			'responsive-block-editor-addons/how-to',
+			'responsive-block-editor-addons/icons-list',
+			'responsive-block-editor-addons/image',
+			'responsive-block-editor-addons/image-boxes',
+			'responsive-block-editor-addons/image-hotspot',
+			'responsive-block-editor-addons/image-slider',
+			'responsive-block-editor-addons/inline-notice',
+			'responsive-block-editor-addons/instagram',
+			'responsive-block-editor-addons/popup',
+			'responsive-block-editor-addons/portfolio',
+			'responsive-block-editor-addons/post-carousel',
+			'responsive-block-editor-addons/post-grid',
+			'responsive-block-editor-addons/post-timeline',
+			'responsive-block-editor-addons/pricing-list',
+			'responsive-block-editor-addons/pricing-table',
+			'responsive-block-editor-addons/progress-bar',
+			'responsive-block-editor-addons/section',
+			'responsive-block-editor-addons/section-block',
+			'responsive-block-editor-addons/shape-divider',
+			'responsive-block-editor-addons/social-share',
+			'responsive-block-editor-addons/spacer',
+			'responsive-block-editor-addons/table-of-contents',
+			'responsive-block-editor-addons/tabs',
+			'responsive-block-editor-addons/taxonomy-list',
+			'responsive-block-editor-addons/team',
+			'responsive-block-editor-addons/testimonial',
+			'responsive-block-editor-addons/testimonial-slider',
+			'responsive-block-editor-addons/video-popup',
+			'responsive-block-editor-addons/wp-search',
+		);
+
+		// Query for published posts and pages
+		$args = array(
+			'post_type'      => array( 'post', 'page' ),
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'fields'         => 'ids',
+		);
+
+		$posts = get_posts( $args );
+		$count = 0;
+
+		foreach ( $posts as $post_id ) {
+			$content = get_post_field( 'post_content', $post_id );
+			
+			// Check if any RBA block exists in the content
+			foreach ( $rba_blocks as $block_name ) {
+				if ( strpos( $content, '<!-- wp:' . $block_name ) !== false ) {
+					$count++;
+					break; // Count this post only once, even if it has multiple RBA blocks
+				}
+			}
+		}
+		return $count;
 	}
 
 	/**
