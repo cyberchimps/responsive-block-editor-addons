@@ -450,7 +450,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'animations',
 				'title'    => 'Animations',
-				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/animations/',
+				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/general/animations-extension/',
 				'demo'     => 'https://cyberchimps.com/responsive-blocks/animations/',
 				'category' => 'extensions',
 				'status'   => 1,
@@ -517,8 +517,19 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 				'data'     => array(
 					'key'      => 'animations',
 					'title'    => 'Animations',
-					'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/animations/',
+					'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/general/animations-extension/',
 					'demo'     => 'https://cyberchimps.com/responsive-blocks/animations/',
+					'category' => 'extensions',
+					'status'   => 1,
+				),
+				'position' => 'append',
+			),
+			'display-conditions' => array(
+				'data'     => array(
+					'key'      => 'display-conditions',
+					'title'    => 'Display Conditions',
+					'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/display-conditions/',
+					'demo'     => 'https://cyberchimps.com/responsive-blocks/display-conditions/',
 					'category' => 'extensions',
 					'status'   => 1,
 				),

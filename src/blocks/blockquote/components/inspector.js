@@ -535,6 +535,7 @@ export default class Inspector extends Component {
                 label={__("Enable Icon", "responsive-block-editor-addons")}
                 checked={!!this.props.attributes.twEnabled}
                 onChange={(v) => setAttributes({ twEnabled: !!v })}
+                __nextHasNoMarginBottom
               />
 
               {/* Show other Twitter options only when Enable Icon is turned on */}

@@ -87,7 +87,9 @@ export default class Save extends Component {
             <div className="responsive-block-editor-addons-toc__title">
               {headingTitle}
             </div>
+            <span className="responsive-block-editor-addons-toc__collapsible-wrap">
               {icon_html}
+            </span>
           </div>
           <TableOfContents
             headers={

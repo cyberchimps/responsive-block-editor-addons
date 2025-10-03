@@ -431,7 +431,9 @@ export default class Inspector extends Component {
 
               {positionTab === 'tablet' && tabsStyleT === 'hstyle3' && (
                 <Fragment>
-                  <BaseControl>
+                  <BaseControl
+                    __nextHasNoMarginBottom
+                  >
                     <p>{__("Alignment (Tablet)", "responsive-block-editor-addons")}</p>
                     <div className="responsive-block-editor-addons-alignment">
                       <AlignmentToolbar
@@ -450,7 +452,9 @@ export default class Inspector extends Component {
               )}
               {positionTab === 'tablet' && tabsStyleT === 'vstyle8' && (
                 <Fragment>
-                  <BaseControl>
+                  <BaseControl
+                    __nextHasNoMarginBottom
+                  >
                     <p>{__("Alignment (Tablet)", "responsive-block-editor-addons")}</p>
                     <div className="responsive-block-editor-addons-tabs-alignment-container">
                       <Button
@@ -476,7 +480,9 @@ export default class Inspector extends Component {
 
               {positionTab === 'mobile' && tabsStyleM === 'hstyle3' && (
                 <Fragment>
-                  <BaseControl>
+                  <BaseControl
+                    __nextHasNoMarginBottom
+                  >
                     <p>{__("Alignment (Mobile)", "responsive-block-editor-addons")}</p>
                     <div className="responsive-block-editor-addons-alignment">
                       <AlignmentToolbar
@@ -496,7 +502,9 @@ export default class Inspector extends Component {
 
               {positionTab === 'mobile' && tabsStyleM === 'vstyle8' && (
                 <Fragment>
-                  <BaseControl>
+                  <BaseControl
+                    __nextHasNoMarginBottom
+                  >
                     <p>{__("Alignment (Mobile)", "responsive-block-editor-addons")}</p>
                     <div className="responsive-block-editor-addons-tabs-alignment-container">
                       <Button

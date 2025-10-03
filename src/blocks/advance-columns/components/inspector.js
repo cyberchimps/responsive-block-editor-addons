@@ -416,7 +416,6 @@ export default class Inspector extends Component {
                 <Fragment>
                   <ToggleGroupControl
                     className="responsive-size-type-field"
-                    label={ __("Size Type", "responsive-block-editor-addons") }
                     aria-label={ __("Size Type", "responsive-block-editor-addons") }
                     value={ widthType }
                     onChange={(val) => setAttributes({ widthType: val })}

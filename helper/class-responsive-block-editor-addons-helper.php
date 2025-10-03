@@ -60,4 +60,27 @@ class Responsive_Block_Editor_Addons_Helper {
 		return ''; // Return an empty string if not valid
 	}
 
+	/**
+	 * Get User Browser name
+	 *
+	 * @param string $user_agent Browser names.
+	 * @return string
+	 * @since 2.1.2
+	 */
+	function rbea_get_browser_name( $user_agent ) {
+		if ( strpos( $user_agent, 'Opera' ) || strpos( $user_agent, 'OPR/' ) ) {
+			return 'opera';
+		} elseif ( strpos( $user_agent, 'Edg' ) || strpos( $user_agent, 'Edge' ) ) {
+			return 'edge';
+		} elseif ( strpos( $user_agent, 'Chrome' ) ) {
+			return 'chrome';
+		} elseif ( strpos( $user_agent, 'Safari' ) ) {
+			return 'safari';
+		} elseif ( strpos( $user_agent, 'Firefox' ) ) {
+			return 'firefox';
+		} elseif ( strpos( $user_agent, 'MSIE' ) || strpos( $user_agent, 'Trident/7' ) ) {
+			return 'ie';
+		}
+	}
+
 }
