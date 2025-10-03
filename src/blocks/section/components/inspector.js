@@ -26,6 +26,10 @@ import RbeaExtensions from "../../../extensions/RbeaExtensions";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { ColorPalette, MediaUpload, InspectorControls } = wp.blockEditor;
+import { createBlock } from '@wordpress/blocks';
+import { dispatch, select } from '@wordpress/data';
+import { hexToRgba } from "../../../utils";
+import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
 
 // Import Inspector components
 const {
@@ -103,6 +107,74 @@ export default class Inspector extends Component {
     }
     setAttributes({ backgroundVideo: media });
   }
+
+  addOpacityToHex(hex = '#FFFFFF', opacity = '') {
+    if ( opacity === '' || typeof opacity === 'undefined' ) return hex;
+
+    // Remove '#' if present.
+    hex = hex.replace('#', '');
+    
+    // Convert short hex (#FFF) to long hex (#FFFFFF).
+    if (hex.length === 3) {
+      hex = hex.split('').map(c => c + c).join('');
+    }
+    
+    // Convert opacity to hex.
+    const alphaHex = Math.round(opacity * 255).toString(16).padStart(2, '0');
+    
+    // 8-digit hex.
+    const hex8 = `#${hex}${alphaHex.toUpperCase()}`;
+    
+    return hex8;
+  }
+
+  convertToContainer = () => {
+    const { clientId } = this.props; // clientId is passed to Inspector by the block edit wrapper
+    const { getBlock } = select( 'core/block-editor' );
+    const { replaceBlock } = dispatch( 'core/block-editor' );
+
+    const currentBlock = getBlock( clientId );
+    if ( ! currentBlock ) return;
+
+    const { attributes, innerBlocks } = currentBlock;
+
+    let width = attributes.width;
+    console.log('section attributes');
+    console.log(attributes)
+    let containerAlign = {
+      innerContentCustomWidthDesktop: width,
+      innerContentCustomWidthTablet: width,
+      innerContentCustomWidthMobile: width,
+    };
+
+    if ( attributes.align === 'full' ) {
+      let width       = attributes.innerWidth;
+      let widthTablet = attributes.innerWidthTablet === undefined ? width : attributes.innerWidthTablet;
+      let widthMobile = attributes.innerWidthMobile === undefined ? widthTablet : attributes.innerWidthMobile;
+
+      containerAlign = {
+        innerContentCustomWidthDesktop: width,
+        innerContentCustomWidthTablet: widthTablet,
+        innerContentCustomWidthMobile: widthMobile,
+      };
+    }
+    console.log(generateBackgroundImageEffect( `${hexToRgba(attributes.backgroundColor1, (attributes.opacity/100))}`, `${hexToRgba(attributes.backgroundColor2, (attributes.opacity/100))}`, attributes.gradientDirection, attributes.colorLocation1, attributes.colorLocation2 ));
+
+    let sectionGradient = generateBackgroundImageEffect( `${hexToRgba(attributes.backgroundColor1, (attributes.opacity/100))}`, `${hexToRgba(attributes.backgroundColor2, (attributes.opacity/100))}`, attributes.gradientDirection, attributes.colorLocation1, attributes.colorLocation2 );
+    const newBlock = createBlock(
+      'responsive-block-editor-addons/container',
+      {
+        variationSelected: true,
+        ...containerAlign,
+        backgroundType: attributes.backgroundType,
+        backgroundColor: this.addOpacityToHex(attributes.backgroundColor, (attributes.opacity/100)),
+        gradient: sectionGradient,
+      },
+      innerBlocks
+    );
+
+    replaceBlock( clientId, newBlock );
+  };
 
   render() {
     // Setup the attributes
@@ -238,6 +310,8 @@ export default class Inspector extends Component {
       setAttributes,
     } = this.props;
 
+    console.log(this.props.attributes)
+
     const blockMarginResetValues = {
       marginTop: 10,
       marginRight: 0,
@@ -334,6 +408,18 @@ export default class Inspector extends Component {
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
+            <div style={{margin: '20px 24px'}} >
+              <p>⚠️ {__( 'Heads up! This block will be deprecated soon. We recommend using the Container block instead. Click on Save button.', 'responsive-block-editor-addons' )}</p>
+              <Button
+                isPrimary
+                onClick={ this.convertToContainer }
+              >
+                {__( 'Convert to Container', 'responsive-block-editor-addons' )}
+              </Button>
+            </div>
+
+            <hr className="responsive-block-editor-addons-editor__separator" />
+          
               {align != "full" && (
                 <RbeaRangeControl
                   label={__("Width", "responsive-block-editor-addons")}
