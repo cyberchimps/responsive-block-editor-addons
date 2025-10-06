@@ -5,6 +5,7 @@
 import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils/index.js";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -244,6 +245,9 @@ function EditorStyles(props) {
     backgroundPosition,
     backgroundPositionMobile,
     backgroundPositionTablet,
+    backgroundPositionFocal,
+    backgroundPositionFocalMobile,
+    backgroundPositionFocalTablet,
     backgroundSize,
     backgroundSizeTablet,
     backgroundSizeMobile,
@@ -470,7 +474,7 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-cta-image": {
       "background-image": imgURL !== "empty" && backgroundImage === "" ? `url(${imgURL})` : `url(${backgroundImage})`, // For compatibility with v1.3.2.
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
       "background-attachment": backgroundAttachment,
@@ -615,7 +619,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(resImageLeftRadiusMobile, "px"), 
     },
     " .responsive-block-editor-addons-cta-image": {
-      "background-position": backgroundPositionMobile,
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile,
     },
   };
@@ -696,7 +700,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(resImageLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-image": {
-      "background-position": backgroundPositionTablet,
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet,
     },
   };

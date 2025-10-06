@@ -882,31 +882,24 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Text Spacing", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewPaddingControl
-                  attrNameTemplate="text%s"
-                  resetValues={blockPaddingResetValues}
-                  {...this.props}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Block Spacing", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewPaddingControl
-                  attrNameTemplate="block%s"
-                  resetValues={blockPaddingResetValues}
-                  {...this.props}
-                />
-                <ResponsiveNewMarginControl
-                  attrNameTemplate="block%s"
-                  resetValues={blockMarginResetValues}
-                  {...this.props}
-                />
-              </PanelBody>
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="text%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+                label={__("Text Spacing", "responsive-block-editor-addons")}
+              />
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+                label={__("Block Padding", "responsive-block-editor-addons")}
+              />
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+                label={__("Block Margin", "responsive-block-editor-addons")}
+              />
             </PanelBody>
 				    <TypographyHelperControl
 				    	title={__("Quote Typography", "responsive-block-editor-addons")}
@@ -990,17 +983,16 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
                 
+                <hr className="responsive-block-editor-addons-editor__separator" />
+
                 {/* Button Padding (responsive) */}
-                <PanelBody
-                  title={__("Button Padding (px)", "responsive-block-editor-addons")}
-                  initialOpen={false}
-                >
-                  <ResponsiveNewPaddingControl
-                    attrNameTemplate="tw%s"
-                    resetValues={twPaddingResetValues}
-                    {...this.props}
-                  />
-                </PanelBody>
+                <ResponsiveNewPaddingControl
+                  attrNameTemplate="tw%s"
+                  resetValues={twPaddingResetValues}
+                  {...this.props}
+                />
+
+                <hr className="responsive-block-editor-addons-editor__separator" />
 
                 {/* Typography for label */}
                 <TypographyHelperControl
@@ -1023,6 +1015,7 @@ export default class Inspector extends Component {
                   showTextDecoration={true}
                   showColorControl={false}
                   setAttributes={setAttributes}
+                  isSetting={true}
                   {...this.props}
                 />
               </PanelBody>

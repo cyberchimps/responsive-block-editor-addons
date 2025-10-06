@@ -523,6 +523,18 @@ const attributes = {
     type: "string",
     default: "center center"
   },
+  boxImagePositionFocal: {
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
+  },
+  boxImagePositionFocalMobile: {
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
+  },
+  boxImagePositionFocalTablet: {
+    type: "object",
+    default: { "x": 0.5, "y": 0.5 }
+  },
   boxImageSizeTab: {
     type: "string",
   },
@@ -646,6 +658,10 @@ const attributes = {
   descriptionFontStyle: {
     type: "string",
     default: "",
+  },
+  hasImagePositionMigrated: {
+    type: "boolean",
+    default: false,
   }
 };
 

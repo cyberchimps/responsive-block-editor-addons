@@ -392,44 +392,37 @@ export default class Inspector extends Component {
               title={__("Padding", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Title Padding", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveSpacingControl
-                  title={"Title Padding Horizontal"}
-                  attrNameTemplate="titlePaddingHorizontal%s"
-                  values={{ desktop: titlePaddingHorizontal, tablet: titlePaddingHorizontalTablet, mobile: titlePaddingHorizontalMobile }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={"Title Padding Vertical"}
-                  attrNameTemplate="titlePaddingVertical%s"
-                  values={{ desktop: titlePaddingVertical, tablet: titlePaddingVerticalTablet, mobile: titlePaddingVerticalMobile }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Content Padding", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveSpacingControl
-                  title={"Content Padding Horizontal"}
-                  attrNameTemplate="contentPaddingHorizontal%s"
-                  values={{ desktop: contentPaddingHorizontal, tablet: contentPaddingHorizontalTablet, mobile: contentPaddingHorizontalMobile }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={"Content Padding Vertical"}
-                  attrNameTemplate="contentPaddingVertical%s"
-                  values={{ desktop: contentPaddingVertical, tablet: contentPaddingVerticalTablet, mobile: contentPaddingVerticalMobile }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-              </PanelBody>
+              <ResponsiveSpacingControl
+                title={"Title Padding Horizontal"}
+                attrNameTemplate="titlePaddingHorizontal%s"
+                values={{ desktop: titlePaddingHorizontal, tablet: titlePaddingHorizontalTablet, mobile: titlePaddingHorizontalMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Padding Vertical"}
+                attrNameTemplate="titlePaddingVertical%s"
+                values={{ desktop: titlePaddingVertical, tablet: titlePaddingVerticalTablet, mobile: titlePaddingVerticalMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <ResponsiveSpacingControl
+                title={"Content Padding Horizontal"}
+                attrNameTemplate="contentPaddingHorizontal%s"
+                values={{ desktop: contentPaddingHorizontal, tablet: contentPaddingHorizontalTablet, mobile: contentPaddingHorizontalMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Content Padding Vertical"}
+                attrNameTemplate="contentPaddingVertical%s"
+                values={{ desktop: contentPaddingVertical, tablet: contentPaddingVerticalTablet, mobile: contentPaddingVerticalMobile }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
             </PanelBody>
             <PanelBody
               title={__("Spacing", "responsive-block-editor-addons")}

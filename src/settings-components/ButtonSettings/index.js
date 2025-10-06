@@ -38,10 +38,13 @@ class ButtonSettingsControl extends Component {
                   }}
                   __nextHasNoMarginBottom
               />
+              <hr className="responsive-block-editor-addons-editor__separator" />
               {this.props.showButtonSpacing === false ? false : true && (
                 <ButtonSpacingControl {...this.props}/>
               )}
+              <hr className="responsive-block-editor-addons-editor__separator" />
               <ButtonBorderControl {...this.props}/>
+              <hr className="responsive-block-editor-addons-editor__separator" />
               <ButtonColorControl {...this.props}/>
           </Fragment>
       );

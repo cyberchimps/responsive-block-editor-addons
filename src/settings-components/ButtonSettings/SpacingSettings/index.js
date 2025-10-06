@@ -131,25 +131,22 @@ class ButtonSpacingControl extends Component {
 
     var advancedControls;
       advancedControls = (
-          <PanelBody
-              title={__("Spacing Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-          >
-        <ResponsiveNewPaddingControl
-          attrNameTemplate="ctaButton%s"
-          resetValues={ctaButtonPaddingResetValues}
-          {...this.props}
-        />
-          { this.props.showMarginControls == true && (
-            <>
-            <ResponsiveNewMarginControl
+        <>
+          <ResponsiveNewPaddingControl
             attrNameTemplate="ctaButton%s"
-            resetValues={ctaButtonMarginResetValues}
+            resetValues={ctaButtonPaddingResetValues}
             {...this.props}
           />
-            </>
-          )}
-          </PanelBody>
+            { this.props.showMarginControls == true && (
+              <>
+              <ResponsiveNewMarginControl
+              attrNameTemplate="ctaButton%s"
+              resetValues={ctaButtonMarginResetValues}
+              {...this.props}
+            />
+              </>
+            )}
+        </>
       );
 
 

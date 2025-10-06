@@ -84,37 +84,34 @@ class ButtonBorderControl extends Component {
 
     var advancedControls;
       advancedControls = (
-          <PanelBody
-              title={__("Border Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-          >
-                <RbeaBorderStyleTabControl
-                    selected={ctaBorderStyle}
-                    onChange={(value) => setAttributes({ ctaBorderStyle: value })}
-                />
-              {"none" != ctaBorderStyle && (
-                  <Fragment>
-                      <RbeaRangeControl
-                          label={__("Border Width", "responsive-block-editor-addons")}
-                          value={ctaBorderWidth}
-                          onChange={(value) =>
-                              setAttributes({
-                                  ctaBorderWidth: value !== undefined ? value : 2,
-                              })
-                          }
-                          min={0}
-                          max={50}
-                          allowReset
-                      />
-                        <RbeaBorderRadiusControl
-                            attrNameTemplate="ctaBlock%s"
-                            label = 'Border Radius'
-                            resetValues={ctaButtonBorderRadiusResetValues}
-                            {...this.props}
-                        />
-                  </Fragment>
-              )}
-          </PanelBody>
+        <>
+          <RbeaBorderStyleTabControl
+              selected={ctaBorderStyle}
+              onChange={(value) => setAttributes({ ctaBorderStyle: value })}
+          />
+          {"none" != ctaBorderStyle && (
+            <Fragment>
+              <RbeaRangeControl
+                label={__("Border Width", "responsive-block-editor-addons")}
+                value={ctaBorderWidth}
+                onChange={(value) =>
+                  setAttributes({
+                    ctaBorderWidth: value !== undefined ? value : 2,
+                  })
+                }
+                min={0}
+                max={50}
+                allowReset
+              />
+              <RbeaBorderRadiusControl
+                attrNameTemplate="ctaBlock%s"
+                label = 'Border Radius'
+                resetValues={ctaButtonBorderRadiusResetValues}
+                {...this.props}
+              />
+            </Fragment>
+          )}
+        </>
       );
 
     return (
