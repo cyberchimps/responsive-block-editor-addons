@@ -29,6 +29,7 @@ import stackOnIcons from "../../../utils/components/rbea-tab-radio-control/rbea-
 import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import { convertPositionToFocalPoint } from '../../../getImagePosition';
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -59,6 +60,7 @@ const {
   TabPanel,
   Dashicon,
   RadioControl,
+  FocalPointPicker,
 } = wp.components;
 
 let svg_icons = Object.keys(ResponsiveBlocksIcon);
@@ -429,6 +431,9 @@ export default class Inspector extends Component {
         backgroundPosition,
         backgroundPositionMobile,
         backgroundPositionTablet,
+        backgroundPositionFocal,
+        backgroundPositionFocalMobile,
+        backgroundPositionFocalTablet,
         backgroundSize,
         backgroundSizeTablet,
         backgroundSizeMobile,
@@ -444,6 +449,7 @@ export default class Inspector extends Component {
         resheadFontStyle,
         ressubHeadTextTransform,
         ressubHeadFontStyle,
+        hasImagePositionMigrated,
       },
       setAttributes,
     } = this.props;
@@ -1050,6 +1056,17 @@ export default class Inspector extends Component {
       this.props.setAttributes({backgroundImageValueUpdated: true});
     }
 
+    if ( ! hasImagePositionMigrated ) {
+      this.props.setAttributes(
+        {
+          backgroundPositionFocal: convertPositionToFocalPoint( backgroundPosition ),
+          backgroundPositionFocalMobile: convertPositionToFocalPoint( backgroundPositionMobile ),
+          backgroundPositionFocalTablet: convertPositionToFocalPoint( backgroundPositionTablet ),
+          hasImagePositionMigrated: true,
+        }
+      )
+    }
+
     // Background image URL
     let background_image_url = backgroundImage || '';
 
@@ -1485,41 +1502,39 @@ export default class Inspector extends Component {
                     </TabPanel>
                     </div>
                     <Fragment>
-                      <div className = "rbea-background-image-positon-control"
-                      style={{
-                        backgroundImage: `url(${background_image_url})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition:  'center',
-                      }}>
+                      <div className = "rbea-background-image-positon-control">
                       { imagePositionTab === "desktop" && 
-                          <RadioControl 
-                            className = "rbea-background-image-positon-control-options"
-                            selected={backgroundPosition}
-                            options={imagePositionOptions}
+                          <FocalPointPicker
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            url={background_image_url}
+                            value={backgroundPositionFocal}
                             onChange={(value) =>
-                              setAttributes({ backgroundPosition: value })
+                              setAttributes({ backgroundPositionFocal: value })
                             }
                           />
                       }
                       {imagePositionTab === "tablet" &&
-                         <RadioControl 
-                            className = "rbea-background-image-positon-control-options"
-                            selected={backgroundPositionTablet}
-                            options={imagePositionOptions}
+                          <FocalPointPicker
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            url={background_image_url}
+                            value={backgroundPositionFocalTablet}
                             onChange={(value) =>
-                              setAttributes({ backgroundPositionTablet: value })
+                              setAttributes({ backgroundPositionFocalTablet: value })
                             }
-                        />
+                          />
                       }
                       {imagePositionTab === "mobile" && 
-                        <RadioControl 
-                            className = "rbea-background-image-positon-control-options"
-                            selected={backgroundPositionMobile}
-                            options={imagePositionOptions}
+                          <FocalPointPicker
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            url={background_image_url}
+                            value={backgroundPositionFocalMobile}
                             onChange={(value) =>
-                              setAttributes({ backgroundPositionMobile: value })
+                              setAttributes({ backgroundPositionFocalMobile: value })
                             }
-                        />
+                          />
                       }
                       </div>
                     </Fragment>
