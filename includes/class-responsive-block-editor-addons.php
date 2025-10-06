@@ -2244,8 +2244,8 @@ class Responsive_Block_Editor_Addons {
 			'windows'  => 'Win16|(Windows 95)|(Win95)|(Windows_95)|(Windows 98)|(Win98)|(Windows NT 5.0)|(Windows 2000)|(Windows NT 5.1)|(Windows XP)|(Windows NT 5.2)|(Windows NT 6.0)|(Windows Vista)|(Windows NT 6.1)|(Windows 7)|(Windows NT 4.0)|(WinNT4.0)|(WinNT)|(Windows NT)|Windows ME',
 			'open_bsd' => 'OpenBSD',
 			'sun_os'   => 'SunOS',
-			'linux'    => '(Linux)|(X11)',
-			'mac_os'   => '(Mac_PowerPC)|(Macintosh)',
+			'linux'    => '\bLinux\b(?!.*\bAndroid\b)', // Linux but NOT Android.
+			'mac_os'   => '(Mac_PowerPC|Macintosh|Mac OS|MacOS)',
 		);
 
 		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '';
