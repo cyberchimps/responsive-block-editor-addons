@@ -458,7 +458,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			array(
 				'key'      => 'display-conditions',
 				'title'    => 'Display Conditions',
-				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/display-conditions/',
+				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/general/display-conditions-extension/',
 				'demo'     => 'https://cyberchimps.com/responsive-blocks/display-conditions/',
 				'category' => 'extensions',
 				'status'   => 1,
