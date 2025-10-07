@@ -2141,7 +2141,7 @@ class Responsive_Block_Editor_Addons {
 	/**
 	 *  Get the User Roles
 	 *
-	 *  @since 2.1.2
+	 *  @since 2.1.3
 	 */
 	public function responsive_block_editor_addons_get_user_roles() {
 
@@ -2172,7 +2172,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_user_state_visibility( $block_attributes, $block_content ) {
@@ -2193,7 +2193,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_user_role_visibility( $block_attributes, $block_content ) {
@@ -2211,7 +2211,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_browser_visibility( $block_attributes, $block_content ) {
@@ -2229,7 +2229,7 @@ class Responsive_Block_Editor_Addons {
 	 *
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_os_visibility( $block_attributes, $block_content ) {
@@ -2259,7 +2259,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_day_visibility( $block_attributes, $block_content ) {
