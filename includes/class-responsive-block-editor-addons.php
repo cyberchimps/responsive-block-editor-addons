@@ -2141,7 +2141,7 @@ class Responsive_Block_Editor_Addons {
 	/**
 	 *  Get the User Roles
 	 *
-	 *  @since 2.1.2
+	 *  @since 2.1.3
 	 */
 	public function responsive_block_editor_addons_get_user_roles() {
 
@@ -2172,7 +2172,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_user_state_visibility( $block_attributes, $block_content ) {
@@ -2193,7 +2193,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_user_role_visibility( $block_attributes, $block_content ) {
@@ -2211,7 +2211,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_browser_visibility( $block_attributes, $block_content ) {
@@ -2229,7 +2229,7 @@ class Responsive_Block_Editor_Addons {
 	 *
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_os_visibility( $block_attributes, $block_content ) {
@@ -2244,8 +2244,8 @@ class Responsive_Block_Editor_Addons {
 			'windows'  => 'Win16|(Windows 95)|(Win95)|(Windows_95)|(Windows 98)|(Win98)|(Windows NT 5.0)|(Windows 2000)|(Windows NT 5.1)|(Windows XP)|(Windows NT 5.2)|(Windows NT 6.0)|(Windows Vista)|(Windows NT 6.1)|(Windows 7)|(Windows NT 4.0)|(WinNT4.0)|(WinNT)|(Windows NT)|Windows ME',
 			'open_bsd' => 'OpenBSD',
 			'sun_os'   => 'SunOS',
-			'linux'    => '(Linux)|(X11)',
-			'mac_os'   => '(Mac_PowerPC)|(Macintosh)',
+			'linux'    => '\bLinux\b(?!.*\bAndroid\b)', // Linux but NOT Android.
+			'mac_os'   => '(Mac_PowerPC|Macintosh|Mac OS|MacOS)',
 		);
 
 		$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '';
@@ -2259,7 +2259,7 @@ class Responsive_Block_Editor_Addons {
 	 * @param array $block_attributes The block data.
 	 * @param mixed $block_content The block content.
 	 *
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 * @return mixed Returns the new block content.
 	 */
 	public function responsive_block_editor_addons_day_visibility( $block_attributes, $block_content ) {
