@@ -183,6 +183,10 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Auto Block Recovery Toggle.
 		add_action( 'wp_ajax_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
 		add_action( 'wp_ajax_nopriv_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
+
+		// RBEA Global Inherit From Theme Toggle.
+		add_action( 'wp_ajax_rbea_toggle_global_inherit_from_theme', array( $this, 'rbea_toggle_global_inherit_from_theme' ) );
+		add_action( 'wp_ajax_nopriv_rbea_toggle_global_inherit_from_theme', array( $this, 'rbea_toggle_global_inherit_from_theme' ) );
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
@@ -712,6 +716,8 @@ class Responsive_Block_Editor_Addons {
 				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
 				'auto_block_recovery'                => get_option( 'rbea_auto_block_recovery', '1' ),
+				'global_inherit_from_theme'          => get_option( 'rbea_global_inherit_from_theme', '0' ),
+				'global_inherit_from_theme_last_changed' => get_option( 'rbea_global_inherit_from_theme_last_changed', '' ),
 				'blocks'                             => $blocks,
 				'is_animation_on'                    => $is_animation_toggled_on,
 				'is_display_conditions_on'           => $is_display_conditions_on,
@@ -1251,6 +1257,7 @@ class Responsive_Block_Editor_Addons {
 					'rst_url'               => esc_url( 'https://wordpress.org/plugins/responsive-add-ons/' ),
 					'rbea_blocks'           => $blocks,
 					'auto_block_recovery'   => get_option( 'rbea_auto_block_recovery', '1' ),
+					'global_inherit_from_theme' => get_option( 'rbea_global_inherit_from_theme', '0' ),
 					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
 					'rst_status'            => $this->rst_status(),
 					'rst_nonce'             => $nonce,
@@ -1633,6 +1640,31 @@ class Responsive_Block_Editor_Addons {
 		$value = ( '1' === $value ) ? '1' : '0';
 
 		update_option( 'rbea_auto_block_recovery', $value );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Saves the global inherit from theme setting in database when the toggle is changed.
+	 *
+	 * @since 2.0.0
+	 */
+	public function rbea_toggle_global_inherit_from_theme() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the boolean value.
+		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$value = ( '1' === $value ) ? '1' : '0';
+
+		update_option( 'rbea_global_inherit_from_theme', $value );
+
+		// Record the time when the toggle was changed
+		$timestamp = current_datetime()->format( 'c' );
+		update_option( 'rbea_global_inherit_from_theme_last_changed', $timestamp, 'no' );
 
 		wp_send_json_success();
 	}
@@ -2077,6 +2109,25 @@ class Responsive_Block_Editor_Addons {
 				true
 			);
 		}
+
+		// Enqueue inherit from theme frontend script
+		wp_enqueue_script(
+			'responsive-block-editor-addons-inherit-theme',
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-inherit-theme.js',
+			array(),
+			RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
+			true
+		);
+
+		// Localize script with global inherit from theme settings
+		wp_localize_script(
+			'responsive-block-editor-addons-inherit-theme',
+			'rbea_globals',
+			array(
+				'global_inherit_from_theme' => get_option( 'rbea_global_inherit_from_theme', '0' ),
+				'global_inherit_from_theme_last_changed' => get_option( 'rbea_global_inherit_from_theme_last_changed', '' ),
+			)
+		);
 
 	}
 

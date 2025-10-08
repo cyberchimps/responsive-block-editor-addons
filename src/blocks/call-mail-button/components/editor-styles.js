@@ -63,6 +63,7 @@
      buttonStyleToggle,
      textTextTransform,
      textFontStyle,
+     inheritFromTheme,
    } = props.attributes;
 
    let buttonWidthCSS = "fixed" === buttonWidthType ? "fit-content" : "flexible" === buttonWidthType ? generateCSSUnit(buttonWidth, "px") : generateCSSUnit(100, "%");
@@ -96,16 +97,16 @@
     },
     " .responsive-block-editor-addons-call-mail-button-button-container": {
       "width": buttonWidthCSS,
-      "background-color": buttonBackground,
-      "border": buttonBorder,
+      "background-color": inheritFromTheme ? '' : buttonBackground,
+      "border": inheritFromTheme ? '' : buttonBorder,
       "border-radius": buttonBorderRadius,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover": {
-      "background-color": buttonBackgroundHover,
-      "border": buttonBorderHover,
+      "background-color": inheritFromTheme ? '' : buttonBackgroundHover,
+      "border": inheritFromTheme ? '' : buttonBorderHover,
     },
     " .responsive-block-editor-addons-call-mail-button-text": {
-      "color": textColor,
+      "color": inheritFromTheme ? '' : textColor,
       "font-family": textFontFamily,
       "font-size": `${generateCSSUnit(textFontSize, "px")} !important`,
       "font-weight": textFontWeight,
@@ -121,10 +122,10 @@
       "width": `${generateCSSUnit(iconSize, "px")} !important`,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-text": {
-      "color": textColorHover,
+      "color": inheritFromTheme ? '' : textColorHover,
     },
     " .responsive-block-editor-addons-call-mail-button-button-container:hover .responsive-block-editor-addons-call-mail-button-icon": {
-      "fill": textColorHover,
+      "fill": inheritFromTheme ? '' : textColorHover,
     },
     " .responsive-block-editor-addons-call-mail-button-icon-iconPosition-left": {
       "margin-right": generateCSSUnit(iconTextGap, "px")

@@ -37,6 +37,9 @@ export default class Save extends Component {
       iconPosition,
       butopacity,
       buttonSize,
+      inheritFromTheme,
+      inheritFromThemesaved,
+      inheritFromThemeLocalTimestamp,
     } = this.props.attributes;
 
     var boxShadowPositionCSS = boxShadowPosition;
@@ -122,7 +125,17 @@ export default class Save extends Component {
                     value={cardsArray[index]["content"]}
                   />
                 </div>
-                <div className="wp-block-responsive-block-editor-addons-card-item__button-wrapper">
+                <div 
+                  className={classnames(
+                    "wp-block-responsive-block-editor-addons-card-item__button-wrapper",
+                    inheritFromTheme ? "wp-block-button" : null
+                  )}
+                  data-rbea-inherit-wrapper="true"
+                  data-inherit-from-theme={inheritFromThemesaved ? '1' : '0'}
+                  data-local-timestamp={inheritFromThemeLocalTimestamp || ''}
+                  data-rbea-inherit-parent="self"
+                  data-rbea-inherit-child=".responsive-block-editor-addons-card-button-inner a"
+                >
                   <div className="responsive-block-editor-addons-card-button-inner">
                     {"" !== icon && iconPosition == "before" && (
                       <span
@@ -138,7 +151,7 @@ export default class Save extends Component {
                       href={cardsArray[index]["buttonURL"]}
                       target={buttonTarget ? "_blank" : null}
                       rel={buttonTarget ? "noopener noreferrer" : null}
-                      className={classnames("res-button", buttonSize)}
+                      className={classnames("res-button", buttonSize, inheritFromTheme ? "wp-block-button wp-block-button__link" : null)}
                     >
                       <RichText.Content value={cardsArray[index]["button"]} />
                     </a>

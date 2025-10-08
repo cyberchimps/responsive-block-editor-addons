@@ -78,19 +78,19 @@ const attributes = {
   },
   borderWidth: {
     type: "number",
-    default: 0,
+    // default: 0,
   },
   borderRadius: {
     type: "number",
-    default: 0,
+    // default: 0,
   },
   borderStyle: {
     type: "string",
-    default: "none",
+    // default: "none",
   },
   borderColor: {
     type: "string",
-    default: "#000",
+    // default: "#000",
   },
   borderHColor: {
     type: "string",
@@ -101,7 +101,7 @@ const attributes = {
   },
   background: {
     type: "string",
-    default: "#007cba",
+    // default: "#007cba",
   },
   hColor: {
     type: "string",
@@ -249,7 +249,15 @@ const attributes = {
   },
   inheritFromTheme: {
     type: "boolean",
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.global_inherit_from_theme === '1'),
+  },
+  inheritFromThemesaved: {
+    type: "boolean",
     default: false,
+  },
+  inheritFromThemeLocalTimestamp: {
+    type: "string",
+    default: "",
   },
   hoverEffect: {
     type: "string",

@@ -254,6 +254,7 @@ export default class Inspector extends Component {
 				hbackground,
 				iconSpace,
 				inheritFromTheme,
+				inheritFromThemesaved,
 				z_index,
 				z_indexMobile,
 				z_indexTablet,
@@ -583,9 +584,12 @@ export default class Inspector extends Component {
 							<ToggleControl
 								label={__("Inherit from Theme", "responsive-block-editor-addons")}
 								checked={inheritFromTheme}
-								onChange={(value) =>
-									setAttributes({ inheritFromTheme: !inheritFromTheme })
-								}
+								onChange={(next) => {
+									setAttributes({
+										inheritFromTheme: next,
+										inheritFromThemesaved: next,
+									});
+								}}
 								__nextHasNoMarginBottom
 							/>
 							<ToggleControl
@@ -651,6 +655,7 @@ export default class Inspector extends Component {
 							/>
 							<hr className="responsive-block-editor-addons-editor__separator" />
 						</PanelBody>
+						{!inheritFromTheme && (
 						<PanelBody title={__("Presets", "responsive-block-editor-addons")} initialOpen={true}>
 							<div className="responsive-block-editor-addons-button-preset-wrap">
 									<div className="responsive-block-editor-addons-button-preset-header">
@@ -733,6 +738,7 @@ export default class Inspector extends Component {
 								</div>
 							</div>
 						</PanelBody>
+						)}
 						<RbeaSupportControl blockSlug={"buttons"} />
 					</InspectorTab>
 					<InspectorTab key={"style"}>

@@ -55,6 +55,14 @@ export default class Edit extends Component {
     if (null !== element && undefined !== element) {
       element.innerHTML = EditorStyles(this.props);
     }
+
+	// When inheritFromTheme toggles, stamp local timestamp immediately
+	// const prevInherit = prevProps && prevProps.attributes ? prevProps.attributes.inheritFromTheme : undefined;
+	// const currInherit = this.props && this.props.attributes ? this.props.attributes.inheritFromTheme : undefined;
+	// if (prevInherit !== currInherit) {
+	// 	const { setAttributes } = this.props;
+	// 	setAttributes({ inheritFromThemeLocalTimestamp: new Date().toISOString() });
+	// }
   }
 
   componentDidMount() {
@@ -94,6 +102,7 @@ export default class Edit extends Component {
         borderWidth,
         borderColor,
         blockTopRadius,
+        inheritFromThemeLocalTimestamp
       },
       isSelected,
       setAttributes,
@@ -116,6 +125,7 @@ export default class Edit extends Component {
     if ("outset" === boxShadowPosition) {
       boxShadowPositionCSS = "";
     }
+    console.log('local Timestamp -> ', inheritFromThemeLocalTimestamp);
 
     return (
       <Fragment>
@@ -133,7 +143,7 @@ export default class Edit extends Component {
             )}
             key={`${block_id}`}
           >
-            <a
+            <div
               className={classnames(
                 "responsive-block-editor-addons-buttons-repeater",
                 "responsive-block-editor-addons-button__wrapper",
@@ -173,7 +183,7 @@ export default class Edit extends Component {
                   {renderSVG(icon)}
                 </span>
               )}
-            </a>
+            </div>
           </div>
           {/* {isSelected && (
             <form

@@ -513,6 +513,8 @@ export default class Inspector extends Component {
         contentTextTransform,
         contentFontStyle,
         hasImagePositionMigrated,
+        inheritFromTheme,
+        inheritFromThemesaved,
       },
       setAttributes,
     } = this.props;
@@ -1171,6 +1173,17 @@ export default class Inspector extends Component {
                   defaultValue={"medium"}
                 />
               {/* TODO */}
+              <ToggleControl
+                label={__("Inherit from Theme", "responsive-block-editor-addons")}
+                checked={inheritFromTheme}
+                onChange={(next) => {
+                  setAttributes({
+                    inheritFromTheme: next,
+                    inheritFromThemesaved: next,
+                  });
+                }}
+                __nextHasNoMarginBottom
+              />
               <ButtonSettingsControl
                 {...this.props}
                 showMarginControls={true}
