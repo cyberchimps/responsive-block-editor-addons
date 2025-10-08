@@ -44,6 +44,7 @@ const {
   TabPanel,
   Dashicon,
   FocalPointPicker,
+  Notice,
 } = wp.components;
 
 
@@ -131,9 +132,10 @@ export default class Inspector extends Component {
   }
 
   convertToContainer = () => {
-    const { clientId } = this.props; // clientId is passed to Inspector by the block edit wrapper
+    const { clientId } = this.props;
     const { getBlock } = select( 'core/block-editor' );
     const { replaceBlock } = dispatch( 'core/block-editor' );
+    const { createNotice } = dispatch( 'core/notices' );
 
     const currentBlock = getBlock( clientId );
     if ( ! currentBlock ) return;
@@ -141,8 +143,7 @@ export default class Inspector extends Component {
     const { attributes, innerBlocks } = currentBlock;
 
     let width = attributes.width;
-    console.log('section attributes');
-    console.log(attributes)
+
     let containerAlign = {
       innerContentCustomWidthDesktop: width,
       innerContentCustomWidthTablet: width,
@@ -266,6 +267,15 @@ export default class Inspector extends Component {
     );
 
     replaceBlock( clientId, newBlock );
+
+    createNotice(
+			'success',
+			__( 'Converted from Section to Container.', 'responsive-block-editor-addons' ),
+			{
+				type: 'snackbar',
+				isDismissible: true,
+			}
+		);
   };
 
   render() {
@@ -513,17 +523,15 @@ export default class Inspector extends Component {
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
-            <div style={{margin: '20px 24px'}} >
-              <p>⚠️ {__( 'Heads up! This block will be deprecated soon. We recommend using the Container block instead. Click on Save button.', 'responsive-block-editor-addons' )}</p>
+            <Notice isDismissible={false} status="warning">
+              <p>⚠️ {__( 'Heads up! This block will be deprecated soon. We recommend using the Container block instead.', 'responsive-block-editor-addons' )}</p>
               <Button
                 isPrimary
                 onClick={ this.convertToContainer }
               >
                 {__( 'Convert to Container', 'responsive-block-editor-addons' )}
               </Button>
-            </div>
-
-            <hr className="responsive-block-editor-addons-editor__separator" />
+            </Notice>
           
               {align != "full" && (
                 <RbeaRangeControl
