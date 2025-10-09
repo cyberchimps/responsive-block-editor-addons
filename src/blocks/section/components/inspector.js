@@ -145,9 +145,13 @@ export default class Inspector extends Component {
     let width = attributes.width;
 
     let containerAlign = {
-      innerContentCustomWidthDesktop: width,
-      innerContentCustomWidthTablet: width,
-      innerContentCustomWidthMobile: width,
+      contentWidth: 'default',
+      customWidthDesktop: width,
+      customWidthTablet: width,
+      customWidthMobile: width,
+      customWidthTypeDesktop: 'px',
+      customWidthTypeTablet: 'px',
+      customWidthTypeMobile: 'px',
     };
 
     if ( attributes.align === 'full' ) {
