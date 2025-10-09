@@ -62,6 +62,9 @@ if ( ! class_exists( 'RBEA_Block_Templates' ) ) :
 
 			$content = $this->get_content( $content );
 
+			// Set flag that user has used template library
+			update_option( 'responsive_block_editor_addons_template_library_used', true );
+
 			// Update content.
 			wp_send_json_success( $content );
 		}

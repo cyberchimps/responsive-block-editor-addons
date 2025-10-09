@@ -817,10 +817,143 @@ export default class Inspector extends Component {
                 min={0}
                 max={500}
               />
-              <PanelBody
-                title={__("Connector Color Settings", "responsive-block-editor-addons")}
-                initialOpen={true}
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <TabPanel
+                className="responsive-block-editor-addons-inspect-tabs 
+                responsive-block-editor-addons-inspect-tabs-col-2  
+                responsive-block-editor-addons-color-inspect-tabs"
+                activeClass="active-tab"
+                initialTabName="normal" // Set the default active tab here
+                tabs={[
+                  {
+                    name: "empty-1",
+                    title: __("", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-empty-tab",
+                  },
+                  {
+                    name: "normal",
+                    title: __("Normal", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-normal-tab",
+                  },
+                  {
+                    name: "empty-2",
+                    title: __("", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-empty-tab-middle",
+                  },
+                  {
+                    name: "focus",
+                    title: __("Focus", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-hover-tab",
+                  },
+                  {
+                    name: "empty-3",
+                    title: __("", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-empty-tab",
+                  },
+                ]}
               >
+                {(tabName) => {
+                  let tabout;
+                  if ("focus" === tabName.name) {
+                    tabout = (
+                      <>
+                        <RbeaColorControl
+                          label = {__("Line Focus Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.separatorFillColor}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ separatorFillColor: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ separatorFillColor: "" })}
+                        />
+                          <RbeaColorControl
+                          label = {__("Icon Focus Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.iconFocus}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ iconFocus: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ iconFocus: "" })}
+                        />
+                          <RbeaColorControl
+                          label = {__("Background Focus Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.iconBgFocus}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ iconBgFocus: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ iconBgFocus: "" })}
+                        />
+                          <RbeaColorControl
+                          label = {__("Border Focus Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.borderFocus}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ borderFocus: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ borderFocus: "" })}
+                        />
+                      </>
+                    );
+                  } else if ("normal" === tabName.name) {
+                    tabout = (
+                      <>
+                        <RbeaColorControl
+                          label = {__("Line Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.connectorColor}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ connectorColor: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ connectorColor: "" })}
+                        />
+                          <RbeaColorControl
+                          label = {__("Icon Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.iconColor}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ iconColor: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ iconColor: "" })}
+                        />
+                          <RbeaColorControl
+                          label = {__("Background Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.separatorBg}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ separatorBg: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ separatorBg: "" })}
+                        />
+                          <RbeaColorControl
+                          label = {__("Border Color", "responsive-block-editor-addons")}
+                          colorValue={attributes.separatorBorder}
+                          onChange={(colorValue) =>
+                            this.props.setAttributes({ separatorBorder: colorValue })
+                          }
+                          resetColor={() => this.props.setAttributes({ separatorBorder: "" })}
+                        />
+                      </>
+                    );
+                  } else {
+                    tabout = emptyColorControl;
+                  }
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
+            </PanelBody>
+            <RbeaSupportControl blockSlug={"post-timeline"} />
+          </InspectorTab>
+          <InspectorTab key={"style"}>
+            <PanelBody
+              title={__("Colors", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <RbeaColorControl
+                label = {__("Blog Post Background Color", "responsive-block-editor-addons")}
+                colorValue={attributes.bgColor}
+                onChange={(colorValue) => this.props.setAttributes({ bgColor: colorValue })}
+                resetColor={() => this.props.setAttributes({ bgColor: "" })}
+              />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <Fragment>
                 <TabPanel
                   className="responsive-block-editor-addons-inspect-tabs 
                   responsive-block-editor-addons-inspect-tabs-col-2  
@@ -844,8 +977,8 @@ export default class Inspector extends Component {
                       className: "responsive-block-editor-addons-empty-tab-middle",
                     },
                     {
-                      name: "focus",
-                      title: __("Focus", "responsive-block-editor-addons"),
+                      name: "hover",
+                      title: __("Hover", "responsive-block-editor-addons"),
                       className: "responsive-block-editor-addons-hover-tab",
                     },
                     {
@@ -856,193 +989,47 @@ export default class Inspector extends Component {
                   ]}
                 >
                   {(tabName) => {
-                    let tabout;
-                    if ("focus" === tabName.name) {
-                      tabout = (
-                        <PanelBody
-                          title={__("Focus Color Settings", "responsive-block-editor-addons")}
-                          initialOpen={true}
-                        >
-                           <RbeaColorControl
-                            label = {__("Line Focus Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.separatorFillColor}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ separatorFillColor: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ separatorFillColor: "" })}
+                    let btn_color_tab;
+                    if ("normal" === tabName.name) {
+                      btn_color_tab = (
+                        <Fragment>
+                          <RbeaColorControl
+                            label = {__("CTA Background Color", "responsive-block-editor-addons")}
+                            colorValue={attributes.continuebgColor}
+                            onChange={(colorValue) => this.props.setAttributes({ continuebgColor: colorValue })}
+                            resetColor={() => this.props.setAttributes({ continuebgColor: "" })}
                           />
-                           <RbeaColorControl
-                            label = {__("Icon Focus Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.iconFocus}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ iconFocus: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ iconFocus: "" })}
+                          <RbeaColorControl
+                            label = {__("CTA Border Color", "responsive-block-editor-addons")}
+                            colorValue={attributes.borderColor}
+                            onChange={(colorValue) => this.props.setAttributes({ borderColor: colorValue })}
+                            resetColor={() => this.props.setAttributes({ borderColor: "" })}
                           />
-                           <RbeaColorControl
-                            label = {__("Background Focus Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.iconBgFocus}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ iconBgFocus: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ iconBgFocus: "" })}
-                          />
-                           <RbeaColorControl
-                            label = {__("Border Focus Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.borderFocus}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ borderFocus: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ borderFocus: "" })}
-                          />
-                        </PanelBody>
+                        </Fragment>
                       );
-                    } else if ("normal" === tabName.name) {
-                      tabout = (
-                        <PanelBody
-                          title={__("Color Settings", "responsive-block-editor-addons")}
-                          initialOpen={true}
-                        >
-                           <RbeaColorControl
-                            label = {__("Line Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.connectorColor}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ connectorColor: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ connectorColor: "" })}
+                    } else if ("hover" === tabName.name) {
+                      btn_color_tab = (
+                        <Fragment>
+                          <RbeaColorControl
+                            label = {__("CTA Background Hover Color", "responsive-block-editor-addons")}
+                            colorValue={attributes.continuebghColor}
+                            onChange={(colorValue) => this.props.setAttributes({ continuebghColor: colorValue })}
+                            resetColor={() => this.props.setAttributes({ continuebghColor: "" })}
                           />
-                           <RbeaColorControl
-                            label = {__("Icon Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.iconColor}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ iconColor: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ iconColor: "" })}
+                          <RbeaColorControl
+                            label = {__("CTA Border Hover Color", "responsive-block-editor-addons")}
+                            colorValue={attributes.borderHColor}
+                            onChange={(colorValue) => this.props.setAttributes({ borderHColor: colorValue })}
+                            resetColor={() => this.props.setAttributes({ borderHColor: "" })}
                           />
-                           <RbeaColorControl
-                            label = {__("Background Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.separatorBg}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ separatorBg: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ separatorBg: "" })}
-                          />
-                           <RbeaColorControl
-                            label = {__("Border Color", "responsive-block-editor-addons")}
-                            colorValue={attributes.separatorBorder}
-                            onChange={(colorValue) =>
-                              this.props.setAttributes({ separatorBorder: colorValue })
-                            }
-                            resetColor={() => this.props.setAttributes({ separatorBorder: "" })}
-                          />
-                        </PanelBody>
+                        </Fragment>
                       );
                     } else {
-                      tabout = emptyColorControl;
+                      btn_color_tab = emptyColorControl;
                     }
-                    return <div>{tabout}</div>;
+                    return <div>{btn_color_tab}</div>;
                   }}
                 </TabPanel>
-              </PanelBody>
-            </PanelBody>
-            <RbeaSupportControl blockSlug={"post-timeline"} />
-          </InspectorTab>
-          <InspectorTab key={"style"}>
-            <PanelBody
-              title={__("Colors", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <RbeaColorControl
-                label = {__("Blog Post Background Color", "responsive-block-editor-addons")}
-                colorValue={attributes.bgColor}
-                onChange={(colorValue) => this.props.setAttributes({ bgColor: colorValue })}
-                resetColor={() => this.props.setAttributes({ bgColor: "" })}
-              />
-              <Fragment>
-                <PanelBody
-                  title={__(
-                    "CTA Color Settings",
-                    "responsive-block-editor-addons"
-                  )}
-                  initialOpen={false}
-                >
-                  <TabPanel
-                    className="responsive-block-editor-addons-inspect-tabs 
-                    responsive-block-editor-addons-inspect-tabs-col-2  
-                    responsive-block-editor-addons-color-inspect-tabs"
-                    activeClass="active-tab"
-                    initialTabName="normal" // Set the default active tab here
-                    tabs={[
-                      {
-                        name: "empty-1",
-                        title: __("", "responsive-block-editor-addons"),
-                        className: "responsive-block-editor-addons-empty-tab",
-                      },
-                      {
-                        name: "normal",
-                        title: __("Normal", "responsive-block-editor-addons"),
-                        className: "responsive-block-editor-addons-normal-tab",
-                      },
-                      {
-                        name: "empty-2",
-                        title: __("", "responsive-block-editor-addons"),
-                        className: "responsive-block-editor-addons-empty-tab-middle",
-                      },
-                      {
-                        name: "hover",
-                        title: __("Hover", "responsive-block-editor-addons"),
-                        className: "responsive-block-editor-addons-hover-tab",
-                      },
-                      {
-                        name: "empty-3",
-                        title: __("", "responsive-block-editor-addons"),
-                        className: "responsive-block-editor-addons-empty-tab",
-                      },
-                    ]}
-                  >
-                    {(tabName) => {
-                      let btn_color_tab;
-                      if ("normal" === tabName.name) {
-                        btn_color_tab = (
-                          <Fragment>
-                            <RbeaColorControl
-                              label = {__("CTA Background Color", "responsive-block-editor-addons")}
-                              colorValue={attributes.continuebgColor}
-                              onChange={(colorValue) => this.props.setAttributes({ continuebgColor: colorValue })}
-                              resetColor={() => this.props.setAttributes({ continuebgColor: "" })}
-                            />
-                            <RbeaColorControl
-                              label = {__("CTA Border Color", "responsive-block-editor-addons")}
-                              colorValue={attributes.borderColor}
-                              onChange={(colorValue) => this.props.setAttributes({ borderColor: colorValue })}
-                              resetColor={() => this.props.setAttributes({ borderColor: "" })}
-                            />
-                          </Fragment>
-                        );
-                      } else if ("hover" === tabName.name) {
-                        btn_color_tab = (
-                          <Fragment>
-                            <RbeaColorControl
-                              label = {__("CTA Background Hover Color", "responsive-block-editor-addons")}
-                              colorValue={attributes.continuebghColor}
-                              onChange={(colorValue) => this.props.setAttributes({ continuebghColor: colorValue })}
-                              resetColor={() => this.props.setAttributes({ continuebghColor: "" })}
-                            />
-                            <RbeaColorControl
-                              label = {__("CTA Border Hover Color", "responsive-block-editor-addons")}
-                              colorValue={attributes.borderHColor}
-                              onChange={(colorValue) => this.props.setAttributes({ borderHColor: colorValue })}
-                              resetColor={() => this.props.setAttributes({ borderHColor: "" })}
-                            />
-                          </Fragment>
-                        );
-                      } else {
-                        btn_color_tab = emptyColorControl;
-                      }
-                      return <div>{btn_color_tab}</div>;
-                    }}
-                  </TabPanel>
-                </PanelBody>
               </Fragment>
             </PanelBody>
 				<TypographyHelperControl

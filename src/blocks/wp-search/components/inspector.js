@@ -386,83 +386,79 @@ export default class Inspector extends Component {
                   onChange={(colorValue) => setAttributes({ inputBackgroundColor: colorValue })}
                   resetColor={() => setAttributes({ inputBackgroundColor: "" })}
                 />
-                <PanelBody
-                  title={__("Border", "responsive-block-editor-addons")}
-                  initialOpen={false}
-                >
-                  <RbeaBlockBorderHelperControl
-                    attrNameTemplate="block%s"
-                    values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
-                    setAttributes={setAttributes}
-                    {...this.props}
-                  />
-                </PanelBody>
-                <PanelBody
-                  title={__("Box Shadow", "responsive-block-editor-addons")}
-                  initialOpen={false}
-                >
-                  <TabPanel
-                    className="responsive-block-editor-addons-inspect-tabs 
-                              responsive-block-editor-addons-inspect-tabs-col-2  
-                              responsive-block-editor-addons-color-inspect-tabs"
-                    activeClass="active-tab"
-                    initialTabName="normal"
-                    tabs={[
-                      { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
-                      { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
-                      { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
-                      { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
-                      { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
-                    ]}
-                  >
-                    {(tab) => {
-                      const isHover = tab.name === "hover";
-                      const mode = isHover ? "hoverboxShadow" : "boxShadow";
 
-                      return (
-                        <BoxShadowControl
-                          controlKey={mode}
-                          setAttributes={setAttributes}
-                          label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
-                          boxShadowColor={{
-                            value: isHover ? hoverboxShadowColor : boxShadowColor,
-                            label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
-                          }}
-                          boxShadowHOffset={{
-                            value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
-                            label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
-                          }}
-                          boxShadowVOffset={{
-                            value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
-                            label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
-                          }}
-                          boxShadowBlur={{
-                            value: isHover ? hoverboxShadowBlur : boxShadowBlur,
-                            label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
-                          }}
-                          boxShadowSpread={{
-                            value: isHover ? hoverboxShadowSpread : boxShadowSpread,
-                            label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
-                          }}
-                          boxShadowPosition={{
-                            value: isHover ? hoverboxShadowPosition : boxShadowPosition,
-                            label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
-                          }}
-                        />
-                      );
-                    }}
-                  </TabPanel>
-                </PanelBody>
-                <PanelBody
-                  title={__("Padding", "responsive-block-editor-addons")}
-                  initialOpen={false}
+                <hr className="responsive-block-editor-addons-editor__separator" />
+
+                <RbeaBlockBorderHelperControl
+                  attrNameTemplate="block%s"
+                  values={{ radius: blockBorderRadius, style: blockBorderStyle, width: blockBorderWidth, color: blockBorderColor }}
+                  setAttributes={setAttributes}
+                  {...this.props}
+                />
+
+                <hr className="responsive-block-editor-addons-editor__separator" />
+
+                <p className="rbea-inspector-control-label">Box Shadow Settings</p>
+
+                <TabPanel
+                  className="responsive-block-editor-addons-inspect-tabs 
+                            responsive-block-editor-addons-inspect-tabs-col-2  
+                            responsive-block-editor-addons-color-inspect-tabs"
+                  activeClass="active-tab"
+                  initialTabName="normal"
+                  tabs={[
+                    { name: "empty-1", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                    { name: "normal", title: __("Normal", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-normal-tab" },
+                    { name: "empty-2", title: "", className: "responsive-block-editor-addons-empty-tab-middle" },
+                    { name: "hover", title: __("Hover", "responsive-block-editor-addons"), className: "responsive-block-editor-addons-hover-tab" },
+                    { name: "empty-3", title: "", className: "responsive-block-editor-addons-empty-tab" },
+                  ]}
                 >
-                  <ResponsiveNewPaddingControl
-                    attrNameTemplate="input%s"
-                    resetValues={inputPaddingResetValues}
-                    {...this.props}
-                  />
-                </PanelBody>
+                  {(tab) => {
+                    const isHover = tab.name === "hover";
+                    const mode = isHover ? "hoverboxShadow" : "boxShadow";
+
+                    return (
+                      <BoxShadowControl
+                        controlKey={mode}
+                        setAttributes={setAttributes}
+                        label={isHover ? __("Box Shadow (Hover)", "responsive-block-editor-addons") : __("Box Shadow", "responsive-block-editor-addons")}
+                        boxShadowColor={{
+                          value: isHover ? hoverboxShadowColor : boxShadowColor,
+                          label: isHover ? __("Color (Hover)", "responsive-block-editor-addons") : __("Color", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowHOffset={{
+                          value: isHover ? hoverboxShadowHOffset : boxShadowHOffset,
+                          label: isHover ? __("Horizontal (Hover)", "responsive-block-editor-addons") : __("Horizontal", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowVOffset={{
+                          value: isHover ? hoverboxShadowVOffset : boxShadowVOffset,
+                          label: isHover ? __("Vertical (Hover)", "responsive-block-editor-addons") : __("Vertical", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowBlur={{
+                          value: isHover ? hoverboxShadowBlur : boxShadowBlur,
+                          label: isHover ? __("Blur (Hover)", "responsive-block-editor-addons") : __("Blur", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowSpread={{
+                          value: isHover ? hoverboxShadowSpread : boxShadowSpread,
+                          label: isHover ? __("Spread (Hover)", "responsive-block-editor-addons") : __("Spread", "responsive-block-editor-addons"),
+                        }}
+                        boxShadowPosition={{
+                          value: isHover ? hoverboxShadowPosition : boxShadowPosition,
+                          label: isHover ? __("Position (Hover)", "responsive-block-editor-addons") : __("Position", "responsive-block-editor-addons"),
+                        }}
+                      />
+                    );
+                  }}
+                </TabPanel>
+
+                <hr className="responsive-block-editor-addons-editor__separator" />
+                
+                <ResponsiveNewPaddingControl
+                  attrNameTemplate="input%s"
+                  resetValues={inputPaddingResetValues}
+                  {...this.props}
+                />
               </PanelBody>
               <TypographyHelperControl
                   title={__("Input Typography", "responsive-block-editor-addons")}

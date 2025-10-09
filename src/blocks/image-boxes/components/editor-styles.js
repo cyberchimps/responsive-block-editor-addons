@@ -5,6 +5,7 @@
 import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils/index.js";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -124,6 +125,9 @@ function EditorStyles(props) {
     boxImagePosition,
     boxImagePositionMobile,
     boxImagePositionTablet,
+    boxImagePositionFocal,
+    boxImagePositionFocalTablet,
+    boxImagePositionFocalMobile,
     boxImageRepeat,
     titleTypographyColor,
     descriptionTypographyColor,
@@ -265,7 +269,7 @@ function EditorStyles(props) {
       )}`,
       "background-size": boxImageSize,
       "background-repeat": boxImageRepeat,
-      "background-position": boxImagePosition,
+      "background-position": getImagePostionCSS(boxImagePositionFocal),
       "padding-left": generateCSSUnit(boxLeftPadding, "px"),
       "padding-right": generateCSSUnit(boxRightPadding, "px"),
       "padding-bottom": generateCSSUnit(boxBottomPadding, "px"),
@@ -360,7 +364,7 @@ function EditorStyles(props) {
         "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
         "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
         "background-size": boxImageSizeMobile,
-        "background-position": boxImagePositionMobile,
+        "background-position": getImagePostionCSS(boxImagePositionFocalMobile),
         "text-align": contentAlignMobile,
         "justify-content": verticalAlignmentMobile + "!important",
         "padding-left": generateCSSUnit(boxLeftPaddingMobile, "px"),
@@ -392,7 +396,7 @@ function EditorStyles(props) {
         "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),
         "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
         "background-size": boxImageSizeTablet,
-        "background-position": boxImagePositionTablet,
+        "background-position": getImagePostionCSS(boxImagePositionFocalTablet),
         "text-align": contentAlignTablet,
         "justify-content": verticalAlignmentTablet + "!important",
         "padding-left": generateCSSUnit(boxLeftPaddingTablet, "px"),

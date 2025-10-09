@@ -22,6 +22,7 @@ import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadi
 import { RadioControl} from "@wordpress/components";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import { convertPositionToFocalPoint } from '../../../getImagePosition';
 
 // Setup the block
 const { __ } = wp.i18n;
@@ -38,6 +39,7 @@ const {
   Dashicon,
   BaseControl,
   Button,
+  FocalPointPicker,
 } = wp.components;
 
 /**
@@ -280,6 +282,9 @@ export default class Inspector extends Component {
         boxImagePosition,
         boxImagePositionMobile,
         boxImagePositionTablet,
+        boxImagePositionFocal,
+        boxImagePositionFocalTablet,
+        boxImagePositionFocalMobile,
         boxImageSizeTab,
         boxImageRepeat,
         titleTypographyColor,
@@ -315,7 +320,8 @@ export default class Inspector extends Component {
         titleTextTransform,
         titleFontStyle,
         descriptionTextTransform,
-        descriptionFontStyle
+        descriptionFontStyle,
+        hasImagePositionMigrated,
       },
       setAttributes,
     } = this.props;
@@ -600,6 +606,17 @@ export default class Inspector extends Component {
         }
       )
       this.props.setAttributes({blockIsPaddingValueUpdated: true});
+    }
+
+    if ( ! hasImagePositionMigrated ) {
+      this.props.setAttributes(
+        {
+          boxImagePositionFocal: convertPositionToFocalPoint( boxImagePosition ),
+          boxImagePositionFocalMobile: convertPositionToFocalPoint( boxImagePositionMobile ),
+          boxImagePositionFocalTablet: convertPositionToFocalPoint( boxImagePositionTablet ),
+          hasImagePositionMigrated: true,
+        }
+      )
     }
 
     return (
@@ -1074,39 +1091,37 @@ export default class Inspector extends Component {
                       </TabPanel>
                     </div>
                     <Fragment>
-                      <div className="rbea-background-image-positon-control"
-                        style={{
-                          backgroundImage: `url(${box_image_url})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                        }}>
+                      <div className="rbea-background-image-positon-control">
                         {boxImagePositionTab === "desktop" &&
-                          <RadioControl
-                            className="rbea-background-image-positon-control-options"
-                            selected={boxImagePosition}
-                            options={imagePositionOptions}
+                          <FocalPointPicker
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            url={box_image_url}
+                            value={boxImagePositionFocal}
                             onChange={(value) =>
-                              setAttributes({ boxImagePosition: value })
+                              setAttributes({ boxImagePositionFocal: value })
                             }
                           />
                         }
                         {boxImagePositionTab === "tablet" &&
-                          <RadioControl
-                            className="rbea-background-image-positon-control-options"
-                            selected={boxImagePositionTablet}
-                            options={imagePositionOptions}
+                          <FocalPointPicker
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            url={box_image_url}
+                            value={boxImagePositionFocalTablet}
                             onChange={(value) =>
-                              setAttributes({ boxImagePositionTablet: value })
+                              setAttributes({ boxImagePositionFocalTablet: value })
                             }
                           />
                         }
                         {boxImagePositionTab === "mobile" &&
-                          <RadioControl
-                            className="rbea-background-image-positon-control-options"
-                            selected={boxImagePositionMobile}
-                            options={imagePositionOptions}
+                          <FocalPointPicker
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            url={box_image_url}
+                            value={boxImagePositionFocalMobile}
                             onChange={(value) =>
-                              setAttributes({ boxImagePositionMobile: value })
+                              setAttributes({ boxImagePositionFocalMobile: value })
                             }
                           />
                         }
@@ -1623,19 +1638,20 @@ export default class Inspector extends Component {
                 }
                 __nextHasNoMarginBottom
               />
-              <PanelBody
-                title={__("Color", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                 <RbeaColorControl
-									label = {__("Color", "responsive-block-editor-addons")}
-									colorValue={arrowColor}
-									onChange={(colorValue) =>
-										setAttributes({ arrowColor: colorValue })
-									}
-									resetColor={() => setAttributes({ arrowColor: "" })}
-								/>
-              </PanelBody>
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <RbeaColorControl
+                label = {__("Color", "responsive-block-editor-addons")}
+                colorValue={arrowColor}
+                onChange={(colorValue) =>
+                  setAttributes({ arrowColor: colorValue })
+                }
+                resetColor={() => setAttributes({ arrowColor: "" })}
+              />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
               <RbeaRangeControl
                 label={__("Arrow Size", "responsive-block-editor-addons")}
                 value={arrowSize}

@@ -768,20 +768,29 @@ const attributes = {
       default: false,
     },
     popupButtonTypographyTextTransform: {
-        type: "string",
-        default: "", 
+      type: "string",
+      default: "", 
     },
     popupButtonTypographyFontStyle: {
-        type: "string",
-        default: "", 
+      type: "string",
+      default: "", 
     },
     popupTextTypographyTextTransform: {
-        type: "string",
-        default: "", 
+      type: "string",
+      default: "", 
     },
     popupTextTypographyFontStyle: {
-        type: "string",
-        default: "", 
+      type: "string",
+      default: "", 
+    },
+    z_index: {
+      type: "number",
+    },
+    z_indexTablet: {
+      type: "number",
+    },
+    z_indexMobile: {
+      type: "number",
     },
 };
 

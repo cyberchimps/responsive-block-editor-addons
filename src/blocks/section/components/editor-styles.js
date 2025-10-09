@@ -6,6 +6,7 @@ import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils";
 import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -127,6 +128,9 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    backgroundPositionFocal,
+    backgroundPositionFocalMobile,
+    backgroundPositionFocalTablet,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -227,7 +231,7 @@ function EditorStyles(props) {
     },
     " > .responsive-section-wrap": {
       "background-image": updatedBackgroundImage,
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
@@ -303,7 +307,7 @@ function EditorStyles(props) {
         (align == "full" && innerWidthMobile) ? generateCSSUnit(innerWidthMobile, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
-      "background-position": backgroundPositionMobile,
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
     },
   };
@@ -331,7 +335,7 @@ function EditorStyles(props) {
         (align == "full" && innerWidthTablet) ? generateCSSUnit(innerWidthTablet, "px") : generateCSSUnit(innerWidth, "px"),
     },
     " > .responsive-section-wrap": {
-      "background-position": backgroundPositionTablet,
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet === '' ? backgroundSize : backgroundSizeTablet,
     },
   };

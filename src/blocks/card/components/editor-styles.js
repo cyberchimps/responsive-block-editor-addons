@@ -6,6 +6,7 @@ import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils/index.js";
 import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -64,6 +65,9 @@ function EditorStyles(props) {
     backgroundPosition,
     backgroundPositionMobile,
     backgroundPositionTablet,
+    backgroundPositionFocal,
+    backgroundPositionFocalMobile,
+    backgroundPositionFocalTablet,
     backgroundAttachment,
     backgroundRepeat,
     backgroundSize,
@@ -194,6 +198,9 @@ function EditorStyles(props) {
     cardImagePosition,
     cardImagePositionMobile,
     cardImagePositionTablet,
+    cardImagePositionFocal,
+    cardImagePositionFocalMobile,
+    cardImagePositionFocalTablet,
     cardImageSizeTab,
     cardImageRepeat,
     headingTypographyColor,
@@ -383,7 +390,7 @@ function EditorStyles(props) {
       "background-attachment": backgroundAttachment,
       "opacity": imgopacity,
       height: 100 + "%",
-      "background-position": backgroundPosition ? backgroundPosition : "center center",
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-repeat": backgroundRepeat ? backgroundRepeat : "no-repeat",
       "background-size": backgroundSize ? backgroundSize : "cover",
     },
@@ -393,7 +400,7 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-card-avatar-img": {
-      "background-position": cardImagePosition,
+      "background-position": getImagePostionCSS(cardImagePositionFocal),
       "background-repeat": cardImageRepeat,
       "background-size": cardImageSize,
     },
@@ -538,11 +545,11 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
   },
   " .responsive-block-editor-addons-card-background-image": {
-    "background-position": backgroundPositionMobile,
+    "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
     "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
   },
   " .responsive-block-editor-addons-card-avatar-img": {
-    "background-position": cardImagePositionMobile,
+    "background-position": getImagePostionCSS(cardImagePositionFocalMobile),
     "background-size": cardImageSizeMobile,
   },
   };
@@ -590,11 +597,11 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
   },
   " .responsive-block-editor-addons-card-background-image": {
-    "background-position": backgroundPositionTablet,
+    "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
     "background-size": backgroundSizeTablet === '' ? backgroundSize : backgroundSizeTablet,
   },
   " .responsive-block-editor-addons-card-avatar-img": {
-    "background-position": cardImagePositionTablet,
+    "background-position": getImagePostionCSS(cardImagePositionFocalTablet),
     "background-size": cardImageSizeTablet,
   },
   };

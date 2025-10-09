@@ -13,6 +13,7 @@ import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import InspectorTab from "../../../components/InspectorTab"
 import InspectorTabs from "../../../components/InspectorTabs"
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 
 // Import block components
 const {
@@ -109,6 +110,12 @@ export default class Inspector extends Component {
     const {
       attributes: {
         anchor,
+        z_index,
+        z_indexTablet,
+        z_indexMobile,
+        hideWidget,
+        hideWidgetTablet,
+        hideWidgetMobile, 
       },
       setAttributes,
     } = this.props;
@@ -133,6 +140,124 @@ export default class Inspector extends Component {
           </InspectorTab>
           <InspectorTab key={'advance'}>
             <RbeaExtensions {...this.props} />
+            <PanelBody
+              title={__("Responsive Conditions", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__(
+                  "Hide on Desktop",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidget}
+                onChange={(value) =>
+                  setAttributes({ hideWidget: !hideWidget })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__(
+                  "Hide on Tablet",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetTablet}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
+                }
+                __nextHasNoMarginBottom
+              />
+              <ToggleControl
+                label={__(
+                  "Hide on Mobile",
+                  "responsive-block-editor-addons"
+                )}
+                checked={hideWidgetMobile}
+                onChange={(value) =>
+                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
+                }
+                __nextHasNoMarginBottom
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Z Index", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <TabPanel
+                  className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin"
+                  activeClass="active-tab"
+                  tabs={[
+                    {
+                      name: "desktop",
+                      title: <Dashicon icon="desktop" />,
+                      className:
+                        " responsive-desktop-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "tablet",
+                      title: <Dashicon icon="tablet" />,
+                      className:
+                        " responsive-tablet-tab  responsive-responsive-tabs",
+                    },
+                    {
+                      name: "mobile",
+                      title: <Dashicon icon="smartphone" />,
+                      className:
+                        " responsive-mobile-tab  responsive-responsive-tabs",
+                    },
+                  ]}
+                >
+                  {(tab) => {
+                    let tabout;
+
+                    if ("mobile" === tab.name) {
+                      tabout = (
+                        <RbeaRangeControl
+                        label={__("z-index (Mobile)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexMobile}
+                        onChange={(value) =>
+                          setAttributes({ z_indexMobile: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else if ("tablet" === tab.name) {
+                      tabout = (
+                        <RbeaRangeControl
+                        label={__("z-index (Tablet)", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_indexTablet}
+                        onChange={(value) =>
+                          setAttributes({ z_indexTablet: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    } else {
+                      tabout = (
+                        <RbeaRangeControl
+                        label={__("z-index ", "responsive-block-editor-addons")}
+                        min={-1}
+                        max={99999}
+                        allowReset={true}
+                        resetFallbackValue={1}
+                        value={z_index}
+                        onChange={(value) =>
+                          setAttributes({ z_index: value !== undefined ? value : 1 })
+                        }
+                      />
+                      );
+                    }
+
+                    return <div>{tabout}</div>;
+                  }}
+              </TabPanel>
+            </PanelBody>
+            <RbeaSupportControl blockSlug={"anchor"} />
           </InspectorTab>
         </InspectorTabs>
       </InspectorControls>
