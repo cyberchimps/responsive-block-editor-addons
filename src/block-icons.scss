@@ -1,15 +1,5 @@
 // Responsive Block Icons Styles.
 
-.block-editor-inserter__block-list {
-    .block-editor-block-icon {
-        &.has-colors {
-            .rbea-editor-icons {
-                fill: none;
-            }
-        }
-    }
-}
-
 .block-editor-block-variation-picker {
     .components-placeholder__label {
         .rbea-editor-icons {
@@ -18,40 +8,28 @@
     }
 }
 
-.block-editor-block-toolbar__block-controls {
-    .block-editor-block-switcher {
-        .components-dropdown-menu__toggle {
-            .block-editor-block-icon {
-                .rbea-editor-icons {
-                    fill: none;
-                }
+.is-selected {
+    .block-editor-block-icon {
+        .rbea-editor-icons {
+            fill: none;
+
+            rect, path {
+                stroke: #fff;
             }
         }
     }
-}
-
-.is-selected {
-    .block-editor-block-icon {
-        &.has-colors {
-            .rbea-editor-icons {
-                fill: none;
-                rect {
-                    stroke: #fff;
-                }
-            }
-        } 
+    .rbea-editor-icon-selected-fill {
+        fill: #fff;
+    }
+    .rbea-editor-icon-selected-no-stroke {
+        stroke: none !important; //override the default stroke.
     }
 }
-    
-.block-editor-block-icon{
-    &.has-colors {
-        svg {
-            &.rbea-editor-icons {
-                fill: none;
-                rect {
-                    stroke: #2D2C52;
-                }
-            }
+
+.block-editor-block-icon {
+    svg {
+        &.rbea-editor-icons {
+            fill: none;
         }
     }
 }
