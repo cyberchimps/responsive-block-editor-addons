@@ -6,6 +6,7 @@
 import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
+import BlockPreview from "../../block-preview";
 
 //Import Block Icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
@@ -34,7 +35,11 @@ registerBlockType("responsive-block-editor-addons/container", {
   ],
 
   attributes: attributes,
-  example: {},
+  example: {
+    attributes: {
+      isPreview: true,
+    },
+  },
 
   supports: {
     html: false,
@@ -42,7 +47,7 @@ registerBlockType("responsive-block-editor-addons/container", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="container" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

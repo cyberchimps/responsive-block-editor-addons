@@ -10,6 +10,7 @@ import "./styles/styles.editor.scss";
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+import BlockPreview from "../../block-preview";
 
 registerBlockType("responsive-block-editor-addons/advanced-text", {
   title: __("Advanced Text", "responsive-block-editor-addons"),
@@ -29,14 +30,8 @@ registerBlockType("responsive-block-editor-addons/advanced-text", {
 
   example: {
     attributes: {
-      columnsCount: 2,
-      titleColor: '#fd1111',
-      subtitleColor: '#0066cc',
-      textColor: '#0066cc',
-      displayColumnSeparator: true,
-      columnDividerWidth: 2,
-      columnDividerHeight: 150,
-    }
+      isPreview: true,
+    },
   },
 
   supports: {
@@ -44,7 +39,7 @@ registerBlockType("responsive-block-editor-addons/advanced-text", {
   },
 
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="advanced_text" /> : <Edit {...props} />;
   },
 
   save: (props) => {

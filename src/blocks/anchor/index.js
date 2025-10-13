@@ -8,6 +8,7 @@ import Save from "./components/save";
 import attributes from "./attributes";
 import icons from "../../utils/components/icons";
 import renderSVG from "../../renderIcon";
+import BlockPreview from "../../block-preview";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -37,14 +38,14 @@ registerBlockType("responsive-block-editor-addons/anchor", {
     anchor: true,
   },
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-        },
+  example: {
+    attributes: {
+      isPreview: true,
     },
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="anchor" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

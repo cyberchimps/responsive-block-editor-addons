@@ -14,6 +14,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 import deprecated from "./components/deprecated";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -39,16 +40,14 @@ registerBlockType("responsive-block-editor-addons/section", {
     anchor: true,
   },
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            width: 900,
-            blockTopPadding: 30,
-        },
+  example: {
+    attributes: {
+      isPreview: true,
     },
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="section" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

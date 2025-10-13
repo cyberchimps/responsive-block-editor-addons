@@ -3,6 +3,7 @@ import Save from "./components/save";
 import attributes from "./attributes";
 
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -28,11 +29,11 @@ registerBlockType("responsive-block-editor-addons/image", {
   attributes: attributes,
   example: {
     attributes: {
-      imageAlt: "Preview of scenic nature",
+      isPreview: true,
     },
   },
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="image" /> : <Edit {...props} />;
   },
 
   save: (props) => {
