@@ -24,6 +24,9 @@
     .rbea-editor-icon-selected-no-stroke {
         stroke: none !important; //override the default stroke.
     }
+    .rbea-editor-icon-selected-no-fill {
+        fill: none;
+    }
 }
 
 .block-editor-block-icon {
