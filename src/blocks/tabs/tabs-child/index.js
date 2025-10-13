@@ -9,6 +9,7 @@ import attributes from "./attributes";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
+import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -23,7 +24,7 @@ registerBlockType("responsive-block-editor-addons/tabs-child", {
     "Add tab content",
     "responsive-block-editor-addons"
   ),
-  icon: "category",
+  icon: ResponsiveBlockEditorAddonsIcons.tabs,
   category: "responsive_block_editor_addons",
   keywords: [
     __("tabs", "responsive-block-editor-addons"),
