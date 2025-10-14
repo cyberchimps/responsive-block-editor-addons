@@ -1,6 +1,4 @@
 const icons = {
-    logo: <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 0.5H7.97375C6.6 0.5 5.5 1.6 5.5 2.975V13C5.5 14.375 6.625 15.5 8 15.5H18C19.375 15.5 20.5 14.375 20.5 13V3C20.5 1.625 19.375 0.5 18 0.5ZM18 13H8V3H18V13ZM3 10.5H0.5V18C0.5 19.375 1.625 20.5 3 20.5H10.5V18H3V10.5Z" fill="#FE6E5A" /></svg>,
 
     preset1: <svg width="51" height="34" viewBox="0 0 51 34" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="1" y="0.5" width="49" height="33" rx="1.5" fill="white" stroke="#FE6E5A" />

@@ -749,7 +749,6 @@ class Edit extends Component {
 			<Fragment>
 				{ ! url && (
 					<MediaPlaceholder
-						icon={'format-image'}
 						className={'responsive_block_addons image-hotspot-toolbar-icons responsive_block_addons-hotspot-media-placeholder'}
 						labels={{
 							title: __('Image Hotspot', 'responsive-block-editor-addons'),
