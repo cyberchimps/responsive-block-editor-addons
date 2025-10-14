@@ -469,8 +469,6 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 				$title = __( 'Untitled', 'responsive-block-editor-addons' );
 			}
 
-			$post_grid_markup = '';
-
 			if ( isset( $attributes['displayPostTitle'] ) && $attributes['displayPostTitle'] ) {
 
 				if ( isset( $attributes['postTitleTag'] ) ) {
@@ -482,7 +480,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts2( $attrib
 				$array_of_allowed_html = array( 'h2', 'h3', 'h4', 'h5', 'h6', );
 				$post_title_tag        = $helper->rbea_post_title_tag_allowed_html( $post_title_tag, $array_of_allowed_html, 'h3' );
 
-				$post_grid_markup .= sprintf(
+				$post_carousel_markup .= sprintf(
 					'<%3$s class="responsive-block-editor-addons-block-post-carousel-title"><a href="%1$s" rel="bookmark">%2$s</a></%3$s>',
 					esc_url( get_permalink( $post_id ) ),
 					esc_html( $title ),
