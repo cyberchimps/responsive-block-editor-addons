@@ -18,6 +18,7 @@ import  {LayoutModal}  from "./layout/layout-modal";
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
+import BlockPreview from "../../block-preview";
 
 /**
  * Register the block
@@ -35,18 +36,21 @@ registerBlockType("responsive-block-editor-addons/rbea-templates", {
     __("importer", "responsive-block-editor-addons"),
     __("layouts", "responsive-block-editor-addons"),
   ],
+  attributes: {
+    isPreview: {
+      type: 'boolean',
+      default: false,
+    },
+  },
   example: {
     attributes: {
-      // previewImage: "https://images.unsplash.com/photo-1581093458790-ec69b1f69c61?auto=format&fit=crop&w=600&q=80",
-      previewTitle: __("Template Library", "responsive-block-editor-addons"),
-      previewDescription: __("Click to browse a collection of templates", "responsive-block-editor-addons"),
+      isPreview: true,
     },
-    innerBlocks: [],
   },
   /* Render the block in editor. */
   edit: (props) => {
     return (
-        <Edit {...props} />
+      props.attributes.isPreview ? <BlockPreview image="template-library" /> : <Edit {...props} />
     );
   },
 

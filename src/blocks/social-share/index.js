@@ -13,6 +13,7 @@ import "./styles/styles.editor.scss";
 
 //Import block icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -36,37 +37,14 @@ registerBlockType("responsive-block-editor-addons/social-icons", {
   ],
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            socialMediaIcons: [
-                {
-                    icon: "facebook",
-                    label: "Facebook",
-                    id: "facebook",
-                    url: "https://facebook.com/",
-                    newTab: false,
-                },
-                {
-                    icon: "twitter",
-                    label: "Twitter",
-                    id: "twitter",
-                    url: "https://twitter.com/",
-                    newTab: false,
-                },
-                {
-                    icon: "linkedin",
-                    label: "LinkedIn",
-                    id: "linkedin",
-                    url: "https://linkedin.com/",
-                    newTab: false,
-                },
-            ],
-        },
+  example: {
+    attributes: {
+      isPreview: true,
     },
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="social-icons" /> : <Edit {...props} />;
   },
   /* Save the block markup. */
   save: (props) => {

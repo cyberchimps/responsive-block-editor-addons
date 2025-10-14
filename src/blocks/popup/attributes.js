@@ -792,6 +792,10 @@ const attributes = {
     z_indexMobile: {
       type: "number",
     },
+    isPreview: {
+      type: 'boolean',
+      default: false,
+    },
 };
 
 export default attributes;
