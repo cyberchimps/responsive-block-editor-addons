@@ -39,7 +39,7 @@ registerBlockType("responsive-block-editor-addons/advanced-text", {
   },
 
   edit: (props) => {
-    return props.attributes.isPreview ? <BlockPreview image="advanced_text" /> : <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="advanced-text" /> : <Edit {...props} />;
   },
 
   save: (props) => {

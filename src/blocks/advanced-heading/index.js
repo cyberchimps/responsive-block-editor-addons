@@ -50,7 +50,7 @@ registerBlockType("responsive-block-editor-addons/advanced-heading", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return props.attributes.isPreview ? <BlockPreview image="advanced_heading" /> : <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="advanced-heading" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

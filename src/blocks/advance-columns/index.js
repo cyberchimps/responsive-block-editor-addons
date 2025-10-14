@@ -50,7 +50,7 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return props.attributes.isPreview ? <BlockPreview image="advanced_column" /> : <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="advanced-column" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

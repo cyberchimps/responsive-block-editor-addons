@@ -236,7 +236,10 @@
     "blockRightPaddingTablet": {
       "type": "number",
       "default": ""
+    },
+    "isPreview": {
+      "type": "boolean",
+      "default": false
     }
-    
   }
 }
