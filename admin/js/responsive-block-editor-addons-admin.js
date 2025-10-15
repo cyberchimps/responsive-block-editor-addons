@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import ReactDOM from "react-dom";
 import {HelpContents, Categories} from './ContentList';
 import 'regenerator-runtime/runtime';
@@ -477,6 +477,7 @@ const Settings = () => {
     const [autoRecover, setAutoRecover] = useState(
         String(rbealocalize?.auto_block_recovery) === '1'
     );
+
     const [isSaving, setIsSaving] = useState(false);
 
     const displayToast = ( msg, status ) => {
@@ -492,12 +493,12 @@ const Settings = () => {
         }).showToast();
     };
 
-    const saveSetting = async (nextValue) => {
+    const saveSetting = async (action, value) => {
         setIsSaving(true);
         const formData = new FormData();
-        formData.append('action', 'rbea_toggle_auto_block_recovery');
+        formData.append('action', action);
         formData.append('nonce', rbealocalize.nonce);
-        formData.append('value', nextValue ? '1' : '0');
+        formData.append('value', value);
 
         try {
             const res = await fetch(rbealocalize.ajaxurl, { method: 'POST', body: formData });
@@ -513,7 +514,76 @@ const Settings = () => {
     const handleToggle = () => {
         const next = !autoRecover;
         setAutoRecover(next);
-        saveSetting(next);
+        saveSetting('rbea_toggle_auto_block_recovery', next ? '1' : '0');
+    };
+
+    // Local state for input values to prevent re-renders from affecting input focus
+    const [contentWidthValue, setContentWidthValue] = useState(rbealocalize?.default_content_width || 1000);
+    const [containerPaddingValue, setContainerPaddingValue] = useState(rbealocalize?.default_container_padding || 1000);
+    const [containerGapValue, setContainerGapValue] = useState(rbealocalize?.default_container_gap || 1000);
+
+    // Debounced save functions to prevent too many API calls
+    const debouncedSaveContentWidth = useRef(null);
+    const debouncedSaveContainerPadding = useRef(null);
+    const debouncedSaveContainerGap = useRef(null);
+    
+    useEffect(() => {
+        // Content Width debounced save
+        debouncedSaveContentWidth.current = (() => {
+            let timeoutId;
+            return (value) => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    saveSetting('rbea_save_content_width', value);
+                }, 1000);
+            };
+        })();
+
+        // Container Padding debounced save
+        debouncedSaveContainerPadding.current = (() => {
+            let timeoutId;
+            return (value) => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    saveSetting('rbea_save_container_padding', value);
+                }, 1000);
+            };
+        })();
+
+        // Container Gap debounced save
+        debouncedSaveContainerGap.current = (() => {
+            let timeoutId;
+            return (value) => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    saveSetting('rbea_save_container_gap', value);
+                }, 1000);
+            };
+        })();
+    }, []);
+
+    const handleContentWidthChange = (event) => {
+        const value = parseInt(event.target.value) || 1000;
+        setContentWidthValue(value);
+        if (debouncedSaveContentWidth.current) {
+            debouncedSaveContentWidth.current(value);
+        }
+    };
+
+    const handleContainerPaddingChange = (event) => {
+        const value = parseInt(event.target.value) || 1000;
+        setContainerPaddingValue(value);
+        if (debouncedSaveContainerPadding.current) {
+            debouncedSaveContainerPadding.current(value);
+        }
+    };
+
+    const handleContainerGapChange = (event) => {
+        const value = parseInt(event.target.value) || 1000;
+        setContainerGapValue(value);
+        if (debouncedSaveContainerGap.current) {
+            debouncedSaveContainerGap.current(value);
+        }
     };
 
     // NEW: sections — just add more objects to grow later
@@ -550,7 +620,7 @@ const Settings = () => {
                     {/* Section: Editor Options (your existing card) */}
                     {activeSection === 'editor-options' && (
                         <div className="row gy-4">
-                            <div className="col-xl-8 col-lg-10 col-md-12">
+                            <div className="col-xl-10 col-lg-10 col-md-12">
                                 <div className="rbea-help-feature-cards">
                                     <div className="row align-items-center">
                                         <div className="col-md-10">
@@ -575,6 +645,102 @@ const Settings = () => {
                                                 />
                                                 <span className="rbea-blocks-slider rbea-blocks-round"></span>
                                             </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rbea-help-feature-cards">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-9">
+                                            <p className="rbea-help-title">
+                                                {__('Default Content Width','responsive-block-editor-addons')}
+                                            </p>
+                                            <p className="rbea-help-desc">
+                                                {__(
+                                                    "This setting will apply to Container Block's default Content Width.",
+                                                    'responsive-block-editor-addons'
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div className="col-md-3 text-end">
+                                            <div className="rbea-number-input-wrapper">
+                                                <div className="input-group">
+                                                    <input
+                                                        id="rbea-content-width"
+                                                        type="number"
+                                                        className="form-control rbea-number-input"
+                                                        value={contentWidthValue}
+                                                        onChange={handleContentWidthChange}
+                                                        min="0"
+                                                        max="1600"
+                                                        step="1"
+                                                    />
+                                                    <span className="input-group-text rbea-unit-text">PX</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rbea-help-feature-cards">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-9">
+                                            <p className="rbea-help-title">
+                                                {__('Container Padding','responsive-block-editor-addons')}
+                                            </p>
+                                            <p className="rbea-help-desc">
+                                                {__(
+                                                    "This setting will apply default padding in the Container Block.",
+                                                    'responsive-block-editor-addons'
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div className="col-md-3 text-end">
+                                            <div className="rbea-number-input-wrapper">
+                                                <div className="input-group">
+                                                    <input
+                                                        id="rbea-container-padding"
+                                                        type="number"
+                                                        className="form-control rbea-number-input"
+                                                        value={containerPaddingValue}
+                                                        onChange={handleContainerPaddingChange}
+                                                        min="0"
+                                                        max="100"
+                                                        step="1"
+                                                    />
+                                                    <span className="input-group-text rbea-unit-text">PX</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rbea-help-feature-cards">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-9">
+                                            <p className="rbea-help-title">
+                                                {__('Container Elements Gap','responsive-block-editor-addons')}
+                                            </p>
+                                            <p className="rbea-help-desc">
+                                                {__(
+                                                    "This setting will apply default Row & Column Gaps in the Container Block.",
+                                                    'responsive-block-editor-addons'
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div className="col-md-3 text-end">
+                                            <div className="rbea-number-input-wrapper">
+                                                <div className="input-group">
+                                                    <input
+                                                        id="rbea-container-gap"
+                                                        type="number"
+                                                        className="form-control rbea-number-input"
+                                                        value={containerGapValue}
+                                                        onChange={handleContainerGapChange}
+                                                        min="0"
+                                                        max="200"
+                                                        step="1"
+                                                    />
+                                                    <span className="input-group-text rbea-unit-text">PX</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

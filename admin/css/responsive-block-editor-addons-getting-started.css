@@ -464,6 +464,15 @@ input:checked + .rbea-blocks-slider:before {
     border-radius: 50%;
 }
 
+.form-control.rbea-number-input, .input-group-text.rbea-unit-text{
+    height: 30px;
+}
+
+.col-md-3.text-end{
+    width: 18%;
+    margin-left: 7%;
+}
+
 .rbea-blocks-card {
     padding: 16px 18px;
     background: #FFFFFF;

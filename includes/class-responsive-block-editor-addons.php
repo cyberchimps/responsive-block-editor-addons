@@ -183,6 +183,19 @@ class Responsive_Block_Editor_Addons {
 		// RBEA Auto Block Recovery Toggle.
 		add_action( 'wp_ajax_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
 		add_action( 'wp_ajax_nopriv_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
+
+		// RBEA Content Width Setting.
+		add_action( 'wp_ajax_rbea_save_content_width', array( $this, 'rbea_save_content_width' ) );
+		add_action( 'wp_ajax_nopriv_rbea_save_content_width', array( $this, 'rbea_save_content_width' ) );
+		
+		// RBEA Container Padding Setting.
+		add_action( 'wp_ajax_rbea_save_container_padding', array( $this, 'rbea_save_container_padding' ) );
+		add_action( 'wp_ajax_nopriv_rbea_save_container_padding', array( $this, 'rbea_save_container_padding' ) );
+		
+		// RBEA Container Gap Setting.
+		add_action( 'wp_ajax_rbea_save_container_gap', array( $this, 'rbea_save_container_gap' ) );
+		add_action( 'wp_ajax_nopriv_rbea_save_container_gap', array( $this, 'rbea_save_container_gap' ) );
+		
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
@@ -712,6 +725,9 @@ class Responsive_Block_Editor_Addons {
 				'cf7_forms'                          => $is_contact_7_form_styler_on ? $this->get_cf7_forms() : array(),
 				'plugin_url'                         => plugin_dir_url( __DIR__ ),
 				'auto_block_recovery'                => get_option( 'rbea_auto_block_recovery', '1' ),
+				'default_content_width'               => get_option( 'rbea_default_content_width', 1000 ),
+				'default_container_padding'          => get_option( 'rbea_default_container_padding', 1000 ),
+				'default_container_gap'              => get_option( 'rbea_default_container_gap', 1000 ),
 				'blocks'                             => $blocks,
 				'is_animation_on'                    => $is_animation_toggled_on,
 				'is_display_conditions_on'           => $is_display_conditions_on,
@@ -1251,6 +1267,9 @@ class Responsive_Block_Editor_Addons {
 					'rst_url'               => esc_url( 'https://wordpress.org/plugins/responsive-add-ons/' ),
 					'rbea_blocks'           => $blocks,
 					'auto_block_recovery'   => get_option( 'rbea_auto_block_recovery', '1' ),
+					'default_content_width'  => get_option( 'rbea_default_content_width', 1000 ),
+					'default_container_padding' => get_option( 'rbea_default_container_padding', 1000 ),
+					'default_container_gap'  => get_option( 'rbea_default_container_gap', 1000 ),
 					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
 					'rst_status'            => $this->rst_status(),
 					'rst_nonce'             => $nonce,
@@ -1633,6 +1652,75 @@ class Responsive_Block_Editor_Addons {
 		$value = ( '1' === $value ) ? '1' : '0';
 
 		update_option( 'rbea_auto_block_recovery', $value );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Saves the default content width setting in database.
+	 *
+	 * @since 2.0.0
+	 */
+	public function rbea_save_content_width() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the numeric value.
+		$value = intval( sanitize_text_field( wp_unslash( $_POST['value'] ) ) );
+		
+		// Ensure value is within reasonable bounds.
+		$value = max( 100, min( 2000, $value ) );
+
+		update_option( 'rbea_default_content_width', $value );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Saves the default container padding setting in database.
+	 *
+	 * @since 2.0.0
+	 */
+	public function rbea_save_container_padding() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the numeric value.
+		$value = intval( sanitize_text_field( wp_unslash( $_POST['value'] ) ) );
+		
+		// Ensure value is within reasonable bounds.
+		$value = max( 0, min( 2000, $value ) );
+
+		update_option( 'rbea_default_container_padding', $value );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Saves the default container gap setting in database.
+	 *
+	 * @since 2.0.0
+	 */
+	public function rbea_save_container_gap() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the numeric value.
+		$value = intval( sanitize_text_field( wp_unslash( $_POST['value'] ) ) );
+		
+		// Ensure value is within reasonable bounds.
+		$value = max( 0, min( 2000, $value ) );
+
+		update_option( 'rbea_default_container_gap', $value );
 
 		wp_send_json_success();
 	}

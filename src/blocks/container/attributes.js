@@ -33,7 +33,7 @@ const attributes = {
   },
   innerContentCustomWidthDesktop: {
     type: "number",
-    default: 1340,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_content_width) ? parseInt(responsive_globals.default_content_width) : 1000,
   },
   innerContentCustomWidthTablet: {
     type: "number",
@@ -80,7 +80,7 @@ const attributes = {
   },
   rowGapDesktop: {
     type: "number",
-    default: 20,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_gap) ? parseInt(responsive_globals.default_container_gap) : 20,
   },
   rowGapTablet: {
     type: "number",
@@ -102,7 +102,7 @@ const attributes = {
   },
   columnGapDesktop: {
     type: "number",
-    default: 20,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_gap) ? parseInt(responsive_globals.default_container_gap) : 20,
   },
   columnGapTablet: {
     type: "number",
@@ -503,19 +503,19 @@ const attributes = {
   },
   containerTopPadding: {
     type: "number",
-    default: 10,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
   },
   containerBottomPadding: {
     type: "number",
-    default: 10,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
   },
   containerLeftPadding: {
     type: "number",
-    default: 10,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
   },
   containerRightPadding: {
     type: "number",
-    default: 10,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
   },
   containerTopPaddingTablet: {
     type: "number",

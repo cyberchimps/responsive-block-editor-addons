@@ -38,5 +38,20 @@ class Responsive_Block_Editor_Addons_Activator {
 		if ( false === get_option( 'rbea_auto_block_recovery' ) ) {
 			update_option( 'rbea_auto_block_recovery', '1' );
 		}
+
+		// Set default value for content width if it doesn't exist
+		if ( false === get_option( 'rbea_default_content_width' ) ) {
+			update_option( 'rbea_default_content_width', 1000 );
+		}
+
+		// Set default value for container padding if it doesn't exist
+		if ( false === get_option( 'rbea_default_container_padding' ) ) {
+			update_option( 'rbea_default_container_padding', 1000 );
+		}
+
+		// Set default value for container gap if it doesn't exist
+		if ( false === get_option( 'rbea_default_container_gap' ) ) {
+			update_option( 'rbea_default_container_gap', 1000 );
+		}
 	}
 }
