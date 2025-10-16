@@ -28,6 +28,8 @@ import RbeaBorderStyleTabControl from "../../../utils/components/rbea-border-sty
 import RbeaBorderRadiusControl from "../../../settings-components/RbeaBorderRadiusControl";
 import ResponsiveBorderWidthControl from "../../../settings-components/ResponsiveBorderWidthSettings";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
+import PresetControl from "../../../settings-components/PresetSettings";
+import { presets, resetPreset } from './presets';
 
 import {
   __experimentalToggleGroupControl as ToggleGroupControl,
@@ -569,6 +571,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
 
     const accordionGeneralSettings = () => {
       return (
+        <>
         <PanelBody>
           <div className="responsive-block-editor-addons-grid-2-layout">
             <RbeaTabRadioControl
@@ -640,6 +643,21 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
           )}
           {"accordion" === layout && accordionIconSettings()}
         </PanelBody>
+        <PanelBody
+            title={__("Presets", "responsive-block-editor-addons")}
+            initialOpen={false}
+          >
+          <PresetControl
+            label={__('Select Preset', 'responsive-block-editor-addons')}
+            presets={presets}
+            onApply={(newAttrs) => setAttributes(newAttrs)}
+            activeId={null}
+            isResetAllowed={true}
+            resetAttr={resetPreset}
+            onResetApply={(newAttrs) => setAttributes(newAttrs)}
+          />
+        </PanelBody>
+        </>
       );
     };
 
