@@ -48,7 +48,6 @@ const RbeaDisplayConditions = () => {
                 __next40pxDefaultSize
                 __nextHasNoMarginBottom
                 options={userStateOptions}
-                help={__("Above setting will only take effect once you are on the live page, and not while you're editing.", "responsive-block-editor-addons")}
             >
             </SelectControl>
             { RBEADisplayConditions === 'userstate' && (
@@ -152,6 +151,9 @@ const RbeaDisplayConditions = () => {
                     </div>
                 </>
             )}
+			<div className="components-base-control">
+				<p>{__("Above setting will only take effect once you are on the live page, and not while you're editing.", "responsive-block-editor-addons")}</p>
+			</div>
         </PanelBody>
     )
 }
