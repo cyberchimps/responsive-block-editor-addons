@@ -468,6 +468,10 @@ input:checked + .rbea-blocks-slider:before {
     height: 30px;
 }
 
+.form-control.rbea-number-input{
+    border: 1px solid #dde4ef;
+}
+
 .col-md-3.text-end{
     width: 18%;
     margin-left: 7%;
