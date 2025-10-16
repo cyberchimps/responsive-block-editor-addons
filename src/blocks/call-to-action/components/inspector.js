@@ -27,7 +27,7 @@ import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
 import PresetControl from "../../../settings-components/PresetSettings";
-import { presets, resetPreset } from './presets';
+import { presets, resetPreset, buttonPreset, resetButtonPreset } from './presets';
 <RbeaSupportControl blockSlug={"multi-buttons"} />
 
 // Setup the block
@@ -1022,6 +1022,19 @@ export default class Inspector extends Component {
                 ]}
                 defaultValue={"text"}
               />
+
+              {resctaType === 'button' && (
+                <PresetControl
+                  label={__('Button Shape', 'responsive-block-editor-addons')}
+                  presets={buttonPreset}
+                  onApply={(newAttrs) => setAttributes(newAttrs)}
+                  activeId={null}
+                  isResetAllowed={true}
+                  resetAttr={resetButtonPreset}
+                  onResetApply={(newAttrs) => setAttributes(newAttrs)}
+                />
+              )}
+
               <ButtonSettingsControl
                 {...this.props}
                 showMarginControls={false}

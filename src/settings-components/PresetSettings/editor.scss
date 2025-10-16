@@ -31,7 +31,7 @@
         }
         .rbea-preset-active-card {
             svg {
-                rect {
+                rect:first-of-type {
                     stroke: #007CBA;
                 }
             }

@@ -4508,7 +4508,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonText'                  => '',
 				'buttonUrl'                   => '',
 				'buttonAlignment'             => 'center',
-				'ctaBackColor'                => '#2091e1',
+				'ctaBackColor'                => '',
 				'ctaColor'                    => '#fff',
 				'buttonSize'                  => 'responsive-block-editor-addons-cta-button-size-medium',
 				'buttonShape'                 => 'responsive-block-editor-addons-cta-button-shape-rounded',
