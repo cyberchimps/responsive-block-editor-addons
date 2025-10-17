@@ -563,26 +563,41 @@ const Settings = () => {
     }, []);
 
     const handleContentWidthChange = (event) => {
-        const value = parseInt(event.target.value) || 1000;
-        setContentWidthValue(value);
+        const inputValue = event.target.value;
+        setContentWidthValue(inputValue);
+        
         if (debouncedSaveContentWidth.current) {
-            debouncedSaveContentWidth.current(value);
+            // If empty, save the default; otherwise save the actual value
+            const valueToSave = inputValue === '' || isNaN(inputValue) 
+                ? (rbealocalize?.default_content_width || 1000)
+                : parseInt(inputValue);
+            debouncedSaveContentWidth.current(valueToSave);
         }
     };
 
     const handleContainerPaddingChange = (event) => {
-        const value = parseInt(event.target.value) || 1000;
-        setContainerPaddingValue(value);
+        const inputValue = event.target.value;
+        setContainerPaddingValue(inputValue);
+        
         if (debouncedSaveContainerPadding.current) {
-            debouncedSaveContainerPadding.current(value);
+            // If empty, save the default; otherwise save the actual value
+            const valueToSave = inputValue === '' || isNaN(inputValue) 
+                ? (rbealocalize?.default_container_padding || 1000)
+                : parseInt(inputValue);
+            debouncedSaveContainerPadding.current(valueToSave);
         }
     };
 
     const handleContainerGapChange = (event) => {
-        const value = parseInt(event.target.value) || 1000;
-        setContainerGapValue(value);
+        const inputValue = event.target.value;
+        setContainerGapValue(inputValue);
+        
         if (debouncedSaveContainerGap.current) {
-            debouncedSaveContainerGap.current(value);
+            // If empty, save the default; otherwise save the actual value
+            const valueToSave = inputValue === '' || isNaN(inputValue) 
+                ? (rbealocalize?.default_container_gap || 1000)
+                : parseInt(inputValue);
+            debouncedSaveContainerGap.current(valueToSave);
         }
     };
 

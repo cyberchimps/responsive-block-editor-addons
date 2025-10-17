@@ -33,7 +33,7 @@ const attributes = {
   },
   innerContentCustomWidthDesktop: {
     type: "number",
-    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_content_width) ? parseInt(responsive_globals.default_content_width) : 1000,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_content_width) ? parseInt(responsive_globals.default_content_width) : 1340,
   },
   innerContentCustomWidthTablet: {
     type: "number",
@@ -503,19 +503,19 @@ const attributes = {
   },
   containerTopPadding: {
     type: "number",
-    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 10,
   },
   containerBottomPadding: {
     type: "number",
-    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 10,
   },
   containerLeftPadding: {
     type: "number",
-    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 10,
   },
   containerRightPadding: {
     type: "number",
-    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 20,
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.default_container_padding) ? parseInt(responsive_globals.default_container_padding) : 10,
   },
   containerTopPaddingTablet: {
     type: "number",
