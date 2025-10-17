@@ -1,6 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+#wpbody-content {
+    @apply font-sans;
+}
 #wpcontent {
     padding-left: 0;
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
+
+    .rbea-active-tab {
+        @apply border-b-2 border-b-[#2563EB];
+    }
 }

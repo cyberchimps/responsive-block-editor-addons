@@ -3,15 +3,11 @@ module.exports = {
   content: ["./admin/getting-started/src/**/*.{js,jsx,ts,tsx,php,html}"],
   theme: {
     extend: {
-      colors: {
-        border: '#CED5DE',
-        btnPrimary: '#069CDF',
-        activeTab: '#E7F1F5',
-        btnBorder: '#007CBA',
-        primaryBtnHover: '#03567B',
+      spacing: {
+        '7.5': '7.5rem',
       },
-       boxShadow: {
-        cardShadow: '0px 6px 30px 0px #00000014',
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },
