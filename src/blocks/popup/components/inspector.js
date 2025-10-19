@@ -278,6 +278,7 @@ export default class Inspector extends Component {
         z_indexMobile,
         inheritFromTheme,
         inheritFromThemesaved,
+        inheritFromThemeLocalTimestamp,
       },
       setAttributes,
     } = this.props;
@@ -1054,6 +1055,7 @@ export default class Inspector extends Component {
                     setAttributes({
                       inheritFromTheme: next,
                       inheritFromThemesaved: next,
+                      inheritFromThemeLocalTimestamp: new Date().toISOString(),
                     });
                   }}
                   __nextHasNoMarginBottom

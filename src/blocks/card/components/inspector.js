@@ -515,6 +515,7 @@ export default class Inspector extends Component {
         hasImagePositionMigrated,
         inheritFromTheme,
         inheritFromThemesaved,
+        inheritFromThemeLocalTimestamp,
       },
       setAttributes,
     } = this.props;
@@ -1180,6 +1181,7 @@ export default class Inspector extends Component {
                   setAttributes({
                     inheritFromTheme: next,
                     inheritFromThemesaved: next,
+                    inheritFromThemeLocalTimestamp: new Date().toISOString(),
                   });
                 }}
                 __nextHasNoMarginBottom
