@@ -103,10 +103,11 @@ function EditorStyles(props) {
 		backgroundImage +
 		")";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ":{
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
 			'padding-right': generateCSSUnit(blockRightPadding, "px"),
 			'padding-bottom': generateCSSUnit(blockBottomPadding, "px"),
@@ -169,7 +170,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ":{
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingMobile, "px"),
@@ -191,7 +192,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ":{
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),
       'padding-bottom': generateCSSUnit(blockBottomPaddingTablet, "px"),

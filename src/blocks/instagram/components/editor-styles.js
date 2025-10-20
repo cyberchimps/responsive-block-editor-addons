@@ -54,10 +54,11 @@ function EditorStyles(props) {
     hideWidgetTablet,
     hideWidgetMobile,
   } = props.attributes;
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(instaTopPadding, "px"),
       "padding-bottom": generateCSSUnit(instaBottomPadding, "px"),
       "padding-left": generateCSSUnit(instaLeftPadding, "px"),
@@ -91,7 +92,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(instaTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(instaBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(instaLeftPaddingMobile, "px"),
@@ -114,7 +115,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(instaTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(instaBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(instaLeftPaddingTablet, "px"),

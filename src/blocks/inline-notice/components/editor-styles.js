@@ -98,10 +98,11 @@ function EditorStyles(props) {
   let borderLeft = "simple" === layout ? `5px solid ${noticeTypeColor}` : `1px solid ${noticeTypeColor}`;
   let noticeBgColor = "modern" === layout ? noticeTypeColor : "";
   let noticeAreaBorder = "simple" === layout ? `1px solid ${noticeTypeColor}` : "none";
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     "": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "text-align": noticeAlignment,
       "padding": `${generateCSSUnit(blockTopPadding ,"px")} ${generateCSSUnit(blockRightPadding ,"px")} ${generateCSSUnit(blockBottomPadding ,"px")} ${generateCSSUnit(blockLeftPadding ,"px")}`,
       "margin": `${generateCSSUnit(blockTopMargin ,"px")} ${generateCSSUnit(blockRightMargin ,"px")} ${generateCSSUnit(blockBottomMargin ,"px")} ${generateCSSUnit(blockLeftMargin ,"px")}`,
@@ -153,7 +154,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding": `${generateCSSUnit(blockTopPaddingMobile ,"px")} ${generateCSSUnit(blockRightPaddingMobile ,"px")} ${generateCSSUnit(blockBottomPaddingMobile ,"px")} ${generateCSSUnit(blockLeftPaddingMobile ,"px")}`,
       "margin": `${generateCSSUnit(blockTopMarginMobile ,"px")} ${generateCSSUnit(blockRightMarginMobile ,"px")} ${generateCSSUnit(blockBottomMarginMobile ,"px")} ${generateCSSUnit(blockLeftMarginMobile ,"px")}`,
     },
@@ -169,7 +170,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding": `${generateCSSUnit(blockTopPaddingTablet ,"px")} ${generateCSSUnit(blockRightPaddingTablet ,"px")} ${generateCSSUnit(blockBottomPaddingTablet ,"px")} ${generateCSSUnit(blockLeftPaddingTablet ,"px")}`,
       "margin": `${generateCSSUnit(blockTopMarginTablet ,"px")} ${generateCSSUnit(blockRightMarginTablet ,"px")} ${generateCSSUnit(blockBottomMarginTablet ,"px")} ${generateCSSUnit(blockLeftMarginTablet ,"px")}`,
     },

@@ -236,9 +236,11 @@ function EditorStyles(props, deviceType) {
 			? 1 - (parseInt(opacity)/100)
 			: 1;
 
+	const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
+	
   	const selectors = {
 		'': {
-			'opacity': hideWidget ? 0.2 : 1,
+			'opacity': hideWidget && isOn ? 0.2 : 1,
 		},
 		'.wp-block-responsive-block-editor-addons-container .block-editor-block-list__block': {
 			'color': textColor,
@@ -427,7 +429,7 @@ function EditorStyles(props, deviceType) {
 
   	const tablet_selectors = {
 		"": {
-			"opacity": hideWidgetTablet? 0.2 : 1,
+			"opacity": hideWidgetTablet && isOn ? 0.2 : 1,
 		},
 		[ containerFlexSelector ]: {
 			'flex-direction': directionTablet,
@@ -457,7 +459,7 @@ function EditorStyles(props, deviceType) {
 
 	const mobile_selectors = {
 		"": {
-			"opacity": hideWidgetMobile? 0.2 : 1,
+			"opacity": hideWidgetMobile && isOn ? 0.2 : 1,
 		},
 		// Handeling Edge case for mobile. 
 		'.wp-block-responsive-block-editor-addons-container .block-editor-inner-blocks .block-editor-block-list__layout .wp-block[data-type="core/quote"]' : {

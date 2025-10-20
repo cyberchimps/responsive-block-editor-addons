@@ -100,10 +100,11 @@ function EditorStyles(props) {
   } = props.attributes;
 
   let blockOpacityModified = blockOpacity/100
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      'opacity': hideWidget ? 0.2 : blockOpacityModified,
+      'opacity': hideWidget && isOn ? 0.2 : blockOpacityModified,
       'z-index': zIndex,
       'max-width': generateCSSUnit(containerWidth, "px"),
       "margin-top": generateCSSUnit(containerTopMargin, "px"),
@@ -165,7 +166,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      'opacity': hideWidgetMobile ? 0.2 : blockOpacityModified,
+      'opacity': hideWidgetMobile && isOn ? 0.2 : blockOpacityModified,
       'max-width': generateCSSUnit(containerWidthMobile, "px"),
       "margin-top": generateCSSUnit(containerTopMarginMobile, "px"),
 		  "margin-bottom": generateCSSUnit(containerBottomMarginMobile, "px"),
@@ -199,7 +200,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      'opacity': hideWidgetTablet ? 0.2 : blockOpacityModified,
+      'opacity': hideWidgetTablet && isOn ? 0.2 : blockOpacityModified,
       'max-width': generateCSSUnit(containerWidthTablet, "px"),
       "margin-top": generateCSSUnit(containerTopMarginTablet, "px"),
 		  "margin-bottom": generateCSSUnit(containerBottomMarginTablet, "px"),

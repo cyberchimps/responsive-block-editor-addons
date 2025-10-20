@@ -320,13 +320,13 @@ function EditorStyles(props) {
   } else {
     updatedButtonBackgroundhColor = "";
   }
-
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
       "z-index": zIndex,
       "border-width": generateCSSUnit(blockBorderWidth, "px"),
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "background-color": "empty" !== boxBackgroundColor && "#ffffff" === backgroundColor ? `${hexToRgba(  //For compatibility with v1.3.2
         boxBackgroundColor || "#ffffff",
         newopacity || 0
@@ -545,7 +545,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       // padding: generateCSSUnit(contentPaddingMobile, "px"),
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
@@ -626,7 +626,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       // padding: generateCSSUnit(contentPaddingTablet, "px"),
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),

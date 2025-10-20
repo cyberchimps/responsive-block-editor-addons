@@ -128,10 +128,11 @@ function EditorStyles(props) {
     formBlockBorderRightWidthTablet,
     formBlockBorderRightWidthMobile,
   } = props.attributes;
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     "": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(formTopPadding, "px"),
       "padding-right": generateCSSUnit(formRightPadding, "px"),
       "padding-bottom": generateCSSUnit(formBottomPadding, "px"),
@@ -210,7 +211,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(formTopPaddingMobile, "px"),
       "padding-right": generateCSSUnit(formRightPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(formBottomPaddingMobile, "px"),
@@ -254,7 +255,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(formTopPaddingTablet, "px"),
       "padding-right": generateCSSUnit(formRightPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(formBottomPaddingTablet, "px"),

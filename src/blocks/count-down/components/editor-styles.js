@@ -195,10 +195,11 @@ function EditorStyles(props) {
   const displaySeconds = showSecondsBox ? "block" : "none";
 
   let flexColumn = stackOnMobile ? "column" : "row";
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     "": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-countdown-box-stylings": {
       height: generateCSSUnit(boxHeight, "px"),
@@ -290,7 +291,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-countdown-box-stylings": {
       height: generateCSSUnit(boxHeightMobile, "px"),
@@ -363,7 +364,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-countdown-box-stylings": {
       height: generateCSSUnit(boxHeightTablet, "px"),
