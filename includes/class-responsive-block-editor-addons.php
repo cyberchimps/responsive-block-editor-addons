@@ -660,6 +660,7 @@ class Responsive_Block_Editor_Addons {
 		$is_contact_7_form_styler_on = 1;
 		$is_animation_toggled_on     = 1;
 		$is_display_conditions_on    = 1;
+		$is_responsive_conditions_on    = 1;
 
 		$block_status_map = array_column( (array) $blocks, 'status', 'key' );
 
@@ -677,6 +678,10 @@ class Responsive_Block_Editor_Addons {
 
 		if ( isset( $block_status_map['display-conditions'] ) ) {
 			$is_display_conditions_on = $block_status_map['display-conditions'];
+		}
+
+		if ( isset( $block_status_map['responsive-conditions'] ) ) {
+			$is_responsive_conditions_on = $block_status_map['responsive-conditions'];
 		}
 
 		$include_all_taxonomy = 0;
@@ -715,6 +720,7 @@ class Responsive_Block_Editor_Addons {
 				'blocks'                             => $blocks,
 				'is_animation_on'                    => $is_animation_toggled_on,
 				'is_display_conditions_on'           => $is_display_conditions_on,
+				'is_responsive_conditions_on'           => $is_responsive_conditions_on,
 				'user_roles'                         => $is_display_conditions_on ? $this->responsive_block_editor_addons_get_user_roles() : array(),
 			)
 		);

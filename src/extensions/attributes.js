@@ -1,6 +1,7 @@
 import { addFilter } from '@wordpress/hooks';
 import AnimationAttributes from './animations/attributes';
 import DisplayConditionsAttributes from './display-conditions/attributes';
+import ResponsiveConditionsAttributes from './responsive-conditions/attributes';
 
 function addAttributes( settings ) {
 
@@ -8,6 +9,7 @@ function addAttributes( settings ) {
         settings.attributes = Object.assign( settings.attributes, {
             ...AnimationAttributes,
             ...DisplayConditionsAttributes,
+            ...ResponsiveConditionsAttributes,
         } );
     }
 
