@@ -1,21 +1,22 @@
 import { __ } from "@wordpress/i18n";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Header = () => {
 
     const history = useHistory();
+    const location = useLocation();
 
     return (
         <div className="bg-white border-b border-b-blue-100">
             <div class="container mx-auto px-7.5">
                 <div className="flex justify-between">
-                    <div className="flex items-center w-8/12">
+                    <div className="flex items-center w-8/12 gap-6">
                         <img className="rbea-cyberchimps-logo" src={rbealocalize.responsiveurl + 'admin/images/rbea-logo.svg'} />
-                        <div className="flex justify-evenly w-full">
-                            <div onClick={() => history.push('/')} className="rbea-active-tab"><p className="text-slate-800 text-base font-medium my-6 px-5">{__( 'Dashboard', 'responsive-block-editor-addons')}</p></div>
-                            <div onClick={() => history.push('/blocks')}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Blocks', 'responsive-block-editor-addons')}</p></div>
-                            <div onClick={() => history.push('/settings')}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Settings', 'responsive-block-editor-addons')}</p></div>
-                            <div onClick={() => history.push('/templates')}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Starter Templates', 'responsive-block-editor-addons')}</p></div>
+                        <div className="flex w-full">
+                            <div onClick={() => history.push('/')} className={`${location.pathname === '/' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__( 'Dashboard', 'responsive-block-editor-addons')}</p></div>
+                            <div onClick={() => history.push('/blocks')} className={`${location.pathname === '/blocks' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Blocks', 'responsive-block-editor-addons')}</p></div>
+                            <div onClick={() => history.push('/settings')} className={`${location.pathname === '/settings' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Settings', 'responsive-block-editor-addons')}</p></div>
+                            <div onClick={() => history.push('/templates')} className={`${location.pathname === '/templates' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Starter Templates', 'responsive-block-editor-addons')}</p></div>
                         </div>
                     </div>
                     <div className="flex w-4/12 items-center justify-end">
