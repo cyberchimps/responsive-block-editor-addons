@@ -30,10 +30,19 @@ class ButtonSettingsControl extends Component {
     var advancedControls;
       advancedControls = (
           <Fragment>
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
               {this.props.showButtonSpacing === false ? false : true && (
                 <ButtonSpacingControl {...this.props}/>
               )}
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
               <ButtonBorderControl {...this.props}/>
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <p className="rbea-inspector-control-label">{__( "Color Settings", "responsive-block-editor-addons" )}</p>
               <ButtonColorControl {...this.props}/>
           </Fragment>
       );

@@ -653,128 +653,126 @@ export default class Inspector extends Component {
                 max={10}
                 allowReset
               />
-              <PanelBody
-                title={__("Connector Color Settings", "responsive-block-editor-addons")}
-                initialOpen={true}
+              
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <TabPanel
+                className="responsive-block-editor-addons-inspect-tabs 
+                responsive-block-editor-addons-inspect-tabs-col-2  
+                responsive-block-editor-addons-color-inspect-tabs"
+                activeClass="active-tab"
+                initialTabName="normal" // Set the default active tab here
+                tabs={[
+                  {
+                    name: "empty-1",
+                    title: __("", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-empty-tab",
+                  },
+                  {
+                    name: "normal",
+                    title: __("Normal", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-normal-tab",
+                  },
+                  {
+                    name: "empty-2",
+                    title: __("", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-empty-tab-middle",
+                  },
+                  {
+                    name: "focus",
+                    title: __("Focus", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-hover-tab",
+                  },
+                  {
+                    name: "empty-3",
+                    title: __("", "responsive-block-editor-addons"),
+                    className: "responsive-block-editor-addons-empty-tab",
+                  },
+                ]}
               >
-                <TabPanel
-                  className="responsive-block-editor-addons-inspect-tabs 
-                  responsive-block-editor-addons-inspect-tabs-col-2  
-                  responsive-block-editor-addons-color-inspect-tabs"
-                  activeClass="active-tab"
-                  initialTabName="normal" // Set the default active tab here
-                  tabs={[
-                    {
-                      name: "empty-1",
-                      title: __("", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-empty-tab",
-                    },
-                    {
-                      name: "normal",
-                      title: __("Normal", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-normal-tab",
-                    },
-                    {
-                      name: "empty-2",
-                      title: __("", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-empty-tab-middle",
-                    },
-                    {
-                      name: "focus",
-                      title: __("Focus", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-hover-tab",
-                    },
-                    {
-                      name: "empty-3",
-                      title: __("", "responsive-block-editor-addons"),
-                      className: "responsive-block-editor-addons-empty-tab",
-                    },
-                  ]}
-                >
-                  {(tabName) => {
-                    let tabout;
-                    if ("focus" === tabName.name) {
-                      tabout = (
-                        <>
-                         <RbeaColorControl
-                          label = {__("Line Color", "responsive-block-editor-addons")}
-                          colorValue={separatorFillColor}
-                          onChange={(colorValue) =>
-                            setAttributes({ separatorFillColor: colorValue })
-                          }
-                          resetColor={() => setAttributes({ separatorFillColor: "" })}
-                        />
-                         <RbeaColorControl
-                          label = {__("Icon Color", "responsive-block-editor-addons")}
-                          colorValue={iconFocus}
-                          onChange={(colorValue) =>
-                            setAttributes({ iconFocus: colorValue })
-                          }
-                          resetColor={() => setAttributes({ iconFocus: "" })}
-                        />
-                         <RbeaColorControl
-                          label = {__("Background Color", "responsive-block-editor-addons")}
-                          colorValue={iconBgFocus}
-                          onChange={(colorValue) =>
-                            setAttributes({ iconBgFocus: colorValue })
-                          }
-                          resetColor={() => setAttributes({ iconBgFocus: "" })}
-                        />
-                         <RbeaColorControl
-                          label = {__("Border Color", "responsive-block-editor-addons")}
-                          colorValue={borderFocus}
-                          onChange={(colorValue) =>
-                            setAttributes({ borderFocus: colorValue })
-                          }
-                          resetColor={() => setAttributes({ borderFocus: "" })}
-                        />
-                        </>
-                        
-                      );
-                    } else if ("normal" === tabName.name) {
-                      tabout = (
-                        <>
+                {(tabName) => {
+                  let tabout;
+                  if ("focus" === tabName.name) {
+                    tabout = (
+                      <>
                         <RbeaColorControl
-                          label = {__("Line Color", "responsive-block-editor-addons")}
-                          colorValue={separatorColor}
-                          onChange={(colorValue) =>
-                            setAttributes({ separatorColor: colorValue })
-                          }
-                          resetColor={() => setAttributes({ separatorColor: "" })}
-                        />
+                        label = {__("Line Color", "responsive-block-editor-addons")}
+                        colorValue={separatorFillColor}
+                        onChange={(colorValue) =>
+                          setAttributes({ separatorFillColor: colorValue })
+                        }
+                        resetColor={() => setAttributes({ separatorFillColor: "" })}
+                      />
                         <RbeaColorControl
-                          label = {__("Icon Color", "responsive-block-editor-addons")}
-                          colorValue={iconColor}
-                          onChange={(colorValue) =>
-                            setAttributes({ iconColor: colorValue })
-                          }
-                          resetColor={() => setAttributes({ iconColor: "" })}
-                        />
+                        label = {__("Icon Color", "responsive-block-editor-addons")}
+                        colorValue={iconFocus}
+                        onChange={(colorValue) =>
+                          setAttributes({ iconFocus: colorValue })
+                        }
+                        resetColor={() => setAttributes({ iconFocus: "" })}
+                      />
                         <RbeaColorControl
-                          label = {__("Background Color", "responsive-block-editor-addons")}
-                          colorValue={separatorBg}
-                          onChange={(colorValue) =>
-                            setAttributes({ separatorBg: colorValue })
-                          }
-                          resetColor={() => setAttributes({ separatorBg: "" })}
-                        />
+                        label = {__("Background Color", "responsive-block-editor-addons")}
+                        colorValue={iconBgFocus}
+                        onChange={(colorValue) =>
+                          setAttributes({ iconBgFocus: colorValue })
+                        }
+                        resetColor={() => setAttributes({ iconBgFocus: "" })}
+                      />
                         <RbeaColorControl
-                          label = {__("Border Color", "responsive-block-editor-addons")}
-                          colorValue={separatorBorder}
-                          onChange={(colorValue) =>
-                            setAttributes({ separatorBorder: colorValue })
-                          }
-                          resetColor={() => setAttributes({ separatorBorder: "" })}
-                        />
+                        label = {__("Border Color", "responsive-block-editor-addons")}
+                        colorValue={borderFocus}
+                        onChange={(colorValue) =>
+                          setAttributes({ borderFocus: colorValue })
+                        }
+                        resetColor={() => setAttributes({ borderFocus: "" })}
+                      />
                       </>
-                      );
-                    } else {
-                      tabout = emptyColorControl;
-                    }
-                    return <div>{tabout}</div>;
-                  }}
-                </TabPanel>
-              </PanelBody>
+                      
+                    );
+                  } else if ("normal" === tabName.name) {
+                    tabout = (
+                      <>
+                      <RbeaColorControl
+                        label = {__("Line Color", "responsive-block-editor-addons")}
+                        colorValue={separatorColor}
+                        onChange={(colorValue) =>
+                          setAttributes({ separatorColor: colorValue })
+                        }
+                        resetColor={() => setAttributes({ separatorColor: "" })}
+                      />
+                      <RbeaColorControl
+                        label = {__("Icon Color", "responsive-block-editor-addons")}
+                        colorValue={iconColor}
+                        onChange={(colorValue) =>
+                          setAttributes({ iconColor: colorValue })
+                        }
+                        resetColor={() => setAttributes({ iconColor: "" })}
+                      />
+                      <RbeaColorControl
+                        label = {__("Background Color", "responsive-block-editor-addons")}
+                        colorValue={separatorBg}
+                        onChange={(colorValue) =>
+                          setAttributes({ separatorBg: colorValue })
+                        }
+                        resetColor={() => setAttributes({ separatorBg: "" })}
+                      />
+                      <RbeaColorControl
+                        label = {__("Border Color", "responsive-block-editor-addons")}
+                        colorValue={separatorBorder}
+                        onChange={(colorValue) =>
+                          setAttributes({ separatorBorder: colorValue })
+                        }
+                        resetColor={() => setAttributes({ separatorBorder: "" })}
+                      />
+                    </>
+                    );
+                  } else {
+                    tabout = emptyColorControl;
+                  }
+                  return <div>{tabout}</div>;
+                }}
+              </TabPanel>
             </PanelBody>
 
 				<TypographyHelperControl

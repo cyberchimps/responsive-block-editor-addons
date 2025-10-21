@@ -976,80 +976,72 @@ export default class Inspector extends Component {
               title={__("Spacing", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <PanelBody
-                title={__("Padding", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewPaddingControl
-                  attrNameTemplate="block%s"
-                  resetValues={blockPaddingResetValues}
-                  {...this.props}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Margin", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewMarginControl
-                  attrNameTemplate="block%s"
-                  resetValues={blockMarginResetValues}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={"Image Bottom"}
-                  attrNameTemplate="imageSpace%s"
-                  values={{
-                    desktop: imageSpace,
-                    tablet: imageSpaceTablet,
-                    mobile: imageSpaceMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={"Title Bottom"}
-                  attrNameTemplate="titleSpace%s"
-                  values={{
-                    desktop: titleSpace,
-                    tablet: titleSpaceTablet,
-                    mobile: titleSpaceMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={"Description Bottom"}
-                  attrNameTemplate="descSpace%s"
-                  values={{
-                    desktop: descSpace,
-                    tablet: descSpaceTablet,
-                    mobile: descSpaceMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-                <ResponsiveSpacingControl
-                  title={"Button Bottom"}
-                  attrNameTemplate="buttonSpace%s"
-                  values={{
-                    desktop: buttonSpace,
-                    tablet: buttonSpaceTablet,
-                    mobile: buttonSpaceMobile,
-                  }}
-                  setAttributes={setAttributes}
-                  {...this.props}
-                />
-              </PanelBody>
-              <PanelBody
-                title={__("Column Padding", "responsive-block-editor-addons")}
-                initialOpen={false}
-              >
-                <ResponsiveNewPaddingControl
-                  attrNameTemplate="column%s"
-                  resetValues={columnPaddingResetValues}
-                  {...this.props}
-                />
-              </PanelBody>
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="block%s"
+                resetValues={blockPaddingResetValues}
+                {...this.props}
+              />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+
+              <ResponsiveNewMarginControl
+                attrNameTemplate="block%s"
+                resetValues={blockMarginResetValues}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Image Bottom"}
+                attrNameTemplate="imageSpace%s"
+                values={{
+                  desktop: imageSpace,
+                  tablet: imageSpaceTablet,
+                  mobile: imageSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Title Bottom"}
+                attrNameTemplate="titleSpace%s"
+                values={{
+                  desktop: titleSpace,
+                  tablet: titleSpaceTablet,
+                  mobile: titleSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Description Bottom"}
+                attrNameTemplate="descSpace%s"
+                values={{
+                  desktop: descSpace,
+                  tablet: descSpaceTablet,
+                  mobile: descSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+              <ResponsiveSpacingControl
+                title={"Button Bottom"}
+                attrNameTemplate="buttonSpace%s"
+                values={{
+                  desktop: buttonSpace,
+                  tablet: buttonSpaceTablet,
+                  mobile: buttonSpaceMobile,
+                }}
+                setAttributes={setAttributes}
+                {...this.props}
+              />
+
+              <hr className="responsive-block-editor-addons-editor__separator" />
+        
+              <ResponsiveNewPaddingControl
+                attrNameTemplate="column%s"
+                resetValues={columnPaddingResetValues}
+                {...this.props}
+                label={__("Column Padding", "responsive-block-editor-addons")}
+              />
             </PanelBody>
             <RbeaSupportControl blockSlug={"feature-grid"} />
           </InspectorTab>

@@ -78,10 +78,7 @@ class ButtonColorControl extends Component {
 
     var advancedControls;
       advancedControls = (
-          <PanelBody
-              title={__("Color Settings", "responsive-block-editor-addons")}
-              initialOpen={false}
-          >
+            <>
                 <TabPanel
                     className="responsive-block-editor-addons-inspect-tabs 
                     responsive-block-editor-addons-inspect-tabs-col-2  
@@ -374,7 +371,7 @@ class ButtonColorControl extends Component {
                 />
               </Fragment>
               )}
-          </PanelBody>
+            </>
       );
 
     return (

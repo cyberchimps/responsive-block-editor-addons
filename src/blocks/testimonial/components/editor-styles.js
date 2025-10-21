@@ -6,6 +6,7 @@ import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils/index.js";
 import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -148,6 +149,9 @@ function EditorStyles(props) {
   backgroundType,
   backgroundPositionMobile,
   backgroundPositionTablet,
+  backgroundPositionFocal,
+  backgroundPositionFocalTablet,
+  backgroundPositionFocalMobile,
   backgroundAttachment,
   overlayType,
   backgroundImageColor,
@@ -345,7 +349,7 @@ function EditorStyles(props) {
         : backgroundType === "image"
         ? updatedBackgroundImage
         : undefined,
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
@@ -429,13 +433,12 @@ function EditorStyles(props) {
       // "background-image": bggradient,
       // "background-size": backgroundSize,
       "background-repeat": backgroundRepeat,
-      "background-position": backgroundPositionMobile,
       "color": testimonialTextColor,
       "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
-      "background-position": backgroundPositionMobile,
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile === '' ? backgroundSize : backgroundSizeMobile,
       "padding-top": generateCSSUnit(contentTopPaddingMobile, "px"),
       "padding-right": generateCSSUnit(contentRightPaddingMobile, "px"),
@@ -492,10 +495,9 @@ function EditorStyles(props) {
         width: generateCSSUnit(imageWidthTablet, "px"),
     },
     " .responsive-block-editor-addons-block-testimonial": {
-      "background-position": backgroundPositionTablet,
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet === '' ? backgroundSize : backgroundSizeTablet,
       "background-repeat": backgroundRepeat,
-      "background-position": backgroundPositionTablet,
       "color": testimonialTextColor,
       "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),

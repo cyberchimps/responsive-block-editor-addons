@@ -5,6 +5,7 @@
 import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -216,6 +217,9 @@ function EditorStyles(props) {
     backgroundSizeMobile,
     backgroundPositionMobile,
     backgroundPositionTablet,
+    backgroundPositionFocal,
+    backgroundPositionFocalMobile,
+    backgroundPositionFocalTablet,
     imageSizeTab,
     headingTextTransform,
     headingFontStyle,
@@ -262,7 +266,7 @@ function EditorStyles(props) {
           ? `${hexToRgba(backgroundColor || "#fff", 1)}`
           : undefined,
       "background-image": updatedBackgroundImage,
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
     },
@@ -400,7 +404,7 @@ function EditorStyles(props) {
   var mobile_selectors = {
     " ": {
       "opacity": hideWidgetMobile ? 0.2 : 1,
-      "background-position": backgroundPositionMobile,
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile,
     },
     " .responsive-block-editor-addons-toc__wrap": {
@@ -481,7 +485,7 @@ function EditorStyles(props) {
   var tablet_selectors = {
     " ": {
       "opacity": hideWidgetTablet ? 0.2 : 1,
-      "background-position": backgroundPositionTablet,
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet,
     },
     " .responsive-block-editor-addons-toc__wrap": {

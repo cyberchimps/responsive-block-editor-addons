@@ -5,6 +5,7 @@
 import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils/index.js";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -205,12 +206,18 @@ function EditorStyles(props) {
     backgroundSizeMobile,
     backgroundPositionMobile,
     backgroundPositionTablet,
+    backgroundPositionFocal,
+    backgroundPositionFocalMobile,
+    backgroundPositionFocalTablet,
     imageSizeTab,
     backImagePositionTab,
     backBackgroundSizeTablet,
     backBackgroundSizeMobile,
     backBackgroundPositionMobile,
     backBackgroundPositionTablet,
+    backBackgroundPositionFocal,
+    backBackgroundPositionFocalMobile,
+    backBackgroundPositionFocalTablet,
     backImageSizeTab,
     frontTitleTypographyColor,
     backTitleTypographyColor,
@@ -374,7 +381,7 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "background-image": backgroundFront,
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "background-repeat": backgroundRepeat,
       "background-size": backgroundSize,
@@ -444,7 +451,7 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
       "background-image": backgroundBack,
-      "background-position": backBackgroundPosition,
+      "background-position": getImagePostionCSS(backBackgroundPositionFocal),
       "background-attachment": backBackgroundAttachment,
       "background-repeat": backBackgroundRepeat,
       "background-size": backBackgroundSize,
@@ -578,7 +585,7 @@ function EditorStyles(props) {
       "opacity": hideWidgetMobile ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
-      "background-position": backgroundPositionMobile,
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile,
       "padding-top": generateCSSUnit(frontTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(frontBottomPaddingMobile, "px"),
@@ -590,7 +597,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusMobile, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
-      "background-position": backBackgroundPositionMobile,
+      "background-position": getImagePostionCSS(backBackgroundPositionFocalMobile),
       "background-size": backBackgroundSizeMobile,
       "padding-top": generateCSSUnit(backTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(backBottomPaddingMobile, "px"),
@@ -642,7 +649,7 @@ function EditorStyles(props) {
       "opacity": hideWidgetTablet ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
-      "background-position": backgroundPositionTablet,
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet,
       "padding-top": generateCSSUnit(frontTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(frontBottomPaddingTablet, "px"),
@@ -654,7 +661,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(blockLeftRadiusTablet, "px"),
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-inner .flip-box-back": {
-      "background-position": backBackgroundPositionTablet,
+      "background-position": getImagePostionCSS(backBackgroundPositionFocalTablet),
       "background-size": backBackgroundSizeTablet,
       "padding-top": generateCSSUnit(backTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(backBottomPaddingTablet, "px"),

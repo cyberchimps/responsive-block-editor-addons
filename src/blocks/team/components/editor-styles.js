@@ -6,6 +6,7 @@ import generateCSS from "../../../generateCSS";
 import generateCSSUnit from "../../../generateCSSUnit";
 import { hexToRgba } from "../../../utils/index.js";
 import generateBackgroundImageEffect from "../../../generateBackgroundImageEffect";
+import { getImagePostionCSS } from "../../../getImagePosition";
 
 function EditorStyles(props) {
   const {
@@ -173,6 +174,9 @@ function EditorStyles(props) {
     backgroundType,
     backgroundPositionMobile,
     backgroundPositionTablet,
+    backgroundPositionFocal,
+    backgroundPositionFocalTablet,
+    backgroundPositionFocalMobile,
     overlayType,
     backgroundImageColor,
     gradientOverlayColor1,
@@ -400,7 +404,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-team": {
       "background-size": backgroundSize,
       "background-repeat": backgroundRepeat,
-      "background-position": backgroundPosition,
+      "background-position": getImagePostionCSS(backgroundPositionFocal),
       "background-attachment": backgroundAttachment,
       "border-width": generateCSSUnit(borderWidth, "px"),
       "border-color": borderColor,
@@ -471,7 +475,7 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-team": {
       "background-size": backgroundSizeMobile,
-      "background-position": backgroundPositionMobile,
+      "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
         "margin-bottom": gutterMargin,
         "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
@@ -530,7 +534,7 @@ function EditorStyles(props) {
     },
     " .wp-block-responsive-block-editor-addons-team": {
       "background-size": backgroundSizeTablet,
-      "background-position": backgroundPositionTablet,
+      "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "margin-bottom": gutterMargin,
       "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),

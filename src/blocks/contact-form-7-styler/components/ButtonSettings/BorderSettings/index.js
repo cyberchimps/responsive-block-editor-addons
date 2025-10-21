@@ -14,7 +14,7 @@ const { __ } = wp.i18n;
 
 const { ColorPalette } = wp.blockEditor;
 
-const { SelectControl, RangeControl, PanelBody } = wp.components;
+const { SelectControl, RangeControl } = wp.components;
 
 // Extend component
 const { Component, Fragment } = wp.element;
@@ -163,41 +163,33 @@ class ButtonBorderControl extends Component {
 
         var advancedControls;
         advancedControls = (
-            <PanelBody
-                title={__("Border Settings", "responsive-block-editor-addons")}
-                initialOpen={false}
-            >
+            <>
                 <RbeaBorderStyleTabControl
                     selected={ctaBorderStyle}
                     onChange={(value) => setAttributes({ ctaBorderStyle: value })}
                 />
-                {"none" != ctaBorderStyle && (
-                    <Fragment>
-                        <RbeaRangeControl
-                            label={__("Border Width", "responsive-block-editor-addons")}
-                            value={ctaBorderWidth}
-                            onChange={(value) =>
-                                setAttributes({
-                                    ctaBorderWidth: value !== undefined ? value : 2,
-                                })
-                            }
-                            min={0}
-                            max={50}
-                            allowReset
-                        />
-                        <RbeaBorderRadiusControl
-                            attrNameTemplate="cta%s"
-                            {...this.props}
-                        />
-                        <PanelBody
-                            title={__("Box Shadow", "responsive-block-editor-addons")}
-                            initialOpen={false}
-                        >
-                            {buttonboxshadowadvancedControls}
-                        </PanelBody>
-                    </Fragment>
-                )}
-            </PanelBody>
+                <RbeaRangeControl
+                    label={__("Border Width", "responsive-block-editor-addons")}
+                    value={ctaBorderWidth}
+                    onChange={(value) =>
+                        setAttributes({
+                            ctaBorderWidth: value !== undefined ? value : 2,
+                        })
+                    }
+                    min={0}
+                    max={50}
+                    allowReset
+                />
+                <RbeaBorderRadiusControl
+                    attrNameTemplate="cta%s"
+                    {...this.props}
+                />
+
+                <hr className="responsive-block-editor-addons-editor__separator" />
+
+                <p className="rbea-inspector-control-label">{__( "Box Shadow", "responsive-block-editor-addons" )}</p>
+                {buttonboxshadowadvancedControls}
+            </>
         );
 
         return (

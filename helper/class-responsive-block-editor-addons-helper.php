@@ -65,10 +65,12 @@ class Responsive_Block_Editor_Addons_Helper {
 	 *
 	 * @param string $user_agent Browser names.
 	 * @return string
-	 * @since 2.1.2
+	 * @since 2.1.3
 	 */
 	function rbea_get_browser_name( $user_agent ) {
-		if ( strpos( $user_agent, 'Opera' ) || strpos( $user_agent, 'OPR/' ) ) {
+		if ( strpos( $user_agent, 'Opera Mini' ) ) {
+			return 'opera_mini';
+		} elseif ( strpos( $user_agent, 'Opera' ) || strpos( $user_agent, 'OPR/' ) ) {
 			return 'opera';
 		} elseif ( strpos( $user_agent, 'Edg' ) || strpos( $user_agent, 'Edge' ) ) {
 			return 'edge';

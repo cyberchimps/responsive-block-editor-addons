@@ -421,6 +421,18 @@ const attributes = {
         type: "string",
         default: "center center",
     }, // For compatibility with v1.3.2.
+    backgroundPositionFocal: {
+        type: "object",
+        default: { "x": 0.5, "y": 0.5 }
+    },
+    backgroundPositionFocalMobile: {
+        type: "object",
+        default: { "x": 0.5, "y": 0.5 }
+    },
+    backgroundPositionFocalTablet: {
+        type: "object",
+        default: { "x": 0.5, "y": 0.5 }
+    },
     backgroundRepeat: {
         type: "string",
         default: "no-repeat",
@@ -429,6 +441,10 @@ const attributes = {
         type: "string",
         default: "cover",
     }, // For compatibility with v1.3.2.
+    hasImagePositionMigrated: {
+        type: "boolean",
+        default: false,
+    }
 };
 
 export default attributes;
