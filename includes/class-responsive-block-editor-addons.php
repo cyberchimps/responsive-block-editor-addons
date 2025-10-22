@@ -1647,7 +1647,7 @@ class Responsive_Block_Editor_Addons {
 	/**
 	 * Saves the global inherit from theme setting in database when the toggle is changed.
 	 *
-	 * @since 2.0.0
+	 * @since 2.1.4
 	 */
 	public function rbea_toggle_global_inherit_from_theme() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
