@@ -311,7 +311,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
         setToggleAll(!toggleAll);
 
         setBlockList((prevCheckboxes) => {
-            const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image'];
+            const permanentlyEnabledBlocks = ['advanced-heading', 'image', 'container'];
 
             const updatedBlockList = prevCheckboxes.map((checkbox) => {
                 if (permanentlyEnabledBlocks.includes(checkbox.key)) {
@@ -406,7 +406,7 @@ const Cards = ({blockList, showCategory, search, handleToggle}) => {
 }
 
 const Card = ({handleToggle, category, title, docs, demo, status, index, blockKey}) => {
-    const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image', 'container'];
+    const permanentlyEnabledBlocks = ['advanced-heading', 'image', 'container'];
     const isPermanentlyEnabled = permanentlyEnabledBlocks.includes(blockKey);
 
     return (
