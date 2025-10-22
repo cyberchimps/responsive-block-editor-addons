@@ -1647,7 +1647,7 @@ class Responsive_Block_Editor_Addons {
 	/**
 	 * Saves the global inherit from theme setting in database when the toggle is changed.
 	 *
-	 * @since 2.1.4
+	 * @since 2.0.0
 	 */
 	public function rbea_toggle_global_inherit_from_theme() {
 		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
@@ -2186,8 +2186,120 @@ class Responsive_Block_Editor_Addons {
 			$aos_attributes = '<div data-aos= "' . esc_attr( $attrs['RBEAAnimationType'] ) . '" data-aos-duration="' . esc_attr( $attrs['RBEAAnimationTime'] ) . '" data-aos-delay="' . esc_attr( $attrs['RBEAAnimationDelay'] ) . '" data-aos-easing="' . esc_attr( $attrs['RBEAAnimationEasing'] ) . '" data-aos-once="' . esc_attr( $attrs['RBEAAnimationRepeat'] ) . '" ';
 			$block_content  = preg_replace( '/<div /', $aos_attributes, $block_content, 1 );
 		}
+
+		// Inject inherit from theme data attributes for old blocks that don't have them
+		$block_content = $this->inject_inherit_from_theme_attributes( $block_content, $block );
+
 		return $block_content;
 	}
+
+	/**
+	 * Inject inherit from theme data attributes for old blocks.
+	 * 
+	 * This ensures that blocks saved before the inherit-from-theme feature was added
+	 * will still work correctly when the global inherit setting is enabled.
+	 *
+	 * @param string $block_content The block HTML content.
+	 * @param array  $block The block data including name and attributes.
+	 * @return string Modified block content with injected attributes.
+	 * @since 2.0.0
+	 */
+	public function inject_inherit_from_theme_attributes( $block_content, $block ) {
+		// Skip if block content is empty or block doesn't already have data-rbea-inherit-wrapper
+		if ( empty( $block_content ) || strpos( $block_content, 'data-rbea-inherit-wrapper' ) !== false ) {
+			return $block_content;
+		}
+
+		// Define block-specific selectors for inject inherit from theme data attributes
+		$inherit_blocks_config = array(
+			'responsive-block-editor-addons/buttons-child' => array(
+				'wrapper_class' => 'responsive-block-editor-addons-button__wrapper',
+				'parent' => 'self',
+				'child' => '.responsive-block-editor-addons-buttons-repeater',
+			),
+			'responsive-block-editor-addons/card' => array(
+				'wrapper_class' => 'wp-block-responsive-block-editor-addons-card-item__button-wrapper',
+				'parent' => 'self',
+				'child' => '.responsive-block-editor-addons-card-button-inner a',
+			),
+			'responsive-block-editor-addons/call-mail-button' => array(
+				'wrapper_class' => 'responsive-block-editor-addons-block-call-mail-button',
+				'parent' => 'self',
+				'child' => '.responsive-block-editor-addons-call-mail-button-button-container',
+			),
+			'responsive-block-editor-addons/popup' => array(
+				'wrapper_class' => 'responsive-block-editor-addons-popup-trigger-wrap',
+				'parent' => 'self',
+				'child' => '.responsive-block-editor-addons-popup-button-trigger',
+				'child_extra' => 'wp-block-button',
+			),
+			'responsive-block-editor-addons/responsive-block-editor-addons-cta' => array(
+				'wrapper_class' => 'responsive-block-editor-addons-cta-button-wrapper',
+				'parent' => 'self',
+				'child' => 'a',
+			),
+			'responsive-block-editor-addons/pricing-table' => array(
+				'wrapper_class' => 'wp-block-responsive-block-editor-addons-pricing-table-item__button-wrapper',
+				'button_class' => 'wp-block-responsive-block-editor-addons-pricing-table-item__button',
+				'parent' => 'self',
+				'child' => 'a',
+		),
+		);
+
+		// Check if this block supports inherit from theme
+		if ( ! isset( $inherit_blocks_config[ $block['blockName'] ] ) ) {
+			return $block_content;
+		}
+
+		$config = $inherit_blocks_config[ $block['blockName'] ];
+		$attrs = $block['attrs'];
+
+		// Get attribute values (with defaults for old blocks)
+		$inherit_from_theme_saved = isset( $attrs['inheritFromThemesaved'] ) ? $attrs['inheritFromThemesaved'] : false;
+		$local_timestamp = isset( $attrs['inheritFromThemeLocalTimestamp'] ) ? $attrs['inheritFromThemeLocalTimestamp'] : '';
+
+		// Build data attributes string
+		$data_attrs = sprintf(
+			' data-rbea-inherit-wrapper="true" data-inherit-from-theme="%s" data-local-timestamp="%s" data-rbea-inherit-parent="%s" data-rbea-inherit-child="%s"',
+			$inherit_from_theme_saved ? '1' : '0',
+			esc_attr( $local_timestamp ),
+			esc_attr( $config['parent'] ),
+			esc_attr( $config['child'] )
+		);
+
+	// Add extra child class if defined (for popup block)
+	if ( isset( $config['child_extra'] ) ) {
+		$data_attrs .= sprintf( ' data-rbea-inherit-child-extra="%s"', esc_attr( $config['child_extra'] ) );
+	}
+
+	// Special handling for pricing table block
+	// Old pricing table blocks don't have the button wrapper div, so we need to create it
+	if ( $block['blockName'] === 'responsive-block-editor-addons/pricing-table' && 
+	     strpos( $block_content, $config['wrapper_class'] ) === false ) {
+		// Find all pricing table item buttons and wrap them
+		$button_class = $config['button_class'];
+		$wrapper_class = $config['wrapper_class'];
+		
+		// Pattern to match: <a class="...wp-block-responsive-block-editor-addons-pricing-table-item__button..." ...>...</a>
+		$button_pattern = '/(<a\s+[^>]*class="[^"]*' . preg_quote( $button_class, '/' ) . '[^"]*"[^>]*>.*?<\/a>)/s';
+		
+		$block_content = preg_replace_callback( $button_pattern, function( $matches ) use ( $wrapper_class, $data_attrs ) {
+			$button_html = $matches[1];
+			// Wrap the button with the new wrapper div
+			return sprintf( '<div class="%s"%s>%s</div>', $wrapper_class, $data_attrs, $button_html );
+		}, $block_content );
+		
+		return $block_content;
+	}
+
+	// Inject attributes into the wrapper element
+	// Look for the wrapper class and add attributes to that element
+	$pattern = '/(<[^>]*class="[^"]*' . preg_quote( $config['wrapper_class'], '/' ) . '[^"]*"[^>]*)(>)/';
+	$replacement = '$1' . $data_attrs . '$2';
+	$block_content = preg_replace( $pattern, $replacement, $block_content, 1 );
+
+	return $block_content;
+}
 
 	/**
 	 *  Get the User Roles
