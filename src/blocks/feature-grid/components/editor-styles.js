@@ -333,7 +333,6 @@ function EditorStyles(props) {
     },
 
     "": {
-      "opacity": hideWidget && isOn ? 0.2 : 1,
       "text-align": blockAlign,
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
@@ -347,7 +346,7 @@ function EditorStyles(props) {
         blockbackgroundType == "color"
           ? `${hexToRgba(blockbackgroundColor || "#fff", 0)}`
           : "",
-      opacity: blockbackgroundType == "color" ? blockBackColorOpacity : 100,
+      "opacity": blockbackgroundType == "color" ? hideWidget && isOn ? 0.2 : blockBackColorOpacity : hideWidget && isOn ? 0.2 : 1,
       "background-image":
         blockbackgroundType == "gradient"
           ? generateBackgroundImageEffect(
