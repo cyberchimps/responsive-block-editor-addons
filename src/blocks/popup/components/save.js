@@ -57,16 +57,7 @@ export default class Save extends Component {
             >
 
               {popupTrigger && popupTrigger === 'click' && popupTriggerType === 'button' &&
-                <button 
-                  type="button" 
-                  className={classnames(
-                    "responsive-block-editor-addons-popup-button-trigger",
-                    "responsive-block-editor-addons-popup-modal-trigger",
-                    inheritFromTheme ? "wp-block-button wp-block-button__link" : null
-                  )}
-                  data-trigger-id={`trigger-${block_id}`}
-                > 
-                  {popupButtonText}
+                <button type="button" className={classnames("responsive-block-editor-addons-popup-button-trigger", "responsive-block-editor-addons-popup-modal-trigger", inheritFromTheme ? "wp-block-button wp-block-button__link" : null)} data-trigger-id={`trigger-${block_id}`}> {popupButtonText}
                 </button>
               }
 

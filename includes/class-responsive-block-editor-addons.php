@@ -2199,10 +2199,6 @@ class Responsive_Block_Editor_Addons {
 	 * This ensures that blocks saved before the inherit-from-theme feature was added
 	 * will still work correctly when the global inherit setting is enabled.
 	 *
-	 * @param string $block_content The block HTML content.
-	 * @param array  $block The block data including name and attributes.
-	 * @return string Modified block content with injected attributes.
-	 * @since 2.0.0
 	 */
 	public function inject_inherit_from_theme_attributes( $block_content, $block ) {
 		// Skip if block content is empty or block doesn't already have data-rbea-inherit-wrapper
