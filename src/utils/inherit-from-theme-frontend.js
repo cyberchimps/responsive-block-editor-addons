@@ -1,10 +1,6 @@
 /**
  * Frontend script for "Inherit from Theme" functionality
  * 
- * This script applies WordPress theme button classes to RBEA blocks based on:
- * 1. Global inherit from theme setting
- * 2. Individual block's inherit from theme setting
- * 3. Timestamp comparison to determine which setting takes precedence
  */
 
 document.addEventListener('DOMContentLoaded', function() {

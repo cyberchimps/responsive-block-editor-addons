@@ -4,11 +4,9 @@ const { select, dispatch } = wp.data;
 const INHERIT_FROM_THEME_BLOCKS = [
 	'responsive-block-editor-addons/buttons-child',
 	'responsive-block-editor-addons/responsive-block-editor-addons-cta',
-	'responsive-block-editor-addons/flipbox',
 	'responsive-block-editor-addons/card',
 	'responsive-block-editor-addons/pricing-table',
 	'responsive-block-editor-addons/call-mail-button',
-	'responsive-block-editor-addons/form',
 	'responsive-block-editor-addons/popup',
 ];
 

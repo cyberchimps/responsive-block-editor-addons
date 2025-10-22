@@ -55,14 +55,6 @@ export default class Edit extends Component {
     if (null !== element && undefined !== element) {
       element.innerHTML = EditorStyles(this.props);
     }
-
-	// When inheritFromTheme toggles, stamp local timestamp immediately
-	// const prevInherit = prevProps && prevProps.attributes ? prevProps.attributes.inheritFromTheme : undefined;
-	// const currInherit = this.props && this.props.attributes ? this.props.attributes.inheritFromTheme : undefined;
-	// if (prevInherit !== currInherit) {
-	// 	const { setAttributes } = this.props;
-	// 	setAttributes({ inheritFromThemeLocalTimestamp: new Date().toISOString() });
-	// }
   }
 
   componentDidMount() {
@@ -125,7 +117,6 @@ export default class Edit extends Component {
     if ("outset" === boxShadowPosition) {
       boxShadowPositionCSS = "";
     }
-    console.log('local Timestamp -> ', inheritFromThemeLocalTimestamp);
 
     return (
       <Fragment>

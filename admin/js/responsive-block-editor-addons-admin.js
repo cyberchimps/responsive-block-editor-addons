@@ -521,12 +521,8 @@ const Settings = () => {
 
     const handleInheritFromThemeToggle = () => {
         const next = !inheritFromTheme;
-        console.log('🎛️ Admin toggle clicked, new value:', next);
         setInheritFromTheme(next);
         saveSetting(next, 'rbea_toggle_global_inherit_from_theme');
-        
-        // Show message that setting will apply to new editor sessions
-        console.log('ℹ️ Global Inherit From Theme setting saved. It will apply to all buttons-child blocks when you open the editor.');
     };
 
     // NEW: sections — just add more objects to grow later
