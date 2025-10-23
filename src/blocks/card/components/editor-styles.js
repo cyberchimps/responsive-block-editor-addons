@@ -244,6 +244,7 @@ function EditorStyles(props) {
     subFontStyle,
     contentTextTransform,
     contentFontStyle,
+    inheritFromTheme,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -286,12 +287,12 @@ function EditorStyles(props) {
 
   var selectors = {
     " .responsive-block-editor-addons-card-button-inner .res-button": {
-      color: buttonTextColor !== 'empty' && '#fff' === ctaColor ? buttonTextColor : ctaColor, //For compatibility with v1.3.2.
+      color: inheritFromTheme ? '' : buttonTextColor !== 'empty' && '#fff' === ctaColor ? buttonTextColor : ctaColor, //For compatibility with v1.3.2.
       opacity: textOpacity,
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover .res-button": {
-      color: buttonhTextColor !== 'empty' && ctaHoverColor === '#e6f2ff' ? buttonhTextColor : ctaHoverColor, //For compatibility with v1.3.2.
+      color: inheritFromTheme ? '' : buttonhTextColor !== 'empty' && ctaHoverColor === '#e6f2ff' ? buttonhTextColor : ctaHoverColor, //For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-card-button-inner .responsive-block-editor-addons-button__icon svg": {
@@ -303,14 +304,14 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-card-item__button-wrapper .responsive-block-editor-addons-card-button-inner": {
-      "background-color": hexToRgba(
+      "background-color": inheritFromTheme ? '' : hexToRgba(
         updatedButtonColor || "#2091e1",
         but_opacity || 0
       ),
     },
 
     " .responsive-block-editor-addons-card-button-inner:hover": {
-      "background-color": hexToRgba(
+      "background-color": inheritFromTheme ? '' : hexToRgba(
         updatedButtonhColor || "none",
         buthopacity || 0
       ),

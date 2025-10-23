@@ -477,6 +477,9 @@ const Settings = () => {
     const [autoRecover, setAutoRecover] = useState(
         String(rbealocalize?.auto_block_recovery) === '1'
     );
+    const [inheritFromTheme, setInheritFromTheme] = useState(
+        String(rbealocalize?.global_inherit_from_theme) === '1'
+    );
     const [isSaving, setIsSaving] = useState(false);
 
     const displayToast = ( msg, status ) => {
@@ -492,10 +495,10 @@ const Settings = () => {
         }).showToast();
     };
 
-    const saveSetting = async (nextValue) => {
+    const saveSetting = async (nextValue, actionType = 'rbea_toggle_auto_block_recovery') => {
         setIsSaving(true);
         const formData = new FormData();
-        formData.append('action', 'rbea_toggle_auto_block_recovery');
+        formData.append('action', actionType);
         formData.append('nonce', rbealocalize.nonce);
         formData.append('value', nextValue ? '1' : '0');
 
@@ -514,6 +517,12 @@ const Settings = () => {
         const next = !autoRecover;
         setAutoRecover(next);
         saveSetting(next);
+    };
+
+    const handleInheritFromThemeToggle = () => {
+        const next = !inheritFromTheme;
+        setInheritFromTheme(next);
+        saveSetting(next, 'rbea_toggle_global_inherit_from_theme');
     };
 
     // NEW: sections — just add more objects to grow later
@@ -572,6 +581,33 @@ const Settings = () => {
                                                     checked={autoRecover}
                                                     disabled={isSaving}
                                                     onChange={handleToggle}
+                                                />
+                                                <span className="rbea-blocks-slider rbea-blocks-round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rbea-help-feature-cards">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-10">
+                                            <p className="rbea-help-title">
+                                                {__('Button - Inherit From Theme','responsive-block-editor-addons')}
+                                            </p>
+                                            <p className="rbea-help-desc">
+                                                {__(
+                                                    'Enable the "Inherit From Theme" option to make all buttons in Responsive blocks across your website inherit their styles from the theme.',
+                                                    'responsive-block-editor-addons'
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div className="col-md-2 text-end">
+                                            <label className="rbea-blocks-switch">
+                                                <input
+                                                    id="rbea-global-inherit-from-theme"
+                                                    type="checkbox"
+                                                    checked={inheritFromTheme}
+                                                    disabled={isSaving}
+                                                    onChange={handleInheritFromThemeToggle}
                                                 />
                                                 <span className="rbea-blocks-slider rbea-blocks-round"></span>
                                             </label>

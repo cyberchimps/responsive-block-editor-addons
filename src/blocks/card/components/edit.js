@@ -65,6 +65,7 @@ export default class Edit extends Component {
         headingFontFamily,
         contentFontFamily,
         buttonTarget,
+        inheritFromTheme,
       },
       setAttributes,
     } = this.props;
@@ -223,7 +224,10 @@ export default class Edit extends Component {
                 </div>
 
                 <div className="wp-block-responsive-block-editor-addons-card-item__button-wrapper" key={`card-item__button-wrapper-${index}`}>
-                  <div className="responsive-block-editor-addons-card-button-inner">
+                  <div className={classnames(
+                    "responsive-block-editor-addons-card-button-inner",
+                    inheritFromTheme ? 'wp-block-button' : null,
+                  )}>
                     {"" !== icon && iconPosition == "before" && (
                       <span
                         className={classnames(
@@ -235,10 +239,11 @@ export default class Edit extends Component {
                       </span>
                     )}
                     <RichText
-                      tagName="a"
+                      tagName="div"
                       className={classnames(
                         "wp-block-responsive-block-editor-addons-card-item__button res-button",
-                        buttonSize
+                        buttonSize,
+                        inheritFromTheme ? "wp-block-button wp-block-button__link" : null
                       )}
                       value={cardsArray[index]["button"]}
                       placeholder={__("$", "responsive-block-editor-addons")}

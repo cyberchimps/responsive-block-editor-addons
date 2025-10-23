@@ -39,6 +39,9 @@ export default class Save extends Component {
       imageShape,
       imageWidth,
       blockId,
+      inheritFromTheme,
+      inheritFromThemesaved,
+      inheritFromThemeLocalTimestamp,
     } = this.props.attributes;
     var boxShadowPositionCSS = boxShadowPosition;
 
@@ -171,16 +174,29 @@ export default class Save extends Component {
                   />
                 )}
                 {showButton && (
-                  <a
-                    href={pricingTable[index]["buttonURL"]}
-                    target={buttonTarget ? "_blank" : null}
-                    rel={buttonTarget ? "noopener noreferrer" : null}
+                  <div
                     className={classnames(
-                      "wp-block-responsive-block-editor-addons-pricing-table-item__button"
+                      "wp-block-responsive-block-editor-addons-pricing-table-item__button-wrapper",
+                      inheritFromTheme ? "wp-block-button" : null
                     )}
+                    data-rbea-inherit-wrapper="true"
+                    data-inherit-from-theme={inheritFromThemesaved ? '1' : '0'}
+                    data-local-timestamp={inheritFromThemeLocalTimestamp || ''}
+                    data-rbea-inherit-parent="self"
+                    data-rbea-inherit-child="a"
                   >
-                    <RichText.Content value={pricingTable[index]["button"]} />
-                  </a>
+                    <a
+                      href={pricingTable[index]["buttonURL"]}
+                      target={buttonTarget ? "_blank" : null}
+                      rel={buttonTarget ? "noopener noreferrer" : null}
+                      className={classnames(
+                        "wp-block-responsive-block-editor-addons-pricing-table-item__button",
+                        inheritFromTheme ? "wp-block-button wp-block-button__link" : null
+                      )}
+                    >
+                      <RichText.Content value={pricingTable[index]["button"]} />
+                    </a>
+                  </div>
                 )}
                 <InnerBlocks.Content />
               </div>

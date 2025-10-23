@@ -191,8 +191,8 @@ function EditorStyles(props) {
   ctaTextFontStyle,
   buttonTextTextTransform,
   buttonTextFontStyle,
+  inheritFromTheme,
   } = props.attributes;
-
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
   let updatedButtonBackgroundImage = '';
@@ -235,12 +235,12 @@ function EditorStyles(props) {
 
   var selectors = {
     " .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button": {
-      "color": buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
+      "color": inheritFromTheme ? '' : buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
       "opacity": ctaTextOpacity / 100,
     },
 
     " .responsive-block-editor-addons-cta-button-wrapper:hover .responsive-block-editor-addons-cta-button": {
-      "color": hbuttonTextColor !== 'empty' && ctaHoverColor === "#e6f2ff" ? hbuttonTextColor : ctaHoverColor, // For compatibility with v1.3.2.
+      "color": inheritFromTheme ? '' : hbuttonTextColor !== 'empty' && ctaHoverColor === "#e6f2ff" ? hbuttonTextColor : ctaHoverColor, // For compatibility with v1.3.2.
     },
 
     " .responsive-block-editor-addons-cta-link-text": {
@@ -270,7 +270,7 @@ function EditorStyles(props) {
     "": {
       "opacity": hideWidget ? 0.2 : 1,
       "background-color":
-        backgroundType == "color"
+        inheritFromTheme ? '' : backgroundType == "color"
           ? (ctaBackgroundColor !== "empty" && backgroundColor === "#f2f2f2" ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`) // For compatibility with v1.3.2.
           : undefined,
       "background-image":
@@ -368,8 +368,8 @@ function EditorStyles(props) {
       "border-top-right-radius": generateCSSUnit(ctaBlockRightRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(ctaBlockBottomRadius, "px"),
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadius, "px"),
-      "border-color": buttonborderColor !== "empty" && ctaBorderColor === "" ? buttonborderColor : ctaBorderColor, // For compatibility with v1.3.2.
-      "background-color": updatedButtonBackgroundColor,
+      "border-color": inheritFromTheme ? '' : buttonborderColor !== "empty" && ctaBorderColor === "" ? buttonborderColor : ctaBorderColor, // For compatibility with v1.3.2.
+      "background-color": inheritFromTheme ? '' : updatedButtonBackgroundColor ? updatedButtonBackgroundColor : '#32373c',
       "border-width": buttonborderWidth !== 999 && ctaBorderWidth === 1 ? buttonborderWidth : (ctaBorderWidth
         ? generateCSSUnit(ctaBorderWidth, "px")
         : "0px"), // For compatibility with v1.3.2.

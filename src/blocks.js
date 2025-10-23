@@ -169,6 +169,7 @@ import "./utils/responsiveTabSync.js"
 
 // Auto Block Recovery System
 import autoBlockRecovery from './utils/autoBlockRecovery';
+import initGlobalInheritFromTheme from './utils/globalInheritFromTheme';
 import domReady from '@wordpress/dom-ready';
 
 // Initialize Auto Block Recovery - Only if enabled in settings
@@ -183,5 +184,17 @@ export const initAutoBlockRecovery = () => {
 	}
 };
 
+// Initialize Global Inherit From Theme functionality
+export const initGlobalInheritFromThemeSystem = () => {
+	if (window._wpLoadBlockEditor) {
+		window._wpLoadBlockEditor.then(() => {
+			initGlobalInheritFromTheme();
+		});
+	}
+};
+
 // Initialize auto block recovery only if enabled
 domReady( initAutoBlockRecovery );
+
+// Initialize global inherit from theme system
+domReady( initGlobalInheritFromThemeSystem );

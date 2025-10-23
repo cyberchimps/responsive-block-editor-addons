@@ -111,6 +111,7 @@ export default class Edit extends Component {
         imageSize,
         imageShape,
         imageWidth,
+        inheritFromTheme,
       },
       setAttributes,
     } = this.props;
@@ -201,7 +202,8 @@ export default class Edit extends Component {
               key={`pricning-table-item-${index}`}
                 className={classnames(
                   "wp-block-responsive-block-editor-addons-pricing-table-item",
-                  backgroundType == "image" ? "background-type-image" : ""
+                  backgroundType == "image" ? "background-type-image" : "",
+                  inheritFromTheme ? 'wp-block-button' : null,
                 )}
               >
                 {showImage && (
@@ -450,9 +452,10 @@ export default class Edit extends Component {
                 {showButton && (
                   <Fragment>
                     <RichText
-                      tagName="p"
+                      tagName="div"
                       className={classnames(
-                        "wp-block-responsive-block-editor-addons-pricing-table-item__button"
+                        "wp-block-responsive-block-editor-addons-pricing-table-item__button",
+                        inheritFromTheme ? "wp-block-button wp-block-button__link" : null
                       )}
                       value={String(pricingTable[index]["button"])}
                       placeholder={__("$", "responsive-block-editor-addons")}
