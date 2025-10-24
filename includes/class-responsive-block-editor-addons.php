@@ -1200,10 +1200,12 @@ class Responsive_Block_Editor_Addons {
 			wp_enqueue_script(
 				'responsive-block-editor-addons-admin-jsfile',
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-getting-started.js',
-				array( 'jquery', 'react', 'react-dom' ),
+				array( 'jquery', 'react', 'react-dom', 'wp-components' ),
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 				true
 			);
+
+			wp_enqueue_style( 'wp-components' );
 
 			wp_enqueue_script( 'updates' );
 
