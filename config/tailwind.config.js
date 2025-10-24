@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       spacing: {
         '7.5': '7.5rem',
+        '60': '3.7rem',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

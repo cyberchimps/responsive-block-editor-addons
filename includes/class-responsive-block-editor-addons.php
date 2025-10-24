@@ -1234,6 +1234,7 @@ class Responsive_Block_Editor_Addons {
 				'responsive-block-editor-addons-admin-jsfile',
 				'rbealocalize',
 				array(
+					'pageurl'               => admin_url( 'post-new.php?post_type=page' ),
 					'ajaxurl'               => admin_url( 'admin-ajax.php' ),
 					'responsiveurl'         => RESPONSIVE_BLOCK_EDITOR_ADDONS_URL,
 					'siteurl'               => site_url(),
