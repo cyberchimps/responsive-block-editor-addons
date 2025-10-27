@@ -383,7 +383,7 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-cta-button.rich-text": {
       "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
-      "font-size": generateCSSUnit(buttonTextFontSize, "px"),
+      "font-size": inheritFromTheme ? '' : generateCSSUnit(buttonTextFontSize, "px"),
       "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
@@ -427,7 +427,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
+      "font-size": inheritFromTheme ? '' : `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
@@ -478,7 +478,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-size": generateCSSUnit(buttonTextFontSizeTablet, "px"),
+      "font-size": inheritFromTheme ? '' : generateCSSUnit(buttonTextFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeTablet, "px")}`,
