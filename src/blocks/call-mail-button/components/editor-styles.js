@@ -110,7 +110,7 @@
       "font-family": inheritFromTheme ? 'Default' : textFontFamily,
       "font-size": `${generateCSSUnit(textFontSize, "px")} !important`,
       "font-weight": inheritFromTheme ? '' : textFontWeight,
-      "line-height": textLineHeight,
+      "line-height": inheritFromTheme ? '' : textLineHeight,
       "text-transform": textTextTransform,
       "font-style": textFontStyle,
     },

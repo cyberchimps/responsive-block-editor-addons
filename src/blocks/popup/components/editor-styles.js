@@ -326,7 +326,7 @@ function EditorStyles(props) {
       "font-family": inheritFromTheme ? 'Default' : popupButtonTypographyFontFamily,
       "font-size": generateCSSUnit(popupButtonTypographyFontSize, "px"),
       "font-weight": inheritFromTheme ? '' : parseInt(popupButtonTypographyFontWeight),
-      "line-height": popupButtonTypographyLineHeight,
+      "line-height": inheritFromTheme ? '' : popupButtonTypographyLineHeight,
       "letter-spacing": inheritFromTheme ? '' : generateCSSUnit(popupButtonTypographyLetterSpacing, "px"),
       "padding-top": inheritFromTheme ? '' : generateCSSUnit(popupButtonPaddingTop, "px"),
       "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(popupButtonPaddingBottom, "px"),

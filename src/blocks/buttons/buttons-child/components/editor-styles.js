@@ -244,7 +244,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-family": inheritFromTheme ? 'Default' : buttonFontFamily,
       "font-weight": inheritFromTheme ? '' : buttonFontWeight,
-      "line-height": buttonLineHeight,
+      "line-height": inheritFromTheme ? '' : buttonLineHeight,
       "opacity": imgopacity,
       color:  inheritFromTheme ? '' : color ? color : '#000',
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,

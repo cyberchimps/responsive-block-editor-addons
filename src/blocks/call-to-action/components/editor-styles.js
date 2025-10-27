@@ -385,7 +385,7 @@ function EditorStyles(props) {
       "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
       "font-size": inheritFromTheme ? '' : generateCSSUnit(buttonTextFontSize, "px"),
       "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
-      "line-height": buttonTextLineHeight,
+      "line-height": inheritFromTheme ? '' : buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
       "font-style": buttonTextFontStyle,
     }
