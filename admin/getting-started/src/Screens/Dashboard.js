@@ -3,6 +3,7 @@ import Icons from "../icons";
 import { useHistory } from 'react-router-dom';
 import { ToggleControl } from "@wordpress/components";
 import { useState } from 'react';
+import BlockIcon from "../components/BlockIcon";
 
 const Dashboard = () => {
   return (
@@ -10,6 +11,8 @@ const Dashboard = () => {
       <HeroSection />
       <BlockSection />
       <CardSection />
+      <ExtendAndQuickAccess />
+      <StarterTemplates />
     </>
   )
 }
@@ -18,7 +21,7 @@ const HeroSection = () => {
 
   return (
     <div className="mx-7.5 mt-8 mb-16 sm:mx-8 rounded-lg bg-gradient-to-r from-[#080084] to-[#2563EB]">
-      <div className="py-60 px-6 sm:py-14 sm:px-14 pl-60">
+      <div className="py-3.7 px-6 sm:py-14 sm:px-14 pl-3.7">
         <div className="max-w-[700px]">
           <div className="max-w-[700px]">
             <p className="text-white font-bold text-5xl sm:text-4xl md:text-5xl leading-tight">{__('Welcome to Responsive Blocks', 'responsive-block-editor-addons')}</p>
@@ -41,7 +44,7 @@ const BlockSection = () => {
   return (
     <div className="mx-7.5 mt-8 mb-16 sm:mx-8">
       <div className="flex justify-between">
-        <div className="flex gap-5">
+        <div className="flex items-center gap-5">
           <p className="text-2xl font-medium">Blocks</p>
           <div className="flex items-center gap-3">
             <span className="flex items-center rounded-3xl border border-blue-300 text-xs font-medium text-blue-500 bg-blue-100 px-[10px] py-1">Total Blocks 52</span>
@@ -53,7 +56,7 @@ const BlockSection = () => {
           <button onClick={() => history.push('/blocks')} className="rounded-md border border-blue-600 text-blue-600 bg-blue-100 text-sm font-medium px-5 py-2">View All</button>
         </div>
       </div>
-      <p className="font-normal text-base text-[#4B5563] mt-2">Manage which blocks are enabled for your website</p>
+      <p className="font-normal text-base text-desc mt-2">Manage which blocks are enabled for your website</p>
     </div>
   )
 };
@@ -65,25 +68,30 @@ const CardSection = () => {
 
   return (
     <div className="mx-7.5 mt-8 mb-16 sm:mx-8">
-      <div className="flex flex-wrap gap-3 justify-between">
-        <div className="flex border border-slate-100 bg-white rounded-md py-4 px-[14px]">
-          <div className="flex gap-2">
-            <span>Icon</span>
-            <span className="text-sm font-medium text-slate-800">Blockquote</span>
-          </div>
-          <div className="flex gap-2">
-            <span className="flex w-[8px]">{Icons.arrowDiagonal}</span>
-            <ToggleControl
-              className="rbea-block-toggle"
-              __nextHasNoMarginBottom
-              checked={hasFixedBackground}
-              onChange={(newValue) => {
-                setHasFixedBackground(newValue);
-              }}
-            />
-          </div>
-        </div>
-        <div className="flex border border-slate-100 bg-white rounded-md py-4 px-[14px]">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {rbealocalize?.rbea_blocks.map((current) => {
+          return (
+            <div key={current?.key} className="flex justify-between items-center border border-slate-100 bg-white rounded-md py-4 px-[14px] transition-shadow hover:[box-shadow:0px_10px_15px_-3px_rgba(0,0,0,0.1)]">
+              <div className="flex items-center gap-2">
+                <BlockIcon block={current?.key} />
+                <span className="text-sm font-medium text-slate-800">{current?.title}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <a href={current?.demo} target="_blank"><span className="flex w-[18px]">{Icons.arrowDiagonal}</span></a>
+                <ToggleControl
+                  className="rbea-block-toggle"
+                  __nextHasNoMarginBottom
+                  checked={hasFixedBackground}
+                  onChange={(newValue) => {
+                    setHasFixedBackground(newValue);
+                  }}
+                />
+              </div>
+            </div>
+          )
+        })}
+
+        {/* <div className="flex border border-slate-100 bg-white rounded-md py-4 px-[14px]">
           <div className="flex gap-2">
             <span className="text-sm font-medium text-slate-800">Blockquote</span>
           </div>
@@ -99,11 +107,115 @@ const CardSection = () => {
             />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
 
   )
+}
+
+const ExtendAndQuickAccess = () => {
+  return (
+    <div className="flex justify-between mx-7.5 mt-8 mb-16 sm:mx-8">
+      <div className="w-2/3">
+        <p className="font-medium text-2xl">Extend Your Website</p>
+        <p className="font-normal text-base text-desc mt-2 mb-6">Powerful tools to enhance your site's functionality</p>
+        <div className="grid md:grid-cols-2 gap-6 w-full">
+          <div className="p-6 bg-white rounded-md">
+            <div className="flex justify-between items-start">
+              <img src={rbealocalize.responsiveurl + 'admin/images/rplus_logo.svg'} alt="Responsive Plus Logo" />
+              <span className="py-1 px-0.625 text-xs leading-4 font-medium text-green-800 bg-green-50 border border-green-300 rounded">Free</span>
+            </div>
+            <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Starter Templates</p>
+            <p className="text-sm leading-5 font-normal">150+ Ready to Import Designer-Made Website Starter Templates.</p>
+            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Explore Templates</button>
+          </div>
+          <div className="p-6 bg-white rounded-md">
+            <div className="flex justify-between items-start">
+              <img src={rbealocalize.responsiveurl + 'admin/images/rplus_logo.svg'} alt="Responsive Plus Logo" />
+              <span className="py-1 px-0.625 text-xs leading-4 font-medium text-green-800 bg-green-50 border border-green-300 rounded">Free</span>
+            </div>
+            <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Plus</p>
+            <p className="text-sm leading-5 font-normal">Get Advanced modules: Site Builder, Fonts, WooCommerce, and more.</p>
+            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Install</button>
+          </div>
+          <div className="p-6 bg-white rounded-md">
+            <div className="flex justify-between items-start">
+              <img src={rbealocalize.responsiveurl + 'admin/images/rae_logo.svg'} alt="RAE Logo" />
+              <span className="py-1 px-0.625 text-xs leading-4 font-medium text-green-800 bg-green-50 border border-green-300 rounded">Free</span>
+            </div>
+            <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Addons for Elementor</p>
+            <p className="text-sm leading-5 font-normal">A free Elementor Addons plugin with more than 80+ premium quality Elementor widgets.</p>
+            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Install</button>
+          </div>
+          <div className="p-6 bg-white rounded-md">
+            <div className="flex justify-between items-start">
+              <img src={rbealocalize.responsiveurl + 'admin/images/responsive_logo.svg'} alt="Responsive Logo" />
+              <span className="py-1 px-0.625 text-xs leading-4 font-medium text-green-800 bg-green-50 border border-green-300 rounded">Free</span>
+            </div>
+            <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Theme</p>
+            <p className="text-sm leading-5 font-normal">Craft Stunning Websites Effortlessly with the Responsive Theme.</p>
+            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Install</button>
+          </div>
+        </div>
+      </div>
+      <div className="1/3">
+        <p className="font-medium text-2xl">Quick Access</p>
+        <p className="font-normal text-base text-desc mt-2 mb-6">Helpful resources & links</p>
+        <div className="p-6 bg-white rounded-md">
+          <div className="flex gap-5">
+            <span className="flex items-center p-0.625 rounded-md border border-blue-200">{Icons.help}</span>
+            <div>
+              <p className="text-lg leading-7 font-medium text-blue-500">Support</p>
+              <p className="text-sm leading-5 font-normal text-desc">Get help from our support team</p>
+            </div>
+          </div>
+          <div className="flex gap-5 mt-10">
+            <span className="flex items-center p-0.625 rounded-md border border-yellow-500">{Icons.community}</span>
+            <div>
+              <p className="text-lg leading-7 font-medium text-desc">Join the Community</p>
+              <p className="text-sm leading-5 font-normal text-desc">Connect with other users</p>
+            </div>
+          </div>
+          <div className="flex gap-5 mt-10">
+            <span className="flex items-center p-0.625 rounded-md border border-green-500">{Icons.star}</span>
+            <div>
+              <p className="text-lg leading-7 font-medium text-desc">Rate Us</p>
+              <p className="text-sm leading-5 font-normal text-desc">Share your experience</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const StarterTemplates = () => {
+
+  const history = useHistory();
+
+  const templates = ['Real Estate', 'Business', 'Jewellery Shop', 'Interior Design Firm'];
+
+  return (
+    <div className="mx-7.5 mt-8 mb-16 sm:mx-8">
+      <div className="flex justify-between mb-6">
+        <div>
+          <p className="text-2xl leading-8 font-medium">Starter Templates</p>
+          <p className="mt-2 text-base leading-6 font-normal text-desc">Pre-designed templates to kickstart your website in seconds</p>
+        </div>
+        <button onClick={() => history.push('/templates')} className="rounded-md border border-blue-600 text-blue-600 bg-blue-100 text-sm font-medium px-5 py-2 self-baseline">View All Templates</button>
+      </div>
+      <div className="flex justify-center gap-6">
+        {templates?.map((template, index) => (
+          <div className="bg-white border border-slate-200 rounded-md transition-shadow hover:[box-shadow:0px_10px_10px_-5px_rgba(0,0,0,0.04)]">
+            <img src={rbealocalize.responsiveurl + `admin/images/template${index+1}.jpg`} alt={template} />
+            <p className="py-6 pl-6 text-base leading-6 font-normal">{template}</p>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  );
 }
 
 export default Dashboard

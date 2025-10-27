@@ -1,12 +1,14 @@
 import { HashRouter } from 'react-router-dom';
 import Header from "./components/Header";
 import Canvas from "./Screens/Canvas";
+import Footer from './components/Footer';
 
 const GettingStarted = () => {
   return (
     <>
       <Header />
       <Canvas />
+      <Footer />
     </>
   )
 }

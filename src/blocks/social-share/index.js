@@ -27,7 +27,7 @@ registerBlockType("responsive-block-editor-addons/social-icons", {
     "This block allows you to display icons linking to your social media profiles or websites",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.social_share,
+  icon: ResponsiveBlockEditorAddonsIcons.social_icons,
   category: "responsive_block_editor_addons",
   keywords: [
     __("Social Icons", "responsive-block-editor-addons"),

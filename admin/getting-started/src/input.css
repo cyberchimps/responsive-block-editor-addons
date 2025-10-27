@@ -2,6 +2,7 @@
 
 #wpbody-content {
     @apply font-sans;
+    padding-bottom: 0;
 }
 
 #wpcontent {
@@ -29,7 +30,7 @@
             /* Active */
             &.is-checked {
                 .components-form-toggle__track {
-                    @apply bg-blue-600 !important;
+                    background-color: #2563eb !important;
                 }
 
                 .components-form-toggle__thumb {
@@ -45,6 +46,12 @@
             @apply border-blue-100;
             border-width: 1px;
             border-radius: 10px;
+        }
+    }
+
+    .rbea-editor-icons {
+        rect, path, line, circle {
+            stroke: #4B5563;
         }
     }
 }

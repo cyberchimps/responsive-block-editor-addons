@@ -17,7 +17,7 @@ registerBlockType("responsive-block-editor-addons/image", {
     "Modify or enhance the image design",
     "responsive-block-editor-addons"
   ),
-  icon: ResponsiveBlockEditorAddonsIcons.image_block,
+  icon: ResponsiveBlockEditorAddonsIcons.image,
   category: "responsive_block_editor_addons",
   keywords: [
     __("image", "responsive-block-editor-addons"),
