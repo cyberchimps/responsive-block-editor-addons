@@ -3876,8 +3876,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'background-image'           => $updated_background_image,
 					'background-color'           => $flag ? '' : $attr['background'],
 					'font-size'                  => self::get_css_value( $attr['buttonFontSize'], 'px' ),
-					'font-family'                => $attr['buttonFontFamily'],
-					'font-weight'                => $attr['buttonFontWeight'],
+					'font-family'                => $flag ? 'Default' : $attr['buttonFontFamily'],
+					'font-weight'                => $flag ? '' : $attr['buttonFontWeight'],
 					'line-height'                => $attr['buttonLineHeight'],
 					'opacity'                    => $imgopacity,
 					'color'                      => $flag ? '' : ( $attr['color'] ? $attr['color'] : '#000' ),
@@ -4257,9 +4257,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 				' .responsive-block-editor-addons-cta-link-text' => array(
 					'color'       => 'empty' !== $attr['buttonTextColor'] && '#fff' === $attr['ctaColor'] ? $attr['buttonTextColor'] : $attr['ctaColor'], // For compatibility with v1.3.2.
-					'font-family' => $attr['buttonTextFontFamily'],
+					'font-family' => $flag ? 'Default' : $attr['buttonTextFontFamily'],
 					'font-size'   => self::get_css_value( $attr['buttonTextFontSize'], 'px' ),
-					'font-weight' => $attr['buttonTextFontWeight'],
+					'font-weight' => $flag ? '' : $attr['buttonTextFontWeight'],
 					'line-height' => $attr['buttonTextLineHeight'],
 					'text-transform'=> $attr['buttonTextTextTransform'],
 					'font-style'    => $attr['buttonTextFontStyle'],
@@ -4376,9 +4376,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin' => $cta_icon_margin,
 				),
 				' .responsive-block-editor-addons-cta-button' => array(
-					'font-family' => $attr['buttonTextFontFamily'],
+					'font-family' => $flag ? 'Default' : $attr['buttonTextFontFamily'],
 					'font-size'   => self::get_css_value( $attr['buttonTextFontSize'], 'px' ),
-					'font-weight' => $attr['buttonTextFontWeight'],
+					'font-weight' => $flag ? '' : $attr['buttonTextFontWeight'],
 					'line-height' => $attr['buttonTextLineHeight'],
 					'text-transform'=> $attr['buttonTextTextTransform'],
 					'font-style'    => $attr['buttonTextFontStyle'],
@@ -10686,9 +10686,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'border-width'     => $flag ? '' : self::get_css_value( $attr['ctaBorderWidth'], 'px' ),
 					'border-style'     => $flag ? '' : $attr['ctaBorderStyle'],
 					'line-height'      => $attr['ctaLineHeight'],
-					'font-weight'      => $attr['ctaFontWeight'],
+					'font-weight'      => $flag ? 'Default' : $attr['ctaFontWeight'],
 					'font-size'        => self::get_css_value( $attr['ctaFontSize'], 'px' ),
-					'font-family'      => $attr['ctaFontFamily'],
+					'font-family'      => $flag ? '' : $attr['ctaFontFamily'],
 					'box-shadow'       =>
 						self::get_css_value( $attr['buttonBoxShadowHOffset'], 'px' ) .
 						' ' .
@@ -16660,9 +16660,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-call-mail-button-text' => array(
 					'color'       => $flag ? '' : $text_color,
-					'font-family' => $attr['textFontFamily'],
+					'font-family' => $flag ? 'Default' : $attr['textFontFamily'],
 					'font-size'   => self::get_css_value( $attr['textFontSize'], 'px' ) . ' !important',
-					'font-weight' => $attr['textFontWeight'],
+					'font-weight' => $flag ? '' : $attr['textFontWeight'],
 					'line-height' => $attr['textLineHeight'],
 					'text-transform' => $attr['textTextTransform'],
 					'font-style' => $attr['textFontStyle'],
@@ -22798,9 +22798,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'color'                      => $flag ? '' : $attr['popupButtonColor'],
 					'background-color'           => $flag ? '' : ('transparent' === $attr['popupButtonBGState'] ? 'transparent' : ( 'solid' === $attr['popupButtonBGState'] ? $attr['popupButtonBGColor'] : 'unset' )),
 					'background-image'           => 'gradient' === $attr['popupButtonBGState'] ? $attr['popupButtonBGGradient'] : 'unset',
-					'font-family'                => $attr['popupButtonTypographyFontFamily'],
+					'font-family'                => $flag ? 'Default' : $attr['popupButtonTypographyFontFamily'],
 					'font-size'                  => self::get_css_value( $attr['popupButtonTypographyFontSize'], 'px' ),
-					'font-weight'                => (int) $attr['popupButtonTypographyFontWeight'],
+					'font-weight'                => $flag ? '' : (int) $attr['popupButtonTypographyFontWeight'],
 					'line-height'                => $attr['popupButtonTypographyLineHeight'],
 					'letter-spacing'             => self::get_css_value( $attr['popupButtonTypographyLetterSpacing'], 'px' ),
 					'padding-top'                => $flag ? '' : self::get_css_value( $attr['popupButtonPaddingTop'], 'px' ),

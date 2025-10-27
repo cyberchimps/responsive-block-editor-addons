@@ -245,9 +245,9 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-cta-link-text": {
       "color": buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
-      "font-family": buttonTextFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
-      "font-weight": buttonTextFontWeight,
+      "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
       "font-style": buttonTextFontStyle,
@@ -382,9 +382,9 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-family": buttonTextFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
-      "font-weight": buttonTextFontWeight,
+      "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
       "font-style": buttonTextFontStyle,

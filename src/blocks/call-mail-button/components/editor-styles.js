@@ -107,9 +107,9 @@
     },
     " .responsive-block-editor-addons-call-mail-button-text": {
       "color": inheritFromTheme ? '' : textColor,
-      "font-family": textFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : textFontFamily,
       "font-size": `${generateCSSUnit(textFontSize, "px")} !important`,
-      "font-weight": textFontWeight,
+      "font-weight": inheritFromTheme ? '' : textFontWeight,
       "line-height": textLineHeight,
       "text-transform": textTextTransform,
       "font-style": textFontStyle,
