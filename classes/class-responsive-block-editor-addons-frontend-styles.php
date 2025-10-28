@@ -4710,6 +4710,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'ctaTextFontStyle'            => '',
 				'buttonTextTextTransform'     => '',
 				'buttonTextFontStyle'         => '',
+				'inheritFromTheme'		   => false,
 				'inheritFromThemesaved'	   => false,
 			);
 		}
@@ -5436,6 +5437,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'contentTextTransform'         => '',
     			'contentFontStyle'             => '',
 				'inheritFromThemesaved'	   => false,
+				'inheritFromTheme'		   => false,
 			);
 		}
 
@@ -11293,6 +11295,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
         		'ctaTextTransform'             => '',
         		'ctaFontStyle'                 => '',
 				'inheritFromThemesaved'	   => false,
+				'inheritFromTheme'		   => false,
 			);
 		}
 
@@ -16663,9 +16666,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'font-family' => $flag ? 'Default' : $attr['textFontFamily'],
 					'font-size'   => $flag ? '' : self::get_css_value( $attr['textFontSize'], 'px' ) . ' !important',
 					'font-weight' => $flag ? '' : $attr['textFontWeight'],
-					'line-height' => $attr['textLineHeight'],
-					'text-transform' => $attr['textTextTransform'],
-					'font-style' => $attr['textFontStyle'],
+					'line-height' => $flag ? '' : $attr['textLineHeight'],
+					'text-transform' => $flag ? '' : $attr['textTextTransform'],
+					'font-style' => $flag ? '' : $attr['textFontStyle'],
 				),
 				' .responsive-block-editor-addons-call-mail-button-icon' => array(
 					'fill' => $text_color,
@@ -16819,6 +16822,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'textTextTransform'        => '',
      			'textFontStyle'            => '',
 				'inheritFromThemesaved'	   => false,	
+				'inheritFromTheme'		   => false,
 			);
 		}
 
@@ -23209,6 +23213,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'popupTextTypographyTextTransform'    => '',
     			'popupTextTypographyFontStyle'        => '',
 				'inheritFromThemesaved'	   => false,
+				'inheritFromTheme'		   => false,
 			);
 		}
 
