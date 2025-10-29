@@ -40,15 +40,17 @@ const BlockSection = () => {
 
   const history = useHistory();
 
+  const { blocksList, activeBlocksCount, inactiveBlocksCount } = useContext(BlocksContext);
+  
   return (
     <div className="mx-7.5 mt-8 mb-16">
       <div className="flex justify-between">
         <div className="flex items-center gap-5">
           <p className="text-2xl font-medium">Blocks</p>
           <div className="flex items-center gap-3">
-            <span className="flex items-center rounded-3xl border border-blue-300 text-xs font-medium text-blue-500 bg-blue-100 px-[10px] py-1">Total Blocks 52</span>
-            <span className="flex items-center rounded-3xl border border-green-300 text-xs font-medium text-green-800 bg-green-100 px-[10px] py-1">Active 40</span>
-            <span className="flex items-center rounded-3xl border border-red-300 text-xs font-medium text-red-500 bg-red-100 px-[10px] py-1">Inactive 12</span>
+            <span className="flex items-center rounded-3xl border border-blue-300 text-xs font-medium text-blue-500 bg-blue-100 px-[10px] py-1">Total Blocks {blocksList.length}</span>
+            <span className="flex items-center rounded-3xl border border-green-300 text-xs font-medium text-green-800 bg-green-100 px-[10px] py-1">Active {activeBlocksCount}</span>
+            <span className="flex items-center rounded-3xl border border-red-300 text-xs font-medium text-red-500 bg-red-100 px-[10px] py-1">Inactive {inactiveBlocksCount}</span>
           </div>
         </div>
         <div>

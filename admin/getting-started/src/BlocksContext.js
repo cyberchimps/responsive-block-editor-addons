@@ -9,7 +9,20 @@ export const BlocksProvider = ({ children }) => {
     const areAllBlocksSelected = blocksList.every((block) => block.status == 1);
     const [toggleAll, setToggleAll] = useState(areAllBlocksSelected);
 
+    const initialActiveBlocks   = blocksList.filter( item => item?.status === '1')
+    const initialInactiveBlocks = blocksList.filter( item => item?.status !== '1')
+    const [activeBlocksCount, setActiveBlocksCount] = useState(initialActiveBlocks.length);
+    const [inactiveBlocksCount, setInactiveBlocksCount] = useState(initialInactiveBlocks.length);
+
     const permanentlyEnabledBlocks = ['advanced-heading', 'image', 'container'];
+
+    const handleBlocksCount = ( updatedBlockList ) => {
+        const activeBlocks   = updatedBlockList.filter( item => item?.status === '1' || item?.status === true)
+        const inactiveBlocks = updatedBlockList.filter( item => item?.status === false)
+
+        setActiveBlocksCount(activeBlocks.length);
+        setInactiveBlocksCount(inactiveBlocks.length);
+    }
 
     const handleToggle = (checkboxKey) => {
         setBlockList((prevCheckboxes) => {
@@ -22,11 +35,15 @@ export const BlocksProvider = ({ children }) => {
             const areAllUpdatedBlocksChecked = updatedBlockList.every(
                 (block) => block.status == 1
             );
+
             setToggleAll(areAllUpdatedBlocksChecked);
+
+            handleBlocksCount( updatedBlockList );
 
             if (isInitialized) {
                 fetchData(updatedBlockList);
             }
+
             return updatedBlockList;
         });
     };
@@ -41,6 +58,8 @@ export const BlocksProvider = ({ children }) => {
                 }
                 return { ...checkbox, status: !toggleAll };
             });
+
+            handleBlocksCount( updatedBlockList );
 
             fetchData(updatedBlockList);
 
@@ -90,7 +109,7 @@ export const BlocksProvider = ({ children }) => {
 
     return (
         <BlocksContext.Provider
-            value={{ blocksList, setBlockList, handleToggle, toggleAll, handleToggleAll, permanentlyEnabledBlocks }}
+            value={{ blocksList, setBlockList, handleToggle, toggleAll, handleToggleAll, permanentlyEnabledBlocks, activeBlocksCount, inactiveBlocksCount }}
         >
             {children}
         </BlocksContext.Provider>
