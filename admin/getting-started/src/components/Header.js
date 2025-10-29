@@ -13,10 +13,10 @@ const Header = () => {
                     <div className="flex items-center w-8/12 gap-6">
                         <img className="rbea-cyberchimps-logo" src={rbealocalize.responsiveurl + 'admin/images/rbea-logo.svg'} />
                         <div className="flex w-full">
-                            <div onClick={() => history.push('/')} className={`${location.pathname === '/' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__( 'Dashboard', 'responsive-block-editor-addons')}</p></div>
-                            <div onClick={() => history.push('/blocks')} className={`${location.pathname === '/blocks' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Blocks', 'responsive-block-editor-addons')}</p></div>
-                            <div onClick={() => history.push('/settings')} className={`${location.pathname === '/settings' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Settings', 'responsive-block-editor-addons')}</p></div>
-                            <div onClick={() => history.push('/templates')} className={`${location.pathname === '/templates' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Starter Templates', 'responsive-block-editor-addons')}</p></div>
+                            <div onClick={() => history.push('/')} className={`hover:bg-sky-100 ${location.pathname === '/' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Dashboard', 'responsive-block-editor-addons')}</p></div>
+                            <div onClick={() => history.push('/blocks')} className={`hover:bg-sky-100 ${location.pathname === '/blocks' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Blocks', 'responsive-block-editor-addons')}</p></div>
+                            <div onClick={() => history.push('/settings')} className={`hover:bg-sky-100 ${location.pathname === '/settings' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Settings', 'responsive-block-editor-addons')}</p></div>
+                            <div onClick={() => history.push('/templates')} className={`hover:bg-sky-100 ${location.pathname === '/templates' ? 'rbea-active-tab' : ''} cursor-pointer`}><p className="text-slate-800 text-base font-medium my-6 px-5">{__('Starter Templates', 'responsive-block-editor-addons')}</p></div>
                         </div>
                     </div>
                     <div className="flex w-4/12 items-center justify-end">

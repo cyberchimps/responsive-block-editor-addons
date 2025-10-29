@@ -14,15 +14,15 @@ const Blocks = () => {
     setSearch('');
   }
 
+  const blockCategories = [ 'All', 'Content', 'Timelines', 'CRO', 'Extensions'];
+
   return (
     <div className="mx-10 p-10 mt-12 mb-16 bg-white rounded-[20px]">
       <div className="flex justify-between items-center">
         <div className="flex border-b border-b-slate-300">
-          <div onClick={() => handleShowCategory('all')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'all' ? 'rbea-active-category' : ''}`}>All (52)</div>
-          <div onClick={() => handleShowCategory('content')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'content' ? 'rbea-active-category' : ''}`}>Content (44)</div>
-          <div onClick={() => handleShowCategory('timelines')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'timelines' ? 'rbea-active-category' : ''}`}>Timelines (4)</div>
-          <div onClick={() => handleShowCategory('cro')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'cro' ? 'rbea-active-category' : ''}`}>CRO (2)</div>
-          <div onClick={() => handleShowCategory('extensions')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'extensions' ? 'rbea-active-category' : ''}`}>Extensions (2)</div>
+          {blockCategories.map((current) => (
+            <div key={current} onClick={() => handleShowCategory(current.toLowerCase())} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer hover:bg-slate-200 ${showCategory === current.toLowerCase() ? 'rbea-active-category' : ''}`}>{current}</div>
+          ))}
         </div>
         <div className="relative">
           <input value={search} className="rbea-block-search !border !rounded-[10px] !border-gray-300 !p-3" onChange={(e) => setSearch(e.target.value)} autoComplete="off" type="text" name="" id="" placeholder="Search Blocks" />
