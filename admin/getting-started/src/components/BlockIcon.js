@@ -2,7 +2,7 @@ import ResponsiveBlockEditorAddonsIcons from '../../../../src/block-icons';
 
 const BlockIcon = ({ block }) => {
 
-    let icon = block.replace(/-/g, '_');
+    let icon = block?.replace(/-/g, '_');
 
     if ( icon === 'responsive_block_editor_addons_cta' ) {
         icon = 'call_to_action';

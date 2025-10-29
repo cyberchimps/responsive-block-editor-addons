@@ -2,12 +2,15 @@ import { HashRouter } from 'react-router-dom';
 import Header from "./components/Header";
 import Canvas from "./Screens/Canvas";
 import Footer from './components/Footer';
+import { BlocksProvider } from './BlocksContext';
 
 const GettingStarted = () => {
   return (
     <>
       <Header />
-      <Canvas />
+      <BlocksProvider>
+        <Canvas />
+      </BlocksProvider>
       <Footer />
     </>
   )

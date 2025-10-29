@@ -1,16 +1,15 @@
+import { useContext, useState } from "react";
 import { __ } from "@wordpress/i18n";
 import Icons from "../icons";
 import { useHistory } from 'react-router-dom';
-import { ToggleControl } from "@wordpress/components";
-import { useState } from 'react';
-import BlockIcon from "../components/BlockIcon";
+import BlockCard from "../components/BlockCard";
+import { BlocksContext } from "../BlocksContext";
 
 const Dashboard = () => {
   return (
     <>
       <HeroSection />
       <BlockSection />
-      <CardSection />
       <ExtendAndQuickAccess />
       <StarterTemplates />
     </>
@@ -27,7 +26,7 @@ const HeroSection = () => {
             <p className="text-white font-bold text-5xl sm:text-4xl md:text-5xl leading-tight">{__('Welcome to Responsive Blocks', 'responsive-block-editor-addons')}</p>
             <p className="mt-4 sm:mt-6 text-white font-medium text-sm leading-relaxed">{__('Create stunning WordPress websites with our intuitive block builder. Design beautiful pages, explore ready-made templates, and customize everything to match your vision. Get started in seconds!', 'responsive-block-editor-addons')}</p>
             <p className="mt-6">
-              <button onClick={() => window.location.href = rbealocalize?.pageurl} className="flex items-center gap-1 py-2 px-5 text-blue-600 bg-white rounded-md font-medium">{Icons.createPage} {__('Create a Page', 'responsive-block-editor-addons')}
+              <button onClick={() => window.location.href = rbealocalize?.pageurl} className="flex items-center gap-1 py-0.625 px-5 text-blue-600 bg-white rounded-md font-medium">{Icons.createPage} {__('Create a Page', 'responsive-block-editor-addons')}
               </button>
             </p>
           </div>
@@ -56,7 +55,8 @@ const BlockSection = () => {
           <button onClick={() => history.push('/blocks')} className="rounded-md border border-blue-600 text-blue-600 hover:bg-blue-100 text-sm font-medium px-5 py-2">View All</button>
         </div>
       </div>
-      <p className="font-normal text-base text-desc mt-2">Manage which blocks are enabled for your website</p>
+      <p className="font-normal text-base text-desc mt-2 mb-6">Manage which blocks are enabled for your website</p>
+      <CardSection />
     </div>
   )
 };
@@ -64,35 +64,18 @@ const BlockSection = () => {
 
 const CardSection = () => {
 
-  const [hasFixedBackground, setHasFixedBackground] = useState(false);
+  const specificBlocks = ['container', 'advanced-heading', 'advanced-text', 'buttons', 'image', 'instagram', 'gallery-masonry', 'table-of-contents', 'image-slider', 'video-popup', 'animations', 'display-conditions'];
+
+  const { blocksList } = useContext(BlocksContext);
+
+  const showBlocks = blocksList.filter(item => specificBlocks.includes(item.key));
 
   return (
-    <div className="mx-7.5 mt-8 mb-16">
+    <div className="mt-8 mb-16">
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {rbealocalize?.rbea_blocks.map((current) => {
-          return (
-            <div key={current?.key} className="flex justify-between items-center border border-slate-100 bg-white rounded-md py-4 px-[14px] transition-shadow hover:[box-shadow:0px_10px_15px_-3px_rgba(0,0,0,0.1)]">
-              <div className="flex items-center gap-2">
-                <BlockIcon block={current?.key} />
-                <span className="text-sm font-medium text-slate-800">{current?.title}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <a href={current?.demo} target="_blank"><span className="flex w-[18px]">{Icons.arrowDiagonal}</span></a>
-                <ToggleControl
-                  className="rbea-block-toggle"
-                  __nextHasNoMarginBottom
-                  checked={hasFixedBackground}
-                  onChange={(newValue) => {
-                    setHasFixedBackground(newValue);
-                  }}
-                />
-              </div>
-            </div>
-          )
-        })}
+        {showBlocks.map((current) => <BlockCard data={current} /> )}
       </div>
     </div>
-
   )
 }
 
@@ -173,13 +156,13 @@ const ExtendAndQuickAccess = () => {
         );
       case 'activated':
         return (
-          <button className="mt-1.125 py-0.625 px-5 border border-slate-500 text-slate-500 bg-white rounded-md text-sm leading-5 font-medium capitalize">
+          <button className="mt-1.125 py-0.625 px-5 border border-slate-500 hover:bg-slate-300 text-slate-500 bg-white rounded-md text-sm leading-5 font-medium capitalize">
             Activated
           </button>
         );
       default:
         return (
-          <button className="mt-1.125 py-0.625 px-5 bg-gray-400 hover:bg-slate-500 rounded-md text-white text-sm leading-5 font-medium capitalize">
+          <button className="mt-1.125 py-0.625 px-5 border border-slate-500 hover:bg-slate-300 text-slate-500 bg-white rounded-md text-sm leading-5 font-medium capitalize">
             {buttonText}
           </button>
         );
@@ -208,7 +191,7 @@ const ExtendAndQuickAccess = () => {
             </div>
             <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Plus</p>
             <p className="text-sm leading-5 font-normal">Get Advanced modules: Site Builder, Fonts, WooCommerce, and more.</p>
-            <InstallButton 
+            <InstallButton
               type="plugin"
               status={rbealocalize?.rst_status}
               nonce={rbealocalize.rst_nonce}
@@ -225,7 +208,7 @@ const ExtendAndQuickAccess = () => {
             </div>
             <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Addons for Elementor</p>
             <p className="text-sm leading-5 font-normal">A free Elementor Addons plugin with more than 80+ premium quality Elementor widgets.</p>
-            <InstallButton 
+            <InstallButton
               type="plugin"
               status={rbealocalize?.rae_status}
               nonce={rbealocalize.rae_nonce}
@@ -242,7 +225,7 @@ const ExtendAndQuickAccess = () => {
             </div>
             <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Theme</p>
             <p className="text-sm leading-5 font-normal">Craft Stunning Websites Effortlessly with the Responsive Theme.</p>
-            <InstallButton 
+            <InstallButton
               type="theme"
               status={rbealocalize?.responsive_status}
               nonce={rbealocalize.responsive_nonce}
