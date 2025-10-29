@@ -1170,6 +1170,58 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
+	 * Check if plugin is installed or activated.
+	 *
+	 * @return string
+	 */
+	public function rbea_plugin_status( $path ) {
+
+		if ( is_plugin_active( $path ) ) {
+			return 'activated';
+		}
+
+		// Check if RST is installed.
+		$installed_plugins = get_plugins();
+
+		if ( isset( $installed_plugins[ $path ] ) ) {
+			return 'activate';
+		} else {
+			return 'install';
+		}
+	}
+
+	/**
+	 * Get responsive theme status.
+	 * 
+	 * @return string 'activated' if active, 'activate' if installed, 'install' if not found.
+	 */
+	function get_responsive_theme_status() {
+		
+		$theme_slug = 'responsive';
+		$current_theme = wp_get_theme();
+		
+		// Check if responsive theme or its child theme is active.
+		if ($current_theme->get_stylesheet() === $theme_slug || $current_theme->get('Template') === $theme_slug) {
+			return 'activated';
+		}
+		
+		// Check if responsive theme is installed
+		$themes = wp_get_themes();
+		if (isset($themes[$theme_slug])) {
+			return 'activate';
+		}
+		
+		// Check if any child theme of responsive is installed
+		foreach ($themes as $theme) {
+			if ($theme->get('Template') === $theme_slug) {
+				return 'activate';
+			}
+		}
+		
+		return 'install';
+	}
+
+	/**
 	 * Include Admin css
 	 *
 	 * @return void [description]
@@ -1221,7 +1273,7 @@ class Responsive_Block_Editor_Addons {
 
 			$rst_path = 'responsive-add-ons/responsive-add-ons.php';
 
-			$nonce = add_query_arg(
+			$rst_nonce = add_query_arg(
 				array(
 					'action'        => 'activate',
 					'plugin'        => rawurlencode( $rst_path ),
@@ -1230,6 +1282,30 @@ class Responsive_Block_Editor_Addons {
 					'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $rst_path ),
 				),
 				network_admin_url( 'plugins.php' )
+			);
+
+			$rae_path = 'responsive-addons-for-elementor/responsive-addons-for-elementor.php';
+
+			$rae_nonce = add_query_arg(
+				array(
+					'action'        => 'activate',
+					'plugin'        => rawurlencode( $rae_path ),
+					'plugin_status' => 'all',
+					'paged'         => '1',
+					'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $rae_path ),
+				),
+				network_admin_url( 'plugins.php' )
+			);
+
+			$theme_slug = 'responsive';
+
+			$responsive_nonce = add_query_arg(
+				array(
+					'action'   => 'activate',
+					'stylesheet' => rawurlencode( $theme_slug ),
+					'_wpnonce' => wp_create_nonce( 'switch-theme_' . $theme_slug ),
+				),
+				admin_url( 'themes.php' )
 			);
 
 			wp_localize_script(
@@ -1255,9 +1331,15 @@ class Responsive_Block_Editor_Addons {
 					'rbea_blocks'           => $blocks,
 					'auto_block_recovery'   => get_option( 'rbea_auto_block_recovery', '1' ),
 					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
-					'rst_status'            => $this->rst_status(),
-					'rst_nonce'             => $nonce,
+					'rst_status'            => $this->rbea_plugin_status( $rst_path ),
+					'rae_status'            => $this->rbea_plugin_status( 'responsive-addons-for-elementor/responsive-addons-for-elementor.php' ),
+					'responsive_status'     => $this->get_responsive_theme_status(),
+					'rst_nonce'             => $rst_nonce,
+					'rae_nonce'             => $rae_nonce,
+					'responsive_nonce'      => $responsive_nonce,
 					'rst_redirect'          => admin_url( 'admin.php?page=responsive_add_ons' ),
+					'rae_redirect'          => admin_url( 'admin.php?page=rael_getting_started' ),
+					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
 				)
 			);
 

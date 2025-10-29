@@ -13,8 +13,6 @@ const GettingStarted = () => {
   )
 }
 
-// export default GettingStarted;
-
 document.addEventListener('DOMContentLoaded', () => {
   var rbeaGettingStartedPageElement = document.getElementById('rbea-getting-started-page-app');
   if (typeof rbeaGettingStartedPageElement !== 'undefined' && rbeaGettingStartedPageElement !== null) {

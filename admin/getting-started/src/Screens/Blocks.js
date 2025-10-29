@@ -94,7 +94,7 @@ const Blocks = () => {
 
   return (
     <div className="mx-10 p-10 mt-12 mb-16 bg-white rounded-[20px]">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <div className="flex border-b border-b-slate-300">
           <div onClick={() => handleShowCategory('all')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'all' ? 'rbea-active-category' : ''}`}>All (52)</div>
           <div onClick={() => handleShowCategory('content')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'content' ? 'rbea-active-category' : ''}`}>Content (44)</div>
@@ -103,8 +103,8 @@ const Blocks = () => {
           <div onClick={() => handleShowCategory('extensions')} className={`px-3 py-0.625 text-base leading-6 font-normal text-desc cursor-pointer ${showCategory === 'extensions' ? 'rbea-active-category' : ''}`}>Extensions (2)</div>
         </div>
         <div className="relative">
-          <input value={search} className="rbea-block-search border rounded-[10px] border-gray-300 p-3" onChange={(e) => setSearch(e.target.value)} autoComplete="off" type="text" name="" id="" placeholder="Search Blocks" />
-          <i className="absolute right-2 top-3 bg-white"><span className="dashicons dashicons-search text-[#2563EB]"></span></i>
+          <input value={search} className="rbea-block-search !border !rounded-[10px] !border-gray-300 !p-3" onChange={(e) => setSearch(e.target.value)} autoComplete="off" type="text" name="" id="" placeholder="Search Blocks" />
+          <i className="absolute right-2 top-4 bg-white"><span className="dashicons dashicons-search text-[#2563EB]"></span></i>
         </div>
       </div>
 

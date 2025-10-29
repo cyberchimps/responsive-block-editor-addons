@@ -20,7 +20,7 @@ const Dashboard = () => {
 const HeroSection = () => {
 
   return (
-    <div className="mx-7.5 mt-8 mb-16 sm:mx-8 rounded-lg bg-gradient-to-r from-[#080084] to-[#2563EB]">
+    <div className="mx-7.5 mt-8 mb-16 rounded-lg bg-gradient-to-r from-[#080084] to-[#2563EB]">
       <div className="py-3.7 px-6 sm:py-14 sm:px-14 pl-3.7">
         <div className="max-w-[700px]">
           <div className="max-w-[700px]">
@@ -42,7 +42,7 @@ const BlockSection = () => {
   const history = useHistory();
 
   return (
-    <div className="mx-7.5 mt-8 mb-16 sm:mx-8">
+    <div className="mx-7.5 mt-8 mb-16">
       <div className="flex justify-between">
         <div className="flex items-center gap-5">
           <p className="text-2xl font-medium">Blocks</p>
@@ -53,7 +53,7 @@ const BlockSection = () => {
           </div>
         </div>
         <div>
-          <button onClick={() => history.push('/blocks')} className="rounded-md border border-blue-600 text-blue-600 bg-blue-100 text-sm font-medium px-5 py-2">View All</button>
+          <button onClick={() => history.push('/blocks')} className="rounded-md border border-blue-600 text-blue-600 hover:bg-blue-100 text-sm font-medium px-5 py-2">View All</button>
         </div>
       </div>
       <p className="font-normal text-base text-desc mt-2">Manage which blocks are enabled for your website</p>
@@ -67,7 +67,7 @@ const CardSection = () => {
   const [hasFixedBackground, setHasFixedBackground] = useState(false);
 
   return (
-    <div className="mx-7.5 mt-8 mb-16 sm:mx-8">
+    <div className="mx-7.5 mt-8 mb-16">
       <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {rbealocalize?.rbea_blocks.map((current) => {
           return (
@@ -90,24 +90,6 @@ const CardSection = () => {
             </div>
           )
         })}
-
-        {/* <div className="flex border border-slate-100 bg-white rounded-md py-4 px-[14px]">
-          <div className="flex gap-2">
-            <span className="text-sm font-medium text-slate-800">Blockquote</span>
-          </div>
-          <div className="flex gap-2">
-            <span className="flex w-[8px]">{Icons.arrowDiagonal}</span>
-            <div>
-
-            <ToggleControl
-              className="rbea-block-toggle-always-active"
-              disabled
-              __nextHasNoMarginBottom
-              checked={true}
-            />
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
 
@@ -115,8 +97,97 @@ const CardSection = () => {
 }
 
 const ExtendAndQuickAccess = () => {
+
+  const history = useHistory();
+
+  const [rplusText, setRplusText] = useState(rbealocalize?.rst_status);
+  const [raeText, setRaeText] = useState(rbealocalize?.rae_status);
+  const [themeText, setThemeText] = useState(rbealocalize?.responsive_status);
+
+  const activatePlugin = (url, redirect, setButtonText) => {
+    if (typeof url === 'undefined' || !url) {
+      return;
+    }
+    setButtonText(rbealocalize.activating + '...');
+    fetch(url, { method: 'GET' })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then((data) => {
+        if (typeof redirect !== 'undefined' && redirect !== '') {
+          window.location.replace(redirect);
+        } else {
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const InstallButton = ({ type, status, nonce, redirect, buttonText, setButtonText, slug }) => {
+    const handleInstall = (e) => {
+      e.preventDefault();
+      setButtonText(rbealocalize.installing + '...');
+
+      const installFunction = type === 'theme' ? wp.updates.installTheme : wp.updates.installPlugin;
+
+      installFunction({
+        slug: slug,
+        success: function () {
+          setButtonText(rbealocalize.activating + '...');
+          activatePlugin(nonce, redirect, setButtonText);
+        },
+        error: function (error) {
+          console.error(`${type} installation failed:`, error);
+          setButtonText(rbealocalize.install_failed || 'Install Failed');
+        }
+      });
+    };
+
+    const handleActivate = () => {
+      activatePlugin(nonce, redirect, setButtonText);
+    };
+
+    switch (status) {
+      case 'install':
+        return (
+          <button
+            onClick={handleInstall}
+            className="mt-1.125 py-0.625 px-5 bg-white hover:bg-sky-100 border border-blue-600 text-blue-600 rounded-md text-sm leading-5 font-medium capitalize"
+          >
+            {buttonText}
+          </button>
+        );
+      case 'activate':
+        return (
+          <button
+            onClick={handleActivate}
+            className="mt-1.125 py-0.625 px-5 bg-white hover:bg-sky-100 border border-blue-600 text-blue-600 rounded-md text-sm leading-5 font-medium capitalize"
+          >
+            {buttonText}
+          </button>
+        );
+      case 'activated':
+        return (
+          <button className="mt-1.125 py-0.625 px-5 border border-slate-500 text-slate-500 bg-white rounded-md text-sm leading-5 font-medium capitalize">
+            Activated
+          </button>
+        );
+      default:
+        return (
+          <button className="mt-1.125 py-0.625 px-5 bg-gray-400 hover:bg-slate-500 rounded-md text-white text-sm leading-5 font-medium capitalize">
+            {buttonText}
+          </button>
+        );
+    }
+  };
+
   return (
-    <div className="flex justify-between mx-7.5 mt-8 mb-16 sm:mx-8">
+    <div className="flex justify-between mx-7.5 mt-8 mb-16">
       <div className="w-2/3">
         <p className="font-medium text-2xl">Extend Your Website</p>
         <p className="font-normal text-base text-desc mt-2 mb-6">Powerful tools to enhance your site's functionality</p>
@@ -128,7 +199,7 @@ const ExtendAndQuickAccess = () => {
             </div>
             <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Starter Templates</p>
             <p className="text-sm leading-5 font-normal">150+ Ready to Import Designer-Made Website Starter Templates.</p>
-            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Explore Templates</button>
+            <button onClick={() => history.push('/templates')} className="mt-1.125 py-0.625 px-0.875 bg-blue-600 hover:bg-blue-900 rounded-md text-white text-sm leading-5 font-medium">Explore Templates</button>
           </div>
           <div className="p-6 bg-white rounded-md">
             <div className="flex justify-between items-start">
@@ -137,7 +208,15 @@ const ExtendAndQuickAccess = () => {
             </div>
             <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Plus</p>
             <p className="text-sm leading-5 font-normal">Get Advanced modules: Site Builder, Fonts, WooCommerce, and more.</p>
-            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Install</button>
+            <InstallButton 
+              type="plugin"
+              status={rbealocalize?.rst_status}
+              nonce={rbealocalize.rst_nonce}
+              redirect={rbealocalize.rst_redirect}
+              buttonText={rplusText}
+              setButtonText={setRplusText}
+              slug="responsive-add-ons"
+            />
           </div>
           <div className="p-6 bg-white rounded-md">
             <div className="flex justify-between items-start">
@@ -146,16 +225,32 @@ const ExtendAndQuickAccess = () => {
             </div>
             <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Addons for Elementor</p>
             <p className="text-sm leading-5 font-normal">A free Elementor Addons plugin with more than 80+ premium quality Elementor widgets.</p>
-            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Install</button>
+            <InstallButton 
+              type="plugin"
+              status={rbealocalize?.rae_status}
+              nonce={rbealocalize.rae_nonce}
+              redirect={rbealocalize.rae_redirect}
+              buttonText={raeText}
+              setButtonText={setRaeText}
+              slug="responsive-addons-for-elementor"
+            />
           </div>
           <div className="p-6 bg-white rounded-md">
             <div className="flex justify-between items-start">
               <img src={rbealocalize.responsiveurl + 'admin/images/responsive_logo.svg'} alt="Responsive Logo" />
-              <span className="py-1 px-0.625 text-xs leading-4 font-medium text-green-800 bg-green-50 border border-green-300 rounded">Free</span>
+              <span className="py-1 px-0.625 text-xs leading-4 font-medium text-green-800 bg-green-50 border border-green-300 rounded cap">Free</span>
             </div>
             <p className="mt-1.125 mb-2 text-base leading-6 font-medium">Responsive Theme</p>
             <p className="text-sm leading-5 font-normal">Craft Stunning Websites Effortlessly with the Responsive Theme.</p>
-            <button className="mt-1.125 py-0.625 px-0.875 bg-blue-600 rounded-md text-white text-sm leading-5 font-medium">Install</button>
+            <InstallButton 
+              type="theme"
+              status={rbealocalize?.responsive_status}
+              nonce={rbealocalize.responsive_nonce}
+              redirect={rbealocalize.responsive_redirect}
+              buttonText={themeText}
+              setButtonText={setThemeText}
+              slug="responsive"
+            />
           </div>
         </div>
       </div>
@@ -197,18 +292,18 @@ const StarterTemplates = () => {
   const templates = ['Real Estate', 'Business', 'Jewellery Shop', 'Interior Design Firm'];
 
   return (
-    <div className="mx-7.5 mt-8 mb-16 sm:mx-8">
+    <div className="mx-7.5 mt-8 mb-16">
       <div className="flex justify-between mb-6">
         <div>
           <p className="text-2xl leading-8 font-medium">Starter Templates</p>
           <p className="mt-2 text-base leading-6 font-normal text-desc">Pre-designed templates to kickstart your website in seconds</p>
         </div>
-        <button onClick={() => history.push('/templates')} className="rounded-md border border-blue-600 text-blue-600 bg-blue-100 text-sm font-medium px-5 py-2 self-baseline">View All Templates</button>
+        <button onClick={() => history.push('/templates')} className="rounded-md border border-blue-600 text-blue-600 hover:bg-blue-100 text-sm font-medium px-5 py-2 self-baseline">View All Templates</button>
       </div>
       <div className="flex justify-center gap-6">
         {templates?.map((template, index) => (
           <div className="bg-white border border-slate-200 rounded-md transition-shadow hover:[box-shadow:0px_10px_10px_-5px_rgba(0,0,0,0.04)]">
-            <img src={rbealocalize.responsiveurl + `admin/images/template${index+1}.jpg`} alt={template} />
+            <img src={rbealocalize.responsiveurl + `admin/images/template${index + 1}.jpg`} alt={template} />
             <p className="py-6 pl-6 text-base leading-6 font-normal">{template}</p>
           </div>
         ))}

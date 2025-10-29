@@ -120,7 +120,7 @@ module.exports = function( grunt ) {
             build: [ 'npm run build' ].join( ' && ' ),
             translations: [ 'npm run makepot' ].join( ' && ' ),
             tailwind: {
-                command: 'npx tailwindcss -i ./admin/getting-started/src/input.css -o ./admin/css/responsive-block-editor-addons-getting-started.css --config ./config/tailwind.config.js',
+                command: 'npx tailwindcss -i ./admin/getting-started/src/input.scss -o ./admin/css/responsive-block-editor-addons-getting-started.css --config ./config/tailwind.config.js',
             },
         },
 
