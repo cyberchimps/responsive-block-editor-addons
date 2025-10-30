@@ -245,9 +245,9 @@ function EditorStyles(props) {
 
     " .responsive-block-editor-addons-cta-link-text": {
       "color": buttonTextColor !== "empty" && ctaColor === "#fff" ? buttonTextColor : ctaColor, // For compatibility with v1.3.2.
-      "font-family": buttonTextFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
       "font-size": generateCSSUnit(buttonTextFontSize, "px"),
-      "font-weight": buttonTextFontWeight,
+      "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
       "line-height": buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
       "font-style": buttonTextFontStyle,
@@ -382,10 +382,10 @@ function EditorStyles(props) {
     },
 
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-family": buttonTextFontFamily,
-      "font-size": generateCSSUnit(buttonTextFontSize, "px"),
-      "font-weight": buttonTextFontWeight,
-      "line-height": buttonTextLineHeight,
+      "font-family": inheritFromTheme ? 'Default' : buttonTextFontFamily,
+      "font-size": inheritFromTheme ? '' : generateCSSUnit(buttonTextFontSize, "px"),
+      "font-weight": inheritFromTheme ? '' : buttonTextFontWeight,
+      "line-height": inheritFromTheme ? '' : buttonTextLineHeight,
       "text-transform": buttonTextTextTransform,
       "font-style": buttonTextFontStyle,
     }
@@ -427,7 +427,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusMobile, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
+      "font-size": inheritFromTheme ? '' : `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeMobile, "px")}`,
@@ -478,7 +478,7 @@ function EditorStyles(props) {
       "border-bottom-left-radius": generateCSSUnit(ctaBlockLeftRadiusTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-button.rich-text": {
-      "font-size": generateCSSUnit(buttonTextFontSizeTablet, "px"),
+      "font-size": inheritFromTheme ? '' : generateCSSUnit(buttonTextFontSizeTablet, "px"),
     },
     " .responsive-block-editor-addons-cta-link-text": {
       "font-size": `${generateCSSUnit(buttonTextFontSizeTablet, "px")}`,

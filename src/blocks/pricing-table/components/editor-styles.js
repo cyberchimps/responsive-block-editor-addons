@@ -307,9 +307,9 @@ function EditorStyles(props) {
       "border-width": inheritFromTheme ? '' : generateCSSUnit(ctaBorderWidth, "px"),
       "border-style": inheritFromTheme ? 'solid' : ctaBorderStyle,
       "line-height": ctaLineHeight,
-      "font-weight": ctaFontWeight,
+      "font-weight": inheritFromTheme ? '' : ctaFontWeight,
       "font-size": generateCSSUnit(ctaFontSize, "px"),
-      "font-family": ctaFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : ctaFontFamily,
       "box-shadow":
         generateCSSUnit(buttonBoxShadowHOffset, "px") +
         " " +
