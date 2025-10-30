@@ -3888,7 +3888,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper div' => array(
 					'color' => $flag ? '' : ( $attr['color'] ? $attr['color'] : '#000' ),
 				),
-				' .responsive-block-editor-addons-b	uttons-repeater.responsive-block-editor-addons-button__wrapper:hover' => array(
+				' .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover' => array(
 					'border-color'     => $flag ? '' : ($attr['borderHColor'] ? self::hex_to_rgb( $updated_border_h_color, $border_opacity_control_value ) : '#000'),
 					'background-color' => $updated_background_h_color,
 					'box-shadow'       => ( isset( $attr['hoverboxShadowColor'] ) && ! empty( $attr['hoverboxShadowColor'] ) ) ?
