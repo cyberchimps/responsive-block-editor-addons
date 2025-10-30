@@ -15,6 +15,7 @@ module.exports = {
       },
       colors: {
         desc: '#4B5563',
+        'setting-desc': '#9CA3AF',
       }
     },
   },
