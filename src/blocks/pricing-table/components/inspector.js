@@ -381,6 +381,9 @@ export default class Inspector extends Component {
         featuresFontStyle,
         ctaTextTransform,
         ctaFontStyle,
+        inheritFromTheme,
+        inheritFromThemesaved,
+        inheritFromThemeLocalTimestamp,
       },
       setAttributes,
     } = this.props;
@@ -805,6 +808,18 @@ export default class Inspector extends Component {
               title={__("Button Settings", "responsive-block-editor-addons")}
               initialOpen={false}
             >
+              <ToggleControl
+                label={__("Inherit from Theme", "responsive-block-editor-addons")}
+                checked={inheritFromTheme}
+                onChange={(next) => {
+                  setAttributes({
+                    inheritFromTheme: next,
+                    inheritFromThemesaved: next,
+                    inheritFromThemeLocalTimestamp: new Date().toISOString(),
+                  });
+                }}
+                __nextHasNoMarginBottom
+              />
               <ButtonSettingsControl
                 {...this.props}
                 showMarginControls={false}

@@ -20,6 +20,7 @@ module.exports = {
 		'responsive-block-editor-addons-masonry': path.resolve( process.cwd(), 'src/blocks/gallery-masonry/responsive-block-editor-addons-masonry.js' ),
 		'responsive-block-editor-addons-lightbox': path.resolve( process.cwd(), 'src/blocks/gallery-masonry/responsive-block-editor-addons-lightbox.js' ),
 		'responsive-block-editor-addons-aos-initialized': path.resolve( process.cwd(), 'src/extensions/animations/aos-initialized.js' ),
+		'responsive-block-editor-addons-inherit-theme': path.resolve( process.cwd(), 'src/utils/inherit-from-theme-frontend.js' ),
 		'frontend_blocks': path.resolve( process.cwd(), 'src/block-frontend.js' ),
 	},
 
