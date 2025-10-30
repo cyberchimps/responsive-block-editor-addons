@@ -473,14 +473,17 @@ const Footer = () => {
 }
 
 const Settings = () => {
-    // existing logic — unchanged
+    // Separate state for each toggle
     const [autoRecover, setAutoRecover] = useState(
         String(rbealocalize?.auto_block_recovery) === '1'
     );
     const [inheritFromTheme, setInheritFromTheme] = useState(
         String(rbealocalize?.global_inherit_from_theme) === '1'
     );
-    const [isSaving, setIsSaving] = useState(false);
+    
+    // Separate saving states to prevent cross-toggle re-rendering
+    const [isAutoRecoverSaving, setIsAutoRecoverSaving] = useState(false);
+    const [isInheritFromThemeSaving, setIsInheritFromThemeSaving] = useState(false);
 
     const displayToast = ( msg, status ) => {
         let background = status === 'error' ? '#FF5151' : '#00CF21';
@@ -495,8 +498,8 @@ const Settings = () => {
         }).showToast();
     };
 
-    const saveSetting = async (nextValue, actionType = 'rbea_toggle_auto_block_recovery') => {
-        setIsSaving(true);
+    const saveSetting = async (nextValue, actionType, setSavingState) => {
+        setSavingState(true);
         const formData = new FormData();
         formData.append('action', actionType);
         formData.append('nonce', rbealocalize.nonce);
@@ -509,20 +512,20 @@ const Settings = () => {
         } catch (e) {
             displayToast('Error', 'error');
         } finally {
-            setIsSaving(false);
+            setSavingState(false);
         }
     };
 
     const handleToggle = () => {
         const next = !autoRecover;
         setAutoRecover(next);
-        saveSetting(next);
+        saveSetting(next, 'rbea_toggle_auto_block_recovery', setIsAutoRecoverSaving);
     };
 
     const handleInheritFromThemeToggle = () => {
         const next = !inheritFromTheme;
         setInheritFromTheme(next);
-        saveSetting(next, 'rbea_toggle_global_inherit_from_theme');
+        saveSetting(next, 'rbea_toggle_global_inherit_from_theme', setIsInheritFromThemeSaving);
     };
 
     // NEW: sections — just add more objects to grow later
@@ -579,7 +582,7 @@ const Settings = () => {
                                                     id="rbea-auto-block-recovery"
                                                     type="checkbox"
                                                     checked={autoRecover}
-                                                    disabled={isSaving}
+                                                    disabled={isAutoRecoverSaving}
                                                     onChange={handleToggle}
                                                 />
                                                 <span className="rbea-blocks-slider rbea-blocks-round"></span>
@@ -606,7 +609,7 @@ const Settings = () => {
                                                     id="rbea-global-inherit-from-theme"
                                                     type="checkbox"
                                                     checked={inheritFromTheme}
-                                                    disabled={isSaving}
+                                                    disabled={isInheritFromThemeSaving}
                                                     onChange={handleInheritFromThemeToggle}
                                                 />
                                                 <span className="rbea-blocks-slider rbea-blocks-round"></span>
