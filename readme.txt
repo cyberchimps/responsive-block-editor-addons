@@ -231,7 +231,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 
 == Changelog ==
 
-= 2.1.4 - 30th October 2025 =
+= 2.1.4 - 31st October 2025 =
 * New - Added favourite button in the template library.
 * New - Inherit button style from theme: Automatically inherits the theme’s global button styles.
 * Improvement - Soft deprecation of Sections and Advanced Columns in favor of the Container block for better styling and flexibility.
