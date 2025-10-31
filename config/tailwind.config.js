@@ -9,6 +9,7 @@ module.exports = {
         '1.125': '1.125rem',
         '0.625': '0.625rem',
         '0.875': '0.875rem',
+        '3.75': '3.75rem',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

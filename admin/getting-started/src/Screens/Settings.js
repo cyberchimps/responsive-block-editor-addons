@@ -9,7 +9,7 @@ const Settings = () => {
   const [settingsTab, setSettingsTab] = useState('editor');
 
   return (
-    <div className="flex mx-7.5 mt-10 mb-10">
+    <div className="flex xl:mx-7.5 md:mx-3.75 mt-10 mb-10">
       <div className="w-1/4 bg-white rounded-tl-3xl p-5">
         <div className="flex flex-col gap-2">
           <div onClick={() => setSettingsTab('editor')} className={`flex items-center gap-2 px-3 py-4 cursor-pointer rounded-md ${settingsTab === 'editor' && 'bg-slate-100'}`}>

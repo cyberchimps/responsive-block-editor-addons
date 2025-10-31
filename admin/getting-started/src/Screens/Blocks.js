@@ -17,7 +17,7 @@ const Blocks = () => {
   const blockCategories = [ 'All', 'Content', 'Timelines', 'CRO', 'Extensions'];
 
   return (
-    <div className="mx-10 p-10 mt-12 mb-16 bg-white rounded-[20px]">
+    <div className="xl:mx-7.5 md:mx-3.75 p-10 mt-12 mb-16 bg-white rounded-[20px]">
       <div className="flex justify-between items-center">
         <div className="flex border-b border-b-slate-300">
           {blockCategories.map((current) => (
@@ -40,7 +40,7 @@ const Blocks = () => {
         />
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-5">
+      <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-5">
         {blocksList.map((current) => {
           return (
             <>

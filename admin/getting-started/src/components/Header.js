@@ -8,7 +8,7 @@ const Header = () => {
 
     return (
         <div className="bg-white border-b border-b-blue-100">
-            <div className="mx-auto px-7.5">
+            <div className="mx-auto xl:px-7.5 md:px-3.75">
                 <div className="flex justify-between">
                     <div className="flex items-center w-8/12 gap-6">
                         <img className="rbea-cyberchimps-logo" src={rbealocalize.responsiveurl + 'admin/images/rbea-logo.svg'} />

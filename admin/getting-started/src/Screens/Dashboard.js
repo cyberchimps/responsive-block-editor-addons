@@ -20,7 +20,7 @@ const Dashboard = () => {
 const HeroSection = () => {
 
   return (
-    <div className="mx-7.5 mt-8 mb-16 rounded-lg bg-gradient-to-r from-[#080084] to-[#2563EB]">
+    <div className="xl:mx-7.5 md:mx-3.75 mt-8 mb-16 rounded-lg bg-gradient-to-r from-[#080084] to-[#2563EB]">
       <div className="py-3.7 px-6 sm:py-14 sm:px-14 pl-3.7">
         <div className="max-w-[700px]">
           <div className="max-w-[700px]">
@@ -44,7 +44,7 @@ const BlockSection = () => {
   const { blocksList, activeBlocksCount, inactiveBlocksCount } = useContext(BlocksContext);
   
   return (
-    <div className="mx-7.5 mt-8 mb-16">
+    <div className="xl:mx-7.5 md:mx-3.75 mt-8 mb-16">
       <div className="flex justify-between">
         <div className="flex items-center gap-5">
           <p className="text-2xl font-medium">Blocks</p>
@@ -75,7 +75,7 @@ const CardSection = () => {
 
   return (
     <div className="mt-8 mb-16">
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         {showBlocks.map((current) => <BlockCard data={current} /> )}
       </div>
     </div>
@@ -90,33 +90,9 @@ const ExtendAndQuickAccess = () => {
   const [raeText, setRaeText] = useState(rbealocalize?.rae_status);
   const [themeText, setThemeText] = useState(rbealocalize?.responsive_status);
 
-  const activatePlugin = (url, redirect, setButtonText) => {
-    if (typeof url === 'undefined' || !url) {
-      return;
-    }
-    setButtonText(rbealocalize.activating + '...');
-    fetch(url, { method: 'GET' })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text();
-      })
-      .then((data) => {
-        if (typeof redirect !== 'undefined' && redirect !== '') {
-          window.location.replace(redirect);
-        } else {
-          window.location.reload();
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   return (
-    <div className="flex justify-between mx-7.5 mt-8 mb-16">
-      <div className="w-2/3">
+    <div className="xl:flex lg:block justify-between xl:mx-7.5 md:mx-3.75 mt-8 mb-16 gap-12">
+      <div className="xl:w-2/3 lg:w-full">
         <p className="font-medium text-2xl">Extend Your Website</p>
         <p className="font-normal text-base text-desc mt-2 mb-6">Powerful tools to enhance your site's functionality</p>
         <div className="grid md:grid-cols-2 gap-6 w-full">
@@ -182,7 +158,7 @@ const ExtendAndQuickAccess = () => {
           </div>
         </div>
       </div>
-      <div className="1/3">
+      <div className="xl:w-1/3 lg-w-full max-xl:mt-8">
         <p className="font-medium text-2xl">Quick Access</p>
         <p className="font-normal text-base text-desc mt-2 mb-6">Helpful resources & links</p>
         <div className="p-6 bg-white rounded-md">
@@ -220,7 +196,7 @@ const StarterTemplates = () => {
   const templates = ['Real Estate', 'Business', 'Jewellery Shop', 'Interior Design Firm'];
 
   return (
-    <div className="mx-7.5 mt-8 mb-16">
+    <div className="xl:mx-7.5 md:mx-3.75 mt-8 mb-16">
       <div className="flex justify-between mb-6">
         <div>
           <p className="text-2xl leading-8 font-medium">Starter Templates</p>
