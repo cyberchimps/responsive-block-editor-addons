@@ -634,6 +634,10 @@ input[type="number"]:focus {
   box-shadow: none;
 }
 
+img {
+  display: initial;
+}
+
 .container{
   width: 100%;
 }
@@ -1573,3 +1577,4 @@ input[type="number"]:focus {
     padding-right: 7.5rem;
   }
 }
+
