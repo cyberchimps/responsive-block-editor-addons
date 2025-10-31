@@ -24476,6 +24476,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 		 * @return array
 		 */
 		public static function get_responsive_block_container_block_default_attributes() {
+
+			$rbea_default_content_width = get_option('rbea_default_content_width', 1340);
+
+			$rbea_default_container_gap = get_option('rbea_default_container_gap', 20);
+
+			$rbea_default_container_padding = get_option('rbea_default_container_padding', 10);
+
 			return array(
 				'block_id'                        => '',
 				'hideWidget'                      => false,
@@ -24486,7 +24493,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'z_indexMobile'                   => '1',
 				'contentWidth'                    => 'alignfull',
 				'innerContentWidth'               => 'alignwide',
-				'innerContentCustomWidthDesktop'  => 1340,
+				'innerContentCustomWidthDesktop'  => $rbea_default_content_width,
 				'innerContentCustomWidthTablet'   => 1024,
 				'innerContentCustomWidthMobile'   => 767,
 				'innerContentBoxWidthTypeDesktop' => 'px',
@@ -24498,13 +24505,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'customWidthTypeDesktop'          => '%',
 				'customWidthTypeTablet'           => '%',
 				'customWidthTypeMobile'           => '%',
-				'rowGapDesktop'                   => 20,
+				'rowGapDesktop'                   => $rbea_default_container_gap,
 				'rowGapTablet'                    => '',
 				'rowGapMobile'                    => '',
 				'rowGapTypeDesktop'               => 'px',
 				'rowGapTypeTablet'                => 'px',
 				'rowGapTypeMobile'                => 'px',
-				'columnGapDesktop'                => 20,
+				'columnGapDesktop'                => $rbea_default_container_gap,
 				'columnGapTablet'                 => '',
 				'columnGapMobile'                 => '',
 				'columnGapTypeDesktop'            => 'px',
@@ -24609,10 +24616,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'containerBorderStyle'            => '',
 				'containerBorderWidth'            => '',
 				'containerBorderColor'            => '',
-				'containerTopPadding'             => 10,
-				'containerBottomPadding'          => 10,
-				'containerLeftPadding'            => 10,
-				'containerRightPadding'           => 10,
+				'containerTopPadding'             => $rbea_default_container_padding,
+				'containerBottomPadding'          => $rbea_default_container_padding,
+				'containerLeftPadding'            => $rbea_default_container_padding,
+				'containerRightPadding'           => $rbea_default_container_padding,
 				'containerTopPaddingTablet'       => '',
 				'containerBottomPaddingTablet'    => '',
 				'containerLeftPaddingTablet'      => '',

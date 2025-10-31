@@ -619,6 +619,21 @@ video {
   display: none;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  outline: none;
+}
+
+input[type="number"]:focus {
+  box-shadow: none;
+}
+
 .container{
   width: 100%;
 }
@@ -777,6 +792,10 @@ video {
   width: 25%;
 }
 
+.w-10{
+  width: 2.5rem;
+}
+
 .w-2\/3{
   width: 66.666667%;
 }
@@ -909,6 +928,10 @@ video {
   border-width: 1px !important;
 }
 
+.\!border-0{
+  border-width: 0px !important;
+}
+
 .border{
   border-width: 1px;
 }
@@ -1039,6 +1062,10 @@ video {
 
 .to-\[\#2563EB\]{
   --tw-gradient-to: #2563EB var(--tw-gradient-to-position);
+}
+
+.\!p-0{
+  padding: 0px !important;
 }
 
 .\!p-3{
