@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import { useState, useContext } from 'react';
 import { ToggleControl } from "@wordpress/components";
 import BlockCard from '../components/BlockCard';
@@ -14,7 +15,7 @@ const Blocks = () => {
     setSearch('');
   }
 
-  const blockCategories = [ 'All', 'Content', 'Timelines', 'CRO', 'Extensions'];
+  const blockCategories = [ __( 'All', 'responsive-block-editor-addons' ), __( 'Content', 'responsive-block-editor-addons' ), __( 'Timelines', 'responsive-block-editor-addons' ), __( 'CRO', 'responsive-block-editor-addons' ), __( 'Extensions', 'responsive-block-editor-addons' ) ];
 
   return (
     <div className="xl:mx-7.5 md:mx-3.75 p-10 mt-12 mb-16 bg-white rounded-[20px]">
@@ -31,7 +32,7 @@ const Blocks = () => {
       </div>
 
       <div className="flex items-center gap-2 mt-11">
-        <p className="text-base leading-6 font-normal text-desc">Toogle All Blocks</p>
+        <p className="text-base leading-6 font-normal text-desc">{__( 'Toogle All Blocks', 'responsive-block-editor-addons' )}</p>
         <ToggleControl
           className="rbea-block-toggle"
           __nextHasNoMarginBottom

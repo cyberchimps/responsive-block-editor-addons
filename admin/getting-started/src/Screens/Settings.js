@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import { useState, useMemo, useEffect } from "react";
 import Icons from "../icons";
 import { ToggleControl } from "@wordpress/components";
@@ -14,7 +15,7 @@ const Settings = () => {
         <div className="flex flex-col gap-2">
           <div onClick={() => setSettingsTab('editor')} className={`flex items-center gap-2 px-3 py-4 cursor-pointer rounded-md ${settingsTab === 'editor' && 'bg-slate-100'}`}>
             {Icons.editor}
-            <p className="text-base leading-6 font-medium">Editor Settings</p>
+            <p className="text-base leading-6 font-medium">{__( 'Editor Settings', 'responsive-block-editor-addons' )}</p>
           </div>
         </div>
       </div>
@@ -35,7 +36,7 @@ const EditorSettings = () => {
 
   return (
     <>
-      <SettingsCard title="Automatic Block Recovery" description="Enable this to automatically fix broken blocks on your pages, so you don't have to manually click 'Attempt Block Recovery' every time.">
+      <SettingsCard title={__( 'Automatic Block Recovery', 'responsive-block-editor-addons' )} description={__( "Enable this to automatically fix broken blocks on your pages, so you don't have to manually click 'Attempt Block Recovery' every time.", 'responsive-block-editor-addons' )}>
         <ToggleControl
           __nextHasNoMarginBottom
           checked={autoRecovery}
@@ -46,7 +47,7 @@ const EditorSettings = () => {
         />
       </SettingsCard>
 
-      <SettingsCard className="mt-5" title="Button - Inherit From Theme" description="Enable the 'Inherit From Theme' option to make all buttons in Responsive blocks across your website inherit their styles from the theme.">
+      <SettingsCard className="mt-5" title={__( 'Button - Inherit From Theme', 'responsive-block-editor-addons' )} description={__( "Enable the 'Inherit From Theme' option to make all buttons in Responsive blocks across your website inherit their styles from the theme.", 'responsive-block-editor-addons' )}>
         <ToggleControl
           __nextHasNoMarginBottom
           checked={buttonInherit}
@@ -57,15 +58,15 @@ const EditorSettings = () => {
         />
       </SettingsCard>
 
-      <SettingsCard className="mt-5" title="Default Content Width" description="This setting will apply to Container Block's default Content Width.">
+      <SettingsCard className="mt-5" title={__( 'Default Content Width', 'responsive-block-editor-addons' )} description={__( "This setting will apply to Container Block's default Content Width.", 'responsive-block-editor-addons' )}>
         <SettingsInput inputValue={contentWidth} setInput={setContentWidth} unit="PX" maxValue="2000" actionType="rbea_save_content_width" />
       </SettingsCard>
 
-      <SettingsCard className="mt-5" title="Container Padding" description="This setting will apply default padding in the Container Block.">
+      <SettingsCard className="mt-5" title={__( 'Container Padding', 'responsive-block-editor-addons' )} description={__( 'This setting will apply default padding in the Container Block.', 'responsive-block-editor-addons' )}>
         <SettingsInput inputValue={containerPadding} setInput={setContainerPadding} unit="PX" actionType="rbea_save_container_padding" />
       </SettingsCard>
 
-      <SettingsCard className="mt-5" title="Container Elements Gap" description="This setting will apply default Row & Column Gaps in the Container Block.">
+      <SettingsCard className="mt-5" title={__( 'Container Elements Gap', 'responsive-block-editor-addons' )} description={__( 'This setting will apply default Row & Column Gaps in the Container Block.', 'responsive-block-editor-addons' )}>
         <SettingsInput inputValue={containerGap} setInput={setContainerGap} unit="PX" actionType="rbea_save_container_gap" />
       </SettingsCard>
     </>

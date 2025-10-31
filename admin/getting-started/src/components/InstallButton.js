@@ -1,3 +1,5 @@
+import { __ } from "@wordpress/i18n";
+
 const InstallButton = ({ type, status, nonce, redirect, buttonText, setButtonText, slug }) => {
     const handleInstall = (e) => {
         e.preventDefault();
@@ -44,7 +46,7 @@ const InstallButton = ({ type, status, nonce, redirect, buttonText, setButtonTex
         case 'activated':
             return (
                 <button className="mt-1.125 py-0.625 px-5 border border-slate-500 hover:bg-slate-300 text-slate-500 bg-white rounded-md text-sm leading-5 font-medium capitalize">
-                    Activated
+                    {__( 'Activated', 'responsive-block-editor-addons' )}
                 </button>
             );
         default:

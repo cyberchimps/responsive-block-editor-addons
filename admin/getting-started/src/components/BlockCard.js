@@ -1,3 +1,4 @@
+import { __ } from "@wordpress/i18n";
 import Icons from "../icons";
 import BlockIcon from "./BlockIcon";
 import { ToggleControl } from "@wordpress/components";
@@ -12,7 +13,7 @@ const BlockCard = ({ data }) => {
 
     return (
         <div key={key} className={`flex justify-between items-center border border-slate-100 bg-white rounded-md py-[18px] px-[14px] transition-shadow hover:[box-shadow:0px_10px_15px_-3px_rgba(0,0,0,0.1)] rbea-block-category-card rbea-block-category-${category} ${category === 'extensions' ? 'relative' : ''}`}>
-            {category === 'extensions' && <span className="absolute top-0 left-0 uppercase text-xs leading-4 font-normal text-slate-600 bg-gray-200 rounded-md px-[6px] py-[2px]">Extension</span>}
+            {category === 'extensions' && <span className="absolute top-0 left-0 uppercase text-xs leading-4 font-normal text-slate-600 bg-gray-200 rounded-md px-[6px] py-[2px]">{__( 'Extension', 'responsive-block-editor-addons' )}</span>}
             <div className="flex items-center gap-2">
                 <BlockIcon block={key} />
                 <span className="text-sm font-medium text-slate-800">{title}</span>
