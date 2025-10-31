@@ -17,3 +17,16 @@
 .responsive-block-editor-addons-form-controls-spacing {
 	margin-bottom: 24px;
 }
+
+// Variation Selector.
+.responsive-block-editor-addons-block-form {
+	.block-editor-block-variation-picker__variations {
+		.block-editor-block-variation-picker__variation.components-button:hover svg {
+			fill: #fff !important;
+		}
+		svg {
+			fill: #fff !important;
+		}
+	}
+}
+
