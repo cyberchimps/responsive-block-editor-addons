@@ -10,6 +10,7 @@ import Save from "./components/save";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Components
 const { __ } = wp.i18n;
@@ -32,12 +33,11 @@ registerBlockType("responsive-block-editor-addons/divider", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example heading */
-            spacerDividerStyle: "solid",
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_spacer_spacerHeight: {
       title: __("Vertical Margin", "responsive-block-editor-addons"),
@@ -63,7 +63,7 @@ registerBlockType("responsive-block-editor-addons/divider", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="divider" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

@@ -9,6 +9,7 @@ import attributes from "./attributes";
 
 //Import Block Icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -36,14 +37,11 @@ registerBlockType("responsive-block-editor-addons/contact-form-7-styler", {
   ],
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example heading */
-            formTitle: __( 'Form Title', 'responsive-block-editor-addons' ),
-            /* translators: example description */
-            formDescription: __( 'Form Description', 'responsive-block-editor-addons' ),
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
 
   supports: {
 		anchor: true
@@ -51,7 +49,7 @@ registerBlockType("responsive-block-editor-addons/contact-form-7-styler", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="contact-form-7-styler" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

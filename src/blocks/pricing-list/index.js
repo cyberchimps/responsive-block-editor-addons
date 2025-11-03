@@ -11,6 +11,7 @@ import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -40,49 +41,14 @@ registerBlockType("responsive-block-editor-addons/pricing-list", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example pricing list */
-            pricingList:[
-                {
-                    description: desc_text,
-                    title: __("Menu Item 1", "responsive-block-editor-addons"),
-                    price: __("$9", "responsive-block-editor-addons"),
-                    imageId: "",
-                    image: "",
-                    imageUrl: "",
-                },
-                {
-                    description: desc_text,
-                    title: __("Menu Item 2", "responsive-block-editor-addons"),
-                    price: __("$9", "responsive-block-editor-addons"),
-                    imageId: "",
-                    image: "",
-                    imageUrl: "",
-                },
-                {
-                    description: desc_text,
-                    title: __("Menu Item 3", "responsive-block-editor-addons"),
-                    price: __("$9", "responsive-block-editor-addons"),
-                    imageId: "",
-                    image: "",
-                    imageUrl: "",
-                },
-                {
-                    description: desc_text,
-                    title: __("Menu Item 4", "responsive-block-editor-addons"),
-                    price: __("$9", "responsive-block-editor-addons"),
-                    imageId: "",
-                    image: "",
-                    imageUrl: "",
-                },
-
-            ],
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="pricing-list" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

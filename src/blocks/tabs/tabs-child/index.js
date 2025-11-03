@@ -10,6 +10,7 @@ import attributes from "./attributes";
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
+import BlockPreview from "../../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -39,9 +40,15 @@ registerBlockType("responsive-block-editor-addons/tabs-child", {
   
   attributes: attributes,
 
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
+
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="tabs" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

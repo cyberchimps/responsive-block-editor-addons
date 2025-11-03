@@ -10,6 +10,7 @@ import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -35,15 +36,14 @@ registerBlockType("responsive-block-editor-addons/spacer", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            height: 100,
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="spacer" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

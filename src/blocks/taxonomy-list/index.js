@@ -3,7 +3,7 @@
  */
 
 // Import block dependencies and components
-import edit from "./components/edit";
+import Edit from "./components/edit";
 
 // Import CSS
 import "./styles/style.scss";
@@ -11,6 +11,7 @@ import "./styles/styles.editor.scss";
 
 //Import block icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Components
 const { __ } = wp.i18n;
@@ -33,9 +34,15 @@ registerBlockType("responsive-block-editor-addons/taxonomy-list", {
         __("taxonomy list", "responsive-block-editor-addons"),
         __("responsive", "responsive-block-editor-addons"),
     ],
-    example: {},
+    example: {
+        attributes: {
+            isPreview: true,
+        }
+    },
 
-    edit,
+    edit: (props) => {
+        return props.attributes.isPreview ? <BlockPreview image="taxonomy-list" /> : <Edit {...props} />;
+    },
 
     // Render via PHP
     save() {

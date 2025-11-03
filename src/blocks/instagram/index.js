@@ -7,6 +7,7 @@ import Edit from "./components/edit";
 import attributes from "./attributes";
 
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -35,8 +36,7 @@ registerBlockType("responsive-block-editor-addons/instagram", {
   attributes: attributes,
   example: {
     attributes: {
-      numberOfItems: 1, 
-      borderRadius: 0
+      isPreview: true,
     }
   },
   supports: {
@@ -45,7 +45,7 @@ registerBlockType("responsive-block-editor-addons/instagram", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="instagram" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

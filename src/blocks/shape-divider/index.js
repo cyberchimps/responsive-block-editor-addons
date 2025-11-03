@@ -1,13 +1,14 @@
 /**
  * Internal dependencies
  */
-import edit from "./components/edit";
+import Edit from "./components/edit";
 import icon from "./icon";
 import metadata from "./components/block.json";
 import save from "./components/save";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 /**
  * WordPress dependencies
@@ -44,12 +45,13 @@ registerBlockType("responsive-block-editor-addons/shape-divider", {
     responsiveBlocksSpacing: true,
   },
   attributes,
-    example: {
-        attributes: {
-            /* translators: example heading */
-            design:dividers.wavy,
-        },
-    },
-  edit,
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="shape-divider" /> : <Edit {...props} />;
+  },
   save,
 });
