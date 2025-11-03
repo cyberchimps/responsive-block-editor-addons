@@ -647,6 +647,10 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 };
 
 export default attributes;

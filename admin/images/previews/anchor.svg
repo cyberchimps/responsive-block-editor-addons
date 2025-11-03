@@ -1,0 +1,20 @@
+<svg width="311" height="268" viewBox="0 0 311 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="310" height="267" fill="#F9F9F9" stroke="#EEEEEE"/>
+<rect x="109" y="29" width="93" height="20" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="59" y="69" width="193" height="8" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="59" y="83" width="193" height="8" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="96" y="97" width="119" height="8" fill="#2563EB" fill-opacity="0.14"/>
+<rect width="60" height="60" transform="translate(39 179)" fill="#2563EB" fill-opacity="0.14"/>
+<rect width="60" height="60" transform="translate(125 179)" fill="#2563EB" fill-opacity="0.14"/>
+<rect width="60" height="60" transform="translate(211 179)" fill="#2563EB" fill-opacity="0.14"/>
+<line x1="35" y1="142.5" x2="141" y2="142.5" stroke="#2563EB" stroke-opacity="0.5" stroke-width="3"/>
+<line x1="171" y1="142.5" x2="276" y2="142.5" stroke="#2563EB" stroke-opacity="0.5" stroke-width="3"/>
+<g clip-path="url(#clip0_2597_2730)">
+<path d="M156 139V151M156 139C155.204 139 154.441 138.684 153.879 138.121C153.316 137.559 153 136.796 153 136C153 135.204 153.316 134.441 153.879 133.879C154.441 133.316 155.204 133 156 133C156.796 133 157.559 133.316 158.121 133.879C158.684 134.441 159 135.204 159 136C159 136.796 158.684 137.559 158.121 138.121C157.559 138.684 156.796 139 156 139ZM156 151C153.878 151 151.843 150.157 150.343 148.657C148.843 147.157 148 145.122 148 143M156 151C158.122 151 160.157 150.157 161.657 148.657C163.157 147.157 164 145.122 164 143M165 143H163M149 143H147" stroke="#2563EB" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_2597_2730">
+<rect width="24" height="24" fill="white" transform="translate(144 130)"/>
+</clipPath>
+</defs>
+</svg>
