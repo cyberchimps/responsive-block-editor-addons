@@ -4,6 +4,7 @@ import Icons from "../icons";
 import { ToggleControl } from "@wordpress/components";
 import debounce from 'lodash/debounce';
 import { displayToast } from "../DisplayToast";
+import { convertTruthyFalsyValue } from "../../../../src/utils/helper";
 
 const Settings = () => {
 
@@ -138,23 +139,6 @@ const saveSetting = async (settingValue, actionType) => {
     displayToast(ok ? 'Settings Saved' : 'Error', ok ? 'success' : 'error');
   } catch (e) {
     displayToast('Error', 'error');
-  }
-};
-
-const convertTruthyFalsyValue = ( value ) => {
-  switch( value ) {
-    case "0":
-    case 0:
-    case false:
-    case "false":
-    case null:
-    case undefined:
-      return false;
-    case "1":
-    case 1:
-    case true:
-    case "true":
-      return true;
   }
 };
 

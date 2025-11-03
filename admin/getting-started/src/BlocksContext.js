@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { displayToast } from './DisplayToast'; 
+import { convertTruthyFalsyValue } from "../../../src/utils/helper";
 
 export const BlocksContext = createContext();
 
@@ -7,19 +8,19 @@ export const BlocksProvider = ({ children }) => {
     const [blocksList, setBlockList] = useState(rbealocalize?.rbea_blocks);
     const [isInitialized, setIsInitialized] = useState(false);
 
-    const areAllBlocksSelected = blocksList.every((block) => block.status == 1);
+    const areAllBlocksSelected = blocksList.every((block) => convertTruthyFalsyValue(block?.status) === true);
     const [toggleAll, setToggleAll] = useState(areAllBlocksSelected);
 
-    const initialActiveBlocks   = blocksList.filter( item => item?.status === '1')
-    const initialInactiveBlocks = blocksList.filter( item => item?.status !== '1')
+    const initialActiveBlocks = blocksList.filter((item) => convertTruthyFalsyValue(item?.status) === true);
+    const initialInactiveBlocks = blocksList.filter((item) => convertTruthyFalsyValue(item?.status) === false);
     const [activeBlocksCount, setActiveBlocksCount] = useState(initialActiveBlocks.length);
     const [inactiveBlocksCount, setInactiveBlocksCount] = useState(initialInactiveBlocks.length);
 
     const permanentlyEnabledBlocks = ['advanced-heading', 'image', 'container'];
 
     const handleBlocksCount = ( updatedBlockList ) => {
-        const activeBlocks   = updatedBlockList.filter( item => item?.status === '1' || item?.status === true)
-        const inactiveBlocks = updatedBlockList.filter( item => item?.status === false)
+        const activeBlocks   = updatedBlockList.filter((item) => convertTruthyFalsyValue(item?.status) === true)
+        const inactiveBlocks = updatedBlockList.filter((item) => convertTruthyFalsyValue(item?.status) === false)
 
         setActiveBlocksCount(activeBlocks.length);
         setInactiveBlocksCount(inactiveBlocks.length);
