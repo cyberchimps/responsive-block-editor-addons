@@ -66,14 +66,9 @@ jQuery(function ($) {
     $listWrap.empty();
     }
 
-
-    // ---- Build list from the rendered article DOM (sidebar case) ----
-    // findContentRoot() always returns something (at least body), so no need to check
-    var $content = findContentRoot();
-
-    // Read settings from data attributes so DOM matches TableOfContents.js render
-    var tableType = String($wrap.data("table-type") || "").toLowerCase();      // "ordered" | "unordered"
-    var orderListType = String($wrap.data("order-list-type") || "").toLowerCase(); // e.g. "ordered" | "unordered" | custom
+    // Read settings from data attributes
+    var tableType = String($wrap.data("table-type") || "").toLowerCase();
+    var orderListType = String($wrap.data("order-list-type") || "").toLowerCase();
     var ListTagName = (tableType === "ordered") ? "ol" : "ul";
     var listTypeClass = orderListType ? (" rbea-" + orderListType) : "";
 
@@ -81,6 +76,84 @@ jQuery(function ($) {
     var allowed = $wrap.data("allowed-anchors");
     try { allowed = typeof allowed === "string" ? JSON.parse(allowed) : allowed; }
     catch (e) { allowed = { h1:true, h2:true, h3:true, h4:true, h5:true, h6:true }; }
+
+    // Try to get headings from PHP data attribute first (new approach)
+    var headingsData = $wrap.data("headings");
+    try {
+      headingsData = typeof headingsData === "string" ? JSON.parse(headingsData) : headingsData;
+    } catch (e) {
+      headingsData = null;
+    }
+
+    // If we have headings from PHP, use them (preferred method)
+    if (headingsData && Array.isArray(headingsData) && headingsData.length > 0) {
+      // Build nested list from PHP headings data
+      var $rootList = $('<' + ListTagName + ' class="responsive-block-editor-addons-toc__list' + listTypeClass + '"></' + ListTagName + '>');
+      var listStack = [$rootList];
+      var currentLevel = 0;
+
+      headingsData.forEach(function (heading, i) {
+        var level = heading.level || parseInt(heading.anchor || heading.tag || "2", 10);
+        var content = heading.content || heading.headingTitle || "";
+        var anchor = heading.anchor || slugify(content);
+
+        if (!content) return;
+
+        // Ensure anchor starts with number prefix like DOM extraction does
+        if (!anchor.match(/^\d+-/)) {
+          anchor = (i + 1) + "-" + anchor;
+        }
+
+        // Set heading ID in DOM if it doesn't exist
+        var $heading = $("#" + anchor);
+        if (!$heading.length) {
+          // Try to find heading by text content
+          $heading = $("h" + level).filter(function() {
+            return slugify($(this).text()) === slugify(content);
+          }).first();
+        }
+        if ($heading.length && !$heading.attr("id")) {
+          $heading.attr("id", anchor);
+        }
+
+        if (currentLevel === 0) currentLevel = level;
+
+        // Deeper → open nested list
+        while (level > currentLevel) {
+          var $newList = $('<' + ListTagName + ' class="child-list' + listTypeClass + '"></' + ListTagName + '>');
+          var $lastLi = listStack[listStack.length - 1].children("li").last();
+          ($lastLi.length ? $lastLi : listStack[listStack.length - 1]).append($newList);
+          listStack.push($newList);
+          currentLevel++;
+        }
+        // Shallower → pop back up
+        while (level < currentLevel && listStack.length > 1) {
+          listStack.pop();
+          currentLevel--;
+        }
+
+        // Create list item
+        var $li = $('<li></li>');
+        var $a = $('<a></a>').attr("href", "#" + anchor).text(content);
+        $li.append($a);
+        listStack[listStack.length - 1].append($li);
+      });
+
+      // Clean placeholders and inject
+      $wrap.find(
+        ".responsive-block-editor-addons_table-of-contents-placeholder," +
+        " .responsive-block-editor-addons-toc__no-header," +
+        " .responsive-block-editor-addons-toc__empty," +
+        " .responsive-block-editor-addons-toc__placeholder"
+      ).remove();
+
+      $listWrap.empty().append($rootList);
+      return; // Exit early, we're done
+    }
+
+    // Fallback: Build list from the rendered article DOM (old approach for backwards compatibility)
+    // findContentRoot() always returns something (at least body), so no need to check
+    var $content = findContentRoot();
 
     // Build selector for both core Heading and RBEA Advanced Heading
     var selectors = [];
