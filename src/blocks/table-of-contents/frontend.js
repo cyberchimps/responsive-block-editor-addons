@@ -15,12 +15,33 @@ jQuery(function ($) {
   }
 
   function findContentRoot() {
+    // Try multiple patterns to find main content area
+    
+    // 1. Standard WordPress structure (article -> content wrapper)
     var $article = $("main article, .site-main article, article").first();
     if ($article.length) {
       var $content = $article.find(".entry-content, .wp-block-post-content, .post-content").first();
       if ($content.length) return $content;
     }
-    return $(".entry-content, .wp-block-post-content, .post-content").first();
+    
+    // 2. Elementor widgets with container wrapper
+    var $elementorWithContainer = $("[class*='elementor-widget'][class*='post-content'] .elementor-widget-container").first();
+    if ($elementorWithContainer.length) return $elementorWithContainer;
+    
+    // 3. Elementor widgets directly (content inside widget)
+    var $elementorWidget = $("[class*='elementor-widget'][class*='post-content']").first();
+    if ($elementorWidget.length) return $elementorWidget;
+    
+    // 4. Standard WordPress content containers (standalone)
+    var $standardContent = $(".entry-content, .wp-block-post-content, .post-content").first();
+    if ($standardContent.length) return $standardContent;
+    
+    // 5. Main content area (flexible fallback)
+    var $main = $("main, .site-main, #main, #content, .content-area").first();
+    if ($main.length) return $main;
+    
+    // 6. Return document body as last resort (filter logic will exclude unwanted areas)
+    return $("body");
   }
 
   $(".responsive-block-editor-addons-toc__wrap").each(function () {
@@ -47,8 +68,8 @@ jQuery(function ($) {
 
 
     // ---- Build list from the rendered article DOM (sidebar case) ----
+    // findContentRoot() always returns something (at least body), so no need to check
     var $content = findContentRoot();
-    if (!$content.length) return;
 
     // Read settings from data attributes so DOM matches TableOfContents.js render
     var tableType = String($wrap.data("table-type") || "").toLowerCase();      // "ordered" | "unordered"
@@ -76,10 +97,13 @@ jQuery(function ($) {
 
       // Exclude common non-content areas
       if ($h.closest(
-        ".entry-header, header, footer, nav, aside, .sidebar, .widget, .widgets, " +
+        ".entry-header, header, footer, nav, aside, .sidebar, " +
+        ".widget:not([class*='elementor-widget']):not([class*='post-content']), .widgets, " +
         ".comments, #comments, .comment, .comment-list, .comment-respond, " +
         ".pagination, .related, .related-posts, .entry-footer, .post-meta, " +
-        ".screen-reader-text, .wp-block-query, .wp-block-post-template"
+        ".screen-reader-text, .wp-block-query, .wp-block-post-template, " +
+        ".elementor-location-header, .elementor-location-footer, " +
+        ".elementor-menu-toggle"
       ).length) return false;
 
       // Exclude headings inside any TOC block
