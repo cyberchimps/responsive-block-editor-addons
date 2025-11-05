@@ -7,7 +7,7 @@
  */
 
 /**
- * Extracts headings from post content
+ * Extracts headings from post content using WordPress parse_blocks()
  *
  * @param string $content The post content to extract headings from.
  * @return array The list of headings.
@@ -17,97 +17,100 @@ function responsive_block_editor_addons_extract_headings_from_content( $content 
 		return array();
 	}
 
-	// Create a document to load the post content into.
-	$doc = new DOMDocument( '1.0', 'UTF-8' );
+	$blocks   = parse_blocks( $content );
+	$headings = array();
 
-	// Enable user error handling for HTML parsing.
-	libxml_use_internal_errors( true );
-
-	// Parse the post content into an HTML document.
-	$doc->loadHTML(
-		'<html><head><meta charset="UTF-8"></head><body>' . $content . '</body></html>'
-	);
-
-	// We're done parsing, disable user error handling.
-	libxml_use_internal_errors( false );
-
-	if ( ! isset( $doc->documentElement ) || ! is_object( $doc->documentElement ) ) {
-		return array();
-	}
-
-	// Remove template elements (they can contain headings we don't want).
-	$templates = iterator_to_array(
-		$doc->documentElement->getElementsByTagName( 'template' )
-	);
-
-	foreach ( $templates as $template ) {
-		if ( $template->parentNode ) {
-			$template->parentNode->removeChild( $template );
+	$extract_from_blocks = function( $blocks ) use ( &$extract_from_blocks, &$headings ) {
+		foreach ( $blocks as $block ) {
+			if ( 'core/heading' === $block['blockName'] ) {
+				$level   = isset( $block['attrs']['level'] ) ? $block['attrs']['level'] : 2;
+				$content = wp_strip_all_tags( $block['innerHTML'] );
+				if ( ! empty( trim( $content ) ) ) {
+					$headings[] = array(
+						'level'   => $level,
+						'content' => $content,
+						'anchor'  => sanitize_title( $content ) ?: 'toc-' . uniqid(),
+					);
+				}
+			}
+			if ( 'responsive-block-editor-addons/advanced-heading' === $block['blockName'] ) {
+				$level   = isset( $block['attrs']['headingLevel'] ) ? $block['attrs']['headingLevel'] : 2;
+				$content = isset( $block['attrs']['headingTitle'] ) ? wp_strip_all_tags( $block['attrs']['headingTitle'] ) : wp_strip_all_tags( $block['innerHTML'] );
+				if ( ! empty( trim( $content ) ) ) {
+					$headings[] = array(
+						'level'   => $level,
+						'content' => $content,
+						'anchor'  => sanitize_title( $content ) ?: 'toc-' . uniqid(),
+					);
+				}
+			}
+			if ( ! empty( $block['innerBlocks'] ) ) {
+				$extract_from_blocks( $block['innerBlocks'] );
+			}
 		}
-	}
+	};
 
-	$xpath = new DOMXPath( $doc );
-
-	// Get all heading elements (h1-h6).
-	$headings = iterator_to_array(
-		$xpath->query( '//*[self::h1 or self::h2 or self::h3 or self::h4 or self::h5 or self::h6]' )
-	);
-
-	$heading_list = array();
-
-	foreach ( $headings as $heading ) {
-		// Get heading text content.
-		$text_content = wp_strip_all_tags( $heading->textContent );
-
-		// Skip empty headings.
-		if ( empty( trim( $text_content ) ) ) {
-			continue;
-		}
-
-		// Get heading level (h1 = 1, h2 = 2, etc.).
-		$level = (int) substr( $heading->nodeName, 1 );
-
-		// Create slug from heading text.
-		$slug = responsive_block_editor_addons_slugify_heading( $text_content );
-
-		$heading_list[] = array(
-			'level'   => $level,
-			'content' => $text_content,
-			'anchor'  => $slug,
-		);
-	}
-
-	return $heading_list;
+	$extract_from_blocks( $blocks );
+	return $headings;
 }
 
 /**
- * Creates a slug from heading text
+ * Renders the TOC list HTML from headings array
  *
- * @param string $text The heading text.
- * @return string The slug.
+ * @param array $headings Array of headings.
+ * @param array $attributes Block attributes.
+ * @return string Rendered list HTML.
  */
-function responsive_block_editor_addons_slugify_heading( $text ) {
-	// Remove control characters.
-	$slug = preg_replace( '/[\x00-\x1F\x7F]*/u', '', $text );
-	// Replace HTML entities with spaces.
-	$slug = str_replace( array( '&amp;', '&nbsp;' ), ' ', $slug );
-	// Remove all except alphabets, numbers, space, hyphen, underscore, and latin characters.
-	$slug = preg_replace( '/[^a-zA-Z0-9\p{L} _-]/u', '', $slug );
-	// Convert spaces to hyphens.
-	$slug = preg_replace( '/\s+/', '-', $slug );
-	// Replace multiple underscores with single hyphen.
-	$slug = preg_replace( '/_+/', '-', $slug );
-	// Replace multiple hyphens with single hyphen.
-	$slug = preg_replace( '/-+/', '-', $slug );
-	// Remove trailing hyphens and underscores.
-	$slug = trim( $slug, '-_' );
-
-	// If slug is empty, generate a unique one.
-	if ( empty( $slug ) ) {
-		$slug = 'toc_' . uniqid();
+function responsive_block_editor_addons_render_toc_list( $headings, $attributes ) {
+	if ( empty( $headings ) ) {
+		return '<p class="responsive-block-editor-addons_table-of-contents-placeholder">' . esc_html__( 'Add a header to begin generating the table of contents', 'responsive-block-editor-addons' ) . '</p>';
 	}
 
-	return mb_strtolower( $slug );
+	$table_type = isset( $attributes['tableType'] ) && 'ordered' === $attributes['tableType'] ? 'ol' : 'ul';
+	$order_list_type = isset( $attributes['orderListType'] ) ? esc_attr( $attributes['orderListType'] ) : 'number';
+	$list_class = 'responsive-block-editor-addons-toc__list rbea-' . $order_list_type;
+
+	$html = '<' . $table_type . ' class="' . $list_class . '">';
+	$last_level = 0;
+	$current_level = 0;
+
+	foreach ( $headings as $i => $heading ) {
+		$level = $heading['level'];
+		$anchor = $heading['anchor'];
+		$content = esc_html( $heading['content'] );
+
+		// Add number prefix if not present
+		if ( ! preg_match( '/^\d+-/', $anchor ) ) {
+			$anchor = ( $i + 1 ) . '-' . $anchor;
+		}
+
+		if ( $i === 0 ) {
+			$current_level = $level;
+		}
+
+		// Close lists when going up levels
+		if ( $level < $current_level ) {
+			$html .= str_repeat( '</li></ul>', $current_level - $level );
+			$current_level = $level;
+		}
+
+		// Open nested list when going down levels
+		if ( $level > $current_level ) {
+			$html .= str_repeat( '<ul class="child-list rbea-' . $order_list_type . '">', $level - $current_level );
+			$current_level = $level;
+		}
+
+		$html .= '<li><a href="#' . esc_attr( $anchor ) . '">' . $content . '</a></li>';
+		$last_level = $level;
+	}
+
+	// Close remaining nested lists
+	if ( $current_level > 0 ) {
+		$html .= str_repeat( '</li></ul>', $current_level );
+	}
+
+	$html .= '</' . $table_type . '>';
+	return $html;
 }
 
 /**
@@ -121,64 +124,44 @@ function responsive_block_editor_addons_slugify_heading( $text ) {
 function responsive_block_editor_addons_render_table_of_contents( $attributes, $content, $block ) {
 	global $post;
 
-	if ( ! isset( $post->ID ) ) {
+	if ( ! isset( $post->ID ) || ! $post instanceof WP_Post ) {
 		return '';
 	}
 
-	// Get post content.
-	$post_content = '';
-	if ( $post instanceof WP_Post ) {
-		$post_content = $post->post_content;
-	}
+	// Extract headings from post content (not from editor context)
+	$headings = responsive_block_editor_addons_extract_headings_from_content( $post->post_content );
 
-	// Extract headings from post content.
-	$headings = responsive_block_editor_addons_extract_headings_from_content( $post_content );
-
-	// Filter headings based on allowedAnchors setting.
-	$allowed_anchors = isset( $attributes['allowedAnchors'] ) ? $attributes['allowedAnchors'] : array(
-		'h1' => true,
-		'h2' => true,
-		'h3' => true,
-		'h4' => true,
-		'h5' => true,
-		'h6' => true,
-	);
-
-	$filtered_headings = array();
-	foreach ( $headings as $heading ) {
-		$level_key = 'h' . $heading['level'];
-		if ( isset( $allowed_anchors[ $level_key ] ) && $allowed_anchors[ $level_key ] ) {
-			$filtered_headings[] = $heading;
+	// Filter by allowedAnchors
+	$allowed = isset( $attributes['allowedAnchors'] ) ? $attributes['allowedAnchors'] : array( 'h1' => true, 'h2' => true, 'h3' => true, 'h4' => true, 'h5' => true, 'h6' => true );
+	$filtered = array();
+	foreach ( $headings as $h ) {
+		if ( isset( $allowed[ 'h' . $h['level'] ] ) && $allowed[ 'h' . $h['level'] ] ) {
+			$filtered[] = $h;
 		}
 	}
 
-	// Get block attributes with defaults.
-	$block_id       = isset( $attributes['block_id'] ) ? $attributes['block_id'] : 'not-set';
-	$align          = isset( $attributes['align'] ) ? $attributes['align'] : 'left';
-	$heading_title  = isset( $attributes['headingTitle'] ) ? $attributes['headingTitle'] : __( 'Table Of Contents', 'responsive-block-editor-addons' );
+	// Get block attributes
+	$block_id = isset( $attributes['block_id'] ) ? $attributes['block_id'] : 'not-set';
+	$align = isset( $attributes['align'] ) ? $attributes['align'] : 'left';
+	$heading_title = isset( $attributes['headingTitle'] ) ? $attributes['headingTitle'] : __( 'Table Of Contents', 'responsive-block-editor-addons' );
 	$is_collapsible = isset( $attributes['isCollapsible'] ) ? $attributes['isCollapsible'] : false;
 	$initial_collapse = isset( $attributes['initialCollapse'] ) ? $attributes['initialCollapse'] : false;
-	$icon           = isset( $attributes['icon'] ) ? $attributes['icon'] : 'fa-angle-down';
-	$t_columns      = isset( $attributes['tColumnsDesktop'] ) ? $attributes['tColumnsDesktop'] : 1;
-	$table_type     = isset( $attributes['tableType'] ) ? $attributes['tableType'] : 'unordered';
-	$order_list_type = isset( $attributes['orderListType'] ) ? $attributes['orderListType'] : 'number';
-	$scroll_offset   = isset( $attributes['scrollOffset'] ) ? $attributes['scrollOffset'] : 30;
+	$icon = isset( $attributes['icon'] ) ? $attributes['icon'] : 'fa-angle-down';
+	$t_columns = isset( $attributes['tColumnsDesktop'] ) ? $attributes['tColumnsDesktop'] : 1;
+	$scroll_offset = isset( $attributes['scrollOffset'] ) ? $attributes['scrollOffset'] : 30;
 	$section_html_tag = isset( $attributes['sectionHtmlTag'] ) ? $attributes['sectionHtmlTag'] : 'div';
 	$background_type = isset( $attributes['backgroundType'] ) ? $attributes['backgroundType'] : 'none';
 	$background_video = isset( $attributes['backgroundVideo'] ) ? $attributes['backgroundVideo'] : null;
 
-	// Build class names.
 	$class_names = array(
 		'responsive-block-editor-addons-toc__align-' . esc_attr( $align ),
 		'responsive-block-editor-addons-toc__columns-' . esc_attr( $t_columns ),
 		'responsive-block-editor-addons-block-table-of-contents',
 		'block-' . esc_attr( $block_id ),
 	);
-
 	if ( $initial_collapse ) {
 		$class_names[] = 'responsive-block-editor-addons-toc__collapse';
 	}
-
 	if ( isset( $attributes['className'] ) ) {
 		$class_names[] = esc_attr( $attributes['className'] );
 	}
@@ -189,9 +172,6 @@ function responsive_block_editor_addons_render_table_of_contents( $attributes, $
 	} elseif ( 'section' === $section_html_tag ) {
 		$wrapper_tag = 'section';
 	}
-
-	// Encode headings as JSON for data attribute.
-	$headings_json = wp_json_encode( $filtered_headings );
 
 	ob_start();
 	?>
@@ -205,11 +185,7 @@ function responsive_block_editor_addons_render_table_of_contents( $attributes, $
 		<?php endif; ?>
 		<div 
 			class="responsive-block-editor-addons-toc__wrap" 
-			data-scroll-offset="<?php echo esc_attr( $scroll_offset ); ?>"
-			data-table-type="<?php echo esc_attr( $table_type === 'ordered' ? 'ordered' : 'unordered' ); ?>"
-			data-order-list-type="<?php echo esc_attr( $order_list_type ); ?>"
-			data-allowed-anchors="<?php echo esc_attr( wp_json_encode( $allowed_anchors ) ); ?>"
-			data-headings="<?php echo esc_attr( $headings_json ); ?>">
+			data-scroll-offset="<?php echo esc_attr( $scroll_offset ); ?>">
 			<div class="responsive-block-editor-addons-toc__title-wrap">
 				<div class="responsive-block-editor-addons-toc__title">
 					<?php echo wp_kses_post( $heading_title ); ?>
@@ -217,13 +193,13 @@ function responsive_block_editor_addons_render_table_of_contents( $attributes, $
 				<?php if ( $is_collapsible && $icon ) : ?>
 					<span class="responsive-block-editor-addons-toc__collapsible-wrap">
 						<span class="responsive-block-editor-addons-toc__collapsible-icon">
-							<!-- Icon will be rendered by frontend.js -->
+							<!-- Icon rendered by frontend.js -->
 						</span>
 					</span>
 				<?php endif; ?>
 			</div>
 			<div class="responsive-block-editor-addons-toc__list-wrap">
-				<!-- List will be built by frontend.js using data-headings -->
+				<?php echo wp_kses_post( responsive_block_editor_addons_render_toc_list( $filtered, $attributes ) ); ?>
 			</div>
 		</div>
 	</<?php echo esc_attr( $wrapper_tag ); ?>>
@@ -235,12 +211,10 @@ function responsive_block_editor_addons_render_table_of_contents( $attributes, $
  * Registers the Table of Contents block on server
  */
 function responsive_block_editor_addons_register_table_of_contents() {
-	/* Check if the register function exists */
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
 
-	/* Block attributes - we need to define all attributes here for PHP render */
 	register_block_type(
 		'responsive-block-editor-addons/table-of-contents',
 		array(
