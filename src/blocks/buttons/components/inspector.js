@@ -145,13 +145,7 @@ export default class Inspector extends Component {
 				blockRightPadding: 65,
 				blockBottomPadding: 30,
 				blockLeftPadding: 65,
-			},
-			"Extra Extra Large": {
-				blockTopPadding: 40,
-				blockRightPadding: 80,
-				blockBottomPadding: 40,
-				blockLeftPadding: 80,
-			},
+			}
 		};
 
 		// Helper function to apply button size attributes to child blocks
@@ -202,7 +196,6 @@ export default class Inspector extends Component {
 			{ label: __("M", "responsive-block-editor-addons"), value: 'Medium' },
 			{ label: __("L", "responsive-block-editor-addons"), value: 'Large' },
 			{ label: __("XL", "responsive-block-editor-addons"), value: 'Extra Large' },
-			{ label: __("XXL", "responsive-block-editor-addons"), value: 'Extra Extra Large' },
 		];
 		return (
 			<InspectorControls key="inspector">
