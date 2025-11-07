@@ -44,6 +44,14 @@ const attributes = {
 		type: "string",
 		default: "responsive-block-editor-addons-call-mail-button-size-medium"
 	},
+	buttonSizeTablet: {
+		type: "string",
+		default: "responsive-block-editor-addons-call-mail-button-size-tablet-medium"
+	},
+	buttonSizeMobile: {
+		type: "string",
+		default: "responsive-block-editor-addons-call-mail-button-size-mobile-medium"
+	},
 	//Button Width
 	buttonWidthType: {
 		type: "string",
