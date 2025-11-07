@@ -3,7 +3,11 @@ import AnimationAttributes from './animations/attributes';
 import DisplayConditionsAttributes from './display-conditions/attributes';
 import ResponsiveConditionsAttributes from './responsive-conditions/attributes';
 
-function addAttributes( settings ) {
+function addAttributes( settings, name ) {
+
+    if (!name.startsWith('responsive-block-editor-addons/')) {
+        return settings;
+    }
 
     if ( settings.attributes ) {
         settings.attributes = Object.assign( settings.attributes, {
@@ -13,7 +17,7 @@ function addAttributes( settings ) {
         } );
     }
 
-	return settings;
+    return settings;
 }
 
-addFilter( 'blocks.registerBlockType', 'responsive-block-editor-addons/advanced-control-block', addAttributes );
+addFilter( 'blocks.registerBlockType', 'responsive-block-editor-addons/advanced-control-block', addAttributes );z
