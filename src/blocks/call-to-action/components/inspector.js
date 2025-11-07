@@ -1091,42 +1091,7 @@ export default class Inspector extends Component {
 									return <div>{tabout}</div>;
 								}}
 							</TabPanel>
-              {/* <div className = "rbea-repeat-selector-wrapper">
-                <RbeaTabRadioControl
-                  label={__("Button Size", "responsive-block-editor-addons")}
-                  value={buttonSize}
-                  options={buttonSizeOptions.map(({ value, label }) => ({
-                    value,
-                    label,
-                  }))}
-                  onChange={(value) => {
-                      if(value == "responsive-block-editor-addons-cta-button-size-small") {
-                          this.props.setAttributes({buttonTextFontSize: 14})
-                      }
-                      if(value == "responsive-block-editor-addons-cta-button-size-medium") {
-                          this.props.setAttributes({buttonTextFontSize: 20})
-                          this.props.setAttributes({ctaHpadding: 14})
-                          this.props.setAttributes({ctaVpadding: 18})
-                      }
-                      if(value == "responsive-block-editor-addons-cta-button-size-large") {
-                          this.props.setAttributes({buttonTextFontSize: 26})
-                          this.props.setAttributes({ctaHpadding: 30})
-                          this.props.setAttributes({ctaVpadding: 20})
-                      }
-                      if(value == "responsive-block-editor-addons-cta-button-size-extralarge") {
-                          this.props.setAttributes({buttonTextFontSize: 100})
-                          this.props.setAttributes({ctaHpadding: 30})
-                          this.props.setAttributes({ctaVpadding: 20})
-                      }
-
-                    this.props.setAttributes({
-                      buttonSize: value,
-                    });
-                  }}
-                  defaultValue={"medium"}
-                />
-              </div> */}
-
+              
               <div className="responsive-block-editor-addons-tab-select-container">
                 <RbeaTabRadioControl
                   label={__("Button Shape", "responsive-block-editor-addons")}
