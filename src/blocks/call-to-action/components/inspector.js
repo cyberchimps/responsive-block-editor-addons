@@ -70,6 +70,8 @@ export default class Inspector extends Component {
       ctaBackColor,
       ctaColor,
       buttonSize,
+      buttonSizeTablet,
+      buttonSizeMobile,
       buttonShape,
       buttonTarget,
       ctaTitleFontFamily,
@@ -283,19 +285,19 @@ export default class Inspector extends Component {
     const buttonSizeOptions = [
       {
         value: "responsive-block-editor-addons-cta-button-size-small",
-        label: __("Small", "responsive-block-editor-addons"),
+        label: __("S", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-size-medium",
-        label: __("Medium", "responsive-block-editor-addons"),
+        label: __("M", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-size-large",
-        label: __("Large", "responsive-block-editor-addons"),
+        label: __("L", "responsive-block-editor-addons"),
       },
       {
         value: "responsive-block-editor-addons-cta-button-size-extralarge",
-        label: __("Extra Large", "responsive-block-editor-addons"),
+        label: __("XL", "responsive-block-editor-addons"),
       },
     ];
 
@@ -945,7 +947,151 @@ export default class Inspector extends Component {
               title={__("Button Options", "responsive-block-editor-addons")}
               initialOpen={false}
             >
-              <div className = "rbea-repeat-selector-wrapper">
+              <TabPanel
+								className=" responsive-size-type-field-tabs  responsive-size-type-field__common-tabs  responsive-inline-margin rbea-buttons-inspector"
+								activeClass="active-tab"
+								tabs={[
+									{
+										name: "desktop",
+										title: <Dashicon icon="desktop" />,
+										className:
+											" responsive-desktop-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "tablet",
+										title: <Dashicon icon="tablet" />,
+										className: " responsive-tablet-tab  responsive-responsive-tabs",
+									},
+									{
+										name: "mobile",
+										title: <Dashicon icon="smartphone" />,
+										className: " responsive-mobile-tab  responsive-responsive-tabs",
+									},
+								]}
+							>
+								{(tab) => {
+									let tabout;
+
+									if ("mobile" === tab.name) {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+                          label={__("Button Size", "responsive-block-editor-addons")}
+                          value={buttonSizeMobile}
+                          options={buttonSizeOptions.map(({ value, label }) => ({
+                            value,
+                            label,
+                          }))}
+                          onChange={(value) => {
+                              if(value == "responsive-block-editor-addons-cta-button-size-small") {
+                                  this.props.setAttributes({buttonTextFontSizeMobile: 14})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-medium") {
+                                  this.props.setAttributes({buttonTextFontSizeMobile: 20})
+                                  this.props.setAttributes({ctaHpaddingMobile: 14})
+                                  this.props.setAttributes({ctaVpaddingMobile: 18})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-large") {
+                                  this.props.setAttributes({buttonTextFontSizeMobile: 26})
+                                  this.props.setAttributes({ctaHpaddingMobile: 30})
+                                  this.props.setAttributes({ctaVpaddingMobile: 20})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-extralarge") {
+                                  this.props.setAttributes({buttonTextFontSizeMobile: 32})
+                                  this.props.setAttributes({ctaHpaddingMobile: 30})
+                                  this.props.setAttributes({ctaVpaddingMobile: 20})
+                              }
+
+                            this.props.setAttributes({
+                              buttonSizeMobile: value,
+                            });
+                          }}
+                          defaultValue={"medium"}
+                        />
+											</Fragment>
+										);
+									} else if ("tablet" === tab.name) {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+                          label={__("Button Size", "responsive-block-editor-addons")}
+                          value={buttonSizeTablet}
+                          options={buttonSizeOptions.map(({ value, label }) => ({
+                            value,
+                            label,
+                          }))}
+                          onChange={(value) => {
+                              if(value == "responsive-block-editor-addons-cta-button-size-small") {
+                                  this.props.setAttributes({buttonTextFontSizeTablet: 14})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-medium") {
+                                  this.props.setAttributes({buttonTextFontSizeTablet: 20})
+                                  this.props.setAttributes({ctaHpaddingTablet: 14})
+                                  this.props.setAttributes({ctaVpaddingTablet: 18})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-large") {
+                                  this.props.setAttributes({buttonTextFontSizeTablet: 26})
+                                  this.props.setAttributes({ctaHpaddingTablet: 30})
+                                  this.props.setAttributes({ctaVpaddingTablet: 20})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-extralarge") {
+                                  this.props.setAttributes({buttonTextFontSizeTablet: 32})
+                                  this.props.setAttributes({ctaHpaddingTablet: 30})
+                                  this.props.setAttributes({ctaVpaddingTablet: 20})
+                              }
+
+                            this.props.setAttributes({
+                              buttonSizeTablet: value,
+                            });
+                          }}
+                          defaultValue={"medium"}
+                        />
+											</Fragment>
+										);
+									} else {
+										tabout = (
+											<Fragment>
+												<RbeaTabRadioControl
+                          label={__("Button Size", "responsive-block-editor-addons")}
+                          value={buttonSize}
+                          options={buttonSizeOptions.map(({ value, label }) => ({
+                            value,
+                            label,
+                          }))}
+                          onChange={(value) => {
+                              if(value == "responsive-block-editor-addons-cta-button-size-small") {
+                                  this.props.setAttributes({buttonTextFontSize: 14})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-medium") {
+                                  this.props.setAttributes({buttonTextFontSize: 20})
+                                  this.props.setAttributes({ctaHpadding: 14})
+                                  this.props.setAttributes({ctaVpadding: 18})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-large") {
+                                  this.props.setAttributes({buttonTextFontSize: 26})
+                                  this.props.setAttributes({ctaHpadding: 30})
+                                  this.props.setAttributes({ctaVpadding: 20})
+                              }
+                              if(value == "responsive-block-editor-addons-cta-button-size-extralarge") {
+                                  this.props.setAttributes({buttonTextFontSize: 32})
+                                  this.props.setAttributes({ctaHpadding: 30})
+                                  this.props.setAttributes({ctaVpadding: 20})
+                              }
+
+                            this.props.setAttributes({
+                              buttonSize: value,
+                            });
+                          }}
+                          defaultValue={"medium"}
+                        />
+											</Fragment>
+										);
+									}
+
+									return <div>{tabout}</div>;
+								}}
+							</TabPanel>
+              {/* <div className = "rbea-repeat-selector-wrapper">
                 <RbeaTabRadioControl
                   label={__("Button Size", "responsive-block-editor-addons")}
                   value={buttonSize}
@@ -968,7 +1114,7 @@ export default class Inspector extends Component {
                           this.props.setAttributes({ctaVpadding: 20})
                       }
                       if(value == "responsive-block-editor-addons-cta-button-size-extralarge") {
-                          this.props.setAttributes({buttonTextFontSize: 32})
+                          this.props.setAttributes({buttonTextFontSize: 100})
                           this.props.setAttributes({ctaHpadding: 30})
                           this.props.setAttributes({ctaVpadding: 20})
                       }
@@ -979,7 +1125,7 @@ export default class Inspector extends Component {
                   }}
                   defaultValue={"medium"}
                 />
-              </div>
+              </div> */}
 
               <div className="responsive-block-editor-addons-tab-select-container">
                 <RbeaTabRadioControl
