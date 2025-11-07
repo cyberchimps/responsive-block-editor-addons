@@ -37,6 +37,8 @@ export default class Save extends Component {
       iconPosition,
       butopacity,
       buttonSize,
+      buttonSizeTablet,
+      buttonSizeMobile,
       inheritFromTheme,
       inheritFromThemesaved,
       inheritFromThemeLocalTimestamp,
@@ -151,7 +153,7 @@ export default class Save extends Component {
                       href={cardsArray[index]["buttonURL"]}
                       target={buttonTarget ? "_blank" : null}
                       rel={buttonTarget ? "noopener noreferrer" : null}
-                      className={classnames("res-button", buttonSize, inheritFromTheme ? "wp-block-button wp-block-button__link" : null)}
+                      className={classnames("res-button", buttonSize, buttonSizeTablet, buttonSizeMobile, inheritFromTheme ? "wp-block-button wp-block-button__link" : null)}
                     >
                       <RichText.Content value={cardsArray[index]["button"]} />
                     </a>
