@@ -209,7 +209,7 @@ function EditorStyles(props) {
       color: icon_hover_color+ '!important',
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper:hover .responsive-block-editor-addons-button__link": {
-      color:  hColor ? hColor : color,
+      color:  inheritFromTheme ? '' : hColor ? hColor : color,
       "opacity": `${typographyOpacityControlValue}`,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link, .edit-post-visual-editor.editor-styles-wrapper .wp-block-cover .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__link": {
@@ -223,13 +223,13 @@ function EditorStyles(props) {
         "margin-bottom": `${generateCSSUnit(blockBottomMargin, "px")} !important`,
     },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper": {
-      "border-color": borderColor ? hexToRgba(borderColor, borderOpacityControlValue) : "#000",
-      "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
-      "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
-      "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),
-      "border-bottom-left-radius": generateCSSUnit(blockLeftRadius, "px"),
-      "border-style": borderStyle,
-      "border-width": generateCSSUnit(borderWidth, "px"),
+      "border-color": inheritFromTheme ? '' : borderColor ? hexToRgba(borderColor, borderOpacityControlValue) : "#000",
+      "border-top-left-radius": inheritFromTheme ? '' : generateCSSUnit(blockTopRadius, "px"),
+      "border-top-right-radius": inheritFromTheme ? '' : generateCSSUnit(blockRightRadius, "px"),
+      "border-bottom-right-radius": inheritFromTheme ? '' : generateCSSUnit(blockBottomRadius, "px"),
+      "border-bottom-left-radius": inheritFromTheme ? '' : generateCSSUnit(blockLeftRadius, "px"),
+      "border-style": inheritFromTheme ? 'solid' : borderStyle,
+      "border-width": inheritFromTheme ? '' : generateCSSUnit(borderWidth, "px"),
       "box-shadow":
         generateCSSUnit(boxShadowHOffset, "px") +
         " " +
@@ -242,16 +242,16 @@ function EditorStyles(props) {
         boxShadowColor +
         " " +
         boxShadowPositionCSS,
-      "padding-left": generateCSSUnit(blockLeftPadding, "px"),
-      "padding-right": generateCSSUnit(blockRightPadding, "px"),
-      "padding-top": generateCSSUnit(blockTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
+      "padding-left": inheritFromTheme ? '' : generateCSSUnit(blockLeftPadding, "px"),
+      "padding-right": inheritFromTheme ? '' : generateCSSUnit(blockRightPadding, "px"),
+      "padding-top": inheritFromTheme ? '' : generateCSSUnit(blockTopPadding, "px"),
+      "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(blockBottomPadding, "px"),
       "background-image": updatedBackgroundImage,
-      "background-color": updatedBackgroundColor,
+      "background-color": inheritFromTheme ? '' : updatedBackgroundColor,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
-      "font-family": buttonFontFamily,
-      "font-weight": buttonFontWeight,
-      "line-height": buttonLineHeight,
+      "font-family": inheritFromTheme ? 'Default' : buttonFontFamily,
+      "font-weight": inheritFromTheme ? '' : buttonFontWeight,
+      "line-height": inheritFromTheme ? '' : buttonLineHeight,
       "opacity": imgopacity,
       color:  inheritFromTheme ? '' : color ? color : '#000',
       "font-size": `${generateCSSUnit(buttonFontSize, "px")} !important`,

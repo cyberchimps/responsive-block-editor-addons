@@ -791,6 +791,18 @@ const attributes = {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  inheritFromTheme: {
+    type: "boolean",
+    default: (typeof responsive_globals !== 'undefined' && responsive_globals.global_inherit_from_theme === '1'),
+  },
+  inheritFromThemesaved: {
+    type: "boolean",
+    default: false,
+  },
+  inheritFromThemeLocalTimestamp: {
+    type: "string",
+    default: "",
+  },
 };
 export default attributes;

@@ -311,7 +311,7 @@ const Blocks = ({showCategory, setShowCategory}) => {
         setToggleAll(!toggleAll);
 
         setBlockList((prevCheckboxes) => {
-            const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image'];
+            const permanentlyEnabledBlocks = ['advanced-heading', 'image', 'container'];
 
             const updatedBlockList = prevCheckboxes.map((checkbox) => {
                 if (permanentlyEnabledBlocks.includes(checkbox.key)) {
@@ -406,7 +406,7 @@ const Cards = ({blockList, showCategory, search, handleToggle}) => {
 }
 
 const Card = ({handleToggle, category, title, docs, demo, status, index, blockKey}) => {
-    const permanentlyEnabledBlocks = ['section', 'advance-columns', 'advanced-heading', 'image', 'container'];
+    const permanentlyEnabledBlocks = ['advanced-heading', 'image', 'container'];
     const isPermanentlyEnabled = permanentlyEnabledBlocks.includes(blockKey);
 
     return (
@@ -473,11 +473,17 @@ const Footer = () => {
 }
 
 const Settings = () => {
-    // existing logic — unchanged
+    // Separate state for each toggle
     const [autoRecover, setAutoRecover] = useState(
         String(rbealocalize?.auto_block_recovery) === '1'
     );
-    const [isSaving, setIsSaving] = useState(false);
+    const [inheritFromTheme, setInheritFromTheme] = useState(
+        String(rbealocalize?.global_inherit_from_theme) === '1'
+    );
+    
+    // Separate saving states to prevent cross-toggle re-rendering
+    const [isAutoRecoverSaving, setIsAutoRecoverSaving] = useState(false);
+    const [isInheritFromThemeSaving, setIsInheritFromThemeSaving] = useState(false);
 
     const displayToast = ( msg, status ) => {
         let background = status === 'error' ? '#FF5151' : '#00CF21';
@@ -492,10 +498,10 @@ const Settings = () => {
         }).showToast();
     };
 
-    const saveSetting = async (nextValue) => {
-        setIsSaving(true);
+    const saveSetting = async (nextValue, actionType, setSavingState) => {
+        setSavingState(true);
         const formData = new FormData();
-        formData.append('action', 'rbea_toggle_auto_block_recovery');
+        formData.append('action', actionType);
         formData.append('nonce', rbealocalize.nonce);
         formData.append('value', nextValue ? '1' : '0');
 
@@ -506,14 +512,20 @@ const Settings = () => {
         } catch (e) {
             displayToast('Error', 'error');
         } finally {
-            setIsSaving(false);
+            setSavingState(false);
         }
     };
 
     const handleToggle = () => {
         const next = !autoRecover;
         setAutoRecover(next);
-        saveSetting(next);
+        saveSetting(next, 'rbea_toggle_auto_block_recovery', setIsAutoRecoverSaving);
+    };
+
+    const handleInheritFromThemeToggle = () => {
+        const next = !inheritFromTheme;
+        setInheritFromTheme(next);
+        saveSetting(next, 'rbea_toggle_global_inherit_from_theme', setIsInheritFromThemeSaving);
     };
 
     // NEW: sections — just add more objects to grow later
@@ -570,8 +582,35 @@ const Settings = () => {
                                                     id="rbea-auto-block-recovery"
                                                     type="checkbox"
                                                     checked={autoRecover}
-                                                    disabled={isSaving}
+                                                    disabled={isAutoRecoverSaving}
                                                     onChange={handleToggle}
+                                                />
+                                                <span className="rbea-blocks-slider rbea-blocks-round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="rbea-help-feature-cards">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-10">
+                                            <p className="rbea-help-title">
+                                                {__('Button - Inherit From Theme','responsive-block-editor-addons')}
+                                            </p>
+                                            <p className="rbea-help-desc">
+                                                {__(
+                                                    'Enable the "Inherit From Theme" option to make all buttons in Responsive blocks across your website inherit their styles from the theme.',
+                                                    'responsive-block-editor-addons'
+                                                )}
+                                            </p>
+                                        </div>
+                                        <div className="col-md-2 text-end">
+                                            <label className="rbea-blocks-switch">
+                                                <input
+                                                    id="rbea-global-inherit-from-theme"
+                                                    type="checkbox"
+                                                    checked={inheritFromTheme}
+                                                    disabled={isInheritFromThemeSaving}
+                                                    onChange={handleInheritFromThemeToggle}
                                                 />
                                                 <span className="rbea-blocks-slider rbea-blocks-round"></span>
                                             </label>

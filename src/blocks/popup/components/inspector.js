@@ -276,6 +276,9 @@ export default class Inspector extends Component {
         z_index,
         z_indexTablet,
         z_indexMobile,
+        inheritFromTheme,
+        inheritFromThemesaved,
+        inheritFromThemeLocalTimestamp,
       },
       setAttributes,
     } = this.props;
@@ -1040,6 +1043,23 @@ export default class Inspector extends Component {
                       { value: "flex-start", label: __("Top Left", "responsive-block-editor-addons") },
                     ]}
                   />}
+              </PanelBody>
+              <PanelBody
+                title={__("Button Settings", "responsive-block-editor-addons")}
+                initialOpen={false}
+              >
+                <ToggleControl
+                  label={__("Inherit from Theme", "responsive-block-editor-addons")}
+                  checked={inheritFromTheme}
+                  onChange={(next) => {
+                    setAttributes({
+                      inheritFromTheme: next,
+                      inheritFromThemesaved: next,
+                      inheritFromThemeLocalTimestamp: new Date().toISOString(),
+                    });
+                  }}
+                  __nextHasNoMarginBottom
+                />
               </PanelBody>
               <RbeaSupportControl blockSlug={"popup"} />
             </InspectorTab>
