@@ -13,6 +13,7 @@ import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 //Import Block Icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -37,14 +38,14 @@ registerBlockType("responsive-block-editor-addons/anchor", {
     anchor: true,
   },
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="anchor" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

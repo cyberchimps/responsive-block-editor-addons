@@ -133,6 +133,10 @@ const attributes = {
 	type: "number",
 	default: 999,
   },//For compatibility with v1.3.2
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
 };
 
 export default attributes;

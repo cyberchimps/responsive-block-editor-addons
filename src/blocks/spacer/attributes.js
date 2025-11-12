@@ -36,5 +36,9 @@ const attributes = {
     type: "number",
     default: 1,
   },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
 };
 export default attributes;

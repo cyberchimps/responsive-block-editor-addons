@@ -13,6 +13,7 @@ import "./styles/styles.editor.scss";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -37,13 +38,11 @@ registerBlockType("responsive-block-editor-addons/googlemap", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            address: "India",
-            pinned: true
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_map_zoom: {
       title: __("Zoom", "responsive-block-editor-addons"),
@@ -55,7 +54,7 @@ registerBlockType("responsive-block-editor-addons/googlemap", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="google-map" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

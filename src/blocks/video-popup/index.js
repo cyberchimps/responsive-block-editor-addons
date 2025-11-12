@@ -7,6 +7,7 @@ import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS.
 import "./styles/style.scss";
@@ -37,25 +38,14 @@ registerBlockType("responsive-block-editor-addons/video-popup", {
     html: false,
   },
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example heading */
-            videoLink:"https://www.youtube.com/watch?v=XHOmBV4js_E\u0026amp;feature=youtu.be",
-            playButtonType:"outline",
-            playButtonSize:100,
-            vidwidth:550,
-            vidwidthTablet:355.6,
-            vidwidthMobile:323.2,
-            vidheight:595,
-            vidheightTablet:385.34,
-            vidheightMobile:350.49,
-            imgID:261,
-            counterId:"843ea296-e254-432a-ade0-98f27df35802"
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="video-popup" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

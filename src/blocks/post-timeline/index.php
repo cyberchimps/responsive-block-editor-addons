@@ -1254,6 +1254,10 @@ function responsive_block_editor_addons_post_timeline_register_latest_posts() {
 					'type'    => 'string',
 					'default' => '',
 				),
+				'isPreview' => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_post_timeline_render_latest_posts',
 		)

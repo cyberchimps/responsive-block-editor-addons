@@ -470,7 +470,11 @@ const attributes = {
   positionTab: {
     type: "string",
     default: "desktop",
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
 };
 
 export default attributes;

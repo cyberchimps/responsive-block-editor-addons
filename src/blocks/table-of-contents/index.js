@@ -8,6 +8,7 @@ import Save from "./components/save";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 import attributes from "./attributes";
 // Import CSS
@@ -38,15 +39,14 @@ registerBlockType("responsive-block-editor-addons/table-of-contents", {
   ],
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            headingTitle: __("Table Of Contents", 'responsive-block-editor-addons' ),
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="table-of-contents" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

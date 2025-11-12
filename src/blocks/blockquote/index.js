@@ -10,6 +10,7 @@ import Deprecated from "./components/deprecated";
 
 //Import block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -35,16 +36,16 @@ registerBlockType("responsive-block-editor-addons/blockquote", {
     __("blockquote", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
   ],
-    example: {
-        attributes: {
-            quoteContent: __( 'Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'ultimate-addons-for-gutenberg' ),
-        },
-    },
-    attributes: attributes,
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
+  attributes: attributes,
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="blockquote" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

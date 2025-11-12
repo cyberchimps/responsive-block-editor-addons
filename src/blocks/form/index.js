@@ -9,6 +9,7 @@ import attributes from "./attributes";
 
 //Import Block Icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 import variations from "./components/variations";
 
 // Import CSS
@@ -38,14 +39,18 @@ registerBlockType("responsive-block-editor-addons/form", {
   ],
   variations: variations,
   attributes: attributes,
-  example: {},
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   supports: {
 		anchor: true
 	},
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="form" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

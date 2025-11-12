@@ -1,12 +1,13 @@
 /**
  * Internal dependencies
  */
-import edit from "./components/edit";
+import Edit from "./components/edit";
 import metadata from "./block.json";
 import Save from "./components/save";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS.
 import "./styles/style.scss";
@@ -35,22 +36,8 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
   attributes,
   example: {
     attributes: {
-      images: {
-        type: "array",
-        default: [],
-        query: {
-          url: "https://via.placeholder.com/600x400?text=Slide+1",
-          link: "#",
-          imgLink: "#",
-          alt: "Slide 1",
-          id: "1",
-          caption: ["Caption for Slide 1"],
-          order: 0,
-        }
-      },
-      linkTo: "none",
-      rel: "",
-    },
+      isPreview: true,
+    }
   },
   icon: ResponsiveBlockEditorAddonsIcons.image_slider,
   keywords: [
@@ -64,7 +51,9 @@ registerBlockType("responsive-block-editor-addons/image-slider", {
     align: ["wide", "full"],
     html: false,
   },
-  edit,
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="image-slider" /> : <Edit {...props} />;
+  },
   // save,
   save: (props) => {
     return <Save {...props} />;
