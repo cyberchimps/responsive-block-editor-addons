@@ -363,10 +363,11 @@ function EditorStyles(props) {
     btnHColor = ctaHoverBackColor;
     btnHOpacity = buttonHopacity;
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "margin-top": generateCSSUnit(blockTopMargin, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
       "margin-right": generateCSSUnit(blockRightMargin, "px"),
@@ -582,7 +583,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
       "margin-right": generateCSSUnit(blockRightMarginMobile, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
@@ -646,7 +647,7 @@ function EditorStyles(props) {
       "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
       "margin-right": generateCSSUnit(blockRightMarginTablet, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
     },
     " .wp-block-responsive-block-editor-addons-flip-box .flip-box-front": {
       "background-position": getImagePostionCSS(backgroundPositionFocalTablet),

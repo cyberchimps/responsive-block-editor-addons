@@ -102,6 +102,9 @@ function EditorStyles(props) {
     borderOpacity,
     buttonTextTransform,
     buttonFontStyle,
+    hideWidget,
+    hideWidgetTablet,
+    hideWidgetMobile,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -185,8 +188,12 @@ function EditorStyles(props) {
       colorLocation2
     );
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
+    " ": {
+      "opacity": hideWidget && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-button__wrapper .responsive-block-editor-addons-button__icon svg": {
       color: icon_color+ '!important',
       width: generateCSSUnit(iconsize, "px"),
@@ -278,6 +285,9 @@ function EditorStyles(props) {
   };
 
   var mobile_selectors = {
+    " ": {
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a": {
       "font-size": generateCSSUnit(buttonFontSizeMobile, "px") + "!important",
     },
@@ -300,6 +310,9 @@ function EditorStyles(props) {
   };
 
   var tablet_selectors = {
+    " ": {
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
+    },
     " .responsive-block-editor-addons-buttons-repeater.responsive-block-editor-addons-button__wrapper a": {
       "font-size": generateCSSUnit(buttonFontSizeTablet, "px") + "!important",
     },

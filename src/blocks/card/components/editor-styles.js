@@ -284,6 +284,7 @@ function EditorStyles(props) {
       buttoncolorLocation2
     )
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " .responsive-block-editor-addons-card-button-inner .res-button": {
@@ -320,7 +321,7 @@ function EditorStyles(props) {
     },
 
     "": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       'margin-top': generateCSSUnit(blockTopMargin, "px"),
 			'margin-right': generateCSSUnit(blockRightMargin, "px"),
 			'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
@@ -505,7 +506,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       'margin-top': generateCSSUnit(blockTopMarginMobile, "px"),
       'margin-right': generateCSSUnit(blockRightMarginMobile, "px"),
       'margin-bottom': generateCSSUnit(blockBottomMarginMobile, "px"),
@@ -557,7 +558,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       'margin-top': generateCSSUnit(blockTopMarginTablet, "px"),
       'margin-right': generateCSSUnit(blockRightMarginTablet, "px"),
       'margin-bottom': generateCSSUnit(blockBottomMarginTablet, "px"),

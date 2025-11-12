@@ -311,10 +311,11 @@ function EditorStyles(props) {
     'solid': { 'background-color': popupButtonBGHoverColor },
     'gradient': { 'background-image': popupButtonHoverBGGradient },
   }[popupButtonBGHoverState] || { 'background-color': 'transparent' };
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     "": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
         "justify-content": popupTriggerAlign,  
@@ -403,7 +404,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignMobile,
@@ -446,7 +447,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
     },
     " .responsive-block-editor-addons-popup-trigger-wrap": {
       "justify-content": popupTriggerAlignTablet,

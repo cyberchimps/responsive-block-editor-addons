@@ -249,10 +249,11 @@ function EditorStyles(props) {
         gutterMargin = '';
       }
     }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "background-color": itemBackgroundColor,
       "text-align": contentAlign,
       "border-style": blockBorderStyle,
@@ -358,7 +359,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-        "opacity": hideWidgetMobile ? 0.2 : 1,
+        "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
         "border-top-left-radius": generateCSSUnit(blockTopRadiusMobile, "px"),
         "border-top-right-radius": generateCSSUnit(blockRightRadiusMobile, "px"),
         "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusMobile, "px"),
@@ -390,7 +391,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-        "opacity": hideWidgetTablet ? 0.2 : 1,
+        "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
         "border-top-left-radius": generateCSSUnit(blockTopRadiusTablet, "px"),
         "border-top-right-radius": generateCSSUnit(blockRightRadiusTablet, "px"),
         "border-bottom-right-radius": generateCSSUnit(blockBottomRadiusTablet, "px"),

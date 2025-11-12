@@ -11,22 +11,23 @@ function EditorStyles(props) {
     hideWidgetTablet,
     hideWidgetMobile,
   } = props.attributes;
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "background-color": hideWidget? `${hexToRgba("#aaa",0.2)}` : "transparent",
+      "background-color": hideWidget && isOn ? `${hexToRgba("#aaa",0.2)}` : "transparent",
     },
   };
 
   var mobile_selectors = {
     " ": {
-      "background-color": hideWidgetMobile? `${hexToRgba("#aaa",0.2)}` : "transparent",
+      "background-color": hideWidgetMobile && isOn ? `${hexToRgba("#aaa",0.2)}` : "transparent",
     },
   };
 
   var tablet_selectors = {
     " ": {
-      "background-color": hideWidgetTablet? `${hexToRgba("#aaa",0.2)}` : "transparent",
+      "background-color": hideWidgetTablet && isOn ? `${hexToRgba("#aaa",0.2)}` : "transparent",
     },
   };
 

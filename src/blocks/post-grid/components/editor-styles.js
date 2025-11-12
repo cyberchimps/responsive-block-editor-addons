@@ -243,11 +243,11 @@ function EditorStyles(props) {
     varpaginationBorderColor = paginationBorderColor;
     varpaginationActiveBorderColor = paginationActiveBorderColor;
   }
-
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "z-index": z_index,
       'padding-top': generateCSSUnit(blockTopPadding, "px"),
       'padding-right': generateCSSUnit(blockRightPadding, "px"),
@@ -420,7 +420,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "z-index": z_indexMobile,
       'padding-top': generateCSSUnit(blockTopPaddingMobile, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingMobile, "px"),
@@ -497,7 +497,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "z-index": z_indexTablet,
       'padding-top': generateCSSUnit(blockTopPaddingTablet, "px"),
       'padding-right': generateCSSUnit(blockRightPaddingTablet, "px"),

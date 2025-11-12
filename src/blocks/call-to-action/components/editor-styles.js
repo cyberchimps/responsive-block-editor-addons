@@ -232,6 +232,7 @@ function EditorStyles(props) {
   }else if (iconPosition === 'after') {
     ctaIconMargin = `auto 0 auto ${generateCSSUnit(iconSpace, "px")}`
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " .responsive-block-editor-addons-cta-button-wrapper .responsive-block-editor-addons-cta-button": {
@@ -268,7 +269,7 @@ function EditorStyles(props) {
     },
 
     "": {
-      "opacity": hideWidget ? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       "background-color":
         inheritFromTheme ? '' : backgroundType == "color"
           ? (ctaBackgroundColor !== "empty" && backgroundColor === "#f2f2f2" ? `${hexToRgba(ctaBackgroundColor || "#ffffff", imgopacity || 0)}` : `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`) // For compatibility with v1.3.2.
@@ -397,7 +398,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaTitleFontSizeMobile, "px") + "!important",
     },
     "": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -448,7 +449,7 @@ function EditorStyles(props) {
       "font-size": generateCSSUnit(ctaTitleFontSizeTablet, "px"),
     },
     "": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
