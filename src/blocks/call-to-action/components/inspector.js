@@ -245,6 +245,9 @@ export default class Inspector extends Component {
       buttonTextTextTransform,
       buttonTextFontStyle,
       hasImagePositionMigrated,
+      inheritFromTheme,
+      inheritFromThemesaved,
+      inheritFromThemeLocalTimestamp,
     } = this.props.attributes;
     const { setAttributes } = this.props;
 
@@ -600,6 +603,23 @@ export default class Inspector extends Component {
                 isResetAllowed={true}
                 resetAttr={resetPreset}
                 onResetApply={(newAttrs) => setAttributes(newAttrs)}
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Button Settings", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__("Inherit from Theme", "responsive-block-editor-addons")}
+                checked={inheritFromTheme}
+                onChange={(next) => {
+                  setAttributes({
+                    inheritFromTheme: next,
+                    inheritFromThemesaved: next,
+                    inheritFromThemeLocalTimestamp: new Date().toISOString(),
+                  });
+                }}
+                __nextHasNoMarginBottom
               />
             </PanelBody>
             <RbeaSupportControl blockSlug={"responsive-block-editor-addons-cta"} />

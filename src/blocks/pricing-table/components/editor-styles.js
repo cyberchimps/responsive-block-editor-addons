@@ -243,6 +243,7 @@ function EditorStyles(props) {
     featuresFontStyle,
     ctaTextTransform,
     ctaFontStyle,
+    inheritFromTheme,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -291,24 +292,24 @@ function EditorStyles(props) {
 
   var selectors = {
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
-      color: ctaColor + "!important",
-      "background-color": updatedButtonBackgroundColor,
+      color: inheritFromTheme ? '' : ctaColor + "!important",
+      "background-color": inheritFromTheme ? '' : updatedButtonBackgroundColor,
       "background-image": backgroundImage ? updatedButtonBackgroundImage : 'none',
       "margin-left": "left" == blockAlign ? 0 : "",
       "margin-right": "right" == blockAlign ? 0 : "",
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
-      "padding-left": generateCSSUnit(ctaButtonLeftPadding, "px"),
-      "padding-right": generateCSSUnit(ctaButtonRightPadding, "px"),
-      "padding-top": generateCSSUnit(ctaButtonTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaButtonBottomPadding, "px"),
-      "border-color": ctaBorderColor,
-      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
-      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
-      "border-style": ctaBorderStyle,
+      "padding-left": inheritFromTheme ? '' : generateCSSUnit(ctaButtonLeftPadding, "px"),
+      "padding-right": inheritFromTheme ? '' : generateCSSUnit(ctaButtonRightPadding, "px"),
+      "padding-top": inheritFromTheme ? '' : generateCSSUnit(ctaButtonTopPadding, "px"),
+      "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(ctaButtonBottomPadding, "px"),
+      "border-color": inheritFromTheme ? '' : ctaBorderColor,
+      "border-radius": inheritFromTheme ? '' : generateCSSUnit(ctaBorderRadius, "px"),
+      "border-width": inheritFromTheme ? '' : generateCSSUnit(ctaBorderWidth, "px"),
+      "border-style": inheritFromTheme ? 'solid' : ctaBorderStyle,
       "line-height": ctaLineHeight,
-      "font-weight": ctaFontWeight,
+      "font-weight": inheritFromTheme ? '' : ctaFontWeight,
       "font-size": generateCSSUnit(ctaFontSize, "px"),
-      "font-family": ctaFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : ctaFontFamily,
       "box-shadow":
         generateCSSUnit(buttonBoxShadowHOffset, "px") +
         " " +
@@ -326,10 +327,10 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button:hover": {
-      color: ctaHoverColor + "!important",
-      "background-color": updatedButtonBgHColor,
+      color: inheritFromTheme ? '' : ctaHoverColor + "!important",
+      "background-color": inheritFromTheme ? '' : updatedButtonBgHColor,
       "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBgHImage,
-      "border-color" : ctaHoverBorderColor,
+      "border-color" : inheritFromTheme ? '' : ctaHoverBorderColor,
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item.background-type-image": {

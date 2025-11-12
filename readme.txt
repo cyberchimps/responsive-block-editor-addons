@@ -5,7 +5,7 @@ Tags: block, blocks, block editor, page builder, gutenberg templates
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -230,6 +230,12 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 8. Gutenberg Starter Templates
 
 == Changelog ==
+
+= 2.1.4 - 31st October 2025 =
+* New - Added favourite button in the template library.
+* New - Inherit button style from theme: Automatically inherits the theme’s global button styles.
+* Improvement - Soft deprecation of Sections and Advanced Columns in favor of the Container block for better styling and flexibility.
+* Fix - Minor bugs.
 
 = 2.1.3 - 9th October 2025 =
 * New - Display Conditions.

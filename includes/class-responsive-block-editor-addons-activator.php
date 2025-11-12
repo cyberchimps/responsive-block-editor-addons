@@ -38,5 +38,10 @@ class Responsive_Block_Editor_Addons_Activator {
 		if ( false === get_option( 'rbea_auto_block_recovery' ) ) {
 			update_option( 'rbea_auto_block_recovery', '1' );
 		}
+
+		// Initialize last-changed timestamp option for global inherit-from-theme toggle if it doesn't exist
+		if ( false === get_option( 'rbea_global_inherit_from_theme_last_changed', false ) ) {
+			add_option( 'rbea_global_inherit_from_theme_last_changed', '', '', 'no' );
+		}
 	}
 }

@@ -266,6 +266,9 @@ export default class Inspector extends Component {
         hasButtonStyleToggleUpdated,
         textTextTransform,
         textFontStyle,
+        inheritFromTheme,
+        inheritFromThemesaved,
+        inheritFromThemeLocalTimestamp,
       },
       setAttributes,
     } = this.props;
@@ -509,6 +512,23 @@ export default class Inspector extends Component {
                   }}
                 </TabPanel>
               )}
+            </PanelBody>
+            <PanelBody
+              title={__("Button Settings", "responsive-block-editor-addons")}
+              initialOpen={true}
+            >
+              <ToggleControl
+                label={__("Inherit from Theme", "responsive-block-editor-addons")}
+                checked={inheritFromTheme}
+                onChange={(next) => {
+                  setAttributes({
+                    inheritFromTheme: next,
+                    inheritFromThemesaved: next,
+                    inheritFromThemeLocalTimestamp: new Date().toISOString(),
+                  });
+                }}
+                __nextHasNoMarginBottom
+              />
             </PanelBody>
             <RbeaSupportControl blockSlug={"call-mail-button"} />
           </InspectorTab>
