@@ -27,6 +27,7 @@ module.exports = function( grunt ) {
                             'assets/**',
                             'readme.txt',
                             'src/**',
+                            '!admin/getting-started/**',
                             '!**/*.css.map',
                             '!**/*.js.map',
                             'responsive-block-editor-addons.php',
