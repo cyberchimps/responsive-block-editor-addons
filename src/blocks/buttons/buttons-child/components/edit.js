@@ -94,6 +94,7 @@ export default class Edit extends Component {
         borderWidth,
         borderColor,
         blockTopRadius,
+        inheritFromThemeLocalTimestamp
       },
       isSelected,
       setAttributes,
@@ -133,7 +134,7 @@ export default class Edit extends Component {
             )}
             key={`${block_id}`}
           >
-            <a
+            <div
               className={classnames(
                 "responsive-block-editor-addons-buttons-repeater",
                 "responsive-block-editor-addons-button__wrapper",
@@ -173,7 +174,7 @@ export default class Edit extends Component {
                   {renderSVG(icon)}
                 </span>
               )}
-            </a>
+            </div>
           </div>
           {/* {isSelected && (
             <form

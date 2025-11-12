@@ -46,6 +46,7 @@ const {
   Dashicon,
   ToggleControl,
   FocalPointPicker,
+  Notice,
 } = wp.components;
 
 /**
@@ -330,6 +331,7 @@ export default class Inspector extends Component {
       <InspectorControls key="inspector">
         <InspectorTabs>
           <InspectorTab key={"content"}>
+            <Notice isDismissible={false} status="warning"><p>⚠️ {__( 'Heads up! This block will be deprecated soon. We recommend using the Container block instead.', 'responsive-block-editor-addons' )}</p></Notice>
             <PanelBody>
               <RbeaRangeControl
                 label={__("Columns", "responsive-block-editor-addons")}
