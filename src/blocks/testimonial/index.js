@@ -9,6 +9,7 @@ import attributes from "./attributes";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -36,6 +37,11 @@ registerBlockType("responsive-block-editor-addons/testimonial", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
 
   responsive_block_editor_addons_settings_data: {
     responsive_block_editor_addons_testimonial_testimonialFontSize: {
@@ -54,7 +60,7 @@ registerBlockType("responsive-block-editor-addons/testimonial", {
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="testimonial" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

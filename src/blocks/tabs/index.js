@@ -12,6 +12,7 @@ import "./styles/styles.editor.scss";
 
 //Import block icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 import deprecated from "./components/deprecated";
 
 // Internationalization
@@ -39,36 +40,14 @@ registerBlockType("responsive-block-editor-addons/tabs", {
   },
 
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-
-            innerBlocks: [
-                {
-                    name: 'responsive-block-editor-addons/tabs-child',
-                    innerBlocks: [
-                        {
-                            name: 'responsive-block-editor-addons/tabs-child',
-                            attributes: {},
-
-                        },
-                    ],
-                },
-                {
-                    name: 'responsive-block-editor-addons/tabs-child',
-                    innerBlocks: [
-                        {
-                            name: 'responsive-block-editor-addons/tabs-child',
-                            attributes: { },
-                        },
-                    ],
-                }
-            ],
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="tabs" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames";
-import edit from "./components/edit";
+import Edit from "./components/edit";
 import save from "./components/save";
 import attributes from "./attributes";
 import "./styles/style.scss";
@@ -12,6 +12,7 @@ import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 const { __ } = wp.i18n;
 
@@ -35,8 +36,14 @@ registerBlockType("responsive-block-editor-addons/testimonial-slider", {
     anchor: true,
   },
   attributes: attributes,
-  edit,
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="testimonial-slider" /> : <Edit {...props} />;
+  },
   save,
   deprecated: deprecated,
-  example: {},
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
 });

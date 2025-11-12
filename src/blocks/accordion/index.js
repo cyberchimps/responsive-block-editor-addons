@@ -3,7 +3,7 @@
  */
 
 import ResponsiveBlocksIcon from "../../ResponsiveBlocksIcon.json";
-import edit from "./components/edit";
+import Edit from "./components/edit";
 import save from "./components/save";
 import icon from "./components/icon";
 import attributes from "./attributes";
@@ -11,7 +11,7 @@ import deprecated from "./components/deprecated";
 
 //Import Icon Block
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
-
+import BlockPreview from "../../block-preview";
 // Import CSS
 import "./styles/style.scss";
 import "./styles/styles.editor.scss";
@@ -77,29 +77,14 @@ registerBlockType("responsive-block-editor-addons/accordion", {
     html: false,
   },
   attributes,
-    example:{
-        innerBlocks: [
-            {
-                name: "responsive-block-editor-addons/accordion-item",
-                innerBlocks: [
-                    {
-                        name: "responsive-block-editor-addons/accordion-item",
-                        attributes: { title: __("What is Accordion?", "responsive-block-editor-addons" ), answer: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "responsive-block-editor-addons" ) },
-                    },
-                ],
-            },
-            {
-                name: "responsive-block-editor-addons/accordion-item",
-                innerBlocks: [
-                    {
-                        name: "responsive-block-editor-addons/accordion-item",
-                        attributes: { title: __("What is Accordion?", "responsive-block-editor-addons" ), answer: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", "responsive-block-editor-addons" ) },
-                    },
-                ],
-            }
-        ],
-    },
-  edit,
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="accordion" /> : <Edit {...props} />;
+  },
   supports: {
     anchor: true,
   },

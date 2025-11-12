@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import edit from "./components/edit";
+import Edit from "./components/edit";
 import metadata from "./block.json";
 import Save from "./components/save";
 import { GalleryAttributes } from "../../utils/components/block-gallery/shared";
@@ -9,6 +9,7 @@ import Deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 /**
  * WordPress dependencies
@@ -53,30 +54,13 @@ registerBlockType("responsive-block-editor-addons/gallery-masonry", {
   },
   example: {
     attributes: {
-      gridSize: "lrg",
-      gutter: 5,
-      images: [
-        {
-          index: 0,
-          src:
-            "./admin/images/box1.jpg",
-        },
-        { index: 1, src: "./admin/images/box1.jpg" },
-        {
-          index: 2,
-          src:
-		  "./admin/images/box1.jpg",
-        },
-        { index: 3, src: "./admin/images/box1.jpg" },
-        {
-          index: 4,
-          src: "./admin/images/box1.jpg",
-        },
-      ],
-    },
+      isPreview: true,
+    }
   },
   attributes,
-  edit,
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="image-gallery" /> : <Edit {...props} />;
+  },
   save : (props) => {
     return <Save {...props} />;
   },

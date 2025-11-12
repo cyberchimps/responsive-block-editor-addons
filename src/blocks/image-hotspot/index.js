@@ -9,6 +9,7 @@ import Edit from "./components/edit";
 import Save from "./components/save";
 import attributes from "./attributes";
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 registerBlockType("responsive-block-editor-addons/image-hotspot", {
   title: __("Image Hotspot", "responsive-block-editor-addons"),
@@ -26,12 +27,12 @@ registerBlockType("responsive-block-editor-addons/image-hotspot", {
 
   attributes: attributes,
   example: {
-    attributes:{
-      alt: "This is an alt text"
+    attributes: {
+      isPreview: true,
     }
   },
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="image-hotspot" /> : <Edit {...props} />;
   },
 
   save: (props) => {

@@ -9,6 +9,7 @@ import attributes from "./attributes";
 
 //Import Block icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -41,13 +42,15 @@ registerBlockType("responsive-block-editor-addons/advance-columns", {
   
   attributes,
   
-  example:{
-        columns: 2,
+  example: {
+    attributes: {
+      isPreview: true,
     },
+  },
 
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="advanced-columns" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

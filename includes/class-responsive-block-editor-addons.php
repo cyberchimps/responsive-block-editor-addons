@@ -178,15 +178,22 @@ class Responsive_Block_Editor_Addons {
 
 		// RBEA Getting Started Blocks Toggle.
 		add_action( 'wp_ajax_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
-		add_action( 'wp_ajax_nopriv_rbea_blocks_toggle', array( $this, 'rbea_blocks_toggle' ) );
 
 		// RBEA Auto Block Recovery Toggle.
 		add_action( 'wp_ajax_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
-		add_action( 'wp_ajax_nopriv_rbea_toggle_auto_block_recovery', array( $this, 'rbea_toggle_auto_block_recovery' ) );
 
 		// RBEA Global Inherit From Theme Toggle.
 		add_action( 'wp_ajax_rbea_toggle_global_inherit_from_theme', array( $this, 'rbea_toggle_global_inherit_from_theme' ) );
-		add_action( 'wp_ajax_nopriv_rbea_toggle_global_inherit_from_theme', array( $this, 'rbea_toggle_global_inherit_from_theme' ) );
+
+		// RBEA Content Width Setting.
+		add_action( 'wp_ajax_rbea_save_content_width', array( $this, 'rbea_save_content_width' ) );
+
+		// RBEA Container Padding Setting.
+		add_action( 'wp_ajax_rbea_save_container_padding', array( $this, 'rbea_save_container_padding' ) );
+
+		// RBEA Container Gap Setting.
+		add_action( 'wp_ajax_rbea_save_container_gap', array( $this, 'rbea_save_container_gap' ) );
+
 		add_action( 'rest_api_init', array( $this, 'register_custom_rest_endpoint' ) );
 		add_action( 'wp_ajax_rbea_sync_library', array( $this, 'rbea_sync_library' ) );
 
@@ -723,6 +730,9 @@ class Responsive_Block_Editor_Addons {
 				'auto_block_recovery'                => get_option( 'rbea_auto_block_recovery', '1' ),
 				'global_inherit_from_theme'          => get_option( 'rbea_global_inherit_from_theme', '0' ),
 				'global_inherit_from_theme_last_changed' => get_option( 'rbea_global_inherit_from_theme_last_changed', '' ),
+				'default_content_width'              => get_option( 'rbea_default_content_width', 1340 ),
+				'default_container_padding'          => get_option( 'rbea_default_container_padding', 10 ),
+				'default_container_gap'              => get_option( 'rbea_default_container_gap', 20 ),
 				'blocks'                             => $blocks,
 				'is_animation_on'                    => $is_animation_toggled_on,
 				'is_display_conditions_on'           => $is_display_conditions_on,
@@ -1182,6 +1192,58 @@ class Responsive_Block_Editor_Addons {
 	}
 
 	/**
+	 * Check if plugin is installed or activated.
+	 *
+	 * @return string
+	 */
+	public function rbea_plugin_status( $path ) {
+
+		if ( is_plugin_active( $path ) ) {
+			return 'activated';
+		}
+
+		// Check if RST is installed.
+		$installed_plugins = get_plugins();
+
+		if ( isset( $installed_plugins[ $path ] ) ) {
+			return 'activate';
+		} else {
+			return 'install';
+		}
+	}
+
+	/**
+	 * Get responsive theme status.
+	 * 
+	 * @return string 'activated' if active, 'activate' if installed, 'install' if not found.
+	 */
+	function get_responsive_theme_status() {
+		
+		$theme_slug = 'responsive';
+		$current_theme = wp_get_theme();
+		
+		// Check if responsive theme or its child theme is active.
+		if ($current_theme->get_stylesheet() === $theme_slug || $current_theme->get('Template') === $theme_slug) {
+			return 'activated';
+		}
+		
+		// Check if responsive theme is installed
+		$themes = wp_get_themes();
+		if (isset($themes[$theme_slug])) {
+			return 'activate';
+		}
+		
+		// Check if any child theme of responsive is installed
+		foreach ($themes as $theme) {
+			if ($theme->get('Template') === $theme_slug) {
+				return 'activate';
+			}
+		}
+		
+		return 'install';
+	}
+
+	/**
 	 * Include Admin css
 	 *
 	 * @return void [description]
@@ -1212,10 +1274,12 @@ class Responsive_Block_Editor_Addons {
 			wp_enqueue_script(
 				'responsive-block-editor-addons-admin-jsfile',
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_URL . 'dist/responsive-block-editor-addons-getting-started.js',
-				array( 'jquery', 'react', 'react-dom' ),
+				array( 'jquery', 'react', 'react-dom', 'wp-components' ),
 				RESPONSIVE_BLOCK_EDITOR_ADDONS_VER,
 				true
 			);
+
+			wp_enqueue_style( 'wp-components' );
 
 			wp_enqueue_script( 'updates' );
 
@@ -1231,7 +1295,7 @@ class Responsive_Block_Editor_Addons {
 
 			$rst_path = 'responsive-add-ons/responsive-add-ons.php';
 
-			$nonce = add_query_arg(
+			$rst_nonce = add_query_arg(
 				array(
 					'action'        => 'activate',
 					'plugin'        => rawurlencode( $rst_path ),
@@ -1242,10 +1306,35 @@ class Responsive_Block_Editor_Addons {
 				network_admin_url( 'plugins.php' )
 			);
 
+			$rae_path = 'responsive-addons-for-elementor/responsive-addons-for-elementor.php';
+
+			$rae_nonce = add_query_arg(
+				array(
+					'action'        => 'activate',
+					'plugin'        => rawurlencode( $rae_path ),
+					'plugin_status' => 'all',
+					'paged'         => '1',
+					'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $rae_path ),
+				),
+				network_admin_url( 'plugins.php' )
+			);
+
+			$theme_slug = 'responsive';
+
+			$responsive_nonce = add_query_arg(
+				array(
+					'action'   => 'activate',
+					'stylesheet' => rawurlencode( $theme_slug ),
+					'_wpnonce' => wp_create_nonce( 'switch-theme_' . $theme_slug ),
+				),
+				admin_url( 'themes.php' )
+			);
+
 			wp_localize_script(
 				'responsive-block-editor-addons-admin-jsfile',
 				'rbealocalize',
 				array(
+					'pageurl'               => admin_url( 'post-new.php?post_type=page' ),
 					'ajaxurl'               => admin_url( 'admin-ajax.php' ),
 					'responsiveurl'         => RESPONSIVE_BLOCK_EDITOR_ADDONS_URL,
 					'siteurl'               => site_url(),
@@ -1264,10 +1353,19 @@ class Responsive_Block_Editor_Addons {
 					'rbea_blocks'           => $blocks,
 					'auto_block_recovery'   => get_option( 'rbea_auto_block_recovery', '1' ),
 					'global_inherit_from_theme' => get_option( 'rbea_global_inherit_from_theme', '0' ),
+					'default_content_width'  => get_option( 'rbea_default_content_width', 1340 ),
+					'default_container_padding' => get_option( 'rbea_default_container_padding', 10 ),
+					'default_container_gap'  => get_option( 'rbea_default_container_gap', 20 ),
 					'nonce'                 => wp_create_nonce( 'responsive_block_editor_ajax_nonce' ),
-					'rst_status'            => $this->rst_status(),
-					'rst_nonce'             => $nonce,
+					'rst_status'            => $this->rbea_plugin_status( $rst_path ),
+					'rae_status'            => $this->rbea_plugin_status( 'responsive-addons-for-elementor/responsive-addons-for-elementor.php' ),
+					'responsive_status'     => $this->get_responsive_theme_status(),
+					'rst_nonce'             => $rst_nonce,
+					'rae_nonce'             => $rae_nonce,
+					'responsive_nonce'      => $responsive_nonce,
 					'rst_redirect'          => admin_url( 'admin.php?page=responsive_add_ons' ),
+					'rae_redirect'          => admin_url( 'admin.php?page=rael_getting_started' ),
+					'responsive_redirect'   => admin_url( 'admin.php?page=responsive' ),
 				)
 			);
 
@@ -1643,7 +1741,6 @@ class Responsive_Block_Editor_Addons {
 
 		// Sanitize the boolean value.
 		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
-		$value = ( '1' === $value ) ? '1' : '0';
 
 		update_option( 'rbea_auto_block_recovery', $value );
 
@@ -1664,13 +1761,84 @@ class Responsive_Block_Editor_Addons {
 
 		// Sanitize the boolean value.
 		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
-		$value = ( '1' === $value ) ? '1' : '0';
 
 		update_option( 'rbea_global_inherit_from_theme', $value );
 
 		// Record the time when the toggle was changed
 		$timestamp = current_datetime()->format( 'c' );
 		update_option( 'rbea_global_inherit_from_theme_last_changed', $timestamp, 'no' );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Handles AJAX request to save the default content width setting.
+	 *
+	 * @since 2.1.5
+	 * @return void
+	 */
+	public function rbea_save_content_width() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the numeric value.
+		$value = intval( sanitize_text_field( wp_unslash( $_POST['value'] ) ) );
+		
+		// Ensure value is within reasonable bounds.
+		$value = max( 100, min( 2000, $value ) );
+
+		update_option( 'rbea_default_content_width', $value );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Handles AJAX request to save the default container padding setting.
+	 *
+	 * @since 2.1.5
+	 * @return void
+	 */
+	public function rbea_save_container_padding() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the numeric value.
+		$value = intval( sanitize_text_field( wp_unslash( $_POST['value'] ) ) );
+		
+		// Ensure value is within reasonable bounds.
+		$value = max( 0, min( 2000, $value ) );
+
+		update_option( 'rbea_default_container_padding', $value );
+
+		wp_send_json_success();
+	}
+
+	/**
+	 * Handles AJAX request to save the default container gap setting.
+	 *
+	 * @since 2.1.5
+	 * @return void
+	 */
+	public function rbea_save_container_gap() {
+		check_ajax_referer( 'responsive_block_editor_ajax_nonce', 'nonce' );
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error();
+		}
+
+		// Sanitize the numeric value.
+		$value = intval( sanitize_text_field( wp_unslash( $_POST['value'] ) ) );
+		
+		// Ensure value is within reasonable bounds.
+		$value = max( 0, min( 2000, $value ) );
+
+		update_option( 'rbea_default_container_gap', $value );
 
 		wp_send_json_success();
 	}
@@ -2130,7 +2298,7 @@ class Responsive_Block_Editor_Addons {
 			'responsive-block-editor-addons-inherit-theme',
 			'rbea_globals',
 			array(
-				'global_inherit_from_theme' => get_option( 'rbea_global_inherit_from_theme', '0' ),
+				'global_inherit_from_theme'              => get_option( 'rbea_global_inherit_from_theme', '0' ),
 				'global_inherit_from_theme_last_changed' => get_option( 'rbea_global_inherit_from_theme_last_changed', '' ),
 			)
 		);

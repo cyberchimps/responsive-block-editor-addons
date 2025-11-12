@@ -1,0 +1,39 @@
+
+// Responsive Block Icons Styles.
+
+.block-editor-block-variation-picker {
+    .components-placeholder__label {
+        .rbea-editor-icons {
+            fill: none;
+        }
+    }
+}
+
+.is-selected {
+    .block-editor-block-icon {
+        .rbea-editor-icons {
+            fill: none;
+
+            rect, path, line, circle {
+                stroke: #fff;
+            }
+        }
+    }
+    .rbea-editor-icon-selected-fill {
+        fill: #fff;
+    }
+    .rbea-editor-icon-selected-no-stroke {
+        stroke: none !important; //override the default stroke.
+    }
+    .rbea-editor-icon-selected-no-fill {
+        fill: none;
+    }
+}
+
+.block-editor-block-icon {
+    svg {
+        &.rbea-editor-icons {
+            fill: none;
+        }
+    }
+}

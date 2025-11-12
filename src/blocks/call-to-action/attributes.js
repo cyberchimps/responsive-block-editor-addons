@@ -1,4 +1,4 @@
-import { type } from "jquery";
+import { convertTruthyFalsyValue } from "../../utils/helper";
 
 const attributes = {
   block_id: {
@@ -794,7 +794,7 @@ const attributes = {
   },
   inheritFromTheme: {
     type: "boolean",
-    default: (typeof responsive_globals !== 'undefined' && responsive_globals.global_inherit_from_theme === '1'),
+    default: convertTruthyFalsyValue(responsive_globals?.global_inherit_from_theme),
   },
   inheritFromThemesaved: {
     type: "boolean",
@@ -804,5 +804,9 @@ const attributes = {
     type: "string",
     default: "",
   },
+  isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 };
 export default attributes;

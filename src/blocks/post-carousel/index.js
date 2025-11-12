@@ -3,10 +3,11 @@
  */
 
 // Import block dependencies and components
-import edit from "./components/edit";
+import Edit from "./components/edit";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -38,7 +39,11 @@ registerBlockType("responsive-block-editor-addons/post-carousel", {
     __("carousel", "responsive-block-editor-addons"),
     __("responsive", "responsive-block-editor-addons"),
   ],
-    example: {},
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
 
   getEditWrapperProps(attributes) {
     const { align } = attributes;
@@ -47,7 +52,9 @@ registerBlockType("responsive-block-editor-addons/post-carousel", {
     }
   },
 
-  edit,
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="post-carousel" /> : <Edit {...props} />;
+  },
 
   // Render via PHP
   save() {
