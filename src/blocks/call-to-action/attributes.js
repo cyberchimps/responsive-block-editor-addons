@@ -41,7 +41,6 @@ const attributes = {
   },
   ctaBackColor: {
     type: "string",
-    default: "#2091e1",
   },
   ctaColor: {
     type: "string",

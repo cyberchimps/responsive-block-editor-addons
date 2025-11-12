@@ -275,7 +275,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-accordion-item__outer-wrap": {
       "margin-bottom": generateCSSUnit(rowsGap, "px"),
     },
-    " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+    ".responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
       "grid-column-gap": generateCSSUnit(columnsGap, "px"),
       "grid-row-gap": generateCSSUnit(rowsGap, "px"),
     },
@@ -606,7 +606,7 @@ function EditorStyles(props) {
       "text-align": align,
     };
     selectors[
-      " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout"
+      ".responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout"
     ] = {
       "grid-template-columns": "repeat(" + columns + ", 1fr)",
     };

@@ -1,91 +1,113 @@
+const presets = [
+    {
+        id: 'cta-preset-center',
+        label: 'Center',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="80" fill="none" viewBox="0 0 108 80" > <rect width="107" height="79" x="0.5" y="0.5" fill="#fff" stroke="#D9D9D9" rx="3.5" ></rect> <path fill="#BFBFBF" d="M30 13h47v8H30zM42 62h23v6H42zM14 36h80v3H14zM30 43h48v3H30z" ></path> </svg>',
+        attributes: {
+            buttonAlignment: 'center',
+        },
+    },
+    {
+        id: 'cta-preset-left',
+        label: 'Left',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="80" fill="none" viewBox="0 0 108 80" > <rect width="107" height="79" x="0.5" y="0.5" fill="#fff" stroke="#D9D9D9" rx="3.5" ></rect> <path fill="#BFBFBF" d="M14 13h47v8H14zM14 62h23v6H14z"></path> <path fill="#D3D3D3" d="M14 36h80v3H14zM14 43h48v3H14z"></path> </svg>',
+        attributes: {
+            buttonAlignment: 'left',
+        },
+    },
+    {
+        id: 'cta-preset-right',
+        label: 'Right',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="80" fill="none" viewBox="0 0 108 80" > <rect width="107" height="79" x="0.5" y="0.5" fill="#fff" stroke="#D9D9D9" rx="3.5" ></rect> <path fill="#BFBFBF" d="M47 13h47v8H47zM71 62h23v6H71z"></path> <path fill="#D3D3D3" d="M14 36h80v3H14zM46 43h48v3H46z"></path> </svg>',
+        attributes: {
+            buttonAlignment: 'right',
+        },
+    },
+]
+
+const resetPreset = {
+    buttonAlignment: 'center',
+}
+
 const filledPreset = {
-    background: '#007cba',
-    color: '#ffffff',
-	hColor: '#ffffff',
-    borderStyle: 'none',
-    borderWidth: 0,
+    buttonbackgroundType: 'color',
+    ctaBackColor: '#000000',
+    ctaColor: '#ffffff',
 }
 
 const outlinedPreset = {
-    background: '#ffffff',
-    color: '#007cba',
-	hColor: '#007cba',
-    borderColor: '#007cba',
-	borderHColor: '#007cba',
-    borderStyle: 'solid',
-    borderWidth: 1,
+    buttonbackgroundType: 'color',
+    ctaBackColor: '#ffffff',
+    ctaColor: '#000000',
+    ctaBorderColor: '#000000',
 }
 
 const preset1BorderRadius = {
-    blockLeftRadius: 0,
-    blockLeftRadiusMobile: 0,
-    blockLeftRadiusTablet: 0,
-    blockRightRadius: 0,
-    blockRightRadiusMobile: 0,
-    blockRightRadiusTablet: 0,
-    blockTopRadius: 0,
-    blockTopRadiusMobile: 0,
-    blockTopRadiusTablet: 0,
-    blockBottomRadius: 0,
-    blockBottomRadiusMobile: 0,
-    blockBottomRadiusTablet: 0,
+    ctaBlockBottomRadius: 0,
+    ctaBlockBottomRadiusMobile: 0,
+    ctaBlockBottomRadiusTablet: 0,
+    ctaBlockLeftRadius: 0,
+    ctaBlockLeftRadiusMobile: 0,
+    ctaBlockLeftRadiusTablet: 0,
+    ctaBlockRightRadius: 0,
+    ctaBlockRightRadiusMobile: 0,
+    ctaBlockRightRadiusTablet: 0,
+    ctaBlockTopRadius: 0,
+    ctaBlockTopRadiusMobile: 0,
+    ctaBlockTopRadiusTablet: 0,
 }
 
 const preset2BorderRadius = {
-    blockLeftRadius: 10,
-    blockLeftRadiusMobile: 10,
-    blockLeftRadiusTablet: 10,
-    blockRightRadius: 10,
-    blockRightRadiusMobile: 10,
-    blockRightRadiusTablet: 10,
-    blockTopRadius: 10,
-    blockTopRadiusMobile: 10,
-    blockTopRadiusTablet: 10,
-    blockBottomRadius: 10,
-    blockBottomRadiusMobile: 10,
-    blockBottomRadiusTablet: 10,
+    ctaBlockBottomRadius: 10,
+    ctaBlockBottomRadiusMobile: 10,
+    ctaBlockBottomRadiusTablet: 10,
+    ctaBlockLeftRadius: 10,
+    ctaBlockLeftRadiusMobile: 10,
+    ctaBlockLeftRadiusTablet: 10,
+    ctaBlockRightRadius: 10,
+    ctaBlockRightRadiusMobile: 10,
+    ctaBlockRightRadiusTablet: 10,
+    ctaBlockTopRadius: 10,
+    ctaBlockTopRadiusMobile: 10,
+    ctaBlockTopRadiusTablet: 10,
 }
 
 const preset3BorderRadius = {
-    blockLeftRadius: 50,
-    blockLeftRadiusMobile: 50,
-    blockLeftRadiusTablet: 50,
-    blockRightRadius: 50,
-    blockRightRadiusMobile: 50,
-    blockRightRadiusTablet: 50,
-    blockTopRadius: 50,
-    blockTopRadiusMobile: 50,
-    blockTopRadiusTablet: 50,
-    blockBottomRadius: 50,
-    blockBottomRadiusMobile: 50,
-    blockBottomRadiusTablet: 50,
+    ctaBlockBottomRadius: 50,
+    ctaBlockBottomRadiusMobile: 50,
+    ctaBlockBottomRadiusTablet: 50,
+    ctaBlockLeftRadius: 50,
+    ctaBlockLeftRadiusMobile: 50,
+    ctaBlockLeftRadiusTablet: 50,
+    ctaBlockRightRadius: 50,
+    ctaBlockRightRadiusMobile: 50,
+    ctaBlockRightRadiusTablet: 50,
+    ctaBlockTopRadius: 50,
+    ctaBlockTopRadiusMobile: 50,
+    ctaBlockTopRadiusTablet: 50,
 }
 
-const resetPreset = {
-    background: '#007cba',
-    color: '#ffffff',
-    hColor: '#ffffff',
-    borderColor: '',
-	borderHColor: '',
-    borderStyle: 'none',
-    borderWidth: 0,
-    blockLeftRadius: 0,
-    blockLeftRadiusMobile: 0,
-    blockLeftRadiusTablet: 0,
-    blockRightRadius: 0,
-    blockRightRadiusMobile: 0,
-    blockRightRadiusTablet: 0,
-    blockTopRadius: 0,
-    blockTopRadiusMobile: 0,
-    blockTopRadiusTablet: 0,
-    blockBottomRadius: 0,
-    blockBottomRadiusMobile: 0,
-    blockBottomRadiusTablet: 0,
+const resetButtonPreset = {
+    buttonbackgroundType: 'color',
+    ctaBackColor: '',
+    ctaColor: '#ffffff',
+    ctaBlockBottomRadius: 4,
+    ctaBlockBottomRadiusMobile: 4,
+    ctaBlockBottomRadiusTablet: 4,
+    ctaBlockLeftRadius: 4,
+    ctaBlockLeftRadiusMobile: 4,
+    ctaBlockLeftRadiusTablet: 4,
+    ctaBlockRightRadius: 4,
+    ctaBlockRightRadiusMobile: 4,
+    ctaBlockRightRadiusTablet: 4,
+    ctaBlockTopRadius: 4,
+    ctaBlockTopRadiusMobile: 4,
+    ctaBlockTopRadiusTablet: 4,
     icon: '',
     icon_color: '',
 }
 
-const presets = [
+const buttonPreset = [
     {
         id: 'button-preset1',
         label: 'Preset1',
@@ -171,9 +193,9 @@ const presets = [
             ...preset2BorderRadius,
             ...outlinedPreset,
             icon: 'arrow-right',
-            icon_color: '#007cba',
+            icon_color: '#000000',
         },
     },
-];
+]
 
-export { presets, resetPreset };
+export { presets, resetPreset, buttonPreset, resetButtonPreset };

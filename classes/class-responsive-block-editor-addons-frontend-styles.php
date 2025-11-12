@@ -1972,7 +1972,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'continueLineHeight'           => '',
 				'continueFontWeight'           => '',
 				'continueTextTransform'        => '',
-				'continueFontFamily'           => 'ABeeZee',
+				'continueFontFamily'           => '',
 				'titleFontSize'                => '',
 				'titleFontSizeMobile'          => '',
 				'titleFontSizeTablet'          => '',
@@ -1983,9 +1983,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'metaLineHeight'               => '',
 				'metaFontWeight'               => '',
 				'metaTextTransform'            => '',
-				'titleFontFamily'              => 'ABeeZee',
-				'metaFontFamily'               => 'ABeeZee',
-				'excerptFontFamily'            => 'ABeeZee',
+				'titleFontFamily'              => '',
+				'metaFontFamily'               => '',
+				'excerptFontFamily'            => '',
 				'excerptFontSize'              => '',
 				'excerptLineHeight'            => '',
 				'excerptFontWeight'            => '',
@@ -4533,7 +4533,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttonText'                  => '',
 				'buttonUrl'                   => '',
 				'buttonAlignment'             => 'center',
-				'ctaBackColor'                => '#2091e1',
+				'ctaBackColor'                => '',
 				'ctaColor'                    => '#fff',
 				'buttonSize'                  => 'responsive-block-editor-addons-cta-button-size-medium',
 				'buttonShape'                 => 'responsive-block-editor-addons-cta-button-shape-rounded',
@@ -8808,6 +8808,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'iconRightRadiusMobile'      => 'iconBorderRadius',
 				'iconBottomRadiusMobile'     => 'iconBorderRadius',
 				'iconLeftRadiusMobile'       => 'iconBorderRadius',
+				'ctaBlockTopRadius'          => 'ctaBorderRadius',
+				'ctaBlockTopRadiusTablet'    => 'ctaBorderRadius',
+				'ctaBlockTopRadiusMobile'    => 'ctaBorderRadius',
+				'ctaBlockBottomRadius'       => 'ctaBorderRadius',
+				'ctaBlockBottomRadiusTablet' => 'ctaBorderRadius',
+				'ctaBlockBottomRadiusMobile' => 'ctaBorderRadius',
+				'ctaBlockLeftRadius'         => 'ctaBorderRadius',
+				'ctaBlockLeftRadiusTablet'   => 'ctaBorderRadius',
+				'ctaBlockLeftRadiusMobile'   => 'ctaBorderRadius',
+				'ctaBlockRightRadius'        => 'ctaBorderRadius',
+				'ctaBlockRightRadiusTablet'  => 'ctaBorderRadius',
+				'ctaBlockRightRadiusMobile'  => 'ctaBorderRadius',
 			);
 
 			// To populate new control values with existing control values for backward compatibility.
@@ -9130,15 +9142,18 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 
 				' .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button' => array(
-					'border-width'   => 999 !== $attr['resctaBorderWidth'] && 1 === $attr['ctaBorderWidth'] ? self::get_css_value( $attr['resctaBorderWidth'], 'px' ) : self::get_css_value( $attr['ctaBorderWidth'], 'px' ), // For compatibility with v1.3.2.
-					'border-style'   => 'empty' !== $attr['resctaBorderStyle'] && 'solid' === $attr['ctaBorderStyle'] ? $attr['resctaBorderStyle'] : $attr['ctaBorderStyle'], // For compatibility with v1.3.2.
-					'border-radius'  => 999 !== $attr['resctaBorderRadius'] && 0 === $attr['ctaBorderRadius'] ? self::get_css_value( $attr['resctaBorderRadius'], 'px' ) : self::get_css_value( $attr['ctaBorderRadius'], 'px' ), // For compatibility with v1.3.2.
-					'padding-top'    => 999 !== $attr['ctaVertPadding'] && 10 === $attr['ctaVpadding'] ? self::get_css_value( $attr['ctaVertPadding'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-bottom' => 999 !== $attr['ctaVertPadding'] && 10 === $attr['ctaVpadding'] ? self::get_css_value( $attr['ctaVertPadding'], 'px' ) : self::get_css_value( $attr['ctaVpadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-left'   => 999 !== $attr['ctaHrPadding'] && 14 === $attr['ctaHpadding'] ? self::get_css_value( $attr['ctaHrPadding'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ), // For compatibility with v1.3.2.
-					'padding-right'  => 999 !== $attr['ctaHrPadding'] && 14 === $attr['ctaHpadding'] ? self::get_css_value( $attr['ctaHrPadding'], 'px' ) : self::get_css_value( $attr['ctaHpadding'], 'px' ), // For compatibility with v1.3.2.
-					'font-size'      => self::get_css_value( $attr['resctaFontSize'], 'px' ),
-					'font-weight'    => $attr['resctaFontWeight'],
+					'border-width'               => 999 !== $attr['resctaBorderWidth'] && 1 === $attr['ctaBorderWidth'] ? self::get_css_value( $attr['resctaBorderWidth'], 'px' ) : self::get_css_value( $attr['ctaBorderWidth'], 'px' ), // For compatibility with v1.3.2.
+					'border-style'               => 'empty' !== $attr['resctaBorderStyle'] && 'solid' === $attr['ctaBorderStyle'] ? $attr['resctaBorderStyle'] : $attr['ctaBorderStyle'], // For compatibility with v1.3.2.
+					'border-top-left-radius'     => self::get_css_value( $attr['ctaBlockTopRadius'], 'px'),
+					'border-top-right-radius'    => self::get_css_value( $attr['ctaBlockRightRadius'], 'px'),
+					'border-bottom-right-radius' => self::get_css_value( $attr['ctaBlockBottomRadius'], 'px'),
+					'border-bottom-left-radius'  => self::get_css_value( $attr['ctaBlockLeftRadius'], 'px'),
+					'padding-top'                => self::get_css_value( $attr['ctaButtonTopPadding'], 'px'),
+					'padding-bottom'             => self::get_css_value( $attr['ctaButtonBottomPadding'], 'px'),
+					'padding-left'               => self::get_css_value( $attr['ctaButtonLeftPadding'], 'px'),
+					'padding-right'              => self::get_css_value( $attr['ctaButtonRightPadding'], 'px'),
+					'font-size'                  => self::get_css_value( $attr['resctaFontSize'], 'px' ),
+					'font-weight'                => $attr['resctaFontWeight'],
 				),
 
 				' .responsive-block-editor-addons-ifb-cta' => array(
@@ -9222,10 +9237,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['ctaTextBottomSpacingMobile'], 'px' ),
 				),
 				' .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button' => array(
-					'padding-top'    => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingMobile'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['ctaHpaddingMobile'], 'px' ),
+					'padding-top'                => self::get_css_value( $attr['ctaButtonTopPaddingTablet'], 'px'),
+					'padding-bottom'             => self::get_css_value( $attr['ctaButtonBottomPaddingTablet'], 'px'),
+					'padding-left'               => self::get_css_value( $attr['ctaButtonLeftPaddingTablet'], 'px'),
+					'padding-right'              => self::get_css_value( $attr['ctaButtonRightPaddingTablet'], 'px'),
+					'border-top-left-radius'     => self::get_css_value( $attr['ctaBlockTopRadiusMobile'], 'px'),
+					'border-top-right-radius'    => self::get_css_value( $attr['ctaBlockRightRadiusMobile'], 'px'),
+					'border-bottom-right-radius' => self::get_css_value( $attr['ctaBlockBottomRadiusMobile'], 'px'),
+					'border-bottom-left-radius'  => self::get_css_value( $attr['ctaBlockLeftRadiusMobile'], 'px'),
 				),
 				' .responsive-block-editor-addons-cta-image' => array(
 					'background-position' => $background_position_focal_mobile,
@@ -9311,10 +9330,14 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-bottom' => self::get_css_value( $attr['ctaTextBottomSpacingTablet'], 'px' ),
 				),
 				' .responsive-block-editor-addons-infobox-cta-link.responsive-block-editor-addons-ifb-cta-button' => array(
-					'padding-top'    => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
-					'padding-bottom' => self::get_css_value( $attr['ctaVpaddingTablet'], 'px' ),
-					'padding-left'   => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
-					'padding-right'  => self::get_css_value( $attr['ctaHpaddingTablet'], 'px' ),
+					'padding-top'                => self::get_css_value( $attr['ctaButtonTopPaddingMobile'], 'px'),
+					'padding-bottom'             => self::get_css_value( $attr['ctaButtonBottomPaddingMobile'], 'px'),
+					'padding-left'               => self::get_css_value( $attr['ctaButtonLeftPaddingMobile'], 'px'),
+					'padding-right'              => self::get_css_value( $attr['ctaButtonRightPaddingMobile'], 'px'),
+					'border-top-left-radius'     => self::get_css_value( $attr['ctaBlockTopRadiusTablet'], 'px'),
+					'border-top-right-radius'    => self::get_css_value( $attr['ctaBlockRightRadiusTablet'], 'px'),
+					'border-bottom-right-radius' => self::get_css_value( $attr['ctaBlockBottomRadiusTablet'], 'px'),
+					'border-bottom-left-radius'  => self::get_css_value( $attr['ctaBlockLeftRadiusTablet'], 'px'),
 				),
 				' .responsive-block-editor-addons-cta-image' => array(
 					'background-position' => $background_position_focal_tablet,
@@ -9619,6 +9642,30 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'resheadFontStyle'              => '',
 				'ressubHeadTextTransform'       => '',
 				'ressubHeadFontStyle'           => '',
+				'ctaBlockTopRadius'             => '',
+				'ctaBlockTopRadiusTablet'       => '',
+				'ctaBlockTopRadiusMobile'       => '',
+				'ctaBlockBottomRadius'          => '',
+				'ctaBlockBottomRadiusTablet'    => '',
+				'ctaBlockBottomRadiusMobile'    => '',
+				'ctaBlockLeftRadius'            => '',
+				'ctaBlockLeftRadiusTablet'      => '',
+				'ctaBlockLeftRadiusMobile'      => '',
+				'ctaBlockRightRadius'           => '',
+				'ctaBlockRightRadiusTablet'     => '',
+				'ctaBlockRightRadiusMobile'     => '',
+				'ctaButtonTopPadding'           => 10,
+				'ctaButtonBottomPadding'        => 10,
+				'ctaButtonLeftPadding'          => 14,
+				'ctaButtonRightPadding'         => 14,
+				'ctaButtonTopPaddingTablet'     => 10,
+				'ctaButtonBottomPaddingTablet'  => 10,
+				'ctaButtonLeftPaddingTablet'    => 14,
+				'ctaButtonRightPaddingTablet'   => 14,
+				'ctaButtonTopPaddingMobile'     => 10,
+				'ctaButtonBottomPaddingMobile'  => 10,
+				'ctaButtonLeftPaddingMobile'    => 14,
+				'ctaButtonRightPaddingMobile'   => 14,
 			);
 		}
 

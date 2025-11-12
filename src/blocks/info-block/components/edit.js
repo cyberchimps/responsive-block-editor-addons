@@ -175,7 +175,7 @@ export default class Edit extends Component {
             <div className="responsive-block-editor-addons-ifb-image">
               <div className="responsive-block-editor-addons-ifb-image-content">
 
-                <img className="" src={iconImage.url} alt={iconImage.alt} />
+                <img className="" src={ iconImage === null || iconImage?.url === '' ? responsive_globals.plugin_url + 'admin/images/box1.jpg' : iconImage?.url } alt={ iconImage === null ||iconImage?.alt === '' ? 'Placeholder Image' : iconImage?.alt } />
               </div>
             </div>
           </div>
