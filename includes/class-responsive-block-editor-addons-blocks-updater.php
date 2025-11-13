@@ -65,7 +65,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			),
 			array(
 				'key'      => 'advance-columns',
-				'title'    => 'Advance Columns',
+				'title'    => 'Advanced Columns',
 				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/advanced-column/',
 				'demo'     => 'https://cyberchimps.com/responsive-blocks/advanced-columns/',
 				'category' => 'content',
@@ -73,7 +73,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			),
 			array(
 				'key'      => 'advanced-heading',
-				'title'    => 'Advance Heading',
+				'title'    => 'Advanced Heading',
 				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/advanced-heading/',
 				'demo'     => 'https://cyberchimps.com/responsive-blocks/advanced-heading/',
 				'category' => 'content',
@@ -81,7 +81,7 @@ class Responsive_Block_Editor_Addons_Blocks_Updater {
 			),
 			array(
 				'key'      => 'advanced-text',
-				'title'    => 'Advance Text',
+				'title'    => 'Advanced Text',
 				'docs'     => 'https://cyberchimps.com/docs/responsive-blocks/blocks/advanced-text/',
 				'demo'     => 'https://cyberchimps.com/responsive-blocks/advanced-text/',
 				'category' => 'content',

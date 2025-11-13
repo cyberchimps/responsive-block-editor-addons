@@ -20,7 +20,7 @@ const presets = [
     {
         id: 'info-preset-image-center',
         label: 'Centered with Image',
-        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="80" fill="none" viewBox="0 0 108 80" > <rect width="107" height="79" x="0.5" y="0.5" fill="#fff" stroke="#D9D9D9" rx="3.5" ></rect> <path fill="#BFBFBF" d="M31 42h47v8H31z"></path> <path fill="#D3D3D3" d="M14 54h80v3H14zM30 61h48v3H30z"></path> <path fill="#B2B2B2" fillOpacity="0.3" d="M42 12h24v24H42z"></path> <path fill="#B2B2B2" d="M59.5 28.278v-8.556c0-.672-.55-1.222-1.222-1.222h-8.556c-.672 0-1.222.55-1.222 1.222v8.556c0 .672.55 1.222 1.222 1.222h8.556c.672 0 1.222-.55 1.222-1.222m-7.639-3.361 1.528 1.84L55.528 24l2.75 3.667h-8.556z" ></path> </svg>',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="80" viewBox="0 0 108 80" fill="none"> <rect x="0.5" y="0.5" width="107" height="79" rx="3.5" fill="white" stroke="#D9D9D9"/> <rect x="31" y="42" width="47" height="8" fill="#BFBFBF"/> <rect x="14" y="54" width="80" height="3" fill="#D3D3D3"/> <rect x="30" y="61" width="48" height="3" fill="#D3D3D3"/> <rect width="24" height="24" transform="translate(42 12)" fill="#B2B2B2" fill-opacity="0.3"/> <path d="M59.5 28.2778V19.7222C59.5 19.05 58.95 18.5 58.2778 18.5H49.7222C49.05 18.5 48.5 19.05 48.5 19.7222V28.2778C48.5 28.95 49.05 29.5 49.7222 29.5H58.2778C58.95 29.5 59.5 28.95 59.5 28.2778ZM51.8611 24.9167L53.3889 26.7561L55.5278 24L58.2778 27.6667H49.7222L51.8611 24.9167Z" fill="#B2B2B2"/> </svg>',
         attributes: {
             resheadingAlign: 'center',
             source_type: 'image',
@@ -29,7 +29,7 @@ const presets = [
     {
         id: 'info-preset-image-left',
         label: 'Left with Image',
-        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="80" fill="none" viewBox="0 0 108 80" > <rect width="107" height="79" x="0.5" y="0.5" fill="#fff" stroke="#D9D9D9" rx="3.5" ></rect> <path fill="#BFBFBF" d="M14 42h47v8H14z"></path> <path fill="#D3D3D3" d="M14 54h80v3H14zM14 61h48v3H14z"></path> <path fill="#B2B2B2" fillOpacity="0.3" d="M14 12h24v24H14z"></path> <path fill="#B2B2B2" d="M31.5 28.278v-8.556c0-.672-.55-1.222-1.222-1.222h-8.556c-.672 0-1.222.55-1.222 1.222v8.556c0 .672.55 1.222 1.222 1.222h8.556c.672 0 1.222-.55 1.222-1.222m-7.639-3.361 1.528 1.84L27.528 24l2.75 3.667h-8.556z" ></path> </svg>',
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" width="108" height="80" viewBox="0 0 108 80" fill="none"> <rect x="0.5" y="0.5" width="107" height="79" rx="3.5" fill="white" stroke="#D9D9D9"/> <rect x="14" y="42" width="47" height="8" fill="#BFBFBF"/> <rect x="14" y="54" width="80" height="3" fill="#D3D3D3"/> <rect x="14" y="61" width="48" height="3" fill="#D3D3D3"/> <rect width="24" height="24" transform="translate(14 12)" fill="#B2B2B2" fill-opacity="0.3"/> <path d="M31.5 28.2778V19.7222C31.5 19.05 30.95 18.5 30.2778 18.5H21.7222C21.05 18.5 20.5 19.05 20.5 19.7222V28.2778C20.5 28.95 21.05 29.5 21.7222 29.5H30.2778C30.95 29.5 31.5 28.95 31.5 28.2778ZM23.8611 24.9167L25.3889 26.7561L27.5278 24L30.2778 27.6667H21.7222L23.8611 24.9167Z" fill="#B2B2B2"/> </svg>',
         attributes: {
             resheadingAlign: 'left',
             source_type: 'image',
