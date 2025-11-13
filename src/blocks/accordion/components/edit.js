@@ -572,7 +572,10 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     const accordionGeneralSettings = () => {
       return (
         <>
-        <PanelBody>
+        <PanelBody
+          title={__("General", "responsive-block-editor-addons")}
+          initialOpen={true}
+        >
           <div className="responsive-block-editor-addons-grid-2-layout">
             <RbeaTabRadioControl
               label={__("Layout", "responsive-block-editor-addons")}
