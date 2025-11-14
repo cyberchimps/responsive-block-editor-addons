@@ -60,15 +60,15 @@ const EditorSettings = () => {
       </SettingsCard>
 
       <SettingsCard className="mt-5" title={__( 'Default Content Width', 'responsive-block-editor-addons' )} description={__( "Set the default width for the RB Container block. This value will apply automatically unless you override it in individual containers.", 'responsive-block-editor-addons' )}>
-        <SettingsInput inputValue={contentWidth} setInput={setContentWidth} unit="PX" maxValue="2000" actionType="rbea_save_content_width" />
+        <SettingsInput inputValue={contentWidth} setInput={setContentWidth} unit="PX" maxValue="1600" minValue={0} actionType="rbea_save_content_width" />
       </SettingsCard>
 
       <SettingsCard className="mt-5" title={__( 'Container Padding', 'responsive-block-editor-addons' )} description={__( 'Define the default padding applied inside the RB Container block. You can adjust it per container when needed.', 'responsive-block-editor-addons' )}>
-        <SettingsInput inputValue={containerPadding} setInput={setContainerPadding} unit="PX" actionType="rbea_save_container_padding" />
+        <SettingsInput inputValue={containerPadding} setInput={setContainerPadding} unit="PX" maxValue="100" minValue={0} actionType="rbea_save_container_padding" />
       </SettingsCard>
 
       <SettingsCard className="mt-5" title={__( 'Container Elements Gap', 'responsive-block-editor-addons' )} description={__( 'Control the default spacing between rows and columns inside the RB Container block.', 'responsive-block-editor-addons' )}>
-        <SettingsInput inputValue={containerGap} setInput={setContainerGap} unit="PX" actionType="rbea_save_container_gap" />
+        <SettingsInput inputValue={containerGap} setInput={setContainerGap} unit="PX" maxValue="200" minValue={0} actionType="rbea_save_container_gap" />
       </SettingsCard>
     </>
 
@@ -89,7 +89,7 @@ const SettingsCard = ({ title, description, children, className = "" }) => {
   );
 };
 
-const SettingsInput = ({ inputValue, setInput, unit, actionType, maxValue = '' }) => {
+const SettingsInput = ({ inputValue, setInput, unit, actionType, maxValue = '', minValue = 0 }) => {
 
   // Create the debounced function once.
   const debouncedChangeHandler = useMemo(
@@ -107,9 +107,20 @@ const SettingsInput = ({ inputValue, setInput, unit, actionType, maxValue = '' }
   }, [debouncedChangeHandler]);
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setInput(value);
-    debouncedChangeHandler(value);
+    let value = e.target.value;
+    if (value === '') {
+      setInput('');
+      return;
+    }
+    const numValue = Number(value);
+    if (!isNaN(numValue)) {
+      const maxNum = maxValue ? Number(maxValue) : Infinity;
+      const clampedValue = Math.max(minValue, Math.min(maxNum, numValue));
+      setInput(clampedValue);
+      debouncedChangeHandler(clampedValue);
+    } else {
+      setInput(inputValue);
+    }
   };
 
   return (
@@ -119,6 +130,7 @@ const SettingsInput = ({ inputValue, setInput, unit, actionType, maxValue = '' }
         type="number"
         onChange={handleChange}
         value={inputValue}
+        min={minValue}
         {...(maxValue ? { max: maxValue } : {})}
       />
       <p className="text-sm leading-5 font-normal text-[#64748B]">{unit}</p>
