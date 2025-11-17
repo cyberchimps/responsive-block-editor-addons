@@ -1431,10 +1431,10 @@ img {
     border-radius: 10px;
   }
   .components-form-toggle__input {
-    cursor: not-allowed !important;
+    cursor: not-allowed;
     &::before,
             &::after {
-      cursor: not-allowed !important;
+      cursor: not-allowed;
     }
   }
 }
