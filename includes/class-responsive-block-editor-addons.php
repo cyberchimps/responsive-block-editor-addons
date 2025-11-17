@@ -1741,6 +1741,7 @@ class Responsive_Block_Editor_Addons {
 
 		// Sanitize the boolean value.
 		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$value = ( '1' === $value ) ? '1' : '0';
 
 		update_option( 'rbea_auto_block_recovery', $value );
 
@@ -1760,7 +1761,8 @@ class Responsive_Block_Editor_Addons {
 		}
 
 		// Sanitize the boolean value.
-		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$raw_value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		$value = ( '1' === $raw_value ) ? '1' : '0';
 
 		update_option( 'rbea_global_inherit_from_theme', $value );
 
@@ -2294,11 +2296,13 @@ class Responsive_Block_Editor_Addons {
 		);
 
 		// Localize script with global inherit from theme settings
+		$global_inherit_value = get_option( 'rbea_global_inherit_from_theme', '0' );
+		$global_inherit_value = ( '1' === (string) $global_inherit_value || 1 === $global_inherit_value ) ? '1' : '0';
 		wp_localize_script(
 			'responsive-block-editor-addons-inherit-theme',
 			'rbea_globals',
 			array(
-				'global_inherit_from_theme'              => get_option( 'rbea_global_inherit_from_theme', '0' ),
+				'global_inherit_from_theme' => $global_inherit_value,
 				'global_inherit_from_theme_last_changed' => get_option( 'rbea_global_inherit_from_theme_last_changed', '' ),
 			)
 		);

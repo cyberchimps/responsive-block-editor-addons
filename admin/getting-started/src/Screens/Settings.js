@@ -52,9 +52,9 @@ const EditorSettings = () => {
         <ToggleControl
           __nextHasNoMarginBottom
           checked={buttonInherit}
-          onChange={() => {
-            setButtonInherit(!buttonInherit);
-            saveSetting(!buttonInherit, 'rbea_toggle_global_inherit_from_theme');
+          onChange={(newValue) => {
+            setButtonInherit(newValue);
+            saveSetting(newValue, 'rbea_toggle_global_inherit_from_theme');
           }}
         />
       </SettingsCard>
@@ -95,7 +95,6 @@ const SettingsInput = ({ inputValue, setInput, unit, actionType, maxValue = '', 
   const debouncedChangeHandler = useMemo(
     () =>
       debounce((value) => {
-        console.log("Debounced value:", value);
         saveSetting(value, actionType);
       }, 800),
     [actionType]
@@ -139,11 +138,24 @@ const SettingsInput = ({ inputValue, setInput, unit, actionType, maxValue = '', 
 };
 
 const saveSetting = async (settingValue, actionType) => {
-
   const formData = new FormData();
   formData.append('action', actionType);
   formData.append('nonce', rbealocalize.nonce);
-  formData.append('value', settingValue);
+  
+  const toggleActions = [
+    'rbea_toggle_auto_block_recovery',
+    'rbea_toggle_global_inherit_from_theme',
+  ];
+
+  const shouldNormalizeBoolean = toggleActions.includes(actionType);
+  let finalValue = settingValue;
+
+  if (shouldNormalizeBoolean) {
+    const boolValue = convertTruthyFalsyValue(settingValue);
+    finalValue = boolValue ? '1' : '0';
+  }
+
+  formData.append('value', finalValue);
 
   try {
     const res = await fetch(rbealocalize.ajaxurl, { method: 'POST', body: formData });
