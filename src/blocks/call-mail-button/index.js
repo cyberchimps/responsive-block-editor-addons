@@ -11,6 +11,7 @@ import "./styles/style.scss";
 import "./styles/styles.editor.scss";
 //Import Block Icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -37,30 +38,12 @@ registerBlockType("responsive-block-editor-addons/call-mail-button", {
   attributes: attributes,
   example: {
     attributes: {
-      callText: "Call Alex",
-      mailText: "Send Mail",
-      phone: "+1234567890",
-      mail: "alex@example.com",
-      showCallButton: true,
-      showMailButton: true,
-      buttonToShow: "call",
-      isValidNumber: true,
-      isValidMail: true,
-      buttonSize: "responsive-block-editor-addons-call-mail-button-size-medium",
-      buttonWidthType: "fixed",
-      buttonWidth: 200,
-      buttonWidthMobile: 160,
-      buttonWidthTablet: 180,
-      icon: "📞",
-      iconPosition: "left",
-      iconSize: 18,
-      iconSizeMobile: 16,
-      iconSizeTablet: 16,
+      isPreview: true,
     }
   },  
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="call-mail-button" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

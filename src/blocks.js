@@ -167,21 +167,12 @@ import "./extensions/attributes.js";
 import "./utils/accordionOneOpen.js"
 import "./utils/responsiveTabSync.js"
 
-// Auto Block Recovery System
-import autoBlockRecovery from './utils/autoBlockRecovery';
+// Auto Block Recovery System and Inherit from Theme.
+import {initAutoBlockRecovery, initGlobalInheritFromThemeSystem} from './utils/settings.js'
 import domReady from '@wordpress/dom-ready';
-
-// Initialize Auto Block Recovery - Only if enabled in settings
-export const initAutoBlockRecovery = () => {
-	// Check if auto block recovery is enabled
-	const isAutoRecoveryEnabled = responsive_globals && responsive_globals.auto_block_recovery === '1';
-	
-	if ( isAutoRecoveryEnabled && window._wpLoadBlockEditor ) {
-		window._wpLoadBlockEditor.then( () => {
-			autoBlockRecovery();
-		} );
-	}
-};
 
 // Initialize auto block recovery only if enabled
 domReady( initAutoBlockRecovery );
+
+// Initialize global inherit from theme system
+domReady( initGlobalInheritFromThemeSystem );

@@ -1,4 +1,4 @@
-import { type } from "jquery";
+import { convertTruthyFalsyValue } from "../../utils/helper";
 
 const attributes = {
   block_id: {
@@ -41,7 +41,6 @@ const attributes = {
   },
   ctaBackColor: {
     type: "string",
-    default: "#2091e1",
   },
   ctaColor: {
     type: "string",
@@ -791,6 +790,22 @@ const attributes = {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  inheritFromTheme: {
+    type: "boolean",
+    default: convertTruthyFalsyValue(responsive_globals?.global_inherit_from_theme),
+  },
+  inheritFromThemesaved: {
+    type: "boolean",
+    default: false,
+  },
+  inheritFromThemeLocalTimestamp: {
+    type: "string",
+    default: "",
+  },
+  isPreview: {
+		type: 'boolean',
+		default: false,
+	},
 };
 export default attributes;

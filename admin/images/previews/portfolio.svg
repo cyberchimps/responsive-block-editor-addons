@@ -1,0 +1,24 @@
+<svg width="311" height="268" viewBox="0 0 311 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="310" height="267" fill="#F9F9F9" stroke="#EEEEEE"/>
+<rect x="40.5" y="40.5" width="111" height="89" stroke="#2563EB" stroke-opacity="0.3"/>
+<rect width="92" height="25" transform="translate(50 50)" fill="#2563EB" fill-opacity="0.14"/>
+<path d="M101 66.3889V58.6111C101 58 100.5 57.5 99.8889 57.5H92.1111C91.5 57.5 91 58 91 58.6111V66.3889C91 67 91.5 67.5 92.1111 67.5H99.8889C100.5 67.5 101 67 101 66.3889ZM94.0556 63.3333L95.4444 65.0056L97.3889 62.5L99.8889 65.8333H92.1111L94.0556 63.3333Z" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="50" y="79" width="70" height="8" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="50" y="96" width="92" height="3" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="50" y="101" width="48" height="3" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="50" y="112" width="38" height="8" rx="2" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="40.5" y="137.5" width="111" height="89" stroke="#2563EB" stroke-opacity="0.3"/>
+<rect width="92" height="25" transform="translate(50 147)" fill="#2563EB" fill-opacity="0.14"/>
+<path d="M101 163.389V155.611C101 155 100.5 154.5 99.8889 154.5H92.1111C91.5 154.5 91 155 91 155.611V163.389C91 164 91.5 164.5 92.1111 164.5H99.8889C100.5 164.5 101 164 101 163.389ZM94.0556 160.333L95.4444 162.006L97.3889 159.5L99.8889 162.833H92.1111L94.0556 160.333Z" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="50" y="176" width="70" height="8" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="50" y="193" width="92" height="3" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="50" y="198" width="48" height="3" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="50" y="209" width="38" height="8" rx="2" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="159.5" y="40.5" width="111" height="89" stroke="#2563EB" stroke-opacity="0.3"/>
+<rect width="92" height="25" transform="translate(169 50)" fill="#2563EB" fill-opacity="0.14"/>
+<path d="M220 66.3889V58.6111C220 58 219.5 57.5 218.889 57.5H211.111C210.5 57.5 210 58 210 58.6111V66.3889C210 67 210.5 67.5 211.111 67.5H218.889C219.5 67.5 220 67 220 66.3889ZM213.056 63.3333L214.444 65.0056L216.389 62.5L218.889 65.8333H211.111L213.056 63.3333Z" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="169" y="79" width="70" height="8" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="169" y="96" width="92" height="3" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="169" y="101" width="48" height="3" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="169" y="112" width="38" height="8" rx="2" fill="#2563EB" fill-opacity="0.3"/>
+</svg>

@@ -255,11 +255,12 @@ function EditorStyles(props) {
   }else {
     headingBgColorTemp = '#0984ff'
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
       "z-index": zIndex,
-		  "opacity": hideWidget? 0.2 : 1,
+		  "opacity": hideWidget && isOn ? 0.2 : 1,
       display: "flex",
       "background-color":
         backgroundType == "color"
@@ -403,7 +404,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-      "opacity": hideWidgetMobile ? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "background-position": getImagePostionCSS(backgroundPositionFocalMobile),
       "background-size": backgroundSizeMobile,
     },
@@ -484,7 +485,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-      "opacity": hideWidgetTablet ? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "background-position": getImagePostionCSS(backgroundPositionFocalTablet),
       "background-size": backgroundSizeTablet,
     },

@@ -44,3 +44,21 @@ export const isTemporaryImage = (id, url) => !id && isBlobURL(url);
 
 // Define accepted media for gallery blocks.
 export const ALLOWED_GALLERY_MEDIA_TYPES = ["image"];
+
+export const convertTruthyFalsyValue = ( value ) => {
+  switch( value ) {
+    case "0":
+    case 0:
+    case false:
+    case "false":
+    case null:
+    case undefined:
+    case "":
+      return false;
+    case "1":
+    case 1:
+    case true:
+    case "true":
+      return true;
+  }
+};

@@ -26,6 +26,8 @@ import RbeaMediaUploadControl from "../../../utils/components/rbea-media-upload-
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
+import PresetControl from "../../../settings-components/PresetSettings";
+import { presets, resetPreset, buttonPreset, resetButtonPreset } from './presets';
 <RbeaSupportControl blockSlug={"multi-buttons"} />
 
 // Setup the block
@@ -243,6 +245,9 @@ export default class Inspector extends Component {
       buttonTextTextTransform,
       buttonTextFontStyle,
       hasImagePositionMigrated,
+      inheritFromTheme,
+      inheritFromThemesaved,
+      inheritFromThemeLocalTimestamp,
     } = this.props.attributes;
     const { setAttributes } = this.props;
 
@@ -585,6 +590,37 @@ export default class Inspector extends Component {
                   );
                 }}
               </TabPanel>
+            </PanelBody>
+            <PanelBody
+              title={__("Presets", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <PresetControl
+                label={__('Select Preset', 'responsive-block-editor-addons')}
+                presets={presets}
+                onApply={(newAttrs) => setAttributes(newAttrs)}
+                activeId={null}
+                isResetAllowed={true}
+                resetAttr={resetPreset}
+                onResetApply={(newAttrs) => setAttributes(newAttrs)}
+              />
+            </PanelBody>
+            <PanelBody
+              title={__("Button Settings", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <ToggleControl
+                label={__("Inherit from Theme", "responsive-block-editor-addons")}
+                checked={inheritFromTheme}
+                onChange={(next) => {
+                  setAttributes({
+                    inheritFromTheme: next,
+                    inheritFromThemesaved: next,
+                    inheritFromThemeLocalTimestamp: new Date().toISOString(),
+                  });
+                }}
+                __nextHasNoMarginBottom
+              />
             </PanelBody>
             <RbeaSupportControl blockSlug={"responsive-block-editor-addons-cta"} />
           </InspectorTab>
@@ -1006,6 +1042,19 @@ export default class Inspector extends Component {
                 ]}
                 defaultValue={"text"}
               />
+
+              {resctaType === 'button' && (
+                <PresetControl
+                  label={__('Button Shape', 'responsive-block-editor-addons')}
+                  presets={buttonPreset}
+                  onApply={(newAttrs) => setAttributes(newAttrs)}
+                  activeId={null}
+                  isResetAllowed={true}
+                  resetAttr={resetButtonPreset}
+                  onResetApply={(newAttrs) => setAttributes(newAttrs)}
+                />
+              )}
+
               <ButtonSettingsControl
                 {...this.props}
                 showMarginControls={false}
@@ -1118,44 +1167,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
           
           <PanelBody
               title={__("Z Index", "responsive-block-editor-addons")}

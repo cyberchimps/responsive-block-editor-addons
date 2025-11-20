@@ -711,7 +711,6 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'continueFontFamily'          => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'continueFontWeight'          => array(
 					'type'    => 'string',
@@ -783,15 +782,12 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				),
 				'titleFontFamily'             => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'metaFontFamily'              => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'excerptFontFamily'           => array(
 					'type'    => 'string',
-					'default' => 'ABeeZee',
 				),
 				'excerptFontSize'             => array(
 					'type'    => 'number',
@@ -1196,6 +1192,10 @@ function responsive_block_editor_addons_register_block_core_latest_posts() {
 				'continueFontStyle'  => array(
 					'type'	=> 'string',
 					'default' => '',
+				),
+				'isPreview' => array(
+					'type'    => 'boolean',
+					'default' => false,
 				),
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts',

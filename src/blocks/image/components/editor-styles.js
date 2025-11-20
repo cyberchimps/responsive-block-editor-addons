@@ -218,10 +218,11 @@ function EditorStyles(props) {
   if ("outset" === imageboxShadowHoverPosition) {
     hoverboxShadowPositionCSS = "";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     "": {
-        "opacity": hideWidget ? 0.2 : 1,
+        "opacity": hideWidget && isOn ? 0.2 : 1,
         "padding-top": generateCSSUnit(imageTopPadding, "px"),
         "padding-bottom": generateCSSUnit(imageBottomPadding, "px"),
         "padding-left": generateCSSUnit(imageLeftPadding, "px"),
@@ -354,7 +355,7 @@ function EditorStyles(props) {
   };
   var tablet_selectors = {
     "": {
-        "opacity": hideWidgetTablet ? 0.2 : 1,
+        "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
         "padding-top": generateCSSUnit(imageTopPaddingTablet, "px"),
         "padding-bottom": generateCSSUnit(imageBottomPaddingTablet, "px"),
         "padding-left": generateCSSUnit(imageLeftPaddingTablet, "px"),
@@ -416,7 +417,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-        "opacity": hideWidgetMobile ? 0.2 : 1,
+        "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
         "padding-top": generateCSSUnit(imageTopPaddingMobile, "px"),
         "padding-bottom": generateCSSUnit(imageBottomPaddingMobile, "px"),
         "padding-left": generateCSSUnit(imageLeftPaddingMobile, "px"),

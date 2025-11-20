@@ -1,0 +1,25 @@
+<svg width="311" height="268" viewBox="0 0 311 268" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="310" height="267" fill="#F9F9F9" stroke="#EEEEEE"/>
+<rect x="70" y="109" width="50" height="10" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="191" y="109" width="50" height="10" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="57" y="138" width="78" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="178" y="138" width="78" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="57" y="146" width="78" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="178" y="146" width="78" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="73" y="154" width="45" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="80" y="172" width="6" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="92" y="172" width="6" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="104" y="172" width="6" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="201" y="172" width="6" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="213" y="172" width="6" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="225" y="172" width="6" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="194" y="154" width="45" height="6" fill="#2563EB" fill-opacity="0.14"/>
+<rect x="79" y="123" width="33" height="3" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="200" y="123" width="33" height="3" fill="#2563EB" fill-opacity="0.3"/>
+<rect x="40.5" y="50.5" width="109" height="149" stroke="#2563EB" stroke-opacity="0.3"/>
+<rect x="161.5" y="50.5" width="109" height="149" stroke="#2563EB" stroke-opacity="0.3"/>
+<rect width="36" height="36" transform="translate(77 66)" fill="#2563EB" fill-opacity="0.14"/>
+<path d="M100.5 88.2778V79.7222C100.5 79.05 99.95 78.5 99.2778 78.5H90.7222C90.05 78.5 89.5 79.05 89.5 79.7222V88.2778C89.5 88.95 90.05 89.5 90.7222 89.5H99.2778C99.95 89.5 100.5 88.95 100.5 88.2778ZM92.8611 84.9167L94.3889 86.7561L96.5278 84L99.2778 87.6667H90.7222L92.8611 84.9167Z" fill="#2563EB" fill-opacity="0.3"/>
+<rect width="36" height="36" transform="translate(198 66)" fill="#2563EB" fill-opacity="0.14"/>
+<path d="M221.5 88.2778V79.7222C221.5 79.05 220.95 78.5 220.278 78.5H211.722C211.05 78.5 210.5 79.05 210.5 79.7222V88.2778C210.5 88.95 211.05 89.5 211.722 89.5H220.278C220.95 89.5 221.5 88.95 221.5 88.2778ZM213.861 84.9167L215.389 86.7561L217.528 84L220.278 87.6667H211.722L213.861 84.9167Z" fill="#2563EB" fill-opacity="0.3"/>
+</svg>

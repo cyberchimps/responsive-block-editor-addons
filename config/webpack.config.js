@@ -14,12 +14,13 @@ module.exports = {
 
 	entry: {
 		'responsive-block-editor-addons': path.resolve( process.cwd(), 'src/blocks.js' ),
-		'responsive-block-editor-addons-getting-started': path.resolve( process.cwd(), 'admin/js/responsive-block-editor-addons-admin.js' ),
+		'responsive-block-editor-addons-getting-started': path.resolve( process.cwd(), 'admin/getting-started/src/index.js' ),
 		'responsive-block-editor-addons-editor': path.resolve( process.cwd(), 'src/styles/editor.scss' ),
 		'responsive-block-editor-addons-style': path.resolve( process.cwd(), 'src/styles/style.scss' ),
 		'responsive-block-editor-addons-masonry': path.resolve( process.cwd(), 'src/blocks/gallery-masonry/responsive-block-editor-addons-masonry.js' ),
 		'responsive-block-editor-addons-lightbox': path.resolve( process.cwd(), 'src/blocks/gallery-masonry/responsive-block-editor-addons-lightbox.js' ),
 		'responsive-block-editor-addons-aos-initialized': path.resolve( process.cwd(), 'src/extensions/animations/aos-initialized.js' ),
+		'responsive-block-editor-addons-inherit-theme': path.resolve( process.cwd(), 'src/utils/inherit-from-theme-frontend.js' ),
 		'frontend_blocks': path.resolve( process.cwd(), 'src/block-frontend.js' ),
 	},
 

@@ -214,7 +214,6 @@ const attributes = {
   },
   ctaBackColor: {
     type: "string",
-    default: "transparent",
   },
   resctaBgColor: { //For compatibility with v1.3.2
     type: "string",
@@ -787,6 +786,110 @@ const attributes = {
     type: "boolean",
     default: false,
   },
+  ctaBlockTopRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockRightRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockBottomRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockLeftRadius: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockTopRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockRightRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockBottomRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockLeftRadiusTablet: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockTopRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockRightRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockBottomRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaBlockLeftRadiusMobile: {
+    type: "number",
+    default: 0,
+  },
+  ctaButtonTopPadding: {
+    type: "number",
+    default: 10
+  },
+  ctaButtonBottomPadding: {
+    type: "number",
+    default: 10
+  },
+  ctaButtonLeftPadding: {
+    type: "number",
+    default: 14
+  },
+  ctaButtonRightPadding: {
+    type: "number",
+    default: 14
+  },
+  ctaButtonTopPaddingTablet: {
+    type: "number",
+    default: 10
+  },
+  ctaButtonBottomPaddingTablet: {
+    type: "number",
+    default: 10
+  },
+  ctaButtonLeftPaddingTablet: {
+    type: "number",
+    default: 14
+  },
+  ctaButtonRightPaddingTablet: {
+    type: "number",
+    default: 14
+  },
+  ctaButtonTopPaddingMobile: {
+    type: "number",
+    default: 10
+  },
+  ctaButtonBottomPaddingMobile: {
+    type: "number",
+    default: 10
+  },
+  ctaButtonLeftPaddingMobile: {
+    type: "number",
+    default: 14
+  },
+  ctaButtonRightPaddingMobile: {
+    type: "number",
+    default: 14
+  },
+  isCtaButtonBorderRadiusValueUpdated: {
+    type: "boolean",
+    default: true,
+  },
+  isCtaButtonPaddingMarginValueUpdated: {
+    type: "boolean",
+    default: true,
+  },
   iconPadding: {
     type: "number",
     default: 5
@@ -1149,6 +1252,10 @@ const attributes = {
   hasImagePositionMigrated: {
     type: "boolean",
     default: false,
-  }
+  },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
 };
 export default attributes;

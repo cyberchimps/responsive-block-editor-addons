@@ -150,9 +150,11 @@ function EditorStyles(props) {
   if ("outset" === hoverboxShadowPosition) {
     hoverboxShadowPositionCSS = "";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
+
   var selectors = {
     "": {
-      'opacity': hideWidget ? 0.2 : 1,
+      'opacity': hideWidget && isOn ? 0.2 : 1,
       "background-color":
         backgroundType == "color"
           ? `${hexToRgba(backgroundColor || "#ffffff", imgopacity || 0)}`
@@ -322,7 +324,7 @@ function EditorStyles(props) {
   };
   var mobile_selectors = {
     "": {
-      'opacity': hideWidgetMobile ? 0.2 : 1,
+      'opacity': hideWidgetMobile && isOn ? 0.2 : 1,
       "text-align": quoteAlignMobile,
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingMobile, "px"),
@@ -367,7 +369,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      'opacity': hideWidgetTablet ? 0.2 : 1,
+      'opacity': hideWidgetTablet && isOn ? 0.2 : 1,
       "text-align": quoteAlignTablet,
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),
       "padding-right": generateCSSUnit(blockRightPaddingTablet, "px"),

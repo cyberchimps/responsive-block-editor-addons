@@ -9,6 +9,7 @@ import attributes from "./attributes";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -35,18 +36,14 @@ registerBlockType("responsive-block-editor-addons/info-block", {
     __("responsive", "responsive-block-editor-addons"),
   ],
   attributes: attributes,
-    example: {
-        attributes: {
-            /* translators: example attributes */
-            resinfoBlockTitle: __("Info Box", 'responsive-block-editor-addons' ),
-            resprefixTitle: __( 'Prefix', 'responsive-block-editor-addons' ),
-            resDescHeading: __("Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.", "responsive-block-editor-addons"),
-            icon: "fa fa-star",
-        },
-    },
+  example: {
+    attributes: {
+      isPreview: true,
+    }
+  },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="info-block" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

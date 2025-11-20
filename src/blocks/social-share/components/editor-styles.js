@@ -126,10 +126,11 @@ function EditorStyles(props) {
   } else if (iconShape === "circle") {
     iconShapeRadius = "100%";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " ": {
-		  "opacity": hideWidget? 0.2 : 1,
+		  "opacity": hideWidget && isOn ? 0.2 : 1,
       "z-index": socialZindex,
       "margin-top": generateCSSUnit(blockTopMargin, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMargin, "px"),
@@ -278,7 +279,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     " ": {
-		  "opacity": hideWidgetMobile? 0.2 : 1,
+		  "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "margin-top": generateCSSUnit(blockTopMarginMobile, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMarginMobile, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginMobile, "px"),
@@ -310,7 +311,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     " ": {
-		  "opacity": hideWidgetTablet? 0.2 : 1,
+		  "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "margin-top": generateCSSUnit(blockTopMarginTablet, "px"),
       "margin-bottom": generateCSSUnit(blockBottomMarginTablet, "px"),
       "margin-left": generateCSSUnit(blockLeftMarginTablet, "px"),

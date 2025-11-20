@@ -27,6 +27,7 @@ module.exports = function( grunt ) {
                             'assets/**',
                             'readme.txt',
                             'src/**',
+                            '!admin/getting-started/**',
                             '!**/*.css.map',
                             '!**/*.js.map',
                             'responsive-block-editor-addons.php',
@@ -119,14 +120,18 @@ module.exports = function( grunt ) {
         shell: {
             build: [ 'npm run build' ].join( ' && ' ),
             translations: [ 'npm run makepot' ].join( ' && ' ),
+            tailwind: {
+                command: 'npx tailwindcss -i ./admin/getting-started/src/input.scss -o ./admin/css/responsive-block-editor-addons-getting-started.css --config ./config/tailwind.config.js',
+            },
         },
 
     } );
 
     require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-    grunt.registerTask( 'build', [ 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build', 'compress' ] );
+    grunt.registerTask( 'build', [ 'shell:tailwind', 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build', 'compress' ] );
     grunt.registerTask( 'test', [ 'shell:build', 'update-pot', 'replace' ] );
     grunt.registerTask( 'update-pot', [ 'replace:languages' ] );
     grunt.registerTask( 'version', [ 'replace' ] );
+    grunt.registerTask( 'default', [ 'shell:tailwind', 'shell:build' ] );
 };

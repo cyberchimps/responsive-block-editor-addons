@@ -201,10 +201,11 @@ function EditorStyles(props) {
         hoverboxShadowPositionCSS,
     }
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
 		" ": {
-		  "opacity": hideWidget? 0.2 : 1,
+		  "opacity": hideWidget && isOn ? 0.2 : 1,
 		},
     " > .responsive-block-editor-addons-block-section.responsive-section-wrap": {
       "margin-top": topMargin !== 999 && blockTopMargin === 0 ? generateCSSUnit(topMargin, "px") : generateCSSUnit(blockTopMargin, "px"), // For compatibility with v1.3.2.
@@ -286,7 +287,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
 		" ": {
-		  "opacity": hideWidgetMobile? 0.2 : 1,
+		  "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
 		},
     " > .responsive-block-editor-addons-block-section": {
       "margin-top": topMarginMobile !== 999 && blockTopMarginMobile === "" ? generateCSSUnit(topMarginMobile, "px") : (blockTopMarginMobile ? generateCSSUnit(blockTopMarginMobile, "px") : generateCSSUnit(blockTopMargin, "px")), // For compatibility with v1.3.2.
@@ -314,7 +315,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
 		" ": {
-		  "opacity": hideWidgetTablet? 0.2 : 1,
+		  "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
 		},
     " > .responsive-block-editor-addons-block-section": {
 	  "margin-top": topMarginTablet !== 999 && blockTopMarginTablet === "" ? generateCSSUnit(topMarginTablet, "px") : (blockTopMarginTablet ? generateCSSUnit(blockTopMarginTablet, "px") : generateCSSUnit(blockTopMargin, "px")), // For compatibility with v1.3.2.

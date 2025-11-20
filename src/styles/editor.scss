@@ -1,4 +1,5 @@
 @import "../common";
+@import "../block-icons.scss";
 @import "../utils/components/**/editor.scss";
 @import "../blocks/**/styles.editor.scss";
 @import "../components/css/inspectorTabs.scss";
@@ -7,3 +8,4 @@
 @import "../settings-components/RbeaBlockBorderSettings/editor.scss";
 @import "../settings-components/RbeaBorderRadiusControl/editor.scss";
 @import "../settings-components/ResponsiveSpacingSettings/editor.scss";
+@import "../settings-components/PresetSettings/editor.scss";

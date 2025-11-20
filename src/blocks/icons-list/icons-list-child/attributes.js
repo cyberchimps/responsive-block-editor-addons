@@ -175,6 +175,10 @@ const attributes = {
     type: "number",
     default: '',
   },
+  isPreview: {
+    type: "boolean",
+    default: false, 
+  },
 };
 
 export default attributes;

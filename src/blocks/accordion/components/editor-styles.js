@@ -243,10 +243,11 @@ function EditorStyles(props) {
       contentBackgroundColorsOpacity || 0
     ) +
     ")";
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   selectors = {
     " ": {
-      "opacity": hideWidget? 0.2 : 1,
+      "opacity": hideWidget && isOn ? 0.2 : 1,
       'margin-top': generateCSSUnit(blockTopMargin, "px"),
 			'margin-right': generateCSSUnit(blockRightMargin, "px"),
 			'margin-bottom': generateCSSUnit(blockBottomMargin, "px"),
@@ -274,7 +275,7 @@ function EditorStyles(props) {
     " .responsive-block-editor-addons-accordion-item__outer-wrap": {
       "margin-bottom": generateCSSUnit(rowsGap, "px"),
     },
-    " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
+    ".responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks .block-editor-block-list__layout": {
       "grid-column-gap": generateCSSUnit(columnsGap, "px"),
       "grid-row-gap": generateCSSUnit(rowsGap, "px"),
     },
@@ -382,7 +383,7 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(blockTitleRightPaddingTablet, "px"),
     },
     " ": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       'margin-top': generateCSSUnit(blockTopMarginTablet, "px"),
 			'margin-right': generateCSSUnit(blockRightMarginTablet, "px"),
 			'margin-bottom': generateCSSUnit(blockBottomMarginTablet, "px"),
@@ -481,7 +482,7 @@ function EditorStyles(props) {
       "padding-right": generateCSSUnit(blockTitleRightPaddingMobile, "px"),
     },
     " ": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       'margin-top': generateCSSUnit(blockTopMarginMobile, "px"),
 			'margin-right': generateCSSUnit(blockRightMarginMobile, "px"),
 			'margin-bottom': generateCSSUnit(blockBottomMarginMobile, "px"),
@@ -605,7 +606,7 @@ function EditorStyles(props) {
       "text-align": align,
     };
     selectors[
-      " .responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout"
+      ".responsive-block-editor-addons-accordion-layout-grid .block-editor-inner-blocks > .block-editor-block-list__layout"
     ] = {
       "grid-template-columns": "repeat(" + columns + ", 1fr)",
     };

@@ -10,6 +10,7 @@ import deprecated from "./components/deprecated";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -62,13 +63,13 @@ registerBlockType("responsive-block-editor-addons/team", {
 
   attributes: attributes,
   example: {
-    attributes : {
-      count: 1
+    attributes: {
+      isPreview: true,
     }
   },
   /* Render the block in the editor. */
   edit: (props) => {
-    return <Edit {...props} />;
+    return props.attributes.isPreview ? <BlockPreview image="team" /> : <Edit {...props} />;
   },
 
   /* Save the block markup. */

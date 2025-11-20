@@ -243,6 +243,7 @@ function EditorStyles(props) {
     featuresFontStyle,
     ctaTextTransform,
     ctaFontStyle,
+    inheritFromTheme,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -288,27 +289,28 @@ function EditorStyles(props) {
   if ("right" == blockAlign) {
     alignStyle = "flex-end";
   }
+  const isOn = responsive_globals?.is_responsive_conditions_on ?? 1;
 
   var selectors = {
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
-      color: ctaColor + "!important",
-      "background-color": updatedButtonBackgroundColor,
+      color: inheritFromTheme ? '' : ctaColor + "!important",
+      "background-color": inheritFromTheme ? '' : updatedButtonBackgroundColor,
       "background-image": backgroundImage ? updatedButtonBackgroundImage : 'none',
       "margin-left": "left" == blockAlign ? 0 : "",
       "margin-right": "right" == blockAlign ? 0 : "",
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
-      "padding-left": generateCSSUnit(ctaButtonLeftPadding, "px"),
-      "padding-right": generateCSSUnit(ctaButtonRightPadding, "px"),
-      "padding-top": generateCSSUnit(ctaButtonTopPadding, "px"),
-      "padding-bottom": generateCSSUnit(ctaButtonBottomPadding, "px"),
-      "border-color": ctaBorderColor,
-      "border-radius": generateCSSUnit(ctaBorderRadius, "px"),
-      "border-width": generateCSSUnit(ctaBorderWidth, "px"),
-      "border-style": ctaBorderStyle,
+      "padding-left": inheritFromTheme ? '' : generateCSSUnit(ctaButtonLeftPadding, "px"),
+      "padding-right": inheritFromTheme ? '' : generateCSSUnit(ctaButtonRightPadding, "px"),
+      "padding-top": inheritFromTheme ? '' : generateCSSUnit(ctaButtonTopPadding, "px"),
+      "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(ctaButtonBottomPadding, "px"),
+      "border-color": inheritFromTheme ? '' : ctaBorderColor,
+      "border-radius": inheritFromTheme ? '' : generateCSSUnit(ctaBorderRadius, "px"),
+      "border-width": inheritFromTheme ? '' : generateCSSUnit(ctaBorderWidth, "px"),
+      "border-style": inheritFromTheme ? 'solid' : ctaBorderStyle,
       "line-height": ctaLineHeight,
-      "font-weight": ctaFontWeight,
+      "font-weight": inheritFromTheme ? '' : ctaFontWeight,
       "font-size": generateCSSUnit(ctaFontSize, "px"),
-      "font-family": ctaFontFamily,
+      "font-family": inheritFromTheme ? 'Default' : ctaFontFamily,
       "box-shadow":
         generateCSSUnit(buttonBoxShadowHOffset, "px") +
         " " +
@@ -326,10 +328,10 @@ function EditorStyles(props) {
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button:hover": {
-      color: ctaHoverColor + "!important",
-      "background-color": updatedButtonBgHColor,
+      color: inheritFromTheme ? '' : ctaHoverColor + "!important",
+      "background-color": inheritFromTheme ? '' : updatedButtonBgHColor,
       "background-image": buttonHbackgroundType == 'color' ? 'none' : updatedButtonBgHImage,
-      "border-color" : ctaHoverBorderColor,
+      "border-color" : inheritFromTheme ? '' : ctaHoverBorderColor,
     },
 
     " .wp-block-responsive-block-editor-addons-pricing-table-item.background-type-image": {
@@ -344,7 +346,6 @@ function EditorStyles(props) {
     },
 
     "": {
-      "opacity": hideWidget? 0.2 : 1,
       "text-align": blockAlign,
       "padding-top": generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPadding, "px"),
@@ -358,7 +359,7 @@ function EditorStyles(props) {
         blockbackgroundType == "color"
           ? `${hexToRgba(blockbackgroundColor || "#fff", 0)}`
           : "",
-      opacity: blockbackgroundType == "color" ? blockBackColorOpacity : 100,
+      "opacity": blockbackgroundType == "color" ? hideWidget && isOn ? 0.2 : blockBackColorOpacity : hideWidget && isOn ? 0.2 : 1,
       "background-image":
         blockbackgroundType == "gradient"
           ? generateBackgroundImageEffect(
@@ -523,7 +524,7 @@ function EditorStyles(props) {
 
   var mobile_selectors = {
     "": {
-      "opacity": hideWidgetMobile? 0.2 : 1,
+      "opacity": hideWidgetMobile && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingMobile, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingMobile, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingMobile, "px"),
@@ -582,7 +583,7 @@ function EditorStyles(props) {
 
   var tablet_selectors = {
     "": {
-      "opacity": hideWidgetTablet? 0.2 : 1,
+      "opacity": hideWidgetTablet && isOn ? 0.2 : 1,
       "padding-top": generateCSSUnit(blockTopPaddingTablet, "px"),
       "padding-bottom": generateCSSUnit(blockBottomPaddingTablet, "px"),
       "padding-left": generateCSSUnit(blockLeftPaddingTablet, "px"),

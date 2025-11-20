@@ -3,13 +3,14 @@
  */
 
 import ResponsiveBlocksIcon from "../../../ResponsiveBlocksIcon.json";
-import edit from "./components/edit";
+import Edit from "./components/edit";
 import save from "./components/save";
 import icon from "../components/icon";
 import attributes from "./attributes.js";
 
 //Import Block icon
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
+import BlockPreview from "../../../block-preview";
 
 // Import CSS
 import "./styles/style.scss";
@@ -43,6 +44,8 @@ registerBlockType("responsive-block-editor-addons/accordion-item", {
     inserter: true,
   },
   attributes,
-  edit,
+  edit: (props) => {
+    return props.attributes.isPreview ? <BlockPreview image="accordion" /> : <Edit {...props} />;
+  },
   save,
 });

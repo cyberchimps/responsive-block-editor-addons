@@ -30,6 +30,8 @@ import RbeaWidthRangeControl from "../../../utils/components/rbea-width-range-co
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
 import { convertPositionToFocalPoint } from '../../../getImagePosition';
+import PresetControl from "../../../settings-components/PresetSettings";
+import { presets, resetPreset, buttonPreset, resetButtonPreset } from './presets';
 // Setup the block
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
@@ -1359,14 +1361,40 @@ export default class Inspector extends Component {
                 </Fragment>
               )}
               {resctaType == "button" && (
-                <ButtonSettingsControl
-                  {...this.props}
-                  showMarginControls={false}
-                  showBackColorOpacity={false}
-                  showGradientHover={false}
-                  showTextOpacity={false}
-                />
+                <>
+                  <PresetControl
+                    label={__('Button Shape', 'responsive-block-editor-addons')}
+                    presets={buttonPreset}
+                    onApply={(newAttrs) => setAttributes(newAttrs)}
+                    activeId={null}
+                    isResetAllowed={true}
+                    resetAttr={resetButtonPreset}
+                    onResetApply={(newAttrs) => setAttributes(newAttrs)}
+                  />
+
+                  <ButtonSettingsControl
+                    {...this.props}
+                    showMarginControls={false}
+                    showBackColorOpacity={false}
+                    showGradientHover={false}
+                    showTextOpacity={false}
+                  />
+                </>
               )}
+            </PanelBody>
+            <PanelBody
+              title={__("Presets", "responsive-block-editor-addons")}
+              initialOpen={false}
+            >
+              <PresetControl
+                label={__('Select Preset', 'responsive-block-editor-addons')}
+                presets={presets}
+                onApply={(newAttrs) => setAttributes(newAttrs)}
+                activeId={null}
+                isResetAllowed={true}
+                resetAttr={resetPreset}
+                onResetApply={(newAttrs) => setAttributes(newAttrs)}
+              />
             </PanelBody>
             <RbeaSupportControl blockSlug={"info-block"} />
           </InspectorTab>
@@ -2004,44 +2032,7 @@ export default class Inspector extends Component {
 
             <RbeaExtensions {...this.props} />
 
-            <PanelBody
-              title={__("Responsive Conditions", "responsive-block-editor-addons")}
-              initialOpen={false}
-            >
-              <ToggleControl
-                label={__(
-                  "Hide on Desktop",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidget}
-                onChange={(value) =>
-                  setAttributes({ hideWidget: !hideWidget })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Tablet",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetTablet}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetTablet: !hideWidgetTablet })
-                }
-                __nextHasNoMarginBottom
-              />
-              <ToggleControl
-                label={__(
-                  "Hide on Mobile",
-                  "responsive-block-editor-addons"
-                )}
-                checked={hideWidgetMobile}
-                onChange={(value) =>
-                  setAttributes({ hideWidgetMobile: !hideWidgetMobile })
-                }
-                __nextHasNoMarginBottom
-              />
-            </PanelBody>
+            
             <PanelBody
               title={__("Icon Hover Animation", "responsive-block-editor-addons")}
               initialOpen={false}

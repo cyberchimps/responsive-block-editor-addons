@@ -17,7 +17,11 @@ const attributes = {
 	tabHeaderOptions: {
 		type: 'array',
 		default: [__('Tab 1' , 'responsive-block-editor-addons' ),__('Tab 2','responsive-block-editor-addons'),__('Tab 3','responsive-block-editor-addons')]
-	}
+	},
+	isPreview: {
+		type: "boolean",
+		default: false, 
+	},
 }
   
 export default attributes

@@ -13,6 +13,7 @@ import "./styles/styles.editor.scss";
 
 //Import block icons
 import ResponsiveBlockEditorAddonsIcons from "../../block-icons";
+import BlockPreview from "../../block-preview";
 
 // Internationalization
 const { __ } = wp.i18n;
@@ -37,18 +38,17 @@ registerBlockType("responsive-block-editor-addons/progress-bar", {
 
 	attributes: attributes,
     example: {
-        attributes: {
-            /* translators: example attributes */
-            progressBarStyle: "horizontal",
-        },
-    },
+		attributes: {
+		isPreview: true,
+		}
+	},
 	supports: {
 		anchor: true
 	},
 
 	/* Render the block in the editor. */
 	edit: (props) => {
-		return <Edit {...props} />;
+		return props.attributes.isPreview ? <BlockPreview image="progress-bar" /> : <Edit {...props} />;
 	},
 
 	/* Save the block markup. */
