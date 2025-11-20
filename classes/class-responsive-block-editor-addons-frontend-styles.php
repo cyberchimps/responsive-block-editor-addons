@@ -2355,24 +2355,35 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$temptitle_secondary_background_color = $attr['titleBgGradient'] ? $attr['titleSecondaryBackgroundColor'] : $attr['titleBackgroundColor'];
 			$title_gradient                       = '';
-			if ( $attr['titleBgGradient'] ) {
-				$title_gradient = 'linear-gradient(' .
-					$attr['titleGradientDegree'] .
-					'deg,' .
-					self::hex_to_rgb( $attr['titleBackgroundColor'] ? $attr['titleBackgroundColor'] : '#ffffff', $content_opacity ) .
-					',' .
-					self::hex_to_rgb( $temptitle_secondary_background_color ? $temptitle_secondary_background_color : '#ffffff', $content_opacity ) .
-					')';
+			if ( 'gradient' === $attr['backgroundType'] ) {
+				$title_gradient = ( ! empty( $attr['gradient'] ) 
+								? $attr['gradient'] 
+								: ( ! empty( $attr['titleBackgroundColor'] ) || ! empty( $attr['titleSecondaryBackgroundColor'] )
+									? 'linear-gradient(' .
+										$attr['titleGradientDegree'] .
+										'deg, ' .
+										self::hex_to_rgb( $attr['titleBackgroundColor'] ? $attr['titleBackgroundColor'] : '#fff', $content_opacity ) .
+										' ' . '0%, ' .
+										self::hex_to_rgb( $attr['titleSecondaryBackgroundColor'] ? $attr['titleSecondaryBackgroundColor'] : '#fff', $content_opacity ) .
+										' ' . '100%)'
+									: null ));
 			}
 
 			$temp_active_secondary_background_color = $attr['contentBgGradient'] ? $attr['contentSecondaryBackgroundColor'] : $attr['contentBackgroundColor'];
-			$content_gradient                       = 'linear-gradient(' .
-				$attr['contentGradientDegree'] .
-				'deg,' .
-				self::hex_to_rgb( $attr['contentBackgroundColor'] ? $attr['contentBackgroundColor'] : '#ffffff', $content_background_colors_opacity ) .
-				',' .
-				self::hex_to_rgb( $temp_active_secondary_background_color ? $temp_active_secondary_background_color : '#ffffff', $content_background_colors_opacity ) .
-				')';
+			$content_gradient                       = '';
+			if ( 'gradient' === $attr['contentBackgroundType'] ) {
+				$content_gradient = ( ! empty( $attr['contentGradient'] ) 
+								? $attr['gradient'] 
+								: ( ! empty( $attr['contentBackgroundColor'] ) || ! empty( $attr['contentSecondaryBackgroundColor'] )
+									? 'linear-gradient(' .
+										$attr['contentGradientDegree'] .
+										'deg, ' .
+										self::hex_to_rgb( $attr['contentBackgroundColor'] ? $attr['contentBackgroundColor'] : '#fff', $content_background_colors_opacity ) .
+										' ' . '0%, ' .
+										self::hex_to_rgb( $attr['contentSecondaryBackgroundColor'] ? $attr['contentSecondaryBackgroundColor'] : '#fff', $content_background_colors_opacity ) .
+										' ' . '100%)'
+									: null ));
+			}
 
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
 
@@ -2442,6 +2453,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				' .responsive-block-editor-addons-accordion-item .responsive-block-editor-addons-accordion-content' => array(
 					'background-image' => $content_gradient,
+					'background-color' => self::hex_to_rgb( $attr['contentBackgroundColor'] ? $attr['contentBackgroundColor'] : '#fff', $content_background_colors_opacity ),
 					'font-family'      => $attr['contentFontFamily'],
 					'font-size'        => self::get_css_value( $attr['contentFontSize'], 'px' ),
 					'font-weight'      => $attr['contentFontWeight'],
