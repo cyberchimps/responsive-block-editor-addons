@@ -3830,7 +3830,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			}
 
 			if ( 'gradient' === $attr['backgroundType'] ) {
-				$updated_background_image = self::generate_background_image_effect(
+				$updated_background_image = $attr['gradient'] ? $attr['gradient']
+				: self::generate_background_image_effect(
 					$attr['backgroundColor1'],
 					$attr['backgroundColor2'],
 					$attr['gradientDirection'],
@@ -3897,7 +3898,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'padding-right'              => $flag ? '' : self::get_css_value( $attr['blockRightPadding'], 'px' ),
 					'padding-top'                => $flag ? '' : self::get_css_value( $attr['blockTopPadding'], 'px' ),
 					'padding-bottom'             => $flag ? '' : self::get_css_value( $attr['blockBottomPadding'], 'px' ),
-					'background-image'           => $updated_background_image,
+					'background-image'           => $flag ? '' : $updated_background_image,
 					'background-color'           => $flag ? '' : $attr['background'],
 					'font-size'                  => $flag ? '' : self::get_css_value( $attr['buttonFontSize'], 'px' ),
 					'font-family'                => $flag ? 'Default' : $attr['buttonFontFamily'],
@@ -4116,6 +4117,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'hideWidgetTablet'		   => false,
     			'hideWidgetMobile'		   => false,
 				'inheritFromThemesaved'	   => false,
+				'gradient'				   => '',
 			);
 		}
 

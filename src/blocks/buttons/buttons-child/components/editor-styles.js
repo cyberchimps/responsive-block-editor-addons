@@ -105,6 +105,7 @@ function EditorStyles(props) {
     hideWidget,
     hideWidgetTablet,
     hideWidgetMobile,
+    gradient,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -180,7 +181,7 @@ function EditorStyles(props) {
     updatedBackgroundHColor = hbackground;
   }
   if (backgroundType == "gradient") {
-    updatedBackgroundImage = generateBackgroundImageEffect(
+    updatedBackgroundImage = gradient ? gradient : generateBackgroundImageEffect(
       backgroundColor1,
       backgroundColor2,
       gradientDirection,
@@ -246,7 +247,7 @@ function EditorStyles(props) {
       "padding-right": inheritFromTheme ? '' : generateCSSUnit(blockRightPadding, "px"),
       "padding-top": inheritFromTheme ? '' : generateCSSUnit(blockTopPadding, "px"),
       "padding-bottom": inheritFromTheme ? '' : generateCSSUnit(blockBottomPadding, "px"),
-      "background-image": updatedBackgroundImage,
+      "background-image": inheritFromTheme ? '' : updatedBackgroundImage,
       "background-color": inheritFromTheme ? '' : updatedBackgroundColor,
       "font-size": generateCSSUnit(buttonFontSize, "px"),
       "font-family": inheritFromTheme ? 'Default' : buttonFontFamily,
