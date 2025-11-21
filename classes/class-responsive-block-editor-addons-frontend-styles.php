@@ -11564,7 +11564,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$updated_background_image = null;
 			if ( 'gradient' === $attr['backgroundType'] ) {
-				$updated_background_image = self::generate_background_image_effect( $attr['backgroundColor1'], $attr['backgroundColor2'], $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2'] );
+				$updated_background_image = $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect( $attr['backgroundColor1'], $attr['backgroundColor2'], $attr['gradientDirection'], $attr['colorLocation1'], $attr['colorLocation2'] );
 			}
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
 
@@ -11713,6 +11713,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'blockRightMargin'         => '',
 				'blockRightMarginMobile'   => '',
 				'blockRightMarginTablet'   => '',
+				'gradient'				   => '',
 			);
 		}
 
