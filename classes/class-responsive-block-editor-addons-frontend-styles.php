@@ -5470,8 +5470,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'subFontStyle'                 => '',
     			'contentTextTransform'         => '',
     			'contentFontStyle'             => '',
-				'inheritFromThemesaved'	   => false,
-				'inheritFromTheme'		   => false,
+				'inheritFromThemesaved'	   	   => false,
+				'inheritFromTheme'		   	   => false,
+				'gradient'					   => '',
+    			'gradientButton'			   => '',
 			);
 		}
 
@@ -22165,6 +22167,10 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
         		'messageFontStyle'                    => '',
         		'afterSubmitTextTransform'            => '',
         		'afterSubmitFontStyle'                => '',
+				'gradient'							  => '',
+      			'gradientHover'						  => '',
+      			'gradientButton'					  => '',
+      			'gradientButtonH'					  => '',
 			);
 		}
 		public static function get_responsive_block_image_css( $attr, $id ) {
