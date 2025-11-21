@@ -240,7 +240,7 @@
       "default": false
     },
     "gradient": {
-      "type": "boolean"
+      "type": "string"
     }
   }
 }
