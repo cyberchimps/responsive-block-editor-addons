@@ -12,6 +12,8 @@ import RbeaRangeControl from "../../../utils/components/rbea-range-control";
 import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaAngleRangeControl from "../../../utils/components/rbea-angle-range-control";
+import { GradientPicker } from "@wordpress/components";
+import { hexToRgba } from "../../../utils/index.js";
 
 // Extend component
 const { Component, Fragment } = wp.element;
@@ -48,6 +50,8 @@ class ButtonColorControl extends Component {
               buttonHopacity,
 
               ctaTextOpacity,
+              gradientButton,
+              gradientButtonH,
           },
           setAttributes,
       } = this.props;
@@ -75,6 +79,80 @@ class ButtonColorControl extends Component {
         const emptyColorControl = (
           <div className="responsive-block-editor-addons-empty-color-control"></div>
         );
+    
+        // Gradient options for WordPress GradientPicker (same as container)
+        const gradientOptions = [
+            {
+                name: 'JShine',
+                gradient:
+                    'linear-gradient(135deg,#12c2e9 0%,#c471ed 50%,#f64f59 100%)',
+                slug: 'jshine',
+            },
+            {
+                name: 'Moonlit Asteroid',
+                gradient:
+                    'linear-gradient(135deg,#0F2027 0%, #203A43 0%, #2c5364 100%)',
+                slug: 'moonlit-asteroid',
+            },
+            {
+                name: 'Rastafarie',
+                gradient:
+                    'linear-gradient(135deg,#1E9600 0%, #FFF200 0%, #FF0000 100%)',
+                slug: 'rastafari',
+            },
+        ];
+    
+        // Convert old gradient attributes to WordPress gradient format if needed
+        const getGradientButtonValue = () => {
+            // If gradient already exists (WordPress format), use it
+            if (gradientButton) {
+                return gradientButton;
+            }
+            
+            // Otherwise, convert from old attributes to WordPress format
+            if (buttonbackgroundColor1 || buttonbackgroundColor2) {
+                const imgopacity = buttonopacity ? opacity / 100 : 1;
+                const color1 = hexToRgba(buttonbackgroundColor1 || "#fff", imgopacity);
+                const color2 = hexToRgba(buttonbackgroundColor2 || "#fff", imgopacity);
+                const location1 = buttoncolorLocation1 !== undefined ? buttoncolorLocation1 : 0;
+                const location2 = buttoncolorLocation2 !== undefined ? buttoncolorLocation2 : 100;
+                const direction = buttongradientDirection !== undefined ? buttongradientDirection : 90;
+                
+                return `linear-gradient(${direction}deg, ${color1} ${location1}%, ${color2} ${location2}%)`;
+            }
+            
+            return undefined;
+        };
+
+        const getGradientButtonHValue = () => {
+            // If gradient already exists (WordPress format), use it
+            if (gradientButtonH) {
+                return gradientButtonH;
+            }
+            
+            // Otherwise, convert from old attributes to WordPress format
+            if (buttonHbackgroundColor1 || buttonHbackgroundColor2) {
+            const imgopacity = buttonHopacity ? opacity / 100 : 1;
+            const color1 = hexToRgba(buttonHbackgroundColor1 || "#fff", imgopacity);
+            const color2 = hexToRgba(buttonHbackgroundColor2 || "#fff", imgopacity);
+            const location1 = buttonHcolorLocation1 !== undefined ? buttonHcolorLocation1 : 0;
+            const location2 = buttonHcolorLocation2 !== undefined ? buttonHcolorLocation2 : 100;
+            const direction = buttonHgradientDirection !== undefined ? buttonHgradientDirection : 90;
+            
+            return `linear-gradient(${direction}deg, ${color1} ${location1}%, ${color2} ${location2}%)`;
+            }
+            
+            return undefined;
+        };
+    
+        // Handle gradient change - save to new format
+        const onGradientButtonChange = (value) => {
+            setAttributes({ gradientButton: value });
+        };
+
+        const onGradientButtonHChange = (value) => {
+            setAttributes({ gradientButtonH: value });
+        };
 
     var advancedControls;
       advancedControls = (
@@ -180,55 +258,10 @@ class ButtonColorControl extends Component {
                                   )}
                                   {"gradient" == buttonHbackgroundType && (
                                       <Fragment>
-                                            <RbeaColorControl
-                                                label = {__("Color 1", "responsive-block-editor-addons")}
-                                                colorValue={buttonHbackgroundColor1}
-                                                onChange={(colorValue) => setAttributes({ buttonHbackgroundColor1: colorValue })}
-                                                resetColor={() => setAttributes({ buttonHbackgroundColor1: "" })}
-                                            />
-                                            <RbeaColorControl
-                                                label = {__("Color 2", "responsive-block-editor-addons")}
-                                                colorValue={buttonHbackgroundColor2}
-                                                onChange={(colorValue) => setAttributes({ buttonHbackgroundColor2: colorValue })}
-                                                resetColor={() => setAttributes({ buttonHbackgroundColor2: "" })}
-                                            />
-                                          <RbeaRangeControl
-                                              label={__(
-                                                  "Color Location 1",
-                                                  "responsive-block-editor-addons"
-                                              )}
-                                              value={buttonHcolorLocation1}
-                                              min={0}
-                                              max={100}
-                                              onChange={(value) =>
-                                                  setAttributes({ buttonHcolorLocation1: value })
-                                              }
-                                          />
-                                          <RbeaRangeControl
-                                              label={__(
-                                                  "Color Location 2",
-                                                  "responsive-block-editor-addons"
-                                              )}
-                                              value={buttonHcolorLocation2}
-                                              min={0}
-                                              max={100}
-                                              onChange={(value) =>
-                                                  setAttributes({ buttonHcolorLocation2: value })
-                                              }
-                                          />
-                                          <RbeaAngleRangeControl
-                                                    label={__(
-                                                        "Angle",
-                                                        "responsive-block-editor-addons"
-                                                )}
-                                                    value={buttonHgradientDirection}
-                                                    min={0}
-                                                    max={360}
-                                                    onChange={(value) =>
-                                                    setAttributes({
-                                                        buttonHgradientDirection: value !== undefined ? value : 90,
-                                                    })
-                                                }
+                                            <GradientPicker
+                                                value={getGradientButtonHValue()}
+                                                onChange={onGradientButtonHChange}
+                                                gradients={gradientOptions}
                                             />
                                       </Fragment>
                                   )}
@@ -300,56 +333,11 @@ class ButtonColorControl extends Component {
                                   )}
                                   {"gradient" == buttonbackgroundType && (
                                       <Fragment>
-                                        <RbeaColorControl
-                                            label = {__("Color 1", "responsive-block-editor-addons")}
-                                            colorValue={buttonbackgroundColor1}
-                                            onChange={(colorValue) => setAttributes({ buttonbackgroundColor1: colorValue })}
-                                            resetColor={() => setAttributes({ buttonbackgroundColor1: "" })}
+                                        <GradientPicker
+                                            value={getGradientButtonValue()}
+                                            onChange={onGradientButtonChange}
+                                            gradients={gradientOptions}
                                         />
-                                            <RbeaColorControl
-                                                label = {__("Color 2", "responsive-block-editor-addons")}
-                                                colorValue={buttonbackgroundColor2}
-                                                onChange={(colorValue) => setAttributes({ buttonbackgroundColor2: colorValue })}
-                                                resetColor={() => setAttributes({ buttonbackgroundColor2: "" })}
-                                            />
-                                          <RbeaRangeControl
-                                              label={__(
-                                                  "Color Location 1",
-                                                  "responsive-block-editor-addons"
-                                              )}
-                                              value={buttoncolorLocation1}
-                                              min={0}
-                                              max={100}
-                                              onChange={(value) =>
-                                                  setAttributes({ buttoncolorLocation1: value })
-                                              }
-                                          />
-                                          <RbeaRangeControl
-                                              label={__(
-                                                  "Color Location 2",
-                                                  "responsive-block-editor-addons"
-                                              )}
-                                              value={buttoncolorLocation2}
-                                              min={0}
-                                              max={100}
-                                              onChange={(value) =>
-                                                  setAttributes({ buttoncolorLocation2: value })
-                                              }
-                                          />
-                                          <RbeaAngleRangeControl
-                                                    label={__(
-                                                        "Angle",
-                                                        "responsive-block-editor-addons"
-                                                )}
-                                                    value={buttongradientDirection}
-                                                    min={0}
-                                                    max={360}
-                                                    onChange={(value) =>
-                                                    setAttributes({
-                                                        buttongradientDirection: value !== undefined ? value : 90,
-                                                    })
-                                                }
-                                            />
                                       </Fragment>
                                   )}
                               </Fragment>
