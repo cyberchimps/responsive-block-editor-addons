@@ -493,7 +493,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$pc_background_image_gradient = '';
 			$pc_color                     = '';
 			if ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$pc_background_image_gradient = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$pc_background_image_gradient = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			} elseif ( 'color' === $attr['buttonbackgroundType'] ) {
 				$pc_background_image_gradient = '';
 				$pc_color                     = $attr['ctaBackColor'];
@@ -2206,8 +2206,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'buttoncolorLocation1'     => 0,
 				'buttoncolorLocation2'     => 100,
 				'buttongradientDirection'  => 90,
-				'buttonbackgroundColor1'   => '',
-				'buttonbackgroundColor2'   => '#fff',
+				'buttonbackgroundColor1'   => '#333333',
+				'buttonbackgroundColor2'   => '#333333',
 				'buttonbackgroundType'     => 'color',
 				'ctaHpaddingTablet'        => 20,
 				'ctaHpaddingMobile'        => 20,
@@ -2255,6 +2255,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'excerptFontStyle'         => '',
 				'ctaTextTransform'         => '',
 				'ctaFontStyle'             => '',
+				'gradientButton'		   => '',
 			);
 		}
 
