@@ -154,9 +154,11 @@ const attributes = {
   },
   backgroundColor1: {
     type: "string",
+    default: "#007cba",
   },
   backgroundColor2: {
     type: "string",
+    default: "#007cba",
   },
   opacity: {
     type: "number",
