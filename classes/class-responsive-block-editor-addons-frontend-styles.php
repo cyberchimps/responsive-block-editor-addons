@@ -1567,7 +1567,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						: null,
 					'background-image'           =>
 						'gradient' === $attr['backgroundType']
-						? 'linear-gradient(' .
+						? $attr['gradient'] ? $attr['gradient'] : 'linear-gradient(' .
 							$attr['gradientDirection'] .
 							'deg,' .
 							self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#ffffff', $imgopacity ) .
@@ -14813,6 +14813,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'twIconTextSpacing'        => 8,
 				'twTypographyColor'        => '',
 				'twFontStyle'              => '',
+				'gradient'				   => '',
 			);
 		}
 
