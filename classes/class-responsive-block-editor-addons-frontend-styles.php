@@ -8041,7 +8041,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			: $attr['itemHoverBackgroundColor'];
 
 			$hover_gradient =
-			'linear-gradient(' .
+			!empty( $attr['gradient'] ) ? $attr['gradient'] : 'linear-gradient(' .
 			$attr['hoverGradientDegree'] .
 			'deg,' .
 			self::hex_to_rgb( $attr['itemHoverBackgroundColor'], $hover_imgopacity ) .
@@ -8067,7 +8067,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$background_image_third  = '';
 			$background_image_fourth = '';
 
-			$background_image_first = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_first = !empty( $attr['gradient'] ) 
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageOne'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8081,7 +8083,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			')';
 
-			$background_image_second = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_second = !empty( $attr['gradient'] )
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageTwo'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8095,7 +8099,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			')';
 
-			$background_image_third = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_third = !empty( $attr['gradient'] )
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageThree'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8109,7 +8115,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			')';
 
-			$background_image_fourth = 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
+			$background_image_fourth = !empty( $attr['gradient'] )
+			? $attr['gradient'] . ',url(' . $attr['backgroundImageFour'] . ')'
+			: 'linear-gradient(' . $attr['gradientDegree'] . 'deg, ' .
 
 			self::hex_to_rgb( $attr['itemBackgroundColor'], $imgopacity ) .
 
@@ -8525,6 +8533,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleFontStyle'                 => '',
 				'descriptionTextTransform'       => '',
 				'descriptionFontStyle'           => '',
+				'gradient'						 => '',
+				'hoverGradient'					 => '',
 			);
 		}
 
