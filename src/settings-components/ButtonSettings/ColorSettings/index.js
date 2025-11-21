@@ -111,7 +111,7 @@ class ButtonColorControl extends Component {
             
             // Otherwise, convert from old attributes to WordPress format
             if (buttonbackgroundColor1 || buttonbackgroundColor2) {
-                const imgopacity = buttonopacity ? opacity / 100 : 1;
+                const imgopacity = buttonopacity ? buttonopacity / 100 : 1;
                 const color1 = hexToRgba(buttonbackgroundColor1 || "#fff", imgopacity);
                 const color2 = hexToRgba(buttonbackgroundColor2 || "#fff", imgopacity);
                 const location1 = buttoncolorLocation1 !== undefined ? buttoncolorLocation1 : 0;
@@ -132,7 +132,7 @@ class ButtonColorControl extends Component {
             
             // Otherwise, convert from old attributes to WordPress format
             if (buttonHbackgroundColor1 || buttonHbackgroundColor2) {
-            const imgopacity = buttonHopacity ? opacity / 100 : 1;
+            const imgopacity = buttonHopacity ? buttonHopacity / 100 : 1;
             const color1 = hexToRgba(buttonHbackgroundColor1 || "#fff", imgopacity);
             const color2 = hexToRgba(buttonHbackgroundColor2 || "#fff", imgopacity);
             const location1 = buttonHcolorLocation1 !== undefined ? buttonHcolorLocation1 : 0;
