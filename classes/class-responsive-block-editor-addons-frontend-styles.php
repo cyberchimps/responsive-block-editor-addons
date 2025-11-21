@@ -18170,7 +18170,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'               => self::get_css_value( $attr['tabsRightMargin'], 'px' ) . '!important',
 					'z-index'                    => $attr['z_index'],
 					'background-color'           => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundColor'] ? $attr['backgroundColor'] : '#fff', $img_opacity ) : '',
-					'background-image'           => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+					'background-image'           => 'gradient' === $attr['backgroundType'] ? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 						self::hex_to_rgb( $attr['backgroundColor1'], $img_opacity ),
 						self::hex_to_rgb( $attr['backgroundColor2'], $img_opacity ),
 						$attr['gradientDirection'],
@@ -18193,7 +18193,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				),
 				':hover' => array(
 					'background-color' => 'color' === $attr['backgroundType'] ? self::hex_to_rgb( $attr['backgroundHoverColor'] ? $attr['backgroundHoverColor'] : '#fff', $img_opacity ) : '',
-					'background-image' => 'gradient' === $attr['backgroundType'] ? self::generate_background_image_effect(
+					'background-image' => 'gradient' === $attr['backgroundType'] ? $attr['gradientHover'] ? $attr['gradientHover'] : self::generate_background_image_effect(
 						self::hex_to_rgb( $attr['hoverbackgroundColor1'], $img_opacity ),
 						self::hex_to_rgb( $attr['hoverbackgroundColor2'], $img_opacity ),
 						$attr['hovergradientDirection'],
@@ -18447,6 +18447,8 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
     			'tabTitleFontStyle'             => '',
     			'tabContentTextTransform'       => '',
     			'tabContentFontStyle'           => '',
+				'gradient'						=> '',
+				'gradientHover'					=> '', 
 			);
 		}
 
