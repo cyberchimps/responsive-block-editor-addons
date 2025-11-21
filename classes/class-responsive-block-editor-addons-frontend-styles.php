@@ -2373,7 +2373,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$content_gradient                       = '';
 			if ( 'gradient' === $attr['contentBackgroundType'] ) {
 				$content_gradient = ( ! empty( $attr['contentGradient'] ) 
-								? $attr['gradient'] 
+								? $attr['contentGradient'] 
 								: ( ! empty( $attr['contentBackgroundColor'] ) || ! empty( $attr['contentSecondaryBackgroundColor'] )
 									? 'linear-gradient(' .
 										$attr['contentGradientDegree'] .
@@ -2896,6 +2896,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				'titleFontStyle'                      => '',
 				'contentTextTransform'                => '',
 				'contentFontStyle'                    => '',
+				'gradient'				 			  => '',
+				'contentGradient'		 			  => '',
+				'contentBackgroundType'  			  => 'none',
 			);
 		}
 
