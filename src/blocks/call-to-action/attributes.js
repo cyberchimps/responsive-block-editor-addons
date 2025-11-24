@@ -240,6 +240,7 @@ const attributes = {
   },
   backgroundType: {
     type: "string",
+    default: "color",
   },
   buttoncolorLocation1: {
     type: "number",
@@ -261,6 +262,7 @@ const attributes = {
   },
   buttonbackgroundType: {
     type: "string",
+    default: "color",
   },
   boxShadowColor: {
     type: "string",
