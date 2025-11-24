@@ -41,6 +41,7 @@ const attributes = {
   },
   ctaBackColor: {
     type: "string",
+    default: '#2091e1'
   },
   ctaColor: {
     type: "string",
@@ -239,6 +240,7 @@ const attributes = {
   },
   backgroundType: {
     type: "string",
+    default: "color",
   },
   buttoncolorLocation1: {
     type: "number",
@@ -260,6 +262,7 @@ const attributes = {
   },
   buttonbackgroundType: {
     type: "string",
+    default: "color",
   },
   boxShadowColor: {
     type: "string",

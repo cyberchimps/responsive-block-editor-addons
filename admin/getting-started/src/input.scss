@@ -55,6 +55,13 @@
         border-width: 1px;
         border-radius: 10px;
     }
+    .components-form-toggle__input {
+    cursor: not-allowed !important;
+    &::before,
+            &::after {
+      cursor: not-allowed !important;
+    }
+}
 }
 
 .rbea-editor-icons {
