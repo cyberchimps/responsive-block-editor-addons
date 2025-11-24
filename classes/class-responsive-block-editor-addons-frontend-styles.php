@@ -12686,7 +12686,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 				$background_image_effect = '';
 			} else {
 				if ( 'linear' === $attr['gradientOverlayType'] ) {
-					$background_image_effect = 'linear-gradient(' .
+					$background_image_effect = $attr['gradientOverlay'] 
+					? $attr['gradientOverlay'] . ',url(' . $attr['backgroundImage'] . ')'
+					: 'linear-gradient(' .
 					$attr['gradientOverlayAngle'] .
 					'deg,' .
 					self::hex_to_rgba( $attr['gradientOverlayColor1'] ?? '#fff', $imgopacity ) .
@@ -12699,7 +12701,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					')';
 				}
 				if ( 'radial' === $attr['gradientOverlayType'] ) {
-					$background_image_effect = 'radial-gradient(' .
+					$background_image_effect = $attr['gradientOverlay'] 
+					? $attr['gradientOverlay'] . ',url(' . $attr['backgroundImage'] . ')'
+					: 'radial-gradient(' .
 					'at ' . $attr['gradientOverlayPosition'] . ', ' .
 					self::hex_to_rgba( $attr['gradientOverlayColor1'], $imgopacity ) .
 					$attr['gradientOverlayLocation1'] .
@@ -12830,7 +12834,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						? $background_image_effect
 						: (
 							'gradient' === $attr['backgroundType']
-							? self::generate_background_image_effect(
+							? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 								self::hex_to_rgb( $attr['backgroundColor1'] ? $attr['backgroundColor1'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								self::hex_to_rgb( $attr['backgroundColor2'] ? $attr['backgroundColor2'] : '#fff', $imgopacity ? $imgopacity : 0 ),
 								$attr['gradientDirection'],
