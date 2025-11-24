@@ -774,5 +774,11 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  gradient: {
+    type: "string",
+  },
+  gradientOverlay: {
+    type: "string",
+  },
 };
 export default attributes;
