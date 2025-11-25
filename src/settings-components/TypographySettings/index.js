@@ -71,6 +71,10 @@ class TypographyControl extends Component {
         // Font Weight Options
         const fontWeightOptions = [
             {
+                value: "",
+                label: __("Default", "responsive-block-editor-addons"),
+            },
+            {
                 value: "100",
                 label: __("100", "responsive-block-editor-addons"),
             },

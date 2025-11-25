@@ -84,7 +84,6 @@ const attributes = {
   },
   digitFontWeight: {
     type: "string",
-    default: "500",
   },
   digitLetterSpacing: {
     type: "number",
@@ -121,7 +120,6 @@ const attributes = {
   },
   labelFontWeight: {
     type: "string",
-    default: "500",
   },
   labelLeftPadding: {
     type: "number",

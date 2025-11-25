@@ -308,7 +308,6 @@ const attributes = {
 	},
 	topTitleValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	topTitleValueLineHeight: {
 		type: "number",
@@ -336,7 +335,6 @@ const attributes = {
 	},
 	innerTitleValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	innerTitleValueLineHeight: {
 		type: "number",
@@ -364,7 +362,6 @@ const attributes = {
 	},
 	bottomTitleValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	bottomTitleValueLineHeight: {
 		type: "number",
@@ -432,7 +429,6 @@ const attributes = {
 	},
 	circularTopTitleValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	circularTopTitleValueLineHeight: {
 		type: "number",
@@ -460,7 +456,6 @@ const attributes = {
 	},
 	circularBottomTitleValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	circularBottomTitleValueLineHeight: {
 		type: "number",
@@ -488,7 +483,6 @@ const attributes = {
 	},
 	circularInnerValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	circularInnerValueLineHeight: {
 		type: "number",
@@ -512,7 +506,6 @@ const attributes = {
 	},
 	semiCircularTopTitleValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	semiCircularTopTitleValueLineHeight: {
 		type: "number",
@@ -540,7 +533,6 @@ const attributes = {
 	},
 	semiCircularBottomTitleValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	semiCircularBottomTitleValueLineHeight: {
 		type: "number",
@@ -568,7 +560,6 @@ const attributes = {
 	},
 	semiCircularInnerValueFontWeight: {
 		type: "string",
-		default: "400",
 	},
 	semiCircularInnerValueLineHeight: {
 		type: "number",

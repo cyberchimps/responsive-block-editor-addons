@@ -201,7 +201,6 @@ const attributes = {
   },
   labelFontWeight: {
     type: "string",
-    default: "500",
   },
   labelLineHeight: {
     type: "number",

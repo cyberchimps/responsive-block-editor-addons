@@ -133,7 +133,6 @@ const attributes = {
 	},
 	textFontWeight: {
 		type: "string",
-		default: 100
 	},
 	textLineHeight: {
 		type: "number",
