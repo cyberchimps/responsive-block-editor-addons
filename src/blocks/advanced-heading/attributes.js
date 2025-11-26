@@ -160,11 +160,11 @@ const attributes = {
   },
   textDecoration: {
     type: "string",
-    default: "none"
+    default: ""
   },
   textDecorationSubHeading: {
     type: "string",
-    default: "none"
+    default: ""
   },
   hideWidget: {
   type: "boolean",

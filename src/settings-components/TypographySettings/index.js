@@ -133,6 +133,11 @@ class TypographyControl extends Component {
         // Text Decoration Options
         const textDecorationOptions = [
             {
+                value: "",
+                label: __("Default", "responsive-block-editor-addons"),
+                // icon: textDecorationIcons.underline,
+            },
+            {
                 value: "underline",
                 label: __("Header", "responsive-block-editor-addons"),
                 class: "rbea-text-decoration-underline-control"
@@ -333,7 +338,6 @@ class TypographyControl extends Component {
                         value={this.props.values.textDecoration}
                         onChange={this.props.onChangeTextDecoration}
                         allowReset
-                        defaultValue="none"
                     />
                 )}
                 {this.props.showTextBottomSpacing == true && (
