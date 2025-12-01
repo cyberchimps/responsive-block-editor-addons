@@ -24039,6 +24039,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-right'   => self::get_css_value( $attr['containerRightMargin'], 'px' ),
 					'overflow'       => $attr['overflow'],
 					'order'          => $order_desktop,
+					'z-index'		 => $attr['z_index'],
 				),
 				$border,
 				$container_bg_css_desktop,
@@ -24107,6 +24108,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'margin-left'    => self::get_css_value( $left_margin_tablet, 'px' ),
 					'margin-right'   => self::get_css_value( $right_margin_tablet, 'px' ),
 					'order'          => $order_tablet,
+					'z-index'		 => $attr['z_indexTablet']
 				),
 				$border_tablet,
 				$container_bg_css_tablet,
@@ -24150,6 +24152,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 					'row-gap'        => self::get_css_value( $attr['rowGapMobile'], $attr['rowGapTypeMobile'] ),
 					'column-gap'     => self::get_css_value( $attr['columnGapMobile'], $attr['columnGapTypeMobile'] ),
 					'order'          => $order_mobile,
+					'z-index'		 => $attr['z_indexMobile']
 				),
 				$border_mobile,
 				$container_bg_css_mobile,
