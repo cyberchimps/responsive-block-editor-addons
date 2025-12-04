@@ -79,7 +79,7 @@ export default class Save extends Component {
         )}
         <div className={"responsive-block-editor-addons-block-blockquote-item"}>
           <div className="responsive-block-editor-addons-block-blockquote-quote">
-            {showQuote && renderSVG(icon)}
+            {showQuote && <span className="rbea-dynamic-icon" data-icon={icon} aria-hidden="true"></span>}
           </div>
 
           <RichText.Content

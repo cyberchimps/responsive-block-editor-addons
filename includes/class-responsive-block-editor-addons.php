@@ -2368,6 +2368,9 @@ class Responsive_Block_Editor_Addons {
 		// Inject inherit from theme data attributes for old blocks that don't have them
 		$block_content = $this->inject_inherit_from_theme_attributes( $block_content, $block );
 
+		// Replace SVG placeholders with actual SVG markup
+		$block_content = $this->render_svg_icons_dynamically( $block_content );
+
 		return $block_content;
 	}
 
@@ -2610,5 +2613,59 @@ class Responsive_Block_Editor_Addons {
 		// Check in restricted day.
 		return ! in_array( $current_day, $block_attributes['RBEADay'] ) ? $block_content : '';
 
+	}
+
+	/**
+	 * Render SVG icons dynamically from placeholders.
+	 *
+	 * Replaces placeholder spans with actual SVG markup on the frontend.
+	 *
+	 * @param string $block_content The block content.
+	 * @return string Modified block content with SVGs rendered.
+	 */
+	public function render_svg_icons_dynamically( $block_content ) {
+		if ( empty( $block_content ) ) {
+			return $block_content;
+		}
+
+		// Pattern to match placeholder spans with rbea-dynamic-icon class (including closing tag)
+		$pattern = '/<span\s+([^>]*\s+)?class=["\']([^"\']*\s+)?rbea-dynamic-icon([^"\']*)?["\']([^>]*)?>\s*<\/span>/i';
+
+		$replaced_content = preg_replace_callback(
+			$pattern,
+			function( $matches ) {
+				// Extract the full span tag (opening tag only for attribute extraction)
+				$full_match = $matches[0];
+				$opening_tag = $matches[0];
+				if ( preg_match( '/<span[^>]*>/', $full_match, $tag_match ) ) {
+					$opening_tag = $tag_match[0];
+				}
+
+				// Extract data-icon attribute
+				if ( preg_match( '/data-icon=["\']([^"\']+)["\']/', $opening_tag, $icon_matches ) ) {
+					$icon_name = $icon_matches[1];
+
+					// Render SVG using the renderer class
+					$svg = Responsive_Block_Editor_Addons_SVG_Renderer::render( $icon_name );
+
+					if ( ! empty( $svg ) ) {
+						// Wrap SVG in span with original classes preserved
+						$wrapper_classes = 'rbea-svg-icon-wrap';
+						if ( preg_match( '/class=["\']([^"\']+)["\']/', $opening_tag, $class_matches ) ) {
+							$original_classes = $class_matches[1];
+							$wrapper_classes = $original_classes . ' rbea-svg-icon-wrap';
+						}
+
+						return '<span class="' . esc_attr( $wrapper_classes ) . '">' . $svg . '</span>';
+					}
+				}
+
+				// Return original if no icon found
+				return $full_match;
+			},
+			$block_content
+		);
+
+		return is_null( $replaced_content ) ? $block_content : $replaced_content;
 	}
 }
