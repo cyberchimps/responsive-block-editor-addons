@@ -6,6 +6,7 @@ import EditorStyles from "./editor-styles";
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
 const { RichText } = wp.blockEditor;
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 import { range } from "lodash";
 
 export default class Edit extends Component {
@@ -61,6 +62,7 @@ export default class Edit extends Component {
     let CustomTag = `${blockTag}`;
 
     return [
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <style id={`responsive-block-editor-addons-advanced-text-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
       <Inspector
         key="advanced-text-inspector"

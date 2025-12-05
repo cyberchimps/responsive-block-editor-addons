@@ -9,6 +9,7 @@
 import icons from "../../../utils/components/icons";
 import renderSVG from "../../../renderIcon";
 import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
  /**
   * WordPress dependencies
   */
@@ -58,6 +59,7 @@ import ResponsiveBlockEditorAddonsIcons from "../../../block-icons";
        onReplace,
      } = this.props;
      return [
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
        <style id={`responsive-block-editor-addons-anchor-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
        <BlockControls key="controls">
        </BlockControls>,

@@ -7,6 +7,7 @@ import Buttons from "./buttons";
 import memoize from "memize";
 import times from "lodash/times";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -76,6 +77,7 @@ export default class Edit extends Component {
     });
 
     return [
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the block controls on focus
       <Inspector key={`inspector-${block_id}`} {...{ setAttributes, ...this.props }} />,
 

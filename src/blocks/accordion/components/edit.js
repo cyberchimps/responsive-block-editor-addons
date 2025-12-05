@@ -36,6 +36,7 @@ import {
   __experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
@@ -1179,6 +1180,7 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
     return (
       <Fragment>
         <style id={`responsive-block-editor-addons-style-accordion-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>
+        <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />
         <InspectorControls>
           <InspectorTabs>
             <InspectorTab key={"content"}>

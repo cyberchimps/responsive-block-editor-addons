@@ -7,6 +7,7 @@ import times from "lodash/times";
 import React from "react";
 import Team from "./team";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -123,6 +124,7 @@ export default class Edit extends Component {
 
     return [
       <style id={`responsive-block-editor-addons-team-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       // Show the block controls on focus
       <Inspector key="inspector" {...{ setAttributes, ...this.props }} />,
 

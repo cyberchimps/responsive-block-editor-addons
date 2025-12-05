@@ -3,6 +3,7 @@ import { RbeaExtensionContext } from "./context/RbeaExtensionContext";
 import RbeaAnimations from "./animations/RbeaAnimations"
 import RbeaDisplayConditions from "./display-conditions/RbeaDisplayConditions";
 import RbeaResponsiveConditions from "./responsive-conditions/RbeaResponsiveConditions";
+import RbeaCustomCSS from "./custom-css/RbeaCustomCSS";
 const RbeaExtensions = ( props ) => {
 
   return (
@@ -10,6 +11,7 @@ const RbeaExtensions = ( props ) => {
       { responsive_globals?.is_animation_on && <RbeaAnimations /> }
       { responsive_globals?.is_display_conditions_on && <RbeaDisplayConditions /> }
       { responsive_globals?.is_responsive_conditions_on && <RbeaResponsiveConditions /> }
+      <RbeaCustomCSS />
     </RbeaExtensionContext.Provider>
   )
 }

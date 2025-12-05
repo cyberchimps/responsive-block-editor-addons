@@ -10,6 +10,7 @@ import InfoBoxPositionClasses from "./classes";
 import React from "react";
 import { loadGoogleFont } from "../../../utils/font";
 import EditorStyles from "./editor-styles";
+import AutoRegisterCSSBlock from "../../../extensions/custom-css/AutoRegisterCSSBlock";
 
 /**
  * WordPress dependencies
@@ -225,6 +226,7 @@ export default class Edit extends Component {
     let imgopacity = imageopacity / 100;
     return [
       <style id={`responsive-block-editor-addons-info-block-style-${this.props.clientId}-inner`}>{EditorStyles(this.props)}</style>,
+      <AutoRegisterCSSBlock key="auto-register-css" {...this.props} />,
       <Fragment key="above-below-title-fragment" >
         {(imgiconPosition == "above-title" ||
           imgiconPosition == "below-title") && (

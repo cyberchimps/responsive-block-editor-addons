@@ -12,6 +12,15 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
 	...defaultConfig,
 
+	resolve: {
+		...defaultConfig.resolve,
+		alias: {
+			...(defaultConfig.resolve?.alias || {}),
+			// Force css-tree to use CommonJS build for webpack 4 compatibility
+			'css-tree': path.resolve(__dirname, '../node_modules/css-tree/cjs/index.cjs'),
+		},
+	},
+
 	entry: {
 		'responsive-block-editor-addons': path.resolve( process.cwd(), 'src/blocks.js' ),
 		'responsive-block-editor-addons-getting-started': path.resolve( process.cwd(), 'admin/getting-started/src/index.js' ),
