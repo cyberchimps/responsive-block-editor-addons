@@ -32,7 +32,7 @@ const save = ({ attributes, className }) => {
 
   const sortedImages = [...images].sort((a, b) => a.order - b.order);
 
-  const appendClass = `block-${block_id}`;
+  const appendClass = `responsive-block-editor-addons-block-gallery-masonry block-${block_id}`;
   let outerClasses = className ? `${className} ${appendClass}` : appendClass;
   
   // Add caption style class

@@ -272,7 +272,7 @@ function responsive_block_editor_addons_render_block_core_latest_posts( $attribu
 		wp_reset_postdata();
 
 		/* Build the block classes */
-		$class = "block-id-{$attributes['block_id']} responsive-block-editor-addons-block-post-grid featured{$attributes['postType']} align{$attributes['align']}";
+		$class = "responsive-block-editor-addons-block-responsive-block-editor-addons-post-grid block-{$attributes['block_id']} block-id-{$attributes['block_id']} responsive-block-editor-addons-block-post-grid featured{$attributes['postType']} align{$attributes['align']}";
 
 		if ( isset( $attributes['className'] ) ) {
 			$class .= ' ' . sanitize_html_class( $attributes['className'] );

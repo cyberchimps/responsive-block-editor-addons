@@ -289,6 +289,8 @@ class LatestPostsBlock extends Component {
 
         <SectionTag
           className={classnames(
+            "responsive-block-editor-addons-block-responsive-block-editor-addons-post-grid",
+            `block-${attributes.block_id}`,
             `block-id-${attributes.block_id}`,
             this.props.className,
             "responsive-block-editor-addons-block-post-grid"

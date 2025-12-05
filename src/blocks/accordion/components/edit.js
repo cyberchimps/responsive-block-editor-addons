@@ -1289,6 +1289,8 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
             `responsive-block-editor-addons-accordion-layout-${this.props.attributes.layout}`,
             `responsive-block-editor-addons-accordion-expand-first-${this.props.attributes.expandFirstItem}`,
             `responsive-block-editor-addons-accordion-inactive-other-${this.props.attributes.inactiveOtherItems}`,
+            `responsive-block-editor-addons-block-accordion`,
+            `block-${this.props.attributes.block_id}`,
             equalHeightClass
           )}
       data-accordiontoggle = { true }

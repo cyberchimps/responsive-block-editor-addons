@@ -175,6 +175,7 @@ export default class Edit extends Component {
                   "editor",
                   `responsive-block-editor-addons-block-image-boxes-${index}`,
                   "responsive-block-editor-addons-block-image-boxes",
+                  "responsive-block-editor-addons-block-image-boxes-block",
                   `block-${block_id}`
                 )}
               >

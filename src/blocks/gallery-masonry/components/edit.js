@@ -393,7 +393,7 @@ class GalleryMasonryEdit extends Component {
       return masonryGalleryPlaceholder;
     }
 
-    const appendClass = `block-${block_id}`;
+    const appendClass = `responsive-block-editor-addons-block-gallery-masonry block-${block_id}`;
     const outerClasses = classnames(className, appendClass);
 
     const sortedImages = [...images].sort((a, b) => a.order - b.order);

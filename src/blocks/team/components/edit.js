@@ -132,6 +132,7 @@ export default class Edit extends Component {
       <div key={`team-wrapper-${block_id}`}
         className={classnames(
           "wp-block-responsive-block-editor-addons-team-wrapper",
+          "responsive-block-editor-addons-block-team",
           `block-${block_id}`,
           {
             "has-columns": count > 1,

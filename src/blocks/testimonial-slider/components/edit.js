@@ -2206,7 +2206,8 @@ class edit extends Component {
         <div
           className={classnames(
             className,
-            "responsive-block-editor-addons-testomonial__outer-wrap responsive-block-editor-addons-slick-carousel responsive-block-editor-addons-tm__arrow-outside",
+            "responsive-block-editor-addons-block-testimonial-slider responsive-block-editor-addons-testomonial__outer-wrap responsive-block-editor-addons-slick-carousel responsive-block-editor-addons-tm__arrow-outside",
+            `block-${this.props.clientId}`,
             `responsive-block-editor-addons-block-${this.props.clientId.substr(
               0,
               8
