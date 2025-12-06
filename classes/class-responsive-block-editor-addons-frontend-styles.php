@@ -24062,7 +24062,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			$selectors = array(
 				$base_selector . '.wp-block-responsive-block-editor-addons-container'           => array(
 					'color' => $attr['textColor'],
-					'display' => true === $attr['hideWidget'] && $is_on ? 'none' : 'block',
+					'display' => true === $attr['hideWidget'] && $is_on ? 'none' : 'flex',
 				),
 				$base_selector . ' a'                                                           => array(
 					'color' => $attr['linkColor'],
@@ -24126,7 +24126,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$tablet_selectors = array(
 				$base_selector . '.wp-block-responsive-block-editor-addons-container' => array(
-					'display' => true === $attr['hideWidgetTablet'] && $is_on ? 'none' : 'block',
+					'display' => true === $attr['hideWidgetTablet'] && $is_on ? 'none' : 'flex',
 				),
 				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
 					'height' => self::get_css_value( $attr['bottomHeightTablet'], 'px' ),
@@ -24169,7 +24169,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$mobile_selectors = array(
 				$base_selector . '.wp-block-responsive-block-editor-addons-container' => array(
-					'display' => true === $attr['hideWidgetMobile'] && $is_on ? 'none' : 'block',
+					'display' => true === $attr['hideWidgetMobile'] && $is_on ? 'none' : 'flex',
 				),
 				$base_selector . ' .responsive-block-editor-addons-container__shape-bottom svg' => array(
 					'height' => self::get_css_value( $attr['bottomHeightMobile'], 'px' ),
