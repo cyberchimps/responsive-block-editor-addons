@@ -232,7 +232,7 @@ This is how you can easily install the Responsive Gutenberg Blocks plugin on you
 == Changelog ==
 
 = 2.1.6 - 6th December 2025 =
-* Fix – Fixed a minor Container block bug.
+* Fix – Fixed a minor bug in Container block.
 
 = 2.1.5 - 26th November 2025 =
 * New – Revamped RBA Settings Screen & Dashboard.
