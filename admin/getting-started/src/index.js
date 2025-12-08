@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import { HashRouter } from 'react-router-dom';
 import Header from "./components/Header";
 import Canvas from "./Screens/Canvas";

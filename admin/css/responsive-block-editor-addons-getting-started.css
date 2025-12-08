@@ -165,7 +165,7 @@
 }
 
 /*
-! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -1429,6 +1429,13 @@ img {
   .components-form-toggle.is-disabled {
     border-width: 1px;
     border-radius: 10px;
+  }
+  .components-form-toggle__input {
+    cursor: not-allowed !important;
+    &::before,
+            &::after {
+      cursor: not-allowed !important;
+    }
   }
 }
 

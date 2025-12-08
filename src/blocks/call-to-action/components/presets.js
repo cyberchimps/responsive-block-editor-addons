@@ -89,7 +89,7 @@ const preset3BorderRadius = {
 
 const resetButtonPreset = {
     buttonbackgroundType: 'color',
-    ctaBackColor: '',
+    ctaBackColor: '#2091e1',
     ctaColor: '#ffffff',
     ctaBlockBottomRadius: 4,
     ctaBlockBottomRadiusMobile: 4,
