@@ -127,7 +127,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
     		// Combine post CSS and widget CSS and output it.
     		$combined_css = $post_css . $widget_css;
     		if ( ! empty( $combined_css ) ) {
-				echo "<style id='rbea-frontend-styles'>$combined_css</style>"; //phpcs:ignore
+				echo '<style id="rbea-frontend-styles">' . esc_textarea( $combined_css ) . '</style>'; 
     		}
 			do_action( 'rbea-frontend-site-builder-styles' );
 		}
@@ -230,6 +230,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 			}
 
 			$custom_css = trim( $block['attrs']['customCss'] );
+			$custom_css = wp_strip_all_tags( $custom_css );
 			$block_name = isset( $block['blockName'] ) ? $block['blockName'] : '';
 			$block_id   = isset( $block['attrs']['block_id'] ) ? $block['attrs']['block_id'] : '';
 
