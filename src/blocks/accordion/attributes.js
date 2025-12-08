@@ -305,7 +305,6 @@ const attributes = {
   },
   titleBackgroundColor: {
     type: "string",
-    default: "#FFFFFF",
   },
   contentSecondaryBackgroundColor: {
     type: "string",
