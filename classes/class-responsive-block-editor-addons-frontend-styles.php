@@ -10765,7 +10765,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 
 			$updated_button_bg_h_image = '';
 			if ( 'gradient' === $attr['buttonHbackgroundType'] ) {
-				$updated_button_bg_h_image = 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '% , ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
+				$updated_button_bg_h_image = $attr['gradientButtonH'] ? $attr['gradientButtonH'] : 'linear-gradient(' . $attr['buttonHgradientDirection'] . 'deg, ' . $attr['buttonHbackgroundColor1'] . ' ' . $attr['buttonHcolorLocation1'] . '% , ' . $attr['buttonHbackgroundColor2'] . ' ' . $attr['buttonHcolorLocation2'] . '%)';
 			}
 
 			$updated_button_background_color = '';
@@ -10773,7 +10773,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 			if ( 'color' === $attr['buttonbackgroundType'] ) {
 				$updated_button_background_color = $attr['ctaBackColor'];
 			} elseif ( 'gradient' === $attr['buttonbackgroundType'] ) {
-				$updated_button_background_image = 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
+				$updated_button_background_image = $attr['gradientButton'] ? $attr['gradientButton'] : 'linear-gradient(' . $attr['buttongradientDirection'] . 'deg, ' . $attr['buttonbackgroundColor1'] . ' ' . $attr['buttoncolorLocation1'] . '%, ' . $attr['buttonbackgroundColor2'] . ' ' . $attr['buttoncolorLocation2'] . '%)';
 			}
 			$is_on = array_column( (array) get_option( 'rbea_blocks' ), 'status', 'key' )['responsive-conditions'] ?? 1;
 
@@ -10892,7 +10892,7 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
 						: '#eee',
 					'background-image'           =>
 						'gradient' === $attr['backgroundType']
-						? self::generate_background_image_effect(
+						? $attr['gradient'] ? $attr['gradient'] : self::generate_background_image_effect(
 							self::hex_to_rgb(
 								$attr['backgroundColor1'],
 								$columnbackcoloropacity
@@ -11409,6 +11409,9 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles' ) ) {
         		'ctaFontStyle'                 => '',
 				'inheritFromThemesaved'	   => false,
 				'inheritFromTheme'		   => false,
+				'gradient'				   => '',
+				'gradientButton'		   => '',
+				'gradientButtonH'		   => '',
 			);
 		}
 

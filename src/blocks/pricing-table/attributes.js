@@ -1,3 +1,4 @@
+import { type } from "jquery";
 import { convertTruthyFalsyValue } from "../../utils/helper";
 
 const ITEM_COUNT = 1;
@@ -978,6 +979,15 @@ const attributes = {
   isPreview: {
     type: "boolean",
     default: false, 
+  },
+  gradient: {
+    type: "string",
+  },
+  gradientButton: {
+    type: "string",
+  },
+  gradientButtonH: {
+    type: "string",
   },
 };
 export default attributes;
