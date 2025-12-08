@@ -114,7 +114,17 @@ class ResponsiveBlockEditorAddonsAccordionEdit extends Component {
       blockLeftMarginMobile,
       blockRightMarginMobile,
       blockNewSpacingValuesUpdated,
+      titleBgGradient,
+      contentBgGradient,
     } = attributes;
+
+    // Sync legacy gradient flags to new background type controls
+    if (titleBgGradient) {
+      setAttributes({ backgroundType: "gradient", titleBgGradient: false });
+    }
+    if (contentBgGradient) {
+      setAttributes({ contentBackgroundType: "gradient", contentBgGradient: false });
+    }
 
     // Assigning block_id in the attribute.
     setAttributes({ block_id: this.props.clientId });
