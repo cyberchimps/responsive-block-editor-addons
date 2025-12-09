@@ -20,4 +20,4 @@ function addAttributes( settings, name ) {
     return settings;
 }
 
-addFilter( 'blocks.registerBlockType', 'responsive-block-editor-addons/advanced-control-block', addAttributes );z
+addFilter( 'blocks.registerBlockType', 'responsive-block-editor-addons/advanced-control-block', addAttributes );
