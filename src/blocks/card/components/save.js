@@ -141,10 +141,12 @@ export default class Save extends Component {
                       <span
                         className={classnames(
                           `responsive-block-editor-addons-button__icon`,
-                          `responsive-block-editor-addons-button__icon-position-${iconPosition}`
+                          `responsive-block-editor-addons-button__icon-position-${iconPosition}`,
+                          "rbea-dynamic-icon"
                         )}
+                        data-icon={icon}
+                        aria-hidden="true"
                       >
-                        {renderSVG(icon)}
                       </span>
                     )}
                     <a
@@ -159,10 +161,12 @@ export default class Save extends Component {
                       <span
                         className={classnames(
                           `responsive-block-editor-addons-button__icon`,
-                          `responsive-block-editor-addons-button__icon-position-${iconPosition}`
+                          `responsive-block-editor-addons-button__icon-position-${iconPosition}`,
+                          "rbea-dynamic-icon"
                         )}
+                        data-icon={icon}
+                        aria-hidden="true"
                       >
-                        {renderSVG(icon)}
                       </span>
                     )}
                   </div>

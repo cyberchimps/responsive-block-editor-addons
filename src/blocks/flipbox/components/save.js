@@ -155,9 +155,7 @@ export default class Save extends Component {
                       )}
                     >
                       {"" !== flipboxArray[index]["icon"] && (
-                      <span
-                      >
-                        {renderSVG(flipboxArray[index]["icon"])}
+                      <span className="rbea-dynamic-icon" data-icon={flipboxArray[index]["icon"]} aria-hidden="true">
                       </span>
                       )}
                     </div>
@@ -185,9 +183,7 @@ export default class Save extends Component {
                       )}
                     >
                       {"" !== flipboxArray[index]["back_icon"] && (
-                      <span
-                      >
-                        {renderSVG(flipboxArray[index]["back_icon"])}
+                      <span className="rbea-dynamic-icon" data-icon={flipboxArray[index]["back_icon"]} aria-hidden="true">
                       </span>
                       )}
                     </div>
