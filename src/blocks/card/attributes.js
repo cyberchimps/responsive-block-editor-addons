@@ -425,7 +425,6 @@ const attributes = {
   },
   subFontWeight: {
     type: "string",
-    default: 400,
   },
   subFontSize: {
     type: "number",
@@ -437,7 +436,6 @@ const attributes = {
   },
   headingFontWeight: {
     type: "string",
-    default: 900,
   },
   headingFontSize: {
     type: "number",
@@ -453,7 +451,6 @@ const attributes = {
   },
   contentFontWeight: {
     type: "string",
-    default: 400,
   },
   blockbotmargin: {
     type: "number",

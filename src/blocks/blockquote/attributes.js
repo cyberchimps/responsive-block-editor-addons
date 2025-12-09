@@ -21,7 +21,6 @@ const attributes = {
   },
   quoteFontWeight: {
     type: "string",
-    default: "400",
   },
   quoteLineHeight: {
     type: "number",
@@ -583,7 +582,6 @@ const attributes = {
   },
   twFontWeight: {
     type: "string",
-    default: "",
   },
   twLineHeight: {
     type: "number",

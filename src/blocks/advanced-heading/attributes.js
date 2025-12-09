@@ -100,7 +100,6 @@ const attributes = {
   },
   headingTitleFontWeight: {
     type: "string",
-    default: "600",
   },
   headingTitleLineHeight: {
     type: "number",
@@ -127,7 +126,6 @@ const attributes = {
   },
   subHeadingTitleFontWeight: {
     type: "string",
-    default: "400",
   },
   subHeadingTitleLineHeight: {
     type: "number",
@@ -162,11 +160,11 @@ const attributes = {
   },
   textDecoration: {
     type: "string",
-    default: "none"
+    default: ""
   },
   textDecorationSubHeading: {
     type: "string",
-    default: "none"
+    default: ""
   },
   hideWidget: {
   type: "boolean",

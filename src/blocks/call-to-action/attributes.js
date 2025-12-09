@@ -27,7 +27,6 @@ const attributes = {
   },
   buttonTextFontWeight: {
     type: "string",
-    default: "400"
   },
   buttonUrl: {
     type: "string",
@@ -133,7 +132,6 @@ const attributes = {
   },
   ctaTitleFontWeight: {
     type: "string",
-    default: "400",
   },
   ctaTextLineHeight: {
     type: "number",
@@ -141,7 +139,6 @@ const attributes = {
   },
   ctaTextFontWeight: {
     type: "string",
-    default: "400",
   },
   ctaVpadding: {
     type: "number",
