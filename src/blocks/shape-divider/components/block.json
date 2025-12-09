@@ -98,12 +98,10 @@
       "default": 90
     },
     "backgroundColor1": {
-      "type": "string",
-      "default": "#fff"
+      "type": "string"
     },
     "backgroundColor2": {
-      "type": "string",
-      "default": "#fff"
+      "type": "string"
     },
     "backgroundType": {
       "type": "string",
@@ -240,7 +238,9 @@
     "isPreview": {
       "type": "boolean",
       "default": false
+    },
+    "gradient": {
+      "type": "string"
     }
-    
   }
 }

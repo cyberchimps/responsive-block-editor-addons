@@ -192,6 +192,8 @@ function EditorStyles(props) {
   buttonTextTextTransform,
   buttonTextFontStyle,
   inheritFromTheme,
+  gradientButton,
+  gradient,
   } = props.attributes;
   let updatedButtonBackgroundColor = "";
   let updatedButtonBackgroundhColor = "";
@@ -206,7 +208,7 @@ function EditorStyles(props) {
   }
 
   if ( 'gradient' === buttonbackgroundType) {
-    updatedButtonBackgroundImage = generateBackgroundImageEffect(
+    updatedButtonBackgroundImage = gradientButton ? gradientButton : generateBackgroundImageEffect(
       buttonbackgroundColor1,
       buttonbackgroundColor2,
       buttongradientDirection,
@@ -276,7 +278,7 @@ function EditorStyles(props) {
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               backgroundColor1,
               backgroundColor2,
               gradientDirection,

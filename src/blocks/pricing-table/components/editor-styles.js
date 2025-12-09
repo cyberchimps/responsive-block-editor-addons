@@ -244,6 +244,9 @@ function EditorStyles(props) {
     ctaTextTransform,
     ctaFontStyle,
     inheritFromTheme,
+    gradient,
+    gradientButton,
+    gradientButtonH,
   } = props.attributes;
 
   var boxShadowPositionCSS = boxShadowPosition;
@@ -266,7 +269,7 @@ function EditorStyles(props) {
   if (buttonHbackgroundType === "color") {
     updatedButtonBgHColor = ctaHoverBackColor;
   } else if (buttonHbackgroundType == "gradient") {
-    updatedButtonBgHImage = `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
+    updatedButtonBgHImage = gradientButtonH ? gradientButtonH : `linear-gradient(${buttonHgradientDirection}deg, ${buttonHbackgroundColor1} ${buttonHcolorLocation1}%, ${buttonHbackgroundColor2} ${buttonHcolorLocation2}%)`;
   }
 
   let updatedButtonBackgroundColor = "";
@@ -274,7 +277,7 @@ function EditorStyles(props) {
   if (buttonbackgroundType == "color") {
     updatedButtonBackgroundColor = ctaBackColor;
   } else if (buttonbackgroundType == "gradient") {
-    updatedButtonBackgroundImage = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    updatedButtonBackgroundImage = gradientButton ? gradientButton :`linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   }
 
   let imgopacity = opacity / 100;
@@ -295,7 +298,7 @@ function EditorStyles(props) {
     " .wp-block-responsive-block-editor-addons-pricing-table-item__button": {
       color: inheritFromTheme ? '' : ctaColor + "!important",
       "background-color": inheritFromTheme ? '' : updatedButtonBackgroundColor,
-      "background-image": backgroundImage ? updatedButtonBackgroundImage : 'none',
+      "background-image": buttonbackgroundType == "gradient" ? updatedButtonBackgroundImage : 'none',
       "margin-left": "left" == blockAlign ? 0 : "",
       "margin-right": "right" == blockAlign ? 0 : "",
       "margin-bottom": generateCSSUnit(buttonSpace, "px"),
@@ -400,7 +403,7 @@ function EditorStyles(props) {
           : "#eee",
       "background-image":
         backgroundType == "gradient"
-          ? generateBackgroundImageEffect(
+          ? gradient ? gradient : generateBackgroundImageEffect(
               `${hexToRgba(
                 backgroundColor1 || "#fff",
                 gradientOpacity || 0

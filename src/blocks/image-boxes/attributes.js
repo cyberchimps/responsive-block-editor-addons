@@ -667,6 +667,20 @@ const attributes = {
     type: "boolean",
     default: false, 
   },
+  backgroundType: {
+    type: "string",
+    default: "none",
+  },
+  gradient: {
+    type: "string",
+  },
+  hoverGradient: {
+    type: "string",
+  },
+  hoverBackgroundType: {
+    type: "string",
+    default: "none",
+  },
 };
 
 export default attributes;

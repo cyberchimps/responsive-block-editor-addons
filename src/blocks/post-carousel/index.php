@@ -1130,10 +1130,11 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 				),
 				'buttonbackgroundColor1'             => array(
 					'type' => 'string',
+					'default' => '#333333',
 				),
 				'buttonbackgroundColor2'             => array(
 					'type'    => 'string',
-					'default' => '#fff',
+					'default' => '#333333',
 				),
 				'buttonbackgroundType'               => array(
 					'type'    => 'string',
@@ -1339,6 +1340,9 @@ function responsive_block_editor_addons_register_block_core_latest_posts2() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'gradientButton'	=> array(
+					'type'	=> 'string',
+				)
 			),
 			'render_callback' => 'responsive_block_editor_addons_render_block_core_latest_posts2',
 		)

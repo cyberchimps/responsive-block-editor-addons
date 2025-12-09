@@ -156,7 +156,11 @@ function EditorStyles(props) {
     titleTextTransform,
     titleFontStyle,
     descriptionTextTransform,
-    descriptionFontStyle
+    descriptionFontStyle,
+    backgroundType,
+    gradient,
+    hoverGradient,
+    hoverBackgroundType,
   } = props.attributes;
 
   let imgopacity = opacity / 100;
@@ -179,8 +183,8 @@ function EditorStyles(props) {
     hoverboxShadowPositionCSS = "";
   }
 
-  var hoverGradient =
-    "linear-gradient(" +
+  var hoverGradientCalc =
+    hoverGradient ? hoverGradient : "linear-gradient(" +
     hoverGradientDegree +
     "deg," +
     hexToRgba(itemHoverBackgroundColor || "#ffffff", hoverImgopacity || 0) +
@@ -191,7 +195,7 @@ function EditorStyles(props) {
     ) +
     ")";
 
-    let backgroundImageFirst = `linear-gradient( 
+    let backgroundImageFirst = gradient ? `${gradient},url(${backgroundImageOne})` : `linear-gradient( 
     ${gradientDegree}deg,
     ${hexToRgba(
       itemBackgroundColor || "#ffffff",
@@ -202,7 +206,7 @@ function EditorStyles(props) {
       imgopacity || 0
     )}),url(${backgroundImageOne})`
 
-    let backgroundImageSecond = `linear-gradient( 
+    let backgroundImageSecond = gradient ? `${gradient},url(${backgroundImageTwo})` : `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
         itemBackgroundColor || "#ffffff",
@@ -213,7 +217,7 @@ function EditorStyles(props) {
         imgopacity || 0
       )}),url(${backgroundImageTwo})`
 
-    let backgroundImageThird = `linear-gradient( 
+    let backgroundImageThird = gradient ? `${gradient},url(${backgroundImageThree})` : `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
         itemBackgroundColor || "#ffffff",
@@ -224,7 +228,7 @@ function EditorStyles(props) {
         imgopacity || 0
       )}),url(${backgroundImageThree})`
 
-    let backgroundImageFourth = `linear-gradient( 
+    let backgroundImageFourth = gradient ? `${gradient},url(${backgroundImageFour})` : `linear-gradient( 
       ${gradientDegree}deg,
       ${hexToRgba(
         itemBackgroundColor || "#ffffff",
@@ -304,7 +308,7 @@ function EditorStyles(props) {
     },
 
     ":hover .responsive-block-editor-addons-add-image": {
-      "background-image": hoverGradient,
+      "background-image": hoverGradientCalc,
       "border-top-left-radius": generateCSSUnit(blockTopRadius, "px"),
       "border-top-right-radius": generateCSSUnit(blockRightRadius, "px"),
       "border-bottom-right-radius": generateCSSUnit(blockBottomRadius, "px"),

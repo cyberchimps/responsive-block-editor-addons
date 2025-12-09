@@ -144,6 +144,7 @@ function EditorStyles(props) {
     excerptFontStyle,
     ctaTextTransform,
     ctaFontStyle,
+    gradientButton,
   } = props.attributes;
 
   var slickButtonStyles = {
@@ -172,7 +173,7 @@ function EditorStyles(props) {
   let backgroundImageGradient = "";
   let pcColor = "";
   if (buttonbackgroundType == "gradient") {
-    backgroundImageGradient = `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
+    backgroundImageGradient = gradientButton ? gradientButton : `linear-gradient(${buttongradientDirection}deg, ${buttonbackgroundColor1} ${buttoncolorLocation1}%, ${buttonbackgroundColor2} ${buttoncolorLocation2}%)`;
   } else if (buttonbackgroundType == "color") {
     backgroundImageGradient = "";
     pcColor = ctaBackColor;

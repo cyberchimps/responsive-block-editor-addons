@@ -136,7 +136,8 @@ function EditorStyles(props) {
     twTypographyColor,
     quoteTextTransform,
     quoteFontStyle,
-    twFontStyle
+    twFontStyle,
+    gradient,
   } = props.attributes;
 
   let quoteopacity = quoteOpacity / 100;
@@ -190,7 +191,7 @@ function EditorStyles(props) {
           : undefined,
       "background-image":
         backgroundType == "gradient"
-          ? `linear-gradient(${gradientDirection}deg, ${hexToRgba(
+          ? gradient ? gradient : `linear-gradient(${gradientDirection}deg, ${hexToRgba(
             backgroundColor1 || "#fff",
             imgopacity || 0
           )} ${colorLocation1}%, ${hexToRgba(

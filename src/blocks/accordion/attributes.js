@@ -305,7 +305,6 @@ const attributes = {
   },
   titleBackgroundColor: {
     type: "string",
-    default: "#FFFFFF",
   },
   contentSecondaryBackgroundColor: {
     type: "string",
@@ -802,6 +801,20 @@ separatorWidthType: {
   isPreview: {
     type: "boolean",
     default: false, 
+  },
+  backgroundType: {
+    type: "string",
+    default: "none",
+  },
+  gradient: {
+    type: "string",
+  },
+  contentGradient: {
+    type: "string",
+  },
+  contentBackgroundType: {
+    type: "string",
+    default: "none",
   },
 };
 

@@ -13,6 +13,7 @@ import RbeaColorControl from "../../../utils/components/rbea-color-control";
 import RbeaBackgroundTypeControl from "../../../utils/components/rbea-background-type-control";
 import RbeaSupportControl from "../../../utils/components/rbea-support-control";
 import RbeaExtensions from "../../../extensions/RbeaExtensions";
+import GradientBackgroundControl from "../../../settings-components/BlockBackgroundSettings/GradientBackgroundSettings";
 /**
  * WordPress dependencies
  */
@@ -277,53 +278,9 @@ class Inspector extends Component {
                 )}
                 {"gradient" == backgroundType && (
                   <Fragment>
-                    <RbeaColorControl
-                      label = {__("Color 1", "responsive-block-editor-addons")}
-                      colorValue={backgroundColor1}
-                      onChange={(colorValue) => setAttributes({ backgroundColor1: colorValue })}
-                      resetColor={() => setAttributes({ backgroundColor1: "" })}
-                    />
-                    <RbeaColorControl
-                      label = {__("Color 2", "responsive-block-editor-addons")}
-                      colorValue={backgroundColor2}
-                      onChange={(colorValue) => setAttributes({ backgroundColor2: colorValue })}
-                      resetColor={() => setAttributes({ backgroundColor2: "" })}
-                    />
-                    <RbeaRangeControl
-                      label={__(
-                        "Color Location 1",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={colorLocation1}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({ colorLocation1: value })
-                      }
-                    />
-                    <RbeaRangeControl
-                      label={__(
-                        "Color Location 2",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={colorLocation2}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({ colorLocation2: value })
-                      }
-                    />
-                    <RbeaRangeControl
-                      label={__(
-                        "Angle",
-                        "responsive-block-editor-addons"
-                      )}
-                      value={gradientDirection}
-                      min={0}
-                      max={100}
-                      onChange={(value) =>
-                        setAttributes({ gradientDirection: value })
-                      }
+                    <GradientBackgroundControl
+                      {...this.props}
+                      showHoverGradient = {false}
                     />
                   </Fragment>
                 )}
