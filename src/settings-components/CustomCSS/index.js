@@ -298,12 +298,6 @@ class CustomCSSControl extends Component {
               {__('Use this selector in your CSS:', 'responsive-block-editor-addons')}{' '}
               <code>{PLACEHOLDER_SELECTOR}</code>
             </p>
-            <p className="rbea-custom-css-help-text">
-              {__(
-                'Write your CSS using the selector above. It will automatically target this specific block instance on both editor and frontend.',
-                'responsive-block-editor-addons'
-              )}
-            </p>
           </div>
         </BaseControl>
       </div>

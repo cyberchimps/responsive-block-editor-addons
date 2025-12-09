@@ -8,5 +8,19 @@
   .rbea-custom-css-errors {
     margin-bottom: 15px;
   }
+  .rbea-custom-css-annotation {
+    font-size: 12px;
+  }
+  .rbea-custom-css-annotation > strong {
+    color: white;
+    padding: 2px 5px 2px 5px;
+    border-radius: 14px;
+  }
+  .rbea-custom-css-error > strong {
+    background-color: red;
+  }
+  .rbea-custom-css-warning > strong {
+    background-color: #FFC107;
+  }
 
 }
