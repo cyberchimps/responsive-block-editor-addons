@@ -225,6 +225,13 @@ if ( ! class_exists( 'Responsive_Block_Editor_Addons_Frontend_Styles_Helper' ) )
 		 * @return string Converted custom CSS string.
 		 */
 		private function get_custom_css_from_block( $block ) {
+			
+			// Respect global toggle for custom CSS
+			$custom_css_global = get_option( 'rbea_custom_css_on', '1' );
+			if ( '0' === (string) $custom_css_global || 0 === $custom_css_global ) {
+				return '';
+			}
+
 			if ( ! isset( $block['attrs']['customCss'] ) || ! is_string( $block['attrs']['customCss'] ) || empty( trim( $block['attrs']['customCss'] ) ) ) {
 				return '';
 			}
